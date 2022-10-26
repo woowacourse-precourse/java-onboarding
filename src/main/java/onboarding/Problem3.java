@@ -2,12 +2,30 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
-
         Validator.isValidate(number);
 
+        return getTotalClap(number);
+    }
 
-        return answer;
+    private static int getTotalClap(int num){
+        int totalResult = 0;
+
+        for (int i = 1; i <= num; i++) {
+            totalResult += getClap(i);
+        }
+        return totalResult;
+    }
+
+    private static int getClap(int num){
+        int result = 0;
+        String numString = String.valueOf(num);
+
+        for (int i = 0; i < numString.length(); i++) {
+            if (numString.charAt(i) == '3' || numString.charAt(i) == '6' || numString.charAt(i) == '9'){
+                result++;
+            }
+        }
+        return result;
     }
 
 
