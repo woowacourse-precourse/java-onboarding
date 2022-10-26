@@ -8,6 +8,9 @@ public class Problem1 {
             return -1;
         }
 
+        int pobiScore = findMaxScore(pobi);
+        int crongScore = findMaxScore(crong);
+
         return 1;
     }
 
@@ -30,5 +33,26 @@ public class Problem1 {
         }
 
         return false;
+    }
+
+    private static int findMaxScore(List<Integer> openPage) {
+        int leftPage = openPage.get(0);
+        int rightPage = openPage.get(1);
+
+        return Math.max(countPageScore(leftPage), countPageScore(rightPage));
+    }
+
+    private static int countPageScore(int page) {
+        int plusValue = 0;
+        int multipleValue = 1;
+
+        while (page > 0) {
+            plusValue += (page % 10);
+            multipleValue *= (page % 10);
+
+            page /= 10;
+        }
+
+        return Math.max(plusValue, multipleValue);
     }
 }
