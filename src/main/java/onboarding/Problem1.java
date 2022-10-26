@@ -7,4 +7,13 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+
+    public int sumPageEachDigitNum(Integer pageNum) {
+        int eachDigitNumSum = 0;
+        while(pageNum != 0) {
+            eachDigitNumSum += pageNum % 10;
+            pageNum /= 10;
+        }
+        return eachDigitNumSum;
+    }
 }
