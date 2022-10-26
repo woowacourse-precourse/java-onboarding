@@ -4,9 +4,21 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        Problem1 p1 = new Problem1();
+        int pobiScore = p1.getScore(pobi);
+        int crongScore = p1.getScore(crong);
+
+        if (pobiScore > crongScore) {
+            return 1;
+        }
+
+        if (pobiScore < crongScore) {
+            return 2;
+        }
+
+        return 0;
     }
+
 
     public int getScore(List<Integer> pages) {
         int left = pages.get(0);
