@@ -11,20 +11,28 @@
 임의의 문자열 cryptogram이 매개변수로 주어질 때, 연속하는 중복 문자들을 삭제한 결과를 return 하도록 solution 메서드를 완성하라.
 
 - [ ] 중복 문자가 있는지 체크한다.
-  - [x] String을 char 배열로 만든다.
-  - [x] 새로운 문자열이 만들기 위해 StringBuiler 객체를 생성한다.
-  - [x] 중복된 문자임을 알리는 duplicateChar character를 생성한다.
-  - [x] 중복된 문자가 있었는지 체크하는 hasNotDuplicate를 생성한다.
+  - [x] String을 char 배열(chars)로 만든다.
+  - [x] 정답을 나타내는 String 객체(answer)를 생성한다.
+  - [x] 중복된 문자가 있었는지 체크하는 hasNotDuplicate = false로 생성하고 초기화한다..
   - [ ] hasNotDuplicate가 true가 될 때 까지 무한루프를 돌린다.
-    - [ ] char 배열이 첫 번째부터 마지막-1 번째 까지 루프문을 돈다.
-      - [ ] 첫 번째일 때 
-        - [ ] 배열의 첫 번째 값이 배열의 두 번째 값과 같지 않다면 StringBuilder에 추가한다.
-      - [ ] 마지막일 때 
-        - [ ] 배열의 마지막 값이 중복된 문자(duplicateChar)가 아니면 StringBuilder에 추가한다.
-      - [ ] 배열의 i번째 값이 i + 1 값과 같다면 duplicateChar의 값은 배열의 i 번째 값이 된다.
-      - [ ] 배열의 i번째 값이 i + 1 값과 같지 않다면
-        - [ ] 중복된 문자(duplicateChar)와 값이 다르면 StringBuilder에 추가한다.  
-  - [ ] 무한 루프에 탈출하면 중복 문자가 없는 StringBuilder 객체를 String으로 변환하여 반환한다.
+    - [ ] hasNotDuplicate를 true로 초기화한다.
+      - [x] 새로운 문자열이 만들기 위해 StringBuiler 객체를 생성한다.
+      - [ ] char 배열이 첫 번째부터 마지막-1 번째 까지 for문을 돈다.
+        - [ ] 첫 번째일 때 
+          - [ ] 배열의 첫 번째 값이 배열의 두 번째 값과 같지 않다면 StringBuilder에 추가한다.
+        - [ ] 마지막일 때 
+          - [ ] 배열의 마지막 값이 그 전 배열의 값과 다르고 중복된 문자(duplicateChar)가 아니면 StringBuilder에 추가한다.
+        - [ ] 배열의 i번째 값이 i + 1 값과 같다면 
+          - [ ] duplicateChar의 값은 배열의 i 번째 값이 된다.
+          - [ ] hasNotDuplicate의 값을 false로 변경한다. 
+        - [ ] 배열의 i번째 값이 i + 1 값과 같지 않다면
+          - [ ] 중복된 문자(duplicateChar)와 값이 다르면 StringBuilder에 추가한다.
+          - [ ] duplicateChar의 값을 ' '로 변경한다.
+      - [ ] for문이 끝나면
+        - [ ] char 배열의 값을 StringBuilder를 String으로 변환 후 다시 char 배열로 만든 값으로 변경한다.
+        - [ ] hasNotDuplicate의 값이 true이면 
+          - [ ] answer의 값은 현재 StringBuilder로 만들어진 문자열이 된다. 
+      - [ ] 무한 루프에 탈출하면 answer 객체를 반환한다.
 
 ### 제한사항
 
