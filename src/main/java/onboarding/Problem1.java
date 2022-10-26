@@ -46,11 +46,7 @@ class Problem1 {
             return false;
         }
 
-        if (!isLeftPage(leftPage) || !isRightPage(rightPage)) {
-            return false;
-        }
-
-        return true;
+        return isLeftPage(leftPage) && isRightPage(rightPage);
     }
 
     private static boolean isValidRange(Integer page) {
