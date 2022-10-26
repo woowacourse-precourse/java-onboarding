@@ -12,13 +12,18 @@
 
 설계<br/>
 
-- [ ] PageGame은 int getResult() 를 통해 결과 2, 1, 0, -1을 반환한다.
-- [ ] PageScore는 int getScore()를 통해 참가자 개인의 점수를 반환하고 예외의 경우 -1로 처리한다.
-- [ ] PageValidator는 boolean isValid(List\<Integer> user)를 통해 입력값이 유효한지 판단한다.
+- [x] PageGame은 int getResult() 를 통해 결과 2, 1, 0, -1을 반환한다.
+- [x] PageScore는 int getScore()를 통해 참가자 개인의 점수를 반환하고 예외의 경우 -1로 처리한다.
+- [x] PageValidator는 boolean isValid(List\<Integer> user)를 통해 입력값이 유효한지 판단한다.
 </details>
 
 <details>
+
 <summary>문제 2</summary>
+설계<br/>
 
-
+- [ ] TextDecoder는 String getCipher() 와 String getPlainText()로 원문과 해독된 평문을 반환한다.
+- [ ] TextDecoderV1 구현체는 문자열과 Stack 구조체를 사용하여 getPlainText()를 구현한다.
 </details>
+
+
