@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 class validationSamethings{
     public static int validation(ArrayList<String> list){
@@ -15,20 +16,20 @@ class validationSamethings{
     }
 }
 class removeSamethings{
-    public static String removeSameElement(ArrayList<String> list){
+    public static String removeSameElement(ArrayList<String> list, int index){
         String strArrayToString;
         String startElement;
-        int start = validationSamethings.validation(list);
-        if(start!=-1){
-            startElement=list.get(start);
-            for(int i=start+1;i<list.size();i++){
-                if(startElement.equals(list.get(i))){
-                    list.remove(i--);
-                    continue;
-                }
-                break;
+        int start = index;
+        startElement=list.get(start);
+        for(int i=start+1;i<list.size();i++){
+            if(startElement.equals(list.get(i))){
+                list.remove(i);
+                continue;
             }
+            break;
         }
+        list.remove(start);
+
         strArrayToString=list.toString();
         return strArrayToString;
     }
@@ -43,7 +44,14 @@ class invalidStringException{
 }
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        ArrayList<String> list = new ArrayList<String>(Arrays.asList(cryptogram.split("")));
+        String answer = cryptogram;
+        int index;
+        if(!invalidStringException.invalidString(cryptogram)){
+            while((index=validationSamethings.validation(list))!=-1){
+                answer = removeSamethings.removeSameElement(list,index);
+            }
+        }
         return answer;
     }
 }
