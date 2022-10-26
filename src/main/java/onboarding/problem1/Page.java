@@ -7,7 +7,13 @@ public class Page {
 
     private List<Integer> digitValues = new ArrayList<>();
     public Page(int pageNumber) {
+        if (isOutOfRange(pageNumber))
+            throw new IllegalArgumentException("페이지 범위는 3페이지부터 397페이지까지 입니다.");
         addNumbers(pageNumber);
+    }
+
+    private boolean isOutOfRange(int pageNumber) {
+        return (pageNumber <399 && pageNumber > 2);
     }
 
     private void addNumbers(int pageNumber) {
