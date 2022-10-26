@@ -38,7 +38,7 @@ class invalidStringException{
     public static boolean invalidString(String string){
         if(string.length()<1||string.length()>1000){return true;}
         if(!string.equals(string.toLowerCase())){return true;}
-        if(string.chars().allMatch(Character::isLetter)){return true;}
+        if(!string.chars().allMatch(Character::isLetter)){return true;}
         return false;
     }
 }
