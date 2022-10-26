@@ -37,6 +37,7 @@ public class Problem5 {
 
 
     public static List<Integer> solution(int money) {
+        return getCoins(money);
 
     }
 }
