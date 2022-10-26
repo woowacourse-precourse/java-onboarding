@@ -12,6 +12,17 @@ public class Problem3 {
         int count = 0;
         int[] numbers = IntStream.rangeClosed(1, number).toArray();
 
+        for (int n : numbers) {
+            count += calApplauseCount(n);
+        }
+
         return count;
+    }
+
+    private static int calApplauseCount(int n) {
+        return Arrays.stream(String.valueOf(n).split(""))
+                .mapToInt(Integer::valueOf)
+                .filter(i -> i != 0 && i % 3 == 0)
+                .toArray().length;
     }
 }
