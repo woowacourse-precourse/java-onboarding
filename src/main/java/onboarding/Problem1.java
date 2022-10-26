@@ -7,4 +7,8 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+
+    public String parsePageNumber(int page) {
+        return Integer.toString(page);
+    }
 }
