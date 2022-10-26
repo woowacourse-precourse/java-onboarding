@@ -37,4 +37,12 @@ class Problem1 {
 
         return result;
     }
+
+    // 더 큰 수 리턴하는 함수
+    private static int maxNumber(int plus, int multiply) {
+        if(plus < multiply) {
+            return multiply;
+        }
+        return plus;
+    }
 }
