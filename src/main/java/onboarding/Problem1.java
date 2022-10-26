@@ -10,13 +10,15 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
-        if(!verificationCheck(pobi) || !verificationCheck(crong)) {
+        if (!verificationCheck(pobi) || !verificationCheck(crong)) {
             return -1;
         }
 
         int pobiMax = getMax(pobi);
         int crongMax = getMax(crong);
-        
+
+        answer = getResult(pobiMax, crongMax);
+
         return answer;
     }
 
@@ -47,7 +49,7 @@ class Problem1 {
         int result = 0;
 
         int end = getLength(target);
-        for(int i=0; i<end; i++) {
+        for (int i = 0; i < end; i++) {
             result += target % 10;
             target /= 10;
         }
@@ -59,7 +61,7 @@ class Problem1 {
         int result = 1;
 
         int end = getLength(target);
-        for(int i=0; i<end; i++) {
+        for (int i = 0; i < end; i++) {
             result *= target % 10;
             target /= 10;
         }
@@ -78,5 +80,15 @@ class Problem1 {
         int product = Math.max(productLeftPage, productRigthPage);
 
         return Math.max(sum, product);
+    }
+
+    public static int getResult(int object1, int object2) {
+        if (object1 == object2) {
+            return 0;
+        } else if (object1 > object2) {
+            return 1;
+        } else {
+            return 2;
+        }
     }
 }
