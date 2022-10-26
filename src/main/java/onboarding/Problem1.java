@@ -16,7 +16,7 @@ class Problem1 {
         for(List<Integer> pages: pagesList) {
             boolean valid =
                 hasTwoElements(pages) &&
-                hasCorrectNumbers(pages);
+                hasValidNumbers(pages);
             if(valid == false) {
                 return false;
             }
@@ -32,8 +32,8 @@ class Problem1 {
      * @return 숫자들의 개수가 2라면 참, 아니면 거짓을 반환합니다.
      */
     private static boolean hasTwoElements(List<Integer> pages) {
-        boolean correct = pages.size() == 2;
-        return correct;
+        boolean valid = pages.size() == 2;
+        return valid;
     }
 
 
@@ -43,17 +43,17 @@ class Problem1 {
      * @param 한 명의 페이지 숫자들이 들어있는 배열입니다.
      * @return 두 숫자가 옳은 페이지라면 참, 아니면 거짓을 반환합니다.
      */
-    private static boolean hasCorrectNumbers(List<Integer> pages) {
+    private static boolean hasValidNumbers(List<Integer> pages) {
         Integer leftPage = pages.get(0);
         Integer rightPage = pages.get(1);
 
-        boolean correct =
+        boolean valid =
                 leftPage > 0 &&
                         rightPage > 0 &&
                         leftPage % 2 == 1 &&
                         rightPage % 2 == 0 &&
                         rightPage - leftPage == 1;
-        return correct;
+        return valid;
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
