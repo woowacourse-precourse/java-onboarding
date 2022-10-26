@@ -10,6 +10,14 @@ public class Problem3 {
         public ClapCount(int target) {
             this.target = target;
         }
+
+        private boolean isThreeSixNine(char c) {
+            if(c =='3'|| c =='6'|| c =='9'){
+                return true;
+            }
+            return false;
+        }
+
     }
 
 
