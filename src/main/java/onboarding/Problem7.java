@@ -1,10 +1,18 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+
+        List<String> friendsOfUser = makeFriendList(user, friends);
+        HashMap<String, Integer> recommendNameWithScoreMap = makeRecommendList(user, friendsOfUser, friends);
+        recommendNameWithScoreMap = addVisitorScore(recommendNameWithScoreMap, visitors, friendsOfUser);
+
+        answer = sortHashMapAndConvert(recommendNameWithScoreMap);
+
         return answer;
     }
 
@@ -62,12 +70,14 @@ public class Problem7 {
      * 기능 3
      * 기능 2에 만든 리스트에 방문자 리스트 및 점수 추가
      */
-    public static HashMap<String, Integer> addVisitorScore(HashMap<String, Integer> recommendNameWithScoreMap, List<String> visitor) {
+    public static HashMap<String, Integer> addVisitorScore(HashMap<String, Integer> recommendNameWithScoreMap,
+                                                           List<String> visitor,
+                                                           List<String> friendsOfUser) {
 
         for (int i = 0; i < visitor.size(); i++) {
             if (recommendNameWithScoreMap.containsKey(visitor.get(i))) {
                 recommendNameWithScoreMap.put(visitor.get(i), recommendNameWithScoreMap.get(visitor.get(i)) + 1);
-            } else {
+            } else if(!friendsOfUser.contains(visitor.get(i))){
                 recommendNameWithScoreMap.put(visitor.get(i), 1);
             }
         }
@@ -85,7 +95,8 @@ public class Problem7 {
 
         rankOfRecommend.sort(((o1, o2) -> recommendNameWithScore.get(o2).compareTo(recommendNameWithScore.get(o1))));
 
-        return rankOfRecommend;
+
+        return rankOfRecommend.stream().limit(5).collect(Collectors.toList());
     }
 
 }
