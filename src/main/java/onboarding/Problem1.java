@@ -24,12 +24,17 @@ class Problem1 {
             return INPUT_ERROR;
         }
 
+        int pobiMaxNumber = pickFriendMaxNumber(pobi);
+        int crongMaxNumber = pickFriendMaxNumber(crong);
+
 
 
         return answer;
     }
 
-
+    public static int pickFriendMaxNumber(List<Integer> friend) {
+        return Math.max(calculateMaxNumber(friend.get(0)), calculateMaxNumber(friend.get(1)));
+    }
 
     public static int calculateMaxNumber(Integer num) {
         int multiValue = 1;
