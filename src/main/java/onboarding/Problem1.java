@@ -10,7 +10,6 @@ class Problem1 {
 
     private static int getAddDigitsResult(int pageNumber) {
         int addResult = 0;
-
         while (pageNumber != 0) {
             addResult += pageNumber % 10;
             pageNumber /= 10;
