@@ -45,6 +45,10 @@ class Problem1 {
         return winnerNum;
     }
 
+    public static boolean validateGame(List<Integer> player) {
+        return (validatePageNumOddOrEven(player) && validatePageRange(player) && validateContinuousPageNum(player));
+    }
+
     public static boolean validatePageNumOddOrEven(List<Integer> player) {
         Integer leftPageNum = player.get(0);
         Integer rightPageNum = player.get(1);
