@@ -13,7 +13,7 @@ public class Page {
     }
 
     private boolean isOutOfRange(int pageNumber) {
-        return (pageNumber <399 && pageNumber > 2);
+        return (pageNumber >398 && pageNumber < 3);
     }
 
     private void addNumbers(int pageNumber) {
