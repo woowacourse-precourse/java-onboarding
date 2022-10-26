@@ -14,7 +14,15 @@ public class Problem5 {
     
     public static List<Integer> solution(int money) {
         List<Integer> answer = new ArrayList<>();
+    
+        for (Integer monetaryUnit : UNITS_OF_MONEY) {
+            answer.add(numberOfCurrency(money, monetaryUnit));
+        }
         
         return answer;
+    }
+    
+    private static int numberOfCurrency(final int currentTotalMoney, final int monetaryUnit) {
+        return currentTotalMoney / monetaryUnit;
     }
 }
