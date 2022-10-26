@@ -13,6 +13,10 @@ class Problem1 {
     private boolean isAvailableSize(int size) {
         return size == 2;
     }
+
+    private boolean isAvailableValues(int left, int right) {
+        return 1 <= left && left <= 399 && left + 1 == right;
+    }
     
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
