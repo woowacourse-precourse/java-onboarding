@@ -21,7 +21,11 @@ class Problem1 {
     private static boolean isNotCorrectInputNumbers(final List<Integer> numbers) {
         int leftNumber = numbers.get(0);
         int rightNumber = numbers.get(1);
-        return isNotCorrectEvenAndOdd(leftNumber, rightNumber);
+        return isNotCorrectEvenAndOdd(leftNumber, rightNumber) || isTheDifferenceNotOne(leftNumber, rightNumber);
+    }
+    
+    private static boolean isTheDifferenceNotOne(final int leftNumber, final int rightNumber) {
+        return leftNumber + 1 != rightNumber;
     }
     
     private static boolean isNotCorrectEvenAndOdd(final int leftNumber, final int rightNumber) {
