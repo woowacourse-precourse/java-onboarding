@@ -123,12 +123,12 @@ class Problem1 {
 
     /**
      * Get result of game
-     * @param pValue value of person A
-     * @param cValue value of person B
+     * @param aValue value of person A
+     * @param bValue value of person B
      * @return 0 if draw or 1 if a wins and 2 if b wins
      */
-    private int resultOfGame(int pValue, int cValue) {
-        return pValue == cValue ? 0 : pValue > cValue ? 1 : 2;
+    private int resultOfGame(int aValue, int bValue) {
+        return aValue == bValue ? 0 : aValue > bValue ? 1 : 2;
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
