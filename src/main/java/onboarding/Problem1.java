@@ -55,21 +55,4 @@ class Problem1 {
                 return 0;
         }
     }
-    public static void main(String[] args) {
-
-        List<Integer> pobi = new ArrayList<Integer>(2);
-        List<Integer> crong = new ArrayList<Integer>(2);
-
-        //포비가 펼친 페이지
-        int pageNum = (int)(Math.random() * 400) + 1;
-        pobi.add(pageNum);
-        pobi.add(pageNum + 1);
-
-        //크롱이 펼친 페이지
-        pageNum = (int)(Math.random() * 400) + 1;
-        crong.add(pageNum);
-        crong.add(pageNum + 1);
-
-        System.out.println(solution(pobi, crong));
-    }
 }
