@@ -10,7 +10,15 @@ class Problem1 {
     // 포비와 크롱 각각 오른쪽 최댓값 왼쪽 최댓값 비교해 더 큰 수 출력하는 함수 만들기
     // 출력된 두 값 비교해 return 값 설정하기 (return 값은 1, 2, 0 중 하나)
     public static boolean exceptionCase(List<Integer> list) {
-        if(list.get(1)- list.get(0) != 0)
+        boolean excepted = false;
+        if(list.get(1)- list.get(0) != 1) {
+            excepted = true;
+        } else if(list.get(0)>=1 && list.get(0) <400 && list.get(1)>1 && list.get(1) <=400) {
+            excepted = true;
+        } else if(list.get(0)%2==0 || list.get(1) %2 == 1) {
+            excepted = true;
+        }
+        return excepted;
     }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
