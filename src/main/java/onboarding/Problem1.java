@@ -38,6 +38,11 @@ class Problem1 {
     private static int multiplyNumbersOfDigits(int number) {
     	int result = 1;
     	
+    	while (number != 0) {
+    		result *= number%10;
+    		number /= 10;
+    	}
+    	
     	return result;
     }
     
