@@ -13,7 +13,7 @@ class ApplicationTest {
         @Test
         void checkmulti() {
             int result = 12;
-            assertThat(Problem1.getmulti(34)).isEqualTo(result);
+            assertThat(Problem1.getMulti(34)).isEqualTo(result);
         }
 
         @Test
