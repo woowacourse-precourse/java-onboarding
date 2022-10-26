@@ -18,6 +18,9 @@ public class Game {
 			return -1;
 		}
 
+		user1.calculateScore();
+		user2.calculateScore();
+
 		return 0;
 	}
 
