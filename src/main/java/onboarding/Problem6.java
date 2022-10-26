@@ -53,14 +53,27 @@ public class Problem6 {
             {
                 if (findSameUser(nickname.get(i), nickname.get(j)))
                 {
-                    userMemo.add(i);
-                    userMemo.add(j);
+                    //userMemo 중복 처리하기
+                    if (issameuser(userMemo,i))
+                        userMemo.add(i);
+                    if (issameuser(userMemo, j))
+                        userMemo.add(j);
                 }
             }
         }
         return userMemo;
     }
 
+    public static boolean issameuser(List<Integer> user, int value)
+    {
+        for (int i = 0; i < user.size(); i++)
+        {
+            if (user.get(i) == value)
+                return false;
+        }
+        return true;
+    }
+    //중복 닉네임 찾기
     public static boolean findSameUser(String first, String second)
     {
         for (int i = 0; i < first.length() - 1; i++)
@@ -78,26 +91,6 @@ public class Problem6 {
             }
         }
 
-        return false;
-    }
-
-
-    //연속적으로 닉네임이 포함되어 있는지 확인
-    public static boolean isDuplicate(String first, String second)
-    {
-        int count = 0;
-        int length = 0;
-
-        length = Math.min(first.length(), second.length());
-        for (int i = 0; i < length; i++)
-        {
-            if (first.charAt(i) == second.charAt(i))
-            {
-                count++;
-                if (count >= 2)
-                    return true;
-            }
-        }
         return false;
     }
 
