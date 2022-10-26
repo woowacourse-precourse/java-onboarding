@@ -9,6 +9,10 @@ public class Problem2 {
         public Cryptogram(String origin) {
             this.origin = origin;
         }
+        void init() {
+            this.duplication = this.origin;
+        }
+
 
     }
     public static String solution(String cryptogram) {
