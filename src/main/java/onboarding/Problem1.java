@@ -1,27 +1,24 @@
 package onboarding;
 
+import static onboarding.Problem1.CalculateScoreConst.ADD_SCORE_DEFAULT_VALUE;
+import static onboarding.Problem1.CalculateScoreConst.CALCULATE_REMAINDER_VALUE;
+import static onboarding.Problem1.CalculateScoreConst.DECIMAL_UNIT_VALUE;
+import static onboarding.Problem1.CalculateScoreConst.MULTIPLY_SCORE_DEFAULT_VALUE;
+import static onboarding.Problem1.GameResultConst.CRONG_WIN_RESULT;
+import static onboarding.Problem1.GameResultConst.EXCEPTION_RESULT;
+import static onboarding.Problem1.GameResultConst.POBI_WIN_RESULT;
+import static onboarding.Problem1.GameResultConst.TIE_RESULT;
+import static onboarding.Problem1.PageIndexConst.LEFT_PAGE_LIST_INDEX;
+import static onboarding.Problem1.PageIndexConst.RIGHT_PAGE_LIST_INDEX;
+import static onboarding.Problem1.PageValidateConst.ADD_ODD_DIVISION_VALUE;
+import static onboarding.Problem1.PageValidateConst.ADD_ODD_REMAINDER_VALUE;
+import static onboarding.Problem1.PageValidateConst.BETWEEN_LEFT_AND_RIGHT_PAGE;
+import static onboarding.Problem1.PageValidateConst.MAXIMUM_PAGE;
+import static onboarding.Problem1.PageValidateConst.MINIMUM_PAGE;
+
 import java.util.List;
 
 class Problem1 {
-
-    private static final int EXCEPTION_RESULT = -1;
-    private static final int TIE_RESULT = 0;
-    private static final int POBI_WIN_RESULT = 1;
-    private static final int CRONG_WIN_RESULT = 2;
-
-    private static final int MINIMUM_PAGE = 3;
-    private static final int MAXIMUM_PAGE = 398;
-    private static final int LEFT_PAGE_LIST_INDEX = 0;
-    private static final int RIGHT_PAGE_LIST_INDEX = 1;
-    private static final int BETWEEN_LEFT_AND_RIGHT_PAGE = 1;
-
-    private static final int ADD_ODD_REMAINDER_VALUE = 0;
-    private static final int ADD_ODD_DIVISION_VALUE = 2;
-
-    private static final int ADD_SCORE_DEFAULT_VALUE = 0;
-    private static final int MULTIPLY_SCORE_DEFAULT_VALUE = 1;
-    private static final int CALCULATE_REMAINDER_VALUE = 0;
-    private static final int DECIMAL_UNIT_VALUE = 10;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (!(validatePage(pobi) && validatePage(crong))) {
@@ -79,5 +76,36 @@ class Problem1 {
         int rightPageScore = calculatePageScore(player.get(RIGHT_PAGE_LIST_INDEX));
 
         return Math.max(leftPageScore, rightPageScore);
+    }
+
+    public abstract class GameResultConst {
+
+        public static final int EXCEPTION_RESULT = -1;
+        public static final int TIE_RESULT = 0;
+        public static final int POBI_WIN_RESULT = 1;
+        public static final int CRONG_WIN_RESULT = 2;
+    }
+
+    public abstract class PageIndexConst {
+
+        public static final int LEFT_PAGE_LIST_INDEX = 0;
+        public static final int RIGHT_PAGE_LIST_INDEX = 1;
+    }
+
+    public abstract class PageValidateConst {
+
+        public static final int MINIMUM_PAGE = 3;
+        public static final int MAXIMUM_PAGE = 398;
+        public static final int BETWEEN_LEFT_AND_RIGHT_PAGE = 1;
+        public static final int ADD_ODD_REMAINDER_VALUE = 0;
+        public static final int ADD_ODD_DIVISION_VALUE = 2;
+    }
+
+    public abstract class CalculateScoreConst {
+
+        public static final int ADD_SCORE_DEFAULT_VALUE = 0;
+        public static final int MULTIPLY_SCORE_DEFAULT_VALUE = 1;
+        public static final int CALCULATE_REMAINDER_VALUE = 0;
+        public static final int DECIMAL_UNIT_VALUE = 10;
     }
 }
