@@ -4,9 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
+
+    //pobi와 crong의 길이는 2이다.
+    //pobi와 crong에는 [왼쪽 페이지 번호, 오른쪽 페이지 번호]가 순서대로 들어있다.
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        int pobiLeftMakeNum = makeNum(pobi.get(0));
+        int pobiRightMakeNum = makeNum(pobi.get(1));
+        int crongLeftMakeNum = makeNum(crong.get(0));
+        int crongRightMakeNum = makeNum(crong.get(1));
+
+        int pobiMaxNum = (pobiLeftMakeNum > pobiRightMakeNum) ? pobiLeftMakeNum : pobiRightMakeNum;
+        int crongMaxNum = (crongLeftMakeNum > crongRightMakeNum) ? crongLeftMakeNum : crongRightMakeNum;
+
+        return compareNums(pobiMaxNum,crongMaxNum);
     }
 
     public static int makeNum(int page){
@@ -31,6 +41,12 @@ class Problem1 {
 
         // 더 큰 수를 return
         return (multiplyNums > addNums) ? multiplyNums : addNums;
+    }
+
+    public static int compareNums(int pobi, int crong){
+        if (pobi == crong) return 0;
+        else if (pobi > crong) return 1;
+        else return 2;
     }
 
 }
