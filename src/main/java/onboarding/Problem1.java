@@ -28,6 +28,12 @@ class Problem1 {
             return EXCEPTION;
         }
 
+        // 좌측과 우측 페이지의 차가 1인지 확인 및 우측 페이지가 더 큰지 확인
+        if (pobi.get(LAST_PAGE) - pobi.get(FIRST_PAGE) != 1
+                || crong.get(LAST_PAGE) - crong.get(FIRST_PAGE) != 1) {
+            return EXCEPTION;
+        }
+
 
         return answer;
     }
