@@ -33,4 +33,11 @@ class Problem1 {
             sum += pageNumbers.get(i);
         return sum;
     }
+
+    public int getMultiply(List<Integer> pageNumbers) {
+        int multiply = 1;
+        for(int i = 0; i < pageNumbers.size(); i++)
+            multiply *= pageNumbers.get(i);
+        return multiply;
+    }
 }
