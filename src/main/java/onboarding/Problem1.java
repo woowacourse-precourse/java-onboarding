@@ -6,10 +6,7 @@ import java.util.stream.Stream;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if (!isValid(pobi)) {
-            return -1;
-        }
-        if (!isValid(crong)){
+        if (!isValid(pobi) || !isValid(crong)) {
             return -1;
         }
         return getWinner(getPoint(pobi), getPoint(crong));
@@ -22,6 +19,11 @@ class Problem1 {
         if (pages.get(1) - pages.get(0) != 1) {
             return false;
         }
+
+        if(pages.get(0)<=1 || pages.get(1)<=2)
+            if(pages.get(0)>=399 || pages.get(0)>=400){
+                return false;
+            }
         return true;
     }
 
