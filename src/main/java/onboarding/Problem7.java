@@ -6,24 +6,22 @@ import java.util.stream.Collectors;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, Integer> userToScore = new HashMap<>();
-        List<String> myFriends = new ArrayList<>();
+        Set<String> myFriends = new HashSet<>();
+
         for (List<String> friend : friends) {
-            if (friend.get(0).equals(user)) {
-                myFriends.add(friend.get(1));
-            } else if (friend.get(1).equals(user)) {
-                myFriends.add(friend.get(0));
+            if (isFriendsContainsUser(friend, user)){
+                myFriends.addAll(friend);
             }
         }
 
         for (List<String> friend : friends) {
-            if (friend.get(0).equals(user) || friend.get(1).equals(user)) {
+            if (isFriendsContainsUser(friend, user)) {
                 continue;
             }
-            if (myFriends.contains(friend.get(0))) {
-                userToScore.put(friend.get(1), userToScore.getOrDefault(friend.get(1), 0) + 10);
-            }
-            if (myFriends.contains(friend.get(1))) {
-                userToScore.put(friend.get(0), userToScore.getOrDefault(friend.get(0), 0) + 10);
+            for (int i = 0; i < 2; i++) {
+                if (myFriends.contains(friend.get(i))) {
+                    userToScore.put(friend.get(i ^ 1), userToScore.getOrDefault(friend.get(i ^ 1), 0) + 10);
+                }
             }
         }
 
@@ -40,5 +38,9 @@ public class Problem7 {
                 .map(Map.Entry::getKey)
                 .limit(5)
                 .collect(Collectors.toList());
+    }
+
+    private static boolean isFriendsContainsUser(List<String> friend, String user) {
+        return friend.contains(user);
     }
 }
