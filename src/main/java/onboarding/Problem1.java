@@ -16,7 +16,13 @@ class Problem1 {
 				.max(Integer::compareTo)
 				.orElse(-1);
 
-        return answer;
+		if (pobiMax > crongMax) {
+			return 1;
+		}
+		if (pobiMax < crongMax) {
+			return 2;
+		}
+		return 0;
 	}
 
 	private static int getMaxPage(Integer page) {
