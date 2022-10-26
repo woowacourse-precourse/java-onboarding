@@ -27,7 +27,14 @@ public class Problem4 {
         return result;
     }
 
+    static Character lowerCaseConversion(char character) {
+        int move = character - 'a';
+        char result = (char) ('z' - move);
+
+        return result;
+    }
+
     public static void main(String[] args) {
-        System.out.println(upperCaseConversion('Z'));
+        System.out.println(lowerCaseConversion('z'));
     }
 }
