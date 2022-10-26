@@ -7,11 +7,10 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
-    int sumOfDigits(int number) {
+    int sumOfDigits(int[] numbers) {
         int sum = 0;
-        while(number > 0) {
-            sum += number%10;
-            sum /= 10;
+        for(int number : numbers) {
+            sum += number;
         }
         return sum;
     }
