@@ -26,6 +26,17 @@ class Problem1 {
         pobiNum = findMaxNum(pobi.get(0), pobi.get(1));
         crongNum = findMaxNum(crong.get(0), crong.get(1));
 
+        // 3. 점수 비교
+        if (pobiNum > crongNum) {
+            // 포비 승
+            answer = 1;
+        } else if (pobiNum < crongNum) {
+            // 크롱 승
+            answer = 2;
+        } else {
+            // 무승부
+            answer = 0;
+        }
         return answer;
     }
 
