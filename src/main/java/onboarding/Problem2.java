@@ -5,8 +5,11 @@ import java.util.regex.Pattern;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        if (!validateCryptogram(cryptogram)) {
+            return cryptogram;
+        }
+
+        return removeDuplicateString(cryptogram);
     }
 
     /**
@@ -36,19 +39,19 @@ public class Problem2 {
      * @return 제거된 문자열
      */
     private static String removeDuplicateString(String cryptogram) {
-        int lengthCryptogram = cryptogram.length();
-        List<String> splitCryptogram = splitCryptogram(cryptogram);
+        ArrayList<String> splitCryptogram = splitCryptogram(cryptogram);
+        int sizeSplitCryptogram = splitCryptogram.size();
 
         // 문자열 순차 읽기
-        for (int i = 0; i < lengthCryptogram; i++) {
+        for (int i = 0; i < sizeSplitCryptogram; i++) {
             // 지난 문자와 현재 문자가 같은지 확인하기.
             if (i > 0 && Objects.equals(splitCryptogram.get(i - 1), splitCryptogram.get(i))) {
                 //중복 문자 제거
-                splitCryptogram.remove(i - 1);
-                splitCryptogram.remove(i);
-
-                lengthCryptogram -= 2;
-                i -= 2;
+                for (int j = 0; j < 2; j++) {
+                    splitCryptogram.remove(i);
+                    sizeSplitCryptogram --;
+                    i --;
+                }
             }
         }
 
@@ -60,7 +63,10 @@ public class Problem2 {
      * @param cryptogram 암호문
      * @return 분할된 암호문
      */
-    private static List<String> splitCryptogram(String cryptogram) {
-        return Arrays.asList(cryptogram.split(""));
+    private static ArrayList<String> splitCryptogram(String cryptogram) {
+        ArrayList<String> arrayListSplitCryptogram = new ArrayList<>();
+        Collections.addAll(arrayListSplitCryptogram, cryptogram.split(""));
+
+        return arrayListSplitCryptogram;
     }
 }
