@@ -17,8 +17,11 @@ class Problem1 {
         Score pobiScoreObj = new Score(pobiObj);
         Score crongScoreObj = new Score(crongObj);
 
-        int pobiScore = pobiScoreObj.getScore();
-        int crongScore = crongScoreObj.getScore();
+        pobiScoreObj.setScore(pobiObj);
+        crongScoreObj.setScore(crongObj);
+
+        int pobiScore = pobiObj.getScore();
+        int crongScore = crongObj.getScore();
 
         if (pobiScore > crongScore) {
             answer = 1;
@@ -83,22 +86,22 @@ class Score {
         this.rightPage = person.getRightPage();
     }
 
-    public int getScore() {
+    public void setScore(Person person) {
         int leftMaxValue = getMaxValue(leftPage);
         int rightMaxValue = getMaxValue(rightPage);
 
         int score = Math.max(leftMaxValue, rightMaxValue);
 
-        return score;
+        person.setScore(score);
     }
 
-    public int getMaxValue(int num) {
+    private int getMaxValue(int num) {
         int maxValue = Math.max(getDigitSum(num), getDigitMultiplication(num));
 
         return maxValue;
     }
 
-    public int getDigitSum(int num) {
+    private int getDigitSum(int num) {
         int result = 0;
 
         while (num > 1) {
@@ -109,7 +112,7 @@ class Score {
         return result;
     }
 
-    public int getDigitMultiplication(int num) {
+    private int getDigitMultiplication(int num) {
         int result = 1;
 
         while (num > 1) {
@@ -141,8 +144,9 @@ class ExceptionHandling {
         return false;
     }
 
+    // 요구사항 6번 - 시작 면이 [1, 2], 마지막 면이 [399, 400]인 경우
     public boolean isInRange() {
-        if (leftPage > 0 && leftPage <= 400 && rightPage > 0 && rightPage <= 400) {
+        if (leftPage > 1 && leftPage < 400 && rightPage > 1 && rightPage < 400) {
             return true;
         }
         return false;

@@ -34,14 +34,19 @@
    - 페이지가 연속되지 않을 때 
      - `isConsecutivePages()` 메서드로 판별
 
-2. 점수 계산
+
+2. 점수 계산 : `Score` 클래스
    - 주어진 수의 각 자리 합 구하기
      - `getDigitSum()` 메서드
    - 주어진 수의 각 자리 곱 구하기
      - `getDigitMultiplication()` 메서드
    - 각 자리 합과 곱중 최댓값 구하기
      - `getMaxValue()` 메서드
-   - 점수 구하기
-     - `getScore()` 메서드
-   
-   
+   - 점수 구해서 `Person` 객체의 `score` 필드에 세팅
+     - `setScore()` 메서드
+
+
+3. 결과 확인
+   - 매개변수로 주어지는 pobi와 crong 리스트로 각각 `Person` 타입의 객체생성
+   - 각각의 객체에 대해 `isValidList()` 메서드로 유효성 검사
+   - `Score` 타입의 객체를 각각 생성 후 점수 비교후 결과 출력
