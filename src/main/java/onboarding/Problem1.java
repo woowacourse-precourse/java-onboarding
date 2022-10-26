@@ -32,4 +32,22 @@ class Problem1 {
         return list.get(0) > 1 ||  list.get(1) < 400;
     }
 
+    public static int getAddNumber(int num) {
+        int result = 0;
+        while (num != 0) {
+            result += num % 10;
+            num /= 10;
+        }
+        return result;
+    }
+
+    public static int getMultiplyNumber(int num) {
+        int result = 1;
+        while (num != 0) {
+            result *= num % 10;
+            num /= 10;
+        }
+        return result;
+    }
+
 }
