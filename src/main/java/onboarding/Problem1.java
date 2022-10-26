@@ -13,7 +13,7 @@ class Problem1 {
             Player crong = new Player(asPages(crongPageNumbers));
 
             return pobi.battle(crong);
-        } catch (IllegalArgumentException e) {
+        } catch (RuntimeException e) {
             return -1;
         }
     }
