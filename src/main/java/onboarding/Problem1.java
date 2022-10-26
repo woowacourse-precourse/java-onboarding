@@ -15,8 +15,17 @@ class Problem1 {
         int pobiScore = getMaxScore(pobi);
         int crongScore = getMaxScore(crong);
 
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        return getMatchResult(pobiScore, crongScore);
+    }
+
+    private static int getMatchResult(int pobiScore, int crongScore) {
+        if (pobiScore > crongScore) {
+            return 1;
+        } else if (pobiScore == crongScore) {
+            return 0;
+        } else {
+            return 2;
+        }
     }
 
     private static int getMaxScore(List<Integer> pageList) {
