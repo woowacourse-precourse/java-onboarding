@@ -68,11 +68,7 @@ class Problem1 {
     }
 
     private static int validateBiggerNumber(int number1, int number2) {
-        if (number1 < number2) {
-            return number2;
-        }
-
-        return number1;
+        return Math.max(number1, number2);
     }
 
     private static int validatePageNumber(List<Integer> user) {
