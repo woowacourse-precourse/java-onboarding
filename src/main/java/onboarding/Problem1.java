@@ -13,6 +13,11 @@ class Problem1 {
         int pobiPoint = Math.max(solution(pobi.get(0)), solution(pobi.get(1)));
         int crongPoint = Math.max(solution(crong.get(0)), solution(crong.get(1)));
 
+        // 승자판별
+        if(pobiPoint > crongPoint) answer = 1;
+        else if(pobiPoint < crongPoint) answer = 2;
+        else answer = 0;
+
         return answer;
     }
 
@@ -39,7 +44,8 @@ class Problem1 {
      * @return {boolean}
      */
     public static boolean validChk(List<Integer> list) {
-        if(list.get(1) - list.get(0) > 1 || list.contains(400) || list.contains(1)) return false;
+        if(list.get(1) - list.get(0) > 1) return false;
+        else if(list.contains(400) || list.contains(1)) return false;
         return true;
     }
 }
