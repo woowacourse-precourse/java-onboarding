@@ -8,6 +8,13 @@ class Problem1 {
         return answer;
     }
 
+    static int getMax(List<Integer> list){
+        int page1 = list.get(0);
+        int page2 = list.get(1);
+
+        return Math.max(chooseMultiSum(page1), chooseMultiSum(page2));
+    }
+
     static int chooseMultiSum(int page){
         int len = page+"".length();
         int sum = 0;
