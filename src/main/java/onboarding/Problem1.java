@@ -21,7 +21,12 @@ class Problem1 {
         int scoreCrong = Math.max(calculateMaxPage(leftPageCrong), calculateMaxPage(rightPageCrong));
 
         /*포비와 크롱 대결 승패 결정*/
-
+        if (scorePobi > scoreCrong)
+            answer = 1;
+        else if (scorePobi < scoreCrong)
+            answer = 2;
+        else
+            answer = 0;
 
         return answer;
     }
