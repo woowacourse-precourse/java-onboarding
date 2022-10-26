@@ -28,7 +28,7 @@ public class PageGamer {
      * @return 1 if person A wins, 2 if person B wins and 0 if draw
      * @throws WrongInputException throws exception if input values has an error
      */
-    public int winner() throws WrongInputException {
+    public int play() throws WrongInputException {
         if (checker.isAvailableInput(pagesA) && checker.isAvailableInput(pagesB))
             return resultOfGame(calculator.valueOfPages(pagesA.get(0), pagesA.get(1)), calculator.valueOfPages(pagesB.get(0), pagesB.get(1)));
         else

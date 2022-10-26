@@ -16,7 +16,7 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         try {
             PageGamer gamer = new PageGamer(pobi, crong, 400);
-            return gamer.winner();
+            return gamer.play();
         } catch (WrongInputException e) {
             return -1;
         }
