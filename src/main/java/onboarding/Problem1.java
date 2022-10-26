@@ -8,6 +8,10 @@ class Problem1 {
         int pobiScore = p1.getScore(pobi);
         int crongScore = p1.getScore(crong);
 
+        if (!p1.validateList(pobi) || !p1.validateList(crong)) {
+            return -1;
+        }
+
         if (pobiScore > crongScore) {
             return 1;
         }
@@ -17,6 +21,25 @@ class Problem1 {
         }
 
         return 0;
+    }
+
+    public boolean validateList(List<Integer> pages) {
+        if (pages.isEmpty()) {
+            return false;
+        }
+
+        int left = pages.get(0);
+        int right = pages.get(1);
+
+        if (left != right - 1) {
+            return false;
+        }
+
+        if (left % 2 != 1 || right % 2 != 0) {
+            return false;
+        }
+
+        return true;
     }
 
 
