@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 /**
  * 기능 사항
@@ -42,6 +43,16 @@ class Problem1 {
         }
 
         return result;
+    }
+
+    /**
+     * 3. 자릿수 별 합과 곱 중 큰 값을 리턴하는 함수
+     * @param list
+     * @return 해당 값을 연산 후 큰 값 리턴
+     */
+
+    static int getMax(List<Integer> list) {
+        return Integer.max(list.stream().reduce(0, Integer::sum), list.stream().reduce(1, (a, b) -> a * b));
     }
 
 
