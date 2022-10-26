@@ -60,8 +60,4 @@ class Problem1 {
         }
         return (x < y) ? CRONG_MORE_BIGGER : ((x == y) ? SAME_VALUE : POBI_MORE_BIGGER);
     }
-
-
-
-
 }
