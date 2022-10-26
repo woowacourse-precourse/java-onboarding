@@ -29,4 +29,22 @@ public class ValidationUtilsTest {
 		assertThat(ValidationUtils.validatePageOrder(List.of(197, 198))).isTrue();
 		assertThat(ValidationUtils.validatePageOrder(List.of(211, 212))).isTrue();
 	}
+
+	@DisplayName("페이지 전체 숫자 검증")
+	@Test
+	void 페이지_전체_검증() {
+		assertThat(ValidationUtils.validatePage(List.of(1, 2))).isFalse();
+		assertThat(ValidationUtils.validatePage(List.of(399, 400))).isFalse();
+		assertThat(ValidationUtils.validatePage(List.of(100, 100))).isFalse();
+		assertThat(ValidationUtils.validatePage(List.of(97, 98))).isTrue();
+	}
+
+	@DisplayName("페이지 숫자 매개변수 검증")
+	@Test
+	void 페이지_숫자_매개변수_검증() {
+		assertThat(ValidationUtils.validatePage(null)).isFalse();
+		assertThat(ValidationUtils.validatePage(List.of(99))).isFalse();
+		assertThat(ValidationUtils.validatePage(List.of(99, 100, 101))).isFalse();
+		assertThat(ValidationUtils.validatePage(List.of(99, 100, 101, 102))).isFalse();
+	}
 }

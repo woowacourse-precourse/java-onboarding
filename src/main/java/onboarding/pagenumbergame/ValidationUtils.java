@@ -19,4 +19,17 @@ public class ValidationUtils {
 		return leftNumber < rightNumber
 			&& leftNumber + 1 == rightNumber;
 	}
+
+	public static boolean validatePage(List<Integer> pageNumbers) {
+		if (pageNumbers == null || pageNumbers.size() != 2) {
+			return false;
+		}
+		return validateNumbers(pageNumbers)
+			&& validatePageOrder(pageNumbers);
+	}
+
+	private static boolean validateNumbers(List<Integer> pageNumbers) {
+		return pageNumbers.stream()
+			.allMatch(ValidationUtils::validateNumber);
+	}
 }
