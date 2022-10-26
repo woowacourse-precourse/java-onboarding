@@ -11,7 +11,10 @@ class Problem1 {
         int rightPageCrong = crong.get(1);
 
         /*예외사항 발생시 처리*/
-
+        if (validatePageNumber(leftPagePobi, rightPagePobi) || validatePageNumber(leftPageCrong, rightPageCrong)) {
+            answer = -1;
+            return answer;
+        }
 
         /*포비와 크롱의 왼쪽, 오른쪽 페이지 중에 가장 큰 값 구하기*/
 
@@ -20,6 +23,13 @@ class Problem1 {
 
 
         return answer;
+    }
+
+    public static boolean validatePageNumber(int leftPage, int rightPage) {
+        if (leftPage % 2 != 1 || rightPage % 2 != 0 || rightPage - leftPage != 1) {
+            return true;
+        }
+        return false;
     }
 
 }
