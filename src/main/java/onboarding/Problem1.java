@@ -41,4 +41,17 @@ class Problem1 {
         }
         return sum;
     }
+
+    private static boolean isValidPage(int leftPage, int rightPage){
+        if (isEven(leftPage) || !isEven(rightPage))
+            return false;
+        if (leftPage + 1 != rightPage){
+            return false;
+        }
+        return true;
+    }
+
+    private static boolean isEven(int page){
+        return page % 2 == 0;
+    }
 }
