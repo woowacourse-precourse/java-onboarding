@@ -6,7 +6,7 @@ class Problem1 {
 
     public int inputOfException (List<Integer> pobi,List<Integer> crong) {
         int input = 0;
-        if (pobi.size() == 2 && crong.size() == 2) return -1;
+        if (pobi.size() != 2 && crong.size() != 2) return -1;
         if (pobi.get(0) == 0 && crong.get(0) == 0) return -1;
         if (pobi.get(1) != pobi.get(0) + 1) return  -1;
         if (crong.get(1) != crong.get(0) + 1) return  -1;
@@ -41,16 +41,16 @@ class Problem1 {
     }
 
     public int BigNum (List<Integer> list) {
-        int myScore = Math.max(leftNum(list.get(0)),rightNum(list.get(1)));
-        return myScore;
+        return Math.max(leftNum(list.get(0)),rightNum(list.get(1)));
     }
-
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         Problem1 p1 = new Problem1();
         int answer = Integer.MAX_VALUE;
         if (p1.inputOfException(pobi, crong) == -1) return -1;
-
+        if (p1.BigNum(pobi) > p1.BigNum(crong)) answer = 1;
+        if (p1.BigNum(pobi) < p1.BigNum(crong)) answer = 2;
+        if (p1.BigNum(pobi) == p1.BigNum(crong)) answer =0 ;
         return answer;
     }
 }
