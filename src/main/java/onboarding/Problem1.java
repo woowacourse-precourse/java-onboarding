@@ -34,8 +34,35 @@ class Problem1 {
             return EXCEPTION;
         }
 
+        int maxLeftPageOfPobi = Math.max(getSumOfEachDigits(pobi.get(LEFT_PAGE)), getMulOfEachDigits(pobi.get(LEFT_PAGE)));
+        int maxRightPageOfPobi = Math.max(getSumOfEachDigits(pobi.get(LAST_PAGE)), getMulOfEachDigits(pobi.get(LAST_PAGE)));
+        int pointOfPobi = Math.max(maxLeftPageOfPobi, maxRightPageOfPobi);
+
 
         return answer;
+    }
+
+    private static int getMulOfEachDigits(int page) {
+        char[] digitsArray = getDigitsArray(page);
+        int sum = 1;
+        for (char c : digitsArray) {
+            sum *= c - '0';
+        }
+        return sum;
+    }
+
+    private static int getSumOfEachDigits(int page) {
+        char[] digitsArray = getDigitsArray(page);
+        int sum = 0;
+        for (char c : digitsArray) {
+            sum += c - '0';
+        }
+        return sum;
+    }
+
+    private static char[] getDigitsArray(int page) {
+        return String.valueOf(page).toCharArray();
+
     }
 
     public static boolean isHavingFirstPage(List<Integer> openPages) {
