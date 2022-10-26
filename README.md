@@ -5,6 +5,16 @@
 ## 🚀 기능 목록
 
 1. [문제 1](./docs/PROBLEM1.md)
+  - [ ] checkInput
+    - 인자로 들어온 배열의 길이와 원소가 유효한지 검사한다.
+  - [ ] splitDigit
+    - 자연수를 각 자리의 숫자로 나눠준다.
+  - [ ] addNumbers
+    - 배열 안의 모든 자연수를 더해준다.
+  - [ ] multiplyNumbers
+    - 배열 안의 모든 자연수를 곱해준다.
+  - [ ] getBiggerNumber
+    - 두 숫자 중 큰 숫자를 알려준다.
 2. [문제 2](./docs/PROBLEM2.md)
 3. [문제 3](./docs/PROBLEM3.md)
 4. [문제 4](./docs/PROBLEM4.md)
