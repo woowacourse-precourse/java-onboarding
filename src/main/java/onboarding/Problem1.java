@@ -11,6 +11,9 @@ class Problem1 {
             return -1;
         }
 
+        int pobiScore = getScore(pobi);
+        int crongScore = getScore(crong);
+
         int answer = Integer.MAX_VALUE;
         return answer;
     }
@@ -78,5 +81,21 @@ class Problem1 {
             return result * page;
         }
         return getMultipleOfEachDigit(page / 10, result * (page % 10));
+    }
+
+    /**
+     * 본인의 점수를 구하는 기능
+     */
+    public static int getScore(List<Integer> pages) {
+        int leftScore = getScoreOfEachPage(pages.get(LEFT));
+        int rightScore = getScoreOfEachPage(pages.get(RIGHT));
+
+        return Math.max(leftScore, rightScore);
+    }
+    private static int getScoreOfEachPage(Integer page) {
+        int sumOfEachDigit = getSumOfEachDigit(page, 0);
+        int multipleOfEachDigit = getMultipleOfEachDigit(page, 1);
+
+        return Math.max(sumOfEachDigit, multipleOfEachDigit);
     }
 }
