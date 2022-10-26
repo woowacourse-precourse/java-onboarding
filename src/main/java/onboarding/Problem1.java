@@ -12,10 +12,14 @@ class Problem1 {
             return -1;
         }
 
-        int podiResult = calculateMaxValue(pobi);
+        return findWinner(calculateMaxValue(pobi), calculateMaxValue(crong));
+    }
 
-        int answer = Integer.MAX_VALUE;
-        return answer;
+    private static int findWinner(int pobi, int crong) {
+
+        if(pobi > crong) return 1;
+        if(pobi < crong) return 2;
+        return 0;
     }
 
     private static int calculateMaxValue(List<Integer> values) {
@@ -52,9 +56,6 @@ class Problem1 {
         }
 
         return sumValue;
-    }
-
-    private static void checkValueIsZero(Integer value) {
     }
 
     private static boolean isWrongPages(List<Integer> pobi, List<Integer> crong) {
