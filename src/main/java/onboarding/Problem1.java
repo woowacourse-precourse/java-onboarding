@@ -26,4 +26,9 @@ class Problem1 {
     	}
     	return res;
     }
+    
+    int selectNum(List<Integer> arr) {
+    	return Math.max(Math.max(digSum(arr.get(0)),digMul(arr.get(0))),Math.max(digSum(arr.get(1)),digMul(arr.get(1))));
+    }
+    
 }
