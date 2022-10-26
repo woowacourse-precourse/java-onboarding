@@ -20,6 +20,17 @@ class Problem1 {
         }
         return excepted;
     }
+
+    public static int maxValueOfPage(int page) {
+        String toString = String.valueOf(page);
+        int add = 0;
+        int multi = 1;
+        for(int i=0; i<toString.length(); i++) {
+            add += Character.getNumericValue(toString.charAt(i));
+            multi *= Character.getNumericValue(toString.charAt(i));
+        }
+        return Math.max(add, multi);
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
