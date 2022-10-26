@@ -23,10 +23,16 @@ class Problem1 {
         private static final int PAGE_GAP = 1;
         private final int leftPage;
         private final int rightPage;
+        public final int score;
 
         public Player(List<Integer> pages) {
             this.leftPage = pages.get(LEFT_PAGE_INDEX);
             this.rightPage = pages.get(RIGHT_PAGE_INDEX);
+            if (arePagesExist() && arePagesLinked()) {
+                this.score = Math.max(getPageMaxScore(leftPage), getPageMaxScore(rightPage));
+            } else {
+                throw new IllegalArgumentException();
+            }
         }
 
         private boolean arePagesExist() {
@@ -35,6 +41,18 @@ class Problem1 {
 
         private boolean arePagesLinked() {
             return (rightPage % 2 == 0 && rightPage - leftPage == PAGE_GAP);
+        }
+
+        private int getPageMaxScore(int page) {
+            int pageSum = 0;
+            int pageMultiply = 1;
+            while(page != 0) {
+                int currentNumber = page % 10;
+                pageSum += currentNumber;
+                pageMultiply *= currentNumber;
+                page /= 10;
+            }
+            return Math.max(pageSum, pageMultiply);
         }
     }
 }
