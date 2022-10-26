@@ -50,8 +50,8 @@ class ApplicationTest {
 
         @Test
         void multiTest() {
-            List<Integer> numbers = List.of(3,6,9);
-            int result = 3*6*9;
+            List<Integer> numbers = List.of(0,0,1);
+            int result = 1;
             assertThat(Problem1.getMulti(numbers)).isEqualTo(result);
         }
 
@@ -60,6 +60,16 @@ class ApplicationTest {
             List<Integer> numbers = List.of(103,964,323,92);
             int result = 964;
             assertThat(Problem1.getMax(numbers)).isEqualTo(result);
+        }
+
+        @Test
+        void normalTest() {
+            List<Integer> numbers1 = List.of(102, 103);
+            List<Integer> numbers2 = List.of(173, 174);
+            List<Integer> numbers3 = List.of(173, 175);
+            assertThat(Problem1.isNormal(numbers1)).isEqualTo(false);
+            assertThat(Problem1.isNormal(numbers2)).isEqualTo(true);
+            assertThat(Problem1.isNormal(numbers3)).isEqualTo(false);
         }
     }
 

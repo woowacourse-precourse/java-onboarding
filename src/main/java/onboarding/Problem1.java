@@ -8,6 +8,7 @@ import java.util.List;
 *   2. 각 자릿수를 더하는 기능
 *   3. 각 자릿수를 곱하는 기능
 *   4. 최대값 탐색 기능
+*   5. 예외사항 탐색 기능
 */
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -36,12 +37,20 @@ class Problem1 {
     public static int getMulti(List<Integer> numbers) {
         int result = 1;
         if(numbers.get(0) == 0) {
-            if(numbers.get(1) == 0){
+            if(numbers.get(1) == 0){        // 백의자리 0 && 십의자리 0
                 result = numbers.get(2);
-            } else {
+            } else {                        // 백의자리만 0
                 result *= numbers.get(1) * numbers.get(2);
             }
-        } else {
+        }
+        else if(numbers.get(1) == 0) {
+            if(numbers.get(2) == 0){        // 십의자리 0 && 일의자리 0
+                result = numbers.get(0);
+            } else {                        // 십의자리만 0
+                result *= numbers.get(0) * numbers.get(2);
+            }
+        }
+        else {                              // 0 없음
             result *= numbers.get(0) * numbers.get(1) * numbers.get(2);
         }
 
@@ -57,5 +66,10 @@ class Problem1 {
         }
 
         return max;
+    }
+
+    public static boolean isNormal(List<Integer> list) {
+        int diff = list.get(1) - list.get(0);
+        return diff == 1 && list.get(0) % 2 == 1;
     }
 }
