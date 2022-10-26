@@ -19,6 +19,24 @@ public class Problem3 {
         return answer;
     }
 
+    public static int countClap (int number) {
+        int numOfClaps = 0;
+        int exp = 0;
+
+        while( number > 0 ) {
+            numOfClaps += countClapUsingExp10(exp, number % TEN);
+            number /= TEN;
+            exp++;
+        }
+
+        return numOfClaps;
+    }
+
+    public static int countClapUsingExp10 (int exp, int k) {
+        int expValue = (int) Math.pow(TEN, exp);
+        return ( count[exp] * k ) + ( expValue * (k / 3) );
+    }
+
     public static void getCountArray() {
         initCountArray();
         getClapCountOfExp10(MAX_EXP);
