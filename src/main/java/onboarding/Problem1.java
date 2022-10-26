@@ -6,6 +6,19 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        int pobiScore = 0;
+        int crongScore = 0;
+
+
+        if (checkValidator(pobi, crong)) {
+            pobiScore = getMaxScorePages(pobi);
+            crongScore = getMaxScorePages(crong);
+
+            answer = getProblemAnswer(pobiScore, crongScore);
+        } else {
+            answer = -1;
+        }
+
         return answer;
     }
 
