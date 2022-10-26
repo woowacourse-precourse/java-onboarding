@@ -3,15 +3,15 @@ package onboarding;
 import java.util.ArrayList;
 
 class validationSamethings{
-    public static boolean validation(ArrayList<String> list){
+    public static int validation(ArrayList<String> list){
         String pivot;
         for(int i=0;i<list.size()-1;i++){
             pivot=list.get(i);
             if(pivot.equals(list.get(i+1))){
-                return false;
+                return i;
             }
         }
-        return true;
+        return -1;
     }
 }
 
