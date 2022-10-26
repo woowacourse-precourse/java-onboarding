@@ -60,10 +60,10 @@ class Problem1 {
         return Math.max(addScore, multiplyScore);
     }
 
-    private static int calculatePlayerScore(Integer leftPageNumber, Integer rightPageNumber) {
-        int leftPageScore = calculatePageScore(leftPageNumber);
-        int rightPageScore = calculatePageScore(rightPageNumber);
+    private static int calculatePlayerScore(List<Integer> player) {
+        int leftPageScore = calculatePageScore(player.get(0));
+        int rightPageScore = calculatePageScore(player.get(1));
 
-        return Math.max(leftPageNumber, rightPageNumber);
+        return Math.max(leftPageScore, rightPageScore);
     }
 }
