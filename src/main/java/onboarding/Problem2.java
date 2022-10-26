@@ -30,7 +30,7 @@ public class Problem2 {
             }
         }
 
-
+        answer = stack.stream().map(String::valueOf).collect(Collectors.joining());
         return answer;
     }
 }
