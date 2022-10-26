@@ -25,5 +25,7 @@ public class Problem4 {
         return answer;
     }
     
-    
+    public static Character toRevertUpperCase(Character character) {
+        return UPPERCASE_LETTERS.get(character - 'A');
+    }
 }
