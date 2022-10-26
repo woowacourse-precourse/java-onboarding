@@ -16,6 +16,17 @@ public class BookGame {
         this.player2 = player2;
     }
 
+    private int makeScore(List<Integer> playerPages){
+        int leftScore = makeSinglePageScore(playerPages.get(0));
+        int rightScore = makeSinglePageScore(playerPages.get(1));
+        return max(leftScore, rightScore);
+    }
+
+    private int makeSinglePageScore(int pageNum){
+        int sumScore = sumEachDigit(pageNum);
+        int mulScore = multiplyEachDigit(pageNum);
+        return max(sumScore, mulScore);
+    }
 
     private int sumEachDigit(int num){
         int sum = 0;
