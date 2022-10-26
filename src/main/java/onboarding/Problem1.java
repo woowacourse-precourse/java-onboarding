@@ -11,16 +11,16 @@ import onboarding.feature1.PageValidator;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        Pages pageOfPobi = new Pages(pobi);
-        Pages pageOfCrong = new Pages(crong);
+        Pages pagesOfPobi = new Pages(pobi);
+        Pages pagesOfCrong = new Pages(crong);
 
-        if (!PageValidator.isValid(pageOfPobi) || !PageValidator.isValid((pageOfCrong))) {
+        if (!PageValidator.isValid(pagesOfPobi) || !PageValidator.isValid((pagesOfCrong))) {
             return RAISE_EXCEPTION;
         }
 
-        Integer pobiMaximum = MaximumCalculator.getMaximum(pageOfPobi);
-        Integer crongMaximum = MaximumCalculator.getMaximum(pageOfCrong);
+        Integer pobiMaximum = MaximumCalculator.getMaximum(pagesOfPobi);
+        Integer crongMaximum = MaximumCalculator.getMaximum(pagesOfCrong);
 
-        return CompareMaximums.WhoIsOwner(pobiMaximum, crongMaximum);
+        return CompareMaximums.chooseOwner(pobiMaximum, crongMaximum);
     }
 }
