@@ -43,7 +43,7 @@ class Problem1 {
 
 
     static int chooseMultiSum(int page){
-        int len = page+"".length();
+        int len = String.valueOf(page).length();
         int sum = 0;
         int multi = 1;
 
