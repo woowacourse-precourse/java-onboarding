@@ -7,6 +7,12 @@ import java.util.List;
 public class Problem2 {
 
     public static String solution(String cryptogram) {
+
+        boolean language = validation(cryptogram);
+        if (!language) {
+            return "";
+        }
+
         String result = "";
         boolean check = true;
         // 문자열을 리스트로 변환
@@ -35,5 +41,12 @@ public class Problem2 {
         // 리스트를 문자열로 변환
         result = String.join("", values);
         return result;
+    }
+    private static boolean validation(String text) {
+        // 길이가 1미만, 1000 초과
+        if(text.length() < 1 || text.length() > 1000) {
+            return false;
+        }
+        return true;
     }
 }
