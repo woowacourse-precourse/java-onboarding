@@ -21,4 +21,13 @@ class Problem1 {
 
         return ((rightPage - leftPage) == 1);
     }
+
+    private static int sum(int num){
+        int value = 0;
+        char[] chars = String.valueOf(num).toCharArray();
+        for(int i=0; i<chars.length; i++){
+            value += (chars[i]-'0');
+        }
+        return value;
+    }
 }
