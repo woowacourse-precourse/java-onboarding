@@ -2,8 +2,11 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
-        return answer;
+        if (validationCheck(number)) {
+            int result = count369All(number);
+            return result;
+        }
+        return -1;
     }
     public static boolean validationCheck(int number) {
         if (number < 1 || number > 10000) {
@@ -15,7 +18,7 @@ public class Problem3 {
         String stringNumber = Integer.toString(number);
         int result = 0;
         for (int i = 0; i < stringNumber.length(); i++) {
-            if ((stringNumber.charAt(i) - '0') % 3 == 0 || stringNumber.charAt(i) != '0') {
+            if ((stringNumber.charAt(i) - '0') % 3 == 0 && stringNumber.charAt(i) != '0') {
                 result += 1;
             }
         }
