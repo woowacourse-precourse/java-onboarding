@@ -12,6 +12,8 @@ class Problem1 {
             return -1;
         }
 
+        answer = findWinner(getMax(pobi), getMax(crong));
+
         return answer;
     }
 
@@ -62,6 +64,17 @@ class Problem1 {
         }
 
         return score;
+    }
+
+    // 두 사람의 점수를 비교해 승자 찾기 함수
+    static int findWinner(int pobi, int crong) {
+        if (pobi > crong) {
+            return 1;
+        } else if (pobi < crong) {
+            return 2;
+        } else {
+            return 0;
+        }
     }
 
 }
