@@ -13,7 +13,18 @@ class Problem1 {
         int pobiMax = Math.max(pobiLeftMax, pobiRightMax);
         int crongMax = Math.max(crongLeftMax, crongRightMax);
 
-        return -1;
+        return getWinner(pobiMax, crongMax);
+    }
+
+    private static int getWinner(int pobiMax, int crongMax) {
+        if (pobiMax > crongMax) {
+            return 1;
+        }
+        if (pobiMax < crongMax) {
+            return 2;
+        }
+
+        return 0;
     }
 
     private static int getMaxValue(int page) {
