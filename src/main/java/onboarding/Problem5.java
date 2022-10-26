@@ -3,12 +3,13 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
 
-
+        answer = List.copyOf(convertMoney(money));
 
         return answer;
     }
@@ -29,7 +30,5 @@ public class Problem5 {
 
         return wallet;
     }
-    /**
-     * 기능 2 변환된 리스트를 answer 리스트에 복사하는 기능
-     */
+
 }
