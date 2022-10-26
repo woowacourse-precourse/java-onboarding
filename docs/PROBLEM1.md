@@ -26,17 +26,17 @@
 
 ## 기능 구현에 필요한 사항
 
-# 1. 잘못된 입력에 대한 예외처리
+### 1. 잘못된 입력에 대한 예외처리
 - [ ] 왼쪽 페이지가 짝수
 - [ ] 오른쪽 페이지가 홀수
 - [ ] 두 페이지 간의 차이가 1이 아닌 경우
 - [ ] 시작면, 혹은 마지막 면을 펼쳤을 경우
 - [ ] checkInvalidInput(List\<Integer\> list)
-# 2. 왼쪽 혹은 오른쪽 페이지 번호에 대한 합 연산
+### 2. 왼쪽 혹은 오른쪽 페이지 번호에 대한 합 연산
 - [ ] addEachDigitOfPage(int num)
-# 3. 왼쪽 혹은 오른쪽 페이지 번호에 대한 곱 연산
+### 3. 왼쪽 혹은 오른쪽 페이지 번호에 대한 곱 연산
 - [ ] multiplyEachDigitOfPage(int num)
-# 4. 가장 큰 수를 결정하는 메서드
+### 4. 가장 큰 수를 결정하는 메서드
 - [ ] calculateMax(int num1, int num2)
-# 5. 승자를 결정하는 메서드
+### 5. 승자를 결정하는 메서드
 - [ ] getResult(int pobiNum, int crongNum)
