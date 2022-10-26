@@ -22,6 +22,17 @@ class Problem1 {
             return answer;
         }
 
+        pobimax = pipeline(pobi);
+        crongmax = pipeline(crong);
+
+        if(pobimax == crongmax){
+            answer = 0;
+        } else if (pobimax > crongmax) {
+            answer = 1;
+        } else if (pobimax < crongmax) {
+            answer = 2;
+        }
+
         return answer;
     }
 
