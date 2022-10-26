@@ -19,4 +19,10 @@ class Problem1 {
                 || (left <= 1)
                 || (right >= 400);
     }
+
+    private static int sum(int n) {
+        if (n < 10)
+            return n;
+        return n % 10 + sum(n / 10);
+    }
 }
