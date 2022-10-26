@@ -8,10 +8,13 @@ import java.util.regex.Pattern;
 public class Problem6 {
     static int email = 0;
     static int name = 1;
+    static int min = 1;
+    static int max = 10000;
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
 
+        exceptionCheck(forms);
         answer = findEmail(userCheck(savaUser(forms)), forms);
 
         return answer;
@@ -96,11 +99,23 @@ public class Problem6 {
     //닉네임 형식에 부합하는지 체크
     public static boolean nicknameCheck(String name)
     {
-
         if (name.length() >= 1 && name.length() < 20)
             return true;
         if (Pattern.matches("^[가-힣]*$", name))
             return true;
         return false;
+    }
+
+    public static void exceptionCheck(List<List<String>> forms)
+    {
+        if (!(forms.size() >= min && forms.size() <= max))
+            throw new IllegalArgumentException("크루 범위를 초과했습니다");
+        for (int i = 0; i < forms.size(); i++)
+        {
+            if (!(emailCheck(forms.get(i).get(email))))
+                throw new IllegalArgumentException("이메일 형식에 맞지 않습니다.");
+            if (!(nicknameCheck(forms.get(i).get(name))))
+                throw new IllegalArgumentException("닉네임 형식에 맞지 않습니다");
+        }
     }
 }

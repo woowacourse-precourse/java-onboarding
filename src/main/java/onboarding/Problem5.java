@@ -13,7 +13,6 @@ public class Problem5 {
         answer = Arrays.asList(divisionMoney(digit(money)));
         Collections.reverse(answer);
 
-        ///System.out.println(divisionMoney(digit(money)));
         return answer;
     }
 
