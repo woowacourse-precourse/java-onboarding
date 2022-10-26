@@ -10,8 +10,19 @@ class Problem1 {
         if(!isLegalPages(pobi) || !isLegalPages(crong)) {
             return -1;
         }
-        int answer = Integer.MAX_VALUE;
-        return answer;
+
+        int pobiScore = getPageMaxScore(pobi);
+        int crongScore = getPageMaxScore(crong);
+
+        if(pobiScore > crongScore) {
+            return 1;
+        }
+
+        if(crongScore > pobiScore) {
+            return 2;
+        }
+
+        return 0;
     }
 
     private static boolean isLegalPages(List<Integer> pages) {
