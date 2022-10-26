@@ -9,6 +9,10 @@ public class PageChecker {
 
     private final int SIZE;
 
+    /**
+     * Constructor with size
+     * @param size max page of book
+     */
     public PageChecker(int size) {
         SIZE = size;
     }
