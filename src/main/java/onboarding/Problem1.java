@@ -17,6 +17,16 @@ class Problem1 {
         return answer;
     }
 
+    private static int getSum(int page) {
+        int result = 0;
+        while(page > 0) {
+            result += (page % 10);
+            page /= 10;
+        }
+
+        return result;
+    }
+
     private static void validate(List<Integer> pages) {
         if (pages.size() != 2) {
             throw new IllegalStateException("페이지는 총 2쪽이어야 합니다. 현재 페이지 수 : " + pages.size());
