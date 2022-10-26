@@ -15,6 +15,10 @@ public class Problem2 {
 
         String result = "";
 
+        while (!stack.isEmpty()) {
+            result = stack.pop() + result;
+        }
+
         return result;
     }
 }
