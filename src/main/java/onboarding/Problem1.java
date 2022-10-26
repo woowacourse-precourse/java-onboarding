@@ -14,6 +14,12 @@ class Problem1 {
     }
 
     private static int calcalateMax(List<Integer> list) {
+        int left= list.get(0);
+        int right= list.get(1);
+        int sumMax= Math.max(numSum(left),numSum(right));
+        int multiMax = Math.max(numMulti(left),numMulti(right));
+        int max = Math.max(sumMax, multiMax);
+        return max;
     }
     private static int numSum(int i){
 
