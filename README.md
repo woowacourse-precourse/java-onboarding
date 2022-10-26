@@ -10,11 +10,11 @@
   - [x] 가장 큰 곱하기 숫자 구하기
 
 - [x] 각 플레이어의 가장 큰 수 구하기
-- [ ] 결과 구하기
-  - [ ] pobi win : 1
-  - [ ] crong win : 2
-  - [ ] draw : 0
-  - [ ] exception : -1
+- [x] 결과 구하기
+  - [x] pobi win : 1
+  - [x] crong win : 2
+  - [x] draw : 0
+  - [x] exception : -1
 
 - [ ] 예외 처리
   - [ ] 왼쪽 홀수, 오른쪽 짝수가 아닌 경우
