@@ -30,4 +30,16 @@ class Problem1 {
         return false;
     }
 
+    private static int seperateOneNumber(int pageNumberToInt) {
+        int plusSum = 0;
+        int multiplySum = 1;
+
+        while (pageNumberToInt != 0) {
+            pageNumberToInt %= 10;
+            plusSum += pageNumberToInt;
+            multiplySum *= pageNumberToInt;
+            pageNumberToInt /= 10;
+        }
+        return (plusSum >= multiplySum) ? plusSum : multiplySum;
+    }
 }
