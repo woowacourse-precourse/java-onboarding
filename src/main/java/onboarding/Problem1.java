@@ -14,7 +14,22 @@ class Problem1 {
     static final int DRAW = 0;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int answer = Integer.MIN_VALUE;
+
+        // 첫 페이지 혹은 끝 페이지 포함하는지 확인
+        if (isHavingFirstPage(pobi) || isHavingLastPage(pobi)
+                || isHavingFirstPage(crong) || isHavingLastPage(crong)) {
+            return EXCEPTION;
+        }
+
         return answer;
+    }
+
+    public static boolean isHavingFirstPage(List<Integer> openPages) {
+        return openPages.contains(FIRST_PAGE);
+    }
+
+    public static boolean isHavingLastPage(List<Integer> openPages) {
+        return openPages.contains(LAST_PAGE);
     }
 }
