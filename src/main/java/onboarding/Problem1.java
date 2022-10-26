@@ -12,8 +12,38 @@ class Problem1 {
         if (!isPossiblePage(pobi, crong)) {
             return -1;
         }
+        int pobiNumber = calculateMaxNumber(pobi);
+        int crongNumber = calculateMaxNumber(crong);
 
         return answer;
+    }
+
+    private static int calculateMaxNumber(List<Integer> pageList) {
+        int leftPageMaxNumber = sumOrMultiplyEachDigit(pageList.get(0));
+        int rightPageMaxNumber = sumOrMultiplyEachDigit(pageList.get(1));
+        return Math.max(leftPageMaxNumber, rightPageMaxNumber);
+    }
+
+    private static int sumOrMultiplyEachDigit(int page) {
+        return Math.max(multiplyEachDigit(page), sumEachDigit(page));
+    }
+
+    private static int multiplyEachDigit(int page) {
+        String number = String.valueOf(page);
+        int total = 1; // 곱이기 때문에 0이 아닌 1로 설정
+        for (int i=0; i<number.length(); i++) {
+            total *= number.charAt(i) - '0';
+        }
+        return total;
+    }
+
+    private static int sumEachDigit(int page) {
+        String number = String.valueOf(page);
+        int total = 0;
+        for (int i=0; i<number.length(); i++) {
+            total += number.charAt(i) - '0';
+        }
+        return total;
     }
 
     private static boolean isPossiblePage(List<Integer> pobi, List<Integer> crong) {
