@@ -36,9 +36,24 @@ class Problem1 {
              }
          }
     }
+    public static class Digit{
 
-
-    public class InvalidInputException extends Throwable {
+        public static int addAll(String number){
+            int result=0;
+            for(int i=0;i<number.length();i++){
+                result+=Character.getNumericValue(number.charAt(i));
+            }
+            return result;
+        }
+        public static int multiplyAll(String number){
+            int result=Character.getNumericValue(number.charAt(0));
+            for(int i=1;i<number.length();i++){
+                result*=Character.getNumericValue(number.charAt(i));
+            }
+            return result;
+        }
+    }
+    public static class InvalidInputException extends Throwable {
     }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
@@ -52,8 +67,24 @@ class Problem1 {
         }
 
         //TODO : pobi, crong 점수 계산하기
-        //TODO : 승부 결과 판단 및 리턴(answer)
+        int pobiScore=Integer.MIN_VALUE;
+        int crongScore=Integer.MIN_VALUE;
+        for(int i=0;i<2;i++){
+            String pobiPage=Integer.toString(pobi.get(i));
+            pobiScore=Math.max(Math.max(Digit.addAll(pobiPage),Digit.multiplyAll(pobiPage)),pobiScore);
 
+            String crongPage=Integer.toString(crong.get(i));
+            crongScore=Math.max(Math.max(Digit.addAll(crongPage),Digit.multiplyAll(crongPage)),crongScore);
+        }
+
+        //TODO : 승부 결과 판단 및 리턴(answer)
+        if(pobiScore>crongScore){
+            answer=1;
+        }else if(pobiScore<crongScore){
+            answer=2;
+        }else{
+            answer=0;
+        }
         return answer;
     }
 }
