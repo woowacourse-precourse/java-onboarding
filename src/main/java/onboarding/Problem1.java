@@ -31,4 +31,11 @@ class Problem1 {
         return result;
     }
 
+    public int compareMultiplyAndAdd(int pages){
+        int addResult = calculatorAdd(pages);
+        int multiplyResult = calculatorMultiply(pages);
+
+        return Math.max(addResult, multiplyResult);
+    }
+
 }
