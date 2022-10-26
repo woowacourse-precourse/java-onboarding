@@ -18,19 +18,27 @@ class Problem1 {
         //왼쪽 페이지
         //자리수 합 점수
         Integer pobiLeftSumScore = PageSumScore(pobi.get(0));
+        //자리수 곱 점수
+        Integer pobiLeftProScore = PageProScore(pobi.get(0));
 
         //우측 페이지 체크
         //자리수 합 점수
         Integer pobiRightSumScore = PageSumScore(pobi.get(1));
+        //자리수 곱 점수
+        Integer pobiRightProScore = PageProScore(pobi.get(1));
 
         //크롱
         //왼쪽 페이지
         //자리수 합 점수
         Integer crongLeftSumScore = PageSumScore(crong.get(0));
+        //자리수 곱 점수
+        Integer crongLeftProScore = PageProScore(crong.get(0));
 
         //우측 페이지 체크
         //자리수 합 점수
         Integer crongRightSumScore = PageSumScore(crong.get(1));
+        //자리수 곱 점수
+        Integer crongRightProScore = PageProScore(crong.get(1));
 
         return answer;
     }
@@ -52,5 +60,13 @@ class Problem1 {
         return sum;
     }
 
-
+    public static Integer PageProScore(Integer score) {
+        //페이지 체크
+        int pro = 1;
+        String Page = score.toString();
+        for(int i = 0; i < Page.length(); i++){
+            pro *= Integer.parseInt(Page.substring(i, i+1));
+        }
+        return pro;
+    }
 }
