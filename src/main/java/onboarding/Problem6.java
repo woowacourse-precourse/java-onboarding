@@ -1,12 +1,11 @@
 package onboarding;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
+        Set<String> emails = new HashSet<>();
         Map<String, String> map = new HashMap<>();
         
         for (List<String> form : forms) {
@@ -15,6 +14,11 @@ public class Problem6 {
             final String email = form.get(0);
             
             for (int index = 0; index < crewName.length() - 1; index++) {
+                if (map.containsKey(crewName)) {
+                    emails.add(email);
+                    emails.add(map.get(crewName));
+                }
+                
                 tmp.put(crewName.substring(index, index + 2), email);
             }
             
