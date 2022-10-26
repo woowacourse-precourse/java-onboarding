@@ -28,6 +28,7 @@ public class Problem2 {
                 Character c2 = sLst.get(i);
                 if(c11 != c2) {
                     st.push(String.valueOf(sLst.get(i)));
+                    /** 클린코드 - 코드 한 줄에 점 하나만 허용 했는가?*/
                 }
                 else {
                     st.pop();
