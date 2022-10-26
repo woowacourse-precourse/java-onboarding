@@ -50,6 +50,13 @@ class Problem1 {
         int pobiMaxNum = Math.max(pageFindMaxNum(pobi.get(0)), pageFindMaxNum(pobi.get(1)));
         int crongMaxNum = Math.max(pageFindMaxNum(crong.get(0)), pageFindMaxNum(crong.get(1)));
 
+        if (pobiMaxNum > crongMaxNum) {
+            answer = 1;
+        } else if (pobiMaxNum < crongMaxNum) {
+            answer = 2;
+        } else {
+            answer = 0;
+        }
         return answer;
     }
 }
