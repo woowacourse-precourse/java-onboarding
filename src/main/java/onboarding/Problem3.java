@@ -14,7 +14,7 @@ public class Problem3 {
         String routine = "";
 
         routine = numberSequenceToString(number);
-        // answer = getClapCount(routine);
+        answer = getClapCount(routine);
 
         return answer;
     }
@@ -28,8 +28,12 @@ public class Problem3 {
         return sb.toString();
     }
 
+    // 기능 2
+    public static int getClapCount(String routine) {
+        return count(routine, '3') + count(routine, '6') + count(routine, '9');
+    }
+
     public static int count (String str, char ch) {
         return str.length() - str.replace(String.valueOf(ch), "").length();
     }
-
 }
