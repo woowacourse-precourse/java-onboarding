@@ -34,4 +34,17 @@ class Problem1 {
         return answer;
     }
 
+    /**
+     *모든 자릿수를 곱하는 함수
+     */
+    private static int mul_all(int num){
+
+        int answer = 1;
+
+        for(int i=num ; num>0 ; num=num/10)
+            answer *= num%10;
+
+        return answer;
+    }
+
 }
