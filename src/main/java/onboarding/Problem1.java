@@ -64,4 +64,13 @@ class Problem1 {
       return true;
     }
   }
+
+  public static boolean isContinuousPage(List<Integer> pageList) throws IllegalStateException {
+    if (pageList.get(1) - pageList.get(0) != 1) {
+      throw new IllegalStateException("연속되는 페이지를 펴주세요.");
+    } else {
+      return true;
+    }
+  }
+
 }
