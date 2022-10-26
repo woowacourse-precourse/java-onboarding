@@ -11,9 +11,9 @@ class Problem1 {
      * @param 두 개의 페이지 배열입니다.
      * @return 두 페이지 배열이 모두 유효하면 참, 아니면 거짓을 반환합니다.
      * */
-    private static boolean isValidInput(List[] pagesList) {
+    private static boolean isValidInput(List[] pageNumbers) {
 
-        for(List<Integer> pages: pagesList) {
+        for(List<Integer> pages: pageNumbers) {
             boolean valid =
                 hasTwoElements(pages) &&
                 hasValidNumbers(pages);
@@ -62,17 +62,17 @@ class Problem1 {
      * @param 두 개의 페이지 배열입니다.
      * @return 자연수 배열이 포함된 배열을 반환합니다.
      * */
-    private static List<List> convertPageToSplitNumber(List[] pagesList) {
-        List<List> splitNumberLists = new ArrayList<>();
-        for (List<Integer> pages: pagesList) {
-            List<List> splitNumberList = new ArrayList<>();
-            for (int pageNumber: pages) {
-                List<Integer> splitNumber = splitByDigit(pageNumber);
-                splitNumberList.add(splitNumber);
+    private static List<List> convertPageToSplitNumbers(List[] pageNumbers) {
+        List<List> splitPageNumbers = new ArrayList<>();
+        for (List<Integer> pages: pageNumbers) {
+            List<List> splitPages = new ArrayList<>();
+            for (int number: pages) {
+                List<Integer> splitNumber = splitByDigit(number);
+                splitPages.add(splitNumber);
             }
-            splitNumberLists.add(splitNumberList);
+            splitPageNumbers.add(splitPages);
         }
-        return splitNumberLists;
+        return splitPageNumbers;
     }
 
     /*
@@ -81,30 +81,22 @@ class Problem1 {
      * @param 자연수
      * @return 자연수를 자릿수별로 떼어낸 정수 배열
      * */
-    private static List<Integer> splitByDigit(int pageNumber) {
+    private static List<Integer> splitByDigit(int number) {
         List<Integer> splitNumber = new ArrayList<>();
-        while (pageNumber > 0) {
-            splitNumber.add(pageNumber % 10);
-            pageNumber /= 10;
+        while (number > 0) {
+            splitNumber.add(number % 10);
+            number /= 10;
         }
         return splitNumber;
     }
 
-    /*
-     * Problem1의 솔루션 코드입니다.
-     *
-     * @param 포비와 크롱의 페이지 배열입니다.
-     * @return 포비가 이기면 1, 크롱이 이기면 2, 무승부면 0, 인자값이 잘못되었다면 -1을 반환합니다.
-     * */
-
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        List[] pagesList = {pobi, crong};
-        if (isValidInput(pagesList) == false) {
+        List[] pageNumbers = {pobi, crong};
+        if (isValidInput(pageNumbers) == false) {
             return -1;
         };
 
-        List<List> splitNumberLists = convertPageToSplitNumber(pagesList);
-        System.out.println(splitNumberLists);
+        List<List> splitPageNumbers = convertPageToSplitNumbers(pageNumbers);
 
         return 0;
     }
