@@ -16,6 +16,14 @@ public class Problem2 {
         }
         return null;
     }
+
+    // 반복되는 문자를 제거하는 함수
+    private static String removeRepetition(String cryptogram, int index) {
+        String first = cryptogram.substring(0, index);
+        String second = cryptogram.substring(index+2);
+        return first + second;
+    }
+
     public static String solution(String cryptogram) {
         String answer = "answer";
         return answer;
