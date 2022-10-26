@@ -16,7 +16,7 @@ public class Problem4 {
         StringBuilder changeWord = new StringBuilder();
         for (int i = 0; i < word.length(); i++) {
             char current = word.charAt(i);
-            if (current == ' ') {
+            if (treeFrogMap.get(current) == null) {
                 changeWord.append(current);
                 continue;
             }
