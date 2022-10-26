@@ -3,6 +3,12 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+    public static int addAllNumbers(int page){
+        return String.valueOf(page).chars()
+                .map(Character::getNumericValue)
+                .sum();
+    }
+
     public static boolean validPages(List<Integer> pages){
         int left = pages.get(0);
         int right = pages.get(0);
