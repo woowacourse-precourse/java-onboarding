@@ -23,4 +23,40 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+
+    private static boolean checkValidatePairOfPage (List<Integer> pages) {
+        // 1. 페이지 유효 범위는 3이상 398 이하
+        if (!checkRangeOfPages(pages)) {
+            return false;
+        }
+
+        // 2. 두 페이지간 차이가 1
+        if (pages.get(1) - pages.get(0) != 1) {
+            return false;
+        }
+
+        // 3. 앞쪽 페이지는 홀수, 뒤쪽 페이지는 짝수
+        if (!isOdd(pages.get(0))) {
+            return false;
+        }
+
+        return true;
+    }
+
+    private static boolean checkRangeOfPages (List<Integer> pages) {
+        for (int page : pages) {
+            if (!checkRange(page)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static boolean checkRange(int pageNum) {
+        return pageNum >= 3 && pageNum <= 398;
+    }
+
+    private static boolean isOdd (int num) {
+        return num % 2 == 1;
+    }
 }
