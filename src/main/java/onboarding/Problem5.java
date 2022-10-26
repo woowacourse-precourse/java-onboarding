@@ -15,12 +15,20 @@ public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> answer = new ArrayList<>();
     
+        addNumberOfMonetaryUnits(money, answer);
+    
+        return answer;
+    }
+    
+    private static void addNumberOfMonetaryUnits(int money, final List<Integer> answer) {
         for (Integer monetaryUnit : UNITS_OF_MONEY) {
             answer.add(numberOfCurrency(money, monetaryUnit));
-            money %= monetaryUnit;
+            money = returnSmallChange(money, monetaryUnit);
         }
-        
-        return answer;
+    }
+    
+    private static int returnSmallChange(int money, final Integer monetaryUnit) {
+        return money % monetaryUnit;
     }
     
     private static int numberOfCurrency(final int currentTotalMoney, final int monetaryUnit) {
