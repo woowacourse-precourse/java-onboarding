@@ -6,13 +6,13 @@ public class Problem2 {
         return answer;
     }
 
-    private static int getContinuousIndex(String text) {
+    private static boolean hasDuplicateCharacters(String text) {
         for (int i = 0; i < text.length() - 1; i++) {
             if (text.charAt(i) == text.charAt(i + 1)) {
-                return i;
+                return true;
             }
         }
-        return -1;
+        return false;
     }
 
     private static String deleteDuplicateCharacters(String text) {
