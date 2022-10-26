@@ -56,10 +56,12 @@ class Problem1 {
 			answer = 1;
 		} else if (bigPageResult(pobi) == bigPageResult(crong)) {
 			answer = 0;
-		} else if (bigPageResult(pobi) < bigPageResult(crong) {
+		} else if (bigPageResult(pobi) < bigPageResult(crong)) {
+			answer = 2;
+		}
+		if (!exception(pobi) || !exception(crong)) {
 			answer = -1;
 		}
-
 		return answer;
 	}
 }
