@@ -50,6 +50,24 @@ class Problem1 {
         return answer;
     }
 
+    /**
+     * 펼쳐진 두 페이지에서 얻을 수 있는 가장 큰 점수를 찾는다.
+     * @param input
+     * @return
+     */
+    private static int getMaxScore(List<Integer> input) {
+        // 왼쪽 번호의 각 자리 수를 모두 더한다.
+        int leftAdd = addIntegers(input.get(0));
+        // 왼쪽 번호의 각 자리 수를 모두 곱한다.
+        int leftMultipy = multiplyIntegers(input.get(0));
+        // 오른쪽 번호의 각 자리 수를 모두 더한다.
+        int rightAdd = addIntegers(input.get(1));
+        // 오른쪽 번호의 각 자리 수를 모두 곱한다.
+        int rightMultiply = multiplyIntegers(input.get(1));
+
+        return max(max(leftAdd, leftMultipy), max(rightAdd, rightMultiply));
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
