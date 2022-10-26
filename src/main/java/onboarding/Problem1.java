@@ -39,4 +39,16 @@ class Problem1 {
         String stringTarget = integerToString(target);
         return stringTarget.length();
     }
+
+    public static int addition(int target) {
+        int result = 0;
+
+        int end = getLength(target);
+        for(int i=0; i<end; i++) {
+            result += target % 10;
+            target /= 10;
+        }
+
+        return result;
+    }
 }
