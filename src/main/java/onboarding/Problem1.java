@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 class Problem1 {
@@ -7,6 +9,10 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         if (!validatePageNum(pobi) || !validatePageNum(crong)) return -1;
+
+        int pobiScore = getMaxScore(pobi);
+        int crongScore = getMaxScore(crong);
+
         return answer;
     }
 
@@ -16,6 +22,25 @@ class Problem1 {
         if (pageList.get(1) != page + 1) return false; // 왼쪽 페이지와 오른쪽 페이지의 번호 차이가 1이 아닐 경우
         if (page % 2 != 1) return false; // 짝,홀 체크
         return true;
+    }
+
+    private static int getMaxScore(List<Integer> pageList) {
+        ArrayList<Integer> scoreList = new ArrayList<>();
+        calculateScore(Integer.toString(pageList.get(0)), scoreList);
+        calculateScore(Integer.toString(pageList.get(1)), scoreList);
+        return Collections.max(scoreList);
+    }
+
+    private static void calculateScore(String pageStr, ArrayList<Integer> scoreList) {
+        int sum = 0;
+        int multi = 1;
+        for (int i = 0; i < pageStr.length(); i++) {
+            int num = Integer.parseInt(pageStr.substring(i, i + 1));
+            sum += num;
+            multi *= num;
+        }
+        scoreList.add(sum);
+        scoreList.add(multi);
     }
 
 }
