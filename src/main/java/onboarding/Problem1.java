@@ -77,4 +77,18 @@ class Problem1 {
         }
     }
 
+    /**
+     *누가 이겼는지 알리는 함수
+     */
+    private static int who_win(int pobi_num, int crong_num){
+
+        if(pobi_num>crong_num){
+            return 1;
+        } else if (crong_num < pobi_num) {
+            return 2;
+        }else{
+            return 0;
+        }
+    }
+
 }
