@@ -5,14 +5,18 @@ public class Problem4 {
 		char[] chars = word.toCharArray();
 
 		for (int i = 0; i < chars.length; i++) {
-			char temp = chars[i];
-			if (temp >= 'A' && temp <= 'Z') {
-				temp = (char) ('Z' - (temp - 'A'));
-			} else if (temp >= 'a' && temp <= 'z') {
-				temp = (char) ('z' - (temp - 'a'));
-			}
-			chars[i] = temp;
+			chars[i] = convertAlphabet(chars[i]);
 		}
 		return String.valueOf(chars);
+	}
+
+	public static char convertAlphabet(char alphabet) {
+		if (alphabet >= 'A' && alphabet <= 'Z') {
+			return (char) ('Z' - (alphabet - 'A'));
+		}
+		if (alphabet >= 'a' && alphabet <= 'z') {
+			return (char) ('z' - (alphabet - 'a'));
+		}
+		return alphabet;
 	}
 }
