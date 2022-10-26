@@ -20,8 +20,15 @@ class Problem1 {
         }
         return sum;
     }
-
-
+    // 각 자리 수의 곱을 구하는 함수
+    private  static int getMultipleOfEachNumber(int num){
+        int mul = 1;
+        while(num != 0){
+            mul *= num % 10;
+            num /= 10;
+        }
+        return mul;
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
@@ -32,7 +39,7 @@ class Problem1 {
         return answer;
     }
 
-    public static void main(String args[]){
+    public static void main(String[] args){
         System.out.println("안녕하세요");
         List<Integer> pobi = List.of(99, 102);
         List<Integer> crong = List.of(211, 212);
