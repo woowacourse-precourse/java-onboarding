@@ -44,8 +44,8 @@ class Problem1 {
             int FirstNumberSecondDigit = (number % 100) / 10;
             int FirstNumberThirdDigit = (number % 100) % 10;
 
-            int Addition = FirstNumberFirstDigit + FirstNumberSecondDigit + FirstNumberThirdDigit;
-            int Multiplication = FirstNumberFirstDigit * FirstNumberSecondDigit * FirstNumberThirdDigit;
+            int Addition = getAddition(FirstNumberFirstDigit, FirstNumberSecondDigit, FirstNumberThirdDigit);
+            int Multiplication = getMultiplication(FirstNumberFirstDigit, FirstNumberSecondDigit, FirstNumberThirdDigit);
             if (Addition > Multiplication){
                 MaxValue = Addition;
             } else {
@@ -57,8 +57,8 @@ class Problem1 {
             int FirstNumberFirstDigit = (number % 100) / 10;
             int FirstNumberSecondDigit = (number % 100) % 10;
 
-            int Addition = FirstNumberFirstDigit + FirstNumberSecondDigit;
-            int Multiplication = FirstNumberFirstDigit * FirstNumberSecondDigit;
+            int Addition = getAddition(FirstNumberFirstDigit, FirstNumberSecondDigit);
+            int Multiplication = getMultiplication(FirstNumberFirstDigit, FirstNumberSecondDigit);
             if (Addition > Multiplication){
                 MaxValue = Addition;
             } else {
@@ -71,4 +71,19 @@ class Problem1 {
         return MaxValue;
     }
 
+    public static int getAddition(int... numbers){
+        int sum=0;
+        for (int i =0; i < numbers.length; i++){
+            sum += numbers[i];
+        }
+        return sum;
+    }
+
+    public static int getMultiplication(int ... numbers){
+        int multiply = 1;
+        for (int i = 0; i < numbers.length; i++){
+            multiply = multiply * numbers[i];
+        }
+        return multiply;
+    }
 }
