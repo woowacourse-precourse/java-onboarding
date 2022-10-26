@@ -8,6 +8,14 @@ class Problem1 {
         return answer;
     }
 
+    // 가장 큰 수를 구하는 기능을 하는 함수
+    public static int getMaxNumber (Integer leftPageNum, Integer rightPageNum) {
+        int leftPageMaxNum = calcMax(getSumPageNum(leftPageNum), getMultiplyPageNum(leftPageNum));
+        int rightPageMaxNum = calcMax(getSumPageNum(leftPageNum), getMultiplyPageNum(leftPageNum));
+
+        return calcMax(leftPageMaxNum, rightPageMaxNum);
+    }
+
     // 페이지 번호의 각 자리 숫자를 모두 더하는 기능을 하는 함수
     public static int getSumPageNum(Integer pageNum){
         int sum = 0;
