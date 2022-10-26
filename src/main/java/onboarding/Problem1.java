@@ -32,9 +32,24 @@ class Problem1 {
         return values.get(3);
     }
 
-    public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+    public static boolean pageException(List<Integer> pageArray) {
+        // 왼쪽 페이지에서 1을 더한 값이 오른쪽 페이지인지 검사합니다.
+        if(pageArray.get(1) != pageArray.get(0) + 1) return false;
 
-        return answer;
+        // 왼쪽 페이지는 홀수, 오른쪽 페이지는 짝수인지 확인합니다.
+        if(pageArray.get(0) % 2 == 0 || pageArray.get(1) % 2 != 0) return false;
+
+        return true;
+    }
+
+    public static int solution(List<Integer> pobi, List<Integer> crong) {
+        if(pageException(pobi) && pageException(crong)) {
+            if(maxValue(pobi) > maxValue(crong)) return 1; // 포비 승
+            else if(maxValue(pobi) < maxValue(crong)) return 2; // 크롱 승
+            else return 0; // 무승부
+        }
+        else {
+            return -1; // 페이지 예외 발생
+        }
     }
 }
