@@ -1,8 +1,40 @@
 package onboarding;
 
+import static onboarding.Problem2.Decryptor.*;
+
+import java.util.Stack;
+
 public class Problem2 {
+
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        return decrypt(cryptogram);
+    }
+
+    public static class Decryptor {
+
+        private Decryptor() {
+        }
+
+        public static String decrypt(String cryptogram) {
+            Stack<Character> cryptogramStack = new Stack<>();
+            char[] cryptogramCharArray = cryptogram.toCharArray();
+
+            cryptogramStack.push(cryptogramCharArray[0]);
+            for (int i = 1; i < cryptogram.length(); i++) {
+                if (!cryptogramStack.isEmpty()
+                    && cryptogramStack.peek() == cryptogramCharArray[i]) {
+                    cryptogramStack.pop();
+                    continue;
+                }
+                cryptogramStack.push(cryptogramCharArray[i]);
+            }
+
+            StringBuilder decryptStringBuilder = new StringBuilder();
+
+            for (Character character : cryptogramStack) {
+                decryptStringBuilder.append(character);
+            }
+            return decryptStringBuilder.toString();
+        }
     }
 }
