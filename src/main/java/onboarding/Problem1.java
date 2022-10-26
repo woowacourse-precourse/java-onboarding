@@ -27,4 +27,9 @@ class Problem1 {
         }
         return mul;
     }
+
+    // 두 수 중 큰 수를 반환하는 기능을 하는 함수
+    public static int calcMax(Integer num1, Integer num2) {
+        return Math.max(num1, num2);
+    }
 }
