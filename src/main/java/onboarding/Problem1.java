@@ -1,5 +1,8 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 class Problem1 {
@@ -10,7 +13,8 @@ class Problem1 {
         }
         int pobiScore = calculateScore(pobi);
         int crongScore = calculateScore(crong);
-        return 0;
+        int answer = getGameResult(pobiScore,crongScore);
+        return answer;
     }
 
     public static boolean isValidInput(List<Integer> input){
@@ -21,11 +25,26 @@ class Problem1 {
     }
 
     public static int calculateScore(List<Integer> input){
-        int sum = input.get(0) + input.get(1);
-        int multiplication = input.get(0) * input.get(1);
-        if(sum >= multiplication){
-            return sum;
+        ArrayList<Integer> values = new ArrayList<>(Arrays.asList(0,0));
+        for(int i = 0; i < 2; i++){
+            int value = input.get(i);
+            int sum = 0;
+            int multiplication = 1;
+            while(value > 0){
+                int digit = value%10;
+                sum += digit;
+                multiplication *= digit;
+                value = value/10;
+            }
+            if(sum >= multiplication){
+                values.set(i, sum);
+            }
+            else{
+                values.set(i,multiplication);
+            }
         }
-        return multiplication;
+        return Collections.max(values);
     }
+
+
 }
