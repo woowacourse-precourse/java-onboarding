@@ -28,14 +28,14 @@ class Problem1 {
      * 페이지 자체에 에러가 존재하는지 확인한다.
      */
     private static boolean checkPageException(List<Integer> pages) {
-        int left = pages.get(0);
-        // 왼쪽 페이지가 3 ~ 397 사이의 값인지 확인
-        if(3 <= left && left <= 397) {
-            int right = pages.get(1);
-            // 왼쪽 페이지 + 1이 오른쪽 페이지가 맞는지 확인
+        int right = pages.get(1);
+        // 오른쪽 페이지가 2 < right < 400 인지 확인
+        if(2 < right && right < 400) {
+            int left = pages.get(0);
+            // 왼쪽 페이지 + 1이 오른쪽 페이지의 값이 맞는지 확인
             if (left + 1 == right) {
-                // 왼쪽 페이지가 홀수가 맞는지 확인
-                return left % 2 == 1;
+                // 오른쪽 페이지가 짝수가 맞는지 확인
+                return right % 2 == 0;
             }
         }
         return false;
