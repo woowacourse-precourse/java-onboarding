@@ -10,16 +10,17 @@ class Problem1 {
         int aws = -11;
         ArrayList<Integer> pobi = new ArrayList<Integer>(Arrays.asList(131,132));
         ArrayList<Integer> crong = new ArrayList<Integer>(Arrays.asList(99,102));
-        if (checkForException(pobi,crong)) {
-            System.out.println(getWinner(getScore(pobi),getScore(crong)));
-        }else {
-            System.out.println("예외발생");
-        }
+        System.out.println(solution(pobi,crong));
     }
 
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int answer;
+        if (checkForException(pobi,crong)){
+            answer = getWinner(getScore(pobi),getScore(crong));
+        }else {
+            answer = -1;
+        }
         return answer;
     }
 
