@@ -34,14 +34,12 @@ class Problem1 {
         return max;
     }
 
-
     // 각 자리 곱셈은 따로 계산하기 위해 별도의 함수 생성
     public static int multipleCalculator(int[] pageNumToArr) {
         int multipleResult = 1;
         for (int num : pageNumToArr) { multipleResult *= num; }
         return multipleResult;
     }
-
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = -1;
