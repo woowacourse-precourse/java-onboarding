@@ -5,11 +5,24 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        if(checkValidValue(pobi) == false || checkValidValue(crong) == false) {
+            return -1;
+        }
+        int LIST_SIZE = 2;
+        int pobiMax = Integer.MIN_VALUE;
+        int crongMax = Integer.MIN_VALUE;
 
+        for (int i =0; i < LIST_SIZE; i++) {
+            List<Integer> pobiPageDigit = getEachDigit(pobi.get(i));
+            List<Integer> crongPageDigit = getEachDigit(crong.get(i));
 
+            pobiMax = Math.max(pobiMax, Math.max(getAdditionTotal(pobiPageDigit), getMultiplicationTotal(pobiPageDigit)));
+            crongMax = Math.max(crongMax, Math.max(getAdditionTotal(crongPageDigit), getMultiplicationTotal(crongPageDigit)));
+        }
 
-        return answer;
+        if(pobiMax > crongMax) return 1;
+        if(crongMax > pobiMax) return 2;
+        return 0;
     }
 
     // 각 자리수를 구한다.
@@ -43,14 +56,15 @@ class Problem1 {
         return answer;
     }
 
-
-    // 구한 값 중 최댓값을 구한다.
     // 예외 처리 체크
-    public boolean checkValidValue(List<Integer> user) {
+    public static boolean checkValidValue(List<Integer> user) {
         int leftPage = user.get(0);
         int rightPage = user.get(1);
 
         if (rightPage - leftPage != 1) {
+            return false;
+        }
+        if (leftPage % 2 == 0 || rightPage % 2 == 1) {
             return false;
         }
         if (leftPage == 1 || rightPage == 400) {
