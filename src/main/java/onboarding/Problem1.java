@@ -19,6 +19,11 @@ import java.util.List;
 class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        // 페이지 검사
+        if (!validatePage(pobi) || !validatePage(crong)) {
+            return -1;
+        }
+
         int pobiScore = findBiggerScore(pobi);
         int crongScore = findBiggerScore(crong);
 
@@ -29,6 +34,22 @@ class Problem1 {
             return 1;
         }
         return 2;
+    }
+
+    private static boolean validatePage(List<Integer> pages) {
+        // 왼쪽페이지(idx = 0)는 홀수, 오른쪽 페이지(idx = 1)는 짝수여야 함.
+        if (pages.get(0) % 2 == 0 || pages.get(1) % 2 != 0) {
+            return false;
+        }
+        // 오른쪽 페이지가 왼쪽 페이지보다 1 커야 함.
+        if (pages.get(1) - pages.get(0) != 1) {
+            return false;
+        }
+        // 페이지는 1부터 400까지의 숫자여야 함.
+        if (pages.get(0) < 1 || pages.get(0) > 400 || pages.get(1) < 1 || pages.get(1) > 400) {
+            return false;
+        }
+        return true;
     }
 
     private static int findBiggerScore(List<Integer> lst) {
