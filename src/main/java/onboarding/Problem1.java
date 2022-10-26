@@ -6,10 +6,7 @@ class Problem1 {
     private static boolean check(List<Integer> list){
         int first = list.get(0);
         int second = list.get(1);
-        if(second != first+1){
-            return true;
-        }
-        return false;
+        return second != first + 1;
     }
     // 각 자리 수의 합을 구하는 함수
     private static int getSumOfEachNumber(int num){
