@@ -25,7 +25,7 @@
       - 두 숫자 중 큰 숫자를 알려준다.
 
 2. [문제 2](./docs/PROBLEM2.md)
-  - [ ] isValidInput
+  - [X] isValidInput
   - 인자로 들어온 문자열이 유효한지 검사한다.
     - [ ] hasValidLength
     - 문자열의 길이가 1~1000인지 검사한다.
