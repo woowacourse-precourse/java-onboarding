@@ -67,4 +67,9 @@ class Problem1 {
         if ((page.get(0) % 2 == 1) && (page.get(1) % 2 == 0)) return true;
         return false;
     }
+
+    public static boolean isNotNull(List<Integer> page) {
+        if (page.get(0) != null && page.get(1) != null) return true;
+        return false;
+    }
 }
