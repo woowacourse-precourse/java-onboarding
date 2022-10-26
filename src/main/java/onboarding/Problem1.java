@@ -30,4 +30,13 @@ class Problem1 {
         }
         return value;
     }
+
+    private static int multiply(int num){
+        int value = 1;
+        char[] chars = String.valueOf(num).toCharArray();
+        for(int i=0; i<chars.length; i++){
+            value *= (chars[i]-'0');
+        }
+        return value;
+    }
 }
