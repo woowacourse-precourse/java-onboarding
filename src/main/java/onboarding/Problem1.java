@@ -28,4 +28,15 @@ class Problem1 {
 
         return pageSumResult;
     }
+
+    private static int timesPage(int page){
+        int pageTimesResult = 1;
+
+        while(page > 0){
+            pageTimesResult *= page % 10;
+            page /= 10;
+        }
+
+        return pageTimesResult;
+    }
 }
