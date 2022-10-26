@@ -11,6 +11,11 @@ class Problem1 {
         * */
         if(!isPageRight(pobi) || !isPageRight(crong)) return -1;
 
+        /*
+         * 설명 : 좌, 우 페이지 중 최댓값을 구해 저장한다.
+         * */
+        int pobiMaxNumber = maxNum(pobi);
+        int crongMaxNumber = maxNum(crong);
 
         return answer;
     }
@@ -20,6 +25,16 @@ class Problem1 {
         int rightPage = human.get(1);
 
         return ((rightPage - leftPage) == 1);
+    }
+
+    private static int maxNum(List<Integer> person){
+        int leftPage = person.get(0);
+        int rightPage = person.get(1);
+
+        int sum = Math.max(sum(leftPage), multiply(leftPage));
+        int mul = Math.max(sum(rightPage), multiply(rightPage));
+
+        return Math.max(sum, mul);
     }
 
     private static int sum(int num){
