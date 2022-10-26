@@ -14,8 +14,6 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
 
-        if ('이' == '엠')
-            System.out.println("시발");
         exceptionCheck(forms);
         answer = findEmail(sameUserSave(savaUser(forms)), forms);
 

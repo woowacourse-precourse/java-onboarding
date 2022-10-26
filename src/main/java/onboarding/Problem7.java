@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -8,11 +9,32 @@ import java.util.Map;
 public class Problem7 {
     static int frendPoint = 10;
     static int visitPoint = 1;
+    static int newFriends = 1;
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
     }
 
+    //유저와 알고있는 친구 목록 구하기
+    public static List<String> savaFirendsList(List<List<String>> friends, String user)
+    {
+        boolean userCheck = false;
+        List<String> friendList = new ArrayList<>();
+
+        //user와 알고 있어야 한다.
+        for (int i = 0; i < friends.size(); i++)
+        {
+            //user와 알고 있으면!
+            if (friends.get(i).get(newFriends).equals(user))
+                userCheck = true;
+            else
+                friendList.add(friends.get(i).get(newFriends));
+        }
+        if (userCheck == false)
+            return null;
+        return friendList;
+    }
     public static Map<String, Integer> findknowFriendsPoint(List<String> knowFriendsList)
     {
         int point = frendPoint;
@@ -30,7 +52,6 @@ public class Problem7 {
         }
         return knowFriendsMap;
     }
-
     public static void findVisitedPoint(Map<String, Integer> knowFriendsMap, List<String> visitors)
     {
         int point = visitPoint;
@@ -38,6 +59,11 @@ public class Problem7 {
         for (int i = 0; i < visitors.size(); i++)
         {
             String key = visitors.get(i);
+            //null인 경우
+            if (knowFriendsMap == null)
+            {
+
+            }
             if (knowFriendsMap.containsKey(key))
             {
                 point = knowFriendsMap.get(key) + visitPoint;
