@@ -5,11 +5,11 @@ import java.util.List;
 /**
  * Checks availability
  */
-public class Checker {
+public class PageChecker {
 
     private final int SIZE;
 
-    public Checker(int size) {
+    public PageChecker(int size) {
         SIZE = size;
     }
 

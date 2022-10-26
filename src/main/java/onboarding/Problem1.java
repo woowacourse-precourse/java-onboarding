@@ -1,6 +1,6 @@
 package onboarding;
 
-import onboarding.problem1.Checker;
+import onboarding.problem1.PageChecker;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ class Problem1 {
     private final List<Integer> pagesB;
     private final int SIZE;
 
-    private final Checker checker;
+    private final PageChecker checker;
 
     /**
      * Constructor with pages of person A and B
@@ -28,7 +28,7 @@ class Problem1 {
         this.pagesA = pagesA;
         this.pagesB = pagesB;
         this.SIZE = size;
-        checker = new Checker(size);
+        checker = new PageChecker(size);
     }
 
     /**
