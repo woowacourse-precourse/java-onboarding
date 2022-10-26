@@ -37,13 +37,26 @@ public class Problem7 {
     }
 
     public static void scoreFriendToFriend(Map<String, LinkedList<String>> graph,
-                                           Map<String, Integer> scoreBoard, String user){
+                                           Map<String, Integer> scoreBoard,
+                                           String user){
         Set<String> friends=new HashSet<>(graph.get(user));
         friends.stream()
                 .flatMap(o->graph.get(o).stream())
                 .filter(o->!friends.contains(o))
                 .forEach(o->{
                     int score=scoreBoard.getOrDefault(o, 0)+10;
+                    scoreBoard.put(o, score);
+                });
+    }
+
+    public static void scoreVisitors(LinkedList<String> friends,
+                                     List<String> visitors,
+                                     Map<String, Integer> scoreBoard){
+        Set<String> friendSet=new HashSet<>(friends);
+        visitors.stream()
+                .filter(o->!friendSet.contains(o))
+                .forEach(o->{
+                    int score=scoreBoard.getOrDefault(o, 0)+1;
                     scoreBoard.put(o, score);
                 });
     }
