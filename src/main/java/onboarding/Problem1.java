@@ -9,6 +9,15 @@ class Problem1 {
         return answer;
     }
     
+    private static int getMaxSum(final List<Integer> numbers) {
+        return numbers.stream()
+                .mapToInt(Problem1::sum)
+                .max()
+                .orElseThrow(() -> {
+                    throw new IllegalArgumentException("올바른 값이 아닙니다.");
+                });
+    }
+    
     private static int sum(final int number) {
         return Arrays.stream(split(number))
                 .mapToInt(Integer::parseInt)
