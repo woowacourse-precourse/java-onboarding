@@ -11,6 +11,18 @@ public class Problem3 {
             this.target = target;
         }
 
+        int getResult() {
+            calculate();
+            return count[target];
+        }
+
+        private void calculate() {
+            for(int i=1 ; i<=target ; i++) {
+                count[i] = count[i - 1] + countThreeSixNineFrom(i);
+            }
+        }
+
+
         private int countThreeSixNineFrom(int num) {
             int cnt = 0;
             String tmp = String.valueOf(num);
@@ -33,7 +45,7 @@ public class Problem3 {
 
 
     public static int solution(int number) {
-        int answer = 0;
-        return answer;
+        ClapCount cc = new ClapCount(number);
+        return cc.getResult();
     }
 }
