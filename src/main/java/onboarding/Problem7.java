@@ -26,11 +26,11 @@ public class Problem7 {
     public static Map<String, Integer> initScoreBoard(Map<String, LinkedList<String>> graph, String user){
         Map<String, Integer> scoreBoard=new HashMap<>();
 
-        Set<String> userFriends= new HashSet<>(graph.get(user));
+        Set<String> friends= new HashSet<>(graph.get(user));
 
         graph.keySet().stream()
                 .filter(o->!o.equals(user))
-                .filter(o->!userFriends.contains(o))
+                .filter(o->!friends.contains(o))
                 .forEach(o->scoreBoard.put(o, 0));
 
         return scoreBoard;
