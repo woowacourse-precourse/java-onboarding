@@ -20,6 +20,7 @@ public class Problem4 {
         for(int i=0;i<list.size();i++){
             answer.append(list.get(i));
         }
+
         return answer.toString();
     }
 }
