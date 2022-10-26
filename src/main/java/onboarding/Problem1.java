@@ -23,7 +23,7 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int pobiMax = getMax(pobi.get(0), pobi.get(1));
         int crongMax = getMax(crong.get(0), crong.get(1));
-        if (pobiMax == -1 || crongMax == -1 || pobi.get(0) == 1 || crong.get(1) == 400) {
+        if (pobiMax == -1 || crongMax == -1) {
             return -1;
         }
         if (pobiMax > crongMax) {
@@ -36,7 +36,9 @@ class Problem1 {
     }
 
     private static int getMax(int leftPage, int rightPage) {
-        if (leftPage != rightPage - 1) {
+        if (leftPage != rightPage - 1
+                || leftPage % 2 != 1 || rightPage % 2 != 0
+                || leftPage == 1 || rightPage == 400) {
             return -1;
         }
         int leftPageMax = Math.max(getPlusMax(leftPage, rightPage), getMultiplyMax(leftPage, rightPage));
