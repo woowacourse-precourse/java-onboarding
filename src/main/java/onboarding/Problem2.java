@@ -4,6 +4,24 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
 
+        try {
+            while (true)
+            {
+                String nextCryptogram = eraseDuplicateCharacter(cryptogram);
+                if(nextCryptogram.compareTo(cryptogram) == 0)
+                {
+                    answer = cryptogram;
+                    break;
+                }else
+                {
+                    cryptogram = nextCryptogram;
+                }
+            }
+        }catch (NullPointerException e)
+        {
+            System.out.println("cryptogram이 null입니다.");
+        }
+
         return answer;
     }
 
