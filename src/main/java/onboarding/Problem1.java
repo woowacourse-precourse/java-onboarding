@@ -63,13 +63,10 @@ class Problem1 {
         pobiNum = Math.max(pickNum(pobi.get(0)), pickNum(pobi.get(1)));
         crongNum = Math.max(pickNum(crong.get(0)), pickNum(crong.get(1)));
 
-        System.out.println("pobi = " + pobiNum + ", crong = " + crongNum);
-
         if (pobiNum == crongNum)
             return 0;
         else if (pobiNum > crongNum)
             return 1;
-        else if (pobiNum < crongNum)
-            return 2;
+        return 2;
     }
 }
