@@ -14,6 +14,10 @@ class Problem1 {
         score_pobi = cal_score(sum_page(pobi), mul_page(pobi));
         score_crong = cal_score(sum_page(crong), mul_page(crong));
 
+        if(score_pobi > score_crong) answer = 1;
+        else if (score_pobi < score_crong) answer = 2;
+        else answer = 0;
+
         return answer;
     }
 
