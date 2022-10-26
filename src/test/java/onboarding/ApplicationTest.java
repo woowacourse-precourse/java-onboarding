@@ -55,6 +55,22 @@ class ApplicationTest {
 
       assertThat(Problem1.isAllowedPage(pageC)).isEqualTo(true);
     }
+    
+    @Test
+    void isAllowedPagesCountTest() {
+      //given
+      List<Integer> pobi = List.of(131, 132);
+      List<Integer> crong = List.of(131, 132, 133);
+
+      //then
+      assertThrows(IllegalStateException.class, () -> {
+        Problem1.isAllowedPagesCount(crong);
+      });
+
+      assertThat(Problem1.isAllowedPagesCount(pobi)).isEqualTo(true);
+        
+     }
+    
   }
 
   @Nested
