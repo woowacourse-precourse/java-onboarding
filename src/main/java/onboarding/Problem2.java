@@ -9,10 +9,21 @@ public class Problem2 {
     public static String solution(String cryptogram) {
 
         String answer = "answer";
+        String duplicatedStr = "";
+
+        do {
+
+            duplicatedStr = getDuplicatedStr(cryptogram);
+            cryptogram = cryptogram.replaceAll(duplicatedStr, "");
+
+        } while (duplicatedStr.length() > 1);
+
+        answer = cryptogram;
+
         return answer;
 
-
     }
+
     public static String getDuplicatedStr(String str) {
 
         for (int i = 0; i < str.length() - 1; i++) {
