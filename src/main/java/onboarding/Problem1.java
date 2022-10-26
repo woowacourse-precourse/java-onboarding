@@ -17,8 +17,8 @@ class Problem1 {
             return EXCEPTION_MESSAGE;
         }
 
-        List<Integer> pobiBiggerPageNumbers = saveUserBiggerPageNumber(pobi);
-        List<Integer> crongBiggerPageNumbers = saveUserBiggerPageNumber(crong);
+        List<Integer> pobiBiggerPageNumbers = saveBiggerPageNumberByUser(pobi);
+        List<Integer> crongBiggerPageNumbers = saveBiggerPageNumberByUser(crong);
 
         int pobiScore = validateBiggerNumber(pobiBiggerPageNumbers.get(0), pobiBiggerPageNumbers.get(1));
         int crongScore = validateBiggerNumber(crongBiggerPageNumbers.get(0), crongBiggerPageNumbers.get(1));
@@ -35,7 +35,7 @@ class Problem1 {
         return SCORE_SAME_MESSAGE;
     }
 
-    private static List<Integer> saveUserBiggerPageNumber(List<Integer> user) {
+    private static List<Integer> saveBiggerPageNumberByUser(List<Integer> user) {
         List<Integer> biggerPageNumbers = new ArrayList<>();
         for (Integer pageNumber : user) {
             int sumPage = sumEachNumber(pageNumber);
