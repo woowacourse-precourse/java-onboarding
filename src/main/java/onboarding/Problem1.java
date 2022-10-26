@@ -19,6 +19,17 @@ class Problem1 {
         return answer;
     }
 
+    public static int findScore(List<Integer> pages) {
+        int score;
+        int leftNumber = max(getPageNumberSum(pages.get(0)),
+                            getPageNumberMulti(pages.get(0)));
+        int rightNumber = max(getPageNumberSum(pages.get(1)),
+                            getPageNumberMulti(pages.get(1)));
+
+        score = max(leftNumber, rightNumber);
+        return score;
+    }
+
     public static int getPageNumberSum(int page) {
         int sum = 0;
 
