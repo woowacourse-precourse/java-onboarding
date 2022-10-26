@@ -21,4 +21,10 @@ class Problem1 {
         return digitList;
     }
 
+    private static int getDigitSum(List<Integer> digitList) {
+
+        return digitList.stream().reduce(0, Integer::sum);
+
+    }
+
 }
