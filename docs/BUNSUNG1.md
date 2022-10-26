@@ -23,6 +23,14 @@
 - `1, 2, 399, 400` 페이지는 존재 할 수 없다.
 - `에러처리`가 필요하다.
 
+> 하지만 위의 에러뿐만 아니라 다른 케이스의 에러처리도 필요하다.
+> 1. 왼쪽이 홀수, 오른쪽이 짝수가 아닌경우
+> 2. 왼쪽 페이지의 다음 페이지가 오른쪽 페이지 - 1 이 아닌경우
+> 3. 왼쪽 페이지가 오른쪽 페이지 보다 클 경우
+> 4. 왼쪽 페이지가 1 미만 이거나 혹은 오른쪽 페이지가 400 초과인 경우
+> 5. 왼쪽 페이지가 1 또는 399 일때
+> 6. 오른쪽 페이지가 2 또는 400 일때
+
 포비와 크롱이 펼친 페이지가 들어있는 리스트/배열 pobi와 crong이 주어질 때, 
 포비가 이긴다면 1, 크롱이 이긴다면 2, 무승부는 0, 
 예외사항은 -1로 return 하도록 solution 메서드를 완성하라.
@@ -32,3 +40,4 @@
 - [x] feat: add calculate multiplication method 
 - [x] feat: add error handling and result game method
 - [x] feat: add error handling conditional statement
+- [x] feat: add error handling another conditional statement
