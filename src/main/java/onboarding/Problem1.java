@@ -50,7 +50,7 @@ class Problem1 {
 
         return max;
     }
-    
+
     public static int findMaxNumber(int leftNum, int rightNum)
     {
         int [] leftDigit;
@@ -63,6 +63,19 @@ class Problem1 {
         max = Math.max(calculation(leftDigit), calculation(rightDigit));
 
         return max;
+    }
+
+    //compare number 
+    public static int compareNum(int pobiNum, int crongNum)
+    {
+        if (pobiNum == crongNum)
+            return 0;
+        else if (pobiNum > crongNum)
+            return 1;
+        else if (pobiNum < crongNum)
+            return 2;
+        else
+            return -1;
     }
 
 }
