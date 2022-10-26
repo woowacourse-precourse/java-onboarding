@@ -4,8 +4,7 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        return Integer.compare(maxValue(pobi.get(0), pobi.get(1)), maxValue(crong.get(0), crong.get(1)));
     }
     public static int higherValue(int num) {
         String number = String.valueOf(num);
