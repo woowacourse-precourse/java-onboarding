@@ -1,4 +1,4 @@
-# ✈  미션 - On Boarding
+# 1주차 미션 - ✈ 온보딩
 
 ## 🚀 구현 기능 목록
 
@@ -54,10 +54,11 @@
 
 ---
 
-## ✅ 제출 전체크 리스트
+## 💡 학습 목표 및 체크리스트
 
 - [ ] 자바 11버전 인지 확인
 - [ ] 함수(또는 메서드)가 한 가지 일만 하고 있는지 확인
 - [ ] 살아있는 문서 작성
 - [ ] [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153)을 지키며 커밋
 - [ ] [자바 코드 컨벤션](https://github.com/binghe819/TIL/blob/master/JAVA/%EA%B8%B0%ED%83%80/google%20java%20style%20guide.md)을 지키면서 프로그래밍
+- [ ] 객체지향 생활체조 원칙을 지키며 프로그래밍
