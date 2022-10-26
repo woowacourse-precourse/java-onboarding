@@ -10,6 +10,13 @@ public class Problem3 {
         IntStream.rangeClosed(1, number).forEach(i -> list.add(i));
         return list;
     }
+    public static int countNumber(List<Integer> list){
+        int count = (int)list.stream()
+                .map(n -> Integer.toString(n))
+                .filter(n -> n.contains("3")||n.contains("6")||n.contains("9"))
+                .count();
+        return count;
+    }
     public static int solution(int number) {
         int answer = 0;
         return answer;
