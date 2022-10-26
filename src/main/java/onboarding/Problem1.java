@@ -12,8 +12,9 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         if (isWrongInput(pobi) || isWrongInput(crong)) {
             answer = EXCEPTIONS;
+        } else {
+            answer = getGameResult(pobi, crong);
         }
-        answer = getGameResult(pobi, crong);
         return answer;
     }
 
