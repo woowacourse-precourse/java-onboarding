@@ -42,4 +42,16 @@ class Problem1 {
         if(pobi>crong) return 1;
         return 2;
     }
+
+    //예외상황을 판별하는 함수
+    public static int isException(List<Integer> list){
+
+        //연속된 두 페이지가 아니거나 왼쪽페이지 쪽수가 오른쪽 페이지 쪽수보다 큰 경우
+        if(list.indexOf(1)-list.indexOf(0)!=1) return -1;
+
+        //시작 면이나 마지막 면이 나오도록 책을 펼치지 않는다는 조건에 해당하는 예외상황
+        if(list.indexOf(0)==1||list.indexOf(1)==400) return -1;
+
+        return 1;
+    }
 }
