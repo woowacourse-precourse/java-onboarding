@@ -19,6 +19,14 @@ public class PagesTest {
 	}
 
 	@Test
+	@DisplayName("양쪽 면이 있어야 한다")
+	void both_page_exists() {
+		List<Integer> pageNumbers = List.of(97);
+
+		assertThatIllegalArgumentException().isThrownBy(() -> new Pages(pageNumbers));
+	}
+
+	@Test
 	@DisplayName("페이지는 이어져야 한다")
 	void pages_are_consecutive() {
 		List<Integer> pageNumbers = List.of(97, 99);

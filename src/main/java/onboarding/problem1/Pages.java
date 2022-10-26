@@ -10,6 +10,7 @@ public class Pages {
 	private final List<Page> pages;
 
 	public Pages(List<Integer> pageNumbers) {
+		validateBothSideExists(pageNumbers);
 		validateConsecutive(pageNumbers);
 
 		List<Page> pages = new ArrayList<>();
@@ -25,6 +26,12 @@ public class Pages {
 			maximum = Math.max(maximum, page.calculateScore());
 		}
 		return maximum;
+	}
+
+	private void validateBothSideExists(List<Integer> pageNumbers) {
+		if (pageNumbers.size() != 2) {
+			throw new IllegalArgumentException("양쪽 페이지가 있어야합니다");
+		}
 	}
 
 	private void validateConsecutive(List<Integer> pageNumbers) {
