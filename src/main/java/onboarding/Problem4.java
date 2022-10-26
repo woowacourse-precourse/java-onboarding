@@ -8,7 +8,7 @@ import java.util.List;
  * 2. 제한 사항 중 "알파벳 외의 문자는 반환하지 않는다. -> 알파벳이 아닌 정보가 들어오면 그대로 출력
  *    => 아스키 코드 값으로 범위 확인
  * 3. String => split => char => ascii(int) => 대소문자 범위 확인 => 변환 => char => String
- * 4. 아스키 코드 a 와 z 의 범위가 25임 b랑 y 랑 차이는 23 c-x = 21 이런식으로 2개씩 줄어드니가 이거 고려해서 계산
+ * 4. 핵심 로직 : asciiWord + (ASCII_Z_TO_A - ((asciiWord - A_UPPER_CASE_ASCII) * 2))
  */
 public class Problem4 {
     private static final int A_UPPER_CASE_ASCII = 65;
