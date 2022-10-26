@@ -31,6 +31,20 @@ class Problem1 {
         return hundredsPlace+tensPlace+onesPlace;
     }
 
+    private static int multiplyPageNumber(int page){
+        int hundredsPlace=page/100;
+        page=page%100;
+        int tensPlace=page/10;
+        int onesPlace=page%10;
+        if(hundredsPlace==0){
+            return tensPlace*onesPlace;
+        } else if(tensPlace==0){
+            return onesPlace;
+        } else {
+            return hundredsPlace*tensPlace*onesPlace;
+        }
+    }
+
     private static Boolean isPageRangeInBook(int leftPage, int rightPage) {
         if(leftPage<1||leftPage>400){
             return false;
