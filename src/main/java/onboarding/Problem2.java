@@ -9,7 +9,7 @@ public class Problem2 {
     private static StringBuilder removeConsecutiveSameCharacter(StringBuilder sb, int i) {
         return sb.delete(i-1, i+1);
     }
-    private static boolean isConsecutiveSameCharacter(String str, int i) {
+    private static boolean isConsecutiveSameCharacter(StringBuilder str, int i) {
         return str.charAt(i) == str.charAt(i-1);
     }
 }
