@@ -34,7 +34,16 @@ class Problem1 {
         int player1Number = biggestNumberCheck(pobi);
         int player2Number = biggestNumberCheck(crong);
 
-        return answer;
+        //3. 1,2 중 큰값 구해서 도출
+        //4. pobi와 crong 중 누가더 큰지 확인 후 포비승(1) , 크롱승(2), 무승부(0) 리턴
+        if (player1Number > player2Number) {
+            return 1;
+        } else if (player1Number < player2Number) {
+            return 2;
+        } else {
+            return 0;
+        }
+
     }
 
     private static int biggestNumberCheck(List<Integer> player) {
