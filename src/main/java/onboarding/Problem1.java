@@ -52,6 +52,17 @@ class Problem1 {
         //포비 최종 점수 구하기
         Integer crongScore = PageScore(crongLeftScore, crongRightScore);
 
+        //정답 출력
+        if (crongScore > pobiScore) {
+            return 2;
+        }
+        if (crongScore < pobiScore) {
+            return 1;
+        }
+        if (crongScore == pobiScore) {
+            return 0;
+        }
+
         return answer;
     }
 
@@ -81,7 +92,7 @@ class Problem1 {
         }
         return pro;
     }
-    
+
     public static Integer PageScore(Integer score1, Integer score2) {
         if (score1 >= score2) {
             return score1;
