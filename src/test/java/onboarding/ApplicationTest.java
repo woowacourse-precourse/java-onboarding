@@ -24,6 +24,15 @@ class ApplicationTest {
         }
 
         @Test
+        void findMaxValue() {
+            List<Integer> mulMaxData = List.of(247, 248);
+            assertThat(Problem1.findMaxValue(mulMaxData)).isEqualTo(64);
+
+            List<Integer> sumMaxData = List.of(121, 122);
+            assertThat(Problem1.findMaxValue(sumMaxData)).isEqualTo(5);
+        }
+
+        @Test
         void findMulMaxValueTest() {
             List<Integer> test1Digits = List.of(3, 4);
             List<Integer> test2Digits = List.of(45, 46);
