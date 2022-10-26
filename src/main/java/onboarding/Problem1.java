@@ -9,10 +9,11 @@ class Problem1 {
 
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
 		int answer = Integer.MAX_VALUE;
+
 		return answer;
 	}
 
-	private static int digitAdd(Integer page) {
+	private static int addDigit(Integer page) {
             int addValue = 0;
             while(page!=0){
                 addValue += page % NUMBER_OF_DIGIT_DIVISION;
@@ -21,7 +22,7 @@ class Problem1 {
             return addValue;
 	}
 
-    private static int digitMultiple(Integer page) {
+    private static int multipleDigit(Integer page) {
         int multipleValue = 1;
         while(page!=0){
             multipleValue *= page % NUMBER_OF_DIGIT_DIVISION;
@@ -31,10 +32,10 @@ class Problem1 {
     }
 
     private static int pageMax(List<Integer> pages) {
-        int leftMaxValue = Math.max(digitAdd(pages.get(LEFT_PAGE)),
-            digitMultiple(pages.get(LEFT_PAGE)));
-        int rightMaxValue = Math.max(digitAdd(pages.get(RIGHT_PAGE)),
-            digitMultiple(pages.get(RIGHT_PAGE)));
+        int leftMaxValue = Math.max(addDigit(pages.get(LEFT_PAGE)),
+            multipleDigit(pages.get(LEFT_PAGE)));
+        int rightMaxValue = Math.max(addDigit(pages.get(RIGHT_PAGE)),
+            multipleDigit(pages.get(RIGHT_PAGE)));
         return Math.max(leftMaxValue,rightMaxValue);
     }
 }
