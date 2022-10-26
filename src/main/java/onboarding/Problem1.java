@@ -84,7 +84,15 @@ class Problem1 {
     /**
      * @Method: mutiplyDigit
      * 각 자릿수를 기반으로 곱한값을 구한다.
-     * TODO: 각 자릿수를 곱한다.
      */
+    private static int mutiplyDigit(List<Integer> digits) {
+        int answer = 1;
+        // 각 자릿수를 곱한다.
+        for(Integer digit : digits) {
+            answer *= digit;
+        }
+        return answer;
+    }
+
 }
 
