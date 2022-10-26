@@ -15,13 +15,12 @@ class Problem1 {
         }
         return sum;
     }
-    int mulOfDigits(int number) {
-        int result = 1;
+    int[] toIntArray(int number) {
         String str = String.valueOf(number);
-        String[] strs = str.split(" ");
-        for(int i = 0; i < strs.length; i++) {
-            result *= Integer.parseInt(strs[i]);
+        int[] numbers = new int[str.length()];
+        for(int i = 0; i < numbers.length; i++) {
+            numbers[i] = str.charAt(i) -'0';
         }
-        return result;
+        return numbers;
     }
 }
