@@ -6,6 +6,25 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if(exs(pobi, crong)) return -1; // ex test
 
+        int[] digitP = {-1, -1, -1};
+        int[] digitC = {-1, -1, -1};
+        int pmax = 0;
+        int cmax = 0;
+
+        for(int i = 0; i < 2; i++) {
+            int tmp = pobi.get(i); // pobi "i" num digit chk
+            for(int j = 0; tmp != 0; j++) {
+                digitP[j] = tmp % 10;
+                tmp /= 10;
+            }
+            tmp = crong.get(i); // crong "i" num digit chk
+            for(int j = 0; tmp != 0; j++) {
+                digitC[j] = tmp % 10;
+                tmp /= 10;
+            }
+
+        }
+
         int answer = Integer.MAX_VALUE;
         return answer;
     }
