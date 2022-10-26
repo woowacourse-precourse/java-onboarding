@@ -1,12 +1,26 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
+        List<Integer> pobiBiggerPageNumbers = saveUserBiggerPageNumber(pobi);
+        List<Integer> crongBiggerPageNumbers = saveUserBiggerPageNumber(crong);
+
         return answer;
+    }
+
+    private static List<Integer> saveUserBiggerPageNumber(List<Integer> user) {
+        List<Integer> biggerPageNumbers = new ArrayList<>();
+        for(Integer pageNumber : user) {
+            int sumPage = sumEachNumber(pageNumber);
+            int multPage = multEachNumber(pageNumber);
+            biggerPageNumbers.add(validateBiggerNumber(sumPage, multPage));
+        }
+        return biggerPageNumbers;
     }
 
     private static int sumEachNumber(int pageNumber) {
