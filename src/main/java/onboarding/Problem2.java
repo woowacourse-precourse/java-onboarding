@@ -33,9 +33,9 @@ public class Problem2 {
     }
 
     public static String stringConverter(ArrayList<Character> resultList) {
-        String str = "";
-        for (char c : resultList) { str += c; }
-        return str;
+        String result = "";
+        for (char c : resultList) { result += c; }
+        return result;
     }
 
     public static String solution(String cryptogram) {
