@@ -21,7 +21,7 @@ class Problem1 {
 
 		if (isValidPages(pobi) && isValidPages(crong)) {
 			int pobiScore = getScore(pobi);
-			int crongScore = getScore(pobi);
+			int crongScore = getScore(crong);
 
 			answer = getResultCode(pobiScore, crongScore);
 		} else {
@@ -62,6 +62,19 @@ class Problem1 {
 		}
 
 		return maxNumberOfRightPage;
+	}
+
+	public static int getResultCode(final int pobiScore, final int crongScore) {
+		int resultCode = 0;
+		if (pobiScore > crongScore) {
+			resultCode = POBI_WIN_CODE;
+		} else if (pobiScore < crongScore) {
+			resultCode = CRONG_WIN_CODE;
+		} else {
+			resultCode =  DRAW_CODE;
+		}
+
+		return resultCode;
 	}
 
 	private static boolean isOutOfRange(int page) {
