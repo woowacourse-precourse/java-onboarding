@@ -3,10 +3,24 @@ package onboarding;
 public class Problem2 {
     public static String solution(String cryptogram) {
         for (int index = 0; index < cryptogram.length() - 1; index++) {
-            if (isEqualsTwoChar(cryptogram.charAt(index), cryptogram.charAt(index + 1))) {
-                cryptogram = removeTwoEqualsChar(cryptogram, index);
-                index = revertIndex(index);
-            }
+            cryptogram = getTwoCharRemovedCryptogram(cryptogram, index);
+            index = getRevertIndex(cryptogram, index);
+        }
+        
+        return cryptogram;
+    }
+    
+    private static int getRevertIndex(final String cryptogram, int index) {
+        if (isEqualsTwoChar(cryptogram.charAt(index), cryptogram.charAt(index + 1))) {
+            index = revertIndex(index);
+        }
+        
+        return index;
+    }
+    
+    private static String getTwoCharRemovedCryptogram(String cryptogram, final int index) {
+        if (isEqualsTwoChar(cryptogram.charAt(index), cryptogram.charAt(index + 1))) {
+            cryptogram = removeTwoEqualsChar(cryptogram, index);
         }
         
         return cryptogram;
