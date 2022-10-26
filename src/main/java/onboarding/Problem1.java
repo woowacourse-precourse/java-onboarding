@@ -7,4 +7,10 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+
+    public static boolean isException(int leftPage, int rightPage) {
+        if((rightPage - leftPage) != 1)
+            return true;
+        return false;
+    }
 }
