@@ -22,11 +22,11 @@ class Problem1 {
         for (int currentPage : pageList) {
             if (leftPage+1 == currentPage) {
                 int[] pageNumToArr = Stream.of(String.valueOf(currentPage).split("")).mapToInt(Integer::parseInt).toArray();
-                int sum = Arrays.stream(pageNumToArr).sum();
-                int mul = multipleCalculator(pageNumToArr);  // 각 자리 곱셈은 별도의 함수로 분리하여 계산
+                int sumOfPage = Arrays.stream(pageNumToArr).sum();
+                int mulOfPage = multipleCalculator(pageNumToArr);  // 각 자리 곱셈은 별도의 함수로 분리하여 계산
 
-                if (sum > mul) { max = sum; }
-                else           { max = mul; }
+                if (sumOfPage > mulOfPage) { max = sumOfPage; }
+                else           { max = mulOfPage; }
 
                 leftPage = currentPage;
             } else { max = -1; break; }
@@ -36,10 +36,10 @@ class Problem1 {
 
 
     // 각 자리 곱셈은 따로 계산하기 위해 별도의 함수 생성
-    public static int multipleCalculator(int[] arr) {
-        int mul = 1;
-        for (int var : arr) { mul *= var; }
-        return mul;
+    public static int multipleCalculator(int[] pageNumToArr) {
+        int multipleResult = 1;
+        for (int num : pageNumToArr) { multipleResult *= num; }
+        return multipleResult;
     }
 
 
