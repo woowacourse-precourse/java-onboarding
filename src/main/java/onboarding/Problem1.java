@@ -8,6 +8,13 @@ class Problem1 {
         int pobiScore = findUserScore(pobi);
         int crongScore = findUserScore(crong);
 
+        if (Problem1Exception.isException(pobi)) {
+            return -1;
+        }
+        if (Problem1Exception.isException(crong)) {
+            return -1;
+        }
+
         if (pobiScore == crongScore) {
             return 0;
         }
@@ -17,10 +24,11 @@ class Problem1 {
         if (pobiScore < crongScore) {
             return 2;
         }
+
         return -1;
     }
 
-    public static int findUserScore(List<Integer> pages) { // 페이지에 관한 요류들은 여기서 잡아준다.
+    private static int findUserScore(List<Integer> pages) { // 페이지에 관한 요류들은 여기서 잡아준다.
         int leftPageNumber = pages.get(0);
         int rightPageNumber = pages.get(1);
         int leftPageScore = Math.max(sumAllNumbersInPage(leftPageNumber), multiplyAllNumbersInPage(leftPageNumber));
@@ -29,7 +37,7 @@ class Problem1 {
         return Math.max(leftPageScore, rightPageScore);
     }
 
-    public static int sumAllNumbersInPage(int page) {
+    private static int sumAllNumbersInPage(int page) {
         int result = 0;
         for (Integer number : changeIntToIntList(page)) {
             result = result + number;
@@ -37,7 +45,7 @@ class Problem1 {
         return result;
     }
 
-    public static int multiplyAllNumbersInPage(int page) {
+    private static int multiplyAllNumbersInPage(int page) {
         int result = 1;
         for (Integer number : changeIntToIntList(page)) {
             result = result * number;
@@ -46,7 +54,7 @@ class Problem1 {
         return result;
     }
 
-    public static List<Integer> changeIntToIntList(int number) {
+    private static List<Integer> changeIntToIntList(int number) {
         List<Integer> result = new ArrayList<>();
         while (number != 0) {
             result.add(number % 10);

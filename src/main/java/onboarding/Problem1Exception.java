@@ -2,6 +2,9 @@ package onboarding;
 
 import java.util.List;
 
+/* 해당 클래스에서 다른 세부 오류는 private 로 제한하고
+ * isException 만 열어야할까?
+ */
 public class Problem1Exception {
 
     public static boolean isException(List<Integer> pages) {
@@ -16,8 +19,6 @@ public class Problem1Exception {
         }
         return false;
     }
-
-
 
     /**
      * 시작면에 있는 지 판별하는 함수
