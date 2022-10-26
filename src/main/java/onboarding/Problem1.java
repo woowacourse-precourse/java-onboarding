@@ -25,7 +25,8 @@ class Problem1 {
         }
 
         // 최댓값 만들기 메서드 구현
-
+        int pobi_max = makeMax(pobi);
+        int crong_max = makeMax(crong);
 
         // 최댓값 비교 구현
 
@@ -51,4 +52,24 @@ class Problem1 {
         return result;
     }
 
+    private static int makeMax(List<Integer> user) {
+        int maxNum = 0;
+        for (int i = 0; i < user.size(); i++) {
+            maxNum = Math.max(maxNum,makeMaxNum(String.valueOf(user.get(i))));
+        }
+        return maxNum;
+    }
+
+    private static int makeMaxNum(String num) {
+        int numAdd = 0;
+        int numMul = 1;
+
+        for (int i = 0; i < num.length(); i++) {
+            numAdd += Integer.parseInt(String.valueOf(num.charAt(i)));
+            numMul *= Integer.parseInt(String.valueOf(num.charAt(i)));
+        }
+        return Math.max(numAdd,numMul);
+    }
+
+    
 }
