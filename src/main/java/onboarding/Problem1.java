@@ -4,17 +4,39 @@ import java.util.List;
 
 
 class Problem1 {
+
+    /**
+     * 5. 점수를 비교해 가장 높은 사람이 게임의 승자가 된다.
+     * @Method: Solution
+     * 점수를 비교하여, 알맞은 값을 return한다.
+     * TODO: 포비가 이긴다면 1, 크롱이 이긴다면 2, 무승부는 0을 return 한다.
+     */
+
+    public static int solution(List<Integer> pobi, List<Integer> crong) {
+        int answer = Integer.MAX_VALUE;
+        return answer;
+    }
+
     /**
      * 1. 책을 임의로 펼친다.
      * 6. 시작 면이나 마지막 면이 나오도록 책을 펼치지 않는다.
      * @Method: checkPageException
      * 페이지 자체에 에러가 존재하는지 확인한다.
-     * TODO: 왼쪽 페이지 + 1이 오른쪽 페이지가 맞는지 확인
-     * TODO: 왼쪽 페이지가 3 ~ 397 사이의 값인지 확인
-     * TODO: 왼쪽 페이지가 홀수가 맞는지 확인
-     * TODO: 예외사항은 -1을 return
      */
-
+    private static boolean checkPageException(List<Integer> pages) {
+        int left = pages.get(0);
+        // 왼쪽 페이지가 3 ~ 397 사이의 값인지 확인
+        if(3 <= left && left <= 397) {
+            int right = pages.get(1);
+            // 왼쪽 페이지 + 1이 오른쪽 페이지가 맞는지 확인
+            if (left + 1 == right) {
+                // 왼쪽 페이지가 홀수가 맞는지 확인
+                return left % 2 == 1;
+            }
+        }
+        // 예외사항은 -1을 return
+        return false;
+    }
 
     /**
      * 4. 2~3 과정에서 가장 큰 수를 본인의 점수로 한다.
@@ -42,16 +64,5 @@ class Problem1 {
      */
 
 
-    /**
-     * 5. 점수를 비교해 가장 높은 사람이 게임의 승자가 된다.
-     * @Method: Solution
-     * 점수를 비교하여, 알맞은 값을 return한다.
-     * TODO: 포비가 이긴다면 1, 크롱이 이긴다면 2, 무승부는 0을 return 한다.
-     */
-
-    public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
-    }
 }
 
