@@ -26,4 +26,15 @@ class Problem1 {
 
         return result;
     }
+
+    // 페이지 숫자를 곱하는 함수
+    private static int multiplyNumber(int input) {
+        int[] digits = changeArray(input);
+        int result = 1;
+        for(int i = 0; i<digits.length; i++) {
+            result *= digits[i];
+        }
+
+        return result;
+    }
 }
