@@ -18,7 +18,6 @@ public class Problem2 {
                 array[i] = cryptogram.charAt(i);
             }
 
-
             for(int i=1;i<array.length;i++){
                 if(array[i-1]==array[i]){
                     array[i-1]=0;
