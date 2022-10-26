@@ -7,7 +7,7 @@ public class Problem3 {
         String strNum = String.valueOf(num);
         for (int i = 0; i < strNum.length(); i++) {
             int digit = strNum.charAt(i) - '0';
-            if (digit == 3 || digit == 6 || digit == 9){
+            if (digit == 3 || digit == 6 || digit == 9) {
                 sum++;
             }
         }
@@ -15,8 +15,10 @@ public class Problem3 {
     }
 
     public static int solution(int number) {
-        int answer = 0;
-
-        return answer;
+        int sum = 0;
+        for (int i = 1; i <= number; i++) {
+            sum += countOf369(i);
+        }
+        return sum;
     }
 }
