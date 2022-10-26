@@ -26,14 +26,33 @@ class Problem1 {
         else return 0;
     }
 
+    public static boolean lengthCheck(List<Integer> listIn) {
+        return listIn.size() != 2;
+    }
+
+    public static boolean indexCheck(List<Integer> listIn) {
+        int firNum = listIn.get(0);
+        int secNum = listIn.get(1);
+
+        if (firNum >= secNum) return true;
+        if ((firNum % 2) != 1 && (secNum % 2) != 0) return true;
+        if ((secNum - firNum) != 1) return true;
+        if (firNum <= 0 || secNum > 400) return true;
+
+        return false;
+    }
+
+    public static boolean exceptionCheck(List<Integer> pobi, List<Integer> crong) {
+        if (lengthCheck(pobi) || lengthCheck(crong) || indexCheck(pobi) || indexCheck(crong)) return true;
+        return false;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer;
+        if (exceptionCheck(pobi, crong)) return -1;
 
         int pobiResult = getMax(pobi);
         int crongResult = getMax(crong);
-        
-        answer = compare(pobiResult, crongResult);
 
-        return answer;
+        return compare(pobiResult, crongResult);
     }
 }
