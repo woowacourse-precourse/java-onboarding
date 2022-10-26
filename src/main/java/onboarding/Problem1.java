@@ -44,4 +44,14 @@ class Problem1 {
         }
         return true;
     }
+
+    public static boolean isInRange(List<Integer> pages) {
+        if (pages.get(0) <= 1 || pages.get(1) <= 1) {
+            return false;
+        }
+        if (pages.get(0) >= 400 || pages.get(1) >= 400) {
+            return false;
+        }
+        return true;
+    }
 }
