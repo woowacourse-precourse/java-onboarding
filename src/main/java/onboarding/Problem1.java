@@ -7,13 +7,20 @@ class Problem1 {
         int pobiScore;
         int crongScore;
 
+
+
         pobiScore = Math.max(howManyScore(pobi.get(0)), howManyScore(pobi.get(1)));
         crongScore = Math.max(howManyScore(crong.get(0)), howManyScore(crong.get(1)));
 
-        return Result(pobiScore, crongScore);
+        return result(pobiScore, crongScore);
     }
 
-    public static int Result(int pobiScore, int crongScore) {
+    public static boolean exceptionCheck(List<Integer> pobi, List<Integer> crong) {
+        if (pobi.get(0) == 0 || crong.get(0) == 0 || pobi.get(1) == 401 || crong.get(1) == 401) return true;
+        return false;
+    }
+
+    public static int result(int pobiScore, int crongScore) {
         if (pobiScore > crongScore) return 1;
         if (pobiScore < crongScore) return 2;
         return 0;
