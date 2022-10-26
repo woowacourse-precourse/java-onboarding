@@ -27,8 +27,8 @@
 | [131, 132] | [211, 212] | 1 |
 | [99, 102]  | [211, 212] | -1 | 
 
-### 기능 목록
-# getScore(List<Integer> list)
+# 기능 목록
+#### `getScore(List<Integer> list)`
 - page가 들어있는 list를 받아서 점수를 return한다.
-# solution(List<Integer> pobi, List<Integer> crong)
+#### `solution(List<Integer> pobi, List<Integer> crong)`
 - 예외사항이 입력되면 -1을 return 하고 정상적인 값이 입력되었다면 getScore 메서드를 통해 값을 비교하고 answer을 retrun한다.
