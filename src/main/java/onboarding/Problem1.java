@@ -7,13 +7,11 @@ import java.util.Objects;
 
 class Problem1 {
 
-    public static int solution(List<Integer> pobiList, List<Integer> crongList) {
+    public static int solution(List<Integer> pobiPageNumbers, List<Integer> crongPageNumbers) {
         try {
-            List<Page> pobiPages = asPages(pobiList);
-            List<Page> crongPages = asPages(crongList);
 
-            Player pobi = new Player(pobiPages);
-            Player crong = new Player(crongPages);
+            Player pobi = new Player(asPages(pobiPageNumbers));
+            Player crong = new Player(asPages(crongPageNumbers));
 
             return pobi.battle(crong);
         } catch (IllegalArgumentException e) {
