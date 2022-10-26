@@ -37,6 +37,7 @@ class Problem1 {
         return correct;
     }
 
+
     /*
      * 두 페이지가 자연수인지, 연속한 홀수 짝수 페이지인지 확인합니다.
      *
@@ -44,7 +45,16 @@ class Problem1 {
      * @return 두 숫자가 옳은 페이지라면 참, 아니면 거짓을 반환합니다.
      */
     private static boolean areCorrectNumbers(List<Integer> pages) {
-        return false;
+        Integer leftPage = pages.get(0);
+        Integer rightPage = pages.get(1);
+
+        boolean correct =
+                leftPage > 0 &&
+                        rightPage > 0 &&
+                        leftPage % 2 == 1 &&
+                        rightPage % 2 == 0 &&
+                        rightPage - leftPage == 1;
+        return correct;
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
