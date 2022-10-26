@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.List;
 
+import static java.lang.Integer.MIN_VALUE;
 import static onboarding.Problem1.Constants.*;
 
 class Problem1 {
@@ -41,11 +42,12 @@ class Problem1 {
             return true;
         }
 
-        // 첫 페이지는 0 이상 400이하의 값이여야한다.
+        // 왼쪽 페이지는 0 이상 400이하의 값이여야한다.
         if (list.get(LEFT_PAGE) <= FIRST_PAGE || list.get(LEFT_PAGE) >= LAST_PAGE){
             return true;
         }
-        // 마지막 페이지는 0 이상 400이하의 값이어야한다.
+
+        // 오른쪽 페이지는 0 이상 400이하의 값이어야한다.
         if (list.get(RIGHT_PAGE) <= FIRST_PAGE || list.get(RIGHT_PAGE) >= LAST_PAGE) {
             return true;
         }
@@ -66,9 +68,8 @@ class Problem1 {
     // 4개의 경우의 수 (왼쪽 페이지 각 자릿수 더하고 곱하고, 오른쪽 페이지 각 자릿수 더하고 곱하고) 중에서
     // 가장 큰 값을 반환하는 메서드
     private static int compareNumbers(List<Integer> numbers) {
-        int addNum = 0;
-        int multiNum = 0;
-        int max = Integer.MIN_VALUE;
+        int addNum, multiNum;
+        int max = MIN_VALUE;
 
         for (int number : numbers) {
             addNum = addEachNumber(number);
