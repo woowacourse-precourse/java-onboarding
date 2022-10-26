@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class Problem4 {
+    public static final String UPPER = "upper";
+    public static final String LOWER = "lower";
     public static final int UPPER_ALPHABET_START_ASCII = 65;
     public static final int UPPER_ALPHABET_END_ASCII = 90;
     public static final int LOWER_ALPHABET_START_ASCII = 97;
@@ -36,11 +38,11 @@ public class Problem4 {
         String alphabetCase = null;
 
         if (Pattern.matches("[a-z]", character)) {
-            alphabetCase = "lower";
+            alphabetCase = LOWER;
         }
 
         if (Pattern.matches("[A-Z]", character)) {
-            alphabetCase = "upper";
+            alphabetCase = UPPER;
         }
 
         return alphabetCase;
@@ -50,12 +52,12 @@ public class Problem4 {
         int startAsciiCode = 0;
         int endAsciiCode = 0;
 
-        if (alphabetCase.equals("lower")) {
+        if (alphabetCase.equals(LOWER)) {
             startAsciiCode = LOWER_ALPHABET_START_ASCII;
             endAsciiCode = LOWER_ALPHABET_END_ASCII;
         }
 
-        if (alphabetCase.equals("upper")) {
+        if (alphabetCase.equals(UPPER)) {
             startAsciiCode = UPPER_ALPHABET_START_ASCII;
             endAsciiCode = UPPER_ALPHABET_END_ASCII;
         }
