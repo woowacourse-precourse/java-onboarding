@@ -8,14 +8,14 @@ public class Problem2 {
     }
 
     private static String removeReduplication(String cryptogram) {
-        int startIndex = 0;
-        int lastIndex = 0;
+        int startIndex = -1;
+        int lastIndex = -1;
         String startString;
         String lastString;
 
         for (int i = 0; i < cryptogram.length() - 1; i++) {
             if (cryptogram.charAt(i) == cryptogram.charAt(i + 1)) {
-                if (startIndex == 0) {
+                if (startIndex == -1) {
                     startIndex = i;
                 }
                 lastIndex = i + 1;
