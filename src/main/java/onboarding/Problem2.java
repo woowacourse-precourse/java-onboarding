@@ -1,8 +1,11 @@
 package onboarding;
 
+import onboarding.problem2.TextDecoder;
+import onboarding.problem2.TextDecoderV1;
+
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        TextDecoder answer = new TextDecoderV1(cryptogram);
+        return answer.getPlainText();
     }
 }
