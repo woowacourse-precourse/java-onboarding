@@ -39,4 +39,13 @@ public class Problem2 {
 		}
 		return duplication;
 	}
+
+	public static String listToString(List<Character> list)
+	{
+		String str = "";
+
+		for (int i = 0; i < list.size(); i++)
+			str += list.get(i);
+		return str;
+	}
 }
