@@ -14,8 +14,7 @@ class Problem1 {
         int pobiScore = getScore(pobi);
         int crongScore = getScore(crong);
 
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        return getWinner(pobiScore, crongScore);
     }
 
     /**
@@ -97,5 +96,18 @@ class Problem1 {
         int multipleOfEachDigit = getMultipleOfEachDigit(page, 1);
 
         return Math.max(sumOfEachDigit, multipleOfEachDigit);
+    }
+
+    /**
+     * 승자를 구하는 기능을 추가
+     */
+    public static int getWinner(int pobiScore, int crongScore) {
+        if (pobiScore > crongScore) {
+            return 1;
+        }
+        if (crongScore > pobiScore) {
+            return 2;
+        }
+        return 0;
     }
 }
