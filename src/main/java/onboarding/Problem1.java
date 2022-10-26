@@ -10,7 +10,7 @@ class Problem1 {
     private static final int WINNER_USER1_MESSAGE = 1;
     private static final int WINNER_USER2_MESSAGE = 2;
     private static final int SCORE_SAME_MESSAGE = 0;
-    private static final int EXCEPTION_MESSAGE = 1;
+    private static final int EXCEPTION_MESSAGE = -1;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
