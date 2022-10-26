@@ -30,8 +30,8 @@ class Problem1 {
     private static int getAddEachOfDigits(int number) {
         int digits = getNumberOfDigits(number);
         int result = 0;
-        for (int i=0; i<digits; i++) {
-            result += number%10;
+        for (int i = 0; i < digits; i++) {
+            result += number % 10;
             number /= 10;
         }
         return result;
@@ -40,8 +40,8 @@ class Problem1 {
     private static int getMultipleEachOfDigits(int number) {
         int digits = getNumberOfDigits(number);
         int result = 1;
-        for (int i=0; i<digits; i++) {
-            result *= number%10;
+        for (int i = 0; i < digits; i++) {
+            result *= number % 10;
             number /= 10;
         }
         return result;
@@ -54,37 +54,38 @@ class Problem1 {
             return 2;
         return 1;
     }
-}
-class Validator {
 
-    private static final int AVAILABLE_FIRST_PAGE = 3;
-    private static final int AVAILABLE_LAST_PAGE = 398;
-    public static boolean notValidateNumbers(List<Integer> numbers) {
-        if (notTwoSizes(numbers))
-            return true;
-        if (notConsecutive(numbers))
-            return true;
-        if (notInSpecificRange(numbers))
-            return true;
-        if (notOddNumberOfLeft(numbers))
-            return true;
-        return false;
-    }
+    static class Validator {
 
-    private static boolean notConsecutive(List<Integer> numbers) {
-        return (numbers.get(1) - numbers.get(0)) != 1;
-    }
+        private static final int AVAILABLE_FIRST_PAGE = 3;
+        private static final int AVAILABLE_LAST_PAGE = 398;
+        public static boolean notValidateNumbers(List<Integer> numbers) {
+            if (notTwoSizes(numbers))
+                return true;
+            if (notConsecutive(numbers))
+                return true;
+            if (notInSpecificRange(numbers))
+                return true;
+            if (notOddNumberOfLeft(numbers))
+                return true;
+            return false;
+        }
 
-    private static boolean notTwoSizes(List<Integer> numbers) {
-        return numbers.size() != 2;
-    }
+        private static boolean notConsecutive(List<Integer> numbers) {
+            return (numbers.get(1) - numbers.get(0)) != 1;
+        }
 
-    private static boolean notInSpecificRange(List<Integer> numbers) {
-        return numbers.get(0) < AVAILABLE_FIRST_PAGE
-                || numbers.get(1) > AVAILABLE_LAST_PAGE;
-    }
+        private static boolean notTwoSizes(List<Integer> numbers) {
+            return numbers.size() != 2;
+        }
 
-    private static boolean notOddNumberOfLeft(List<Integer> numbers) {
-        return numbers.get(0) % 2 != 1;
+        private static boolean notInSpecificRange(List<Integer> numbers) {
+            return numbers.get(0) < AVAILABLE_FIRST_PAGE
+                    || numbers.get(1) > AVAILABLE_LAST_PAGE;
+        }
+
+        private static boolean notOddNumberOfLeft(List<Integer> numbers) {
+            return numbers.get(0) % 2 != 1;
+        }
     }
 }
