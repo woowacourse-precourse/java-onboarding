@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -11,13 +12,15 @@ public class Problem7 {
     static int frendPoint = 10;
     static int visitPoint = 1;
     static int newFriends = 1;
+    static int knowFriends = 0;
+
     static int recommendMax = 5;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
 
-        findRecommendFriends(findVisitedPoint(findKnowFriendsPoint(savaFriendsList(friends, user)), visitors));
+       answer = findRecommendFriends(findVisitedPoint(findKnowFriendsPoint(savaFriendsList(friends, user)), visitors));
         return answer;
     }
 
@@ -27,17 +30,21 @@ public class Problem7 {
         List<String> recommendFriendsList = new ArrayList<>();
         Integer [] friendsPointArray = new Integer[friendsMap.size()];
 
-        for (int i = 0; i < friendsMap.size(); i++)
-        {
-            friendsPointArray[i] = friendsMap.get(i);
-            System.out.println(friendsPointArray[i]);
-        }
+        System.out.println("최종 :  " + friendsMap);
+
+        //map 배열로 저장
+        Collection<Integer> values = friendsMap.values();
+        friendsPointArray = values.toArray(new Integer[0]);
+
         Arrays.sort(friendsPointArray, Collections.reverseOrder());
 
         for (int i = 0; i < friendsPointArray.length; i++)
         {
             if (friendsPointArray[i] == 0 || cnt == recommendMax)
                 break;
+            //중복 제거
+            //이미 친구 제거
+
             recommendFriendsList.add(getKey(friendsMap, friendsPointArray[i]));
             cnt++;
         }
@@ -54,6 +61,16 @@ public class Problem7 {
             }
         }
         return null;
+    }
+
+    //이미 알고있는 친구 목록 구하기
+    public static List<String> findFriendsList(List<List<String>> friends)
+    {
+        List<String> friendList = new ArrayList<>();
+
+        for (int i = 0; i < friends.size(); i++)
+            friendList.add(friends.get(i).get(knowFriends));
+        return friendList;
     }
 
     //유저와 알고있는 친구 목록 구하기기
@@ -108,13 +125,8 @@ public class Problem7 {
                 knowFriendsMap.put(visitors.get(i), point);
             }
             else if (!knowFriendsMap.containsKey(key))
-            {
                 knowFriendsMap.put(visitors.get(i), point);
-            }
         }
-
-        System.out.println("방문 후 : " + knowFriendsMap);
-
         return knowFriendsMap;
     }
 }
