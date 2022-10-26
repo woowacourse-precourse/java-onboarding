@@ -30,4 +30,7 @@ class Problem1 {
         return Math.max(number1, number2);
     }
 
+    private static int getScore(Integer leftNumber, Integer rightNumber) {
+        return getHighNumber(leftNumber, rightNumber);
+    }
 }
