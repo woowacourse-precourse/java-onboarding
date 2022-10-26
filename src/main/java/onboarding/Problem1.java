@@ -17,4 +17,12 @@ class Problem1 {
         }
         return sumResult;
     }
+
+    public static boolean checkOddEvenValidation(List<Integer> values) {
+        if (values.get(0) % 2 == 0 && values.get(1) % 2 == 1) {
+            return false;
+        }
+
+        return true;
+    }
 }
