@@ -12,6 +12,10 @@ class Problem1 {
         return validateStartOrLastPage(values) && checkSequenceValidation(values) && checkOddEvenValidation(values);
     }
 
+    static int findMaxValue(List<Integer> values) {
+        return Math.max(findSumMaximumValue(values), findMulMaxValue(values));
+    }
+
     static int findSumMaximumValue(List<Integer> values) {
         int sumResult = 0;
         // 입력 값이 유효한 경우, 모든 자리 합의 경우 짝수 페이지가 무조건 크다.
