@@ -12,7 +12,9 @@ class Problem1 {
         if (p1_proxy(p_1, p_2) || p1_proxy(c_1, c_2)) {
             return -1;
         }
-        int answer = Integer.MAX_VALUE;
+        int p_val = Math.max(Math.max(digit_sum(p_1),digit_prod(p_1)),Math.max(digit_sum(p_2),digit_prod(p_2)));
+        int c_val = Math.max(Math.max(digit_sum(c_1),digit_prod(c_1)),Math.max(digit_sum(c_2),digit_prod(c_2)));
+        int answer = (p_val > c_val) ? 1 : (p_val < c_val) ? 2 : 0;
         return answer;
     }
     private static boolean p1_proxy(int a0, int a1) {
