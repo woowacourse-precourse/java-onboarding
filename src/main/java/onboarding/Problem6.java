@@ -5,14 +5,14 @@ import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        Set<String> emails = duplicateNicknameEmails(forms);
+        Set<String> emails = emailsOfDuplicateNickname(forms);
     
         return emails.stream()
                 .sorted()
                 .collect(Collectors.toList());
     }
     
-    private static Set<String> duplicateNicknameEmails(final List<List<String>> forms) {
+    private static Set<String> emailsOfDuplicateNickname(final List<List<String>> forms) {
         Set<String> emails = new HashSet<>();
         Map<String, String> map = new HashMap<>();
         
