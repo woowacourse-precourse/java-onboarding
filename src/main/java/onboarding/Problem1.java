@@ -43,6 +43,16 @@ class Problem1 {
         return sum;
     }
 
+    /**
+     * 3. 숫자 비교 후 큰 수 구하기
+     * @param a : 타켓 a
+     * @param b : 타겟 b
+     * @return : 큰 값
+     */
+    static int compare(Integer a, Integer b){
+        return a > b ? a : b;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
