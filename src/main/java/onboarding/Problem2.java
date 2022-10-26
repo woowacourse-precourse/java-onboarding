@@ -67,8 +67,32 @@ public class Problem2 {
         return cryptogram;
     }
 
+    /*
+     * 중복된 문자들를 한 단계 제거한다.
+     *
+     * @param 해독할 문자열
+     * @return 중복 문자들이 한 번 제거된 문자열
+     * */
     private static String removeRepeatingLetters(String cryptogram) {
+        Stack<Character> letters = new Stack<Character>();
+        char previousLetter = ' ';
+        boolean popped = false;
+        for (int i = 0; i < cryptogram.length(); i++) {
+            char currentLetter = cryptogram.charAt(i);
+            if (currentLetter == previousLetter) {
+                if (popped == false) {
+                    popped = true;
+                    letters.pop();
+                }
+                continue;
+            }
+            previousLetter = currentLetter;
+            popped = false;
+        }
+        return "";
+    }
 
+    private static String stringify(String cryptogram) {
         return "";
     }
 
