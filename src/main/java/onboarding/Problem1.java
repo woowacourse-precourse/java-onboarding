@@ -4,7 +4,12 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = -1;
+        if (!isValidPageNum(pobi) || !isValidPageNum(crong)) {
+            return -1;
+        }
+
+        int answer = Integer.MAX_VALUE;;
+
         int pobiPoint = calcPoint(pobi);
         int crongPoint = calcPoint(crong);
 
@@ -17,6 +22,19 @@ class Problem1 {
         }
 
         return answer;
+    }
+
+    static boolean isValidPageNum(List<Integer> user) {
+        int left = user.get(0);
+        int right = user.get(1);
+
+        if (left % 2 == 1 && right % 2 == 0) {
+            if (right - left == 1) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     static int calcPoint(List<Integer> user) {
