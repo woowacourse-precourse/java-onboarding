@@ -19,6 +19,7 @@ public class Problem2 {
         }
 
         // 원래 문자열로 되돌리기
+        // Q1. StringBuilder 사용하면 코드 단축가능
         while(!stack.empty()) {
             back.push(stack.pop());
         }
