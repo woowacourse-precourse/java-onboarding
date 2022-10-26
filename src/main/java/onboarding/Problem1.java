@@ -6,14 +6,17 @@ import java.util.List;
 
 class Problem1 {
 
+    private static final int POBI_WIN = 1;
+    private static final int CRONG_WIN = 2;
+    private static final int SAME_SCORE = 0;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
         if (!validatePageNum(pobi) || !validatePageNum(crong)) return -1;
 
         int pobiScore = getMaxScore(pobi);
         int crongScore = getMaxScore(crong);
 
-        return answer;
+        return compareScore(pobiScore, crongScore);
     }
 
     private static Boolean validatePageNum(List<Integer> pageList) {
@@ -41,6 +44,12 @@ class Problem1 {
         }
         scoreList.add(sum);
         scoreList.add(multi);
+    }
+
+    private static int compareScore(int pobiScore, int crongScore) {
+        if (pobiScore > crongScore) return POBI_WIN;
+        else if (pobiScore < crongScore) return CRONG_WIN;
+        else return SAME_SCORE;
     }
 
 }
