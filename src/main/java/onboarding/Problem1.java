@@ -10,6 +10,14 @@ class Problem1 {
         return answer;
     }
 
+    private static int getLeftPageNum(List<Integer> pages) {
+        return pages.get(0);
+    }
+
+    private static int getRightPageNum(List<Integer> pages) {
+        return pages.get(1);
+    }
+
     private static int getMaxSumAndMultiply(List<Integer> digitList) {
 
         return Integer.max(getDigitSum(digitList), getDigitMultiply(digitList));
