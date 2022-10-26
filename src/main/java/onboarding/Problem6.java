@@ -22,7 +22,15 @@ public class Problem6 {
                 emails.add(forms.get(i).get(0));
             }
         }
+
+        answer = SetToArray(emails);
         return answer;
+    }
+
+    public static List<String> SetToArray(HashSet<String> set){
+        return set.stream()
+                .sorted()
+                .collect(Collectors.toList());
     }
 
     //이름을 2글자로 나눠서 리스트에 저장
