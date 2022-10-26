@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static Map<String, LinkedList<String>> initGraph(List<List<String>> friends){
@@ -20,6 +21,19 @@ public class Problem7 {
         });
 
         return graph;
+    }
+
+    public static Map<String, Integer> initScoreBoard(Map<String, LinkedList<String>> graph, String user){
+        Map<String, Integer> scoreBoard=new HashMap<>();
+
+        Set<String> userFriends= new HashSet<>(graph.get(user));
+
+        graph.keySet().stream()
+                .filter(o->!o.equals(user))
+                .filter(o->!userFriends.contains(o))
+                .forEach(o->scoreBoard.put(o, 0));
+
+        return scoreBoard;
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
