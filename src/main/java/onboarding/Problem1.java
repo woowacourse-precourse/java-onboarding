@@ -7,4 +7,24 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+
+    static int chooseMultiSum(int page){
+        int len = page+"".length();
+        int sum = 0;
+        int multi = 1;
+
+        int tmp = page;
+        for (int i = 0; i < len - 1; i++) {
+            sum += tmp % 10;
+            tmp /= 10;
+        }
+
+        tmp = page;
+        for (int i = 0; i < len - 1; i++) {
+            multi *= tmp % 10;
+            tmp /= 10;
+        }
+
+        return Math.max(sum, multi);
+    }
 }
