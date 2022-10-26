@@ -35,6 +35,18 @@ class Problem1 {
         if (errChk(pobi) || errChk(crong)){
             return -1;
         }
+        //compare
+        int res_pobi = Math.max(plus(pobi), multi(pobi));
+        int res_crong = Math.max(plus(crong), multi(crong));
+        if (res_pobi > res_crong){
+            answer = 1;
+        }
+        else if (res_pobi < res_crong){
+            answer = 2;
+        }
+        else if (res_pobi == res_crong){
+            answer = 0;
+        }
         return answer;
     }
 }
