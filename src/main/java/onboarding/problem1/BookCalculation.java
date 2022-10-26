@@ -7,9 +7,6 @@ public class BookCalculation {
 
     public List<Integer> calculation(List<Integer> player) {
 
-        int addition = 0;
-        int multiplication = 0;
-
         List<Integer> result = new ArrayList<>();
 
         for (int number : player) {
@@ -18,8 +15,8 @@ public class BookCalculation {
             int second = (number / 10) % 10;
             int third = number % 10;
 
-            addition = first + second + third;
-            multiplication = first * second * third;
+            int addition = first + second + third;
+            int multiplication = first * second * third;
 
             result.add(addition);
             result.add(multiplication);
@@ -30,6 +27,14 @@ public class BookCalculation {
 
     public int maxNumber(List<Integer> player) {
 
-        return 0;
+        int max = 0;
+
+        for (int number : player) {
+            if (max < number) {
+                max = number;
+            }
+        }
+
+        return max;
     }
 }
