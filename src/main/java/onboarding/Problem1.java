@@ -46,4 +46,17 @@ class Problem1 {
         }
         return true;
     }
+
+    private static int calculatePageScore(Integer pageNumber) {
+        int targetPageNumber = pageNumber;
+        int addScore = 0;
+        int multiplyScore = 1;
+
+        while (targetPageNumber != 0) {
+            addScore += targetPageNumber % 10;
+            multiplyScore *= targetPageNumber % 10;
+            targetPageNumber /= 10;
+        }
+        return Math.max(addScore, multiplyScore);
+    }
 }
