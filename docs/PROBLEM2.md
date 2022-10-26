@@ -10,6 +10,13 @@
 
 임의의 문자열 cryptogram이 매개변수로 주어질 때, 연속하는 중복 문자들을 삭제한 결과를 return 하도록 solution 메서드를 완성하라.
 
+### 정리
+1. 암호문 Cryptogram class 생성
+2. origin 암호문을 복제한 duplication field 초기화 메서드 작성
+3. 반복되는 문자가 있는지 확인하는 메서드 작성
+4. duplication을 탐색하는 메서드 작성
+5. duplication에 반복되는 문자가 없을 때까지 순환하는 decode 메서드 작성
+
 ### 제한사항
 
 - cryptogram은 길이가 1 이상 1000 이하인 문자열이다.
