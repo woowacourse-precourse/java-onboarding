@@ -9,11 +9,14 @@ class Problem1 {
         if (isError(pobi) || isError(crong))
             return -1;
 
-        if (getScore(pobi) == getScore(crong))
+        int pobiScore = getScore(pobi);
+        int crongScore = getScore(crong);
+
+        if (pobiScore == crongScore)
             answer = 0;
-        else if (getScore(pobi) > getScore(crong))
+        else if (pobiScore > crongScore)
             answer = 1;
-        else if (getScore(pobi) < getScore(crong))
+        else if (pobiScore < crongScore)
             answer = 2;
 
         return answer;
