@@ -1,40 +1,8 @@
 # 미션 - 온보딩
 
-## 🔍 진행 방식
-
-- 미션은 **기능 요구 사항, 프로그래밍 요구 사항, 과제 진행 요구 사항** 세 가지로 구성되어 있다.
-- 세 개의 요구 사항을 만족하기 위해 노력한다. 특히 기능을 구현하기 전에 기능 목록을 만들고, 기능 단위로 커밋 하는 방식으로 진행한다.
-- 기능 요구 사항에 기재되지 않은 내용은 스스로 판단하여 구현한다.
-
-## 📮 미션 제출 방법
-
-- 미션 구현을 완료한 후 GitHub을 통해 제출해야 한다.
-    - GitHub을 활용한 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고해
-      제출한다.
-- GitHub에 미션을 제출한 후 [우아한테크코스 지원](https://apply.techcourse.co.kr) 사이트에 접속하여 프리코스 과제를 제출한다.
-    - 자세한 방법은 [제출 가이드](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse#제출-가이드) 참고
-    - **Pull Request만 보내고 지원 플랫폼에서 과제를 제출하지 않으면 최종 제출하지 않은 것으로 처리되니 주의한다.**
-
-## 🚨 과제 제출 전 체크 리스트 - 0점 방지
-
-- 기능 구현을 모두 정상적으로 했더라도 **요구 사항에 명시된 출력값 형식을 지키지 않을 경우 0점으로 처리**한다.
-- 기능 구현을 완료한 뒤 아래 가이드에 따라 테스트를 실행했을 때 모든 테스트가 성공하는지 확인한다.
-- **테스트가 실패할 경우 0점으로 처리**되므로, 반드시 확인 후 제출한다.
-
-### 테스트 실행 가이드
-
-- 터미널에서 `java -version`을 실행하여 Java 버전이 11인지 확인한다. 또는 Eclipse 또는 IntelliJ IDEA와 같은 IDE에서 Java 11로 실행되는지 확인한다.
-- 터미널에서 Mac 또는 Linux 사용자의 경우 `./gradlew clean test` 명령을 실행하고,   
-  Windows 사용자의 경우  `gradlew.bat clean test` 명령을 실행할 때 모든 테스트가 아래와 같이 통과하는지 확인한다.
-
-```
-BUILD SUCCESSFUL in 0s
-```
-
 ---
 
-## 🚀 기능 요구 사항
-아래의 7가지 기능 요구 사항을 모두 해결해야 한다.
+## 🚀 기능 목록
 
 1. [문제 1](./docs/PROBLEM1.md)
 2. [문제 2](./docs/PROBLEM2.md)
@@ -46,17 +14,69 @@ BUILD SUCCESSFUL in 0s
 
 ---
 
-## 🎯 프로그래밍 요구 사항
+## ✏ 과제 진행 중 배운 점
 
-- JDK 11 버전에서 실행 가능해야 한다. **JDK 11에서 정상적으로 동작하지 않을 경우 0점 처리한다.**
-- `build.gradle`을 변경할 수 없고, 외부 라이브러리를 사용하지 않는다.
-- 프로그램 종료 시 `System.exit()`를 호출하지 않는다.
-- 프로그램 구현이 완료되면 `ApplicationTest`의 모든 테스트가 성공해야 한다. **테스트가 실패할 경우 0점 처리한다.**
-- 프로그래밍 요구 사항에서 달리 명시하지 않는 한 파일, 패키지 이름을 수정하거나 이동하지 않는다.
+- ### **좋은 코드란 무엇인가?** [[참조](https://velog.io/@couchcoding/%EA%B0%9C%EB%B0%9C-%EC%B4%88%EB%B3%B4%EB%8F%84-%EB%B0%94%EB%A1%9C-%EC%A0%81%EC%9A%A9%ED%95%B4-%EB%B3%BC-%EC%88%98-%EC%9E%88%EB%8A%94-%EC%A2%8B%EC%9D%80-%EC%BD%94%EB%93%9C-%EC%9E%91%EC%84%B1%EB%B2%95)]
+   - 일반적으로 좋은 코드란 **가독성이 좋아 이해하기 쉽고, 변경하기 쉬우며, 재사용하기 쉽고, 효율적인 코드**를 이야기 한다고 한다.
+   - 그런 코드를 작성하기 위해 지켜야 할 사항은 아래와 같다.
+     1. 코딩 컨벤션을 지키자.
+     2. 이름을 잘 짓자.
+     3. 파악하기 쉬운 프로젝트 구조를 만들자.
+     4. 추상레벨을 일정 수준으로 유지하자.
+     5. 반복하지 말자(Don't Repeat Yourself).
+   - 앞으로 코드를 작성할 때 위의 사항들을 유념하며 작성하도록 해야겠다.
 
----
 
-## ✏️ 과제 진행 요구 사항
+- ### **코딩 컨벤션이란?** [[참조](https://developer-doreen.tistory.com/38)]
+  - 코딩 컨벤션은 읽고, 관리하기 쉬운 코드를 작성하기 위한 일종의 코딩 스타일 규약(하나의 작성 표준)이다. 
+    - 개발자 간 통일된 규약이 없다면 코드의 의도를 파악하거나 오류를 찾기 어려우며 유지보수 비용이 늘어난다.
+  - JAVA의 코딩 컨벤션의 종류 [[참조](https://velog.io/@ozragwort/JAVA-%EC%BD%94%EB%94%A9-%EC%BB%A8%EB%B2%A4%EC%85%98%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C)]
+    - NAVER: [https://naver.github.io/hackday-conventions-java/](https://naver.github.io/hackday-conventions-java/)
+    - GOOGLE: [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html)
+    - ORACLE: [Code Conventions for the Java](https://www.oracle.com/java/technologies/javase/codeconventions-contents.html)
 
-- 미션은 [java-onboarding](https://github.com/woowacourse-precourse/java-onboarding) 저장소를 Fork & Clone해 시작한다.
-- 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+- ### **이름은 어떻게 잘 지을까?**
+  - 네이밍시 중요한 고려사항
+    - 왜 존재해야 하는가
+    - 무슨 작업을 하는가
+    - 어떻게 사용하는가
+  - 메서드 명명 규칙 [[참조](https://tecoble.techcourse.co.kr/post/2020-04-26-Method-Naming/)]
+    - 메서드 이름은 lowerCamelCase로 작성한다.
+    - 메서드 이름은 동사/전치사로 시작한다.
+  - 변수명 명명 규칙 [[참조](https://tecoble.techcourse.co.kr/post/2020-04-24-variable_naming/)]
+    - 변수명 역시 lowerCamelCase로 작성한다.
+    - 따로 주석이 필요 없을 정도로 명확한 변수명을 쓴다.
+    - 맥락을 고려해 생략 가능한 부분은 생략해 가독성을 높인다.
+    - 불린형 변수는 not을 붙이지 않는다.
+
+- ### **깃 커밋 메시지 컨벤션** [[참조](https://seolahchloe.tistory.com/entry/GitHub-%EA%B9%83-%EC%BB%A4%EB%B0%8B-%EB%A9%94%EC%84%B8%EC%A7%80-%EC%BB%A8%EB%B2%A4%EC%85%98-Git-Commit-Message-Convention)]
+  - 커밋 메시지 구조
+    ```
+    타입: 제목 (이하 선택사항, 작성시 두 줄을 띈다.)
+    
+    본문
+    
+    각주
+    ```
+    - 타입
+      - 해당 커밋이 무엇을 한 커밋인지 대분류로 나눈다.
+      - 종류:
+        - Feat - 새로운 기능 추가
+        - Fix - 버그 수정
+        - Docs - 문서 수정
+        - Style - 코드 포맷팅, 세미콜론 누락 등, 기능 변경은 없는 경우
+        - Refactor - 코드 리팩토링
+        - Test - 테스트 코드, 리팩토링 테스트 코드 추가
+        - Chore - 빌드 업무 수정, 패키지 매니저 수정
+    - 제목
+      - 50자를 넘기지 않고 첫 글자는 대문자로, 마침표는 찍지 않는다
+      - 현재 시제의 명령문으로 작성한다
+    - 본문
+      - 선택사항이기 때문에 작성할 필요는 없다.
+      - 어떻게 보다는 '무엇을' 과 '왜'에 대한 내용을 설명한다.
+      - 72자 이내로 작성한다.
+    - 각주
+      - 역시 선택사항이다.
+      - Issue Tracker ID를 작성할 때 사용한다.
+      - 예) Resolves: #??? 혹은 See Also: #???
