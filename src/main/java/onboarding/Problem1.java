@@ -13,18 +13,54 @@ import java.util.List;
  * 문제 분석
  * 1. 1~400 페이지의 책을 사용한다는 조건과 기능 요구사항 1,6번 그리고 제한사항을 근거로
  *      1-1 모든 값이 1~400 이 되는지 확인
- *      1-2 왼쪽값이 홀수인지, 오른쪽 값이 항상 왼쪽값+1 이 되는지 확인
- *    의 확인 절차 를 거쳐야한다.
- *    즉, 왼쪽이 1~399 사이의 홀수 값인지 확인후 오른쪽 값이 왼쪽값 +1 이 되는지 확인
- * 2. 기능 요구사항 2,3, 번을 수행할 각자리 숫자의 합, 곱을 구하는 메서드를 각각 구현 하고,
+ *      1-2 왼쪽값이 홀수인지, 오른쪽 값이 항상 왼쪽값+1 이 되는지 확인 절차 를 거쳐야한다(메서드 구현).
+ *    즉, 왼쪽이 1~399 사이의 홀수 값인지 확인후 오른쪽 값이 왼쪽값 +1 이 되는지 확인하고 아니라면 -1 반환
+ *
+ * 2. 기능 요구사항 2,3 번을 수행할 각자리 숫자의 합, 곱중 가장 큰값 을 구하는 메서드를  구현 하고,
  *      값의 확인절차후 위 메서들 두개를 활용하여 기능 요구사항 4번을 수행할 가장 큰값을 찾는 메서드를 구현한다.
- *      즉, solution() -> 가장 큰 값 찾기() -> 각자리 숫자의 합(), 곱()  순으로 메서드 호출
+ *      즉, solution() -> 가장 큰 값 찾기() -> 각자리 숫자의 합,곱중 가장 큰값() 순으로 메서드 호출
  * 3. 포비, 크롱 의 가장 큰값을 비교하여 기능요구사항 5번에 부합하는 값을 반환한다.
  *
  */
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int answer ;
+        if (!isCorrectValue(pobi) || !isCorrectValue(crong)) {
+            return -1;
+        }
+
+        int pobiPoint = getMaxFromList(pobi);
+        int crongPoint =getMaxFromList(crong);
+
+        answer = pobiPoint > crongPoint ? 1 : (pobiPoint < crongPoint ? 2 : 0);
         return answer;
     }
+    static boolean isCorrectValue(List<Integer> input){
+        int leftValue = input.get(0);
+        int rightValue = input.get(1);
+        if (leftValue <= 399 && leftValue % 2 == 1 && rightValue == leftValue + 1) {
+            return true;
+        }else{
+            return false;
+        }
+    }
+    static int getMaxFromSumAndMultiple(int num){
+        int sum = 0;
+        int multi = 1;
+        while (num > 0) {
+            sum += num % 10;
+            multi *= num % 10;
+            num /= 10;
+        }
+        return Math.max(sum,multi);
+    }
+
+    static int getMaxFromList(List<Integer> input) {
+        int result=-1;
+        for (int i : input) {
+            result = Math.max(result,getMaxFromSumAndMultiple(i));
+        }
+        return result;
+    }
+
 }
