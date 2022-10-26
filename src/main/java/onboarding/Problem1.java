@@ -1,5 +1,7 @@
 package onboarding;
 
+import onboarding.problem1.Judgment;
+
 import java.util.List;
 
 class Problem1 {
