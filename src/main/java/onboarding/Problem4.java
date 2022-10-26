@@ -4,7 +4,7 @@ public class Problem4 {
     public static String solution(String word) {
         String answer = "";
 
-
+        answer = translateString(word);
 
         return answer;
     }
@@ -49,8 +49,28 @@ public class Problem4 {
     public static char translateChar(char ch) {
         char translatedCharacter = ' ';
 
+        if(checkUpperOrLower(ch)) // 대문자 인 경우
+        {
+            int add = ch - 'A';
+            translatedCharacter = (char)(ch + (25 - add * 2));
+            return translatedCharacter;
+        }
+        int add = ch - 'a';
+        translatedCharacter = (char)(ch + (25 - add * 2));
+
         return translatedCharacter;
     }
 
+    /**
+     * 기능 4
+     * 알파벳 대문자 소문자 구분 하는 기능
+     * true : 대문자 , false : 소문자
+     */
+    public static boolean checkUpperOrLower(char ch) {
+        if(ch >= 65 && ch <= 90) // 대문자일 경우,
+            return true;
+
+        return false;
+    }
 
 }
