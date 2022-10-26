@@ -167,6 +167,36 @@ class ApplicationTest {
             List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
+
+        @Test
+        @DisplayName("세 글자 이상 겹치는 경우에도 정상적으로 작동한다.")
+        void case2() {
+            List<List<String>> forms = List.of(
+                    List.of("jm@email.com", "롬뭄무야"),
+                    List.of("jason@email.com", "이뭄무야"),
+                    List.of("woniee@email.com", "이박사"),
+                    List.of("mj@email.com", "삼성증권이사장"),
+                    List.of("nowm@email.com", "증성증권차장님"),
+                    List.of("baak@email.com", "빡빡이아조씨")
+            );
+            List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com", "nowm@email.com");
+            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
+
+        @Test
+        @DisplayName("result 는 이메일에 해당하는 부분의 문자열을 오름차순으로 정렬하고 중복은 제거한다.")
+        void case3() {
+            List<List<String>> forms = List.of(
+                    List.of("A@email.com", "간장게장"),
+                    List.of("B@email.com", "간장게장"),
+                    List.of("D@email.com", "간장게장"),
+                    List.of("D@email.com", "간장게장"),
+                    List.of("D@email.com", "간장게장"),
+                    List.of("F@email.com", "간장게장")
+            );
+            List<String> result = List.of("A@email.com", "B@email.com", "D@email.com", "F@email.com");
+            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
     }
 
     @Nested
