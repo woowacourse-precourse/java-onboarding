@@ -8,6 +8,10 @@ import java.util.stream.Collectors;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
+
+        answer = findDuplicateNickname(forms);
+        answer = sortEmailList(answer);
+
         return answer;
     }
 
