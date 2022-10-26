@@ -47,4 +47,11 @@ public class RefereeTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("올바르지 않은 입력 값 입니다.");
     }
+
+    @Test
+    void 마지막페이지이면_예외() {
+        assertThatThrownBy(() -> new Referee(List.of(399, 400), List.of(3, 4)))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("올바르지 않은 입력 값 입니다.");
+    }
 }

@@ -7,6 +7,8 @@ public class Referee {
     public static final int CONTINOUS_CRITERION = 1;
     public static final int START_PAGE_NUMBER_ONE = 1;
     public static final int START_PAGE_NUMBER_TWO = 2;
+    public static final int END_PAGE_NUMBER_LEFT = 399;
+    public static final int END_PAGE_NUMBER_RIGHT = 400;
     private final Player pobi;
     private final Player crong;
 
@@ -35,6 +37,13 @@ public class Referee {
         if (isStartPage(leftPageNumber, rightPageNumber)) {
             throw new IllegalArgumentException("올바르지 않은 입력 값 입니다.");
         }
+        if (isEndPage(leftPageNumber, rightPageNumber)) {
+            throw new IllegalArgumentException("올바르지 않은 입력 값 입니다.");
+        }
+    }
+
+    private boolean isEndPage(int leftPageNumber, int rightPageNumber) {
+        return leftPageNumber == END_PAGE_NUMBER_LEFT && rightPageNumber == END_PAGE_NUMBER_RIGHT;
     }
 
     private boolean isStartPage(int leftPageNumber, int rightPageNumber) {
