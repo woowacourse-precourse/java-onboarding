@@ -4,12 +4,15 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong){
-    int answer = Integer.MAX_VALUE;
+    int pobiScore, crongScore, answer;
 
     if (!Validation.isValidateInput(pobi) || !Validation.isValidateInput(crong)) {
         return -1;
     }
 
+    pobiScore = ScoreController.calcScore(pobi);
+    crongScore = ScoreController.calcScore(crong);
+    answer = Integer.MAX_VALUE;
     return answer;
 }
 
@@ -55,6 +58,15 @@ class ScoreController{
             return num1;
         }
         return num2;
+    }
+
+    static int calcScore(List<Integer> pageList){
+        int result;
+        int leftMax = findMax(sumDigits(pageList.get(0)), mulDigits(pageList.get(0)));
+        int rightMax = findMax(sumDigits(pageList.get(1)), mulDigits(pageList.get(1)));
+
+        result = findMax(leftMax,rightMax);
+        return result;
     }
 
 }
