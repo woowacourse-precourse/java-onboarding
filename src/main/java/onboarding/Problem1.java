@@ -7,7 +7,7 @@ import static java.lang.Math.max;
 class Problem1 {
 
     // solution함수가 static이기 때문에 다른 함수들도 static으로 해야한다.
-    // 모든 조건을 만족하는지 판별
+    // 모든 조건을 만족하는지 판별(페이지가 범위내에 있는지 * 서로 인접한 페이지인지 * 왼쪽이 홀수 오른쪽이 짝수인지)
     static boolean checkValid(List<Integer> pages) {
         return checkInterval(pages) && checkDiff(pages) && checkOddEven(pages);
     }
@@ -16,7 +16,7 @@ class Problem1 {
     static boolean checkDiff(List<Integer> pages) {
         return pages.get(1) - pages.get(0) == 1;
     }
-    // 책 왼쪽 페이지 홀수, 오른쪽 페이지 짝수인지 판별
+    // 책 왼쪽 페이지 홀수, 오른쪽 페이지 짝수인지 판별 0으로 나눠서 오류나올 수 있으니 예외처리 해놓음.
     static boolean checkOddEven(List<Integer> pages) {
         try {
             return pages.get(0) % 2 == 1 && pages.get(1) % 2 == 0;
@@ -39,7 +39,6 @@ class Problem1 {
         for(int i=0; i<eachDigit.length; i++) {
             total += eachDigit[i] - '0';
         }
-        System.out.println(page + " 각 자릿수 더하기 = " + total);
         return total;
     }
 
@@ -50,7 +49,6 @@ class Problem1 {
         for(int i=0; i<eachDigit.length; i++) {
             total *= eachDigit[i] - '0';
         }
-        System.out.println(page + " 각 자릿수 곱하기 = " + total);
         return total;
     }
 
@@ -65,20 +63,21 @@ class Problem1 {
         Integer right = pages.get(1);
         return max(maxAddDot(left), maxAddDot(right));
     }
+
+    // 둘의 비교를 통해 상황에 따른 값 출력.
+    static int maxPobiCrong(Integer maxpobi, Integer maxcrong) {
+        if(maxpobi < maxcrong) {
+            return 2;
+        } else if(maxpobi > maxcrong) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
         if(!(checkValid(pobi) && checkValid(crong))) {
             return -1;
         }
-        int maxPobi = maxLeftRight(pobi);
-        int maxCrong = maxLeftRight(crong);
-        if(maxPobi < maxCrong) {
-            answer = 2;
-        } else if(maxPobi > maxCrong) {
-            answer = 1;
-        } else {
-            answer = 0;
-        }
-        return answer;
+        return maxPobiCrong(maxLeftRight(pobi), maxLeftRight(crong));
     }
 }
