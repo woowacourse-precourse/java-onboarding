@@ -23,4 +23,13 @@ class Problem1 {
         }
         return sum;
     }
+
+    private int digitProduct(int pageNum) {
+        int sum = 1;
+        while (pageNum > 0) {
+            sum *= (pageNum % 10);
+            pageNum /= 10;
+        }
+        return sum;
+    }
 }
