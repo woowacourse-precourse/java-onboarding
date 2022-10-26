@@ -21,9 +21,31 @@ public class Problem3 {
     }
 
     /**
-     * 숫자 분할하기
+     * 박수 세기
+     * @param number 분리된 숫자
+     * @return 박수 횟수
+     */
+    private static int countClap(int number) {
+        int countClap = 0;
+
+        // 3,6,9 존재 확인 및 갯수 체크
+        for(int i = 1; i <= number; i++) {
+            int[] splitNumber = splitNumber(i);
+
+            for(int j : splitNumber) {
+                if (j == 3 || j == 6 || j == 9) {
+                    countClap ++;
+                }
+            }
+        }
+
+        return countClap;
+    }
+
+    /**
+     * 숫자 분리하기
      * @param number 숫자
-     * @return 분할된 숫자 배열
+     * @return 분리된 숫자
      */
     private static int[] splitNumber(int number) {
         ArrayList<Integer> arrayNumber = new ArrayList<>();
