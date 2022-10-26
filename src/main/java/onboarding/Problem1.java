@@ -14,7 +14,18 @@ class Problem1 {
             return -1;
         }
 
+        int pobi_score = getScore(pobi);
+        int crong_score = getScore(crong);
+
         return answer;
+    }
+
+    private static int getScore(List<Integer> pages) {
+
+        int left_score = Math.max(getSum(pages.get(0)), getMul(pages.get(0)));
+        int right_score = Math.max(getSum(pages.get(1)), getMul(pages.get(1)));
+
+        return Math.max(left_score, right_score);
     }
 
     private static int getSum(int page) {
