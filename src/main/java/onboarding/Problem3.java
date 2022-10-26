@@ -17,4 +17,6 @@ public class Problem3 {
         // 숫자가 1 이상 ~ 10,000 이하 자연수 인지 확인
         return (number >= 1 && number <= 10000);
     }
+
+
 }
