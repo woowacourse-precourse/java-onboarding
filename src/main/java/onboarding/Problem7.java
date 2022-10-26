@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * 기능 사항
@@ -37,6 +34,28 @@ public class Problem7 {
         public Integer getScore() {
             return score;
         }
+
+    }
+
+    /**
+     * 친구 관계를 만드는 함수
+     * @param user
+     * @param friends
+     */
+    static void makeFriendShip(String user, List<List<String>> friends){
+        friends.forEach(f -> {
+            if (!f.get(0).equals(user)) points.put(f.get(0), 0);
+            if (!f.get(1).equals(user)) points.put(f.get(1), 0);
+            if (!friendsHashMap.containsKey(f.get(0))) {
+                friendsHashMap.put(f.get(0), new HashSet<>());
+            }
+            if (!friendsHashMap.containsKey(f.get(1))) {
+                friendsHashMap.put(f.get(1), new HashSet<>());
+            }
+            friendsHashMap.get(f.get(0)).add(f.get(1));
+            friendsHashMap.get(f.get(1)).add(f.get(0));
+        });
+
 
     }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
