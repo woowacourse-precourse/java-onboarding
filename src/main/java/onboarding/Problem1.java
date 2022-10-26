@@ -6,12 +6,6 @@ import java.util.List;
 
 class Problem1 {
 
-    public static void main(String[] args) {
-        int aws = -11;
-        ArrayList<Integer> pobi = new ArrayList<Integer>(Arrays.asList(131,132));
-        ArrayList<Integer> crong = new ArrayList<Integer>(Arrays.asList(99,102));
-        System.out.println(solution(pobi,crong));
-    }
 
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
