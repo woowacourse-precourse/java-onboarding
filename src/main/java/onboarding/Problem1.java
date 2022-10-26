@@ -23,7 +23,7 @@ class Problem1 {
           mulTotal *= val % 10;
           val /= 10;
         }
-        return Integer.max(divTotal, mulTotal);
+        return Math.max(divTotal, mulTotal);
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -44,8 +44,8 @@ class Problem1 {
             int leftResultCrong = Calculator(crong.get(0));
             int rightResultCrong = Calculator(crong.get(1));
 
-            int pobiMax = Integer.max(leftResultPobi, rightResultPobi);
-            int crongMax = Integer.max(leftResultCrong, rightResultCrong);
+            int pobiMax = Math.max(leftResultPobi, rightResultPobi);
+            int crongMax = Math.max(leftResultCrong, rightResultCrong);
 
             if (pobiMax > crongMax)
                 return 1;
