@@ -35,4 +35,11 @@ class Problem1 {
         if(sum==multiply || sum>multiply) return sum;
         return multiply;
     }
+
+    //승자를 가리는 함수
+    public static int getWinner(int pobi, int crong){
+        if(pobi==crong) return 0;
+        if(pobi>crong) return 1;
+        return 2;
+    }
 }
