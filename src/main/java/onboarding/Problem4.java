@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Problem4 {
@@ -14,7 +15,16 @@ public class Problem4 {
     }
 
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        Map<Character, Character> dictionary=new HashMap<>();
+        initDictionary(dictionary);
+
+        StringBuilder sb=new StringBuilder(word);
+        for(int i=0; i<sb.length(); i++){
+            char next=sb.charAt(i);
+            if(dictionary.containsKey(next))
+                sb.setCharAt(i, dictionary.get(next));
+        }
+
+        return sb.toString();
     }
 }
