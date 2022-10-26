@@ -60,3 +60,18 @@ BUILD SUCCESSFUL in 0s
 
 - 미션은 [java-onboarding](https://github.com/woowacourse-precourse/java-onboarding) 저장소를 Fork & Clone해 시작한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+# 구현할 목록
+
+## 문제 1
+* 매개변수로 입력 받은 배열을 확인한다.
+* 각각의 배열을 더하거나 곱해서 더 큰 값을 서로 구한다.
+* 서로 구한 가장 큰 값을 비교해서 누가 더 큰지 확인한다.
+### 매개변수 확인
+- [ ] 매개변수로 받은 배열의 크기가 2인지 확인하는 메서드 구현
+- [ ] 매개변수로 받은 배열이 정수가 3~398 사이인지 확인하는 메서드 구현
+- [ ] 매개변수로 받은 배열이 연속된 숫자인지 확인하는 메서드 구현
+### 매개변수 처리
+- [ ] 배열의 합이나 곱중 큰 값을 리턴하는 메서드 구현
+### 비교
+- [ ] 두개의 값을 비교해서 누가 더 큰지 확인하는 메서드 구현
