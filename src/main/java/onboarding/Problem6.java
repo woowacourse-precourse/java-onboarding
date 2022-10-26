@@ -3,6 +3,7 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -63,6 +64,10 @@ public class Problem6 {
      * 기능 3
      * 이메일 목록을 오름차순으로 정렬
      */
+    public static List<String> sortEmailList(List<String> listOfEmail) {
+
+        return listOfEmail.stream().sorted().collect(Collectors.toList());
+    }
 
     /**
      * 기능 4
