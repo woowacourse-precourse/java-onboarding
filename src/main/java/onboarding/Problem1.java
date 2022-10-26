@@ -8,7 +8,7 @@ class Problem1 {
         return answer;
     }
 
-    private static int addNumbers(Integer number) {
+    private static int addNumber(Integer number) {
         int sum = 0;
         while (number > 0) {
             sum += number % 10;
@@ -16,4 +16,5 @@ class Problem1 {
         }
         return sum;
     }
+
 }
