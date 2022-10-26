@@ -3,9 +3,12 @@ package onboarding;
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
+        for(int i = 1; i <= number; i++){
+            answer += Problem3.countingClaps(i);
+        }
         return answer;
     }
-    public static int countingClaps(int n){
+    public static int countingClaps(int n) {
         int count=0;
         int number=n;
         while(number > 0){
