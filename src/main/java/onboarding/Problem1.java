@@ -3,15 +3,18 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-    private static final int ERROR_CODE=-1;
+    private static final int ERROR=-1;
+    private static final int POBI_WIN=1;
+    private static final int CRONG_WIN=2;
+    private static final int DRAW=0;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if(!isInputValid(pobi)||!isInputValid(crong)){
-            return ERROR_CODE;
+            return ERROR;
         }
-
         //포비, 크롱 둘 다 더하기, 곱하기, 자기 점수 구하기, 인풋체크 해야함
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        return calculateGameResult(pobi,crong);
+
     }
 
     private static Boolean isInputValid(List<Integer> person){
@@ -43,6 +46,26 @@ class Problem1 {
         } else {
             return hundredsPlace*tensPlace*onesPlace;
         }
+    }
+
+    private static int getMyScore(List<Integer> person){
+        int leftPage=person.get(0);
+        int rightPage=person.get(1);
+        int addHigh=Math.max(addPageNumber(leftPage),addPageNumber(rightPage));
+        int multiplyHigh=Math.max(multiplyPageNumber(leftPage),multiplyPageNumber(rightPage));
+        return Math.max(addHigh,multiplyHigh);
+    }
+
+    private static int calculateGameResult(List<Integer> pobi, List<Integer> crong){
+        int pobiScore=getMyScore(pobi);
+        int crongScore=getMyScore(crong);
+        if(pobiScore>crongScore) {
+            return POBI_WIN;
+        }
+        if(pobiScore<crongScore) {
+            return CRONG_WIN;
+        }
+        return DRAW;
     }
 
     private static Boolean isPageRangeInBook(int leftPage, int rightPage) {
