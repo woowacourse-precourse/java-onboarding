@@ -26,11 +26,16 @@ class Problem1 {
         int crongLeft = crong.get(0);
         int crongRight = crong.get(1);
 
-
         if (pobiLeft - pobiRight != -1) {
             return true;
         }
         if (crongLeft - crongRight != -1) {
+            return true;
+        }
+        if (pobiLeft == 1 || crongLeft == 1) {
+            return true;
+        }
+        if (pobiRight == 400 || crongRight == 400) {
             return true;
         }
 
