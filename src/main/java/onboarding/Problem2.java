@@ -17,7 +17,8 @@ public class Problem2 {
 
             boolean isDuplicated = false;
             Character lastLetter = stack.peek();
-            while (cryptogram.charAt(i) == lastLetter) {
+            while (i < cryptogram.length()
+                && cryptogram.charAt(i) == lastLetter) {
                 isDuplicated = true;
                 i += 1;
             }
