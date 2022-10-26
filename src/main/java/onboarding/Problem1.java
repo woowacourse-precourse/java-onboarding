@@ -23,12 +23,33 @@ class Problem1 {
     public static int pageSum(int page) {
         int sum = 0;
 
+        while(page > 0){
+            sum += page % 10;
+            page /= 10;
+        }
+
         return sum;
+    }
+
+    // 페이지 예외처리
+    public static boolean pageExcept(List<Integer> pageLst) {
+        if (pageLst.get(0).intValue() % 2 != 1 || pageLst.get(1).intValue() % 2 != 0
+                || pageLst.get(1).intValue() - pageLst.get(0).intValue() != 1) {
+            System.out.println("pageExcept true");
+            return true;
+        }
+        System.out.println("pageExcept false");
+        return false;
     }
 
     // 페이지를 매개변수로 받으면 해당 페이지의 자릿수를 모두 곱한 값을 리턴
     public static int pageMul(int page) {
         int mul = 0;
+
+        while(page > 0){
+            mul *= page % 10;
+            page /= 10;
+        }
 
         return mul;
     }
