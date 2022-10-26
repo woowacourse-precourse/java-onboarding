@@ -10,6 +10,19 @@ import org.junit.jupiter.api.Test;
 
 class Problem1Test {
 
+	@Test
+	@DisplayName("캐릭터별 큰 숫자 찾기")
+	void 캐릭터별_큰_숫자_찾기(){
+		List<Integer> pobi = List.of(97, 98);
+		List<Integer> crong = List.of(197, 198);
+		assertThat(Problem1.pickFriendMaxNumber(pobi)).isEqualTo(72);
+		assertThat(Problem1.pickFriendMaxNumber(crong)).isEqualTo(72);
+
+		pobi = List.of(99, 100);
+		crong = List.of(10, 11);
+		assertThat(Problem1.pickFriendMaxNumber(pobi)).isEqualTo(81);
+		assertThat(Problem1.pickFriendMaxNumber(crong)).isEqualTo(2);
+	}
 
 	@Test
 	@DisplayName("왼쪽 페이지 각 자리수 숫자 더하거나 곱한것 중 큰 숫자")
