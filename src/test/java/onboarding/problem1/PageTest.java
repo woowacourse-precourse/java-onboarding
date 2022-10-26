@@ -20,4 +20,10 @@ public class PageTest {
 	void page_is_greater_than_start() {
 		assertThatIllegalArgumentException().isThrownBy(() -> new Page(0));
 	}
+
+	@Test
+	@DisplayName("페이지는 마지막면보다 작아야한다")
+	void page_is_less_than_end() {
+		assertThatIllegalArgumentException().isThrownBy(() -> new Page(401));
+	}
 }
