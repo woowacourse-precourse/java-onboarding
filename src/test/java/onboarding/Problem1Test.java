@@ -69,4 +69,64 @@ class Problem1Test {
 			assertThat(score).isEqualTo(10);
 		}
 	}
+
+	@Nested
+	class getWinnerTest {
+
+		@Test
+		public void drawTest1() {
+			List<Integer> pobi = new ArrayList<>();
+			pobi.add(199);
+			pobi.add(200);
+
+			List<Integer> crong = new ArrayList<>();
+			crong.add(99);
+			crong.add(100);
+
+			int winner = getWinner(pobi, crong);
+			assertThat(winner).isEqualTo(0);
+		}
+
+		@Test
+		public void drawTest2() {
+			List<Integer> pobi = new ArrayList<>();
+			pobi.add(199);
+			pobi.add(200);
+
+			List<Integer> crong = new ArrayList<>();
+			crong.add(199);
+			crong.add(200);
+
+			int winner = getWinner(pobi, crong);
+			assertThat(winner).isEqualTo(0);
+		}
+
+		@Test
+		public void pobiWinTest() {
+			List<Integer> pobi = new ArrayList<>();
+			pobi.add(17);
+			pobi.add(18);
+
+			List<Integer> crong = new ArrayList<>();
+			crong.add(15);
+			crong.add(16);
+
+			int winner = getWinner(pobi, crong);
+			assertThat(winner).isEqualTo(1);
+		}
+
+		@Test
+		public void crongWinTest() {
+			List<Integer> pobi = new ArrayList<>();
+			pobi.add(395);
+			pobi.add(396);
+
+			List<Integer> crong = new ArrayList<>();
+			crong.add(397);
+			crong.add(398);
+
+			int winner = getWinner(pobi, crong);
+			assertThat(winner).isEqualTo(2);
+		}
+	}
 }
