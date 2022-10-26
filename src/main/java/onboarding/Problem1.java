@@ -60,8 +60,7 @@ class Problem1 {
         private static final int LOWER_BOUND = 1;
         private static final int UPPER_BOUND = 400;
         private static final String ERR_PAGE_BOUND = "페이지는 1 ~ 400까지의 값입니다.";
-
-        private int page;
+        private final int page;
 
         public Page(int page) {
             this.page = page;
@@ -71,6 +70,28 @@ class Problem1 {
         private void validatePageBound() {
             if (page < LOWER_BOUND || page > UPPER_BOUND)
                 throw new IllegalArgumentException(ERR_PAGE_BOUND);
+        }
+
+        public int getScore() {
+            return Math.max(sumDigits(), multiplyDigits());
+        }
+
+        private int sumDigits() {
+            int result = 0, num = page;
+            while (num > 0) {
+                result += num % 10;
+                num /= 10;
+            }
+            return result;
+        }
+
+        private int multiplyDigits() {
+            int result = 0, num = page;
+            while (num > 0) {
+                result *= num % 10;
+                num /= 10;
+            }
+            return result;
         }
 
         public boolean isOdd() {
