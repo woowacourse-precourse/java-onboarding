@@ -7,10 +7,14 @@ class Problem1 {
     private static final int POBI_WIN = 1;
     private static final int CRONG_WIN = 2;
     private static final int DRAW = 0;
+    private static final int EXCEPTION = -1;
     private static final int LEFT_PAGE = 0;
     private static final int RIGHT_PAGE = 1;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        if (isError(pobi) || isError(crong)) {
+            return EXCEPTION;
+        }
 
         int pobiMaxResult = getMaxLeftAndRight(pobi);
         int crongMaxResult = getMaxLeftAndRight(crong);
@@ -23,6 +27,10 @@ class Problem1 {
         }
 
         return DRAW;
+    }
+
+    private static boolean isError(List<Integer> pobi) {
+        return getRightPageNum(pobi) - getLeftPageNum(pobi) != 1;
     }
 
     private static int getMaxLeftAndRight(List<Integer> pages) {
