@@ -28,10 +28,12 @@ class ApplicationTest {
 
         @Test
         void case3() {
+            // 18 81, 3 0 = 81
             List<Integer> pobi = List.of(99, 102);
+            // 3 2, 5 4 = 5
             List<Integer> crong = List.of(211, 212);
             int result = -1;
-            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
     }
 

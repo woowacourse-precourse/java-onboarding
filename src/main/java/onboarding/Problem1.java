@@ -1,65 +1,38 @@
 package onboarding;
 
+import jdk.jshell.EvalException;
+
 import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
-    public static void main(String[] args) {
-        List<Integer> pobi = new ArrayList<>();
-        pobi.add(97);
-        pobi.add(98);
 
-        List<Integer> crong = new ArrayList<>();
-        crong.add(197);
-        crong.add(198);
-
-        System.out.println(solution(pobi, crong));
-    }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int pobiMax = 0;
-        int crongMax = 0;
-
-        for (int page : pobi) {
-            int sum = 0;
-            int multi = 1;
-
-            while (page != 0) {
-                int result = page % 10;
-                sum += result;
-                multi *= result;
-                page /= 10;
-            }
-
-            int biggerThanNumber = Math.max(sum, multi);
-            if (biggerThanNumber > pobiMax) {
-                pobiMax = biggerThanNumber;
-            }
+        // 예외 처리
+        if (validateList(pobi) || validateList(crong)) {
+            return -1;
         }
 
-        for (int page : crong) {
-            int sum = 0;
-            int multi = 1;
+        return 0;
+    }
 
-            while (page != 0) {
-                int result = page % 10;
-                sum += result;
-                multi *= result;
-                page /= 10;
-            }
-
-            int biggerThanNumber = Math.max(sum, multi);
-            if (biggerThanNumber > crongMax) {
-                crongMax = biggerThanNumber;
-            }
+    // 예외 발생시 TRUE
+    private static boolean validateList(List<Integer> list) {
+        // 페이지는 null 값이 들어갈 수 없다.
+        if (list.get(0) == null || list.get(1) == null) {
+            return true;
         }
 
-        if (pobiMax > crongMax) {
-            return 1;
-        } else if (crongMax > pobiMax) {
-            return 2;
-        } else {
-            return 0;
+        // 첫 페이지는 0 이상 400이하의 값이여야한다.
+        if (list.get(0) <= 0 || list.get(0) >= 400){
+            return true;
         }
+        // 마지막 페이지는 0 이상 400이하의 값이어야한다.
+        if (list.get(1) <= 0 || list.get(1) >= 400) {
+            return true;
+        }
+
+        return list.get(1) - list.get(0) != 1;
     }
 }
