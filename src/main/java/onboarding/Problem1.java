@@ -33,7 +33,7 @@ class Problem1 {
 
         int sum = eachNumbers.stream()
                 .mapToInt(Integer::intValue)
-                .reduce(0, (i, j) -> i + j);
+                .sum();
 
         int multiply = eachNumbers.stream()
                 .mapToInt(Integer::intValue)
@@ -50,7 +50,7 @@ class Problem1 {
             eachNumbers.add(page % 10);
             page /= 10;
         }
-        
+
         return eachNumbers;
     }
 
@@ -59,6 +59,6 @@ class Problem1 {
         if (x == EXCEPTION_CASE || y == EXCEPTION_CASE) {
             return EXCEPTION_CASE;
         }
-        return (x < y) ? CRONG_MORE_BIGGER : ((x == y) ? SAME_VALUE : POBI_MORE_BIGGER);
+        return (x < y) ? CRONG_MORE_BIGGER : ((x.equals(y) ? SAME_VALUE : POBI_MORE_BIGGER));
     }
 }
