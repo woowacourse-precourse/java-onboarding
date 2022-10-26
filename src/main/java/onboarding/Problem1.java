@@ -15,4 +15,14 @@ class Problem1 {
         }
         return true;
     }
+
+    private static boolean validateBetweenLeftAndRightPage(Integer leftPageNumber,
+        Integer rightPageNumber) {
+        if (rightPageNumber - leftPageNumber != 1) {
+            return false;
+        }
+        return true;
+    }
+
+
 }
