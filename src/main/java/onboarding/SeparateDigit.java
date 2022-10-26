@@ -8,6 +8,9 @@ public class SeparateDigit {
 
     static final int MAXPAGE = 400;
     static final int MINPAGE = 1;
+    public SeparateDigit(List<Integer> bookPage){
+        digitSeparating(bookPage);
+    }
     public void digitSeparating(List<Integer> bookPage) {
         String stringNumber = bookPage.toString().replaceAll("[^0-9]","");
         size=stringNumber.length();
@@ -25,12 +28,12 @@ public class SeparateDigit {
         }
         return false;
     }
-    public int Score(){
-        int sum = SumSeparatedNumber();
+    public int score(){
+        int sum = sumSeparatedNumber();
         int mul = multiplySeparatedNumber();
         return biggerInt(sum, mul);
     }
-    public int SumSeparatedNumber(){
+    public int sumSeparatedNumber(){
         int sum = 0;
         for(int i=0; i<size; i++){
             sum += separatedNumber[i];
