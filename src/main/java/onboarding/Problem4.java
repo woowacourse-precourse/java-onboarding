@@ -10,11 +10,11 @@ public class Problem4 {
     private static char reverseAlphabet(char input) {
         // 소문자인 경우
         if ('a' <= input && input <= 'z') {
-            return (char) (input - 'z' + 'a');
+            return (char) ('z' - input + 'a');
         }
         // 대문자인 경우
         if ('A' <= input && input <= 'Z') {
-            return (char) (input - 'Z' + 'A');
+            return (char) ('Z' - input + 'A');
         }
         // 공백인 경우
         return input;
