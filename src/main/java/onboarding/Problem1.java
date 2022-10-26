@@ -34,9 +34,9 @@ class Problem1 {
             return EXCEPTION;
         }
 
-        int maxLeftPageOfPobi = Math.max(getSumOfEachDigits(pobi.get(LEFT_PAGE)), getMulOfEachDigits(pobi.get(LEFT_PAGE)));
-        int maxRightPageOfPobi = Math.max(getSumOfEachDigits(pobi.get(LAST_PAGE)), getMulOfEachDigits(pobi.get(LAST_PAGE)));
-        int pointOfPobi = Math.max(maxLeftPageOfPobi, maxRightPageOfPobi);
+        int maxLeftPointOfPobi = Math.max(getSumOfEachDigits(pobi.get(LEFT_PAGE)), getMulOfEachDigits(pobi.get(LEFT_PAGE)));
+        int maxRightPointOfPobi = Math.max(getSumOfEachDigits(pobi.get(LAST_PAGE)), getMulOfEachDigits(pobi.get(LAST_PAGE)));
+        int maxPointOfPobi = Math.max(maxLeftPointOfPobi, maxRightPointOfPobi);
 
 
         return answer;
