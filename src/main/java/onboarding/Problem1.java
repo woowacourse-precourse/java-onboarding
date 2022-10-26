@@ -8,8 +8,9 @@ import java.util.List;
  * 2. 분리된 숫자의 합 반환
  * 3. 분리된 숫자의 곱 반환
  * 4. 둘 중 더 큰 숫자 반환
- * 5. 이긴 사람 정하기
- * 6. 예외 처리
+ * 5. 가장 큰 수 반환
+ * 6. 이긴 사람 정하기
+ * 7. 예외 처리
  * */
 
 class Problem1 {
@@ -45,5 +46,14 @@ class Problem1 {
         if (number1 > number2)
             return number1;
         return number2;
+    }
+
+    private static int getMaxNumber(List<Integer> pages) {
+        int max = 0;
+        for(Integer page : pages) {
+            List<Integer> pageNumbers = getPageNumbers(page);
+            max = getBiggerNumber(getBiggerNumber(getSum(pageNumbers), getMultiply(pageNumbers)), max);
+        }
+        return max;
     }
 }
