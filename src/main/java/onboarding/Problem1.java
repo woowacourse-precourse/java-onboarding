@@ -27,7 +27,17 @@ class Problem1 {
 
         return compare(add, mul);
     }
+
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+
+        //예외
+        if (pobi.get(0) + 1 != pobi.get(1)) {
+            return -1;
+        } else if (crong.get(0) + 1 != crong.get(1)) {
+            return -1;
+        }
+
         int answer = Integer.MAX_VALUE;
         return answer;
     }
