@@ -18,6 +18,13 @@ class Problem1 {
         this.pagesB = pagesB;
     }
 
+    public int winner() throws WrongInputException {
+        if (isAvailableInput(pagesA) && isAvailableInput(pagesB))
+            return resultOfGame(valueOfPages(pagesA.get(0), pagesA.get(1)), valueOfPages(pagesB.get(0), pagesB.get(1)));
+        else
+            throw new WrongInputException("Wrong input");
+    }
+
     static class WrongInputException extends Exception {
         WrongInputException(String msg) {
             super(msg);
