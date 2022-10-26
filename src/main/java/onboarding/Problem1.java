@@ -26,5 +26,10 @@ class Problem1 {
         return digitList.stream().reduce(0, Integer::sum);
 
     }
+    private static int getDigitMultiply(List<Integer> digitList) {
+
+        return digitList.stream().reduce(1, (x, y) -> x * y);
+
+    }
 
 }
