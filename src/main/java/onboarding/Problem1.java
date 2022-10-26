@@ -26,6 +26,12 @@ public class Problem1 {
     }
 
     public static int numCalculation(List<Integer> lst) {
+        /**
+         * 요구사항 6번
+         * 시작 면이나 마지막 면이 나오도록 책을 펼치지 않는다. - 구현하기
+         * [1,2] , [399,400] 을 펼치면 안됨,  시작 페이지나 마지막 페이지를
+         * 바로 열어버리면 랜덤하게 여는게 아니라 앞이나 뒤에서 한장만 쓱 넘기는 거라 게임 룰에 위반되므로
+         */
         if(lst.get(0)+1 == lst.get(1))
             if(bigNumber(lst.get(0))>bigNumber(lst.get(1))) {
                 return bigNumber(lst.get(0));
