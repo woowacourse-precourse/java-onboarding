@@ -20,12 +20,37 @@ class Problem1 {
         while (num > 0) {
             list.add(num%10);
             num = num /10;
-            System.out.println(list);
         }
         return list.size();
     }
 
     // TODO 큰 값을 리턴하는 메서드
+    static int getBigScore(List<Integer> num) {
+        int max = Integer.MIN_VALUE;
+        int sum = 0;
+        int multiple = 1;
+
+        for (int i = 0; i < num.size(); i++) {
+            int score = num.get(i);
+
+            while (score != 0) {
+                sum += score % 10;
+                multiple *= score % 10;
+                score = score / 10;
+            }
+
+            if (max < sum) {
+                max = sum;
+                sum = 0;
+            }
+            if(max < multiple) {
+                max = multiple;
+                multiple = 1;
+            }
+        }
+
+        return max;
+    }
 
     // TODO pobi와 crong의 값을 비교하는 메서드
     public static int solution(List<Integer> pobi, List<Integer> crong) {
