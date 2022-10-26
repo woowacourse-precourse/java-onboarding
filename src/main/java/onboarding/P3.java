@@ -1,16 +1,14 @@
 package onboarding;
 
-public class Problem3 {
+public class P3 {
 
     public static void main(String[] args) {
         System.out.println(1);
-
         System.out.println(solution(33));
     }
 
     public static int solution(int number) {
         int answer = 0;
-
         answer = clap(number);
 
         return answer;
@@ -18,11 +16,11 @@ public class Problem3 {
 
     public static int clap(int clapNum) {
         int numResult = 0;
-
-        for(int i=0; i<clapNum; i++) {
-            numResult += judgment(i);
-        }
-
+//
+//        for(int i=0; i<clapNum; i++) {
+//            numResult += judgment(i);
+//        }
+//
         return numResult;
     }
 
