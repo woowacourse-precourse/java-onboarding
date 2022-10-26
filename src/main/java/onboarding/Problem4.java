@@ -23,16 +23,15 @@ public class Problem4 {
     }
     
     public static String solution(String word) {
-        String answer = "";
-    
         final char[] chars = word.toCharArray();
+        
         for (int index = 0; index < chars.length; index++) {
             if (isAlphabet(chars[index])) {
                 chars[index] = toConvertAlphabet(chars[index]);
             }
         }
         
-        return answer;
+        return String.valueOf(chars);
     }
     
     private static char toConvertAlphabet(final char aChar) {
