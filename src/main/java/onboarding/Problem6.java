@@ -11,7 +11,6 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
 
-        System.out.println(forms.get(email).get(1));
         answer = findEmail(userCheck(savaUser(forms)), forms);
 
         return answer;
@@ -55,8 +54,6 @@ public class Problem6 {
             }
         }
 
-        System.out.println(userMemo);
-
         return userMemo;
     }
 
@@ -65,7 +62,6 @@ public class Problem6 {
     {
         int count = 0;
         int length = 0;
-        System.out.println(first + " " + second);
 
         length = Math.min(first.length(), second.length());
         for (int i = 0; i < length; i++)
@@ -79,4 +75,21 @@ public class Problem6 {
         }
         return false;
     }
+
+    //이메일 형식에 부합하는지 체크
+    public static boolean emailCheck(String email)
+    {
+        int address = 1;
+        int user = 0;
+
+        String [] emailAddress = email.split("@");
+
+        if (email.length() >= 11 && email.length() < 20)
+            return true;
+        if (emailAddress[address].equals("email.com"))
+            return true;
+
+        return false;
+    }
+
 }
