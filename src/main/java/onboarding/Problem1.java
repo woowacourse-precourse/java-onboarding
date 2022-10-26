@@ -4,6 +4,14 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        //시작 페이지가 나올 시 -1 리턴
+        if(pobi.get(0) == 1) return -1;
+        if(crong.get(0) == 1) return -1;
+
+        //마지막 페이지가 나올 시 -1 리턴
+        if(pobi.get(1) == 400) return -1;
+        if(crong.get(1) == 400) return -1;
+
         //왼쪽 페이지가 짝수일 경우 -1 리턴
         if(pobi.get(0)%2 != 1) return -1;
         if(crong.get(0)%2 != 1) return -1;
