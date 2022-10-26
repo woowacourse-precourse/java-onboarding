@@ -8,6 +8,11 @@ public class Problem2 {
         Stack<Character> stack = new Stack<>();
         char[] answer = cryptogram.toCharArray();
 
+        for (int i = 0; i < answer.length; i++) {
+            if (isNotEmptyAndEquals(stack, answer[i])) {
+                stack.pop();
+            }
+        }
     }
 
     public static boolean isNotEmptyAndEquals(Stack<Character> stack, char answer) {
