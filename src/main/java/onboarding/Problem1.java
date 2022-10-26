@@ -1,6 +1,5 @@
 package onboarding;
 
-import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
@@ -16,8 +15,8 @@ class Problem1 {
 
         for(List<Integer> pages: pagesList) {
             boolean valid =
-                isCorrectLength(pages) &&
-                areCorrectNumbers(pages);
+                hasTwoElements(pages) &&
+                hasCorrectNumbers(pages);
             if(valid == false) {
                 return false;
             }
@@ -32,7 +31,7 @@ class Problem1 {
      * @param 한 명의 페이지 숫자들이 들어있는 배열입니다.
      * @return 숫자들의 개수가 2라면 참, 아니면 거짓을 반환합니다.
      */
-    private static boolean isCorrectLength(List<Integer> pages) {
+    private static boolean hasTwoElements(List<Integer> pages) {
         boolean correct = pages.size() == 2;
         return correct;
     }
@@ -44,7 +43,7 @@ class Problem1 {
      * @param 한 명의 페이지 숫자들이 들어있는 배열입니다.
      * @return 두 숫자가 옳은 페이지라면 참, 아니면 거짓을 반환합니다.
      */
-    private static boolean areCorrectNumbers(List<Integer> pages) {
+    private static boolean hasCorrectNumbers(List<Integer> pages) {
         Integer leftPage = pages.get(0);
         Integer rightPage = pages.get(1);
 
