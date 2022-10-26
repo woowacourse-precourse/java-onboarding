@@ -24,6 +24,18 @@ class Problem1 {
         return answer;
     }
 
+    public static int gameResult (int score1, int score2) {
+        int diff = score1 - score2;
+        int result = diff;
+        if ( diff != 0 ) {
+            result = 1;
+            if ( diff < 0 ) {
+                result = 2;
+            }
+        }
+        return result;
+    }
+
     public static int calculateMaxScore(List<Integer> pages) {
         int leftPageNum = pages.get(0);
         int rightPageNum = pages.get(1);
