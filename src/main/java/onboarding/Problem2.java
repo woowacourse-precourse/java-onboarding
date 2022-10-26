@@ -21,8 +21,7 @@ public class Problem2 {
 
             cryptogramStack.push(cryptogramCharArray[0]);
             for (int i = 1; i < cryptogram.length(); i++) {
-                if (!cryptogramStack.isEmpty()
-                    && cryptogramStack.peek() == cryptogramCharArray[i]) {
+                if (duplicateCharacter(cryptogramStack, cryptogramCharArray[i])) {
                     cryptogramStack.pop();
                     continue;
                 }
@@ -35,6 +34,11 @@ public class Problem2 {
                 decryptStringBuilder.append(character);
             }
             return decryptStringBuilder.toString();
+        }
+
+        private static boolean duplicateCharacter(Stack<Character> cryptogramStack,
+            Character target) {
+            return !cryptogramStack.isEmpty() && cryptogramStack.peek() == target;
         }
     }
 }
