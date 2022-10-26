@@ -9,6 +9,15 @@ class Problem1 {
                 .sum();
     }
 
+    public static int multiplyAllNumbers(int page){
+        int sum=1;
+
+        for(char c:String.valueOf(page).toCharArray())
+            sum*=Character.getNumericValue(c);
+
+        return sum;
+    }
+
     public static boolean validPages(List<Integer> pages){
         int left = pages.get(0);
         int right = pages.get(0);
