@@ -14,10 +14,18 @@ class Problem1 {
     }
 
     private static Integer getMaxValue(List<Integer> pages) {
-        List<Integer> leftPageEachNumbers = getEachNumbers(pages.get(0));
+
+        Integer leftPage = pages.get(0);
+        Integer rightPage = pages.get(1);
+
+        if ((leftPage + 1) != rightPage) {
+            return -1;
+        }
+        
+        List<Integer> leftPageEachNumbers = getEachNumbers(leftPage);
         int leftPageMaxValue = Math.max(doSum(leftPageEachNumbers), doMultiply(leftPageEachNumbers));
 
-        List<Integer> rightPageEachNumbers = getEachNumbers(pages.get(1));
+        List<Integer> rightPageEachNumbers = getEachNumbers(rightPage);
         int rightPageMaxValue = Math.max(doSum(rightPageEachNumbers), doMultiply(rightPageEachNumbers));
 
         return Math.max(leftPageMaxValue, rightPageMaxValue);
@@ -51,6 +59,9 @@ class Problem1 {
 
 
     private static int getAnswer(Integer x, Integer y) {
+        if (x == -1 || y == -1) {
+            return -1;
+        }
         return (x < y) ? 2 : ((x == y) ? 0 : 1);
     }
 

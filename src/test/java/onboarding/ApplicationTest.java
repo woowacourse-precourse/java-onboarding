@@ -38,8 +38,8 @@ class ApplicationTest {
         @DisplayName("crong이 더 큰 경우")
         @Test
         void case4() {
-            List<Integer> pobi = List.of(99, 102);
-            List<Integer> crong = List.of(999, 212);
+            List<Integer> pobi = List.of(99, 100);
+            List<Integer> crong = List.of(399, 400);
             int result = 2;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
