@@ -19,6 +19,6 @@ class TextDecoderV1Test {
         String string = "Hello";
         TextDecoder decoder = new TextDecoderV1(string);
 
-        assertEquals("Heo", decoder.getCipher());
+        assertEquals("Heo", decoder.getPlainText());
     }
 }
