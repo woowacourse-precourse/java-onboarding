@@ -33,6 +33,14 @@ class removeSamethings{
         return strArrayToString;
     }
 }
+class invalidStringException{
+    public static boolean invalidString(String string){
+        if(string.length()<1||string.length()>1000){return true;}
+        if(!string.equals(string.toLowerCase())){return true;}
+        if(string.chars().allMatch(Character::isLetter)){return true;}
+        return false;
+    }
+}
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";

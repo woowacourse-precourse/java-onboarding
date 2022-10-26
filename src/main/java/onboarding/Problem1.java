@@ -35,9 +35,9 @@ class findWinner{
 }
 class invalidException{
     public static boolean invalidPageNumber(int left, int right){
-        if(left<1||left>400||right<1||right>400){return false;}
-        if((right-left)!=1){return false;}
-        return true;
+        if(left<1||left>400||right<1||right>400){return true;}
+        if((right-left)!=1){return true;}
+        return false;
     }
 }
 class Problem1 {
@@ -48,7 +48,7 @@ class Problem1 {
         int crongRightPageNumber=crong.get(1);
         int answer = -1;
         int pobiMaxNumber, crongMaxNumber;
-        if(invalidException.invalidPageNumber(pobiLeftPageNumber,pobiRightPageNumber)&&invalidException.invalidPageNumber(crongLeftPageNumber,crongRightPageNumber)){
+        if(!invalidException.invalidPageNumber(pobiLeftPageNumber,pobiRightPageNumber)&&!invalidException.invalidPageNumber(crongLeftPageNumber,crongRightPageNumber)){
             pobiMaxNumber=findMax.findMaxValue(pobiLeftPageNumber,pobiRightPageNumber);
             crongMaxNumber=findMax.findMaxValue(crongLeftPageNumber,crongRightPageNumber);
             answer=findWinner.winner(pobiMaxNumber,crongMaxNumber);
