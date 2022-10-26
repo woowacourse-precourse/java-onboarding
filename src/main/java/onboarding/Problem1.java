@@ -27,4 +27,13 @@ class Problem1 {
         }
         return true;
     }
+
+    private static int sumEveryPlaceValue(int number) {
+        int sum_value = 0;
+        String[] string_array = String.valueOf(number).split("");
+        for (String place_value: string_array) {
+            sum_value += Integer.valueOf(place_value);
+        }
+        return sum_value;
+    }
 }
