@@ -21,4 +21,17 @@ class Problem1 {
         }
     }
 
+    /**
+     *모든 자릿수를 더하는 함수
+     */
+    private static int add_all(int num){
+
+        int answer = 0;
+
+        for(int i=num ; num>0 ; num=num/10)
+            answer += num%10;
+
+        return answer;
+    }
+
 }
