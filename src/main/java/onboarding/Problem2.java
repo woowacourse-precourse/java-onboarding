@@ -4,11 +4,16 @@ import java.util.regex.Pattern;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        if (validationCheck(cryptogram)) {
+            while (needToCompress(cryptogram)) {
+                cryptogram = doCompress(cryptogram);
+            }
+            return cryptogram;
+        }
+        return "[ERROR]";
     }
 
-    public boolean validationCheck(String cryptogram) {
+    public static boolean validationCheck(String cryptogram) {
         if (cryptogram.length() > 1000 || cryptogram.length() < 1) {
             return false;
         } else if (!Pattern.matches("[a-z]*$", cryptogram)) { // 정규식 패턴 매칭
@@ -16,7 +21,7 @@ public class Problem2 {
         }
         return true;
     }
-    public boolean needToCompress(String cryptogram) {
+    public static boolean needToCompress(String cryptogram) {
         for (int i = 0; i < cryptogram.length() - 1; i++) {
             if (cryptogram.charAt(i) == cryptogram.charAt(i+1)) {
                 return true;
@@ -24,7 +29,28 @@ public class Problem2 {
         }
         return false;
     }
+
+    public static String doCompress(String cryptogram) {
+        String newCryptogram = "";
+
+        for (int i = 0; i < cryptogram.length(); i++) {
+            if (i == 0) {
+                if (cryptogram.charAt(i) != cryptogram.charAt(i + 1)) {
+                    newCryptogram += cryptogram.charAt(i);
+                }
+            } else if (i == cryptogram.length() - 1) {
+                if (cryptogram.charAt(i) != cryptogram.charAt(i - 1)) {
+                    newCryptogram += cryptogram.charAt(i);
+                }
+            } else if (cryptogram.charAt(i) != cryptogram.charAt(i - 1) &&
+                    cryptogram.charAt(i) != cryptogram.charAt(i + 1)) {
+                newCryptogram += cryptogram.charAt(i);
+            }
+        }
+        return newCryptogram;
+    }
 }
+
 
 
 /*
