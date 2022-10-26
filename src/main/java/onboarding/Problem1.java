@@ -20,8 +20,14 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        if (!checkValidatePairOfPage(pobi) || !checkValidatePairOfPage(crong)) {
+            return -1;
+        }
+
+        int pobiScore = calculateMaxScore(pobi);
+        int crongScore = calculateMaxScore(crong);
+
+        return gameResult(pobiScore, crongScore);
     }
 
     public static int gameResult (int score1, int score2) {
