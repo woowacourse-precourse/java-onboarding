@@ -161,25 +161,39 @@ class Referee {
     private final String DEFUALTUSER1 = "pobi";
     private final String DEFUALTUSER2 = "crong";
 
-    public int judge(User user1, User user2) {
-        if (user1.getScore() == user2.getScore()) {
+    public int judge(int user1Score, int user2Score) {
+        if (user1Score == user2Score) {
             return 0;
         }
-        String winnerName = winnerName(user1, user2);
-        if (winnerName == DEFUALTUSER1) {
+        if (user1Score > user2Score) {
             return 1;
         }
-        if (winnerName == DEFUALTUSER2) {
+        if (user1Score < user2Score) {
             return 2;
         }
         return -1;
     }
 
-    private String winnerName(User user1, User user2) {
-        if (user1.getScore() > user2.getScore()) {
-            return user1.getName();
+    public int giveScore(List<Integer> choiceNumbers) {
+        int left = choiceNumbers.get(0);
+        int right = choiceNumbers.get(1);
+        List<Integer> digitLeft = getDigit(left);
+        List<Integer> digitRight = getDigit(right);
+        return maxResult(digitLeft, digitRight);
+    }
+    private int maxResult(List<Integer> digitLeft, List<Integer> digitRight) {
+        int digitPlusLeft = digitPlus(digitLeft);
+        int digitMultipleLeft = digitMultiple(digitLeft);
+        int digitPlusRight = digitPlus(digitRight);
+        int digitMultipleRight = digitMultiple(digitRight);
+        int arr[] = {digitPlusLeft, digitMultipleLeft, digitPlusRight, digitMultipleRight};
+        int max = arr[0];
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] > max) {
+                max = arr[i];
+            }
         }
-        return user2.getName();
+        return max;
     }
 }
 
