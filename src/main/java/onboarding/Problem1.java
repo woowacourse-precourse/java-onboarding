@@ -10,7 +10,21 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
-    int sumOfDigits(int[] numbers) {
+
+    private static boolean isLegalPages(List<Integer> pages) {
+        return inRange(pages) && isContinuousPages(pages);
+    }
+    private static boolean isContinuousPages(List<Integer> numbers) {
+        return (numbers.get(0) % 2 == 1) && (numbers.get(1) - numbers.get(0) == 1);
+    }
+    private static boolean inRange(List<Integer> numbers) {
+        for (int number : numbers) {
+            if (number < MIN_PAGE || number > MAX_PAGE) return false;
+        }
+        return true;
+    }
+
+    private static int sumOfDigits(int[] numbers) {
         int sum = 0;
         for(int number : numbers) {
             sum += number;
@@ -18,20 +32,7 @@ class Problem1 {
         return sum;
     }
 
-    boolean isLegalPages(List<Integer> pages) {
-        return inRange(pages) && isContinuousPages(pages);
-    }
-    boolean isContinuousPages(List<Integer> numbers) {
-        return (numbers.get(0) % 2 == 1) && (numbers.get(1) - numbers.get(0) == 1);
-    }
-    boolean inRange(List<Integer> numbers) {
-        for (int number : numbers) {
-            if (number < MIN_PAGE || number > MAX_PAGE) return false;
-        }
-        return true;
-    }
-
-    int mulOfDigits(int[] numbers) {
+    private static int mulOfDigits(int[] numbers) {
         int mul = 1;
         for(int number : numbers) {
             mul *= number;
@@ -39,7 +40,7 @@ class Problem1 {
         return mul;
     }
 
-    int[] toIntArray(int number) {
+    private static int[] toIntArray(int number) {
         String str = String.valueOf(number);
         int[] numbers = new int[str.length()];
         for(int i = 0; i < numbers.length; i++) {
