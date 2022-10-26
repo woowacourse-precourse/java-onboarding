@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class Page {
+public class Page implements Comparable<Page>{
 
     private final int leftPage;
     private final int rightPage;
@@ -30,5 +30,16 @@ public class Page {
 
     public static Page create(List<Integer> pageList) {
         return new Page(pageList);
+    }
+
+    @Override
+    public int compareTo(Page other) {
+        if (this.getMaximumNumber() > other.getMaximumNumber()) {
+            return 1;
+        }
+        if (this.getMaximumNumber() == other.getMaximumNumber()) {
+            return 0;
+        }
+        return 2;
     }
 }

@@ -15,8 +15,6 @@ class Problem1 {
         final Page pobiPage = Page.create(pobi);
         final Page crongPage = Page.create(crong);
 
-
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        return pobiPage.compareTo(crongPage);
     }
 }
