@@ -9,6 +9,7 @@ public class Problem2 {
         String answer = "answer";
 
 		answer = listToString(remove(createList(cryptogram)));
+
         return answer;
     }
 
@@ -28,7 +29,6 @@ public class Problem2 {
 	{
 		for (int i = 0; i < duplication.size() - 1; i++)
 		{
-			System.out.println("hi");
 			if (duplication.get(i) == duplication.get(i + 1))
 			{
 				duplication.remove(i);
