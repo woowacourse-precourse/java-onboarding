@@ -13,6 +13,8 @@ class Problem1 {
         int pobiNum = myNumber(pobi);
         int crongNum = myNumber(crong);
 
+        answer = compare(pobiNum, crongNum);
+
         return answer;
     }
 
@@ -46,5 +48,15 @@ class Problem1 {
 
     public static int bigger(int a, int b) {
         return Math.max(a, b);
+    }
+
+    public static int compare(int a, int b) {
+        if (a > b) {
+            return 1;
+        }
+        if (a < b) {
+            return 2;
+        }
+        return 0;
     }
 }
