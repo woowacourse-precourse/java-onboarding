@@ -21,7 +21,13 @@ public class Problem3 {
         }
         return result;
     }
-
+    public static int count369All(int number) {
+        int result = 0;
+        for (int i = 1; i < number + 1; i++) {
+            result += count369(i);
+        }
+        return result;
+    }
 }
 
 
