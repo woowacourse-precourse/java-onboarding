@@ -9,7 +9,6 @@ class Problem1 {
         int pobiScore = 0;
         int crongScore = 0;
 
-
         if (checkValidator(pobi, crong)) {
             pobiScore = getMaxScorePages(pobi);
             crongScore = getMaxScorePages(crong);
@@ -42,7 +41,6 @@ class Problem1 {
         } catch (Exception e) {
             return false;
         }
-
 
         // 왼쪽 페이지는 홀수이다.
         if (leftPage % 2 != 1) {
@@ -125,9 +123,9 @@ class Problem1 {
         int result = -1;
 
         if (userA > userB) {
-            result = 2;
-        } else if (userA < userB) {
             result = 1;
+        } else if (userA < userB) {
+            result = 2;
         } else if (userA.equals(userB)) {
             result = 0;
         }
