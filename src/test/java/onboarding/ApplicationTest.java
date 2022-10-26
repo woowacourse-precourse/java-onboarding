@@ -54,6 +54,13 @@ class ApplicationTest {
             int result = 3*6*9;
             assertThat(Problem1.getMulti(numbers)).isEqualTo(result);
         }
+
+        @Test
+        void maxTest() {
+            List<Integer> numbers = List.of(103,964,323,92);
+            int result = 964;
+            assertThat(Problem1.getMax(numbers)).isEqualTo(result);
+        }
     }
 
     @Nested

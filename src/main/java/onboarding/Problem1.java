@@ -35,8 +35,27 @@ class Problem1 {
 
     public static int getMulti(List<Integer> numbers) {
         int result = 1;
-        result *= numbers.get(0) * numbers.get(1) * numbers.get(2);
+        if(numbers.get(0) == 0) {
+            if(numbers.get(1) == 0){
+                result = numbers.get(2);
+            } else {
+                result *= numbers.get(1) * numbers.get(2);
+            }
+        } else {
+            result *= numbers.get(0) * numbers.get(1) * numbers.get(2);
+        }
 
         return result;
+    }
+
+    public static int getMax(List<Integer> numbers) {
+        int max = 0;
+        for(Integer num : numbers) {
+            if (max < num) {
+                max = num;
+            }
+        }
+
+        return max;
     }
 }
