@@ -10,6 +10,10 @@ import java.util.List;
  */
 class Problem1 {
 
+    private boolean isAvailableInput(List<Integer> pages) {
+        return isAvailableSize(pages.size()) && isAvailableValues(pages.get(0), pages.get(1));
+    }
+
     private boolean isAvailableSize(int size) {
         return size == 2;
     }
@@ -17,7 +21,7 @@ class Problem1 {
     private boolean isAvailableValues(int left, int right) {
         return 1 <= left && left <= 399 && left + 1 == right;
     }
-    
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
