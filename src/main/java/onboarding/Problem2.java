@@ -1,5 +1,7 @@
 package onboarding;
 
+import static onboarding.Problem2.CryptogramIndexConst.CRYPTOGRAM_DUPLICATE_START_INDEX;
+import static onboarding.Problem2.CryptogramIndexConst.CRYPTOGRAM_START_INDEX;
 import static onboarding.Problem2.Decryptor.*;
 
 import java.util.Stack;
@@ -34,8 +36,8 @@ public class Problem2 {
             Stack<Character> cryptogramStack = new Stack<>();
             char[] cryptogramCharArray = cryptogram.toCharArray();
 
-            cryptogramStack.push(cryptogramCharArray[0]);
-            for (int i = 1; i < cryptogram.length(); i++) {
+            cryptogramStack.push(cryptogramCharArray[CRYPTOGRAM_START_INDEX]);
+            for (int i = CRYPTOGRAM_DUPLICATE_START_INDEX; i < cryptogram.length(); i++) {
                 if (duplicateCharacter(cryptogramStack, cryptogramCharArray[i])) {
                     cryptogramStack.pop();
                     continue;
@@ -49,5 +51,11 @@ public class Problem2 {
             Character target) {
             return !cryptogramStack.isEmpty() && cryptogramStack.peek() == target;
         }
+    }
+
+    public abstract class CryptogramIndexConst {
+
+        public static final int CRYPTOGRAM_START_INDEX = 0;
+        public static final int CRYPTOGRAM_DUPLICATE_START_INDEX = 1;
     }
 }
