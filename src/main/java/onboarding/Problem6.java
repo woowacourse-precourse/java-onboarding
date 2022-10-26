@@ -1,10 +1,10 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
         Set<String> emails = new HashSet<>();
         Map<String, String> map = new HashMap<>();
         
@@ -14,20 +14,22 @@ public class Problem6 {
             final String email = form.get(0);
             
             for (int index = 0; index < crewName.length() - 1; index++) {
-                if (map.containsKey(crewName)) {
+                final String consecutiveLetters = crewName.substring(index, index + 2);
+                
+                if (map.containsKey(consecutiveLetters)) {
                     emails.add(email);
-                    emails.add(map.get(crewName));
+                    emails.add(map.get(consecutiveLetters));
                 }
                 
-                tmp.put(crewName.substring(index, index + 2), email);
+                tmp.put(consecutiveLetters, email);
             }
             
             map.putAll(tmp);
         }
-    
-        System.out.println(map.keySet());
         
-        return answer;
+        return emails.stream()
+                .sorted()
+                .collect(Collectors.toList());
     }
     
     public static boolean isExistTwoConsecutiveLetters(final Map<String, String> map, final String twoConsecutiveLetters) {
