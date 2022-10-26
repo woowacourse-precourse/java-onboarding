@@ -62,4 +62,15 @@ class Problem1 {
         }
         return false;
     }
+
+    // 결과 리턴하는 함수
+    private static int resultNumber(int pobi, int crong) {
+        if(pobi > crong) {
+            return 1;
+        }
+        else if(pobi < crong) {
+            return 2;
+        }
+        return 0;
+    }
 }
