@@ -13,6 +13,10 @@ public class PageNumberGame {
 	}
 
 	public int run() {
+		if (!(checkNumber(pobi) && checkNumber(crong))) {
+			return -1;
+		}
+
 		int pobiScore = getScore(pobi);
 		int crongScore = getScore(crong);
 
@@ -20,11 +24,16 @@ public class PageNumberGame {
 			return 1;
 		} else if (pobiScore < crongScore) {
 			return 2;
-		} else if (pobiScore == crongScore) {
-			return 0;
 		} else {
-			return -1;
+			return 0;
 		}
+	}
+
+	private boolean checkNumber(List<Integer> pages) {
+		int left = pages.get(0);
+		int right = pages.get(1);
+
+		return !(left == 1 || right == 400 || left != right - 1);
 	}
 
 	private int getScore(List<Integer> pages) {
