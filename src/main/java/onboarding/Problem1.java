@@ -24,10 +24,6 @@ class Problem1 {
     }
 
     private static void validatePages(List<Integer> pages) {
-        if (pages.size() != 2) {
-            throw new IllegalArgumentException("책 페이지는 두 쪽이 입력되어야 합니다.");
-        }
-
         int leftPage = pages.get(0);
         int rightPage = pages.get(1);
         if (leftPage < 1 || leftPage > 400 || leftPage % 2 == 0 || rightPage < 1 || rightPage > 400 || rightPage % 2 == 1) {
