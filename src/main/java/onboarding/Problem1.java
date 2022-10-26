@@ -9,14 +9,20 @@ class Problem1 {
 
         if (pobi_score == -1 || crong_score == -1) {
             return -1;
-           }
+        } else if (pobi_score > crong_score){
+            return 1;
+        } else if (pobi_score < crong_score){
+            return 2;
+        } else {
+            return 0;
+        }
     }
     static int max(List<Integer> pages) {
-        int page1 = pages.get(0).intValue();
-        int page2 = pages.get(1).intValue();
+        int page1 = pages.get(0);
+        int page2 = pages.get(1);
         if (page1 % 2 == 0 || page1 < 3 || page1 > 397 || page1 + 1 != page2) {
             return -1;
-            }
+        }
         int sum = 0, mult = 1;
         while (page1>0){
             int num = page1 % 10;
@@ -33,3 +39,4 @@ class Problem1 {
         return Math.max(sum, mult);
     }
 }
+
