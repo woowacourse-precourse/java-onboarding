@@ -56,7 +56,22 @@ public class Problem7 {
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        Map<String, LinkedList<String>> friendsGraph = initGraph(friends);
+        Map<String, Integer> scoreBoard = initScoreBoard(friendsGraph, user);
+
+        scoreFriendToFriend(friendsGraph, scoreBoard, user);
+        scoreVisitors(friendsGraph.get(user), visitors, scoreBoard);
+
+        return scoreBoard.entrySet().stream()
+                .filter(o->o.getValue()!=0)
+                .sorted((o1, o2)->{
+                    if(o1.getValue()!=o2.getValue())
+                        return o2.getValue()-o1.getValue();
+
+                    return o1.getKey().compareTo(o2.getKey());
+                })
+                .limit(5)
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
     }
 }
