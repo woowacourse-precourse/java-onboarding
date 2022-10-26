@@ -3,8 +3,10 @@ package onboarding;
 public class Problem2 {
     public static String solution(String cryptogram) {
         for (int index = 0; index < cryptogram.length() - 1; index++) {
-            cryptogram = getTwoCharRemovedCryptogram(cryptogram, index);
+            String tmpStr = getTwoCharRemovedCryptogram(cryptogram, index);
             index = getRevertIndex(cryptogram, index);
+            
+            cryptogram = tmpStr;
         }
         
         return cryptogram;
