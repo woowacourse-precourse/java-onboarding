@@ -18,6 +18,10 @@ public class Problem2 {
         public static String decrypt(String cryptogram) {
             Stack<Character> cryptogramStack = deleteDuplicateCharacter(cryptogram);
 
+            return decryptCharacterToString(cryptogramStack);
+        }
+
+        private static String decryptCharacterToString(Stack<Character> cryptogramStack) {
             StringBuilder decryptStringBuilder = new StringBuilder();
 
             for (Character character : cryptogramStack) {
