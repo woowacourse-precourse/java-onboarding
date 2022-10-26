@@ -22,4 +22,16 @@ class Problem1 {
         }
         return multi;
     }
+
+    public static int fight(int pobiScore, int crongScore) {
+        if (crongScore > pobiScore) {
+            return 2;
+        }
+        else if (pobiScore > crongScore) {
+            return 1;
+        }
+        else {
+            return 0;
+        }
+    }
 }
