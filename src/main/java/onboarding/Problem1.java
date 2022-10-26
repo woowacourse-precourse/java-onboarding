@@ -69,7 +69,7 @@ class Problem1 {
      * Check if values are available
      * @param left left page
      * @param right right page
-     * @return return if left and right is in range and left + 1 is right
+     * @return return true if left and right is in range, left is odd number and left + 1 is right
      */
     private boolean isAvailableValues(int left, int right) {
         return left < max && left % 2 == 1 && left + 1 == right;
