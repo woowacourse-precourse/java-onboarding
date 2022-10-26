@@ -10,6 +10,22 @@ package onboarding;
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
+        for (int i = 1; i <= number; i++) {
+            answer += getCount(i);
+        }
         return answer;
+    }
+
+    static int getCount(int input) {
+        int result =0;
+        while (input > 0) {
+            int tmp =input % 10;
+            switch (tmp) {
+                case 3: case 6: case 9:
+                    result++;
+            }
+            input /= 10;
+        }
+        return result;
     }
 }
