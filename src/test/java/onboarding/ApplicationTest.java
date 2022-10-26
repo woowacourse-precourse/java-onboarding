@@ -101,11 +101,11 @@ class ApplicationTest {
         @Test
         void case1() {
             List<List<String>> forms = List.of(
-                    List.of("jm@email.com", "ì œì´ì— "),
-                    List.of("jason@email.com", "ì œì´ìŠ¨"),
-                    List.of("woniee@email.com", "ì›Œë‹ˆ"),
-                    List.of("mj@email.com", "ì— ì œì´"),
-                    List.of("nowm@email.com", "ì´ì œì— ")
+                    List.of("jm@email.com", "Á¦ÀÌ¿¥"),
+                    List.of("jason@email.com", "Á¦ÀÌ½¼"),
+                    List.of("woniee@email.com", "¿ö´Ï"),
+                    List.of("mj@email.com", "¿¥Á¦ÀÌ"),
+                    List.of("nowm@email.com", "ÀÌÁ¦¿¥")
             );
             List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
