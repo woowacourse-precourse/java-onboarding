@@ -12,8 +12,8 @@ class Problem1 {
         int c2 = crong.get(1); //크롱 오른쪽 페이지
         int n1, n2, n3, sum, mul, lNum, rNum, pNum, cNum = 0;
 
-        if (p1 == (p2 - 1) && (p1>=1&&c1>=1) && (400>=p2&&400>=c2) ) {
-            //연속 페이지 and 왼쪽 페이지 1이상 and 오른쪽 페이지 400이하인 경우
+        if (p1 == (p2 - 1) && (p1>1&&c1>1) && (400>p2&&400>c2) ) {
+            //연속 페이지 and 왼쪽 페이지 1초과 and 오른쪽 페이지 400미만인 경우
 
             ////포비
             if (p1>= 100) {//포비 왼쪽 페이지가 100이상
@@ -138,10 +138,11 @@ class Problem1 {
                 answer = 0;
             }
 
-        }else {//불연속 페이지 or 왼쪽 페이지 1미만 or 오른쪽 페이지 400초과인 경우
+        }else {//불연속 페이지 or 왼쪽 페이지 1이하 or 오른쪽 페이지 400이상인 경우
             answer=-1;
         }
 
         return answer;
-    }
-}
+
+    }//public static int solution
+}//class Problem1
