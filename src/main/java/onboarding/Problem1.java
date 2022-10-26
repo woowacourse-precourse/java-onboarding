@@ -97,13 +97,9 @@ class Problem1 {
         }
 
         private static int multEachNumber(int pageNumber) {
-            int mult = 1;
             String strPageNumber = String.valueOf(pageNumber);
-            for (int i = 0; i < strPageNumber.length(); i++) {
-                mult *= Integer.parseInt(String.valueOf(strPageNumber.charAt(i)));
-            }
-
-            return mult;
+            List<Integer> pageNumberList = List.of(Integer.parseInt(Arrays.toString(strPageNumber.split(""))));
+            return pageNumberList.stream().reduce(1, (a, b) -> a * b);
         }
 
         private static int getMaxNumber(int number1, int number2) {
