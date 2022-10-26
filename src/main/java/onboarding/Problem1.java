@@ -7,9 +7,7 @@ import java.util.List;
 class Problem1 {
 
     /**
-     * 5. 점수를 비교해 가장 높은 사람이 게임의 승자가 된다.
      * @Method: Solution
-     * 점수를 비교하여, 알맞은 값을 return한다.
      */
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (checkPageException(pobi) && checkPageException(crong)) {
@@ -17,13 +15,7 @@ class Problem1 {
             int poingOfPobi = calcPoint(pobi);
             int pointOfCrong = calcPoint(crong);
 
-            // 포비가 이긴다면 1, 크롱이 이긴다면 2, 무승부는 0을 return
-            if (poingOfPobi > pointOfCrong) {
-                return  1;
-            } else if (pointOfCrong > poingOfPobi) {
-                return  2;
-            }
-            return 0;
+            return calcWinner(poingOfPobi, pointOfCrong);
         }
         // 예외사항은 -1을 return
         return -1;
@@ -49,6 +41,7 @@ class Problem1 {
         return false;
     }
 
+
     /**
      * 4. 2~3 과정에서 가장 큰 수를 본인의 점수로 한다.
      * @Method: calcPoint
@@ -67,10 +60,12 @@ class Problem1 {
         return point;
     }
 
+
     /**
      * 2. 왼쪽 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구한다.
      * 3. 오른쪽 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구한다.
      */
+
 
     /**
      * @Method: digitPage
@@ -86,6 +81,7 @@ class Problem1 {
         // List 형태로 return
         return digits;
     }
+
 
     /**
      * @Method: addDigit
@@ -114,5 +110,20 @@ class Problem1 {
         return answer;
     }
 
+
+    /**
+     * 5. 점수를 비교해 가장 높은 사람이 게임의 승자가 된다.
+     * @Method: calcWinner
+     * 점수를 비교하여, 알맞은 값을 return한다.
+     */
+    private static int calcWinner(int poingOfPobi, int pointOfCrong) {
+        // 포비가 이긴다면 1, 크롱이 이긴다면 2, 무승부는 0을 return
+        if (poingOfPobi > pointOfCrong) {
+            return  1;
+        } else if (pointOfCrong > poingOfPobi) {
+            return  2;
+        }
+        return 0;
+    }
 }
 
