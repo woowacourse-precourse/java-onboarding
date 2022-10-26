@@ -10,7 +10,9 @@ class Problem1 {
             return -1;
         }
 
+        // pobi 페이지들의 최댓값
         int pobiMax = compareNumbers(pobi);
+        // crong 페이지들의 최댓값
         int crongMax = compareNumbers(crong);
 
         if (crongMax == pobiMax) {
@@ -39,6 +41,15 @@ class Problem1 {
             return true;
         }
 
+        // 왼쪽 페이지는 홀수, 오른쪽 페이지는 짝수여야한다.
+        if (list.get(0) % 2 != 0 || list.get(1) % 2 != 1) {
+            return true;
+        }
+
+        // 배열의 길이는 2여야 한다.
+        if (list.size() != 2) {
+            return true;
+        }
         return list.get(1) - list.get(0) != 1;
     }
 
