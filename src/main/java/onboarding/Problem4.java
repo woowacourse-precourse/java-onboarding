@@ -24,7 +24,16 @@ public class Problem4 {
         StringBuilder stringBuilder = new StringBuilder(word);
 
         String answer = "";
+        for (int i = 0; i < stringBuilder.length(); i++) {
+            char isAlpha = stringBuilder.charAt(i);
 
+            if (isAlpha >='A' && isAlpha <= 'Z' || isAlpha >= 'a' && isAlpha <= 'z') {
+                char character =
+                        convertAlphabet.alphabet.get(stringBuilder.charAt(i));
+                answer += character;
+            } else
+                answer += stringBuilder.charAt(i);
+        }
         return answer;
     }
 
