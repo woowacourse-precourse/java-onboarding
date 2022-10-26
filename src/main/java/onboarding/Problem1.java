@@ -42,7 +42,17 @@ class invalidException{
 }
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int pobiLeftPageNumber=pobi.get(0);
+        int pobiRightPageNumber=pobi.get(1);
+        int crongLeftPageNumber=crong.get(0);
+        int crongRightPageNumber=crong.get(1);
+        int answer = -1;
+        int pobiMaxNumber, crongMaxNumber;
+        if(invalidException.invalidPageNumber(pobiLeftPageNumber,pobiRightPageNumber)&&invalidException.invalidPageNumber(crongLeftPageNumber,crongRightPageNumber)){
+            pobiMaxNumber=findMax.findMaxValue(pobiLeftPageNumber,pobiRightPageNumber);
+            crongMaxNumber=findMax.findMaxValue(crongLeftPageNumber,crongRightPageNumber);
+            answer=findWinner.winner(pobiMaxNumber,crongMaxNumber);
+        }
         return answer;
     }
 }
