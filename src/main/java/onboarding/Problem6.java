@@ -9,7 +9,7 @@ public class Problem6 {
     }
     public static List<String> checkDouble(List<List<String>> forms) {
         //List로 현재 이름중 중복에 해당하는 값을 저장
-        List<String> result = new ArrayList<String>();
+        Set<String> result = new HashSet<String>();
         ArrayList[] checkList = new ArrayList[forms.size()];
         ArrayList<String> checkAllList = new ArrayList<String>();
         for(int i = 0; i<forms.size();i++){
@@ -39,11 +39,11 @@ public class Problem6 {
                 checkAllList.add(checkList[i].get(j).toString());
             }
         }
-        Collections.sort(result);
-        Set<String> finalAnser = new HashSet<String>(result);
-        result = new ArrayList<String>(finalAnser);
-        System.out.println(result);
-        return result;
+
+
+        ArrayList<String> finalAnser = new ArrayList<String>(result);
+        Collections.sort(finalAnser);
+        return finalAnser;
     }
 
 }
