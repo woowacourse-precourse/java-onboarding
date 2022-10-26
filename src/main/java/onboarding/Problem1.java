@@ -19,10 +19,19 @@ class Problem1 {
 		return sumInt;
 	}
 
+	private static int multipleEachInt(int value) {
+		int multipleInt = 1;
+		while (value > 1) {
+			multipleInt *= (value % 10);
+			value /= 10;
+		}
+		return multipleInt;
+	}
+
 	private static int bigPageResult(List<Integer> person) {
 		int leftPage = person.get(0);
 		int rightPage = person.get(1);
-
+		
 	}
 
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
