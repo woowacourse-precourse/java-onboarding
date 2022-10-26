@@ -34,7 +34,7 @@ class Problem1 {
         return max;
     }
 
-    // 각 자리 곱셈은 따로 계산하기 위해 별도의 함수 생성
+    // 가능 명세 1번 안에 사용되는 함수 - 각 자리 곱셈은 따로 계산하기 위해 별도의 함수 생성
     public static int multipleCalculator(int[] pageNumToArr) {
         int multipleResult = 1;
         for (int num : pageNumToArr) { multipleResult *= num; }
@@ -49,16 +49,16 @@ class Problem1 {
         if (pobiAnswer == -1 || crongAnswer == -1 ) { answer = -1; }
         else {
             switch (Integer.compare(pobiAnswer, crongAnswer)) {
-                case 1:
+                case 1:               // pobi가 이겼을 경우
                     answer = 1;
                     break;
-                case 0:
+                case 0:              // 무승부인 경우
                     answer = 0;
                     break;
-                case -1:
+                case -1:             // crong이 이겼을 경우
                     answer = 2;
                     break;
-                default:   // exception은 -1 출력
+                default:             // exception은 -1 출력
                     answer = -1;
                     break;
             }
