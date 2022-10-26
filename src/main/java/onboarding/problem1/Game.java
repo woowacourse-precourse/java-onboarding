@@ -54,7 +54,7 @@ public class Game {
             } else {
                 return Result.DRAW;
             }
-        } catch (PagesIllegalPageNumber exception) {
+        } catch (IllegalArgumentException exception) {
             return Result.EXCEPTION;
         }
     }
