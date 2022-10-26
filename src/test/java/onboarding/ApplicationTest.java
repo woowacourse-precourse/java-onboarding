@@ -109,19 +109,19 @@ class ApplicationTest {
         @Test
         void isCorrectSize1() {
             String cryptogram = "";
-            assertThat(Problem2.Validator.isValidate(cryptogram)).isEqualTo(false);
+            assertThat(Problem2.Validator.isValidate(cryptogram)).isFalse();
         }
 
         @Test
         void isCorrectSize2() {
             String cryptogram = "adbawkbdadjvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkb";
-            assertThat(Problem2.Validator.isValidate(cryptogram)).isEqualTo(false);
+            assertThat(Problem2.Validator.isValidate(cryptogram)).isFalse();
         }
 
         @Test
         void isOnlyLowerCase() {
             String cryptogram = "zyelleAyz";
-            assertThat(Problem2.Validator.isValidate(cryptogram)).isEqualTo(false);
+            assertThat(Problem2.Validator.isValidate(cryptogram)).isFalse();
         }
     }
 
@@ -144,13 +144,13 @@ class ApplicationTest {
         @Test
         void isCorrectRange1() {
             int number = 0;
-            assertThat(Problem3.Validator.isValidate(number)).isEqualTo(false);
+            assertThat(Problem3.Validator.isValidate(number)).isFalse();
         }
 
         @Test
         void isCorrectRange2() {
             int number = 10001;
-            assertThat(Problem3.Validator.isValidate(number)).isEqualTo(false);
+            assertThat(Problem3.Validator.isValidate(number)).isFalse();
         }
     }
 
@@ -166,7 +166,7 @@ class ApplicationTest {
         @Test
         void correctSizeTest(){
             String word = "";
-            assertThat(Problem4.Validator.isValidate(word)).isEqualTo(false);
+            assertThat(Problem4.Validator.isValidate(word)).isFalse();
         }
     }
 
@@ -184,6 +184,18 @@ class ApplicationTest {
             int money = 15_000;
             List<Integer> result = List.of(0, 1, 1, 0, 0, 0, 0, 0, 0);
             assertThat(Problem5.solution(money)).isEqualTo(result);
+        }
+
+        @Test
+        void correctRangeTest1(){
+            int money = 0;
+            assertThat(Problem5.Validator.isValidate(money)).isFalse();
+        }
+
+        @Test
+        void correctRangeTest2(){
+            int money = 1000001;
+            assertThat(Problem5.Validator.isValidate(money)).isFalse();
         }
     }
 
