@@ -7,9 +7,14 @@ import java.util.List;
 class Problem1 {
 
     public static void main(String[] args) {
-        ArrayList<Integer> test1 = new ArrayList<Integer>(Arrays.asList(123,456));
-        ArrayList<Integer> test2 = new ArrayList<Integer>(Arrays.asList(4,6));
-        System.out.println(getScore(test1));
+        int aws = -11;
+        ArrayList<Integer> pobi = new ArrayList<Integer>(Arrays.asList(131,132));
+        ArrayList<Integer> crong = new ArrayList<Integer>(Arrays.asList(99,102));
+        if (checkForException(pobi,crong)) {
+            System.out.println(getWinner(getScore(pobi),getScore(crong)));
+        }else {
+            System.out.println("예외발생");
+        }
     }
 
 
@@ -72,9 +77,16 @@ class Problem1 {
      * - 더 큰 숫자가 승자가 된다.
      * - 포비가 이긴다면 1, 크롱이 이긴다면 2, 무승부는 0을 반환한다.
      */
-    public int getWinner(int pobiScore, int crongScore) {
-        int returnValue = 1;
-        return returnValue;
+    public static int getWinner(int pobiScore, int crongScore) {
+        int winner = -1;
+        if (pobiScore > crongScore) {
+            winner = 1;
+        }else if (pobiScore < crongScore){
+            winner = 2;
+        }else if (pobiScore == crongScore) {
+            winner = 0;
+        }
+        return winner;
     }
 
 
