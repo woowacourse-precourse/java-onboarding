@@ -20,12 +20,18 @@ class Problem1 {
         Integer pobiLeftSumScore = PageSumScore(pobi.get(0));
         //자리수 곱 점수
         Integer pobiLeftProScore = PageProScore(pobi.get(0));
+        //더 높은 점수
+        Integer pobiLeftScore = PageScore(pobiLeftSumScore, pobiLeftProScore);
 
         //우측 페이지 체크
         //자리수 합 점수
         Integer pobiRightSumScore = PageSumScore(pobi.get(1));
         //자리수 곱 점수
         Integer pobiRightProScore = PageProScore(pobi.get(1));
+        //더 높은 점수
+        Integer pobiRightScore = PageScore(pobiRightSumScore, pobiRightProScore);
+        //포비 최종 점수 구하기
+        Integer pobiScore = PageScore(pobiLeftScore, pobiRightScore);
 
         //크롱
         //왼쪽 페이지
@@ -33,12 +39,18 @@ class Problem1 {
         Integer crongLeftSumScore = PageSumScore(crong.get(0));
         //자리수 곱 점수
         Integer crongLeftProScore = PageProScore(crong.get(0));
+        //더 높은 점수
+        Integer crongLeftScore = PageScore(crongLeftSumScore, crongLeftProScore);
 
         //우측 페이지 체크
         //자리수 합 점수
         Integer crongRightSumScore = PageSumScore(crong.get(1));
         //자리수 곱 점수
         Integer crongRightProScore = PageProScore(crong.get(1));
+        //더 높은 점수
+        Integer crongRightScore = PageScore(crongRightSumScore, crongRightProScore);
+        //포비 최종 점수 구하기
+        Integer crongScore = PageScore(crongLeftScore, crongRightScore);
 
         return answer;
     }
@@ -68,5 +80,15 @@ class Problem1 {
             pro *= Integer.parseInt(Page.substring(i, i+1));
         }
         return pro;
+    }
+    
+    public static Integer PageScore(Integer score1, Integer score2) {
+        if (score1 >= score2) {
+            return score1;
+        }
+        if (score2 > score1) {
+            return score2;
+        }
+        return 0;
     }
 }
