@@ -5,8 +5,8 @@ import java.util.List;
 public class Referee {
 
     public static final int CONTINOUS_CRITERION = 1;
-    public static final int START_PAGE_NUMBER_ONE = 1;
-    public static final int START_PAGE_NUMBER_TWO = 2;
+    public static final int START_PAGE_NUMBER_LEFT = 1;
+    public static final int START_PAGE_NUMBER_RIGHT = 2;
     public static final int END_PAGE_NUMBER_LEFT = 399;
     public static final int END_PAGE_NUMBER_RIGHT = 400;
     public static final String INPUT_EXCEPTION_MESSAGE = "올바르지 않은 입력 값 입니다.";
@@ -48,8 +48,8 @@ public class Referee {
     }
 
     private boolean isStartPage(int leftPageNumber, int rightPageNumber) {
-        return leftPageNumber == START_PAGE_NUMBER_ONE
-                && rightPageNumber == START_PAGE_NUMBER_TWO;
+        return leftPageNumber == START_PAGE_NUMBER_LEFT
+                && rightPageNumber == START_PAGE_NUMBER_RIGHT;
     }
 
     private boolean isContinuousPage(int leftPageNumber, int rightPageNumber) {
