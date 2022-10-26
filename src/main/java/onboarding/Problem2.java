@@ -11,6 +11,12 @@ public class Problem2 {
 		pattern = Pattern.compile(regex);
 	}
 
+	public static String deleteConsecutiveCharacters(String cryptogram) {
+		Matcher matcher = pattern.matcher(cryptogram);
+		String result = matcher.replaceAll("");
+		return result;
+	}
+
     public static String solution(String cryptogram) {
         String answer = "answer";
         return answer;
