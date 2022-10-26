@@ -23,5 +23,5 @@
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
 
 ### 기능 목록
-- [ ] 닉네임을 2글자 토큰으로 변환하는 기능
+- [x] 닉네임을 2글자 토큰으로 변환하는 기능
 - [ ] 토큰이 중복된 토큰인지 확인하는 기능
