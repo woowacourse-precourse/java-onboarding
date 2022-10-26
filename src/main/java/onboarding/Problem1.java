@@ -13,7 +13,19 @@ class Problem1 {
         int pobiScore = validateBiggerNumber(pobiBiggerPageNumbers.get(0), pobiBiggerPageNumbers.get(1));
         int crongScore = validateBiggerNumber(crongBiggerPageNumbers.get(0), crongBiggerPageNumbers.get(1));
 
-        return answer;
+        return winnerUser(pobiScore, crongScore);
+    }
+
+    private static int winnerUser(int userScore1, int userScore2) {
+        if(userScore1 > userScore2) {
+            return 1;
+        }
+        else if(userScore1 < userScore2) {
+            return 2;
+        }
+        else {
+            return 0;
+        }
     }
 
     private static List<Integer> saveUserBiggerPageNumber(List<Integer> user) {
