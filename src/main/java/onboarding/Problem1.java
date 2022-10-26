@@ -17,4 +17,14 @@ class Problem1 {
         }
         return result;
     }
+
+    //입력받은 숫자의 각 자릿수를 곱하는 메서드
+    private static int multiplyNum(int num) {
+        int result = 1;
+        while (num > 0) {
+            result = result*(num%10);
+            num /= 10;
+        }
+        return result;
+    }
 }
