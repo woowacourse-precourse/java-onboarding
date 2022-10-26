@@ -16,21 +16,25 @@ import java.util.List;
  */
 
 public class Problem3 {
+    static List<Character> clapList = new ArrayList<>();
+
     public static int solution(int number) {
-        int answer = 0;
-        List<Character> clapList = new ArrayList<>();
         clapList.add('3');
         clapList.add('6');
         clapList.add('9');
-
-        for (int currentNumber = 3; currentNumber <= number; currentNumber++) {
-            String strOfCurrentNumber = String.valueOf(currentNumber);
-            answer += countClap(strOfCurrentNumber, clapList);
-        }
-        return answer;
+        return sumOfClapCount(number);
     }
 
-    private static int countClap(String strOfCurrentNumber, List<Character> clapList) {
+    private static int sumOfClapCount(int number) {
+        int clapCount = 0;
+        for (int currentNumber = 3; currentNumber <= number; currentNumber++) {
+            String strOfCurrentNumber = String.valueOf(currentNumber);
+            clapCount += countClap(strOfCurrentNumber);
+        }
+        return clapCount;
+    }
+
+    private static int countClap(String strOfCurrentNumber) {
         int clapCount = 0;
         for (int i = 0; i < strOfCurrentNumber.length(); i++) {
             if (clapList.contains(strOfCurrentNumber.charAt(i))) {
