@@ -22,6 +22,10 @@ class Problem1 {
         return 1 <= left && left <= 399 && left + 1 == right;
     }
 
+    private int valueOfPage(int page) {
+        return Math.max(plusEach(page), multiplyEach(page));
+    }
+
     private int plusEach(int page) {
         int sum = 0;
         while (page != 0) {
