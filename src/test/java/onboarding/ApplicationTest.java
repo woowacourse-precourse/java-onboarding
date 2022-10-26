@@ -46,77 +46,47 @@ class ApplicationTest {
         void isCorrectSize(){
             List<Integer> pobi = List.of(101, 102);
             List<Integer> crong = List.of(41, 42, 43);
-            boolean result = false;
-            try{
-                Problem1.solution(pobi, crong);
-            } catch (Exception error){
-                result = true;
-            }
-            assertThat(result).isTrue();
+
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(-1);
         }
 
         @Test
         void isCorrectRange1(){
             List<Integer> pobi = List.of(1, 2);
             List<Integer> crong = List.of(41, 42);
-            boolean result = false;
-            try{
-                Problem1.solution(pobi, crong);
-            } catch (Exception error){
-                result = true;
-            }
-            assertThat(result).isTrue();
+
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(-1);
         }
         @Test
         void isCorrectRange2(){
             List<Integer> pobi = List.of(10, 11);
             List<Integer> crong = List.of(399, 400);
-            boolean result = false;
-            try{
-                Problem1.solution(pobi, crong);
-            } catch (Exception error){
-                result = true;
-            }
-            assertThat(result).isTrue();
+
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(-1);
         }
 
         @Test
         void isConsecutive(){
             List<Integer> pobi = List.of(11, 14);
             List<Integer> crong = List.of(399, 400);
-            boolean result = false;
-            try{
-                Problem1.solution(pobi, crong);
-            } catch (Exception error){
-                result = true;
-            }
-            assertThat(result).isTrue();
+
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(-1);
         }
 
         @Test
         void leftOddCheck(){
             List<Integer> pobi = List.of(10, 12);
             List<Integer> crong = List.of(399, 400);
-            boolean result = false;
-            try{
-                Problem1.solution(pobi, crong);
-            } catch (Exception error){
-                result = true;
-            }
-            assertThat(result).isTrue();
+
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(-1);
         }
 
         @Test
         void rightEvenCheck(){
             List<Integer> pobi = List.of(11, 12);
             List<Integer> crong = List.of(398, 399);
-            boolean result = false;
-            try{
-                Problem1.solution(pobi, crong);
-            } catch (Exception error){
-                result = true;
-            }
-            assertThat(result).isTrue();
+
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(-1);
         }
     }
 
