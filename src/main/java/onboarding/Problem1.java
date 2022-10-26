@@ -13,6 +13,9 @@ class Problem1 {
     }
 
     private static boolean validate(List<Integer> pages) {
+        if (pages.size() != 2) {
+            return false;
+        }
         if (pages.get(0) % 2 == 0) {
             return false;
         }
