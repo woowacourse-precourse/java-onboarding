@@ -11,13 +11,13 @@ public class RefereeTest {
 
     @Test
     void 포비가_이기는경우_1() {
-        Referee referee = new Referee(List.of(34, 35), List.of(3, 4));
+        Referee referee = new Referee(List.of(35, 36), List.of(3, 4));
         assertThat(referee.playGame()).isEqualTo(GameResultStatus.POBI_WIN);
     }
 
     @Test
     void 크롱이_이기는경우_2() {
-        Referee referee = new Referee(List.of(3, 4), List.of(34, 35));
+        Referee referee = new Referee(List.of(3, 4), List.of(35, 36));
         assertThat(referee.playGame()).isEqualTo(GameResultStatus.CRONG_WIN);
     }
 

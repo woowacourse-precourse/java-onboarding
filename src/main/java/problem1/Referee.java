@@ -33,7 +33,7 @@ public class Referee {
     }
 
     private boolean isContinuousPage(int leftPageNumber, int rightPageNumber) {
-        return rightPageNumber - leftPageNumber != CONTINOUS_CRITERION;
+        return rightPageNumber - leftPageNumber == CONTINOUS_CRITERION;
     }
 
     private boolean isRightPage(int left, int right) {
