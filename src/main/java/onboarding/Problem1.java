@@ -4,24 +4,23 @@ import java.util.List;
 
 class Problem1 {
 
-
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         // 예외 처리
         if (validateList(pobi) || validateList(crong)) {
             return -1;
         }
 
-        int pobiMax;
-        for (int page : pobi) {
-            pobiMax = compareTwoNumbers(page);
+        int pobiMax = compareNumbers(pobi);
+        int crongMax = compareNumbers(crong);
+
+        if (crongMax == pobiMax) {
+            return 0;
+        } else if (pobiMax > crongMax) {
+            return 1;
+        } else { // 남은 경우의 수는 crong이 값이 큰 경우이기 때문에 return 2;
+            return 2;
         }
 
-        int crongMax;
-        for (int page : crong) {
-            crongMax = compareTwoNumbers(page);
-        }
-
-        return 0;
     }
 
     // 예외 발생시 TRUE
@@ -43,10 +42,21 @@ class Problem1 {
         return list.get(1) - list.get(0) != 1;
     }
 
-    private static int compareTwoNumbers(int number) {
-        int addNum = addEachNumber(number);
-        int multiNum = multiEachNumber(number);
-        return Math.max(addNum, multiNum);
+    // 4개의 경우의 수 (왼쪽 페이지 각 자릿수 더하고 곱하고, 오른쪽 페이지 각 자릿수 더하고 곱하고) 중에서
+    // 가장 큰 값을 반환하는 메서드
+    private static int compareNumbers(List<Integer> numbers) {
+        int addNum = 0;
+        int multiNum = 0;
+        int max = Integer.MIN_VALUE;
+
+        for (int number : numbers) {
+            addNum = addEachNumber(number);
+            multiNum = multiEachNumber(number);
+
+            max = Math.max(max, addNum);
+            max = Math.max(max, multiNum);
+        }
+        return max;
     }
 
     // 각 자릿수를 더하는 메서드
