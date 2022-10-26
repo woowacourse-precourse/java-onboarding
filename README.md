@@ -50,6 +50,9 @@ BUILD SUCCESSFUL in 0s
       1. **중복되지 않은 문자열만 저장하는 기능 구현**  
          a-1. 연속으로 중복되었는지 검사하는 기능 구현
 3. [문제 3](./docs/PROBLEM3.md)
+   * 기능 목록
+     1. **1 ~ number 범위의 int[] 배열 생성 기능 구현** 
+     2. **1 ~ number 범위의 각 각의 숫자에서 박수 횟수 계산하는 기능 구현**
 4. [문제 4](./docs/PROBLEM4.md)
 5. [문제 5](./docs/PROBLEM5.md)
 6. [문제 6](./docs/PROBLEM6.md)
