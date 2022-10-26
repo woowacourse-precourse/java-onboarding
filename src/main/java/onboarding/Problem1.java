@@ -70,6 +70,9 @@ class Problem1 {
         if (Page.get(0) + 1 != Page.get(1)) {
             return true;
         }
+        if (Page.get(0) == 399 || Page.get(0) == 1) {
+            return true;
+        }
         return false;
     }
 
