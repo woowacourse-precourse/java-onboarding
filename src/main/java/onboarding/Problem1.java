@@ -42,10 +42,20 @@ class Problem1 {
     /**
      * 4. 2~3 과정에서 가장 큰 수를 본인의 점수로 한다.
      * @Method: calcPoint
-     * 본인의 점수를 구한다. (2~3번 과정을 단계별로 method로 만든다.)
-     * TODO: 가장 큰 수를 return 한다.
+     * 본인의 점수를 구한다.
      */
-
+    private static int calcPoint(List<Integer> pages) {
+        int point = 0;
+        // 오른쪽 왼쪽 페이지 각각 계산한다.
+        for(Integer page: pages) {
+            List<Integer> digits = digitPage(page);
+            int addPoint = addDigit(digits);
+            int multiplePoint = mutiplyDigit(digits);
+            // 가장 큰 수를 return 한다.
+            point = Math.max(point, Math.max(addPoint, multiplePoint));
+        }
+        return point;
+    }
 
     /**
      * 2. 왼쪽 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구한다.
