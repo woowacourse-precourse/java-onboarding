@@ -17,6 +17,7 @@ public class Problem5 {
     
         for (Integer monetaryUnit : UNITS_OF_MONEY) {
             answer.add(numberOfCurrency(money, monetaryUnit));
+            money %= monetaryUnit;
         }
         
         return answer;
