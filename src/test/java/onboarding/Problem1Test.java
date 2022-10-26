@@ -12,7 +12,84 @@ import org.junit.jupiter.api.*;
 class Problem1Test {
 
 	@Nested
-	class getMaxDigitTest {
+	class IntegrationTest {
+
+		@Test
+		@DisplayName("포비의 페이지가 범위 밖일 경우 -1을 반환해야 한다")
+		public void pobiPageOutOfRangeTest() {
+			List<Integer> pobi = List.of(-1, 0);
+			List<Integer> crong = List.of(3, 4);
+
+			assertThat(solution(pobi, crong)).isEqualTo(-1);
+		}
+
+		@Test
+		@DisplayName("크롱의 페이지가 범위 밖일 경우 -1을 반환해야 한다")
+		public void crongPageOutOfRangeTest() {
+			List<Integer> pobi = List.of(97, 98);
+			List<Integer> crong = List.of(399, 400);
+
+			assertThat(solution(pobi, crong)).isEqualTo(-1);
+
+		}
+
+		@Test
+		@DisplayName("크롱의 페이지가 연속되지 않은 경우 -1을 반환해야 한다")
+		public void crongPageNotSerialTest() {
+			List<Integer> pobi = List.of(97, 98);
+			List<Integer> crong = List.of(3, 5);
+
+			assertThat(solution(pobi, crong)).isEqualTo(-1);
+		}
+
+		@Test
+		@DisplayName("포비의 페이지가 좌측이 1 더 큰 경우 -1을 반환해야 한다")
+		public void pobiRightPageIs1BiggerTest() {
+			List<Integer> pobi = List.of(98, 97);
+			List<Integer> crong = List.of(3, 4);
+
+			assertThat(solution(pobi, crong)).isEqualTo(-1);
+		}
+
+		@Test
+		@DisplayName("포비의 왼쪽 페이지가 짝수인경우 -1을 반환한다")
+		public void pobiLeftPageIsEvenTest() {
+			List<Integer> pobi = List.of(98, 99);
+			List<Integer> crong = List.of(5, 6);
+
+			assertThat(solution(pobi, crong)).isEqualTo(-1);
+		}
+
+		@Test
+		@DisplayName("크롱의 왼쪽 페이지가 짝수인경우 -1을 반환한다")
+		public void crongLeftPageIsEvenTest() {
+			List<Integer> pobi = List.of(55, 56);
+			List<Integer> crong = List.of(10, 11);
+
+			assertThat(solution(pobi, crong)).isEqualTo(-1);
+		}
+
+		@Test
+		@DisplayName("크롱의 더한 페이지가 곱한 페이지보다 크고, 그것이 포비의 점수인 더한 페이지보다 크다")
+		public void crongMaxIsAddAndBiggerThanPobiMaxIsAdd() {
+			List<Integer> pobi = List.of(111, 112);
+			List<Integer> crong = List.of(115, 116);
+
+			assertThat(solution(pobi, crong)).isEqualTo(2);
+		}
+
+		@Test
+		@DisplayName("포비의 곱한 페이지가 더한 페이지보다 크고, 그것이 크롱의 점수인 곱한 페이지보다 크다")
+		public void pobiMaxIsProductAndBiggerThanCrongMaxIsProduct() {
+			List<Integer> pobi = List.of(187, 188);
+			List<Integer> crong = List.of(77, 78);
+
+			assertThat(solution(pobi, crong)).isEqualTo(1);
+		}
+	}
+
+	@Nested
+	class GetMaxDigitTest {
 
 		@Test
 		@DisplayName("정수의 각 자리 수 합을 반환해야 한다")
@@ -46,7 +123,7 @@ class Problem1Test {
 	}
 
 	@Nested
-	class getScoreTest {
+	class GetScoreTest {
 
 		@Test
 		@DisplayName("곱한 값이 더 큰 경우 곱한 값을 반환해야 한다")
@@ -71,7 +148,7 @@ class Problem1Test {
 	}
 
 	@Nested
-	class getWinnerTest {
+	class GetWinnerTest {
 
 		@Test
 		public void drawTest1() {
@@ -131,7 +208,7 @@ class Problem1Test {
 	}
 
 	@Nested
-	class exceptionHandlingTest {
+	class ExceptionHandlingTest {
 
 		@Test
 		public void checkPageHasAscending1DifferenceTest() {
