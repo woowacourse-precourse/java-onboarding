@@ -8,6 +8,18 @@ class Problem1 {
         return answer;
     }
 
+    static int calcPoint(List<Integer> user) {
+        int leftPagePoint = calcEachDigit(user.get(0));
+        int rightPagePoint = calcEachDigit(user.get(1));
+        return Math.max(leftPagePoint, rightPagePoint);
+    }
+
+    static int calcEachDigit(int pageNum) {
+        int eachDigitSum = calcEachDigitSum(pageNum);
+        int eachDigitProduct = calcEachDigitProduct(pageNum);
+        return Math.max(eachDigitSum, eachDigitProduct);
+    }
+
     static int calcEachDigitSum(int pageNum) {
         int totalSum = 0;
 
@@ -30,12 +42,6 @@ class Problem1 {
         }
 
         return totalProduct;
-    }
-
-    static int calcEachDigit(int pageNum) {
-        int eachDigitSum = calcEachDigitSum(pageNum);
-        int eachDigitProduct = calcEachDigitProduct(pageNum);
-        return Math.max(eachDigitSum, eachDigitProduct);
     }
 
 }
