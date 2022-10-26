@@ -13,7 +13,7 @@ class Problem1 {
         return answer;
     }
 
-    public static int validation(List<Integer> page) {
+    public static int validation(List<Integer> page) { // 주어진 페이지의 유효성 검사
         if(page.get(0) == 1 || page.get(1) == 400) {
             return -1;
         }
@@ -23,7 +23,7 @@ class Problem1 {
         return 0;
     }
 
-    public static int sum_page(List<Integer> page) { // 왼쪽 오른쪽 페이지의 각 자리 숫자를 더한 후 더 큰 숫자 반환
+    public static int sum_page(List<Integer> page) { // 왼쪽, 오른쪽 페이지의 각 자리 숫자를 더한 후 더 큰 숫자 반환
         int sum_left = 0, sum_right = 0;
         int left_page = page.get(0);
         int right_page = page.get(1);
@@ -36,6 +36,21 @@ class Problem1 {
         }
         if(sum_left > sum_right) return sum_left;
         else return sum_right;
+    }
+
+    public static int mul_page(List<Integer> page) { // 왼쪽, 오른쪽 페이지의 각 자리 숫자를 곱한 후 더 큰 숫자 반환
+        int mul_left = 1, mul_right = 1;
+        int left_page = page.get(0);
+        int right_page = page.get(1);
+
+        while(left_page > 0 || right_page > 0) {
+            mul_left *= left_page % 10;
+            mul_right *= right_page % 10;
+            left_page /= 10;
+            right_page /= 10;
+        }
+        if(mul_left > mul_right) return mul_left;
+        else return mul_right;
     }
 }
 
