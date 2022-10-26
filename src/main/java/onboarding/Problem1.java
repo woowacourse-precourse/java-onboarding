@@ -17,5 +17,19 @@ class Problem1 {
         if (page1 % 2 == 0 || page1 < 3 || page1 > 397 || page1 + 1 != page2) {
             return -1;
             }
+        int sum = 0, mult = 1;
+        while (page1>0){
+            int num = page1 % 10;
+            sum += num;
+            mult *= num;
+            page1 /= 10;
         }
+        while (page2>0){
+            int num = page2 % 10;
+            sum += num;
+            mult *= num;
+            page2 /= 10;
+        }
+        return Math.max(sum, mult);
+    }
 }
