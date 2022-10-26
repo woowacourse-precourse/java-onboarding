@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 
@@ -62,14 +61,14 @@ class Problem1 {
         private static final int UPPER_BOUND = 400;
         private static final String ERR_PAGE_BOUND = "페이지는 1 ~ 400까지의 값입니다.";
 
-        private Integer page;
+        private int page;
 
-        public Page(Integer page) {
-            this.page = Objects.requireNonNull(page);
-            validatePage();
+        public Page(int page) {
+            this.page = page;
+            validatePageBound();
         }
 
-        private void validatePage() {
+        private void validatePageBound() {
             if (page < LOWER_BOUND || page > UPPER_BOUND)
                 throw new IllegalArgumentException(ERR_PAGE_BOUND);
         }
