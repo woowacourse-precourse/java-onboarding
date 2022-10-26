@@ -49,11 +49,19 @@ class Problem1 {
     }
   }
 
-  public static boolean isAllowedPage(int page) throws IllegalStateException{
-      if (page < 1 || page > 400) {
-        throw new IllegalStateException("1~400 이내의 페이지를 펴주세요");
-      } else {
-        return true;
-      }
+  public static boolean isAllowedPage(int page) throws IllegalStateException {
+    if (page < 1 || page > 400) {
+      throw new IllegalStateException("1~400 이내의 페이지를 펴주세요");
+    } else {
+      return true;
+    }
+  }
+
+  public static boolean isAllowedPagesCount(List<Integer> pageList) throws IllegalStateException {
+    if (pageList.size() != 2) {
+      throw new IllegalStateException("2개의 페이지만 선택해주세요.");
+    } else {
+      return true;
+    }
   }
 }
