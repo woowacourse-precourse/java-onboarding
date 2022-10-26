@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
+    static int errorNum = 250;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int left = 0;
         int right = 1;
@@ -44,6 +46,7 @@ class Problem1 {
             multiply *= num[i];
         }
 
+        exceptionCheck(multiply);
         max = Math.max(sum, multiply);
 
         return max;
@@ -76,4 +79,10 @@ class Problem1 {
         return -1;
     }
 
+    public static int exceptionCheck(int multiplyNum)
+    {
+        if (multiplyNum == 0)
+            return errorNum;
+        return multiplyNum;
+    }
 }
