@@ -36,8 +36,15 @@ class Problem1 {
     }
 
     public static int findMaxValue(List<Integer> pages) {
-        int leftPage = pages.get(LEFT_PAGE_IDX);
-        int rightPage = pages.get(RIGHT_PAGE_IDX);
+        int leftPage = 0;
+        int rightPage = 0;
+
+        try {
+            leftPage = pages.get(LEFT_PAGE_IDX);
+            rightPage = pages.get(RIGHT_PAGE_IDX);
+        } catch (IndexOutOfBoundsException e) {
+            return ERROR;
+        }
 
         if (leftPage != rightPage - 1 || rightPage != leftPage + 1) {
             return ERROR;

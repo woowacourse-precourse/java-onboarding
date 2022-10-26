@@ -30,6 +30,7 @@
 > 4. 왼쪽 페이지가 1 미만 이거나 혹은 오른쪽 페이지가 400 초과인 경우
 > 5. 왼쪽 페이지가 1 또는 399 일때
 > 6. 오른쪽 페이지가 2 또는 400 일때
+> 7. 포비와 크롱의 페이지들이 참조 범위를 벗어날 때
 
 포비와 크롱이 펼친 페이지가 들어있는 리스트/배열 pobi와 crong이 주어질 때, 
 포비가 이긴다면 1, 크롱이 이긴다면 2, 무승부는 0, 
@@ -41,3 +42,4 @@
 - [x] feat: add error handling and result game method
 - [x] feat: add error handling conditional statement
 - [x] feat: add error handling another conditional statement
+- [x] feat: add error handling try catch statement
