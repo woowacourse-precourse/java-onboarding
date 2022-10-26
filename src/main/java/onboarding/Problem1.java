@@ -4,8 +4,13 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        if (isException(pobi) && isException(crong)) {
+            int pobiMaxNum = getMaxNumber(pobi.get(0),pobi.get(1));
+            int crongMaxNum = getMaxNumber(crong.get(0),crong.get(1));
+
+            return getWinner(pobiMaxNum, crongMaxNum);
+        }
+        return -1;
     }
 
     // 가장 큰 수를 구하는 기능을 하는 함수

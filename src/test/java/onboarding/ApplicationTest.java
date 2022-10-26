@@ -50,25 +50,39 @@ class ApplicationTest {
 //            String result = "";
 //            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
 //        }
-//    }
-//
-//    @Nested
-//    class Problem3Test {
 //        @Test
-//        void case1() {
-//            int number = 13;
-//            int result = 4;
-//            assertThat(Problem3.solution(number)).isEqualTo(result);
+//        void case3() {
+//            String cryptogram = "boaaat";
+//            String result = "bot";
+//            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
 //        }
 //
 //        @Test
-//        void case2() {
-//            int number = 33;
-//            int result = 14;
-//            assertThat(Problem3.solution(number)).isEqualTo(result);
+//        void case4() {
+//            String cryptogram = "boaat";
+//            String result = "bot";
+//            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
 //        }
-//    }
 //
+//    }
+
+    @Nested
+    class Problem3Test {
+        @Test
+        void case1() {
+            int number = 13;
+            int result = 4;
+            assertThat(Problem3.solution(number)).isEqualTo(result);
+        }
+
+        @Test
+        void case2() {
+            int number = 33;
+            int result = 14;
+            assertThat(Problem3.solution(number)).isEqualTo(result);
+        }
+    }
+
 //    @Nested
 //    class Problem4Test {
 //        @Test
