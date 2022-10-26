@@ -9,6 +9,16 @@ public class ThreeSixNine {
 	}
 
 	public int run() {
+		for (int i = 1; i < number + 1; i++) {
+			countClap(i);
+		}
 		return 0;
+	}
+
+	private void countClap(int number) {
+		while (number > 0) {
+			int digit = number % 10;
+			number /= 10;
+		}
 	}
 }
