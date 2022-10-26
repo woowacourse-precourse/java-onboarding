@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 class Problem1 {
-		public static int solution(List<Integer> pobi, List<Integer> crong) {
+	public static int solution(List<Integer> pobi, List<Integer> crong) {
 
 		int pobiLeft = getMaxValue(getDigitArray(pobi, "left"));
 		int crongLeft = getMaxValue(getDigitArray(crong, "left"));
