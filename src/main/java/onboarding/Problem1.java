@@ -18,6 +18,9 @@ class Problem1 {
         return sum;
     }
 
+    boolean isLegalPages(List<Integer> pages) {
+        return inRange(pages) && isContinuousPages(pages);
+    }
     boolean isContinuousPages(List<Integer> numbers) {
         return (numbers.get(0) % 2 == 1) && (numbers.get(1) - numbers.get(0) == 1);
     }
