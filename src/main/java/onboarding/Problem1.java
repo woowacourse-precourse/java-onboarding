@@ -9,12 +9,15 @@ class Problem1 {
         return answer;
     }
 
-    private static int maxPage(int page){
+    private static int getMaxPage(int page){
+        int num = 0;
         int sum = 0;
         int mul = 1;
+
         while (page>0){
-            sum += page%10;
-            mul *= page%10;
+            num = page%10;
+            sum += num;
+            mul *= num;
             page /= 10;
         }
         return Math.max(sum,mul);
