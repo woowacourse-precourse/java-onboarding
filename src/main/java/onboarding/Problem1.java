@@ -25,4 +25,10 @@ class Problem1 {
             return n;
         return n % 10 + sum(n / 10);
     }
+
+    private static int multiply(int n) {
+        if (n < 10)
+            return n;
+        return n % 10 * multiply(n / 10);
+    }
 }
