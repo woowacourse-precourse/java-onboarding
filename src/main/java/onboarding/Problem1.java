@@ -25,8 +25,7 @@ class ValidationFor1{
 
     static boolean isValidateInput(List<Integer> input){
 
-        return !(input.size() != LIST_LENGTH
-                || input.get(1) - input.get(0) != 1
+        return !(input.get(1) - input.get(0) != 1
                 || input.get(1) >= MAX_PAGE
                 || input.get(0) <= MIN_PAGE);
     }

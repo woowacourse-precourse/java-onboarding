@@ -8,5 +8,7 @@ public class Problem2 {
 }
 
 class ValidationFor2{
+    static boolean isValidateInput(String input){
 
+    }
 }
