@@ -7,6 +7,23 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
+        if(validatePage(pobi, crong)) // 올바른 페이지일 경우
+        {
+            int[] leftNumsOfPobi = makeArrayOfNum(pobi.get(0));
+            int[] rightNumsOfPobi = makeArrayOfNum(pobi.get(1)); // 포비의 왼쪽 오른쪽 배열 생성
+
+            int[] leftNumsOfCrong = makeArrayOfNum(crong.get(0));
+            int[] rightNumsOfCrong = makeArrayOfNum(crong.get(1)); // 크롱의 왼쪽 오른쪽 배열 생성
+
+            int maxValueOfPobi = findMaxValue(leftNumsOfPobi, rightNumsOfPobi);
+            int maxValueOfCrong = findMaxValue(leftNumsOfCrong, rightNumsOfCrong);
+
+            answer = compareScore(maxValueOfPobi, maxValueOfCrong);
+
+        }else
+        {
+            answer = -1; // 예외 사항일 경우 answer = -1
+        }
 
         return answer;
     }
@@ -38,7 +55,7 @@ class Problem1 {
                 for(int j = 0; j < leftNum.length; j++)
                 {
                     addNum += leftNum[j];
-                    mulNum += leftNum[j];
+                    mulNum *= leftNum[j];
                 }
 
                 maxValue = Math.max(addNum, mulNum); // left 배열이 먼저 실행되므로 maxValue는 따로 비교하지 않아도 된다.
@@ -46,8 +63,8 @@ class Problem1 {
             {
                 for(int j = 0; j < rightNum.length; j++)
                 {
-                    addNum += leftNum[j];
-                    mulNum += leftNum[j];
+                    addNum += rightNum[j];
+                    mulNum *= rightNum[j];
                 }
 
                 maxValue = Math.max(maxValue, Math.max(addNum, mulNum));
