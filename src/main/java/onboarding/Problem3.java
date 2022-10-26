@@ -15,8 +15,8 @@ public class Problem3 {
     static final int NOT_VISITED = -1;
 
     public static int solution(int number) {
-        int answer = 0;
-        return answer;
+        getCountArray();
+        return countClap(number);
     }
 
     public static int countClap (int number) {
