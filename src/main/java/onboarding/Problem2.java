@@ -15,25 +15,32 @@ public class Problem2 {
         }
     }
 
-    public int countDuplicatedNeighbor(List<Character> cryptogram, int start) {
+    public static int countDuplicatedNeighbor(List<Character> cryptogram, int start) {
         int cnt = 1;
         for (int i = start; i < cryptogram.size() - 1; i++) {
-            if (cryptogram.get(i) == cryptogram.get(i+1)){
+            if (cryptogram.get(i) == cryptogram.get(i + 1)) {
                 cnt++;
-            }
-            else{
+            } else {
                 break;
             }
         }
         return cnt;
     }
 
-    public void deleteDuplicatedNeighbor(List<Character> cryptogram, int start, int cnt){
-        if (cnt != 1){
-            for(int i=0; i<cnt; i++){
+    public static void deleteDuplicatedNeighbor(List<Character> cryptogram, int start, int cnt) {
+        if (cnt != 1) {
+            for (int i = 0; i < cnt; i++) {
                 cryptogram.remove(start);
             }
         }
+    }
+
+    public int hasDuplicateNeighbor(List<Character> cryptogram) {
+        for (int i = 0; i < cryptogram.size() - 1; i++) {
+            if (cryptogram.get(i) == cryptogram.get(i + 1))
+                return i;
+        }
+        return -1;
     }
 
     public static String solution(String cryptogram) {
@@ -43,6 +50,8 @@ public class Problem2 {
         for (char c : temp) {
             charArr.add(c);
         }
+
+
 
         return answer;
     }
