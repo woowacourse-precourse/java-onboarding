@@ -9,6 +9,7 @@ class Problem1 {
     // 포비와 크롱 각각 오른쪽/왼쪽 페이지의 합과 곱 중 더 큰 수를 반환하는 함수를 만들기
     // 포비와 크롱 각각 오른쪽 최댓값 왼쪽 최댓값 비교해 더 큰 수 반환하는 함수 만들기
     // 출력된 두 값 비교해 return 값 설정하기 (return 값은 1, 2, 0 중 하나)
+
     public static boolean exceptionCase(List<Integer> list) {
         boolean excepted = false;
         if(list.get(1)- list.get(0) != 1) {
@@ -37,7 +38,13 @@ class Problem1 {
     }
 
     public static int finalValue(int page1_max, int page2_max) {
-        return Math.max(page1_max, page2_max);
+        int finalValue = 0;
+        if(page1_max>page2_max) {
+            finalValue = 1;
+        } else if(page1_max<page2_max) {
+            finalValue = 2;
+        }
+        return finalValue;
     }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
