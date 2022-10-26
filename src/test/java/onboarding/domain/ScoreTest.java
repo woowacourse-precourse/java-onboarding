@@ -22,4 +22,31 @@ class ScoreTest {
         assertThrows(IllegalArgumentException.class,
                 () -> new Score(List.of(1, 2)));
     }
+
+    @Test
+    @DisplayName("승리")
+    void 승리() {
+        Score user = new Score(List.of(297, 298));
+        Score anotherPlayer = new Score(List.of(197, 198));
+        int result = 1;
+        assertEquals(result, user.playGame(anotherPlayer));
+    }
+
+    @Test
+    @DisplayName("패배")
+    void 패배() {
+        Score user = new Score(List.of(197, 198));
+        Score anotherPlayer = new Score(List.of(297, 298));
+        int result = 2;
+        assertEquals(result, user.playGame(anotherPlayer));
+    }
+
+    @Test
+    @DisplayName("무승부")
+    void 무승부() {
+        Score user = new Score(List.of(197, 198));
+        Score anotherPlayer = new Score(List.of(197, 198));
+        int result = 0;
+        assertEquals(result, user.playGame(anotherPlayer));
+    }
 }

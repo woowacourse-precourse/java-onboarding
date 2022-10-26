@@ -6,6 +6,9 @@ import static java.lang.Math.max;
 import static onboarding.validator.PageNumberValidator.isValidPageNumbers;
 
 public class Score {
+    public static final int WIN = 1;
+    public static final int LOSE = 2;
+    public static final int DRAW = 0;
 
     private final int score;
 
@@ -36,5 +39,23 @@ public class Score {
             pageNumber /= 10;
         }
         return score;
+    }
+
+    public int playGame(Score scoreForAnother) {
+        if (lose(scoreForAnother)) {
+            return LOSE;
+        }
+        if (win(scoreForAnother)) {
+            return WIN;
+        }
+        return DRAW;
+    }
+
+    private boolean win(Score scoreForAnother) {
+        return this.score > scoreForAnother.score;
+    }
+
+    private boolean lose(Score scoreForAnother) {
+        return this.score < scoreForAnother.score;
     }
 }
