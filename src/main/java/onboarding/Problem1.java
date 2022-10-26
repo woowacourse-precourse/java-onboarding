@@ -26,4 +26,11 @@ class Problem1 {
         }
         return pageNumbers;
     }
+
+    public int getSum(List<Integer> pageNumbers) {
+        int sum = 0;
+        for(int i = 0; i < pageNumbers.size(); i++)
+            sum += pageNumbers.get(i);
+        return sum;
+    }
 }
