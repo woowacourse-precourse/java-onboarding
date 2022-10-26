@@ -10,6 +10,9 @@ class Problem1 {
         int crongLeftMax = getMaxValue(crong.get(0));
         int crongRightMax = getMaxValue(crong.get(1));
 
+        int pobiMax = Math.max(pobiLeftMax, pobiRightMax);
+        int crongMax = Math.max(crongLeftMax, crongRightMax);
+
         return -1;
     }
 
