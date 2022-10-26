@@ -17,7 +17,8 @@ class Problem1 {
         }
 
         /*포비와 크롱의 왼쪽, 오른쪽 페이지 중에 가장 큰 값 구하기*/
-
+        int scorePobi = Math.max(calculateMaxPage(leftPagePobi), calculateMaxPage(rightPagePobi));
+        int scoreCrong = Math.max(calculateMaxPage(leftPageCrong), calculateMaxPage(rightPageCrong));
 
         /*포비와 크롱 대결 승패 결정*/
 
@@ -30,6 +31,23 @@ class Problem1 {
             return true;
         }
         return false;
+    }
+
+    public static int calculateMaxPage(int pageNumber) {
+        if (pageNumber >= 100) {
+            int hundred = pageNumber / 100;
+            int ten = pageNumber / 10 % 10;
+            int one = pageNumber % 10;
+
+            return Math.max(hundred + ten + one, hundred * ten * one);
+        } else if (pageNumber >= 10) {
+            int ten = pageNumber / 10 % 10;
+            int one = pageNumber % 10;
+
+            return Math.max(ten + one, ten * one);
+        } else {
+            return pageNumber % 10;
+        }
     }
 
 }
