@@ -81,14 +81,14 @@ class ApplicationTest {
         }
         @Test
         void validateStartPageExceptionTest() {
-            List<Integer> startPageExceptionData = Arrays.asList(null, 1);
+            List<Integer> startPageExceptionData = Arrays.asList(1, 2);
 
             assertThat(Problem1.validatePage(startPageExceptionData)).isEqualTo(false);
         }
 
         @Test
         void validateLastPageExceptionTest() {
-            List<Integer> lastPageExceptionData = Arrays.asList(400, null);
+            List<Integer> lastPageExceptionData = Arrays.asList(399, 400);
 
             assertThat(Problem1.validatePage(lastPageExceptionData)).isEqualTo(false);
         }
