@@ -37,7 +37,7 @@ public class Problem4 {
         return changeCharWithAscii(tmp,c);
     }
     public static char changeCharWithAscii(int num,char c){
-        return c;
+        return (char)(num-c);
     }
 
 
