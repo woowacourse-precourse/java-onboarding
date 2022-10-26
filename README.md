@@ -68,7 +68,7 @@
 
 
 ###
-### ✔️ invalidException
+### ✔️ invalidStringException
 **예외를 처리하는 클래스입니다.**
 
 - invalidString
