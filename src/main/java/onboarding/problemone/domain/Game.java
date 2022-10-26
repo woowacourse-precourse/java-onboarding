@@ -13,7 +13,24 @@ public class Game {
 		this.user2=new User(user2Pages);
 	}
 
-	public int play() {
+	public int play(){
+		if (!validatePage(user1) || !validatePage(user2)){
+			return -1;
+		}
+
 		return 0;
 	}
+
+	private boolean validatePage(User user){
+		if (user.getLeftPage()<1 || user.getLeftPage()>400){
+			return false;
+		} else if (user.getLeftPage()%2==0 || user.getRightPage()%2==1) {
+			return false;
+		} else if (user.getLeftPage()+1!=user.getRightPage()) {
+			return false;
+		}
+		return true;
+	}
+
+
 }
