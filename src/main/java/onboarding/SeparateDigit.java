@@ -30,6 +30,20 @@ public class SeparateDigit {
         int mul = multiplySeparatedNumber();
         return biggerInt(sum, mul);
     }
+    public int SumSeparatedNumber(){
+        int sum = 0;
+        for(int i=0; i<size; i++){
+            sum += separatedNumber[i];
+        }
+        return sum;
+    }
+    public int multiplySeparatedNumber(){
+        int mul=1;
+        for(int i=0; i<size; i++){
+            mul *= separatedNumber[i];
+        }
+        return mul;
+    }
 
 
 }
