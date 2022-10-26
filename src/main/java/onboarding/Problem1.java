@@ -4,8 +4,19 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        int pobiNum = getMax(pobi);
+        int crongNum = getMax(crong);
+        return getResult(pobiNum, crongNum);
+    }
+
+    static int getResult(int i, int j){
+        if( i > j){
+            return 1;
+        }
+        if (i < j){
+            return 2;
+        }
+        return 0;
     }
 
     static int getMax(List<Integer> list){
@@ -14,6 +25,8 @@ class Problem1 {
 
         return Math.max(chooseMultiSum(page1), chooseMultiSum(page2));
     }
+
+
 
     static int chooseMultiSum(int page){
         int len = page+"".length();
