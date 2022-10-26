@@ -14,6 +14,11 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         //제한 조건
         String answer = cryptogram;
+        char[] upperchecker = answer.toCharArray();
+        for (int cases=0;cases<upperchecker.length;cases++){
+            if(Character.isUpperCase(upperchecker[cases])) return "소문자 제한에 걸립니다.";
+        }
+        if (cryptogram.length()<1 || cryptogram.length()>1000) return "길이제한에 걸립니다.";
         int cnt=0;
         // 더이상 중복 문자가 없을 경우 break
         while(true){
