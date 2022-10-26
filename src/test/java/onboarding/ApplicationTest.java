@@ -3,6 +3,8 @@ package onboarding;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -49,7 +51,7 @@ class ApplicationTest {
             assertThat(Problem1.checkSequenceValidation(testSequenceData)).isEqualTo(false);
         }
 
-        // 시작면과 마지막 면 유효성 테스트
+        // 시작 면과 마지막 면 유효성 테스트
         @Test
         void case1ValidateStartOrLastPageTest() {
             List<Integer> testValidationData = List.of(4, 5);
@@ -57,17 +59,16 @@ class ApplicationTest {
             assertThat(Problem1.validateStartOrLastPage(testValidationData)).isEqualTo(true);
         }
 
-
         @Test
         void case1ValidateStartOrLastPageExceptionStartTest() {
-            List<Integer> testStartPageData = List.of(1, 2);
+            List<Integer> testStartPageData = Arrays.asList(null, 1);
 
             assertThat(Problem1.validateStartOrLastPage(testStartPageData)).isEqualTo(false);
         }
 
         @Test
         void case1ValidateStartOrLastPageExceptionLastTest() {
-            List<Integer> testStartPageData = List.of(399, 400);
+            List<Integer> testStartPageData = Arrays.asList(400, null);
 
             assertThat(Problem1.validateStartOrLastPage(testStartPageData)).isEqualTo(false);
         }
