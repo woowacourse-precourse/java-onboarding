@@ -16,4 +16,13 @@ class Problem1 {
         }
         return eachDigitNumSum;
     }
+
+    public int multiplyPageEachDigitNum(Integer pageNum) {
+        int eachDigitNumMultiplication = 1;
+        while(pageNum != 0) {
+            eachDigitNumMultiplication *= pageNum % 10;
+            pageNum /= 10;
+        }
+        return eachDigitNumMultiplication;
+    }
 }
