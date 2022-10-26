@@ -25,6 +25,22 @@ class Problem1 {
         return true;
     }
 
+    // 자릿수 합과 곱 중 큰 값을 반환하는 함수
+    private static int sumOrProduct(int number) {
+        int addResult = 0;
+        int multiplyResult = 1;
+
+        String numString = Integer.toString(number);
+        for (int i = 0; i < numString.length(); i++) {
+            char digitChar = numString.charAt(i);
+            int digit = Character.getNumericValue(digitChar);
+            addResult += digit;         // 덧셈
+            multiplyResult *= digit;    // 곱셈
+        }
+
+        return Math.max(addResult, multiplyResult);
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
