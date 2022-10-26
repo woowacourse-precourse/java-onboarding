@@ -10,10 +10,14 @@ class Problem1 {
         if (!isValidate(pobi, crong)) {
             return -1;
         }
+
         int answer = Integer.MAX_VALUE;
         return answer;
     }
 
+    /**
+     * 들어온 값에 대해 예외처리 하는 함수들 (책을 임의로 펼친다)
+     */
     public static boolean isValidate(List<Integer> pobi, List<Integer> crong) {
         return (validatePages(pobi) && validatePages(crong));
     }
@@ -56,5 +60,23 @@ class Problem1 {
 
     private static boolean isRightPageEven(Integer right) {
         return (right % 2 == 0);
+    }
+
+    /**
+     * 각 자리의 숫자를 모두 더하거나 곱하여 가장 큰 수를 구한다.
+     */
+
+    private static int getSumOfEachDigit(Integer page, int result) {
+        if (page < 10) {
+            return result + page;
+        }
+        return getSumOfEachDigit(page / 10, result + page % 10);
+    }
+
+    private static int getMultipleOfEachDigit(Integer page, int result) {
+        if (page < 10) {
+            return result * page;
+        }
+        return getMultipleOfEachDigit(page / 10, result * (page % 10));
     }
 }
