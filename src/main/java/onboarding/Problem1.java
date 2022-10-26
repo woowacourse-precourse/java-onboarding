@@ -22,6 +22,22 @@ class Problem1 {
         return sumResult;
     }
 
+    static int findMulMaxValue(List<Integer> values) {
+        int mulResult = 0;
+
+        for (Integer value : values) {
+            int tmp = 1;
+
+            char[] currentPage = value.toString().toCharArray();
+            for (char page : currentPage) {
+                tmp *= Integer.parseInt(String.valueOf(page));
+            }
+            mulResult = Math.max(mulResult, tmp);
+        }
+
+        return mulResult;
+    }
+
     public static boolean checkOddEvenValidation(List<Integer> values) {
         if (values.get(0) % 2 == 0 && values.get(1) % 2 == 1) {
             return false;
