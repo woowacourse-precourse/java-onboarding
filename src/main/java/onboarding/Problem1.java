@@ -12,7 +12,7 @@ class Problem1 {
 
     pobiScore = ScoreController.calcScore(pobi);
     crongScore = ScoreController.calcScore(crong);
-    answer = Integer.MAX_VALUE;
+    answer = ScoreController.compareScore(pobiScore, crongScore);
     return answer;
 }
 
@@ -67,6 +67,16 @@ class ScoreController{
 
         result = findMax(leftMax,rightMax);
         return result;
+    }
+
+    static int compareScore(int pobiScore, int crongScore){
+        if (pobiScore > crongScore) {
+            return 1;
+        }
+        if (pobiScore < crongScore) {
+            return 2;
+        }
+        return 0;
     }
 
 }
