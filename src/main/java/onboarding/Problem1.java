@@ -31,7 +31,7 @@ class Problem1 {
 
     private static boolean inRange(List<Integer> numbers) {
         for (int number : numbers) {
-            if (number < MIN_PAGE || number > MAX_PAGE) return false;
+            if (number <= MIN_PAGE || number >= MAX_PAGE) return false;
         }
         return true;
     }
