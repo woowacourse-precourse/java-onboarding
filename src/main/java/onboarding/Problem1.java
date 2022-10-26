@@ -9,7 +9,8 @@ class Problem1 {
     }
 
     private static boolean check(List<Integer> list) {
-
+        if(list.get(1)-list.get(0)==1)return true;
+        else return false;
     }
 
     private static int calcalateMax(List<Integer> list) {
