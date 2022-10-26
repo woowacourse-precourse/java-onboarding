@@ -5,6 +5,17 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        int pobiLeft = pobi.get(0); int pobiRight = pobi.get(1);
+        int crongLeft = crong.get(0); int crongRight = crong.get(1);
+
+        if(isException(pobiLeft, pobiRight) || isException(crongLeft, crongRight)) {
+            answer = -1;
+        } else {
+            int pobiScore = getScore(pobiLeft, pobiRight);
+            int crongScore = getScore(crongLeft, crongRight);
+            answer = getAnswer(pobiScore, crongScore);
+        }
+
         return answer;
     }
 
