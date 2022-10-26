@@ -14,19 +14,11 @@ class Problem1 {
         }
         int p_val = Math.max(Math.max(digit_sum(p_1),digit_prod(p_1)),Math.max(digit_sum(p_2),digit_prod(p_2)));
         int c_val = Math.max(Math.max(digit_sum(c_1),digit_prod(c_1)),Math.max(digit_sum(c_2),digit_prod(c_2)));
-        int answer = (p_val > c_val) ? 1 : (p_val < c_val) ? 2 : 0;
-        return answer;
+        return (p_val > c_val) ? 1 : (p_val < c_val) ? 2 : 0;
     }
     private static boolean p1_proxy(int a0, int a1) {
-        // Check start page or last page
-        if (a0 == 1 || a1 == 400) {
-            return true;
-        }
-        // Check linked page a0, a1
-        if (a0 + 1 != a1) {
-            return true;
-        }
-        return false;
+        // Check start page or last page && Check linked page a0, a1
+        return (a0 == 1 || a1 == 400 || a0 + 1 != a1);
     }
 
     private static int digit_sum(int N) {
