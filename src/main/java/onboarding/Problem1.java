@@ -7,23 +7,24 @@ class Problem1 {
     static final int minPage = 1; // 최소 페이지 번호
     static final int maxPage = 400; // 최대 페이지 번호
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = 1;
+        int answer = -1;
 
         // 예외 처리
-        if (pageExcept(pobi) || pageExcept(crong)) {
-            return -1;
-        }
-        int pobiNum = pageCal(pobi); // 포비의 최대값
-        int crongNum = pageCal(crong); // 크롱의 최대값
+        if (pageExcept(pobi) && pageExcept(crong)) {
+            int pobiNum = pageCal(pobi); // 포비의 최대값
+            int crongNum = pageCal(crong); // 크롱의 최대값
 
-        if (pobiNum < crongNum) {
-            answer = 2;
-            return answer;
+            if (pobiNum < crongNum) {
+                answer = 2;
+                return answer;
+            }
+            if (pobiNum == crongNum) {
+                answer = 0;
+                return answer;
+            }
+            return 1;
         }
-        if (pobiNum == crongNum) {
-            answer = 0;
-            return answer;
-        }
+
         return answer;
     }
 
@@ -48,10 +49,10 @@ class Problem1 {
     public static boolean pageExcept(List<Integer> pageLst) {
         int fstNum = pageLst.get(0).intValue();
         int scdNum = pageLst.get(1).intValue();
-        if (minPage >= fstNum || maxPage <= fstNum ||
-                minPage >= scdNum || maxPage <= scdNum ||
-                fstNum % 2 != 1 || scdNum % 2 != 0
-                || scdNum - fstNum != 1) {
+        if (minPage < fstNum && maxPage > fstNum &&
+                minPage < scdNum && maxPage > scdNum &&
+                fstNum % 2 == 1 && scdNum % 2 == 0 &&
+                scdNum - fstNum == 1) {
             return true;
         }
         return false;
