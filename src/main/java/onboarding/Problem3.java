@@ -12,6 +12,18 @@ public class Problem3 {
     }
 
     private static int clap(int number) {
-        return 0;
+        int ret = 0;
+        while (number != 0) {
+            if (doClap(number % 10)) {
+                ret++;
+            }
+            number /= 10;
+        }
+
+        return ret;
+    }
+
+    private static boolean doClap(int num) {
+        return true;
     }
 }
