@@ -28,8 +28,18 @@ class Problem1 {
         return Math.max(leftPageMax, rightPageMax);
     }
 
+    public static boolean isError(List<Integer> list){
+        if(list.get(1) - list.get(0) != 1){
+            return true;
+        }
+        return false;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        if(isError(pobi) || isError(crong)){
+            return -1;
+        }
 
         return answer;
     }
