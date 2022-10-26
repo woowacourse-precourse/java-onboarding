@@ -32,6 +32,12 @@ class Problem1 {
         if (pobiRight % 2 != 0 || crongRight % 2 != 0) {
             return true;
         }
+        if (pobiLeft - pobiRight != -1) {
+            return true;
+        }
+        if (crongLeft - crongRight != -1) {
+            return true;
+        }
 
         return false;
     }
