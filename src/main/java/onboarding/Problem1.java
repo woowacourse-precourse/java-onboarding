@@ -9,7 +9,7 @@ class Problem1 {
         return answer;
     }
 
-    public int findUserScore(List<Integer> pages) {
+    public int findUserScore(List<Integer> pages) { // 페이지에 관한 요류들은 여기서 잡아준다.
         int leftPageNumber = pages.get(0);
         int rightPageNumber = pages.get(1);
         int leftPageScore = Math.max(sumAllNumbersInPage(leftPageNumber), multiplyAllNumbersInPage(leftPageNumber));
@@ -19,14 +19,17 @@ class Problem1 {
     }
 
     public int sumAllNumbersInPage(int page) {
-
-        return 0;
+        int result = 0;
+        for (Integer number : changeIntToIntList(page)) {
+            result += number;
+        }
+        return result;
     }
 
     public int multiplyAllNumbersInPage(int page) {
         int result = 1;
         for (Integer number : changeIntToIntList(page)) {
-            result = result * number;
+            result *= number;
         }
 
         return result;
