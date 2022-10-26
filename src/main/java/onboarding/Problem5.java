@@ -14,7 +14,14 @@ public class Problem5 {
          */
         List<Integer> answer = new ArrayList<>();
 
+        int[] moneyValue = {50000,10000,5000,1000,500,100,50,10,1};
         
+        for (int i = 0; i < moneyValue.length; i++) {
+            answer.add(money/moneyValue[i]);
+            money -= answer.get(i)*moneyValue[i];
+        }
+
+
         return answer;
     }
 }
