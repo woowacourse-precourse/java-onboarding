@@ -3,7 +3,7 @@ package onboarding;
 import java.util.List;
 /**
  * TODO
- * 1. 책을 임의로 펼친다.
+ * 1. 책을 임의로 펼친다.v
  * 2. 왼쪽 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구한다.
  * 3. 오른쪽 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구한다.
  * 4. 2~3 과정에서 가장 큰 수를 본인의 점수로 한다.
@@ -26,8 +26,24 @@ class Problem1 {
 
 
 
-
         return answer;
+    }
+
+
+
+    public static int calculateMaxNumber(Integer num) {
+        int multiValue = 1;
+        int plusValue = 0;
+        String[] splitNum = String.valueOf(num).split("");
+        for (String stepNum : splitNum) {
+            multiValue *= Integer.parseInt(stepNum);
+            plusValue += Integer.parseInt(stepNum);
+        }
+        if (multiValue > plusValue) {
+            return multiValue;
+        }
+        return plusValue;
+
     }
 
     private static int validBookNumber(List<Integer> friend) {
@@ -88,7 +104,6 @@ class Advice{
         if (friend.get(0).equals(1) || friend.get(1).equals(2)) {
             return -1;
         }
-
         if (friend.get(0).equals(399) || friend.get(1).equals(400)) {
             return -1;
         }
@@ -113,7 +128,6 @@ class Advice{
             return -1;
         }
         return MAX_VALUE;
-
     }
 
     private static Boolean checkLeftNumber(Integer leftNumber) {
