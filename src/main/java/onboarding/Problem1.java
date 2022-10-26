@@ -65,4 +65,8 @@ class Problem1 {
 
         return number1;
     }
+
+    private static boolean isPageOdd(int pageNumber) {
+        return pageNumber % 2 != 0;
+    }
 }
