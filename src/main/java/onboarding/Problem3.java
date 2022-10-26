@@ -1,13 +1,13 @@
 package onboarding;
 
 public class Problem3 {
-    static int answer = 0;
+
     public static int solution(int number) {
-        gameController(number);
-        return answer;
+        int answer = 0;
+        return gameController(number, answer);
     }
 
-    static int gameController(int number) {
+    static int gameController(int number, int answer) {
         for (int i = 1; i <= number; i++) {
             answer += checkNumber(i);
         }
@@ -27,5 +27,9 @@ public class Problem3 {
         }
 
         return result;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(solution(33));
     }
 }
