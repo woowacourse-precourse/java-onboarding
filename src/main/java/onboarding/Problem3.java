@@ -20,21 +20,29 @@ public class Problem3 {
     }
 
     public static int countClap (int number) {
+        int numCopy = number;
         int numOfClaps = 0;
         int exp = 0;
 
-        while( number > 0 ) {
-            numOfClaps += countClapUsingExp10(exp, number % TEN);
-            number /= TEN;
+        while( numCopy > 0 ) {
+            int thisCount = countClapUsingExp10(number, exp, numCopy % TEN);
+            numOfClaps += thisCount;
+            numCopy /= TEN;
             exp++;
         }
 
         return numOfClaps;
     }
 
-    public static int countClapUsingExp10 (int exp, int k) {
+    public static int countClapUsingExp10 (int number, int exp, int k) {
         int expValue = (int) Math.pow(TEN, exp);
-        return ( count[exp] * k ) + ( expValue * (k / 3) );
+        int repeatCount = count[exp] * k;
+        int extraCountForFirstDigit = expValue * (k / 3);
+        if ( k % 3 == 0 ) {
+            extraCountForFirstDigit -= expValue;
+            extraCountForFirstDigit += ( number % expValue ) + 1;
+        }
+        return repeatCount + extraCountForFirstDigit;
     }
 
     public static void getCountArray() {
