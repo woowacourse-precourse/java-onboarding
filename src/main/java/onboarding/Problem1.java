@@ -10,14 +10,14 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
 
         //pobi findMaxNum
-        findMaxNum(pobi.get(left), pobi.get(right));
+        calculation(pobi.get(left), pobi.get(right));
         //crng findMaxNum
-        findMaxNum(crong.get(left), crong.get(left));
+        calculation(crong.get(left), crong.get(left));
 
         return answer;
     }
 
-    //자리수 구하기
+    //find digits
     public static int[] digit(int num)
     {
         int []value = null;
@@ -31,4 +31,23 @@ class Problem1 {
         return value;
     }
 
+    public static int calculation(int[] num)
+    {
+        int sum = 0;
+        int multiply = 0;
+        int max = 0;
+
+        int [] leftDigit;
+        int [] rightDigit;
+
+        for (int i = 0; i < num.length; i++)
+        {
+            sum += num[i];
+            multiply *= num[i];
+        }
+
+        max = Math.max(sum, multiply);
+
+        return max;
+    }
 }
