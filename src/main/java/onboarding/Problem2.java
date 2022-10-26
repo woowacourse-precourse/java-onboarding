@@ -30,8 +30,20 @@ public class Problem2 {
         return valid;
     }
 
+    /*
+     * 문자열이 모두 알파벳 소문자인지 확인합니다.
+     *
+     * @param 입력으로 주어진 문자열입니다.
+     * @return 문자열 내 모든 문자가 알파벳 소문자라면 참, 아니면 거짓을 반환합니다.
+     * */
     private static boolean isLowerCase(String cryptogram) {
-        return false;
+        for (int i = 0; i < cryptogram.length(); i++) {
+            char letter = cryptogram.charAt(i);
+            if (letter < 'a' || letter > 'z') {
+                return false;
+            }
+        }
+        return true;
     }
 
     private static String decrypt(String cryptogram) {
