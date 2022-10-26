@@ -12,13 +12,13 @@ class Problem1 {
 
     private static List<Integer> splitToDigitList(int number) {
 
-        List<Integer> result = new ArrayList<>();
+        List<Integer> digitList = new ArrayList<>();
         while (number != 0) {
-            result.add(number % 10);
+            digitList.add(number % 10);
             number /= 10;
         }
 
-        return result;
+        return digitList;
     }
 
 }
