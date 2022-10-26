@@ -54,6 +54,8 @@ public class Problem7 {
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        friendsHashMap.clear();
+        points.clear();
         friends.forEach(f -> {
             if (!f.get(0).equals(user)) points.put(f.get(0), 0);
             if (!f.get(1).equals(user)) points.put(f.get(1), 0);
