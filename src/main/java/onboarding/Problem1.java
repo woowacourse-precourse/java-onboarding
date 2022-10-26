@@ -55,16 +55,30 @@ class Problem1 {
     }
 
     // 각 자릿수 더한거랑 곱한것중 더 큰거 리턴하기.
-    static Integer findBigScore(Integer page) {
+    static Integer maxAddDot(Integer page) {
         return max(addEachDigit(page), dotEachDigit(page));
+    }
+
+    // 왼쪽 페이지와 오른쪽 페이지중 더 큰것 리턴
+    static Integer maxLeftRight(List<Integer> pages) {
+        Integer left = pages.get(0);
+        Integer right = pages.get(1);
+        return max(maxAddDot(left), maxAddDot(right));
     }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         if(!(checkValid(pobi) && checkValid(crong))) {
             return -1;
         }
-
-
+        int maxPobi = maxLeftRight(pobi);
+        int maxCrong = maxLeftRight(crong);
+        if(maxPobi < maxCrong) {
+            answer = 2;
+        } else if(maxPobi > maxCrong) {
+            answer = 1;
+        } else {
+            answer = 0;
+        }
         return answer;
     }
 }
