@@ -1,7 +1,9 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 
 public class Problem4 {
     private static HashMap<String, String>  alphabetTable;
@@ -42,8 +44,33 @@ public class Problem4 {
     }
 
     /**
+     * 알파벳 변환
+     * @param word 변환할 문자열
+     * @return 변환된 문자열
+     */
+    private static String changeWord(String word) {
+        String[] splitWord = splitWord(word);
+        LinkedList<String> newWord = new LinkedList<>();
+
+        // 알파벳 대소문자를 유지하면서 변환
+        for (String character: splitWord) {
+            String lowerCharacter = character.toLowerCase();
+            String newCharacter = alphabetTable.getOrDefault(lowerCharacter, character);
+
+            // 알파벳 소문자인지 체크
+            if (!lowerCharacter.equals(character)) {
+                newCharacter = newCharacter.toUpperCase();
+            }
+
+            newWord.add(newCharacter);
+        }
+
+        return String.join("", newWord);
+    }
+
+    /**
      * 문자열 분리
-     * @param word 문자열
+     * @param word 분리할 분자열
      * @return 분리된 문자열
      */
     private static String[] splitWord(String word) {
