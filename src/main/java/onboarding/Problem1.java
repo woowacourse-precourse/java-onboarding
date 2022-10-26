@@ -11,4 +11,10 @@ class Problem1 {
     public String parsePageNumber(int page) {
         return Integer.toString(page);
     }
+
+    public int calculateSumOfStringDigits(String str) {
+        return str.chars()
+                .map(Character::getNumericValue)
+                .sum();
+    }
 }
