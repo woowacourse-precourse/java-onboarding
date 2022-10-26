@@ -19,4 +19,20 @@ class Problem1 {
         }
         return true;
     }
+
+    static int max_number(int num) {
+        int sum =-1;
+        int multiple =-1;
+
+        while (num>0){
+            sum += num%10;
+            multiple *= num%10;
+
+            num /=10;
+        }
+
+        return Math.max(sum,multiple);
+    }
+
 }
+
