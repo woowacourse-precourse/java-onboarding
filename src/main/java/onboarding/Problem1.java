@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Arrays;
 
 class Problem1 {
+    static final int minPage = 1; // 최소 페이지 번호
+    static final int maxPage = 400; // 최대 페이지 번호
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = 1;
 
@@ -42,8 +44,12 @@ class Problem1 {
 
     // 페이지 예외처리
     public static boolean pageExcept(List<Integer> pageLst) {
-        if (pageLst.get(0).intValue() % 2 != 1 || pageLst.get(1).intValue() % 2 != 0
-                || pageLst.get(1).intValue() - pageLst.get(0).intValue() != 1) {
+        int fstNum = pageLst.get(0).intValue();
+        int scdNum = pageLst.get(1).intValue();
+        if (minPage >= fstNum || maxPage <= fstNum ||
+                minPage >= scdNum || maxPage <= scdNum ||
+                fstNum % 2 != 1 || scdNum % 2 != 0
+                || scdNum - fstNum != 1) {
             return true;
         }
         return false;
