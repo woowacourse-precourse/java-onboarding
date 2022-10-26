@@ -9,6 +9,15 @@ class Problem1 {
         return answer;
     }
 
+    public int calculateScore(List<Integer> pageNumbers) {
+        int leftPageMaxNumber = makePageMaxNumber(pageNumbers.get(0));
+        int rightPageMaxNumber = makePageMaxNumber(pageNumbers.get(1));
+
+        int score = Math.max(leftPageMaxNumber, rightPageMaxNumber);
+
+        return score;
+    }
+
     public List<Integer> splitNumbers(int pageNumber) {
         List<Integer> numbers = new ArrayList<>();
 

@@ -3,6 +3,7 @@ package onboarding;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -10,6 +11,31 @@ import static org.assertj.core.api.Assertions.assertThat;
 class ApplicationTest {
     @Nested
     class Problem1Test {
+        @Test
+        void calculateScoreTest() {
+            // 3자리수, 2자리수, 1자리수에 대해 테스트 수행
+            List<Integer> hundredsPageNumbers = new ArrayList<>();
+            hundredsPageNumbers.add(197);
+            hundredsPageNumbers.add(198);
+
+            List<Integer> tensPageNumbers = new ArrayList<>();
+            tensPageNumbers.add(55);
+            tensPageNumbers.add(56);
+
+            List<Integer> onesPageNumbers = new ArrayList<>();
+            onesPageNumbers.add(7);
+            onesPageNumbers.add(8);
+
+            int resultOfHundreds = 72;
+            int resultOfTens = 30;
+            int resultOfOnes = 8;
+
+            Problem1 problem1 = new Problem1();
+            assertThat(problem1.calculateScore(hundredsPageNumbers)).isEqualTo(resultOfHundreds);
+            assertThat(problem1.calculateScore(tensPageNumbers)).isEqualTo(resultOfTens);
+            assertThat(problem1.calculateScore(onesPageNumbers)).isEqualTo(resultOfOnes);
+        }
+
         // makePageMaxNumber(), splitNumbers() 테스트
         @Test
         void makePageMaxNumberTest(){

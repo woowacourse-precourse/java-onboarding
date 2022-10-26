@@ -34,7 +34,6 @@
 (1) **calculateScore() 동작** : 최종 점수를 반환하는 함수. 내부에서 다음 두 가지 함수가 수행된다.
   - **makePageMaxNumber()** : leftPageMaxNumber, rightPageMaxNumber를 구하는 기능. 내부에서 **splitNumber()** 함수가 수행된다.
     - **splitNumbers()** : 왼쪽 페이지 숫자(leftPageNumber)와 오른쪽 페이지 숫자(rightPageNumber)의 각 자리수를 반환
-  - **selectBiggestNumber()** :  leftPageMaxNumber와 rightPageMaxNumber 중 큰 수를 리턴하는 기능
 
 (2) **decideWinner() 동작** : 최종 점수를 토대로 승자를 결정하는 함수
 
@@ -45,8 +44,6 @@
   - makePageMaxNumber() 2회 호출
     - 왼쪽 페이지 번호(pageNumbers[0]), 오른쪽 페이지 번호(pageNumbers[1])에 대해 각각 호출
     - 왼쪽 페이지 번호 최대값(leftPageMaxNumber), 오른쪽 페이지 번호 최대값(rightPageMaxNumber) 반환
-  - selectBiggestNumber() 호출
-    - 최종 최대값(= 최종 점수) 반환
   - 출력 : 최종 점수 (= **int score**)
 <br><br>
 - **makePageMaxNumber()**
@@ -58,11 +55,6 @@
     - 1의 자리 수 : 10으로 나눈 나머지
   - 덧셈 vs 곱셈 결과 중 큰 수 선택 (= **int pageMaxNumber**)
   - 출력 : **int pageMaxNumber**
-<br><br>
-- **selectBiggestNumber()**
-  - 입력 : 왼쪽 페이지 번호의 최대 숫자 (= **int leftPageMaxNumber**), 오른쪽 페이지 번호의 최대 숫자 (= **int rightPageMaxNumber**)
-  - 두 숫자 중 큰 수 선택 (= **int biggestNumber**)
-  - 출력 : **int biggestNumber**
 <br><br>
 - **decideWinner()**
   - 입력 : 포비의 점수 (= **int pobiScore**), 크롱의 점수 (= **int crongScore**)
