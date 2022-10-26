@@ -10,20 +10,18 @@ class Problem1 {
 
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        List<Integer> calResultsByPobi = getResults(pobi);
-        List<Integer> calResultsByCrong = getResults(crong);
-        int answer = getAnswer(max(calResultsByPobi), max(calResultsByCrong));
+        int answer = getAnswer(getMaxValue(pobi), getMaxValue(crong));
         return answer;
     }
 
-    private static List<Integer> getResults(List<Integer> pages) {
+    private static Integer getMaxValue(List<Integer> pages) {
         List<Integer> calResultList = new ArrayList<>();
 
         for (Integer page : pages) {
             List<Integer> singleNumbers = getSingleNumbers(page);
             doCalculate(singleNumbers, calResultList);
         }
-        return calResultList;
+        return max(calResultList);
     }
 
     private static List<Integer> getSingleNumbers(Integer integer) {
