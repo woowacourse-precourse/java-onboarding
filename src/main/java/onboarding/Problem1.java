@@ -34,4 +34,14 @@ class Problem1 {
             return 0;
         }
     }
+
+    public static boolean isValid(List<Integer> pages) {
+        if (!isInRange(pages)) {
+            return false;
+        }
+        if ((pages.get(0) + 1) != pages.get(1)) {
+            return false;
+        }
+        return true;
+    }
 }
