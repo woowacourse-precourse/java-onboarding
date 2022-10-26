@@ -12,4 +12,22 @@ public class Problem3 {
         }
     }
 
+    static int checkNumber(int number) {
+        String target = "369";
+        String[] numberArr = Integer.toString(number).split("");
+        int result = 0;
+
+        for(String num : numberArr) {
+            if (target.contains(num)) {
+                result += 1;
+            }
+        }
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+
+    }
+
 }
