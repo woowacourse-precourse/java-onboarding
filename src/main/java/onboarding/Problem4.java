@@ -16,13 +16,22 @@ public class Problem4 {
          */
 
         String answer = "";
-                
+
+        //검증1
+        if(word.length()>=1 && word.length()<=1000){
+
+            //검증 2,3
+            for (int i = 0; i < word.length(); i++) {
+                if(word.charAt(i)>='A' && word.charAt(i)<='Z'){
+                    answer+=(char)('A'+'Z'-(word.charAt(i)));
+                }else if(word.charAt(i)>='a' && word.charAt(i)<='z'){
+                    answer+=(char)('a'+'z'-word.charAt(i));
+                }else{
+                    answer+=word.charAt(i);
+                }
+            }
+        }
         return answer;
     }
 
-    public static void main(String[] args) {
-        Problem4 problem4 = new Problem4();
-        String word = "I love you";
-        problem4.solution(word);
-    }
 }
