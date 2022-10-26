@@ -82,7 +82,12 @@ class Problem1 {
      * @return 자연수를 자릿수별로 떼어낸 정수 배열
      * */
     private static List<Integer> splitByDigit(int pageNumber) {
-        return new ArrayList<>();
+        List<Integer> splitNumber = new ArrayList<>();
+        while (pageNumber > 0) {
+            splitNumber.add(pageNumber % 10);
+            pageNumber /= 10;
+        }
+        return splitNumber;
     }
 
     /*
