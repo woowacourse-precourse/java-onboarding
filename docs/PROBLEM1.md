@@ -26,12 +26,22 @@
 
 
 ### 풀이 전략
-1. 예외처리 : `ExceptionHandling` 클래스
+1. 예외 처리 : `ExceptionHandling` 클래스
    - 페이지가 범위를 벗어날 때 
      - `isInRange()` 메서드로 판별
    - 왼쪽 페이지가 짝수, 오른쪽 페이지가 홀수가 아닐 때
-     - `isRightPageFormat()` 메서드로 판별
+     - `isValidPageFormat()` 메서드로 판별
    - 페이지가 연속되지 않을 때 
-     - `isConsecutivePages()` 메서드 판별
-2. 기능 구현
+     - `isConsecutivePages()` 메서드로 판별
+
+2. 점수 계산
+   - 주어진 수의 각 자리 합 구하기
+     - `getDigitSum()` 메서드
+   - 주어진 수의 각 자리 곱 구하기
+     - `getDigitMultiplication()` 메서드
+   - 각 자리 합과 곱중 최댓값 구하기
+     - `getMaxValue()` 메서드
+   - 점수 구하기
+     - `getScore()` 메서드
+   
    
