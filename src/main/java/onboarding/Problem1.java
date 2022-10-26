@@ -16,6 +16,18 @@ class Problem1 {
         return calcMax(leftPageMaxNum, rightPageMaxNum);
     }
 
+    // 승부 체크 기능을 하는 함수
+    public static int getWinner(Integer pobiMaxNum, Integer crongMaxNum) {
+        if (pobiMaxNum.equals(crongMaxNum)) { // pobi, crong DRAW
+            return 0;
+        } else if (pobiMaxNum > crongMaxNum) {   // pobi WIN
+            return 1;
+        } else if (pobiMaxNum < crongMaxNum) {  // crong WIN
+            return 2;
+        }
+        return -1;
+    }
+
     // 페이지 번호의 각 자리 숫자를 모두 더하는 기능을 하는 함수
     public static int getSumPageNum(Integer pageNum){
         int sum = 0;
