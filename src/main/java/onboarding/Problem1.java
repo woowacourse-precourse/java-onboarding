@@ -12,6 +12,13 @@ class Problem1 {
         int maxPobi = calculatePlaceValue(pobi);
         int maxCrong = calculatePlaceValue(crong);
 
+        if (maxPobi > maxCrong) {
+            return 1;
+        } else if (maxPobi < maxCrong) {
+            return 2;
+        } else {
+            return 0;
+        }
     }
 
     public static boolean checkPage(List<Integer> page) {
