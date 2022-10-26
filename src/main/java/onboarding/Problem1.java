@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -49,15 +50,30 @@ class Problem1 {
     /**
      * 2. 왼쪽 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구한다.
      * 3. 오른쪽 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구한다.
-     *
+     */
+
+    /**
      * @Method: digitPage
      * 페이지 번호를 자릿수 별로 나눈다.
-     * TODO: 각 페이지 번호를 받아 자릿수 별로 나눠 List형태로 return
-     *
+     */
+    private static List<Integer> digitPage(Integer num) {
+        List<Integer> digits = new ArrayList<>();
+        // 각 페이지 번호를 받아 자릿수 별로 나눈다.
+        while (num > 0) {
+            digits.add(num % 10);
+            num /= 10;
+        }
+        // List 형태로 return
+        return digits;
+    }
+
+    /**
      * @Method: addDigit
      * 각 자릿수를 기반으로 더한 값을 구한다.
      * TODO: 각 자릿수를 더한다.
-     *
+     */
+
+    /**
      * @Method: mutiplyDigit
      * 각 자릿수를 기반으로 곱한값을 구한다.
      * TODO: 각 자릿수를 곱한다.
