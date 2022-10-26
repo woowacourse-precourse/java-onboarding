@@ -74,6 +74,48 @@ class ApplicationTest {
         }
 
         @Test
+        void validatePageTest() {
+            List<Integer> validationData = Arrays.asList(3, 4);
+
+            assertThat(Problem1.validatePage(validationData)).isEqualTo(true);
+        }
+        @Test
+        void validateStartPageExceptionTest() {
+            List<Integer> startPageExceptionData = Arrays.asList(null, 1);
+
+            assertThat(Problem1.validatePage(startPageExceptionData)).isEqualTo(false);
+        }
+
+        @Test
+        void validateLastPageExceptionTest() {
+            List<Integer> lastPageExceptionData = Arrays.asList(400, null);
+
+            assertThat(Problem1.validatePage(lastPageExceptionData)).isEqualTo(false);
+        }
+
+        @Test
+        void validateSequencePageExceptionTest() {
+            List<Integer> sequenceExceptionData = Arrays.asList(5, 8);
+
+            assertThat(Problem1.validatePage(sequenceExceptionData)).isEqualTo(false);
+        }
+
+        @Test
+        void validateOddPageExceptionTest() {
+            List<Integer> oddExceptionData = Arrays.asList(4, 6);
+
+            assertThat(Problem1.validatePage(oddExceptionData)).isEqualTo(false);
+        }
+
+        @Test
+        void validateEvenPageExceptionTest() {
+            List<Integer> evenExceptionData = Arrays.asList(5, 7);
+
+            assertThat(Problem1.validatePage(evenExceptionData)).isEqualTo(false);
+        }
+
+
+        @Test
         void case1() {
             List<Integer> pobi = List.of(97, 98);
             List<Integer> crong = List.of(197, 198);
