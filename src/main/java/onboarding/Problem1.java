@@ -44,7 +44,14 @@ class Problem1 {
         int pobiNum = compare(compareAddAndMul(pobi.get(0)), compareAddAndMul(pobi.get(1)));
         int crongNum = compare(compareAddAndMul(crong.get(0)), compareAddAndMul(crong.get(1)));
 
-        
+        //출력값
+        if (pobiNum > crongNum) {
+            answer = 1;
+        } else if (pobiNum < crongNum) {
+            answer = 2;
+        } else {
+            answer = 0;
+        }
 
         return answer;
     }
