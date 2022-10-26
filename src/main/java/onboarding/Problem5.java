@@ -8,4 +8,11 @@ public class Problem5 {
         List<Integer> answer = Collections.emptyList();
         return answer;
     }
+
+    private static int[] quotientAndRemainder(int num, int divide){
+        int[] qar = new int[2];
+        qar[0] = num/divide;
+        qar[1] = num%divide;
+        return qar;
+    }
 }
