@@ -7,9 +7,9 @@ import java.util.List;
 class Problem1 {
 
     public static void main(String[] args) {
-        ArrayList<Integer> test1 = new ArrayList<Integer>(Arrays.asList(1,2));
+        ArrayList<Integer> test1 = new ArrayList<Integer>(Arrays.asList(123,456));
         ArrayList<Integer> test2 = new ArrayList<Integer>(Arrays.asList(4,6));
-        System.out.println(checkForException(test2,test1));
+        System.out.println(getScore(test1));
     }
 
 
@@ -46,9 +46,23 @@ class Problem1 {
      * - 점수는 각 자리를 모두 더하거나 모두 곱해 가장 큰 수 이다.
      * - 두 페이지의 점수 중 더 큰 수를 반환한다.
      */
-    public int getScore(List<Integer> scoreList) {
-        int returnValue = 1;
-        return returnValue;
+    public static int getScore(List<Integer> pageList) {
+        int maxValue = -1;
+        for (int page:pageList) {
+            String sPage = Integer.toString(page);
+            int plusValue = 0;
+            int multipliedValue = 1;
+            for (int i = 0 ; i < sPage.length(); i++) {
+                plusValue += Character.getNumericValue(sPage.charAt(i));
+                multipliedValue *= Character.getNumericValue(sPage.charAt(i));
+            }
+            if (multipliedValue > maxValue) {
+                maxValue = multipliedValue;
+            }else if (plusValue > maxValue){
+                maxValue = plusValue;
+            }
+        }
+        return maxValue;
     }
 
     /**
