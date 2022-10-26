@@ -28,7 +28,19 @@ class Problem1 {
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+
+        int pobiFirst = pobi.get(0);
+        int pobiSecond = pobi.get(1);
+        int crongFirst = crong.get(0);
+        int crongSecond = crong.get(1);
+
+        if(!checkException(pobiFirst, pobiSecond) || !checkException(crongFirst, crongSecond))  return -1;
+
+        int pobiVal = Math.max(getValue(pobiFirst), getValue(pobiSecond));
+        int crongVal = Math.max(getValue(crongFirst), getValue(crongSecond));
+
+        if(pobiVal > crongVal) return 1;
+        if(pobiVal < crongVal) return 2;
+        return 0;
     }
 }
