@@ -17,4 +17,14 @@ class Problem1 {
 
         return total;
     }
+    public static int multiElements(int n) {
+        int total = 1;
+
+        while (n > 0) {
+            total *= n % 10;
+            n = n / 10;
+        }
+
+        return total;
+    }
 }
