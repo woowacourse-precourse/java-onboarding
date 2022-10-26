@@ -80,7 +80,9 @@ class Problem1 {
         Integer leftPageMaxScore = getMaxScoreCalculate(leftPage);
         Integer rightPageMaxScore = getMaxScoreCalculate(rightPage);
 
-        return Math.max(leftPageMaxScore, rightPageMaxScore);
+        Integer result = Math.max(leftPageMaxScore, rightPageMaxScore);
+
+        return result;
     }
 
     private static Integer getMaxScoreCalculate(Integer page) {
