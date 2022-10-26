@@ -13,7 +13,7 @@ public class PlayerTest {
 
     @BeforeEach
     void setUp() {
-        player = new Player(List.of(123, 124));
+        player = new Player(List.of(234, 235));
     }
 
     @Test
@@ -32,5 +32,11 @@ public class PlayerTest {
     void 두수중_큰수를_고르는_기능() {
         int result = player.calculateMaxNumber(123, 124);
         assertThat(result).isEqualTo(124);
+    }
+
+    @Test
+    void 왼쪽페이지번호_곱하거나_더해서_큰수_구하기() {
+        int result = player.calculateLeftMaxNumber();
+        assertThat(result).isEqualTo(24);
     }
 }
