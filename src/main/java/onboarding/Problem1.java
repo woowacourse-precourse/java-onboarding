@@ -16,7 +16,7 @@ class Problem1 {
         return answer;
     }
 
-    //find digits
+    //자리수 구하고 배열에 저장
     public static int[] digit(int num)
     {
         int [] valueArray;
@@ -46,12 +46,12 @@ class Problem1 {
             multiply *= num[i];
         }
 
-        exceptionCheck(multiply);
-        max = Math.max(sum, multiply);
+        max = Math.max(sum, exceptionCheck(multiply));
 
         return max;
     }
 
+    //점수 구하기 : 연산한 값의 max값을 찾기
     public static int findMaxNumber(int leftNum, int rightNum)
     {
         int [] leftDigit;
@@ -66,9 +66,11 @@ class Problem1 {
         return max;
     }
 
-    //compare number
+    //점수 비교 후 결과 반환
     public static int compareNum(int pobiNum, int crongNum)
     {
+        if (pobiNum == errorNum || crongNum == errorNum)
+            return -1;
         if (pobiNum == crongNum)
             return 0;
         else if (pobiNum > crongNum)
@@ -79,6 +81,7 @@ class Problem1 {
         return -1;
     }
 
+    //연산한 값에 0이 있을 경우
     public static int exceptionCheck(int multiplyNum)
     {
         if (multiplyNum == 0)
