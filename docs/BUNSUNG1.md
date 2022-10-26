@@ -29,3 +29,4 @@
 
 # Commit
 - [x] feat: add calculate sum method
+- [x] feat: add calculate multiplication method 
