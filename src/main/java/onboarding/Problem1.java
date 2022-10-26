@@ -16,8 +16,8 @@ class Problem1 {
                 || Math.abs(pages.get(0) - pages.get(1)) != 1
                 || isEven(pages.get(0))
                 || isOdd(pages.get(1))
-                || isFirstPage(pages)
-                || isEndPage(pages);
+                || isLessFirstPage(pages)
+                || isOverEndPage(pages);
     }
     private static boolean isEven(Integer page) {
         return page % 2 == 0;
@@ -25,10 +25,9 @@ class Problem1 {
     private static boolean isOdd(Integer page) {
         return !isEven(page);
     }
-    private static boolean isFirstPage(List<Integer> pages) {
+    private static boolean isLessFirstPage(List<Integer> pages) {
         final int firstPage = 1;
-        final int nearFirstPage = firstPage + 1;
-        return hasErrorPage(pages, (page) -> page.equals(firstPage) || page.equals(nearFirstPage));
+        return hasErrorPage(pages, (page) -> page.compareTo(firstPage)<=0);
     }
     private static boolean hasErrorPage(List<Integer>pages, Predicate<Integer> condition){
         for (Integer page : pages) {
@@ -37,10 +36,9 @@ class Problem1 {
         }
         return false;
     }
-    private static boolean isEndPage(List<Integer> pages) {
+    private static boolean isOverEndPage(List<Integer> pages) {
         final int endPage = 400;
-        final int nearEndPage = endPage - 1;
-        return hasErrorPage(pages, (page) -> page.equals(endPage) || page.equals(nearEndPage));
+        return hasErrorPage(pages, (page) -> page.compareTo(endPage)>=0);
     }
     private static int calculateWinner(int pobiScore, int crongScore) {
         int pobiWin =1;
