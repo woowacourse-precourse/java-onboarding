@@ -3,6 +3,9 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+    final static int MIN_PAGE = 1;
+    final static int MAX_PAGE = 400;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
@@ -13,6 +16,13 @@ class Problem1 {
             sum += number;
         }
         return sum;
+    }
+
+    boolean inRange(List<Integer> numbers) {
+        for(int number : numbers) {
+            if(number < MIN_PAGE || number > MAX_PAGE) return false;
+        }
+        return true;
     }
 
     int mulOfDigits(int[] numbers) {
