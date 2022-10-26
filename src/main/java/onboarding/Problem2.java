@@ -7,7 +7,7 @@ public class Problem2 {
         Stack<Character> stack = new Stack<>();
 
         for (char c: cryptogram.toCharArray()) {
-            if (stack.peek() == c)
+            if (stack.size() > 0 && stack.peek() == c)
                 stack.pop();
             else
                 stack.push(c);
