@@ -31,7 +31,7 @@ class Problem1 {
         return plus;
     }
 
-    public static int getMaxNumber(List<Integer> page) {
+    private static int getMaxNumber(List<Integer> page) {
         int max = 0;
         for (int i = 0; i< page.size(); i++) {
             max = Math.max(max, Math.max(pagePlus(page.get(i)), pageMultiply(page.get(i))));
@@ -49,7 +49,7 @@ class Problem1 {
         return DRAW;
     }
 
-    public static boolean isPageNumberException(List<Integer> page) {
+    private static boolean isPageNumberException(List<Integer> page) {
         if(page.isEmpty()){
             return true;
         }
