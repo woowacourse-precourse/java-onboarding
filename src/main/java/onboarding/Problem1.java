@@ -29,6 +29,12 @@ class Problem1 {
         return (numbers.get(0) % 2 == 1) && (numbers.get(1) - numbers.get(0) == 1);
     }
 
+    private static int getPageMaxScore(List<Integer> pages) {
+        int leftMax = getMaxScore(pages.get(0));
+        int rightMax = getMaxScore(pages.get(1));
+        return Math.max(leftMax, rightMax);
+    }
+
     private static int getMaxScore(int number) {
         return Math.max(sumOfDigits(toIntArray(number)), mulOfDigits(toIntArray(number)));
     }
