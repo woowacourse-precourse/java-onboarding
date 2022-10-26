@@ -13,8 +13,6 @@ class Problem1 {
     private static final int EXCEPTION_MESSAGE = -1;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-
         if (validatePageNumber(pobi) == EXCEPTION_MESSAGE || validatePageNumber(crong) == EXCEPTION_MESSAGE) {
             return EXCEPTION_MESSAGE;
         }
