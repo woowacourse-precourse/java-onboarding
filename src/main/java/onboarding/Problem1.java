@@ -40,6 +40,19 @@ class Problem1 {
         int BigMulNumCrong = compareNumber(mulStringToInteger(crongNum1),mulStringToInteger(crongNum2));
         int BigNumCrong = compareNumber(BigMulNumCrong,BigSumNumCrong);
 
+        if(BigNumPobi > BigNumCrong){
+            //return 1;
+            answer = 1;
+        }
+        else if(BigNumPobi < BigNumCrong){
+            //return 2;
+            answer = 2;
+        }
+        else{
+            //return 0;
+            answer = 0;
+        }
+
         return answer;
     }
 }
