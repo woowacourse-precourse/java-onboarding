@@ -18,8 +18,8 @@ public class PageValidator {
 
     public static boolean isFirstOrLast(PageNumber pageNumber) {
         if (pageNumber.getLeftPage() == FIRST_PAGE || pageNumber.getLeftPage() == LAST_PAGE) {
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 }
