@@ -55,6 +55,19 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+
+        // 4. 점수 비교 후 게임 승자 결정
+        int pobiMax = compare(compare(add(pobi.get(0)), multiply(pobi.get(0))), compare(add(pobi.get(1)), multiply(pobi.get(1))));
+        int crongMax = compare(compare(add(crong.get(0)), multiply(crong.get(0))), compare(add(crong.get(1)), multiply(crong.get(1))));
+
+        if (pobiMax > crongMax) {
+            answer = 1;
+        } else if (pobiMax == crongMax) {
+            answer = 0;
+        } else {
+            answer = 2;
+        }
+
         return answer;
     }
 }
