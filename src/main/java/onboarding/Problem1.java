@@ -53,8 +53,26 @@ class Problem1 {
         return a > b ? a : b;
     }
 
+    /**
+     * 5. 예외 사항
+     * @param target : 예외 처리할 리스트
+     * @return : 예외 사항이면 false, 아니면 true
+     */
+    static boolean except(List<Integer> target){
+        int left = target.get(0);
+        int right = target.get(1);
+
+        return left + 1 == right;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+
+        // 5. 예외 사항
+        boolean pobiCheck = except(pobi);
+        boolean crongCheck = except(crong);
+
+        if (!pobiCheck || !crongCheck) return -1;
 
         // 4. 점수 비교 후 게임 승자 결정
         int pobiMax = compare(compare(add(pobi.get(0)), multiply(pobi.get(0))), compare(add(pobi.get(1)), multiply(pobi.get(1))));
