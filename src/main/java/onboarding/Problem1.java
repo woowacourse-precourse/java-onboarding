@@ -69,4 +69,8 @@ class Problem1 {
     private static boolean isPageOdd(int pageNumber) {
         return pageNumber % 2 != 0;
     }
+
+    private static boolean isFirstPage(int pageNumber) {
+        return pageNumber == 1 || pageNumber == 2;
+    }
 }
