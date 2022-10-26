@@ -36,7 +36,7 @@
     - [X] removeRepeatingLetters
       - 스택 자료구조를 사용해 중복 문자열이 나오면 딱 한번 제거한다.
       - 이전 문자를 저장해 현재 문자와 같으면 추가하지 않는다.
-      - [ ] stringify
+      - [X] stringify
         - 스택 자료구조로 저장된 문자들을 합친다.
 3. [문제 3](./docs/PROBLEM3.md)
 4. [문제 4](./docs/PROBLEM4.md)
