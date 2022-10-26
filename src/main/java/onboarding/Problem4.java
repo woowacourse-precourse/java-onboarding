@@ -24,6 +24,33 @@ public class Problem4 {
         return alphabet;
     }
 
+    private static int findAlphabetIndex(char[] alpabet, char tmp) {
+        int result = -1;
+
+        if (Character.isLowerCase(tmp)) {
+            tmp -= 32;
+        }
+        for (int i = 0; i < alpabet.length; i ++) {
+            if (alpabet[i] == tmp) {
+                result = i;
+                break;
+            }
+        }
+        return result;
+    }
+
+    private static String convertAlphabet(String word) {
+        String tmp = "";
+        int index = -1;
+        char[] alphabet = initializeAlphabet();
+        char[] reverseAlphabet = initializeReverseAlphabet(alphabet);
+
+        for (int i = 0; i < word.length(); i ++) {
+            index = findAlphabetIndex(alphabet, word.charAt(i));
+        }
+        return tmp;
+    }
+
     public static String solution(String word) {
         String answer = "";
         return answer;
