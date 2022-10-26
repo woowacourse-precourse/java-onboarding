@@ -8,12 +8,13 @@ public class Problem3 {
     static int solve(int num) {
     	int res = 0;
     	for(int i = 0; i <= num; i++) {
-    		char[] ch = Integer.toString(i).toCharArray();
-    	
-    		for(int j = 0; j < ch.length; i++) {
-    			if(ch[j]=='3'||ch[j]=='6'||ch[j]=='9') {
+    		int sum = i;
+    		while(sum > 0) {
+    			int key = sum%10;
+    			if(key == 3||key == 6||key == 9) {
     				res+=1;
     			}
+    			sum = sum/10;
     		}
     	}
     	return res;
