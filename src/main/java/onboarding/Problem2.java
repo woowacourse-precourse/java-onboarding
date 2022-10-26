@@ -7,7 +7,7 @@ public class Problem2 {
         return answer;
     }
 
-    public static boolean[] findDuplicatedChars(String cryptogram){
+    public static boolean[] checkIsDuplicated(String cryptogram){
         boolean[] isDuplicated = new boolean[cryptogram.length()];
         int i = 0;
         for(int j = 1;j<cryptogram.length();i++,j++){
