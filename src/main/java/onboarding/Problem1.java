@@ -21,7 +21,7 @@ class Problem1 {
 		int pobiMax = pageMax(pobi);
 		int crongMax = pageMax(crong);
 
-		if(pobiMax > crongMax) {
+		if (pobiMax > crongMax) {
 			answer = WIN_POBI;
 		} else if (pobiMax < crongMax) {
 			answer = WIN_CRONG;
@@ -33,10 +33,10 @@ class Problem1 {
 
 	private static boolean checkPageForm(List<Integer> pobi, List<Integer> crong) {
 		if (pobi.get(LEFT_PAGE) < MIN_PAGE || pobi.get(RIGHT_PAGE) > MAX_PAGE
-				|| crong.get(LEFT_PAGE) < MIN_PAGE || crong.get(RIGHT_PAGE) > MAX_PAGE) {
+			|| crong.get(LEFT_PAGE) < MIN_PAGE || crong.get(RIGHT_PAGE) > MAX_PAGE) {
 			return false;
 		}
-		if ((pobi.get(RIGHT_PAGE) - pobi.get(LEFT_PAGE)) != 1 || (crong.get(RIGHT_PAGE) - crong.get(LEFT_PAGE)) !=1){
+		if ((pobi.get(RIGHT_PAGE) - pobi.get(LEFT_PAGE)) != 1 || (crong.get(RIGHT_PAGE) - crong.get(LEFT_PAGE)) != 1) {
 			return false;
 		}
 		return true;
@@ -62,11 +62,10 @@ class Problem1 {
 
 	private static int pageMax(List<Integer> pages) {
 		int leftMaxValue = Math.max(addDigit(pages.get(LEFT_PAGE)),
-				multipleDigit(pages.get(LEFT_PAGE)));
+			multipleDigit(pages.get(LEFT_PAGE)));
 		int rightMaxValue = Math.max(addDigit(pages.get(RIGHT_PAGE)),
-				multipleDigit(pages.get(RIGHT_PAGE)));
+			multipleDigit(pages.get(RIGHT_PAGE)));
 		return Math.max(leftMaxValue, rightMaxValue);
 	}
-
 
 }
