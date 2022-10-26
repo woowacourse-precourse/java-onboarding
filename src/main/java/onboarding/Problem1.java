@@ -4,9 +4,15 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 class Problem1 {
+
+	public static final int POBI_WIN = 1;
+	public static final int CRONG_WIN = 2;
+	public static final int DRAW = 0;
+	public static final int ERROR = -1;
+
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
 		if (checkIrregularPages(pobi) || checkIrregularPages(crong)) {
-			return -1;
+			return ERROR;
 		}
 
 		Integer pobiMaxPage = pobi.stream()
@@ -44,11 +50,11 @@ class Problem1 {
 
 	private static int compareMaxPage(Integer pobiMax, Integer crongMax) {
 		if (pobiMax > crongMax) {
-			return 1;
+			return POBI_WIN;
 		}
 		if (pobiMax < crongMax) {
-			return 2;
+			return CRONG_WIN;
 		}
-		return 0;
+		return DRAW;
 	}
 }
