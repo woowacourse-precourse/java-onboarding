@@ -2,15 +2,17 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        //알파벳인지 확인하는 함수
-        //반대로 변환하기
+        String reversedWord = "";
+
         for (int i = 0; i < word.length(); i++) {
 
             if (isAlphabet(word.charAt(i))) {
-
+                reversedWord += reverseAlphabet(word.charAt(i));
+            } else if (!isAlphabet(word.charAt(i))) {
+                reversedWord += word.charAt(i);
             }
         }
-        return "";
+        return reversedWord;
     }
 
     public static boolean isAlphabet(char alphabet) {
@@ -21,5 +23,18 @@ public class Problem4 {
             return true;
         }
         return false;
+    }
+
+    public static char reverseAlphabet(char alphabet) {
+        String reversedUpperAlphabet = "ZYXWVUTSRQPONMLKJIHGFEDCBA";
+        String reversedLowerAlphabet = "zyxwvutsrqponmlkjihgfedcba";
+        char reversedChar = ' ';
+
+        if (Character.isUpperCase(alphabet)) {
+            reversedChar = reversedUpperAlphabet.charAt(alphabet - 65);
+        } else if (Character.isLowerCase(alphabet)) {
+            reversedChar = reversedLowerAlphabet.charAt(alphabet - 97);
+        }
+        return reversedChar;
     }
 }
