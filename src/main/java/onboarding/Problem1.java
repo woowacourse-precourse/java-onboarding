@@ -18,7 +18,7 @@ class Problem1 {
         return answer;
     }
 
-    public List<Integer> getPageNumbers(int page) {
+    private static List<Integer> getPageNumbers(int page) {
         List<Integer> pageNumbers = new ArrayList<>();
         while (page > 0) {
             pageNumbers.add(page % 10);
@@ -27,21 +27,21 @@ class Problem1 {
         return pageNumbers;
     }
 
-    public int getSum(List<Integer> pageNumbers) {
+    private static int getSum(List<Integer> pageNumbers) {
         int sum = 0;
         for(int i = 0; i < pageNumbers.size(); i++)
             sum += pageNumbers.get(i);
         return sum;
     }
 
-    public int getMultiply(List<Integer> pageNumbers) {
+    private static int getMultiply(List<Integer> pageNumbers) {
         int multiply = 1;
         for(int i = 0; i < pageNumbers.size(); i++)
             multiply *= pageNumbers.get(i);
         return multiply;
     }
 
-    public int getBiggerNumber(int number1, int number2) {
+    private static int getBiggerNumber(int number1, int number2) {
         if (number1 > number2)
             return number1;
         return number2;
