@@ -62,16 +62,11 @@ public class Problem6 {
 
     /**
      * 기능 3
-     * 이메일 목록을 오름차순으로 정렬
+     * 이메일 목록을 중복 제거 및 오름차순으로 정렬
      */
     public static List<String> sortEmailList(List<String> listOfEmail) {
 
-        return listOfEmail.stream().sorted().collect(Collectors.toList());
+        return listOfEmail.stream().sorted().distinct().collect(Collectors.toList());
     }
-
-    /**
-     * 기능 4
-     * 이메일 목록의 중복 제거
-     */
 
 }
