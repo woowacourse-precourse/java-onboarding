@@ -24,6 +24,7 @@ import java.util.List;
 // 3-2. 가장 큰 수 구하기
 // 4. 구해진 가장 큰 수를 각각 포비와 크롱의 점수에 넣기
 // 5. 점수를 비교하고, 비교한 결과에 따른 return 값 설정하기
+// 6. 예외사항 설정하기
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -33,6 +34,13 @@ class Problem1 {
         int pobi_right = pobi.get(1);
         int crong_left = crong.get(0);
         int crong_right = crong.get(1);
+
+        // 페이지가 떨어져있을때 예외처리
+        if (pobi_left + 1 != pobi_right && crong_left + 1 != crong_right){
+            answer = -1;
+            return answer;
+        }
+
 
         int pobi_left_max = max(sumOfArray(returnDigit(pobi_left)),multiOfArray(returnDigit(pobi_left)));
         int pobi_right_max = max(sumOfArray(returnDigit(pobi_right)),multiOfArray(returnDigit(pobi_right)));
@@ -51,13 +59,9 @@ class Problem1 {
             answer = 1;
         }
         // 코롱이 이긴다면
-        else if(crong_score > pobi_score){
+        else{
             answer = 2;
         }
-        else{
-            answer = -1;
-        }
-
         return answer;
     }
 
