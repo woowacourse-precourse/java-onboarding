@@ -66,6 +66,10 @@ class User {
         return name;
     }
 
+    public List<Integer> getChoiceNumbers() {
+        return choiceNumbers;
+    }
+
     public int getScore() {
         if (this.score != 0) {
             return this.score;
