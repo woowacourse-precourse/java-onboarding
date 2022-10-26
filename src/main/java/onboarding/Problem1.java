@@ -1,33 +1,49 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 class Problem1 {
 
 
-    private static boolean pageSequence;
-
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
         int answer = 0;
+        int pobiMaxValue = 0;
+        int crongMaxValue = 0;
 
         int pobiFirstNumber = pobi.get(0);
         int pobiSecondNumber = pobi.get(1);
 
-        int crongFirstNumber = pobi.get(0);
-        int crongSecondNumber = pobi.get(1);
+        int crongFirstNumber = crong.get(0);
+        int crongSecondNumber = crong.get(1);
 
         if (pobiFirstNumber + 1 != pobiSecondNumber || crongFirstNumber + 1 != crongSecondNumber){
-            pageSequence = false;
             answer = -1;
+        } else {
+
+            List pobiMaxNumbersList = new ArrayList();
+            List crongMaxNumbersList = new ArrayList();
+
+            pobiMaxNumbersList.add(getMaxNumber(pobiFirstNumber));
+            pobiMaxNumbersList.add(getMaxNumber(pobiSecondNumber));
+            crongMaxNumbersList.add(getMaxNumber(crongFirstNumber));
+            crongMaxNumbersList.add(getMaxNumber(crongSecondNumber));
+
+            pobiMaxValue = (int) Collections.max(pobiMaxNumbersList);
+            crongMaxValue = (int) Collections.max(crongMaxNumbersList);
+
+            if (pobiMaxValue == crongMaxValue) {
+                answer = 0;
+            } else if (pobiMaxValue > crongMaxValue) {
+                answer = 1;
+            } else if (pobiMaxValue < crongMaxValue) {
+                answer = 2;
+            }
         }
 
-        int pobiMaxValue = 0;
-        int crongMaxValue = 0;
-
-        // 자리수 확인
-
-        answer = Integer.MAX_VALUE;
         return answer;
     }
 
