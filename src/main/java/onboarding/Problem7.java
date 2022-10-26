@@ -4,40 +4,34 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem7 {
+    private static final Map<String, Integer> userToScore = new HashMap<>();
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        Map<String, Integer> userToScore = new HashMap<>();
         Set<String> myFriends = new HashSet<>();
 
-        for (List<String> friend : friends) {
-            if (isFriendsContainsUser(friend, user)){
-                myFriends.addAll(friend);
-            }
-        }
+        friends.stream()
+                .filter(friend -> isFriendsContainsUser(friend, user))
+                .forEach(myFriends::addAll);
 
-        for (List<String> friend : friends) {
-            if (isFriendsContainsUser(friend, user)) {
-                continue;
-            }
-            for (int i = 0; i < 2; i++) {
-                if (myFriends.contains(friend.get(i))) {
-                    userToScore.put(friend.get(i ^ 1), userToScore.getOrDefault(friend.get(i ^ 1), 0) + 10);
-                }
-            }
-        }
+        friends.stream()
+                .filter(friend -> myFriends.contains(friend.get(0)) || myFriends.contains(friend.get(1)))
+                .forEach(friend -> {
+                    increaseUserScore(friend.get(0), 10);
+                    increaseUserScore(friend.get(1), 10);
+                });
 
-        for (String visitor : visitors) {
-            if (myFriends.contains(visitor)) {
-                continue;
-            }
-            userToScore.put(visitor, userToScore.getOrDefault(visitor, 0) + 1);
-        }
+        visitors.forEach(visitor -> increaseUserScore(visitor, 1));
 
-        return userToScore.entrySet().stream().filter(e -> e.getValue() > 0)
+        return userToScore.entrySet().stream().filter(e -> !myFriends.contains(e.getKey()) && e.getValue() > 0)
                 .sorted(Map.Entry.comparingByKey())
                 .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
                 .map(Map.Entry::getKey)
                 .limit(5)
                 .collect(Collectors.toList());
+    }
+
+    private static void increaseUserScore(String user, int score) {
+        userToScore.put(user, userToScore.getOrDefault(user, 0) + score);
     }
 
     private static boolean isFriendsContainsUser(List<String> friend, String user) {
