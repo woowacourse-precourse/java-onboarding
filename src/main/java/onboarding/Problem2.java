@@ -17,8 +17,23 @@ public class Problem2 {
 		return result;
 	}
 
+	public static String createAnswer(String answer, String tempAnswer) {
+		while(true) {
+			tempAnswer = deleteConsecutiveCharacters(tempAnswer);
+			if (answer.equals(tempAnswer)) {
+				break;
+			}
+			answer = tempAnswer;
+		}
+		return answer;
+	}
+
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+		String answer = "answer";
+		String tempAnswer = cryptogram;
+
+		createRegexPattern();
+		answer = createAnswer(answer, tempAnswer);
+		return answer;
     }
 }
