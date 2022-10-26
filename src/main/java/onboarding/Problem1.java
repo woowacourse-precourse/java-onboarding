@@ -2,6 +2,8 @@ package onboarding;
 
 import java.util.List;
 
+import static java.lang.StrictMath.max;
+
 class Problem1 {
 
     /**
@@ -69,7 +71,30 @@ class Problem1 {
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+
+        // 입력받은 두 페이지 정보가 정합성을 만족하는지 확인한다.
+        boolean isExceptionCondition = false;
+        isExceptionCondition = isExceptionCondition || isException(pobi);
+        isExceptionCondition = isExceptionCondition || isException(crong);
+
+        // 정합성을 만족하지 않으면 -1을 리턴하고 끝낸다.
+        if (isExceptionCondition) return -1;
+
         int answer = Integer.MAX_VALUE;
+
+        int leftScore = getMaxScore(pobi);
+        int rightScore = getMaxScore(crong);
+
+        if (leftScore > rightScore) {
+            return 1;
+        }
+        if (leftScore < rightScore) {
+            return 2;
+        }
+        if (leftScore == rightScore) {
+            return 0;
+        }
+
         return answer;
     }
 }
