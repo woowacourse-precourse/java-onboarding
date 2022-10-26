@@ -11,7 +11,7 @@ public class PageCalculator {
      * @param right right page number
      * @return max value
      */
-    private int valueOfPages(int left, int right) {
+    public int valueOfPages(int left, int right) {
         return Math.max(valueOfPage(left), valueOfPage(right));
     }
 
