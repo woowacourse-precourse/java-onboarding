@@ -7,7 +7,7 @@ public class Problem2 {
         return answer;
     }
 
-    private static boolean isConsecutiveDuplicateCharacter(String str, int i) {
+    private static boolean isConsecutiveSameCharacter(String str, int i) {
         return str.charAt(i) == str.charAt(i-1);
     }
 }
