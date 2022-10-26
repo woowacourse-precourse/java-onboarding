@@ -22,6 +22,20 @@ class ApplicationTest {
         }
 
         @Test
+        void case1CheckOddEvenValidationTest() {
+            List<Integer> testOddData = List.of(3, 4);
+
+            assertThat(Problem1.checkOddEvenValidation(testOddData)).isEqualTo(true);
+        }
+
+        @Test
+        void case1CheckOddEvenValidationExceptionTest() {
+            List<Integer> testOddData = List.of(4, 5);
+
+            assertThat(Problem1.checkOddEvenValidation(testOddData)).isEqualTo(false);
+        }
+
+        @Test
         void case1() {
             List<Integer> pobi = List.of(97, 98);
             List<Integer> crong = List.of(197, 198);
