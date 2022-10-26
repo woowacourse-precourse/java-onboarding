@@ -36,7 +36,7 @@ class Problem1 {
 				|| crong.get(LEFT_PAGE) < MIN_PAGE || crong.get(RIGHT_PAGE) > MAX_PAGE) {
 			return false;
 		}
-		if ((pobi.get(LEFT_PAGE) - pobi.get(RIGHT_PAGE)) != 1 || (crong.get(LEFT_PAGE) - crong.get(RIGHT_PAGE)) !=1){
+		if ((pobi.get(RIGHT_PAGE) - pobi.get(LEFT_PAGE)) != 1 || (crong.get(RIGHT_PAGE) - crong.get(LEFT_PAGE)) !=1){
 			return false;
 		}
 		return true;
