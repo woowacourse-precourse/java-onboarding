@@ -15,12 +15,15 @@
     - 인자로 들어온 두 페이지 배열들의 요소를 자연수에서 자릿수별로 나눈 배열로 바꿔준다.
     - [X] splitByDigit
       - 인자로 들어온 자연수를 각 자릿수로 나눠준다.
-  - [ ] addNumbers
-    - 배열 안의 모든 자연수를 더해준다.
-  - [ ] multiplyNumbers
-    - 배열 안의 모든 자연수를 곱해준다.
-  - [ ] getBiggerNumber
-    - 두 숫자 중 큰 숫자를 알려준다.
+  - [ ] findWinner
+    - 페이지 게임의 승자를 알려준다. 0은 무승부, 1은 포비, 2는 크롱.
+    - [ ] addNumbers
+      - 배열 안의 모든 자연수를 더해준다.
+    - [ ] multiplyNumbers
+      - 배열 안의 모든 자연수를 곱해준다.
+    - [ ] getBiggerNumber
+      - 두 숫자 중 큰 숫자를 알려준다.
+
 2. [문제 2](./docs/PROBLEM2.md)
 3. [문제 3](./docs/PROBLEM3.md)
 4. [문제 4](./docs/PROBLEM4.md)
