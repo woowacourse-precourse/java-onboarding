@@ -49,15 +49,21 @@ class Problem1 {
         return DRAW;
     }
 
-    private static boolean isPageNumberException(List<Integer> page) {
+    public static boolean isPageNumberException(List<Integer> page) {
+        if(page.isEmpty()){
+            return true;
+        }
+
         Integer leftPage = page.get(0);
         Integer rightPage = page.get(1);
+
         if(leftPage == null || rightPage == null){
             return true;
         }
         if(rightPage - leftPage != 1) {
             return true;
         }
+
         return false;
     }
 
