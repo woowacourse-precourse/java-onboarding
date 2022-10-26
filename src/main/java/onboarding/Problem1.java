@@ -7,9 +7,7 @@ class Problem1 {
     static int LEN_NUMBER_OF_DIGITS = 3;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-
-        return answer;
+        return playGame(pobi, crong);
     }
 
     private static int operMulti(int[] arr) {
@@ -46,6 +44,23 @@ class Problem1 {
             score = Math.max(score, compareScore(intToArr(num)));
         }
         return score;
+    }
+
+    private static int playGame(List<Integer> pobi, List<Integer> crong) {
+        int pobiScore = calcScore(pobi);
+        int crongScore = calcScore(crong);
+
+        if (pobiScore == Integer.MAX_VALUE || crongScore == Integer.MAX_VALUE) {
+            return -1;
+        }
+
+        if (pobiScore > crongScore) {
+            return 1;
+        } else if (pobiScore < crongScore) {
+            return 2;
+        } else {
+            return 0;
+        }
     }
 
 }
