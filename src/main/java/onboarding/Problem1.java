@@ -12,4 +12,7 @@ class Problem1 {
         return pages.get(0) + pages.get(1);
     }
 
+    public static int getPageNumberMulti(List<Integer> pages) {
+        return pages.get(0) * pages.get(1);
+    }
 }
