@@ -13,6 +13,7 @@ class Problem1 {
         int pobiScore = validateBiggerNumber(pobiBiggerPageNumbers.get(0), pobiBiggerPageNumbers.get(1));
         int crongScore = validateBiggerNumber(crongBiggerPageNumbers.get(0), crongBiggerPageNumbers.get(1));
 
+        int resultPageNumber = validateBiggerNumber(pobiScore, crongScore);
         return answer;
     }
 
