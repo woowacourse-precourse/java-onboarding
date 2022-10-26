@@ -7,7 +7,13 @@ class Problem1 {
         if (pobi.get(1)-pobi.get(0)!=1 || crong.get(1)-crong.get(0)!=1) {
             return -1;
         }
-
+        int pobiMax = getMax(pobi);
+        int crongMax = getMax(crong);
+        if (pobiMax>crongMax) {
+            return 1;
+        } else if (pobiMax<crongMax) {
+            return 2;
+        }
         return 0;
     }
 
