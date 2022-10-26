@@ -31,15 +31,19 @@ public class Problem2 {
                 continue;
             }
             if (cryptogramUtil.getSameCount() > 1) {
-                cryptogramUtil.deleteDuplicatedChar();
-                cryptogramUtil.setCurrentIdx(cryptogramUtil.getDuplicatedFirstIdx() - 2);
-                cryptogramUtil.resetSameCount();
+                resetCurrentIdxAndSameCount(cryptogramUtil);
             }
         }
         if (cryptogramUtil.getSameCount() > 1) {
-            cryptogramUtil.deleteDuplicatedChar();
+            resetCurrentIdxAndSameCount(cryptogramUtil);
         }
         return cryptogramUtil.getCryptogram();
+    }
+
+    private static void resetCurrentIdxAndSameCount(CryptogramUtil cryptogramUtil) {
+        cryptogramUtil.deleteDuplicatedChar();
+        cryptogramUtil.minus2CurrentIdx(cryptogramUtil.getDuplicatedFirstIdx());
+        cryptogramUtil.resetSameCount();
     }
 
     private static class CryptogramUtil {
@@ -91,8 +95,8 @@ public class Problem2 {
             return ++this.currentIdx;
         }
 
-        public void setCurrentIdx(int duplicatedFirstIdx) {
-            this.currentIdx = duplicatedFirstIdx;
+        public void minus2CurrentIdx(int duplicatedFirstIdx) {
+            this.currentIdx = duplicatedFirstIdx - 2;
         }
     }
 }
