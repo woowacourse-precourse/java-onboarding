@@ -24,4 +24,8 @@ class Problem1 {
         return result;
     }
 
+    private static int compareScore(int[] arr) {
+        return Math.max(operMulti(arr), operPlus(arr));
+    }
+
 }
