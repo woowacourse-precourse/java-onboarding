@@ -4,21 +4,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
+    private static final int POBI_WIN = 1;
+    private static final int CRONG_WIN = 2;
+    private static final int DRAW = 0;
+    private static final int LEFT_PAGE = 0;
+    private static final int RIGHT_PAGE = 1;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
 
         int pobiMaxResult = getMaxLeftAndRight(pobi);
         int crongMaxResult = getMaxLeftAndRight(crong);
 
         if (pobiMaxResult > crongMaxResult) {
-            return 1;
+            return POBI_WIN;
         }
         if (pobiMaxResult < crongMaxResult) {
-            return 2;
+            return CRONG_WIN;
         }
 
-        return 0;
+        return DRAW;
     }
 
     private static int getMaxLeftAndRight(List<Integer> pages) {
@@ -37,11 +41,11 @@ class Problem1 {
 
 
     private static int getLeftPageNum(List<Integer> pages) {
-        return pages.get(0);
+        return pages.get(LEFT_PAGE);
     }
 
     private static int getRightPageNum(List<Integer> pages) {
-        return pages.get(1);
+        return pages.get(RIGHT_PAGE);
     }
 
     private static int getMaxSumAndMultiply(List<Integer> digitList) {
