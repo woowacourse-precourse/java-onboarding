@@ -5,9 +5,10 @@ import java.util.Map;
 
 public class Problem4 {
 
-    private static final Map<Character, Character> treeFrogMap = new HashMap<>();
+    private static Map<Character, Character> treeFrogMap;
 
     public static String solution(String word) {
+        treeFrogMap = new HashMap<>();
         createTreeFrogMap();
         return changeWordWithTreeFrogMap(word);
     }
