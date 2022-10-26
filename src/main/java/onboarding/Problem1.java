@@ -4,7 +4,37 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int answer = 0;
+
+        //포비와 크롱이 가질 수 있는 제일 큰 수 구하기
+        int pobiLeftPageMaxNum = maxNum(sumNum(pobi.get(0)), multiplyNum(pobi.get(0)));
+        int pobiRightPageMaxNum = maxNum(sumNum(pobi.get(1)), multiplyNum(pobi.get(1)));
+        int crongLeftPageMaxNum = maxNum(sumNum(crong.get(0)), multiplyNum(crong.get(0)));
+        int crongRightPageMaxNum = maxNum(sumNum(crong.get(1)), multiplyNum(crong.get(1)));
+
+        int pobiNum = maxNum(pobiLeftPageMaxNum, pobiRightPageMaxNum);
+        int crongNum = maxNum(crongLeftPageMaxNum, crongRightPageMaxNum);
+
+        //포비가 이겼을 경우
+        if (pobiNum > crongNum) {
+            answer = 1;
+        }
+
+        //크롱이 이겼을 경우
+        if (pobiNum < crongNum) {
+            answer = 2;
+        }
+
+        //무승부의 경우
+        if (pobiNum == crongNum) {
+            answer = 0;
+        }
+
+        //왼쪽 페이지에는 홀수, 오른쪽 페이지에는 짝수 번호가 오면서 책의 시작면이나 마지막 면이 나왔을 경우
+        if (pobi.get(0) == 1 || crong.get(1) == 400) {
+            answer = -1;
+        }
+
         return answer;
     }
 
