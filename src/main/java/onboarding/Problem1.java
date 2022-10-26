@@ -9,7 +9,6 @@ class Problem1 {
     }
 
     static boolean validatePage(List<Integer> values) {
-        // null체크를 우선적으로
         return validateStartOrLastPage(values) && checkSequenceValidation(values) && checkOddEvenValidation(values);
     }
 
