@@ -20,7 +20,7 @@ public class Problem2 {
     }
 
     private static String getDecryptionText(String text) {
-        while (getContinuousIndex(text) != -1) {
+        while (hasDuplicateCharacters(text)) {
             text = deleteDuplicateCharacters(text);
         }
         return text;
