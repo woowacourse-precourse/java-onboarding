@@ -25,4 +25,9 @@ class Problem1 {
         }
         return result;
     }
+
+    private static int getHighNumber(Integer number1, Integer number2) {
+        return Math.max(number1, number2);
+    }
+
 }
