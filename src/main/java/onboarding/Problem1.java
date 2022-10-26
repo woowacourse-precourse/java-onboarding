@@ -6,6 +6,9 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
+        if (!isValidPage(pobi.get(0), pobi.get(1)) || !isValidPage(crong.get(0), crong.get(1)))
+            return -1;
+
         int pobiLeftMax = Integer.max(addAllNumbers(pobi.get(0)), multiplyAllNumbers(pobi.get(0)));
         int pobiRightMax = Integer.max(addAllNumbers(pobi.get(1)), multiplyAllNumbers(pobi.get(1)));
         int pobiScore = Integer.max(pobiLeftMax, pobiRightMax);
