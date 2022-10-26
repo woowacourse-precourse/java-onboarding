@@ -13,8 +13,8 @@ class Problem1 {
         List<Integer> pobiBiggerPageNumbers = saveBiggerPageNumberByUser(pobi);
         List<Integer> crongBiggerPageNumbers = saveBiggerPageNumberByUser(crong);
 
-        int pobiScore = validateBiggerNumber(pobiBiggerPageNumbers.get(0), pobiBiggerPageNumbers.get(1));
-        int crongScore = validateBiggerNumber(crongBiggerPageNumbers.get(0), crongBiggerPageNumbers.get(1));
+        int pobiScore = getMaxNumber(pobiBiggerPageNumbers.get(0), pobiBiggerPageNumbers.get(1));
+        int crongScore = getMaxNumber(crongBiggerPageNumbers.get(0), crongBiggerPageNumbers.get(1));
 
         return winnerUser(pobiScore, crongScore);
     }
@@ -33,7 +33,7 @@ class Problem1 {
         for (Integer pageNumber : user) {
             int sumPage = sumEachNumber(pageNumber);
             int multPage = multEachNumber(pageNumber);
-            biggerPageNumbers.add(validateBiggerNumber(sumPage, multPage));
+            biggerPageNumbers.add(getMaxNumber(sumPage, multPage));
         }
         return biggerPageNumbers;
     }
@@ -58,7 +58,7 @@ class Problem1 {
         return mult;
     }
 
-    private static int validateBiggerNumber(int number1, int number2) {
+    private static int getMaxNumber(int number1, int number2) {
         return Math.max(number1, number2);
     }
 
