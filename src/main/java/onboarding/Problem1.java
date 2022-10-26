@@ -38,6 +38,10 @@ class Problem1 {
 	}
 	
 	private static boolean parameterCheck(List<Integer> user) {
+		if(user.size() != 2){
+			return false;
+		}
+
 		int left = user.get(0);
 		int right = user.get(1);
 		
