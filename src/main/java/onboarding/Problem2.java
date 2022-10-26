@@ -3,14 +3,11 @@ package onboarding;
 import java.util.Stack;
 
 public class Problem2 {
-    public static Stack<Character> stack = new Stack<>();
+    public static Stack<Character> stack;
 
-    public static void main(String[] args) {
-        System.out.println(solution("browoanoommnaon"));
-    }
     public static String solution(String cryptogram) {
-        String browoanoommnaon = deleteConsecutiveDuplicateCharacters(cryptogram);
-        return browoanoommnaon;
+        stack = new Stack<>();
+        return deleteConsecutiveDuplicateCharacters(cryptogram);
     }
 
     private static String deleteConsecutiveDuplicateCharacters(String cryptogram) {
@@ -24,13 +21,7 @@ public class Problem2 {
                 stack.push(c);
             }
         }
-
-        StringBuilder sb = new StringBuilder();
-        for (char c : stack) {
-            sb.append(c);
-        }
-
-        return sb.toString();
+        return charsToString();
     }
 
     private static boolean findDuplicatedCharactersAndPop(char c) {
@@ -40,5 +31,14 @@ public class Problem2 {
         } else {
             return false;
         }
+    }
+
+    private static String charsToString() {
+        StringBuilder sb = new StringBuilder();
+        for (char c : stack) {
+            sb.append(c);
+        }
+
+        return sb.toString();
     }
 }
