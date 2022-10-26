@@ -36,7 +36,10 @@ public class Problem4 {
      */
     public static boolean checkAlphabet(char ch) {
 
-        return true;
+        if( (ch >= 65 && ch <= 90) || (ch >= 97 && ch <= 122))
+            return true;
+
+        return false;
     }
 
     /**
@@ -48,4 +51,6 @@ public class Problem4 {
 
         return translatedCharacter;
     }
+
+
 }
