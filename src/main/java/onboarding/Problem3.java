@@ -2,7 +2,11 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
-        return countingClap(number);
+        int[] memo = new int[number + 1];
+        for (int i = 1; i <= number; i++) {
+            memo[i] = memo[i - 1] + countingClap(i);
+        }
+        return memo[number];
     }
 
     static int countingClap(int num){
