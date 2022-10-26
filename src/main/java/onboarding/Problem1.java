@@ -14,7 +14,19 @@ class Problem1 {
         }
         return bigNum;
     }
-    
+
+    private static int compareAddAndMul(int num) {
+        int add = 0;
+        int mul = 1;
+
+        while (num != 0) {
+            add += num % 10;
+            mul *= num % 10;
+            num /= 10;
+        }
+
+        return compare(add, mul);
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
