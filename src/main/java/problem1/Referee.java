@@ -16,15 +16,16 @@ public class Referee {
         int pobiScore = pobi.calculateTotalScore();
         int crongScore = crong.calculateTotalScore();
 
+        return playGame(pobiScore, crongScore);
+    }
+
+    private GameResultStatus playGame(int pobiScore, int crongScore) {
         if (pobiScore > crongScore) {
             return GameResultStatus.POBI_WIN;
         }
         if (crongScore > pobiScore) {
             return GameResultStatus.CRONG_WIN;
         }
-        if (crongScore == pobiScore) {
-            return GameResultStatus.DRAW;
-        }
-        return GameResultStatus.EXCEPTION;
+        return GameResultStatus.DRAW;
     }
 }
