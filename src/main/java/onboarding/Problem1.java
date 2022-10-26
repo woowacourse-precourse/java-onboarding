@@ -4,17 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
-
-    private static final int START_PAGE_NUMBER = 1;
-    private static final int END_PAGE_NUMBER = 400;
-    private static final int WINNER_USER1_MESSAGE = 1;
-    private static final int WINNER_USER2_MESSAGE = 2;
-    private static final int SCORE_SAME_MESSAGE = 0;
-    private static final int EXCEPTION_MESSAGE = -1;
-
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if (validatePageNumber(pobi) == EXCEPTION_MESSAGE || validatePageNumber(crong) == EXCEPTION_MESSAGE) {
-            return EXCEPTION_MESSAGE;
+        if (validatePageNumber(pobi) == Constance.EXCEPTION_MESSAGE || validatePageNumber(crong) == Constance.EXCEPTION_MESSAGE) {
+            return Constance.EXCEPTION_MESSAGE;
         }
 
         List<Integer> pobiBiggerPageNumbers = saveBiggerPageNumberByUser(pobi);
@@ -28,11 +20,11 @@ class Problem1 {
 
     private static int winnerUser(int userScore1, int userScore2) {
         if (userScore1 > userScore2) {
-            return WINNER_USER1_MESSAGE;
+            return Constance.WINNER_USER1_MESSAGE;
         } else if (userScore1 < userScore2) {
-            return WINNER_USER2_MESSAGE;
+            return Constance.WINNER_USER2_MESSAGE;
         }
-        return SCORE_SAME_MESSAGE;
+        return Constance.SCORE_SAME_MESSAGE;
     }
 
     private static List<Integer> saveBiggerPageNumberByUser(List<Integer> user) {
@@ -79,7 +71,7 @@ class Problem1 {
                 isPageSizeLackOrOverflow(leftPageNumber) ||
                 isPageSizeLackOrOverflow(rightPageNumber) ||
                 !isPageContinue(leftPageNumber, rightPageNumber)) {
-            return EXCEPTION_MESSAGE;
+            return Constance.EXCEPTION_MESSAGE;
         }
 
         return 0;
@@ -90,18 +82,27 @@ class Problem1 {
     }
 
     private static boolean isFirstPage(int pageNumber) {
-        return pageNumber == START_PAGE_NUMBER || pageNumber == START_PAGE_NUMBER + 1;
+        return pageNumber == Constance.START_PAGE_NUMBER || pageNumber == Constance.START_PAGE_NUMBER + 1;
     }
 
     private static boolean isEndPage(int pageNumber) {
-        return pageNumber == END_PAGE_NUMBER - 1 || pageNumber == END_PAGE_NUMBER;
+        return pageNumber == Constance.END_PAGE_NUMBER - 1 || pageNumber == Constance.END_PAGE_NUMBER;
     }
 
     private static boolean isPageSizeLackOrOverflow(int pageNumber) {
-        return pageNumber < START_PAGE_NUMBER || pageNumber > END_PAGE_NUMBER;
+        return pageNumber < Constance.START_PAGE_NUMBER || pageNumber > Constance.END_PAGE_NUMBER;
     }
 
     private static boolean isPageContinue(int leftPageNumber, int rightPageNumber) {
         return leftPageNumber+1 == rightPageNumber;
+    }
+
+    private final class Constance {
+        private static final int START_PAGE_NUMBER = 1;
+        private static final int END_PAGE_NUMBER = 400;
+        private static final int WINNER_USER1_MESSAGE = 1;
+        private static final int WINNER_USER2_MESSAGE = 2;
+        private static final int SCORE_SAME_MESSAGE = 0;
+        private static final int EXCEPTION_MESSAGE = -1;
     }
 }
