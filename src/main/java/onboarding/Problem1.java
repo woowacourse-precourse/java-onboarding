@@ -33,4 +33,12 @@ class Problem1 {
 
         return true;
     }
+
+    public static boolean validateStartOrLastPage(List<Integer> values) {
+        if (values.get(0) == null || values.get(1) == null) {
+            return false;
+        }
+
+        return true;
+    }
 }
