@@ -30,8 +30,18 @@ class Problem1 {
         }
     }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        int answer1 = numAdmin(pobi);
-        int answer2 = numAdmin(crong);
+        int answer1=numAdmin(pobi);
+        if (answer1==-1){
+            return -1;
+        }
+        else{ //1번에서 에러가 뜨면 2번숫자까지 비교할 필요가 없으므로 1번 에러 아닐시 2번값 대입
+            int answer2 = numAdmin(crong);
+            if (answer2==-1){
+                return -1;
+            }
+            if (answer1==answer2) return 0;
+            else if (answer1>answer2) return 1;
+            else return 2;
+        }
     }
 }
