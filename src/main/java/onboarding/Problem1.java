@@ -7,6 +7,10 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
+        if(validatePageNumber(pobi) == -1 && validatePageNumber(crong) == -1) {
+            return -1;
+        }
+
         List<Integer> pobiBiggerPageNumbers = saveUserBiggerPageNumber(pobi);
         List<Integer> crongBiggerPageNumbers = saveUserBiggerPageNumber(crong);
 
@@ -64,6 +68,16 @@ class Problem1 {
         }
 
         return number1;
+    }
+
+    private static int validatePageNumber(List<Integer> user) {
+        int leftPageNumber = user.get(0);
+        int rightPageNumber = user.get(1);
+        if(!isPageOdd(leftPageNumber) || isPageOdd(rightPageNumber) || isFirstPage(leftPageNumber) || isEndPage(rightPageNumber)) {
+            return -1;
+        }
+
+        return 0;
     }
 
     private static boolean isPageOdd(int pageNumber) {
