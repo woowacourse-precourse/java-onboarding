@@ -165,5 +165,16 @@ class Problem1Test {
 				checkListInGivenRange(pageList);
 			});
 		}
+
+		@Test
+		public void checkLeftPageIsOddTest() {
+			List<Integer> pageList = new ArrayList<>();
+			pageList.add(272);
+			pageList.add(273);
+
+			assertThrows(IllegalStateException.class, () -> {
+				checkLeftPageIsOdd(pageList);
+			});
+		}
 	}
 }

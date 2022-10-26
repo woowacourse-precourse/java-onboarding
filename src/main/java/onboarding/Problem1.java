@@ -21,7 +21,7 @@ class Problem1 {
     public static void checkException(List<Integer> pageList) throws IllegalStateException {
         checkPageHasAscending1Difference(pageList);
         checkListInGivenRange(pageList);
-        checkListContainsStartPage(pageList);
+        checkLeftPageIsOdd(pageList);
     }
 
     public static void checkPageHasAscending1Difference(List<Integer> pageList) {
@@ -35,6 +35,12 @@ class Problem1 {
             throw new IllegalStateException();
         }
         if (pageList.get(1) >= END_PAGE) {
+            throw new IllegalStateException();
+        }
+    }
+
+    public static void checkLeftPageIsOdd(List<Integer> pageList) {
+        if (pageList.get(0)%2 == 0) {
             throw new IllegalStateException();
         }
     }
