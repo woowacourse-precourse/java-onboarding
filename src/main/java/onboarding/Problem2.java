@@ -6,11 +6,11 @@ import java.util.Deque;
 public class Problem2 {
     public static String solution(String cryptogram) {
         Deque<Character> deque = new ArrayDeque<>();
-        for (int i = 0; i < cryptogram.length(); i++) {
-            if (!deque.isEmpty() && deque.peekLast() != cryptogram.charAt(i)) {
+        for (char character: cryptogram.toCharArray()) {
+            if (!deque.isEmpty() && deque.peekLast() != character) {
                 removeDuplicateLetters(deque);
             }
-            deque.addLast(cryptogram.charAt(i));
+            deque.addLast(character);
         }
         removeDuplicateLetters(deque);
 
