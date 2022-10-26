@@ -22,6 +22,22 @@ class Problem1 {
         return Math.max(calculateMaxSum(values), calculateMaxMultiplication(values));
     }
 
+    private static int calculateMaxMultiplication(List<Integer> values) {
+        return Math.max(calculateMultiplication(values.get(0)), calculateMultiplication(values.get(1)));
+    }
+
+    private static int calculateMultiplication(Integer value) {
+
+        int multiplyValue = 1;
+
+        while (value != 0) {
+            multiplyValue *= value % 10;
+            value /= 10;
+        }
+
+        return multiplyValue;
+    }
+
     private static int calculateMaxSum(List<Integer> values) {
         return Math.max(calculateSum(values.get(0)), calculateSum(values.get(1)));
     }
