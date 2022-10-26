@@ -8,7 +8,8 @@ class Problem1 {
         if((isValidInput(pobi) && isValidInput(crong)) == false){
             return -1;
         }
-
+        int pobiScore = calculateScore(pobi);
+        int crongScore = calculateScore(crong);
         return 0;
     }
 
@@ -17,5 +18,14 @@ class Problem1 {
             return true;
         }
         return false;
+    }
+
+    public static int calculateScore(List<Integer> input){
+        int sum = input.get(0) + input.get(1);
+        int multiplication = input.get(0) * input.get(1);
+        if(sum >= multiplication){
+            return sum;
+        }
+        return multiplication;
     }
 }
