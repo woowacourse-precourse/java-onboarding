@@ -48,4 +48,12 @@ class Problem1 {
       return 0;
     }
   }
+
+  public static boolean isAllowedPage(int page) throws IllegalStateException{
+      if (page < 1 || page > 400) {
+        throw new IllegalStateException("1~400 이내의 페이지를 펴주세요");
+      } else {
+        return true;
+      }
+  }
 }
