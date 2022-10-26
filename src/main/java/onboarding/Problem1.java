@@ -4,6 +4,12 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+
+        boolean page = validation(pobi, crong);
+        if (!page) {
+            return -1;
+        }
+
         // 포비 점수
         int pobi_sum = sum(pobi);
         int pobi_multi = multi(pobi);
@@ -74,5 +80,15 @@ class Problem1 {
         }
         return b;
     }
-
+    // 예외 처리
+    private static boolean validation(List<Integer> value_1, List<Integer> value_2) {
+        // 페이지 번호가 제대로 되어 있지 않을 시
+        if (1 != (value_1.get(1)) - value_1.get(0)) {
+            return false;
+        }
+        if (1 != (value_2.get(1)) - value_2.get(0)) {
+            return false;
+        }
+        return true;
+    }
 }
