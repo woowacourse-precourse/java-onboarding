@@ -13,7 +13,7 @@ class Problem1 {
         else return false;
     }
 
-    private static int calcalateMax(List<Integer> list) {
+    private static int calculateMax(List<Integer> list) {
         int left= list.get(0);
         int right= list.get(1);
         int sumMax= Math.max(numSum(left),numSum(right));
@@ -22,7 +22,12 @@ class Problem1 {
         return max;
     }
     private static int numSum(int i){
-
+        int sum = 0;
+        while(i>0){
+            sum+=i%10;
+            i=i/10;
+        }
+        return sum;
     }
     private static int numMulti(int i){
 
