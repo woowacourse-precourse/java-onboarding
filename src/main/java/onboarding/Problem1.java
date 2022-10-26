@@ -71,9 +71,27 @@ class Problem1 {
         return Integer.max(leftResult, rightResult);
     }
 
+    /**
+     * 문제에 대한 정답 함수
+     * @param pobi
+     * @param crong
+     * @return 기능 요구사항 결과를 리턴
+     */
+
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        if (checkError(pobi) || checkError(crong))
+            return -1;
+        int resultPobi = calc(pobi);
+        int resultCrong = calc(crong);
+
+        if (resultCrong == resultPobi) {
+            return 0;
+        } else if (resultPobi > resultCrong) {
+            return 1;
+        } else if (resultPobi < resultCrong) {
+            return 2;
+        }
+        return -1;
     }
 }
