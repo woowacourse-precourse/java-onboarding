@@ -1,5 +1,7 @@
 package onboarding;
 
+import static onboarding.feature1.Constants.*;
+
 import java.util.List;
 
 import onboarding.feature1.MaximumCalculator;

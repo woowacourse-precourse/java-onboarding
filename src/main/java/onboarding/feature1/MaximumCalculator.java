@@ -4,22 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MaximumCalculator {
-    // 필드
-    private final List<Integer> digitsOfLeftPage;
-    private final List<Integer> digitsOfRightPage;
-
-    // 생성자
-    public MaximumCalculator (PageNumber pageNumber) {
-        digitsOfLeftPage = getDigits(pageNumber.getLeftPage());
-        digitsOfRightPage = getDigits(pageNumber.getRightPage());
-    }
-
     // 메소드
-    public Integer getMaximum () {
+    public static Integer getMaximum (PageNumber pageNumber) {
+        List<Integer> digitsOfLeftPage = getDigits(pageNumber.getLeftPage());
+        List<Integer> digitsOfRightPage = getDigits(pageNumber.getRightPage());
+
         return Math.max(compareCalculations(digitsOfLeftPage), compareCalculations(digitsOfRightPage));
     }
 
-    public List<Integer> getDigits(Integer pageNumber) {
+    public static List<Integer> getDigits(Integer pageNumber) {
         List<Integer> digitsOfPage = new ArrayList<>();
         String temp = Integer.toString(pageNumber);
         for (Character character : temp.toCharArray()) {
@@ -28,7 +21,7 @@ public class MaximumCalculator {
         return digitsOfPage;
     }
 
-    public Integer compareCalculations(List<Integer> digitsOfPage) {
+    public static Integer compareCalculations(List<Integer> digitsOfPage) {
         Integer addition = 0;
         Integer multiplication = 1;
 
