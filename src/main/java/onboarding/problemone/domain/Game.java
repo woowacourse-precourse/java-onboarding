@@ -29,9 +29,11 @@ public class Game {
 			return 1;
 		} else if (user1.getScore()<user2.getScore()) {
 			return 2;
-		} else {
+		} else if (user1.getScore()==user2.getScore()){
 			return 0;
 		}
+
+		return -1;
 	}
 
 	private boolean validatePage(User user){
