@@ -28,9 +28,9 @@ class Problem1 {
 		return list.get(0) == list.get(1) - 1;
 	}
 
-	static int[] getDigitArray(List<Integer> list, String leftRight) {
-		int side = (leftRight.equals("left")) ? 0 : 1;
-		return Stream.of(String.valueOf(list.get(side)).split("")).mapToInt(Integer::parseInt).toArray();
+	static int[] getDigitArray(List<Integer> list, String side) {
+		int leftRight = (side.equals("left")) ? 0 : 1;
+		return Stream.of(String.valueOf(list.get(leftRight)).split("")).mapToInt(Integer::parseInt).toArray();
 	}
 
 	static int getMaxValue(int[] array) {
