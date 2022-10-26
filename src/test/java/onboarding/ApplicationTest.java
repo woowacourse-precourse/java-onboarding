@@ -1,5 +1,6 @@
 package onboarding;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -10,6 +11,60 @@ import static org.assertj.core.api.Assertions.assertThat;
 class ApplicationTest {
     @Nested
     class Problem1Test {
+        @Test
+        @DisplayName("리스트나 배열의 길이가 2인지 검증 : -1")
+        void testValidateLength() {
+            List<Integer> pobi = List.of(1, 2, 3);
+            List<Integer> crong = List.of(197, 198);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        @DisplayName("두 페이지 정보가 연속된 자연수인지 검증 : 성공")
+        void testValidateConsecutivePages1() {
+            List<Integer> pobi = List.of(97, 98);
+            List<Integer> crong = List.of(197, 198);
+            int result = Integer.MAX_VALUE;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        @DisplayName("두 페이지 정보가 연속된 자연수인지 검증 : -1")
+        void testValidateConsecutivePages2() {
+            List<Integer> pobi = List.of(95, 98);
+            List<Integer> crong = List.of(197, 198);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        @DisplayName("첫 번째 원소가 홀수인지 검증: -1")
+        void testValidateConsecutivePages3() {
+            List<Integer> pobi = List.of(96, 97);
+            List<Integer> crong = List.of(197, 198);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        @DisplayName("1번 페이지나, 400번째 페이지를 하나라도 포함하는지 검증 : -1")
+        void testValidateNotFirstOrLastPages1() {
+            List<Integer> pobi = List.of(1, 2);
+            List<Integer> crong = List.of(35, 36);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        @DisplayName("1번 페이지나, 400번째 페이지를 하나라도 포함하는지 검증 : -1")
+        void testValidateNotFirstOrLastPages2() {
+            List<Integer> pobi = List.of(55, 56);
+            List<Integer> crong = List.of(399, 400);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
         @Test
         void case1() {
             List<Integer> pobi = List.of(97, 98);
