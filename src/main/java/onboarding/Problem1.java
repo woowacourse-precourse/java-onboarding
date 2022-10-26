@@ -28,17 +28,17 @@ class Problem1 {
         }
 
         // 좌측과 우측 페이지의 차가 1인지 확인 및 우측 페이지가 더 큰지 확인
-        if (pobi.get(LAST_PAGE) - pobi.get(FIRST_PAGE) != 1
-                || crong.get(LAST_PAGE) - crong.get(FIRST_PAGE) != 1) {
+        if (pobi.get(RIGHT_PAGE) - pobi.get(LEFT_PAGE) != 1
+                || crong.get(RIGHT_PAGE) - crong.get(LEFT_PAGE) != 1) {
             return EXCEPTION;
         }
 
         int maxLeftPointOfPobi = Math.max(getSumOfEachDigits(pobi.get(LEFT_PAGE)), getMulOfEachDigits(pobi.get(LEFT_PAGE)));
-        int maxRightPointOfPobi = Math.max(getSumOfEachDigits(pobi.get(LAST_PAGE)), getMulOfEachDigits(pobi.get(LAST_PAGE)));
+        int maxRightPointOfPobi = Math.max(getSumOfEachDigits(pobi.get(RIGHT_PAGE)), getMulOfEachDigits(pobi.get(RIGHT_PAGE)));
         int maxPointOfPobi = Math.max(maxLeftPointOfPobi, maxRightPointOfPobi);
 
         int maxLeftPointOfCrong = Math.max(getSumOfEachDigits(crong.get(LEFT_PAGE)), getMulOfEachDigits(crong.get(LEFT_PAGE)));
-        int maxRightPointOfCrong = Math.max(getSumOfEachDigits(crong.get(LAST_PAGE)), getMulOfEachDigits(crong.get(LAST_PAGE)));
+        int maxRightPointOfCrong = Math.max(getSumOfEachDigits(crong.get(RIGHT_PAGE)), getMulOfEachDigits(crong.get(RIGHT_PAGE)));
         int maxPointOfCrong = Math.max(maxLeftPointOfCrong, maxRightPointOfCrong);
 
         if (maxPointOfPobi > maxPointOfCrong) {
