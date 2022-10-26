@@ -32,4 +32,11 @@ class Problem1 {
 
         return result;
     }
+
+    public static int getMulti(List<Integer> numbers) {
+        int result = 1;
+        result *= numbers.get(0) * numbers.get(1) * numbers.get(2);
+
+        return result;
+    }
 }

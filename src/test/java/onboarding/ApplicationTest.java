@@ -47,6 +47,13 @@ class ApplicationTest {
             int result = 6;
             assertThat(Problem1.getSum(numbers)).isEqualTo(result);
         }
+
+        @Test
+        void multiTest() {
+            List<Integer> numbers = List.of(3,6,9);
+            int result = 3*6*9;
+            assertThat(Problem1.getMulti(numbers)).isEqualTo(result);
+        }
     }
 
     @Nested
