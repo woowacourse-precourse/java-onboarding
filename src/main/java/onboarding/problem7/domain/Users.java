@@ -26,10 +26,10 @@ public class Users {
             final String secondUserName = friend.get(1);
             
             User user = users.get(firstUserName);
-            user.addFriend(users.get(secondUserName));
+            user.addFriend(secondUserName);
             
             user = users.get(secondUserName);
-            user.addFriend(users.get(firstUserName));
+            user.addFriend(firstUserName);
         }
     }
 }

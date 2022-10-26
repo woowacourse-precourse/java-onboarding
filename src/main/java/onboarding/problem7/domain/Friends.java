@@ -4,18 +4,24 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Friends {
-    private final Set<User> friends;
+    private final Set<String> friends;
     
     public Friends() {
         this(new HashSet<>());
     }
     
-    public Friends(final Set<User> friends) {
+    public Friends(final Set<String> friends) {
         this.friends = friends;
     }
     
-    public void add(final User friend) {
+    public void add(final String friend) {
         friends.add(friend);
+    }
+    
+    public int numberOfFriendsYouKnowTogether(final Friends otherUserFriends) {
+        return (int) friends.stream()
+                .filter(friends::contains)
+                .count();
     }
     
     @Override

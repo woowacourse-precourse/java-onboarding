@@ -15,12 +15,16 @@ public class User {
         this.friends = friends;
     }
     
-    public void addFriend(final User friend) {
+    public void addFriend(final String friend) {
         friends.add(friend);
     }
     
     public Friends getFriends() {
         return friends;
+    }
+    
+    public int numberOfFriendsYouKnowTogether(final User user) {
+        return friends.numberOfFriendsYouKnowTogether(user.friends);
     }
     
     @Override
