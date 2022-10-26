@@ -1,13 +1,9 @@
 package onboarding;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 class Problem1 {
-    private static int FIRST_PAGE= 1;
-    private static int NEAR_FIRST_PAGE=FIRST_PAGE+1;
-    private static int END_PAGE=400;
-    private static int NEAR_END_PAGE=END_PAGE-1;
-
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (isErrorPage(pobi) || isErrorPage(crong))
             return -1;
@@ -15,7 +11,6 @@ class Problem1 {
         int crongScore = calculateScore(crong);
         return calculateWinner(pobiScore, crongScore);
     }
-
     private static boolean isErrorPage(List<Integer> pages) {
         return pages.size() != 2
                 || Math.abs(pages.get(0) - pages.get(1)) != 1
@@ -31,27 +26,34 @@ class Problem1 {
         return !isEven(page);
     }
     private static boolean isFirstPage(List<Integer> pages) {
+        final int firstPage = 1;
+        final int nearFirstPage = firstPage + 1;
+        return hasErrorPage(pages, (page) -> page.equals(firstPage) || page.equals(nearFirstPage));
+    }
+    private static boolean hasErrorPage(List<Integer>pages, Predicate<Integer> condition){
         for (Integer page : pages) {
-            if(page.equals(FIRST_PAGE)||page.equals(NEAR_FIRST_PAGE))
+            if(condition.test(page))
                 return true;
         }
         return false;
     }
     private static boolean isEndPage(List<Integer> pages) {
-        for (Integer page : pages) {
-            if(page.equals(END_PAGE)||page.equals(NEAR_END_PAGE))
-                return true;
-        }
-        return false;
+        final int endPage = 400;
+        final int nearEndPage = endPage - 1;
+        return hasErrorPage(pages, (page) -> page.equals(endPage) || page.equals(nearEndPage));
     }
     private static int calculateWinner(int pobiScore, int crongScore) {
+        int pobiWin =1;
+        int crongWin =2;
+        int draw =0;
+        int error =-1;
         if (pobiScore > crongScore)
-            return 1;
+            return pobiWin;
         if (pobiScore < crongScore)
-            return 2;
+            return crongWin;
         if (pobiScore == crongScore)
-            return 0;
-        return -1;
+            return draw;
+        return error;
     }
 
     private static int calculateScore(List<Integer> pages) {
