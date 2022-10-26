@@ -30,15 +30,13 @@ class Problem1 {
         int add = 0;
         int multiply = 1;
 
-        for (int divide = 100; divide != 0; divide /= 10) {
-            if (pageNumber >= divide) { // 해당 자릿수 연산을 할 수 있을 때에만 진행
-                int extract = pageNumber / divide;
+        String stringPageNumber = Integer.toString(pageNumber);
 
-                add += extract;
-                multiply *= extract;
+        for (int i = 0; i < stringPageNumber.length(); i++) {
+            int digit = stringPageNumber.charAt(i) - '0';
 
-                pageNumber %= divide;
-            }
+            add += digit;
+            multiply *= digit;
         }
 
         return Math.max(add, multiply); // 더 큰 것을 리턴
@@ -57,6 +55,8 @@ class Problem1 {
 
         int pobiScore = Math.max(biggest(pobi.get(0)), biggest(pobi.get(1)));
         int crongScore = Math.max(biggest(crong.get(0)), biggest(crong.get(1)));
+
+        System.out.println(pobiScore + " " + crongScore);
 
         return winner(pobiScore, crongScore);
     }
