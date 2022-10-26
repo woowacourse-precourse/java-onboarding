@@ -12,12 +12,19 @@ public class PageNumberGame {
 		this.crong = crong;
 	}
 
-	public void run() {
+	public int run() {
 		int pobiScore = getScore(pobi);
 		int crongScore = getScore(crong);
 
-		System.out.println("pobiScore = " + pobiScore);
-		System.out.println("crongScore = " + crongScore);
+		if (pobiScore > crongScore) {
+			return 1;
+		} else if (pobiScore < crongScore) {
+			return 2;
+		} else if (pobiScore == crongScore) {
+			return 0;
+		} else {
+			return -1;
+		}
 	}
 
 	private int getScore(List<Integer> pages) {
