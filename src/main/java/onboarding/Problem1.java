@@ -7,6 +7,15 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+
+        int pobiScore = getScore(pobi);
+        int crongScore = getScore(crong);
+
+        if(pobiScore > crongScore) answer = 1;
+        else if(pobiScore < crongScore) answer = 2;
+        else if(pobiScore == crongScore) answer = 0;
+        else answer = -1;
+
         return answer;
     }
 
