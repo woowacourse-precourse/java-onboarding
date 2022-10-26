@@ -22,8 +22,15 @@ class Problem1 {
         return pagePlaceMulti;
     }
 
+    public static int getMaxPageCalculate(int leftPage, int rightPage){
+        int leftPageMax = Math.max(getPagePlaceSum(leftPage), getPagePlaceMulti(leftPage));
+        int rightPageMax = Math.max(getPagePlaceSum(rightPage), getPagePlaceMulti(rightPage));
+        return Math.max(leftPageMax, rightPageMax);
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+
         return answer;
     }
 }
