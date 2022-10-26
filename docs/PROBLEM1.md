@@ -4,5 +4,6 @@
 2. 페에지 번호의 각 자리 숫자를 더하는 기능.
    - pagePlus(Integer page)
 3. 2~3번 과정에서 가장 큰수를 찾는 기능.
+   - getMaxNumber(List<Integer> page)
 4. 점수를 비교하는 기능.
 5. 예외처리 기능.
