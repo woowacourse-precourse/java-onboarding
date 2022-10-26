@@ -10,9 +10,7 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (isException(pobi, crong)) return EXCEPTION;
-
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        return -2;
     }
 
     private static boolean isException(List<Integer> pobi, List<Integer> crong) {
@@ -29,7 +27,11 @@ class Problem1 {
     }
 
     private static String whoIsErrorPlayer() {
-        return playerCounter + "번째 플레이어에게서 오류가 발생했습니다. (0부터 셉니다)\n";
+        StringBuilder result = new StringBuilder();
+        if (playerCounter == 0) result.append("pobi");
+        else result.append("crong");
+
+        return result.append("의 페이지에서 문제가 발견되었습니다.\n").toString();
     }
 
     private static class Validation {
@@ -60,15 +62,15 @@ class Problem1 {
         }
 
         private void isRightEven(Integer right) throws ValidationException {
-            if (right % 2 == 0) throw new ValidationException("오른쪽 페이지는 짝수여야 합니다.");
+            if (right % 2 != 0) throw new ValidationException("오른쪽 페이지는 짝수여야 합니다.");
         }
 
         private void isMoreThanMinimum(Integer left) throws ValidationException {
-            if (left >= 1) throw new ValidationException("1페이지보다 커야 합니다.");
+            if (left < 1) throw new ValidationException("1페이지보다 커야 합니다.");
         }
 
         private void isLessThanMaximum(Integer right) throws ValidationException {
-            if (right <= 400) throw new ValidationException("400페이지보다 작아야 합니다.");
+            if (right > 400) throw new ValidationException("400페이지보다 작아야 합니다.");
         }
 
         private void isNextPage(Integer left, Integer right) throws ValidationException {
