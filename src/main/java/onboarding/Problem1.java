@@ -22,4 +22,11 @@ class Problem1 {
         }
         return Math.max(sum,mul);
     }
+
+    private static int checkLeftRight(int leftPage, int rightPage){
+        int left = getMaxPage(leftPage);
+        int right = getMaxPage(rightPage);
+
+        return Math.max(left,right);
+    }
 }
