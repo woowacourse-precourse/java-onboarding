@@ -45,10 +45,6 @@ public class User {
 		return leftPage;
 	}
 
-	public void setLeftPage(int leftPage) {
-		this.leftPage = leftPage;
-	}
-
 	public int getRightPage() {
 		return rightPage;
 	}
@@ -57,11 +53,5 @@ public class User {
 		return score;
 	}
 
-	public void setScore(int score) {
-		this.score = score;
-	}
 
-	public void setRightPage(int rightPage) {
-		this.rightPage = rightPage;
-	}
 }
