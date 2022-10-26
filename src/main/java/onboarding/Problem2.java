@@ -8,6 +8,14 @@ public class Problem2 {
         3. solution (반복문으로 문자 제거)
     */
 
+    // 반복되는 문자의 인덱스를 찾는 함수
+    private static Integer repeatedIndex(String cryptogram) {
+        for (int i = 1; i < cryptogram.length(); i++) {
+            if (cryptogram.charAt(i) == cryptogram.charAt(i-1))
+                return i-1;
+        }
+        return null;
+    }
     public static String solution(String cryptogram) {
         String answer = "answer";
         return answer;
