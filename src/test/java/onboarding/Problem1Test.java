@@ -10,6 +10,15 @@ import org.junit.jupiter.api.Test;
 
 class Problem1Test {
 
+
+	@Test
+	@DisplayName("왼쪽 페이지 각 자리수 숫자 더하거나 곱한것 중 큰 숫자")
+	void 덧셈_곱셈(){
+		assertThat(Problem1.calculateMaxNumber(97)).isEqualTo(63);
+		assertThat(Problem1.calculateMaxNumber(13)).isEqualTo(4);
+		assertThat(Problem1.calculateMaxNumber(10)).isEqualTo(1);
+	}
+
 	@Test
 	@DisplayName("인자값이 2개가 아닐 때 pobi")
 	void 인자값이_2개가_아닐_때() {
@@ -93,7 +102,6 @@ class Problem1Test {
 		int result = -1;
 		assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
 	}
-
 
 	@Test
 	@DisplayName("왼쪽페이지가 홀수일 때")
