@@ -5,9 +5,9 @@ import java.util.List;
 
 public class MaximumCalculator {
     // 메소드
-    public static Integer getMaximum (PageNumber pageNumber) {
-        List<Integer> digitsOfLeftPage = getDigits(pageNumber.getLeftPage());
-        List<Integer> digitsOfRightPage = getDigits(pageNumber.getRightPage());
+    public static Integer getMaximum (Pages pages) {
+        List<Integer> digitsOfLeftPage = getDigits(pages.getLeftPage());
+        List<Integer> digitsOfRightPage = getDigits(pages.getRightPage());
 
         return Math.max(compareCalculations(digitsOfLeftPage), compareCalculations(digitsOfRightPage));
     }
