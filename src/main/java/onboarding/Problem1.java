@@ -18,4 +18,13 @@ class Problem1 {
         return sum;
     }
 
+    // 페이지 번호의 각 자리 숫자를 모두 곱하는 기능을 하는 함수
+    public static int getMultiplyPageNum(Integer pageNum) {
+        int mul = 1;
+        while (pageNum > 0) {
+            mul *= pageNum % 10;
+            pageNum /= 10;
+        }
+        return mul;
+    }
 }
