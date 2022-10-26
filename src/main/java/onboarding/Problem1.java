@@ -34,6 +34,14 @@ class Problem1 {
         return list.get(0) > 1 ||  list.get(1) < 400;
     }
 
+    public static int getUserMaxNumber(List<Integer> list) {
+        return max(getMaxNumber(list.get(0)), getMaxNumber(list.get(1)));
+    }
+
+    public static int getMaxNumber(int number) {
+        return max(getAddNumber(number), getMultiplyNumber(number));
+    }
+
     public static int getWinner(List<Integer> pobi, List<Integer> crong) {
         if (getUserMaxNumber(pobi) > getUserMaxNumber(crong)) {
             return POBI_WIN;
