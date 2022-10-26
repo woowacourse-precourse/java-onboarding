@@ -114,6 +114,62 @@ class ApplicationTest {
             String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
+        
+        @Test
+        void case3() {
+            String cryptogram = "";
+            String result = "";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+        
+        @Test
+        void case4() {
+            String cryptogram = "a";
+            String result = "a";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+        
+        @Test
+        void case5() {
+            String cryptogram = "aa";
+            String result = "";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+        
+        @Test
+        void case6() {
+            String cryptogram = "abababab";
+            String result = "abababab";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+        
+        @Test
+        void case7() {
+            String cryptogram = "aaaabbbb";
+            String result = "";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+        
+        @Test
+        void case8() {
+            String cryptogram = "aaaacbbbb";
+            String result = "c";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+        
+        @Test
+        void case9() {
+            String cryptogram = "aaaabcbbb";
+            String result = "bcb";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+    
+        @Test
+        void case10() {
+            String cryptogram = "aaa";
+            String result = "a";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
     }
     
     @Nested

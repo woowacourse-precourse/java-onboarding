@@ -1,9 +1,5 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.stream.Collectors;
-
 public class Problem2 {
     public static String solution(String cryptogram) {
         for (int i = 0; i < cryptogram.length() - 1; i++) {
