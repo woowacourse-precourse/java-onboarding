@@ -28,6 +28,21 @@ class Problem1 {
         return sum;
     }
 
+    /**
+     * 2. 페이지 번호의 각 자리 숫자 모두 곱하기
+     * @param page : 페이지 번호
+     * @return : 페이지 각 자릿수 곱한 값
+     */
+    static int multiply(Integer page){
+        int sum = 1;
+        while(page != 0){
+            sum *= (page % 10);
+            page /= 10;
+        }
+
+        return sum;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
