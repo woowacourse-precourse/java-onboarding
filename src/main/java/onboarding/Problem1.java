@@ -26,8 +26,16 @@ class Problem1 {
     public static int multi(List<Integer> lst){
         int left = lst.get(0);
         int right = lst.get(1);
-        int multiLeft = ((left/100) * ((left/10)%10) * (left%10));
-        int multiRight = ((right/100) * ((right/10)%10) * (right%10));
+        int multiLeft = 1;
+        while(left>0){
+            multiLeft += left%10;
+            left /= 10;
+        }
+        int multiRight = 1;
+        while(right>0){
+            multiRight *= right%10;
+            right /= 10;
+        }
         return Math.max(multiLeft, multiRight);
     }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
