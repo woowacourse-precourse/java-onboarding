@@ -42,12 +42,15 @@ public class Player {
     }
 
     public int calculateLeftMaxNumber() {
-        return calculateMaxNumber(addDigitNumber(pages.get(LEFT_PAGE_INDEX))
-                , multipleDigitNumber(pages.get(LEFT_PAGE_INDEX)));
+        return calculatePageMaxNumber(LEFT_PAGE_INDEX);
     }
 
     public int calculateRightMaxNumber() {
-        return calculateMaxNumber(addDigitNumber(pages.get(RIGHT_PAGE_INDEX))
-                , multipleDigitNumber(pages.get(RIGHT_PAGE_INDEX)));
+        return calculatePageMaxNumber(RIGHT_PAGE_INDEX);
+    }
+
+    private int calculatePageMaxNumber(int pageIndex) {
+        return calculateMaxNumber(addDigitNumber(pages.get(pageIndex))
+                , multipleDigitNumber(pages.get(pageIndex)));
     }
 }
