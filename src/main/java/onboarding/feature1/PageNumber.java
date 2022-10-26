@@ -4,8 +4,8 @@ import java.util.List;
 
 public class PageNumber {
     // 필드
-    private final int leftPage;
-    private final int rightPage;
+    private final Integer leftPage;
+    private final Integer rightPage;
 
     // 생성자
     public PageNumber(List<Integer> numbers) {
