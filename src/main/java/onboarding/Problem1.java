@@ -44,4 +44,10 @@ class Problem1 {
         if(player1Score == player2Score) winnerNum = 0;
         return winnerNum;
     }
+
+    public static boolean validatePageNumOddOrEven(List<Integer> player) {
+        Integer leftPageNum = player.get(0);
+        Integer rightPageNum = player.get(1);
+        return ((leftPageNum % 2 != 0) && (rightPageNum % 2 == 0));
+    }
 }
