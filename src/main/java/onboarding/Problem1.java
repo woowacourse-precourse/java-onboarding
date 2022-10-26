@@ -45,4 +45,12 @@ class Problem1 {
         return max(value1, value2);
     }
 
+    // 최댓값
+    private static int max(int a, int b) {
+        if (a > b) {
+            return a;
+        }
+        return b;
+    }
+
 }
