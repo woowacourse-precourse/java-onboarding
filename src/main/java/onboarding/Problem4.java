@@ -17,8 +17,11 @@ public class Problem4 {
         return answer;
     }
     static char changeFrogWord(Map<Character, Character> map, char ch){
-        if(map.containsKey(ch)){
-            return map.get(ch);
+        if (ch >= 'a' && ch <= 'z') {
+            return Character.toUpperCase(map.get(ch));
+        }
+        if (ch >= 'A' && ch <= 'Z') {
+            return map.get(Character.toLowerCase(ch));
         }
         return ch;
     }
