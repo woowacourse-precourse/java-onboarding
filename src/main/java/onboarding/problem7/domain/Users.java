@@ -47,6 +47,12 @@ public class Users {
         }
     }
     
+    public void addVisitScore(final List<String> visitors) {
+        visitors.stream()
+                .map(users::get)
+                .forEach(User::addVisitScore);
+    }
+    
     @Override
     public String toString() {
         return "Users{" +

@@ -12,7 +12,11 @@ public class Score {
     }
     
     public Score addScoreOfNumberOfFriendsYouKnowTogether(final int numberOfFriendsYouKnowTogether) {
-        return new Score(numberOfFriendsYouKnowTogether * 10);
+        return new Score(score + numberOfFriendsYouKnowTogether * 10);
+    }
+    
+    public Score increase() {
+        return new Score(score + 1);
     }
     
     public int getScore() {

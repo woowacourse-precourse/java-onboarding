@@ -4,7 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class ScoreTest {
     @Test
@@ -13,5 +12,13 @@ class ScoreTest {
         Score score = new Score();
         final Score increasedScore = score.addScoreOfNumberOfFriendsYouKnowTogether(10);
         assertThat(increasedScore.getScore()).isEqualTo(100);
+    }
+    
+    @Test
+    @DisplayName("한번 방문 시 1점 추가")
+    void addVisitScore() {
+        Score score = new Score();
+        final Score increasedScore = score.increase();
+        assertThat(increasedScore.getScore()).isEqualTo(1);
     }
 }

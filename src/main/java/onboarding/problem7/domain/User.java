@@ -29,6 +29,10 @@ public class User {
         this.score = score.addScoreOfNumberOfFriendsYouKnowTogether(numberOfFriendsYouKnowTogether);
     }
     
+    public void addVisitScore() {
+        this.score = score.increase();
+    }
+    
     @Override
     public String toString() {
         return "User{" +
