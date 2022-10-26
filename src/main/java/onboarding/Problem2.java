@@ -2,15 +2,11 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        //중복이 있는지 체크하는 함수
-        //중복이 있으면 제거하는 함수
 
         while (isRepeated(cryptogram)) {
-
+            cryptogram = removeRepeat(cryptogram);
         }
-        
-
-        return "";
+        return cryptogram;
     }
 
     public static boolean isRepeated(String word) {
@@ -24,4 +20,17 @@ public class Problem2 {
         return false;
     }
 
+    public static String removeRepeat(String word) {
+        String newWord = "";
+
+        for (int i = 0; i < word.length()-1; i++) {
+
+            if (word.substring(i, i + 1).equals(word.substring(i + 1, i + 2))) {
+                newWord = word.substring(0, i);
+                newWord += word.substring(i + 2);
+                return newWord;
+            }
+        }
+        return newWord;
+    }
 }
