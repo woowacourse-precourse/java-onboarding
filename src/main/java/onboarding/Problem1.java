@@ -33,4 +33,8 @@ class Problem1 {
     private static int getScore(Integer leftNumber, Integer rightNumber) {
         return getHighNumber(leftNumber, rightNumber);
     }
+
+    private static boolean checkNumberListValidation(List<Integer> numberList) {
+        return numberList.get(0) % 2 == 1 && numberList.get(1) - numberList.get(0) == 1;
+    }
 }
