@@ -1,9 +1,13 @@
 package onboarding;
 
+
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        if (checkValidation(word)) {
+            String result = changeWord(word);
+            return result;
+        }
+        return "[ERROR]";
     }
     public static boolean checkValidation(String word) {
         if (word.length() > 1000 || word.length() < 1) {
@@ -19,6 +23,14 @@ public class Problem4 {
             return (char)('Z' - character + 'A');
         }
         return (char)('z' - character + 'a');
+    }
+    public static String changeWord(String word) {
+        String newWord = "";
+        for (int i = 0; i < word.length(); i++) {
+            char reverseChar = changeAlphabet(word.charAt(i));
+            newWord += reverseChar;
+        }
+        return newWord;
     }
 }
 
