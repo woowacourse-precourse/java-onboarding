@@ -6,7 +6,7 @@ import java.util.List;
 class Problem1 {
 
     /* 점수 계산 메소드 */
-    int calculateScore(List<Integer> page) {
+    public static int calculateScore(List<Integer> page) {
 
         int result, left, right;
         List<Integer> score = new ArrayList<>();
@@ -38,7 +38,7 @@ class Problem1 {
     }
 
     /* 각 자릿수 합과 곱 비교 메소드 */
-    int compareScore(List<Integer> digit) {
+    public static int compareScore(List<Integer> digit) {
 
         int sum_score, mul_score;
 
@@ -56,23 +56,27 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
-        Problem1 pb = new Problem1();
-
         int answer = Integer.MAX_VALUE;
 
-        /* 예외 처리 : 페이지 잘못 입력 */
-        // R - L != 1 일 경우 예외 처리
+        /* 예외 처리 */
+        // 1. R - L != 1 일 경우 예외 처리
         if (pobi.get(1) - pobi.get(0) != 1 || crong.get(1) - crong.get(0) != 1) {
             answer = -1;
             return answer;
         }
 
+        // 2. 첫 페이지(1) 또는 마지막 페이지(400)일 경우 예외 처리
+        if (pobi.get(0) == 1 || crong.get(0) == 1 || pobi.get(1) == 400 || crong.get(1) == 400) {
+            answer = -1;
+            return answer;
+        }
+
         /* 점수 계산 및 비교 */
-        if (pb.calculateScore(pobi) > pb.calculateScore(crong)) {
+        if (calculateScore(pobi) > calculateScore(crong)) {
             // 포비 승
             answer = 1;
         }
-        else if (pb.calculateScore(pobi) < pb.calculateScore(crong)) {
+        else if (calculateScore(pobi) < calculateScore(crong)) {
             // 크롱 승
             answer = 2;
         }
@@ -82,6 +86,7 @@ class Problem1 {
         }
 
         return answer;
+
     }
 
 }
