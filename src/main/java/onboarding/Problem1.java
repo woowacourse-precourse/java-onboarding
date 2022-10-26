@@ -18,10 +18,12 @@ class Problem1 {
 
         if (pobiNum < crongNum) {
             answer = 2;
-        } else if (pobiNum == crongNum) {
-            answer = 0;
+            return answer;
         }
-
+        if (pobiNum == crongNum) {
+            answer = 0;
+            return answer;
+        }
         return answer;
     }
 
