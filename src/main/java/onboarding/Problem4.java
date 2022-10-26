@@ -21,9 +21,11 @@ public class Problem4 {
         String answer = "";
         List<Integer> asciiWord = turnWordIntoAscii(word.split(""));
 
-
-
-
+        List<Integer> changedAsciiWord = new ArrayList<>();
+        for (int ascii : asciiWord) {
+            changedAsciiWord.add(changeWordReferToGreenFrogDic(ascii));
+        }
+        answer = turnAsciiIntoWord(changedAsciiWord);
 
         return answer;
     }
@@ -33,7 +35,7 @@ public class Problem4 {
         }
     }
 
-    public static List<Integer> turnWordIntoAscii(String[] words) {
+    public static List<Integer> turnWordIntoAscii(final String[] words) {
         List<Integer> asciiWord = new ArrayList<>();
         for (String word : words) {
             asciiWord.add((int)word.charAt(0));
@@ -41,11 +43,23 @@ public class Problem4 {
         return asciiWord;
     }
 
-    public static String turnAsciiIntoWord(List<Integer> asciiList) {
+    public static String turnAsciiIntoWord(final List<Integer> asciiList) {
         String result = "";
         for (int i : asciiList) {
             result += Character.toString((char)i);
         }
         return result;
     }
+
+    public static int changeWordReferToGreenFrogDic(final int asciiWord){
+        if (asciiWord >= A_LOWER_CASE_ASCII && asciiWord <= Z_LOWER_CASE_ASCII) {
+            return asciiWord + (ASCII_Z_TO_A - ((asciiWord - A_LOWER_CASE_ASCII) * 2));
+        }
+        if (asciiWord >= A_UPPER_CASE_ASCII && asciiWord <= Z_UPPER_CASE_ASCII) {
+            return asciiWord + (ASCII_Z_TO_A - ((asciiWord - A_UPPER_CASE_ASCII) * 2));
+        }
+        return asciiWord;
+
+    }
+
 }
