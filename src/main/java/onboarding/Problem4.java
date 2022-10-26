@@ -14,7 +14,7 @@ public class Problem4 {
     }
     public static char reChar(char c){
         if( checkIfNotAlphabet(c)){
-            return changeChar(c);
+            return upperOrLower(c);
         }
         else{
             return c;
@@ -26,8 +26,17 @@ public class Problem4 {
         }
         return false;
     }
-    public static char changeChar(char c){
-
+    public static char upperOrLower(char c){
+        char tmp;
+        if(97<=c && c<=122){
+            tmp = 219;
+        }
+        else{
+            tmp =155;
+        }
+        return changeCharWithAscii(tmp,c);
+    }
+    public static char changeCharWithAscii(int num,char c){
         return c;
     }
 
