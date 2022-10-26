@@ -3,6 +3,14 @@ package onboarding;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
+        StringBuilder stringBuilder = new StringBuilder(cryptogram);
+
+        while (isDuplicate(stringBuilder.toString())) {
+            deleteDuplicate(stringBuilder);
+        }
+
+        answer = stringBuilder.toString();
+
         return answer;
     }
 
