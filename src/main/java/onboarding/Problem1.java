@@ -30,6 +30,11 @@ class Problem1 {
         return sum;
     }
     private static int numMulti(int i){
-
+        int multi = 1;
+        while(i>0){
+            multi*=i%10;
+            i=i/10;
+        }
+        return multi;
     }
 }
