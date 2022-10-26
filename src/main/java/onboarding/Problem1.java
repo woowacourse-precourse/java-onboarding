@@ -3,7 +3,7 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-    static boolean exception(List<Integer> pageList) {
+    public static boolean exception(List<Integer> pageList) {
         int left = pageList.get(0);
         int right = pageList.get(1);
 
@@ -26,7 +26,7 @@ class Problem1 {
         return false;
     }
 
-    static int biggest(int pageNumber) {
+    public static int biggest(int pageNumber) {
         int add = 0;
         int multiply = 1;
 
@@ -42,7 +42,7 @@ class Problem1 {
         return Math.max(add, multiply); // 더 큰 것을 리턴
     }
 
-    static int winner(int pobiScore, int crongScore) {
+    public static int winner(int pobiScore, int crongScore) {
         // pobi win = 1, crong win = 2, draw = 0
         return pobiScore > crongScore ? 1 :
                 (pobiScore < crongScore) ? 2 : 0;
@@ -55,8 +55,6 @@ class Problem1 {
 
         int pobiScore = Math.max(biggest(pobi.get(0)), biggest(pobi.get(1)));
         int crongScore = Math.max(biggest(crong.get(0)), biggest(crong.get(1)));
-
-        System.out.println(pobiScore + " " + crongScore);
 
         return winner(pobiScore, crongScore);
     }
