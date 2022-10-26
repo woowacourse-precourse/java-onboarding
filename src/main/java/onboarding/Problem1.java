@@ -79,7 +79,8 @@ class Problem1 {
                 isFirstPage(leftPageNumber) ||
                 isEndPage(rightPageNumber) ||
                 isPageSizeLackOrOverflow(leftPageNumber) ||
-                isPageSizeLackOrOverflow(rightPageNumber)) {
+                isPageSizeLackOrOverflow(rightPageNumber) ||
+                !isPageContinue(leftPageNumber, rightPageNumber)) {
             return EXCEPTION_MESSAGE;
         }
 
@@ -100,5 +101,9 @@ class Problem1 {
 
     private static boolean isPageSizeLackOrOverflow(int pageNumber) {
         return pageNumber < START_PAGE_NUMBER || pageNumber > END_PAGE_NUMBER;
+    }
+
+    private static boolean isPageContinue(int leftPageNumber, int rightPageNumber) {
+        return leftPageNumber+1 == rightPageNumber;
     }
 }
