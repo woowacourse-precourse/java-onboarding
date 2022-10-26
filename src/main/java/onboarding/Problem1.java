@@ -27,23 +27,23 @@ class Problem1 {
         return Math.max(res1, res2);
     }
 
-//    public static int solution(List<Integer> pobi, List<Integer> crong) {
-//        Integer[] pobi_arr = pobi.toArray(new Integer[2]);
-//        Integer[] crong_arr = crong.toArray(new Integer[2]);
-//
-//        Integer left_p = pobi_arr[0];
-//        Integer right_p = pobi_arr[1];
-//
-//        Integer left_c = crong_arr[0];
-//        Integer right_c = crong_arr[1];
-//
-//        if(!(isEx(left_p, right_p) && isEx(left_c, right_c))) return -1;
-//
-//        int max_pobi = help(left_p, right_p);
-//        int max_crong = help(left_c, right_c);
-//
-//        if(max_pobi == max_crong) return 0;
-//        else if(max_pobi > max_crong) return 1;
-//        else return 2;
-//    }
+    public static int solution(List<Integer> pobi, List<Integer> crong) {
+        Integer[] pobi_arr = pobi.toArray(new Integer[2]);
+        Integer[] crong_arr = crong.toArray(new Integer[2]);
+
+        Integer left_p = pobi_arr[0];
+        Integer right_p = pobi_arr[1];
+
+        Integer left_c = crong_arr[0];
+        Integer right_c = crong_arr[1];
+
+        if(!(isEx(left_p, right_p) && isEx(left_c, right_c))) return -1;
+
+        int max_pobi = help(left_p, right_p);
+        int max_crong = help(left_c, right_c);
+
+        if(max_pobi == max_crong) return 0;
+        else if(max_pobi > max_crong) return 1;
+        else return 2;
+    }
 }
