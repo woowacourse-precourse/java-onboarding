@@ -10,21 +10,35 @@ public class Problem2 {
         for(int i=0;i<cryptogram.length();i++){
             list.add(cryptogram.charAt(i));
         }
-        while(true){
-            int idx=0;
-            int cnt=0;
-            while(cnt<list.size()-1){
-
-                if(list.get(cnt)==list.get(cnt+1)){
-                    list.remove(cnt);
-                    list.remove(cnt);
-                    idx=1;
+        List<Character> tmp = new ArrayList<>();
+        tmp.add(list.get(0));
+        int list_idx=1;
+        int tmp_idx=0;
+        while(list_idx<list.size()){
+            if(list.get(list_idx)==tmp.get(tmp_idx)){
+                if(list_idx==list.size()-1){
+                    tmp.remove(tmp_idx);
+                    break;
                 }
-            cnt++;
+                else{
+                    if(list.get(list_idx)==list.get(list_idx+1)){
+                        list_idx++;
+                    }
+                    else{
+                        tmp.remove(tmp_idx);
+                        tmp_idx--;
+                        list_idx++;
+                    }
+                }
             }
-            if(idx==0) break;
+            else{
+                tmp.add(list.get(list_idx));
+                tmp_idx++;
+                list_idx++;
+            }
         }
-        for(int i=0;i<list.size();i++) answer.append(list.get(i));
+
+        for(int i=0;i<tmp.size();i++) answer.append(tmp.get(i));
         return answer.toString();
     }
 }
