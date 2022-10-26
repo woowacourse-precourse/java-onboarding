@@ -17,6 +17,15 @@ class Problem1 {
         return true;
     }
 
+    public static int maxOf(List<Integer> pages) {
+        int max = Integer.MIN_VALUE;
+        for (Integer page : pages) {
+            int tmp = maxOf(page);
+            max = Math.max(max, tmp);
+        }
+        return max;
+    }
+
     public static int maxOf(Integer page) {
         int sumDigits = sumDigits(page);
         int multiplyDigits = multiplyDigits(page);
