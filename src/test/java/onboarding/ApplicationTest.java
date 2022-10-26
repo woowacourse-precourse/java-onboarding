@@ -33,6 +33,23 @@ class ApplicationTest {
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
+
+        @Test
+        void case4() {
+            List<Integer> pobi = List.of(100, 101);
+            List<Integer> crong = List.of(211, 212);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        void case5() {
+            List<Integer> pobi = List.of(211, 212);
+            List<Integer> crong = List.of(131, 132);
+            int result = 2;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
     }
 
     @Nested
