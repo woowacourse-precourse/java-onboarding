@@ -17,8 +17,44 @@ import java.util.List;
  */
 
 class Problem1 {
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        int pobiScore = findBiggerScore(pobi);
+        int crongScore = findBiggerScore(crong);
+
+        if (pobiScore == crongScore) {
+            return 0;
+        }
+        if (pobiScore > crongScore) {
+            return 1;
+        }
+        return 2;
+    }
+
+    private static int findBiggerScore(List<Integer> lst) {
+        int sumLeftPage = sumEachDigit(lst.get(0).toString());
+        int sumRightPage = sumEachDigit(lst.get(1).toString());
+        int biggerSum = Math.max(sumLeftPage, sumRightPage);
+
+        int multiplyLeftPage = multiplyEachDigit(lst.get(0).toString());
+        int multiplyRightPage = multiplyEachDigit(lst.get(1).toString());
+        int biggerMultiply = Math.max(multiplyLeftPage, multiplyRightPage);
+        return Math.max(biggerSum, biggerMultiply);
+    }
+
+    private static int sumEachDigit(String numberStr) {
+        int result = 0;
+        for (int i = 0; i < numberStr.length(); i++) {
+            result += Integer.parseInt(String.valueOf(numberStr.charAt(i)));
+        }
+        return result;
+    }
+
+    private static int multiplyEachDigit(String numberStr) {
+        int result = 1;
+        for (int i = 0; i < numberStr.length(); i++) {
+            result *= Integer.parseInt(String.valueOf(numberStr.charAt(i)));
+        }
+        return result;
     }
 }
