@@ -2,17 +2,33 @@ package onboarding;
 
 import java.util.List;
 
-public class Problem1 {
-    private static final int POBI_WIN_VALUE = 1;
-    private static final int CRONG_WIN_VALUE = 2;
-    private static final int DRAW_VALUE = 0;
-    private static final int EXCEPTION_VALUE = -1;
+class Pages implements Comparable<Pages>
+{
+    private static final int DIVISION_VALUE = 10;
     private static final int INPUT_SIZE = 2;
     private static final int LEFT_BOUND= 0;
     private static final int RIGHT_BOUND = 401;
-    private static final int DIVISION_VALUE = 10;
 
-    private static boolean checkValidation(List<Integer> pages)
+    private List<Integer> pages;
+
+    public Pages(List<Integer> pages)
+    {
+        this.pages = pages;
+        if(!checkValidation())
+        {
+            throw new IllegalArgumentException("잘못된 입력");
+        }
+    }
+
+    private Integer getLeftPage(List<Integer> player)
+    {
+        return player.get(0);
+    }
+    private Integer getRightPage(List<Integer> player)
+    {
+        return player.get(1);
+    }
+    private boolean checkValidation()
     {
         if(pages.size() != INPUT_SIZE)
         {
@@ -27,16 +43,7 @@ public class Problem1 {
                 && rightPageNumber < RIGHT_BOUND;
     }
 
-    private static Integer getLeftPage(List<Integer> inputList)
-    {
-        return inputList.get(0);
-    }
-
-    private static Integer getRightPage(List<Integer> inputList)
-    {
-        return inputList.get(1);
-    }
-    private static int getValueByPage(Integer page)
+    private int getValueByPage(Integer page)
     {
         int nowDigit = page % DIVISION_VALUE;
         int nowValue = page / DIVISION_VALUE;
@@ -57,7 +64,7 @@ public class Problem1 {
         return Math.max(multiplicationValue, sumValue);
     }
 
-    public static int getGameValue(List<Integer> pages)
+    public int getValue()
     {
         int leftPage = getLeftPage(pages);
         int rightPage = getRightPage(pages);
@@ -65,33 +72,36 @@ public class Problem1 {
         return Math.max(getValueByPage(leftPage),getValueByPage(rightPage));
     }
 
-    public static int solution(List<Integer> pobi, List<Integer> crong)
-    {
-        if(checkValidation(pobi) && checkValidation(crong))
-        {
-            int pobiGameValue = getGameValue(pobi);
-            int crongGameValue = getGameValue(crong);
-            int returnValue;
+    private static final int WIN_VALUE = 1;
+    private static final int DEFEAT_VALUE = 2;
+    private static final int DRAW_VALUE = 0;
+    @Override
+    public int compareTo(Pages o) {
+        int thisValue = getValue();
+        int oValue = o.getValue();
 
-            if(pobiGameValue > crongGameValue)
-            {
-                returnValue = POBI_WIN_VALUE;
-            }
-            else if(pobiGameValue < crongGameValue)
-            {
-                returnValue = CRONG_WIN_VALUE;
-            }
-            else
-            {
-                returnValue = DRAW_VALUE;
-            }
+        if(thisValue > oValue) return WIN_VALUE;
+        else if(thisValue < oValue) return DEFEAT_VALUE;
+        else return DRAW_VALUE;
 
-            return returnValue;
+    }
+}
+
+public class Problem1 {
+
+    private static final int EXCEPTION_VALUE = -1;
+
+    public static int solution(List<Integer> pobi, List<Integer> crong) {
+        try {
+            Pages pobiPage = new Pages(pobi);
+            Pages crongPage = new Pages(crong);
+
+            return pobiPage.compareTo(crongPage);
+        } catch (IllegalArgumentException e) {
+            return EXCEPTION_VALUE;
         }
 
-        return EXCEPTION_VALUE;
+
     }
-
-
 
 }
