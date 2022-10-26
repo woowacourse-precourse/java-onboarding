@@ -1,5 +1,7 @@
 package onboarding;
 
+import onboarding.problem1.Checker;
+
 import java.util.List;
 
 /**
@@ -12,18 +14,21 @@ class Problem1 {
 
     private final List<Integer> pagesA;
     private final List<Integer> pagesB;
-    private final int max;
+    private final int SIZE;
+
+    private final Checker checker;
 
     /**
      * Constructor with pages of person A and B
      * @param pagesA pages of person A
      * @param pagesB pages of person B
-     * @param max max value of page number
+     * @param size max value of page number
      */
-    public Problem1(List<Integer> pagesA, List<Integer> pagesB, int max) {
+    public Problem1(List<Integer> pagesA, List<Integer> pagesB, int size) {
         this.pagesA = pagesA;
         this.pagesB = pagesB;
-        this.max = max;
+        this.SIZE = size;
+        checker = new Checker(size);
     }
 
     /**
@@ -32,7 +37,7 @@ class Problem1 {
      * @throws WrongInputException throws exception if input values has an error
      */
     public int winner() throws WrongInputException {
-        if (isAvailableInput(pagesA) && isAvailableInput(pagesB))
+        if (checker.isAvailableInput(pagesA) && checker.isAvailableInput(pagesB))
             return resultOfGame(valueOfPages(pagesA.get(0), pagesA.get(1)), valueOfPages(pagesB.get(0), pagesB.get(1)));
         else
             throw new WrongInputException("Wrong input");
@@ -45,34 +50,6 @@ class Problem1 {
         WrongInputException(String msg) {
             super(msg);
         }
-    }
-
-    /**
-     * Check if input values are available
-     * @param pages page numbers when opening book
-     * @return true if available
-     */
-    private boolean isAvailableInput(List<Integer> pages) {
-        return isAvailableSize(pages.size()) && isAvailableValues(pages.get(0), pages.get(1));
-    }
-
-    /**
-     * Check if size is available
-     * @param size size of pages
-     * @return true if size is 2
-     */
-    private boolean isAvailableSize(int size) {
-        return size == 2;
-    }
-
-    /**
-     * Check if values are available
-     * @param left left page
-     * @param right right page
-     * @return return true if left and right is in range, left is odd number and left + 1 is right
-     */
-    private boolean isAvailableValues(int left, int right) {
-        return left < max && left % 2 == 1 && left + 1 == right;
     }
 
     /**
