@@ -28,10 +28,32 @@ class Problem1Test {
         @Test
         public void pageSizeIsNotTwoTest(){
             List<Integer> pobi = List.of(11, 12,13);
-            List<Integer> crong = List.of(11,13,13);
+            List<Integer> crong = List.of(11,12,13);
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
+        @Test
+        public void minusPageTest(){
+            List<Integer> pobi = List.of(-1,0);
+            List<Integer> crong = List.of(11,12);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+        @Test
+        public void zeroPageTest(){
+            List<Integer> pobi = List.of(0,1);
+            List<Integer> crong = List.of(11,12);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+        @Test
+        public void overflowPageMinusTest(){
+            List<Integer> pobi = List.of(11,12);
+            List<Integer> crong = List.of(400,401);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
     }
     @Nested
     class DrawTest{
