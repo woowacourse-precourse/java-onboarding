@@ -4,14 +4,29 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        //예외상황 확인
+        if (isException(pobi) || isException(crong)) return -1;
 
+        //pobi의 수 구하기
+        int pobiLeft = pobi.get(0);
+        int pobiRight = pobi.get(1);
+        int pobiNum = getSumOrMultiply(pobiLeft,pobiRight);
 
+        //crong의 수 구하기
+        int crongLeft = crong.get(0);
+        int crongRight = crong.get(1);
+        int crongNum = getSumOrMultiply(crongLeft,crongRight);
+
+        //승자 구하기
+        int winner = getWinner(pobiNum,crongNum);
+        System.out.println(winner);
+        return winner;
     }
 
     //각 자리를 더하는 함수
     public static int getSum(int num) {
         int sum = 0;
-        while (num < 10) {
+        while (num > 10) {
             sum += (num % 10);
             num /= 10;
         }
@@ -22,7 +37,7 @@ class Problem1 {
     //각 자리를 곱하는 함수
     public static int getMultiply(int num) {
         int multiply = 1;
-        while (num < 10) {
+        while (num > 10) {
             multiply *= (num % 10);
             num /= 10;
         }
@@ -47,10 +62,10 @@ class Problem1 {
     public static boolean isException(List<Integer> list) {
 
         //연속된 두 페이지가 아니거나 왼쪽페이지 쪽수가 오른쪽 페이지 쪽수보다 큰 경우
-        if (list.indexOf(1) - list.indexOf(0) != 1) return true;
+        if (list.get(1) - list.get(0) != 1) return true;
 
         //시작 면이나 마지막 면이 나오도록 책을 펼치지 않는다는 조건에 해당하는 예외상황
-        if (list.indexOf(0) == 1 || list.indexOf(1) == 400) return true;
+        if (list.get(0) == 1 || list.get(1) == 400) return true;
 
         return false;
     }
