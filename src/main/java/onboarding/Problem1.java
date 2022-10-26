@@ -4,7 +4,10 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int answer = 0;
+        if (!errorHandle(pobi.get(0), pobi.get(1)) || !errorHandle(crong.get(0), crong.get(1))) {
+            return -1;
+        }
 
         return answer;
     }
@@ -30,6 +33,9 @@ class Problem1 {
         else {
             return 0;
         }
+    }
+    static int max(int a, int b) {
+        return a > b ? a : b;
     }
     static boolean errorHandle(int left, int right) {
         if (left < 1 || left > 400 || right < 1 || right > 400 || right - left != 1) {
