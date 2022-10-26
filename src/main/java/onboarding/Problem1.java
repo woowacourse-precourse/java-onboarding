@@ -6,15 +6,41 @@ import java.util.stream.Stream;
 
 class Problem1 {
   public static int solution(List<Integer> pobi, List<Integer> crong) {
-    // Todo comare 함수를 구현하거나 따로 함수를 만들어서 제대로 된 결과를 리턴할 수 있도록 하기
-    return 1;
+    if(isFirstOrLastPage(pobi) | isFirstOrLastPage(crong)) {
+      return -1;
+    }
+    if(!isCorrectOrder(pobi) | !isConnectedPage(crong)) {
+      return -1;
+    }
+    if(!isConnectedPage(pobi) | !isConnectedPage(crong)) {
+      return -1;
+    }
+    return getGameResult(getScore(pobi), getScore(crong));
   }
 
-  private static int getScore(List<Integer> person) {
-    return person.stream()
+  private static int getGameResult(Integer pobiScore, Integer crongScore) {
+    int result = Integer.compare(pobiScore, crongScore);
+    if (result == -1) {
+      result = 2;
+    }
+    return result;
+  }
+
+  private static int getScore(List<Integer> pages) {
+    return pages.stream()
             .map(page -> Integer.max(sumOfDigit(page), multiplicationSumOfDigit(page)))
             .findFirst()
             .get();
+  }
+
+  private static boolean isFirstOrLastPage(List<Integer> pages) {
+    return pages.stream().anyMatch(page -> page == 1 | page == 400);
+  }
+  private static boolean isConnectedPage(List<Integer> pages) {
+    return pages.get(0) + 1 == pages.get(1);
+  }
+  private static boolean isCorrectOrder(List<Integer> pages) {
+    return pages.get(0) % 2 == 1 & pages.get(1) % 2 == 0;
   }
 
   private static int sumOfDigit(Integer page) {
