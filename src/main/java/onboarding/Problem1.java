@@ -42,5 +42,13 @@ class Problem1 {
         return numberList.get(0) % 2 == 1 && numberList.get(1) - numberList.get(0) == 1;
     }
 
-
+    private static int getWinner(int leftScore, int rightScore) {
+        if (leftScore > rightScore) {
+            return 1;
+        } else if (leftScore < rightScore) {
+            return 2;
+        } else {
+            return 0;
+        }
+    }
 }
