@@ -29,6 +29,21 @@ class Problem1 {
         return list.get(1) - list.get(0) != 1;
     }
 
+    /**
+     * 2. 자릿수 리스트로 변환하는 함수
+     * @param x
+     * @return 자릿수 리스트를 반환
+     */
+    static List<Integer> intToList(int x) {
+        List<Integer> result = new ArrayList<>();
+        while (x != 0) {
+            result.add(x % 10);
+            x /= 10;
+        }
+
+        return result;
+    }
+
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
