@@ -8,17 +8,29 @@ public class Problem2 {
         Deque<Character> deque = new ArrayDeque<>();
         for (int i = 0; i < cryptogram.length(); i++) {
             if (!deque.isEmpty() && deque.peekLast() != cryptogram.charAt(i)) {
-                // TODO: 덱에서 앞의 중복 문자열 지우기
+                removeDuplicateLetters(deque);
             }
             deque.addLast(cryptogram.charAt(i));
         }
-        // TODO: 마지막 문자 한번 더 처리
+        removeDuplicateLetters(deque);
 
         StringBuilder answer = new StringBuilder();
         while (!deque.isEmpty()) {
             answer.append(deque.pollFirst());
         }
         return answer.toString();
+    }
 
+    private static void removeDuplicateLetters(Deque<Character> deque) {
+        while (!deque.isEmpty()) {
+            char temp = deque.peekLast();
+            if (deque.pollLast() != deque.peekLast()) {
+                deque.addLast(temp);
+                break;
+            }
+            while (!deque.isEmpty() && temp == deque.peekLast()) {
+                deque.pollLast();
+            }
+        }
     }
 }
