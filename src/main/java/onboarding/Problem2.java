@@ -6,10 +6,10 @@ import java.util.Stack;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        return processCryptogaming(cryptogram);
+        return processCryptogram(cryptogram);
     }
 
-    static String processCryptogaming(String cryptogram) {
+    static String processCryptogram(String cryptogram) {
         while (true) {
             String newCryptogram = getCryptogram(cryptogram);
 
@@ -49,11 +49,4 @@ public class Problem2 {
 
         return result.toString();
     }
-
-    // public static void main(String[] args) {
-    //     String ex = "zyelleyz";
-    //     String res = solution(ex);
-    //     System.out.println(getCryptogram(res));
-    //
-    // }
 }
