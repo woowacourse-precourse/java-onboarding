@@ -43,6 +43,19 @@ class Problem1 {
 		}
 	}
 
+	public static int checkPageRange(int leftPage, int rightPage) {
+		if (rightPage - leftPage != 1) {
+			return -1;
+		}
+		if (leftPage == FIRST_PAGE) {
+			return -1;
+		}
+		if (rightPage == LAST_PAGE) {
+			return -1;
+		}
+		return 1;
+	}
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
