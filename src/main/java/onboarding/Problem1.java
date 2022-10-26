@@ -20,6 +20,8 @@ import java.util.List;
 // 1. pobi와 crong리스트 안에 들어있는 숫자를 가져온다.
 // 2. 가져온 숫자 각각의 자릿수를 분해
 // 3. 분해한 각각의 숫자를 더하거나 곱했을때 가장 큰 수를 구한다.
+// 3-1. 각각의 숫자를 더하고 곱하는 함수 만들기
+// 3-2. 가장 큰 수 구하기
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -31,11 +33,18 @@ class Problem1 {
         int crong_first = crong.get(0);
         int crong_second = crong.get(1);
 
-        System.out.println(returnDigit(pobi_first));
+        System.out.println(returnDigit(pobi_second));
+        System.out.println(sumOfArray(returnDigit(pobi_second)));
+        System.out.println(multiOfArray(returnDigit(pobi_second)));
+
+        System.out.println(returnDigit(crong_first));
+        System.out.println(sumOfArray(returnDigit(crong_first)));
+        System.out.println(multiOfArray(returnDigit(crong_first)));
 
         return answer;
     }
 
+    // 숫자의 각 자릿수를 구하고, 리스트로 반환하는 함수
     public static List<Integer> returnDigit(int num){
         ArrayList<Integer> arrNum = new ArrayList<>();
         while(num > 0) {
@@ -43,5 +52,25 @@ class Problem1 {
             num /= 10;
         }
         return arrNum;
+    }
+
+    // 배열의 모든 숫자의 합을 반환하는 함수
+    public static int sumOfArray(List<Integer> arrNum){
+        int sum = 0;
+        for(Integer i : arrNum) { //for문을 통한 전체출력
+            sum += i;
+            System.out.println(i);
+        }
+        return sum;
+    }
+
+    // 배열의 모든 숫자의 곱을 반환하는 함수
+    public static int multiOfArray(List<Integer> arrNum){
+        int multi = 1;
+        for(Integer i : arrNum) { //for문을 통한 전체출력
+            multi *= i;
+            System.out.println(i);
+        }
+        return multi;
     }
 }
