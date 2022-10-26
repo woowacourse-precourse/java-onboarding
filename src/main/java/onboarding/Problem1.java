@@ -33,7 +33,8 @@ class Problem1 {
      * @return 숫자들의 개수가 2라면 참, 아니면 거짓을 반환합니다.
      */
     private static boolean isCorrectLength(List<Integer> pages) {
-        return false;
+        boolean correct = pages.size() == 2;
+        return correct;
     }
 
     /*
