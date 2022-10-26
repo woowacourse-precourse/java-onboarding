@@ -1,8 +1,11 @@
 package onboarding;
 
 public class Problem2 {
-
 	private static String toEliminateDuplicate(String givenString) {
+		if (givenString.length() == 0) {
+			return givenString;
+		}
+		
 		StringBuilder eliminateDuplicateString = new StringBuilder();
 		char compareString = givenString.charAt(0);
 		int isDuplicated = 0;
@@ -14,25 +17,24 @@ public class Problem2 {
 					compareString = givenString.charAt(i);
 				} else {
 					isDuplicated = 0;
+					compareString = givenString.charAt(i);
 					continue;
 				}
 			} else if (givenString.charAt(i) == compareString) {
-				continue;
+				isDuplicated = 1;
 			}
 		}
 		if (isDuplicated == 0) {
 			eliminateDuplicateString.append(compareString);
 		}
-		System.out.println(eliminateDuplicateString);
 		return eliminateDuplicateString.toString();
 	}
 
 	public static String solution(String cryptogram) {
-		String answer = "answer";
-		while (toEliminateDuplicate(cryptogram).compareTo(cryptogram) != 0) {
-			cryptogram = toEliminateDuplicate(cryptogram);
+		String answer = cryptogram;
+		while (toEliminateDuplicate(answer).compareTo(answer) != 0) {
+			answer = toEliminateDuplicate(answer);
 		}
-		answer = cryptogram;
 		return answer;
 	}
 }
