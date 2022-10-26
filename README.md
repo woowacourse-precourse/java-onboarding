@@ -21,7 +21,7 @@
       - 배열 안의 모든 자연수를 더해준다.
     - [ ] multiplyNumbers
       - 배열 안의 모든 자연수를 곱해준다.
-    - [ ] getBiggerNumber
+    - [X] getBiggerNumber
       - 두 숫자 중 큰 숫자를 알려준다.
 
 2. [문제 2](./docs/PROBLEM2.md)
