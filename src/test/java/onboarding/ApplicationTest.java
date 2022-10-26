@@ -22,31 +22,54 @@ class ApplicationTest {
         }
 
         @Test
-        void case1CheckOddEvenValidationTest() {
+        void case1ValidateOddEvenValidationTest() {
             List<Integer> testOddData = List.of(3, 4);
 
             assertThat(Problem1.checkOddEvenValidation(testOddData)).isEqualTo(true);
         }
 
         @Test
-        void case1CheckOddEvenValidationExceptionTest() {
+        void case1ValidateOddEvenValidationExceptionTest() {
             List<Integer> testOddData = List.of(4, 5);
 
             assertThat(Problem1.checkOddEvenValidation(testOddData)).isEqualTo(false);
         }
-
+        // 페이지 연속성 유효성 검사
         @Test
-        void case1CheckIsSequencePageTest() {
+        void case1ValidateIsSequencePageTest() {
             List<Integer> testSequenceData = List.of(3, 4);
 
             assertThat(Problem1.checkSequenceValidation(testSequenceData)).isEqualTo(true);
         }
 
         @Test
-        void case1CheckIsSequencePageExceptionTest() {
+        void case1ValidateIsSequencePageExceptionTest() {
             List<Integer> testSequenceData = List.of(3, 6);
 
             assertThat(Problem1.checkSequenceValidation(testSequenceData)).isEqualTo(false);
+        }
+
+        // 시작면과 마지막 면 유효성 테스트
+        @Test
+        void case1ValidateStartOrLastPageTest() {
+            List<Integer> testValidationData = List.of(4, 5);
+
+            assertThat(Problem1.validateStartOrLastPage(testValidationData)).isEqualTo(true);
+        }
+
+
+        @Test
+        void case1ValidateStartOrLastPageExceptionStartTest() {
+            List<Integer> testStartPageData = List.of(1, 2);
+
+            assertThat(Problem1.validateStartOrLastPage(testStartPageData)).isEqualTo(false);
+        }
+
+        @Test
+        void case1ValidateStartOrLastPageExceptionLastTest() {
+            List<Integer> testStartPageData = List.of(399, 400);
+
+            assertThat(Problem1.validateStartOrLastPage(testStartPageData)).isEqualTo(false);
         }
 
         @Test
