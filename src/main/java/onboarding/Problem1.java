@@ -34,4 +34,10 @@ class Problem1 {
         maximumResult = Math.max(getAddDigitsResult(pageList.get(0)), getMultiplyDigitsResult(pageList.get(0)));
         return maximumResult;
     }
+
+    private static int getRightPageMaximum(List<Integer> pageList) {
+        int maximumResult = 0;
+        maximumResult = Math.max(getAddDigitsResult(pageList.get(1)), getMultiplyDigitsResult(pageList.get(1)));
+        return maximumResult;
+    }
 }
