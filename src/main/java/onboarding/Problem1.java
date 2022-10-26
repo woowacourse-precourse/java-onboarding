@@ -19,8 +19,19 @@ class Problem1 {
         }
         return add > mul ? add : mul;
     }
+    static int getWinner(int pobiScore, int crongScore) {
+        int diff = pobiScore - crongScore;
+        if (diff > 0) {
+            return 1;
+        } else if (diff < 0) {
+            return 2;
+        }
+        else {
+            return 0;
+        }
+    }
 //    public static void main(String[] args){
-//        System.out.println(getBig(1));
+//        System.out.println(getWinner(10,1));
 //    }
 }
 
