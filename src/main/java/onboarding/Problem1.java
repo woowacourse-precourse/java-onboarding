@@ -15,11 +15,6 @@ class Problem1 {
         // getScore 메소드를 이용해 pobi, crong의 점수를 얻는다.
         int pobiScore = getScore(pobi.get(0), pobi.get(1));
         int crongScore = getScore(crong.get(0), crong.get(1));
-        
-        // 점수가 0일 경우 정상적으로 점수를 얻지 못한 것이므로 예외처리한다.
-        if (pobiScore == 0 || crongScore == 0) {
-        	answer = -1;
-        }
 
         // pobi, crong의 점수를 비교해 반환할 값을 answer에 담는다.
         if (pobiScore == crongScore) {
@@ -40,7 +35,6 @@ class Problem1 {
      * @return 유효하면 true, 아니면 false
      */
     private static boolean isValid(Integer number1, Integer number2) {
-    	
     	return (number1 != null && number2 != null) && Math.abs(number1 - number2) == 1 ? true : false;
     }
     
@@ -82,8 +76,6 @@ class Problem1 {
     * @return
     */
    private static int getScore(int leftPage, int rightPage) {
-	   int score = 0;
-	   
 	   int leftPageValue = Math.max(getSumOfDigits(leftPage), getMultipliedOfDigits(leftPage));
 	   int rightPageValue = Math.max(getSumOfDigits(rightPage), getMultipliedOfDigits(rightPage));
 	   
