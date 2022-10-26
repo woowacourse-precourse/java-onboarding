@@ -7,8 +7,13 @@ class Problem1 {
     private static final int POBI_WIN = 1;
     private static final int CRONG_WIN = 2;
     private static final int EXCEPTIONS = -1;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        if (isWrongInput(pobi) || isWrongInput(crong)) {
+            answer = EXCEPTIONS;
+        }
+        answer = getGameResult(pobi, crong);
         return answer;
     }
 
@@ -64,5 +69,27 @@ class Problem1 {
             return DRAW;
         }
         return -1;
+    }
+
+    private static boolean isWrongInput(List<Integer> user) {
+        if (user.size() != 2) {
+            return true;
+        }
+        if (user.get(0) % 2 == 0) {
+            return true;
+        }
+        if (user.get(1) % 2 == 1) {
+            return true;
+        }
+        if ((user.get(1) - user.get(0)) != 1) {
+            return true;
+        }
+        if (user.get(0) == 1 || user.get(0) == 399) {
+            return true;
+        }
+        if (user.get(0) < 1 || user.get(1) > 400) {
+            return true;
+        }
+        return false;
     }
 }
