@@ -52,4 +52,9 @@ class Problem1 {
     public static int calcMax(Integer num1, Integer num2) {
         return Math.max(num1, num2);
     }
+
+    public static boolean isPageRange (List<Integer> page) {
+        if (page.get(0) >= 1 && page.get(0) <= 400 && page.get(1) >= 1 && page.get(1) <= 400) return true;
+        return false;
+    }
 }
