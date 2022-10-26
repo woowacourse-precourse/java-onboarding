@@ -11,6 +11,28 @@ import static org.assertj.core.api.Assertions.assertThat;
 class ApplicationTest {
     @Nested
     class Problem1Test {
+        // decideWinner() 테스트
+        @Test
+        void decideWinnerTest() {
+            // pobi 승
+            int pobiWinScore = 10;
+            int crongLoseScore = 9;
+
+            // crong 승
+            int pobiLoseScore = 9;
+            int crongWinScore = 10;
+
+            // 무승부
+            int pobiDrawScore = 10;
+            int crongDrawScore = 10;
+
+            Problem1 problem1 = new Problem1();
+            assertThat(problem1.decideWinner(pobiWinScore, crongLoseScore)).isEqualTo(1);
+            assertThat(problem1.decideWinner(pobiLoseScore, crongWinScore)).isEqualTo(2);
+            assertThat(problem1.decideWinner(pobiDrawScore, crongDrawScore)).isEqualTo(0);
+        }
+
+        // calculateScore() 테스트
         @Test
         void calculateScoreTest() {
             // 3자리수, 2자리수, 1자리수에 대해 테스트 수행

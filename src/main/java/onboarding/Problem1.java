@@ -48,4 +48,14 @@ class Problem1 {
 
         return Math.max(sumOfAllDigits, mulOfAllDigits);
     }
+
+    public int decideWinner(int pobiScore, int crongScore) {
+        if (pobiScore > crongScore) {
+            return 1;
+        } else if (pobiScore < crongScore) {
+            return 2;
+        } else {
+            return 0;
+        }
+    }
 }
