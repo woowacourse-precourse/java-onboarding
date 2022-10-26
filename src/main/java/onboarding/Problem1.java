@@ -8,7 +8,7 @@ class Problem1 {
         return answer;
     }
 
-    public int sumPageEachDigitNum(Integer pageNum) {
+    public static int sumPageEachDigitNum(Integer pageNum) {
         int eachDigitNumSum = 0;
         while(pageNum != 0) {
             eachDigitNumSum += pageNum % 10;
@@ -17,7 +17,7 @@ class Problem1 {
         return eachDigitNumSum;
     }
 
-    public int multiplyPageEachDigitNum(Integer pageNum) {
+    public static int multiplyPageEachDigitNum(Integer pageNum) {
         int eachDigitNumMultiplication = 1;
         while(pageNum != 0) {
             eachDigitNumMultiplication *= pageNum % 10;
@@ -26,7 +26,7 @@ class Problem1 {
         return eachDigitNumMultiplication;
     }
 
-    public int getPlayerScore(List<Integer> player) {
+    public static int getPlayerScore(List<Integer> player) {
         Integer leftPageNum = player.get(0);
         Integer rightPageNum = player.get(1);
         int leftPageLargerNum = Math.max(sumPageEachDigitNum(leftPageNum), multiplyPageEachDigitNum(leftPageNum));
@@ -34,7 +34,7 @@ class Problem1 {
         return Math.max(leftPageLargerNum, rightPageLargerNum);
     }
 
-    public int getWinnerNum(int player1Score, int player2Score) {
+    public static int getWinnerNum(int player1Score, int player2Score) {
         int winnerNum = 0;
         if(player1Score > player2Score) winnerNum = 1;
         if(player1Score < player2Score) winnerNum = 2;
