@@ -9,6 +9,13 @@ class Problem1 {
         return answer;
     }
     
+    private static int multiply(final int number) {
+        return Arrays.stream(split(number))
+                .mapToInt(Integer::parseInt)
+                .reduce((accumulateNum, rightNum) -> accumulateNum * rightNum)
+                .orElse(0);
+    }
+    
     private static int getMaxSum(final List<Integer> numbers) {
         return numbers.stream()
                 .mapToInt(Problem1::sum)
