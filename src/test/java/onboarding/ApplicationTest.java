@@ -36,6 +36,20 @@ class ApplicationTest {
         }
 
         @Test
+        void case1CheckIsSequencePageTest() {
+            List<Integer> testSequenceData = List.of(3, 4);
+
+            assertThat(Problem1.checkSequenceValidation(testSequenceData)).isEqualTo(true);
+        }
+
+        @Test
+        void case1CheckIsSequencePageExceptionTest() {
+            List<Integer> testSequenceData = List.of(3, 6);
+
+            assertThat(Problem1.checkSequenceValidation(testSequenceData)).isEqualTo(false);
+        }
+
+        @Test
         void case1() {
             List<Integer> pobi = List.of(97, 98);
             List<Integer> crong = List.of(197, 198);
