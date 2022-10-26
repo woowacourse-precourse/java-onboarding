@@ -9,18 +9,13 @@ public class Problem4 {
     private static HashMap<String, String>  alphabetTable;
 
     public static String solution(String word) {
-        String answer = "";
-        return answer;
-    }
+        alphabetTable = createAlphabetTable();
 
-    /**
-     * 문자열 검증
-     * @param word 문자열
-     * @return 검증 결과 값
-     */
-    private static boolean validateWord(String word) {
-        int lengthWord = word.length();
-        return (lengthWord > 0 && lengthWord <= 1000);
+        if (!validateWord(word)) {
+            return "";
+        }
+
+        return changeWord(word);
     }
 
     /**
@@ -41,6 +36,16 @@ public class Problem4 {
         }
 
         return table;
+    }
+
+    /**
+     * 문자열 검증
+     * @param word 문자열
+     * @return 검증 결과 값
+     */
+    private static boolean validateWord(String word) {
+        int lengthWord = word.length();
+        return (lengthWord > 0 && lengthWord <= 1000);
     }
 
     /**
