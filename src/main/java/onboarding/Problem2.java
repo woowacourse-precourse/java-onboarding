@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
@@ -17,7 +18,9 @@ public class Problem2 {
         }
 
         // 문자열이 알파벳 소문자인지 확인
-        // TODO
+        if (!Pattern.matches("^[a-z]*$", cryptogram)) {
+            return false;
+        }
 
         return true;
     }
