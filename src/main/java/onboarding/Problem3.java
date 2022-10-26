@@ -11,6 +11,17 @@ public class Problem3 {
             this.target = target;
         }
 
+        private int countThreeSixNineFrom(int num) {
+            int cnt = 0;
+            String tmp = String.valueOf(num);
+
+            for(int i=0 ; i<tmp.length() ; i++) {
+                char c = tmp.charAt(i);
+                cnt += (isThreeSixNine(c)) ? 1 : 0;
+            }
+            return cnt;
+        }
+
         private boolean isThreeSixNine(char c) {
             if(c =='3'|| c =='6'|| c =='9'){
                 return true;
