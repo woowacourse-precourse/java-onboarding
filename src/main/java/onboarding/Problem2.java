@@ -15,14 +15,24 @@ public class Problem2 {
          */
         Stack<Character> characterStack = new Stack<>();
         char temp = ' ';
-        for (Character data : cryptogram.toCharArray()) {
-            if(!characterStack.isEmpty() && characterStack.peek().equals(data)){
+//        for (Character data : cryptogram.toCharArray()) {
+//            if(!characterStack.isEmpty() && characterStack.peek().equals(data)){
+//                temp = characterStack.peek();
+//                characterStack.pop();
+//            }else if(data.equals(temp)){
+//                continue;
+//            }else{
+//                characterStack.push(data);
+//            }
+//        }
+
+        for (char c : cryptogram.toCharArray()) {
+            if(!characterStack.isEmpty() && characterStack.peek().equals(c)){
                 temp = characterStack.peek();
                 characterStack.pop();
-            }else if(data.equals(temp)){
-                continue;
-            }else{
-                characterStack.push(data);
+            }else if(temp!=c){
+                characterStack.push(c);
+                temp=' ';
             }
         }
 
