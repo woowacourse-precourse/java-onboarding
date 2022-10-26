@@ -3,9 +3,10 @@ package onboarding;
 import java.util.Stack;
 
 public class Problem2 {
-    private static final Stack<Character> decodedCryptogram = new Stack<>();
+    private static Stack<Character> decodedCryptogram;
 
     public static String solution(String cryptogram) {
+        decodedCryptogram = new Stack<>();
         for (char c : cryptogram.toCharArray()) {
             decodeToBrown(c);
         }
