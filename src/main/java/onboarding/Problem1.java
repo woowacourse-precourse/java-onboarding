@@ -40,4 +40,10 @@ class Problem1 {
             multiply *= pageNumbers.get(i);
         return multiply;
     }
+
+    public int getBiggerNumber(int number1, int number2) {
+        if (number1 > number2)
+            return number1;
+        return number2;
+    }
 }
