@@ -45,4 +45,10 @@ public class PlayerTest {
         int result = player.calculateRightMaxNumber();
         assertThat(result).isEqualTo(30);
     }
+
+    @Test
+    void 본인의_최종점수_계산기능() {
+        int result = player.calculateTotalScore();
+        assertThat(result).isEqualTo(30);
+    }
 }

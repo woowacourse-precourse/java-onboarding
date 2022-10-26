@@ -53,4 +53,8 @@ public class Player {
         return calculateMaxNumber(addDigitNumber(pages.get(pageIndex))
                 , multipleDigitNumber(pages.get(pageIndex)));
     }
+
+    public int calculateTotalScore() {
+        return calculateMaxNumber(calculateLeftMaxNumber(), calculateRightMaxNumber());
+    }
 }
