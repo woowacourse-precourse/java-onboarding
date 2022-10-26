@@ -43,6 +43,31 @@ class Problem1 {
         return true;
     }
 
+    public static int getBiggestValue(int page) {
+        int sum = 0;
+        int multiply = 1;
+
+        while (page != 0) {
+            int number = page % 10;
+            sum += number;
+            multiply *= number;
+            page /= 10;
+        }
+        return Math.max(sum, multiply);
+    }
+
+    public static int getScore(List<Integer> pages) {
+        int score = -1;
+
+        for (int i = 0; i < pages.size(); i++) {
+            int biggestValue = getBiggestValue(pages.get(i));
+            if (score < biggestValue) {
+                score = biggestValue;
+            }
+        }
+        return score;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = 0;
 
