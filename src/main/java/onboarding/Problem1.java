@@ -4,8 +4,21 @@ import java.util.List;
 
 class Problem1 {
 
-  public static int solution(List<Integer> pobi, List<Integer> crong) {
+  public static int solution(List<Integer> pobi, List<Integer> crong) throws IllegalStateException {
     int answer = Integer.MAX_VALUE;
+    try {
+      if (isAllowedPagesCount(pobi) && isAllowedPagesCount(crong) &&
+          isAllowedPage(pobi.get(0)) && isAllowedPage(pobi.get(1)) &&
+          isAllowedPage(crong.get(0)) && isAllowedPage(crong.get(1)) &&
+          isContinuousPage(pobi) && isContinuousPage(crong)) {
+        int pobiPoint = Math.max(getMaxPlusNum(pobi), getMaxMultiplicationNum(pobi));
+        int crongPoint = Math.max(getMaxPlusNum(crong), getMaxMultiplicationNum(crong));
+        answer = gameResult(pobiPoint, crongPoint);
+      }
+    } catch (IllegalStateException e) {
+      System.out.println(e.getMessage());
+      return -1;
+    }
     return answer;
   }
 
