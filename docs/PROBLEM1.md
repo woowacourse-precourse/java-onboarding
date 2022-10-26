@@ -1,6 +1,6 @@
 ## 기능 정리
 
-- [ ] 숫자를 문자열로 parsing한 다음, `String` 으로 return 하는 기능
+- [x] 숫자를 문자열로 parsing한 다음, `String` 으로 return 하는 기능
 - [ ] `String`의 각 자릿수가 모두 숫자라면, 각 숫자의 합을 구하여 `int`로 return 하는 기능
 - [ ] `String`의 각 자릿수가 모두 숫자라면, 각 숫자의 곱을 구하여 `int`로 return 하는 기능 필요.
 - [ ] 플레이어의 최고 점수 return 하는 기능
