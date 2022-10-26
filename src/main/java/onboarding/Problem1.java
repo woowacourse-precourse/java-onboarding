@@ -6,6 +6,27 @@ import java.util.stream.Stream;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+
+        // 예외체크
+        if(!(checkNumber(pobi) && checkNumber(crong))) {
+            return -1;
+        }
+
+        // 1. 왼쪽 페이지 번호 가장 큰 수 구하기
+        int leftPobi = maxNumber(plusNumber(pobi.get(0)), multiplyNumber(pobi.get(0)));
+        int leftCrong = maxNumber(plusNumber(crong.get(0)), multiplyNumber(crong.get(0)));
+
+        // 2. 오른쪽 페이지 번호 가장 큰 수 구하기
+        int rightPobi = maxNumber(plusNumber(pobi.get(1)), multiplyNumber(pobi.get(1)));
+        int rightCrong = maxNumber(plusNumber(crong.get(1)), multiplyNumber(crong.get(1)));
+
+        // 3. 최종 pobi, crong 가장 큰수 구하기
+        int resultPobi = maxNumber(leftPobi, rightPobi);
+        int resultCrong = maxNumber(leftCrong, rightCrong);
+
+        // 4. 결과
+        answer = resultNumber(resultPobi, resultCrong);
+
         return answer;
     }
 
