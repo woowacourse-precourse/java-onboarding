@@ -55,6 +55,22 @@ class Problem1 {
         return Integer.max(list.stream().reduce(0, Integer::sum), list.stream().reduce(1, (a, b) -> a * b));
     }
 
+    /**
+     * 4. 기능 요구사항의 연산을 실행하여 결과를 리턴하는 함수
+     * @param list
+     * @return 기능 요구사항의 연산을 실행하여 결과를 리턴
+     */
+
+    static int calc(List<Integer> list) {
+        int left = list.get(0);
+        int right = list.get(1);
+        List<Integer> leftList = intToList(left);
+        List<Integer> rightList = intToList(right);
+        int leftResult = getMax(leftList);
+        int rightResult = getMax(rightList);
+        return Integer.max(leftResult, rightResult);
+    }
+
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
