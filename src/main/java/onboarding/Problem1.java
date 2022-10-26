@@ -15,6 +15,7 @@ import static onboarding.Problem1.PageValidateConst.ADD_ODD_REMAINDER_VALUE;
 import static onboarding.Problem1.PageValidateConst.BETWEEN_LEFT_AND_RIGHT_PAGE;
 import static onboarding.Problem1.PageValidateConst.MAXIMUM_PAGE;
 import static onboarding.Problem1.PageValidateConst.MINIMUM_PAGE;
+import static onboarding.Problem1.PageValidator.validatePage;
 
 import java.util.List;
 
@@ -32,30 +33,36 @@ class Problem1 {
             : pobiScore < crongScore ? CRONG_WIN_RESULT : TIE_RESULT;
     }
 
-    private static boolean validatePage(List<Integer> player) {
-        Integer leftPageNumber = player.get(LEFT_PAGE_LIST_INDEX);
-        Integer rightPageNumber = player.get(RIGHT_PAGE_LIST_INDEX);
+    public static class PageValidator {
 
-        return validatePageRange(leftPageNumber) && validatePageRange(rightPageNumber)
-            && validateRightPage(rightPageNumber) && validateLeftPage(leftPageNumber)
-            && validateBetweenLeftAndRightPage(leftPageNumber, rightPageNumber);
-    }
+        private PageValidator() {
+        }
 
-    private static boolean validatePageRange(Integer pageNumber) {
-        return MINIMUM_PAGE <= pageNumber && pageNumber <= MAXIMUM_PAGE;
-    }
+        public static boolean validatePage(List<Integer> player) {
+            Integer leftPageNumber = player.get(LEFT_PAGE_LIST_INDEX);
+            Integer rightPageNumber = player.get(RIGHT_PAGE_LIST_INDEX);
 
-    private static boolean validateBetweenLeftAndRightPage(Integer leftPageNumber,
-        Integer rightPageNumber) {
-        return rightPageNumber - leftPageNumber == BETWEEN_LEFT_AND_RIGHT_PAGE;
-    }
+            return validatePageRange(leftPageNumber) && validatePageRange(rightPageNumber)
+                && validateRightPage(rightPageNumber) && validateLeftPage(leftPageNumber)
+                && validateBetweenLeftAndRightPage(leftPageNumber, rightPageNumber);
+        }
 
-    private static boolean validateRightPage(Integer rightPageNumber) {
-        return rightPageNumber % ADD_ODD_DIVISION_VALUE == ADD_ODD_REMAINDER_VALUE;
-    }
+        private static boolean validatePageRange(Integer pageNumber) {
+            return MINIMUM_PAGE <= pageNumber && pageNumber <= MAXIMUM_PAGE;
+        }
 
-    private static boolean validateLeftPage(Integer leftPageNumber) {
-        return leftPageNumber % ADD_ODD_DIVISION_VALUE != ADD_ODD_REMAINDER_VALUE;
+        private static boolean validateBetweenLeftAndRightPage(Integer leftPageNumber,
+            Integer rightPageNumber) {
+            return rightPageNumber - leftPageNumber == BETWEEN_LEFT_AND_RIGHT_PAGE;
+        }
+
+        private static boolean validateRightPage(Integer rightPageNumber) {
+            return rightPageNumber % ADD_ODD_DIVISION_VALUE == ADD_ODD_REMAINDER_VALUE;
+        }
+
+        private static boolean validateLeftPage(Integer leftPageNumber) {
+            return leftPageNumber % ADD_ODD_DIVISION_VALUE != ADD_ODD_REMAINDER_VALUE;
+        }
     }
 
     private static int calculatePageScore(Integer pageNumber) {
