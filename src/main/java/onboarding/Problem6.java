@@ -1,6 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +18,18 @@ public class Problem6 {
 				}
 			}
 		}
-		return Collections.emptyList();
+		List<String> limitList = new ArrayList<>();
+
+		for (List<String> form : forms) {
+			for (int nameIndex = 0; nameIndex < form.get(1).length() - 1; nameIndex++) {
+				String duplicatedName = form.get(1).substring(nameIndex, nameIndex + 2);
+				if (duplicatedNameCount.get(duplicatedName) > 1) {
+					limitList.add(form.get(0));
+					continue;
+				}
+			}
+		}
+
+		return limitList;
 	}
 }
