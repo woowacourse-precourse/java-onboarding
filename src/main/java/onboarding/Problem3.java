@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.regex.Pattern;
 
 public class Problem3 {
@@ -18,5 +20,22 @@ public class Problem3 {
         return (number >= 1 && number <= 10000);
     }
 
+    /**
+     * 숫자 분할하기
+     * @param number 숫자
+     * @return 분할된 숫자 배열
+     */
+    private static int[] splitNumber(int number) {
+        ArrayList<Integer> arrayNumber = new ArrayList<>();
+
+        while (number > 0) {
+            arrayNumber.add(number % 10);
+            number /= 10;
+        }
+
+        Collections.reverse(arrayNumber);
+
+        return arrayNumber.stream().mapToInt(i -> i).toArray();
+    }
 
 }
