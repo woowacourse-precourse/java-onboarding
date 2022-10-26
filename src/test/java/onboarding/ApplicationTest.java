@@ -130,7 +130,7 @@ class ApplicationTest {
 
         @Test
         void validatePageTest() {
-            List<Integer> validationData = Arrays.asList(5, 6);
+            List<Integer> validationData = Arrays.asList(197, 198);
 
             assertThat(Problem1.validatePage(validationData)).isEqualTo(true);
         }
@@ -156,29 +156,29 @@ class ApplicationTest {
             assertThat(Problem1.validatePage(evenExceptionData)).isEqualTo(false);
         }
 
-//        @Test
-//        void case1() {
-//            List<Integer> pobi = List.of(97, 98);
-//            List<Integer> crong = List.of(197, 198);
-//            int result = 0;
-//            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
-//        }
-//
-//        @Test
-//        void case2() {
-//            List<Integer> pobi = List.of(131, 132);
-//            List<Integer> crong = List.of(211, 212);
-//            int result = 1;
-//            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
-//        }
-//
-//        @Test
-//        void case3() {
-//            List<Integer> pobi = List.of(99, 102);
-//            List<Integer> crong = List.of(211, 212);
-//            int result = -1;
-//            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
-//        }
+        @Test
+        void case1() {
+            List<Integer> pobi = List.of(97, 98);
+            List<Integer> crong = List.of(197, 198);
+            int result = 0;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        void case2() {
+            List<Integer> pobi = List.of(131, 132);
+            List<Integer> crong = List.of(211, 212);
+            int result = 1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        void case3() {
+            List<Integer> pobi = List.of(99, 102);
+            List<Integer> crong = List.of(211, 212);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
     }
 
     @Nested
