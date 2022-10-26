@@ -9,21 +9,25 @@ public class Problem4 {
         Map<Character, Character> dict = new HashMap<Character, Character>();
         initializeDict(dict);
 
-        for(int i = 0; i < word.length(); i++){
-            if(word.charAt(i) == ' '){
+        for (int i = 0; i < word.length(); i++) {
+            if (word.charAt(i) == ' ') {
                 answer += ' ';
-            }else{
+            } else {
                 answer += dict.get(word.charAt(i));
             }
         }
         return answer;
     }
 
-    static void initializeDict(Map<Character, Character> dict){
-        for(char ch = 'A'; ch <= 'Z'; ch++){
+    /**
+     * initialize map for frog's dictionary(a-z, A-Z)
+     * @param dict
+     */
+    static void initializeDict(Map<Character, Character> dict) {
+        for (char ch = 'A'; ch <= 'Z'; ch++) {
             dict.put(ch, (char) ('Z' + ('A' - ch)));
         }
-        for(char ch = 'a'; ch <= 'z'; ch++){
+        for (char ch = 'a'; ch <= 'z'; ch++) {
             dict.put(ch, (char) ('z' + ('a' - ch)));
         }
     }
