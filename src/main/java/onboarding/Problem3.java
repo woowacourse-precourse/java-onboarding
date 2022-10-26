@@ -1,8 +1,11 @@
 package onboarding;
 
+import onboarding.problem3.Clap369Game;
+import onboarding.problem3.ClapGame;
+
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
-        return answer;
+        ClapGame game = new Clap369Game(number);
+        return game.getResult();
     }
 }
