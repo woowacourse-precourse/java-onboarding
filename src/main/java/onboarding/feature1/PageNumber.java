@@ -4,21 +4,21 @@ import java.util.List;
 
 public class PageNumber {
     // 필드
-    private final int leftPageNumber;
-    private final int rightPageNumber;
+    private final int leftPage;
+    private final int rightPage;
 
     // 생성자
     public PageNumber(List<Integer> numbers) {
-        this.leftPageNumber = numbers.get(0);
-        this.rightPageNumber = numbers.get(1);
+        this.leftPage = numbers.get(0);
+        this.rightPage = numbers.get(1);
     }
 
     // 메소드
-    public int getLeftPageNumber() {
-        return this.leftPageNumber;
+    public int getLeftPage() {
+        return this.leftPage;
     }
 
-    public int getRightPageNumber() {
-        return this.rightPageNumber;
+    public int getRightPage() {
+        return this.rightPage;
     }
 }
