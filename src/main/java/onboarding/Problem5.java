@@ -11,20 +11,25 @@ public class Problem5 {
         List<Integer> answer = Collections.emptyList();
 
         final int[] koreanMoneyUnits = new int[] {
-            50000, 10000, 5000, 1000, 500, 100, 10, 1
+            50000, 10000, 5000, 1000, 500, 100, 50, 10, 1
         };
 
         Map<Integer, Integer> moneyUnitMap = getMoneyUnitMap(koreanMoneyUnits);
         int cursor = 0;
-        while (money > 0) {
+        while (cursor < koreanMoneyUnits.length
+                && money > 0) {
             int currentUnit = koreanMoneyUnits[cursor];
-            if (money <= currentUnit) {
+            if (money < currentUnit) {
                 cursor += 1;
                 continue;
             }
 
             money -= currentUnit;
             moneyUnitMap.put(currentUnit, moneyUnitMap.get(currentUnit) + 1);
+        }
+
+        for (Integer value : moneyUnitMap.values()) {
+            answer.add(value);
         }
 
         return answer;
