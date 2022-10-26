@@ -15,6 +15,6 @@ class Problem1 {
         Integer first = pageList.get(0);
         Integer second = pageList.get(1);
         return (first > 1 && second < 400) &&
-                (first % 2 == 0 && second - 1 == first);
+                (second - first == 1);
     }
 }
