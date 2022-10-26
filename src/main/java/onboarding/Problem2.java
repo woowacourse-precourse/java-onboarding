@@ -14,4 +14,8 @@ public class Problem2 {
         }
         return -1;
     }
+
+    private static String deleteDuplicateCharacters(String text) {
+        return text.replaceAll("(\\w)\\1+", "");
+    }
 }
