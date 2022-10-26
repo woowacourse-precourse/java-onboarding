@@ -17,4 +17,10 @@ class Problem1 {
                 .map(Character::getNumericValue)
                 .sum();
     }
+
+    public int calculateMultiplicationOfStringDigits(String str) {
+        return str.chars()
+                .map(Character::getNumericValue)
+                .reduce(1, (ret, digit) -> ret * digit);
+    }
 }
