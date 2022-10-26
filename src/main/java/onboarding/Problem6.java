@@ -26,7 +26,8 @@ public class Problem6 {
             
             map.putAll(tmp);
         }
-        
+    
+        System.out.println(emails);
         return emails.stream()
                 .sorted()
                 .collect(Collectors.toList());
