@@ -5,8 +5,14 @@ import java.util.List;
 class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        if (!(validatePage(pobi) && validatePage(crong))) {
+            return -1;
+        }
+
+        int pobiScore = calculatePlayerScore(pobi);
+        int crongScore = calculatePlayerScore(crong);
+
+        return pobiScore > crongScore ? 1 : pobiScore < crongScore ? 2 : 0;
     }
 
     private static boolean validatePage(List<Integer> player) {
