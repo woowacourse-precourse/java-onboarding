@@ -20,6 +20,18 @@ class Problem1 {
         return num;
     }
 
+    private int mulNum(int pageNum)    {
+        int num = 1;
+
+        while (pageNum > 0)
+        {
+            num *= pageNum % 10;
+            pageNum /= 10;
+        }
+
+        return num;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
