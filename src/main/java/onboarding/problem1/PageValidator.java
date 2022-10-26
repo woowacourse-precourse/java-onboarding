@@ -9,10 +9,13 @@ public class PageValidator {
         if (!validatePageSize(pobi, crong)) {
             return false;
         }
-        if(!validatePageNumber(pobi, crong)){
+        if (!validatePageNumber(pobi, crong)) {
             return false;
         }
         if (!validatePageOddEven(pobi, crong)) {
+            return false;
+        }
+        if (!validateLeftPageAndRightPageIsContinuousPageNumber(pobi, crong)) {
             return false;
         }
         return true;
@@ -34,6 +37,17 @@ public class PageValidator {
             return false;
         }
         return !leftPageNumberIsNotOddAndRightPageNumberIsNotEven(crong);
+    }
+
+    private static boolean validateLeftPageAndRightPageIsContinuousPageNumber(List<Integer> pobi, List<Integer> crong) {
+        if (leftPageNumberPlusOneIsNotEqualToRightPageNumber(pobi)) {
+            return false;
+        }
+        return !leftPageNumberPlusOneIsNotEqualToRightPageNumber(crong);
+    }
+
+    private static boolean leftPageNumberPlusOneIsNotEqualToRightPageNumber(List<Integer> list) {
+        return list.get(0) + 1 != list.get(1);
     }
 
     private static boolean leftPageNumberIsNotOddAndRightPageNumberIsNotEven(List<Integer> list) {
