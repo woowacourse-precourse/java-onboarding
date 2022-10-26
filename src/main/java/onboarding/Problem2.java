@@ -18,4 +18,11 @@ public class Problem2 {
     private static String deleteDuplicateCharacters(String text) {
         return text.replaceAll("(\\w)\\1+", "");
     }
+
+    private static String getDecryptionText(String text) {
+        while (getContinuousIndex(text) != -1) {
+            text = deleteDuplicateCharacters(text);
+        }
+        return text;
+    }
 }
