@@ -51,4 +51,16 @@ class Problem1 {
 
         return result;
     }
+
+    public static int multiplication(int target) {
+        int result = 1;
+
+        int end = getLength(target);
+        for(int i=0; i<end; i++) {
+            result *= target % 10;
+            target /= 10;
+        }
+
+        return result;
+    }
 }
