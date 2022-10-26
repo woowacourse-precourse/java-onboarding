@@ -26,7 +26,7 @@ public class Problem6 {
         return userList;
     }
     //닉네임이 같은 유저가 있는지 확인
-    public static void userCheck(List<String> nickname)
+    public static List<Integer> userCheck(List<String> nickname)
     {
         List<Integer> userMemo = new ArrayList<>();
 
@@ -43,6 +43,7 @@ public class Problem6 {
                 }
             }
         }
+        return userMemo;
     }
 
     //연속적으로 닉네임이 포함되어 있는지 확인
