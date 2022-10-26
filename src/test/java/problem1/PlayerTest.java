@@ -15,4 +15,12 @@ public class PlayerTest {
 
         assertThat(result).isEqualTo(6);
     }
+
+    @Test
+    void 각자리의_숫자를_곱하는_기능() {
+        Player player = new Player(List.of(123, 124));
+        int result = player.multipleDigitNumber(234);
+
+        assertThat(result).isEqualTo(24);
+    }
 }
