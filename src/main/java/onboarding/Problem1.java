@@ -33,6 +33,13 @@ class findWinner{
         return pobiMaxNumber>crongMaxNumber?1:2;
     }
 }
+class invalidException{
+    public static boolean invalidPageNumber(int left, int right){
+        if(left<1||left>400||right<1||right>400){return false;}
+        if((right-left)!=1){return false;}
+        return true;
+    }
+}
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
