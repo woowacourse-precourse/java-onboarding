@@ -8,7 +8,7 @@ class Problem1 {
         return answer;
     }
     static boolean book_range_check(int left, int right) {
-        if(left<0 || right<0 || left>400 || right >400){
+        if(left<=2 || right<=2 || left>=399 || right >=399){
             return false;
         }
         if(left%2 != 1 || right%2 != 0) {
