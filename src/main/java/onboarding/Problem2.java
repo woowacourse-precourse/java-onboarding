@@ -11,6 +11,11 @@ public class Problem2 {
     }
 
     private static String deleteConsecutiveDuplicateCharacters(String cryptogram) {
+        stringProcessing(cryptogram);
+        return charsToString();
+    }
+
+    private static void stringProcessing(String cryptogram) {
         for (int i = 0; i < cryptogram.length(); i++) {
             char c = cryptogram.charAt(i);
             if (i != 0) {
@@ -21,7 +26,6 @@ public class Problem2 {
                 stack.push(c);
             }
         }
-        return charsToString();
     }
 
     private static boolean findDuplicatedCharactersAndPop(char c) {
