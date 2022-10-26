@@ -91,19 +91,21 @@ class Problem1 {
         }
 
         private static int sumEachNumber(int pageNumber) {
-            String strPageNumber = String.valueOf(pageNumber);
-            List<Integer> pageNumberList = List.of(Integer.parseInt(Arrays.toString(strPageNumber.split(""))));
+            List<Integer> pageNumberList = toList(String.valueOf(pageNumber));
             return pageNumberList.stream().mapToInt(Integer::intValue).sum();
         }
 
         private static int multEachNumber(int pageNumber) {
-            String strPageNumber = String.valueOf(pageNumber);
-            List<Integer> pageNumberList = List.of(Integer.parseInt(Arrays.toString(strPageNumber.split(""))));
+            List<Integer> pageNumberList = toList(String.valueOf(pageNumber));
             return pageNumberList.stream().reduce(1, (a, b) -> a * b);
         }
 
         private static int getMaxNumber(int number1, int number2) {
             return Math.max(number1, number2);
+        }
+
+        private static List<Integer> toList(String pageNumber) {
+            return List.of(Integer.parseInt(Arrays.toString(pageNumber.split(""))));
         }
     }
 
