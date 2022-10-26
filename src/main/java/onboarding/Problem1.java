@@ -42,7 +42,16 @@ class Problem1 {
     }
 
     private static boolean validatePages(List<Integer> pages) {
-        //TODO: implement validity conditions
+        if (pages.size() != 2)
+            return false;
+        int leftPageNumber = pages.get(0);
+        int rightPageNumber = pages.get(1);
+        if (!(leftPageNumber > 2 & leftPageNumber < 399))
+            return false;
+        if (!(rightPageNumber > 2 & rightPageNumber < 399))
+            return false;
+        if (leftPageNumber % 2 == 0 | (leftPageNumber + 1 != rightPageNumber))
+            return false;
         return true;
     }
 }
