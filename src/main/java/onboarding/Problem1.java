@@ -24,6 +24,34 @@ class Problem1 {
         return answer;
     }
 
+    public static int calculateMaxScore(List<Integer> pages) {
+        int leftPageNum = pages.get(0);
+        int rightPageNum = pages.get(1);
+        return Math.max(pageScore(leftPageNum), pageScore(rightPageNum));
+    }
+
+    private static int pageScore (int page) {
+        return Math.max(sumOfPageDigits(page), mulOfPageDigits(page));
+    }
+
+    private static int sumOfPageDigits (int page) {
+        int sum = 0;
+        while (page > 0) {
+            sum += ( page % 10 );
+            page /= 10;
+        }
+        return sum;
+    }
+
+    private static int mulOfPageDigits (int page) {
+        int mul = 1;
+        while ( page > 0 ) {
+            mul *= ( page % 10 );
+            page /= 10;
+        }
+        return mul;
+    }
+
     private static boolean checkValidatePairOfPage (List<Integer> pages) {
         // 1. 페이지 유효 범위는 3이상 398 이하
         if (!checkRangeOfPages(pages)) {
