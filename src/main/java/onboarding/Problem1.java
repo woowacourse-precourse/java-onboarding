@@ -49,9 +49,12 @@ class Problem1 {
 
     public static void main(String[] args) {
 
+        List<Integer> pobi = new ArrayList<>();
+        List<Integer> crong = new ArrayList<>();
+
         /* 책을 임의로 펼친다 */
-        List<Integer> A = randomPage();
-        List<Integer> B = randomPage();
+        pobi = randomPage();
+        crong = randomPage();
 
 
     }
