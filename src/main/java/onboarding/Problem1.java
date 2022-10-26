@@ -4,7 +4,7 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if (!isLeftOdd(pobi, crong) || !isSuccessive(pobi, crong) || isRange(pobi, crong)) {
+        if (!isLeftOdd(pobi, crong) || !isSuccessive(pobi, crong) || isOutOfRange(pobi, crong)) {
             return -1;
         }
         return whoWin(getMaxValue(pobi), getMaxValue(crong));
@@ -18,7 +18,7 @@ class Problem1 {
         return (pobi.get(0) + 1 == pobi.get(1)) && (crong.get(0) + 1 == crong.get(1)); // 참이면 조건 만족
     }
 
-    private static boolean isRange(List<Integer> pobi, List<Integer> crong) { // 1~400 을 벗어남
+    private static boolean isOutOfRange(List<Integer> pobi, List<Integer> crong) { // 1~400 을 벗어남
         return pobi.get(0) < 1 || pobi.get(1) > 400 || crong.get(0) < 1 || crong.get(1) > 400; // 거짓이면 조건 만족
     }
 
@@ -26,10 +26,10 @@ class Problem1 {
         int leftValue = values.get(0);
         int rightValue = values.get(1);
 
-        return Math.max(getMaxValue2(leftValue), getMaxValue2(rightValue));
+        return Math.max(getMaxHabOrGob(leftValue), getMaxHabOrGob(rightValue));
     }
 
-    private static int getMaxValue2(int x) { // 두 수 각각의 합과 곱중 최대값 구하기
+    private static int getMaxHabOrGob(int x) { // 두 수 각각의 합과 곱중 최대값 구하기
         int hab = 0;
         int gob = 1;
 
