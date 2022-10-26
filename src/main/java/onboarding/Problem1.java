@@ -8,6 +8,12 @@ class Problem1 {
     static boolean checkError(List<Integer> list) {
         if (list.get(0) == null || list.get(1) == null)
             return true;
+        if (!(((list.get(0) & 1) == 1) && ((list.get(1) & 1) == 0))) {
+            return true;
+        }
+        if (!(list.get(0) <= 400 && list.get(1) <= 400 && list.get(0) >= 1 && list.get(1) >= 1)) {
+            return true;
+        }
         return list.get(1) - list.get(0) != 1;
     }
 
