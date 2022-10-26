@@ -18,8 +18,17 @@ class Problem1 {
 		int pobiMaxNum = findMaxNum(pobi);
 		int crongMaxNum = findMaxNum(crong);
 
-		int answer = Integer.MAX_VALUE;
-		return answer;
+		return resultNum(pobiMaxNum, crongMaxNum);
+	}
+
+	private static int resultNum(int pobiMaxNum, int crongMaxNum) {
+		if (pobiMaxNum > crongMaxNum) {
+			return 1;
+		}
+		if (pobiMaxNum < crongMaxNum) {
+			return 2;
+		}
+		return 0;
 	}
 
 	private static int findMaxNum(List<Integer> pageList) {
