@@ -9,8 +9,9 @@ class Problem1 {
         int pobiScore = -1;
         int crongScore = -1;
 
-        if (checkRestrictions(pobi) == -1 || checkRestrictions(crong) == -1)
+        if (checkRestrictions(pobi) == -1 || checkRestrictions(crong) == -1) {
             return -1;
+        }
 
         pobiScore = getScore(pobi, pobiScore);
         crongScore = getScore(crong, crongScore);
