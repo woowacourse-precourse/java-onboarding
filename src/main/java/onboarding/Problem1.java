@@ -30,6 +30,7 @@ class Problem1 {
      */
     public static boolean checkForException(List<Integer> pobi, List<Integer> crong) {
         if ((pobi.size() == 2 && crong.size() == 2) &&
+                (pobi.get(0) % 2 == 1 && crong.get(0) == 1 && pobi.get(1) % 2 == 0 && crong.get(1) == 0)&&
                 (pobi.get(1)-pobi.get(0) == 1 && crong.get(1)-crong.get(0) == 1) &&
                 (0 < pobi.get(0) && pobi.get(0) <= 400  && 0 < pobi.get(1) && pobi.get(1) <= 400) &&
                 (0 < crong.get(0) && crong.get(0) <= 400  && 0 < crong.get(1) && crong.get(1) <= 400)) {
