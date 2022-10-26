@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 class Problem1 {
@@ -90,13 +91,9 @@ class Problem1 {
         }
 
         private static int sumEachNumber(int pageNumber) {
-            int sum = 0;
             String strPageNumber = String.valueOf(pageNumber);
-            for (int i = 0; i < strPageNumber.length(); i++) {
-                sum += Integer.parseInt(String.valueOf(strPageNumber.charAt(i)));
-            }
-
-            return sum;
+            List<Integer> pageNumberList = List.of(Integer.parseInt(Arrays.toString(strPageNumber.split(""))));
+            return pageNumberList.stream().mapToInt(Integer::intValue).sum();
         }
 
         private static int multEachNumber(int pageNumber) {
