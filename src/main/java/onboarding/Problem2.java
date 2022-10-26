@@ -3,6 +3,15 @@ package onboarding;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
+        String removedAnswer;
+        answer = cryptogram;
+        while(true){
+            removedAnswer = Problem2.removeDuplicateLetters(answer);
+            if(answer.equals(removedAnswer)){
+                break;
+            }
+            answer = removedAnswer;
+        }
         return answer;
     }
     public static String removeDuplicateLetters(String str) {
