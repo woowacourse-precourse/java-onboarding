@@ -14,7 +14,7 @@ class Problem1 {
 	private static final int NOT_PAGE_NUMBER = -1;
 
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
-		int answer = Integer.MAX_VALUE;
+		int answer;
 		if (!checkPageForm(pobi, crong)) {
 			return NOT_PAGE_NUMBER;
 		}
@@ -22,17 +22,21 @@ class Problem1 {
 		int crongMax = pageMax(crong);
 
 		if(pobiMax > crongMax) {
-			return WIN_POBI;
+			answer = WIN_POBI;
 		} else if (pobiMax < crongMax) {
-			return WIN_CRONG;
+			answer = WIN_CRONG;
 		} else {
-			return DRAW;
+			answer = DRAW;
 		}
+		return answer;
 	}
 
 	private static boolean checkPageForm(List<Integer> pobi, List<Integer> crong) {
 		if (pobi.get(LEFT_PAGE) < MIN_PAGE || pobi.get(RIGHT_PAGE) > MAX_PAGE
 				|| crong.get(LEFT_PAGE) < MIN_PAGE || crong.get(RIGHT_PAGE) > MAX_PAGE) {
+			return false;
+		}
+		if ((pobi.get(LEFT_PAGE) - pobi.get(RIGHT_PAGE)) != 1 || (crong.get(LEFT_PAGE) - crong.get(RIGHT_PAGE)) !=1){
 			return false;
 		}
 		return true;
