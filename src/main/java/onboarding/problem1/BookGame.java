@@ -26,4 +26,13 @@ public class BookGame {
         return sum;
     }
 
+    private int multiplyEachDigit(int num){
+        int mul = 1;
+        while(num != 0){
+            mul *= num%10;
+            num = num/10;
+        }
+        return mul;
+    }
+
 }
