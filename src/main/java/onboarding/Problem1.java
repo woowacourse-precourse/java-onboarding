@@ -16,16 +16,22 @@ class Problem1 {
     private static final int RESULT_CRONG_WIN = 2;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-
         if (!isValidPages(pobi) || !isValidPages(crong)) {
             return RESULT_EXCEPTION;
         }
 
-        calculateMaxScore(pobi);
-        calculateMaxScore(crong);
+        Integer pobiScore = calculateMaxScore(pobi);
+        Integer crongScore = calculateMaxScore(crong);
 
-        return answer;
+        if (pobiScore > crongScore) {
+            return RESULT_POBI_WIN;
+        }
+
+        if (pobiScore < crongScore) {
+            return RESULT_CRONG_WIN;
+        }
+
+        return RESULT_DRAW;
     }
 
     private static boolean isValidPages(List<Integer> pages) {
