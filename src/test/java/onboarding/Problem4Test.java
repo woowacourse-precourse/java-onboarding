@@ -10,6 +10,22 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class Problem4Test {
+
+	@Test
+	void 테스트케이스추가(){
+		String val = "     ";
+		assertThat(Problem4.solution(val)).isEqualTo(val);
+
+		val = " _ _ _AN";
+		assertThat(Problem4.solution(val)).isEqualTo(" _ _ _ZM");
+
+		val = " <>?:;\"'[]{}|-=_+!@#$%^&*()1234567890~`";
+		assertThat(Problem4.solution(val)).isEqualTo(val);
+
+		val = "Choi*SanG)Won";
+		assertThat(Problem4.solution(val)).isEqualTo("Xslr*HzmT)Dlm");
+
+	}
 	@Test
 	void 범위확인() {
 		assertThrows(IllegalArgumentException.class, () ->
