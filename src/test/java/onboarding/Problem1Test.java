@@ -129,4 +129,19 @@ class Problem1Test {
 			assertThat(winner).isEqualTo(2);
 		}
 	}
+
+	@Nested
+	class exceptionHandlingTest {
+
+		@Test
+		public void checkListContainsStartPageTest() {
+			List<Integer> pageList = new ArrayList<>();
+			pageList.add(1);
+			pageList.add(2);
+
+			assertThrows(IllegalStateException.class, () -> {
+				checkListContainsStartPage(pageList);
+			});
+		}
+	}
 }

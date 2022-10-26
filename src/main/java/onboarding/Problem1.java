@@ -5,13 +5,24 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-        checkException(pobi);
-        checkException(crong);
+        try {
+            checkException(pobi);
+            checkException(crong);
+        } catch (IllegalStateException e) {
+            return -1;
+        }
         answer = getWinner(pobi, crong);
         return answer;
     }
 
-    public static void checkException(List<Integer> pageList) {
+    public static void checkException(List<Integer> pageList) throws IllegalStateException {
+        checkListContainsStartPage(pageList);
+    }
+
+    public static void checkListContainsStartPage(List<Integer> pageList) {
+        if (pageList.get(0) == 1) {
+            throw new IllegalStateException();
+        }
     }
 
     public static int getWinner(List<Integer> pobi, List<Integer> crong) {
