@@ -18,6 +18,7 @@ import static onboarding.Problem1.PageValidateConst.MINIMUM_PAGE;
 import static onboarding.Problem1.PageValidator.validatePage;
 
 import java.util.List;
+import java.util.Objects;
 
 class Problem1 {
 
@@ -44,7 +45,8 @@ class Problem1 {
 
             return validatePageRange(leftPageNumber) && validatePageRange(rightPageNumber)
                 && validateRightPage(rightPageNumber) && validateLeftPage(leftPageNumber)
-                && validateBetweenLeftAndRightPage(leftPageNumber, rightPageNumber);
+                && validatePageValue(player) && validateBetweenLeftAndRightPage(leftPageNumber,
+                rightPageNumber);
         }
 
         private static boolean validatePageRange(Integer pageNumber) {
@@ -62,6 +64,10 @@ class Problem1 {
 
         private static boolean validateLeftPage(Integer leftPageNumber) {
             return leftPageNumber % ADD_ODD_DIVISION_VALUE != ADD_ODD_REMAINDER_VALUE;
+        }
+
+        private static boolean validatePageValue(List<Integer> player) {
+            return !player.stream().anyMatch(Objects::isNull);
         }
     }
 
