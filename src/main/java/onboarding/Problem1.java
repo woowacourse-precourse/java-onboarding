@@ -58,8 +58,7 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         List[] pagesList = {pobi, crong};
 
-        boolean valid = isValidInput(pagesList);
-        if (valid == false) {
+        if (isValidInput(pagesList)) {
             return -1;
         };
 
