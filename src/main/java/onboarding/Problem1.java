@@ -16,14 +16,41 @@ class Problem1 {
 //      3. 잘못된 값(왼쪽 페이지와 오른쪽 페이지의 숫자가 연속되지 않는 경우)이 주어졌을때
 //          기능 요구사항에 따라 예외를 발생시키기 위한 검증 로직을 담은 함수 작성
 
+//      4. solution 함수에서 Player 객체 생성후, 각 객체의 점수를 비교하여 조건에따라 리턴
 
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+
         int answer = Integer.MAX_VALUE;
+
+        Player playerPobi = new Player(pobi);
+        Player playerCrong = new Player(crong);
+
+        int pobiScore = playerPobi.calcScore();
+        int crongScore = playerCrong.calcScore();
+
+        try {
+
+            validate(playerPobi);
+            validate(playerCrong);
+
+            if(pobiScore > crongScore) {
+                answer = 1;
+            }else if(pobiScore == crongScore){
+                answer = 0;
+            }else{
+                answer = 2;
+            }
+
+        }catch (IllegalArgumentException e){
+            answer = -1;
+        }
+
         return answer;
     }
 
     public static void validate(Player player){
+
         int leftPage = Integer.parseInt(player.leftPage);
         int rightPage = Integer.parseInt(player.rightPage);
 
@@ -51,7 +78,7 @@ class Problem1 {
 
 
 //      객체가 가진 최고 값을 계산하는 메서드
-        public int getMaxScore() {
+        public int calcScore() {
 
             int leftPageResult;
             int rightPageResult;
