@@ -53,4 +53,22 @@ public class SeparateDigit {
         }
         return number2;
     }
+    public int compareScore(SeparateDigit otherDigit){
+        int myScore = this.score();
+        int otherScore = otherDigit.score();
+        int answer = -1;
+        if(myScore>otherScore){
+            answer = 1;
+            return answer;
+        }
+        if(myScore == otherScore){
+            answer = 0;
+            return answer;
+        }
+        if(myScore<otherScore){
+            answer = 2;
+            return answer;
+        }
+        return answer;
+    }
 }
