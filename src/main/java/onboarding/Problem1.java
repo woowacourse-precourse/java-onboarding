@@ -1,18 +1,15 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int left = 0;
         int right = 1;
-
         int answer = Integer.MAX_VALUE;
 
-        //pobi findMaxNum
-        calculation(pobi.get(left), pobi.get(right));
-        //crng findMaxNum
-        calculation(crong.get(left), crong.get(left));
+        answer = compareNum(findMaxNumber(pobi.get(left), pobi.get(right)), findMaxNumber(crong.get(left), crong.get(left)));
 
         return answer;
     }
@@ -20,15 +17,19 @@ class Problem1 {
     //find digits
     public static int[] digit(int num)
     {
-        int []value = null;
-        int i = 0;
+        int [] valueArray;
+        ArrayList<Integer> valueList = new ArrayList<>();
 
         while(num > 0)
         {
-            value[i] = num % 10;
+            valueList.add(num % 10);
             num /= 10;
         }
-        return value;
+
+        valueArray = new int[valueList.size()];
+        for (int i = 0; i < valueArray.length; i++)
+            valueArray[i] = valueList.get(i);
+        return valueArray;
     }
 
     public static int calculation(int[] num)
@@ -36,9 +37,6 @@ class Problem1 {
         int sum = 0;
         int multiply = 0;
         int max = 0;
-
-        int [] leftDigit;
-        int [] rightDigit;
 
         for (int i = 0; i < num.length; i++)
         {
@@ -65,7 +63,7 @@ class Problem1 {
         return max;
     }
 
-    //compare number 
+    //compare number
     public static int compareNum(int pobiNum, int crongNum)
     {
         if (pobiNum == crongNum)
@@ -74,8 +72,8 @@ class Problem1 {
             return 1;
         else if (pobiNum < crongNum)
             return 2;
-        else
-            return -1;
+
+        return -1;
     }
 
 }
