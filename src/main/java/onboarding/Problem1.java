@@ -78,8 +78,8 @@ class Problem1 {
                 isPageOdd(rightPageNumber) ||
                 isFirstPage(leftPageNumber) ||
                 isEndPage(rightPageNumber) ||
-                isPageSize(leftPageNumber) ||
-                isPageSize(rightPageNumber)) {
+                isPageSizeLackOrOverflow(leftPageNumber) ||
+                isPageSizeLackOrOverflow(rightPageNumber)) {
             return EXCEPTION_MESSAGE;
         }
 
@@ -98,7 +98,7 @@ class Problem1 {
         return pageNumber == END_PAGE_NUMBER - 1 || pageNumber == END_PAGE_NUMBER;
     }
 
-    private static boolean isPageSize(int pageNumber) {
+    private static boolean isPageSizeLackOrOverflow(int pageNumber) {
         return pageNumber < START_PAGE_NUMBER || pageNumber > END_PAGE_NUMBER;
     }
 }
