@@ -43,10 +43,7 @@ public class Problem7 {
         friends.stream()
                 .flatMap(o->graph.get(o).stream())
                 .filter(o->!friends.contains(o))
-                .forEach(o->{
-                    int score=scoreBoard.getOrDefault(o, 0)+10;
-                    scoreBoard.put(o, score);
-                });
+                .forEach(o-> scoreBoard.put(o, scoreBoard.get(o)+10));
     }
 
     public static void scoreVisitors(LinkedList<String> friends,
@@ -55,10 +52,7 @@ public class Problem7 {
         Set<String> friendSet=new HashSet<>(friends);
         visitors.stream()
                 .filter(o->!friendSet.contains(o))
-                .forEach(o->{
-                    int score=scoreBoard.getOrDefault(o, 0)+1;
-                    scoreBoard.put(o, score);
-                });
+                .forEach(o-> scoreBoard.put(o, scoreBoard.get(o)+1));
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
