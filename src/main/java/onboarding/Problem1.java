@@ -5,10 +5,14 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        int score_pobi, score_crong;
 
         if(validation(pobi) == -1 || validation(crong) == -1) {
             return -1;
         }
+
+        score_pobi = cal_score(sum_page(pobi), mul_page(pobi));
+        score_crong = cal_score(sum_page(crong), mul_page(crong));
 
         return answer;
     }
@@ -21,6 +25,11 @@ class Problem1 {
             return -1;
         }
         return 0;
+    }
+
+    public static int cal_score(int sum, int mul) {
+        if(sum > mul) return sum;
+        else return mul;
     }
 
     public static int sum_page(List<Integer> page) { // 왼쪽, 오른쪽 페이지의 각 자리 숫자를 더한 후 더 큰 숫자 반환
