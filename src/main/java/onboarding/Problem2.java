@@ -1,3 +1,8 @@
+/*
+[기능 목록]
+1. 암호 해독
+ */
+
 package onboarding;
 
 public class Problem2 {
