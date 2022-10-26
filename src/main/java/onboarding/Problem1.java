@@ -5,10 +5,24 @@ import java.util.List;
 class Problem1 {
     public static final int LEFT_PAGE = 0;
     public static final int RIGHT_PAGE = 1;
-    
+    public static final int POBI_WIN = 1;
+    public static final int CRONG_WIN = 2;
+    public static final int DRAW = 0;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        int pobiMaxScore = getMaxScore(pobi);
+        int crongMaxScore = getMaxScore(crong);
+
+        return getAnswer(pobiMaxScore, crongMaxScore);
+    }
+    private static int getAnswer(int pobiMaxScore, int crongMaxScore) {
+        if (pobiMaxScore > crongMaxScore) {
+            return POBI_WIN;
+        } else if (pobiMaxScore < crongMaxScore) {
+            return CRONG_WIN;
+        } else {
+            return DRAW;
+        }
     }
     public static int getMaxScore(List<Integer> pages) {
         int leftPageNumber = getLeftPageNumber(pages);
