@@ -1,12 +1,8 @@
 package onboarding;
 
-import java.util.StringJoiner;
-
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-//        System.out.println(removeDupChars(cryptogram, checkDuplicated(cryptogram)));
-        return answer;
+        return decodeCryptogram(cryptogram);
     }
     
     /**
@@ -46,4 +42,20 @@ public class Problem2 {
     	return result;
     }
     
+    /**
+     * 중복문자가 존재하지 않을 때까지 실행하여 cryptogram을 복호화한 값을 반환한다.
+     * @param cryptogram
+     * @return 복호화된 문자열
+     */
+    private static String decodeCryptogram(String cryptogram) {
+    	String result = removeDupChars(cryptogram, checkDuplicated(cryptogram));
+    	
+    	// 중복문자 제거 함수를 실행해도 이전 입력값과 동일하면 재귀를 멈추고 값을 반환한다.
+    	if (result.equals(cryptogram)) {
+    		return result;
+    	}
+    	
+    	return decodeCryptogram(result);
+    }
+
 }
