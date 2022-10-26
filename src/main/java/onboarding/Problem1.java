@@ -5,7 +5,10 @@ import java.util.List;
 
 class Problem1 {
 
-
+    private static final int CRONG_MORE_BIGGER = 2;
+    private static final int POBI_MORE_BIGGER = 1;
+    private static final int SAME_VALUE = 0;
+    private static final int EXCEPTION_CASE = -1;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = getAnswer(getMaxValue(pobi), getMaxValue(crong));
@@ -13,12 +16,10 @@ class Problem1 {
     }
 
     private static Integer getMaxValue(List<Integer> pages) {
-
         Integer leftPage = pages.get(0);
         Integer rightPage = pages.get(1);
-
         if ((leftPage + 1) != rightPage) {
-            return -1;
+            return EXCEPTION_CASE;
         }
 
         int leftPageMaxValue = doCalculate(leftPage);
@@ -29,9 +30,11 @@ class Problem1 {
 
     private static int doCalculate(Integer page) {
         List<Integer> eachNumbers = getEachNumbers(page);
+
         int sum = eachNumbers.stream()
                 .mapToInt(Integer::intValue)
                 .reduce(0, (i, j) -> i + j);
+
         int multiply = eachNumbers.stream()
                 .mapToInt(Integer::intValue)
                 .reduce(1, (i, j) -> i * j);
@@ -49,13 +52,13 @@ class Problem1 {
         }
         return eachNumbers;
     }
-    
+
 
     private static int getAnswer(Integer x, Integer y) {
-        if (x == -1 || y == -1) {
-            return -1;
+        if (x == EXCEPTION_CASE || y == EXCEPTION_CASE) {
+            return EXCEPTION_CASE;
         }
-        return (x < y) ? 2 : ((x == y) ? 0 : 1);
+        return (x < y) ? CRONG_MORE_BIGGER : ((x == y) ? SAME_VALUE : POBI_MORE_BIGGER);
     }
 
 
