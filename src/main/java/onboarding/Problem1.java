@@ -17,6 +17,10 @@ class Problem1 {
         int pobiMaxNumber = maxNum(pobi);
         int crongMaxNumber = maxNum(crong);
 
+        if(pobiMaxNumber > crongMaxNumber) answer = 1;
+        else if(pobiMaxNumber < crongMaxNumber) answer = -1;
+        else answer = 0;
+
         return answer;
     }
 
