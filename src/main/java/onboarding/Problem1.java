@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 class Problem1 {
@@ -24,6 +26,17 @@ class Problem1 {
         }
 
         return true;
+    }
+
+    static int getPlus(int elem) {
+        int score = 0;
+
+        while (elem > 0) {
+            score += elem % 10;
+            elem /= 10;
+        }
+
+        return score;
     }
 
 }
