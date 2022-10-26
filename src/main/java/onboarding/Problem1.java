@@ -26,4 +26,14 @@ class Problem1 {
     }
     return returnNum;
   }
+
+  private static int gameResult(int pobiPoint, int crongPoint) {
+    if (pobiPoint > crongPoint) {
+      return 1;
+    } else if (pobiPoint < crongPoint) {
+      return 2;
+    } else {
+      return 0;
+    }
+  }
 }
