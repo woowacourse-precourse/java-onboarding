@@ -274,6 +274,104 @@ class ApplicationTest {
             String result = "R olev blf";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
+    
+        @Test
+        void case2() {
+            String word = "abc de";
+            String result = "zyx wv";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+    
+        @Test
+        void case3() {
+            String word = "AB CDE";
+            String result = "ZY XWV";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+    
+        @Test
+        void case4() {
+            String word = "AB @CDE";
+            String result = "ZY @XWV";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+    
+        @Test
+        void case5() {
+            String word = "AB 3CDE";
+            String result = "ZY 3XWV";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+    
+        @Test
+        void case6() {
+            String word = "AB 가CDE";
+            String result = "ZY 가XWV";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+    
+        @Test
+        void case7() {
+            String word = "A";
+            String result = "Z";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+    
+        @Test
+        void case8() {
+            String word = "a";
+            String result = "z";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+    
+        @Test
+        void case9() {
+            String word = "Z";
+            String result = "A";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+    
+        @Test
+        void case10() {
+            String word = "z";
+            String result = "a";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+    
+        @Test
+        void case11() {
+            String word = "n";
+            String result = "m";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+    
+        @Test
+        void case12() {
+            String word = "m";
+            String result = "n";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+    
+        @Test
+        void case13() {
+            String word = "N";
+            String result = "M";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+    
+        @Test
+        void case14() {
+            String word = "M";
+            String result = "N";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+    
+        @Test
+        void case15() {
+            String word = "    I     loVe     you    ";
+            String result = "    R     olEv     blf    ";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
     }
     
     @Nested
