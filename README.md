@@ -5,7 +5,7 @@
 ## 🚀 기능 목록
 
 1. [문제 1](./docs/PROBLEM1.md)
-  - [ ] checkInput
+  - [ ] isValidInput
     - 인자로 들어온 배열의 길이와 원소가 유효한지 검사한다.
   - [ ] splitDigit
     - 자연수를 각 자리의 숫자로 나눠준다.
