@@ -15,11 +15,20 @@ public class Problem2 {
         return code;
     }
 
+    // code 배열 -> toString
+    static String charListToString(List<Character> code) {
+        StringBuilder sb = new StringBuilder();
+        for(Character ch : code) {
+            sb.append(ch);
+        }
+        return sb.toString();
+    }
+
     public static String solution(String cryptogram) {
         List<Character> code = new ArrayList<>();
         for(char alpha : cryptogram.toCharArray()) {
             code = updateCode(code, alpha);
         }
-        return code;
+        return charListToString(code);
     }
 }
