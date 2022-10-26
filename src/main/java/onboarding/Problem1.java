@@ -8,6 +8,11 @@ class Problem1 {
         return answer;
     }
 
+    static boolean validatePage(List<Integer> values) {
+        // null체크를 우선적으로
+        return validateStartOrLastPage(values) && checkSequenceValidation(values) && checkOddEvenValidation(values);
+    }
+
     static int findSumMaximumValue(List<Integer> values) {
         int sumResult = 0;
         // 입력 값이 유효한 경우, 모든 자리 합의 경우 짝수 페이지가 무조건 크다.
@@ -35,7 +40,7 @@ class Problem1 {
     }
 
     public static boolean validateStartOrLastPage(List<Integer> values) {
-        if (values.get(0) == null || values.get(1) == null) {
+        if (values.get(0) == 1 || values.get(1) == 400) {
             return false;
         }
 
