@@ -94,8 +94,7 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         List[] pagesList = {pobi, crong};
-
-        if (isValidInput(pagesList)) {
+        if (isValidInput(pagesList) == false) {
             return -1;
         };
 
