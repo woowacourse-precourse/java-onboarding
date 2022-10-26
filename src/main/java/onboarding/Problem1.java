@@ -105,4 +105,18 @@ class Problem1 {
 
         return pageList;
     }
+
+    private static int getProblemAnswer(Integer userA, Integer userB) {
+        int result = -1;
+
+        if (userA > userB) {
+            result = 2;
+        } else if (userA < userB) {
+            result = 1;
+        } else if (userA.equals(userB)) {
+            result = 0;
+        }
+
+        return result;
+    }
 }
