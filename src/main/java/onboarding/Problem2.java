@@ -19,8 +19,4 @@ public class Problem2 {
         }
         return sb.toString();
     }
-
-    public static void main(String[] args) {
-        System.out.println(solution("zyelleyz"));
-    }
 }
