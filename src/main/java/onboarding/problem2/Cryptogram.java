@@ -10,7 +10,30 @@ public class Cryptogram {
     private List<String> stringList;
 
     public Cryptogram(String inputString) {
+        if (inputString==null)
+            throw new NullPointerException("문자열을 입력해주세요");
+        if (outOfRange(inputString))
+            throw new IllegalArgumentException("길이가 1이상 1000이상인 문자열을 입력하십시오.");
+        if (isNotLowerLetter(inputString))
+            throw new IllegalArgumentException("알파벳 소문자만 입력해주세요.");
         stringList = mapString(inputString);
+    }
+
+    private boolean outOfRange(String inputString) {
+        int len = inputString.length();
+        if (len > 1000 && len <1)
+            return true;
+        return false;
+    }
+
+    private boolean isNotLowerLetter(String inputString) {
+        char chr;
+        for (int i=0; i<inputString.length();i++) {
+            chr = inputString.charAt(i);
+            if (!Character.isLetter(chr)||Character.isUpperCase(chr))
+                return true;
+        }
+        return false;
     }
 
     private List mapString(String inputString) {
