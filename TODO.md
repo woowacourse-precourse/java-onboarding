@@ -2,8 +2,12 @@
 
 ## 설계 및 추가 요구사항, 구현된 기능은 체크됨
 
+
 <details>
 <summary>문제 1</summary>
+
+[문제 1](./docs/PROBLEM1.md)
+
 추가 요구사항 분석<br/>
 
 - 제한사항으로 pobi와 crong의 길이는 항상 2이므로 null check를 하지 않아도 된다.(선택)
@@ -21,6 +25,9 @@
 <details>
 
 <summary>문제 2</summary>
+
+[문제 2](./docs/PROBLEM2.md)
+
 설계<br/>
 
 - [x] TextDecoder는 String getCipher() 와 String getPlainText()로 원문과 해독된 평문을 반환한다.
