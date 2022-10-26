@@ -17,4 +17,13 @@ class Problem1 {
         }
         return sum;
     }
+    public static int getProductOfNumbers(int num) {
+        int sum  = 1;
+        int temp = num;
+        while (temp != 0) {
+            sum *= Math.floorMod(temp, 10);
+            temp = Math.floorDiv(temp, 10);
+        }
+        return sum;
+    }
 }
