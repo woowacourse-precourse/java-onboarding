@@ -33,6 +33,15 @@ class ApplicationTest {
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
+
+        @Test
+        void testNumberValidator() {
+            assertThat(Validator.notValidateNumbers(List.of(101, 103))).isEqualTo(true);
+            assertThat(Validator.notValidateNumbers(List.of(104, 103))).isEqualTo(true);
+            assertThat(Validator.notValidateNumbers(List.of(104, 103, 102))).isEqualTo(true);
+            assertThat(Validator.notValidateNumbers(List.of(1, 400))).isEqualTo(true);
+            assertThat(Validator.notValidateNumbers(List.of(102, 103))).isEqualTo(true);
+        }
     }
 
     @Nested
