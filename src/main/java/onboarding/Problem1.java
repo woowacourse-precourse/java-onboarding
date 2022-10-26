@@ -1,9 +1,19 @@
 package onboarding;
 
-import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
+
+    // 두수 중 더 큰 값을 반환하는 메서드
+    // 같은 값이면 첫 번째 파라미터를 반환한다.
+    public static int whichIsMaxValue(int value1, int value2) {
+        if (value1 > value2) {
+            return value1;
+        } else if (value1 < value2) {
+            return value2;
+        }
+        return value1;
+    }
 
     // 페이지 자릿수 합을 구하는 메서드
     // 왼쪽 페이지의 최댓값은 배제하고, 오른쪽 페이지의 최댓값만 구해서 최댓값으로 정할까 했지만
@@ -30,14 +40,8 @@ class Problem1 {
         }
 
         // 자릿수 합의 최댓값 리턴
-        if (sumLeftValue > sumRightValue) {
-            return sumLeftValue;
-        } else if (sumLeftValue < sumRightValue) {
-            return sumRightValue;
-        }
-
         // 왼쪽, 오른쪽 페이지 자릿수 합의 값이 같으면 둘 중 아무거나 반환한다.
-        return sumLeftValue;
+        return whichIsMaxValue(sumLeftValue, sumRightValue);
     }
 
     // 페이지 자릿수 곱을 구하는 메서드
@@ -49,6 +53,7 @@ class Problem1 {
         String rightPage = String.valueOf(pageList.get(1));
         int rightPageLength = rightPage.length();
 
+        // 곱셈을 위한 변수의 초기값은 0으로 초기화 시 곱셈 연산이 적용되지 않으므로 자릿수 맨 앞의 수를 지정한다.
         int multiplyLeftValue = Integer.parseInt(String.valueOf(leftPage.charAt(0)));
         int multiplyRightValue = Integer.parseInt(String.valueOf(rightPage.charAt(0)));
 
@@ -62,15 +67,8 @@ class Problem1 {
             multiplyRightValue *= Integer.parseInt(String.valueOf(rightPage.charAt(i)));
         }
 
-        // 자릿수 곱의 최댓값 리턴
-        if (multiplyLeftValue > multiplyRightValue) {
-            return multiplyLeftValue;
-        } else if (multiplyLeftValue < multiplyRightValue) {
-            return multiplyRightValue;
-        }
-
         // 왼쪽, 오른쪽 페이지 자릿수 곱의 값이 같으면 둘 중 아무거나 반환한다.
-        return multiplyLeftValue;
+        return whichIsMaxValue(multiplyLeftValue, multiplyRightValue);
     }
 
     // 자릿수의 합과 곱 둘 중 큰 값이 무엇인지 구하는 메서드
@@ -122,36 +120,5 @@ class Problem1 {
             return pobiVersusCrong(pobiValue, crongValue);
         }
         return -1;
-    }
-
-    public static void main(String[] args) {
-
-        List<Integer> pobi = new ArrayList<>();
-        pobi.add(97);
-        pobi.add(98);
-
-        List<Integer> pobi2 = new ArrayList<>();
-        pobi2.add(131);
-        pobi2.add(132);
-
-        List<Integer> pobi3 = new ArrayList<>();
-        pobi3.add(99);
-        pobi3.add(102);
-
-        List<Integer> crong = new ArrayList<>();
-        crong.add(197);
-        crong.add(198);
-
-        List<Integer> crong2 = new ArrayList<>();
-        crong2.add(211);
-        crong2.add(212);
-
-        List<Integer> crong3 = new ArrayList<>();
-        crong2.add(211);
-        crong2.add(212);
-
-        System.out.println(solution(pobi, crong));
-        System.out.println(solution(pobi2, crong2));
-        System.out.println(solution(pobi3, crong3));
     }
 }
