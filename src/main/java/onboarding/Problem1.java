@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
@@ -47,12 +48,41 @@ class Problem1 {
         Integer rightPage = pages.get(1);
 
         boolean valid =
-                leftPage > 0 &&
-                        rightPage > 0 &&
-                        leftPage % 2 == 1 &&
-                        rightPage % 2 == 0 &&
-                        rightPage - leftPage == 1;
+            leftPage > 0 &&
+            rightPage > 0 &&
+            leftPage % 2 == 1 &&
+            rightPage % 2 == 0 &&
+            rightPage - leftPage == 1;
         return valid;
+    }
+
+    /*
+     * 각각의 페이지 숫자의 자릿수를 떼어 배열로 바꿔줍니다.
+     *
+     * @param 두 개의 페이지 배열입니다.
+     * @return 자연수 배열이 포함된 배열을 반환합니다.
+     * */
+    private static List<List> convertPageToSplitNumber(List[] pagesList) {
+        List<List> splitNumberLists = new ArrayList<>();
+        for (List<Integer> pages: pagesList) {
+            List<List> splitNumberList = new ArrayList<>();
+            for (int pageNumber: pages) {
+                List<Integer> splitNumber = splitByDigit(pageNumber);
+                splitNumberList.add(splitNumber);
+            }
+            splitNumberLists.add(splitNumberList);
+        }
+        return splitNumberLists;
+    }
+
+    /*
+     * 숫자를 자릿수별로 떼어준다.
+     *
+     * @param 자연수
+     * @return 자연수를 자릿수별로 떼어낸 정수 배열
+     * */
+    private static List<Integer> splitByDigit(int pageNumber) {
+        return new ArrayList<>();
     }
 
     /*
@@ -61,12 +91,16 @@ class Problem1 {
      * @param 포비와 크롱의 페이지 배열입니다.
      * @return 포비가 이기면 1, 크롱이 이기면 2, 무승부면 0, 인자값이 잘못되었다면 -1을 반환합니다.
      * */
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         List[] pagesList = {pobi, crong};
 
         if (isValidInput(pagesList)) {
             return -1;
         };
+
+        List<List> splitNumberLists = convertPageToSplitNumber(pagesList);
+        System.out.println(splitNumberLists);
 
         return 0;
     }
