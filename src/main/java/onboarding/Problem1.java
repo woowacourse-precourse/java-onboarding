@@ -39,7 +39,7 @@ class Problem1 {
             ansList.set(3, ansList.get(3) * bList.get(i));
         }
         Collections.sort(ansList, Collections.reverseOrder());
-         System.out.println(ansList);
+         //System.out.println(ansList);
          return ansList.get(0);
     }
 
