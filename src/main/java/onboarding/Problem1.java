@@ -17,4 +17,13 @@ class Problem1 {
     }
     return returnNum;
   }
+
+  private static int multiplicationNum(int num) {
+    int returnNum = 1;
+    String pageNum = String.valueOf(num);
+    for (int i = 0; i < pageNum.length(); i++) {
+      returnNum *= pageNum.charAt(i) - '0';
+    }
+    return returnNum;
+  }
 }
