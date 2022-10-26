@@ -7,8 +7,8 @@ class Problem1 {
         if (validationCheck(pobi, crong)) {
             int pobi_max = getMaxValue(pobi);
             int crong_max = getMaxValue(crong);
-            int answer = Integer.MAX_VALUE;
-            return answer;
+            int winner = getWinner(pobi_max, crong_max);
+            return winner;
         }
         return -1;
     }
