@@ -24,6 +24,6 @@ public class Problem3 {
     }
 
     private static boolean doClap(int num) {
-        return true;
+        return num == 3 || num == 6 || num == 9;
     }
 }
