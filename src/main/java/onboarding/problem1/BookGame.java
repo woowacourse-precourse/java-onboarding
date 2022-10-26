@@ -4,6 +4,9 @@ import java.util.List;
 
 public class BookGame {
 
+    private static final int MIN_PAGE_NUMBER = 1;
+    private static final int MAX_PAGE_NUMBER = 400;
+
     private List<Integer> player1;
     private List<Integer> player2;
 
@@ -53,6 +56,12 @@ public class BookGame {
         return num2;
     }
 
+    private void validatePages(List<Integer> playerPages) throws IllegalArgumentException{
+        validatePageOddEven(playerPages);
+        validatePageContinuous(playerPages);
+        validatePageRange(playerPages);
+    }
+
     private void validatePageOddEven(List<Integer> playerPages) throws IllegalArgumentException{
         if(playerPages.get(0)%2 != 1){
             throw new IllegalArgumentException("왼쪽페이지는 홀수여야합니다.");
@@ -68,4 +77,13 @@ public class BookGame {
         }
     }
 
+    private void validatePageRange(List<Integer> playerPages) throws IllegalArgumentException{
+        if(playerPages.get(0) <= MIN_PAGE_NUMBER){
+            throw new IllegalArgumentException("페이지가 범위에서 벗어났습니다.");
+        }
+        if(playerPages.get(1) >= MAX_PAGE_NUMBER){
+            throw new IllegalArgumentException("페이지가 범위에서 벗어났습니다.");
+        }
+
+    }
 }
