@@ -16,6 +16,12 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        if (getMaxNumber(pobi) > getMaxNumber(crong))
+            answer = 1;
+        if (getMaxNumber(pobi) < getMaxNumber(crong))
+            answer = 2;
+        if (getMaxNumber(pobi) == getMaxNumber(crong))
+            answer = 0;
         return answer;
     }
 
