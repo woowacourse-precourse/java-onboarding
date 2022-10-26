@@ -7,18 +7,20 @@ import static java.util.Collections.max;
 
 class Problem1 {
 
+
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        List<Integer> calResultListByPobi = getResult(pobi);
-        List<Integer> calResultListByCrong = getResult(crong);
-        int answer = max(calResultListByPobi).compareTo(max(calResultListByCrong));
+        List<Integer> calResultsByPobi = getResults(pobi);
+        List<Integer> calResultsByCrong = getResults(crong);
+        int answer = getAnswer(max(calResultsByPobi), max(calResultsByCrong));
         return answer;
     }
 
-    private static List<Integer> getResult(List<Integer> participant) {
+    private static List<Integer> getResults(List<Integer> pages) {
         List<Integer> calResultList = new ArrayList<>();
 
-        for (Integer integer : participant) {
-            List<Integer> singleNumbers = getSingleNumbers(integer);
+        for (Integer page : pages) {
+            List<Integer> singleNumbers = getSingleNumbers(page);
             doCalculate(singleNumbers, calResultList);
         }
         return calResultList;
@@ -34,15 +36,23 @@ class Problem1 {
         return valueList;
     }
 
-    private static void doCalculate(List<Integer> valueList, List<Integer> calResultList) {
+    private static void doCalculate(List<Integer> values, List<Integer> calResults) {
         int all_Plus = 0;
         int all_multiply = 1;
-        for (Integer values : valueList) {
-            all_Plus += values;
-            all_multiply *= values;
+        for (Integer value : values) {
+            all_Plus += value;
+            all_multiply *= value;
         }
-        calResultList.add(all_Plus);
-        calResultList.add(all_multiply);
+        calResults.add(all_Plus);
+        calResults.add(all_multiply);
     }
+
+
+    private static int getAnswer(Integer x, Integer y) {
+        return (x < y) ? 2 : ((x == y) ? 0 : 1);
+    }
+
+
+
 
 }
