@@ -10,8 +10,7 @@ class Problem1 {
      * @param 두 개의 페이지 배열입니다.
      * @return 두 페이지 배열이 모두 유효하면 참, 아니면 거짓을 반환합니다.
      * */
-    private static boolean isValidInput(List<Integer> pobi, List<Integer> crong) {
-        List[] pagesList = {pobi, crong};
+    private static boolean isValidInput(List[] pagesList) {
 
         for(List<Integer> pages: pagesList) {
             boolean valid =
@@ -57,8 +56,9 @@ class Problem1 {
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        List[] pagesList = {pobi, crong};
 
-        boolean valid = isValidInput(pobi, crong);
+        boolean valid = isValidInput(pagesList);
         if (valid == false) {
             return -1;
         };
