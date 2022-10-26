@@ -68,6 +68,19 @@ class Problem1 {
         return score;
     }
 
+    public static int getWinner(List<Integer> pobi, List<Integer> crong) {
+        int pobiScore = getScore(pobi);
+        int crongScore = getScore(crong);
+
+        if (pobiScore > crongScore) {
+            return 1; // pobi win
+        } else if (pobiScore < crongScore) {
+            return 2; // crong win
+        } else {
+            return 0; // tie
+        }
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = 0;
 
@@ -75,7 +88,8 @@ class Problem1 {
         if (!isValidPageNumber(pobi) || !isValidPageNumber(crong)) {
             return -1;
         }
+        // 승자 구하기(solve)
+        answer = getWinner(pobi, crong);
         return answer;
     }
 }
-
