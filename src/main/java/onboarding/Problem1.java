@@ -17,6 +17,7 @@ class Problem1 {
 
     public static boolean exceptionCheck(List<Integer> pobi, List<Integer> crong) {
         if (pobi.get(0) == 0 || crong.get(0) == 0 || pobi.get(1) == 401 || crong.get(1) == 401) return true;
+        if (pobi.get(0)+1 != pobi.get(1) || crong.get(0)+1 != crong.get(1)) return true;
         return false;
     }
 
