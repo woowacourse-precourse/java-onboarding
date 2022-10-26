@@ -59,4 +59,11 @@ class Problem1 {
         }
         return Math.max(addScore, multiplyScore);
     }
+
+    private static int calculatePlayerScore(Integer leftPageNumber, Integer rightPageNumber) {
+        int leftPageScore = calculatePageScore(leftPageNumber);
+        int rightPageScore = calculatePageScore(rightPageNumber);
+
+        return Math.max(leftPageNumber, rightPageNumber);
+    }
 }
