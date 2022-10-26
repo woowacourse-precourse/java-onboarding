@@ -59,9 +59,9 @@ public class Problem2 {
     }
 
     /**
-     * 암호문을 분할합니다.
+     * 암호문을 분리합니다.
      * @param cryptogram 암호문
-     * @return 분할된 암호문
+     * @return 분리된 암호문
      */
     private static ArrayList<String> splitCryptogram(String cryptogram) {
         ArrayList<String> arrayListSplitCryptogram = new ArrayList<>();
