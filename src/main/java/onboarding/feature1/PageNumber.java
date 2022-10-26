@@ -8,17 +8,17 @@ public class PageNumber {
     private final Integer rightPage;
 
     // 생성자
-    public PageNumber(List<Integer> numbers) {
-        this.leftPage = numbers.get(0);
-        this.rightPage = numbers.get(1);
+    public PageNumber(List<Integer> PageNumbers) {
+        this.leftPage = PageNumbers.get(0);
+        this.rightPage = PageNumbers.get(1);
     }
 
     // 메소드
-    public int getLeftPage() {
+    public Integer getLeftPage() {
         return this.leftPage;
     }
 
-    public int getRightPage() {
+    public Integer getRightPage() {
         return this.rightPage;
     }
 }

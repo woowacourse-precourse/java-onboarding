@@ -3,15 +3,15 @@ package onboarding.feature1;
 import static onboarding.feature1.Constants.*;
 
 public class PageValidator {
-    public static boolean isConsecutive (Integer leftPage, Integer rightPage) {
-        if (rightPage - leftPage == 1) {
+    public static boolean isConsecutive (PageNumber pageNumber) {
+        if (pageNumber.getRightPage() - pageNumber.getLeftPage() == 1) {
             return true;
         }
         return false;
     }
 
-    public static boolean isFirstOrLast(Integer leftPage) {
-        if (leftPage == FIRST_PAGE || leftPage == LAST_PAGE) {
+    public static boolean isFirstOrLast(PageNumber pageNumber) {
+        if (pageNumber.getLeftPage() == FIRST_PAGE || pageNumber.getLeftPage() == LAST_PAGE) {
             return false;
         }
         return true;

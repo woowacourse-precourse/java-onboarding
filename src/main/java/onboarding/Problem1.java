@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.List;
 
+import onboarding.feature1.MaximumCalculator;
 import onboarding.feature1.PageNumber;
 import onboarding.feature1.PageValidator;
 
