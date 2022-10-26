@@ -3,12 +3,13 @@ package onboarding;
 public class Problem4 {
     public static String solution(String word) {
         StringBuilder answer = new StringBuilder();
-        word.chars().map(c -> convertToFrogDictionary((char) c))
-                .forEach(answer::append);
+        for (char c : word.toCharArray()) {
+            answer.append(convertToFrogDictionary(c));
+        }
         return answer.toString();
     }
 
-    private static char convertToFrogDictionary(char c) {
+    private static Character convertToFrogDictionary(char c) {
         if (isNotContainsFrogDictionary(c)) {
             return c;
         }
