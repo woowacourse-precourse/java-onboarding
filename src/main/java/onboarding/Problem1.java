@@ -17,7 +17,13 @@ class Problem1 {
         return true;
     }
 
-    public static int sumDigits(int value){
+    public static int maxOf(Integer page) {
+        int sumDigits = sumDigits(page);
+        int multiplyDigits = multiplyDigits(page);
+        return Math.max(sumDigits, multiplyDigits);
+    }
+
+    public static int sumDigits(int value) {
         int sum = 0;
         while (value > 0) {
             int n = value % 10;
@@ -27,7 +33,7 @@ class Problem1 {
         return sum;
     }
 
-    public static int multiplyDigits(int value){
+    public static int multiplyDigits(int value) {
         int multiply = 1;
         while (value > 0) {
             int n = value % 10;
