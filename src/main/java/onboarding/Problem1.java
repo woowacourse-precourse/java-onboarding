@@ -4,7 +4,29 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        // 포비 점수
+        int pobi_sum = sum(pobi);
+        int pobi_multi = multi(pobi);
 
+        int pobi_max = max(pobi_sum, pobi_multi);
+
+        // 크롱 점수
+        int crong_sum = sum(crong);
+        int crong_multi = multi(crong);
+
+        int crong_max = max(crong_sum, crong_multi);
+
+        // 리턴값 계산
+        if(pobi_max > crong_max){
+            return 1;
+        }
+        if (pobi_max == crong_max){
+            return 0;
+        }
+        if (pobi_max < crong_max) {
+            return 2;
+        }
+        return -1;
     }
 
     // 더하기
