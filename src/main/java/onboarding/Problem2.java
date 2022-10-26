@@ -18,7 +18,28 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        StringBuilder cryptogramSb = new StringBuilder(cryptogram);
+        int sameCount = 1;
+        int firstIdx = 0;
+        for (int i = 0; i < cryptogramSb.length() - 1; i++) {
+            if (sameCount == 1) {
+                firstIdx = i;
+            }
+            char currentChar = cryptogramSb.charAt(i);
+            char nextChar = cryptogramSb.charAt(i + 1);
+            if (currentChar == nextChar) {
+                sameCount++;
+                continue;
+            }
+            if (sameCount > 1) {
+                cryptogramSb.delete(firstIdx, firstIdx + sameCount);
+                sameCount = 1;
+                i = -1;
+            }
+        }
+        if (sameCount > 1) {
+            cryptogramSb.delete(firstIdx, firstIdx + sameCount);
+        }
+        return cryptogramSb.toString();
     }
 }
