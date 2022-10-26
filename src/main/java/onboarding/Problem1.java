@@ -30,4 +30,13 @@ class Problem1 {
 
         return true;
     }
+
+    public static String integerToString(int target) {
+        return Integer.toString(target);
+    }
+
+    public static int getLength(int target) {
+        String stringTarget = integerToString(target);
+        return stringTarget.length();
+    }
 }
