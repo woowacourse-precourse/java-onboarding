@@ -31,6 +31,14 @@ class Problem4Test {
 		List<Integer> Choi_Sang_Won = Arrays.asList(67, 104, 111, 105, 32, 83, 97, 110, 103, 32, 87, 111, 110);
 
 		assertThat(Problem4.turnWordIntoAscii(val.split(""))).isEqualTo(Choi_Sang_Won);
+	}
 
+	@Test
+	void 아스키코드를_문자로_변경(){
+		List<Integer> val = Arrays.asList(73, 32, 76, 111, 118, 101, 32, 89, 111, 117);
+		assertThat(Problem4.turnAsciiIntoWord(val)).isEqualTo("I Love You");
+
+		List<Integer> Choi_Sang_Won = Arrays.asList(67, 104, 111, 105, 32, 83, 97, 110, 103, 32, 87, 111, 110);
+		assertThat(Problem4.turnAsciiIntoWord(Choi_Sang_Won)).isEqualTo("Choi Sang Won");
 	}
 }

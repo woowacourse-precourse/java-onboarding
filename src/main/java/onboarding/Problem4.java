@@ -1,9 +1,7 @@
 package onboarding;
 
-트import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * 1. word길이 체크
@@ -21,8 +19,8 @@ public class Problem4 {
     public static String solution(final String word) {
         checkValidRange(word.length());
         String answer = "";
+        List<Integer> asciiWord = turnWordIntoAscii(word.split(""));
 
-        String[] splitWord = word.split("");
 
 
 
@@ -41,5 +39,13 @@ public class Problem4 {
             asciiWord.add((int)word.charAt(0));
         }
         return asciiWord;
+    }
+
+    public static String turnAsciiIntoWord(List<Integer> asciiList) {
+        String result = "";
+        for (int i : asciiList) {
+            result += Character.toString((char)i);
+        }
+        return result;
     }
 }
