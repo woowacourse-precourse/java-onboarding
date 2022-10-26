@@ -22,6 +22,13 @@ class Problem1 {
             return EXCEPTION;
         }
 
+        // 좌측 페이지가 홀수이고 우측 페이지가 짝수인지 확인
+        if (isEvenPage(pobi.get(LEFT_PAGE)) || isOddPage(pobi.get(RIGHT_PAGE))
+                || isEvenPage(crong.get(LEFT_PAGE)) || isOddPage(crong.get(RIGHT_PAGE))) {
+            return EXCEPTION;
+        }
+
+
         return answer;
     }
 
@@ -31,5 +38,13 @@ class Problem1 {
 
     public static boolean isHavingLastPage(List<Integer> openPages) {
         return openPages.contains(LAST_PAGE);
+    }
+
+    public static boolean isOddPage(int page) {
+        return page % 2 == 1;
+    }
+
+    public static boolean isEvenPage(int page) {
+        return page % 2 == 0;
     }
 }
