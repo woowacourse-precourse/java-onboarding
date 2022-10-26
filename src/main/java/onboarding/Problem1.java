@@ -92,7 +92,7 @@ class Problem1 {
 
         private static int sumEachNumber(int pageNumber) {
             List<Integer> pageNumberList = toList(String.valueOf(pageNumber));
-            return pageNumberList.stream().mapToInt(Integer::intValue).sum();
+            return pageNumberList.stream().reduce(0, Integer::sum);
         }
 
         private static int multEachNumber(int pageNumber) {
