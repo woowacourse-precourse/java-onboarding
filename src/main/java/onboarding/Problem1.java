@@ -30,6 +30,8 @@ class Problem1 {
                 page /= 10;
             }
 
+            int biggerThanNumber = Math.max(sum, multi);
+
         }
 
         return 0;
