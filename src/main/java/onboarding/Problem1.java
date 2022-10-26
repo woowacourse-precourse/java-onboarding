@@ -2,6 +2,8 @@ package onboarding;
 
 import java.util.List;
 
+import static java.lang.Math.max;
+
 class Problem1 {
     public static final int POBI_WIN = 1;
     public static final int CRONG_WIN = 2;
@@ -17,7 +19,7 @@ class Problem1 {
         if (!validatePageSequence(pobi) || !validatePageSequence(crong)) {
             return EXCEPTION;
         }
-        return 1;
+        return getWinner(pobi, crong);
     }
 
     private static boolean validatePageSequence(List<Integer> list) {
@@ -30,6 +32,16 @@ class Problem1 {
 
     private static boolean validatePageRange(List<Integer> list) {
         return list.get(0) > 1 ||  list.get(1) < 400;
+    }
+
+    public static int getWinner(List<Integer> pobi, List<Integer> crong) {
+        if (getUserMaxNumber(pobi) > getUserMaxNumber(crong)) {
+            return POBI_WIN;
+        }
+        if (getUserMaxNumber(pobi) < getUserMaxNumber(crong)) {
+            return CRONG_WIN;
+        }
+        return DRAW;
     }
 
     public static int getAddNumber(int num) {
