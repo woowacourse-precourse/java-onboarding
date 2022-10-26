@@ -58,6 +58,21 @@ public class Problem7 {
         }
     }
 
+    /**
+     * 4. 방문자일 경우 1점을 추가하는 함수
+     * @param visitors
+     */
+
+    static void calcVisitors(List<String> visitors) {
+        visitors.forEach(s -> {
+            if(points.containsKey(s)){
+                points.put(s, points.get(s) + 1);
+            }else{
+                points.put(s, 1);
+            }
+        });
+    }
+
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         friendsHashMap.clear();
