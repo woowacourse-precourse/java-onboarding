@@ -35,7 +35,19 @@ class Problem1 {
      * @return 유효하면 true, 아니면 false
      */
     private static boolean isValid(Integer number1, Integer number2) {
-    	return (number1 != null && number2 != null) && Math.abs(number1 - number2) == 1 ? true : false;
+    	// 다른 계산식에서 오류가 발생하지 않도록 null값에 대한 예외처리를 먼저 한다.
+    	if (number1 == null || number2 == null) {
+    		return false;
+    	}
+    	// 홀수, 짝수에 대한 예외처리
+    	if (number1%2 == 0 || number2%2 != 0) {
+    		return false;
+    	}
+    	// 두 수의 연속성 여부에 대한 예외처리
+    	if (Math.abs(number1 - number2) != 1) {
+    		return false;
+    	}
+    	return true;
     }
     
     /**
