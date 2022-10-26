@@ -82,8 +82,34 @@ class ApplicationTest {
 
         @Test
         void isConsecutive(){
+            List<Integer> pobi = List.of(11, 14);
+            List<Integer> crong = List.of(399, 400);
+            boolean result = false;
+            try{
+                Problem1.solution(pobi, crong);
+            } catch (Exception error){
+                result = true;
+            }
+            assertThat(result).isTrue();
+        }
+
+        @Test
+        void leftOddCheck(){
             List<Integer> pobi = List.of(10, 12);
             List<Integer> crong = List.of(399, 400);
+            boolean result = false;
+            try{
+                Problem1.solution(pobi, crong);
+            } catch (Exception error){
+                result = true;
+            }
+            assertThat(result).isTrue();
+        }
+
+        @Test
+        void rightEvenCheck(){
+            List<Integer> pobi = List.of(11, 12);
+            List<Integer> crong = List.of(398, 399);
             boolean result = false;
             try{
                 Problem1.solution(pobi, crong);
