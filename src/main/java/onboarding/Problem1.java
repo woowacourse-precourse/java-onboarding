@@ -5,6 +5,11 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        if (checkNumberListValidation(pobi) && checkNumberListValidation(crong)) {
+            answer = getWinner(getScore(pobi), getScore(crong));
+        } else {
+            answer = -1;
+        }
         return answer;
     }
 
