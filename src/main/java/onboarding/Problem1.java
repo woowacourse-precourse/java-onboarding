@@ -12,10 +12,11 @@ class Problem1 {
         int c2 = crong.get(1); //크롱 오른쪽 페이지
         int n1, n2, n3, sum, mul, lNum, rNum, pNum, cNum = 0;
 
-        if (p1 == (p2 - 1)) {//연속 페이지인 경우
+        if (p1 == (p2 - 1) && (p1>=1&&c1>=1) && (400>=p2&&400>=c2) ) {
+            //연속 페이지 and 왼쪽 페이지 1이상 and 오른쪽 페이지 400이하인 경우
 
             ////포비
-            if (p1 >= 100) {//포비 왼쪽 페이지가 100이상
+            if (p1>= 100) {//포비 왼쪽 페이지가 100이상
                 n1 = p1 / 100;
                 n2 = (p1 % 100) / 10;
                 n3 = p1 % 10;
@@ -26,7 +27,7 @@ class Problem1 {
                 } else {//곱이 큰 경우
                     lNum = mul;
                 }
-            } else if (100 > p1 && p1 >= 10) {//두자리 수인 경우
+            } else if (p1 >= 10) {//두자리 수인 경우
                 n1 = p1 / 10;
                 n2 = p1 % 10;
                 sum = n1 + n2;
@@ -51,7 +52,7 @@ class Problem1 {
                 } else {//곱이 큰 경우
                     rNum = mul;
                 }
-            } else if (100 > p2 && p2 >= 10) {//두자리 수인 경우
+            } else if (p2 >= 10) {//두자리 수인 경우
                 n1 = p2 / 10;
                 n2 = p2 % 10;
                 sum = n1 + n2;
@@ -84,7 +85,7 @@ class Problem1 {
                 } else {//곱이 큰 경우
                     lNum = mul;
                 }
-            } else if (100 > c1 && c1 >= 10) {//두자리 수인 경우
+            } else if (c1 >= 10) {//두자리 수인 경우
                 n1 = c1 / 10;
                 n2 = c1 % 10;
                 sum = n1 + n2;
@@ -109,7 +110,7 @@ class Problem1 {
                 } else {//곱이 큰 경우
                     rNum = mul;
                 }
-            } else if (100 > c2 && c2 >= 10) {//두자리 수인 경우
+            } else if (c2 >= 10) {//두자리 수인 경우
                 n1 = c2 / 10;
                 n2 = c2 % 10;
                 sum = n1 + n2;
@@ -136,11 +137,11 @@ class Problem1 {
             } else {//포비=크롱
                 answer = 0;
             }
-            return answer;
 
-        }else {//불연속 페이지인 경우
+        }else {//불연속 페이지 or 왼쪽 페이지 1미만 or 오른쪽 페이지 400초과인 경우
             answer=-1;
-            return answer;
         }
+
+        return answer;
     }
 }
