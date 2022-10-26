@@ -28,4 +28,12 @@ class Problem1 {
 
         return mult;
     }
+
+    private static int validateBiggerNumber(int number1, int number2) {
+        if(number1 < number2) {
+            return number2;
+        }
+
+        return number1;
+    }
 }
