@@ -9,6 +9,10 @@ class Problem1 {
         return answer;
     }
     
+    private static int getMaxNumber(final List<Integer> numbers) {
+        return Math.max(getMaxSum(numbers), getMaxMultiply(numbers));
+    }
+    
     private static int getMaxMultiply(final List<Integer> numbers) {
         return numbers.stream()
                 .mapToInt(Problem1::multiply)
