@@ -42,13 +42,16 @@ class Problem1 {
 
         return max;
     }
-    
+
 
     // TODO pobi와 crong의 값을 비교하는 메서드
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (errorCheck(pobi) || errorCheck(crong)) return -1;
-        int pobiScore;
-        int crongScore;
-        return 1;
+        int pobiScore = getBigScore(pobi);
+        int crongScore = getBigScore(crong);
+
+        if (pobiScore > crongScore) return 1;
+        else if (pobiScore == crongScore) return 0;
+        else return -1;
     }
 }
