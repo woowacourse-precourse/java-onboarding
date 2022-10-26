@@ -1,9 +1,6 @@
 package onboarding;
 
 import java.util.List;
-
-// 2자리 경우 처리
-
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
