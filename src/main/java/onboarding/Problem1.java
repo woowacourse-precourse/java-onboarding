@@ -7,6 +7,11 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+    private static int findMaxOfMultiAndAdd(int pageNum) {
+        int sum = addElements(pageNum);
+        int multi = multiElements(pageNum);
+        return Math.max(sum, multi);
+    }
     public static int addElements(int n) {
         int total = 0;
 
