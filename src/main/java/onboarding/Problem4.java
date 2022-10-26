@@ -12,4 +12,11 @@ public class Problem4 {
         }
         return false;
     }
+
+    static boolean isLowerCase(char character) {
+        if (character >= 'a' && character <= 'z') {
+            return true;
+        }
+        return false;
+    }
 }
