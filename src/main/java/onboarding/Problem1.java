@@ -18,6 +18,12 @@ class Problem1 {
         return answer;
     }
 
+    private static boolean validatePage(final List<Integer> pages){
+        if(pages.get(0) + 1 != pages.get(1))
+            return false;
+        return true;
+    }
+
     private static int plusPage(int page){
         int pageSumResult = 0;
 
