@@ -15,4 +15,13 @@ class Problem1 {
         }
         return sum;
     }
+
+    private static int multiplyAllNumbers(int page){
+        int sum = 1;
+        while (page > 0){
+            sum *= page % 10;
+            page /= 10;
+        }
+        return sum;
+    }
 }
