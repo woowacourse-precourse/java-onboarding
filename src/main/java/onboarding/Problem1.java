@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 class Problem1 {
@@ -21,14 +20,17 @@ class Problem1 {
         if ((leftPage + 1) != rightPage) {
             return -1;
         }
-        
-        List<Integer> leftPageEachNumbers = getEachNumbers(leftPage);
-        int leftPageMaxValue = Math.max(doSum(leftPageEachNumbers), doMultiply(leftPageEachNumbers));
 
-        List<Integer> rightPageEachNumbers = getEachNumbers(rightPage);
-        int rightPageMaxValue = Math.max(doSum(rightPageEachNumbers), doMultiply(rightPageEachNumbers));
+        int leftPageMaxValue = doCalculate(leftPage);
+        int rightPageMaxValue = doCalculate(rightPage);
 
         return Math.max(leftPageMaxValue, rightPageMaxValue);
+    }
+
+    private static int doCalculate(Integer page) {
+        List<Integer> eachNumbers = getEachNumbers(page);
+        int pageMaxValue = Math.max(doSum(eachNumbers), doMultiply(eachNumbers));
+        return pageMaxValue;
     }
 
     private static List<Integer> getEachNumbers(Integer integer) {

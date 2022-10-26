@@ -43,6 +43,7 @@ class ApplicationTest {
             int result = 2;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
+
     }
 
     @Nested
