@@ -75,7 +75,7 @@ class Problem1 {
     }
 
     public static boolean validatePageNumbers(List<List<Integer>> pageNumbersInstances){
-        for (List<Integer> pageNumbers : pageNumbersInstances){ //for문 내부 함수를 밖으로 빼보자
+        for (List<Integer> pageNumbers : pageNumbersInstances){
             int leftPageNumber = pageNumbers.get(0);
             int rightPageNumber = pageNumbers.get(1);
             if (pageNumbers.equals(startPage) || pageNumbers.equals(endPage)){
