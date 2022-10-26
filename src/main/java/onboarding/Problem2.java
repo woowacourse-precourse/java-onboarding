@@ -52,6 +52,16 @@ public class Problem2 {
         }
     }
 
+    public static String solution(String cryptogram) {
+
+        setUp(cryptogram);
+        while (!hasNotDuplicate) {
+            findDuplicateCharacter();
+        }
+        return answer;
+    }
+
+
     private static boolean DuplicateCharacter(int i, char character) {
         return character == chars[i + 1];
     }
@@ -76,14 +86,6 @@ public class Problem2 {
         return i == 0;
     }
 
-    public static String solution(String cryptogram) {
-
-        setUp(cryptogram);
-        while (!hasNotDuplicate) {
-            findDuplicateCharacter();
-        }
-        return answer;
-    }
 
 
 
