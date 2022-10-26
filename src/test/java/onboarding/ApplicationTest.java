@@ -162,6 +162,12 @@ class ApplicationTest {
             String result = "R olev blf";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
+
+        @Test
+        void correctSizeTest(String str){
+            String word = "";
+            assertThat(Problem4.Validator.isValidate(word)).isEqualTo(false);
+        }
     }
 
     @Nested
