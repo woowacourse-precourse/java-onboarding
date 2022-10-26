@@ -36,7 +36,6 @@ class Problem1 {
         return valid;
     }
 
-
     /*
      * 두 페이지가 자연수인지, 연속한 홀수 짝수 페이지인지 확인합니다.
      *
@@ -90,6 +89,61 @@ class Problem1 {
         return splitNumber;
     }
 
+    /*
+     * 페이지 게임의 승자를 가려주는 코드입니다.
+     *
+     * @param 두 개의 페이지 배열입니다.
+     * @return 무승부는 0, 포비의 승리는 1, 크롱의 승리는 2입니다.
+     * */
+    private static int findWinner(List<List>  splitPageNumbers) {
+        int pobiMax = getBiggerNumber(addNumbers(splitPageNumbers.get(0)), multiplyNumbers(splitPageNumbers.get(0)));
+        int crongMax = getBiggerNumber(addNumbers(splitPageNumbers.get(1)), multiplyNumbers(splitPageNumbers.get(1)));
+        if (pobiMax == crongMax) {
+            return 0;
+        }
+        if (getBiggerNumber(pobiMax, crongMax) == pobiMax) {
+            return 1;
+        }
+        return 2;
+    }
+
+    /*
+     * 두 숫자를 비교해 큰 수를 알려줍니다.
+     *
+     * @param 두 개의 정수입니다.
+     * @return 둘 중 큰 정수입니다.
+     * */
+    private static int getBiggerNumber(int numberX, int numberY){
+        return 0;
+    }
+
+    /*
+     * 배열 안의 모든 숫자를 더해줍니다.
+     *
+     * @param 정수를 포함한 배열입니다.
+     * @return 모든 정수의 합입니다.
+     * */
+    private  static int addNumbers(List<Integer> splitNumbers){
+        return 0;
+    }
+
+    /*
+     * 배열 안의 모든 숫자를 곱해줍니다.
+     *
+     * @param 정수를 포함한 배열입니다.
+     * @return 모든 정수의 곱입니다.
+     * */
+    private  static int multiplyNumbers(List<Integer> splitNumbers){
+        return 0;
+    }
+
+    /*
+     * Problem1의 솔루션 코드입니다.
+     *
+     * @param 포비와 크롱의 페이지 배열입니다.
+     * @return 포비가 이기면 1, 크롱이 이기면 2, 무승부면 0, 인자값이 잘못되었다면 -1을 반환합니다.
+     * */
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         List[] pageNumbers = {pobi, crong};
         if (isValidInput(pageNumbers) == false) {
@@ -97,8 +151,9 @@ class Problem1 {
         };
 
         List<List> splitPageNumbers = convertPageToSplitNumbers(pageNumbers);
+        int result = findWinner(splitPageNumbers);
 
-        return 0;
+        return result;
     }
 
     public static void main(String[] args) {
