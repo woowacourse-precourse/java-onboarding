@@ -4,4 +4,3 @@
 4. 허용되는 범위의 페이지를 폈는지 검증하는 기능: isAllowedPage(int page);
 5. 2개의 페이지만 폈는지 검증하는 기능: isAllowedPagesCount(List<Integer> pageList);
 6. 연속되는 페이지를 폈는지 검증하는 기능: isContinuousPage(List<Integer> pageList);
-7. 배열에 왼쪽페이지, 오른쪽 페이지가 순서대로 있는지 검증하는 기능: isCorrectPage(List<Integer> pageList);
