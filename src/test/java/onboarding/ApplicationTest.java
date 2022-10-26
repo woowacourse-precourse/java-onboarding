@@ -55,7 +55,7 @@ class ApplicationTest {
 
       assertThat(Problem1.isAllowedPage(pageC)).isEqualTo(true);
     }
-    
+
     @Test
     void isAllowedPagesCountTest() {
       //given
@@ -68,9 +68,24 @@ class ApplicationTest {
       });
 
       assertThat(Problem1.isAllowedPagesCount(pobi)).isEqualTo(true);
-        
-     }
-    
+
+    }
+
+    @Test
+    void isContinuousPageTest() {
+      //given
+      List<Integer> pobi = List.of(131, 132);
+      List<Integer> crong = List.of(131, 134);
+
+      //then
+      assertThrows(IllegalStateException.class, () -> {
+        Problem1.isContinuousPage(crong);
+      });
+
+      assertThat(Problem1.isContinuousPage(pobi)).isEqualTo(true);
+
+    }
+
   }
 
   @Nested
