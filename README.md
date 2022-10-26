@@ -7,9 +7,9 @@
 1. [문제 1](./docs/PROBLEM1.md)
   - [X] isValidInput
     - 인자로 들어온 두 페이지 배열의 길이와 원소가 유효한지 검사한다.
-    - [X] isCorrectLength
+    - [X] hasTwoElements
       - 인자로 들어온 페이지 배열의 길이가 2인지 검사한다.
-    - [X] areCorrectNumbers
+    - [X] hasValidNumbers
       - 인자로 들어온 페이지 배열의 숫자가 자연수에 연속된 홀수 짝수인지 검사한다.
   - [X] convertIntoSplitPageNumbers
     - 인자로 들어온 두 페이지 배열들의 요소를 자연수에서 자릿수별로 나눈 배열로 바꿔준다.
@@ -25,6 +25,17 @@
       - 두 숫자 중 큰 숫자를 알려준다.
 
 2. [문제 2](./docs/PROBLEM2.md)
+  - [ ] isValidInput
+  - 인자로 들어온 문자열이 유효한지 검사한다.
+    - [ ] hasValidLength
+    - 문자열의 길이가 1~1000인지 검사한다.
+    - [ ] isLowerCase
+    - 문자열이 모두 소문자인지 검사한다.
+  - [ ] decrypt
+    - 스택 자료구조를 사용해 중복 문자열이 나오면 딱 한번 제거한다.
+    - 이전 문자를 저장해 현재 문자와 같으면 추가하지 않는다.
+    - [ ] toString
+      - 스택 자료구조로 저장된 문자들을 합친다.
 3. [문제 3](./docs/PROBLEM3.md)
 4. [문제 4](./docs/PROBLEM4.md)
 5. [문제 5](./docs/PROBLEM5.md)
