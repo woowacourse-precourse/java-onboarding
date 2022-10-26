@@ -34,7 +34,7 @@ class Problem1 {
 
     // 각 자릿수 더하기
     static Integer addEachDigit(Integer page) {
-        char[] eachDigit = String.valueOf(page).toCharArray();
+        char[] eachDigit = String.valueOf(page).toCharArray(); // Integer -> char[]로 바꾸기.
         Integer total = 0;
         for(int i=0; i<eachDigit.length; i++) {
             total += eachDigit[i] - '0';
