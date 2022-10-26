@@ -26,4 +26,14 @@ class Problem1 {
         }
         return sum;
     }
+
+    public static int multiplyDigits(int value){
+        int multiply = 1;
+        while (value > 0) {
+            int n = value % 10;
+            multiply *= n;
+            value /= 10;
+        }
+        return multiply;
+    }
 }
