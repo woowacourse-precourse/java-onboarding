@@ -46,7 +46,7 @@ class Problem1 {
      * - 점수는 각 자리를 모두 더하거나 모두 곱해 가장 큰 수 이다.
      * - 두 페이지의 점수 중 더 큰 수를 반환한다.
      */
-    public int getScore(List<Integer> pobi, List<Integer> crong) {
+    public int getScore(List<Integer> scoreList) {
         int returnValue = 1;
         return returnValue;
     }
