@@ -18,7 +18,16 @@ public class Problem4 {
     }
 
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        String result = "";
+
+        for (char c: word.toCharArray()) {
+
+            if (Character.isAlphabetic(c))
+                result += turnToTreeFrogChar(c);
+            else
+                result += c;
+        }
+
+        return result;
     }
 }
