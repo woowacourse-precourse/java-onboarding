@@ -39,8 +39,14 @@ class Problem1 {
             ansList.set(3, ansList.get(3) * bList.get(i));
         }
         Collections.sort(ansList, Collections.reverseOrder());
-         //System.out.println(ansList);
+//         System.out.println(ansList);
          return ansList.get(0);
+    }
+
+    static int compare(int a, int b){
+         if(a > b) return 1;
+         if(a < b) return 2;
+         return 0;
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -49,13 +55,7 @@ class Problem1 {
             return -1;
         }
 
-        int p_num = defNumber(pobi);
-        int c_num = defNumber(crong);
-
-        if(p_num > c_num) answer = 1;
-        if(p_num < c_num) answer = 2;
-        if(p_num == c_num) answer = 0;
-
+        answer = compare(defNumber(pobi), defNumber(crong));
         return answer;
     }
 }
