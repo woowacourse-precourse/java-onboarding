@@ -19,6 +19,7 @@ import java.util.List;
 // todo
 // 1. pobi와 crong리스트 안에 들어있는 숫자를 가져온다.
 // 2. 가져온 숫자 각각의 자릿수를 분해
+// 3. 분해한 각각의 숫자를 더하거나 곱했을때 가장 큰 수를 구한다.
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -30,6 +31,17 @@ class Problem1 {
         int crong_first = crong.get(0);
         int crong_second = crong.get(1);
 
+        System.out.println(returnDigit(pobi_first));
+
         return answer;
+    }
+
+    public static List<Integer> returnDigit(int num){
+        ArrayList<Integer> arrNum = new ArrayList<>();
+        while(num > 0) {
+            arrNum.add(num %10);
+            num /= 10;
+        }
+        return arrNum;
     }
 }
