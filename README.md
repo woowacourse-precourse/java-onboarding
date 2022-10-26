@@ -27,7 +27,7 @@
 2. [문제 2](./docs/PROBLEM2.md)
   - [X] isValidInput
   - 인자로 들어온 문자열이 유효한지 검사한다.
-    - [ ] hasValidLength
+    - [X] hasValidLength
     - 문자열의 길이가 1~1000인지 검사한다.
     - [ ] isLowerCase
     - 문자열이 모두 소문자인지 검사한다.
