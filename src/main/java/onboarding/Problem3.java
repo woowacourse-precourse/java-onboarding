@@ -28,4 +28,8 @@ public class Problem3 {
         return sb.toString();
     }
 
+    public static int count (String str, char ch) {
+        return str.length() - str.replace(String.valueOf(ch), "").length();
+    }
+
 }
