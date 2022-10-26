@@ -11,7 +11,17 @@ class Problem1 {
     private static final int POBI_WIN = 1;
     private static final int CRONG_WIN = 2;
 
+    private static final int VALID_LIST_SIZE = 2;
+    private static final int PAGE_START_NUMBER = 3;
+    private static final int PAGE_END_NUMBER = 398;
+    private static final boolean INVALID = true;
+    private static final boolean VALID = false;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        if (isInvalidInput(pobi) || isInvalidInput(crong)) {
+            return EXCEPTION_CASE;
+        }
+
         int pobiScore = getPlayerMaxScore(pobi);
         int crongScore = getPlayerMaxScore(crong);
 
@@ -53,5 +63,35 @@ class Problem1 {
         int multiplicationResult = calculateMultiplicationOfStringDigits(parsedPageNumber);
 
         return Math.max(sumResult, multiplicationResult);
+    }
+
+    public static boolean isInvalidInput(List<Integer> pages) {
+        if (!hasValidListSize(pages)) {
+            return INVALID;
+        } else if (!isSuccessivePages(pages)) {
+            return INVALID;
+        } else if (!isLeftPageOdd(pages)) {
+            return INVALID;
+        } else if (!isValidPageNumberRange(pages)) {
+            return INVALID;
+        }
+
+        return VALID;
+    }
+
+    private static boolean hasValidListSize(List<Integer> pages) {
+        return pages.size() == VALID_LIST_SIZE;
+    }
+
+    private static boolean isValidPageNumberRange(List<Integer> pages) {
+        return PAGE_START_NUMBER <= pages.get(LEFT_PAGE) && pages.get(LEFT_PAGE) < PAGE_END_NUMBER;
+    }
+
+    private static boolean isLeftPageOdd(List<Integer> pages) {
+        return pages.get(LEFT_PAGE) % 2 == 1;
+    }
+
+    private static boolean isSuccessivePages(List<Integer> pages) {
+        return pages.get(RIGHT_PAGE) - pages.get(LEFT_PAGE) == 1;
     }
 }
