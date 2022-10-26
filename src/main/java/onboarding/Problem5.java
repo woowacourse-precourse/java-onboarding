@@ -15,6 +15,17 @@ public class Problem5 {
         };
 
         Map<Integer, Integer> moneyUnitMap = getMoneyUnitMap(koreanMoneyUnits);
+        int cursor = 0;
+        while (money > 0) {
+            int currentUnit = koreanMoneyUnits[cursor];
+            if (money <= currentUnit) {
+                cursor += 1;
+                continue;
+            }
+
+            money -= currentUnit;
+            moneyUnitMap.put(currentUnit, moneyUnitMap.get(currentUnit) + 1);
+        }
 
         return answer;
     }
