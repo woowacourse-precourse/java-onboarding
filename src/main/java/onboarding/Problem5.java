@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -9,8 +10,10 @@ public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
 
-        //answer = divisionMoney(digit(money));
-        System.out.println(divisionMoney(digit(money)));
+        answer = Arrays.asList(divisionMoney(digit(money)));
+        Collections.reverse(answer);
+
+        ///System.out.println(divisionMoney(digit(money)));
         return answer;
     }
 
@@ -24,13 +27,11 @@ public class Problem5 {
             digitNumber.add(number % 10);
             number /= 10;
         }
-
-        System.out.println("자리수 : " + digitNumber);
         return digitNumber;
     }
 
-    public static int [] divisionMoney(List<Integer> digitNumber) {
-        int[] moneyList = new int[max];
+    public static Integer [] divisionMoney(List<Integer> digitNumber) {
+        Integer[] moneyList = new Integer[max];
         int j = 0;
 
         moneyList[0] = digitNumber.get(0);
