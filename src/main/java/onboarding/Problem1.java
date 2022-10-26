@@ -31,7 +31,47 @@ class Problem1 {
             return -1;
         }
 
+        int player1Number = biggestNumberCheck(pobi);
+        int player2Number = biggestNumberCheck(crong);
+
         return answer;
+    }
+
+    private static int biggestNumberCheck(List<Integer> player) {
+
+        int leftPageNumber = player.get(0);
+        int rightPageNumber = player.get(1);
+
+        List<Integer> leftNumbers = splitNumber(leftPageNumber);
+        List<Integer> rightNumbers = splitNumber(rightPageNumber);
+
+        int plusNumber = 0;
+        int multiplyNumber = 1;
+
+        //1. 왼쪽 페이지 번호를 다 더한값과 곱한값 구해서 큰값 도출
+        for (int leftNumber : leftNumbers) {
+            plusNumber += leftNumber;
+            multiplyNumber *= leftNumber;
+        }
+
+        //2. 오른쪽 페이지 번호를 다 더한값과 곱한값 구해서 큰값 도출
+        if (plusNumber > multiplyNumber) {
+            return plusNumber;
+        } else {
+            return multiplyNumber;
+        }
+    }
+
+    private static List<Integer> splitNumber(int pageNumber) {
+
+        List<Integer> numbers = new ArrayList<>();
+
+        while (pageNumber != 0) {
+            numbers.add(pageNumber % 10);
+            pageNumber /= 10;
+        }
+
+        return numbers;
     }
 
     private static int exceptionCheck(List<Integer> player) {
