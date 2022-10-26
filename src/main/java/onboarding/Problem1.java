@@ -70,15 +70,21 @@ class Problem1 {
     /**
      * @Method: addDigit
      * 각 자릿수를 기반으로 더한 값을 구한다.
-     * TODO: 각 자릿수를 더한다.
      */
+    private static int addDigit(List<Integer> digits) {
+        int answer = 0;
+        // 각 자릿수를 더한다.
+        for(Integer digit : digits) {
+            answer += digit;
+        }
+        return answer;
+    }
+
 
     /**
      * @Method: mutiplyDigit
      * 각 자릿수를 기반으로 곱한값을 구한다.
      * TODO: 각 자릿수를 곱한다.
      */
-
-
 }
 
