@@ -21,3 +21,13 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+### 풀이 전략
+
+1. 주어진 문자열을 한글자씩 검사한다.
+   - Stack이 비어있지 않고 검사하는 글자가 Stack에 가장 최근에 들어온 글자와 같으면 `pop()`한다.
+   - 그렇지 않다면 Stack에 넣는다.
+
+
+2. Stack에 있는 결과를 출력한다.
+   - 반복문으로 Stack을 돌며 StringBuilder에 누적해 출력한다.
