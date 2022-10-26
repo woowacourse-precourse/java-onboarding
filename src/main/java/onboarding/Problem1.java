@@ -31,7 +31,18 @@ class Problem1 {
     }
     
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int answer = -1;
+        if (validator(pobi) && validator(crong)) {
+            int pobiScore = calcScore(pobi);
+            int crongScore = calcScore(crong);
+
+            if (pobiScore > crongScore)
+                answer = 1;
+            else if (pobiScore < crongScore)
+                answer = 2;
+            else
+                answer = 0;
+        }
         return answer;
     }
 }
