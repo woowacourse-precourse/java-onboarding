@@ -12,7 +12,7 @@ public class Problem3 {
         memoization[1] = 0;
         memoization[2] = 0;
 
-        calculateClapCount(number);
+        answer = calculateClapCount(number);
 
         return answer;
     }
