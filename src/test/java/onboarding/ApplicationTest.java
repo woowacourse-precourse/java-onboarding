@@ -18,6 +18,10 @@ class ApplicationTest {
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
 
             assertThat(Problem1.solution(List.of(131, 132), List.of(211,212))).isEqualTo(1);
+            assertThat(Problem1.solution(List.of(211, 212), List.of(131,132))).isEqualTo(2);
+            assertThat(Problem1.solution(List.of(1, 2), List.of(211,212))).isEqualTo(-1);
+            assertThat(Problem1.solution(List.of(3, 4), List.of(399,400))).isEqualTo(-1);
+            assertThat(Problem1.solution(List.of(32, 33), List.of(399,400))).isEqualTo(-1);
             assertThat(Problem1.solution(List.of(99, 102), List.of(211,212))).isEqualTo(-1);
         }
 
