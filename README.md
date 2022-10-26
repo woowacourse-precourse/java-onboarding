@@ -5,11 +5,11 @@
 ## 🚀 기능 목록
 
 1. [문제 1](./docs/PROBLEM1.md)
-  - [ ] isValidInput
+  - [X] isValidInput
     - 인자로 들어온 두 페이지 배열의 길이와 원소가 유효한지 검사한다.
     - [X] isCorrectLength
       - 인자로 들어온 페이지 배열의 길이가 2인지 검사한다.
-    - [ ] areCorrectNumbers
+    - [X] areCorrectNumbers
       - 인자로 들어온 페이지 배열의 숫자가 자연수에 연속된 홀수 짝수인지 검사한다.
   - [ ] splitDigit
     - 자연수를 각 자리의 숫자로 나눠준다.
