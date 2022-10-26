@@ -15,6 +15,7 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 		try {
 			Game newGame = new Game(pobi, crong);
+			return newGame.getResult();
 		} catch(IllegalArgumentException exception) {
 			return EXCEPTION;
 		}
@@ -62,6 +63,9 @@ class Problem1 {
     }
 
 	private static class Game{
+		private final static int DRAW = 0;
+		private final static int FIRST_PLAYER_WIN = 1;
+		private final static int SECOND_PLAYER_WIN = 2;
 		private final Player firstPlayer;
 		private final Player secondPlayer;
 
@@ -69,6 +73,15 @@ class Problem1 {
 			firstPlayer = new Player(firstPlayerPages);
 			secondPlayer = new Player(secondPlayerPages);
 		}
+
+		public int getResult() {
+			if (firstPlayer.score > secondPlayer.score) {
+				return FIRST_PLAYER_WIN;
+			}
+			if (firstPlayer.score < secondPlayer.score) {
+				return SECOND_PLAYER_WIN;
+			}
+			return  DRAW;
+		}
 	}
 }
-
