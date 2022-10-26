@@ -6,7 +6,7 @@ import java.util.List;
 class Problem1 {
     static int LEN_NUMBER_OF_DIGITS = 3;
 
-    public static int solution(List<Integer> pobi, List<Integer> 현crong) {
+    public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
         return answer;
@@ -38,6 +38,14 @@ class Problem1 {
             arr[i] = (page % (int) Math.pow(10, i + 1)) / (int) Math.pow(10, i);
         }
         return arr;
+    }
+
+    private static int calcScore(List<Integer> list) {
+        int score = Integer.MIN_VALUE;
+        for (Integer num : list) {
+            score = Math.max(score, compareScore(intToArr(num)));
+        }
+        return score;
     }
 
 }
