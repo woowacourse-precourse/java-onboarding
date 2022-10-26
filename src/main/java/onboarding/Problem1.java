@@ -11,6 +11,29 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+
+        // 1. 예외상황인지 각각 판별
+        if(isExcption(pobi.get(0),pobi.get(1))){
+            return -1;
+        }
+        if(isExcption(crong.get(0),crong.get(1))){
+            return -1;
+        }
+
         return answer;
+    }
+
+    // 예외상황 판별
+    public static boolean isExcption(int left, int right) {
+        if (left % 2 != 1) {
+            return true;
+        }
+        if (right % 2 != 0) {
+            return true;
+        }
+        if(right-left !=1){
+            return true;
+        }
+        return false;
     }
 }
