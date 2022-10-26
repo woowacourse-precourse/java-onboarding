@@ -8,7 +8,7 @@ public class Problem4 {
         String answer = "";
         Map<Character, Character> alphabets = new HashMap<>();
         for (int i = 0; i < 26; i++) {
-            alphabets.put( (char)('a' + 'i'), (char)('z' - i));
+            alphabets.put( (char)('a' + i), (char)('z' - i));
         }
         char[] chars = word.toCharArray();
         for (char c : chars) {
