@@ -5,13 +5,13 @@ public class Problem3 {
         int answer = 0;
         
         for(int i = 1; i <= number; i++) {
-        	String s = Integer.toString(i);
-        	for(char c : s.toCharArray()) {
+        	for(char c : Integer.toString(i).toCharArray()) {
         		if((c - '0') % 3 == 0 && c != '0') {
         			answer++;
         		}
         	}
         }
+        
         return answer;
     }
 }
