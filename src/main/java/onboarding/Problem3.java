@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.stream.IntStream;
+
 public class Problem3 {
     private static final int START_NUMBER = 1;
 
@@ -8,8 +10,9 @@ public class Problem3 {
     private static final int CLAP_NINE = 9;
 
     public static int solution(int number) {
-        int answer = 0;
-        return answer;
+        return IntStream.range(START_NUMBER, number + 1)
+                .map(Problem3::countClap)
+                .sum();
     }
 
     private static int countClap(int number) {
