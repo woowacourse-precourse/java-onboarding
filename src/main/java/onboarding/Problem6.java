@@ -1,16 +1,29 @@
 package onboarding;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>();
+        List<Set<String>> tokensList = new ArrayList<>();
+        Map<String, Integer> tokenToCount = new HashMap<>();
+
         for (List<String> form : forms) {
             String nickname = form.get(1);
-            nicknameToToken(nickname);
+            Set<String> tokens = nicknameToToken(nickname);
+
+            tokensList.add(tokens);
+            tokens.forEach(token ->
+                    tokenToCount.put(token, tokenToCount.getOrDefault(token, 0) + 1));
         }
+
+        for (int i = 0; i < tokensList.size(); i++) {
+            if (tokensList.get(i).stream().anyMatch(token -> tokenToCount.get(token) > 1)) {
+                answer.add(forms.get(i).get(0));
+            }
+        }
+
+        answer.sort(String::compareTo);
         return answer;
     }
 
