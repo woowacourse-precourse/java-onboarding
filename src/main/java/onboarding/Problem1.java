@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.Comparator;
 import java.util.List;
 
 class Problem1 {
@@ -20,6 +21,9 @@ class Problem1 {
         if (!isValidPages(pobi) || !isValidPages(crong)) {
             return RESULT_EXCEPTION;
         }
+
+        calculateMaxScore(pobi);
+        calculateMaxScore(crong);
 
         return answer;
     }
@@ -57,5 +61,34 @@ class Problem1 {
 
     private static boolean isRightPage(Integer page) {
         return page % 2 == 0;
+    }
+
+    private static Integer calculateMaxScore(List<Integer> pages) {
+        return pages.stream()
+                .map(page -> Integer.max(calculateSumOfDigits(page), calculateProductOfDigits(page)))
+                .max(Comparator.naturalOrder())
+                .orElseThrow(IllegalArgumentException::new);
+    }
+
+    private static Integer calculateSumOfDigits(Integer page) {
+        int result = 0;
+
+        while (page != 0) {
+            result += page % 10;
+            page /= 10;
+        }
+
+        return result;
+    }
+
+    private static Integer calculateProductOfDigits(Integer page) {
+        int result = 1;
+
+        while (page != 0) {
+            result *= page % 10;
+            page /= 10;
+        }
+
+        return result;
     }
 }
