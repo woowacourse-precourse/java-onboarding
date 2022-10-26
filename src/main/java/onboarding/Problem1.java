@@ -20,6 +20,13 @@ class calculate{
         return mul;
     }
 }
+class findMax{
+    public static int findMaxValue(int left, int right){
+        int leftMaxValue=calculate.sumOfPageNumbers(left)>calculate.mulOfPageNumbers(left)?calculate.sumOfPageNumbers(left):calculate.mulOfPageNumbers(left);
+        int rightMaxValue=calculate.sumOfPageNumbers(right)>calculate.mulOfPageNumbers(right)?calculate.sumOfPageNumbers(right):calculate.mulOfPageNumbers(right);
+        return leftMaxValue>rightMaxValue?leftMaxValue:rightMaxValue;
+    }
+}
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
