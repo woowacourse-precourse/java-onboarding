@@ -1,7 +1,7 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.IntStream;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -59,4 +59,50 @@ class Problem1 {
 
         return true;
     };
+
+    private static Integer getMaxScorePages(List<Integer> playerPage) {
+        Integer leftPage = playerPage.get(0);
+        Integer rightPage = playerPage.get(1);
+
+        Integer leftPageMaxScore = getMaxScoreCalculate(leftPage);
+        Integer rightPageMaxScore = getMaxScoreCalculate(rightPage);
+
+        return Math.max(leftPageMaxScore, rightPageMaxScore);
+    }
+
+    private static Integer getMaxScoreCalculate(Integer page) {
+        Integer addictionScore = getAdditionScore(page);
+        Integer multiplyScore = getMultiplicationScore(page);
+
+        Integer result = Math.max(addictionScore, multiplyScore);
+
+        return result;
+    }
+
+    private static Integer getAdditionScore(Integer page) {
+        List<Integer> pageList = integer2IntArray(page);
+
+        Integer result = pageList.stream().reduce(0, Integer::sum);
+
+        return result;
+    }
+
+    private static Integer getMultiplicationScore(Integer page) {
+        List<Integer> pageList = integer2IntArray(page);
+
+        Integer result = pageList.stream().reduce(1, (x, y) -> x * y);
+
+        return result;
+    }
+
+    private static List<Integer> integer2IntArray(Integer page) {
+        String pageString = page.toString();
+        List<Integer> pageList = new ArrayList<>();
+
+        for(int i = 0; i < pageString.length(); i++) {
+            pageList.add(pageString.charAt(i) - '0');
+        }
+
+        return pageList;
+    }
 }
