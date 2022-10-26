@@ -67,7 +67,6 @@ class ApplicationTest {
             int result = 14;
             assertThat(Problem3.solution(number)).isEqualTo(result);
         }
-
     }
 
     @Nested
