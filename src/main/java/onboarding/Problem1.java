@@ -19,7 +19,7 @@ class Problem1 {
         } else if(pobi.get(0) == 1 || pobi.get(1) == 400 || crong.get(0) == 1 || crong.get(1) == 400){
             return  -1;
         }
-
+    // 3. 크롱과 포비의 최댓값 비교 후 리턴
         int pMax = Math.max(sum(pobi.get(0)),sum(pobi.get(1)));
         int cMax = Math.max(sum(crong.get(0)),sum(crong.get(1)));
         return pMax > cMax ? 1 : cMax > pMax ? 2 : 0;
