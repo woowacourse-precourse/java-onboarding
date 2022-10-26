@@ -8,8 +8,21 @@ class Problem1 {
         checkValuesValidity(pobi);
         checkValuesValidity(crong);
 
+        if (isWrongPages(pobi, crong)) {
+            return -1;
+        }
+
         int answer = Integer.MAX_VALUE;
         return answer;
+    }
+
+    private static boolean isWrongPages(List<Integer> pobi, List<Integer> crong) {
+
+        if (pobi.get(1) - pobi.get(0) != 1 || crong.get(1) - crong.get(0) != 1) {
+            return true;
+        }
+
+        return false;
     }
 
     private static void checkValuesValidity(List<Integer> values) {
