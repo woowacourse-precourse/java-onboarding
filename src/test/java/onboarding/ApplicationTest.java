@@ -11,6 +11,12 @@ class ApplicationTest {
     @Nested
     class Problem1Test {
         @Test
+        void checkmulti() {
+            int result = 12;
+            assertThat(Problem1.getmulti(34)).isEqualTo(result);
+        }
+
+        @Test
         void case1() {
             List<Integer> pobi = List.of(97, 98);
             List<Integer> crong = List.of(197, 198);

@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.List;
+import java.util.Scanner;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -14,8 +15,8 @@ class Problem1 {
             answer = -1;
         return  answer;
         }
-        answer = valueCalculate(pobi);
-        tmpanswer = valueCalculate(crong) ;
+        answer = valueGetMax(pobi);
+        tmpanswer = valueGetMax(crong) ;
         return answer;
     }
     public static boolean  valueCheck(List<Integer> value)
@@ -36,13 +37,36 @@ class Problem1 {
      * @param value // calcuate value
      * @return most Biggest vlaue
      */
-    public static  int valueCalculate(List<Integer> value)
+    public static  int valueGetMax(List<Integer> value)
     {
+        int left =  value.get(0);
+        int  right = value.get(1);
+        // Calculate sum
 
-
-
+        // Calculate multiple
 
         return 1 ;
+    }
+
+    public static int getSum(int number)
+    {
+        int total = 0 ;
+        while(number > 0) {
+            total += number % 10;
+            number /= 10;
+
+        }
+        return total;
+    }
+    public static int getmulti(int number)
+    {
+        int total = 1 ;
+        while(number > 0) {
+            total *= number % 10;
+            number /= 10;
+        }
+        System.out.println(total);
+        return total;
     }
 
 
