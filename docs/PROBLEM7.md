@@ -24,3 +24,9 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 목록
+- [ ] 사용자와 함께 아는 친구의 수 계산하는 기능
+- [ ] 방문한 횟수 계산하는 기능
+- [ ] 점수가 높은 순으로 5명을 추천하는 기능
+  - [ ] 점수가 같으면 이름순으로 정렬한다.
