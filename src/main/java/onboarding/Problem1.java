@@ -20,6 +20,12 @@ class Problem1 {
         }
         return product;
     }
+
+    static int getBiggerNumber(char[] digits) {
+        int sum = getSumOfDigits(digits);
+        int product = getProductOfDigits(digits);
+        return sum > product ? sum : product;
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
