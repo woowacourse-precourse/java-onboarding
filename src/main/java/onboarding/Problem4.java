@@ -16,5 +16,12 @@ public class Problem4 {
         return (lengthWord > 0 && lengthWord <= 1000);
     }
 
-
+    /**
+     * 문자열 분리
+     * @param word 문자열
+     * @return 분리된 문자열
+     */
+    private static String[] splitWord(String word) {
+        return word.split("");
+    }
 }
