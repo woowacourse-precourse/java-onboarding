@@ -18,13 +18,23 @@ class Problem1 {
     private static class Player {
         private  static final int LEFT_PAGE_INDEX = 0;
         private  static final int RIGHT_PAGE_INDEX = 1;
-
+        private static final int MIN_PAGE = 1;
+        private static final int MAX_PAGE = 400;
+        private static final int PAGE_GAP = 1;
         private final int leftPage;
         private final int rightPage;
 
         public Player(List<Integer> pages) {
             this.leftPage = pages.get(LEFT_PAGE_INDEX);
             this.rightPage = pages.get(RIGHT_PAGE_INDEX);
+        }
+
+        private boolean arePagesExist() {
+            return (leftPage > MIN_PAGE && rightPage < MAX_PAGE);
+        }
+
+        private boolean arePagesLinked() {
+            return (rightPage % 2 == 0 && rightPage - leftPage == PAGE_GAP);
         }
     }
 }
