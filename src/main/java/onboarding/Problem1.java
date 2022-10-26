@@ -7,4 +7,16 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+
+    private static boolean isError(List<Integer> list) {
+        int left = list.get(0);
+        int right = list.get(1);
+
+        return (right <= left)
+                || (left % 2 == 0)
+                || (right % 2 == 1)
+                || (right - left > 1)
+                || (left <= 1)
+                || (right >= 400);
+    }
 }
