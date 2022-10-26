@@ -19,7 +19,7 @@ public class BookGame {
 
     private int sumEachDigit(int num){
         int sum = 0;
-        while(num == 0){
+        while(num != 0){
             sum += num%10;
             num = num/10;
         }
