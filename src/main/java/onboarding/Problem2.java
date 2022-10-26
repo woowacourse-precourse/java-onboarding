@@ -13,6 +13,13 @@ public class Problem2 {
             this.duplication = this.origin;
         }
 
+        private boolean hasRepetition() {
+            for(int i=1 ; i<duplication.length() ; i++) {
+                if (checkRepetition(i)) return true;
+            }
+            return false;
+        }
+
         private boolean checkRepetition(int idx) {
             if(duplication.charAt(idx-1)==duplication.charAt(idx)) {
                 duplication = duplication.substring(0, idx-1) + duplication.substring(idx+1);
