@@ -16,14 +16,27 @@ public class Problem2 {
 
         addLettersInList(cryptogram);
         traverseList(list);
-        //searchSameLetter();
 
         return answer;
     }
 
+    private static boolean isSameLetter(int i) {
+        if (list.get(i).equals(list.get(i + 1))) {
+            removeSameLetter(i);
+            return true;
+        }
+        return false;
+    }
+
+    private static void removeSameLetter(int i) {
+        list.remove(i + 1);
+        list.remove(i);
+    }
+
     private static void traverseList(List<String> list) {
         for (int i = 0; i < list.size() - 1; i++) {
-           if (list.get(i).equals(list.get(i + 1))) {
+            if (isSameLetter(i)) {
+                i = -1;
             }
         }
     }
