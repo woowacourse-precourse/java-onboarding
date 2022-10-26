@@ -9,7 +9,22 @@ import static onboarding.PageNumber.makeRandomNumber;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        Referee referee = new Referee();
+        int pobiScore = referee.giveScore(pobi);
+        int crongScore = referee.giveScore(crong);
+        answer = referee.judge(pobiScore, crongScore);
         return answer;
+    }
+
+    public static void main(String[] args) {
+        Book book = new Book();
+        User pobi = new User("pobi");
+        User crong = new User("crong");
+        pobi.choiceRandomNumbers(book.getPageStart(), book.getPageEnd());
+        crong.choiceRandomNumbers(book.getPageStart(), book.getPageEnd());
+        int result = solution(pobi.getChoiceNumbers(), crong.getChoiceNumbers());
+        OutView.printHead(pobi, crong);
+        OutView.printResult(pobi, crong, result);
     }
 }
 
