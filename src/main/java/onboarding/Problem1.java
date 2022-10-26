@@ -49,7 +49,7 @@ class Problem1 {
         Integer crongRightProScore = PageProScore(crong.get(1));
         //더 높은 점수
         Integer crongRightScore = PageScore(crongRightSumScore, crongRightProScore);
-        //포비 최종 점수 구하기
+        //크롱 최종 점수 구하기
         Integer crongScore = PageScore(crongLeftScore, crongRightScore);
 
         //정답 출력
