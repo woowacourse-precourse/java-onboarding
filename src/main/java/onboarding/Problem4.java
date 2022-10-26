@@ -5,7 +5,7 @@ public class Problem4 {
         StringBuilder sb = new StringBuilder();
 
         // 대문자 'A' 와 'Z' 의 아스키코드를 더한다.
-        char Upper = 'A'+'Z';
+        char upper = 'A'+'Z';
         // 소문자 'a' 와 'z' 의 아스키코드를 더한다.
         char lower = 'a'+'z';
 
@@ -13,7 +13,7 @@ public class Problem4 {
             Character c = word.charAt(i);
 
             //문자를 바꾸어 준다.
-            if ('A' <= c && c <= 'Z') sb.append((char)(Upper - c));
+            if ('A' <= c && c <= 'Z') sb.append((char)(upper - c));
             else if ('a' <= c && c <= 'z') sb.append((char)(lower - c));
             else sb.append(c);
         }
