@@ -10,9 +10,13 @@ import java.util.stream.Stream;
  */
 
 class Problem1 {
+
+    private static final int MAX_PAGE = 400;
+    private static final int MIN_PAGE = 1;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-        try{
+        if(isValid(pobi) && isValid(crong)){
             int pobiMax = getMax(pobi);
             int crongMax = getMax(crong);
             switch (Integer.compare(pobiMax,crongMax)){
@@ -23,30 +27,36 @@ class Problem1 {
                 case 0 :
                     return 0;
             }
-
-        }catch (Exception e){
-            return  -1;
+        }else {
+            return -1;
         }
         return answer;
     }
 
     /**
-     * 사용자의 나올 수 있는 경우의 수 중 최댓값 구하는 함수
+     * input 값에 대한 Validation
      **/
 
-    private static int getMax(List<Integer> pages) throws Exception {
+    private static boolean isValid(List<Integer> pages){
+        return pages.stream().allMatch( page -> page <= MAX_PAGE) &&
+                pages.stream().allMatch( page -> page >= MIN_PAGE) &&
+                 pages.get(0) + 1 == pages.get(1);
+    }
+
+    /**
+     * 모든 쪽들 중 최댓값 구하는 함수
+     **/
+
+    private static int getMax(List<Integer> pages) {
         int leftPage = pages.get(0);
         int rightPage = pages.get(1);
-        if(leftPage + 1 != rightPage){
-            throw new Exception("예외사항 발생");
-        }
         int max =
                 Math.max(getMaxCalculation(leftPage),getMaxCalculation(rightPage));
         return max;
     }
 
     /**
-     * 최대값을 구하기 위한 계산함수
+     * 단일 쪽의 최대값을 구하기 위한 계산함수
      **/
 
     private static int getMaxCalculation(int page){
@@ -57,7 +67,7 @@ class Problem1 {
     }
 
     /**
-     * 입력된 숫자의 각 자리수별 숫자를 반환하는 함수
+     * 단일 쪽의 각 자리수별 숫자를 반환하는 함수
      **/
 
     private static int[] getNumberOfDigits(int page){
@@ -67,7 +77,7 @@ class Problem1 {
     }
 
     /**
-     * 자릿수의 덧셈 결과를 반환하는 함수
+     * 각 자리수 별 덧셈 결과를 반환하는 함수
      **/
 
     private static int getSum(int[] numList){
@@ -76,7 +86,7 @@ class Problem1 {
     }
 
     /**
-     * 자릿수의 곱셈 결과를 반환하는 함수
+     * 각 자리수 별 곱셈 결과를 반환하는 함수
      **/
 
     private static int getMultiple(int[] numList){
