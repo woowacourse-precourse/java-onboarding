@@ -10,6 +10,7 @@ public class Referee {
     public static final int END_PAGE_NUMBER_LEFT = 399;
     public static final int END_PAGE_NUMBER_RIGHT = 400;
     public static final String INPUT_EXCEPTION_MESSAGE = "올바르지 않은 입력 값 입니다.";
+
     private final Player pobi;
     private final Player crong;
 
@@ -44,7 +45,8 @@ public class Referee {
     }
 
     private boolean isEndPage(int leftPageNumber, int rightPageNumber) {
-        return leftPageNumber == END_PAGE_NUMBER_LEFT && rightPageNumber == END_PAGE_NUMBER_RIGHT;
+        return leftPageNumber == END_PAGE_NUMBER_LEFT
+                && rightPageNumber == END_PAGE_NUMBER_RIGHT;
     }
 
     private boolean isStartPage(int leftPageNumber, int rightPageNumber) {
