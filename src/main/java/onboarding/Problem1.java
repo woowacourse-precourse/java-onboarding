@@ -4,7 +4,18 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int answer = -1;
+        int pobiPoint = calcPoint(pobi);
+        int crongPoint = calcPoint(crong);
+
+        if (pobiPoint > crongPoint) {
+            answer = 1;
+        } else if (pobiPoint < crongPoint) {
+            answer = 2;
+        } else if (pobiPoint == crongPoint) {
+            answer = 0;
+        }
+
         return answer;
     }
 
@@ -33,7 +44,7 @@ class Problem1 {
     }
 
     static int calcEachDigitProduct(int pageNum) {
-        int totalProduct = 0;
+        int totalProduct = 1;
 
         while (pageNum > 0) {
             int digit = pageNum % 10;
