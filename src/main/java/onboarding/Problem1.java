@@ -40,6 +40,11 @@ class Problem1 {
         return Math.max(sumNumber(right),multNumber(right));
     }
 
+    public int BigNum (List<Integer> list) {
+        int myScore = Math.max(leftNum(list.get(0)),rightNum(list.get(1)));
+        return myScore;
+    }
+
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         Problem1 p1 = new Problem1();
