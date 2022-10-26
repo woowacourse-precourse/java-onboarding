@@ -18,8 +18,16 @@ class Problem1 {
 		if (!checkPageForm(pobi, crong)) {
 			return NOT_PAGE_NUMBER;
 		}
+		int pobiMax = pageMax(pobi);
+		int crongMax = pageMax(crong);
 
-		return answer;
+		if(pobiMax > crongMax) {
+			return WIN_POBI;
+		} else if (pobiMax < crongMax) {
+			return WIN_CRONG;
+		} else {
+			return DRAW;
+		}
 	}
 
 	private static boolean checkPageForm(List<Integer> pobi, List<Integer> crong) {
