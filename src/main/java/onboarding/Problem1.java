@@ -13,11 +13,10 @@ class Problem1 {
     }
 
     static boolean checkException(List<Integer> list){
-        if (list.get(0) + 1 != list.get(1)) {
+        if (list.get(0) + 1 != list.get(1) ||
+                list.get(0) % 2 == 0 || list.get(1) % 2 == 1 ||
+                list.get(0) == 1 || list.get(1) == 400) {
 
-            return true;
-        }
-        if (list.get(0) % 2 == 0 || list.get(1) % 2 == 1){
             return true;
         }
         return false;
