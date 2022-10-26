@@ -18,6 +18,12 @@ class Problem1 {
         this.pagesB = pagesB;
     }
 
+    static class WrongInputException extends Exception {
+        WrongInputException(String msg) {
+            super(msg);
+        }
+    }
+
     private boolean isAvailableInput(List<Integer> pages) {
         return isAvailableSize(pages.size()) && isAvailableValues(pages.get(0), pages.get(1));
     }
