@@ -7,7 +7,7 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
 
         if(SeparateDigit.isWrongPage(pobi)
-        || SeparateDigit.isWrongPage(crong)){
+                || SeparateDigit.isWrongPage(crong)){
             answer = -1;
             return answer;
         }

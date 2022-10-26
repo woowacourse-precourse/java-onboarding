@@ -15,15 +15,15 @@ public class SeparateDigit {
         String stringNumber = bookPage.toString().replaceAll("[^0-9]","");
         size=stringNumber.length();
         separatedNumber = new int[size];
-        for(int i=0; i<size; i++){
+        for(int i = 0; i < size; i++){
             separatedNumber[i] = (int)stringNumber.charAt(i) - '0';
         }
     }
     public static boolean isWrongPage(List<Integer> bookPage) {
         int firstPage = bookPage.get(0);
-        if(firstPage<MINPAGE||firstPage>MAXPAGE
-        || firstPage%2 == 0
-        || firstPage - bookPage.get(1) != -1){
+        if(firstPage < MINPAGE || firstPage > MAXPAGE
+                || firstPage%2 == 0
+                || firstPage - bookPage.get(1) != -1){
             return true;
         }
         return false;
@@ -35,20 +35,20 @@ public class SeparateDigit {
     }
     public int sumSeparatedNumber(){
         int sum = 0;
-        for(int i=0; i<size; i++){
+        for(int i = 0; i < size; i++){
             sum += separatedNumber[i];
         }
         return sum;
     }
     public int multiplySeparatedNumber(){
-        int mul=1;
-        for(int i=0; i<size; i++){
+        int mul = 1;
+        for(int i = 0; i < size; i++){
             mul *= separatedNumber[i];
         }
         return mul;
     }
     public int biggerInt(int number1, int number2){
-        if(number1>number2){
+        if(number1 > number2){
             return number1;
         }
         return number2;
@@ -57,7 +57,7 @@ public class SeparateDigit {
         int myScore = this.score();
         int otherScore = otherDigit.score();
         int answer = -1;
-        if(myScore>otherScore){
+        if(myScore > otherScore){
             answer = 1;
             return answer;
         }
@@ -65,7 +65,7 @@ public class SeparateDigit {
             answer = 0;
             return answer;
         }
-        if(myScore<otherScore){
+        if(myScore < otherScore){
             answer = 2;
             return answer;
         }
