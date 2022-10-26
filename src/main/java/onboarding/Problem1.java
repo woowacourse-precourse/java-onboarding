@@ -7,6 +7,9 @@ class Problem1 {
     final static int MAX_PAGE = 400;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        if(!isLegalPages(pobi) || !isLegalPages(crong)) {
+            return -1;
+        }
         int answer = Integer.MAX_VALUE;
         return answer;
     }
@@ -14,9 +17,7 @@ class Problem1 {
     private static boolean isLegalPages(List<Integer> pages) {
         return inRange(pages) && isContinuousPages(pages);
     }
-    private static boolean isContinuousPages(List<Integer> numbers) {
-        return (numbers.get(0) % 2 == 1) && (numbers.get(1) - numbers.get(0) == 1);
-    }
+
     private static boolean inRange(List<Integer> numbers) {
         for (int number : numbers) {
             if (number < MIN_PAGE || number > MAX_PAGE) return false;
@@ -24,6 +25,13 @@ class Problem1 {
         return true;
     }
 
+    private static boolean isContinuousPages(List<Integer> numbers) {
+        return (numbers.get(0) % 2 == 1) && (numbers.get(1) - numbers.get(0) == 1);
+    }
+
+    private static int getMaxScore(int number) {
+        return Math.max(sumOfDigits(toIntArray(number)), mulOfDigits(toIntArray(number)));
+    }
     private static int sumOfDigits(int[] numbers) {
         int sum = 0;
         for(int number : numbers) {
