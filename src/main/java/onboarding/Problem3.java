@@ -9,7 +9,7 @@ public class Problem3 {
 
         while (number > 0) {
             int currDigit = number % 10;
-            if (currDigit % 3 == 0) cnt++;
+            if (currDigit == 3 || currDigit == 6 || currDigit == 9) cnt++;
             number /= 10;
         }
 
