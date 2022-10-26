@@ -19,13 +19,36 @@ class Problem1 {
          */
 
         //유효성 확인 메서드 구현
-
+        if (isFail(pobi) || isFail(crong)) {
+            answer = -1;
+            return answer;
+        }
 
         // 최댓값 만들기 메서드 구현
+
 
         // 최댓값 비교 구현
 
         return answer;
+    }
+
+    private static boolean isFail(List<Integer> user) {
+        //유효성 검사
+        boolean result = false;
+
+        // list.get(0) = 홀수 && list.get(1) = 짝수;
+        // list.get(0)+1 = list.get(1);
+        // list.get(0)>=1 && list.get(1) <= 400;
+        if (!(user.get(0) % 2 == 1 && user.get(1) % 2 == 0)) {
+            result = true;
+        }
+        if (!(user.get(0) + 1 == user.get(1))) {
+            result = true;
+        }
+        if (!(user.get(0) >= 1 && user.get(1) <= 400)) {
+            result = true;
+        }
+        return result;
     }
 
 }
