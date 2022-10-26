@@ -20,10 +20,6 @@ class Problem1 {
     }
 
     public static void validateInput(List<Integer> pobi, List<Integer> crong) {
-        if (pobi.size() != 2 || crong.size() != 2) {
-            throw new IllegalArgumentException("Invalid input size");
-        }
-
         int pobiLeft = pobi.get(0);
         int pobiRight = pobi.get(1);
         int crongLeft = crong.get(0);
