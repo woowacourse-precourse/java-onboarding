@@ -132,6 +132,18 @@ class Problem1Test {
 
 	@Nested
 	class exceptionHandlingTest {
+
+		@Test
+		public void checkPageHasAscending1DifferenceTest() {
+			List<Integer> pageList = new ArrayList<>();
+			pageList.add(234);
+			pageList.add(233);
+
+			assertThrows(IllegalStateException.class, () -> {
+				checkPageHasAscending1Difference(pageList);
+			});
+		}
+
 		@Test
 		public void checkListInGivenRangeTest1() {
 			List<Integer> pageList = new ArrayList<>();
