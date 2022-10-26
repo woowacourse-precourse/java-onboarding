@@ -28,4 +28,10 @@ class Problem1 {
         }
         return multiplyResult;
     }
+
+    private static int getLeftPageMaximum(List<Integer> pageList) {
+        int maximumResult = 0;
+        maximumResult = Math.max(getAddDigitsResult(pageList.get(0)), getMultiplyDigitsResult(pageList.get(0)));
+        return maximumResult;
+    }
 }
