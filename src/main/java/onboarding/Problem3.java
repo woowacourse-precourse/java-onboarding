@@ -1,5 +1,8 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * goal: 369게임을 할 때 1~number까지 몇 번의 손뼉을 치는지 리턴
  */
@@ -15,6 +18,25 @@ package onboarding;
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
+        List<Character> clapList = new ArrayList<>();
+        clapList.add('3');
+        clapList.add('6');
+        clapList.add('9');
+
+        for (int currentNumber = 3; currentNumber <= number; currentNumber++) {
+            String strOfCurrentNumber = String.valueOf(currentNumber);
+            answer += countClap(strOfCurrentNumber, clapList);
+        }
         return answer;
+    }
+
+    private static int countClap(String strOfCurrentNumber, List<Character> clapList) {
+        int clapCount = 0;
+        for (int i = 0; i < strOfCurrentNumber.length(); i++) {
+            if (clapList.contains(strOfCurrentNumber.charAt(i))) {
+                clapCount++;
+            }
+        }
+        return clapCount;
     }
 }
