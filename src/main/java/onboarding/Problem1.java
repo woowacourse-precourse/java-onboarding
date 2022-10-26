@@ -53,4 +53,13 @@ class Problem1 {
         }
         return biggest;
     }
+    public static int getWinner(int user_1, int user_2) {
+        if (user_1 > user_2) {
+            return 1;
+        }
+        else if (user_1 < user_2) {
+            return 2;
+        }
+        return 0;
+    }
 }
