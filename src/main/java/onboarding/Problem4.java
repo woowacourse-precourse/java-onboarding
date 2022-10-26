@@ -1,8 +1,22 @@
 package onboarding;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 public class Problem4 {
+    private static final List<Character> LOWERCASE_LETTERS = lowercaseLettersInit();
+    
+    public static List<Character> lowercaseLettersInit() {
+        return IntStream.rangeClosed(0, 25)
+                .mapToObj(number -> (char) (122 - number))
+                .collect(Collectors.toList());
+    }
+    
     public static String solution(String word) {
         String answer = "";
         return answer;
     }
+    
+    
 }
