@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.Arrays;
 import java.util.List;
 
 class Problem1 {
@@ -12,11 +13,11 @@ class Problem1 {
 
     public static boolean exceptionCase(List<Integer> list) {
         boolean excepted = false;
-        if(list.get(1)- list.get(0) != 1) {
+        if(list.get(1) - list.get(0) != 1) {
             excepted = true;
-        } else if(list.get(0)>=1 && list.get(0) <400 && list.get(1)>1 && list.get(1) <=400) {
+        } else if(list.get(0) < 1 && list.get(0) >= 400 && list.get(1) < 1 && list.get(1) > 400) {
             excepted = true;
-        } else if(list.get(0)%2==0 || list.get(1) %2 == 1) {
+        } else if(list.get(0) % 2 == 0 || list.get(1) % 2 == 1) {
             excepted = true;
         }
         return excepted;
@@ -39,19 +40,28 @@ class Problem1 {
 
     public static int finalValue(int page1_max, int page2_max) {
         int finalValue = 0;
-        if(page1_max>page2_max) {
+        if(page1_max > page2_max) {
             finalValue = 1;
-        } else if(page1_max<page2_max) {
+        } else if(page1_max < page2_max) {
             finalValue = 2;
         }
         return finalValue;
     }
+
+    public static int[] changeArr(List<Integer> list) {
+        int[] arr = new int[2];
+        for(int i=0; i<2; i++) {
+            arr[i] = list.get(i);
+        }
+        return arr;
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if(exceptionCase(pobi) || exceptionCase(crong)) {
             return -1;
+        } else {
+            int pobi_max = maxValue(maxValueOfPage(pobi.get(0)), maxValueOfPage(pobi.get(1)));
+            int crong_max = maxValue(maxValueOfPage(crong.get(0)), maxValueOfPage(crong.get(1)));
+            return finalValue(pobi_max, crong_max);
         }
-        int pobi_max = maxValue(maxValueOfPage(pobi.get(0)), maxValueOfPage(pobi.get(1)));
-        int crong_max = maxValue(maxValueOfPage(crong.get(0)), maxValueOfPage(crong.get(1)));
-        return finalValue(pobi_max, crong_max);
     }
 }
