@@ -32,4 +32,13 @@ class Problem1 {
 
         return Math.max(sum, mul);
     }
+
+    public static int getAnswer(int pobiScore, int crongScore) {
+        if(pobiScore > crongScore)
+            return 1;
+        else if(crongScore < pobiScore)
+            return 2;
+        else
+            return 0;
+    }
 }
