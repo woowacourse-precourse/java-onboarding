@@ -22,30 +22,27 @@ import java.util.List;
 // 3. 분해한 각각의 숫자를 더하거나 곱했을때 가장 큰 수를 구한다.
 // 3-1. 각각의 숫자를 더하고 곱하는 함수 만들기
 // 3-2. 가장 큰 수 구하기
-
+// 4. 구해진 가장 큰 수를 각각 포비와 크롱의 점수에 넣기
+// 5. 점수를 비교하고, 비교한 결과에 따른 return 값 설정하기
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
-        int pobi_first = pobi.get(0);
-        int pobi_second = pobi.get(1);
+        int pobi_left = pobi.get(0);
+        int pobi_right = pobi.get(1);
+        int crong_left = crong.get(0);
+        int crong_right = crong.get(1);
 
-        int crong_first = crong.get(0);
-        int crong_second = crong.get(1);
+        int pobi_left_max = max(sumOfArray(returnDigit(pobi_left)),multiOfArray(returnDigit(pobi_left)));
+        int pobi_right_max = max(sumOfArray(returnDigit(pobi_right)),multiOfArray(returnDigit(pobi_right)));
+        int crong_left_max = max(sumOfArray(returnDigit(crong_left)),multiOfArray(returnDigit(crong_left)));
+        int crong_right_max = max(sumOfArray(returnDigit(crong_right)),multiOfArray(returnDigit(crong_right)));
 
-        System.out.println(returnDigit(pobi_second));
-        System.out.println(sumOfArray(returnDigit(pobi_second)));
-        System.out.println(multiOfArray(returnDigit(pobi_second)));
+        int pobi_score = max(pobi_left_max, pobi_right_max);
+        int crong_score = max(crong_left_max, crong_right_max);
 
-        System.out.println(max(sumOfArray(returnDigit(pobi_second)),multiOfArray(returnDigit(pobi_second))));
-
-
-
-        System.out.println(returnDigit(crong_first));
-        System.out.println(sumOfArray(returnDigit(crong_first)));
-        System.out.println(multiOfArray(returnDigit(crong_first)));
-
-        System.out.println(max(sumOfArray(returnDigit(crong_first)),multiOfArray(returnDigit(crong_first))));
+        System.out.println(pobi_score);
+        System.out.println(crong_score);
 
         return answer;
     }
@@ -63,7 +60,7 @@ class Problem1 {
     // 배열의 모든 숫자의 합을 반환하는 함수
     public static int sumOfArray(List<Integer> arrNum){
         int sum = 0;
-        for(Integer i : arrNum) { //for문을 통한 전체출력
+        for(Integer i : arrNum) {
             sum += i;
         }
         return sum;
@@ -72,12 +69,13 @@ class Problem1 {
     // 배열의 모든 숫자의 곱을 반환하는 함수
     public static int multiOfArray(List<Integer> arrNum){
         int multi = 1;
-        for(Integer i : arrNum) { //for문을 통한 전체출력
+        for(Integer i : arrNum) {
             multi *= i;
         }
         return multi;
     }
 
+    // 최댓값을 구하는 함수
     public static int max(int a, int b){
         int max_int = a;
         if(b > max_int)
