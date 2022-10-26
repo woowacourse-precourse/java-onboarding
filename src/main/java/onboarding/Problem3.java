@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Problem3 {
-    static List<Character> clapList = new ArrayList<>();
+    private static List<Character> clapList;
 
     public static int solution(int number) {
+        clapList = new ArrayList<>();
         clapList.add('3');
         clapList.add('6');
         clapList.add('9');
