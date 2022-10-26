@@ -2,7 +2,6 @@ package onboarding;
 
 import java.util.Deque;
 import java.util.LinkedList;
-import java.util.Stack;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
@@ -18,7 +17,7 @@ public class Problem2 {
         }
         return charToString(chDeque);
     }
-    
+
     static String charToString(Deque<Character> chDeque){
         String result = "";
         while (!chDeque.isEmpty()) {
