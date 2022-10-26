@@ -1,5 +1,7 @@
 package onboarding;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -10,6 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class ApplicationTest {
     @Nested
     class Problem1Test {
+
         @Test
         void case1() {
             List<Integer> pobi = List.of(97, 98);
@@ -33,6 +36,16 @@ class ApplicationTest {
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
+
+        @Test
+        @DisplayName("시작 면이나 마지막 면이 나도록 책을 펼친 경우")
+        void whenOpenedFirstOrLastPage() {
+            // 포비와 크롱이 시작 면이나 마지막 면이 나도로록 책을 펼친 경우
+            List<Integer> pobi = List.of(1, 2);
+            List<Integer> crong = List.of(399, 400);
+            Assertions.assertEquals(-1, Problem1.solution(pobi,crong), "첫페이지나 마지막 페이지 오픈 금지");
+        }
+
     }
 
     @Nested
