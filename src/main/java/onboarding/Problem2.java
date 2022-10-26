@@ -15,7 +15,17 @@ public class Problem2 {
     }
 
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        int size=cryptogram.length();
+
+        while(cryptogram.length()>1){
+            cryptogram = removeDuplication(cryptogram);
+
+            if(size==cryptogram.length())
+                break;
+
+            size=cryptogram.length();
+        }
+
+        return cryptogram;
     }
 }
