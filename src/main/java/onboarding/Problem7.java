@@ -61,7 +61,18 @@ public class Problem7 {
     /**
      * 기능 2에 만든 리스트에 방문자 리스트 및 점수 추가
      */
+    public static HashMap<String, Integer> addVisitorScore(HashMap<String, Integer> recommendNameWithScoreMap, List<String> visitor) {
 
+        for (int i = 0; i < visitor.size(); i++) {
+            if (recommendNameWithScoreMap.containsKey(visitor.get(i))) {
+                recommendNameWithScoreMap.put(visitor.get(i), recommendNameWithScoreMap.get(visitor.get(i)) + 1);
+            } else {
+                recommendNameWithScoreMap.put(visitor.get(i), 1);
+            }
+        }
+
+        return recommendNameWithScoreMap;
+    }
 
 
     /**
