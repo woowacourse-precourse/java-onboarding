@@ -46,6 +46,26 @@ class Problem1 {
     }
 
     /**
+     * 입력된 수를 각각 더하고 곱해서 큰 값 가져오기
+     * @param pages 페이지 정보
+     * @return 결과값
+     */
+    private static int getMaxNumberCalculate(List<Integer> pages) {
+        int returnNumber = 0;
+
+        for(int number: pages) {
+            // 각 자리 숫자 더하고 곱해서 제일 큰 수 가져오기
+            int calculateNumber = Integer.max(addAllDigits(number), multiplyAllDigits(number));
+
+            if (returnNumber < calculateNumber) {
+                returnNumber = calculateNumber;
+            }
+        }
+
+        return returnNumber;
+    }
+
+    /**
      * 각 자리 숫자 더하기
      * @param number 페이지 숫자
      * @return 결과값
@@ -57,6 +77,22 @@ class Problem1 {
 
         for (int i: splitDigits) {
             returnNumber += i;
+        }
+
+        return returnNumber;
+    }
+
+    /**
+     * 각 자리 숫자 곱하기
+     * @param number 페이지 숫자
+     * @return 결과값
+     */
+    private static int multiplyAllDigits(int number) {
+        int[] splitDigits = splitDigits(number);
+        int returnNumber = 1;
+
+        for (int i: splitDigits) {
+            returnNumber *= i;
         }
 
         return returnNumber;
