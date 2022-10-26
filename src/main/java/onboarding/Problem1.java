@@ -9,7 +9,6 @@ class Problem1 {
 
     public static int solution(List<Integer> pobiPageNumbers, List<Integer> crongPageNumbers) {
         try {
-
             Player pobi = new Player(asPages(pobiPageNumbers));
             Player crong = new Player(asPages(crongPageNumbers));
 
@@ -19,10 +18,10 @@ class Problem1 {
         }
     }
 
-    private static List<Page> asPages(List<Integer> list) {
+    private static List<Page> asPages(List<Integer> pageNumbers) {
         List<Page> result = new ArrayList<>();
-        for (Integer page : list) {
-            result.add(new Page(page));
+        for (Integer pageNumber : pageNumbers) {
+            result.add(new Page(pageNumber));
         }
         return result;
     }
@@ -66,7 +65,7 @@ class Problem1 {
         private Integer page;
 
         public Page(Integer page) {
-            this.page = page;
+            this.page = Objects.requireNonNull(page);
             validatePage();
         }
 
