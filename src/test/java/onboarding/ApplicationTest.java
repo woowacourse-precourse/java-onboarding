@@ -33,6 +33,65 @@ class ApplicationTest {
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
+
+        @Test
+        void case4(){
+            List<Integer> pobi = List.of(101, 102);
+            List<Integer> crong = List.of(101, 102);
+            int result = 0;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        void isCorrectSize(){
+            List<Integer> pobi = List.of(101, 102);
+            List<Integer> crong = List.of(41, 42, 43);
+            boolean result = false;
+            try{
+                Problem1.solution(pobi, crong);
+            } catch (Exception error){
+                result = true;
+            }
+            assertThat(result).isTrue();
+        }
+
+        @Test
+        void isCorrectRange1(){
+            List<Integer> pobi = List.of(1, 2);
+            List<Integer> crong = List.of(41, 42);
+            boolean result = false;
+            try{
+                Problem1.solution(pobi, crong);
+            } catch (Exception error){
+                result = true;
+            }
+            assertThat(result).isTrue();
+        }
+        @Test
+        void isCorrectRange2(){
+            List<Integer> pobi = List.of(10, 11);
+            List<Integer> crong = List.of(399, 400);
+            boolean result = false;
+            try{
+                Problem1.solution(pobi, crong);
+            } catch (Exception error){
+                result = true;
+            }
+            assertThat(result).isTrue();
+        }
+
+        @Test
+        void isConsecutive(){
+            List<Integer> pobi = List.of(10, 12);
+            List<Integer> crong = List.of(399, 400);
+            boolean result = false;
+            try{
+                Problem1.solution(pobi, crong);
+            } catch (Exception error){
+                result = true;
+            }
+            assertThat(result).isTrue();
+        }
     }
 
     @Nested
