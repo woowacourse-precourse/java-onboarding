@@ -3,6 +3,7 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class Problem6 {
     static int email = 0;
@@ -92,4 +93,14 @@ public class Problem6 {
         return false;
     }
 
+    //닉네임 형식에 부합하는지 체크
+    public static boolean nicknameCheck(String name)
+    {
+
+        if (name.length() >= 1 && name.length() < 20)
+            return true;
+        if (Pattern.matches("^[가-힣]*$", name))
+            return true;
+        return false;
+    }
 }
