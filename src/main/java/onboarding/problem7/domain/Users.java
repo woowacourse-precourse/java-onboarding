@@ -11,8 +11,8 @@ public class Users {
     }
     
     private Map<String, User> initUsers(List<List<String>> friends, final List<String> visitors) {
-        List<List<String>> tmpFriends = mergeUsers(friends, visitors);
-        return tmpFriends.stream()
+        List<List<String>> mergeFriends = mergeUsers(friends, visitors);
+        return mergeFriends.stream()
                 .flatMap(Collection::stream)
                 .collect(Collectors.toMap(friendName -> friendName, User::new, (firstUser, secondUser) -> firstUser));
     }
