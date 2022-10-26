@@ -19,6 +19,7 @@ class Problem1 {
         if (pobiScore>crongScore) return 1;
         // if pobiScore<crongScore
         return 2;
+
     }
     public static int calculate(int num){
         //각 자리의 수를 배열로 만들어 줌
