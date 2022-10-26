@@ -24,6 +24,9 @@ public class Problem3 {
         return count;
     }
     public static boolean check369(char c){
-
+        if(c =='3' ||c =='6'|| c=='9'){
+            return true;
+        }
+        return false;
     }
 }
