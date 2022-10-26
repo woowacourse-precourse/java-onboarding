@@ -53,6 +53,20 @@ class Problem1 {
         return Math.max(num1, num2);
     }
 
+    /**
+     *  예외사항 체크
+     * 0. 전체 예외사항들을 체크 - > isException()
+     * 1. 각 페이지 번호가 1 ~ 400 범위 안에 들어가있는지 확인 -> isPageRange()
+     * 2. 왼쪽, 오른쪽 페이지 번호가 연속된 수인지 확인 -> isContinuous()
+     * 3. 왼쪽 페이지 번호는 홀수, 오른쪽 페이지 번호는 짝수인지 확인 -> isEvenOrOdd()
+     * 4. 시작 면과 마지막 면이 아닌지 확인 -> isNotNull()
+     */
+
+    public static boolean isException(List<Integer> page) {
+        if (isPageRange(page) && isContinuous(page) && isEvenOrOdd(page) && isNotNull(page))  return true;
+        return false;
+    }
+
     public static boolean isPageRange (List<Integer> page) {
         if (page.get(0) >= 1 && page.get(0) <= 400 && page.get(1) >= 1 && page.get(1) <= 400) return true;
         return false;
