@@ -3,6 +3,12 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 1. 값을 받아 예외를 확인한다. -> isPageNumberException
+ * 2. 페이지의 덧셈값과 곱셈 값을 구한다 -> pageMultiply , pagePlus
+ * 3. 점수의 최대값을 구한다 -> getMaxNumber
+ * 4. 최대값을 비교하여 결과를 도출한다. -> getCompareScore
+ */
 class Problem1 {
     public static final int POBI_WIN = 1;
     public static final int CRONG_WIN = 2;
@@ -10,24 +16,26 @@ class Problem1 {
     public static final int EXCEPTION = -1;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if(getPageNumberException(pobi) || getPageNumberException(crong)) {
+        if(isPageNumberException(pobi) || isPageNumberException(crong)) {
             return EXCEPTION;
         }
-        return compareScore(getMaxNumber(pobi), getMaxNumber(crong));
+        return getCompareScore(getMaxNumber(pobi), getMaxNumber(crong));
     }
 
-    private static int compareScore(int pobiScore, int crongScore) {
-        if(pobiScore > crongScore){
+    private static int getCompareScore(int pobi, int crong) {
+        if(pobi > crong){
             return POBI_WIN;
-        } else if (pobiScore < crongScore) {
+        } else if (pobi < crong) {
             return CRONG_WIN;
         } else {
             return DRAW;
         }
     }
 
-    private static boolean getPageNumberException(List<Integer> page) {
-        if(page.get(1) - page.get(0) != 1) {
+    private static boolean isPageNumberException(List<Integer> page) {
+        int leftPage = page.get(0);
+        int rightPage = page.get(1);
+        if(rightPage - leftPage != 1) {
             return true;
         }
         return false;
@@ -36,7 +44,7 @@ class Problem1 {
     private static int getMaxNumber(List<Integer> page) {
         int max = 0;
         for (int i = 0; i< page.size(); i++) {
-            max = Math.max(max,Math.max(pagePlus(page.get(i)), pageMultiply(page.get(i))));
+            max = Math.max(max, Math.max(pagePlus(page.get(i)), pageMultiply(page.get(i))));
         }
         return max;
     }
