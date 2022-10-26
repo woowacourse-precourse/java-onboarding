@@ -2,6 +2,9 @@ package onboarding.problem1;
 
 import java.util.List;
 
+/**
+ * Gamer class which plays the game
+ */
 public class PageGamer {
 
     private final List<Integer> pagesA;
