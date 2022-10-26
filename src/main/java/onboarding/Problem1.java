@@ -8,6 +8,8 @@ class Problem1 {
         if(!isInputValid(pobi)||!isInputValid(crong)){
             return ERROR_CODE;
         }
+
+        //포비, 크롱 둘 다 더하기, 곱하기, 자기 점수 구하기, 인풋체크 해야함
         int answer = Integer.MAX_VALUE;
         return answer;
     }
@@ -19,6 +21,14 @@ class Problem1 {
             return true;
         }
         return false;
+    }
+
+    private static int addPageNumber(int page) {
+        int hundredsPlace=page/100;
+        page=page%100;
+        int tensPlace=page/10;
+        int onesPlace=page%10;
+        return hundredsPlace+tensPlace+onesPlace;
     }
 
     private static Boolean isPageRangeInBook(int leftPage, int rightPage) {
