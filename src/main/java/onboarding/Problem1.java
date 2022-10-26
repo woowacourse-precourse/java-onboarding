@@ -23,15 +23,7 @@ import java.util.Objects;
 class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if (!(validatePage(pobi) && validatePage(crong))) {
-            return EXCEPTION_RESULT;
-        }
-
-        int pobiScore = calculatePlayerScore(pobi);
-        int crongScore = calculatePlayerScore(crong);
-
-        return pobiScore > crongScore ? POBI_WIN_RESULT
-            : pobiScore < crongScore ? CRONG_WIN_RESULT : TIE_RESULT;
+        return calculateGameResult(pobi, crong);
     }
 
     public static class PageValidator {
@@ -69,6 +61,18 @@ class Problem1 {
         private static boolean validatePageValue(List<Integer> player) {
             return !player.stream().anyMatch(Objects::isNull);
         }
+    }
+
+    private static int calculateGameResult(List<Integer> pobi, List<Integer> crong) {
+        if (!(validatePage(pobi) && validatePage(crong))) {
+            return EXCEPTION_RESULT;
+        }
+
+        int pobiScore = calculatePlayerScore(pobi);
+        int crongScore = calculatePlayerScore(crong);
+
+        return pobiScore > crongScore ? POBI_WIN_RESULT
+            : pobiScore < crongScore ? CRONG_WIN_RESULT : TIE_RESULT;
     }
 
     private static int calculatePageScore(Integer pageNumber) {
