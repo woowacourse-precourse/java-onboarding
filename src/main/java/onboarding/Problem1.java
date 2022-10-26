@@ -10,9 +10,14 @@ class Problem1 {
    (2) 페이지 세자리수의 곱과 페이지 세자리수의 합 중 더 큰 값을 점수로 저장
    (3) 두 사람의 점수를 비교해서 게임의 결과 return
    */
+	private final static int EXCEPTION = -1;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+		try {
+			Game newGame = new Game(pobi, crong);
+		} catch(IllegalArgumentException exception) {
+			return EXCEPTION;
+		}
     }
 
     private static class Player {
@@ -55,4 +60,15 @@ class Problem1 {
             return Math.max(pageSum, pageMultiply);
         }
     }
+
+	private static class Game{
+		private final Player firstPlayer;
+		private final Player secondPlayer;
+
+		public Game(List<Integer> firstPlayerPages, List<Integer> secondPlayerPages) {
+			firstPlayer = new Player(firstPlayerPages);
+			secondPlayer = new Player(secondPlayerPages);
+		}
+	}
 }
+
