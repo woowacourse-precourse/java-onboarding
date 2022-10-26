@@ -28,6 +28,7 @@ class Validation{
     }
 }
 
+
 class ScoreController{
     private static int sumDigits(int num){
         int result = 0;
@@ -38,4 +39,15 @@ class ScoreController{
         }
         return result;
     }
+
+    private static int mulDigits(int num){
+        int result = 1;
+
+        while (num!=0) {
+            result *= num%10;
+            num /= 10;
+        }
+        return result;
+    }
+
 }
