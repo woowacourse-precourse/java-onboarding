@@ -19,6 +19,9 @@ public class Referee {
         if (pobiScore > crongScore) {
             return 1;
         }
+        if (crongScore > pobiScore) {
+            return 2;
+        }
         return 0;
     }
 }

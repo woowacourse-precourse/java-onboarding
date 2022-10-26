@@ -13,4 +13,11 @@ public class RefereeTest {
         int result = referee.playGame();
         Assertions.assertThat(result).isEqualTo(1);
     }
+
+    @Test
+    void 크롱이_이기는경우_2() {
+        Referee referee = new Referee(List.of(3, 4), List.of(34, 35));
+        int result = referee.playGame();
+        Assertions.assertThat(result).isEqualTo(2);
+    }
 }
