@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -14,6 +15,6 @@ public class UserTest {
     void addFriend() {
         User user = new User("jun");
         user.addFriend(new User("pobi"));
-        assertThat(user.getFriends()).isEqualTo(new Friends(List.of(new User("pobi"))));
+        assertThat(user.getFriends()).isEqualTo(new Friends(Set.of(new User("pobi"))));
     }
 }

@@ -1,18 +1,16 @@
 package onboarding.problem7.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Friends {
-    private final List<User> friends;
+    private final Set<User> friends;
     
     public Friends() {
-        this(new ArrayList<>());
+        this(new HashSet<>());
     }
     
-    public Friends(final List<User> friends) {
+    public Friends(final Set<User> friends) {
         this.friends = friends;
     }
     
