@@ -24,11 +24,17 @@ class Problem1 {
     return returnNum;
   }
 
-  private static int multiplicationNum(int num) {
-    int returnNum = 1;
-    String pageNum = String.valueOf(num);
-    for (int i = 0; i < pageNum.length(); i++) {
-      returnNum *= pageNum.charAt(i) - '0';
+  private static int getMaxMultiplicationNum(List<Integer> pageList) {
+    int returnNum = 0;
+    for (Integer pageNum : pageList) {
+      int temp = 1;
+      String pageNumString = String.valueOf(pageNum);
+      for (int i = 0; i < pageNumString.length(); i++) {
+        temp *= pageNumString.charAt(i) - '0';
+      }
+      if (temp >= returnNum) {
+        returnNum = temp;
+      }
     }
     return returnNum;
   }
