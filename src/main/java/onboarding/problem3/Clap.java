@@ -5,6 +5,8 @@ import java.util.List;
 
 public class Clap {
     public static int clap(int number) {
+        if (outOfRange(number))
+            throw new IllegalArgumentException("1이상 10,000 이하의 자연수를 입력해주세요.");
         int count=0;
         List<Integer> numbers = mapList(number);
         for (int num:numbers) {
@@ -12,6 +14,10 @@ public class Clap {
                 count++;
         }
         return count;
+    }
+
+    private static boolean outOfRange(int number) {
+        return (number<1 && number >10000);
     }
 
     private static boolean has369(int num) {
