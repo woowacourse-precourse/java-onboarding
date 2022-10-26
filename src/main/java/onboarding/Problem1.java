@@ -37,9 +37,15 @@ class Problem1 {
         System.out.println(sumOfArray(returnDigit(pobi_second)));
         System.out.println(multiOfArray(returnDigit(pobi_second)));
 
+        System.out.println(max(sumOfArray(returnDigit(pobi_second)),multiOfArray(returnDigit(pobi_second))));
+
+
+
         System.out.println(returnDigit(crong_first));
         System.out.println(sumOfArray(returnDigit(crong_first)));
         System.out.println(multiOfArray(returnDigit(crong_first)));
+
+        System.out.println(max(sumOfArray(returnDigit(crong_first)),multiOfArray(returnDigit(crong_first))));
 
         return answer;
     }
@@ -59,7 +65,6 @@ class Problem1 {
         int sum = 0;
         for(Integer i : arrNum) { //for문을 통한 전체출력
             sum += i;
-            System.out.println(i);
         }
         return sum;
     }
@@ -69,8 +74,14 @@ class Problem1 {
         int multi = 1;
         for(Integer i : arrNum) { //for문을 통한 전체출력
             multi *= i;
-            System.out.println(i);
         }
         return multi;
+    }
+
+    public static int max(int a, int b){
+        int max_int = a;
+        if(b > max_int)
+            max_int = b;
+        return max_int;
     }
 }
