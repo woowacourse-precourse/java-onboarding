@@ -28,11 +28,24 @@ class Problem1 {
         return true;
     }
 
+    // 각 자리 숫자 더하기 함수
     static int getPlus(int elem) {
         int score = 0;
 
         while (elem > 0) {
             score += elem % 10;
+            elem /= 10;
+        }
+
+        return score;
+    }
+
+    // 각 자리 숫자 곱하기 함수
+    static int getMultiply(int elem) {
+        int score = 1;
+
+        while (elem > 0) {
+            score *= elem % 10;
             elem /= 10;
         }
 
