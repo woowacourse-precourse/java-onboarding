@@ -9,7 +9,7 @@ public class Problem2 {
             boolean ctn = false;
             //모든 문자가 중복으로 사라진 상황
             if(tmp.length() == 0) break;
-            
+
             //다음 문자와 중복되는지 비교하기 위한 문자
             char lst = tmp.charAt(0);
             answer = "";
