@@ -53,4 +53,13 @@ public class BookGame {
         return num2;
     }
 
+    private void validatePageOddEven(List<Integer> playerPages) throws IllegalArgumentException{
+        if(playerPages.get(0)%2 != 1){
+            throw new IllegalArgumentException("왼쪽페이지는 홀수여야합니다.");
+        }
+        if(playerPages.get(1)%2 != 0){
+            throw new IllegalArgumentException("오른쪽페이지는 짝수여야합니다.");
+        }
+    }
+
 }
