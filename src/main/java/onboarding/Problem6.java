@@ -10,11 +10,23 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
 
-        System.out.println(forms.get(0).get(0));
-        userCheck(savaUser(forms));
+        System.out.println(forms.get(email).get(1));
+        answer = findEmail(userCheck(savaUser(forms)), forms);
+
         return answer;
     }
 
+    //해당 닉네임의 이메일을 알아내는 함수
+    public static List<String> findEmail(List<Integer> userList, List<List<String>> forms)
+    {
+        List<String> emailList = new ArrayList<>();
+
+        for (int i = 0; i < userList.size(); i++)
+            emailList.add(forms.get(userList.get(i)).get(email));
+
+        System.out.println("test : " + emailList);
+        return emailList;
+    }
     //닉네임만 저장하는 함수
     public static List<String> savaUser(List<List<String>> forms)
     {
@@ -32,17 +44,18 @@ public class Problem6 {
 
         for (int i = 0; i < nickname.size() - 1; i++)
         {
-            //한 단어라도 포함되어 있는 경우
-            if (nickname.get(i).contains(nickname.get(i + 1)))
+            for (int j = i + 1; j < nickname.size(); j++)
             {
-                //중복인 경우
-                if (isDuplicate(nickname.get(i), nickname.get(i + 1)))
+                if (isDuplicate(nickname.get(i), nickname.get(j)))
                 {
                     userMemo.add(i);
-                    userMemo.add(i + 1);
+                    userMemo.add(j);
                 }
             }
         }
+
+        System.out.println(userMemo);
+
         return userMemo;
     }
 
@@ -50,8 +63,11 @@ public class Problem6 {
     public static boolean isDuplicate(String first, String second)
     {
         int count = 0;
+        int length = 0;
+        System.out.println(first + " " + second);
 
-        for (int i = 0; i < first.length(); i++)
+        length = Math.min(first.length(), second.length());
+        for (int i = 0; i < length; i++)
         {
             if (first.charAt(i) == second.charAt(i))
             {
