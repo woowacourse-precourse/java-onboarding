@@ -4,19 +4,20 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong){
-    int pobiScore, crongScore, answer;
+        int pobiScore, crongScore, answer;
 
-    if (!Validation.isValidateInput(pobi) || !Validation.isValidateInput(crong)) {
-        return -1;
+        if (!Validation.isValidateInput(pobi) || !Validation.isValidateInput(crong)) {
+            return -1;
+        }
+
+        pobiScore = ScoreController.calcScore(pobi);
+        crongScore = ScoreController.calcScore(crong);
+        answer = ScoreController.compareScore(pobiScore, crongScore);
+        return answer;
     }
-
-    pobiScore = ScoreController.calcScore(pobi);
-    crongScore = ScoreController.calcScore(crong);
-    answer = ScoreController.compareScore(pobiScore, crongScore);
-    return answer;
 }
 
-}
+
 class Validation{
     static final int LIST_LENGTH = 2;
     static final int MAX_PAGE = 400;
