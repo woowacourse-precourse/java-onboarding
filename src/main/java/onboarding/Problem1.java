@@ -31,7 +31,11 @@ class Problem1 {
 	private static int bigPageResult(List<Integer> person) {
 		int leftPage = person.get(0);
 		int rightPage = person.get(1);
-		
+
+		int bigLeftPage = maxValue(sumEachInt(leftPage), multipleEachInt(rightPage));
+		int bigRightPage = maxValue(sumEachInt(rightPage), multipleEachInt(rightPage));
+
+		return maxValue(bigLeftPage, bigRightPage);
 	}
 
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
