@@ -66,6 +66,31 @@ class Problem1 {
         }
         return false;
     }
+
+    //중복되지 않나? 그러면 오류처리를 합쳐야 할까?
+    public static boolean isOutOfRange(List<Integer> pages) {
+        for (Integer page : pages) {
+            if (page < 1) {
+                return true;
+            }
+            if (page > 400) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean isSeparatedPages(List<Integer> pages) {
+        int leftPageNumber = pages.get(0);
+        int rightPageNumber = pages.get(1);
+
+        int difference = Math.abs(leftPageNumber - rightPageNumber);
+
+        if (difference == 1) { //바로 옆인 경우만
+            return false;
+        }
+        return true;
+    }
 }
 
 /*
@@ -90,4 +115,7 @@ class Problem1 {
  * 2. 번호의 각 숫자를 모두 곱하는 함수
  * 3. 각 사람의 더 큰 숫자를 반환해주는 함수
  * 4. 이긴 사람을 골라주는 함수
+ *
+ * 추가
+ * 5. 숫자롤 쪼개서 리스트에 담아주는 함수
  */
