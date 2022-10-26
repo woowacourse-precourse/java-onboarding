@@ -10,56 +10,13 @@ class Problem1 {
             return Constance.EXCEPTION_MESSAGE;
         }
 
-        List<Integer> pobiBiggerPageNumbers = saveMaxPagesNumberByUser(pobi);
-        List<Integer> crongBiggerPageNumbers = saveMaxPagesNumberByUser(crong);
+        List<Integer> pobiBiggerPageNumbers = PageNumberGame.saveMaxPagesNumberByUser(pobi);
+        List<Integer> crongBiggerPageNumbers = PageNumberGame.saveMaxPagesNumberByUser(crong);
 
-        int pobiScore = getMaxNumber(pobiBiggerPageNumbers.get(0), pobiBiggerPageNumbers.get(1));
-        int crongScore = getMaxNumber(crongBiggerPageNumbers.get(0), crongBiggerPageNumbers.get(1));
+        int pobiScore = PageNumberGame.getMaxNumber(pobiBiggerPageNumbers.get(0), pobiBiggerPageNumbers.get(1));
+        int crongScore = PageNumberGame.getMaxNumber(crongBiggerPageNumbers.get(0), crongBiggerPageNumbers.get(1));
 
-        return winnerUser(pobiScore, crongScore);
-    }
-
-    private static int winnerUser(int userScore1, int userScore2) {
-        if (userScore1 > userScore2) {
-            return Constance.WINNER_USER1_MESSAGE;
-        } else if (userScore1 < userScore2) {
-            return Constance.WINNER_USER2_MESSAGE;
-        }
-        return Constance.SCORE_SAME_MESSAGE;
-    }
-
-    private static List<Integer> saveMaxPagesNumberByUser(List<Integer> user) {
-        List<Integer> biggerPageNumbers = new ArrayList<>();
-        for (Integer pageNumber : user) {
-            int sumPage = sumEachNumber(pageNumber);
-            int multPage = multEachNumber(pageNumber);
-            biggerPageNumbers.add(getMaxNumber(sumPage, multPage));
-        }
-        return biggerPageNumbers;
-    }
-
-    private static int sumEachNumber(int pageNumber) {
-        int sum = 0;
-        String strPageNumber = String.valueOf(pageNumber);
-        for (int i = 0; i < strPageNumber.length(); i++) {
-            sum += Integer.parseInt(String.valueOf(strPageNumber.charAt(i)));
-        }
-
-        return sum;
-    }
-
-    private static int multEachNumber(int pageNumber) {
-        int mult = 1;
-        String strPageNumber = String.valueOf(pageNumber);
-        for (int i = 0; i < strPageNumber.length(); i++) {
-            mult *= Integer.parseInt(String.valueOf(strPageNumber.charAt(i)));
-        }
-
-        return mult;
-    }
-
-    private static int getMaxNumber(int number1, int number2) {
-        return Math.max(number1, number2);
+        return PageNumberGame.winnerUser(pobiScore, crongScore);
     }
 
     private static final class Constance {
@@ -112,5 +69,49 @@ class Problem1 {
         }
     }
 
+    private static class PageNumberGame {
+        private static int winnerUser(int userScore1, int userScore2) {
+            if (userScore1 > userScore2) {
+                return Constance.WINNER_USER1_MESSAGE;
+            } else if (userScore1 < userScore2) {
+                return Constance.WINNER_USER2_MESSAGE;
+            }
+            return Constance.SCORE_SAME_MESSAGE;
+        }
+
+        private static List<Integer> saveMaxPagesNumberByUser(List<Integer> user) {
+            List<Integer> biggerPageNumbers = new ArrayList<>();
+            for (Integer pageNumber : user) {
+                int sumPage = sumEachNumber(pageNumber);
+                int multPage = multEachNumber(pageNumber);
+                biggerPageNumbers.add(getMaxNumber(sumPage, multPage));
+            }
+            return biggerPageNumbers;
+        }
+
+        private static int sumEachNumber(int pageNumber) {
+            int sum = 0;
+            String strPageNumber = String.valueOf(pageNumber);
+            for (int i = 0; i < strPageNumber.length(); i++) {
+                sum += Integer.parseInt(String.valueOf(strPageNumber.charAt(i)));
+            }
+
+            return sum;
+        }
+
+        private static int multEachNumber(int pageNumber) {
+            int mult = 1;
+            String strPageNumber = String.valueOf(pageNumber);
+            for (int i = 0; i < strPageNumber.length(); i++) {
+                mult *= Integer.parseInt(String.valueOf(strPageNumber.charAt(i)));
+            }
+
+            return mult;
+        }
+
+        private static int getMaxNumber(int number1, int number2) {
+            return Math.max(number1, number2);
+        }
+    }
 
 }
