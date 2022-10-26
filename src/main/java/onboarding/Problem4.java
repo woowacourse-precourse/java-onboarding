@@ -53,9 +53,4 @@ public class Problem4 {
 
         return result;
     }
-
-    public static void main(String[] args) {
-        String word = "I l@ve $un";
-        System.out.println(solution(word));
-    }
 }
