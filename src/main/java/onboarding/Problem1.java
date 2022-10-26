@@ -4,9 +4,23 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        if(checkException(pobi) || checkException(crong)){
+            return 0;
+        }
         int pobiNum = getMax(pobi);
         int crongNum = getMax(crong);
         return getResult(pobiNum, crongNum);
+    }
+
+    static boolean checkException(List<Integer> list){
+        if (list.get(0) + 1 != list.get(1)) {
+
+            return true;
+        }
+        if (list.get(0) % 2 == 0 || list.get(1) % 2 == 1){
+            return true;
+        }
+        return false;
     }
 
     static int getResult(int i, int j){
