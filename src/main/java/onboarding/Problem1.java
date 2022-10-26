@@ -56,8 +56,29 @@ class Problem1 {
 		return 1;
 	}
 
-    public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
-    }
+	public static int solution(List<Integer> pobi, List<Integer> crong) {
+		int answer = Integer.MAX_VALUE;
+		if (checkPageRange(pobi.get(0), pobi.get(1)) == -1 || checkPageRange(crong.get(0), crong.get(1)) == -1) {
+			answer = -1;
+			return answer;
+		}
+
+		PageCalculator pobiPageCalculator = new PageCalculator(pobi.get(0), pobi.get(1));
+		PageCalculator crongPageCalculator = new PageCalculator(crong.get(0), crong.get(1));
+
+		int pobiScore = pobiPageCalculator.returnResult();
+		int crongScore = crongPageCalculator.returnResult();
+
+		if (pobiScore > crongScore) {
+			answer = 1;
+		}
+		if (pobiScore < crongScore) {
+			answer = 2;
+		}
+		if (pobiScore == crongScore) {
+			answer = 0;
+		}
+
+		return answer;
+	}
 }
