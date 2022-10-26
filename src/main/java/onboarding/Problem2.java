@@ -19,23 +19,29 @@ public class Problem2 {
 
         while (cryptogramStringBuilder.length() != 0) {
 
-            HashSet<Integer> duplicatedCharacterSets;
-
-            duplicatedCharacterSets = findDuplicatedCharacterIndex(cryptogramStringBuilder);
-
+            HashSet<Integer> duplicatedCharacterIndexes = findDuplicatedCharacterIndex(cryptogramStringBuilder);
+            if(duplicatedCharacterIndexes.isEmpty()) break;
+            cryptogramStringBuilder = duplicatedCharacterToBlankByIndex(cryptogramStringBuilder, duplicatedCharacterIndexes);
         }
     }
 
+    private static StringBuilder duplicatedCharacterToBlankByIndex(StringBuilder cryptogramStringBuilder, HashSet<Integer> duplicatedCharacterIndexes) {
+        for (int num : duplicatedCharacterIndexes) {
+            cryptogramStringBuilder.setCharAt(num, ' ');
+        }
+        return cryptogramStringBuilder;
+    }
+
     private static HashSet<Integer> findDuplicatedCharacterIndex(StringBuilder cryptogramStringBuilder) {
-        HashSet<Integer> duplicatedCharacterSets = new HashSet<Integer>();
+        HashSet<Integer> duplicatedCharacterIndexes = new HashSet<Integer>();
 
         for (int i = 1; i < cryptogramStringBuilder.length(); i++) {
             if (cryptogramStringBuilder.charAt(i-1) != cryptogramStringBuilder.charAt(i)) continue;
 
-            duplicatedCharacterSets.add(i);
-            duplicatedCharacterSets.add(i-1);
+            duplicatedCharacterIndexes.add(i);
+            duplicatedCharacterIndexes.add(i-1);
         }
 
-        return duplicatedCharacterSets;
+        return duplicatedCharacterIndexes;
     }
 }
