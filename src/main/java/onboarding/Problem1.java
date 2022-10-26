@@ -45,4 +45,14 @@ class Problem1 {
     private static int getWinner(List<Integer> user1, List<Integer> user2) {
         return maxOfPageCalculate(user1) - maxOfPageCalculate(user2);
     }
+
+    private static boolean pageValidation(List<Integer> pages) {
+        int leftPage = pages.get(0);
+        int rightPage = pages.get(1);
+
+        if (leftPage % 2 == 1 && leftPage + 1 == rightPage) {
+            return true;
+        }
+        return false;
+    }
 }
