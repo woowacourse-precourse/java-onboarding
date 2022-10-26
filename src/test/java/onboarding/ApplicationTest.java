@@ -143,6 +143,14 @@ class ApplicationTest {
             List<Integer> result = List.of(0, 1, 1, 0, 0, 0, 0, 0, 0);
             assertThat(Problem5.solution(money)).isEqualTo(result);
         }
+
+        @Test
+        @DisplayName("십만 단위의 돈 또한 정확히 계산한다.")
+        void case3() {
+            int money = 600_500;
+            List<Integer> result = List.of(12, 0, 0, 0, 1, 0, 0, 0, 0);
+            assertThat(Problem5.solution(money)).isEqualTo(result);
+        }
     }
 
     @Nested
