@@ -171,13 +171,4 @@ class Problem1 {
 
         return result;
     }
-
-    public static void main(String[] args) {
-        Integer test1 = solution(List.of(97, 98), List.of(197, 198));
-        Integer test2 = solution(List.of(-3, -2), List.of(1, 2));
-        Integer test3 = solution(List.of(1, 2), List.of(3, 6));
-        System.out.println(test1);
-        System.out.println(test2);
-        System.out.println(test3);
-    }
 }
