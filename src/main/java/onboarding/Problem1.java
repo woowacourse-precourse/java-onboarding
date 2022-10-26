@@ -4,8 +4,21 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        if (!(validatePage(pobi) && validatePage(crong))) {
+            return -1;
+        }
+
+        int pobiScore = findMaxValue(pobi);
+        int crongScore = findMaxValue(crong);
+
+        if(pobiScore > crongScore){
+            return 1;
+        }
+        if(pobiScore == crongScore){
+            return 0;
+        }
+
+        return 2;
     }
 
     static boolean validatePage(List<Integer> values) {
