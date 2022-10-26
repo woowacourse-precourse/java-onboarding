@@ -25,6 +25,10 @@ class Problem1 {
         return Math.max(mult, sum);
     }
 
+    public static int getScore(List<Integer> pages){
+        return Math.max(calcNumber(pages.get(0)), calcNumber(pages.get(1)));
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
