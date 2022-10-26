@@ -5,9 +5,7 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 public class Problem2 {
-    /*feat 2.1: LinkedList에 문자들을 넣는다.
-  feat 2.2: List를 순회하면서 i번째 항과 i+1번째 항이 같은지 검사한다.(중복된 값 있는지 검사)
-  feat 2.3: 같으면 해당 값들 삭제, i=0으로 초기화한다. */
+    public static String ALPHABET_DELIMETER = "abcdefghijklmnopqrstuvwxyz";
     public static List<String> list;
 
     public static String solution(String cryptogram) {
@@ -16,7 +14,16 @@ public class Problem2 {
 
         addLettersInList(cryptogram);
         traverseList(list);
+        answer = listToString(list);
 
+        return answer;
+    }
+
+    private static String listToString(List<String> list) {
+        String answer = "";
+        for(String alphabet : list){
+            answer+=alphabet;
+        }
         return answer;
     }
 
@@ -42,7 +49,7 @@ public class Problem2 {
     }
 
     private static void addLettersInList(String cryptogram) {
-        StringTokenizer st = new StringTokenizer(cryptogram);
+        StringTokenizer st = new StringTokenizer(cryptogram, ALPHABET_DELIMETER,true);
         while (st.hasMoreTokens()) {
             list.add(st.nextToken());
         }
