@@ -57,9 +57,8 @@ class Problem1 {
         int multiplySum = 1;
 
         while (pageNumberToInt != 0) {
-            pageNumberToInt %= 10;
-            plusSum += pageNumberToInt;
-            multiplySum *= pageNumberToInt;
+            plusSum += pageNumberToInt % 10;
+            multiplySum *= pageNumberToInt % 10;
             pageNumberToInt /= 10;
         }
         return (plusSum >= multiplySum) ? plusSum : multiplySum;
