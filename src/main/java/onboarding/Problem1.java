@@ -60,6 +60,21 @@ class Problem1 {
     점수를 비교해 승자 값을 리턴하는 기능
     * */
 
+    public static int compareScore(int scoreOfPobi, int scoreOfCrong)
+    {
+        if(scoreOfPobi > scoreOfCrong)
+        {
+            return 1; // 포비가 이기는 경우는 1
+        }else if(scoreOfCrong > scoreOfPobi)
+        {
+            return 2; // 크롱이 이기는 경우는 2
+        }else
+        {
+            return 0; // 무승부인 경우는 0
+        }
+    }
+
+
     /*
     기능 4
     페이지가 주어졌을 때, 예외사항을 판단하는 기능
