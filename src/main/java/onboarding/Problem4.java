@@ -46,13 +46,22 @@ public class Problem4 {
         char[] reverseAlphabet = initializeReverseAlphabet(alphabet);
 
         for (int i = 0; i < word.length(); i ++) {
+            if (!Character.isAlphabetic(word.charAt(i))) {
+                tmp += word.charAt(i);
+                continue;
+            }
             index = findAlphabetIndex(alphabet, word.charAt(i));
+            if (Character.isLowerCase(word.charAt(i)))
+                tmp += (char) (reverseAlphabet[index] + 32);
+            if (Character.isUpperCase(word.charAt(i)))
+                tmp += reverseAlphabet[index];
         }
         return tmp;
     }
 
     public static String solution(String word) {
         String answer = "";
+        answer = convertAlphabet(word);
         return answer;
     }
 }
