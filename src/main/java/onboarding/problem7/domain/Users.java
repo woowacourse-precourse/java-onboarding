@@ -11,16 +11,16 @@ public class Users {
     }
     
     private Map<String, User> initUsers(List<List<String>> friends, final List<String> visitors) {
-        List<List<String>> mergeFriends = mergeUsers(friends, visitors);
-        return mergeFriends.stream()
+        List<List<String>> mergeUsers = mergeUsers(friends, visitors);
+        return mergeUsers.stream()
                 .flatMap(Collection::stream)
                 .collect(Collectors.toMap(friendName -> friendName, User::new, (firstUser, secondUser) -> firstUser));
     }
     
     private List<List<String>> mergeUsers(final List<List<String>> friends, final List<String> visitors) {
-        List<List<String>> tmpFriends = new ArrayList<>(friends);
-        tmpFriends.add(visitors);
-        return tmpFriends;
+        List<List<String>> mergeUsers = new ArrayList<>(friends);
+        mergeUsers.add(visitors);
+        return mergeUsers;
     }
     
     public void addAllUserFriends(final List<List<String>> friends) {
@@ -34,16 +34,16 @@ public class Users {
     }
     
     public void addScoreOfNumberOfFriendsYouKnowTogether(final String userName) {
-        for (String targetName : users.keySet()) {
-            addScoreOfNumberOfFriendsYouKnowTogether(userName, users.get(userName), targetName);
+        for (String targetUserName : users.keySet()) {
+            addScoreOfNumberOfFriendsYouKnowTogether(userName, users.get(userName), targetUserName);
         }
     }
     
     private void addScoreOfNumberOfFriendsYouKnowTogether(final String userName, final User user, final String targetName) {
         if (!userName.equals(targetName)) {
-            final User target = users.get(targetName);
-            final int numberOfFriendsYouKnowTogether = target.numberOfFriendsYouKnowTogether(user);
-            target.addScoreOfNumberOfFriendsYouKnowTogether(numberOfFriendsYouKnowTogether);
+            final User targetUser = users.get(targetName);
+            final int numberOfFriendsYouKnowTogether = targetUser.numberOfFriendsYouKnowTogether(user);
+            targetUser.addScoreOfNumberOfFriendsYouKnowTogether(numberOfFriendsYouKnowTogether);
         }
     }
     

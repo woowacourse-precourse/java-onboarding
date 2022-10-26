@@ -1,7 +1,7 @@
 package onboarding.problem7.domain;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Friends {
     private final Set<String> friends;
