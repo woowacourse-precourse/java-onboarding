@@ -8,14 +8,13 @@ public class Problem6 {
         List<Set<String>> tokensList = new ArrayList<>();
         Map<String, Integer> tokenToCount = new HashMap<>();
 
-        for (List<String> form : forms) {
-            String nickname = form.get(1);
-            Set<String> tokens = nicknameToToken(nickname);
-
-            tokensList.add(tokens);
-            tokens.forEach(token ->
-                    tokenToCount.put(token, tokenToCount.getOrDefault(token, 0) + 1));
-        }
+        forms.stream()
+                .map(f -> nicknameToToken(f.get(1)))
+                .forEach(tokens -> {
+                    tokensList.add(tokens);
+                    tokens.forEach(token ->
+                            tokenToCount.put(token, tokenToCount.getOrDefault(token, 0) + 1));
+                });
 
         for (int i = 0; i < tokensList.size(); i++) {
             if (tokensList.get(i).stream().anyMatch(token -> tokenToCount.get(token) > 1)) {
