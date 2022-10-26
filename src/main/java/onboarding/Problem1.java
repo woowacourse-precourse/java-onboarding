@@ -67,7 +67,7 @@ class Problem1 {
     private static List<Integer> convertIntegerToList(int integer) {
         Stream<Integer> stream = Stream
                 .of(String.valueOf(integer)
-                .split(""))
+                        .split(""))
                 .mapToInt(Integer::parseInt)
                 .boxed();
         return Arrays.asList(stream.toArray(Integer[]::new));
@@ -82,9 +82,14 @@ class Problem1 {
         private static final int END_PAGE_NUMBER = 400;
 
         public static boolean validate(List<Integer> pageNumberList) {
-            return validateSize(pageNumberList)
+            return validateNull(pageNumberList)
+                    && validateSize(pageNumberList)
                     && validateRange(pageNumberList)
                     && validateOrder(pageNumberList);
+        }
+
+        private static boolean validateNull(List<Integer> pageNumberList) {
+            return pageNumberList != null;
         }
 
         private static boolean validateSize(List<Integer> pageNumberList) {
