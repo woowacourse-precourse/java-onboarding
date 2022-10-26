@@ -33,9 +33,8 @@ class Problem1 {
             return WINNER_USER1_MESSAGE;
         } else if (userScore1 < userScore2) {
             return WINNER_USER2_MESSAGE;
-        } else {
-            return SCORE_SAME_MESSAGE;
         }
+        return SCORE_SAME_MESSAGE;
     }
 
     private static List<Integer> saveUserBiggerPageNumber(List<Integer> user) {
