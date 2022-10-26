@@ -27,37 +27,37 @@ class ApplicationTest {
         }
 
         @Test
-        void case3() {
+        void case3() { // test for  errror over 2
             List<Integer> pobi = List.of(99, 102);
             List<Integer> crong = List.of(211, 212);
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
         @Test
-        void case4() {
+        void case4() { // test for over 2
             List<Integer> pobi = List.of(101, 102);
             List<Integer> crong = List.of(211, 214);
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
         @Test
-        void case5() {
+        void case5() { // test for 1 page
             List<Integer> pobi = List.of(1, 2);
             List<Integer> crong = List.of(211, 214);
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
         @Test
-        void case6() {
+        void case6() { // test for minus int
             List<Integer> pobi = List.of(-1, 2);
             List<Integer> crong = List.of(211, 400);
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
         @Test
-        void case7() {
+        void case7() { // test for lastpage
             List<Integer> pobi = List.of(2, 3);
-            List<Integer> crong = List.of(212,212);
+            List<Integer> crong = List.of(399,400);
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
