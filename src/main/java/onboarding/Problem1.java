@@ -58,6 +58,16 @@ class Problem1 {
 
         int answer = Integer.MAX_VALUE;
 
+        if (pobiResult == crongResult) {
+            answer = answer - Integer.MAX_VALUE; // 무승부
+        } else if (pobiResult > crongResult) {
+            answer = answer - Integer.MIN_VALUE + 2; // 포비 승
+        } else if (pobiResult < crongResult) {
+            answer = answer - Integer.MIN_VALUE + 3; // 크롱 승
+        } else {
+            answer = answer + Integer.MIN_VALUE; // 예외 사항
+        }
+
         return answer;
     }
 }
