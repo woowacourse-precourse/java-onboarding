@@ -21,11 +21,28 @@ public class Problem3 {
         int answer = 0;
 
         //Step1. 반복문을 통해 분석해야할 값을 number까지 증가시키며 분석시키는 프로그램 만들기
-        for (int i = 0; i < number; i++) {
+        for (int i = 1; i <= number; i++) {
             answer += countClap(i);
         }
 
         return answer;
+    }
+
+    //Step2. 해당 값에 몇번의 손벽을 쳐야하는지에 대한 분석 메서드 만들기
+    private static int countClap(int i) {
+
+        int number;
+        int clapCount = 0;
+
+        while (i > 0) {
+            number = i % 10;
+            if (number == 3 || number == 6 || number == 9) {
+                clapCount++;
+            }
+            i /= 10;
+        }
+
+        return clapCount;
     }
 
 }
