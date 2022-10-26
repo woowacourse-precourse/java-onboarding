@@ -62,4 +62,9 @@ class Problem1 {
         if ((page.get(1) - page.get(0)) == 1)  return true;
         return false;
     }
+
+    public static boolean isEvenOrOdd(List<Integer> page){
+        if ((page.get(0) % 2 == 1) && (page.get(1) % 2 == 0)) return true;
+        return false;
+    }
 }
