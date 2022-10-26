@@ -19,8 +19,15 @@ class Problem1 {
         return answer;
     }
 
-    public static int getPageNumberSum(List<Integer> pages) {
-        return pages.get(0) + pages.get(1);
+    public static int getPageNumberSum(int page) {
+        int sum = 0;
+
+        while (page > 0) {
+            sum += page % 10;
+            page /= 10;
+        }
+
+        return sum;
     }
 
     public static int getPageNumberMulti(int page) {
