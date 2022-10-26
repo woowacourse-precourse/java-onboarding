@@ -12,7 +12,7 @@ class Problem1 {
         List<Integer> score = new ArrayList<>();
 
         // 페이지 별 점수 구하기 (0 : 좌 / 1 : 우)
-        for (int i = 0; i < 2 ; i++) {
+        for (int i = 0; i < 2; i++) {
 
             List<Integer> digit = new ArrayList<>();
 
@@ -20,7 +20,7 @@ class Problem1 {
             int page_info = page.get(i);
 
             // 페이지 파싱
-            while(page_info > 0) {
+            while (page_info > 0) {
                 digit.add(page_info % 10);
                 page_info /= 10;
             }
@@ -31,7 +31,8 @@ class Problem1 {
         }
 
         // 좌, 우 페이지 점수 비교 (0 : 좌 / 1 : 우)
-        left = score.get(0); right = score.get(1);
+        left = score.get(0);
+        right = score.get(1);
         result = left >= right ? left : right;
 
         return result;
@@ -75,12 +76,10 @@ class Problem1 {
         if (calculateScore(pobi) > calculateScore(crong)) {
             // 포비 승
             answer = 1;
-        }
-        else if (calculateScore(pobi) < calculateScore(crong)) {
+        } else if (calculateScore(pobi) < calculateScore(crong)) {
             // 크롱 승
             answer = 2;
-        }
-        else {
+        } else {
             // 무승부
             answer = 0;
         }
