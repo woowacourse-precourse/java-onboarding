@@ -37,11 +37,7 @@
     - getScore
     - 파라미터 타입: List<Integer>
     - 반환 타입: int
-4. 두 점수를 비교해 게임 결과를 반환하는 함수
-    - getAnswer
-    - 파라미터 타입: int, int
-    - 반환 타입: int
-5. 예외사항을 처리하기 위해 값을 검사하는 함수
+4. 예외사항을 처리하기 위해 값을 검사하는 함수
 	- isValid
 	- 파라미터 타입: Integer, Integer
 	- 반환 타입: boolean
