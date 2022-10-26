@@ -89,6 +89,19 @@ class Problem1 {
         if (1 != (value_2.get(1)) - value_2.get(0)) {
             return false;
         }
+        // 페이지가 0과 400을 사이를 넘어가는 경우 & 첫페이지와 끝페이지를 펼치지 않는 경우
+        if (value_1.get(0) < 2){
+            return false;
+        }
+        if (value_1.get(1) > 400){
+            return false;
+        }
+        if (value_2.get(0) < 2){
+            return false;
+        }
+        if (value_2.get(1) > 400){
+            return false;
+        }
         return true;
     }
 }
