@@ -4,11 +4,25 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        // 시작면과 마지막면일 경우 에러처리
-        // 각 자리 수를 더하는 메서드
-        // 각 자리 수를 곱하는 메서드
-        // 가장 큰 값을 리턴
-        int answer = Integer.MAX_VALUE;
+        int answer = -1;
+        int pobi_max_number = 0;
+        int crong_max_number = 0;
+
+        if (!validate(pobi) || !validate(crong)) {
+            return answer;
+        }
+        pobi_max_number = Math.max(Math.max(sumEveryPlaceValue(pobi.get(0)), sumEveryPlaceValue(pobi.get(1))), Math.max(multipleEveryPlaceValue(pobi.get(0)), multipleEveryPlaceValue(pobi.get(1))));
+        crong_max_number = Math.max(Math.max(sumEveryPlaceValue(crong.get(0)), sumEveryPlaceValue(crong.get(1))), Math.max(multipleEveryPlaceValue(crong.get(0)), multipleEveryPlaceValue(crong.get(1))));
+
+        if (pobi_max_number > crong_max_number) {
+            return 1;
+        }
+        if (pobi_max_number == crong_max_number) {
+            return 0;
+        }
+        if (pobi_max_number < crong_max_number) {
+            return 2;
+        }
         return answer;
     }
 
