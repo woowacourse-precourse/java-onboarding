@@ -10,10 +10,21 @@ package onboarding;
 //  반복문 break 조건 : 연속하는 중복문자가 없었을 때, string length < 2
 
 public class Problem2 {
-    static boolean isRemoved = false;  // decrypthion이 실행되는 동안 중복문자를 지웠는지 확인
+    static boolean isRemoved = true;  // decrypthion이 실행되는 동안 중복문자를 지웠는지 확인
+    // 2번의 while문 첫 동작이 실행되기 위해 true로 초기화
 
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = cryptogram;
+
+        // 2. 1번 반복
+        //  반복문 break 조건 : 연속하는 중복문자가 없었을 때 (isRemoved==false), string length < 2
+        while (isRemoved) {
+            if (answer.length() < 2) {
+                break;
+            }
+            answer = decryption(answer);
+        }
+
         return answer;
     }
 
