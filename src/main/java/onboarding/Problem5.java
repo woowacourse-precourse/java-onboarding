@@ -1,11 +1,12 @@
 package onboarding;
 
+import onboarding.problem5.Changes;
+
 import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
-        return answer;
+        return new Changes(money).changes();
     }
 }
