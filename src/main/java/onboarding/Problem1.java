@@ -28,6 +28,17 @@ class Problem1 {
         int crongCompareRight = 0;
         int crongResult = 0;
 
+        int answer = Integer.MAX_VALUE;
+
+        if ((pobi.get(1) - pobi.get(0)) >= 2) {
+            answer = answer + Integer.MIN_VALUE; // 예외 사항
+            return answer;
+        }
+        if ((crong.get(1) - crong.get(0)) >= 2) {
+            answer = answer + Integer.MIN_VALUE; // 예외 사항
+            return answer;
+        }
+
         for (int i = 0; i < pobi.size(); i++) {
             String getPobiIndex = Integer.toString(pobi.get(i));
             for (int j = 0; j < getPobiIndex.length(); j++) {
@@ -56,16 +67,21 @@ class Problem1 {
             }
         }
 
-        int answer = Integer.MAX_VALUE;
+        pobiCompareLeft = Math.max(pobiSumLeft, pobiMulLeft);
+        pobiCompareRight = Math.max(pobiSumRight, pobiMulRight);
+
+        crongCompareLeft = Math.max(crongSumLeft, crongMulLeft);
+        crongCompareRight = Math.max(crongSumRight, crongMulRight);
+
+        pobiResult = Math.max(pobiCompareLeft, pobiCompareRight);
+        crongResult = Math.max(crongCompareLeft, crongCompareRight);
 
         if (pobiResult == crongResult) {
             answer = answer - Integer.MAX_VALUE; // 무승부
         } else if (pobiResult > crongResult) {
             answer = answer - Integer.MIN_VALUE + 2; // 포비 승
-        } else if (pobiResult < crongResult) {
-            answer = answer - Integer.MIN_VALUE + 3; // 크롱 승
         } else {
-            answer = answer + Integer.MIN_VALUE; // 예외 사항
+            answer = answer - Integer.MIN_VALUE + 3; // 크롱 승
         }
 
         return answer;
