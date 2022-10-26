@@ -83,7 +83,6 @@ public class Problem7 {
             }
             return String.CASE_INSENSITIVE_ORDER.compare(a.getName(), b.getName());
         });
-        System.out.println(recFriendList);
 
         List<String> answer = new ArrayList<>();
         for (int i = 0; i < Integer.min(recFriendList.size(), 5); i++) {
