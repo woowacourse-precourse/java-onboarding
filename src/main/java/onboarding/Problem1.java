@@ -11,8 +11,23 @@ class Problem1 {
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = 0;
-        return answer;
+        int pobiNum, crongNum;
+        int pobiLeftPage = pobi.get(0);
+        int pobiRightPage = pobi.get(1);
+        int crongLeftPage = crong.get(0);
+        int crongRightPage = crong.get(1);
+
+        if(!checkInvalidInput(pobi) || !checkInvalidInput(crong))
+            return -1;
+
+        pobiNum = calculateMax(
+                calculateMax(addEachDigitOfPage(pobiLeftPage), addEachDigitOfPage(pobiRightPage)),
+                calculateMax(multiplyEachDigitOfPage(pobiLeftPage), multiplyEachDigitOfPage(pobiRightPage)));
+        crongNum = calculateMax(
+                calculateMax(addEachDigitOfPage(crongLeftPage), addEachDigitOfPage(crongRightPage)),
+                calculateMax(multiplyEachDigitOfPage(crongLeftPage), multiplyEachDigitOfPage(crongRightPage)));
+
+        return getResult(pobiNum, crongNum);
     }
 
     public static boolean checkInvalidInput(List<Integer> list){
