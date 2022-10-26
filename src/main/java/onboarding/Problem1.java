@@ -55,6 +55,12 @@ class Problem1 {
         return valid;
     }
 
+    /*
+     * Problem1의 솔루션 코드입니다.
+     *
+     * @param 포비와 크롱의 페이지 배열입니다.
+     * @return 포비가 이기면 1, 크롱이 이기면 2, 무승부면 0, 인자값이 잘못되었다면 -1을 반환합니다.
+     * */
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         List[] pagesList = {pobi, crong};
 
