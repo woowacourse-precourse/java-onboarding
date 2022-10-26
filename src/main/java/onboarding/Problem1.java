@@ -54,6 +54,18 @@ class Problem1 {
         }
         return result;
     }
+
+    public static boolean isEndOfSide(List<Integer> pages) {
+        for (Integer page : pages) {
+            if (page == 1) { //시작면이 있으면
+                return true;
+            }
+            if (page == 400) { //마지막면이 있으면
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
 /*
