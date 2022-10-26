@@ -42,4 +42,14 @@ class Problem1 {
         }
         return maxScore;
     }
+
+    private static int makeGameResult(int pobiScore, int crongScore) {
+        if (pobiScore == crongScore) {
+            return Constants.DRAW;
+        } else if (pobiScore > crongScore) {
+            return Constants.WIN_POBI;
+        } else {
+            return Constants.WIN_CRONG;
+        }
+    }
 }
