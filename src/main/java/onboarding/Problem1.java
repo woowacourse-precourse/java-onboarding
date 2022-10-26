@@ -9,18 +9,17 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
-        int pobiSize = pobi.size();
-        int crongSize = crong.size();
-
         int pobiFirstNumber = pobi.get(0);
         int pobiSecondNumber = pobi.get(1);
+        int crongFirstNumber = pobi.get(0);
+        int crongSecondNumber = pobi.get(1);
 
-        if (pobiSize !=2 || crongSize !=2){
-            return -1;
-        } else if (pobiFirstNumber + 1 != pobiSecondNumber){
-            pageSequence = true;
+        if (pobiFirstNumber + 1 != pobiSecondNumber || crongFirstNumber + 1 != crongSecondNumber){
+            pageSequence = false;
             return -1;
         } else{
+
+
         int answer = Integer.MAX_VALUE;
         return answer;
         }
