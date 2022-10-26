@@ -35,11 +35,29 @@ class Problem1 {
         return false;
     }
 
+    public static int compareScore(int pobiMaxScore, int crongMaxScore){
+        int answer = 0;
+        if(pobiMaxScore == crongMaxScore){
+            answer = 0;
+        }
+        if(pobiMaxScore > crongMaxScore){
+            answer = 1;
+        }
+        if(pobiMaxScore < crongMaxScore){
+            answer = 2;
+        }
+        return answer;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         if(isError(pobi) || isError(crong)){
             return -1;
         }
+        int pobiMaxScore = getMaxPageCalculate(pobi.get(0), pobi.get(1));
+        int crongMaxScore = getMaxPageCalculate(crong.get(0), crong.get(1));
+
+        answer = compareScore(pobiMaxScore, crongMaxScore);
 
         return answer;
     }
