@@ -5,7 +5,7 @@ public class Problem2 {
         String answer = "answer";
         return answer;
     }
-    public String removeDuplicateLetters(String str) {
+    public static String removeDuplicateLetters(String str) {
         String removedStr = str;
         for(char i = 'a'; i <= 'z'; i++) {
             removedStr = removedStr.replaceAll(i + "{2,}", " ");
