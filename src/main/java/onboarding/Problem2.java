@@ -13,6 +13,15 @@ public class Problem2 {
             this.duplication = this.origin;
         }
 
+        String decode() {
+            init();
+            boolean flag = true;
+            while(flag) {
+                flag = hasRepetition();
+            }
+            return this.duplication;
+        }
+
         private boolean hasRepetition() {
             for(int i=1 ; i<duplication.length() ; i++) {
                 if (checkRepetition(i)) return true;
@@ -31,7 +40,7 @@ public class Problem2 {
 
     }
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        Cryptogram c = new Cryptogram(cryptogram);
+        return c.decode();
     }
 }
