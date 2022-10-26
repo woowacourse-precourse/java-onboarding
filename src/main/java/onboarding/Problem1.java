@@ -11,7 +11,20 @@ public class Problem1 {
         int pobiScore = findMaxScore(pobi);
         int crongScore = findMaxScore(crong);
 
-        return 1;
+        return computeScore(pobiScore, crongScore);
+    }
+
+    private static int computeScore(int pobiScore, int crongScore) {
+        int gameScore = 0;
+
+        if (pobiScore > crongScore) {
+            gameScore = 1;
+        }
+        if (pobiScore < crongScore) {
+            gameScore = 2;
+        }
+
+        return gameScore;
     }
 
     private static boolean isInvalidPage(List<Integer> openPage) {
