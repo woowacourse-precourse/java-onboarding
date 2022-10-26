@@ -164,7 +164,7 @@ class ApplicationTest {
         }
 
         @Test
-        void correctSizeTest(String str){
+        void correctSizeTest(){
             String word = "";
             assertThat(Problem4.Validator.isValidate(word)).isEqualTo(false);
         }
