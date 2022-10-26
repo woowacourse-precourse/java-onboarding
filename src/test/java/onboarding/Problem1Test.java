@@ -18,10 +18,10 @@ class Problem1Test {
 	@CsvSource(value = {"123:123", "13:13", "43:43", "264:264", "0:0", "-13:-13"}, delimiter = ':')
 	void parseIntToStringTest(int page, String expected) {
 		// given : 테스트를 진행할 Problem1의 객체 인스턴스
-		final Problem1 problem1 = new Problem1();
+//		final Problem1 problem1 = new Problem1();
 
 		// when : page number 를 parsing 할 때를 확인하기 위해
-		String parsedResult = problem1.parsePageNumber(page);
+		String parsedResult = Problem1.parsePageNumber(page);
 
 		// then : 숫자는 그대로 문자열로 변경되어야 함.
 		assertThat(parsedResult).isEqualTo(expected);
@@ -32,10 +32,10 @@ class Problem1Test {
 	@CsvSource(value = {"232:7", "123:6", "13:4", "43:7", "264:12", "348274592374592457:90", "0:0", "10:1"}, delimiter = ':')
 	void calculateSumOfStringDigits(String stringNumber, int expected) {
 		// given : 테스트를 진행할 Problem1의 객체 인스턴스
-		final Problem1 problem1 = new Problem1();
+//		final Problem1 problem1 = new Problem1();
 
 		// when : 문자열의 각 자리 수 합을 구할 때
-		int sum = problem1.calculateSumOfStringDigits(stringNumber);
+		int sum = Problem1.calculateSumOfStringDigits(stringNumber);
 
 		// then : 각 자리수 합이 정상적으로 나오는지 확인
 		assertThat(sum).isEqualTo(expected);
@@ -47,10 +47,10 @@ class Problem1Test {
 			"43251:120", "348274592374592457:995147776", "999999999999999999990:0"}, delimiter = ':')
 	void calculateMultiplicationOfStringDigits(String stringNumber, int expected) {
 		// given : 테스트를 진행할 Problem1의 객체 인스턴스
-		final Problem1 problem1 = new Problem1();
+//		final Problem1 problem1 = new Problem1();
 
 		// when : 문자열의 각 자리 수 곱을 구할 때
-		int multiplication = problem1.calculateMultiplicationOfStringDigits(stringNumber);
+		int multiplication = Problem1.calculateMultiplicationOfStringDigits(stringNumber);
 
 		// then : 각 자리수 곱이 정상적으로 나오는지 확인
 		assertThat(multiplication).isEqualTo(expected);
@@ -60,12 +60,12 @@ class Problem1Test {
 	@CsvSource(value = {"231:6", "232:12", "234:24", "111:3", "10:1", "101:2"}, delimiter = ':')
 	void getPageMaxScoreTest(int page, int expected) {
 		// given : 테스트를 진행할 Problem1의 객체 인스턴스
-		final Problem1 problem1 = new Problem1();
+//		final Problem1 problem1 = new Problem1();
 
-		// when : 플레이어의 왼쪽, 오른쪽 페이지의 각 자릿수 합, 곱 중에 최대값 구하기
-		int maxScore = problem1.getPageMaxScore(page);
+		// when : 페이지의 각 자릿수 합, 곱 중에 최대값 구하기
+		int maxScore = Problem1.getPageMaxScore(page);
 
-		// then : 플레이어 점수의 최대값이 잘 나오는지 확인
+		// then : 페이지의 각 자릿수 합, 곱의 최대값이 잘 나오는지 확인
 		assertThat(maxScore).isEqualTo(expected);
 	}
 
@@ -73,10 +73,10 @@ class Problem1Test {
 	@MethodSource("generatePlayerPagesAndExpectedResult")
 	void getPlayerMaxScore(List<Integer> playerPages, int expected) {
 		// given : 테스트를 진행할 Problem1의 객체 인스턴스
-		final Problem1 problem1 = new Problem1();
+//		final Problem1 problem1 = new Problem1();
 
 		// when : 플레이어의 왼쪽, 오른쪽 페이지의 각 자릿수 합, 곱 중에 최대값 구하기
-		int maxScore = problem1.getPlayerMaxScore(playerPages);
+		int maxScore = Problem1.getPlayerMaxScore(playerPages);
 
 		// then : 플레이어 점수의 최대값이 잘 나오는지 확인
 		assertThat(maxScore).isEqualTo(expected);

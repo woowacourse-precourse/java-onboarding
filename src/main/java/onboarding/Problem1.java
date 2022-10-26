@@ -11,30 +11,30 @@ class Problem1 {
         return answer;
     }
 
-    public String parsePageNumber(int page) {
+    public static String parsePageNumber(int page) {
         return Integer.toString(page);
     }
 
-    public int calculateSumOfStringDigits(String str) {
+    public static int calculateSumOfStringDigits(String str) {
         return str.chars()
                 .map(Character::getNumericValue)
                 .sum();
     }
 
-    public int calculateMultiplicationOfStringDigits(String str) {
+    public static int calculateMultiplicationOfStringDigits(String str) {
         return str.chars()
                 .map(Character::getNumericValue)
                 .reduce(1, (ret, digit) -> ret * digit);
     }
 
-    public int getPlayerMaxScore(List<Integer> player) {
+    public static int getPlayerMaxScore(List<Integer> player) {
         int leftPageMaxScore = getPageMaxScore(player.get(LEFT_PAGE));
         int rightPageMaxScore = getPageMaxScore(player.get(RIGHT_PAGE));
 
         return Math.max(leftPageMaxScore, rightPageMaxScore);
     }
 
-    public int getPageMaxScore(int page) {
+    public static int getPageMaxScore(int page) {
         String parsedPageNumber = parsePageNumber(page);
         int sumResult = calculateSumOfStringDigits(parsedPageNumber);
         int multiplicationResult = calculateMultiplicationOfStringDigits(parsedPageNumber);
