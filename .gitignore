@@ -30,3 +30,8 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### General (추가) ###
+.DS_Store
+.AppleDouble
+.LSOverride
