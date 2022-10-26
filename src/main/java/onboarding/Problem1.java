@@ -65,7 +65,8 @@ class Problem1 {
 
         for(int number: pages) {
             // 각 자리 숫자 더하고 곱해서 제일 큰 수 가져오기
-            int calculateNumber = Integer.max(addAllDigits(number), multiplyAllDigits(number));
+            int[] splitDigits = splitDigits(number);
+            int calculateNumber = Integer.max(addAllDigits(splitDigits), multiplyAllDigits(splitDigits));
 
             if (returnNumber < calculateNumber) {
                 returnNumber = calculateNumber;
@@ -77,12 +78,10 @@ class Problem1 {
 
     /**
      * 각 자리 숫자 더하기
-     * @param number 페이지 숫자
+     * @param splitDigits 분할된 숫자 배열
      * @return 결과값
      */
-    private static int addAllDigits(int number) {
-        int[] splitDigits = splitDigits(number);
-
+    private static int addAllDigits(int[] splitDigits) {
         int returnNumber = 0;
 
         for (int i: splitDigits) {
@@ -94,11 +93,10 @@ class Problem1 {
 
     /**
      * 각 자리 숫자 곱하기
-     * @param number 페이지 숫자
+     * @param splitDigits 분할된 숫자 배열
      * @return 결과값
      */
-    private static int multiplyAllDigits(int number) {
-        int[] splitDigits = splitDigits(number);
+    private static int multiplyAllDigits(int[] splitDigits) {
         int returnNumber = 1;
 
         for (int i: splitDigits) {
