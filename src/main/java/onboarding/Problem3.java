@@ -21,6 +21,12 @@ public class Problem3 {
         for (int index = 3; index < number + 1; index++) {
             String indexToString = String.valueOf(index);
             memoization[index] = memoization[index - 1];
+
+            for (int letterIndex = 0; letterIndex < indexToString.length(); letterIndex++) {
+                if (indexToString.charAt(letterIndex) == '3' || indexToString.charAt(letterIndex) == '6' || indexToString.charAt(letterIndex) == '9') {
+                    memoization[index]++;
+                }
+            }
         }
         return memoization[number];
     }
