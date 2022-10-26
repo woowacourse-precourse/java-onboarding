@@ -19,15 +19,20 @@ public class Problem4 {
                 answer += " ";
                 continue;
             }
-
             //소문자, 대문자 체크
-            if (Character.isLowerCase(s.charAt(0))) {
-                int temp = (int)s.charAt(0)-97;
-                answer += (char)(122 - temp);
-            } else {
-                int temp = (int)s.charAt(0)-65;
-                answer += (char)(90 - temp);
-            }
+            answer = AlphabetChange(answer, s);
+
+        }
+        return answer;
+    }
+    public static String AlphabetChange(String answer, String s){
+        if (Character.isLowerCase(s.charAt(0))) {
+            int temp = (int)s.charAt(0)-97;
+            answer += (char)(122 - temp);
+        }
+        if (Character.isUpperCase(s.charAt(0))){
+            int temp = (int)s.charAt(0)-65;
+            answer += (char)(90 - temp);
         }
         return answer;
     }
