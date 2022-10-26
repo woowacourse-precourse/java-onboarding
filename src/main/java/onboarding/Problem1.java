@@ -35,15 +35,16 @@ class Problem1 {
                 sum += num % 10;
                 mul *= num % 10;
                 num /= 10;
-
-                if (myNum < sum) {
-                    myNum = sum;
-                }
-                if (myNum < mul) {
-                    myNum = mul;
-                }
+            }
+            num = bigger(sum, mul);
+            if (myNum < num) {
+                myNum = num;
             }
         }
         return myNum;
+    }
+
+    public static int bigger(int a, int b) {
+        return Math.max(a, b);
     }
 }
