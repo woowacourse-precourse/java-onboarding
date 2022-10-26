@@ -69,4 +69,12 @@ class Problem1 {
             return false;
         }
     }
+
+    public static boolean isFirstAndLastPage(List<Integer> pages) {
+        if (pages.get(0) == 1 || pages.get(1) == 400) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
