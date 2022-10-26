@@ -46,5 +46,15 @@ class Problem1 {
         return Collections.max(values);
     }
 
-
+    public static int getGameResult(int pobi, int crong){
+        if(pobi > crong){
+            return 1;
+        }
+        else if(pobi == crong){
+            return 0;
+        }
+        else{
+            return 2;
+        }
+    }
 }
