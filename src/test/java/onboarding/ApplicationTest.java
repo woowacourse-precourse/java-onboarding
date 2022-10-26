@@ -187,6 +187,13 @@ class ApplicationTest {
         }
 
         @Test
+        void case3() {
+            int money = 12345;
+            List<Integer> result = List.of(0, 1, 0, 2, 0, 3, 0, 4, 5);
+            assertThat(Problem5.solution(money)).isEqualTo(result);
+        }
+
+        @Test
         void correctRangeTest1(){
             int money = 0;
             assertThat(Problem5.Validator.isValidate(money)).isFalse();
