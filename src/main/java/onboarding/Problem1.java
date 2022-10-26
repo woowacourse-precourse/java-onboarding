@@ -45,4 +45,21 @@ class Problem1 {
         }
         return plus;
     }
+
+    // 예외처리 함수
+    private static boolean checkNumber(List<Integer> input) {
+        // 왼쪽 페이지 홀수
+        boolean oddNum = input.get(0)%2 != 0;
+        // 오른쪽 페이지 짝수
+        boolean evenNum = input.get(1)%2 == 0;
+        // 오른쪽 페이지 - 왼쪽 페이지 가 1 인지
+        boolean checkNum = (input.get(1) - input.get(0)) == 1;
+        // 시작면 or 마지막면 아닌지
+        boolean checkPage = (input.get(0) > 0 && input.get(1) < 401);
+
+        if(oddNum && evenNum && checkNum && checkPage) {
+            return true;
+        }
+        return false;
+    }
 }
