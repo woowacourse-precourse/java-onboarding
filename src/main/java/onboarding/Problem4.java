@@ -3,6 +3,15 @@ package onboarding;
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
+
+        for (char c: word.toCharArray()){
+            char current = c;
+            if (Character.isAlphabetic(c)){
+                current = convertToFrogAlphabet(c);
+            }
+            answer += current;
+        }
+
         return answer;
     }
 
