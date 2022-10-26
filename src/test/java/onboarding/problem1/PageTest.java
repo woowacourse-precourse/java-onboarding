@@ -1,6 +1,7 @@
 package onboarding.problem1;
 
-import org.assertj.core.api.Assertions;
+import static org.assertj.core.api.Assertions.*;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -11,6 +12,12 @@ public class PageTest {
 	void calculate_score() {
 		Page page = new Page(124);
 
-		Assertions.assertThat(page.calculateScore()).isEqualTo(8);
+		assertThat(page.calculateScore()).isEqualTo(8);
+	}
+
+	@Test
+	@DisplayName("페이지는 시작면보다 커야한다")
+	void page_is_greater_than_start() {
+		assertThatIllegalArgumentException().isThrownBy(() -> new Page(0));
 	}
 }
