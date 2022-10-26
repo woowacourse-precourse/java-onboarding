@@ -13,7 +13,7 @@ public class SeparateDigit {
         size=stringNumber.length();
         separatedNumber = new int[size];
         for(int i=0; i<size; i++){
-            separatedNumber[i] = (int)stringNumber.charAt(i)-'0';
+            separatedNumber[i] = (int)stringNumber.charAt(i) - '0';
         }
     }
     public static boolean isWrongPage(List<Integer> bookPage) {
@@ -25,5 +25,11 @@ public class SeparateDigit {
         }
         return false;
     }
+    public int Score(){
+        int sum = SumSeparatedNumber();
+        int mul = multiplySeparatedNumber();
+        return biggerInt(sum, mul);
+    }
+
 
 }
