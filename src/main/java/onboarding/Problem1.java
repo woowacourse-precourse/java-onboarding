@@ -15,10 +15,28 @@ class Problem1 {
      * 3. 페이지 순서가 [홀, 짝]이 아닌경우
      */
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
+		if (isException(pobi) || isException(crong)) {
+			return -1;
+		}
 		int pobiMaxNum = findMaxNum(pobi);
 		int crongMaxNum = findMaxNum(crong);
 
 		return resultNum(pobiMaxNum, crongMaxNum);
+	}
+
+	private static boolean isException(List<Integer> pageList) {
+		int leftPage = pageList.get(0);
+		int rightPage = pageList.get(1);
+		if (leftPage == 1 || rightPage == 2 || leftPage == 399 || rightPage == 400) {
+			return true;
+		}
+		if (leftPage + 1 != rightPage) {
+			return true;
+		}
+		if (leftPage % 2 != 1 || rightPage % 2 != 0) {
+			return true;
+		}
+		return false;
 	}
 
 	private static int resultNum(int pobiMaxNum, int crongMaxNum) {
