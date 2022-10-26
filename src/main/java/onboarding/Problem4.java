@@ -23,35 +23,45 @@ public class Problem4 {
     }
 
     private static String changeCharacter(String character) {
-        if (checkUpperCase(character)) {
-            character = changeUpperCharacter(character);
-        }
+        String alphabetCase = checkAlphabetCase(character);
 
-        if (checkLowerCase(character)) {
-            character = changeLowerCharacter(character);
+        if (alphabetCase != null) {
+            character = changeCharacter(character, alphabetCase);
         }
 
         return character;
     }
 
-    private static boolean checkLowerCase(String character) {
-        return Pattern.matches("[a-z]", character);
+    private static String checkAlphabetCase(String character) {
+        String alphabetCase = null;
+
+        if (Pattern.matches("[a-z]", character)) {
+            alphabetCase = "lower";
+        }
+
+        if (Pattern.matches("[A-Z]", character)) {
+            alphabetCase = "upper";
+        }
+
+        return alphabetCase;
     }
 
-    private static boolean checkUpperCase(String character) {
-        return Pattern.matches("[A-Z]", character);
-    }
+    private static String changeCharacter(String character, String alphabetCase) {
+        int startAsciiCode = 0;
+        int endAsciiCode = 0;
 
-    private static String changeLowerCharacter(String character) {
-        int number = (int)character.charAt(0);
-        int newNumber = LOWER_ALPHABET_END_ASCII - (number - LOWER_ALPHABET_START_ASCII);
-        return String.valueOf((char)newNumber);
-    }
+        if (alphabetCase.equals("lower")) {
+            startAsciiCode = LOWER_ALPHABET_START_ASCII;
+            endAsciiCode = LOWER_ALPHABET_END_ASCII;
+        }
 
-    private static String changeUpperCharacter(String character) {
-        int number = (int)character.charAt(0);
-        int newNumber = UPPER_ALPHABET_END_ASCII - (number - UPPER_ALPHABET_START_ASCII);
-        return String.valueOf((char)newNumber);
-    }
+        if (alphabetCase.equals("upper")) {
+            startAsciiCode = UPPER_ALPHABET_START_ASCII;
+            endAsciiCode = UPPER_ALPHABET_END_ASCII;
+        }
 
+        int number = (int) character.charAt(0);
+        int newNumber = startAsciiCode - (number - endAsciiCode);
+        return String.valueOf((char) newNumber);
+    }
 }
