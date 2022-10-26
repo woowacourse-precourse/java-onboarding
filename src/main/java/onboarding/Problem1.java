@@ -28,24 +28,30 @@ class Problem1 {
     }
 
     private static int calculatePage(List<Integer> pageList) {
-        return Math.max(
-                multiplePage(pageList.get(0)),
-                plusPage(pageList.get(1))
-        );
+
+        Integer leftPage = pageList.get(0);
+        Integer rightPage = pageList.get(1);
+
+        int leftPageResult = Math.max(multiplePage(leftPage), plusPage(leftPage));
+        int rightPageResult = Math.max(multiplePage(rightPage), plusPage(rightPage));
+        return Math.max(leftPageResult, rightPageResult);
     }
 
     private static int multiplePage(int page) {
         if (page < 10) {
             return page;
         }
-        return (page % 10) * (page / 10);
+        if (page < 100) {
+            return (page % 10) * (page / 10);
+        }
+        return (page % 10) * ((page % 100) / 10) * (page / 100);
     }
 
     private static int plusPage(int page) {
         if (page < 10) {
             return page;
         }
-        return (page % 10) + (page / 10);
+        return (page % 10) + ((page % 100) / 10) + (page / 100);
     }
 
     private static boolean isValidPage(List<Integer> pageList) {
