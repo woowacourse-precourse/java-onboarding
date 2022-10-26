@@ -11,7 +11,42 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (isException(pobi, crong)) return EXCEPTION;
-        return -2;
+        return play(pobi, crong);
+    }
+
+    private static int play(List<Integer> pobi, List<Integer> crong) {
+        Integer pobiScore = maxScore(pobi.get(0), pobi.get(1));
+        Integer crongScore = maxScore(crong.get(0), crong.get(1));
+
+        if (pobiScore > crongScore) return POBI_WIN;
+        if (pobiScore.equals(crongScore)) return DRAW;
+
+        return CRONG_WIN;
+    }
+
+    private static int maxScore(Integer left, Integer right) {
+        int sumScore = Math.max(sum(left), sum(right));
+        int mulScore = Math.max(mul(left), mul(right));
+
+        return Math.max(sumScore, mulScore);
+    }
+
+    private static int sum(Integer page) {
+        int result = 0;
+        while (page > 0) {
+            result += page % 10;
+            page /= 10;
+        }
+        return result;
+    }
+
+    private static int mul(Integer page) {
+        int result = 1;
+        while (page > 0) {
+            result *= page % 10;
+            page /= 10;
+        }
+        return result;
     }
 
     private static boolean isException(List<Integer> pobi, List<Integer> crong) {
