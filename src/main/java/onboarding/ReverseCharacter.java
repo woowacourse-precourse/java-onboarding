@@ -4,6 +4,7 @@ public class ReverseCharacter {
 
 	private static final int BLANK = 32;
 	private static final int UPPER = 65 + 90;
+	private static final int LOWER = 97 + 122;
 
 	private final char[] chars;
 
@@ -21,6 +22,8 @@ public class ReverseCharacter {
 				answer += " ";
 			} else if (Character.isUpperCase(ascii)) {
 				answer += Character.toString(UPPER - ascii);
+			} else if (Character.isLowerCase(ascii)) {
+				answer += Character.toString(LOWER - ascii);
 			}
 
 		}
