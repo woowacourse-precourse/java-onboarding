@@ -14,9 +14,7 @@ class Problem1 {
     }
 
     // TODO 자리수를 구하는 메서드
-
     // TODO 큰 값을 리턴하는 메서드
-
     // TODO pobi와 crong의 값을 비교하는 메서드
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
