@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.Arrays;
 import java.util.List;
 
 class Problem1 {
@@ -113,12 +114,12 @@ class Problem1 {
      * @return 분할된 숫자 배열
      */
     private static int[] splitDigits(int number) {
-        char[] charsNumber = String.valueOf(number).toCharArray();
-        int lengthCharNumber = charsNumber.length;
-        int[] intArrayNumber = new int[lengthCharNumber];
+        String stringNumber = String.valueOf(number);
+        int lengthStringNumber = stringNumber.length();
+        int[] intArrayNumber = new int[lengthStringNumber];
 
-        for (int i = 0; i < lengthCharNumber; i++) {
-            intArrayNumber[i] = charsNumber[i];
+        for (int i = 0; i < lengthStringNumber; i++) {
+            intArrayNumber[i] = Integer.parseInt(stringNumber, i, i + 1, 10);
         }
 
         return intArrayNumber;
