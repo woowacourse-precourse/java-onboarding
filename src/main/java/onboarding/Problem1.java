@@ -12,15 +12,18 @@ class Problem1 {
 
     private final List<Integer> pagesA;
     private final List<Integer> pagesB;
+    private final int max;
 
     /**
      * Constructor with pages of person A and B
      * @param pagesA pages of person A
      * @param pagesB pages of person B
+     * @param max max value of page number
      */
-    public Problem1(List<Integer> pagesA, List<Integer> pagesB) {
+    public Problem1(List<Integer> pagesA, List<Integer> pagesB, int max) {
         this.pagesA = pagesA;
         this.pagesB = pagesB;
+        this.max = max;
     }
 
     /**
@@ -69,7 +72,7 @@ class Problem1 {
      * @return return if left and right is in range and left + 1 is right
      */
     private boolean isAvailableValues(int left, int right) {
-        return 1 <= left && left <= 399 && left + 1 == right;
+        return 1 <= left && left < max && left + 1 == right;
     }
 
     /**
@@ -133,7 +136,7 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         try {
-            Problem1 problem = new Problem1(pobi, crong);
+            Problem1 problem = new Problem1(pobi, crong, 400);
             return problem.winner();
         } catch (WrongInputException e) {
             return -1;
