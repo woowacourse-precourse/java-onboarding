@@ -86,7 +86,7 @@ class Problem1 {
         }
 
         private int multiplyDigits() {
-            int result = 0, num = page;
+            int result = 1, num = page;
             while (num > 0) {
                 result *= num % 10;
                 num /= 10;
