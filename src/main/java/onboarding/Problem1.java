@@ -4,7 +4,8 @@ import java.util.List;
 
 class Problem1 {
     final private static int POBI_WIN = 1;
-    final private static int CRONG_WIN = 0;
+    final private static int CRONG_WIN = 2;
+    final private static int DRAW = 0;
     final private static int EXCEPTION = -1;
     static int playerCounter = 0;
 
