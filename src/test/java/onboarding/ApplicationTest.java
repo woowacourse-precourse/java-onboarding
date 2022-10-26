@@ -1,11 +1,12 @@
 package onboarding;
 
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.*;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 
 class ApplicationTest {
     @Nested
@@ -72,6 +73,14 @@ class ApplicationTest {
         void case2() {
             String cryptogram = "zyelleyz";
             String result = "";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        @DisplayName("연속된 문자 3개")
+        void case3() {
+            String cryptogram = "bannnana";
+            String result = "bna";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
     }
