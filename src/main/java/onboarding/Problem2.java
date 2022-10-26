@@ -17,6 +17,21 @@ public class Problem2 {
      * 문자열을 입력받아 중복된 문제를 삭제한다.
      * TODO: 문자열에서 앞뒤 값이 같은 index의 경우, return할 문자열에 추가하지 않는다.
      */
+    private static String deleteContinuousCharacter(String cryptogram) {
+        StringBuilder sb = new StringBuilder();
+        cryptogram = cryptogram + '!'; // 허수 추가
+        char temp = cryptogram.charAt(0);
+        for (int i = 1; i < cryptogram.length(); i++) {
+            char next = cryptogram.charAt(i);
+            if (temp != next) {
+                sb.append(temp);
+                temp = next;
+            } else {
+                temp = cryptogram.charAt(++i);
+            }
+        }
+        return sb.toString();
+    }
 
 
     /**
