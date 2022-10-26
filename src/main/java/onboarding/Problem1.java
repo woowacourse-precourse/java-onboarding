@@ -25,7 +25,7 @@ class Problem1 {
     }
 
     // 각 자리수의 합을 구한다.
-    public static int getTotal(List<Integer> pageDigitList) {
+    public static int getAdditionTotal(List<Integer> pageDigitList) {
         int answer = 0;
         for (int i = 0; i < pageDigitList.size(); i++) {
             answer += pageDigitList.get(i);
@@ -33,7 +33,7 @@ class Problem1 {
         return answer;
     }
 
-
+    // 각 자리수의 곱을 구한다.
 
     // 구한 값 중 최댓값을 구한다.
 }
