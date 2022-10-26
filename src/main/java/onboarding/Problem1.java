@@ -5,14 +5,18 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-        if(pobi.get(1) - pobi.get(0) != 1 || crong.get(1) - crong.get(0) != 1) {
+        int pobiLeftPageNumber = pobi.get(0);
+        int pobiRightPageNumber = pobi.get(1);
+        int crongLeftPageNumber = crong.get(0);
+        int crongRightPageNumber = crong.get(1);
+        if(isInvalidPage(pobiLeftPageNumber, pobiRightPageNumber, crongLeftPageNumber, crongRightPageNumber)) {
             answer = -1;
             return answer;
         }
-        int pobiMaxNumInLeftPage = getMaxNumberAtPage(pobi.get(0));
-        int pobiMaxNumInRightPage = getMaxNumberAtPage(pobi.get(1));
-        int crongMaxNumInLeftPage = getMaxNumberAtPage(crong.get(0));
-        int crongMaxNumInRightPage = getMaxNumberAtPage(crong.get(1));
+        int pobiMaxNumInLeftPage = getMaxNumberAtPage(pobiLeftPageNumber);
+        int pobiMaxNumInRightPage = getMaxNumberAtPage(pobiRightPageNumber);
+        int crongMaxNumInLeftPage = getMaxNumberAtPage(crongLeftPageNumber);
+        int crongMaxNumInRightPage = getMaxNumberAtPage(crongRightPageNumber);
 
         int pobiMaxNum = getMaxNumber(pobiMaxNumInLeftPage, pobiMaxNumInRightPage);
         int crongMaxNum = getMaxNumber(crongMaxNumInLeftPage, crongMaxNumInRightPage);
@@ -29,6 +33,21 @@ class Problem1 {
 
     public static int getMaxNumber(int x, int y){
         return x > y ? x : y;
+    }
+
+    public static boolean isInvalidPage(int pobiLeftPageNumber, int pobiRightPageNumber, int crongLeftPageNumber, int crongRightPageNumber){
+        if(pobiRightPageNumber - pobiLeftPageNumber != 1
+                || crongRightPageNumber - crongLeftPageNumber != 1
+                || pobiRightPageNumber % 2 != 0
+                || pobiLeftPageNumber % 2 != 1
+                || crongRightPageNumber % 2 != 0
+                || crongLeftPageNumber % 2 != 1){
+            return true;
+        } else return false;
+    }
+
+    public static int isOddNumber(int num){
+        return num % 2;
     }
     public static int getMaxNumberAtPage(int page){
         int tmp = page;
