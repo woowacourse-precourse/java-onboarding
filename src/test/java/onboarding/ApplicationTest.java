@@ -37,7 +37,15 @@ class ApplicationTest {
         @Test
         void splitTest() {
             int num = 408;
-            assertThat(Problem1.splitNum(num)).isEqualTo(List.of(4,0,8));
+            List<Integer> result = List.of(4,0,8);
+            assertThat(Problem1.splitNum(num)).isEqualTo(result);
+        }
+
+        @Test
+        void sumTest() {
+            List<Integer> numbers = List.of(1,2,3);
+            int result = 6;
+            assertThat(Problem1.getSum(numbers)).isEqualTo(result);
         }
     }
 

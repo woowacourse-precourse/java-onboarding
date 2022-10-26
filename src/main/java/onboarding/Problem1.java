@@ -25,4 +25,11 @@ class Problem1 {
 
         return List.of(numOfFirst, numOfSecond, numOfThird);
     }
+
+    public static int getSum(List<Integer> numbers) {
+        int result = 0;
+        result += numbers.get(0) + numbers.get(1) + numbers.get(2);
+
+        return result;
+    }
 }
