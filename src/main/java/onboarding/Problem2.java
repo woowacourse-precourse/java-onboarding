@@ -13,4 +13,20 @@ public class Problem2 {
         }
         return -1;
     }
+
+    static String decode(String cryptogram) {
+        int start = hasDuplicate(cryptogram);
+        if (start == -1)
+            return cryptogram;
+
+        for (int end = start + 1; end < cryptogram.length(); end++) {
+
+            if (cryptogram.charAt(end) != cryptogram.charAt(start) || end == cryptogram.length() - 1) {
+                cryptogram = cryptogram.replace(cryptogram.substring(start, end), "");
+                break;
+            }
+        }
+        return decode(cryptogram);
+    }
+
 }
