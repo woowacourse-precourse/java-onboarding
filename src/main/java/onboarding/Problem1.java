@@ -21,6 +21,8 @@ class Problem1 {
             answer = 2;
         if (getMaxNumber(pobi) == getMaxNumber(crong))
             answer = 0;
+        if (isException(pobi) || isException(crong))
+            answer = -1;
         return answer;
     }
 
@@ -54,5 +56,11 @@ class Problem1 {
             max = Math.max(Math.max(getSum(pageNumbers), getMultiply(pageNumbers)), max);
         }
         return max;
+    }
+
+    private static boolean isException(List<Integer> pages) {
+        if(pages.get(1) != pages.get(0) + 1 || pages.get(0) == 1 || pages.get(1) == 400 || pages.get(0) %2 != 1)
+            return true;
+        return false;
     }
 }
