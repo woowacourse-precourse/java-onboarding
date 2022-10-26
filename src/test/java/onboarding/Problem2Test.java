@@ -9,6 +9,7 @@ public class Problem2Test {
     @Test
     public void findTest() {
         Cryptogram cryptogram = new Cryptogram("browoanoommnaon");
-        assertThat(cryptogram.find()).isEqualTo(9);
+        cryptogram.remove();
+        assertThat(cryptogram.toString()).isEqualTo("browoannaon");
     }
 }
