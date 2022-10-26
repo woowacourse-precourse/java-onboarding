@@ -29,8 +29,15 @@ class Problem1 {
 
     private static int doCalculate(Integer page) {
         List<Integer> eachNumbers = getEachNumbers(page);
-        int pageMaxValue = Math.max(doSum(eachNumbers), doMultiply(eachNumbers));
-        return pageMaxValue;
+        int sum = eachNumbers.stream()
+                .mapToInt(Integer::intValue)
+                .reduce(0, (i, j) -> i + j);
+        int multiply = eachNumbers.stream()
+                .mapToInt(Integer::intValue)
+                .reduce(1, (i, j) -> i * j);
+
+        return Math.max(sum, multiply);
+
     }
 
     private static List<Integer> getEachNumbers(Integer page) {
@@ -42,23 +49,7 @@ class Problem1 {
         }
         return eachNumbers;
     }
-
-    private static Integer doSum(List<Integer> eachNumbers) {
-        int value = 0;
-        for (Integer eachNumber : eachNumbers) {
-            value += eachNumber;
-        }
-        return value;
-    }
-
-    private static Integer doMultiply(List<Integer> EachNumbers) {
-        int value = 1;
-        for (Integer eachNumber : EachNumbers) {
-            value *= eachNumber;
-        }
-        return value;
-    }
-
+    
 
     private static int getAnswer(Integer x, Integer y) {
         if (x == -1 || y == -1) {
