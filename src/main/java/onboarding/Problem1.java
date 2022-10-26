@@ -13,6 +13,9 @@ class Problem1 {
         if(!verificationCheck(pobi) || !verificationCheck(crong)) {
             return -1;
         }
+
+        int pobiMax = getMax(pobi);
+        int crongMax = getMax(crong);
         
         return answer;
     }
@@ -62,5 +65,18 @@ class Problem1 {
         }
 
         return result;
+    }
+
+    public static int getMax(List<Integer> targetList) {
+        int sumLeftPage = addition(targetList.get(0));
+        int sumRightPage = addition(targetList.get(1));
+
+        int productLeftPage = multiplication(targetList.get(0));
+        int productRigthPage = multiplication(targetList.get(1));
+
+        int sum = Math.max(sumLeftPage, sumRightPage);
+        int product = Math.max(productLeftPage, productRigthPage);
+
+        return Math.max(sum, product);
     }
 }
