@@ -27,9 +27,6 @@ class Problem1 {
 
         // 자리수 확인
 
-
-
-
         answer = Integer.MAX_VALUE;
         return answer;
     }
@@ -39,5 +36,39 @@ class Problem1 {
         return length;
     }
 
+    private static int getMaxNumber(int number){
+        int MaxValue = 0;
+
+        if (numberLength(number) == 3){
+            int FirstNumberFirstDigit = number / 100;
+            int FirstNumberSecondDigit = (number % 100) / 10;
+            int FirstNumberThirdDigit = (number % 100) % 10;
+
+            int Addition = FirstNumberFirstDigit + FirstNumberSecondDigit + FirstNumberThirdDigit;
+            int Multiplication = FirstNumberFirstDigit * FirstNumberSecondDigit * FirstNumberThirdDigit;
+            if (Addition > Multiplication){
+                MaxValue = Addition;
+            } else {
+                MaxValue = Multiplication;
+            }
+
+
+        } else if (numberLength(number) == 2){
+            int FirstNumberFirstDigit = (number % 100) / 10;
+            int FirstNumberSecondDigit = (number % 100) % 10;
+
+            int Addition = FirstNumberFirstDigit + FirstNumberSecondDigit;
+            int Multiplication = FirstNumberFirstDigit * FirstNumberSecondDigit;
+            if (Addition > Multiplication){
+                MaxValue = Addition;
+            } else {
+                MaxValue = Multiplication;
+            }
+        } else {
+            MaxValue = number;
+        }
+
+        return MaxValue;
+    }
 
 }
