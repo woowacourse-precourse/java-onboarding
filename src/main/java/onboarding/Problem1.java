@@ -50,6 +50,7 @@ class Problem1 {
             eachNumbers.add(page % 10);
             page /= 10;
         }
+        
         return eachNumbers;
     }
 
