@@ -62,4 +62,19 @@ class Problem1 {
         }
     }
 
+    /**
+     *두 수를 비교하는 함수
+     */
+    private static int result_num(int num1, int num2){
+
+        int left =which_big(num1);
+        int right =which_big(num2);
+
+        if (left>right){
+            return left;
+        } else{
+            return right;
+        }
+    }
+
 }
