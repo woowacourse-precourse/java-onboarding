@@ -17,14 +17,51 @@ class Problem1 {
     }
 
     public static void main(String[] args) {
+        Game.start("pobi", "crong");
+        int result = solution(Game.user1.getChoiceNumbers(), Game.user2.getChoiceNumbers());
+        Game.end(result);
+    }
+}
+
+class Game {
+    static User user1;
+    static User user2;
+
+    static void start() {
         Book book = new Book();
-        User pobi = new User("pobi");
-        User crong = new User("crong");
-        pobi.choiceRandomNumbers(book.getPageStart(), book.getPageEnd());
-        crong.choiceRandomNumbers(book.getPageStart(), book.getPageEnd());
-        int result = solution(pobi.getChoiceNumbers(), crong.getChoiceNumbers());
-        OutView.printHead(pobi, crong);
-        OutView.printResult(pobi, crong, result);
+        user1 = new User("pobi");
+        user2 = new User("crong");
+        user1.choiceRandomNumbers(book.getPageStart(), book.getPageEnd());
+        user2.choiceRandomNumbers(book.getPageStart(), book.getPageEnd());
+    }
+
+    static void start(String name1, String name2) {
+        Book book = new Book();
+        user1 = new User(name1);
+        user2 = new User(name2);
+        user1.choiceRandomNumbers(book.getPageStart(), book.getPageEnd());
+        user2.choiceRandomNumbers(book.getPageStart(), book.getPageEnd());
+    }
+
+    static void start(int pageEnd, String name1, String name2) {
+        Book book = new Book(pageEnd);
+        user1 = new User(name1);
+        user2 = new User(name2);
+        user1.choiceRandomNumbers(book.getPageStart(), book.getPageEnd());
+        user2.choiceRandomNumbers(book.getPageStart(), book.getPageEnd());
+    }
+
+    static void start(int pageStart,int pageEnd, String name1, String name2) {
+        Book book = new Book(pageStart,pageEnd);
+        user1 = new User(name1);
+        user2 = new User(name2);
+        user1.choiceRandomNumbers(book.getPageStart(), book.getPageEnd());
+        user2.choiceRandomNumbers(book.getPageStart(), book.getPageEnd());
+    }
+
+    static void end(int result) {
+        OutView.printHead(user1, user2);
+        OutView.printResult(user1, user1, result);
     }
 }
 
