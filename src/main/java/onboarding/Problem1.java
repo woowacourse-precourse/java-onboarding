@@ -15,7 +15,7 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
-        if(validatePageNumber(pobi) == -1 && validatePageNumber(crong) == -1) {
+        if (validatePageNumber(pobi) == -1 && validatePageNumber(crong) == -1) {
             return -1;
         }
 
@@ -29,20 +29,18 @@ class Problem1 {
     }
 
     private static int winnerUser(int userScore1, int userScore2) {
-        if(userScore1 > userScore2) {
+        if (userScore1 > userScore2) {
             return WINNER_USER1_MESSAGE;
-        }
-        else if(userScore1 < userScore2) {
+        } else if (userScore1 < userScore2) {
             return WINNER_USER2_MESSAGE;
-        }
-        else {
+        } else {
             return SCORE_SAME_MESSAGE;
         }
     }
 
     private static List<Integer> saveUserBiggerPageNumber(List<Integer> user) {
         List<Integer> biggerPageNumbers = new ArrayList<>();
-        for(Integer pageNumber : user) {
+        for (Integer pageNumber : user) {
             int sumPage = sumEachNumber(pageNumber);
             int multPage = multEachNumber(pageNumber);
             biggerPageNumbers.add(validateBiggerNumber(sumPage, multPage));
@@ -53,7 +51,7 @@ class Problem1 {
     private static int sumEachNumber(int pageNumber) {
         int sum = 0;
         String strPageNumber = String.valueOf(pageNumber);
-        for(int i=0; i<strPageNumber.length(); i++) {
+        for (int i = 0; i < strPageNumber.length(); i++) {
             sum += Integer.parseInt(String.valueOf(strPageNumber.charAt(i)));
         }
 
@@ -63,7 +61,7 @@ class Problem1 {
     private static int multEachNumber(int pageNumber) {
         int mult = 1;
         String strPageNumber = String.valueOf(pageNumber);
-        for(int i=0; i<strPageNumber.length(); i++) {
+        for (int i = 0; i < strPageNumber.length(); i++) {
             mult *= Integer.parseInt(String.valueOf(strPageNumber.charAt(i)));
         }
 
@@ -71,7 +69,7 @@ class Problem1 {
     }
 
     private static int validateBiggerNumber(int number1, int number2) {
-        if(number1 < number2) {
+        if (number1 < number2) {
             return number2;
         }
 
@@ -81,7 +79,7 @@ class Problem1 {
     private static int validatePageNumber(List<Integer> user) {
         int leftPageNumber = user.get(0);
         int rightPageNumber = user.get(1);
-        if(!isPageOdd(leftPageNumber) || isPageOdd(rightPageNumber) || isFirstPage(leftPageNumber) || isEndPage(rightPageNumber)) {
+        if (!isPageOdd(leftPageNumber) || isPageOdd(rightPageNumber) || isFirstPage(leftPageNumber) || isEndPage(rightPageNumber)) {
             return EXCEPTION_MESSAGE;
         }
 
@@ -93,10 +91,10 @@ class Problem1 {
     }
 
     private static boolean isFirstPage(int pageNumber) {
-        return pageNumber == START_PAGE_NUMBER || pageNumber == START_PAGE_NUMBER+1;
+        return pageNumber == START_PAGE_NUMBER || pageNumber == START_PAGE_NUMBER + 1;
     }
 
     private static boolean isEndPage(int pageNumber) {
-        return pageNumber == END_PAGE_NUMBER-1 || pageNumber == END_PAGE_NUMBER;
+        return pageNumber == END_PAGE_NUMBER - 1 || pageNumber == END_PAGE_NUMBER;
     }
 }
