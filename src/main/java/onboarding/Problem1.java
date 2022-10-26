@@ -89,11 +89,11 @@ class User {
 
     public List<Integer> choiceRandomNumbers(int pageStart, int pageEnd) {
         int randomNumber = makeRandomNumber(pageStart, pageEnd);
-        assignRandomNumber(choiceNumbers, randomNumber);
+        assignRandomNumber(randomNumber);
         return choiceNumbers;
     }
 
-    private void assignRandomNumber(List<Integer> choiceNumbers, int randomNumber) {
+    private void assignRandomNumber(int randomNumber) {
         if (randomNumber % 2 == 0) {
             choiceNumbers.add(randomNumber - 1);
             choiceNumbers.add(randomNumber);
