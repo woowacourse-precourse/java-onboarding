@@ -11,6 +11,16 @@ public class Problem3 {
         }
         return true;
     }
+    public static int count369(int number) {
+        String stringNumber = Integer.toString(number);
+        int result = 0;
+        for (int i = 0; i < stringNumber.length(); i++) {
+            if ((stringNumber.charAt(i) - '0') % 3 == 0 || stringNumber.charAt(i) != '0') {
+                result += 1;
+            }
+        }
+        return result;
+    }
 
 }
 
