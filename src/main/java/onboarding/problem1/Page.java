@@ -19,14 +19,22 @@ public class Page {
 		return result;
 	}
 
+	public int multiplyAllDigits() {
+		int result = 1;
+		for (int digit : disassemble(pageNumber)) {
+			result *= digit;
+		}
+		return result;
+	}
+
 	private List<Integer> disassemble(int number) {
 		List<Integer> disassembledNumber = new ArrayList<>();
 		int left = number;
-		while (left > 0) {
+		do {
 			int digit = left % 10;
 			left = left / 10;
 			disassembledNumber.add(digit);
-		}
+		} while (left > 0);
 		return disassembledNumber;
 	}
 }
