@@ -25,4 +25,12 @@ class Problem1 {
         }
         return eachDigitNumMultiplication;
     }
+
+    public int getPlayerScore(List<Integer> player) {
+        Integer leftPageNum = player.get(0);
+        Integer rightPageNum = player.get(1);
+        int leftPageLargerNum = Math.max(sumPageEachDigitNum(leftPageNum), multiplyPageEachDigitNum(leftPageNum));
+        int rightPageLargerNum = Math.max(sumPageEachDigitNum(rightPageNum), multiplyPageEachDigitNum(rightPageNum));
+        return Math.max(leftPageLargerNum, rightPageLargerNum);
+    }
 }
