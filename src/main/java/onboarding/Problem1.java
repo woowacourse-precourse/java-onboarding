@@ -14,6 +14,14 @@ class Problem1 {
         }
         return false;
     }
+    // plus
+    public static int plus(List<Integer> lst){
+        int left = lst.get(0);
+        int right = lst.get(1);
+        int plusLeft = (left/100 + (left/10)%10 + left%10);
+        int plusRight = (right/100 + (right/10)%10 + right%10);
+        return Math.max(plusLeft, plusRight);
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         if (errChk(pobi) || errChk(crong)){
