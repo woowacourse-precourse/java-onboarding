@@ -24,5 +24,10 @@ class Problem1 {
         return true;
     }
 
-
+    private static boolean validateRightPage(Integer rightPageNumber) {
+        if (rightPageNumber % 2 != 0) {
+            return false;
+        }
+        return true;
+    }
 }
