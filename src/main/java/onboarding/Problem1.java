@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 class Problem1 {
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -11,12 +12,12 @@ class Problem1 {
 		Integer pobiMaxPage = pobi.stream()
 				.map(Problem1::getMaxPage)
 				.max(Integer::compareTo)
-				.orElse(-1);
+				.orElseThrow(NoSuchElementException::new);
 
 		Integer crongMaxPage = crong.stream()
 				.map(Problem1::getMaxPage)
 				.max(Integer::compareTo)
-				.orElse(-1);
+				.orElseThrow(NoSuchElementException::new);
 
 		return compareMaxPage(pobiMaxPage, crongMaxPage);
 	}
