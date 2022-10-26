@@ -31,4 +31,12 @@ class Problem1 {
     	return Math.max(Math.max(digSum(arr.get(0)),digMul(arr.get(0))),Math.max(digSum(arr.get(1)),digMul(arr.get(1))));
     }
     
+    boolean checkErr(List<Integer> arr) {
+    	if (arr.get(0) > arr.get(1) || arr.get(0) < 0 || arr.get(1) > 400 || arr.get(1) - arr.get(0) != 1){
+    		return false;
+    	}else {
+    		return true;
+    	}
+    }
+    
 }
