@@ -40,4 +40,10 @@ class Problem1 {
         maximumResult = Math.max(getAddDigitsResult(pageList.get(1)), getMultiplyDigitsResult(pageList.get(1)));
         return maximumResult;
     }
+
+    private static int getScore(List<Integer> pageList) {
+        int score = 0;
+        score = Math.max(getLeftPageMaximum(pageList), getRightPageMaximum(pageList));
+        return score;
+    }
 }
