@@ -62,3 +62,31 @@
   - 두 점수가 같은 경우 0을 리턴한다.
   - pobi가 이긴 경우 1을 리턴한다.
   - crong이 이긴 경우 2를 리턴한다.
+
+## 문제 6
+### 구현 메소드 및 설명
+- reverseAlphabet
+- buildReverseWord
+- solution
+
+### reverseAlphabet
+- char를 매개변수로 받는다. 이 값은 word의 한 인자이다.
+- 이 메소드는 넘겨받은 알파벳 대문자 혹은 소문자를 반대로 변환한다.
+- 아래 로직을 따른다.
+  - 소문자, 대문자인 경우 각각 진행
+    - 공백일 경우 공백을 그대로 return한다.
+  - 'z' 또는 'Z'에서 입력받은 char를 뺀다.
+  - 'a' 또는 'A'를 더한다.
+  - char로 형변환을 하여 return한다.
+
+### buildReverseWord
+- String을 매개변수로 받는다. 이 값은 word이다.
+- 이 메소드는 넘겨받은 문자열을 reverse하여 리턴한다.
+- 아래 로직을 따란다.
+  - String의 각 원소를 reverseAlphabet을 통해 reverse한다.
+  - reverse한 알파벳을 StringBuilder에 append 한다.
+  - String의 모든 원소를 거친 후, StringBuilder를 통해 String을 생성하여 return한다.
+
+### solution
+- String을 매개변수로 받는다. 이 값은 word이다.
+- reverseAlphabet을 호출하여 입력 받은 word를 reverse한 후 return한다.
