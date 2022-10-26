@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -16,8 +17,30 @@ public class Problem7 {
         return answer;
     }
 
-    //유저와 알고있는 친구 목록 구하기
-    public static List<String> savaFirendsList(List<List<String>> friends, String user)
+    public static void findRecommendFrinds(Map<String, Integer> friendsMap)
+    {
+        Integer [] friendsPointArray = new Integer[friendsMap.size()];
+
+        for (int i = 0; i < friendsMap.size(); i++)
+            friendsPointArray[i] = friendsMap.get(i);
+        Arrays.sort(friendsPointArray, Collections.reverseOrder());
+
+
+    }
+
+    // hashmap에 value 로 key 찾기
+    public static <K, V> K getKey(Map<K, V> map, V value) {
+
+        for (K key : map.keySet()) {
+            if (value.equals(map.get(key))) {
+                return key;
+            }
+        }
+        return null;
+    }
+    
+    //유저와 알고있는 친구 목록 구하기기
+   public static List<String> savaFirendsList(List<List<String>> friends, String user)
     {
         boolean userCheck = false;
         List<String> friendList = new ArrayList<>();
@@ -52,7 +75,7 @@ public class Problem7 {
         }
         return knowFriendsMap;
     }
-    public static void findVisitedPoint(Map<String, Integer> knowFriendsMap, List<String> visitors)
+    public static Map<String, Integer> findVisitedPoint(Map<String, Integer> knowFriendsMap, List<String> visitors)
     {
         int point = visitPoint;
 
@@ -70,5 +93,7 @@ public class Problem7 {
                 knowFriendsMap.put(visitors.get(i), point);
             }
         }
+
+        return knowFriendsMap;
     }
 }
