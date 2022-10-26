@@ -25,4 +25,24 @@ class Problem1 {
         }
         return result;
     }
+
+    private static int getMaxNumber(int firstValue, int secondValue) {
+        return Math.max(firstValue, secondValue);
+    }
+
+    private static int getBiggerNumberOfAddition(List<Integer> pages) {
+        return getMaxNumber(numberAdd(pages.get(0)), numberAdd(pages.get(1)));
+    }
+
+    private static int getBiggerNumberOfMultiplication(List<Integer> pages) {
+        return getMaxNumber(numberMultiply(pages.get(0)), numberMultiply(pages.get(1)));
+    }
+
+    private static int maxOfPageCalculate(List<Integer> pages) {
+        return getMaxNumber(getBiggerNumberOfAddition(pages), getBiggerNumberOfMultiplication(pages));
+    }
+
+    private static int getWinner(List<Integer> user1, List<Integer> user2) {
+        return maxOfPageCalculate(user1) - maxOfPageCalculate(user2);
+    }
 }
