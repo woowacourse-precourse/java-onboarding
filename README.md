@@ -27,3 +27,11 @@
          * 두 수 비교 후 큰 값을 반환 **biggerInt**
        * 다른 클래스의 Score와 비교하여 다른 클래스보다 크면 1,같으면 0, 작으면 2를 반환 **compareScore**
 
+### 문제2
+1. 루프문으로 **removeDuplicateLetters** 메소드로 중복 제거 반복
+2. **removeDuplicateLetters**의 return (removedAnswer)과 answer가 같을 경우 answer 리턴
+* 필드
+    * String answer
+    * String removedAnswer
+* 메소드 
+  * 연속한 중복된 글자를 제거 **removeDuplicateLetters**
