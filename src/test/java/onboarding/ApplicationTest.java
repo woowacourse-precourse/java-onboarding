@@ -187,6 +187,83 @@ class ApplicationTest {
             int result = 14;
             assertThat(Problem3.solution(number)).isEqualTo(result);
         }
+    
+        @Test
+        void case3() {
+            int number = 1;
+            int result = 0;
+            assertThat(Problem3.solution(number)).isEqualTo(result);
+        }
+    
+        @Test
+        void case4() {
+            int number = 10;
+            int result = 3;
+            assertThat(Problem3.solution(number)).isEqualTo(result);
+        }
+    
+        @Test
+        void case5() {
+            int number = 40;
+            int result = 22;
+            assertThat(Problem3.solution(number)).isEqualTo(result);
+        }
+    
+        @Test
+        void case6() {
+            int number = 2;
+            int result = 0;
+            assertThat(Problem3.solution(number)).isEqualTo(result);
+        }
+    
+        @Test
+        void case7() {
+            int number = 3;
+            int result = 1;
+            assertThat(Problem3.solution(number)).isEqualTo(result);
+        }
+    
+        @Test
+        void case8() {
+            int number = 4;
+            int result = 1;
+            assertThat(Problem3.solution(number)).isEqualTo(result);
+        }
+    
+        @Test
+        void case9() {
+            int number = 5;
+            int result = 1;
+            assertThat(Problem3.solution(number)).isEqualTo(result);
+        }
+    
+        @Test
+        void case10() {
+            int number = 6;
+            int result = 2;
+            assertThat(Problem3.solution(number)).isEqualTo(result);
+        }
+    
+        @Test
+        void case11() {
+            int number = 7;
+            int result = 2;
+            assertThat(Problem3.solution(number)).isEqualTo(result);
+        }
+    
+        @Test
+        void case12() {
+            int number = 8;
+            int result = 2;
+            assertThat(Problem3.solution(number)).isEqualTo(result);
+        }
+    
+        @Test
+        void case13() {
+            int number = 9;
+            int result = 3;
+            assertThat(Problem3.solution(number)).isEqualTo(result);
+        }
     }
     
     @Nested
