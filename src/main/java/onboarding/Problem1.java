@@ -41,6 +41,13 @@ class Problem1 {
         int maxRightPointOfCrong = Math.max(getSumOfEachDigits(crong.get(LAST_PAGE)), getMulOfEachDigits(crong.get(LAST_PAGE)));
         int maxPointOfCrong = Math.max(maxLeftPointOfCrong, maxRightPointOfCrong);
 
+        if (maxPointOfPobi > maxPointOfCrong) {
+            return WIN_POBI;
+        } else if (maxPointOfPobi < maxPointOfCrong) {
+            return WIN_CRONG;
+        } else {
+            return DRAW;
+        }
     }
 
     private static int getMulOfEachDigits(int page) {
