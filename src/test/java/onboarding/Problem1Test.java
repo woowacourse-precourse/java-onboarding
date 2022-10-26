@@ -20,4 +20,18 @@ class Problem1Test {
 		// then : 숫자는 그대로 문자열로 변경되어야 함.
 		assertThat(parsedResult).isEqualTo(expected);
 	}
+
+	@DisplayName("문자열의 각 자리의 합 구하는 기능")
+	@ParameterizedTest
+	@CsvSource(value = {"123:6", "13:4", "43:7", "264:12", "0:0", "10:1"}, delimiter = ':')
+	void calculateSumOfStringDigits(String stringNumber, int expected) {
+		// given : 테스트를 진행할 Problem1의 객체 인스턴스
+		final Problem1 problem1 = new Problem1();
+
+		// when : 문자열의 각 자리 수 합을 구할 때
+		int sum = problem1.calculateSumOfStringDigits(stringNumber);
+
+		// 각 자리수 합이 정상적으로 나오는지 확인
+		assertThat(sum).isEqualTo(expected);
+	}
 }
