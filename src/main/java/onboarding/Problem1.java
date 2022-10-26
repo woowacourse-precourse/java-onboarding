@@ -3,9 +3,13 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+    // 예외사항 확인하기
     private static boolean check(List<Integer> list){
         int first = list.get(0);
         int second = list.get(1);
+        if(first % 2 == 0){
+            return false;
+        }
         return second != first + 1;
     }
     // 각 자리 수의 합을 구하는 함수
