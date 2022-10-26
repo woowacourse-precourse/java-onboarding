@@ -17,7 +17,7 @@ class Problem1 {
         return true;
     }
 
-    public static int getSum(int value){
+    public static int sumDigits(int value){
         int sum = 0;
         while (value > 0) {
             int n = value % 10;
