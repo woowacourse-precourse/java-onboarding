@@ -5,6 +5,8 @@ import java.util.List;
 public class Referee {
 
     public static final int CONTINOUS_CRITERION = 1;
+    public static final int START_PAGE_NUMBER_ONE = 1;
+    public static final int START_PAGE_NUMBER_TWO = 2;
     private final Player pobi;
     private final Player crong;
 
@@ -30,6 +32,14 @@ public class Referee {
         if (!isContinuousPage(leftPageNumber, rightPageNumber)) {
             throw new IllegalArgumentException("올바르지 않은 입력 값 입니다.");
         }
+        if (isStartPage(leftPageNumber, rightPageNumber)) {
+            throw new IllegalArgumentException("올바르지 않은 입력 값 입니다.");
+        }
+    }
+
+    private boolean isStartPage(int leftPageNumber, int rightPageNumber) {
+        return leftPageNumber == START_PAGE_NUMBER_ONE
+                && rightPageNumber == START_PAGE_NUMBER_TWO;
     }
 
     private boolean isContinuousPage(int leftPageNumber, int rightPageNumber) {
