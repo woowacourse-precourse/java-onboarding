@@ -5,7 +5,7 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int answer = compareScore(pobi, crong);
         return answer;
     }
 
@@ -38,4 +38,16 @@ class Problem1 {
         return Math.max(addResult, multiplyResult);
     }
 
+    public static int compareScore(List<Integer> pobi, List<Integer> crong){
+        int pobiScore = Math.max(compareMultiplyAndAdd(pobi.get(0)), compareMultiplyAndAdd(pobi.get(1)));
+        int crongScore = Math.max(compareMultiplyAndAdd(crong.get(0)), compareMultiplyAndAdd(crong.get(1)));
+
+        if(pobiScore > crongScore){
+            return 1;
+        }
+        else if (pobiScore < crongScore){
+            return 2;
+        }
+        return 0;
+    }
 }
