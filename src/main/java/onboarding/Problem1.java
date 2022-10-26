@@ -29,4 +29,10 @@ class Problem1 {
         multiply *= num;
         return multiply;
     }
+
+    //두 숫자 크기를 비교하여 큰 값을 반환하는 함수
+    public static int getBigNumber(int sum, int multiply){
+        if(sum==multiply || sum>multiply) return sum;
+        return multiply;
+    }
 }
