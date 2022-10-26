@@ -7,8 +7,34 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-        return answer;
+
+        int pobiMaxResult = getMaxLeftAndRight(pobi);
+        int crongMaxResult = getMaxLeftAndRight(crong);
+
+        if (pobiMaxResult > crongMaxResult) {
+            return 1;
+        }
+        if (pobiMaxResult < crongMaxResult) {
+            return 2;
+        }
+
+        return 0;
     }
+
+    private static int getMaxLeftAndRight(List<Integer> pages) {
+        int leftPageNum = getLeftPageNum(pages);
+        int rightPageNum = getRightPageNum(pages);
+
+        List<Integer> leftPageDigit = splitToDigitList(leftPageNum);
+        List<Integer> rightPageDigit = splitToDigitList(rightPageNum);
+
+        int leftPageMax = getMaxSumAndMultiply(leftPageDigit);
+        int rightPageMax = getMaxSumAndMultiply(rightPageDigit);
+
+        return Math.max(leftPageMax, rightPageMax);
+
+    }
+
 
     private static int getLeftPageNum(List<Integer> pages) {
         return pages.get(0);
@@ -39,6 +65,7 @@ class Problem1 {
         return digitList.stream().reduce(0, Integer::sum);
 
     }
+
     private static int getDigitMultiply(List<Integer> digitList) {
 
         return digitList.stream().reduce(1, (x, y) -> x * y);
