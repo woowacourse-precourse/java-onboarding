@@ -23,12 +23,12 @@ public class Score {
         return score != 0;
     }
     
-    public int getScore() {
-        return score;
-    }
-    
     public int compareTo(final Score otherScore) {
         return Integer.compare(this.score, otherScore.score);
+    }
+    
+    public int getScore() {
+        return score;
     }
     
     @Override

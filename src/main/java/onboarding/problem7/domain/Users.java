@@ -28,11 +28,8 @@ public class Users {
             final String firstUserName = friend.get(0);
             final String secondUserName = friend.get(1);
             
-            User user = users.get(firstUserName);
-            user.addFriend(secondUserName);
-            
-            user = users.get(secondUserName);
-            user.addFriend(firstUserName);
+            users.get(firstUserName).addFriend(secondUserName);
+            users.get(secondUserName).addFriend(firstUserName);
         }
     }
     
