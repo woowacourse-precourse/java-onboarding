@@ -9,9 +9,9 @@ public class Problem4 {
                 continue;
             }
             if (Character.isUpperCase(c)) {
-                answer.append((char)('Z' - c + 'A'));
+                answer.append((char) ('Z' - c + 'A'));
             } else {
-                answer.append((char)('z' - c + 'a'));
+                answer.append((char) ('z' - c + 'a'));
             }
         }
         return answer.toString();
