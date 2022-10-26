@@ -3,16 +3,53 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+    public static int START_PAGE = 1;
+    public static int END_PAGE = 400;
+
+    public static int LEFT_PAGE_IDX = 0;
+    public static int RIGHT_PAGE_IDX = 1;
+
+    public static int POBI_WIN = 1;
+    public static int CRONG_WIN = 2;
+    public static int DRAW = 0;
+    public static int ERROR = -1;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        findMaxValue(pobi);
-        findMaxValue(crong);
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        int pobiMaxValue = findMaxValue(pobi);
+        int crongMaxValue = findMaxValue(crong);
+
+        if (pobiMaxValue == ERROR || crongMaxValue == ERROR) {
+            return ERROR;
+        }
+
+        return resultGame(pobiMaxValue, crongMaxValue);
+    }
+
+    private static int resultGame(int pobiMaxValue, int crongMaxValue) {
+        if (pobiMaxValue == crongMaxValue) {
+            return DRAW;
+        } else if (pobiMaxValue > crongMaxValue) {
+            return POBI_WIN;
+        }
+
+        return CRONG_WIN;
     }
 
     public static int findMaxValue(List<Integer> pages) {
-        int leftPage = pages.get(0);
-        int rightPage = pages.get(1);
+        int leftPage = pages.get(LEFT_PAGE_IDX);
+        int rightPage = pages.get(RIGHT_PAGE_IDX);
+
+        if (leftPage % 2 == 0 || rightPage % 2 == 1) {
+            return ERROR;
+        }
+
+        if (leftPage >= rightPage) {
+            return ERROR;
+        }
+
+        if (leftPage < START_PAGE || rightPage > END_PAGE) {
+            return ERROR;
+        }
 
         int leftSumValue = calculateSumValue(leftPage);
         int leftMultiValue = calculateMultiValue(leftPage);
