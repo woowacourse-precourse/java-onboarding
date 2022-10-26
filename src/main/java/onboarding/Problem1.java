@@ -29,7 +29,13 @@ class Problem1 {
         int crong_max = makeMax(crong);
 
         // 최댓값 비교 구현
-
+        if(pobi_max>crong_max){
+            answer=1;
+        }else if(pobi_max<crong_max){
+            answer=2;
+        }else if(pobi_max==crong_max){
+            answer=0;
+        }
         return answer;
     }
 
@@ -70,6 +76,5 @@ class Problem1 {
         }
         return Math.max(numAdd,numMul);
     }
-
     
 }
