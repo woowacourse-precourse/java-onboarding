@@ -38,7 +38,30 @@ class Problem1 {
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        if(!validPages(pobi) || !validPages(crong))
+            return -1;
+
+        int pobiScore=0;
+        for(int i:pobi){
+            int addSum=addAllNumbers(i);
+            int mulSum=multiplyAllNumbers(i);
+
+            pobiScore = Math.max(pobiScore, Math.max(addSum, mulSum));
+        }
+
+        int crongScore=0;
+        for(int i:crong){
+            int addSum=addAllNumbers(i);
+            int mulSum=multiplyAllNumbers(i);
+
+            crongScore = Math.max(crongScore, Math.max(addSum, mulSum));
+        }
+
+        if(pobiScore>crongScore)
+            return 1;
+        else if(pobiScore<crongScore)
+            return 2;
+        else
+            return 0;
     }
 }
