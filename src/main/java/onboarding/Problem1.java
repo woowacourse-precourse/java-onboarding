@@ -8,8 +8,6 @@ class Problem1 {
     private static int crongWin = 2;
     private static int draw = 0;
     private static int exception = -1;
-    private static List<Integer> startPage = List.of(1,2);
-    private static List<Integer> endPage = List.of(399,400);
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if(validatePageNumbers(List.of(pobi, crong))){
@@ -78,10 +76,10 @@ class Problem1 {
         for (List<Integer> pageNumbers : pageNumbersInstances){
             int leftPageNumber = pageNumbers.get(0);
             int rightPageNumber = pageNumbers.get(1);
-            if (pageNumbers.equals(startPage) || pageNumbers.equals(endPage)){
+            if (leftPageNumber + 1 != rightPageNumber){
                 return true;
             }
-            if (leftPageNumber + 1 != rightPageNumber){
+            if (leftPageNumber < 1 || rightPageNumber > 400){
                 return true;
             }
             if ((leftPageNumber % 2) == 0 || (rightPageNumber % 2) != 0){
