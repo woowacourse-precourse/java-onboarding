@@ -11,15 +11,15 @@
       - 인자로 들어온 페이지 배열의 길이가 2인지 검사한다.
     - [X] areCorrectNumbers
       - 인자로 들어온 페이지 배열의 숫자가 자연수에 연속된 홀수 짝수인지 검사한다.
-  - [X] convertPageToSplitNumber
+  - [X] splitPageNumbers
     - 인자로 들어온 두 페이지 배열들의 요소를 자연수에서 자릿수별로 나눈 배열로 바꿔준다.
     - [X] splitByDigit
       - 인자로 들어온 자연수를 각 자릿수로 나눠준다.
   - [X] findWinner
     - 페이지 게임의 승자를 알려준다. 0은 무승부, 1은 포비, 2는 크롱.
-    - [ ] addNumbers
+    - [ ] getSum
       - 배열 안의 모든 자연수를 더해준다.
-    - [ ] multiplyNumbers
+    - [ ] getProduct
       - 배열 안의 모든 자연수를 곱해준다.
     - [X] getBiggerNumber
       - 두 숫자 중 큰 숫자를 알려준다.
