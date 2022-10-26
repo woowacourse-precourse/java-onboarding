@@ -33,7 +33,7 @@ class Problem1 {
         }
 
         for (Integer pageNumber : pageList) {
-            if (pageNumber > 200) {
+            if (pageNumber > 400) {
                 return true;
             }
         }
