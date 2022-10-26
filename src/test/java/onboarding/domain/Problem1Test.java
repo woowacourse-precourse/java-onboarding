@@ -1,9 +1,9 @@
-package onboarding;
+package onboarding.domain;
 
-import onboarding.problem1.*;
+import onboarding.domain.problem1.Page;
+import onboarding.domain.problem1.Person;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;

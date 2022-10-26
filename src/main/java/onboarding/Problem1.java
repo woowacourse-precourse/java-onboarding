@@ -1,6 +1,6 @@
 package onboarding;
 
-import onboarding.problem1.Person;
+import onboarding.domain.problem1.Person;
 
 import java.util.List;
 

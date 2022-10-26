@@ -1,6 +1,6 @@
 package onboarding;
 
-import onboarding.problem3.Clap;
+import onboarding.domain.problem3.Clap;
 
 public class Problem3 {
     public static int solution(int number) {

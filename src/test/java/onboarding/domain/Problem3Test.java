@@ -1,8 +1,7 @@
-package onboarding;
+package onboarding.domain;
 
-import onboarding.problem3.Clap;
+import onboarding.domain.problem3.Clap;
 import org.junit.jupiter.api.Test;
-import onboarding.problem3.*;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 

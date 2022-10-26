@@ -1,6 +1,7 @@
 package onboarding;
 
-import onboarding.problem2.*;
+import onboarding.domain.problem2.Cryptogram;
+
 public class Problem2 {
     public static String solution(String cryptogram) {
         Cryptogram solver = new Cryptogram(cryptogram);

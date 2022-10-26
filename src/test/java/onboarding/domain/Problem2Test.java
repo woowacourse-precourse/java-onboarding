@@ -1,6 +1,6 @@
-package onboarding;
+package onboarding.domain;
 
-import onboarding.problem2.Cryptogram;
+import onboarding.domain.problem2.Cryptogram;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
