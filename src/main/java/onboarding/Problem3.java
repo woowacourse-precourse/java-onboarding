@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.stream.IntStream;
+
 public class Problem3 {
 
     public static int get369Count(int number) {
@@ -14,7 +16,11 @@ public class Problem3 {
         return cnt;
     }
     public static int solution(int number) {
-        int answer = 0;
-        return answer;
+
+        int sum369Count = IntStream.range(1, number+1)
+                .map(num -> get369Count(num))
+                .sum();
+
+        return sum369Count;
     }
 }
