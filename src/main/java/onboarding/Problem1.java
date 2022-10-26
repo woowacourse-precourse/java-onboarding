@@ -27,8 +27,20 @@ class Problem1 {
         int pobiMaxNumber = pickFriendMaxNumber(pobi);
         int crongMaxNumber = pickFriendMaxNumber(crong);
 
+        answer = getWinner(pobiMaxNumber, crongMaxNumber);
 
+        return answer;
+    }
 
+    private static int getWinner(int pobiMaxNumber, int crongMaxNumber) {
+        int answer;
+        if (pobiMaxNumber > crongMaxNumber) {
+            answer = 1;
+        } else if (pobiMaxNumber < crongMaxNumber) {
+            answer = 2;
+        } else {
+            answer = 0;
+        }
         return answer;
     }
 
