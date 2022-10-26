@@ -28,6 +28,52 @@ class Problem1 {
         return draw;
     }
 
+    public static int calculateMaxValue(List<Integer> pageNumbers){
+        int sumResult = sum(pageNumbers);
+        int multiplyResult = multiply(pageNumbers);
+
+        if (sumResult <= multiplyResult){
+            return multiplyResult;
+        }
+        return sumResult;
+    }
+
+    public static int sum(List<Integer> pageNumbers){
+        int maxSumValue = 0;
+        for (int i =0; i<2; i++){
+            int pageNumber = pageNumbers.get(i);
+            int digit;
+            int sumValue = 0;
+            while (pageNumber >0){
+                digit = pageNumber % 10;
+                pageNumber /= 10;
+                sumValue += digit;
+            }
+            if (maxSumValue <= sumValue){
+                maxSumValue = sumValue;
+            }
+        }
+        return maxSumValue;
+    }
+
+    public static int multiply(List<Integer> pageNumbers){
+        int maxSumValue = 0;
+        for (int i =0; i<2; i++){
+            int pageNumber = pageNumbers.get(i);
+            int digit;
+            int multiplyValue = 1;
+            while (pageNumber >0){
+                digit = pageNumber % 10;
+                pageNumber /= 10;
+                multiplyValue *= digit;
+            }
+            if (maxSumValue <= multiplyValue){
+                maxSumValue = multiplyValue;
+            }
+        }
+        return maxSumValue;
+    }
+
     public static boolean validatePageNumbers(List<List<Integer>> pageNumbersInstances){
         for (List<Integer> pageNumbers : pageNumbersInstances){ //for문 내부 함수를 밖으로 빼보자
             int leftPageNumber = pageNumbers.get(0);
