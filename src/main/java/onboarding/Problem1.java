@@ -21,7 +21,50 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        int pobiMax = getMax(pobi.get(0), pobi.get(1));
+        int crongMax = getMax(crong.get(0), crong.get(1));
+        if (pobiMax == -1 || crongMax == -1 || pobi.get(0) == 1 || crong.get(1) == 400) {
+            return -1;
+        }
+        if (pobiMax > crongMax) {
+            return 1;
+        }
+        if (pobiMax < crongMax) {
+            return 2;
+        }
+        return 0;
+    }
+
+    private static int getMax(int leftPage, int rightPage) {
+        if (leftPage != rightPage - 1) {
+            return -1;
+        }
+        int leftPageMax = Math.max(getPlusMax(leftPage, rightPage), getMultiplyMax(leftPage, rightPage));
+        int rightPageMax = Math.max(getPlusMax(leftPage, rightPage), getMultiplyMax(leftPage, rightPage));
+        return Math.max(leftPageMax, rightPageMax);
+    }
+
+    private static int getMultiplyMax(int leftPage, int rightPage) {
+        int sumLeft = 1;
+        int sumRight = 1;
+        while (leftPage != 0 || rightPage != 0) {
+            sumLeft *= leftPage % 10;
+            sumRight *= rightPage % 10;
+            leftPage /= 10;
+            rightPage /= 10;
+        }
+        return Math.max(sumLeft, sumRight);
+    }
+
+    private static int getPlusMax(int leftPage, int rightPage) {
+        int sumLeft = 0;
+        int sumRight = 0;
+        while (leftPage != 0 || rightPage != 0) {
+            sumLeft += leftPage % 10;
+            sumRight += rightPage % 10;
+            leftPage /= 10;
+            rightPage /= 10;
+        }
+        return Math.max(sumLeft, sumRight);
     }
 }
