@@ -26,12 +26,7 @@ class Problem1 {
         int crongLeft = crong.get(0);
         int crongRight = crong.get(1);
 
-        if (pobiLeft % 2 != 1 || crongLeft % 2 != 1) {
-            return true;
-        }
-        if (pobiRight % 2 != 0 || crongRight % 2 != 0) {
-            return true;
-        }
+
         if (pobiLeft - pobiRight != -1) {
             return true;
         }
