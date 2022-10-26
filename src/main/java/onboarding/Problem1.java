@@ -26,7 +26,7 @@ class Problem1 {
         return !isEven(page);
     }
     private static boolean isLessFirstPage(List<Integer> pages) {
-        final int firstPage = 1;
+        int firstPage = 1;
         return hasErrorPage(pages, (page) -> page.compareTo(firstPage)<=0);
     }
     private static boolean hasErrorPage(List<Integer>pages, Predicate<Integer> condition){
@@ -37,7 +37,7 @@ class Problem1 {
         return false;
     }
     private static boolean isOverEndPage(List<Integer> pages) {
-        final int endPage = 400;
+        int endPage = 400;
         return hasErrorPage(pages, (page) -> page.compareTo(endPage)>=0);
     }
     private static int calculateWinner(int pobiScore, int crongScore) {
