@@ -60,3 +60,17 @@ BUILD SUCCESSFUL in 0s
 
 - 미션은 [java-onboarding](https://github.com/woowacourse-precourse/java-onboarding) 저장소를 Fork & Clone해 시작한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+
+## 📝 기능 요구사항 정리
+### 문제 1번
+1. 입력 조건에 맞지 않는 경우 예외처리 기능
+- 시작 면이나 마지막 면이 나오지 않도록 예외처리
+- 1부터 400까지의 페이지가 아닌 경우 예외처리
+- 연속된 페이지이면서 홀수 페이지(왼쪽 페이지)로 시작하지 않는 경우 예외처리
+- 리스트의 길이가 2가 아닌 경우 예외처리
+2. 왼쪽, 오른쪽 페이지 번호로 더하거나 곱해서 각각의 최대값을 구하는 기능
+3. 최대값을 이용해 게임의 승자를 결정하는 기능
+4. 게임의 승자를 출력하는 기능
+
+
