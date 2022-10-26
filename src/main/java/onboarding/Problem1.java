@@ -3,34 +3,35 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-    static final int FIRST_PAGE = 1;
-    static final int LAST_PAGE = 400;
-    static final int LEFT_PAGE = 0;
-    static final int RIGHT_PAGE = 1;
-
-    static final int EXCEPTION = -1;
-    static final int WIN_POBI = 1;
-    static final int WIN_CRONG = 2;
-    static final int DRAW = 0;
+    interface Constant {
+        int FIRST_PAGE = 1;
+        int LAST_PAGE = 400;
+        int LEFT_PAGE = 0;
+        int RIGHT_PAGE = 1;
+        int EXCEPTION = -1;
+        int WIN_POBI = 1;
+        int WIN_CRONG = 2;
+        int DRAW = 0;
+    }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
         // 첫 페이지 혹은 끝 페이지 포함하는지 확인
         if (isHavingFirstPage(pobi) || isHavingLastPage(pobi)
                 || isHavingFirstPage(crong) || isHavingLastPage(crong)) {
-            return EXCEPTION;
+            return Constant.EXCEPTION;
         }
 
         // 좌측 페이지가 홀수이고 우측 페이지가 짝수인지 확인
-        if (isEvenPage(pobi.get(LEFT_PAGE)) || isOddPage(pobi.get(RIGHT_PAGE))
-                || isEvenPage(crong.get(LEFT_PAGE)) || isOddPage(crong.get(RIGHT_PAGE))) {
-            return EXCEPTION;
+        if (isEvenPage(pobi.get(Constant.LEFT_PAGE)) || isOddPage(pobi.get(Constant.RIGHT_PAGE))
+                || isEvenPage(crong.get(Constant.LEFT_PAGE)) || isOddPage(crong.get(Constant.RIGHT_PAGE))) {
+            return Constant.EXCEPTION;
         }
 
         // 좌측과 우측 페이지의 차가 1인지 확인 및 우측 페이지가 더 큰지 확인
-        if (pobi.get(RIGHT_PAGE) - pobi.get(LEFT_PAGE) != 1
-                || crong.get(RIGHT_PAGE) - crong.get(LEFT_PAGE) != 1) {
-            return EXCEPTION;
+        if (pobi.get(Constant.RIGHT_PAGE) - pobi.get(Constant.LEFT_PAGE) != 1
+                || crong.get(Constant.RIGHT_PAGE) - crong.get(Constant.LEFT_PAGE) != 1) {
+            return Constant.EXCEPTION;
         }
 
         int maxLeftPointOfPobi = getMaxLeftPoint(pobi);
@@ -42,20 +43,20 @@ class Problem1 {
         int maxPointOfCrong = Math.max(maxLeftPointOfCrong, maxRightPointOfCrong);
 
         if (maxPointOfPobi > maxPointOfCrong) {
-            return WIN_POBI;
+            return Constant.WIN_POBI;
         } else if (maxPointOfPobi < maxPointOfCrong) {
-            return WIN_CRONG;
+            return Constant.WIN_CRONG;
         } else {
-            return DRAW;
+            return Constant.DRAW;
         }
     }
 
     private static int getMaxRightPoint(List<Integer> openPages) {
-        return Math.max(getSumOfEachDigits(openPages.get(RIGHT_PAGE)), getMulOfEachDigits(openPages.get(RIGHT_PAGE)));
+        return Math.max(getSumOfEachDigits(openPages.get(Constant.RIGHT_PAGE)), getMulOfEachDigits(openPages.get(Constant.RIGHT_PAGE)));
     }
 
     private static int getMaxLeftPoint(List<Integer> openPages) {
-        return Math.max(getSumOfEachDigits(openPages.get(LEFT_PAGE)), getMulOfEachDigits(openPages.get(LEFT_PAGE)));
+        return Math.max(getSumOfEachDigits(openPages.get(Constant.LEFT_PAGE)), getMulOfEachDigits(openPages.get(Constant.LEFT_PAGE)));
     }
 
     private static int getMulOfEachDigits(int page) {
@@ -82,11 +83,11 @@ class Problem1 {
     }
 
     public static boolean isHavingFirstPage(List<Integer> openPages) {
-        return openPages.contains(FIRST_PAGE);
+        return openPages.contains(Constant.FIRST_PAGE);
     }
 
     public static boolean isHavingLastPage(List<Integer> openPages) {
-        return openPages.contains(LAST_PAGE);
+        return openPages.contains(Constant.LAST_PAGE);
     }
 
     public static boolean isOddPage(int page) {
