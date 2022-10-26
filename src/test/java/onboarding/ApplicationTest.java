@@ -74,12 +74,6 @@ class ApplicationTest {
         }
 
         @Test
-        void validatePageTest() {
-            List<Integer> validationData = Arrays.asList(3, 4);
-
-            assertThat(Problem1.validatePage(validationData)).isEqualTo(true);
-        }
-        @Test
         void validateStartPageExceptionTest() {
             List<Integer> startPageExceptionData = Arrays.asList(1, 2);
 
@@ -114,6 +108,33 @@ class ApplicationTest {
             assertThat(Problem1.validatePage(evenExceptionData)).isEqualTo(false);
         }
 
+        @Test
+        void validatePageTest() {
+            List<Integer> validationData = Arrays.asList(5, 6);
+
+            assertThat(Problem1.validatePage(validationData)).isEqualTo(true);
+        }
+
+        @Test
+        void validatePageSequenceExceptionTest() {
+            List<Integer> sequenceExceptionData = Arrays.asList(5, 8);
+
+            assertThat(Problem1.validatePage(sequenceExceptionData)).isEqualTo(false);
+        }
+
+        @Test
+        void validatePageOddExceptionTest() {
+            List<Integer> oddExceptionData = Arrays.asList(8, 9);
+
+            assertThat(Problem1.validatePage(oddExceptionData)).isEqualTo(false);
+        }
+
+        @Test
+        void validatePageEvenExceptionTest() {
+            List<Integer> evenExceptionData = Arrays.asList(7, 9);
+
+            assertThat(Problem1.validatePage(evenExceptionData)).isEqualTo(false);
+        }
 
 //        @Test
 //        void case1() {
