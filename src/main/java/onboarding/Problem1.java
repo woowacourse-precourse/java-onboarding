@@ -25,4 +25,12 @@ class Problem1 {
 
         return true;
     }
+
+    public static boolean checkSequenceValidation(List<Integer> values) {
+        if (values.get(0) + 1 != values.get(1)) {
+            return false;
+        }
+
+        return true;
+    }
 }
