@@ -1,5 +1,6 @@
 package onboarding;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -31,6 +32,15 @@ class ApplicationTest {
             List<Integer> pobi = List.of(99, 102);
             List<Integer> crong = List.of(211, 212);
             int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @DisplayName("crong이 더 큰 경우")
+        @Test
+        void case4() {
+            List<Integer> pobi = List.of(99, 102);
+            List<Integer> crong = List.of(999, 212);
+            int result = 2;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
     }

@@ -1,9 +1,8 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-
-import static java.util.Collections.max;
 
 class Problem1 {
 
@@ -15,34 +14,39 @@ class Problem1 {
     }
 
     private static Integer getMaxValue(List<Integer> pages) {
-        List<Integer> calResultList = new ArrayList<>();
-
+        List<Integer> results = new ArrayList<>();
         for (Integer page : pages) {
-            List<Integer> singleNumbers = getSingleNumbers(page);
-            doCalculate(singleNumbers, calResultList);
+            List<Integer> eachNumbers = getEachNumbers(page);
+            results.add(Math.max(doSum(eachNumbers), doMultiply(eachNumbers)));
         }
-        return max(calResultList);
+
+        return Collections.max(results);
     }
 
-    private static List<Integer> getSingleNumbers(Integer integer) {
+    private static List<Integer> getEachNumbers(Integer integer) {
         List<Integer> valueList = new ArrayList<>();
-        int loof = integer.toString().length();
-        for (int i = 0; i < loof; i++) {
+        int loopTimes = integer.toString().length();
+        for (int i = 0; i < loopTimes; i++) {
             valueList.add(integer % 10);
             integer /= 10;
         }
         return valueList;
     }
 
-    private static void doCalculate(List<Integer> values, List<Integer> calResults) {
-        int all_Plus = 0;
-        int all_multiply = 1;
-        for (Integer value : values) {
-            all_Plus += value;
-            all_multiply *= value;
+    private static Integer doSum(List<Integer> singleNumbers) {
+        int value = 0;
+        for (Integer singleNumber : singleNumbers) {
+            value += singleNumber;
         }
-        calResults.add(all_Plus);
-        calResults.add(all_multiply);
+        return value;
+    }
+
+    private static Integer doMultiply(List<Integer> singleNumbers) {
+        int value = 1;
+        for (Integer singleNumber : singleNumbers) {
+            value *= singleNumber;
+        }
+        return value;
     }
 
 
