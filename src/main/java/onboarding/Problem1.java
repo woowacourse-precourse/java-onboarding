@@ -28,6 +28,18 @@ class Problem1 {
         return true;
     }
 
+    // 자신의 점수인 가장 큰 수 구하기 함수
+    static int getMax(List<Integer> pageList) {
+        ArrayList<Integer> scoreList = new ArrayList<>();
+
+        for (int e: pageList) {
+            scoreList.add(getPlus(e));
+            scoreList.add(getMultiply(e));
+        }
+
+        return Collections.max(scoreList);
+    }
+
     // 각 자리 숫자 더하기 함수
     static int getPlus(int elem) {
         int score = 0;
