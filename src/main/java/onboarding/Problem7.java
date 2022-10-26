@@ -1,10 +1,10 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
         Map<String, Integer> userToScore = new HashMap<>();
         List<String> myFriends = new ArrayList<>();
         for (List<String> friend : friends) {
@@ -34,6 +34,11 @@ public class Problem7 {
             userToScore.put(visitor, userToScore.getOrDefault(visitor, 0) + 1);
         }
 
-        return answer;
+        return userToScore.entrySet().stream().filter(e -> e.getValue() > 0)
+                .sorted(Map.Entry.comparingByKey())
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .map(Map.Entry::getKey)
+                .limit(5)
+                .collect(Collectors.toList());
     }
 }
