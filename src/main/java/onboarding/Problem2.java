@@ -11,11 +11,11 @@ public class Problem2 {
             if (stack.isEmpty()) {
             	stack.push(cryptogram.charAt(i));
             } else if (stack.peek() == cryptogram.charAt(i)) {
-                stack.pop();
-        } else {
-                stack.push(cryptogram.charAt(i));
-        }
-        }
+            		stack.pop();
+            } else {
+                	stack.push(cryptogram.charAt(i));
+            }
+            }
         
         while (!stack.isEmpty()) {
             answer = stack.pop() + answer;
