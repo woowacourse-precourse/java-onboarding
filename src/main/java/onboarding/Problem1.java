@@ -40,6 +40,25 @@ class Problem1 {
         return true;
     }
 
+    /**
+     * 숫자 분할하기
+     * @param number 페이지 숫자
+     * @return int[]
+     */
+    private static int[] splitDigits(int number) {
+        char[] charsNumber = String.valueOf(number).toCharArray();
+        int lengthCharNumber = charsNumber.length;
+        int[] intArrayNumber = new int[lengthCharNumber];
+
+        for (int i = 0; i < lengthCharNumber; i++) {
+            intArrayNumber[i] = charsNumber[i];
+        }
+
+        return intArrayNumber;
+    }
+
+
+
 
 
 
