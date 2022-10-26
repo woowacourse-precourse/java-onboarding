@@ -55,42 +55,7 @@ class Problem1 {
         return result;
     }
 
-    public static boolean isEndOfSide(List<Integer> pages) {
-        for (Integer page : pages) {
-            if (page == 1) { //시작면이 있으면
-                return true;
-            }
-            if (page == 400) { //마지막면이 있으면
-                return true;
-            }
-        }
-        return false;
-    }
 
-    //중복되지 않나? 그러면 오류처리를 합쳐야 할까?
-    public static boolean isOutOfRange(List<Integer> pages) {
-        for (Integer page : pages) {
-            if (page < 1) {
-                return true;
-            }
-            if (page > 400) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public static boolean isSeparatedPages(List<Integer> pages) {
-        int leftPageNumber = pages.get(0);
-        int rightPageNumber = pages.get(1);
-
-        int difference = Math.abs(leftPageNumber - rightPageNumber);
-
-        if (difference == 1) { //바로 옆인 경우만
-            return false;
-        }
-        return true;
-    }
 }
 
 /*
