@@ -14,6 +14,12 @@ public class Page {
         this.rightPage = pageList.get(1);
     }
 
+    public int getMaximumNumber() {
+        final int leftPageMaximumNumber = getPageNumberValue(leftPage);
+        final int rightPageMaximumNumber = getPageNumberValue(rightPage);
+        return Math.max(leftPageMaximumNumber, rightPageMaximumNumber);
+    }
+
     private int getPageNumberValue(int page) {
         final int[] numbers = Stream.of(String.valueOf(page).split("")).mapToInt(Integer::parseInt).toArray();
         final int sumValue = Arrays.stream(numbers).reduce(0, Integer::sum);
