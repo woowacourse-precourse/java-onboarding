@@ -33,4 +33,12 @@ class Problem1 {
         int rightPageLargerNum = Math.max(sumPageEachDigitNum(rightPageNum), multiplyPageEachDigitNum(rightPageNum));
         return Math.max(leftPageLargerNum, rightPageLargerNum);
     }
+
+    public int getWinnerNum(int player1Score, int player2Score) {
+        int winnerNum = 0;
+        if(player1Score > player2Score) winnerNum = 1;
+        if(player1Score < player2Score) winnerNum = 2;
+        if(player1Score == player2Score) winnerNum = 0;
+        return winnerNum;
+    }
 }
