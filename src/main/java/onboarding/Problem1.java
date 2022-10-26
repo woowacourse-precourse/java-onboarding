@@ -48,9 +48,9 @@ class Problem1 {
 
     public static List<Integer> changeIntToIntList(int number) {
         List<Integer> result = new ArrayList<>();
-        while (number % 10 != 0) {
-            result.add(number % 10, 0);
-            number = number % 10;
+        while (number != 0) {
+            result.add(number % 10);
+            number = number / 10;
         }
         return result;
     }
