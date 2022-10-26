@@ -9,8 +9,6 @@ class Problem1 {
 
 
 
-
-
         return answer;
     }
 
@@ -47,4 +45,17 @@ class Problem1 {
 
 
     // 구한 값 중 최댓값을 구한다.
+    // 예외 처리 체크
+    public boolean checkValidValue(List<Integer> user) {
+        int leftPage = user.get(0);
+        int rightPage = user.get(1);
+
+        if (rightPage - leftPage != 1) {
+            return false;
+        }
+        if (leftPage == 1 || rightPage == 400) {
+            return false;
+        }
+        return true;
+    }
 }
