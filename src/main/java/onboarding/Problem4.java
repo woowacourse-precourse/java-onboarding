@@ -8,7 +8,12 @@ public class Problem4 {
     private static final List<Character> LOWERCASE_LETTERS = lowercaseLettersInit();
     private static final List<Character> UPPERCASE_LETTERS = uppercaseLettersInit();
     
-    public static List<Character> lowercaseLettersInit() {
+    public static String solution(String word) {
+        String answer = "";
+        return answer;
+    }
+    
+    private static List<Character> lowercaseLettersInit() {
         return IntStream.rangeClosed(0, 25)
                 .mapToObj(number -> (char) (122 - number))
                 .collect(Collectors.toList());
@@ -20,16 +25,11 @@ public class Problem4 {
                 .collect(Collectors.toList());
     }
     
-    public static String solution(String word) {
-        String answer = "";
-        return answer;
-    }
-    
-    public static Character toConvertLowerCase(Character character) {
+    private static Character toConvertLowerCase(Character character) {
         return LOWERCASE_LETTERS.get(character - 'a');
     }
     
-    public static Character toConvertUpperCase(Character character) {
+    private static Character toConvertUpperCase(Character character) {
         return UPPERCASE_LETTERS.get(character - 'A');
     }
 }
