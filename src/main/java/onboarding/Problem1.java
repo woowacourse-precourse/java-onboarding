@@ -31,15 +31,34 @@ class Problem1 {
 	private static int bigPageResult(List<Integer> person) {
 		int leftPage = person.get(0);
 		int rightPage = person.get(1);
-
 		int bigLeftPage = maxValue(sumEachInt(leftPage), multipleEachInt(rightPage));
 		int bigRightPage = maxValue(sumEachInt(rightPage), multipleEachInt(rightPage));
 
 		return maxValue(bigLeftPage, bigRightPage);
 	}
 
+	private static boolean exception(List<Integer> person) {
+		int leftPage = person.get(0);
+		int rightPage = person.get(1);
+
+		if (rightPage - leftPage != 1) {
+			return false;
+		} else if (rightPage < 1 || leftPage < 1) {
+			return false;
+		}
+		return true;
+	}
+
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
 		int answer = Integer.MAX_VALUE;
+
+		if (bigPageResult(pobi) > bigPageResult(crong)) {
+			answer = 1;
+		} else if (bigPageResult(pobi) == bigPageResult(crong)) {
+			answer = 0;
+		} else if (bigPageResult(pobi) < bigPageResult(crong) {
+			answer = -1;
+		}
 
 		return answer;
 	}
