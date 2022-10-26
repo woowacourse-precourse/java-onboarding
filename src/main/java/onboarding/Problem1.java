@@ -27,4 +27,24 @@ class Problem1 {
         }
         return result;
     }
+
+    //입력받은 두 숫자 중 더 큰 수를 반환하는 메서드
+    private static int maxNum(int a, int b) {
+        int result = 0;
+        if (a > b) {
+            result = a;
+            return result;
+        }
+
+        if (a < b) {
+            result = b;
+            return result;
+        }
+
+        if (a == b) {
+            result = a;
+            return result;
+        }
+        return result;
+    }
 }
