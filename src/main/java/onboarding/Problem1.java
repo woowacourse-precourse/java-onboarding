@@ -5,6 +5,26 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+
+        /**
+         *페이지가 연속된 것인지 확인,홀/짝이 맞는지 확인
+         */
+        int p_ex =exception(pobi);
+        int c_ex =exception(crong);
+        if (p_ex ==-1 || c_ex==-1)
+            return -1;
+
+        /**
+         *각자의 큰 수를 뽑음
+         */
+        int pobi_num =result_num(pobi.get(0),pobi.get(1));
+        int crong_num =result_num(crong.get(0),crong.get(1));
+
+        /**
+         *결과를answer에 저장
+         */
+        answer =who_win(pobi_num,crong_num);
+
         return answer;
     }
 
