@@ -16,6 +16,17 @@ public class Problem2 {
         }
 
         public static String decrypt(String cryptogram) {
+            Stack<Character> cryptogramStack = deleteDuplicateCharacter(cryptogram);
+
+            StringBuilder decryptStringBuilder = new StringBuilder();
+
+            for (Character character : cryptogramStack) {
+                decryptStringBuilder.append(character);
+            }
+            return decryptStringBuilder.toString();
+        }
+
+        private static Stack<Character> deleteDuplicateCharacter(String cryptogram) {
             Stack<Character> cryptogramStack = new Stack<>();
             char[] cryptogramCharArray = cryptogram.toCharArray();
 
@@ -27,13 +38,7 @@ public class Problem2 {
                 }
                 cryptogramStack.push(cryptogramCharArray[i]);
             }
-
-            StringBuilder decryptStringBuilder = new StringBuilder();
-
-            for (Character character : cryptogramStack) {
-                decryptStringBuilder.append(character);
-            }
-            return decryptStringBuilder.toString();
+            return cryptogramStack;
         }
 
         private static boolean duplicateCharacter(Stack<Character> cryptogramStack,
