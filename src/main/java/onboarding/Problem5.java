@@ -20,8 +20,6 @@ public class Problem5 {
             answer.add(money/moneyValue[i]);
             money -= answer.get(i)*moneyValue[i];
         }
-
-
         return answer;
     }
 }
