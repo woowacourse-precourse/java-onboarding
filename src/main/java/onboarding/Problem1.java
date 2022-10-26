@@ -6,9 +6,22 @@ class Problem1 {
     private static final int LEFT_PAGE = 0;
     private static final int RIGHT_PAGE = 1;
 
+    private static final int EXCEPTION_CASE = -1;
+    private static final int DRAW = 0;
+    private static final int POBI_WIN = 1;
+    private static final int CRONG_WIN = 2;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        int pobiScore = getPlayerMaxScore(pobi);
+        int crongScore = getPlayerMaxScore(crong);
+
+        if (pobiScore > crongScore) {
+            return POBI_WIN;
+        } else if (pobiScore < crongScore) {
+            return CRONG_WIN;
+        }
+
+        return DRAW;
     }
 
     public static String parsePageNumber(int page) {
