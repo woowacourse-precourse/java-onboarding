@@ -1,5 +1,11 @@
 package onboarding;
 
+import java.util.Comparator;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 /**
  * goal: 중복되는 문자열을 제거하여 암호를 해독하고 이를 리턴
  */
@@ -14,7 +20,35 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        return removeDuplicateStr(cryptogram);
+    }
+
+    // 중복된 부분이 있다면 재귀적으로 다시 중복 확인하는 메서드
+    private static String removeDuplicateStr(String cryptogram) {
+        Set<Integer> removeSet = new LinkedHashSet<>();
+        for (int i = 1; i < cryptogram.length(); i++) {
+            if (cryptogram.charAt(i - 1) == cryptogram.charAt(i)) {
+                removeSet.add(i - 1);
+                removeSet.add(i);
+            }
+        }
+
+        if (removeSet.size() != 0) {
+            cryptogram = removeDuplicateIdx(cryptogram, removeSet);
+            return removeDuplicateStr(cryptogram);
+        }
+        return cryptogram;
+    }
+
+    // 중복된 부분 제거해주는 메서드
+    private static String removeDuplicateIdx(String cryptogram, Set<Integer> removeSet) {
+        List<Integer> removeList = removeSet.stream().sorted(Comparator.reverseOrder())
+            .collect(Collectors.toList());
+
+        while (!removeList.isEmpty()) {
+            Integer idx = removeList.remove(0);
+            cryptogram = cryptogram.substring(0, idx) + cryptogram.substring(idx + 1);
+        }
+        return cryptogram;
     }
 }
