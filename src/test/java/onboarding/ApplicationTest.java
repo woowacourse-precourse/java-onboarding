@@ -403,6 +403,118 @@ class ApplicationTest {
             List<Integer> result = List.of(0, 1, 1, 0, 0, 0, 0, 0, 0);
             assertThat(Problem5.solution(money)).isEqualTo(result);
         }
+    
+        @Test
+        void case3() {
+            int money = 1;
+            List<Integer> result = List.of(0, 0, 0, 0, 0, 0, 0, 0, 1);
+            assertThat(Problem5.solution(money)).isEqualTo(result);
+        }
+    
+        @Test
+        void case4() {
+            int money = 1_000_000;
+            List<Integer> result = List.of(20, 0, 0, 0, 0, 0, 0, 0, 0);
+            assertThat(Problem5.solution(money)).isEqualTo(result);
+        }
+    
+        @Test
+        void case5() {
+            int money = 2;
+            List<Integer> result = List.of(0, 0, 0, 0, 0, 0, 0, 0, 2);
+            assertThat(Problem5.solution(money)).isEqualTo(result);
+        }
+    
+        @Test
+        void case6() {
+            int money = 999_999;
+            List<Integer> result = List.of(19, 4, 1, 4, 1, 4, 1, 4, 9);
+            assertThat(Problem5.solution(money)).isEqualTo(result);
+        }
+    
+        @Test
+        void case7() {
+            int money = 999_998;
+            List<Integer> result = List.of(19, 4, 1, 4, 1, 4, 1, 4, 8);
+            assertThat(Problem5.solution(money)).isEqualTo(result);
+        }
+    
+        @Test
+        void case8() {
+            int money = 990_998;
+            List<Integer> result = List.of(19, 4, 0, 0, 1, 4, 1, 4, 8);
+            assertThat(Problem5.solution(money)).isEqualTo(result);
+        }
+    
+        @Test
+        void case9() {
+            int money = 10;
+            List<Integer> result = List.of(0, 0, 0, 0, 0, 0, 0, 1, 0);
+            assertThat(Problem5.solution(money)).isEqualTo(result);
+        }
+    
+        @Test
+        void case10() {
+            int money = 50;
+            List<Integer> result = List.of(0, 0, 0, 0, 0, 0, 1, 0, 0);
+            assertThat(Problem5.solution(money)).isEqualTo(result);
+        }
+    
+        @Test
+        void case11() {
+            int money = 100;
+            List<Integer> result = List.of(0, 0, 0, 0, 0, 1, 0, 0, 0);
+            assertThat(Problem5.solution(money)).isEqualTo(result);
+        }
+    
+        @Test
+        void case12() {
+            int money = 500;
+            List<Integer> result = List.of(0, 0, 0, 0, 1, 0, 0, 0, 0);
+            assertThat(Problem5.solution(money)).isEqualTo(result);
+        }
+    
+        @Test
+        void case13() {
+            int money = 1000;
+            List<Integer> result = List.of(0, 0, 0, 1, 0, 0, 0, 0, 0);
+            assertThat(Problem5.solution(money)).isEqualTo(result);
+        }
+    
+        @Test
+        void case14() {
+            int money = 5000;
+            List<Integer> result = List.of(0, 0, 1, 0, 0, 0, 0, 0, 0);
+            assertThat(Problem5.solution(money)).isEqualTo(result);
+        }
+    
+        @Test
+        void case15() {
+            int money = 10000;
+            List<Integer> result = List.of(0, 1, 0, 0, 0, 0, 0, 0, 0);
+            assertThat(Problem5.solution(money)).isEqualTo(result);
+        }
+    
+        @Test
+        void case16() {
+            int money = 50000;
+            List<Integer> result = List.of(1, 0, 0, 0, 0, 0, 0, 0, 0);
+            assertThat(Problem5.solution(money)).isEqualTo(result);
+        }
+    
+        @Test
+        void case17() {
+            int money = 50049;
+            List<Integer> result = List.of(1, 0, 0, 0, 0, 0, 0, 4, 9);
+            assertThat(Problem5.solution(money)).isEqualTo(result);
+        }
+    
+        @Test
+        void case18() {
+            int money = 50061;
+            List<Integer> result = List.of(1, 0, 0, 0, 0, 0, 1, 1, 1);
+            assertThat(Problem5.solution(money)).isEqualTo(result);
+        }
     }
     
     @Nested
