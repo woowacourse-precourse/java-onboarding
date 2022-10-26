@@ -6,6 +6,7 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+
         return answer;
     }
 
@@ -21,7 +22,7 @@ class Problem1 {
     public int sumAllNumbersInPage(int page) {
         int result = 0;
         for (Integer number : changeIntToIntList(page)) {
-            result += number;
+            result = result + number;
         }
         return result;
     }
@@ -29,17 +30,20 @@ class Problem1 {
     public int multiplyAllNumbersInPage(int page) {
         int result = 1;
         for (Integer number : changeIntToIntList(page)) {
-            result *= number;
+            result = result * number;
         }
 
         return result;
     }
 
-    public List<Integer> changeIntToIntList(int number) {
-
-        return new ArrayList<>();
+    static public List<Integer> changeIntToIntList(int number) {
+        List<Integer> result = new ArrayList<>();
+        while (number % 10 != 0) {
+            result.add(number % 10, 0);
+            number = number % 10;
+        }
+        return result;
     }
-
 }
 
 /*
