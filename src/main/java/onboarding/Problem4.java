@@ -2,8 +2,17 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+
+        /*
+        * 문장의 문자만큼 반복하여 문자를 변환한다.
+        * */
+        char[] wordToCharArr = word.toCharArray();
+        for (int i = 0; i < wordToCharArr.length; i++) {
+            if(wordToCharArr[i] ==' ') continue;
+            wordToCharArr[i] = charReverse(wordToCharArr[i]);
+        }
+
+        return String.valueOf(wordToCharArr);
     }
 
     /*
