@@ -25,11 +25,11 @@ public class Problem4 {
         return answer;
     }
     
-    public static Character toRevertLowerCase(Character character) {
+    public static Character toConvertLowerCase(Character character) {
         return LOWERCASE_LETTERS.get(character - 'a');
     }
     
-    public static Character toRevertUpperCase(Character character) {
+    public static Character toConvertUpperCase(Character character) {
         return UPPERCASE_LETTERS.get(character - 'A');
     }
 }
