@@ -35,6 +35,19 @@ class Problem1 {
             return -1;
         }
 
+        int leftPage = user.get(0);
+        int rightPage = user.get(1);
+
+        leftMaxPoint = maxPageValue(leftPage);
+        rightMaxPoint = maxPageValue(rightPage);
+
+        if(leftMaxPoint>rightMaxPoint){
+            return leftMaxPoint;
+        } else {
+            return rightMaxPoint;
+        }
+
+
     }
 
     private static boolean pageValidation(List<Integer> user){
@@ -57,5 +70,15 @@ class Problem1 {
         }
         return true;
     }
+
+    private static int maxPageValue(Integer a){
+        int mult = multValue(a);
+        int sum = sumValue(a);
+        if(mult>sum){
+            return mult;
+        } else{
+            return sum;
+        }
+    };
 
 }
