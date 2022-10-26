@@ -23,7 +23,7 @@ public class Problem5 {
             List<Integer> res = new ArrayList<>(Collections.emptyList());
             for (int i = 0; i < moneyGrade.length; i++) {
                 int count = money / moneyGrade[i];
-//                System.out.println("count = " + count);
+
                 res.add(count);
                 if (count != 0)
                     money -= moneyGrade[i] * count;
@@ -38,7 +38,7 @@ public class Problem5 {
         List<Integer> answer = Collections.emptyList();
         MoneyChange moneyChange = new MoneyChange();
         answer = moneyChange.calculatorMoney(money);
-//        System.out.println(answer);
+
         return answer;
     }
 }
