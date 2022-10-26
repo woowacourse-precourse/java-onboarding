@@ -26,10 +26,12 @@ class Problem1 {
 
     private static boolean isException(int leftPage, int rightPage) {
         int pageDifference = rightPage - leftPage;
-        if (pageDifference != 1) {
-            return true;
+        if (pageDifference == 1) {
+            return false;
+        } else if (rightPage > 400 || leftPage < 1) {
+            return false;
         }
-        return false;
+        return true;
     }
 
     private static int calculateMaxNumber(int leftPage, int rightPage) {
