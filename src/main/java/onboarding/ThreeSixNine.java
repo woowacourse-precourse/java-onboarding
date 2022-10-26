@@ -13,7 +13,7 @@ public class ThreeSixNine {
 		for (int i = 1; i < number + 1; i++) {
 			countClap(i);
 		}
-		return 0;
+		return clap;
 	}
 
 	private void countClap(int number) {
