@@ -31,4 +31,15 @@ class Problem1 {
             return n;
         return n % 10 * multiply(n / 10);
     }
+
+    private static int calculateMaxScore(List<Integer> pageList) {
+        int maxScore = 0;
+
+        for (Integer page : pageList) {
+            int pageToInt = page.intValue();
+            maxScore = Math.max(sum(pageToInt), maxScore);
+            maxScore = Math.max(multiply(pageToInt), maxScore);
+        }
+        return maxScore;
+    }
 }
