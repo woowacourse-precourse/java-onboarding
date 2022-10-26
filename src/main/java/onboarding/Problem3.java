@@ -15,7 +15,15 @@ public class Problem3 {
     }
     public static int count369(int num){
         int count =0;
-
+        String s = Integer.toString(num);
+        for(int i=0;i<s.length();i++){
+            if(check369(s.charAt(i))){
+                count++;
+            }
+        }
         return count;
+    }
+    public static boolean check369(char c){
+
     }
 }
