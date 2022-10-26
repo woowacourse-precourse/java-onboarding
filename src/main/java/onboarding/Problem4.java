@@ -15,17 +15,14 @@ public class Problem4 {
         String answer = "";
         for (int i = 0; i < word.length(); i++) {
             String s = word.substring(i, i+1);
-            if (s.equals(" ")) {
-                answer += " ";
-                continue;
-            }
-            //소문자, 대문자 체크
             answer = AlphabetChange(answer, s);
-
         }
         return answer;
     }
     public static String AlphabetChange(String answer, String s){
+        if (s.equals(" ")) {
+            answer += " ";
+        }
         if (Character.isLowerCase(s.charAt(0))) {
             int temp = (int)s.charAt(0)-97;
             answer += (char)(122 - temp);
