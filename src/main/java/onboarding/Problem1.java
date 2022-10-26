@@ -21,6 +21,9 @@ class Problem1 {
             return EXCEPTION_CASE;
         }
 
+        int pobiScore = getMaxScore(pobiLeftPage, pobiRightPage);
+        int crongScore = getMaxScore(crongLeftPage, crongRightPage);
+
         return answer;
     }
 
@@ -38,6 +41,33 @@ class Problem1 {
             return true;
         }
         return false;
+    }
+
+    private static int getMaxScore(Integer leftPage, Integer rightPage) {
+        int leftMaxScore = Math.max(sumEachNumber(leftPage), mulEachNumber(leftPage));
+        int rightMaxScore = Math.max(sumEachNumber(rightPage), mulEachNumber(rightPage));
+
+        return Math.max(leftMaxScore, rightMaxScore);
+    }
+
+    private static int sumEachNumber(Integer page) {
+        int ret = 0;
+        String itos = String.valueOf(page);
+        for (int i = 0; i < itos.length(); i++) {
+            ret += itos.charAt(i) - '0';
+        }
+
+        return ret;
+    }
+
+    private static int mulEachNumber(Integer page) {
+        int ret = 1;
+        String itos = String.valueOf(page);
+        for (int i = 0; i < itos.length(); i++) {
+            ret *= itos.charAt(i) - '0';
+        }
+
+        return ret;
     }
 
     private static boolean isNullPage(Integer page) {
