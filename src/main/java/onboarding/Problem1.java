@@ -23,10 +23,50 @@ class Problem1 {
                 tmp /= 10;
             }
 
+            int addP = 0;
+            int addC = 0;
+            for(int j = 0; j < 3; j++) { // add digit num
+                if(digitP[j] != -1) {
+                    addP += digitP[j];
+                }
+                if(digitC[j] != -1) {
+                    addC += digitC[j];
+                }
+            }
+            if(pmax < addP) {
+                pmax = addP;
+            }
+            if(cmax < addC) {
+                cmax = addC;
+            }
+
+            int mulP = 1;
+            int mulC = 1;
+            for(int j = 0; j < 3; j++) { // mul digit num
+                if(digitP[j] != -1) {
+                    mulP *= digitP[j];
+                }
+                if(digitC[j] != -1) {
+                    mulC *= digitC[j];
+                }
+            }
+            if(pmax < mulP) {
+                pmax = mulP;
+            }
+            if(cmax < mulC) {
+                cmax = mulC;
+            }
         }
 
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        if(pmax > cmax) { // pobi win
+            return 1;
+        }
+        else if(pmax < cmax) { // crong win
+            return 2;
+        }
+        else { // draw
+            return 0;
+        }
     }
     static boolean exs(List<Integer> pobi, List<Integer> crong) { // init exceptions true:ex / false:non-ex
         if(pobi.get(0) % 2 != 1 || pobi.get(1) % 2 != 0) return true; // pobi left even or right odd
