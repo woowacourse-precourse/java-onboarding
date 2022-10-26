@@ -2,7 +2,15 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = removeDuplicated(cryptogram);
+
+        while(!cryptogram.equals(answer)){
+            System.out.println(answer);
+            cryptogram = answer;
+            if(cryptogram.length()<1) break;
+            answer = removeDuplicated(cryptogram);
+        }
+
         return answer;
     }
 
