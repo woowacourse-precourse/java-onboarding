@@ -204,3 +204,13 @@ class Referee {
         return user2.getName();
     }
 }
+
+class OutView {
+    static void printHead(User user1, User user2) {
+        System.out.println(user1.getName() + "\t" + user2.getName() + "\t" + "result");
+    }
+
+    static void printResult(User user1, User user2, int result) {
+        System.out.println(user1.getChoiceNumbers() + "\t" + user2.getChoiceNumbers() + "\t" + result);
+    }
+}
