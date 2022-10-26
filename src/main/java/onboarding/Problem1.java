@@ -9,6 +9,11 @@ import java.util.List;
  * - 포비와 크롱 중에서 승자를 결정
  */
 class Problem1 {
+
+    private boolean isAvailableSize(int size) {
+        return size == 2;
+    }
+    
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
