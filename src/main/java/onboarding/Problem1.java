@@ -36,4 +36,13 @@ class Problem1 {
         }
         return sum_value;
     }
+
+    private static int multipleEveryPlaceValue(int number) {
+        int multiple_value = 0;
+        String[] string_array = String.valueOf(number).split("");
+        for (String place_value: string_array) {
+            multiple_value *= Integer.valueOf(place_value);
+        }
+        return multiple_value;
+    }
 }
