@@ -5,15 +5,11 @@ import java.util.HashSet;
 public class Problem2 {
     public static String solution(String cryptogram) {
 
-        //String preCryptogram = cryptogram;
-        deleteDuplicatedCharacter(cryptogram);
-
-
-        String answer = "answer";
+        String answer = deleteDuplicatedCharacter(cryptogram);
         return answer;
     }
 
-    private static void deleteDuplicatedCharacter(String cryptogram) {
+    private static String deleteDuplicatedCharacter(String cryptogram) {
 
         StringBuilder cryptogramStringBuilder = new StringBuilder(cryptogram);
 
@@ -22,7 +18,10 @@ public class Problem2 {
             HashSet<Integer> duplicatedCharacterIndexes = findDuplicatedCharacterIndex(cryptogramStringBuilder);
             if(duplicatedCharacterIndexes.isEmpty()) break;
             cryptogramStringBuilder = duplicatedCharacterToBlankByIndex(cryptogramStringBuilder, duplicatedCharacterIndexes);
+            cryptogramStringBuilder = new StringBuilder(cryptogramStringBuilder.toString().replace(" ", ""));
         }
+
+        return cryptogramStringBuilder.toString();
     }
 
     private static StringBuilder duplicatedCharacterToBlankByIndex(StringBuilder cryptogramStringBuilder, HashSet<Integer> duplicatedCharacterIndexes) {
