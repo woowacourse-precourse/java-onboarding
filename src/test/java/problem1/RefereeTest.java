@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class RefereeTest {
 
@@ -24,5 +25,12 @@ public class RefereeTest {
     void 무승부는_0() {
         Referee referee = new Referee(List.of(3, 4), List.of(3, 4));
         assertThat(referee.playGame()).isEqualTo(GameResultStatus.DRAW);
+    }
+
+    @Test
+    void 왼쪽페이지_홀수_오른쪽페이지_짝수_아니면_예외() {
+        assertThatThrownBy(() -> new Referee(List.of(4, 5), List.of(3, 4)))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("올바르지 않은 입력 값 입니다.");
     }
 }
