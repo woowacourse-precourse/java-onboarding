@@ -23,5 +23,24 @@ class Problem1 {
         return pobi.get(0) < 1 || pobi.get(1) > 400 || crong.get(0) < 1 || crong.get(1) > 400; // 거짓이면 조건 만족
     }
 
+    private static int getMaxValue(List<Integer> values) { // 한 사람의 가장 큰 값 구하기
+        int leftValue = values.get(0);
+        int rightValue = values.get(1);
+
+        return Math.max(getMaxValue2(leftValue), getMaxValue2(rightValue));
+    }
+
+    private static int getMaxValue2(int x) { // 두 수 각각의 합과 곱중 최대값 구하기
+        int hab = 0;
+        int gob = 1;
+
+        while (x != 0) {
+            hab += (x % 10);
+            gob *= (x % 10);
+            x = x / 10;
+        }
+
+        return Math.max(hab, gob);
+    }
 
 }
