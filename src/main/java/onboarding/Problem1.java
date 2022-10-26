@@ -14,7 +14,16 @@ class Problem1 {
             return EXCEPTION;
         }
 
+        int pobiMaxNumber = getMaxNumberCalculate(pobi);
+        int crongMaxNumber = getMaxNumberCalculate(crong);
 
+        if (pobiMaxNumber > crongMaxNumber) {
+            return WIN_POBI;
+        }
+
+        if (pobiMaxNumber < crongMaxNumber) {
+            return WIN_CRONG;
+        }
 
         return DRAW;
     }
@@ -46,7 +55,7 @@ class Problem1 {
     }
 
     /**
-     * 입력된 수를 각각 더하고 곱해서 큰 값 가져오기
+     * 2개의 페이지 값 중 큰 수 가져오기
      * @param pages 페이지 정보
      * @return 결과값
      */
@@ -114,10 +123,4 @@ class Problem1 {
 
         return intArrayNumber;
     }
-
-
-
-
-
-
 }
