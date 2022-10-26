@@ -8,25 +8,25 @@ class Problem1 {
         return (b-a)==1 && (a %= 2) == 1 && (b %= 2) == 0;
     }
 
-//    public static int help(int a, int b){
-//        int[] arr1 = Stream.of(String.valueOf(a).split("")).mapToInt(Integer::parseInt).toArray();
-//        int[] arr2 = Stream.of(String.valueOf(b).split("")).mapToInt(Integer::parseInt).toArray();
-//
-//        int result_left = getResult(arr1);
-//        int result_right = getResult(arr2);
-//
-//        return Math.max(result_left, result_right);
-//    }
-//
-//    private static int getResult(int[] arr) {
-//        int res1 = 0, res2 = 1;
-//        for(int num: arr){
-//            res1 += num;
-//            res2 *= num;
-//        }
-//        return Math.max(res1, res2);
-//    }
-//
+    public static int help(int a, int b){
+        int[] arr1 = Stream.of(String.valueOf(a).split("")).mapToInt(Integer::parseInt).toArray();
+        int[] arr2 = Stream.of(String.valueOf(b).split("")).mapToInt(Integer::parseInt).toArray();
+
+        int result_left = getResult(arr1);
+        int result_right = getResult(arr2);
+
+        return Math.max(result_left, result_right);
+    }
+
+    private static int getResult(int[] arr) {
+        int res1 = 0, res2 = 1;
+        for(int num: arr){
+            res1 += num;
+            res2 *= num;
+        }
+        return Math.max(res1, res2);
+    }
+
 //    public static int solution(List<Integer> pobi, List<Integer> crong) {
 //        Integer[] pobi_arr = pobi.toArray(new Integer[2]);
 //        Integer[] crong_arr = crong.toArray(new Integer[2]);
