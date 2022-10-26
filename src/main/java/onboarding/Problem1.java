@@ -10,8 +10,8 @@ class Problem1 {
             return Constance.EXCEPTION_MESSAGE;
         }
 
-        List<Integer> pobiBiggerPageNumbers = saveBiggerPageNumberByUser(pobi);
-        List<Integer> crongBiggerPageNumbers = saveBiggerPageNumberByUser(crong);
+        List<Integer> pobiBiggerPageNumbers = saveMaxPagesNumberByUser(pobi);
+        List<Integer> crongBiggerPageNumbers = saveMaxPagesNumberByUser(crong);
 
         int pobiScore = getMaxNumber(pobiBiggerPageNumbers.get(0), pobiBiggerPageNumbers.get(1));
         int crongScore = getMaxNumber(crongBiggerPageNumbers.get(0), crongBiggerPageNumbers.get(1));
@@ -28,7 +28,7 @@ class Problem1 {
         return Constance.SCORE_SAME_MESSAGE;
     }
 
-    private static List<Integer> saveBiggerPageNumberByUser(List<Integer> user) {
+    private static List<Integer> saveMaxPagesNumberByUser(List<Integer> user) {
         List<Integer> biggerPageNumbers = new ArrayList<>();
         for (Integer pageNumber : user) {
             int sumPage = sumEachNumber(pageNumber);
@@ -71,7 +71,7 @@ class Problem1 {
         private static final int EXCEPTION_MESSAGE = -1;
     }
 
-    public static class PageNumberException {
+    private static class PageNumberException {
 
         private PageNumberException() {}
 
@@ -111,4 +111,6 @@ class Problem1 {
             return leftPageNumber+1 == rightPageNumber;
         }
     }
+
+
 }
