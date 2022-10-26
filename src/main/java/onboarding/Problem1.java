@@ -9,7 +9,7 @@ import java.util.List;
 //3. max
 
 class Problem1 {
-    private int addNum(int pageNum)    {
+    private static int addNum(int pageNum)    {
         int num = 0;
 
         while (pageNum > 0)
@@ -21,7 +21,7 @@ class Problem1 {
         return num;
     }
 
-    private int mulNum(int pageNum)    {
+    private static int mulNum(int pageNum)    {
         int num = 1;
 
         while (pageNum > 0)
@@ -33,15 +33,24 @@ class Problem1 {
         return num;
     }
 
-    private int pickNum(int pageNum) {
+    private static int pickNum(int pageNum) {
         return Math.max(addNum(pageNum), mulNum(pageNum));
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+
         int pobiNum, crongNum;
 
-        pobiNum = Math.max();
-        return answer;
+        pobiNum = Math.max(pickNum(pobi.get(0)), pickNum(pobi.get(1)));
+        crongNum = Math.max(pickNum(crong.get(0)), pickNum(pobi.get(1)));
+
+        if (pobiNum == crongNum)
+            return 0;
+        else if (pobiNum > crongNum)
+            return 1;
+        else if (pobiNum < crongNum)
+            return 2;
+
+        return -1;
     }
 }
