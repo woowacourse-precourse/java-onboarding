@@ -73,4 +73,8 @@ class Problem1 {
     private static boolean isFirstPage(int pageNumber) {
         return pageNumber == 1 || pageNumber == 2;
     }
+
+    private static boolean isEndPage(int pageNumber) {
+        return pageNumber == 399 || pageNumber == 400;
+    }
 }
