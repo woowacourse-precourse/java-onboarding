@@ -5,6 +5,17 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        int pobiScore;
+        int crongScore;
+
+        if (!isValid(pobi) || !isValid(crong)) {
+            return -1;
+        }
+
+        pobiScore = max(getPageNumberSum(pobi), getPageNumberMulti(pobi));
+        crongScore = max(getPageNumberSum(crong), getPageNumberMulti(crong));
+        answer = fight(pobiScore, crongScore);
+
         return answer;
     }
 
