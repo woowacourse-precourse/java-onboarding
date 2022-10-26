@@ -9,7 +9,7 @@ class Problem1 {
         return answer;
     }
 
-    public int calculatorMultiply(int page){
+    public static int calculatorMultiply(int page){
         int result = 1;
         String[] splitPage = Integer.toString(page).split("");
 
@@ -20,7 +20,7 @@ class Problem1 {
         return result;
     }
 
-    public int calculatorAdd(int page){
+    public static int calculatorAdd(int page){
         int result = 0;
         String[] splitPage = Integer.toString(page).split("");
 
@@ -31,7 +31,7 @@ class Problem1 {
         return result;
     }
 
-    public int compareMultiplyAndAdd(int pages){
+    public static int compareMultiplyAndAdd(int pages){
         int addResult = calculatorAdd(pages);
         int multiplyResult = calculatorMultiply(pages);
 
