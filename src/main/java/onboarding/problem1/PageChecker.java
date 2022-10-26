@@ -11,6 +11,7 @@ public class PageChecker {
 
     /**
      * Constructor with size
+     *
      * @param size max page of book
      */
     public PageChecker(int size) {
@@ -19,6 +20,7 @@ public class PageChecker {
 
     /**
      * Check if input values are available
+     *
      * @param pages page numbers when opening book
      * @return true if available
      */
@@ -28,6 +30,7 @@ public class PageChecker {
 
     /**
      * Check if size is available
+     *
      * @param size size of pages
      * @return true if size is 2
      */
@@ -37,7 +40,8 @@ public class PageChecker {
 
     /**
      * Check if values are available
-     * @param left left page
+     *
+     * @param left  left page
      * @param right right page
      * @return return true if left and right is in range, left is odd number and left + 1 is right
      */

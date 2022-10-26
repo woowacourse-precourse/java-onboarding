@@ -15,9 +15,10 @@ public class PageGamer {
 
     /**
      * Constructor with pages of person A and B
+     *
      * @param pagesA pages of person A
      * @param pagesB pages of person B
-     * @param size max value of page number
+     * @param size   max value of page number
      */
     public PageGamer(List<Integer> pagesA, List<Integer> pagesB, int size) {
         this.pagesA = pagesA;
@@ -28,6 +29,7 @@ public class PageGamer {
 
     /**
      * Get winner
+     *
      * @return 1 if person A wins, 2 if person B wins and 0 if draw
      * @throws WrongInputException throws exception if input values has an error
      */
@@ -40,6 +42,7 @@ public class PageGamer {
 
     /**
      * Get result of game
+     *
      * @param aValue value of person A
      * @param bValue value of person B
      * @return 0 if draw or 1 if a wins and 2 if b wins

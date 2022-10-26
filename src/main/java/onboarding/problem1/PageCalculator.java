@@ -7,7 +7,8 @@ public class PageCalculator {
 
     /**
      * Max value that can be calculated with page numbers
-     * @param left left page number
+     *
+     * @param left  left page number
      * @param right right page number
      * @return max value
      */
@@ -17,6 +18,7 @@ public class PageCalculator {
 
     /**
      * Max value that can be calculated with page number
+     *
      * @param page page number
      * @return max value
      */
@@ -26,6 +28,7 @@ public class PageCalculator {
 
     /**
      * Summation of each number in page number
+     *
      * @param page page number
      * @return summation
      */
@@ -40,6 +43,7 @@ public class PageCalculator {
 
     /**
      * Multiplied value of each number in page number
+     *
      * @param page page number
      * @return multiplied value
      */
