@@ -9,18 +9,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class UserTest {
     @Test
-    @DisplayName("유저의 친구목록 저장하기")
-    void addFriend() {
-        User user = new User("jun");
-        user.addFriend("pobi");
-        assertThat(user.getFriends()).isEqualTo(new Friends(Set.of("pobi")));
-    }
-    
-    @Test
     @DisplayName("함계 아는 친구 명수 구하기")
     void numberOfFriendsYouKnowTogether() {
-        User jun = new User("jun");
-        User pobi = new User("pobi");
+        User jun = new User();
+        User pobi = new User();
         
         jun.addFriend("jk");
         jun.addFriend("crong");

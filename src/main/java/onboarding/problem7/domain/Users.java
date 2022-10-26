@@ -17,7 +17,7 @@ public class Users {
         friends.get(0).addAll(visitors);
         return friends.stream()
                 .flatMap(Collection::stream)
-                .collect(Collectors.toMap(friendName -> friendName, User::new));
+                .collect(Collectors.toMap(friendName -> friendName, friendName -> new User()));
     }
     
     private void addAllUserFriends(final List<List<String>> friends) {
