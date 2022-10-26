@@ -96,8 +96,11 @@ class Problem1 {
      * @return 무승부는 0, 포비의 승리는 1, 크롱의 승리는 2입니다.
      * */
     private static int findWinner(List<List>  splitPageNumbers) {
-        int pobiMax = getBiggerNumber(addNumbers(splitPageNumbers.get(0)), multiplyNumbers(splitPageNumbers.get(0)));
-        int crongMax = getBiggerNumber(addNumbers(splitPageNumbers.get(1)), multiplyNumbers(splitPageNumbers.get(1)));
+        List<List> splitPobi = splitPageNumbers.get(0);
+        List<List> splitCrong = splitPageNumbers.get(1);
+
+        int pobiMax = getBiggerNumber(addNumbers(splitPobi.get(0)), multiplyNumbers(splitPobi.get(1)));
+        int crongMax = getBiggerNumber(addNumbers(splitCrong.get(0)), multiplyNumbers(splitCrong.get(1)));
         if (pobiMax == crongMax) {
             return 0;
         }
@@ -141,7 +144,11 @@ class Problem1 {
      * @return 모든 정수의 곱입니다.
      * */
     private  static int multiplyNumbers(List<Integer> splitNumbers){
-        return 0;
+        int result = 1;
+        for (int number: splitNumbers) {
+            result *= number;
+        }
+        return result;
     }
 
     /*
