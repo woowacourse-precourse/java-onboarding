@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Problem6 {
@@ -24,7 +25,7 @@ public class Problem6 {
         for (int i = 0; i < userList.size(); i++)
             emailList.add(forms.get(userList.get(i)).get(email));
 
-        System.out.println("test : " + emailList);
+        Collections.sort(emailList);
         return emailList;
     }
     //닉네임만 저장하는 함수
