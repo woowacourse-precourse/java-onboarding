@@ -14,41 +14,44 @@ import java.util.Map;
  */
 
 public class Problem4 {
-    enum AlphabetType {UPPER, LOWER,}
+
+    private static final Map<Character, Character> treeFrogMap = new HashMap<>();
 
     public static String solution(String word) {
-        String answer = "";
-        Map<Character, String> treeFrogMap = new HashMap();
-        createTreeFrogMap(treeFrogMap);
-        return answer;
+        createTreeFrogMap();
+        return changeWordWithTreeFrogMap(word);
     }
 
-    private static void createTreeFrogMap(Map<Character, String> treeFrogMap) {
+    private static String changeWordWithTreeFrogMap(String word) {
+        StringBuilder changeWord = new StringBuilder();
+        for (int i = 0; i < word.length(); i++) {
+            char current = word.charAt(i);
+            if (current == ' ') {
+                changeWord.append(current);
+                continue;
+            }
+            changeWord.append(treeFrogMap.get(word.charAt(i)));
+        }
+        return changeWord.toString();
+    }
+
+    private static void createTreeFrogMap() {
         // 소문자 매핑
         char start = 'a';
         char end = 'z';
-        mappingAlphabetToMap(treeFrogMap,AlphabetType.LOWER, start, end);
+        mappingAlphabetToMap(start, end);
 
         // 대문자 매핑
         start = 'A';
         end = 'Z';
-        mappingAlphabetToMap(treeFrogMap, AlphabetType.UPPER, start, end);
+        mappingAlphabetToMap(start, end);
     }
 
-    private static void mappingAlphabetToMap(Map<Character, String> treeFrogMap,
-        AlphabetType alphabetType, char start, char end) {
+    private static void mappingAlphabetToMap(char start, char end) {
         int idx = 0;
         for (int ascii = start; ascii <= end; ascii++) {
             char originValue = (char) ascii;
-            String changeValue = "";
-            if (alphabetType == AlphabetType.UPPER) {
-                changeValue = String.valueOf((char) (end - idx++)).toLowerCase();
-            }
-
-            if (alphabetType == AlphabetType.LOWER) {
-                changeValue = String.valueOf((char) (end - idx++)).toUpperCase();
-            }
-
+            char changeValue = (char) (end - idx++);
             treeFrogMap.put(originValue, changeValue);
         }
     }
