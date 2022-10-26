@@ -13,15 +13,21 @@ import java.util.List;
  */
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int answer = 0;
+
+        try{
+            validatePage(pobi);
+            validatePage(crong);
+        } catch (IllegalArgumentException e){
+            return -1;
+        }
 
         return answer;
     }
 
-    private static boolean validatePage(final List<Integer> pages){
+    private static void validatePage(final List<Integer> pages){
         if(pages.get(0) + 1 != pages.get(1))
-            return false;
-        return true;
+            throw new IllegalArgumentException("연속되지 않은 페이지입니다.");
     }
 
     private static int plusPage(int page){
