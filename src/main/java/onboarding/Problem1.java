@@ -5,11 +5,8 @@ import java.util.stream.Stream;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
 
-        if (isExceptionCase(pobi, crong)) {
-            return -1;
-        }
+        if (isExceptionCase(pobi, crong)) return -1;
 
         String pobiNumStr = pobi.get(0).toString() + pobi.get(1).toString();
         String crongNumStr = crong.get(0).toString() + crong.get(1).toString();
@@ -17,7 +14,7 @@ class Problem1 {
         int pobiMax = getMaxNum(pobiNumStr);
         int crongMax = getMaxNum(crongNumStr);
 
-        answer = Integer.compare(pobiMax,crongMax);
+        int answer = Integer.compare(pobiMax, crongMax);
         return (answer > -1) ? answer : 2;
     }
 
@@ -32,9 +29,17 @@ class Problem1 {
     }
 
     private static boolean isExceptionCase(List<Integer> pobi, List<Integer> crong) {
-        if (pobi.get(1) - pobi.get(0) != 1) return true;
-        if (crong.get(1) - crong.get(0) != 1) return true;
-        return pobi.get(0) == 1 || crong.get(1) == 400;
+        int pobiLeft = pobi.get(0);
+        int pobiRight = pobi.get(1);
+        int crongLeft = crong.get(0);
+        int crongRight = crong.get(1);
+
+        if (pobiLeft >= pobiRight || pobiLeft <= 0 || pobiRight > 400) return true;
+        if (crongLeft >= crongRight || crongLeft <= 0 || crongRight > 400) return true;
+        if (pobiRight - pobiLeft != 1) return true;
+        if (crongRight - crongLeft != 1) return true;
+
+        return false;
     }
 
 }
