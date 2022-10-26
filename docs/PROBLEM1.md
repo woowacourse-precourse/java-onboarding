@@ -41,9 +41,10 @@
   - crong win : 2
   - draw : 0
   - Exceptions : -1
-    - case1 : pobi, crong 각각의 길이가 2가 아닌 경우
-    - case2 : pobi, crong 의 첫 번째 값이 홀수가 아닌 경우
-    - case3 : pobi, crong 의 두 번째 값이 짝수가 아닌 경우
-    - case4 : pobi, crong 의 (두 번째 원소 - 첫 번째 원소) != 1 인 경우
-    - case5 : pobi, crong 이 값이 시작 면[1, 2] or 마지막 면[399, 400] 인 경우
-    - case6 : pobi, crong 의 값이 범위(1 이상 400 이하)를 벗어난 경우
+- (7) 예외 처리 기능
+  - case1 : pobi, crong 각각의 길이가 2가 아닌 경우
+  - case2 : pobi, crong 의 첫 번째 값이 홀수가 아닌 경우
+  - case3 : pobi, crong 의 두 번째 값이 짝수가 아닌 경우
+  - case4 : pobi, crong 의 (두 번째 원소 - 첫 번째 원소) != 1 인 경우
+  - case5 : pobi, crong 이 값이 시작 면[1, 2] or 마지막 면[399, 400] 인 경우
+  - case6 : pobi, crong 의 값이 범위(1 이상 400 이하)를 벗어난 경우
