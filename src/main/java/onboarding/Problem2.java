@@ -5,16 +5,6 @@ import java.util.List;
 
 public class Problem2 {
 
-    public boolean validation(String cryptogram) {
-        if (cryptogram.length() < 1 || cryptogram.length() > 1000) {
-            return false;
-        } else if (!cryptogram.equals(cryptogram.toLowerCase())) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
     public static int countDuplicatedNeighbor(List<Character> cryptogram, int start) {
         int cnt = 1;
         for (int i = start; i < cryptogram.size() - 1; i++) {
@@ -27,31 +17,49 @@ public class Problem2 {
         return cnt;
     }
 
-    public static void deleteDuplicatedNeighbor(List<Character> cryptogram, int start, int cnt) {
-        if (cnt != 1) {
-            for (int i = 0; i < cnt; i++) {
-                cryptogram.remove(start);
+    public static void deleteDuplicatedNeighbor(List<Character> cryptogram, int start) {
+        int i = start;
+        int cnt;
+        while (i < cryptogram.size() - 1) {
+            if (cryptogram.get(i) == cryptogram.get(i + 1)) {
+                cnt = countDuplicatedNeighbor(cryptogram, i);
+                for (int j = 0; j < cnt; j++) {
+                    cryptogram.remove(i);
+                }
+            } else {
+                i++;
             }
         }
     }
 
-    public int hasDuplicateNeighbor(List<Character> cryptogram) {
+    public static int hasDuplicateNeighbor(List<Character> cryptogram) {
         for (int i = 0; i < cryptogram.size() - 1; i++) {
-            if (cryptogram.get(i) == cryptogram.get(i + 1))
+            if (cryptogram.get(i) == cryptogram.get(i + 1)) {
                 return i;
+            }
         }
         return -1;
     }
 
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        char[] temp = cryptogram.toCharArray();
+        String answer;
         List<Character> charArr = new ArrayList<>();
-        for (char c : temp) {
-            charArr.add(c);
+        for(int i=0; i<cryptogram.length(); i++){
+            charArr.add(cryptogram.charAt(i));
         }
 
-
+        while (true) {
+            int idx = hasDuplicateNeighbor(charArr);
+            if (idx == -1) {
+                break;
+            }
+            deleteDuplicatedNeighbor(charArr, idx);
+        }
+        StringBuilder builder = new StringBuilder();
+        for (Character ch : charArr) {
+            builder.append(ch);
+        }
+        answer = builder.toString();
 
         return answer;
     }
