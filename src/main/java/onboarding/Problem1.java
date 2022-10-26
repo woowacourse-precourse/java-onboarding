@@ -60,7 +60,7 @@ class Problem1 {
 
         private void validatePagesOrder() {
             Page firstPage = pages.get(0), secondPage = pages.get(1);
-            if (!firstPage.isOdd() && firstPage.compareTo(secondPage) != -1)
+            if (!firstPage.isOdd() || firstPage.compareTo(secondPage) != -1)
                 throw new IllegalArgumentException(ERR_PAGES_ORDER);
         }
 
