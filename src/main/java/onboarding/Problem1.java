@@ -10,6 +10,9 @@ class Problem1 {
         List<Integer> pobiBiggerPageNumbers = saveUserBiggerPageNumber(pobi);
         List<Integer> crongBiggerPageNumbers = saveUserBiggerPageNumber(crong);
 
+        int pobiScore = validateBiggerNumber(pobiBiggerPageNumbers.get(0), pobiBiggerPageNumbers.get(1));
+        int crongScore = validateBiggerNumber(crongBiggerPageNumbers.get(0), crongBiggerPageNumbers.get(1));
+
         return answer;
     }
 
