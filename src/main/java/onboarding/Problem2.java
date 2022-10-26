@@ -3,7 +3,15 @@ package onboarding;
 public class Problem2 {
     public static String solution(String cryptogram) {
         StringBuilder stringBuilder = new StringBuilder();
-     
+        String resultCryptogram;
+
+        while (cryptogram.length() > 1) {
+            resultCryptogram = removeConsecutiveDuplicateAlpha(cryptogram);
+            if (cryptogram.length() == resultCryptogram.length()) {
+                break;
+            }
+            cryptogram = resultCryptogram;
+        }
 
         return cryptogram;
     }
