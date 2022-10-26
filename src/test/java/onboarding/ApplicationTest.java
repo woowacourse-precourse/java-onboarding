@@ -16,6 +16,9 @@ class ApplicationTest {
             List<Integer> crong = List.of(197, 198);
             int result = 0;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+
+            assertThat(Problem1.solution(List.of(131, 132), List.of(211,212))).isEqualTo(1);
+            assertThat(Problem1.solution(List.of(99, 102), List.of(211,212))).isEqualTo(-1);
         }
 
         @Test
