@@ -39,4 +39,10 @@ public class PlayerTest {
         int result = player.calculateLeftMaxNumber();
         assertThat(result).isEqualTo(24);
     }
+
+    @Test
+    void 오른쪽페이지번호_곱하거나_더해서_큰수_구하기() {
+        int result = player.calculateRightMaxNumber();
+        assertThat(result).isEqualTo(30);
+    }
 }

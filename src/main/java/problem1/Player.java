@@ -9,6 +9,7 @@ public class Player {
     public static final int DIVIDE_CRITERION = 10;
     public static final int NUMBER_LOOP_CRITERION = 0;
     public static final int LEFT_PAGE_INDEX = 0;
+    public static final int RIGHT_PAGE_INDEX = 1;
 
     private final List<Integer> pages;
 
@@ -45,4 +46,8 @@ public class Player {
                 , multipleDigitNumber(pages.get(LEFT_PAGE_INDEX)));
     }
 
+    public int calculateRightMaxNumber() {
+        return calculateMaxNumber(addDigitNumber(pages.get(RIGHT_PAGE_INDEX))
+                , multipleDigitNumber(pages.get(RIGHT_PAGE_INDEX)));
+    }
 }
