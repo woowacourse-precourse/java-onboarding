@@ -7,7 +7,7 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         int pobiValue = maxOf(pobi);
         int crongValue = maxOf(crong);
-        if (!checkPage(pobi) || !checkPage(crong)) {
+        if (!checkPages(pobi) || !checkPages(crong)) {
             return -1;
         }
         if (pobiValue > crongValue) {
@@ -22,9 +22,9 @@ class Problem1 {
         return answer;
     }
 
-    public static boolean checkPage(List<Integer> list) {
-        if (list.size() != 2) return false;
-        if (Math.abs(list.get(1) - list.get(0)) != 1) return false;
+    public static boolean checkPages(List<Integer> pages) {
+        if (pages.size() != 2) return false;
+        if (Math.abs(pages.get(1) - pages.get(0)) != 1) return false;
         return true;
     }
 
