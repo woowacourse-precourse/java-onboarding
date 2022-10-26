@@ -23,6 +23,9 @@ class Problem1 {
 	}
 
 	private static boolean checkIrregularPages(List<Integer> pages) {
+		if (pages.get(0) == null || pages.get(1) == null) {
+			return true;
+		}
 		return pages.get(0) - pages.get(1) != -1;
 	}
 
