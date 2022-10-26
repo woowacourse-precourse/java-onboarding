@@ -7,15 +7,23 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = 0;
-
         if (!isPossiblePage(pobi, crong)) {
             return -1;
         }
         int pobiNumber = calculateMaxNumber(pobi);
         int crongNumber = calculateMaxNumber(crong);
 
-        return answer;
+        return comparePobiAndCrong(pobiNumber, crongNumber);
+    }
+
+    private static int comparePobiAndCrong(int pobiNumber, int crongNumber) {
+        if (pobiNumber > crongNumber) {
+            return 1;
+        }
+        if (pobiNumber < crongNumber) {
+            return 2;
+        }
+        return 0;
     }
 
     private static int calculateMaxNumber(List<Integer> pageList) {
