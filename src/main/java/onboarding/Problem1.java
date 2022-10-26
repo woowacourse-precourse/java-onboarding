@@ -26,7 +26,7 @@ class Problem1 {
 
         // 왼쪽 페이지는 홀수
         do {
-            left = (int)(Math.random() * 400);
+            left = (int) (Math.random() * 400);
         } while (isOdd(left));
 
         // 페이지 번호가 순서대로 들어 있으므로 오른쪽 페이지 = 왼쪽 페이지 + 1
@@ -89,9 +89,26 @@ class Problem1 {
 
     }
 
+    private static int compareScore(int pobi_score, int crong_score) {
+
+        if (pobi_score == crong_score)
+            // 무승부
+            return 0;
+        else if (pobi_score > crong_score)
+            // 포비 승리
+            return 1;
+        else
+            // 크롱 승리
+            return 2;
+
+    }
+
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
         int answer = Integer.MAX_VALUE;
+        int pobi_score, crong_score, winner;
+
         /* 예외 처리 */
         // 1. R - L != 1 일 경우 예외 처리
         if (pobi.get(1) - pobi.get(0) != 1 || crong.get(1) - crong.get(0) != 1) {
@@ -104,6 +121,13 @@ class Problem1 {
             answer = -1;
             return answer;
         }
+
+        /* 점수 계산 : 각 페이지 자릿수 합셈과 곱셈 비교 후 가장 큰 조합을 점수로 설정 */
+        pobi_score = calculateScore(pobi);
+        crong_score = calculateScore(crong);
+
+        /* 점수 비교 ( 0 : 무승부 / 1 : pobi / 2 : crong ) */
+        answer = compareScore(pobi_score, crong_score);
 
         return answer;
 
@@ -124,10 +148,11 @@ class Problem1 {
         pobi_score = calculateScore(pobi);
         crong_score = calculateScore(crong);
 
+        /* 점수 비교 ( 0 : 무승부 / 1 : pobi / 2 : crong ) */
+        winner = compareScore(pobi_score, crong_score);
+        System.out.println(winner);
 
+        return;
     }
-
-
-
 
 }
