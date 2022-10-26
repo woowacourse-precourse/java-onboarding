@@ -15,7 +15,7 @@ public class Problem6 {
         List<String> answer = List.of("answer");
 
         exceptionCheck(forms);
-        answer = findEmail(userCheck(savaUser(forms)), forms);
+        answer = findEmail(sameUserSave(savaUser(forms)), forms);
 
         return answer;
     }
@@ -41,8 +41,9 @@ public class Problem6 {
 
         return userList;
     }
-    //닉네임이 같은 유저가 있는지 확인
-    public static List<Integer> userCheck(List<String> nickname)
+
+    //닉네임이 같은 유저 저징
+    public static List<Integer> sameUserSave(List<String> nickname)
     {
         List<Integer> userMemo = new ArrayList<>();
 
@@ -50,16 +51,36 @@ public class Problem6 {
         {
             for (int j = i + 1; j < nickname.size(); j++)
             {
-                if (isDuplicate(nickname.get(i), nickname.get(j)))
+                if (findSameUser(nickname.get(i), nickname.get(j)))
                 {
                     userMemo.add(i);
                     userMemo.add(j);
                 }
             }
         }
-
         return userMemo;
     }
+
+    public static boolean findSameUser(String first, String second)
+    {
+        for (int i = 0; i < first.length() - 1; i++)
+        {
+            for (int j = 0; j < second.length(); j++)
+            {
+                if (first.charAt(i) == second.charAt(j))
+                {
+                    //마지막 글자일 경우
+                    if (j == second.length() - 1)
+                        return false;
+                    if (first.charAt(i + 1) == second.charAt(j + 1));
+                        return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
 
     //연속적으로 닉네임이 포함되어 있는지 확인
     public static boolean isDuplicate(String first, String second)
