@@ -24,6 +24,17 @@ class ApplicationTest {
         }
 
         @Test
+        void findMulMaxValueTest() {
+            List<Integer> test1Digits = List.of(3, 4);
+            List<Integer> test2Digits = List.of(45, 46);
+            List<Integer> test3Digits = List.of(119, 200);
+
+            assertThat(Problem1.findMulMaxValue(test1Digits)).isEqualTo(4);
+            assertThat(Problem1.findMulMaxValue(test2Digits)).isEqualTo(24);
+            assertThat(Problem1.findMulMaxValue(test3Digits)).isEqualTo(9);
+        }
+
+        @Test
         void case1ValidateOddEvenValidationTest() {
             List<Integer> testOddData = List.of(3, 4);
 
