@@ -57,4 +57,9 @@ class Problem1 {
         if (page.get(0) >= 1 && page.get(0) <= 400 && page.get(1) >= 1 && page.get(1) <= 400) return true;
         return false;
     }
+
+    public static boolean isContinuous(List<Integer> page) {
+        if ((page.get(1) - page.get(0)) == 1)  return true;
+        return false;
+    }
 }
