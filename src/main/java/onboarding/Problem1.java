@@ -22,6 +22,14 @@ class Problem1 {
         int plusRight = (right/100 + (right/10)%10 + right%10);
         return Math.max(plusLeft, plusRight);
     }
+    // multiply
+    public static int multi(List<Integer> lst){
+        int left = lst.get(0);
+        int right = lst.get(1);
+        int multiLeft = ((left/100) * ((left/10)%10) * (left%10));
+        int multiRight = ((right/100) * ((right/10)%10) * (right%10));
+        return Math.max(multiLeft, multiRight);
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         if (errChk(pobi) || errChk(crong)){
