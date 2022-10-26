@@ -39,12 +39,6 @@ class Problem1 {
         }
     }
 
-    public static void checkListContainsStartPage(List<Integer> pageList) {
-        if (pageList.get(0) == 1) {
-            throw new IllegalStateException();
-        }
-    }
-
     public static int getWinner(List<Integer> pobi, List<Integer> crong) {
         int pobiScore = getScore(pobi);
         int crongScore = getScore(crong);
