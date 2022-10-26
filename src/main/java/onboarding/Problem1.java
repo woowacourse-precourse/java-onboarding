@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.Arrays;
 import java.util.List;
 
 class Problem1 {
@@ -7,4 +8,16 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+
+    public int calculatorMultiply(int page){
+        int result = 1;
+        String[] splitPage = Integer.toString(page).split("");
+
+        for(String eachPage : splitPage){
+            result *= Integer.parseInt(eachPage);
+        }
+
+        return result;
+    }
+
 }
