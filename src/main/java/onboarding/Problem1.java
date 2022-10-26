@@ -12,8 +12,30 @@ class Problem1 {
             return -1;
         }
 
+        int pobiScore = getMaxScore(pobi);
+        int crongScore = getMaxScore(crong);
+
         int answer = Integer.MAX_VALUE;
         return answer;
+    }
+
+    private static int getMaxScore(List<Integer> pageList) {
+        return Math.max(calculateScore(pageList.get(0)), calculateScore(pageList.get(1)));
+    }
+
+    private static int calculateScore(int page) {
+        int sumScore = 0;
+        int multiScore = 1;
+
+        int digit;
+        while (page != 0) {
+            digit = page % 10;
+            sumScore += digit;
+            multiScore *= digit;
+            page /= 10;
+        }
+
+        return Math.max(sumScore, multiScore);
     }
 
     private static boolean isInvalidPageList(List<Integer> pageList) {
