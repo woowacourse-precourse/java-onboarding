@@ -34,6 +34,17 @@ class Problem1 {
     }
 
     // 각 자리수의 곱을 구한다.
+    public static int getMultiplicationTotal(List<Integer> pageDigitList) {
+        int answer = 1;
+        for (int i = 0; i < pageDigitList.size(); i++) {
+            answer *= pageDigitList.get(i);
+            if(answer == 0) {
+                return 0;
+            }
+        }
+        return answer;
+    }
+
 
     // 구한 값 중 최댓값을 구한다.
 }
