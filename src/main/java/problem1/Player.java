@@ -31,4 +31,8 @@ public class Player {
 
         return result;
     }
+
+    public int calculateMaxNumber(int number, int compareNumber) {
+        return Math.max(number, compareNumber);
+    }
 }
