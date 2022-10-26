@@ -26,4 +26,23 @@ class Problem1 {
         }
         return false;
     }
+
+    private static int digit_sum(int N) {
+        int output = 0;
+        while (N / 10 != 0) {
+            output += N % 10;
+            N /= 10;
+        }
+        output += N; // last digit
+        return output;
+    }
+    private static int digit_prod(int N) {
+        int output = 1;
+        while (N / 10 != 0) {
+            output *= N % 10;
+            N /= 10;
+        }
+        output *= N; // last digit
+        return output;
+    }
 }
