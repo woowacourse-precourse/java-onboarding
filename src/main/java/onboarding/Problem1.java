@@ -17,4 +17,16 @@ class Problem1 {
         }
         return addResult;
     }
+
+    private static int getMultiplyDigitsResult(int pageNumber) {
+        int multiplyResult = 1;
+        while (pageNumber != 0) {
+            multiplyResult *= pageNumber % 10;
+            pageNumber /= 10;
+            if (pageNumber == 0) {
+                break;
+            }
+        }
+        return multiplyResult;
+    }
 }
