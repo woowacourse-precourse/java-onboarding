@@ -10,13 +10,13 @@
 
 ## 예외처리 기능 정리
 
-- [ ] 입력 parameter로 들어오는 `List`의 크기가 유효한지 확인해주는 기능
+- [x] 입력 parameter로 들어오는 `List`의 크기가 유효한지 확인해주는 기능
   - `List`의 길이는 2여야 한다.
-- [ ] 입력 parameter로 들어오는 `List`의 page들이 연속됐는지 확인해주는 기능
+- [x] 입력 parameter로 들어오는 `List`의 page들이 연속됐는지 확인해주는 기능
   - 오름차순으로 연속해야 한다.
-- [ ] 입력 parameter로 들어오는 `List`의 page들이 각각 홀수, 짝수인지 확인해주는 기능 
+- [x] 입력 parameter로 들어오는 `List`의 page들이 각각 홀수, 짝수인지 확인해주는 기능 
   - 왼쪽 페이지(index 0번째)는 홀수, 오른쪽 페이지(index 1번째)는 짝수를 가져야 한다.
-- [ ] 입력 parameter로 들어오는 `List`의 page들의 왼쪽 page가 1 또는 399 인지 확인해주는 기능
+- [x] 입력 parameter로 들어오는 `List`의 page들의 왼쪽 page가 1 또는 399 인지 확인해주는 기능
 
 <br>
 
