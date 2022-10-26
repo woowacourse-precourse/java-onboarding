@@ -19,6 +19,24 @@ public class BookGame {
         this.player2 = player2;
     }
 
+    /*
+    player1 승리시 : 1
+    player2 승리시 : 2
+    비긴경우 : 0
+    예외사항 : -1
+     */
+    public int getPlayResult(){
+        try {
+            validatePages(player1);
+            validatePages(player2);
+            int player1Score = makeScore(player1);
+            int player2Score = makeScore(player2);
+            return compareResult(player1Score, player2Score);
+        } catch (IllegalArgumentException e){
+            return -1;
+        }
+    }
+
     private int compareResult(int player1Score, int player2Score){
         if(player1Score > player2Score){
             return 1;
