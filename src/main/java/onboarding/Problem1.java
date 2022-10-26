@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.Arrays;
 import java.util.List;
 
 /*
@@ -9,10 +10,18 @@ import java.util.List;
 *   3. 각 자릿수를 곱하는 기능
 *   4. 최대값 탐색 기능
 *   5. 예외사항 탐색 기능
+*   6. 1~4번 기능을 이용한 처리로직을 담은 파이프라인 메서드
 */
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        int pobimax; int crongmax;
+
+        if(!isNormal(pobi) || !isNormal(crong)){
+            answer = -1;
+            return answer;
+        }
+
         return answer;
     }
 
@@ -71,5 +80,23 @@ class Problem1 {
     public static boolean isNormal(List<Integer> list) {
         int diff = list.get(1) - list.get(0);
         return diff == 1 && list.get(0) % 2 == 1;
+    }
+
+    public static int pipeline(List<Integer> list) {
+        int result = 0;
+        List<Integer> splitnumL;
+        List<Integer> splitnumR;
+        Integer[] numarr = new Integer[4];
+
+        splitnumL = splitNum(list.get(0));
+        splitnumR = splitNum(list.get(1));
+
+        numarr[0] = getSum(splitnumL);
+        numarr[1] = getMulti(splitnumL);
+        numarr[2] = getSum(splitnumR);
+        numarr[3] = getMulti(splitnumR);
+        result = getMax(Arrays.asList(numarr));
+
+        return result;
     }
 }

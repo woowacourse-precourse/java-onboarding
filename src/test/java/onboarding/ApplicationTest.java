@@ -71,6 +71,13 @@ class ApplicationTest {
             assertThat(Problem1.isNormal(numbers2)).isEqualTo(true);
             assertThat(Problem1.isNormal(numbers3)).isEqualTo(false);
         }
+
+        @Test
+        void pipelineTest() {
+            List<Integer> numbers = List.of(133,134);
+            int result = 12;
+            assertThat(Problem1.pipeline(numbers)).isEqualTo(result);
+        }
     }
 
     @Nested
