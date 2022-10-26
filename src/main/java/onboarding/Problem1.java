@@ -4,12 +4,10 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
         if (!isLeftOdd(pobi, crong) || !isSuccessive(pobi, crong) || isRange(pobi, crong)) {
             return -1;
         }
-
-        return answer;
+        return whoWin(getMaxValue(pobi), getMaxValue(crong));
     }
 
     private static boolean isLeftOdd(List<Integer> pobi, List<Integer> crong) { // 왼쪽 값이 홀수인가 ?
@@ -42,5 +40,15 @@ class Problem1 {
         }
 
         return Math.max(hab, gob);
+    }
+
+    private static int whoWin(int pobi, int crong) {
+        if (pobi > crong) {
+            return 1;
+        } else if (pobi < crong) {
+            return 2;
+        } else {
+            return 0;
+        }
     }
 }
