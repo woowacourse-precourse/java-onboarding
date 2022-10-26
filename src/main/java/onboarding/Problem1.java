@@ -74,7 +74,12 @@ class Problem1 {
     private static int validatePageNumber(List<Integer> user) {
         int leftPageNumber = user.get(0);
         int rightPageNumber = user.get(1);
-        if (!isPageOdd(leftPageNumber) || isPageOdd(rightPageNumber) || isFirstPage(leftPageNumber) || isEndPage(rightPageNumber)) {
+        if (!isPageOdd(leftPageNumber) ||
+                isPageOdd(rightPageNumber) ||
+                isFirstPage(leftPageNumber) ||
+                isEndPage(rightPageNumber) ||
+                isPageSize(leftPageNumber) ||
+                isPageSize(rightPageNumber)) {
             return EXCEPTION_MESSAGE;
         }
 
@@ -91,5 +96,9 @@ class Problem1 {
 
     private static boolean isEndPage(int pageNumber) {
         return pageNumber == END_PAGE_NUMBER - 1 || pageNumber == END_PAGE_NUMBER;
+    }
+
+    private static boolean isPageSize(int pageNumber) {
+        return pageNumber < START_PAGE_NUMBER || pageNumber > END_PAGE_NUMBER;
     }
 }
