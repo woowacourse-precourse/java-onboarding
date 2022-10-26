@@ -6,7 +6,7 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong){
         int pobiScore, crongScore, answer;
 
-        if (!Validation.isValidateInput(pobi) || !Validation.isValidateInput(crong)) {
+        if (!ValidationFor1.isValidateInput(pobi) || !ValidationFor1.isValidateInput(crong)) {
             return -1;
         }
 
@@ -18,7 +18,7 @@ class Problem1 {
 }
 
 
-class Validation{
+class ValidationFor1{
     static final int LIST_LENGTH = 2;
     static final int MAX_PAGE = 400;
     static final int MIN_PAGE = 1;
@@ -38,7 +38,7 @@ class ScoreController{
         int result = 0;
 
         while (num != 0) {
-            result += num%10;
+            result += num % 10;
             num /= 10;
         }
         return result;
@@ -48,7 +48,7 @@ class ScoreController{
         int result = 1;
 
         while (num!=0) {
-            result *= num%10;
+            result *= num % 10;
             num /= 10;
         }
         return result;

@@ -6,3 +6,7 @@ public class Problem2 {
         return answer;
     }
 }
+
+class ValidationFor2{
+
+}
