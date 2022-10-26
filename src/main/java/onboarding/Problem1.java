@@ -4,10 +4,6 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if (pobi == null || crong == null) {
-            return -1;
-        }
-
         if (isInvalidPageList(pobi) || isInvalidPageList(crong)) {
             return -1;
         }
@@ -48,10 +44,6 @@ class Problem1 {
     }
 
     private static boolean isInvalidPageList(List<Integer> pageList) {
-        if (pageList.size() != 2) {
-            return true;
-        }
-
         if (pageList.stream().anyMatch(page -> page <= 1 || page >= 400)) {
             return true;
         }
