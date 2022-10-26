@@ -12,8 +12,8 @@ class Problem1 {
             return -1;
         }
 
-        pobiScore = max(getPageNumberSum(pobi), getPageNumberMulti(pobi));
-        crongScore = max(getPageNumberSum(crong), getPageNumberMulti(crong));
+        pobiScore = findScore(pobi);
+        crongScore = findScore(crong);
         answer = fight(pobiScore, crongScore);
 
         return answer;
