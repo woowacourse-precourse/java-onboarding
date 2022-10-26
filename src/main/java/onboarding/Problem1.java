@@ -9,6 +9,7 @@ class Problem1 {
     public static final int CRONG_WIN = 2;
     public static final int DRAW = 0;
     public static final int EXCEPTION = -1;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (!validatePageConsecutive(pobi) || !validatePageConsecutive(crong)) {
             return EXCEPTION;
@@ -31,7 +32,7 @@ class Problem1 {
     }
 
     private static boolean validatePageRange(List<Integer> list) {
-        return list.get(0) > 1 ||  list.get(1) < 400;
+        return list.get(0) > 1 || list.get(1) < 400;
     }
 
     public static int getUserMaxNumber(List<Integer> list) {
