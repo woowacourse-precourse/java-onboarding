@@ -7,7 +7,7 @@
 1. [문제 1](./docs/PROBLEM1.md)
   - [ ] isValidInput
     - 인자로 들어온 두 페이지 배열의 길이와 원소가 유효한지 검사한다.
-    - [ ] isCorrectLength
+    - [X] isCorrectLength
       - 인자로 들어온 페이지 배열의 길이가 2인지 검사한다.
     - [ ] areCorrectNumbers
       - 인자로 들어온 페이지 배열의 숫자가 자연수에 연속된 홀수 짝수인지 검사한다.
