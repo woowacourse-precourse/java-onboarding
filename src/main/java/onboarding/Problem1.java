@@ -27,7 +27,12 @@ class findMax{
         return leftMaxValue>rightMaxValue?leftMaxValue:rightMaxValue;
     }
 }
-
+class findWinner{
+    public static int winner(int pobiMaxNumber, int crongMaxNumber){
+        if(pobiMaxNumber==crongMaxNumber){return 0;}
+        return pobiMaxNumber>crongMaxNumber?1:2;
+    }
+}
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
