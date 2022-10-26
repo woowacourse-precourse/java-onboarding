@@ -6,8 +6,11 @@ import java.util.regex.Pattern;
 
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
-        return answer;
+        if (!validateNumber(number)) {
+            return 0;
+        }
+
+        return countClap(number);
     }
 
     /**
