@@ -11,8 +11,10 @@
       - 인자로 들어온 페이지 배열의 길이가 2인지 검사한다.
     - [X] areCorrectNumbers
       - 인자로 들어온 페이지 배열의 숫자가 자연수에 연속된 홀수 짝수인지 검사한다.
-  - [ ] splitDigit
-    - 자연수를 각 자리의 숫자로 나눠준다.
+  - [ ] convertPageToSplitNumber
+    - 인자로 들어온 두 페이지 배열들의 요소를 자연수에서 자릿수별로 나눈 배열로 바꿔준다.
+    - [ ] splitDigit
+      - 인자로 들어온 자연수를 각 자릿수로 나눠준다.
   - [ ] addNumbers
     - 배열 안의 모든 자연수를 더해준다.
   - [ ] multiplyNumbers
