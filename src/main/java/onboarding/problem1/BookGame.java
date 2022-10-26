@@ -62,4 +62,10 @@ public class BookGame {
         }
     }
 
+    private void validatePageContinuous(List<Integer> playerPages) throws IllegalArgumentException{
+        if(playerPages.get(0)+1 != playerPages.get(1)){
+            throw new IllegalArgumentException("연속된 페이지가 아닙니다.");
+        }
+    }
+
 }
