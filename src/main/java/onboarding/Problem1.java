@@ -36,7 +36,7 @@ class Problem1 {
         int crong_right = crong.get(1);
 
         // 페이지가 떨어져있을때 예외처리
-        if (pobi_left + 1 != pobi_right && crong_left + 1 != crong_right){
+        if (pobi_left + 1 != pobi_right || crong_left + 1 != crong_right){
             answer = -1;
             return answer;
         }
