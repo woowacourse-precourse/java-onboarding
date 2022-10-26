@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.Objects;
 import java.util.Stack;
 
 public class Problem2 {
@@ -46,7 +47,28 @@ public class Problem2 {
         return true;
     }
 
+    /*
+     * 중복된 문자들을 없애 문자열을 해독합니다.
+     *
+     * @param 입력으로 주어진 문자열입니다.
+     * @return 해독된 문자열입니다.
+     * */
     private static String decrypt(String cryptogram) {
+        boolean needNextStep = true;
+        int previousLength = cryptogram.length();
+        while (needNextStep) {
+            needNextStep = false;
+            cryptogram = removeRepeatingLetters(cryptogram);
+            if (cryptogram.length() != previousLength) {
+                previousLength = cryptogram.length();
+                needNextStep = true;
+            }
+        }
+        return cryptogram;
+    }
+
+    private static String removeRepeatingLetters(String cryptogram) {
+
         return "";
     }
 
@@ -66,3 +88,5 @@ public class Problem2 {
         return answer;
     }
 }
+
+
