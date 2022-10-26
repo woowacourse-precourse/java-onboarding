@@ -8,6 +8,12 @@ class Problem1 {
         return answer;
     }
 
+    public int getScore(List<Integer> pages) {
+        int left = pages.get(0);
+        int right = pages.get(1);
+        return getMax(findMaxFromSinglePage(left), findMaxFromSinglePage(right));
+    }
+
     public int findMaxFromSinglePage(int page) {
         int temp = page;
         int add = 0;
