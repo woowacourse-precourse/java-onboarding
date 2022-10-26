@@ -10,25 +10,29 @@ public class Problem2 {
 		for (int i = 1; i < givenString.length(); i++) {
 			if (givenString.charAt(i) != compareString) {
 				if (isDuplicated == 0) {
-					compareString = givenString.charAt(i);
 					eliminateDuplicateString.append(compareString);
+					compareString = givenString.charAt(i);
 				} else {
 					isDuplicated = 0;
 					continue;
 				}
 			} else if (givenString.charAt(i) == compareString) {
-				isDuplicated = 1;
+				continue;
 			}
 		}
 		if (isDuplicated == 0) {
 			eliminateDuplicateString.append(compareString);
 		}
-
+		System.out.println(eliminateDuplicateString);
 		return eliminateDuplicateString.toString();
 	}
 
 	public static String solution(String cryptogram) {
 		String answer = "answer";
+		while (toEliminateDuplicate(cryptogram).compareTo(cryptogram) != 0) {
+			cryptogram = toEliminateDuplicate(cryptogram);
+		}
+		answer = cryptogram;
 		return answer;
 	}
 }
