@@ -16,4 +16,12 @@ class Problem1 {
         return result;
     }
 
+    private static int operPlus(int[] arr) {
+        int result = 0;
+        for (int num : arr) {
+            result += num;
+        }
+        return result;
+    }
+
 }
