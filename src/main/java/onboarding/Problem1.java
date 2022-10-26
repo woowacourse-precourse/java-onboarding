@@ -31,4 +31,11 @@ class Problem1 {
 
         return totalProduct;
     }
+
+    static int calcEachDigit(int pageNum) {
+        int eachDigitSum = calcEachDigitSum(pageNum);
+        int eachDigitProduct = calcEachDigitProduct(pageNum);
+        return Math.max(eachDigitSum, eachDigitProduct);
+    }
+
 }
