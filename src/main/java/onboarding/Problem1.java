@@ -114,7 +114,10 @@ class Problem1 {
      * @return 둘 중 큰 정수입니다.
      * */
     private static int getBiggerNumber(int numberX, int numberY){
-        return 0;
+        if (numberX > numberY) {
+            return numberX;
+        }
+        return numberY;
     }
 
     /*
