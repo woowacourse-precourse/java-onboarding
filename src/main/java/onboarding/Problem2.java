@@ -3,22 +3,31 @@ package onboarding;
 import java.util.Stack;
 
 public class Problem2 {
+    private static final Stack<Character> decodedCryptogram = new Stack<>();
+
     public static String solution(String cryptogram) {
-        Stack<Character> alphabets = new Stack<>();
         for (char c : cryptogram.toCharArray()) {
-            if (alphabets.empty()) {
-                alphabets.push(c);
-                continue;
-            }
-            Character before = alphabets.peek();
-            if (before == c) {
-                alphabets.pop();
-            } else {
-                alphabets.push(c);
-            }
+            decodeToBrown(c);
         }
-        StringBuilder sb = new StringBuilder();
-        alphabets.forEach(sb::append);
-        return sb.toString();
+
+        StringBuilder answer = new StringBuilder();
+        decodedCryptogram.forEach(answer::append);
+
+        return answer.toString();
+    }
+
+    private static void decodeToBrown(char c) {
+        if (decodedCryptogram.empty()) {
+            decodedCryptogram.push(c);
+            return;
+        }
+
+        Character before = decodedCryptogram.peek();
+        if (before == c) {
+            decodedCryptogram.pop();
+            return;
+        }
+
+        decodedCryptogram.push(c);
     }
 }
