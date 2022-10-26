@@ -39,6 +39,13 @@ class Problem1 {
         }
 
         int answer = Integer.MAX_VALUE;
+
+        //포비와 크롱의 가장 큰 수
+        int pobiNum = compare(compareAddAndMul(pobi.get(0)), compareAddAndMul(pobi.get(1)));
+        int crongNum = compare(compareAddAndMul(crong.get(0)), compareAddAndMul(crong.get(1)));
+
+        
+
         return answer;
     }
 }
