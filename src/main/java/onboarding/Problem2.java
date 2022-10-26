@@ -13,7 +13,7 @@ public class Problem2 {
             } else if (stack.peek() == cryptogram.charAt(i)) {
                 stack.pop();
             } else {
-                    stack.push(cryptogram.charAt(i));
+                stack.push(cryptogram.charAt(i));
             }
             }
         
