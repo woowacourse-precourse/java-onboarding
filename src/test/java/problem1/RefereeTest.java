@@ -33,4 +33,11 @@ public class RefereeTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("올바르지 않은 입력 값 입니다.");
     }
+
+    @Test
+    void 연속된_숫자의_페이지아니면_예외() {
+        assertThatThrownBy(() -> new Referee(List.of(3, 6), List.of(3, 4)))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("올바르지 않은 입력 값 입니다.");
+    }
 }

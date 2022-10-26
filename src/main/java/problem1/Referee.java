@@ -4,11 +4,11 @@ import java.util.List;
 
 public class Referee {
 
+    public static final int CONTINOUS_CRITERION = 1;
     private final Player pobi;
     private final Player crong;
 
     public Referee(List<Integer> pobi, List<Integer> crong) {
-        //왼쪽이 홀수가 아니거나 오른쪽이 짝수가 아니면 예외 발생
         validate(pobi, crong);
 
         this.pobi = new Player(pobi);
@@ -27,6 +27,13 @@ public class Referee {
         if (!isRightPage(leftPageNumber, rightPageNumber)) {
             throw new IllegalArgumentException("올바르지 않은 입력 값 입니다.");
         }
+        if (!isContinuousPage(leftPageNumber, rightPageNumber)) {
+            throw new IllegalArgumentException("올바르지 않은 입력 값 입니다.");
+        }
+    }
+
+    private boolean isContinuousPage(int leftPageNumber, int rightPageNumber) {
+        return rightPageNumber - leftPageNumber != CONTINOUS_CRITERION;
     }
 
     private boolean isRightPage(int left, int right) {
