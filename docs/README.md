@@ -20,3 +20,10 @@
 |    chore    |    빌드 태스크 업데이트, 패키지 매니저를 설정     |
 |  refactor   |                   코드 리팩토링                   |
 |    style    | 코드 포맷팅, 세미콜론 누락, 코드 변경이 없는 경우 |
+
+<br>
+
+## 📌 Code Convention
+
+- 네이버 캠퍼스 핵데이 Java 코딩 컨벤션을 준수합니다. (https://naver.github.io/hackday-conventions-java/)
+- IntelliJ의 Formatter와 CheckStyle을 적용합니다.
