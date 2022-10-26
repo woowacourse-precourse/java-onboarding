@@ -1,5 +1,6 @@
 package onboarding.problem7.domain;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -8,10 +9,16 @@ import java.util.Set;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class UserTest {
+    private User jun;
+    
+    @BeforeEach
+    void setUp() {
+        jun = new User("jun");
+    }
+    
     @Test
     @DisplayName("함계 아는 친구 명수 구하기")
     void numberOfFriendsYouKnowTogether() {
-        User jun = new User("jun");
         User pobi = new User("pobi");
         
         jun.addFriend("jk");
@@ -20,5 +27,11 @@ public class UserTest {
         pobi.addFriend("crong");
         
         assertThat(jun.numberOfFriendsYouKnowTogether(pobi)).isEqualTo(2);
+    }
+    
+    @Test
+    @DisplayName("0이 아닌지 확인")
+    void isNotZero() {
+        assertThat(jun.isNotZeroScore()).isFalse();
     }
 }

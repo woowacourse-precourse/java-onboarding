@@ -1,8 +1,6 @@
 package onboarding.problem7.domain;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Users {
@@ -10,17 +8,22 @@ public class Users {
     
     public Users(final List<List<String>> friends, final List<String> visitors) {
         this.users = initUsers(friends, visitors);
-        addAllUserFriends(friends);
     }
     
-    private Map<String, User> initUsers(final List<List<String>> friends, final List<String> visitors) {
-        friends.get(0).addAll(visitors);
-        return friends.stream()
+    private Map<String, User> initUsers(List<List<String>> friends, final List<String> visitors) {
+        List<List<String>> tmpFriends = mergeUsers(friends, visitors);
+        return tmpFriends.stream()
                 .flatMap(Collection::stream)
-                .collect(Collectors.toMap(friendName -> friendName, User::new));
+                .collect(Collectors.toMap(friendName -> friendName, User::new, (firstUser, secondUser) -> firstUser));
     }
     
-    private void addAllUserFriends(final List<List<String>> friends) {
+    private List<List<String>> mergeUsers(final List<List<String>> friends, final List<String> visitors) {
+        List<List<String>> tmpFriends = new ArrayList<>(friends);
+        tmpFriends.add(visitors);
+        return tmpFriends;
+    }
+    
+    public void addAllUserFriends(final List<List<String>> friends) {
         for (List<String> friend : friends) {
             final String firstUserName = friend.get(0);
             final String secondUserName = friend.get(1);
@@ -51,6 +54,18 @@ public class Users {
         visitors.stream()
                 .map(users::get)
                 .forEach(User::addVisitScore);
+    }
+    
+    public List<String> recommendedFriends(String user) {
+        final Set<String> friends = users.get(user).getFriends();
+        return users.keySet().stream()
+                .filter(userName -> !friends.contains(userName))
+                .map(users::get)
+                .filter(User::isNotZeroScore)
+                .sorted()
+                .limit(5)
+                .map(User::getUserName)
+                .collect(Collectors.toList());
     }
     
     @Override

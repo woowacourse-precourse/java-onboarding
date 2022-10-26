@@ -19,7 +19,7 @@ public class Friends {
     }
     
     public int numberOfFriendsYouKnowTogether(final Friends otherUserFriends) {
-        return (int) friends.stream()
+        return (int) otherUserFriends.friends.stream()
                 .filter(friends::contains)
                 .count();
     }

@@ -1,8 +1,8 @@
 package onboarding.problem7.domain;
 
-import java.util.Objects;
+import java.util.Set;
 
-public class User {
+public class User implements Comparable<User> {
     private final String userName;
     private final Friends friends;
     private Score score;
@@ -33,10 +33,32 @@ public class User {
         this.score = score.increase();
     }
     
+    public boolean isNotZeroScore() {
+        return score.isNotZero();
+    }
+    
+    public Set<String> getFriends() {
+        return friends.getFriends();
+    }
+    
+    public String getUserName() {
+        return userName;
+    }
+    
+    @Override
+    public int compareTo(final User otherUser) {
+        if (score.compareTo(otherUser.score) == 0) {
+            return userName.compareTo(otherUser.userName);
+        }
+        
+        return otherUser.score.compareTo(score);
+    }
+    
     @Override
     public String toString() {
         return "User{" +
-                "friends=" + friends +
+                "userName='" + userName + '\'' +
+                ", friends=" + friends +
                 ", score=" + score +
                 '}';
     }

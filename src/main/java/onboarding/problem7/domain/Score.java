@@ -19,8 +19,16 @@ public class Score {
         return new Score(score + 1);
     }
     
+    public boolean isNotZero() {
+        return score != 0;
+    }
+    
     public int getScore() {
         return score;
+    }
+    
+    public int compareTo(final Score otherScore) {
+        return Integer.compare(this.score, otherScore.score);
     }
     
     @Override
