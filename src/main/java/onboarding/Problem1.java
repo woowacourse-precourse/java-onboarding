@@ -13,6 +13,14 @@ class Problem1 {
         return pagePlaceSum;
     }
 
+    public static int getPagePlaceMulti(int page){
+        int pagePlaceMulti = 1;
+        while(page > 0){
+            pagePlaceMulti = pagePlaceMulti * (page % 10);
+            page = page / 10;
+        }
+        return pagePlaceMulti;
+    }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
