@@ -1,55 +1,90 @@
 package onboarding;
 
 public class Problem2 {
-    public static String solution(String cryptogram) {
+    
+    static char[] chars;
+    static boolean hasNotDuplicate;
+    static String answer;
+    static StringBuilder newCryptogram;
+    static char duplicateChar;
+    
+    static void setUp(String cryptogram) {
+        chars = cryptogram.toCharArray();
+        hasNotDuplicate = false;
+        answer = "";
+    }
 
-        char[] chars = cryptogram.toCharArray();
-        boolean hasNotDuplicate = false;
-        String answer = "";
-
-        while (!hasNotDuplicate) {
-            final StringBuilder newCryptogram = new StringBuilder();
-            char duplicateChar = ' ';
-            hasNotDuplicate = true;
-            for (int i = 0; i < chars.length; i++) {
-                final char character = chars[i];
-                if (i == 0) {
-                    if (chars[i] != chars[i + 1]) {
-                        newCryptogram.append(character);
-                    }
-                    continue;
+    private static void findDuplicateCharacter() {
+        newCryptogram = new StringBuilder();
+        duplicateChar = ' ';
+        hasNotDuplicate = true;
+        for (int i = 0; i < chars.length; i++) {
+            if (FirstCharacter(i)) {
+                if (notDuplicateNextCharacter(i, chars[i])) {
+                    newCryptogram.append(chars[i]);
                 }
-
-                if (i == chars.length - 1) {
-                    if (character != chars[i - 1] && character != duplicateChar) {
-                        newCryptogram.append(character);
-                    }
-                    continue;
-                }
-
-                if (character == chars[i + 1]) {
-                    duplicateChar = character;
-                    hasNotDuplicate = false;
-                    continue;
-                }
-                if (character != chars[i + 1]) {
-                    if (chars[i] != duplicateChar) {
-                        newCryptogram.append(character);
-                        duplicateChar = ' ';
-                    }
-                }
+                continue;
             }
-            chars = newCryptogram.toString().toCharArray();
-            if (hasNotDuplicate) {
-                answer = newCryptogram.toString();
+
+            if (LastCharacter(i)) {
+                if (notDuplicatePrevCharacter(i, chars[i]) && notDuplicateCharacter(chars[i])) {
+                    newCryptogram.append(chars[i]);
+                }
+                continue;
+            }
+
+            if (DuplicateCharacter(i, chars[i])) {
+                duplicateChar = chars[i];
+                hasNotDuplicate = false;
+                continue;
+            }
+            
+            if (notDuplicateNextCharacter(i, chars[i])) {
+                if (notDuplicateCharacter(chars[i])) {
+                    newCryptogram.append(chars[i]);
+                    duplicateChar = ' ';
+                }
             }
         }
+        chars = newCryptogram.toString().toCharArray();
+        if (hasNotDuplicate) {
+            answer = newCryptogram.toString();
+        }
+    }
 
-        System.out.println(answer);
+    private static boolean DuplicateCharacter(int i, char character) {
+        return character == chars[i + 1];
+    }
+
+    private static boolean notDuplicateCharacter(char character) {
+        return character != duplicateChar;
+    }
+
+    private static boolean notDuplicateNextCharacter(int i, char character) {
+        return character != chars[i + 1];
+    }
+
+    private static boolean notDuplicatePrevCharacter(int i, char character) {
+        return character != chars[i - 1];
+    }
+    
+    private static boolean LastCharacter(int i) {
+        return i == chars.length - 1;
+    }
+
+    private static boolean FirstCharacter(int i) {
+        return i == 0;
+    }
+
+    public static String solution(String cryptogram) {
+
+        setUp(cryptogram);
+        while (!hasNotDuplicate) {
+            findDuplicateCharacter();
+        }
         return answer;
     }
 
-    public static void main(String[] args) {
-        Problem2.solution("zyelleyz");
-    }
+
+
 }
