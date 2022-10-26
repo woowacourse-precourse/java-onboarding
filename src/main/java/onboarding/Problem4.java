@@ -2,7 +2,13 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
+        char[] wordSplit = word.toCharArray();
+        for(int i=0;i<wordSplit.length;i++){
+            wordSplit[i] = changeWord(wordSplit[i]);
+        }
+
+        String answer = new String(wordSplit, 0, wordSplit.length);
+
         return answer;
     }
     
