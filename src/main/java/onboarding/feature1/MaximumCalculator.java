@@ -12,12 +12,11 @@ public class MaximumCalculator {
     public MaximumCalculator (PageNumber pageNumber) {
         digitsOfLeftPage = getDigits(pageNumber.getLeftPage());
         digitsOfRightPage = getDigits(pageNumber.getRightPage());
-        System.out.println(getMaximum());
     }
 
     // 메소드
     public Integer getMaximum () {
-        return Math.max(compareCalculation(digitsOfLeftPage), compareCalculation(digitsOfRightPage));
+        return Math.max(compareCalculations(digitsOfLeftPage), compareCalculations(digitsOfRightPage));
     }
 
     public List<Integer> getDigits(Integer pageNumber) {
@@ -29,7 +28,7 @@ public class MaximumCalculator {
         return digitsOfPage;
     }
 
-    public Integer compareCalculation(List<Integer> digitsOfPage) {
+    public Integer compareCalculations(List<Integer> digitsOfPage) {
         Integer addition = 0;
         Integer multiplication = 1;
 
