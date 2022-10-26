@@ -5,6 +5,17 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        int pobiScore = 0;
+        int crongScore = 0;
+
+        if (isError(pobi) || isError(crong))
+            return Constants.EXCEPTION;
+
+        pobiScore = calculateMaxScore(pobi);
+        crongScore = calculateMaxScore(crong);
+
+        answer = makeGameResult(pobiScore, crongScore);
+
         return answer;
     }
 
