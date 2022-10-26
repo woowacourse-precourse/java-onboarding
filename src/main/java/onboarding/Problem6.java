@@ -14,6 +14,8 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
 
+        if ('이' == '엠')
+            System.out.println("시발");
         exceptionCheck(forms);
         answer = findEmail(sameUserSave(savaUser(forms)), forms);
 
@@ -42,7 +44,7 @@ public class Problem6 {
         return userList;
     }
 
-    //닉네임이 같은 유저 저징
+    //닉네임이 같은 유저 저장
     public static List<Integer> sameUserSave(List<String> nickname)
     {
         List<Integer> userMemo = new ArrayList<>();
@@ -54,9 +56,9 @@ public class Problem6 {
                 if (findSameUser(nickname.get(i), nickname.get(j)))
                 {
                     //userMemo 중복 처리하기
-                    if (issameuser(userMemo,i))
+                    if (isSameUser(userMemo,i))
                         userMemo.add(i);
-                    if (issameuser(userMemo, j))
+                    if (isSameUser(userMemo, j))
                         userMemo.add(j);
                 }
             }
@@ -64,7 +66,7 @@ public class Problem6 {
         return userMemo;
     }
 
-    public static boolean issameuser(List<Integer> user, int value)
+    public static boolean isSameUser(List<Integer> user, int value)
     {
         for (int i = 0; i < user.size(); i++)
         {
@@ -74,23 +76,29 @@ public class Problem6 {
         return true;
     }
     //중복 닉네임 찾기
+    //char형으로 비교하면 값이 안같아도 조건문을 넘어감..
     public static boolean findSameUser(String first, String second)
     {
+        int intFirst = 0;
+        int intSecont = 0;
+
         for (int i = 0; i < first.length() - 1; i++)
         {
-            for (int j = 0; j < second.length(); j++)
+            for (int j = 0; j < second.length() - 1; j++)
             {
-                if (first.charAt(i) == second.charAt(j))
+                intFirst = first.charAt(i);
+                intSecont = second.charAt(j);
+
+                if (intFirst == intSecont)
                 {
-                    //마지막 글자일 경우
-                    if (j == second.length() - 1)
-                        return false;
-                    if (first.charAt(i + 1) == second.charAt(j + 1));
+                    intFirst = first.charAt(i + 1);
+                    intSecont = second.charAt(j + 1);
+
+                    if (intFirst == intSecont)
                         return true;
                 }
             }
         }
-
         return false;
     }
 
