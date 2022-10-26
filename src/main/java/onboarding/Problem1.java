@@ -37,7 +37,7 @@ class Problem1 {
     }
 
     /*
-     * 두 페이지가 자연수인지, 연속한 홀수 짝수 페이지인지 확인합니다.
+     * 두 페이지가 1~400의 자연수인지, 연속한 홀수 짝수 페이지인지 확인합니다.
      *
      * @param 한 명의 페이지 숫자들이 들어있는 배열입니다.
      * @return 두 숫자가 옳은 페이지라면 참, 아니면 거짓을 반환합니다.
@@ -48,7 +48,9 @@ class Problem1 {
 
         boolean valid =
             leftPage > 0 &&
+            leftPage <= 400 &&
             rightPage > 0 &&
+            rightPage <= 400 &&
             leftPage % 2 == 1 &&
             rightPage % 2 == 0 &&
             rightPage - leftPage == 1;
