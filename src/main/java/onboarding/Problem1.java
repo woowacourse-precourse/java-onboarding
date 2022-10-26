@@ -33,12 +33,12 @@ class Problem1 {
             return EXCEPTION;
         }
 
-        int maxLeftPointOfPobi = Math.max(getSumOfEachDigits(pobi.get(LEFT_PAGE)), getMulOfEachDigits(pobi.get(LEFT_PAGE)));
-        int maxRightPointOfPobi = Math.max(getSumOfEachDigits(pobi.get(RIGHT_PAGE)), getMulOfEachDigits(pobi.get(RIGHT_PAGE)));
+        int maxLeftPointOfPobi = getMaxLeftPoint(pobi);
+        int maxRightPointOfPobi = getMaxRightPoint(pobi);
         int maxPointOfPobi = Math.max(maxLeftPointOfPobi, maxRightPointOfPobi);
 
-        int maxLeftPointOfCrong = Math.max(getSumOfEachDigits(crong.get(LEFT_PAGE)), getMulOfEachDigits(crong.get(LEFT_PAGE)));
-        int maxRightPointOfCrong = Math.max(getSumOfEachDigits(crong.get(RIGHT_PAGE)), getMulOfEachDigits(crong.get(RIGHT_PAGE)));
+        int maxLeftPointOfCrong = getMaxLeftPoint(crong);
+        int maxRightPointOfCrong = getMaxRightPoint(crong);
         int maxPointOfCrong = Math.max(maxLeftPointOfCrong, maxRightPointOfCrong);
 
         if (maxPointOfPobi > maxPointOfCrong) {
@@ -48,6 +48,14 @@ class Problem1 {
         } else {
             return DRAW;
         }
+    }
+
+    private static int getMaxRightPoint(List<Integer> openPages) {
+        return Math.max(getSumOfEachDigits(openPages.get(RIGHT_PAGE)), getMulOfEachDigits(openPages.get(RIGHT_PAGE)));
+    }
+
+    private static int getMaxLeftPoint(List<Integer> openPages) {
+        return Math.max(getSumOfEachDigits(openPages.get(LEFT_PAGE)), getMulOfEachDigits(openPages.get(LEFT_PAGE)));
     }
 
     private static int getMulOfEachDigits(int page) {
