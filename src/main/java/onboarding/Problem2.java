@@ -10,6 +10,9 @@ public class Problem2 {
     public static String checkCryptogram(String cryptogram)
     {
         String crypto = "";
+        crypto = cryptogram;
+        if (crypto.length() == 1 ) return crypto; // 문자열 길이가 1 이다.
+
 
         return crypto;
     }
