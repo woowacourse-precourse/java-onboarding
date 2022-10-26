@@ -9,6 +9,10 @@ class Problem1 {
         if (checkError(pobi) || checkError(crong)) {
             return -1;
         }
+
+        int pobiScore = Math.max(calculateScore(pobi.get(0)), calculateScore(pobi.get(1)));
+        int crongScore = Math.max(calculateScore(crong.get(0)), calculateScore(crong.get(1)));
+
         return answer;
     }
 
@@ -26,5 +30,18 @@ class Problem1 {
             return true;
         }
         return false;
+    }
+
+    public static int calculateScore(int pageNum) {
+        int sumNum = 0;
+        int multipleNum = 1;
+
+        while (pageNum != 0) {
+            sumNum += pageNum % 10;
+            multipleNum *= pageNum % 10;
+            pageNum /= 10;
+        }
+
+        return Math.max(sumNum, multipleNum);
     }
 }
