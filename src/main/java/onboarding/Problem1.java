@@ -47,4 +47,19 @@ class Problem1 {
         return answer;
     }
 
+    /**
+     *더한 값과 곱한 값 중에 더 큰 값을 반환하는 함수
+     */
+    private static int which_big(int num){
+
+        int add_num =add_all(num);
+        int mul_num =mul_all(num);
+
+        if (add_num > mul_num){
+            return add_num;
+        } else{
+            return mul_num;
+        }
+    }
+
 }
