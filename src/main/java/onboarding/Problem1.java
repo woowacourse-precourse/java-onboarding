@@ -34,5 +34,9 @@ class Problem1 {
         return Math.max(sum,multiple);
     }
 
+    static int my_score(int left, int right){
+        return Math.max(left,right);
+    }
+
 }
 
