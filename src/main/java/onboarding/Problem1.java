@@ -7,4 +7,5 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+
 }
