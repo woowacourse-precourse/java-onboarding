@@ -26,11 +26,11 @@
 
 ### 구현 기능 목록
 1. 각 자리 숫자를 모두 더하는 함수
-    - sumNumbersOfDigits
+    - getSumOfDigits
     - 파라미터 타입: int
     - 반환 타입: int
 2. 각 자리 숫자를 모두 곱하는 함수
-    - multiplyNumbersOfDigits
+    - getMultipliedOfDigits
     - 파라미터 타입: int
     - 반환 타입: int
 3. 1, 2를 이용해 계산한 최종 점수를 반환하는 함수
