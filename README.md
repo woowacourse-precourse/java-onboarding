@@ -10,12 +10,16 @@
 
  * ***SeparateDigit*** 클래스
    * 필드
-       *  *List\<Integer> separatedNumber*
+       *  *int[] separatedNumber*
+       *  *int size*
+     * 상수
+       * MAXPAGE = 400
+       * MINPAGE = 1
    * 메소드
        * List\<Integer>의 자릿수를 분리 **digitSeparating**
        * List\<Integer>가 잘못된 형식이라면 true, 아니면 false 반환 **isWrongPage**
-         * 첫 수가 1~399인지 확인 **isInBoundary**
-         * 첫 수가 홀수인지 확인 **isOddNumber**
+         * 첫 수가 1~399인지 확인
+         * 첫 수가 홀수인지 확인
          * (첫 수 - 뒷 수)가 -1인지 확인
        * 조건에 부합하는 두 수 중 큰 값을 반환 **Score**
          * 자릿수가 분리된 숫자를 곱한 값을 반환 **SumSeparatedNumber**
