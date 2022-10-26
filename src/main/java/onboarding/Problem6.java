@@ -13,6 +13,15 @@ public class Problem6 {
         for (int i = 0; i < forms.size(); i++) {
             nameList = MakeTwoWordList(nameList, forms.get(i).get(1));
         }
+
+        //이름이 중복되는지 체크
+        for (int i = 0; i < forms.size(); i++) {
+            Boolean check = CheckReduplication(nameList, forms.get(i).get(1));
+            //중복되면 값 추가
+            if (check) {
+                emails.add(forms.get(i).get(0));
+            }
+        }
         return answer;
     }
 
@@ -23,5 +32,16 @@ public class Problem6 {
             nameList.add(key);
         }
         return nameList;
+    }
+
+    //중복되는지 체크
+    public static Boolean CheckReduplication(List<String> nameList, String name){
+        for (int j = 0; j < name.length() - 1; j++) {
+            String key = name.substring(j, j+2);
+            if (Collections.frequency(nameList, key) >= 2) {
+                return true;
+            }
+        }
+        return false;
     }
 }
