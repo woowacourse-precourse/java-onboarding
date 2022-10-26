@@ -12,6 +12,16 @@ public class Problem3 {
         memoization[1] = 0;
         memoization[2] = 0;
 
+        calculateClapCount(number);
+
         return answer;
+    }
+
+    private static int calculateClapCount(int number) {
+        for (int index = 3; index < number + 1; index++) {
+            String indexToString = String.valueOf(index);
+            memoization[index] = memoization[index - 1];
+        }
+        return memoization[number];
     }
 }
