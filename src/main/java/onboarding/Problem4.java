@@ -1,25 +1,21 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public class Problem4 {
     public static String solution(String word) {
         //아스키 코드 A = 65, Z = 90, a = 97, z = 122
         String answer = "";
-        answer = TreeFrog(word);
+        answer = treeFrog(word);
         return answer;
     }
-    public static String TreeFrog(String word){
+    public static String treeFrog(String word){
         String answer = "";
         for (int i = 0; i < word.length(); i++) {
             String s = word.substring(i, i+1);
-            answer = AlphabetChange(answer, s);
+            answer = alphabetChange(answer, s);
         }
         return answer;
     }
-    public static String AlphabetChange(String answer, String s){
+    public static String alphabetChange(String answer, String s){
         if (s.equals(" ")) {
             answer += " ";
         }

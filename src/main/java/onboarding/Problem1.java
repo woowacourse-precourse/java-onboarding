@@ -7,50 +7,50 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
 
         //예외처리
-        if (CheckException(pobi)) {
+        if (checkException(pobi)) {
             return -1;
         }
-        if (CheckException(crong)) {
+        if (checkException(crong)) {
             return -1;
         }
 
         //포비
         //왼쪽 페이지
         //자리수 합 점수
-        Integer pobiLeftSumScore = PageSumScore(pobi.get(0));
+        Integer pobiLeftSumScore = pageSumScore(pobi.get(0));
         //자리수 곱 점수
-        Integer pobiLeftProScore = PageProScore(pobi.get(0));
+        Integer pobiLeftProScore = pageProScore(pobi.get(0));
         //더 높은 점수
-        Integer pobiLeftScore = PageScore(pobiLeftSumScore, pobiLeftProScore);
+        Integer pobiLeftScore = pageScore(pobiLeftSumScore, pobiLeftProScore);
 
         //우측 페이지 체크
         //자리수 합 점수
-        Integer pobiRightSumScore = PageSumScore(pobi.get(1));
+        Integer pobiRightSumScore = pageSumScore(pobi.get(1));
         //자리수 곱 점수
-        Integer pobiRightProScore = PageProScore(pobi.get(1));
+        Integer pobiRightProScore = pageProScore(pobi.get(1));
         //더 높은 점수
-        Integer pobiRightScore = PageScore(pobiRightSumScore, pobiRightProScore);
+        Integer pobiRightScore = pageScore(pobiRightSumScore, pobiRightProScore);
         //포비 최종 점수 구하기
-        Integer pobiScore = PageScore(pobiLeftScore, pobiRightScore);
+        Integer pobiScore = pageScore(pobiLeftScore, pobiRightScore);
 
         //크롱
         //왼쪽 페이지
         //자리수 합 점수
-        Integer crongLeftSumScore = PageSumScore(crong.get(0));
+        Integer crongLeftSumScore = pageSumScore(crong.get(0));
         //자리수 곱 점수
-        Integer crongLeftProScore = PageProScore(crong.get(0));
+        Integer crongLeftProScore = pageProScore(crong.get(0));
         //더 높은 점수
-        Integer crongLeftScore = PageScore(crongLeftSumScore, crongLeftProScore);
+        Integer crongLeftScore = pageScore(crongLeftSumScore, crongLeftProScore);
 
         //우측 페이지 체크
         //자리수 합 점수
-        Integer crongRightSumScore = PageSumScore(crong.get(1));
+        Integer crongRightSumScore = pageSumScore(crong.get(1));
         //자리수 곱 점수
-        Integer crongRightProScore = PageProScore(crong.get(1));
+        Integer crongRightProScore = pageProScore(crong.get(1));
         //더 높은 점수
-        Integer crongRightScore = PageScore(crongRightSumScore, crongRightProScore);
+        Integer crongRightScore = pageScore(crongRightSumScore, crongRightProScore);
         //크롱 최종 점수 구하기
-        Integer crongScore = PageScore(crongLeftScore, crongRightScore);
+        Integer crongScore = pageScore(crongLeftScore, crongRightScore);
 
         //정답 출력
         if (crongScore > pobiScore) {
@@ -66,7 +66,7 @@ class Problem1 {
         return answer;
     }
 
-    public static Boolean CheckException(List<Integer> Page){
+    public static Boolean checkException(List<Integer> Page){
         if (Page.get(0) + 1 != Page.get(1)) {
             return true;
         }
@@ -76,7 +76,7 @@ class Problem1 {
         return false;
     }
 
-    public static Integer PageSumScore(Integer score) {
+    public static Integer pageSumScore(Integer score) {
         //페이지 체크
         int sum = 0;
         String Page = score.toString();
@@ -86,7 +86,7 @@ class Problem1 {
         return sum;
     }
 
-    public static Integer PageProScore(Integer score) {
+    public static Integer pageProScore(Integer score) {
         //페이지 체크
         int pro = 1;
         String Page = score.toString();
@@ -96,7 +96,7 @@ class Problem1 {
         return pro;
     }
 
-    public static Integer PageScore(Integer score1, Integer score2) {
+    public static Integer pageScore(Integer score1, Integer score2) {
         if (score1 >= score2) {
             return score1;
         }

@@ -9,14 +9,14 @@ public class Problem2 {
         String answer = "answer";
         //암호문 리스트로 변환
         List<String> cryptogramList = wordToList(cryptogram);
-        answer = DeleteCoupleWord(cryptogramList);
+        answer = deleteCoupleWord(cryptogramList);
         return answer;
     }
     public static List wordToList(String word){
         return new ArrayList<>(Arrays.asList(word.split("")));
     }
 
-    public static String DeleteCoupleWord(List<String> cryptogramList){
+    public static String deleteCoupleWord(List<String> cryptogramList){
         while (true) {
             int check = 0;
             for (int i = 1; i < cryptogramList.size(); i++) {

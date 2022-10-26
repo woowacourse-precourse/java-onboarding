@@ -8,11 +8,11 @@ public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
         for (int i = 1; i <= number; i++) {
-            answer += CountClap(i);
+            answer += countClap(i);
         }
         return answer;
     }
-    public static Integer CountClap(Integer number) {
+    public static Integer countClap(Integer number) {
         List<Integer> threeSixNine = new ArrayList<>(Arrays.asList(3, 6, 9));
         int clap= 0;
         while (number > 0) {
