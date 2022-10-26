@@ -33,16 +33,13 @@ class Problem1 {
     }
 
     private static int checkScore(int pobiScore, int crongScore){
-        int answer = -1;
-
         if (pobiScore>crongScore) {
-            answer = 1;
-        } else if (pobiScore<crongScore){
-            answer = 2;
-        } else {
-            answer = 0;
+            return 1;
+        }
+        if (pobiScore<crongScore){
+            return 2;
         }
 
-        return answer;
+        return 0;
     }
 }
