@@ -14,6 +14,15 @@ class Problem1 {
         }
         return sum;
     }
+
+    int mulOfDigits(int[] numbers) {
+        int mul = 1;
+        for(int number : numbers) {
+            mul *= number;
+        }
+        return mul;
+    }
+
     int[] toIntArray(int number) {
         String str = String.valueOf(number);
         int[] numbers = new int[str.length()];
