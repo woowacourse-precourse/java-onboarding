@@ -39,7 +39,7 @@ class Problem1 {
         int leftPage = pages.get(LEFT_PAGE_IDX);
         int rightPage = pages.get(RIGHT_PAGE_IDX);
 
-        if (leftPage != rightPage - 1 && rightPage != leftPage + 1) {
+        if (leftPage != rightPage - 1 || rightPage != leftPage + 1) {
             return ERROR;
         }
 
@@ -52,6 +52,14 @@ class Problem1 {
         }
 
         if (leftPage < START_PAGE || rightPage > END_PAGE) {
+            return ERROR;
+        }
+
+        if (leftPage == START_PAGE || leftPage == END_PAGE - 1) {
+            return ERROR;
+        }
+
+        if (rightPage == START_PAGE + 1 || rightPage == END_PAGE) {
             return ERROR;
         }
 
