@@ -12,8 +12,33 @@ class Problem1 {
             return -1;
         }
 
+        int podiResult = calculateMaxValue(pobi);
+
         int answer = Integer.MAX_VALUE;
         return answer;
+    }
+
+    private static int calculateMaxValue(List<Integer> values) {
+        return Math.max(calculateMaxSum(values), calculateMaxMultiplication(values));
+    }
+
+    private static int calculateMaxSum(List<Integer> values) {
+        return Math.max(calculateSum(values.get(0)), calculateSum(values.get(1)));
+    }
+
+    private static int calculateSum(Integer value) {
+
+        int sumValue = 0;
+
+        while (value != 0) {
+            sumValue += value % 10;
+            value /= 10;
+        }
+
+        return sumValue;
+    }
+
+    private static void checkValueIsZero(Integer value) {
     }
 
     private static boolean isWrongPages(List<Integer> pobi, List<Integer> crong) {
