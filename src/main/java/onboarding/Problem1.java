@@ -20,7 +20,7 @@ class Problem1 {
 
     public static boolean validPages(List<Integer> pages){
         int left = pages.get(0);
-        int right = pages.get(0);
+        int right = pages.get(1);
 
         if(left<1 || 400<left || right<1 || 400<right)
             return false;
