@@ -112,9 +112,18 @@ class ApplicationTest {
     @Nested
     class Problem4Test {
         @Test
+        @DisplayName("대문자는 대문자로, 소문자는 소문자로")
         void case1() {
             String word = "I love you";
             String result = "R olev blf";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+
+        @Test
+        @DisplayName("알파벳 외 문자는 변환하지 않는다.")
+        void case2() {
+            String word = "$aVe ¥0U";
+            String result = "$zEv ¥0F";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
     }
