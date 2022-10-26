@@ -5,8 +5,6 @@ import java.util.List;
 class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-
         try {
             validate(pobi);
             validate(crong);
@@ -17,7 +15,7 @@ class Problem1 {
         int pobi_score = getScore(pobi);
         int crong_score = getScore(crong);
 
-        return answer;
+        return compareScore(pobi_score, crong_score);
     }
 
     private static int getScore(List<Integer> pages) {
@@ -46,6 +44,16 @@ class Problem1 {
         }
 
         return result;
+    }
+
+    private static int compareScore(int pobi_score, int crong_score) {
+        if (pobi_score < crong_score) {
+            return 2;
+        } else if (pobi_score > crong_score) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 
     private static void validate(List<Integer> pages) {
