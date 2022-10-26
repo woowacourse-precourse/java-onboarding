@@ -17,29 +17,82 @@ package onboarding;
  */
 
 public class Problem2 {
+
     public static String solution(String cryptogram) {
-        StringBuilder cryptogramSb = new StringBuilder(cryptogram);
-        int sameCount = 1;
-        int firstIdx = 0;
-        for (int i = 0; i < cryptogramSb.length() - 1; i++) {
-            if (sameCount == 1) {
-                firstIdx = i;
+        CryptogramUtil cryptogramUtil = new CryptogramUtil(cryptogram);
+        while (cryptogramUtil.plusCurrentIdx() < cryptogramUtil.getCryptogram().length() - 1) {
+            if (cryptogramUtil.getSameCount() == 1) {
+                cryptogramUtil.setDuplicatedFirstIdx(cryptogramUtil.getCurrentIdx());
             }
-            char currentChar = cryptogramSb.charAt(i);
-            char nextChar = cryptogramSb.charAt(i + 1);
+            char currentChar = cryptogramUtil.getCryptogram().charAt(cryptogramUtil.getCurrentIdx());
+            char nextChar = cryptogramUtil.getCryptogram().charAt(cryptogramUtil.getCurrentIdx() + 1);
             if (currentChar == nextChar) {
-                sameCount++;
+                cryptogramUtil.plusSameCount();
                 continue;
             }
-            if (sameCount > 1) {
-                cryptogramSb.delete(firstIdx, firstIdx + sameCount);
-                sameCount = 1;
-                i = -1;
+            if (cryptogramUtil.getSameCount() > 1) {
+                cryptogramUtil.deleteDuplicatedChar();
+                cryptogramUtil.setCurrentIdx(cryptogramUtil.getDuplicatedFirstIdx() - 2);
+                cryptogramUtil.resetSameCount();
             }
         }
-        if (sameCount > 1) {
-            cryptogramSb.delete(firstIdx, firstIdx + sameCount);
+        if (cryptogramUtil.getSameCount() > 1) {
+            cryptogramUtil.deleteDuplicatedChar();
         }
-        return cryptogramSb.toString();
+        return cryptogramUtil.getCryptogram();
+    }
+
+    private static class CryptogramUtil {
+        private StringBuilder cryptogramSb;
+        private int sameCount;
+        private int duplicatedFirstIdx;
+        private int currentIdx;
+
+        public CryptogramUtil(String cryptogram) {
+            cryptogramSb = new StringBuilder(cryptogram);
+            this.sameCount = 1;
+            this.duplicatedFirstIdx = 0;
+            this.currentIdx = -1;
+        }
+
+        public String getCryptogram() {
+            return cryptogramSb.toString();
+        }
+
+        public void deleteDuplicatedChar() {
+            this.cryptogramSb.delete(this.duplicatedFirstIdx, this.duplicatedFirstIdx + this.sameCount);
+        }
+
+        public int getSameCount() {
+            return sameCount;
+        }
+
+        public void plusSameCount() {
+            this.sameCount++;
+        }
+
+        public void resetSameCount() {
+            this.sameCount = 1;
+        }
+
+        public int getDuplicatedFirstIdx() {
+            return this.duplicatedFirstIdx;
+        };
+
+        public void setDuplicatedFirstIdx(int duplicatedFirstIdx) {
+            this.duplicatedFirstIdx = duplicatedFirstIdx;
+        }
+
+        public int getCurrentIdx() {
+            return currentIdx;
+        }
+
+        public int plusCurrentIdx() {
+            return ++this.currentIdx;
+        }
+
+        public void setCurrentIdx(int duplicatedFirstIdx) {
+            this.currentIdx = duplicatedFirstIdx;
+        }
     }
 }
