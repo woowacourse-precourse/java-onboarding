@@ -21,14 +21,14 @@ class Problem1 {
     private static boolean isNotCorrectInputNumbers(final List<Integer> numbers) {
         int leftNumber = numbers.get(0);
         int rightNumber = numbers.get(1);
-        return isNotCorrectEvenAndOdd(leftNumber, rightNumber) || isTheDifferenceNotOne(leftNumber, rightNumber) || isTheLeftOneBigger(leftNumber, rightNumber);
+        return isNotCorrectEvenAndOdd(leftNumber, rightNumber) || isDifferenceNotOne(leftNumber, rightNumber) || isLeftBigger(leftNumber, rightNumber);
     }
     
-    private static boolean isTheLeftOneBigger(final int leftNumber, final int rightNumber) {
+    private static boolean isLeftBigger(final int leftNumber, final int rightNumber) {
         return leftNumber >= rightNumber;
     }
     
-    private static boolean isTheDifferenceNotOne(final int leftNumber, final int rightNumber) {
+    private static boolean isDifferenceNotOne(final int leftNumber, final int rightNumber) {
         return leftNumber + 1 != rightNumber;
     }
     
