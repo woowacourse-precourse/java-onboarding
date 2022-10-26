@@ -13,16 +13,23 @@ public class Problem4 {
         return str;
     }
     public static char reChar(char c){
-        if( c==' '){
-            return c;
-        }
-        else{
+        if( checkIfNotAlphabet(c)){
             return changeChar(c);
         }
+        else{
+            return c;
+        }
+    }
+    public static boolean checkIfNotAlphabet(char c){
+        if((97<=c && c<=122) || (65<=c && c<=90)){
+            return true;
+        }
+        return false;
     }
     public static char changeChar(char c){
 
         return c;
     }
+
 
 }
