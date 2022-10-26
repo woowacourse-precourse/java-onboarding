@@ -11,6 +11,17 @@ class ApplicationTest {
     @Nested
     class Problem1Test {
         @Test
+        void case1FindSumMaximumValueTest() {
+            List<Integer> test1Digits = List.of(3, 4);
+            List<Integer> test2Digits = List.of(45, 46);
+            List<Integer> test3Digits = List.of(397, 398);
+
+            assertThat(Problem1.findSumMaximumValue(test1Digits)).isEqualTo(4);
+            assertThat(Problem1.findSumMaximumValue(test2Digits)).isEqualTo(10);
+            assertThat(Problem1.findSumMaximumValue(test3Digits)).isEqualTo(20);
+        }
+
+        @Test
         void case1() {
             List<Integer> pobi = List.of(97, 98);
             List<Integer> crong = List.of(197, 198);
