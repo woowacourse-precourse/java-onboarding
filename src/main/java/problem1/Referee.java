@@ -12,19 +12,19 @@ public class Referee {
         this.crong = new Player(crong);
     }
 
-    public int playGame() {
+    public GameResultStatus playGame() {
         int pobiScore = pobi.calculateTotalScore();
         int crongScore = crong.calculateTotalScore();
 
         if (pobiScore > crongScore) {
-            return 1;
+            return GameResultStatus.POBI_WIN;
         }
         if (crongScore > pobiScore) {
-            return 2;
+            return GameResultStatus.CRONG_WIN;
         }
         if (crongScore == pobiScore) {
-            return 0;
+            return GameResultStatus.DRAW;
         }
-        return -1;
+        return GameResultStatus.EXCEPTION;
     }
 }
