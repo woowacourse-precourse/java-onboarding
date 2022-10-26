@@ -26,12 +26,17 @@ public class User {
 		int sum=0;
 		int mul=1;
 
-		do{
+
+		while(num>=10){
 			int digit = num%10;
 			sum+=digit;
 			mul*=digit;
 			num/=10;
-		} while(num>=10);
+
+		}
+		sum+=num;
+		mul*=num;
+
 
 		return sum>mul ? sum : mul;
 	}
@@ -46,6 +51,14 @@ public class User {
 
 	public int getRightPage() {
 		return rightPage;
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
 	}
 
 	public void setRightPage(int rightPage) {

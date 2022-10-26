@@ -21,7 +21,16 @@ public class Game {
 		user1.calculateScore();
 		user2.calculateScore();
 
-		return 0;
+
+
+		if (user1.getScore()>user2.getScore()) {
+			return 1;
+		} else if (user1.getScore()<user2.getScore()) {
+			return 2;
+		} else {
+			return 0;
+		}
+
 	}
 
 	private boolean validatePage(User user){
