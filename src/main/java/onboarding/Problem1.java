@@ -23,8 +23,15 @@ class Problem1 {
         return pages.get(0) + pages.get(1);
     }
 
-    public static int getPageNumberMulti(List<Integer> pages) {
-        return pages.get(0) * pages.get(1);
+    public static int getPageNumberMulti(int page) {
+        int multi = 1;
+
+        while (page > 0) {
+            multi *= page % 10;
+            page /= 10;
+        }
+
+        return multi;
     }
 
     public static int max(int sum, int multi) {
