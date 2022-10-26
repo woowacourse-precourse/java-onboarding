@@ -29,8 +29,11 @@ class Problem1 {
         return DRAW;
     }
 
-    private static boolean isError(List<Integer> pobi) {
-        return getRightPageNum(pobi) - getLeftPageNum(pobi) != 1;
+    private static boolean isError(List<Integer> pages) {
+        if (pages.get(LEFT_PAGE) == null || pages.get(RIGHT_PAGE) == null) {
+            return true;
+        }
+        return getRightPageNum(pages) - getLeftPageNum(pages) != 1;
     }
 
     private static int getMaxLeftAndRight(List<Integer> pages) {
