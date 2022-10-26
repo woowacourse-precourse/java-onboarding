@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 class Problem1 {
@@ -105,8 +104,11 @@ class Problem1 {
         }
 
         private static List<Integer> toList(String pageNumber) {
-            return List.of(Integer.parseInt(Arrays.toString(pageNumber.split(""))));
+            List<Integer> test = new ArrayList<>();
+            for(int i=0; i<pageNumber.length(); i++) {
+                test.add(Integer.valueOf(String.valueOf(pageNumber.charAt(i))));
+            }
+            return test;
         }
     }
-
 }
