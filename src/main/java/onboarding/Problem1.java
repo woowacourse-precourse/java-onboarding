@@ -4,7 +4,7 @@ import java.util.List;
 
 /*
 1. 예외사항 처리하기
-2. 가장 큰 페이지 찾기
+2. 가장 큰 수 찾기
 3. 점수 비교하기
  */
 
@@ -28,6 +28,17 @@ class Problem1 {
         return false;
     }
 
+    private static int pageFindMaxNum(int num) {
+        int sumDigit = 0;
+        int mulDigit = 1;
+        String number = Integer.toString(num);
+        for (int i = 0; i < number.length(); i ++) {
+            sumDigit += Integer.parseInt(number.substring(i, i+1));
+            mulDigit *= Integer.parseInt(number.substring(i, i+1));
+        }
+        return Math.max(sumDigit, mulDigit);
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
@@ -35,6 +46,9 @@ class Problem1 {
             answer = -1;
             return answer;
         }
+
+        int pobiMaxNum = Math.max(pageFindMaxNum(pobi.get(0)), pageFindMaxNum(pobi.get(1)));
+        int crongMaxNum = Math.max(pageFindMaxNum(crong.get(0)), pageFindMaxNum(crong.get(1)));
 
         return answer;
     }
