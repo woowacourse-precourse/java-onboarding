@@ -19,6 +19,16 @@ public class BookGame {
         this.player2 = player2;
     }
 
+    private int compareResult(int player1Score, int player2Score){
+        if(player1Score > player2Score){
+            return 1;
+        }
+        if(player2Score > player1Score){
+            return 2;
+        }
+        return 0;
+    }
+
     private int makeScore(List<Integer> playerPages){
         int leftScore = makeSinglePageScore(playerPages.get(0));
         int rightScore = makeSinglePageScore(playerPages.get(1));
