@@ -35,7 +35,7 @@ public class Problem4 {
     }
 
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        // 문자열을 반대로 변환하여 리턴
+        return buildReverseWord(word);
     }
 }
