@@ -12,19 +12,28 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
-        Pages pobiPages = new Pages(pobi);
-        Pages crongPages = new Pages(crong);
+        try {
+            Pages pobiPages = new Pages(pobi);
+            Pages crongPages = new Pages(crong);
 
-        int pobiMaxResult = pobiPages.getMaxLeftAndRight();
-        int crongMaxResult = crongPages.getMaxLeftAndRight();
+            int pobiMaxResult = pobiPages.getMaxLeftAndRight();
+            int crongMaxResult = crongPages.getMaxLeftAndRight();
 
-        if (pobiMaxResult > crongMaxResult) {
+            return getWinner(pobiMaxResult, crongMaxResult);
+
+        } catch (IllegalArgumentException e) {
+            return EXCEPTION;
+        }
+
+    }
+
+    private static int getWinner(int pobiResult, int crongResult) {
+        if (pobiResult > crongResult) {
             return POBI_WIN;
         }
-        if (pobiMaxResult < crongMaxResult) {
+        if (pobiResult < crongResult) {
             return CRONG_WIN;
         }
-
         return DRAW;
     }
 
@@ -44,6 +53,7 @@ class Problem1 {
                 throw new IllegalArgumentException();
             }
         }
+
         private void validateIsContinuous(List<Integer> pages) {
             if (pages.get(RIGHT_PAGE) - pages.get(LEFT_PAGE) != 1) {
                 throw new IllegalArgumentException();
@@ -63,7 +73,6 @@ class Problem1 {
             return Math.max(leftPageMax, rightPageMax);
 
         }
-
 
         private int getLeftPageNum(List<Integer> pages) {
             return pages.get(LEFT_PAGE);
