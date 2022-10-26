@@ -12,12 +12,16 @@
 
 ### 제한사항
 
-- cryptogram은 길이가 1 이상 1000 이하인 문자열이다.
-- cryptogram은 알파벳 소문자로만 이루어져 있다.
+-   cryptogram은 길이가 1 이상 1000 이하인 문자열이다.
+-   cryptogram은 알파벳 소문자로만 이루어져 있다.
 
 ### 실행 결과 예시
 
-| cryptogram | result |
-| --- | --- |
+| cryptogram        | result  |
+| ----------------- | ------- |
 | "browoanoommnaon" | "brown" |
-| "zyelleyz" | "" |
+| "zyelleyz"        | ""      |
+
+### 구현해야 할 기능 목록
+
+-   [ ] 중복 문자의 시작과 종료 위치를 반환하는 기능
