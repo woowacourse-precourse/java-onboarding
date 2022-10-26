@@ -10,6 +10,14 @@ import java.util.List;
  */
 class Problem1 {
 
+    private final List<Integer> pagesA;
+    private final List<Integer> pagesB;
+
+    public Problem1(List<Integer> pagesA, List<Integer> pagesB) {
+        this.pagesA = pagesA;
+        this.pagesB = pagesB;
+    }
+
     private boolean isAvailableInput(List<Integer> pages) {
         return isAvailableSize(pages.size()) && isAvailableValues(pages.get(0), pages.get(1));
     }
