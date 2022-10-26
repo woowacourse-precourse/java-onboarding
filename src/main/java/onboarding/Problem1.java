@@ -1,7 +1,7 @@
 package onboarding;
 
 import java.util.List;
-
+//Clear
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
@@ -46,32 +46,27 @@ class Problem1 {
     {
         int left =  value.get(0);
         int  right = value.get(1);
-
         // Calculate sum
         int l_sum = getSum(left);
         int l_multi = getMulti(left);
-        if (l_sum > l_multi)
-        {
+        if (l_sum > l_multi) {
             left = l_sum;
         }else {
             left = l_multi;
         }
-
         int r_sum = getSum(right);
         int r_multi = getMulti(right);
-        if (r_sum > r_multi)
-        {
+        if (r_sum > r_multi) {
             right = r_sum;
         }else {
             right = r_multi;
         }
 
-
-
-        if (left > right) {return left;}else {return right;}
+        if (left > right) {
+            return left;
+        }else {
+            return right;}
         // Calculate multiple
-
-
     }
 
     public static int getSum(int number)
@@ -80,7 +75,6 @@ class Problem1 {
         while(number > 0) {
             total += number % 10;
             number /= 10;
-
         }
         return total;
     }
@@ -91,9 +85,6 @@ class Problem1 {
             total *= number % 10;
             number /= 10;
         }
-        System.out.println(total);
         return total;
     }
-
-
 }
