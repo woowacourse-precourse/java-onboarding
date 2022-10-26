@@ -33,6 +33,12 @@ class ApplicationTest {
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
+
+        @Test
+        void splitTest() {
+            int num = 408;
+            assertThat(Problem1.splitNum(num)).isEqualTo(List.of(4,0,8));
+        }
     }
 
     @Nested
