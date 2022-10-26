@@ -11,6 +11,17 @@ class Problem1 {
         }
         return false;
     }
+    // 각 자리 수의 합을 구하는 함수
+    private static int getSumOfEachNumber(int num){
+        int sum = 0;
+        while(num != 0){
+            sum += num % 10;
+            num /= 10;
+        }
+        return sum;
+    }
+
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
