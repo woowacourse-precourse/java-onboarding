@@ -30,7 +30,7 @@ class removeSamethings{
         }
         list.remove(start);
 
-        strArrayToString=list.toString();
+        strArrayToString=String.join("",list);
         return strArrayToString;
     }
 }
