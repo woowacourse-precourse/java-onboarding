@@ -5,12 +5,22 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int pobiScore = findUserScore(pobi);
+        int crongScore = findUserScore(crong);
 
-        return answer;
+        if (pobiScore == crongScore) {
+            return 0;
+        }
+        if (pobiScore > crongScore) {
+            return 1;
+        }
+        if (pobiScore < crongScore) {
+            return 2;
+        }
+        return -1;
     }
 
-    public int findUserScore(List<Integer> pages) { // 페이지에 관한 요류들은 여기서 잡아준다.
+    public static int findUserScore(List<Integer> pages) { // 페이지에 관한 요류들은 여기서 잡아준다.
         int leftPageNumber = pages.get(0);
         int rightPageNumber = pages.get(1);
         int leftPageScore = Math.max(sumAllNumbersInPage(leftPageNumber), multiplyAllNumbersInPage(leftPageNumber));
@@ -19,7 +29,7 @@ class Problem1 {
         return Math.max(leftPageScore, rightPageScore);
     }
 
-    public int sumAllNumbersInPage(int page) {
+    public static int sumAllNumbersInPage(int page) {
         int result = 0;
         for (Integer number : changeIntToIntList(page)) {
             result = result + number;
@@ -27,7 +37,7 @@ class Problem1 {
         return result;
     }
 
-    public int multiplyAllNumbersInPage(int page) {
+    public static int multiplyAllNumbersInPage(int page) {
         int result = 1;
         for (Integer number : changeIntToIntList(page)) {
             result = result * number;
@@ -36,7 +46,7 @@ class Problem1 {
         return result;
     }
 
-    static public List<Integer> changeIntToIntList(int number) {
+    public static List<Integer> changeIntToIntList(int number) {
         List<Integer> result = new ArrayList<>();
         while (number % 10 != 0) {
             result.add(number % 10, 0);
