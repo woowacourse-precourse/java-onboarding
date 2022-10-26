@@ -26,15 +26,19 @@ public class Problem4 {
         final char[] chars = word.toCharArray();
         
         for (int index = 0; index < chars.length; index++) {
-            if (isAlphabet(chars[index])) {
-                chars[index] = toConvertAlphabet(chars[index]);
-            }
+            convertWord(chars, index);
         }
         
         return String.valueOf(chars);
     }
     
-    private static char toConvertAlphabet(final char aChar) {
+    private static void convertWord(final char[] chars, final int index) {
+        if (isAlphabet(chars[index])) {
+            chars[index] = convertAlphabet(chars[index]);
+        }
+    }
+    
+    private static char convertAlphabet(final char aChar) {
         if (Character.isUpperCase(aChar)) {
             return toConvertUpperCase(aChar);
         }
