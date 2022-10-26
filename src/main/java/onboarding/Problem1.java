@@ -27,4 +27,21 @@ class Problem1 {
         }
         return draw;
     }
+
+    public static boolean validatePageNumbers(List<List<Integer>> pageNumbersInstances){
+        for (List<Integer> pageNumbers : pageNumbersInstances){ //for문 내부 함수를 밖으로 빼보자
+            int leftPageNumber = pageNumbers.get(0);
+            int rightPageNumber = pageNumbers.get(1);
+            if (pageNumbers.equals(startPage) || pageNumbers.equals(endPage)){
+                return true;
+            }
+            if (leftPageNumber + 1 != rightPageNumber){
+                return true;
+            }
+            if ((leftPageNumber % 2) == 0 || (rightPageNumber % 2) != 0){
+                return true;
+            }
+        }
+        return false;
+    }
 }
