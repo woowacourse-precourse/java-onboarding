@@ -8,15 +8,27 @@ class Problem1 {
         return answer;
     }
 
-    static int calcTotalSum(int pageNum) {
+    static int calcEachDigitSum(int pageNum) {
         int totalSum = 0;
 
         while (pageNum > 0) {
-            int lastNum = pageNum % 10;
-            totalSum += lastNum;
-            pageNum = pageNum / 10;
+            int digit = pageNum % 10;
+            totalSum += digit;
+            pageNum /= 10;
         }
 
         return totalSum;
+    }
+
+    static int calcEachDigitProduct(int pageNum) {
+        int totalProduct = 0;
+
+        while (pageNum > 0) {
+            int digit = pageNum % 10;
+            totalProduct *= digit;
+            pageNum /= 10;
+        }
+
+        return totalProduct;
     }
 }
