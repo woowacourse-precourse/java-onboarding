@@ -2,7 +2,16 @@ package onboarding;
 
 import java.util.List;
 
+import static onboarding.Problem1.Constants.*;
+
 class Problem1 {
+
+    public static class Constants {
+        public static final int FIRST_PAGE = 0;
+        public static final int LAST_PAGE = 400;
+        public static final int LEFT_PAGE = 0;
+        public static final int RIGHT_PAGE = 1;
+    }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         // 예외 처리
@@ -28,21 +37,21 @@ class Problem1 {
     // 예외 발생시 TRUE
     private static boolean validateList(List<Integer> list) {
         // 페이지는 null 값이 들어갈 수 없다.
-        if (list.get(0) == null || list.get(1) == null) {
+        if (list.get(LEFT_PAGE) == null || list.get(RIGHT_PAGE) == null) {
             return true;
         }
 
         // 첫 페이지는 0 이상 400이하의 값이여야한다.
-        if (list.get(0) <= 0 || list.get(0) >= 400){
+        if (list.get(LEFT_PAGE) <= FIRST_PAGE || list.get(LEFT_PAGE) >= LAST_PAGE){
             return true;
         }
         // 마지막 페이지는 0 이상 400이하의 값이어야한다.
-        if (list.get(1) <= 0 || list.get(1) >= 400) {
+        if (list.get(RIGHT_PAGE) <= FIRST_PAGE || list.get(RIGHT_PAGE) >= LAST_PAGE) {
             return true;
         }
 
         // 왼쪽 페이지는 홀수, 오른쪽 페이지는 짝수여야한다.
-        if (list.get(0) % 2 != 0 || list.get(1) % 2 != 1) {
+        if (list.get(LEFT_PAGE) % 2 != 1 || list.get(RIGHT_PAGE) % 2 != 0) {
             return true;
         }
 
@@ -50,7 +59,8 @@ class Problem1 {
         if (list.size() != 2) {
             return true;
         }
-        return list.get(1) - list.get(0) != 1;
+
+        return list.get(RIGHT_PAGE) - list.get(LEFT_PAGE) != 1;
     }
 
     // 4개의 경우의 수 (왼쪽 페이지 각 자릿수 더하고 곱하고, 오른쪽 페이지 각 자릿수 더하고 곱하고) 중에서
