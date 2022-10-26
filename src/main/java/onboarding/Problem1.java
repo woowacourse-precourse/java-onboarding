@@ -4,8 +4,7 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        //페이지를 입력받아 페이지의 최대 점수를 반환하는 함수(더하기, 곱하기 비교)
-        //왼쪽, 오른쪽 페이지의 점수를 받아 최대점수를 반환하는 함수
+
         if (!isCorrectInput(pobi.get(0), pobi.get(1)) || !isCorrectInput(crong.get(0), crong.get(1))) {
             return -1;
         }
@@ -13,6 +12,11 @@ class Problem1 {
         int scoreOfPobi = findMyScore(findMaxOfPage(pobi.get(0)), findMaxOfPage(pobi.get(1)));
         int scoreOfCrong = findMyScore(findMaxOfPage(crong.get(0)), findMaxOfPage(crong.get(1)));
 
+        if (scoreOfPobi > scoreOfCrong) {
+            return 1;
+        } else if (scoreOfPobi < scoreOfCrong) {
+            return 2;
+        }
         return 0;
     }
 
