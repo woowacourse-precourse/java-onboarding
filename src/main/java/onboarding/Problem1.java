@@ -80,13 +80,13 @@ class Problem1 {
         }
 
         private static List<Integer> saveMaxPagesNumberByUser(List<Integer> user) {
-            List<Integer> biggerPageNumbers = new ArrayList<>();
+            List<Integer> maxPageNumbers = new ArrayList<>();
             for (Integer pageNumber : user) {
                 int sumPage = sumEachNumber(pageNumber);
                 int multPage = multEachNumber(pageNumber);
-                biggerPageNumbers.add(getMaxNumber(sumPage, multPage));
+                maxPageNumbers.add(getMaxNumber(sumPage, multPage));
             }
-            return biggerPageNumbers;
+            return maxPageNumbers;
         }
 
         private static int sumEachNumber(int pageNumber) {
