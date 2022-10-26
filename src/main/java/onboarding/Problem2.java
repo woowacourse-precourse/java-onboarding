@@ -38,6 +38,7 @@ public class Problem2 {
 
 
     public static String solution(String cryptogram) {
+        return calc(cryptogram);
 
     }
 }
