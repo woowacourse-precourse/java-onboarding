@@ -11,9 +11,22 @@ class Problem1 {
             Player pobi = new Player(asPages(pobiPageNumbers));
             Player crong = new Player(asPages(crongPageNumbers));
 
-            return pobi.battle(crong);
+            return pobi.battle(crong).getCode();
         } catch (RuntimeException e) {
             return -1;
+        }
+    }
+
+    private static enum BattleResult {
+        WIN(1), LOSE(2), DRAW(0);
+
+        private final int code;
+        BattleResult(int code) {
+            this.code = code;
+        }
+
+        public int getCode() {
+            return code;
         }
     }
 
@@ -51,8 +64,22 @@ class Problem1 {
                 throw new IllegalArgumentException(ERR_PAGES_ORDER);
         }
 
-        public int battle(Player other) {
-            return 0;
+        public BattleResult battle(Player other) {
+            int myScore = getScore(this.pages);
+            int otherScore = getScore(other.pages);
+
+            if (myScore > otherScore)
+                return BattleResult.WIN;
+            if (myScore == otherScore)
+                return BattleResult.DRAW;
+            if (myScore < otherScore)
+                return BattleResult.LOSE;
+
+            return null;
+        }
+
+        private int getScore(List<Page> pages) {
+            return Math.max(pages.get(0).getScore(), pages.get(1).getScore());
         }
     }
 
