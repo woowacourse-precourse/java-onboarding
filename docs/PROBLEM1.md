@@ -32,8 +32,8 @@
 ### 1. 전체 동작 과정
 
 (1) **calculateScore() 동작** : 최종 점수를 반환하는 함수. 내부에서 다음 두 가지 함수가 수행된다.
-
-  - **makePageMaxNumber()** : leftPageMaxNumber, rightPageMaxNumber를 구하는 기능
+  - **makePageMaxNumber()** : leftPageMaxNumber, rightPageMaxNumber를 구하는 기능. 내부에서 **splitNumber()** 함수가 수행된다.
+    - **splitNumbers()** : 왼쪽 페이지 숫자(leftPageNumber)와 오른쪽 페이지 숫자(rightPageNumber)의 각 자리수를 반환
   - **selectBiggestNumber()** :  leftPageMaxNumber와 rightPageMaxNumber 중 큰 수를 리턴하는 기능
 
 (2) **decideWinner() 동작** : 최종 점수를 토대로 승자를 결정하는 함수
@@ -51,12 +51,11 @@
 <br><br>
 - **makePageMaxNumber()**
   - 입력 : 왼쪽 혹은 오른쪽 페이지 번호 (= **int pageNumber**)
-  - 자리 별 숫자 분리
+  - **splitNumber()** 함수 호출 : 자리 별 숫자 분리
     - 100의 자리 수 : 100으로 나눈 몫
       - 구한 후 100의 자리 수 제거
     - 10의 자리 수 : 10으로 나눈 몫
-      - 구한 후 10의 자리 수 제거
-    - 1의 자리 수 : 남은 수
+    - 1의 자리 수 : 10으로 나눈 나머지
   - 덧셈 vs 곱셈 결과 중 큰 수 선택 (= **int pageMaxNumber**)
   - 출력 : **int pageMaxNumber**
 <br><br>

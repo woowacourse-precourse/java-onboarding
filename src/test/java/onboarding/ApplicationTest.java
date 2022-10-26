@@ -10,6 +10,25 @@ import static org.assertj.core.api.Assertions.assertThat;
 class ApplicationTest {
     @Nested
     class Problem1Test {
+        // makePageMaxNumber(), splitNumbers() 테스트
+        @Test
+        void makePageMaxNumberTest(){
+            // 3자리수, 2자리수, 1자리수에 대해 테스트 수행
+            int hundredsPageNumber = 197;
+            int tensPageNumber = 56;
+            int onesPageNumber = 7;
+
+            // 예상 결과
+            int resultOfHundreds = 63;
+            int resultOfTens = 30;
+            int resultOfOnes = 7;
+
+            Problem1 problem1 = new Problem1();
+            assertThat(problem1.makePageMaxNumber(hundredsPageNumber)).isEqualTo(resultOfHundreds);
+            assertThat(problem1.makePageMaxNumber(tensPageNumber)).isEqualTo(resultOfTens);
+            assertThat(problem1.makePageMaxNumber(onesPageNumber)).isEqualTo(resultOfOnes);
+        }
+
         @Test
         void case1() {
             List<Integer> pobi = List.of(97, 98);
