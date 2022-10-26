@@ -7,4 +7,9 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+
+    public static int getPageNumberSum(List<Integer> pages) {
+        return pages.get(0) + pages.get(1);
+    }
+
 }
