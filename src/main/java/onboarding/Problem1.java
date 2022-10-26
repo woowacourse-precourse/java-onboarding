@@ -4,6 +4,9 @@ import java.util.List;
 
 class Problem1 {
     public static int EXCEPTION = -1;
+    public static int POBI_WIN = 1;
+    public static int CRONG_WIN = 2;
+    public static int DRAW = 0;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
@@ -16,6 +19,7 @@ class Problem1 {
         } else {
             pobiMax = calculatePageMax(pobi);
             crongMax = calculatePageMax(crong);
+            answer = makeWinner(pobiMax, crongMax);
         }
 
         return answer;
@@ -59,5 +63,15 @@ class Problem1 {
             pageNumberToInt /= 10;
         }
         return (plusSum >= multiplySum) ? plusSum : multiplySum;
+    }
+
+    private static int makeWinner(int pobiMax, int crongMax) {
+        if (pobiMax < crongMax) {
+            return CRONG_WIN;
+        } else if (pobiMax > crongMax) {
+            return POBI_WIN;
+        } else {
+            return DRAW;
+        }
     }
 }
