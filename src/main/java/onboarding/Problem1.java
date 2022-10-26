@@ -6,9 +6,12 @@ class Problem1 {
     public static final int POBI_WIN = 1;
     public static final int CRONG_WIN = 2;
     public static final int DRAW = 0;
+    public static final int EXCEPTION = -1;
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        if(isPageNumberException(pobi) || isPageNumberException(crong)) {
+            return EXCEPTION;
+        }
+        return getCompareScore(getMaxNumber(pobi), getMaxNumber(crong));
     }
     private static int pageMultiply(Integer page) {
         int multiply = 1;
@@ -44,6 +47,18 @@ class Problem1 {
             return CRONG_WIN;
         }
         return DRAW;
-
     }
+
+    private static boolean isPageNumberException(List<Integer> page) {
+        Integer leftPage = page.get(0);
+        Integer rightPage = page.get(1);
+        if(leftPage == null || rightPage == null){
+            return true;
+        }
+        if(rightPage - leftPage != 1) {
+            return true;
+        }
+        return false;
+    }
+
 }
