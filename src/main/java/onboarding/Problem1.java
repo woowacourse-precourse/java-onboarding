@@ -82,16 +82,30 @@ class Problem1 {
         }
 
         private static int calculatePageScore(Integer pageNumber) {
+            return Math.max(calculateAddPageScore(pageNumber),
+                calculateMultiplyPageScore(pageNumber));
+        }
+
+        private static int calculateAddPageScore(Integer pageNumber) {
             int targetPageNumber = pageNumber;
             int addScore = ADD_SCORE_DEFAULT_VALUE;
-            int multiplyScore = MULTIPLY_SCORE_DEFAULT_VALUE;
 
             while (targetPageNumber != CALCULATE_REMAINDER_VALUE) {
                 addScore += targetPageNumber % DECIMAL_UNIT_VALUE;
+                targetPageNumber /= DECIMAL_UNIT_VALUE;
+            }
+            return addScore;
+        }
+
+        private static int calculateMultiplyPageScore(Integer pageNumber) {
+            int targetPageNumber = pageNumber;
+            int multiplyScore = MULTIPLY_SCORE_DEFAULT_VALUE;
+
+            while (targetPageNumber != CALCULATE_REMAINDER_VALUE) {
                 multiplyScore *= targetPageNumber % DECIMAL_UNIT_VALUE;
                 targetPageNumber /= DECIMAL_UNIT_VALUE;
             }
-            return Math.max(addScore, multiplyScore);
+            return multiplyScore;
         }
 
         private static int calculatePlayerScore(List<Integer> player) {
