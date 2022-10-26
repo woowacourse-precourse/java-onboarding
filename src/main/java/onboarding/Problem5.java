@@ -22,6 +22,7 @@ public class Problem5 {
     static void convertMoney(int money, int[] currencyArr, int[] countArr) {
         int len = currencyArr.length;
         for (int i = 0; i < len; i++) {
+            int count = getCount(money, currencyArr[i]);
 
         }
     }
@@ -32,5 +33,9 @@ public class Problem5 {
         }
 
         return 0;
+    }
+
+    static int deductMoney(int money, int count) {
+        return money - count;
     }
 }
