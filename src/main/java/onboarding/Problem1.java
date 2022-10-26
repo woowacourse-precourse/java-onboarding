@@ -174,3 +174,29 @@ class PageNumber {
         return multiple;
     }
 }
+
+class Referee {
+    private final String DEFUALTUSER1 = "pobi";
+    private final String DEFUALTUSER2 = "crong";
+
+    public int judge(User user1, User user2) {
+        if (user1.getScore() == user2.getScore()) {
+            return 0;
+        }
+        String winnerName = winnerName(user1, user2);
+        if (winnerName == DEFUALTUSER1) {
+            return 1;
+        }
+        if (winnerName == DEFUALTUSER2) {
+            return 2;
+        }
+        return -1;
+    }
+
+    private String winnerName(User user1, User user2) {
+        if (user1.getScore() > user2.getScore()) {
+            return user1.getName();
+        }
+        return user2.getName();
+    }
+}
