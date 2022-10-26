@@ -26,15 +26,21 @@ class Problem1 {
         return result;
     }
 
-    private static int getHighNumber(Integer number1, Integer number2) {
-        return Math.max(number1, number2);
+    private static int getHighResult(Integer number) {
+        int addResult = addNumber(number);
+        int multiplyResult = multiplyNumber(number);
+        return Math.max(addResult, multiplyResult);
     }
 
-    private static int getScore(Integer leftNumber, Integer rightNumber) {
-        return getHighNumber(leftNumber, rightNumber);
+    private static int getScore(List<Integer> numberList) {
+        int leftHighResult = getHighResult(numberList.get(0));
+        int rightHighResult = getHighResult(numberList.get(1));
+        return Math.max(leftHighResult, rightHighResult);
     }
 
     private static boolean checkNumberListValidation(List<Integer> numberList) {
         return numberList.get(0) % 2 == 1 && numberList.get(1) - numberList.get(0) == 1;
     }
+
+
 }
