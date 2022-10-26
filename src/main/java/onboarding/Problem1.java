@@ -33,14 +33,14 @@ class Problem1 {
         return pageMaxValue;
     }
 
-    private static List<Integer> getEachNumbers(Integer integer) {
-        List<Integer> valueList = new ArrayList<>();
-        int loopTimes = integer.toString().length();
+    private static List<Integer> getEachNumbers(Integer page) {
+        List<Integer> eachNumbers = new ArrayList<>();
+        int loopTimes = page.toString().length();
         for (int i = 0; i < loopTimes; i++) {
-            valueList.add(integer % 10);
-            integer /= 10;
+            eachNumbers.add(page % 10);
+            page /= 10;
         }
-        return valueList;
+        return eachNumbers;
     }
 
     private static Integer doSum(List<Integer> eachNumbers) {
