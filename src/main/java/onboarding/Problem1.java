@@ -50,6 +50,10 @@ class Problem1 {
         return mul;
     }
 
+    private int resultOfGame(int pValue, int cValue) {
+        return pValue == cValue ? 0 : pValue > cValue ? 1 : 2;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
