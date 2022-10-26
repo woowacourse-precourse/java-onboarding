@@ -4,8 +4,8 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        exs(pobi, crong); // ex test
-        
+        if(exs(pobi, crong)) return -1; // ex test
+
         int answer = Integer.MAX_VALUE;
         return answer;
     }
