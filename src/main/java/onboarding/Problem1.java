@@ -50,4 +50,10 @@ class Problem1 {
         Integer rightPageNum = player.get(1);
         return ((leftPageNum % 2 != 0) && (rightPageNum % 2 == 0));
     }
+
+    public static boolean validatePageRange(List<Integer> player) {
+        Integer leftPageNum = player.get(0);
+        Integer rightPageNum = player.get(1);
+        return ((leftPageNum > 1) && (rightPageNum < 400));
+    }
 }
