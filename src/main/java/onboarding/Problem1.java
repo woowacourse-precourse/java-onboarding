@@ -15,6 +15,16 @@ class Problem1 {
     }
 
     // TODO 자리수를 구하는 메서드
+    static int getScoreDigit(int num) {
+        List<Integer> list = new ArrayList<>();
+        while (num > 0) {
+            list.add(num%10);
+            num = num /10;
+            System.out.println(list);
+        }
+        return list.size();
+    }
+
     // TODO 큰 값을 리턴하는 메서드
 
     // TODO pobi와 crong의 값을 비교하는 메서드
