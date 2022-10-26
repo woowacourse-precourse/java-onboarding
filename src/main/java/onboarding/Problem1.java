@@ -24,6 +24,12 @@ class Problem1 {
 
     //잘못된 페이지인지 확인
     static boolean isWrongPage(int leftPage, int rightPage) {
-        return true;
+        if (leftPage > rightPage) {
+            return true;
+        }
+        if (rightPage - leftPage > 1) {
+            return true;
+        }
+        return false;
     }
 }
