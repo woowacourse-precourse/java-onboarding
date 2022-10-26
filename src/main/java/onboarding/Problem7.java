@@ -26,6 +26,14 @@ public class Problem7 {
                 userToScore.put(friend.get(0), userToScore.getOrDefault(friend.get(0), 0) + 10);
             }
         }
+
+        for (String visitor : visitors) {
+            if (myFriends.contains(visitor)) {
+                continue;
+            }
+            userToScore.put(visitor, userToScore.getOrDefault(visitor, 0) + 1);
+        }
+
         return answer;
     }
 }
