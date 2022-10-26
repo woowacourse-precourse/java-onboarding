@@ -8,17 +8,28 @@ class Problem1 {
         if(check(pobi)&& check(crong)){
             int pobiMax = calculateMax(pobi);
             int crongMax = calculateMax(crong);
-            if (pobiMax > crongMax) return 1;
-            else if (pobiMax < crongMax) return 2;
-            else return 0;
-        }else return -1;
+            if(pobiMax > crongMax) return 1;
+            if(pobiMax < crongMax) return 2;
+            if(pobiMax == crongMax) return 0;
+        }
+        // 둘 중 한명이라도 책의 페이지가 연속적이지 않으면 예외사항 반환
+        if(!check(pobi)||!check(crong))return -1;
+        return -100;
     }
 
+    /**
+     * 핀 책의 왼쪽, 오른쪽 페이지의 연속적 여부 반환
+     * @return
+     */
     private static boolean check(List<Integer> list) {
         if(list.get(1)-list.get(0)==1)return true;
         else return false;
     }
 
+    /**
+     * 한 사람의 최대 페이지 값 반환
+     * @return max
+     */
     private static int calculateMax(List<Integer> list) {
         int left= list.get(0);
         int right= list.get(1);
@@ -27,6 +38,10 @@ class Problem1 {
         int max = Math.max(sumMax, multiMax);
         return max;
     }
+    /**
+     * 각 자릿수의 합 반환
+     * @return sum
+     */
     private static int numSum(int i){
         int sum = 0;
         while(i>0){
@@ -35,6 +50,10 @@ class Problem1 {
         }
         return sum;
     }
+    /**
+     * 각 자릿수의 곱 반환
+     * @return multi
+     */
     private static int numMulti(int i){
         int multi = 1;
         while(i>0){
