@@ -60,6 +60,9 @@
 
 설계<br/>
 
+- [ ] Frog는 String repeatAfter(String speak) 메소드를 통해 엄마 개구리의 말을 따라한다.
+- [ ] Frog의 구현체 TreeFrog는 요구사항의 문제4의 규칙에 따라 알파벳을 변환하여 출력한다. 
+
 
 </details>
 
