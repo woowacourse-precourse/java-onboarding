@@ -72,7 +72,7 @@ class Problem1 {
      * @return return if left and right is in range and left + 1 is right
      */
     private boolean isAvailableValues(int left, int right) {
-        return 1 <= left && left < max && left + 1 == right;
+        return left < max && left % 2 == 1 && left + 1 == right;
     }
 
     /**
