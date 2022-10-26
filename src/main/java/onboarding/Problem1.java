@@ -25,4 +25,11 @@ class Problem1 {
         }
         return eachDigitNumMultiplication;
     }
+
+    public int returnLargerOne(Integer comparisonNum1, Integer comparisonNum2) {
+        int largerNum = 0;
+        if(comparisonNum1 >= comparisonNum2) largerNum = comparisonNum1;
+        if(comparisonNum1 < comparisonNum2) largerNum = comparisonNum1;
+        return largerNum;
+    }
 }
