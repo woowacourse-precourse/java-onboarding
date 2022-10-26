@@ -8,6 +8,10 @@ class Problem1 {
         if (!errorHandle(pobi.get(0), pobi.get(1)) || !errorHandle(crong.get(0), crong.get(1))) {
             return -1;
         }
+        int pobiScore = max(getBig(pobi.get(0)), getBig(pobi.get(1)));
+        int crongScore = max(getBig(crong.get(0)), getBig(crong.get(1)));
+
+        answer = getWinner(pobiScore, crongScore);
 
         return answer;
     }
