@@ -9,6 +9,7 @@ public class Referee {
     public static final int START_PAGE_NUMBER_TWO = 2;
     public static final int END_PAGE_NUMBER_LEFT = 399;
     public static final int END_PAGE_NUMBER_RIGHT = 400;
+    public static final String INPUT_EXCEPTION_MESSAGE = "올바르지 않은 입력 값 입니다.";
     private final Player pobi;
     private final Player crong;
 
@@ -29,16 +30,16 @@ public class Referee {
         int rightPageNumber = player.get(Player.RIGHT_PAGE_INDEX);
 
         if (!isRightPage(leftPageNumber, rightPageNumber)) {
-            throw new IllegalArgumentException("올바르지 않은 입력 값 입니다.");
+            throw new IllegalArgumentException(INPUT_EXCEPTION_MESSAGE);
         }
         if (!isContinuousPage(leftPageNumber, rightPageNumber)) {
-            throw new IllegalArgumentException("올바르지 않은 입력 값 입니다.");
+            throw new IllegalArgumentException(INPUT_EXCEPTION_MESSAGE);
         }
         if (isStartPage(leftPageNumber, rightPageNumber)) {
-            throw new IllegalArgumentException("올바르지 않은 입력 값 입니다.");
+            throw new IllegalArgumentException(INPUT_EXCEPTION_MESSAGE);
         }
         if (isEndPage(leftPageNumber, rightPageNumber)) {
-            throw new IllegalArgumentException("올바르지 않은 입력 값 입니다.");
+            throw new IllegalArgumentException(INPUT_EXCEPTION_MESSAGE);
         }
     }
 
