@@ -59,6 +59,7 @@ public class Problem7 {
     }
 
     /**
+     * 기능 3
      * 기능 2에 만든 리스트에 방문자 리스트 및 점수 추가
      */
     public static HashMap<String, Integer> addVisitorScore(HashMap<String, Integer> recommendNameWithScoreMap, List<String> visitor) {
@@ -77,7 +78,14 @@ public class Problem7 {
 
     /**
      * 기능 4
-     * 점수가 높은 순서대로 정렬
+     * 점수가 높은 순서대로 정렬 및 Map -> List
      */
+    public static List<String> sortHashMapAndConvert(HashMap<String, Integer> recommendNameWithScore) {
+        List<String> rankOfRecommend = new ArrayList<>(recommendNameWithScore.keySet());
+
+        rankOfRecommend.sort(((o1, o2) -> recommendNameWithScore.get(o2).compareTo(recommendNameWithScore.get(o1))));
+
+        return rankOfRecommend;
+    }
 
 }
