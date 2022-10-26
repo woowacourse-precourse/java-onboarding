@@ -12,11 +12,11 @@ public class Problem3 {
 
     public static int clap(int clapNum) {
         int numResult = 0;
-//
-//        for(int i=0; i<clapNum; i++) {
-//            numResult += judgment(i);
-//        }
-//
+
+        for(int i=0; i<clapNum; i++) {
+            numResult += judgment(i);
+        }
+
         return numResult;
     }
 
