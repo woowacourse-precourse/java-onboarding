@@ -86,16 +86,16 @@ class Problem1 {
     }
 
     private static Integer getMaxScoreCalculate(Integer page) {
-        Integer addictionScore = getAdditionScore(page);
-        Integer multiplyScore = getMultiplicationScore(page);
+        Integer additionScore = getAdditionScore(page);
+        Integer multiplicationScore = getMultiplicationScore(page);
 
-        Integer result = Math.max(addictionScore, multiplyScore);
+        Integer result = Math.max(additionScore, multiplicationScore);
 
         return result;
     }
 
     private static Integer getAdditionScore(Integer page) {
-        List<Integer> pageList = integer2IntArray(page);
+        List<Integer> pageList = integer2List(page);
 
         Integer result = pageList.stream().reduce(0, Integer::sum);
 
@@ -103,14 +103,14 @@ class Problem1 {
     }
 
     private static Integer getMultiplicationScore(Integer page) {
-        List<Integer> pageList = integer2IntArray(page);
+        List<Integer> pageList = integer2List(page);
 
-        Integer result = pageList.stream().reduce(1, (x, y) -> x * y);
+        Integer result = pageList.stream().reduce(1, (a, b) -> a * b);
 
         return result;
     }
 
-    private static List<Integer> integer2IntArray(Integer page) {
+    private static List<Integer> integer2List(Integer page) {
         String pageString = page.toString();
         List<Integer> pageList = new ArrayList<>();
 
