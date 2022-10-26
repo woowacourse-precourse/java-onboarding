@@ -31,3 +31,4 @@
 - [x] feat: add calculate sum method
 - [x] feat: add calculate multiplication method 
 - [x] feat: add error handling and result game method
+- [x] feat: add error handling conditional statement
