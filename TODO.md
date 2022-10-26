@@ -1,6 +1,7 @@
 # 우테코 프리코스 1주차 추가 요구사항 및 설계 정리
+<hr>
 
-## 설계 및 추가 요구사항, 구현된 기능은 체크됨
+## 설계 및 추가 사항, 구현된 기능은 체크됨
 
 
 <details>
@@ -8,7 +9,7 @@
 
 [문제 1](./docs/PROBLEM1.md)
 
-추가 요구사항 분석<br/>
+추가 사항<br/>
 
 - 제한사항으로 pobi와 crong의 길이는 항상 2이므로 null check를 하지 않아도 된다.(선택)
 - 1부터 400페이지의 책을 주웠으나, 입력 제한사항에 값의 범위가 기재되지 않아 입력된 값이 400이상인지 판단해야한다.
@@ -21,6 +22,7 @@
 - [x] PageValidator는 boolean isValid(List\<Integer> user)를 통해 입력값이 유효한지 판단한다.
 
 </details>
+
 
 <details>
 
@@ -36,3 +38,63 @@
 </details>
 
 
+<details>
+
+<summary>문제 3</summary>
+
+[문제 3](./docs/PROBLEM3.md)
+
+설계<br/>
+
+- [x] ClapGame은 int getResult() 를 통해 결과를 반환하며 몇 번 박수를 쳤는지 나타낸다.
+- [x] ClapGame의 구현체는 각자의 기준에 따라 박수를 치며, 이번 구현체는 3, 6, 9가 포함 된 만큼 박수를 치게 된다.
+
+</details>
+
+
+<details>
+
+<summary>문제 4</summary>
+
+[문제 4](./docs/PROBLEM4.md)
+
+설계<br/>
+
+
+</details>
+
+
+<details>
+
+<summary>문제 5</summary>
+
+[문제 5](./docs/PROBLEM5.md)
+
+설계<br/>
+
+
+</details>
+
+
+<details>
+
+<summary>문제 6</summary>
+
+[문제 6](./docs/PROBLEM6.md)
+
+설계<br/>
+
+
+</details>
+
+
+<details>
+
+<summary>문제 7</summary>
+
+[문제 7](./docs/PROBLEM7.md)
+
+설계<br/>
+
+
+</details>
