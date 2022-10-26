@@ -4,6 +4,8 @@ public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
 
+        answer = countClap(number);
+
         return answer;
     }
 
@@ -19,7 +21,7 @@ public class Problem3 {
             int temp = i;
             while(temp != 0)
             {
-                if((temp % 10) % 3 == 0) // temp의 첫째 자리 수가 3,6,9일 경우
+                if(temp % 10 == 3 || temp % 10 == 6 || temp % 10 == 9) // temp의 첫째 자리 수가 3,6,9일 경우
                 {
                     count++;
                 }
