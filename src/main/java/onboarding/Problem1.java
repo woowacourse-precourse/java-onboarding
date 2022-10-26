@@ -15,8 +15,8 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
-        if (validatePageNumber(pobi) == -1 && validatePageNumber(crong) == -1) {
-            return -1;
+        if (validatePageNumber(pobi) == EXCEPTION_MESSAGE || validatePageNumber(crong) == EXCEPTION_MESSAGE) {
+            return EXCEPTION_MESSAGE;
         }
 
         List<Integer> pobiBiggerPageNumbers = saveUserBiggerPageNumber(pobi);
