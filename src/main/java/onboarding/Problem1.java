@@ -1,10 +1,24 @@
 package onboarding;
 
 import java.util.List;
+import java.util.Arrays;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = -1;
+        int answer = 1;
+
+        // 예외 처리
+        if (pageExcept(pobi) || pageExcept(crong)) {
+            return -1;
+        }
+        int pobiNum = pageCal(pobi); // 포비의 최대값
+        int crongNum = pageCal(crong); // 크롱의 최대값
+
+        if (pobiNum < crongNum) {
+            answer = 2;
+        } else if (pobiNum == crongNum) {
+            answer = 0;
+        }
 
         return answer;
     }
@@ -20,9 +34,7 @@ class Problem1 {
         pageNumArr[2] = pageSum(pageLst.get(1)); // 오른쪽 페이지 각 자릿수 모두 더한 값
         pageNumArr[3] = pageMul(pageLst.get(1)); // 오른쪽 페이지 각 자릿수 모두 곱한 값
 
-        // 정렬해서 사용한다면 추후에 두, 세 번째로 큰 값을 구해야할 때도 편하게 사용할 수 있음
         Arrays.sort(pageNumArr);
-        System.out.println("배열 : " + Arrays.toString(pageNumArr));
         maxNum = pageNumArr[pageNumArr.length - 1];
 
         return maxNum;
@@ -37,7 +49,7 @@ class Problem1 {
         return false;
     }
 
-    // 페이지를 매개변수로 받으면 해당 페이지의 자릿수를 모두 더한 값을 리턴
+    // 해당 페이지의 자릿수를 모두 더한 값을 리턴
     public static int pageSum(int page) {
         int sum = 0;
 
@@ -45,19 +57,17 @@ class Problem1 {
             sum += page % 10;
             page /= 10;
         }
-
         return sum;
     }
 
-    // 페이지를 매개변수로 받으면 해당 페이지의 자릿수를 모두 곱한 값을 리턴
+    // 해당 페이지의 자릿수를 모두 곱한 값을 리턴
     public static int pageMul(int page) {
-        int mul = 0;
+        int mul = 1;
 
         while(page > 0){
             mul *= page % 10;
             page /= 10;
         }
-
         return mul;
     }
 }
