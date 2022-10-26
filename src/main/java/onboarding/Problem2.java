@@ -1,11 +1,11 @@
 package onboarding;
 
 import java.util.Stack;
+import java.util.stream.Collectors;
 
 public class Problem2 {
 
     public static String solution(String cryptogram) {
-        String answer = "answer";
         Stack<Character> stack = new Stack<>();
         int len = cryptogram.length();
         for (int i = 0; i < len; i++) {
@@ -18,6 +18,6 @@ public class Problem2 {
             }
         }
 
-        return answer;
+        return stack.stream().map(String::valueOf).collect(Collectors.joining());
     }
 }
