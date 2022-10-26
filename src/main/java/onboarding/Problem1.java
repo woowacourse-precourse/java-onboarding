@@ -47,7 +47,11 @@ class Problem1 {
         return finalValue;
     }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        if(exceptionCase(pobi) || exceptionCase(crong)) {
+            return -1;
+        }
+        int pobi_max = maxValue(maxValueOfPage(pobi.get(0)), maxValueOfPage(pobi.get(1)));
+        int crong_max = maxValue(maxValueOfPage(crong.get(0)), maxValueOfPage(crong.get(1)));
+        return finalValue(pobi_max, crong_max);
     }
 }
