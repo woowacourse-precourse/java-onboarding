@@ -24,7 +24,7 @@ public class Problem2 {
             idx = dupStr(cryptogram);
             if (idx == -1)
                 break;
-            cryptogram = cryptogram.substring(idx, idx + 1);
+            cryptogram = cryptogram.substring(0, idx) + cryptogram.substring(idx + 2);
         }
         return cryptogram;
     }
