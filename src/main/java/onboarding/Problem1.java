@@ -60,27 +60,12 @@ class User {
     private final String name;
     private final List<Integer> choiceNumbers = new ArrayList<>();
 
-    private int score;
-
     public String getName() {
         return name;
     }
 
     public List<Integer> getChoiceNumbers() {
         return choiceNumbers;
-    }
-
-    public int getScore() {
-        if (this.score != 0) {
-            return this.score;
-        }
-        int left = choiceNumbers.get(0);
-        int right = choiceNumbers.get(1);
-        List<Integer> digitLeft = getDigit(left);
-        List<Integer> digitRight = getDigit(right);
-        int score = maxResult(digitLeft, digitRight);
-        this.score = score;
-        return score;
     }
 
     User(String name) {
@@ -101,21 +86,6 @@ class User {
             choiceNumbers.add(randomNumber);
             choiceNumbers.add(randomNumber + 1);
         }
-    }
-
-    private int maxResult(List<Integer> digitLeft, List<Integer> digitRight) {
-        int digitPlusLeft = digitPlus(digitLeft);
-        int digitMultipleLeft = digitMultiple(digitLeft);
-        int digitPlusRight = digitPlus(digitRight);
-        int digitMultipleRight = digitMultiple(digitRight);
-        int arr[] = {digitPlusLeft, digitMultipleLeft, digitPlusRight, digitMultipleRight};
-        int max = arr[0];
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] > max) {
-                max = arr[i];
-            }
-        }
-        return max;
     }
 }
 
