@@ -14,4 +14,17 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+
+    private static class Player {
+        private  static final int LEFT_PAGE_INDEX = 0;
+        private  static final int RIGHT_PAGE_INDEX = 1;
+
+        private final int leftPage;
+        private final int rightPage;
+
+        public Player(List<Integer> pages) {
+            this.leftPage = pages.get(LEFT_PAGE_INDEX);
+            this.rightPage = pages.get(RIGHT_PAGE_INDEX);
+        }
+    }
 }
