@@ -15,4 +15,15 @@ class Problem1 {
                 .mapToInt(Integer::parseInt).toArray();
         return digits;
     }
+
+    // 페이지 숫자를 더하는 함수
+    private static int plusNumber(int input) {
+        int[] digits = changeArray(input);
+        int result = 0;
+        for(int i = 0; i<digits.length; i++) {
+            result += digits[i];
+        }
+
+        return result;
+    }
 }
