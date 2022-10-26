@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * 기능 사항
@@ -69,7 +70,19 @@ public class Problem6 {
     }
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        nicknameMap.clear();
+        answerSet.clear();
+
+        List<User> ids = forms.stream().map(s -> new User(s.get(1), s.get(0))).collect(Collectors.toList());
+
+        for (int i = 0; i < ids.size(); i++) {
+            calc(ids.get(i).nickname, i);
+        }
+        List<Integer> ans = new ArrayList<>(answerSet);
+        Set<String> answer = new HashSet<>();
+        ans.forEach((i) -> answer.add(ids.get(i).getEmail()));
+        List<String> result = new ArrayList<>(answer);
+        Collections.sort(result);
+        return result;
     }
 }
