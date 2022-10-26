@@ -7,15 +7,15 @@ public class Problem2 {
     }
 
     //중복 제거 함수
-
-    //중복 제거 결과를 반환할 클래스
-    class result{
-        private boolean changed;
-        private String str;
-
-        public result(boolean changed, String str){
-            this.changed = changed;
-            this.str = str;
+    private static String deduplication(String cryptogram){
+        String changeString = cryptogram.replaceAll("[a-z]{2,}","");
+        //원래 문자와 같다면 FALSE 문자 반환
+        if(cryptogram.equals(changeString)){
+            return "FALSE";
+        }
+        //다르다면 바뀐 문자 반환
+        else{
+            return changeString;
         }
     }
 }
