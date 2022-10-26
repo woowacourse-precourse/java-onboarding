@@ -9,8 +9,6 @@ class Problem1 {
 
             return -1;
         }
-        System.out.println(CheckBiggerOne(pobi));
-        System.out.println(CheckBiggerOne(crong));
         if(CheckBiggerOne(pobi)==CheckBiggerOne(crong)){
             return 0;
         }

@@ -1,6 +1,6 @@
 package onboarding;
 
-import java.util.List;
+import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -8,62 +8,41 @@ public class Problem6 {
         return answer;
     }
     public static List<String> checkDouble(List<List<String>> forms) {
-        System.out.println(forms.get(0).get(1));
-        /**
-         * 이미 회원은 다 받아져 있는 상태
-         * 그러니 for문을 돌면서 fomrms 내에 있는 닉네임을 나눈것을 비교해보아야한다.
-         * 닉네임이 한글만 가능하고 전체 길이는 1자 이상 20자 미만이므로
-         * 최대값일때 20자 내에 연속적으로 포함되는 닉네임을 가진것을 모두 체크해야 한다.
-         * 두글자 이상의 문자가 연속적으로 포함되는 닉네임이여아하므로, 체크하는 값은 slice와 같은것으로 잘라내서 봐야할듯?
-         *
-         *  {a,b,c,d,e,f,g}
-         *
-         *  연속되는 문자가 2개일때
-         *  ab
-         *  bc
-         *  cd
-         *  de
-         *  ef
-         *  fg
-         *
-         *  연속되는 문자가 3개일때
-         *
-         *  abc
-         *  bcd
-         *  cde
-         *  def
-         *  efg
-         *
-         *  연속되는 문자가 4개일때
-         *
-         *  a,b
-         *  abc
-         *  abcd
-         *  abcde
-         *  abcdef
-         *  abcdefg
-         *
-         *  bc
-         *  bcd
-         *  bcde
-         *  bcdef
-         *  bcdefg
-         *  cd
-         *  cde
-         *  cdef
-         *  cdefg
-         *
-         *  de
-         *  def
-         *  defg
-         *  ef
-         *  efg
-         *  fg
-         *
-         *
-         * 중복되는 일부 닉네임을 리스트로 만들고, 그 리스트를 for문을 통해서 돌려봐야겠다.
-         */
-        List<String> result = List.of("answer");
+        //List로 현재 이름중 중복에 해당하는 값을 저장
+        List<String> result = new ArrayList<String>();
+        ArrayList[] checkList = new ArrayList[forms.size()];
+        ArrayList<String> checkAllList = new ArrayList<String>();
+        for(int i = 0; i<forms.size();i++){
+            checkList[i] = new ArrayList<>();
+            String name = forms.get(i).get(1);
+            System.out.println(name);
+            for(int j = 0; j<name.length()-1; j++) {
+                for (int m = 0; m < name.length() - 1; m++) {
+                    String nextWord = name.substring(j, name.length() - m);
+                    if (nextWord.length() > 1) {
+                        checkList[i].add(nextWord);
+                       if (checkAllList.indexOf(nextWord) < 0) {
+                            checkAllList.add(nextWord);
+                        }
+                    }
+                }
+            }
+        System.out.println(checkList[i]);
+        }
+        //checkList[i]내의 값을 돌아서, 같은 값이 있으면 result에 그값을 넣는다...
+        for (int i = 0; i <forms.size()-1; i++) {
+            for (int j = 0; j <checkList[i].size()-1; j++) {
+                System.out.println(checkList[i].get(j));
+                if(checkAllList.indexOf(checkList[i].get(j))>0){
+                    result.add(forms.get(i).get(0));
+                }
+                checkAllList.add(checkList[i].get(j).toString());
+            }
+        }
+        Collections.sort(result);
+        Set<String> finalAnser = new HashSet<String>(result);
+        result = new ArrayList<String>(finalAnser);
+        System.out.println(result);
         return result;
     }
 
