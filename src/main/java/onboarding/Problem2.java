@@ -68,10 +68,10 @@ public class Problem2 {
     }
 
     /*
-     * 중복된 문자들를 한 단계 제거한다.
+     * 중복된 문자들를 한 단계 제거합니다.
      *
-     * @param 해독할 문자열
-     * @return 중복 문자들이 한 번 제거된 문자열
+     * @param 해독할 문자열입니다.
+     * @return 중복 문자들이 한 번 제거된 문자열입니다.
      * */
     private static String removeRepeatingLetters(String cryptogram) {
         Stack<Character> letters = new Stack<Character>();
@@ -86,14 +86,25 @@ public class Problem2 {
                 }
                 continue;
             }
+            letters.add(currentLetter);
             previousLetter = currentLetter;
             popped = false;
         }
-        return "";
+        return stringify(letters);
     }
 
-    private static String stringify(String cryptogram) {
-        return "";
+    /*
+     * 스택에 저장된 문자들을 하나의 문자열로 합칩니다.
+     *
+     * @param 문자 스택입니다.
+     * @return 합친 문자열입니다.
+     * */
+    private static String stringify(Stack<Character> letters) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (char letter: letters) {
+            stringBuilder.append(letter);
+        }
+        return stringBuilder.toString();
     }
 
     /*
