@@ -8,10 +8,10 @@ import java.util.stream.Collectors;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        return removeDuplicateStr(cryptogram);
+        return checkDuplicateLetter(cryptogram);
     }
 
-    private static String removeDuplicateStr(String cryptogram) {
+    private static String checkDuplicateLetter(String cryptogram) {
         Set<Integer> removeSet = new LinkedHashSet<>();
         for (int i = 1; i < cryptogram.length(); i++) {
             if (cryptogram.charAt(i - 1) == cryptogram.charAt(i)) {
@@ -21,13 +21,13 @@ public class Problem2 {
         }
 
         if (removeSet.size() != 0) {
-            cryptogram = removeDuplicateIdx(cryptogram, removeSet);
-            return removeDuplicateStr(cryptogram);
+            cryptogram = removeDuplicateLetter(cryptogram, removeSet);
+            return checkDuplicateLetter(cryptogram);
         }
         return cryptogram;
     }
 
-    private static String removeDuplicateIdx(String cryptogram, Set<Integer> removeSet) {
+    private static String removeDuplicateLetter(String cryptogram, Set<Integer> removeSet) {
         List<Integer> removeList = removeSet.stream().sorted(Comparator.reverseOrder())
             .collect(Collectors.toList());
 
