@@ -17,7 +17,7 @@ class Book {
     private final int pageStart;
     private final int pageEnd;
 
-    private static final int defaultPageStart = 0;
+    private static final int defaultPageStart = 1;
     private static final int defaultPageEnd = 400;
 
     private static void validatePageStart(int pageStart) {
@@ -158,6 +158,7 @@ class PageNumber {
                 digitCount++;
                 number = number / 10;
             }
+            pass = true;
         }
         return digitCount;
     }
