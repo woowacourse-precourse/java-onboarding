@@ -19,4 +19,13 @@ class Problem1 {
             return addValue;
 	}
 
+    private static int digitMultiple(Integer page) {
+        int multipleValue = 1;
+        while(page!=0){
+            multipleValue *= page % NUMBER_OF_DIGIT_DIVISION;
+            page /= NUMBER_OF_DIGIT_DIVISION;
+        }
+        return multipleValue;
+    }
+
 }
