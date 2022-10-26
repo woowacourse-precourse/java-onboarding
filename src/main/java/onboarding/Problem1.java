@@ -7,4 +7,14 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+    public static int addElements(int n) {
+        int total = 0;
+
+        while (n > 0) {
+            total += n % 10;
+            n = n / 10;
+        }
+
+        return total;
+    }
 }
