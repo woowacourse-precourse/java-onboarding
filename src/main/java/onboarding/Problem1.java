@@ -6,6 +6,8 @@ import java.util.stream.Stream;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+
+
         return answer;
     }
 
@@ -74,9 +76,20 @@ class Problem1 {
         }
     }
 
-
     /*
     기능 4
     페이지가 주어졌을 때, 예외사항을 판단하는 기능
      */
+    public static boolean validatePage(List<Integer> pobi, List<Integer> crong)
+    {
+        if(pobi.get(0) + 1 == pobi.get(1) && crong.get(0) + 1 == crong.get(1)) // 왼쪽 페이지에 1을 더해서 오른쪽 페이지 숫자가 나오는 경우를 포비와 크롱 모두 통과하면 true
+        {
+            return true;
+        }else
+        {
+            return false;
+        }
+    }
+
+
 }
