@@ -3,6 +3,9 @@ package onboarding;
 import java.util.List;
 
 /**
+ * Game_starter
+ * 1. open_book() = 책을 랜덤으로 펼친다.
+ *
  * Validator
  * 1. is_proper_pages() = 알맞은 페이지 리스트가 들어왔는지 검증 ( 오류시 ERROR (-1) 반환 )
  *
