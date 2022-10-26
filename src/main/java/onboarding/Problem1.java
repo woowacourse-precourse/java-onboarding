@@ -94,19 +94,25 @@ class PageNumber {
         boolean pass = false;
         int randomNumber = 0;
         while (!pass) {
-            randomNumber = (int) (Math.random() * pageEnd) - 1;
-            boolean checkRandomNumber = checkRandomNumber(randomNumber, pageStart);
+            randomNumber = (int) (Math.random() * pageEnd) + 1;
+            boolean checkRandomNumber = checkRandomNumber(randomNumber, pageStart, pageEnd);
             if (checkRandomNumber) {
                 pass = true;
             }
         }
         return randomNumber;
     }
-    private static boolean checkRandomNumber(int randomNumber, int pageStart) {
+    private static boolean checkRandomNumber(int randomNumber, int pageStart, int pageEnd) {
         if (randomNumber == pageStart) {
             return false;
         }
         if (randomNumber == pageStart + 1) {
+            return false;
+        }
+        if (randomNumber == pageEnd) {
+            return false;
+        }
+        if (randomNumber == pageEnd - 1) {
             return false;
         }
         return true;
@@ -127,8 +133,9 @@ class PageNumber {
             if (number / 10 != 0) {
                 digitCount++;
                 number = number / 10;
+            } else {
+                pass = true;
             }
-            pass = true;
         }
         return digitCount;
     }
