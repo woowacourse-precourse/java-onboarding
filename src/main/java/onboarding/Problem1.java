@@ -81,4 +81,26 @@ class Problem1 {
         }
     };
 
+    private static int multValue(Integer a){
+        int number = a;
+        int result = 1;
+        while(number!=0){
+            result*=(number%10);
+            number/=10;
+        }
+
+        return result;
+    };
+    private static int sumValue(Integer a){
+        int number = a;
+        int result = 0;
+        while(number!=0){
+            result+=(number%10);
+            number/=10;
+        }
+
+        return result;
+    };
+
+
 }
