@@ -3,6 +3,16 @@ package onboarding;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * 기능 목록
+ *  a. 각 페이지 유효성 검사 기능 - validatePage()
+ *      a-1. 각 페이지가 1씩 순차적인지 검사하는 기능 - isSequentialPage()
+ *      a-2. 각 페이지가 첫 페이지 또는 마지막 페이지인지 검사하는 기능 - isFirstOrLastPage()
+ *  b. 페이지의 각 자리수를 더한 값과 곱한 값중 가장 큰 값을 계산하는 기능 - max()
+ *      b-1. Integer 숫자 각 자리수를 int[]로 변환하는 기능 - toIntArray()
+ *      b-2. int[] 배열의 합을 구하는 기능 - getSumNumber()
+ *      b-3. int[] 배열의 곱을 구하는 기능 - getMulNumber()
+ * */
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (!validatePage(pobi) || !validatePage(crong)) {
