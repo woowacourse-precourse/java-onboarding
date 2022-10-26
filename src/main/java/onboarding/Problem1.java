@@ -4,6 +4,7 @@ import static onboarding.Problem1.CalculateScoreConst.ADD_SCORE_DEFAULT_VALUE;
 import static onboarding.Problem1.CalculateScoreConst.CALCULATE_REMAINDER_VALUE;
 import static onboarding.Problem1.CalculateScoreConst.DECIMAL_UNIT_VALUE;
 import static onboarding.Problem1.CalculateScoreConst.MULTIPLY_SCORE_DEFAULT_VALUE;
+import static onboarding.Problem1.GameCalculator.calculateGameResult;
 import static onboarding.Problem1.GameResultConst.CRONG_WIN_RESULT;
 import static onboarding.Problem1.GameResultConst.EXCEPTION_RESULT;
 import static onboarding.Problem1.GameResultConst.POBI_WIN_RESULT;
@@ -63,36 +64,42 @@ class Problem1 {
         }
     }
 
-    private static int calculateGameResult(List<Integer> pobi, List<Integer> crong) {
-        if (!(validatePage(pobi) && validatePage(crong))) {
-            return EXCEPTION_RESULT;
+    public static class GameCalculator {
+
+        private GameCalculator() {
         }
 
-        int pobiScore = calculatePlayerScore(pobi);
-        int crongScore = calculatePlayerScore(crong);
+        public static int calculateGameResult(List<Integer> pobi, List<Integer> crong) {
+            if (!(validatePage(pobi) && validatePage(crong))) {
+                return EXCEPTION_RESULT;
+            }
 
-        return pobiScore > crongScore ? POBI_WIN_RESULT
-            : pobiScore < crongScore ? CRONG_WIN_RESULT : TIE_RESULT;
-    }
+            int pobiScore = calculatePlayerScore(pobi);
+            int crongScore = calculatePlayerScore(crong);
 
-    private static int calculatePageScore(Integer pageNumber) {
-        int targetPageNumber = pageNumber;
-        int addScore = ADD_SCORE_DEFAULT_VALUE;
-        int multiplyScore = MULTIPLY_SCORE_DEFAULT_VALUE;
-
-        while (targetPageNumber != CALCULATE_REMAINDER_VALUE) {
-            addScore += targetPageNumber % DECIMAL_UNIT_VALUE;
-            multiplyScore *= targetPageNumber % DECIMAL_UNIT_VALUE;
-            targetPageNumber /= DECIMAL_UNIT_VALUE;
+            return pobiScore > crongScore ? POBI_WIN_RESULT
+                : pobiScore < crongScore ? CRONG_WIN_RESULT : TIE_RESULT;
         }
-        return Math.max(addScore, multiplyScore);
-    }
 
-    private static int calculatePlayerScore(List<Integer> player) {
-        int leftPageScore = calculatePageScore(player.get(LEFT_PAGE_LIST_INDEX));
-        int rightPageScore = calculatePageScore(player.get(RIGHT_PAGE_LIST_INDEX));
+        private static int calculatePageScore(Integer pageNumber) {
+            int targetPageNumber = pageNumber;
+            int addScore = ADD_SCORE_DEFAULT_VALUE;
+            int multiplyScore = MULTIPLY_SCORE_DEFAULT_VALUE;
 
-        return Math.max(leftPageScore, rightPageScore);
+            while (targetPageNumber != CALCULATE_REMAINDER_VALUE) {
+                addScore += targetPageNumber % DECIMAL_UNIT_VALUE;
+                multiplyScore *= targetPageNumber % DECIMAL_UNIT_VALUE;
+                targetPageNumber /= DECIMAL_UNIT_VALUE;
+            }
+            return Math.max(addScore, multiplyScore);
+        }
+
+        private static int calculatePlayerScore(List<Integer> player) {
+            int leftPageScore = calculatePageScore(player.get(LEFT_PAGE_LIST_INDEX));
+            int rightPageScore = calculatePageScore(player.get(RIGHT_PAGE_LIST_INDEX));
+
+            return Math.max(leftPageScore, rightPageScore);
+        }
     }
 
     public abstract class GameResultConst {
