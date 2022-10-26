@@ -3,6 +3,9 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+    private static final int START_PAGE = 1;
+    private static final int END_PAGE = 400;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         try {
@@ -16,7 +19,17 @@ class Problem1 {
     }
 
     public static void checkException(List<Integer> pageList) throws IllegalStateException {
+        checkListInGivenRange(pageList);
         checkListContainsStartPage(pageList);
+    }
+
+    public static void checkListInGivenRange(List<Integer> pageList) {
+        if(pageList.get(0) <= START_PAGE) {
+            throw new IllegalStateException();
+        }
+        if(pageList.get(1) >= END_PAGE) {
+            throw new IllegalStateException();
+        }
     }
 
     public static void checkListContainsStartPage(List<Integer> pageList) {

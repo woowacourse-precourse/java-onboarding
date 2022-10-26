@@ -132,6 +132,27 @@ class Problem1Test {
 
 	@Nested
 	class exceptionHandlingTest {
+		@Test
+		public void checkListInGivenRangeTest1() {
+			List<Integer> pageList = new ArrayList<>();
+			pageList.add(0);
+			pageList.add(1);
+
+			assertThrows(IllegalStateException.class, () -> {
+				checkListInGivenRange(pageList);
+			});
+		}
+
+		@Test
+		public void checkListInGivenRangeTest2() {
+			List<Integer> pageList = new ArrayList<>();
+			pageList.add(399);
+			pageList.add(400);
+
+			assertThrows(IllegalStateException.class, () -> {
+				checkListInGivenRange(pageList);
+			});
+		}
 
 		@Test
 		public void checkListContainsStartPageTest() {
