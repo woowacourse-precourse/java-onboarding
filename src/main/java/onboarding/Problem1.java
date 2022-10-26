@@ -7,59 +7,53 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
-        int pobiMax, pobiPlusLeft, pobiMulLeft, pobiPlusRight, pobiMulRight;
-        int crongMax, crongPlusLeft, crongMulLeft, crongPlusRight, crongMulRight;
+        int pobiMax;
+        int crongMax;
 
-        if (pobi.get(0)/10 == 0) {
-            pobiMax = pobi.get(1);
-        } else if (pobi.get(0)/100 == 0) {
-            pobiPlusLeft = (pobi.get(0) % 10) + (pobi.get(0) / 10);
-            pobiMulLeft = (pobi.get(0) % 10) * (pobi.get(0) / 10);
+        pobiMax = (getPlus(pobi) > getMul(pobi)) ? getPlus(pobi) : getMul(pobi);
+        crongMax = (getPlus(crong) > getMul(crong) ? getPlus(crong) : getMul(crong));
 
-            pobiPlusRight = (pobi.get(1) % 10) + (pobi.get(1) / 10);
-            pobiMulRight = (pobi.get(1) % 10) * (pobi.get(1) / 10);
-
-            pobiMax = ((pobiPlusLeft > pobiMulLeft) ? pobiPlusLeft : pobiMulLeft) > ((pobiPlusRight > pobiMulRight) ? pobiPlusRight : pobiMulRight) ?
-                    ((pobiPlusLeft > pobiMulLeft) ? pobiPlusLeft : pobiMulLeft) : ((pobiPlusRight > pobiMulRight) ? pobiPlusRight : pobiMulRight);
-        } else {
-            pobiPlusLeft = (pobi.get(0) / 100) + ((pobi.get(0) % 100) / 10) + (pobi.get(0) % 10);
-            pobiMulLeft = (pobi.get(0) / 100) * ((pobi.get(0) % 100) / 10) * (pobi.get(0) % 10);
-
-            pobiPlusRight = (pobi.get(1) / 100) + ((pobi.get(1) % 100) / 10) + (pobi.get(1) % 10);
-            pobiMulRight = (pobi.get(1) / 100) * ((pobi.get(1) % 100) / 10) * (pobi.get(1) % 10);
-
-            pobiMax = ((pobiPlusLeft > pobiMulLeft) ? pobiPlusLeft : pobiMulLeft) > ((pobiPlusRight > pobiMulRight) ? pobiPlusRight : pobiMulRight) ?
-                    ((pobiPlusLeft > pobiMulLeft) ? pobiPlusLeft : pobiMulLeft) : ((pobiPlusRight > pobiMulRight) ? pobiPlusRight : pobiMulRight);
-        }
-
-        if (crong.get(0)/10 == 0) {
-            crongMax = crong.get(1);
-        } else if (crong.get(0)/100 == 0) {
-            crongPlusLeft = (crong.get(0) % 10) + (crong.get(0) / 10);
-            crongMulLeft = (crong.get(0) % 10) * (crong.get(0) / 10);
-
-            crongPlusRight = (crong.get(1) % 10) + (crong.get(1) / 10);
-            crongMulRight = (crong.get(1) % 10) * (crong.get(1) / 10);
-
-            crongMax = ((crongPlusLeft > crongMulLeft) ? crongPlusLeft : crongMulLeft) > ((crongPlusRight > crongMulRight) ? crongPlusRight : crongMulRight) ?
-                    ((crongPlusLeft > crongMulLeft) ? crongPlusLeft : crongMulLeft) : ((crongPlusRight > crongMulRight) ? crongPlusRight : crongMulRight);
-        } else {
-            crongPlusLeft = (crong.get(0) / 100) + ((crong.get(0) % 100) / 10) + (crong.get(0) % 10);
-            crongMulLeft = (crong.get(0) / 100) * ((crong.get(0) % 100) / 10) * (crong.get(0) % 10);
-
-            crongPlusRight = (crong.get(1) / 100) + ((crong.get(1) % 100) / 10) + (crong.get(1) % 10);
-            crongMulRight = (crong.get(1) / 100) * ((crong.get(1) % 100) / 10) * (crong.get(1) % 10);
-
-            crongMax = ((crongPlusLeft > crongMulLeft) ? crongPlusLeft : crongMulLeft) > ((crongPlusRight > crongMulRight) ? crongPlusRight : crongMulRight) ?
-                    ((crongPlusLeft > crongMulLeft) ? crongPlusLeft : crongMulLeft) : ((crongPlusRight > crongMulRight) ? crongPlusRight : crongMulRight);
-        }
-
-        answer = (crongMax == pobiMax) ? 0 : ((crongMax > pobiMax) ? 2 : 1);
+        answer = getMax(pobiMax, crongMax);
 
         if((pobi.get(1) - pobi.get(0) != 1) || (crong.get(1) - crong.get(0) != 1))
             answer = -1;
 
         return answer;
+    }
+
+    static int getPlus(List<Integer> list) {
+        int listPlusLeft, listPlusRight;
+
+        if (list.get(0)/10 == 0) {
+            return list.get(1);
+        } else if (list.get(0)/100 == 0) {
+            listPlusLeft = (list.get(0) % 10) + (list.get(0) / 10);
+            listPlusRight = (list.get(1) % 10) + (list.get(1) / 10);
+        } else {
+            listPlusLeft = (list.get(0) / 100) + ((list.get(0) % 100) / 10) + (list.get(0) % 10);
+            listPlusRight = (list.get(1) / 100) + ((list.get(1) % 100) / 10) + (list.get(1) % 10);
+        }
+
+        return listPlusLeft > listPlusRight ? listPlusLeft : listPlusRight;
+    }
+    static int getMul(List<Integer> list) {
+        int listMulLeft, listMulRight;
+
+        if (list.get(0)/10 == 0) {
+            return list.get(1);
+        } else if (list.get(0)/100 == 0) {
+            listMulLeft = (list.get(0) % 10) * (list.get(0) / 10);
+            listMulRight = (list.get(1) % 10) * (list.get(1) / 10);
+        } else {
+            listMulLeft = (list.get(0) / 100) * ((list.get(0) % 100) / 10) * (list.get(0) % 10);
+            listMulRight = (list.get(1) / 100) * ((list.get(1) % 100) / 10) * (list.get(1) % 10);
+        }
+
+        return listMulLeft > listMulRight ? listMulLeft : listMulRight;
+    }
+
+    static int getMax(int pobi, int crong) {
+        return (pobi == crong) ? 0 : (pobi > crong) ? 1 : 2;
     }
     /**
      * 왼쪽 페이지의 번호 각자리를 더하거나 곱해서 가장 큰 수
@@ -84,9 +78,6 @@ class Problem1 {
      */
 
     /**
-     * 기존에 pobiLeft, pobiRight, crongRight, crongLeft 와 같이 각 왼쪽 페이지 오른쪽 페이지의
-     * 큰값을 저장하도록 하였으나 삭제하여 더 짧은 코드를 만들 수 있을 것이라 생각하여 지움
-     * 하지만 이것이 성능에 크게 영향은 없는 듯 하고 코드 가독성이 오히려 떨어지는 느낌이 들어
-     * 어떤 선택이 좋은 선택일지 고민 해봐야 할 듯 하다
+     * 기존의 코드에 중복되는 부분이 너무 많아서 각 메소드를 생성하여 나누어 주었다.
      */
 }
