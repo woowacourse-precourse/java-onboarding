@@ -10,12 +10,23 @@ class Problem1 {
      * 5. 점수를 비교해 가장 높은 사람이 게임의 승자가 된다.
      * @Method: Solution
      * 점수를 비교하여, 알맞은 값을 return한다.
-     * TODO: 포비가 이긴다면 1, 크롱이 이긴다면 2, 무승부는 0을 return 한다.
      */
-
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        if (checkPageException(pobi) && checkPageException(crong)) {
+            // 각 점수 계산
+            int poingOfPobi = calcPoint(pobi);
+            int pointOfCrong = calcPoint(crong);
+
+            // 포비가 이긴다면 1, 크롱이 이긴다면 2, 무승부는 0을 return
+            if (poingOfPobi > pointOfCrong) {
+                return  1;
+            } else if (pointOfCrong > poingOfPobi) {
+                return  2;
+            }
+            return 0;
+        }
+        // 예외사항은 -1을 return
+        return -1;
     }
 
     /**
@@ -35,7 +46,6 @@ class Problem1 {
                 return left % 2 == 1;
             }
         }
-        // 예외사항은 -1을 return
         return false;
     }
 
