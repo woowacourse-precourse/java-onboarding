@@ -17,7 +17,8 @@ class Problem1 {
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int max = 0;
+        int pobiMax = 0;
+        int crongMax = 0;
 
         for (int page : pobi) {
             int sum = 0;
@@ -31,11 +32,34 @@ class Problem1 {
             }
 
             int biggerThanNumber = Math.max(sum, multi);
-            if (biggerThanNumber > max) {
-                max = biggerThanNumber;
+            if (biggerThanNumber > pobiMax) {
+                pobiMax = biggerThanNumber;
             }
         }
 
-        return 0;
+        for (int page : crong) {
+            int sum = 0;
+            int multi = 1;
+
+            while (page != 0) {
+                int result = page % 10;
+                sum += result;
+                multi *= result;
+                page /= 10;
+            }
+
+            int biggerThanNumber = Math.max(sum, multi);
+            if (biggerThanNumber > crongMax) {
+                crongMax = biggerThanNumber;
+            }
+        }
+
+        if (pobiMax > crongMax) {
+            return 1;
+        } else if (crongMax > pobiMax) {
+            return 2;
+        } else {
+            return 0;
+        }
     }
 }
