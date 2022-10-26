@@ -14,7 +14,13 @@ class Problem1 {
         int crongRightMax = Integer.max(addAllNumbers(crong.get(1)), multiplyAllNumbers(crong.get(1)));
         int crongScore = Integer.max(crongLeftMax, crongRightMax);
 
-
+        if (pobiScore > crongScore){
+            answer = 1;
+        } else if (pobiScore == crongScore) {
+            answer = 0;
+        }else{
+            answer = 2;
+        }
 
         return answer;
     }
