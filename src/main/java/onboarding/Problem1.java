@@ -14,13 +14,13 @@ class Problem1 {
     }
 
     private static Integer getMaxValue(List<Integer> pages) {
-        List<Integer> results = new ArrayList<>();
-        for (Integer page : pages) {
-            List<Integer> eachNumbers = getEachNumbers(page);
-            results.add(Math.max(doSum(eachNumbers), doMultiply(eachNumbers)));
-        }
+        List<Integer> leftPageEachNumbers = getEachNumbers(pages.get(0));
+        int leftPageMaxValue = Math.max(doSum(leftPageEachNumbers), doMultiply(leftPageEachNumbers));
 
-        return Collections.max(results);
+        List<Integer> rightPageEachNumbers = getEachNumbers(pages.get(1));
+        int rightPageMaxValue = Math.max(doSum(rightPageEachNumbers), doMultiply(rightPageEachNumbers));
+
+        return Math.max(leftPageMaxValue, rightPageMaxValue);
     }
 
     private static List<Integer> getEachNumbers(Integer integer) {
@@ -33,18 +33,18 @@ class Problem1 {
         return valueList;
     }
 
-    private static Integer doSum(List<Integer> singleNumbers) {
+    private static Integer doSum(List<Integer> eachNumbers) {
         int value = 0;
-        for (Integer singleNumber : singleNumbers) {
-            value += singleNumber;
+        for (Integer eachNumber : eachNumbers) {
+            value += eachNumber;
         }
         return value;
     }
 
-    private static Integer doMultiply(List<Integer> singleNumbers) {
+    private static Integer doMultiply(List<Integer> EachNumbers) {
         int value = 1;
-        for (Integer singleNumber : singleNumbers) {
-            value *= singleNumber;
+        for (Integer eachNumber : EachNumbers) {
+            value *= eachNumber;
         }
         return value;
     }
