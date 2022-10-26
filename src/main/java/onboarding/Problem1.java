@@ -20,4 +20,15 @@ class Problem1 {
         return result;
     }
 
+    public int calculatorAdd(int page){
+        int result = 0;
+        String[] splitPage = Integer.toString(page).split("");
+
+        for(String eachPage : splitPage){
+            result += Integer.parseInt(eachPage);
+        }
+
+        return result;
+    }
+
 }
