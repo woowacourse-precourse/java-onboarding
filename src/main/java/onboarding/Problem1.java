@@ -76,5 +76,5 @@ class Problem1 {
         }
         return Math.max(numAdd,numMul);
     }
-    
+
 }
