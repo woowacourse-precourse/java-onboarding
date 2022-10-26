@@ -40,11 +40,57 @@ class ApplicationTest {
         @Test
         @DisplayName("시작 면이나 마지막 면이 나도록 책을 펼친 경우")
         void whenOpenedFirstOrLastPage() {
-            // 포비와 크롱이 시작 면이나 마지막 면이 나도로록 책을 펼친 경우
             List<Integer> pobi = List.of(1, 2);
             List<Integer> crong = List.of(399, 400);
-            Assertions.assertEquals(-1, Problem1.solution(pobi,crong), "첫페이지나 마지막 페이지 오픈 금지");
+            int result = -1;
+            Assertions.assertEquals(result, Problem1.solution(pobi,crong), "첫페이지나 마지막 페이지 오픈 금지");
         }
+
+        @Test
+        @DisplayName("Input 길이가 2가 아닌 경우")
+        void whenInputLengthIsNotEqualToTwo() {
+            List<Integer> pobi = List.of(1, 2, 3);
+            List<Integer> crong = List.of(388, 399, 400);
+            int result = -1;
+            Assertions.assertEquals(result, Problem1.solution(pobi,crong), "Input 길이가 2가 아닐시 -1 반환해야함");
+        }
+
+        @Test
+        @DisplayName("페이지가 차이가 1이 아닌 경우")
+        void whenPagesAreNotNumber() {
+            List<Integer> pobi = List.of(3,6);
+            List<Integer> crong = List.of(8, 10);
+            int result = -1;
+            Assertions.assertEquals(result, Problem1.solution(pobi,crong), "페이지 차이가 1 이상시 -1 반환해야함");
+        }
+
+        @Test
+        @DisplayName("왼쪽 숫자가 오른쪽 숫자보다 클 경우")
+        void whenLeftNumIsGreaterThanRightNum () {
+            List<Integer> pobi = List.of(78, 77);
+            List<Integer> crong = List.of(36, 35);
+            int result = -1;
+            Assertions.assertEquals(result, Problem1.solution(pobi,crong), "오른쪽 페이지가 값이 작을 경우 -1 반환해야함");
+        }
+
+        @Test
+        @DisplayName("페이지 숫자가 1~400을 벗어나는 경우")
+        void whenPagesAreOutOfBound () {
+            List<Integer> pobi = List.of(-1, 0);
+            List<Integer> crong = List.of(400, 401);
+            int result = -1;
+            Assertions.assertEquals(result, Problem1.solution(pobi,crong), "오른쪽 페이지가 값이 작을 경우 -1 반환해야함");
+        }
+
+        @Test
+        @DisplayName("첫페이지가 홀수, 둘째 페이지가 짝수가 아닌 경우")
+        void whenPagesHaveError () {
+            List<Integer> pobi = List.of(100, 101);
+            List<Integer> crong = List.of(234, 235);
+            int result = -1;
+            Assertions.assertEquals(result, Problem1.solution(pobi,crong), "첫 페이지, 둘째 페이지가 정확해야함");
+        }
+
 
     }
 
