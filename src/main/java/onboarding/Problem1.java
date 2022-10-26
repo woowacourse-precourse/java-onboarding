@@ -57,10 +57,10 @@ class Problem1 {
     }
 
     public static boolean isInRange(List<Integer> pages) {
-        if (pages.get(0) <= 1 || pages.get(1) <= 1) {
+        if (pages.get(0) <= 2 || pages.get(1) <= 2) {
             return false;
         }
-        if (pages.get(0) >= 400 || pages.get(1) >= 400) {
+        if (pages.get(0) >= 399 || pages.get(1) >= 399) {
             return false;
         }
         return true;
