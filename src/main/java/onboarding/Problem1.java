@@ -50,4 +50,19 @@ class Problem1 {
 
         return max;
     }
+    
+    public static int findMaxNumber(int leftNum, int rightNum)
+    {
+        int [] leftDigit;
+        int [] rightDigit;
+
+        int max = 0;
+        leftDigit = digit(leftNum);
+        rightDigit = digit(rightNum);
+
+        max = Math.max(calculation(leftDigit), calculation(rightDigit));
+
+        return max;
+    }
+
 }
