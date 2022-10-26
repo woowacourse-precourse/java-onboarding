@@ -18,9 +18,12 @@ class Problem1 {
         return sum;
     }
 
+    boolean isContinuousPages(List<Integer> numbers) {
+        return (numbers.get(0) % 2 == 1) && (numbers.get(1) - numbers.get(0) == 1);
+    }
     boolean inRange(List<Integer> numbers) {
-        for(int number : numbers) {
-            if(number < MIN_PAGE || number > MAX_PAGE) return false;
+        for (int number : numbers) {
+            if (number < MIN_PAGE || number > MAX_PAGE) return false;
         }
         return true;
     }
