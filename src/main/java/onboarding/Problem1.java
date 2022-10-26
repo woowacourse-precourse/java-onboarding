@@ -16,6 +16,23 @@ class Problem1 {
         return false;
     }
 
+    /**
+     * 주어진 정수의 각 자리수를 더한 값을 리턴한다.
+     * @param input
+     * @return
+     */
+    private static int addIntegers(int input) {
+        int answer = 0;
+
+        while(input >= 10) {
+            answer += input % 10;
+            input /= 10;
+        }
+        answer += input;
+
+        return answer;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
