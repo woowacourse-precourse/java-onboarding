@@ -61,7 +61,7 @@ class Problem1 {
      * @param 두 개의 페이지 배열입니다.
      * @return 자연수 배열이 포함된 배열을 반환합니다.
      * */
-    private static List<List> convertPageToSplitNumbers(List[] pageNumbers) {
+    private static List<List> convertIntoSplitPageNumbers(List[] pageNumbers) {
         List<List> splitPageNumbers = new ArrayList<>();
         for (List<Integer> pages: pageNumbers) {
             List<List> splitPages = new ArrayList<>();
@@ -127,7 +127,11 @@ class Problem1 {
      * @return 모든 정수의 합입니다.
      * */
     private  static int addNumbers(List<Integer> splitNumbers){
-        return 0;
+        int result = 0;
+        for (int number: splitNumbers) {
+            result += number;
+        }
+        return result;
     }
 
     /*
@@ -153,7 +157,7 @@ class Problem1 {
             return -1;
         };
 
-        List<List> splitPageNumbers = convertPageToSplitNumbers(pageNumbers);
+        List<List> splitPageNumbers = convertIntoSplitPageNumbers(pageNumbers);
         int result = findWinner(splitPageNumbers);
 
         return result;
