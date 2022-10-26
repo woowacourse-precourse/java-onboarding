@@ -14,7 +14,6 @@ class Problem1 {
     static final int DRAW = 0;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MIN_VALUE;
 
         // 첫 페이지 혹은 끝 페이지 포함하는지 확인
         if (isHavingFirstPage(pobi) || isHavingLastPage(pobi)
@@ -38,8 +37,10 @@ class Problem1 {
         int maxRightPointOfPobi = Math.max(getSumOfEachDigits(pobi.get(LAST_PAGE)), getMulOfEachDigits(pobi.get(LAST_PAGE)));
         int maxPointOfPobi = Math.max(maxLeftPointOfPobi, maxRightPointOfPobi);
 
+        int maxLeftPointOfCrong = Math.max(getSumOfEachDigits(crong.get(LEFT_PAGE)), getMulOfEachDigits(crong.get(LEFT_PAGE)));
+        int maxRightPointOfCrong = Math.max(getSumOfEachDigits(crong.get(LAST_PAGE)), getMulOfEachDigits(crong.get(LAST_PAGE)));
+        int maxPointOfCrong = Math.max(maxLeftPointOfCrong, maxRightPointOfCrong);
 
-        return answer;
     }
 
     private static int getMulOfEachDigits(int page) {
