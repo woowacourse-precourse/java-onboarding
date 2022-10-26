@@ -10,6 +10,11 @@ class Problem1 {
         return answer;
     }
 
+    private static int getMaxSumAndMultiply(List<Integer> digitList) {
+
+        return Integer.max(getDigitSum(digitList), getDigitMultiply(digitList));
+    }
+
     private static List<Integer> splitToDigitList(int number) {
 
         List<Integer> digitList = new ArrayList<>();
