@@ -33,6 +33,23 @@ class Problem1 {
         return answer;
     }
 
+    /**
+     * 주어진 정수의 각 자리수를 곱한 값을 리턴한다.
+     * @param input
+     * @return
+     */
+    private static int multiplyIntegers(int input) {
+        int answer = 1;
+
+        while(input >= 10) {
+            answer *= input % 10;
+            input /= 10;
+        }
+        answer *= input;
+
+        return answer;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
