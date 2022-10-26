@@ -24,17 +24,8 @@ public class Friends {
                 .count();
     }
     
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        final Friends friends1 = (Friends) o;
-        return Objects.equals(friends, friends1.friends);
-    }
-    
-    @Override
-    public int hashCode() {
-        return Objects.hash(friends);
+    public Set<String> getFriends() {
+        return friends;
     }
     
     @Override

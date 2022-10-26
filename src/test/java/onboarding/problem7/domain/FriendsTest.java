@@ -15,7 +15,7 @@ class FriendsTest {
         Friends friends = new Friends();
         friends.add("pobi");
         
-        assertThat(friends).isEqualTo(new Friends(Set.of("pobi")));
+        assertThat(friends.getFriends()).isEqualTo(Set.of("pobi"));
     }
     
     @Test

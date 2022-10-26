@@ -3,24 +3,22 @@ package onboarding.problem7.domain;
 import java.util.Objects;
 
 public class User {
+    private final String userName;
     private final Friends friends;
     private Score score;
     
-    public User() {
-        this(new Friends());
+    public User(String userName) {
+        this(userName, new Friends());
     }
     
-    public User(final Friends friends) {
+    public User(final String userName, final Friends friends) {
+        this.userName = userName;
         this.friends = friends;
         this.score = new Score();
     }
     
     public void addFriend(final String friend) {
         friends.add(friend);
-    }
-    
-    public Friends getFriends() {
-        return friends;
     }
     
     public int numberOfFriendsYouKnowTogether(final User user) {

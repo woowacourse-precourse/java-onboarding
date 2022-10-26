@@ -11,8 +11,8 @@ public class UserTest {
     @Test
     @DisplayName("함계 아는 친구 명수 구하기")
     void numberOfFriendsYouKnowTogether() {
-        User jun = new User();
-        User pobi = new User();
+        User jun = new User("jun");
+        User pobi = new User("pobi");
         
         jun.addFriend("jk");
         jun.addFriend("crong");
