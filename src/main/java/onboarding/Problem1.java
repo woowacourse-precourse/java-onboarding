@@ -30,4 +30,11 @@ class Problem1 {
         }
         return true;
     }
+
+    private static boolean validateLeftPage(Integer leftPageNumber) {
+        if (leftPageNumber % 2 == 0) {
+            return false;
+        }
+        return true;
+    }
 }
