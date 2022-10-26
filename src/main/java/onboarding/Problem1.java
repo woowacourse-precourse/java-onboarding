@@ -25,32 +25,20 @@ class Problem1 {
     }
 
     private static boolean validatePageRange(Integer pageNumber) {
-        if (!(3 <= pageNumber && pageNumber <= 398)) {
-            return false;
-        }
-        return true;
+        return 3 <= pageNumber && pageNumber <= 398;
     }
 
     private static boolean validateBetweenLeftAndRightPage(Integer leftPageNumber,
         Integer rightPageNumber) {
-        if (rightPageNumber - leftPageNumber != 1) {
-            return false;
-        }
-        return true;
+        return rightPageNumber - leftPageNumber == 1;
     }
 
     private static boolean validateRightPage(Integer rightPageNumber) {
-        if (rightPageNumber % 2 != 0) {
-            return false;
-        }
-        return true;
+        return rightPageNumber % 2 == 0;
     }
 
     private static boolean validateLeftPage(Integer leftPageNumber) {
-        if (leftPageNumber % 2 == 0) {
-            return false;
-        }
-        return true;
+        return leftPageNumber % 2 != 0;
     }
 
     private static int calculatePageScore(Integer pageNumber) {
