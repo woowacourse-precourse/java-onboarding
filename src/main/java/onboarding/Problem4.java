@@ -29,7 +29,10 @@ public class Problem4 {
 
 
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        StringBuilder sb = new StringBuilder();
+        for(char cur : word.toCharArray()){
+            sb.append(translate(cur));
+        }
+        return sb.toString();
     }
 }
