@@ -24,11 +24,35 @@ class Problem1 {
     }
 
     private static int makeBiggestPoint(int number) {
-        return 0;
+        return Math.max(getAddEachOfDigits(number), getMultipleEachOfDigits(number));
+    }
+
+    private static int getAddEachOfDigits(int number) {
+        int digits = getNumberOfDigits(number);
+        int result = 0;
+        for (int i=0; i<digits; i++) {
+            result += number%10;
+            number /= 10;
+        }
+        return result;
+    }
+
+    private static int getMultipleEachOfDigits(int number) {
+        int digits = getNumberOfDigits(number);
+        int result = 1;
+        for (int i=0; i<digits; i++) {
+            result *= number%10;
+            number /= 10;
+        }
+        return result;
     }
 
     private static int getNumberOfDigits(int number) {
-        return 0;
+        if (number >= 100)
+            return 3;
+        if (number >= 10)
+            return 2;
+        return 1;
     }
 }
 class Validator {
