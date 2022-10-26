@@ -26,4 +26,36 @@ class Problem1 {
         return -1;
     }
 
+    private static int getMaxPoint(List<Integer> user){
+        int leftMaxPoint;
+        int rightMaxPoint;
+
+
+        if(!pageValidation(user)){
+            return -1;
+        }
+
+    }
+
+    private static boolean pageValidation(List<Integer> user){
+        if(user.size()!=2) {
+            return false;
+        }
+        int leftPage = user.get(0);
+        int rightPage = user.get(1);
+
+        if(leftPage != rightPage-1){
+            return false;
+        }
+
+        if(leftPage==1 || rightPage==400){
+            return false;
+        }
+
+        if(leftPage<1 || rightPage>400){
+            return false;
+        }
+        return true;
+    }
+
 }
