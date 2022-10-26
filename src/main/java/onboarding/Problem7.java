@@ -38,11 +38,33 @@ public class Problem7 {
     }
 
     /**
-     * 친구 관계를 만드는 함수
+     * 3. 친구 관계일 경우 10점을 추가하는 함수
      * @param user
-     * @param friends
      */
-    static void makeFriendShip(String user, List<List<String>> friends){
+
+    static void calcFriends(String user) {
+        Set<String> userFriendSet = friendsHashMap.get(user);
+        for (Map.Entry<String, Integer> key : points.entrySet()) {
+
+            int currentScore = 0;
+            Set<String> currentFriendSet = friendsHashMap.get(key.getKey());
+
+            for (String userFriendName : userFriendSet) {
+                if (currentFriendSet.contains(userFriendName)) {
+                    currentScore += 10;
+                }
+            }
+            key.setValue(currentScore);
+        }
+    }
+
+
+    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        friendsHashMap.clear();
+        points.clear();
+        /**
+         * 2. 친구 관계를 만드는 익명함수
+         */
         friends.forEach(f -> {
             if (!f.get(0).equals(user)) points.put(f.get(0), 0);
             if (!f.get(1).equals(user)) points.put(f.get(1), 0);
@@ -55,11 +77,5 @@ public class Problem7 {
             friendsHashMap.get(f.get(0)).add(f.get(1));
             friendsHashMap.get(f.get(1)).add(f.get(0));
         });
-
-
-    }
-    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
     }
 }
