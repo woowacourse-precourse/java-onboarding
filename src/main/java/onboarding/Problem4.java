@@ -16,7 +16,7 @@ public class Problem4 {
         return true;
     }
     public static char changeAlphabet(char character) {
-        if (character < 'a' || character > 'z' || character > 'A' || character > 'Z') {
+        if ((character < 'a' || character > 'z') && (character < 'A' || character > 'Z')) {
             return character;
         }
         if (character < 'Z') {
