@@ -4,24 +4,23 @@ public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
 
-        answer = checkNum(number);
+        if (number >= 1 && number <= 10000)
+            answer = checkNum(number);
         return answer;
     }
 
     public static int checkDuplicaion(String strNum)
     {
-        int check = 30;
         int duplicaionCnt = 0;
-        
-        if (Integer.parseInt(strNum) >= check)
+
+        for (int i = 0; i < strNum.length(); i++)
         {
-            for (int i = check; i < strNum.length(); i++)
+            if (strNum.charAt(i) == '3' || strNum.charAt(i) == '6' || strNum.charAt(i) == '9')
             {
-                if (strNum.charAt(i) == '3' || strNum.charAt(i) == '6' || strNum.charAt(i) == '9')
-                    duplicaionCnt++;
+                duplicaionCnt++;
             }
         }
-        return duplicaionCnt;
+        return duplicaionCnt - 1;
     }
     public static int checkNum(int number)
     {
@@ -32,9 +31,10 @@ public class Problem3 {
         {
             strNum = Integer.toString(i);
             if (strNum.contains("3") || strNum.contains("6") || strNum.contains("9"))
-                cnt++;
+            {
+                cnt += checkDuplicaion(strNum) + 1;
+            }
         }
-        cnt += checkDuplicaion(strNum);
         return cnt ;
     }
 }
