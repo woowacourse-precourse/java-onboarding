@@ -18,4 +18,14 @@ class Problem1 {
 
         return sum;
     }
+
+    private static int multEachNumber(int pageNumber) {
+        int mult = 0;
+        String strPageNumber = String.valueOf(pageNumber);
+        for(int i=0; i<strPageNumber.length(); i++) {
+            mult *= Integer.parseInt(String.valueOf(strPageNumber.charAt(i)));
+        }
+
+        return mult;
+    }
 }
