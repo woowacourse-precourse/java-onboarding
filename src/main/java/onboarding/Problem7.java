@@ -23,48 +23,30 @@ public class Problem7 {
         return graph;
     }
 
-    public static Map<String, Integer> initScoreBoard(Map<String, LinkedList<String>> graph, String user){
-        Map<String, Integer> scoreBoard=new HashMap<>();
-
-        Set<String> friends= new HashSet<>(graph.get(user));
-
-        graph.keySet().stream()
-                .filter(o->!o.equals(user))
-                .filter(o->!friends.contains(o))
-                .forEach(o->scoreBoard.put(o, 0));
-
-        return scoreBoard;
-    }
-
     public static void scoreFriendToFriend(Map<String, LinkedList<String>> graph,
                                            Map<String, Integer> scoreBoard,
                                            String user){
         Set<String> friends=new HashSet<>(graph.get(user));
         friends.stream()
                 .flatMap(o->graph.get(o).stream())
-                .filter(o->!o.equals(user))
-                .filter(o->!friends.contains(o))
-                .forEach(o-> scoreBoard.put(o, scoreBoard.get(o)+10));
+                .forEach(o-> scoreBoard.put(o, scoreBoard.getOrDefault(o, 0)+10));
     }
 
-    public static void scoreVisitors(LinkedList<String> friends,
-                                     List<String> visitors,
-                                     Map<String, Integer> scoreBoard){
-        Set<String> friendSet=new HashSet<>(friends);
-
-        visitors.stream()
-                .filter(o->!friendSet.contains(o))
-                .forEach(o-> scoreBoard.put(o, scoreBoard.getOrDefault(o, 0)+1));
+    public static void scoreVisitors(List<String> visitors, Map<String, Integer> scoreBoard){
+        visitors.forEach(o-> scoreBoard.put(o, scoreBoard.getOrDefault(o, 0)+1));
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, LinkedList<String>> friendsGraph = initGraph(friends);
-        Map<String, Integer> scoreBoard = initScoreBoard(friendsGraph, user);
+        Map<String, Integer> scoreBoard = new HashMap<>();
 
         scoreFriendToFriend(friendsGraph, scoreBoard, user);
-        scoreVisitors(friendsGraph.get(user), visitors, scoreBoard);
+        scoreVisitors(visitors, scoreBoard);
 
+        Set<String> userFriends=new HashSet<>(friendsGraph.get(user));
         return scoreBoard.entrySet().stream()
+                .filter(o->!o.getKey().equals(user))
+                .filter(o->!userFriends.contains(o.getKey()))
                 .filter(o->o.getValue()!=0)
                 .sorted((o1, o2)->{
                     if(o1.getValue()!=o2.getValue())
