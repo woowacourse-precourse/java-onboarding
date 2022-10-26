@@ -13,9 +13,23 @@ class Problem1 {
 //          더 큰 값을 구한 뒤
 //          그렇게 얻은 왼쪽 페이지와 오른쪽 페이지의 계산 결과값(해당 객체가 로직에 따라 얻을 수 있는 가장 높은 값)을 리턴하는 함수 작성
 
+//      3. 잘못된 값(왼쪽 페이지와 오른쪽 페이지의 숫자가 연속되지 않는 경우)이 주어졌을때
+//          기능 요구사항에 따라 예외를 발생시키기 위한 검증 로직을 담은 함수 작성
+
+
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
+    }
+
+    public static void validate(Player player){
+        int leftPage = Integer.parseInt(player.leftPage);
+        int rightPage = Integer.parseInt(player.rightPage);
+
+        if(rightPage-leftPage != 1){
+            throw new IllegalArgumentException();
+        }
     }
 
     public static class Player {
