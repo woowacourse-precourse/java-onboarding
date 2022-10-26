@@ -42,6 +42,7 @@ public class Problem7 {
         Set<String> friends=new HashSet<>(graph.get(user));
         friends.stream()
                 .flatMap(o->graph.get(o).stream())
+                .filter(o->!o.equals(user))
                 .filter(o->!friends.contains(o))
                 .forEach(o-> scoreBoard.put(o, scoreBoard.get(o)+10));
     }
@@ -50,9 +51,10 @@ public class Problem7 {
                                      List<String> visitors,
                                      Map<String, Integer> scoreBoard){
         Set<String> friendSet=new HashSet<>(friends);
+
         visitors.stream()
                 .filter(o->!friendSet.contains(o))
-                .forEach(o-> scoreBoard.put(o, scoreBoard.get(o)+1));
+                .forEach(o-> scoreBoard.put(o, scoreBoard.getOrDefault(o, 0)+1));
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
