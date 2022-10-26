@@ -31,7 +31,9 @@ class Problem1 {
             }
 
             int biggerThanNumber = Math.max(sum, multi);
-
+            if (biggerThanNumber > max) {
+                max = biggerThanNumber;
+            }
         }
 
         return 0;
