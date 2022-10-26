@@ -13,6 +13,11 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class Problem1Test {
+	private static final int EXCEPTION_CASE = -1;
+	private static final int DRAW = 0;
+	private static final int POBI_WIN = 1;
+	private static final int CRONG_WIN = 2;
+
 	@DisplayName("숫자를 그대로 문자열로 변환")
 	@ParameterizedTest(name = "Parse number {0} to string, is ''{1}''")
 	@CsvSource(value = {"123:123", "13:13", "43:43", "264:264", "0:0", "-13:-13"}, delimiter = ':')
@@ -94,6 +99,72 @@ class Problem1Test {
 				Arguments.of(Arrays.asList(69, 70), 54),
 				Arguments.of(Arrays.asList(101, 102), 3),
 				Arguments.of(Arrays.asList(199, 200), 81)
+		);
+	}
+
+	@ParameterizedTest(name = "Validation Test : {0} : {1}")
+	@MethodSource("generatePlayerInputAndExpectedResult")
+	void validationTest(List<Integer> pages, boolean expected) {
+		// when : 플레이어가 고른 책의 페이지가 유효한지 검증할 때
+		boolean validationResult = Problem1.isInvalidInput(pages);
+
+		// then : 유효한지 확인
+		assertThat(validationResult).isEqualTo(expected);
+	}
+
+	private static Stream<Arguments> generatePlayerInputAndExpectedResult() {
+		final boolean INVALID = true;
+		final boolean VALID = false;
+
+		return Stream.of(
+				Arguments.of(Arrays.asList(1, 2), INVALID),
+				Arguments.of(Arrays.asList(2, 3), INVALID),
+				Arguments.of(Arrays.asList(132, 133), INVALID),
+				Arguments.of(Arrays.asList(399, 400), INVALID),
+				Arguments.of(Arrays.asList(0, 1), INVALID),
+				Arguments.of(Arrays.asList(-123, -122), INVALID),
+				Arguments.of(Arrays.asList(1111, 1112), INVALID),
+				Arguments.of(Arrays.asList(3, 5), INVALID),
+				Arguments.of(Arrays.asList(0), INVALID),
+				Arguments.of(Arrays.asList(133), INVALID),
+				Arguments.of(Arrays.asList(97, 98), VALID),
+				Arguments.of(Arrays.asList(243, 244), VALID),
+				Arguments.of(Arrays.asList(123, 124), VALID),
+				Arguments.of(Arrays.asList(99, 100), VALID)
+		);
+	}
+
+	@ParameterizedTest(name = "MAIN TEST : ({0}, {1}) ==> {2}")
+	@MethodSource("generatePlayersPagesAndExpectedResult")
+	void testMainSolution(List<Integer> player1, List<Integer> player2, int expected) {
+		// when : 플레이어가 게임을 시작했을 때
+		int answer = Problem1.solution(player1, player2);
+
+		// then : 게임 결과를 확인
+		assertThat(answer).isEqualTo(expected);
+	}
+
+	private static Stream<Arguments> generatePlayersPagesAndExpectedResult() {
+		// input : pobi, crong, result
+		return Stream.of(
+				Arguments.of(Arrays.asList(1, 2), Arrays.asList(3, 4), EXCEPTION_CASE),
+				Arguments.of(Arrays.asList(3, 5), Arrays.asList(3, 4), EXCEPTION_CASE),
+				Arguments.of(Arrays.asList(4, 5), Arrays.asList(3, 4), EXCEPTION_CASE),
+				Arguments.of(Arrays.asList(3), Arrays.asList(3, 4), EXCEPTION_CASE),
+				Arguments.of(Arrays.asList(123, 123), Arrays.asList(3, 4), EXCEPTION_CASE),
+				Arguments.of(Arrays.asList(98, 97), Arrays.asList(3, 4), EXCEPTION_CASE),
+				Arguments.of(Arrays.asList(-123, -122), Arrays.asList(3, 4), EXCEPTION_CASE),
+				Arguments.of(Arrays.asList(3, 4), Arrays.asList(399, 400), EXCEPTION_CASE),
+				Arguments.of(Arrays.asList(14313, 14314), Arrays.asList(111, 112), EXCEPTION_CASE),
+				Arguments.of(Arrays.asList(-1341341, -1341342), Arrays.asList(3, 4), EXCEPTION_CASE),
+				Arguments.of(Arrays.asList(1111, 1112), Arrays.asList(1111, 1112), EXCEPTION_CASE),
+				Arguments.of(Arrays.asList(2, 3), Arrays.asList(2, 3), EXCEPTION_CASE),
+				Arguments.of(Arrays.asList(3, 4), Arrays.asList(3, 4), DRAW),
+				Arguments.of(Arrays.asList(111, 112), Arrays.asList(111, 112), DRAW),
+				Arguments.of(Arrays.asList(123, 124), Arrays.asList(3, 4), POBI_WIN),
+				Arguments.of(Arrays.asList(175, 176), Arrays.asList(223, 224), POBI_WIN),
+				Arguments.of(Arrays.asList(321, 322), Arrays.asList(397, 398), CRONG_WIN),
+				Arguments.of(Arrays.asList(133, 134), Arrays.asList(397, 398), CRONG_WIN)
 		);
 	}
 }
