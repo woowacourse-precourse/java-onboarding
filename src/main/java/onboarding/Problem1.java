@@ -1,12 +1,20 @@
 package onboarding;
 
 import java.util.Arrays;
+import java.util.IllformedLocaleException;
 import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = compareScore(pobi, crong);
-        return answer;
+
+        try {
+            checkPagesSize(pobi, crong);
+            checkPageValid(pobi, crong);
+        } catch (Exception e){
+            return -1;
+        }
+
+        return compareScore(pobi, crong);
     }
 
     public static int calculatorMultiply(int page){
@@ -49,5 +57,15 @@ class Problem1 {
             return 2;
         }
         return 0;
+    }
+
+    public static void checkPagesSize(List<Integer> pobi, List<Integer> crong) throws IllegalArgumentException{
+        if(pobi.size() != 2 || crong.size() != 2)
+            throw new IllegalArgumentException("Page의 개수가 2보다 많습니다!!");
+    }
+
+    public static void checkPageValid(List<Integer> pobi, List<Integer> crong) throws IllegalArgumentException {
+        if(Math.abs(pobi.get(0) - pobi.get(1)) != 1 || Math.abs(crong.get(0) - crong.get(1)) != 1)
+            throw new IllegalArgumentException("잘못된 페이지가 들어왔습니다. 각 페이지는 차가 1입니다.");
     }
 }
