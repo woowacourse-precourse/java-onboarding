@@ -4,7 +4,6 @@ public class Problem3 {
 
     public static int solution(int number) {
         int answer = 0;
-
         answer = clap(number);
 
         return answer;
@@ -13,7 +12,7 @@ public class Problem3 {
     public static int clap(int clapNum) {
         int numResult = 0;
 
-        for(int i=0; i<clapNum; i++) {
+        for(int i=0; i<clapNum+1; i++) {
             numResult += judgment(i);
         }
 
