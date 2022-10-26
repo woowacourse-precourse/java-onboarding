@@ -5,7 +5,12 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        Problem1 problem1 = new Problem1();
+
+        int pobiScore = problem1.calculateScore(pobi);
+        int crongScore = problem1.calculateScore(crong);
+
+        int answer = problem1.decideWinner(pobiScore, crongScore);
         return answer;
     }
 
