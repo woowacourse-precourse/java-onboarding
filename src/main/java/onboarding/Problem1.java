@@ -76,7 +76,11 @@ class Problem1 {
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        try {
+            Problem1 problem = new Problem1(pobi, crong);
+            return problem.winner();
+        } catch (WrongInputException e) {
+            return -1;
+        }
     }
 }
