@@ -15,4 +15,15 @@ public class BookGame {
         this.player1 = player1;
         this.player2 = player2;
     }
+
+
+    private int sumEachDigit(int num){
+        int sum = 0;
+        while(num == 0){
+            sum += num%10;
+            num = num/10;
+        }
+        return sum;
+    }
+
 }
