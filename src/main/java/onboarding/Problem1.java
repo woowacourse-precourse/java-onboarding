@@ -23,6 +23,7 @@ class Problem1 {
 
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
 		int answer;
+
 		int pobiScore = getScore(pobi);
 		int crongScore = getScore(crong);
 
