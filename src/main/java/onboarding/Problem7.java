@@ -41,6 +41,15 @@ public class Problem7 {
         }
     }
 
+    // visitor 기반으로 방문한 친구 점수 추가해주는 메서드
+    private static void visitorPlusPoint(List<String> visitors, ArrayList arrayList) {
+        for (String str : visitors) {
+            if (!arrayList.contains(str)) {
+                map_points.put(str, map_points.getOrDefault(str, 0) + 1);
+            }
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
         return answer;
