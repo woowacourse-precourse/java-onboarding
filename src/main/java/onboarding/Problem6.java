@@ -1,10 +1,13 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Problem6 {
 
@@ -17,6 +20,13 @@ public class Problem6 {
 
         private static Map<String, String> partOfNicknameMap = new HashMap<>();
         private static Set<String> duplicateNicknameCrewSet = new HashSet<>();
+
+        private static List<String> getAscSortedCrewEmails() {
+            List<String> duplicateCrewEmail = new ArrayList<>(duplicateNicknameCrewSet);
+
+            Collections.sort(duplicateCrewEmail);
+            return duplicateCrewEmail;
+        }
 
         private static void processDuplicateCrewNickname(Crew crew) {
             String nickname = crew.getNickname();
