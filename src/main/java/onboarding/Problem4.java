@@ -17,4 +17,14 @@ public class Problem4 {
         }
         return false;
     }
+
+    public static int checkUpperOrLower(char alphabet) {
+        if (alphabet >= 'A' && alphabet <= 'Z') {
+            return 2;
+        }
+        if (alphabet >= 'a' && alphabet <= 'z') {
+            return 1;
+        }
+        return 0;
+    }
 }
