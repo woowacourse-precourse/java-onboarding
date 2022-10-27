@@ -26,11 +26,11 @@
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
 
 ### 기능 요구 사항 풀이 전략
-1. 등장하는 사람(친구) 정보 및 친구 관계 저장
-   친구 - 친구 <==>  1 : N 관계로 연결
+1. 등장하는 사람(친구) 정보 및 친구 관계 저장 ✅
+   <br>친구 - 친구 <==>  1 : N 관계로 연결
 2. user를 기준으로 함께하는 친구 찾기
-   -> user의 친구가 아니면서,
-   -> 2명 이상의 user의 친구가 아는 친구
+   <br>-> user의 친구가 아니면서,
+   <br>-> 2명 이상의 user의 친구가 아는 친구
    10점 부과
 3. 방문자인 경우 횟수에 따라 1점 부과
 4. 부과된 점수를 기준으로 정렬
