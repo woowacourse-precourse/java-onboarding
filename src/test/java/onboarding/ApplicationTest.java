@@ -221,6 +221,17 @@ class ApplicationTest {
 
     @Nested
     class Problem3Test {
+        // 전체 과정 테스트
+        @Test
+        void countClapTest() {
+            int number = 3293;
+
+            int result = 3166;
+
+            Problem3 problem3 = new Problem3();
+            assertThat(problem3.countClap(number)).isEqualTo(result);
+        }
+
         // 과정3 테스트
         @Test
         void thirdProcessTest() {

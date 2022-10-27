@@ -133,10 +133,10 @@
     - for문을 통해 int i 값을 4~1 까지 감소하며 반복
         - i는 10의 거듭제곱 수를 의미
         - 1 <= number <= 10000 이므로 4부터 감소
-        - firstProcess(), secondProcess(), thirdProcess() 순서대로 수행하며 answer 증가
+        - firstProcess(), secondProcess(), thirdProcess() 순서대로 수행하며 countOfTotalClap 증가
         - 1회 끝날 때마다 나머지 연산으로 10^(i) 자리 숫자 제거
-    - fourthPrcoess() 수행 및 answer 결정
-    - 출력 : int answer
+    - fourthPrcoess() 수행 및 countOfTotalClap 결정
+    - 출력 : int countOfTotalClap
 - **firstProcess()**
     - 입력 : 10의 지수 (= **int indexOfTen**), 해당 자리의 숫자 (= **int digitNumber**)
     - 과정1 수행

@@ -1,9 +1,40 @@
 package onboarding;
 
+/*
+firstProcess(), secondProcess(), thirdProcess(), fourthProcess()
+=> docs/PROBLEM3.md의 기능정리 - "0. 공식 정리" - "공식2. 1부터 number까지 3, 6, 9 개수 도출 과정" 참고
+ */
+
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
+        Problem3 problem3 = new Problem3();
+
+        int answer = problem3.countClap(number);
+
         return answer;
+    }
+
+    public int countClap(int number) {
+        int inputNumber = number;
+        int countOfTotalClap = 0;
+
+        for (int i = 4; i > 0; i--) {
+            if (inputNumber >= Math.pow(10, i)) {
+                int digitNumber = (int)(inputNumber / Math.pow(10, i));
+
+                countOfTotalClap += firstProcess(i, digitNumber);
+
+                countOfTotalClap += secondProcess(i, digitNumber);
+
+                countOfTotalClap += thirdProcess(i, digitNumber, inputNumber);
+
+                inputNumber = (int)(inputNumber % Math.pow(10, i));
+            }
+        }
+
+        countOfTotalClap += fourthProcess(inputNumber);
+
+        return countOfTotalClap;
     }
 
     public int firstProcess(int indexOfTen, int digitNumber) {
