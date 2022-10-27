@@ -6,6 +6,7 @@ public class Problem3 {
         if(!checkValidation(number)){
             return -1;
         }
+        answer=getAmountOfClap(number);
         return answer;
     }
 
@@ -14,6 +15,13 @@ public class Problem3 {
             return true;
         }
         return false;
+    }
+
+    private static int getAmountOfClap(int number){
+        int totalClap = 0;
+        for(int i=1; i<number+1; i++){
+            totalClap+=getClapOfNumber(i);
+        }
     }
 
 }
