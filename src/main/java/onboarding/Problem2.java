@@ -10,11 +10,26 @@ public class Problem2 {
     private static String getDecodingCryptogram(String cryptogram){
         boolean completeDecoding = false;
         StringBuffer decodedCrypto = new StringBuffer(cryptogram);
+        if(!checkValidation(cryptogram)){
+            return null;
+        }
         while(!completeDecoding){
             completeDecoding=checkDecodingEnded(decodedCrypto);
             decodingCurrentString(decodedCrypto);
         }
         return decodedCrypto.toString();
+    }
+
+    private static boolean checkValidation(String crypto){
+        String regex = "^[a-z]*$";
+        if(crypto.length()>1000 || crypto.length()<1){
+            return false;
+        }
+        if(!crypto.matches(regex)){
+            System.out.println("there is not small");
+            return false;
+        }
+        return true;
     }
 
     private static boolean checkDecodingEnded(StringBuffer crypto){
