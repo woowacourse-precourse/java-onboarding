@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -41,8 +42,7 @@ public class Problem7 {
                 }
             }
         }
-        List<String> answer = Collections.emptyList();
-        return answer;
+        return recommendedUser.stream().sorted().limit(5).map(i -> i.getId()).collect(Collectors.toList());
     }
 }
 class ListGraph {
