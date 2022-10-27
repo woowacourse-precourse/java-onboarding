@@ -19,4 +19,20 @@ class Problem1 {
         return answer;
 
     }
+
+    public static boolean checkException(List<Integer> list) {
+        if (list.size() != 2)
+            return false;
+        if (list.contains(null))
+            return false;
+        if (list.get(1) - list.get(0) != 1)
+            return false;
+        if (list.get(0) % 2 != 1 || list.get(1) % 2 != 0)
+            return false;
+        if (list.get(0) == 1 || list.get(1) == 400)
+            return false;
+        if (list.get(0) < 1 || list.get(0) > 400 || list.get(1) < 1 || list.get(1) > 400)
+            return false;
+        return true;
+    }
 }
