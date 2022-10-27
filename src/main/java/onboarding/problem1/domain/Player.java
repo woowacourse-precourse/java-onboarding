@@ -3,6 +3,7 @@ package onboarding.problem1.domain;
 import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 public class Player {
     private static final String NOT_FOUND_PAGE_EXCEPTION_MESSAGE = "페이지를 찾지 못했습니다.";
@@ -37,5 +38,9 @@ public class Player {
                 .mapToInt(Page::multiplyOfDigits)
                 .max()
                 .orElseThrow(() -> new NoSuchElementException(NOT_FOUND_PAGE_EXCEPTION_MESSAGE));
+    }
+    
+    public int compareTo(final Player rightPlayer) {
+        return Integer.compare(getMaxNumber(), rightPlayer.getMaxNumber());
     }
 }
