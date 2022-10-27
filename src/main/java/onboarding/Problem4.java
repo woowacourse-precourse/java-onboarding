@@ -18,6 +18,21 @@ public class Problem4 {
         for(int i = 0; i < 26; i++ ){ // 알파벳 26개
             convert.put(String.valueOf((char) ('A' + i)), change_word[i]);
         }
+        for(String c : basic_word) {
+            // 대문자 true, 나머지 false
+            boolean isUpper = Character.isUpperCase(c.charAt(0));
+
+            String now_value = convert.get(c.toUpperCase());
+            // 알파벳 외의 문자는 변환하지 않는다.
+            if (now_value == null) {
+                now_value = " ";
+            }
+            // false인데 null이 아닐 경우 소문자로
+            if (!isUpper) {
+                now_value = now_value.toLowerCase();
+            }
+            answer = answer + now_value;
+        }
         return answer;
     }
 }
