@@ -19,7 +19,6 @@ public class Problem2 {
     //중복 여부를 체크하는 함수
     public static boolean hasDuplicate(String cryptogram){
         int length = cryptogram.length();
-        boolean isDuplicate = false;
 
         for(int i=0;i<length-1;i++){
             if(cryptogram.charAt(i)==cryptogram.charAt(i+1)) return true;
@@ -27,5 +26,6 @@ public class Problem2 {
 
         return false;
     }
+
 
 }
