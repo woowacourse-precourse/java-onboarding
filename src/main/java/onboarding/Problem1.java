@@ -8,16 +8,15 @@ import java.util.List;
 //3. 점수 비교해서 승자 정하기
 
 class Problem1 {
-    public int addOrMultiply(int num){
-        int hun, ten, one=0;
-        hun=num/100;
-        ten=(num%100)/10;
-        one=(num%100)%10;
+    public static int addOrMultiply(int num){
 
-        int addNum, mulNum=0;
+        int addNum=0, mulNum=1;
 
-        addNum=hun+ten+one;
-        mulNum=hun*ten*one;
+        while(num>0) {
+            addNum += num % 10;
+            mulNum *= num % 10;
+            num /= 10;
+        }
 
         if(addNum>mulNum)
             return addNum;
@@ -25,8 +24,17 @@ class Problem1 {
             return mulNum;
     }
 
+    public int getMaxNum(List<Integer> numList){
+        int max=0;
+        for(int i=0;i<numList.size();i++){
+
+        }
+        return 0;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+
         return answer;
     }
 }
