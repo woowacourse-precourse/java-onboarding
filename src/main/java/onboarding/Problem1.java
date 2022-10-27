@@ -6,6 +6,10 @@ import java.util.List;
 
 class Problem1 {
     private static final char ZERO = '0';
+    private static final int POBI = 1;
+    private static final int CRONG = 2;
+    private static final int TIE = 0;
+    private static final int EXCEPTION = -1;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
@@ -65,5 +69,17 @@ class Problem1 {
 
     public static Integer getMax(List<Integer> num) {
         return Collections.max(num);
+    }
+
+    public static Integer getWinner(Integer pobiScore, Integer crongScore) {
+        if (pobiScore > crongScore) {
+            return POBI;
+        } else if (pobiScore < crongScore) {
+            return CRONG;
+        } else if (pobiScore == crongScore) {
+            return TIE;
+        }
+
+        return EXCEPTION;
     }
 }
