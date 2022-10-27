@@ -4,14 +4,16 @@ public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
 
-        while (number > 0) {
-            int countNumber = number % 10;
-            if (countNumber == 3 || countNumber == 6 || countNumber == 9) {
-                answer++;
+        for (int i = 1; i<=number;i++){
+            int flag = i;
+            while (flag > 0) {
+                int countNumber = flag % 10;
+                if (countNumber == 3 || countNumber == 6 || countNumber == 9) {
+                    answer++;
+                }
+                flag = flag/10;
             }
-            number /= 10;
         }
-        
         return answer;
     }
 }
