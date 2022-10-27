@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
@@ -19,5 +20,19 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
+    }
+
+    public List<Integer> addEachDigitOfPageNumber(List<Integer> list) {
+        int summation;
+        List<Integer> summationList = new ArrayList<>();
+        for (Integer integer : list) {
+            summation = 0;
+            while (integer > 0) {
+                summation += integer % 10;
+                integer /= 10;
+            }
+            summationList.add(summation);
+        }
+        return summationList;
     }
 }
