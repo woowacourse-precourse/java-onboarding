@@ -159,6 +159,25 @@ class ApplicationTest {
             List<Integer> result = List.of(0, 1, 1, 0, 0, 0, 0, 0, 0);
             assertThat(Problem5.solution(money)).isEqualTo(result);
         }
+
+        @Test
+        void case3() {
+            int money = 99;
+            List<Integer> result = List.of(0, 0, 0, 0, 0, 0, 1, 4, 9);
+            assertThat(Problem5.solution(money)).isEqualTo(result);
+        }
+        @Test
+        void case4() {
+            int money = 9;
+            List<Integer> result = List.of(0, 0, 0, 0, 0, 0, 0, 0, 9);
+            assertThat(Problem5.solution(money)).isEqualTo(result);
+        }
+        @Test
+        void case5() {
+            int money = 1000000;
+            List<Integer> result = List.of(20, 0, 0, 0, 0, 0, 0, 0, 0);
+            assertThat(Problem5.solution(money)).isEqualTo(result);
+        }
     }
 //
 //    @Nested
