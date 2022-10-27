@@ -8,6 +8,12 @@ class Problem1 {
         return answer;
     }
 
+    public int winner(int pobi_score, int crong_score){
+        if(pobi_score > crong_score) return 1;
+        else if(pobi_score < crong_score) return 2;
+        else return 0;
+    }
+
     public int compare_score(List<Integer> score_list){
         int max = 0;
         for(int i = 0; i < score_list.size(); i++){
