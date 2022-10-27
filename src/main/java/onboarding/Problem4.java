@@ -10,10 +10,22 @@ public class Problem4 {
 	private static final char UPPER_FIRST_CHAR='A';
 	private static final char UPPER_MIDDLE_CHAR='M';
 	private static final char UPPER_END_CHAR='Z';
+	private static final char SPACE=' ';
 
 	public static String solution(String word) {
 		initFrogDic();
+		return translateWord(word);
+	}
+
+	private static String translateWord(String word) {
 		String answer = "";
+		for (char ch : word.toCharArray()) {
+			if(ch == SPACE){
+				answer+=SPACE;
+				continue;
+			}
+			answer+=frogDic.get(ch);
+		}
 		return answer;
 	}
 
