@@ -9,6 +9,17 @@ public class Problem3 {
         return answer;
     }
 
+    private static int getClapCount(int currentNumber) {
+        int temp = 0;
+        while(currentNumber > 0) {
+            if(isContainClapNumber(currentNumber)){
+                temp++;
+            };
+            currentNumber /= 10;
+        }
+        return temp;
+    }
+
     private static boolean isContainClapNumber(int currentNumber) {
         return CLAP_NUMBER.contains(currentNumber % 10);
     }
