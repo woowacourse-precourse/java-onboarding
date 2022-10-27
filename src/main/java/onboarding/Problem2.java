@@ -11,7 +11,6 @@ public class Problem2 {
         for (Character aChar : chars) {
             duplicateCheck(stack, aChar);
         }
-
         return stack.stream().map(String::valueOf).collect(Collectors.joining());
     }
 
