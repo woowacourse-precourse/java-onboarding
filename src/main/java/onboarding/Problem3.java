@@ -12,22 +12,22 @@ public class Problem3 {
         int totalClap = 0;
         int[] numbers = toInts(zeroPadding(number));
         for(int i = 0; i < numbers.length; i++) {
-            totalClap += getClapByDigit(numbers[i], number);
+            totalClap += getClapByDigit(numbers[i], i, number);
         }
         return totalClap;
     }
 
-    private static int getClapByDigit(int i, int number) {
+    private static int getClapByDigit(int digit, int i, int number) {
         if (i == 0) return 0;
-        int clap = getClapDefault(i);
+        int clap = getClapDefault(digit, i);
         if (i % 3 == 0) {
             clap += number / (MULTIPLES_OF_TEN[i]);
         }
         return clap;
     }
 
-    private static int getClapDefault(int i) {
-        return i * MAX_CLAP_BY_DIGIT[i] + getNumOfMulOfThreeLessThanValue(i) * (MULTIPLES_OF_TEN[i] / 10);
+    private static int getClapDefault(int digit, int i) {
+        return digit * MAX_CLAP_BY_DIGIT[i] + getNumOfMulOfThreeLessThanValue(digit) * (MULTIPLES_OF_TEN[i] / 10);
     }
 
     private static int getNumOfMulOfThreeLessThanValue(int value) {
