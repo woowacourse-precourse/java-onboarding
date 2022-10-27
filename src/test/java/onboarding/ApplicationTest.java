@@ -244,6 +244,11 @@ class ApplicationTest {
             int result = 14;
             assertThat(Problem3.solution(number)).isEqualTo(result);
         }
+
+        @Test
+        void numberToCharArrayTest() {
+            assertThat(Problem3.numberToCharArray(100).length).isEqualTo(3);
+        }
     }
 
 //    @Nested
