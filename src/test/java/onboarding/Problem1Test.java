@@ -32,4 +32,17 @@ class Problem1Test {
         //then
         Assertions.assertThat(res).isEqualTo(-1);
     }
+
+    @Test
+    public void 페이지점수계산() throws Exception {
+        //given
+        Integer page = 51;
+
+        //when
+        int score = Problem1.calculateScore(51);
+
+        //then
+        Assertions.assertThat(score).isEqualTo(6);
+    }
+
 }
