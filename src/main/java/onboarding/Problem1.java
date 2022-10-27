@@ -4,16 +4,28 @@ import java.util.List;
 
 class Problem1 {
     /*
-    * 다음의 기능을 하는 메서드를 구현.
-    * 1. 각 자리 숫자를 더하는 메서드 sumValue
-    * 2. 각 자리 숫자를 곱하는 메서드 mulValue
-    * 3. 왼쪽 페이지와 오른쪽 페이지의 각 자리 숫자를 더하고 곱하고 비교하여 가장 큰수를 리턴하는 메서드 getMaxValue
-    * 4. 점수를 비교하여 승자를 정하는 메서드 whoIsWinner
+    * 다음의 기능을 하는 클래스와 메서드를 구현.
+    * 1. gamer1과 gamer2의 리스트를 가지고 다음의 기능들을 가진 클래스 PageNumGame
+    * 2. 각 자리 숫자를 더하는 메서드 sumValue
+    * 3. 각 자리 숫자를 곱하는 메서드 mulValue
+    * 4. 왼쪽 페이지와 오른쪽 페이지의 각 자리 숫자를 더하고 곱하고 비교하여 가장 큰수를 리턴하는 메서드 getMaxValue
+    * 5. 점수를 비교하여 승자를 정하는 메서드 whoIsWinner
     * */
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-
+        PageNumGame pobiCrong = new PageNumGame(pobi, crong);
+        answer = pobiCrong.whoIsWinner();
         return answer;
+    }
+}
+
+class PageNumGame {
+    List<Integer> gamer1;
+    List<Integer> gamer2;
+
+    PageNumGame(List<Integer> gamer1, List<Integer> gamer2){
+        this.gamer1 = gamer1;
+        this.gamer2 = gamer2;
     }
 
     // 각 자리 숫자를 더하는 메서드
@@ -36,7 +48,7 @@ class Problem1 {
     }
 
     // 점수를 비교하여 승자를 정하는 메서드 whoIsWinner
-    int whoIsWinner(List<Integer> gamer1, List<Integer> gamer2) {
+    int whoIsWinner() {
         int answer = -1;
         int gamer1Point = getMaxValue(gamer1.get(0), gamer1.get(1));
         int gamer2Point = getMaxValue(gamer2.get(0), gamer2.get(1));
