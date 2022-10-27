@@ -18,6 +18,10 @@ class Problem1 {
         if(pobi.get(0)+1 != pobi.get(1) || crong.get(0)+1 != crong.get(1)){
             throw new RuntimeException("페이지 사이가 비어있습니다.");
         }
+
+        if(pobi.size() != 2 || crong.size() != 2){
+            throw new RuntimeException("페이지가 2장이 아닙니다.");
+        }
     }
     
     // 더하기와 곱하기 중 큰 값을 출력하는 메소드
