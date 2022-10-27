@@ -15,7 +15,7 @@ public class Problem4 {
             }
             sb.append(curChar);
         }
-
+        answer = sb.toString();
         return answer;
     }
 
