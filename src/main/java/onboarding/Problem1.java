@@ -18,6 +18,17 @@ class Problem1 {
         return false;
     }
 
+    private static int[] spreadDigit(Integer value) {
+        String valStr = value.toString();
+        int[] singleDigitArray = new int[valStr.length()];
+
+        for (int i = 0; i < valStr.length(); i++){
+            singleDigitArray[i] = valStr.charAt(i) - '0';
+        }
+
+        return singleDigitArray;
+    }
+
     private static int getAddValue(int[] numbers) {
         return Arrays.stream(numbers).reduce(0, Integer::sum);
     }
