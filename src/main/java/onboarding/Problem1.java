@@ -27,14 +27,14 @@ class Problem1 {
                 getMultiplyValue(pobiLeftPage), getMultiplyValue(pobiRightPage));
 
         int pobiScore = getMaxValue(pobiResultList);
-        
+
         // 크롱의 결과 리스트를 구한다.
         List<Integer> crongResultList = List.of(getSumValue(crongLeftPage), getSumValue(crongRightPage),
                 getMultiplyValue(crongLeftPage), getMultiplyValue(crongRightPage));
 
         int crongScore = getMaxValue(crongResultList);
 
-        return answer;
+        return compareResult(pobiScore, crongScore);
     }
 
     /**
@@ -158,6 +158,23 @@ class Problem1 {
         }
 
         return maxVal;
+    }
+
+    /**
+     * 두 사람의 점수를 비교하여 결과를 출력한다.
+     *
+     * @param pobiScore 포비의 점수
+     * @param crongScore 크롱의 점수
+     * @return 포비가 이기면 1, 크롱이 이기면 2, 무승부는 0을 리턴한다.
+     */
+    private static int compareResult(int pobiScore, int crongScore) {
+        if (pobiScore > crongScore) {
+            return 1;
+        }
+        if (pobiScore < crongScore) {
+            return 2;
+        }
+        return 0;
     }
 
 }
