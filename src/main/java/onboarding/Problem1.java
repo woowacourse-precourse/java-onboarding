@@ -39,7 +39,7 @@ class Problem1 {
         if(a>b){
             return 1;
         }
-        if(a == b ){
+        if(a.equals(b)){
             return 0;
         }
         return 2;
@@ -47,7 +47,7 @@ class Problem1 {
     //예외 처리 , 6번조건도 예외라고 생각하여 포함하였음
     public static boolean is_exception(List<Integer> page){
         //이상한 데이터가 들어왔다면 false 를 반환(예외처리 -1)
-        if(page.get(0)%2 == 0 && page.get(0)+1 != page.get(1)){
+        if(page.get(0)%2== 0 && page.get(0)+1 != page.get(1)){
             return false;//올바른 data 들어왔을 때 1을 반환
         }
         //이상한 데이터가 들어왔다면 false 를 반환 (=6번 조건을 충족하지 않는다면.)
