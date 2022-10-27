@@ -20,4 +20,8 @@ public class Problem2 {
         return deduplicationLetters.getLast().equals(letter);
     }
 
+    private static void removeDuplication(LinkedList<Character> deduplicationLetters) {
+        deduplicationLetters.removeLast();
+    }
+
 }
