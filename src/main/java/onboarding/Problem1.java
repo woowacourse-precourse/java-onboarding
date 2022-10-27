@@ -20,10 +20,14 @@ class Problem1 {
         int left = pageNums.get(0);
         if (left < 0 || left > 400) {
             return -1;
+        } else if (left == 0 || left == 400) {
+            return -1;
         }
 
         int right = pageNums.get(1);
         if (right < 0 || right > 400) {
+            return -1;
+        } else if (right == 0 || right == 400) {
             return -1;
         }
 
