@@ -14,8 +14,15 @@ public class Crews {
     }
 
     public void add(Crew crew) {
+        validateCrewsSize();
         validateContainNickNameContinuously(crew.getNickName());
         crews.add(crew);
+    }
+
+    private void validateCrewsSize() {
+        if (crews.size() >= 10000) {
+            throw new IllegalStateException("크루는 10,000명 이하입니다.");
+        }
     }
 
     private void validateContainNickNameContinuously(String nickName) {
