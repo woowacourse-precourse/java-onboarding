@@ -37,8 +37,9 @@ class ApplicationTest {
         @Test
         void splitTest() {
             int num = 408;
+            NumSpliter numSpliter = new NumSpliter();
             List<Integer> result = List.of(4,0,8);
-            assertThat(Problem1.splitNum(num)).isEqualTo(result);
+            assertThat(numSpliter.splitNum(num)).isEqualTo(result);
         }
 
         @Test
