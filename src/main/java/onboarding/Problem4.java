@@ -17,7 +17,7 @@ public class Problem4 {
     }
 
     public static boolean checkUppder(Character target) {
-        return Character.isLowerCase(target);
+        return Character.isUpperCase(target);
     }
 
     public static Character changeCharUpperCase(Character target) {
