@@ -37,7 +37,7 @@ public class Problem1Util {
     }
 
     public static int whoIsWinner(int pobiResult, int crongResult) {
-        if (pobiResult == -1 || crongResult == -1) return -1;
+        if (pobiResult == -1 || crongResult == -1) return -1; // 주의
         else if (pobiResult > crongResult) return 1;
         else if (pobiResult < crongResult) return 2;
         return 0;
