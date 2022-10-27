@@ -2,7 +2,7 @@
 | Date  | Method Name      | Feature       | Parameter Type | Return Type | Progress  |
 |-------|------------------|---------------|----------------|-------------|-----------|
 | 10.27 | addDigits()      | 각 자리 숫자 덧셈    | int            | int         | committed |
-
+| 10.27 | multiplyDigits() | 각 자리 숫자 곱셈    | int            | int         | committed |
 ### TODO
 -플레이어 리스트 길이가 2보다 클 때 예외처리
 -시작 페이지 마지막 페이지 예외처리
