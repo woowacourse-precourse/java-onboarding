@@ -4,7 +4,9 @@ public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
 
-        System.out.println(count369(313));
+        for (int i = 1; i <= number; i++) {
+            answer += count369(i);
+        }
 
         return answer;
     }
