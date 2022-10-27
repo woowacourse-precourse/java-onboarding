@@ -19,7 +19,7 @@ public class Problem7 {
         addVisitScore(scores, visitors);
 
         removeAlreadyFriend(scores, userFriendSet);
-        
+
         ArrayList list = new ArrayList(scores.entrySet());
 
         list.sort(new SortFriendList());
@@ -72,7 +72,7 @@ public class Problem7 {
     }
 
     static List<String> getResult(List<Map.Entry<String, Integer>> entry , int count){
-        List<String> result = List.of();
+        List<String> result = new ArrayList<>();
         Iterator<Map.Entry<String, Integer>> iterator = entry.iterator();
 
         while(iterator.hasNext() && count>0){
