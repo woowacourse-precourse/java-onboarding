@@ -12,7 +12,7 @@ public class Problem7 {
     }
 }
 
-class User{
+class User implements Comparable<User> {
     private String id;
     private List<User> friends = new ArrayList<>();
     private int point;
@@ -54,4 +54,11 @@ class User{
         return point;
     }
 
+    @Override
+    public int compareTo(User o) {
+        if (o.getPoint() - getPoint() != 0) {
+            return o.getPoint() - this.getPoint();
+        }
+        return this.getId().compareTo(o.getId());
+    }
 }
