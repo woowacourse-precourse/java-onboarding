@@ -27,6 +27,10 @@ public class Problem6 {
             }
         }
         
+        List<String> answer = deduplication.stream()
+                .sorted()
+                .collect(Collectors.toList());
+        
         return answer;
     }
 }
