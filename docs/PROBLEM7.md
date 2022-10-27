@@ -26,8 +26,8 @@
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
 
 ## 기능 목록
-- [ ] 유저와 친구인 사람을 조회한다.
-- [ ] 유저의 친구의 친구를 조회해 10포인트를 부여한다.
+- [X] 유저와 친구인 사람을 조회한다.
+- [X] 유저의 친구의 친구를 조회해 10포인트를 부여한다.
 - [ ] 유저에게 방문한 사람에게 1포인트를 부여한다.
 - [ ] 유저에게 친구 추천을 한다.
   - [ ] 이미 친구인 경우 추천하지 않는다.
