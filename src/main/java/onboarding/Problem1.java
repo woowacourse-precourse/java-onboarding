@@ -9,7 +9,7 @@ import static onboarding.PageNumber.makeRandomNumber;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-        Referee referee = new Referee();
+        Referee1 referee = new Referee1();
         try {
             int pobiScore = referee.giveScore(pobi);
             int crongScore = referee.giveScore(crong);
@@ -21,51 +21,51 @@ class Problem1 {
     }
 
     public static void main(String[] args) {
-        Game.start("pobi", "crong");
-        int result = solution(Game.user1.getChoiceNumbers(), Game.user2.getChoiceNumbers());
-        Game.end(result);
+        Game1.start("pobi", "crong");
+        int result = solution(Game1.user1.getChoiceNumbers(), Game1.user2.getChoiceNumbers());
+        Game1.end(result);
     }
 }
 
-class Game {
-    static User user1;
-    static User user2;
+class Game1 {
+    static User1 user1;
+    static User1 user2;
 
     static void start() {
         Book book = new Book();
-        user1 = new User("pobi");
-        user2 = new User("crong");
+        user1 = new User1("pobi");
+        user2 = new User1("crong");
         user1.choiceRandomNumbers(book.getPageStart(), book.getPageEnd());
         user2.choiceRandomNumbers(book.getPageStart(), book.getPageEnd());
     }
 
     static void start(String name1, String name2) {
         Book book = new Book();
-        user1 = new User(name1);
-        user2 = new User(name2);
+        user1 = new User1(name1);
+        user2 = new User1(name2);
         user1.choiceRandomNumbers(book.getPageStart(), book.getPageEnd());
         user2.choiceRandomNumbers(book.getPageStart(), book.getPageEnd());
     }
 
     static void start(int pageEnd, String name1, String name2) {
         Book book = new Book(pageEnd);
-        user1 = new User(name1);
-        user2 = new User(name2);
+        user1 = new User1(name1);
+        user2 = new User1(name2);
         user1.choiceRandomNumbers(book.getPageStart(), book.getPageEnd());
         user2.choiceRandomNumbers(book.getPageStart(), book.getPageEnd());
     }
 
     static void start(int pageStart,int pageEnd, String name1, String name2) {
         Book book = new Book(pageStart,pageEnd);
-        user1 = new User(name1);
-        user2 = new User(name2);
+        user1 = new User1(name1);
+        user2 = new User1(name2);
         user1.choiceRandomNumbers(book.getPageStart(), book.getPageEnd());
         user2.choiceRandomNumbers(book.getPageStart(), book.getPageEnd());
     }
 
     static void end(int result) {
-        OutView.printHead(user1, user2);
-        OutView.printResult(user1, user1, result);
+        OutView1.printHead(user1, user2);
+        OutView1.printResult(user1, user1, result);
     }
 }
 
@@ -112,7 +112,7 @@ class Book {
     }
 }
 
-class User {
+class User1 {
     private final String name;
     private final List<Integer> choiceNumbers = new ArrayList<>();
 
@@ -124,7 +124,7 @@ class User {
         return choiceNumbers;
     }
 
-    User(String name) {
+    User1(String name) {
         this.name = name;
     }
 
@@ -213,7 +213,7 @@ class PageNumber {
     }
 }
 
-class Referee {
+class Referee1 {
     private final String DEFUALTUSER1 = "pobi";
     private final String DEFUALTUSER2 = "crong";
 
@@ -256,12 +256,12 @@ class Referee {
     }
 }
 
-class OutView {
-    static void printHead(User user1, User user2) {
+class OutView1 {
+    static void printHead(User1 user1, User1 user2) {
         System.out.println(user1.getName() + "\t" + user2.getName() + "\t" + "result");
     }
 
-    static void printResult(User user1, User user2, int result) {
+    static void printResult(User1 user1, User1 user2, int result) {
         System.out.println(user1.getChoiceNumbers() + "\t" + user2.getChoiceNumbers() + "\t" + result);
     }
 }

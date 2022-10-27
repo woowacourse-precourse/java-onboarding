@@ -15,7 +15,7 @@ public class Problem2 {
     }
 }
 
-class Input {
+class Input2 {
     static String inputCryptogram() {
         Scanner scanner = new Scanner(System.in);
         return scanner.next();
@@ -76,7 +76,7 @@ class Cryptogram {
 
 }
 
-class OutView {
+class OutView2 {
     static void printHead(String cryptoMethod ) {
         System.out.println(cryptoMethod + "\t" + "result");
     }
