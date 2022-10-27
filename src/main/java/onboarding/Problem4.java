@@ -16,17 +16,22 @@ public class Problem4 {
         return result;
     }
 
-    public static String solution(String word) {
-        String answer = "";
-        ArrayList<Integer> ascii_array;
+    static String ReverseStr(String word) {
+        String result = "";
+        ArrayList<Integer> ascii_array = InitAscii();
 
-        ascii_array = InitAscii();
-
-        return answer;
+        for(char c : word.toCharArray()) {
+            if (ascii_array.get(c) != -1)
+                result += Character.toString(ascii_array.get(c));
+            else if (ascii_array.get(c) == -1)
+                result += c;
+        }
+        return result;
     }
 
-    public static void main(String argv[]){
+    public static String solution(String word) {
+        String answer = ReverseStr(word);
 
-        solution("asdasd");
+        return answer;
     }
 }
