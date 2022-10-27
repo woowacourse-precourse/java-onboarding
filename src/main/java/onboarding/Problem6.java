@@ -10,8 +10,8 @@ public class Problem6 {
 	public static List<String> solution(List<List<String>> forms) {
 		List<String> answer = List.of("answer");
 
-		answer = findDuplicateNickname(forms);
-		answer = sortEmailList(answer);
+		answer = findDuplicateNickname(forms); // 중복닉네임을 가진 이메일 리스트를 answer에 입력
+		answer = sortEmailList(answer); // 중복 제거 및 오름차순으로 정렬
 
 		return answer;
 	}
@@ -40,16 +40,21 @@ public class Problem6 {
 		List<String> listOfEmail = new ArrayList<>(); // 이메일을 저장할 리스트
 
 		for (int i = 0; i < forms.size(); i++) {
-			List<String> separatedNickname = separateNickname(
-				forms.get(i).get(1)); // 두 글자로 분리된 닉네임 리스트
+
+			String nickname = forms.get(i).get(1);
+			String email = forms.get(i).get(0);
+			List<String> separatedNickname = separateNickname(nickname); // 두 글자로 분리된 닉네임 리스트
 
 			for (int j = 0; j < separatedNickname.size(); j++) {
+
 				String currentNickname = separatedNickname.get(j);
-				if (listOfAll.containsKey(currentNickname)) {
-					listOfEmail.add(forms.get(i).get(0)); //
-					listOfEmail.add(forms.get(listOfAll.get(currentNickname)).get(0));
-				} else {
-					listOfAll.put(currentNickname, i);
+
+				if (listOfAll.containsKey(currentNickname)) { // 닉네임 리스트에 이미 똑같은 닉네임이 있는 경우
+					listOfEmail.add(email); // 현재 차례의 이메일 주소를 리스트에 입력
+					listOfEmail.add(forms.get(listOfAll.get(currentNickname)).get(0)); //닉네임 리스트에 있는 사람의 이메일 주소를 리스트에 입력
+				}
+				if (!listOfAll.containsKey(currentNickname)){ // 닉네임 리스트에 같은 닉네임이 없는 경우
+					listOfAll.put(currentNickname, i); // 닉네임 리스트에 닉네임과 forms의 인덱스를 입력
 				}
 			}
 		}
