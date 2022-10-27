@@ -4,8 +4,8 @@ public class Decrypter {
 
     public static String decrypt(String cryptogram){
         String result = cryptogram;
-        while (isDecryptable(cryptogram)){
-            result = removeRepeatedChar(cryptogram);
+        while (isDecryptable(result)){
+            result = removeRepeatedChar(result);
         }
         return result;
     }
