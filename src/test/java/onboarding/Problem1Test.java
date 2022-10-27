@@ -17,4 +17,22 @@ class Problem1Test {
         assertThat(maxScore).isEqualTo(72);
     }
 
+    @Test
+    void validation() {
+        List<Integer> pobi1 = List.of(97, 98);
+        int maxScore = Problem1.findMaxScore(pobi1);
+        assertThat(maxScore).isEqualTo(72);
+
+        List<Integer> pobi2 = List.of(97, 103);
+        int errorScore1 = Problem1.findMaxScore(pobi2);
+        assertThat(errorScore1).isEqualTo(-1);
+
+        List<Integer> pobi3 = List.of(0, 1);
+        int errorScore2 = Problem1.findMaxScore(pobi3);
+        assertThat(errorScore2).isEqualTo(-1);
+
+        List<Integer> pobi4 = List.of(400, 401);
+        int errorScore3 = Problem1.findMaxScore(pobi3);
+        assertThat(errorScore3).isEqualTo(-1);
+    }
 }

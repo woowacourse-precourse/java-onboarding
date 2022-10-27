@@ -17,6 +17,10 @@ class Problem1 {
         Integer frontPage = page.get(0);
         Integer backPage = page.get(1);
 
+        if (validation(frontPage, backPage)) {
+            return -1;
+        }
+
         int[] front_digits = Stream.of(String.valueOf(frontPage).split("")).mapToInt(Integer::parseInt).toArray();
         int[] back_digits = Stream.of(String.valueOf(backPage).split("")).mapToInt(Integer::parseInt).toArray();
 
@@ -45,5 +49,17 @@ class Problem1 {
         scores[3] = mul;
 
         return Arrays.stream(scores).max().getAsInt();
+    }
+
+    public static boolean validation(int frontPage, int backPage) {
+        if (frontPage < 1 || backPage > 400) {
+            return true;
+        }
+
+        if (backPage - frontPage != 1) {
+            return true;
+        }
+
+        return false;
     }
 }
