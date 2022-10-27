@@ -3,6 +3,11 @@ package onboarding;
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
+        //입력받은 숫자를 통해 총 몇 번의 손벽을 쳐야하는지 확인
+        for (int i = 1; i <= number; i++) {
+            int cnt = checkNum(i);
+            answer += cnt;
+        }
         return answer;
     }
 
