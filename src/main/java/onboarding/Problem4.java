@@ -21,10 +21,13 @@ public class Problem4 {
         }
         return (HashMap<Character, Character>) map;
     }
-    public static char[] wordToChar(String word){
+    private static char[] wordToChar(String word){
         return word.toCharArray();
     }
     private static Character wordChange(Character wordCharacter){
+        if(SPELLING_CONVERT.get(wordCharacter) == null){
+            return wordCharacter;
+        }
         return SPELLING_CONVERT.get(wordCharacter);
     }
     private static String wordLoop(char[] wordCharacters,String reverseWord){
