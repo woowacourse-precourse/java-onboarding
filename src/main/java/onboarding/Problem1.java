@@ -5,6 +5,12 @@ import java.util.List;
 import java.util.stream.Stream;
 
 class Problem1 {
+
+    static final int EXCEPTION = -1;
+    static final int DRAW = 0;
+    static final int POBI_WIN = 1;
+    static final int CRONG_WIN = 2;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
@@ -53,5 +59,15 @@ class Problem1 {
         int product = Arrays.stream(eachNumberArray).reduce(1, (a, b) -> a * b);
 
         return Math.max(sum, product);
+    }
+
+    static int compare(int n1, int n2) {
+        if(n1 == n2)
+            return DRAW;
+
+        if(n1 > n2)
+            return POBI_WIN;
+
+        return CRONG_WIN;
     }
 }
