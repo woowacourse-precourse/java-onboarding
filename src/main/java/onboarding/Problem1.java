@@ -26,4 +26,17 @@ class Problem1 {
         }
         return false;
     }
+
+    // 최댓값 메소드
+    public static int make_max(int num){
+        int sum = 0;
+        int mul = 1;
+
+        while(num > 0){
+            sum += num % 10;
+            mul *= num % 10;
+            num /= 10;
+        }
+        return Math.max(sum, mul);
+    }
 }
