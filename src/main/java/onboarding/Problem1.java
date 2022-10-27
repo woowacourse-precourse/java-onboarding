@@ -11,8 +11,7 @@ class Problem1 {
 			Integer pobiMaxValue = comparator.getMaxPageValue(pobi);
 			Integer crongMaxValue = comparator.getMaxPageValue(crong);
 
-
-			return 1; // 승자 리턴
+			return comparator.compare(pobiMaxValue, crongMaxValue);
 		} else {
 			return -1;
 		}
@@ -37,6 +36,16 @@ class PageComparator {
 		Integer right = page.get(1);
 
 		return Math.max(getMaxValue(left), getMaxValue(right));
+	}
+
+	public Integer compare(Integer value1, Integer value2) {
+		if (value1 > value2) {
+			return 1;
+		} else if (value1 < value2) {
+			return 2;
+		} else {
+			return 0;
+		}
 	}
 
 	private Integer getMaxValue(Integer page) {
