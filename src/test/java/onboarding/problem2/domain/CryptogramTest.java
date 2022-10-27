@@ -12,4 +12,11 @@ public class CryptogramTest {
         Cryptogram cryptogram = new Cryptogram();
         assertThat(cryptogram.isEquals('a', 'a')).isTrue();
     }
+    
+    @Test
+    @DisplayName("연속된 같은 두 문자가 있으면 삭제 후 새로운 객체 반환")
+    void removeAndReturnTrue() {
+        Cryptogram cryptogram = new Cryptogram("browoanoommnaon");
+        assertThat(cryptogram.remove().getCryptogram()).isEqualTo("browoanmmnaon");
+    }
 }
