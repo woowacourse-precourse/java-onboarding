@@ -27,6 +27,13 @@ class Exception{
         }
         return isTrue;
     }
+    public boolean errorCheck(List<Integer> bookPages1, List<Integer> bookPages2){
+        boolean wrongLength = (isWrongLength(bookPages1)||isWrongLength(bookPages2));
+        boolean wrongPosition = (isWrongPosition(bookPages1)||isWrongPosition(bookPages2));
+        boolean wrongPageDifference = (isWrongPage(bookPages1)||isWrongPage(bookPages2));
+        boolean firstOrLast = (isFirstOrLastPage(bookPages1)||isFirstOrLastPage(bookPages2));
+        return (wrongLength||wrongPosition||wrongPageDifference||firstOrLast);
+    }
 }
 class Problem1 {
 
