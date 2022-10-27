@@ -19,6 +19,7 @@ public class Problem6 {
         }
         return answer.stream().distinct().sorted().collect(Collectors.toList());
     }
+    //리팩토링 하고 싶지만, static이라는 구조를 깨지 못해 어려울 것 같다.
 
     private static List<String> getTwoCharsAfterSplit(String name) {
         List<String> result = new ArrayList<>();
