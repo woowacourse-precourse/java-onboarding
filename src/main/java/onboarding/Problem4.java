@@ -12,7 +12,7 @@ public class Problem4 {
         StringBuilder sb = new StringBuilder();
 
         // 대소문자 구분 변환 루프
-        for(int i = 0; i < A.length(); i++) {
+        for(int i = 0; i < word.length(); i++) {
             // 알파벳인지 아닌지 체크
             char ch = word.charAt(i);
             boolean bool = (ch >= 'a' && ch <='z') || (ch >= 'A' && ch <= 'Z');
