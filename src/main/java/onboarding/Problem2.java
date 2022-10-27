@@ -2,8 +2,12 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        String decodeResult = "answer";
+        while(!isDecodedSuccess(cryptogram)) {
+            cryptogram = decodeString(cryptogram);
+        }
+        decodeResult = cryptogram;
+        return decodeResult;
     }
 
     public static String decodeString(String cryptogram) {
