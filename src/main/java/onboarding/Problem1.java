@@ -27,4 +27,27 @@ class Problem1 {
         return true;
     }
 
+    /**
+     * Integer list를 받아 최고 점수를 반환*/
+    private static int getScore(List<Integer> list){
+        String left = list.get(0).toString();
+        String right = list.get(1).toString();
+        int leftScore = getMaxScore(left);
+        int rightScore = getMaxScore(right);
+
+        return Integer.max(leftScore, rightScore);
+    }
+
+    /**
+     * 각 자리수를 더하기, 곱하기를 해 더 큰 값을 반환 */
+    private static int getMaxScore(String s) {
+        int mulVal = 1;
+        int addVal = 0;
+        for(int i=0; i<s.length(); i++){
+            addVal += s.charAt(i) - '0';
+            mulVal *= s.charAt(i) - '0';
+        }
+        return Integer.max(addVal, mulVal);
+    }
+
 }
