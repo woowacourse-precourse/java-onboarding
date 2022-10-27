@@ -2,13 +2,21 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = cryptogram;
+        while(!answer.equals("")){
+            cryptogram = removeDuplication(cryptogram);
+            if(cryptogram.equals(answer)){
+                break;
+            }
+            answer = cryptogram;
+            System.out.println("answer = " + answer);
+        }
         return answer;
     }
     public static String removeDuplication(String str1){
         String returnCryptogram = "";
         for(int i=0;i<str1.length()-1;i++){
-            if (compareChar(str1.charAt(i),str1.charAt(i))){
+            if (compareChar(str1.charAt(i),str1.charAt(i+1))){
                 i = findNextIndex(str1,i);
             } else {
                 returnCryptogram +=str1.charAt(i);
@@ -21,7 +29,7 @@ public class Problem2 {
     }
 
     public static int findNextIndex(String cryptogram,int index){
-        while(compareChar(cryptogram.charAt(index),cryptogram.charAt(index)) && index < cryptogram.length()){
+        while(compareChar(cryptogram.charAt(index),cryptogram.charAt(index+1)) && index < cryptogram.length()-2){
             index++;
         }
         return index;
@@ -29,8 +37,8 @@ public class Problem2 {
 
     public static boolean compareChar(char cur,char next){
         if (cur == next){
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 }
