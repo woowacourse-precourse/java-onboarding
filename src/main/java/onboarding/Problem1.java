@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -13,6 +14,9 @@ class Problem1 {
         // 포비와 크롱의 페이지 연산 결과를 넣을 배열
         int[] pobiResult = new int[4];
         int[] crongResult = new int[4];
+        // 포비와 크롱이 구한 최댓값
+        int pobiNum;
+        int crongNum;
 
         // 포비와 크롱의 리스트에 들어있는 값을 배열에 넣음
         Iterator<Integer> pobiItr = pobi.iterator();
@@ -25,13 +29,30 @@ class Problem1 {
 
         // 예외 처리
         boolean isException = isException(pobiPage, crongPage);
-        if(isException) return -1;
+        if(isException) {
+            answer = -1;
+            return answer;
+        }
 
         // 포비의 계산결과 넣음
         pobiResult = calculateResult(pobiPage);
         // 크롱의 계산결과 넣음
         crongResult = calculateResult(crongPage);
+
+        // 포비의 계산결과와 크롱의 계산결과를 오름차순으로 정렬함
+        Arrays.sort(pobiResult);
+        Arrays.sort(crongResult);
+
         // 누가 이겼는지 확인
+        pobiNum = pobiResult[3];
+        crongNum = crongResult[3];
+        if(pobiNum > crongNum){
+            answer = 1;
+        } else if(crongNum > pobiNum){
+            answer = 2;
+        } else {
+            answer = 0;
+        }
 
         return answer;
     }
