@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     static Map<String, Integer> excludedUserMap;
@@ -18,7 +20,15 @@ public class Problem7 {
         List<String> friendList = friendMap.get(user);
         List<String> acquaintances = findAcquaintances(friendList);
         calculateAcquaintanceScore(acquaintances, visitors);
-        return null;
+        return sortAcquaintanceScore(acquaintanceScoreMap);
+    }
+
+    private static List<String> sortAcquaintanceScore(Map<String, Integer> acquaintanceScoreMap) {
+        List<Entry<String, Integer>> acquaintanceScoreList = new ArrayList<>(
+            acquaintanceScoreMap.entrySet());
+        acquaintanceScoreList.sort((score1, score2) -> score2.getValue().compareTo(
+            score1.getValue()));
+        return acquaintanceScoreList.stream().map(Entry::getKey).collect(Collectors.toList());
     }
 
     private static void calculateAcquaintanceScore(List<String> acquaintances,

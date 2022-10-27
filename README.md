@@ -109,14 +109,15 @@
 > 주어진 조건에 맞게 함께 하는 친구의 점수를 계산하여 점수가 높은 순으로 정렬하여 최대 5명을 리턴하는 기능 만들기 
 
 #### 기능 목록
-- [x] 함께 아는 친구를 찾아서 +10 해주는 기능
-- [x] 사용자 타임 라인에 방문한 함께 아는 친구를 +1 해주는 기능
-- [ ] 함께 아는 친구 리스트를 조건에 맞게 정렬해주는 기능
+- [x] 함께 아는 친구를 찾아서 +10 해주는 기능 - findAcquaintances(), calculateAcquaintanceScore(), addScoreWithAcquaintances(), findUnExcludedAcquaintances()
+- [x] 사용자 타임 라인에 방문한 함께 아는 친구를 +1 해주는 기능 - calculateAcquaintanceScore(), addScoreWithVisitor() 
+- [x] 함께 아는 친구 리스트를 조건에 맞게 정렬해주는 기능 - sortAcquaintanceScore()
 
 #### 문제 풀이 순서
 1. user와 frineds 정보를 통해서 함께 아는 친구 찾기
 2. 함께 아는 친구를 찾으면 그 친구에 +10점을 해주기(map을 통해서 관리), 그냥 친구는 포함되지 않음.(이것도 map을 통해 관리)
 3. visitors를 순회하면서 방문한 기록이 있다면 +1 해주기
+4. 조건에 맞게 정렬하고 리턴
 
 ## 🔍 진행 방식
 
