@@ -11,17 +11,10 @@ public class Problem4 {
         for (int i = 0; i < word.length(); i++) {
             int ascii = word.toCharArray()[i];
 
-            if (Character.isLowerCase(ascii)) {
-                if (ascii + 25 > 122) {
-                    ascii = 122 - ((ascii + 25) % 122);
-                }
+            if (Character.isAlphabetic(ascii)) {
+                ascii = changeAsciiValue(ascii);
             }
 
-            if (Character.isUpperCase(ascii)) {
-                if (ascii + 25 > 90) {
-                    ascii = 90 - ((ascii + 25) % 90);
-                }
-            }
             result.add((char) ascii);
         }
 
@@ -29,5 +22,21 @@ public class Problem4 {
                 .map(String::valueOf)
                 .collect(Collectors.joining());
 
+    }
+
+    private static int changeAsciiValue(int ascii) {
+
+        if (Character.isLowerCase(ascii)) {
+            if (ascii + 25 > 122) {
+                ascii = 122 - ((ascii + 25) % 122);
+            }
+        }
+
+        if (Character.isUpperCase(ascii)) {
+            if (ascii + 25 > 90) {
+                ascii = 90 - ((ascii + 25) % 90);
+            }
+        }
+        return ascii;
     }
 }
