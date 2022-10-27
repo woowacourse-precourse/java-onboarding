@@ -41,7 +41,8 @@ class Problem1 {
         String num = String.valueOf(number);
 
         for (int i = 0; i < num.length(); i++) {
-            multiplication *= num.charAt(i);
+            char c = num.charAt(i);
+            multiplication *= Character.getNumericValue(c);
         }
 
         return multiplication;
@@ -54,7 +55,8 @@ class Problem1 {
         String num = String.valueOf(number);
 
         for (int i = 0; i < num.length(); i++) {
-            sum += num.charAt(i);
+            char c = num.charAt(i);
+            sum += Character.getNumericValue(c);
         }
 
         return sum;
