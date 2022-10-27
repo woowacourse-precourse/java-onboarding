@@ -16,7 +16,7 @@ public class Problem6 {
                 String subNickName = str.substring(j-1,j+1);
                 
                 //중복시 이메일 추가
-                if(!validation(subNickName, i, forms)) set.add(forms.get(i).get(0));
+                if(!validateNickName(subNickName, i, forms)) set.add(forms.get(i).get(0));
             }
         }
 
@@ -29,7 +29,7 @@ public class Problem6 {
     }
 
     //중복 확인 메소드
-    private static boolean validation(String str, int n, List<List<String>> forms) {
+    private static boolean validateNickName(String str, int n, List<List<String>> forms) {
         for (int i = 0; i < forms.size(); i++) {
 
             //현재 위치 발견시 컨티뉴

@@ -3,7 +3,9 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
-    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+    public static List<String> solution(String user, List<List<String>> friends,
+                                        List<String> visitors) {
+
         //친구 목록 맵
         Map<String, List<String>> friendsMap = new HashMap<>();
         //추천 친구 점수 맵
