@@ -10,11 +10,13 @@ class Problem1 {
     private static final int TIE_GAME = 0;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int answer;
 
         if (!isvalidPages(pobi) || !isvalidPages(crong)) {
             return EXCEPTION;
         }
+
+        answer = getGameResult(getMaxValue(pobi), getMaxValue(crong));
 
         return answer;
     }
@@ -58,5 +60,15 @@ class Problem1 {
         int[] calculatedPages = {summedLeftPage, multipliedLeftPage, summedRightPage, multipliedRightPage};
         Arrays.sort(calculatedPages);
         return calculatedPages[calculatedPages.length - 1];
+    }
+
+    private static int getGameResult(int pobiMaxValue, int crongMaxValue) {
+        if (pobiMaxValue > crongMaxValue) {
+            return POBI_WIN;
+        } else if (pobiMaxValue < crongMaxValue) {
+            return CRONG_WIN;
+        } else {
+            return TIE_GAME;
+        }
     }
 }
