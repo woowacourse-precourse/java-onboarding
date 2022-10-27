@@ -8,4 +8,15 @@ public class Problem5 {
         List<Integer> answer = Collections.emptyList();
         return answer;
     }
+
+    private static int getMoney(int money, int[] CoinUnit, int[] answerCount) {
+        for (int i = 0; i < CoinUnit.length; i++) {
+            if (money >= CoinUnit[i]) {
+                money -= CoinUnit[i];
+                answerCount[i]++;
+                break;
+            }
+        }
+        return money;
+    }
 }
