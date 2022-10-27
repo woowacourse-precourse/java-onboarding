@@ -11,4 +11,8 @@ public class Problem2 {
     private boolean isEmpty(LinkedList<Character> deduplicationLetters) {
         return deduplicationLetters.isEmpty();
     }
+
+    private void addLetter(LinkedList<Character> deduplicationLetters,char letter) {
+        deduplicationLetters.add(letter);
+    }
 }
