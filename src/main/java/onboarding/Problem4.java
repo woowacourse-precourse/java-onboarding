@@ -13,8 +13,16 @@ public class Problem4 {
         return valid;
     }
 
+    /*
+     * 문자열의 길이가 1~1000인지 확인합니다.
+     *
+     * @param 입력으로 주어진 문자열입니다.
+     * @return 길이가 1~1000 사이라면 참, 아니면 거짓을 반환합니다.
+     * */
     private static boolean hasValidLength(String word) {
-        return false;
+        boolean valid = word.length() > 0 &&
+                word.length() <= 1000;
+        return valid;
     }
 
     private static String encryptString(String word) {

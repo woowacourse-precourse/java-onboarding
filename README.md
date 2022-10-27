@@ -55,7 +55,7 @@
 4. [문제 4](./docs/PROBLEM4.md)
   - [X] isValidInput
   - 인자값이 유효한지 검사한다.
-    - [ ] hasValidLength
+    - [X] hasValidLength
     - 문자열의 길이가 1~1000인지 검사한다.
   - [ ] encryptString
   - 문자열을 반대로 바꿔준다.
