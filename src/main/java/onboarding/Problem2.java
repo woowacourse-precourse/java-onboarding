@@ -16,11 +16,28 @@ public class Problem2 {
         return exception;
     }
 
+    static String removeDuplication(String cryptogram) {
+        String str = "";
+        Stack<Character> st = new Stack<>();
+        StringBuilder sb = new StringBuilder();
+
+        for (char c : cryptogram.toCharArray()) {
+            if (!st.isEmpty() && st.peek() == c) {
+                st.pop();
+            } else {
+                st.push(c);
+            }
+        }
+        for (char c : st) {
+            sb.append(c);
+        }
+        str = sb.toString();
+        return str;
+    }
+
     public static String solution(String cryptogram) {
         String answer = "";
         check(cryptogram);
-        return answer;
+        return removeDuplication(cryptogram);
     }
 }
-
-
