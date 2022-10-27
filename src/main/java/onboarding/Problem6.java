@@ -6,10 +6,12 @@ import java.util.Collections;
 import java.util.List;
 
 public class Problem6 {
+    private static int START_INDEX = 0;
     private static boolean[] ALARM_SYSTEM = null;
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
         fillAlarmSystem(forms.size());
+        nickNameLoop(extractNickName(forms));
         return answer;
     }
     private static void fillAlarmSystem(int formsSize){
@@ -28,5 +30,23 @@ public class Problem6 {
         }
         return TwoNickNameString;
     }
+    private static void nickNameLoop(List<List<String>> nickNameList){
+        for (int i = 0; i < nickNameList.size()-1; i++) {
+            START_INDEX = i;
+            nickNameToStringLoop(nickNameList.get(i),nickNameList);
+        }
+    }
+    private static void nickNameToStringLoop(List<String> nickNameToString,List<List<String>> nickNameList){
+        nickNameToString.forEach(nickNameString -> compareOtherNickName(nickNameString,nickNameList));
+    }
 
+    private static void compareOtherNickName(String nickNameString,List<List<String>> nickNameList) {
+        for (int i = START_INDEX+1; i < nickNameList.size(); i++) {
+            if(ALARM_SYSTEM[i])continue;
+            if(nickNameList.get(i).contains(nickNameString)){
+                ALARM_SYSTEM[START_INDEX] = true;
+                ALARM_SYSTEM[i] = true;
+            }
+        }
+    }
 }
