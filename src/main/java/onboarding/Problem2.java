@@ -10,7 +10,7 @@ public class Problem2 {
             answer = delete_eq(answer);
             if (answer == "")
                 break;
-            else if (before == answer) {
+            else if (before.equals(answer)) {
                 break;
             }
         }
@@ -25,8 +25,8 @@ public class Problem2 {
         char stand = ' ';
         int stand_location = -1;
         String new_cryptogram = "";
-        for(int i=0;i<str_len-1;i++){
-            if (cryptogram.charAt(i)==cryptogram.charAt(i+1) || (stand == cryptogram.charAt(i) && stand_location == i)){
+        for(int i=0;i<str_len;i++){
+            if ( ((i!=str_len-1) && cryptogram.charAt(i)==cryptogram.charAt(i+1)) || (stand == cryptogram.charAt(i) && stand_location == i)){
                 stand = cryptogram.charAt(i);
                 stand_location = i+1;
             }else{
