@@ -8,7 +8,7 @@ class Problem1 {
             return -1;
         int pobiScore = Math.max(calculate(pobi.get(0)), calculate(pobi.get(1)));
         int crongScore = Math.max(calculate(crong.get(0)), calculate(crong.get(1)));
-        int answer = Integer.MAX_VALUE;
+        int answer = compare(pobiScore, crongScore);
         return answer;
     }
 
@@ -32,5 +32,13 @@ class Problem1 {
             num /= 10;
         }
         return Math.max(add, multiply);
+    }
+
+    public static int compare(int pobi, int crong) {
+        if (pobi > crong)
+            return 1;
+        if (pobi < crong)
+            return 2;
+        return 0;
     }
 }
