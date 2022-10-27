@@ -6,6 +6,7 @@ public class Problem4 {
 
         for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
+            answer.append(changeCase(c));
         }
         return answer.toString();
     }
