@@ -8,6 +8,9 @@ class Problem1 {
 		PageComparator comparator = new PageComparator();
 
 		if (comparator.verifyPage(pobi) && comparator.verifyPage(crong)) {
+			Integer pobiMaxValue = comparator.getMaxPageValue(pobi);
+			Integer crongMaxValue = comparator.getMaxPageValue(crong);
+
 
 			return 1; // 승자 리턴
 		} else {
@@ -18,7 +21,7 @@ class Problem1 {
 
 class PageComparator {
 
-	boolean verifyPage(List<Integer> page) {
+	public boolean verifyPage(List<Integer> page) {
 		Integer left = page.get(0);
 		Integer right = page.get(1);
 
@@ -27,6 +30,13 @@ class PageComparator {
 		} else {
 			return false;
 		}
+	}
+
+	public Integer getMaxPageValue(List<Integer> page) {
+		Integer left = page.get(0);
+		Integer right = page.get(1);
+
+		return Math.max(getMaxValue(left), getMaxValue(right));
 	}
 
 	private Integer getMaxValue(Integer page) {
