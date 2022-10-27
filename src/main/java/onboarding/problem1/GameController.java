@@ -9,6 +9,7 @@ public class GameController {
 	private static final int lastPage = 400;
 	private PageValidChecker pageValidChecker;
 	private ScoreCalculator scoreCalculator;
+	private WinnerSelector winnerSelector;
 
 	public GameController(List<Integer> pobi, List<Integer> crong) {
 		this.pobi = pobi;
@@ -26,6 +27,9 @@ public class GameController {
 		int pobiScore = scoreCalculator.getScore(pobi);
 		int crongScore = scoreCalculator.getScore(crong);
 
-		return 0;
+		winnerSelector = new WinnerSelector();
+		int result = winnerSelector.getWinner(pobiScore, crongScore);
+
+		return result;
 	}
 }
