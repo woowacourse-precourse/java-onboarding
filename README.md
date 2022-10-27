@@ -60,3 +60,18 @@ BUILD SUCCESSFUL in 0s
 
 - 미션은 [java-onboarding](https://github.com/woowacourse-precourse/java-onboarding) 저장소를 Fork & Clone해 시작한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+---
+## 기능 목록
+### Problem1
+- pobi와 crong, 두 개의 ArrayList값을 받아온다.
+  - 각 ArrayList 값들은 size가 2이다.
+  - 첫 번째 요소는 홀수, 두 번째 요소는 짝수이다.
+  - 두 숫자는 연속된 자연수이다.
+- pobi와 crong의 ArrayList에서
+  - 각 자리 숫자의 합 혹은 곱 중 최댓값을 구한다.
+  - pobi와 crong의 결괏값을 얻어 다음과 같이 판단한다.
+    - pobi가 더 크면 1
+    - crong이 더 크면 2
+    - 무승부는 0
+    - 예외사항은 -1
