@@ -20,11 +20,13 @@ public class Problem2 {
 
     private static List<Integer>  getDuplicateWords(List<String> splitString) {
         List<Integer> indexOfDuplicateWords = new ArrayList<>();
+
         for (int i = 0; i < splitString.size() - 1; i++) {
             if (splitString.get(i).equals(splitString.get(i + 1))) {
                 indexOfDuplicateWords.add(i);
             }
         }
+
         return indexOfDuplicateWords;
     }
 
@@ -32,8 +34,8 @@ public class Problem2 {
         if (indexOfDuplicateWords.size() == 0) {
             return;
         }
-        indexOfDuplicateWords.sort(Collections.reverseOrder());
 
+        indexOfDuplicateWords.sort(Collections.reverseOrder());
         for (Integer idx : indexOfDuplicateWords) {
             splitString.subList(idx, idx + 2).clear();
         }
