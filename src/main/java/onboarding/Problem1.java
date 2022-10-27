@@ -18,7 +18,7 @@ import java.util.List;
  */
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if(!isPageValid(pobi) || !isPageValid(crong))
+        if(!isValidPage(pobi) || !isValidPage(crong))
             return -1;
 
         int pobiMax = getMax(pobi);
@@ -41,13 +41,9 @@ class Problem1 {
 
     }
 
-
-    private static boolean isPageValid(List<Integer> pages){
+    private static boolean isValidPage(List<Integer> pages){
         //invalid case : if page is not continue
-        if(pages.get(1) - pages.get(0)!=1)
-            return false;
-
-        return true;
+        return pages.get(1) - pages.get(0) == 1;
     }
 
     private static int sumDigitOfPage(Integer page){
