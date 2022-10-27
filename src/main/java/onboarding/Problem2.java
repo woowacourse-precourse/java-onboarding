@@ -1,31 +1,26 @@
 package onboarding;
 
+import java.util.Stack;
+import java.util.stream.Collectors;
+
 public class Problem2 {
-    public static String removeDuplication(String s){
-        StringBuilder sb=new StringBuilder(s);
+    public static String removeDuplication(String cipher) {
+        Stack<Character> stack = new Stack<>();
 
-        for(int i=0; i<sb.length()-1; i++){
-            if(sb.charAt(i)==sb.charAt(i+1)){
-                sb.delete(i,i+2);
-                i--;
-            }
-        }
+        cipher.chars()
+                .forEach(o -> {
+                    if (!stack.isEmpty() && stack.peek() == o)
+                        stack.pop();
+                    else
+                        stack.add((char) o);
+                });
 
-        return sb.toString();
+        return stack.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining(""));
     }
 
     public static String solution(String cryptogram) {
-        int size=cryptogram.length();
-
-        while(cryptogram.length()>1){
-            cryptogram = removeDuplication(cryptogram);
-
-            if(size==cryptogram.length())
-                break;
-
-            size=cryptogram.length();
-        }
-
-        return cryptogram;
+        return removeDuplication(cryptogram);
     }
 }
