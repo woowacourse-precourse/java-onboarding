@@ -10,8 +10,10 @@ import org.junit.jupiter.api.Test;
 
 class ApplicationTest {
     @Nested
+    @DisplayName("문제 1 테스트")
     class Problem1Test {
         @Test
+        @DisplayName("최고 점수가 같을 때 0을 반환")
         void case1() {
             List<Integer> pobi = List.of(97, 98);
             List<Integer> crong = List.of(197, 198);
@@ -20,6 +22,7 @@ class ApplicationTest {
         }
 
         @Test
+        @DisplayName("포비의 최고 점수가 더 높을 때 1 반환")
         void case2() {
             List<Integer> pobi = List.of(131, 132);
             List<Integer> crong = List.of(211, 212);
@@ -28,15 +31,8 @@ class ApplicationTest {
         }
 
         @Test
+        @DisplayName("비정상적인 입력값 - 페이지 수가 연속되지 않음")
         void case3() {
-            List<Integer> pobi = List.of(211, 212);
-            List<Integer> crong = List.of(131, 132);
-            int result = 2;
-            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
-        }
-
-        @Test
-        void case4() {
             List<Integer> pobi = List.of(99, 102);
             List<Integer> crong = List.of(211, 212);
             int result = -1;
@@ -44,6 +40,16 @@ class ApplicationTest {
         }
 
         @Test
+        @DisplayName("크롱의 최고 점수가 더 높을 때 2 반환")
+        void case4() {
+            List<Integer> pobi = List.of(211, 212);
+            List<Integer> crong = List.of(131, 132);
+            int result = 2;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        @DisplayName("비정상적인 입력값 - 첫 번째 페이지 이하로 책을 펼칠 수 없음")
         void case5() {
             List<Integer> pobi = List.of(1, 2);
             List<Integer> crong = List.of(211, 212);
@@ -52,6 +58,7 @@ class ApplicationTest {
         }
 
         @Test
+        @DisplayName("비정상적인 입력값 - 마지막 페이지 이상으로 책을 펼칠 수 없음")
         void case6() {
             List<Integer> pobi = List.of(399, 400);
             List<Integer> crong = List.of(211, 212);
