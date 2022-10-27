@@ -4,8 +4,17 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         if (cryptogram.length() == 1)
             return cryptogram;
-        String answer = "answer";
-        return answer;
+        return decode(cryptogram);
+    }
+
+    public static String decode(String str) {
+        String before = str;
+        String after = removeDuplication(before);
+        while (!after.equals(before)) {
+            before = after;
+            after = removeDuplication(before);
+        }
+        return after;
     }
 
     public static String removeDuplication(String str) {
