@@ -42,4 +42,13 @@ class AlphabetController{
         }
         return alpha;
     }
+
+    static String convertString(String input){
+        StringBuilder result = new StringBuilder("");
+
+        for (int i = 0; i<input.length(); i++){
+            result.append(checkAndConvert(input.charAt(i)));
+        }
+        return result.toString();
+    }
 }
