@@ -10,9 +10,16 @@ public class Problem4 {
 
 		//문자열을 배열로 변환
 		char[] arr = word.toCharArray();
-		String answer = "";
-		return answer;
+
+		StringBuilder stringBuilder = new StringBuilder();
+
+		for (char j : arr) {
+			String result = changeWord(j);
+			stringBuilder.append(result);
+		}
+		return stringBuilder.toString();
 	}
+
 	static String changeWord(char j) {
 		//대소문자 여부 판별
 		if (Character.isUpperCase(j)) {
@@ -24,6 +31,7 @@ public class Problem4 {
 		}
 		return String.valueOf(j);
 	}
+
 	static int charToIndex(char j) {
 		//문자를 인덱스 숫자로 변환
 		return (int)j >= 97 ? j - 97 : j - 65;
