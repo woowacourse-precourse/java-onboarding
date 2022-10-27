@@ -16,4 +16,15 @@ public class Problem2 {
         }
         return answer;
     }
+
+    private static boolean popDuplicatedChar(Deque<String> queue, String targetStr) {
+        boolean isDeleted = false;
+
+        while (!queue.isEmpty() && targetStr.equals(queue.getFirst())) {
+            queue.pollFirst();
+            isDeleted = true;
+        }
+
+        return isDeleted;
+    }
 }
