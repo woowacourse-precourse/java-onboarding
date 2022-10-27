@@ -4,6 +4,9 @@ import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
+
+
+
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
         return answer;
@@ -17,12 +20,13 @@ public class Problem5 {
      * @return 화폐의 갯수
      */
     public static int exchangeMoney(int unitOfMoney, int money) {
-        return 1;
+        return money / unitOfMoney;
     }
 
 
     /**
      * [각 화폐 단위의 모든 갯수 구하기]
+     * - exchangeMoney()를 사용한다.
      * - 각 화폐 단위의 모든 갯수를 구해 반환한다.
      * @param money
      * @return 각 화폐의 모든 갯수.
