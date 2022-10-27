@@ -12,13 +12,37 @@ import java.util.List;
  */
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
 
         //예외처리
         //== 기능목록1 ==//
         if (rangeException(pobi) || rangeException(crong)) return -1;
 
-        return answer;
+        //==기능목록 3 ==//
+        int pobiMax = calculateMaxValue(pobi);
+        int crongMax = calculateMaxValue(crong);
+
+        //==기능목록4==//
+        return showResult(pobiMax,crongMax);
+    }
+
+    private static int showResult(int first, int second){
+        if(first==second) return 0;
+        else if(first<second) return 2;
+        else return 1;
+    }
+
+    private static int calculateMaxValue(List<Integer> list){
+        int leftMax = calculateLeftpage(list.get(0));
+        int rightMax = calculateRightpage(list.get(1));
+        return Math.max(leftMax,rightMax);
+    }
+
+    private static int calculateLeftpage(int num){
+        return Math.max(calculatePlusMax(num),calculateMultiplyMax(num));
+    }
+
+    private static int calculateRightpage(int num){
+        return Math.max(calculatePlusMax(num),calculateMultiplyMax(num));
     }
 
     //==기능목록2==//
@@ -58,5 +82,5 @@ class Problem1 {
         if (list.get(0) + 1 != list.get(1)) return true;
         return false;
     }
-    
+
 }
