@@ -7,8 +7,7 @@ import java.util.List;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
-        answer = new ArrayList<>(8);
+        List<Integer> answer = new ArrayList<>(8);
         getCountBill(answer, money);
         return answer;
     }
