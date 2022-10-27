@@ -21,3 +21,15 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### Problem 6. 요구사항 정리
+
+- 이메일 도메인이 email.com으로 되어있지 않는 경우 아래 로직에 포함하지 않는다.
+- 분리된 문자열, Input의 인덱스를 추가하는 HashMap을 생성한다.
+- 생성하는 도중 중복이 존재하는 경우 HashSet에 이메일을 추가한다.
+- 최종적으로 반환할 때 오름차순으로 정렬하여 반환한다.
+
+### 고려해야 하는 부분
+
+- 하나의 메서드가 하나의 기능을 수행하는지?
+- 시간복잡도 고려?
