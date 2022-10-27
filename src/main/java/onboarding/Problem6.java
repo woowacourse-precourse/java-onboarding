@@ -5,7 +5,9 @@ import java.util.*;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = Collections.emptyList();
-
+        if (forms.size()==1){
+            return answer;
+        }
         answer = formController.findEmailOfDuplicateNickname(forms);
         Collections.sort(answer, String.CASE_INSENSITIVE_ORDER);
         return answer;
