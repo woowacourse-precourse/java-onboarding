@@ -39,4 +39,36 @@ public class CryptogramDecoderTest {
 			CryptogramDecoder.isValidFormat("brown")
 		).isTrue();
 	}
+
+	@DisplayName("연속하는 중복 문자 판별 테스트")
+	@Test
+	void 연속_중복_문자_테스트() {
+		assertThat(CryptogramDecoder
+			.containsRepetitions("browoanoommnaon")
+		).isTrue();
+		assertThat(CryptogramDecoder
+			.containsRepetitions("browoannaon")
+		).isTrue();
+		assertThat(CryptogramDecoder
+			.containsRepetitions("browoaaon")
+		).isTrue();
+		assertThat(CryptogramDecoder
+			.containsRepetitions("browoon")
+		).isTrue();
+		assertThat(CryptogramDecoder
+			.containsRepetitions("brown")
+		).isFalse();
+		assertThat(CryptogramDecoder
+			.containsRepetitions("z")
+		).isFalse();
+		assertThat(CryptogramDecoder
+			.containsRepetitions("zwz")
+		).isFalse();
+		assertThat(CryptogramDecoder
+			.containsRepetitions("zezz")
+		).isTrue();
+		assertThat(CryptogramDecoder
+			.containsRepetitions("zzze")
+		).isTrue();
+	}
 }
