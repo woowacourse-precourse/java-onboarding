@@ -6,7 +6,7 @@ import java.util.*;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
-        final int COUNT = 5;
+        int count = 5;
         Map<String, Set<String>> friendsList = new HashMap<>();
 
         for (int i = 0; i < friends.size(); i++) {
@@ -22,6 +22,8 @@ public class Problem7 {
         ArrayList list = new ArrayList(scores.entrySet());
 
         list.sort(new SortFriendList());
+
+        return getResult(list, count);
     }
 
     static void makeConnections(Map<String, Set<String>> map, String name1, String name2){
@@ -53,6 +55,18 @@ public class Problem7 {
         for(String str : visitors){
             scores.put(str, scores.getOrDefault(str, 0) + 1);
         }
+    }
+
+    static List<String> getResult(List<Map.Entry<String, Integer>> entry , int count){
+        List<String> result = List.of();
+        Iterator<Map.Entry<String, Integer>> iterator = entry.iterator();
+
+        while(iterator.hasNext() && count>0){
+            String name = iterator.next().getKey();
+            result.add(name);
+        }
+
+        return result;
     }
 }
 
