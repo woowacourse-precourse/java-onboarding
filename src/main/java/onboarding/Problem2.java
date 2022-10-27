@@ -3,7 +3,8 @@ package onboarding;
 import java.util.Stack;
 
 public class Problem2 {
-    public static Stack<Character> st = new Stack<>();
+    public static Stack<Character> st= new Stack<>();
+//    public static StringBuilder answer;
 
     public static String solution(String cryptogram) {
         String answer = "answer";
@@ -16,5 +17,13 @@ public class Problem2 {
         }
 
         return false;
+    }
+
+    public static void deleteOrPushLetter(char letter) {
+        if (checkNotDuplicate(letter)) {
+            st.push(letter);
+            return;
+        }
+        st.pop();
     }
 }
