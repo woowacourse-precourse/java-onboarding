@@ -30,7 +30,6 @@ public class Problem6 {
 				}
 			}
 		}
-		
 		return limitList.stream()
 			.distinct()
 			.sorted()
