@@ -1,6 +1,5 @@
 package onboarding;
 
-import javax.print.attribute.HashPrintServiceAttributeSet;
 import java.util.*;
 
 public class Problem7 {
@@ -15,7 +14,7 @@ public class Problem7 {
 
         Set<String> userFriendSet = friendsList.get(user);
 
-        Map<String, Integer> scores = getFriendScore(friendsList, userFriendSet, String user);
+        Map<String, Integer> scores = getFriendScore(friendsList, userFriendSet, user);
 
         addVisitScore(scores, visitors);
 
