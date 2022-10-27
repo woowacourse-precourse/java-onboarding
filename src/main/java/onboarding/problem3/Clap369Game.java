@@ -20,7 +20,8 @@ public class Clap369Game implements ClapGame {
     }
 
     /**
-    * 해당 숫자에 3, 6, 9 가 몇개 있는지 계산
+     * @param number 해당 숫자에 3, 6, 9 가 몇개 있는지 계산
+     * @return 3, 6, 9 문자열의 갯수
      */
     private int calculateClapCount(int number) {
         int count = 0;
