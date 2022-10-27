@@ -21,3 +21,9 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+
+기능목록
+중복문자 검색 후 지우기
+
+
