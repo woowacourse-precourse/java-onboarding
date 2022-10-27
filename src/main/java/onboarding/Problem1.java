@@ -41,8 +41,8 @@ class Problem1 {
      *예외사항
      */
     static boolean exception(List<Integer> list){
-        boolean check = !(list.get(1) - list.get(0) == 1);
-        return check;
+        return  !(list.get(1) - list.get(0) == 1);
     }
+
 
 }
