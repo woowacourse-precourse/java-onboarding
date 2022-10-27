@@ -11,10 +11,12 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        int maxPobi = compareLeftRightPage(pobi);
+        int maxCrong = compareLeftRightPage(crong);
         if (checkException(pobi) || checkException(crong)){
             return EXCEPTION;
         }
-        return answer;
+        return comparePobiCrong(maxPobi,maxCrong);
     }
 
     public static int plusnumber(String numbers){
