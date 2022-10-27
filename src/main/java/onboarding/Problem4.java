@@ -32,20 +32,39 @@ public class Problem4 {
 
         for(int i=0; i<chunk.length(); i++){
             char c = chunk.charAt(i);
-            result += changeChar(c);
+            if(Character.isUpperCase(c)){
+                result += changeUpperChar(c);
+            } else if(Character.isLowerCase(c)){
+                result += changeLowerChar(c);
+            }
+
+
         }
 
         return result;
     }
 
     /**
-     * 청개구리 사전 기준으로 문자 변환하는 메소드
+     * 대문자: 청개구리 사전 기준으로 문자 변환하는 메소드
      * @param c
      * @return 변환된 문자를 반환
      */
-    static char changeChar(char c){
+    static char changeUpperChar(char c){
         int asci = (int)c;
         int changeNum = 155 - asci;
+        char result = (char) changeNum;
+
+        return result;
+    }
+
+    /**
+     * 소문자: 청개구리 사전 기준으로 문자 변환하는 메소드
+     * @param c
+     * @return
+     */
+    static char changeLowerChar(char c){
+        int asci = (int)c;
+        int changeNum = 219 - asci;
         char result = (char) changeNum;
 
         return result;
