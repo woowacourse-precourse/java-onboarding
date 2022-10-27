@@ -35,6 +35,17 @@ public class Problem6 {
         return answer;
     }
 
+    private static void checkPartOfNickname(String part, String email) {
+        Set<String> keySet = nicknameMap.keySet();
+        if(keySet.contains(part)) {
+            Set<String> duplicatedEmailSet = nicknameMap.get(part);
+            duplicatedEmailSet.add(email);
+            addEmailSet(duplicatedEmailSet);
+            return;
+        }
+        addPartOfNickToMap(part, email);
+
+    }
     private static void addPartOfNickToMap(String partOfNickname, String email) {
         Set<String> newEmailSet= new HashSet<>();
         newEmailSet.add(email);
