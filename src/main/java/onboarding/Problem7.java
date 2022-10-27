@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Problem7 {
 
-    public static int getRecommandScore(int cntOfSameFriendsWithMe, int cntOfVisit) {
+    public static int getRecommendScore(int cntOfSameFriendsWithMe, int cntOfVisit) {
         return cntOfSameFriendsWithMe * 10 + cntOfVisit;
     }
 
