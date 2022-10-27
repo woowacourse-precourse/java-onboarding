@@ -4,9 +4,9 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int pobiMax = checkLeftRight(pobi.get(0),pobi.get(1));
-        int crongMax = checkLeftRight(crong.get(0),crong.get(1));
-        int answer = checkScore(pobiMax,crongMax);
+        int pobiMax = compareLeftRight(pobi.get(0),pobi.get(1));
+        int crongMax = compareLeftRight(crong.get(0),crong.get(1));
+        int answer = getWinner(pobiMax,crongMax);
 
         return answer;
     }
@@ -22,20 +22,22 @@ class Problem1 {
             mul *= num;
             page /= 10;
         }
+
         return Math.max(sum,mul);
     }
 
-    private static int checkLeftRight(int leftPage, int rightPage){
+    private static int compareLeftRight(int leftPage, int rightPage){
         int left = getMaxPage(leftPage);
         int right = getMaxPage(rightPage);
 
         return Math.max(left,right);
     }
 
-    private static int checkScore(int pobiScore, int crongScore){
+    private static int getWinner(int pobiScore, int crongScore){
         if (pobiScore>crongScore) {
             return 1;
         }
+
         if (pobiScore<crongScore){
             return 2;
         }
