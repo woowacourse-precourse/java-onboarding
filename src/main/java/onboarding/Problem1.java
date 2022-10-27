@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.Arrays;
 import java.util.List;
 
 class Problem1 {
@@ -46,5 +47,16 @@ class Problem1 {
         }
 
         return num;
+    }
+
+    private static int getMaxValue(List<Integer> pages) {
+        int summedLeftPage = sumEachDigitOfPage(pages.get(0));
+        int multipliedLeftPage = multiplyEachDigitOfPage(pages.get(0));
+        int summedRightPage = sumEachDigitOfPage(pages.get(1));
+        int multipliedRightPage = multiplyEachDigitOfPage(pages.get(1));
+
+        int[] calculatedPages = {summedLeftPage, multipliedLeftPage, summedRightPage, multipliedRightPage};
+        Arrays.sort(calculatedPages);
+        return calculatedPages[calculatedPages.length - 1];
     }
 }
