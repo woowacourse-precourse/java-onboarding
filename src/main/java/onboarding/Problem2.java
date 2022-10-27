@@ -2,7 +2,12 @@ package onboarding;
 
 public class Problem2 {
     public StringBuilder decrypt(StringBuilder sb, char c){
-        return sb;
+        if(sb.length()==0) return sb.append(c);
+
+        int sbLastIndex = sb.length()-1;
+        if(sb.charAt(sbLastIndex)==c) return sb.deleteCharAt(sbLastIndex);
+
+        return sb.append(c);
     }
 
     public static String solution(String cryptogram) {
