@@ -25,40 +25,37 @@ class Problem1 {
         int pobiMax=0;
         int crongMax=0;
 
-        // 1. 예외 체크
-        // 1-1. 왼쪽 페이지 홀수, 오른쪽 페이지 짝수인지 체크
         if(isLeftPageOddRightPageEven(pobiLeftPage, pobiRightPage, crongLeftPage, crongRightPage)){
             answer = EXCEPTION;
             return answer;
         }
-        // 1-2. 왼쪽 페이지와 오른쪽 페이지의 차이가 1 페이지인지 체크 (왼쪽 페이지 + 1 = 오른쪽 페이지)
         if(isLeftPagePlusOneRightPage(pobiLeftPage, pobiRightPage, crongLeftPage, crongRightPage)){
             answer = EXCEPTION;
             return answer;
         }
-        // 1-3. 시작면이나 마지막면이 나왔는지 체크
         if(isStartPageOrEndPage(pobiLeftPage, pobiRightPage, crongLeftPage, crongRightPage)){
             answer = EXCEPTION;
             return answer;
         }
 
-        // 2. 왼쪽 페이지 중에서 나올 수 있는 가장 큰 최대 값 뽑기 (각 자리 숫자를 모두 더하거나 곱함)
         pobiLeftMax = getMax(pobiLeftPage);
         crongLeftMax = getMax(crongLeftPage);
 
-        // 3. 오른쪽 페이지 중에서 나올 수 있는 가장 큰 최대값 뽑기 (각 자리 숫자를 모두 더하거나 곱함)
         pobiRigtMax=getMax(pobiRightPage);
         crongRightMax = getMax(crongRightPage);
 
-        // 4. 왼쪽 페이지, 오른쪽 페이지 점수 비교
         pobiMax=Math.max(pobiLeftMax,pobiRigtMax);
         crongMax = Math.max(crongLeftMax, crongRightMax);
 
-        if(pobiMax>crongMax) answer=POBIWIN;
-        if(pobiMax==crongMax) answer=DRAW;
-        if(pobiMax<crongMax) answer=CRONGWIN;
+        answer = getAnswer(answer, pobiMax, crongMax);
 
-        // 5. 결과값 출력
+        return answer;
+    }
+
+    private static int getAnswer(int answer, int pobiMax, int crongMax) {
+        if(pobiMax > crongMax) answer =POBIWIN;
+        if(pobiMax == crongMax) answer =DRAW;
+        if(pobiMax < crongMax) answer =CRONGWIN;
         return answer;
     }
 
