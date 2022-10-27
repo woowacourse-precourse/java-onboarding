@@ -6,6 +6,18 @@ public class Problem3 {
         return answer;
     }
 
+    public static int getClap(String number) {
+        int clap = 0;
+
+        for (int i = 0; i < number.length(); i++) {
+            if(isThreeSixNine(number.charAt(i))) {
+                clap++;
+            }
+        }
+
+        return clap;
+    }
+
     public static boolean isThreeSixNine(char c) {
         int number = Character.getNumericValue(c);
 
