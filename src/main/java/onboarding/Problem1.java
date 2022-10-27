@@ -24,7 +24,9 @@ class Problem1 {
 			isPageNumNotOdd(pobiRightPageNum) || isPageNumNotOdd(crongRightPageNum)) {
 			return true;
 		}
-		
+		if (isInvalidPage(pobiLeftPageNum, pobiRightPageNum) || isInvalidPage(crongLeftPageNum, crongRightPageNum)) {
+			return true;
+		}
 		return false;
 	}
 
@@ -43,7 +45,7 @@ class Problem1 {
 	}
 
 	public static boolean isInvalidPage(int leftPageNum, int rightPageNum) {
-		return false;
+		return leftPageNum + 1 == rightPageNum;
 	}
 
 	public static int calculateScore(List<Integer> pages) {
