@@ -8,7 +8,6 @@ class Problem1 {
     private static final int LAST_PAGE = 500;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
         if (!isValidInput(pobi) || !isValidInput(crong)) {
             return -1;
         }
@@ -16,7 +15,7 @@ class Problem1 {
         int scorePobi = getMaxScore(pobi);
         int scoreCrong = getMaxScore(crong);
 
-        return answer;
+        return compareScore(scorePobi, scoreCrong);
     }
 
     private static boolean isValidInput(List<Integer> pages) {
@@ -60,5 +59,17 @@ class Problem1 {
         }
 
         return answer;
+    }
+
+    private static int compareScore(int scorePobi, int scoreCrong) {
+        if (scorePobi > scoreCrong) {
+            return 1;
+        }
+
+        if (scorePobi < scoreCrong) {
+            return 2;
+        }
+
+        return 0;
     }
 }
