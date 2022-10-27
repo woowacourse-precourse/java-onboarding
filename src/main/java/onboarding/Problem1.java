@@ -33,6 +33,13 @@ class Problem1 {
         return Math.max(pobi_sum, pobi_mul);
     }
 
+    // 두 수를 비교해서 답을 내는 메소드
+    private static int compare(int pobi_max, int crong_max) {
+        if (pobi_max > crong_max) return 1;
+        else if (pobi_max < crong_max) return 2;
+        else return 0;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
