@@ -22,13 +22,38 @@ public class NanoPage{
         return result_page;
     }
 
+    public List<Integer> getLeft_page() {
+        return left_page;
+    }
+
+    public List<Integer> getRight_page() {
+        return right_page;
+    }
 }
 class Problem1 {
+    static int max_score(Page page)
+    {
+        int[] page_sum_mult = {0, 1, 0, 1};
+        int max = 0;
+        for (int i : page.getLeft_page()){
+            page_sum_mult[0] += i;
+            page_sum_mult[1] *= i;
+        }
+        for (int i : page.getRight_page()){
+            page_sum_mult[2] += i;
+            page_sum_mult[3] *= i;
+        }
+        for(int i: page_sum_mult)
+            max = Math.max(i, max);
+        return max;
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
         Page pobi_page = new NanoPage(pobi);
         Page crong_page = new Page(crong);
+        int pobi_score = max_score(pobi_page);
+        int crong_score = max_score(crong_page);
 
 
         return answer;
