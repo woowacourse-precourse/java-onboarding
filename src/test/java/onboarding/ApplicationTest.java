@@ -89,6 +89,20 @@ class ApplicationTest {
             String result = null;
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
+
+        @Test
+        void null_param_exception() {
+            String cryptogram = "";
+            String result = null;
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void param_length_exception() {
+            String cryptogram = "a".repeat(1001);
+            String result = null;
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
     }
 
     @Nested
