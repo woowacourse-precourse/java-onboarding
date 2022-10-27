@@ -20,12 +20,11 @@ public class Problem6 {
 
         private static void processDuplicateCrewNickname(Crew crew) {
             String nickname = crew.getNickname();
-            int nicknameLength = nickname.length();
 
-            if (nicknameLength < 2) {
+            if (!validateNickname(nickname)) {
                 return;
             }
-            for (int i = 1; i < nicknameLength; i++) {
+            for (int i = 1; i < nickname.length(); i++) {
                 String partOfNickname = nickname.substring(i - 1, i + 1);
 
                 if (partOfNicknameMap.containsKey(partOfNickname)) {
@@ -35,6 +34,10 @@ public class Problem6 {
                 }
                 partOfNicknameMap.put(partOfNickname, crew.getEmail());
             }
+        }
+
+        private static boolean validateNickname(String nickname) {
+            return nickname.length() < 2;
         }
     }
 }
