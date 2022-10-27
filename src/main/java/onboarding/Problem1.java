@@ -33,10 +33,6 @@ class Problem1 {
      * @return true if list is validate
      */
     private static boolean checkValidation(List<Integer> pages) {
-        if (pages == null || pages.size() != 2) {
-            return false;
-        }
-
         final int leftPage = pages.get(0);
         final int rightPage = pages.get(1);
 
