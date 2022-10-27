@@ -13,6 +13,12 @@ public class Problem7 {
 		for (List<String> friend : friends) {
 			userList.put(friend.get(0), 0);
 			userList.put(friend.get(1), 0);
+
+			if (friend.get(0).equals(user)) {
+				userFriendList.add(friend.get(1));
+			} else if (friend.get(1).equals(user)) {
+				userFriendList.add(friend.get(0));
+			}
 		}
 		return new ArrayList<>();
 	}
