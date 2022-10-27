@@ -32,8 +32,8 @@ class Problem1 {
     }
 
     private static class PageNumberException {
-
-        private PageNumberException() {}
+        private PageNumberException() {
+        }
 
         public static int validates(List<Integer> user) {
             int leftPageNumber = user.get(0);
@@ -68,7 +68,7 @@ class Problem1 {
         }
 
         private static boolean isPageContinue(int leftPageNumber, int rightPageNumber) {
-            return leftPageNumber+1 == rightPageNumber;
+            return leftPageNumber + 1 == rightPageNumber;
         }
     }
 
