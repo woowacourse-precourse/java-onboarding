@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class Problem6 {
@@ -45,5 +46,18 @@ public class Problem6 {
         }
 
         return duplicatedIndexes;
+    }
+
+    private static List<String> makeDuplicatedCrews(List<List<String>> forms, boolean[] duplicatedIndexes) {
+        List<String> duplicatedCrews = new LinkedList<>();
+
+        for (int i = 0; i < forms.size(); i++) {
+            if (duplicatedIndexes[i]) {
+                String email = forms.get(i).get(EMAIL);
+                duplicatedCrews.add(email);
+            }
+        }
+
+        return duplicatedCrews;
     }
 }
