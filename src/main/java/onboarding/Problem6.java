@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -8,7 +9,13 @@ public class Problem6 {
     private static final int NICKNAME = 1;
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer;
+
+        boolean[] duplicatedIndexes = makeDuplicatedIndexes(forms);
+
+        answer = makeDuplicatedCrews(forms, duplicatedIndexes);
+        Collections.sort(answer);
+
         return answer;
     }
 
