@@ -9,18 +9,21 @@ public class StackGenerator {
         Stack<String> stack = new Stack<>();
         String[] split = cryptogram.split("");
 
-        for (int i = 0; i < split.length - 1; i++) {
+        stack.push(split[0]);
 
-            if (split[i].equals(split[i + 1])) {
+        for (int i = 1; i < split.length; i++) {
+
+            stack.push(split[i]);
+
+            String pop1 = stack.pop();
+            String pop2 = stack.pop();
+
+            if (pop1.equals(pop2)) {
                 continue;
-
-            } else {
-                stack.push(split[i]);
-
-                if (i >= 1 && split[i].equals(split[i - 1])) {
-                    stack.pop();
-                }
             }
+
+            stack.push(pop2);
+            stack.push(pop1);
         }
 
         return stack;
