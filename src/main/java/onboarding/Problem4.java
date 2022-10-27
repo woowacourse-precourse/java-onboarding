@@ -3,8 +3,12 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        char[] wordArray = word.toCharArray();
+        StringBuilder stringBuilder = new StringBuilder();
+        for(int i = 0; i < wordArray.length; i++){
+            stringBuilder.append(charEncoder(wordArray[i]));
+        }
+        return stringBuilder.toString();
     }
 
     public static char charEncoder(char letter){
