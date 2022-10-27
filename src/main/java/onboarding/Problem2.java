@@ -5,14 +5,19 @@ public class Problem2 {
         String answer = "answer";
         return answer;
     }
-    public static String removeDuplication(String cryptogram){
+    public static String removeDuplication(String str1){
         String returnCryptogram = "";
-        for(int i=0;i<cryptogram.length()-1;i++){
-            if (compareChar(cryptogram.charAt(i),cryptogram.charAt(i))){
-                i = findNextIndex(cryptogram,i);
+        for(int i=0;i<str1.length()-1;i++){
+            if (compareChar(str1.charAt(i),str1.charAt(i))){
+                i = findNextIndex(str1,i);
+            } else {
+                returnCryptogram +=str1.charAt(i);
             }
         }
-        return "";
+        if (!compareChar(str1.charAt((str1.length()-1)),str1.charAt(str1.length()-2))){
+            returnCryptogram += str1.charAt((str1.length()-1));
+        }
+        return returnCryptogram;
     }
 
     public static int findNextIndex(String cryptogram,int index){
