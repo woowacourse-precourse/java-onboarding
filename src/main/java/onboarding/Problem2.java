@@ -9,6 +9,22 @@ import java.util.*;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
+
+        Deque<Character> queue = new ArrayDeque<>();
+
+        queue.offer(cryptogram.charAt(0));
+        for (int i = 1; i < cryptogram.length(); i++) {
+            if (queue.peekLast() == cryptogram.charAt(i)) {
+                queue.pollLast();
+            } else {
+                queue.offerLast(cryptogram.charAt(i));
+            }
+        }
+
+        while (!queue.isEmpty()) {
+            answer += queue.pollFirst();
+        }
+
         return answer;
     }
 }
