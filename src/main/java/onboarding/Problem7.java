@@ -54,9 +54,7 @@ public class Problem7 {
     public static Map<String, Integer> giveFriendsPoint(String user, List<String> userFriendsList)
     {
         int root = 0;
-
         List<String> friendOfFriendsList;
-        Map<String, Integer> friendsPointMap= new HashMap<>();
 
         //사용자와 친구인 친구의 목록
         friendOfFriendsList = findUserFriends(userFriendsList.get(root));
@@ -82,17 +80,25 @@ public class Problem7 {
 
         }
 
-        for (int i = 0; i < friendOfFriendsList.size(); i++)
+        return saveUserPoint(friendOfFriendsList, knowPoint);
+    }
+
+    public static Map<String, Integer> saveUserPoint(List<String> userList, int point)
+    {
+        int tmp = point;
+        Map<String, Integer> friendsPointMap= new HashMap<>();
+
+        for (int i = 0; i < userList.size(); i++)
         {
-            int point = knowPoint;
-            if (friendsPointMap.containsKey(friendOfFriendsList.get(i)))
+            point = tmp;
+            if (friendsPointMap.containsKey(userList.get(i)))
                 point += knowPoint;
-            friendsPointMap.put(friendOfFriendsList.get(i), point);
+            friendsPointMap.put(userList.get(i), point);
         }
 
         return friendsPointMap;
     }
-
+    //방문 수에 따라 점수를 주는 함수
     public static void giveVisitPoint(List<String> visitors, List<String> userFriendsList)
     {
 
