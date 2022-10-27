@@ -8,41 +8,31 @@ public class Problem7 {
 
         //친구 목록 맵
         Map<String, List<String>> friendsMap = createFriendList(friends);
+
         //추천 친구 점수 맵
         Map<String, Integer> scoreMap = new HashMap<>();
 
         // 함께 아는 친구 점수 추가
-        for (String name : friendsMap.get(user)) {
-            for (String recommend : friendsMap.get(name)) {
-
-                //본인 or 이미 친구인지 확인
-                if(checkFriends(user,recommend,friendsMap)) continue;
-
-                // 10점 추가
-                addScore(scoreMap,10,recommend);
-            }
-        }
+        friendsMap.get(user)
+                .forEach(friend -> friendsMap.get(friend).stream()
+                        .filter(s -> checkFriends(user,s,friendsMap))
+                        .forEach(s -> addScore(scoreMap,10,s)));
 
         // 타임 라인 방문한 횟수 점수 추가
-        for (String visitor : visitors) {
+        visitors.stream()
+                .filter(s -> checkFriends(user,s,friendsMap))
+                .forEach(s -> addScore(scoreMap, 1, s));
 
-            //본인 or 이미 친구인지 확인
-            if(checkFriends(user,visitor,friendsMap)) continue;
-
-            // 1점 추가
-            addScore(scoreMap,1,visitor);
-        }
-
-        //점수가 기록된 맵의 키값들을 리스트로 변환
+        //점수 맵의 키를 리스트로 변환
         List<String> answer = new ArrayList<>(scoreMap.keySet());
 
-        //점수순으로 정렬 - 점수가 같을 경우 이름순으로 정렬
+        //점수 순으로 정렬 - 점수가 같을 경우 이름순으로 정렬
         answer.sort((o1, o2) ->  {
                 if(scoreMap.get(o1).equals(scoreMap.get(o2))) return o1.compareTo(o2);
                 return scoreMap.get(o2) - scoreMap.get(o1);
         });
 
-        //추천 친구목록이 5명 초과일 때 5명으로 자름
+        //추천 친구목록이 5명 초과일 때 상위 5명으로 자름
         if(answer.size()>5) answer = answer.subList(0,5);
 
         return answer;
@@ -94,10 +84,10 @@ public class Problem7 {
     private static boolean checkFriends(String user, String people,
                                         Map<String, List<String>> friendsMap ) {
         // 본인일 경우
-        if(people.equals(user)) return true;
+        if(people.equals(user)) return false;
 
         // 이미 친구일 경우
-        return friendsMap.get(user).contains(people);
+        return !friendsMap.get(user).contains(people);
     }
 
 }
