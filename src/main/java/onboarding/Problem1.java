@@ -20,4 +20,17 @@ class Problem1 {
         }
         return result;
     }
+    static int multyDigit(List<Integer> list) {
+        int result = 0;
+        for(int i=0; i<2; i++) {
+            int tmp = list.get(i);
+            int sum = 1;
+            while(tmp > 0) {
+                sum *= tmp % 10;
+                tmp /= 10;
+            }
+            result = Math.max(result,sum);
+        }
+        return result;
+    }
 }
