@@ -63,6 +63,25 @@ public class Problem6 {
         for (Crew crew : crews)
             totalTokens.put(crew.getNickname(), crew.getTokens());
     }
+
+    public static void checkDuplicate() {
+        for (Crew crew : crews) {
+            for (String nickname : totalTokens.keySet()) {
+                if (crew.getNickname() != nickname) { // 다른 crew의 토큰과 비교하기 위함
+                    Set<String> tokensOfOtherCrew = totalTokens.get(nickname); // 다른 crew의 토큰
+                    Iterator<String> it = tokensOfOtherCrew.iterator();
+
+                    while (it.hasNext()) {
+                        if (crew.getNickname().contains(it.next()) && !crew.getIsDuplicate()) {
+                            answer.add(crew.getEmail());
+                            crew.setIsDuplicateTrue();
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 
