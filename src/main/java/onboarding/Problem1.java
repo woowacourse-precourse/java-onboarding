@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
@@ -11,12 +12,21 @@ class Problem1 {
     }
 
     public int calculateMaximumAddOrMultiply(int pageNum){
+
         int thirdDigit = pageNum/100;
         int secondDigit = (pageNum%100)/10;
         int firstDigit = (pageNum%10);
 
-        int addNum = thirdDigit+secondDigit+firstDigit;
-        int multiplyNum = thirdDigit*secondDigit*firstDigit;
+        int[] digits = {thirdDigit, secondDigit, firstDigit};
+
+        int addNum = 0;
+        int multiplyNum = 1;
+
+        for(int digit : digits){
+            addNum+=digit;
+            if(digit==0) digit++;
+            multiplyNum*=digit;
+        }
 
         return Math.max(addNum, multiplyNum);
     }
