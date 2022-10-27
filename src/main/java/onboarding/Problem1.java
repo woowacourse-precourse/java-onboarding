@@ -30,6 +30,16 @@ class Problem1 {
         
         crongScore = Math.max(crongLMax, crongRMax);
         
+        // 승자 구하기
+        if (pobiScore > crongScore) {
+            answer = 1;
+        } else if (pobiScore < crongScore) {
+            answer = 2;
+        } else if (pobiScore == crongScore) {
+            answer = 0;
+        } else {
+            answer = -1;
+        }
         return answer;
     }
     
