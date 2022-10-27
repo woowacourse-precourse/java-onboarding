@@ -8,6 +8,15 @@ class Problem1 {
         private Page page;
         private int maxValue;
 
+        private void findMaxValue() {
+            int tmp=0;
+            for(int i=0 ; i<2 ; i++){
+                tmp = Math.max(tmp, sumOfEachNum(i));
+                tmp = Math.max(tmp, productOfEachNum(i));
+            }
+            this.maxValue = tmp;
+        }
+
         private int sumOfEachNum(int idx) {      // 0: 왼쪽페이지 | 1: 오른쪽 페이지
             String num = String.valueOf(page.get(idx));
             int tmp=0;
