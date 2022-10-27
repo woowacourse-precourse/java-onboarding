@@ -26,4 +26,13 @@ class Problem1 {
         return true;
     }
 
+
+    public static boolean isValidPageNumber(List<Integer> page){
+        for(Integer i : page){
+            if (i<3||i>398) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
