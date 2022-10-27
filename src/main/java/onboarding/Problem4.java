@@ -15,4 +15,13 @@ public class Problem4 {
         }
         return true;
     }
+
+    public static char changeLowercaseLetter(char c) {
+        int TOTAL = (int)'a' + (int)'z';
+        int asciiNum = (int)c;
+        char answer = (char)(TOTAL - asciiNum);
+        return answer;
+    }
+
+
 }
