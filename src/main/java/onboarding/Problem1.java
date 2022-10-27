@@ -3,8 +3,8 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-    static final int LEFT = 0;
-    static final int RIGHT = 1;
+    private static final int LEFT = 0;
+    private static final int RIGHT = 1;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (!isValidate(pobi, crong)) {
