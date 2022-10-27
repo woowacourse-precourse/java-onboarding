@@ -12,7 +12,7 @@ public class Problem7 {
     private static Map<String, HashSet<String>> graph = new HashMap<>();
     private static Map<String, Integer> scores = new HashMap<>();
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
         graph.put(user, new HashSet<>());
 
         for (List<String> idList: friends){
@@ -28,6 +28,14 @@ public class Problem7 {
 
         addScoreByMutualFriend(user);
         addScoreByVisits(visitors, user);
+
+        List<Entry<String, Integer>> sortedScores = sortMapByValue(scores);
+
+        for (int i = 0; i < 5; i++){
+            if (i >= sortedScores.size()) break;
+
+            answer.add(sortedScores.get(i).getKey());
+        }
 
         return answer;
     }
