@@ -84,6 +84,9 @@ class Cryptogram {
 }
 
 class OutView2 {
+    static void printStart() {
+        System.out.println("암호문을 입력해 주세요.");
+    }
     static void printHead(String cryptoMethod ) {
         System.out.println(cryptoMethod + "\t" + "result");
     }
