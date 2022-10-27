@@ -28,5 +28,6 @@ public class Problem3 {
 
         return cnt;
         // 불필요한 연산 줄여야...
+        // 테스트 케이스 통과
     }
 }
