@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Problem5 {
     public static int moneyForCalculate;
+    public static final int START_INDEX = 0;
     public static int[] unit = new int[9];
 
     public static List<Integer> solution(int money) {
@@ -16,7 +17,7 @@ public class Problem5 {
         return answer;
     }
 
-    private static void initUnit() {
+    public static void initUnit() {
         unit[0] = 50000;
         unit[1] = 10000;
         unit[2] = 5000;
@@ -28,11 +29,11 @@ public class Problem5 {
         unit[8] = 1;
     }
 
-    private static void atm(int money, List<Integer> answer) {
+    public static void atm(int money, List<Integer> answer) {
         moneyForCalculate = money;
 
-        for (int index = 0; index < unit.length; index++) {
-            answer.add(new Integer(moneyForCalculate / unit[index]));
+        for (int index = START_INDEX; index < unit.length; index++) {
+            answer.add(moneyForCalculate / unit[index]);
             moneyForCalculate %= unit[index];
         }
     }
