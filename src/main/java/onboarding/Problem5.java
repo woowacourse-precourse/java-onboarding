@@ -19,9 +19,19 @@ public class Problem5 {
         }
     }
 
+    private static void countMoney(int money) {
+        for (int moneyPrice : moneyArr) {
+            answer.add(money / moneyPrice);
+            money = money % moneyPrice;
+        }
+    }
+
     public static List<Integer> solution(int money) {
         validateMoney(money);
         input();
-        return new ArrayList<>();
+        countMoney(money);
+        return answer;
     }
+
+
 }
