@@ -8,6 +8,7 @@ public class Problem7 {
 
   public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
     List<String> friendsByUser = findFriendsByUser(user, friends);
+    List<String> friendOfFriend = findFriends(friendsByUser, friends);
     return List.of("");
   }
 
@@ -25,5 +26,14 @@ public class Problem7 {
       userFriends.add(friend);
     }
     return userFriends;
+  }
+
+  public static List<String> findFriends(List<String> users, List<List<String>> friends) {
+    List<String> result = new ArrayList<>();
+    for (String user : users) {
+      List<String> userFriends = findFriendsByUser(user, friends);
+      result.addAll(userFriends);
+    }
+    return result;
   }
 }
