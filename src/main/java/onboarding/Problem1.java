@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 class Problem1 {
@@ -39,5 +40,9 @@ class Problem1 {
         }
 
         return sum;
+    }
+
+    public static Integer getMax(List<Integer> num) {
+        return Collections.max(num);
     }
 }
