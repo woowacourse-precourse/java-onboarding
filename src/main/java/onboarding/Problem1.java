@@ -26,6 +26,9 @@ class Problem1 {
         if(pobi.get(0) != pobi.get(1) -1 || crong.get(0) != crong.get(1)-1){
             return -1;
         }
+        else if(pobi.get(0) == 1 || crong.get(0) == 399){
+            return -1;
+        }
         String pobiNum1 = String.valueOf(pobi.get(0));
         String pobiNum2 = String.valueOf(pobi.get(1));
 
