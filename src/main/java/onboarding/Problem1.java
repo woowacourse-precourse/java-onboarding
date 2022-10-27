@@ -9,7 +9,7 @@ class Problem1 {
     private static final int WIN_CRONG_NUMBER = 2;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = 0;
+        int answer;
 
         if (isNotTwoElements(pobi) || isNotSidePage(pobi)) {
             return EXCEPTIONS_NUMBER;
@@ -21,6 +21,8 @@ class Problem1 {
 
         int pobiLargerNumber = getLargerNumber(pobi);
         int crongLargerNumber = getLargerNumber(crong);
+
+        answer = getAnswerByCompareNumber(pobiLargerNumber, crongLargerNumber);
 
         return answer;
     }
@@ -65,5 +67,15 @@ class Problem1 {
         int rightLargerNumber = Math.max(rightSumResult, rightMultiplicationResult);
 
         return Math.max(leftLargerNumber, rightLargerNumber);
+    }
+
+    private static int getAnswerByCompareNumber(int pobiNumber, int crongNumber) {
+        if (pobiNumber == crongNumber) {
+            return DRAW_NUMBER;
+        } else if (pobiNumber > crongNumber) {
+            return WIN_POBI_NUMBER;
+        }
+
+        return WIN_CRONG_NUMBER;
     }
 }
