@@ -60,3 +60,21 @@ BUILD SUCCESSFUL in 0s
 
 - 미션은 [java-onboarding](https://github.com/woowacourse-precourse/java-onboarding) 저장소를 Fork & Clone해 시작한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+
+---
+
+## Problem1 - 기능 목록 
+1. 입력 값 예외처리
+- 왼쪽이 홀수가 아님
+- 페이지의 차이가 1을 넘음
+- 맨 앞페이지이거나 맨 뒷페이지인 경우 
+2. 점수 구하기
+- 입력 페이지들의 자릿수 분할하기
+- 각 자릿수의 덧셈 구하기
+- 각 자릿수의 곱셈 구하기
+- 구한 값들 중 가장 큰 수를 반환
+3. 반환된 점수를 자신의 점수로 정하기
+4. 포비와 크롱의 점수 비교 후 결과 반환
+
+---
