@@ -4,6 +4,14 @@ import java.util.List;
 
 class Problem1 {
     static final int ERROR = -1;
+    static final int TIE = 0;
+    static final int POBI_WIN = 1;
+    static final int CRONG_WIN = 2;
+    static final int PAGE_LENGTH_MIN = 1;
+    static final int PAGE_LENGTH_MAX = 400;
+    static final int INPUT_LENGTH = 2;
+    static final int LEFT_PAGE_INDEX = 0;
+    static final int RIGHT_PAGE_INDEX = 0;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
@@ -33,11 +41,11 @@ class Problem1 {
     }
 
     private static int getLeftPage(List<Integer> userInput) {
-        return userInput.get(0);
+        return userInput.get(LEFT_PAGE_INDEX);
     }
 
     private static int getRightPage(List<Integer> userInput) {
-        return userInput.get(1);
+        return userInput.get(RIGHT_PAGE_INDEX);
     }
 
     private static int getBiggerSum(int leftPage, int rightPage) {
@@ -80,7 +88,7 @@ class Problem1 {
     }
 
     private static boolean isValidSize(List<Integer> userInput) {
-        return userInput.size() == 2;
+        return userInput.size() == INPUT_LENGTH;
     }
 
     private static boolean isConnectedPage(List<Integer> userInput) {
@@ -109,6 +117,7 @@ class Problem1 {
         int leftPage = getLeftPage(userInput);
         int rightPage = getRightPage(userInput);
 
-        return (leftPage >= 1 && leftPage <= 400) && (rightPage >= 1 && rightPage <= 400);
+        return (leftPage >= PAGE_LENGTH_MIN && leftPage <= PAGE_LENGTH_MAX)
+            && (rightPage >= PAGE_LENGTH_MIN && rightPage <= PAGE_LENGTH_MAX);
     }
 }
