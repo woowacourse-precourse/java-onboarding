@@ -60,6 +60,15 @@ public class Problem6 {
         addPartOfNickToMap(part, email);
 
     }
+
+    private static boolean hasDuplicatedNicknameInKeySet(String part) {
+        Set<String> keySet = nicknameMap.keySet();
+        if(keySet.contains(part)) {
+            Set<String> emailSet = nicknameMap.get(part);
+            return !emailSet.contains(part);
+        }
+        return false;
+    }
     private static void addPartOfNickToMap(String partOfNickname, String email) {
         Set<String> newEmailSet= new HashSet<>();
         newEmailSet.add(email);
