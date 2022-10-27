@@ -4,11 +4,28 @@ package onboarding;
 * 2. 중복되는 문자열은 따로 리스트에 저장
 * 3. 중복되는 문자열과 닉네임을 비교하여 중복되는 닉네임 추출
 */
-import java.util.List;
+import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>();
+        List<String> list = new ArrayList<>();// 모든 2글자 저장
+        List<String> duplicate = new ArrayList<>();// 중복된 문자열 저장
+
+        for(int i = 0; i<forms.size(); i++){
+            String str = forms.get(i).get(1);
+
+            for(int j = 0; j<str.length()-1; j++){
+                String tmp = str.substring(j, j+2);
+
+                if(list.indexOf(tmp) == -1){
+                    list.add(tmp);
+                }
+                else if(duplicate.indexOf(tmp) == -1){
+                    duplicate.add(tmp);
+                }
+            }
+        }
         return answer;
     }
 }
