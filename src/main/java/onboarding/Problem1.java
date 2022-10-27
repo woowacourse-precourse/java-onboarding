@@ -4,11 +4,13 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int answer = 1;
         int pobiLeftNumber;
         int crongLeftNumber;
         int pobiRightNumber;
         int crongRightNumber;
+        int pobiMax;
+        int crongMax;
 
         if (raisePageLengthException(pobi, crong) == 1){
             return answer = -1;
@@ -21,10 +23,19 @@ class Problem1 {
 
         pobiLeftNumber = calculatePage(pobi.get(0));
         crongLeftNumber = calculatePage(crong.get(0));
-
         pobiRightNumber = calculatePage(pobi.get(1));
         crongRightNumber = calculatePage(crong.get(1));
 
+        pobiMax = compare(pobiLeftNumber, pobiRightNumber);
+        crongMax = compare(crongLeftNumber, crongRightNumber);
+
+        if (crongMax > pobiMax) {
+            answer = 2;
+        }
+
+        if (crongMax == pobiMax) {
+            answer = 0;
+        }
         return answer;
     }
 
@@ -68,6 +79,12 @@ class Problem1 {
         return multiply;
     }
 
+    public static int compare(int left, int right) {
+        if (left > right) {
+            return left;
+        }
 
+        return right;
+    }
 
 }
