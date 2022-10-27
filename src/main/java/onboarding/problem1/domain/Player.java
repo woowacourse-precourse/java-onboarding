@@ -22,7 +22,16 @@ public class Player {
         this.pages = pages;
     }
     
-    public int getMaxNumber() {
+    public int compareTo(final Player rightPlayer) {
+        final int resultOfCompare = Integer.compare(getMaxNumber(), rightPlayer.getMaxNumber());
+        if (resultOfCompare < 0) {
+            return 2;
+        }
+        
+        return resultOfCompare;
+    }
+    
+    private int getMaxNumber() {
         return Math.max(getMaxSum(), getMaxMultiply());
     }
     
@@ -38,9 +47,5 @@ public class Player {
                 .mapToInt(Page::multiplyOfDigits)
                 .max()
                 .orElseThrow(() -> new NoSuchElementException(NOT_FOUND_PAGE_EXCEPTION_MESSAGE));
-    }
-    
-    public int compareTo(final Player rightPlayer) {
-        return Integer.compare(getMaxNumber(), rightPlayer.getMaxNumber());
     }
 }
