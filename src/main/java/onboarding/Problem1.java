@@ -10,8 +10,7 @@ class Problem1 {
         List<Integer> p = new ArrayList<>(pobi);
         List<Integer> c = new ArrayList<>(crong);
 
-        // 첫페이지나 마지막 페이지가 아닐 경우
-        // 페이지가 순서대로가 아닐 경우
+        // 1. 첫페이지나 마지막 페이지가 아닐 경우 + 페이지가 순서대로가 아닐 경우
         if(p.get(0) == 1 || c.get(0) == 1 || p.get(1) == 400 || c.get(1) == 400 || p.get(1) != p.get(0) + 1 || c.get(1) != c.get(0) + 1) {
             answer = -1;
         } else {
@@ -25,6 +24,7 @@ class Problem1 {
         return answer;
     }
 
+    // 2. 각 자리의 곱이나 합중에 제일 큰 수를 골라주는 함수
     public static int find_max(int page) {
         int sum = 0;
         int multi = 1;
