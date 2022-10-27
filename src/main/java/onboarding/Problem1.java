@@ -18,17 +18,23 @@ import java.util.List;
  */
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-
         if(!isPageValid(pobi) || !isPageValid(crong))
             return -1;
 
         int pobiMax = getMax(pobi);
         int crongMax = getMax(crong);
 
-        return answer;
+        return determineWinner(pobiMax, crongMax);
     }
+    private static int determineWinner(int pobiMax, int crongMax){
+        if(pobiMax>crongMax)
+            return 1;
 
+        if(pobiMax==crongMax)
+            return 0;
+
+        return 2;
+    }
     private static int getMax(List<Integer> pages) {
         return Math.max(Math.max(sumDigitOfPage(pages.get(0)), sumDigitOfPage(pages.get(1))),
                             Math.max(multiplyDigitOfPage(pages.get(0)),multiplyDigitOfPage(pages.get(1))));
