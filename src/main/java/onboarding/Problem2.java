@@ -2,7 +2,6 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
@@ -54,10 +53,5 @@ public class Problem2 {
             .forEach(ele -> result.append(ele));
 
         return result.toString();
-    }
-
-    public static void main(String[] args) {
-        String a = "zyelleyz";
-        System.out.println(solution(a));
     }
 }
