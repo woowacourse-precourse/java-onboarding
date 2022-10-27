@@ -21,7 +21,7 @@ public class Decryptor {
         return decrypte();
     }
     
-    public String getCryptogram() {
+    public String decryptedCryptogram() {
         return cryptogram.getCryptogram();
     }
 }

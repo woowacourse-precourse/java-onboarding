@@ -11,6 +11,6 @@ public class DecryptorTest {
     void removeAllEqualsTwoChar() {
         Decryptor decryptor = new Decryptor("browoanoommnaon");
         decryptor.decrypte();
-        assertThat(decryptor.getCryptogram()).isEqualTo("brown");
+        assertThat(decryptor.decryptedCryptogram()).isEqualTo("brown");
     }
 }
