@@ -135,7 +135,13 @@ public class Problem7 {
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        Set<String> crews = getAllCrews(friends, visitors);
+        Map<String, Set<String>> friendGraph = createFriendGraph(crews, friends);
+
+        Map<String, Integer> recommendScoreByCrew = getRecommendScoreByCrew(user, friendGraph, visitors);
+        List<String> recommendCrews = getRecommendCrews(recommendScoreByCrew);
+        recommendCrews = removeFriends(recommendCrews, friendGraph, user);
+
+        return recommendCrews;
     }
 }
