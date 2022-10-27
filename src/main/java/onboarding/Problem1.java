@@ -7,8 +7,10 @@ import java.util.stream.Stream;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        int pobiScore = findMaxScore(pobi);
+        int crongScore = findMaxScore(crong);
 
-        int answer = Integer.MAX_VALUE;
+        int answer = compare(pobiScore, crongScore);
         return answer;
     }
 
@@ -55,11 +57,22 @@ class Problem1 {
         if (frontPage < 1 || backPage > 400) {
             return true;
         }
-
         if (backPage - frontPage != 1) {
             return true;
         }
 
         return false;
+    }
+
+    public static int compare(int firstScore, int secondScore) {
+        if (firstScore == -1 || secondScore == -1) {
+            return -1;
+        } else if (firstScore == secondScore) {
+            return 0;
+        } else if (firstScore == Math.max(firstScore, secondScore)) {
+            return 1;
+        } else {
+            return 2;
+        }
     }
 }

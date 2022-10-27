@@ -32,7 +32,7 @@ class Problem1Test {
         assertThat(errorScore2).isEqualTo(-1);
 
         List<Integer> pobi4 = List.of(400, 401);
-        int errorScore3 = Problem1.findMaxScore(pobi3);
+        int errorScore3 = Problem1.findMaxScore(pobi4);
         assertThat(errorScore3).isEqualTo(-1);
     }
 }
