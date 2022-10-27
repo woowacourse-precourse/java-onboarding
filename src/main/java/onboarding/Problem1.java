@@ -29,4 +29,18 @@ class Problem1 {
         return String.valueOf(number);
     }
 
+    /**
+     * String 자료형의 각 자리를 더한 값을 자료형으로 반환하는 메서드
+     */
+    private static int getSumPageDigits(String page) {
+        int sum = 0;
+
+        for (int i = 0; i < page.length(); i++) {
+            char aChar = page.charAt(i);
+            int digit = Character.getNumericValue(aChar);
+            sum += digit;
+        }
+        return sum;
+    }
+
 }
