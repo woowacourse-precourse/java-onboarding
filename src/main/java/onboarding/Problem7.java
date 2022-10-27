@@ -64,6 +64,13 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
+
+        makeFriendsMap(friends);
+        ArrayList arrayList = map_friends.get(user);
+        friendsPlusPoint(user, arrayList);
+        visitorPlusPoint(visitors, arrayList);
+        sortPointList(answer);
+
         return answer;
     }
 }
