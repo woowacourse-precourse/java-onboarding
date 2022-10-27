@@ -31,8 +31,14 @@ class Problem1 {
         return sum;
     }
 
-    public int getWhoWin(int pobiNum, int croingNum) {
-        return -1;
+    public int getWhoWin(int pobiNum, int crongNum) {
+        if(pobiNum > crongNum) {
+            return POBI_WIN;
+        }
+        if(pobiNum < crongNum) {
+            return CRONG_WIN;
+        }
+        return DRAW;
     }
 
     public boolean isValid(List<Integer> pobi, List<Integer> crong) {
