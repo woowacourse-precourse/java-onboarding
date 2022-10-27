@@ -1,13 +1,28 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        int invalidInput = -1;
+        if (!isValidPage(pobi) || !isValidPage(crong)) {
+            return invalidInput;
+        }
+
+        int pobiScore = getUserScoreByPages(pobi);
+        int crongScore = getUserScoreByPages(crong);
+        String gameResult = getGameResultByScores(pobiScore, crongScore);
+
+        Map<String, Integer> answerCollection = new HashMap<>();
+        answerCollection.put("pobi win", 1);
+        answerCollection.put("crong win", 2);
+        answerCollection.put("draw", 0);
+
+        Answers answers = new Answers(answerCollection);
+        return answers.getAnswerByGameResult(gameResult);
     }
 
     private static boolean isValidLeftPage(List<Integer> pages) {
