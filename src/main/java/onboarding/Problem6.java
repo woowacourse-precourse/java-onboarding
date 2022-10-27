@@ -31,26 +31,59 @@ public class Problem6 {
         }
 
         private boolean checkValid() {
-
+            return
         }
 
         private boolean checkCrewNums() {
 
         }
 
-        private boolean checkEmailForm() {
+        private boolean checkEmail(String email) {
+            int emailLength = email.length();
+            if (!checkEmailLength(emailLength)) {
+                return false;
+            }
+            return checkEmailForm(email);
+        }
+
+        private boolean checkNickName(String nickname) {
+            return checkNickNameLength(nickname) && checkNickNameType(nickname);
+        }
+
+        private void checkAlarmTarget(String nickname) {
 
         }
-        private boolean checkEmailLength() {
+
+        private boolean checkEmailForm(String email) {
+            String[] emailDetails = email.split("@");
+            String emailId = emailDetails[0];
+            String emailDomain = emailDetails[1];
+            return checkEmailDomain(emailDomain) && checkEmailId(emailId);
+        }
+
+        private boolean checkEmailLength(int n) {
+            return 11 <= n && n <= 20;
+        }
+
+        private boolean checkEmailDomain(String emailDomain) {
+            if (emailDomain.length() == 0 || !emailDomain.equals("email.com")) {
+                return false;
+            }
+            return true;
+        }
+
+        private boolean checkEmailId(String emailId) {
+            if (emailId.length() == 0) {
+                return false;
+            }
+            return true;
+        }
+
+
+        private boolean checkNickNameType(String nickname) {
 
         }
-        private boolean checkEmailDomain() {
-
-        }
-        private boolean checkNickNameType() {
-
-        }
-        private boolean checkNickNameLength() {
+        private boolean checkNickNameLength(String nickname) {
 
         }
     }
