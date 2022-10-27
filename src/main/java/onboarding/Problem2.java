@@ -2,7 +2,8 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = cryptogram;
+        
         return answer;
     }
 
@@ -12,8 +13,10 @@ public class Problem2 {
         char [] chars = str.toCharArray();
         int charsLen = chars.length-1;
         for (int i = 0; i < charsLen; i++) {
-            answer = i;
-            break;
+            if(chars[i] == chars[i+1]){
+                answer = i;
+                break;
+            }
         }
         return answer;
     }
