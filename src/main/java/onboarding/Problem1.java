@@ -16,5 +16,12 @@ class Problem1 {
         return numArr;
     }
 
+    // List<Integer> 요소 더한 값 출력
+    static int plus(List<Integer> nums) {
+        int result = 0;
+        for(int i : nums) result += i;
+        return result;
+    }
+
     }
 }
