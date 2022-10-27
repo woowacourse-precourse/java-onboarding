@@ -12,6 +12,11 @@ public class Problem3 {
 
     public static int solution(int number) {
         int answer = 0;
+        for (int count = 0; count <= number; count++) {
+            answer += countNum(count, '3');
+            answer += countNum(count, '6');
+            answer += countNum(count, '9');
+        }
         return answer;
     }
 }
