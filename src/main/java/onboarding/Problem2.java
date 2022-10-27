@@ -7,8 +7,15 @@ public class Problem2 {
 
         Stack<Character> stack = new Stack<>();
         char[] charCryptogram = cryptogram.toCharArray();
+        char deletedChar = ' ';
 
+        for (char nowChar : charCryptogram) {
+
+            if (stack.isEmpty()) {
+                stack.add(nowChar);
+                continue;
+            }
+        }
         return answer;
     }
-
 }
