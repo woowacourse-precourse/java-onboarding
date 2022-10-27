@@ -8,6 +8,15 @@ class Problem1 {
         return answer;
     }
 
+    static int multiply_digits(int number){
+        String number_to_string = Integer.toString(number);
+        int result = 1;
+        for(int i=0; i<number_to_string.length(); i++){
+            result *= number_to_string.charAt(i) - '0';
+        }
+        return result;
+    }
+
     static int add_digits(int number){
         String number_to_string = Integer.toString(number);
         int result = 0;
