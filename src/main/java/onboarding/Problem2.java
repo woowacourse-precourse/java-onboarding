@@ -20,6 +20,9 @@ public class Problem2 {
     public static String deduplication(String cryptogram){
         String returnCryptogram = "";
         int cryptogramLen = cryptogram.length();
+        if (cryptogramLen == 0) {
+            return "";
+        }
         if (cryptogram.charAt(0) != cryptogram.charAt(1)) {
             returnCryptogram += cryptogram.charAt(0);
         }
@@ -42,7 +45,7 @@ public class Problem2 {
     public static boolean endPoint(String cryptogram){
         int beforeCryptogramSize = cryptogram.length();
         int afterCryptogramSize = deduplication(cryptogram).length();
-        if (beforeCryptogramSize == afterCryptogramSize) {
+        if (beforeCryptogramSize == afterCryptogramSize || beforeCryptogramSize == 0) {
             return false;
         }else {
             return true;
