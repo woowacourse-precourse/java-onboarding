@@ -12,6 +12,8 @@ public class Problem7 {
     static final int knowPoint = 10;
     static final int visitPoint = 1;
     static List<List<String>> friendsList;
+    static Map<String, Integer> friendsPointMap= new HashMap<>();
+
     static String userName;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -19,8 +21,6 @@ public class Problem7 {
 
         friendsList = friends;
         userName = user;
-
-        //Collections.copy(friendsList, friends);
 
         givePoint(user, visitors);
 
@@ -41,52 +41,49 @@ public class Problem7 {
         return userFriendsList;
     }
 
+    //visitor UnsupportedOperationException error 발생해서 list를 복제함
+    public static List<String> saveVisitorList(List<String> visitors)
+    {
+        List<String> visitorsList = new ArrayList<>();
 
+        for (int i = 0; i < visitors.size(); i++)
+            visitorsList.add(visitors.get(i));
+
+        return visitorsList;
+    }
     public static void givePoint(String user, List<String> visitors)
     {
         List<String> userFriendsList;
+        Map<String, Integer> userPointMap;
+
         //사용자와 친구인 목록
         userFriendsList = findUserFriends(user);
 
-        giveFriendsPoint(user, userFriendsList);
-        giveVisitPoint(visitors, userFriendsList);
+        //친구의 친구 목록을 구하고 점수를 구함
+        saveUserPoint(findFriendsOfFriend(userFriendsList), knowPoint);
+        // userPointMap = saveUserPoint(removeDuplication(visitorsList, userFriendsList), visitPoint);
 
+        System.out.println(saveUserPoint(removeDuplication(saveVisitorList(visitors), userFriendsList), visitPoint));
     }
     //사용자와 친구인 친구의 목록을 구해서 점수를 주는 함수
     //중복처리 함수를 따로 둘까?
-    public static Map<String, Integer> giveFriendsPoint(String user, List<String> userFriendsList)
+    public static List<String> findFriendsOfFriend(List<String> userFriendsList)
     {
         int root = 0;
         List<String> friendOfFriendsList;
 
         //사용자와 친구인 친구의 목록
         friendOfFriendsList = findUserFriends(userFriendsList.get(root));
-
         for (int i = 1; i < userFriendsList.size(); i++)
             friendOfFriendsList.addAll(findUserFriends(userFriendsList.get(i)));
 
-        //중복을 제거해줌
-        for (int i = 0; i < friendOfFriendsList.size(); i++)
-        {
-            //사용자가 리스트에 있을 경우
-            if (user.equals(friendOfFriendsList.get(i)))
-            {
-                friendOfFriendsList.remove(i);
-                continue;
-            }
-            //사용자의 친구가 리스트에 있을 경우
-            for (int j = 0; j < userFriendsList.size(); j++)
-            {
-                if (userFriendsList.get(j).equals(friendOfFriendsList.get(i)))
-                    friendOfFriendsList.remove(i);
-            }
+        //사용자와 친구인 목록은 삭제
+        removeDuplication(friendOfFriendsList,userFriendsList);
 
-        }
-
-        return saveUserPoint(friendOfFriendsList, knowPoint);
+        return friendOfFriendsList;
     }
 
-    public static void removeDuplication(List<String> basicList, List<String> keywordList)
+    public static List<String> removeDuplication(List<String> basicList, List<String> keywordList)
     {
         for (int i = 0; i < basicList.size(); i++)
         {
@@ -99,39 +96,30 @@ public class Problem7 {
             //사용자의 친구가 리스트에 있을 경우
             for (int j = 0; j < keywordList.size(); j++)
             {
-                if (keywordList.get(j).equals(basicList.get(i)))
+                if (basicList.get(i).equals(keywordList.get(j)))
                     basicList.remove(i);
             }
         }
+        return basicList;
     }
     public static Map<String, Integer> saveUserPoint(List<String> userList, int point)
     {
         int tmp = point;
-        Map<String, Integer> friendsPointMap= new HashMap<>();
 
         for (int i = 0; i < userList.size(); i++)
         {
             point = tmp;
             if (friendsPointMap.containsKey(userList.get(i)))
-                point += knowPoint;
+            {
+                if (tmp == knowPoint)
+                    point += knowPoint;
+                if (point == visitPoint)
+                    point += visitPoint;
+            }
             friendsPointMap.put(userList.get(i), point);
         }
 
         return friendsPointMap;
     }
-    //방문 수에 따라 점수를 주는 함수
-    public static void giveVisitPoint(List<String> visitors, List<String> userFriendsList)
-    {
-        //중복을 제거해줌
-        for (int i = 0; i < visitors.size(); i++)
-        {
-            //사용자의 친구가 리스트에 있을 경우
-            for (int j = 0; j < userFriendsList.size(); j++)
-            {
-                if (userFriendsList.get(j).equals(visitors.get(i)))
-                    visitors.remove(i);
-            }
-        }
-        saveUserPoint(visitors, visitPoint);
-    }
+
 }
