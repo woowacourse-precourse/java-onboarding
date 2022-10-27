@@ -1,17 +1,17 @@
 package onboarding;
 
-import java.util.regex.Pattern;
-
 public class Problem2 {
 
     private static final int MIN_LENGTH = 1;
     private static final int MAX_LENGTH = 1000;
 
     public static String solution(String cryptogram) {
-        String answer = "answer";
         validateCryptogram(cryptogram);
 
-        return answer;
+        while (hasDuplicateWord(cryptogram)) {
+            cryptogram = removeDuplicateWord(cryptogram);
+        }
+        return cryptogram;
     }
 
     private static void validateCryptogram(String cryptogram) throws IllegalArgumentException {
@@ -33,10 +33,24 @@ public class Problem2 {
             }
             prevLetter = letter;
         }
-
         return false;
     }
 
+    private static String removeDuplicateWord(String cryptogram) {
+        StringBuilder result = new StringBuilder();
+        char prevLetter = 0;
+
+        for (int i = 0; i < cryptogram.length(); i++) {
+            char currentLetter = cryptogram.charAt(i);
+            if (prevLetter != currentLetter) {
+                result.append(currentLetter);
+            } else {
+                result.deleteCharAt(result.length() - 1);
+            }
+            prevLetter = cryptogram.charAt(i);
+        }
+        return result.toString();
+    }
 
     private static boolean isValidRange(int length) {
         return length >= MIN_LENGTH && length <= MAX_LENGTH;
