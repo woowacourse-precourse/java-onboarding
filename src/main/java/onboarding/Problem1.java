@@ -12,11 +12,18 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = 0;
         Page pobiPage = new Page(pobi.get(1));
-        Page crongPage = new Page(pobi.get(1));
+        Page crongPage = new Page(crong.get(1));
 
+        int pobiMaxNum = pobiPage.getMaxNum();
+        int crongMaxNum = crongPage.getMaxNum();
 
+        answer = winOrLose(pobiMaxNum, crongMaxNum);
 
         return answer;
+    }
+
+    public static int winOrLose(int pobiMaxNum, int crongMaxNum){
+        return pobiMaxNum == crongMaxNum ? 0 : pobiMaxNum > crongMaxNum ? 1 : -1;
     }
 }
 class Page{
