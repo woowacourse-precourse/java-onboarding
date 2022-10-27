@@ -3,25 +3,14 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
-    public static List<String> solution(String user, List<List<String>> friends,
-                                        List<String> visitors) {
+    public static List<String> solution(String user, List<List<String>> friends
+            ,List<String> visitors) {
 
         //친구 목록 맵
-        Map<String, List<String>> friendsMap = createFriendList(friends);
+        Map<String, List<String>> friendsMap = createFriendMap(friends);
 
         //추천 친구 점수 맵
-        Map<String, Integer> scoreMap = new HashMap<>();
-
-        // 함께 아는 친구 점수 추가
-        friendsMap.get(user)
-                .forEach(friend -> friendsMap.get(friend).stream()
-                        .filter(s -> checkFriends(user,s,friendsMap))
-                        .forEach(s -> addScore(scoreMap,10,s)));
-
-        // 타임 라인 방문한 횟수 점수 추가
-        visitors.stream()
-                .filter(s -> checkFriends(user,s,friendsMap))
-                .forEach(s -> addScore(scoreMap, 1, s));
+        Map<String, Integer> scoreMap = createRecommendMap(user,friendsMap,visitors);
 
         //점수 맵의 키를 리스트로 변환
         List<String> answer = new ArrayList<>(scoreMap.keySet());
@@ -38,8 +27,28 @@ public class Problem7 {
         return answer;
     }
 
+    // 추천 점수 목록 생성 메소드
+    private static Map<String, Integer> createRecommendMap(String user
+            , Map<String, List<String>> friendsMap,List<String> visitors) {
+
+        Map<String, Integer> scoreMap = new HashMap<>();
+
+        // 함께 아는 친구 점수 추가
+        friendsMap.get(user)
+                .forEach(friend -> friendsMap.get(friend).stream()
+                        .filter(s -> checkFriends(user,s,friendsMap))
+                        .forEach(s -> addScore(scoreMap,10,s)));
+
+        // 타임 라인 방문한 횟수 점수 추가
+        visitors.stream()
+                .filter(s -> checkFriends(user,s,friendsMap))
+                .forEach(s -> addScore(scoreMap, 1, s));
+
+        return scoreMap;
+    }
+
     // 친구 목록 생성 메소드
-    private static Map<String, List<String>> createFriendList(List<List<String>> friends) {
+    private static Map<String, List<String>> createFriendMap(List<List<String>> friends) {
 
         Map<String, List<String>> friendsMap = new HashMap<>();
 
@@ -60,8 +69,8 @@ public class Problem7 {
     }
 
     // 친구 추가 메소드
-    private static List<String> addFriend(Map<String, List<String>> friendsMap,
-                                  String human1, String human2) {
+    private static List<String> addFriend(Map<String, List<String>> friendsMap
+            ,String human1, String human2) {
 
         List<String> list = new ArrayList<>();
         if(friendsMap.get(human1) != null) list = friendsMap.get(human1);
@@ -71,8 +80,8 @@ public class Problem7 {
     }
 
     // 점수 추가 메소드
-    private static void addScore( Map<String, Integer> scoreMap,
-                                                  int n, String recommend) {
+    private static void addScore( Map<String, Integer> scoreMap
+            ,int n, String recommend) {
 
         int score = 0;
         if(scoreMap.get(recommend) != null) score = scoreMap.get(recommend);
@@ -81,8 +90,9 @@ public class Problem7 {
     }
 
     // 본인 or 이미 친구인 경우 확인하는 메소드
-    private static boolean checkFriends(String user, String people,
-                                        Map<String, List<String>> friendsMap ) {
+    private static boolean checkFriends(String user, String people
+            ,Map<String, List<String>> friendsMap ) {
+
         // 본인일 경우
         if(people.equals(user)) return false;
 
