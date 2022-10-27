@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.Stack;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -49,6 +50,50 @@ class ApplicationTest {
             String cryptogram = "zyelleyz";
             String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void custom1() {
+            String cryptogram = "browoanoommnaon";
+            String result = "brown";
+            Stack<Character> words = Problem2.deleteDuplicateWordsInRow(cryptogram);
+            assertThat(words.size()).isEqualTo(result.length());
+            for(int i = result.length()-1; i >=0; i--) {
+                assertThat(words.pop()).isEqualTo(result.charAt(i));
+            }
+        }
+
+        @Test
+        void custom2() {
+            String cryptogram = "aaaaaaaa";
+            String result = "";
+            Stack<Character> words = Problem2.deleteDuplicateWordsInRow(cryptogram);
+            assertThat(words.size()).isEqualTo(result.length());
+            for(int i = result.length()-1; i >=0; i--) {
+                assertThat(words.pop()).isEqualTo(result.charAt(i));
+            }
+        }
+
+        @Test
+        void custom3() {
+            String cryptogram = "abcdefghijklmnop";
+            String result = "abcdefghijklmnop";
+            Stack<Character> words = Problem2.deleteDuplicateWordsInRow(cryptogram);
+            assertThat(words.size()).isEqualTo(result.length());
+            for(int i = result.length()-1; i >=0; i--) {
+                assertThat(words.pop()).isEqualTo(result.charAt(i));
+            }
+        }
+
+        @Test
+        void custom4() {
+            String cryptogram = "a";
+            String result = "a";
+            Stack<Character> words = Problem2.deleteDuplicateWordsInRow(cryptogram);
+            assertThat(words.size()).isEqualTo(result.length());
+            for(int i = result.length()-1; i >=0; i--) {
+                assertThat(words.pop()).isEqualTo(result.charAt(i));
+            }
         }
     }
 
