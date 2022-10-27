@@ -17,9 +17,10 @@ class Problem1 {
             PagePlayer pobiPlayer = new PagePlayer(pobiPages);
             PagePlayer crongPlayer = new PagePlayer(crongPages);
 
+            return pobiPlayer.compareScore(crongPlayer);
+
         } catch (IllegalArgumentException e) {
             return EXCEPTION_RESULT;
         }
-        return answer;
     }
 }
