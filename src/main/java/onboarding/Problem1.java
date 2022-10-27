@@ -31,7 +31,7 @@ class Problem1 {
             4. 왼쪽, 오른쪽 페이지의 차가 1이 아닌 경우 (연속된 페이지가 아님)
          */
         if (isNotPageRange(leftPage, rightPage) || isPageFirstOrLast(leftPage) ||
-                isPageOddAndEvenRight(leftPage, rightPage) || isNotPageContinuous(leftPage, rightPage)) {
+                isNotPageOddAndEven(leftPage, rightPage) || isNotPageContinuous(leftPage, rightPage)) {
             return true;
         }
 
@@ -60,13 +60,13 @@ class Problem1 {
     }
 
     /**
-     * 왼쪽 페이지가 홀수, 오른쪽 페이지가 짝수가 아닌지 판단한다
+     * 왼쪽 페이지가 홀수, 오른쪽 페이지가 짝수가 아닌지 판단한다.
      *
      * @param leftPage 왼쪽 페이지
      * @param rightPage 오른쪽 페이지
      * @return 왼쪽 페이지가 홀수가 아니고 오른쪽 페이지가 짝수가 아니면 true, 아니라면 false
      */
-    private static boolean isPageOddAndEvenRight(int leftPage, int rightPage) {
+    private static boolean isNotPageOddAndEven(int leftPage, int rightPage) {
         return leftPage % 2 != 1 && rightPage % 2 != 0;
     }
 
