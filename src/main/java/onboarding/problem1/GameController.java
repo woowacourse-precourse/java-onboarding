@@ -8,6 +8,7 @@ public class GameController {
 	private final List<Integer> crong;
 	private static final int lastPage = 400;
 	private PageValidChecker pageValidChecker;
+	private ScoreCalculator scoreCalculator;
 
 	public GameController(List<Integer> pobi, List<Integer> crong) {
 		this.pobi = pobi;
@@ -20,6 +21,11 @@ public class GameController {
 		if (!users.stream().allMatch(u -> pageValidChecker.checkValid(u))) {
 			return -1;
 		}
+
+		scoreCalculator = new ScoreCalculator();
+		int pobiScore = scoreCalculator.getScore(pobi);
+		int crongScore = scoreCalculator.getScore(crong);
+
 		return 0;
 	}
 }
