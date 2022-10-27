@@ -29,7 +29,14 @@ public class Problem7 {
             nearFriends.addAll(findMyFriends(user, friends, friend));
         }
                 System.out.println(nearFriends);
-        // 3. 함께 아는 친구에 대한 점수 부여.
+        // 3. 함께 아는 친구에 대한 점수 부여.(리스트의 중복을 이용하기)
+        for(String nearFriend : nearFriends){
+            if(recommendScore.containsKey(nearFriend))
+                recommendScore.put(nearFriend, recommendScore.get(nearFriend)+10);
+            else recommendScore.put(nearFriend, 10);
+
+        }
+        System.out.println(recommendScore);
 
 
         // 4. 방문자에게 점수 부여하기.
