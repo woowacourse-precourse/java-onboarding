@@ -2,7 +2,7 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
+        int answer = ThreeSixNine.findTotal369(number);
         return answer;
     }
 }
@@ -14,6 +14,7 @@ class ThreeSixNine {
 
     private static int find369(int num){
         int result = 0;
+
         while (num!=0) {
             result += is369(num % 10)? 1 : 0;
             num /= 10;
@@ -21,4 +22,12 @@ class ThreeSixNine {
         return result;
     }
 
+    static int findTotal369(int num){
+        int result = 0;
+
+        for (int i = 1; i <= num; i++) {
+            result += find369(i);
+        }
+        return result;
+    }
 }
