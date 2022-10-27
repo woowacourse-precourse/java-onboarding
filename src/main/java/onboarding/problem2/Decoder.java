@@ -20,6 +20,15 @@ public class Decoder {
     }
 
     /**
+     * Check if there is duplication
+     * @param index current index
+     */
+    private void checkDuplication(int index) {
+        if (now == next) treatDuplication(index);
+        else treatNonDuplication(index);
+    }
+
+    /**
      * Method for treating single duplication
      * @param index current index
      */
