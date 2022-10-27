@@ -3,7 +3,15 @@ package onboarding;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = cryptogram;
-        
+        int n;
+        do{
+            n = index(answer);
+            if(n<0){
+                break;
+            }else{
+                answer = delChar(answer, n);
+            }
+        }while (true);
         return answer;
     }
 
