@@ -10,6 +10,22 @@ class Problem1 {
         return answer;
     }
 
+    // 왼쪽, 오른쪽 페이지에서 각 자리 수를 더하거나 곱해 가장 큰 수를 반환하는 메소드
+    private static int maxPageNumber(ArrayList<Integer> array) {
+        int max = 0;
+
+        for (int i = 0; i < array.size(); i++) {
+            int pageNumber = maxNumber(array.get(i));
+
+            if (pageNumber > max) {
+                max = pageNumber;
+            }
+        }
+
+        return max;
+    }
+
+
     // 페이지의 각 자리 수를 더하거나 곱해 가장 큰 수를 반환하는 메소드
     private static int maxNumber(int number) {
 
@@ -19,7 +35,6 @@ class Problem1 {
         return Math.max(sum, multiplication);
 
     }
-
 
     // 페이지의 각 자리 숫자를 모두 곱하는 메소드
     private static int multiply(int number) {
