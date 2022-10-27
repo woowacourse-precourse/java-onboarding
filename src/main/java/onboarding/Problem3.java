@@ -6,6 +6,11 @@ public class Problem3 {
         int answer = 0;
         return answer;
     }
+
+    private static int getNumOfMulOfThreeLessThanValue(int value) {
+        return (value-1) / 3;
+    }
+
     private static int getMaxClapByDigit(int i) {
         return MAX_CLAP_BY_DIGIT[i];
     }
