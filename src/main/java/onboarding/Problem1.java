@@ -6,7 +6,9 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
-       
+        int pobi_MaxVal =Math.max(PageCheck(pobi.get(0)),PageCheck(pobi.get(1)));
+        int crong_MaxVal =Math.max(PageCheck(crong.get(0)),PageCheck(crong.get(1)));
+
         return answer;
     }
 
