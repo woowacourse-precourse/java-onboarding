@@ -19,3 +19,7 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+### 기능 구현
+1. 반대로된 알파벳을 저장하는 dictionary 생성 기능
+2. 주어진 word를 dictionary를 참고해 result를 만드는 기능
