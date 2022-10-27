@@ -13,7 +13,15 @@ public class Cryptogram {
         final int overlapStartIndex = IndexCalculator.overlapStartIndex(split());
         final int overlapEndIndex = IndexCalculator.overlapEndIndex(overlapStartIndex, split());
         
-        return new Cryptogram(cryptogram.substring(0, overlapStartIndex) + cryptogram.substring(overlapEndIndex));
+        if (isOverlapCharacterExist(overlapStartIndex)) {
+            return new Cryptogram(cryptogram.substring(0, overlapStartIndex) + cryptogram.substring(overlapEndIndex));
+        }
+    
+        return this;
+    }
+    
+    private static boolean isOverlapCharacterExist(final int overlapEndIndex) {
+        return overlapEndIndex != -1;
     }
     
     private String[] split() {

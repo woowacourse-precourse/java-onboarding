@@ -16,6 +16,7 @@ public class IndexCalculator {
     
     public static int overlapEndIndex(final int overlapStartIndex, final String[] splitCryptogram) {
         return IntStream.range(overlapStartIndex, splitCryptogram.length - 1)
+                .filter(index -> overlapStartIndex != -1)
                 .filter(index -> isOverlapEnd(overlapStartIndex, splitCryptogram, index))
                 .findFirst()
                 .orElse(-1);
