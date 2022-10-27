@@ -15,7 +15,7 @@ class Problem1 {
 
         return answer;
     }
-    private int digitSum(int pageNum) {
+    private static int digitSum(int pageNum) {
         int sum = 0;
         while (pageNum > 0) {
             sum += (pageNum % 10);
@@ -24,7 +24,7 @@ class Problem1 {
         return sum;
     }
 
-    private int digitProduct(int pageNum) {
+    private static int digitProduct(int pageNum) {
         int sum = 1;
         while (pageNum > 0) {
             sum *= (pageNum % 10);
@@ -33,13 +33,13 @@ class Problem1 {
         return sum;
     }
 
-    private int sumOrProduct(int pageNum) {
+    private static int sumOrProduct(int pageNum) {
         int sum = digitSum(pageNum);
         int product = digitProduct(pageNum);
         return (sum > product) ? sum : product;
     }
 
-    private int leftOrRight(List<Integer> pages) {
+    private static int leftOrRight(List<Integer> pages) {
         int left = sumOrProduct(pages.get(0));
         int right = sumOrProduct(pages.get(1));
 
