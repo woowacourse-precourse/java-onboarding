@@ -7,4 +7,9 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+
+    private static int getLeftPage(List<Integer> pages) {
+        int leftPage = pages.get(0);
+        return leftPage;
+    }
 }
