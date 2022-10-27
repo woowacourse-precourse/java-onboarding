@@ -17,7 +17,9 @@ public class Problem2 {
 
         for (int i = 0; i < cryptogram.length() - 1; i++) {
             if (hasDuplicates(cryptogram, i)) {
-                if (startIndex == -1) startIndex = i;
+                if (startIndex == -1) {
+                    startIndex = i;
+                }
                 lastIndex = i + 1;
             }
         }
