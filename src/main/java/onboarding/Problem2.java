@@ -6,7 +6,25 @@ import java.util.List;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        Problem2 problem2 = new Problem2();
+
+        String answer = problem2.solveCryptogram(cryptogram);
+
+        return answer;
+    }
+
+    public String solveCryptogram(String cryptogram) {
+        String modifiedCryptogram = cryptogram;
+        String answer = cryptogram;
+
+        while (true) {
+            modifiedCryptogram = deleteRepeatedString(modifiedCryptogram);
+            if (modifiedCryptogram.equals("NOT MODIFIED")) {
+                break;
+            }
+            answer = modifiedCryptogram;
+        }
+
         return answer;
     }
 
