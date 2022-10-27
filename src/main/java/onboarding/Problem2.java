@@ -26,6 +26,11 @@ public class Problem2 {
             inputStack.push(input.charAt(i));
         }
 
+        while (!inputStack.empty()) {
+            sb.append(inputStack.peek());
+            inputStack.pop();
+        }
+
         sb = sb.reverse();
         return sb.toString();
     }
