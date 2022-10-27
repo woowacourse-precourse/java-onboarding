@@ -5,6 +5,30 @@ public class Problem2 {
         String answer = "answer";
         return answer;
     }
+
+    public static String str_search(String str){
+        int length = str.length();
+
+        String result = null;
+        for(int i = 0; i < length - 1; i++){
+            char c = str.charAt(i);
+            String substring = str.substring(i);
+
+            //연속성 여부
+            if(substring.charAt(0) != substring.charAt(1)){
+                continue;
+            }
+
+            String fixed_substring = Problem2.delete_continuous(substring, c);
+            str = str.substring(0, i) + fixed_substring;
+
+            length = str.length();
+            result = str;
+        }
+        return result;
+    }
+
+
     public static String delete_continuous(String str, char c){
         int index = str.indexOf(c);
         while(index == 0){
