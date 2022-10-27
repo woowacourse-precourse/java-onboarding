@@ -90,8 +90,25 @@ class Operation {
 }
 class Problem1 {
 
+    static final int NUMBER_OF_PLAYER=2;
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+
         int answer = Integer.MAX_VALUE;
+        Exception e = new Exception();
+        Operation operator = new Operation();
+
+        if(e.errorCheck(pobi, crong)){
+            return -1;
+        }
+
+        List<List<Integer>> players = List.of(pobi, crong);
+        int[] playerScore = new int[NUMBER_OF_PLAYER];
+
+        for(int turn=0;turn<NUMBER_OF_PLAYER;turn++){
+            playerScore[turn] = operator.calculatePlayerScore(players.get(turn));
+        }
+
+        answer = operator.findWinner(playerScore[0], playerScore[1]);
         return answer;
     }
 }
