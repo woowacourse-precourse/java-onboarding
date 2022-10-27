@@ -34,7 +34,7 @@ class ApplicationTest {
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
     }
-/*
+
     @Nested
     class Problem2Test {
         @Test
@@ -52,6 +52,7 @@ class ApplicationTest {
         }
     }
 
+    /*
     @Nested
     class Problem3Test {
         @Test
