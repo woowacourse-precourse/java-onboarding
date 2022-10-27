@@ -24,8 +24,8 @@ public class Alphabet {
 		return castCodePoint(ALPHABET_SMALL_A + flippedAlphabeticOrder);
 	}
 
-	private int flipAlphabeticOrder(int order) {
-		return (ALPHABETIC_ORDER_Z - order) % ALPHABET_COUNT;
+	private int flipAlphabeticOrder(int alphabeticOrder) {
+		return (ALPHABETIC_ORDER_Z - alphabeticOrder) % ALPHABET_COUNT;
 	}
 
 	private int getAlphabeticOrderOf(char character) {
