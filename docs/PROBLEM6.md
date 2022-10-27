@@ -21,3 +21,9 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+
+### 기능 목록
+- [ ] 모든 닉네임별 2글자씩 나눈 단어 사전 생성 기능
+- [ ] 중복되는 이메일 목록 생성
+- [ ] 정렬 후 반환
