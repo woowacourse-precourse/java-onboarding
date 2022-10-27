@@ -49,4 +49,15 @@ public class Problem6 {
             }
         }
     }
+    private static void addEmailInResultList(List<String> result,List<List<String>> forms) {
+        for (int i = 0; i < forms.size(); i++) {
+            if (ALARM_SYSTEM[i]) {
+                result.add(forms.get(i).get(0));
+            }
+        }
+        sortResultList(result);
+    }
+    private static void sortResultList(List<String> result){
+        Collections.sort(result);
+    }
 }
