@@ -11,3 +11,21 @@ public class Problem2 {
         return answer;
     }
 }
+
+
+class Decryptor{
+    private static String checkNeighbors(char prevChar,char presentChar, char nextChar){
+        if (prevChar != presentChar && presentChar != nextChar) {
+            return presentChar + "";
+        }
+        return "";
+    }
+
+    private static String checkNeighbors(char thisChar,char compareChar){
+        if (thisChar != compareChar) {
+            return thisChar + "";
+        }
+        return "";
+    }
+
+}
