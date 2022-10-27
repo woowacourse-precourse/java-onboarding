@@ -6,3 +6,9 @@ public class Problem3 {
         return answer;
     }
 }
+
+class ThreeSixNine {
+    private static boolean is369(int num){
+        return (num == 3 || num == 6 || num == 9);
+    }
+}

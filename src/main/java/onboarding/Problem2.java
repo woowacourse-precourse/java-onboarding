@@ -13,7 +13,7 @@ public class Problem2 {
 }
 
 
-class Decryptor{
+class Decryptor {
     private static String checkNeighbors(char prevChar,char presentChar, char nextChar){
         if (prevChar != presentChar && presentChar != nextChar) {
             return presentChar + "";
