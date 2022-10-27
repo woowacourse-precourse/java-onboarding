@@ -21,3 +21,9 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+### 기능목록
+
+- 기능1. void decode(String cryptogram) : 암호해독을 한다.
+- 기능2. void findDuplicated(String cryptogram) : 암호에서 중복되는 글자의 범위를 모두 찾고 리스트에 저장한다.
+- 기능3. void deleteDuplicated(String cryptogram) : 리스트에 있는 범위의 글자를 모두 제거한 후 새로운 String객체에 저장한다.

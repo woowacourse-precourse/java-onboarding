@@ -5,7 +5,8 @@ import onboarding.crytogramDecoding.CryptogramDecoding;
 public class Problem2 {
 	public static String solution(String cryptogram) {
 		CryptogramDecoding cryptoObject = new CryptogramDecoding();
-		String answer = cryptoObject.decode();
+		cryptoObject.decode(cryptogram);
+		String answer = "";
 		return answer;
 	}
 
