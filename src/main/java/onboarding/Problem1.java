@@ -13,6 +13,9 @@ class Problem1 {
             return -1;
         }
 
+        int scorePobi = getMaxScore(pobi);
+        int scoreCrong = getMaxScore(crong);
+
         return answer;
     }
 
@@ -47,5 +50,15 @@ class Problem1 {
         }
 
         return Math.max(sum, mul);
+    }
+
+    private static int getMaxScore(List<Integer> pages) {
+        int answer = Integer.MIN_VALUE;
+
+        for (Integer page : pages) {
+            answer = Math.max(answer, calculateDigits(page));
+        }
+
+        return answer;
     }
 }
