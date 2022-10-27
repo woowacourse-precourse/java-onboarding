@@ -6,15 +6,29 @@ import java.util.List;
 class Problem1 {
 
     private static final int EXCEPTION = -1;
+    private static final int DRAW = 0;
+    private static final int POBI_WIN = 1;
+    private static final int CRONG_WIN = 2;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (isValidInput(pobi) || isValidInput(crong)) {
             return EXCEPTION;
         }
+
         int pobiScore = computeScore(pobi.get(0), pobi.get(1));
         int crongScore = computeScore(crong.get(0), crong.get(1));
 
-        return 0;
+        return computeMatch(pobiScore, crongScore);
+    }
+
+    private static int computeMatch(int pobiScore, int crongScore) {
+        if (pobiScore > crongScore) {
+            return POBI_WIN;
+        }
+        if (pobiScore < crongScore) {
+            return CRONG_WIN;
+        }
+        return DRAW;
     }
 
     private static int computeScore(int leftPageNum, int rightPageNum) {
