@@ -10,4 +10,8 @@ public class CryptogramDecoder {
 		int length = cryptogram.length();
 		return MIN_LENGTH <= length && length <= MAX_LENGTH;
 	}
+
+	public static boolean isValidFormat(final String cryptogram) {
+		return cryptogram != null && cryptogram.matches("^[a-z]+$");
+	}
 }

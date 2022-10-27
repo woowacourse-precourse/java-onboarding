@@ -22,4 +22,21 @@ public class CryptogramDecoderTest {
 			CryptogramDecoder.validateLength("0".repeat(1001))
 		).isFalse();
 	}
+
+	@DisplayName("암호문 형식 검증")
+	@Test
+	void 암호문_형식_검증() {
+		String[] INVALID_CRYPTOGRAMS = {
+			"Brown", "Brown123", "", null,
+			"123", "BROWN", "bro+_&wn" };
+
+		for (String cryptogram : INVALID_CRYPTOGRAMS) {
+			assertThat(
+				CryptogramDecoder.isValidFormat(cryptogram)
+			).isFalse();
+		}
+		assertThat(
+			CryptogramDecoder.isValidFormat("brown")
+		).isTrue();
+	}
 }
