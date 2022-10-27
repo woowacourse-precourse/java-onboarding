@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.Arrays;
 import java.util.List;
 
 class Problem1 {
@@ -13,6 +14,18 @@ class Problem1 {
 
         int answer = Integer.MAX_VALUE;
         return answer;
+    }
+
+    private static int computeScore(List<Integer> input) {
+        return 0;
+    }
+
+    private static int plusEachDigit(int num) {
+        return Arrays.stream(String.valueOf(num)
+                .split(""))
+            .map(Integer::parseInt)
+            .reduce((n1, n2) -> n1 + n2)
+            .get();
     }
 
     private static boolean isValidInput(List<Integer> input) {
