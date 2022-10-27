@@ -79,7 +79,7 @@ class Problem1 {
 
     public static boolean isNormal(List<Integer> list) {
         int diff = list.get(1) - list.get(0);
-        return diff == 1 && list.get(0) % 2 == 1;
+        return diff == 1 && list.get(0) % 2 == 1 && list.get(0) > 0 && list.get(1) < 401;
     }
 
     public static int pipeline(List<Integer> list) {
@@ -113,4 +113,8 @@ class NumSpliter {
 
         return List.of(numOfFirst, numOfSecond, numOfThird);
     }
+}
+
+class MaxFinder {
+
 }
