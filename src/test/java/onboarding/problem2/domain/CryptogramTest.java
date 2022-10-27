@@ -10,13 +10,13 @@ public class CryptogramTest {
     @DisplayName("연속하는 중복 문자가 있으면 삭제 후 새로운 객체 반환")
     void isOverlapCharacterExist() {
         Cryptogram cryptogram = new Cryptogram("zyellleyz");
-        assertThat(cryptogram.decrypte().getCryptogram()).isEqualTo("zyeeyz");
+        assertThat(cryptogram.decrypt().getCryptogram()).isEqualTo("zyeeyz");
     }
     
     @Test
     @DisplayName("연속하는 중복 문자가 없다면 기존 객체 반환")
     void isOverlapCharacterNotExist() {
         Cryptogram cryptogram = new Cryptogram("abc");
-        assertThat(cryptogram.decrypte().getCryptogram()).isEqualTo("abc");
+        assertThat(cryptogram.decrypt().getCryptogram()).isEqualTo("abc");
     }
 }

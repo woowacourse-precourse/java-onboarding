@@ -1,5 +1,7 @@
 package onboarding.problem2.domain;
 
+import java.util.Objects;
+
 public class Cryptogram {
     private static final String DELIMITER = "";
     
@@ -9,7 +11,7 @@ public class Cryptogram {
         this.cryptogram = cryptogram;
     }
     
-    public Cryptogram decrypte() {
+    public Cryptogram decrypt() {
         final int overlapStartIndex = IndexCalculator.overlapStartIndex(split());
         final int overlapEndIndex = IndexCalculator.overlapEndIndex(overlapStartIndex, split());
         
@@ -30,5 +32,25 @@ public class Cryptogram {
     
     public String getCryptogram() {
         return cryptogram;
+    }
+    
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        final Cryptogram that = (Cryptogram) o;
+        return Objects.equals(cryptogram, that.cryptogram);
+    }
+    
+    @Override
+    public int hashCode() {
+        return Objects.hash(cryptogram);
+    }
+    
+    @Override
+    public String toString() {
+        return "Cryptogram{" +
+                "cryptogram='" + cryptogram + '\'' +
+                '}';
     }
 }

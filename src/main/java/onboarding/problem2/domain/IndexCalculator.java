@@ -19,7 +19,7 @@ public class IndexCalculator {
                 .filter(index -> overlapStartIndex != -1)
                 .filter(index -> isOverlapEnd(overlapStartIndex, splitCryptogram, index))
                 .findFirst()
-                .orElse(-1);
+                .orElse(overlapStartIndex + 2);
     }
     
     private static boolean isOverlapEnd(final int overlapStartIndex, final String[] splitCryptogram, final int index) {
