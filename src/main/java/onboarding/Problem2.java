@@ -22,31 +22,42 @@ public class Problem2 {
     }
 
     static String getCryptogram(String cryptogram) {
-        Stack<Character> stack = new Stack<>();
-        int len = cryptogram.length();
-        for (int i = 0; i < len; i++) {
-            char target = cryptogram.charAt(i);
+        List<Character> stackList = new ArrayList<>();
 
-            if (stack.size() > 0 && stack.peek() == target) {
-                stack.pop();
+        for (int i = 0; i < cryptogram.length(); i++) {
+            if (i == cryptogram.length() -1 || cryptogram.charAt(i) != cryptogram.charAt(i + 1)) {
+                stackList.add(cryptogram.charAt(i));
             }
-            else {
-                stack.add(target);
+
+            else if(cryptogram.charAt(i) == cryptogram.charAt(i + 1)) {
+                int endIdx = getEndIdx(cryptogram, i + 1);
+                i += endIdx - i;
             }
         }
 
-        return joinStack(stack);
+        return joinList(stackList);
     }
 
-    static String joinStack(Stack<Character> stack) {
-        List<Character> stackList = new ArrayList(stack);
-        int size = stackList.size();
-        StringBuilder result = new StringBuilder();
-
-        for(int i = 0; i < size; i++) {
-            result.append(stackList.get(i));
+    static int getEndIdx(String cryptogram, int i) {
+        char target = cryptogram.charAt(i);
+        while (i < cryptogram.length() -1 && cryptogram.charAt(i + 1) == target) {
+            i++;
         }
 
+        return i;
+    }
+
+    static String joinList(List<Character> stackList) {
+        StringBuilder result = new StringBuilder();
+
+        stackList.stream()
+            .forEach(ele -> result.append(ele));
+
         return result.toString();
+    }
+
+    public static void main(String[] args) {
+        String a = "zyelleyz";
+        System.out.println(solution(a));
     }
 }
