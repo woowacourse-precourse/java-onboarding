@@ -32,6 +32,8 @@ class Problem1 {
         int pLeftBigNumber = calculateNumber(pLeftList);
         int pRightBigNumber = calculateNumber(pRightList);
 
+        int pobiNumber = checkBigNumber(pLeftBigNumber, pRightBigNumber);
+
         ArrayList<Integer> cLeftList = new ArrayList<>();
         ArrayList<Integer> cRightList = new ArrayList<>();
 
@@ -41,7 +43,13 @@ class Problem1 {
         addList(cLeftPage, cLeftList);
         addList(cRightPage, cRightList);
 
+        int crongNumber = checkBigNumber(cLeftBigNumber, cRightBigNumber);
+
         return answer;
+    }
+
+    private static int checkBigNumber(int leftBigNumber, int rightBigNumber) {
+        return Math.max(leftBigNumber, rightBigNumber);
     }
 
     private static int calculateNumber(ArrayList<Integer> list) {
