@@ -46,4 +46,19 @@ class Problem1Test {
         for(int i : nums) result *= i;
         return result;
     }
+
+    @Test
+    void 최대값_구하기() {
+        List<Integer> list = Arrays.asList(97,98);
+        assertThat(maxNum(list)).isEqualTo(72);
+    }
+    static int maxNum(List<Integer> nums) {
+        int maxNum = 0;
+        for (int i : nums) {
+            List<Integer> jariArr = jarisoo(i);
+            int temp = Math.max(plus(jariArr),multiply(jariArr));
+            if (maxNum < temp) maxNum = temp;
+        }
+        return maxNum;
+    }
 }
