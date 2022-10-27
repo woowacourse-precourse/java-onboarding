@@ -313,6 +313,17 @@ class ApplicationTest {
 
     @Nested
     class Problem4Test {
+        // 대문자 변환 기능 테스트
+        @Test
+        void convertUpperCharacterTest() {
+            String word = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+            for (int i = 0; i < word.length(); i++) {
+                char result = word.charAt(word.length() - i - 1);
+                assertThat(WordConverter.convertUpperCharacter(word.charAt(i))).isEqualTo(result);
+            }
+        }
+
         // 소문자 변환 기능 테스트
         @Test
         void convertLowerCharacterTest() {

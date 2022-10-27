@@ -27,4 +27,12 @@ public class WordConverter {
 
 		return (char)convertedCharacter;
 	}
+
+	public static char convertUpperCharacter(char uppercaseCharacter) {
+		int convertedCharacter = uppercaseCharacter;
+
+		convertedCharacter = convertedCharacter + ((77 - convertedCharacter)*2 + 1);
+
+		return (char)convertedCharacter;
+	}
 }
