@@ -29,13 +29,29 @@ class Problem1 {
         addList(pLeftPage, pLeftList);
         addList(pRightPage, pRightList);
 
+        int pLeftBigNumber = calculateNumber(pLeftList);
+        int pRightBigNumber = calculateNumber(pRightList);
+
         ArrayList<Integer> cLeftList = new ArrayList<>();
         ArrayList<Integer> cRightList = new ArrayList<>();
+
+        int cLeftBigNumber = calculateNumber(cLeftList);
+        int cRightBigNumber = calculateNumber(cRightList);
 
         addList(cLeftPage, cLeftList);
         addList(cRightPage, cRightList);
 
         return answer;
+    }
+
+    private static int calculateNumber(ArrayList<Integer> list) {
+        int sum = 0;
+        int multiplication = 1;
+        for (int i = 0; i < list.size(); i++) {
+            sum += list.get(i);
+            multiplication *= list.get(i);
+        }
+        return Math.max(sum, multiplication);
     }
 
     private static boolean validation(int leftPage, int rightPage) {
