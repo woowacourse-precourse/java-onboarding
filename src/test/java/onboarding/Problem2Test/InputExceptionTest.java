@@ -12,7 +12,7 @@ public class InputExceptionTest {
     @Test
     void case1() {
         String cryptogram = "";
-        String result = "Input Error";
+        String result = "INPUT_ERROR";
         assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
     }
 
@@ -22,13 +22,13 @@ public class InputExceptionTest {
         for (int i = 0; i < 1001 ; i++) {
             cryptogram += "a";
         }
-        String result = "Input Error";
+        String result = "INPUT_ERROR";
         assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
     }
     @Test
     void case3() {
         String cryptogram = "ContainsCapital";
-        String result = "Input Error";
+        String result = "INPUT_ERROR";
         assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
     }
 }

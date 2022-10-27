@@ -1,9 +1,12 @@
 package onboarding;
 
 public class Problem2 {
+    private static final int MINIMUM_INPUT = 1;
+    private static final int MAXIMUM_INPUT = 1000;
+    private static final String INPUT_ERROR = "INPUT_ERROR";
 
     public static String solution(String cryptogram) {
-        if (isExceptionCase(cryptogram)) return "Input Error";
+        if (isExceptionCase(cryptogram)) return INPUT_ERROR;
         if (cryptogram.length() == 1) return cryptogram;
         while (true) {
             String decoded = decodeCryptogram(cryptogram);
@@ -14,7 +17,7 @@ public class Problem2 {
     }
 
     private static boolean isExceptionCase(String cryptogram) {
-        if (cryptogram.length() < 1 || cryptogram.length() > 1000) return true;
+        if (cryptogram.length() < MINIMUM_INPUT || cryptogram.length() > MAXIMUM_INPUT) return true;
         return !cryptogram.equals(cryptogram.toLowerCase());
     }
 
@@ -38,5 +41,3 @@ public class Problem2 {
         return newCrypt;
     }
 }
-
-

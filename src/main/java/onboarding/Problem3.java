@@ -1,10 +1,14 @@
 package onboarding;
 
 public class Problem3 {
+    private static final int MINIMUM_INPUT = 1;
+    private static final int MAXIMUM_INPUT = 10000;
+    private static final int INPUT_ERROR = -1;
+
     public static int solution(int number) {
         int answer = 0;
 
-        if (isExceptionInput(number)) return -1;
+        if (isExceptionInput(number)) return INPUT_ERROR;
 
         for (int i = 1; i <= number; i++) {
             answer += getClapCount(i);
@@ -13,7 +17,7 @@ public class Problem3 {
     }
 
     private static boolean isExceptionInput(int number) {
-        return number < 1 || number > 10000;
+        return number < MINIMUM_INPUT || number > MAXIMUM_INPUT;
     }
 
     private static int getClapCount(int num) {
