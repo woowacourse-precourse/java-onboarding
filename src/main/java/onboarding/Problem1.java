@@ -3,13 +3,18 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+    public static final int EXCEPTION = -1;
+    public static final int DRAW = 0;
+    public static final int WIN_POBI = 1;
+    public static final int WIN_CRONG = 2;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         int pobiScore = 0;
         int crongScore = 0;
 
         if (isError(pobi) || isError(crong))
-            return Constants.EXCEPTION;
+            return EXCEPTION;
 
         pobiScore = calculateMaxScore(pobi);
         crongScore = calculateMaxScore(crong);
@@ -18,7 +23,7 @@ class Problem1 {
 
         return answer;
     }
-
+    
     private static boolean isError(List<Integer> list) {
         int left = list.get(0);
         int right = list.get(1);
@@ -56,11 +61,11 @@ class Problem1 {
 
     private static int makeGameResult(int pobiScore, int crongScore) {
         if (pobiScore == crongScore) {
-            return Constants.DRAW;
+            return DRAW;
         } else if (pobiScore > crongScore) {
-            return Constants.WIN_POBI;
+            return WIN_POBI;
         } else {
-            return Constants.WIN_CRONG;
+            return WIN_CRONG;
         }
     }
 }
