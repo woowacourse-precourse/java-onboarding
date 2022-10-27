@@ -1,8 +1,8 @@
 # 우테코 프리코스 1주차 추가 요구사항 및 설계 정리
+
 <hr>
 
 ## 설계 및 추가 사항, 구현된 기능은 체크됨
-
 
 <details>
 <summary>문제 1</summary>
@@ -60,9 +60,9 @@
 
 설계<br/>
 
-- [ ] Frog는 String repeatAfter(String speak) 메소드를 통해 엄마 개구리의 말을 따라한다.
-- [ ] Frog의 구현체 TreeFrog는 요구사항의 문제4의 규칙에 따라 알파벳을 변환하여 출력한다. 
-
+- [ ] 인터페이스 Frog는 String repeatAfter() 메소드를 통해 엄마 개구리의 말을 따라한다.
+- [ ] Frog의 구현체 청개구리 TreeFrog는 생성 시 엄마 개구리의 말을 저장한다.
+- [ ] TreeFrog는 요구사항의 문제4의 규칙에 따라 알파벳을 변환하여 출력한다.
 
 </details>
 
@@ -75,6 +75,9 @@
 
 설계<br/>
 
+- [ ] 인터페이스 CurrencyExchanger는 List<Integer> exchange() 메소드를 통해 최소 화폐의 갯수의 리스트를 반환한다.
+- [ ] CurrencyExchanger의 구현체 CurrencyExchangerV1은 생성 시 입력받은 액수를 저장.
+- [ ] CurrencyExchangerV1은 문제 규칙에 따라 최소 최소 화폐의 갯수의 리스트를 exchange()로 반환한다.
 
 </details>
 
