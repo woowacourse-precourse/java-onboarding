@@ -71,5 +71,14 @@ class Problem1 {
 
             return false;
         }
+
+        /* 위의 메서드들을 합쳐 모두 true인지 확인하는 메서드 */
+        private boolean checkException() {
+            if (checkInnerpages() && checkPageRange() && checkLeftRight() && checkPagesDifferences()){
+                return true;
+            }
+
+            return false;
+        }
     }
 }
