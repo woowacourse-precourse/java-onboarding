@@ -6,9 +6,9 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        //예외사항 -1을 리턴한다.
-        if (exceptionCase(pobi)) return -1;
-        if (exceptionCase(crong)) return -1;
+        //예외사항이면 -1을 리턴한다.
+        if (exceptionCase(pobi)
+                | exceptionCase(crong)) return answer.EXCEPTION.value;
 
         //페이지의 각 숫자를 더하거나 곱한것 중 더 큰것을 구한다 -> pageNumValue
         //그중 가장 큰 값을 본인의 수로 한다.
@@ -23,9 +23,9 @@ class Problem1 {
 
         //점수를 비교한다
         //포비승=1, 크롱승=2, 무승부 0 리턴한다.
-        if (pobiNum > crongNum) return 1;
-        if (crongNum > pobiNum) return 2;
-        return 0;
+        if (pobiNum > crongNum) return answer.POBI.value;
+        if (crongNum > pobiNum) return answer.CRONG.value;
+        return answer.TIESCORE.value;
     }
 
     private static boolean exceptionCase(List<Integer> bookNumList) {
@@ -47,5 +47,22 @@ class Problem1 {
                 .reduce(1, (num1, num2) -> num1*num2);
 
         return Math.max(plusNum, gobNum);
+    }
+
+    public enum answer {
+        EXCEPTION(-1),
+        POBI(1),
+        CRONG(2),
+        TIESCORE(0);
+
+        private final int value;
+
+        answer(int value) {
+            this.value = value;
+        }
+
+        public int get() {
+            return value;
+        }
     }
 }
