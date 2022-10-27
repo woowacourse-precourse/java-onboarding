@@ -8,4 +8,8 @@ public class Problem5 {
         List<Integer> answer = Collections.emptyList();
         return answer;
     }
+
+    //50000원 부터 1원까지 필요한 갯수를 리턴해주는 함수
+
+    //실행을 위한 함수
 }
