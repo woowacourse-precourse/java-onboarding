@@ -8,6 +8,23 @@ class Problem1 {
         private Page page;
         private int maxValue;
 
+        private int sumOfEachNum(int idx) {      // 0: 왼쪽페이지 | 1: 오른쪽 페이지
+            String num = String.valueOf(page.get(idx));
+            int tmp=0;
+            for(int i=0 ; i<num.length() ; i++){
+                tmp+=num.charAt(i)-'0';
+            }
+            return tmp;
+        }
+        private int productOfEachNum(int idx) {
+            String num = String.valueOf(page.get(idx));
+            int tmp=0;
+            for(int i=0 ; i<num.length() ; i++){
+                tmp*=num.charAt(i)-'0';
+            }
+            return tmp;
+        }
+
         public Score(List<Integer> page) {
             this.page = new Page(page);
             findMaxValue();
