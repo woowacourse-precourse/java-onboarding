@@ -5,8 +5,13 @@ import java.util.Stack;
 public class Problem2 {
     public static String solution(String cryptogram) {
         Stack<Character> stack = removeDuplicate(cryptogram);
+        StringBuilder sb = new StringBuilder();
 
-        return "";
+        while(!stack.isEmpty()) {
+            sb.insert(0, stack.pop());
+        }
+
+        return sb.toString();
     }
 
     private static Stack<Character> removeDuplicate(String cryptogram) {
