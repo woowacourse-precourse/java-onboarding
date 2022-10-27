@@ -15,6 +15,16 @@ public class Problem6 {
     public static List<String> getInvalidNicknames(List<List<String>> forms){
         List<String> invalidNickNames = new ArrayList<>();
 
+        Map<String, Integer> stringsOfLength2Cnt = getStringsOfLength2Cnt(forms);
+
+        Set<String> stringsOfLength2 = stringsOfLength2Cnt.keySet();
+        for(List<String> crew : forms){
+            String nickname = crew.get(1);
+            for(String str : stringsOfLength2){
+                if(nickname.contains(str)) invalidNickNames.add(nickname);
+            }
+        }
+
         return invalidNickNames;
     }
 
