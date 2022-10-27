@@ -5,4 +5,10 @@ public class Problem2 {
         String answer = "answer";
         return answer;
     }
+    String letterRemove(String temp1){
+        if(temp1.length() != 1){
+            return "";
+        }
+        return temp1;
+    }
 }
