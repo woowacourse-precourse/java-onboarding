@@ -22,7 +22,10 @@ public class Problem2 {
     }
 
     public static boolean isCharsDuplicatedInGivenIdx(String string, int idx) {
-        return true;
+        if (string.charAt(idx) == string.charAt(idx+1)) {
+            return true;
+        }
+        return false;
     }
 
     public static String getCharsDeletedInGivenIdx(String string, int idx) {
