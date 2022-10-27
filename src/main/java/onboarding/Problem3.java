@@ -26,7 +26,21 @@ public class Problem3 {
         return valid;
     }
 
-    private static int count369InRange(int number) {
+    /*
+     * 범위 내의 숫자들에 3, 6, 9가 몇 개가 있는지 셉니다.
+     *
+     * @param 범위를 표현하는 정수입니다.
+     * @return 인자값 까지 숫자들의 3, 6, 9 개수입니다.
+     * */
+    private static int count369InRange(int range) {
+        int count = 0;
+        for (int i = 1; i <= range; i++) {
+            count += count369InNumber(i);
+        }
+        return count;
+    }
+
+    private static int count369InNumber(int number) {
         return 0;
     }
 
