@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.regex.Pattern;
+
 public class Problem2 {
     public static String solution(String cryptogram) {
         String decodeResult = "answer";
@@ -19,9 +21,11 @@ public class Problem2 {
         return beforeDecodeCryptogram.equals(afterDecodeCryptogram);
     }
 
-    public static void validateCryptogramLength(String cryptogram) {
+    public static boolean validateCryptogramLength(String cryptogram) {
+        boolean isCorrectCryptogramLength = true;
         if(cryptogram.length() < 1 || cryptogram.length() > 1000) {
-            throw new IllegalArgumentException("암호는 길이 1 이상, 1000이하의 문자열입니다.");
+            isCorrectCryptogramLength = false;
         }
+        return isCorrectCryptogramLength;
     }
 }
