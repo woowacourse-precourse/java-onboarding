@@ -21,6 +21,13 @@ class ListGraph {
     public void setListGraph(Set<User> listGraph) {
         this.listGraph = listGraph;
     }
+    public User getUser(User user) {
+        if (!listGraph.contains(user)) return null;
+        for (User storedUser : listGraph) {
+            if (storedUser.equals(user)) return storedUser;
+        }
+        return null;
+    }
 }
 class User implements Comparable<User> {
     private String id;
