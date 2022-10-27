@@ -7,7 +7,6 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
-
     static int addDigit(List<Integer> list) {
         int result = 0;
         for(int i=0; i<2; i++) {
