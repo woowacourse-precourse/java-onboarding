@@ -34,7 +34,7 @@ class Problem1 {
         // 각 자리의 페이지 수를 저장할 ArrayList 생성
         // page가 한 자리수, 두 자리 수, 세 자리수가 될 수 있기 때문에 크기가 가변적으로 변하는 ArrayList 사용
         ArrayList<Integer> pageNums = new ArrayList<Integer>();
-        int multiplyNums = 1;
+        int multipleNums = 1;
         int addNums = 0;
 
         while(page > 0){
@@ -46,12 +46,12 @@ class Problem1 {
 
         // 페이지를 모두 더하거나 곱한 값을 계산
         for (int num : pageNums){
-            multiplyNums *= num;
+            multipleNums *= num;
             addNums += num;
         }
 
         // 더 큰 수를 return
-        return (multiplyNums > addNums) ? multiplyNums : addNums;
+        return returnMaxNum(multipleNums,addNums);
     }
 
     public static int returnMaxNum(int num1, int num2){
