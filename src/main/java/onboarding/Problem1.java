@@ -1,6 +1,5 @@
 package onboarding;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -19,7 +18,7 @@ import java.util.stream.Stream;
  * 3. 제한 사항 -> 해당 경우 예외 사항으로 간주하여 -1 return
  * - 시작 면, 마지막 면 페이지는 펼치지 않도록
  * - 연속된 페이지 번호가 아닐경우
- * - [ 홀수 ,짝수 ] 로 페이지 번호가 입력되지 않을 경우
+ * 
  * */
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
