@@ -14,6 +14,19 @@ package onboarding;
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
+        char[] outputResult = word.toCharArray();
+        int inputIndex;
+        for (int i = 0; i < outputResult.length; i++) {
+            char ch = outputResult[i];
+            if (ch >= 'A' && ch <= 'Z') {
+                inputIndex = ch - 'A';
+                outputResult[i] = (char) ('Z' - inputIndex);
+            }else if(ch >= 'a' && ch <= 'z'){
+                inputIndex = ch - 'a';
+                outputResult[i] = (char) ('z' - inputIndex);
+            }
+        }
+        answer = String.valueOf(outputResult);
         return answer;
     }
 }
