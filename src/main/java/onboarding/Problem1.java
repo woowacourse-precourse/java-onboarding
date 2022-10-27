@@ -4,6 +4,16 @@ import java.util.List;
 
 class Problem1 {
 
+    static class Score {
+        private Page page;
+        private int maxValue;
+
+        public Score(List<Integer> page) {
+            this.page = new Page(page);
+            findMaxValue();
+        }
+    }
+
     static class Page {
         private List<Integer> page;
 
