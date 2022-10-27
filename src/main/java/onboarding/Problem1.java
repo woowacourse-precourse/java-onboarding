@@ -35,8 +35,10 @@ class Problem1 {
         int rightSum = addDigits(player.get(1));
         int leftProduct = multiplyDigits(player.get(0));
         int rightProduct = multiplyDigits(player.get(1));
+
         int leftMax = compareNumbers(leftSum, leftProduct);
         int rightMax = compareNumbers(rightSum, rightProduct);
+
         int result = compareNumbers(leftMax, rightMax);
         return result;
     }
@@ -68,7 +70,7 @@ class Problem1 {
         if(number2 - number1 != 1){
             result = false;
         }
-        if(number1 % 2 == 1 && number2 % 2 == 0){
+        if(number1 % 2 == 0 && number2 % 2 == 1){
             result = false;
         }
         return result;
