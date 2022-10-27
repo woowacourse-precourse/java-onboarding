@@ -11,9 +11,28 @@ public class Problem6 {
         List<String> emailList = makeEmailList(forms);
         List<String> nameList = makeNameList(forms);
 
+        List<List<String>> substringList = makeSubstringList(nameList);
 
         return answer;
     }
+
+    private static List<List<String>> makeSubstringList(List<String> nameList) {
+        List<List<String>> substringList = new ArrayList<>();
+        for (int i=0; i<nameList.size(); i++) {
+            List<String> allSubstring = makeSubstring(nameList.get(i));
+            substringList.add(allSubstring);
+        }
+        return substringList;
+    }
+
+    private static List<String> makeSubstring(String name) {
+        List<String> allSubString = new ArrayList<>();
+        for (int i=0; i<name.length()-1; i++) {
+            allSubString.add(name.substring(i, i+2));
+        }
+        return allSubString;
+    }
+
 
     private static List<String> makeNameList(List<List<String>> forms) {
         List<String> nameList = new ArrayList<>();
