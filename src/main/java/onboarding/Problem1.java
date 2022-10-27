@@ -4,8 +4,6 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-
         if (!(isValid(pobi) && isValid(crong))) return -1;
 
         int pobiMax = leftOrRight(pobi);
@@ -14,6 +12,7 @@ class Problem1 {
         if (pobiMax == crongMax) return 0;
         return (pobiMax > crongMax) ? 1 : 2;
     }
+
     private static int digitSum(int pageNum) {
         int sum = 0;
         while (pageNum > 0) {
