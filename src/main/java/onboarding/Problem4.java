@@ -8,4 +8,8 @@ public class Problem4 {
     private static boolean isUpperCase(char c) {
         return c >= 'A' && c <= 'Z';
     }
+
+    private static boolean isLowerCase(char c) {
+        return c >= 'a' && c <= 'z';
+    }
 }
