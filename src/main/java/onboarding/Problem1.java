@@ -35,4 +35,19 @@ class Problem1 {
         return max;
     }
 
+    // 점수를 비교하여 승자를 정하는 메서드 whoIsWinner
+    int whoIsWinner(List<Integer> gamer1, List<Integer> gamer2) {
+        int answer = -1;
+        int gamer1Point = getMaxValue(gamer1.get(0), gamer1.get(1));
+        int gamer2Point = getMaxValue(gamer2.get(0), gamer2.get(1));
+        if(gamer1Point > gamer2Point) {
+            answer = 1;
+        } else if (gamer1Point < gamer2Point) {
+            answer = 2;
+        } else if (gamer1Point == gamer2Point) {
+            answer = 0;
+        }
+        return answer;
+    }
+
 }
