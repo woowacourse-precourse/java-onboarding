@@ -1,5 +1,6 @@
 package onboarding;
 
+import onboarding.problem1.PagePlayer;
 import onboarding.problem1.Pages;
 
 import java.util.List;
@@ -12,6 +13,10 @@ class Problem1 {
         try {
             Pages pobiPages = new Pages(pobi);
             Pages crongPages = new Pages(crong);
+
+            PagePlayer pobiPlayer = new PagePlayer(pobiPages);
+            PagePlayer crongPlayer = new PagePlayer(crongPages);
+
         } catch (IllegalArgumentException e) {
             return EXCEPTION_RESULT;
         }
