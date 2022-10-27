@@ -15,6 +15,7 @@ public class Problem7 {
 
         Map<String, Integer> scores = getFriendScore(user, usersFriendsSet, friendsList);
 
+        addVisitScore(visitors, scores);
     }
 
     static void makeConnections(Map<String, Set<String>> map, String name1, String name2){
@@ -50,4 +51,12 @@ public class Problem7 {
         return result;
     }
 
+
+    static void addVisitScore(List<String> list, Map<String, Integer> scores){
+        Iterator<String> it = list.iterator();
+        while (it.hasNext()) {
+            String visitor = it.next();
+            scores.put(visitor, scores.getOrDefault(visitor, 0) + 1);
+        }
+    }
 }
