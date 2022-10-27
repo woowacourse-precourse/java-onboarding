@@ -30,7 +30,15 @@ public class Problem4 {
     }
 
     public static String solution(String word) {
+        StringBuffer stringBuffer = new StringBuffer();
 
-        return "";
+        for (int i = 0; i < word.length(); i++) {
+            Character ch = word.charAt(i);
+            if(checkAlphabet(ch)){
+                ch = changeAlphabet(ch);
+            }
+            stringBuffer.append(ch);
+        }
+        return stringBuffer.toString();
     }
 }
