@@ -12,6 +12,7 @@ public class Pages {
 	public Pages(List<Integer> pageNumbers) {
 		validateBothSideExists(pageNumbers);
 		validateConsecutive(pageNumbers);
+		validateOrder(pageNumbers);
 
 		List<Page> pages = new ArrayList<>();
 		for (Integer pageNumber : pageNumbers) {
@@ -38,6 +39,15 @@ public class Pages {
 		int diff = abs(pageNumbers.get(0) - pageNumbers.get(1));
 		if (diff != 1) {
 			throw new IllegalArgumentException("페이지가 연속적이지 않습니다");
+		}
+	}
+
+	private void validateOrder(List<Integer> pageNumbers) {
+		if (pageNumbers.get(0) % 2 == 0) {
+			throw new IllegalArgumentException("좌측 페이지는 홀수여야 합니다");
+		}
+		if (pageNumbers.get(1) % 2 == 1) {
+			throw new IllegalArgumentException("우측 페이지는 짝수여야 합니다");
 		}
 	}
 }

@@ -33,4 +33,12 @@ public class PagesTest {
 
 		assertThatIllegalArgumentException().isThrownBy(() -> new Pages(pageNumbers));
 	}
+
+	@Test
+	@DisplayName("좌 홀수 우 짝수 페이지를 가진다")
+	void pages_are_ordered_odd_then_even() {
+		List<Integer> pageNumbers = List.of(98, 99);
+
+		assertThatIllegalArgumentException().isThrownBy(() -> new Pages(pageNumbers));
+	}
 }
