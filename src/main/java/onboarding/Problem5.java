@@ -26,6 +26,7 @@ public class Problem5 {
         }
 
         return answer;
+        // 테스트케이스 통과
     }
     private static int[] cash(int i, int money) {
         int[] rtn = new int[2]; // rtn[0] : 화폐 수량 cnt / rtn[1] : 잔액 bal
