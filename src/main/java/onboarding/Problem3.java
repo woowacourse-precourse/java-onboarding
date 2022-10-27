@@ -18,8 +18,20 @@ public class Problem3 {
 
             num = num/10;
         }
-
         return sum;
     }
     //실행을 위한 process 함수
+
+    static int process(int num) {
+
+        int clap = 0;
+
+        for (int i=1;i<=num;i++){
+
+            clap += number_count(i);
+
+        }
+
+        return clap;
+    }
 }
