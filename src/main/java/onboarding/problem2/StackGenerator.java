@@ -4,9 +4,18 @@ import java.util.Stack;
 
 public class StackGenerator {
 
-    public Stack<String> createStack(Stack<String> cryptogram) {
+    public Stack<String> createStack(String cryptogram) {
 
+        Stack<String> stack = new Stack<>();
 
-        return null;
+        String[] cryptogramSplit = cryptogram.split("");
+
+        for (int i = 0; i < cryptogramSplit.length; i++) {
+
+            stack.push(cryptogramSplit[i]);
+
+        }
+
+        return stack;
     }
 }
