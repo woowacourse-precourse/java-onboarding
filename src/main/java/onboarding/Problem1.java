@@ -18,6 +18,11 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
+        if (!checkValid(pobi, crong)) {
+            answer = -1;
+            return answer;
+        }
+
         int pobiValue = maxResult(pobi);
         int crongValue = maxResult(crong);
         if (pobiValue == crongValue) {
