@@ -16,7 +16,7 @@ public class PageValidation {
                 return false;
             }
 
-            if (!isValidRange(page) || !isVaildInterval(page)) {  // 잘못된 범위 혹은 간격일 경우
+            if (!isValidRange(page) || !isValidInterval(page)) {  // 잘못된 범위 혹은 간격일 경우
                 return false;
             }
         }
@@ -40,7 +40,7 @@ public class PageValidation {
         return true;
     }
 
-    private static boolean isVaildInterval(List<Integer> pages) {
+    private static boolean isValidInterval(List<Integer> pages) {
         // 이미 위에서 페이지 사이즈가 검증되었으므로, 2라고 확신해도 됨.
         Integer firstPage = pages.get(0);
         Integer secondPage = pages.get(1);

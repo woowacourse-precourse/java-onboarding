@@ -2,16 +2,15 @@ package onboarding.problem1;
 
 import java.util.List;
 
+import static onboarding.problem1.GameResults.*;
 import static onboarding.problem1.PageValidation.*;
 
 public class BookGame {
 
-    private static final int FIRST_PAGE_WIN = 1;
-    private static final int SECOND_PAGE_WIN = 2;
-    private static final int DRAW = 0;
-    private static final int ILLEGAL_VALUE = -1;
+    private PageCalculator pageCalculator;
 
-    private final PageCalculator pageCalculator;
+    private BookGame() {
+    }
 
     public BookGame(PageCalculator pageCalculator) {
         this.pageCalculator = pageCalculator;
