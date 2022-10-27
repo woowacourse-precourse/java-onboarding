@@ -17,10 +17,10 @@ public class Problem3 {
         return integersUnderNumber;
     }
 
-    private static char[] getCharsOfNumber(int number) {
-        String numberToString = String.valueOf(number);
-        char[] charsOfNumber = numberToString.toCharArray();
-        return charsOfNumber;
+    private static char[] getCharsOfSequence(int sequence) {
+        String sequenceToString = String.valueOf(sequence);
+        char[] charsOfSequence = sequenceToString.toCharArray();
+        return charsOfSequence;
     }
 
     //Return Claps Of Sequence
