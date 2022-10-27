@@ -46,7 +46,10 @@ class DuplicateDetector implements Detector {
 
     public int findEndpoint(int base, String cryptogram) {
         int result;
-        if(cryptogram.charAt(base) != cryptogram.charAt(base+1)){
+        if(cryptogram.length() == base+1){
+            return base;
+        }
+        if(cryptogram.charAt(base) != cryptogram.charAt(base+1)) {
             return base;
         }
         result = findEndpoint(base+1, cryptogram);
@@ -67,7 +70,7 @@ class PatternDeleter implements Deleter {
         StringBuilder result = new StringBuilder(cryptogram);
         List<Integer> position;
         position = detector.findPattern(cryptogram);
-        while(position.get(0).intValue() < position.get(1).intValue()){
+        while(position.get(0) < position.get(1)){
             result = delete(result, position);
             cryptogram = result.toString();
             position = detector.findPattern(cryptogram);
