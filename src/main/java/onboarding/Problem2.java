@@ -8,8 +8,8 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
         System.out.println("cryptogram = " + cryptogram);
-        Cryptogram.validateValueRange(cryptogram);
         Cryptogram.validateValueCase(cryptogram);
+        Cryptogram.validateValueRange(cryptogram);
         answer = Cryptogram.decodeValue(cryptogram);
         return answer;
     }
