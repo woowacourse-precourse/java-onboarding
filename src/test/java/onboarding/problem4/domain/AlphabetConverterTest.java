@@ -12,4 +12,10 @@ class AlphabetConverterTest {
     void convertUpperCase() {
         assertThat(AlphabetConverter.convert('A')).isEqualTo('Z');
     }
+    
+    @Test
+    @DisplayName("소문자 변환하기")
+    void convertLowerCase() {
+        assertThat(AlphabetConverter.convert('a')).isEqualTo('z');
+    }
 }

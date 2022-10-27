@@ -1,6 +1,8 @@
 package onboarding.problem4.domain;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -21,6 +23,18 @@ public class AlphabetConverter {
     }
     
     public static char convert(final char alphabet) {
+        if (Character.isUpperCase(alphabet)) {
+            return convertUpperCase(alphabet);
+        }
+    
+        return convertLowerCase(alphabet);
+    }
+    
+    private static char convertLowerCase(final char alphabet) {
+        return LOWERCASE_LETTERS.get(alphabet - 'a');
+    }
+    
+    private static char convertUpperCase(final char alphabet) {
         return UPPERCASE_LETTERS.get(alphabet - 'A');
     }
 }
