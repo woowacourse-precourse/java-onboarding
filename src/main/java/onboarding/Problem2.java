@@ -15,4 +15,10 @@ public class Problem2 {
         }
         return NO_DUPLICATE;
     }
+
+    public static String deleteDuplicate(String str, int index){
+        StringBuilder sb = new StringBuilder();
+        sb.append(str.substring(0,index)).append(str.substring(index+2));
+        return sb.toString();
+    }
 }
