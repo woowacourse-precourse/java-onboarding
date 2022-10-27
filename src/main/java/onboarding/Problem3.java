@@ -2,13 +2,13 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
-        int answer = ThreeSixNine.findTotal369(number);
+        int answer = ThreeSixNineController.findTotal369(number);
         return answer;
     }
 }
 
 
-class ThreeSixNine {
+class ThreeSixNineController {
     private static boolean is369(int num) {
         return (num == 3 || num == 6 || num == 9);
     }

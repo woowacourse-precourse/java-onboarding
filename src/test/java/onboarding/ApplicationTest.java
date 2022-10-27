@@ -3,6 +3,7 @@ package onboarding;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -179,22 +180,51 @@ class ApplicationTest {
             assertThat(Problem5.solution(money)).isEqualTo(result);
         }
     }
-//
-//    @Nested
-//    class Problem6Test {
-//        @Test
-//        void case1() {
-//            List<List<String>> forms = List.of(
-//                    List.of("jm@email.com", "제이엠"),
-//                    List.of("jason@email.com", "제이슨"),
-//                    List.of("woniee@email.com", "워니"),
-//                    List.of("mj@email.com", "엠제이"),
-//                    List.of("nowm@email.com", "이제엠")
-//            );
-//            List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
-//            assertThat(Problem6.solution(forms)).isEqualTo(result);
-//        }
-//    }
+
+    @Nested
+    class Problem6Test {
+        @Test
+        void case1() {
+            List<List<String>> forms = List.of(
+                    List.of("jm@email.com", "제이엠"),
+                    List.of("jason@email.com", "제이슨"),
+                    List.of("woniee@email.com", "워니"),
+                    List.of("mj@email.com", "엠제이"),
+                    List.of("nowm@email.com", "이제엠")
+            );
+            List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
+            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
+        @Test
+        void case2() {
+            List<List<String>> forms = List.of(
+                    List.of("jm@email.com", "제이엠"),
+                    List.of("jason@email.com", "제슨")
+            );
+            List<String> result = List.of();
+            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
+    }
+
+    @Test
+    void case2() {
+        List<List<String>> forms = List.of(
+                List.of("jm@email.com", "제이엠"),
+                List.of("jason@email.com", "제슨")
+        );
+        List<String> result = Collections.emptyList();
+        assertThat(Problem6.solution(forms)).isEqualTo(result);
+    }
+
+    @Test
+    void case3() {
+        List<List<String>> forms = List.of(
+                List.of("jm@email.com", "제이엠")
+        );
+        List<String> result = Collections.emptyList();
+        assertThat(Problem6.solution(forms)).isEqualTo(result);
+    }
+
 //
 //    @Nested
 //    class Problem7Test {
