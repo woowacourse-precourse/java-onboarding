@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Problem4 {
   static class GreenFrogDictionary {
@@ -17,6 +16,9 @@ public class Problem4 {
   }
 
   public static String solution(String word) {
-    return "";
+    return word.chars().mapToObj(ch -> (char) ch)
+            .map(GreenFrogDictionary::translate)
+            .map(Object::toString)
+            .collect(Collectors.joining());
   }
 }
