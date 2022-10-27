@@ -14,7 +14,7 @@ public class Problem3 {
         return answer;
     }
     public static void main(String[] args){
-        int number = 33;
+        int number = 10000;
         int count = 0;
 
         for(int i = 1; i <= number; i++){
