@@ -19,10 +19,12 @@ public class Cryptogram {
         int i = 0;
 
         while (i < value.length() - 1) {
-            i = (value.charAt(i) == value.charAt(i + 1)) ? Integer.MAX_VALUE : i + 1;
+            i = (value.charAt(i) == value.charAt(i + 1)) ?
+                    Integer.MAX_VALUE
+                    : i + 1;
         }
 
-        duplicated = Integer.MAX_VALUE == i ? true : false;
+        duplicated = (Integer.MAX_VALUE == i) ? true : false;
     }
 
     public String deleteDuplicate() {

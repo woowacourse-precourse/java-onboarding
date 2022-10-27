@@ -8,7 +8,8 @@ public class PageGame implements Rule {
         if (list1.size() != 2 && list2.size() != 2)
             return false;
 
-        return isValid(list1.get(0), list1.get(1)) && isValid(list2.get(0), list2.get(1));
+        return isValid(list1.get(0), list1.get(1))
+                && isValid(list2.get(0), list2.get(1));
     }
 
     private boolean isValid(int leftPage, int rightPage) {

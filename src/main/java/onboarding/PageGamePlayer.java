@@ -12,7 +12,9 @@ public class PageGamePlayer {
 
     public int maxPageNum() {
         return Math.max(
-                Math.max(EachDigitCalculator.add(leftPageNum), EachDigitCalculator.add(leftPageNum)),
-                Math.max(EachDigitCalculator.multiply(leftPageNum), EachDigitCalculator.multiply(rightPageNum)));
+                Math.max(EachDigitCalculator.add(leftPageNum),
+                        EachDigitCalculator.add(leftPageNum)),
+                Math.max(EachDigitCalculator.multiply(leftPageNum),
+                        EachDigitCalculator.multiply(rightPageNum)));
     }
 }
