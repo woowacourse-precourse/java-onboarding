@@ -66,7 +66,7 @@ class Problem1 {
         int rightPage = pages.get(1);
 
         //왼쪽페이지가 홀수 int type 인지, 오른쪽 페이지가 짝수 int type 인지 체크 (NPE 체크가 포함됨)
-        if(leftPage % 2 == 1){
+        if(leftPage % 2 == 0){
             throw new RuntimeException("왼쪽 페이지가 짝수입니다.");
         }
         if (rightPage % 2 == 1) {
