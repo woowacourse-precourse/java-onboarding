@@ -10,13 +10,16 @@ class Problem1 {
     }
 
     private static int getGameResult(List<Integer> userA, List<Integer> userB){
-        int userAPoint = getMaxPoint(userA);
-        int userBPoint = getMaxPoint(userB);
-
-
-        if(userAPoint == -1 || userBPoint == -1){
+        int userAPoint;
+        int userBPoint;
+        if(!(userValidation(userA)&&userValidation(userB))){
             return -1;
-        } else if (userAPoint>userBPoint) {
+        }
+
+        userAPoint = getMaxPoint(userA);
+        userBPoint = getMaxPoint(userB);
+
+        if (userAPoint>userBPoint) {
             return 1;
         } else if (userAPoint<userBPoint) {
             return 2;
@@ -30,16 +33,8 @@ class Problem1 {
         int leftMaxPoint;
         int rightMaxPoint;
 
-
-        if(!pageValidation(user)){
-            return -1;
-        }
-
-        int leftPage = user.get(0);
-        int rightPage = user.get(1);
-
-        leftMaxPoint = maxPageValue(leftPage);
-        rightMaxPoint = maxPageValue(rightPage);
+        leftMaxPoint = maxPageValue(user.get(0));
+        rightMaxPoint = maxPageValue(user.get(1));
 
         if(leftMaxPoint>rightMaxPoint){
             return leftMaxPoint;
@@ -50,12 +45,13 @@ class Problem1 {
 
     }
 
-    private static boolean pageValidation(List<Integer> user){
+    private static boolean userValidation(List<Integer> user){
+        System.out.println("check validation");
+        int leftPage = user.get(0);
+        int rightPage = user.get(1);
         if(user.size()!=2) {
             return false;
         }
-        int leftPage = user.get(0);
-        int rightPage = user.get(1);
 
         if(leftPage != rightPage-1){
             return false;
@@ -65,7 +61,7 @@ class Problem1 {
             return false;
         }
 
-        if(leftPage<1 || rightPage>400){
+        if (leftPage<1 || rightPage>400) {
             return false;
         }
         return true;
@@ -101,6 +97,5 @@ class Problem1 {
 
         return result;
     };
-
 
 }
