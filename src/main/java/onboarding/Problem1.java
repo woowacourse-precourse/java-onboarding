@@ -25,28 +25,33 @@ class Problem1 {
         int pobiMax=0;
         int crongMax=0;
 
+        // 1-1 왼쪽 페이지가 짝수이거나 오른쪽 페이지가 홀수인 경우
         if(isLeftPageEvenRightPageOdd(pobiLeftPage, pobiRightPage, crongLeftPage, crongRightPage)){
             answer = EXCEPTION;
             return answer;
         }
+        //1-2 왼쪽 페이지와 오른쪽 페이지가 연속적이지 않은 경우
         if(isNotLeftPagePlusOneRightPage(pobiLeftPage, pobiRightPage, crongLeftPage, crongRightPage)){
             answer = EXCEPTION;
             return answer;
         }
+        // 1-3 펼친 페이지가 시작 페이지나 마지막 페이지일 경우
         if(isStartPageOrEndPage(pobiLeftPage, pobiRightPage, crongLeftPage, crongRightPage)){
             answer = EXCEPTION;
             return answer;
         }
 
+        // 2. 왼쪽 페이지 최대 값 구하기
         pobiLeftMax = getMax(pobiLeftPage);
         crongLeftMax = getMax(crongLeftPage);
 
+        // 3. 오른쪽 페이지 최대 값 구하기
         pobiRigtMax=getMax(pobiRightPage);
         crongRightMax = getMax(crongRightPage);
 
+        // 4. 왼쪽 페이지와 오른쪽 페이지 최대값 비교
         pobiMax=Math.max(pobiLeftMax,pobiRigtMax);
         crongMax = Math.max(crongLeftMax, crongRightMax);
-
         answer = getAnswer(answer, pobiMax, crongMax);
 
         return answer;

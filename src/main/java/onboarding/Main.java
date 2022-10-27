@@ -12,7 +12,7 @@ public class Main {
 //        int sss = Problem3.solution(13);
 //        System.out.println("args = " + sss);
 
-        String aa = Problem4.solution("A B");
+        String aa = Problem4.solution("A B0231");
         System.out.println("aa = " + aa);
     }
 }
