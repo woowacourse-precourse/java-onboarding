@@ -7,4 +7,16 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+
+    static int addPageNum(Integer pageNum){
+        int result = 0;
+        String pageStr = pageNum.toString();
+        for(String numToken : pageStr.split("")){
+            result += Integer.parseInt(numToken);
+        }
+
+        return result;
+    }
+
+
 }
