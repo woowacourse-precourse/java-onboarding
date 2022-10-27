@@ -61,5 +61,12 @@ public class Problem2 {
         return index;
     }
 
+    //중복 제거하는 함수
+    public static String removeDuplicate(String cryptogram, int[] index){
+        StringBuffer removeDuplicate = new StringBuffer(cryptogram);
+        removeDuplicate.delete(index[0],index[1]+1);
+        return String.valueOf(removeDuplicate);
+    }
+
 
 }
