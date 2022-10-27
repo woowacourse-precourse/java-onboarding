@@ -18,11 +18,13 @@ public class Problem7 {
         
         if (userFriendSet != null) {
             scores = getFriendScore(friendsList, userFriendSet, user);
+
+            addVisitScore(scores, visitors);
+
+            removeAlreadyFriend(scores, userFriendSet);
+        } else {
+            addVisitScore(scores, visitors);
         }
-
-        addVisitScore(scores, visitors);
-
-        removeAlreadyFriend(scores, userFriendSet);
 
         ArrayList list = new ArrayList(scores.entrySet());
 
