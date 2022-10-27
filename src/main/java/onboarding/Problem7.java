@@ -50,6 +50,18 @@ public class Problem7 {
         }
     }
 
+    // map_points 를 정렬하는 메서드
+    private static void sortPointList(List<String> answer) {
+        List<String> keySet = new ArrayList<>(map_points.keySet());
+        // Value 값으로 오름차순 정렬
+        keySet.sort((o1, o2) -> map_points.get(o2).compareTo(map_points.get(o1)));
+        for (String str : keySet) {
+            if (map_points.get(str) != 0) {
+                answer.add(str);
+            }
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
         return answer;
