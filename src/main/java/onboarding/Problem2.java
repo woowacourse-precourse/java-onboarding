@@ -11,7 +11,9 @@ package onboarding;
 // 1-2. 현재 문자를 저장했다가 다음 문자가 같은지 비교하는건?
 // 2. 연속하는 중복 문자들을 제거 할 로직 생각해보기
 // 2-1. 자바에서 스트링속성은 불변. replace가 안된다..
-// 2-2. 연속하는 중복 문자들을 제거한후 새로운 문자열에 넣기
+// 2-2. 연속하는 중복 문자들은 제외하고 새로운 문자열에 넣기
+// 3. 연속하는 중복 문자들이 없을때까지 위의 과정을 반복해야함
+// 3-1. 연속하는 중복 문자들이 있는지 없는지 검사하고, 있으면 반복, 없으면 값을 return 해야함
 
 
 
@@ -19,6 +21,18 @@ package onboarding;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
+        answer = "";
+        char presentLetter = '1';
+
+        for (int i = 0; i < cryptogram.length(); i++) {
+            if (presentLetter != cryptogram.charAt(i)){
+                answer += cryptogram.charAt(i);
+            }else{
+                answer = answer.substring(0, answer.length() - 1);
+            }
+            presentLetter = cryptogram.charAt(i);
+        }
+
         return answer;
     }
 }
