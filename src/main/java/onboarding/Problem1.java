@@ -5,6 +5,16 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        int maxpobi = Math.max(addDigit(pobi),multyDigit(pobi));
+        int maxcrong = Math.max(addDigit(crong),multyDigit(crong));
+
+        if(maxcrong > maxpobi) answer = 2;
+        else if(maxpobi > maxcrong) answer = 1;
+        else if(maxcrong == maxpobi) answer = 0;
+        if(!Validation(pobi)|| !Validation(crong) ) {
+            answer = -1;
+        }
+
         return answer;
     }
     static int addDigit(List<Integer> list) {
