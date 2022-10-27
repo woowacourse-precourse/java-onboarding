@@ -19,7 +19,7 @@ public class Problem2 {
         String before = "";
         String compressed = origin;
 
-        while(!before.equals(compressed)){
+        while(!compressed.isEmpty() && !before.equals(compressed)){
             before = compressed;
             compressed = compressString(compressed).toString();
 
@@ -38,19 +38,15 @@ public class Problem2 {
             char beforeChar = origin.charAt(originIdx - 1);
             char currentChar = origin.charAt(originIdx);
 
-            if(beforeChar == currentChar)
-                isLastCharDuplicate = true;
-            else{
-                if(!isLastCharDuplicate){
+            if(beforeChar != currentChar){
+                if(!isLastCharDuplicate)
                     compressed.append(beforeChar);
-                }
 
                 if(originIdx == origin.length() - 1)
                     compressed.append(currentChar);
-
-                isLastCharDuplicate = false;
             }
 
+            isLastCharDuplicate = (beforeChar == currentChar);
             originIdx++;
         }
 
