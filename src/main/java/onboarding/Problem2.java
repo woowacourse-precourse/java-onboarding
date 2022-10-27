@@ -6,7 +6,7 @@ import java.util.Set;
 
 public class Problem2 {
 
-    public static final String SPECIFIC_VALUE = "-";
+    private static final String SPECIFIC_VALUE = "-";
 
     public static String solution(String cryptogram) {
         String answer = cryptogram;
