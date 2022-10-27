@@ -52,16 +52,37 @@ class Problem1 {
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        final int EXCETION = -1;
+
         // 포비, 크롱 좌우 페이지 넘버 가져오기
         int pobiLeftPage = pobi.get(0);
         int pobiRightPage = pobi.get(1);
         int crongLeftPage = crong.get(0);
         int crongRightPage = crong.get(1);
 
+        // 좌, 우 페이지가 아닐 경우 예외사항
+        if (pobiRightPage - pobiLeftPage != 1) {
+            return EXCETION;
+        }
+        if (crongRightPage - crongLeftPage != 1) {
+            return EXCETION;
+        }
+
+        // 크롱과 포비의 각각 최대값 구해주기
         int pobiMaxNum = getMaxNum(pobiLeftPage, pobiRightPage);
         int crongMaxNum = getMaxNum(crongLeftPage, crongRightPage);
 
+        // 크롱과 포비의 최대값 비교하기
+        if (pobiMaxNum > crongMaxNum) {
+            return 1;
+        }
+        if (pobiMaxNum < crongMaxNum) {
+            return 2;
+        }
+        if (pobiMaxNum == crongMaxNum) {
+            return 0;
+        }
 
-        return 0;
+        return EXCETION;
     }
 }
