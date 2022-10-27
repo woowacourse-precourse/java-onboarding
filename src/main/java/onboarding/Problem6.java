@@ -39,10 +39,12 @@ public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
 
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>();
+        List<String> emails = new ArrayList<>();
 
         List<List<String>> indexTwoChars = new ArrayList<>();
         List<String> allTwoChars = new ArrayList<>();
+        List<String> repeatedWords = new ArrayList<>();
 
         String nickname;
 
@@ -56,6 +58,23 @@ public class Problem6 {
             allTwoChars.addAll(removeRepeated(divideByTwoChars(nickname)));
         }
 
+        //다른 크루와 중복되는 문자 list 받기
+        if (allTwoChars.size() != allTwoChars.stream().distinct().count()) {
+            repeatedWords.addAll(removeRepeated(findRepeatedWords(allTwoChars)));
+        }
+
+        //이중리스트에 담은 분리문자들 중 중복문자가 있을 경우 같은 인덱스로 forms에서 이메일 찾기
+        for (int i = 0; i < indexTwoChars.size(); i++) {
+            for (String repeatedWord : repeatedWords) {
+                if (indexTwoChars.get(i).contains(repeatedWord)) {
+                    emails.add(forms.get(i).get(0));
+                }
+            }
+        }
+
+        //중복제거와 오름차순정렬
+        answer.addAll(removeRepeated(emails));
+        answer.sort(Comparator.naturalOrder());
         return answer;
     }
 }
