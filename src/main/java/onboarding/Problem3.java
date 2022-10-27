@@ -15,14 +15,14 @@ public class Problem3 {
 
     private static int isSatisfiedCondition(int uncheckNumber) {
 
-        int answer = 0;
+        int countClap = 0;
 
         do{
             int remainder = uncheckNumber % 10;
-            if(remainder == 3 || remainder == 6 || remainder == 9) answer += 1;
+            if(remainder == 3 || remainder == 6 || remainder == 9) countClap += 1;
             uncheckNumber /= 10;
         } while (uncheckNumber != 0);
 
-        return answer;
+        return countClap;
     }
 }
