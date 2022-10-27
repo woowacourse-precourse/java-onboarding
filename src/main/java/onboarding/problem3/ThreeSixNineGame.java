@@ -9,7 +9,6 @@ public class ThreeSixNineGame {
     }
 
     public int do369(int number) {
-
-        return 0;
+        return check369.check369(number);
     }
 }

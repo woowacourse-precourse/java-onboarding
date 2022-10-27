@@ -2,12 +2,14 @@ package onboarding.problem3;
 
 public class Check369 {
 
-    public int check369(String number) {
+    public int check369(int number) {
         int result = 0;
-        for (int i = 1; i < number.length(); i++) {
 
-            if (contains369(number)) {
-                result += count369(number);
+        for (int i = 1; i <= number; i++) {
+            String strNum = String.valueOf(i);
+
+            if (contains369(strNum)) {
+                result += count369(strNum);
             }
         }
 
