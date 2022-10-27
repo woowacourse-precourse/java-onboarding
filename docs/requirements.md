@@ -63,6 +63,30 @@
   - pobi가 이긴 경우 1을 리턴한다.
   - crong이 이긴 경우 2를 리턴한다.
 
+## 문제 2
+### 구현 및 메소드 설명
+### decryptString
+### solution
+
+### stringToStack
+
+- cryptogram을 앞부터 차례로 확인하면서 stack<char>에 담는다.
+- 완성된 stack을 return한다.
+
+### decryptString
+- String을 매개변수로 받는다. 이 값은 cryptogram이다.
+- String을 뒤에서부터 순회하며, 다음 과정을 수행한다.
+  - stack이 비었다면, 현재 값을 stack에 담는다.
+  - 현재 값이 stack.top()과 같다면, stack.pop()을 한다.
+  - 그렇지 않다면, stack.push() 한다.
+- 완성된 stack이 빌 때까지, pop() 하여 String으로 만든다.
+- 만들어진 String을 return 한다.
+
+### solution
+- String을 매개변수로 받는다. 이 값은 cryptogram이다.
+- 입력받은 cryptogram을 decryptString에 전달한다.
+- 받은 결과값을 return한다.
+
 ## 문제 6
 ### 구현 메소드 및 설명
 - reverseAlphabet
