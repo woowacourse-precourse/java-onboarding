@@ -45,7 +45,7 @@
 
 - **solveCryptogram()**
   - 입력 : 주어진 cryptogram (= **String cryptogram**)
-  - while문을 통해 빈 문자열("")이 반환될 때까지 **deleteRepeatedString()** 함수를 호출한다.
+  - while문을 통해 수정되지 않음 문자열("NOT MODIFIED")이 반환될 때까지 **deleteRepeatedString()** 함수를 호출한다.
   - 최종 결과 문자열을 반환한다.
   - 출력 : 최종 결과 문자열 (= **String answer**)
 
@@ -60,7 +60,8 @@
       - isModified == true
           - modifiedCryptogram = 수정된 cryptogram
       - isModified == false
-          - modifiedCryptogram = ""
+          - modifiedCryptogram = "NOT MODIFIED"
+          - cryptogram은 소문자로만 이루어져 있는 제한 사항을 활용.
   - 출력 : **String modifiedCryptogram**
 
 

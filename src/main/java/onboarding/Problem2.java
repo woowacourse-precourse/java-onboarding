@@ -25,7 +25,7 @@ public class Problem2 {
         }
 
         if (!isModified) {
-            modifiedCryptogram = "";
+            modifiedCryptogram = "NOT MODIFIED";
         }
 
         return modifiedCryptogram;
@@ -34,7 +34,8 @@ public class Problem2 {
     public String deleteRepeatedCharacter(String cryptogram, int repeatStartIndex) {
         List<String> cryptogramList = new ArrayList<>(Arrays.asList(cryptogram.split("")));
 
-        while (cryptogramList.get(repeatStartIndex).equals(cryptogramList.get(repeatStartIndex + 1))) {
+        while ((cryptogramList.size() > 1) &&
+            (cryptogramList.get(repeatStartIndex).equals(cryptogramList.get(repeatStartIndex + 1)))) {
             cryptogramList.remove(repeatStartIndex);
         }
         cryptogramList.remove(repeatStartIndex);

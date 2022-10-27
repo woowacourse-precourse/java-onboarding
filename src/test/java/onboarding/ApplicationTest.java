@@ -161,7 +161,7 @@ class ApplicationTest {
             String cryptogram2 = "brown";
 
             String result1 = "browoannaon";
-            String result2 = "";
+            String result2 = "NOT MODIFIED";
 
             Problem2 problem2 = new Problem2();
             assertThat(problem2.deleteRepeatedString(cryptogram1)).isEqualTo(result1);
