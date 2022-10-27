@@ -4,9 +4,11 @@ import java.util.Stack;
 
 public class Problem2 {
     private static Stack<Character> decodedCryptogram;
+    private static char beforeChar;
 
     public static String solution(String cryptogram) {
-        decodedCryptogram = new Stack<>();
+        initialize();
+
         for (char c : cryptogram.toCharArray()) {
             decodeToBrown(c);
         }
@@ -17,15 +19,24 @@ public class Problem2 {
         return answer.toString();
     }
 
+    private static void initialize() {
+        decodedCryptogram = new Stack<>();
+        beforeChar = ' ';
+    }
+
     private static void decodeToBrown(char c) {
+        if (beforeChar == c) {
+            return;
+        }
+
         if (decodedCryptogram.empty()) {
             decodedCryptogram.push(c);
             return;
         }
 
-        Character before = decodedCryptogram.peek();
-        if (before == c) {
+        if (decodedCryptogram.peek() == c) {
             decodedCryptogram.pop();
+            beforeChar = c;
             return;
         }
 
