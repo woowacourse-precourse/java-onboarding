@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.List;
-import java.util.TreeSet;
 import java.lang.IllegalArgumentException;
 
 class PageList{
@@ -40,8 +39,6 @@ class PageList{
     }
 }
 class Problem1 {
-
-    private static int answer;
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         try{
             PageList pobiPageList = new PageList(pobi);
@@ -51,14 +48,14 @@ class Problem1 {
             int crongMax = crongPageList.getMaxValueOfAll();
 
             if(pobiMax==crongMax)
-                answer = 0;
-            else if (pobiMax>crongMax)
-                answer = 1;
-            else
-                answer = 2;
+                return 0;
+            if(pobiMax>crongMax)
+                return 1;
+            if(pobiMax<crongMax)
+                return 2;
         }catch(Exception e){
-            answer = -1;
+            return -1;
         }
-        return answer;
+        return -1;
     }
 }
