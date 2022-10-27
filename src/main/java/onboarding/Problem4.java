@@ -9,6 +9,9 @@ package onboarding;
 // 1-2. 문자를 숫자로 변환해보기
 // 1-3. 숫자를 문자로 변환해보기
 // 2. 발견한 규칙((첫문자+끝문자)-해당문자)을 바탕으로 소문자, 대문자, 공백일때의 상황으로 분류해 조건 설정하기
+// 2-1. 문자를 숫자로 변환 후 공식에 대입
+// 2-2. 대입한 결과를 다시 문자로 변환
+// 2-3. 반환한 문자들을 합해서 결과로 반환
 
 public class Problem4 {
     public static String solution(String word) {
@@ -19,15 +22,27 @@ public class Problem4 {
         // a = 97
         // z = 122
 
-//        for (int i = 0; i < word.length(); i++) {
-//
-//            answer += word.charAt(i);
-//        }
+        // A~Z -> (65+90) - char
+        // a~z -> (97+122) - char
+        // " " -> " "
 
-        int testNum = 100;
-        char testChar = (char) testNum;
+        for (int i = 0; i < word.length(); i++) {
+            System.out.println(word.charAt(i));
 
-        System.out.println(testChar);
+            if(word.charAt(i) == ' '){
+                answer += ' ';
+            }
+
+            int asciichar = word.charAt(i);
+
+            if(65 <= asciichar && asciichar <= 90){
+                answer += (char)(155 - asciichar);
+            }else if(97 <= asciichar && asciichar <= 122){
+                answer += (char)(219 - asciichar);
+            }
+        }
+
+        System.out.println(answer);
 
         return answer;
     }
