@@ -13,7 +13,15 @@ public class Problem3 {
      * @return clap
      */
     public static int getClapPerNumber(int number){
-        return 1;
+        String strNumber = Integer.toString(number);
+        int strNumberLength = strNumber.length();
+        int clap = 0;
+        for (int i = 0 ; i < strNumberLength; i ++) {
+            if (Character.getNumericValue(strNumber.charAt(i)) % 3 == 0) {
+                clap += Character.getNumericValue(strNumber.charAt(i)) / 3;
+            }
+        }
+        return clap;
     }
 
     /**
