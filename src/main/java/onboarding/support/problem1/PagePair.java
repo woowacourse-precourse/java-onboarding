@@ -27,6 +27,23 @@ public class PagePair {
         return digitMultiple;
     }
 
+    public boolean isValidPageRange() {
+        return rightPage >= Constants.getMinPage() && rightPage <= Constants.getMaxPage()
+                && leftPage >= Constants.getMinPage() && leftPage <= Constants.getMaxPage();
+    }
+
+    public boolean isOddPage() {
+        return leftPage % 2 == Constants.getOddMod();
+    }
+
+    public boolean isEvenPage() {
+        return rightPage % 2 == Constants.getEvenMod();
+    }
+
+    public boolean checkPagesInterval() {
+        return rightPage - leftPage == Constants.getPageInterval();
+    }
+
     public boolean isNotValid() {
         return !isValid;
     }
