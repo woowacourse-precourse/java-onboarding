@@ -28,6 +28,14 @@ class Problem1 {
             .get();
     }
 
+    private static int multiplyEachDigit(int num) {
+        return Arrays.stream(String.valueOf(num)
+                .split(""))
+            .map(Integer::parseInt)
+            .reduce((n1, n2) -> n1 * n2)
+            .get();
+    }
+
     private static boolean isValidInput(List<Integer> input) {
         int leftPageNum = input.get(0);
         int rightPageNum = input.get(1);
