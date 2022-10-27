@@ -5,6 +5,18 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        try{
+            check(pobi);
+            check(crong);
+        }catch (IllegalArgumentException e){
+            return -1;
+        }
+        int scoreOfPobi = getScore(pobi);
+        int scoreOfCrong = getScore(crong);
+
+        if(scoreOfPobi > scoreOfCrong) answer = 1;
+        else if(scoreOfPobi < scoreOfCrong) answer = 2;
+        else answer = 0;
         return answer;
     }
 
@@ -25,6 +37,29 @@ class Problem1 {
         if(list.get(0) < 3 && list.get(0) > 397)
             throw new IllegalArgumentException("페이지 범위 밖입니다.");
         return true;
+    }
+
+    /**
+     * Integer list를 받아 최고 점수를 반환*/
+    private static int getScore(List<Integer> list){
+        String left = list.get(0).toString();
+        String right = list.get(1).toString();
+        int leftScore = getMaxScore(left);
+        int rightScore = getMaxScore(right);
+
+        return Integer.max(leftScore, rightScore);
+    }
+
+    /**
+     * 각 자리수를 더하기, 곱하기를 해 더 큰 값을 반환 */
+    private static int getMaxScore(String s) {
+        int mulVal = 1;
+        int addVal = 0;
+        for(int i=0; i<s.length(); i++){
+            addVal += s.charAt(i) - '0';
+            mulVal *= s.charAt(i) - '0';
+        }
+        return Integer.max(addVal, mulVal);
     }
 
 }
