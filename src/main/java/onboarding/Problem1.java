@@ -5,8 +5,21 @@ import java.util.List;
 class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        if (isOpenCover(pobi) || isOpenCover(crong)) {
+            return Result.EXCEPTION.number;
+        }
+    }
+
+    private static boolean isOpenCover(List<Integer> openPages) {
+        if (openPages.get(PageDirection.LEFT.index) == 400) {
+            return true;
+        }
+
+        if (openPages.get(PageDirection.RIGHT.index) == 1) {
+            return true;
+        }
+
+        return false;
     }
 
     private enum PageDirection {
