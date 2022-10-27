@@ -5,15 +5,14 @@ import java.util.Stack;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        if(isLengthShort(cryptogram)) return cryptogram;
     }
 
     //문자열 길이가 2 이상인지 체크하는 함수
-    public static boolean isLengthLong(String cryptogram) {
+    public static boolean isLengthShort(String cryptogram) {
         int length = cryptogram.length();
-        if (length < 2) return false;
-        return true;
+        if (length < 2) return true;
+        return false;
     }
 
     //중복 여부를 체크하는 함수
