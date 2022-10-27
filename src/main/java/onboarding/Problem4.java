@@ -25,27 +25,15 @@ public class Problem4 {
     }
 
     private static String changeCharacter(String character) {
-        String alphabetCase = checkAlphabetCase(character);
-
-        if (alphabetCase != null) {
-            character = changeCharacter(character, alphabetCase);
-        }
-
-        return character;
-    }
-
-    private static String checkAlphabetCase(String character) {
-        String alphabetCase = null;
-
-        if (Pattern.matches("[a-z]", character)) {
-            alphabetCase = LOWER;
+        if(Pattern.matches("[a-z]", character)){
+           character = changeCharacter(character,LOWER);
         }
 
         if (Pattern.matches("[A-Z]", character)) {
-            alphabetCase = UPPER;
+            character = changeCharacter(character,UPPER);
         }
 
-        return alphabetCase;
+        return character;
     }
 
     private static String changeCharacter(String character, String alphabetCase) {
@@ -62,7 +50,7 @@ public class Problem4 {
             endAsciiCode = UPPER_ALPHABET_END_ASCII;
         }
 
-        int number = (int) character.charAt(0);
+        int number = character.charAt(0);
         int newNumber = startAsciiCode - (number - endAsciiCode);
         return String.valueOf((char) newNumber);
     }
