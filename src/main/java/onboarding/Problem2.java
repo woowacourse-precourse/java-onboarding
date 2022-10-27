@@ -10,7 +10,15 @@ import java.util.Objects;
 // 3. 1번과 2번을 치환되지 않을때까지 반복
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return  answer;
+        String answer = "";
+        while (true){
+            //인접한 중복 문자 찾고 치환
+            char[] chars = cryptogram.toCharArray();
+            for(int i =0 ; i < cryptogram.length() - 1; i++){
+                if(cryptogram.charAt(i) == cryptogram.charAt(i+1)){
+                    chars[i] = '@'; chars[i+1] = '@';
+                }
+            }
+        }
     }
 }
