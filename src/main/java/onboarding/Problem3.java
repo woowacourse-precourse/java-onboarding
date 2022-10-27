@@ -16,9 +16,6 @@ public class Problem3 {
         return (value-1) / 3;
     }
 
-    private static int getMaxClapByDigit(int i) {
-        return MAX_CLAP_BY_DIGIT[i];
-    }
     private static String zeroPadding(int number) {
         return String.format("%05d", number);
     }
