@@ -36,4 +36,13 @@ public class Problem2 {
         }
         return false;
     }
+
+    public static boolean hasReduplication(String str) {
+        for (int index = 0; index < str.length() - 1; index++) {
+            if (str.charAt(index) == str.charAt(index + 1)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
