@@ -36,10 +36,9 @@ public class Problem6 {
 
         // 두글자:[이메일]를 순회하며 이메일의 개수가 2개 이상인 것을 찾음
         HashSet<String> duplicatedEmails = new HashSet<>();
-        emailsByDoubleCharMap.forEach((doubleChar, emails) -> {
-            if (emails.size() >= 2)
-                duplicatedEmails.addAll(emails);
-        });
+        emailsByDoubleCharMap.values().stream()
+                .filter(emails -> emails.size() >= 2)
+                .forEach(emails -> duplicatedEmails.addAll(emails));
 
         return duplicatedEmails;
     }
