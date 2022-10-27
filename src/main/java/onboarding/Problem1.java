@@ -27,7 +27,19 @@ class Problem1 {
         pobiScore = Pages.makeScore(pobiPages);
         crongScore = Pages.makeScore(crongPages);
 
+        answer = findWinnerAndMakeAnswer(pobiScore, crongScore);
+
         return answer;
+    }
+
+    private static int findWinnerAndMakeAnswer(int pobiScore, int crongScore) {
+        if (pobiScore > crongScore) {
+            return POBI_WIN;
+        } else if (pobiScore < crongScore) {
+            return CRONG_WIN;
+        }
+
+        return DRAW;
     }
 
     static class Pages {
