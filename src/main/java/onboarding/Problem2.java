@@ -3,6 +3,11 @@ package onboarding;
 import java.util.regex.Pattern;
 
 public class Problem2 {
+    static final String EXCEPTION = "[ERROR]";
+    static final String REGEX = "[a-z]*$";
+    static final int LENGTH_UPPERBOUND = 1000;
+    static final int LENGTH_LOWERBOUND = 1;
+
     public static String solution(String cryptogram) {
         if (validationCheck(cryptogram)) {
             while (needToCompress(cryptogram)) {
@@ -10,13 +15,13 @@ public class Problem2 {
             }
             return cryptogram;
         }
-        return "[ERROR]";
+        return EXCEPTION;
     }
 
     public static boolean validationCheck(String cryptogram) {
-        if (cryptogram.length() > 1000 || cryptogram.length() < 1) {
+        if (cryptogram.length() > LENGTH_UPPERBOUND || cryptogram.length() < LENGTH_LOWERBOUND) {
             return false;
-        } else if (!Pattern.matches("[a-z]*$", cryptogram)) { // 정규식 패턴 매칭
+        } else if (!Pattern.matches(REGEX, cryptogram)) {
             return false;
         }
         return true;
@@ -50,13 +55,3 @@ public class Problem2 {
         return newCryptogram;
     }
 }
-
-
-
-/*
-입력 조건에 맞지 않는 경우 예외처리 기능
-길이가 1 이상 1000 이하인지 체크
-알파벳 소문자로만 이루어져 있는지 체크
-문자열을 압축하는 기능
-더 이상 압축할 문자열이 있는지 체크하는 기능
- */
