@@ -26,7 +26,7 @@ class Problem4Test {
     @Test
     @DisplayName("[Problem][characterAllConversion] 문자 변환 테스트")
     public void characterAllConversionTest() {
-        assertEquals("",problem4.characterAllConversion("I love you"));
+        assertEquals("R olev blf",problem4.characterAllConversion("I love you"));
     }
 
 }
