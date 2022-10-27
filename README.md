@@ -60,3 +60,21 @@ BUILD SUCCESSFUL in 0s
 
 - 미션은 [java-onboarding](https://github.com/woowacourse-precourse/java-onboarding) 저장소를 Fork & Clone해 시작한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+---
+
+## 기능 목록
+- Problem 1
+  - [x] 예외사항 처리
+  - [x] pobi와 crong의 점수 구하기
+  - [x] 점수를 비교해 승자를 결정한다
+- Problem 2
+  - [x] 중복되는 문자를 제거한다
+  - [x] 중복되는 문자를 제외한 나머지 문자를 반환한다
+- Problem 3
+  - [x] 주어진 숫자까지 박수의 수를 더하기
+  - [x] 파라미터로 넘어온 숫자에 몇 번 박수를 쳐야하는지 구하기
+  - [x] 파라미터로 넘어온 숫자는 박수를 쳐야하는 수인지 검사
+- Problem 4
+  - [ ] 주어진 문자열의 문자마다 반대로 변환
+  - [ ] 변환된 문자열 반환
