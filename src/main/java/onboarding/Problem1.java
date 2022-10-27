@@ -9,6 +9,9 @@ class Problem1 {
         if (!Exception(pobi.get(0), pobi.get(1)) || !Exception(crong.get(0), crong.get(1))) {
             answer = -1;
         }
+
+        int pobiscore = Math.max(Score(pobi.get(0)), Score(pobi.get(1)));
+        int crongscore = Math.max(Score(crong.get(0)), Score(crong.get(1)));
         return answer;
     }
 
@@ -20,5 +23,16 @@ class Problem1 {
         }else{
             return true;
         }
+    }
+    public static int Score(int idx){
+        int sum = 0;
+        int mul = 1;
+
+        while(idx!=0){
+            sum += idx%10;
+            mul *= idx%10;
+            idx /= 10;
+        }
+        return Math.max(sum, mul);
     }
 }
