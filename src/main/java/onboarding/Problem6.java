@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Problem6 {
 
@@ -26,6 +23,20 @@ public class Problem6 {
         return singleList;
     }
 
+    //중복되는 문자 list 반환
+    private static List<String> findRepeatedWords(List<String> allTwoChars) {
+
+        List<String> repeatedWords = new ArrayList<>();
+
+        for (String word : allTwoChars) {
+            if (2 <= Collections.frequency(allTwoChars, word)) {
+                repeatedWords.add(word);
+            }
+        }
+
+        return repeatedWords;
+    }
+
     public static List<String> solution(List<List<String>> forms) {
 
         List<String> answer = List.of("answer");
@@ -35,7 +46,7 @@ public class Problem6 {
 
         String nickname;
 
-        //중복을 제거해 각 리스트에 담기
+        //닉네임을 두 글자씩 나눠 중복을 제거한 후 각 리스트에 담기
         for (int i = 0; i < forms.size(); i++) {
             nickname = forms.get(i).get(1);
 
