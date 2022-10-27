@@ -51,6 +51,13 @@ class Problem1 {
         return ret;
     }
 
+    public static boolean isRange(int page) {
+        if (page < 1 || 400 < page) {
+            return false;
+        }
+        return true;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         final int EXCETION = -1;
 
@@ -59,6 +66,20 @@ class Problem1 {
         int pobiRightPage = pobi.get(1);
         int crongLeftPage = crong.get(0);
         int crongRightPage = crong.get(1);
+
+        // 페이지가 범위 안에 없을 경우 예외사항
+        if (!isRange(pobiLeftPage)) {
+            return EXCETION;
+        }
+        if (!isRange(pobiRightPage)) {
+            return EXCETION;
+        }
+        if (!isRange(crongLeftPage)) {
+            return EXCETION;
+        }
+        if (!isRange(crongRightPage)) {
+            return EXCETION;
+        }
 
         // 좌, 우 페이지가 아닐 경우 예외사항
         if (pobiRightPage - pobiLeftPage != 1) {
