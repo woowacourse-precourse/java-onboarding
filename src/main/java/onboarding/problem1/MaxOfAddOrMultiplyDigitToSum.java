@@ -3,8 +3,6 @@ package onboarding.problem1;
 import java.util.List;
 
 public class MaxOfAddOrMultiplyDigitToSum {
-	private MaxOfAddOrMultiplyDigitToSum() {
-	}
 
 	public static int maxOf(List<Integer> list) {
 		int answer = 0;
