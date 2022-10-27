@@ -12,6 +12,9 @@ class Problem1 {
         if (!isPageRange(pobi.get(LEFT), pobi.get(RIGHT)) || !isPageRange(crong.get(LEFT), crong.get(RIGHT))) {
             return -1;
         }
+        int maxValuePobi = getMaxValue(pobi.get(LEFT), pobi.get(RIGHT));
+        int maxValueCrong = getMaxValue(crong.get(LEFT), crong.get(RIGHT));
+
         return answer;
     }
 
