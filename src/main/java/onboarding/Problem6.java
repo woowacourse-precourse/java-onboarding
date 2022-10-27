@@ -50,8 +50,7 @@ public class Problem6 {
     }
 
     private static void checkPartOfNickname(String part, String email) {
-        Set<String> keySet = nicknameMap.keySet();
-        if(keySet.contains(part)) {
+        if(hasDuplicatedNicknameInKeySet(part)) {
             Set<String> duplicatedEmailSet = nicknameMap.get(part);
             duplicatedEmailSet.add(email);
             addEmailSet(duplicatedEmailSet);
