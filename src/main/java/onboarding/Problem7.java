@@ -2,8 +2,6 @@ package onboarding;
 
 import onboarding.problem7.domain.Users;
 
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 
 public class Problem7 {
