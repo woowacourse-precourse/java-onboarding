@@ -37,6 +37,6 @@
 
 |     | 번호  | 기능 코드                       | Depth1   | Depth2 | Depth3 | method                                          | 설명             |
 |-----|-----|-----------------------------|----------|--------|--------|-------------------------------------------------|----------------|
-| X   | 1   | onBoarding-back-Problem5-01 | solution |        |        | public static List<Integer> solution(int money) | 화폐 종류별 갯수을 구한다 |
+| O   | 1   | onBoarding-back-Problem5-01 | solution |        |        | public static List<Integer> solution(int money) | 화폐 종류별 갯수을 구한다 |
 
 
