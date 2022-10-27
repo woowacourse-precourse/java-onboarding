@@ -3,12 +3,44 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+    static final int POVIWIN = 1;
+    static final int CRONGWIN = 2;
+    static final int DRAW = 0;
+    static final int EXCEPTION = -1;
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int pobiScore = pageScoreCompare(pobi);
-        int crongScore = pageScoreCompare(crong);
+        int pobiScore;
+        int crongScore;
 
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        if (noException(pobi) && noException(crong)) {
+            pobiScore = pageScoreCompare(pobi);
+            crongScore = pageScoreCompare(crong);
+            return compareScore(pobiScore, crongScore);
+        }
+
+        return EXCEPTION;
+    }
+
+    private static int compareScore(int pobiScore, int crongScore) {
+        if (pobiScore > crongScore) {
+            return POVIWIN;
+        }
+
+        if (crongScore > pobiScore) {
+            return CRONGWIN;
+        }
+
+        return DRAW;
+    }
+
+    private static boolean noException(List<Integer> person) {
+        int leftPageNum = person.get(0);
+        int rightPageNum = person.get(1);
+
+        if (leftPageNum + 1 != rightPageNum) return false;
+        if (rightPageNum == 1 || leftPageNum == 400) return false;
+        if (leftPageNum % 2 == 0) return false;
+        if (rightPageNum % 2 == 1) return false;
+        return true;
     }
 
     private static int pageScoreCompare(List<Integer> person) {
