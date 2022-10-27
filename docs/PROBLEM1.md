@@ -51,7 +51,7 @@
     - [x] 왼쪽/오른쪽 페이지의 각 자리 숫자를 모두 더한다.
     - [x] 왼쪽/오른쪽 페이지의 각 자리 숫자를 모두 곱한다.
     - [x] 둘 중 더 큰 점수를 최종 점수로 정한다.
-- [ ] 포비와 크롱의 최종 점수를 계산해 값을 리턴한다.
+- [x] 포비와 크롱의 최종 점수를 계산해 값을 리턴한다.
 
 ## 기능 목록(세부)
 
@@ -65,4 +65,4 @@
     - [x] pageScoreAdd(int page) 메서드를 통해 페이지의 각 자리 숫자를 모두 더한 점수를 계산합니다.
     - [x] pageScoreMult(int page) 메서드를 통해 페이지의 각 자리 숫자를 모두 곱한 점수를 계산합니다.
     - [x] findGreaterScore(int scoreAdd, int scoreMult) 메서드를 통해 둘 중 더 큰 점수를 최종 점수를 결정합니다.
-- [ ] winnerCheck(int pobiScore, int crongScore) 메서드를 통해 최종 결과를 리턴합니다.
+- [x] winnerCheck(int pobiScore, int crongScore) 메서드를 통해 최종 결과를 리턴합니다.

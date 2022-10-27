@@ -5,13 +5,12 @@ import java.util.List;
 class Problem1 {
 
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
-		int answer = Integer.MAX_VALUE;
 		if (isInvalid(pobi, crong)) {
 			return -1;
 		}
 		int pobiScore = calculateScore(pobi);
 		int crongScore = calculateScore(crong);
-		return answer;
+		return winnerCheck(pobiScore, crongScore);
 	}
 
 	public static boolean isInvalid(List<Integer> pobi, List<Integer> crong) {
@@ -81,6 +80,12 @@ class Problem1 {
 	}
 
 	public static int winnerCheck(int pobiScore, int crongScore) {
-		return 2;
+		if (pobiScore > crongScore) {
+			return 1;
+		}
+		if (pobiScore < crongScore) {
+			return 2;
+		}
+		return 0;
 	}
 }
