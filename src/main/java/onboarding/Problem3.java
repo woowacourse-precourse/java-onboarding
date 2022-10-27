@@ -14,11 +14,20 @@ public class Problem3 {
         return cnt;
     }
 
+    public static int getAnswer(int n) {
+        int cnt = 0;
+
+        for(int i = 1; i <= n; i++) {
+            cnt += chckClap(i);
+        }
+
+        return cnt;
+    }
 
     public static int solution(int number) {
         int answer = 0;
 
-
+        answer = getAnswer(number);
 
         return answer;
     }
