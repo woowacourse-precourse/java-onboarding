@@ -4,11 +4,20 @@ import java.util.Stack;
 
 public class Problem2 {
     public static Stack<Character> st= new Stack<>();
-//    public static StringBuilder answer;
+    public static StringBuilder answer;
 
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        answer = new StringBuilder();
+
+        for (char letter : cryptogram.toCharArray()) {
+            deleteOrPushLetter(letter);
+        }
+
+        for (Character character : st) {
+            answer.append(character);
+        }
+        st.clear();
+        return answer.toString();
     }
 
     public static boolean checkNotDuplicate(char letter) {
