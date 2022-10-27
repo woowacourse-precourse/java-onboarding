@@ -2,7 +2,9 @@ package onboarding;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -47,5 +49,17 @@ public class Problem7 {
 
             scores.put(visitor, scores.getOrDefault(visitor, 0) + 1);
         }
+    }
+
+    private static List<Entry<String, Integer>> sortMapByValue(Map<String, Integer> map){
+        List<Entry<String, Integer>> entry = new ArrayList<>(map.entrySet());
+
+        entry.sort((o1, o2) -> {
+            if (o1.getValue().equals(o2.getValue()))
+                return o1.getKey().compareTo(o2.getKey());
+            return -o1.getValue().compareTo(o2.getValue());
+        });
+
+        return entry;
     }
 }
