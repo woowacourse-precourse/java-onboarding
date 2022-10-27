@@ -50,6 +50,12 @@ class frog{
 public class Problem4 {
     public static String solution(String word) {
         String answer="";
+        if(!validateString.isvalidLength(word)){return constant.invalidArgument;}
+        List<String> list = Arrays.asList(word.split(""));
+        word = list.stream()
+                .map(i -> frog.changeWord(i))
+                .collect(Collectors.joining());
+        answer = word;
         return answer;
     }
 }
