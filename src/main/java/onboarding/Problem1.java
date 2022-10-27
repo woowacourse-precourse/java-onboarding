@@ -44,7 +44,7 @@ class Problem1 {
             return false;
         }
 
-        if (leftPage % 2 == 0 || rightPage % 2 > 0) {
+        if (leftPage % 2 == 0 || rightPage % 2 != 0) {
             return false;
         }
 
