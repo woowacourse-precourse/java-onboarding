@@ -47,7 +47,7 @@
 - [x] 문자열 변환
 
 
-- [ ] solution method 구현
+- [x] solution method 구현
 
 ___
 
