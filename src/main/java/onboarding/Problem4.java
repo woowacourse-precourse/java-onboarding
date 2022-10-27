@@ -15,7 +15,7 @@ public class Problem4 {
         for(int i = 0; i < A.length(); i++) {
             // 알파벳인지 아닌지 체크
             char ch = word.charAt(i);
-            boolean bool = (ch >= 'a' && ch <='z') || (ch >= 'A' && ch >= 'Z');
+            boolean bool = (ch >= 'a' && ch <='z') || (ch >= 'A' && ch <= 'Z');
             // 알파벳 변환만 구현하면 됨
             if(bool) {
                 
