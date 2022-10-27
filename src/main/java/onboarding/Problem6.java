@@ -47,6 +47,12 @@ public class Problem6 {
             return checkCrewNums();
         }
 
+        private List<String> getConfusedNickname(Set<String> alarm) {
+            List<String> result = new ArrayList<>(alarm);
+            Collections.sort(result);
+            return result;
+        }
+
         private boolean checkValid(String email, String nickname) {
             return checkEmail(email) && checkNickName(nickname);
         }
