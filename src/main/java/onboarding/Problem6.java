@@ -21,19 +21,23 @@ public class Problem6 {
         private static void processDuplicateCrewNickname(Crew crew) {
             String nickname = crew.getNickname();
 
-            if (!validateNickname(nickname)) {
+            if (validateNickname(nickname)) {
                 return;
             }
             for (int i = 1; i < nickname.length(); i++) {
                 String partOfNickname = calculatePartOfNickname(nickname, i);
 
                 if (partOfNicknameMap.containsKey(partOfNickname)) {
-                    duplicateNicknameCrewSet.add(partOfNicknameMap.get(partOfNickname));
-                    duplicateNicknameCrewSet.add(crew.getEmail());
+                    addDuplicateCrew(crew, partOfNicknameMap.get(partOfNickname));
                     continue;
                 }
                 partOfNicknameMap.put(partOfNickname, crew.getEmail());
             }
+        }
+
+        private static void addDuplicateCrew(Crew crew, String email) {
+            duplicateNicknameCrewSet.add(email);
+            duplicateNicknameCrewSet.add(crew.getEmail());
         }
 
         private static boolean validateNickname(String nickname) {
