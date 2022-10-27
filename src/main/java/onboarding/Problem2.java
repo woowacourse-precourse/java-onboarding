@@ -25,6 +25,9 @@ public class Problem2 {
             if (nowChar == deletedChar) {
                 continue;
             }
+
+            stack.add(nowChar);
+            deletedChar = ' ';
         }
         return answer;
     }
