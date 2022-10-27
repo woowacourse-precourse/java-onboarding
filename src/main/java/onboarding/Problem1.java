@@ -9,16 +9,24 @@ class Problem1 {
      * try/catch문으로 감싸 IllegalArgumentException을 받으면 -1을 리턴
      */
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = 3;
 
         try {
             Vericication verifyPobi = new Vericication(pobi);
             Vericication verifyCrong = new Vericication(crong);
 
+            int maxPobiValue = verifyPobi.getMaxNum();
+            int maxCrongValue = verifyCrong.getMaxNum();
+
+            if(maxPobiValue > maxCrongValue)
+                return 1;
+
+            else if(maxPobiValue < maxCrongValue)
+                return 2;
+
         } catch (IllegalArgumentException e) {
-            answer = -1;
-            return answer;
+            return -1;
         }
+        return 0;
     }
 }
 
