@@ -8,22 +8,22 @@ package onboarding;
  */
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
+        StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
 
             if (word.charAt(i) == 32) {
-                answer += c;
+                sb.append(c);
             }
 
             if (c >= 64 && c <= 90) {
-                answer += (char) ('Z' - c + 65);
+                sb.append((char) ('Z' - c + 65));
             } else if (c >= 97 && c <= 122) {
-                answer += (char) ('z' - c + 97);
+                sb.append((char) ('z' - c + 97));
             }
         }
 
-        return answer;
+        return sb.toString();
     }
 }
