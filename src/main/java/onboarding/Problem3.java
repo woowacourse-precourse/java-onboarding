@@ -10,19 +10,20 @@ public class Problem3 {
     static int answer;
     static List<Character> threeSixNine = List.of('3','6','9');
     public static int solution(int number) {
-        answer = countClap(number);
+        int clap = 0;
+        answer = countClap(number, clap);
         return answer;
     }
 
-    public static int countClap(int number){
+    public static int countClap(int number, int clap){
         for(int i=1;i<=number;i++){
             String str = String.valueOf(i);
             for(int j=0;j<str.length();j++){
                 if(threeSixNine.contains(str.charAt(j))){
-                    answer++;
+                    clap++;
                 }
             }
         }
-        return answer;
+        return clap;
     }
 }
