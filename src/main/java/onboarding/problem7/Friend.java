@@ -17,8 +17,8 @@ public class Friend {
         final String name = form.get(0);
         final String friendName = form.get(1);
 
-        NameUtils.validateName(name);
-        NameUtils.validateName(friendName);
+        NameValidator.validateName(name);
+        NameValidator.validateName(friendName);
 
         this.name = name;
         this.friendName = friendName;

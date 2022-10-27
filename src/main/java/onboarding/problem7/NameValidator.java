@@ -1,6 +1,6 @@
 package onboarding.problem7;
 
-public class NameUtils {
+public class NameValidator {
 
     public static void validateName(String name) {
         validateNameLength(name);
