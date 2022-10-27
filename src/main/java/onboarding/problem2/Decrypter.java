@@ -43,6 +43,9 @@ public class Decrypter {
         while(repeatedChar == cryptogram.charAt(index) ){
             num += 1;
             index += 1;
+            if(index == cryptogram.length()) {
+                break;
+            }
         }
         return num;
     }
