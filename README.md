@@ -60,3 +60,22 @@ BUILD SUCCESSFUL in 0s
 
 - 미션은 [java-onboarding](https://github.com/woowacourse-precourse/java-onboarding) 저장소를 Fork & Clone해 시작한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+---
+
+# 문제1
+페이지 번호 게임의 규칙에 따라 승자를 결정한다.
+
+## 구현 기능 목록
+
+### ✅ 책을 펼쳐 페이지 숫자 확인
++ [ ] 페이지 번호를 입력받는다.
++ [ ] [예외] 왼쪽이 짝수이거나 오른쪽이 홀수인 경우
++ [ ] [예외] 연속되지 않은 경우
++ [ ] [예외] 1과 400쪽이 포함된 경우
++ [ ] [예외] 1미만, 400초과한 수가 있는 경우
+
+### ✅ 승리 조건 구현
++ [ ] 각 자리 숫자를 더하거나 곱한 값을 비교
++ [ ] 각자의 점수 결정
++ [ ] 서로의 계산된 점수를 비교해 승자를 결정
