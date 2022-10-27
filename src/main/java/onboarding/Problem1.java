@@ -18,7 +18,6 @@ class Problem1 {
             } else if (pobi.get(0) < 1 || pobi.get(0) > 400 || crong.get(0) < 1 || crong.get(0) > 400) {
                 throw new IllegalStateException("페이지 범위는 0~400입니다.");
             } else {
-
                 int pobi_result = calMaximum(pobi);
                 int crong_result = calMaximum(crong);
 
@@ -31,25 +30,19 @@ class Problem1 {
                 } else {
                     answer = -1;
                 }
-
-                System.out.println(pobi_result);
-                System.out.println(crong_result);
-
             }
 
         } catch (IllegalStateException e) {
             answer = -1;
         }
-        System.out.println(answer);
-        System.out.println("pobi crong result");
-        System.out.println(pobi + " " + crong + " " + answer);
+        System.out.println("  pobi     crong     result   ");
+        System.out.println(pobi + " " + crong + "     " + answer);
         return answer;
     }
 
     public static int calMaximum(List<Integer> friend) {
         int result = 0;
         for (int i = 0; i<2; i++) {
-            System.out.println(friend.get(i));
             String numStr = Integer.toString(friend.get(i));
             int[] numList = new int[numStr.length()];
             int sum = 0;
@@ -62,7 +55,6 @@ class Problem1 {
                     result = Math.max(mul, sum);
                 }
             }
-
         }
         return result;
     }
