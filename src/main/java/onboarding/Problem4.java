@@ -21,6 +21,9 @@ public class Problem4 {
         }
         return (HashMap<Character, Character>) map;
     }
+    public static char[] wordToChar(String word){
+        return word.toCharArray();
+    }
     private static Character wordChange(Character wordCharacter){
         return SPELLING_CONVERT.get(wordCharacter);
     }
@@ -29,5 +32,9 @@ public class Problem4 {
             reverseWord += wordChange(wordCharacter);
         }
         return reverseWord;
+    }
+    private static String wordConvert(String word){
+        String reverseWord = "";
+        return wordLoop(wordToChar(word),reverseWord);
     }
 }
