@@ -1,51 +1,26 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
-        return answer;
+        return convertMoney(money);
     }
 
-    private static boolean canConvertToFiftyThousand(int money) {
-        if (money / 50000 != 0) return true;
-        return false;
-    }
+    private static List<Integer> convertMoney(int money) {
+        Integer[] moneyList = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
+        Integer[] moneyCnt = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 
-    private static boolean canConvertToTenThousand(int money) {
-        if (money / 10000 != 0) return true;
-        return false;
-    }
+        for (int i = 0; i < moneyList.length; i++) {
+            if (money / moneyList[i] == 0) continue;
+            moneyCnt[i] += money / moneyList[i];
+            money %= moneyList[i];
+        }
 
-    private static boolean canConvertToFiveThousand(int money) {
-        if (money / 5000 != 0) return true;
-        return false;
-    }
-
-    private static boolean canConvertToOneThousand(int money) {
-        if (money / 1000 != 0) return true;
-        return false;
-    }
-
-    private static boolean canConvertToFiveHundred(int money) {
-        if (money / 500 != 0) return true;
-        return false;
-    }
-
-    private static boolean canConvertToOneHundred(int money) {
-        if (money / 100 != 0) return true;
-        return false;
-    }
-
-    private static boolean canConvertToFifty(int money) {
-        if (money / 50 != 0) return true;
-        return false;
-    }
-
-    private static boolean canConvertToTen(int money) {
-        if (money / 10 != 0) return true;
-        return false;
+        List<Integer> ret = new ArrayList<>(Arrays.asList(moneyCnt));
+        return ret;
     }
 }
