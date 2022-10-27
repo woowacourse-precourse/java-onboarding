@@ -24,6 +24,13 @@ public class Problem6 {
         return false;
     }
 
+    private static Set<String> getNameToken(String name) {
+        Set<String> nameToken = new HashSet<>();
+        for (int i = 0; i < name.length() - 1; i ++) {
+            nameToken.add(name.substring(i, i + 2));
+        }
+        return nameToken;
+    }
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
