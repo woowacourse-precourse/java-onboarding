@@ -9,7 +9,7 @@ class Problem1 {
         int result = 1;
 
         while(page > 0) {
-            result *= page & 10;
+            result *= page % 10;
             page /= 10;
         }
 
@@ -43,6 +43,8 @@ class Problem1 {
 
         return Math.max(leftRes, rightRes);
     }
+
+
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
