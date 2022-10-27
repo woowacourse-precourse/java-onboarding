@@ -17,21 +17,22 @@ public class Problem2 {
 		return answer;
 	}
 
-	public static String removeDuplicateCharacter(String str){
+	private static String removeDuplicateCharacter(String str){
 		duplicateFlag=false;
 		char[] charArray = str.toCharArray();
-		String result = "";
+		StringBuilder resultBuilder = new StringBuilder();
 		char preChar = '\0';
 
 		for (char ch : charArray) {
 			if(ch != preChar)
-				result += ch;
+				resultBuilder.append(ch);
 			else {
 				duplicateFlag = true;
-				result=result.substring(0,result.length()-1);
+				resultBuilder.setLength(resultBuilder.length()-1);
 			}
 			preChar=ch;
 		}
-		return result;
+
+		return resultBuilder.toString();
 	}
 }

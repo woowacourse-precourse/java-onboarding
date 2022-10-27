@@ -5,7 +5,7 @@ import java.util.HashMap;
 import onboarding.validatechecker.Problem4ValidateChecker;
 
 public class Problem4 {
-	private static HashMap<Character,Character> frogDic = new HashMap<>();
+	private static final HashMap<Character,Character> frogDic = new HashMap<>();
 	private static final char LOWER_FIRST_CHAR='a';
 	private static final char LOWER_MIDDLE_CHAR='m';
 	private static final char LOWER_END_CHAR='z';
@@ -21,15 +21,15 @@ public class Problem4 {
 	}
 
 	private static String translateWord(String word) {
-		String answer = "";
-		for (char ch : word.toCharArray()) {
-			if(ch == SPACE){
-				answer+=SPACE;
+		StringBuilder answerBuilder = new StringBuilder();
+		for (char key : word.toCharArray()) {
+			if(key == SPACE){
+				answerBuilder.append(SPACE);
 				continue;
 			}
-			answer+=frogDic.get(ch);
+			answerBuilder.append(frogDic.get(key));
 		}
-		return answer;
+		return answerBuilder.toString();
 	}
 
 	private static void initFrogDic(){
