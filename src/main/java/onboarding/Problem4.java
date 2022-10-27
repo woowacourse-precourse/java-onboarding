@@ -14,6 +14,11 @@ public class Problem4 {
         return c;
     }
 
+    public static char changeLower(char c) {
+        c = (char)(97 + 122 - (int)c);
+        return c;
+    }
+
     public static String solution(String word) {
         String answer = "";
         char c;
@@ -24,7 +29,12 @@ public class Problem4 {
                 c = changeUpper(c);
                 answer += c;
             }
+            if ((int)c > 91) {
+                c = changeLower(c);
+                answer += c;
+            }
         }
+
         return answer;
     }
 }
