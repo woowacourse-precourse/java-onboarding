@@ -1,6 +1,5 @@
 package onboarding.problem4.domain;
 
-import onboarding.problem4.domain.Sentence;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

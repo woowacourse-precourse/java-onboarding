@@ -1,7 +1,5 @@
 package onboarding.problem7.domain;
 
-import java.util.Set;
-
 public class User implements Comparable<User> {
     private final UserBasicInformation userBasicInformation;
     private final Friends friends;

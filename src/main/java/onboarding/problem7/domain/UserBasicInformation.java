@@ -13,7 +13,7 @@ public class UserBasicInformation {
         if (score.compareTo(otherUserBasicInformation.score) == 0) {
             return userName.compareTo(otherUserBasicInformation.userName);
         }
-    
+        
         return otherUserBasicInformation.score.compareTo(score);
     }
     
