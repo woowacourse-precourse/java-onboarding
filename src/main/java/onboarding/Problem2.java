@@ -11,6 +11,37 @@ public class Problem2 {
         4. for loop through each index of the string and add to the string from 3. if it is not a repeating letter
         5. loop again with the new string if the string is different from the last string otherwise return the string
          */
-        return "";
+        boolean checkChange = true;
+        boolean isDuplicate;
+        StringBuilder dupRemoved = new StringBuilder();
+        String result = cryptogram;
+        while (checkChange) {
+            if (result.length() == 0) {
+                break;
+            }
+            checkChange = false;
+            isDuplicate = false;
+            dupRemoved.setLength(0);
+            for (int i = 0; i < result.length()-1; i++) {
+                if (isDuplicate) {
+                    if (result.charAt(i+1) != result.charAt(i)) {
+                        isDuplicate = false;
+                    }
+                    continue;
+                }
+                if (result.charAt(i) != result.charAt(i+1)) {
+                    dupRemoved.append(result.charAt(i));
+                } else {
+                    isDuplicate = true;
+                    checkChange = true;
+                }
+            }
+            //last element remaining
+            if (!isDuplicate) {
+                dupRemoved.append(result.charAt(result.length()-1));
+            }
+            result = dupRemoved.toString();
+        }
+        return result;
     }
 }
