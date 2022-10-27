@@ -18,4 +18,9 @@ class Problem1 {
     public static int addEachDigits(int[] digits) {
         return Arrays.stream(digits).sum();
     }
+
+    public static int multiplyEachDigits(int[] digits) {
+        return Arrays.stream(digits)
+            .reduce(1, Math::multiplyExact);
+    }
 }
