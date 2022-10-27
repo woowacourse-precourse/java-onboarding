@@ -15,4 +15,10 @@ class Problem3Test {
         assertEquals(6,problem3.getClapPerNumber(369));
     }
 
+    @Test
+    @DisplayName("[Problem3][getApplause]모든 박수 구하기 테스트")
+    public void getApplauseTest() {
+        assertEquals(4,problem3.getApplause(13));
+    }
+
 }
