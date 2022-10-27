@@ -5,7 +5,7 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         boolean[] isDeleted = new boolean[cryptogram.length()];
         boolean isChanged = true;
-        StringBuilder sb = new StringBuilder(cryptogram);
+        StringBuilder stringBuilder = new StringBuilder(cryptogram);
         while (isChanged) {
             isChanged = false;
             if (isShort(cryptogram)) {
@@ -22,13 +22,13 @@ public class Problem2 {
                 previous = current;
             }
             if (isChanged) {
-                sb.delete(0, sb.length());
+                stringBuilder.delete(0, stringBuilder.length());
                 for (int i = 0; i < cryptogram.length(); i++) {
                     if (!isDeleted[i]) {
-                        sb.append(cryptogram.charAt(i));
+                        stringBuilder.append(cryptogram.charAt(i));
                     }
                 }
-                cryptogram = sb.toString();
+                cryptogram = stringBuilder.toString();
                 isDeleted = new boolean[cryptogram.length()];
             }
         }
