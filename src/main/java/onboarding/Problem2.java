@@ -9,15 +9,11 @@ public class Problem2 {
     private final Stack<Character> message = new Stack<>();
 
     public void decrypt(Character c) {
-      try {
-        if (this.isSameCharacter(c)) {
-          message.pop();
-          return;
-        }
-        message.push(c);
-      } catch (EmptyStackException e) {
-        message.push(c);
+      if (!message.empty() && this.isSameCharacter(c)) {
+        message.pop();
+        return;
       }
+      message.push(c);
     }
 
     public String getMessage() {
@@ -33,7 +29,7 @@ public class Problem2 {
 
   public static String solution(String cryptogram) {
     Decryption decryption = new Decryption();
-    for(char code: cryptogram.toCharArray()) {
+    for (char code : cryptogram.toCharArray()) {
       decryption.decrypt(code);
     }
     return decryption.getMessage();
