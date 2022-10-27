@@ -11,7 +11,7 @@ class Problem1 {
             Player pobi = new Player(asPages(pobiPageNumbers));
             Player crong = new Player(asPages(crongPageNumbers));
 
-            return pobi.battle(crong).getCode();
+            return pobi.battleWith(crong).getCode();
         } catch (RuntimeException e) {
             return -1;
         }
@@ -64,7 +64,7 @@ class Problem1 {
                 throw new IllegalArgumentException(ERR_PAGES_ORDER);
         }
 
-        public BattleResult battle(Player other) {
+        public BattleResult battleWith(Player other) {
             int myScore = getScore(this.pages);
             int otherScore = getScore(other.pages);
 
