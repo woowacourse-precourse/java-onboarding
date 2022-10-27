@@ -20,4 +20,11 @@ class AlphabetController{
     private static boolean isLowerAlpha(char alpha){
         return ((int)alpha >= LOWER_START_INDEX && (int)alpha <= LOWER_END_INDEX);
     }
+
+    private static char convertUpperAlpha(char upperAlpha){
+        int index = (int)upperAlpha - UPPER_START_INDEX;
+
+        return (char)(UPPER_END_INDEX- index);
+    }
+
 }
