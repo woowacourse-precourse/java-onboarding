@@ -15,11 +15,11 @@ public class Problem2 {
                 cryptogram = cryptogram.replaceAll(regex, "");
             }
 
-            if (tmp != cryptogram) {    // 무언가 삭제 경우
+            if (tmp != cryptogram) {    // 중복을 삭제한 경우
                 tmp = cryptogram;
-            } else {                    // 아무것도 삭제하지 않은 경우
-                flag = false;
+            } else {                    // 중복이 없는 경우
                 answer = cryptogram;
+                flag = false;
             }
         }
 
