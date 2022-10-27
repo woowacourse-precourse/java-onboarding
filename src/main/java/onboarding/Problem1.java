@@ -18,10 +18,9 @@ class Problem1 {
         int pobiScore = Math.max(getBigNumberByPage(pobiLeft), getBigNumberByPage(pobiRight));
         int crongScore = Math.max(getBigNumberByPage(crongLeft), getBigNumberByPage(crongRight));
 
-        System.out.println(pobiScore);
-        System.out.println(crongScore);
-
-        return 0;
+        if (pobiScore > crongScore) return 1;
+        else if (pobiScore < crongScore) return 2;
+        else return 0;
     }
 
     public static int getBigNumberByPage(int page) {
