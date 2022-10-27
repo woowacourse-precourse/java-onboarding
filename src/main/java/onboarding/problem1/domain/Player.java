@@ -6,6 +6,8 @@ import java.util.NoSuchElementException;
 
 public class Player {
     private static final String NOT_FOUND_PAGE_EXCEPTION_MESSAGE = "페이지를 찾지 못했습니다.";
+    private static final int RESULT_OF_EXCEPTION = -1;
+    private static final int RESULT_OF_RIGHT_PLAYER_WIN = 2;
     
     private final List<Page> pages;
     
@@ -24,13 +26,17 @@ public class Player {
     public int compareTo(final Player rightPlayer) {
         final int resultOfCompare = Integer.compare(getMaxNumber(), rightPlayer.getMaxNumber());
         if (isNotCorrectPages(rightPlayer)) {
-            return -1;
+            return RESULT_OF_EXCEPTION;
         }
         
-        if (resultOfCompare < 0) {
-            return 2;
+        if (isRightPlayerVictory(resultOfCompare)) {
+            return RESULT_OF_RIGHT_PLAYER_WIN;
         }
         return resultOfCompare;
+    }
+    
+    private boolean isRightPlayerVictory(final int resultOfCompare) {
+        return resultOfCompare < 0;
     }
     
     private boolean isNotCorrectPages(final Player rightPlayer) {
