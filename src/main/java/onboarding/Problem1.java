@@ -54,7 +54,6 @@ class Problem1 {
         if (leftPage % 2 == 0) return false;
         if (rightPage != leftPage + 1) return false;
 
-        //예외상황이 아니면 true
         return true;
     }
 }
