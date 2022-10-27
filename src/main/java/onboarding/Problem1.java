@@ -25,11 +25,19 @@ class Problem1 {
         int sum;
         int mul;
 
-        leftPage = userInput.get(0);
-        rightPage = userInput.get(1);
+        leftPage = getLeftPage(userInput);
+        rightPage = getRightPage(userInput);
         sum = getBiggerSum(leftPage, rightPage);
         mul = getBiggerMultiply(leftPage, rightPage);
         return sum > mul ? sum : mul;
+    }
+
+    private static int getLeftPage(List<Integer> userInput) {
+        return userInput.get(0);
+    }
+
+    private static int getRightPage(List<Integer> userInput) {
+        return userInput.get(1);
     }
 
     private static int getBiggerSum(int leftPage, int rightPage) {
@@ -76,11 +84,17 @@ class Problem1 {
     }
 
     private static boolean isConnectedPage(List<Integer> userInput) {
-        return userInput.get(1) - userInput.get(0) == 1;
+        int leftPage = getLeftPage(userInput);
+        int rightPage = getRightPage(userInput);
+
+        return rightPage - leftPage == 1;
     }
 
     private static boolean isOddEvenSequence(List<Integer> userInput) {
-        return isOdd(userInput.get(0)) && isEven(userInput.get(1));
+        int leftPage = getLeftPage(userInput);
+        int rightPage = getRightPage(userInput);
+
+        return isOdd(leftPage) && isEven(rightPage);
     }
 
     private static boolean isOdd(int num) {
@@ -92,6 +106,9 @@ class Problem1 {
     }
 
     private static boolean isValidRange(List<Integer> userInput) {
-        return userInput.get(0) >= 1 && userInput.get(0) <= 400;
+        int leftPage = getLeftPage(userInput);
+        int rightPage = getRightPage(userInput);
+
+        return leftPage >= 1 && rightPage <= 400;
     }
 }
