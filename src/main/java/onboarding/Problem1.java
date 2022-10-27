@@ -11,25 +11,31 @@ class Problem1 {
 	public static final int RIGHT_PAGE = 1;
 	public static final int NORMAL_BOOK_SIZE = 2;
 	public static final int TEN = 10;
+	public static final int EXCEPTION = -1;
+	public static final int POBI_WIN = 1;
+	public static final int CRONG_WIN = 2;
+	public static final int DRAW = 0;
+	public static final int FIRST_PAGE = 1;
+	public static final int LAST_PAGE = 400;
 
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
 
 		if (!checkBook(pobi, crong)) {
-			return -1;
+			return EXCEPTION;
 		}
 
 		int pobiMaxNumber = getMaxNumber(pobi);
 		int crongMaxNumber = getMaxNumber(crong);
 
 		if (pobiMaxNumber > crongMaxNumber) {
-			return 1;
+			return POBI_WIN;
 		}
 
 		if (pobiMaxNumber < crongMaxNumber) {
-			return 2;
+			return CRONG_WIN;
 		}
 
-		return 0;
+		return DRAW;
 	}
 
 	private static boolean checkBook(List<Integer> pobi, List<Integer> crong) {
@@ -42,22 +48,30 @@ class Problem1 {
 
 	private static boolean isRightSize(List<Integer> book) {
 		return book.size() == NORMAL_BOOK_SIZE &&
-				0 <= leftPage(book) &&
-				rightPage(book) <= 400;
+				FIRST_PAGE <= leftPage(book) &&
+				rightPage(book) <= LAST_PAGE;
 	}
 
-	private static Integer rightPage(List<Integer> book) {
-		return book.get(RIGHT_PAGE);
+	private static boolean isRightOrder(List<Integer> book) {
+		return leftPage(book) < rightPage(book) &&
+				isLeftPageOdd(book) &&
+				rightPageEven(book);
 	}
 
 	private static Integer leftPage(List<Integer> book) {
 		return book.get(LEFT_PAGE);
 	}
 
-	private static boolean isRightOrder(List<Integer> book) {
-		return leftPage(book) < rightPage(book) &&
-				leftPage(book) % 2 == 1 &&
-				rightPage(book) % 2 == 0;
+	private static Integer rightPage(List<Integer> book) {
+		return book.get(RIGHT_PAGE);
+	}
+
+	private static boolean isLeftPageOdd(List<Integer> book) {
+		return leftPage(book) % 2 == 1;
+	}
+
+	private static boolean rightPageEven(List<Integer> book) {
+		return rightPage(book) % 2 == 0;
 	}
 
 	private static int getMaxNumber(List<Integer> book) {
