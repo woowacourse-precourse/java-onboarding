@@ -6,8 +6,13 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int pobiPoint = getPoint(pobi);
         int crongPoint = getPoint(crong);
+        int answer = 0;
 
-        int answer = Integer.MAX_VALUE;
+        if(pobiPoint > crongPoint)
+            answer = 1;
+        if(pobiPoint < crongPoint)
+            answer = 2;
+
         return answer;
     }
 
