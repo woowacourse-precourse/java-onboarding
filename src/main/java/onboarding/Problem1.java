@@ -7,4 +7,11 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+    public static int plusnumber(String numbers){
+        int number = 0;
+        for(int i=0;i<numbers.length();i++){
+            number += Integer.parseInt(String.valueOf(numbers.charAt(i)));
+        }
+        return number;
+    }
 }
