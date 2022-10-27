@@ -3,8 +3,10 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -33,6 +35,21 @@ public class Problem7 {
         List<String> friend1Value = friendsMap.getOrDefault(friend1, defaultList);
         friend1Value.add(friend2);
         friendsMap.put(friend1, friend1Value);
+    }
+
+    static List<String> getFriendList(List<List<String>> friends) {
+        Set<String> friendSet = new HashSet<>();
+        List<String> friendList = new ArrayList<>();
+        friends.stream()
+            .forEach(list -> inputFriendSet(friendSet, list));
+
+        friendList.addAll(friendSet);
+        return friendList;
+    }
+
+    static void inputFriendSet(Set<String> set, List<String> list) {
+        set.add(list.get(0));
+        set.add(list.get(1));
     }
 
     public static void main(String[] args) {
