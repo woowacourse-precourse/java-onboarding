@@ -27,4 +27,10 @@ class formController{
         return false;
     }
 
+    private static void removeCheckedName(ArrayList<List<String>> targetList, List<Integer> checkedIndex) {
+        for (int i = 0; i < checkedIndex.size(); i++) {
+            targetList.remove(checkedIndex.get(i));
+        }
+    }
+
 }
