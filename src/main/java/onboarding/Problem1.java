@@ -22,6 +22,27 @@ class Problem1 {
 
         return true;
     }
+
+    public static int addPage(int page) {
+        int sum = 0;
+        while (page > 0) {
+            sum += (page % 10);
+            page = page / 10;
+        }
+        return sum;
+    }
+
+    public static int multiPage(int page) {
+        int base = 1;
+        while (page > 0) {
+            int r = page % 10;
+            if (r == 0) return 0;
+            base = base * r;
+            page = page / 10;
+        }
+        return base;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         if (!checkPage(pobi) || !checkPage(crong)) return -1;
