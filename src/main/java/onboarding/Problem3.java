@@ -5,4 +5,20 @@ public class Problem3 {
         int answer = 0;
         return answer;
     }
+
+    public static boolean isThreeSixNine(char c) {
+        int number = Character.getNumericValue(c);
+
+        if (c % 3 == 0) {
+            return true;
+        }
+        if (c % 6 == 0) {
+            return true;
+        }
+        if (c % 9 == 0) {
+            return true;
+        }
+
+        return false;
+    }
 }
