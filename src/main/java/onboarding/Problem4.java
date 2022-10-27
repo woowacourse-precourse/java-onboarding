@@ -74,5 +74,21 @@ public class Problem4 {
      * 실행을 위한 함수
      */
 
+    static String process(String word) {
+
+        int n = word.length();
+        int[] check_alphabet = check_alpha(word);
+
+
+        String ans = "";
+
+        for (int i=0;i<n;i++) {
+            ans += frog_alpha_change(check_alphabet,word,i);
+        }
+
+        return ans;
+
+    }
+
 }
 
