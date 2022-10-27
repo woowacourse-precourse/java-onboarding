@@ -13,11 +13,16 @@ public class Problem4 {
             Character c = word.charAt(i);
 
             //문자를 바꾸어 준다.
-            if ('A' <= c && c <= 'Z') sb.append((char)(upper - c));
-            else if ('a' <= c && c <= 'z') sb.append((char)(lower - c));
-            else sb.append(c);
+            sb.append(changeChar(c, upper, lower));
         }
 
         return sb.toString();
+    }
+
+    // 문자를 바꾸는 메소드
+    private static Character changeChar(Character c, char upper, char lower) {
+        if ('A' <= c && c <= 'Z') return (char)(upper - c);
+        if ('a' <= c && c <= 'z') return (char)(lower - c);
+        return c;
     }
 }
