@@ -7,7 +7,19 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         int pobiScore = 0, crongScore = 0;
-        
+
+        if(inputValidation(pobi.get(0), pobi.get(1)) && inputValidation(crong.get(0), crong.get(1))){
+            pobiScore = maxValue(pobi.get(0), pobi.get(1));
+            crongScore = maxValue(crong.get(0), crong.get(1));
+
+            if(pobiScore > crongScore) answer = 1;
+            else if(crongScore > pobiScore) answer = 2;
+            else answer = 0;
+        }
+        else {
+            answer = -1;
+        }
+
         return answer;
     }
 
