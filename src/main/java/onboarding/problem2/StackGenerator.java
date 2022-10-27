@@ -7,13 +7,20 @@ public class StackGenerator {
     public Stack<String> createStack(String cryptogram) {
 
         Stack<String> stack = new Stack<>();
+        String[] split = cryptogram.split("");
 
-        String[] cryptogramSplit = cryptogram.split("");
+        for (int i = 0; i < split.length - 1; i++) {
 
-        for (int i = 0; i < cryptogramSplit.length; i++) {
+            if (split[i].equals(split[i + 1])) {
+                continue;
 
-            stack.push(cryptogramSplit[i]);
+            } else {
+                stack.push(split[i]);
 
+                if (i >= 1 && split[i].equals(split[i - 1])) {
+                    stack.pop();
+                }
+            }
         }
 
         return stack;
