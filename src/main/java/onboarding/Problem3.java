@@ -7,14 +7,24 @@ public class Problem3 {
 
     public static String numberToString(int number) {
         String numbers = "";
-        for(int i=0; i<number; i++) {
+        for(int i = 1; i <= number; i++) {
             numbers += Integer.toString(i);
         }
         return numbers;
     }
 
+    public static int findNumbers(String numbers) {
+        int count = 0;
+        for(int i = 0; i < numbers.length(); i++) {
+            if(numbers.charAt(i) == 3 || numbers.charAt(i) == 6 || numbers.charAt(i) == 9) {
+                count++;
+            }
+        }
+        return count;
+    }
+
     public static int solution(int number) {
-        int answer = 0;
-        return answer;
+        String allNumbers = numberToString(number);
+        return findNumbers(allNumbers);
     }
 }
