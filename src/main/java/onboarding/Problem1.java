@@ -34,7 +34,6 @@ class Problem1 {
         List<Integer> max = splitList(list.get(x));
         int add = max.get(0) + max.get(1);
         int mul = max.get(0) * max.get(1);
-        int result = Math.max(add,mul);
-        return result;
+        return Math.max(add,mul);
     }
 }
