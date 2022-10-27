@@ -11,7 +11,7 @@ class Problem1 {
     private static final int CRONG_WIN = 2;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if (isValidInput(pobi) || isValidInput(crong)) {
+        if (!isValidInput(pobi) || !isValidInput(crong)) {
             return EXCEPTION;
         }
 
