@@ -6,9 +6,10 @@ import java.util.List;
 /** 기능 목록
  * method 1 : 각 자리 숫자 합 반환
  * method 2 : 각 자리 숫자 곱 반환
- * method 3 : 곱과 합 중 가장 큰 값 반환
- * method 4 : 숫자를 각 자리의 수의 배열로 반환
- * method 5 : 예외 상황 체크
+ * method 3 : 사용자의 가장 큰 값 반환
+ * method 4 : 곱과 합 중 가장 큰 값 반환
+ * method 5 : 숫자를 각 자리의 수의 배열로 반환
+ * method 6 : 예외 상황 체크
  */
 
 class Problem1 {
@@ -36,10 +37,20 @@ class Problem1 {
         return multi;
     }
 
-    public static int maxResult(int num){
-        int sumOutput = numSum(num);
-        int multiOutput = numMulti(num);
-        return Math.max(sumOutput, multiOutput);
+    public static int maxResult(List<Integer> user){
+        int leftSumOutput = numSum(user.get(0));
+        int leftMultiOutput = numMulti(user.get(0));
+        int rightSumOutput = numSum(user.get(1));
+        int rightMultiOutput = numMulti(user.get(1));
+
+        int leftMax = compareSumMulti(leftSumOutput, leftMultiOutput);
+        int rightMax = compareSumMulti(rightSumOutput, rightMultiOutput);
+
+        return Math.max(leftMax, rightMax);
+    }
+
+    public static int compareSumMulti(int sum, int multi) {
+        return Math.max(sum, multi);
     }
 
     public static List<Integer> numToDigits(int num){
