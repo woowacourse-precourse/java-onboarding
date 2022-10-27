@@ -5,11 +5,12 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
         if (validate(pobi) || validate(crong)) return -1;
 
         int pobiResult = getMaxProcessedValue(pobi);
         int crongResult = getMaxProcessedValue(crong);
+
+        int answer = getResult(pobiResult, crongResult);
 
         return answer;
     }
@@ -19,6 +20,16 @@ class Problem1 {
         if (pages.get(1) == 400 || pages.get(0) == 1) return true;
 
         return false;
+    }
+
+    private static int getResult(int pobiValue, int crongValue) {
+        int answer;
+
+        if (pobiValue > crongValue) answer = 1;
+        else if (pobiValue == crongValue) answer = 0;
+        else answer = 2;
+
+        return answer;
     }
 
     private static int getMaxProcessedValue(List<Integer> pages) {
