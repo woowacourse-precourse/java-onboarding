@@ -30,22 +30,21 @@ public class Problem7 {
         userName = user;
 
         givePoint(user, visitors);
-
         tmpArray = sortList();
 
         System.out.println(friendsPointMap);
 
         List<String> recommedList = getKey(sortList());
+        saveSortCheckPoint(tmpArray);
         recommedList = sortList(saveSortCheckPoint(tmpArray), recommedList);
 
         int min = Math.min(recommedList.size(), recommendNum);
 
         for (int i = 0; i < min; i++)
-        {
             result.add(recommedList.get(i));
-        }
 
         answer = result;
+
         return answer;
     }
 
@@ -171,20 +170,21 @@ public class Problem7 {
 
         for (int i = 0; i < intArray.length; i++)
         {
-            cnt = 0;
+            cnt = i + 1;
             while (intArray[i] == intArray[cnt]) {
                 cnt++;
             }
             i = cnt;
             checkPointList.add(cnt);
         }
+
+        System.out.println(checkPointList);
         return checkPointList;
     }
 
     public static List<String> sortList(List<Integer> checkPointList, List<String> recommendFriendsList)
     {
         int cnt = 0;
-
         // ArrayList를 배열로 변환
         int arrListSize = recommendFriendsList.size();
         String arr[] = recommendFriendsList.toArray(new String[arrListSize]);
