@@ -9,7 +9,7 @@ public class Problem3 {
         return count;
     }
     public static int check369Exists(int number, int count) {
-        String stringifiedNumber = number + "";
+        String stringifiedNumber = numberStringify(number);
         for (int j = 0; j < stringifiedNumber.length(); j += 1) {
             if (stringifiedNumber.charAt(j) == '3' || stringifiedNumber.charAt(j) == '6' || stringifiedNumber.charAt(j) == '9') {
                 count += 1;
@@ -18,5 +18,8 @@ public class Problem3 {
         return count;
     }
 
+    public static String numberStringify(int number){
+        return number + "";
+    }
 
 }
