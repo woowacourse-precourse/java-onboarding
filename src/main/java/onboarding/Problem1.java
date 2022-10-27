@@ -33,7 +33,7 @@ class Problem1 {
     }
 
     private static int getWinner(int pobiMaxNumber, int crongMaxNumber) {
-        int answer;
+        int answer = -1;
         if (pobiMaxNumber > crongMaxNumber) {
             answer = 1;
         } else if (pobiMaxNumber < crongMaxNumber) {
