@@ -35,6 +35,14 @@ class Problem1 {
             crong_result = crong_left_result;
         }
 
+        if (pobi_result > crong_result) {
+            answer = 1;
+        } else if (pobi_result == crong_result) {
+            answer = 0;
+        } else {
+            answer = 2;
+        }
+
         return answer;
     }
     public static int checkLength(int num) {
