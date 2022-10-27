@@ -5,12 +5,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Problem2 {
-    public static String solution(String oldCryptogram) {
-        if (oldCryptogram.length() < 2) {
-            return oldCryptogram;
+    public static String solution(String cryptogram) {
+        if (cryptogram.length() < 2) {
+            return cryptogram;
         }
 
-        char[] previousString = oldCryptogram.toCharArray();
+        char[] previousString = cryptogram.toCharArray();
 
         // Make an empty list that will have the letters of previousString meeting the if statement below🔻
         List<Character> laterString = new ArrayList<>();
@@ -38,7 +38,7 @@ public class Problem2 {
         String newCryptogram = laterString.stream()
             .map(letter -> String.valueOf(letter))
             .collect(Collectors.joining());
-        if (!oldCryptogram.equals(newCryptogram)) {
+        if (!cryptogram.equals(newCryptogram)) {
             return solution(newCryptogram);
         }
         return newCryptogram;
