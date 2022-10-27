@@ -8,6 +8,15 @@ class Problem1 {
         return answer;
     }
 
+    public static int multiply(int page) {
+        int sum = 1;
+        while(page > 0) {
+            sum *= page % 10;
+            page /= 10;
+        }
+        return sum;
+    }
+
     public static int add(int page) {
         int sum = 0;
         while(page > 0) {
