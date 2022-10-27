@@ -63,4 +63,10 @@ public class Pages {
         }
         return result;
     }
+
+    public int calculateScore() {
+        int leftMaxScore = Math.max(calculateEachDigitBySum(leftNumber), calculateEachDigitByMultiply(leftNumber));
+        int rightMaxScore = Math.max(calculateEachDigitBySum(rightNumber), calculateEachDigitByMultiply(rightNumber));
+        return Math.max(leftMaxScore, rightMaxScore);
+    }
 }
