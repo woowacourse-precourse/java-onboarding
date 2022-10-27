@@ -10,6 +10,16 @@ public class ReverseConverter {
     private static final char ASCII_a_z_SUM = 219;
 
 
+    public static String convert(String word){
+        StringBuilder stringBuilder = new StringBuilder();
+        char convertedChar;
+        for(int i=word.length()-1; i>=0; i--){
+            convertedChar = convert(word.charAt(i));
+            stringBuilder.append(convertedChar);
+        }
+        return stringBuilder.toString();
+    }
+
     public static char convert(char ch){
         if(checkCharType(ch) == TYPE_UPPER_CASE){
             return (char) (ASCII_A_Z_SUM - ch);
