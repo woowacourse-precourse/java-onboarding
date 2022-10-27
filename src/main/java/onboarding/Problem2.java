@@ -13,7 +13,8 @@ package onboarding;
 // 2-1. 자바에서 스트링속성은 불변. replace가 안된다..
 // 2-2. 연속하는 중복 문자들은 제외하고 새로운 문자열에 넣기
 // 3. 연속하는 중복 문자들이 없을때까지 위의 과정을 반복해야함
-// 3-1. 연속하는 중복 문자들이 있는지 없는지 검사하고, 있으면 반복, 없으면 값을 return 해야함
+// 3-1. 연속하는 중복 문자들이 있는지 없는지 검사
+// 3-2. 있으면 반복, 없으면 값을 return 해야함
 
 
 
@@ -24,15 +25,32 @@ public class Problem2 {
         answer = "";
         char presentLetter = '1';
 
-        for (int i = 0; i < cryptogram.length(); i++) {
-            if (presentLetter != cryptogram.charAt(i)){
-                answer += cryptogram.charAt(i);
-            }else{
-                answer = answer.substring(0, answer.length() - 1);
-            }
-            presentLetter = cryptogram.charAt(i);
-        }
+//        for (int i = 0; i < cryptogram.length(); i++) {
+//            if (presentLetter != cryptogram.charAt(i)){
+//                answer += cryptogram.charAt(i);
+//            }else{
+//                answer = answer.substring(0, answer.length() - 1);
+//            }
+//            presentLetter = cryptogram.charAt(i);
+//        }
+
+        System.out.println(checkRepeatString("browoanoommnaon"));
+        System.out.println(checkRepeatString("browoannaon"));
+        System.out.println(checkRepeatString("browoaaon"));
+        System.out.println(checkRepeatString("browoon"));
+        System.out.println(checkRepeatString("brown"));
 
         return answer;
+    }
+
+    public static boolean checkRepeatString(String checkString){
+        char initializeLetter = '1';
+        for (int i = 0; i < checkString.length(); i++) {
+            if (initializeLetter == checkString.charAt(i)){
+                return true;
+            }
+            initializeLetter = checkString.charAt(i);
+        }
+        return false;
     }
 }
