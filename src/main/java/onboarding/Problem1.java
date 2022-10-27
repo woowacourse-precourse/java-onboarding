@@ -33,7 +33,10 @@ class Problem1 {
     }
 
     public static int getMax(List<Integer> pages) {
-        return 0;
+        int maxNum = Math.max(sumPageNum(pages.get(0)), sumPageNum(pages.get(1)));
+        maxNum = Math.max(maxNum, multiplyPageNum(pages.get(0)));
+        maxNum = Math.max(maxNum, multiplyPageNum(pages.get(1)));
+        return maxNum;
     }
 
     public static int getWhoWin(int pobiNum, int crongNum) {
