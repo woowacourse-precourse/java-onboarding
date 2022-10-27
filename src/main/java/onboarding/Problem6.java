@@ -1,8 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /*
     요구사항 분석
@@ -24,13 +22,14 @@ import java.util.List;
     Step2. 두가지 폼에 대해 중복값이 있는지 확인하는 메서드 만들기
            중복값이 있다면 -1 리턴 없다면 1리턴
            -1 리턴시 두 값 모두 이메일에 넣기
-    Step3. 결과값 정렬하기 (정렬시 중복된 이메일 제거)
+    Step3. 결과값 오름차순 정렬하기 (정렬시 중복된 이메일 제거 -> hashSet으로 해결)
 
  */
 
 public class Problem6 {
+
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = new LinkedList<>();
+        TreeSet<String> answerSet = new TreeSet<>();
         String nickname;
         boolean result;
         boolean nicknameValid;
@@ -42,25 +41,32 @@ public class Problem6 {
                 result = duplicateCheck(nickname, forms.get(j).get(1));
                 if (result == false) {
                     nicknameValid = false;
-                    answer.add(forms.get(j).get(0));
+                    answerSet.add(forms.get(j).get(0));
                 }
             }
             if (nicknameValid == false) {
-                answer.add(forms.get(i).get(0));
+                answerSet.add(forms.get(i).get(0));
             }
         }
 
+        List<String> answer = new ArrayList<>(answerSet);
         return answer;
     }
 
     private static boolean duplicateCheck(String nickname1, String nickname2) {
 
-        String compare;
+        StringBuilder compare1 = new StringBuilder(2);
+        StringBuilder compare2 = new StringBuilder(2);
 
         for (int i = 0; i < nickname1.length() - 1; i++) {
-            compare = nickname1.substring(i, i + 1);
+            compare1.delete(0, 2);
+            compare1.append(nickname1.charAt(i));
+            compare1.append(nickname1.charAt(i + 1));
             for (int j = 0; j < nickname2.length() - 1; j++) {
-                if (compare.equals(nickname2.substring(j, j + 1))) {
+                compare2.delete(0, 2);
+                compare2.append(nickname2.charAt(j));
+                compare2.append(nickname2.charAt(j + 1));
+                if (compare1.toString().equals(compare2.toString())) {
                     return false;
                 }
             }
@@ -68,4 +74,5 @@ public class Problem6 {
 
         return true;
     }
+
 }
