@@ -9,10 +9,10 @@ public class Problem2 {
         String answer = "";
         String regex = "(\\w)(\\1+)";
         Pattern patternRegex = Pattern.compile(regex);
-        Matcher patternMatcher = patternRegex.matcher(cryptogram);
 
         while (true) {
 
+            Matcher patternMatcher = patternRegex.matcher(cryptogram);
             StringBuffer stringBuffer = new StringBuffer();
 
             while (patternMatcher.find()) {
