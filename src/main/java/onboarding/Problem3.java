@@ -10,4 +10,23 @@ public class Problem3 {
         int answer = 0;
         return answer;
     }
+
+    /**
+     * 숫자에 포함된 3, 6, 9의 개수 반환합니다.
+     *
+     * @param num 3, 6, 9의 개수를 검사할 숫자
+     * @return 3, 6, 9의 개수를 반환
+     */
+    int count369(int num) {
+        int cnt = 0;
+
+        while (num > 2) {
+            if (num % 10 != 0 && (num % 10) % 3 == 0) {
+                cnt++;
+            }
+            num /= 10;
+        }
+
+        return cnt;
+    }
 }
