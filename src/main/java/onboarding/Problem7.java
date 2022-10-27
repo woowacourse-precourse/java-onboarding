@@ -2,8 +2,10 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -69,6 +71,42 @@ public class Problem7 {
 
         scoreMap.put(friend, count * 10);
     }
+    
+    static void getVisitorsPoint(Map<String, Integer> scoreMap, List<String> visitors) {
+        visitors.stream()
+            .forEach(v -> scoreMap.put(v, scoreMap.getOrDefault(v,0) + 1));
+    }
+
+    public static Comparator<Map.Entry<String, Integer>> mapComparator = new
+        Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                if(o1.getValue() >  o2.getValue()){
+                    return -1;
+                }
+                else if (o1.getValue() ==  o2.getValue()) {
+                    return o1.getKey().compareTo(o2.getKey());
+                }
+                return 1;
+            }
+        };
+
+    static List<String> sortScoreMap(Map<String, Integer> scoreMap, List<String> userFriends) {
+
+        List<Map.Entry<String, Integer>> entries = new LinkedList<>(scoreMap.entrySet());
+        Collections.sort(entries, mapComparator);
+        List<String> result = new ArrayList<>();
+
+        entries.stream()
+            .filter(e -> !(userFriends.contains(e.getKey())))
+            .forEach(e -> result.add(e.getKey()));
+
+        if (result.size() > 5) {
+            List<String> subList = new ArrayList<>(result.subList(0,5));
+            return subList;
+        }
+        return result;
+    }
 
     public static void main(String[] args) {
         String user = "mrko";
@@ -80,10 +118,17 @@ public class Problem7 {
             List.of("shakevan", "jun"),
             List.of("shakevan", "mrko")
         );
+        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
 
         Map<String, List<String>> friendsMap = getFriendsMap(friends);
         List<String> friendList = getFriendList(friends,user);
-        getTogetherKnowPoint(friends, user);
+        Map<String, Integer> scoreMap = new HashMap<>();
+        List<String> userFriends = friendsMap.get(user);
+        getTogetherKnowPoint(friends, user, scoreMap);
+        getVisitorsPoint(scoreMap, visitors);
+        List<String> result = sortScoreMap(scoreMap, userFriends);
+        result.stream().forEach(r -> System.out.println(r + " "));
+        
     }
 
 }
