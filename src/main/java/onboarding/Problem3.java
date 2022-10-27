@@ -8,6 +8,9 @@ package onboarding;
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
+        for (int i = 0; i <= number; i++) {
+            answer += clapCount(i);
+        }
         return answer;
     }
 
@@ -18,7 +21,6 @@ public class Problem3 {
         }
         while (num != 0) {
             int temp = num % 10;
-            System.out.println("temp = " + temp);
             if (temp == 3 || temp == 6 || temp == 9) {
                 count++;
             }
