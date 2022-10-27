@@ -3,7 +3,11 @@ package onboarding;
 import java.io.PrintStream;
 import java.util.List;
 import java.util.ArrayList;
+
+import static java.util.Collections.max;
+
 /*
+- 기능 구현사항 목록-
 1. 각 페이지 번호를 받아서 각 자리 숫자를 더하고, 곱한 숫자중 최댓값을 리턴 하는 함수 선언
 2. 예외처리 사항 return -1
 3. 1번 단계에서 얻은 값을 비교해 result 출
@@ -30,7 +34,10 @@ class Problem1 {
         return temp_max;
     }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int answer = 0;
+        if(pobi.get(1) - pobi.get(0) != 1 || crong.get(1) - crong.get(0) != 1 || pobi.get(0) % 2 != 1 || crong.get(0) %2 != 1) {
+            return -1;
+        }
         return answer;
     }
 }
