@@ -13,7 +13,44 @@ public class Problem1Service {
 
     // Winner를 가립니다.
     public Integer isWinner(List<Integer> player1pages, List<Integer> player2pages){
-        return null;
+        String[] player1StrPages = new String[player1pages.size()];
+        String[] player2StrPages = new String[player2pages.size()];
+        Integer[] winner = new Integer[2];
+
+        for(int i = 0; i < player1StrPages.length; i++){
+            player1StrPages[i] = String.valueOf(player1pages);
+            player2StrPages[i] = String.valueOf(player2pages);
+        }
+
+        for(int i = 0; i < player1StrPages.length; i++){
+            int sum = 0;
+            int multi = 1;
+
+            for(int j = 0; j < player1StrPages[i].length(); j++){
+                int playerCharNumber = Character.getNumericValue(player1StrPages[i].charAt(j));
+                sum = sum + playerCharNumber;
+                multi = multi * playerCharNumber;
+                winner[0] = Integer.max(sum, multi);
+            }
+
+            sum = 0;
+            multi = 1;
+            for(int j = 0; j < player2StrPages[i].length(); j++){
+                int playerCharNumber = Character.getNumericValue(player2StrPages[i].charAt(j));
+                sum = sum + playerCharNumber;
+                multi = multi * playerCharNumber;
+                winner[1] = Integer.max(sum, multi);
+            }
+        }
+
+        if(winner[0] > winner[1]){
+            return 1;
+        } else if(winner[0] < winner[1]) {
+            return 2;
+        } else {
+            return 0;
+        }
+
     }
 
     // 모든 제한사항을 판별하는 메소드
