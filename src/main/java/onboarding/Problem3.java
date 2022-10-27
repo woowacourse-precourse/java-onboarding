@@ -16,7 +16,7 @@ public class Problem3 {
     public static int findNumbers(String numbers) {
         int count = 0;
         for(int i = 0; i < numbers.length(); i++) {
-            if(numbers.charAt(i) == 3 || numbers.charAt(i) == 6 || numbers.charAt(i) == 9) {
+            if(numbers.charAt(i) == '3' || numbers.charAt(i) == '6' || numbers.charAt(i) == '9') {
                 count++;
             }
         }
