@@ -16,6 +16,16 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+
+        try {
+            int pobiMax = getMaxValue(pobi);
+            int crongMax = getMaxValue(crong);
+
+            answer = judge(pobiMax, crongMax);
+        } catch (pageException e) {
+            answer = -1;
+        }
+
         return answer;
     }
 
