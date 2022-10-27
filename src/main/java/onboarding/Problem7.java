@@ -10,6 +10,9 @@ public class Problem7 {
 		Map<String, Integer> userList = new HashMap<>();
 		List<String> userFriendList = new ArrayList<>();
 
+		for (String visitor : visitors) {
+			userList.put(visitor, 0);
+		}
 		for (List<String> friend : friends) {
 			userList.put(friend.get(0), 0);
 			userList.put(friend.get(1), 0);
@@ -20,6 +23,7 @@ public class Problem7 {
 				userFriendList.add(friend.get(0));
 			}
 		}
+
 		return new ArrayList<>();
 	}
 }
