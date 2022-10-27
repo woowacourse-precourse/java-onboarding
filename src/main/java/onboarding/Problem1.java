@@ -49,4 +49,10 @@ class Problem1 {
         }
         return multiplicationList;
     }
+
+    public List<Integer> calculateEachDigitOfPageNumber(List<Integer> list) {
+        List<Integer> calculationList = addEachDigitOfPageNumber(list);
+        calculationList.addAll(multiplyEachDigitOfPageNumber(list));
+        return calculationList;
+    }
 }
