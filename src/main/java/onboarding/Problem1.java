@@ -39,6 +39,14 @@ class Problem1 {
 		crongLeftMultiple = calculateMultiple(crongLeftPage, crongLeftMultiple);
 		crongRightMultiple = calculateMultiple(crongRightPage, crongRightMultiple);
 
+		int pobiLeftScore = Math.max(pobiLeftSum, pobiLeftMultiple);
+		int pobiRightScore= Math.max(pobiRightSum, pobiRightMultiple);
+		int crongLeftScore = Math.max(crongLeftSum, crongLeftMultiple);
+		int crongRightScore = Math.max(crongRightSum, crongRightMultiple);
+
+		int pobiScore = Math.max(pobiLeftScore, pobiRightScore);
+		int crongScore = Math.max(crongLeftScore, crongRightScore);
+
 		// int answer = Integer.MAX_VALUE;
 		return result;
 	}
