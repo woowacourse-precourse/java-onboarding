@@ -8,6 +8,13 @@ class Problem1 {
         return answer;
     }
 
+    private static int getMaxScore(List<Integer> pages){
+        return pages.stream()
+                .mapToInt(i -> toScore(i))
+                .max()
+                .getAsInt();
+    }
+
     private static int toScore(int page){
         int addedResult = 0;
         int multipliedResult = 1;
