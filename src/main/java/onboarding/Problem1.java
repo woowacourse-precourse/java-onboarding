@@ -24,6 +24,8 @@ class Problem1 {
 
         if (validateFirstLast(pobi) || validateFirstLast(crong)) {
             return -1;
+        } else if (validatePlusOne(pobi) || validatePlusOne(crong)) {
+            return -1;
         }
 
         List<Integer> pobiEachNumbers = getEachDigitNumber(pobi);
@@ -39,6 +41,10 @@ class Problem1 {
 
         return answer;
 
+    }
+
+    private static boolean validatePlusOne(List<Integer> check) {
+        return !(check.get(1) == check.get(0) + 1);
     }
 
     private static int retrunBigNumber(int pobiBigNumber, int crongBigNumber) {
