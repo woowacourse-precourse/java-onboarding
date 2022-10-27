@@ -2,8 +2,15 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        Object[] check_result = new Object[2];
+        while (true) {
+            check_result = letterCheck(cryptogram);
+            cryptogram = (String) check_result[0];
+            if ((int) check_result[1] == 0) {
+                break;
+            }
+        }
+        return cryptogram;
     }
     static String letterRemove(String temp1){
         if(temp1.length() != 1){
