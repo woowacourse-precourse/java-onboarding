@@ -34,21 +34,26 @@ class Problem2Test {
     }
 
 
-    private String getAnswer(char[] chars) {
+    private String getAnswer(char[] charArray) {
         StringBuilder answer = new StringBuilder();
         Stack<Character> stack = new Stack<>();
         char history = ' ';
-        for (char ch : chars) {
-            if (!stack.isEmpty() && stack.peek() == ch) {
-                history = stack.pop();
-            } else if (history != ch) {
-                stack.push(ch);
-            }
+        for (char target : charArray) {
+            history = isValid(stack, history, target);
         }
         for (Character c : stack) {
             answer.append(c);
         }
         return answer.toString();
+    }
+
+    private char isValid(Stack<Character> stack, char history, char target) {
+        if (!stack.isEmpty() && stack.peek() == target) {
+            history = stack.pop();
+        } else if (history != target) {
+            stack.push(target);
+        }
+        return history;
     }
 
 }
