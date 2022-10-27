@@ -33,4 +33,8 @@ public class Problem2 {
         String reverse = sb.reverse().toString();
         return reverse;
     }
+    /*
+    지금까지 파이썬만 사용해 와서 자바의 문법이 어색하다.
+    이번 프리코스를 통해서 자바의 문법을 능수능란하게 다루는 것을 목표로 한다.
+     */
 }
