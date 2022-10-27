@@ -33,22 +33,18 @@ class frog{
     public static void setChangedIndex(int index){
         changedIndex = constant.length-index-1;
     }
-    public static String changeCase(String word){
-        List<String> list = Arrays.asList(word.split(""));
-        word = list.stream()
-                .map(i->(i==i.toLowerCase())?i.toUpperCase():i.toLowerCase())
-                .collect(Collectors.joining());
-        return word;
-    }
     public static String changeWord(String alphabet){
-        if(validateString.isLower(alphabet)){
+        if(validateString.isLower(alphabet)&&validateString.isAlphabet(alphabet)){
             setIndex(constant.lowerAlphabet.indexOf(alphabet));
             setChangedIndex(index);
             return constant.lowerAlphabet.substring(changedIndex,changedIndex+1);
         }
-        setIndex(constant.upperAlphabet.indexOf(alphabet));
-        setChangedIndex(index);
-        return constant.upperAlphabet.substring(changedIndex,changedIndex+1);
+        if(!validateString.isLower(alphabet)&&validateString.isAlphabet(alphabet)) {
+            setIndex(constant.upperAlphabet.indexOf(alphabet));
+            setChangedIndex(index);
+            return constant.upperAlphabet.substring(changedIndex, changedIndex + 1);
+        }
+        return " ";
     }
 }
 public class Problem4 {
