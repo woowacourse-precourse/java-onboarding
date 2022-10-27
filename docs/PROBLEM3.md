@@ -17,7 +17,7 @@
 
 ### 구현 기능 목록
 1. 주어진 문자열에 포함된 “3”, “6”, “9”를 공백문자로 치환한 결과를 반환하는 기능
-    - String remove369(String numToString)
+    - String get369removedString(String numToString)
     - 파라미터 타입을 String으로 하여 주어진 정수를 문자열로 변환하는 일은 외부에서 책임지도록 한다.
 2. 두 문자열의 길이의 차를 구하는 기능
     - solution 메소드에서 구현
