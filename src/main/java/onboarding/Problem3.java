@@ -36,4 +36,17 @@ public class Problem3 {
         return result;
     }
 
+    private static boolean canMakeClap(char charater){
+        if(charater=='3'){
+            return true;
+        }
+        if(charater=='6'){
+            return true;
+        }
+        if(charater=='9'){
+            return true;
+        }
+        return false;
+    }
+
 }
