@@ -11,23 +11,30 @@ public class Problem2 {
         boolean completeDecoding = false;
         StringBuffer decodedCrypto = new StringBuffer(cryptogram);
         while(!completeDecoding){
-            completeDecoding=decodingCurrentString(decodedCrypto);
+            completeDecoding=checkDecodingEnded(decodedCrypto);
+            decodingCurrentString(decodedCrypto);
         }
         return decodedCrypto.toString();
     }
 
-    private static boolean decodingCurrentString(StringBuffer cryptogram){
+    private static boolean checkDecodingEnded(StringBuffer crypto){
+        for(int i = 0; i<crypto.length()-1; i++){
+            if(crypto.charAt(i)==crypto.charAt(i+1)){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static void decodingCurrentString(StringBuffer cryptogram){
         StringBuffer afterDecode = cryptogram;
-        boolean result = true;
         int checkPoint = 0;
         while(checkPoint<afterDecode.length()-1){
             if(afterDecode.charAt(checkPoint)==afterDecode.charAt(checkPoint+1)){
                 removeDuplication(afterDecode, checkPoint);
-                result=false;
             }
             checkPoint++;
         }
-        return result;
     }
 
     private static void removeDuplication(StringBuffer string, int startPoint){
