@@ -8,6 +8,12 @@ package onboarding;
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
+        Problem3 problem3 = new Problem3();
+
+        for (int i = 3; i <= number; i++) {
+            answer += problem3.count369(i);
+        }
+
         return answer;
     }
 
