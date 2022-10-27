@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.ArrayList;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
@@ -15,7 +16,15 @@ public class Problem5 {
         // 반복문 내부 arr 배열에 액면가 화폐 수량 cnt 와 잔액 bal 할당
         // 화폐 수량을 리스트 answer 에 추가, money 를 잔액으로 변경
         // 9 가지 권종 모두 변환 수행 완료 시 정답 리턴
-        List<Integer> answer = Collections.emptyList();
+        List<Integer> answer = new ArrayList<>(9);
+
+        for(int i = 0; i < 9; i++) {
+            int[] arr = cash(i, money);
+
+            answer.add(arr[0]);
+            money = arr[1];
+        }
+
         return answer;
     }
 }
