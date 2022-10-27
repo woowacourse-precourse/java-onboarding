@@ -23,7 +23,17 @@ public class Problem4 {
     }
 
 
-    private static String replaceBigAlphabetReverse(String word, int i) {
-        return "";
+    public static String replaceBigAlphabetReverse(String word, int alphabetLocation) {
+        String bigAlphabetLine = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        int i = 0;
+
+        i = bigAlphabetLine.indexOf(word.charAt(alphabetLocation)) + 1;
+
+        word = word.substring(0, alphabetLocation)
+                + bigAlphabetLine.charAt(bigAlphabetLine.length() - i)
+                + word.substring(alphabetLocation + 1);
+
+        return word;
     }
+
 }
