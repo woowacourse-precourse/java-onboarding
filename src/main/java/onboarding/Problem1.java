@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 class Problem1 {
@@ -44,9 +45,61 @@ class Problem1 {
             crongRightPage /= 10;
         }
 
+        List<Integer> pobiMax = new ArrayList<>();
+        List<Integer> crongMax = new ArrayList<>();
 
+        int plus = 0;
+        int multiple = 1;
 
-        return 0;
+        // 포비의 최대값 구하는 과정
+        for (Integer integer : pobiLeftPageList) {
+            plus += integer;
+            multiple *= integer;
+        }
+        pobiMax.add(plus);
+        pobiMax.add(multiple);
+        plus = 0;       // reset
+        multiple = 1;
+
+        for (Integer integer : pobiRightPageList) {
+            plus += integer;
+            multiple *= integer;
+        }
+        pobiMax.add(plus);
+        pobiMax.add(multiple);
+        plus = 0;       // reset
+        multiple = 1;
+
+        // 크롱의 최대값 구하는 과정
+        for (Integer integer : crongLeftPageList) {
+            plus += integer;
+            multiple *= integer;
+        }
+        crongMax.add(plus);
+        crongMax.add(multiple);
+        plus = 0;       // reset
+        multiple = 1;
+
+        for (Integer integer : crongRightPageList) {
+            plus += integer;
+            multiple *= integer;
+        }
+        crongMax.add(plus);
+        crongMax.add(multiple);
+
+        int pobiMaxValue = Collections.max(pobiMax);
+        int crongMaxValue = Collections.max(crongMax);
+
+        if (pobiMaxValue > crongMaxValue)
+            return 1;
+
+        if (pobiMaxValue < crongMaxValue)
+            return 2;
+
+        if (pobiMaxValue == crongMaxValue)
+            return 0;
+
+        return -1;
     }
 
     public static void main(String[] args) {
