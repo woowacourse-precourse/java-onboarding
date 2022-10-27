@@ -37,4 +37,11 @@ class Problem1 {
         return pageResult.max().getAsInt();
     }
 
+    static boolean isPageException(List<Integer> pageNums){
+        int left = pageNums.get(0);
+        int right = pageNums.get(1);
+
+        return ! ((1 < left && left % 2 == 1) && (right < 400 && right % 2 == 0)
+                && (left + 1 == right));
+    }
 }
