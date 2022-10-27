@@ -91,11 +91,19 @@ class Problem1Test {
 
     @Test
     @DisplayName("리스트 각 요소의 자릿수 곱셈을 잘 하는지")
-    void multiplyEachDigitOfPageNumber() {
+    void multiplyEachDigitOfPageNumberTest() {
+        Problem1 problem1 = new Problem1();
+        List<Integer> list1 = List.of(99, 100);
+        List<Integer> result1 = List.of(81, 0);
+        List<Integer> list2 = List.of(101, 102);
+        List<Integer> result2 = List.of(0, 0);
+
+        assertThat(problem1.multiplyEachDigitOfPageNumber(list1)).isEqualTo(result1);
+        assertThat(problem1.multiplyEachDigitOfPageNumber(list2)).isEqualTo(result2);
     }
 
     @Test
     @DisplayName("리스트 각 요소의 자릿수 연산을 잘 하는지")
-    void calculateEachDigitOfPageNumber() {
+    void calculateEachDigitOfPageNumberTest() {
     }
 }
