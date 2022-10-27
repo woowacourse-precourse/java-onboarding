@@ -24,10 +24,20 @@ class Problem1 {
 		int crongLeftSum = 0;
 		int crongRightSum = 0;
 
+		int pobiLeftMultiple = 1;
+		int pobiRightMultiple = 1;
+		int crongLeftMultiple = 1;
+		int crongRightMultiple = 1;
+
 		pobiLeftSum = calculateSum(pobiLeftPage, pobiLeftSum);
 		pobiRightSum = calculateSum(pobiRightPage, pobiRightSum);
 		crongLeftSum = calculateSum(crongLeftPage, crongLeftSum);
 		crongRightSum = calculateSum(crongRightPage, crongRightSum);
+
+		pobiLeftMultiple = calculateMultiple(pobiLeftPage, pobiLeftMultiple);
+		pobiRightMultiple = calculateMultiple(pobiRightPage, pobiRightMultiple);
+		crongLeftMultiple = calculateMultiple(crongLeftPage, crongLeftMultiple);
+		crongRightMultiple = calculateMultiple(crongRightPage, crongRightMultiple);
 
 		// int answer = Integer.MAX_VALUE;
 		return result;
@@ -52,5 +62,13 @@ class Problem1 {
 			page /= 10;
 		}
 		return sum;
+	}
+
+	private static int calculateMultiple (int page, int multiple) {
+		while (page > 0) {
+			multiple *= page % 10 ;
+			page /= 10;
+		}
+		return multiple;
 	}
 }
