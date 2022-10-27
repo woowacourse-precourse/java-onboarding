@@ -1,6 +1,5 @@
 package onboarding;
 
-import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
@@ -9,44 +8,35 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (hasCorrectPages(pobi) && hasCorrectPages(crong)) {
-            var pageDigitsPobi = splitToPageDigits(pobi);
-            var pageDigitsCrong = splitToPageDigits(crong);
-            var maxNumPobi = maxSumAndMul(pageDigitsPobi);
-            var maxNumCrong = maxSumAndMul(pageDigitsCrong);
+            var maxNumPobi = maxSumAndMul(pobi);
+            var maxNumCrong = maxSumAndMul(crong);
 
             if (maxNumPobi == maxNumCrong) {
                 return 0;
             }
-            return maxNumCrong > maxNumPobi ? 1 : 2;
+            return maxNumPobi > maxNumCrong ? 1 : 2;
         }
         return -1;
     }
 
-    private static int maxSumAndMul(List<List<Integer>> pageDigits) {
-        var maxSum = pageDigits.stream().mapToInt(
-                digits -> digits.stream().reduce(0, (n1, n2) -> n1 + n2)
-        ).max().getAsInt();
-        var maxMul = pageDigits.stream().mapToInt(
-                digits -> digits.stream().reduce(1, (n1, n2) -> n1 * n2)
-        ).max().getAsInt();
-        return Integer.max(maxSum, maxMul);
-    }
-
-    private static List<List<Integer>> splitToPageDigits(List<Integer> pages) {
-        return pages.stream().collect(ArrayList::new, Problem1::splitToDigits, List::addAll);
-    }
-
-    private static void splitToDigits(List<List<Integer>> pageDigits, Integer page) {
-        List<Integer> digits = new ArrayList<>();
-
-        while (0 < page) {
-            digits.add(page % 10);
-            page /= 10;
+    private static int maxSumAndMul(List<Integer> pages) {
+        int max = Integer.MIN_VALUE;
+        for (var page : pages) {
+            int sum = 0;
+            int mul = 1;
+            while (0 < page) {
+                int digit = page % 10;
+                sum += digit;
+                mul *= digit;
+                page /= 10;
+            }
+            max = Integer.max(max, sum);
+            max = Integer.max(max, mul);
         }
-        pageDigits.add(digits);
+        return max;
     }
 
-    private static boolean hasCorrectPages(final List<Integer> pages) {
+    private static boolean hasCorrectPages(List<Integer> pages) {
         final int leftPage = pages.get(0);
         final int rightPage = pages.get(1);
         final boolean hasInRange = MIN_PAGES <= leftPage && rightPage <= MAX_PAGES;
