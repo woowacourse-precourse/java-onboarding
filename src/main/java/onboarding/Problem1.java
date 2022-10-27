@@ -4,11 +4,23 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        if(errorCheck(pobi) || errorCheck(crong)) {
+            return -1;
+        }
+
         int pobiMax = compareLeftRight(pobi.get(0),pobi.get(1));
         int crongMax = compareLeftRight(crong.get(0),crong.get(1));
         int answer = getWinner(pobiMax,crongMax);
 
         return answer;
+    }
+
+    private static boolean errorCheck (List<Integer> pages) {
+        if (pages.get(0)==1 || pages.get(1)==400) {
+            return true;
+        }
+
+        return pages.get(1)-pages.get(0) != 1;
     }
 
     private static int getMaxPage(int page){
