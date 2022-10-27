@@ -10,7 +10,10 @@ public class Problem5 {
 
         for (int i = 0; i < 9; i++) {
             int divMoney = getDivMoney(i, 50000);
+            int moneyCount = getMoneyCount(money, divMoney);
 
+            answer.add(moneyCount);
+            money -= (divMoney * moneyCount);
         }
 
         return answer;
@@ -33,6 +36,11 @@ public class Problem5 {
         }
 
         return money;
+    }
+
+    private static int getMoneyCount(int money, int divMoney) {
+
+        return money / divMoney;
     }
 
 }
