@@ -8,6 +8,9 @@ public class Problem3 {
     private static final Set<Integer> numbers369 = new HashSet<>(Arrays.asList(3, 6, 9));
     public static int solution(int number) {
         int answer = 0;
+        for (int i=3; i<=number; i++) {
+            answer += count396(i);
+        }
         return answer;
     }
 
