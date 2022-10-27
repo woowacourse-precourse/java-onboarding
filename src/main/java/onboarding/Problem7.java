@@ -38,55 +38,16 @@ public class Problem7 {
         return friendGraph;
     }
 
-    public static <T> HashMap<T, Integer> getCntOfTravelCaseBfs(Map<T, Set<T>> graph, T srtNode, int targetDist) {
-        // init cnfOfTravelCase
-        HashMap<T, Integer> cntOfTravelCase = new HashMap<>();
-        graph.keySet().forEach(node -> cntOfTravelCase.put(node, 0));
+    public static int getCntOfSameFriendsWithMe(String me, Map<String, Set<String>> friendGraph, String crew) {
+        if (me.equals(crew))
+            return 0;
 
-        // 시작 노드부터의 거리
-        HashMap<T, Integer> dists = new HashMap<>();
-        graph.keySet().forEach(node -> dists.put(node, -1));
-        // node, visitedBitmask, depth
-        ArrayDeque<T> queue = new ArrayDeque<>();
+        Set<String> myFriends = friendGraph.get(me);
+        Set<String> crewFriends = friendGraph.get(crew);
 
-        // 최초 방문 노드
-        cntOfTravelCase.replace(srtNode, 1);
-        dists.put(srtNode, 0);
-        queue.addLast(srtNode);
-
-        while (!queue.isEmpty()) {
-            T node = queue.poll();
-            int dist = dists.get(node);
-            int curCntOfTravelCase = cntOfTravelCase.get(node);
-
-            if (dist >= targetDist)
-                continue;
-
-            for (T nxtNode: graph.get(node)) {
-                int nxtCntOfTravelCase = cntOfTravelCase.get(nxtNode) + curCntOfTravelCase;
-                cntOfTravelCase.replace(nxtNode, nxtCntOfTravelCase);
-
-                if (dists.get(nxtNode).equals(-1)) {
-                    dists.replace(nxtNode, dist+1);
-                    queue.addLast(nxtNode);
-                }
-            }
-        }
-
-        // target
-        HashMap<T, Integer> cntOfTravelCaseToTargetDist = new HashMap<>();
-        cntOfTravelCase.forEach((node, cnt) -> {
-            if (dists.get(node) == targetDist)
-                cntOfTravelCaseToTargetDist.put(node, cnt);
-        });
-
-        return cntOfTravelCaseToTargetDist;
-    }
-
-    public static Map<String, Integer> getCntOfSameFriendsWithMeByCrew(Map<String, Set<String>> friendGraph, String me) {
-        // 아래는 크루별 방문 회수
-        Map<String, Integer> cntOfSameFriendsWithMeByCrew = getCntOfTravelCaseBfs(friendGraph, me, 2);
-        return cntOfSameFriendsWithMeByCrew;
+        Set<String> intersection = new HashSet<>(myFriends);
+        intersection.retainAll(crewFriends);
+        return intersection.size();
     }
 
     public static int getCntOfVisit(List<String> visitors, String crew) {
@@ -94,13 +55,10 @@ public class Problem7 {
     }
 
     public static Map<String, Integer> getRecommendScoreByCrew(String me, Map<String, Set<String>> friendGraph, List<String> visitors) {
-        Map<String, Integer> cntOfSameFriendsWithMeByCrew = getCntOfSameFriendsWithMeByCrew(friendGraph, me);
         Map<String, Integer> recommendScoreByCrew = new HashMap<>();
 
         friendGraph.keySet().forEach(crew -> {
-            int cntOfSameFriendsWithMe = 0;
-            if (cntOfSameFriendsWithMeByCrew.containsKey(crew))
-                cntOfSameFriendsWithMe = cntOfSameFriendsWithMeByCrew.get(crew);
+            int cntOfSameFriendsWithMe = getCntOfSameFriendsWithMe(me, friendGraph, crew);
             int cntOfVisit = getCntOfVisit(visitors, crew);
             int recommendScore = getRecommendScore(cntOfSameFriendsWithMe, cntOfVisit);
             recommendScoreByCrew.put(crew, recommendScore);
