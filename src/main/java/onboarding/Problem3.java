@@ -23,6 +23,15 @@ public class Problem3 {
 
     public static boolean compareNumWith369(int digit) {
 
+        int Array[] = {3, 6, 9};
+
+        for (int n : Array) {
+            if (digit == n) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public static int solution(int number) {
