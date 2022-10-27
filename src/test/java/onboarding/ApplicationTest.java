@@ -104,6 +104,17 @@ class ApplicationTest {
       String result = "";
       assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
     }
+
+    @Test
+    void isAllowedStringTest() {
+      //given
+      String cryptogram = "browoAnoommnaon";
+
+      //then
+      assertThrows(IllegalStateException.class, () -> {
+        Problem2.isAllowedString(cryptogram);
+      });
+     }
   }
 
   @Nested
