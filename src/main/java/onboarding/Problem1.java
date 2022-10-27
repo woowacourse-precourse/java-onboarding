@@ -5,9 +5,12 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
+        int scoreOfPobi = getScore(pobi.get(0), pobi.get(1));
+        int scoreOfCrong = getScore(crong.get(0), crong.get(1));
 
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        if (scoreOfPobi > scoreOfCrong) return 1;
+        else if (scoreOfPobi < scoreOfCrong) return 2;
+        else return 0;
     }
 
     public static int getSum (int num){
