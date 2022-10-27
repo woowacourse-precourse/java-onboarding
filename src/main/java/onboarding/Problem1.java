@@ -54,7 +54,6 @@ class Problem1 {
         return Math.max(left_max, right_max);
     }
 
-
     public static int divideNum(Integer x){ // 각 자릿수 별로 나누고, 더한것이 가장 큰지 곱한 것이 가장 큰지 비교
         int addSum=0;
         int mulSum=1;
@@ -67,7 +66,5 @@ class Problem1 {
         int max= Math.max(addSum, mulSum);
         return max;
     }
-
-
 
 }
