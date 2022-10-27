@@ -1,5 +1,9 @@
-package onboarding;
+package onboarding.unitTest;
 
+import onboarding.Problem1;
+import onboarding.problem1.BookPageDiscriminator;
+import onboarding.problem1.BookScoreCalculator;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.params.ParameterizedTest;
