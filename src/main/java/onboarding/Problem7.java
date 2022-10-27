@@ -25,6 +25,22 @@ public class Problem7 {
                 recommendedUser.add(key);
             }
         });
+
+
+        for (String visitor : visitors) {
+            User visitedUser = new User(visitor);
+            if (!targetUserFriendList.contains(visitedUser)) {
+                if (recommendedUser.contains(visitedUser)) {
+                    recommendedUser.forEach( i -> {
+                        if (i.equals(visitedUser)) i.addOnePoint();
+                    });
+                }
+                else {
+                    visitedUser.addOnePoint();
+                    recommendedUser.add(visitedUser);
+                }
+            }
+        }
         List<String> answer = Collections.emptyList();
         return answer;
     }
