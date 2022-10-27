@@ -35,7 +35,9 @@ class Problem1 {
     private static int findWinnerAndMakeAnswer(int pobiScore, int crongScore) {
         if (pobiScore > crongScore) {
             return POBI_WIN;
-        } else if (pobiScore < crongScore) {
+        }
+
+        if (pobiScore < crongScore) {
             return CRONG_WIN;
         }
 
