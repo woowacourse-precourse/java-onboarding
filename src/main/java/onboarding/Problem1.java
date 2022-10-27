@@ -25,10 +25,12 @@ class Problem1 {
         int rightPage = pageNums.get(1);
 
         /* 입력 페이지에 대해서 검증을 진행한다. 다음은 예외 사항으로 간주한다.
-            1. 페이지의 범위가 1~400 범위인지 체크
-            2. 페이지가 시작이나 마지막 면인지 체크
+            1. 페이지의 범위가 1~400 사이가 아닌 경우
+            2. 페이지가 시작이나 마지막 면인 경우
+            3. 왼쪽 페이지가 홀수가 아니고, 오른쪽 페이지가 짝수가 아닌 경우
          */
-        if (isNotPageRange(leftPage, rightPage) || isPageFirstOrLast(leftPage)) {
+        if (isNotPageRange(leftPage, rightPage) || isPageFirstOrLast(leftPage) ||
+                isPageOddAndEvenRight(leftPage, rightPage)) {
             return true;
         }
 
@@ -47,13 +49,24 @@ class Problem1 {
     }
 
     /**
-     * 입력 페이지가 시작 면이거나 마지막 면인지 판단한다.
+     * 왼쪽 페이지 번호가 시작 면이거나 마지막 면인지 판단한다.
      *
      * @param leftPage 왼쪽 페이지
      * @return 왼쪽 페이지의 값이 1이거나 399라면 true, 아니라면 false
      */
     private static boolean isPageFirstOrLast(int leftPage) {
         return leftPage == 1 || leftPage == 399;
+    }
+
+    /**
+     * 왼쪽 페이지가 홀수, 오른쪽 페이지가 짝수가 아닌지 판단한다
+     *
+     * @param leftPage 왼쪽 페이지
+     * @param rightPage 오른쪽 페이지
+     * @return 왼쪽 페이지가 홀수가 아니고 오른쪽 페이지가 짝수가 아니면 true, 아니라면 false
+     */
+    private static boolean isPageOddAndEvenRight(int leftPage, int rightPage) {
+        return leftPage % 2 != 1 && rightPage % 2 != 0;
     }
 
 
