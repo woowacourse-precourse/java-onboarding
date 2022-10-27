@@ -5,8 +5,17 @@ public class Problem3 {
     static int[] clapCountArr = new int[10001];
 
     public static int solution(int number) {
-        int answer = 0;
-        return answer;
+        return calculateTotalClapCount(number);
+    }
+
+    private static int calculateTotalClapCount(int number) {
+        int totalClapCount = 0;
+
+        for (int i = 1; i <= number; i++) {
+            totalClapCount += calculateTargetClapCount(i);
+        }
+
+        return totalClapCount;
     }
 
     private static int calculateTargetClapCount(int target) {
