@@ -218,6 +218,70 @@ class ApplicationTest {
             List<Integer> result = List.of(0, 1, 1, 0, 0, 0, 0, 0, 0);
             assertThat(Problem5.solution(money)).isEqualTo(result);
         }
+
+        @Test
+        @DisplayName("오 만원 테스트")
+        void testFor50_000Won() {
+            int money = 100_000;
+            List<Integer> expected = List.of(2, 0, 0, 0, 0, 0, 0, 0, 0);
+            Assertions.assertIterableEquals(expected, Problem5.solution(money), "shoud return 2 of 50_000");
+        }
+        @Test
+        @DisplayName("일 만원 테스트")
+        void testFor10_000Won() {
+            int money = 30_000;
+            List<Integer> expected = List.of(0, 3, 0, 0, 0, 0, 0, 0, 0);
+            Assertions.assertIterableEquals(expected, Problem5.solution(money), "shoud return 3 of 10_000");
+        }
+        @Test
+        @DisplayName("오 천원 테스트")
+        void testFor5_000Won() {
+            int money = 5_000;
+            List<Integer> expected = List.of(0, 0, 1, 0, 0, 0, 0, 0, 0);
+            Assertions.assertIterableEquals(expected, Problem5.solution(money), "shoud return 1 of 5_000");
+        }
+        @Test
+        @DisplayName("일 천원 테스트")
+        void testFor1_000Won() {
+            int money = 3_000;
+            List<Integer> expected = List.of(0, 0, 0, 3, 0, 0, 0, 0, 0);
+            Assertions.assertIterableEquals(expected, Problem5.solution(money), "shoud return 3 of 1_000");
+        }
+        @Test
+        @DisplayName("오 백원 테스트")
+        void testFor500Won() {
+            int money = 500;
+            List<Integer> expected = List.of(0, 0, 0, 0, 1, 0, 0, 0, 0);
+            Assertions.assertIterableEquals(expected, Problem5.solution(money), "shoud return 1 of 500");
+        }
+        @Test
+        @DisplayName("일 백원 테스트")
+        void testFor100Won() {
+            int money = 200;
+            List<Integer> expected = List.of(0, 0, 0, 0, 0, 1, 0, 0, 0);
+            Assertions.assertIterableEquals(expected, Problem5.solution(money), "shoud return 2 of 100");
+        }
+        @Test
+        @DisplayName("오 십원 테스트")
+        void testFor50Won() {
+            int money = 50;
+            List<Integer> expected = List.of(0, 0, 0, 0, 0, 0, 1, 0, 0);
+            Assertions.assertIterableEquals(expected, Problem5.solution(money), "shoud return 1 of 50");
+        }
+        @Test
+        @DisplayName("일 십원 테스트")
+        void testFor10Won() {
+            int money = 30;
+            List<Integer> expected = List.of(0, 0, 0, 0, 0, 0, 0, 3, 0);
+            Assertions.assertIterableEquals(expected, Problem5.solution(money), "shoud return 3 of 10");
+        }     @Test
+        @DisplayName("일 원 테스트")
+        void testFor1Won() {
+            int money = 2;
+            List<Integer> expected = List.of(0, 0, 0, 0, 0, 0, 0, 0, 2);
+            Assertions.assertIterableEquals(expected, Problem5.solution(money), "shoud return 2 of 1");
+        }
+
     }
 
     @Nested
