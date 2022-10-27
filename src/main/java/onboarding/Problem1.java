@@ -19,6 +19,9 @@ class Problem1 {
 
         if (problem1.isExcept(pobi) || problem1.isExcept(crong)) {
             answer = -1;
+        } else {
+            int pobiValue = problem1.getMaxValue(pobi);
+            int crongValue = problem1.getMaxValue(crong);
         }
 
         return answer;
@@ -28,7 +31,8 @@ class Problem1 {
      * 페이지 번호에 예외가 있는 경우 true를 반환합니다.
      *
      * @param pages [왼쪽 페이지 번호, 오른쪽 페이지 번호]
-     * @return 예외가 있는 경우 true, 그렇지 않으면 false 반환*/
+     * @return 예외가 있는 경우 true, 그렇지 않으면 false 반환
+     */
     boolean isExcept(List<Integer> pages) {
         int left = pages.get(0);
         int right = pages.get(1);
@@ -42,5 +46,38 @@ class Problem1 {
         }
 
         return false;
+    }
+
+    /**
+     * 페이지 번호의 각 자리 합과 곱을 계산하여 최댓값을 반환합니다.
+     *
+     * @param page 페이지 번호
+     * @return 페이지 번호의 각 자리 합과 곱 중 최댓값
+     */
+    int calValue(int page) {
+        int sum = 0;
+        int mul = 1;
+
+        while (page > 0) {
+            sum += page % 10;
+            mul *= page % 10;
+            page /= 10;
+        }
+
+        return sum > mul ? sum : mul;
+    }
+
+    /**
+     * 왼쪽과 오른쪽 페이지 번호의 계산 결과 중 최댓값을 반환합니다.
+     *
+     * @param pages [왼쪽 페이지 번호, 오른쪽 페이지 번호]
+     * @return 왼쪽과 오른쪽 페이지 번호의 계산 결과 중 최댓값 반환
+     * @see Problem1#calValue(int)
+     */
+    int getMaxValue(List<Integer> pages) {
+        int leftValue = calValue(pages.get(0));
+        int rightValue = calValue(pages.get(1));
+
+        return leftValue > rightValue ? leftValue : rightValue;
     }
 }
