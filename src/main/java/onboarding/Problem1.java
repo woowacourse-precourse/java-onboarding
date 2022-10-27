@@ -16,4 +16,12 @@ class Problem1 {
         }
         return sum;
     }
+    static public int multiply(int num){
+        int sum =1;
+        while(num>0){
+            sum *= num%10;
+            num/= 10;
+        }
+        return sum;
+    }
 }
