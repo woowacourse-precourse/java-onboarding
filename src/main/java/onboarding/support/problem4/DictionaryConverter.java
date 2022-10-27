@@ -2,10 +2,14 @@ package onboarding.support.problem4;
 
 public class DictionaryConverter {
 
-    private String convertedString;
+    private final String convertedString;
 
-    public DictionaryConverter() {
-
+    public DictionaryConverter(String word) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < word.length(); i++) {
+            sb.append(getConvertedCharacter(word.charAt(i)));
+        }
+        this.convertedString = sb.toString();
     }
 
     public String getConvertedString() {
