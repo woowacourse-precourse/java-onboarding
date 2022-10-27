@@ -6,20 +6,29 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = 0;
+        try {
+            int pobiScore = getBestPageScore(pobi);
+            int crongScore = getBestPageScore(crong);
+
+            if(pobiScore > crongScore) answer += 1;
+            else if(pobiScore < crongScore) answer += 2;
+            
+        } catch (Exception e) {
+            answer -=1;
+        }
+
         return answer;
     }
 
-    private static int getBestPageScore(List<Integer> pages) {
+    private static int getBestPageScore(List<Integer> pages) throws Exception {
         Iterator<Integer> iterator = pages.iterator();
-        int returnValue = Integer.MIN_VALUE;
-        while(iterator.hasNext()) {
-            int page = iterator.next();
-            int now = Problem1.getScore(page);
-            if(returnValue < now) {
-                returnValue = now;
-            }
-        }
-        return returnValue;
+        int left = iterator.next();
+        int right = iterator.next();
+
+        if(Math.abs(left - right) > 1) throw new Exception("예외발생");
+
+        return Math.max(getScore(left), getScore(right));
+
     }
 
     private static int getScore(int page) {
