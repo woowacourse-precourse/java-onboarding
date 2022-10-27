@@ -32,8 +32,12 @@ public class Problem2 {
 			duplicationChar = ' ';
 		}
 
-		String answer = "answer";
-		return answer;
+		StringBuilder sb = new StringBuilder();
+		while (!deque.isEmpty()) {
+			sb.append(deque.pollFirst());
+		}
+
+		return sb.toString();
 	}
 
 }
