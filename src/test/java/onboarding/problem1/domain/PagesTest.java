@@ -12,4 +12,11 @@ public class PagesTest {
         Pages pages = new Pages(237, 238);
         assertThat(pages.getMaxSum()).isEqualTo(13);
     }
+    
+    @Test
+    @DisplayName("가장 큰 곱하기 숫자 구하기")
+    void getMaxMultiply() {
+        Pages pages = new Pages(237, 238);
+        assertThat(pages.getMaxMultiply()).isEqualTo(48);
+    }
 }

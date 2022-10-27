@@ -27,4 +27,11 @@ public class Pages {
                 .max()
                 .orElseThrow(() -> new NoSuchElementException(NOT_FOUND_PAGE_EXCEPTION_MESSAGE));
     }
+    
+    public int getMaxMultiply() {
+        return pages.stream()
+                .mapToInt(Page::multiplyOfDigits)
+                .max()
+                .orElseThrow(() -> new NoSuchElementException(NOT_FOUND_PAGE_EXCEPTION_MESSAGE));
+    }
 }
