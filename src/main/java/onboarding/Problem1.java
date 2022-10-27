@@ -23,8 +23,19 @@ class Problem1 {
         if(!isPageValid(pobi) || !isPageValid(crong))
             return -1;
 
+        int pobiMax = getMax(pobi);
+        int crongMax = getMax(crong);
+
         return answer;
     }
+
+    private static int getMax(List<Integer> pages) {
+        return Math.max(Math.max(sumDigitOfPage(pages.get(0)), sumDigitOfPage(pages.get(1))),
+                            Math.max(multiplyDigitOfPage(pages.get(0)),multiplyDigitOfPage(pages.get(1))));
+
+    }
+
+
     private static boolean isPageValid(List<Integer> pages){
         //invalid case : if page is not continue
         if(pages.get(1) - pages.get(0)!=1)
