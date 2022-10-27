@@ -13,19 +13,30 @@ public class Problem2 {
         List<String> splitString = Arrays.stream(cryptogram.split("")).collect(Collectors.toList());
         List<Integer> indexOfDuplicateWords = new ArrayList<>();
 
-        for (int i = 0; i < splitString.size()-1; i++) {
-            if (splitString.get(i).equals(splitString.get(i + 1))) {
-                indexOfDuplicateWords.add(i);
+        while (true) {
+
+            for (int i = 0; i < splitString.size() - 1; i++) {
+                if (splitString.get(i).equals(splitString.get(i + 1))) {
+                    indexOfDuplicateWords.add(i);
+                }
             }
+
+            if (indexOfDuplicateWords.size() == 0) {
+                break;
+            }
+
+            indexOfDuplicateWords.sort(Collections.reverseOrder());
+
+            for (Integer idx : indexOfDuplicateWords) {
+                splitString.subList(idx, idx + 2).clear();
+            }
+            indexOfDuplicateWords.clear();
         }
 
-        indexOfDuplicateWords.sort(Collections.reverseOrder());
+        return String.join("", splitString);
 
-        for (Integer idx : indexOfDuplicateWords) {
-            splitString.subList(idx, idx + 2).clear();
-        }
-
-        String answer = String.join("", splitString);
-        return answer;
     }
+
+
+
 }
