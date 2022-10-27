@@ -12,4 +12,8 @@ public class Problem2 {
         }
         return NO_DUPLICATE;
     }
+    private static String deleteDuplicate(String delete, int index){
+        String deleteComplete = delete.substring(0,index)+delete.substring(index+2);
+        return deleteComplete;
+    }
 }
