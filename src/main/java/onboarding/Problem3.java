@@ -2,11 +2,15 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Problem3 {
     public static int solution(int number) {
-        List<Integer> separateList = separateToNumber(number);
-        return (int)get369Count(separateList);
+
+        return IntStream.rangeClosed(1, number)
+                        .map(Problem3::get369Count)
+                        .sum();
+
 
     }
     private static List<Integer> separateToNumber(int number) {
@@ -17,8 +21,9 @@ public class Problem3 {
         }
         return separate;
     }
-    private static long get369Count(List<Integer> separateList) {
-        return separateList.stream()
+    private static int get369Count(int number) {
+        List<Integer> separate = separateToNumber(number);
+        return (int)separate.stream()
                     .filter(Problem3::is369)
                     .count();
     }
