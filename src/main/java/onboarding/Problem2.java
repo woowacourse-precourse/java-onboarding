@@ -28,7 +28,7 @@ class DuplicateDeleter implements Detector {
     public List<Integer> findPattern(String cryptogram) {
         int endPoint = 0;
         int i;
-        for(i = 0 ; i < cryptogram.length() ; i++) {
+        for(i = 0 ; i < cryptogram.length()-1 ; i++) {
             endPoint = findEndpoint(i, cryptogram);
             if (endPoint != i) {
                 break;
@@ -60,7 +60,7 @@ class PatternDeleter implements Deleter {
         StringBuilder result = new StringBuilder(cryptogram);
         List<Integer> position;
         position = detector.findPattern(cryptogram);
-        while(position.get(0) != position.get(1)){
+        while(position.get(0).intValue() != position.get(1).intValue()){
             result = delete(result, position);
             position = detector.findPattern(cryptogram);
         }
