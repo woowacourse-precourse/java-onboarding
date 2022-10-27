@@ -50,8 +50,23 @@ public class Problem6 {
             if (!resultEmailList.contains(email)) resultEmailList.add(email);
         }
 
+        //by Bubble Sort
         public void sortByAsc() {
+            for (int i = resultEmailList.size() - 1; i > 0; i--) {
+                for (int j = 0; j < i; j++) {
+                    if (isBiggerOrderThanNext(j)) swapWithNext(j);
+                }
+            }
+        }
 
+        private boolean isBiggerOrderThanNext(int index) {
+            return resultEmailList.get(index).compareTo(resultEmailList.get(index + 1)) > 0;
+        }
+
+        private void swapWithNext(int index) {
+            String tmp = resultEmailList.get(index);
+            resultEmailList.set(index, resultEmailList.get(index + 1));
+            resultEmailList.set(index + 1, tmp);
         }
     }
 }
