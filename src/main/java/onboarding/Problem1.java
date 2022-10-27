@@ -5,6 +5,10 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        int pobiLeftNumber;
+        int crongLeftNumber;
+        int pobiRightNumber;
+        int crongRightNumber;
 
         if (raisePageLengthException(pobi, crong) == 1){
             return answer = -1;
@@ -14,6 +18,12 @@ class Problem1 {
                 || raisePageBoundException(pobi.get(1), crong.get(1)) == 1) {
             return answer = -1;
         }
+
+        pobiLeftNumber = calculatePage(pobi.get(0));
+        crongLeftNumber = calculatePage(crong.get(0));
+
+        pobiRightNumber = calculatePage(pobi.get(1));
+        crongRightNumber = calculatePage(crong.get(1));
 
         return answer;
     }
@@ -38,6 +48,26 @@ class Problem1 {
         }
         return 0;
     }
+
+    public static int calculatePage(int page) {
+        int sum = 0;
+        int multiply = 1;
+        int lastNumber;
+
+        while (page != 0) {
+            lastNumber = page % 10;
+            sum += lastNumber;
+            multiply *= lastNumber;
+            page /= 10;
+        }
+
+        if (sum > multiply){
+            return sum;
+        }
+
+        return multiply;
+    }
+
 
 
 }
