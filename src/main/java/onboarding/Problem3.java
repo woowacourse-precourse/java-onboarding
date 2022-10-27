@@ -7,7 +7,16 @@ package onboarding;
  * - 누적된 박수 횟수를 return
  *
  * 1. 접근 방식
- * - 다이나믹 프로그래밍 방식 / 탑다운 방식 으로 접근
+ * - 다이나믹 프로그래밍 방식 / 탑다운 방식 으로 접근(accumClapCount())
+ *  _ 현재(number) 누적 박수 횟수 = 그 전(number-1) 누적 박수 횟수 + 현재 박수 횟수
+ *  _ 현재 박수 횟수를 구하는 메소드(calcClapCount) 생성
+ *  _ 그전 누적 박수 횟수는 accumClapCount() 메소드 재귀 호출
+ *
+ * 2. 3,6,9 계산 방식
+ * - 일의 자리수 일 때와 그 이상일 때로 구분
+ * - 일의 자리수의 경우 %10 를 이용하여 비교연산
+ * - 그 이상일때는 가장 큰 자리수 부터 하나씩 내려가면서 비교
+ *  _ 내려가는 시퀀스는 다음 자리수 비교를 위해 해당 자리수를 빼주고 비교할 자리수를 내려준다.(37890 -> 37890 - 30000 -> 7890)
  *
  * */
 public class Problem3 {
@@ -34,7 +43,7 @@ public class Problem3 {
             return memory[number];
         }
 
-        // 메모제이션에 존재하지 않는 값이라면 현재 누적 박수 횟수 = 그전(number-1) 누적 박수 횟수 + 현재 박수 횟수
+        // 메모제이션에 존재하지 않는 값이라면 현재 누적 박수 횟수 = 그 전(number-1) 누적 박수 횟수 + 현재 박수 횟수
         memory[number] = accumClapCount(number-1) + calcClapCount(number);
 
         return memory[number];
