@@ -41,4 +41,31 @@ class Problem1 {
       return pages.get(1) - 1 == pages.get(0);
     }
   }
+
+  static class Calculation {
+    public static int getMaxValue(List<Integer> pages) {
+      int plusMax = Math.max(plus(pages.get(0)), plus(pages.get(1)));
+      int multipleMax = Math.max(multiple(pages.get(0)), multiple(pages.get(1)));
+      return Math.max(plusMax, multipleMax);
+    }
+
+    private static int plus(int page) {
+      int result = 0;
+      while (page != 0) {
+        result += page % 10;
+        page /= 10;
+      }
+      return result;
+    }
+
+    private static int multiple(int page) {
+      int result = 1;
+      while (page != 0) {
+        result *= page % 10;
+        page /= 10;
+      }
+      return result;
+    }
+
+  }
 }
