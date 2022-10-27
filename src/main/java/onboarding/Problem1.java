@@ -14,7 +14,7 @@ class Problem1 {
         try {
             Vericication verifyPobi = new Vericication(pobi);
             Vericication verifyCrong = new Vericication(crong);
-                
+
         } catch (IllegalArgumentException e) {
             answer = -1;
             return answer;
@@ -49,5 +49,16 @@ class Vericication {
 
     private void verifyOrderedPage(List<Integer> book) {
         if (book.get(LEFT_PAGE) + 1 != book.get(RIGHT_PAGE)) throw new IllegalArgumentException();
+    }
+    
+    private List<Integer> getDigitNum(Integer page) {
+
+        List<Integer> returnDigit = new ArrayList<>();
+
+        while(page != 0) {
+            returnDigit.add(page % 10);
+            page /= 10;
+        }
+        return returnDigit;
     }
 }
