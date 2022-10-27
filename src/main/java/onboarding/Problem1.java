@@ -8,14 +8,19 @@ class Problem1 {
     static final int LEFT = 0;
     static final int RIGHT = 1;
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+
         if (!isPageRange(pobi.get(LEFT), pobi.get(RIGHT)) || !isPageRange(crong.get(LEFT), crong.get(RIGHT))) {
             return -1;
         }
         int maxValuePobi = getMaxValue(pobi.get(LEFT), pobi.get(RIGHT));
         int maxValueCrong = getMaxValue(crong.get(LEFT), crong.get(RIGHT));
 
-        return answer;
+        if (maxValuePobi>maxValueCrong) {
+            return 1;
+        } else if (maxValuePobi<maxValueCrong){
+            return 2;
+        }
+        return 0;
     }
 
     private static int getPlus(Integer pageNumber) {
