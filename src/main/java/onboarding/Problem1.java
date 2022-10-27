@@ -35,14 +35,20 @@ class Problem1 {
         int pobiBigNumber = getBigNumber(pobiEachListLeftAndRight);
         int crongBigNumber = getBigNumber(crongEachListLeftAndRight);
 
-        retrunBigNumber(pobiBigNumber, crongBigNumber);
+        answer = retrunBigNumber(pobiBigNumber, crongBigNumber);
 
         return answer;
 
     }
 
-    private static void retrunBigNumber(int pobiBigNumber, int crongBigNumber) {
-
+    private static int retrunBigNumber(int pobiBigNumber, int crongBigNumber) {
+        if (pobiBigNumber > crongBigNumber) {
+            return 1;
+        } else if (pobiBigNumber < crongBigNumber) {
+            return 2;
+        } else {
+            return 0;
+        }
     }
 
     private static int getBigNumber(List<int[]> eachListLeftAndRight) {
@@ -66,8 +72,6 @@ class Problem1 {
         allList.add(leftMultiplicationSum);
         allList.add(rightSum);
         allList.add(rightMultiplicationSum);
-
-        System.out.println("allList = " + allList);
 
         return Collections.max(allList);
     }
