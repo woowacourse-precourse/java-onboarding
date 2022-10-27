@@ -7,6 +7,10 @@ public class Problem4 {
         return answer;
     }
 
+    private static char calculateCharacter(char standardA, char standardZ, char target) {
+        return (char)(standardA + (standardZ - target));
+    }
+
     private static boolean isAlphabet(char target) {
         return isUpperCase(target) || isLowerCase(target);
     }
