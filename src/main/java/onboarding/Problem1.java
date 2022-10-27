@@ -40,4 +40,20 @@ class Problem1 {
         }
         return true;
     }
+
+    // 합 연산과 곱 연산 중 더 큰 숫자를 리턴
+    private static int getLargerNumber(int page) {
+        int sum = 0;
+        int product = 1;
+        int remain;
+
+        while (page > 0) {
+            remain = page % 10;
+            sum += remain;
+            product *= remain;
+            page /= 10;
+        }
+
+        return Math.max(sum, product);
+    }
 }
