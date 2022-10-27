@@ -106,6 +106,23 @@ class Problem1 {
     }
 
     /**
+     * 입력 받은 페이지 번호의 각 자리수의 곱을 구한다.
+     *
+     * @param page 페이지 번호
+     * @return 각 자리수의 곱
+     */
+    private static int getMultiplyValue(int page) {
+        int[] pageArr = getPageValueArray(page);
+
+        int multiVal = 1;
+        for(int pageVal : pageArr) {
+            multiVal *= pageVal;
+        }
+
+        return multiVal;
+    }
+
+    /**
      * 입력 받은 페이지의 각 자릿수를 담은 배열을 구한다.
      *
      * @param page 페이지 번호
