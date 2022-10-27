@@ -15,7 +15,34 @@ class Problem1 {
      * @return 첫 번째 참여자가 이긴다면 1, 두 번째 참여자가 이긴다면 2, 무승부라면 0, 예외사항은 -1
      */
     private int getResult(List<Integer> pages1, List<Integer> pages2){
+        try{
+            //파라미터 유효성 검사
+            checkParameterValidation(pages1, pages2);
 
+            //각 페이지 리스트의 점수 측정
+            int score1 = getScore(pages1);
+            int score2 = getScore(pages2);
+
+            return compareScore(score1, score2);
+        } catch (RuntimeException e){
+            return -1;
+        }
+    }
+
+    /**
+     * 두 개의 점수를 비교하여 결과를 리턴
+     * @param score1 : 첫 번째 점수
+     * @param score2 : 두 번째 점수
+     * @return 첫 번째 점수가 더 높다면 1, 두 번째 점수가 더 높다면 2, 점수가 같다면 0
+     */
+    private int compareScore(int score1, int score2){
+        if(score1 > score2){
+            return 1;
+        } else if (score2 < score1) {
+            return 2;
+        } else {
+            return 0;
+        }
     }
 
     /**
@@ -72,8 +99,4 @@ class Problem1 {
     private int getSumOfList(List<Integer> numList) {
 
     }
-
-
-
-
 }
