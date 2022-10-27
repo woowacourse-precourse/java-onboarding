@@ -7,4 +7,15 @@ public class Problem6 {
         List<String> answer = List.of("answer");
         return answer;
     }
+
+    static class Member {
+        private String name;
+        private String email;
+
+        public Member(String name, String email) {
+            this.name = name;
+            this.email = email;
+        }
+    }
+
 }
