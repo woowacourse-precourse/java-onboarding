@@ -11,6 +11,7 @@ class Problem1 {
             checkPagesSize(pobi, crong);
             checkPageValid(pobi, crong);
         } catch (Exception e) {
+            e.printStackTrace();
             return -1;
         }
 
