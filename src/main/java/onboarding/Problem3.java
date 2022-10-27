@@ -7,11 +7,21 @@ firstProcess(), secondProcess(), thirdProcess(), fourthProcess()
 
 public class Problem3 {
     public static int solution(int number) {
+        int answer = 0;
         Problem3 problem3 = new Problem3();
 
-        int answer = problem3.countClap(number);
+        try {
+            if (number < 1 || 10000 < number) {
+                throw new Exception("Input Number is out of range.");
+            }
 
-        return answer;
+            answer = problem3.countClap(number);
+
+            return answer;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return 0;
+        }
     }
 
     public int countClap(int number) {
