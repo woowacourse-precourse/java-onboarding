@@ -7,7 +7,7 @@ public class Problem2 {
 
         Cryptogram cryptogram1 = new Cryptogram(cryptogram);
 
-        String answer = "answer";
+        String answer = cryptogram1.decode();
         return answer;
     }
 }
