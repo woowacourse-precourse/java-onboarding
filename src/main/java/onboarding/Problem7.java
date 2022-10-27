@@ -92,6 +92,22 @@ public class Problem7 {
         return (int)visitors.stream().filter(visitor -> visitor.equals(crew)).count();
     }
 
+    public static Map<String, Integer> getRecommendScoreByCrew(String me, Map<String, Set<String>> friendGraph, List<String> visitors) {
+        Map<String, Integer> cntOfSameFriendsWithMeByCrew = getCntOfSameFriendsWithMeByCrew(friendGraph, me);
+        Map<String, Integer> recommendScoreByCrew = new HashMap<>();
+
+        friendGraph.keySet().forEach(crew -> {
+            int cntOfSameFriendsWithMe = 0;
+            if (cntOfSameFriendsWithMeByCrew.containsKey(crew))
+                cntOfSameFriendsWithMe = cntOfSameFriendsWithMeByCrew.get(crew);
+            int cntOfVisit = getCntOfVisit(visitors, crew);
+            int recommendScore = getRecommendScore(cntOfSameFriendsWithMe, cntOfVisit);
+            recommendScoreByCrew.put(crew, recommendScore);
+        });
+
+        return recommendScoreByCrew;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
