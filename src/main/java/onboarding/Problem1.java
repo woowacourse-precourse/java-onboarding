@@ -8,6 +8,9 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         if (validate(pobi) || validate(crong)) return -1;
 
+        int pobiResult = getMaxProcessedValue(pobi);
+        int crongResult = getMaxProcessedValue(crong);
+
         return answer;
     }
 
@@ -16,6 +19,16 @@ class Problem1 {
         if (pages.get(1) == 400 || pages.get(0) == 1) return true;
 
         return false;
+    }
+
+    private static int getMaxProcessedValue(List<Integer> pages) {
+        int[] oddNumberDigits = spreadDigit(pages.get(0));
+        int[] evenNumberDigits = spreadDigit(pages.get(1));
+
+        int resultOdd = Math.max(getMultiValue(oddNumberDigits), getAddValue(oddNumberDigits));
+        int resultEven = Math.max(getMultiValue(evenNumberDigits), getAddValue(evenNumberDigits));
+
+        return Math.max(resultOdd, resultEven);
     }
 
     private static int[] spreadDigit(Integer value) {
