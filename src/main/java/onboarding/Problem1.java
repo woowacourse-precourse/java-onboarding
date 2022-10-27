@@ -23,6 +23,17 @@ class Problem1 {
             return -1;
         }
 
+        ArrayList<Integer> pLeftList = new ArrayList<>();
+        ArrayList<Integer> pRightList = new ArrayList<>();
+
+        addList(pLeftPage, pLeftList);
+        addList(pRightPage, pRightList);
+
+        ArrayList<Integer> cLeftList = new ArrayList<>();
+        ArrayList<Integer> cRightList = new ArrayList<>();
+
+        addList(cLeftPage, cLeftList);
+        addList(cRightPage, cRightList);
 
         return answer;
     }
@@ -41,5 +52,18 @@ class Problem1 {
 
     private static boolean isLeftOddNumberAndRightEvenNumberPage(int leftPage, int rightPage) {
         return leftPage % 2 == 0 || rightPage % 2 != 0;
+    }
+
+    private static void addList(int page, ArrayList<Integer> list) {
+        while (true) {
+            int num = page % 10;
+            if (num != 0) {
+                list.add(num);
+            }
+            if (page / 10 == 0) {
+                break;
+            }
+            page /= 10;
+        }
     }
 }
