@@ -2,17 +2,25 @@ package onboarding;
 
 public class Problem3 {
     private final static int[] MAX_CLAP_BY_DIGIT = {12000, 900, 60, 3, 0}; // a[n-1 - i] = 3 * (10 ^ (i-1)) + 10 * a[n-i - (i-1)]  (i >= 1)
-    private final static int[] MULTIPLES_OF_TEN_UNDER_I = {1000, 100, 10, 1, 0};
+    private final static int[] MULTIPLES_OF_TEN = {10000, 1000, 100, 10, 1};
     public static int solution(int number) {
         int answer = 0;
         return answer;
     }
+    private static int getTotalClap(int number) {
+        int totalClap = 0;
+        int[] numbers = toInts(zeroPadding(number));
+        for(int i = 0; i < numbers.length; i++) {
+            totalClap += getClapByDigit(numbers[i], number);
+        }
+        return totalClap;
+    }
 
     private static int getClapByDigit(int i, int number) {
         if (i == 0) return 0;
-        int clap = i * MAX_CLAP_BY_DIGIT[i] + getNumOfMulOfThreeLessThanValue(i) * MULTIPLES_OF_TEN_UNDER_I[i];
+        int clap = i * MAX_CLAP_BY_DIGIT[i] + getNumOfMulOfThreeLessThanValue(i) * (MULTIPLES_OF_TEN[i] / 10);
         if (i % 3 == 0) {
-            clap += number / (MULTIPLES_OF_TEN_UNDER_I[i] * 10);
+            clap += number / (MULTIPLES_OF_TEN[i]);
         }
         return clap;
     }
