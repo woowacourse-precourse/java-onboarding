@@ -24,12 +24,14 @@ class Problem1 {
             return mulNum;
     }
 
-    public int getMaxNum(List<Integer> numList){
+    public static int getMaxNum(List<Integer> numList){
         int max=0;
         for(int i=0;i<numList.size();i++){
-
+            if(max>numList.get(i)){
+                max=numList.get(i);
+            }
         }
-        return 0;
+        return max;
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
