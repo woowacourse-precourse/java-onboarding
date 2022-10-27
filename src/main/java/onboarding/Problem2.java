@@ -17,8 +17,8 @@ public class Problem2 {
     }
 
     public static int getDuplicatesIndex(String str) {
-        for (int i = 0; i < str.length() - 1; i++) {
-            if (str.charAt(i) == str.charAt(i + 1)) return i;
+        for (int index = 0; index < str.length() - 1; index++) {
+            if (str.charAt(index) == str.charAt(index + 1)) return index;
         }
         return NO_DUPLICATE;
     }
