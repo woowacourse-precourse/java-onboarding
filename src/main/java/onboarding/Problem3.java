@@ -5,7 +5,6 @@ public class Problem3 {
 
         int answer = 0;
         return answer;
-
     }
 
     public static long countChar(String numberStr, char threeSixNine) {
@@ -13,5 +12,4 @@ public class Problem3 {
                 .filter(character -> character == threeSixNine)
                 .count();
     }
-
 }
