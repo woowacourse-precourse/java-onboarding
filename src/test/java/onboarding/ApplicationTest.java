@@ -251,15 +251,26 @@ class ApplicationTest {
         }
     }
 
-//    @Nested
-//    class Problem4Test {
-//        @Test
-//        void case1() {
-//            String word = "I love you";
-//            String result = "R olev blf";
-//            assertThat(Problem4.solution(word)).isEqualTo(result);
-//        }
-//    }
+    @Nested
+    class Problem4Test {
+        @Test
+        void case1() {
+            String word = "I love you";
+            String result = "R olev blf";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+
+        @Test
+        void checkAlphaTest() {
+            assertThat(Problem4.checkAlpha('a')).isEqualTo(true);
+        }
+
+        @Test
+        void changeCharacter() {
+            char data = 'b';
+            assertThat(Problem4.changeCharacter(data)).isEqualTo(25 - data + 'a' * 2);
+        }
+    }
 //
 //    @Nested
 //    class Problem5Test {
