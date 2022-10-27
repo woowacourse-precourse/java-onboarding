@@ -3,7 +3,7 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-    static int calMax(Integer num) {
+    static int calculateMax(Integer num) {
         int sum = 0;
         int mul = 1;
         while(num > 0) {
@@ -29,8 +29,8 @@ class Problem1 {
                 throw e;
             }
 
-            int pobiMax = Math.max(calMax(pobiLeft),calMax(pobiRight));
-            int crongMax = Math.max(calMax(crongLeft),calMax(crongRight));
+            int pobiMax = Math.max(calculateMax(pobiLeft),calculateMax(pobiRight));
+            int crongMax = Math.max(calculateMax(crongLeft),calculateMax(crongRight));
 
             if (pobiMax > crongMax) answer = 1;
             if (pobiMax < crongMax) answer = 2;
