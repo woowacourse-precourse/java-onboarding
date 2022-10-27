@@ -2,16 +2,15 @@ package onboarding;
 
 import java.util.List;
 
-
-
-
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+
+       
         return answer;
     }
-    
-    static int leftPageCheck(int page){
+
+    static int PageCheck(int page){
         int MAX_PAGE_ADD =0;
         int MAX_PAGE_MUL =1;
 
@@ -22,5 +21,4 @@ class Problem1 {
         }
         return Math.max(MAX_PAGE_ADD,MAX_PAGE_MUL);
     }
-
 }
