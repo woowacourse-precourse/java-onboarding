@@ -12,6 +12,17 @@ class Problem1 {
         }
         return sum;
     }
+
+    /* 각각의 자리를 곱하는 기능 */
+    public static int mul(int n) {
+        int sum = 1;
+        while (n > 0) {
+            sum *= (n % 10);
+            n /= 10;
+        }
+        return sum;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
