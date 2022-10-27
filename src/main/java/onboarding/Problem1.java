@@ -7,31 +7,34 @@ import java.util.Random;
 class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        // pobi와 crong의 길이는 2이다.
-        // pobi와 crong에는 [왼쪽 페이지 번호, 오른쪽 페이지 번호]가 순서대로 들어있다.
+        // 1. 페이지가 연속적인가 -> 아닐경우 return -1
+        // 2. 오른쪽 왼쪽 계산해주는 메소드
+        // 3. 나의 큰수 결정하는 메소드
+        // 4. 포비랑 크롱을 비교하는 메소드 -> return 값을 정하는 메소드 : solution
 
-        // 2. 왼쪽 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구한다.
-        // 3. 오른쪽 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구한다.
-        int pobiMax =0;
-        int crongMax =0;
+        return -1;
+    }
 
-        int pobiPlus = pobi.get(0)+pobi.get(1);
-        int crongPlus = crong.get(0)+crong.get(1);
+    public boolean checkPage(List<Integer> list){ // 페이지 연속 확인하는 메소드
 
-        int pobiTimes = pobi.get(0)+pobi.get(1);
-        int crongTimes = crong.get(0)+crong.get(1);
+        return false;
 
-        if(pobiPlus > pobiTimes) {pobiMax = pobiPlus;}
-        else pobiMax = pobiTimes;
+    }
 
-        if(crongPlus > crongTimes) {crongMax = crongPlus;}
-        else crongMax = crongTimes;
+    public int calMax(List<Integer> list){ // 왼쪽 오른쪽 페이지 계산해주는 메소드
+        // 왼쪽 페이지의 덧셈 곱셈을  -> 큰수결정
+        // 오른쪽 페이지의 덧셈 곱셈을  -> 큰수결정
+        // 왼 vs 오 큰수 결정 해서 반환
+        return 0;
+    }
 
+    public int calPlus(int number){ // 각페이지의 덧셈을 해주는 메소드
 
-        if(pobiMax>crongMax) {System.out.print("|" +pobi+ "|" +crong+ "| 1 |");return 1;}
-        else if(pobiMax<crongMax) {System.out.print("|" +pobi+ "|" +crong+ "| 1 |");return 2;}
-        else {System.out.print("|" +pobi+ "|" +crong+ "| 0 |");return 0;}
+        return 0;
+    }
 
+    public int calMulti(int number){ // 각페이지의 곱셈을 해주는 메소드
+        return 0;
     }
 
 
