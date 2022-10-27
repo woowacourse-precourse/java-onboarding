@@ -6,13 +6,20 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int pobiNumber, crongNumber;
+
+        if (pobi.get(1) - pobi.get(0) != 1 || crong.get(1) - crong.get(0) != 1)
+            return -1;
+        if (pobi.equals(List.of(1, 2)) || pobi.equals(List.of(399, 400)))
+            return -1;
+        else if (crong.equals(List.of(1, 2)) || crong.equals(List.of(399, 400)))
+            return -1;
+
         int leftPage = toBigNumber(add(sperater(pobi.get(0))), multiply(sperater(pobi.get(0))));
         int rightPage = toBigNumber(add(sperater(pobi.get(1))), multiply(sperater(pobi.get(1))));
         pobiNumber = toBigNumber(leftPage, rightPage);
         leftPage = toBigNumber(add(sperater(crong.get(0))), multiply(sperater(crong.get(0))));
         rightPage = toBigNumber(add(sperater(crong.get(1))), multiply(sperater(crong.get(1))));
         crongNumber = toBigNumber(leftPage, rightPage);
-
 
         int answer = Compare(pobiNumber, crongNumber);
         return answer;
