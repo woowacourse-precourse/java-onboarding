@@ -11,13 +11,17 @@ class Problem1 {
         if (isValidInput(pobi) || isValidInput(crong)) {
             return EXCEPTION;
         }
+        int pobiScore = computeScore(pobi.get(0), pobi.get(1));
+        int crongScore = computeScore(crong.get(0), crong.get(1));
 
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        return 0;
     }
 
-    private static int computeScore(List<Integer> input) {
-        return 0;
+    private static int computeScore(int leftPageNum, int rightPageNum) {
+        int leftPageScore = Math.max(plusEachDigit(leftPageNum), multiplyEachDigit(leftPageNum));
+        int rightPageScore = Math.max(plusEachDigit(rightPageNum), multiplyEachDigit(rightPageNum));
+
+        return Math.max(leftPageScore, rightPageScore);
     }
 
     private static int plusEachDigit(int num) {
@@ -40,16 +44,10 @@ class Problem1 {
         int leftPageNum = input.get(0);
         int rightPageNum = input.get(1);
 
-        if (!isOdd(leftPageNum) || isOdd(rightPageNum) || leftPageNum + 1 != rightPageNum) {
-            return false;
-        }
-        return true;
+        return isOdd(leftPageNum) && !isOdd(rightPageNum) && leftPageNum + 1 == rightPageNum;
     }
 
     private static boolean isOdd(int num) {
-        if (num % 2 == 1) {
-            return true;
-        }
-        return false;
+        return num % 2 == 1;
     }
 }
