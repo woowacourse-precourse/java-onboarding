@@ -8,11 +8,10 @@ public class Problem2 {
         while (true){
             if(!beAbleToDelete(cryptogram)) break;
 
-
+            cryptogram = deleteDuplicatedChar(cryptogram);
         }
 
         // 결과 반환
-
 
         return answer;
     }
@@ -20,11 +19,9 @@ public class Problem2 {
     /**
      * 문자열에 삭제할 중복된 문자들이 있는지 확인하는 메소드
      * @param str
-     * @return
+     * @return 삭제할 문자가 있으면 true 반환, 없으면 false 반환
      */
     static boolean beAbleToDelete(String str){
-        boolean[] isDuplicated = new boolean[str.length()];
-
         for(int i=0; i<str.length()-1; i++){
             if(str.charAt(i) == str.charAt(i+1)){
                 return true;
@@ -32,6 +29,31 @@ public class Problem2 {
         }
 
         return false;
+    }
+
+    /**
+     * 중복된 문자를 삭제하는 메소드
+     * @param str
+     * @return 중복된 문자를 삭제한 후의 문자열을 반환
+     */
+    static String deleteDuplicatedChar(String str){
+        String result = "";
+        boolean[] isDuplicated = new boolean[str.length()];
+
+        for(int i=0; i<str.length()-1; i++){
+            if(str.charAt(i) == str.charAt(i+1)){
+                isDuplicated[i] = true;
+                isDuplicated[i+1] = true;
+            }
+        }
+
+        for(int i=0; i<isDuplicated.length; i++){
+            if(!isDuplicated[i]){
+                result += str.charAt(i);
+            }
+        }
+
+        return result;
     }
 
 }
