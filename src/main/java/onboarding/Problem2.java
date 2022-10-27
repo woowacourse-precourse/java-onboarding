@@ -14,11 +14,34 @@ public class Problem2 {
     }
 
     public static void main(String[] args) {
-        String inputCryptogram = Input2.inputCryptogram();
+        Program2.start();
+        String inputCryptogram = Program2.input();
+        Program2.validate(inputCryptogram);
+        String result = Program2.decode(inputCryptogram);
+        Program2.end("cryptogram", inputCryptogram, result);
+    }
+}
+
+class Program2 {
+    static void start() {
+        OutView2.printStart();
+    }
+
+    static String input() {
+        return Input2.inputCryptogram();
+    }
+
+    static void validate(String inputCryptogram) {
         Cryptogram.validateValueRange(inputCryptogram);
         Cryptogram.validateValueCase(inputCryptogram);
-        String result = Cryptogram.decodeValue(inputCryptogram);
-        OutView2.printHead("cryptogram");
+    }
+
+    static String decode(String inputCryptogram) {
+        return Cryptogram.decodeValue(inputCryptogram);
+    }
+
+    static void end(String program, String inputCryptogram, String result) {
+        OutView2.printHead(program);
         OutView2.printResult(inputCryptogram, result);
     }
 }
