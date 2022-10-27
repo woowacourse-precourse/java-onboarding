@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem6 {
 
@@ -41,6 +42,10 @@ public class Problem6 {
         });
 
         return duplicatedEmails;
+    }
+
+    public static List<String> getSortedListBySet(Set<String> set) {
+        return set.stream().sorted().collect(Collectors.toList());
     }
 
     public static List<String> solution(List<List<String>> forms) {
