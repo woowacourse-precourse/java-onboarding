@@ -6,6 +6,9 @@ public class Problem3 {
         return answer;
     }
 
+    private static String zeroPadding(int number) {
+        return String.format("%05d", number);
+    }
     private static int[] toInts(String value) {
         int[] numbers = new int[value.length()];
         for(int i = 0; i < value.length(); i++) {
