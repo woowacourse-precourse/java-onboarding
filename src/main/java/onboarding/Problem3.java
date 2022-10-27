@@ -8,14 +8,23 @@ public class Problem3 {
         for (int i = 1; i <= number; i++) {
             String str = String.valueOf(i);
 
-            for (int j = 0; j < str.length(); j++) {
-                int clap = str.charAt(j) - '0';
-
-                // 3 6 9가 포함될 시 answer+1
-                if(clap != 0 && clap%3 == 0) answer++;
-            }
+            answer += checkClap(str);
         }
 
         return answer;
+    }
+
+    // 3.6.9가 존재하는지 확인하는 메소드
+    private static int checkClap(String str) {
+        int count = 0;
+
+        for (int j = 0; j < str.length(); j++) {
+            int clap = str.charAt(j) - '0';
+
+            // 3 6 9가 포함될 시 answer+1
+            if(clap != 0 && clap%3 == 0) count++;
+        }
+        
+        return count;
     }
 }
