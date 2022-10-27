@@ -8,7 +8,7 @@ public class Problem3 {
             String str = Integer.toString(i);
             char[] numChArr = str.toCharArray();
 
-            for(char chNum : chArr){
+            for(char chNum : numChArr){
                 if(chNum == '3' || chNum == '6' || chNum == '9'){
                     answer++;
                 } // end if
