@@ -4,11 +4,6 @@ public class Problem4 {
     public static String solution(String word) {
         //아스키 코드 A = 65, Z = 90, a = 97, z = 122
         String answer = "";
-        answer = treeFrog(word);
-        return answer;
-    }
-    public static String treeFrog(String word){
-        String answer = "";
         for (int i = 0; i < word.length(); i++) {
             String s = word.substring(i, i+1);
             answer = alphabetChange(answer, s);
