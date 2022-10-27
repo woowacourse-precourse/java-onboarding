@@ -10,7 +10,6 @@ public class Problem4 {
         String answer = "";
 
         initAlphabetDictionary();
-
         answer = convertString(word);
 
         return answer;
