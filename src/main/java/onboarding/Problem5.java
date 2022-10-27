@@ -46,7 +46,8 @@ public class Problem5 {
     }
 
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
-        return answer;
+        return getCapableBillsCount(
+                List.of(Bill.FIFTY_THOUSAND, Bill.TEN_THOUSAND, Bill.FIVE_THOUSAND, Bill.ONE_THOUSAND, Bill.FIVE_HUNDRED, Bill.ONE_HUNDRED, Bill.FIFTY, Bill.TEN, Bill.ONE),
+                money);
     }
 }
