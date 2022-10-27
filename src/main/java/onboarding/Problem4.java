@@ -13,6 +13,13 @@ public class Problem4 {
     public static String solution(String word) {
         String answer = "";
         HashMap<Character, Character> hashMap = makeHashMap();
+        for (int i = 0; i < word.length(); i++) {
+            if (isAlphabet(word.charAt(i))){
+                answer += hashMap.get(word.charAt(i));
+            }else{
+                answer += word.charAt(i);
+            }
+        }
         return answer;
     }
 
