@@ -21,6 +21,9 @@ class Problem1 {
         int res = (value % 10) + (value % 100 / 10) + (value / 100);
         return res;
     }
-
-
+    // 각 자리 숫자를 곱하는 메서드
+    int mulValue(int value) {
+        int res = (value % 10) * (value % 100 / 10) + (value / 100);
+        return res;
+    }
 }
