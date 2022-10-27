@@ -51,7 +51,39 @@ class Problem1 {
      * @param pages2 : 두 번째 참여자의 page list
      */
     private void checkParameterValidation(List<Integer> pages1, List<Integer> pages2){
+        //페이지 유효성 검사
+        checkPagesValidation(pages1);
+        checkPagesValidation(pages2);
+    }
 
+    /**
+     * 페이지 리스트의 유효성을 검사
+     * @param pages : 두 개의 페이지를 포함하고 있는 페이지리스트
+     */
+    private void checkPagesValidation(List<Integer> pages){
+        int leftPage = pages.get(0);
+        int rightPage = pages.get(1);
+
+        //왼쪽페이지가 홀수 int type 인지, 오른쪽 페이지가 짝수 int type 인지 체크 (NPE 체크가 포함됨)
+        if(leftPage % 2 == 1){
+            throw new RuntimeException("왼쪽 페이지가 짝수입니다.");
+        }
+        if (rightPage % 2 == 1) {
+            throw new RuntimeException("오른쪽 페이지가 홀수입니다.");
+        }
+
+        //오른쪽 페이지가 왼쪽페이지보다 1만큼 더 큰지 체크
+        if(rightPage - leftPage != 1){
+            throw new RuntimeException("오른쪽 페이지가 왼쪽페이지 보다 1만큼 더 크지 않습니다.");
+        }
+
+        //시작면 또는 마지막 면인지 체크
+        if(leftPage == 1){
+            throw new RuntimeException("시작 면이 나오도록 펼쳤습니다.");
+        }
+        if(rightPage == 400){
+            throw new RuntimeException("마지막 면이 나오도록 펼쳤습니다.");
+        }
     }
 
     /**
