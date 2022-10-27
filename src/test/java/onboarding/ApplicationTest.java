@@ -109,6 +109,14 @@ class ApplicationTest {
             String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
+        @Test
+        @DisplayName("연속하는 중복문자가 주어질 경우 완전 삭제")
+        void testForConsecutiveDuplicateCharacter() {
+            String cryptogram = "zyellleeyz";
+            String result = "";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
     }
 
     @Nested
