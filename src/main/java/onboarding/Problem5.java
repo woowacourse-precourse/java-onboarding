@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -27,6 +28,21 @@ public class Problem5 {
 
     public static int getCapableBillCount(Bill bill, int money) {
         return money / bill.getValue();
+    }
+
+    public static List<Integer> getCapableBillsCount(List<Bill> bills, int money) {
+        ArrayList<Integer> counts = new ArrayList<>();
+
+        // TODO: bills 정렬
+
+        for (Bill bill: bills) {
+            int count = getCapableBillCount(bill, money);
+            money -= count * bill.getValue();
+
+            counts.add(count);
+        }
+
+        return counts;
     }
 
     public static List<Integer> solution(int money) {
