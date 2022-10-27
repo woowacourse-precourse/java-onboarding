@@ -17,8 +17,15 @@ public class Problem6 {
     }
     public static void main(String[] args){
         String[][] email = {{"jm@email.com", "제이엠"},{"jason@email.com", "제이슨"},{"woniee@email.com", "워니"},{"mj@email.com", "엠제이"},{"nowm@email.com", "이제엠"}};
+        String target = "@";
+        String[][] email_id;
         for(int i = 0; i < email.length;i++){
-            System.out.print(email[i][0]);
+            int target_num = email[i][0].indexOf(target);
+            // System.out.print(email[i][0]);
+            // System.out.print(',');
+            System.out.print(email[i][0].substring(0,target_num)); // @ 앞 문자열만 파싱
+            System.out.print(',');
+            System.out.print(email[i][0].substring(target_num)); // @ 부터 끝까지 파싱 <- 이메일 양식이 맞는 확인에 쓸 것
             System.out.print(',');
             // for(int j = 0; j <email[i].length;j++){
             //     System.out.print(email[i][0]);
