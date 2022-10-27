@@ -21,8 +21,8 @@ class Problem1 {
 }
 
 class PageNumGame {
-    List<Integer> gamer1;
-    List<Integer> gamer2;
+    private List<Integer> gamer1;
+    private List<Integer> gamer2;
 
     PageNumGame(List<Integer> gamer1, List<Integer> gamer2){
         this.gamer1 = gamer1;
