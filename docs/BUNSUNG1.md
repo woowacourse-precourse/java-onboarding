@@ -1,4 +1,4 @@
-## Solution: bunsung92
+# Solution: bunsung92
 
 1. 책을 임의로 펼친다.
 2. 왼쪽 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구한다.
@@ -36,7 +36,7 @@
 포비가 이긴다면 1, 크롱이 이긴다면 2, 무승부는 0, 
 예외사항은 -1로 return 하도록 solution 메서드를 완성하라.
 
-# Commit
+### Commit
 - [x] feat: add calculate sum method
 - [x] feat: add calculate multiplication method 
 - [x] feat: add error handling and result game method
