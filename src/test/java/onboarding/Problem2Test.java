@@ -17,6 +17,11 @@ class Problem2Test {
         assertEquals(cryptogram,"browoannaon");
     }
 
-
+    @Test
+    @DisplayName("[endPoint] 종료 확인 테스트")
+    public void testEndPoint() {
+        Problem2 problem2 = new Problem2();
+        assertEquals(true,problem2.endPoint("abcd"));
+    }
 
 }
