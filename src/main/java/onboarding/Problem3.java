@@ -17,8 +17,9 @@ public class Problem3 {
         }
         return count;
     }
-    public static int checkThreeTimes(char c){
-        if(c % 3 == 0 && c != '0'){
+
+    public static int checkThreeTimes(char c) {
+        if (c % 3 == 0 && c != '0') {
             return 1;
         }
         return 0;
