@@ -313,6 +313,18 @@ class ApplicationTest {
 
     @Nested
     class Problem4Test {
+        // 예외 처리 테스트
+        @Test
+        void exceptionTest() {
+            String wordOverThousand = "a".repeat(1001);
+            String wordUnderOne = "";
+
+            String result = "Word length is out of range.";
+
+            assertThat(Problem4.solution(wordOverThousand)).isEqualTo(result);
+            assertThat(Problem4.solution(wordUnderOne)).isEqualTo(result);
+        }
+
         // 대문자 변환 기능 테스트
         @Test
         void convertUpperCharacterTest() {
