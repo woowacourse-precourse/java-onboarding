@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -11,7 +8,20 @@ public class Problem7 {
         return answer;
     }
 }
+class ListGraph {
+    private Set<User> listGraph = new HashSet<>();
 
+    public ListGraph() {
+    }
+
+    public Set<User> getListGraph() {
+        return listGraph;
+    }
+
+    public void setListGraph(Set<User> listGraph) {
+        this.listGraph = listGraph;
+    }
+}
 class User implements Comparable<User> {
     private String id;
     private List<User> friends = new ArrayList<>();
