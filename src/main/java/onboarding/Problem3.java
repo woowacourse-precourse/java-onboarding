@@ -9,7 +9,12 @@ public class Problem3 {
         // 2. 루프별 해당하는 숫자 자릿수 분리
         // 3. 각 자릿수에 3, 6, 9가 있는지 체크
         // 4. 있다면 손뼉 카운트
-        int answer = 0;
-        return answer;
+        int cnt = 0; // 카운트 변수
+
+        for(int i = 1; i <= number; i++) { // 1 ~ number까지 순환 하는 루프
+            
+        }
+
+        return cnt;
     }
 }
