@@ -4,16 +4,15 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        //기능1. 각 자리의 합을 구하는 기능
-        //기능2. 각 자리의 곱을 구하는 기능
-        //기능3. 더한 값과 곱한 값 중 더 큰 값을 구하는 기능
-        //기능4. 왼쪽 페이지와 오른쪽 페이지를 비교하는 기능
-        //기능5. 포비의 최대값과 크롱의 최대값을 비교해서 0, 1, 2을 리턴
-        //기능6. 예외처리
-
         int answer = Integer.MAX_VALUE;
 
-        return answer;
+        if (!(isValid(pobi) && isValid(crong))) return -1;
+
+        int pobiMax = leftOrRight(pobi);
+        int crongMax = leftOrRight(crong);
+
+        if (pobiMax == crongMax) return 0;
+        return (pobiMax > crongMax) ? 1 : 2;
     }
     private static int digitSum(int pageNum) {
         int sum = 0;
