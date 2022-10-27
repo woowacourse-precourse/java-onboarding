@@ -13,8 +13,8 @@ class Problem1 {
      * 4. 이렇게 결정된 두 user의 값을 비교하여 최종 answer값 return
      * */
 
-    // 기능1 구현
-    boolean checkPageError(List<Integer> pairPages) { // ★isVaildPage로 변경할 것
+    //1. 기능1
+    boolean isValidPage(List<Integer> pairPages) {
 
         // #유의 사항 : 메소드,변수명을 정의할 때는 카멜 표기법을 따르며, 메소드명은 동사로 시작하도록 한다.
 
@@ -41,7 +41,7 @@ class Problem1 {
         return true;
     }
 
-    //2. 기능2 구현
+    //2. 기능2
     List<Integer> getSeparatedDigits(int pageNumber) {
 
         List<Integer> separatedDigitList = new ArrayList<>();
@@ -60,6 +60,7 @@ class Problem1 {
     }
 
     
+    //3. 기능3
 
     //3-1. 한 페이지에 대해 총합 및 총 곱셈 계산 후, 더 큰 계산값 반환
     int getBiggerCalculation(List<Integer> separatedDigitList) {
@@ -91,8 +92,9 @@ class Problem1 {
         return Math.max(leftPageScore,rightPageScore);
     }
 
+    //4. 기능4 구현
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        if
         return answer;
     }
 }
