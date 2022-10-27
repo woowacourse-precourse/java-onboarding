@@ -8,12 +8,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @Nested
 public class InputExceptionTest {
+
     @Test
     void case1() {
         String cryptogram = "";
         String result = "Input Error";
         assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
     }
+
     @Test
     void case2() {
         String cryptogram = "";

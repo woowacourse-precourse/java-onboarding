@@ -32,7 +32,6 @@ public class Problem2 {
             }
             prev = now;
         }
-
         if (cryptogram.charAt(cryptogram.length() - 1) != cryptogram.charAt(cryptogram.length() - 2)) {
             newCrypt += cryptogram.charAt(cryptogram.length() - 1);
         }
