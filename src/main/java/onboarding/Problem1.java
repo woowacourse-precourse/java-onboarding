@@ -75,8 +75,6 @@ class Problem1 {
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        
         // 예외사항 있을 시, -1 반환.
         if (!(isCheck(pobi) && isCheck(crong))) {return -1;}
 
@@ -84,6 +82,10 @@ class Problem1 {
         int pobi_score = getScore(pobi);
         int crong_score = getScore(crong);
 
-        return answer;
+        // 포비가 이긴다면 1, 크롱이 이긴다면 2, 무승부는 0을 반환해줍니다.
+        if (pobi_score > crong_score) {return 1;}
+        else if (crong_score > pobi_score) {return 2;}
+
+        return 0;
     }
 }
