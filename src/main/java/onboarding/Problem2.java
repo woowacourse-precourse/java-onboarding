@@ -19,4 +19,18 @@ public class Problem2 {
         return buffer;
     }
 
+    public static void push(List<String> buffer, int index){
+        String currentChar = buffer.get(index);
+        if (stack.size() == 0){
+            stack.push(currentChar);
+            return;
+        }
+        if (!Objects.equals(currentChar, stack.peek())){
+            stack.push(currentChar);
+            return;
+        }
+        if (Objects.equals(currentChar, stack.peek())){
+            String x = stack.pop();
+        }
+    }
 }
