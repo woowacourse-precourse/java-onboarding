@@ -1,5 +1,7 @@
 package onboarding.problem4;
 
+import static java.lang.Character.*;
+
 import java.util.Optional;
 
 public class FrogDictionary {
@@ -7,6 +9,7 @@ public class FrogDictionary {
 	private static final int ALPHABETIC_ORDER_Z = 'z' - 'a';
 	private static final int ALPHABET_COUNT = 26;
 	private static final char ALPHABET_SMALL_A = 'a';
+	private static final char ALPHABET_CAPITAL_A = 'A';
 
 	public Optional<Character> find(char character) {
 		if (isAlphabetic(character)) {
@@ -15,24 +18,20 @@ public class FrogDictionary {
 		return Optional.empty();
 	}
 
-	private boolean isAlphabetic(char character) {
-		return Character.isAlphabetic(character);
-	}
-
 	private char convert(char character) {
-		if (Character.isUpperCase(character)) {
-			return Character.toUpperCase(flipAlphabet(character));
-		}
-		return flipAlphabet(character);
-	}
-
-	private char flipAlphabet(char character) {
 		int alphabeticOrder = getAlphabeticOrderOf(character);
-		int flippedOrder = (ALPHABETIC_ORDER_Z - alphabeticOrder) % ALPHABET_COUNT;
+		int flippedOrder = getFlippedAlphabeticOrder(alphabeticOrder);
+		if (isUpperCase(character)) {
+			return (char)(ALPHABET_CAPITAL_A + flippedOrder);
+		}
 		return (char)(ALPHABET_SMALL_A + flippedOrder);
 	}
 
 	private int getAlphabeticOrderOf(char character) {
-		return Character.toLowerCase(character) - ALPHABET_SMALL_A;
+		return toLowerCase(character) - ALPHABET_SMALL_A;
+	}
+
+	private int getFlippedAlphabeticOrder(int order) {
+		return (ALPHABETIC_ORDER_Z - order) % ALPHABET_COUNT;
 	}
 }
