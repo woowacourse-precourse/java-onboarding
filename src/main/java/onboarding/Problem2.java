@@ -9,4 +9,9 @@ public class Problem2 {
     public static String decodeString(String cryptogram) {
         return cryptogram.replaceAll("(.)\\1+", "");
     }
+
+    public static boolean isDecodedSuccess(String beforeDecodeCryptogram) {
+        String afterDecodeCryptogram = decodeString(beforeDecodeCryptogram);
+        return beforeDecodeCryptogram.equals(afterDecodeCryptogram);
+    }
 }
