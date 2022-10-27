@@ -37,7 +37,7 @@ public class Problem4 {
         String answer = "";
         for(int i = 0; i < word.length(); i++){
             char currentCharacter = word.charAt(i);
-            //answer = answer + changeCharacter(currentCharacter);
+            answer = answer + reverseCharacter(currentCharacter);
         }
         return answer;
     }
