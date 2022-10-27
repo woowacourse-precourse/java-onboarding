@@ -2,10 +2,6 @@ package onboarding;
 
 public class Problem2 {
 
-    public static void main(String[] args) {
-        String cryptogram = "zyelleyz";
-        System.out.println(solution(cryptogram));
-    }
 
     public static String solution(String cryptogram) {
         String answer = deduplication(cryptogram);
