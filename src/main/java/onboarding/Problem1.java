@@ -43,9 +43,7 @@ class Operation {
         digitNum = Stream.of(String.valueOf(page).split("")).mapToInt(Integer::parseInt).toArray();
         return digitNum;
     }
-
     public int sumEachDigit(int[] digitArray) {
-
         int digitSum = 0;
         for (int digit : digitArray) {
             digitSum += digit;
@@ -59,7 +57,9 @@ class Operation {
         }
         return digitMul;
     }
-}
+    public int findMaxValue(int sum, int mul){
+        return Math.max(sum, mul);
+    }
 }
 class Problem1 {
 
