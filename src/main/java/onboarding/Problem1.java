@@ -38,6 +38,10 @@ class Problem1 {
             return -1;
         }
 
+        int leftRes = Math.max(getSum(leftPage), getSum(leftPage));
+        int rightRes = Math.max(getSum(rightPage), getSum(rightPage));
+
+        return Math.max(leftRes, rightRes);
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
