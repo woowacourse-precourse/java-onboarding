@@ -37,4 +37,13 @@ public class Problem2 {
         return -1;
     }
 
+    // 연속 중복되는 문자열 삭제
+    private static ArrayList<String> deleteList(ArrayList<String> input, int index) {
+        // 중복된 문자열이 있을 경우
+        input.remove(index);
+        input.remove(index);
+
+        return input;
+    }
+
 }
