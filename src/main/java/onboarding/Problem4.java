@@ -50,7 +50,7 @@ public class Problem4 {
             return String.valueOf(letter);
         }
         char oppositeLetter = getOppositeAlphabet(letter);
-        char oppositeCaseLetter = getOppositeCase(letter, oppositeLetter);
+        char oppositeCaseLetter = getOppositeCase(oppositeLetter);
         return String.valueOf(oppositeCaseLetter);
     }
 
@@ -66,11 +66,24 @@ public class Problem4 {
         return isLower || isUpper;
     }
 
+    /*
+     * 문자를 반대 문자로 바꿔줍니다.
+     *
+     * @param 반대 문자로 바꿀 문자입니다.
+     * @return 반대 문자로 바뀐 문자입니다.
+     * */
     private static char getOppositeAlphabet(char letter) {
-        return ' ';
+        char startLetter = 'a';
+        char endLetter = 'z';
+        if (letter < startLetter || endLetter < letter){
+            startLetter = 'A';
+            endLetter = 'Z';
+        }
+        char oppositeLetter = (char) (endLetter - letter + startLetter);
+        return oppositeLetter;
     }
 
-    private static char getOppositeCase(char letter, char oppositeLetter) {
+    private static char getOppositeCase(char oppositeLetter) {
         return ' ';
     }
 
@@ -89,6 +102,6 @@ public class Problem4 {
     }
 
     public static void main(String[] args) {
-        System.out.println(isAlphabet('Y'));
+        System.out.println(getOppositeAlphabet('M'));
     }
 }
