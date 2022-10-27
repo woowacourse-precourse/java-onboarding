@@ -114,7 +114,3 @@ class NumSpliter {
         return List.of(numOfFirst, numOfSecond, numOfThird);
     }
 }
-
-class MaxFinder {
-
-}
