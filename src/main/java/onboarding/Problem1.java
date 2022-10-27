@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
@@ -16,5 +17,18 @@ class Problem1 {
     private static int getRightPage(List<Integer> pages) {
         int rightPage = pages.get(1);
         return rightPage;
+    }
+
+    private static List<Integer> getSplitNums(int page) {
+        List<Integer> splitNums = new ArrayList<>();
+        
+        while (page > 0) {
+            int splitNum = page % 10;
+            splitNums.add(splitNum);
+
+            page = page / 10;
+        }
+
+        return splitNums;
     }
 }
