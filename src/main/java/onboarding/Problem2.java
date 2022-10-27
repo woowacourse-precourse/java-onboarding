@@ -7,6 +7,12 @@ public class Problem2 {
         Stack<String> stack = new Stack<>();
         for (int i = 0; i < s.length; i++) {
             char c = s.charAt(i);
+            if (stack != null && stack.peek() == c) {
+                stack.pop()
+            }
+            else{
+                stack.push(c)
+            }
         }
     }
     public static void solution(String cryptogram) {
