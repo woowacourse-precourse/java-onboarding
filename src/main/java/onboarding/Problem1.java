@@ -44,9 +44,9 @@ class Problem1 {
         int pobiMax = Math.max(pobiBest[0], pobiBest[1]);
         int crongMax = Math.max(crongBest[0], crongBest[1]);
 
-        if(pobiMax > crongMax) {
+        if (pobiMax > crongMax) {
             return 1;
-        } else if(pobiMax < crongMax) {
+        } else if (pobiMax < crongMax) {
             return 2;
         } else {
             return 0;
