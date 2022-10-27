@@ -3,9 +3,21 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+
+    static final int INVALID = -1;
+    static final int DRAW = 0;
+    static final int POBI_WINS = 1;
+    static final int CRONG_WINS = 2;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        if(invalid(pobi) || invalid(crong)) return INVALID;
+
+        int pobi_score = get_score(pobi);
+        int crong_score = get_score(crong);
+
+        if(pobi_score == crong_score) return DRAW;
+        else if(pobi_score > crong_score) return POBI_WINS;
+        else return CRONG_WINS;
     }
 
     static int get_score(List<Integer> page_list){
