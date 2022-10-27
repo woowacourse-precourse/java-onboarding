@@ -5,7 +5,7 @@ import java.util.Stack;
 public class Problem2 {
     public static String solution(String cryptogram) {
         Stack<Character> decodedCryptogram = deleteDuplicateChars(initStack(cryptogram), cryptogram);
-        return resultDecodingText(decodedCryptogram);
+        return result(decodedCryptogram);
     }
 
     private static Stack<Character> deleteDuplicateChars(Stack<Character> characterStack, String cryptogram) {
@@ -31,7 +31,7 @@ public class Problem2 {
         return characterStack;
     }
 
-    private static String resultDecodingText(Stack<Character> decodedCryptogram) {
+    private static String result(Stack<Character> decodedCryptogram) {
         StringBuilder sb = new StringBuilder();
 
         if(decodedCryptogram.empty()) {
