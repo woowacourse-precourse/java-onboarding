@@ -9,6 +9,7 @@ public class Problem3 {
         int cnt = 0;
         for ( int i=1; i<= number; i++){
             cnt+=countClap(i);
+            System.out.println(cnt +" "+ i);
         }
         return cnt;
     }
@@ -16,8 +17,8 @@ public class Problem3 {
         String strnumber = Integer.toString(number);
         int cnt = 0;
         for(int i=0;i<strnumber.length();i++){
-            String curnumber = String.valueOf(strnumber.charAt(i));
-            if(Integer.parseInt(curnumber) %3 ==0){
+            int curnumber = Integer.parseInt(String.valueOf(strnumber.charAt(i)));
+            if(curnumber%3 == 0 && curnumber != 0){
                 cnt+=1;
             }
         }
