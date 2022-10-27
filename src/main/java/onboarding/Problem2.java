@@ -1,11 +1,12 @@
 package onboarding;
 
 public class Problem2 {
+    public static final int NO_DUPLICATE = -1;
     public static String solution(String cryptogram) {
         String answer = cryptogram;
         while (true) {
             int duplicatesIndex = getDuplicatesIndex(answer);
-            if (duplicatesIndex == -1) return answer;
+            if (duplicatesIndex == NO_DUPLICATE) return answer;
             answer = removeDuplicates(answer, duplicatesIndex);
         }
     }
@@ -19,6 +20,6 @@ public class Problem2 {
         for (int i = 0; i < str.length() - 1; i++) {
             if (str.charAt(i) == str.charAt(i + 1)) return i;
         }
-        return -1;
+        return NO_DUPLICATE;
     }
 }
