@@ -33,6 +33,18 @@ class Problem1 {
         return true;
     }
 
+    private static int sumDigitOfPage(Integer page){
+        int result = page%10;
+        page/=10;
+
+        while(page!=0){
+           result+=page%10;
+           page/=10;
+        }
+
+        return result;
+    }
+
     private static int multiplyDigitOfPage(Integer page){
         int result = page%10;
         page/=10;
