@@ -8,35 +8,37 @@ class Problem1 {
         int pRightPage = pobi.get(1);
         int cLeftPage = crong.get(0);
         int cRightPage = crong.get(1);
-        // proxy-> check exception
-        if (inputProxy(pLeftPage, pRightPage) || inputProxy(cLeftPage, cRightPage)) {
+        // proxy -> check page exception
+        if (checkPage(pLeftPage, pRightPage) || checkPage(cLeftPage, cRightPage)) {
             return -1;
         }
-        int p_val = Math.max(Math.max(digitSum(pLeftPage),digitProd(pLeftPage)),Math.max(digitSum(pRightPage),digitProd(pRightPage)));
-        int c_val = Math.max(Math.max(digitSum(cLeftPage),digitProd(cLeftPage)),Math.max(digitSum(cRightPage),digitProd(cRightPage)));
+        int p_val = Math.max(Math.max(sumDigit(pLeftPage), prodDigit(pLeftPage)),
+                Math.max(sumDigit(pRightPage),prodDigit(pRightPage)));
+        int c_val = Math.max(Math.max(sumDigit(cLeftPage), prodDigit(cLeftPage)),
+                Math.max(sumDigit(cRightPage), prodDigit(cRightPage)));
         return (p_val > c_val) ? 1 : (p_val < c_val) ? 2 : 0;
     }
-    private static boolean inputProxy(int leftPage, int rightPage) {
-        // Check start page or last page && Check linked page a0, a1
+    /* Check start page or last page && Check linked page a0, a1 */
+    private static boolean checkPage(int leftPage, int rightPage) {
         return (leftPage == 1 || rightPage == 400 || leftPage + 1 != rightPage);
     }
 
-    private static int digitSum(int N) {
+    private static int sumDigit(int number) {
         int output = 0;
-        while (N / 10 != 0) {
-            output += N % 10;
-            N /= 10;
+        while (number / 10 != 0) {
+            output += number % 10;
+            number /= 10;
         }
-        output += N; // last digit
+        output += number; // last digit
         return output;
     }
-    private static int digitProd(int N) {
+    private static int prodDigit(int number) {
         int output = 1;
-        while (N / 10 != 0) {
-            output *= N % 10;
-            N /= 10;
+        while (number / 10 != 0) {
+            output *= number % 10;
+            number /= 10;
         }
-        output *= N; // last digit
+        output *= number; // last digit
         return output;
     }
 }
