@@ -10,13 +10,22 @@ class Problem1 {
         int pobinumber = problem.findLargeNumber(pobi);
         int crongnumber = problem.findLargeNumber(crong);
 
-        answer = problem.resultOutput(pobinumber, crongnumber);
+        if(pobinumber == -1 || crongnumber == -1){
+            answer = -1;
+        } else {
+            answer = problem.resultOutput(pobinumber, crongnumber);
+        }
         return answer;
     }
 
     public int findLargeNumber(List<Integer> name){
         Problem1 problem = new Problem1();
         int maxnumber = 0;
+
+        if(name.get(1) - name.get(0) != 1 || name.get(0) < 0 || name.get(1) > 400) {
+            maxnumber = -1;
+            return maxnumber;
+        }
 
         int firstnumber = problem.largeValueEachNum(name.get(0));
         int secondnumber = problem.largeValueEachNum(name.get(1));
