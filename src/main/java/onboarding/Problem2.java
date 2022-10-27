@@ -30,4 +30,20 @@ public class Problem2 {
         return result;
     }
 
+    private static void removeDuplication(StringBuffer string, int startPoint){
+        int lastPoint=0;
+        char target = string.charAt(startPoint);
+        for(int i = startPoint; i<string.length(); i++){
+            if(string.charAt(i)!=target){
+                lastPoint = i;
+                break;
+            }
+            if(i==string.length()-1){
+                lastPoint=i+1;
+            }
+        }
+        string.delete(startPoint,lastPoint);
+    }
+
+
 }
