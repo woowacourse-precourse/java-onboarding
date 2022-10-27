@@ -1,9 +1,6 @@
 package onboarding;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.util.List;
 
@@ -120,6 +117,7 @@ class ApplicationTest {
     }
 
     @Nested
+    @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
     class Problem3Test {
         @Test
         void case1() {
@@ -133,6 +131,30 @@ class ApplicationTest {
             int number = 33;
             int result = 14;
             assertThat(Problem3.solution(number)).isEqualTo(result);
+        }
+
+        @Test
+        @Order(1)
+        void testForClapOnThree() {
+            int number = 3;
+            int expected = 1;
+            Assertions.assertEquals(expected, Problem3.solution(3), "Should return 1");
+        }
+
+        @Test
+        @Order(2)
+        void testForClapOnSix() {
+            int number = 6;
+            int expected = 2;
+            Assertions.assertEquals(expected, Problem3.solution(6), "Should return 2");
+        }
+
+        @Test
+        @Order(3)
+        void testForClapOnNine() {
+            int number = 9;
+            int expected = 3;
+            Assertions.assertEquals(expected, Problem3.solution(9), "Should return 3");
         }
     }
 
