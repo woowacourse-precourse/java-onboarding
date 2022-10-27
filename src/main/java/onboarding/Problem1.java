@@ -54,6 +54,9 @@ class Problem1 {
 
     static int compareScore(int pobi, int crong){
         int result = 0;
+        if(pobi>crong) result = 1;
+        else if(crong>pobi) result = 2;
+        else if(crong==pobi) result = 0;
 
         return result;
     }
