@@ -31,7 +31,11 @@ public class Problem3 {
      * @return Applause
      */
     public static int getApplause(int number){
-        return 1;
+        int Applause = 0;
+        for (int i = 1; i < number+1; i++) {
+            Applause+=getClapPerNumber(i);
+        }
+        return Applause;
     }
 
 }
