@@ -3,13 +3,13 @@ package onboarding;
 import java.util.*;
 
 public class Problem4 {
-    public static Map<Character, Character> upperCase;
-    public static Map<Character, Character> lowerCase;
-    public static List<Character> motherWord;
+    public static Map<Character, Character> alphabetMap = new HashMap<>();
+    public static List<Character> motherWord = new ArrayList<>();
     public static final String UPPERCASE_ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     public static final String LOWERCASE_ALPHABET = "abcdefghijklmnopqrstuvwxyz";
+    public static final String DELIMITER = UPPERCASE_ALPHABET + LOWERCASE_ALPHABET + " ";
     public static final int indexStart = 0;
-    public static final int indexEnd = 27;
+    public static final int indexEnd = 26;
     public static int upperCaseA = 65;
     public static int upperCaseZ = 90;
     public static int lowerCaseA = 97;
@@ -26,39 +26,29 @@ public class Problem4 {
     }
 
     public static String reverseWord() {
-        String reverseWord = "";
+        String reverseResult = "";
 
         for (Character letter : motherWord) {
             int letterToInt = (int)letter;
 
-            if (isUpperCaseLetter(letterToInt)) {
-                reverseWord += upperCase.get(letter);
-            } else if (isLowerCaseLetter(letterToInt)) {
-                reverseWord += lowerCase.get(letter);
+            if (isAlphabet(letterToInt)) {
+                reverseResult += alphabetMap.get(letter);
             } else {
-                reverseWord += letter;
+                reverseResult += letter;
             }
         }
-        return reverseWord;
+        return reverseResult;
     }
 
-    public static boolean isUpperCaseLetter(int letterToInt) {
-        if (letterToInt >= upperCaseA && letterToInt <= upperCaseZ) {
+    public static boolean isAlphabet(int letterToInt) {
+        if (letterToInt >= upperCaseA && letterToInt <= lowerCaseZ) {
             return true;
         }
         return false;
     }
 
-    public static boolean isLowerCaseLetter(int letterToInt) {
-        if (letterToInt >= lowerCaseA && letterToInt <= lowerCaseZ) {
-            return true;
-        }
-        return false;
-    }
-
-    private static void letterInList(String word) {
-        motherWord = new ArrayList<>();
-        StringTokenizer st = new StringTokenizer(word, UPPERCASE_ALPHABET + LOWERCASE_ALPHABET + " ", true);
+    public static void letterInList(String word) {
+        StringTokenizer st = new StringTokenizer(word, DELIMITER, true);
 
         for (int index = indexStart; index < word.length(); index++) {
             String str = st.nextToken();
@@ -67,22 +57,19 @@ public class Problem4 {
     }
 
     public static void makeFrogDictionary() {
-        upperCase = new HashMap<>();
-        lowerCase = new HashMap<>();
-
-        initUpperCaseMap();
-        initLowerCaseMap();
+        AddUpperCaseLetter();
+        AddLowerCaseLetter();
     }
 
-    public static void initLowerCaseMap() {
+    public static void AddLowerCaseLetter() {
         for (int index = indexStart; index < indexEnd; index++) {
-            lowerCase.put((char) (lowerCaseA + index), (char) (lowerCaseZ - index));
+            alphabetMap.put((char) (lowerCaseA + index), (char) (lowerCaseZ - index));
         }
     }
 
-    public static void initUpperCaseMap() {
+    public static void AddUpperCaseLetter() {
         for (int index = indexStart; index < indexEnd; index++) {
-            upperCase.put((char) (upperCaseA + index), (char) (upperCaseZ - index));
+            alphabetMap.put((char) (upperCaseA + index), (char) (upperCaseZ - index));
         }
     }
 }
