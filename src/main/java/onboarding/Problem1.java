@@ -25,4 +25,26 @@ class Problem1 {
 
         return true;
     }
+
+    public static int sumEachDigitOfPage(int page) {
+        int num = 0;
+
+        while (page > 0) {
+            num += page % 10;
+            page /= 10;
+        }
+
+        return num;
+    }
+
+    public static int multiplyEachDigitOfPage(int page) {
+        int num = 1;
+
+        while (page > 0) {
+            num *= page % 10;
+            page /= 10;
+        }
+
+        return num;
+    }
 }
