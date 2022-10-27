@@ -6,9 +6,21 @@ public class Problem4 {
     private static final int SPACE = 3;
 
     public static String solution(String word) throws Exception {
-        String answer = "answer";
         char[] charArray = word.toCharArray();
+        char[] reverseArray = reverse(charArray);
+        String answer = new String(reverseArray);
         return answer;
+    }
+    private static char[] reverse(char[] charArray) throws Exception {
+        for(int index=0;index<charArray.length;index++){
+            if(isBigOrSmall(charArray[index])==BIG){
+                charArray[index]=(char)(90-(charArray[index]-65));
+            };
+            if(isBigOrSmall(charArray[index])==SMALL){
+                charArray[index]=(char)(122-(charArray[index]-97));
+            }
+        }
+        return charArray;
     }
     public static int isBigOrSmall(char now) throws Exception{
         if(65 <= now && now <=90)return BIG;
