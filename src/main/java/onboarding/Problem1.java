@@ -9,18 +9,18 @@ class Problem1 {
 		return answer;
 	}
 	
-	public static int makePage() { //makePage와 동시 2~399까지 추출
-        int Page = (int) (Math.random() * (399-2))+2;
+	public static int makePage() { //makePage와 동시 3~398까지 추출
+		
+        int Page = (int) (Math.random() * (398+1)-3)+3; //(최대+1)-최소)+최소 3~398
         do {
-        	Page = (int) (Math.random() * (399-2))+2;
+        	Page = (int) (Math.random() * (398+1)-3)+3;
         }while(Page <= 1 || Page >= 400); //조건 충족 시 리셋
         return Page;
 	}
     public static void main(String[] args){
-    	
+    
        int pobiPage = makePage();
        int crongPage = makePage()+2;
-        
         
         
         int pobiL;
