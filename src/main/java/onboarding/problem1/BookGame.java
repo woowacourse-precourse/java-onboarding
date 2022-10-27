@@ -25,9 +25,4 @@ public class BookGame {
 
         return -1;
     }
-
-    public static void main(String[] args) {
-        System.out.println(doBookGame(List.of(1, 2), List.of(3, 6)));
-        System.out.println(doBookGame(List.of(0, 2), List.of(3, 4)));
-    }
 }
