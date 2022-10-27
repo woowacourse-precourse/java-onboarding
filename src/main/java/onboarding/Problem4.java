@@ -28,15 +28,16 @@ public class Problem4 {
 
         if (Character.isLowerCase(ascii)) {
             if (ascii + 25 > 122) {
-                ascii = 122 - ((ascii + 25) % 122);
+                return 122 - ((ascii + 25) % 122);
             }
+            return ascii + 25;
         }
 
-        if (Character.isUpperCase(ascii)) {
-            if (ascii + 25 > 90) {
-                ascii = 90 - ((ascii + 25) % 90);
-            }
+        if (ascii + 25 > 90) {
+            return 90 - ((ascii + 25) % 90);
         }
-        return ascii;
+
+        return ascii + 25;
+
     }
 }
