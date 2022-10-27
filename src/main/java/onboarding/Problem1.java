@@ -14,6 +14,8 @@ class Problem1 {
         if (checkException(pobi) || checkException(crong)) {
             return -1;
         }
+        int pobiScore = Math.max(pageMax(pobi.get(0)), pageMax(pobi.get(1)));
+        int crongScore = Math.max(pageMax(crong.get(0)), pageMax(crong.get(1)));
         int answer = Integer.MAX_VALUE;
         return answer;
     }
@@ -41,6 +43,18 @@ class Problem1 {
             return true;
 
         return false;
+    }
+
+    /**
+     * 한 페이지 자리수의 합과 곱 중 큰 수를 구합니다.
+     * 
+     * @param pageNum
+     * @return 자리수의 합과 곱 중 큰 수
+     */
+    private static int pageMax(int pageNum) {
+        int sum = eachSum(pageNum);
+        int multiple = eachMultiplication(pageNum);
+        return Math.max(sum, multiple);
     }
 
     /**
