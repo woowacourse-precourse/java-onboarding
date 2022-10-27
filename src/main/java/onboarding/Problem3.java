@@ -19,7 +19,7 @@ public class Problem3 {
             nineNum+=countChar(s,'9');
         }
         // 2. 나온 3,6,9 의 갯수만큼 더하기
-
+        answer = threeNum + sixNum + nineNum;
 
         return answer;
     }
