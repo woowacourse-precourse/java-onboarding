@@ -7,7 +7,7 @@ import static onboarding.Problem1.Constants.*;
 
 class Problem1 {
 
-    public static class Constants {
+    static class Constants {
         public static final int FIRST_PAGE = 0;
         public static final int LAST_PAGE = 400;
         public static final int LEFT_PAGE = 0;

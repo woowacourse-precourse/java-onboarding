@@ -6,6 +6,16 @@ import java.util.List;
 public class Problem4 {
     public static List<Character> characterList = new ArrayList<>();
 
+    private static class Constants {
+        public static final char FIRST_UPPER_ALPHABET = 'A';
+        public static final char MIDDLE_UPPER_ALPHABET = 'M';
+        public static final char LAST_UPPER_ALPHABET = 'Z';
+
+        public static final char FIRST_LOWER_ALPHABET = 'a';
+        public static final char MIDDLE_LOWER_ALPHABET = 'm';
+        public static final char LAST_LOWER_ALPHABET = 'z';
+    }
+
     public static void main(String[] args) {
         System.out.println(solution("I love you"));
     }
@@ -21,7 +31,7 @@ public class Problem4 {
             if (65 <= alphabet && alphabet <= 90) {
                 converterUpperAlphabet(alphabet);
             } else if (97 <= alphabet && alphabet <= 122) {
-                converterLowAlphabet(alphabet);
+                converterLowerAlphabet(alphabet);
             } else {
                 characterList.add(alphabet);
             }
@@ -39,14 +49,14 @@ public class Problem4 {
     private static void converterUpperAlphabet(char alphabet) {
         int alphabetInterval = 27;
 
-        if (alphabet < 'M') {
-            for (int j = 'A'; j <= alphabet; j++) {
+        if (alphabet < Constants.MIDDLE_UPPER_ALPHABET) {
+            for (int j = Constants.FIRST_UPPER_ALPHABET; j <= alphabet; j++) {
                 alphabetInterval -= 2;
             }
             alphabet += alphabetInterval;
 
         } else {
-            for (int j = 'Z'; j >= alphabet; j--) {
+            for (int j = Constants.LAST_UPPER_ALPHABET; j >= alphabet; j--) {
                 alphabetInterval -= 2;
             }
             alphabet -= alphabetInterval;
@@ -54,17 +64,17 @@ public class Problem4 {
         characterList.add(alphabet);
     }
 
-    private static void converterLowAlphabet(char alphabet) {
+    private static void converterLowerAlphabet(char alphabet) {
         int alphabetInterval = 27;
 
-        if (alphabet < 'm') {
-            for (int j = 'a'; j <= alphabet; j++) {
+        if (alphabet < Constants.MIDDLE_LOWER_ALPHABET) {
+            for (int j = Constants.FIRST_LOWER_ALPHABET; j <= alphabet; j++) {
                 alphabetInterval -= 2;
             }
             alphabet += alphabetInterval;
 
         } else {
-            for (int j = 'z'; j >= alphabet; j--) {
+            for (int j = Constants.LAST_LOWER_ALPHABET; j >= alphabet; j--) {
                 alphabetInterval -= 2;
             }
             alphabet -= alphabetInterval;
