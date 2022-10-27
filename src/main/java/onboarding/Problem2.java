@@ -25,7 +25,10 @@ public class Problem2 {
             char ch = cryptogram.charAt(i);
             crypcryptogramList.add(ch);
         }
-
+        removeOverLap(crypcryptogramList);
+        for(char ch : crypcryptogramList){
+            answer += ch;
+        }
         return answer;
     }
 }
