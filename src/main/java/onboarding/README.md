@@ -22,4 +22,4 @@
 |     | 번호  | 기능 코드                       | Depth1   | Depth2 | method                                           | 설명 |
 |-----|-----|-----------------------------|----------|--------|--------------------------------------------------|--|
 | X   | 1   | onBoarding-back-Problem3-01 | solution |        | private static int getClapCount(int number) | 총 박수친 횟수  |
-| X   | 2   | onBoarding-back-Problem3-02 | solution | 박수     |  | 현재 숫자에 박수친 횟수 |
+| O   | 2   | onBoarding-back-Problem3-02 | solution | 개별 박수     | private static int getClapCount(int number)  | 현재 숫자에 박수친 횟수 |

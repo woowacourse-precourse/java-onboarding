@@ -5,4 +5,15 @@ public class Problem3 {
         int answer = 0;
         return answer;
     }
+    private static int getClapCount(int number){
+        int count = 0;
+        int rest;
+        while (number > 0){
+            rest = number % 10;
+            number /= 10;
+            if (rest == 3 || rest == 6 || rest ==9)
+                count +=1;
+        }
+        return count;
+    }
 }
