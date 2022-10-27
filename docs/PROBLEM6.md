@@ -9,14 +9,14 @@
 
 - [x] Crew 클래스를 만든다.
 - [ ] Crew 클래스를 담을 Crews (일급 컬렉션)을 만든다.
-  - [ ] add() : Crew를 추가
-  - [ ] remove() : Crew를 삭제 
-  - [ ] validateNickNmae() : 닉네임이 같은 글자가 연속적으로 포함되는지 체크하는 메소드
-    - [ ] Crews에서 새로 신청한 Crew와 글자가 연속적으로 포함되는 기존의 Crew가 있는지 검증한다.
-      - [ ] 만약 존재한다면 기존에 Crews에 존재했던 Crew는 Crews에서 삭제한다.
+  - [x] add() : Crew를 추가
+  - [x] remove() : Crew를 삭제 
+  - [x] validateNickName() : 닉네임이 같은 글자가 연속적으로 포함되는지 체크하는 메소드
+    - [x] Crews에서 새로 신청한 Crew와 글자가 연속적으로 포함되는 기존의 Crew가 있는지 검증한다.
+      - [x] 만약 존재한다면 기존에 Crews에 존재했던 Crew는 Crews에서 삭제한다.
       - [ ] 기존에 있던 Crew와 새로 신청한 Crew의 Email을 InvalidCrewEmails에 저장한다.
-        - [ ] 만약 InvalidCrewEmails에 해당 Email이 이미 존재하고 있으면 저장하지 않는다. 
-      - [ ] 존재하지 않는다면 Crews에 새로 신청한 Crew를 추가한다. 
+        - [x] 만약 InvalidCrewEmails에 해당 Email이 이미 존재하고 있으면 저장하지 않는다. 
+      - [x] 존재하지 않는다면 Crews에 새로 신청한 Crew를 추가한다. 
 - [x] 닉네임이 연속적으로 포함되는 크루들의 이메일을 담을 InvalidCrewEmails (일급컬렉션)을 만든다.
   - [x] add() : Crew(닉네임 중 같은 글자가 연속적으로 포함되는)를 저장 
 - [x] 입력받은 정보를 검증하고 Crew 객체를 생성한다.
