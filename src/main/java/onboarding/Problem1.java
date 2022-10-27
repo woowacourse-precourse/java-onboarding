@@ -38,6 +38,10 @@ class Problem1 {
         }
     }
 
+    private static int calcPersonalScore(List<Integer> gamer) {
+        return gamer.stream().map(Problem1::calcSinglePageScore).max(Integer::compareTo).orElseThrow();
+    }
+
     private static int calcSinglePageScore(int page) {
         int addSum = 0;
         int multSum = 1;
