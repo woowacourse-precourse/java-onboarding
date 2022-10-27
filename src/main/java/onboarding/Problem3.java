@@ -22,4 +22,22 @@ public class Problem3 {
         char[] charsOfNumber = numberToString.toCharArray();
         return charsOfNumber;
     }
+
+    //Return Claps Of Number
+    private static int getClapsOfNumber(char[] charsOfNumber) {
+        int claps =0;
+        for (char digit : charsOfNumber) {
+            claps = getClapsOfDigit(claps, digit);
+        }
+        return claps;
+    }
+
+    //Return Clap of digit
+    private static int getClapsOfDigit(int claps, char digit) {
+        //digit is char -> '3' == 51 in decimal, '6' == 54 in decimal, '9'== 57 in decimal
+        if (digit == 51 || digit == 54 || digit == 57) {
+            claps++;
+        }
+        return claps;
+    }
 }
