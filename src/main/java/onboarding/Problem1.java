@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.List;
-import java.util.Random;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -79,5 +78,14 @@ class Problem1 {
 
     /**
      * 기존의 코드에 중복되는 부분이 너무 많아서 각 메소드를 생성하여 나누어 주었다.
+     */
+
+    /**
+     * 기능이 작동할 수 있도록 로직을 구현해 낸 이후 이 코드가 과연 좋은 것일까
+     * 더 짧게, 더 가독성 높게 구현할 수 있지 않을까...
+     * 이 부분에 대한 고민이 많아지는 시간이 있었던 순간이 많았던듯 합니다.
+     * 이 때문에 해결 이후에도 한동안 계속해서 수정을 해보기도 하고 그랬습니다.
+     * 결국 나온 코드는 위와 같은 코드인데 이보다 더 클린하게 만들 수 있지 않을까 싶으며
+     * 모범적인 코드를 본다면 보고 배우는 시간을 가져볼까 합니다.
      */
 }
