@@ -2,6 +2,11 @@ package onboarding;
 
 public class Problem3 {
     public static int[] memoization;
+    public static final int MEMOIZATION_START_INDEX = 3;
+    public static final int LETTER_START_INDEX = 0;
+    public static final char THREE = '3';
+    public static final char SIX = '6';
+    public static final char NINE = '9';
 
     public static int solution(int number) {
         int answer = 0;
@@ -18,12 +23,14 @@ public class Problem3 {
     }
 
     private static int calculateClapCount(int number) {
-        for (int index = 3; index < number + 1; index++) {
-            String indexToString = String.valueOf(index);
+        String indexToString = "";
+
+        for (int index = MEMOIZATION_START_INDEX; index < number + 1; index++) {
+            indexToString = String.valueOf(index);
             memoization[index] = memoization[index - 1];
 
-            for (int letterIndex = 0; letterIndex < indexToString.length(); letterIndex++) {
-                if (indexToString.charAt(letterIndex) == '3' || indexToString.charAt(letterIndex) == '6' || indexToString.charAt(letterIndex) == '9') {
+            for (int letterIndex = LETTER_START_INDEX; letterIndex < indexToString.length(); letterIndex++) {
+                if (indexToString.charAt(letterIndex) == THREE || indexToString.charAt(letterIndex) == SIX || indexToString.charAt(letterIndex) == NINE) {
                     memoization[index]++;
                 }
             }
