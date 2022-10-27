@@ -44,6 +44,10 @@ public class Problem7 {
 				}
 			}
 		}
+
+		for (String visitor : visitors) {
+			userScore.put(visitor, userScore.get(visitor) + VISIT_SCORE);
+		}
 		return new ArrayList<>();
 	}
 }
