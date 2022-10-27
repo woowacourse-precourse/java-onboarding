@@ -3,6 +3,7 @@ package onboarding;
 import org.mockito.internal.util.collections.Sets;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     static class User{
@@ -16,6 +17,11 @@ public class Problem7 {
             this.friends = new ArrayList<>();
             this.visitor = new ArrayList<>();
             this.score = 0;
+        }
+
+        public User(String name, int score) {
+            this.name = name;
+            this.score = score;
         }
 
         public boolean isFriend(String name){
@@ -40,13 +46,21 @@ public class Problem7 {
         public List<String> getVisitor() {
             return visitor;
         }
+
+        public int getScore() {
+            return score;
+        }
+
+        public String getName() {
+            return name;
+        }
     }
 
     public static Map<String, User> repository = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        Map<String, Integer> newFriendMap = new HashMap<>();
+        Map<String, Integer> newFriendMap = new HashMap<>(); // map 으로 구현하는게 좋을까 arrayList<User> 로 구현하는게 좋을까?
+        List<String> answer;
 
         initFriend(friends);
 
@@ -54,22 +68,39 @@ public class Problem7 {
         User userInstance = repository.get(user);
         userInstance.setVisitor(visitors); // init visitor
 
-        setSameFriendScore(user, newFriendMap);
-        setVisitorScore(user, newFriendMap);
+        calculateSameFriendScore(user, newFriendMap);
+        calculateVisitorScore(user, newFriendMap);
 
+        answer = getFilteredResult(newFriendMap);
         return answer;
     }
 
-    private static void setVisitorScore(String user, Map<String, Integer> newFriendMap){
+    private static List<String> getFilteredResult(Map<String, Integer> newFriendMap) {
+        List<User> store = new ArrayList<>();
+
+        for (String key : newFriendMap.keySet()){
+            store.add(new User(key, newFriendMap.get(key)));
+        }
+        List<String> collect = store.stream()
+                .filter(user -> user.getScore() > 0)
+                .sorted(Comparator.comparing(User::getScore).reversed().thenComparing(Comparator.comparing(User::getName)))
+                .map(User::getName)
+                .collect(Collectors.toList());
+        return collect;
+    }
+
+    private static void calculateVisitorScore(String user, Map<String, Integer> newFriendMap){
         User userInstance = repository.get(user);
         List<String> visitors = userInstance.getVisitor();
 
         for (String name : visitors){
-            newFriendMap.put(name, newFriendMap.getOrDefault(name, 0) + 1);
+            if (!userInstance.isFriend(name)){
+                newFriendMap.put(name, newFriendMap.getOrDefault(name, 0) + 1);
+            }
         }
     }
 
-    private static void setSameFriendScore(String user, Map<String, Integer> newFriendMap) {
+    private static void calculateSameFriendScore(String user, Map<String, Integer> newFriendMap) {
         User userInstance = repository.get(user);
         repository.forEach((name, userObj) -> {
             if (!name.equals(user) && !userObj.isFriend(name)){
