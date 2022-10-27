@@ -26,6 +26,19 @@ public class Problem6 {
                 }
             }
         }
+
+        for(int i = 0; i<forms.size(); i++){
+            String str = forms.get(i).get(1);
+
+            for(int j = 0; j<duplicate.size(); j++){
+                if(str.contains(duplicate.get(j))){
+                    answer.add(forms.get(i).get(0));
+                    break;
+                }
+            }
+        }
+
+        Collections.sort(answer);
         return answer;
     }
 }
