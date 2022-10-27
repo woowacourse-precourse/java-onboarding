@@ -22,6 +22,8 @@ class Problem1 {
         } else {
             int pobiValue = problem1.getMaxValue(pobi);
             int crongValue = problem1.getMaxValue(crong);
+
+            answer = problem1.getAnswer(pobiValue, crongValue);
         }
 
         return answer;
@@ -79,5 +81,19 @@ class Problem1 {
         int rightValue = calValue(pages.get(1));
 
         return leftValue > rightValue ? leftValue : rightValue;
+    }
+
+    /**
+     * 포비와 크롱의 게임 결과를 반환합니다.
+     *
+     * @param pobiValue  포비의 최댓값
+     * @param crongValue 크롱의 최댓값
+     * @return 무승부일 경우 0, 포비가 이길 경우 1, 크롱이 이길 경우 2 반환
+     */
+    int getAnswer(int pobiValue, int crongValue) {
+        if (pobiValue == crongValue) {
+            return 0;
+        }
+        return pobiValue > crongValue ? 1 : 2;
     }
 }
