@@ -4,7 +4,10 @@ import java.util.Stack;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+
+        Stack<Character> cryptogram_stack = string_to_stack(cryptogram);
+        Stack<Character> remove_duplicate_from_cryptogram_stack = remove_duplicate(cryptogram_stack);
+        String answer = stack_to_string(remove_duplicate_from_cryptogram_stack);
         return answer;
     }
 
