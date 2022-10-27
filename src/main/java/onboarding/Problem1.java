@@ -8,14 +8,17 @@ class Problem1 {
     //pobi와 crong의 길이는 2이다.
     //pobi와 crong에는 [왼쪽 페이지 번호, 오른쪽 페이지 번호]가 순서대로 들어있다.
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        // 왼쪽, 오른쪽 페이지로 만들 수 있는 숫자 만들기
         int pobiLeftMakeNum = makeNum(pobi.get(0));
         int pobiRightMakeNum = makeNum(pobi.get(1));
         int crongLeftMakeNum = makeNum(crong.get(0));
         int crongRightMakeNum = makeNum(crong.get(1));
 
-        int pobiMaxNum = (pobiLeftMakeNum > pobiRightMakeNum) ? pobiLeftMakeNum : pobiRightMakeNum;
-        int crongMaxNum = (crongLeftMakeNum > crongRightMakeNum) ? crongLeftMakeNum : crongRightMakeNum;
-
+        // 만든 수 중 가장 큰 수 찾기
+        int pobiMaxNum = returnMaxNum(pobiLeftMakeNum,pobiRightMakeNum);
+        int crongMaxNum = returnMaxNum(crongLeftMakeNum,crongRightMakeNum);
+        
+        // 가장 큰 수를 찾은 것 중 비교하여 결과값 return
         return compareNums(pobiMaxNum,crongMaxNum);
     }
 
@@ -41,6 +44,10 @@ class Problem1 {
 
         // 더 큰 수를 return
         return (multiplyNums > addNums) ? multiplyNums : addNums;
+    }
+
+    public static int returnMaxNum(int num1, int num2){
+        return (num1 > num2) ? num1 : num2;
     }
 
     public static int compareNums(int pobi, int crong){
