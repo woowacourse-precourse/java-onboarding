@@ -1,16 +1,56 @@
 package onboarding;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Problem6 {
+    public static Map<String, List<String>> repository = new HashMap<>();
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
+
         Validator.isValidate(forms);
-        return answer;
+        addSplitNicknameToMap(forms);
+        List<String> overlapResult = getOverlapResult();
+        return processResult(overlapResult);
     }
+
+    private static void addSplitNicknameToMap(List<List<String>> forms){
+        for(List<String> form : forms){
+            String nickname = form.get(1);
+            for (int i = 0; i < nickname.length() - 1 ; i++) {
+                String subWord = nickname.substring(i, i + 2);
+                List<String> list = repository.getOrDefault(subWord, new ArrayList<>());
+                list.add(form.get(0));  // add email
+                repository.put(subWord, list);
+            }
+        }
+//        forms.stream()
+//                .map(form -> form.get(1))
+//                .forEach(nickname -> {
+//                    for (int i = 0; i < nickname.length() - 1 ; i++) {
+//                        String subWord = nickname.substring(i, i + 2);
+//                        repository.getOrDefault(subWord, new ArrayList<>()).add();
+//                    });
+    }
+
+    private static List<String> getOverlapResult(){
+        return repository.values().stream()
+                .filter(list -> list.size() >= 2)
+                .flatMap(Collection::stream)
+                .collect(Collectors.toList());
+    }
+
+    private static List<String> processResult(List<String> list){
+        return list.stream()
+                .distinct()
+                .sorted()
+                .collect(Collectors.toList());
+    }
+
+
 
     static class Validator{
         public static boolean isValidate(List<List<String>> forms){
