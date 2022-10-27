@@ -4,7 +4,7 @@ import java.util.stream.Stream;
 
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
+        int answer = count(number);
         return answer;
     }
 
@@ -18,5 +18,13 @@ public class Problem3 {
             }
         }
         return clapCount;
+    }
+
+    public static int count(int number) {
+        int sum = 0;
+        for (int i = 1; i <= number; i++) {
+            sum += clap(i);
+        }
+        return sum;
     }
 }
