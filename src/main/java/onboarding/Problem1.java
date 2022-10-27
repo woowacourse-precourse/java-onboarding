@@ -19,6 +19,26 @@ class Problem1 {
         return answer;
     }
 
+    public static int plusDigits(int number) {
+        int plusNumber = 0;
+
+        while (number > 0) {
+            plusNumber += number % 10;
+            number /= 10;
+        }
+        return number;
+    }
+
+    public static int multipleDigits(int number) {
+        int multipleNumber = 0;
+
+        while (number > 0) {
+            multipleNumber *= number % 10;
+            number /= 10;
+        }
+        return number;
+    }
+
     public static boolean isException(int leftPage, int rightPage) {
         if (rightPage - leftPage == 1) {
             return true;
