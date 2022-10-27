@@ -7,6 +7,10 @@ public class Friend {
     private String name;
     private String friendName;
 
+    protected Friend() {
+
+    }
+
     public Friend(List<String> form) {
         validateFormSize(form);
 
@@ -45,5 +49,13 @@ public class Friend {
 
     public static Friend create(List<String> form) {
         return new Friend(form);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getFriendName() {
+        return friendName;
     }
 }
