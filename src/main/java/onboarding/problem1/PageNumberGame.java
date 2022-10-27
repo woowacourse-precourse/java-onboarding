@@ -44,4 +44,9 @@ public class PageNumberGame {
 		}
 	}
 
+	public static Integer start(List<Integer> pobi, List<Integer> crong) {
+		Integer pobiScore = calculateMaxScore(pobi);
+		Integer crongScore = calculateMaxScore(crong);
+		return compareScore(pobiScore, crongScore);
+	}
 }
