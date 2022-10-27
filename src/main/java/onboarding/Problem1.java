@@ -8,6 +8,10 @@ class Problem1 {
         int pobiScore = findUserScore(pobi);
         int crongScore = findUserScore(crong);
 
+        /*
+        * 어떤 경우가 예외인지 한눈에 확인하기 힘들다.
+        * 최소한 내부 메서드로 빼던가 밖으로 뺏던 메소드를 다시 넣어야할 것 같다.
+        */
         if (Problem1Exception.isException(pobi)) {
             return -1;
         }
@@ -31,6 +35,8 @@ class Problem1 {
     private static int findUserScore(List<Integer> pages) { // 페이지에 관한 요류들은 여기서 잡아준다.
         int leftPageNumber = pages.get(0);
         int rightPageNumber = pages.get(1);
+
+        // 얘도 쪼개줘야되나?
         int leftPageScore = Math.max(sumAllNumbersInPage(leftPageNumber), multiplyAllNumbersInPage(leftPageNumber));
         int rightPageScore = Math.max(sumAllNumbersInPage(rightPageNumber), multiplyAllNumbersInPage(rightPageNumber));
 
@@ -39,7 +45,7 @@ class Problem1 {
 
     private static int sumAllNumbersInPage(int page) {
         int result = 0;
-        for (Integer number : changeIntToIntList(page)) {
+        for (Integer number : Util.changeIntToIntList(page)) {
             result = result + number;
         }
         return result;
@@ -47,21 +53,13 @@ class Problem1 {
 
     private static int multiplyAllNumbersInPage(int page) {
         int result = 1;
-        for (Integer number : changeIntToIntList(page)) {
+        for (Integer number : Util.changeIntToIntList(page)) {
             result = result * number;
         }
-
         return result;
     }
 
-    private static List<Integer> changeIntToIntList(int number) {
-        List<Integer> result = new ArrayList<>();
-        while (number != 0) {
-            result.add(number % 10);
-            number = number / 10;
-        }
-        return result;
-    }
+
 
 
 }
