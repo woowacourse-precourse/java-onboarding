@@ -61,7 +61,7 @@
   - 문자열을 반대로 바꿔준다.
     - [X] encryptCharacter
     - 하나의 문자를 반대로 바꿔준다.
-      - [ ] isAlphabet
+      - [X] isAlphabet
       - 문자가 영문자인지 알려준다.
       - [ ] getOppositeAlphabet
       - 문자를 반대 문자로 바꿔준다.

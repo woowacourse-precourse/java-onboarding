@@ -54,8 +54,16 @@ public class Problem4 {
         return String.valueOf(oppositeCaseLetter);
     }
 
+    /*
+     * 문자가 영문자인지 확인합니다.
+     *
+     * @param 확인할 문자입니다.
+     * @return 문자가 영문자라면 참, 아니면 거짓을 반환합니다.
+     * */
     private static boolean isAlphabet(char letter) {
-        return false;
+        boolean isLower = 'a' <= letter && letter <= 'z';
+        boolean isUpper = 'A' <= letter && letter <= 'Z';
+        return isLower || isUpper;
     }
 
     private static char getOppositeAlphabet(char letter) {
@@ -81,6 +89,6 @@ public class Problem4 {
     }
 
     public static void main(String[] args) {
-        encryptString("abc ABC");
+        System.out.println(isAlphabet('Y'));
     }
 }
