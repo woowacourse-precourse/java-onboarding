@@ -45,4 +45,14 @@ class Problem1 {
         }
         return sum;
     }
+
+    public static int getMultiplyEachNumber(int number) {
+        int sum = 1;
+        while (number > 0) {
+            sum *= number % 10;
+
+            number /= 10;
+        }
+        return sum;
+    }
 }
