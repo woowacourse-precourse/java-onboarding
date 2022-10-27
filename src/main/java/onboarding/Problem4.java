@@ -2,8 +2,19 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+
+        String changed_word = "";
+        for(int i=0; i<word.length(); i++){
+            char input_character = word.charAt(i);
+            if(is_alphabet(input_character)){
+                changed_word += change_word(input_character);
+            }
+            else{
+                changed_word += input_character;
+            }
+        }
+        return changed_word;
+
     }
 
     static char change_word(char input_character){
