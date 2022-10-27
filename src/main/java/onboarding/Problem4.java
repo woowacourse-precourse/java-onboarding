@@ -26,7 +26,26 @@ public class Problem4 {
 
     private static void reverseWord(String word) {
         wordInList(word);
-        //isUpperCaseLetter();
+        String reverseWord = "";
+
+        for (Character letter : motherWord) {
+        }
+    }
+
+    public static boolean isUpperCaseLetter(Character letter) {
+        if ((letter - '0') >= upperCaseA && (letter - '0') <= upperCaseZ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean isLowerCaseLetter(Character letter) {
+        if ((letter - '0') >= lowerCaseA && (letter - '0') <= lowerCaseZ) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private static void wordInList(String word) {
