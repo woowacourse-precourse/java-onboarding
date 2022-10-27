@@ -26,10 +26,25 @@ public class Problem4 {
         char[] reverseAlphaArray = getAlphaCharArray();
 
         for (char word : words) {
-            //TODO::문자 반전시키는 기능 추가
+            result.append(toReverseChar(reverseAlphaArray, word));
         }
 
         return result.toString();
+    }
+
+    private static char toReverseChar(char[] reverseAlphaArray, char word) {
+        if (!Character.isAlphabetic(word)) {
+            return word;
+        }
+
+        boolean isLower = Character.isLowerCase(word);
+        int index = 0; //TODO::알파벳 별로 알맞은 인덱스 반환하는 기능 추가
+        char reversedWord = reverseAlphaArray[index];
+
+        if (isLower) {
+            return Character.toLowerCase(reversedWord);
+        }
+        return reversedWord;
     }
 
     private static char[] getAlphaCharArray() {
