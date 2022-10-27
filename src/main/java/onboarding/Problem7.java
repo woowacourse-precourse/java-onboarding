@@ -17,7 +17,10 @@ import java.util.List;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
-        answer = findMyFriends(user,friends);
+        List<String> myFriends = findMyFriends(user,friends);
+        List<String> visitorNotMyFriend = getVisitorsNotMyFriend(visitors,myFriends);
+        HashMap<String,Integer> visitorsNotMyFriendPoints =  getVisitorsNotMyFriendPoints(visitorNotMyFriend,myFriends);
+
         return answer;
     }
 //입력된 유저의 친구 목록을 구해야함 - findMyFriends
@@ -38,36 +41,37 @@ public class Problem7 {
         return result;
 
     }
-//입력된 방문자 목록과 횟수를 구함 친구 제외시킴
-    public static HashMap<String,Integer> visitorsNotMyFriendPoints(List<String> visitors,List<String> myFriends){
-        List<String> visitorsNotMyFriend = new ArrayList<String>();
-        for (int i = 0; i < visitors.size(); i++) {
-            for (int j = 0; j < myFriends.size(); j++) {
-                if(visitors.get(i).indexOf(myFriends.get(j))<0){
-                    visitorsNotMyFriend.add(visitors.get(i));
-                }
-            }
-        }
+
+    public static HashMap<String,Integer> getFriendsFriendAndPoints(List<String> myFriend, String user){
+
+    }
+
+//입력된 방문자 목록과 횟수
+    public static HashMap<String,Integer> getVisitorsNotMyFriendPoints(List<String> visitors,List<String> myFriends){
+        List<String> visitorsNotMyFriend = getVisitorsNotMyFriend(visitors,myFriends);
+
 
         HashMap<String,Integer> result = new HashMap<String,Integer>();
-        for(int i =0 ;i<visitors.size(); i++){
-            Integer prevVisitNum = result.get(visitors.get(i));
+
+        for(int i =0 ;i<visitorsNotMyFriend.size(); i++){
+            Integer prevVisitNum = result.get(visitorsNotMyFriend.get(i));
             if (prevVisitNum!=null){
                 result.put(visitors.get(i),prevVisitNum+1);
                 continue;
             }
             result.put(visitors.get(i),1);
         }
+        return result;
     }
     //방문자중 내 친구가 아닌 사람을 찾는 함수
-    public static List<String> visitorsNotMyFriend(List<String> visitors,List<String> myFriends){
-        List<String> visitorsNotMyFriend = new ArrayList<String>();
-        for (int i = 0; i < visitors.size(); i++) {
-            for (int j = 0; j < myFriends.size(); j++) {
-                if(visitors.get(i).indexOf(myFriends.get(j))<0){
-                    visitorsNotMyFriend.add(visitors.get(i));
-                }
-            }
-        }
+    public static List<String> getVisitorsNotMyFriend(List<String> visitors,List<String> myFriends){
+        List<String> result = new ArrayList<String>();
+        result.addAll(visitors);
+        System.out.println(myFriends.get(0));
+
+        result.removeAll(myFriends);
+
+        System.out.println(result);
+        return visitors;
     }
 }
