@@ -32,9 +32,15 @@ class DuplicateDeleter implements Detector {
 
     @Override
     public List<Integer> findPattern() {
-        for(int i = 0 ; i < cryptogram.length() ; i++) {
-
+        int endPoint = 0;
+        int i;
+        for(i = 0 ; i < cryptogram.length() ; i++) {
+            endPoint = findEndpoint(i);
+            if (endPoint != i) {
+                break;
+            }
         }
+        return List.of(i, endPoint);
     }
 
     public int findEndpoint(int base) {
