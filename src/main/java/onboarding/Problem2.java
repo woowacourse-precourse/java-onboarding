@@ -28,4 +28,17 @@ class Decryptor{
         return "";
     }
 
+    private static StringBuilder deleteDuplicateChars(StringBuilder crypto){
+        StringBuilder result = new StringBuilder("");
+
+        result.append(checkNeighbors(crypto.charAt(0),crypto.charAt(1)));
+        for (int i = 1; i < crypto.length() - 1; i++) {
+            result.append(checkNeighbors(crypto.charAt(i - 1), crypto.charAt(i), crypto.charAt(i + 1)));
+        }
+        if (crypto.length() > 2) {
+            result.append(checkNeighbors(crypto.charAt(crypto.length() - 1), crypto.charAt(crypto.length() - 2)));
+        }
+        return result;
+    }
+
 }
