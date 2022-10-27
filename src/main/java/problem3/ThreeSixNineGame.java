@@ -29,6 +29,8 @@ public class ThreeSixNineGame {
     }
 
     private static boolean isThreeSixNineDigitNumber(int number) {
-        return number % MULTIPLE_OF_THREE == MULTIPLE_CRITERION;
+        return number % MULTIPLE_OF_THREE == MULTIPLE_CRITERION
+                && number != MULTIPLE_CRITERION;
     }
+
 }
