@@ -36,17 +36,17 @@ public class Problem6 {
     private static List<Integer> getDuplicatedIndex(List<List<String>> substringList) {
         List<Integer> dupliatedIndexList = new ArrayList<>();
         for (int i=0; i<substringList.size(); i++) {
-            boolean DuplicatedFlag = false;
-            for (int j=i; j<substringList.size(); j++) {
+            boolean duplicatedFlag = false;
+            for (int j=0; j<substringList.size(); j++) {
                 if (i == j) {
                     continue;
                 }
                 if (ValidateDuplicatedName(substringList.get(i), substringList.get(j))) {
-                    DuplicatedFlag = true;
+                    duplicatedFlag = true;
                     break;
                 }
             }
-            if(DuplicatedFlag) {
+            if(duplicatedFlag) {
                 dupliatedIndexList.add(i);
             }
         }
@@ -59,7 +59,6 @@ public class Problem6 {
                 if(temp1.equals(temp2)) {
                     return true;
                 }
-
             }
         }
         return false;
