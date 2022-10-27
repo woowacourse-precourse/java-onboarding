@@ -8,4 +8,10 @@ public class Validator {
 			throw new IllegalArgumentException();
 		}
 	}
+
+	public static void isConsecution(List<Integer> integers) {
+		if (integers.get(0) + 1 != integers.get(1)) {
+			throw new IllegalArgumentException();
+		}
+	}
 }
