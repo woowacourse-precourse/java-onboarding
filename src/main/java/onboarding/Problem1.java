@@ -22,4 +22,11 @@ class Problem1 {
         return true;
     }
 
+    /**
+     * int 자료형을 String 자료형으로 변환
+     */
+    private static String convertIntToString(int number) {
+        return String.valueOf(number);
+    }
+
 }
