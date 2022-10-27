@@ -62,5 +62,14 @@ class Problem1 {
 
             return true;
         }
+
+        /* 오른쪽 페이지들이 각각 왼쪽 페이지보다 1만 큰지 확인하는 메서드 */
+        private boolean checkPagesDifferences() {
+            if (pobiRightPage - pobiLeftPage == 1 && crongRightPage - crongLeftPage == 1){
+                return true;
+            }
+
+            return false;
+        }
     }
 }
