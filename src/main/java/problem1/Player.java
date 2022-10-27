@@ -4,10 +4,10 @@ import java.util.List;
 
 public class Player {
 
-    public static final int INIT_SUM_VALUE = 0;
-    public static final int INIT_MULTIPLE_VALUE = 1;
-    public static final int DIVIDE_CRITERION = 10;
-    public static final int NUMBER_LOOP_CRITERION = 0;
+    private static final int INIT_SUM_VALUE = 0;
+    private static final int INIT_MULTIPLE_VALUE = 1;
+    private static final int DIVIDE_CRITERION = 10;
+    private static final int NUMBER_LOOP_CRITERION = 0;
     public static final int LEFT_PAGE_INDEX = 0;
     public static final int RIGHT_PAGE_INDEX = 1;
 
