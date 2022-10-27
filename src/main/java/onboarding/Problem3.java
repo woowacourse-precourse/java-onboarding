@@ -26,6 +26,12 @@ public class Problem3 {
     public static int countClap(ArrayList<Integer> digits){
         int count = 0;
 
+        for(int digit : digits){
+            if(digit==3 || digit==6 || digit==9){
+                count++;
+            }
+        }
+
         return count;
     }
 
