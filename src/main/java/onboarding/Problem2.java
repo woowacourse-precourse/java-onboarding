@@ -43,20 +43,23 @@ public class Problem2 {
         return  result;
     }
     public static String solution(String cryptogram) {
-        String answer = "";
-        Stack<String> duplicate = new Stack<>();
+        String answer = cryptogram;
+        Stack<String> duplicate;
 
         if (Exception(cryptogram))
             return answer;
 
-        while (CheckDuplicate(cryptogram)) {
-            duplicate = DuplicateStr(cryptogram);
+        while (CheckDuplicate(answer)) {
+            duplicate = DuplicateStr(answer);
+            while (!duplicate.empty()) {
+                answer = answer.replaceAll(duplicate.pop(), "");
+            }
         }
 
         return answer;
     }
 
     public static void main(String[] args) {
-
+        System.out.println(solution("aabbqwexzscz"));
     }
 }
