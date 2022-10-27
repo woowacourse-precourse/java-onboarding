@@ -7,4 +7,15 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+
+    private enum PageDirection {
+        LEFT(0),
+        RIGHT(1);
+
+        private final int index;
+
+        PageDirection(int index) {
+            this.index = index;
+        }
+    }
 }
