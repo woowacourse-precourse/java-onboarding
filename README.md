@@ -32,6 +32,14 @@
 
 - [x] solution method 구현
 
+### Problem3
+
+- [ ] 단일 숫자에서 박수 횟수 계산
+- [ ] 총 박수 횟수 계산
+
+
+- [ ] solution method 구현
+
 ___
 
 ## 🔍 진행 방식
