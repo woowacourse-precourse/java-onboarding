@@ -16,6 +16,19 @@ class Problem1 {
         return ret;
     }
 
+    public  static int mulPageNum(int pageNumber) {
+        int ret = 1;
+        char c;
+        String pageNumberStr = Integer.toString(pageNumber);
+
+        for (int i = 0; i < pageNumberStr.length(); i++) {
+            c = pageNumberStr.charAt(i);
+            ret *= Character.getNumericValue(c);
+        }
+
+        return ret;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
