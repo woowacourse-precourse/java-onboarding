@@ -4,8 +4,26 @@ import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        List<String> duplicatedWord = findDuplicatedWord(forms);
+        List<String> duplicatedCrew = getDuplicatedCrew(duplicatedWord, forms);
+        return duplicatedCrew;
+    }
+
+    static void checkForm(List<String> form) {
+        boolean isError = true;
+        String email = form.get(0);
+        String name = form.get(1);
+
+        if (name.matches("^[가-힣]*$") && (name.length() > 0 && name.length() < 20))
+            if (email.matches("^[a-zA-Z0-9]+@email.com$") && (email.length() > 10 && email.length() < 20))
+                isError = false;
+
+        try {
+            if (isError == true) throw new Exception();
+        } catch (Exception e) {
+            System.out.println("Incorrect name and email. Check your form");
+            System.out.println("your form = " + form);
+        }
     }
 
     static List<String> findDuplicatedWord(List<List<String>> forms) {
@@ -28,20 +46,17 @@ public class Problem6 {
         return duplicatedWord;
     }
 
-    static void checkForm(List<String> form) {
-        boolean isError = true;
-        String email = form.get(0);
-        String name = form.get(1);
+    static List<String> getDuplicatedCrew(List<String> duplicatedWord, List<List<String>> forms) {
+        Set<String> emailList = new HashSet<>();
 
-        if (name.matches("^[가-힣]*$") && (name.length() > 0 && name.length() < 20))
-            if (email.matches("^[a-zA-Z0-9]+@email.com$") && (email.length() > 10 && email.length() < 20))
-                isError = false;
-
-        try {
-            if (isError == true) throw new Exception();
-        } catch (Exception e) {
-            System.out.println("Incorrect name and email. Check your form");
-            System.out.println("your form = " + form);
+        for (String s : duplicatedWord) {
+            for (int i = 0; i < forms.size(); i++) {
+                if (forms.get(i).get(1).contains(s))
+                    emailList.add(forms.get(i).get(0));
+            }
         }
+        Collections.sort(new ArrayList<String>(emailList));
+
+        return new ArrayList<>(emailList);
     }
 }
