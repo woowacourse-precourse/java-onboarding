@@ -11,7 +11,12 @@ public class Problem3 {
 
     public static int judge(int i){
         int sum=0;
-
+        while(i>0){ // 자릿수별로 3,6,9 가 나온 경우 더하기 위한 반복문
+            if((i%10==3) || (i%10==6) || (i%10==9)){
+                sum++;
+            }
+            i/=10;
+        }
         return sum;
     }
 }
