@@ -9,6 +9,7 @@ class Problem1 {
         int multiple = 1;
         int max = Integer.MIN_VALUE;
 
+
         if(pages.get(1) - pages.get(0) != 1) return -1;
 
         for (int i=0; i<pages.size(); i++) {
