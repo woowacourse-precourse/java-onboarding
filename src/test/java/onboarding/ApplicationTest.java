@@ -135,6 +135,13 @@ class ApplicationTest {
             String result = "";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
+
+        @Test
+        void case4() {
+            String word = " ";
+            String result = " ";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
     }
 
 //    @Nested

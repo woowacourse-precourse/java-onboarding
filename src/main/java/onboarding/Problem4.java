@@ -2,12 +2,12 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
+        String answer = AlphabetController.convertString(word);
         return answer;
     }
 }
 
-class AlphabetController{
+class AlphabetController {
     static final int UPPER_START_INDEX = 65;
     static final int UPPER_END_INDEX = 90;
     static final int LOWER_START_INDEX = 97;
@@ -46,7 +46,7 @@ class AlphabetController{
     static String convertString(String input){
         StringBuilder result = new StringBuilder("");
 
-        for (int i = 0; i<input.length(); i++){
+        for (int i = 0; i < input.length(); i++) {
             result.append(checkAndConvert(input.charAt(i)));
         }
         return result.toString();
