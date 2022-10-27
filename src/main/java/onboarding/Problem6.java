@@ -65,4 +65,16 @@ public class Problem6 {
 
         return true;
     }
+
+    public static void main(String[] args) {
+        List<List<String>> forms = List.of(
+            List.of("jm@email.com", "제이가가위들자보자기를낸다"),
+            List.of("jason@email.com", "가휘들이춤을춘다"),
+            List.of("woniee@email.com", "아메바골짜기가지잉위잉"),
+            List.of("mj@email.com", "우째쓰까요맘때"),
+            List.of("nowm@email.com", "골로가다골룸이되었다")
+        );
+
+        System.out.println(solution(forms));
+    }
 }
