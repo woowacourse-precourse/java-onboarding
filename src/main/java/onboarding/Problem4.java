@@ -9,6 +9,12 @@ public class Problem4 {
         return changeChar;
         }
 
+    public static char lowerChange (char c) {
+        char upChar = Character.toUpperCase(c);
+        upChar = changeChar.get(upChar);
+        upChar = Character.toLowerCase(upChar);
+        return upChar;
+    }
 
     public static String solution(String word) {
         String answer = "";
