@@ -45,6 +45,9 @@ class Problem1 {
         if (leftPage<=1 || rightPage>=400) {
             return false;
         }
+        if (leftPage%2!=1 || rightPage%2!=0) {
+            return false;
+        }
         return true;
     }
 }
