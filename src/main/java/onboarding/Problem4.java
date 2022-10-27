@@ -6,7 +6,7 @@ import java.util.Map;
 public class Problem4 {
     public static String solution(String word) {
         Map<Character, Character> dictionary = getHashMapFrogDict();
-        return getTranslatedByDict(dictionary);
+        return getTranslated(word, dictionary);
     }
 
     public static HashMap<Character, Character> getHashMapFrogDict() {
@@ -25,9 +25,16 @@ public class Problem4 {
         return frogDict;
     }
 
-    public static String getTranslatedByDict(Map<Character, Character> dictionary) {
-        String output = "";
-
-        return output;
+    public static String getTranslated(String word, Map<Character, Character> dictionary) {
+        StringBuilder sb = new StringBuilder();
+        for (int i=0; i<word.length(); i++) {
+            char target = word.charAt(i);
+            if (dictionary.containsKey(target)) {
+                sb.append(dictionary.get(target));
+                continue;
+            }
+            sb.append(target);
+        }
+        return sb.toString();
     }
 }

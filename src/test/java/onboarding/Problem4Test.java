@@ -10,6 +10,12 @@ import org.junit.jupiter.api.Test;
 class Problem4Test {
 
 	@Test
+	void integrationTest() {
+		assertThat(solution("I love you")).isEqualTo("R olev blf");
+		assertThat(solution("123 $..$ 456")).isEqualTo("123 $..$ 456");
+	}
+
+	@Test
 	void getHashMapFrogDictTest() {
 		HashMap<Character, Character> frogDict = getHashMapFrogDict();
 		assertThat(frogDict.get('A')).isEqualTo('Z');
