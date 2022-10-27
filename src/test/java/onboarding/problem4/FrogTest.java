@@ -12,6 +12,6 @@ public class FrogTest {
 		Frog frog = new Frog(new FrogDictionary());
 		String word = "I love you 2";
 
-		Assertions.assertThat(frog.convertWord(word)).isEqualTo("R olev blf 2");
+		Assertions.assertThat(frog.convert(word)).isEqualTo("R olev blf 2");
 	}
 }

@@ -8,7 +8,7 @@ public class Frog {
 		this.frogDictionary = frogDictionary;
 	}
 
-	public String convertWord(String word) {
+	public String convert(String word) {
 		StringBuilder stringBuilder = new StringBuilder();
 		for (char character : word.toCharArray()) {
 			stringBuilder.append(convertCharacter(character));
