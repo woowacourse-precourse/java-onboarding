@@ -29,15 +29,11 @@ class Problem1 {
 	}
 
 	private static int compareLeftAndRight(List<Integer> pages){
-		if(compareSumAndMulti(pages.get(LEFT_PAGE)) > compareSumAndMulti(pages.get(RIGHT_PAGE)))
-			return compareSumAndMulti(pages.get(LEFT_PAGE));
-		return compareSumAndMulti(pages.get(RIGHT_PAGE));
+		return Math.max(compareSumAndMulti(pages.get(LEFT_PAGE)), compareSumAndMulti(pages.get(RIGHT_PAGE)));
 	}
 
 	private static int compareSumAndMulti(Integer number){
-		if(sumNumberOfDigit(number) > multiNumberOfDigit(number))
-			return sumNumberOfDigit(number);
-		return multiNumberOfDigit(number);
+		return Math.max(sumNumberOfDigit(number),multiNumberOfDigit(number));
 	}
 
 	private static int sumNumberOfDigit(Integer number){
