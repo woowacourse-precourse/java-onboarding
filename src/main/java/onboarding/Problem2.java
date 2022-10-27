@@ -40,6 +40,18 @@ public class Problem2 {
      * TODO: 입력한 문자열과, return된 문자열의 길이를 비교하여, 반복 여불을 결정한다.
      * TODO: 중복되는 문자열이 없을 때 까지 반복한다.
      */
+    private static String decodeCryptogram(String cryptogram) {
+        String tempCryptogram = cryptogram;
+        int tempSize = Integer.MAX_VALUE;
+        while (tempSize > 0) {
+            tempSize = tempCryptogram.length();
+            tempCryptogram = deleteContinuousCharacter(tempCryptogram);
+            if (tempSize == tempCryptogram.length()) {
+                return tempCryptogram;
+            }
+        }
+        return "";
+    }
 
 
     /**
@@ -48,7 +60,6 @@ public class Problem2 {
      * 임의의 문자열 cryptogram이 매개변수로 주어질 때, 연속하는 중복 문자들을 삭제한 결과를 return 하도록 solution 메서드를 완성하라.
      * TODO: 복호화된 문자열을 return한다.
      */
-
     public static String solution(String cryptogram) {
         String answer = "answer";
         return answer;
