@@ -41,6 +41,9 @@ class Problem1 {
         crongLeftMax = getMax(crongLeftPage);
 
         // 3. 오른쪽 페이지 중에서 나올 수 있는 가장 큰 최대값 뽑기 (각 자리 숫자를 모두 더하거나 곱함)
+        pobiRigtMax=getMax(pobiRightPage);
+        crongRightMax = getMax(crongRightPage);
+
         // 4. 왼쪽 페이지, 오른쪽 페이지 점수 비교
         // 5. 결과값 출력
 
