@@ -5,6 +5,17 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+
+        if(exception(pobi) || exception(crong)){
+            answer = -1;
+        }else {
+            int pobiPage = bigPage(summulPage(pobi.get(0)),summulPage(pobi.get(1)));
+            int crongPage = bigPage(summulPage(crong.get(0)),summulPage(crong.get(1)));
+
+            answer = result(pobiPage, crongPage);
+        }
+
+
         return answer;
     }
 
@@ -27,7 +38,7 @@ class Problem1 {
         int right = pages.get(1);
 
 
-        if(left%2 != 0 || right %2 == 0){
+        if(left%2 == 0 || right %2 != 0){
             answer = true;
         }else if(right-left != 1){
             answer = true;
