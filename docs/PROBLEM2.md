@@ -4,11 +4,9 @@
 - [x] 문자열의 중복을 없애는 기능
   - 중복 제거 : 빈 문자열로 바꿔준다는 것
 - [x] 문자열의 중복이 없어질 때까지 중복을 없애는 기능
-- [ ] 예외 처리 기능
-  - [ ] 영어 소문자만 들어오는지 확인하는 기능
-  - [ ] 문자열 길이가 1이상 1000이하인지 확인해주는 기능
-
-- [ ] 
+- [x] 예외 처리 기능
+  - [x] 영어 소문자만 들어오는지 확인하는 기능
+  - [x] 문자열 길이가 1이상 1000이하인지 확인해주는 기능
 
 <br>
 
@@ -16,9 +14,8 @@
 
 1. `regex`의 성능
 
-   - Java11 docs `Pattern`에 대해 본 결과 regex pattern이 1회용인지, 재사용 가능성이 있는지에 따라서 코드를 고려해야 한다고 함.
+   - Java11 docs `Pattern`에 대해 본 결과 regex pattern이 1회용인지, 재사용 가능성이 있는지에 따라서 코드를 고려해야 한다고 함. 현재 여기서는 `eraseSuccessiveCharacters` method가 `Pattern`을 사용하고, `eraseSuccessiveCharactersUntilUnchanged` method가 그런 `eraseSuccessiveCharacters`를 여러번 호출하기에 static 상수로 선언하여 공유할 수 있게 할 것임.
 
-     현재 여기서는 1회용으로 밖에 안쓰일 수 있으나 향후 코드의 확장성을 생각한다면 static 상수로 선언하여 공유할 수 있게 할 것임.
 
 <br>
 
