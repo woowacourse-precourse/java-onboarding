@@ -10,7 +10,7 @@ class Problem1 {
         return answer;
     }
 
-    private boolean isValidLeftPage(List<Integer> pages) {
+    private static boolean isValidLeftPage(List<Integer> pages) {
         int leftPage = getLeftPage(pages);
         // 왼쪽 페이지가 문제에서 요구하는 페이지 범위 외의 값이거나 짝수인 경우 유효하지 않은 입력
         if (leftPage <= 1 || leftPage >= 399 || leftPage % 2 == 0) {
@@ -20,7 +20,7 @@ class Problem1 {
         return true;
     }
 
-    private boolean isValidRightPage(List<Integer> pages) {
+    private static boolean isValidRightPage(List<Integer> pages) {
         int leftPage = getLeftPage(pages);
         int rightPage = getRightPage(pages);
         // 오른쪽 페이지가 왼쪽 페이지와 연속하지 않은 경우 유효하지 않은 입력 이렇게 검증 시 나머지의 경우는 왼쪽 페이지에서 검증됨
@@ -32,7 +32,7 @@ class Problem1 {
         return true;
     }
 
-    private boolean isValidPage(List<Integer> pages) {
+    private static boolean isValidPage(List<Integer> pages) {
         if (!isValidLeftPage(pages) || !isValidRightPage(pages)) {
             return false;
         }
