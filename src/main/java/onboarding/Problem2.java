@@ -11,20 +11,21 @@ public class Problem2 {
 
     public static String solution(String cryptogram) {
         List<String> splitString = Arrays.stream(cryptogram.split("")).collect(Collectors.toList());
-        List<Integer> indexOfDuplicateWords = new ArrayList<>();
 
-        getDuplicateWords(splitString, indexOfDuplicateWords);
+        List<Integer> indexOfDuplicateWords = getDuplicateWords(splitString);
         removeDuplicateWords(splitString, indexOfDuplicateWords);
 
         return String.join("", splitString);
     }
 
-    private static void getDuplicateWords(List<String> splitString, List<Integer> indexOfDuplicateWords) {
+    private static List<Integer>  getDuplicateWords(List<String> splitString) {
+        List<Integer> indexOfDuplicateWords = new ArrayList<>();
         for (int i = 0; i < splitString.size() - 1; i++) {
             if (splitString.get(i).equals(splitString.get(i + 1))) {
                 indexOfDuplicateWords.add(i);
             }
         }
+        return indexOfDuplicateWords;
     }
 
     private static void removeDuplicateWords(List<String> splitString, List<Integer> indexOfDuplicateWords) {
@@ -36,9 +37,8 @@ public class Problem2 {
         for (Integer idx : indexOfDuplicateWords) {
             splitString.subList(idx, idx + 2).clear();
         }
-        indexOfDuplicateWords.clear();
-        
-        getDuplicateWords(splitString, indexOfDuplicateWords);
+
+        indexOfDuplicateWords = getDuplicateWords(splitString);
         removeDuplicateWords(splitString, indexOfDuplicateWords);
 
     }
