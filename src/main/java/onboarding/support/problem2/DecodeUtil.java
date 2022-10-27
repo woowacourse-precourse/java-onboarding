@@ -3,6 +3,11 @@ package onboarding.support.problem2;
 public class DecodeUtil {
 
     private static final int DUPLICATION_INTERVAL = 1;
+    private final String decodedString;
+
+    public DecodeUtil(String originalString) {
+        this.decodedString = decode(originalString);
+    }
 
     public static String decode(String cryptogram) {
         StringBuilder originalString = new StringBuilder(cryptogram);
@@ -40,5 +45,9 @@ public class DecodeUtil {
 
     private static boolean isNotDecoded(String originalString, String decodedString) {
         return originalString.equals(decodedString);
+    }
+
+    public String getDecodedString() {
+        return decodedString;
     }
 }
