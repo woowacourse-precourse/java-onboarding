@@ -1,9 +1,14 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Problem2 {
 
+  private static final int NO_DUPLICATED_INDEX = -1;
+
   public static String solution(String cryptogram) {
-    String answer = "answer";
+    String answer = deleteContinuousDuplicatedChar(cryptogram);
     return answer;
   }
 
@@ -22,5 +27,35 @@ public class Problem2 {
       throw new IllegalStateException("1 ~ 4000자 길이의 문자열이 아닙니다.");
     }
     return true;
+  }
+
+  public static String deleteContinuousDuplicatedChar(String cryptogram) {
+    String[] splitCryptogram = cryptogram.split("");
+    int duplicatedIndex = getContinuousDuplicatedIndex(splitCryptogram);
+    if (duplicatedIndex == NO_DUPLICATED_INDEX) {
+      return cryptogram;
+    } else {
+      return deleteContinuousDuplicatedChar(deleteDuplicatedChar(splitCryptogram, duplicatedIndex));
+    }
+  }
+
+  private static int getContinuousDuplicatedIndex(String[] splitCryptogram) {
+    for (int i = 0; i < splitCryptogram.length - 1; i++) {
+      if (splitCryptogram[i].equals(splitCryptogram[i + 1])) {
+        return i;
+      }
+    }
+    return NO_DUPLICATED_INDEX;
+  }
+
+  private static String deleteDuplicatedChar(String[] splitCryptogram, int duplicatedIndex) {
+    ArrayList<String> strings = new ArrayList<>(Arrays.asList(splitCryptogram));
+    strings.remove(duplicatedIndex);
+    strings.remove(duplicatedIndex);
+    String retString = "";
+    for (String s : strings) {
+      retString += s;
+    }
+    return retString;
   }
 }
