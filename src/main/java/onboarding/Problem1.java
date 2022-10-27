@@ -7,12 +7,13 @@ class Problem1 {
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
 
 		// 왼쪽 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구한다.
-		int pobiLeft = getMaxValue(getDigitArray(pobi, "left"));
-		int crongLeft = getMaxValue(getDigitArray(crong, "left"));
+		int pobiLeft = getSideValue(pobi, "left");
+		int crongLeft = getSideValue(crong, "left");
 
 		// 오른쪽 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구한다.
-		int pobiRight = getMaxValue(getDigitArray(pobi, "right"));
-		int crongRight = getMaxValue(getDigitArray(crong, "right"));
+		int pobiRight = getSideValue(pobi, "right");
+		int crongRight = getSideValue(crong, "right");
+
 
 		//2~3 과정에서 가장 큰 수를 본인의 점수로 한다.
 		int pobiMaxValue = Math.max(pobiLeft, pobiRight);
@@ -31,13 +32,16 @@ class Problem1 {
 	static boolean isException(List<Integer> list) {
 		return list.get(0) == list.get(1) - 1 && list.get(0) % 2 == 1 && list.size() == 2;
 	}
-
-	static int[] getDigitArray(List<Integer> list, String side) {
-		int leftRight = (side.equals("left")) ? 0 : 1;
-		return Stream.of(String.valueOf(list.get(leftRight)).split("")).mapToInt(Integer::parseInt).toArray();
+	static int getSide(String side) {
+		return (side.equals("left")) ? 0 : 1;
+	}
+	static int[] getDigitArray(int number) {
+		return Stream.of(String.valueOf(number).split("")).mapToInt(Integer::parseInt).toArray();
 	}
 
-	static int getMaxValue(int[] array) {
+	static int getSideValue(List<Integer> list, String side) {
+		int leftRight = getSide(side);
+		int[] array = getDigitArray(list.get(leftRight));
 		return Math.max(getArraySum(array), getArrayMultiply(array));
 	}
 
