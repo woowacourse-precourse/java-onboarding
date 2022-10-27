@@ -26,7 +26,7 @@
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
 
 ### 기능 목록
-- [ ] 각 유저의 친구 목록 생성기능
-- [ ] 친구의 친구 10점 추가 기능
+- [x] 각 유저의 친구 목록 생성기능
+- [x] 친구의 친구 10점 추가 기능
 - [ ] 방문자 1점 추가 기능
 - [ ] 점수가 가장 높은 친구 최대 5명 선발, 정렬 기능
