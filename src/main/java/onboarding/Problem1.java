@@ -18,6 +18,13 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+
+    private static int judge(int pobiMax, int crongMax) {
+        if(pobiMax > crongMax) return 1;
+        else if(pobiMax < crongMax) return 2;
+        else return 0;
+    }
+
     private static void checkException(Integer left, Integer right) throws pageException {
         if (!(pageBoundaryCheck(left, right) && pageValidCheck(left, right))) {
             throw new pageException();
