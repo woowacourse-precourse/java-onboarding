@@ -3,6 +3,8 @@ package onboarding.problem3.domain;
 import java.util.Arrays;
 
 public class Number {
+    private static final String DELIMITER = "";
+    
     private final int number;
     
     public Number(final int number) {
@@ -10,10 +12,14 @@ public class Number {
     }
     
     public int countOfMultipleOfThree() {
-        return (int) Arrays.stream(String.valueOf(number).split(""))
+        return (int) Arrays.stream(splitToString())
                 .mapToInt(Integer::parseInt)
                 .filter(this::isContainsThreeSixNine)
                 .count();
+    }
+    
+    private String[] splitToString() {
+        return String.valueOf(number).split(DELIMITER);
     }
     
     private boolean isContainsThreeSixNine(final int digit) {
