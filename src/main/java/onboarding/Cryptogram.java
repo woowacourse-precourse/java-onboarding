@@ -24,4 +24,18 @@ public class Cryptogram {
 
         duplicated = Integer.MAX_VALUE == i ? true : false;
     }
+
+    public String deleteDuplicate() {
+        String str = value;
+        if (!duplicated)
+            return value;
+
+        for (int i = 0; i < value.length(); i++) {
+            value = value.replaceAll(value.charAt(i) + "{2,}", "");
+        }
+
+        checkDuplicate();
+
+        return value;
+    }
 }
