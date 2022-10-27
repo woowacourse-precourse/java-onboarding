@@ -14,7 +14,6 @@ public class Problem2 {
 
         while (boo) {
             if (strList.size() == 0) {
-                boo = false;
                 break;
             }
             for (int i = 0; i < strList.size()-1; i++) {
@@ -41,4 +40,4 @@ public class Problem2 {
 // 입력 문자열을 분리하여 배열로 저장한 후 리스트로 변환
 // while문을 진행하여 연속적으로 중복되는 문자열은 삭제
 //  -> 모두 중복되어 문자열이 없거나 더이상 중복되는 문자열이 없을 경우 반복문 빠져나옴
-// 리스트의 남은 문자열을 합쳐서 출력 
+// 리스트의 남은 문자열을 합쳐서 출력
