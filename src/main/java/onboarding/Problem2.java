@@ -25,7 +25,17 @@ public class Problem2 {
 
             before = now;
         }
-        
+
         return characters;
+    }
+
+    private static String toString(Stack<Character> characters) {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (Character character : characters) {
+            stringBuilder.append(character);
+        }
+
+        return stringBuilder.toString();
     }
 }
