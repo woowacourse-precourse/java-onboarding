@@ -16,4 +16,12 @@ public class Problem5 {
     private static int moduloMoney(int money, int divMoney){
         return Math.floorMod(money,divMoney);
     }
+    private static List<Integer> MoneyLoop(int money){
+        List<Integer> list = new ArrayList<>();
+        for (Integer divmoney : MONEYLIST) {
+            list.add(divideMoney(money, divmoney));
+            money = moduloMoney(money,divmoney);
+        }
+        return list;
+    }
 }
