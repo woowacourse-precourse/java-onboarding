@@ -18,6 +18,14 @@ public class Problem4 {
         return reversedCharacter;
     }
 
+    public static boolean isLowerCase(char target){
+        boolean result = false;
+        if(target >= 'a' && target <= 'z'){
+            result = true;
+        }
+        return result;
+    }
+
     public static String solution(String word) {
         String answer = "";
         for(int i = 0; i < word.length(); i++){
