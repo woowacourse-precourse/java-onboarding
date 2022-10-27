@@ -25,11 +25,9 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         Problem1 problem1 = new Problem1();
         int answer = Integer.MAX_VALUE;
-        int pobiMax = Integer.MAX_VALUE;
-        int crongMax = Integer.MAX_VALUE;
+        int pobiMax = Integer.max(problem1.calculateScore(pobi.get(0)),problem1.calculateScore(pobi.get(1)));
+        int crongMax = Integer.max(problem1.calculateScore(crong.get(0)),problem1.calculateScore(crong.get(1)));
 
-        pobiMax = Integer.max(problem1.calculateScore(pobi.get(0)),problem1.calculateScore(pobi.get(1)));
-        crongMax = Integer.max(problem1.calculateScore(crong.get(0)),problem1.calculateScore(crong.get(1)));
 
         if(pobiMax > crongMax){
             answer = 1;
