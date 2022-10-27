@@ -8,6 +8,7 @@ import java.util.Map;
 public class Problem7 {
     private static final int ID_A = 0;
     private static final int ID_B = 1;
+    private static final int FRIEND_OF_FRIEND_SCORE = 10;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
@@ -38,4 +39,20 @@ public class Problem7 {
         }
     }
 
+    private static void giveScoreByFriend(String user, Map<String, List<String>> friendMap , Map<String, Integer> friendScoreMap) {
+        List<String> friendsOfUser = friendMap.get(user);
+
+        for(String friendOfUser : friendsOfUser) {
+            List<String> friendsOfFriend = friendMap.get(friendOfUser);
+
+            for(String friend : friendsOfFriend) {
+                if (friend.equals(user)) {
+                    continue;
+                }
+
+                int friendScore = friendScoreMap.get(friend);
+                friendScoreMap.put(friend, friendScore + FRIEND_OF_FRIEND_SCORE);
+            }
+        }
+    }
 }
