@@ -1,25 +1,40 @@
 package onboarding;
 
 public class Problem2 {
+    public static String decrypt(String cryptogram) {
+        String decrpyto = cryptogram;
+        int len = decrpyto.length();
+        int idx = 0;
 
-    public static void decrypt(String cryptogram) {
+        while (idx < len - 1) {
+            if (decrpyto.charAt(idx) == decrpyto.charAt(idx+1)) {   // 중복 문자일 경우 삭제
+                decrpyto = decrpyto.substring(0, idx) + decrpyto.substring(idx+2);
 
+                len = decrpyto.length();
+            }
+            else {  // 아닐 경우 계속 진행
+                idx ++;
+            }
+        }
+
+        return decrpyto;
     }
 
     public static String solveCrypto(String cryptogram) {
-        String decryptogram = cryptogram;
+        String decryptogram = decrypt(cryptogram);
 
         while(!decryptogram.equals(cryptogram)) {
-            decryptogram = cryptogram;
-            decrypt(cryptogram);
+            cryptogram = decryptogram;
+            decryptogram = decrypt(cryptogram);
         }
-
         return decryptogram;
     }
 
     public static String solution(String cryptogram) {
-        solveCrypto(cryptogram);
+        String answer = "answer";
 
-        return cryptogram;
+        answer = solveCrypto(cryptogram);
+
+        return answer;
     }
 }
