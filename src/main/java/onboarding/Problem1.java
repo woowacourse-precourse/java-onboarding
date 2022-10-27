@@ -1,5 +1,8 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 class Problem1 {
@@ -36,13 +39,20 @@ class Problem1 {
         return mul;
     }
 
-    static List<int> mapToSum(List<int> intList) {
+    static List<Integer> mapToSum(List<Integer> intList) {
         intList.replaceAll(i -> sumDigits(i));
         return intList;
     }
 
-    static List<int> mapToMul(List<int> intList) {
+    static List<Integer> mapToMul(List<Integer> intList) {
         intList.replaceAll(i -> multiplyDigits(i));
         return intList;
     }
+
+    static List<Integer> merge(List<Integer> list1, List<Integer> list2) {
+        List<Integer> merged = new ArrayList<>();
+        merged.addAll(list1);
+        merged.addAll(list2);
+        return merged;
+    };
 }
