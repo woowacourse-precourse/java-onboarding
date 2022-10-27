@@ -7,6 +7,7 @@ class Problem1 {
     static final int CRONGWIN = 2;
     static final int DRAW = 0;
     static final int EXCEPTION = -1;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int pobiScore;
         int crongScore;
