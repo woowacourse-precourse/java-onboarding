@@ -5,4 +5,9 @@ public class Problem2 {
         String answer = "answer";
         return answer;
     }
+
+    public static void main(String[] args){
+        System.out.println(solution("browoanoommnaon"));// "brown"
+
+    }
 }
