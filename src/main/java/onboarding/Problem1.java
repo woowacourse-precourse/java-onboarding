@@ -11,7 +11,7 @@ import java.util.List;
 //  d. 페이지<1 (위의 조건때문에 해당될 수 없음)
 //  e. 페이지>400 (위의 조건때문에 left>400에만 해당돼도 예외)
 // 2. 각각의 max num 구함 (각자의 점수)
-// 3. 점수 비교
+// 3. 점수 비교 (승자 판별)
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -31,17 +31,9 @@ class Problem1 {
         pobiNum = Math.max(findMaxNum(pobi.get(0)), findMaxNum(pobi.get(1)));
         crongNum = Math.max(findMaxNum(crong.get(0)), findMaxNum(crong.get(1)));
 
-        // 3. 점수 비교
-        if (pobiNum > crongNum) {
-            // 포비 승
-            answer = 1;
-        } else if (pobiNum < crongNum) {
-            // 크롱 승
-            answer = 2;
-        } else {
-            // 무승부
-            answer = 0;
-        }
+        // 3. 점수 비교 (승자 판별)
+        answer = whoWin(pobiNum, crongNum);
+
         return answer;
     }
 
@@ -83,6 +75,20 @@ class Problem1 {
         max = Math.max(sum, multi);
 
         return max;
+    }
+
+    // 3. 점수 비교 (승자 판별)
+    public static int whoWin(int pobi, int crong) {
+        if (pobi > crong) {
+            // 포비 승
+            return 1;
+        } else if (pobi < crong) {
+            // 크롱 승
+            return 2;
+        } else {
+            // 무승부
+            return 0;
+        }
     }
 }
 
