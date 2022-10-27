@@ -12,7 +12,12 @@ public class Problem3 {
         int cnt = 0; // 카운트 변수
 
         for(int i = 1; i <= number; i++) { // 1 ~ number까지 순환 하는 루프
-            
+            int tmp1 = i; // number가 저장될 변수
+            int tmp2 = 0; // 각각의 자릿수가 저장될 변수
+            for(; tmp1 != 0;) { // 자릿수 분리, 1의 자리 부터 체크
+                tmp2 = tmp1 % 10;
+                tmp1 /= 10;
+            }
         }
 
         return cnt;
