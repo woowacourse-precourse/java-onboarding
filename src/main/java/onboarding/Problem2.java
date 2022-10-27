@@ -2,7 +2,14 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = cryptogram;
+
+        while(answer.length()!=0){
+            String newAnswer = getNewString(answer,checkDuplicateChar(answer));
+            if(newAnswer.length()==answer.length())break;
+            answer = newAnswer;
+        }
+
         return answer;
     }
     public static boolean[] checkDuplicateChar(String str){
