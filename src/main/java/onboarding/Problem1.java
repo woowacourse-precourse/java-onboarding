@@ -25,10 +25,15 @@ class Problem1 {
             return answer;
         }
 
-        if(!isContinuous(pobiLeftPageNumber,pobiRightPageNumber) || !isContinuous(crongLeftPageNumber,crongRightPageNumber)){
+        if (!isContinuous(pobiLeftPageNumber, pobiRightPageNumber) || !isContinuous(crongLeftPageNumber, crongRightPageNumber)) {
             answer = -1;
             return answer;
         }
+
+        int pobiLeftMaxValue = Math.max(getSumMax(pobiLeftPageNumber),getMulMax(pobiLeftPageNumber));
+        int pobiRightMaxValue = Math.max(getSumMax(pobiRightPageNumber),getMulMax(pobiRightPageNumber));
+        int crongLeftMaxValue = Math.max(getSumMax(crongLeftPageNumber),getMulMax(crongLeftPageNumber));
+        int crongRightMaxValue = Math.max(getSumMax(crongRightPageNumber),getMulMax(crongRightPageNumber));
 
         return answer;
     }
@@ -42,5 +47,26 @@ class Problem1 {
         if (rightPageNumber - leftPageNumber == 1) return true;
         return false;
     }
+
+    public static Integer getSumMax(int number) {
+        int maxValue = number % 10;
+        number /= 10;
+        while (number != 0) {
+            maxValue += number % 10;
+            number /= 10;
+        }
+        return maxValue;
+    }
+
+    public static Integer getMulMax(int number) {
+        int maxValue = number % 10;
+        number /= 10;
+        while (number != 0) {
+            maxValue += number % 10;
+            number /= 10;
+        }
+        return maxValue;
+    }
+
 
 }
