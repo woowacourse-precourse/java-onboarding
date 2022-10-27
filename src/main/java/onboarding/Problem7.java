@@ -22,6 +22,8 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+        List<String> result = new ArrayList<>();
+
         Integer [] tmpArray;
 
         friendsList = friends;
@@ -36,9 +38,14 @@ public class Problem7 {
         List<String> recommedList = getKey(sortList());
         recommedList = sortList(saveSortCheckPoint(tmpArray), recommedList);
 
-        Collections.nCopies(recommendNum, recommedList);
+        int min = Math.min(recommedList.size(), recommendNum);
 
-        answer = recommedList;
+        for (int i = 0; i < min; i++)
+        {
+            result.add(recommedList.get(i));
+        }
+
+        answer = result;
         return answer;
     }
 
