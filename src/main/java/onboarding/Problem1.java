@@ -47,4 +47,17 @@ class Problem1 {
 
         return (leftMax > rightMax) ? leftMax : rightMax;
     }
+
+    private static  boolean isValid(List<Integer> pages) {
+        int leftPage = pages.get(0);
+        int rightPage = pages.get(1);
+
+        //왼쪽 페이지가 짝수면 false
+        if (leftPage % 2 == 0) return false;
+        //오른쪽 페이지가 왼쪽 페이지보다 1만큼 크지 않으면 false
+        if (rightPage == leftPage + 1) return false;
+
+        //예외상황이 아니면 true
+        return true;
+    }
 }
