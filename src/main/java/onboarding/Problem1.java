@@ -6,7 +6,24 @@ import java.util.List;
 
 public class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-
+        if (isError(pobi, crong)) {
+            return -1;
+        }
+        int pobiMax = 0;
+        int crongMax = 0;
+        for (int i = 0; i <= 1; i++) {
+            pobiMax = Math.max(pobiMax, sum(pobi.get(i)));
+            pobiMax = Math.max(pobiMax, mul(pobi.get(i)));
+            crongMax = Math.max(crongMax, sum(crong.get(i)));
+            crongMax = Math.max(crongMax, mul(crong.get(i)));
+        }
+        if (pobiMax > crongMax) {
+            return 1;
+        } else if (pobiMax < crongMax) {
+            return 2;
+        } else {
+            return 0;
+        }
     }
     public static boolean isError(List<Integer> pobi, List<Integer> crong) {
         for (int i = 0; i <= 1; i++) {
