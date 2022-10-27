@@ -9,10 +9,13 @@ public class Problem2 {
     }
 
     private static Stack<Character> deleteDuplicateChars(Stack<Character> characterStack, String cryptogram) {
-        for(int i=0; i<cryptogram.length(); i++) {
+        for(int i=1; i<cryptogram.length(); i++) {
             if(validateSameChar(characterStack.peek(), cryptogram.charAt(i))) {
                 characterStack.pop();
+                continue;
             }
+
+            characterStack.push(cryptogram.charAt(i));
         }
 
         return characterStack;
