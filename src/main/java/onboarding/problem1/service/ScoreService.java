@@ -18,4 +18,15 @@ public class ScoreService {
          * */
         return slicedIntList;
     }
+
+    // ArrayList에 쌓인 값들에 대한 누적합 진행
+    public static int cumulativeSum(ArrayList<Integer> list){
+        int result = 0;
+
+        for(int index = 0; index<list.size(); index++){
+            result += list.get(index);
+        }
+
+        return result;
+    }
 }
