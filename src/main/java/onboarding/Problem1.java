@@ -4,7 +4,12 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        if (!(validate(pobi) && validate(crong))) return -1;
+
+        int pobiScore = calculateMaxScore(pobi);
+        int crongScore = calculateMaxScore(crong);
+        int answer = judgeWinner(pobiScore, crongScore);
+
         return answer;
     }
     public static boolean validate(List<Integer> pages){
