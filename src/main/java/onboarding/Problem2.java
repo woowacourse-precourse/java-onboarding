@@ -9,13 +9,14 @@ public class Problem2 {
     private static final int MAX_CRYPTOGRAM_LENGTH = 1000;
 
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer;
 
         if (!isValidCryptogram(cryptogram)) {
             throw new IllegalArgumentException("문자열의 형태가 유효하지 않습니다");
         }
 
         Stack<Character> unduplicatedCryptogram = removeDupAdjacentChar(cryptogram);
+        answer = convertStacktoString(unduplicatedCryptogram);
 
         return answer;
     }
@@ -49,5 +50,18 @@ public class Problem2 {
         }
 
         return storage;
+    }
+
+    public static String convertStacktoString(Stack<Character> charStack) {
+        StringBuilder newString = new StringBuilder();
+        String result;
+
+        while (!charStack.isEmpty()) {
+            newString.append(charStack.pop());
+        }
+
+        result = newString.reverse().toString();
+
+        return result;
     }
 }
