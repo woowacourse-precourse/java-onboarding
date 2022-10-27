@@ -2,31 +2,35 @@ package onboarding;
 import java.util.Stack;
 public class Problem2 {
     public static String solution(String cryptogram) {
-        char [] splitString = cryptogram.toCharArray();
-        Stack<Character> noDuplicatesStack = overlapCheckStack(splitString);
-        return stackToString(noDuplicatesStack);
+        char[] splitString = cryptogram.toCharArray();
+        Stack<Character> noOverlapStack = removeOverlap(splitString);
+        return toString(noOverlapStack);
     }
-    private static Stack<Character> overlapCheckStack(char [] charArray){
+    /* Checking overlap for char[] -> stack */
+    private static Stack<Character> removeOverlap(char[] charArray) {
         Stack<Character> stack = new Stack<>();
-        for(char element :charArray){
+        for (char element : charArray) {
             if (stack.empty()) {
                 stack.push(element);
                 continue;
             }
-            if (stack.peek()==element){
+            if (stack.peek() == element) {
                 stack.pop();
-            }else{
+            } else {
                 stack.push(element);
             }
         }
         return stack;
     }
-    private static String stackToString(Stack<Character> charStack){
-        int size = charStack.size();
-        if (size== 0){ return "";}
-        char [] tmp = new char[size];
-        for(int i = size; i >0; i--){
-            tmp[i-1] = charStack.pop();
+    /* stack -> string (without reverse) */
+    private static String toString(Stack<Character> stack) {
+        int size = stack.size();
+        if (size == 0) {
+            return "";
+        }
+        char[] tmp = new char[size];
+        for (int i = size; i > 0; i--) {
+            tmp[i-1] = stack.pop();
         }
         return String.valueOf(tmp);
     }
