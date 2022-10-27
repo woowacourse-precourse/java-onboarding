@@ -6,6 +6,27 @@ import java.util.Arrays;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
+        ArrayList<String> decipher;
+        int index = -1;
+
+        // string -> arrayList 로 변환
+        decipher = changeString(cryptogram);
+
+        while(true) {
+            // 중복되는 문자열 찾기
+            index = duplicateIndex(decipher);
+
+            // 더 이상 중복되는 문자열이 없을 경우 return
+            if(index == -1) {
+                answer = changeList(decipher);
+                break;
+            }
+
+            // 중복되는 문자열이 있을 경우, 중복 문자 삭제 후 업데이트
+            decipher = deleteList(decipher, index);
+        }
+
+
         return answer;
     }
 
