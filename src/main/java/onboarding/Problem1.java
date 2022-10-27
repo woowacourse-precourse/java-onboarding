@@ -13,35 +13,6 @@ class Problem1 {
         return getResult(pobi, crong);
     }
 
-    static boolean validateNum(List<Integer> player) {
-        int leftNum = player.get(0);
-        int rightNum = player.get(1);
-
-        if (!isConsecutiveNum(leftNum, rightNum) || !isFirstOrLastPage(leftNum, rightNum)) {
-            return false;
-        }
-
-        return true;
-    }
-
-    static boolean isConsecutiveNum(int leftNum, int rightNum) {
-        if (leftNum + 1 != rightNum) {
-            return false;
-        }
-        return true;
-    }
-
-    static boolean isFirstOrLastPage(int leftNum, int rightNum) {
-        if (leftNum == FIRST_PAGE) {
-            return false;
-        }
-        if (rightNum == LAST_PAGE) {
-            return false;
-        }
-
-        return true;
-    }
-
     static int getResult(List<Integer> player1, List<Integer> player2) {
         int player1Score = getScore(player1);
         int player2Score = getScore(player2);
@@ -93,5 +64,34 @@ class Problem1 {
         }
 
         return multiple;
+    }
+
+    static boolean validateNum(List<Integer> player) {
+        int leftNum = player.get(0);
+        int rightNum = player.get(1);
+
+        if (!isConsecutiveNum(leftNum, rightNum) || !isFirstOrLastPage(leftNum, rightNum)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    static boolean isConsecutiveNum(int leftNum, int rightNum) {
+        if (leftNum + 1 != rightNum) {
+            return false;
+        }
+        return true;
+    }
+
+    static boolean isFirstOrLastPage(int leftNum, int rightNum) {
+        if (leftNum == FIRST_PAGE) {
+            return false;
+        }
+        if (rightNum == LAST_PAGE) {
+            return false;
+        }
+
+        return true;
     }
 }
