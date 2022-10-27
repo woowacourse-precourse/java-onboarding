@@ -19,3 +19,8 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+### 기능 목록
+1. 주어진 문자가 알파벳인지 확인하는 함수 is_alphabet
+2. 주어진 알파벳을 청개구리 사전을 바탕으로 변환하는 함수 change_word
+3. 주어진 문자열을 청개구리 사전을 바탕으로 변환하는 함수 solution
