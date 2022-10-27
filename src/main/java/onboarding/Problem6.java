@@ -1,6 +1,5 @@
 package onboarding;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -13,6 +12,12 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
+    }
+
+    private static void addPartOfNickToMap(String partOfNickname, String email) {
+        Set<String> newEmailSet= new HashSet<>();
+        newEmailSet.add(email);
+        nicknameMap.put(partOfNickname, newEmailSet);
     }
 
     private static void addEmailSet(Set<String> newEmailSet) {
