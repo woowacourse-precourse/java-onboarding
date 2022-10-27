@@ -4,22 +4,23 @@ public class Problem3 {
     public static int solution(int number) {
         int count = 0;
         for (int i = 1; i <= number; i += 1) {
-            count = check369Exists(i, count);
+            count = changeCountByExists(i, count);
         }
         return count;
     }
-    public static int check369Exists(int number, int count) {
-        String stringifiedNumber = numberStringify(number);
-        for (int j = 0; j < stringifiedNumber.length(); j += 1) {
-            if (stringifiedNumber.charAt(j) == '3' || stringifiedNumber.charAt(j) == '6' || stringifiedNumber.charAt(j) == '9') {
-                count += 1;
-            }
+    public static int changeCountByExists(int number, int count) {
+        for (int j = 0; j < numberStringify(number).length(); j += 1) {
+            if (validate369(numberStringify(number), j)) { count += 1; }
         }
         return count;
     }
 
     public static String numberStringify(int number){
         return number + "";
+    }
+
+    public static boolean validate369(String string, int j){
+        return string.charAt(j) == '3' || string.charAt(j) == '6' || string.charAt(j) == '9';
     }
 
 }
