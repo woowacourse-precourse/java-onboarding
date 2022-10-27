@@ -1,6 +1,7 @@
 package onboarding;
 
 public class Problem2 {
+    private static int NO_DUPLICATE_LETTER = -1;
     public static String solution(String cryptogram) {
         return decodedCrypto(cryptogram);
     }
@@ -9,7 +10,7 @@ public class Problem2 {
     private static String decodedCrypto(String cryptogram) {
         while (true) {
             int duplicateLetterIndex = findDuplicateLetterIndex(cryptogram);
-            if (duplicateLetterIndex == -1) {
+            if (duplicateLetterIndex == NO_DUPLICATE_LETTER) {
                 break;
             }
             cryptogram = removeContinuousLetter(cryptogram, duplicateLetterIndex);
@@ -25,12 +26,12 @@ public class Problem2 {
                 return index;
             }
         }
-        return -1;
+        return NO_DUPLICATE_LETTER;
     }
 
     private static String removeContinuousLetter(String word, int index) {
-        StringBuilder sb = new StringBuilder(word);
-        sb.delete(index, index + 2);
-        return sb.toString();
+        StringBuilder builder = new StringBuilder(word);
+        builder.delete(index, index + 2);
+        return builder.toString();
     }
 }
