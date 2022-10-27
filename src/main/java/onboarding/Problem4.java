@@ -23,11 +23,10 @@ public class Problem4 {
 //            answer += word.charAt(i);
 //        }
 
-        char testChar = 'z';
+        int testNum = 100;
+        char testChar = (char) testNum;
 
-        int testInt = testChar;
-
-        System.out.println(testInt);
+        System.out.println(testChar);
 
         return answer;
     }
