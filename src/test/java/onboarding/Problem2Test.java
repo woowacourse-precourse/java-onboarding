@@ -12,5 +12,12 @@ public class Problem2Test {
 		String result = "rown";
 		assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
 	}
-	
+
+	@Test
+	void duplicateNumberAtTheEnd() {
+		String cryptogram = "rownbb";
+		String result = "rown";
+		assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+	}
+
 }
