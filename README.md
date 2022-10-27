@@ -65,8 +65,6 @@
       - 문자가 영문자인지 알려준다.
       - [X] getOppositeAlphabet
       - 영문자를 반대 영문자로 바꿔준다.
-      - [ ] getOppositeCase
-      - 영문자의 대소를 바꿔준다.
 
 5. [문제 5](./docs/PROBLEM5.md)
 6. [문제 6](./docs/PROBLEM6.md)

@@ -50,8 +50,17 @@ public class Problem4 {
             return String.valueOf(letter);
         }
         char oppositeLetter = getOppositeAlphabet(letter);
-        char oppositeCaseLetter = getOppositeCase(oppositeLetter);
-        return String.valueOf(oppositeCaseLetter);
+        return String.valueOf(oppositeLetter);
+    }
+
+    /*
+     * 문자가 특정 범위의 문자인지 확인합니다.
+     *
+     * @param 확인할 문자, 범위의 왼쪽 문자, 범위의 오른쪽 문자입니다.
+     * @return 범위안에 있으면 참, 아니면 거짓을 반환합니다.
+     */
+    private static boolean isBetween(char letter, char leftBound, char rightBound) {
+        return leftBound <= letter && letter <= rightBound;
     }
 
     /*
@@ -61,8 +70,8 @@ public class Problem4 {
      * @return 문자가 영문자라면 참, 아니면 거짓을 반환합니다.
      * */
     private static boolean isAlphabet(char letter) {
-        boolean isLower = 'a' <= letter && letter <= 'z';
-        boolean isUpper = 'A' <= letter && letter <= 'Z';
+        boolean isLower = isBetween(letter, 'a', 'z');
+        boolean isUpper = isBetween(letter, 'A', 'Z');
         return isLower || isUpper;
     }
 
@@ -75,16 +84,13 @@ public class Problem4 {
     private static char getOppositeAlphabet(char letter) {
         char startLetter = 'a';
         char endLetter = 'z';
-        if (letter < startLetter || endLetter < letter){
+        boolean isUpper = isBetween(letter, 'A', 'Z');
+        if (isUpper){
             startLetter = 'A';
             endLetter = 'Z';
         }
         char oppositeLetter = (char) (endLetter - letter + startLetter);
         return oppositeLetter;
-    }
-
-    private static char getOppositeCase(char oppositeLetter) {
-        return ' ';
     }
 
     /*
@@ -99,9 +105,5 @@ public class Problem4 {
         }
         String answer = encryptString(word);
         return answer;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(getOppositeAlphabet('M'));
     }
 }
