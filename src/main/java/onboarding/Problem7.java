@@ -14,6 +14,7 @@ public class Problem7 {
             memberList.put(friends.get(i).get(0), 0);
             memberList.put(friends.get(i).get(1), 0);
         }
+        //visitor 추가 입력
         for (int i = 0; i < visitors.size(); i++) {
             memberList.put(visitors.get(i), 0);
         }
@@ -26,6 +27,10 @@ public class Problem7 {
                 continue;
             }
             memberList = checkUserFriendFriend(friend1, friend2, friendList, memberList);
+        }
+
+        for (int i = 0; i < visitors.size(); i++) {
+            memberList = visitorsScorePlusOne(visitors.get(i), memberList, friendList);
         }
         return answer;
     }
@@ -41,8 +46,7 @@ public class Problem7 {
     }
 
     //user의 친구의 친구인지 확인, 맞으면 10점 추가하는 기능
-    public static HashMap<String, Integer> checkUserFriendFriend(String friend1, String friend2,
-                                                                 List<String> friendList, HashMap<String, Integer> memberList){
+    public static HashMap<String, Integer> checkUserFriendFriend(String friend1, String friend2, List<String> friendList, HashMap<String, Integer> memberList){
         if(friendList.contains(friend1)){
             Integer score = memberList.get(friend2);
             memberList.replace(friend2, score + 10);
@@ -50,6 +54,19 @@ public class Problem7 {
         if(friendList.contains(friend2)){
             Integer score = memberList.get(friend1);
             memberList.replace(friend1, score + 10);
+        }
+        return memberList;
+    }
+
+    public static HashMap<String, Integer> visitorsScorePlusOne(String visitor, HashMap<String, Integer> memberList, List<String> friendList){
+        //user와 친구관계면 점수 X
+        if (friendList.contains(visitor)) {
+            return memberList;
+        }
+        //방문자 점수 +1
+        if (memberList.containsKey(visitor)) {
+            Integer score = memberList.get(visitor);
+            memberList.replace(visitor, score + 1);
         }
         return memberList;
     }
