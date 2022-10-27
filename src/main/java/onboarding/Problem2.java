@@ -7,7 +7,7 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         List<String> buffer = Arrays.asList(cryptogram.split("")); // ['b','r','w','p','p','w']
         pushStack(buffer);
-        String answer = parseStack(stack);
+        String answer = parseStackToString(stack);
         return answer;
     }
 
@@ -32,5 +32,13 @@ public class Problem2 {
         if (Objects.equals(currentChar, stack.peek())){
             String x = stack.pop();
         }
+    }
+
+    public static String parseStackToString(Stack<String> stack){
+        StringBuilder answer = new StringBuilder();
+        while (!stack.empty()){
+            answer.append(stack.pop());
+        }
+        return answer.reverse().toString();
     }
 }
