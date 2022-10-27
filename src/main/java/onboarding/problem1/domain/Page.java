@@ -5,6 +5,9 @@ import java.util.NoSuchElementException;
 
 public class Page {
     private static final String NOT_FOUND_PAGE_EXCEPTION_MESSAGE = "페이지를 찾지 못했습니다.";
+    private static final int MIN_PAGE = 3;
+    private static final int MAX_PAGE = 398;
+    private static final String DELIMITER = "";
     
     private final int page;
     
@@ -26,7 +29,7 @@ public class Page {
     }
     
     private String[] splitToStringPage() {
-        return String.valueOf(page).split("");
+        return String.valueOf(page).split(DELIMITER);
     }
     
     public boolean isNotOdd() {
@@ -46,6 +49,6 @@ public class Page {
     }
     
     public boolean isExceededRange() {
-        return page < 3 || page > 398;
+        return page < MIN_PAGE || page > MAX_PAGE;
     }
 }
