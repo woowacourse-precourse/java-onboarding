@@ -14,5 +14,4 @@ class Problem5Test {
 		assertThrows(IllegalArgumentException.class, () ->
 			Problem5.solution(0));
 	}
-
 }
