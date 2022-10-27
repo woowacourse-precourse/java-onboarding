@@ -32,6 +32,9 @@ public class Problem7 {
         for (int i = 0; i < visitors.size(); i++) {
             memberList = visitorsScorePlusOne(visitors.get(i), memberList, friendList);
         }
+
+        //HashMap value 내림차순 정렬
+        List<Map.Entry<String, Integer>> sortedMemberList = sortedMapByValue(memberList);
         return answer;
     }
     //user의 친구목록을 작성하는 기능
@@ -69,5 +72,10 @@ public class Problem7 {
             memberList.replace(visitor, score + 1);
         }
         return memberList;
+    }
+    public static List<Map.Entry<String, Integer>> sortedMapByValue(HashMap<String, Integer> memberList){
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(memberList.entrySet());
+        entryList.sort(Collections.reverseOrder(Map.Entry.comparingByValue()));
+        return entryList;
     }
 }
