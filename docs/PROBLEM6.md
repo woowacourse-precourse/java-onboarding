@@ -21,3 +21,10 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능목록
+
+
+- 닉네임에 중복된 글자를 찾는 기능
+- 유효하지 않은 닉네임을 신청한 크루를 찾는 기능
+- 결과값을 오름차순으로 정렬, 중복 제거
