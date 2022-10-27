@@ -5,7 +5,29 @@ import java.util.List;
 class Problem1 {
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
 		int answer = Integer.MAX_VALUE;
+		answer = pageNumberGame(pobi, crong);
 		return answer;
+	}
+
+	public static int pageNumberGame(List<Integer> pobi, List<Integer> crong) {
+		if (!InputValidator.isRightPagesInput(pobi, crong)) {
+			return -1;
+		}
+		int pobiMaxPageNumber = getMaxPageNumber(pobi);
+		int crongMaxPageNumber = getMaxPageNumber(crong);
+		return getPageGameResult(pobiMaxPageNumber, crongMaxPageNumber);
+	}
+
+	private static int getPageGameResult(Integer pageNumber1, Integer pageNumber2) {
+
+		if (pageNumber1 > pageNumber2) {
+			return 1;
+		} else if (pageNumber1 < pageNumber2) {
+			return 2;
+		} else if (pageNumber1 == pageNumber2) {
+			return 0;
+		}
+		return -1;
 	}
 
 	private static int getMaxPageNumber(List<Integer> pages) {
