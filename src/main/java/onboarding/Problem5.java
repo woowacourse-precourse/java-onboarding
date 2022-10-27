@@ -29,5 +29,15 @@ public class Problem5 {
         return arrayList;
     }
 
+    private static int getCoin(int money, int won,int idx, ArrayList<Integer> arrayList) {
+        int i=1000000/won;
+        for(;i>=0;i--){
+            if(money -won*i>=0){
+                arrayList.set(idx,i);
+                break;
+            }
+        }
+        return i;
+    }
 
 }
