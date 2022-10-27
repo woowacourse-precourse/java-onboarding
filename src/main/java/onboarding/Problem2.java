@@ -6,8 +6,18 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
         Stack<Character> nonDuplicates = decryption(cryptogram);
-
+        answer = concatStack(nonDuplicates);
         return answer;
+    }
+
+    private static String concatStack(Stack<Character> nonDuplicates) {
+        StringBuilder concatString = new StringBuilder();
+
+        for (Character nonDuplicate : nonDuplicates) {
+            concatString.append(nonDuplicate);
+        }
+
+        return concatString.toString();
     }
 
     private static Stack<Character> decryption(String input) {
