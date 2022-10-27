@@ -9,7 +9,7 @@ public class Cryptogram {
         this.cryptogram = cryptogram;
     }
     
-    public Cryptogram removeEqualsChar() {
+    public Cryptogram decrypte() {
         return decrypteCryptogram(parseEqualsCharIndex());
     }
     
@@ -61,5 +61,12 @@ public class Cryptogram {
     @Override
     public int hashCode() {
         return Objects.hash(cryptogram);
+    }
+    
+    @Override
+    public String toString() {
+        return "Cryptogram{" +
+                "cryptogram='" + cryptogram + '\'' +
+                '}';
     }
 }

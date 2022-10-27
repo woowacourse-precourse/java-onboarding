@@ -12,16 +12,23 @@ public class Decryptor {
     }
     
     public boolean decrypte() {
-        final Cryptogram removeEqualsTwoCharCryptogram = cryptogram.removeEqualsChar();
-        if (cryptogram.equals(removeEqualsTwoCharCryptogram)) {
+        final Cryptogram decryptedCryptogram = cryptogram.decrypte();
+        if (cryptogram.equals(decryptedCryptogram)) {
             return false;
         }
         
-        cryptogram = removeEqualsTwoCharCryptogram;
+        cryptogram = decryptedCryptogram;
         return decrypte();
     }
     
     public String decryptedCryptogram() {
         return cryptogram.getCryptogram();
+    }
+    
+    @Override
+    public String toString() {
+        return "Decryptor{" +
+                "cryptogram=" + cryptogram +
+                '}';
     }
 }
