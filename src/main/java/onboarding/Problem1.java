@@ -7,19 +7,29 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         int pobiScore = 0, crongScore = 0;
-
+        
         return answer;
+    }
 
-
+    /**
+     * n1, n2 중 예외사항에 걸리면 false 반환 통과하면 true 반환
+     * @param n1
+     * @param n2
+     * @return boolean
+     */
+    public static boolean inputValidation(int n1, int n2) {
+        if(n1 % 2 != 1  || n2 % 2 != 0) return false;
+        if(n2 - n1 != 1) return false;
+        return true;
     }
 
     /**
      * n1, n2 각각 자릿수의 합과 곱을 비교해 큰 수 반환
      * @param n1
      * @param n2
-     * @return
+     * @return int
      */
-    public int maxValue(int n1, int n2) {
+    public static int maxValue(int n1, int n2) {
         char[] charN1 = String.valueOf(n1).toCharArray();
         char[] charN2 = String.valueOf(n2).toCharArray();
         int sum = 0;
@@ -44,5 +54,7 @@ class Problem1 {
 
         return Math.max(n1Max, n2Max);
     }
+
+
 
 }
