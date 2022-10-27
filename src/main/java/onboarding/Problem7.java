@@ -36,10 +36,16 @@ public class Problem7 {
             else recommendScore.put(nearFriend, 10);
 
         }
+        // 4. 방문자에게 점수 부여하기. (이미 등록된 내 친구들는 제외)
+        for(String visitor: visitors ){
+            if (myFriends.contains(visitor)) continue;
+
+            if(recommendScore.containsKey(visitor))
+                recommendScore.put(visitor, recommendScore.get(visitor)+1);
+            else recommendScore.put(visitor, 1);
+        }
         System.out.println(recommendScore);
 
-
-        // 4. 방문자에게 점수 부여하기.
         // 5. 점수별로 정렬하기
 
         return answer;
