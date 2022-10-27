@@ -21,7 +21,9 @@ public class Problem6 {
         for(List<String> crew : forms){
             String nickname = crew.get(1);
             for(String str : stringsOfLength2){
-                if(nickname.contains(str)) invalidNickNames.add(nickname);
+                if(stringsOfLength2Cnt.get(str) > 1 && nickname.contains(str)){
+                    invalidNickNames.add(nickname);
+                }
             }
         }
 
