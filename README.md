@@ -59,7 +59,7 @@
 - [x] 단위별 돈 수량 계산
 
 
-- [ ] solution method 구현
+- [x] solution method 구현
 
 ___
 
