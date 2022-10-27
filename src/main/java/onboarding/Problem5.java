@@ -8,8 +8,21 @@ import java.util.stream.Collectors;
 public class Problem5 {
 
     public static List<Integer> solution(int money) {
-        return new ArrayList<>();
+        return withdraw(money);
     }
+
+    private static List<Integer> withdraw(int amount) {
+        List<Integer> result = new ArrayList<>();
+
+        for (Money changes : Money.highestOrder()) {
+            int count = amount / changes.value;
+            result.add(count);
+            amount = amount - (count * changes.value);
+        }
+
+        return result;
+    }
+
 
     enum Money {
         _50000_WON(50000),
