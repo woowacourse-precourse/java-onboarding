@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 /*
 # 예외상황 판단
@@ -10,16 +11,18 @@ import java.util.List;
 /*
 # 기능 구현
 1. 예외상황 판단
-2. pobi, crong 배열에[왼쪽더한것, 왼쪽곱한것, 오른쪽더한것, 오른쪽곱한것] / 배열 생성
+2. pobi, crong 리스트에[왼쪽더한것, 왼쪽곱한것, 오른쪽더한것, 오른쪽곱한것] / 리스트 생성
 3. 각각의 점수(max) 생성
 4. 점수 비교
  */
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-        if (checkData(pobi) == false || checkData(crong) == false) {
+        if (!checkData(pobi) || !checkData(crong)) {
             return -1;
         }
+        List<Integer> pobi_scores = makeScoreList(pobi);
+        List<Integer> crong_scores = makeScoreList(crong);
 
         return answer;
     }
@@ -36,5 +39,24 @@ class Problem1 {
             return false;
         }
         return true;
+    }
+    public static List<Integer> makeScoreList(List<Integer> list) {
+        int sum = 0;
+        int mul = 1;
+        List<Integer> result = new ArrayList<Integer>();
+        for (Integer num : list) {
+            sum = 0;
+            mul = 1;
+            while(true) {
+                sum += num % 10;
+                mul *= num % 10;
+                if (num < 10)
+                        break;
+                num = num / 10;
+            }
+            result.add(sum);
+            result.add(mul);
+        }
+        return result;
     }
 }
