@@ -64,4 +64,16 @@ class Problem1 {
                 .orElseThrow(NoSuchElementException::new);
         return maxValue;
     }
+
+    public int findWinner(List<Integer> maxValueOfPlayers) {
+        int pobiMaxValue = maxValueOfPlayers.get(0);
+        int crongMaxValue = maxValueOfPlayers.get(1);
+
+        if (pobiMaxValue > crongMaxValue) {
+            return 1;
+        } else if (pobiMaxValue < crongMaxValue) {
+            return 2;
+        }
+        return 0;
+    }
 }
