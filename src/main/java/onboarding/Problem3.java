@@ -11,7 +11,11 @@ public class Problem3 {
         for (int i = 0; i <= number; i++) {
             String currentNumber = String.valueOf(i);
 
-
+            for (int j = 0; j < currentNumber.length(); j++) {
+                if (currentNumber.charAt(j) == '3' || currentNumber.charAt(j) == '6' || currentNumber.charAt(j) == '9') {
+                    answer++;
+                }
+            }
         }
         return answer;
     }
