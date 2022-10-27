@@ -7,19 +7,16 @@ public class BookCalculation {
 
     public List<Integer> calculation(List<Integer> player) {
 
+        int addition = 0;
+        int multiplication = 1;
+
         List<Integer> result = new ArrayList<>();
 
-        for (int number : player) {
+        for (int numbers : player) {
+            String number = String.valueOf(numbers);
+            String[] split = number.split("");
 
-            int first = number / 100;
-            int second = (number / 10) % 10;
-            int third = number % 10;
 
-            int addition = first + second + third;
-            int multiplication = first * second * third;
-
-            result.add(addition);
-            result.add(multiplication);
         }
 
         return result;
