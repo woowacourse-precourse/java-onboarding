@@ -8,15 +8,23 @@ public class Problem2 {
     public static String removeDuplication(String cryptogram){
         String returnCryptogram = "";
         for(int i=0;i<cryptogram.length();i++){
-            if (cryptogram.charAt(i) == cryptogram.charAt(i)){
+            if (compareChar(cryptogram.charAt(i),cryptogram.charAt(i))){
             }
         }
-        return ""
+        return "";
     }
+
     public static int findNextIndex(String cryptogram,int index){
-        while(cryptogram.charAt(index) != cryptogram.charAt(index) && index < cryptogram.length()){
+        while(compareChar(cryptogram.charAt(index),cryptogram.charAt(index)) && index < cryptogram.length()){
             index++;
         }
         return index;
+    }
+
+    public static boolean compareChar(char cur,char next){
+        if (cur == next){
+            return false;
+        }
+        return true;
     }
 }
