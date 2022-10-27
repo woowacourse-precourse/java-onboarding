@@ -25,7 +25,7 @@ class Problem1 {
 	}
 
 	private static boolean checked(List<Integer> pages) {
-		return pages.get(0) >= pages.get(1) || pages.get(0) % 2 == 0 || pages.get(1) % 2 != 0
+		return pages.size() > 2 || pages.get(0) >= pages.get(1) || pages.get(0) % 2 == 0 || pages.get(1) % 2 != 0
 			|| (Math.abs(pages.get(0) - pages.get(1))) != 1;
 	}
 
