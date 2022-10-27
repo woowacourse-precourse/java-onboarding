@@ -1,20 +1,25 @@
 package onboarding;
 
 public class Problem2 {
+    public static String removeDuplicate(String str) {
+        for (int i = 0; i < 26; i++) {
+            String letter = Character.toString((char)((int)'a' + i));
+            String pattern = letter + "{2,}";
+            str = str.replaceAll(pattern, "");
+        }
+        return str;
+    }
+
     public static String solution(String cryptogram) {
-        String prevString = cryptogram;
-        String nextString = prevString.replaceAll("[a-z]{3}", ".");
+        String prevStr = cryptogram;
+        String nextStr = removeDuplicate(cryptogram);
 
-        System.out.println("Prev String = " + prevString);
-        System.out.println("Next String = " + nextString);
+        while (prevStr != nextStr) {
+            prevStr = nextStr;
+            nextStr = removeDuplicate(prevStr);
+        }
 
-//        while (prev != next) {
-//            prev = next;
-//            next = prev.replaceAll("[a-z]{2,}", "");
-//            System.out.println(next);
-//        }
-
-        String answer = nextString;
+        String answer = nextStr;
         return answer;
     }
 }
