@@ -3,6 +3,14 @@ package onboarding;
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
+        for(char c: word.toCharArray()) {
+            int asciiNum = (int)c;
+            if(checkAlphabet(asciiNum)) {
+                answer += changeLetter(asciiNum);
+                continue;
+            }
+            answer += c;
+        }
         return answer;
     }
 
