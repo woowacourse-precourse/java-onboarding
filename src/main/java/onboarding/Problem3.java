@@ -7,8 +7,6 @@ public class Problem3 {
     public static int solution(int number) {
 
 
-
-
         int count = 0;
         for (int i = 1; i <= number; i++) {
 
@@ -16,11 +14,10 @@ public class Problem3 {
             if (numberStr.contains("3") || numberStr.contains("6") || numberStr.contains("9")) {
                 count++;
 
-                if ( numberStr.length() >= 2 ) {
+                if (numberStr.length() >= 2) {
                     Pattern patternRegex = setRegex();
                     Matcher patternMatcher = patternRegex.matcher(numberStr);
-                    if ( patternMatcher.find()){
-                        System.out.println(numberStr);
+                    if (patternMatcher.find()) {
                         count++;
                     }
                 }
