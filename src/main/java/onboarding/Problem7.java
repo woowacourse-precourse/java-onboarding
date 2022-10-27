@@ -21,7 +21,16 @@ public class Problem7 {
 				userFriends.add(idA);
 			}
 		}
-		System.out.println(userFriends);
+		for (int i = 0; i < friends.size(); i++) {
+			String idA = friends.get(i).get(0);
+			String idB = friends.get(i).get(1);
+			if (userFriends.contains(idA)) {
+				friendScore.put(idB, friendScore.getOrDefault(idB, 0) + 10);
+			} else if (userFriends.contains(idB)) {
+				friendScore.put(idA, friendScore.getOrDefault(idA, 0) + 10);
+			}
+		}
+		
 		return answer;
 	}
 }
