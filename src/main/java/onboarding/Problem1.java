@@ -12,4 +12,9 @@ class Problem1 {
         int leftPage = pages.get(0);
         return leftPage;
     }
+
+    private static int getRightPage(List<Integer> pages) {
+        int rightPage = pages.get(1);
+        return rightPage;
+    }
 }
