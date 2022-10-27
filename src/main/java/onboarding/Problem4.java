@@ -9,4 +9,8 @@ public class Problem4 {
     private static char getChangeLower(char c){
         return (char)('a' + 'z' - c);
     }
+
+    private static char getChangeUpper(char c){
+        return (char)('A' + 'Z' - c);
+    }
 }

@@ -27,8 +27,8 @@
 
 ### Problem4
 
-|     | 번호  | 기능 코드                       | Depth1   | Depth2 | Depth3 | method                                     | 설명           |
-|-----|-----|-----------------------------|----------|--------|--------|--------------------------------------------|--------------|
-| X   | 1   | onBoarding-back-Problem4-01 | solution |        |        | public static String solution(String word) | 청개구리 변환한 문자열 |
-| O   | 2   | onBoarding-back-Problem4-02 | solution | 알파벳 변환 | 소문자    | private static char getChangeLower(char c) | 소문자를 청개구리 변환 |
-| X   | 3   | onBoarding-back-Problem4-03 | solution | 알파벳 변환 | 대문자    |                                            | 대문자를 청개구리 변환 |
+|     | 번호  | 기능 코드                       | Depth1   | Depth2 | Depth3 | method                                      | 설명           |
+|-----|-----|-----------------------------|----------|--------|--------|---------------------------------------------|--------------|
+| X   | 1   | onBoarding-back-Problem4-01 | solution |        |        | public static String solution(String word)  | 청개구리 변환한 문자열 |
+| O   | 2   | onBoarding-back-Problem4-02 | solution | 알파벳 변환 | 소문자    | private static char getChangeLower(char c)  | 소문자를 청개구리 변환 |
+| O   | 3   | onBoarding-back-Problem4-03 | solution | 알파벳 변환 | 대문자    | private static char getChangeUpper(char c)  | 대문자를 청개구리 변환 |
