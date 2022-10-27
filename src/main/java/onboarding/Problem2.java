@@ -5,6 +5,9 @@ public class Problem2 {
         String answer = cryptogram;
         String before;
 
+        /**
+         * 중복을 다 제거할 때까지 반복
+         */
         while (true){
             before = answer;
             answer = delete_eq(answer);
