@@ -2,8 +2,13 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
-        return answer;
+
+        int total_number_of_clap = 0;
+        for(int i=1; i<=number; i++){
+            total_number_of_clap += get_number_of_clap(i);
+        }
+        return total_number_of_clap;
+
     }
 
     static int get_number_of_clap(int number){
