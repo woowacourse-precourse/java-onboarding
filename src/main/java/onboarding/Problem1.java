@@ -21,6 +21,26 @@ class Problem1 {
         return answer;
     }
 
+    //==기능목록2==//
+    private static int calculatePlusMax(int num) {
+        int sum = 0;
+        while (num > 0) {
+            sum += num % 10;
+            num /= 10;
+        }
+        return sum;
+    }
+
+    private static int calculateMultiplyMax(int num) {
+        int sum = 1;
+
+        while (num > 0) {
+            sum *= num % 10;
+            num /= 10;
+        }
+        return sum;
+    }
+
     /**
      * @return 예외 상황이 발생하면 true 아니면 false
      */
@@ -38,8 +58,5 @@ class Problem1 {
         if (list.get(0) + 1 != list.get(1)) return true;
         return false;
     }
-
-    public static void main(String[] args) {
-        System.out.println();
-    }
+    
 }
