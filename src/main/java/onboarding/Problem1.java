@@ -1,6 +1,5 @@
 package onboarding;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,12 +12,13 @@ import java.util.List;
  * 3. is_continuous = 연속된 페이지 인지 검증
  * 4. is_proper_pages() = 알맞은 페이지 리스트가 들어왔는지 검증
  * 5. is_both_page_proper() = 두 사람의 페이지 리스트가 모두 알맞은 리스트인지 검증
- *
  * <p>
  * Calculator 클래스
- * 1. page_sum() = 현재 페이지의 모든 숫자를 더한 값 반환
- * 2. page_multiple() = 현재 페이지의 모든 숫자를 곱한 값 반환
- * 3. get_biggest() = 왼쪽 페이지의 합과 곱, 오른쪽 페이지의 합과 곱 중 제일 큰 값을 반환
+ * 1. get_bigger() = 받은 두 매개변수 중 더 큰 숫자를 반환
+ * 2. sum_page_number() = 현재 페이지의 모든 숫자를 더한 값 반환
+ * 3. multiple_page_number() = 현재 페이지의 모든 숫자를 곱한 값 반환
+ * 4. get_higher_score_in_page() = 매개변수로 받은 페이지로 만든 최고 스코어를 반환
+ * 5. get_final_score() = 매개변수로 받은 리스트의 두 페이지로 만든 최종 스코어를 반환
  * <p>
  * Judge 클래스
  * 1. show_result() = 결과를 반환한다 ( ERROR = -1, POBI = 1, CRONG = 2, DRAW = 0 )
@@ -51,5 +51,40 @@ class Validator {
 
     public boolean is_both_page_proper(List<Integer> pobi, List<Integer> crong) {
         return is_proper_pages(pobi) && is_proper_pages(crong);
+    }
+}
+
+class Calculator {
+    private int get_bigger(int num1, int num2) {
+        if (num1 > num2) {
+            return num1;
+        }
+        return num2;
+    }
+
+    private int sum_page_number(int page) {
+        int sum = 0;
+        while (page > 0) {
+            sum += page % 10;
+            page /= 10;
+        }
+        return sum;
+    }
+
+    private int multiple_page_number(int page) {
+        int multiple = 1;
+        while (page > 0) {
+            multiple *= page % 10;
+            page /= 10;
+        }
+        return multiple;
+    }
+
+    private int get_higher_score_in_page(int page) {
+        return get_bigger(sum_page_number(page), multiple_page_number(page));
+    }
+
+    public int get_final_score(List<Integer> list) {
+        return get_bigger(get_higher_score_in_page(list.get(0)), get_higher_score_in_page(list.get(1)));
     }
 }
