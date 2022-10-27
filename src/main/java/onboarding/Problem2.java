@@ -17,9 +17,8 @@ public class Problem2 {
               } else { // 문자를 지운 인덱스에서 2번 앞에 있는 인덱스부터 다시 검색
                   i = i - 2;
               }
-
-          }
-      }
+          } // end if
+      } // end for
       String answer = sb.toString();
         return answer;
     }
