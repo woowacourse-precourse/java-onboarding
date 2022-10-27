@@ -8,10 +8,17 @@ class Problem1 {
 
         if (!Exception(pobi.get(0), pobi.get(1)) || !Exception(crong.get(0), crong.get(1))) {
             answer = -1;
+        }else {
+            int pobiscore = Math.max(Score(pobi.get(0)), Score(pobi.get(1)));
+            int crongscore = Math.max(Score(crong.get(0)), Score(crong.get(1)));
+            if (pobiscore > crongscore) {
+                answer = 1;
+            } else if (pobiscore == crongscore){
+                answer = 0;
+            } else{
+                answer = 2;
+            }
         }
-
-        int pobiscore = Math.max(Score(pobi.get(0)), Score(pobi.get(1)));
-        int crongscore = Math.max(Score(crong.get(0)), Score(crong.get(1)));
         return answer;
     }
 
