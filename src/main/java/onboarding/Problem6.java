@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Pattern;
 
 /** 기능 목록
@@ -32,7 +29,8 @@ public class Problem6 {
 
     private static class CrewList{
         private final Map<String, String> crewList = new HashMap<>();
-        private final List<String> alarm = new ArrayList<>();
+        private final Set<String> continuousSet = new HashSet<>();
+        private final Set<String> alarm = new HashSet<>();
 
         private boolean addCrew(List<String> form) {
             String email = form.get(0);
@@ -42,6 +40,9 @@ public class Problem6 {
             } else {
                 System.out.println("올바르지 않은 형식");
                 return false;
+            }
+            if (checkAlarmTarget(nickname)) {
+                alarm.add(nickname);
             }
             return checkCrewNums();
         }
@@ -67,8 +68,26 @@ public class Problem6 {
             return checkNickNameLength(nickname) && checkNickNameType(nickname);
         }
 
-        private void checkAlarmTarget(String nickname) {
+        private boolean checkAlarmTarget(String nickname) {
+            Set<String> userContinuousSet = new HashSet<>();
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < nickname.length() - 1; i++) {
+                String continuousPart = sb.append(nickname.charAt(i)).append(nickname.charAt(i + 1)).toString();
+                userContinuousSet.add(continuousPart);
+            }
+            return checkOverlap(userContinuousSet);
+        }
 
+        private boolean checkOverlap(Set<String> userContinuousSet) {
+            int lastSize = continuousSet.size();
+            int userSize = userContinuousSet.size();
+            continuousSet.addAll(userContinuousSet);
+            int nowSize = continuousSet.size();
+            if (nowSize == lastSize + userSize) {
+                return false;
+            } else {
+                return true;
+            }
         }
 
         private boolean checkEmailForm(String email) {
