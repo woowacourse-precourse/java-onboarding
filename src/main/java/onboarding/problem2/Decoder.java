@@ -21,7 +21,7 @@ public class Decoder {
 
     /**
      * Method for treating single duplication
-     * @param index index of current index
+     * @param index current index
      */
     private void treatDuplication(int index) {
         from = index;
