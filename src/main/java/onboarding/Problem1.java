@@ -4,11 +4,20 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int pobiMaxsum = maxSum(pobi.get(0),pobi.get(1));
+        int pobiMaxmulti = maxMulti(pobi.get(0),pobi.get(1));
+        int pobiMaxNum = Math.max(pobiMaxsum,pobiMaxmulti);
+
+        int crongMaxsum = maxSum(crong.get(0),crong.get(1));
+        int crongMaxmulti = maxMulti(crong.get(0), crong.get(1));
+        int crongMaxNum = Math.max(crongMaxsum,crongMaxmulti);
+
+
+
         return answer;
     }
 
-    public static int Maxsum(Integer leftPage, Integer rightPage){
+    public static int maxSum(Integer leftPage, Integer rightPage){
         int Maxsum = Math.max(sumLeftPage(leftPage),sumRightpage(rightPage));
 
         return Maxsum;
