@@ -19,8 +19,9 @@ public class Problem2 {
 
 		// 인접한 중복 문자열 제거
 		Stack<Character> decryptionStack = removeDuplicates(chars);
-		// stack을 문자열로 변환
+		// stack 문자열로 변환
 		String answer = stackToString(decryptionStack);
+
 		return decryptionRecursion(answer);
 	}
 
@@ -43,11 +44,15 @@ public class Problem2 {
 			if (prev != c) {
 				stack.push(c);
 				prev = c;
-			} else {
+			} else if (isRemovable(stack, prev)) {
 				stack.pop();
 			}
 		}
 		return stack;
+	}
+
+	static boolean isRemovable(Stack<Character> stack, char prev) {
+		return !stack.empty() && prev == stack.peek();
 	}
 
 	static boolean isDuplicate(char[] arr) {
@@ -63,4 +68,5 @@ public class Problem2 {
 	static boolean isLengthEnough(char[] arr) {
 		return arr.length < 2;
 	}
+
 }
