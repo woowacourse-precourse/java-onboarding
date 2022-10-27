@@ -12,28 +12,40 @@ class Problem1 {
     static final int CRONG_WIN = 2;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+
+        try {
+            validateInput(pobi);
+            validateInput(crong);
+
+            int pobiScore = getScoreFromBook(pobi);
+            int crongScore = getScoreFromBook(crong);
+
+            return compare(pobiScore, crongScore);
+
+        } catch (Exception e) {
+            return EXCEPTION;
+        }
+
     }
 
     static void validateInput(List<Integer> bookPage) throws Exception {
 
-        if(bookPage == null || bookPage.size() != 2)
+        if (bookPage == null || bookPage.size() != 2)
             throw new Exception();
 
         int leftPageNumber = bookPage.get(0);
         int rightPageNumber = bookPage.get(1);
 
-        if(outOfPage(leftPageNumber) || outOfPage(rightPageNumber))
+        if (outOfPage(leftPageNumber) || outOfPage(rightPageNumber))
             throw new Exception();
 
-        if(leftPageNumber % 2 != 1 || rightPageNumber % 2 != 0)
+        if (leftPageNumber % 2 != 1 || rightPageNumber % 2 != 0)
             throw new Exception();
 
-        if(leftPageNumber > rightPageNumber)
+        if (leftPageNumber > rightPageNumber)
             throw new Exception();
 
-        if(rightPageNumber - 1 != leftPageNumber)
+        if (rightPageNumber - 1 != leftPageNumber)
             throw new Exception();
 
     }
@@ -62,10 +74,10 @@ class Problem1 {
     }
 
     static int compare(int n1, int n2) {
-        if(n1 == n2)
+        if (n1 == n2)
             return DRAW;
 
-        if(n1 > n2)
+        if (n1 > n2)
             return POBI_WIN;
 
         return CRONG_WIN;
