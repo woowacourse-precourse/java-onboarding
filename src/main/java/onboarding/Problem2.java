@@ -4,8 +4,7 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         char [] splitString = cryptogram.toCharArray();
         Stack<Character> noDuplicatesStack = overlapCheckStack(splitString);
-        String answer = "answer";
-        return answer;
+        return stackToString(noDuplicatesStack);
     }
     private static Stack<Character> overlapCheckStack(char [] charArray){
         Stack<Character> stack = new Stack<>();
@@ -21,5 +20,14 @@ public class Problem2 {
             }
         }
         return stack;
+    }
+    private static String stackToString(Stack<Character> charStack){
+        int size = charStack.size();
+        if (size== 0){ return "";}
+        char [] tmp = new char[size];
+        for(int i = size; i >0; i--){
+            tmp[i-1] = charStack.pop();
+        }
+        return String.valueOf(tmp);
     }
 }
