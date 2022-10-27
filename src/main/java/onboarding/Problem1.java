@@ -17,4 +17,24 @@ class Problem1 {
 
         return answer;
     }
+
+    public static boolean exception(List<Integer> pages){
+        boolean answer = false;
+
+        int left = pages.get(0);
+        int right = pages.get(1);
+
+
+        if(left%2 != 0 || right %2 == 0){
+            answer = true;
+        }else if(right-left != 1){
+            answer = true;
+        }else if(left==1 || right==400){
+            answer = true;
+        }else if(left<1 || right>400){
+            answer = true;
+        }
+
+        return answer;
+    }
 }
