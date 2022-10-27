@@ -6,8 +6,13 @@ public class Problem2 {
     public static Stack<Character> stack;
 
     public static String solution(String cryptogram) {
-        stack = new Stack<>();
+        initStack(cryptogram);
         return deleteConsecutiveDuplicateCharacters(cryptogram);
+    }
+
+    private static void initStack(String cryptogram) {
+        stack = new Stack<>();
+        stack.add(cryptogram.charAt(0));
     }
 
     private static String deleteConsecutiveDuplicateCharacters(String cryptogram) {
@@ -16,13 +21,9 @@ public class Problem2 {
     }
 
     private static void stringProcessing(String cryptogram) {
-        for (int i = 0; i < cryptogram.length(); i++) {
+        for (int i = 1; i < cryptogram.length(); i++) {
             char c = cryptogram.charAt(i);
-            if (i != 0) {
-                if (!findDuplicatedCharactersAndPop(c)) {
-                    stack.push(c);
-                }
-            } else {
+            if (!findDuplicatedCharactersAndPop(c)) {
                 stack.push(c);
             }
         }

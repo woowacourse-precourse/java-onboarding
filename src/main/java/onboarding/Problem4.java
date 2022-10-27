@@ -27,7 +27,6 @@ public class Problem4 {
     private static String converterAlphabet(String word) {
         for (int i = 0; i < word.length(); i++) {
             char alphabet = word.charAt(i);
-
             if (Constants.FIRST_UPPER_ALPHABET <= alphabet && alphabet <= Constants.LAST_UPPER_ALPHABET) {
                 converterUpperAlphabet(alphabet);
             } else if (Constants.FIRST_LOWER_ALPHABET <= alphabet && alphabet <= Constants.LAST_LOWER_ALPHABET) {
