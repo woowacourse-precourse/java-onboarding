@@ -28,24 +28,25 @@ class Calculator {
     }
 
     int getSum(int page) {
-        String str_page = String.valueOf(page);
         int sum = 0;
-        for(int i=0; i<str_page.length(); i++) {
-            char c = str_page.charAt(i);
-            sum += c;
+        while (page>0) {
+            int q = page/10;
+            int r = page%10;
+            sum += r;
+            page = q;
         }
         return sum;
     }
 
     int getMulti(int page) {
-        String str_page = String.valueOf(page);
         int multi = 1;
-        for(int i=0; i<str_page.length(); i++) {
-            char c = str_page.charAt(i);
-            multi *= c;
+        while (page>0) {
+            int q = page/10;
+            int r = page%10;
+            multi *= r;
+            page = q;
         }
         return multi;
     }
 }
-
 
