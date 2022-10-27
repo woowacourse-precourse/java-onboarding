@@ -44,4 +44,8 @@ class Account {
     public void addFriend(Account friend) {
         friendsRelation.add(friend);
     }
+
+    public boolean isAccountId(String id) {
+        return this.id.equals(id);
+    }
 }
