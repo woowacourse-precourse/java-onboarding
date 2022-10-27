@@ -16,9 +16,9 @@ public class PageValidChecker {
 
 	private boolean checkValidPage(List<Integer> user) {
 		List<Integer> invalidPages = Arrays.asList(1, lastPage);
-		return user.stream().anyMatch(invalidPages::contains)
+		return !user.stream().anyMatch(invalidPages::contains)
 			&& (user.get(1) - user.get(0)) == 1
-			&& ((user.get(0) % 2) == 1) && ((user.get(0) % 2) == 0);
+			&& ((user.get(0) % 2) == 1) && ((user.get(1) % 2) == 0);
 	}
 
 	public boolean checkValid(List<Integer> user) {
