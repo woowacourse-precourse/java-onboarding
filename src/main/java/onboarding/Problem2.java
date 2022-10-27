@@ -6,23 +6,36 @@ import java.util.stream.Collectors;
 public class Problem2 {
   static class Decryption {
     private final Stack<Character> message = new Stack<>();
-    private Character lastCode;
+    private Character duplicateCode;
 
     public void decrypt(Character code) {
-      if (!message.empty() && this.isSameCode(code)) {
+      if (isDuplicatedCode(code)) {
         message.pop();
-        lastCode = code;
+        saveDuplicateCode(code);
         return;
       }
-      if(this.isSameLastCode(code)) {
+      if (isSameAsDuplicateCode(code)) {
         return;
       }
       message.push(code);
-      lastCode = null;
+      initializeDuplicationCode();
     }
 
-    public boolean isSameLastCode(Character code) {
-      return this.lastCode == code;
+    private void saveDuplicateCode(Character code) {
+      duplicateCode = code;
+    }
+
+    private void initializeDuplicationCode() {
+      duplicateCode = null;
+    }
+
+    private boolean isSameAsDuplicateCode(Character code) {
+      return this.duplicateCode == code;
+    }
+
+
+    private boolean isDuplicatedCode(Character code) {
+      return !message.empty() && message.peek() == code;
     }
 
     public String getMessage() {
@@ -30,17 +43,13 @@ public class Problem2 {
               .map(Object::toString)
               .collect(Collectors.joining());
     }
-
-    private boolean isSameCode(Character code) {
-      return message.peek() == code;
-    }
   }
 
   public static String solution(String cryptogram) {
     Decryption decryption = new Decryption();
-    for (char code : cryptogram.toCharArray()) {
-      decryption.decrypt(code);
-    }
+    cryptogram.chars()
+            .mapToObj(code -> (char) code)
+            .forEach(code -> decryption.decrypt(code));
     return decryption.getMessage();
   }
 }
