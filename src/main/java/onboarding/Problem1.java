@@ -16,8 +16,9 @@ class Problem1 {
     }
 
     public int calculateScore(List<Integer> pages){
-        int result = 0;
-        return result;
+        int leftScore = calculateMaximumAddOrMultiply(pages.get(0));
+        int rightScore = calculateMaximumAddOrMultiply(pages.get(1));
+        return Math.max(leftScore, rightScore);
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
