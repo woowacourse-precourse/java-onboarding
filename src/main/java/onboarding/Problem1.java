@@ -49,7 +49,26 @@ class Problem1 {
         }
         return -1;
     }
+    private static int checkError(List<Integer> pages) {
+        if (pages.size() != 2) {
+            return -1;
+        }
+        if (pages.get(0) % 2 == 0) {
+            return -1;
+        }
+        if ((pages.get(0) < 1 || pages.get(0) > 399)) {
+            return -1;
+        }
+        if (pages.get(1) != (pages.get(0) + 1)) {
+            return -1;
+        }
+        return 1;
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        if (checkError(pobi) != 1 || checkError(crong) != 1) {
+            return -1;
+        }
+
         int result = 0;
         int pobiMax = 0;
         int crongMax = 0;
