@@ -10,10 +10,14 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         Referee referee = new Referee();
-        int pobiScore = referee.giveScore(pobi);
-        int crongScore = referee.giveScore(crong);
-        answer = referee.judge(pobiScore, crongScore);
-        return answer;
+        try {
+            int pobiScore = referee.giveScore(pobi);
+            int crongScore = referee.giveScore(crong);
+            answer = referee.judge(pobiScore, crongScore);
+            return answer;
+        } catch (IllegalStateException e) {
+            return -1;
+        }
     }
 
     public static void main(String[] args) {
@@ -229,6 +233,9 @@ class Referee {
     public int giveScore(List<Integer> choiceNumbers) {
         int left = choiceNumbers.get(0);
         int right = choiceNumbers.get(1);
+        if (left + 1 != right) {
+            throw new IllegalStateException("연속된 숫자를 선택해주세요");
+        }
         List<Integer> digitLeft = getDigit(left);
         List<Integer> digitRight = getDigit(right);
         return maxResult(digitLeft, digitRight);
