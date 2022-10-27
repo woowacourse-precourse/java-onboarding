@@ -6,6 +6,16 @@ import java.util.List;
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
+        for (int i = 1; i <= number; i++) {
+            if (i < 10 && i % 3 == 0) { // 1의 자리수이고 3의 배수일 때
+                answer++;
+                continue;
+            }
+            // 10 이상의 수일 때 각 자리수를 구하고 박수 횟수를 구한다. 
+            int[] digitList = getEachDigit(i);
+            answer += getNumberOfClap(digitList);
+
+        }
         return answer;
     }
 
