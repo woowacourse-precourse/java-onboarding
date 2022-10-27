@@ -8,6 +8,36 @@ class Problem1 {
 		return answer;
 	}
 
+	private static int getMaxPageNumber(List<Integer> pages) {
+		int maxNumber = 0;
+		for (int page : pages) {
+			maxNumber = getMaxNumber(page);
+		}
+		return maxNumber;
+	}
+
+	private static int getMaxNumber(Integer page) {
+		return Math.max(addNumber(page), multiplyNumber(page));
+	}
+
+	private static int addNumber(Integer page) {
+		int result = 0;
+		while (page > 0) {
+			result += page % 10;
+			page /= 10;
+		}
+		return result;
+	}
+
+	private static int multiplyNumber(Integer page) {
+		int result = 1;
+		while (page > 0) {
+			result *= page % 10;
+			page /= 10;
+		}
+		return result;
+	}
+
 	static class InputValidator {
 		public static boolean isRightPagesInput(List<Integer> pobi, List<Integer> crong) {
 			if (isRightPage(pobi) && isRightPage(crong)) {
