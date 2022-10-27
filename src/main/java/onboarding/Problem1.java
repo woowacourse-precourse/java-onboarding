@@ -1,25 +1,7 @@
 package onboarding;
-
-import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
-
-    public static void main(String[] args) {
-        List<Integer> pobi = new ArrayList<>();
-        List<Integer> crong = new ArrayList<>();
-
-        pobi.add(99);
-        pobi.add(102);
-
-        crong.add(211);
-        crong.add(212);
-
-        int solution = solution(pobi, crong);
-
-        System.out.println(solution);
-
-    }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
@@ -65,6 +47,7 @@ class Problem1 {
 
     }
 
+    //각 자릿수 덧셈
     public static int sum(int n) {
         int result = 0;
 
@@ -76,6 +59,7 @@ class Problem1 {
         return result;
     }
 
+    //각 자릿수 곱셈
     public static int multiply(int n) {
         int result = 1;
 
