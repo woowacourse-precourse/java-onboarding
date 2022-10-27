@@ -7,13 +7,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CryptogramTest {
     @Test
-    @DisplayName("두 문자가 같은 문자인지 확인하기")
-    void isEqualsTwoChar() {
-        Cryptogram cryptogram = new Cryptogram();
-        assertThat(cryptogram.isEquals('a', 'a')).isTrue();
-    }
-    
-    @Test
     @DisplayName("연속된 같은 두 문자가 있으면 삭제 후 새로운 객체 반환")
     void removeAndReturnTrue() {
         Cryptogram cryptogram = new Cryptogram("browoanoommnaon");

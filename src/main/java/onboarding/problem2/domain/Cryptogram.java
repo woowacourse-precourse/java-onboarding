@@ -11,10 +11,6 @@ public class Cryptogram {
         this.cryptogram = cryptogram;
     }
     
-    public boolean isEquals(final char firstChar, final char secondChar) {
-        return firstChar == secondChar;
-    }
-    
     public Cryptogram remove() {
         for (int index = 0; index < cryptogram.length() - 1; index++) {
             if (isEquals(cryptogram.charAt(index), cryptogram.charAt(index + 1))) {
@@ -23,6 +19,10 @@ public class Cryptogram {
         }
         
         return this;
+    }
+    
+    private boolean isEquals(final char firstChar, final char secondChar) {
+        return firstChar == secondChar;
     }
     
     private String removeEqualsTwoChar(final int index) {
