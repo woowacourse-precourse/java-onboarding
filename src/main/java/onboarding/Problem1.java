@@ -6,10 +6,45 @@ class Problem1 {
 
     static final int LEFT_INDEX_IN_LIST = 0;
     static final int RIGHT_INDEX_IN_LIST = 1;
+    static final int NUMBER_OF_CANDIDATES_FOR_SCORE = 4;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        if (isImpossiblePages(pobi) || isImpossiblePages(crong)) {
+            return ResultType.EXCEPTION.getResult();
+        }
+
+        Set<Integer> candidateNumbersOfPobiMaxScore = new HashSet<>(NUMBER_OF_CANDIDATES_FOR_SCORE);
+
+        String StringOfPobiLeftPage = convertIntToString(pobi.get(LEFT_INDEX_IN_LIST));
+        candidateNumbersOfPobiMaxScore.add(getSumPageDigits(StringOfPobiLeftPage));
+        candidateNumbersOfPobiMaxScore.add(getMultipliedPageDigits(StringOfPobiLeftPage));
+
+        String StringOfPobiRightPage = convertIntToString(pobi.get(RIGHT_INDEX_IN_LIST));
+        candidateNumbersOfPobiMaxScore.add(getSumPageDigits(StringOfPobiRightPage));
+        candidateNumbersOfPobiMaxScore.add(getMultipliedPageDigits(StringOfPobiRightPage));
+
+        int pobiScore = getMaxNumberOfList(candidateNumbersOfPobiMaxScore);
+
+        Set<Integer> candidateNumbersOfCrongMaxScore = new HashSet<>(NUMBER_OF_CANDIDATES_FOR_SCORE);
+
+        String StringOfCrongLeftPage = convertIntToString(crong.get(LEFT_INDEX_IN_LIST));
+        candidateNumbersOfCrongMaxScore.add(getSumPageDigits(StringOfCrongLeftPage));
+        candidateNumbersOfCrongMaxScore.add(getMultipliedPageDigits(StringOfCrongLeftPage));
+
+        String StringOfCrongRightPage = convertIntToString(crong.get(RIGHT_INDEX_IN_LIST));
+        candidateNumbersOfCrongMaxScore.add(getSumPageDigits(StringOfCrongRightPage));
+        candidateNumbersOfCrongMaxScore.add(getMultipliedPageDigits(StringOfCrongRightPage));
+
+        int crongScore = getMaxNumberOfList(candidateNumbersOfCrongMaxScore);
+
+        if (pobiScore > crongScore) {
+            return ResultType.POBI_WIN.getResult();
+        }
+
+        if (crongScore > pobiScore) {
+            return ResultType.CRONG_WIN.getResult();
+        }
+        return ResultType.DRAW.getResult();
     }
 
     /**
