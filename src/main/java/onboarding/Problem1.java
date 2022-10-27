@@ -8,11 +8,11 @@ import java.util.List;
 
 public class Problem1 {
 
-    private static final ProblemOneValidation validation = new ProblemOneValidation();
+    private static final ProblemOneValidation VALIDATION = new ProblemOneValidation();
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        validation.settingFixedPageSize(ConditionValue.FIXED_LIST_SIZE.getValue());
-        if (!validation.isPageSize(pobi.size(), crong.size())) {
+        VALIDATION.settingFixedPageSize(ConditionValue.FIXED_LIST_SIZE.getValue());
+        if (!VALIDATION.isPageSize(pobi.size(), crong.size())) {
             return ConditionValue.EXCEPTION_VALUE.getValue();
         }
 
@@ -26,8 +26,8 @@ public class Problem1 {
         Integer leftPageNumber = woowahanTeachers.get(ConditionValue.LEFT_INDEX.getValue());
         Integer rightPageNumber = woowahanTeachers.get(ConditionValue.RIGHT_INDEX.getValue());
 
-        validation.settingPageNumber(leftPageNumber, rightPageNumber);
-        if (!validation.isPageNumberValidation()) {
+        VALIDATION.settingPageNumber(leftPageNumber, rightPageNumber);
+        if (!VALIDATION.isPageNumberValidation()) {
             return ConditionValue.EXCEPTION_VALUE.getValue();
         }
 
