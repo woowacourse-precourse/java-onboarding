@@ -3,6 +3,11 @@ package onboarding;
 public class Problem3 {
     public int count369(int checkNum){
         int cnt = 0;
+        while(checkNum!=0){
+            int digit = checkNum%10;
+            if(digit==3 || digit==6 || digit==9) cnt++;
+            checkNum/=10;
+        }
         return cnt;
     }
     public static int solution(int number) {
