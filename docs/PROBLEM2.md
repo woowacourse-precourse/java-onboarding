@@ -26,8 +26,8 @@
 ###
 설계:
 제한 사항 확인
-index =0 에서 사작하여 문자를 Queue에 넣고 Queue를 peek하고 다음 문자와 일치 여부를 확인한다.
-일치 시 Queue에서 pop하고 다음 문자 부터 불 일치 까지 index를 이동한다. 순환한다.
+index =0 에서 사작하여 문자를 Stack에 넣고 Stack를 peek하고 index을 한자리 이동하고 다음 문자와 일치 여부를 확인한다.
+일치 시 Stack에서 pop하고 다음 문자 부터 불 일치 까지 index를 이동한다. 그리고 순환한다.
 
-1. 제한 사항 확인 (매개변수 예외처리)
-2. 
+1. 제한 사항 확인 (매개변수 예외처리) - CheckCrytoGram
+2. 기능 구현 - Cryptogram

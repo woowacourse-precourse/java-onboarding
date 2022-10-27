@@ -1,22 +1,13 @@
 package onboarding;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
 import onboarding.problem2.CheckCrytogram;
+import onboarding.problem2.Cryptogram;
 
 public class Problem2 {
-    public static String solution(String cryptogram) {
-        if (CheckCrytogram.of(cryptogram)) {
-
-        }
-        Queue<Character> resultList = new LinkedList<>();
-        char[] cryptogramChars = cryptogram.toCharArray();
-        int n = cryptogramChars.length;
-        int index = 0;
-        String answer = "answer";
-        return answer;
-    }
-
-
+	public static String solution(String cryptogram) {
+		if (!CheckCrytogram.of(cryptogram)) {
+			throw new IllegalArgumentException("cryptogram이 정확하지 않습니다.");
+		}
+		return Cryptogram.getRightAnswer(cryptogram);
+	}
 }
