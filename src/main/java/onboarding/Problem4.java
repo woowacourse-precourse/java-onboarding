@@ -8,11 +8,11 @@ public class Problem4 {
         for(int i = 0; i < word.length(); i++){
             int num = (int)word.charAt(i);
             int target = 0;
-            if(num >= 65 and num <= 90){
+            if(num >= 65 && num <= 90){
                 target = 155 - num;
                 res += (char)target;
             }
-            else if(num >= 97 and num <= 122){
+            else if(num >= 97 && num <= 122){
                 target = 219 - num;
                 res += (char)target;
             }
