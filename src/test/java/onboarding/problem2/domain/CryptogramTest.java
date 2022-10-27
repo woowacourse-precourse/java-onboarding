@@ -19,4 +19,11 @@ public class CryptogramTest {
         Cryptogram cryptogram = new Cryptogram("browoanoommnaon");
         assertThat(cryptogram.remove().getCryptogram()).isEqualTo("browoanmmnaon");
     }
+    
+    @Test
+    @DisplayName("연속된 같은 두 문자가 없으면 기존 객체 반환")
+    void returnExistingObject() {
+        Cryptogram cryptogram = new Cryptogram("brown");
+        assertThat(cryptogram.remove().getCryptogram()).isEqualTo("brown");
+    }
 }
