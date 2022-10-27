@@ -1,10 +1,12 @@
 package onboarding;
 
+import onboarding.p1.Judge;
+
 import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        Judge judge = new Judge(pobi, crong);
+        return judge.getAnswer();
     }
 }
