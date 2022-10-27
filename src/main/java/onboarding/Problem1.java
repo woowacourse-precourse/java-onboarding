@@ -8,6 +8,16 @@ class Problem1 {
         if (isOpenCover(pobi) || isOpenCover(crong)) {
             return Result.EXCEPTION.number;
         }
+
+        if (!(isOpenPageCorrect(pobi) && isOpenPageCorrect(pobi))) {
+            return Result.EXCEPTION.number;
+        }
+    }
+
+    private static boolean isOpenPageCorrect(List<Integer> openPages) {
+        int leftPage = openPages.get(PageDirection.LEFT.index);
+        int rightPage = openPages.get(PageDirection.RIGHT.index);
+        return (rightPage - leftPage) == 1;
     }
 
     private static boolean isOpenCover(List<Integer> openPages) {
