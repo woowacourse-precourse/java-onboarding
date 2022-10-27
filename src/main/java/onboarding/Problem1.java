@@ -94,5 +94,15 @@ class Problem1 {
             crongLeftPage = crong.get(0);
             crongRightPage = crong.get(1);
         }
+
+        /* 매개변수로 주어진 숫자 문자열의 모든 수의 합 */
+        private int add(String page) {
+            int result = 0;
+            for (int i=0; i<page.length(); i++) {
+                result+=Character.getNumericValue(page.charAt(i));
+            }
+
+            return result;
+        }
     }
 }
