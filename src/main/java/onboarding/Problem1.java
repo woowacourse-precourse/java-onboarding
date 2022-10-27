@@ -13,11 +13,11 @@ class Problem1 {
             return Constance.EXCEPTION_MESSAGE;
         }
 
-        List<Integer> pobiBiggerPageNumbers = PageNumberGame.saveMaxPagesNumberByUser(pobi);
-        List<Integer> crongBiggerPageNumbers = PageNumberGame.saveMaxPagesNumberByUser(crong);
+        List<Integer> pobiMaxPageNumbers = PageNumberGame.saveMaxPagesNumberByUser(pobi);
+        List<Integer> crongMaxPageNumbers = PageNumberGame.saveMaxPagesNumberByUser(crong);
 
-        int pobiScore = PageNumberGame.getMaxNumber(pobiBiggerPageNumbers.get(0), pobiBiggerPageNumbers.get(1));
-        int crongScore = PageNumberGame.getMaxNumber(crongBiggerPageNumbers.get(0), crongBiggerPageNumbers.get(1));
+        int pobiScore = PageNumberGame.getMaxNumber(pobiMaxPageNumbers.get(0), pobiMaxPageNumbers.get(1));
+        int crongScore = PageNumberGame.getMaxNumber(crongMaxPageNumbers.get(0), crongMaxPageNumbers.get(1));
 
         return PageNumberGame.winnerUser(pobiScore, crongScore);
     }
