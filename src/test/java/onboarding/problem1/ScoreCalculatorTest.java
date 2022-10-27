@@ -2,7 +2,6 @@ package onboarding.problem1;
 
 import static org.assertj.core.api.Assertions.*;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -21,9 +20,9 @@ class ScoreCalculatorTest {
 	@Test
 	void 점수_계산() {
 		// given
-		List<Integer> user1 = Arrays.asList(101, 102);
-		List<Integer> user2 = Arrays.asList(97, 98);
-		List<Integer> user3 = Arrays.asList(9, 10);
+		List<Integer> user1 = List.of(101, 102);
+		List<Integer> user2 = List.of(97, 98);
+		List<Integer> user3 = List.of(9, 10);
 		// when
 		int score1 = scoreCalculator.getScore(user1);
 		int score2 = scoreCalculator.getScore(user2);
@@ -38,10 +37,10 @@ class ScoreCalculatorTest {
 	@Test
 	void 점수_비교() {
 		// given
-		List<Integer> user1 = Arrays.asList(97, 98);
-		List<Integer> user2 = Arrays.asList(197, 198);
-		List<Integer> user3 = Arrays.asList(131, 132);
-		List<Integer> user4 = Arrays.asList(211, 212);
+		List<Integer> user1 = List.of(97, 98);
+		List<Integer> user2 = List.of(197, 198);
+		List<Integer> user3 = List.of(131, 132);
+		List<Integer> user4 = List.of(211, 212);
 
 		// when
 		int score1 = scoreCalculator.getScore(user1);

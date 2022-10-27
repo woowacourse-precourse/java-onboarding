@@ -2,7 +2,6 @@ package onboarding.problem1;
 
 import static onboarding.problem1.ResultType.*;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class GameController {
@@ -18,7 +17,7 @@ public class GameController {
 	}
 
 	public int playGame(List<Integer> pobi, List<Integer> crong) {
-		List<List<Integer>> users = Arrays.asList(pobi, crong);
+		List<List<Integer>> users = List.of(pobi, crong);
 		if (!users.stream().allMatch(pageValidChecker::checkValid)) {
 			return ERROR.getCode();
 		}
