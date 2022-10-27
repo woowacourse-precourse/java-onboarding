@@ -7,55 +7,30 @@ public class Problem7 {
                                         List<String> visitors) {
 
         //친구 목록 맵
-        Map<String, List<String>> friendsMap = new HashMap<>();
+        Map<String, List<String>> friendsMap = createFriendList(friends);
         //추천 친구 점수 맵
         Map<String, Integer> scoreMap = new HashMap<>();
-        
-        for (List<String> friend : friends) {
-            //친구1
-            String human1 = friend.get(0);
-            //친구2
-            String human2 = friend.get(1);
-
-            // 친구1 의 친구2 추가
-            List<String> list1 = new ArrayList<>();
-            if(friendsMap.get(human1) != null) list1 = friendsMap.get(human1);
-            list1.add(human2);
-            friendsMap.put(human1, list1);
-
-            // 친구2 의 친구1 추가
-            List<String> list2 = new ArrayList<>();
-            if(friendsMap.get(human2) != null) list2 = friendsMap.get(human2);
-            list2.add(human1);
-            friendsMap.put(human2, list2);
-        }
 
         // 함께 아는 친구 점수 추가
         for (String name : friendsMap.get(user)) {
             for (String recommend : friendsMap.get(name)) {
-                // 본인일 경우
-                if(recommend.equals(user)) continue;
-                // 이미 친구일 경우
-                if(friendsMap.get(user).contains(recommend)) continue;
+
+                //본인 or 이미 친구인지 확인
+                if(checkFriends(user,recommend,friendsMap)) continue;
 
                 // 10점 추가
-                int score = 0;
-                if(scoreMap.get(recommend) != null) score = scoreMap.get(recommend);
-                scoreMap.put(recommend, score+10);
+                addScore(scoreMap,10,recommend);
             }
         }
 
         // 타임 라인 방문한 횟수 점수 추가
         for (String visitor : visitors) {
-            // 본인일 경우
-            if(visitor.equals(user)) continue;
-            // 이미 친구일 경우
-            if(friendsMap.get(user).contains(visitor)) continue;
+
+            //본인 or 이미 친구인지 확인
+            if(checkFriends(user,visitor,friendsMap)) continue;
 
             // 1점 추가
-            int score = 0;
-            if(scoreMap.get(visitor) != null) score = scoreMap.get(visitor);
-            scoreMap.put(visitor, score+1);
+            addScore(scoreMap,1,visitor);
         }
 
         //점수가 기록된 맵의 키값들을 리스트로 변환
@@ -72,4 +47,57 @@ public class Problem7 {
 
         return answer;
     }
+
+    // 친구 목록 생성 메소드
+    private static Map<String, List<String>> createFriendList(List<List<String>> friends) {
+
+        Map<String, List<String>> friendsMap = new HashMap<>();
+
+        for (List<String> friend : friends) {
+            //친구1
+            String human1 = friend.get(0);
+            //친구2
+            String human2 = friend.get(1);
+
+            // 친구1 의 친구2 추가
+            friendsMap.put(human1, addFriend(friendsMap,human1,human2));
+
+            // 친구2 의 친구1 추가
+            friendsMap.put(human2, addFriend(friendsMap,human2,human1));
+        }
+
+        return friendsMap;
+    }
+
+    // 친구 추가 메소드
+    private static List<String> addFriend(Map<String, List<String>> friendsMap,
+                                  String human1, String human2) {
+
+        List<String> list = new ArrayList<>();
+        if(friendsMap.get(human1) != null) list = friendsMap.get(human1);
+        list.add(human2);
+
+        return list;
+    }
+
+    // 점수 추가 메소드
+    private static void addScore( Map<String, Integer> scoreMap,
+                                                  int n, String recommend) {
+
+        int score = 0;
+        if(scoreMap.get(recommend) != null) score = scoreMap.get(recommend);
+        scoreMap.put(recommend, score+n);
+
+    }
+
+    // 본인 or 이미 친구인 경우 확인하는 메소드
+    private static boolean checkFriends(String user, String people,
+                                        Map<String, List<String>> friendsMap ) {
+        // 본인일 경우
+        if(people.equals(user)) return true;
+
+        // 이미 친구일 경우
+        return friendsMap.get(user).contains(people);
+    }
+
 }
