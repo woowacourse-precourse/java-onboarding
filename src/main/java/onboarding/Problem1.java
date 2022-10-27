@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
@@ -22,5 +23,14 @@ class Problem1 {
             number*=Integer.parseInt(String.valueOf(numbers.charAt(i)));
         }
         return number;
+    }
+
+    public static int compareLeftRightPage(List<Integer> listnum){
+        int answer = 0;
+        for(int number : listnum){
+            answer = Math.max(answer,plusnumber(Integer.toString(number)));
+            answer = Math.max(answer,mulnumber(Integer.toString(number)));
+        }
+        return answer;
     }
 }
