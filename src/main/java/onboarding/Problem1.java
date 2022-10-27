@@ -8,7 +8,31 @@ class Problem1 {
             return -1;
         }
 
+        int pobiScore = getScore(pobi);
+        int crongScore = getScore(crong);
+
         return 0;
+    }
+
+    private static int getScore(List<Integer> pages) {
+        int leftPageScore = calculate(pages.get(0));
+        int rightPageScore = calculate(pages.get(1));
+
+        return Math.max(leftPageScore, rightPageScore);
+    }
+
+    private static int calculate(int page) {
+        int sum = 0;
+        int mul = 1;
+
+        while (page > 0) {
+            int number = page % 10;
+            sum += number;
+            mul *= number;
+            page /= 10;
+        }
+
+        return Math.max(sum, mul);
     }
 
     private static boolean isNotValidPages(List<Integer> pages) {
