@@ -46,4 +46,15 @@ class Problem1 {
         return multiplication;
     }
 
+
+    private static int getPageScore(int page) {
+        List<Integer> splitNums = getSplitNums(page);
+
+        int sum = getNumsSum(splitNums);
+        int multiplication = getNumsMultiplication(splitNums);
+        int pageScore = Math.max(sum, multiplication);
+
+        return pageScore;
+    }
+
 }
