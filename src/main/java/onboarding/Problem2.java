@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 public class Problem2 {
-    public static String ALPHABET_DELIMETER = "abcdefghijklmnopqrstuvwxyz";
+    public static final String ALPHABET_DELIMITER = "abcdefghijklmnopqrstuvwxyz";
     public static List<String> list;
 
     public static String solution(String cryptogram) {
@@ -49,7 +49,7 @@ public class Problem2 {
     }
 
     private static void addLettersInList(String cryptogram) {
-        StringTokenizer st = new StringTokenizer(cryptogram, ALPHABET_DELIMETER,true);
+        StringTokenizer st = new StringTokenizer(cryptogram, ALPHABET_DELIMITER,true);
         while (st.hasMoreTokens()) {
             list.add(st.nextToken());
         }
