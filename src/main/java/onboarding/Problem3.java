@@ -6,12 +6,14 @@ public class Problem3 {
         for (int i = 1; i <= number; i++) {
             int targetNumber = i;
             while (targetNumber > 0) {
-                if (targetNumber % 10 == 3 || targetNumber % 10 == 6 || targetNumber % 10 == 9) {
-                    clapCount++;
-                }
+                if(isThreeSixNine(targetNumber)) clapCount++;
                 targetNumber /= 10;
             }
         }
         return clapCount;
+    }
+
+    static boolean isThreeSixNine(int number) {
+        return (number % 10) == 3 || (number % 10) == 6 || (number % 10) == 9;
     }
 }
