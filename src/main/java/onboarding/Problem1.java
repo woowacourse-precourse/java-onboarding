@@ -25,17 +25,25 @@ class Problem1 {
         }
         return score;
     }
+
+    static int GameResult(int pobi_score, int crong_score) {
+        int result = 0;
+
+        if (pobi_score > crong_score)
+            result = 1;
+        else if (crong_score > pobi_score)
+            result = 2;
+        else if (crong_score == pobi_score)
+            result = 0;
+        return result;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         int pobi_score = CompareMaxScore(pobi);
         int crong_score = CompareMaxScore(crong);
 
-        if (pobi_score > crong_score)
-            answer = 1;
-        else if (crong_score > pobi_score)
-            answer = 2;
-        else
-            answer = 0;
+        answer = GameResult(pobi_score, crong_score);
 
         return answer;
     }
@@ -55,7 +63,6 @@ class Problem1 {
         System.out.println(solution(crong2, pobi2));
         System.out.println(solution(pobi3, crong3));
     }
-
 
 }
 
