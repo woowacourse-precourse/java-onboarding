@@ -3,15 +3,19 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+
   public static int solution(List<Integer> pobi, List<Integer> crong) {
-    int answer = Integer.MAX_VALUE;
-    return answer;
+    if (Valid.validate(pobi) && Valid.validate(crong)) {
+      return Result.getResult(Calculation.getMaxPoint(pobi), Calculation.getMaxPoint(crong));
+    }
+    return Result.EXCEPTION;
   }
 
   static class Valid {
-    private static final int LENGTH = 2;
-    private static final int START_PAGE = 1;
-    private static final int END_PAGE = 400;
+
+    public static final int LENGTH = 2;
+    public static final int START_PAGE = 1;
+    public static final int END_PAGE = 400;
 
     public static boolean validate(List<Integer> pages) {
       return isCorrectLength(pages) && isCorrectRange(pages) && isOddNumber(pages.get(0))
@@ -43,7 +47,8 @@ class Problem1 {
   }
 
   static class Calculation {
-    public static int getMaxValue(List<Integer> pages) {
+
+    public static int getMaxPoint(List<Integer> pages) {
       int plusMax = Math.max(plus(pages.get(0)), plus(pages.get(1)));
       int multipleMax = Math.max(multiple(pages.get(0)), multiple(pages.get(1)));
       return Math.max(plusMax, multipleMax);
@@ -66,6 +71,19 @@ class Problem1 {
       }
       return result;
     }
+  }
 
+  static class Result {
+
+    public static final int EXCEPTION = -1;
+    public static final int LEFT_PLAYER_WIN = 1;
+    public static final int RIGHT_PLAYER_WIN = 2;
+    public static final int DRAW = 0;
+
+    public static int getResult(int leftPlayerPoint, int rightPlayerPoint) {
+      if (leftPlayerPoint > rightPlayerPoint) return LEFT_PLAYER_WIN;
+      if (rightPlayerPoint > leftPlayerPoint) return RIGHT_PLAYER_WIN;
+      return DRAW;
+    }
   }
 }
