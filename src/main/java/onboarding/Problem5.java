@@ -8,4 +8,8 @@ public class Problem5 {
         List<Integer> answer = Collections.emptyList();
         return answer;
     }
+
+    public static void main(String[] args){
+        System.out.println(solution(50237));
+    }
 }
