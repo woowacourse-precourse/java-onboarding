@@ -2,8 +2,18 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        StringBuilder answer = new StringBuilder(String.valueOf(cryptogram.charAt(0)));
+        String[] wordArr = cryptogram.split("");
+
+        for(int i=1;i<wordArr.length;i++){
+            String lastword = String.valueOf(answer.charAt(answer.length()-1));
+            if(lastword.equals(wordArr[i])){
+                answer = new StringBuilder(answer.substring(0, answer.length() - 1));
+                continue;
+            }
+            answer.append(wordArr[i]);
+        }
+        return answer.toString();
     }
 
     public static void main(String[] args){
