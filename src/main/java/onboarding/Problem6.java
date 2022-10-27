@@ -1,5 +1,7 @@
 package onboarding;
 
+import static onboarding.Problem6.CrewNicknameChecker.calculateDuplicateCrews;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -12,14 +14,23 @@ import java.util.stream.Collectors;
 public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        return calculateDuplicateCrews(forms);
     }
 
     public static class CrewNicknameChecker {
 
         private static Map<String, String> partOfNicknameMap = new HashMap<>();
         private static Set<String> duplicateNicknameCrewSet = new HashSet<>();
+
+        public static List<String> calculateDuplicateCrews(List<List<String>> forms) {
+            List<Crew> crews = forms.stream().map(crew -> new Crew(crew.get(0), crew.get(1)))
+                .collect(Collectors.toList());
+
+            for (Crew crew : crews) {
+                processDuplicateCrewNickname(crew);
+            }
+            return getAscSortedCrewEmails();
+        }
 
         private static List<String> getAscSortedCrewEmails() {
             List<String> duplicateCrewEmail = new ArrayList<>(duplicateNicknameCrewSet);
