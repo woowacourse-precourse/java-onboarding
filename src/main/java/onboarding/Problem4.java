@@ -19,12 +19,13 @@ public class Problem4 {
     }
 
     public static char lowerChange(char c) {
-
+        int temp = c - 'a';
+        return (char)('z' - temp);
     }
 
     public static char upperChange(char c) {
-        int temp = c - 'a';
-        return (char)('z' - temp);
+        int temp = c - 'A';
+        return (char) ('Z' - temp);
     }
 
     public static boolean checkValid(String s) {
