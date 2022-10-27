@@ -1,14 +1,13 @@
 package onboarding;
 
 import java.util.List;
-import java.util.Arrays;
+
 
 class Problem1 {
     private static final int LEFT_PAGE_LIMIT = 1;
     private static final int RIGHT_PAGE_LIMIT = 400;
     private static final int PAGE_SIZE = 2;
     private static final int ONE_PAGE = 1;
-    private static final char CHAR_ZERO = '0';
     private static final int USER1_WINNER = 1;
     private static final int USER2_WINNER = 2;
     private static final int DRAW = 0;
@@ -18,10 +17,14 @@ class Problem1 {
 
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if (validationCheck(pobi) && validationCheck(crong)) {
-            int pobi_max = getMaxValue(pobi);
-            int crong_max = getMaxValue(crong);
-            int winner = getWinner(pobi_max, crong_max);
+        int solution = getSolution(pobi, crong);
+        return solution;
+    }
+    public static int getSolution(List<Integer> user_1, List<Integer> user_2) {
+        if (validationCheck(user_1) && validationCheck(user_2)) {
+            int user1Max = getMaxValue(user_1);
+            int user2Max = getMaxValue(user_2);
+            int winner = getWinner(user1Max, user2Max);
             return winner;
         }
         return EXCEPTION;
@@ -86,3 +89,5 @@ class Problem1 {
         return DRAW;
     }
 }
+
+
