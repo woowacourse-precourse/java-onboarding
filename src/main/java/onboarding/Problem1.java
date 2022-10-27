@@ -40,9 +40,11 @@ class Problem1 {
     }
 
     private static int leftOrRight(List<Integer> pages) {
-        int left = sumOrProduct(pages.get(0));
-        int right = sumOrProduct(pages.get(1));
+        int leftPage = pages.get(0);
+        int rightPage = pages.get(1);
+        int leftMax = sumOrProduct(leftPage);
+        int rightMax = sumOrProduct(rightPage);
 
-        return (left > right) ? left : right;
+        return (leftMax > rightMax) ? leftMax : rightMax;
     }
 }
