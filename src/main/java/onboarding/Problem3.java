@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Problem3 {
@@ -15,6 +16,9 @@ public class Problem3 {
         }
 
         int count = 0;
+        count += Collections.frequency(numList, '3');
+        count += Collections.frequency(numList, '6');
+        count += Collections.frequency(numList, '9');
         return count;
     }
 }
