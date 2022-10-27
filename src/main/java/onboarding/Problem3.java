@@ -1,8 +1,13 @@
 package onboarding;
 
+import problem3.Game369ClapCounter;
+
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
-        return answer;
+        try {
+            return Game369ClapCounter.countFromOneTo(number);
+        } catch (RuntimeException e) {
+            return -1;
+        }
     }
 }
