@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 /*
 # 예외상황 판단
@@ -17,12 +18,17 @@ import java.util.List;
  */
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        int pobi_score = 0;
+        int crong_score = 0;
         int answer = Integer.MAX_VALUE;
         if (!checkData(pobi) || !checkData(crong)) {
             return -1;
         }
         List<Integer> pobi_scores = makeScoreList(pobi);
         List<Integer> crong_scores = makeScoreList(crong);
+
+        pobi_score = Collections.max(pobi_scores);
+        crong_score = Collections.max(crong_scores);
 
         return answer;
     }
