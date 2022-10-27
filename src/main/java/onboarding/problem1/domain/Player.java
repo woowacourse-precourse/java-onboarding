@@ -34,6 +34,18 @@ public class Player {
     }
     
     private boolean isNotCorrectPages(final Player rightPlayer) {
+        return isPlayersNotCorrectEvenAndOddNumber(rightPlayer) || isPlayersDifferenceNotOne(rightPlayer);
+    }
+    
+    private boolean isPlayersDifferenceNotOne(final Player rightPlayer) {
+        return isDifferenceNotOne() || rightPlayer.isDifferenceNotOne();
+    }
+    
+    private boolean isDifferenceNotOne() {
+        return pages.get(0).isDifferenceNotOne(pages.get(1));
+    }
+    
+    private boolean isPlayersNotCorrectEvenAndOddNumber(final Player rightPlayer) {
         return isNotCorrectEvenAndOddNumbers() || rightPlayer.isNotCorrectEvenAndOddNumbers();
     }
     

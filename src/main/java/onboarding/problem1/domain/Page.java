@@ -36,4 +36,8 @@ public class Page {
     public boolean isNotEven() {
         return page % 2 != 0;
     }
+    
+    public boolean isDifferenceNotOne(final Page page) {
+        return Math.abs(this.page - page.page) != 1;
+    }
 }

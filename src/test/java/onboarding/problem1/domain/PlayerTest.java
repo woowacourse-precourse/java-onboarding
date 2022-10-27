@@ -38,4 +38,13 @@ public class PlayerTest {
                 () -> assertThat(new Player(157, 158).compareTo(new Player(58, 59))).isEqualTo(-1)
         );
     }
+    
+    @Test
+    @DisplayName("차이가 1이 아닌 경우")
+    void isDifferenceNotOne() {
+        assertAll(
+                () -> assertThat(new Player(157, 160).compareTo(new Player(57, 58))).isEqualTo(-1),
+                () -> assertThat(new Player(157, 158).compareTo(new Player(57, 59))).isEqualTo(-1)
+        );
+    }
 }
