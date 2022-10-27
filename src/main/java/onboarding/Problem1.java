@@ -1,6 +1,5 @@
 package onboarding;
 
-import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
@@ -9,8 +8,15 @@ class Problem1 {
         return answer;
     }
 
+
+    // 왼쪽, 오른쪽 페이지가 연속되지 않는 경우를 확인하는 메소드
+    private static boolean isContinuous(List<Integer> array) {
+        return array.get(1) - array.get(0) == 1;
+    }
+
+
     // 왼쪽, 오른쪽 페이지에서 각 자리 수를 더하거나 곱해 가장 큰 수를 반환하는 메소드
-    private static int maxPageNumber(ArrayList<Integer> array) {
+    private static int maxPageNumber(List<Integer> array) {
         int max = 0;
 
         for (int i = 0; i < array.size(); i++) {
