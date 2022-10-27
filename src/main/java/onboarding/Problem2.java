@@ -75,3 +75,13 @@ class Cryptogram {
     }
 
 }
+
+class OutView {
+    static void printHead(String cryptoMethod ) {
+        System.out.println(cryptoMethod + "\t" + "result");
+    }
+
+    static void printResult(String inputCryptogram, String result) {
+        System.out.println(inputCryptogram + "\t" + result);
+    }
+}
