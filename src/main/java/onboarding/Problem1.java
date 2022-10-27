@@ -45,40 +45,41 @@ public class Problem1 {
     }
 
     // 에러 검증
-   public static boolean runtimeException(List<Integer> pageByPlayer) {
-       //given
-       int leftNumber = pageByPlayer.get(0);
-       int rightNumber = pageByPlayer.get(1);
+    public static boolean runtimeException(List<Integer> pageByPlayer) {
+        //given
+        int leftNumber = pageByPlayer.get(0);
+        int rightNumber = pageByPlayer.get(1);
 
-       //when
-       if (leftNumber < 1 || rightNumber > 400
-               || rightNumber - leftNumber > 1) {
-           return  true;
-       } else {
-           //then
-           return  false;
-       }
-   }
+        //when
+        if (leftNumber < 1 || rightNumber > 400
+                || rightNumber - leftNumber > 1) {
+            return true;
+        } else {
+            //then
+            return false;
+        }
+    }
 
-    public static int getWinner(int pobiMax, int crongMax){
+    public static int getWinner(int pobiMax, int crongMax) {
         int result = 0;
         if (pobiMax > crongMax) {
             result = 1;
-        } else if (crongMax > pobiMax){
+        } else if (crongMax > pobiMax) {
             result = 2;
-        } else if (crongMax == pobiMax){
+        } else if (crongMax == pobiMax) {
             result = 0;
         }
 
         return result;
     }
-    static int getBigger(int a, int b){
+
+    static int getBigger(int a, int b) {
         int result = 0;
-        if (a > b){
+        if (a > b) {
             result = a;
-        } else if (b > a){
+        } else if (b > a) {
             result = b;
-        } else if (a==b) {
+        } else if (a == b) {
             result = a;
         }
         return result;
@@ -86,7 +87,7 @@ public class Problem1 {
 
     public static Integer getEachNumberBySum(int pageNumber) {
         int eachNumber = 0;
-        while (pageNumber != 0 && pageNumber != 400){
+        while (pageNumber != 0 && pageNumber != 400) {
             eachNumber += pageNumber % 10;
             pageNumber /= 10;
         }
@@ -96,7 +97,7 @@ public class Problem1 {
 
     public static Integer getEachNumberByMultiply(Integer pageNumber) {
         int eachNumber = 1;
-        while (pageNumber != 0 && pageNumber != 400){
+        while (pageNumber != 0 && pageNumber != 400) {
             eachNumber *= pageNumber % 10;
             pageNumber /= 10;
         }
