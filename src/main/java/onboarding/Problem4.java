@@ -38,7 +38,7 @@ public class Problem4 {
         }
 
         boolean isLower = Character.isLowerCase(word);
-        int index = 0; //TODO::알파벳 별로 알맞은 인덱스 반환하는 기능 추가
+        int index = getAlphaArrayIndex(word);
         char reversedWord = reverseAlphaArray[index];
 
         if (isLower) {
@@ -52,5 +52,13 @@ public class Problem4 {
                 .mapToObj(c -> Character.toString((char) c))
                 .collect(Collectors.joining())
                 .toCharArray();
+    }
+
+    private static int getAlphaArrayIndex(char c) {
+        final int ALPHA_COUNT = 26;
+        char word = Character.toUpperCase(c);
+
+        int normalIndex = ((int)word - 65);
+        return (ALPHA_COUNT - 1) - normalIndex;
     }
 }
