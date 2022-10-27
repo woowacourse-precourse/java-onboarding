@@ -1,5 +1,9 @@
 package onboarding.problem4;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class WordConverter {
 	public static final int ASCII_OF_LOWERCASE_A = 97;
 	public static final int ASCII_OF_LOWERCASE_Z = 122;
@@ -8,6 +12,25 @@ public class WordConverter {
 
 	private enum CharacterCategory {
 		LOWERCASE, UPPERCASE, NOT_ALPHABET
+	}
+
+	public static String convertWord(String word) {
+		List<Character> convertedWordList = new ArrayList<>();
+
+		for (int i = 0; i < word.length(); i++) {
+			char oneCharacter = word.charAt(i);
+			if (checkCharacterCategory(oneCharacter) == CharacterCategory.LOWERCASE) {
+				convertedWordList.add(convertLowerCharacter(oneCharacter));
+			} else if (checkCharacterCategory(oneCharacter) == CharacterCategory.UPPERCASE) {
+				convertedWordList.add(convertUpperCharacter(oneCharacter));
+			} else {
+				convertedWordList.add(oneCharacter);
+			}
+		}
+
+		String convertedWord = convertedWordList.stream().map(String::valueOf).collect(Collectors.joining());
+
+		return convertedWord;
 	}
 
 	public static CharacterCategory checkCharacterCategory(char oneCharacter) {
