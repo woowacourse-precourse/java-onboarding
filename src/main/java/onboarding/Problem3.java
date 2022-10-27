@@ -12,6 +12,11 @@ public class Problem3 {
             if (ten_num == 3 || ten_num == 6 || ten_num == 9) {
                 answer += 1;
             }
+            
+            // 일의 자리수 3,6,9 판별
+            if(one_num == 3 || one_num == 6 || one_num == 9) {
+                answer += 1;
+            }
         }
         return answer;
     }
