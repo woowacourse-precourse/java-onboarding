@@ -9,6 +9,23 @@ public class PagePair {
     private final int maxScore;
     private final boolean isValid;
 
+    public PagePair(List<Integer> pages) {
+        this.leftPage = pages.get(Constants.getLeftPageIndex());
+        this.rightPage = pages.get(Constants.getRightPageIndex());
+        this.isValid = isValidPageRange() && isOddPage() && isEvenPage() && checkPagesInterval();
+
+        int leftMaxScore = Math.max(
+                calculateDigitSum(leftPage),
+                calculateDigitMultiple(leftPage)
+        );
+        int rightMaxScore = Math.max(
+                calculateDigitSum(rightPage),
+                calculateDigitMultiple(rightPage)
+        );
+
+        this.maxScore = Math.max(leftMaxScore, rightMaxScore);
+    }
+
     public int calculateDigitSum(int pageNumber) {
         int digitSum = 0;
         while (pageNumber >= Constants.getMinPage()) {
