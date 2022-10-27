@@ -23,3 +23,33 @@
 | [97, 98] | [197, 198] | 0 |
 | [131, 132] | [211, 212] | 1 |
 | [99, 102] | [211, 212] | -1 |
+-------------
+## 기능 목록
+
+* 포비와 크롱의 책 왼쪽, 오른쪽 페이지 요구 사항에 맞게 예외처리
+~~~
+private static boolean validation(int leftPage, int rightPage) : 아래 로직들 모두 검증
+private static boolean isFirstAndLastPage(int leftPage, int rightPage) : 1페이지, 400페이지 확인
+private static boolean isNextPage(int leftPage, int rightPage) : 연속된 페이지인지 확인 ex) 101, 102 통과 101 105면 예외처리
+private static boolean isLeftOddNumberAndRightEvenNumberPage(int leftPage, int rightPage) : 왼쪽 홀수 페이지, 오른쪽 짝수 페이지 확인
+~~~
+
+* 덧셈, 곱셈을 위해 페이지 각 자릿수 ArrayList에 저장
+~~~ 
+private static void addList(int page, ArrayList<Integer> list) 
+~~~
+
+* List에 저장한 왼쪽, 오른쪽 페이지 각각 덧셈, 곱셈 후 더 큰 숫자 반환
+~~~
+private static int calculateNumber(ArrayList<Integer> list)
+~~~
+
+* 왼쪽, 오른쪽 페이지 중 더 큰 숫자 반환
+~~~
+private static int checkBigNumber(int leftBigNumber, int rightBigNumber)
+~~~
+
+* 포비의 가장 큰 수와 크롱의 가장 큰 수 비교 후 요구 사항에 맞게 반환
+~~~
+private static int getAnswer(int answer, int pobiNumber, int crongNumber)
+~~~
