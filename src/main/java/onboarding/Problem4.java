@@ -7,8 +7,13 @@ public class Problem4 {
     private static StringBuilder sb;
 
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        sb = new StringBuilder();
+        char nowChar;
+        for (int i = 0 ; i < word.length() ; i++) {
+            nowChar = word.charAt(i);
+            transferAlphabet(nowChar);
+        }
+        return sb.toString();
     }
 
     private static void transferAlphabet(char alphabet) {
@@ -25,7 +30,7 @@ public class Problem4 {
         double mid = calculateMidAlphabet(alphabetCase);
         double distanceFromMid = mid - alphabet;
         char reversed =  (char)(mid + distanceFromMid);
-        return toUpperLowerCase(alphabetCase, reversed);
+        return reversed;
     }
 
     private static double calculateMidAlphabet(int alphabetCase) {
@@ -34,14 +39,6 @@ public class Problem4 {
         }
         return ((double)'a'+'z')/2;
     }
-
-    private static char toUpperLowerCase(int alphabetCase, char alphabet) {
-        if(alphabetCase==UPPER_CASE) {
-            return Character.toLowerCase(alphabet);
-        }
-        return Character.toUpperCase(alphabet);
-    }
-
 
     private static int checkCharRange(char nowChar) {
         if (nowChar>='A' && nowChar<='Z') {
