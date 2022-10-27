@@ -16,7 +16,8 @@ class Problem1 {
         }
         int pobiScore = Math.max(pageMax(pobi.get(0)), pageMax(pobi.get(1)));
         int crongScore = Math.max(pageMax(crong.get(0)), pageMax(crong.get(1)));
-        int answer = Integer.MAX_VALUE;
+        int answer = pobiScore > crongScore ? 1 : pobiScore < crongScore ? 2 : 0;
+
         return answer;
     }
 
