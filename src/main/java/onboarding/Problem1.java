@@ -20,6 +20,8 @@ class Problem1 {
         }
 
         // 예외 처리
+        boolean isException = isException(pobiPage, crongPage);
+        if(isException) return -1;
 
         // 포비의 계산결과 넣음
 
@@ -30,5 +32,18 @@ class Problem1 {
         return answer;
     }
 
+    /**
+     * 예외 상황인지 판단하는 메소드
+     * @param pobiPage 포비가 뽑은 페이지
+     * @param crongPage 크롱이 뽑은 페이지
+     * @return 예외 상황이면 true 반환 예외 상황이 아니면 false 반환
+     */
+    static boolean isException(int[] pobiPage, int[] crongPage){
+        if(pobiPage[0] != pobiPage[1] - 1 || crongPage[0] != crongPage[1] - 1){
+            return true;
+        }
+
+        return false;
+    }
 
 }
