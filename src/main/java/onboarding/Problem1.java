@@ -21,7 +21,12 @@ class Problem1 {
     }
 
     public static boolean isPage(List<Integer> list){
-        return (list.get(1)-list.get(0)==1)?true:false;
+        int leftPage = list.get(0);
+        int rightPage = list.get(1);
+        if (leftPage%2 == 0) {
+            return false;
+        }
+        return (rightPage-leftPage==1)?true:false;
     }
 
     public static int findMaxNum(String page){
