@@ -4,9 +4,11 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Problem5 {
+    private static final int START_MONEY = 50_000;
+
     public static List<Integer> solution(int money) {
         List<Integer> answer = new LinkedList<>();
-        int currency = Constants.START_MONEY;
+        int currency = START_MONEY;
         int amount = 0;
         boolean isHalf = true;
 
