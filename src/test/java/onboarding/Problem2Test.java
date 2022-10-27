@@ -1,16 +1,24 @@
 package onboarding;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class Problem2Test {
 
     @Test
-    void isDuplicate() {
-        String result = Problem2.isDuplicate("brooorwnnk");
+    void deduplicate() {
+        String result = Problem2.deduplicate("brooorwnnk");
 
-        System.out.println("result = " + result);
+        assertThat(result).isEqualTo("brrwk");
+    }
 
+    @Test
+    void decode() {
+        String result = Problem2.decode("brooorwnnk");
+
+        assertThat(result).isEqualTo("bwk");
     }
 }
