@@ -3,10 +3,10 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-    public static final int EXCEPTION = -1;
-    public static final int DRAW = 0;
-    public static final int WIN_POBI = 1;
-    public static final int WIN_CRONG = 2;
+    private static final int EXCEPTION = -1;
+    private static final int DRAW = 0;
+    private static final int WIN_POBI = 1;
+    private static final int WIN_CRONG = 2;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
@@ -23,7 +23,7 @@ class Problem1 {
 
         return answer;
     }
-    
+
     private static boolean isError(List<Integer> list) {
         int left = list.get(0);
         int right = list.get(1);
