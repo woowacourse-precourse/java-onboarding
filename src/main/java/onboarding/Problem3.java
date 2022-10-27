@@ -6,8 +6,8 @@ import java.util.List;
 
 /**
  * 구현 순서
- * num이 들어왔을 때 1 ~ num 까지 손뼉 횟수를 반환하는 함수 구현
- * answer에 1 ~ number 까지 (1.)함수 반환값 을 더해줌
+ * 1. num이 들어왔을 때 1 ~ num 까지 손뼉 횟수를 반환하는 함수 구현
+ * 2. answer에 1 ~ number 까지 (1.)함수 반환값 을 더해줌
  */
 public class Problem3 {
     public static int solution(int number) {
