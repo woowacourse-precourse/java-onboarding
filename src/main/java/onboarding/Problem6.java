@@ -37,6 +37,7 @@ public class Problem6 {
                 }
             }
         }
+        Collections.sort(duplicateName);
         return duplicateName;
     }
 
