@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,7 +15,37 @@ public class Problem7 {
         acquaintanceScoreMap = new HashMap<>();
         initFriendMap(friends);
         initExcludeUserMap(user);
+        List<String> friendList = findFriends(user);
+        List<String> acquaintances = findAcquaintances(friendList);
+        calculateAcquaintanceScore(acquaintances);
+        System.out.println("acquaintances = " + acquaintanceScoreMap);
         return null;
+    }
+
+    private static void calculateAcquaintanceScore(List<String> acquaintances) {
+        for (String user : acquaintances) {
+            Integer originScore = acquaintanceScoreMap.putIfAbsent(user, 10);
+            if (originScore != null) {
+                acquaintanceScoreMap.put(user, originScore + 10);
+            }
+        }
+    }
+
+    private static List<String> findAcquaintances(List<String> friendList) {
+        List<String> acquaintances = new ArrayList<>();
+        for (String friend : friendList) {
+            for (String acquaintance : friendMap.get(friend)) {
+                if (excludedUserMap.get(acquaintance) == null) {
+                    acquaintances.add(acquaintance);
+                }
+            }
+        }
+        return acquaintances;
+    }
+
+    private static List<String> findFriends(String user) {
+        List<String> friendList = new ArrayList(friendMap.get(user));
+        return friendList;
     }
 
     private static void initExcludeUserMap(String user) {
