@@ -5,6 +5,9 @@ import java.util.List;
 class Problem1 {
 
     private static final int EXCEPTION=-1;
+    private static final int POBIWIN=1;
+    private static final int CRONGWIN=2;
+    private static final int DRAW=0;
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
         int answer = Integer.MAX_VALUE;
@@ -18,6 +21,9 @@ class Problem1 {
         int pobiRigtMax=0;
         int crongLeftMax=0;
         int crongRightMax=0;
+
+        int pobiMax=0;
+        int crongMax=0;
 
         // 1. 예외 체크
         // 1-1. 왼쪽 페이지 홀수, 오른쪽 페이지 짝수인지 체크
@@ -45,8 +51,14 @@ class Problem1 {
         crongRightMax = getMax(crongRightPage);
 
         // 4. 왼쪽 페이지, 오른쪽 페이지 점수 비교
-        // 5. 결과값 출력
+        pobiMax=Math.max(pobiLeftMax,pobiRigtMax);
+        crongMax = Math.max(crongLeftMax, crongRightMax);
 
+        if(pobiMax>crongMax) answer=POBIWIN;
+        if(pobiMax==crongMax) answer=DRAW;
+        if(pobiMax<crongMax) answer=CRONGWIN;
+
+        // 5. 결과값 출력
         return answer;
     }
 
