@@ -2,7 +2,7 @@ package onboarding.problem3;
 
 public class InputNumberValidation {
 
-    public static void isValidNumber(int number) {
+    public static void validateNumber(int number) {
         int MAX_VALUE = 10_000;
         int MIN_VALUE = 1;
 

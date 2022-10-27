@@ -11,7 +11,7 @@ public class Decrypt {
     }
 
     public String doDecrypt(String cryptogram) {
-        isValidCryptogram(cryptogram);
+        validateCryptogram(cryptogram);
 
         char[] cryptoCharArr = cryptogram.toCharArray();
 

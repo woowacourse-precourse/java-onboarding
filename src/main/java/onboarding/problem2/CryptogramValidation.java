@@ -2,7 +2,7 @@ package onboarding.problem2;
 
 public class CryptogramValidation {
 
-    public static void isValidCryptogram(String cryptogram) {
+    public static void validateCryptogram(String cryptogram) {
         if (!isValidLength(cryptogram)) {
             throw new IllegalArgumentException("문자의 길이는 1 이상 1,000 이하여야 합니다.");
         }
