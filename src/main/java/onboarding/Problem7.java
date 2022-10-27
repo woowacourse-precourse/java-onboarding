@@ -20,7 +20,7 @@ public class Problem7 {
         updateScoreMapByVisitorList(visitors, scoreMap);
 
         deleteScoreMapMemberByUserFriendList(user, scoreMap, userFriendList);
-        
+
         return scoreMap.entrySet()
                 .stream()
                 .sorted((o1, o2) -> o2.getValue() - o2.getValue())
