@@ -12,6 +12,9 @@ public class Problem3 {
     }
 
     public static int clapCount(int num) {
-
+        int count = 0;
+        if (num == 1 || num == 2) {
+            return count;
+        }
     }
 }
