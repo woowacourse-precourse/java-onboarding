@@ -7,8 +7,13 @@ class Problem1 {
         int pobiPoint = getPoint(pobi);
         int crongPoint = getPoint(crong);
 
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        if (pobiPoint == crongPoint) {
+            return 0;
+        } else if (pobiPoint > crongPoint) {
+            return 1;
+        } else {
+            return 2;
+        }
     }
 
     private static int getPoint(List<Integer> pageNums) {
