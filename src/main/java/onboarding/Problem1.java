@@ -24,6 +24,10 @@ class Problem1 {
             result = -1;
             return result;
         }
+        if((int)scoreData.get(0)==1 || (int)scoreData.get(1)==400){
+            result = -1;
+            return result;
+        }
 
         while(rest++ <=2){
             int addScore = 0;
