@@ -25,6 +25,17 @@ class Problem1 {
         return product;
     }
 
+    public static int compareNumbers(int num1, int num2){
+        int result = 0;
+        if(num1 > num2){
+            result = num1;
+        }
+        if(num2 >= num1){
+            result = num2;
+        }
+        return result;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
