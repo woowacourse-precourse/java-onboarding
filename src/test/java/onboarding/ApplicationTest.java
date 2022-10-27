@@ -46,8 +46,8 @@ class ApplicationTest {
 
         @Test
         void case2() {
-            String cryptogram = "azyelleyz";
-            String result = "a";
+            String cryptogram = "zyelleyz";
+            String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
     }
