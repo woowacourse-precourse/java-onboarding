@@ -27,4 +27,46 @@ public class Problem5 {
 
         return answer;
     }
+    private static int[] cash(int i, int money) {
+        int[] rtn = new int[2]; // rtn[0] : 화폐 수량 cnt / rtn[1] : 잔액 bal
+        switch (i) {
+            case 0: // 오만원
+                rtn[0] = money / 50000;
+                rtn[1] = money % 50000;
+                break;
+            case 1: // 만원
+                rtn[0] = money / 10000;
+                rtn[1] = money % 10000;
+                break;
+            case 2: // 오천원
+                rtn[0] = money / 5000;
+                rtn[1] = money % 5000;
+                break;
+            case 3: // 천원
+                rtn[0] = money / 1000;
+                rtn[1] = money % 1000;
+                break;
+            case 4: // 오백원
+                rtn[0] = money / 500;
+                rtn[1] = money % 500;
+                break;
+            case 5: // 백원
+                rtn[0] = money / 100;
+                rtn[1] = money % 100;
+                break;
+            case 6: // 오십원
+                rtn[0] = money / 50;
+                rtn[1] = money % 50;
+                break;
+            case 7: // 십원
+                rtn[0] = money / 10;
+                rtn[1] = money % 10;
+                break;
+            case 8: // 일원
+                rtn[0] = money / 1;
+                rtn[1] = money % 1;
+                break;
+        }
+        return rtn;
+    }
 }
