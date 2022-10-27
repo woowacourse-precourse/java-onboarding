@@ -53,6 +53,21 @@
       - 숫자가 3, 6, 9인지 알려준다.
 
 4. [문제 4](./docs/PROBLEM4.md)
+  - [ ] isValidInput
+  - 인자값이 유효한지 검사한다.
+    - [ ] hasValidLength
+    - 문자열의 길이가 1~1000인지 검사한다.
+  - [ ] encryptString
+  - 문자열을 반대로 바꿔준다.
+    - [ ] encryptCharacter
+    - 하나의 문자를 반대로 바꿔준다.
+      - [ ] isAlphabet
+      - 문자가 영문자인지 알려준다.
+      - [ ] getOppositeAlphabet
+      - 문자를 반대 문자로 바꿔준다.
+      - [ ] getOppositeCase
+      - 반대 문자를 원문자의 반대 케이스로 바꿔준다.
+
 5. [문제 5](./docs/PROBLEM5.md)
 6. [문제 6](./docs/PROBLEM6.md)
 7. [문제 7](./docs/PROBLEM7.md)
