@@ -42,6 +42,16 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+
+        if (exception(pobi, crong)) {
+            answer = -1;
+        } else {
+            int pobi_max = Math.max(getMax(pobi.get(0)), getMax(pobi.get(1)));
+            int crong_max = Math.max(getMax(crong.get(0)), getMax(crong.get(1)));
+
+            answer = compare(pobi_max, crong_max);
+        }
+
         return answer;
     }
 }
