@@ -60,3 +60,14 @@ BUILD SUCCESSFUL in 0s
 
 - 미션은 [java-onboarding](https://github.com/woowacourse-precourse/java-onboarding) 저장소를 Fork & Clone해 시작한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+## 📝 기능 목록
+- 기능 목록은 아래의 별로 문서에 기록하였습니다.
+
+1. [문제 1의 기능 목록](./docs/FEATURE001.md)
+2. [문제 2의 기능 목록](./docs/FEATURE002.md)
+3. [문제 3의 기능 목록](./docs/FEATURE003.md)
+4. [문제 4의 기능 목록](./docs/FEATURE004.md)
+5. [문제 5의 기능 목록](./docs/FEATURE005.md)
+6. [문제 6의 기능 목록](./docs/FEATURE006.md)
+7. [문제 7의 기능 목록](./docs/FEATURE007.md)
