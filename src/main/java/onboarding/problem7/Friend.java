@@ -1,6 +1,7 @@
 package onboarding.problem7;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Friend {
 
@@ -40,5 +41,17 @@ public class Friend {
 
     public String getFriendName() {
         return friendName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        final Friend friend = (Friend) o;
+        return name.equals(friend.getName()) && friendName.equals(friend.getFriendName());
     }
 }
