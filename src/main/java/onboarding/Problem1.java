@@ -4,34 +4,54 @@ import java.util.Arrays;
 import java.util.List;
 
 class Problem1 {
+    private static final int MIN_PAGE_NUMBER = 1;
+    private static final int MAX_PAGE_NUMBER = 400;
+    private static final int DRAW = 0;
+    private static final int WIN_POBI = 1;
+    private static final int WIN_CRONG = 2;
+    private static final int EXCEPTION = -1;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        try {
-            validatePages(pobi);
-            validatePages(crong);
-        } catch (IllegalArgumentException e) {
-            return -1;
+        if (isInvalidPages(pobi) || isInvalidPages(crong)) {
+            return EXCEPTION;
         }
 
         int pobiScore = scoreFrom(pobi);
         int crongScore = scoreFrom(crong);
         if (pobiScore == crongScore) {
-            return 0;
+            return DRAW;
         }
         if (pobiScore > crongScore) {
-            return 1;
+            return WIN_POBI;
         }
-        return 2;
+        return WIN_CRONG;
     }
 
-    private static void validatePages(List<Integer> pages) {
+    private static boolean isInvalidPages(List<Integer> pages) {
         int leftPage = pages.get(0);
         int rightPage = pages.get(1);
-        if (leftPage < 1 || leftPage > 400 || leftPage % 2 == 0 || rightPage < 1 || rightPage > 400 || rightPage % 2 == 1) {
-            throw new IllegalArgumentException("올바른 페이지 번호가 아닙니다.");
+
+        if (isOutOfRangePage(leftPage) || isOutOfRangePage(rightPage)) {
+            return true;
         }
-        if (rightPage - leftPage != 1) {
-            throw new IllegalArgumentException("연속된 페이지 번호를 입력해주세요.");
+
+        if (isNotOdd(leftPage) || isNotEven(rightPage)) {
+            return true;
         }
+
+        return (rightPage - leftPage) != 1;
+    }
+
+    private static boolean isOutOfRangePage(int page) {
+        return page < MIN_PAGE_NUMBER || page > MAX_PAGE_NUMBER;
+    }
+
+    private static boolean isNotOdd(int number) {
+        return number % 2 == 0;
+    }
+
+    private static boolean isNotEven(int number) {
+        return number % 2 == 1;
     }
 
     private static int scoreFrom(List<Integer> pages) {
@@ -55,11 +75,11 @@ class Problem1 {
         return digitNumbers;
     }
 
-    private static int multiplyNumbers(Integer[] digits) {
-        return Arrays.stream(digits).reduce(1, (integer, integer2) -> integer * integer2);
-    }
-
     private static int addNumbers(Integer[] digits) {
         return Arrays.stream(digits).reduce(0, Integer::sum);
+    }
+
+    private static int multiplyNumbers(Integer[] digits) {
+        return Arrays.stream(digits).reduce(1, (integer, integer2) -> integer * integer2);
     }
 }
