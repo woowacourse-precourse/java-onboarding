@@ -21,4 +21,8 @@ public enum Money {
     public int amount(){
         return amount;
     }
+
+    public int totalAmount(int num){
+        return num*amount;
+    }
 }
