@@ -1,6 +1,15 @@
 package onboarding;
 
 public class Problem3 {
+	public static int solution(int number) {
+		int answer = 0;
+
+		for (int i = 3; i <= number; i++) {
+			answer += countClap(i);
+		}
+		return answer;
+	}
+
 	public static int countClap(int index) {
 		int count = 0;
 		while (index > 0) {
@@ -10,15 +19,5 @@ public class Problem3 {
 			index /= 10;
 		}
 		return count;
-	}
-
-	public static int solution(int number) {
-		int answer = 0;
-		return answer;
-	}
-
-	public static void main(String[] args) {
-		int number = 13;
-		System.out.println(solution(number));
 	}
 }
