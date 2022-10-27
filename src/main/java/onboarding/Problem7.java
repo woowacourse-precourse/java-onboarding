@@ -6,10 +6,14 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         List<String> friendList = new ArrayList<>();
+        HashSet<String> memberList = new HashSet<>();
 
         for (int i = 0; i < friends.size(); i++) {
             friendList = insertFriendToListIfUserFriend(friends.get(i).get(0), user, friendList);
             friendList = insertFriendToListIfUserFriend(friends.get(i).get(1), user, friendList);
+            //전체 멤버 리스트 작성 기능
+            memberList.add(friends.get(i).get(0));
+            memberList.add(friends.get(i).get(1));
         }
         return answer;
     }
