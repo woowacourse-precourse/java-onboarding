@@ -7,7 +7,7 @@ public class Problem3 {
 
         Game game = new Game(number);
 
-        int answer = 0;
+        int answer = game.play();
         return answer;
     }
 }
