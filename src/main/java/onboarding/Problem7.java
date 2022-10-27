@@ -38,6 +38,7 @@ public class Problem7 {
 				friendScore.put(visitor, friendScore.getOrDefault(visitor, 0) + 1);
 			}
 		}
+		friendScore.put(user, 0);
 		return answer;
 	}
 }
