@@ -31,6 +31,8 @@ public class Problem6 {
             String targetTwoLetter = targetNameArr[z] + targetNameArr[z + 1];
 
             if (compareArr.contains(targetTwoLetter)) {
+                answer.add(forms.get(i).get(0));
+                answer.add(forms.get(i + 1).get(0));
                 break;
             }
         }
