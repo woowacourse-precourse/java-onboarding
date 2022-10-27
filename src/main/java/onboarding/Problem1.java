@@ -10,16 +10,18 @@ class Problem1 {
     }
 
     public static boolean isTwoPages(List<Integer> page){
-        if(page.size()!=2)
+        if(page.size()!=2) {
             return false;
+        }
         return true;
     }
 
 
     public static boolean isPageNotEmpty(List<Integer> page){
         for(Integer i : page){
-            if (i == null)
+            if (i == null) {
                 return false;
+            }
         }
         return true;
     }
