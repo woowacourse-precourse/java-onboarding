@@ -33,4 +33,12 @@ class Problem1 {
         }
         return result;
     }
+
+    static boolean Validation(List<Integer> list) {
+        if(list.get(0) + 1 != list.get(1)) return false;
+        if(list.get(0) <= 0 || list.get(1) <=0) return false;
+        if(list.get(0) > 400 || list.get(1) > 400) return false;
+        if(list.get(0) == null || list.get(1) == null) return false;
+        return true;
+    }
 }
