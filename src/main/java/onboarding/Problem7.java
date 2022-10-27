@@ -10,7 +10,8 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
         List<String> usersFriend = getFriends(user, friends);
         HashMap<String, Integer> FriendCountHash = getFriendCountHash(usersFriend, friends, user);
-        System.out.println(FriendCountHash);
+        HashMap<String, Integer> RecommendPointHash = calcRecommendPoint(visitors, FriendCountHash, usersFriend);
+        System.out.println(RecommendPointHash);
         return answer;
     }
     static List<String> getFriends(String user, List<List<String>> friends) {
@@ -39,5 +40,27 @@ public class Problem7 {
             }
         }
         return FriendCountHash;
+    }
+    static HashMap<String, Integer> calcRecommendPoint(List<String> visitors, HashMap<String, Integer> FriendCountHash, List<String> usersFriend) {
+        HashMap<String, Integer> RecommendPointHash = new HashMap<>();
+        for (String visitor:visitors) {
+            if (usersFriend.contains(visitor)){
+                //pass
+            } else if (RecommendPointHash.containsKey(visitor)) {
+                RecommendPointHash.put(visitor , RecommendPointHash.get(visitor)+1);
+            } else {
+                RecommendPointHash.put(visitor, 1);
+            }
+        }
+        for (String TwoDepthFriend:FriendCountHash.keySet()) {
+            if (usersFriend.contains(TwoDepthFriend)){
+                //pass
+            } else if (RecommendPointHash.containsKey(TwoDepthFriend)) {
+                RecommendPointHash.put(TwoDepthFriend , RecommendPointHash.get(TwoDepthFriend)+10);
+            } else {
+                RecommendPointHash.put(TwoDepthFriend, 10);
+            }
+        }
+        return RecommendPointHash;
     }
 }
