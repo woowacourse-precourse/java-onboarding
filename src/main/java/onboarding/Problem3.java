@@ -15,18 +15,24 @@ public class Problem3 {
     static HashSet<Integer> gameRule;
 
     public static int solution(int number) {
-        int answer = 0;
+        final int errorCase = -1;
+        int answer;
         setGameRule();
-
+        if(!checkValid(number)){
+            return errorCase;
+        }
+        answer = solutionLogic(number);
         return answer;
     }
 
     public static int solutionLogic(int num) {
+        int clapCount = 0;
         int now = 1;
         while (now <= num) {
-
+            clapCount += countClap(now);
             now += 1;
         }
+        return clapCount;
     }
 
 
