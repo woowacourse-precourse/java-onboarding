@@ -3,7 +3,7 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-    public static int solution(List<Integer> pobi, List<Integer> crong){
+    public static int solution(List<Integer> pobi, List<Integer> crong) {
         int pobiScore, crongScore, answer;
 
         if (!ValidationFor1.isValidateInput(pobi) || !ValidationFor1.isValidateInput(crong)) {
@@ -18,11 +18,11 @@ class Problem1 {
 }
 
 
-class ValidationFor1{
+class ValidationFor1 {
     static final int MAX_PAGE = 400;
     static final int MIN_PAGE = 1;
 
-    static boolean isValidateInput(List<Integer> input){
+    static boolean isValidateInput(List<Integer> input) {
 
         return !(input.get(1) - input.get(0) != 1
                 || input.get(1) >= MAX_PAGE
@@ -31,8 +31,8 @@ class ValidationFor1{
 }
 
 
-class ScoreController{
-    private static int sumDigits(int num){
+class ScoreController {
+    private static int sumDigits(int num) {
         int result = 0;
 
         while (num != 0) {
@@ -42,7 +42,7 @@ class ScoreController{
         return result;
     }
 
-    private static int mulDigits(int num){
+    private static int mulDigits(int num) {
         int result = 1;
 
         while (num!=0) {
@@ -52,7 +52,7 @@ class ScoreController{
         return result;
     }
 
-    static int calcScore(List<Integer> pageList){
+    static int calcScore(List<Integer> pageList) {
         int result;
         int leftMax = Math.max(sumDigits(pageList.get(0)), mulDigits(pageList.get(0)));
         int rightMax = Math.max(sumDigits(pageList.get(1)), mulDigits(pageList.get(1)));
@@ -61,7 +61,7 @@ class ScoreController{
         return result;
     }
 
-    static int compareScore(int pobiScore, int crongScore){
+    static int compareScore(int pobiScore, int crongScore) {
         if (pobiScore > crongScore) {
             return 1;
         }

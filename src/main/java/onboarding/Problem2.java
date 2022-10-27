@@ -14,21 +14,21 @@ public class Problem2 {
 
 
 class Decryptor {
-    private static String checkNeighbors(char prevChar,char presentChar, char nextChar){
+    private static String checkNeighbors(char prevChar,char presentChar, char nextChar) {
         if (prevChar != presentChar && presentChar != nextChar) {
             return presentChar + "";
         }
         return "";
     }
 
-    private static String checkNeighbors(char thisChar,char compareChar){
+    private static String checkNeighbors(char thisChar,char compareChar) {
         if (thisChar != compareChar) {
             return thisChar + "";
         }
         return "";
     }
 
-    private static StringBuilder deleteDuplicateChars(StringBuilder crypto){
+    private static StringBuilder deleteDuplicateChars(StringBuilder crypto) {
         StringBuilder result = new StringBuilder("");
 
         result.append(checkNeighbors(crypto.charAt(0), crypto.charAt(1)));
@@ -39,7 +39,7 @@ class Decryptor {
         return result;
     }
 
-    static String decrypt(String input){
+    static String decrypt(String input) {
         StringBuilder newStr = new StringBuilder(input);
         StringBuilder resultStr = new StringBuilder("");
 

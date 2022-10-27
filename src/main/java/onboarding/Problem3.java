@@ -8,11 +8,11 @@ public class Problem3 {
 }
 
 class ThreeSixNine {
-    private static boolean is369(int num){
+    private static boolean is369(int num) {
         return (num == 3 || num == 6 || num == 9);
     }
 
-    private static int find369(int num){
+    private static int find369(int num) {
         int result = 0;
 
         while (num!=0) {
@@ -22,7 +22,7 @@ class ThreeSixNine {
         return result;
     }
 
-    static int findTotal369(int num){
+    static int findTotal369(int num) {
         int result = 0;
 
         for (int i = 1; i <= num; i++) {
