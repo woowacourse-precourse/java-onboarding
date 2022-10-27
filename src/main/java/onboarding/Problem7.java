@@ -4,13 +4,18 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem7 {
+    public static final String RELATED = "related";
+    public static final String VISITED = "visited";
+    public static final int RELATED_SCORE = 10;
+    public static final int VISITED_SCORE = 1;
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
         Set<String> friendList = generateFriendList(friends);
         List<String> relatedUserList = generateRelatedUser(friends, user);
         List<String> unknownVisitors = exceptFriend(visitors, friendList);
-//        Map<String,Integer> scoreMap = generateScoreMap();
+        Map<String, Integer> scoreMap = generateScoreMap(relatedUserList, unknownVisitors);
 //        List<Map.Entry<String,Integer>> sortedScoreMap = sortScoreMap();
 //        answer = generateRecommedList();
 
@@ -45,7 +50,28 @@ public class Problem7 {
         return visitors;
     }
 
-//    private static Map<String,Integer> generateScoreMap(){
-//        
-//    }
+    private static Map<String, Integer> generateScoreMap(List<String> relatedUsers, List<String> visitors) {
+        Map<String, Integer> relatedScoreMap = getScore(relatedUsers, RELATED);
+        Map<String, Integer> visitedScoreMap = getScore(visitors, VISITED);
+
+        relatedScoreMap.forEach((key, value) -> visitedScoreMap.merge(key, value, (v1, v2) -> v1 + v2));
+        return visitedScoreMap;
+    }
+
+    private static Map<String, Integer> getScore(List<String> userList, String type) {
+        int score = 0;
+        Map<String, Integer> scoreMap = new HashMap<>();
+        if (type.equals(RELATED)) {
+            score = RELATED_SCORE;
+        }
+
+        if (type.equals(VISITED)) {
+            score = VISITED_SCORE;
+        }
+
+        for (String user : userList) {
+            scoreMap.put(user, scoreMap.getOrDefault(user, 0) + score);
+        }
+        return scoreMap;
+    }
 }
