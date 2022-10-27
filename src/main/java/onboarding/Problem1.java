@@ -23,42 +23,44 @@ import java.util.stream.Stream;
  * */
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        Problem1 problem1 = new Problem1();
         int answer = Integer.MAX_VALUE;
+        int pobiMax = Integer.MAX_VALUE;
+        int crongMax = Integer.MAX_VALUE;
 
+        pobiMax = Integer.max(problem1.calculateScore(pobi.get(0)),problem1.calculateScore(pobi.get(1)));
+        crongMax = Integer.max(problem1.calculateScore(crong.get(0)),problem1.calculateScore(crong.get(1)));
 
+        if(pobiMax > crongMax){
+            answer = 1;
+        }else if(pobiMax < crongMax){
+            answer = 2;
+        }else if(pobiMax == crongMax){
+            answer = 0;
+        }
+        
 
         return answer;
     }
 
     // 입력받은 두 페이지 번호를 가지고 각 자리 숫자를 모두 더한 값, 곱한 값 중 가장 큰 수를 리턴
-    public int calculateScore(int leftPageNum, int rightPageNum){
+    public int calculateScore(int inputNum){
 
-        int sumLeftPageNum = 0;
-        int mulLeftPageNum = 1;
-        int sumRightPageNum = 0;
-        int mulRightPageNum = 1;
+        int sumInputNum = 0;
+        int mulInputNum = 1;
 
-        int[] leftPageNumArray = Stream.of(String.valueOf(leftPageNum).split(""))
+        // inputNum의 각자리 수를 int형 배열에 각각 저장
+        int[] inputNumArray = Stream.of(String.valueOf(inputNum).split(""))
                 .mapToInt(Integer::parseInt)
                 .toArray();
 
-        int[] rightPageNumArray = Stream.of(String.valueOf(rightPageNum).split(""))
-                .mapToInt(Integer::parseInt)
-                .toArray();
-
-        // 각자리 술자를 모두 더하고 곱함
-        for (int pageNum: leftPageNumArray) {
-            sumLeftPageNum += pageNum;
-            mulLeftPageNum *= pageNum;
+        // 각자리 숫자를 모두 더하고 곱함
+        for (int pageNum: inputNumArray) {
+            sumInputNum += pageNum;
+            mulInputNum *= pageNum;
         }
 
-        // 각자리 술자를 모두 더하고 곱함
-        for (int pageNum: rightPageNumArray) {
-            sumRightPageNum += pageNum;
-            mulRightPageNum *= pageNum;
-        }
-
-        return Integer.max(Integer.max(sumLeftPageNum,mulLeftPageNum),Integer.max(sumRightPageNum,mulRightPageNum));
+        return Integer.max(sumInputNum,mulInputNum);
 
     }
 }
