@@ -19,5 +19,11 @@ public class Problem2Test {
 		String result = "rown";
 		assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
 	}
-
+	
+	@Test
+	void duplicateAtLeastThree() {
+		String cryptogram = "bbbrown";
+		String result = "rown";
+		assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+	}
 }
