@@ -9,6 +9,21 @@ package onboarding;
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
+
+        for (int i = 0; i < word.length(); i++) {
+            char c = word.charAt(i);
+
+            if (word.charAt(i) == 32) {
+                answer += c;
+            }
+
+            if (c >= 64 && c <= 90) {
+                answer += (char) ('Z' - c + 65);
+            } else if (c >= 97 && c <= 122) {
+                answer += (char) ('z' - c + 97);
+            }
+        }
+
         return answer;
     }
 }
