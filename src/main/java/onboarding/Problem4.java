@@ -12,7 +12,11 @@ public class Problem4 {
      * @return 대문자 -> true / 소문자 -> false
      */
     public static boolean upperCaseDivision(char word) {
-        return true;
+        if (Character.isUpperCase(word)) {
+            return true;
+        }else {
+            return false;
+        }
     }
 
     /**
