@@ -6,8 +6,11 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
 
-        if (checkValidation(answer)) {
+        if (checkValidation(cryptogram)) {
+            while(checkDuplicateString(cryptogram)) {
 
+            }
+            answer = cryptogram;
         } else {
             answer = "-1";
         }
@@ -24,11 +27,25 @@ public class Problem2 {
         }
 
         // 알파벳 소문자만 들어 있어야 한다.
-        String pattern = "^[a-z]*$";
+        String pattern = "^[a-z]+$";
         if (!Pattern.matches(pattern, inputString)) {
             return false;
         }
 
         return true;
+    }
+
+    private static boolean checkDuplicateString(String inputString) {
+        char previousChar = inputString.charAt(0);
+        char nowChar;
+
+        for(int i = 1; i < inputString.length(); i++) {
+            nowChar = inputString.charAt(i);
+            if (previousChar == nowChar) {
+                return true;
+            }
+            previousChar = nowChar;
+        }
+        return false;
     }
 }
