@@ -15,7 +15,7 @@ public class Problem7 {
 
         Set<String> userFriendSet = friendsList.get(user);
 
-        Map<String, Integer> scores = getFriendScore(friendsList, userFriendSet);
+        Map<String, Integer> scores = getFriendScore(friendsList, userFriendSet, String user);
 
         addVisitScore(scores, visitors);
 
@@ -37,13 +37,16 @@ public class Problem7 {
         map.put(name1, set);
     }
 
-    static Map getFriendScore(Map<String, Set<String>> friendList, Set<String> userFriends){
+    static Map getFriendScore(Map<String, Set<String>> friendList, Set<String> userFriends, String user){
         Map<String, Integer> result = new HashMap<>();
 
         for (String str : userFriends) {
             Iterator<String> it = friendList.get(str).iterator();
             while(it.hasNext()){
                 String name = it.next();
+                if (name.equals(user)) {
+                    continue;
+                }
                 result.put(name, result.getOrDefault(name, 0) + 10);
             }
         }
