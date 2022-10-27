@@ -32,6 +32,21 @@ public class Problem6 {
         return nameToken;
     }
 
+    private static Set<String> checkDuplication(List<List<String>> forms, int index) {
+        Set<String> duplication = new HashSet<>();
+        Set<String> tokenList = new HashSet<>(getNameToken(forms.get(index).get(1)));
+        
+        for (int i = 0; i < forms.size(); i ++) {
+            if (i == index)
+                continue;
+            for (String token: tokenList) {
+                if (forms.get(i).get(1).matches(".*"+token+".*"))
+                    duplication.add(forms.get(i).get(0));
+            }
+        }
+        return duplication;
+    }
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
