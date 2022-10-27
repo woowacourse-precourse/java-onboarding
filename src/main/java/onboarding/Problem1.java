@@ -3,9 +3,17 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+    private static final int RESULT_EXCEPTION = -1;
+
+    private static final int RESULT_TIE = 0;
+
+    private static final int RESULT_WIN_LEFT_PARAM = 1;
+
+    private static final int RESULT_WIN_RIGHT_PARAM = 2;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (pobi.get(0).intValue() + 1 != pobi.get(1).intValue() || crong.get(0).intValue() + 1 != crong.get(1).intValue()) {
-            return -1;
+            return RESULT_EXCEPTION;
         }
 
         int pobiMax = Math.max(
@@ -16,10 +24,10 @@ class Problem1 {
                 Math.max(getPlusRecursive(crong.get(1).intValue()), getMultiplyRecursive(crong.get(1).intValue())));
 
         if (pobiMax - crongMax == 0) {
-            return 0;
+            return RESULT_TIE;
         }
 
-        return pobiMax > crongMax ? 1 : 2;
+        return pobiMax > crongMax ? RESULT_WIN_LEFT_PARAM : RESULT_WIN_RIGHT_PARAM;
     }
 
     private static int getPlusRecursive(int value) {
