@@ -12,8 +12,17 @@ public class Problem7 {
 
         friends.forEach(Problem7::addFriendList);
         friendsMap.get(user).forEach(f -> increaseFriendPoint(f, user));
+        increaseVisitorPoint(visitors, user);
 
         return Collections.emptyList();
+    }
+
+    private static void increaseVisitorPoint(List<String> visitors, String user) {
+        List<String> userFriends = friendsMap.get(user);
+
+        visitors.stream()
+                .filter(v -> !userFriends.contains(v))
+                .forEach( v -> pointMap.put(v, pointMap.getOrDefault(v, 0) + 1 ));
     }
 
     private static void increaseFriendPoint(String friend, String user) {
