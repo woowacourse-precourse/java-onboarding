@@ -8,7 +8,13 @@ public class Problem2 {
     static final int LENGTH_UPPERBOUND = 1000;
     static final int LENGTH_LOWERBOUND = 1;
     static final char SENTINEL = '#';
+
     public static String solution(String cryptogram) {
+        String result = getSolution(cryptogram);
+        return result;
+    }
+
+    public static String getSolution(String cryptogram) {
         if (validationCheck(cryptogram)) {
             while (needToCompress(cryptogram)) {
                 cryptogram = doCompress(cryptogram);
@@ -17,7 +23,6 @@ public class Problem2 {
         }
         return EXCEPTION;
     }
-
     public static boolean validationCheck(String cryptogram) {
         if (cryptogram.length() > LENGTH_UPPERBOUND || cryptogram.length() < LENGTH_LOWERBOUND) {
             return false;
