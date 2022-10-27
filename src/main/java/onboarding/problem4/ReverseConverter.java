@@ -13,7 +13,7 @@ public class ReverseConverter {
     public static String convert(String word){
         StringBuilder stringBuilder = new StringBuilder();
         char convertedChar;
-        for(int i=word.length()-1; i>=0; i--){
+        for(int i=0; i<word.length(); i++){
             convertedChar = convert(word.charAt(i));
             stringBuilder.append(convertedChar);
         }
