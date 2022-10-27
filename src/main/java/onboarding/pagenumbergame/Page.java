@@ -11,7 +11,7 @@ public class Page {
 		this.pageNumbers = pageNumbers;
 	}
 
-	int getMaximumNumber(int pageNumber) {
+	int getMaximumNumberFrom(int pageNumber) {
 		int sumOfDigits = calculate(pageNumber, Integer::sum);
 		int productOfDigits = calculate(pageNumber, (n1, n2) -> n1 * n2);
 		return Math.max(sumOfDigits, productOfDigits);
