@@ -18,7 +18,7 @@ class Problem1 {
         return answer;
     }
 
-    public int findLargeNumber(List<Integer> name){
+    public int findLargeNumber(List<Integer> name) {
         Problem1 problem = new Problem1();
         int maxnumber = 0;
 
@@ -39,7 +39,7 @@ class Problem1 {
         return maxnumber;
     }
 
-    public int largeValueEachNum(int number){
+    public int largeValueEachNum(int number) {
         int sumnum = 0;
         int multiplenum = 1;
         int maxnumber = 0;
@@ -60,7 +60,7 @@ class Problem1 {
         return maxnumber;
     }
 
-    public int resultOutput(int pobinumber, int crongnumber){
+    public int resultOutput(int pobinumber, int crongnumber) {
         int result = 0;
 
         if(pobinumber == crongnumber) {
