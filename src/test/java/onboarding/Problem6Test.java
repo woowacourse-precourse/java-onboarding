@@ -14,6 +14,33 @@ import org.junit.jupiter.api.Test;
 class Problem6Test {
 
 	@Test
+	void integrationTest() {
+		// given
+		List<List<String>> forms = List.of(
+			List.of("jm@email.com", "제이엠"),
+			List.of("jason@email.com", "제이슨"),
+			List.of("woniee@email.com", "워니"),
+			List.of("mj@email.com", "엠제이"),
+			List.of("nowm@email.com", "이제엠"),
+			List.of("ganada@email.com", "가나다"),
+			List.of("nadara@email.com", "나다라"),
+			List.of("darama@email.com", "다라마")
+		);
+
+		// when
+		List<String> duplicatedUserEmailAscendingList = Problem6.solution(forms);
+
+		// then
+		assertThat(duplicatedUserEmailAscendingList.size()).isEqualTo(6);
+		assertThat(duplicatedUserEmailAscendingList.get(0)).isEqualTo("darama@email.com");
+		assertThat(duplicatedUserEmailAscendingList.get(1)).isEqualTo("ganada@email.com");
+		assertThat(duplicatedUserEmailAscendingList.get(2)).isEqualTo("jason@email.com");
+		assertThat(duplicatedUserEmailAscendingList.get(3)).isEqualTo("jm@email.com");
+		assertThat(duplicatedUserEmailAscendingList.get(4)).isEqualTo("mj@email.com");
+		assertThat(duplicatedUserEmailAscendingList.get(5)).isEqualTo("nadara@email.com");
+	}
+
+	@Test
 	void getStringEmailHashMapTest() {
 		// given
 		List<List<String>> forms = List.of(
