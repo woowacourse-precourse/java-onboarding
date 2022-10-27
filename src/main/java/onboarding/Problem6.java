@@ -14,16 +14,7 @@ public class Problem6 {
 				.collect(Collectors.toList());
 
 		for (User user : userList) {
-			String nickname = user.nickname;
-			for (int i = 1; i < nickname.length(); i++) {
-				int ptr1 = 0;
-				int ptr2 = i + 1;
-				while (ptr2 <= nickname.length()) {
-					blacklist.add(nickname.substring(ptr1, ptr2));
-					ptr1++;
-					ptr2++;
-				}
-			}
+			blacklist.addAll(user.getDuplicateNicknameTokens());
 		}
 		System.out.println(blacklist);
 
@@ -37,6 +28,20 @@ public class Problem6 {
 		public User(List<String> form) {
 			this.email = form.get(0);
 			this.nickname = form.get(1);
+		}
+
+		public Set<String> getDuplicateNicknameTokens() {
+			Set<String> duplicateTokens = new HashSet<>();
+			for (int i = 1; i < nickname.length(); i++) {
+				int ptr1 = 0;
+				int ptr2 = i + 1;
+				while (ptr2 <= nickname.length()) {
+					duplicateTokens.add(nickname.substring(ptr1, ptr2));
+					ptr1++;
+					ptr2++;
+				}
+			}
+			return duplicateTokens;
 		}
 	}
 }
