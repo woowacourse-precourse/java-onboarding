@@ -258,7 +258,7 @@ class ApplicationTest {
         @DisplayName("일 백원 테스트")
         void testFor100Won() {
             int money = 200;
-            List<Integer> expected = List.of(0, 0, 0, 0, 0, 1, 0, 0, 0);
+            List<Integer> expected = List.of(0, 0, 0, 0, 0, 2, 0, 0, 0);
             Assertions.assertIterableEquals(expected, Problem5.solution(money), "shoud return 2 of 100");
         }
         @Test
