@@ -30,5 +30,24 @@ class Problem1 {
 
             return true;
         }
+
+        /* 주어진 한개의 페이지가 1~400인지 확인하는 메서드 */
+        private boolean confirmRange(int page) {
+            if (page >= 1 && page <=400){
+                return true;
+            }
+
+            return false;
+        }
+
+        /* confirmRange 메서드를 이용해서 4개의 페이지를 검사하는 메서드 */
+        private boolean checkPageRange() {
+            if (confirmRange(pobiLeftPage) && confirmRange(pobiRightPage)
+                && confirmRange(crongLeftPage) && confirmRange(crongRightPage)) {
+                return true;
+            }
+
+            return false;
+        }
     }
 }
