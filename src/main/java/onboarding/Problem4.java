@@ -12,6 +12,11 @@ public class Problem4 {
 
         basic_word = word.split("");
 
+        boolean frog = validation(word);
+        if (!frog) {
+            return "";
+        }
+
         // 해시맵에 청개구리 언어 저장
         HashMap<String, String> convert = new HashMap<>();
 
@@ -34,5 +39,13 @@ public class Problem4 {
             answer = answer + now_value;
         }
         return answer;
+    }
+
+    private static boolean validation(String word) {
+        // 1미만, 10000 초과
+        if(word.length() < 1 || word.length() > 1000) {
+            return false;
+        }
+        return true;
     }
 }
