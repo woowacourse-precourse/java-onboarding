@@ -2,27 +2,40 @@ package onboarding;
 
 
 public class Problem4 {
+    static final String EXCEPTION = "[ERROR]";
+    static final int LENGTH_UPPERBOUND = 1000;
+    static final int LENGTH_LOWERBOUND = 1;
+    static final char A_LOWERCASE = 'a';
+    static final char A_UPPERCASE = 'A';
+    static final char Z_LOWERCASE = 'z';
+    static final char Z_UPPERCASE = 'Z';
+
     public static String solution(String word) {
+        String solution = getSolution(word);
+        return solution;
+    }
+    public static String getSolution(String word) {
         if (checkValidation(word)) {
             String result = changeWord(word);
             return result;
         }
-        return "[ERROR]";
+        return EXCEPTION;
     }
     public static boolean checkValidation(String word) {
-        if (word.length() > 1000 || word.length() < 1) {
+        if (word.length() > LENGTH_UPPERBOUND || word.length() < LENGTH_LOWERBOUND) {
             return false;
         }
         return true;
     }
     public static char changeAlphabet(char character) {
-        if ((character < 'a' || character > 'z') && (character < 'A' || character > 'Z')) {
+        if ((character < A_LOWERCASE || character > Z_LOWERCASE) &&
+                (character < A_UPPERCASE || character > Z_UPPERCASE)) {
             return character;
         }
-        if (character < 'Z') {
-            return (char)('Z' - character + 'A');
+        if (character < Z_UPPERCASE) {
+            return (char)(Z_UPPERCASE - character + A_UPPERCASE);
         }
-        return (char)('z' - character + 'a');
+        return (char)(Z_LOWERCASE - character + A_LOWERCASE);
     }
     public static String changeWord(String word) {
         String newWord = "";
@@ -34,10 +47,3 @@ public class Problem4 {
     }
 }
 
-
-/*
-1. 입력 조건에 맞지 않는 경우 예외처리 기능
-2. 알파벳을 변환하는 기능
-- (예외) 알파벳 외의 문자는 변환하지 않음
-3. word을 변환하는 기능
-* */
