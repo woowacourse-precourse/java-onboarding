@@ -35,4 +35,9 @@ class Problem1 {
         }
         return mul;
     }
+
+    static List<int> mapToSum(List<int> intList) {
+        intList.replaceAll(i -> sumDigits(i));
+        return intList;
+    }
 }
