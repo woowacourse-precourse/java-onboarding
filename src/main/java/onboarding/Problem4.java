@@ -5,4 +5,7 @@ public class Problem4 {
         String answer = "";
         return answer;
     }
+    private static boolean isUpperCase(char c) {
+        return c >= 'A' && c <= 'Z';
+    }
 }
