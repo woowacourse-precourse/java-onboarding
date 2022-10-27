@@ -9,6 +9,16 @@ public class Problem3 {
 		return false;
 	}
 
+	public static int count369(String fullNumber) {
+		int count = 0;
+		for (int i = 0; i<fullNumber.length(); i++) {
+			if (check369(fullNumber.charAt(i))) {
+				count += 1;
+			}
+		}
+		return count;
+	}
+
     public static int solution(int number) {
         int answer = 0;
         return answer;
