@@ -3,8 +3,34 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+
+    // 포비와 크롱의 승부 결과를 출력하는 메소드
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+
+        if (!isContinuous(pobi) || !isContinuous(crong)) {
+            answer = -1;
+        }
+
+        if (pobi.size() != 2 || crong.size() != 2) {
+            answer = -1;
+        }
+
+        int pobi_max = maxPageNumber(pobi);
+        int crong_max = maxPageNumber(crong);
+
+        if (pobi_max < crong_max) {
+            answer = 2;
+        }
+
+        if (pobi_max > crong_max) {
+            answer = 1;
+        }
+
+        if (pobi_max == crong_max) {
+            answer = 0;
+        }
+
         return answer;
     }
 
