@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -68,4 +69,16 @@ class Problem1 {
         return userScore;
     }
 
+}
+
+class Answers {
+    private final Map<String,Integer> answers;
+
+    public Answers(Map<String, Integer> answers) {
+        this.answers = answers;
+    }
+
+    public int getAnswerByGameResult(String gameResult) {
+        return answers.get(gameResult);
+    }
 }
