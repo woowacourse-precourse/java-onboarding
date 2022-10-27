@@ -2,14 +2,36 @@ package onboarding.problem6;
 
 import java.util.*;
 
+import static onboarding.problem6.ValidationForms.*;
+
 public class CrewService {
 
-    public List<String> checkCrew(List<List<String>> forms) {  // crew의 닉네임을 체크
-        return null;
+    private final NicknameCheckService nicknameCheckService;
+
+    public CrewService(NicknameCheckService nicknameCheckService) {
+        this.nicknameCheckService = nicknameCheckService;
     }
 
-    private Map<String, String> getCrewInfo(List<List<String>> forms) {
-        return null;
+    public List<String> checkCrew(List<List<String>> forms) {
+        validateSize(forms.size());  // 크루 1명 이상 10,000명 이하
+
+        List<Crew> crewList = getCrewList(forms);
+        validateCrewInfo(crewList);  // 크루 정보 검증
+
+        return nicknameCheckService.getDuplicateCrewEmail(crewList);
+    }
+
+    private List<Crew> getCrewList(List<List<String>> forms) {
+        List<Crew> crewList = new ArrayList<>();
+
+        for (List<String> form : forms) {
+            String email = form.get(0);
+            String nickname = form.get(1);
+
+            crewList.add(new Crew(email, nickname));
+        }
+
+        return crewList;
     }
 
 }

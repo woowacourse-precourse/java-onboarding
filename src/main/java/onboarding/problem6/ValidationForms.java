@@ -2,6 +2,7 @@ package onboarding.problem6;
 
 import java.util.*;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class ValidationForms {
 
@@ -14,12 +15,18 @@ public class ValidationForms {
         }
     }
 
-    public static void validateCrewInfo(Map<String, String> crewInfo) {
-        validateEmail(crewInfo.keySet());
-        validateNickname(crewInfo.values());
+    public static void validateCrewInfo(List<Crew> crewList) {
+        validateEmail(crewList.stream()
+                .map(Crew::getEmail)
+                .collect(Collectors.toList()));
+
+
+        validateNickname(crewList.stream()
+                .map(Crew::getNickname)
+                .collect(Collectors.toList()));
     }
 
-    private static void validateEmail(Set<String> crewEmails) {
+    private static void validateEmail(List<String> crewEmails) {
         final String domain = "@email.com";
 
         for (String crewEmail : crewEmails) {
@@ -37,7 +44,7 @@ public class ValidationForms {
         }
     }
 
-    private static void validateNickname(Collection<String> nicknames) {
+    private static void validateNickname(List<String> nicknames) {
         String regex = String.valueOf(Pattern.compile("^[ㄱ-ㅎㅏ-ㅣ가-힣]*$"));
 
         for (String nickname : nicknames) {
