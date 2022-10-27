@@ -24,4 +24,15 @@ class Problem1Test {
         }
         return numArr;
     }
+
+    @Test
+    void 더하기() {
+        List<Integer> list = Arrays.asList(9,7);
+        assertThat(plus(list)).isEqualTo(16);
+    }
+    static int plus(List<Integer> nums) {
+        int plus = 0;
+        for(int i : nums) plus += i;
+        return plus;
+    }
 }
