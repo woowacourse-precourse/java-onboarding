@@ -82,6 +82,21 @@ class ApplicationTest {
             String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
+
+        @Test
+        void case3() {
+            String cryptogram = "";
+            String result = "";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void case4() {
+            StringBuilder cryptogram = new StringBuilder("a");
+            cryptogram.append("a".repeat(999));
+            String result = "";
+            assertThat(Problem2.solution(cryptogram.toString())).isEqualTo(result);
+        }
     }
 
     @Nested
