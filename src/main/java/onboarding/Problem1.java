@@ -8,18 +8,26 @@ class Problem1 {
         int pobiScore = 0;
         int crongScore = 0;
         
-        int getScore(int n) {
+        return answer;
+    }
+        static int getSum(int n) {
             int sum = 0;
-            int multiply = 1;
-
+    
             while (n != 0) {
                 sum += n % 10;
+                n /= 10;
+            }
+    
+            return sum;
+        }
+        
+        static int getMultiply(int n) {
+            int multiply = 1;
+            while (n != 0) {
                 multiply *= n % 10;;
                 n /= 10;
             }
-
-        return answer;
-        
+            return multiply;
+        }
     }
-}
-}
+
