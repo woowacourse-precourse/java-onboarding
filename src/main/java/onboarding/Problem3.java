@@ -5,4 +5,10 @@ public class Problem3 {
         int answer = 0;
         return answer;
     }
+
+    public static char[] numberToCharArray(int number) {
+        char[] charNumbers = String.valueOf(number).toCharArray();
+
+        return charNumbers;
+    }
 }
