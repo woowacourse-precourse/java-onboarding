@@ -35,7 +35,8 @@ public class Problem6 {
 
             String nickname = forms.get(i).get(1);
             // TODO : indent 2 넘지 않도록 함수 분리
-            for (String part : partList) {
+            for (int j = 0; j < partList.size(); j++) {
+                String part = partList.get(j);
                 if (nickname.contains(part)) {
                     return true;
                 }
