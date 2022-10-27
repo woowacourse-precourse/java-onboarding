@@ -19,4 +19,8 @@ public class AlphabetConverter {
                 .mapToObj(number -> (char) (90 - number))
                 .collect(Collectors.toList());
     }
+    
+    public static char convert(final char alphabet) {
+        return UPPERCASE_LETTERS.get(alphabet - 'A');
+    }
 }
