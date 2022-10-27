@@ -9,8 +9,8 @@
 | Z | Y | X | W | V | U | T | S | R | Q | P | O | N | M | L | K | J | I | H | G | F | E | D | C | B | A |
 
 ### 정리
-1. AbnormalDictionary class 생성
-2. 입력값을 변환할 transform 메서드 생성
+1. 청개구리 사전인 AbnormalDictionary class 생성
+2. 입력값을 변환할 Transformer class 생성
 3. char 파라미터를 청개구리 사전을 참고해 변환하여 return 하는 메서드 작성
 
 
