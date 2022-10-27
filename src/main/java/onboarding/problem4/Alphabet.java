@@ -16,19 +16,22 @@ public class Alphabet {
 	}
 
 	public char getFlipped() {
-		int alphabeticOrder = getAlphabeticOrderOf(character);
-		int flippedOrder = getFlippedAlphabeticOrder(alphabeticOrder);
+		int flippedAlphabeticOrder = flipAlphabeticOrder(getAlphabeticOrderOf(character));
 		if (isUpperCase(character)) {
-			return (char)(ALPHABET_CAPITAL_A + flippedOrder);
+			return castCodePoint(ALPHABET_CAPITAL_A + flippedAlphabeticOrder);
 		}
-		return (char)(ALPHABET_SMALL_A + flippedOrder);
+		return castCodePoint(ALPHABET_SMALL_A + flippedAlphabeticOrder);
+	}
+
+	private int flipAlphabeticOrder(int order) {
+		return (ALPHABETIC_ORDER_Z - order) % ALPHABET_COUNT;
 	}
 
 	private int getAlphabeticOrderOf(char character) {
 		return toLowerCase(character) - ALPHABET_SMALL_A;
 	}
 
-	private int getFlippedAlphabeticOrder(int order) {
-		return (ALPHABETIC_ORDER_Z - order) % ALPHABET_COUNT;
+	private char castCodePoint(int codePoint) {
+		return (char)codePoint;
 	}
 }
