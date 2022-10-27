@@ -8,6 +8,15 @@ class Problem1 {
         return answer;
     }
 
+    static int add_digits(int number){
+        String number_to_string = Integer.toString(number);
+        int result = 0;
+        for(int i=0; i<number_to_string.length(); i++){
+            result += number_to_string.charAt(i) - '0';
+        }
+        return result;
+    }
+
     static boolean invalid(List<Integer> list){
         int left = list.get(0);
         int right = list.get(1);
