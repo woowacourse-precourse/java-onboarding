@@ -61,6 +61,13 @@ class Problem1 {
         }
         return result;
     }
+    public static boolean checkNumberRange(int number){
+        boolean result = true;
+        if(number < MIN_PAGE || number > MAX_PAGE){
+            result = false;
+        }
+        return result;
+    }
 
     public static boolean checkValidity(List<Integer> player){
         boolean result = true;
@@ -75,16 +82,16 @@ class Problem1 {
         number1 = player.get(0);
         number2 = player.get(1);
 
-        if(number1 < MIN_PAGE || number1 > MAX_PAGE){
+        if(!checkNumberRange(number1)){
             result = false;
         }
-        if(number2 < MIN_PAGE || number2 > MAX_PAGE){
+        if(!checkNumberRange(number2)){
             result = false;
         }
-        if(number2 - number1 != 1){
+        if(number2 - number1 != 1){ //페이지 간격 예외 확인
             result = false;
         }
-        if(number1 % 2 == 0 && number2 % 2 == 1){
+        if(number1 % 2 == 0 && number2 % 2 == 1){ //페이제 홀수 짝수 예외 확인
             result = false;
         }
         return result;
