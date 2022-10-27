@@ -12,7 +12,12 @@ public class Problem4 {
             put('U', 'F'); put('V', 'E'); put('W', 'D'); put('X', 'C'); put('Y', 'B'); put('Z', 'A');
         }
     };
-    
+
+    public static boolean checkAlphabet(Character ch){
+        if( (ch >= 'a' && ch <='z') || (ch >= 'A' && ch <='Z') ) return true;
+        return false;
+    }
+
     public static String solution(String word) {
 
         return "";
