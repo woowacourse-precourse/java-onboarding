@@ -22,6 +22,17 @@ class Problem1 {
         int crongLeftPage = crong.get(0);
         int crongRightPage = crong.get(1);
 
+        // 포비의 결과 리스트를 구한다.
+        List<Integer> pobiResultList = List.of(getSumValue(pobiLeftPage), getSumValue(pobiRightPage),
+                getMultiplyValue(pobiLeftPage), getMultiplyValue(pobiRightPage));
+
+        int pobiScore = getMaxValue(pobiResultList);
+        
+        // 크롱의 결과 리스트를 구한다.
+        List<Integer> crongResultList = List.of(getSumValue(crongLeftPage), getSumValue(crongRightPage),
+                getMultiplyValue(crongLeftPage), getMultiplyValue(crongRightPage));
+
+        int crongScore = getMaxValue(crongResultList);
 
         return answer;
     }
@@ -132,6 +143,21 @@ class Problem1 {
         String[] digitStrArr = String.valueOf(page).split("");
 
         return Stream.of(digitStrArr).mapToInt(Integer::parseInt).toArray();
+    }
+
+    /**
+     * 페이지 번호에 따른 자리수 계산 결과 중 가장 큰 값을 리턴한다.
+     *
+     * @param resultArr 자리수 계산 결과를 담은 리스트
+     * @return 가장 큰 값
+     */
+    private static int getMaxValue(List<Integer> resultArr) {
+        int maxVal = 0;
+        for(int resultVal : resultArr) {
+            maxVal = Math.max(maxVal, resultVal);
+        }
+
+        return maxVal;
     }
 
 }
