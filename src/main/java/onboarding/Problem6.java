@@ -4,6 +4,7 @@
  * 2,크루는 1명 이상 10000명 이하 = 가변적, 시간 복잡도 계산
  *  - 숫자 변화에 따른 유동적인 코드 작성
  *  - ??? 시간복잡도를 고려 해본다 ????
+ * 
  * 3,전체의 길이가 11자 이상 20자 미만인지 확인 (이메일은 이메일 형식에 부합 해야한다.)
  *  - 3번 보다 4번을 먼저 판단한다.
  *  - 길이의 참과 거짓을 판단하는 메소드 작성
@@ -40,17 +41,27 @@ public class Problem6 {
         }
         return false;
     }
+    // public static boolean Hangeul_check(String nickname){
+
+    // }
            
     public static void main(String[] args){
         String[][] email = {{"jm@email.com", "제이엠"},{"jason@email.com", "제이슨"},{"woniee@email.com", "워니"},{"mj@email.com", "엠제이"},{"nowm@email.com", "이제엠"}};
         for(int i = 0; i < email.length;i++){
-        if (email_check(email[i][0]) && email_lenght_check(email[i][0])){
+        if ( (email_check(email[i][0])) && (email_lenght_check(email[i][0]))){
             System.out.print("성공");
         }
         else{
             System.out.print("실패");
         }
-    }
+        // for(int j = 0; j < email.length;j++){
+        //     if (Hangeul_check(email[j][1])){
+        //         System.out.print("성공");
+        //     }
+        //     else{
+        //         System.out.print("실패");
+        //     }
+        // }
             // String target = "@";
             // int target_num = email[i][0].indexOf(target);
             
@@ -67,3 +78,4 @@ public class Problem6 {
             // }
         }
     }
+}
