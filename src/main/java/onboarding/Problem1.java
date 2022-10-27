@@ -5,6 +5,7 @@ import java.util.stream.Stream;
 
 class Problem1 {
 
+
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
 		int answer = Integer.MAX_VALUE;
 
@@ -29,18 +30,17 @@ class Problem1 {
 	}
 
 
-	/*
-	기능 1
-	각 자리 숫자를 배열로 만드는 기능
-	* */
+	/**
+	 * 기능 1 각 자리 숫자를 배열로 만드는 기능
+	 */
 	public static int[] makeArrayOfNum(int num) {
 		return Stream.of(String.valueOf(num).split("")).mapToInt(Integer::parseInt).toArray();
 		// Int -> Stream<String> -> Stream<Integer> -> Array
 	}
-    /*
-    기능 2
-    왼쪽 페이지 숫자 배열과 오른쪽 페이지 숫자 배열이 주어졌을때, 최댓값을 구하는 기능
-    * */
+
+	/**
+	 * 기능 2 왼쪽 페이지 숫자 배열과 오른쪽 페이지 숫자 배열이 주어졌을때, 최댓값을 구하는 기능
+	 */
 
 	public static int findMaxValue(int[] leftNum, int[] rightNum) {
 		int maxValue = 0; // 각 자리 수를 더했을 때, 최솟값이 1이므로 0으로 초기화
@@ -68,10 +68,9 @@ class Problem1 {
 		return maxValue;
 	}
 
-    /*
-    기능 3
-    점수를 비교해 승자 값을 리턴하는 기능
-    * */
+	/**
+	 * 기능 3 점수를 비교해 승자 값을 리턴하는 기능
+	 */
 
 	public static int compareScore(int scoreOfPobi, int scoreOfCrong) {
 		if (scoreOfPobi > scoreOfCrong) {
@@ -83,14 +82,59 @@ class Problem1 {
 		}
 	}
 
-	/*
-	기능 4
-	페이지가 주어졌을 때, 예외사항을 판단하는 기능
+	/**
+	 * 기능 4 페이지가 주어졌을 때, 예외사항을 판단하는 기능
 	 */
 	public static boolean validatePage(List<Integer> pobi, List<Integer> crong) {
-		if (pobi.get(0) + 1 == pobi.get(1) && crong.get(0) + 1 == crong.get(1)) // 왼쪽 페이지에 1을 더해서 오른쪽 페이지 숫자가 나오는 경우를 포비와 크롱 모두 통과하면 true
-			return true;
+		int leftPageOfPobi = pobi.get(0);
+		int rightPageOfPobi = pobi.get(1);
+		int leftPageOfCrong = crong.get(0);
+		int rightPageOfCrong = crong.get(1);
 
+		if (!leftPageOddValidation(leftPageOfPobi) || !leftPageOddValidation(leftPageOfCrong)) {
+			return false;
+		}
+		if (!rightPageNumberValidation(leftPageOfPobi, rightPageOfPobi)
+			|| !rightPageNumberValidation(leftPageOfCrong, rightPageOfCrong)) {
+			return false;
+		}
+		if (!nullPageValidation(leftPageOfPobi, rightPageOfPobi)
+			|| !nullPageValidation(leftPageOfCrong, rightPageOfCrong)) {
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * 기능 5 왼쪽 페이지는 홀수만 올 수 있다.
+	 */
+	public static boolean leftPageOddValidation(Integer page) {
+		if (page % 2 == 1) {
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * 기능 6 오른쪽 페이지는 왼쪽 페이지 수의 1을 더한 것과 같아야한다.
+	 */
+	public static boolean rightPageNumberValidation(Integer leftPage, Integer rightPage) {
+		if (leftPage + 1 == rightPage) {
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * 기능 7 왼쪽 페이지와 오른쪽 페이지는 시작 면 또는 마지막 면이 될 수 없다.(시작 면과 마지막 면을 NULL로 생각함)
+	 */
+	public static boolean nullPageValidation(Integer leftPage, Integer rightPage) {
+		if (leftPage != null || rightPage != null) {
+			return true;
+		}
 		return false;
 	}
 
