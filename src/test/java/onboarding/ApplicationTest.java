@@ -139,7 +139,9 @@ class ApplicationTest {
                     List.of("shakevan", "seri"),
                     List.of("shakevan", "uazi"),
                     List.of("shakevan", "mrko"),
-                    List.of("jun", "mrko")
+                    List.of("jun", "mrko"),
+                    List.of("jun", "uni"),
+                    List.of("kevin", "donut")
             );
             List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
             List<String> result = List.of("andole", "jun", "bedi");

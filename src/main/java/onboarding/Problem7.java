@@ -31,8 +31,12 @@ public class Problem7 {
 
         tmpArray = sortList();
 
-        answer = getKey(tmpArray ,saveSortCheckPoint(tmpArray));
+        System.out.println(friendsPointMap);
 
+        List<String> recommedList = getKey(tmpArray ,saveSortCheckPoint(tmpArray));
+
+
+        Collections.nCopies(recommendNum, recommedList);
         return answer;
     }
 
@@ -133,17 +137,14 @@ public class Problem7 {
         int length;
         List<String> recommendFriendsList = new ArrayList<>();
 
-        length = Math.min(recommendNum, valueList.length);
 
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i < valueList.length; i++) {
             for (String key : friendsPointMap.keySet()) {
                 if (valueList[i] == friendsPointMap.get(key)) {
                     if (recommendFriendsList.contains(key))
                         continue;
                     recommendFriendsList.add(key);
                     cnt++;
-                    if (i == length - 1)
-                        continue;
                     if (cnt == checkPoint.get(checkpointLength))
                     {
                         Collections.sort(recommendFriendsList);
