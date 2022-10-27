@@ -9,4 +9,14 @@ public class Problem3 {
         int answer = 0;
         return answer;
     }
+
+    private static int count369(String s) {
+        int cnt = 0;
+        for (int i = 0; i < s.length(); ++i) {
+            if (s.charAt(i) == '3' || s.charAt(i) == '6' || s.charAt(i) == '9') {
+                cnt += 1;
+            }
+        }
+        return cnt;
+    }
 }
