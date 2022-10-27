@@ -45,8 +45,13 @@ class Crew {
 
 public class Problem6 {
 
+    static List<Crew> crews = new ArrayList<>();
+    static Map<String, Set<String>> totalTokens = new HashMap<>(); // 모든 crew의 토큰을 관리
+    static List<String> answer = new ArrayList<>();
+
     public static List<String> solution(List<List<String>> forms) {
 
+        return answer;
     }
 
     public static void initCrews(List<List<String>> forms) {
@@ -54,7 +59,10 @@ public class Problem6 {
             crews.add(new Crew(form.get(0), form.get(1)));
     }
 
-    
+    public static void putTokens() {
+        for (Crew crew : crews)
+            totalTokens.put(crew.getNickname(), crew.getTokens());
+    }
 }
 
 
