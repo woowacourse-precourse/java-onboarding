@@ -16,4 +16,8 @@ class AlphabetController{
     private static boolean isUpperAlpha(char alpha){
         return ((int)alpha >= UPPER_START_INDEX && (int)alpha <= UPPER_END_INDEX);
     }
+
+    private static boolean isLowerAlpha(char alpha){
+        return ((int)alpha >= LOWER_START_INDEX && (int)alpha <= LOWER_END_INDEX);
+    }
 }
