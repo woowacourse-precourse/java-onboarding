@@ -26,6 +26,8 @@ class Problem1 {
             return -1;
         } else if (validatePlusOne(pobi) || validatePlusOne(crong)) {
             return -1;
+        } else if (validateEvenAndOdd(pobi) || validateEvenAndOdd(crong)) {
+            return -1;
         }
 
         List<Integer> pobiEachNumbers = getEachDigitNumber(pobi);
@@ -41,6 +43,10 @@ class Problem1 {
 
         return answer;
 
+    }
+
+    private static boolean validateEvenAndOdd(List<Integer> check) {
+        return !(check.get(0) % 2 == 1 && check.get(1) % 2 == 0);
     }
 
     private static boolean validatePlusOne(List<Integer> check) {
