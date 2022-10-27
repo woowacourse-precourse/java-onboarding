@@ -8,6 +8,7 @@ class Problem1 {
         return answer;
     }
 
+    //기능 1
     public static int bigPage(int page1, int page2){
         int answer = 0;
         if(page1 > page2)
@@ -18,6 +19,7 @@ class Problem1 {
         return answer;
     }
 
+    //기능 2
     public static boolean exception(List<Integer> pages){
         boolean answer = false;
 
@@ -33,6 +35,39 @@ class Problem1 {
             answer = true;
         }else if(left<1 || right>400){
             answer = true;
+        }
+
+        return answer;
+    }
+
+    //기능 3
+    public static int summulPage(int page){
+        int answer = 0;
+        int hundred, ten, one;
+        int na;
+        int sum, mul;
+
+        if(page>=100){
+            na = page%100;
+
+            hundred = page/100;
+            ten = na/10;
+            one = na%10;
+
+            sum = hundred + ten + one;
+            mul = hundred * ten * one;
+
+            answer = bigPage(sum, mul);
+        }else if(page >= 10){
+            ten = page/10;
+            one = page%10;
+
+            sum = ten + one;
+            mul = ten * one;
+
+            answer = bigPage(sum, mul);
+        }else{
+            answer = page;
         }
 
         return answer;
