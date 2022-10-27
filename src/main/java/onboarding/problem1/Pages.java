@@ -55,7 +55,7 @@ public class Pages {
     }
 
     private int calculateEachDigitByMultiply(int pageNumber) {
-        int result = 0;
+        int result = 1;
         int target = pageNumber;
         while (target > 0) {
             result *= target % 10;
