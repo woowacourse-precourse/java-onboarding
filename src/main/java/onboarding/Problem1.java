@@ -7,6 +7,9 @@ class Problem1 {
         int pobiScore= 0;
         int crongScore= 0;
 
+        if(pobi.get(0)+1 != pobi.get(1) || crong.get(0)+1 != crong.get(1))
+            return -1;
+
         for(int i=0; i<2; i++){
             int num = pobi.get(i);
             pobiScore = pobiScore>plus(num)? pobiScore: plus(num)>multiply(num)? plus(num) :multiply(num);
