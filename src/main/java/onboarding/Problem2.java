@@ -17,7 +17,13 @@ public class Problem2 {
     }
     
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        StringBuilder answer = new StringBuilder(cryptogram);
+        
+        int[] result;
+        do{
+            result = findDupliIndex(answer);
+        } while (result[0] < answer.length() - 1 && answer.delete(result[0], result[1]) != null);
+
+        return answer.toString();
     }
 }
