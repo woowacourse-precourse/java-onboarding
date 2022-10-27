@@ -42,6 +42,20 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
-        return answer;
+        if(checkPage(pobi)&&checkPage(crong)) {
+            int pobiNum=getMaxNum(addOrMultiply(pobi.get(0)),addOrMultiply(pobi.get(1)));
+            int crongNum=getMaxNum(addOrMultiply(crong.get(0)),addOrMultiply(crong.get(1)));
+
+            if(pobiNum>crongNum)
+                answer=1;
+            else if(pobiNum<crongNum)
+                answer=2;
+            else
+                answer=0;
+
+            return answer;
+        }
+        else
+            return -1;
     }
 }
