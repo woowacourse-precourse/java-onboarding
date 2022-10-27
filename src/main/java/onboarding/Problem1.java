@@ -25,5 +25,20 @@ public class Problem1 {
         }
         return false;
     }
-
+    public static int sum(int n) {
+        int ret = 0;
+        while (n > 0) {
+            ret += n % 10;
+            n /= 10;
+        }
+        return ret;
+    }
+    public static int mul(int n) {
+        int ret = 1;
+        while (n > 0) {
+            ret *= n % 10;
+            n /= 10;
+        }
+        return ret;
+    }
 }
