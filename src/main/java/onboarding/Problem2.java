@@ -16,4 +16,11 @@ public class Problem2 {
     }
     return true;
   }
+
+  public static boolean isAllowedStringLength(String cryptogram) throws IllegalStateException {
+    if (cryptogram.length() < 1 || cryptogram.length() > 10) {
+      throw new IllegalStateException("1 ~ 4000자 길이의 문자열이 아닙니다.");
+    }
+    return true;
+  }
 }
