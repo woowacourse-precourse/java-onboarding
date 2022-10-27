@@ -11,4 +11,17 @@ public class Problem3 {
         int answer = 0;
         return answer;
     }
+
+    public static int countNumber(int number){
+        int count = 0;
+        while(number != 0){
+            int mod = number % 10;
+            number /= 10;
+            if(mod == 3 || mod == 6 || mod == 9){
+                count++;
+            }
+        }
+        return count;
+    }
+
 }
