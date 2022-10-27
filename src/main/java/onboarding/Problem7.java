@@ -4,6 +4,11 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+
+        ListGraph friendGraph = new ListGraph();
+        friends.forEach(list -> friendGraph.put(new User(list.get(0)), new User(list.get(1))));
+        User targetUser = friendGraph.getUser(new User(user));
+
         List<String> answer = Collections.emptyList();
         return answer;
     }
