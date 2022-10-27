@@ -11,6 +11,16 @@ public class Problem4 {
      * 공백 = 0 소문자 = 1 대문자 = 2 로 배열을 반환해주는 함수
      */
 
+    static int[] check_alpha(String word) {
+        int[] word_array = new int[word.length()];
+
+        for (int i=0;i<word.length();i++) {
+            int ascii = word.charAt(i);
+            word_array[i] = upper_lower_case(ascii);
+        }
+
+        return word_array;
+    }
 
     /**
      * 해당 아스키 넘버가 대문자인지 소문자인지 공백인지
