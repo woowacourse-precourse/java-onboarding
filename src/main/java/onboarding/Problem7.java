@@ -56,4 +56,8 @@ class Account {
     public boolean isFriend(String id) {
         return friendsRelation.stream().anyMatch(account -> account.isAccountId(id));
     }
+
+    public int getNumberOfFriends() {
+        return friendsRelation.size();
+    }
 }
