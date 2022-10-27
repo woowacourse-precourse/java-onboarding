@@ -19,7 +19,7 @@ public class Atm {
     }
 
     private List<Integer> getChanges(int money) {
-        ArrayList<Integer> amounts = new ArrayList<>();
+        List<Integer> amounts = new ArrayList<>();
         List<Integer> changes = changesList.getChangesList();
 
         for (Integer change : changes) {
