@@ -18,4 +18,13 @@ public class Problem2 {
         return answer;
     }
 
+    //기능 2.
+    public static String delChar(String str, int index){
+        StringBuilder sb = new StringBuilder();
+        sb.append(str.substring(0, index));
+        sb.append(str.substring(index + 2));
+
+        return sb.toString();
+    }
+
 }
