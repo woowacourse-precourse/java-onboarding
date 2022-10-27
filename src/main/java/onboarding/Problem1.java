@@ -14,6 +14,9 @@ class Problem1 {
 		int pobiScore = getScore(pobi);
 		int crongScore = getScore(crong);
 
+		// 승자 구하기
+		answer = getWinner(pobiScore, crongScore);
+
 		return answer;
 	}
 
@@ -72,5 +75,14 @@ class Problem1 {
 		}
 		return sum;
 
+	}
+
+	private static int getWinner(int num1, int num2) {
+		if (num1 > num2)
+			return 1;
+		if (num1 < num2)
+			return 2;
+		// 같을 경우
+		return 0;
 	}
 }
