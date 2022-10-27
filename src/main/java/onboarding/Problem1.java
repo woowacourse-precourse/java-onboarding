@@ -49,13 +49,11 @@ class Problem1 {
     public static boolean pageExcept(List<Integer> pageLst) {
         int fstNum = pageLst.get(0).intValue();
         int scdNum = pageLst.get(1).intValue();
-        if (minPage < fstNum && maxPage > fstNum &&
+
+        return minPage < fstNum && maxPage > fstNum &&
                 minPage < scdNum && maxPage > scdNum &&
                 fstNum % 2 == 1 && scdNum % 2 == 0 &&
-                scdNum - fstNum == 1) {
-            return true;
-        }
-        return false;
+                scdNum - fstNum == 1;
     }
 
     // 해당 페이지의 자릿수를 모두 더한 값을 리턴
