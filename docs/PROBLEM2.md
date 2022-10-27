@@ -21,3 +21,13 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+***
+
+## 🚗 기능 목록
+
+#### 1. cryptogram 한 글자씩 읽기
+
+#### 2. stack에 넣으면서 중복제거
+
+#### 3. 결과리턴            
