@@ -1,4 +1,6 @@
 package onboarding;
+
+import java.util.Stack;
 /*
 - 기능 구현사항 목록 -
 1. 문자열을 배열화한다.
@@ -10,7 +12,10 @@ package onboarding;
  */
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = "";
+        char[] s = cryptogram.toCharArray();
+        Stack<String> stack = new Stack<>();
+        stack.push(String.valueOf(s[0]));
         return answer;
     }
 }
