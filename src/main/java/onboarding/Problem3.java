@@ -18,16 +18,16 @@ public class Problem3 {
     }
 
     private static int getClapByDigit(int digit, int i, int number) {
-        if (i == 0) return 0;
+        if (digit == 0) return 0;
         int clap = getClapDefault(digit, i);
-        if (i % 3 == 0) {
-            clap += number / (MULTIPLES_OF_TEN[i]);
+        if (digit % 3 == 0) {
+            clap += getClapMulOfThree(i, number);
         }
         return clap;
     }
 
     private static int getClapDefault(int digit, int i) {
-        return digit * MAX_CLAP_BY_DIGIT[i] + getNumOfMulOfThreeLessThanValue(digit) * (MULTIPLES_OF_TEN[i] / 10);
+        return digit * MAX_CLAP_BY_DIGIT[i] + getNumOfMulOfThreeLessThanValue(digit) * MULTIPLES_OF_TEN[i];
     }
 
     private static int getClapMulOfThree(int i, int number) {
