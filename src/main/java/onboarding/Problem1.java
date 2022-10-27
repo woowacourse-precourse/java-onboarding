@@ -69,16 +69,16 @@ class Problem1 {
         return userScore;
     }
 
-}
+    static class Answers {
+        private final Map<String,Integer> answers;
 
-class Answers {
-    private final Map<String,Integer> answers;
+        public Answers(Map<String, Integer> answers) {
+            this.answers = answers;
+        }
 
-    public Answers(Map<String, Integer> answers) {
-        this.answers = answers;
+        public int getAnswerByGameResult(String gameResult) {
+            return answers.get(gameResult);
+        }
     }
 
-    public int getAnswerByGameResult(String gameResult) {
-        return answers.get(gameResult);
-    }
 }
