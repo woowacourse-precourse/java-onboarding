@@ -1,7 +1,10 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
- * [ ] "browoanoommnaon"
+ * [o] "browoanoommnaon"
  * [ ] "browoannaon"
  * [ ] "browoaaon"
  * [ ] "browoon"
@@ -10,7 +13,46 @@ package onboarding;
  */
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+
+        return removeDuplicates(cryptogram);
+    }
+
+    public static String removeDuplicates(String s) {
+        ArrayList<Integer[]> removeList = new ArrayList<Integer[]>();
+
+        for (int i = 0; i < s.length() - 1; i++) {
+            if (s.charAt(i) != s.charAt(i + 1)) {
+                continue;
+            }
+
+            int duplicateStartIdx = i;
+            int duplicateEndIdx = i + 1;
+
+            for (int j = i + 1; j < s.length() - 1; j++) {
+                if (s.charAt(j) != s.charAt(j + 1)) {
+                    duplicateEndIdx = j;
+                    break;
+                }
+            }
+
+            removeList.add(new Integer[]{duplicateStartIdx, duplicateEndIdx});
+            i = duplicateEndIdx;
+        }
+
+        for (int i = 0; i < removeList.size(); i++) {
+            Integer[] indexes = removeList.get(i);
+            System.out.println(Arrays.toString(indexes));
+
+            s = s.substring(0, indexes[0]) + s.substring(indexes[1] + 1);
+
+            if (i != removeList.size() - 1) {
+                Integer[] nextIndexes = removeList.get(i + 1);
+                nextIndexes[0] -= (indexes[1] - indexes[0] + 1);
+                nextIndexes[1] -= (indexes[1] - indexes[0] + 1);
+            }
+
+        }
+
+        return s;
     }
 }
