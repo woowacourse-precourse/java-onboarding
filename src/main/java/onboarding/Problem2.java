@@ -7,7 +7,9 @@ public class Problem2 {
 
     public static String solution(String cryptogram) {
         if (isExceptionCase(cryptogram)) return INPUT_ERROR;
+
         if (cryptogram.length() == 1) return cryptogram;
+
         while (true) {
             String decoded = decodeCryptogram(cryptogram);
             if (cryptogram.equals(decoded)) break;
