@@ -1,18 +1,17 @@
 package onboarding;
 
 import java.util.*;
-import java.util.regex.Pattern;
 
 /** 기능 목록
- *
- *
  * [CreList Collection]
  * addCrew              : 크루 추가
+ * getConfusedNickname  : 알림 보낼 이메일 get
  * checkValid           : 예외 처리
  * checkCrewNums        : 크루 크기 유효성 체크
  * checkEmail           : 이메일 유효성 체크
  * checkNickName        : 닉네임 유효성 체크
  * checkAlarmTarget     : 알림 보내줄 대상인지 체크
+ * checkOverlap         : 겹치는 부분 있는지 체크
  * checkEmailForm       : 이메일 형식 유효성 체크
  * checkEmailLength     : 이메일 길이 유효성 체크
  * checkEmailDomain     : 이메일 도메인 체크
@@ -25,14 +24,14 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         CrewList crewList = new CrewList();
         for (List<String> form : forms) {
-            crewList.addCrew(form);
+            if(!crewList.addCrew(form)) return Collections.emptyList();
         }
         return crewList.getConfusedNickname();
     }
 
     private static class CrewList{
         private final Map<String, String> crewList = new HashMap<>();
-        private final Set<String> continuousSet = new HashSet<>();
+        private final Map<String,String> continuousSet = new HashMap<>();
         private final Set<String> alarm = new HashSet<>();
 
         private boolean addCrew(List<String> form) {
@@ -44,9 +43,7 @@ public class Problem6 {
                 System.out.println("올바르지 않은 형식");
                 return false;
             }
-            if (checkAlarmTarget(nickname)) {
-                alarm.add(nickname);
-            }
+            checkAlarmTarget(nickname, email);
             return checkCrewNums();
         }
 
@@ -77,25 +74,26 @@ public class Problem6 {
             return checkNickNameLength(nickname) && checkNickNameType(nickname);
         }
 
-        private boolean checkAlarmTarget(String nickname) {
+        private void checkAlarmTarget(String nickname, String email) {
             Set<String> userContinuousSet = new HashSet<>();
-            StringBuilder sb = new StringBuilder();
+
             for (int i = 0; i < nickname.length() - 1; i++) {
-                String continuousPart = sb.append(nickname.charAt(i)).append(nickname.charAt(i + 1)).toString();
+                StringBuilder sb = new StringBuilder();
+                String continuousPart = (sb.append(nickname.charAt(i)).append(nickname.charAt(i + 1))).toString();
                 userContinuousSet.add(continuousPart);
             }
-            return checkOverlap(userContinuousSet);
+            checkOverlap(userContinuousSet, email);
         }
 
-        private boolean checkOverlap(Set<String> userContinuousSet) {
-            int lastSize = continuousSet.size();
-            int userSize = userContinuousSet.size();
-            continuousSet.addAll(userContinuousSet);
-            int nowSize = continuousSet.size();
-            if (nowSize == lastSize + userSize) {
-                return false;
-            } else {
-                return true;
+        private void checkOverlap(Set<String> userContinuousSet, String email) {
+            for (String target : userContinuousSet) {
+                if(continuousSet.containsKey(target)) {
+                    alarm.add(continuousSet.get(target));
+                    alarm.add(email);
+                }
+                else{
+                    continuousSet.put(target, email);
+                }
             }
         }
 
@@ -111,17 +109,11 @@ public class Problem6 {
         }
 
         private boolean checkEmailDomain(String emailDomain) {
-            if (emailDomain.length() == 0 || !emailDomain.equals("email.com")) {
-                return false;
-            }
-            return true;
+            return emailDomain.length() != 0 && emailDomain.equals("email.com");
         }
 
         private boolean checkEmailId(String emailId) {
-            if (emailId.length() == 0) {
-                return false;
-            }
-            return true;
+            return emailId.length() != 0;
         }
 
         private boolean checkNickNameType(String nickname) {
