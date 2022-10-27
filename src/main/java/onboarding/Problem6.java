@@ -35,6 +35,16 @@ public class Problem6 {
         return answer;
     }
 
+    private static void checkNickname(List<String> form) {
+        String email = form.get(0);
+        String nickname = form.get(1);
+
+        StringIterator iter = new StringIterator(nickname);
+        while(iter.hasNext()) {
+            checkPartOfNickname(iter.next(), email);
+        }
+    }
+
     private static void checkPartOfNickname(String part, String email) {
         Set<String> keySet = nicknameMap.keySet();
         if(keySet.contains(part)) {
@@ -55,9 +65,4 @@ public class Problem6 {
     private static void addEmailSet(Set<String> newEmailSet) {
         emailSet.addAll(newEmailSet);
     }
-
-
-
-
-
 }
