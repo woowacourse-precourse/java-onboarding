@@ -1,6 +1,8 @@
 package onboarding;
 
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -9,19 +11,28 @@ import java.util.LinkedList;
 public class Problem6 {
     private static HashMap<Character, HashSet<Character>> nameMap = new HashMap<>();
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>();
         List<String> validCrewInfo = new LinkedList<>(); // info = name/email
+        Set<String> invalidCrewEmails = new TreeSet<>();
 
         for (List<String> crew: forms){
             String email = crew.get(0), name = crew.get(1);
             String dSentence = getDuplicateSentenceOrBlank(name);
 
             if (dSentence != ""){
-                break;
-            }
+                invalidCrewEmails.add(email);
 
+                for (String crewInfo: getInvalidCrews(validCrewInfo, dSentence)){
+                    String crewEmail = crewInfo.split("/")[1];
+                    invalidCrewEmails.add(crewEmail);
+                    validCrewInfo.remove(crewInfo);
+                }
+                continue;
+            }
             validCrewInfo.add(name + "/" + email);
         }
+
+        answer.addAll(invalidCrewEmails);
         return answer;
     }
 
