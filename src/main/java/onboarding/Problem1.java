@@ -16,6 +16,15 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
+        int pobiValue = maxResult(pobi);
+        int crongValue = maxResult(crong);
+        if (pobiValue == crongValue) {
+            answer = 0;
+        } else if (pobiValue > crongValue) {
+            answer = 1;
+        } else {
+            answer = 2;
+        }
         return answer;
     }
 
