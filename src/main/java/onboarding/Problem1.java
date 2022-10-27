@@ -35,4 +35,18 @@ class Problem1 {
         }
         return summationList;
     }
+
+    public List<Integer> multiplyEachDigitOfPageNumber(List<Integer> list) {
+        int multiplication;
+        List<Integer> multiplicationList = new ArrayList<>();
+        for (Integer integer : list) {
+            multiplication = 1;
+            while (integer > 0){
+                multiplication *= integer % 10;
+                integer /= 10;
+            }
+            multiplicationList.add(multiplication);
+        }
+        return multiplicationList;
+    }
 }
