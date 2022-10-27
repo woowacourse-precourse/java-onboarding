@@ -23,6 +23,6 @@ public class Problem3 {
     }
 
     public static boolean isMatch(int digit) {
-        return true;
+        return digit == 3 || digit == 6 || digit == 9;
     }
 }
