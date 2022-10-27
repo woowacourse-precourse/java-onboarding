@@ -15,13 +15,13 @@ public class Validator {
 		}
 	}
 
-	public static void isConsecution(List<Integer> integers) {
+	public static void isConsecution(List<Integer> integers) throws IllegalArgumentException {
 		if (integers.get(0) + 1 != integers.get(1)) {
 			throw new IllegalArgumentException();
 		}
 	}
 
-	public static void isOddAndEvenPage(List<Integer> integers) {
+	public static void isOddAndEvenPage(List<Integer> integers) throws IllegalArgumentException {
 		if (integers.get(0) % 2 == 0 || integers.get(1) % 2 == 1) {
 			throw new IllegalArgumentException();
 		}
