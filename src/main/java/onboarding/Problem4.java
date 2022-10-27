@@ -28,5 +28,6 @@ public class Problem4 {
         }
 
         return sb.toString();
+        // 테스트 케이스 통과
     }
 }
