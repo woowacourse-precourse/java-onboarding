@@ -9,6 +9,7 @@ public class Problem7 {
     private static final int ID_A = 0;
     private static final int ID_B = 1;
     private static final int FRIEND_OF_FRIEND_SCORE = 10;
+    private static final int VISIT_SCORE = 1;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
@@ -52,6 +53,20 @@ public class Problem7 {
 
                 int friendScore = friendScoreMap.get(friend);
                 friendScoreMap.put(friend, friendScore + FRIEND_OF_FRIEND_SCORE);
+            }
+        }
+    }
+
+    private static void giveScoreByVisit(List<String> visitors, List<String> friendsOfUser, Map<String, Integer> friendScoreMap) {
+        for(String visitor : visitors) {
+            if (friendsOfUser.contains(visitor))
+                continue;;
+
+            if (friendScoreMap.containsKey(visitor)) {
+                int friendScore = friendScoreMap.get(visitor).intValue();
+                friendScoreMap.put(visitor, friendScore + VISIT_SCORE);
+            } else {
+                friendScoreMap.put(visitor, VISIT_SCORE);
             }
         }
     }
