@@ -32,6 +32,21 @@ public class Problem4 {
         }
 
         String answer = "";
+
+        // 문자열의 문자 하나씩 반복문을 돌며, 알파벳이라면 변환하여 answer에 concat하고 아니라면 그대로 concat한다.
+        for (int i = 0; i < word.length(); i++) {
+            char cur_char = word.charAt(i);
+
+            if (frog_dict.containsKey(cur_char)) {
+                char converted_char = frog_dict.get(cur_char);
+
+                answer = answer.concat(Character.toString(converted_char));
+            }
+            else {
+                answer = answer.concat(Character.toString(cur_char));
+            }
+        }
+
         return answer;
     }
 }
