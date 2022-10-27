@@ -15,7 +15,17 @@ public class Problem7 {
     Map<String, Integer> record = new HashMap<>();
     setFriendScore(record, userFriendOfFriend);
 
+    List<String> visitor = exceptUserAndUserFrinedsOfVisitors(user, friendsByUser, visitors);
+    setVisitorScore(record, visitor);
+
     return List.of("");
+  }
+
+  private static List<String> exceptUserAndUserFrinedsOfVisitors(String user, List<String> friendsByUser, List<String> visitors) {
+    return visitors.stream()
+            .filter(name -> name != user)
+            .filter(name -> !friendsByUser.contains(name))
+            .collect(Collectors.toList());
   }
 
   public static List<String> exceptDuplicateNameAndUserOfFriends(String user, List<String> friends) {
@@ -53,6 +63,16 @@ public class Problem7 {
         continue;
       }
       record.put(friend, FRIEND_SCORE);
+    }
+  }
+
+  private static void setVisitorScore(Map<String, Integer> record, List<String> visitors) {
+    for (String visitor : visitors) {
+      if (record.containsKey(visitor)) {
+        record.put(visitor, record.get(visitor) + VISIT_SCORE);
+        continue;
+      }
+      record.put(visitor, VISIT_SCORE);
     }
   }
 }
