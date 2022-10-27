@@ -13,7 +13,7 @@ public class Problem3 {
   public static int countIncludeGameNumber(int number) {
     return (int) Stream.of(Integer.toString(number).split(""))
             .mapToInt(Integer::parseInt)
-            .filter(n -> n == 3 | n == 6 || n == 9)
+            .filter(n -> n == 3 || n == 6 || n == 9)
             .count();
   }
 }
