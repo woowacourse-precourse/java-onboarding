@@ -5,9 +5,9 @@ import static onboarding.problem1.ResultType.*;
 import java.util.List;
 
 public class GameController {
-	private PageValidChecker pageValidChecker;
-	private ScoreCalculator scoreCalculator;
-	private WinnerSelector winnerSelector;
+	private final PageValidChecker pageValidChecker;
+	private final ScoreCalculator scoreCalculator;
+	private final WinnerSelector winnerSelector;
 
 	public GameController(PageValidChecker pageValidChecker, ScoreCalculator scoreCalculator,
 		WinnerSelector winnerSelector) {
