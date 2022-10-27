@@ -6,6 +6,7 @@ import java.util.List;
 /**
  * 1. 첫번째 페이지 혹은 마지막 페이지가 매개변수로 들어오면 -1을 리턴한다.
  * 2. 포비와 크롱의 각자리 숫자를 구한다.
+ * 2-1. 포비와 크롱의 왼쪽의 각자리 숫자와 오른쪽 각자리 숫자 배열을 list에 저장한다.
  * 3. 포비와 크롱의 각자리 숫자를 더하거나 곱하여 큰수를 구한다.
  * 4. 포비와 크롱의 큰 수끼리 비교한다.
  * 5. 포비의 숫자가 크면 1을 리턴한다.
@@ -27,8 +28,34 @@ class Problem1 {
         List<Integer> pobiEachNumbers = getEachDigitNumber(pobi);
         List<Integer> crongEachNumbers = getEachDigitNumber(crong);
 
+        List<int[]> pobiEachListLeftAndRight = getEachListLeftAndRight(pobiEachNumbers);
+        List<int[]> crongEachListLeftAndRight1 = getEachListLeftAndRight(crongEachNumbers);
+
+
+
         return answer;
     }
+
+    private static List<int[]> getEachListLeftAndRight(List<Integer> eachNumbers) {
+        int halfNumber = eachNumbers.size() / 2;
+        int[] left = new int[halfNumber];
+        int[] right = new int[halfNumber];
+        List<int[]> eachListLeftAndRight = new ArrayList<>();
+
+
+        for (int i = 0; i < halfNumber; i++) {
+            left[i] = eachNumbers.get(i);
+        }
+
+        for (int i = halfNumber; i < eachNumbers.size(); i++) {
+            right[i - halfNumber] = eachNumbers.get(i);
+        }
+
+        eachListLeftAndRight.add(left);
+        eachListLeftAndRight.add(right);
+        return eachListLeftAndRight;
+    }
+
 
     private static List<Integer> getEachDigitNumber(List<Integer> getEach) {
         int num;
