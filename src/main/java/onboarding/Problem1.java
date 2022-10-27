@@ -7,7 +7,38 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        // 예외사항
+        // 1. pobi와 crong의 길이는 2여야 한다.
+        if (pobi.size()!=2 || crong.size()!=2) {
+            return -1;
+        }
+        // 2. left는 홀수, right는 짝수
+        if (pobi.get(0)%2!=1 | pobi.get(1)%2!=0 | crong.get(0)%2!=1 | crong.get(1)%2!=0) {
+            return -1;
+        }
+        // 3. left = right - 1
+        if (pobi.get(1)-pobi.get(0)!=1 | crong.get(1)-crong.get(0)!=1) {
+            return -1;
+        }
+        // 4. 1 <= left <= 399 and 2 <= right <= 400
+        for (List<Integer> nums : Arrays.asList(pobi, crong)) {
+            if (nums.get(0)<1 | nums.get(0)>399 | nums.get(1)<2 | nums.get(1)>400) {
+                return -1;
+            }
+        }
+
+        List<Integer> scoresPobi = merge(mapToSum(pobi), mapToMul(crong));
+        List<Integer> scoresCrong = merge(mapToSum(crong), mapToMul(crong));
+
+        int maxPobi = Collections.max(scoresPobi);
+        int maxCrong = Collections.max(scoresCrong);
+
+        int answer = 0;
+        if (maxPobi < maxCrong) {
+            answer = 2;
+        } else if (maxPobi > maxCrong) {
+            answer = 1;
+        }
         return answer;
     }
 
