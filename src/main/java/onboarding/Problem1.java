@@ -8,6 +8,13 @@ class Problem1 {
         return answer;
     }
 
+    private static int getUserMaxData(List<Integer> user) {
+        int leftMaxData = getMaxDataByOnePage(user.get(0).toString());
+        int rightMaxData = getMaxDataByOnePage(user.get(1).toString());
+
+        return Math.max(leftMaxData, rightMaxData);
+    }
+
     private static int getMaxDataByOnePage(String page) {
 
         int pageLength = page.length();
