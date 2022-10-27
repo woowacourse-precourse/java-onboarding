@@ -18,8 +18,8 @@ class Problem1 {
 
         // #유의 사항 : 메소드,변수명을 정의할 때는 카멜 표기법을 따르며, 메소드명은 동사로 시작하도록 한다.
 
-        int leftPage = page.get(0);
-        int rightPage = page.get(1); // 자주 사용하는 값을 변수에 담음. 한 번만 메소드를 호출하고 값에 의미 부여
+        int leftPage = pairPages.get(0);
+        int rightPage = pairPages.get(1); // 자주 사용하는 값을 변수에 담음. 한 번만 메소드를 호출하고 값에 의미 부여
 
         //1-1. 왼쪽 페이지가 홀수,오른쪽 페이지는 짝수이어야함.
         if (leftPage % 2 != 1 || rightPage % 2 != 0) //  왼쪽이 홀수가 아니거나, 오른쪽이 짝수가 아닌 경우 오류
@@ -43,7 +43,7 @@ class Problem1 {
 
     //2. 기능2
     static List<Integer> getSeparatedDigits(int pageNumber) {
-
+        
         List<Integer> separatedDigitList = new ArrayList<>();
         int digit;
         int remainedNumber = pageNumber;
@@ -64,10 +64,12 @@ class Problem1 {
 
     //3-1. 한 페이지에 대해 총합 및 총 곱셈 계산 후, 더 큰 계산값 반환
     static int getBiggerCalculation(List<Integer> separatedDigitList) {
-
+        
         int summation = 0;
         int multiplication = 1;
 
+        
+        //총합, 총 곱셈 메소드 하나로 통합
         for (int digit : separatedDigitList) {
             summation += digit;
             multiplication *= digit;
@@ -92,11 +94,24 @@ class Problem1 {
         return Math.max(leftPageScore,rightPageScore);
     }
 
-    //4. 기능4 구현
+    //4. 기능4
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if(!(isValidPage(pobi) || isValidPage(crong)){
-
+        if(!isValidPage(pobi) || !isValidPage(crong)){
+            return -1;
         }
-        return answer;
+
+        int pobiScore = getBiggerPageScore(pobi);
+        int crongScore = getBiggerPageScore(crong);
+
+        if(pobiScore > crongScore){
+            return 1;
+        }
+        else if(pobiScore < crongScore){
+            return 2;
+        }
+        else{
+            return 0;
+        }
+
     }
 }

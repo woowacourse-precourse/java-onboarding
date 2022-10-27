@@ -34,7 +34,7 @@ class ApplicationTest {
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
     }
-
+/*
     @Nested
     class Problem2Test {
         @Test
@@ -130,4 +130,6 @@ class ApplicationTest {
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
     }
+    */
+
 }
