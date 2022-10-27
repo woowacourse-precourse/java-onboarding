@@ -10,12 +10,31 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
+        final String errorCase = "-1";
         String answer = "";
+        if (!checkValid(word)) {
+            return errorCase;
+        }
+        answer = solutionLogic(word);
         return answer;
     }
 
     public static String solutionLogic(String s) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < s.length(); i++) {
+            sb.append(classifyChar(s.charAt(i)));
+        }
+        return sb.toString();
+    }
 
+    public static char classifyChar(char c) {
+        if ('a' <= c && c <= 'z') {
+            return lowerChange(c);
+        } else if ('A' <= c && c <= 'Z') {
+            return upperChange(c);
+        } else {
+            return c;
+        }
     }
 
     public static char lowerChange(char c) {
