@@ -57,7 +57,16 @@ public class Problem3 {
         return count;
     }
 
+    /*
+     * 숫자가 3, 6, 9인지 알려줍니다.
+     *
+     * @param 한 자릿수 정수입니다.
+     * @return 3, 6, 9 라면 1, 아니면 0을 반환합니다.
+     * */
     private static int is369 (int digit) {
+        if (digit == 3 || digit == 6 || digit == 9) {
+            return 1;
+        }
         return 0;
     }
 
