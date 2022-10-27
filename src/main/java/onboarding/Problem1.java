@@ -9,22 +9,22 @@ class Problem1 {
     }
 
     private class ExceptionChecker{
-        int pageOne;
-        int pageTwo;
-        int pageThree;
-        int pageFour;
+        int pobiLeftPage;
+        int pobiRightPage;
+        int crongLeftPage;
+        int crongRightPage;
 
         ExceptionChecker() {}
         ExceptionChecker(List<Integer> pobi, List<Integer> crong) {
-            pageOne = pobi.get(0);
-            pageTwo = pobi.get(1);
-            pageThree = crong.get(0);
-            pageFour = crong.get(1);
+            pobiLeftPage = pobi.get(0);
+            pobiRightPage = pobi.get(1);
+            crongLeftPage = crong.get(0);
+            crongRightPage = crong.get(1);
         }
 
-        /* 책의 첫번째 면 혹은 마지막 면이 있는지 확인 */
+        /* 책의 첫번째 면 혹은 마지막 면이 있는지 확인. 있으면 false, 없으면 true false면 예외사항 */
         private boolean checkInnerpages() {
-            if (pageOne == 1 || pageTwo == 400 || pageThree == 1 || pageFour ==400){
+            if (pobiLeftPage == 1 || pobiRightPage == 400 || crongLeftPage == 1 || crongRightPage ==400){
                 return false;
             }
 
