@@ -29,6 +29,8 @@ public class Problem2 {
             if(curChar != leftChar && curChar != rightChar)
                 sb.append(curChar);
         }
+        if(cryptogram.charAt(cryptogramLen - 1) != cryptogram.charAt(cryptogramLen - 2))
+            sb.append(cryptogram.charAt(cryptogramLen - 1));
         return sb.toString();
     }
 }
