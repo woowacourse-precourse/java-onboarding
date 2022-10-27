@@ -5,11 +5,18 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         final int EXCEPTION = -1;
-        int answer = Integer.MAX_VALUE;
+        final int POBIWIN = 1;
+        final int CRONGWIN = 2;
+        final int TIE = 0;
 
         if(!isOk(pobi) || !isOk(crong)) return EXCEPTION;
 
-        return answer;
+        int pobiScore = comparePage(pobi);
+        int crongScore = comparePage(crong);
+
+        if(pobiScore > crongScore) return POBIWIN;
+        if(pobiScore < crongScore) return CRONGWIN;
+        else return TIE;
     }
 
     public static boolean isOk(List<Integer> bookPages){
@@ -20,6 +27,16 @@ class Problem1 {
         if(rightPage - leftPage != 1) return false;
 
         return true;
+    }
+
+    public static int comparePage(List<Integer> bookPages){
+        int leftPage = bookPages.get(0);
+        int rightPage = bookPages.get(1);
+
+        int leftPageScore = calculatePage(leftPage);
+        int rightPageScore = calculatePage(rightPage);
+
+        return leftPageScore > rightPageScore ? leftPageScore : rightPageScore;
     }
 
     public static int calculatePage(int bookPage){
