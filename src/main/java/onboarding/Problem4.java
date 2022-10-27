@@ -1,6 +1,13 @@
 package onboarding;
 
 public class Problem4 {
+    public static String lowerCase;
+    public static String upperCase;
+    public Problem4() {
+        this.lowerCase = "abcdefghijklmnopqrstuvwxyz";
+        this.upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    }
+
     public static String solution(String word) {
         String answer = "";
         return answer;
@@ -26,8 +33,14 @@ public class Problem4 {
      * @param upperCaseWhether 대문자 여부
      * @return 변환된 문자 하나
      */
-    public static String characterOneConversion(char str, Boolean upperCaseWhether){
-        return "";
+    public static char characterOneConversion(char str, Boolean upperCaseWhether){
+
+        if (upperCaseWhether) {
+            return upperCase.charAt(25-upperCase.indexOf(str));
+        }else {
+            return lowerCase.charAt(25-lowerCase.indexOf(str));
+        }
+
     }
 
 
