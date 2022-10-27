@@ -48,6 +48,7 @@ class Problem1 {
             }
         }
         rest = 0;
+        result = Math.max(leftScore, rightScore);
         return result;
     }
 
