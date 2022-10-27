@@ -6,8 +6,12 @@ package onboarding;
  */
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
-        return answer;
+        int cnt = 0;
+        for (int i = 1; i <= number; ++i) {
+            String s = String.valueOf(i);
+            cnt += count369(s);
+        }
+        return cnt;
     }
 
     private static int count369(String s) {
