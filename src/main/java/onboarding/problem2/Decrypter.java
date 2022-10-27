@@ -18,4 +18,15 @@ public class Decrypter {
         }
         return startingIndex;
     }
+
+    private static int findNumberOfRepeatedChar(String cryptogram, int startingIndex){
+        int num = 1;
+        final char repeatedChar = cryptogram.charAt(startingIndex);
+        int index = startingIndex + 1;
+        while(repeatedChar == cryptogram.charAt(index) ){
+            num += 1;
+            index += 1;
+        }
+        return num;
+    }
 }
