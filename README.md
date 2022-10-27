@@ -63,7 +63,7 @@
 ### solution
 - 게임이 진행되는 클래스
 
-### validateSameCharAt
+### validateSameChar
 - 두 문자가 같은 문자인지 확인하는 메서드
-- [ ] 매개변수로 들어온 두 문자를 같다면 true
+- [x] 매개변수로 들어온 두 문자를 같다면 true
 
