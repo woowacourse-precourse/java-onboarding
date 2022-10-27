@@ -9,7 +9,7 @@ public class Problem3 {
         return answer;
     }
 
-    public static List<Integer> getIntegersUnderNumber(int number) {
+    private static List<Integer> getIntegersUnderNumber(int number) {
         List<Integer> integersUnderNumber = new ArrayList<>();
         for (int i = 1; i <= number; i++) {
             integersUnderNumber.add(i);
@@ -17,7 +17,7 @@ public class Problem3 {
         return integersUnderNumber;
     }
 
-    public static char[] getCharsOfNumber(int number) {
+    private static char[] getCharsOfNumber(int number) {
         String numberToString = String.valueOf(number);
         char[] charsOfNumber = numberToString.toCharArray();
         return charsOfNumber;
