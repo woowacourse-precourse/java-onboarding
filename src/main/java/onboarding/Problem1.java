@@ -11,7 +11,9 @@ class Problem1 {
         if(isException(pobi.get(0),pobi.get(1))||isException(crong.get(0),crong.get(1))){
             answer=-1;
         }else {
-
+            pobi_MaxVal = Math.max(PageCheck(pobi.get(0)), PageCheck(pobi.get(1)));
+            crong_MaxVal = Math.max(PageCheck(crong.get(0)), PageCheck(crong.get(1)));
+            answer = PageGame(pobi_MaxVal, crong_MaxVal);
         }
 
         return answer;
@@ -40,5 +42,17 @@ class Problem1 {
             page/=10;
         }
         return Math.max(MAX_PAGE_ADD,MAX_PAGE_MUL);
+    }
+
+    static int PageGame(int pobi,int crong){
+        if(pobi>crong){
+            return 1;
+        }
+        else if(pobi==crong){
+            return 0;
+        }
+        else {
+            return -1;
+        }
     }
 }
