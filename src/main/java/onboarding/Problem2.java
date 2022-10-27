@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
@@ -14,4 +15,14 @@ public class Problem2 {
         ArrayList<String> output = new ArrayList<String>(Arrays.asList(strArr));
         return output;
     }
+
+    // arrayList -> string 로 변환
+    private static String changeList(ArrayList<String> input) {
+        String answer = "";
+        for(int i = 0; i<input.size(); i++) {
+            answer += input.get(i);
+        }
+        return answer;
+    }
+
 }
