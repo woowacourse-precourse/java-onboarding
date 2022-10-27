@@ -3,8 +3,12 @@ package onboarding;
 public class Problem2 {
     private static final int NO_DUPLICATE = -1;
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        while(true){
+            int duplicateIndex = duplicateIndex(cryptogram);
+            if(duplicateIndex==NO_DUPLICATE)break;
+            cryptogram = deleteDuplicate(cryptogram, duplicateIndex);
+        }
+        return cryptogram;
     }
     private static int duplicateIndex(String checkDuplicate) {
         for(int index=0;index<checkDuplicate.length()-1;index++){

@@ -51,7 +51,7 @@ class ApplicationTest {
 //            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
 //        }
 //    }
-//
+
 //    @Nested
 //    class Problem3Test {
 //        @Test
