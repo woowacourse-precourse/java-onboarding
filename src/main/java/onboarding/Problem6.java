@@ -1,24 +1,34 @@
 package onboarding;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 public class Problem6 {
 	public static List<String> solution(List<List<String>> forms) {
 		Set<String> blacklist = new HashSet<>();
+		Set<String> answer = new TreeSet<>();
 		List<User> userList = forms.stream()
 				.map(User::new)
 				.collect(Collectors.toList());
 
 		for (User user : userList) {
+			for (String blackName : blacklist) {
+				if (user.nickname.contains(blackName)) {
+					for (User targetUser : userList) {
+						if (targetUser.nickname.contains(blackName)) {
+							answer.add(targetUser.email);
+						}
+					}
+				}
+			}
+
 			blacklist.addAll(user.getDuplicateNicknameTokens());
 		}
-		System.out.println(blacklist);
 
-		return Collections.emptyList();
+		return List.copyOf(answer);
 	}
 
 	static class User {
