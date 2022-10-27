@@ -6,6 +6,13 @@ public class Problem4 {
         return answer;
     }
 
+    private static char convertInReverse(char c) {
+        if(isAlpha(c)) {
+            return convertAlphaInReverse(c);
+        }
+        return c;
+    }
+
     private static char convertAlphaInReverse(char c) {
         if(isUpperCase(c)) {
             return (char)('A' + ('Z' - c));
