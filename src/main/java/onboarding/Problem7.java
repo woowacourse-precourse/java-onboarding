@@ -18,6 +18,10 @@ public class Problem7 {
         Map<String, Integer> scores = getFriendScore(friendsList, userFriendSet);
 
         addVisitScore(scores, visitors);
+
+        ArrayList list = new ArrayList(scores.entrySet());
+
+        list.sort(new SortFriendList());
     }
 
     static void makeConnections(Map<String, Set<String>> map, String name1, String name2){
@@ -49,5 +53,15 @@ public class Problem7 {
         for(String str : visitors){
             scores.put(str, scores.getOrDefault(str, 0) + 1);
         }
+    }
+}
+
+class SortFriendList implements Comparator<Map.Entry<String, Integer>>{
+    @Override
+    public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+        if (o1.getValue() == o2.getValue()) {
+            return o1.getKey().compareTo(o2.getKey());
+        }
+        return o1.getValue().compareTo(o2.getValue());
     }
 }
