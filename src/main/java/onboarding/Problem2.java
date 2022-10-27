@@ -8,7 +8,7 @@ import java.util.*;
  **/
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        StringBuilder sb = new StringBuilder();
 
         Deque<Character> queue = new ArrayDeque<>();
 
@@ -22,9 +22,9 @@ public class Problem2 {
         }
 
         while (!queue.isEmpty()) {
-            answer += queue.pollFirst();
+            sb.append(queue.pollFirst());
         }
 
-        return answer;
+        return sb.toString();
     }
 }
