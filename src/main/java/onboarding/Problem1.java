@@ -47,8 +47,18 @@ class Problem1 {
 
     }
 
+    public static boolean validatePageNumberInRange(List<Integer> pageList) {
+        for (int page : pageList) {
+            if (page < 1 || page > 400) return false;
+        }
+        return true;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+
+        if (!validatePageNumberInRange(pobi) || !validatePageNumberInRange(crong)) return -1;
+
         answer = winnerOfGame(pobi, crong);
         return answer;
     }
