@@ -68,3 +68,21 @@
         * *BANKNOTE_UNIT[9]*
     * 메소드
         * 단위로 나눈 몫을 반환 **unitCounting**
+### 문제6
+1. 전역변수 *usedNickNamePart*와 *emailToBeSent* 초기화하기.
+2. *form*s의 List<String>를 **checkNickName**에 차례대로 넣기.
+3. **checkNickName**에서 2글자식 나눠서 *myNickNamePart*에 담기
+4. **checkNickNamePart**로 넣어서 *myNickNamePart*이 *usedNickNamePart*에 키 값으로 존재하는지 확인하고 있으면 해당 키의 value(email)와 myEmail 둘 다 emailToBeSent에 add해주기
+5. *myUsedNickNamePart*에 모든 *key:myNickNamePart = value:myEmail*저장하기
+6. *usedNickNamePart*에 *myNickNamePart* 모두 넣어주기
+7. 반복이 끝나면 *emailToBeSent*를 ArrayList로 변환해 *answer*에 넣어주고 *answer* 반환
+
+#### Problem6 클래스
+* 필드
+  * static HashMap<String, String> *usedNickNamePart*
+  * static TreeSet<String> *emailToBeSent*
+* 메소드
+  * 받은 *emailAndName*에서 *Name*을 2글자 단위로 쪼개서 **checkNickNamePart**에 
+  보내고 난 뒤 *usedNickNamePart*에 *myEmail*을 value로 모두 추가 **checkNickName**
+  * 받은 2글자가 usedNickNamePart에 있는지 확인하고 있으면 해당 key를 가진 value(Email)와 
+  myEmail을 *emailToBeSent*에 추가해 줌 **checkNIckNamePart**
