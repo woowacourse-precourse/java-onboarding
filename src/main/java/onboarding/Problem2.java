@@ -27,4 +27,22 @@ public class Problem2 {
         }
         return false;
     }
+
+    /**
+     * 중복된 문자가 제거된 문자열을 반환합니다.
+     *
+     * @param str 중복을 제거할 문자열
+     * @return 중복이 제거된 문자열
+     */
+    String deduplicate(String str) {
+        String result = "";
+
+        for (int i = 0; i < str.length(); i++) {
+            if (!isDuplicate(str, i)) {
+                result += str.charAt(i);
+            }
+        }
+
+        return result;
+    }
 }
