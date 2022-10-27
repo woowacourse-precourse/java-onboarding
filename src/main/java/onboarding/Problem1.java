@@ -47,6 +47,25 @@ class Problem1 {
         return result;
     }
 
+    public static boolean checkValidity(List<Integer> player){
+        boolean result = true;
+        int num1 = player.get(0);
+        int num2 = player.get(1);
+        if(num1 < MIN_PAGE || num1 > MAX_PAGE){
+            result = false;
+        }
+        if(num2 < MIN_PAGE || num2 > MAX_PAGE){
+            result = false;
+        }
+        if(num2 - num1 != 1){
+            result = false;
+        }
+        if(num1 % 2 == 1 && num2 % 2 == 0){
+            result = false;
+        }
+        return result;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
