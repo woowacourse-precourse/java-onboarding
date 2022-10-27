@@ -12,6 +12,13 @@ public class InvalidEmails {
     }
 
     public void add(String email) {
+        if (alreadyExistEmail(email)) {
+            return;
+        }
         emails.add(email);
+    }
+
+    private boolean alreadyExistEmail(String email) {
+        return emails.contains(email);
     }
 }
