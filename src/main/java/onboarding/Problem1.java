@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
+    private static final int POBI_WIN = 1;
+    private static final int CRONG_WIN = 2;
+    private static final int DRAW = 0;
+    private static final int EXCEPTION = -1;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
@@ -32,5 +37,15 @@ class Problem1 {
             answer = Math.max(answer,mulnumber(Integer.toString(number)));
         }
         return answer;
+    }
+
+    public static int comparePobiCrong(int pobi,int crong){
+        if (pobi > crong){
+            return POBI_WIN;
+        } else if (pobi < crong){
+            return CRONG_WIN;
+        } else{
+            return DRAW;
+        }
     }
 }
