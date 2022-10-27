@@ -17,6 +17,17 @@ public class Problem4 {
      * 구분해주는 함수
      */
 
+    static int upper_lower_case(int ascii){
+        if(ascii>=65 && ascii<=90){
+            return 2;
+        }
+
+        if(ascii>=97 && ascii<=122){
+            return 1;
+        }
+
+        return 0;
+    }
 
     /**
      * 반환값을 보고 각각 변환해주는 함수
