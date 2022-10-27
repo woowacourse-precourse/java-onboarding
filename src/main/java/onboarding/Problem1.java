@@ -20,7 +20,7 @@ class Problem1 {
 
         // 포비와 크롱의 리스트에 들어있는 값을 배열에 넣음
         Iterator<Integer> pobiItr = pobi.iterator();
-        Iterator<Integer> crongItr = pobi.iterator();
+        Iterator<Integer> crongItr = crong.iterator();
 
         for(int i=0; i<pobiPage.length; i++){
             pobiPage[i] = pobiItr.next();
