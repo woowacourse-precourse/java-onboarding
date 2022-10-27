@@ -33,14 +33,49 @@ class Problem1 {
         }
         System.out.println(pobiMax);
 
-
-//        int[] crongValues = crong.stream().mapToInt(i->i).toArray();
-//        for(int crongValue : crongValues){
-//            int[] arrNum = Stream.of(String.valueOf(crongValue).split("")).mapToInt(Integer::parseInt).toArray();
-//            System.out.println(Arrays.toString(arrNum));
-//        }
+//        Crong
+        int[] crongResArr = new int[2];
+        int[] crongArr = crong.stream().mapToInt(i->i).toArray();
+        int index2 =0;
+        for (int crongValue: crongArr){
+            int[] crongNum = Stream.of(String.valueOf(crongValue).split("")).mapToInt(Integer::parseInt).toArray();
+            int crongAdd = 0;
+            int crongMult = 1;
+            for (int num: crongNum){
+                crongAdd += num;
+                crongMult *= num;
+            }
+            if(crongAdd>crongMult){
+                crongResArr[index2]=crongAdd;
+            }else{
+                crongResArr[index2]=crongMult;
+            }
+            index2 = index2+ 1;
+        }
+        System.out.println(Arrays.toString(crongResArr));
+        int crongMax = crongResArr[0];
+        for(int i=1 ; i<crongResArr.length ; i++) {
+            if(crongResArr[i]>crongMax) {
+                crongMax = crongResArr[i];
+            }
+        }
+        System.out.println(crongMax);
 
         int answer = Integer.MAX_VALUE;
+
+        if(pobiMax > crongMax){
+            answer = 1;
+            System.out.println("Pobi win");
+        }else if(pobiMax < crongMax){
+            answer = 2;
+            System.out.println("Crong win");
+        }else{
+            answer = 0;
+            System.out.println("무승부");
+        }
+
+
+
         return answer;
     }
 }
