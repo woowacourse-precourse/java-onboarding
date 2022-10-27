@@ -16,8 +16,22 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
 
-        StringBuffer strBCcryptogram = new StringBuffer(cryptogram);
-        
+        StringBuffer strBCCryptogram = new StringBuffer(cryptogram);
+        StringBuffer strBAnswer = new StringBuffer(answer);
+        StringBuffer compareBefore = new StringBuffer(answer);
+
+        while (true) {
+
+            strBAnswer = removeRepeat(strBCCryptogram);
+            if (compareBefore == removeRepeat(strBCCryptogram)) {
+                break;
+            }
+            compareBefore = strBAnswer;
+            strBCCryptogram = strBAnswer;
+
+        }
+
+        answer = strBAnswer.toString();
         return answer;
     }
 }
