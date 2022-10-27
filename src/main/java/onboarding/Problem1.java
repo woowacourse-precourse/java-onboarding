@@ -10,15 +10,6 @@ class Problem1 {
 		int crongRightPage= crong.get(1);
 		int result = 0;
 
-		result = checkException(pobiLeftPage, pobiRightPage);
-		if(result == -1) {
-			return result;
-		}
-		result = checkException(crongLeftPage, crongRightPage);
-		if(result == -1) {
-			return result;
-		}
-
 		int pobiLeftSum = 0;
 		int pobiRightSum = 0;
 		int crongLeftSum = 0;
@@ -28,6 +19,15 @@ class Problem1 {
 		int pobiRightMultiple = 1;
 		int crongLeftMultiple = 1;
 		int crongRightMultiple = 1;
+
+		result = checkException(pobiLeftPage, pobiRightPage);
+		if(result == -1) {
+			return result;
+		}
+		result = checkException(crongLeftPage, crongRightPage);
+		if(result == -1) {
+			return result;
+		}
 
 		pobiLeftSum = calculateSum(pobiLeftPage, pobiLeftSum);
 		pobiRightSum = calculateSum(pobiRightPage, pobiRightSum);
@@ -44,10 +44,11 @@ class Problem1 {
 		int crongLeftScore = Math.max(crongLeftSum, crongLeftMultiple);
 		int crongRightScore = Math.max(crongRightSum, crongRightMultiple);
 
-		int pobiScore = Math.max(pobiLeftScore, pobiRightScore);
-		int crongScore = Math.max(crongLeftScore, crongRightScore);
+		int pobiFinalScore = Math.max(pobiLeftScore, pobiRightScore);
+		int crongFinalScore = Math.max(crongLeftScore, crongRightScore);
 
-		// int answer = Integer.MAX_VALUE;
+		result = findWinner(pobiFinalScore, crongFinalScore);
+
 		return result;
 	}
 
@@ -78,5 +79,17 @@ class Problem1 {
 			page /= 10;
 		}
 		return multiple;
+	}
+
+	private static int findWinner(int pobiFinalScore, int crongFinalScore) {
+		int result;
+		if(pobiFinalScore > crongFinalScore) {
+			result = 1;
+		} else if(pobiFinalScore < crongFinalScore) {
+			result = 2;
+		} else {
+			result = 0;
+		}
+		return result;
 	}
 }
