@@ -16,11 +16,28 @@ public class Problem2 {
 			return cryptogram;
 		}
 		// 인접한 중복 문자열 제거
+		Stack<Character> decryptionStack= removeDuplicates(chars);
 		// stack을 문자열로 변환
 		// 해독할때까지 재귀
 
 		String answer = "answer";
 		return answer;
+	}
+	static Stack<Character> removeDuplicates(char[] chars) {
+
+		char prev = 0;
+		int k = 0;
+		Stack<Character> stack = new Stack<>();
+
+		for (char c : chars) {
+			if (prev != c) {
+				stack.push(c);
+				prev = c;
+			} else {
+				stack.pop();
+			}
+		}
+		return stack;
 	}
 	static boolean isDuplicate(char[] arr) {
 
