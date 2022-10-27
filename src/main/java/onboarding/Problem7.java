@@ -22,15 +22,17 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+        Integer [] tmpArray;
 
         friendsList = friends;
         userName = user;
 
         givePoint(user, visitors);
 
-        answer = getKey(sortList());
+        tmpArray = sortList();
 
-        System.out.println("list : " + friendsPointMap);
+        answer = getKey(tmpArray ,saveSortCheckPoint(tmpArray));
+
         return answer;
     }
 
@@ -41,9 +43,17 @@ public class Problem7 {
 
         for (int i = 0; i < friendsList.size(); i++) {
             if (user.equals(friendsList.get(i).get(firstFriend)))
+            {
+                if (!user.equals(userName) && userName.equals(friendsList.get(i).get(secondFriend)))
+                    continue;
                 userFriendsList.add(friendsList.get(i).get(secondFriend));
+            }
             if (user.equals((friendsList.get(i).get(secondFriend))))
+            {
+                if (!user.equals(userName) && userName.equals(friendsList.get(i).get(secondFriend)))
+                    continue;
                 userFriendsList.add(friendsList.get(i).get(firstFriend));
+            }
         }
         return userFriendsList;
     }
@@ -61,7 +71,6 @@ public class Problem7 {
     public static void givePoint(String user, List<String> visitors)
     {
         List<String> userFriendsList;
-        Map<String, Integer> userPointMap;
 
         //사용자와 친구인 목록
         userFriendsList = findUserFriends(user);
@@ -73,11 +82,10 @@ public class Problem7 {
     //사용자와 친구인 친구의 목록을 구해서 점수를 주는 함수
     public static List<String> findFriendsOfFriend(List<String> userFriendsList)
     {
-        int root = 0;
         List<String> friendOfFriendsList;
 
         //사용자와 친구인 친구의 목록
-        friendOfFriendsList = findUserFriends(userFriendsList.get(root));
+        friendOfFriendsList = findUserFriends(userFriendsList.get(0));
         for (int i = 1; i < userFriendsList.size(); i++)
             friendOfFriendsList.addAll(findUserFriends(userFriendsList.get(i)));
 
@@ -90,11 +98,6 @@ public class Problem7 {
     {
         for (int i = 0; i < basicList.size(); i++)
         {
-            //사용자가 리스트에 있을 경우
-            if (userName.equals(basicList.get(i)))
-                basicList.remove(i);
-            if (i == basicList.size())
-                break;
             //사용자의 친구가 리스트에 있을 경우
             for (int j = 0; j < keywordList.size(); j++)
             {
@@ -124,35 +127,48 @@ public class Problem7 {
     }
 
     //value 로 key 찾기
-    public static List<String> getKey(Integer[] valueList) {
+    public static List<String> getKey(Integer[] valueList, List<Integer> checkPoint) {
+        int cnt = 0;
+        int checkpointLength = 0;
         int length;
         List<String> recommendFriendsList = new ArrayList<>();
 
         length = Math.min(recommendNum, valueList.length);
 
-        for (int i = 0; i < length; i++)
-        {
+        for (int i = 0; i < length; i++) {
             for (String key : friendsPointMap.keySet()) {
                 if (valueList[i] == friendsPointMap.get(key)) {
                     if (recommendFriendsList.contains(key))
                         continue;
                     recommendFriendsList.add(key);
+                    cnt++;
+                    if (i == length - 1)
+                        continue;
+                    if (cnt == checkPoint.get(checkpointLength))
+                    {
+                        Collections.sort(recommendFriendsList);
+                        checkpointLength++;
+                        cnt = 0;
+                    }
                     break;
                 }
             }
         }
         return recommendFriendsList;
     }
-
     public static Integer[] sortList()
     {
-        int cnt;
-        List<Integer> sortCheckPoint = new ArrayList<>();
-
         Collection <Integer> values = friendsPointMap.values();
         //배열 생성
         Integer [] intArray = values.toArray(new Integer[0]);
         Arrays.sort(intArray, Collections.reverseOrder());
+        return intArray;
+    }
+
+    public static List<Integer> saveSortCheckPoint(Integer[] intArray)
+    {
+        int cnt;
+        List<Integer> checkPointList = new ArrayList<>();
 
         for (int i = 0; i < intArray.length; i++)
         {
@@ -161,10 +177,8 @@ public class Problem7 {
                 cnt++;
             }
             i = cnt;
-            sortCheckPoint.add(cnt);
+            checkPointList.add(cnt);
         }
-
-        System.out.println(sortCheckPoint);
-        return intArray;
+        return checkPointList;
     }
 }
