@@ -16,7 +16,7 @@ public class Problem3 {
         int cnt = 0;
 
         while(num > 0){
-            if((num % 10) % 3 == 0){
+            if((num % 10) % 3 == 0 && (num % 10) / 3 >0){
                 cnt++;
             }
             num /= 10;
