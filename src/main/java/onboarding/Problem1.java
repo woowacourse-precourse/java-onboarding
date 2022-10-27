@@ -6,13 +6,19 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int pobiScore = pageScoreCompare(pobi);
         int crongScore = pageScoreCompare(crong);
+
         int answer = Integer.MAX_VALUE;
         return answer;
     }
 
     private static int pageScoreCompare(List<Integer> person) {
-        pageScore(person.get(0));
-        return 98;
+        int leftPageScore = pageScore(person.get(0));
+        int rightPageScore = pageScore(person.get(1));
+        if (leftPageScore > rightPageScore) {
+            return leftPageScore;
+        }
+
+        return rightPageScore;
     }
 
     private static int pageScore(int page) {
@@ -21,6 +27,7 @@ class Problem1 {
         int hundredNumber;
         int sumNum;
         int multiplyNum;
+
         if (page / 100 != 0) {
             oneNumber = page % 10;
             tenNumber = (page % 100) / 10;
