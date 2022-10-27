@@ -12,6 +12,7 @@ public class Problem6 {
         List<String> answer = new ArrayList<>();
         fillAlarmSystem(forms.size());
         nickNameLoop(extractNickName(forms));
+        addEmailInResultList(answer,forms);
         return answer;
     }
     private static void fillAlarmSystem(int formsSize){
