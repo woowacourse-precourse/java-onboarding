@@ -15,6 +15,11 @@ public class Problem5 {
 
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
+        answer = new ArrayList<>();
+        for(int i = 0; i < unit_money.length; i++) {
+            answer.add(getMoneyList(money, i));
+            money -= getMoneyList(money, i)*unit_money[i];
+        }
         return answer;
     }
 }
