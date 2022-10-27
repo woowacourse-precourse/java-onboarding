@@ -17,13 +17,13 @@ public class Page {
 	}
 
 	private void validateNotStart(int pageNumber) {
-		if (pageNumber <= 0) {
+		if (pageNumber <= 1) {
 			throw new IllegalArgumentException("페이지는 시작면보다 커야합니다");
 		}
 	}
 
 	private void validateNotEnd(int pageNumber) {
-		if (pageNumber > 400) {
+		if (pageNumber >= 400) {
 			throw new IllegalArgumentException("페이지는 마지막면보다 작아야합니다");
 		}
 	}

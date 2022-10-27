@@ -18,12 +18,12 @@ public class PageTest {
 	@Test
 	@DisplayName("페이지는 시작면보다 커야한다")
 	void page_is_greater_than_start() {
-		assertThatIllegalArgumentException().isThrownBy(() -> new Page(0));
+		assertThatIllegalArgumentException().isThrownBy(() -> new Page(1));
 	}
 
 	@Test
 	@DisplayName("페이지는 마지막면보다 작아야한다")
 	void page_is_less_than_end() {
-		assertThatIllegalArgumentException().isThrownBy(() -> new Page(401));
+		assertThatIllegalArgumentException().isThrownBy(() -> new Page(400));
 	}
 }
