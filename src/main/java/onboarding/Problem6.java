@@ -4,14 +4,19 @@ import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
         Set<String> duplicatedUserEmailSet = getDuplicatedUserEmailHashSet(forms);
-        return answer;
+        List<String> duplicatedUserEmailAscendingList = getDuplicatedUserEmailAscendingList(duplicatedUserEmailSet);
+        return duplicatedUserEmailAscendingList;
+    }
+
+    private static List<String> getDuplicatedUserEmailAscendingList(Set<String> duplicatedUserEmailSet) {
+        List<String> duplicatedUserEmailAscendingList = new ArrayList<>();
+        return duplicatedUserEmailAscendingList;
     }
 
     public static HashSet<String> getDuplicatedUserEmailHashSet(List<List<String>> forms) {
         HashMap<String, ArrayList<String>> stringEmailHashMap = getStringEmailHashMap(forms);
-        HashSet<String> duplicatedUserEmailHashSet = new HashSet<>();
+        HashSet<String> duplicatedUserEmailHashSet = getDuplicatedUserEmailHashSet(stringEmailHashMap);
 
         return duplicatedUserEmailHashSet;
     }
@@ -32,5 +37,17 @@ public class Problem6 {
             }
         }
         return stringEmailMap;
+    }
+
+    public static HashSet<String> getDuplicatedUserEmailHashSet(HashMap<String, ArrayList<String>> stringEmailHashMap) {
+        Set<String> partialStringSet = stringEmailHashMap.keySet();
+        HashSet<String> duplicatedUserEmailHashSet = new HashSet<>();
+        for (String partialString : partialStringSet) {
+            ArrayList<String> emailList = stringEmailHashMap.get(partialString);
+            if (emailList.size() > 1) {
+                duplicatedUserEmailHashSet.addAll(emailList);
+            }
+        }
+        return duplicatedUserEmailHashSet;
     }
 }
