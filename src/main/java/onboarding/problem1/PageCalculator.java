@@ -1,9 +1,9 @@
 package onboarding.problem1;
 
-public class PageCalculator implements PageCalculationFeature{
+public class PageCalculator implements PageCalculationFeature<Integer, Integer>{
 
     @Override
-    public Integer plusNumber(Integer input) {
+    public Integer plus(Integer input) {
         Integer result = 0;
         while (input != 0) {
             result += input % 10;
@@ -13,7 +13,7 @@ public class PageCalculator implements PageCalculationFeature{
     }
 
     @Override
-    public Integer multiplyNumber(Integer input) {
+    public Integer multiply(Integer input) {
         Integer result = 1;
         while (input != 0) {
             result *= input % 10;

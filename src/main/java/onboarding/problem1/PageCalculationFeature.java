@@ -1,6 +1,6 @@
 package onboarding.problem1;
 
-public interface PageCalculationFeature {
-    Integer plusNumber(Integer input);
-    Integer multiplyNumber(Integer input);
+public interface PageCalculationFeature<T, R> {
+    R plus(T input);
+    R multiply(T input);
 }
