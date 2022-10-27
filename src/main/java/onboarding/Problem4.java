@@ -14,6 +14,9 @@ package onboarding;
  *      - 알파벳 26개로 짝이 맞기때문에 가능
  */
 public class Problem4 {
+    private static final int LARGE_CHAR = 65 + 90;
+    private static final int SMALL_CHAR = 97 + 122;
+
     public static String solution(String word) {
         String answer = "";
 
@@ -21,7 +24,7 @@ public class Problem4 {
             char currentChar = word.charAt(i);
 
             if (isAlpha(currentChar)) {
-                //변경
+                currentChar = changeAlpha(currentChar);
             }
             answer += currentChar;
         }
@@ -30,5 +33,12 @@ public class Problem4 {
 
     private static boolean isAlpha(char currentChar) {
         return ('a' <= currentChar && currentChar <= 'z') || ('A' <= currentChar && currentChar <= 'Z');
+    }
+
+    private static char changeAlpha(char ascii) {
+        if (ascii <= 90) {
+            return (char) (LARGE_CHAR - ascii);
+        }
+        return (char) (SMALL_CHAR - ascii);
     }
 }
