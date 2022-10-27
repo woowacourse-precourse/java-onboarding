@@ -8,7 +8,7 @@ public class Problem2 {
         while (true){
             before = answer;
             answer = delete_eq(answer);
-            if (answer == "")
+            if (answer.equals(""))
                 break;
             else if (before.equals(answer)) {
                 break;
