@@ -10,7 +10,8 @@ public class Problem6 {
     }
 
     private static List<String> getDuplicatedUserEmailAscendingList(Set<String> duplicatedUserEmailSet) {
-        List<String> duplicatedUserEmailAscendingList = new ArrayList<>();
+        List<String> duplicatedUserEmailAscendingList = new ArrayList<>(duplicatedUserEmailSet);
+        Collections.sort(duplicatedUserEmailAscendingList);
         return duplicatedUserEmailAscendingList;
     }
 
