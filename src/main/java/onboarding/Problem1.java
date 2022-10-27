@@ -15,7 +15,13 @@ class Problem1 {
 
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
 		int answer;
-		if (!checkPageForm(pobi, crong)) {
+		int pobiLeftPage = pobi.get(LEFT_PAGE);
+		int pobiRightPage = pobi.get(RIGHT_PAGE);
+		int crongLeftPage = crong.get(LEFT_PAGE);
+		int crongRightPage = crong.get(RIGHT_PAGE);
+
+		if (!(checkPageForm(pobiLeftPage, pobiRightPage)
+			&& checkPageForm(crongLeftPage, crongRightPage))) {
 			return NOT_PAGE_NUMBER;
 		}
 		int pobiMax = pageMax(pobi);
@@ -31,15 +37,22 @@ class Problem1 {
 		return answer;
 	}
 
-	private static boolean checkPageForm(List<Integer> pobi, List<Integer> crong) {
-		if (pobi.get(LEFT_PAGE) < MIN_PAGE || pobi.get(RIGHT_PAGE) > MAX_PAGE
-			|| crong.get(LEFT_PAGE) < MIN_PAGE || crong.get(RIGHT_PAGE) > MAX_PAGE) {
-			return false;
-		}
-		if ((pobi.get(RIGHT_PAGE) - pobi.get(LEFT_PAGE)) != 1 || (crong.get(RIGHT_PAGE) - crong.get(LEFT_PAGE)) != 1) {
-			return false;
-		}
-		return true;
+	private static boolean checkPageForm(int leftPage, int rightPage) {
+		return checkBetweenPage(leftPage, rightPage)
+			&& checkLeftOddRightEven(leftPage, rightPage)
+			&& checkDifferenceOnePage(leftPage, rightPage);
+	}
+
+	private static boolean checkBetweenPage(int leftPage, int rightPage) {
+		return (leftPage >= MIN_PAGE) && (rightPage <= MAX_PAGE);
+	}
+
+	private static boolean checkLeftOddRightEven(int leftPage, int rightPage) {
+		return (leftPage % 2 == 1) && (rightPage % 2 == 0);
+	}
+
+	private static boolean checkDifferenceOnePage(int leftPage, int rightPage) {
+		return rightPage - leftPage == 1;
 	}
 
 	private static int addDigit(Integer page) {
