@@ -3,11 +3,7 @@ package onboarding.problem1;
 import java.util.List;
 
 public class PageValidCheckerImp implements PageValidChecker {
-	private final int lastPage;
-
-	public PageValidCheckerImp(int lastPage) {
-		this.lastPage = lastPage;
-	}
+	private static final int lastPage = 400;
 
 	private boolean checkRange(List<Integer> user) {
 		return user.stream().allMatch(p -> p >= 1 && p <= lastPage);
