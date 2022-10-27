@@ -18,9 +18,18 @@ import java.util.stream.IntStream;
  * */
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
+        return toReverseString(word.toCharArray());
+    }
 
-        return answer;
+    private static String toReverseString(char[] words) {
+        StringBuilder result = new StringBuilder();
+        char[] reverseAlphaArray = getAlphaCharArray();
+
+        for (char word : words) {
+            //TODO::문자 반전시키는 기능 추가
+        }
+
+        return result.toString();
     }
 
     private static char[] getAlphaCharArray() {
