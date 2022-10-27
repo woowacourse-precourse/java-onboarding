@@ -12,9 +12,9 @@ class ApplicationTest {
     @Nested
     class Problem1Test {
         @Test
-        @DisplayName("리스트나 배열의 길이가 2인지 검증 : -1")
+        @DisplayName("리스트나 배열의 길이가 2인지 검증")
         void testValidateListSize() {
-            List<Integer> pobi = List.of(1, 2, 3);
+            List<Integer> pobi = List.of(3, 4);
             List<Integer> crong = List.of(197, 198);
 
             assertThat(pobi).hasSize(2);
