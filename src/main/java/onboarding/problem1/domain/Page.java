@@ -44,4 +44,8 @@ public class Page {
     public boolean isBigger(final Page page) {
         return this.page > page.page;
     }
+    
+    public boolean isExceededRange() {
+        return page < 3 || page > 398;
+    }
 }

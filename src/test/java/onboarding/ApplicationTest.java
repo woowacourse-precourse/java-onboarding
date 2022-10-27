@@ -76,9 +76,9 @@ class ApplicationTest {
         
         @Test
         void case9() {
-            List<Integer> pobi = List.of(1, 2);
+            List<Integer> pobi = List.of(3, 4);
             List<Integer> crong = List.of(11, 12);
-            int result = 2;
+            int result = 1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
         
@@ -93,7 +93,23 @@ class ApplicationTest {
         @Test
         void case11() {
             List<Integer> pobi = List.of(1, 2);
+            List<Integer> crong = List.of(397, 398);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+    
+        @Test
+        void case12() {
+            List<Integer> pobi = List.of(3, 4);
             List<Integer> crong = List.of(399, 400);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+    
+        @Test
+        void case13() {
+            List<Integer> pobi = List.of(3, 4);
+            List<Integer> crong = List.of(397, 398);
             int result = 2;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }

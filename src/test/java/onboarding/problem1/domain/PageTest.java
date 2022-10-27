@@ -3,6 +3,8 @@ package onboarding.problem1.domain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
@@ -55,5 +57,12 @@ public class PageTest {
                 () -> assertThat(page.isBigger(new Page(235))).isTrue(),
                 () -> assertThat(page.isBigger(new Page(237))).isFalse()
         );
+    }
+    
+    @DisplayName("페이지 범위 벗어났는지 확인")
+    @ParameterizedTest(name = "{displayName} : page = {0}, result = {1}")
+    @CsvSource(value = {"1, true", "2, true", "399, true", "400, true", "3, false", "4, false", "397, false", "398, false"})
+    void isExceededRange(int page, boolean result) {
+        assertThat(new Page(page).isExceededRange()).isEqualTo(result);
     }
 }

@@ -40,7 +40,16 @@ public class Player {
     }
     
     private boolean isNotCorrectPages(final Player rightPlayer) {
-        return isPlayersNotCorrectEvenAndOddNumber(rightPlayer) || isPlayersDifferenceNotOne(rightPlayer) || isPlayersLeftBigger(rightPlayer);
+        return isPlayersNotCorrectEvenAndOddNumber(rightPlayer) || isPlayersDifferenceNotOne(rightPlayer) || isPlayersLeftBigger(rightPlayer)
+                || isPlayersExceededRange(rightPlayer);
+    }
+    
+    private boolean isPlayersExceededRange(final Player rightPlayer) {
+        return isExceededRange() || rightPlayer.isExceededRange();
+    }
+    
+    private boolean isExceededRange() {
+        return pages.get(0).isExceededRange() || pages.get(1).isExceededRange();
     }
     
     private boolean isPlayersLeftBigger(final Player rightPlayer) {
