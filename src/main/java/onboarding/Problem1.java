@@ -1,7 +1,9 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 class Problem1 {
 
@@ -54,5 +56,12 @@ class Problem1 {
         List<Integer> calculationList = addEachDigitOfPageNumber(list);
         calculationList.addAll(multiplyEachDigitOfPageNumber(list));
         return calculationList;
+    }
+
+    public int getMaxValue(List<Integer> list) {
+        int maxValue = list.stream()
+                .max(Integer::compare)
+                .orElseThrow(NoSuchElementException::new);
+        return maxValue;
     }
 }
