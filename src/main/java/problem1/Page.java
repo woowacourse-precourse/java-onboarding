@@ -1,4 +1,4 @@
-package Problem1;
+package problem1;
 
 import java.util.Arrays;
 import java.util.stream.Stream;
