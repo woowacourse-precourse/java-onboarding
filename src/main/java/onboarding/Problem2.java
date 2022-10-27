@@ -4,7 +4,23 @@ import java.util.LinkedList;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        LinkedList<Character> deduplicationLetters = new LinkedList<>();
+        char[] cryptogramCharArray = cryptogram.toCharArray();
+
+        for (char letter : cryptogramCharArray) {
+            if (isEmpty(deduplicationLetters)) {
+                addLetter(deduplicationLetters,letter);
+                continue;
+            }
+            if (isDuplicated(deduplicationLetters, letter)) {
+                removeDuplication(deduplicationLetters);
+                continue;
+            }
+            //not empty & not duplicated
+            addLetter(deduplicationLetters,letter);
+        }
+
+        String answer = getDeduplication(deduplicationLetters);
         return answer;
     }
 
