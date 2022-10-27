@@ -1,11 +1,37 @@
 package onboarding;
 
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class Problem6 {
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
+    }
+
+    public static class CrewNicknameChecker {
+
+        private static Map<String, String> partOfNicknameMap = new HashMap<>();
+        private static Set<String> duplicateNicknameCrewSet = new HashSet<>();
+
+        private static void duplicateCrewNickname(Crew crew) {
+            String nickname = crew.getNickname();
+
+            for (int i = 1; i < nickname.length(); i++) {
+                String partOfNickname = nickname.substring(i - 1, i + 1);
+
+                if (partOfNicknameMap.containsKey(partOfNickname)) {
+                    duplicateNicknameCrewSet.add(partOfNicknameMap.get(partOfNickname));
+                    duplicateNicknameCrewSet.add(crew.getEmail());
+                    continue;
+                }
+                partOfNicknameMap.put(partOfNickname, crew.getEmail());
+            }
+        }
     }
 }
 
