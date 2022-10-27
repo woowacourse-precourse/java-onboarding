@@ -16,6 +16,19 @@ public class ThreefoldGamer {
     }
 
     /**
+     * Run threefold game
+     * @return total number of 3, 6, 9 in 1 to last number
+     */
+    public int runGame() {
+        int count = 0;
+        for (int i = 1; i <= NUM; i++) {
+            String numStr = String.valueOf(NUM);
+            count += countThreefoldNum(numStr);
+        }
+        return count;
+    }
+
+    /**
      * Count how many threefold nums(3, 6, 9) are in single number
      * @param numStr number to count
      * @return total number of threefold number in single number
