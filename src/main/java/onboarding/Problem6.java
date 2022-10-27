@@ -31,10 +31,14 @@ public class Problem6 {
     }
 
     // 인덱스 모음 리스트에 따른 이메일 리스트 반환
-    static List<String> returnEmail(List<Integer> similarList){
-        List<String> answer = List.of("answer");
-
-        return answer;
+    static List<String> returnEmail(List<List<String>> forms, List<Integer> similarList){
+        ArrayList<String> emailList = new ArrayList<>();
+        for(int i = 0; i < similarList.size(); i++){
+            if(similarList.get(i) == 1){
+                emailList.add(forms.get(i).get(0));
+            }
+        }
+        return emailList;
     }
 
     public static List<String> solution(List<List<String>> forms) {
