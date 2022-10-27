@@ -41,7 +41,7 @@
 
 
 3. [문제 3](./docs/PROBLEM3.md)
-  - [ ] isValidInput
+  - [X] isValidInput
   - 인자값이 유효한지 검사한다.
     - [ ] isInRange
     - 1 ~ 10000 사이의 값인지 검사한다.
