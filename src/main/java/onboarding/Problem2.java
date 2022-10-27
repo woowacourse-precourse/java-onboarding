@@ -4,14 +4,12 @@ import java.util.Stack;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-
         Stack<Character> stack = new Stack<>();
         char lastDeleteAlphabet = ' ';
         char[] alphabetArray = cryptogram.toCharArray();
         for (char alphabet : alphabetArray) {
             if (stack.isEmpty()) {
-                stack.push(alphabetArray[alphabet]);
+                stack.push(alphabet);
                 continue;
             }
             char forefrontAlphabet = stack.peek();
@@ -26,8 +24,11 @@ public class Problem2 {
             stack.push(alphabet);
             lastDeleteAlphabet = ' ';
         }
-
-
+        StringBuilder sb = new StringBuilder();
+        while (!stack.isEmpty()) {
+            sb.append(stack.pop());
+        }
+        String answer = sb.reverse().toString();
         return answer;
     }
 }
