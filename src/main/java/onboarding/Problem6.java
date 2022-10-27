@@ -7,6 +7,27 @@ import java.util.Map;
 import java.util.Set;
 
 public class Problem6 {
+    static class StringIterator {
+        private StringBuilder sb;
+        private int i;
+        private int max;
+        StringIterator (String init) {
+            sb = new StringBuilder(init);
+            i = 1;
+            max = init.length();
+        }
+
+        public String next(){
+            if (hasNext()) {
+                return sb.substring(i-1, i++);
+            }
+            return null;
+        }
+
+        public boolean hasNext() {
+            return max > i;
+        }
+    }
     private static Map<String,Set<String>> nicknameMap = new HashMap<>();
     private static Set<String> emailSet = new HashSet<>();
     public static List<String> solution(List<List<String>> forms) {
