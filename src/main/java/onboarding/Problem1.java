@@ -27,3 +27,23 @@ class Problem1 {
         return answer;
     }
 }
+
+class Validator {
+    public boolean is_proper_pages(List<Integer> list) {
+        int l_page = list.get(0);
+        int r_page = list.get(1);
+        return is_continuous(l_page, r_page) && is_odd(l_page) && is_even(r_page);
+    }
+
+    private boolean is_odd(int num) {
+        return num % 2 == 1;
+    }
+
+    private boolean is_even(int num) {
+        return num % 2 == 0;
+    }
+
+    private boolean is_continuous(int num1, int num2) {
+        return num2 - num1 == 1;
+    }
+}
