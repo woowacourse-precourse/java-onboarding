@@ -36,4 +36,16 @@ class Problem1 {
         int mul = max.get(0) * max.get(1);
         return Math.max(add,mul);
     }
+
+    /*
+     *예외사항
+     */
+    static boolean exception(List<Integer> list){
+        boolean check = false;
+        if(!(list.get(1) - list.get(0) == 1)) {
+            check = true;
+        }
+        return check;
+    }
+
 }
