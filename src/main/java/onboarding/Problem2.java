@@ -11,7 +11,9 @@ import java.util.Stack;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "";
-        DeleteDuplication(cryptogram);
+        for(char result :DeleteDuplication(cryptogram)){
+            answer+=result;
+        }
         return answer;
     }
     public static Stack<Character> DeleteDuplication(String str) {
