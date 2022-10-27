@@ -12,7 +12,7 @@ public class Problem2 {
     private static String delete_eq(String cryptogram){
         int str_len = cryptogram.length();
         char stand = ' ';
-        int stand_location;
+        int stand_location = -1;
         String new_cryptogram = "";
         for(int i=0;i<str_len-1;i++){
             if (cryptogram.charAt(i)==cryptogram.charAt(i+1) || (stand == cryptogram.charAt(i) && stand_location == i)){
