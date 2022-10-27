@@ -3,11 +3,11 @@ package onboarding;
 import java.util.Stack;
 
 /** 기능 목록
- * solutionLogic : 메인 솔루션
- * stackToString : Stack을 String으로 변환
- * checkValid : 에러 처리
- * checkLength : 문자열 길이 유효성 검사
- * checkLowerCase : 문자열 내 소문자 유효성 검사
+ * solutionLogic    : 메인 솔루션
+ * stackToString    : Stack을 String으로 변환
+ * checkValid       : 에러 처리
+ * checkLength      : 문자열 길이 유효성 검사
+ * checkLowerCase   : 문자열 내 소문자 유효성 검사
  */
 
 public class Problem2 {

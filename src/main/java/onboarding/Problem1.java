@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /** 기능 목록
- * method 1 : 각 자리 숫자 합 반환
- * method 2 : 각 자리 숫자 곱 반환
- * method 3 : 사용자의 가장 큰 값 반환
- * method 4 : 곱과 합 중 가장 큰 값 반환
- * method 5 : 숫자를 각 자리의 수의 배열로 반환
- * method 6 : 예외 상황 체크
- * method 7 : 페이지 리스트의 길이 체크
- * method 8 : 페이지 값 유효성 체크
+ * numSum                   : 각 자리 숫자 합 반환
+ * numMulti                 : 각 자리 숫자 곱 반환
+ * maxResult                : 사용자의 가장 큰 값 반환
+ * compareSumMulti          : 곱과 합 중 가장 큰 값 반환
+ * numToDigits              : 숫자를 각 자리의 수의 배열로 반환
+ * checkValid               : 예외 상황 체크
+ * checkListLengthValid     : 페이지 리스트의 길이 체크
+ * checkPageValid           : 페이지 값 유효성 체크
  */
 
 class Problem1 {

@@ -1,8 +1,8 @@
 package onboarding;
 
 /** 기능 목록
- * 
- * checkValid : 예외 처리
+ * countClap    :
+ * checkValid   : 예외 처리
  */
 
 
