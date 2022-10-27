@@ -1,5 +1,6 @@
 package onboarding.problem6;
 
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class Crew {
@@ -7,15 +8,18 @@ public class Crew {
     private static final String EMAIL_FORMAT = "@email.com";
     private static final String KOREAN_REGEX = "^[가-힣]*$";
 
-    private String nickName;
     private String email;
+    private String nickName;
 
     public Crew(String nickName, String email) {
         this.nickName = nickName;
         this.email = email;
     }
 
-    public static Crew create(String nickName, String email) {
+    public static Crew create(List<String> form) {
+        final String email = form.get(0);
+        final String nickName = form.get(1);
+
         validateEmail(email);
         validateNickName(nickName);
         return new Crew(nickName, email);

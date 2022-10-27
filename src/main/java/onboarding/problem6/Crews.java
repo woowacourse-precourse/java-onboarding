@@ -8,7 +8,7 @@ public class Crews {
     private List<Crew> crews;
     private InvalidEmails invalidEmails;
 
-    protected Crews() {
+    public Crews() {
         this.crews = new ArrayList<>();
         this.invalidEmails = new InvalidEmails();
     }
@@ -19,12 +19,14 @@ public class Crews {
     }
 
     private void validateContainNickNameContinuously(String nickName) {
+        List<Crew> removeCrewList = new ArrayList<>();
         crews.stream()
                 .filter(crew -> nickNameFilter(crew.getNickName(), nickName))
                 .forEach(crew -> {
-                    crews.remove(crew);
+                    removeCrewList.add(crew);
                     invalidEmails.add(crew.getEmail());
-                });
+        });
+        crews.removeAll(removeCrewList);
     }
 
     private boolean nickNameFilter(String crewNickName, String nickName) {
@@ -48,7 +50,7 @@ public class Crews {
         return false;
     }
 
-    public void remove(Crew crew) {
-        crews.remove(crew);
+    public List<String> getEmails() {
+        return invalidEmails.getEmailsAsc();
     }
 }
