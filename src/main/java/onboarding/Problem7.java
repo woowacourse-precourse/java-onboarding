@@ -14,7 +14,9 @@ public class Problem7 {
                 List.of("shakevan", "mrko")
         );
         List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+        List<String> result = List.of("andole", "jun", "bedi");
         System.out.println(solution(user, friends, visitors));
+        System.out.println(result);
     }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
@@ -47,6 +49,13 @@ public class Problem7 {
         System.out.println(recommendScore);
 
         // 5. 점수별로 정렬하기
+        List<Map.Entry<String, Integer>> recommendScoreList = new LinkedList<>(recommendScore.entrySet());
+        recommendScoreList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
+        System.out.println(recommendScoreList);
+
+        for(Map.Entry<String, Integer> recommendPerson: recommendScoreList){
+            answer.add(recommendPerson.getKey());
+        }
 
         return answer;
     }
