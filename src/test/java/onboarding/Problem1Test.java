@@ -15,7 +15,7 @@ class Problem1Test {
         List<Integer> input = List.of(1, 2);
 
         //when
-        int res = Problem1.pageValidation(input,1,400);
+        int res = Problem1.pageValidation(input);
 
         //then
         Assertions.assertThat(res).isEqualTo(1);
@@ -27,7 +27,7 @@ class Problem1Test {
         List<Integer> input = List.of(3, 5);
 
         //when
-        int res = Problem1.pageValidation(input, 1, 400);
+        int res = Problem1.pageValidation(input);
 
         //then
         Assertions.assertThat(res).isEqualTo(-1);

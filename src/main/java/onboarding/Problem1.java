@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
+    private static int startNum = 1;
+    private static int lastNum = 400;
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer;
 
         // 둘 다 1을 return해야 예외사항 X
-        if (pageValidation(pobi, 1, 400) + pageValidation(crong, 1, 400) != 2)
+        if (pageValidation(pobi) + pageValidation(crong) != 2)
             return -1;
 
         // pobi와 crong 각각의 최고 점수를 계산한다.
@@ -30,7 +32,7 @@ class Problem1 {
      * 기능 1.1
      * input 페이지에 대한 Validation
      */
-    public static int pageValidation(List<Integer> pages, int startNum, int lastNum) {
+    public static int pageValidation(List<Integer> pages) {
         // lPage : 왼쪽 페이지 번호, rPage : 오른쪽 페이지 번호
         int lPage = pages.get(0);
         int rPage = pages.get(1);
