@@ -15,6 +15,16 @@ public class Problem2 {
                 stack.add(nowChar);
                 continue;
             }
+
+            char beforeChar = stack.peek();
+            if (nowChar == beforeChar) {
+                stack.pop();
+                deletedChar = nowChar;
+                continue;
+            }
+            if (nowChar == deletedChar) {
+                continue;
+            }
         }
         return answer;
     }
