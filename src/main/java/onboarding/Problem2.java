@@ -10,6 +10,12 @@ public class Problem2 {
 
     public static String solution(String cryptogram) {
         String answer = cryptogram;
+        String[] strArray = answer.split("");
+
+        while (isDuplication(strArray)){
+            answer = convertString(strArray);
+            strArray = answer.split("");
+        }
         return answer;
     }
     private static boolean isDuplication(String[] array) {
