@@ -9,12 +9,14 @@ public class Problem3 {
         return count;
     }
     public static int check369Exists(int number, int count) {
-        String sTemp = number + "";
-        for (int j = 0; j < sTemp.length(); j += 1) {
-            if (sTemp.charAt(j) == '3' || sTemp.charAt(j) == '6' || sTemp.charAt(j) == '9') {
+        String stringifiedNumber = number + "";
+        for (int j = 0; j < stringifiedNumber.length(); j += 1) {
+            if (stringifiedNumber.charAt(j) == '3' || stringifiedNumber.charAt(j) == '6' || stringifiedNumber.charAt(j) == '9') {
                 count += 1;
             }
         }
         return count;
     }
+
+
 }
