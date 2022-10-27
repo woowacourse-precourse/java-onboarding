@@ -25,13 +25,37 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
-        for (List<String> friend : friends) {
-            String name1 = friend.get(0);
-            String name2 = friend.get(1);
+        makeFriendsMap(friends);
+        relationScore(user);
+        visitorsScore(user, visitors);
+        extractRecFriends(answer);
+        return answer;
+    }
 
-            friendsMap.computeIfAbsent(name1, s -> new ArrayList<>()).add(name2);
-            friendsMap.computeIfAbsent(name2, s -> new ArrayList<>()).add(name1);
+    private static void extractRecFriends(List<String> answer) {
+        for (String s : friendsRec.keySet()) {
+            pq.offer(new Node(s, friendsRec.get(s)));
         }
+
+        while (!pq.isEmpty() && answer.size() <= 5) {
+            answer.add(pq.poll().name);
+        }
+    }
+
+    private static void visitorsScore(String user, List<String> visitors) {
+        for (String visitor : visitors) {
+            if (!friendsMap.get(user).contains(visitor)) {
+                if (friendsRec.get(visitor) == null) {
+                    friendsRec.put(visitor, 1);
+                }
+                else{
+                    friendsRec.put(visitor, friendsRec.get(visitor) + 1);
+                }
+            }
+        }
+    }
+
+    private static void relationScore(String user) {
         int cnt;
         for (String s : friendsMap.keySet()) {
             cnt = 0;
@@ -43,25 +67,16 @@ public class Problem7 {
                 friendsRec.put(s, 10 * cnt);
             }
         }
-        for (String visitor : visitors) {
-            if (!friendsMap.get(user).contains(visitor)) {
-                if (friendsRec.get(visitor) == null) {
-                    friendsRec.put(visitor, 1);
-                }
-                else{
-                    friendsRec.put(visitor, friendsRec.get(visitor) + 1);
-                }
-            }
-        }
+    }
 
-        for (String s : friendsRec.keySet()) {
-            pq.offer(new Node(s, friendsRec.get(s)));
-        }
+    private static void makeFriendsMap(List<List<String>> friends) {
+        for (List<String> friend : friends) {
+            String name1 = friend.get(0);
+            String name2 = friend.get(1);
 
-        while (!pq.isEmpty() && answer.size() <= 5) {
-            answer.add(pq.poll().name);
+            friendsMap.computeIfAbsent(name1, s -> new ArrayList<>()).add(name2);
+            friendsMap.computeIfAbsent(name2, s -> new ArrayList<>()).add(name1);
         }
-        return answer;
     }
 
     public static void main(String[] args) {
