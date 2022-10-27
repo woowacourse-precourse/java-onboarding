@@ -1,6 +1,7 @@
 package onboarding;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
@@ -20,6 +21,30 @@ class Problem1 {
             result = 1;
         }
         return result;
+    }
+
+    /**
+     * 페이지의 번호의 각 자리수를 더하거나 곱해 가장 큰 수 계산
+     * @param page
+     * @return
+     */
+    public static int maxNum(List<Integer> page) {
+        int page_sum = 0;
+        int page_mul = 1;
+        for (int x : page) {
+            ArrayList<Integer> arr = new ArrayList<>();
+            while (x > 0) {
+                arr.add(x % 10);
+                x /= 10;
+            }
+
+            for (int y : arr) {
+                page_sum += y;
+                page_mul *= y;
+            }
+        }
+        int page_max = (page_sum > page_mul) ? page_sum : page_mul;
+        return page_max;
     }
 
 }
