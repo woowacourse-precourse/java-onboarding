@@ -13,8 +13,34 @@ public class Problem2 {
             if (queueSize == 1) {
                 break;
             }
+
+            queue = removeDuplicatedStr(queue);
+
         }
         return answer;
+    }
+
+    private static Deque<String> removeDuplicatedStr(Deque<String> queue) {
+        Deque<String> tempQueue = new ArrayDeque<>();
+        String previousChar = queue.pollFirst();
+
+        while (!queue.isEmpty()) {
+            boolean isDeleted = popDuplicatedChar(queue, previousChar);
+            if (!isDeleted) {
+                tempQueue.add(previousChar);
+            }
+
+            if (queue.isEmpty()) {
+                break;
+            }
+
+            previousChar = queue.pollFirst();
+            if (queue.isEmpty()) {
+                tempQueue.add(previousChar);
+            }
+        }
+
+        return tempQueue;
     }
 
     private static boolean popDuplicatedChar(Deque<String> queue, String targetStr) {
