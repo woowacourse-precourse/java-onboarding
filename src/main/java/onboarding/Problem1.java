@@ -9,6 +9,9 @@ class Problem1 {
     static final int RIGHT = 1;
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        if (!isPageRange(pobi.get(LEFT), pobi.get(RIGHT)) || !isPageRange(crong.get(LEFT), crong.get(RIGHT))) {
+            return -1;
+        }
         return answer;
     }
 
