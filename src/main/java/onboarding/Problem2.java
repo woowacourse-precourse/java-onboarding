@@ -3,16 +3,14 @@ package onboarding;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = cryptogram;
-        String before;
+        String before = " ";
 
         /**
          * 중복을 다 제거할 때까지 반복
          */
-        while (true){
+        while (!answer.equals("") && !before.equals(answer)){
             before = answer;
             answer = delete_eq(answer);
-            if (answer.equals("") || before.equals(answer))
-                break;
         }
         return answer;
     }
