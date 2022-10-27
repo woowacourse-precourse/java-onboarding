@@ -9,7 +9,12 @@ public class Problem2 {
 	 * 3. 데큐에 남은 문자 문자열로 만드는 기능
 	 */
 	public static String solution(String cryptogram) {
+		if (cryptogram.length() == 1) {
+			return cryptogram;
+		}
+
 		String answer = "answer";
 		return answer;
 	}
+
 }
