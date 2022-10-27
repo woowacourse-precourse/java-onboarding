@@ -35,8 +35,21 @@ class Problem1 {
         return biggestNumber;
     }
 
+    public static int winnerOfGame(List<Integer> firstPageList, List<Integer> secondPageList) {
+        int maxOfFirstPageList = biggestNumber(firstPageList);
+        int maxOfSecondPageList = biggestNumber(secondPageList);
+
+        int result = Math.max(maxOfFirstPageList, maxOfSecondPageList);
+
+        if (maxOfFirstPageList == maxOfSecondPageList) return 0;
+        else if (result == maxOfFirstPageList) return 1;
+        else return 2;
+
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        answer = winnerOfGame(pobi, crong);
         return answer;
     }
 }
