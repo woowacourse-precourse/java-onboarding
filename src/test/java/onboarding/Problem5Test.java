@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+@Disabled
 @DisplayName("[Problem5] 테스트")
 class Problem5Test {
 
