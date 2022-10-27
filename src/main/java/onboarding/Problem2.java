@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Problem2 {
+    // 기능 목록
+    // code 배열 상태에 따른 알파벳 삽입 or 삭제 기능
+    // code 배열을 toString으로 변경하는 기능.
+
 
     // code 배열 상태에 따른 알파벳 넣을지 말지.
     static List<Character> updateCode(List<Character> code, char alpha) {
