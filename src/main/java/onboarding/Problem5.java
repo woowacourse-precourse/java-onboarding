@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -32,6 +34,13 @@ public class Problem5 {
      * @return 각 화폐의 모든 갯수.
      */
     public static List<Integer> exchangeAllMoney(int money){
-        return Collections.emptyList();
+        List<Integer> numberOfMoney = new ArrayList<>();
+        List<Integer> unitOfMoneys = new ArrayList<>(Arrays.asList(50000,10000,5000,1000,500,100,50,10,1));
+        for (int unitOfMoney : unitOfMoneys) {
+            int unit = exchangeMoney(unitOfMoney,money);
+            numberOfMoney.add(unit);
+            money -= unitOfMoney * unit;
+        }
+        return numberOfMoney;
     }
 }
