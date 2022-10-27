@@ -5,9 +5,14 @@ import java.util.Stack;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = getDecrypto(cryptogram);
+        if (!cryptogram.equals(cryptogram.toLowerCase())) {
+            return "false";
+        }
+        if (cryptogram.length() < 1 || cryptogram.length() > 1000) {
+            return "false";
+        }
 
-        return answer;
+        return getDecrypto(cryptogram);
     }
 
     private static String getDecrypto(String cryptogram) {
