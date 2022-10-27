@@ -16,4 +16,10 @@ public class Problem3 {
         }
         return integersUnderNumber;
     }
+
+    public static char[] getCharsOfNumber(int number) {
+        String numberToString = String.valueOf(number);
+        char[] charsOfNumber = numberToString.toCharArray();
+        return charsOfNumber;
+    }
 }
