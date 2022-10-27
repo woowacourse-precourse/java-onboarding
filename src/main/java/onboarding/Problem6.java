@@ -11,7 +11,7 @@ public class Problem6 {
     }
 
     // chkNum번 유저와 자신 뒤에 사람들 비교
-    static List<Integer> checkSimilar(List<Integer> S_List, int chkNum){
+    static List<Integer> checkSimilar(List<List<String>> forms, List<Integer> S_List, int chkNum){
 
         return S_List;
     }
@@ -19,12 +19,12 @@ public class Problem6 {
     // 비슷한 닉네임 인덱스 모음 리스트 반환
     static List<Integer> findSimilarList(List<List<String>> forms){
         ArrayList<Integer> similarList = new ArrayList<>();
-        for(int i = 0; i < forms.size(); i++){
-            similarList.add(0);
-        }
+//        for(int i = 0; i < forms.size(); i++){
+//            similarList.add(0);
+//        }
 
         for(int i = 0; i < forms.size(); i++){
-
+            similarList = (ArrayList<Integer>) checkSimilar(forms, similarList, i);
         }
 
         return similarList;
