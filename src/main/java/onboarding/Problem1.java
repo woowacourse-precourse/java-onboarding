@@ -34,6 +34,17 @@ class Problem1 {
         return digits;
     }
 
+    public static Integer getScore(List<List<Integer>> digitsOfTwoPages) {
+        List<Integer> num = new ArrayList<>();
+
+        for (List<Integer> digits : digitsOfTwoPages) {
+            num.add(plusEachDigit(digits));
+            num.add(multiplyEachDigit(digits));
+        }
+
+        return getMax(num);
+    }
+
     public static Integer plusEachDigit(List<Integer> digits) {
         Integer sum = 0;
         for (Integer digit : digits) {
