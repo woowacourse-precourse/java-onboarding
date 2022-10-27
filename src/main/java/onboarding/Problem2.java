@@ -11,7 +11,7 @@ public class Problem2 {
         String copy = string;
         for (int i=0; i<string.length()-1; i++) {
             if (isCharsDuplicatedInGivenIdx(string, i)) {
-                string = getCharsDeletedInGivenIdx(string, i);
+                string = getTwoCharsDeletedInGivenIdx(string, i);
             }
         }
         if (string.equals(copy)) {
@@ -28,7 +28,9 @@ public class Problem2 {
         return false;
     }
 
-    public static String getCharsDeletedInGivenIdx(String string, int idx) {
-        return string;
+    public static String getTwoCharsDeletedInGivenIdx(String string, int idx) {
+        String prefix = string.substring(0, idx);
+        String suffix = string.substring(idx+2, string.length());
+        return prefix + suffix;
     }
 }
