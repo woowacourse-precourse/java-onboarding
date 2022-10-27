@@ -2,11 +2,14 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
+        StringBuilder answer = new StringBuilder();
 
-        System.out.println(convertCharacter('a'));
+        for (char ch : word.toCharArray()) {
+            char convertedCh = convertCharacter(ch);
+            answer.append(convertedCh);
+        }
 
-        return answer;
+        return answer.toString();
     }
 
     public static char convertCharacter(char ch) {
