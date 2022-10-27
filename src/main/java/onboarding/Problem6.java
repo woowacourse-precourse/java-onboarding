@@ -35,7 +35,7 @@ public class Problem6 {
     private static Set<String> checkDuplication(List<List<String>> forms, int index) {
         Set<String> duplication = new HashSet<>();
         Set<String> tokenList = new HashSet<>(getNameToken(forms.get(index).get(1)));
-        
+
         for (int i = 0; i < forms.size(); i ++) {
             if (i == index)
                 continue;
@@ -47,8 +47,22 @@ public class Problem6 {
         return duplication;
     }
 
+    private static Set<String> addDuplication(List<List<String>> forms) {
+        Set<String> duplicationArray = new HashSet<>();
+        for (int i = 0; i < forms.size(); i ++) {
+            if (isValidName(forms.get(i).get(1)) && isValidEmail(forms.get(i).get(0)))
+                duplicationArray.addAll(checkDuplication(forms, i));
+            if (!isValidEmail(forms.get(i).get(0)) || !isValidName(forms.get(i).get(1))) {
+                duplicationArray.add(forms.get(i).get(0));
+                forms.remove(i);
+                i -= 1;
+            }
+        }
+        return duplicationArray;
+    }
+
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList(addDuplication(forms));
         return answer;
     }
 }
