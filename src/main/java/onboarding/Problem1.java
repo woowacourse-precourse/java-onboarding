@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -29,11 +30,46 @@ class Problem1 {
         List<Integer> crongEachNumbers = getEachDigitNumber(crong);
 
         List<int[]> pobiEachListLeftAndRight = getEachListLeftAndRight(pobiEachNumbers);
-        List<int[]> crongEachListLeftAndRight1 = getEachListLeftAndRight(crongEachNumbers);
+        List<int[]> crongEachListLeftAndRight = getEachListLeftAndRight(crongEachNumbers);
 
+        int pobiBigNumber = getBigNumber(pobiEachListLeftAndRight);
+        int crongBigNumber = getBigNumber(crongEachListLeftAndRight);
 
+        retrunBigNumber(pobiBigNumber, crongBigNumber);
 
         return answer;
+
+    }
+
+    private static void retrunBigNumber(int pobiBigNumber, int crongBigNumber) {
+
+    }
+
+    private static int getBigNumber(List<int[]> eachListLeftAndRight) {
+        int[] left = eachListLeftAndRight.get(0);
+        int[] right = eachListLeftAndRight.get(1);
+        int leftSum = 0;
+        int leftMultiplicationSum = 1;
+        int rightSum = 0;
+        int rightMultiplicationSum = 1;
+
+        List<Integer> allList = new ArrayList<>();
+
+        for (int i = 0; i < left.length; i++) {
+            leftSum += left[i];
+            leftMultiplicationSum *= left[i];
+            rightSum += right[i];
+            rightMultiplicationSum *= right[i];
+        }
+
+        allList.add(leftSum);
+        allList.add(leftMultiplicationSum);
+        allList.add(rightSum);
+        allList.add(rightMultiplicationSum);
+
+        System.out.println("allList = " + allList);
+
+        return Collections.max(allList);
     }
 
     private static List<int[]> getEachListLeftAndRight(List<Integer> eachNumbers) {
