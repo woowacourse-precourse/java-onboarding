@@ -5,14 +5,19 @@ import java.util.List;
 
 public class Problem6 {
     // 두 문자열 비교
-    static int checkString(String a, String b){
+    static boolean checkString(String a, String b){
 
-        return 0;
+        return false;
     }
 
     // chkNum번 유저와 자신 뒤에 사람들 비교
     static List<Integer> checkSimilar(List<List<String>> forms, List<Integer> S_List, int chkNum){
-
+        for(int i = chkNum+1; i < S_List.size(); i++){
+            if(checkString(forms.get(chkNum).get(1), forms.get(i).get(1))){
+                S_List.set(chkNum, 1);
+                S_List.set(i,1);
+            }
+        }
         return S_List;
     }
 
