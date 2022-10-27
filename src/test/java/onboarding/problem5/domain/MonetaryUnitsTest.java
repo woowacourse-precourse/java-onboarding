@@ -53,4 +53,10 @@ public class MonetaryUnitsTest {
     void tenDivide() {
         assertThat(MonetaryUnits.TEN.divide(41)).isEqualTo(4);
     }
+    
+    @Test
+    @DisplayName("일원 동전 개수 구하기")
+    void oneDivide() {
+        assertThat(MonetaryUnits.ONE.divide(8)).isEqualTo(8);
+    }
 }

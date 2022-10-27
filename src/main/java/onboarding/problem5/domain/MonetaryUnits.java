@@ -8,7 +8,8 @@ public enum MonetaryUnits {
     FIVE_HUNDRED(500),
     ONE_HUNDRED(100),
     FIFTY(50),
-    TEN(10);
+    TEN(10),
+    ONE(1);
     
     private final int monetaryUnit;
     
