@@ -18,9 +18,13 @@ class Problem1 {
         // 1-1. 왼쪽 페이지 홀수, 오른쪽 페이지 짝수인지 체크
         if(isLeftPageOddRightPageEven(pobiLeftPage, pobiRightPage, crongLeftPage, crongRightPage)){
             answer = EXCEPTION;
+            return answer;
         }
         // 1-2. 왼쪽 페이지와 오른쪽 페이지의 차이가 1 페이지인지 체크 (왼쪽 페이지 + 1 = 오른쪽 페이지)
-
+        if(isLeftPagePlusOneRightPage(pobiLeftPage, pobiRightPage, crongLeftPage, crongRightPage)){
+            answer = EXCEPTION;
+            return answer;
+        }
         // 1-3. 시작면이나 마지막면이 나왔는지 체크
 
 
@@ -31,6 +35,10 @@ class Problem1 {
         // 5. 결과값 출력
 
         return answer;
+    }
+
+    private static boolean isLeftPagePlusOneRightPage(int pobiLeftPage, int pobiRightPage, int crongLeftPage, int crongRightPage) {
+        return !(pobiLeftPage + 1 == pobiRightPage && crongLeftPage + 1 == crongRightPage);
     }
 
     private static boolean isLeftPageOddRightPageEven(int pobiLeftPage, int pobiRightPage, int crongLeftPage, int crongRightPage) {
