@@ -27,8 +27,13 @@ import java.util.List;
  */
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        Validator validator = new Validator();
+        Judge judge = new Judge();
+        if (!validator.is_both_page_proper(pobi, crong)) {
+            return judge.show_exception();
+        }
+        Calculator calculator = new Calculator();
+        return judge.show_winner(calculator.get_final_score(pobi), calculator.get_final_score(crong));
     }
 }
 
@@ -92,10 +97,10 @@ class Calculator {
 }
 
 class Judge {
-    final int ERROR = -1;
-    final int DRAW = 0;
-    final int POBI = 1;
-    final int CRONG = 2;
+    private final int ERROR = -1;
+    private final int DRAW = 0;
+    private final int POBI = 1;
+    private final int CRONG = 2;
 
     public int show_exception() {
         return ERROR;
