@@ -3,7 +3,6 @@ package onboarding;
 import java.util.Stack;
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
 
         Stack<Character> stack = new Stack<>();
         char[] charCryptogram = cryptogram.toCharArray();
@@ -29,6 +28,11 @@ public class Problem2 {
             stack.add(nowChar);
             deletedChar = ' ';
         }
-        return answer;
+
+        StringBuilder sb = new StringBuilder();
+        while (!stack.isEmpty()) {
+            sb.append(stack.pop());
+        }
+        return sb.reverse().toString();
     }
 }
