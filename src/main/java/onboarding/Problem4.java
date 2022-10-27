@@ -17,7 +17,7 @@ public class Problem4 {
     }
 
     public static void main(String[] args) {
-        System.out.println(solution("I love you"));
+        System.out.println(solution("WootE"));
     }
 
     public static String solution(String word) {
@@ -28,35 +28,27 @@ public class Problem4 {
         for (int i = 0; i < word.length(); i++) {
             char alphabet = word.charAt(i);
 
-            if (65 <= alphabet && alphabet <= 90) {
+            if (Constants.FIRST_UPPER_ALPHABET <= alphabet && alphabet <= Constants.LAST_UPPER_ALPHABET) {
                 converterUpperAlphabet(alphabet);
-            } else if (97 <= alphabet && alphabet <= 122) {
+            } else if (Constants.FIRST_LOWER_ALPHABET <= alphabet && alphabet <= Constants.LAST_LOWER_ALPHABET) {
                 converterLowerAlphabet(alphabet);
             } else {
                 characterList.add(alphabet);
             }
-
         }
 
-        StringBuilder sb = new StringBuilder();
-        for (char alphabet : characterList) {
-            sb.append(alphabet);
-        }
-
-        return sb.toString();
+        return charsToString();
     }
 
     private static void converterUpperAlphabet(char alphabet) {
         int alphabetInterval = 27;
-
         if (alphabet < Constants.MIDDLE_UPPER_ALPHABET) {
-            for (int j = Constants.FIRST_UPPER_ALPHABET; j <= alphabet; j++) {
+            for (int i = Constants.FIRST_UPPER_ALPHABET; i <= alphabet; i++) {
                 alphabetInterval -= 2;
             }
             alphabet += alphabetInterval;
-
         } else {
-            for (int j = Constants.LAST_UPPER_ALPHABET; j >= alphabet; j--) {
+            for (int i = Constants.LAST_UPPER_ALPHABET; i >= alphabet; i--) {
                 alphabetInterval -= 2;
             }
             alphabet -= alphabetInterval;
@@ -66,19 +58,26 @@ public class Problem4 {
 
     private static void converterLowerAlphabet(char alphabet) {
         int alphabetInterval = 27;
-
         if (alphabet < Constants.MIDDLE_LOWER_ALPHABET) {
-            for (int j = Constants.FIRST_LOWER_ALPHABET; j <= alphabet; j++) {
+            for (int i = Constants.FIRST_LOWER_ALPHABET; i <= alphabet; i++) {
                 alphabetInterval -= 2;
             }
             alphabet += alphabetInterval;
-
         } else {
-            for (int j = Constants.LAST_LOWER_ALPHABET; j >= alphabet; j--) {
+            for (int i = Constants.LAST_LOWER_ALPHABET; i >= alphabet; i--) {
                 alphabetInterval -= 2;
             }
             alphabet -= alphabetInterval;
         }
         characterList.add(alphabet);
+    }
+
+    private static String charsToString() {
+        StringBuilder sb = new StringBuilder();
+        for (char alphabet : characterList) {
+            sb.append(alphabet);
+        }
+
+        return sb.toString();
     }
 }
