@@ -6,6 +6,9 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
 
+        /* 단어(문자열)을 더하기 */
+        StringBuilder sb = new StringBuilder();
+
         /* Stack(스택)을 사용 */
         Stack<Character> s = new Stack<>();
 
@@ -23,6 +26,13 @@ public class Problem2 {
                 s.push(cryptogram.charAt(i));
             }
         }
+
+        /* 스택의 문자 더하기 위한 for문 구현 */
+        for (char c : s) {
+            sb.append(c);
+        }
+
+        answer = sb.toString();
 
         return answer;
     }
