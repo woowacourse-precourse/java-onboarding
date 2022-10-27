@@ -16,7 +16,20 @@ public class Problem2 {
      * - 제거되지 않은 문자열을 반환한다.
      */
     public static String deduplication(String cryptogram){
-        return "";
+        String returnCryptogram = "";
+        int cryptogramLen = cryptogram.length();
+        if (cryptogram.charAt(0) != cryptogram.charAt(1)) {
+            returnCryptogram += cryptogram.charAt(0);
+        }
+        for (int i=1;i< cryptogramLen-1;i++) {
+            if (cryptogram.charAt(i) != cryptogram.charAt(i-1) && cryptogram.charAt(i) != cryptogram.charAt(i+1)){
+                returnCryptogram += cryptogram.charAt(i);
+            }
+        }
+        if (cryptogram.charAt(cryptogramLen-1) != cryptogram.charAt(cryptogramLen-2)) {
+            returnCryptogram += cryptogram.charAt(cryptogramLen-1);
+        }
+        return returnCryptogram;
     }
 
     /**
