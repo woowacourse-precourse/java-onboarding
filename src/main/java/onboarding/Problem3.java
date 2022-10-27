@@ -5,6 +5,10 @@ public class Problem3 {
     static final int NUM_LOWERBOUND = 1;
     static final int NUM_UPPERBOUND = 10000;
     public static int solution(int number) {
+        int result = getSolution(number);
+        return result;
+    }
+    public static int getSolution(int number) {
         if (validationCheck(number)) {
             int result = count369All(number);
             return result;
