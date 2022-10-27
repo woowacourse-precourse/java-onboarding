@@ -7,7 +7,11 @@ public class Problem2 {
     }
 
     public static String decodeString(String cryptogram) {
-        return cryptogram.replaceAll("(.)\\1+", "");
+        while(!isDecodedSuccess(cryptogram)) {
+            cryptogram = cryptogram.replaceAll("(.)\\1+", "");
+        }
+        String decodedResult = cryptogram;
+        return decodedResult;
     }
 
     public static boolean isDecodedSuccess(String beforeDecodeCryptogram) {
