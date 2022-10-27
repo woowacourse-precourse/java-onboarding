@@ -1,12 +1,16 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         final Map<String, List<String>> dictionary = initDictionary(new HashMap<>(), forms);
+        final Set<String> emails = new HashSet<>();
 
-        return Collections.emptyList();
+        dictionary.values().stream().filter(list -> list.size() > 1).forEach(emails::addAll);
+
+        return emails.stream().sorted().collect(Collectors.toList());
     }
 
     private static Map<String, List<String>> initDictionary(
