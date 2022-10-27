@@ -30,5 +30,13 @@ class Problem1 {
         return result;
     }
 
+    static int maxNum(List<Integer> nums) {
+        int maxNum = 0;
+        for (int i : nums) {
+            List<Integer> jariArr = jarisoo(i);
+            int temp = Math.max(plus(jariArr),multiply(jariArr));
+            if (maxNum < temp) maxNum = temp;
+        }
+        return maxNum;
     }
 }
