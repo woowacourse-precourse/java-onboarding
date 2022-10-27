@@ -13,8 +13,14 @@ public class Problem3 {
         String str = String.valueOf(number);
         int count = 0;
         for (int i = 0; i < str.length(); i++) {
-            if (str.charAt(i) % 3 == 0 && str.charAt(i) != '0') count++;
+            count += checkThreeTimes(str.charAt(i));
         }
         return count;
+    }
+    public static int checkThreeTimes(char c){
+        if(c % 3 == 0 && c != '0'){
+            return 1;
+        }
+        return 0;
     }
 }
