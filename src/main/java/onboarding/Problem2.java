@@ -9,6 +9,13 @@ package onboarding;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
+        Problem2 problem2 = new Problem2();
+
+        while (!answer.equals(cryptogram)) {
+            answer = cryptogram;
+            cryptogram = problem2.deduplicate(cryptogram);
+        }
+
         return answer;
     }
 
