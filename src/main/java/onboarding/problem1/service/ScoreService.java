@@ -18,13 +18,22 @@ public class ScoreService {
          * */
         return slicedIntList;
     }
-
     // ArrayList에 쌓인 값들에 대한 누적합 진행
     public static int cumulativeSum(ArrayList<Integer> list){
         int result = 0;
 
         for(int index = 0; index<list.size(); index++){
             result += list.get(index);
+        }
+
+        return result;
+    }
+    // ArrayList에 쌓인 값들에 대한 누적곱 진행
+    public static int cumulativeMul(ArrayList<Integer> list){
+        int result = 1;
+
+        for(int index = 0; index<list.size(); index++){
+            result *= list.get(index);
         }
 
         return result;
