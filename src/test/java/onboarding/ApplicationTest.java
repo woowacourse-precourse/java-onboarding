@@ -279,6 +279,27 @@ class ApplicationTest {
             int result = 3;
             assertThat(Problem3.solution(number)).isEqualTo(result);
         }
+    
+        @Test
+        void case14() {
+            int number = 100;
+            int result = 60;
+            assertThat(Problem3.solution(number)).isEqualTo(result);
+        }
+    
+        @Test
+        void case15() {
+            int number = 1000;
+            int result = 900;
+            assertThat(Problem3.solution(number)).isEqualTo(result);
+        }
+    
+        @Test
+        void case16() {
+            int number = 10000;
+            int result = 12000;
+            assertThat(Problem3.solution(number)).isEqualTo(result);
+        }
     }
     
     @Nested
