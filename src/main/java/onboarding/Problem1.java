@@ -13,6 +13,7 @@ class Problem1 {
     public static final int RIGHT_PAGE = 1;
     public static final int LEFT_PAGE = 0;
     public static final int PAGE_DIFFERENCE = 1;
+    public static final int PAGE_SIZE = 2;
     public static final String PAGE_SIZE_ERROR_MESSAGE = "페이지 리스트의 길이가 2가 아닙니다.";
     public static final String PAGE_RANGE_ERROR_MESSAGE = "페이지는 1보다 작을 수 없고 400보다 클 수 없습니다.";
     public static final String PAGE_DIFFERENCE_ERROR_MESSAGE = "두 페이지의 차이는 1이어야만 합니다.";
@@ -38,7 +39,7 @@ class Problem1 {
     }
 
     private static Integer getMaxResult(List<Integer> pages) {
-        if (pages.size() != 2) {
+        if (checkPageSzie(pages)) {
             throw new IllegalArgumentException(PAGE_SIZE_ERROR_MESSAGE);
         }
         if (checkPageRange(pages)) {
@@ -52,6 +53,10 @@ class Problem1 {
             .mapToInt(digits -> Math.max(addEachDigits(digits), multiplyEachDigits(digits)))
             .max()
             .getAsInt();
+    }
+
+    private static boolean checkPageSzie(List<Integer> pages) {
+        return pages.size() != PAGE_SIZE;
     }
 
     private static boolean checkPageDifference(List<Integer> pages) {
