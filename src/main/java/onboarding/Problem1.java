@@ -31,18 +31,18 @@ class Problem1 {
         return answer ;
     }
 
-    public static IntStream getNumSplitStream(Integer num){
+    protected static IntStream getNumSplitStream(Integer num){
         String[] splitList = num.toString().split("");
         return Arrays.stream(splitList).mapToInt(Integer::parseInt);
     }
-    public static int getSumOfStream(IntStream intStream){
+    protected static int getSumOfStream(IntStream intStream){
         return intStream.sum();
     }
-    public static int getMultiStream(IntStream intStream){
+    protected static int getMultiStream(IntStream intStream){
         return intStream.reduce(1,(i,j) -> i*j);
     }
 
-    public static Boolean checkIsCountinous(List<Integer> list) {
+    protected static Boolean checkIsCountinous(List<Integer> list) {
         Integer start = list.get(0);
         for(int i = 1 ; i < list.size(); ++i ){
             if (start+1 != list.get(i)) {
