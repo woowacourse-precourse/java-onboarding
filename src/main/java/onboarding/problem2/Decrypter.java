@@ -3,7 +3,10 @@ package onboarding.problem2;
 public class Decrypter {
 
     public static String decrypt(String cryptogram){
-        String result = "";
+        String result = cryptogram;
+        while (isDecryptable(cryptogram)){
+            result = removeRepeatedChar(cryptogram);
+        }
         return result;
     }
 
