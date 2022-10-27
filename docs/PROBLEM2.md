@@ -21,3 +21,8 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+### 기능
+
+1. 인접한 중복 문자가 제거하는 기능 : removeDuplicatedChars(String cryptogram)
+2. 해당 문자가 중복 문자가 아님을 확인하는 기능 : isSolitary(String cryptogram, int index)
