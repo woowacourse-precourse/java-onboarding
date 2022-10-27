@@ -1,6 +1,8 @@
 package onboarding;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -32,5 +34,24 @@ class Problem1 {
 
     static boolean outOfPage(int page) {
         return !(1 <= page && page <= 400);
+    }
+
+    static int getScoreFromBook(List<Integer> book) {
+
+        int leftPageScore = getScoreFromPage(book.get(0));
+        int rightPageScore = getScoreFromPage(book.get(1));
+
+        return Math.max(leftPageScore, rightPageScore);
+
+    }
+
+    static int getScoreFromPage(int page) {
+
+        int[] eachNumberArray = Stream.of(String.valueOf(page).split("")).mapToInt(Integer::parseInt).toArray();
+
+        int sum = Arrays.stream(eachNumberArray).reduce(0, (a, b) -> a + b);
+        int product = Arrays.stream(eachNumberArray).reduce(1, (a, b) -> a * b);
+
+        return Math.max(sum, product);
     }
 }
