@@ -9,6 +9,7 @@ public class Problem3 {
     }
 
     private static int getClapByDigit(int i) {
+        if (i == 0) return 0;
         return i * MAX_CLAP_BY_DIGIT[i] + getNumOfMulOfThreeLessThanValue(i) * MULTIPLES_OF_TEN_UNDER_I[i];
     }
 
