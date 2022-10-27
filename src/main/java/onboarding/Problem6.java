@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 /**
  * 기능 요구사항
@@ -13,7 +14,7 @@ public class Problem6 {
         List<String> answer = new ArrayList<>();
         c = new boolean[forms.size()];
         limitDuplication(forms, answer);
-
+        Collections.sort(answer);
         return answer;
     }
 
