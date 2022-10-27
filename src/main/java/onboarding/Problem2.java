@@ -69,7 +69,7 @@ class PatternDeleter implements Deleter {
 
     public StringBuilder delete(StringBuilder preString, List<Integer> position) {
         for(int i = position.get(0) ; i <= position.get(1) ; i++){
-            preString.deleteCharAt(i);
+            preString.deleteCharAt(position.get(0));
         }
         return preString;
     }
