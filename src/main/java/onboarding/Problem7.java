@@ -5,8 +5,8 @@ import java.util.*;
 /**
  * 기능 요구사항
  * 1. 친구 추천 알고리즘에 따라서 점수를 산정한다.
- * 2. 추천 규칙에 따라 점수가 가장 높은 순으로 정렬하여 최대 5명을 보여줘야 한다.
- * 3. 추천 점수가 같은 경우 이름순으로 정렬해야 한다.
+ * 2. 추천 점수가 같은 경우 이름순으로 정렬해야 한다.
+ * 3. 추천 규칙에 따라 점수가 가장 높은 순으로 정렬하여 최대 5명을 보여줘야 한다.
  */
 public class Problem7 {
     static Set<String> friend;
@@ -18,8 +18,22 @@ public class Problem7 {
         friend = new HashSet<>(); // 사용자 친구의 친구
 
         calculateTheScore(user, friends, visitors, map);
+        List<Map.Entry<String, Integer>> score = sortByName(map);
 
         return answer;
+    }
+
+    private static List<Map.Entry<String, Integer>> sortByName(Map<String, Integer> map) {
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(map.entrySet());
+        entryList.sort((o1, o2) -> {
+            if(o1.getValue()==o2.getValue()){
+                return o1.getKey().compareTo(o2.getKey());
+            }
+            else{ // 내림차순
+                return o2.getValue() - o1.getValue();
+            }
+        });
+        return entryList;
     }
 
     private static void calculateTheScore(String user, List<List<String>> friends, List<String> visitors, Map<String, Integer> map) {
