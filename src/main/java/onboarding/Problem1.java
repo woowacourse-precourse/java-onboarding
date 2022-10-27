@@ -25,6 +25,17 @@ class Problem1 {
         return product;
     }
 
+    public static int getMax(List<Integer> player){
+        int leftSum = addDigits(player.get(0));
+        int rightSum = addDigits(player.get(1));
+        int leftProduct = multiplyDigits(player.get(0));
+        int rightProduct = multiplyDigits(player.get(1));
+        int leftMax = compareNumbers(leftSum, leftProduct);
+        int rightMax = compareNumbers(rightSum, rightProduct);
+        int result = compareNumbers(leftMax, rightMax);
+        return result;
+    }
+
     public static int compareNumbers(int num1, int num2){
         int result = 0;
         if(num1 > num2){

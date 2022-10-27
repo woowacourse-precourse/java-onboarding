@@ -4,6 +4,7 @@
 | 10.27 | addDigits()      | 각 자리 숫자 덧셈 | int            | int         | committed |
 | 10.27 | multiplyDigits() | 각 자리 숫자 곱셈 | int            | int         | committed |
 | 10.27 | compareNumbers() | 두 정수 비교    | int, int       | int         | committed  |
+| 10.27 | getMax()         | 플레이어 최고 점수 계산 | List<Integer>  | int         | committed |
 
 ### TODO
 -플레이어 리스트 길이가 2보다 클 때 예외처리
