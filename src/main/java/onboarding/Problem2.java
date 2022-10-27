@@ -4,8 +4,18 @@ import java.util.Stack;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        return getDecryption(cryptogram);
+    }
+
+    public static String getDecryption(String cryptogram) {
+        Stack<Character> characters = deduplication(cryptogram);
+        String result = toString(characters);
+
+        if (isComplete(cryptogram, result)) {
+            return result;
+        }
+
+        return getDecryption(result);
     }
 
     private static Stack<Character> deduplication(String cryptogram) {
