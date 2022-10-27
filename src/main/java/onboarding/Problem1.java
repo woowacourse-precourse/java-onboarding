@@ -63,4 +63,24 @@ class Problem1 {
     private static int getMaxNumberOfList(Set<Integer> numbers) {
         return Collections.max(numbers);
     }
+
+    /**
+     * 주어진 result 를 반환하기 위한 열거형 클래스
+     */
+    enum ResultType {
+        POBI_WIN(1),
+        CRONG_WIN(2),
+        DRAW(0),
+        EXCEPTION(-1);
+
+        private final int result;
+
+        ResultType(int result) {
+            this.result = result;
+        }
+
+        public int getResult() {
+            return result;
+        }
+    }
 }
