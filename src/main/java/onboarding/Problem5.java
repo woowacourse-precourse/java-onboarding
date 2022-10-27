@@ -11,7 +11,11 @@ import java.util.List;
 public class Problem5 {
     static int[] wallet = new int[]{50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
     public static List<Integer> solution(int money) {
+        if (!checkValid(money)) {
+            return Collections.emptyList();
+        }
         List<Integer> answer = Collections.emptyList();
+
         return answer;
     }
 
@@ -20,6 +24,6 @@ public class Problem5 {
     }
 
     public static boolean checkValid(int num) {
-
+        return 1 <= num && num <= 1000000;
     }
 }
