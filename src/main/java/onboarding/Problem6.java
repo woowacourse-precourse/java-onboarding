@@ -7,7 +7,7 @@ public class Problem6 {
 
     private static List<List<String>> forms;
     private static List<String> answer;
-    private static Map<String, Integer> twoCharAndIndex;
+    private static Map<String, Integer> subNameAndIndex;
     public static List<String> solution(List<List<String>> forms) {
         initialize(forms);
         makeEmailsOfDuplicatedName();
@@ -15,17 +15,17 @@ public class Problem6 {
     }
 
     private static void initialize(List<List<String>> forms) {
-        Problem6.twoCharAndIndex = new HashMap<>();
+        Problem6.subNameAndIndex = new HashMap<>();
         Problem6.forms = forms;
         Problem6.answer = new ArrayList<>();
     }
 
     private static void makeEmailsOfDuplicatedName() {
         for (int i=0; i<forms.size(); i++) {
-            for (String twoChar : getTwoCharsAfterSplit(getNickname(i))) {
-                if (twoCharAndIndex.containsKey(twoChar))
-                    addEmailToAnswer(i, twoChar);
-                twoCharAndIndex.put(twoChar, i);
+            for (String twoSubName : getTwoCharsAfterSplit(getNickname(i))) {
+                if (subNameAndIndex.containsKey(twoSubName))
+                    addEmailToAnswer(i, twoSubName);
+                subNameAndIndex.put(twoSubName, i);
             }
         }
     }
@@ -38,17 +38,17 @@ public class Problem6 {
         return result;
     }
 
-    private static void addEmailToAnswer(int index, String twoChar) {
+    private static void addEmailToAnswer(int index, String twoSubName) {
         answer.add(getEmail(index));
-        answer.add(getEmail(twoChar));
+        answer.add(getEmail(twoSubName));
     }
 
     private static String getEmail(int index) {
         return forms.get(index).get(0);
     }
 
-    private static String getEmail(String twoChar) {
-        return forms.get(twoCharAndIndex.get(twoChar)).get(0);
+    private static String getEmail(String twoSubName) {
+        return forms.get(subNameAndIndex.get(twoSubName)).get(0);
     }
 
     private static String getNickname(int index) {
