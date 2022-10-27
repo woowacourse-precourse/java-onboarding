@@ -7,4 +7,5 @@ public class Problem6 {
         List<String> answer = List.of("answer");
         return answer;
     }
+
 }
