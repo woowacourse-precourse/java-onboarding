@@ -1,10 +1,11 @@
 package onboarding;
 
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Comparator;
+import java.util.stream.Collectors;
+import java.util.HashMap;
 
 public class Problem7 {
     private static final int ID_A = 0;
@@ -13,7 +14,23 @@ public class Problem7 {
     private static final int VISIT_SCORE = 1;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer;
+
+        Map<String, List<String>> friendMap = new HashMap<>();
+        Map<String, Integer> friendScoreMap = new HashMap<>();
+
+        makeFriendMap(friendMap, friendScoreMap, friends);
+
+        giveScoreByFriend(user, friendMap, friendScoreMap);
+
+        giveScoreByVisit(visitors, friendMap.get(user), friendScoreMap);
+
+        List<String> resultList = makeFriends(friendScoreMap);
+
+        answer = resultList.stream()
+                .limit(5)
+                .collect(Collectors.toList());
+
         return answer;
     }
 
