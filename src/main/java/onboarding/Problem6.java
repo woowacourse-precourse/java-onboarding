@@ -10,8 +10,18 @@ import java.util.stream.Stream;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        PriorityQueue<String> overlapNames = getOverlapNames(forms);
+        return toList(overlapNames);
+    }
+
+    static List<String> toList(PriorityQueue<String> queue) {
+        List<String> result = new ArrayList<>();
+
+        Stream.generate(queue::poll)
+            .limit(queue.size())
+            .forEach(value -> result.add(value));
+
+        return result;
     }
 
     static PriorityQueue<String> getOverlapNames(List<List<String>> forms) {
