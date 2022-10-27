@@ -25,16 +25,17 @@ class Problem1 {
     }
 
     static boolean isValidPageNum(List<Integer> user) {
+        if (user.size() != 2) return false;
+        if (user.get(0) == null || user.get(1) == null) return false;
+
         int left = user.get(0);
         int right = user.get(1);
 
-        if (left % 2 == 1 && right % 2 == 0) {
-            if (right - left == 1) {
-                return true;
-            }
-        }
+        if (left < 0 || right > 400) return false;
+        if (left % 2 != 1 || right % 2 != 0) return false;
+        if (right - left != 1) return false;
 
-        return false;
+        return true;
     }
 
     static int calcPoint(List<Integer> user) {
