@@ -1,11 +1,32 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        Map<String, Integer> scoreMap = new HashMap<>();
+        FriendGraph friendGraph = new FriendGraph();
+
+        for (List<String> friend : friends) {
+            initUserScoreMap(scoreMap, friend.get(0));
+            initUserScoreMap(scoreMap, friend.get(1));
+            friendGraph.addFriend(friend.get(0),friend.get(1));
+            friendGraph.addFriend(friend.get(1),friend.get(0));
+        }
+
+        List<String> userFriendList = friendGraph.getFriendList(user);
+        updateScoreMapByUserFriendList(friendGraph, scoreMap, userFriendList);
+        updateScoreMapByVisitorList(visitors, scoreMap);
+
+        deleteScoreMapMemberByUserFriendList(user, scoreMap, userFriendList);
+        
+        return scoreMap.entrySet()
+                .stream()
+                .sorted((o1, o2) -> o2.getValue() - o2.getValue())
+                .map(i -> i.getKey())
+                .limit(5)
+                .collect(Collectors.toList());
     }
 
     static class FriendGraph {
@@ -46,6 +67,12 @@ public class Problem7 {
                 }
             }
         }
+    }
+    private static void deleteScoreMapMemberByUserFriendList(String user, Map<String, Integer> scoreMap, List<String> userFriendList) {
+        for (String userFriend : userFriendList) {
+            scoreMap.remove(userFriend);
+        }
+        scoreMap.remove(user);
     }
 
     private static void updateScoreMapByVisitorList(List<String> visitors, Map<String, Integer> scoreMap) {
