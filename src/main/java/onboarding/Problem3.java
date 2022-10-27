@@ -16,5 +16,14 @@ public class Problem3 {
         if (num == 1 || num == 2) {
             return count;
         }
+        while (num != 0) {
+            int temp = num % 10;
+            System.out.println("temp = " + temp);
+            if (temp == 3 || temp == 6 || temp == 9) {
+                count++;
+            }
+            num /= 10;
+        }
+        return count;
     }
 }
