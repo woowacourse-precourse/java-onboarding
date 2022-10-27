@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
 
@@ -123,6 +124,14 @@ public class Problem7 {
         Collections.sort(recommendCrews, comparator);
 
         return recommendCrews;
+    }
+
+    public static List<String> removeFriends(List<String> crews, Map<String, Set<String>> friendGraph, String me) {
+        Set<String> myFriends = friendGraph.get(me);
+
+        return crews.stream()
+                .filter(crew -> !myFriends.contains(crew))
+                .collect(Collectors.toList());
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
