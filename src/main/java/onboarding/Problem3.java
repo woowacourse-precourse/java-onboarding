@@ -22,7 +22,9 @@ public class Problem3 {
     }
 
     public static int solution(int number) {
+        validateNumber(number);
         Dy = new int[number + 1];
+        preProcess();
 
         for (int i = 2; i <= number; i++) {
             final int[] digitArr = getDigitArr(i);
@@ -30,5 +32,11 @@ public class Problem3 {
         }
 
         return Dy[number];
+    }
+
+    private static void validateNumber(int number) {
+        if (number < 1 || number > 10000) {
+            throw new IllegalArgumentException("number는 1 이상 10,000 이하인 자연수입니다.");
+        }
     }
 }
