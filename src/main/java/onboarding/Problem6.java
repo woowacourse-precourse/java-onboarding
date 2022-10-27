@@ -23,8 +23,11 @@ import java.util.regex.Pattern;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        CrewList crewList = new CrewList();
+        for (List<String> form : forms) {
+            crewList.addCrew(form);
+        }
+        return crewList.getConfusedNickname();
     }
 
     private static class CrewList{
@@ -47,7 +50,7 @@ public class Problem6 {
             return checkCrewNums();
         }
 
-        private List<String> getConfusedNickname(Set<String> alarm) {
+        private List<String> getConfusedNickname() {
             List<String> result = new ArrayList<>(alarm);
             Collections.sort(result);
             return result;
