@@ -117,4 +117,14 @@ public class Problem7 {
         return friendsPointMap;
     }
 
+    // hashmap에 value 로 key 찾기
+    public static <K, V> K getKey(Map<K, V> map, V value) {
+
+        for (K key : map.keySet()) {
+            if (value.equals(map.get(key))) {
+                return key;
+            }
+        }
+        return null;
+    }
 }
