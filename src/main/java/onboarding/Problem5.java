@@ -1,6 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -23,7 +23,18 @@ public class Problem5 {
     }
 
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
+        List<Integer> answer = new ArrayList<>();
+        int left = money;
+        int[] convert = { 50000, 10000, 5000, 1000, 500, 100, 50, 10, 1 };
+
+        for (int i : convert) {
+            HashMap<String, Integer> result = countMoney(left, i);
+            money = result.get("count");
+            left = result.get("left");
+
+            answer.add(money);
+        }
+
         return answer;
     }
 }
