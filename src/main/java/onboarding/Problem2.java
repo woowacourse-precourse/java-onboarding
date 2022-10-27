@@ -5,6 +5,10 @@ import java.util.Stack;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
+       return decrypt(cryptogram);
+    }
+
+    private static String decrypt(String cryptogram) {
         Stack<Character> stack = new Stack<>();
         for(int i = 0; i < cryptogram.length(); i++) {
             char now = cryptogram.charAt(i);
