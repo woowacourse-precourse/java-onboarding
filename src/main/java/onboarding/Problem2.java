@@ -9,7 +9,6 @@ package onboarding;
  */
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
         boolean decoding = true;
 
         while (decoding) {
@@ -24,10 +23,16 @@ public class Problem2 {
                     if (currentChar != nextChar) {
                         break;
                     }
-                    count++;
+                    count = j - i + 1;
+                }
+                cryptogram = cryptogram.substring(0, i) + cryptogram.substring(i + count);
+
+                if (count > 0) {
+                    decoding = true;
+                    i--;
                 }
             }
         }
-        return answer;
+        return cryptogram;
     }
 }
