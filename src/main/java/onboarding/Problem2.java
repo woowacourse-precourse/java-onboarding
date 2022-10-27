@@ -61,7 +61,6 @@ public class Problem2 {
      * TODO: 복호화된 문자열을 return한다.
      */
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        return decodeCryptogram(cryptogram);
     }
 }
