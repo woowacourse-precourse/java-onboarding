@@ -19,7 +19,7 @@ public class Problem7 {
         friendsList = friends;
         //Collections.copy(friendsList, friends);
 
-        giveFriendsPoint(user);
+        givePoint(user, visitors);
 
         return answer;
     }
@@ -38,17 +38,26 @@ public class Problem7 {
         return userFriendsList;
     }
 
-    //point 주는 함수
-    public static Map<String, Integer> giveFriendsPoint(String user)
+
+    public static void givePoint(String user, List<String> visitors)
+    {
+        List<String> userFriendsList;
+        //사용자와 친구인 목록
+        userFriendsList = findUserFriends(user);
+
+        giveFriendsPoint(user, userFriendsList);
+        giveVisitPoint(visitors, userFriendsList);
+
+    }
+    //사용자와 친구인 친구의 목록을 구해서 점수를 주는 함수
+    //중복처리 함수를 따로 둘까?
+    public static Map<String, Integer> giveFriendsPoint(String user, List<String> userFriendsList)
     {
         int root = 0;
 
-        List<String> userFriendsList;
         List<String> friendOfFriendsList;
         Map<String, Integer> friendsPointMap= new HashMap<>();
 
-        //사용자와 친구인 목록
-        userFriendsList = findUserFriends(user);
         //사용자와 친구인 친구의 목록
         friendOfFriendsList = findUserFriends(userFriendsList.get(root));
 
@@ -82,5 +91,10 @@ public class Problem7 {
         }
 
         return friendsPointMap;
+    }
+
+    public static void giveVisitPoint(List<String> visitors, List<String> userFriendsList)
+    {
+
     }
 }
