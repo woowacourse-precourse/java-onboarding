@@ -28,7 +28,12 @@ class Problem1 {
     }
 
     public static int numMulti(int num) {
-
+        int multi = 1;
+        List<Integer> digits = numToDigits(num);
+        for (int digit : digits) {
+            multi *= digit;
+        }
+        return multi;
     }
 
     public static int maxResult(int num){
