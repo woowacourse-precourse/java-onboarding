@@ -1,23 +1,30 @@
 package onboarding;
 
-import java.util.Stack
+import java.util.Stack;
+import java.lang.StringBuffer;
 
 public class Problem2 {
     public static String erase(String s) {
-        Stack<String> stack = new Stack<>();
-        for (int i = 0; i < s.length; i++) {
+        Stack<Character> stack = new Stack<>();
+        String temp = "";
+        for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
-            if (stack != null && stack.peek() == c) {
+            if (!stack.isEmpty() && stack.peek() == c) {
                 stack.pop();
             }
             else{
                 stack.push(c);
             }
         }
-        String res = String.join("", stack);
+        while(!stack.isEmpty()){
+            temp += stack.pop();
+        }
+        StringBuffer sb = new StringBuffer(temp);
+        String res = sb.reverse().toString();
         return res;
     }
-    public static void solution(String cryptogram) {
-        System.out.println(erase(cryptogram));
+    public static String solution(String cryptogram) {
+        String answer = erase(cryptogram);
+        return answer;
     }
 }
