@@ -43,6 +43,10 @@ public class Problem6 {
 
 			String nickname = forms.get(i).get(1);
 			String email = forms.get(i).get(0);
+
+			if(!useKoreanNickname(nickname)) // 닉네임이 한글이 아닐 시 다음 forms로
+				continue;
+
 			List<String> separatedNickname = separateNickname(nickname); // 두 글자로 분리된 닉네임 리스트
 
 			for (int j = 0; j < separatedNickname.size(); j++) {
@@ -84,6 +88,15 @@ public class Problem6 {
 			return true;
 		}
 
+		return false;
+	}
+
+	/**
+	 * 기능 5 닉네임이 한글만 있는지 검증
+	 */
+	public static boolean useKoreanNickname(String nickname) {
+		if(nickname.matches("^[ㄱ-ㅎ가-힣]*$"))
+			return true;
 		return false;
 	}
 }
