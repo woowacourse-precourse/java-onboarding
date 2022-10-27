@@ -5,4 +5,14 @@ public class Problem3 {
         int answer = 0;
         return answer;
     }
+
+    public int firstProcess(int indexOfTen, int digitNumber) {
+        int countOfFirstProcess = 0;
+
+        for (int i = 0; i < indexOfTen; i++) {
+            countOfFirstProcess += digitNumber*3*Math.pow(10, indexOfTen-1);
+        }
+
+        return countOfFirstProcess;
+    }
 }

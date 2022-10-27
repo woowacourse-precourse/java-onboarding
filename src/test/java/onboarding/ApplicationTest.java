@@ -222,6 +222,22 @@ class ApplicationTest {
     @Nested
     class Problem3Test {
         @Test
+        void firstProcessTest() {
+            int numberOfThousands = 3;
+            int numberOfHundreds = 2;
+            int numberOfTens = 9;
+
+            int result1 = 2700;
+            int result2 = 120;
+            int result3 = 27;
+
+            Problem3 problem3 = new Problem3();
+            assertThat(problem3.firstProcess(3, numberOfThousands)).isEqualTo(result1);
+            assertThat(problem3.firstProcess(2, numberOfHundreds)).isEqualTo(result2);
+            assertThat(problem3.firstProcess(1, numberOfTens)).isEqualTo(result3);
+        }
+
+        @Test
         void case1() {
             int number = 13;
             int result = 4;
