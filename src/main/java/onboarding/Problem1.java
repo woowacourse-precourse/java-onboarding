@@ -5,9 +5,9 @@ import java.util.List;
 
 /**
  * 기능 목록
- * 1. 입력값이 유효한 지 검사하는 함수
- * 2. 페이지 번호의 각 자리 숫자를 연산 해 가장 큰 수를 구하는 함수
- * 3. 본인의 점수(2번의 결과값들 중 가장 큰 수)를 구하는 함수
+ * 1. 입력 값이 유효한 지 검사
+ * 2. 페이지 번호의 각 자리 숫자를 연산한 결과 중 가장 큰 수 계산
+ * 3. 본인의 점수(2번의 결과 값들 중 가장 큰 수) 계산
  */
 
 class Problem1 {
@@ -27,7 +27,7 @@ class Problem1 {
     }
 
     /**
-     * 리스트가 유효한 지 검사하는 함수
+     * 리스트가 유효한 지 검사
      *
      * @param pages
      * @return true if list is validate
@@ -52,7 +52,7 @@ class Problem1 {
     }
 
     /**
-     * 페이지 번호를 각 자리 숫자의 배열로 변환하는 함수
+     * 페이지 번호를 각 자리 숫자의 배열로 변환
      *
      * @param page
      * @return int[] with page numbers
@@ -64,7 +64,7 @@ class Problem1 {
     }
 
     /**
-     * 페이지 번호의 각 자리 숫자를 연산 해 가장 큰 수를 구하는 함수
+     * 페이지 번호의 각 자리 숫자를 연산 해 가장 큰 수를 계산
      *
      * @param page
      * @return largest number of calculation
