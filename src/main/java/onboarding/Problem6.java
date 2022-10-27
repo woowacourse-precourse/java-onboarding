@@ -6,6 +6,10 @@ import java.util.List;
 import java.util.Set;
 
 public class Problem6 {
+    public static final int START_INDEX = 0;
+    public static final int EMAIL_INDEX = 0;
+    public static final int NAME_INDEX = 1;
+    public static final String REGEX = "";
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<String>(findAnswer(forms));
@@ -16,25 +20,25 @@ public class Problem6 {
     public static Set<String> findAnswer(List<List<String>> forms) {
         Set<String> answer = new HashSet<>();
 
+        for (int targetIndex = START_INDEX; targetIndex < forms.size(); targetIndex++) {
+            String[] targetNicknameArr = forms.get(targetIndex).get(NAME_INDEX).split(REGEX);
 
-        for (int i = 0; i < forms.size() - 1; i++) {
-            String[] targetNameArr = forms.get(i).get(1).split("");
-            for (int j = i + 1; j < forms.size(); j++) {
-                String compareArr = forms.get(j).get(1);
+            for (int nicknameIndex = targetIndex + 1; nicknameIndex < forms.size(); nicknameIndex++) {
+                String nickname = forms.get(nicknameIndex).get(NAME_INDEX);
 
-                findTwoSameLetter(forms, i, j, targetNameArr, compareArr, answer);
+                findTwoSameLetter(forms, targetIndex, nicknameIndex, targetNicknameArr, nickname, answer);
             }
         }
         return answer;
     }
 
-    public static void findTwoSameLetter(List<List<String>> forms, int i, int j, String[] targetNameArr, String compareArr, Set<String> answer) {
-        for (int z = 0; z < targetNameArr.length - 1; z++) {
-            String targetTwoLetter = targetNameArr[z] + targetNameArr[z + 1];
+    public static void findTwoSameLetter(List<List<String>> forms, int targetIndex, int nicknameIndex, String[] targetNicknameArr, String nickname, Set<String> answer) {
+        for (int letterIndex = START_INDEX; letterIndex < targetNicknameArr.length - 1; letterIndex++) {
+            String targetTwoLetter = targetNicknameArr[letterIndex] + targetNicknameArr[letterIndex + 1];
 
-            if (compareArr.contains(targetTwoLetter)) {
-                answer.add(forms.get(i).get(0));
-                answer.add(forms.get(j).get(0));
+            if (nickname.contains(targetTwoLetter)) {
+                answer.add(forms.get(targetIndex).get(EMAIL_INDEX));
+                answer.add(forms.get(nicknameIndex).get(EMAIL_INDEX));
                 break;
             }
         }
