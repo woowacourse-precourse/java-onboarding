@@ -15,9 +15,10 @@ class Problem1 {
         else if(pvalue<cvalue) return 2;
         else return 0;
     }
+    // 왼쪽 page와 오른쪽 page를 비교하는 함수
     public static int compare(int a, int b){
         int ones1 = a % 10; int tens1 = (a / 10) % 10; int huns1 = (a / 100);
-        int ones2 = b % 10;int tens2 = (b / 10) % 10; int huns2 = b / 100;
+        int ones2 = b % 10; int tens2 = (b / 10) % 10; int huns2 = b / 100;
         int value1 = 0; int value2 = 0;
         if(huns1>0) value1 = ones1 + tens1 + huns1;
         else value1 = ones1 + tens1;
