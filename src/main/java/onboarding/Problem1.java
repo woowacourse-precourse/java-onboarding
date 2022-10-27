@@ -134,7 +134,11 @@ class Problem1 {
      * @return 두 숫자 중 더 큰 수
      */
     private int getLargerNumber(int num1, int num2){
-
+        if(num1 > num2){
+            return num1;
+        } else {
+            return num2;
+        }
     }
 
     /**
