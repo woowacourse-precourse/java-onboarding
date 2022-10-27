@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String decodeResult = "answer";
+        validateCryptogram(cryptogram);
         while(!isDecodedSuccess(cryptogram)) {
             cryptogram = decodeString(cryptogram);
         }
