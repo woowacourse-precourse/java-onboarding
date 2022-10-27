@@ -10,6 +10,20 @@ import java.util.*;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+
+        //예외사항
+        if(exception(pobi, crong)){
+            answer = -1;
+        }
+        else{
+            //점수 계산
+            int pobi_score = Math.max(make_max(pobi.get(0)), make_max(pobi.get(1)));
+            int crong_score = Math.max(make_max(crong.get(0)), make_max(crong.get(1)));
+
+            //결과 산출
+            answer = compare(pobi_score, crong_score);
+        }
+
         return answer;
     }
 
