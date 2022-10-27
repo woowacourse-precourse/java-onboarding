@@ -8,18 +8,19 @@ public class Problem7 {
     public static final String VISITED = "visited";
     public static final int RELATED_SCORE = 10;
     public static final int VISITED_SCORE = 1;
+    public static final int RECOMMEND_COUNT = 5;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-
         Set<String> friendList = generateFriendList(friends);
         List<String> relatedUserList = generateRelatedUser(friends, user);
         List<String> unknownVisitors = exceptFriend(visitors, friendList);
         Map<String, Integer> scoreMap = generateScoreMap(relatedUserList, unknownVisitors);
         List<String> sortedUserList = sortScoreMap(scoreMap);
-//        answer = generateRecommedList();
+        if (sortedUserList.size() <= RECOMMEND_COUNT) {
+            return sortedUserList;
+        }
 
-        return answer;
+        return pickHighScoreUser(sortedUserList);
     }
 
     private static Set<String> generateFriendList(List<List<String>> friends) {
@@ -79,11 +80,15 @@ public class Problem7 {
     private static List<String> sortScoreMap(Map<String, Integer> scoreMap) {
         List<String> nameList = new ArrayList<>(scoreMap.keySet());
         Collections.sort(nameList, (o1, o2) -> {
-            if(scoreMap.get(o1) - scoreMap.get(o2) == 0){
+            if (scoreMap.get(o1) - scoreMap.get(o2) == 0) {
                 return o1.compareTo(o2);
             }
             return scoreMap.get(o2).compareTo(scoreMap.get(o1));
         });
         return nameList;
+    }
+
+    private static List<String> pickHighScoreUser(List<String> userList) {
+        return userList.subList(0, RECOMMEND_COUNT + 1);
     }
 }
