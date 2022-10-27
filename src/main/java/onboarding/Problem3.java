@@ -1,6 +1,12 @@
 package onboarding;
 
 public class Problem3 {
+    private static final int TARGET_NUMBER_THREE = 3;
+
+    private static final int TARGET_NUMBER_SIX = 6;
+
+    private static final int TARGET_NUMBER_NINE = 9;
+
     public static int solution(int number) {
         int answer = 0;
 
@@ -18,7 +24,7 @@ public class Problem3 {
         int value = num % 10;
         int result = 0;
 
-        if (value == 3 || value == 6 || value == 9) {
+        if (value == TARGET_NUMBER_THREE || value == TARGET_NUMBER_SIX || value == TARGET_NUMBER_NINE) {
             result = 1;
         }
 
