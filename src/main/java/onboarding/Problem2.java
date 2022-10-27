@@ -21,5 +21,12 @@ public class Problem2 {
 
         return isDuplicated;
     }
+    public static String getNewString(String cryptogram, boolean[] isDuplicate){
+        StringBuilder sb = new StringBuilder();
+        for(int i=0; i<isDuplicate.length; i++)
+            if(!isDuplicate[i])
+                sb.append(cryptogram.charAt(i));
 
+        return sb.toString();
+    }
 }

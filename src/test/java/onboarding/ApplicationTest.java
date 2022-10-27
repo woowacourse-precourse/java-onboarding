@@ -60,6 +60,19 @@ class ApplicationTest {
             assertThat(checkIsSame(Problem2.checkDuplicateChar(cryptogram), arr)).isEqualTo(true);
         }
 
+        @Test
+        void getNewStringTest(){
+            String cryptogram ="browoanoommnaon";
+            String answer = "browoannaon";
+            boolean[] arr = new boolean[cryptogram.length()];
+            arr[7] = true;
+            arr[8] = true;
+            arr[9] = true;
+            arr[10] = true;
+
+            assertThat(Problem2.getNewString(cryptogram,arr)).isEqualTo(answer);
+        }
+
         boolean checkIsSame(boolean[] isDuplicate, boolean[] arr){
 
             for(int i=0; i<arr.length; i++){
