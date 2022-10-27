@@ -9,6 +9,14 @@ public class Problem7 {
         friends.forEach(list -> friendGraph.put(new User(list.get(0)), new User(list.get(1))));
         User targetUser = friendGraph.getUser(new User(user));
 
+        HashMap<User, Integer> map = new HashMap<>();
+        List<User> targetUserFriendList = friendGraph.getUser(targetUser).getFriends();
+        targetUserFriendList.forEach(freind -> friendGraph.getUser(freind).getFriends().forEach(friendUser -> {
+                    if (!friendUser.equals(targetUser)){
+                        map.put(friendUser, map.getOrDefault(friendUser, 0) + 1);
+                    }
+                }
+        ));
         List<String> answer = Collections.emptyList();
         return answer;
     }
