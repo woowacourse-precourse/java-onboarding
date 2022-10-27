@@ -35,9 +35,20 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
 
         //예외처리 (페이지가 연속하지 않는경우)
-
+        if(pobi.get(0)+1 != pobi.get(1) || crong.get(0)+1 != crong.get(1)) {
+            answer = -1;
+            return answer;
+        }
         //포비와 크롱의 점수를 비교하여 answer을 결정
+        int pobiMax = getMax(pobi);
+        int crongMax = getMax(crong);
 
+        if (pobiMax > crongMax)
+            answer = 1;
+        else if (pobiMax < crongMax)
+            answer = 2;
+        else if (pobiMax == crongMax)
+            answer = 0;
         return answer;
     }
 }
