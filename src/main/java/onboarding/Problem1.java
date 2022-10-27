@@ -10,6 +10,9 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         int pmax=0;
         int cmax=0;
+        if(!(pobi.get(0)+1==pobi.get(1))||!(crong.get(0)+1==crong.get(1))){
+            return -1;
+        }
             for( int p : pobi){
                 int padd=0;
                 int pmul=1;
