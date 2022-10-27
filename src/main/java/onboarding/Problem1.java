@@ -97,8 +97,6 @@ class Problem1 {
         return result;
     }
 
-
-
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         boolean isValidInput = checkValidity(pobi) && checkValidity(crong);

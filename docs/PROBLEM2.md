@@ -1,3 +1,15 @@
+## 기능 목록
+
+| Date  | Method Name       | Feature     | Parameter Type | Return Type   | Progress         |
+|-------|-------------------|-------------|----------------|---------------|------------------|
+| 10.27 | removeRedundant() | 중복 문자 제거    | string         | string        | committed        |
+| 10.27 | findRedundant() | 중복 문자 탐색    | string         | List<boolean> | work in progress |
+| 10.27 | existsRedundant() | 중복 문자 존재 확인 | string         | boolean       | work in progress  |
+
+### TODO
+-findRedundant() 메서드 구현  
+-existsRedundant() 메서드 구현
+
 ## 🚀 기능 요구 사항
 
 암호문을 좋아하는 괴짜 개발자 브라운이 이번에는 중복 문자를 이용한 새로운 암호를 만들었다. 예를 들어 "browoanoommnaon"이라는 암호문은 다음과 같은 순서로 해독할 수 있다.
