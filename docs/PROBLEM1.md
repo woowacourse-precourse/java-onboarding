@@ -38,14 +38,21 @@
 
 <br/>
 
-#### 3. 점수 반환 메서드
-```List<Integer> pageNums``` (```[leftPage, rightPage]```) => ```int```
+#### 3. 페이지 번호의 최대 연산 결과를 구하는 메서드 (리팩토링 중 추가)
+```Integer pageNum``` => ```int```
 
-- 두 페이지 번호에 덧셈/곱셈 연산 진행 후 최댓값 반환한다
+- 덧셈 결과와 곱셈 결과를 비교해 큰 값을 반환한다
 
 <br/>
 
-#### 4. 페이지 리스트에 대한 예외사항 확인 메서드
+#### 4. 점수 반환 메서드
+```List<Integer> pageNums``` (```[leftPage, rightPage]```) => ```int```
+
+- 왼쪽/오른쪽 페이지 번호의 최대 연산값을 비교해 큰 값을 반환한다
+
+<br/>
+
+#### 5. 페이지 리스트에 대한 예외사항 확인 메서드
 ```List<Integer> pageNums``` (```[leftPage, rightPage]```) => ```boolean```(예외사항 발견 시 ```true```)
 
 아래 조건을 모두 만족하지 않은 경우 예외사항으로 판단한다
@@ -55,7 +62,7 @@
 
 <br/>
 
-#### 5. solution 메서드
+#### 6. solution 메서드
 1. pobi, crong 에 대한 예외사항을 확인한다
 2. 예외사항이 없는 경우 pobi, crong 의 점수를 구한다
 3. pobi의 점수와 crong의 점수를 비교한다
