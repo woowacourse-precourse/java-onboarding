@@ -13,6 +13,7 @@ public class Problem2 {
                 cryptogram = tmp;
             }
         } while(isChanged);
+        answer = cryptogram;
         return answer;
     }
 
