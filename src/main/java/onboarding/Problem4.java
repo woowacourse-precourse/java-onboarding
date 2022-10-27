@@ -5,4 +5,8 @@ public class Problem4 {
         String answer = "";
         return answer;
     }
+
+    private static char getChangeLower(char c){
+        return (char)('a' + 'z' - c);
+    }
 }
