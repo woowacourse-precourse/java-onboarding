@@ -39,6 +39,7 @@ public class Problem7 {
 			}
 		}
 		friendScore.put(user, 0);
+		
 		return answer;
 	}
 }
