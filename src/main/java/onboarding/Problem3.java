@@ -7,7 +7,7 @@ public class Problem3 {
         for (int i = 1; i <= number; i += 1) {
             sTemp = i + "";
             for (int j = 0; j < sTemp.length(); j += 1) {
-
+                if (sTemp.charAt(j) == '3' || sTemp.charAt(j) == '6' || sTemp.charAt(j) == '9') { }
             }
         }
         return answer;
