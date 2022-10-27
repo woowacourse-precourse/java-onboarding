@@ -1,7 +1,8 @@
 package onboarding.problem5.domain;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Money {
     private int money;
@@ -11,12 +12,14 @@ public class Money {
     }
     
     public List<Integer> numberOfEachCurrency() {
-        List<Integer> numberOfEachCurrency = new ArrayList<>();
-        for (MonetaryUnits monetaryUnits : MonetaryUnits.values()) {
-            numberOfEachCurrency.add(monetaryUnits.divide(money));
-            money = monetaryUnits.remainder(money);
-        }
-        
-        return numberOfEachCurrency;
+        return Arrays.stream(MonetaryUnits.values())
+                .map(this::numberOfCurrentCurrency)
+                .collect(Collectors.toList());
+    }
+    
+    private int numberOfCurrentCurrency(final MonetaryUnits monetaryUnit) {
+        final int divideNumber = monetaryUnit.divide(money);
+        money = monetaryUnit.remainder(money);
+        return divideNumber;
     }
 }
