@@ -10,6 +10,23 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = 0;
+
+        if (isNotTwoElements(pobi) || isNotSidePage(pobi)) {
+            return EXCEPTIONS_NUMBER;
+        }
+
+        if (isNotTwoElements(crong) || isNotSidePage(crong)) {
+            return EXCEPTIONS_NUMBER;
+        }
+
         return answer;
+    }
+
+    private static boolean isNotTwoElements(List<Integer> checkList) {
+        return checkList.size() != 2;
+    }
+
+    private static boolean isNotSidePage(List<Integer> checkList) {
+        return checkList.get(0) != checkList.get(1) - 1;
     }
 }
