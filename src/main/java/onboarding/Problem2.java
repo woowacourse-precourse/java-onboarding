@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.HashSet;
+
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
@@ -8,7 +10,7 @@ public class Problem2 {
 }
 
 class ValidationFor2{
-    static boolean isValidateInput(String input){
-
+    static boolean isValidateInput(String input) {
+        return true;
     }
 }

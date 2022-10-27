@@ -19,7 +19,6 @@ class Problem1 {
 
 
 class ValidationFor1{
-    static final int LIST_LENGTH = 2;
     static final int MAX_PAGE = 400;
     static final int MIN_PAGE = 1;
 
@@ -53,19 +52,12 @@ class ScoreController{
         return result;
     }
 
-    private static int findMax(int num1,int num2){
-        if (num1 >= num2) {
-            return num1;
-        }
-        return num2;
-    }
-
     static int calcScore(List<Integer> pageList){
         int result;
-        int leftMax = findMax(sumDigits(pageList.get(0)), mulDigits(pageList.get(0)));
-        int rightMax = findMax(sumDigits(pageList.get(1)), mulDigits(pageList.get(1)));
+        int leftMax = Math.max(sumDigits(pageList.get(0)), mulDigits(pageList.get(0)));
+        int rightMax = Math.max(sumDigits(pageList.get(1)), mulDigits(pageList.get(1)));
 
-        result = findMax(leftMax,rightMax);
+        result = Math.max(leftMax,rightMax);
         return result;
     }
 
@@ -78,5 +70,4 @@ class ScoreController{
         }
         return 0;
     }
-
 }
