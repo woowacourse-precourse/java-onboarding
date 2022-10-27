@@ -4,8 +4,9 @@ import java.util.List;
 
 //기능 목록
 //1. 숫자를 주면 각 자리 숫자 모두 더하거나 모두 곱해 가장 큰 수 반환 함수
-//2. List가 주어지면 가장 큰 값을 반환하는 함수
-//3. 점수 비교해서 승자 정하기
+//2. 2개 값이 주어지면 그 중 큰 값을 반환하는 함수
+//3. 두 페이지가 차이가 1이 넘으면 -1 반환하는 함수
+//4. 점수 비교해서 승자 정하기
 
 class Problem1 {
     public static int addOrMultiply(int num){
@@ -24,14 +25,11 @@ class Problem1 {
             return mulNum;
     }
 
-    public static int getMaxNum(List<Integer> numList){
-        int max=0;
-        for(int i=0;i<numList.size();i++){
-            if(max>numList.get(i)){
-                max=numList.get(i);
-            }
-        }
-        return max;
+    public static int getMaxNum(int left, int right){
+        if(left>right)
+            return left;
+        else
+            return right;
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
