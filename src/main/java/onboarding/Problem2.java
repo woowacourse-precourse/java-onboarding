@@ -15,27 +15,21 @@ public class Problem2 {
 }
 
 interface Detector {
-    List<Integer> findPattern();
+    List<Integer> findPattern(String cryptogram);
 }
 
 interface Deleter {
-    String deletePattern(String cryptogram);
+    String process(String cryptogram);
 }
 
 class DuplicateDeleter implements Detector {
 
-    String cryptogram;
-
-    public DuplicateDeleter(String cryptogram) {
-        this.cryptogram = cryptogram;
-    }
-
     @Override
-    public List<Integer> findPattern() {
+    public List<Integer> findPattern(String cryptogram) {
         int endPoint = 0;
         int i;
         for(i = 0 ; i < cryptogram.length() ; i++) {
-            endPoint = findEndpoint(i);
+            endPoint = findEndpoint(i, cryptogram);
             if (endPoint != i) {
                 break;
             }
@@ -43,12 +37,41 @@ class DuplicateDeleter implements Detector {
         return List.of(i, endPoint);
     }
 
-    public int findEndpoint(int base) {
+    public int findEndpoint(int base, String cryptogram) {
         int result;
         if(cryptogram.charAt(base) != cryptogram.charAt(base+1)){
             return base;
         }
-        result = findEndpoint(base+1);
+        result = findEndpoint(base+1, cryptogram);
         return result;
     }
+}
+
+class PatternDeleter implements Deleter {
+
+    Detector detector;
+
+    public PatternDeleter(Detector detector){
+        this.detector = detector;
+    }
+
+    @Override
+    public String process(String cryptogram) {
+        StringBuilder result = new StringBuilder(cryptogram);
+        List<Integer> position;
+        position = detector.findPattern(cryptogram);
+        while(position.get(0) != position.get(1)){
+            result = delete(result, position);
+            position = detector.findPattern(cryptogram);
+        }
+        return result.toString();
+    }
+
+    public StringBuilder delete(StringBuilder preString, List<Integer> position) {
+        for(int i = position.get(0) ; i <= position.get(1) ; i++){
+            preString.deleteCharAt(i);
+        }
+        return preString;
+    }
+
 }
