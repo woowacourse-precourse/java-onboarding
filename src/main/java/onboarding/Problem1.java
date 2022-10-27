@@ -8,6 +8,12 @@ class Problem1 {
     public static final int DRAW = 0;
     public static final int EXCEPTION = -1;
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        if(isPageNullException(pobi) || isPageNullException(crong)) {
+            return EXCEPTION;
+        }
+        if(isPageEmptyException(pobi) || isPageEmptyException(crong)) {
+            return EXCEPTION;
+        }
         if(isPageNumberException(pobi) || isPageNumberException(crong)) {
             return EXCEPTION;
         }
@@ -49,11 +55,28 @@ class Problem1 {
         return DRAW;
     }
 
-    private static boolean isPageNumberException(List<Integer> page) {
+    public static boolean isPageNumberException(List<Integer> page) {
         Integer leftPage = page.get(0);
         Integer rightPage = page.get(1);
 
         if(rightPage - leftPage != 1) {
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean isPageNullException(List<Integer> page) {
+        Integer leftPage = page.get(0);
+        Integer rightPage = page.get(1);
+
+        if(rightPage == null || leftPage == null) {
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean isPageEmptyException(List<Integer> page) {
+        if(page.isEmpty()) {
             return true;
         }
         return false;
