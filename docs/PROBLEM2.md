@@ -4,10 +4,9 @@
 |-------|-------------------|-------------|----------------|---------------|------------------|
 | 10.27 | removeRedundant() | 중복 문자 제거    | string         | string        | committed        |
 | 10.27 | findRedundantPosition() | 중복 문자 위치 탐색 | string         | List<boolean> | committed |
-| 10.27 | existsRedundant() | 중복 문자 존재 확인 | string         | boolean       | work in progress  |
+| 10.27 | existsRedundant() | 중복 문자 존재 확인 | string         | boolean       | committed  |
 
 ### TODO
--existsRedundant() 메서드 구현
 
 ## 🚀 기능 요구 사항
 

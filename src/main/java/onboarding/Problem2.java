@@ -28,12 +28,24 @@ public class Problem2 {
         return isRedundant;
     }
 
+    public static boolean existsRedundant(String target){
+        boolean result = false;
+        for(int currentPosition = 0; currentPosition < target.length() - 1; currentPosition++) {
+            int currentCharacter = target.charAt(currentPosition);
+            int nextCharacter = target.charAt(currentPosition + 1);
+            if (currentCharacter == nextCharacter) {
+                result = true;
+                return result;
+            }
+        }
+        return result;
+    }
     public static String solution(String cryptogram) {
         String answer = "answer";
         answer = cryptogram;
-        /*while(existsRedundant(answer)){
-            removeRedundant(answer);
-        }*/
+        while(existsRedundant(answer)){
+            answer = removeRedundant(answer);
+        }
         return answer;
     }
 }
