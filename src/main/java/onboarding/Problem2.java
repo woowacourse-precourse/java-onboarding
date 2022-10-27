@@ -1,9 +1,7 @@
 package onboarding;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Stack;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
