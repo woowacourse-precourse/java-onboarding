@@ -21,7 +21,8 @@ public class Problem4 {
         String answer = "";
         Map<Character, Character> alphaInfo = makeDict();
         for(char w : word.toCharArray()) {
-            answer += w == ' ' ? " " : alphaInfo.get(w);
+            Object ob = alphaInfo.get(w);
+            answer += ob == null ? w : alphaInfo.get(w);
         }
         return answer;
     }
