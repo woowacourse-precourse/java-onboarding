@@ -11,6 +11,16 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+
+        if(!isValid(pobi, crong)) {
+            return answer = EXCEPTION;
+        }
+
+        int pobiMaxNum = getMax(pobi);
+        int crongMaxNum = getMax(crong);
+
+        answer = getWhoWin(pobiMaxNum, crongMaxNum);
+
         return answer;
     }
 
