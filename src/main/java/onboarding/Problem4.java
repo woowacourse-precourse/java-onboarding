@@ -15,4 +15,11 @@ public class Problem4 {
         }
         return Constants.NOT_ALPHABET;
     }
+
+    private static char convert(char letter, int alphabetType) {
+        if (alphabetType == Constants.LOWERCASE) {
+            return (char) ('a' + 'z' - letter);
+        }
+        return (char) ('A' + 'Z' - letter);
+    }
 }
