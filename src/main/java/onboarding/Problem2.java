@@ -1,19 +1,28 @@
 package onboarding;
 
-import java.util.EmptyStackException;
 import java.util.Stack;
 import java.util.stream.Collectors;
 
 public class Problem2 {
   static class Decryption {
     private final Stack<Character> message = new Stack<>();
+    private Character lastCode;
 
-    public void decrypt(Character c) {
-      if (!message.empty() && this.isSameCharacter(c)) {
+    public void decrypt(Character code) {
+      if (!message.empty() && this.isSameCode(code)) {
         message.pop();
+        lastCode = code;
         return;
       }
-      message.push(c);
+      if(this.isSameLastCode(code)) {
+        return;
+      }
+      message.push(code);
+      lastCode = null;
+    }
+
+    public boolean isSameLastCode(Character code) {
+      return this.lastCode == code;
     }
 
     public String getMessage() {
@@ -22,8 +31,8 @@ public class Problem2 {
               .collect(Collectors.joining());
     }
 
-    private boolean isSameCharacter(Character c) {
-      return message.peek() == c;
+    private boolean isSameCode(Character code) {
+      return message.peek() == code;
     }
   }
 
