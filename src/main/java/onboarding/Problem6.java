@@ -3,7 +3,7 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.HashSet;
-
+import java.util.Comparator;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -24,7 +24,7 @@ public class Problem6 {
             hashSet.add(mail);
         }
         answer = new ArrayList<>(hashSet);
-
+        answer.sort(Comparator.naturalOrder());
         return answer;
     }
     static boolean isConfused(String A, String B) {
