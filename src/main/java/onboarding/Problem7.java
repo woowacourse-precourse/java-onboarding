@@ -9,6 +9,8 @@ import java.util.Set;
 
 public class Problem7 {
 
+    private static final int CO_FRIEND_SCORE = 10;
+    private static final int VISITED_SCORE = 1;
     private static Map<String, User> userRepository = new HashMap<>();
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
@@ -25,6 +27,18 @@ public class Problem7 {
         }
 
         User mainUser = userRepository.get(user);
+        for (User friend : userRepository.values()) {
+            if (!friend.isFriendOf(mainUser)) {
+
+                //FIXME : depth가 깊음
+                for (User friendOfFriend : friend.getFriends()) {
+                    if (friendOfFriend.isFriendOf(mainUser)) {
+                        friend.addScore(CO_FRIEND_SCORE);
+                    }
+                }
+            }
+        }
+
 
         return answer;
     }
@@ -43,6 +57,14 @@ class User {
 
     public void addFriend(User friend) {
         this.friends.add(friend);
+    }
+
+    public boolean isFriendOf(User friend) {
+        return friends.contains(friend);
+    }
+
+    public void addScore(int score) {
+        this.score += score;
     }
 
     public String getUserId() {
