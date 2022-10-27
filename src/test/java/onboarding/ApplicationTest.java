@@ -119,11 +119,11 @@ class ApplicationTest {
      @Test
      void isAllowedStringLength() {
        //given
-       String cryptogram = "aaaaaaaaaaa";
+       int cryptogramSize = 4001;
 
        //then
        assertThrows(IllegalStateException.class, () ->{
-         Problem2.isAllowedStringLength(cryptogram);
+         Problem2.isAllowedStringLength(cryptogramSize);
        });
       }
   }
