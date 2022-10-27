@@ -2,8 +2,7 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        answer = removeReduplication(cryptogram);
+        String answer = cryptogram;
         return answer;
     }
 
@@ -14,16 +13,27 @@ public class Problem2 {
         String lastString;
 
         for (int i = 0; i < cryptogram.length() - 1; i++) {
-            if (cryptogram.charAt(i) == cryptogram.charAt(i + 1)) {
+            if (hasReduplication(cryptogram, i)) {
                 if (startIndex == -1) {
                     startIndex = i;
                 }
                 lastIndex = i + 1;
             }
         }
-        startString = cryptogram.substring(0, startIndex);
-        // 중복 다음 값의 index 부터 시작이라 +1
-        lastString = cryptogram.substring(lastIndex + 1);
-        return startString + lastString;
+        if (startIndex == -1) {
+            return cryptogram;
+        } else {
+            startString = cryptogram.substring(0, startIndex);
+            // 중복 다음 값의 index 부터 시작이라 +1
+            lastString = cryptogram.substring(lastIndex + 1);
+            return startString + lastString;
+        }
+    }
+
+    public static boolean hasReduplication(String str, int index) {
+        if (str.charAt(index) == str.charAt(index + 1)) {
+            return true;
+        }
+        return false;
     }
 }
