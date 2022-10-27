@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
@@ -92,7 +93,22 @@ class Problem1 {
      * @return 숫자 리스트의 각 자리 수 리스트
      */
     private List<Integer> getDigitList(List<Integer> numList){
+        List<Integer> digitList = new ArrayList<>();
 
+        for(int num : numList){
+            //일의 자리 추가
+            digitList.add(num % 10);
+            //10보다 클 경우 10의자리 추가
+            if(num > 10){
+                digitList.add((num % 100)/10);
+            }
+            //100보다 클 경우 100의자리 추가
+            if(num > 100){
+                digitList.add((num % 1000)/100);
+            }
+        }
+
+        return digitList;
     }
 
     /**
