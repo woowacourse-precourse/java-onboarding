@@ -16,6 +16,16 @@ public class Problem4 {
         return upChar;
     }
 
+    public static char upperChange (HashMap<Character, Character> map, char c) {
+        return map.get(c);
+    }
+
+    public static char isChar (char c) {
+        if (Character.isLowerCase(c)) return lowerChange(fullmap(),c);
+        if (Character.isUpperCase(c)) return upperChange(fullmap(),c);
+        return c;
+    }
+
     public static String solution(String word) {
         String answer = "";
         return answer;
