@@ -39,8 +39,31 @@ public class Problem4 {
         return stringBuilder.toString();
     }
 
+    /*
+     * 문자 하나를 청개구리 문자로 바꿔줍니다.
+     *
+     * @param 바꿀 문자입니다.
+     * @return 바뀐 문자입니다. 알파벳이 아닌 경우 그대로 반환합니다.
+     * */
     private static String encryptCharacter(char letter) {
-        return " ";
+        if (isAlphabet(letter) == false) {
+            return String.valueOf(letter);
+        }
+        char oppositeLetter = getOppositeAlphabet(letter);
+        char oppositeCaseLetter = getOppositeCase(letter, oppositeLetter);
+        return String.valueOf(oppositeCaseLetter);
+    }
+
+    private static boolean isAlphabet(char letter) {
+        return false;
+    }
+
+    private static char getOppositeAlphabet(char letter) {
+        return ' ';
+    }
+
+    private static char getOppositeCase(char letter, char oppositeLetter) {
+        return ' ';
     }
 
     /*

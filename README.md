@@ -59,7 +59,7 @@
     - 문자열의 길이가 1~1000인지 검사한다.
   - [X] encryptString
   - 문자열을 반대로 바꿔준다.
-    - [ ] encryptCharacter
+    - [X] encryptCharacter
     - 하나의 문자를 반대로 바꿔준다.
       - [ ] isAlphabet
       - 문자가 영문자인지 알려준다.
