@@ -46,4 +46,14 @@ public class Problem3 {
 
         return count;
     }
+
+    // 배열에 3, 6, 9 가 들어있는지 탐색한 후 최종 개수를 반환하는 기능
+    private static int countNumber(int[] input) {
+        int result = 0;
+        for(int i = 0; i<input.length; i++) {
+            result += judgeNumber(input[i]);
+        }
+
+        return result;
+    }
 }
