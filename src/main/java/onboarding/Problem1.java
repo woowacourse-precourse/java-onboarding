@@ -20,11 +20,11 @@ class Problem1 {
         int leftScore = 0;
         int rightScore = 0;
 
-        //페이지의 차이가 1이 아니라면 -1을 return
         if(Math.abs((int)scoreData.get(1)-(int)scoreData.get(0))!=1){
             result = -1;
             return result;
         }
+
         while(rest++ <=2){
             int addScore = 0;
             int mulScore = 1;
@@ -37,7 +37,17 @@ class Problem1 {
                 }
                 leftScore = Math.max(addScore, mulScore);
             }
+            else if(rest==2){
+                String[] rightPage = scoreData.get(1).toString().split("");
+
+                for(int i=0; i<rightPage.length; i++) {
+                    addScore += Integer.parseInt(rightPage[i]);
+                    mulScore *= Integer.parseInt(rightPage[i]);
+                }
+                rightScore = Math.max(addScore, mulScore);
+            }
         }
+        rest = 0;
         return result;
     }
 
