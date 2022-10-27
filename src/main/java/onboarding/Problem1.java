@@ -8,8 +8,20 @@ class Problem1 {
         int pobiScore = 0;
         int crongScore = 0;
         
+        // 포비 점수 
+        int pobiLSum = getSum(pobi.get(0));
+        int pobiLMulti = getMultiply(pobi.get(0));
+        int pobiLMax = Math.max(pobiLSum, pobiLMulti);
+        
+        int pobiRSum = getSum(pobi.get(1));
+        int pobiRMulti = getMultiply(pobi.get(1));
+        int pobiRMax = Math.max(pobiRSum, pobiRMulti);
+        
+        pobiScore = Math.max(pobiLMax, pobiRMax);
+        
         return answer;
     }
+    
         static int getSum(int n) {
             int sum = 0;
     
