@@ -26,8 +26,10 @@ class Problem1 {
             return answer;
         }
         // 1-3. 시작면이나 마지막면이 나왔는지 체크
-
-
+        if(isStartPageOrEndPage(pobiLeftPage, pobiRightPage, crongLeftPage, crongRightPage)){
+            answer = EXCEPTION;
+            return answer;
+        }
 
         // 2. 왼쪽 페이지 중에서 나올 수 있는 가장 큰 최대 값 뽑기 (각 자리 숫자를 모두 더하거나 곱함)
         // 3. 오른쪽 페이지 중에서 나올 수 있는 가장 큰 최대값 뽑기 (각 자리 숫자를 모두 더하거나 곱함)
@@ -35,6 +37,11 @@ class Problem1 {
         // 5. 결과값 출력
 
         return answer;
+    }
+
+    private static boolean isStartPageOrEndPage(int pobiLeftPage, int pobiRightPage, int crongLeftPage, int crongRightPage) {
+        return pobiLeftPage == 1 || pobiLeftPage == 399 || pobiRightPage == 2 || pobiRightPage == 400
+                || crongLeftPage == 1 || crongRightPage == 399 || crongLeftPage == 2 || crongRightPage == 400;
     }
 
     private static boolean isLeftPagePlusOneRightPage(int pobiLeftPage, int pobiRightPage, int crongLeftPage, int crongRightPage) {
