@@ -12,6 +12,12 @@ public class DictionaryConverter {
         return convertedString;
     }
 
+    public static int getBaseCharacterASCII(char alphabet) {
+        int base = Constants.getLowerCaseBase();
+        if (isUpper(alphabet)) base = Constants.getUpperCaseBase();
+        return base;
+    }
+
     public static boolean isUpper(char alphabet) {
         return alphabet >= 'A' && alphabet <= 'Z';
     }
