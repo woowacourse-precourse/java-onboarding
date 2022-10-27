@@ -50,6 +50,19 @@ class ApplicationTest {
             String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
+
+        @Test
+        public void case3() throws Exception {
+            //given
+            String cryptogram = "zyellllllleyz";
+            String result = "";
+
+            //when
+            String processed = Problem2.solution(cryptogram);
+
+            //then
+            assertThat(processed).isEqualTo(result);
+        }
     }
 
     @Nested

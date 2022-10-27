@@ -15,10 +15,10 @@ class Problem1Test {
         List<Integer> input = List.of(1, 2);
 
         //when
-        int res = Problem1.pageValidation(input);
+        boolean res = Problem1.isPageValid(input);
 
         //then
-        Assertions.assertThat(res).isEqualTo(1);
+        Assertions.assertThat(res).isEqualTo(true);
     }
 
     @Test
@@ -27,10 +27,10 @@ class Problem1Test {
         List<Integer> input = List.of(3, 5);
 
         //when
-        int res = Problem1.pageValidation(input);
+        boolean res = Problem1.isPageValid(input);
 
         //then
-        Assertions.assertThat(res).isEqualTo(-1);
+        Assertions.assertThat(res).isEqualTo(false);
     }
 
     @Test
