@@ -12,6 +12,30 @@ public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> answer = new ArrayList<>();
 
+        boolean flag = false;
+        int money_bill = 50000;
+        while (true) {
+            answer.add(money / money_bill); //
+            money -= (money / money_bill) * money_bill;
+
+            // 종료 조건
+            if (money_bill == 10) {
+                money_bill /= 10; // 1
+                answer.add(money / money_bill); // 1
+                money -= (money / money_bill) * money_bill;
+                break;
+            }
+
+            if (!flag) {
+                money_bill /= 5;
+                flag = true;
+            } else {
+                money_bill /= 2;
+                flag = false;
+            }
+
+        }
+
         return answer;
     }
 }
