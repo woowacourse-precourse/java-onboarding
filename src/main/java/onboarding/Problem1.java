@@ -34,14 +34,6 @@ class Problem1 {
             return false;
         }
 
-        // 길이가 2이고, 정수라면 변수에 값을 설정해준다.
-        try {
-            leftPage = inputPage.get(0);
-            rightPage = inputPage.get(1);
-        } catch (Exception e) {
-            return false;
-        }
-
         // 왼쪽 페이지는 홀수이다.
         if (leftPage % 2 != 1) {
             return false;
