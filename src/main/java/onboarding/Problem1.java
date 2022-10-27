@@ -1,11 +1,25 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        // 제약 조건
+        if (pobi.size()!=2 || crong.size()!=2 || pobi.get(0)!=pobi.get(1)-1 || crong.get(0)!=crong.get(1)-1) return -1;
+
+        // 본인의 점수 구하기
+        int pobiNum = maxNum(pobi);
+        int crongNum = maxNum(crong);
+
+        // 비교
+        if (pobiNum==crongNum) return 0;
+        if (pobiNum>crongNum) return 1;
+        if (pobiNum<crongNum) return 2;
+
+        return -1;
+    }
+
     // 각 자리수 배열로 출력
     static List<Integer> jarisoo(int num) {
         List<Integer> numArr = new ArrayList<Integer>();
