@@ -1,6 +1,9 @@
 package onboarding.problem1;
 
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
 
 public class PageNumberGame {
 	public static final Integer POBI_WIN = 1;
@@ -21,4 +24,13 @@ public class PageNumberGame {
 			.getAsInt();
 	}
 
+	private static Integer calculateMaxScore(List<Integer> pages) {
+		Optional<Integer> addEachMax = pages.stream()
+			.map(PageNumberGame::addEachNumber)
+			.max(Comparator.comparing(result -> result));
+		Optional<Integer> multipleEachMax = pages.stream()
+			.map(PageNumberGame::multipleEachNumber)
+			.max(Comparator.comparing(result -> result));
+		return Math.max(addEachMax.get(), multipleEachMax.get());
+	}
 }
