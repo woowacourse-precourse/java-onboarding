@@ -2,8 +2,7 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        return to_chung_flog_word(word);
     }
 
     public static String to_chung_flog_word(String word){
