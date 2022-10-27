@@ -45,7 +45,9 @@ class Problem1 {
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        if (!isValid(pobi) || !isValid(crong)) {
+            return -1;
+        }
+        return getResult(getMaxScore(pobi), getMaxScore(crong));
     }
 }
