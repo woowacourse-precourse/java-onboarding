@@ -13,15 +13,13 @@ public class Problem1Util {
     }
 
     private static boolean isValid(List<Integer> nums) {
-        if (nums.size() != 2 && nums.get(1) - nums.get(0) != 1) {
-            return false; // input되는 숫자가 두 개이면서, 연속된 두 숫자인가
-        }
+        if (nums.size() != 2) return false; //  input되는 숫자가 두 개인가
+        if (nums.get(1) - nums.get(0) != 1) return false; // 연속된 두 숫자인가
         for (int i = 0; i < 2; i++) {
             if (nums.get(i) % 2 != 1 - i) {
                 return false; // 해당 숫자가 [홀수, 짝수]인가
             }
         }
-
         return true;
     }
 
