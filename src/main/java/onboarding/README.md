@@ -9,3 +9,9 @@
 | O   | 3   | onBoarding-back-Problem1-03 | solution | 곱      | private static int getMultiplyNumber(Integer page)                  | 각 자리 숫자의 곱을 구한다            |
 | O   | 4   | onBoarding-back-Problem1-04 | solution |        | public static int solution(List<Integer> pobi, List<Integer> crong) | 페이지 번호 게임의 승자를 구한다         |
   | O   | 5   | onBoarding-back-Problem1-05 | solution | 최대값    | private static int getBiggerNumber(List<Integer> pages)             | 두 페이지중 각자리 합 혹은 곱중 최대값 구하기 |
+
+### Problem2
+
+|     | 번호  | 기능 코드                       | Depth1   | Depth2 | method                                           | 설명             |
+|-----|-----|-----------------------------|----------|--------|--------------------------------------------------|----------------|
+| X   | 1   | onBoarding-back-Problem2-01 | solution |        | public static String solution(String cryptogram) | 중복된 문자들 삭제한 결과 |
