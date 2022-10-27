@@ -14,4 +14,19 @@ public class ThreefoldGamer {
     public ThreefoldGamer(int number) {
         this.NUM = number;
     }
+
+    /**
+     * Count how many threefold nums(3, 6, 9) are in single number
+     * @param numStr number to count
+     * @return total number of threefold number in single number
+     */
+    private int countThreefoldNum(String numStr) {
+        int count = 0;
+        for (int i = 0; i < numStr.length(); i++) {
+            int num = Integer.parseInt(numStr.substring(i, i + 1));
+            if (num != 0 && num % 3 == 0)
+                count++;
+        }
+        return count;
+    }
 }
