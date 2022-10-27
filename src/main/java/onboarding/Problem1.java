@@ -39,7 +39,10 @@ class Problem1 {
     }
 
     private static int getMaxBetweenSumAndMul(String[] page) {
-        return Math.max(calculation(page, (first, second) -> first + second), calculation(page, (first1, second1) -> first1 * second1));
+        return Math.max(
+                calculation(page, (first, second) -> first + second),
+                calculation(page, (first, second) -> first * second)
+        );
     }
 
     private static int calculation(String[] page, BiFunction<Integer, Integer, Integer> function) {
