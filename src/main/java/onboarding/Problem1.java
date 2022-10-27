@@ -21,5 +21,14 @@ class Problem1 {
             pageThree = crong.get(0);
             pageFour = crong.get(1);
         }
+
+        /* 책의 첫번째 면 혹은 마지막 면이 있는지 확인 */
+        private boolean checkInnerpages() {
+            if (pageOne == 1 || pageTwo == 400 || pageThree == 1 || pageFour ==400){
+                return false;
+            }
+
+            return true;
+        }
     }
 }
