@@ -12,12 +12,22 @@ public class BookCalculation {
 
         List<Integer> result = new ArrayList<>();
 
+
         for (int numbers : player) {
             String number = String.valueOf(numbers);
             String[] split = number.split("");
 
+            //1,2,3
+            for (String crrent : split) {
+                addition += Integer.valueOf(crrent);
+                multiplication *= Integer.valueOf(crrent);
 
+            }
+
+            result.add(addition);
+            result.add(multiplication);
         }
+
 
         return result;
     }
