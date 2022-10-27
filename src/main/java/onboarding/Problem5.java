@@ -6,18 +6,19 @@ import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
-    public static List<Integer> solution(int money) {
-        List<Integer> dividors= Arrays.asList(
-                50000, 10000, 5000, 1000, 500, 100, 50, 10, 1);
+    public static final int[] DIVISORS=new int[]{50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
 
-        ArrayList<Integer> answer=new ArrayList<>();
-        for(int i:dividors){
-            if(i>money)
+    public static List<Integer> solution(int money) {
+        ArrayList<Integer> answer = new ArrayList<>();
+
+        for (int divisor : DIVISORS) {
+            if (divisor > money)
                 answer.add(0);
-            else{
-                answer.add(money/i);
-                money%=i;
-            }
+
+            if (divisor <= money)
+                answer.add(money / divisor);
+
+            money %= divisor;
         }
 
         return answer;
