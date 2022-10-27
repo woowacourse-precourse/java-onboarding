@@ -36,6 +36,14 @@ class Problem1 {
         return mx;
     }
 
+    static int getResult(int pobi_score, int crong_score) {
+        if (pobi_score > crong_score)
+            return 1;
+        if (pobi_score == crong_score)
+            return 0;
+        return 2;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
