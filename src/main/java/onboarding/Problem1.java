@@ -40,4 +40,11 @@ class Problem1 {
         Arrays.sort(valueArr, Collections.reverseOrder());
         return valueArr[0];
     }
+
+    private static boolean isPageRange(int leftPage, int rightPage) {
+        if (leftPage<=1 || rightPage>=400) {
+            return false;
+        }
+        return true;
+    }
 }
