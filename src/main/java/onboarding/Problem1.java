@@ -7,4 +7,10 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+
+    static boolean out_of_bound(int number){
+        if(number >= 1 && number <= 400) return false;
+        return true;
+    }
+
 }
