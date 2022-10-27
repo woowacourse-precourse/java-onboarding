@@ -19,17 +19,25 @@ public class Problem4 {
         String answer = "";
 
         makeFrogDictionary();
-        reverseWord(word);
+        answer = reverseWord(word);
 
         return answer;
     }
 
-    private static void reverseWord(String word) {
+    private static String reverseWord(String word) {
         wordInList(word);
         String reverseWord = "";
 
         for (Character letter : motherWord) {
+            if (isUpperCaseLetter(letter)) {
+                reverseWord+=upperCase.get(letter);
+            }else if(isLowerCaseLetter(letter)){
+                reverseWord+=lowerCase.get(letter);
+            }else{
+                reverseWord+=letter;
+            }
         }
+        return reverseWord;
     }
 
     public static boolean isUpperCaseLetter(Character letter) {
