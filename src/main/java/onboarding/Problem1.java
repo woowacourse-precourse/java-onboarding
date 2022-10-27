@@ -6,8 +6,6 @@ import java.util.List;
 
 class Problem1 {
 
-
-
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer;
         if (checkForException(pobi,crong)){
@@ -26,6 +24,7 @@ class Problem1 {
      * - 입력받은 페이지가 1~400사이인지 확인한다.
      * - 입력받은 페이지의 차가 1인지 확인한다.
      * - 입력받은 데이터의 길이가 2인지 확인한다.
+     * - 왼쪽 페이지는 홀수, 오른쪽 페이지는 짝수인지 확인한다.
      * - 입력 받은 페이지에 예외가 발생하지 않는다면 True를 반환한다.
      */
     public static boolean checkForException(List<Integer> pobi, List<Integer> crong) {
