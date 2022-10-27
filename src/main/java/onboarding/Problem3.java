@@ -6,12 +6,9 @@ import java.util.stream.IntStream;
 
 public class Problem3 {
     public static int solution(int number) {
-
         return IntStream.rangeClosed(1, number)
                         .map(Problem3::get369Count)
                         .sum();
-
-
     }
     private static List<Integer> separateToNumber(int number) {
         List<Integer> separate = new ArrayList<>();
