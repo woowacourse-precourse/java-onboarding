@@ -246,13 +246,8 @@ class ApplicationTest {
         }
 
         @Test
-        void checkIs3MulTest() {
-            assertThat(Problem3.checkIs3Mul(126)).isEqualTo(true);
-        }
-
-        @Test
-        void divideNumberTest() {
-            assertThat(Problem3.divideNumber(2)).isEqualTo(0);
+        void numberToCharArrayTest() {
+            assertThat(Problem3.numberToCharArray(100).length).isEqualTo(3);
         }
     }
 
