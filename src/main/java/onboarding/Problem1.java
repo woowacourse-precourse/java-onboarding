@@ -72,4 +72,18 @@ class Problem1 {
 
         return answer;
     }
+
+    //기능 4
+    public static int result(int pobiPage, int crongPage){
+        int answer=0;
+        if(pobiPage > crongPage){
+            answer = 1;
+        }else if(pobiPage < crongPage){
+            answer = 2;
+        }else {
+            answer = 0;
+        }
+
+        return answer;
+    }
 }
