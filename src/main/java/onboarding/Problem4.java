@@ -17,6 +17,20 @@ public class Problem4 {
 		return frogDictionary;
 	}
 
+	public static String createReversedWord(String word, Map<Character, Character> frogDictionary){
+		String reversedWord = "";
+
+		for(int i =0; i<word.length(); i++) {
+			if (frogDictionary.get(word.charAt(i)) != null) {
+				reversedWord += frogDictionary.get(word.charAt(i));;
+			}
+			if (frogDictionary.get(word.charAt(i)) == null) {
+				reversedWord += word.charAt(i);
+			}
+		}
+		return reversedWord;
+	}
+
     public static String solution(String word) {
         String answer = "";
 		return answer;
