@@ -46,6 +46,11 @@ class Problem1 {
             c_max = Math.max(c_max, Math.max(hap(c), mul(c)));
         }
 
+        /* 포비의 최대값과 크롱의 최대값을 비교하는 기능 */
+        if (p_max > c_max) answer = 1;
+        else if (p_max < c_max) answer = 2;
+        else answer = 0;
+
         return answer;
     }
 }
