@@ -23,7 +23,7 @@ class ApplicationTest {
 
         @Test
         @DisplayName("두 페이지 정보가 연속된 자연수인지 검증 : 성공")
-        void testValidateConsecutivePages1() {
+        void testValidateContinuousPages1() {
             List<Integer> pobi = List.of(97, 98);
             List<Integer> crong = List.of(197, 198);
             int result = 0;
@@ -32,7 +32,7 @@ class ApplicationTest {
 
         @Test
         @DisplayName("두 페이지 정보가 연속된 자연수인지 검증 : -1")
-        void testValidateConsecutivePages2() {
+        void testValidateContinuousPages2() {
             List<Integer> pobi = List.of(95, 98);
             List<Integer> crong = List.of(197, 198);
             int result = -1;
@@ -41,7 +41,7 @@ class ApplicationTest {
 
         @Test
         @DisplayName("첫 번째 원소가 홀수인지 검증: -1")
-        void testValidateConsecutivePages3() {
+        void testValidateContinuousPages3() {
             List<Integer> pobi = List.of(96, 97);
             List<Integer> crong = List.of(197, 198);
             int result = -1;
