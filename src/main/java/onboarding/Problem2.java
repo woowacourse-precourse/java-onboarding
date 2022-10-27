@@ -7,7 +7,6 @@ import java.util.Scanner;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
-        System.out.println("cryptogram = " + cryptogram);
         Cryptogram.validateValueCase(cryptogram);
         Cryptogram.validateValueRange(cryptogram);
         answer = Cryptogram.decodeValue(cryptogram);
@@ -49,7 +48,6 @@ class Cryptogram {
             } else {
                 i--;
             }
-            System.out.println("i = " + i);
         }
         return characters.toString()
                 .replaceAll("\\[|\\]", "")
