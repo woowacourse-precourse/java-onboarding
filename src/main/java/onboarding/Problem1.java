@@ -22,7 +22,7 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
-        if (validate(pobi) || validate(crong)) {
+        if (validateFirstLast(pobi) || validateFirstLast(crong)) {
             return -1;
         }
 
@@ -111,7 +111,7 @@ class Problem1 {
         return list;
     }
 
-    public static boolean validate(List<Integer> checkList) {
+    public static boolean validateFirstLast(List<Integer> checkList) {
         return checkList.contains(FIRST_PAGE) || checkList.contains(LAST_PAGE);
     }
 }
