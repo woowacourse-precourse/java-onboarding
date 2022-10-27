@@ -1,8 +1,11 @@
 package onboarding.problem6;
 
+import java.util.regex.Pattern;
+
 public class Crew {
 
     private static final String EMAIL_FORMAT = "@email.com";
+    private static final String KOREAN_REGEX = "^[가-힣]*$";
 
     private String nickName;
     private String email;
@@ -12,9 +15,19 @@ public class Crew {
         this.email = email;
     }
 
-    public static Crew of(String nickName, String email) {
+    public static Crew create(String nickName, String email) {
         validateEmail(email);
+        validateNickName(nickName);
         return new Crew(nickName, email);
+    }
+
+    private static void validateNickName(String nickName) {
+        if (!Pattern.matches(KOREAN_REGEX, nickName)) {
+            throw new IllegalArgumentException("닉네임은 한글만 가능합니다.");
+        }
+        if (nickName.length() < 1 || nickName.length() >= 20) {
+            throw new IllegalArgumentException("닉네임의 전체 길이는 1자 이상 20자 미만입니다.");
+        }
     }
 
     private static void validateEmail(String email) {
