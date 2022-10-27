@@ -109,6 +109,12 @@ class ApplicationTest {
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
 
+        @Test
+        void 알파벳이아닌단어만있는경우() {
+            String word = "####";
+            String result = "####";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
     }
 
     @Nested
