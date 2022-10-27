@@ -15,7 +15,8 @@ class Problem1 {
 	    	int crongPageNum = 0;
 	    	int pobiTotal = 0;
 	    	int crongTotal = 0;
-	    	// 덧셈
+	    	
+	    	
 	    	for(int i = 0 ; pobi.size() > i; i++) {
 	    		pobiPageNum = pobi.get(i);
 	    		crongPageNum = crong.get(i);
@@ -24,6 +25,7 @@ class Problem1 {
 	    		if(pobiTotal<multiplication(pobiPageNum)) pobiTotal = multiplication(pobiPageNum);
 	    		if(crongTotal<multiplication(crongPageNum)) crongTotal = multiplication(crongPageNum);
 	    	}
+	    	
 	    	if(pobiTotal > crongTotal) {
 	    		answer = 1;
 	    	} else if(pobiTotal < crongTotal) {
