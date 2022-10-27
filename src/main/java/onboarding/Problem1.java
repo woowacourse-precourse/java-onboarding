@@ -109,6 +109,6 @@ class Problem1 {
         int leftPage = getLeftPage(userInput);
         int rightPage = getRightPage(userInput);
 
-        return leftPage >= 1 && rightPage <= 400;
+        return (leftPage >= 1 && leftPage <= 400) && (rightPage >= 1 && rightPage <= 400);
     }
 }
