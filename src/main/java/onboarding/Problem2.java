@@ -19,41 +19,27 @@ public class Problem2 {
             ArrayList<Character> list = new ArrayList<Character>();
             List<Character> ex = new ArrayList<>();
             String a="";
-
             for (int i = 0; i < cryptogram.length(); i++) {
-
                 char currentCharacter = cryptogram.charAt(i);//getting the character at current index
-
                 if (ex.isEmpty()) {
                     ex.add(currentCharacter);
                     a+=(currentCharacter);
                     continue;
                 }
-
                 if (ex.get(ex.size() - 1) == currentCharacter) {
-
                     cnt += 1;
                     ex.remove(ex.size() - 1);
                     ex.add(currentCharacter);
                     a=a.substring(0, a.length() - 1);
-                    System.out.println(a);
-
-
                 } else {
                     a+=(currentCharacter);
                     ex.add(currentCharacter);
                 }
-
-
-                System.out.println(ex);
-                System.out.println(a);
             }
             cryptogram = a;
         }
 
         answer=cryptogram;
-
-
         return answer;
     }
 }
