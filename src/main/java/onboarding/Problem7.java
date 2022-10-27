@@ -28,6 +28,18 @@ class ListGraph {
         }
         return null;
     }
+    public void put(User userA, User userB) {
+        if (!listGraph.contains(userA)){
+            listGraph.add(userA);
+        }
+        if (!listGraph.contains(userB)) {
+            listGraph.add(userB);
+        }
+        listGraph.forEach(i -> {
+            if (i.equals(userA)) i.getFriends().add(userB);
+            if (i.equals(userB)) i.getFriends().add(userA);
+        });
+    }
 }
 class User implements Comparable<User> {
     private String id;
@@ -38,18 +50,7 @@ class User implements Comparable<User> {
         this.id = id;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return getId().equals(user.getId());
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId());
-    }
 
     public String getId() {
         return id;
