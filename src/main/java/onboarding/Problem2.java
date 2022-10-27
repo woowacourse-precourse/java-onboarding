@@ -2,7 +2,32 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        String decrypted = cryptogram;
+
+        do {
+            cryptogram = decrypted;
+            decrypted = eliminateSuccessiveDup(cryptogram);
+        }
+        while(cryptogram.length() != decrypted.length());
+        return cryptogram;
+    }
+
+    private static String eliminateSuccessiveDup(String subCryptogram) {
+        int dupStartIdx = -1;
+        char prevChar = ' ';
+
+        for(int i = 0; i < subCryptogram.length(); i++) {
+            char curChar = subCryptogram.charAt(i);
+
+            if(curChar == prevChar) continue;
+            if(dupStartIdx != i-1) {
+                return subCryptogram.substring(0, dupStartIdx) + subCryptogram.substring(i);
+            }
+            dupStartIdx = i;
+            prevChar = curChar;
+        }
+
+        if(dupStartIdx != subCryptogram.length() - 1) subCryptogram = subCryptogram.substring(0, dupStartIdx);
+        return subCryptogram;
     }
 }
