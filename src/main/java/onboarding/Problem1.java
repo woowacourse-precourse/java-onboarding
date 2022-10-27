@@ -2,13 +2,10 @@ package onboarding;
 
 import java.util.List;
 
-class Problem1 {
+import static onboarding.Calculator.*;
+import static onboarding.Rule.*;
 
-    private enum Winner {
-        DRAW,
-        POBI,
-        CRONG;
-    }
+class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int pobiNum, crongNum;
@@ -17,7 +14,7 @@ class Problem1 {
         int crongLeftPage = crong.get(0);
         int crongRightPage = crong.get(1);
 
-        if(!checkInvalidInput(pobi) || !checkInvalidInput(crong))
+        if (!checkInvalidInput(pobi) || !checkInvalidInput(crong))
             return -1;
 
         pobiNum = calculateMax(
@@ -29,23 +26,9 @@ class Problem1 {
 
         return getResult(pobiNum, crongNum);
     }
+}
 
-    public static boolean checkInvalidInput(List<Integer> list){
-        int leftPage = list.get(0);
-        int rightPage = list.get(1);
-
-        if(rightPage - leftPage != 1)
-            return false;
-
-        if (leftPage%2 != 1)
-            return false;
-
-        if (rightPage %2 != 0)
-            return false;
-
-        return true;
-    }
-
+class Calculator {
     public static int multiplyEachDigitOfPage(int num) {
         int sum = 1;
 
@@ -70,6 +53,34 @@ class Problem1 {
 
     public static int calculateMax(int num1, int num2) {
         return Math.max(num1, num2);
+    }
+}
+
+class Rule{
+
+    private enum Winner {
+        DRAW,
+        POBI,
+        CRONG
+    }
+
+    public static boolean checkInvalidInput(List<Integer> list) {
+        int leftPage = list.get(0);
+        int rightPage = list.get(1);
+
+        if ((leftPage <= 0) || rightPage > 400)
+            return false;
+
+        if (rightPage - leftPage != 1)
+            return false;
+
+        if (leftPage % 2 != 1)
+            return false;
+
+        if (rightPage % 2 != 0)
+            return false;
+
+        return true;
     }
 
     public static int getResult(int pobiNum, int crongNum) {
