@@ -19,6 +19,14 @@ class Exception{
     public boolean isWrongPage(List<Integer> bookPages){
         return ((bookPages.get(1)-bookPages.get(0))!=DIFFERENCE_BETWEEN_PAGES);
     }
+    public boolean isFirstOrLastPage(List<Integer> bookPages){
+        boolean isTrue = false;
+        for(int i=0; i<CORRECT_LENGTH;i++){
+            int page = bookPages.get(i);
+            isTrue |= (page==FINAL_PAGE||page==START_PAGE);
+        }
+        return isTrue;
+    }
 }
 class Problem1 {
 
