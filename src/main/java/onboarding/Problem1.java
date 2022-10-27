@@ -36,12 +36,30 @@ class Exception{
         return (wrongLength||wrongPosition||wrongPageDifference||firstOrLast);
     }
 }
-class Operation{
-    int[] divideEachDigit(int page){
+class Operation {
+
+    int[] divideEachDigit(int page) {
         int[] digitNum;
         digitNum = Stream.of(String.valueOf(page).split("")).mapToInt(Integer::parseInt).toArray();
         return digitNum;
     }
+
+    public int sumEachDigit(int[] digitArray) {
+
+        int digitSum = 0;
+        for (int digit : digitArray) {
+            digitSum += digit;
+        }
+        return digitSum;
+    }
+    public int multiplyEachDigit(int[] digitArray){
+        int digitMul=1;
+        for(int digit : digitArray) {
+            digitMul*=digit;
+        }
+        return digitMul;
+    }
+}
 }
 class Problem1 {
 
