@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Comparator;
 
 public class Problem7 {
     private static final int ID_A = 0;
@@ -69,5 +70,31 @@ public class Problem7 {
                 friendScoreMap.put(visitor, VISIT_SCORE);
             }
         }
+    }
+
+    private static List<String> makeFriends(Map<String, Integer> friendScoreMap) {
+        List<String> friends = new LinkedList<>();
+
+        for(String friend : friendScoreMap.keySet()) {
+            if (friendScoreMap.get(friend) > 0) {
+                friends.add(friend);
+            }
+        }
+
+        friends.sort(new Comparator<String>() {
+            @Override public int compare(String subject, String target) {
+                int subjectScore = friendScoreMap.get(subject).intValue();
+                int targetScore = friendScoreMap.get(target).intValue();
+                if (subjectScore > targetScore) {
+                    return -1;
+                }
+                if (subjectScore < targetScore) {
+                    return 1;
+                }
+                return subject.compareTo(target);
+            }
+        });
+
+        return friends;
     }
 }
