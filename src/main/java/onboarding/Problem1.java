@@ -10,6 +10,18 @@ import java.util.List;
  * 4. 1-3의 기능을 활용해 문제에서 원하는 출력을 리턴하는 함수
  */
 class Problem1 {
+    static final int BOOK_START = 1;
+    static final int BOOK_END = 400;
+
+    static Boolean isValid(List<Integer> list) {
+        int front = list.get(0);
+        int back = list.get(1);
+        if (front != back - 1) {
+            return false;
+        }
+        return (BOOK_START < front) && (back < BOOK_END);
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
