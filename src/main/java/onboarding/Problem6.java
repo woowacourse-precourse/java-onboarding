@@ -13,6 +13,7 @@ public class Problem6 {
         List<String> duplicatedWord = new ArrayList<>();
 
         for (List<String> form : forms) {
+            checkForm(form);
             String crewName = form.get(1);
             for (int j = 0; j < crewName.length() - 1; j++) {
                 String subName = crewName.substring(j, j + 2);
@@ -25,5 +26,22 @@ public class Problem6 {
                 duplicatedWord.add(s);
         }
         return duplicatedWord;
+    }
+
+    static void checkForm(List<String> form) {
+        boolean isError = true;
+        String email = form.get(0);
+        String name = form.get(1);
+
+        if (name.matches("^[가-힣]*$") && (name.length() > 0 && name.length() < 20))
+            if (email.matches("^[a-zA-Z0-9]+@email.com$") && (email.length() > 10 && email.length() < 20))
+                isError = false;
+
+        try {
+            if (isError == true) throw new Exception();
+        } catch (Exception e) {
+            System.out.println("Incorrect name and email. Check your form");
+            System.out.println("your form = " + form);
+        }
     }
 }
