@@ -1,7 +1,8 @@
 package onboarding.problem5.domain;
 
 public enum MonetaryUnits {
-    FIFTY_THOUSAND(50000);
+    FIFTY_THOUSAND(50000),
+    TEN_THOUSAND(10000);
     
     private final int monetaryUnit;
     
