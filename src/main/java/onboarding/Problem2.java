@@ -8,6 +8,14 @@ public class Problem2 {
         return answer;
     }
 
+    static String stack_to_string(Stack<Character> input_stack){
+        String input_stack_to_string = "";
+        while(!input_stack.isEmpty()){
+            input_stack_to_string += input_stack.pop();
+        }
+        return input_stack_to_string;
+    }
+
     static Stack<Character> remove_duplicate(Stack<Character> input_stack){
         Stack<Character> removed_stack = new Stack<Character>();
         while(!input_stack.isEmpty()) {
