@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -17,11 +16,6 @@ class Problem1 {
 
     public boolean checkException(List<Integer> list) {
         return checkOutOfRangeException(list) && checkPageNumberValidityException(list);
-    }
-
-    public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
     }
 
     public List<Integer> addEachDigitOfPageNumber(List<Integer> list) {
@@ -75,5 +69,23 @@ class Problem1 {
             return 2;
         }
         return 0;
+    }
+
+    public static int solution(List<Integer> pobi, List<Integer> crong) {
+        Problem1 problem1 = new Problem1();
+
+        if (!problem1.checkException(pobi) && problem1.checkException(crong)) {
+            return -1;
+        }
+
+        List<Integer> pobiCalculationValues = problem1.calculateEachDigitOfPageNumber(pobi);
+        int pobiMaxValue = problem1.getMaxValue(pobiCalculationValues);
+
+        List<Integer> crongCalculationValues = problem1.calculateEachDigitOfPageNumber(crong);
+        int crongMaxValue = problem1.getMaxValue(crongCalculationValues);
+
+        List<Integer> maxValueOfPlayers = List.of(pobiMaxValue, crongMaxValue);
+
+        return problem1.findWinner(maxValueOfPlayers);
     }
 }
