@@ -10,7 +10,6 @@ import java.util.List;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
-
         return answer;
     }
 }
@@ -23,7 +22,7 @@ interface Deleter {
     String process(String cryptogram);
 }
 
-class DuplicateDeleter implements Detector {
+class DuplicateDetector implements Detector {
 
     @Override
     public List<Integer> findPattern(String cryptogram) {

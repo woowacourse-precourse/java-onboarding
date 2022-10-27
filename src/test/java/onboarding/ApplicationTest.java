@@ -99,14 +99,14 @@ class ApplicationTest {
 
         @Test
         void DuplicateDetecterTest() {
-            DuplicateDeleter duplicateDeleter = new DuplicateDeleter();
+            DuplicateDetector duplicateDeleter = new DuplicateDetector();
             List<Integer> result = List.of(3,4);
             assertThat(duplicateDeleter.findPattern("abcddef")).isEqualTo(result);
         }
 
         @Test
         void PatternDeleterTest() {
-            PatternDeleter patternDeleter = new PatternDeleter(new DuplicateDeleter());
+            PatternDeleter patternDeleter = new PatternDeleter(new DuplicateDetector());
             String preString = "browoanoommnaon";
             String result = "brown";
             assertThat(patternDeleter.process(preString)).isEqualTo(result);
