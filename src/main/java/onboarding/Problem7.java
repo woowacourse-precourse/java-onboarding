@@ -27,6 +27,7 @@ public class Problem7 {
 
     static void makeConnections(Map<String, Set<String>> map, String name1, String name2){
         Set set = new HashSet();
+
         if (map.containsKey(name1)){
             set = map.get(name1);
             set.add(name2);
@@ -34,6 +35,15 @@ public class Problem7 {
             set.add(name2);
         }
         map.put(name1, set);
+
+        set = new HashSet();
+        if (map.containsKey(name2)){
+            set = map.get(name2);
+            set.add(name1);
+        } else {
+            set.add(name1);
+        }
+        map.put(name2, set);
     }
 
     static Map getFriendScore(Map<String, Set<String>> friendList, Set<String> userFriends, String user){
