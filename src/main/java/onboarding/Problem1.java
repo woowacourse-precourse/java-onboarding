@@ -16,11 +16,11 @@ class Problem1 {
     }
 
     private static boolean errorCheck (List<Integer> pages) {
-        if (pages.get(0)==1 || pages.get(1)==400) {
+        if (pages.get(0) == 1 || pages.get(1) == 400) {
             return true;
         }
 
-        if (pages.get(0)==null || pages.get(1)==null) {
+        if (pages.get(0) == null || pages.get(1) == null) {
             return true;
         }
 
@@ -32,7 +32,7 @@ class Problem1 {
         int sum = 0;
         int mul = 1;
 
-        while (page>0){
+        while (page > 0){
             num = page%10;
             sum += num;
             mul *= num;
@@ -50,11 +50,11 @@ class Problem1 {
     }
 
     private static int getWinner(int pobiScore, int crongScore){
-        if (pobiScore>crongScore) {
+        if (pobiScore > crongScore) {
             return 1;
         }
 
-        if (pobiScore<crongScore){
+        if (pobiScore < crongScore){
             return 2;
         }
 
