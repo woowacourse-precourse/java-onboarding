@@ -12,6 +12,23 @@ public class Problem2 {
         List<String> strList = new ArrayList<>(Arrays.asList(str));
         boolean boo = true;
 
+        while (boo) {
+            if (strList.size() == 0) {
+                boo = false;
+                break;
+            }
+            for (int i = 0; i < strList.size()-1; i++) {
+                if (strList.get(i).equals(strList.get(i+1))) {
+                    strList.remove(i);
+                    strList.remove(i);
+                    boo = true;
+                    break;
+                } else {
+                    boo = false;
+                }
+            }
+        }
+
         return answer;
     }
 }
