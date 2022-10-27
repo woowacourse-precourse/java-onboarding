@@ -2,7 +2,24 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
+        int[] samYookGoo = new int[10001];
+
+        for (int i = 1; i < samYookGoo.length; i++) {
+            samYookGoo[i] = samYookGoo[i-1];
+            int num = i;
+
+            while (num > 0) {
+                int mod = num%10;
+                if (mod != 0 && mod%3==0) {
+                    samYookGoo[i] += 1;
+                    break;
+                }
+                num /= 10;
+            }
+        }
+
+        int answer = samYookGoo[number];
+
         return answer;
     }
 }
