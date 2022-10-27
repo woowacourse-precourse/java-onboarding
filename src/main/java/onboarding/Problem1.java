@@ -38,4 +38,11 @@ class Problem1 {
         int product = digitProduct(pageNum);
         return (sum > product) ? sum : product;
     }
+
+    private int leftOrRight(List<Integer> pages) {
+        int left = sumOrProduct(pages.get(0));
+        int right = sumOrProduct(pages.get(1));
+
+        return (left > right) ? left : right;
+    }
 }
