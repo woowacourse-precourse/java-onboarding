@@ -50,7 +50,7 @@ class Problem1 {
         int leftPage = pages.get(0);
         int rightPage = pages.get(1);
 
-        if (leftPage > 400 || leftPage < 0) return false;
+        if (leftPage > 400 || leftPage <= 0) return false;
         if (leftPage % 2 == 0) return false;
         if (rightPage != leftPage + 1) return false;
 
