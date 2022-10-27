@@ -35,6 +35,7 @@ public class Problem7 {
 
         //HashMap value 내림차순 정렬
         List<Map.Entry<String, Integer>> sortedMemberList = sortedMapByValue(memberList);
+        answer = makeListOfRecommendFriendList(sortedMemberList);
         return answer;
     }
     //user의 친구목록을 작성하는 기능
@@ -77,5 +78,14 @@ public class Problem7 {
         List<Map.Entry<String, Integer>> entryList = new LinkedList<>(memberList.entrySet());
         entryList.sort(Collections.reverseOrder(Map.Entry.comparingByValue()));
         return entryList;
+    }
+    public static List<String> makeListOfRecommendFriendList(List<Map.Entry<String, Integer>> map){
+        List<String> result = new ArrayList<>();
+        for (int i = 0; i < map.size(); i++) {
+            if (map.get(i).getValue() > 0) {
+                result.add(map.get(i).getKey());
+            }
+        }
+        return result;
     }
 }
