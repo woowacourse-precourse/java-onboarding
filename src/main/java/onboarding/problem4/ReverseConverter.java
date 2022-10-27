@@ -12,5 +12,14 @@ public class ReverseConverter {
 	public static final List<Character> reverseDict = dict.stream()
 		.sorted(Comparator.reverseOrder())
 		.collect(Collectors.toList());
+
+	public static Character convert(Character character) {
+		if (Character.isUpperCase(character)) {
+			return reverseDict.get(dict.indexOf(character));
+		} else {
+			int index = dict.indexOf(Character.toUpperCase(character));
+			return Character.toLowerCase(reverseDict.get(index));
+		}
+	}
 	
 }
