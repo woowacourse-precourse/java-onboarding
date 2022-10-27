@@ -6,7 +6,7 @@ public class Problem4 {
         StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < word.length(); i++) {
-            sb.append(changeAlphabet(word.charAt(i)));
+            sb.append(changeCharacter(word.charAt(i)));
         }
 
         answer = sb.toString();
@@ -14,7 +14,7 @@ public class Problem4 {
     }
 
     // 글자 변환
-    public static char changeAlphabet(char ch) {
+    public static char changeCharacter(char ch) {
         // 대문자인 경우
         if (ch >= 'A' && ch <= 'Z') {
             return (char) ('A' + 'Z' - ch);
