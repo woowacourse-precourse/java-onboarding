@@ -4,8 +4,15 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        Problem1 problem1 = new Problem1();
+        if(!(problem1.data_require(pobi) && problem1.data_require(crong))){
+            return -1;
+        }
+
+        int pobi_score = problem1.compare_score(pobi);
+        int crong_score = problem1.compare_score(crong);
+
+        return problem1.winner(pobi_score, crong_score);
     }
 
     public boolean data_require(List<Integer> score_list){
