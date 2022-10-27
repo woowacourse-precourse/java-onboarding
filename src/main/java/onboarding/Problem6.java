@@ -15,4 +15,16 @@ class formController{
         return (name.length() == 1);
     }
 
+    private static boolean isDuplicate(String baseName, String targetName) {
+        if (isSingleLetter(targetName)) {
+            return false;
+        }
+        for (int i = 0; i < baseName.length() - 1; i++) {
+            if (targetName.contains(baseName.substring(i, i + 2))){
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
