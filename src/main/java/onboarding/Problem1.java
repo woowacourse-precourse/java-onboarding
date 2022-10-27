@@ -26,4 +26,15 @@ class Problem1 {
         }
         return split;
     }
+
+    /*
+     *배열에서 문자열을 더하거나 곱해서 나온 숫자 중 가장 큰 수를 뽑는 함수
+     */
+    static int cal(List<Integer> list, int x){
+        List<Integer> max = splitList(list.get(x));
+        int add = max.get(0) + max.get(1);
+        int mul = max.get(0) * max.get(1);
+        int result = Math.max(add,mul);
+        return result;
+    }
 }
