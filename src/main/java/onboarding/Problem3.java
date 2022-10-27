@@ -10,6 +10,11 @@ public class Problem3 {
     }
 
     public static int solution(int number) {
+        return countClap(number);
+    }
+
+    // 손뼉을 친 횟수
+    private static int countClap(int number) {
         int cnt = 0;
         for (int i = 1; i <= number; i++) {
             cnt += separateEachDigit(i);
