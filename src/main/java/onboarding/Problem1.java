@@ -23,6 +23,29 @@ class Problem1 {
         Integer crongLeftPage = crong.get(0);
         Integer crongRightPage = crong.get(1);
 
+        // % operation -> integer split
+        while (pobiLeftPage > 0) {
+            pobiLeftPageList.add(pobiLeftPage % 10);
+            pobiLeftPage /= 10;
+        }
+
+        while (pobiRightPage > 0) {
+            pobiRightPageList.add(pobiRightPage % 10);
+            pobiRightPage /= 10;
+        }
+
+        while (crongLeftPage > 0) {
+            crongLeftPageList.add(crongLeftPage % 10);
+            crongLeftPage /= 10;
+        }
+
+        while (crongRightPage > 0) {
+            crongRightPageList.add(crongRightPage % 10);
+            crongRightPage /= 10;
+        }
+
+
+
         return 0;
     }
 
