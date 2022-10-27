@@ -15,6 +15,13 @@ class Problem1 {
             return EXCEPTION;
         }
 
+        int pobiMax = getMax(String.valueOf(pobi.get(0)), String.valueOf(pobi.get(1)));
+        int crongMax = getMax(String.valueOf(crong.get(0)), String.valueOf(crong.get(1)));
+
+        if (pobiMax > crongMax) answer = POBI_WIN;
+        else if (pobiMax < crongMax) answer = CRONG_WIN;
+        else answer = DRAW;
+
         return answer;
     }
 
