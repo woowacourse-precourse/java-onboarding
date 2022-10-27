@@ -50,4 +50,21 @@ class ApplicationTest {
             assertThat(Problem2.solution("zyelleyz")).isEqualTo("");
         }
     }
+
+    @Nested
+    class Problem3Test {
+        @Test
+        void case1() {
+            int num1 = 13;
+
+            assertThat(Problem3.solution(num1)).isEqualTo(4);
+        }
+
+        @Test
+        void case2() {
+            int num2 = 33;
+
+            assertThat(Problem3.solution(num2)).isEqualTo(14);
+        }
+    }
 }
