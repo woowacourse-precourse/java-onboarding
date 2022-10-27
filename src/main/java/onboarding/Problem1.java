@@ -31,4 +31,12 @@ class Problem1 {
 
         return splitNums;
     }
+
+    private static int getNumsSum(List<Integer> splitNums) {
+        int sum = splitNums.stream()
+                .reduce(0, Integer::sum);
+
+        return sum;
+    }
+
 }
