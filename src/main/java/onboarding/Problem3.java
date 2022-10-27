@@ -9,6 +9,11 @@ public class Problem3 {
 
     public static int solution(int number) {
         int answer = 0;
+
+        for (int n = 1; n <= number; n++) {
+            answer += countThreeSixNine(n);
+        }
+
         return answer;
     }
 
