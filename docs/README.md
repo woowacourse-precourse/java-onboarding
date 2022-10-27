@@ -64,3 +64,4 @@
 - [ ] [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153)을 지키며 커밋
 - [ ] [자바 코드 컨벤션](https://github.com/binghe819/TIL/blob/master/JAVA/%EA%B8%B0%ED%83%80/google%20java%20style%20guide.md)을 지키면서 프로그래밍
 - [ ] 객체지향 생활체조 원칙을 지키며 프로그래밍
+- [ ] 자바의 람다, 스트림 사용을 고려하며 프로그래밍
