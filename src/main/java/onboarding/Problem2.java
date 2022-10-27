@@ -5,19 +5,13 @@ import java.util.Arrays;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String[] stringArr = cryptogram.split("");
-        int[] delIndexArr = new int[cryptogram.length()];
 
-        for (int i = 0; i < cryptogram.length() -1; i++){
-
-            System.out.println(stringArr[i]);
-            System.out.println(stringArr[i+1]);
-            System.out.println(stringArr[i].equals(stringArr[i+1]));
-
+        int[] delIndexArr = new int[stringArr.length];
+        for (int i = 0; i < stringArr.length -1; i++){
             if(stringArr[i].equals(stringArr[i+1])){
                 delIndexArr[i] += 1;
                 delIndexArr[i+1] += 1;}}
         System.out.println(Arrays.toString(delIndexArr));
-        // remove index from stringArr
 
         // define the length of new string
         int lossLen = 0;
@@ -27,6 +21,7 @@ public class Problem2 {
             }
         }
         System.out.println(lossLen); // 4
+
         int newStringLen = stringArr.length - lossLen;
         String[] newStringArr = new String[newStringLen];
         int newStringIndex = 0;
@@ -36,9 +31,12 @@ public class Problem2 {
                 newStringIndex = newStringIndex + 1;
             }}
         System.out.println(Arrays.toString(newStringArr));
+        String res = String.join("", newStringArr);
 
+        if(lossLen == 0 || newStringArr.length < 2){
+            return res;
+        }
 
-        String answer = "answer";
-        return answer;
+        return solution(res);
     }
 }
