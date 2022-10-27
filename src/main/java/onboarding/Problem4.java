@@ -3,6 +3,9 @@ package onboarding;
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
+        answer = word;
+        answer = Problem4.changeSmallLetters(answer);
+        answer = Problem4.changeCapitalLetters(answer);
         return answer;
     }
 
