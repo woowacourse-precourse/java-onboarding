@@ -55,6 +55,12 @@ class Problem1 {
         int pobi_score = max_score(pobi_page);
         int crong_score = max_score(crong_page);
 
+        if (pobi_score > crong_score)
+            answer = 1;
+        else if (crong_score > pobi_score)
+            answer = 2;
+        else
+            answer = 0;
 
         return answer;
     }
