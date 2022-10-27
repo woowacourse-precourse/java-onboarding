@@ -12,8 +12,8 @@ public class Problem3 {
 
     static int countClap(Integer num){
         String[] numTokens = num.toString().split("");
-        Stream<String> tokenStream = Arrays.stream(numTokens);
-        Stream<String> clapTokens = tokenStream.filter(t -> ((t == "3") || (t == "6") || (t == "9")));
+        IntStream tokenStream = Arrays.stream(numTokens).mapToInt(Integer :: parseInt);
+        IntStream clapTokens = tokenStream.filter(t -> ((t == 3) || (t == 6) || (t == 9)));
 
         return (int) clapTokens.count();
     }
