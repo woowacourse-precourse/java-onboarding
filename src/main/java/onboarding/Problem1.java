@@ -45,12 +45,45 @@ class Problem1 {
         return true;
     }
 
+    // 점수를 구하는 메서드
+    public static int getScore(List<Integer> pages) {
+        int score = Integer.MIN_VALUE;
+
+        for (int page : pages) {
+            int number = page;
+            int sum = 0;
+            int mul = 1;
+
+            // 페이지 번호의 각 자리 숫자를 모두 더한 값과 곱한 값을 각각 sum과 mul 변수에 저장해준다.
+            while (number > 0) {
+                int digit = number % 10;
+
+                sum += digit;
+                mul *= digit;
+
+                number /= 10;
+            }
+
+            // 더한 값과 곱한 값 중 큰 값을 max 변수에 저장해준다.
+            int max = Math.max(sum, mul);
+
+            // 왼쪽 페이지의 큰 수와 오른쪽 페이지의 큰 수를 비교해 점수를 정한다.
+            score = Math.max(score, max);
+        }
+
+        return score;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         
         // 예외사항 있을 시, -1 반환.
         if (!(isCheck(pobi) && isCheck(crong))) {return -1;}
-        
+
+        // 포비와 크롱의 점수를 구한다.
+        int pobi_score = getScore(pobi);
+        int crong_score = getScore(crong);
+
         return answer;
     }
 }
