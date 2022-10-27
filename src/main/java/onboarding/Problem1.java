@@ -5,8 +5,28 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        Integer pobiMax = getMaxResult(pobi);
+        Integer crongMax = getMaxResult(crong);
+
+        return getGameResult(pobiMax, crongMax);
+    }
+
+    private static int getGameResult(Integer pobiMax, Integer crongMax) {
+        if (pobiMax > crongMax) {
+            return 1;
+        }
+        if (crongMax > pobiMax) {
+            return 2;
+        }
+        return 0;
+    }
+
+    private static Integer getMaxResult(List<Integer> pages) {
+        return pages.stream()
+            .map(page -> getEachDigits(page))
+            .mapToInt(digits -> getBiggerNumber(addEachDigits(digits), multiplyEachDigits(digits)))
+            .max()
+            .getAsInt();
     }
 
     public static int[] getEachDigits(int page) {
