@@ -13,7 +13,7 @@ public class Problem3 {
                 }
             }
         }
-        return cnt
+        return cnt;
     }
     public static int solution(int number) {
         return clap(number);
