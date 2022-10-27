@@ -2,8 +2,21 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        Problem2 problem = new Problem2;
+        Problem2 problem = new Problem2();
+
+        String firstcopy = "";
+        String secondcopy = cryptogram;
         String answer = "answer";
+
+        while(true) {
+            firstcopy = problem.delDupliChar(secondcopy);
+            secondcopy = problem.delDupliChar(firstcopy);
+
+            if (firstcopy.equals(secondcopy)) {
+                answer = secondcopy;
+                break;
+            }
+        }
 
         return answer;
     }
