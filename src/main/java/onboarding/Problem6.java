@@ -24,7 +24,7 @@ public class Problem6 {
             }
         }
 
-        answer = new ArrayList(set);
+        answer = new ArrayList<>(set);
         Collections.sort(answer);
 
         return answer;
