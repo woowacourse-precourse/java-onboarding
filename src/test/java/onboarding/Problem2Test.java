@@ -41,7 +41,7 @@ class Problem2Test {
 		words = "ABAAAAABCBDDDDDDDABC";
 		Assertions.assertThat(Problem2.solution(words)).isEqualTo("ACBABC");
 		words = "hellllleeeelo";
-		Assertions.assertThat(Problem2.solution(words)).isEqualTo("helo");
+		Assertions.assertThat(Problem2.solution(words)).isEqualTo("hlo");
 		words = "holellllleeeelo";
 		Assertions.assertThat(Problem2.solution(words)).isEqualTo("h");
 		words = "aabbccddeeffggghhhiiiihhh";
