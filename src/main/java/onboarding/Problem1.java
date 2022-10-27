@@ -25,11 +25,11 @@ class Problem1 {
         int pobiMax=0;
         int crongMax=0;
 
-        if(isLeftPageOddRightPageEven(pobiLeftPage, pobiRightPage, crongLeftPage, crongRightPage)){
+        if(isLeftPageEvenRightPageOdd(pobiLeftPage, pobiRightPage, crongLeftPage, crongRightPage)){
             answer = EXCEPTION;
             return answer;
         }
-        if(isLeftPagePlusOneRightPage(pobiLeftPage, pobiRightPage, crongLeftPage, crongRightPage)){
+        if(isNotLeftPagePlusOneRightPage(pobiLeftPage, pobiRightPage, crongLeftPage, crongRightPage)){
             answer = EXCEPTION;
             return answer;
         }
@@ -78,11 +78,11 @@ class Problem1 {
                 || crongLeftPage == 1 || crongRightPage == 399 || crongLeftPage == 2 || crongRightPage == 400;
     }
 
-    private static boolean isLeftPagePlusOneRightPage(int pobiLeftPage, int pobiRightPage, int crongLeftPage, int crongRightPage) {
+    private static boolean isNotLeftPagePlusOneRightPage(int pobiLeftPage, int pobiRightPage, int crongLeftPage, int crongRightPage) {
         return pobiLeftPage + 1 != pobiRightPage || crongLeftPage + 1 != crongRightPage;
     }
 
-    private static boolean isLeftPageOddRightPageEven(int pobiLeftPage, int pobiRightPage, int crongLeftPage, int crongRightPage) {
+    private static boolean isLeftPageEvenRightPageOdd(int pobiLeftPage, int pobiRightPage, int crongLeftPage, int crongRightPage) {
         return isEven(pobiLeftPage) || isOdd(pobiRightPage) || isEven(crongLeftPage) || isOdd(crongRightPage);
     }
 
