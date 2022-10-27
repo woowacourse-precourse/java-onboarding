@@ -24,6 +24,9 @@ public class Problem7 {
 
             userA.addFriend(userB);
             userB.addFriend(userA);
+
+            userRepository.put(userA.getUserId(), userA);
+            userRepository.put(userB.getUserId(), userB);
         }
 
         User mainUser = userRepository.get(user);
