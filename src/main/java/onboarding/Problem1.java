@@ -42,7 +42,7 @@ class Problem1 {
 
     private static int addDigits(int num) {
         int sum = 0;
-        while(num == 0) {
+        while(num != 0) {
             sum += num % 10;
             num /= 10;
         }
@@ -51,7 +51,7 @@ class Problem1 {
 
     private static int multipleDigits(int num) {
         int multiple = 1;
-        while(num == 0) {
+        while(num != 0) {
             multiple *= num % 10;
             num /= 10;
         }
