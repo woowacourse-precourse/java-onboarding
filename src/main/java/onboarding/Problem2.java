@@ -15,31 +15,27 @@ package onboarding;
 // 3. 연속하는 중복 문자들이 없을때까지 위의 과정을 반복해야함
 // 3-1. 연속하는 중복 문자들이 있는지 없는지 검사
 // 3-2. 있으면 반복, 없으면 값을 return 해야함
-
-
-
+// 3-3. 현재 문자를 비교하는 과정에서 초기화를 해주지않아 문제 발생.
+// 3-4. 현재 문자를 매번 초기화 해줌으로서 해결
 
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
-        answer = "";
         char presentLetter = '1';
 
-//        for (int i = 0; i < cryptogram.length(); i++) {
-//            if (presentLetter != cryptogram.charAt(i)){
-//                answer += cryptogram.charAt(i);
-//            }else{
-//                answer = answer.substring(0, answer.length() - 1);
-//            }
-//            presentLetter = cryptogram.charAt(i);
-//        }
-
-        System.out.println(checkRepeatString("browoanoommnaon"));
-        System.out.println(checkRepeatString("browoannaon"));
-        System.out.println(checkRepeatString("browoaaon"));
-        System.out.println(checkRepeatString("browoon"));
-        System.out.println(checkRepeatString("brown"));
-
+        while(checkRepeatString(cryptogram)) {
+            answer = "";
+            for (int i = 0; i < cryptogram.length(); i++) {
+                if (presentLetter != cryptogram.charAt(i)) {
+                    answer += cryptogram.charAt(i);
+                } else {
+                    answer = answer.substring(0, answer.length() - 1);
+                }
+                presentLetter = cryptogram.charAt(i);
+            }
+            cryptogram = answer;
+            presentLetter = 1;
+        }
         return answer;
     }
 
