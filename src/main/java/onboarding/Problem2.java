@@ -16,7 +16,11 @@ public class Problem2 {
 
             queue = removeDuplicatedStr(queue);
 
+            if (isFinished(queue, queueSize)) {
+                break;
+            }
         }
+
         return answer;
     }
 
@@ -52,5 +56,9 @@ public class Problem2 {
         }
 
         return isDeleted;
+    }
+
+    private static boolean isFinished(Deque<String> tempQueue, int queueSize) {
+        return queueSize == tempQueue.size();
     }
 }
