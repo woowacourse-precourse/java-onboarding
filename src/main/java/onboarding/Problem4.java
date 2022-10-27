@@ -19,44 +19,44 @@ public class Problem4 {
         String answer = "";
 
         makeFrogDictionary();
-        answer = reverseWord(word);
+        letterInList(word);
+        answer = reverseWord();
 
         return answer;
     }
 
-    private static String reverseWord(String word) {
-        wordInList(word);
+    public static String reverseWord() {
         String reverseWord = "";
 
         for (Character letter : motherWord) {
-            if (isUpperCaseLetter(letter)) {
-                reverseWord+=upperCase.get(letter);
-            }else if(isLowerCaseLetter(letter)){
-                reverseWord+=lowerCase.get(letter);
-            }else{
-                reverseWord+=letter;
+            int letterToInt = letter - '0';
+
+            if (isUpperCaseLetter(letterToInt)) {
+                reverseWord += upperCase.get(letter);
+            } else if (isLowerCaseLetter(letterToInt)) {
+                reverseWord += lowerCase.get(letter);
+            } else {
+                reverseWord += letter;
             }
         }
         return reverseWord;
     }
 
-    public static boolean isUpperCaseLetter(Character letter) {
-        if ((letter - '0') >= upperCaseA && (letter - '0') <= upperCaseZ) {
+    public static boolean isUpperCaseLetter(int letterToInt) {
+        if ((letterToInt) >= upperCaseA && (letterToInt) <= upperCaseZ) {
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
-    public static boolean isLowerCaseLetter(Character letter) {
-        if ((letter - '0') >= lowerCaseA && (letter - '0') <= lowerCaseZ) {
+    public static boolean isLowerCaseLetter(int letterToInt) {
+        if ((letterToInt) >= lowerCaseA && (letterToInt) <= lowerCaseZ) {
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
-    private static void wordInList(String word) {
+    private static void letterInList(String word) {
         motherWord = new ArrayList<>();
         StringTokenizer st = new StringTokenizer(word, UPPERCASE_ALPHABET + LOWERCASE_ALPHABET, true);
 
@@ -66,8 +66,8 @@ public class Problem4 {
     }
 
     public static void makeFrogDictionary() {
-        upperCase = new HashMap<Character, Character>();
-        lowerCase = new HashMap<Character, Character>();
+        upperCase = new HashMap<>();
+        lowerCase = new HashMap<>();
 
         initUpperCaseMap();
         initLowerCaseMap();
