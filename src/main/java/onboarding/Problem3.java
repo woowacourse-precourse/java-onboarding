@@ -2,11 +2,12 @@ package onboarding;
 
 import java.util.Arrays;
 import java.util.stream.Stream;
+import java.util.stream.IntStream;
 
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
-        return answer;
+        IntStream allNums = IntStream.range(1, number + 1);
+        return allNums.map(num -> countClap(num)).sum();
     }
 
     static int countClap(Integer num){
