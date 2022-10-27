@@ -10,11 +10,11 @@ import java.util.HashSet;
  * checkValid       : 예외 처리
  */
 
-
 public class Problem3 {
     static HashSet<Integer> gameRule;
 
     public static int solution(int number) {
+        gameRule = new HashSet<>();
         final int errorCase = -1;
         int answer;
         setGameRule();
