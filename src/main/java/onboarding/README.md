@@ -14,4 +14,4 @@
 
 |     | 번호  | 기능 코드                       | Depth1   | Depth2 | method                                           | 설명             |
 |-----|-----|-----------------------------|----------|--------|--------------------------------------------------|----------------|
-| X   | 1   | onBoarding-back-Problem2-01 | solution |        | public static String solution(String cryptogram) | 중복된 문자들 삭제한 결과 |
+| O   | 1   | onBoarding-back-Problem2-01 | solution |        | public static String solution(String cryptogram) | 중복된 문자들 삭제한 결과 |
