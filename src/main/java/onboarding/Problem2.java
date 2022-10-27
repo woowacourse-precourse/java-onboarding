@@ -18,4 +18,13 @@ public class Problem2 {
         Matcher successiveStringMatcher = SUCCESSIVE_PATTERN.matcher(str);
         return successiveStringMatcher.replaceAll(BLANK);
     }
+
+    public static String eraseSuccessiveCharactersUntilUnchanged(String str) {
+        String ret;
+        while (!(ret = eraseSuccessiveCharacters(str)).equals(str)) {
+            str = eraseSuccessiveCharacters(str);
+        }
+
+        return ret;
+    }
 }
