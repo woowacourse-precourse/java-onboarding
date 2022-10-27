@@ -4,7 +4,8 @@ import java.util.List;
 
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
+        game369BoardLoop();
+        int answer = numberOnGame369Board(number);
         return answer;
     }
     public static int[] game369Board(){
@@ -17,11 +18,17 @@ public class Problem3 {
         return String.valueOf(num).split("(?<=.)");
     }
     public static boolean validCheck369(int num){
-        CharSequence numToString = (CharSequence) List.of(numToString(num));
-        if("3".contains(numToString) || "6".contains(numToString) || "9".contains(numToString)){
-            return true;
-        }
-        return false;
+        List<String> numToString = List.of(numToString(num));
+        return numToString.contains("3")||numToString.contains("6")||numToString.contains("9");
     }
-
+    public static void game369BoardLoop(){
+        for (int i = 3; i < 10001; i++) {
+            markClapNumber(i);
+        }
+    }
+    public static void markClapNumber(int num){
+        if(validCheck369(num)){
+            game369Board()[num] += game369Board()[num-1]+1;
+        }
+    }
 }
