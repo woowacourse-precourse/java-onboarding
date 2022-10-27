@@ -38,6 +38,9 @@ public class Problem6 {
 			}
 		}
 		for (int i = 0; i < forms.size(); i++) {
+			if (!isValidInput(forms.get(i).get(0), forms.get(i).get(1))) {
+				continue;
+			}
 			String nickName = forms.get(i).get(1);
 			for (int j = 0; j < nickName.length() - 1; j++) {
 				String twoWord = nickName.substring(j, j + 2);
