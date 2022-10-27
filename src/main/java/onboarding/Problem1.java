@@ -23,8 +23,6 @@ class Problem1 {
         if(!isPageValid(pobi) || !isPageValid(crong))
             return -1;
 
-
-
         return answer;
     }
     private static boolean isPageValid(List<Integer> pages){
@@ -33,5 +31,17 @@ class Problem1 {
             return false;
 
         return true;
+    }
+
+    private static int multiplyDigitOfPage(Integer page){
+        int result = page%10;
+        page/=10;
+
+        while(page!=0){
+           result*=page%10;
+           page/=10;
+        }
+
+        return result;
     }
 }
