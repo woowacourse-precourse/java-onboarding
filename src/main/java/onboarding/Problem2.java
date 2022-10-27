@@ -22,8 +22,38 @@ package onboarding;
 public class Problem2 {
     public static String solution(String cryptogram) {
         Problem2 problem2 = new Problem2();
-        
+
+        String answer = problem2.removeDuplicate(cryptogram);
+
         return answer;
+    }
+
+    public String removeDuplicate(String targetString){
+
+        char[] targetCharArray = targetString.toCharArray();
+        String resultString = "";
+        int duplicateCnt = 0;
+
+        for(int i = 0; i < targetCharArray.length; i++){
+            if(i == targetCharArray.length-1){
+                // (1-1) 미자막 요소일 경우 <- 이때 그전 요소와 중복된 값이 들어왔을 경우 (1-2)에서 i++되어 탐색하지 않는다.
+                resultString = resultString.concat(Character.toString(targetCharArray[i]));
+            } else if(targetCharArray[i] == targetCharArray[i+1]){
+                // (1-2) 다음 요소와 같은값 일 때 다음 텀에 그 다음다음 요소를 비교하게 해준다.
+                i++;
+                duplicateCnt++;
+            } else if(targetCharArray[i] != targetCharArray[i+1]){
+                // (1-3) 다음 요소와 다른값 일때 resultString에 추가해준다.
+                resultString = resultString.concat(Character.toString(targetCharArray[i]));
+            }
+        }
+
+        if(duplicateCnt == 0){
+            return resultString;
+        }
+
+        return removeDuplicate(resultString);
+
     }
 
 
