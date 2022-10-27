@@ -7,6 +7,7 @@ class Problem1 {
     private final int CRONG_WIN = 2;
     private final int DRAW = 0;
     private final int EXCEPTION = -1;
+    private final int PAGE_LENGTH = 2;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
@@ -42,7 +43,24 @@ class Problem1 {
     }
 
     public boolean isValid(List<Integer> pobi, List<Integer> crong) {
+        for (int i = 0; i < PAGE_LENGTH; i++) {
+            int tmpPobiPageNum = pobi.get(i);
+            int tmpCrongPageNum = crong.get(i);
+            if(tmpPobiPageNum < 1 || tmpPobiPageNum > 400 || tmpCrongPageNum < 1 || tmpCrongPageNum > 400) {
+                return false;
+            }
+        }
 
+        if(pobi.get(0) == 1 || crong.get(0) == 1 || pobi.get(1) == 400 || crong.get(1) == 400) {
+            return false;
+        }
+
+        int pobiPageGap = Math.abs(pobi.get(1) - pobi.get(0));
+        int crongPageGap = Math.abs(crong.get(1) - crong.get(0));
+
+        if(pobiPageGap != 1 || crongPageGap != 1) {
+            return false;
+        }
         return true;
     }
 }
