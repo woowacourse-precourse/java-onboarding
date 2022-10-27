@@ -11,8 +11,8 @@ class Problem1 {
 		if (!Check.checkPageNumber(pobi) || !Check.checkPageNumber(crong)) {
 			return -1;
 		}
+		return 1;
 
-		return Integer.MAX_VALUE;
 	}
 
 

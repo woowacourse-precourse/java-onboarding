@@ -6,6 +6,10 @@ public class Check {
 	private final static int MINPAGE = 1;
 	private final static int MAXPAGE = 400;
 	private final static int limit = 2;
+
+	private Check() {
+	}
+
 	public static boolean checkPageNumber(List<Integer> pages) {
 		if (pages == null){
 			return false;

@@ -26,4 +26,6 @@
 
 
 ### 기능 구현
-1. 페이지번호 유효성을 확인  - Problme1.checkPageNumber 메서드 생성
+1. 페이지번호 유효성을 확인  - Check.checkPageNumber으로 구현
+2. 각 자리 숫자를 모두 더하는 기능  - AddEachDigitToSum 구현
+
