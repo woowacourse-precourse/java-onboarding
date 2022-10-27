@@ -3,10 +3,10 @@ package onboarding;
 /*
  * # 기능 정리
  * [O] 연속하는 중복문자 검증
- * [?] 제거된 문자열 반환 메서드
+ * [O] 제거된 문자열 반환 메서드
  * [O] 1~2 기능 반복 메서드
  * [O] solution 작성
- * [X] 테스트 확인
+ * [O] 테스트 확인
  */
 
 public class Problem2 {
@@ -23,25 +23,37 @@ public class Problem2 {
             before = compressed;
             compressed = compressString(compressed).toString();
 
-            System.out.println(before);
             System.out.println(compressed);
         }
 
         return compressed;
     }
 
-    private static StringBuffer compressString(final String str){
-        StringBuffer compressedString = new StringBuffer();
+    private static StringBuffer compressString(final String origin){
+        StringBuffer compressed = new StringBuffer();
+        int originIdx = 1;
+        boolean isLastCharDuplicate = false;
 
-        compressedString.append(str.charAt(0));
-        for(int i = 1; i < str.length(); i++){
-            char beforeChar = str.charAt(i - 1);
-            char currentChar = str.charAt(i);
+        while(originIdx < origin.length()){
+            char beforeChar = origin.charAt(originIdx - 1);
+            char currentChar = origin.charAt(originIdx);
 
-            if(beforeChar != currentChar)
-                compressedString.append(currentChar);
+            if(beforeChar == currentChar)
+                isLastCharDuplicate = true;
+            else{
+                if(!isLastCharDuplicate){
+                    compressed.append(beforeChar);
+                }
+
+                if(originIdx == origin.length() - 1)
+                    compressed.append(currentChar);
+
+                isLastCharDuplicate = false;
+            }
+
+            originIdx++;
         }
 
-        return compressedString;
+        return compressed;
     }
 }
