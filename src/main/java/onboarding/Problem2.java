@@ -20,6 +20,16 @@ public class Problem2 {
         return st;
     }
 
+    public static String reverseString(Stack<Character> st){
+        if(st.empty()) return "";
+
+        StringBuffer stringBuffer = new StringBuffer();
+        while(!st.empty()){
+            stringBuffer.append(st.pop());
+        }
+        return stringBuffer.reverse().toString();
+    }
+
 
 
     public static String solution(String cryptogram) {
