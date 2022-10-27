@@ -179,6 +179,27 @@ class ApplicationTest {
             String result = "R olev blf";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
+
+        @Test
+        void allUpperCase() {
+            String word = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            String result = "ZYXWVUTSRQPONMLKJIHGFEDCBA";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+
+        @Test
+        void allLowerCase() {
+            String word = "abcdefghijklmnopqrstuvwxyz";
+            String result = "zyxwvutsrqponmlkjihgfedcba";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+
+        @Test
+        void includeNotAlphabet() {
+            String word = "zZ !@#$%^&*()-=_+[]{}:<>,./? 1234567890 aA";
+            String result = "aA !@#$%^&*()-=_+[]{}:<>,./? 1234567890 zZ";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
     }
 
     @Nested
