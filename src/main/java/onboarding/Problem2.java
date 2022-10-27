@@ -7,22 +7,25 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Problem2 {
+
+
     public static String solution(String cryptogram) {
-        List<String> collect = Arrays.stream(cryptogram.split("")).collect(Collectors.toList());
-        List<Integer> sames = new ArrayList<>();
-        for (int i = 0; i < collect.size()-1; i++) {
-            if (collect.get(i).equals(collect.get(i + 1))) {
-                sames.add(i);
+        List<String> splitString = Arrays.stream(cryptogram.split("")).collect(Collectors.toList());
+        List<Integer> indexOfDuplicateWords = new ArrayList<>();
+
+        for (int i = 0; i < splitString.size()-1; i++) {
+            if (splitString.get(i).equals(splitString.get(i + 1))) {
+                indexOfDuplicateWords.add(i);
             }
         }
 
-        sames.sort(Collections.reverseOrder());
-        for (Integer same : sames) {
-            collect.subList(same, same + 2).clear();
+        indexOfDuplicateWords.sort(Collections.reverseOrder());
+
+        for (Integer idx : indexOfDuplicateWords) {
+            splitString.subList(idx, idx + 2).clear();
         }
 
-
-        String answer = String.join("", collect);
+        String answer = String.join("", splitString);
         return answer;
     }
 }
