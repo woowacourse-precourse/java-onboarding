@@ -38,4 +38,21 @@ public class ScoreService {
 
         return result;
     }
+    //List 를 받고, 최종 페이지넘버게임 점수를 계산하는 함수
+    public static int[][] calculateScore(List<Integer> list){
+        ArrayList<Integer>[] slicedNumberList = new ArrayList[2];
+        int [][] score = {{0,0},{0,0}};
+
+        for(int index =0; index < list.size(); index++){
+            slicedNumberList[index] = integerToArrayList(list.get(index));
+        }
+        /*
+         * [[9, 7],[9, 8]]
+         * */
+        for(int index = 0; index<slicedNumberList.length; index++){
+            score[index][0] = cumulativeSum(slicedNumberList[index]);
+            score[index][1] = cumulativeMul(slicedNumberList[index]);
+        }
+        return score;
+    }
 }
