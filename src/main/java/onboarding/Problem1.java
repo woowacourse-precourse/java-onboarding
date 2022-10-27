@@ -21,7 +21,9 @@ class Problem1 {
     }
     
     // 더하기와 곱하기 중 큰 값을 출력하는 메소드
-    private static int getMaxNum(String page) {
+    private static int getMaxNum(int pageNumber) {
+        String page = String.valueOf(pageNumber);
+
         int plusNum = page.charAt(0)-'0';
         int multipleNum = page.charAt(0)-'0';
 
@@ -42,19 +44,12 @@ class Problem1 {
         }catch (RuntimeException e){
             return -1;
         }
-
-        int pobiScore = 0;
-        int crongScore = 0;
-
-        for (int i = 0; i < 2; i++) {
-            //pobi의 점수 구하기
-            String pobiPage = String.valueOf(pobi.get(i));
-            pobiScore = Math.max(pobiScore,getMaxNum(pobiPage));
-
-            //crong의 점수 구하기
-            String crongPage = String.valueOf(crong.get(i));
-            crongScore = Math.max(crongScore,getMaxNum(crongPage));
-        }
+        
+        //pobi의 최대 점수 구하기
+        int pobiScore = Math.max(getMaxNum(pobi.get(0)),getMaxNum(pobi.get(1)));
+        
+        //crong의 최대 점수 구하기
+        int crongScore = Math.max(getMaxNum(crong.get(0)),getMaxNum(crong.get(1)));
 
         //pobi의 점수가 큰 경우 리턴 1
         if(pobiScore>crongScore) return 1;
