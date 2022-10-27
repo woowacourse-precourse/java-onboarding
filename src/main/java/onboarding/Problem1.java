@@ -8,7 +8,22 @@ class Problem1 {
     static boolean exceptionFlag = false;
 
     public void checkException(List<Integer> pages){
-        
+        int left = pages.get(0);
+        int right = pages.get(1);
+
+        if(left+1!=right){
+            exceptionFlag=true;
+            return;
+        }
+
+        if(left%2==0 || right%2==1){
+            exceptionFlag=true;
+            return;
+        }
+
+        if(left<1 || left>400 || right<1 || right>400){
+            exceptionFlag=true;
+        }
     }
 
     public int calculateMaximumAddOrMultiply(int pageNum){
