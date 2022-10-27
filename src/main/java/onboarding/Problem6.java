@@ -4,12 +4,15 @@ import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = new ArrayList<>();
+        List<String> answer;
         Set<String> emails = new HashSet<>();
         Map<String, String> combinationsOfNames = new HashMap<>();
         for(int i = 0; i < forms.size(); ++i){
             findDuplicatedNamePart(forms.get(i), emails, combinationsOfNames);
         }
+        answer = new ArrayList<>(emails);
+        Collections.sort(answer);
+        System.out.println(answer);
         return answer;
     }
 
@@ -20,7 +23,10 @@ public class Problem6 {
         int nameLen = name.length();
         if(nameLen == 1) return;
         for(int i = 0; i < nameLen - 1; ++i){
-            String smallNamePart = String.valueOf(name.charAt(i) + name.charAt(i + 1));
+            StringBuilder sb = new StringBuilder();
+            sb.append(name.charAt(i));
+            sb.append(name.charAt(i + 1));
+            String smallNamePart = sb.toString();
             if(combinationsOfNames.containsKey(smallNamePart)) {
                 emails.add(combinationsOfNames.get(smallNamePart));
                 emails.add(email);
