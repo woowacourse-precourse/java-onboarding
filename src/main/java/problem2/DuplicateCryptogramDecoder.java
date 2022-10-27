@@ -7,6 +7,8 @@ public class DuplicateCryptogramDecoder {
     private static final String ERR_LOWER_CASE = "암호는 영어 소문자로만 구성되어야 합니다.";
     private static final int LENGTH_LOWER_BOUND = 1;
     private static final int LENGTH_UPPER_BOUND = 1000;
+    private static final char LETTER_LOWER_BOUND = 'a';
+    private static final char LETTER_UPPER_BOUND = 'z';
 
     public static String decode(String cryptogram) {
         validateLength(cryptogram);
@@ -28,7 +30,7 @@ public class DuplicateCryptogramDecoder {
     }
 
     private static void validateLowerCase(char letter) {
-        if (letter < 'a' || letter > 'z')
+        if (letter < LETTER_LOWER_BOUND || letter > LETTER_UPPER_BOUND)
             throw new IllegalArgumentException(ERR_LOWER_CASE);
     }
 }
