@@ -4,11 +4,15 @@ import java.util.Iterator;
 import java.util.List;
 
 class Problem1 {
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         // 포비와 크롱의 리스트에 들어있는 값을 넣을 배열
         int[] pobiPage = new int[2];
         int[] crongPage = new int[2];
+        // 포비와 크롱의 페이지 연산 결과를 넣을 배열
+        int[] pobiResult = new int[4];
+        int[] crongResult = new int[4];
 
         // 포비와 크롱의 리스트에 들어있는 값을 배열에 넣음
         Iterator<Integer> pobiItr = pobi.iterator();
@@ -24,9 +28,9 @@ class Problem1 {
         if(isException) return -1;
 
         // 포비의 계산결과 넣음
-
+        pobiResult = calculateResult(pobiPage);
         // 크롱의 계산결과 넣음
-
+        crongResult = calculateResult(crongPage);
         // 누가 이겼는지 확인
 
         return answer;
@@ -61,12 +65,45 @@ class Problem1 {
         int[] result = new int[4];
 
         // 왼쪽 페이지의 각 자리의 숫자를 모두 더함
-
+        result[0] = sum(page[0]);
         // 왼쪽 페이지의 각 자리의 숫자를 모두 곱함
-
+        result[1] = multiple(page[0]);
         // 오른쪽 페이지의 각 자리의 숫자를 모두 더함
-
+        result[2] = sum(page[1]);
         // 오른쪽 페이지의 각 자리의 숫자를 모두 곱함
+        result[3] = sum(page[1]);
+
+        return result;
+    }
+
+    /**
+     * 각 자리의 숫자를 모두 더하는 메소드
+     * @param number
+     * @return
+     */
+    static int sum(int number){
+        int result = 0;
+
+        while(number > 0){
+            result += number % 10;
+            number /= 10;
+        }
+
+        return result;
+    }
+
+    /**
+     * 각 자리의 숫자를 모두 곱하는 메소드
+     * @param number
+     * @return
+     */
+    static int multiple(int number){
+        int result = 1;
+
+        while (number > 0){
+            result *= number % 10;
+            number /= 10;
+        }
 
         return result;
     }
