@@ -6,29 +6,28 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Problem5 {
-    public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
 
-        answer = List.copyOf(convertMoney(money));
+	public static List<Integer> solution(int money) {
+		List<Integer> answer = Collections.emptyList();
 
-        return answer;
-    }
+		answer = List.copyOf(convertMoney(money));
 
-    /**
-     * 기능 1 돈 변환 리스트 구하는 기능
-     */
-    public static List<Integer> convertMoney(int money)
-    {
-        int[] moneyArray = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
+		return answer;
+	}
 
-        List<Integer> wallet = new ArrayList<>();
+	/**
+	 * 기능 1 돈 변환 리스트 구하는 기능
+	 */
+	public static List<Integer> convertMoney(int money) {
+		int[] moneyArray = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
 
-        for (int i = 0; i < 9; i++) {
-            wallet.add( money / moneyArray[i] );
-            money %= moneyArray[i];
-        }
+		List<Integer> wallet = new ArrayList<>();
 
-        return wallet;
-    }
+		for (int i = 0; i < 9; i++) {
+			wallet.add(money / moneyArray[i]);
+			money %= moneyArray[i];
+		}
+		return wallet;
+	}
 
 }
