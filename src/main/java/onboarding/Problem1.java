@@ -4,13 +4,23 @@ import java.util.List;
 
 class Problem1 {
     private static final int EXCEPTION_CASE = -1;
+    private static final int DRAW = 0;
+    private static final int POBI_WIN = 1;
+    private static final int CRONG_WIN = 2;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
         if (!isBoundary(pobi) || !isBoundary(crong)) return EXCEPTION_CASE;
-        int pobiScore = calculateScore(pobi);
-        int crongScore = calculateScore(crong);
-        return answer;
+        return compareScore(calculateScore(pobi), calculateScore(crong));
+    }
+
+    private static int compareScore(int pobiScore, int crongScore) {
+        if (crongScore > pobiScore) {
+            return CRONG_WIN;
+        } else if (crongScore < pobiScore) {
+            return POBI_WIN;
+        } else {
+            return DRAW;
+        }
     }
 
     private static int calculateScore(List<Integer> pages) {
