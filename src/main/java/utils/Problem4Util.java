@@ -9,6 +9,6 @@ public class Problem4Util {
         } else if (Character.isUpperCase(ch)) {
             return (char) ('Z' - (ch - 'A'));
         }
-        return ' ';
+        return ch;
     }
 }
