@@ -135,6 +135,7 @@ class ApplicationTest {
 
         @Test
         @Order(1)
+        @DisplayName("3이 포함될 때 손뼉을 치는지")
         void testForClapOnThree() {
             int number = 3;
             int expected = 1;
@@ -143,6 +144,7 @@ class ApplicationTest {
 
         @Test
         @Order(2)
+        @DisplayName("6이 포함될 때 손뼉을 치는지")
         void testForClapOnSix() {
             int number = 6;
             int expected = 2;
@@ -151,6 +153,7 @@ class ApplicationTest {
 
         @Test
         @Order(3)
+        @DisplayName("9가 포함될 때 손뼉을 치는지")
         void testForClapOnNine() {
             int number = 9;
             int expected = 3;
