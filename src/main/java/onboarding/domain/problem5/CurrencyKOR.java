@@ -1,6 +1,6 @@
 package onboarding.domain.problem5;
 
-public enum Currency {
+public enum CurrencyKOR {
     FiftyThousand(50000),
     TenThousand(10000),
     FiveThousand(5000),
@@ -12,7 +12,7 @@ public enum Currency {
     One(1);
 
     private final int money;
-    Currency(int money) {
+    CurrencyKOR(int money) {
         this.money = money;
     }
     public int getChange(int pay) {
