@@ -12,8 +12,21 @@ import java.util.Set;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = getResult(user, friends, visitors);
         return answer;
+    }
+
+    static List<String> getResult(String user, List<List<String>> friends, List<String> visitors) {
+        Map<String, List<String>> friendsMap = getFriendsMap(friends);
+        Map<String, Integer> scoreMap = new HashMap<>();
+        List<String> userFriends = friendsMap.get(user);
+        List<String> result;
+
+        getTogetherKnowPoint(friends, user, scoreMap);
+        getVisitorsPoint(scoreMap, visitors);
+        result = sortScoreMap(scoreMap, userFriends);
+
+        return result;
     }
 
     static Map<String, List<String>> getFriendsMap(List<List<String>> friends) {
@@ -107,28 +120,4 @@ public class Problem7 {
         }
         return result;
     }
-
-    public static void main(String[] args) {
-        String user = "mrko";
-        List<List<String>> friends = List.of(
-            List.of("donut", "andole"),
-            List.of("donut", "jun"),
-            List.of("donut", "mrko"),
-            List.of("shakevan", "andole"),
-            List.of("shakevan", "jun"),
-            List.of("shakevan", "mrko")
-        );
-        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-
-        Map<String, List<String>> friendsMap = getFriendsMap(friends);
-        List<String> friendList = getFriendList(friends,user);
-        Map<String, Integer> scoreMap = new HashMap<>();
-        List<String> userFriends = friendsMap.get(user);
-        getTogetherKnowPoint(friends, user, scoreMap);
-        getVisitorsPoint(scoreMap, visitors);
-        List<String> result = sortScoreMap(scoreMap, userFriends);
-        result.stream().forEach(r -> System.out.println(r + " "));
-        
-    }
-
 }
