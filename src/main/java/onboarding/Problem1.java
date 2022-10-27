@@ -8,10 +8,7 @@ class Problem1 {
             return -1;
         }
 
-        int pobiScore = getMaxScore(pobi);
-        int crongScore = getMaxScore(crong);
-
-        return getMatchResult(pobiScore, crongScore);
+        return getMatchResult(getMaxScore(pobi), getMaxScore(crong));
     }
 
     private static int getMatchResult(int pobiScore, int crongScore) {
@@ -25,10 +22,10 @@ class Problem1 {
     }
 
     private static int getMaxScore(List<Integer> pageList) {
-        return Math.max(calculateScore(pageList.get(0)), calculateScore(pageList.get(1)));
+        return Math.max(getMaxScoreFromPage(pageList.get(0)), getMaxScoreFromPage(pageList.get(1)));
     }
 
-    private static int calculateScore(int page) {
+    private static int getMaxScoreFromPage(int page) {
         int sumScore = 0;
         int multiScore = 1;
 
