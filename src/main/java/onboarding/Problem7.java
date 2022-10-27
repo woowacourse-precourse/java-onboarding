@@ -16,6 +16,18 @@ public class Problem7 {
         Map<String, Integer> scores = getFriendScore(user, usersFriendsSet, friendsList);
 
         addVisitScore(visitors, scores);
+
+        ArrayList<Map.Entry<String, Integer>> forSort = new ArrayList(scores.entrySet());
+
+        forSort.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                if (o1.getValue() - o2.getValue() == 0){
+                    return o1.getKey().compareTo(o2.getKey());
+                }
+                return o1.getValue().compareTo(o2.getValue());
+            }
+        });
     }
 
     static void makeConnections(Map<String, Set<String>> map, String name1, String name2){
