@@ -2,7 +2,18 @@ package onboarding;
 
 public class Problem3 {
 
+    /*
+     * 입력이 유효한지 판별합니다.
+     *
+     * @param 정수입니다.
+     * @return 정수가 유효하다면 참, 아니면 거짓을 반환합니다.
+     * */
     private static boolean isValidInput(int number) {
+        boolean valid = isInRange(number);
+        return valid;
+    }
+
+    private static boolean isInRange(int number) {
         return false;
     }
 
