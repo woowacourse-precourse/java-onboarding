@@ -5,7 +5,18 @@ import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>();
+        for (int i=0;i<forms.size()-1;i++){
+            for (int j=i+1; j<forms.size();j++) {
+                String iName = forms.get(i).get(1);
+                String jName = forms.get(j).get(1);
+                String iMail = forms.get(i).get(0);
+                String jMail = forms.get(j).get(0);
+                if (isConfused(iName, jName)) {
+                    answer.addAll(List.of(iMail, jMail));
+                }
+            }
+        }
         return answer;
     }
     static boolean isConfused(String A, String B) {
