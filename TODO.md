@@ -77,9 +77,8 @@
 
 설계<br/>
 
-- [ ] 인터페이스 CurrencyExchanger는 List<Integer> exchange() 메소드를 통해 최소 화폐의 갯수의 리스트를 반환한다.
-- [ ] CurrencyExchanger의 구현체 CurrencyExchangerV1은 생성 시 입력받은 액수를 저장.
-- [ ] CurrencyExchangerV1은 문제 규칙에 따라 최소 최소 화폐의 갯수의 리스트를 exchange()로 반환한다.
+- [x] 인터페이스 CurrencyExchanger는 List<Integer> exchange(int money) 메소드를 통해 최소 화폐의 갯수의 리스트를 반환한다.
+- [x] CurrencyExchangerV1은 문제 규칙에 따라 최소 화폐의 갯수의 리스트를 exchange(int money)로 반환한다.
 
 </details><br/>
 

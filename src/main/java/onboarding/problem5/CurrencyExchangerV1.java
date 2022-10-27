@@ -1,5 +1,6 @@
 package onboarding.problem5;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CurrencyExchangerV1 implements CurrencyExchanger{
@@ -11,16 +12,17 @@ public class CurrencyExchangerV1 implements CurrencyExchanger{
             500,
             100,
             50,
-            10
+            10,
+            1
     };
-    private final int money;
-
-    public CurrencyExchangerV1(int money){
-        this.money = money;
-    }
 
     @Override
-    public List<Integer> exchange() {
-        return null;
+    public List<Integer> exchange(int money) {
+        List<Integer> currencyCountList = new ArrayList<>();
+        for(int currency: exchangePolicy){
+            currencyCountList.add(money / currency);
+            money %= currency;
+        }
+        return currencyCountList;
     }
 }
