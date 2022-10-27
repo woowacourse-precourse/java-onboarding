@@ -108,6 +108,23 @@ public class Problem7 {
         return recommendScoreByCrew;
     }
 
+    public static List<String> getRecommendCrews(Map<String, Integer> recommendScoreByCrew) {
+        ArrayList<String> recommendCrews = new ArrayList<>();
+
+        // 추천점수 0 초과만 추천리스트에 들어감
+        recommendScoreByCrew.forEach((crew, recommendScore) -> {
+            if (recommendScore > 0)
+                recommendCrews.add(crew);
+        });
+
+        // 추천점수로 정렬
+        Comparator<String> comparator = Comparator.comparingInt(crew -> -recommendScoreByCrew.get(crew));
+        comparator = comparator.thenComparing(Comparator.naturalOrder());
+        Collections.sort(recommendCrews, comparator);
+
+        return recommendCrews;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
