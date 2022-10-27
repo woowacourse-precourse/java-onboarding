@@ -6,7 +6,15 @@ import java.util.stream.Stream;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int answer = 0;
+        if (isPageException(pobi) || isPageException(crong)) return -1;
+
+        int pobiScore = getScore(pobi);
+        int crongScore = getScore(crong);
+
+        if (pobiScore > crongScore) answer = 1;
+        if (pobiScore < crongScore) answer = 2;
+
         return answer;
     }
 
