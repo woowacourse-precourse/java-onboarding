@@ -30,6 +30,15 @@ public class Problem7 {
                 accountInfoMap.put(friend.get(1), accountB);
             }
         }
+
+        private static void calculateFriendsRelationScore(String user) {
+            for (Account target : accountInfoMap.values()) {
+                if (target.isAccountId(user) || target.isFriend(user)) {
+                    continue;
+                }
+                target.addScore(target.getNumberOfFriends() * 10);
+            }
+        }
     }
 }
 
