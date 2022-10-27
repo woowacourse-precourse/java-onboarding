@@ -18,6 +18,10 @@ class Problem1 {
 			result = -1;
 		}
 
+		if(pobiLeftPage <= 1 || pobiRightPage >= 400 || crongLeftPage <= 1 || crongRightPage >= 400) {
+			result = -1;
+		}
+
 		// int answer = Integer.MAX_VALUE;
 		return result;
 	}
