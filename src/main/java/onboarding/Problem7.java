@@ -27,5 +27,10 @@ public class Problem7 {
         }
 
     }
+    private static void initUserScoreMap(Map<String, Integer> scoreMap, String user) {
+        if (!scoreMap.containsKey(user)) {
+            scoreMap.put(user, 0);
+        }
+    }
 
 }
