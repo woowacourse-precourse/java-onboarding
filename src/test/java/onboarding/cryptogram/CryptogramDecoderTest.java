@@ -71,4 +71,28 @@ public class CryptogramDecoderTest {
 			.containsRepetitions("zzze")
 		).isTrue();
 	}
+
+	@DisplayName("연속하는 중복 문자 제거 테스트")
+	@Test
+	void 연속_중복_문자_제거() {
+		// 테스트 케이스 1
+		String clearText = CryptogramDecoder.removeRepetitions("browoanoommnaon");
+		assertThat(clearText).isEqualTo("browoannaon");
+		clearText = CryptogramDecoder.removeRepetitions(clearText);
+		assertThat(clearText).isEqualTo("browoaaon");
+		clearText = CryptogramDecoder.removeRepetitions(clearText);
+		assertThat(clearText).isEqualTo("browoon");
+		clearText = CryptogramDecoder.removeRepetitions(clearText);
+		assertThat(clearText).isEqualTo("brown");
+
+		// 테스트 케이스 2
+		clearText = CryptogramDecoder.removeRepetitions("zyelleyz");
+		assertThat(clearText).isEqualTo("zyeeyz");
+		clearText = CryptogramDecoder.removeRepetitions(clearText);
+		assertThat(clearText).isEqualTo("zyyz");
+		clearText = CryptogramDecoder.removeRepetitions(clearText);
+		assertThat(clearText).isEqualTo("zz");
+		clearText = CryptogramDecoder.removeRepetitions(clearText);
+		assertThat(clearText).isEqualTo("");
+	}
 }

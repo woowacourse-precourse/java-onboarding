@@ -10,6 +10,8 @@ public class CryptogramDecoder {
 
 	private static final String REPEATED_REGEX = ".*(\\w)\\1+.*";
 
+	private static final String REPEATED_REMOVAL_REGEX = "(\\w)\\1+";
+
 	public static boolean validateLength(final String cryptogram) {
 		int length = cryptogram.length();
 		return MIN_LENGTH <= length && length <= MAX_LENGTH;
@@ -23,5 +25,9 @@ public class CryptogramDecoder {
 
 	public static boolean containsRepetitions(final String cryptogram) {
 		return cryptogram.matches(REPEATED_REGEX);
+	}
+
+	public static String removeRepetitions(final String cryptogram) {
+		return cryptogram.replaceAll(REPEATED_REMOVAL_REGEX, "");
 	}
 }
