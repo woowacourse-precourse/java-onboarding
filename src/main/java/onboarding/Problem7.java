@@ -16,7 +16,7 @@ public class Problem7 {
         List<String> relatedUserList = generateRelatedUser(friends, user);
         List<String> unknownVisitors = exceptFriend(visitors, friendList);
         Map<String, Integer> scoreMap = generateScoreMap(relatedUserList, unknownVisitors);
-//        List<Map.Entry<String,Integer>> sortedScoreMap = sortScoreMap();
+        List<String> sortedUserList = sortScoreMap(scoreMap);
 //        answer = generateRecommedList();
 
         return answer;
@@ -72,6 +72,18 @@ public class Problem7 {
         for (String user : userList) {
             scoreMap.put(user, scoreMap.getOrDefault(user, 0) + score);
         }
+
         return scoreMap;
+    }
+
+    private static List<String> sortScoreMap(Map<String, Integer> scoreMap) {
+        List<String> nameList = new ArrayList<>(scoreMap.keySet());
+        Collections.sort(nameList, (o1, o2) -> {
+            if(scoreMap.get(o1) - scoreMap.get(o2) == 0){
+                return o1.compareTo(o2);
+            }
+            return scoreMap.get(o2).compareTo(scoreMap.get(o1));
+        });
+        return nameList;
     }
 }
