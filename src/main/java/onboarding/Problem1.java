@@ -6,7 +6,21 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int answer = -1;
+
+        // 1. 페이지가 연속 되었는지 확인(예외 -1)
+        if(checkPage(pobi) != -1 && checkPage(crong) != -1) {
+
+            // 2. 가장 큰 수 계산
+            int pobi_max = maxNum(pobi);
+            int crong_max = maxNum(crong);
+
+            // 3. 승부 계산
+            if (pobi_max > crong_max) answer = 1;
+            else if(pobi_max < crong_max) answer = 2;
+            else if(pobi_max == crong_max) answer = 0;
+
+        }
         return answer;
     }
 
