@@ -12,11 +12,14 @@ public class Problem7 {
     static final int knowPoint = 10;
     static final int visitPoint = 1;
     static List<List<String>> friendsList;
+    static String userName;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
         friendsList = friends;
+        userName = user;
+
         //Collections.copy(friendsList, friends);
 
         givePoint(user, visitors);
@@ -83,6 +86,24 @@ public class Problem7 {
         return saveUserPoint(friendOfFriendsList, knowPoint);
     }
 
+    public static void removeDuplication(List<String> basicList, List<String> keywordList)
+    {
+        for (int i = 0; i < basicList.size(); i++)
+        {
+            //사용자가 리스트에 있을 경우
+            if (userName.equals(basicList.get(i)))
+            {
+                basicList.remove(i);
+                continue;
+            }
+            //사용자의 친구가 리스트에 있을 경우
+            for (int j = 0; j < keywordList.size(); j++)
+            {
+                if (keywordList.get(j).equals(basicList.get(i)))
+                    basicList.remove(i);
+            }
+        }
+    }
     public static Map<String, Integer> saveUserPoint(List<String> userList, int point)
     {
         int tmp = point;
