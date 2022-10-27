@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -9,6 +10,7 @@ class Problem1 {
     }
 
     private static boolean validPage(List<Integer> pages){
+        pages.stream().sorted().collect(Collectors.toList()); // 혹시 모를 뒤에서부터 시작했을 경우
         Integer leftPage = pages.get(0);
         Integer rightPage = pages.get(1);
         if (leftPage < 1 || rightPage > 400) // 주운 책보다 많은 페이지가 들어온 경우
