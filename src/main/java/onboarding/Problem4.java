@@ -2,7 +2,18 @@ package onboarding;
 
 public class Problem4 {
 
+    /*
+     * 입력이 유효한지 판별합니다.
+     *
+     * @param 입력으로 주어진 문자열입니다.
+     * @return 문자열이 유효하다면 참, 아니면 거짓을 반환합니다.
+     * */
     private static boolean isValidInput(String word) {
+        boolean valid = hasValidLength(word);
+        return valid;
+    }
+
+    private static boolean hasValidLength(String word) {
         return false;
     }
 
