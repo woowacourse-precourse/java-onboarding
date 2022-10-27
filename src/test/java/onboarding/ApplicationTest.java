@@ -98,7 +98,7 @@ class ApplicationTest {
                 assertThat(problem1.calculateScore(tensPageNumbers)).isEqualTo(resultOfTens);
                 assertThat(problem1.calculateScore(onesPageNumbers)).isEqualTo(resultOfOnes);
             } catch (Exception e) {
-
+                System.out.println(e.getMessage());
             }
         }
 
@@ -121,7 +121,7 @@ class ApplicationTest {
                 assertThat(problem1.makePageMaxNumber(tensPageNumber)).isEqualTo(resultOfTens);
                 assertThat(problem1.makePageMaxNumber(onesPageNumber)).isEqualTo(resultOfOnes);
             } catch (Exception e){
-
+                System.out.println(e.getMessage());
             }
 
         }
@@ -153,6 +153,21 @@ class ApplicationTest {
 
     @Nested
     class Problem2Test {
+        // 예외처리 테스트
+        @Test
+        void exceptionTest() {
+            String cryptogramOverThousand = "a".repeat(1001);
+            String cryptogramUnderOne = "";
+            String cryptogramWithUpperCase = "aaAa";
+
+            String resultOfBoundaryException = "Cryptogram length out of bounds.";
+            String resultOfUpperCaseException = "There is an UPPER CASE in cryptogram.";
+
+            assertThat(Problem2.solution(cryptogramOverThousand)).isEqualTo(resultOfBoundaryException);
+            assertThat(Problem2.solution(cryptogramUnderOne)).isEqualTo(resultOfBoundaryException);
+            assertThat(Problem2.solution(cryptogramWithUpperCase)).isEqualTo(resultOfUpperCaseException);
+        }
+
         // deleteRepeatedString 테스트
         @Test
         void deleteRepeatedStringTest() {
@@ -164,8 +179,13 @@ class ApplicationTest {
             String result2 = "NOT MODIFIED";
 
             Problem2 problem2 = new Problem2();
-            assertThat(problem2.deleteRepeatedString(cryptogram1)).isEqualTo(result1);
-            assertThat(problem2.deleteRepeatedString(cryptogram2)).isEqualTo(result2);
+            try {
+                assertThat(problem2.deleteRepeatedString(cryptogram1)).isEqualTo(result1);
+                assertThat(problem2.deleteRepeatedString(cryptogram2)).isEqualTo(result2);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+
         }
 
         // deleteRepeatedCharacter 테스트

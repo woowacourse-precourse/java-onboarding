@@ -8,12 +8,21 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         Problem2 problem2 = new Problem2();
 
-        String answer = problem2.solveCryptogram(cryptogram);
+        try {
+            if ((cryptogram.length() > 1000) ||
+                (cryptogram.length() < 1)) {
+                throw new Exception("Cryptogram length out of bounds.");
+            }
 
-        return answer;
+            String answer = problem2.solveCryptogram(cryptogram);
+
+            return answer;
+        } catch (Exception e) {
+            return e.getMessage();
+        }
     }
 
-    public String solveCryptogram(String cryptogram) {
+    public String solveCryptogram(String cryptogram) throws Exception {
         String modifiedCryptogram = cryptogram;
         String answer = cryptogram;
 
@@ -28,12 +37,16 @@ public class Problem2 {
         return answer;
     }
 
-    public String deleteRepeatedString(String cryptogram) {
+    public String deleteRepeatedString(String cryptogram) throws Exception {
         boolean isModified = false;
         String modifiedCryptogram = cryptogram;
 
         int index = 0;
         while (index < (modifiedCryptogram.length() - 1)) {
+            if (Character.isUpperCase(modifiedCryptogram.charAt(index))) {
+                throw new Exception("There is an UPPER CASE in cryptogram.");
+            }
+
             if (modifiedCryptogram.charAt(index) == modifiedCryptogram.charAt(index + 1)) {
                 modifiedCryptogram = deleteRepeatedCharacter(modifiedCryptogram, index);
                 isModified = true;
