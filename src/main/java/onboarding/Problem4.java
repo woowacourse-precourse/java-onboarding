@@ -9,7 +9,9 @@ import java.util.stream.Stream;
 class constant{
     static final String upperAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     static final String lowerAlphabet = "abcdefghijklmnopqrstuvwxyz";
+    static final String invalidArgument = "invalidArgument";
     static final int length = 26;
+
 }
 class validateString{
     public static boolean isLower(String alphabet){
