@@ -24,8 +24,19 @@ public class Problem6 {
         return manager.getResultEmailList();
     }
 
-    private static boolean isDuplicatedPart(String sourceName, String destName) {
-        return true;
+    private static boolean isDuplicatedPart(String source, String dest) {
+        for (int i = 0; i < source.length(); i++) {
+            for (int j = 0; j < dest.length(); j++) {
+               if (isConsecutiveDuplicationChar(source, dest, i, j)) return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean isConsecutiveDuplicationChar(String source, String dest, int sourceIndex, int destIndex) {
+        return source.charAt(sourceIndex) == dest.charAt(destIndex) &&
+               sourceIndex + 1 < source.length() && destIndex + 1 < dest.length() &&
+               source.charAt(sourceIndex + 1) == dest.charAt(destIndex + 1);
     }
 
     static class ResultEmailListManager {
