@@ -1,6 +1,8 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -25,6 +27,7 @@ public class Problem6 {
         for (List<String> form : forms) {
             makeWarningList(answer, DuplicateNameList, form);
         }
+        Collections.sort(answer);
         return answer;
     }
 
@@ -47,4 +50,6 @@ public class Problem6 {
             }
         }
     }
+
+
 }
