@@ -42,3 +42,12 @@
 - `cryptogram`과 `newCryptogram`이 같은지 확인한다.
     - 같지 않으면 `newCryptogram`을 함수 <code><b>solution</b></code>에 넣고 재호출한다.
     - 같으면 `newCryptogram`을 반환한다.
+
+## 📌문제3
+배달이가 좋아하는 369게임을 하고자 한다. 놀이법은 1부터 숫자를 하나씩 대면서, 3, 6, 9가 들어가는 숫자는 숫자를 말하는 대신 3, 6, 9의 개수만큼 손뼉을 쳐야 한다.
+([문제 요구사항](https://github.com/areyouhun/java-onboarding/blob/areyouhun/docs/PROBLEM3.md))
+
+### 기능 목록
+- 매개변수 number를 각각의 자릿수로 나눈 뒤 배열에 담는다,
+- 배열에 담긴 자릿수들이 3, 6, 9를 가리키는지 확인한다.
+    - 가리킨다면 👏손뼉 친 횟수를 증가시킨다.
