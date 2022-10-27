@@ -50,6 +50,23 @@ class ApplicationTest {
             String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
+
+        @Test
+        void checkDuplicateCharTest(){
+            String cryptogram = "abcdde";
+            boolean[] arr =new boolean[cryptogram.length()];
+            arr[3] = true;
+            arr[4] = true;
+            assertThat(checkIsSame(Problem2.checkDuplicateChar(cryptogram), arr)).isEqualTo(true);
+        }
+
+        boolean checkIsSame(boolean[] isDuplicate, boolean[] arr){
+
+            for(int i=0; i<arr.length; i++){
+                if(arr[i]!=isDuplicate[i])return false;
+            }
+            return true;
+        }
     }
 
     @Nested
