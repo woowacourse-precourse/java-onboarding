@@ -27,4 +27,9 @@ public class Problem4 {
         }
         return hashMap;
     }
+
+    public static boolean isAlphabet(Character c) {
+        if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) return true;
+        return false;
+    }
 }
