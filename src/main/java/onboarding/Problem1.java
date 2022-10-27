@@ -8,6 +8,15 @@ class Problem1 {
         return answer;
     }
 
+    static int get_score(List<Integer> page_list){
+        int page_number = page_list.get(0);
+        int score = Math.max(add_digits(page_number), multiply_digits(page_number));
+        page_number += 1;
+        score = Math.max(score, add_digits(page_number));
+        score = Math.max(score, multiply_digits(page_number));
+        return score;
+    }
+
     static int multiply_digits(int number){
         String number_to_string = Integer.toString(number);
         int result = 1;
