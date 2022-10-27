@@ -9,19 +9,25 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         StringBuilder sb = new StringBuilder();
         Deque<Character> dq = new ArrayDeque<>();
+        char last = ' ';
 
         for(int i = 0; i<cryptogram.length();i++){
             char c = cryptogram.charAt(i);
+            if(c == last){
+                continue;
+            }
 
             if(dq.isEmpty()){
                 dq.offerLast(c);
+                last = ' ';
             }
             else{
                 if(dq.peekLast() == c){
-                    dq.pollLast();
+                    last = dq.pollLast();
                 }
                 else{
                     dq.offerLast(c);
+                    last = ' ';
                 }
             }
         }
