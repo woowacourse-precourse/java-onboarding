@@ -17,7 +17,7 @@ public class Problem3 {
         int strNumberLength = strNumber.length();
         int clap = 0;
         for (int i = 0 ; i < strNumberLength; i ++) {
-            if (Character.getNumericValue(strNumber.charAt(i)) % 3 == 0) {
+            if (Character.getNumericValue(strNumber.charAt(i)) != 0 && Character.getNumericValue(strNumber.charAt(i)) % 3 == 0) {
                 clap += 1;
             }
         }
@@ -34,9 +34,6 @@ public class Problem3 {
         int Applause = 0;
         for (int i = 1; i < number+1; i++) {
             Applause+=getClapPerNumber(i);
-            System.out.println(i);
-            System.out.println(getClapPerNumber(i));
-            System.out.println();
         }
         return Applause;
     }
