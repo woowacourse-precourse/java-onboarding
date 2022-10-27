@@ -11,7 +11,7 @@
 - [x] Crew 클래스를 담을 Crews (일급 컬렉션)을 만든다.
   - [x] add() : Crew를 추가
   - [x] remove() : Crew를 삭제 
-  - [ ] validateCrewsSize : Crew 리스트가 10000 이하인지 체크하는 메소드
+  - [x] validateCrewsSize : Crew 리스트가 10000 이하인지 체크하는 메소드
   - [x] validateNickName() : 닉네임이 같은 글자가 연속적으로 포함되는지 체크하는 메소드
     - [x] Crews에서 새로 신청한 Crew와 글자가 연속적으로 포함되는 기존의 Crew가 있는지 검증한다.
       - [x] 만약 존재한다면 기존에 Crews에 존재했던 Crew는 Crews에서 삭제한다.
