@@ -3,7 +3,7 @@ package onboarding;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = cryptogram;
-        String before = answer;
+        String before;
 
         while (true){
             before = answer;
