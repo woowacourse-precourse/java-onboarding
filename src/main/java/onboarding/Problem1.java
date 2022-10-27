@@ -10,6 +10,8 @@ import java.util.List;
  * method 4 : 곱과 합 중 가장 큰 값 반환
  * method 5 : 숫자를 각 자리의 수의 배열로 반환
  * method 6 : 예외 상황 체크
+ * method 7 : 페이지 리스트의 길이 체크
+ * method 8 : 페이지 값 유효성 체크
  */
 
 class Problem1 {
@@ -73,6 +75,26 @@ class Problem1 {
 
     public static boolean checkValid(List<Integer> pobi, List<Integer> crong) { // 각 배열의 길이, 페이지 번호 확인
 
+    }
+
+    public static boolean checkListLengthValid(List<Integer> user) {
+        if (user.size() == 2) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean checkPageValid(List<Integer> user) {
+        int leftPage = user.get(0);
+        int rightPage = user.get(0);
+        if (leftPage + 1 != rightPage) {
+            return false;
+        }
+        if (leftPage % 2 == 0 || rightPage %2 == 1) {
+            return false;
+        }
+        return true;
     }
 
 }
