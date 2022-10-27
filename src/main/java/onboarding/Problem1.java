@@ -14,6 +14,7 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+
         return answer;
     }
 
@@ -30,10 +31,15 @@ class Problem1 {
     }
 
     public static List<Integer> numToDigits(int num){
-
+        List<Integer> output = new ArrayList<>();
+        while (num != 0) {
+            output.add(num % 10);
+            num = num/10;
+        }
+        return output;
     }
 
-    public static boolean checkValid() { // 각 배열의 길이, 페이지 번호 확인
+    public static boolean checkValid(List<Integer> pobi, List<Integer> crong) { // 각 배열의 길이, 페이지 번호 확인
 
     }
 
