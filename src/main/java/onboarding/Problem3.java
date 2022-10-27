@@ -7,7 +7,7 @@ public class Problem3 {
         int answer = 0;
 
         for(int i = 1;i<=number;i++){
-            ArrayList<Integer> digits = getDigits(number);
+            ArrayList<Integer> digits = getDigits(i);
             answer += countClap(digits);
         }
 
@@ -16,7 +16,10 @@ public class Problem3 {
 
     public static ArrayList<Integer> getDigits(int number){
         ArrayList<Integer> digits = new ArrayList<>();
-
+        while(number>0){
+            digits.add(number%10);
+            number /= 10;
+        }
         return digits;
     }
 
