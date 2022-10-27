@@ -10,7 +10,7 @@
 - [x] 각 플레이어의 가장 큰 수 구하기
 - [ ] 결과 구하기
   - [x] pobi win : 1
-  - [ ] crong win : 2
+  - [x] crong win : 2
   - [ ] draw : 0
   - [ ] exception : -1
 

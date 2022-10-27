@@ -23,6 +23,11 @@ public class Players {
     }
     
     public int playResult() {
-        return leftPlayer.compareTo(rightPlayer);
+        final int resultOfCompare = leftPlayer.compareTo(rightPlayer);
+        if (resultOfCompare < 0) {
+            return 2;
+        }
+        
+        return resultOfCompare;
     }
 }
