@@ -2,9 +2,19 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        return decodedCrypto(cryptogram);
+    }
 
-        return answer;
+
+    private static String decodedCrypto(String cryptogram) {
+        while (true) {
+            int duplicateLetterIndex = findDuplicateLetterIndex(cryptogram);
+            if (duplicateLetterIndex == -1) {
+                break;
+            }
+            cryptogram = removeContinuousLetter(cryptogram, duplicateLetterIndex);
+        }
+        return cryptogram;
     }
 
     private static int findDuplicateLetterIndex(String word) {
