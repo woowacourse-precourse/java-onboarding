@@ -52,9 +52,9 @@ public class Problem7 {
             if (usersFriend.contains(TwoDepthFriend)){
                 //pass
             } else if (RecommendPointHash.containsKey(TwoDepthFriend)) {
-                RecommendPointHash.put(TwoDepthFriend , RecommendPointHash.get(TwoDepthFriend)+10);
+                RecommendPointHash.put(TwoDepthFriend , RecommendPointHash.get(TwoDepthFriend)+10*FriendCountHash.get(TwoDepthFriend));
             } else {
-                RecommendPointHash.put(TwoDepthFriend, 10);
+                RecommendPointHash.put(TwoDepthFriend, 10*FriendCountHash.get(TwoDepthFriend));
             }
         }
         return RecommendPointHash;
