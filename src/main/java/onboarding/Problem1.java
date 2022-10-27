@@ -39,7 +39,13 @@ class Problem1 {
      * @return 예외 상황이면 true 반환 예외 상황이 아니면 false 반환
      */
     static boolean isException(int[] pobiPage, int[] crongPage){
+        // 페이지의 값이 1 차이가 나는지 확인
         if(pobiPage[0] != pobiPage[1] - 1 || crongPage[0] != crongPage[1] - 1){
+            return true;
+        }
+
+        // 왼쪽 페이지가 홀수, 오른쪽 페이지가 짝수인지 확인
+        if(pobiPage[0] % 2 != 1 || pobiPage[1] % 2 != 0 || crongPage[0] % 2 != 1 || crongPage[1] % 2 != 0){
             return true;
         }
 
