@@ -22,4 +22,27 @@ class Problem1 {
             return true;
         }
     }
+    public static int calculateMaxScore(List<Integer> pages) {
+        int addScore;
+        int multipleScore;
+        int maxScore = 0;
+
+        for(int page : pages) {
+            addScore = 0;
+            multipleScore = 1;
+
+            while(page != 0) {
+                int num = page % 10;
+
+                addScore += num;
+                multipleScore *= num;
+
+                page /= 10;
+            }
+
+            int pageScore = Math.max(addScore, multipleScore);
+            maxScore = Math.max(maxScore, pageScore);
+        }
+        return maxScore;
+    }
 }
