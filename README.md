@@ -38,7 +38,7 @@
 - [x] 총 박수 횟수 계산
 
 
-- [ ] solution method 구현
+- [x] solution method 구현
 
 ___
 
