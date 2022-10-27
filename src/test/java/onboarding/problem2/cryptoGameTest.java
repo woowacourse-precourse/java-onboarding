@@ -12,7 +12,7 @@ public class cryptoGameTest {
         @Test
         void findDuplicate() {
             String cryptogram = "browoanoommnaon";
-            String result = "oomm";
+            String result = "brown";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
 

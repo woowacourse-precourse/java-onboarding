@@ -1,6 +1,6 @@
 package onboarding;
 
-import onboarding.promblem1.PageGame;
+import onboarding.problem1.PageGame;
 import java.util.List;
 
 class Problem1 {
