@@ -8,7 +8,13 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         if (!isBoundary(pobi) || !isBoundary(crong)) return EXCEPTION_CASE;
+        int pobiScore = calculateScore(pobi);
+        int crongScore = calculateScore(crong);
         return answer;
+    }
+
+    private static int calculateScore(List<Integer> pages) {
+        return Math.max(getPageScore(pages.get(0)), getPageScore(pages.get(1)));
     }
 
     private static int getPageScore(int page) {
