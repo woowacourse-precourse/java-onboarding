@@ -1,59 +1,26 @@
 package onboarding;
 
 import java.util.List;
-import java.util.ArrayList;
-public class NanoPage{
+class Problem1 {
+    static int max_score(int num)
+    {
+        int page_sum = 0;
+        int page_mult = 1;
+        int max;
 
-    public List<Integer> left_page;
-    public List<Integer> right_page;
-
-    public Page(List<Integer> people){
-        left_page = page_split(people.get(0));
-        right_page = page_split(people.get(1));
-    }
-
-    public List<Integer> page_split(int num){
-        List<Integer> result_page = new ArrayList<Integer>();
-
-        while(num > 0){
-            result_page.add(num % 10);
+        while (num > 0) {
+            page_sum += num % 10;
+            page_mult *= num % 10;
             num /= 10;
         }
-        return result_page;
-    }
-
-    public List<Integer> getLeft_page() {
-        return left_page;
-    }
-
-    public List<Integer> getRight_page() {
-        return right_page;
-    }
-}
-class Problem1 {
-    static int max_score(Page page)
-    {
-        int[] page_sum_mult = {0, 1, 0, 1};
-        int max = 0;
-        for (int i : page.getLeft_page()){
-            page_sum_mult[0] += i;
-            page_sum_mult[1] *= i;
-        }
-        for (int i : page.getRight_page()){
-            page_sum_mult[2] += i;
-            page_sum_mult[3] *= i;
-        }
-        for(int i: page_sum_mult)
-            max = Math.max(i, max);
+        max = Math.max(page_sum, page_mult);
         return max;
     }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
-        Page pobi_page = new NanoPage(pobi);
-        Page crong_page = new Page(crong);
-        int pobi_score = max_score(pobi_page);
-        int crong_score = max_score(crong_page);
+        int pobi_score = max_score(pobi.get(0));
+        int crong_score = max_score(crong.get(0));
 
         if (pobi_score > crong_score)
             answer = 1;
@@ -64,5 +31,23 @@ class Problem1 {
 
         return answer;
     }
+
+    public static void main(String[] args) {
+
+        List<Integer> pobi = List.of(97, 98);
+        List<Integer> crong = List.of(197, 198);
+        List<Integer> pobi2 = List.of(131, 132);
+        List<Integer> crong2 = List.of(211, 212);
+        List<Integer> pobi3 = List.of(99, 102);
+        List<Integer> crong3 = List.of(211, 212);
+
+
+        System.out.println(solution(pobi, crong));
+        System.out.println(solution(pobi2, crong3));
+        System.out.println(solution(crong2, pobi2));
+        System.out.println(solution(pobi3, crong3));
+    }
+
+
 }
 
