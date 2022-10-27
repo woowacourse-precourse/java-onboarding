@@ -12,13 +12,13 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         List<String> splitString = Arrays.stream(cryptogram.split("")).collect(Collectors.toList());
 
-        List<Integer> indexOfDuplicateWords = getDuplicateWords(splitString);
+        List<Integer> indexOfDuplicateWords = getIndexOfDuplicateWords(splitString);
         removeDuplicateWords(splitString, indexOfDuplicateWords);
 
         return String.join("", splitString);
     }
 
-    private static List<Integer>  getDuplicateWords(List<String> splitString) {
+    private static List<Integer> getIndexOfDuplicateWords(List<String> splitString) {
         List<Integer> indexOfDuplicateWords = new ArrayList<>();
 
         for (int i = 0; i < splitString.size() - 1; i++) {
@@ -40,7 +40,7 @@ public class Problem2 {
             splitString.subList(idx, idx + 2).clear();
         }
 
-        indexOfDuplicateWords = getDuplicateWords(splitString);
+        indexOfDuplicateWords = getIndexOfDuplicateWords(splitString);
         removeDuplicateWords(splitString, indexOfDuplicateWords);
 
     }
