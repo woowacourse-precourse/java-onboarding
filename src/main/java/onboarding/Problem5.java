@@ -1,7 +1,9 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Problem5 {
 
@@ -24,6 +26,12 @@ public class Problem5 {
 
         Money(int value) {
             this.value = value;
+        }
+
+        public static List<Money> highestOrder() {
+            return Arrays.stream(values())
+                    .sorted((o1, o2) -> o2.value - o1.value)
+                    .collect(Collectors.toList());
         }
     }
 }
