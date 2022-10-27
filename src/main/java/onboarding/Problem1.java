@@ -49,7 +49,7 @@ class Problem1 {
         }
         return pages.stream()
             .map(page -> getEachDigits(page))
-            .mapToInt(digits -> getBiggerNumber(addEachDigits(digits), multiplyEachDigits(digits)))
+            .mapToInt(digits -> Math.max(addEachDigits(digits), multiplyEachDigits(digits)))
             .max()
             .getAsInt();
     }
@@ -80,12 +80,5 @@ class Problem1 {
     public static int multiplyEachDigits(int[] digits) {
         return Arrays.stream(digits)
             .reduce(1, Math::multiplyExact);
-    }
-
-    public static int getBiggerNumber(int numberA, int numberB) {
-        if (numberA > numberB) {
-            return numberA;
-        }
-        return numberB;
     }
 }
