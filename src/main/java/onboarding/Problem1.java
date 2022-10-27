@@ -16,8 +16,8 @@ class Problem1 {
     }
 
     public boolean checkPage(List<Integer> list){ // 페이지 연속 확인하는 메소드
-
-        return false;
+        if(list.get(1)-list.get(0)==1) return true;
+        else return false;
 
     }
 
