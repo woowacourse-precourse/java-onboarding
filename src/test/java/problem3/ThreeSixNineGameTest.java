@@ -16,4 +16,13 @@ public class ThreeSixNineGameTest {
         assertThat(count2).isEqualTo(2);
         assertThat(count3).isEqualTo(0);
     }
+
+    @Test
+    void 숫자가_주어질때_1부터_369의총개수_카운트() {
+        int result1 = ThreeSixNineGame.playGame(13);
+        int result2 = ThreeSixNineGame.playGame(33);
+
+        assertThat(result1).isEqualTo(4);
+        assertThat(result2).isEqualTo(14);
+    }
 }

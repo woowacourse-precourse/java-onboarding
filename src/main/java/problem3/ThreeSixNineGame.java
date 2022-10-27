@@ -6,6 +6,7 @@ public class ThreeSixNineGame {
     private static final int ROOF_CRITERION = 0;
     private static final int MULTIPLE_OF_THREE = 3;
     private static final int MULTIPLE_CRITERION = 0;
+    public static final int START_NUMBER = 1;
     private static int INIT_COUNT_ZERO = 0;
 
     public static int isThreeSixNineNumber(int number) {
@@ -33,4 +34,12 @@ public class ThreeSixNineGame {
                 && number != MULTIPLE_CRITERION;
     }
 
+    public static int playGame(int number) {
+        int answer = INIT_COUNT_ZERO;
+
+        for (int i = START_NUMBER; i <= number; i++) {
+            answer += isThreeSixNineNumber(i);
+        }
+        return answer;
+    }
 }
