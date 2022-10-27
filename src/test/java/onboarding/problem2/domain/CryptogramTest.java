@@ -7,16 +7,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CryptogramTest {
     @Test
-    @DisplayName("연속하는 중복 문자 시작 위치 구하기")
-    void overlapStartIndex() {
+    @DisplayName("연속하는 중복 문자가 있으면 삭제 후 새로운 객체 반환")
+    void decryptedCryptogram() {
         Cryptogram cryptogram = new Cryptogram("zyellleyz");
-        assertThat(cryptogram.overlapStartIndex()).isEqualTo(3);
-    }
-    
-    @Test
-    @DisplayName("연속하는 중복 문자 끝 위치 구하기")
-    void overlapEndIndex() {
-        Cryptogram cryptogram = new Cryptogram("zyellleyz");
-        assertThat(cryptogram.overlapEndIndex(3)).isEqualTo(6);
+        assertThat(cryptogram.decrypte().getCryptogram()).isEqualTo("zyeeyz");
     }
 }
