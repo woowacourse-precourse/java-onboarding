@@ -9,6 +9,8 @@ class Problem1 {
 		if (isInvalid(pobi, crong)) {
 			return -1;
 		}
+		int pobiScore = calculateScore(pobi);
+		int crongScore = calculateScore(crong);
 		return answer;
 	}
 
@@ -49,19 +51,33 @@ class Problem1 {
 	}
 
 	public static int calculateScore(List<Integer> pages) {
-		return 0;
+		int leftPageNum = pages.get(0);
+		int rightPageNum = pages.get(1);
+		int leftPageScore = findGreaterScore(pageScoreAdd(leftPageNum), pageScoreMult(leftPageNum));
+		int rightPageScore = findGreaterScore(pageScoreAdd(rightPageNum), pageScoreMult(rightPageNum));
+		return Math.max(leftPageScore, rightPageScore);
 	}
 
 	public static int pageScoreAdd(int page) {
-		return 0;
+		int total = 0;
+		while (page > 0) {
+			total += page % 10;
+			page /= 10;
+		}
+		return total;
 	}
 
 	public static int pageScoreMult(int page) {
-		return 0;
+		int total = 1;
+		while (page > 0) {
+			total *= page % 10;
+			page /= 10;
+		}
+		return total;
 	}
 
 	public static int findGreaterScore(int scoreAdd, int scoreMult) {
-		return 0;
+		return Math.max(scoreAdd, scoreMult);
 	}
 
 	public static int winnerCheck(int pobiScore, int crongScore) {

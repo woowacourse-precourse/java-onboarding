@@ -47,10 +47,10 @@
     - [x] 페이지 번호가 범위(1 ~ 400)안에 있는지 확인.
     - [x] 왼쪽 페이지 번호가 홀수이고, 오른쪽 페이지 번호가 짝수인지 확인.
     - [x] 왼쪽 페이지 번호 + 1 이 오른쪽 페이지 번화 같은지 확인.
-- [ ] 페이지 번호로 점수 계산.
-    - [ ] 왼쪽/오른쪽 페이지의 각 자리 숫자를 모두 더한다.
-    - [ ] 왼쪽/오른쪽 페이지의 각 자리 숫자를 모두 곱한다.
-    - [ ] 둘 중 더 큰 점수를 최종 점수로 정한다.
+- [x] 페이지 번호로 점수 계산.
+    - [x] 왼쪽/오른쪽 페이지의 각 자리 숫자를 모두 더한다.
+    - [x] 왼쪽/오른쪽 페이지의 각 자리 숫자를 모두 곱한다.
+    - [x] 둘 중 더 큰 점수를 최종 점수로 정한다.
 - [ ] 포비와 크롱의 최종 점수를 계산해 값을 리턴한다.
 
 ## 기능 목록(세부)
@@ -61,8 +61,8 @@
     - [x] isNotInRange(List pages) 메서드를 통해 페이지 번호가 범위(1 ~ 400)안에 있는지 검사합니다.
     - [x] isPageNumNotOdd(int page), isPageNumNotEven(int page)  메서드를 통해 왼쪽, 오른쪽 페이지 번호가 홀수, 짝수인지 검사합니다.
     - [x] isInValidPage(leftPageNum, rightPageNum) 메서드를 통해 왼쪽 페이지 번호 + 1이 오른쪽 페이지 번호와 같은지 검사합니다.
-- [ ] calculateScore(List pages) 메서드를 통해 점수를 계산합니다.
-    - [ ] pageScoreAdd(int page) 메서드를 통해 페이지의 각 자리 숫자를 모두 더한 점수를 계산합니다.
-    - [ ] pageScoreMult(int page) 메서드를 통해 페이지의 각 자리 숫자를 모두 곱한 점수를 계산합니다.
-    - [ ] findGreaterScore(int scoreAdd, int scoreMult) 메서드를 통해 둘 중 더 큰 점수를 최종 점수를 결정합니다.
+- [x] calculateScore(List pages) 메서드를 통해 점수를 계산합니다.
+    - [x] pageScoreAdd(int page) 메서드를 통해 페이지의 각 자리 숫자를 모두 더한 점수를 계산합니다.
+    - [x] pageScoreMult(int page) 메서드를 통해 페이지의 각 자리 숫자를 모두 곱한 점수를 계산합니다.
+    - [x] findGreaterScore(int scoreAdd, int scoreMult) 메서드를 통해 둘 중 더 큰 점수를 최종 점수를 결정합니다.
 - [ ] winnerCheck(int pobiScore, int crongScore) 메서드를 통해 최종 결과를 리턴합니다.
