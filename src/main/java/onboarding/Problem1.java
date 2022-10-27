@@ -38,6 +38,10 @@ class Problem1 {
         return result;
     }
 
+    static int pageResult(Integer pageNum){
+        return Integer.max(addPageNum(pageNum), mulPageNum(pageNum));
+    }
+
     static int getScore(List<Integer> pageNums){
         // TODO: . 을 줄이는 방향으로 리팩토링
         Stream<Integer> pageStream = pageNums.stream();
