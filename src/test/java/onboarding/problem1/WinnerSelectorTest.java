@@ -13,7 +13,7 @@ class WinnerSelectorTest {
 
 	@BeforeEach
 	public void beforeEach() {
-		winnerSelector = new WinnerSelector();
+		winnerSelector = new WinnerSelectorImp();
 	}
 
 	@Test

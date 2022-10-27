@@ -1,12 +1,5 @@
 package onboarding.problem1;
 
-import static onboarding.problem1.ResultType.*;
-
-public class WinnerSelector {
-
-	public ResultType getWinner(int pobiScore, int crongScore) {
-		if (pobiScore == crongScore)
-			return DRAW;
-		return (pobiScore > crongScore) ? POBI_WIN : CRONG_WIN;
-	}
+public interface WinnerSelector {
+	ResultType getWinner(int pobiScore, int crongScore);
 }

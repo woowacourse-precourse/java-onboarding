@@ -15,7 +15,7 @@ class ScoreCalculatorTest {
 
 	@BeforeEach
 	public void beforeEach() {
-		scoreCalculator = new ScoreCalculator();
+		scoreCalculator = new ScoreCalculatorImp();
 	}
 
 	@Test

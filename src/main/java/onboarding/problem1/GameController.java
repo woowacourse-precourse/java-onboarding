@@ -6,27 +6,26 @@ import java.util.Arrays;
 import java.util.List;
 
 public class GameController {
-	private final List<Integer> pobi;
-	private final List<Integer> crong;
-	private static final int lastPage = 400;
+	private PageValidChecker pageValidChecker;
+	private ScoreCalculator scoreCalculator;
+	private WinnerSelector winnerSelector;
 
-	public GameController(List<Integer> pobi, List<Integer> crong) {
-		this.pobi = pobi;
-		this.crong = crong;
+	public GameController(PageValidChecker pageValidChecker, ScoreCalculator scoreCalculator,
+		WinnerSelector winnerSelector) {
+		this.pageValidChecker = pageValidChecker;
+		this.scoreCalculator = scoreCalculator;
+		this.winnerSelector = winnerSelector;
 	}
 
-	public int playGame() {
-		PageValidChecker pageValidChecker = new PageValidChecker(lastPage);
+	public int playGame(List<Integer> pobi, List<Integer> crong) {
 		List<List<Integer>> users = Arrays.asList(pobi, crong);
 		if (!users.stream().allMatch(pageValidChecker::checkValid)) {
 			return ERROR.getCode();
 		}
 
-		ScoreCalculator scoreCalculator = new ScoreCalculator();
 		int pobiScore = scoreCalculator.getScore(pobi);
 		int crongScore = scoreCalculator.getScore(crong);
 
-		WinnerSelector winnerSelector = new WinnerSelector();
 		ResultType winner = winnerSelector.getWinner(pobiScore, crongScore);
 
 		return winner.getCode();
