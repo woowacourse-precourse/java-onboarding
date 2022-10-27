@@ -20,7 +20,7 @@ public class Pages {
 
     private void hasNullValue(List<Integer> indexes) {
         for (Integer idx : indexes) {
-            if(idx == null){
+            if (idx == null) {
                 throw new IllegalArgumentException();
             }
         }
@@ -45,11 +45,21 @@ public class Pages {
     }
 
     private int calculateEachDigitBySum(int pageNumber) {
-        int result=0;
-        int target=pageNumber;
-        while(target>0){
-            result += target%10;
-            target/=10;
+        int result = 0;
+        int target = pageNumber;
+        while (target > 0) {
+            result += target % 10;
+            target /= 10;
+        }
+        return result;
+    }
+
+    private int calculateEachDigitByMultiply(int pageNumber) {
+        int result = 0;
+        int target = pageNumber;
+        while (target > 0) {
+            result *= target % 10;
+            target /= 10;
         }
         return result;
     }
