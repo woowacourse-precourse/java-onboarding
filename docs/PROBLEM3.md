@@ -3,7 +3,8 @@
 | Date  | Method Name          | Feature             | Parameter Type | Return Type | Progress         |
 |-------|----------------------|---------------------|----------------|-------------|------------------|
 | 10.27 | isTargetNumber()     | 수가 타겟 수(3,6,9)인지 확인 | int            | boolean     | committed        |
-| 10.27 | countNumberOfClaps() | 손뼉 횟수 계산            | int            | int         | work in progress |
+| 10.27 | countNumberOfClaps() | 손뼉 횟수 계산            | int            | int         | committed |
+| 10.27 | getDigits()          | 각 자리 숫자 계산          | int            | List        | work in progress |
 
 ### TODO
 
