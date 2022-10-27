@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
@@ -9,10 +10,31 @@ class Problem1 {
         int pobiLeft = dividNum(pobi.get(0));
         int pobiRight = dividNum(pobi.get(1));
 
-        int pobiNum = pobiLeft > pobiRight ? pobiLeft : pobiRight;
-        int crongNum = dividNum(crong.get(0)) > dividNum(crong.get(1)) ? dividNum(crong.get(0)) : dividNum(crong.get(1));
+        int crongLeft = dividNum(crong.get(0));
+        int crongRight = dividNum(crong.get(1));
 
-        return pobiNum > crongNum ? 1 : 2;
+        int pobiNum = 0;
+
+        if(pobiLeft ==-1 || pobiRight == -1){
+            return -1;
+        }else {
+            pobiNum = pobiLeft > pobiRight ? pobiLeft : pobiRight;
+        }
+        int crongNum = 0;
+
+        if(crongLeft == -1 || crongRight == -1){
+            return -1;
+        }else{
+            crongNum = crongLeft > crongRight ? crongLeft : crongRight;
+        }
+
+        if(pobiNum > crongNum){
+            return 1;
+        } else if (crongNum > pobiNum) {
+            return 2;
+        }else {
+            return 0;
+        }
     }
 
     public static int dividNum(Integer num){
@@ -32,13 +54,23 @@ class Problem1 {
 
         sum+=dividOfNum;
         multi*=dividOfNum;
-
-
-        if(sum==multi){
-            return 0;
+        if(multi == 0){
+            return -1;
         }
 
         return sum>multi ? sum: multi;
+    }
+
+    public static void main(String[] args) {
+        List<Integer> pobi = new ArrayList<>();
+        pobi.add(99);
+        pobi.add(102);
+
+        List<Integer> crong = new ArrayList<>();
+        crong.add(211);
+        crong.add(212);
+
+        System.out.println(solution(pobi,crong));
     }
 
 }
