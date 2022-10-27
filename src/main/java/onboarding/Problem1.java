@@ -8,7 +8,7 @@ class Problem1 {
         return answer;
     }
 
-    boolean check(List<Integer> list) {
+    public static boolean check(List<Integer> list) {
         //왼쪽 페이지 번호가 홀수 인지 확인
         if(list.get(0)%2 == 0) return false;
 
@@ -16,7 +16,7 @@ class Problem1 {
         return (list.get(1) - list.get(0) == 1);
     }
 
-    int addNum(int n){
+    public static int addNum(int n){
         int sum = 0;
         while (n != 0) {
             sum += n % 10;
@@ -25,7 +25,7 @@ class Problem1 {
         return sum;
     }
 
-    int mulNum(int n){
+    public static int mulNum(int n){
         int sum = 1;
         while (n != 0) {
             sum *= n % 10;
