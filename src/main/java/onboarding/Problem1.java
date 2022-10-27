@@ -53,7 +53,7 @@ class Problem1 {
 
     private static boolean validationCheck(int leftPage, int rightPage) {
         if (isOutOfBoundary(leftPage) || isOutOfBoundary(rightPage)) return false;
-        if (isLeftPageOdd(leftPage) && isRightPageEven(rightPage)) return true;
+        if (isLeftPageOdd(leftPage) && isRightPageEven(rightPage) && isPageConnected(leftPage, rightPage)) return true;
         return false;
     }
 
@@ -69,6 +69,11 @@ class Problem1 {
 
     private static boolean isOutOfBoundary(int page) {
         if (page < 1 || page > 400) return true;
+        return false;
+    }
+
+    private static boolean isPageConnected(int leftPage, int rightPage) {
+        if (leftPage + 1 == rightPage) return true;
         return false;
     }
 }
