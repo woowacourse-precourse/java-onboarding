@@ -23,10 +23,10 @@ public class Problem3 {
         return charsOfNumber;
     }
 
-    //Return Claps Of Number
-    private static int getClapsOfNumber(char[] charsOfNumber) {
+    //Return Claps Of Sequence
+    private static int getClapsOfSequence(char[] charsOfSequence) {
         int claps =0;
-        for (char digit : charsOfNumber) {
+        for (char digit : charsOfSequence) {
             claps = getClapsOfDigit(claps, digit);
         }
         return claps;
