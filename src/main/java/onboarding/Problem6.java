@@ -16,7 +16,7 @@ public class Problem6 {
         mapSetting(forms, nickMap);
         List<Integer> duplicateUserIndex = duplicateIndex(forms, nickMap);
         Set<String> duplicateUserMailSet= mailSetting(forms, duplicateUserIndex);
-        List<String> answer =List.of("answer");
+        List<String> answer =setToList(duplicateUserMailSet);
         return answer;
     }
     private static void mapSetting(List<List<String>> forms, Map<String, Integer> nickMap) {
@@ -54,5 +54,11 @@ public class Problem6 {
             duplicateUserEmail.add(forms.get(duplicateUserIndex.get(index)).get(EMAIL));
         }
         return duplicateUserEmail;
+    }
+    private static List<String> setToList(Set<String> mailSet) {
+        List<String> setToList = new ArrayList<>();
+        Iterator<String> iterator = mailSet.iterator();
+        while(iterator.hasNext())setToList.add(iterator.next());
+        return setToList;
     }
 }
