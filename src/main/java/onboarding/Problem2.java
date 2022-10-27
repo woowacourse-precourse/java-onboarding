@@ -2,7 +2,18 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = cryptogram;
+        String before = answer;
+
+        while (true){
+            before = answer;
+            answer = delete_eq(answer);
+            if (answer == "")
+                break;
+            else if (before == answer) {
+                break;
+            }
+        }
         return answer;
     }
 
