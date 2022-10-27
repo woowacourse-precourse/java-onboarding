@@ -5,6 +5,7 @@ import java.util.List;
 
 public class PageCalculator {
 
+    // TODO 일급 컬렉션??
     public List<Integer> getResult(List<List<Integer>> pageList) {
         // page를 받아 계산 결과를 리턴한다.
         List<Integer> result = new ArrayList<>();
