@@ -1,8 +1,13 @@
 package onboarding;
 
+import static onboarding.Problem4.AlphabetConst.LOWER_CASE_CHAR_A;
+import static onboarding.Problem4.AlphabetConst.LOWER_CASE_CHAR_Z;
+import static onboarding.Problem4.AlphabetConst.UPPER_CASE_CHAR_A;
+import static onboarding.Problem4.AlphabetConst.UPPER_CASE_CHAR_Z;
 import static onboarding.Problem4.CharacterValidator.isAlphabet;
 import static onboarding.Problem4.CharacterValidator.isUpperCase;
 import static onboarding.Problem4.WordCalculator.*;
+import static onboarding.Problem4.WordConst.WORD_START_INDEX;
 
 public class Problem4 {
 
@@ -17,15 +22,15 @@ public class Problem4 {
             char standardA;
             char standardZ;
 
-            for (int i = 0; i < chars.length; i++) {
+            for (int i = WORD_START_INDEX; i < chars.length; i++) {
                 if (!isAlphabet(chars[i])) {
                     continue;
                 }
-                standardA = 'a';
-                standardZ = 'z';
+                standardA = LOWER_CASE_CHAR_A;
+                standardZ = LOWER_CASE_CHAR_Z;
                 if (isUpperCase(chars[i])) {
-                    standardA = 'A';
-                    standardZ = 'Z';
+                    standardA = UPPER_CASE_CHAR_A;
+                    standardZ = UPPER_CASE_CHAR_Z;
                 }
                 chars[i] = calculateCharacter(standardA, standardZ, chars[i]);
             }
@@ -44,11 +49,24 @@ public class Problem4 {
         }
 
         public static boolean isUpperCase(char target) {
-            return 'A' <= target && target <= 'Z';
+            return UPPER_CASE_CHAR_A <= target && target <= UPPER_CASE_CHAR_Z;
         }
 
         public static boolean isLowerCase(char target) {
-            return 'a' <= target && target <= 'z';
+            return LOWER_CASE_CHAR_A <= target && target <= LOWER_CASE_CHAR_Z;
         }
+    }
+
+    public abstract class AlphabetConst {
+
+        public static final char UPPER_CASE_CHAR_A = 'A';
+        public static final char UPPER_CASE_CHAR_Z = 'Z';
+        public static final char LOWER_CASE_CHAR_A = 'a';
+        public static final char LOWER_CASE_CHAR_Z = 'z';
+    }
+
+    public abstract class WordConst {
+
+        public static final int WORD_START_INDEX = 0;
     }
 }
