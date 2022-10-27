@@ -11,7 +11,24 @@ import java.util.Stack;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "";
+        DeleteDuplication(cryptogram);
         return answer;
     }
+    public static Stack<Character> DeleteDuplication(String str) {
+        Stack <Character> stack = new Stack<>();
 
+        for(char c : str.toCharArray()){
+            if(!stack.isEmpty()){
+                if(stack.peek()== c){
+                    stack.pop();
+                }else{
+                    stack.push(c);
+                }
+            }
+            else{
+                stack.push(c);
+            }
+        }
+        return stack;
+    }
 }
