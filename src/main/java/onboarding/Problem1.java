@@ -37,6 +37,20 @@ class Problem1 {
             answer = 0;
         }
         
+        // 제한 사항
+        // 시작 면, 마지막 면 페이지가 펼쳐진 경우
+        if((pobi.get(0) == 1) || (pobi.get(1) == 400)
+                || (crong.get(0) == 1) || (crong.get(1) == 400)){
+            // 시작 면, 마지막 면 페이지가 펼쳐진 경우
+            answer = -1;
+        } else if((pobi.get(1)-pobi.get(0) != 1) || (crong.get(1) - crong.get(0) != 1)){
+            // 연속된 페이지 번호가 아닐경우
+            answer = -1;
+        } else if((pobi.get(0) % 2 == 1) || (pobi.get(1) % 2 == 0)
+                || (crong.get(0) % 2 == 1) || (crong.get(1) % 2 == 0) ){
+            // [ 홀수 ,짝수 ] 로 페이지 번호가 입력되지 않을 경우
+            answer = -1;
+        }
 
         return answer;
     }
