@@ -17,6 +17,9 @@ public class Problem4 {
             char ch = word.charAt(i);
             boolean bool = (ch >= 'a' && ch <='z') || (ch >= 'A' && ch >= 'Z');
             // 알파벳 변환만 구현하면 됨
+            if(bool) {
+                
+            }
 
         }
 
