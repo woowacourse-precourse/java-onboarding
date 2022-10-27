@@ -13,11 +13,19 @@ public class Problem7 {
         userAndFriendList.add(user);
 
         HashMap<String, Integer> strangerScoreMap = getStrangerScoreMap(userAndFriendList, friends);
+        calculateVisitorScore(visitors, userAndFriendList, strangerScoreMap);
 
         return answer;
     }
 
-
+    private static void calculateVisitorScore(List<String> visitors, List<String> userAndFriendList, HashMap<String, Integer> strangerScoreMap) {
+        for (String visitor : visitors) {
+            if (userAndFriendList.contains(visitor)) {
+                continue;
+            }
+            strangerScoreMap.put(visitor, strangerScoreMap.getOrDefault(visitor, 0) + 1);
+        }
+    }
 
     private static HashMap<String, Integer> getStrangerScoreMap(List<String> userAndFriendList, List<List<String>> friends) {
         HashMap<String, Integer> strangerScoreMap = new HashMap<>();
