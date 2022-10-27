@@ -7,10 +7,27 @@ package onboarding;
 // todo
 // 1. 각 문자를 변환하는 과정에서 규칙성 찾아보기
 // 1-2. 문자를 숫자로 변환해보기
+// 1-3. 숫자를 문자로 변환해보기
 
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
+
+        // A = 65
+        // Z = 90
+        // a = 97
+        // z = 122
+
+//        for (int i = 0; i < word.length(); i++) {
+//
+//            answer += word.charAt(i);
+//        }
+
+        char testChar = 'z';
+
+        int testInt = testChar;
+
+        System.out.println(testInt);
 
         return answer;
     }
