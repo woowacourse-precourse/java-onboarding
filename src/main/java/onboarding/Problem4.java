@@ -7,7 +7,9 @@ public class Problem4 {
         for(int i = 0; i < wordLen; ++i){
             char curChar = word.charAt(i);
             if(Character.isLetter(curChar)) {
+                if(Character.isLowerCase(curChar)) {
 
+                }
             }
         }
         return answer;
