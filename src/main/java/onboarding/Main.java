@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Main {
@@ -11,8 +13,9 @@ public class Main {
 
 //        int sss = Problem3.solution(13);
 //        System.out.println("args = " + sss);
-
-        String aa = Problem4.solution("A B0231");
-        System.out.println("aa = " + aa);
+//
+//        String aa = Problem4.solution("A B0231");
+//        System.out.println("aa = " + aa);
+//        Problem5.solution(1234567);
     }
 }
