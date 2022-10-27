@@ -24,51 +24,36 @@ import java.util.Stack;
 public class Problem2 {
     public static String solution(String cryptogram) {
         checkValidRange(cryptogram.length());
-        String answer = "answer";
+        String answer = getZipWord(cryptogram);
 
+        return answer;
+    }
+
+    private static String getZipWord(String cryptogram) {
+        String answer = "answer";
         Stack<String> stack = new Stack<>();
 
         int indexNumber = 0;
         while (true) {
             boolean checkChanged = false;
             String[] splitWord = cryptogram.split("");
-
             if (String.join("", stack).trim().equals(String.join("", splitWord).trim())) {
                 break; // 종료조건 1번 (스택에 들어가 있는 데이터의 조합과 원본 데이터의 조합이 같을때. 즉, 중복이 발생하지않고 모두 돌았을 때
             }
-
             if (stack.size() == 0 ) {
                 stack.add(splitWord[indexNumber]);
                 indexNumber += 1;
                 continue;
             }
-
             if (!stack.peek().equals(splitWord[indexNumber])) {
                 stack.add(splitWord[indexNumber]);
                 indexNumber += 1;
                 continue;
             }
 
-            if (stack.peek().equals(splitWord[indexNumber])) {
-                int samePoint = indexNumber - 1;
-                if (samePoint < 0) samePoint = 0;
-                List<Integer> eraseList = new ArrayList<>();
-                for (int i = samePoint; i < splitWord.length; i++) {
-                    if (!splitWord[samePoint].equals(splitWord[i])) {
-                        break;
-                    }
-                    eraseList.add(i);
-                }
-
-                for (Integer eraseIndex : eraseList) {
-                    splitWord[eraseIndex] = "";
-                    checkChanged = true;
-                }
-            }
-
+            checkChanged = isCheckChanged(stack, indexNumber, checkChanged, splitWord);
             String changedWord = String.join("", splitWord).trim();
             cryptogram = changedWord;
-
             indexNumber = 0;
             stack.clear();
 
@@ -80,8 +65,37 @@ public class Problem2 {
             }
         }
         answer = cryptogram;
-
         return answer;
+    }
+
+    private static boolean isCheckChanged(Stack<String> stack, int indexNumber, boolean checkChanged,
+        String[] splitWord) {
+        if (stack.peek().equals(splitWord[indexNumber])) {
+            List<Integer> eraseList = getEraseList(indexNumber, splitWord);
+            checkChanged = doEraseAndCheckChanged(checkChanged, splitWord, eraseList);
+        }
+        return checkChanged;
+    }
+
+    private static boolean doEraseAndCheckChanged(boolean checkChanged, String[] splitWord, List<Integer> eraseList) {
+        for (Integer eraseIndex : eraseList) {
+            splitWord[eraseIndex] = "";
+            checkChanged = true;
+        }
+        return checkChanged;
+    }
+
+    private static List<Integer> getEraseList(int indexNumber, String[] splitWord) {
+        int samePoint = indexNumber - 1;
+        if (samePoint < 0) samePoint = 0;
+        List<Integer> eraseList = new ArrayList<>();
+        for (int i = samePoint; i < splitWord.length; i++) {
+            if (!splitWord[samePoint].equals(splitWord[i])) {
+                break;
+            }
+            eraseList.add(i);
+        }
+        return eraseList;
     }
 
     private static void checkValidRange(int wordLength) {
