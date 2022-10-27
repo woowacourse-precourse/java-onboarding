@@ -37,7 +37,9 @@ class Problem1 {
     }
 
     public static int maxResult(int num){
-
+        int sumOutput = numSum(num);
+        int multiOutput = numMulti(num);
+        return Math.max(sumOutput, multiOutput);
     }
 
     public static List<Integer> numToDigits(int num){
