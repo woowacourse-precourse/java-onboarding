@@ -7,6 +7,13 @@ public class Decrypter {
         return result;
     }
 
+
+    private static String removeRepeatedChar(String cryptogram){
+        int startingIndex = findIndexOfRepeatedChar(cryptogram);
+        int repeatedNum = findNumberOfRepeatedChar(cryptogram, startingIndex);
+        return removeCharacters(cryptogram, startingIndex, repeatedNum);
+    }
+
     private static int findIndexOfRepeatedChar(String cryptogram){
         int startingIndex = -1;
         for(int i=0; i<cryptogram.length(); i++ ){
