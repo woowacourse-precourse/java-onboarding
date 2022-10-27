@@ -11,10 +11,18 @@ class Problem1 {
     private static final int TIE = 0;
     private static final int EXCEPTION = -1;
 
-    public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
 
-        return answer;
+    private static final int FIRST_PAGE = 1;
+    private static final int LAST_PAGE = 400;
+
+    public static int solution(List<Integer> pobi, List<Integer> crong) {
+        List<List<Integer>> pobiDigits = getEachDigitOfTwoPages(pobi);
+        Integer pobiScore = getScore(pobiDigits);
+
+        List<List<Integer>> crongDigits = getEachDigitOfTwoPages(crong);
+        Integer crongScore = getScore(crongDigits);
+
+        return getWinner(pobiScore, crongScore);
     }
 
     public static List<List<Integer>> getEachDigitOfTwoPages(List<Integer> pages) {
@@ -82,4 +90,14 @@ class Problem1 {
 
         return EXCEPTION;
     }
+
+    public static boolean isValidPageRange(List<Integer> pages) {
+        for (Integer page : pages) {
+            if (page < FIRST_PAGE || page > LAST_PAGE) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 }
