@@ -1,6 +1,11 @@
 package onboarding;
 
 import static onboarding.Problem6.CrewNicknameChecker.calculateDuplicateCrews;
+import static onboarding.Problem6.FormIndexConst.FORM_EMAIL_INDEX;
+import static onboarding.Problem6.FormIndexConst.FORM_NICKNAME_INDEX;
+import static onboarding.Problem6.NicknameConst.NICKNAME_DUPLICATE_START_INDEX;
+import static onboarding.Problem6.NicknameConst.NICKNAME_MINIMUM_LENGTH;
+import static onboarding.Problem6.NicknameConst.PART_OF_NICKNAME_RANGE;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -26,7 +31,8 @@ public class Problem6 {
             partOfNicknameMap.clear();
             duplicateNicknameCrewSet.clear();
 
-            List<Crew> crews = forms.stream().map(crew -> new Crew(crew.get(0), crew.get(1)))
+            List<Crew> crews = forms.stream()
+                .map(crew -> new Crew(crew.get(FORM_EMAIL_INDEX), crew.get(FORM_NICKNAME_INDEX)))
                 .collect(Collectors.toList());
 
             for (Crew crew : crews) {
@@ -48,7 +54,7 @@ public class Problem6 {
             if (validateNickname(nickname)) {
                 return;
             }
-            for (int i = 1; i < nickname.length(); i++) {
+            for (int i = NICKNAME_DUPLICATE_START_INDEX; i < nickname.length(); i++) {
                 String partOfNickname = calculatePartOfNickname(nickname, i);
 
                 if (partOfNicknameMap.containsKey(partOfNickname)) {
@@ -65,12 +71,26 @@ public class Problem6 {
         }
 
         private static boolean validateNickname(String nickname) {
-            return nickname.length() < 2;
+            return nickname.length() < NICKNAME_MINIMUM_LENGTH;
         }
 
         private static String calculatePartOfNickname(String nickname, int index) {
-            return nickname.substring(index - 1, index + 1);
+            return nickname.substring(index - PART_OF_NICKNAME_RANGE,
+                index + PART_OF_NICKNAME_RANGE);
         }
+    }
+
+    public abstract class FormIndexConst {
+
+        public static final int FORM_EMAIL_INDEX = 0;
+        public static final int FORM_NICKNAME_INDEX = 1;
+    }
+
+    public abstract class NicknameConst {
+
+        public static final int NICKNAME_DUPLICATE_START_INDEX = 1;
+        public static final int PART_OF_NICKNAME_RANGE = 1;
+        public static final int NICKNAME_MINIMUM_LENGTH = 2;
     }
 }
 
