@@ -20,6 +20,18 @@ public class Problem7 {
         calculateTheScore(user, friends, visitors, map);
         List<Map.Entry<String, Integer>> score = sortByName(map);
 
+        answer = showList(answer, score);
+
+        return answer;
+    }
+
+    private static List<String> showList(List<String> answer, List<Map.Entry<String, Integer>> score) {
+        int cnt = 0;
+        for(Map.Entry<String, Integer>e: score){
+            cnt++;
+            answer.add(e.getKey());
+            if(cnt==5) break; // 최대 5명
+        }
         return answer;
     }
 
