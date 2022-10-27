@@ -5,7 +5,9 @@ import java.util.stream.Stream;
 
 public class Problem3 {
   public static int solution(int number) {
-    return 1;
+    return IntStream.rangeClosed(1, number)
+            .map(Problem3::countIncludeGameNumber)
+            .sum();
   }
 
   public static int countIncludeGameNumber(int number) {
