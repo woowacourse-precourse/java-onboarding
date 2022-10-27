@@ -10,7 +10,7 @@ import java.util.List;
 *   3. 각 자릿수를 곱하는 기능
 *   4. 최대값 탐색 기능
 *   5. 예외사항 탐색 기능
-*   6. 1~4번 기능을 이용한 처리로직을 담은 파이프라인 메서드
+*   6. 1~4번 기능을 이용한 처리로직을 담당하는 모듈
 */
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -34,17 +34,6 @@ class Problem1 {
         }
 
         return answer;
-    }
-
-    public static List<Integer> splitNum(Integer num) {
-        int numOfFirst;
-        int numOfSecond;
-        int numOfThird;
-        numOfFirst = num / 100;
-        numOfSecond = (num % 100) / 10;
-        numOfThird = num % 10;
-
-        return List.of(numOfFirst, numOfSecond, numOfThird);
     }
 
     public static int getSum(List<Integer> numbers) {
@@ -97,10 +86,11 @@ class Problem1 {
         int result = 0;
         List<Integer> splitnumL;
         List<Integer> splitnumR;
+        NumSpliter numSpliter = new NumSpliter();
         Integer[] numarr = new Integer[4];
 
-        splitnumL = splitNum(list.get(0));
-        splitnumR = splitNum(list.get(1));
+        splitnumL = numSpliter.splitNum(list.get(0));
+        splitnumR = numSpliter.splitNum(list.get(1));
 
         numarr[0] = getSum(splitnumL);
         numarr[1] = getMulti(splitnumL);
@@ -109,5 +99,18 @@ class Problem1 {
         result = getMax(Arrays.asList(numarr));
 
         return result;
+    }
+}
+
+class NumSpliter {
+    public List<Integer> splitNum(Integer num) {
+        int numOfFirst;
+        int numOfSecond;
+        int numOfThird;
+        numOfFirst = num / 100;
+        numOfSecond = (num % 100) / 10;
+        numOfThird = num % 10;
+
+        return List.of(numOfFirst, numOfSecond, numOfThird);
     }
 }
