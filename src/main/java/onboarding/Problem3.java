@@ -2,8 +2,15 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
+        int answer = countClapAll(number);
         return answer;
+    }
+    public static int countClapAll(int number){
+        int cnt = 0;
+        for ( int i=1; i<= number; i++){
+            cnt+=countClap(i);
+        }
+        return cnt;
     }
     public static int countClap(int number){
         String strnumber = Integer.toString(number);
