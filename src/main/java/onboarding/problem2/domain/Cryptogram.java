@@ -15,9 +15,25 @@ public class Cryptogram {
     public int overlapStartIndex() {
         final String[] splitCryptogram = split();
         return IntStream.range(0, splitCryptogram.length - 1)
-                .filter(index -> splitCryptogram[index].equals(splitCryptogram[index + 1]))
+                .filter(index -> isOverlapStart(splitCryptogram, index))
                 .findFirst()
                 .orElse(-1);
+    }
+    
+    private boolean isOverlapStart(final String[] splitCryptogram, final int index) {
+        return splitCryptogram[index].equals(splitCryptogram[index + 1]);
+    }
+    
+    public int overlapEndIndex(final int overlapStartIndex) {
+        final String[] splitCryptogram = split();
+        return IntStream.range(overlapStartIndex, splitCryptogram.length - 1)
+                .filter(index -> isOverlapEnd(overlapStartIndex, splitCryptogram, index))
+                .findFirst()
+                .orElse(-1);
+    }
+    
+    private static boolean isOverlapEnd(final int overlapStartIndex, final String[] splitCryptogram, final int index) {
+        return !splitCryptogram[overlapStartIndex].equals(splitCryptogram[index]);
     }
     
     private String[] split() {

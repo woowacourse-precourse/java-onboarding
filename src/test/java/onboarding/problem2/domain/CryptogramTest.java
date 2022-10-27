@@ -12,4 +12,11 @@ public class CryptogramTest {
         Cryptogram cryptogram = new Cryptogram("zyellleyz");
         assertThat(cryptogram.overlapStartIndex()).isEqualTo(3);
     }
+    
+    @Test
+    @DisplayName("연속하는 중복 문자 끝 위치 구하기")
+    void overlapEndIndex() {
+        Cryptogram cryptogram = new Cryptogram("zyellleyz");
+        assertThat(cryptogram.overlapEndIndex(3)).isEqualTo(6);
+    }
 }
