@@ -15,11 +15,11 @@ public class Problem5 {
     public static List<Integer> withDrawMoney(int money) {
         List<Integer> result = new ArrayList<Integer>();
         int[] currency = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
-        int mod = money;
+        int leftMoney = money;
 
         for (int value: currency) {
-            result.add(mod / value);
-            mod = money % value;
+            result.add(leftMoney / value);
+            leftMoney %= value;
         }
         return result;
     }
