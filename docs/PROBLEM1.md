@@ -28,3 +28,10 @@
 | [131, 132] | [211, 212] | 1 |
 | [99, 102] | [211, 212] | -1 |
 
+### 기능목록
+
+- 기능1. int findWinner() : 게임의 승자를 결정한다.
+- 기능2. int compareLeftAndRight(List<Integer> player) : 왼쪽 페이지와 오른쪽 페이지 중 최대값을 반환
+- 기능3. int calculateMaxValue(int page) : 페이지의 각 자리 숫자를 모두 더하거나 곱한 결과 중 최대값을 찾는다.
+- 기능4. boolean isException(List<Integer> player) : 페이지의 예외사항 판단
+
