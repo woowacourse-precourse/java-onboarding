@@ -39,4 +39,11 @@ class Problem1 {
         return sum;
     }
 
+    private static int getNumsMultiplication(List<Integer> splitNums) {
+        int multiplication = splitNums.stream()
+                .reduce(1, (a, b) -> a * b);
+
+        return multiplication;
+    }
+
 }
