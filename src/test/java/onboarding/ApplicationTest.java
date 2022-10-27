@@ -298,6 +298,21 @@ class ApplicationTest {
             List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
+
+        @Test
+        @DisplayName("연속되는 같은 글자가 두 개 이상일 경우")
+        void whenConsecutiveletterMoreThanOne() {
+            List<List<String>> forms = List.of(
+                    List.of("jm@email.com", "제이엠"),
+                    List.of("jason@email.com", "제이슨"),
+                    List.of("woniee@email.com", "워니"),
+                    List.of("mj@email.com", "엠제이"),
+                    List.of("nowm@email.com", "이제엠"),
+                    List.of("mga@email.com", "제엠가")
+            );
+            List<String> expected = List.of("jason@email.com", "jm@email.com", "mga@email.com", "mj@email.com", "nowm@email.com");
+            Assertions.assertIterableEquals(expected, Problem6.solution(forms), "연속되는 같은 글자가 두 개 이상일 경우");
+        }
     }
 
     @Nested
