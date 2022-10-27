@@ -1,8 +1,10 @@
 package onboarding;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -30,6 +32,78 @@ class ApplicationTest {
         void case3() {
             List<Integer> pobi = List.of(99, 102);
             List<Integer> crong = List.of(211, 212);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        @DisplayName("1(첫) 페이지를 열었을 경우")
+        void openFirstPage() {
+            List<Integer> pobi = List.of(1, 2);
+            List<Integer> crong = List.of(211, 212);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        @DisplayName("400(마지막) 페이지를 열었을 경우")
+        void openLastPage() {
+            List<Integer> pobi = List.of(6, 7);
+            List<Integer> crong = List.of(399, 400);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        @DisplayName("페이지의 개수가 2가 아닐 경우")
+        void invalidPageSize() {
+            List<Integer> pobi = List.of(101, 102, 103);
+            List<Integer> crong = List.of(211, 212);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        @DisplayName("left 가 홀수가 아닐 경우")
+        void isNotOddLeftPage() {
+            List<Integer> pobi = List.of(20, 22);
+            List<Integer> crong = List.of(212, 214);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        @DisplayName("right 가 짝수가 아닐 경우")
+        void isNotEvenRightPage() {
+            List<Integer> pobi = List.of(21, 23);
+            List<Integer> crong = List.of(211, 213);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        @DisplayName("right < left 일 경우")
+        void rightLessThanLeft() {
+            List<Integer> pobi = List.of(21, 20);
+            List<Integer> crong = List.of(211, 210);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        @DisplayName("값의 범위를 벗어나는 경우 - down")
+        void outOfRangeDown() {
+            List<Integer> pobi = List.of(-1, 0);
+            List<Integer> crong = List.of(211, 213);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        @DisplayName("값의 범위를 벗어나는 경우 - up")
+        void outOfRangeUp() {
+            List<Integer> pobi = List.of(11, 12);
+            List<Integer> crong = List.of(401, 402);
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
