@@ -14,6 +14,9 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        if (isException(pobi) || isException(crong))
+            return -1;
+
         int answer = Integer.MAX_VALUE;
         if (getMaxNumber(pobi) > getMaxNumber(crong))
             answer = 1;
@@ -21,8 +24,6 @@ class Problem1 {
             answer = 2;
         if (getMaxNumber(pobi) == getMaxNumber(crong))
             answer = 0;
-        if (isException(pobi) || isException(crong))
-            answer = -1;
         return answer;
     }
 
