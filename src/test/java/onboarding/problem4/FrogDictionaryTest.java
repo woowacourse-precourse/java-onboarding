@@ -6,7 +6,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 public class FrogDictionaryTest {
 
-	@ParameterizedTest(name = "글자를 검색한다")
+	@ParameterizedTest(name = "글자 {0}를 검색한다 = {1}")
 	@CsvSource(value = {"A=Z", "z=a", "b=y"}, delimiter = '=')
 	void find_character(char character, char expected) {
 		FrogDictionary frogDictionary = new FrogDictionary();
