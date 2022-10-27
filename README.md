@@ -30,7 +30,7 @@
   - [x] 해독 가능 상태 완료 여부 확인
 
 
-- [ ] solution method 구현
+- [x] solution method 구현
 
 ___
 
