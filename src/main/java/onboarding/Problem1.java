@@ -41,10 +41,7 @@ class Problem1 {
      *예외사항
      */
     static boolean exception(List<Integer> list){
-        boolean check = false;
-        if(!(list.get(1) - list.get(0) == 1)) {
-            check = true;
-        }
+        boolean check = !(list.get(1) - list.get(0) == 1);
         return check;
     }
 
