@@ -153,6 +153,22 @@ class ApplicationTest {
 
     @Nested
     class Problem2Test {
+        // deleteRepeatedCharacter 테스트
+        @Test
+        void deleteRepeatedCharacterTest() {
+            // 문자 중복 구간 시작 인덱스에 따른 결과 문자열 테스트
+            String cryptogram = "browoanooommmmmnaon";
+            int repeatStartIndex1 = 7;
+            int repeatStartIndex2 = 10;
+
+            String result1 = "browoanmmmmmnaon";
+            String result2 = "browoanooonaon";
+
+            Problem2 problem2 = new Problem2();
+            assertThat(problem2.deleteRepeatedCharacter(cryptogram, repeatStartIndex1)).isEqualTo(result1);
+            assertThat(problem2.deleteRepeatedCharacter(cryptogram, repeatStartIndex2)).isEqualTo(result2);
+        }
+
         @Test
         void case1() {
             String cryptogram = "browoanoommnaon";
