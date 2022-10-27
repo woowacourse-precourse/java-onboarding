@@ -3,6 +3,9 @@ package onboarding;
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
+        for (int nowNumber = 3; nowNumber <= number; nowNumber++){
+            answer += getClapCount(nowNumber);
+        }
         return answer;
     }
     private static int getClapCount(int number){
