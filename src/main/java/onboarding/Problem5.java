@@ -8,13 +8,20 @@ import java.util.List;
 
 1. 단위 지폐 목록을 담은 List 생성
 2. 입력 값을 단위 지폐로 나눠 몫을 결과 List에 저장
-3. 걸과 반환
+3. 결과 반환
 
  */
 public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
         List<Integer> unitMoneyList = initUnitList();
+        List<Integer> result = new ArrayList<>();
+        for(int i=0;i<unitMoneyList.size();i++){
+            int count = money / unitMoneyList.get(i);
+            money %= unitMoneyList.get(i);
+            result.add(count);
+        }
+        answer = result;
         return answer;
     }
 
