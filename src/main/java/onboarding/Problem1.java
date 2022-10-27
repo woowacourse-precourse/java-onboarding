@@ -32,6 +32,10 @@ class Problem1 {
         return sum;
     }
 
+    public static int getMax(List<Integer> pages) {
+        return 0;
+    }
+
     public static int getWhoWin(int pobiNum, int crongNum) {
         if(pobiNum > crongNum) {
             return POBI_WIN;
