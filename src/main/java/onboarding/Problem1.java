@@ -20,6 +20,9 @@ class Problem1 {
     private static Boolean isInputValid(List<Integer> person){
         int leftPage=person.get(0);
         int rightPage=person.get(1);
+        if(!isPageNotNull(leftPage, rightPage)) {
+            return false;
+        }
         if(isPageRangeInBook(leftPage,rightPage)&&isPageInRow(leftPage,rightPage)&&isOddEven(leftPage,rightPage)) {
             return true;
         }
@@ -87,6 +90,13 @@ class Problem1 {
 
     private static Boolean isOddEven(int leftPage, int rightPage){
         if(leftPage%2==0||rightPage%2==1){
+            return false;
+        }
+        return true;
+    }
+
+    private static Boolean isPageNotNull(Integer leftPage, Integer rightPage) {
+        if(leftPage==null || rightPage==null) {
             return false;
         }
         return true;
