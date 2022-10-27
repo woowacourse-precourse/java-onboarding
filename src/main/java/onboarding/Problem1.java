@@ -17,6 +17,24 @@ class Problem1 {
             }
         }
 
+        int findWinner() {
+            if(errorFlag){
+                return -1;
+            }
+            int winner = 0;
+            int tmpMax = 0;
+            int limit = participantList.size();
+
+            for(int i=0 ; i<limit ; i++) {
+                Score tmpScore = participantList.get(i);
+                if(tmpScore.maxValue > tmpMax) {
+                    winner += i+1;
+                    tmpMax = tmpScore.maxValue;
+                }
+            }
+
+            return (winner>limit) ? 0 : winner;
+        }
     }
 
 
@@ -81,7 +99,9 @@ class Problem1 {
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        Game game = new Game();
+        game.addParticipant(pobi);      // 순서 변경 불가능
+        game.addParticipant(crong);
+        return game.findWinner();
     }
 }
