@@ -79,8 +79,6 @@ class Problem1 {
         }
 
         return page;
-
-
     }
 
     private static int compareNumber(int sumNum, int multiplyNum) {
