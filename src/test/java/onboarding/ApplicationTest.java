@@ -332,5 +332,22 @@ class ApplicationTest {
             List<String> result = List.of("andole", "jun", "bedi");
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
+        @Test
+        @DisplayName("mrko가 shakevan 대신 andole과 친구일 때")
+        void whenMrkoIsFriendWithAndoleNotShakevan() {
+            String user = "mrko";
+            List<List<String>> friends = List.of(
+                    List.of("donut", "andole"),
+                    List.of("donut", "jun"),
+                    List.of("donut", "mrko"),
+                    List.of("shakevan", "andole"),
+                    List.of("shakevan", "jun"),
+                    List.of("andole", "mrko")
+            );
+            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+            List<String> expected = List.of("bedi", "shakevan");
+            Assertions.assertIterableEquals(expected,Problem7.solution(user, friends, visitors), "bedi와 shakevan을 반환" );
+        }
+
     }
 }
