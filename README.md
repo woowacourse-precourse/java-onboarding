@@ -43,6 +43,13 @@ BUILD SUCCESSFUL in 0s
 5. [문제 5](./docs/PROBLEM5.md)
 6. [문제 6](./docs/PROBLEM6.md)
 7. [문제 7](./docs/PROBLEM7.md)
+---
+
+### 문제 3
+
+기능
+- number가 1 이상 10,000 이하 자연수가 아니면 -1을 반환한다.
+- 1부터 number까지 숫자를 세면서 3, 6, 9가 포함되면 count를 증가시킨다.
 
 ---
 
