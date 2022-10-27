@@ -27,4 +27,9 @@ class AlphabetController{
         return (char)(UPPER_END_INDEX- index);
     }
 
+    private static char convertLowerAlpha(char lowerAlpha){
+        int index = (int)lowerAlpha - LOWER_START_INDEX;
+
+        return (char)(LOWER_END_INDEX - index);
+    }
 }
