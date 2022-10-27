@@ -15,5 +15,34 @@ public class Problem2 {
 }
 
 interface Detector {
-    List<Integer> location(String cryptogram);
+    List<Integer> findPattern();
+}
+
+interface Deleter {
+    String deletePattern(String cryptogram);
+}
+
+class DuplicateDeleter implements Detector {
+
+    String cryptogram;
+
+    public DuplicateDeleter(String cryptogram) {
+        this.cryptogram = cryptogram;
+    }
+
+    @Override
+    public List<Integer> findPattern() {
+        for(int i = 0 ; i < cryptogram.length() ; i++) {
+
+        }
+    }
+
+    public int findEndpoint(int base) {
+        int result;
+        if(cryptogram.charAt(base) != cryptogram.charAt(base+1)){
+            return base;
+        }
+        result = findEndpoint(base+1);
+        return result;
+    }
 }
