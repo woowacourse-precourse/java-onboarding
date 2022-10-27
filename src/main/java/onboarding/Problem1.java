@@ -10,6 +10,9 @@ class Problem1 {
     private static final int SAME_VALUE = 0;
     private static final int EXCEPTION_CASE = -1;
 
+    private static final int FIRST_PAGE = 1;
+    private static final int LAST_PAGE = 400;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = getAnswer(getMaxValue(pobi), getMaxValue(crong));
         return answer;
@@ -18,15 +21,7 @@ class Problem1 {
     private static Integer getMaxValue(List<Integer> pages) {
         Integer leftPage = pages.get(0);
         Integer rightPage = pages.get(1);
-        if ((leftPage + 1) != rightPage) {
-            return EXCEPTION_CASE;
-        }
-
-        if (leftPage == 1 && rightPage == 2) {
-            return EXCEPTION_CASE;
-        }
-
-        if (leftPage == 399 && rightPage == 400) {
+        if (isExceptionCase(leftPage, rightPage) == true) {
             return EXCEPTION_CASE;
         }
 
@@ -34,6 +29,21 @@ class Problem1 {
         int rightPageMaxValue = doCalculate(rightPage);
 
         return Math.max(leftPageMaxValue, rightPageMaxValue);
+    }
+
+    private static boolean isExceptionCase(Integer leftPage, Integer rightPage) {
+        if ((leftPage + 1) != rightPage) {
+            return true;
+        }
+
+        if (leftPage == FIRST_PAGE && rightPage == FIRST_PAGE + 1) {
+            return true;
+        }
+
+        if (leftPage == LAST_PAGE -1 && rightPage == LAST_PAGE ) {
+            return true;
+        }
+        return false;
     }
 
     private static int doCalculate(Integer page) {
