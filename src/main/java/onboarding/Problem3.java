@@ -5,6 +5,7 @@ public class Problem3 {
     private final static int[] MULTIPLES_OF_TEN = {10000, 1000, 100, 10, 1};
     public static int solution(int number) {
         int answer = 0;
+        answer += getTotalClap(number);
         return answer;
     }
     private static int getTotalClap(int number) {
@@ -18,11 +19,15 @@ public class Problem3 {
 
     private static int getClapByDigit(int i, int number) {
         if (i == 0) return 0;
-        int clap = i * MAX_CLAP_BY_DIGIT[i] + getNumOfMulOfThreeLessThanValue(i) * (MULTIPLES_OF_TEN[i] / 10);
+        int clap = getClapDefault(i);
         if (i % 3 == 0) {
             clap += number / (MULTIPLES_OF_TEN[i]);
         }
         return clap;
+    }
+
+    private static int getClapDefault(int i) {
+        return i * MAX_CLAP_BY_DIGIT[i] + getNumOfMulOfThreeLessThanValue(i) * (MULTIPLES_OF_TEN[i] / 10);
     }
 
     private static int getNumOfMulOfThreeLessThanValue(int value) {
