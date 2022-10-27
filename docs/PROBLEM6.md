@@ -21,3 +21,9 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능 목록
+1. forms 돌면서 HashMap에 닉네임을 연속된 두 자리씩 잘라서 키로 저장해주는 메소드
+2. 다시 forms 돌면서 닉네임 두 자리씩 자르고 해당 키값의 밸류가 1보다 큰 중복된 문자열을 가진 닉네임의 인덱스를 리스트로 반환해주는 메소드
+3. forms를 돌면서 중복된 닉네임 유저의 이메일을 TreeSet(기본 오름차순)에 추가해주는 메소드
+4. 이메일 TreeSet을 List로 변환해주는 메소드
