@@ -79,11 +79,11 @@ class Problem1 {
     }
 
     private static boolean isLeftPagePlusOneRightPage(int pobiLeftPage, int pobiRightPage, int crongLeftPage, int crongRightPage) {
-        return !(pobiLeftPage + 1 == pobiRightPage && crongLeftPage + 1 == crongRightPage);
+        return pobiLeftPage + 1 != pobiRightPage || crongLeftPage + 1 != crongRightPage;
     }
 
     private static boolean isLeftPageOddRightPageEven(int pobiLeftPage, int pobiRightPage, int crongLeftPage, int crongRightPage) {
-        return !(isOdd(pobiLeftPage) && isEven(pobiRightPage)) || !(isOdd(crongLeftPage) && isEven(crongRightPage));
+        return isEven(pobiLeftPage) || isOdd(pobiRightPage) || isEven(crongLeftPage) || isOdd(crongRightPage);
     }
 
     private static boolean isEven(int page) {

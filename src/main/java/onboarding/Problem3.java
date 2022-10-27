@@ -1,8 +1,5 @@
 package onboarding;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;

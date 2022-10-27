@@ -9,7 +9,10 @@ public class Main {
 //        String ss = Problem2.solution(s);
 //        System.out.println("ss = " + ss);
 
-        int sss = Problem3.solution(13);
-        System.out.println("args = " + sss);
+//        int sss = Problem3.solution(13);
+//        System.out.println("args = " + sss);
+
+        String aa = Problem4.solution("A B");
+        System.out.println("aa = " + aa);
     }
 }
