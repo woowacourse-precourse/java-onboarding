@@ -4,14 +4,14 @@ import java.util.Stack;
 public class Problem2 {
     public static String solution(String cryptogram) {
         char[] ch = cryptogram.toCharArray();
-        while(check(ch)){
+        while(check1(ch)){
             Stack<Character> decodeStack = dremove(ch);                       //?
 
         }
         return answer;
     }
 
-    public static boolean check(char[] num){                                  // 중복 있는지 없는지 체크
+    public static boolean check1(char[] num){                                  // 중복 있는지 없는지 체크
         for(int i =0; i<num.length -1; i++){
             if(num[i] == num[i+1]){
                 return true;
@@ -20,8 +20,16 @@ public class Problem2 {
         return false;
     }
 
+    public static boolean check2(char[] num){                                  //길이 1이상 1000이하
+        if(num.length >=1 &&num.length <= 1000){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
-    public static String dremove(char[] nu) {
+
+    public static Stack<Character> dremove(char[] nu) {
         char decode = 0;
         Stack<Character> stack = new Stack<>();
 
@@ -37,6 +45,10 @@ public class Problem2 {
         }
         return stack;
 
+
+    }
+
+    public static String stacktostr(Stack<Character> stack){                    // string형으로 변환
 
     }
 
