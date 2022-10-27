@@ -5,7 +5,7 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int answer = getResult(pobi, crong);
         return answer;
     }
 
@@ -15,7 +15,7 @@ class Problem1 {
      * @param pages2 : 두 번째 참여자의 page list
      * @return 첫 번째 참여자가 이긴다면 1, 두 번째 참여자가 이긴다면 2, 무승부라면 0, 예외사항은 -1
      */
-    private int getResult(List<Integer> pages1, List<Integer> pages2){
+    private static int getResult(List<Integer> pages1, List<Integer> pages2){
         try{
             //파라미터 유효성 검사
             checkParameterValidation(pages1, pages2);
@@ -36,7 +36,7 @@ class Problem1 {
      * @param score2 : 두 번째 점수
      * @return 첫 번째 점수가 더 높다면 1, 두 번째 점수가 더 높다면 2, 점수가 같다면 0
      */
-    private int compareScore(int score1, int score2){
+    private static int compareScore(int score1, int score2){
         if(score1 > score2){
             return 1;
         } else if (score2 < score1) {
@@ -51,7 +51,7 @@ class Problem1 {
      * @param pages1 : 첫 번째 참여자의 page list
      * @param pages2 : 두 번째 참여자의 page list
      */
-    private void checkParameterValidation(List<Integer> pages1, List<Integer> pages2){
+    private static void checkParameterValidation(List<Integer> pages1, List<Integer> pages2){
         //페이지 유효성 검사
         checkPagesValidation(pages1);
         checkPagesValidation(pages2);
@@ -61,7 +61,7 @@ class Problem1 {
      * 페이지 리스트의 유효성을 검사
      * @param pages : 두 개의 페이지를 포함하고 있는 페이지리스트
      */
-    private void checkPagesValidation(List<Integer> pages){
+    private static void checkPagesValidation(List<Integer> pages){
         int leftPage = pages.get(0);
         int rightPage = pages.get(1);
 
@@ -97,7 +97,7 @@ class Problem1 {
      * @param numList
      * @return 숫자 리스트의 각 자리 수 리스트
      */
-    private List<Integer> getDigitList(List<Integer> numList){
+    private static List<Integer> getDigitList(List<Integer> numList){
         List<Integer> digitList = new ArrayList<>();
 
         for(int num : numList){
@@ -121,7 +121,7 @@ class Problem1 {
      * @param pages : 책을 펼쳤을 때 나온 두 개의 페이지 번호
      * @return 페이지 번호를 더한 값과 페이지 번호를 곱한 값 중 더 큰 값
      */
-    private int getScore(List<Integer> pages){
+    private static int getScore(List<Integer> pages){
         List digitList = getDigitList(pages);
         // 각 자리 수를 곱했을 때의 점수
         int multiScore = getMultiplicationOfList(digitList);
@@ -138,7 +138,7 @@ class Problem1 {
      * @param num2 : 두 번째 숫자
      * @return 두 숫자 중 더 큰 수
      */
-    private int getLargerNumber(int num1, int num2){
+    private static int getLargerNumber(int num1, int num2){
         if(num1 > num2){
             return num1;
         } else {
@@ -151,7 +151,7 @@ class Problem1 {
      * @param numList : 숫자 리스트
      * @return 숫자 리스트의 곱
      */
-    private int getMultiplicationOfList(List<Integer> numList){
+    private static int getMultiplicationOfList(List<Integer> numList){
         //결과 초기값 작성
         int result = 1;
 
@@ -167,7 +167,7 @@ class Problem1 {
      * @param numList : 숫자 리스트
      * @return 숫자 리스트의 합
      */
-    private int getSumOfList(List<Integer> numList) {
+    private static int getSumOfList(List<Integer> numList) {
         //결과 초기값 작성
         int result = 0;
 
