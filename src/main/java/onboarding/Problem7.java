@@ -53,6 +53,23 @@ public class Problem7 {
         set.add(list.get(1));
     }
 
+    static void getTogetherKnowPoint(List<List<String>> friends, String user, Map<String, Integer> scoreMap) {
+        Map<String, List<String>> friendsMap = getFriendsMap(friends);
+        List<String> friendList = getFriendList(friends,user);
+        List<String> userFriends = friendsMap.get(user);
+
+        friendList.stream()
+            .forEach(f -> inputScore(friendsMap, userFriends, scoreMap, f));
+    }
+
+    static void inputScore(Map<String, List<String>> friendsMap, List<String> userFriends, Map<String, Integer> scoreMap, String friend) {
+        int count = (int) friendsMap.get(friend).stream()
+            .filter(x -> userFriends.contains(x))
+            .count();
+
+        scoreMap.put(friend, count * 10);
+    }
+
     public static void main(String[] args) {
         String user = "mrko";
         List<List<String>> friends = List.of(
@@ -66,7 +83,7 @@ public class Problem7 {
 
         Map<String, List<String>> friendsMap = getFriendsMap(friends);
         List<String> friendList = getFriendList(friends,user);
-        friendList.stream().forEach(x -> System.out.println(x + " "));
+        getTogetherKnowPoint(friends, user);
     }
 
 }
