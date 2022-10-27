@@ -13,6 +13,14 @@ public class Problem4 {
             }
             this.sentence = sentence;
         }
+
+        String transform(){
+            for(int i=0 ; i<sentence.length() ; i++){
+                char c = sentence.charAt(i);
+                result += dictionary.findWord(c);
+            }
+            return result;
+        }
     }
 
 
