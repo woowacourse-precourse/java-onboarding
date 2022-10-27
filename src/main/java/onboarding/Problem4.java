@@ -19,6 +19,14 @@ public class Problem4 {
         return answer;
     }
 
+    public static char reverseAlphabet (char c) {
+        if (isUpperCase(c)) {
+            return (char)('A' + 'Z' - c);
+        }
+        // 소문자일 경우
+        return (char)('a' + 'z' - c);
+    }
+
     public static boolean isAlphabet (char c) {
         return isUpperCase(c) || isLowerCase(c);
     }
