@@ -28,4 +28,12 @@ public class Problem2 {
         }
         return isCorrectCryptogramLength;
     }
+
+    public static boolean validateCryptogramType(String cryptogram) {
+        boolean isCorrectCryptogramType = false;
+        if(Pattern.compile("^[a-z]*$").matcher(cryptogram).matches()) {
+            isCorrectCryptogramType = true;
+        }
+        return isCorrectCryptogramType;
+    }
 }
