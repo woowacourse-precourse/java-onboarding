@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -10,10 +9,6 @@ import java.util.Map;
 import java.util.Set;
 
 public class Problem6 {
-    public static void main(String[] args) {
-
-    }
-
     public static List<String> solution(List<List<String>> forms) {
         HashMap<String, Integer> userTwoLetterList = new HashMap<>();
         Set<String> DuplicateNameList = new HashSet<>();
@@ -50,6 +45,4 @@ public class Problem6 {
             }
         }
     }
-
-
 }
