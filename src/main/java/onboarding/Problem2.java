@@ -16,6 +16,21 @@ public class Problem2 {
         char[] s = cryptogram.toCharArray();
         Stack<String> stack = new Stack<>();
         stack.push(String.valueOf(s[0]));
-        return answer;
+
+        int l = s.length;
+        for(int i = 1; i < l; i++){
+            if(String.valueOf(stack.peek()).equals(String.valueOf(s[i]))) {
+                stack.pop();
+            }
+            else {
+                stack.add(String.valueOf(s[i]));
+            }
+        }
+        while(stack.size() != 0) {
+            answer = answer + stack.pop();
+        }
+        StringBuffer sb = new StringBuffer(answer);
+        String reverse = sb.reverse().toString();
+        return reverse;
     }
 }
