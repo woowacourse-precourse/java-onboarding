@@ -9,7 +9,7 @@ public class Problem4 {
     private static final int LOWERCASE_ASCII_START_NUMBER = 97;
     private static final int ALLCASE_SPELLING_TERM = 25;
     public static String solution(String word) {
-        String answer = "";
+        String answer = wordConvert(word);
         return answer;
     }
 
