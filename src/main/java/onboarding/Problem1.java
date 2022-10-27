@@ -5,6 +5,7 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
+
         int answer = Integer.MAX_VALUE;
         return answer;
     }
@@ -24,5 +25,12 @@ class Problem1 {
             num /= 10;
         }
         return multiply;
+    }
+
+    public static int getScore (int leftPageNum, int rightPageNum){
+        int leftPageScore = getSum(leftPageNum)>getMultiply(leftPageNum) ? getSum(leftPageNum) : getMultiply(leftPageNum);
+        int rightPageScore= getSum(rightPageNum)>getMultiply(rightPageNum) ? getSum(rightPageNum) : getMultiply(rightPageNum);
+        int finalScore = leftPageScore>rightPageScore ? leftPageScore : rightPageScore;
+        return finalScore;
     }
 }
