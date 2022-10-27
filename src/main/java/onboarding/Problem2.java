@@ -29,4 +29,9 @@ public class Problem2 {
         }
     }
 
+    private static String convertString(String[] array) {
+        convertSpecificValue(array);
+        return String.join("",array).replace(SPECIFIC_VALUE,"");
+    }
+
 }
