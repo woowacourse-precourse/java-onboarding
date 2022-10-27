@@ -8,6 +8,13 @@ class Problem1 {
         return answer;
     }
 
+    public boolean data_require(List<Integer> score_list){
+        int left = score_list.get(0);
+        int right = score_list.get(1);
+
+        return left + 1 == right;
+    }
+
     public int winner(int pobi_score, int crong_score){
         if(pobi_score > crong_score) return 1;
         else if(pobi_score < crong_score) return 2;
