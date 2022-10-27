@@ -14,7 +14,6 @@ class Problem1 {
 	private static final int NOT_PAGE_NUMBER = -1;
 
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
-		int answer;
 		int pobiLeftPage = pobi.get(LEFT_PAGE);
 		int pobiRightPage = pobi.get(RIGHT_PAGE);
 		int crongLeftPage = crong.get(LEFT_PAGE);
@@ -24,17 +23,9 @@ class Problem1 {
 			&& checkPageForm(crongLeftPage, crongRightPage))) {
 			return NOT_PAGE_NUMBER;
 		}
-		int pobiMax = pageMax(pobi);
-		int crongMax = pageMax(crong);
-
-		if (pobiMax > crongMax) {
-			answer = WIN_POBI;
-		} else if (pobiMax < crongMax) {
-			answer = WIN_CRONG;
-		} else {
-			answer = DRAW;
-		}
-		return answer;
+		int pobiMax = pageMax(pobiLeftPage, pobiRightPage);
+		int crongMax = pageMax(crongLeftPage, crongRightPage);
+		return gameResult(pobiMax, crongMax);
 	}
 
 	private static boolean checkPageForm(int leftPage, int rightPage) {
@@ -73,12 +64,21 @@ class Problem1 {
 		return multipleValue;
 	}
 
-	private static int pageMax(List<Integer> pages) {
-		int leftMaxValue = Math.max(addDigit(pages.get(LEFT_PAGE)),
-			multipleDigit(pages.get(LEFT_PAGE)));
-		int rightMaxValue = Math.max(addDigit(pages.get(RIGHT_PAGE)),
-			multipleDigit(pages.get(RIGHT_PAGE)));
+	private static int pageMax(int leftPage, int rightPage) {
+		int leftMaxValue = Math.max(addDigit(leftPage),
+			multipleDigit(rightPage));
+		int rightMaxValue = Math.max(addDigit(rightPage),
+			multipleDigit(leftPage));
 		return Math.max(leftMaxValue, rightMaxValue);
 	}
 
+	private static int gameResult(int pobiScore, int crongScore) {
+		if (pobiScore > crongScore) {
+			return WIN_POBI;
+		} else if (pobiScore < crongScore) {
+			return WIN_CRONG;
+		} else {
+			return DRAW;
+		}
+	}
 }
