@@ -27,7 +27,7 @@ public class Problem4 {
     }
 
     public static boolean checkValid(String s) {
-
+        return checkWordLength(s);
     }
 
     public static boolean checkWordLength(String s) {
