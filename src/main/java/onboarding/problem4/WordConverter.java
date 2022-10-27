@@ -1,8 +1,10 @@
 package onboarding.problem4;
 
+import static onboarding.problem4.WordValidation.*;
+
 public class WordConverter {
 
-    private CharacterConverter characterConverter;
+    private final CharacterConverter characterConverter;
 
     public WordConverter(CharacterConverter characterConverter) {
         this.characterConverter = characterConverter;
@@ -10,9 +12,16 @@ public class WordConverter {
 
     public String reverseWord(String word) {
         // 검증
+        validateWord(word);
 
         // 반대 단어로 변환 후 반환
-        return "";
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < word.length(); i++) {
+            char currentCharacter = word.charAt(i);
+            stringBuilder.append(characterConverter.reverseCharacter(currentCharacter));
+        }
+
+        return stringBuilder.toString();
     }
 
 }

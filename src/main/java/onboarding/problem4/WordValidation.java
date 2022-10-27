@@ -21,6 +21,10 @@ public class WordValidation {
     }
 
     private static boolean containsOnlyAlphabet(String word) {  // 알파벳 체크
+        char[] chars = word.toCharArray();
+        for (char aChar : chars) {
+        }
+
         return word.matches("^[a-zA-Z]*$");
     }
 }
