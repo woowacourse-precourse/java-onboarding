@@ -9,9 +9,20 @@ public class Problem3 {
         return exception;
     }
 
+    static int counter(int number) {
+        int count = 0;
+        for(int i=1; i<=number; i++) {
+            String str = String.valueOf(i);
+            for(int j=0; j<str.length(); j++) {
+                char c = str.charAt(j);
+                if(c=='3' || c=='6' || c=='9') count++;
+            }
+        }
+        return count;
+    }
+
     public static int solution(int number) {
-        int answer = 0;
         numCheck(number);
-        return answer;
+        return counter(number);
     }
 }
