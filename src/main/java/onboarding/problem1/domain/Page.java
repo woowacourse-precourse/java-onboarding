@@ -28,4 +28,12 @@ public class Page {
     private String[] splitToStringPage() {
         return String.valueOf(page).split("");
     }
+    
+    public boolean isNotOdd() {
+        return page % 2 != 1;
+    }
+    
+    public boolean isNotEven() {
+        return page % 2 != 0;
+    }
 }

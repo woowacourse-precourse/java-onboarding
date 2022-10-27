@@ -3,7 +3,6 @@ package onboarding.problem1.domain;
 import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.stream.Collectors;
 
 public class Player {
     private static final String NOT_FOUND_PAGE_EXCEPTION_MESSAGE = "페이지를 찾지 못했습니다.";
@@ -24,11 +23,22 @@ public class Player {
     
     public int compareTo(final Player rightPlayer) {
         final int resultOfCompare = Integer.compare(getMaxNumber(), rightPlayer.getMaxNumber());
+        if (isNotCorrectPages(rightPlayer)) {
+            return -1;
+        }
+        
         if (resultOfCompare < 0) {
             return 2;
         }
-        
         return resultOfCompare;
+    }
+    
+    private boolean isNotCorrectPages(final Player rightPlayer) {
+        return isNotCorrectEvenAndOddNumbers() || rightPlayer.isNotCorrectEvenAndOddNumbers();
+    }
+    
+    private boolean isNotCorrectEvenAndOddNumbers() {
+        return pages.get(0).isNotOdd() || pages.get(1).isNotEven();
     }
     
     private int getMaxNumber() {

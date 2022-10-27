@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 public class PlayerTest {
     @Test
@@ -27,5 +28,14 @@ public class PlayerTest {
     void draw() {
         Player player = new Player(157, 158);
         assertThat(player.compareTo(new Player(57, 58))).isEqualTo(0);
+    }
+    
+    @Test
+    @DisplayName("짝수 홀수가 안맞는 경우")
+    void isNotCorrectEvenAndOddNumbers() {
+        assertAll(
+                () -> assertThat(new Player(158, 159).compareTo(new Player(57, 58))).isEqualTo(-1),
+                () -> assertThat(new Player(157, 158).compareTo(new Player(58, 59))).isEqualTo(-1)
+        );
     }
 }
