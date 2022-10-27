@@ -68,6 +68,8 @@ BUILD SUCCESSFUL in 0s
           4-2. normal index = ((int)현재 알파벳 - 65)  
           4-1. reverse index = (26(알파벳 개수) - 1) - normal index  
 5. [문제 5](./docs/PROBLEM5.md)
+   * 기능 목록
+       1. **돈 단위(오만원, 만원, 오천원 등) 리스트를 순회하며 단위 별 반환 개수를 저장하는 기능**
 6. [문제 6](./docs/PROBLEM6.md)
 7. [문제 7](./docs/PROBLEM7.md)
 
