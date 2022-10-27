@@ -88,6 +88,10 @@ public class Problem7 {
         return cntOfSameFriendsWithMeByCrew;
     }
 
+    public static int getCntOfVisit(List<String> visitors, String crew) {
+        return (int)visitors.stream().filter(visitor -> visitor.equals(crew)).count();
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
