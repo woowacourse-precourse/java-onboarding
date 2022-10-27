@@ -8,9 +8,14 @@ public class Problem3 {
     }
 
     private static int checkEachValue(int number) {
+
+        int sumCountClap = 0;
+
         for (int i = 1; i < number + 1; i++) {
-            isSatisfiedCondition(i);
+            sumCountClap += isSatisfiedCondition(i);
         }
+
+        return sumCountClap;
     }
 
     private static int isSatisfiedCondition(int uncheckNumber) {
