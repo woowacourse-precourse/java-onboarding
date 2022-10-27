@@ -11,6 +11,36 @@ class Problem1 {
         2. 각 자리별 숫자를 모두 곱하는 메소드
         3. 결과 비교를 위한 변수 하나씩
          */
+        int pobi_sum = 0;   // 결과 비교용 변수
+        int crong_sum = 0;  // 결과 비교용 변수
+
+        for (int i = 0; i < 2; i++) {
+            if (pobi_sum < addNumber(pobi[i])) {
+                pobi_sum = addNumber(pobi[i]);
+            }
+            if (pobi_sum < multNumber(pobi[i])) {
+                pobi_sum = multNumber(pobi[i]);
+            }
+        }
+
+        for (int i = 0; i < 2; i++) {
+            if (crong_sum < addNumber(crong[i])) {
+                crong_sum = addNumber(crong[i]);
+            }
+            if (crong_sum < multNumber(crong[i])) {
+                crong_sum = multNumber(crong[i]);
+            }
+        }
+
+        if (pobi_sum > crong_sum) {
+            answer = 1;
+        } else if (pobi_sum < crong_sum) {
+            answer = 2;
+        } else if (pobi_sum == crong_sum) {
+            answer = 0;
+        } else {
+            answer = -1;
+        }
 
         return answer;
     }
