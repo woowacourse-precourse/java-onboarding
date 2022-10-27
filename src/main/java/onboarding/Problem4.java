@@ -1,10 +1,6 @@
 package onboarding;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.*;
 
 public class Problem4 {
 
@@ -16,17 +12,26 @@ public class Problem4 {
         }
     };
     public static String solution(String word) {
-        Stream<String> splitList = Arrays.stream(word.split("")) ;
-        String switchWord = splitList.map(Problem4::switchValue).collect(Collectors.joining(""));
-        return switchWord.replaceAll("null", " ");
+        StringBuilder answer = new StringBuilder();
+        List<String> splitList = new ArrayList<>(Arrays.asList(word.split(""))) ;
+        for(String s : splitList){
+            if (isAlphabet(s)) {
+                answer.append(switchValue(s));
+            }else{
+                answer.append(s);
+            }
+        }
+        return answer.toString();
     }
     protected static String switchValue(String originVal){
         if(originVal.equals(originVal.toUpperCase())){
             return REVERSE_VALUE.get(originVal);
-        } else if (originVal.equals(originVal.toLowerCase())) {
-            return REVERSE_VALUE.get(originVal.toUpperCase()).toLowerCase();
         } else {
-            return "";
+            return REVERSE_VALUE.get(originVal.toUpperCase()).toLowerCase();
         }
+    }
+
+    protected static Boolean isAlphabet(String s){
+        return s.matches("[a-zA-Z]") ;
     }
 }
