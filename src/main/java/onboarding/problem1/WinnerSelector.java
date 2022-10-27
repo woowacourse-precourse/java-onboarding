@@ -6,7 +6,7 @@ public class WinnerSelector {
 
 	public ResultType getWinner(int pobiScore, int crongScore) {
 		if (pobiScore == crongScore)
-			return ERROR;
+			return DRAW;
 		return (pobiScore > crongScore) ? POBI_WIN : CRONG_WIN;
 	}
 }
