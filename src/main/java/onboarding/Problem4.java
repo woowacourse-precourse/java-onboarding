@@ -3,8 +3,8 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.Collections;
 
-
 public class Problem4 {
+    static final String ERROR = "ERROR";
     static ArrayList<Integer> InitAscii() {
         ArrayList<Integer> result = new ArrayList<>(
                 Collections.nCopies(256, -1)
@@ -29,8 +29,16 @@ public class Problem4 {
         return result;
     }
 
+    static boolean Exception(String word) {
+        return (0 < word.length() && word.length() < 1001) ? false : true;
+    }
     public static String solution(String word) {
-        String answer = ReverseStr(word);
+        String answer;
+
+        if (Exception(word))
+            return ERROR;
+
+        answer = ReverseStr(word);
 
         return answer;
     }
