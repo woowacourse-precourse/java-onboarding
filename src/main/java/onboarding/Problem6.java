@@ -8,3 +8,11 @@ public class Problem6 {
         return answer;
     }
 }
+
+
+class formController{
+    private static boolean isSingleLetter(String name) {
+        return (name.length() == 1);
+    }
+
+}
