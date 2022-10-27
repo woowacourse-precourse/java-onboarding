@@ -60,3 +60,17 @@ BUILD SUCCESSFUL in 0s
 
 - 미션은 [java-onboarding](https://github.com/woowacourse-precourse/java-onboarding) 저장소를 Fork & Clone해 시작한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+-------------
+# 기능 요구사항
+
+## Problem1  
+- [ ] 주어진 숫자의 자릿수 더하는 기능
+- [ ] 주어진 숫자의 자릿수 곱하는 기능
+- [ ] 더하거나 곱한 연산 중 무엇이 큰지 판단하는 기능
+- [ ] 더하거나 곱한 연산중 큰 숫자 return하는 기능
+- [ ] 리스트가 주어졌을 때 큰 숫자 return하는 기능
+- [ ] pobi가 이기면 1 출력
+- [ ] crong이 이기면 2 출력
+- [ ] 무승부이면 0 출력
+- [ ] 왼쪽 페이지 - 오른쪽 페이지 = -1이 되는지 체크 (아니면 -1 출력)
