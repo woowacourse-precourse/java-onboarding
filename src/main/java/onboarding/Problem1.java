@@ -30,15 +30,23 @@ class Problem1 {
             return answer;
         }
 
-        int pobiLeftMaxValue = Math.max(getSumMax(pobiLeftPageNumber),getMulMax(pobiLeftPageNumber));
-        int pobiRightMaxValue = Math.max(getSumMax(pobiRightPageNumber),getMulMax(pobiRightPageNumber));
-        int crongLeftMaxValue = Math.max(getSumMax(crongLeftPageNumber),getMulMax(crongLeftPageNumber));
-        int crongRightMaxValue = Math.max(getSumMax(crongRightPageNumber),getMulMax(crongRightPageNumber));
+        int pobiLeftMaxValue = Math.max(getSumMax(pobiLeftPageNumber), getMulMax(pobiLeftPageNumber));
+        int pobiRightMaxValue = Math.max(getSumMax(pobiRightPageNumber), getMulMax(pobiRightPageNumber));
+        int crongLeftMaxValue = Math.max(getSumMax(crongLeftPageNumber), getMulMax(crongLeftPageNumber));
+        int crongRightMaxValue = Math.max(getSumMax(crongRightPageNumber), getMulMax(crongRightPageNumber));
 
-        int pobiMaxValue = Math.max(pobiLeftMaxValue,pobiRightMaxValue);
-        int crongMaxValue = Math.max(crongLeftMaxValue,crongRightMaxValue);
+        int pobiMaxValue = Math.max(pobiLeftMaxValue, pobiRightMaxValue);
+        int crongMaxValue = Math.max(crongLeftMaxValue, crongRightMaxValue);
 
-
+        if (pobiMaxValue > crongMaxValue) {
+            answer = 1;
+        }
+        if (pobiMaxValue < crongMaxValue) {
+            answer = 2;
+        }
+        if (pobiMaxValue == crongMaxValue) {
+            answer = 0;
+        }
 
         return answer;
     }
