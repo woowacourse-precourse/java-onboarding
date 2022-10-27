@@ -11,6 +11,9 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        if (checkException(pobi) || checkException(crong)){
+            return EXCEPTION;
+        }
         return answer;
     }
 
@@ -47,5 +50,20 @@ class Problem1 {
         } else{
             return DRAW;
         }
+    }
+
+    public static boolean checkException(List<Integer> numbers){
+        if (numbers.get(1) - numbers.get(0) != 1){
+            return true;
+        }
+        if (numbers.get(0)%2 != 1 || numbers.get(1)%2 != 0){
+            return true;
+        }
+        for (int i:numbers){
+            if (i<=1 || i>=400){
+                return true;
+            }
+        }
+        return false;
     }
 }
