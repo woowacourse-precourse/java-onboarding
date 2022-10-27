@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     private static List<String> userFriends = new ArrayList<>();
@@ -10,6 +11,7 @@ public class Problem7 {
         getUserFriends(user, friends);
         getFriendPoint(user, friends);
         getVisitorPoints(visitors);
+        return getRecommendation();
     }
 
     private static void getUserFriends(String user, List<List<String>> friends) {
@@ -42,4 +44,13 @@ public class Problem7 {
         }
     }
 
+    private static List<String> getRecommendation() {
+        return friendPoints.entrySet().stream()
+                .filter(friend -> !userFriends.contains(friend.getKey()) && friendPoints.get(friend.getKey()) > 0)
+                .sorted(Map.Entry.comparingByKey())
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .map(Map.Entry::getKey)
+                .limit(5)
+                .collect(Collectors.toUnmodifiableList());
+    }
 }
