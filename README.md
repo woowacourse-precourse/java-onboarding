@@ -44,3 +44,13 @@
   * int *answer*
 * 메소드
   * 해당 수의 박수 횟수를 반환 **countingClaps**
+### 문제4
+1. 받은 문자열을 *answer*에 담는다.
+2. *answer*를 **changeSmallLetters**로 소문자를 조건에 맞게 변경한다.
+3. *answer*를 **changeCapitalLetters**로 대문자도 조건에 맞게 변경한다.
+4. *answer*를 반환한다.
+* 필드
+  * String *answer*
+* 메소드
+  * 문자열의 소문자를 조건에 맞게 변경 **changeSmallLetters**
+  * 문자열의 대문자를 조건에 맞게 변경 **changeCapitalLetters**
