@@ -6,6 +6,14 @@ public class Problem2 {
         return answer;
     }
 
+    public static String analyze_cryptogram(String cryptogram) {
+        String str = Problem2.str_search(cryptogram);
+        while(str != null){
+            cryptogram = str;
+            str = Problem2.str_search(cryptogram);
+        }
+        return cryptogram;
+    }
     public static String str_search(String str){
         int length = str.length();
 
