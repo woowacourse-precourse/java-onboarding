@@ -45,7 +45,7 @@
 
 - [ ] 페이지 번호가 유효한지 확인.
     - [x] 페이지 번호가 범위(1 ~ 400)안에 있는지 확인.
-    - [ ] 왼쪽 페이지 번호가 홀수이고, 오른쪽 페이지 번호가 짝수인지 확인.
+    - [x] 왼쪽 페이지 번호가 홀수이고, 오른쪽 페이지 번호가 짝수인지 확인.
     - [ ] 왼쪽 페이지 번호 + 1 이 오른쪽 페이지 번화 같은지 확인.
 - [ ] 페이지 번호로 점수 계산.
     - [ ] 왼쪽/오른쪽 페이지의 각 자리 숫자를 모두 더한다.
@@ -59,7 +59,7 @@
 
 - [ ] isInvalid(List pobi, List crong) 메서드를 통해 예외 케이스를 확인합니다.
     - [x] isNotInRange(List pages) 메서드를 통해 페이지 번호가 범위(1 ~ 400)안에 있는지 검사합니다.
-    - [ ] isPageNumNotOdd(int page), isPageNumNotEven(int page)  메서드를 통해 왼쪽, 오른쪽 페이지 번호가 홀수, 짝수인지 검사합니다.
+    - [x] isPageNumNotOdd(int page), isPageNumNotEven(int page)  메서드를 통해 왼쪽, 오른쪽 페이지 번호가 홀수, 짝수인지 검사합니다.
     - [ ] isInValidPage(leftPageNum, rightPageNum) 메서드를 통해 왼쪽 페이지 번호 + 1이 오른쪽 페이지 번호와 같은지 검사합니다.
 - [ ] calculateScore(List pages) 메서드를 통해 점수를 계산합니다.
     - [ ] pageScoreAdd(int page) 메서드를 통해 페이지의 각 자리 숫자를 모두 더한 점수를 계산합니다.

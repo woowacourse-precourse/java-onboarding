@@ -16,6 +16,15 @@ class Problem1 {
 		if (isNotInRange(pobi) || isNotInRange(crong)) {
 			return true;
 		}
+		int pobiLeftPageNum = pobi.get(0);
+		int pobiRightPageNum = pobi.get(1);
+		int crongLeftPageNum = crong.get(0);
+		int crongRightPageNum = crong.get(1);
+		if (isPageNumNotEven(pobiLeftPageNum) || isPageNumNotEven(crongLeftPageNum) ||
+			isPageNumNotOdd(pobiRightPageNum) || isPageNumNotOdd(crongRightPageNum)) {
+			return true;
+		}
+		
 		return false;
 	}
 
@@ -26,12 +35,11 @@ class Problem1 {
 	}
 
 	public static boolean isPageNumNotEven(int page) {
-
-		return false;
+		return page % 2 != 0;
 	}
 
 	public static boolean isPageNumNotOdd(int page) {
-		return false;
+		return page % 2 == 0;
 	}
 
 	public static boolean isInvalidPage(int leftPageNum, int rightPageNum) {
