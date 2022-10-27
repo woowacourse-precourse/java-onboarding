@@ -5,8 +5,13 @@ import java.util.List;
 public class Problem3 {
     private static final List<Integer> CLAP_NUMBER = List.of(3,6,9);
     public static int solution(int number) {
-        int answer = 0;
-        return answer;
+        int clapCount = 0;
+
+        for (int currentNumber = 1; currentNumber <= number; currentNumber++) {
+            clapCount += getClapCount(currentNumber);
+        }
+
+        return clapCount;
     }
 
     private static int getClapCount(int currentNumber) {
