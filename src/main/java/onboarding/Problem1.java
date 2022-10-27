@@ -69,8 +69,7 @@ class Problem1 {
         } else if (pobiMax==crongMax) {
             answer=0;
         }
-    }
-}
         return answer;
     }
 }
+
