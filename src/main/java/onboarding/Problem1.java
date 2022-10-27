@@ -32,6 +32,13 @@ class Problem1 {
             return right;
     }
 
+    public static boolean checkPage(List<Integer>arr) {
+        if((arr.get(1)-arr.get(0))>1)
+            return false;
+        else
+            return true;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
