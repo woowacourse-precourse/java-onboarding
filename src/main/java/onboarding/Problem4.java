@@ -29,10 +29,10 @@ public class Problem4 {
     }
 
     public static char reverseAlphabet (char c) {
-        if (isUpperCase(c)) {
+        if (isUpperCase(c)) { // 대문자 변환
             return (char)('A' + 'Z' - c);
         }
-        // 소문자일 경우
+        // 소문자 변환
         return (char)('a' + 'z' - c);
     }
 
