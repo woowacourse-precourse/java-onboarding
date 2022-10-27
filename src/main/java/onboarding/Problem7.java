@@ -20,11 +20,11 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
 
 
-       answer = findRecommendFriends(findVisitedPoint(findKnowFriendsPoint(savaFriendsList(friends, user)), visitors));
+       answer = findRecommendFriends(findVisitedPoint(findKnowFriendsPoint(savaFriendsList(friends, user)), visitors), findFriendsList(friends));
         return answer;
     }
 
-    public static List<String> findRecommendFriends(Map<String, Integer> friendsMap)
+    public static List<String> findRecommendFriends(Map<String, Integer> friendsMap, List<String> knowFriendsList)
     {
         int cnt = 0;
         List<String> recommendFriendsList = new ArrayList<>();
@@ -39,14 +39,19 @@ public class Problem7 {
         Arrays.sort(friendsPointArray, Collections.reverseOrder());
 
         for (int i = 0; i < friendsPointArray.length; i++)
+            System.out.println("hi "+ friendsPointArray[i]);
+
+        for (int i = 0; i < friendsPointArray.length; i++)
         {
             if (friendsPointArray[i] == 0 || cnt == recommendMax)
                 break;
             //중복 제거
             //이미 친구 제거
-
-            recommendFriendsList.add(getKey(friendsMap, friendsPointArray[i]));
-            cnt++;
+            if (!(knowFriendsList.get(i).equals(getKey(friendsMap, friendsPointArray[i]))))
+            {
+                recommendFriendsList.add(getKey(friendsMap, friendsPointArray[i]));
+                cnt++;
+            }
         }
 
         return recommendFriendsList;
