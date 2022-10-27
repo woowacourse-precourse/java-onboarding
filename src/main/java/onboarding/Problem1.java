@@ -25,8 +25,8 @@ class Problem1 {
             return EXCEPTION_CASE;
         }
 
-        int leftPageMaxValue = doCalculate(leftPage);
-        int rightPageMaxValue = doCalculate(rightPage);
+        int leftPageMaxValue = calculate(leftPage);
+        int rightPageMaxValue = calculate(rightPage);
 
         return Math.max(leftPageMaxValue, rightPageMaxValue);
     }
@@ -46,7 +46,7 @@ class Problem1 {
         return false;
     }
 
-    private static int doCalculate(Integer page) {
+    private static int calculate(Integer page) {
         List<Integer> eachNumbers = getEachNumbers(page);
 
         int sum = eachNumbers.stream()
