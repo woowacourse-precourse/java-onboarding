@@ -23,5 +23,12 @@ class Problem1 {
         return result;
     }
 
+    // List<Integer> 요소 곱한 값 출력
+    static int multiply(List<Integer> nums) {
+        int result = 1;
+        for(int i : nums) result *= i;
+        return result;
+    }
+
     }
 }
