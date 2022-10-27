@@ -55,7 +55,12 @@ public class Problem4 {
         String result = "";
 
         for (char w : words) {
-            result += characterOneConversion(w,upperCaseDivision(w));
+            if (w != " ".charAt(0)) {
+                result += characterOneConversion(w,upperCaseDivision(w));
+            }else {
+                result += " ";
+            }
+
         }
         return result;
     }

@@ -23,4 +23,10 @@ class Problem4Test {
         assertEquals("o".charAt(0),problem4.characterOneConversion("l".charAt(0),false));
     }
 
+    @Test
+    @DisplayName("[Problem][characterAllConversion] 문자 변환 테스트")
+    public void characterAllConversionTest() {
+        assertEquals("",problem4.characterAllConversion("I love you"));
+    }
+
 }
