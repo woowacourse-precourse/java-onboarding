@@ -9,6 +9,7 @@ public class Visitor {
     }
 
     public Visitor(String name) {
+        NameValidator.validateName(name);
         this.name = name;
     }
 
