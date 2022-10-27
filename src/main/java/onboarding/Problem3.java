@@ -2,6 +2,11 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
+        int numberOfClap = 0;
+        for (int i = 0; i <= number; i++) {
+            numberOfClap += count369(i);
+        }
+        return numberOfClap;
     }
 
     private static int check369(int digit) {
