@@ -6,11 +6,22 @@ public class Problem3 {
         return answer;
     }
 
-    private static boolean check369(int number) {
-        if (number == 3) return true;
-        if (number == 6) return true;
-        if (number == 9) return true;
+    private static int check369(int digit) {
+        if (digit == 3) return 1;
+        if (digit == 6) return 1;
+        if (digit == 9) return 1;
 
-        return false;
+        return 0;
+    }
+
+    private static int count369(int number) {
+        int count369 = 0;
+        int digit = 0;
+        while (number > 0) {
+            digit = number % 10;
+            count369 += check369(digit);
+            number /= 10;
+        }
+        return count369;
     }
 }
