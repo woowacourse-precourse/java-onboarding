@@ -37,13 +37,14 @@ public class Problem7 {
         friendsMap.put(friend1, friend1Value);
     }
 
-    static List<String> getFriendList(List<List<String>> friends) {
+    static List<String> getFriendList(List<List<String>> friends, String user) {
         Set<String> friendSet = new HashSet<>();
         List<String> friendList = new ArrayList<>();
         friends.stream()
             .forEach(list -> inputFriendSet(friendSet, list));
 
         friendList.addAll(friendSet);
+        friendList.remove(user);
         return friendList;
     }
 
@@ -53,6 +54,7 @@ public class Problem7 {
     }
 
     public static void main(String[] args) {
+        String user = "mrko";
         List<List<String>> friends = List.of(
             List.of("donut", "andole"),
             List.of("donut", "jun"),
@@ -63,7 +65,8 @@ public class Problem7 {
         );
 
         Map<String, List<String>> friendsMap = getFriendsMap(friends);
-        System.out.println(friendsMap);
+        List<String> friendList = getFriendList(friends,user);
+        friendList.stream().forEach(x -> System.out.println(x + " "));
     }
 
 }
