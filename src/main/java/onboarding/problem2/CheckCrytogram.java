@@ -15,7 +15,7 @@ public class CheckCrytogram {
 		}
 		for (char c : cryptogram.toCharArray()) {
 			if (!Pattern.matches("[a-z]", String.valueOf(c))) {
-				throw new IllegalArgumentException("cyptogram은 모두 소문자여야 합니다.(a~z)");
+				return false;
 			}
 		}
 

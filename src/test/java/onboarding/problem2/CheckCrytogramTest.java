@@ -33,17 +33,13 @@ class CheckCrytogramTest {
 	@Test
 	void check_is_all_lowercase() {
 		String text1 = "Abbb";
-		IllegalArgumentException illegalArgumentException1 = assertThrows(IllegalArgumentException.class,
-			() -> CheckCrytogram.of(text1));
+		assertFalse(CheckCrytogram.of(text1));
 
-		String message1 = illegalArgumentException1.getMessage();
-		assertEquals(message1, "cyptogram은 모두 소문자여야 합니다.(a~z)");
+		String text2 = "aaBb";
+		assertFalse(CheckCrytogram.of(text2));
 
-		String text2 = "abbb12";
-		assertThrows(IllegalArgumentException.class, () -> CheckCrytogram.of(text2));
-
-		String message2 = illegalArgumentException1.getMessage();
-		assertEquals(message2, "cyptogram은 모두 소문자여야 합니다.(a~z)");
+		String text3 = "cccdddddeesds";
+		assertTrue(CheckCrytogram.of(text3));
 	}
 
 }
