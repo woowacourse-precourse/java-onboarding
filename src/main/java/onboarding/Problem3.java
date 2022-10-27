@@ -3,7 +3,11 @@ package onboarding;
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
-//        System.out.println(get369removedString(String.valueOf(number)));
+        for (int i = 1; i <= number; i++) {
+        	String srcStr = String.valueOf(i);
+        	String removed369Str = get369removedString(srcStr);
+        	answer += (srcStr.length() - removed369Str.length());
+        }
         return answer;
     }
     
