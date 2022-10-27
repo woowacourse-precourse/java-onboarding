@@ -11,7 +11,9 @@ public class Problem7 {
         /*사용자와 함께 아는 친구의 수 점수 구하기*/
         Map<String, Integer> scores = saveScoreOfFriend(user, relations);
         /*사용자의 타임 라인에 방문한 횟수 점수 구하기*/
-
+        for (String visitor : visitors) {
+            scores.put(visitor, scores.get(visitor) + 1);
+        }
         /*점수가 가장 높은 순으로 정렬, 점수가 같은 경우는 이름순으로 정렬*/
 
         return answer;
