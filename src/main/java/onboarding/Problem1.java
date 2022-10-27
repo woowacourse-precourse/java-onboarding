@@ -55,7 +55,7 @@ class Problem1 {
     // output: 검사 여부(true: 합격, false: 불합격)
     private static boolean examine(List<Integer> list) {
         int left = list.get(0);
-        int  right = list.get(1);
+        int right = list.get(1);
 
         if (left + 1 != right)
             return false;
@@ -70,16 +70,11 @@ class Problem1 {
             return -1;
 
         int answer = Integer.MAX_VALUE;
+        // 포비, 크롱의 점구 구하기
         int pobiScore = getScore(pobi);
         int crongScore = getScore(crong);
 
         answer = (pobiScore > crongScore) ? 1 : 0;
         return answer;
     }
-
-//    public static void main(String[] args) {
-//        List<Integer> pobi = List.of(99, 102);
-//        List<Integer> crong = List.of(211, 212);
-//        solution(pobi, crong);
-//    }
 }
