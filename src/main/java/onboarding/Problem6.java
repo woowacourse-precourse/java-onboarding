@@ -8,9 +8,13 @@ public class Problem6 {
         final Map<String, List<String>> dictionary = initDictionary(new HashMap<>(), forms);
         final Set<String> emails = new HashSet<>();
 
-        dictionary.values().stream().filter(list -> list.size() > 1).forEach(emails::addAll);
+        dictionary.values().stream()
+                .filter(list -> list.size() > 1)
+                .forEach(emails::addAll);
 
-        return emails.stream().sorted().collect(Collectors.toList());
+        return emails.stream()
+                .sorted()
+                .collect(Collectors.toList());
     }
 
     private static Map<String, List<String>> initDictionary(
