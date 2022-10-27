@@ -11,6 +11,7 @@ import java.util.*;
  **/
 public class Problem7 {
     private static Map<String, ArrayList> map_friends = new HashMap<>();
+    private static Map<String, Integer> map_points = new TreeMap<>();
 
     // 각자의 친구 목록을 자료구조 hashmap 을 사용해 저장해주는 메소드
     private static void makeFriendsMap(List<List<String>> friends) {
@@ -23,6 +24,20 @@ public class Problem7 {
 
             map_friends.put(list.get(0), A_List);
             map_friends.put(list.get(1), B_List);
+        }
+    }
+
+    // 함께 아는 친구 점수 추가해주는 메서드
+    private static void friendsPlusPoint(String user, ArrayList arrayList) {
+        for (String str : map_friends.keySet()) {
+            if (!str.equals(user)) {
+                ArrayList friendList = map_friends.get(str); // jun {donut, shakevan}
+                for (int i = 0; i < arrayList.size(); i++) { // donut shakevan
+                    if (friendList.contains(arrayList.get(i))) {
+                        map_points.put(str, map_points.getOrDefault(str, 0) + 10);
+                    }
+                }
+            }
         }
     }
 
