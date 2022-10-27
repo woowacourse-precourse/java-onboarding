@@ -44,11 +44,12 @@ class Problem1 {
 
         if (maxPointOfPobi > maxPointOfCrong) {
             return Constant.WIN_POBI;
-        } else if (maxPointOfPobi < maxPointOfCrong) {
-            return Constant.WIN_CRONG;
-        } else {
-            return Constant.DRAW;
         }
+        if (maxPointOfPobi < maxPointOfCrong) {
+            return Constant.WIN_CRONG;
+        }
+        return Constant.DRAW;
+
     }
 
     private static int getMaxRightPoint(List<Integer> openPages) {
