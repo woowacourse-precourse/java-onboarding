@@ -28,7 +28,6 @@ class Problem1 {
         int pobiMax = Integer.max(problem1.calculateScore(pobi.get(0)),problem1.calculateScore(pobi.get(1)));
         int crongMax = Integer.max(problem1.calculateScore(crong.get(0)),problem1.calculateScore(crong.get(1)));
 
-
         if(pobiMax > crongMax){
             answer = 1;
         }else if(pobiMax < crongMax){
@@ -36,19 +35,15 @@ class Problem1 {
         }else if(pobiMax == crongMax){
             answer = 0;
         }
-        
+
         // 제한 사항
         // 시작 면, 마지막 면 페이지가 펼쳐진 경우
         if((pobi.get(0) == 1) || (pobi.get(1) == 400)
                 || (crong.get(0) == 1) || (crong.get(1) == 400)){
             // 시작 면, 마지막 면 페이지가 펼쳐진 경우
             answer = -1;
-        } else if((pobi.get(1)-pobi.get(0) != 1) || (crong.get(1) - crong.get(0) != 1)){
+        } else if((pobi.get(1)-pobi.get(0) != 1) || (crong.get(1)-crong.get(0) != 1)){
             // 연속된 페이지 번호가 아닐경우
-            answer = -1;
-        } else if((pobi.get(0) % 2 == 1) || (pobi.get(1) % 2 == 0)
-                || (crong.get(0) % 2 == 1) || (crong.get(1) % 2 == 0) ){
-            // [ 홀수 ,짝수 ] 로 페이지 번호가 입력되지 않을 경우
             answer = -1;
         }
 
