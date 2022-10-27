@@ -5,17 +5,16 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int pobiNumber,crongNumber;
-        int leftPage = toBigNumber(add(sperater(pobi.get(0))),multiply(sperater(pobi.get(0))));
-        int rightPage = toBigNumber(add(sperater(pobi.get(1))),multiply(sperater(pobi.get(1))));
-        pobiNumber = toBigNumber(leftPage,rightPage);
-        leftPage = toBigNumber(add(sperater(crong.get(0))),multiply(sperater(crong.get(0))));
-        rightPage = toBigNumber(add(sperater(crong.get(1))),multiply(sperater(crong.get(1))));
-        crongNumber = toBigNumber(leftPage,rightPage);
+        int pobiNumber, crongNumber;
+        int leftPage = toBigNumber(add(sperater(pobi.get(0))), multiply(sperater(pobi.get(0))));
+        int rightPage = toBigNumber(add(sperater(pobi.get(1))), multiply(sperater(pobi.get(1))));
+        pobiNumber = toBigNumber(leftPage, rightPage);
+        leftPage = toBigNumber(add(sperater(crong.get(0))), multiply(sperater(crong.get(0))));
+        rightPage = toBigNumber(add(sperater(crong.get(1))), multiply(sperater(crong.get(1))));
+        crongNumber = toBigNumber(leftPage, rightPage);
 
 
-
-        int answer = Integer.MAX_VALUE;
+        int answer = Compare(pobiNumber, crongNumber);
         return answer;
     }
 
@@ -49,5 +48,15 @@ class Problem1 {
             return number1;
         else
             return number2;
+    }
+
+    public static int Compare(int pobiNumber, int crongNumber) {
+        if (pobiNumber - crongNumber > 0)
+            return 1;
+        else if (pobiNumber - crongNumber < 0)
+            return 2;
+        else {
+            return 0;
+        }
     }
 }
