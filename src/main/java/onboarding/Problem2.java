@@ -21,6 +21,15 @@ public class Problem2 {
         return beforeDecodeCryptogram.equals(afterDecodeCryptogram);
     }
 
+    public static void validateCryptogram(String cryptogram) {
+        if(!validateCryptogramLength(cryptogram)) {
+            throw new IllegalArgumentException("[ERROR] : 암호는 길이 1 이상, 1000이하인 문자열만 가능합니다.");
+        }
+        if(!validateCryptogramType(cryptogram)) {
+            throw new IllegalArgumentException("[ERROR] : 암호는 알파벳 소문자로만 이루어져야합니다.");
+        }
+    }
+
     public static boolean validateCryptogramLength(String cryptogram) {
         boolean isCorrectCryptogramLength = true;
         if(cryptogram.length() < 1 || cryptogram.length() > 1000) {
