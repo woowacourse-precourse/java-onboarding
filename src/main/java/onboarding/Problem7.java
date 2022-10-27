@@ -1,17 +1,13 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
         List<String> usersFriend = getFriends(user, friends);
         HashMap<String, Integer> FriendCountHash = getFriendCountHash(usersFriend, friends, user);
         HashMap<String, Integer> RecommendPointHash = calcRecommendPoint(visitors, FriendCountHash, usersFriend);
-        System.out.println(RecommendPointHash);
+        List<String> answer = sortByValue(RecommendPointHash);
         return answer;
     }
     static List<String> getFriends(String user, List<List<String>> friends) {
@@ -62,5 +58,28 @@ public class Problem7 {
             }
         }
         return RecommendPointHash;
+    }
+    static List<String> sortByValue(HashMap<String, Integer> RecommendPointHash) {
+        HashMap<Integer, List<String>> KeyValueInvert = new HashMap<>();
+        ArrayList<String> SortedList = new ArrayList<>();
+        for (String name: RecommendPointHash.keySet()) {
+            int point = RecommendPointHash.get(name);
+            if (KeyValueInvert.containsKey(point)) {
+                KeyValueInvert.get(point).add(name);
+            } else {
+                KeyValueInvert.put(point, new ArrayList<>(List.of(name)));
+            }
+        }
+        ArrayList<Integer> numList = new ArrayList<>(KeyValueInvert.keySet());
+        numList.sort(Comparator.reverseOrder());
+        for (int point: numList) {
+            List<String> SameScorers = KeyValueInvert.get(point);
+            SameScorers.sort(Comparator.naturalOrder());
+            SortedList.addAll(SameScorers);
+        }
+        if (SortedList.size()>5) {
+            return SortedList.subList(0,5);
+        }
+        return SortedList;
     }
 }
