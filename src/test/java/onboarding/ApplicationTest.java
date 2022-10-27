@@ -8,6 +8,8 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import onboarding.problem4.WordConverter;
+
 class ApplicationTest {
     @Nested
     class Problem1Test {
@@ -311,6 +313,17 @@ class ApplicationTest {
 
     @Nested
     class Problem4Test {
+        // 소문자 변환 기능 테스트
+        @Test
+        void convertLowerCharacterTest() {
+            String word = "abcdefghijklmnopqrstuvwxyz";
+
+            for (int i = 0; i < word.length(); i++) {
+                char result = word.charAt(word.length() - i - 1);
+                assertThat(WordConverter.convertLowerCharacter(word.charAt(i))).isEqualTo(result);
+            }
+        }
+
         @Test
         void case1() {
             String word = "I love you";

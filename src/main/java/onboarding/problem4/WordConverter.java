@@ -19,4 +19,12 @@ public class WordConverter {
 			return CharacterCategory.NOT_ALPHABET;
 		}
 	}
+
+	public static char convertLowerCharacter(char lowercaseCharacter) {
+		int convertedCharacter = lowercaseCharacter;
+
+		convertedCharacter = convertedCharacter + ((109 - convertedCharacter)*2 + 1);
+
+		return (char)convertedCharacter;
+	}
 }
