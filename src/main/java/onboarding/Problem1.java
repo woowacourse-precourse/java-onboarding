@@ -25,8 +25,8 @@ class Problem1 {
             }
 
             for (int i = 0; i < 2; i++) {
-                System.out.println("pobiMax[" + i + "] : " + pobiMax[i]);
-                System.out.println("crongMax[" + i + "] : " + crongMax[i]);
+                //System.out.println("pobiMax[" + i + "] : " + pobiMax[i]);
+                //System.out.println("crongMax[" + i + "] : " + crongMax[i]);
 
                 if (pobiMax[i] > crongMax[i])
                     answer = 1;
