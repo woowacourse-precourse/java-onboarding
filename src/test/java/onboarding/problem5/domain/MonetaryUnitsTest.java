@@ -59,4 +59,52 @@ public class MonetaryUnitsTest {
     void oneDivide() {
         assertThat(MonetaryUnits.ONE.divide(8)).isEqualTo(8);
     }
+    
+    @Test
+    @DisplayName("오만원 권으로 나눈 나머지 구하기")
+    void fiftyThousandRemainder() {
+        assertThat(MonetaryUnits.FIFTY_THOUSAND.remainder(100001)).isEqualTo(1);
+    }
+    
+    @Test
+    @DisplayName("만원 권으로 나눈 나머지 구하기")
+    void tenThousandRemainder() {
+        assertThat(MonetaryUnits.TEN_THOUSAND.remainder(40001)).isEqualTo(1);
+    }
+    
+    @Test
+    @DisplayName("오천원 권으로 나눈 나머지 구하기")
+    void fiveThousandRemainder() {
+        assertThat(MonetaryUnits.FIVE_THOUSAND.remainder(9001)).isEqualTo(4001);
+    }
+    
+    @Test
+    @DisplayName("천원 권으로 나눈 나머지 구하기")
+    void oneThousandRemainder() {
+        assertThat(MonetaryUnits.ONE_THOUSAND.remainder(4001)).isEqualTo(1);
+    }
+    
+    @Test
+    @DisplayName("오백원으로 나눈 나머지 구하기")
+    void fiveHundredRemainder() {
+        assertThat(MonetaryUnits.FIVE_HUNDRED.remainder(901)).isEqualTo(401);
+    }
+    
+    @Test
+    @DisplayName("백원으로 나눈 나머지 구하기")
+    void oneHundredRemainder() {
+        assertThat(MonetaryUnits.ONE_HUNDRED.remainder(401)).isEqualTo(1);
+    }
+    
+    @Test
+    @DisplayName("오십원으로 나눈 나머지 구하기")
+    void fiftyRemainder() {
+        assertThat(MonetaryUnits.FIFTY.remainder(91)).isEqualTo(41);
+    }
+    
+    @Test
+    @DisplayName("십원으로 나눈 나머지 구하기")
+    void tenRemainder() {
+        assertThat(MonetaryUnits.TEN.remainder(41)).isEqualTo(1);
+    }
 }

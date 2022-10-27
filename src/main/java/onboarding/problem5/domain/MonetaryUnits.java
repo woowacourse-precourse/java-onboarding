@@ -20,4 +20,8 @@ public enum MonetaryUnits {
     public int divide(final int money) {
         return money / monetaryUnit;
     }
+    
+    public int remainder(final int money) {
+        return money % monetaryUnit;
+    }
 }
