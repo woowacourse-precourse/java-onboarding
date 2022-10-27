@@ -54,10 +54,18 @@ class Problem1 {
         return true;
     }
 
+    public static boolean validatePageNumberSequence(List<Integer> pageList) {
+        for(int i=0; i<pageList.size() - 1; i++) {
+            if(pageList.get(i+1) != pageList.get(i) + 1) return false;
+        }
+        return true;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
         if (!validatePageNumberInRange(pobi) || !validatePageNumberInRange(crong)) return -1;
+        if (!validatePageNumberSequence(pobi) || !validatePageNumberSequence(crong)) return -1;
 
         answer = winnerOfGame(pobi, crong);
         return answer;
