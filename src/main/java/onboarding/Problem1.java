@@ -40,13 +40,15 @@ class Problem1 {
     }
 
     static List<Integer> mapToSum(List<Integer> intList) {
-        intList.replaceAll(i -> sumDigits(i));
-        return intList;
+        List<Integer> sumList =  new ArrayList<>(intList);
+        sumList.replaceAll(i -> sumDigits(i));
+        return sumList;
     }
 
     static List<Integer> mapToMul(List<Integer> intList) {
-        intList.replaceAll(i -> multiplyDigits(i));
-        return intList;
+        List<Integer> mulList =  new ArrayList<>(intList);
+        mulList.replaceAll(i -> multiplyDigits(i));
+        return mulList;
     }
 
     static List<Integer> merge(List<Integer> list1, List<Integer> list2) {
