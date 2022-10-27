@@ -6,16 +6,13 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
     	// 0, 1, 2, -1은 모두 의미를 가지는 값이므로 로직 상 반환될 수 없는 값으로 초기화한다.
         int answer = Integer.MAX_VALUE;
-
         // 페이지 값이 유효하지 않을 경우 -1을 반환하고 수행을 종료한다.
         if (!isValid(pobi.get(0), pobi.get(1)) || !isValid(crong.get(0), crong.get(1))) {
         	return -1;
         }
-        
         // getScore 메소드를 이용해 pobi, crong의 점수를 얻는다.
         int pobiScore = getScore(pobi.get(0), pobi.get(1));
         int crongScore = getScore(crong.get(0), crong.get(1));
-
         // pobi, crong의 점수를 비교해 반환할 값을 answer에 담는다.
         if (pobiScore == crongScore) {
         	answer = 0;
@@ -24,7 +21,6 @@ class Problem1 {
 	    } else if (pobiScore < crongScore) {
 	    	answer = 2;
 	    } 
-        
         return answer;
     }
     
@@ -57,12 +53,10 @@ class Problem1 {
      */
     private static int getSumOfDigits(int number) {
     	int result = 0;
-    	
     	while (number != 0) {
     		result += number%10;
     		number /= 10;
     	}
-    	
     	return result;
     }
     
@@ -73,12 +67,10 @@ class Problem1 {
      */
     private static int getMultipliedOfDigits(int number) {
     	int result = 1;
-    	
     	while (number != 0) {
     		result *= number%10;
     		number /= 10;
     	}
-    	
     	return result;
     }
     
@@ -90,7 +82,6 @@ class Problem1 {
    private static int getScore(int leftPage, int rightPage) {
 	   int leftPageValue = Math.max(getSumOfDigits(leftPage), getMultipliedOfDigits(leftPage));
 	   int rightPageValue = Math.max(getSumOfDigits(rightPage), getMultipliedOfDigits(rightPage));
-	   
 	   return Math.max(leftPageValue, rightPageValue);
    }
 }
