@@ -15,4 +15,12 @@ public class Problem3 {
 
         return countOfFirstProcess;
     }
+
+    public int secondProcess(int indexOfTen, int digitNumber) {
+        int countOfSecondProcess = 0;
+
+        countOfSecondProcess += ((digitNumber-1)/3)*Math.pow(10,indexOfTen);
+
+        return countOfSecondProcess;
+    }
 }
