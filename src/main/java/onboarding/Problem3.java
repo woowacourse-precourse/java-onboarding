@@ -1,17 +1,18 @@
 package onboarding;
 
 public class Problem3 {
-    public static boolean isOneTwoThree(int num) {
+    public static int countOneTwoThree(int num) {
+        int cnt = 0;
         String str = Integer.toString(num);
         for (int i = 0; i < str.length(); i++) {
             if (str.charAt(i) == '3')
-                return true;
+                cnt++;
             if (str.charAt(i) == '6')
-                return true;
+                cnt++;
             if (str.charAt(i) == '9')
-                return true;
+                cnt++;
         }
-        return false;
+        return cnt;
     }
 
     public static int solution(int number) {
