@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.List;
+import java.util.function.BiFunction;
 
 class Problem1 {
     private static final int DRAW = 0;
@@ -38,23 +39,14 @@ class Problem1 {
     }
 
     private static int getMaxBetweenSumAndMul(String[] page) {
-        return Math.max(getSum(page), getMul(page));
+        return Math.max(calculation(page, (first, second) -> first + second), calculation(page, (first1, second1) -> first1 * second1));
     }
 
-    private static int getSum(String[] page) {
-        int sum = 0;
-        for (String s : page) {
-            sum += Integer.parseInt(s);
+    private static int calculation(String[] page, BiFunction<Integer, Integer, Integer> function) {
+        int result = Integer.parseInt(page[0]);
+        for (int i = 1; i < page.length; i++) {
+            result = function.apply(result, Integer.valueOf(page[i]));
         }
-        return sum;
+        return result;
     }
-
-    private static int getMul(String[] page) {
-        int mul = 1;
-        for (String s : page) {
-            mul *= Integer.parseInt(s);
-        }
-        return mul;
-    }
-
 }
