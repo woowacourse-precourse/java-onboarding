@@ -7,6 +7,12 @@ public class Decrypter {
         return result;
     }
 
+    private static boolean isDecryptable(String cryptogram){
+        if(findIndexOfRepeatedChar(cryptogram) == -1){
+            return false;
+        }
+        return true;
+    }
 
     private static String removeRepeatedChar(String cryptogram){
         int startingIndex = findIndexOfRepeatedChar(cryptogram);
