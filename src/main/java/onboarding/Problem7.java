@@ -8,12 +8,15 @@ import java.util.Map;
 import java.util.Set;
 
 public class Problem7 {
-    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+
+    public static List<String> solution(String user, List<List<String>> friends,
+        List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
     }
 
     public static class FriendsRecommender {
+
         private static Map<String, Account> accountInfoMap = new HashMap<>();
 
         private static void initFriendsRelation(List<List<String>> friends) {
@@ -31,6 +34,7 @@ public class Problem7 {
 }
 
 class Account {
+
     private final String id;
     private final Set<Account> friendsRelation;
     private int score;
@@ -47,5 +51,9 @@ class Account {
 
     public boolean isAccountId(String id) {
         return this.id.equals(id);
+    }
+
+    public boolean isFriend(String id) {
+        return friendsRelation.stream().anyMatch(account -> account.isAccountId(id));
     }
 }
