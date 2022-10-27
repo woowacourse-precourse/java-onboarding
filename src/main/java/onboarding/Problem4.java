@@ -2,6 +2,8 @@ package onboarding;
 
 import java.util.HashMap;
 
+import onboarding.validatechecker.Problem4ValidateChecker;
+
 public class Problem4 {
 	private static HashMap<Character,Character> frogDic = new HashMap<>();
 	private static final char LOWER_FIRST_CHAR='a';
@@ -13,6 +15,7 @@ public class Problem4 {
 	private static final char SPACE=' ';
 
 	public static String solution(String word) {
+		Problem4ValidateChecker.isWordValidate(word);
 		initFrogDic();
 		return translateWord(word);
 	}
