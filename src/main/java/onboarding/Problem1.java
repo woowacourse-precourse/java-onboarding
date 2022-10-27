@@ -22,7 +22,7 @@ class Problem1 {
     }
 
     static int max_number(int num) {
-        int sum =0;
+        int sum = 0;
         int multiple =1;
 
         while (num>0){
