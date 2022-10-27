@@ -40,4 +40,9 @@ class Problem1 {
         intList.replaceAll(i -> sumDigits(i));
         return intList;
     }
+
+    static List<int> mapToMul(List<int> intList) {
+        intList.replaceAll(i -> multiplyDigits(i));
+        return intList;
+    }
 }
