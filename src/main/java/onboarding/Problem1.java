@@ -10,6 +10,43 @@ class Problem1 {
         return answer;
     }
 
+    // 페이지의 각 자리 수를 더하거나 곱해 가장 큰 수를 반환하는 메소드
+    private static int maxNumber(int number) {
+
+        int sum = add(number);
+        int multiplication = multiply(number);
+
+        return Math.max(sum, multiplication);
+
+    }
+
+
+    // 페이지의 각 자리 숫자를 모두 곱하는 메소드
+    private static int multiply(int number) {
+        int multiplication = 1;
+        String num = String.valueOf(number);
+
+        for (int i = 0; i < num.length(); i++) {
+            multiplication *= num.charAt(i);
+        }
+
+        return multiplication;
+    }
+
+
+    // 페이지의 각 자리 숫자를 모두 더하는 메소드
+    private static int add(int number) {
+        int sum =0;
+        String num = String.valueOf(number);
+
+        for (int i = 0; i < num.length(); i++) {
+            sum += num.charAt(i);
+        }
+
+        return sum;
+    }
+
+
     // 랜덤한 왼쪽, 오른쪽 페이지 숫자를 반환하는 메소드
     private static ArrayList<Integer> randomNumbers () {
         ArrayList<Integer> randomNumbers = new ArrayList<>();
@@ -40,6 +77,7 @@ class Problem1 {
         }
         return randomNumber;
     }
+
 
     // 매개변수가 책 페이지 범위 안에 있는지 체크하는 메서드
     private static boolean isInBookPage(int number) {
