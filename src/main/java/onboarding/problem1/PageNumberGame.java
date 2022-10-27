@@ -13,5 +13,12 @@ public class PageNumberGame {
 			.mapToInt(Integer::parseInt)
 			.sum();
 	}
-	
+
+	private static Integer multipleEachNumber(Integer number) {
+		return Arrays.stream(number.toString().split(""))
+			.mapToInt(Integer::parseInt)
+			.reduce((total, num) -> total * num)
+			.getAsInt();
+	}
+
 }
