@@ -14,7 +14,7 @@ class Problem1 {
      * */
 
     //1. 기능1
-    boolean isValidPage(List<Integer> pairPages) {
+    static boolean isValidPage(List<Integer> pairPages) {
 
         // #유의 사항 : 메소드,변수명을 정의할 때는 카멜 표기법을 따르며, 메소드명은 동사로 시작하도록 한다.
 
@@ -42,7 +42,7 @@ class Problem1 {
     }
 
     //2. 기능2
-    List<Integer> getSeparatedDigits(int pageNumber) {
+    static List<Integer> getSeparatedDigits(int pageNumber) {
 
         List<Integer> separatedDigitList = new ArrayList<>();
         int digit;
@@ -63,7 +63,7 @@ class Problem1 {
     //3. 기능3
 
     //3-1. 한 페이지에 대해 총합 및 총 곱셈 계산 후, 더 큰 계산값 반환
-    int getBiggerCalculation(List<Integer> separatedDigitList) {
+    static int getBiggerCalculation(List<Integer> separatedDigitList) {
 
         int summation = 0;
         int multiplication = 1;
@@ -78,7 +78,7 @@ class Problem1 {
 
 
     //3-2. 기능3 페이지 쌍끼리 대소관계 비교 (실행 순서에 따라 함수를 배치할 것인지, 중요도에 따라 배치할 것인지 고민해볼 것)
-    int getBiggerPageScore(List<Integer> pairPages) {
+    static int getBiggerPageScore(List<Integer> pairPages) {
 
         int leftPage = pairPages.get(0);
         int rightPage = pairPages.get(1);
@@ -94,7 +94,9 @@ class Problem1 {
 
     //4. 기능4 구현
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if
+        if(!(isValidPage(pobi) || isValidPage(crong)){
+
+        }
         return answer;
     }
 }
