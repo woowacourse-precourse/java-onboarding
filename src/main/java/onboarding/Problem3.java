@@ -26,6 +26,9 @@ public class Problem3 {
     public static boolean isThreeSixNine(char c) {
         int number = Character.getNumericValue(c);
 
+        if (c == 0) {
+            return false;
+        }
         if (c % 3 == 0) {
             return true;
         }
