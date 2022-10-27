@@ -33,4 +33,29 @@ public class Problem7 {
         }
     }
 
+    private static void updateScoreMapByUserFriendList(FriendGraph friendGraph,
+                                                       Map<String, Integer> scoreMap,
+                                                       List<String> userFriendList) {
+
+        Iterator<String> friendMapList = friendGraph.getIteratorFriendGraph();
+        for (String userFriend : userFriendList) {
+            while (friendMapList.hasNext()) {
+                String next = friendMapList.next();
+                if (friendGraph.getFriendList(next).contains(userFriend)) {
+                    scoreMap.put(next, scoreMap.get(next) + 10);
+                }
+            }
+        }
+    }
+
+    private static void updateScoreMapByVisitorList(List<String> visitors, Map<String, Integer> scoreMap) {
+        for (String visitor : visitors) {
+            if (!scoreMap.containsKey(visitor)) {
+                scoreMap.put(visitor, 0);
+            }
+            scoreMap.put(visitor, scoreMap.get(visitor) + 1);
+        }
+    }
+
+
 }
