@@ -15,6 +15,10 @@ class Problem1 {
     private static final int LAST_PAGE = 400;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        if (!isValidPageNumber(pobi) || !isValidPageNumber(crong)) {
+            return EXCEPTION;
+        }
+
         List<List<Integer>> pobiDigits = getEachDigitOfTwoPages(pobi);
         Integer pobiScore = getScore(pobiDigits);
 
@@ -88,6 +92,20 @@ class Problem1 {
         }
 
         return EXCEPTION;
+    }
+
+    public static boolean isValidPageNumber(List<Integer> pages) {
+        if (!isValidPageRange(pages)) {
+            return false;
+        }
+        if (!isValidPageOddEven(pages)) {
+            return false;
+        }
+        if (!isValidPageSequence(pages)) {
+            return false;
+        }
+
+        return true;
     }
 
     public static boolean isValidPageRange(List<Integer> pages) {
