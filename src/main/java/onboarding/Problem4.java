@@ -16,6 +16,19 @@ package onboarding;
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
+
+        for (int i = 0; i < word.length(); i++) {
+            char currentChar = word.charAt(i);
+
+            if (isAlpha(currentChar)) {
+                //변경
+            }
+            answer += currentChar;
+        }
         return answer;
+    }
+
+    private static boolean isAlpha(char currentChar) {
+        return ('a' <= currentChar && currentChar <= 'z') || ('A' <= currentChar && currentChar <= 'Z');
     }
 }
