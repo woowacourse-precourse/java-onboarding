@@ -18,7 +18,7 @@ class Problem1 {
 		return getPageGameResult(pobiMaxPageNumber, crongMaxPageNumber);
 	}
 
-	private static int getPageGameResult(Integer pageNumber1, Integer pageNumber2) {
+	public static int getPageGameResult(Integer pageNumber1, Integer pageNumber2) {
 
 		if (pageNumber1 > pageNumber2) {
 			return 1;
@@ -30,7 +30,7 @@ class Problem1 {
 		return -1;
 	}
 
-	private static int getMaxPageNumber(List<Integer> pages) {
+	public static int getMaxPageNumber(List<Integer> pages) {
 		int maxNumber = 0;
 		for (int page : pages) {
 			maxNumber = getMaxNumber(page);
@@ -68,7 +68,7 @@ class Problem1 {
 			return false;
 		}
 
-		public static boolean isRightPage(List<Integer> pages) {
+		private static boolean isRightPage(List<Integer> pages) {
 			if (isRightPagesLength(pages) && isRightPageRange(pages) && isRightPagesOrder(pages) && !isFirstPage(pages)
 				&& !isLastPage(pages)) {
 				return true;
