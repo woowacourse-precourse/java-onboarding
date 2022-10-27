@@ -33,6 +33,9 @@ public class Problem4 {
 
     public static String solution(String word) {
         String answer = "";
+		Map<Character, Character> frogDictionary = createFrogDictionary();
+
+		answer = createReversedWord(word, frogDictionary);
 		return answer;
     }
 }
