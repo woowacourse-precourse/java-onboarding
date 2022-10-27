@@ -51,7 +51,13 @@ public class Problem4 {
      * @return 변환된 문자
      */
     public static String characterAllConversion(String word){
-        return "";
+        char[] words = word.toCharArray();
+        String result = "";
+
+        for (char w : words) {
+            result += characterOneConversion(w,upperCaseDivision(w));
+        }
+        return result;
     }
 
 }
