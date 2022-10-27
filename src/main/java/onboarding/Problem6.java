@@ -3,7 +3,10 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.PriorityQueue;
 import java.util.Set;
+import java.util.TreeMap;
+import java.util.stream.Stream;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -11,23 +14,31 @@ public class Problem6 {
         return answer;
     }
 
-    static void getOverlapNames(List<List<String>> forms) {
+    static PriorityQueue<String> getOverlapNames(List<List<String>> forms) {
         int size = forms.size();
-        List<String> nickNameList = new ArrayList<>();
+        PriorityQueue<String> emailQueue = new PriorityQueue<>();
 
         for (int i = 0; i < size; i++) {
-            inputOverlapName(forms, nickNameList, i);
-        }
-    }
-
-    static void inputOverlapName(List<List<String>> forms, List<String> nickNameList, int idx) {
-        int size = forms.size();
-
-        for (int i = 0; i < size; i++) {
-            if (i != idx) {
-
+            for (int j = 0; j < size; j++) {
+                if (i != j && !validateOverlapName(emailQueue, forms.get(i), forms.get(j))) {
+                    break;
+                }
             }
         }
+
+        return emailQueue;
+    }
+
+    static boolean validateOverlapName(PriorityQueue<String> emailQueue, List<String> form1, List<String> form2) {
+        String name1 = form1.get(1);
+        String name2 = form2.get(1);
+
+        if (!isOverlapName(name1, name2)) {
+            emailQueue.add(form1.get(0));
+            return false;
+        }
+
+        return true;
     }
 
     static boolean isOverlapName(String name1, String name2) {
@@ -42,8 +53,17 @@ public class Problem6 {
     }
 
     public static void main(String[] args) {
-        String name1 = "아이엠제이엠";
-        String name2 = "유알제이억";
-        System.out.println(isOverlapName(name1, name2));
+        List<List<String>> forms = List.of(
+            List.of("jm@email.com", "제이엠"),
+            List.of("jason@email.com", "제이슨"),
+            List.of("woniee@email.com", "워니"),
+            List.of("mj@email.com", "엠제이"),
+            List.of("nowm@email.com", "이제엠")
+        );
+        PriorityQueue<String> result = getOverlapNames(forms);
+        Stream.generate(result::poll)
+            .limit(result.size())
+            .forEach(value -> System.out.println(value + " "));
+
     }
 }
