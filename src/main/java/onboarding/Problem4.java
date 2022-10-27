@@ -4,20 +4,19 @@ public class Problem4 {
     public static String solution(String word) {
         StringBuilder answer = new StringBuilder();
 
-        for (int i = 0; i < word.length(); i++) {
-            char c = word.charAt(i);
+        for (char c : word.toCharArray()) {
             answer.append(changeCase(c));
         }
         return answer.toString();
     }
 
-    private static char changeCase(char x) {
-        int result = x;
-        if ('A' <= x && x <= 'Z') {
-            result = ('A' + 'Z' - x);
+    private static char changeCase(char c) {
+        int result = c;
+        if ('A' <= c && c <= 'Z') {
+            result = ('A' + 'Z' - c);
         }
-        if ('a' <= x && x <= 'z') {
-            result = ('a' + 'z' - x);
+        if ('a' <= c && c <= 'z') {
+            result = ('a' + 'z' - c);
         }
         return (char) result;
     }
