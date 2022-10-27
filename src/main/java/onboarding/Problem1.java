@@ -4,6 +4,12 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        if(pobi.get(1) - pobi.get(0) != 1 || crong.get(1) - crong.get(0) != 1
+        || pobi.get(0) < 1 || pobi.get(0) > 400 || pobi.get(1) < 1 || pobi.get(1) > 400
+        || crong.get(0) < 1 || crong.get(0) > 400 || crong.get(1) < 1 || crong.get(1) > 400
+        || pobi.get(0) % 2 != 1 || crong.get(0) % 2 != 1 || pobi.get(1) % 2 != 0 || crong.get(1) % 2 != 0) {
+            return -1;
+        }
         int answer = Integer.MAX_VALUE;
 
         int pobi_left_max = getPageMax(pobi.get(0)); // 왼쪽페이지 곱 or 합
@@ -18,10 +24,8 @@ class Problem1 {
             answer = 1;
         } else if (pobi_max < crong_max) {
             answer = 2;
-        } else if (pobi_max == crong_max){
-            answer = 0;
         } else {
-            answer = -1;
+            answer = 0;
         }
 
         return answer;
