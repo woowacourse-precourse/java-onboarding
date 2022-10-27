@@ -244,6 +244,11 @@ class ApplicationTest {
             int result = 14;
             assertThat(Problem3.solution(number)).isEqualTo(result);
         }
+
+        @Test
+        void checkIs3MulTest() {
+            assertThat(Problem3.checkIs3Mul(126)).isEqualTo(true);
+        }
     }
 
 //    @Nested
