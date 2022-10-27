@@ -1,11 +1,13 @@
 package onboarding;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Problem7 {
 
@@ -43,8 +45,28 @@ public class Problem7 {
         }
 
         for (String visitor : visitors) {
-            userRepository.get(visitor).addScore(VISITED_SCORE);
+            User visitedUser = userRepository.getOrDefault(visitor, new User(visitor));
+            visitedUser.addScore(VISITED_SCORE);
+
+            userRepository.put(visitedUser.getUserId(), visitedUser);
         }
+
+        answer = userRepository.values().stream()
+            .filter(u -> !u.isFriendOf(mainUser))
+            .filter(u -> !u.getUserId().equals(user))
+            .filter(u -> u.getScore() > 0)
+            .sorted(new Comparator<User>() {
+                @Override
+                public int compare(User user1, User user2) {
+                    if (user1.getScore() == user2.getScore()) {
+                        return user1.getUserId().compareTo(user2.getUserId());
+                    }
+
+                    return user2.getScore() - user1.getScore();
+                }
+            })
+            .map(User::getUserId)
+            .collect(Collectors.toList());
 
         return answer;
     }
