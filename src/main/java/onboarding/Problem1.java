@@ -12,7 +12,7 @@ class Problem1 {
     public static Boolean isWrongLength(List<Integer> bookPages){
         return bookPages.size() != CORRECT_LENGTH;
     }
-    public static boolean isCorrectPosition(List<Integer> bookPages){
+    public static boolean isWrongPosition(List<Integer> bookPages){
         return (bookPages.get(LEFT_PAGE) % 2!=1)||(bookPages.get(RIGHT_PAGE)%2!=0);
     }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
