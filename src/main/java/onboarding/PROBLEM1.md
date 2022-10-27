@@ -6,14 +6,14 @@
 왼쪽 페이지 번호 : `leftPageNumber`<br>
 오른쪽 페이지 번호 : `rightPageNumber`
 
-페이지 번호 개수 : `2` `(Not Null)`
 
 ---
 1. **유효성 체크** : 주어진 입력 값이 아래의 조건을 만족하는지 확인
-
-    - 해당 범위에 포함되는 값 : `1 ~ 400`
-    - `leftPageNumber` : _홀수_, `rightPageNumber` : _짝수_
-    - `leftPageNumber +  1 ` == ` rightPageNumber`
+   - `Not Null`
+   - 페이지 번호 개수 : `2`
+   - 해당 범위에 포함되는 값 : `1 ~ 400`
+   - `leftPageNumber` : _홀수_, `rightPageNumber` : _짝수_
+   - `leftPageNumber +  1 ` == ` rightPageNumber`
 
 
 2. `pobi`의 점수 계산
