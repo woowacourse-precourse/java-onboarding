@@ -47,7 +47,9 @@ public class Problem7 {
             }
         }
 
-        List<User> result = recommendedFriends.stream().sorted().collect(Collectors.toList());
+        List<User> result = recommendedFriends.stream()
+                .sorted().limit(5)
+                .collect(Collectors.toList());
 
         for (User recommend : result) {
             answer.add(recommend.id);
