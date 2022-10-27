@@ -1,12 +1,7 @@
 package onboarding;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.StringTokenizer;
 import java.util.stream.Stream;
 
 class Problem1 {
@@ -26,14 +21,27 @@ class Problem1 {
 		return max;
 	}
 
+	public static boolean isInvalid(List<Integer> pageList) {
+		int left = pageList.get(0);
+		int right = pageList.get(1);
+
+		if ((left >= 3 && left <= 397) && (right >= 4 && right <= 398)) {
+			return (right - left) != 1 || left % 2 == 0;
+		}
+		return true;
+	}
+
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
 		int answer;
+
+		if (isInvalid(pobi) || isInvalid(crong)) {
+			answer = -1;
+			return answer;
+		}
 
 		int pobiScore = getScore(pobi);
 		int crongScore = getScore(crong);
 
-		System.out.println("pobiScore = " + pobiScore);
-		System.out.println("crongScore = " + crongScore);
 		if (pobiScore > crongScore) {
 			answer = 1;
 		} else if (pobiScore < crongScore) {
@@ -43,32 +51,5 @@ class Problem1 {
 		}
 
 		return answer;
-	}
-
-	public static void main(String[] args) throws IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringTokenizer st;
-		List<Integer> pobi = new ArrayList<>();
-		List<Integer> crong = new ArrayList<>();
-
-		for (int i = 0; i < 2; i++) {
-			st = new StringTokenizer(br.readLine(), " ");
-			int v = Integer.parseInt(st.nextToken());
-			int u = Integer.parseInt(st.nextToken());
-
-			if (i == 0) {
-				pobi.add(v);
-				pobi.add(u);
-			} else {
-				crong.add(v);
-				crong.add(u);
-			}
-		}
-
-		System.out.println("pobi = " + pobi);
-		System.out.println("crong = " + crong);
-
-		System.out.println(solution(pobi, crong));
-
 	}
 }
