@@ -26,4 +26,13 @@ class Problem1 {
         int res = (value % 10) * (value % 100 / 10) + (value / 100);
         return res;
     }
+
+    // 왼쪽 페이지와 오른쪽 페이지의 각 자리 숫자를 더하고 곱하여 더 큰 숫자를 반환하는 메서드
+    int getMaxValue(int leftValue, int rightValue) {
+        int leftMax = Math.max(sumValue(leftValue), mulValue(leftValue));
+        int rightMax = Math.max(sumValue(rightValue), mulValue(rightValue));
+        int max = Math.max(leftMax, rightMax);
+        return max;
+    }
+
 }
