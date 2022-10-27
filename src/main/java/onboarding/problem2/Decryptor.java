@@ -5,32 +5,44 @@ import java.util.Stack;
 public class Decryptor {
     String cryptogram;
     Stack<Character> decryptor;
+    Character deletedCharacter;
 
     public Decryptor(String cryptogram) {
         this.cryptogram = cryptogram;
         decryptor = new Stack<>();
     }
 
-    public String decode() {
+    private void decode() {
         for (int idx = 0; idx < cryptogram.length(); idx++) {
             char nextCharacter = cryptogram.charAt(idx);
-            if (IsDecryptorThenPush(nextCharacter)) continue;
-            if (isDuplicate(nextCharacter)) {
-                decryptor.pop();
-            }
+
+            if (isDuplicateWithDeletedCharacter(nextCharacter)) continue;
+            if (IsDecryptorEmptyThenPush(nextCharacter)) continue;
+            if (isDuplicateWithTopOfDecrypterCharacterThenDelete(nextCharacter)) continue;
+
+            decryptor.push(nextCharacter);
         }
-        return "";
     }
 
-    private boolean IsDecryptorThenPush(char nextCharacter) {
+    private boolean isDuplicateWithDeletedCharacter(char nextCharacter) {
+        if (deletedCharacter != null && deletedCharacter == nextCharacter) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean IsDecryptorEmptyThenPush(char nextCharacter) {
         if (decryptor.empty()) {
             decryptor.push(nextCharacter);
             return true;
         }
         return false;
     }
-    private boolean isDuplicate(char next){
+
+    private boolean isDuplicateWithTopOfDecrypterCharacterThenDelete(char next) {
         if (decryptor.peek() == next) {
+            decryptor.pop();
+            deletedCharacter = next;
             return true;
         }
         return false;
