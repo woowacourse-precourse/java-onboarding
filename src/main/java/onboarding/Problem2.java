@@ -5,9 +5,14 @@ public class Problem2 {
         String answer = "answer";
         boolean isChanged;
         do {
+            isChanged = false;
             if(cryptogram.length() <= 1) break;
-            deleteDuplicatedChars(cryptogram);
-        } while(true);
+            String tmp = deleteDuplicatedChars(cryptogram);
+            if(!cryptogram.equals(tmp)){
+                isChanged = true;
+                cryptogram = tmp;
+            }
+        } while(isChanged);
         return answer;
     }
 
