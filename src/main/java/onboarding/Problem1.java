@@ -39,4 +39,10 @@ class Problem1 {
         }
         return answer;
     }
+    private static int getBiggerNumber(List<Integer> pages){
+        Integer leftPage = pages.get(0);
+        Integer rightPage = pages.get(1);
+
+        return Math.max(Math.max(getSumNumber(leftPage), getMultiplyNumber(leftPage)), Math.max(getSumNumber(rightPage), getMultiplyNumber(rightPage)));
+    }
 }
