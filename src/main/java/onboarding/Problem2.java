@@ -16,4 +16,15 @@ public class Problem2 {
         }
         return duplicates;
     }
+
+    private static String delDuplicate(boolean[] duplicates, String cryptogram) {
+        String newCryptogram = "";
+
+        for (int i=0; i<duplicates.length; i++) {
+            if (!duplicates[i]) {
+                newCryptogram+=cryptogram.charAt(i);
+            }
+        }
+        return newCryptogram;
+    }
 }
