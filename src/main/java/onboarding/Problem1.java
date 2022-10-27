@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.Arrays;
 import java.util.List;
 
 class Problem1 {
@@ -11,8 +12,11 @@ class Problem1 {
         if (!validate(pobi) || !validate(crong)) {
             return answer;
         }
-        pobi_max_number = Math.max(Math.max(sumEveryPlaceValue(pobi.get(0)), sumEveryPlaceValue(pobi.get(1))), Math.max(multipleEveryPlaceValue(pobi.get(0)), multipleEveryPlaceValue(pobi.get(1))));
-        crong_max_number = Math.max(Math.max(sumEveryPlaceValue(crong.get(0)), sumEveryPlaceValue(crong.get(1))), Math.max(multipleEveryPlaceValue(crong.get(0)), multipleEveryPlaceValue(crong.get(1))));
+        int[] pobi_calculate_array = {sumEveryPlaceValue(pobi.get(0)), sumEveryPlaceValue(pobi.get(1)), multipleEveryPlaceValue(pobi.get(0)), multipleEveryPlaceValue(pobi.get(1))};
+        int[] crong_calculate_array = {sumEveryPlaceValue(crong.get(0)), sumEveryPlaceValue(crong.get(1)), multipleEveryPlaceValue(crong.get(0)), multipleEveryPlaceValue(crong.get(1))};
+
+        pobi_max_number = getMaxNumber(pobi_calculate_array);
+        crong_max_number = getMaxNumber(crong_calculate_array);
 
         if (pobi_max_number > crong_max_number) {
             return 1;
@@ -58,5 +62,9 @@ class Problem1 {
             multiple_value *= Integer.valueOf(place_value);
         }
         return multiple_value;
+    }
+
+    private static int getMaxNumber(int[] numbers) {
+        return Arrays.stream(numbers).max().getAsInt();
     }
 }
