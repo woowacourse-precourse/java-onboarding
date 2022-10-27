@@ -15,7 +15,15 @@ class Problem1 {
         if (!checkValidation(pobi) || !checkValidation(crong)) {
             return -1;
         }
-        return 1;
+
+        final int maxOfPobi = Math.max(getLargestNum(pobi.get(0)), getLargestNum(pobi.get(1)));
+        final int maxOfCrong = Math.max(getLargestNum(crong.get(0)), getLargestNum(crong.get(1)));
+
+        if (maxOfPobi == maxOfCrong) {
+            return 0;
+        } else {
+            return (maxOfPobi > maxOfCrong) ? 1 : 2;
+        }
     }
 
     /**
@@ -36,7 +44,7 @@ class Problem1 {
             return false;
         }
 
-        if (leftPage % 2 != 0 || rightPage % 2 > 0) {
+        if (leftPage % 2 == 0 || rightPage % 2 > 0) {
             return false;
         }
 
