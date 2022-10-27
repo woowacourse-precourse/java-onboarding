@@ -5,6 +5,9 @@ import java.util.List;
 class Problem1 {
     private static final int LEFT = 0;
     private static final int RIGHT= 1;
+    private static final int TIE = 0;
+    private static final int POBI_WIN = 1;
+    private static final int CRONG_WIN = 2;
 
     public static boolean isValidRange(int number) {
         if (number < 1 || number > 400) {
@@ -73,11 +76,11 @@ class Problem1 {
         int crongScore = getScore(crong);
 
         if (pobiScore > crongScore) {
-            return 1; // pobi win
+            return POBI_WIN;
         } else if (pobiScore < crongScore) {
-            return 2; // crong win
+            return CRONG_WIN;
         } else {
-            return 0; // tie
+            return TIE;
         }
     }
 
