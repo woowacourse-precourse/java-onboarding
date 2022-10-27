@@ -33,10 +33,12 @@ public class Problem7 {
 
         System.out.println(friendsPointMap);
 
-        List<String> recommedList = getKey(tmpArray ,saveSortCheckPoint(tmpArray));
-
+        List<String> recommedList = getKey(sortList());
+        recommedList = sortList(saveSortCheckPoint(tmpArray), recommedList);
 
         Collections.nCopies(recommendNum, recommedList);
+
+        answer = recommedList;
         return answer;
     }
 
@@ -131,12 +133,8 @@ public class Problem7 {
     }
 
     //value 로 key 찾기
-    public static List<String> getKey(Integer[] valueList, List<Integer> checkPoint) {
-        int cnt = 0;
-        int checkpointLength = 0;
-        int length;
+    public static List<String> getKey(Integer[] valueList) {
         List<String> recommendFriendsList = new ArrayList<>();
-
 
         for (int i = 0; i < valueList.length; i++) {
             for (String key : friendsPointMap.keySet()) {
@@ -144,13 +142,6 @@ public class Problem7 {
                     if (recommendFriendsList.contains(key))
                         continue;
                     recommendFriendsList.add(key);
-                    cnt++;
-                    if (cnt == checkPoint.get(checkpointLength))
-                    {
-                        Collections.sort(recommendFriendsList);
-                        checkpointLength++;
-                        cnt = 0;
-                    }
                     break;
                 }
             }
@@ -181,5 +172,26 @@ public class Problem7 {
             checkPointList.add(cnt);
         }
         return checkPointList;
+    }
+
+    public static List<String> sortList(List<Integer> checkPointList, List<String> recommendFriendsList)
+    {
+        int cnt = 0;
+
+        // ArrayList를 배열로 변환
+        int arrListSize = recommendFriendsList.size();
+        String arr[] = recommendFriendsList.toArray(new String[arrListSize]);
+
+
+        for (int i = 0; i < checkPointList.size(); i++)
+        {
+            cnt += i;
+            int key = checkPointList.get(i);
+            Arrays.sort(arr, cnt, key);
+            cnt = checkPointList.get(i);
+        }
+        recommendFriendsList = Arrays.asList(arr);
+
+        return recommendFriendsList;
     }
 }
