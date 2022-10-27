@@ -27,5 +27,39 @@ public class Problem2 {
         return false;
     }
 
+    //중복 인덱스를 찾아주는 함수
+    public static int[] findDuplicateIndex(String cryptogram){
+        int length = cryptogram.length();
+        boolean isDuplicate = false;
+
+        int start=0;
+        int end=1;
+
+        int[] index = new int[2];
+
+        while(end>=length){
+            if(cryptogram.charAt(start)!=cryptogram.charAt(end)){
+                if(isDuplicate){
+                    index[0]=start;
+                    index[1]=end-1;
+
+                    return index;
+                }
+
+                start++;
+                end++;
+                continue;
+            }
+
+            isDuplicate = true;
+            end++;
+        }
+
+        index[0]=start;
+        index[1]=end-1;
+
+        return index;
+    }
+
 
 }
