@@ -12,8 +12,7 @@ public class Problem3 {
     }
     
     private static String get369removedString(String numToString) {
-    	String result = "";
-    	result = numToString.replaceAll("3", "")
+    	String result = numToString.replaceAll("3", "")
     			.replaceAll("6", "")
     			.replaceAll("9", "");
     	return result;
