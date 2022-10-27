@@ -21,7 +21,7 @@ class Problem1 {
     private static Integer getMaxValue(List<Integer> pages) {
         Integer leftPage = pages.get(0);
         Integer rightPage = pages.get(1);
-        if (isExceptionCase(leftPage, rightPage) == true) {
+        if (isExceptionCase(leftPage, rightPage)) {
             return EXCEPTION_CASE;
         }
 
