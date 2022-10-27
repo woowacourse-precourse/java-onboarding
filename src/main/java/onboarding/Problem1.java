@@ -60,6 +60,17 @@ class Operation {
     public int findMaxValue(int sum, int mul){
         return Math.max(sum, mul);
     }
+    public int findWinner(int scoreOfPlayer1, int scoreOfPlayer2){
+        if(scoreOfPlayer1>scoreOfPlayer2){
+            return 1;
+        }
+        else if(scoreOfPlayer1<scoreOfPlayer2){
+            return 2;
+        }
+        else{
+            return 0;
+        }
+    }
 }
 class Problem1 {
 
