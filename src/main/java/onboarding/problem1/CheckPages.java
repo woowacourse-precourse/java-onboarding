@@ -2,15 +2,15 @@ package onboarding.problem1;
 
 import java.util.List;
 
-public class Check {
+public class CheckPages {
 	private final static int MINPAGE = 1;
 	private final static int MAXPAGE = 400;
 	private final static int limit = 2;
 
-	private Check() {
+	private CheckPages() {
 	}
 
-	public static boolean checkPageNumber(List<Integer> pages) {
+	public static boolean of(List<Integer> pages) {
 		if (pages == null) {
 			return false;
 		}

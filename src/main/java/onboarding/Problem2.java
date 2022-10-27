@@ -1,16 +1,19 @@
 package onboarding;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
+import onboarding.problem2.CheckCrytogram;
+
 public class Problem2 {
-    private final static int limit = 1000;
     public static String solution(String cryptogram) {
-        if (cryptogram == null) {
-            throw new IllegalArgumentException("매개변수를 null 될수 없다.");
-        }
-        if (cryptogram.length() > limit) {
-            throw new IllegalArgumentException("매개변수는 1000를 초과해서는 안된다.");
-        }
+        if (CheckCrytogram.of(cryptogram)) {
 
-
+        }
+        Queue<Character> resultList = new LinkedList<>();
+        char[] cryptogramChars = cryptogram.toCharArray();
+        int n = cryptogramChars.length;
+        int index = 0;
         String answer = "answer";
         return answer;
     }
