@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
@@ -12,7 +13,7 @@ class Problem1 {
     * */
 
     // 기능1 구현
-    boolean checkPageError(List<Integer> pairPages) {
+    boolean checkPageError(List<Integer> pairPages) { // ★isVaildPage로 변경할 것
 
         // #유의 사항 : 메소드,변수명을 정의할 때는 카멜 표기법을 따르며, 메소드명은 동사로 시작하도록 한다.
 
@@ -38,6 +39,27 @@ class Problem1 {
         // 1-4. 그 외에는 오류 없음 처리
         return true;
     }
+
+    //2. 기능2 구현
+    List<Integer> getSeparatedDigits(int pageNumber){
+
+        List<Integer> separatedDigitList = new ArrayList<>();
+        int digit;
+        int remainedNumber = pageNumber;
+
+        while(remainedNumber>0){
+            digit = remainedNumber%10;
+            separatedDigitList.add(digit);
+
+            remainedNumber /= 10;
+        }
+
+        return separatedDigitList;
+
+    }
+
+
+
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
