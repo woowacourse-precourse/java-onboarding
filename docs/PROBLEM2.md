@@ -21,3 +21,14 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+---
+
+## 구현 기능 목록
+
+- (1) 중복 체크 기능
+  - true : 같은 알파벳 소문자가 2번 이상 붙어 나열되면 중복
+- (2) 중복 문자 제거 기능
+  - String to char array? String to ArrayList? String to LinkedList
+    - 데이터의 추가, 삭제에 효율적인 LinkedList 이용
+    - [나만의 노트(노션) : 자료구조 LinkedList](https://grizzled-eoraptor-f92.notion.site/Linked-List-c6e85fa12b7a4ebe9945fb1cfe1f40e0)
