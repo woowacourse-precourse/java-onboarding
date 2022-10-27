@@ -8,6 +8,7 @@ package onboarding;
 // 1. 각 문자를 변환하는 과정에서 규칙성 찾아보기
 // 1-2. 문자를 숫자로 변환해보기
 // 1-3. 숫자를 문자로 변환해보기
+// 2. 발견한 규칙((첫문자+끝문자)-해당문자)을 바탕으로 소문자, 대문자, 공백일때의 상황으로 분류해 조건 설정하기
 
 public class Problem4 {
     public static String solution(String word) {
