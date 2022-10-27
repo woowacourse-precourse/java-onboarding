@@ -4,10 +4,8 @@ import java.util.Stack;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
         Stack<Character> decodedCryptogram = deleteDuplicateChars(initStack(cryptogram), cryptogram);
-
-        return answer;
+        return resultDecodingText(decodedCryptogram);
     }
 
     private static Stack<Character> deleteDuplicateChars(Stack<Character> characterStack, String cryptogram) {
@@ -28,5 +26,11 @@ public class Problem2 {
         Stack<Character> characterStack = new Stack<>();
         characterStack.push(cryptogram.charAt(0));
         return characterStack;
+    }
+
+    private static String resultDecodingText(Stack<Character> decodedCryptogram) {
+        StringBuilder sb = new StringBuilder();
+        decodedCryptogram.forEach(sb::append);
+        return sb.toString();
     }
 }
