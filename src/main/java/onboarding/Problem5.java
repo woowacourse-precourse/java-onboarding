@@ -20,5 +20,7 @@ public class Problem5 {
 
     public static void main(String[] args){
         System.out.println(solution(50237));
+        System.out.println(solution(15000));
+        System.out.println(solution(23570)); // [0, 2, 0, 3, 1, 0, 1, 2, 0]
     }
 }
