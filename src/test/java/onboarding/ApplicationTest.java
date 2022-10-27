@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ApplicationTest {
@@ -188,6 +189,7 @@ class ApplicationTest {
             String cryptogram = "browoanoommnaon";
             String result = "brown";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+
         }
 
         @Test
@@ -200,12 +202,30 @@ class ApplicationTest {
         @Test
         void checkNotDuplicateTest() {
             assertThat(Problem2.checkNotDuplicate('a')).isEqualTo(true);
+            Problem2.st.clear();
         }
 
         @Test
         void checkNotDuplicateExceptionTest() {
             Problem2.st.push('a');
             assertThat(Problem2.checkNotDuplicate('a')).isEqualTo(false);
+            Problem2.st.clear();
+        }
+
+        @Test
+        void deleteOrPushLetterDeleteTest() {
+            Problem2.st.push('a');
+            Problem2.deleteOrPushLetter('a');
+            assertThat(Problem2.st.size()).isEqualTo(0);
+            Problem2.st.clear();
+        }
+
+        @Test
+        void deleteOrPushLetterPushTest() {
+            Problem2.st.push('a');
+            Problem2.deleteOrPushLetter('b');
+            assertThat(Problem2.st.size()).isEqualTo(2);
+            Problem2.st.clear();
         }
     }
 
