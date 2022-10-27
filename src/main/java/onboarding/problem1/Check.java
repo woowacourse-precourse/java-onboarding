@@ -11,7 +11,7 @@ public class Check {
 	}
 
 	public static boolean checkPageNumber(List<Integer> pages) {
-		if (pages == null){
+		if (pages == null) {
 			return false;
 		}
 
