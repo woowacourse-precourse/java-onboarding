@@ -96,6 +96,13 @@ class ApplicationTest {
             String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
+
+        @Test
+        void DuplicateDetecterTest() {
+            DuplicateDeleter duplicateDeleter = new DuplicateDeleter("abcddef");
+            List<Integer> result = List.of(3,4);
+            assertThat(duplicateDeleter.findPattern()).isEqualTo(result);
+        }
     }
 
     @Nested
