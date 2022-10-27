@@ -26,7 +26,7 @@ public class Problem2 {
             if (compareBefore == removeRepeat(strBCCryptogram)) {
                 break;
             }
-            compareBefore = strBAnswer;
+            compareBefore = removeRepeat(strBCCryptogram);
             strBCCryptogram = strBAnswer;
 
         }
