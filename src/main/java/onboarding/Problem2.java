@@ -6,8 +6,8 @@ import java.util.List;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
         Deque<String> queue = new ArrayDeque<>(List.of(cryptogram.split("")));
+
         while (!queue.isEmpty()) {
             int queueSize = queue.size();
             if (queueSize == 1) {
@@ -21,7 +21,7 @@ public class Problem2 {
             }
         }
 
-        return answer;
+        return String.join("", queue);
     }
 
     private static Deque<String> removeDuplicatedStr(Deque<String> queue) {
