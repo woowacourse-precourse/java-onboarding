@@ -13,7 +13,7 @@ public class Problem7 {
     static final int secondFriend = 1;
     static final int knowPoint = 10;
     static final int visitPoint = 1;
-    static final int recommendNum = 6;
+    static final int recommendNum = 5;
 
     static List<List<String>> friendsList;
     static Map<String, Integer> friendsPointMap= new HashMap<>();
@@ -27,7 +27,10 @@ public class Problem7 {
         userName = user;
 
         givePoint(user, visitors);
+
         answer = getKey(sortList());
+
+        System.out.println("list : " + friendsPointMap);
         return answer;
     }
 
@@ -83,22 +86,23 @@ public class Problem7 {
 
         return friendOfFriendsList;
     }
-
     public static List<String> removeDuplication(List<String> basicList, List<String> keywordList)
     {
         for (int i = 0; i < basicList.size(); i++)
         {
             //사용자가 리스트에 있을 경우
             if (userName.equals(basicList.get(i)))
-            {
                 basicList.remove(i);
-                continue;
-            }
+            if (i == basicList.size())
+                break;
             //사용자의 친구가 리스트에 있을 경우
             for (int j = 0; j < keywordList.size(); j++)
             {
                 if (basicList.get(i).equals(keywordList.get(j)))
+                {
                     basicList.remove(i);
+                    break;
+                }
             }
         }
         return basicList;
@@ -119,35 +123,48 @@ public class Problem7 {
         return friendsPointMap;
     }
 
-    // hashmap에 value 로 key 찾기
+    //value 로 key 찾기
     public static List<String> getKey(Integer[] valueList) {
         int length;
-        List<String> recommendList = new ArrayList<>();
+        List<String> recommendFriendsList = new ArrayList<>();
+
         length = Math.min(recommendNum, valueList.length);
 
         for (int i = 0; i < length; i++)
         {
             for (String key : friendsPointMap.keySet()) {
                 if (valueList[i] == friendsPointMap.get(key)) {
-                    if (recommendList.contains(key))
+                    if (recommendFriendsList.contains(key))
                         continue;
-                    recommendList.add(key);
+                    recommendFriendsList.add(key);
                     break;
                 }
             }
         }
-        return recommendList;
+        return recommendFriendsList;
     }
 
     public static Integer[] sortList()
     {
+        int cnt;
+        List<Integer> sortCheckPoint = new ArrayList<>();
+
         Collection <Integer> values = friendsPointMap.values();
         //배열 생성
         Integer [] intArray = values.toArray(new Integer[0]);
         Arrays.sort(intArray, Collections.reverseOrder());
 
         for (int i = 0; i < intArray.length; i++)
-            System.out.println(intArray[i]);
+        {
+            cnt = 0;
+            while (intArray[i] == intArray[cnt]) {
+                cnt++;
+            }
+            i = cnt;
+            sortCheckPoint.add(cnt);
+        }
+
+        System.out.println(sortCheckPoint);
         return intArray;
     }
 }
