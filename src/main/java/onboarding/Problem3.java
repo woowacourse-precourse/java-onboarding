@@ -7,6 +7,12 @@ public class Problem3 {
             return 0;
         }
 
+        int hap = 0;
+        for (int i = 3; i <= number; i++) {
+            hap += count(Integer.toString(i));
+        }
+
+        return hap;
     }
 
     public static int count(String number) {
