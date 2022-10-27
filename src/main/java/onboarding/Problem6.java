@@ -21,7 +21,21 @@ public class Problem6 {
     public static Map<String, Integer> getStringsOfLength2Cnt(List<List<String>> forms){
         Map<String, Integer> stringsOfLength2Cnt = new HashMap<>();
 
+        for(List<String> crew : forms){
+            String nickname = crew.get(1);
+        }
+
         return stringsOfLength2Cnt;
+    }
+
+    public static Set<String> splitNickname(String nickname){
+        Set<String> stringsOfLength2 = new HashSet<>();
+
+        for(int i = 0;i<nickname.length()-1;i++){
+            stringsOfLength2.add(nickname.substring(i, i+2));
+        }
+
+        return stringsOfLength2;
     }
 
     public static List<String> getEmailsOfInvalidNickname(List<List<String>> forms, List<String> invalidNicknames){
