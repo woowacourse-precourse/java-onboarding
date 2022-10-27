@@ -47,7 +47,7 @@ public class Problem6 {
         return duplication;
     }
 
-    private static Set<String> addDuplication(List<List<String>> forms) {
+    private static List<String> addDuplication(List<List<String>> forms) {
         Set<String> duplicationArray = new HashSet<>();
         for (int i = 0; i < forms.size(); i ++) {
             if (isValidName(forms.get(i).get(1)) && isValidEmail(forms.get(i).get(0)))
@@ -58,7 +58,13 @@ public class Problem6 {
                 i -= 1;
             }
         }
-        return duplicationArray;
+        return sortDuplication(duplicationArray);
+    }
+
+    private static List<String> sortDuplication(Set<String> duplicationArray) {
+        List<String> sortArray = new ArrayList<>(duplicationArray);
+        Collections.sort(sortArray);
+        return sortArray;
     }
 
     public static List<String> solution(List<List<String>> forms) {
