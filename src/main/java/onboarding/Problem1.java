@@ -6,6 +6,19 @@ import java.lang.Math;
 
 class Problem1 {
 
+    public static int getSum(int page) {
+        int result = 0;
+
+        while(page > 0) {
+            result += page % 10;
+            page /= 10;
+        }
+
+        return result;
+    }
+
+
+
     public static int getPageResult(List<Integer> pageList) {
         int leftPage = pageList.get(0);
         int rightPage = pageList.get(1);
