@@ -23,6 +23,16 @@ public class Problem2 {
             stack.add(cryptogram.charAt(i));
         }
 
-        return answer;
+        return convertStack(stack);
+    }
+
+    private static String convertStack(Stack stack) {
+        StringBuilder sb = new StringBuilder();
+
+        while(!stack.isEmpty()) {
+            sb.append(stack.pop());
+        }
+
+        return sb.reverse().toString();
     }
 }
