@@ -8,7 +8,7 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
-        if (!isContinuous(pobi) || !isContinuous(crong)) {
+        if (isNotContinuous(pobi) || !isNotContinuous(crong)) {
             answer = -1;
         }
 
@@ -36,8 +36,8 @@ class Problem1 {
 
 
     // 왼쪽, 오른쪽 페이지가 연속되지 않는 경우를 확인하는 메소드
-    private static boolean isContinuous(List<Integer> array) {
-        return array.get(1) - array.get(0) == 1;
+    private static boolean isNotContinuous(List<Integer> array) {
+        return array.get(1) - array.get(0) != 1;
     }
 
 
