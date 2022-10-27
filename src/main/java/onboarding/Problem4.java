@@ -1,15 +1,13 @@
 package onboarding;
 
-import org.mockito.stubbing.ValidableAnswer;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Problem4 {
     public static String solution(String word) {
-        List<Integer> list = new ArrayList<>();
+        List<Character> result = new ArrayList<>();
+
         for (int i = 0; i < word.length(); i++) {
             int ascii = word.toCharArray()[i];
 
@@ -24,11 +22,12 @@ public class Problem4 {
                     ascii = 90 - ((ascii + 25) % 90);
                 }
             }
-
-            list.add(ascii);
+            result.add((char) ascii);
         }
 
-        String answer = "";
-        return answer;
+        return result.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining());
+
     }
 }
