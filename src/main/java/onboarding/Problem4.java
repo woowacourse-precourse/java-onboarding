@@ -43,6 +43,33 @@ public class Problem4 {
      * 반환값을 보고 각각 변환해주는 함수
      */
 
+    static String frog_alpha_change(int[] word_array, String word,int idx) {
+
+        String change ="";
+
+        String[] upper = {"Z","Y","X","W","V","U","T","S","R"
+                ,"Q","P","O","N","M","L","K","J","I","H","G","F",
+                "E","D","C","B","A"};
+
+        String[] lower = {"z","y","x","w","v","u","t","s"
+                ,"r","q","p","o","n","m","l","k","j","i","h","g",
+                "f","e","d","c","b","a"};
+
+        if(word_array[idx] == 2){
+            change = upper[word.charAt(idx)-'A'];
+        }
+
+        if(word_array[idx] == 1) {
+            change = lower[word.charAt(idx)-'a'];
+        }
+
+        if(word_array[idx] == 0){
+            change = " ";
+        }
+
+        return change;
+
+    }
     /**
      * 실행을 위한 함수
      */
