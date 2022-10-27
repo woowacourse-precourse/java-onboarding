@@ -17,7 +17,7 @@ public class Problem1Util {
         if (nums.get(1) - nums.get(0) != 1) return false; // 연속된 두 숫자인가
         for (int i = 0; i < 2; i++) {
             Integer num = nums.get(i);
-            if (num <= 1 || num >= 400) return false;
+            if (num <= 1 || num >= 400) return false; // 1 ~ 400 범위 내에 있으며, 1과 400을 포함하는 페이지는 없는가
             if (num % 2 != 1 - i) {
                 return false; // 해당 숫자가 [홀수, 짝수]인가
             }
