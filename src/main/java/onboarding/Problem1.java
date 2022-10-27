@@ -20,6 +20,19 @@ class Problem1 {
         return false;
     }
 
+    // 더하고, 곱하는
+    private static int getMax(int num) {
+        int pobi_sum = 0;
+        int pobi_mul = 1;
+        while (num > 0) {
+            int rem = num % 10;
+            pobi_sum += rem;
+            pobi_mul *= rem;
+            num /= 10;
+        }
+        return Math.max(pobi_sum, pobi_mul);
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
