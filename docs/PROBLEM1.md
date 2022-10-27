@@ -11,7 +11,7 @@
 - [ ] 결과 구하기
   - [x] pobi win : 1
   - [x] crong win : 2
-  - [ ] draw : 0
+  - [x] draw : 0
   - [ ] exception : -1
 
 - [ ] 예외 처리

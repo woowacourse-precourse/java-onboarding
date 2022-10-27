@@ -21,4 +21,11 @@ public class PlayersTest {
         Players players = new Players(Arrays.asList(237, 238), Arrays.asList(239, 240));
         assertThat(players.playResult()).isEqualTo(2);
     }
+    
+    @Test
+    @DisplayName("draw")
+    void draw() {
+        Players players = new Players(Arrays.asList(157, 158), Arrays.asList(57, 58));
+        assertThat(players.playResult()).isEqualTo(0);
+    }
 }
