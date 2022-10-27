@@ -4,7 +4,6 @@ import java.util.Collections;
 import java.util.List;
 
 /** 기능 목록
- * countCoins   : 필요한 동전 개수 반환
  * checkValid   : 예외 처리
  */
 
@@ -15,12 +14,11 @@ public class Problem5 {
             return Collections.emptyList();
         }
         List<Integer> answer = Collections.emptyList();
-
+        for (int i = 0; i < 9; i++) {
+            answer.add(money / wallet[i]);
+            money = money % wallet[i];
+        }
         return answer;
-    }
-
-    public static int countCoins(int num) {
-
     }
 
     public static boolean checkValid(int num) {
