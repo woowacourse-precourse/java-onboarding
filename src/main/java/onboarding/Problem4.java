@@ -2,7 +2,22 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        StringBuilder answer = new StringBuilder();
+
+        for (int i = 0; i < word.length(); i++) {
+            char c = word.charAt(i);
+        }
+        return answer.toString();
+    }
+
+    private static char changeCase(char x) {
+        int result = x;
+        if ('A' <= x && x <= 'Z') {
+            result = ('A' + 'Z' - x);
+        }
+        if ('a' <= x && x <= 'z') {
+            result = ('a' + 'z' - x);
+        }
+        return (char) result;
     }
 }
