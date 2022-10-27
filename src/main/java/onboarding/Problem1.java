@@ -14,6 +14,11 @@ class Problem1 {
         int crongLeftPage = crong.get(0);
         int crongRightPage = crong.get(1);
 
+        int pobiLeftMax = 0;
+        int pobiRigtMax=0;
+        int crongLeftMax=0;
+        int crongRightMax=0;
+
         // 1. 예외 체크
         // 1-1. 왼쪽 페이지 홀수, 오른쪽 페이지 짝수인지 체크
         if(isLeftPageOddRightPageEven(pobiLeftPage, pobiRightPage, crongLeftPage, crongRightPage)){
@@ -32,11 +37,28 @@ class Problem1 {
         }
 
         // 2. 왼쪽 페이지 중에서 나올 수 있는 가장 큰 최대 값 뽑기 (각 자리 숫자를 모두 더하거나 곱함)
+        pobiLeftMax = getMax(pobiLeftPage);
+        crongLeftMax = getMax(crongLeftPage);
+
         // 3. 오른쪽 페이지 중에서 나올 수 있는 가장 큰 최대값 뽑기 (각 자리 숫자를 모두 더하거나 곱함)
         // 4. 왼쪽 페이지, 오른쪽 페이지 점수 비교
         // 5. 결과값 출력
 
         return answer;
+    }
+
+    private static int getMax(int page){
+        int sum=0;
+        int multiply=1;
+
+        while(page>0){
+            sum=sum+page%10;
+            multiply=multiply*(page%10);
+
+            page/=10;
+        }
+
+        return sum > multiply ? sum : multiply;
     }
 
     private static boolean isStartPageOrEndPage(int pobiLeftPage, int pobiRightPage, int crongLeftPage, int crongRightPage) {
