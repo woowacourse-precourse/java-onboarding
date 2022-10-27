@@ -9,13 +9,15 @@ class Problem1 {
             return -1;
         }
 
-        int pobiLeftMax = getMaxValue(pobi.get(0));
-        int pobiRightMax = getMaxValue(pobi.get(1));
-        int crongLeftMax = getMaxValue(crong.get(0));
-        int crongRightMax = getMaxValue(crong.get(1));
+        Integer pobiMax = pobi.stream()
+                .map(Problem1::getMaxValue)
+                .max(Integer::compareTo)
+                .orElse(-1);
 
-        int pobiMax = Math.max(pobiLeftMax, pobiRightMax);
-        int crongMax = Math.max(crongLeftMax, crongRightMax);
+        Integer crongMax = crong.stream()
+                .map(Problem1::getMaxValue)
+                .max(Integer::compareTo)
+                .orElse(-1);
 
         return getWinner(pobiMax, crongMax);
     }
@@ -53,7 +55,7 @@ class Problem1 {
         return 0;
     }
 
-    private static int getMaxValue(int page) {
+    private static Integer getMaxValue(Integer page) {
         int sum = 0;
         int mul = 1;
         int seatNum;
