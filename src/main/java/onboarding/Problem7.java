@@ -14,7 +14,11 @@ public class Problem7 {
 
         Set<String> userFriendSet = friendsList.get(user);
 
-        Map<String, Integer> scores = getFriendScore(friendsList, userFriendSet, user);
+        Map<String, Integer> scores = new HashMap<>();
+        
+        if (userFriendSet != null) {
+            scores = getFriendScore(friendsList, userFriendSet, user);
+        }
 
         addVisitScore(scores, visitors);
 
