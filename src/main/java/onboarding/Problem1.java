@@ -7,17 +7,24 @@ class Problem1 {
     static boolean exceptionFlag = false;
 
     public void checkException(List<Integer> pages){
-
+        
     }
 
     public int calculateMaximumAddOrMultiply(int pageNum){
-        int result = 0;
-        return result;
+        int thirdDigit = pageNum/100;
+        int secondDigit = (pageNum%100)/10;
+        int firstDigit = (pageNum%10);
+
+        int addNum = thirdDigit+secondDigit+firstDigit;
+        int multiplyNum = thirdDigit*secondDigit*firstDigit;
+
+        return Math.max(addNum, multiplyNum);
     }
 
     public int calculateScore(List<Integer> pages){
         int leftScore = calculateMaximumAddOrMultiply(pages.get(0));
         int rightScore = calculateMaximumAddOrMultiply(pages.get(1));
+
         return Math.max(leftScore, rightScore);
     }
 
