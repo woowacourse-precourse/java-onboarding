@@ -49,5 +49,18 @@ class Problem1 {
 
             return false;
         }
+
+        /* 왼쪽 페이지들이 홀수, 오른쪽 페이지들이 짝수가 맞는지 확인하는 메서드 */
+        private boolean checkLeftRight() {
+            if (pobiLeftPage % 2 != 1 || crongLeftPage % 2 != 1){
+                return false;
+            }
+
+            if (pobiRightPage % 2 != 0 || crongRightPage % 2 !=0){
+                return false;
+            }
+
+            return true;
+        }
     }
 }
