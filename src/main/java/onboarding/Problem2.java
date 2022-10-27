@@ -30,6 +30,11 @@ public class Problem2 {
 
     private static String resultDecodingText(Stack<Character> decodedCryptogram) {
         StringBuilder sb = new StringBuilder();
+
+        if(decodedCryptogram.empty()) {
+            return "";
+        }
+
         decodedCryptogram.forEach(sb::append);
         return sb.toString();
     }
