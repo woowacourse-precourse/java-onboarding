@@ -12,6 +12,16 @@ public class Decryptor {
         decryptor = new Stack<>();
     }
 
+    public String result() {
+        decode();
+
+        StringBuilder sb = new StringBuilder();
+        for (char character : decryptor) {
+            sb.append(character);
+        }
+        return sb.toString();
+    }
+
     private void decode() {
         for (int idx = 0; idx < cryptogram.length(); idx++) {
             char nextCharacter = cryptogram.charAt(idx);
