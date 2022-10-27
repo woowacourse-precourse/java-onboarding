@@ -8,9 +8,9 @@ public class Problem4 {
 
             if (isAlphabet(word.charAt(i))) {
                 reversedWord += reverseAlphabet(word.charAt(i));
-            } else if (!isAlphabet(word.charAt(i))) {
-                reversedWord += word.charAt(i);
+                continue;
             }
+            reversedWord += word.charAt(i);
         }
         return reversedWord;
     }
