@@ -22,8 +22,8 @@ class Problem1 {
 		int pobiRightPageNum = pobi.get(1);
 		int crongLeftPageNum = crong.get(0);
 		int crongRightPageNum = crong.get(1);
-		if (isPageNumNotEven(pobiLeftPageNum) || isPageNumNotEven(crongLeftPageNum) ||
-			isPageNumNotOdd(pobiRightPageNum) || isPageNumNotOdd(crongRightPageNum)) {
+		if (isPageNumNotOdd(pobiLeftPageNum) || isPageNumNotOdd(crongLeftPageNum) ||
+			isPageNumNotEven(pobiRightPageNum) || isPageNumNotEven(crongRightPageNum)) {
 			return true;
 		}
 		if (isInvalidPage(pobiLeftPageNum, pobiRightPageNum) || isInvalidPage(crongLeftPageNum, crongRightPageNum)) {
@@ -47,7 +47,7 @@ class Problem1 {
 	}
 
 	public static boolean isInvalidPage(int leftPageNum, int rightPageNum) {
-		return leftPageNum + 1 == rightPageNum;
+		return leftPageNum + 1 != rightPageNum;
 	}
 
 	public static int calculateScore(List<Integer> pages) {
@@ -81,7 +81,6 @@ class Problem1 {
 	}
 
 	public static int winnerCheck(int pobiScore, int crongScore) {
-
 		return 2;
 	}
 }
