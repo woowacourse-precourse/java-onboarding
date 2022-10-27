@@ -15,4 +15,16 @@ public class Problem2 {
         }
         return -1;
     }
+
+    public static int getRepetitionEndPoint(String target, int startPoint) {
+        char targetCharacter = target.charAt(startPoint);
+
+        int endPoint = startPoint + 1;
+
+        while (endPoint < target.length() && targetCharacter == target.charAt(endPoint)) {
+            endPoint++;
+        }
+
+        return endPoint;
+    }
 }
