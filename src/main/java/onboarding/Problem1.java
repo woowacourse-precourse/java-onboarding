@@ -9,7 +9,7 @@ class Problem1 {
         int pobiScore = 0;
         int crongScore = 0;
 
-        if (checkValidator(pobi, crong)) {
+        if (checkAllValidation(pobi, crong)) {
             pobiScore = getMaxScorePages(pobi);
             crongScore = getMaxScorePages(crong);
 
@@ -21,11 +21,11 @@ class Problem1 {
         return answer;
     }
 
-    private static boolean checkValidator(List<Integer> userA, List<Integer> userB) {
-        return validator(userA) && validator(userB);
+    private static boolean checkAllValidation(List<Integer> userA, List<Integer> userB) {
+        return validation(userA) && validation(userB);
     }
 
-    private static boolean validator(List<Integer> inputPage) {
+    private static boolean validation(List<Integer> inputPage) {
         Integer leftPage = null;
         Integer rightPage = null;
 
