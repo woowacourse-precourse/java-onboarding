@@ -15,5 +15,6 @@ public class Problem4 {
                 result.append((char)('z' - wordCh[i] + 'a'));
             }
         }
+        return result.toString();
     }
 }
