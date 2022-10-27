@@ -5,6 +5,13 @@ import java.util.stream.Stream;
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
+
+        // 1. number 을 1 ~ number 까지 배열로 나열
+        int[] numberArr = intToArray(number);
+
+        // 2. numberArr 에 3, 6, 9 가 포함된 개수
+        answer = countNumber(numberArr);
+
         return answer;
     }
 
