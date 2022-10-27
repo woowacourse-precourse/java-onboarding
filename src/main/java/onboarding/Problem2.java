@@ -2,8 +2,16 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        while(true) {
+            boolean[] duplicates = checkDuplicate(cryptogram);
+            String newCryptogram = delDuplicate(duplicates, cryptogram);
+
+            if (newCryptogram.equals(cryptogram) || cryptogram.length()==0) {
+                break;
+            }
+            cryptogram = newCryptogram;
+        }
+        return cryptogram;
     }
     private static boolean[] checkDuplicate(String cryptogram) {
         boolean duplicates[] = new boolean[cryptogram.length()];
