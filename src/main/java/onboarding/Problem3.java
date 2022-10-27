@@ -23,4 +23,14 @@ public class Problem3 {
 
         return countOfSecondProcess;
     }
+
+    public int thirdProcess(int indexOfTen, int digitNumber, int number) {
+        int countOfThirdProcess = 0;
+
+        if ((digitNumber % 3) == 0) {
+            countOfThirdProcess += (int)(number % Math.pow(10, indexOfTen)) + 1;
+        }
+
+        return countOfThirdProcess;
+    }
 }

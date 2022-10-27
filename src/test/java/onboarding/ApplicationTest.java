@@ -221,6 +221,25 @@ class ApplicationTest {
 
     @Nested
     class Problem3Test {
+        // 과정3 테스트
+        @Test
+        void thirdProcessTest() {
+            int number = 3293;
+            int numberOfThousands = 3;
+            int numberOfHundreds = 2;
+            int numberOfTens = 9;
+
+            int result1 = 294;
+            int result2 = 0;
+            int result3 = 4;
+
+            Problem3 problem3 = new Problem3();
+            assertThat(problem3.thirdProcess(3, numberOfThousands, number)).isEqualTo(result1);
+            assertThat(problem3.thirdProcess(2, numberOfHundreds, number)).isEqualTo(result2);
+            assertThat(problem3.thirdProcess(1, numberOfTens, number)).isEqualTo(result3);
+        }
+
+        // 과정2 테스트
         @Test
         void secondProcessTest() {
             int numberOfThousands = 3;

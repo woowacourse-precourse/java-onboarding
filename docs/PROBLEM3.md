@@ -146,7 +146,7 @@
     - 과정2의 일반화 공식 적용
     - 출력 : **int countOfSecondProcess**
 - **thirdProcess()**
-    - 입력 : 10의 지수 (= **int indexOfTen**), 해당 자리의 숫자 (= **int digitNumber**)
+    - 입력 : 10의 지수 (= **int indexOfTen**), 해당 자리의 숫자 (= **int digitNumber**), number (= **int number**)
     - 과정3 수행
     - 출력 : **int countOfThirdPrcoess**
 - **fourthProcess()**
