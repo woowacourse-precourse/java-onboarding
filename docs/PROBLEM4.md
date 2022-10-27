@@ -19,3 +19,17 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+### Problem 4. 요구사항 정리
+
+- HashMap을 사용하여 청개구리 사전을 생성한다.
+  - 사전은 다음의 형태를 띈다. A -> Z, B -> Y ... a -> z, b -> y
+- 사전을 이용하여 문자열을 새로 생성하고 반환하는 메서드를 작성한다.
+  - 알파벳 외의 문자는 변환하지 않는다. 
+
+### 고려해야 하는 부분
+
+- 하나의 메서드가 하나의 기능을 수행하는지?
+- Problem2와 마찬가지로 문자열을 추가할 때 StringBuilder를 사용하는 것이 좋아보인다.
+- Alphabet 아닌 문자는 변환하지 않는 부분은 HashMap의 getOrDefault, Character.isLetter를 사용할지 고민
+  - isLetter로 확인하는게 더 명확해 보인다.
