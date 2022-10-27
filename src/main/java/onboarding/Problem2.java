@@ -8,11 +8,8 @@ public class Problem2 {
         while (true){
             before = answer;
             answer = delete_eq(answer);
-            if (answer.equals(""))
+            if (answer.equals("") || before.equals(answer))
                 break;
-            else if (before.equals(answer)) {
-                break;
-            }
         }
         return answer;
     }
