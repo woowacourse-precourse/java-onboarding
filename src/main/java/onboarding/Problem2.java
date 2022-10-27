@@ -16,8 +16,12 @@ public class Problem2 {
     private static final int MAX_CRYPTOGRAM_LENGTH = 1000;
 
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+		if (validateCryptogramFormat(cryptogram) == INVALID) {
+			throw new IllegalArgumentException("유효하지 않은 암호 문자열");
+		}
+		String answer = eraseSuccessiveCharactersUntilUnchanged(cryptogram);
+
+		return answer;
     }
 
     public static String eraseSuccessiveCharacters(String str) {
