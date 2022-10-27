@@ -7,9 +7,6 @@ Decryption class는 다음과 같은 기능을 가지는 메서드를 구현.
  */
 
 
-import java.util.Iterator;
-import java.util.LinkedHashSet;
-
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
@@ -34,7 +31,7 @@ class Decryption {
 
     // 연속하는 중복 문자를 삭제하는 메서드 replaceChar
     void replaceChar(){
-        String tmp = "";
+        String tmp;
         answer = cryptogram.replaceAll("([a-z])\\1", "");
         while(true) {
             tmp = answer;
