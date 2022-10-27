@@ -38,7 +38,7 @@
   - [-1,0], [401,402]와 같이 책의 범위를 초과한 경우
 
 #### 예외 처리와 필요 기능
-- #### 1.1 public boolean checkPageNumberInvalidException(List\<Integer> list)
+- #### 1.1 public boolean checkPageNumberValidityException(List\<Integer> list)
   - 첫 번째 기능 : (왼쪽 페이지 번호 % 2 == 1) && (오른쪽 페이지 번호 - 왼쪽 페이지 번호 == 1)
   - 처리 가능 예외 :
       - [99, 102]와 같이 왼쪽 페이지 번호, 오른쪽 페이지 번호의 차이가 1을 초과하는 경우
@@ -51,16 +51,16 @@
       - [-1,0], [401,402]와 같이 책의 범위를 초과한 경우
 
 ### Test Code
-#### 1.1 void checkPageNumberInvalidExceptionTest(List\<Integer> list)
+#### 1.1 void checkPageNumberInvalidExceptionTest()
 - 예외 테스트 입력 시 `false` 반환 확인
   - 테스트 : [99, 102], [100,101], [101,100]
 - 정상 테스트 입력 시 `true` 반환 확인
-  - 테스트 : [99, 101], [101, 102]
-#### 1.2 void checkOutOfRangeExceptionTest(List\<Integer> list)
+  - 테스트 : [99, 100], [101, 102]
+#### 1.2 void checkOutOfRangeExceptionTest()
 - 예외 테스트 입력 시 `false` 반환 확인
   - 테스트 : [1,2], [399,400], [-1,0], [401,402]
 - 정상 테스트 입력 시 'true' 반환 확인
   - 테스트 : [3,4], [397, 398]
-#### 1.3 void checkException(List\<Integer> list)
+#### 1.3 void checkException()
 - 예외 테스트 입력 시 `false` 반환 확인
   - 테스트 : [99, 102], [100,101], [101,100], [1,2], [399,400], [-1,0], [401,402]
