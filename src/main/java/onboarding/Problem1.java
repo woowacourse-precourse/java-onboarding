@@ -8,16 +8,11 @@ class Problem1 {
         int answer = 0;
 
         try{
-            Exception e = new Exception("[왼쪽 페이지 번호, 오른쪽 페이지 번호]가 순서대로 들어있지 않음.");
+
             int[] pobiArr = pobi.stream().mapToInt(i->i).toArray();
             int[] crongArr = crong.stream().mapToInt(i->i).toArray();
 
-            Boolean check1 = pobiArr[0] % 2 == 1 && pobiArr[1] % 2 == 0 && pobiArr[1] == pobiArr[0] + 1;
-            Boolean check2 = crongArr[0] % 2 == 1 && crongArr[1] % 2 == 0 && crongArr[1] == crongArr[0] + 1;
-
-            if(!check1 || !check2){
-                throw e;
-            }
+            isValid(pobiArr, crongArr);
 
             int pobiScore = getMax(pobiArr);
             int crongScore = getMax(crongArr);
@@ -36,6 +31,17 @@ class Problem1 {
             answer = -1;
         }
         return answer;
+    }
+
+    private static void isValid(int[] pobiArr, int[] crongArr) throws Exception {
+        Exception e = new Exception("[왼쪽 페이지 번호, 오른쪽 페이지 번호]가 순서대로 들어있지 않음.");
+        Boolean check1 = pobiArr[0] % 2 == 1 && pobiArr[1] % 2 == 0 && pobiArr[1] == pobiArr[0] + 1;
+        Boolean check2 = crongArr[0] % 2 == 1 && crongArr[1] % 2 == 0 && crongArr[1] == crongArr[0] + 1;
+        Boolean check3 = pobiArr[0] == 1 || crongArr[0] == 1 || pobiArr[1] == 400 || crongArr[1] ==400;
+
+        if(!check1 || !check2 || !check3){
+            throw e;
+        }
     }
 
     private static int getMax(int[] arr) {
