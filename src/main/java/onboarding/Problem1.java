@@ -4,8 +4,9 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        int pobiScore = getMaxNumber(pobi);
+        int crongScore = getMaxNumber(crong);
+        return compareScore(pobiScore, crongScore);
     }
 
     private static int getMaxNumber(List<Integer> page) {
@@ -32,5 +33,11 @@ class Problem1 {
             ret *= tmp.charAt(i) - '0';
         }
         return ret;
+    }
+
+    private static int compareScore(int pobiScore, int crongScore) {
+        if (pobiScore > crongScore) return 1;
+        else if (pobiScore < crongScore) return 2;
+        else return 0;
     }
 }
