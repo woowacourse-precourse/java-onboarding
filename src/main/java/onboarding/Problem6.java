@@ -23,6 +23,9 @@ public class Problem6 {
         private static Set<String> duplicateNicknameCrewSet = new HashSet<>();
 
         public static List<String> calculateDuplicateCrews(List<List<String>> forms) {
+            partOfNicknameMap.clear();
+            duplicateNicknameCrewSet.clear();
+
             List<Crew> crews = forms.stream().map(crew -> new Crew(crew.get(0), crew.get(1)))
                 .collect(Collectors.toList());
 
