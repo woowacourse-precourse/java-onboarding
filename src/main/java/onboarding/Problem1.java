@@ -46,7 +46,6 @@ class Problem1 {
     }
 
     private static boolean userValidation(List<Integer> user){
-        System.out.println("check validation");
         int leftPage = user.get(0);
         int rightPage = user.get(1);
         if(user.size()!=2) {
