@@ -34,6 +34,18 @@ public class Problem7 {
             }
         }
 
+        for (String visitor : visitors) {
+            User findUser = users.get(visitor);
+            if (findUser == null) {
+                findUser = new User(visitor);
+                users.put(visitor, findUser);
+            }
+            if (users.get(user).hasNoFriend(findUser)) {
+                recommendedFriends.add(findUser);
+                findUser.plusPoint(VISITOR_POINT);
+            }
+        }
+
         return answer;
     }
 
@@ -62,6 +74,10 @@ public class Problem7 {
                     ", point=" + point +
                     ", friends=" + friends +
                     '}';
+        }
+
+        public boolean hasNoFriend(User findUser) {
+            return !friends.contains(findUser);
         }
     }
 }
