@@ -24,4 +24,12 @@ public class Problem2 {
         deduplicationLetters.removeLast();
     }
 
+    private static String getDeduplication(LinkedList<Character> deduplicationLetters) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (char letter : deduplicationLetters) {
+            stringBuilder.append(letter);
+        }
+
+        return stringBuilder.toString();
+    }
 }
