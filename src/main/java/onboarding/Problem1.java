@@ -24,7 +24,7 @@ class Problem1 {
 
     private static final class Constance {
         private static final int START_PAGE_NUMBER = 1;
-        private static final int END_PAGE_NUMBER = 400;
+        private static final int LAST_PAGE_NUMBER = 400;
         private static final int WINNER_USER1_MESSAGE = 1;
         private static final int WINNER_USER2_MESSAGE = 2;
         private static final int SCORE_SAME_MESSAGE = 0;
@@ -60,11 +60,11 @@ class Problem1 {
         }
 
         private static boolean isEndPage(int pageNumber) {
-            return pageNumber == Constance.END_PAGE_NUMBER - 1 || pageNumber == Constance.END_PAGE_NUMBER;
+            return pageNumber == Constance.LAST_PAGE_NUMBER - 1 || pageNumber == Constance.LAST_PAGE_NUMBER;
         }
 
         private static boolean isPageSizeLackOrOverflow(int pageNumber) {
-            return pageNumber < Constance.START_PAGE_NUMBER || pageNumber > Constance.END_PAGE_NUMBER;
+            return pageNumber < Constance.START_PAGE_NUMBER || pageNumber > Constance.LAST_PAGE_NUMBER;
         }
 
         private static boolean isPageContinue(int leftPageNumber, int rightPageNumber) {
