@@ -6,6 +6,6 @@
 |-----|-----|-----------------------------|----------|--------|-------------------------------------------------------|--------------------|
  | O   | 1   | onBoarding-back-Problem1-01 | solution | 유효성    | private static boolean validPage(List<Integer> pages) | 입력값의 유효성 확인        |
 | O   | 2   | onBoarding-back-Problem1-02 | solution | 합      | private static int getSumNumber(Integer page)         | 각 자리 숫자의 합을 구한다    |
-| X   | 3   | onBoarding-back-Problem1-03 | solution | 곱      |                                                       | 각 자리 숫자의 곱을 구한다    |
+| X   | 3   | onBoarding-back-Problem1-03 | solution | 곱      | private static int getMultiplyNumber(Integer page)    | 각 자리 숫자의 곱을 구한다    |
 | X   | 4   | onBoarding-back-Problem1-04 | solution |        |                                                       | 페이지 번호 게임의 승자를 구한다 |
 

@@ -29,4 +29,14 @@ class Problem1 {
         }
         return answer;
     }
+
+    private static int getMultiplyNumber(Integer page){
+        int answer = 1;
+
+        while (page > 0){
+            answer *= page % 10;
+            page /= 10;
+        }
+        return answer;
+    }
 }
