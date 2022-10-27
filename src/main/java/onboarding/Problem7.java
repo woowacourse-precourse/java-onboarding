@@ -37,6 +37,9 @@ public class Problem7 {
             return friends;
         }
 
+        public List<String> getVisitor() {
+            return visitor;
+        }
     }
 
     public static Map<String, User> repository = new HashMap<>();
@@ -52,13 +55,18 @@ public class Problem7 {
         userInstance.setVisitor(visitors); // init visitor
 
         setSameFriendScore(user, newFriendMap);
-
+        setVisitorScore(user, newFriendMap);
 
         return answer;
     }
 
     private static void setVisitorScore(String user, Map<String, Integer> newFriendMap){
+        User userInstance = repository.get(user);
+        List<String> visitors = userInstance.getVisitor();
 
+        for (String name : visitors){
+            newFriendMap.put(name, newFriendMap.getOrDefault(name, 0) + 1);
+        }
     }
 
     private static void setSameFriendScore(String user, Map<String, Integer> newFriendMap) {
@@ -81,7 +89,6 @@ public class Problem7 {
         return mergeFriends.size() - nameSet.size();
     }
 
-    private static setFriendScore()
 
     private static void initFriend(List<List<String>> friends) {
         for (List<String> friend : friends){
