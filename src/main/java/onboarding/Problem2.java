@@ -7,10 +7,15 @@ package onboarding;
  */
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String removeOnce = removeDup("zyelleyz");
-        System.out.println(removeOnce);
-        String answer = "answer";
-        return answer;
+        String curr = cryptogram;
+        String next = "";
+        while (true) {
+            next = removeDup(curr);
+            if (curr.equals(next))
+                break;
+            curr = next;
+        }
+        return next;
     }
 
     /**
