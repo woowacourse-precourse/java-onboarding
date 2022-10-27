@@ -7,7 +7,7 @@ package onboarding;
 import java.util.*;
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        StringBuilder sb = new StringBuilder();
         Deque<Character> dq = new ArrayDeque<>();
 
         for(int i = 0; i<cryptogram.length();i++){
@@ -25,6 +25,9 @@ public class Problem2 {
                 }
             }
         }
-        return answer;
+        while(!dq.isEmpty()){
+            sb.append(dq.poll());
+        }
+        return sb.toString();
     }
 }
