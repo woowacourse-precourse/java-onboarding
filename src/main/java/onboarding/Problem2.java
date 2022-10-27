@@ -24,6 +24,20 @@ public class Problem2 {
         }
     }
 
+    private static boolean hasDuplicateWord(String cryptogram) {
+        byte prevLetter = -1;
+
+        for (byte letter : cryptogram.getBytes()) {
+            if (prevLetter == letter) {
+                return true;
+            }
+            prevLetter = letter;
+        }
+
+        return false;
+    }
+
+
     private static boolean isValidRange(int length) {
         return length >= MIN_LENGTH && length <= MAX_LENGTH;
     }
