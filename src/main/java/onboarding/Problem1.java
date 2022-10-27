@@ -8,20 +8,25 @@ import java.util.List;
  * 3. 승자 비교
  */
 class Problem1 {
+    private static final int DRAW = 0;
+    private static final int POBI_WIN = 1;
+    private static final int CRONG_WIN = 2;
+    private static final int EXCEPTION = -1;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (validationPages(pobi) || validationPages(crong)) {
-            return -1;
+            return EXCEPTION;
         }
         int pobiMaxValue = getMaxValue(pobi);
         int crongMaxValue = getMaxValue(crong);
 
         if (pobiMaxValue > crongMaxValue) {
-            return 1;
+            return POBI_WIN;
         }
         if (crongMaxValue > pobiMaxValue) {
-            return 2;
+            return CRONG_WIN;
         }
-        return 0;
+        return DRAW;
     }
 
     private static boolean validationPages(List<Integer> pages) {
