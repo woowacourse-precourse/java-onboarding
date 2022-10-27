@@ -1,15 +1,27 @@
 package onboarding;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
+        // 입력 페이지 검증 후 예외 사항일 경우 -1을 리턴한다.
         if (isNotPageValid(pobi) || isNotPageValid(crong)) {
             return -1;
         }
+
+        // 포비의 왼쪽, 오른쪽 페이지 번호를 구한다.
+        int pobiLeftPage = pobi.get(0);
+        int pobiRightPage = pobi.get(1);
+
+        // 크롱의 왼쪽, 오른쪽 페이지 번호를 구한다.
+        int crongLeftPage = crong.get(0);
+        int crongRightPage = crong.get(1);
+
 
         return answer;
     }
@@ -80,6 +92,17 @@ class Problem1 {
     private static boolean isNotPageContinuous(int leftPage, int rightPage) {
         return rightPage - leftPage != 1;
     }
+    
+    /**
+     * 입력 받은 페이지의 각 자릿수를 담은 배열을 구한다.
+     *
+     * @param page 페이지 번호
+     * @return 각 자릿수가 담긴 배열
+     */
+    private static int[] getPageValueArray(int page) {
+        String[] digitStrArr = String.valueOf(page).split("");
 
+        return Stream.of(digitStrArr).mapToInt(Integer::parseInt).toArray();
+    }
 
 }
