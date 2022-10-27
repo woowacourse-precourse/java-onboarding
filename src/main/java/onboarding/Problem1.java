@@ -13,6 +13,16 @@ class Problem1 {
         return answer;
     }
 
+    public static List<List<Integer>> getEachDigitOfTwoPages(List<Integer> pages) {
+        List<List<Integer>> digitsOfTwoPages = new ArrayList<>();
+
+        for (Integer page : pages) {
+            digitsOfTwoPages.add(getEachDigit(page));
+        }
+
+        return digitsOfTwoPages;
+    }
+
     public static List<Integer> getEachDigit(Integer page) {
         List<Integer> digits = new ArrayList<>();
         String pageString = page.toString();
