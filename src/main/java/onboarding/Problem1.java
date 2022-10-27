@@ -21,6 +21,20 @@ class Problem1 {
         return result;
     }
 
+    public static int biggestNumber(List<Integer> pageList) {
+        int biggestNumber = 0;
+        for (int page : pageList) {
+            int sumOfPageNumber = sumOfPageNumber(page);
+            int productOfPageNumber = productOfPageNumber(page);
+            int biggerNumber = Math.max(sumOfPageNumber, productOfPageNumber);
+
+            if (biggerNumber > biggestNumber) {
+                biggestNumber = biggerNumber;
+            }
+        }
+        return biggestNumber;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
