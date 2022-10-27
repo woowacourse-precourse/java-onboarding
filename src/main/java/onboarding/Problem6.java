@@ -55,6 +55,16 @@ public class Problem6 {
     public static List<String> getEmailsOfInvalidNickname(List<List<String>> forms, List<String> invalidNicknames){
         List<String> emailsOfInvalidNickname = new ArrayList<>();
 
+        for(List<String> crew : forms){
+            String email = crew.get(0);
+            String nickname = crew.get(1);
+            if(invalidNicknames.contains(nickname) && !emailsOfInvalidNickname.contains(nickname)){
+                emailsOfInvalidNickname.add(email);
+            }
+        }
+
+        Collections.sort(emailsOfInvalidNickname);
+
         return emailsOfInvalidNickname;
     }
 }
