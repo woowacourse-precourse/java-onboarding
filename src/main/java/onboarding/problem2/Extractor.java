@@ -7,4 +7,17 @@ public class Extractor {
 		}
 		return str.substring(0, start) + str.substring(end + 1, str.length());
 	}
+
+	private static int countSameNumber(String str, int index) {
+		char[] chars = str.toCharArray();
+		char targetChar = chars[index];
+		int count = 0;
+		for (int i = index; i < chars.length; i++) {
+			if (chars[i] != targetChar) {
+				break;
+			}
+			count++;
+		}
+		return count;
+	}
 }
