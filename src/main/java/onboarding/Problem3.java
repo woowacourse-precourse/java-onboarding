@@ -1,7 +1,8 @@
 package onboarding;
 
 /** 기능 목록
- * countClap    :
+ * solutionLogic : 메인 솔루션
+ * countClap    : 해당 숫자 박수 갯수 반환
  * checkValid   : 예외 처리
  */
 
