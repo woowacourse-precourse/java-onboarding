@@ -12,6 +12,7 @@ public class Problem2 {
 
         // 중복되는 문자열을 제거하는 단계
         for (int i = 1; i < cryptogramList.size(); i++) {
+            if(i == 0) continue; // 인덱스가 -1이 나오는 예외를 처리
             if (cryptogramList.get(i - 1).equals(cryptogramList.get(i))) {
                 cryptogramList.remove(i);
                 cryptogramList.remove(i - 1);
