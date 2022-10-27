@@ -8,9 +8,11 @@ public class Problem4 {
 
     private static String changeCharacterFromDictionary(String word) {
 
+        String reversedWord = "";
         for (int i = 0; i < word.length(); i++) {
-            searchForReverseCharacter(word.charAt(i));
+            reversedWord += searchForReverseCharacter(word.charAt(i));
         }
+        return reversedWord;
     }
 
     private static Character searchForReverseCharacter(char character) {
