@@ -64,7 +64,7 @@ BUILD SUCCESSFUL in 0s
 
 ---
 
-## 구현할 기능 목록 정리
+## ✅ 구현할 기능 목록 정리
 
 ### 문제 1
 
@@ -103,8 +103,7 @@ BUILD SUCCESSFUL in 0s
 
 ### 문제 7
 
-- [ ] user를 제외한 사람 중 친구 끼리 간선으로 연결한다.
-- [ ] user의 친구는 userFriendsList에 넣는다.
+- [ ] user의 친구는 userFriends에 넣는다.
 - [ ] userFriendsList에 있는 사람과 연결된 사람은 연결 당 10점을 얻는다.
 - [ ] visitors에 있는 사람은 갯수당 1점을 얻는다.
 - [ ] 사람중 점수가 높고 점수가 같다면 이름순서로 정렬한다.
