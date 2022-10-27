@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     private static Map<String, List<String>> friendsMap;
@@ -14,7 +15,12 @@ public class Problem7 {
         friendsMap.get(user).forEach(f -> increaseFriendPoint(f, user));
         increaseVisitorPoint(visitors, user);
 
-        return Collections.emptyList();
+        return pointMap.entrySet().stream()
+                .sorted(Map.Entry.comparingByKey())
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .map(Map.Entry::getKey)
+                .limit(5)
+                .collect(Collectors.toList());
     }
 
     private static void increaseVisitorPoint(List<String> visitors, String user) {
