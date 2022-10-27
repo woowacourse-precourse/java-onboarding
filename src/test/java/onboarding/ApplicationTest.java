@@ -115,6 +115,17 @@ class ApplicationTest {
         Problem2.isAllowedString(cryptogram);
       });
      }
+
+     @Test
+     void isAllowedStringLength() {
+       //given
+       String cryptogram = "aaaaaaaaaaa";
+
+       //then
+       assertThrows(IllegalStateException.class, () ->{
+         Problem2.isAllowedStringLength(cryptogram);
+       });
+      }
   }
 
   @Nested
