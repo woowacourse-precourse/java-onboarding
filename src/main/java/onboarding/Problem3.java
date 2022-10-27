@@ -11,7 +11,9 @@ import java.util.List;
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
-        handclap(number);
+        for(int i=1; i<=number; i++){
+            answer+=handclap(i);
+        }
         return answer;
     }
     static final List<Integer> threesixnine = List.of(3, 6, 9);
