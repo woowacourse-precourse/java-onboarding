@@ -35,9 +35,15 @@ public class Problem2 {
     /**
      * [종료 조건 확인]
      * - 입력받은 문자열에 제거할 문자가 있는지 확인한다.
-     *
+     * - 계속 진행하는 상황이면 true, 끝났으면 false를 리턴한다.
      */
     public static boolean endPoint(String cryptogram){
-        return true;
+        int beforeCryptogramSize = cryptogram.length();
+        int afterCryptogramSize = deduplication(cryptogram).length();
+        if (beforeCryptogramSize == afterCryptogramSize) {
+            return false;
+        }else {
+            return true;
+        }
     }
 }
