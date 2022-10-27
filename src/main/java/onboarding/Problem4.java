@@ -19,6 +19,10 @@ public class Problem4 {
 
     public static String solution(String word) {
         String answer = "";
+        Map<Character, Character> alphaInfo = makeDict();
+        for(char w : word.toCharArray()) {
+            answer += w == ' ' ? " " : alphaInfo.get(w);
+        }
         return answer;
     }
 }
