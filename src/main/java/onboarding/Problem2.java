@@ -8,12 +8,14 @@ public class Problem2 {
         for (int i = 0; i < s.length; i++) {
             char c = s.charAt(i);
             if (stack != null && stack.peek() == c) {
-                stack.pop()
+                stack.pop();
             }
             else{
-                stack.push(c)
+                stack.push(c);
             }
         }
+        String res = String.join("", stack);
+        return res;
     }
     public static void solution(String cryptogram) {
         System.out.println(erase(cryptogram));
