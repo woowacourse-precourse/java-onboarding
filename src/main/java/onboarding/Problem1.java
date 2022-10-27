@@ -39,4 +39,15 @@ class Problem1 {
         }
         return Math.max(sum, mul);
     }
+
+    //점수 비교
+    public static int compare(int a, int b) {
+        if (a > b) {
+            return 1;
+        } else if (a < b) {
+            return 2;
+        } else {
+            return 0;
+        }
+    }
 }
