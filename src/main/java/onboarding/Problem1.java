@@ -23,7 +23,13 @@ class Problem1 {
         return num;
     }
     //한명의 최대 점수를 구하는 함수
-
+    static int getMax(List<Integer> a){
+        int maxNumber =0;
+        for (int number : a) {
+            maxNumber = Math.max(maxNumber, Math.max(sum(number), product(number)));
+        }
+        return maxNumber;
+    }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
