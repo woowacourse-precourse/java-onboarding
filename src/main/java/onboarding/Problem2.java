@@ -9,9 +9,14 @@ public class Problem2 {
         String returnCryptogram = "";
         for(int i=0;i<cryptogram.length();i++){
             if (cryptogram.charAt(i) == cryptogram.charAt(i)){
-                while()
             }
         }
         return ""
+    }
+    public static int findNextIndex(String cryptogram,int index){
+        while(cryptogram.charAt(index) != cryptogram.charAt(index) && index < cryptogram.length()){
+            index++;
+        }
+        return index;
     }
 }
