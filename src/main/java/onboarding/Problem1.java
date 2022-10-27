@@ -34,10 +34,28 @@ class Problem1 {
         return temp_max;
     }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = 0;
         if(pobi.get(1) - pobi.get(0) != 1 || crong.get(1) - crong.get(0) != 1 || pobi.get(0) % 2 != 1 || crong.get(0) %2 != 1) {
             return -1;
         }
-        return answer;
+
+        List<Integer> pobi_new = new ArrayList<>(2);
+        List<Integer> crong_new = new ArrayList<>(2);
+        for (int i = 0; i < 2; i++){
+            pobi_new.add(find_max(pobi.get(i)));
+            crong_new.add(find_max(crong.get(i)));
+        }
+        int pobi_max = max(pobi_new);
+        int crong_max = max(crong_new);
+
+        if(pobi_max == crong_max){
+            return 0;
+        }
+        else if(pobi_max > crong_max){
+            return 1;
+        }
+        else if(pobi_max < crong_max){
+            return 2;
+        }
+        return 0;
     }
 }
