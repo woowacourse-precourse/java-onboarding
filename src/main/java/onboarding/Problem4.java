@@ -12,6 +12,19 @@ import java.util.HashMap;
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
+        HashMap<Character, Character> hashMap = makeHashMap();
         return answer;
+    }
+
+    public static HashMap<Character, Character> makeHashMap() {
+        HashMap<Character, Character> hashMap = new HashMap<>();
+        hashMap.put(' ',' ');
+        for (int i = 0; i < 26; i++) {
+            hashMap.put((char) ('a' + i), (char) ('a' + 25 - i));
+        }
+        for (int i = 0; i < 26; i++) {
+            hashMap.put((char) ('A' + i), (char) ('A' + 25 - i));
+        }
+        return hashMap;
     }
 }
