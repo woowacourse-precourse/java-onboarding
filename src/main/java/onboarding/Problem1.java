@@ -3,10 +3,16 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+
+    private static final int ERROR = -1;
+    private static final int DRAW = 0;
+    private static final int POBI_WIN = 1;
+    private static final int CRONG_WIN = 2;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
         if (errorCheck(pobi, crong)) {
-            return -1;
+            return ERROR;
         }
 
         Integer pobiMax = getScore(pobi);
@@ -19,7 +25,7 @@ class Problem1 {
         return user.stream()
                 .map(Problem1::getMaxValue)
                 .max(Integer::compareTo)
-                .orElse(-1);
+                .orElse(ERROR);
     }
 
     private static boolean errorCheck(List<Integer> pobi, List<Integer> crong) {
@@ -46,13 +52,13 @@ class Problem1 {
 
     private static int getWinner(int pobiMax, int crongMax) {
         if (pobiMax > crongMax) {
-            return 1;
+            return POBI_WIN;
         }
         if (pobiMax < crongMax) {
-            return 2;
+            return CRONG_WIN;
         }
 
-        return 0;
+        return DRAW;
     }
 
     private static Integer getMaxValue(Integer page) {
