@@ -1,12 +1,13 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
 //        List<String> answer = List.of("answer");
-        List<String> answer = new ArrayList<>();
         // 사용자 이름을 기반으로 2글자씩 substring정보를 담는 이중 list 생성
         List<String> emailList = makeEmailList(forms);
         List<String> nameList = makeNameList(forms);
@@ -14,6 +15,10 @@ public class Problem6 {
         List<List<String>> substringList = makeSubstringList(nameList);
         List<Integer> duplicatedIndexList = getDuplicatedIndex(substringList);
         List<String> duplicatedEmailList = findEmailByIndex(emailList, duplicatedIndexList);
+
+        HashSet<String> set = new HashSet<>(duplicatedEmailList);
+        List<String> answer = new ArrayList<>(set);
+        Collections.sort(answer);
 
         return answer;
     }
