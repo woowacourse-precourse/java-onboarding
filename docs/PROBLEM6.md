@@ -21,3 +21,12 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+
+## 기능 목록
+- [ ] 크루의 이름과 이메일을 매핑한다.
+- [ ] 크루의 이름을 2글자씩 저장하며 숫자를 카운트한다.
+- [ ] 크루의 이름의 토큰을 저장된 리스트에서 조회후 2이상인지 조회한다.
+  - [ ] 토큰수가 2 이상이라면 리스트에 추가한다.
+  - [ ] 리스트를 정렬한다.
+- 
