@@ -19,3 +19,7 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+### 기능 목록
+- alphabetJudgement 메소드 : 입력된 알파벳이 대문자면 1, 소문자면 2, 알파벳이 아니면 0을 리턴한다.
+- alphabetConversion 메소드 : 입력 String의 알파벳을 ASCII를 이용하여 청개구리 사전대로 변환해서 answer에 붙인다.
