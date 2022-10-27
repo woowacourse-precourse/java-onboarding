@@ -5,7 +5,7 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if(checkException(pobi) || checkException(crong)){
-            return -1;
+            return Prob1Message.exception.message;
         }
         int pobiNum = getMax(pobi);
         int crongNum = getMax(crong);
@@ -24,12 +24,12 @@ class Problem1 {
 
     static int getResult(int i, int j){
         if( i > j){
-            return 1;
+            return Prob1Message.pobiWin.message;
         }
         if (i < j){
-            return 2;
+            return Prob1Message.crongWin.message;
         }
-        return 0;
+        return Prob1Message.draw.message;
     }
 
     static int getMax(List<Integer> list){
@@ -58,5 +58,15 @@ class Problem1 {
             tmp /= 10;
         }
         return Math.max(sum, multi);
+    }
+}
+
+enum Prob1Message {
+    pobiWin(1), crongWin(2), draw(0), exception(-1);
+
+    int message;
+
+    Prob1Message(int message) {
+        this.message = message;
     }
 }
