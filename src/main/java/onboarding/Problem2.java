@@ -1,21 +1,15 @@
 package onboarding;
 
-import java.util.Scanner;
-
 public class Problem2 {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String str = sc.next();
-
-        System.out.println(solution(str));
-    }
 
     public static String solution(String cryptogram) {
-        if (cryptogram == null || cryptogram.length() == 0) {
+
+        char[] ch = cryptogram.toCharArray();
+
+        if (cryptogram == null || cryptogram.length() == 0 || ch[0] == ch[1]) {
             return "";
         }
 
-        char[] ch = cryptogram.toCharArray();
 
         int i, k = 0;
 
