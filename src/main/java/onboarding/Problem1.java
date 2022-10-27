@@ -1,8 +1,15 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
+
+    static class Game {
+        private List<Score> participantList = new ArrayList<>();
+        private boolean errorFlag = false;
+    }
+
 
     static class Score {
         private Page page;
