@@ -24,32 +24,53 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
         HashMap<String, String> hashMap = new HashMap<>();
-        HashMap<String, String> hashMap2 = new HashMap<>();
+        ArrayList<String> arr = new ArrayList<>();
 
         for (List<String> i : forms) {
-            System.out.println("input: "+i.get(0) + " " + i.get(1));
-            hashMap.put(i.get(0), i.get(1)); // 해시에 키와 값을 넣어줌
-
-        }
-        String prev = " ";
-        String next = " ";
-        ArrayList<String> arr = new ArrayList<>();
-        for (String key : hashMap.keySet()) {
-            String s = hashMap.get(key);
-            arr.add(s);
+            hashMap.put(i.get(1), i.get(0)); // 해시에 키와 값을 넣어줌
+            arr.add(i.get(1)); // 리스트에 닉네임 담기
         }
 
-        /**
-         - 해결 해야 하는 부분 :
-         1) 두 문자열을 반복해서 비교해 다음 해쉬 값과 비교하고
-         2) 입력
-         **/
+        String prev = "";
+        String next = "";
+        int cnt = -1;
+        boolean canCal = false;
 
+        for (int i = 0; i < arr.size(); i++) {
+            if(cnt+1 < arr.get(i).length()){
+                cnt++;
+                canCal = false;
+            } else continue;
 
+            // 비교 대상 명단의 두 글자
+            prev += arr.get(i).charAt(cnt);
+            prev += arr.get(i).charAt(cnt+1);
 
+            for (int j = i+1; j < arr.size(); j++) {
+                if (cnt+1 >= arr.get(j).length()) {
+                    continue;
+                }
+                else {
+                    canCal = true;
+                    // 다음 명단의 두 글자
+                    next += arr.get(j).charAt(cnt);
+                    next += arr.get(j).charAt(cnt+1);
 
-        hashMap.entrySet().stream() // hashmap을 스트림을 이용해 정렬
-                .sorted(Map.Entry.comparingByValue())
+                    if (prev.equals(next)) {
+                        String inputNext = arr.get(j);
+                        answer.add(hashMap.get(inputNext));
+                    }
+                    next = "";
+                }
+            }
+
+            prev = "";
+
+            if(canCal==false) break; // 순환할 수 있는 배열 원소가 없음
+        }
+
+        hashMap.entrySet().stream() // hashmap을 스트림을 이용해 정렬, add완료 후 마다 정렬
+                .sorted(Map.Entry.comparingByKey())
                 .forEach(entry -> System.out.println(entry.getKey() + " " + entry.getValue()));
 
         return answer;
