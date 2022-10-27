@@ -29,9 +29,9 @@ class Problem1 {
     }
 
     public static boolean isException(int leftPage, int rightPage) {
-        if((rightPage - leftPage) != 1)
+        if(leftPage == FIRST_PAGE || leftPage == LAST_PAGE)
             return true;
-        if(leftPage < FIRST_PAGE || rightPage > LAST_PAGE)
+        if((rightPage - leftPage) != 1)
             return true;
 
         return false;
