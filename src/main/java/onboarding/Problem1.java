@@ -11,8 +11,7 @@ class Problem1 {
      * 예외사항
      */
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        return game(pobi,crong);
     }
 
     /*
