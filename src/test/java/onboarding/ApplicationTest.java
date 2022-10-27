@@ -196,6 +196,17 @@ class ApplicationTest {
             String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
+
+        @Test
+        void checkNotDuplicateTest() {
+            assertThat(Problem2.checkNotDuplicate('a')).isEqualTo(true);
+        }
+
+        @Test
+        void checkNotDuplicateExceptionTest() {
+            Problem2.st.push('a');
+            assertThat(Problem2.checkNotDuplicate('a')).isEqualTo(false);
+        }
     }
 
     @Nested
