@@ -18,7 +18,9 @@ public class Problem7 {
     List<String> visitor = exceptUserAndUserFrinedsOfVisitors(user, friendsByUser, visitors);
     setVisitorScore(record, visitor);
 
-    return List.of("");
+    List<Map.Entry<String, Integer>> list = new ArrayList<Map.Entry<String, Integer>>(record.entrySet());
+    Collections.sort(list, new ValueThenKeyComparator<String, Integer>());
+    return list.stream().map(s -> s.getKey()).collect(Collectors.toList());
   }
 
   private static List<String> exceptUserAndUserFrinedsOfVisitors(String user, List<String> friendsByUser, List<String> visitors) {
@@ -73,6 +75,20 @@ public class Problem7 {
         continue;
       }
       record.put(visitor, VISIT_SCORE);
+    }
+  }
+
+  static class ValueThenKeyComparator<K extends Comparable<? super K>,
+          V extends Comparable<? super V>>
+          implements Comparator<Map.Entry<K, V>> {
+
+    public int compare(Map.Entry<K, V> a, Map.Entry<K, V> b) {
+      int cmp1 = b.getValue().compareTo(a.getValue());
+      if (cmp1 != 0) {
+        return cmp1;
+      } else {
+        return a.getKey().compareTo(b.getKey());
+      }
     }
   }
 }
