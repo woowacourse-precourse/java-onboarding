@@ -1,10 +1,35 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeSet;
 
 public class Problem6 {
+    // createToken 길이가 2인 부분 문자열 생성하는 메소드
+    public static List<String> createToken(String nickname) {
+        List<String> result = new ArrayList<>();
+
+        for (int i = 0; i < nickname.length() - 1; i++) {
+            result.add(nickname.substring(i, i + 2));
+        }
+
+        return result;
+    }
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
+
+        TreeSet<String> treeSet = new TreeSet<>();
+
+        // 같은 글자가 연속으로 포함되는지 체크
+        // 2글자 이상이 부분 문자열로 들어가는지 체크
+        // 한 사람 당 [0,1], [1,2], ..., [18,19] 19개의 연속 부분 단어 생성 가능.
+        // 길이가 2인 부분 문자열이므로, 부분 문자열 알고리즘을 사용할 필요 X
+
+        // 한 사람 당 19개, 포함되는지 10_000 - 1 명에게 확인 20 * 10_000 * 20
+
+
+        // 오름차 순으로 정렬 -> 중복 제거
         return answer;
     }
 }
