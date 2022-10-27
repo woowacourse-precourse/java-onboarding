@@ -5,6 +5,7 @@ import java.util.Stack;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "";
+
         Stack<Character> left = new Stack<>();
         Stack<Character> right = new Stack<>();
 
@@ -24,10 +25,6 @@ public class Problem2 {
         for(int i=0; i<rightsize; i++) {
             answer += right.pop();
         }
-
         return answer;
     }
-
-
-
 }
