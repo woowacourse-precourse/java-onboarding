@@ -43,10 +43,10 @@ class Problem1 {
     }
 
     static int getScore(List<Integer> pageNums){
-        // TODO: . 을 줄이는 방향으로 리팩토링
-        Stream<Integer> pageStream = pageNums.stream();
-        IntStream pageResult = pageStream.mapToInt(p -> Integer.max(addPageNum(p), mulPageNum(p)));
-        return pageResult.max().getAsInt();
+        int leftResult = pageResult(pageNums.get(0));
+        int rightResult = pageResult(pageNums.get(1));
+
+        return Integer.max(leftResult, rightResult);
     }
 
     static boolean isPageException(List<Integer> pageNums){
