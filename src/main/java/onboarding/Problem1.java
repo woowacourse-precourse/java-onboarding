@@ -42,4 +42,34 @@ class Problem1 {
 
         return false;
     }
+
+    /**
+     * 각 자리수의 합을 구합니다.
+     * 
+     * @param num
+     * @return 각 자리수의 합
+     */
+    private static int eachSum(int num) {
+        int result = 0;
+        while (num > 0) {
+            result += num % 10;
+            num /= 10;
+        }
+        return result;
+    }
+
+    /**
+     * 각 자리수의 곱을 구합니다.
+     * 
+     * @param num
+     * @return 각 자리수의 곱
+     */
+    private static int eachMultiplication(int num) {
+        int result = 1;
+        while (num > 0) {
+            result *= num % 10;
+            num /= 10;
+        }
+        return result;
+    }
 }
