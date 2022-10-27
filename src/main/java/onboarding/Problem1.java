@@ -38,8 +38,8 @@ class Problem1 {
             return -1;
         }
 
-        int leftRes = Math.max(getSum(leftPage), getSum(leftPage));
-        int rightRes = Math.max(getSum(rightPage), getSum(rightPage));
+        int leftRes = Math.max(getSum(leftPage), getMul(leftPage));
+        int rightRes = Math.max(getSum(rightPage), getMul(rightPage));
 
         return Math.max(leftRes, rightRes);
     }
