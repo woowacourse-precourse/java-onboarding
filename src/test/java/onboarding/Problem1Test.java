@@ -29,8 +29,14 @@ class Problem1Test {
 
     @Test
     void ex_unValidNum() {
-        List<Integer> pobi = List.of(98, 99);
-        int result = Problem1Util.getMaxBetweenSumAndMultiply(pobi);
-        assertThat(result).isEqualTo(-1);
+        int result1 = Problem1Util.getMaxBetweenSumAndMultiply(List.of(98, 99));
+        assertThat(result1).isEqualTo(-1);
+
+        int result2 = Problem1Util.getMaxBetweenSumAndMultiply(List.of(399, 400));
+        int result3 = Problem1Util.getMaxBetweenSumAndMultiply(List.of(1, 2));
+        int result4 = Problem1Util.getMaxBetweenSumAndMultiply(List.of(3, 4));
+        assertThat(result2).isEqualTo(-1);
+        assertThat(result3).isEqualTo(-1);
+        assertThat(result4).isEqualTo(4);
     }
 }

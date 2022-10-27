@@ -16,7 +16,9 @@ public class Problem1Util {
         if (nums.size() != 2) return false; //  input되는 숫자가 두 개인가
         if (nums.get(1) - nums.get(0) != 1) return false; // 연속된 두 숫자인가
         for (int i = 0; i < 2; i++) {
-            if (nums.get(i) % 2 != 1 - i) {
+            Integer num = nums.get(i);
+            if (num <= 1 || num >= 400) return false;
+            if (num % 2 != 1 - i) {
                 return false; // 해당 숫자가 [홀수, 짝수]인가
             }
         }
