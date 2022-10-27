@@ -7,4 +7,9 @@ public class Problem6 {
         List<String> answer = List.of("answer");
         return answer;
     }
+
+	static class User {
+		private String email;
+		private String nickname;
+	}
 }
