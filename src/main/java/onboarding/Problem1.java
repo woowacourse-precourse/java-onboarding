@@ -2,6 +2,14 @@ package onboarding;
 
 import java.util.List;
 
+/**
+ * 기능 구현 사항
+ *
+ * 1. 페이지를 통해 max 값 추출
+ * 2. return 값 정하기
+ * 3. 예외처리 구현
+ */
+
 class Problem1 {
     private static int extraction(int page){
         int result;
