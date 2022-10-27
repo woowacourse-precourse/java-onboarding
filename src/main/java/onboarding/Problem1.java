@@ -56,6 +56,9 @@ class Problem1 {
         boolean result = true;
         int number1 = player.get(0);
         int number2 = player.get(1);
+        if(player.size() > 2){
+            result = false;
+        }
         if(number1 < MIN_PAGE || number1 > MAX_PAGE){
             result = false;
         }
@@ -87,6 +90,7 @@ class Problem1 {
                 answer = TIE;
             }
         }
+
         if(!isValidInput){
             answer = EXCEPTION;
         }
