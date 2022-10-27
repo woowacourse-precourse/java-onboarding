@@ -8,8 +8,8 @@ public class Problem5 {
     static int rest_money;
     public static List<Integer> solution(int money) {
         rest_money = money;
-        List<Integer> answer = Collections.emptyList();
-        return answer;
+
+        return check_unit_count();
     }
 
     public static List<Integer> check_unit_count(){
