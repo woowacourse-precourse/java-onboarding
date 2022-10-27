@@ -14,16 +14,20 @@ public class Problem6 {
 
         for(int i = 0; i<forms.size(); i++){
             String str = forms.get(i).get(1);
+            Set<String> tmpSet= new HashSet<>();
 
             for(int j = 0; j<str.length()-1; j++){
                 String tmp = str.substring(j, j+2);
 
                 if(list.indexOf(tmp) == -1){
-                    list.add(tmp);
+                    tmpSet.add(tmp);
                 }
                 else if(duplicate.indexOf(tmp) == -1){
                     duplicate.add(tmp);
                 }
+            }
+            for(String tmp : tmpSet){
+                list.add(tmp);
             }
         }
 
