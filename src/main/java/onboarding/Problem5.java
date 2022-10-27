@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -13,7 +14,7 @@ public class Problem5 {
         if (!checkValid(money)) {
             return Collections.emptyList();
         }
-        List<Integer> answer = Collections.emptyList();
+        List<Integer> answer = new ArrayList<>();
         for (int i = 0; i < 9; i++) {
             answer.add(money / wallet[i]);
             money = money % wallet[i];
