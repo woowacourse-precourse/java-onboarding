@@ -54,3 +54,15 @@
 * 메소드
   * 문자열의 소문자를 조건에 맞게 변경 **changeSmallLetters**
   * 문자열의 대문자를 조건에 맞게 변경 **changeCapitalLetters**
+### 문제5
+1. unitCounting 결과를 unitCount에 담는다.
+2.  전환된 돈을 차감한다. money - (unitCount * BANKNOTE_UNIT)
+3. 위를 9회 반복하면 unitCount를 List\<Integer>로 변환해 *answer*에 담는다.
+4. *answer*를 반환한다.
+* 필드
+  * 상수
+    * *BANKNOTE_UNIT[9]*
+  * List\<Integer> *answer*
+  * int[ ] *unitCount*
+  * 메소드
+    * 단위로 나눈 몫을 반환 **unitCounting**
