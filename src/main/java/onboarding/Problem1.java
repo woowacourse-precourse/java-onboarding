@@ -8,6 +8,15 @@ class Problem1 {
     static class Game {
         private List<Score> participantList = new ArrayList<>();
         private boolean errorFlag = false;
+
+        void addParticipant(List<Integer> person) {
+            try {
+                participantList.add(new Score(person));
+            } catch(RuntimeException e){
+                errorFlag = true;
+            }
+        }
+
     }
 
 
