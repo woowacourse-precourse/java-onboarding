@@ -2,11 +2,19 @@ package onboarding;
 
 public class Problem4 {
 
+    private static char translateUpperCase(char c) {
+        return (char)('Z' - (c - 'A'));
+    }
+
+    private static char translateLowerCase(char c) {
+        return (char)('z' - (c - 'a'));
+    }
+
     private static char translate(char c) {
         if (Character.isUpperCase(c)) {
-            return c; // 대문자 번역
+            return translateUpperCase(c);
         }
-        return c; // 소문자 번역
+        return translateLowerCase(c);
     }
 
     public static String solution(String word) {
