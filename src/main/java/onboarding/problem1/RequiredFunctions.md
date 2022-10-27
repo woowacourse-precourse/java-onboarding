@@ -17,7 +17,7 @@
     - [x] 구한 값들 중 큰 수를 점수로 한다.
   
 
-- [ ] 점수를 비교해 가장 높은 사람이 승자가 된다.
-    - [ ] pobi의 점수가 crong의 점수보다 높으면 1을 return 한다.
-    - [ ] crong의 점수가 pobi의 점수보다 높으면 2를 return 한다.
-    - [ ] pobi의 점수와 crong의 점수가 같으면 0을 return 한다.
+- [x] 점수를 비교해 가장 높은 사람이 승자가 된다.
+    - [x] pobi의 점수가 crong의 점수보다 높으면 1을 return 한다.
+    - [x] crong의 점수가 pobi의 점수보다 높으면 2를 return 한다.
+    - [x] pobi의 점수와 crong의 점수가 같으면 0을 return 한다.
