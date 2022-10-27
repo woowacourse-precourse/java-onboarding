@@ -11,6 +11,17 @@ import java.util.*;
 
 public class Problem7 {
 
+    private static Map<String, Integer> calculateScores(Map<String, Integer> mutualFriendsMap, List<String> visitors) {
+        Map<String, Integer> scoresMap = new HashMap<>();
+        for (String friend : mutualFriendsMap.keySet()) {
+            scoresMap.put(friend, mutualFriendsMap.get(friend) * 10);
+        }
+        for (String visitor : visitors) {
+            scoresMap.put(visitor, scoresMap.getOrDefault(visitor, 0) + 1);
+        }
+        return scoresMap;
+    }
+
     private static Map<String, Integer> getMutualFriends(String user, List<List<String>> friends, List<String> userFriends) {
         Map<String, Integer> mutualFriendsMap = new HashMap<>();
         for (String userFriend : userFriends) {
