@@ -10,6 +10,13 @@ import java.util.List;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
+        Deleter deleter;
+        PatternDeleteFactory patternDeleteFactory = new PatternDeleteFactory(new DuplicateDetector());
+
+        deleter = patternDeleteFactory.makeDelete();
+
+        answer = deleter.process(cryptogram);
+
         return answer;
     }
 }
@@ -60,8 +67,9 @@ class PatternDeleter implements Deleter {
         StringBuilder result = new StringBuilder(cryptogram);
         List<Integer> position;
         position = detector.findPattern(cryptogram);
-        while(position.get(0).intValue() != position.get(1).intValue()){
+        while(position.get(0).intValue() < position.get(1).intValue()){
             result = delete(result, position);
+            cryptogram = result.toString();
             position = detector.findPattern(cryptogram);
         }
         return result.toString();
