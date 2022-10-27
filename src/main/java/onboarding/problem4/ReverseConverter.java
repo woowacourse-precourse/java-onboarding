@@ -6,7 +6,19 @@ public class ReverseConverter {
     public static final int TYPE_UPPER_CASE = 1;
     public static final int TYPE_LOWER_CASE = 2;
 
+    private static final char ASCII_A_Z_SUM = 155;
+    private static final char ASCII_a_z_SUM = 219;
 
+
+    public static char convert(char ch){
+        if(checkCharType(ch) == TYPE_UPPER_CASE){
+            return (char) (ASCII_A_Z_SUM - ch);
+        }
+        if(checkCharType(ch) == TYPE_LOWER_CASE){
+            return (char) (ASCII_a_z_SUM - ch);
+        }
+        return ch;
+    }
 
     private static int checkCharType(char ch){
         if(Character.isUpperCase(ch)){
