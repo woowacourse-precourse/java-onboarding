@@ -11,10 +11,27 @@ import java.util.Map;
 public class Problem4 {
     static Map<Character, Character> frogDictionary;
     public static String solution(String word) {
-        StringBuilder answer = new StringBuilder();
+        String answer = "";
         frogDictionary = new HashMap<>();
         makingDictionary();
-        return answer.toString();
+        answer = reverseWord(word);
+        return answer;
+    }
+
+    private static String reverseWord(String word) {
+        StringBuilder reverse = new StringBuilder();
+        for(char c : word.toCharArray()){
+            if(Character.isAlphabetic(c)){
+                if(c>=97&&c<=122){
+                    reverse.append((char) (frogDictionary.get((char)(c - 32)) + 32));
+                }else{
+                    reverse.append(frogDictionary.get(c));
+                }
+            }else{
+                reverse.append(c);
+            }
+        }
+        return reverse.toString();
     }
 
     private static void makingDictionary() {
