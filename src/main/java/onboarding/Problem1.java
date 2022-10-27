@@ -19,7 +19,12 @@ class Problem1 {
     }
 
     public static int numSum(int num) {
-
+        int sum = 0;
+        List<Integer> digits = numToDigits(num);
+        for (int digit : digits) {
+            sum += digit;
+        }
+        return sum;
     }
 
     public static int numMulti(int num) {
