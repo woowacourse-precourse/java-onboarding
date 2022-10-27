@@ -117,7 +117,14 @@ class Problem1 {
      * @return 페이지 번호를 더한 값과 페이지 번호를 곱한 값 중 더 큰 값
      */
     private int getScore(List<Integer> pages){
+        List digitList = getDigitList(pages);
+        // 각 자리 수를 곱했을 때의 점수
+        int multiScore = getMultiplicationOfList(digitList);
+        // 각 자리 수를 더했을 때의 점수
+        int sumScore = getSumOfList(digitList);
 
+        // 두 점수중 더 큰 점수를 반환
+        return getLargerNumber(multiScore, sumScore);
     }
 
     /**
