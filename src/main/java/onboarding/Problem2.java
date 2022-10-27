@@ -27,4 +27,8 @@ public class Problem2 {
 
         return endPoint;
     }
+
+    public static String cutRepetitionPart(String cryptogram, int startPoint, int endPoint) {
+        return cryptogram.substring(0, startPoint) + cryptogram.substring(endPoint);
+    }
 }
