@@ -25,7 +25,7 @@ public class Problem6 {
                 return;
             }
             for (int i = 1; i < nickname.length(); i++) {
-                String partOfNickname = nickname.substring(i - 1, i + 1);
+                String partOfNickname = calculatePartOfNickname(nickname, i);
 
                 if (partOfNicknameMap.containsKey(partOfNickname)) {
                     duplicateNicknameCrewSet.add(partOfNicknameMap.get(partOfNickname));
@@ -38,6 +38,10 @@ public class Problem6 {
 
         private static boolean validateNickname(String nickname) {
             return nickname.length() < 2;
+        }
+
+        private static String calculatePartOfNickname(String nickname, int index) {
+            return nickname.substring(index - 1, index + 1);
         }
     }
 }
