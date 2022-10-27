@@ -10,6 +10,7 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (!isBoundary(pobi) || !isBoundary(crong)) return EXCEPTION_CASE;
+        if (!isContinue(pobi) || !isContinue(crong)) return EXCEPTION_CASE;
         return compareScore(calculateScore(pobi), calculateScore(crong));
     }
 
@@ -51,5 +52,9 @@ class Problem1 {
 
     private static boolean isBoundary(List<Integer> pages) {
         return 3 <= pages.get(0) && pages.get(1) <= 398;
+    }
+
+    private static boolean isContinue(List<Integer> pages) {
+        return pages.get(0) + 1 == pages.get(1);
     }
 }
