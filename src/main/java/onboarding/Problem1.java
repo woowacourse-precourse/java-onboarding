@@ -4,8 +4,21 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        Game game_pobi = new Game(pobi);
+        Game game_crong = new Game(crong);
+        int pobi_score = game_pobi.getResult();
+        int crong_score = game_crong.getResult();
+
+        if (pobi_score == -1 | crong_score == -1) {
+            return -1;
+        }
+        else if (pobi_score > crong_score) {
+            return 1;
+        }
+        else if (pobi_score < crong_score) {
+            return 2;
+        }
+        else {return 0;}
     }
 }
 
