@@ -45,6 +45,21 @@ class Problem1 {
 
         int crongNumber = checkBigNumber(cLeftBigNumber, cRightBigNumber);
 
+        answer = getAnswer(answer, pobiNumber, crongNumber);
+
+        return answer;
+    }
+
+    private static int getAnswer(int answer, int pobiNumber, int crongNumber) {
+        if (pobiNumber == crongNumber) {
+            answer = 0;
+        }
+        if (pobiNumber > crongNumber) {
+            answer = 1;
+        }
+        if (pobiNumber < crongNumber) {
+            answer = 2;
+        }
         return answer;
     }
 
