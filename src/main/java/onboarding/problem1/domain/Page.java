@@ -40,4 +40,8 @@ public class Page {
     public boolean isDifferenceNotOne(final Page page) {
         return Math.abs(this.page - page.page) != 1;
     }
+    
+    public boolean isBigger(final Page page) {
+        return this.page > page.page;
+    }
 }

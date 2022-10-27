@@ -47,4 +47,13 @@ public class PlayerTest {
                 () -> assertThat(new Player(157, 158).compareTo(new Player(57, 59))).isEqualTo(-1)
         );
     }
+    
+    @Test
+    @DisplayName("왼쪽 수가 오른쪽 수보다 더 큰 경우")
+    void isLeftBigger() {
+        assertAll(
+                () -> assertThat(new Player(161, 160).compareTo(new Player(57, 58))).isEqualTo(-1),
+                () -> assertThat(new Player(157, 158).compareTo(new Player(59, 58))).isEqualTo(-1)
+        );
+    }
 }
