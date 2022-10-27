@@ -4,7 +4,7 @@ public class Problem3 {
     /*
         기능 요구 사항 목록
         1. 숫자 당 박수 카운터 함수
-        2. solution (반복문으로 문자 제거)
+        2. solution (반복문으로 총 박수 횟수 구하기)
     */
 
     // 숫자 당 박수 카운터 함수
@@ -22,6 +22,12 @@ public class Problem3 {
 
     public static int solution(int number) {
         int answer = 0;
+
+        for (int i = 0; i <= number; i++) {
+            int clap = clapPerNumber(i);
+            answer += clap;
+        }
+
         return answer;
     }
 }
