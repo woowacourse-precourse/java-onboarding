@@ -16,7 +16,16 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
-        if(!isOdd(pobi.get(0)) || isOdd(pobi.get(1)) || !isOdd(crong.get(0)) || isOdd(crong.get(1))){
+        int pobiLeftPageNumber = pobi.get(0), pobiRightPageNumber = pobi.get(1);
+        int crongLeftPageNumber = crong.get(0), crongRightPageNumber = crong.get(1);
+
+
+        if (!isOdd(pobiLeftPageNumber) || isOdd(pobiRightPageNumber) || !isOdd(crongLeftPageNumber) || isOdd(crongRightPageNumber)) {
+            answer = -1;
+            return answer;
+        }
+
+        if(!isContinuous(pobiLeftPageNumber,pobiRightPageNumber) || !isContinuous(crongLeftPageNumber,crongRightPageNumber)){
             answer = -1;
             return answer;
         }
@@ -24,8 +33,13 @@ class Problem1 {
         return answer;
     }
 
-    public static boolean isOdd(int number){
-        if(number%2==1) return true;
+    public static boolean isOdd(int number) {
+        if (number % 2 == 1) return true;
+        return false;
+    }
+
+    public static boolean isContinuous(int leftPageNumber, int rightPageNumber) {
+        if (rightPageNumber - leftPageNumber == 1) return true;
         return false;
     }
 
