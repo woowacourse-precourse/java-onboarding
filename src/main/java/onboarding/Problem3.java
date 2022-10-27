@@ -33,4 +33,12 @@ public class Problem3 {
 
         return countOfThirdProcess;
     }
+
+    public int fourthProcess(int digitNumberOfOne) {
+        int countOfFourthProcess = 0;
+
+        countOfFourthProcess += (digitNumberOfOne / 3);
+
+        return countOfFourthProcess;
+    }
 }
