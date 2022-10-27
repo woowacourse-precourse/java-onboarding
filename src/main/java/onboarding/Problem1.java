@@ -10,7 +10,6 @@ class Problem1 {
         return answer;
     }
 
-
     // 랜덤한 왼쪽, 오른쪽 페이지 숫자를 반환하는 메소드
     private static ArrayList<Integer> randomNumbers () {
         ArrayList<Integer> randomNumbers = new ArrayList<>();
