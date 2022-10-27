@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 class Exception{
     public final int CORRECT_LENGTH = 2;
@@ -33,6 +34,13 @@ class Exception{
         boolean wrongPageDifference = (isWrongPage(bookPages1)||isWrongPage(bookPages2));
         boolean firstOrLast = (isFirstOrLastPage(bookPages1)||isFirstOrLastPage(bookPages2));
         return (wrongLength||wrongPosition||wrongPageDifference||firstOrLast);
+    }
+}
+class Operation{
+    int[] divideEachDigit(int page){
+        int[] digitNum;
+        digitNum = Stream.of(String.valueOf(page).split("")).mapToInt(Integer::parseInt).toArray();
+        return digitNum;
     }
 }
 class Problem1 {
