@@ -3,17 +3,31 @@ package onboarding;
 /*
  * # 기능 정리
  * [O] 연속하는 중복문자 검증
- * [O] 제거된 문자열 반환 메서드
- * [X] 1~2 기능 반복 메서드
- * [X] solution 작성
+ * [?] 제거된 문자열 반환 메서드
+ * [O] 1~2 기능 반복 메서드
+ * [O] solution 작성
  * [X] 테스트 확인
  */
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-
+        String answer = checkStringCompressed(cryptogram);
         return answer;
+    }
+
+    private static String checkStringCompressed(final String origin){
+        String before = "";
+        String compressed = origin;
+
+        while(!before.equals(compressed)){
+            before = compressed;
+            compressed = compressString(compressed).toString();
+
+            System.out.println(before);
+            System.out.println(compressed);
+        }
+
+        return compressed;
     }
 
     private static StringBuffer compressString(final String str){
