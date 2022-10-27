@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,12 +21,38 @@ public class Problem6 {
         List<String> answer = List.of("answer");
         return answer;
     }
+
+    private static class CrewList{
+        private final Map<String, String> crewList = new HashMap<>();
+        private final List<String> alarm = new ArrayList<>();
+
+        private void addCrew() {
+
+        }
+
+        private boolean checkValid() {
+
+        }
+
+        private boolean checkCrewNums() {
+
+        }
+
+        private boolean checkEmailForm() {
+
+        }
+        private boolean checkEmailLength() {
+
+        }
+        private boolean checkEmailDomain() {
+
+        }
+        private boolean checkNickNameType() {
+
+        }
+        private boolean checkNickNameLength() {
+
+        }
+    }
 }
 
-class CrewList{
-    Map<String, String> crewList = new HashMap<>();
-
-
-
-
-}
