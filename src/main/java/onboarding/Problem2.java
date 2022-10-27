@@ -3,7 +3,7 @@ package onboarding;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
-        int duplicateLetterIndex = findDuplicateLetterIndex(cryptogram);
+
         return answer;
     }
 
@@ -16,5 +16,11 @@ public class Problem2 {
             }
         }
         return -1;
+    }
+
+    private static String removeContinuousLetter(String word, int index) {
+        StringBuilder sb = new StringBuilder(word);
+        sb.delete(index, index + 2);
+        return sb.toString();
     }
 }
