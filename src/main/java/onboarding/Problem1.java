@@ -35,11 +35,15 @@ class Problem1 {
             answer = 1;
         } else if (pobiScore < crongScore) {
             answer = 2;
-        } else if (pobiScore == crongScore) {
-            answer = 0;
         } else {
-            answer = -1;
+            answer = 0;
         }
+        
+        // 페이지의 차이가 1이 아닐 시, 예외 사항
+        if (pobi.get(1) - pobi.get(0) != 1 || crong.get(1) - crong.get(0) != 1) {
+            return -1;
+        }
+        
         return answer;
     }
     
