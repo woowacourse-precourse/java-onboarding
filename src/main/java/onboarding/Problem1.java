@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.List;
-import java.util.Optional;
 
 
 class Problem1 {
@@ -37,6 +36,19 @@ class Problem1 {
         if (rightPage != leftPage + 1) {
             throw new IllegalArgumentException("연속된 페이지를 입력해주세요.");
         }
+    }
+
+    private static int calcSinglePageScore(int page) {
+        int addSum = 0;
+        int multSum = 1;
+
+        for (byte b : String.valueOf(page).getBytes()) {
+            int val = Character.getNumericValue(b);
+            addSum += val;
+            multSum *= val;
+        }
+
+        return Math.max(addSum, multSum);
     }
 
     private static boolean isAvailPageRange(int page) {
