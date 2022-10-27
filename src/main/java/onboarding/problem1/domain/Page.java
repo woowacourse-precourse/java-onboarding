@@ -1,8 +1,11 @@
 package onboarding.problem1.domain;
 
 import java.util.Arrays;
+import java.util.NoSuchElementException;
 
 public class Page {
+    private static final String NOT_FOUND_PAGE_EXCEPTION_MESSAGE = "페이지를 찾지 못했습니다.";
+    
     private final int page;
     
     public Page(final int page) {
@@ -13,6 +16,13 @@ public class Page {
         return Arrays.stream(splitToStringPage())
                 .mapToInt(Integer::parseInt)
                 .sum();
+    }
+    
+    public int multiplyOfDigits() {
+        return Arrays.stream(splitToStringPage())
+                .mapToInt(Integer::parseInt)
+                .reduce((cumulativeNumber, digit) -> cumulativeNumber * digit)
+                .orElseThrow(() -> new NoSuchElementException(NOT_FOUND_PAGE_EXCEPTION_MESSAGE));
     }
     
     private String[] splitToStringPage() {
