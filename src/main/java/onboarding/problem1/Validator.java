@@ -14,4 +14,10 @@ public class Validator {
 			throw new IllegalArgumentException();
 		}
 	}
+	
+	public static void isOddAndEvenPage(List<Integer> integers) {
+		if (integers.get(0) % 2 == 0 || integers.get(1) % 2 == 1) {
+			throw new IllegalArgumentException();
+		}
+	}
 }
