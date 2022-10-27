@@ -61,9 +61,10 @@ public class Problem7 {
 
         //친구의 친구 목록을 구하고 점수를 구함
         saveUserPoint(findFriendsOfFriend(userFriendsList), knowPoint);
-        // userPointMap = saveUserPoint(removeDuplication(visitorsList, userFriendsList), visitPoint);
+        saveUserPoint(removeDuplication(saveVisitorList(visitors), userFriendsList), visitPoint);
 
-        System.out.println(saveUserPoint(removeDuplication(saveVisitorList(visitors), userFriendsList), visitPoint));
+        System.out.println(getKey(20));
+        System.out.println(getKey(20));
     }
     //사용자와 친구인 친구의 목록을 구해서 점수를 주는 함수
     public static List<String> findFriendsOfFriend(List<String> userFriendsList)
@@ -118,10 +119,10 @@ public class Problem7 {
     }
 
     // hashmap에 value 로 key 찾기
-    public static <K, V> K getKey(Map<K, V> map, V value) {
+    public static String getKey(int value) {
 
-        for (K key : map.keySet()) {
-            if (value.equals(map.get(key))) {
+        for (String key : friendsPointMap.keySet()) {
+            if (value == friendsPointMap.get(key)) {
                 return key;
             }
         }
