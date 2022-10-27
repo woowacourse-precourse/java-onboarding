@@ -1,5 +1,8 @@
 package onboarding;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 public class Problem2 {
 
 	/**
@@ -11,6 +14,22 @@ public class Problem2 {
 	public static String solution(String cryptogram) {
 		if (cryptogram.length() == 1) {
 			return cryptogram;
+		}
+
+		Deque<Character> deque = new ArrayDeque<>();
+		char duplicationChar = ' ';
+
+		for (int i = 0; i < cryptogram.length(); i++) {
+			if (duplicationChar == cryptogram.charAt(i)) {
+				continue;
+			}
+
+			if (!deque.isEmpty() && deque.peekLast() == cryptogram.charAt(i)) {
+				duplicationChar = deque.pollLast();
+				continue;
+			}
+			deque.offer(cryptogram.charAt(i));
+			duplicationChar = ' ';
 		}
 
 		String answer = "answer";
