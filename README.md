@@ -71,3 +71,4 @@ BUILD SUCCESSFUL in 0s
 - 문제 3
 - 문제 4
 - 문제 5
+- 문제 6
