@@ -14,6 +14,21 @@ import java.util.List;
 public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
+        List<Integer> unitMoneyList = initUnitList();
         return answer;
+    }
+
+    public static List<Integer> initUnitList(){
+        List<Integer> list = new ArrayList<>();
+        list.add(50000);
+        list.add(10000);
+        list.add(5000);
+        list.add(1000);
+        list.add(500);
+        list.add(100);
+        list.add(50);
+        list.add(10);
+        list.add(1);
+        return list;
     }
 }
