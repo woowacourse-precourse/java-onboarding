@@ -15,14 +15,32 @@ public class Problem7 {
         acquaintanceScoreMap = new HashMap<>();
         initFriendMap(friends);
         initExcludeUserMap(user);
-        List<String> friendList = findFriends(user);
+        List<String> friendList = friendMap.get(user);
         List<String> acquaintances = findAcquaintances(friendList);
-        calculateAcquaintanceScore(acquaintances);
-        System.out.println("acquaintances = " + acquaintanceScoreMap);
+        calculateAcquaintanceScore(acquaintances, visitors);
         return null;
     }
 
-    private static void calculateAcquaintanceScore(List<String> acquaintances) {
+    private static void calculateAcquaintanceScore(List<String> acquaintances,
+        List<String> visitors) {
+        addScoreWithAcquaintances(acquaintances);
+        addScoreWithVisitor(visitors);
+    }
+
+    private static void addScoreWithVisitor(List<String> visitors) {
+        for (String visitor : visitors) {
+            if (excludedUserMap.get(visitor) != null) {
+                continue;
+            }
+
+            Integer originScore = acquaintanceScoreMap.putIfAbsent(visitor, 1);
+            if (originScore != null) {
+                acquaintanceScoreMap.put(visitor, originScore + 1);
+            }
+        }
+    }
+
+    private static void addScoreWithAcquaintances(List<String> acquaintances) {
         for (String user : acquaintances) {
             Integer originScore = acquaintanceScoreMap.putIfAbsent(user, 10);
             if (originScore != null) {
@@ -34,18 +52,19 @@ public class Problem7 {
     private static List<String> findAcquaintances(List<String> friendList) {
         List<String> acquaintances = new ArrayList<>();
         for (String friend : friendList) {
-            for (String acquaintance : friendMap.get(friend)) {
-                if (excludedUserMap.get(acquaintance) == null) {
-                    acquaintances.add(acquaintance);
-                }
-            }
+            acquaintances.addAll(findUnExcludedAcquaintances(friend));
         }
         return acquaintances;
     }
 
-    private static List<String> findFriends(String user) {
-        List<String> friendList = new ArrayList(friendMap.get(user));
-        return friendList;
+    private static List<String> findUnExcludedAcquaintances(String friend) {
+        List<String> acquaintances = new ArrayList<>();
+        for (String acquaintance : friendMap.get(friend)) {
+            if (excludedUserMap.get(acquaintance) == null) {
+                acquaintances.add(acquaintance);
+            }
+        }
+        return acquaintances;
     }
 
     private static void initExcludeUserMap(String user) {
