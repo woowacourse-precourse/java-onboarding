@@ -7,6 +7,10 @@ public class Problem4 {
         return answer;
     }
 
+    private static boolean isAlphabet(char target) {
+        return isUpperCase(target) || isLowerCase(target);
+    }
+
     private static boolean isUpperCase(char target) {
         return 'A' <= target && target <= 'Z';
     }
