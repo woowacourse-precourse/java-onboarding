@@ -94,7 +94,7 @@ class Problem1 {
 
     public static boolean checkPageValid(List<Integer> user) {
         int leftPage = user.get(0);
-        int rightPage = user.get(0);
+        int rightPage = user.get(1);
         if (leftPage + 1 != rightPage) {
             return false;
         }
