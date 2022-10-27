@@ -25,4 +25,16 @@ public class Problem2 {
         return answer;
     }
 
+    // 연속 중복되는 문자열 찾기
+    private static int duplicateIndex(ArrayList<String> input) {
+
+        for(int i = 0; i<input.size(); i++) {
+            if(i != input.size()-1 && input.get(i).equals(input.get(i+1))) {
+                return i;
+            }
+        }
+        // 연속으로 중복된 문자열이 없을 경우, -1을 리턴
+        return -1;
+    }
+
 }
