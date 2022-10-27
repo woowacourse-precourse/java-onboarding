@@ -7,7 +7,7 @@ class Problem1 {
 
 
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
-		int answer = Integer.MAX_VALUE;
+		int answer = -1;
 
 		if (validatePage(pobi, crong)) // 올바른 페이지일 경우
 		{
@@ -22,8 +22,7 @@ class Problem1 {
 
 			answer = compareScore(maxValueOfPobi, maxValueOfCrong);
 
-		} else {
-			answer = -1; // 예외 사항일 경우 answer = -1
+			return answer;
 		}
 
 		return answer;
@@ -55,7 +54,8 @@ class Problem1 {
 				}
 
 				maxValue = Math.max(addNum, mulNum); // left 배열이 먼저 실행되므로 maxValue는 따로 비교하지 않아도 된다.
-			} else {
+			}
+			if (i == 1) {
 				for (int j = 0; j < rightNum.length; j++) {
 					addNum += rightNum[j];
 					mulNum *= rightNum[j];
@@ -75,11 +75,12 @@ class Problem1 {
 	public static int compareScore(int scoreOfPobi, int scoreOfCrong) {
 		if (scoreOfPobi > scoreOfCrong) {
 			return 1; // 포비가 이기는 경우는 1
-		} else if (scoreOfCrong > scoreOfPobi) {
-			return 2; // 크롱이 이기는 경우는 2
-		} else {
-			return 0; // 무승부인 경우는 0
 		}
+		if (scoreOfCrong > scoreOfPobi) {
+			return 2; // 크롱이 이기는 경우는 2
+		}
+
+		return 0; // 무승부인 경우는 0
 	}
 
 	/**
