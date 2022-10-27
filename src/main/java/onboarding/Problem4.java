@@ -11,7 +11,17 @@ public class Problem4 {
 
     public static HashMap<Character, Character> getHashMapFrogDict() {
         HashMap<Character, Character> frogDict = new HashMap<>();
+        char froggedChar = 'Z';
+        for (char key='A'; key<='Z'; key++) {
+            frogDict.put(key, froggedChar);
+            froggedChar--;
+        }
 
+        froggedChar = 'z';
+        for (char key='a'; key<='z'; key++) {
+            frogDict.put(key, froggedChar);
+            froggedChar--;
+        }
         return frogDict;
     }
 
