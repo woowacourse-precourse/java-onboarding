@@ -13,11 +13,8 @@ class Problem1 {
             return Constance.EXCEPTION_MESSAGE;
         }
 
-        List<Integer> pobiMaxPageNumbers = PageNumberGame.saveMaxPagesNumberByUser(pobi);
-        List<Integer> crongMaxPageNumbers = PageNumberGame.saveMaxPagesNumberByUser(crong);
-
-        int pobiScore = PageNumberGame.getMaxNumber(pobiMaxPageNumbers.get(0), pobiMaxPageNumbers.get(1));
-        int crongScore = PageNumberGame.getMaxNumber(crongMaxPageNumbers.get(0), crongMaxPageNumbers.get(1));
+        int pobiScore = PageNumberGame.saveMaxPageNumberByUser(pobi);
+        int crongScore = PageNumberGame.saveMaxPageNumberByUser(crong);
 
         return PageNumberGame.winnerUser(pobiScore, crongScore);
     }
@@ -82,14 +79,16 @@ class Problem1 {
             return Constance.SCORE_SAME_MESSAGE;
         }
 
-        private static List<Integer> saveMaxPagesNumberByUser(List<Integer> user) {
+        private static int saveMaxPageNumberByUser(List<Integer> user) {
             List<Integer> maxPageNumbers = new ArrayList<>();
             for (Integer pageNumber : user) {
                 int sumPage = sumEachNumber(pageNumber);
                 int multPage = multEachNumber(pageNumber);
-                maxPageNumbers.add(getMaxNumber(sumPage, multPage));
+                maxPageNumbers.add(sumPage, multPage);
+                maxPageNumbers.add(Math.max(sumPage, multPage));
             }
-            return maxPageNumbers;
+
+            return Math.max(maxPageNumbers.get(0), maxPageNumbers.get(1));
         }
 
         private static int sumEachNumber(int pageNumber) {
@@ -100,10 +99,6 @@ class Problem1 {
         private static int multEachNumber(int pageNumber) {
             List<Integer> pageNumberList = toList(String.valueOf(pageNumber));
             return pageNumberList.stream().reduce(1, (a, b) -> a * b);
-        }
-
-        private static int getMaxNumber(int number1, int number2) {
-            return Math.max(number1, number2);
         }
 
         private static List<Integer> toList(String pageNumber) {
