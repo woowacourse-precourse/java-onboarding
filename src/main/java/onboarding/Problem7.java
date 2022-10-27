@@ -27,11 +27,15 @@ public class Problem7 {
 		List<String> friendsOfUser = new ArrayList<>();
 
 		for (int i = 0; i < friends.size(); i++) {
-			if (friends.get(i).get(0).equals(user)) {
-				friendsOfUser.add(friends.get(i).get(1));
+
+			String leftFriendName = friends.get(i).get(0);
+			String rightFriendName = friends.get(i).get(1);
+
+			if (leftFriendName.equals(user)) { // friends 리스트의 왼쪽의 이름이 유저와 같을 때
+				friendsOfUser.add(rightFriendName); // 유저 친구 리스트에 오른쪽 친구의 이름 입력
 			}
-			if (friends.get(i).get(1).equals(user)) {
-				friendsOfUser.add(friends.get(i).get(0));
+			if (rightFriendName.equals(user)) { // friends 리스트의 오른쪽의 이름이 유저와 같을 때
+				friendsOfUser.add(leftFriendName); // 유저 친구 리스트에 왼쪽 친구의 이름 입력
 			}
 		}
 
@@ -42,29 +46,33 @@ public class Problem7 {
 	 * 기능 2 사용자와 함께 아는 친구를 가진 사람과 점수 Map 생성
 	 */
 	public static HashMap<String, Integer> makeRecommendList(String user,
-		List<String> friendsOfUser,
-		List<List<String>> friends) {
+		List<String> friendsOfUser, List<List<String>> friends) {
 
-		HashMap<String, Integer> recommendNameWithScoreMap = new HashMap<>();
+		HashMap<String, Integer> recommendNameWithScoreMap = new HashMap<>(); // 추천할 사람의 이름과 점수가 담긴 Map
 
 		for (int i = 0; i < friendsOfUser.size(); i++) {
+
+			String friendName = friendsOfUser.get(i); //이미 유저와 친구인 사람의 이름
+
 			for (int j = 0; j < friends.size(); j++) {
-				if (friends.get(j).get(0).equals(friendsOfUser.get(i)) && !friends.get(j).get(1)
-					.equals(user)) {
-					if (recommendNameWithScoreMap.containsKey(friends.get(j).get(1))) {
-						recommendNameWithScoreMap.put(friends.get(j).get(1),
-							recommendNameWithScoreMap.get(friends.get(j).get(1)) + 10);
-					} else {
-						recommendNameWithScoreMap.put(friends.get(j).get(1), 10);
+
+				String leftFriendName = friends.get(j).get(0); // 리스트의 왼쪽 사람의 이름
+				String rightFriendName = friends.get(j).get(1);// 리스트의 오른쪽 사람의 이름
+
+				if (leftFriendName.equals(friendName) && !rightFriendName.equals(user)) { // 왼쪽 이름이 이미 유저의 친구이고, 오른쪽 사람이 유저가 아닐 경우
+					if (recommendNameWithScoreMap.containsKey(rightFriendName)) { // 오른쪽 사람이 이미 추천 Map에 있는 경우
+						recommendNameWithScoreMap.put(rightFriendName,
+							recommendNameWithScoreMap.get(rightFriendName) + 10); // 10점 추가
+					} else { //오른쪽 사람이 추천 Map에 없는 경우
+						recommendNameWithScoreMap.put(rightFriendName, 10); // 오른쪽 사람의 이름과 점수 10점으로 입력
 					}
 				}
-				if (friends.get(j).get(1).equals(friendsOfUser.get(i)) && !friends.get(j).get(0)
-					.equals(user)) {
-					if (recommendNameWithScoreMap.containsKey(friends.get(j).get(0))) {
-						recommendNameWithScoreMap.put(friends.get(j).get(0),
-							recommendNameWithScoreMap.get(friends.get(j).get(1)) + 10);
+				if (rightFriendName.equals(friendsOfUser.get(i)) && !leftFriendName.equals(user)) {
+					if (recommendNameWithScoreMap.containsKey(leftFriendName)) {
+						recommendNameWithScoreMap.put(leftFriendName,
+							recommendNameWithScoreMap.get(leftFriendName) + 10);
 					} else {
-						recommendNameWithScoreMap.put(friends.get(j).get(0), 10);
+						recommendNameWithScoreMap.put(leftFriendName, 10);
 					}
 				}
 			}
@@ -82,11 +90,13 @@ public class Problem7 {
 		List<String> friendsOfUser) {
 
 		for (int i = 0; i < visitor.size(); i++) {
-			if (recommendNameWithScoreMap.containsKey(visitor.get(i))) {
-				recommendNameWithScoreMap.put(visitor.get(i),
-					recommendNameWithScoreMap.get(visitor.get(i)) + 1);
-			} else if (!friendsOfUser.contains(visitor.get(i))) {
-				recommendNameWithScoreMap.put(visitor.get(i), 1);
+
+			String visitorName = visitor.get(i); // 방문자의 이름
+			if (recommendNameWithScoreMap.containsKey(visitorName)) { // 추천 Map에 이미 방문자의 이름이 존재하는 경우
+				recommendNameWithScoreMap.put(visitorName,
+					recommendNameWithScoreMap.get(visitorName) + 1); // 1점 추가
+			} else if (!friendsOfUser.contains(visitorName)) { // 추천 Map에 방문자 이름이 없고, 이미 친구가 아닌 경우
+				recommendNameWithScoreMap.put(visitorName, 1); // 추천 Map에 이름과 1점으로 저장
 			}
 		}
 
@@ -99,12 +109,13 @@ public class Problem7 {
 	 */
 	public static List<String> sortHashMapAndConvert(
 		HashMap<String, Integer> recommendNameWithScore) {
-		List<String> rankOfRecommend = new ArrayList<>(recommendNameWithScore.keySet());
+
+		List<String> rankOfRecommend = new ArrayList<>(recommendNameWithScore.keySet()); //추천 Map의 Key(이름)을 List로 변환
 
 		rankOfRecommend.sort(
-			((o1, o2) -> recommendNameWithScore.get(o2).compareTo(recommendNameWithScore.get(o1))));
+			((o1, o2) -> recommendNameWithScore.get(o2).compareTo(recommendNameWithScore.get(o1)))); // 리스트를 Value값으로 내림차순 정렬
 
-		return rankOfRecommend.stream().limit(5).collect(Collectors.toList());
+		return rankOfRecommend.stream().limit(5).collect(Collectors.toList()); // 리스트를 상위 5명만 나오도록 수정
 	}
 
 }
