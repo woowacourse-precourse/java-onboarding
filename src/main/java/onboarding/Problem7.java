@@ -18,6 +18,8 @@ public class Problem7 {
 
         addVisitScore(scores, visitors);
 
+        removeAlreadyFriend(scores, userFriendSet);
+        
         ArrayList list = new ArrayList(scores.entrySet());
 
         list.sort(new SortFriendList());
@@ -79,6 +81,13 @@ public class Problem7 {
         }
 
         return result;
+    }
+
+    static void removeAlreadyFriend(Map<String, Integer> scores, Set<String> userFriendSet){
+
+        for (String str : userFriendSet) {
+            scores.remove(str);
+        }
     }
 }
 
