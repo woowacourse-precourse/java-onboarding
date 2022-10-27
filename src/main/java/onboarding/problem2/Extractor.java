@@ -20,4 +20,18 @@ public class Extractor {
 		}
 		return count;
 	}
+
+	public static String extract(String cryptogram) {
+		int index = 0;
+		while (index < cryptogram.length()) {
+			int count = countSameNumber(cryptogram, index);
+			if (count == 1) {
+				index++;
+			} else {
+				cryptogram = cut(cryptogram, index, index + count - 1);
+				index = Math.max(index - 1, 0);
+			}
+		}
+		return cryptogram;
+	}
 }
