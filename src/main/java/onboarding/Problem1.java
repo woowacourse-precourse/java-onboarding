@@ -14,7 +14,10 @@ class Problem1 {
             return -1;
         }
 
-        return answer;
+        int pobiScore = calcPersonalScore(pobi);
+        int crongScore = calcPersonalScore(crong);
+
+        return Integer.compare(pobiScore, crongScore);
     }
 
     private static void validatePages(List<Integer> gamer) {
