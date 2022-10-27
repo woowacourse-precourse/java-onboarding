@@ -1,7 +1,7 @@
 package onboarding.problem2.domain;
 
 public class Decryptor {
-    private Cryptogram cryptogram;
+    private final Cryptogram cryptogram;
     
     public Decryptor(final String cryptogram) {
         this(new Cryptogram(cryptogram));
@@ -11,13 +11,15 @@ public class Decryptor {
         this.cryptogram = cryptogram;
     }
     
-    public Cryptogram decrypt() {
-        final Cryptogram decryptedCryptogram = cryptogram.decrypt();
-        if (cryptogram.equals(decryptedCryptogram)) {
-            return cryptogram;
+    public boolean decrypt() {
+        if (cryptogram.decrypt()) {
+            return decrypt();
         }
+        
+        return true;
+    }
     
-        cryptogram = decryptedCryptogram;
-        return decrypt();
+    public String getCryptogram() {
+        return cryptogram.getCryptogram();
     }
 }

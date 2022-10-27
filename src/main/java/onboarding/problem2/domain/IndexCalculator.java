@@ -3,8 +3,8 @@ package onboarding.problem2.domain;
 import java.util.stream.IntStream;
 
 public class IndexCalculator {
-    public static int overlapStartIndex(final String[] splitCryptogram) {
-        return IntStream.range(0, splitCryptogram.length - 1)
+    public static int overlapStartIndex(final int overlapStartIndex, final String[] splitCryptogram) {
+        return IntStream.range(overlapStartIndex, splitCryptogram.length - 1)
                 .filter(index -> isOverlapStart(splitCryptogram, index))
                 .findFirst()
                 .orElse(-1);
@@ -15,7 +15,7 @@ public class IndexCalculator {
     }
     
     public static int overlapEndIndex(final int overlapStartIndex, final String[] splitCryptogram) {
-        return IntStream.range(overlapStartIndex, splitCryptogram.length - 1)
+        return IntStream.range(overlapStartIndex, splitCryptogram.length)
                 .filter(index -> overlapStartIndex != -1)
                 .filter(index -> isOverlapEnd(overlapStartIndex, splitCryptogram, index))
                 .findFirst()

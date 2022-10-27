@@ -4,13 +4,12 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class IndexCalculatorTest {
     @Test
     @DisplayName("연속하는 중복 문자 시작 위치 구하기")
     void overlapStartIndex() {
-        assertThat(IndexCalculator.overlapStartIndex("zyellleyz".split(""))).isEqualTo(3);
+        assertThat(IndexCalculator.overlapStartIndex(0, "zyellleyz".split(""))).isEqualTo(3);
     }
     
     @Test

@@ -5,21 +5,24 @@ import java.util.Objects;
 public class Cryptogram {
     private static final String DELIMITER = "";
     
-    private final String cryptogram;
+    private String cryptogram;
     
     public Cryptogram(final String cryptogram) {
         this.cryptogram = cryptogram;
     }
     
-    public Cryptogram decrypt() {
-        final int overlapStartIndex = IndexCalculator.overlapStartIndex(split());
-        final int overlapEndIndex = IndexCalculator.overlapEndIndex(overlapStartIndex, split());
-        
-        if (isOverlapCharacterExist(overlapStartIndex)) {
-            return new Cryptogram(cryptogram.substring(0, overlapStartIndex) + cryptogram.substring(overlapEndIndex));
-        }
+    public boolean decrypt() {
+        int overlapStartIndex = IndexCalculator.overlapStartIndex(0, split());
+        decryptOneCycle(overlapStartIndex);
+        return isOverlapCharacterExist(overlapStartIndex);
+    }
     
-        return this;
+    private void decryptOneCycle(int overlapStartIndex) {
+        while (isOverlapCharacterExist(overlapStartIndex)) {
+            final int overlapEndIndex = IndexCalculator.overlapEndIndex(overlapStartIndex, split());
+            cryptogram = cryptogram.substring(0, overlapStartIndex) + cryptogram.substring(overlapEndIndex);
+            overlapStartIndex = IndexCalculator.overlapStartIndex(overlapStartIndex, split());
+        }
     }
     
     private static boolean isOverlapCharacterExist(final int overlapEndIndex) {
