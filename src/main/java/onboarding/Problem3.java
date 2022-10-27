@@ -11,6 +11,20 @@ import java.util.List;
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
+        handclap(number);
         return answer;
+    }
+    static final List<Integer> threesixnine = List.of(3, 6, 9);
+    public static int handclap(int num){
+        int cnt = 0;
+        while(true){
+            if(num<=0){
+                return cnt;
+            }
+            if(threesixnine.contains(num%10)){
+                cnt++;
+            }
+            num = num/10;
+        }
     }
 }
