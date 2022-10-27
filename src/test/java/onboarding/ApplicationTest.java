@@ -33,6 +33,15 @@ class ApplicationTest {
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
+
+        @Test
+        void 첫페이지는홀수가되어야한다() {
+            List<Integer> pobi = List.of(100,101);
+            List<Integer> crong = List.of(101,102);
+            int result = -1;
+            assertThat(Problem1.solution(pobi,crong)).isEqualTo(result);
+        }
+
     }
 
     @Nested
