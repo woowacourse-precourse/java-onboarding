@@ -50,7 +50,7 @@ class Vericication {
     private void verifyOrderedPage(List<Integer> book) {
         if (book.get(LEFT_PAGE) + 1 != book.get(RIGHT_PAGE)) throw new IllegalArgumentException();
     }
-    
+
     private List<Integer> getDigitNum(Integer page) {
 
         List<Integer> returnDigit = new ArrayList<>();
@@ -60,5 +60,20 @@ class Vericication {
             page /= 10;
         }
         return returnDigit;
+    }
+
+    int getMaxNum() {
+        int totalOfSum = 0;
+        int totalOfMul = 1;
+
+        for(Integer idx : verifiedBook) {
+            List<Integer> digitArray = getDigitNum(idx);
+
+            for(Integer digit : digitArray) {
+                totalOfSum += digit;
+                totalOfMul *= digit;
+            }
+        }
+        return Math.max(totalOfSum,totalOfMul);
     }
 }
