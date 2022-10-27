@@ -1,5 +1,8 @@
 package onboarding;
 
+import static onboarding.Problem4.CharacterValidator.isAlphabet;
+import static onboarding.Problem4.CharacterValidator.isUpperCase;
+
 public class Problem4 {
 
     public static String solution(String word) {
@@ -31,15 +34,18 @@ public class Problem4 {
         return (char) (standardA + (standardZ - target));
     }
 
-    private static boolean isAlphabet(char target) {
-        return isUpperCase(target) || isLowerCase(target);
-    }
+    public static class CharacterValidator {
 
-    private static boolean isUpperCase(char target) {
-        return 'A' <= target && target <= 'Z';
-    }
+        public static boolean isAlphabet(char target) {
+            return isUpperCase(target) || isLowerCase(target);
+        }
 
-    private static boolean isLowerCase(char target) {
-        return 'a' <= target && target <= 'z';
+        public static boolean isUpperCase(char target) {
+            return 'A' <= target && target <= 'Z';
+        }
+
+        public static boolean isLowerCase(char target) {
+            return 'a' <= target && target <= 'z';
+        }
     }
 }
