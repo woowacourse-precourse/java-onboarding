@@ -81,4 +81,18 @@ class Problem1 {
             return false;
         }
     }
+
+    private class Game {
+        int pobiLeftPage;
+        int pobiRightPage;
+        int crongLeftPage;
+        int crongRightPage;
+        Game() {}
+        Game(List<Integer> pobi, List<Integer> crong) {
+            pobiLeftPage = pobi.get(0);
+            pobiRightPage = pobi.get(1);
+            crongLeftPage = crong.get(0);
+            crongRightPage = crong.get(1);
+        }
+    }
 }
