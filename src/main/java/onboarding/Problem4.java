@@ -33,12 +33,13 @@ public class Problem4 {
      * */
     private static String encryptString(String word) {
         StringBuilder stringBuilder = new StringBuilder();
-        word.chars()
-                .forEach(letterNumber -> stringBuilder.append(encryptCharacter(letterNumber)));
+        for (char letter: word.toCharArray()) {
+            stringBuilder.append(encryptCharacter(letter));
+        }
         return stringBuilder.toString();
     }
 
-    private static String encryptCharacter(int letterNumber) {
+    private static String encryptCharacter(char letter) {
         return " ";
     }
 
