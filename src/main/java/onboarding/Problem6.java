@@ -6,8 +6,17 @@ import java.util.List;
 import java.util.TreeSet;
 
 public class Problem6 {
+    static HashMap<String, String> usedNickNamePart;
+    static TreeSet<String> emailToBeSent;
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
+        usedNickNamePart = new HashMap<>();
+        emailToBeSent = new TreeSet<>();
+        for(int i=0;i<forms.size();i++){
+            checkNickName(forms.get(i));
+        }
+        answer = new ArrayList<>(emailToBeSent);
         return answer;
     }
     public static void checkNickName(List<String> emailAndName){
