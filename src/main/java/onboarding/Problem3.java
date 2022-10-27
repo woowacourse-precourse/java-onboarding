@@ -6,6 +6,20 @@ public class Problem3 {
         1. 숫자 당 박수 카운터 함수
         2. solution (반복문으로 문자 제거)
     */
+
+    // 숫자 당 박수 카운터 함수
+    private static int clapPerNumber(int number) {
+        int clap = 0;
+        String numString = Integer.toString(number);
+
+        for (int i = 0; i < numString.length(); i++) {
+            char numChar = numString.charAt(i);
+            if (numChar == '3' || numChar == '6' || numChar == '9')
+                clap += 1;
+        }
+        return clap;
+    }
+
     public static int solution(int number) {
         int answer = 0;
         return answer;
