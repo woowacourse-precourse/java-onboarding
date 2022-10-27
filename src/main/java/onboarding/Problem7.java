@@ -66,7 +66,6 @@ public class Problem7 {
         System.out.println(saveUserPoint(removeDuplication(saveVisitorList(visitors), userFriendsList), visitPoint));
     }
     //사용자와 친구인 친구의 목록을 구해서 점수를 주는 함수
-    //중복처리 함수를 따로 둘까?
     public static List<String> findFriendsOfFriend(List<String> userFriendsList)
     {
         int root = 0;
@@ -105,20 +104,16 @@ public class Problem7 {
     public static Map<String, Integer> saveUserPoint(List<String> userList, int point)
     {
         int tmp = point;
+        String key = "";
 
         for (int i = 0; i < userList.size(); i++)
         {
             point = tmp;
-            if (friendsPointMap.containsKey(userList.get(i)))
-            {
-                if (tmp == knowPoint)
-                    point += knowPoint;
-                if (point == visitPoint)
-                    point += visitPoint;
-            }
-            friendsPointMap.put(userList.get(i), point);
+            key = userList.get(i);
+            if (friendsPointMap.containsKey(key))
+                point = friendsPointMap.get(key) + point;
+            friendsPointMap.put(key, point);
         }
-
         return friendsPointMap;
     }
 
