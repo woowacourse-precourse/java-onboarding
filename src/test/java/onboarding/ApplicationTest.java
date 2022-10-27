@@ -1,5 +1,6 @@
 package onboarding;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -11,6 +12,7 @@ class ApplicationTest {
     @Nested
     class Problem1Test {
         @Test
+        @DisplayName("무승부 테스트")
         void case1() {
             List<Integer> pobi = List.of(97, 98);
             List<Integer> crong = List.of(197, 198);
@@ -19,6 +21,7 @@ class ApplicationTest {
         }
 
         @Test
+        @DisplayName("포비가 이긴다")
         void case2() {
             List<Integer> pobi = List.of(131, 132);
             List<Integer> crong = List.of(211, 212);
@@ -27,9 +30,37 @@ class ApplicationTest {
         }
 
         @Test
+        @DisplayName("예외: 연속되는 숫자가 오지 않았다")
         void case3() {
             List<Integer> pobi = List.of(99, 102);
             List<Integer> crong = List.of(211, 212);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        @DisplayName("예외: 1보다 작은 페이지가 들어갔다")
+        void case4() {
+            List<Integer> pobi = List.of(0, 1);
+            List<Integer> crong = List.of(211, 212);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        @DisplayName("예외: 400페이지보다 큰 페이지가 들어갔다")
+        void case5() {
+            List<Integer> pobi = List.of(131, 132);
+            List<Integer> crong = List.of(401, 402);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        @DisplayName("예외: 홀수 페이지부터 시작하지 않았다")
+        void case6() {
+            List<Integer> pobi = List.of(131, 132);
+            List<Integer> crong = List.of(202, 203);
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
