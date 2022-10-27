@@ -31,11 +31,18 @@ class Problem1 {
         if (checkPageRange(pages)) {
             throw new IllegalArgumentException("페이지는 1보다 작을 수 없고 400보다 클 수 없습니다.");
         }
+        if (checkPageDifference(pages)) {
+            throw new IllegalArgumentException("두 페이지의 차이는 1이어야만 합니다.");
+        }
         return pages.stream()
             .map(page -> getEachDigits(page))
             .mapToInt(digits -> getBiggerNumber(addEachDigits(digits), multiplyEachDigits(digits)))
             .max()
             .getAsInt();
+    }
+
+    private static boolean checkPageDifference(List<Integer> pages) {
+        return pages.get(1) - pages.get(0) != 1;
     }
 
     private static boolean checkPageRange(List<Integer> pages) {
