@@ -5,7 +5,7 @@ public class Problem3 {
     /*
      * 입력이 유효한지 판별합니다.
      *
-     * @param 정수입니다.
+     * @param 입력으로 주어진 정수입니다.
      * @return 정수가 유효하다면 참, 아니면 거짓을 반환합니다.
      * */
     private static boolean isValidInput(int number) {
@@ -13,8 +13,17 @@ public class Problem3 {
         return valid;
     }
 
+    /*
+     * 입력의 범위가 유효한지 검사합니다.
+     *
+     * @param 입력으로 주어진 정수입니다.
+     * @return 정수의 값이 1 ~ 10000 이내라면 참, 아니면 거짓을 반환합니다.
+     * */
     private static boolean isInRange(int number) {
-        return false;
+        boolean valid =
+                number > 0 &&
+                number <= 10000;
+        return valid;
     }
 
     private static int count369InRange(int number) {
