@@ -26,11 +26,8 @@ public class Problem2 {
 
     public static String solution(String cryptogram) {
         Integer index;
-        while ((index = repeatedIndex(cryptogram)) != null) {
-            System.out.println(index);
+        while ((index = repeatedIndex(cryptogram)) != null)
             cryptogram = removeRepetition(cryptogram, index);
-            System.out.println(cryptogram);
-        }
 
         return cryptogram;
     }
