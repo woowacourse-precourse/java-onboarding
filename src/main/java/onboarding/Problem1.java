@@ -100,4 +100,19 @@ class Problem1 {
         return true;
     }
 
+    public static boolean isValidPageNumber(List<Integer> pages) {
+        if (isEven(pages.get(0))) {
+            return false;
+        }
+        if (!isEven(pages.get(1))) {
+            return false;
+        }
+
+        return true;
+    }
+
+    private static boolean isEven(int num) {
+        return (num % 2) == 0;
+    }
+
 }
