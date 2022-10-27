@@ -4,6 +4,8 @@
 
 ## 설계 및 추가 사항, 구현된 기능은 체크됨
 
+<h3>
+
 <details>
 <summary>문제 1</summary>
 
@@ -21,7 +23,7 @@
 - [x] PageScore는 int getScore()를 통해 참가자 개인의 점수를 반환하고 예외의 경우 -1로 처리한다.
 - [x] PageValidator는 boolean isValid(List\<Integer> user)를 통해 입력값이 유효한지 판단한다.
 
-</details>
+</details><br/>
 
 
 <details>
@@ -35,7 +37,7 @@
 - [x] TextDecoder는 String getCipher() 와 String getPlainText()로 원문과 해독된 평문을 반환한다.
 - [x] TextDecoderV1 구현체는 문자열과 Stack 구조체를 사용하여 getPlainText()를 구현한다.
 
-</details>
+</details><br/>
 
 
 <details>
@@ -49,7 +51,7 @@
 - [x] ClapGame은 int getResult() 를 통해 결과를 반환하며 몇 번 박수를 쳤는지 나타낸다.
 - [x] ClapGame의 구현체는 각자의 기준에 따라 박수를 치며, 이번 구현체는 3, 6, 9가 포함 된 만큼 박수를 치게 된다.
 
-</details>
+</details><br/>
 
 
 <details>
@@ -64,7 +66,7 @@
 - [x] Frog의 구현체 청개구리 TreeFrog는 생성 시 엄마 개구리의 말을 저장한다.
 - [x] TreeFrog는 요구사항의 문제4의 규칙에 따라 알파벳을 변환하여 출력한다.
 
-</details>
+</details><br/>
 
 
 <details>
@@ -79,7 +81,7 @@
 - [ ] CurrencyExchanger의 구현체 CurrencyExchangerV1은 생성 시 입력받은 액수를 저장.
 - [ ] CurrencyExchangerV1은 문제 규칙에 따라 최소 최소 화폐의 갯수의 리스트를 exchange()로 반환한다.
 
-</details>
+</details><br/>
 
 
 <details>
@@ -91,7 +93,7 @@
 설계<br/>
 
 
-</details>
+</details><br/>
 
 
 <details>
@@ -104,3 +106,6 @@
 
 
 </details>
+
+
+</h3>
