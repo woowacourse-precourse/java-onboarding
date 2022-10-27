@@ -6,6 +6,9 @@ public class Problem4 {
     static final char START_LOWER = 'a';
     public static String solution(String word) {
         String answer = "";
+        for (int idx=0; idx<word.length(); idx++) {
+            answer += convertAlphabet(word.charAt(idx));
+        }
         return answer;
     }
     private static char convertAlphabet(char alphabet) {
