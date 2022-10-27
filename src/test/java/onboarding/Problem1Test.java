@@ -105,5 +105,13 @@ class Problem1Test {
     @Test
     @DisplayName("리스트 각 요소의 자릿수 연산을 잘 하는지")
     void calculateEachDigitOfPageNumberTest() {
+        Problem1 problem1 = new Problem1();
+        List<Integer> list1 = List.of(99, 100);
+        List<Integer> result1 = List.of(18, 1, 81, 0);
+        List<Integer> list2 = List.of(101, 102);
+        List<Integer> result2 = List.of(2, 3, 0, 0);
+
+        assertThat(problem1.calculateEachDigitOfPageNumber(list1)).isEqualTo(result1);
+        assertThat(problem1.calculateEachDigitOfPageNumber(list2)).isEqualTo(result2);
     }
 }
