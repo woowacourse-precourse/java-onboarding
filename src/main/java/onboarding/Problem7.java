@@ -14,6 +14,9 @@ public class Problem7 {
             memberList.put(friends.get(i).get(0), 0);
             memberList.put(friends.get(i).get(1), 0);
         }
+        for (int i = 0; i < visitors.size(); i++) {
+            memberList.put(visitors.get(i), 0);
+        }
 
         for (int i = 0; i < friends.size(); i++) {
             String friend1 = friends.get(i).get(0);
