@@ -10,6 +10,24 @@ package onboarding;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
+        boolean decoding = true;
+
+        while (decoding) {
+            decoding = false;
+
+            for (int i = 0; i < cryptogram.length() - 1; i++) {
+                char currentChar = cryptogram.charAt(i);
+
+                int count = 0;
+                for (int j = i + 1; j < cryptogram.length(); j++) {
+                    char nextChar = cryptogram.charAt(j);
+                    if (currentChar != nextChar) {
+                        break;
+                    }
+                    count++;
+                }
+            }
+        }
         return answer;
     }
 }
