@@ -12,6 +12,7 @@ public class Problem2 {
         }
 
         // 결과 반환
+        answer = cryptogram;
 
         return answer;
     }
