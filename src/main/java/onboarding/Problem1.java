@@ -15,4 +15,13 @@ class Problem1 {
         //숫자가 연속적인지 확인
         return (list.get(1) - list.get(0) == 1);
     }
+
+    int addNum(int n){
+        int sum = 0;
+        while (n != 0) {
+            sum += n % 10;
+            n /= 10;
+        }
+        return sum;
+    }
 }
