@@ -22,6 +22,20 @@ class Problem1 {
         return (BOOK_START < front) && (back < BOOK_END);
     }
 
+    static int getMaxScore(List<Integer> list) {
+        int mx = -1;
+        for (int n: list) {
+            int add = 0, mul = 1;
+            for (char ch: Integer.toString(n).toCharArray()) {
+                int tmp = ch - '0';
+                add += tmp;
+                mul *= tmp;
+            }
+            mx = Math.max(add, mul);
+        }
+        return mx;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
