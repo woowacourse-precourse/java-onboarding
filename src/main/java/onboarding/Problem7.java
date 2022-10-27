@@ -1,8 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /*
 1. 친구목록 생성하기
@@ -12,6 +10,21 @@ import java.util.List;
 */
 
 public class Problem7 {
+
+    private static Map<String, Integer> getMutualFriends(String user, List<List<String>> friends, List<String> userFriends) {
+        Map<String, Integer> mutualFriendsMap = new HashMap<>();
+        for (String userFriend : userFriends) {
+            for (List<String> relationship : friends) {
+                if (relationship.get(0).equals(user) || relationship.get(1).equals(user)) {
+                    continue;
+                }
+                if (userFriends.contains(relationship.get(0))) {
+                    mutualFriendsMap.put(relationship.get(1), mutualFriendsMap.get(relationship.get(1) + 1));
+                }
+            }
+        }
+        return mutualFriendsMap;
+    }
 
     private static List<String> getUserFriends(String user, List<List<String>> friends) {
         List<String> userFriends = new ArrayList<>();
