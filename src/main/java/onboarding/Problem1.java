@@ -35,7 +35,7 @@ class Problem1 {
         return true;
     }
 
-    public static int getPlusSum(int number) {
+    public static int getPlusEachNumber(int number) {
         int sum = 0;
         while (number > 0) {
             sum += number % 10;
