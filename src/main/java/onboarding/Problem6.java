@@ -13,8 +13,19 @@ public class Problem6 {
 
         List<List<String>> substringList = makeSubstringList(nameList);
         List<Integer> duplicatedIndexList = getDuplicatedIndex(substringList);
+        List<String> duplicatedEmailList = findEmailByIndex(emailList, duplicatedIndexList);
 
         return answer;
+    }
+
+    private static List<String> findEmailByIndex(List<String> emailList, List<Integer> duplicatedIndexList) {
+        List<String> duplicatedEmailList = new ArrayList<>();
+        for (int i=0; i<duplicatedIndexList.size(); i++) {
+            int index = duplicatedIndexList.get(i);
+            String duplicatedEmail = emailList.get(index);
+            duplicatedEmailList.add(duplicatedEmail);
+        }
+        return duplicatedEmailList;
     }
 
     private static List<Integer> getDuplicatedIndex(List<List<String>> substringList) {
