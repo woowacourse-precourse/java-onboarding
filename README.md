@@ -49,6 +49,18 @@
 
 - [x] solution method 구현
 
+### Problem5
+
+- [x] 돈 enum
+  - [ ] 단위 amount 반환
+  - [ ] n개의 돈 총금액 반환
+
+
+- [ ] 단위별 돈 수량 계산
+
+
+- [ ] solution method 구현
+
 ___
 
 ## 🔍 진행 방식
