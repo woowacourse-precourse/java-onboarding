@@ -8,9 +8,13 @@ public class Problem3 {
         return answer;
     }
 
-    private static int getClapByDigit(int i) {
+    private static int getClapByDigit(int i, int number) {
         if (i == 0) return 0;
-        return i * MAX_CLAP_BY_DIGIT[i] + getNumOfMulOfThreeLessThanValue(i) * MULTIPLES_OF_TEN_UNDER_I[i];
+        int clap = i * MAX_CLAP_BY_DIGIT[i] + getNumOfMulOfThreeLessThanValue(i) * MULTIPLES_OF_TEN_UNDER_I[i];
+        if (i % 3 == 0) {
+            clap += number / (MULTIPLES_OF_TEN_UNDER_I[i] * 10);
+        }
+        return clap;
     }
 
     private static int getNumOfMulOfThreeLessThanValue(int value) {
