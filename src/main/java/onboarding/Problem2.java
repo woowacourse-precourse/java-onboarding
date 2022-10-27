@@ -4,7 +4,8 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = cryptogram;
         while (true) {
-            if (!hasDuplicates(answer)) return answer;
+            int duplicatesIndex = getDuplicatesIndex(cryptogram);
+            if (duplicatesIndex == -1 ) return answer;
             answer = removeDuplicates(answer);
         }
     }
@@ -29,15 +30,14 @@ public class Problem2 {
         return startString + lastString;
     }
 
+    public static int getDuplicatesIndex(String str) {
+        for (int i = 0; i < str.length() - 1; i++) {
+            if (str.charAt(i) == str.charAt(i + 1)) return i;
+        }
+        return -1;
+    }
     public static boolean hasDuplicates(String str, int index) {
         if (str.charAt(index) == str.charAt(index + 1)) return true;
-        return false;
-    }
-
-    public static boolean hasDuplicates(String str) {
-        for (int index = 0; index < str.length() - 1; index++) {
-            if (hasDuplicates(str, index)) return true;
-        }
         return false;
     }
 }
