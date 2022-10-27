@@ -31,4 +31,13 @@ class Problem1 {
 
         return sum;
     }
+
+    public static Integer multiplyEachDigit(List<Integer> digits) {
+        Integer sum = 1;
+        for (Integer digit : digits) {
+            sum *= digit;
+        }
+
+        return sum;
+    }
 }
