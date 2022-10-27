@@ -10,9 +10,13 @@ public class Problem1ValidateChecker {
 	private static final int MAX_PAGE_NUM=400;
 
 	public static boolean isPageValidate(List<Integer> pages){
-		return isPageSizeCorrect(pages) && isPageNumberContinuous(pages)
-			&& isPageNumberCheckOddOrEven(pages) && isRightBiggerThanLeft(pages)
-			&& isPageNumberInRange(pages);
+		return  isPageSizeCorrect(pages) && isPageNumberNotNull(pages)
+			&& isPageNumberContinuous(pages) && isPageNumberCheckOddOrEven(pages)
+			&& isRightBiggerThanLeft(pages) && isPageNumberInRange(pages);
+	}
+
+	public static boolean isPageNumberNotNull(List<Integer> pages){
+		return pages.get(RIGHT_PAGE) != null && pages.get(LEFT_PAGE) != null;
 	}
 
 	public static boolean isPageSizeCorrect(List<Integer> pages){
