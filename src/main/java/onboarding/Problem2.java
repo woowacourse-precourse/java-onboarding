@@ -28,8 +28,6 @@ public class Problem2 {
             if (cnt == len-1) sb.append(answer.charAt(cnt));
             answer = sb.toString();
         }
-
         return answer;
     }
-
 }
