@@ -25,8 +25,14 @@ public class Problem2 {
         if(result.length()==2){ // zz와 같이 문자열의 길이가 2일경우 따로 처리
             result.delete(index, index +2);
         }
-
-
+        else { // 중복된 문자의 끝 index가 어디까지인지 범위를 찾고 그곳까지 문자열 삭제
+            for (int j = index; j < result.length(); j++) {
+                if (result.charAt(index) != result.charAt(j)) {
+                    result.delete(index, j);
+                    break;
+                }
+            }
+        }
         return;
     }
 }
