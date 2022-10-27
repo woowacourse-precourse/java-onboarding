@@ -10,6 +10,7 @@ import java.util.List;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
+
         return answer;
     }
 }
@@ -73,5 +74,17 @@ class PatternDeleter implements Deleter {
         }
         return preString;
     }
+}
 
+class PatternDeleteFactory {
+
+    Detector detector;
+
+    public PatternDeleteFactory(Detector detector){
+        this.detector = detector;
+    }
+
+    public Deleter makeDelete(){
+        return new PatternDeleter(detector);
+    }
 }
