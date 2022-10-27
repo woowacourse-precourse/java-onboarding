@@ -27,6 +27,10 @@ class Problem1 {
         int left = pages.get(LEFT);
         int right = pages.get(RIGHT);
 
+        // list의 길이가 2가 아닌 경우
+        if (pages.size() != 2) {
+            return false;
+        }
         // page의 범위가 벗어난 경우
         if (!isValidRange(left) || !isValidRange(right)) {
             return false;
