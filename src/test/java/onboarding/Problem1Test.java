@@ -114,4 +114,14 @@ class Problem1Test {
         assertThat(problem1.calculateEachDigitOfPageNumber(list1)).isEqualTo(result1);
         assertThat(problem1.calculateEachDigitOfPageNumber(list2)).isEqualTo(result2);
     }
+
+    @Test
+    @DisplayName("리스트의 최댓값을 반환하는지")
+    void getMaxValueTest() {
+        Problem1 problem1 = new Problem1();
+        List<Integer> list1 = List.of(18, 1, 81, 0);
+        int result1 = 81;
+
+        assertThat(problem1.getMaxValue(list1)).isEqualTo(result1);
+    }
 }
