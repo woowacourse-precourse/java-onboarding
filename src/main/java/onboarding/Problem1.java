@@ -22,4 +22,13 @@ class Problem1 {
 
         return digits;
     }
+
+    public static Integer plusEachDigit(List<Integer> digits) {
+        Integer sum = 0;
+        for (Integer digit : digits) {
+            sum += digit;
+        }
+
+        return sum;
+    }
 }
