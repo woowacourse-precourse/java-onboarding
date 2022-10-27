@@ -34,4 +34,18 @@ class PageTest {
         Page page = new Page(101, 108);
         assertFalse(page.checkPage());
     }
+
+    @Test
+    @DisplayName("최대값(sum) 반환")
+    void getMaxValueWithSum() {
+        Page page = new Page(111, 112);
+        assertEquals(4, page.getMaxValue());
+    }
+
+    @Test
+    @DisplayName("최대값(product) 반환")
+    void getMaxValueWithProduct() {
+        Page page = new Page(155, 156);
+        assertEquals(30, page.getMaxValue());
+    }
 }
