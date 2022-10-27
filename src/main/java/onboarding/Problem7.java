@@ -1,6 +1,8 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -11,6 +13,8 @@ public class Problem7 {
     static final int secondFriend = 1;
     static final int knowPoint = 10;
     static final int visitPoint = 1;
+    static final int recommendNum = 6;
+
     static List<List<String>> friendsList;
     static Map<String, Integer> friendsPointMap= new HashMap<>();
 
@@ -23,7 +27,7 @@ public class Problem7 {
         userName = user;
 
         givePoint(user, visitors);
-
+        answer = getKey(sortList());
         return answer;
     }
 
@@ -62,9 +66,6 @@ public class Problem7 {
         //친구의 친구 목록을 구하고 점수를 구함
         saveUserPoint(findFriendsOfFriend(userFriendsList), knowPoint);
         saveUserPoint(removeDuplication(saveVisitorList(visitors), userFriendsList), visitPoint);
-
-        System.out.println(getKey(20));
-        System.out.println(getKey(20));
     }
     //사용자와 친구인 친구의 목록을 구해서 점수를 주는 함수
     public static List<String> findFriendsOfFriend(List<String> userFriendsList)
@@ -119,13 +120,34 @@ public class Problem7 {
     }
 
     // hashmap에 value 로 key 찾기
-    public static String getKey(int value) {
+    public static List<String> getKey(Integer[] valueList) {
+        int length;
+        List<String> recommendList = new ArrayList<>();
+        length = Math.min(recommendNum, valueList.length);
 
-        for (String key : friendsPointMap.keySet()) {
-            if (value == friendsPointMap.get(key)) {
-                return key;
+        for (int i = 0; i < length; i++)
+        {
+            for (String key : friendsPointMap.keySet()) {
+                if (valueList[i] == friendsPointMap.get(key)) {
+                    if (recommendList.contains(key))
+                        continue;
+                    recommendList.add(key);
+                    break;
+                }
             }
         }
-        return null;
+        return recommendList;
+    }
+
+    public static Integer[] sortList()
+    {
+        Collection <Integer> values = friendsPointMap.values();
+        //배열 생성
+        Integer [] intArray = values.toArray(new Integer[0]);
+        Arrays.sort(intArray, Collections.reverseOrder());
+
+        for (int i = 0; i < intArray.length; i++)
+            System.out.println(intArray[i]);
+        return intArray;
     }
 }
