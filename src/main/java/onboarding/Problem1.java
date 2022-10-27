@@ -37,11 +37,11 @@ class Problem1 {
         ArrayList<Integer> cLeftList = new ArrayList<>();
         ArrayList<Integer> cRightList = new ArrayList<>();
 
-        int cLeftBigNumber = calculateNumber(cLeftList);
-        int cRightBigNumber = calculateNumber(cRightList);
-
         addList(cLeftPage, cLeftList);
         addList(cRightPage, cRightList);
+
+        int cLeftBigNumber = calculateNumber(cLeftList);
+        int cRightBigNumber = calculateNumber(cRightList);
 
         int crongNumber = checkBigNumber(cLeftBigNumber, cRightBigNumber);
 
