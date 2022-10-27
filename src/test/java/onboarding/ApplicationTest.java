@@ -166,6 +166,38 @@ class ApplicationTest {
             String result = "R olev blf";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
+
+        @Test
+        @DisplayName("word가 알파벳이 아닌 경우")
+        void whenWordIsNotAlphabet() {
+            String word = "123456789012";
+            String expected = "123456789012";
+            Assertions.assertEquals(expected, Problem4.solution(word), "should not convert without alphabet");
+        }
+
+        @Test
+        @DisplayName("word가 대문자일 경우")
+        void testForLowerCase() {
+            String word = "iloveyou";
+            String expected = "rolevblf";
+            Assertions.assertEquals(expected, Problem4.solution(word), "should convert to upper case");
+        }
+
+        @Test
+        @DisplayName("word가 소문자일 경우")
+        void testForUpperCase() {
+            String word = "ILOVEYOU";
+            String expected = "ROLEVBLF";
+            Assertions.assertEquals(expected, Problem4.solution(word), "should convert to lower case");
+        }
+
+        @Test
+        @DisplayName("word에 숫자, 대문자 소문자가 섞여있을 경우")
+        void testForMixedWord() {
+            String word = "123I loVe you";
+            String expected = "123R olEv blf";
+            Assertions.assertEquals(expected, Problem4.solution(word), "should follw the rule");
+        }
     }
 
     @Nested
