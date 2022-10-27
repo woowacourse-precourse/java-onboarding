@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,6 +34,17 @@ public class Problem6 {
 				twoWordNickNames.put(twoWord, twoWordNickNames.getOrDefault(twoWord, 0) + 1);
 			}
 		}
+		for (int i = 0; i < forms.size(); i++) {
+			String nickName = forms.get(i).get(1);
+			for (int j = 0; j < nickName.length() - 1; j++) {
+				String twoWord = nickName.substring(j, j + 2);
+				if (twoWordNickNames.get(twoWord) > 1) {
+					answer.add(forms.get(i).get(0));
+					break;
+				}
+			}
+		}
+		Collections.sort(answer);
 		return answer;
 	}
 }
