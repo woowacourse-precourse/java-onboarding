@@ -6,21 +6,26 @@ import java.util.List;
 import java.util.Map;
 
 public class Problem7 {
+	private static final int FRIEND_SCORE = 10;
+	private static final int VISIT_SCORE = 1;
+
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-		Map<String, Integer> userList = new HashMap<>();
-		List<String> userFriendList = new ArrayList<>();
+		Map<String, List<String>> userList = new HashMap<>();
 
 		for (String visitor : visitors) {
-			userList.put(visitor, 0);
+			userList.put(visitor, new ArrayList<>());
 		}
 		for (List<String> friend : friends) {
-			userList.put(friend.get(0), 0);
-			userList.put(friend.get(1), 0);
+			if (userList.containsKey(friend.get(0))) {
+				userList.get(friend.get(0)).add(friend.get(1));
+			} else {
+				userList.put(friend.get(0), new ArrayList<>(List.of(friend.get(1))));
+			}
 
-			if (friend.get(0).equals(user)) {
-				userFriendList.add(friend.get(1));
-			} else if (friend.get(1).equals(user)) {
-				userFriendList.add(friend.get(0));
+			if (userList.containsKey(friend.get(1))) {
+				userList.get(friend.get(1)).add(friend.get(0));
+			} else {
+				userList.put(friend.get(1), new ArrayList<>(List.of(friend.get(0))));
 			}
 		}
 
