@@ -9,7 +9,7 @@ public class Problem7 {
         /*사용자와 친구들 관계 구현*/
         userAndFriendRelations(friends, relations);
         /*사용자와 함께 아는 친구의 수 점수 구하기*/
-        
+        Map<String, Integer> scores = saveScoreOfFriend(user, relations);
         /*사용자의 타임 라인에 방문한 횟수 점수 구하기*/
 
         /*점수가 가장 높은 순으로 정렬, 점수가 같은 경우는 이름순으로 정렬*/
@@ -30,5 +30,20 @@ public class Problem7 {
             relations.get(friendA).add(friendB);
             relations.get(friendB).add(friendA);
         }
+    }
+
+    private static Map<String, Integer> saveScoreOfFriend(String user, Map<String, List<String>> relations) {
+        Map<String, Integer> scores = new HashMap<>();
+        for (String friendRecommend : relations.get(user)) {
+            List<String> recommend = relations.get(friendRecommend);
+            for (String friend : recommend) {
+                if (scores.containsKey(friend)) {
+                    scores.put(friend, scores.get(friend) + 10);
+                    continue;
+                }
+                scores.put(friend, 0);
+            }
+        }
+        return scores;
     }
 }
