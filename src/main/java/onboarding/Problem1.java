@@ -30,6 +30,16 @@ class Problem1 {
         pobi_score = Collections.max(pobi_scores);
         crong_score = Collections.max(crong_scores);
 
+        if (pobi_score > crong_score) {
+            answer = 1;
+        }
+        else if (pobi_score < crong_score) {
+            answer = 2;
+        }
+        else {
+            answer = 0;
+        }
+
         return answer;
     }
     public static boolean checkData(List<Integer> list) { // 예외상황인지 확인하는 메서드
