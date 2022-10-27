@@ -1,9 +1,11 @@
 package onboarding;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class Problem4Test {
@@ -14,5 +16,12 @@ class Problem4Test {
         Map<String, String> result = Problem4.makeDict();
 
         System.out.println(result);
+    }
+
+    @Test
+    void transform() {
+        String result = Problem4.transform("I lo?ve you!!");
+
+        assertThat(result).isEqualTo("R ol?ev blf!!");
     }
 }
