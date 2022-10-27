@@ -14,3 +14,10 @@
 | --- | --- |
 | 13 | 4 |
 | 33 | 14 |
+
+<hr><br>
+
+## 기능 목록
+- `public static int getCount(int val)`
+  - 입력으로 int값을 받는다.
+  - int값에서 3, 6, 9의 개수를 return 해준다. 
