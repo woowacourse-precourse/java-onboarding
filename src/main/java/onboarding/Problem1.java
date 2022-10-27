@@ -2,7 +2,7 @@ package onboarding;
 
 import java.util.List;
 class Problem1 {
-    static int max_score(int num)
+    static int MaxScore(int num)
     {
         int page_sum = 0;
         int page_mult = 1;
@@ -16,11 +16,19 @@ class Problem1 {
         max = Math.max(page_sum, page_mult);
         return max;
     }
+    static int CompareMaxScore(List<Integer> user) {
+        int score = 0;
+
+        for (int i = 0; i < 2; i++) {
+            if (score < MaxScore(user.get(i)))
+                score = MaxScore(user.get(i));
+        }
+        return score;
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-
-        int pobi_score = max_score(pobi.get(0));
-        int crong_score = max_score(crong.get(0));
+        int pobi_score = CompareMaxScore(pobi);
+        int crong_score = CompareMaxScore(crong);
 
         if (pobi_score > crong_score)
             answer = 1;
