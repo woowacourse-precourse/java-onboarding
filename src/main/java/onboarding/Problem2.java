@@ -25,14 +25,10 @@ public class Problem2 {
                 lastIndex = i + 1;
             }
         }
-        if (startIndex == -1) {
-            return cryptogram;
-        } else {
-            startString = cryptogram.substring(0, startIndex);
-            // 중복 다음 값의 index 부터 시작이라 +1
-            lastString = cryptogram.substring(lastIndex + 1);
-            return startString + lastString;
-        }
+        startString = cryptogram.substring(0, startIndex);
+        // 중복 다음 값의 index 부터 시작이라 +1
+        lastString = cryptogram.substring(lastIndex + 1);
+        return startString + lastString;
     }
 
     public static boolean hasReduplication(String str, int index) {
@@ -44,7 +40,7 @@ public class Problem2 {
 
     public static boolean hasReduplication(String str) {
         for (int index = 0; index < str.length() - 1; index++) {
-            if (str.charAt(index) == str.charAt(index + 1)) {
+            if (hasReduplication(str, index)) {
                 return true;
             }
         }
