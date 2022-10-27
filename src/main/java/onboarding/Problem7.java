@@ -11,6 +11,7 @@ public class Problem7 {
 
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 		Map<String, List<String>> userList = new HashMap<>();
+		Map<String, Integer> userScore = new HashMap<>();
 
 		for (String visitor : visitors) {
 			userList.put(visitor, new ArrayList<>());
@@ -28,7 +29,21 @@ public class Problem7 {
 				userList.put(friend.get(1), new ArrayList<>(List.of(friend.get(0))));
 			}
 		}
+		for (String systemUser : userList.keySet()) {
+			userScore.put(systemUser, 0);
+		}
 
+		for (String systemUser : userList.keySet()) {
+			if (userList.get(user).contains(systemUser)) {
+				continue;
+			}
+
+			for (String userFriend : userList.get(systemUser)) {
+				if (userList.get(user).contains(userFriend)) {
+					userScore.put(systemUser, userScore.get(systemUser) + FRIEND_SCORE);
+				}
+			}
+		}
 		return new ArrayList<>();
 	}
 }
