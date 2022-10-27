@@ -6,7 +6,7 @@ public class Problem4 {
         String A = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         String Z = "ZYXWVUTSRQPONMLKJIHGFEDCBA";
         String a = "abcdefghijklmnopqrstuvwxyz";
-        String z = "zyxwvutsrqpomnlkjihgfedcba";
+        String z = "zyxwvutsrqponmlkjihgfedcba";
 
         StringBuilder sb = new StringBuilder();
 
