@@ -48,6 +48,9 @@ class Problem1 {
         if (leftPage%2!=1 || rightPage%2!=0) {
             return false;
         }
+        if (rightPage-leftPage!=1) {
+            return false;
+        }
         return true;
     }
 }
