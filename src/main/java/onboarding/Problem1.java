@@ -3,7 +3,7 @@ package onboarding;
 import java.util.List;
 
 import static java.lang.Integer.MIN_VALUE;
-import static onboarding.Problem1.Constants.*;
+import static onboarding.Problem1. Constants.*;
 
 class Problem1 {
 

@@ -3,6 +3,10 @@ package onboarding;
 import java.util.Stack;
 
 public class Problem2 {
+    public static void main(String[] args) {
+        System.out.println(solution("zyelloleyz"));
+    }
+
     public static Stack<Character> stack;
 
     public static String solution(String cryptogram) {
@@ -21,10 +25,16 @@ public class Problem2 {
     }
 
     private static void stringProcessing(String cryptogram) {
+        char storage = 0;
         for (int i = 1; i < cryptogram.length(); i++) {
             char c = cryptogram.charAt(i);
-            if (!findDuplicatedCharactersAndPop(c)) {
-                stack.push(c);
+            if (c != storage) {
+                if (!findDuplicatedCharactersAndPop(c)) {
+                    stack.push(c);
+                    storage = 0;
+                } else {
+                    storage = c;
+                }
             }
         }
     }
