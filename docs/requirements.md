@@ -87,7 +87,7 @@
 - 입력받은 cryptogram을 decryptString에 전달한다.
 - 받은 결과값을 return한다.
 
-## 문제 6
+## 문제 4
 ### 구현 메소드 및 설명
 - reverseAlphabet
 - buildReverseWord
