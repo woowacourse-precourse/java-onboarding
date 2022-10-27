@@ -1,10 +1,8 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -14,10 +12,12 @@ public class Problem7 {
         return answer;
     }
 
-    static Map<String, List<String>> getfriendsMap (List<List<String>> friends) {
+    static Map<String, List<String>> getFriendsMap(List<List<String>> friends) {
         Map<String, List<String>> friendsMap = new HashMap<>();
         friends.stream()
-            .forEach(list -> );
+            .forEach(list -> inputFriendsToMap(friendsMap, list));
+
+        return friendsMap;
     }
 
     static void inputFriendsToMap(Map<String, List<String>> friendsMap, List<String> friend) {
@@ -36,7 +36,17 @@ public class Problem7 {
     }
 
     public static void main(String[] args) {
+        List<List<String>> friends = List.of(
+            List.of("donut", "andole"),
+            List.of("donut", "jun"),
+            List.of("donut", "mrko"),
+            List.of("shakevan", "andole"),
+            List.of("shakevan", "jun"),
+            List.of("shakevan", "mrko")
+        );
 
+        Map<String, List<String>> friendsMap = getFriendsMap(friends);
+        System.out.println(friendsMap);
     }
 
 }
