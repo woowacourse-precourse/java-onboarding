@@ -31,4 +31,5 @@
 2. 각 자리 숫자를 모두 더하는 기능 - AddEachDigitToSum 구현
     2.1 받은 인스턴스 타입을 Integer -> int로 변경 (int형가 null으로 들어올수 없다 )
 3. 각 자리 숫자를 모두 곱하는 긴능 - MultiplyDigitToSum 구현
+4. 리스트를 받고 각 자리 숫자합과 곱셈 중 제일 큰수를 반환 - MaxOfAddOrMultiplyDigitToSum 구현
 
