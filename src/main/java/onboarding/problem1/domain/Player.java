@@ -21,14 +21,18 @@ public class Player {
         this.pages = pages;
     }
     
-    public int getMaxSum() {
+    public int getMaxNumber() {
+        return Math.max(getMaxSum(), getMaxMultiply());
+    }
+    
+    private int getMaxSum() {
         return pages.stream()
                 .mapToInt(Page::sumOfDigits)
                 .max()
                 .orElseThrow(() -> new NoSuchElementException(NOT_FOUND_PAGE_EXCEPTION_MESSAGE));
     }
     
-    public int getMaxMultiply() {
+    private int getMaxMultiply() {
         return pages.stream()
                 .mapToInt(Page::multiplyOfDigits)
                 .max()
