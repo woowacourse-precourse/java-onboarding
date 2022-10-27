@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Problem6 {
@@ -19,12 +20,22 @@ public class Problem6 {
             emails.add(email);
         }
 
-        System.out.println(getDuplicatedSubstring(nicknames));
+        String duplicatedString = getDuplicatedString(nicknames);
+
+        for (int i = 0; i < nicknames.size(); i++) {
+            String nickname = nicknames.get(i);
+            if (nickname.contains(duplicatedString)) {
+                String email = emails.get(i);
+                if (!answer.contains(email)) answer.add(emails.get(i));
+            }
+        }
+
+        Collections.sort(answer);
 
         return answer;
     }
 
-    public static String getDuplicatedSubstring(List<String> nicknames) {
+    public static String getDuplicatedString(List<String> nicknames) {
         for (int i = 0; i < nicknames.size() - 1; i++) {
             String nickname = nicknames.get(i);
             for (int idx = 0; idx < nickname.length() - 1; idx++) {
