@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     private static final int RELATED_POINT = 10;
@@ -46,10 +47,15 @@ public class Problem7 {
             }
         }
 
+        List<User> result = recommendedFriends.stream().sorted().collect(Collectors.toList());
+
+        for (User recommend : result) {
+            answer.add(recommend.id);
+        }
         return answer;
     }
 
-    static class User {
+    static class User implements Comparable<User>{
         String id;
         int point;
         List<User> friends = new ArrayList<>();
@@ -67,17 +73,16 @@ public class Problem7 {
             this.point += point;
         }
 
-        @Override
-        public String toString() {
-            return "User{" +
-                    "id='" + id + '\'' +
-                    ", point=" + point +
-                    ", friends=" + friends +
-                    '}';
-        }
-
         public boolean hasNoFriend(User findUser) {
             return !friends.contains(findUser);
+        }
+
+        @Override
+        public int compareTo(User other) {
+            if (this.point == other.point) {
+                return this.id.compareTo(other.id);
+            }
+            return other.point - this.point;
         }
     }
 }
