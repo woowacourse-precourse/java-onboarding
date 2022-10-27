@@ -41,6 +41,12 @@ class Crew {
     public void setIsDuplicateTrue() {
         this.isDuplicate = true;
     }
+
+    public boolean isDuplicate(String token) {
+        if(this.nickname.contains(token))
+            return true;
+        return false;
+    }
 }
 
 public class Problem6 {
@@ -58,16 +64,19 @@ public class Problem6 {
         return answer;
     }
 
+    // 모든 크루 초기화하여 list에 저장
     public static void initCrews(List<List<String>> forms) {
         for (List<String> form : forms)
             crews.add(new Crew(form.get(0), form.get(1)));
     }
 
+    // `crew의 닉네임`과 `해당 crew의 token`을 HashMap에 저장
     public static void putTokens() {
         for (Crew crew : crews)
             totalTokens.put(crew.getNickname(), crew.getTokens());
     }
 
+    // 모든 crew를 비교하며 미리 만들어놓은 token을 이용하여 중복인지 체크
     public static void checkDuplicate() {
         for (Crew crew : crews) {
             for (String nickname : totalTokens.keySet()) {
@@ -76,7 +85,7 @@ public class Problem6 {
                     Iterator<String> it = tokensOfOtherCrew.iterator();
 
                     while (it.hasNext()) {
-                        if (crew.getNickname().contains(it.next()) && !crew.getIsDuplicate()) {
+                        if (crew.isDuplicate(it.next()) && !crew.getIsDuplicate()) { // 중복이면서 중복처리가 안된 상태라면
                             answer.add(crew.getEmail());
                             crew.setIsDuplicateTrue();
                             break;
