@@ -103,6 +103,13 @@ class ApplicationTest {
             String result = null;
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
+
+        @Test
+        void parameter_duplication_more_than_2() {
+            String cryptogram = "aaabbbbccbbbb";
+            String result = "";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
     }
 
     @Nested
