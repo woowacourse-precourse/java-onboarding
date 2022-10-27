@@ -124,4 +124,21 @@ class Problem1Test {
 
         assertThat(problem1.getMaxValue(list1)).isEqualTo(result1);
     }
+
+    @Test
+    @DisplayName("올바른 승부 결과를 판단하는지")
+    void findWinnerTest() {
+        Problem1 problem1 = new Problem1();
+        List<Integer> pobiWinCase = List.of(7, 1);
+        int pobiWin = 1;
+        assertThat(problem1.findWinner(pobiWinCase)).isEqualTo(pobiWin);
+
+        List<Integer> crongWinCase = List.of(5, 6);
+        int crongWin = 2;
+        assertThat(problem1.findWinner(pobiWinCase)).isEqualTo(crongWin);
+
+        List<Integer> noWinnerCase = List.of(3, 3);
+        int noWinner = 0;
+        assertThat(problem1.findWinner(pobiWinCase)).isEqualTo(noWinner);
+    }
 }
