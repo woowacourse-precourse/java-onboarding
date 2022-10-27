@@ -22,4 +22,8 @@ public class Problem4 {
         int diff = target - UPPER_FIRST_CHARACTER;
         return (char)(UPPER_LAST_CHARACTER - diff);
     }
+
+    public static boolean checkLower(Character target) {
+        return Character.isLowerCase(target);
+    }
 }
