@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -21,8 +22,16 @@ import java.util.List;
  * 즉, 상위 단위 화폐부터 하위 단위 화폐순으로 잔돈을 거슬러주면 해결된다.
  */
 public class Problem5 {
+    static int[] moneys = {
+            50000,10000,5000,1000,500,100,50,10,1
+    };
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
+        List<Integer> answer = new LinkedList<>();
+        for (int i = 0; i < moneys.length; i++) {
+            answer.add(money / moneys[i]);
+            money %= moneys[i];
+        }
+
         return answer;
     }
 }
