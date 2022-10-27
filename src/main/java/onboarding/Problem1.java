@@ -1,8 +1,23 @@
 package onboarding;
 
 import java.util.List;
-
+import java.util.Arrays;
+import java.util.stream.Stream;
 class Problem1 {
+    private static final int START_PAGE_LIMIT = 1;
+    private static final int END_PAGE_LIMIT = 400;
+    private static final int PAGE_SIZE = 2;
+    private static final int ONE_PAGE = 1;
+    private static final char CHAR_ZERO = '0';
+    private static final int USER1_WINNER = 1;
+    private static final int USER2_WINNER = 2;
+    private static final int DRAW = 0;
+    private static final int EXCEPTION = -1;
+    private static final int LEFT_PAGE = 0;
+    private static final int RIGHT_PAGE = 1;
+    private static final int ZERO = 0;
+    private static final int ONE = 1;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (validationCheck(pobi, crong)) {
             int pobi_max = getMaxValue(pobi);
@@ -10,56 +25,66 @@ class Problem1 {
             int winner = getWinner(pobi_max, crong_max);
             return winner;
         }
-        return -1;
+        return EXCEPTION;
     }
-
     public static boolean validationCheck(List<Integer> user_1, List<Integer> user_2) {
-        if (user_1.contains(1) || user_1.contains(400) ||
-                user_2.contains(1) || user_2.contains(400)) {
+        int user1Left = user_1.get(LEFT_PAGE);
+        int user1Right = user_1.get(RIGHT_PAGE);
+        int user2Left = user_2.get(LEFT_PAGE);
+        int user2Right = user_2.get(RIGHT_PAGE);
+        int user1Size = user_1.size();
+        int user2Size = user_2.size();
+
+        if (user_1.contains(START_PAGE_LIMIT) || user_1.contains(END_PAGE_LIMIT) ||
+                user_2.contains(START_PAGE_LIMIT) || user_2.contains(END_PAGE_LIMIT)) {
             return false;
-        } else if (user_1.get(0) < 1 || user_1.get(1) > 400 ||
-                user_2.get(0) < 1 || user_2.get(1) > 400) {
+        } else if (user1Left < START_PAGE_LIMIT || user1Right > END_PAGE_LIMIT ||
+                user2Left < START_PAGE_LIMIT || user2Right > END_PAGE_LIMIT) {
             return false;
-        } else if (user_1.get(1) != user_1.get(0) + 1 ||
-                user_2.get(1) != user_2.get(0) + 1) {
+        } else if (user1Right != user1Left + ONE_PAGE ||
+                user2Right != user2Left + ONE_PAGE) {
             return false;
-        } else if (user_1.get(0) % 2 != 1 ||
-                user_2.get(0) % 2 != 1) {
+        } else if (user1Left % PAGE_SIZE != 1 ||
+                user2Left % PAGE_SIZE != 1) {
             return false;
-        } else if (user_1.size() != 2 || user_2.size() != 2) {
+        } else if (user1Size != PAGE_SIZE || user2Size != PAGE_SIZE) {
             return false;
         }
         return true;
     }
 
     public static int getMaxValue(List<Integer> user) {
-        String left = Integer.toString(user.get(0));
-        String right = Integer.toString(user.get(1));
-        int biggest = -1;
-        int[] temp = {0, 1, 0, 1};
-        for (int i = 0; i < left.length(); i++) {
-            temp[0] += (left.charAt(i) - '0');
-            temp[1] *= (left.charAt(i) - '0');
-        }
-        for (int i = 0; i < right.length(); i++) {
-            temp[2] += (right.charAt(i) - '0');
-            temp[3] *= (right.charAt(i) - '0');
-        }
+        String leftPage = Integer.toString(user.get(LEFT_PAGE));
+        String rightPage = Integer.toString(user.get(RIGHT_PAGE));
 
-        for (int elem : temp) {
-            if (elem > biggest) {
-                biggest = elem;
+        int[] left = {ZERO, ONE};
+        int[] right = {ZERO, ONE};
+        for (int i = ZERO; i < leftPage.length(); i++) {
+            left[ZERO] += (leftPage.charAt(i) - CHAR_ZERO);
+            left[ONE] *= (leftPage.charAt(i) - CHAR_ZERO);
+        }
+        for (int i = ZERO; i < rightPage.length(); i++) {
+            right[ZERO] += (rightPage.charAt(i) - CHAR_ZERO);
+            right[ONE] *= (rightPage.charAt(i) - CHAR_ZERO);
+        }
+        int biggest = ZERO;
+        for (int i = ZERO; i < left.length; i++) {
+            if (left[i] > biggest) {
+                biggest = left[i];
+            }
+            if (right[i] > biggest) {
+                biggest = right[i];
             }
         }
         return biggest;
     }
     public static int getWinner(int user_1, int user_2) {
         if (user_1 > user_2) {
-            return 1;
+            return USER1_WINNER;
         }
         else if (user_1 < user_2) {
-            return 2;
+            return USER2_WINNER;
         }
-        return 0;
+        return DRAW;
     }
 }
