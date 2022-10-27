@@ -51,9 +51,9 @@ BUILD SUCCESSFUL in 0s
 <summary>문제 1</summary>
 <div markdown="1">
 
-1. 조건을 만족하는 지 점검
-2. 각 입력값을 더하거나 곱한 값을 배열로 생성한 후 정렬
-3. 가장 큰 값을 비교하여 result 출력
+- 조건을 만족하는 지 점검
+- 각 입력값을 더하거나 곱한 값을 배열로 생성한 후 정렬
+- 가장 큰 값을 비교하여 result 출력
 
 
 </div>
@@ -67,6 +67,19 @@ BUILD SUCCESSFUL in 0s
 - while문을 진행하여 연속적으로 중복되는 문자열은 삭제
   - 모두 중복되어 문자열이 없거나 더이상 중복되는 문자열이 없을 경우 반복문 빠져나옴
 - 리스트의 문자열을 합쳐서 출력 
+
+</div>
+</details>
+
+<details>
+<summary>문제 3</summary>
+<div markdown="1">
+
+- 입력 값까지 for문 진행
+  - number를 Strgin형태로 변환 후 3,6,9를 포함하였다면 문자열 배열로 변환
+  - 배열의 길이만큼 반복문을 진행하며 3,6,9를 포함하였는지 판별
+    - 포함하였다면 answer += 1
+- answer 값 출력
 
 </div>
 </details>
