@@ -9,4 +9,8 @@ public class Problem4 {
     public static boolean checkAlpha(Character target) {
         return Character.isAlphabetic(target);
     }
+
+    public static boolean checkUppder(Character target) {
+        return Character.isLowerCase(target);
+    }
 }
