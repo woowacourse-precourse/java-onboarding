@@ -43,6 +43,10 @@ public class Problem6 {
         String name1 = form1.get(1);
         String name2 = form2.get(1);
 
+        if(name1.length() == 1 || name2.length() == 1) {
+            return true;
+        }
+
         if (!isOverlapName(name1, name2)) {
             emailQueue.add(form1.get(0));
             return false;
@@ -60,20 +64,5 @@ public class Problem6 {
         }
 
         return true;
-    }
-
-    public static void main(String[] args) {
-        List<List<String>> forms = List.of(
-            List.of("jm@email.com", "제이엠"),
-            List.of("jason@email.com", "제이슨"),
-            List.of("woniee@email.com", "워니"),
-            List.of("mj@email.com", "엠제이"),
-            List.of("nowm@email.com", "이제엠")
-        );
-        PriorityQueue<String> result = getOverlapNames(forms);
-        Stream.generate(result::poll)
-            .limit(result.size())
-            .forEach(value -> System.out.println(value + " "));
-
     }
 }
