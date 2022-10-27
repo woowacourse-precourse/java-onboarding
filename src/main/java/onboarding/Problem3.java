@@ -20,9 +20,15 @@ public class Problem3 {
             int check = number % 10;
             number /= 10;
             //3, 6, 9 있으면 박수
-            if (threeSixNine.contains(check)) {
-                clap+=1;
-            }
+            clap = increaseClap(check, clap);
+        }
+        return clap;
+    }
+
+    public static Integer increaseClap(Integer check, Integer clap) {
+        List<Integer> threeSixNine = new ArrayList<>(Arrays.asList(3, 6, 9));
+        if (threeSixNine.contains(check)) {
+            clap+=1;
         }
         return clap;
     }
