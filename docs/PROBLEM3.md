@@ -18,5 +18,5 @@
 ## ✅ 구현할 기능 목록  
 
 - [x] 3, 6, 9 판별 함수 (`isThreeSixNin`)
-- [ ] 3, 6, 9 개수 카운팅 함수 (`countThreeSixNine`)
+- [x] 3, 6, 9 개수 카운팅 함수 (`countThreeSixNine`)
 - [ ] 입력한 숫자까지 반복문 돌리며 손뼉치는 횟수 합 계산 
