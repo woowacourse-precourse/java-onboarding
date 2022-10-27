@@ -11,10 +11,15 @@ public class Problem2 {
     private static String decrypt(String cryptogram) {
         Stack<Character> stack = new Stack<>();
         char[] chars = cryptogram.toCharArray();
+        char before = ' ';
 
         for (char c : chars) {
             if (!stack.isEmpty() && stack.peek() == c) {
                 stack.pop();
+                before = c;
+                continue;
+            }
+            if (c == before) {
                 continue;
             }
             stack.push(c);
