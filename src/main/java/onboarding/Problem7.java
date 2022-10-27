@@ -39,6 +39,9 @@ public class Problem7 {
             }
         }
 
+        for (String visitor : visitors) {
+            userRepository.get(visitor).addScore(VISITED_SCORE);
+        }
 
         return answer;
     }
