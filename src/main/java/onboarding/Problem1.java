@@ -44,25 +44,16 @@ class Problem1 {
     }
 
     public static int getMaxValue(List<Integer> user) {
-        String leftPage = Integer.toString(user.get(LEFT_PAGE));
-        String rightPage = Integer.toString(user.get(RIGHT_PAGE));
-        int[] left = {0, 1};
-        int[] right = {0, 1};
-        for (int i = 0; i < leftPage.length(); i++) {
-            left[0] += (leftPage.charAt(i) - CHAR_ZERO);
-            left[1] *= (leftPage.charAt(i) - CHAR_ZERO);
-        }
-        for (int i = 0; i < rightPage.length(); i++) {
-            right[0] += (rightPage.charAt(i) - CHAR_ZERO);
-            right[1] *= (rightPage.charAt(i) - CHAR_ZERO);
-        }
+        int leftPage = user.get(LEFT_PAGE);
+        int rightPage = user.get(RIGHT_PAGE);
+        int[] allPossibleValues = {getSum(leftPage),
+                getSum(rightPage),
+                getMult(leftPage),
+                getMult(rightPage)};
         int biggest = 0;
-        for (int i = 0; i < left.length; i++) {
-            if (left[i] > biggest) {
-                biggest = left[i];
-            }
-            if (right[i] > biggest) {
-                biggest = right[i];
+        for (int element : allPossibleValues) {
+            if (biggest < element) {
+                biggest = element;
             }
         }
         return biggest;
