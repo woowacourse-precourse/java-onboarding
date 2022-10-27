@@ -21,4 +21,19 @@ class Problem1 {
 
         return true;
     }
+
+    public static int calculatePage(int bookPage){
+        int plusResult = 0;
+        int multiResult = 1;
+
+        while(bookPage > 0){
+            plusResult += bookPage % 10;
+            multiResult *= bookPage % 10;
+
+            bookPage /= 10;
+        }
+
+        return plusResult > multiResult ? plusResult : multiResult;
+    }
+
 }
