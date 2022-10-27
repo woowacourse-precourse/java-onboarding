@@ -21,7 +21,7 @@ public class Problem2 {
             characterStack.push(cryptogram.charAt(i));
         }
 
-        return result();
+        return CharsToString();
     }
 
     private static boolean validateSameChar(char char1, char char2) {
@@ -33,7 +33,7 @@ public class Problem2 {
         characterStack.push(cryptogram.charAt(0));
     }
 
-    private static String result() {
+    private static String CharsToString() {
         StringBuilder sb = new StringBuilder();
 
         if(characterStack.empty()) {
