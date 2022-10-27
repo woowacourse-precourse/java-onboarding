@@ -37,32 +37,32 @@ class Problem1 {
             result = 0;
         return result;
     }
+    static boolean exception(List<Integer> page) {
+        int left_page = page.get(0);
+        int right_page = page.get(1);
 
+        if (page.size() != 2)
+            return true;
+        if (left_page != right_page - 1)
+            return true;
+        else if (left_page < 1 && 399 < right_page)
+            return true;
+
+        return false;
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-        int pobi_score = CompareMaxScore(pobi);
-        int crong_score = CompareMaxScore(crong);
+        int pobi_score;
+        int crong_score;
 
+        if(exception(pobi) || exception(crong))
+            return -1;
+
+        pobi_score = CompareMaxScore(pobi);
+        crong_score = CompareMaxScore(crong);
         answer = GameResult(pobi_score, crong_score);
 
         return answer;
     }
-
-    public static void main(String[] args) {
-
-        List<Integer> pobi = List.of(97, 98);
-        List<Integer> crong = List.of(197, 198);
-        List<Integer> pobi2 = List.of(131, 132);
-        List<Integer> crong2 = List.of(211, 212);
-        List<Integer> pobi3 = List.of(99, 102);
-        List<Integer> crong3 = List.of(211, 212);
-
-
-        System.out.println(solution(pobi, crong));
-        System.out.println(solution(pobi2, crong3));
-        System.out.println(solution(crong2, pobi2));
-        System.out.println(solution(pobi3, crong3));
-    }
-
 }
 
