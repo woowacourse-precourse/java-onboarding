@@ -9,6 +9,12 @@ public class Problem2 {
     private static final Pattern SUCCESSIVE_PATTERN = Pattern.compile(SUCCESSIVE_REGEX);
     private static final String BLANK = "";
 
+	private static final boolean VALID = true;
+	private static final boolean INVALID = false;
+
+    private static final int MIN_CRYPTOGRAM_LENGTH = 1;
+    private static final int MAX_CRYPTOGRAM_LENGTH = 1000;
+
     public static String solution(String cryptogram) {
         String answer = "answer";
         return answer;
@@ -26,5 +32,28 @@ public class Problem2 {
         }
 
         return ret;
+    }
+
+    public static boolean validateCryptogramFormat(String cryptogram) {
+		if (!isValidLength(cryptogram)) {
+			return INVALID;
+		} else if (!isLowerCaseCharacters(cryptogram)) {
+            return INVALID;
+        }
+
+        return VALID;
+    }
+
+	public static boolean isValidLength(String cryptogram) {
+        return MIN_CRYPTOGRAM_LENGTH <= cryptogram.length() && cryptogram.length() <= MAX_CRYPTOGRAM_LENGTH;
+    }
+
+	public static boolean isLowerCaseCharacters(String cryptogram) {
+        if (cryptogram.length() == 0) {
+			return INVALID;
+		}
+
+        return cryptogram.chars()
+                .allMatch(c -> Character.isLetter(c) && Character.isLowerCase(c));
     }
 }
