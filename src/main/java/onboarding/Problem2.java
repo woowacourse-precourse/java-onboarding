@@ -7,8 +7,9 @@ public class Problem2 {
     }
     public static String removeDuplication(String cryptogram){
         String returnCryptogram = "";
-        for(int i=0;i<cryptogram.length();i++){
+        for(int i=0;i<cryptogram.length()-1;i++){
             if (compareChar(cryptogram.charAt(i),cryptogram.charAt(i))){
+                i = findNextIndex(cryptogram,i);
             }
         }
         return "";
