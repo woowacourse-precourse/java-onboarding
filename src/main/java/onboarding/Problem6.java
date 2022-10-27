@@ -18,10 +18,14 @@ public class Problem6 {
         private static Map<String, String> partOfNicknameMap = new HashMap<>();
         private static Set<String> duplicateNicknameCrewSet = new HashSet<>();
 
-        private static void duplicateCrewNickname(Crew crew) {
+        private static void processDuplicateCrewNickname(Crew crew) {
             String nickname = crew.getNickname();
+            int nicknameLength = nickname.length();
 
-            for (int i = 1; i < nickname.length(); i++) {
+            if (nicknameLength < 2) {
+                return;
+            }
+            for (int i = 1; i < nicknameLength; i++) {
                 String partOfNickname = nickname.substring(i - 1, i + 1);
 
                 if (partOfNicknameMap.containsKey(partOfNickname)) {
