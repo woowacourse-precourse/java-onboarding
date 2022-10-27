@@ -2,8 +2,11 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        int[] changeResult = word.chars()
+                .map(le -> checkAlpha((char) le) ? changeCharacter((char) le) : le)
+                .toArray();
+
+        return new String(changeResult,0,changeResult.length);
     }
 
     public static boolean checkAlpha(char letter) {
