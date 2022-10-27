@@ -20,4 +20,13 @@ class Problem1 {
         }
         return value;
     }
+
+    private static int getMul(Integer pageNumber) {
+        int value = 1;
+        while(pageNumber>0) {
+            value *= pageNumber%10;
+            pageNumber /= 10;
+        }
+        return value;
+    }
 }
