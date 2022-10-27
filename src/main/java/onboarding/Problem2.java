@@ -10,8 +10,11 @@ public class Problem2 {
     private static Stack<Character> overlapCheckStack(char [] charArray){
         Stack<Character> stack = new Stack<>();
         for(char element :charArray){
-            char lastElement = stack.peek();
-            if (lastElement==element){
+            if (stack.empty()) {
+                stack.push(element);
+                continue;
+            }
+            if (stack.peek()==element){
                 stack.pop();
             }else{
                 stack.push(element);
