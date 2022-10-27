@@ -28,11 +28,23 @@ class Problem1 {
         if (pages.size() != 2) {
             throw new IllegalArgumentException("페이지 리스트의 길이가 2가 아닙니다.");
         }
+        if (checkPageRange(pages)) {
+            throw new IllegalArgumentException("페이지는 1보다 작을 수 없고 400보다 클 수 없습니다.");
+        }
         return pages.stream()
             .map(page -> getEachDigits(page))
             .mapToInt(digits -> getBiggerNumber(addEachDigits(digits), multiplyEachDigits(digits)))
             .max()
             .getAsInt();
+    }
+
+    private static boolean checkPageRange(List<Integer> pages) {
+        return pages.stream()
+            .anyMatch(page -> checkNumberRange(page));
+    }
+
+    private static boolean checkNumberRange(Integer page) {
+        return page < 1 || page > 400;
     }
 
     public static int[] getEachDigits(int page) {
