@@ -25,8 +25,21 @@ public class Problem4 {
         return valid;
     }
 
+    /*
+     * 문자열을 청개구리 문자열로 바꿔줍니다.
+     *
+     * @param 바꿀 문자열입니다.
+     * @return 바뀐 문자열입니다.
+     * */
     private static String encryptString(String word) {
-        return "";
+        StringBuilder stringBuilder = new StringBuilder();
+        word.chars()
+                .forEach(letterNumber -> stringBuilder.append(encryptCharacter(letterNumber)));
+        return stringBuilder.toString();
+    }
+
+    private static String encryptCharacter(int letterNumber) {
+        return " ";
     }
 
     /*
@@ -41,5 +54,9 @@ public class Problem4 {
         }
         String answer = encryptString(word);
         return answer;
+    }
+
+    public static void main(String[] args) {
+        encryptString("abc ABC");
     }
 }

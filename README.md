@@ -57,7 +57,7 @@
   - 인자값이 유효한지 검사한다.
     - [X] hasValidLength
     - 문자열의 길이가 1~1000인지 검사한다.
-  - [ ] encryptString
+  - [X] encryptString
   - 문자열을 반대로 바꿔준다.
     - [ ] encryptCharacter
     - 하나의 문자를 반대로 바꿔준다.
@@ -146,3 +146,21 @@
     - 변수를 반복문 안에서 선언했다면, 변수는 반복문이 종료되면 사라진다.
     - 만약 반복문 밖에서도 사용할 변수가 아니라면, 안에서 선언하는 게 좋다.
   - 최대한 좁은 범위 내에서 사용하자.
+- ### **문자열을 for문으로 돌리는 방법** [[참조](https://dlee0129.tistory.com/94)]
+  - 인덱스 번호로 돌리기
+  ```java
+  for (int i = 0; i < s.length(); i++) {
+    char c = s.charAt(i);
+    ...
+  }
+  ```
+  - toCharArray 로 배열로 바꿔 돌리기
+  ```java
+  for (char c : s.toCharArray()) {
+  ...
+  }
+  ```
+  - chars로 IntStream으로 바꿔 돌리기
+  ```java
+  s.chars().forEach(c -> ... );
+  ```
