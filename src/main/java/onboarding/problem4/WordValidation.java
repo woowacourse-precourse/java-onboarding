@@ -1,5 +1,7 @@
 package onboarding.problem4;
 
+import static java.lang.Character.*;
+
 public class WordValidation {
 
     public static void validateWord(String word) {
@@ -23,8 +25,11 @@ public class WordValidation {
     private static boolean containsOnlyAlphabet(String word) {  // 알파벳 체크
         char[] chars = word.toCharArray();
         for (char aChar : chars) {
+            if (!isAlphabetic(aChar) && !isSpaceChar(aChar)) {
+                return false;
+            }
         }
 
-        return word.matches("^[a-zA-Z]*$");
+        return true;
     }
 }
