@@ -16,10 +16,29 @@ public class Problem3 {
     private int[] memory = new int[10000];
 
     public static int solution(int number) {
+        Problem3 problem3 = new Problem3();
+        int answer = problem3.accumClapCount(number);
 
-        int answer = 0;
-        
         return answer;
+    }
+
+    // 누적되는 박수 획수 다이나믹 프로그래밍으로 계산
+    public int accumClapCount(int number){
+        // 종료 조건
+        if(number == 1 || number == 2){
+            return 0;
+        }
+
+        // 메모제이션에 존재하는 값이라면 그대로 반환
+        if(memory[number] != 0){
+            return memory[number];
+        }
+
+        // 메모제이션에 존재하지 않는 값이라면 현재 누적 박수 횟수 = 그전(number-1) 누적 박수 횟수 + 현재 박수 횟수
+        memory[number] = accumClapCount(number-1) + calcClapCount(number);
+
+        return memory[number];
+
     }
 
     // 개별 number에서 박수 횟수 계산
