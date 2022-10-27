@@ -11,7 +11,7 @@ public class Problem5 {
         List<Integer> answer = new ArrayList<Integer>();
 
         initUnit();
-        //atm(money, answer);
+        atm(money, answer);
 
         return answer;
     }
@@ -26,5 +26,14 @@ public class Problem5 {
         unit[6] = 50;
         unit[7] = 10;
         unit[8] = 1;
+    }
+
+    private static void atm(int money, List<Integer> answer) {
+        moneyForCalculate = money;
+
+        for (int index = 0; index < unit.length; index++) {
+            answer.add(new Integer(moneyForCalculate / unit[index]));
+            moneyForCalculate %= unit[index];
+        }
     }
 }
