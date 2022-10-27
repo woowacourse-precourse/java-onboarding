@@ -17,6 +17,11 @@ public class Problem4 {
     }
 
     private static char convertToReverseCharacter(char ch) {
+        if (Character.isLowerCase(ch)) {
+            return (char)('z' - ch + 'a');
+        } else if (Character.isUpperCase('Z' - ch + 'A')) {
+            return (char)('Z' - ch + 'A');
+        }
         return ch;
     }
 }
