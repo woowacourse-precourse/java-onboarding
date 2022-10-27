@@ -8,4 +8,16 @@ public class Problem4 {
         String answer = "";
         return answer;
     }
+    // 아스키코드 값을 이용하여 반대되는 문자를 구함
+    static char uppercase(char ch){
+        if(ch >= 'A' && ch <= 'Z'){
+            return (char)('Z' - ch + 'A');
+        }
+        else if (ch >= 'a' && ch <= 'z'){
+            return (char)('z' - ch + 'a');
+        }
+        else{
+            return ch;
+        }
+    }
 }
