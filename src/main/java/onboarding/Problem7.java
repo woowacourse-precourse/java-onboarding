@@ -7,6 +7,7 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
 
         Set<String> friendList = generateFriendList(friends);
+        List<String> relatedUserList = generateRelatedUser(friends, user);
 
         return answer;
     }
@@ -17,5 +18,16 @@ public class Problem7 {
             friendList.add(friend.get(0));
         }
         return friendList;
+    }
+
+    private static List<String> generateRelatedUser(List<List<String>> friends, String user) {
+        List<String> relatedUserList = new ArrayList<>();
+        for (List<String> friend : friends) {
+            String userName = friend.get(1);
+            if(!userName.equals(user)){
+                relatedUserList.add(userName);
+            }
+        }
+        return relatedUserList;
     }
 }
