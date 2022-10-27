@@ -5,6 +5,10 @@ public class Problem4 {
         String answer = "";
         return answer;
     }
+
+    private static boolean isAlpha(char c) {
+        return isUpperCase(c) || isLowerCase(c);
+    }
     private static boolean isUpperCase(char c) {
         return c >= 'A' && c <= 'Z';
     }
