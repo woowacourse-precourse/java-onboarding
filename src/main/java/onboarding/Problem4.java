@@ -4,15 +4,18 @@ public class Problem4 {
     public static String solution(String word) {
         String answer = "";
         int wordLen = word.length();
+        StringBuilder sb = new StringBuilder();
         for(int i = 0; i < wordLen; ++i){
             char curChar = word.charAt(i);
             if(Character.isLetter(curChar)) {
                 char leftStandard = setStandard(curChar, "left");
                 char rightStandard = setStandard(curChar, "right");
                 boolean inLeft = isInLeft(curChar, leftStandard);
-
+                curChar = convertCharacter(curChar, leftStandard, rightStandard, inLeft);
             }
+            sb.append(curChar);
         }
+
         return answer;
     }
 
@@ -29,5 +32,16 @@ public class Problem4 {
         if(c <= leftStandard)
             return true;
         return false;
+    }
+
+    public static char convertCharacter(char c, char leftStandard, char rightStandard, boolean inLeft) {
+        if(inLeft) {
+            int distance = leftStandard - c;
+            c = (char)(rightStandard + distance);
+        } else if(!inLeft) {
+            int distance = c - rightStandard;
+            c = (char)(leftStandard - distance);
+        }
+        return c;
     }
 }
