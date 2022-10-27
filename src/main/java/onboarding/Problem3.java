@@ -1,6 +1,11 @@
 package onboarding;
 
+import java.util.List;
+
 public class Problem3 {
+
+    public static final List<Integer> THREE_SIX_NINE = List.of(3, 6, 9);
+
     public static int solution(int number) {
         return playGame(number);
     }
@@ -19,7 +24,7 @@ public class Problem3 {
         int count = 0;
 
         while (checkNum > 1) {
-            if (checkNum % 10 == 3 || checkNum % 10 == 6 || checkNum % 10 == 9) {
+            if (THREE_SIX_NINE.contains(checkNum % 10)) {
                 count++;
             }
             checkNum /= 10;
@@ -27,4 +32,5 @@ public class Problem3 {
 
         return count;
     }
+
 }

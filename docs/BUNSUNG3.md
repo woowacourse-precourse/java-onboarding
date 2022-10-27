@@ -26,3 +26,4 @@
 ### Commit
 - [x] feat: add play game method
 - [x] feat: add count clap method
+- [x] refactor: refactor magic number
