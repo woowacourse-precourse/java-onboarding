@@ -12,6 +12,15 @@ public class Problem2 {
         answer = Cryptogram.decodeValue(cryptogram);
         return answer;
     }
+
+    public static void main(String[] args) {
+        String inputCryptogram = Input2.inputCryptogram();
+        Cryptogram.validateValueRange(inputCryptogram);
+        Cryptogram.validateValueCase(inputCryptogram);
+        String result = Cryptogram.decodeValue(inputCryptogram);
+        OutView2.printHead("cryptogram");
+        OutView2.printResult(inputCryptogram, result);
+    }
 }
 
 class Input2 {
