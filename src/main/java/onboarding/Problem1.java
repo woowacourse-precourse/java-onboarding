@@ -35,6 +35,11 @@ class Problem1 {
         int crongLeftMaxValue = Math.max(getSumMax(crongLeftPageNumber),getMulMax(crongLeftPageNumber));
         int crongRightMaxValue = Math.max(getSumMax(crongRightPageNumber),getMulMax(crongRightPageNumber));
 
+        int pobiMaxValue = Math.max(pobiLeftMaxValue,pobiRightMaxValue);
+        int crongMaxValue = Math.max(crongLeftMaxValue,crongRightMaxValue);
+
+
+
         return answer;
     }
 
