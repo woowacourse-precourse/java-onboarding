@@ -11,6 +11,7 @@ import java.util.Objects;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "";
+        //반복
         while (true){
             //인접한 중복 문자 찾고 치환
             char[] chars = cryptogram.toCharArray();
@@ -19,6 +20,15 @@ public class Problem2 {
                     chars[i] = '@'; chars[i+1] = '@';
                 }
             }
+            //@로 치환되지 않은 부분만 answer에 담기
+            answer = "";
+            for (char c : chars) {
+                if (c != '@') {
+                    answer += c;
+                }
+            }
+            if(cryptogram.equals(answer)) return answer;
+            cryptogram = answer;
         }
     }
 }
