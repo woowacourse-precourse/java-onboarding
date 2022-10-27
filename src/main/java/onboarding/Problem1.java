@@ -8,10 +8,12 @@ import java.util.List;
  * 1. open_book() = 책을 랜덤으로 펼친다. ( XX )
  * <p>
  * Validator 클래스
- * 1. is_proper_pages() = 알맞은 페이지 리스트가 들어왔는지 검증 ( 오류시 ERROR (-1) 반환 )
- * 2. is_odd() = 홀수인지 검증
- * 3. is_even() = 짝수인지 검증
- * 4. is_continuous = 연속된 페이지 인지 검증
+ * 1. is_odd() = 홀수인지 검증
+ * 2. is_even() = 짝수인지 검증
+ * 3. is_continuous = 연속된 페이지 인지 검증
+ * 4. is_proper_pages() = 알맞은 페이지 리스트가 들어왔는지 검증
+ * 5. is_both_page_proper() = 두 사람의 페이지 리스트가 모두 알맞은 리스트인지 검증
+ *
  * <p>
  * Calculator 클래스
  * 1. page_sum() = 현재 페이지의 모든 숫자를 더한 값 반환
@@ -29,12 +31,6 @@ class Problem1 {
 }
 
 class Validator {
-    public boolean is_proper_pages(List<Integer> list) {
-        int l_page = list.get(0);
-        int r_page = list.get(1);
-        return is_continuous(l_page, r_page) && is_odd(l_page) && is_even(r_page);
-    }
-
     private boolean is_odd(int num) {
         return num % 2 == 1;
     }
@@ -45,5 +41,15 @@ class Validator {
 
     private boolean is_continuous(int num1, int num2) {
         return num2 - num1 == 1;
+    }
+
+    private boolean is_proper_pages(List<Integer> list) {
+        int l_page = list.get(0);
+        int r_page = list.get(1);
+        return is_continuous(l_page, r_page) && is_odd(l_page) && is_even(r_page);
+    }
+
+    public boolean is_both_page_proper(List<Integer> pobi, List<Integer> crong) {
+        return is_proper_pages(pobi) && is_proper_pages(crong);
     }
 }
