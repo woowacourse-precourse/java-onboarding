@@ -4,7 +4,7 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        
+
         if (!checkException(pobi) || !checkException(crong)) {
             return -1;
         }
