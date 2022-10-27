@@ -1,9 +1,28 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class Problem6 {
+    static class Email {
+        List<String> forms;
+
+        public Email(List<List<String>> forms, int[] checkList) {
+            this.forms = new ArrayList<>(forms.size());
+            for (int i = 0; i < checkList.length; i++) {
+                if (checkList[i] == 1) {
+                    System.out.println(forms.get(i).get(0));
+                    this.forms.add(forms.get(i).get(0));
+                }
+            }
+        }
+        List<String> sortEmails(List<String> forms) {
+            String[] arr = forms.toArray(new String[forms.size()]);
+            Arrays.sort(arr);
+            return Arrays.asList(arr);
+        }
+    }
     static class CheckList {
         int[] checkName;
 
@@ -39,9 +58,6 @@ public class Problem6 {
              * [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"],
              * ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ]
              */
-            int firstIdx = 0;
-            int secondIdx = 0;
-            int sameCount = 0;
             for (int m = 0; m < forms.get(j).get(1).length() - 1; m++) {
                 for (int n = 0; n < compName.length() - 1; n++) {
                     String compNameSlicing = compName.substring(n, n + 2);
@@ -59,6 +75,9 @@ public class Problem6 {
         CheckList checkList = new CheckList(forms);
         int[] ints = checkList.checkingList(forms);
         System.out.println(Arrays.toString(ints));
+        Email email = new Email(forms, ints);
+        answer = email.sortEmails(email.forms);
+
         return answer;
     }
 
@@ -70,7 +89,6 @@ public class Problem6 {
                 List.of("mj@email.com", "엠제이"),
                 List.of("nowm@email.com", "이제엠")
         );
-        System.out.println(forms.size());
         solution(forms);
     }
 }
