@@ -7,20 +7,24 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class cryptoGameTest {
-    @Nested
-    class Problem2Test {
+
         @Test
         void findDuplicate() {
             String cryptogram = "browoanoommnaon";
             String result = "brown";
-            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+            assertThat(CryptoGame.remove(cryptogram)).isEqualTo(result);
         }
 
         @Test
         void case2() {
             String cryptogram = "zyelleyz";
             String result = "";
-            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+            assertThat(CryptoGame.remove(cryptogram)).isEqualTo(result);
         }
-    }
+        @Test
+        void case3() {
+            String cryptogram = "aaabdddc";
+            String result = "bc";
+            assertThat(CryptoGame.remove(cryptogram)).isEqualTo(result);
+        }
 }
