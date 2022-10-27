@@ -5,8 +5,16 @@ import java.util.List;
 
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
-        return answer;
+        List<Integer> integersUnderNumber = getIntegersUnderNumber(number);
+        int totalClap = 0;
+
+        for (int sequence : integersUnderNumber) {
+            char[] charsOfSequence = getCharsOfSequence(sequence);
+            int clapsOfSequence = getClapsOfSequence(charsOfSequence);
+            totalClap = totalClap + clapsOfSequence;
+        }
+
+        return totalClap;
     }
 
     private static List<Integer> getIntegersUnderNumber(int number) {
