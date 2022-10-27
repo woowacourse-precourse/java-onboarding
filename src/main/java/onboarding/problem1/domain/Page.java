@@ -5,10 +5,6 @@ import java.util.Arrays;
 public class Page {
     private final int page;
     
-    public Page(final String page) {
-        this(Integer.parseInt(page));
-    }
-    
     public Page(final int page) {
         this.page = page;
     }

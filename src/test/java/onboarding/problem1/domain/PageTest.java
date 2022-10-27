@@ -9,7 +9,7 @@ public class PageTest {
     @Test
     @DisplayName("숫자의 각 자릿수 합 구하기")
     void sumOfDigits() {
-        Page page = new Page("236");
+        Page page = new Page(236);
         assertThat(page.sumOfDigits()).isEqualTo(11);
     }
 }

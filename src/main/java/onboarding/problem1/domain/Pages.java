@@ -9,8 +9,12 @@ public class Pages {
     
     private final List<Page> pages;
     
-    public Pages(final String leftPage, final String rightPage) {
-        this(Arrays.asList(new Page(leftPage), new Page(rightPage)));
+    public Pages(final int leftPage, final int rightPage) {
+        this(new Page(leftPage), new Page(rightPage));
+    }
+    
+    public Pages(final Page leftPage, final Page rightPage) {
+        this(Arrays.asList(leftPage, rightPage));
     }
     
     public Pages(final List<Page> pages) {
