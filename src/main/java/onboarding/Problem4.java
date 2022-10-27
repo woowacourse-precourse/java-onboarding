@@ -18,10 +18,18 @@ public class Problem4 {
         return word;
     }
 
-    private static String replaceSmallAlphabetReverse(String word, int i) {
-        return "";
-    }
+    public static String replaceSmallAlphabetReverse(String word, int alphabetLocation) {
+        String smallAlphabetLine = "abcdefghijklmnopqrstuvwxyz";
+        int i = 0;
 
+        i = smallAlphabetLine.indexOf(word.charAt(alphabetLocation)) + 1;
+
+        word = word.substring(0, alphabetLocation)
+                + smallAlphabetLine.charAt(smallAlphabetLine.length() - i)
+                + word.substring(alphabetLocation + 1);
+
+        return word;
+    }
 
     public static String replaceBigAlphabetReverse(String word, int alphabetLocation) {
         String bigAlphabetLine = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -35,5 +43,4 @@ public class Problem4 {
 
         return word;
     }
-
 }
