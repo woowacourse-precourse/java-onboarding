@@ -10,4 +10,14 @@ public class Problem3 {
         int answer = 0;
         return answer;
     }
+
+    // 1. 손뼉친 횟수를 구하는 메소드
+    public static int count369(int n) {
+        int cnt = 0;
+        while(n > 0) {
+            if((n % 10) % 3 == 0) cnt++;
+            n = n / 10;
+        }
+        return cnt;
+    }
 }
