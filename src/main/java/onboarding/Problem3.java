@@ -18,7 +18,7 @@ public class Problem3 {
         int clap = 0;
         for (int i = 0 ; i < strNumberLength; i ++) {
             if (Character.getNumericValue(strNumber.charAt(i)) % 3 == 0) {
-                clap += Character.getNumericValue(strNumber.charAt(i)) / 3;
+                clap ++;
             }
         }
         return clap;
