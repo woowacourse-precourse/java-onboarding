@@ -216,5 +216,37 @@ class ApplicationTest {
             List<String> result = List.of("andole", "jun", "bedi");
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
+
+        @Test
+        @DisplayName("추천할 친구가 없는 경우는 주어지지 않는다.")
+        void case2() {
+            String user = "mrko";
+            List<List<String>> friends = List.of(
+                List.of("donut", "mrko"),
+                List.of("shakevan", "mrko"),
+                List.of("melon", "mrko"),
+                List.of("mrko", "apple"),
+                List.of("banana", "mrko")
+            );
+            List<String> visitors = List.of("apple", "apple", "donut", "shakevan");
+            List<String> result = List.of();
+            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+        }
+
+        @Test
+        @DisplayName("추천 점수가 같은 경우는 이름순으로 정렬한다.")
+        void case3() {
+            String user = "mrko";
+            List<List<String>> friends = List.of(
+                List.of("A", "mrko"),
+                List.of("A", "C"),
+                List.of("B", "A"),
+                List.of("B", "D"),
+                List.of("A", "E")
+            );
+            List<String> visitors = List.of("C", "B", "E");
+            List<String> result = List.of("B", "C", "E");
+            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+        }
     }
 }
