@@ -35,4 +35,15 @@ class Problem1Test {
         for(int i : nums) plus += i;
         return plus;
     }
+
+    @Test
+    void 곱하기() {
+        List<Integer> list = Arrays.asList(9,7);
+        assertThat(multiply(list)).isEqualTo(63);
+    }
+    static int multiply(List<Integer> nums) {
+        int result = 1;
+        for(int i : nums) result *= i;
+        return result;
+    }
 }
