@@ -33,4 +33,15 @@ public class PageNumberGame {
 			.max(Comparator.comparing(result -> result));
 		return Math.max(addEachMax.get(), multipleEachMax.get());
 	}
+
+	private static Integer compareScore(Integer pobiScore, Integer crongScore) {
+		if (crongScore < pobiScore) {
+			return POBI_WIN;
+		} else if (pobiScore < crongScore) {
+			return CRONG_WIN;
+		} else {
+			return TIE_MATCH;
+		}
+	}
+
 }
