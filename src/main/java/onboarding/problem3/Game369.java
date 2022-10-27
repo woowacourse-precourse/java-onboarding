@@ -18,4 +18,11 @@ public class Game369 {
 		return result;
 	}
 
+	public static int start(int number) {
+		int result = 0;
+		for (int i = 1; i < number + 1; i++) {
+			result += countClap(String.valueOf(i));
+		}
+		return result;
+	}
 }
