@@ -17,4 +17,8 @@ public enum Money {
     Money(int amount) {
         this.amount = amount;
     }
+
+    public int amount(){
+        return amount;
+    }
 }

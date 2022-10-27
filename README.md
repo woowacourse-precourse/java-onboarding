@@ -52,7 +52,7 @@
 ### Problem5
 
 - [x] 돈 enum
-  - [ ] 단위 amount 반환
+  - [x] 단위 amount 반환
   - [ ] n개의 돈 총금액 반환
 
 
