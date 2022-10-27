@@ -11,7 +11,6 @@ class Problem1 {
     private static final int TIE = 0;
     private static final int EXCEPTION = -1;
 
-
     private static final int FIRST_PAGE = 1;
     private static final int LAST_PAGE = 400;
 
@@ -58,7 +57,7 @@ class Problem1 {
     }
 
     public static Integer plusEachDigit(List<Integer> digits) {
-        Integer sum = 0;
+        int sum = 0;
         for (Integer digit : digits) {
             sum += digit;
         }
@@ -97,14 +96,18 @@ class Problem1 {
                 return false;
             }
         }
+
         return true;
     }
 
-    public static boolean isValidPageNumber(List<Integer> pages) {
-        if (isEven(pages.get(0))) {
+    public static boolean isValidPageOddEven(List<Integer> pages) {
+        int leftPage = pages.get(0);
+        int rightPage = pages.get(1);
+
+        if (isEven(leftPage)) {
             return false;
         }
-        if (!isEven(pages.get(1))) {
+        if (!isEven(rightPage)) {
             return false;
         }
 
@@ -115,4 +118,14 @@ class Problem1 {
         return (num % 2) == 0;
     }
 
+    public static boolean isValidPageSequence(List<Integer> pages) {
+        int leftPage = pages.get(0);
+        int rightPage = pages.get(1);
+
+        if (++leftPage != rightPage) {
+            return false;
+        }
+
+        return true;
+    }
 }
