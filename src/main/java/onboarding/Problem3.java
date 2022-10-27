@@ -6,7 +6,10 @@ public class Problem3 {
 
         for (int i = 1; i < number+1; i++) {
             String strNumber = Integer.toString(i);
-            
+
+            if (strNumber.contains("3") || strNumber.contains("6") || strNumber.contains("9")) {
+                String[] strNum = strNumber.split("");
+            }
         }
         return answer;
     }
