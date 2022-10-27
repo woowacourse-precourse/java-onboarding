@@ -24,3 +24,11 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+## Problem7
+### 기능 요구 사항
+- [ ] user 친구들 조회
+- [ ] 친구들의 친구들 조회.
+- [ ] 친구들의 친구들 10점 추가.
+- [ ] visitors 명단에 있는 사람 1점 추가.
+- [ ] 추천 점수와 이름 기준으로 정렬
