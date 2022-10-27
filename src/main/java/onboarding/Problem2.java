@@ -30,6 +30,18 @@ public class Problem2 {
         return stack;
     }
 
+    public static boolean checkValid(String s) {
+        return checkLength(s) && checkLowerCase(s);
+    }
+
+    public static boolean checkLength(String s) {
+        int len = s.length();
+        if (1 <= len && len <= 1000) {
+            return true;
+        }
+        return false;
+    }
+
     public static boolean checkLowerCase(String s) {
         if (s.equals(s.toLowerCase())) {
             return true;
