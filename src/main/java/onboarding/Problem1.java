@@ -4,8 +4,10 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if (validation(pobi) || !validation(crong))
+        if (!validation(pobi) || !validation(crong))
             return -1;
+        int pobiScore = Math.max(calculate(pobi.get(0)), calculate(pobi.get(1)));
+        int crongScore = Math.max(calculate(crong.get(0)), calculate(crong.get(1)));
         int answer = Integer.MAX_VALUE;
         return answer;
     }
@@ -18,5 +20,17 @@ class Problem1 {
             return false;
         // 왼쪽이 3 ~ 397인 경우만 true
         return left > 1 && left < 399;
+    }
+
+    public static int calculate(Integer num) {
+        int add = 0;
+        int multiply = 1;
+        while (num > 0) {
+            int n = num % 10;
+            add += n;
+            multiply *= n;
+            num /= 10;
+        }
+        return Math.max(add, multiply);
     }
 }
