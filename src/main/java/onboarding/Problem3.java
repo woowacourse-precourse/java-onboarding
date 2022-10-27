@@ -11,4 +11,15 @@ public class Problem3 {
 
         return result;
     }
+
+    private static void check369(int num) {
+        int remainder;
+        while (num != 0) {
+            remainder = num % 10;
+            if (remainder != 0 && remainder % 3 == 0) {
+                result += 1;
+            }
+            num = num / 10;
+        }
+    }
 }
