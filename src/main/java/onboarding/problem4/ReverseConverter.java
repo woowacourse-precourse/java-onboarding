@@ -21,5 +21,16 @@ public class ReverseConverter {
 			return Character.toLowerCase(reverseDict.get(index));
 		}
 	}
-	
+
+	public static String convert(String word) {
+		StringBuilder result = new StringBuilder();
+		for (char c : word.toCharArray()) {
+			if (Character.isAlphabetic(c)) {
+				result.append(convert(c));
+			} else {
+				result.append(c);
+			}
+		}
+		return result.toString();
+	}
 }
