@@ -1,5 +1,8 @@
 package onboarding;
 
+import onboarding.problem4.AlphabetFactory;
+import onboarding.problem4.WordValidator;
+
 public class Problem4 {
 
     static StringBuilder answer;
@@ -8,15 +11,24 @@ public class Problem4 {
         answer = new StringBuilder();
     }
 
-    private static void validateWord(String word) {
-        if (word.length() < 1 || word.length() > 1000) {
-            throw new IllegalArgumentException("word는 길이가 1 이상 1,000 이하인 문자열입니다.");
+    static String doConvertWord(String oldWord) {
+        input();
+        final char[] words = oldWord.toCharArray();
+
+        for (char word : words) {
+            if (!Character.isAlphabetic(word)) {
+                answer.append(word);
+                continue;
+            }
+            final Character convertAlphabet = AlphabetFactory.doConvert(word);
+            answer.append(convertAlphabet);
         }
+        return answer.toString();
     }
 
     public static String solution(String word) {
-        validateWord(word);
-        return answer.toString();
+        WordValidator.validateWord(word);
+        return doConvertWord(word);
     }
 
 
