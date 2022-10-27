@@ -69,6 +69,17 @@ class Problem1 {
         return userScore;
     }
 
+    private static String getGameResultByScores(int pobiScore, int crongScore) {
+        if (pobiScore > crongScore) {
+            return "pobi win";
+        }
+        if (crongScore > pobiScore) {
+            return "crong win";
+        }
+
+        return "draw";
+    }
+
     static class Answers {
         private final Map<String,Integer> answers;
 
