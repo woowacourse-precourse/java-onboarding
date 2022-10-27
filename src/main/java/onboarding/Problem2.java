@@ -26,4 +26,21 @@ public class Problem2 {
         }
         return result;
     }
+
+    /*
+     *스택 이용해서 문자 제거하는 함수
+     */
+    static String remove(String cryptogram){
+        Stack<Character> stack = new Stack<>();
+        for (int i=0; i < cryptogram.length(); i++){
+            char c = cryptogram.charAt(i);
+            if(!stack.isEmpty() && stack.peek() == c){
+                stack.pop();
+            }else {
+                stack.push(c);
+            }
+        }
+        return dump(stack);
+    }
 }
+
