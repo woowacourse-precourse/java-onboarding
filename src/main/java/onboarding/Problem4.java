@@ -10,7 +10,12 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        StringBuffer answer = new StringBuffer("");
+        String answer = transformWord(word).toString();
+        return answer;
+    }
+
+    private static StringBuffer transformWord(String word) {
+        StringBuffer transformedWord = new StringBuffer("");
 
         for(int i = 0; i < word.length(); i++){
             char currentLetter = word.charAt(i);
@@ -18,10 +23,10 @@ public class Problem4 {
             if(isLetter(currentLetter))
                 currentLetter = getOppositeLetter(currentLetter);
 
-            answer.append(currentLetter);
+            transformedWord.append(currentLetter);
         }
 
-        return answer.toString();
+        return transformedWord;
     }
 
     private static boolean isLetter(char currentLetter){
