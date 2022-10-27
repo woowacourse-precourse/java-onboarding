@@ -4,6 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -36,7 +38,7 @@ class ApplicationTest {
         }
     }
 
-//    @Nested
+    //    @Nested
 //    class Problem2Test {
 //        @Test
 //        void case1() {
@@ -71,15 +73,56 @@ class ApplicationTest {
 
         @Test
         @DisplayName("3일때")
-        void is369TestSuccess(){
-            boolean result = Problem3.is369(3);
+        void is369TestSuccess() throws Exception {
+            Method testMethod = Problem3.class.getDeclaredMethod("is369", int.class);
+            testMethod.setAccessible(true);
+
+            boolean result = (boolean) testMethod.invoke(boolean.class, 3);
+
             assertThat(result).isEqualTo(true);
         }
+
         @Test
         @DisplayName("4일때")
-        void is369TestFail(){
-            boolean result = Problem3.is369(4);
+        void is369TestFail() throws Exception {
+            Method testMethod = Problem3.class.getDeclaredMethod("is369", int.class);
+            testMethod.setAccessible(true);
+
+            boolean result = (boolean) testMethod.invoke(boolean.class, 4);
+
             assertThat(result).isEqualTo(false);
+        }
+
+        @Test
+        @DisplayName("369 카운트 - 33일때")
+        void count369InNumberTwo() throws Exception {
+            Method testMethod = Problem3.class.getDeclaredMethod("count369InNumber", int.class);
+            testMethod.setAccessible(true);
+
+            //given
+            int test = 33;
+
+            //when
+            int result = (int) testMethod.invoke(int.class, test);
+
+            //then
+            assertThat(result).isEqualTo(2);
+        }
+
+        @Test
+        @DisplayName("369 카운트 - 14일때")
+        void count369InNumberZero() throws Exception {
+            Method testMethod = Problem3.class.getDeclaredMethod("count369InNumber", int.class);
+            testMethod.setAccessible(true);
+
+            //given
+            int test = 14;
+
+            //when
+            int result = (int) testMethod.invoke(int.class, test);
+
+            //then
+            assertThat(result).isEqualTo(0);
         }
     }
 //

@@ -9,13 +9,19 @@ public class Problem3 {
     }
 
     private static int count369InNumber(int number) {
+        int count = 0;
         List<Integer> numberList = Util.changeIntToIntList(number);
 
+        for (Integer num : numberList) {
+            if (is369(num)) {
+                count++;
+            }
+        }
 
-        return 0;
+        return count;
     }
 
-    public static boolean is369(int number) {
+    private static boolean is369(int number) {
         return number == 3 || number == 6 || number == 9;
     }
 
