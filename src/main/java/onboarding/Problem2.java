@@ -8,11 +8,11 @@ public class Problem2 {
         return answer;
     }
 
-    private boolean isEmpty(LinkedList<Character> deduplicationLetters) {
+    private static boolean isEmpty(LinkedList<Character> deduplicationLetters) {
         return deduplicationLetters.isEmpty();
     }
 
-    private void addLetter(LinkedList<Character> deduplicationLetters,char letter) {
+    private static void addLetter(LinkedList<Character> deduplicationLetters,char letter) {
         deduplicationLetters.add(letter);
     }
 }
