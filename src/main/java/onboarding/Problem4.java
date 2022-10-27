@@ -4,8 +4,9 @@ public class Problem4 {
     public static String solution(String word) {
 
         String answer = "";
-
-
+        for (int i = 0; i < word.length(); i++) {
+            answer += getReversedAlphabet(getAscii(word.charAt(i)));
+        }
         return answer;
     }
 
@@ -22,8 +23,8 @@ public class Problem4 {
             reversedAscii = 155 - ascii;
         } else if (ascii >= 97 && ascii <= 122) {
             reversedAscii = 219 - ascii;
-        } else if (ascii == 32){
-            reversedAscii = 32;
+        } else {
+            reversedAscii = ascii;
         }
         Character reversedAlphabet = (char) reversedAscii;
 
