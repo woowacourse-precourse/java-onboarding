@@ -42,6 +42,14 @@ public class Problem2 {
         }
         return  result;
     }
+    static String DeleteDuplicate(Stack<String> duplicate, String str) {
+        String result = str;
+
+        while (!duplicate.empty()) {
+            result = result.replaceAll(duplicate.pop(), "");
+        }
+        return result;
+    }
     public static String solution(String cryptogram) {
         String answer = cryptogram;
         Stack<String> duplicate;
@@ -51,15 +59,8 @@ public class Problem2 {
 
         while (CheckDuplicate(answer)) {
             duplicate = DuplicateStr(answer);
-            while (!duplicate.empty()) {
-                answer = answer.replaceAll(duplicate.pop(), "");
-            }
+            answer = DeleteDuplicate(duplicate, answer);
         }
-
         return answer;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(solution("aabbqwexzscz"));
     }
 }
