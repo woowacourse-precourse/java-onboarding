@@ -65,13 +65,8 @@
 
 ## 문제 2
 ### 구현 및 메소드 설명
-### decryptString
-### solution
-
-### stringToStack
-
-- cryptogram을 앞부터 차례로 확인하면서 stack<char>에 담는다.
-- 완성된 stack을 return한다.
+ - decryptString 
+ - solution
 
 ### decryptString
 - String을 매개변수로 받는다. 이 값은 cryptogram이다.
