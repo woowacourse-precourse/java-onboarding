@@ -15,7 +15,18 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+
+        if(!isOdd(pobi.get(0)) || isOdd(pobi.get(1)) || !isOdd(crong.get(0)) || isOdd(crong.get(1))){
+            answer = -1;
+            return answer;
+        }
+
         return answer;
+    }
+
+    public static boolean isOdd(int number){
+        if(number%2==1) return true;
+        return false;
     }
 
 }
