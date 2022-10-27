@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.Stack;
+import java.util.stream.Collectors;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
@@ -18,7 +19,11 @@ public class Problem2 {
             }
             stack.push(c);
         }
-        return stack.toString();
+        return changeStackToString(stack);
+    }
+
+    private static String changeStackToString(Stack<Character> stack) {
+        return stack.stream().map(Object::toString).collect(Collectors.joining());
     }
 }
 
