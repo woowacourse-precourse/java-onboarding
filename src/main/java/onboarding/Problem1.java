@@ -6,8 +6,8 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         //기능1. 각 자리의 합을 구하는 기능
         //기능2. 각 자리의 곱을 구하는 기능
-        //기능3. 합과 곱 중 더 큰 값을 구하는 기능
-        //기능4. 배열의 길이만큼 기능3을 반복해서 최대값을 구하는 기능
+        //기능3. 더한 값과 곱한 값 중 더 큰 값을 구하는 기능
+        //기능4. 왼쪽 페이지와 오른쪽 페이지를 비교하는 기능
         //기능5. 포비의 최대값과 크롱의 최대값을 비교해서 0, 1, 2을 리턴
         //기능6. 예외처리
 
@@ -31,5 +31,11 @@ class Problem1 {
             pageNum /= 10;
         }
         return sum;
+    }
+
+    private int sumOrProduct(int pageNum) {
+        int sum = digitSum(pageNum);
+        int product = digitProduct(pageNum);
+        return (sum > product) ? sum : product;
     }
 }
