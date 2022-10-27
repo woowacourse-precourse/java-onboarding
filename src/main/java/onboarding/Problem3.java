@@ -8,6 +8,11 @@ public class Problem3 {
     private static final Set<Integer> numbers369 = new HashSet<>(Arrays.asList(3, 6, 9));
     public static int solution(int number) {
         int answer = 0;
+
+        if (number<1 || number>10000) {
+            return answer;
+        }
+
         for (int i=3; i<=number; i++) {
             answer += count396(i);
         }
