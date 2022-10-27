@@ -2,7 +2,6 @@ package onboarding;
 import java.util.*;
 
 public class Problem2 {
-    public static boolean check = true;
 
     public static String decodeString(String strIn) {
         String output = "";
@@ -31,6 +30,7 @@ public class Problem2 {
     }
 
     public static String solution(String cryptogram) {
+        boolean check = true;
         String answer = cryptogram;
         int checkNum;
         while (check) {
