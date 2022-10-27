@@ -261,6 +261,13 @@ class ApplicationTest {
         }
 
         @Test
+        void solutionTest() {
+            String word = "   ";
+            String result = "   ";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+
+        @Test
         void checkAlphaTest() {
             assertThat(Problem4.checkAlpha('a')).isEqualTo(true);
         }
