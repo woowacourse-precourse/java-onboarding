@@ -21,7 +21,9 @@ import java.util.List;
  * 5. get_final_score() = 매개변수로 받은 리스트의 두 페이지로 만든 최종 스코어를 반환
  * <p>
  * Judge 클래스
- * 1. show_result() = 결과를 반환한다 ( ERROR = -1, POBI = 1, CRONG = 2, DRAW = 0 )
+ * ERROR = -1, POBI = 1, CRONG = 2, DRAW = 0
+ * 1. show_exception() = 오류를 반환한다.
+ * 2. show_result() = 결과를 반환한다
  */
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -86,5 +88,26 @@ class Calculator {
 
     public int get_final_score(List<Integer> list) {
         return get_bigger(get_higher_score_in_page(list.get(0)), get_higher_score_in_page(list.get(1)));
+    }
+}
+
+class Judge {
+    final int ERROR = -1;
+    final int DRAW = 0;
+    final int POBI = 1;
+    final int CRONG = 2;
+
+    public int show_exception() {
+        return ERROR;
+    }
+
+    public int show_winner(int pobi_score, int crong_score) {
+        if (pobi_score == crong_score) {
+            return DRAW;
+        }
+        if (pobi_score > crong_score) {
+            return POBI;
+        }
+        return CRONG;
     }
 }
