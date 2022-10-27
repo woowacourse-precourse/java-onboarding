@@ -5,22 +5,27 @@ import java.util.List;
 class Problem1 {
     private static final int MIN_PAGE = 1;
     private static final int MAX_PAGE = 400;
-    public static int addDigits(int num){
+    private static final int POBI_WIN = 1;
+    private static final int CRONG_WIN = 2;
+    private static final int TIE = 0;
+    private static final int EXCEPTION = -1;
+
+    public static int addDigits(int number){
         int sum = 0;
-        while(num > 0){
-            int digit = num % 10;
+        while(number > 0){
+            int digit = number % 10;
             sum += digit;
-            num /= 10;
+            number /= 10;
         }
         return sum;
     }
 
-    public static int multiplyDigits(int num){
+    public static int multiplyDigits(int number){
         int product = 1;
-        while(num > 0){
-            int digit = num % 10;
+        while(number > 0){
+            int digit = number % 10;
             product *= digit;
-            num /= 10;
+            number /= 10;
         }
         return product;
     }
@@ -36,31 +41,31 @@ class Problem1 {
         return result;
     }
 
-    public static int compareNumbers(int num1, int num2){
+    public static int compareNumbers(int number1, int number2){
         int result = 0;
-        if(num1 > num2){
-            result = num1;
+        if(number1 > number2){
+            result = number1;
         }
-        if(num2 >= num1){
-            result = num2;
+        if(number2 >= number1){
+            result = number2;
         }
         return result;
     }
 
     public static boolean checkValidity(List<Integer> player){
         boolean result = true;
-        int num1 = player.get(0);
-        int num2 = player.get(1);
-        if(num1 < MIN_PAGE || num1 > MAX_PAGE){
+        int number1 = player.get(0);
+        int number2 = player.get(1);
+        if(number1 < MIN_PAGE || number1 > MAX_PAGE){
             result = false;
         }
-        if(num2 < MIN_PAGE || num2 > MAX_PAGE){
+        if(number2 < MIN_PAGE || number2 > MAX_PAGE){
             result = false;
         }
-        if(num2 - num1 != 1){
+        if(number2 - number1 != 1){
             result = false;
         }
-        if(num1 % 2 == 1 && num2 % 2 == 0){
+        if(number1 % 2 == 1 && number2 % 2 == 0){
             result = false;
         }
         return result;
@@ -68,7 +73,23 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-
+        boolean isValidInput = checkValidity(pobi) && checkValidity(crong);
+        if(isValidInput){
+            int pobiTotalMax = getMax(pobi);
+            int crongTotalMax = getMax(crong);
+            if(pobiTotalMax > crongTotalMax){
+                answer = POBI_WIN;
+            }
+            if(pobiTotalMax < crongTotalMax){
+                answer = CRONG_WIN;
+            }
+            if(pobiTotalMax == crongTotalMax){
+                answer = TIE;
+            }
+        }
+        if(!isValidInput){
+            answer = EXCEPTION;
+        }
         return answer;
     }
 }
