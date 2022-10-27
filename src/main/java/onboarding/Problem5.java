@@ -9,7 +9,9 @@ public class Problem5 {
         List<Integer> answer = Collections.emptyList();
         return answer;
     }
-
+    private static int getNumOfBillsOrCoins(int i, int money) {
+        return money / UNIT[i];
+    }
     private static int change(int i, int number, int money) {
         return money - UNIT[i] * number;
     }
