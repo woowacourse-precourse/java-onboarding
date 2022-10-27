@@ -4,7 +4,8 @@ import java.util.Stack;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        Stack<Character> words = deleteDuplicateWordsInRow(cryptogram);
+        String answer = getFinalString(words);
         return answer;
     }
 
@@ -37,5 +38,13 @@ public class Problem2 {
             words.pop();
         }
         return words;
+    }
+
+    private static String getFinalString(Stack<Character> words) {
+        StringBuilder sb = new StringBuilder();
+        while(!words.isEmpty()) {
+            sb.insert(0, words.pop());
+        }
+        return sb.toString();
     }
 }
