@@ -5,10 +5,14 @@ import java.util.Arrays;
 
 public class Problem2 {
 
+  private static final int MAX_CRYPTOGRAM_SIZE = 4000;
   private static final int NO_DUPLICATED_INDEX = -1;
 
   public static String solution(String cryptogram) {
-    String answer = deleteContinuousDuplicatedChar(cryptogram);
+    String answer = "";
+    if (isAllowedStringLength(cryptogram.length()) && isAllowedString(cryptogram)) {
+      answer = deleteContinuousDuplicatedChar(cryptogram);
+    }
     return answer;
   }
 
@@ -22,8 +26,8 @@ public class Problem2 {
     return true;
   }
 
-  public static boolean isAllowedStringLength(String cryptogram) throws IllegalStateException {
-    if (cryptogram.length() < 1 || cryptogram.length() > 10) {
+  public static boolean isAllowedStringLength(int cryptogramSize) throws IllegalStateException {
+    if (cryptogramSize < 1 || cryptogramSize > MAX_CRYPTOGRAM_SIZE) {
       throw new IllegalStateException("1 ~ 4000자 길이의 문자열이 아닙니다.");
     }
     return true;
