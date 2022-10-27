@@ -23,7 +23,11 @@ class Problem1 {
     }
 
     public int multiplyPageNum(int pageNum) {
-        int sum = 0;
+        int sum = 1;
+        String pageNumStr = String.valueOf(pageNum);
+        for (int i = 0; i < pageNumStr.length(); i++) {
+            sum *= pageNumStr.charAt(i) - '0';
+        }
         return sum;
     }
 
