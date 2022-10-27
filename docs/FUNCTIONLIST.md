@@ -72,7 +72,7 @@
   > - addOnePoint(): User의 추천 점수를 1 증가 시킨다.
   > - addTenPoint(int value): User의 추천 점수를 value 만큼 10 증가 시킨다.
 - ListGraph 클래스 : 친구 목록을 담고 있는 클래스로 친구 간 연결에 대한 정보를 가진다.
- > - getUser(User user): 특정 User를 반환한다.
- > - put(User userA, User userB): userA와 userB의 친구 관계를 형성해 각 클래스의 친구 목록에 추가한다.
+  > - getUser(User user): 특정 User를 반환한다.
+  > - put(User userA, User userB): userA와 userB의 친구 관계를 형성해 각 클래스의 친구 목록에 추가한다.
 </div>
 </details>
