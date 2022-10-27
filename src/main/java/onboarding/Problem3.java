@@ -30,6 +30,10 @@ public class Problem3 {
         return digit * MAX_CLAP_BY_DIGIT[i] + getNumOfMulOfThreeLessThanValue(digit) * (MULTIPLES_OF_TEN[i] / 10);
     }
 
+    private static int getClapMulOfThree(int i, int number) {
+        return number % MULTIPLES_OF_TEN[i] + 1;
+    }
+
     private static int getNumOfMulOfThreeLessThanValue(int value) {
         return (value-1) / 3;
     }
