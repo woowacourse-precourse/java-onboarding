@@ -6,19 +6,19 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class ReverseConverter {
-	public static final List<Character> dict = IntStream.rangeClosed('A', 'Z')
+	public static final List<Character> DICTIONARY = IntStream.rangeClosed('A', 'Z')
 		.mapToObj(c -> (char)c)
 		.collect(Collectors.toList());
-	public static final List<Character> reverseDict = dict.stream()
+	public static final List<Character> REVERSE_DICTIONARY = DICTIONARY.stream()
 		.sorted(Comparator.reverseOrder())
 		.collect(Collectors.toList());
 
 	public static Character convert(Character character) {
 		if (Character.isUpperCase(character)) {
-			return reverseDict.get(dict.indexOf(character));
+			return REVERSE_DICTIONARY.get(DICTIONARY.indexOf(character));
 		} else {
-			int index = dict.indexOf(Character.toUpperCase(character));
-			return Character.toLowerCase(reverseDict.get(index));
+			int index = DICTIONARY.indexOf(Character.toUpperCase(character));
+			return Character.toLowerCase(REVERSE_DICTIONARY.get(index));
 		}
 	}
 
