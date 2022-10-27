@@ -34,12 +34,18 @@ public class Problem6 {
             }
 
             String nickname = forms.get(i).get(1);
-            // TODO : indent 2 넘지 않도록 함수 분리
-            for (int j = 0; j < partList.size(); j++) {
-                String part = partList.get(j);
-                if (nickname.contains(part)) {
-                    return true;
-                }
+            if (compareNickname(partList, nickname)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean compareNickname(List<String> partList, String nickname) {
+        for (int i = 0; i < partList.size(); i++) {
+            String part = partList.get(i);
+            if(nickname.contains(part)){
+                return true;
             }
         }
         return false;
