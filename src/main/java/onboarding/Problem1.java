@@ -114,5 +114,17 @@ class Problem1 {
 
             return result;
         }
+
+        private int getMax(int leftPage, int rightPage) {
+            String leftPageString=Integer.toString(leftPage);
+            String rightPageString=Integer.toString(rightPage);
+            int result = 0;
+            result = Math.max(result,add(leftPageString));
+            result = Math.max(result,add(rightPageString));
+            result = Math.max(result,mutiply(leftPageString));
+            result = Math.max(result,mutiply(rightPageString));
+
+            return result;
+        }
     }
 }
