@@ -6,7 +6,7 @@ public class Problem2 {
         String removedAnswer;
         answer = cryptogram;
         while(true){
-            removedAnswer = Problem2.removeDuplicateLetters(answer);
+            removedAnswer = removeDuplicateLetters(answer);
             if(answer.equals(removedAnswer)){
                 break;
             }
