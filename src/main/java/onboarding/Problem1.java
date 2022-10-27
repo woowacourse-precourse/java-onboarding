@@ -13,7 +13,14 @@ class Problem1 {
         int pobiHighValue = calc(pobi.get(LEFT_PAGE).toString(), pobi.get(RIGHT_PAGE).toString()),
                 crongHighValue = calc(crong.get(LEFT_PAGE).toString(), crong.get(RIGHT_PAGE).toString());
 
-        return 0;
+        if (pobiHighValue == crongHighValue) {
+            return 0;
+        } else if (pobiHighValue > crongHighValue) {
+            return 1;
+        } else if (pobiHighValue < crongHighValue) {
+            return 2;
+        }
+        return -1;
     }
 
     private static int calc(String leftPage, String rightPage) {
