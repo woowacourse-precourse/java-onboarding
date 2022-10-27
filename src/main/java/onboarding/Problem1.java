@@ -43,4 +43,18 @@ class Problem1 {
         return sum;
     }
 
+    /**
+     * String 자료형의 각 자리를 곱한 값을 반환하는 메서드
+     */
+    private static int getMultipliedPageDigits(String page) {
+        int multipliedNumber = 1;
+
+        for (int i = 0; i < page.length(); i++) {
+            char aChar = page.charAt(i);
+            int digit = Character.getNumericValue(aChar);
+            multipliedNumber *= digit;
+        }
+        return multipliedNumber;
+    }
+
 }
