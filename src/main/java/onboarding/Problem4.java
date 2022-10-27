@@ -17,6 +17,18 @@ public class Problem4 {
             m.put((char) ('a' + i), (char) ('z' - i));
         }
 
+        StringBuilder sb = new StringBuilder();
+
+        /* 문자열 바꾸는 기능 */
+        for (int i = 0; i < word.length(); i++) {
+            char c = word.charAt(i);
+
+            if (c == ' ') sb.append(' ');
+            else sb.append(m.get(c));
+        }
+
+        answer = sb.toString();
+
         return answer;
     }
 }
