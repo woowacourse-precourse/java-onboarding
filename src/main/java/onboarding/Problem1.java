@@ -3,14 +3,19 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+    private static final int POBBI_WIN = 1;
+    private static final int CRONG_WIN = 2;
+    private static final int DRAW = 0;
+    private static final int EXCEPTION = -1;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if (!(isValid(pobi) && isValid(crong))) return -1;
+        if (!(isValid(pobi) && isValid(crong))) return EXCEPTION;
 
         int pobiMax = leftOrRight(pobi);
         int crongMax = leftOrRight(crong);
 
-        if (pobiMax == crongMax) return 0;
-        return (pobiMax > crongMax) ? 1 : 2;
+        if (pobiMax == crongMax) return DRAW;
+        return (pobiMax > crongMax) ? POBBI_WIN : CRONG_WIN;
     }
 
     private static int digitSum(int pageNum) {
