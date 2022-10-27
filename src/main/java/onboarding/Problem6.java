@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -17,6 +18,8 @@ public class Problem6 {
             twoLetterHashMap = putTwoLetters(form, twoLetterHashMap);
         }
 
+        answer = getRepetitionEmail(forms, twoLetterHashMap);
+        
         return answer;
     }
 
@@ -30,4 +33,26 @@ public class Problem6 {
 
         return twoLetterHashMap;
     }
+
+    public static List<String> getRepetitionEmail(List<List<String>> forms, HashMap<String, Integer> twoLetterHashMap) {
+        List<String> emailList = new ArrayList<>();
+
+        String targetNickname;
+        String targetEmail;
+
+        for (List<String> form : forms) {
+            targetNickname = form.get(NICKNAME);
+            targetEmail = form.get(EMAIL);
+
+            for (int i = 0; i < targetNickname.length() - 1; i++) {
+                String twoLetter = targetNickname.substring(i, i+2);
+                if(twoLetterHashMap.get(twoLetter) > 1) {
+                    emailList.add(targetEmail);
+                }
+            }
+        }
+
+        return emailList;
+    }
+
 }
