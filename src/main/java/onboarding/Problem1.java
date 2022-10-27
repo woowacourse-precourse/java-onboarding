@@ -29,4 +29,15 @@ class Problem1 {
         }
         return value;
     }
+
+    private static int getMaxValue(int left, int right) {
+        int leftPlus = getPlus(left);
+        int leftMul = getMul(left);
+        int rightPlus = getPlus(right);
+        int rightMul = getMul(right);
+
+        Integer valueArr[] = {leftPlus, leftMul, rightPlus, rightMul};
+        Arrays.sort(valueArr, Collections.reverseOrder());
+        return valueArr[0];
+    }
 }
