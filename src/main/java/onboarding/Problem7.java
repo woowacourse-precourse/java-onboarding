@@ -8,6 +8,7 @@ import java.util.List;
 public class Problem7 {
 
 	private static final int FRIEND_POINT = 10;
+	private static final int VISITOR_POINT = 1;
 	static List<String> friendName = new ArrayList<>();
 	static HashMap<String, Integer> recommendation = new HashMap<>();
 
@@ -15,6 +16,7 @@ public class Problem7 {
 
 		findFriend(user, friends);
 		findFriendofFriend(user, friends);
+		findVisitor(visitors);
 		List<String> answer = Collections.emptyList();
 		return answer;
 	}
@@ -54,6 +56,22 @@ public class Problem7 {
 
 	private static void addFriendPoint(String user) {
 		int score = FRIEND_POINT;
+		if (recommendation.containsKey(user)) {
+			score += recommendation.get(user);
+		}
+		recommendation.put(user, score);
+	}
+
+	private static void findVisitor(List<String> visitors) {
+		for (String visitor : visitors) {
+			if (!isFriend(visitor)) {
+				addVisitorPoint(visitor);
+			}
+		}
+	}
+
+	private static void addVisitorPoint(String user) {
+		int score = VISITOR_POINT;
 		if (recommendation.containsKey(user)) {
 			score += recommendation.get(user);
 		}
