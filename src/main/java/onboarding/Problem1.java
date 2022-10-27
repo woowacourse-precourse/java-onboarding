@@ -4,6 +4,8 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        if(isPage(pobi)==false||isPage(crong)==false) return -1;
+
         int pobiScore =0;
         int crongScore = 0;
 
@@ -16,6 +18,10 @@ class Problem1 {
         }
 
         return findWinner(pobiScore, crongScore);
+    }
+
+    public static boolean isPage(List<Integer> list){
+        return (list.get(1)-list.get(0)==1)?true:false;
     }
 
     public static int findMaxNum(String page){
