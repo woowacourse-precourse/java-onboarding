@@ -19,6 +19,27 @@ public class Decoder {
         builder = new StringBuilder(cryptogram);
     }
 
+
+    /**
+     * Decoding message
+     * @return decoded message
+     */
+    public String decode() {
+        do {
+            length = to = builder.length();
+            duplicate = false;
+
+            now = builder.charAt(length - 1);
+            for (int index = length - 2; index >= 0; index--) {
+                next = builder.charAt(index);
+                checkDuplication(index);
+            }
+
+        } while (length != builder.length());
+
+        return builder.toString();
+    }
+
     /**
      * Check if there is duplication
      * @param index current index
