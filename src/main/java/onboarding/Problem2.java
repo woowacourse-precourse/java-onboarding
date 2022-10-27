@@ -11,6 +11,7 @@ public class Problem2 {
         Pattern patternRegex = Pattern.compile(regex);
 
         while (true) {
+        Matcher patternMatcher = patternRegex.matcher(cryptogram);
 
             Matcher patternMatcher = patternRegex.matcher(cryptogram);
             StringBuffer stringBuffer = new StringBuffer();
