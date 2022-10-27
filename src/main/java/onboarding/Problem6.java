@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -19,7 +20,8 @@ public class Problem6 {
         }
 
         answer = getRepetitionEmail(forms, twoLetterHashMap);
-        
+        answer = sortASC(answer);
+
         return answer;
     }
 
@@ -45,8 +47,8 @@ public class Problem6 {
             targetEmail = form.get(EMAIL);
 
             for (int i = 0; i < targetNickname.length() - 1; i++) {
-                String twoLetter = targetNickname.substring(i, i+2);
-                if(twoLetterHashMap.get(twoLetter) > 1) {
+                String twoLetter = targetNickname.substring(i, i + 2);
+                if (twoLetterHashMap.get(twoLetter) > 1) {
                     emailList.add(targetEmail);
                 }
             }
@@ -55,4 +57,8 @@ public class Problem6 {
         return emailList;
     }
 
+    public static List<String> sortASC(List<String> target) {
+        Collections.sort(target);
+        return target;
+    }
 }
