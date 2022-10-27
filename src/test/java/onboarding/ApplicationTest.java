@@ -13,11 +13,12 @@ class ApplicationTest {
     class Problem1Test {
         @Test
         @DisplayName("리스트나 배열의 길이가 2인지 검증 : -1")
-        void testValidateLength() {
+        void testValidateListSize() {
             List<Integer> pobi = List.of(1, 2, 3);
             List<Integer> crong = List.of(197, 198);
-            int result = -1;
-            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+
+            assertThat(pobi).hasSize(2);
+            assertThat(crong).hasSize(2);
         }
 
         @Test
@@ -25,7 +26,7 @@ class ApplicationTest {
         void testValidateConsecutivePages1() {
             List<Integer> pobi = List.of(97, 98);
             List<Integer> crong = List.of(197, 198);
-            int result = Integer.MAX_VALUE;
+            int result = 0;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
 
