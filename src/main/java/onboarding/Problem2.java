@@ -35,7 +35,7 @@ public class Problem2 {
     public static String solution(String cryptogram) {
 
         Stack<Character> st = removeDuplication(cryptogram);
+        return reverseString(st);
 
-        return "";
     }
 }
