@@ -16,8 +16,9 @@
 
 ### Problem 2
 + 중복 문자 판별
-    - Regex를 이용
-+ 중복 문자 제거 & 리턴 
+    - Regex 세팅 
+    - patternMatcher 설정 
++ 중목 regex 패턴 매칭시 삭제
 + 최종 결과물을 출력할 때까지 반복
 
 <br>
