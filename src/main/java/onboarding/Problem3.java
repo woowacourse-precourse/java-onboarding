@@ -3,7 +3,6 @@ package onboarding;
 import java.util.List;
 
 public class Problem3 {
-    private static final List<Integer> CLAP_NUMBER = List.of(3,6,9);
     public static int solution(int number) {
         int clapCount = 0;
 
@@ -26,7 +25,8 @@ public class Problem3 {
     }
 
     private static boolean isContainClapNumber(int currentNumber) {
-        return CLAP_NUMBER.contains(currentNumber % 10);
+        List<Integer> clapList = List.of(3,6,9);
+        return clapList.contains(currentNumber % 10);
     }
 
 }
