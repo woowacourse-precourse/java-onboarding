@@ -11,4 +11,8 @@ public class DictionaryConverter {
     public String getConvertedString() {
         return convertedString;
     }
+
+    public static boolean isUpper(char alphabet) {
+        return alphabet >= 'A' && alphabet <= 'Z';
+    }
 }
