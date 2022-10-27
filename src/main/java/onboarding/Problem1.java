@@ -147,7 +147,14 @@ class Problem1 {
      * @return 숫자 리스트의 곱
      */
     private int getMultiplicationOfList(List<Integer> numList){
+        //결과 초기값 작성
+        int result = 1;
 
+        for(int num : numList){
+            result *= num;
+        }
+
+        return result;
     }
 
     /**
