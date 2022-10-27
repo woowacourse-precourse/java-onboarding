@@ -19,20 +19,22 @@ public class Problem6 {
 
         for (int i = 0; i < forms.size() - 1; i++) {
             String[] targetNameArr = forms.get(i).get(1).split("");
-            String compareArr = forms.get(i + 1).get(1);
+            for (int j = i + 1; j < forms.size(); j++) {
+                String compareArr = forms.get(j).get(1);
 
-            findTwoSameLetter(forms, i, targetNameArr, compareArr, answer);
+                findTwoSameLetter(forms, i, j, targetNameArr, compareArr, answer);
+            }
         }
         return answer;
     }
 
-    public static void findTwoSameLetter(List<List<String>> forms, int i, String[] targetNameArr, String compareArr, Set<String> answer) {
+    public static void findTwoSameLetter(List<List<String>> forms, int i, int j, String[] targetNameArr, String compareArr, Set<String> answer) {
         for (int z = 0; z < targetNameArr.length - 1; z++) {
             String targetTwoLetter = targetNameArr[z] + targetNameArr[z + 1];
 
             if (compareArr.contains(targetTwoLetter)) {
                 answer.add(forms.get(i).get(0));
-                answer.add(forms.get(i + 1).get(0));
+                answer.add(forms.get(j).get(0));
                 break;
             }
         }
