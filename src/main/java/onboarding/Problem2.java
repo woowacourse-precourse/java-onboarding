@@ -9,8 +9,51 @@ package onboarding;
  * 5-2. redo가 true라면 함수를 재실행한다.
  */
 public class Problem2 {
+    static Boolean redo;
+
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        redo = true;
+        String result = cryptogram;
+        while (redo) {
+            redo = false;
+            result = routine(result);
+        }
+        return result;
+    }
+
+    private static String routine(String crypto) {
+        char cache = Character.MAX_VALUE;
+        int pointer = 0;
+
+        for (int i = 0; i < crypto.length(); i++) {
+            if (cache == crypto.charAt(i)) {
+                pointer++;
+                cache = crypto.charAt(i);
+                continue;
+            }
+            else if (pointer > 0) {
+                crypto = removeDuplicate(crypto, pointer, i);
+                i -= pointer;
+                pointer = 0;
+                redo = true;
+                if (i == crypto.length()) {
+                    return crypto;
+                }
+            }
+            cache = crypto.charAt(i);
+        }
+
+        if (pointer > 0) {
+            crypto = removeDuplicate(crypto, pointer, crypto.length());
+            redo = true;
+        }
+
+        return crypto;
+    }
+
+    private static String removeDuplicate(String crypto, int pointer, int current) {
+        String a = crypto.substring(0, current - (1 + pointer));
+        String b = crypto.substring(current);
+        return a + b;
     }
 }
