@@ -2,7 +2,7 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
-        return 1;
+        return start_game(number);
     }
     public static int start_game(int number){
         int count = 0;
