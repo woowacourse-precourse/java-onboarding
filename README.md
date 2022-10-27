@@ -60,3 +60,9 @@ BUILD SUCCESSFUL in 0s
 
 - 미션은 [java-onboarding](https://github.com/woowacourse-precourse/java-onboarding) 저장소를 Fork & Clone해 시작한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+## 기능 체크리스트
+### 문제 1
+- [ ] 홀수로 시작하고, 연속되는 두 숫자를 찾는다
+- [ ] 숫자가 입력되면, 모든 자릿수를 더한 값과 모든 자릿수를 곱한 값을 찾아 더 큰 숫자를 찾는다
+- [ ] 게임 결과를 계산한다
