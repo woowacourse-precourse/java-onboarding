@@ -14,6 +14,7 @@ public class Problem5 {
 			answer.add(money / exchange);
 			money %= exchange;
 		}
+		answer.add(money);
 		return answer;
 	}
 }
