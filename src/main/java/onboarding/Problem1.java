@@ -71,6 +71,22 @@ class Operation {
             return 0;
         }
     }
+    public int calculatePlayerScore(List<Integer> bookPages){
+        int maxScore=0;
+
+        for(int bookPage:bookPages){
+            int[] pageDigitArray;
+            pageDigitArray = divideEachDigit(bookPage);
+            int sumDigit = sumEachDigit(pageDigitArray);
+            int mulDigit = multiplyEachDigit(pageDigitArray);
+            int score = findMaxValue(sumDigit, mulDigit);
+
+            if(maxScore<score){
+                maxScore=score;
+            }
+        }
+        return maxScore;
+    }
 }
 class Problem1 {
 
