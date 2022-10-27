@@ -15,4 +15,9 @@ public class Problem2 {
     private static void addLetter(LinkedList<Character> deduplicationLetters,char letter) {
         deduplicationLetters.add(letter);
     }
+
+    private static boolean isDuplicated(LinkedList<Character> deduplicationLetters, char letter) {
+        return deduplicationLetters.getLast().equals(letter);
+    }
+
 }
