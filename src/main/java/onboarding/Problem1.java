@@ -18,7 +18,14 @@ class Problem1 {
 
     private static int getPoint(List<Integer> pageNums) {
         int left = pageNums.get(0);
+        if (left < 0 || left > 400) {
+            return -1;
+        }
+
         int right = pageNums.get(1);
+        if (right < 0 || right > 400) {
+            return -1;
+        }
 
         int plus = 0;
         int multiply = 1;
