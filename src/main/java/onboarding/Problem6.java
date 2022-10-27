@@ -50,10 +50,12 @@ public class Problem6 {
 				String currentNickname = separatedNickname.get(j);
 
 				if (listOfAll.containsKey(currentNickname)) { // 닉네임 리스트에 이미 똑같은 닉네임이 있는 경우
-					listOfEmail.add(email); // 현재 차례의 이메일 주소를 리스트에 입력
-					listOfEmail.add(forms.get(listOfAll.get(currentNickname)).get(0)); //닉네임 리스트에 있는 사람의 이메일 주소를 리스트에 입력
+					if(emailDomainValidation(email))
+						listOfEmail.add(email); // 현재 차례의 이메일 주소를 리스트에 입력
+					if(emailDomainValidation(forms.get(listOfAll.get(currentNickname)).get(0)))
+						listOfEmail.add(forms.get(listOfAll.get(currentNickname)).get(0)); //닉네임 리스트에 있는 사람의 이메일 주소를 리스트에 입력
 				}
-				if (!listOfAll.containsKey(currentNickname)){ // 닉네임 리스트에 같은 닉네임이 없는 경우
+				if (!listOfAll.containsKey(currentNickname)) { // 닉네임 리스트에 같은 닉네임이 없는 경우
 					listOfAll.put(currentNickname, i); // 닉네임 리스트에 닉네임과 forms의 인덱스를 입력
 				}
 			}
@@ -71,4 +73,17 @@ public class Problem6 {
 		return listOfEmail.stream().sorted().distinct().collect(Collectors.toList());
 	}
 
+	/**
+	 * 기능 4 이메일 도메인이 email.com이 맞는지 검증
+	 */
+	public static boolean emailDomainValidation(String email) {
+
+		String properDomain = "@email.com";
+
+		if (email.substring(email.length() - 10, email.length()).equals(properDomain)) {
+			return true;
+		}
+
+		return false;
+	}
 }
