@@ -13,17 +13,17 @@ public class DuplicateProcessor {
 
         for (char cryptoChar : cryptoCharArr) {
             if (stack.isEmpty()) {
-                stack.push(cryptoChar);
+                stack.addLast(cryptoChar);
                 continue;
             }
 
-            if (stack.peek() == cryptoChar) {
-                stack.pop();
+            if (stack.peekLast() == cryptoChar) {
+                stack.removeLast();
                 duplicationCount++;
                 continue;
             }
 
-            stack.push(cryptoChar);
+            stack.addLast(cryptoChar);
         }
 
         return getDecryptedCharArray(stack, cryptoCharArr, duplicationCount);
@@ -44,9 +44,13 @@ public class DuplicateProcessor {
                 break;
             }
 
-            result[i] = stack.poll();
+            result[i] = stack.removeFirst();
         }
 
         return result;
+    }
+
+    public boolean flag() {
+        return flag;
     }
 }

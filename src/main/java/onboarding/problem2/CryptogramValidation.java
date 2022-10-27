@@ -2,8 +2,14 @@ package onboarding.problem2;
 
 public class CryptogramValidation {
 
-    public static boolean isValidCryptogram(String cryptogram) {
-        return isValidLength(cryptogram) || isOnlyContainsLowerCase(cryptogram);
+    public static void isValidCryptogram(String cryptogram) {
+        if (!isValidLength(cryptogram)) {
+            throw new IllegalArgumentException("문자의 길이는 1 이상 1,000 이하여야 합니다.");
+        }
+
+        if (!isOnlyContainsLowerCase(cryptogram)) {
+            throw new IllegalArgumentException("문자는 소문자만 입력해야 합니다.");
+        }
     }
 
     private static boolean isValidLength(String cryptogram) {
@@ -12,7 +18,6 @@ public class CryptogramValidation {
         int length = cryptogram.length();
 
         return MIN_VALUE <= length && length <= MAX_VALUE;
-
     }
 
     private static boolean isOnlyContainsLowerCase(String cryptogram) {
