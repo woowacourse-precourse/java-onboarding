@@ -82,3 +82,91 @@
 
 - 1 <= cryptogram의 길이 <= 1000
 - cryptogram은 모두 소문자로 이루어져 있다.
+
+
+---
+
+## ✏️ 새로 배운 내용
+
+### 1. String <-> List 변환
+
+- String -> List 변환
+
+  - 과정 : String -> Array -> List
+  - String -> Array : **String.split()** 함수를 통해 String[] 배열로 변환
+    - split() 함수의 매개변수로 인덱스 나누는 **기준 문자**를 전달 (빈 문자열 전달 시 한 문자씩 쪼갬)
+  - Array -> List : **Arrays.asList()** 함수를 통해 String[] 배열을 List로 변환
+
+    ```java
+    List<String> cryptogramList = new ArrayList<>(Arrays.asList(cryptogram.split("")));
+    ```
+
+- List -> String 변환
+
+  - String.join() 함수 활용
+
+  - 파라미터
+
+    - 문자열 delimiter : List를 하나의 String으로 합칠 때, 각 원소들 사이에 삽입되는 문자열
+    - 리스트 : 하나의 String으로 합칠 List
+
+  - 예시
+
+    ```java
+    List<String> strings = List.of("Java", "is", "cool");
+    String message = String.join(" ", strings);
+    //message : "Java is cool"
+    
+    Set<String> strings = new LinkedHashSet<>(List.of("Java", "is", "cool"));
+    String message = String.join("-", strings);
+    //message : "Java-is-cool"
+    ```
+
+
+
+### 2. Primitive type, Reference type
+
+- Java에서 타입은 크게 primitive type과 reference type이 있다.
+
+#### < primitive type >
+
+- boolean, int, long, float, double, char 등 정수, 실수, 문자 등의 실제 데이터 값을 저장하는 타입
+- 반드시 사용하기 전에 선언되어야 함.
+- null을 가질 수 없음.
+- Stack 메모리에 저장
+
+#### < reference type >
+
+- primitive type을 제외한 모든 타입들 (array, enumeration, class, interface)
+- java.lang.Object 를 상속받으면 reference type이 된다고 한다.
+- null 가능.
+- 참조 타입의 **변수 자체**는 실제 값을 갖고 있는게 아닌, **실제 값이 저장되어 있는 주소값**을 갖게 된다. 이는 Stack에 저장된다.
+- **실제 값은 Heap**에 저장된다.
+
+
+
+### 3. 값 비교 (==, equals())
+
+- 요약
+
+  - primitive type은 == 으로 비교
+  - reference type은 equals()로 비교
+
+- ==
+
+  - primitive type에 대해서는 값을 비교한다.
+  - reference type에 대해서는 주소값을 비교한다.
+
+- equals()
+
+  - equals()는 최상위 클래스인 java.lang.Object에 정의되어 있으며, 모든 하위 클래스에서 재정의해서 사용할 수 있으므로, 필요하면 재정의하면 된다.
+  - String의 경우, equals()에서 주소를 비교하는게 아닌, 내용을 비교하도록 구현되어 있다.
+  - 따라서 다음과 같이 equals를 활용해 비교할 수 있다.
+
+  ```java
+  if (a.equals(b) == true) {
+    System.out.println("a == b");
+  }
+  ```
+
+  
