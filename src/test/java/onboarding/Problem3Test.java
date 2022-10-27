@@ -12,7 +12,7 @@ class Problem3Test {
     @Test
     @DisplayName("[Problem3][getClapPerNumber]숫자 당 박수 테스트")
     public void getClapPerNumberTest() {
-        assertEquals(6,problem3.getClapPerNumber(369));
+        assertEquals(0,problem3.getClapPerNumber(12));
     }
 
     @Test
