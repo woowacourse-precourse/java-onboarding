@@ -5,6 +5,7 @@ import java.util.Stack;
 public class Problem2 {
 
     private static Stack<Character> characterStack;
+    private static char rememberChar = '\0';
 
     public static String solution(String cryptogram) {
         initStack(cryptogram);
@@ -13,12 +14,18 @@ public class Problem2 {
 
     private static String deleteDuplicateChars(String cryptogram) {
         for (int i = 1; i < cryptogram.length(); i++) {
+            if(rememberChar == cryptogram.charAt(i)) {
+                continue;
+            }
+
             if (validateSameChar(characterStack.peek(), cryptogram.charAt(i))) {
+                rememberChar = characterStack.peek();
                 characterStack.pop();
                 continue;
             }
 
             characterStack.push(cryptogram.charAt(i));
+            rememberChar = '\0';
         }
 
         return CharsToString();
