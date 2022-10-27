@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem6 {
@@ -17,17 +14,23 @@ public class Problem6 {
 		for (User user : userList) {
 			for (String token : duplicateTokens) {
 				if (user.checkDuplicate(token)) {
-					for (User targetUser : userList) {
-						if (targetUser.checkDuplicate(token)) {
-							answer.add(targetUser.email);
-						}
-					}
+					answer.addAll(getDuplicateEmails(userList, token));
 				}
 			}
 			duplicateTokens.addAll(user.getDuplicateNicknameTokens());
 		}
 
 		return List.copyOf(answer);
+	}
+
+	private static List<String> getDuplicateEmails(List<User> userList, String token) {
+		List<String> duplicateEmails = new ArrayList<>();
+		for (User targetUser : userList) {
+			if (targetUser.checkDuplicate(token)) {
+				duplicateEmails.add(targetUser.email);
+			}
+		}
+		return duplicateEmails;
 	}
 
 	static class User {
