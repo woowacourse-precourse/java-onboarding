@@ -29,7 +29,7 @@ public class Problem4 {
         String reverseWord = "";
 
         for (Character letter : motherWord) {
-            int letterToInt = letter - '0';
+            int letterToInt = (int)letter;
 
             if (isUpperCaseLetter(letterToInt)) {
                 reverseWord += upperCase.get(letter);
@@ -43,14 +43,14 @@ public class Problem4 {
     }
 
     public static boolean isUpperCaseLetter(int letterToInt) {
-        if ((letterToInt) >= upperCaseA && (letterToInt) <= upperCaseZ) {
+        if (letterToInt >= upperCaseA && letterToInt <= upperCaseZ) {
             return true;
         }
         return false;
     }
 
     public static boolean isLowerCaseLetter(int letterToInt) {
-        if ((letterToInt) >= lowerCaseA && (letterToInt) <= lowerCaseZ) {
+        if (letterToInt >= lowerCaseA && letterToInt <= lowerCaseZ) {
             return true;
         }
         return false;
@@ -58,10 +58,11 @@ public class Problem4 {
 
     private static void letterInList(String word) {
         motherWord = new ArrayList<>();
-        StringTokenizer st = new StringTokenizer(word, UPPERCASE_ALPHABET + LOWERCASE_ALPHABET, true);
+        StringTokenizer st = new StringTokenizer(word, UPPERCASE_ALPHABET + LOWERCASE_ALPHABET + " ", true);
 
         for (int index = indexStart; index < word.length(); index++) {
-            motherWord.add(st.nextToken().charAt(index));
+            String str = st.nextToken();
+            motherWord.add(str.charAt(0));
         }
     }
 
