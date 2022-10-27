@@ -7,7 +7,7 @@ public class Problem2 {
         if (cryptogram.length() == 1) {
             return cryptogram;
         }
-        String answer = "answer";
+        String answer = Decryptor.decrypt(cryptogram);
         return answer;
     }
 }
@@ -39,6 +39,16 @@ class Decryptor{
             result.append(checkNeighbors(crypto.charAt(crypto.length() - 1), crypto.charAt(crypto.length() - 2)));
         }
         return result;
+    }
+
+    static String decrypt(String input){
+        StringBuilder newStr = new StringBuilder(input);
+        StringBuilder resultStr = new StringBuilder("");
+
+        while (newStr.length() != 0 && newStr.compareTo(resultStr = deleteDuplicateChars(newStr)) != 0) {
+            newStr = resultStr;
+        }
+        return resultStr.toString();
     }
 
 }
