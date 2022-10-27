@@ -20,6 +20,10 @@ class Problem1 {
             return true;
         }
 
+        if (pages.get(0)==null || pages.get(1)==null) {
+            return true;
+        }
+
         return pages.get(1)-pages.get(0) != 1;
     }
 
