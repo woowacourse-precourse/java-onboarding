@@ -101,6 +101,16 @@ public class Problem7 {
     //방문 수에 따라 점수를 주는 함수
     public static void giveVisitPoint(List<String> visitors, List<String> userFriendsList)
     {
-
+        //중복을 제거해줌
+        for (int i = 0; i < visitors.size(); i++)
+        {
+            //사용자의 친구가 리스트에 있을 경우
+            for (int j = 0; j < userFriendsList.size(); j++)
+            {
+                if (userFriendsList.get(j).equals(visitors.get(i)))
+                    visitors.remove(i);
+            }
+        }
+        saveUserPoint(visitors, visitPoint);
     }
 }
