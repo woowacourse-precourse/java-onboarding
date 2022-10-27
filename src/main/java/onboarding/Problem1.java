@@ -87,7 +87,7 @@ class Problem1 {
         return pageScore;
     }
 
-    private static int getScoreByUserPages(List<Integer> userPages) {
+    private static int getUserScoreByPages(List<Integer> userPages) {
         int leftPage = getLeftPage(userPages);
         int rightPage = getRightPage(userPages);
 
