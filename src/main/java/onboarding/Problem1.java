@@ -3,6 +3,10 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+
+    static final int FIRST_PAGE = 1;
+    static final int LAST_PAGE = 400;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         int pobiLeft = pobi.get(0); int pobiRight = pobi.get(1);
@@ -20,8 +24,11 @@ class Problem1 {
     }
 
     public static boolean isException(int leftPage, int rightPage) {
+        if(leftPage == FIRST_PAGE || leftPage == LAST_PAGE)
+            return true;
         if((rightPage - leftPage) != 1)
             return true;
+
         return false;
     }
 
