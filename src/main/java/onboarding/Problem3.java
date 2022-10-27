@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.stream.Stream;
+
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
@@ -15,5 +17,13 @@ public class Problem3 {
         }
 
         return output;
+    }
+
+    // 두 자리 이상의 숫자를 int[] 로 분리하는 함수
+    private static int[] doubleSplit(int doubleDigits) {
+        int[] digits = Stream.of(String.valueOf(doubleDigits).split(""))
+                .mapToInt(Integer::parseInt).toArray();
+
+        return digits;
     }
 }
