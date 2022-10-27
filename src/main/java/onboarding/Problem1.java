@@ -10,8 +10,8 @@ class Problem1 {
         if(!validChk(pobi) || !validChk(crong)) return answer = -1;
 
         // 포비와 크롱의 점수 계산
-        int pobiPoint = Math.max(solution(pobi.get(0)), solution(pobi.get(1)));
-        int crongPoint = Math.max(solution(crong.get(0)), solution(crong.get(1)));
+        int pobiPoint = Math.max(calcMaxValue(pobi.get(0)), calcMaxValue(pobi.get(1)));
+        int crongPoint = Math.max(calcMaxValue(crong.get(0)), calcMaxValue(crong.get(1)));
 
         // 승자판별
         if(pobiPoint > crongPoint) answer = 1;
@@ -26,7 +26,7 @@ class Problem1 {
      * @param pageNum
      * @return Math.max(합, 곱셈)
      */
-    public static int solution(int pageNum) {
+    public static int calcMaxValue(int pageNum) {
         String page = String.valueOf(pageNum);
         int sum = 0, multi = 1;
         for (char c : page.toCharArray()) {
