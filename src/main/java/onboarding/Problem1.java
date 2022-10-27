@@ -44,5 +44,26 @@ class Problem1 {
         return  !(list.get(1) - list.get(0) == 1);
     }
 
+    /*
+     *가장 큰 수 끼리 비교하는 함수
+     */
+    static int game(List<Integer> pobi, List<Integer> crong){
+        int answer;
+        if(exception(pobi) || exception(crong)){
+            return -1;
+        }
+
+        int po = Math.max(cal(pobi,0),cal(pobi,1));
+        int cr = Math.max(cal(crong,0),cal(crong,1));
+
+        if(po>cr) {
+            answer = 1;
+        }else if(cr>po){
+            answer = 2;
+        }else {
+            answer = 0;
+        }
+        return answer;
+    }
 
 }
