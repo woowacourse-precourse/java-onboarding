@@ -18,6 +18,17 @@ public class Problem4 {
         return false;
     }
 
+    public static Character changeAlphabet(Character ch){
+        if(Character.isUpperCase(ch)){
+            ch = map.get(ch);
+        }else{
+            ch = Character.toUpperCase(ch);
+            ch = Character.toLowerCase(map.get(ch));
+        }
+
+        return ch;
+    }
+
     public static String solution(String word) {
 
         return "";
