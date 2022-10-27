@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest {
     @Nested
@@ -69,17 +70,48 @@ class ApplicationTest {
     @Nested
     class Problem2Test {
         @Test
-        void case1() {
+        void case1() throws Exception {
             String cryptogram = "browoanoommnaon";
             String result = "brown";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
 
         @Test
-        void case2() {
+        void case2() throws Exception {
             String cryptogram = "zyelleyz";
             String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        @DisplayName("대문자가 입력되면 예외를 반환한다")
+        void case3() {
+            String cryptogram = "zyelleZyz";
+            assertThatThrownBy(() -> Problem2.solution(cryptogram)).isInstanceOf(Exception.class);
+
+        }
+
+        @Test
+        @DisplayName("숫자가 입력되면 예외를 반환한다")
+        void case4() {
+            String cryptogram = "zyell0eyz";
+            assertThatThrownBy(() -> Problem2.solution(cryptogram)).isInstanceOf(Exception.class);
+
+        }
+
+        @Test
+        @DisplayName("길이가 1000보다 크면 예외를 반환한다")
+        void case5() {
+            String cryptogram = "z".repeat(1001);
+            assertThatThrownBy(() -> Problem2.solution(cryptogram)).isInstanceOf(Exception.class);
+        }
+
+        @Test
+        @DisplayName("길이가 1보다 작으면 예외를 반환한다")
+        void case6() {
+            String cryptogram = "";
+            assertThatThrownBy(() -> Problem2.solution(cryptogram)).isInstanceOf(Exception.class);
+
         }
     }
 
