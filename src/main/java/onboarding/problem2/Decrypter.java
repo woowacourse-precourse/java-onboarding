@@ -29,4 +29,15 @@ public class Decrypter {
         }
         return num;
     }
+
+    private static String removeCharacters(String cryptogram, int startingIndex, int charNum){
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(
+                cryptogram.substring(0, startingIndex)
+        );
+        stringBuilder.append(
+                cryptogram.substring(startingIndex+charNum)
+        );
+        return stringBuilder.toString();
+    }
 }
