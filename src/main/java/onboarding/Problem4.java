@@ -4,10 +4,8 @@ public class Problem4 {
     public static String solution(String word) {
         String answer = "";
 
-        for(int i = 0; i < word.length(); i++) {
-            char tmpCh = word.charAt(i);
-            tmpCh = changeWord(tmpCh);
-            answer += tmpCh;
+        for (char ch : word.toCharArray()) {
+            answer += changeWord(ch);
         }
 
         return answer;
@@ -15,17 +13,17 @@ public class Problem4 {
 
     static char changeWord(char word) {
         char newWord = 0;
-        int wordValue = (int)word;
+        int wordValue = word;
 
-        if(65 <= wordValue && wordValue <= 77) {
+        if(65 <= wordValue && wordValue <= 77) {            // [a-m]
             newWord = (char)(wordValue + (Math.abs(77-wordValue)*2 + 1));
-        }else if(78 <= wordValue && wordValue <= 90) {
+        }else if(78 <= wordValue && wordValue <= 90) {      // [n-z]
             newWord = (char)(wordValue - (Math.abs(78-wordValue)*2 + 1));
-        } else if(97 <= wordValue && wordValue <= 109) {
+        } else if(97 <= wordValue && wordValue <= 109) {    // [A-M]
             newWord = (char)(wordValue + (Math.abs(109-wordValue)*2 + 1));
-        } else if(110 <= wordValue && wordValue <= 122) {
+        } else if(110 <= wordValue && wordValue <= 122) {   // [N-Z]
             newWord = (char)(wordValue - (Math.abs(110-wordValue)*2 + 1));
-        } else {
+        } else {                                            // 알파벳 외의 문자
             newWord = word;
         }
 
