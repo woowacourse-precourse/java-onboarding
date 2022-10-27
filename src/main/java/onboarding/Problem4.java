@@ -32,4 +32,14 @@ class AlphabetController{
 
         return (char)(LOWER_END_INDEX - index);
     }
+
+    private static char checkAndConvert(char alpha){
+        if (isUpperAlpha(alpha)) {
+            return convertUpperAlpha(alpha);
+        }
+        if (isLowerAlpha(alpha)) {
+            return convertLowerAlpha(alpha);
+        }
+        return alpha;
+    }
 }
