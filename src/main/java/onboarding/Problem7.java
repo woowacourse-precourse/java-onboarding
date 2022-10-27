@@ -60,4 +60,8 @@ class Account {
     public int getNumberOfFriends() {
         return friendsRelation.size();
     }
+
+    public void addScore(int score) {
+        this.score += score;
+    }
 }
