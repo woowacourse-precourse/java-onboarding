@@ -18,5 +18,14 @@ class Problem1 {
         return result;
     }
 
+    static int mulPageNum(Integer pageNum){
+        int result = 1;
+        String pageStr = pageNum.toString();
+        for(String numToken : pageStr.split("")){
+            result *= Integer.parseInt(numToken);
+        }
+
+        return result;
+    }
 
 }
