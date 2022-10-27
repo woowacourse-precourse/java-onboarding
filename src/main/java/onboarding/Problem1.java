@@ -78,6 +78,11 @@ class Problem1 {
             throw new RuntimeException("오른쪽 페이지가 왼쪽페이지 보다 1만큼 더 크지 않습니다.");
         }
 
+        //페이지가 1~400 페이지 안에 있는지 체크
+        if (leftPage < 1 || rightPage > 400){
+            throw new RuntimeException("페이지가 1~400의 범위 밖에 있습니다.");
+        }
+
         //시작면 또는 마지막 면인지 체크
         if(leftPage == 1){
             throw new RuntimeException("시작 면이 나오도록 펼쳤습니다.");
