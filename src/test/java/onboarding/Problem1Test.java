@@ -135,10 +135,10 @@ class Problem1Test {
 
         List<Integer> crongWinCase = List.of(5, 6);
         int crongWin = 2;
-        assertThat(problem1.findWinner(pobiWinCase)).isEqualTo(crongWin);
+        assertThat(problem1.findWinner(crongWinCase)).isEqualTo(crongWin);
 
         List<Integer> noWinnerCase = List.of(3, 3);
         int noWinner = 0;
-        assertThat(problem1.findWinner(pobiWinCase)).isEqualTo(noWinner);
+        assertThat(problem1.findWinner(noWinnerCase)).isEqualTo(noWinner);
     }
 }
