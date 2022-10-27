@@ -22,6 +22,14 @@ class Problem1 {
             return EXCEPTION_CASE;
         }
 
+        if (leftPage == 1 && rightPage == 2) {
+            return EXCEPTION_CASE;
+        }
+
+        if (leftPage == 399 && rightPage == 400) {
+            return EXCEPTION_CASE;
+        }
+
         int leftPageMaxValue = doCalculate(leftPage);
         int rightPageMaxValue = doCalculate(rightPage);
 
