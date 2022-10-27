@@ -50,7 +50,11 @@ public class Problem6 {
     static List<String> answer = new ArrayList<>();
 
     public static List<String> solution(List<List<String>> forms) {
+        initCrews(forms);
+        putTokens();
+        checkDuplicate();
 
+        Collections.sort(answer);
         return answer;
     }
 
