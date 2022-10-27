@@ -13,7 +13,17 @@ public class Problem4 {
 		String answer = "";
 		return answer;
 	}
-
+	static String changeWord(char j) {
+		//대소문자 여부 판별
+		if (Character.isUpperCase(j)) {
+			//아스키코드를 반대문자로 변환
+			return UPPER_CASE_ARR[charToIndex(j)];
+		} else if (Character.isLowerCase(j)) {
+			//아스키코드를 반대문자로 변환
+			return LOWER_CASE_ARR[charToIndex(j)];
+		}
+		return String.valueOf(j);
+	}
 	static int charToIndex(char j) {
 		//문자를 인덱스 숫자로 변환
 		return (int)j >= 97 ? j - 97 : j - 65;
