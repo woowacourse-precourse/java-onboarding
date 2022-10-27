@@ -57,4 +57,15 @@ class Problem1 {
         return pageScore;
     }
 
+    private static int getScoreByUserPages(List<Integer> userPages) {
+        int leftPage = getLeftPage(userPages);
+        int rightPage = getRightPage(userPages);
+
+        int leftPageScore = getPageScore(leftPage);
+        int rightPageScore = getPageScore(rightPage);
+        int userScore = Math.max(leftPageScore, rightPageScore);
+
+        return userScore;
+    }
+
 }
