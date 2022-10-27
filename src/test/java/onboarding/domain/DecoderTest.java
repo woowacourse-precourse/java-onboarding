@@ -17,8 +17,16 @@ class DecoderTest {
     @Test
     @DisplayName("중복된 문자 제거 - 실패")
     void 중복된_문자_제거_실패() {
-        String beforeDecode = "hiTechCourse";
+        String beforeDecode = "hitechcourse";
         Decoder decoder = new Decoder(beforeDecode);
         assertEquals(beforeDecode, decoder.getDecodeResult());
+    }
+
+    @Test
+    @DisplayName("중복된 문자 제거 - 반복 수행")
+    void 중복된_문자_제거_반속_수행() {
+        String beforeDecode = "wooowatechcource";
+        Decoder decoder = new Decoder(beforeDecode);
+        assertEquals("atechcource", decoder.getDecodeResult());
     }
 }
