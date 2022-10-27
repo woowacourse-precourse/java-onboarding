@@ -29,4 +29,10 @@ class Problem4Test {
         assertEquals("R olev blf",problem4.characterAllConversion("I love you"));
     }
 
+    @Test
+    @DisplayName("[Problem][solution]솔루션 테스트")
+    public void solutionTest() {
+        assertEquals("R olev blf",problem4.solution("I love you"));
+    }
+
 }
