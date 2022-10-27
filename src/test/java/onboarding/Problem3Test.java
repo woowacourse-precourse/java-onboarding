@@ -5,7 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+@Disabled
 @DisplayName("[Problem3] Test")
 class Problem3Test {
     private Problem3 problem3 = new Problem3();
