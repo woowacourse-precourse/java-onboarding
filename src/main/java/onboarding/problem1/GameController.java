@@ -1,5 +1,7 @@
 package onboarding.problem1;
 
+import static onboarding.problem1.ResultType.*;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,7 +22,7 @@ public class GameController {
 		pageValidChecker = new PageValidChecker(lastPage);
 		List<List<Integer>> users = Arrays.asList(pobi, crong);
 		if (!users.stream().allMatch(u -> pageValidChecker.checkValid(u))) {
-			return -1;
+			return ERROR.getCode();
 		}
 
 		scoreCalculator = new ScoreCalculator();
@@ -28,8 +30,8 @@ public class GameController {
 		int crongScore = scoreCalculator.getScore(crong);
 
 		winnerSelector = new WinnerSelector();
-		int result = winnerSelector.getWinner(pobiScore, crongScore);
+		ResultType winner = winnerSelector.getWinner(pobiScore, crongScore);
 
-		return result;
+		return winner.getCode();
 	}
 }
