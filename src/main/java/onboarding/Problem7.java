@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 public class Problem7 {
+    private static final int ID_A = 0;
+    private static final int ID_B = 1;
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
@@ -24,4 +27,15 @@ public class Problem7 {
             friends.add(friendB);
         }
     }
+
+    private static void makeFriendMap(Map<String, List<String>> friendMap, Map<String, Integer> friendScoreMap, List<List<String>> friends) {
+        for(List<String> relation : friends) {
+            String friend1 = relation.get(ID_A);
+            String friend2 = relation.get(ID_B);
+
+            addFriend(friendMap, friendScoreMap, friend1, friend2);
+            addFriend(friendMap, friendScoreMap, friend2, friend1);
+        }
+    }
+
 }
