@@ -19,6 +19,7 @@ public class Problem4 {
             if(isBigOrSmall(charArray[index])==SMALL){
                 charArray[index]=(char)(122-(charArray[index]-97));
             }
+            if(isBigOrSmall(charArray[index])==SPACE)continue;
         }
         return charArray;
     }
