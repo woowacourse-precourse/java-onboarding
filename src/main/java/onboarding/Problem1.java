@@ -8,6 +8,17 @@ class Problem1 {
         return answer;
     }
 
+    private static boolean isIncorrectPages(List<Integer> pages){
+        int leftPage = pages.get(0);
+        int rightPage = pages.get(1);
+
+        boolean isPagePair = rightPage % 2 == 0 &
+                (leftPage + 1) == rightPage;
+        boolean isCorrectPageRange = 1 <= leftPage & rightPage <= 400;
+
+        return !(isPagePair & isCorrectPageRange);
+    }
+
     private static int getMaxScore(List<Integer> pages){
         return pages.stream()
                 .mapToInt(i -> toScore(i))
