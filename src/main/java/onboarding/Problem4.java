@@ -9,6 +9,10 @@ public class Problem4 {
         for (int i = 0; i < wordCh.length; i++) {
             if(!Character.isAlphabetic(wordCh[i])) {
                 result.append(wordCh[i]);
+            } else if (Character.isUpperCase(wordCh[i])) {
+                result.append((char)('Z' - wordCh[i] + 'A'));
+            } else {
+                result.append((char)('z' - wordCh[i] + 'a'));
             }
         }
     }
