@@ -5,12 +5,29 @@ import java.util.List;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String str = cryptogram;
 
+        int count = 1;
+        while(count>0){
+
+            str = changeLetter(str);
+            count -= 1;
+
+            for(int i = 0; i<str.length()-1; i++){
+                if(str.charAt(i) == str.charAt(i+1)) {
+                    count +=1;
+                }
+            }
+        }
+
+        return str;
+    }
+
+    public static String changeLetter(String name){
         List<String> list = new ArrayList<>();
 
-        for(int i = 0; i<cryptogram.length(); i++){
-            list.add(cryptogram.substring(i,i+1));
+        for(int i = 0; i<name.length(); i++){
+            list.add(name.substring(i,i+1));
         }
 
 
@@ -27,19 +44,6 @@ public class Problem2 {
     public static void main(String[] args) {
         String str = new String("browoanoommnaon");
 
-        int count = 1;
-        while(count>0){
 
-            str = solution(str);
-            count -= 1;
-
-            for(int i = 0; i<str.length()-1; i++){
-                if(str.charAt(i) == str.charAt(i+1)) {
-                    count +=1;
-                }
-            }
-        }
-
-        System.out.println(str);
     }
 }
