@@ -31,4 +31,17 @@ public class Decoder {
             length = 0;
         }
     }
+
+    /***
+     * Method for treating single non-duplication
+     * @param index current index
+     */
+    private void treatNonDuplication(int index) {
+        if (duplicate) {
+            builder.delete(from, to);
+            duplicate = false;
+        }
+        now = next;
+        to = index + 1;
+    }
 }
