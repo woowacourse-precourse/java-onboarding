@@ -10,7 +10,7 @@ public class Problem7 {
         Set<String> myFriends = new HashSet<>();
 
         friends.stream()
-                .filter(friend -> isFriendsContainsUser(friend, user))
+                .filter(friend -> isFriendContainsUser(friend, user))
                 .forEach(myFriends::addAll);
 
         friends.stream()
@@ -34,7 +34,7 @@ public class Problem7 {
         userToScore.put(user, userToScore.getOrDefault(user, 0) + score);
     }
 
-    private static boolean isFriendsContainsUser(List<String> friend, String user) {
+    private static boolean isFriendContainsUser(List<String> friend, String user) {
         return friend.contains(user);
     }
 }
