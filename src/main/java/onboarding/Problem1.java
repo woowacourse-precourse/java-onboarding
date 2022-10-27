@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -44,5 +45,31 @@ class Problem1 {
         }
 
         return true;
+    }
+
+    /**
+     * 페이지 번호를 각 자리 숫자의 배열로 변환하는 함수
+     *
+     * @param page
+     * @return int[] with page numbers
+     */
+    private static int[] toList(Integer page) {
+        return Arrays.stream(page.toString().split(""))
+                .mapToInt(Integer::parseInt)
+                .toArray();
+    }
+
+    /**
+     * 페이지 번호의 각 자리 숫자를 연산 해 가장 큰 수를 구하는 함수
+     *
+     * @param page
+     * @return largest number of calculation
+     */
+    private static int getLargestNum(Integer page) {
+        final int[] pageNums = toList(page);
+        final int totalAdd = Arrays.stream(pageNums).sum();
+        final int totalMultiply = Arrays.stream(pageNums).reduce(1, (x, y) -> x * y);
+
+        return Math.max(totalAdd, totalMultiply);
     }
 }
