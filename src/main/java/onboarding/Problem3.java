@@ -3,7 +3,7 @@ package onboarding;
 import onboarding.validatechecker.Problem3ValidateChecker;
 
 public class Problem3 {
-	private static int[] gameResult = new int[10001];
+	private static final int[] gameResult = new int[10001];
 	public static final int GAME_NUMBER3=3;
 	public static final int GAME_NUMBER6=6;
 	public static final int GAME_NUMBER9=9;
@@ -21,13 +21,13 @@ public class Problem3 {
 	}
 
 	private static int check369InNumber(int number){
-		int count369=0;
-		while(number!=0){
-			int digit=number%10;
+		int count369 = 0;
+		while(number != 0){
+			int digit = number % 10;
 			if(digit == GAME_NUMBER3 || digit == GAME_NUMBER6
 				|| digit == GAME_NUMBER9)
-				count369+=1;
-			number=number/10;
+				count369 += 1;
+			number /= 10;
 		}
 		return count369;
 	}
