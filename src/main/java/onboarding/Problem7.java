@@ -1,46 +1,52 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /*
 1. 친구목록 생성하기
 2. 지인 확인하기
 3. 지인, 방믄자 점수 계산하기
-4. 오름차순 정렬하기
+4. 추천 점수 내림차순 정렬하기(같으면 이름 오름차순 정렬)
 */
 
 public class Problem7 {
 
     private static Map<String, Integer> calculateScores(Map<String, Integer> mutualFriendsMap, List<String> visitors) {
-        Map<String, Integer> scoresMap = new HashMap<>();
+        Map<String, Integer> scoreMap = new HashMap<>();
+
         for (String friend : mutualFriendsMap.keySet()) {
-            scoresMap.put(friend, mutualFriendsMap.get(friend) * 10);
+            scoreMap.put(friend, mutualFriendsMap.get(friend) * 10);
         }
         for (String visitor : visitors) {
-            scoresMap.put(visitor, scoresMap.getOrDefault(visitor, 0) + 1);
+            scoreMap.put(visitor, scoreMap.getOrDefault(visitor, 0) + 1);
         }
-        return scoresMap;
+        return scoreMap;
     }
 
-    private static Map<String, Integer> getMutualFriends(String user, List<List<String>> friends, List<String> userFriends) {
-        Map<String, Integer> mutualFriendsMap = new HashMap<>();
-        for (String userFriend : userFriends) {
-            for (List<String> relationship : friends) {
-                if (relationship.get(0).equals(user) || relationship.get(1).equals(user)) {
-                    continue;
-                }
-                if (userFriends.contains(relationship.get(0))) {
-                    mutualFriendsMap.put(relationship.get(1), mutualFriendsMap.get(relationship.get(1) + 1));
-                }
+    private static Map<String, Integer> getMutualFriends(String user, List<List<String>> friends, Set<String> userFriends) {
+        Map<String, Integer> mutualFriendMap = new HashMap<>();
+        for (List<String> relationship : friends) {
+            String name1 = relationship.get(0);
+            String name2 = relationship.get(1);
+            if (name1.equals(user) || name2.equals(user)) {
+                continue;
+            }
+            if (userFriends.contains(name1)) {
+                mutualFriendMap.put(name2, mutualFriendMap.getOrDefault(name2, 0) + 1);
+            }
+            if (userFriends.contains(name2)) {
+                mutualFriendMap.put(name1, mutualFriendMap.getOrDefault(name1, 0) + 1);
             }
         }
-        return mutualFriendsMap;
+        return mutualFriendMap;
     }
 
-    private static List<String> getUserFriends(String user, List<List<String>> friends) {
-        List<String> userFriends = new ArrayList<>();
+    private static Set<String> getUserFriends(String user, List<List<String>> friends) {
+        Set<String> userFriends = new HashSet<>();
         for (List<String> relationship : friends) {
-            String name1 = relationship.get(0), name2 = relationship.get(1);
+            String name1 = relationship.get(0);
+            String name2 = relationship.get(1);
             if (name1.equals(user)) {
                 userFriends.add(name2);
             }
@@ -52,7 +58,21 @@ public class Problem7 {
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        Set<String> userFriends = getUserFriends(user, friends);
+        Map<String, Integer> mutualFriends = getMutualFriends(user, friends, userFriends);
+        Map<String, Integer> scores = calculateScores(mutualFriends, visitors);
+        List<String> answer = scores.entrySet()
+                .stream()
+                .filter(entry -> !userFriends.contains(entry.getKey()))
+                .sorted((entry1, entry2) -> {
+                    if (entry1.getValue().equals(entry2.getValue())) {
+                        return entry1.getKey().compareTo(entry2.getKey());
+                    }
+                    return entry2.getValue().compareTo(entry1.getValue());
+                })
+                .limit(5)
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
         return answer;
     }
 }
