@@ -25,11 +25,18 @@ class Problem1 {
         return result;
     }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
 
         int pobiScore = Math.max(extraction(pobi.get(0)), extraction(pobi.get(1)));
         int crongScore = Math.max(extraction(crong.get(0)), extraction(crong.get(1)));
 
-        return answer;
+        if (pobiScore > crongScore){
+            return 1;
+        } else if (pobiScore < crongScore){
+            return 2;
+        } else if (pobiScore == crongScore){
+            return 0;
+        }
+
+        return -1;
     }
 }
