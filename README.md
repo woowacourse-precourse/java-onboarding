@@ -43,7 +43,7 @@
 3. [문제 3](./docs/PROBLEM3.md)
   - [X] isValidInput
   - 인자값이 유효한지 검사한다.
-    - [ ] isInRange
+    - [X] isInRange
     - 1 ~ 10000 사이의 값인지 검사한다.
   - [ ] count369InRange
   - 인자값 까지의 모든 숫자의 3, 6, 9 개수를 센다.
