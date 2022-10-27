@@ -11,9 +11,9 @@ public class Problem7 {
             makeConnections(friendsList, friends.get(i).get(0), friends.get(i).get(1));
         }
 
-        Set<String> usersFriends = makeUsersFriendsList(user, friendsList);
+        Set<String> usersFriendsSet = makeUsersFriendsList(user, friendsList);
 
-        
+        Map<String, Integer> scores = getFriendScore(user, usersFriendsSet, friendsList);
 
     }
 
@@ -37,4 +37,17 @@ public class Problem7 {
         }
         return result;
     }
+
+    static Map<String, Integer> getFriendScore(String user, Set<String> set, Map<String, Set<String>> map) {
+        Map<String, Integer> result = new HashMap<>();
+
+        for (String str : set) {
+            Iterator<String> it = map.get(str).iterator();
+            if (!str.equals(user) && it.hasNext()) {
+                result.put(str, result.getOrDefault(str, 0) + 10);
+            }
+        }
+        return result;
+    }
+
 }
