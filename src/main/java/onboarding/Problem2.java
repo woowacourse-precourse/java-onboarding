@@ -12,8 +12,8 @@ public class Problem2 {
     }
 
     private static String deleteDuplicateChars(String cryptogram) {
-        for(int i=1; i<cryptogram.length(); i++) {
-            if(validateSameChar(characterStack.peek(), cryptogram.charAt(i))) {
+        for (int i = 1; i < cryptogram.length(); i++) {
+            if (validateSameChar(characterStack.peek(), cryptogram.charAt(i))) {
                 characterStack.pop();
                 continue;
             }
@@ -36,7 +36,7 @@ public class Problem2 {
     private static String CharsToString() {
         StringBuilder sb = new StringBuilder();
 
-        if(characterStack.empty()) {
+        if (characterStack.empty()) {
             return "";
         }
 
