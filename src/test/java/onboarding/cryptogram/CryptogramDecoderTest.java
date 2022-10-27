@@ -95,4 +95,20 @@ public class CryptogramDecoderTest {
 		clearText = CryptogramDecoder.removeRepetitions(clearText);
 		assertThat(clearText).isEqualTo("");
 	}
+
+	@DisplayName("암호문 해독 테스트")
+	@Test
+	void 암호문_해독() {
+		assertThat(
+			CryptogramDecoder.decode("browoanoommnaon")
+		).isEqualTo("brown");
+
+		assertThat(
+			CryptogramDecoder.decode("zyelleyz")
+		).isEqualTo("");
+
+		assertThat(
+			CryptogramDecoder.decode("zyellleyz")
+		).isEqualTo("");
+	}
 }

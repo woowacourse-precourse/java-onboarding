@@ -30,4 +30,12 @@ public class CryptogramDecoder {
 	public static String removeRepetitions(final String cryptogram) {
 		return cryptogram.replaceAll(REPEATED_REMOVAL_REGEX, "");
 	}
+
+	public static String decode(final String cryptogram) {
+		String clearText = cryptogram;
+		while (containsRepetitions(clearText)) {
+			clearText = removeRepetitions(clearText);
+		}
+		return clearText;
+	}
 }
