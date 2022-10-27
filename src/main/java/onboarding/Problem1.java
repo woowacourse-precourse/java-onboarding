@@ -5,12 +5,13 @@ import java.util.List;
 
 class Problem1 {
     /*
-    * 기능 정리
-    * 1. 각 user에 대한 page error 검사(홀짝 확인, 1~400 범위 확인, page 차이 1인 것 확인)
-    * 2. user의 페이지에 대해 자리수 분리 후, 분리한 각 자리 list 반환
-    * 3. 반환된 list를 가지고 각 자리 덧셈, 곱셈한 값에 대해 대소 관계 비교 후, 더 큰 값 반환하며 user의 값 결정.
-    * 4. 이렇게 결정된 두 user의 값을 비교하여 최종 answer값 return
-    * */
+     * 기능 정리
+     * 1. 각 user에 대한 page error 검사(홀짝 확인, 1~400 범위 확인, page 차이 1인 것 확인)
+     * 2. user의 페이지에 대해 자리수 분리 후, 분리한 각 자리 list 반환
+     * 3-1. 반환된 list를 가지고 한 페이지에 대한 총합 및 총 곱셈 계산 후, 더 큰 계산값 반환
+     * 3-2. 반환된 두 페이지 값에 대해 대소관계 비교 후, 더 큰 값 반환하며 user의 값 결정.
+     * 4. 이렇게 결정된 두 user의 값을 비교하여 최종 answer값 return
+     * */
 
     // 기능1 구현
     boolean checkPageError(List<Integer> pairPages) { // ★isVaildPage로 변경할 것
@@ -41,14 +42,14 @@ class Problem1 {
     }
 
     //2. 기능2 구현
-    List<Integer> getSeparatedDigits(int pageNumber){
+    List<Integer> getSeparatedDigits(int pageNumber) {
 
         List<Integer> separatedDigitList = new ArrayList<>();
         int digit;
         int remainedNumber = pageNumber;
 
-        while(remainedNumber>0){
-            digit = remainedNumber%10;
+        while (remainedNumber > 0) {
+            digit = remainedNumber % 10;
             separatedDigitList.add(digit);
 
             remainedNumber /= 10;
@@ -58,8 +59,37 @@ class Problem1 {
 
     }
 
+    
+
+    //3-1. 한 페이지에 대해 총합 및 총 곱셈 계산 후, 더 큰 계산값 반환
+    int getBiggerCalculation(List<Integer> separatedDigitList) {
+
+        int summation = 0;
+        int multiplication = 1;
+
+        for (int digit : separatedDigitList) {
+            summation += digit;
+            multiplication *= digit;
+        }
+
+        return Math.max(summation,multiplication);
+    }
 
 
+    //3-2. 기능3 페이지 쌍끼리 대소관계 비교 (실행 순서에 따라 함수를 배치할 것인지, 중요도에 따라 배치할 것인지 고민해볼 것)
+    int getBiggerPageScore(List<Integer> pairPages) {
+
+        int leftPage = pairPages.get(0);
+        int rightPage = pairPages.get(1);
+
+        List<Integer> leftDigitList = getSeparatedDigits(leftPage);
+        List<Integer> rightDigitList = getSeparatedDigits(rightPage);
+
+        int leftPageScore = getBiggerCalculation(leftDigitList);
+        int rightPageScore = getBiggerCalculation(rightDigitList);
+
+        return Math.max(leftPageScore,rightPageScore);
+    }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
