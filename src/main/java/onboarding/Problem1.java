@@ -92,7 +92,19 @@ class Problem1 {
     private static boolean isNotPageContinuous(int leftPage, int rightPage) {
         return rightPage - leftPage != 1;
     }
-    
+
+    /**
+     * 입력 받은 페이지 번호의 각 자리수의 합을 구한다.
+     *
+     * @param page 페이지 번호
+     * @return 각 자리수의 합
+     */
+    private static int getSumValue(int page) {
+        int[] pageArr = getPageValueArray(page);
+
+        return Arrays.stream(pageArr).sum();
+    }
+
     /**
      * 입력 받은 페이지의 각 자릿수를 담은 배열을 구한다.
      *
