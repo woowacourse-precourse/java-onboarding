@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -64,5 +66,12 @@ public class Problem6 {
 
     private static void addEmailSet(Set<String> newEmailSet) {
         emailSet.addAll(newEmailSet);
+    }
+
+    private static List<String> toSortedList(Set<String> set) {
+        List<String> newList = new ArrayList<>();
+        newList.addAll(set);
+        Collections.sort(newList);
+        return newList;
     }
 }
