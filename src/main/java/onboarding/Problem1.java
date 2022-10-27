@@ -23,4 +23,11 @@ class Problem1 {
         return Arrays.stream(digits)
             .reduce(1, Math::multiplyExact);
     }
+
+    public static int getBiggerNumber(int numberA, int numberB) {
+        if (numberA > numberB) {
+            return numberA;
+        }
+        return numberB;
+    }
 }
