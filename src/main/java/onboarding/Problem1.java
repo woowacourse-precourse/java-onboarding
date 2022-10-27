@@ -15,6 +15,10 @@ class Problem1 {
 
     public int sumPageNum(int pageNum) {
         int sum = 0;
+        String pageNumStr = String.valueOf(pageNum);
+        for (int i = 0; i < pageNumStr.length(); i++) {
+            sum += pageNumStr.charAt(i) - '0';
+        }
         return sum;
     }
 
@@ -28,6 +32,8 @@ class Problem1 {
     }
 
     public boolean isValid(List<Integer> pobi, List<Integer> crong) {
+
         return true;
     }
 }
+
