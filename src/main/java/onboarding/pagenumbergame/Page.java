@@ -26,4 +26,11 @@ public class Page {
 			.reduce(operation)
 			.orElse(0);
 	}
+
+	public int getMaximumNumber() {
+		return pageNumbers.stream()
+			.map(this::getMaximumNumberFrom)
+			.max(Integer::compareTo)
+			.orElse(0);
+	}
 }

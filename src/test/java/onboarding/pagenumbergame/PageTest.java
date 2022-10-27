@@ -23,4 +23,14 @@ public class PageTest {
 		assertThat(page.getMaximumNumberFrom(99)).isEqualTo(81);
 		assertThat(page.getMaximumNumberFrom(102)).isEqualTo(3);
 	}
+
+	@DisplayName("페이지 최대값 생성 테스트")
+	@Test
+	void 페이지_최대값_생성_테스트() {
+		Page page = new Page(List.of(97, 98));
+		assertThat(page.getMaximumNumber()).isEqualTo(72);
+
+		page = new Page(List.of(211, 212));
+		assertThat(page.getMaximumNumber()).isEqualTo(5);
+	}
 }
