@@ -1,7 +1,10 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -104,11 +107,10 @@ class Problem1 {
         }
 
         private static List<Integer> toList(String pageNumber) {
-            List<Integer> test = new ArrayList<>();
-            for(int i=0; i<pageNumber.length(); i++) {
-                test.add(Integer.valueOf(String.valueOf(pageNumber.charAt(i))));
-            }
-            return test;
+            int[] eachPageNumbers = Stream.of(pageNumber.split("")).mapToInt(Integer::parseInt).toArray();
+            return Arrays.stream(eachPageNumbers)
+                    .boxed()
+                    .collect(Collectors.toList());
         }
     }
 }
