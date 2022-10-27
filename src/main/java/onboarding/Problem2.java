@@ -4,6 +4,17 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
         return answer;
+    // 중복 문자 삭제
+    private static String replace(String input) {
+        List<Integer> delete = deleteIdx(input);
+        char[] chars = input.toCharArray();
+        for (int i : delete) {
+            String temp = Character.toString(chars[i])+Character.toString(chars[i]);
+            input = input.replace(temp,"");
+        }
+        return input;
+    }
+
     // 삭제할 문자 인덱스 반환
     private static List<Integer> deleteIdx(String input){
         char[] chars = input.toCharArray();
