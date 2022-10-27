@@ -17,6 +17,14 @@ public class Problem7 {
                     }
                 }
         ));
+
+        Set<User> recommendedUser = new HashSet<>();
+        map.forEach((key, value) -> {
+            if (value > 1 && !targetUser.getFriends().contains(key)) {
+                key.addTenPoint(value);
+                recommendedUser.add(key);
+            }
+        });
         List<String> answer = Collections.emptyList();
         return answer;
     }
@@ -88,8 +96,8 @@ class User implements Comparable<User> {
         this.point += 1;
     }
 
-    public void addTenPoint() {
-        this.point += 10;
+    public void addTenPoint(int value) {
+        this.point += (10 * value);
     }
 
     public int getPoint() {
