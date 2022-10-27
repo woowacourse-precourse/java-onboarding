@@ -19,6 +19,17 @@ class Problem1 {
         
         pobiScore = Math.max(pobiLMax, pobiRMax);
         
+        // 크롱 점수
+        int crongLSum = getSum(crong.get(0));
+        int crongLMulti = getMultiply(crong.get(0));
+        int crongLMax = Math.max(crongLSum, crongLMulti);
+        
+        int crongRSum = getSum(crong.get(1));
+        int crongRMulti = getMultiply(crong.get(1));
+        int crongRMax = Math.max(crongRSum, crongRMulti);
+        
+        crongScore = Math.max(crongLMax, crongRMax);
+        
         return answer;
     }
     
