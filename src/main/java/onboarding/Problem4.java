@@ -9,6 +9,7 @@ public class Problem4 {
 
         for(int i=0; i<stringarray.length; i++) {
             stringarray[i] = problem.reserveAlphabet(stringarray[i]);
+            answer = answer.concat(String.valueOf(stringarray[i]));
         }
 
         return answer;
