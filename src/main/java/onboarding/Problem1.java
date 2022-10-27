@@ -5,10 +5,13 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        Integer pobiMax = getMaxResult(pobi);
-        Integer crongMax = getMaxResult(crong);
-
-        return getGameResult(pobiMax, crongMax);
+        try {
+            Integer pobiMax = getMaxResult(pobi);
+            Integer crongMax = getMaxResult(crong);
+            return getGameResult(pobiMax, crongMax);
+        } catch (IllegalArgumentException e) {
+            return -1;
+        }
     }
 
     private static int getGameResult(Integer pobiMax, Integer crongMax) {
@@ -22,6 +25,9 @@ class Problem1 {
     }
 
     private static Integer getMaxResult(List<Integer> pages) {
+        if (pages.size() != 2) {
+            throw new IllegalArgumentException("페이지 리스트의 길이가 2가 아닙니다.");
+        }
         return pages.stream()
             .map(page -> getEachDigits(page))
             .mapToInt(digits -> getBiggerNumber(addEachDigits(digits), multiplyEachDigits(digits)))
