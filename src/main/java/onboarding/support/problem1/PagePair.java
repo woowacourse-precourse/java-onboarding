@@ -12,5 +12,14 @@ public class PagePair {
         return digitSum;
     }
 
+    public int calculateDigitMultiple(int pageNumber) {
+        int digitMultiple = 1;
+        while (pageNumber != Constants.getMinPage()) {
+            digitMultiple *= pageNumber % Constants.getDigitMod();
+            pageNumber /= Constants.getDigitMod();
+        }
+        return digitMultiple;
+    }
+
 
 }
