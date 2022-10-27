@@ -47,8 +47,10 @@
     - 1 ~ 10000 사이의 값인지 검사한다.
   - [X] count369InRange
   - 인자값 까지의 모든 숫자의 3, 6, 9 개수를 센다.
-    - [ ] count369InNumber
+    - [X] count369InNumber
     - 인자값 숫자의 3, 6, 9 개수를 센다.
+      - [ ] is369
+      - 숫자가 3, 6, 9인지 알려준다.
 
 4. [문제 4](./docs/PROBLEM4.md)
 5. [문제 5](./docs/PROBLEM5.md)
@@ -74,7 +76,7 @@
   - 코딩 컨벤션은 읽고, 관리하기 쉬운 코드를 작성하기 위한 일종의 코딩 스타일 규약(하나의 작성 표준)이다. 
     - 개발자 간 통일된 규약이 없다면 코드의 의도를 파악하거나 오류를 찾기 어려우며 유지보수 비용이 늘어난다.
   - JAVA의 코딩 컨벤션의 종류 [[참조](https://velog.io/@ozragwort/JAVA-%EC%BD%94%EB%94%A9-%EC%BB%A8%EB%B2%A4%EC%85%98%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C)]
-    - NAVER: [https://naver.github.io/hackday-conventions-java/](https://naver.github.io/hackday-conventions-java/)
+    - NAVER: [캠퍼스 핵데이 Java 코딩 컨벤션](https://naver.github.io/hackday-conventions-java/)
     - GOOGLE: [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html)
     - ORACLE: [Code Conventions for the Java](https://www.oracle.com/java/technologies/javase/codeconventions-contents.html)
 
@@ -123,3 +125,9 @@
       - 역시 선택사항이다.
       - Issue Tracker ID를 작성할 때 사용한다.
       - 예) Resolves: #??? 혹은 See Also: #???
+
+- ### **변수 선언은 반복문 안에서 하는게 좋은가?** [[참조](https://velog.io/@sc_shin/%EB%B0%98%EB%B3%B5%EB%AC%B8%EC%97%90%EC%84%9C-%EB%B3%80%EC%88%98-%EC%84%A0%EC%96%B8-%EC%9C%84%EC%B9%98)]
+  - 변수의 유효범위를 생각하자
+    - 변수를 반복문 안에서 선언했다면, 변수는 반복문이 종료되면 사라진다.
+    - 만약 반복문 밖에서도 사용할 변수가 아니라면, 안에서 선언하는 게 좋다.
+  - 최대한 좁은 범위 내에서 사용하자.

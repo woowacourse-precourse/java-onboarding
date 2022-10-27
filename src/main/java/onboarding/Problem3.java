@@ -40,7 +40,24 @@ public class Problem3 {
         return count;
     }
 
+    /*
+     * 숫자 하나 안에서 3, 6, 9가 몇 개가 있는지 셉니다.
+     *
+     * @param 개수를 셀 숫자힙니다.
+     * @return 숫자의 3, 6, 9 개수입니다.
+     * */
     private static int count369InNumber(int number) {
+        int count = 0;
+
+        while (number > 0) {
+            int digit = number % 10;
+            count += is369(digit);
+            number /= 10;
+        }
+        return count;
+    }
+
+    private static int is369 (int digit) {
         return 0;
     }
 
