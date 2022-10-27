@@ -5,7 +5,14 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int pobiPoint = getPoint(pobi);
+        if (pobiPoint == -1) {
+            return -1;
+        }
+
         int crongPoint = getPoint(crong);
+        if (crongPoint == -1) {
+            return -1;
+        }
 
         if (pobiPoint == crongPoint) {
             return 0;
@@ -28,6 +35,10 @@ class Problem1 {
         if (right < 0 || right > 400) {
             return -1;
         } else if (right == 0 || right == 400) {
+            return -1;
+        }
+
+        if (right - left != 1) {
             return -1;
         }
 
