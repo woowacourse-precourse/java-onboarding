@@ -19,3 +19,13 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+### 구현 기능 목록
+1. 주어진 문자가 대문자인지 소문자인지 검사하는 기능
+	- boolean isUpperCase(char ch)
+2. 주어진 문자를 변환하는 기능
+	- char getSymmetricAlphabet(char ch)
+	- 대문자이면 65에서 해당 문자의 아스키값을 뺀 값을 구해서 변환한다.
+	- 소문자이면 97에서 해당 문자의 아스키값을 뺀 값을 구해서 변환한다.
+3. 주어진 문자열을 문자 배열로 바꿔 각 원소에 1, 2 기능을 수행하는 기능
+    - solution 메소드에서 구현
