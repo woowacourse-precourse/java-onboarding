@@ -3,7 +3,7 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-    public int sumOfPageNumber(int page) {
+    public static int sumOfPageNumber(int page) {
         int result = 0;
         while (page != 0) {
             result += page % 10;
