@@ -8,7 +8,7 @@ public class Problem2 {
         return answer;
     }
 
-    public static Stack<Character> deduplication(String cryptogram) {
+    private static Stack<Character> deduplication(String cryptogram) {
         Stack<Character> characters = new Stack<>();
         char[] chars = cryptogram.toCharArray();
 
@@ -37,5 +37,9 @@ public class Problem2 {
         }
 
         return stringBuilder.toString();
+    }
+
+    private static boolean isComplete(String cryptogram, String result) {
+        return cryptogram.equals(result) || result.length() == 0;
     }
 }
