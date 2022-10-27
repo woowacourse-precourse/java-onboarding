@@ -12,6 +12,7 @@ public class Alphabet {
 	private final char character;
 
 	public Alphabet(char character) {
+		validateAlphabetic(character);
 		this.character = character;
 	}
 
@@ -33,5 +34,11 @@ public class Alphabet {
 
 	private char castCodePoint(int codePoint) {
 		return (char)codePoint;
+	}
+
+	private void validateAlphabetic(char character) {
+		if (!isAlphabetic(character)) {
+			throw new IllegalArgumentException("알파벳이 아닌 문자로 알파벳을 생성했습니다");
+		}
 	}
 }
