@@ -43,10 +43,36 @@ class Problem1 {
         return base;
     }
 
+    public static int getWinner(List<Integer> pobi, List<Integer> crong) {
+        int maxPobi = 0;
+        int maxCrong =0;
+
+        for (int page : pobi) {
+            maxPobi = Math.max(maxPobi, addPage(page));
+            maxPobi = Math.max(maxPobi, multiPage(page));
+        }
+
+        for (int page : crong) {
+            maxCrong = Math.max(maxCrong, multiPage(page));
+            maxCrong = Math.max(maxCrong, multiPage(page));
+        }
+
+        if (maxPobi > maxCrong) {
+            return 1;
+        }
+
+        if (maxPobi < maxCrong) {
+            return 2;
+        }
+
+        return 0;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        if (!checkPage(pobi) || !checkPage(crong)) return -1;
-        return answer;
+        if (!checkPage(pobi) || !checkPage(crong)) {
+            return -1;
+        }
+        return getWinner(pobi, crong);
     }
 
 }
