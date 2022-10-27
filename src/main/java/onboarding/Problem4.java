@@ -31,6 +31,7 @@ public class Problem4 {
     }
 
     public static boolean checkWordLength(String s) {
-
+        int n = s.length();
+        return 1 <= n && n < 1000;
     }
 }
