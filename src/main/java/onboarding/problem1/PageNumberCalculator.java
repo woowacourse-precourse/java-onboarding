@@ -1,6 +1,6 @@
 package onboarding.problem1;
 
-public class PageCalculator implements PageCalculationFeature<Integer, Integer>{
+public class PageNumberCalculator implements PageCalculationFeature<Integer, Integer>{
 
     @Override
     public Integer plus(Integer input) {

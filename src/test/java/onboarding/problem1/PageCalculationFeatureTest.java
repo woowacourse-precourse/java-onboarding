@@ -7,7 +7,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 class PageCalculationFeatureTest {
 
-    PageCalculationFeature<Integer, Integer> pageCalculator = new PageCalculator();
+    PageCalculationFeature<Integer, Integer> pageCalculator = new PageNumberCalculator();
 
     @ParameterizedTest
     @CsvSource({"1,1","10,1", "12,3", "100,1", "254,11","400,4"})
