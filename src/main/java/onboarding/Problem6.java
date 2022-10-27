@@ -48,6 +48,13 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
 
     }
+
+    public static void initCrews(List<List<String>> forms) {
+        for (List<String> form : forms)
+            crews.add(new Crew(form.get(0), form.get(1)));
+    }
+
+    
 }
 
 
