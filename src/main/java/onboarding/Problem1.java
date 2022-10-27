@@ -5,13 +5,8 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-        /*
-        필요한 기능
-        1. 각 자리별 숫자를 모두 더하는 메소드
-        2. 각 자리별 숫자를 모두 곱하는 메소드
-        3. 결과 비교를 위한 변수 하나씩
-        4. 예외사항: 연속된 쪽수가 아닌 경우 / 1쪽이나 400 쪽이 나온 경우
-         */
+
+        // 예외사항
         if ((pobi.length > 2) || (crong.length > 2)) {
             return -1;
         } else if ((pobi[1] - pobi[0] != 1) || (crong[1] - pobi[0] != 0) || ) {
@@ -20,9 +15,10 @@ class Problem1 {
             return -1;
         }
 
-        int pobi_sum = comparison(pobi);   // 결과 비교용 변수
-        int crong_sum = comparison(crong);  // 결과 비교용 변수
+        int pobi_sum = comparison(pobi);   // 결과 비교 변수
+        int crong_sum = comparison(crong);  // 결과 비교 변수
 
+        // 최종 비교 후 answer 값 반환
         if (pobi_sum > crong_sum) {
             answer = 1;
         } else if (pobi_sum < crong_sum) {
@@ -36,6 +32,7 @@ class Problem1 {
         return answer;
     }
 
+    // 각 자리 숫자를 모두 더하는 메서드
     public static int addNumber(int a) {
         int sum = 0;
         for (; a > 0; a /= 10) {
@@ -44,6 +41,7 @@ class Problem1 {
         return sum;
     }
 
+    // 각 자리 숫자를 모두 곱하는 메서드
     public static int multNumber(int a) {
         int sum = 1;
         for (; a > 0; a /= 10) {
@@ -52,6 +50,7 @@ class Problem1 {
         return sum;
     }
 
+    // 결과 비교 메서드
     public static int comparison(List<Integer> person) {
         int sum = 0;
         for (int i = 0; i < 2; i++) {
