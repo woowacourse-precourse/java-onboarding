@@ -73,8 +73,10 @@ class Problem1 {
         return output;
     }
 
-    public static boolean checkValid(List<Integer> pobi, List<Integer> crong) { // 각 배열의 길이, 페이지 번호 확인
-
+    public static boolean checkValid(List<Integer> userA, List<Integer> userB) { // 각 배열의 길이, 페이지 번호 확인
+        boolean validA = checkListLengthValid(userA) && checkPageValid(userA);
+        boolean validB = checkListLengthValid(userB) && checkPageValid(userB);
+        return validA && validB;
     }
 
     public static boolean checkListLengthValid(List<Integer> user) {
