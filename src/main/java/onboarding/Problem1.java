@@ -52,4 +52,23 @@ class Problem1 {
         return false;
     }
 
+    /**
+     * 왼쪽과 오른쪽의 페이지 번호의 각 자리를 이용한 연산 결과를 구하는 메소드
+     * @param page
+     * @return
+     */
+    static int[] calculateResult(int[] page){
+        int[] result = new int[4];
+
+        // 왼쪽 페이지의 각 자리의 숫자를 모두 더함
+
+        // 왼쪽 페이지의 각 자리의 숫자를 모두 곱함
+
+        // 오른쪽 페이지의 각 자리의 숫자를 모두 더함
+
+        // 오른쪽 페이지의 각 자리의 숫자를 모두 곱함
+
+        return result;
+    }
+
 }
