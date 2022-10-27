@@ -7,9 +7,11 @@ public class Problem6 {
     final static int NAME = 1;
     public static List<String> solution(List<List<String>> forms) {
         HashMap<String, String> contacts = new HashMap<>();
+        HashSet<String> combinations = new HashSet<>();
         for (int i=0; i<forms.size(); i++) {
             List<String> form = forms.get(i);
             contacts.put(form.get(EMAIL),form.get(NAME));
+            combinations.addAll(getCombinations(form.get(NAME)));
         }
 
         List<String> answer = List.of("answer");
