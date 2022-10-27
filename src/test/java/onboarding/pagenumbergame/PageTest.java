@@ -33,4 +33,29 @@ public class PageTest {
 		page = new Page(List.of(211, 212));
 		assertThat(page.getMaximumNumber()).isEqualTo(5);
 	}
+
+	@DisplayName("페이지 비교 테스트::예시 1")
+	@Test
+	void 페이지_생성_예시1() {
+		Page pobi = new Page(List.of(97, 98));
+		Page crong = new Page(List.of(197, 198));
+		assertThat(pobi.compare(crong)).isEqualTo(0);
+	}
+
+	@DisplayName("페이지 비교 테스트::예시 2")
+	@Test
+	void 페이지_생성_예시2() {
+		Page pobi = new Page(List.of(131, 132));
+		Page crong = new Page(List.of(211, 212));
+		assertThat(pobi.compare(crong)).isEqualTo(1);
+		assertThat(crong.compare(pobi)).isEqualTo(2);
+	}
+
+	@DisplayName("페이지 비교 테스트::예시 3")
+	@Test
+	void 페이지_생성_예시3() {
+		Page pobi = new Page(List.of(99, 102));
+		Page crong = new Page(List.of(211, 212));
+		assertThat(pobi.compare(crong)).isEqualTo(-1);
+	}
 }

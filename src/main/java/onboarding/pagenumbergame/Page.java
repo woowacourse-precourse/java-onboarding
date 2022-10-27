@@ -33,4 +33,21 @@ public class Page {
 			.max(Integer::compareTo)
 			.orElse(0);
 	}
+
+	public int compare(final Page other) {
+		if (isInvalidPage() || other.isInvalidPage()) {
+			return -1;
+		}
+		int pageNumber1 = getMaximumNumber();
+		int pageNumber2 = other.getMaximumNumber();
+
+		if (pageNumber1 == pageNumber2) {
+			return 0;
+		}
+		return pageNumber1 > pageNumber2 ? 1 : 2;
+	}
+
+	private boolean isInvalidPage() {
+		return !ValidationUtils.validatePage(pageNumbers);
+	}
 }
