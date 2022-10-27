@@ -2,7 +2,13 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String prev = "";
+        String answer = cryptogram;
+        while (!prev.equals(answer)) {
+            if (answer == "") break;
+            prev = answer;
+            answer = removeSuccessiveString(answer);
+        }
         return answer;
     }
 
