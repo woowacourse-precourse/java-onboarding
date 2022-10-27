@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -31,21 +32,34 @@ public class Problem5 {
             return 1;
         return 0;
     }
+
+    static  List<Integer> CashCount(int money) {
+        List<Integer> result = new ArrayList<>(
+                Collections.nCopies(9, 0)
+        );
+        int money_type;
+        int money_index;
+        int prev_val;
+        List<Integer> money_index_list = List.of(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1);
+
+        while (money > 0) {
+            money_type = getMoneyType(money);
+            money_index = money_index_list.indexOf(money_type);
+            prev_val = result.get(money_index);
+            result.set(money_index, prev_val + 1);
+            money -= money_type;
+        }
+        return result;
+    }
+
     public static List<Integer> solution(int money) {
-        List<Integer> answer = List.of(1);
+        List<Integer> answer;
 
         if (Exception(money))
             return ERROR;
 
+        answer = CashCount(money);
 
         return answer;
     }
-
-    public static void main(String argv[]) {
-
-        System.out.println(solution(0));
-        System.out.println(solution(1000001));
-        System.out.println(getMoneyType(5354));
-    }
-
 }
