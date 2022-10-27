@@ -14,4 +14,8 @@ class Problem1 {
             .mapToInt(Integer::parseInt)
             .toArray();
     }
+
+    public static int addEachDigits(int[] digits) {
+        return Arrays.stream(digits).sum();
+    }
 }
