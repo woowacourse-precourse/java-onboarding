@@ -8,6 +8,9 @@ class Problem1 {
             return -1;
         }
 
+        int pobiScore = getScore(pobi);
+        int crongScore = getScore(crong);
+
         return 0;
     }
 
@@ -55,5 +58,13 @@ class Problem1 {
         }
 
         return Math.max(sum, product);
+    }
+
+    // 점수 획득
+    private static int getScore(List<Integer> pages) {
+        int left = pages.get(0);
+        int right = pages.get(1);
+
+        return Math.max(getLargerNumber(left), getLargerNumber(right));
     }
 }
