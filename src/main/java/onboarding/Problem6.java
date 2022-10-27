@@ -23,6 +23,10 @@ public class Problem6 {
 
         for(List<String> crew : forms){
             String nickname = crew.get(1);
+            Set<String> stringsOfLength2 = splitNickname(nickname);
+            for(String str : stringsOfLength2){
+                stringsOfLength2Cnt.put(str, stringsOfLength2Cnt.getOrDefault(str, 0)+1);
+            }
         }
 
         return stringsOfLength2Cnt;
