@@ -9,9 +9,8 @@ public class Problem4 {
             if(Character.isLetter(curChar)) {
                 char leftStandard = setStandard(curChar, "left");
                 char rightStandard = setStandard(curChar, "right");
-                if(Character.isLowerCase(curChar)) {
+                boolean inLeft = isInLeft(curChar, leftStandard);
 
-                }
             }
         }
         return answer;
@@ -24,5 +23,11 @@ public class Problem4 {
         if(domain.equals("right"))
             standard = (char) (standard + 1);
         return standard;
+    }
+
+    public static boolean isInLeft(char c, char leftStandard) {
+        if(c <= leftStandard)
+            return true;
+        return false;
     }
 }
