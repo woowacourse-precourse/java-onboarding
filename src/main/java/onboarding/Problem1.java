@@ -19,4 +19,14 @@ class Problem1 {
             return false;
         return true;
     }
+
+    private static int getSumNumber(Integer page){
+        int answer = 0;
+
+        while (page > 0){
+            answer += page % 10;
+            page /= 10;
+        }
+        return answer;
+    }
 }
