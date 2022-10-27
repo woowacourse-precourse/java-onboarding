@@ -4,12 +4,12 @@ public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
         for (int i = 1; i <= number; i++) {
-            answer += hasThreeTimes(i);
+            answer += countThreeTimes(i);
         }
         return answer;
     }
 
-    public static int hasThreeTimes(int number) {
+    public static int countThreeTimes(int number) {
         String str = String.valueOf(number);
         int count = 0;
         for (int i = 0; i < str.length(); i++) {
