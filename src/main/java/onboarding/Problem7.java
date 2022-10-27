@@ -23,6 +23,10 @@ public class Problem7 {
         List<String> nearFriends = new ArrayList<>();
         Map<String, Integer> recommendScore = new HashMap<>();
 
+        if(user.length() < 1 || user.length() > 30) return answer;
+        if(friends.size() < 1 || friends.size() > 10_000) return answer;
+        if(visitors.size() < 0 || visitors.size() > 10_000) return answer;
+
         // 1. 내 친구 찾기.
         List<String> myFriends = findMyFriends(user, friends);
         System.out.println(myFriends);
@@ -106,7 +110,6 @@ public class Problem7 {
 
         return myFriends;
     }
-
 
 
 }
