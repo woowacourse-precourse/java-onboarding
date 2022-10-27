@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 public class UserTest {
     private User jun;
@@ -31,5 +32,15 @@ public class UserTest {
     @DisplayName("0이 아닌지 확인")
     void isNotZero() {
         assertThat(jun.isNotZeroScore()).isFalse();
+    }
+    
+    @Test
+    @DisplayName("친구인지 확인")
+    void friendsContains() {
+        jun.addFriend("pobi");
+        assertAll(
+                () -> assertThat(jun.friendsContains("pobi")).isTrue(),
+                () -> assertThat(jun.friendsContains("jk")).isFalse()
+        );
     }
 }

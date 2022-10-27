@@ -24,6 +24,10 @@ public class Friends {
                 .count();
     }
     
+    public boolean contains(final String userName) {
+        return friends.contains(userName);
+    }
+    
     public Set<String> getFriends() {
         return friends;
     }

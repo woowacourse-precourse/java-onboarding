@@ -54,9 +54,8 @@ public class Users {
     }
     
     public List<String> recommendedFriends(String user) {
-        final Set<String> friends = users.get(user).getFriends();
         return users.keySet().stream()
-                .filter(userName -> !friends.contains(userName))
+                .filter(userName -> !users.get(user).friendsContains(userName))
                 .map(users::get)
                 .filter(User::isNotZeroScore)
                 .sorted()

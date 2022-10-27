@@ -35,8 +35,8 @@ public class User implements Comparable<User> {
         return userBasicInformation.isScoreNotZero();
     }
     
-    public Set<String> getFriends() {
-        return friends.getFriends();
+    public boolean friendsContains(final String userName) {
+        return friends.contains(userName);
     }
     
     public String getUserName() {
