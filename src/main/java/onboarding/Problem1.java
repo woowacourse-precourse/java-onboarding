@@ -4,8 +4,22 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        
+        if (!checkException(pobi) || !checkException(crong)) {
+            return -1;
+        }
+
+        int pobiMaxData = getUserMaxData(pobi);
+        int crongMaxData = getUserMaxData(crong);
+
+
+        if (pobiMaxData > crongMaxData) {
+            return 1;
+        } else if (pobiMaxData < crongMaxData) {
+            return 2;
+        } else{
+            return 0;
+        }
     }
 
     private static int getUserMaxData(List<Integer> user) {
