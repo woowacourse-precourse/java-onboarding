@@ -15,8 +15,17 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        char[] wordCharArray = word.toCharArray();
+        StringBuilder sb = new StringBuilder();
+
+        for (char c : wordCharArray) {
+            if (isAlphabet(c)) {
+                c = reverseAlphabet(c);
+            }
+            sb.append(c);
+        }
+
+        return sb.toString();
     }
 
     public static char reverseAlphabet (char c) {
