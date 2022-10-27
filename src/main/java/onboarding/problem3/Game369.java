@@ -6,6 +6,14 @@ public class Game369 {
 
     private static final Set<Integer> clapNumbers = Set.of(3, 6, 9);
 
+    public static int getTotalClapCount(int lastNumber){
+        int count = 0;
+        for(int i=1; i<=lastNumber; i++){
+            count += getClapCount(i);
+        }
+        return count;
+    }
+
     private static int getClapCount(int number){
         int count = 0;
         while(number != 0){
