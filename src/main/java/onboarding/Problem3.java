@@ -6,14 +6,9 @@ public class Problem3 {
         return answer;
     }
 
-    public static boolean checkIs3Mul(int number) {
-        if (number % 3 == 0) {
-            return true;
-        }
-        return false;
-    }
+    public static char[] numberToCharArray(int number) {
+        char[] charNumbers = String.valueOf(number).toCharArray();
 
-    public static int divideNumber(int number) {
-        return number / 10;
+        return charNumbers;
     }
 }
