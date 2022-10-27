@@ -10,19 +10,25 @@ class Problem1 {
 		int crongRightPage= crong.get(1);
 		int result = 0;
 
-		if (pobiLeftPage % 2 == 0 || pobiRightPage % 2 == 1 || crongLeftPage % 2 == 0 || crongRightPage % 2 == 1) {
-			result =  -1;
+		result = checkException(pobiLeftPage, pobiRightPage);
+		if(result == -1) {
+			return result;
 		}
-
-		if(pobiLeftPage+1 != pobiRightPage || crongLeftPage+1 != crongRightPage) {
-			result = -1;
-		}
-
-		if(pobiLeftPage <= 1 || pobiRightPage >= 400 || crongLeftPage <= 1 || crongRightPage >= 400) {
-			result = -1;
-		}
+		result = checkException(crongLeftPage, crongRightPage);
 
 		// int answer = Integer.MAX_VALUE;
 		return result;
+	}
+	private static int checkException(int LeftPage, int RightPage) {
+		if (LeftPage % 2 == 0 || RightPage % 2 == 1 ) {
+			return  -1;
+		}
+		if(LeftPage +1 != RightPage) {
+			return  -1;
+		}
+		if(LeftPage <= 1 || RightPage >= 400) {
+			return  -1;
+		}
+		return 0;
 	}
 }
