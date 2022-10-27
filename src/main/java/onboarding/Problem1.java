@@ -54,13 +54,27 @@ class Problem1 {
         return result;
     }
 
-    public static boolean checkValidity(List<Integer> player){
+    public static boolean checkListSize(List<Integer> player){
         boolean result = true;
-        int number1 = player.get(0);
-        int number2 = player.get(1);
-        if(player.size() > 2){
+        if(player.size() != 2){
             result = false;
         }
+        return result;
+    }
+
+    public static boolean checkValidity(List<Integer> player){
+        boolean result = true;
+        int number1;
+        int number2;
+
+        if(!checkListSize(player)){
+            result = false;
+            return result;
+        }
+
+        number1 = player.get(0);
+        number2 = player.get(1);
+
         if(number1 < MIN_PAGE || number1 > MAX_PAGE){
             result = false;
         }
@@ -75,6 +89,8 @@ class Problem1 {
         }
         return result;
     }
+
+
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
