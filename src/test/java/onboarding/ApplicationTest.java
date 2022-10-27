@@ -59,6 +59,28 @@ class ApplicationTest {
             String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
+
+        @Test
+        void 같은문자만오는문자열() {
+            String cryptogram = "oooooooooo";
+            String result = "";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void 아무것도없는문자열() {
+            String cryptogram = "";
+            String result = "";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void 문자하나만있는문자열() {
+            String cryptogram = "o";
+            String result = "o";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
     }
 
     @Nested
@@ -86,6 +108,7 @@ class ApplicationTest {
             String result = "R olev blf";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
+
     }
 
     @Nested
