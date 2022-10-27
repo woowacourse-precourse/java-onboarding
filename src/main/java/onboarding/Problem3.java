@@ -18,6 +18,7 @@ public class Problem3 {
         for(int i= 1; i < num+1; i++){
             clap += cntNum(i);
         }
+        //System.out.println(clap);
         return clap;
     }
 
