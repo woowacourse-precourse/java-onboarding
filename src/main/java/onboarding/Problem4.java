@@ -19,12 +19,31 @@ package onboarding;
  * */
 public class Problem4 {
     public static String solution(String word) {
-
+        Problem4 problem4 = new Problem4();
+        char[] wordCharArray = word.toCharArray();
         String answer = "";
+
+        for (char letter : wordCharArray) {
+            // 알파벳 문자가 아닌 경우 변환하지 않는다.
+            if (!(((int)letter >= 65 && (int)letter <= 90) || ((int)letter >= 97 && (int)letter <= 122))){
+                answer += String.valueOf(letter);
+                continue;
+            }
+
+            if(Character.isUpperCase(letter)){
+                // 대문자의 경우 convertUpperLetter 호출
+                answer += String.valueOf(problem4.convertUpperLetter(letter));
+            } else if(Character.isLowerCase(letter)){
+                // 소문자의 경우 convertLowerLetter 호출
+                answer += String.valueOf(problem4.convertLowerLetter(letter));
+            }
+        }
+
         return answer;
     }
 
-    public char convertLetterUpper(char letter){
+    // 대문자 char형 letter를 M(77)을 기준 변환
+    public char convertUpperLetter(char letter){
         int letterAscii = letter;
 
         // M(77)을 기준으로 작거나 같으면 +를, 크면 -를 해준다.
@@ -37,10 +56,11 @@ public class Problem4 {
         return (char)letterAscii;
     }
 
-    public char convertLetterLower(char letter){
+    // 소문자 char형 letter를 m(109)을 기준 변환
+    public char convertLowerLetter(char letter){
         int letterAscii = letter;
 
-        // M(77)을 기준으로 작거나 같으면 +를, 크면 -를 해준다.
+        // m(109)을 기준으로 작거나 같으면 +를, 크면 -를 해준다.
         if(letterAscii <= 109){
             letterAscii = (110 - letterAscii) + 109;
         }else{
