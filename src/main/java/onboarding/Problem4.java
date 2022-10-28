@@ -3,8 +3,7 @@ package onboarding;
 public class Problem4 {
 	public static String solution(String word) {
 		Frog frog = new Frog();
-		// return frog.translate(word);
-		return null;
+		return frog.translate(word);
 	}
 
 	static class Frog {
@@ -22,6 +21,14 @@ public class Problem4 {
 			}
 			this.reversedLowerAlphabetArray = reversedLowerAlphabetArray;
 			this.reversedHigherAlphabetArray = reversedHigherAlphabetArray;
+		}
+
+		public String translate(String word) {
+			StringBuilder stringBuilder = new StringBuilder();
+			for(char c : word.toCharArray()) {
+				stringBuilder.append(reverse(c));
+			}
+			return stringBuilder.toString();
 		}
 
 		private char reverse(char c) {
