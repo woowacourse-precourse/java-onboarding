@@ -1,8 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Main {
     public static void main(String[] Problem6) {
@@ -17,14 +15,21 @@ public class Main {
 //        String aa = Problem4.solution("A B0231");
 //        System.out.println("aa = " + aa);
 //        Problem5.solution(1234567);
+//
+//        if(onboarding.Problem6.isNickName("이이이이이이이이이이이이이이이이이이이")){
+//            System.out.println("닉네임 형식 통과 못함");
+//
+//        }else{
+//            System.out.println("닉네임 형식 통과");
+//
+//        }
 
-        if(onboarding.Problem6.isNickName("이이이이이이이이이이이이이이이이이이이")){
-            System.out.println("닉네임 형식 통과 못함");
+        Map<String, Integer> map = new HashMap<>();
 
-        }else{
-            System.out.println("닉네임 형식 통과");
-
-        }
+        map.put("제이",1);
+        Integer cnt = map.get("제이");
+        map.put("제이", cnt + 1);
+        System.out.println("map.get(\"\") = " + map.get("제이"));
 
     }
 }

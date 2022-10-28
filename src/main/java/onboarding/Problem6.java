@@ -5,13 +5,17 @@ import onboarding.problem6.NotMatchingEmail;
 import onboarding.problem6.NotMatchingNickName;
 import org.junit.platform.commons.util.StringUtils;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
+
+        Map<String, Integer> nickNameDivideByTwoLetter = new HashMap<>();
 
         int crewSize=0;
 
@@ -36,12 +40,27 @@ public class Problem6 {
                 throw new NotMatchingNickName("닉네임이 한글 및 길이가 맞지 않습니다.");
             }
 
+            // 2. 두 글자 이상의 문자가 연속적인 것을 확인하기 위해 교육생의 닉네임을 두 글자씩 끊어서 map 에 넣기
+            for (int i = 0; i < nickName.length()-1; i++) {
+                String nickNameDivide = nickName.substring(i,i+2);
 
+                if(isContainNickName(nickNameDivideByTwoLetter, nickNameDivide)){
+                    int nickNameCount = nickNameDivideByTwoLetter.get(nickNameDivide);
+                    nickNameDivideByTwoLetter.put(nickNameDivide, nickNameCount + 1);
+                }
+                if(!isContainNickName(nickNameDivideByTwoLetter,nickNameDivide)){
+                    nickNameDivideByTwoLetter.put(nickNameDivide, 1);
+                }
+            }
         }
 
 
 
         return answer;
+    }
+
+    private static boolean isContainNickName(Map<String, Integer> nickNameDivideByTwoLetter, String nickNameDivide) {
+        return nickNameDivideByTwoLetter.containsKey(nickNameDivide);
     }
 
     private static boolean isNotMatchingCrewSize(int crewSize) {
