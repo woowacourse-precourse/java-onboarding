@@ -15,8 +15,18 @@ public class Problem2 {
 
     // TODO 중복 문자를 삭제하는 메서드
     public static String deleteCryptogram (String cryptogram) {
+        int startIdx = getIndex(cryptogram);
 
-        return null;
+        if (startIdx == -1) return cryptogram;
+
+        int endIdx = startIdx;
+        for (; endIdx < cryptogram.length(); endIdx++) {
+            if (cryptogram.charAt(startIdx) == cryptogram.charAt(endIdx)) continue;
+            break;
+        }
+        String result = "";
+        result = cryptogram.substring(0, startIdx) + cryptogram.substring(endIdx);
+        return deleteCryptogram(result);
     }
 
     public static String solution(String cryptogram) {
