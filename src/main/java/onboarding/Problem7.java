@@ -109,4 +109,20 @@ public class Problem7 {
 
         return result;
     }
+
+    public static void makeAnswer(String mainUserId, List<User> sortedUserList) {
+        int answerSize = 0;
+        User mainUser = userList.get(mainUserId);
+
+        for (User user : sortedUserList) {
+            if(answerSize > 5)
+                return;
+
+            List<User> friends = user.getFriends();
+            if (!friends.contains(mainUser)) {
+                answer.add(user.getId());
+                answerSize++;
+            }
+        }
+    }
 }
