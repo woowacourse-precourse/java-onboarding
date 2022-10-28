@@ -9,7 +9,7 @@ public class Problem6 {
         List<List<String>> nicknameSplitList = extractNicknameByTwoChar(nicknameList);
         List<String> checkDuplicate = checkDuplicateNicknames(nicknameSplitList, nicknameList);
 
-        return nicknameList;
+        return extractEmailCorrespondToName(forms, checkDuplicate);
     }
 
     public static List<String> extractNicknames(List<List<String>> forms) {
@@ -60,5 +60,24 @@ public class Problem6 {
                 duplicateNicknameList.stream().distinct().collect(Collectors.toList());
 
         return removeMultipleName;
+    }
+
+    public static List<String> extractEmailCorrespondToName(List<List<String>> forms,
+                                                            List<String> duplicateNicknameList) {
+        List<String> emailList = new ArrayList<>();
+
+        for (int i = 0; i < forms.size(); i++) {
+            if (duplicateNicknameList.contains(forms.get(i).get(1))) {
+                emailList.add(forms.get(i).get(0));
+            }
+        }
+
+        return sortEmailListAscending(emailList);
+    }
+
+    public static List<String> sortEmailListAscending(List<String> emailList) {
+        Collections.sort(emailList);
+
+        return emailList;
     }
 }
