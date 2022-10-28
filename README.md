@@ -54,3 +54,16 @@
     - for문 안에서 i를 각각의 자릿수로 나눈 뒤 새로운 int 배열에 담는다,
     - 배열에 담긴 자릿수들이 `3, 6, 9`를 가리키는지 확인한다.
     - 가리킨다면 `answer`를 1 증가시킨다.
+
+## 📌문제4
+어느 연못에 엄마 말씀을 좀처럼 듣지 않는 청개구리가 살고 있었다. 청개구리는 엄마가 하는 말은 무엇이든 반대로 말하였다. 엄마 말씀이 주어질 때, **청개구리 사전**을 참고해 반대로 변환하여 값을 return 하자.
+([문제 요구사항](https://github.com/areyouhun/java-onboarding/blob/areyouhun/docs/PROBLEM4.md))
+    
+### 기능 목록
+- String 매개변수를 쪼갠 뒤 ArrayList `wordsIntoLetters`에 담는다.
+- 변환된 값을 담을 ArrayList `lettersEncrypted`를 생성한다.
+- for문을 돌려 `wordsIntoLetters`를 검사한다.
+    - 요소가 소문자 또는 대문자 알파벳인가?
+    - 조건을 충족하면 청개구리 사전을 참고해 해당 요소를 반대로 변환한다.
+    - 모든 요소는 `lettersEncrypted`에 담긴다.
+- `lettersEncrypted`를 String으로 바꾼 뒤 값을 반환한다.
