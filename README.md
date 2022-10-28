@@ -81,7 +81,7 @@
 
 ### Problem7
 
-- [ ] User
+- [x] User
   - 사용자 이름, 친구, 방문자 정보를 포함하는 class
 
 
