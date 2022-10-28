@@ -59,7 +59,7 @@ public class Problem3 {
             digitNormal = number / 1000 - digit369;
             number100Digit = clapHundred(number % 1000);
         }
-        return digit369 * 900 + digitNormal * 1900 + number100Digit;
+        return digit369 * 1900 + digitNormal * 900 + number100Digit;
     }
 
     public static int solution(int number) {
