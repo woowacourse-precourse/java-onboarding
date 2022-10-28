@@ -11,58 +11,77 @@ public class Problem5 {
     }
 
     private static void changeMoney(int money) {
-        int money50000;
-        if (money / 50000 != 0) {
-            money50000 = money / 50000;
-            money -= money50000 * 50000;
-        }
+        change50000(money);
+        money -= 50000 * change50000(money);
 
-        int money10000;
-        if (money / 10000 != 0) {
-            money10000 = money / 10000;
-            money -= money10000 * 10000;
-        }
+        change10000(money);
+        money -= 10000 * change10000(money);
 
-        int money5000;
-        if (money / 5000 != 0) {
-            money5000 = money / 5000;
-            money -= money5000 * 5000;
-        }
+        change5000(money);
+        money -= 5000 * change5000(money);
 
-        int money1000;
-        if (money / 1000 != 0) {
-            money1000 = money / 1000;
-            money -= money1000 * 1000;
-        }
+        change1000(money);
+        money -= 1000 * change1000(money);
 
-        int money500;
-        if (money / 500 != 0) {
-            money500 = money / 500;
-            money -= money500 * 500;
-        }
+        change500(money);
+        money -= 500 * change500(money);
 
-        int money100;
-        if (money / 100 != 0) {
-            money100 = money / 100;
-            money -= money100 * 100;
-        }
+        change100(money);
+        money -= 100 * change100(money);
 
-        int money50;
-        if (money / 50 != 0) {
-            money50 = money / 50;
-            money -= money50 * 50;
-        }
+        change50(money);
+        money -= 50 * change50(money);
 
-        int money10;
-        if (money / 10 != 0) {
-            money10 = money / 10;
-            money -= money10 * 10;
-        }
+        change10(money);
+        money -= 10 * change10(money);
 
-        int money1;
-        if (money / 1 != 0) {
-            money1 = money / 1;
-            money -= money1 * 1;
-        }
+        change1(money);
+        money -= 1 * change1(money);
+
+    }
+
+    private static int change1(int money) {
+        if (money / 1 != 0) return money / 1;
+        return 0;
+    }
+
+    private static int change10(int money) {
+        if (money / 10 != 0) return money / 10;
+        return 0;
+    }
+
+    private static int change50(int money) {
+        if (money / 50 != 0) return money / 50;
+        return 0;
+    }
+
+    private static int change100(int money) {
+        if (money / 100 != 0) return money / 100;
+        return 0;
+    }
+
+    private static int change500(int money) {
+        if (money / 500 != 0) return money / 500;
+        return 0;
+    }
+
+    private static int change1000(int money) {
+        if (money / 1000 != 0) return money / 1000;
+        return 0;
+    }
+
+    private static int change5000(int money) {
+        if (money / 5000 != 0) return money / 5000;
+        return 0;
+    }
+
+    private static int change10000(int money) {
+        if (money / 10000 != 0) return money / 10000;
+        return 0;
+    }
+
+    private static int change50000(int money) {
+        if (money / 50000 != 0) return money / 50000;
+        return 0;
     }
 }
