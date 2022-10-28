@@ -34,6 +34,13 @@ public class Problem4 {
             put("Z", "A");
         }};
         String answer = "";
+        String[] string_array = word.split("");
+        for (String _alphabet: string_array) {
+            String alphabet = _alphabet;
+            if (!Character.isAlphabetic(alphabet.charAt(0))) {
+                answer += alphabet;
+            }
+        }
         return answer;
     }
 }
