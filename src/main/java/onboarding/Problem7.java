@@ -10,11 +10,31 @@ public class Problem7 {
 		List<String> answer = Collections.emptyList();
 		
 		List<String> myFriendList = findFriends(user, friends);
-		
 		List<List<String>> exceptFriendList = findnoFriends(user, friends);
 		
+		HashMap<String, Integer> scoreList = new HashMap<>();
+		for (List<String> relation : exceptFriendList) {
+			if(myFriendList.contains(relation.get(0))){
+				scoreList = calculateScore(scoreList, relation.get(1));
+			};
+			
+			if (myFriendList.contains(relation.get(1))) {
+				scoreList = calculateScore(scoreList, relation.get(0));
+			}
+		}
 		
 		return answer;
+	}
+	
+	private static HashMap<String, Integer> calculateScore(HashMap<String, Integer> scoreList, String s) {
+		boolean flag = scoreList.containsKey(s);
+		if(!flag){
+			scoreList.put(s, 10);
+		}else{
+			int beforeScore = scoreList.get(s);
+			scoreList.put(s, beforeScore + 10);
+		}
+		return scoreList;
 	}
 	
 	private static List<List<String>> findnoFriends(String user, List<List<String>> friends) {
