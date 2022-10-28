@@ -3,10 +3,23 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-    private final int WRONG_INPUT = -1;
-    private final int POBI_WIN = 1;
-    private final int CRONG_WIN = 2;
-    private final int DRAW = 0;
+    private static final int WRONG_INPUT = -1;
+    private static final int POBI_WIN = 1;
+    private static final int CRONG_WIN = 2;
+    private static final int DRAW = 0;
+
+    private static boolean isWrongInput(List<Integer> pages) {
+        if (pages.size() != 2)
+            return true;
+
+        int left = pages.get(0);
+        int right = pages.get(1);
+
+        if (left % 2 != 1 || right - left != 1 || left <= 1 || right >= 400)
+            return true;
+
+        return false;
+    }
 
     /**
      * 1. 책을 임의로 펼친다.
@@ -21,6 +34,10 @@ class Problem1 {
      * @return 게임 결과, 포비가 이긴다면 1, 크롱이 이긴다면 2, 무승부는 0, 예외사항은 -1
      */
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        if (isWrongInput(pobi) || isWrongInput(crong)) {
+            return WRONG_INPUT;
+        }
+
         int answer = Integer.MAX_VALUE;
         return answer;
     }
