@@ -30,7 +30,13 @@ class Problem1 {
      * 페이지의 각 자릿수를 곱하는 함수
      */
     private static int getPageDigitMul(int[] splitedPage) {
-        return Integer.MAX_VALUE;
+        if(splitedPage[2] == 0 && splitedPage[1] == 0) {
+            return splitedPage[0]; // 한자릿수의 페이지
+        } else if(splitedPage[2] == 0) {
+            return splitedPage[0] * splitedPage[1]; // 두자릿수의 페이지
+        } else {
+            return splitedPage[0] * splitedPage[1] * splitedPage[2]; // 세자릿수의 페이지
+        }
     }
 
     /**
