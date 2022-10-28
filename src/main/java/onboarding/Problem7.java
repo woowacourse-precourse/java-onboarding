@@ -45,6 +45,35 @@ public class Problem7 {
 
     private static List<String> findStepFriends(String user, List<List<String>> friends, List<String> friendsList) {
         List<String> stepFriendsList = new ArrayList<>();
+
+        for(int i = 0; i < friendsList.size(); i++) {
+            String myFriend = friendsList.get(i);
+
+            for(int j = 0; j < friends.size(); j++) {
+                if(stepFriendsList.contains(friends.get(j).get(0))) {
+                    continue;
+                }
+
+                if(stepFriendsList.contains(friends.get(j).get(1))) {
+                    continue;
+                }
+
+                if(friends.get(j).contains(user)) {
+                    continue;
+                }
+
+                if(friends.get(j).get(0).equals(myFriend)) {
+                    stepFriendsList.add(friends.get(j).get(1));
+
+                    continue;
+                }
+
+                if(friends.get(j).get(1).equals(myFriend)) {
+                    stepFriendsList.add(friends.get(j).get(0));
+                }
+            }
+        }
+
         return stepFriendsList;
     }
 
