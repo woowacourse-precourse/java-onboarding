@@ -4,8 +4,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static onboarding.Problem1.getPageLength;
-import static onboarding.Problem1.validatePage;
+import static onboarding.Problem1.*;
+import static onboarding.Problem1.getPageIngredients;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class Problem1Test {
@@ -63,5 +63,24 @@ class Problem1Test {
         assertThat(pobiSecondPageLength).isEqualTo(2);
         assertThat(crongFirstPageLength).isEqualTo(3);
         assertThat(crongSecondPageLength).isEqualTo(3);
+    }
+
+    @Test
+    public void getPageIngredientsTest() {
+        //given
+        List<Integer> pobi = List.of(97, 98);
+        List<Integer> crong = List.of(197, 198);
+
+        //when
+        List<Integer> pobiFirstPageIngredient = getPageIngredients(pobi.get(0));
+        List<Integer> pobiSecondPageIngredient = getPageIngredients(pobi.get(1));
+        List<Integer> crongFirstPageIngredient = getPageIngredients(crong.get(0));
+        List<Integer> crongSecondPageIngredient = getPageIngredients(crong.get(1));
+
+        //then
+        assertThat(pobiFirstPageIngredient).containsExactly(7, 9);
+        assertThat(pobiSecondPageIngredient).containsExactly(8, 9);
+        assertThat(crongFirstPageIngredient).containsExactly(7, 9, 1);
+        assertThat(crongSecondPageIngredient).containsExactly(8, 9, 1);
     }
 }

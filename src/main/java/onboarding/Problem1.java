@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
@@ -23,6 +24,20 @@ class Problem1 {
 
     static int getPageLength(int page) {
         return (int) (Math.log10(page) + 1);
+    }
+
+    static List<Integer> getPageIngredients(int page) {
+        int length = getPageLength(page);
+
+        List<Integer> result = new ArrayList<>();
+
+        for (int i = 0; i < length; i++) {
+            int temp = page % 10;
+            page = page / 10;
+            result.add(temp);
+        }
+
+        return result;
     }
 
 }
