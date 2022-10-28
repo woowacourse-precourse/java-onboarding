@@ -21,3 +21,17 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+-------------
+## 기능 목록
+* 중복 문자 제거
+~~~
+private static Stack<Character> checkDuplicate(String cryptogram)
+~~~
+* 스택 -> 배열 변환
+~~~
+private static Object[] stackToArray(Stack<Character> stack)
+~~~
+* 배열에 있는 문자 반환
+~~~
+private static String getAnswer(Object[] toArray)
+~~~
