@@ -5,4 +5,8 @@ public class Problem4 {
         String answer = "";
         return answer;
     }
+
+    private static StringBuilder toStringBuilder(String word) {
+        return new StringBuilder(word);
+    }
 }
