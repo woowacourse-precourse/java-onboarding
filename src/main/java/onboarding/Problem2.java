@@ -4,13 +4,15 @@ public class Problem2 {
 	public static String solution(String cryptogram) {
 		char [] cryptogramArray = cryptogram.toCharArray();
 
+		int outputIndex = 1;
 		for (int i = 1; i < cryptogramArray.length; i++) {
-			if (cryptogramArray[i] == cryptogramArray[i + 1]) {
-				System.out.println("중복된 문자열: " + cryptogramArray[i] + " " + cryptogramArray[i + 1]);
+			if (outputIndex > 0 && cryptogramArray[i] == cryptogramArray[outputIndex - 1]) {
+				outputIndex--;
+			}  else {
+				cryptogramArray[outputIndex++] = cryptogramArray[i];
 			}
 		}
 
-		String answer = "answer";
-		return answer;
+		return new String(cryptogramArray, 0, outputIndex);
 	}
 }
