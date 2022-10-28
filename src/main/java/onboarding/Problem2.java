@@ -11,13 +11,11 @@ public class Problem2 {
 
         // 암호 문자열 길이 -1 까지 반복한다.
         while (i < cryptogramStringBuilder.length() - 1) {
-            int overlapStartIndex = 0;
-            int overlapEndIndex = 0;
             
             // 인덱스 0, 1 쌍을 시작으로하여 순차적으로 비교를 시작한다. 그 값이 같을경우 제거 로직 시작
             if (cryptogramStringBuilder.charAt(i) == cryptogramStringBuilder.charAt(i + 1)) {
-                overlapStartIndex = i;
-                overlapEndIndex = i + 1;
+                int overlapStartIndex = i;
+                int overlapEndIndex = i + 1;
 
                 while (overlapEndIndex + 1 < cryptogramStringBuilder.length()) {
                     if (cryptogramStringBuilder.charAt(overlapEndIndex) ==
