@@ -4,13 +4,18 @@ public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
         for(int i = 1; i <= number; i++){
-            while(i != 0) {
-                if(i % 10 == 3 || i % 10 == 6 || i % 10 == 9)
-                    answer++;
-                i /= 10;
-            }
+            answer += check(i);
         }
         return answer;
+    }
+    static int check(int i) {
+        int cnt = 0;
+        while(i != 0) {
+            if(i % 10 == 3 || i % 10 == 6 || i % 10 == 9)
+                cnt++;
+            i /= 10;
+        }
+        return cnt;
     }
     /**
      * 3 6 9 게임 이다.
