@@ -18,6 +18,17 @@ public class Problem3 {
         return numberList;
     }
 
+    public static int countClaps(List<Integer> numberList) {
+        int clap = 0;
+
+        for (int i = 0; i < numberList.size(); i++) {
+            if (isThreeSixNine(numberList.get(i))) {
+                clap++;
+            }
+        }
+        return clap;
+    }
+
     public static boolean isThreeSixNine(int number) {
         if (number == 3 || number == 6 || number == 9) {
             return true;
