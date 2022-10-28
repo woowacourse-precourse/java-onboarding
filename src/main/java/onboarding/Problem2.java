@@ -9,6 +9,16 @@ public class Problem2 {
         return answer;
     }
 
+    public static String getAnswer(String cryptogram) {
+        while (true) {
+            if (isLengthZero(cryptogram) || isNotMoreDelete(cryptogram))
+                break;
+
+            cryptogram = deleteOverlapChar(cryptogram);
+        }
+        return cryptogram;
+    }
+
     public static boolean isLengthZero(String cryptogram) {
         boolean isLengthZero = cryptogram.length() == 0 ? true : false;
         return isLengthZero;
