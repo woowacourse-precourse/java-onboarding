@@ -9,6 +9,7 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         subNicknameDic = new HashMap<>(); //닉네임카운트 초기화
+        checkAllNickname(forms); //모든 닉네임 확인
         return answer;
     }
 
@@ -26,5 +27,15 @@ public class Problem6 {
             String subNickname = nickname.substring(i,i+2);
             subNicknameDic.put(subNickname, subNicknameDic.getOrDefault(subNickname,0) + 1);
         }
+    }
+
+    //subNicknameDic에서 각 닉네임의 두글자씩에 해당하는 숫자 중 큰값 구하는 함수
+    private static int getCountInDic(String nickname){
+        int ret = -1;
+        for(int i=0;i<nickname.length()-1;i++){
+            String subNickname = nickname.substring(i,i+2);
+            ret = Math.max(ret, subNicknameDic.get(subNickname));
+        }
+        return ret;
     }
 }
