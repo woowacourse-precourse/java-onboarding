@@ -9,10 +9,8 @@ class Problem1 {
         if(answer == -1){
             return answer;
         }
-        for(int i = 0; i < 2; i ++){
-            pageNumberHighScore(pobi, i);
-            pageNumberHighScore(crong, i);
-        }
+        int pobiScore = compareScore(pageNumberHighScore(pobi, 0),pageNumberHighScore(pobi, 1));
+        int crongScore = compareScore(pageNumberHighScore(crong, 0),pageNumberHighScore(crong, 1));
         return answer;
     }
 
@@ -32,9 +30,12 @@ class Problem1 {
             digitMul *= score % 10;
             score = score / 10;
         }
-        if(digitMul > digitSum) return digitMul;
-        if(digitMul < digitSum) return digitSum;
+        return compareScore(digitSum, digitMul);
+    }
 
-        return digitMul;
+    private static int compareScore(int compare1, int compare2){
+        if(compare1 > compare2) return compare1;
+        if(compare1 < compare2) return compare2;
+        return compare2;
     }
 }
