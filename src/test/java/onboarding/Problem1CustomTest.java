@@ -227,5 +227,13 @@ public class Problem1CustomTest {
             int summation = Problem1.getDigitMultiplyValue(value);
             assertThat(summation).isEqualTo(12);
         }
+
+        @Test
+        void 각자리수곱셈의결과와덧셈의결과중최대값을뱉어내는지() {
+            List<Integer> testList = List.of(2, 3);
+            int maxValue = Problem1.chooseMaxValueBetweenAddAndMultiply(testList);
+            assertThat(maxValue).isEqualTo(6);
+        }
+
     }
 }

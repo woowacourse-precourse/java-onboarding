@@ -21,6 +21,8 @@ class Problem1 {
         }
     }
 
+
+
     public static int result(Integer user1Result, Integer user2Result) {
         if (user1Result > user2Result) {
             return 1;
@@ -51,5 +53,10 @@ class Problem1 {
             value /= 10;
         }
         return multiply;
+    }
+
+    public static int chooseMaxValueBetweenAddAndMultiply(List<Integer> pageList) {
+        return 0;
+
     }
 }
