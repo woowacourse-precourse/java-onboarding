@@ -21,14 +21,10 @@ public enum GameStatus {
 
     public static GameStatus of(final Game game) {
 
-        if (game.isValid()) {
-            return resultOf(game);
-        }
-
-        return GameStatus.ERROR;
+        return game.isValid() ? findResultOf(game) : GameStatus.ERROR;
     }
 
-    private static GameStatus resultOf(final Game game) {
+    private static GameStatus findResultOf(final Game game) {
 
         return Arrays.stream(values())
             .filter(status -> status.hasPolicyMatchedTo(game))
