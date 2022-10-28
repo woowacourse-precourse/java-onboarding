@@ -117,6 +117,17 @@ class ApplicationTest {
 
     @Nested
     class Problem4Test {
+//        @Test
+//        void changetest() {
+//            String word = "I love you";
+//            char[] arr = word.toCharArray();
+//            System.out.println(arr[0]);
+//            System.out.println(arr[1]);
+//            System.out.println(arr[2]);
+//            int [] check_list = new int[arr.length];
+//            char space = ' ';
+//            System.out.println((int)space); // 공백은 32
+//        }
         @Test
         void case1() {
             String word = "I love you";
