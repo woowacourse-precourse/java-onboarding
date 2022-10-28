@@ -52,4 +52,8 @@ public class Problem1Validation {
             return false;
         }
     }
+
+    public static boolean problem1InputValidation(List<Integer> list, int userInputLength, int bookMin, int bookMax) {
+        return false;
+    }
 }

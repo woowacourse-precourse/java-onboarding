@@ -4,6 +4,7 @@ import onboarding.problem1Validation.Problem1Validation;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -127,6 +128,42 @@ public class Problem1CustomTest {
             assertThat(Problem1Validation.userInputSizeEquals(list, USER_INPUT_LENGTH) && Problem1Validation.isBookNumberContinuous(list))
                     .isFalse();
 
+        }
+
+        @Test
+        void validation메써드들을합쳐서확인해보자() {
+            List<List<Integer>> testList = new ArrayList<>();
+            testList.add(List.of(2, 3));
+            testList.add(List.of(0, 3));
+            testList.add(List.of(0, 1));
+            testList.add(List.of(400, 401));
+            testList.add(List.of(399, 398));
+            testList.add(List.of(5, 7));
+            testList.add(List.of(0));
+            testList.add(List.of(0,1,2));
+            testList.add(List.of(1));
+            testList.add(List.of(1,2,3));
+            long count = testList.stream()
+                    .filter(list -> Problem1Validation.problem1InputValidation(list, USER_INPUT_LENGTH, BOOK_MIN, BOOK_MAX))
+                    .count();
+            assertThat(count).isEqualTo(0L);
+        }
+        void validation메써드들을통과하는가() {
+            List<List<Integer>> testList = new ArrayList<>();
+            testList.add(List.of(1, 2));
+            testList.add(List.of(0, 3));
+            testList.add(List.of(0, 1));
+            testList.add(List.of(399, 400));
+            testList.add(List.of(399, 398));
+            testList.add(List.of(5, 7));
+            testList.add(List.of(0));
+            testList.add(List.of(0,1,2));
+            testList.add(List.of(1));
+            testList.add(List.of(1,2,3));
+            long count = testList.stream()
+                    .filter(list -> Problem1Validation.problem1InputValidation(list, USER_INPUT_LENGTH, BOOK_MIN, BOOK_MAX))
+                    .count();
+            assertThat(count).isEqualTo(2L);
         }
     }
 }
