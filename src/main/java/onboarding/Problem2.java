@@ -6,14 +6,17 @@ import java.util.List;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = cryptogram;
+        while (checkingCode(answer)) {
+            answer = deleteDuplication(answer);
+        }
         return answer;
     }
 
     private static boolean checkingCode(String cryptogram) {
         String[] code = cryptogram.split("");
         for (int i = 0; i < code.length - 1; i++) {
-            if (code[i] == code[i + 1]) {
+            if (code[i].equals(code[i + 1])) {
                 return true;
             }
         }
@@ -24,7 +27,7 @@ public class Problem2 {
     private static String deleteDuplication(String cryptogram) {
         List<String> code = new ArrayList<>(Arrays.asList(cryptogram.split("")));
         for (int i = 0; i < code.size() - 1; i++) {
-            if (code.get(i) == code.get(i + 1)) {
+            if (code.get(i).equals(code.get(i + 1))) {
                 code.remove(i);
                 code.remove(i + 1);
                 i--;
