@@ -12,6 +12,21 @@ class Problem1 {
         if (!(isOpenPageCorrect(pobi) && isOpenPageCorrect(pobi))) {
             return Result.EXCEPTION.number;
         }
+
+        int pobiScore = getScore(pobi);
+        int crongScore = getScore(crong);
+    }
+
+    private static int getScore(List<Integer> pages) {
+        int maxLeftPageNumber = getMaxPageNumber(pages.get(PageDirection.LEFT.index));
+        int maxRightPageNumber = getMaxPageNumber(pages.get(PageDirection.RIGHT.index));
+        return Math.max(maxLeftPageNumber, maxRightPageNumber);
+    }
+
+    private static int getMaxPageNumber(int pageNumber) {
+        int sumPageNumber = getSumPageNumber(pageNumber);
+        int productPageNumber = getProductPageNumber(pageNumber);
+        return Math.max(sumPageNumber, productPageNumber);
     }
 
     private static int getProductPageNumber(int pageNumber) {
