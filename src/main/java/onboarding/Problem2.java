@@ -44,4 +44,15 @@ public class Problem2 {
 
         return equalCount;
     }
+
+    static StringBuilder getRemainStrFromStack(Stack<Character> stack) {
+
+        StringBuilder resultSb = new StringBuilder();
+
+        while(!stack.isEmpty()) {
+            resultSb.insert(0, stack.pop());
+        }
+
+        return resultSb;
+    }
 }
