@@ -26,6 +26,9 @@ public class Problem7 {
 
         userName = user;
 
+        //예외 확인
+        checkException(friends.size(), visitors.size());
+
         givePoint(user, visitors, friends);
         tmpArray = sortList();
 
@@ -193,5 +196,27 @@ public class Problem7 {
         return recommendFriendsList;
     }
 
-
+    /*
+    예외 처리 함수
+     */
+    public static void checkException(int friendLength, int visitorLength)
+    {
+        //사용자 아이디 체크
+        checkUserNameException();
+        checkListException(friendLength);
+        checkListException(visitorLength);
+    }
+    //사용자 아이디 체크
+    public static void checkUserNameException()
+    {
+        if (userName.length() < 1 || userName.length() > 30)
+            throw new IllegalArgumentException("USER NAME ERROR");
+    }
+    //리스트 길이 체크
+    public static void checkListException(int length)
+    {
+        if (length < 1 || length > 10000)
+            throw new IllegalArgumentException("FRIEND LIST ERROR");
+        if (length < 1 || length > 10000);
+    }
 }
