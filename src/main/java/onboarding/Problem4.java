@@ -5,7 +5,27 @@ import java.util.Map;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "answer";
+
+        Map<Character, Character> dictionary = createDictionary();
+
+        word = conversion(dictionary,word);
+
+        return word;
+    }
+
+    private static String conversion(Map<Character, Character> dictionary, String word) {
+        String answer = "";
+        for(int i=0; i<word.length(); i++){
+            if(dictionary.get(word.charAt(i)) == null){
+                answer += word.charAt(i);
+            }else{
+                answer += dictionary.get(word.charAt(i));
+            }
+        }
+        return answer;
+    }
+
+    public static Map<Character, Character> createDictionary(){
 
         Map<Character, Character> map = new HashMap<>();
 
@@ -15,15 +35,12 @@ public class Problem4 {
             map.put((char) i,(char)('Z'-idx++));
         }
         idx =0;
+
         for(int i='a'; i<='z'; i++){
             map.put((char) i,(char)('z'-idx++));
         }
-
-
-        return answer;
+        return map;
     }
 }
 
 
-//A = 65 66 67 68 69 70 71 72 73 74 75 76 77 78
-//Z = 90 89 88 87 86 85 84 83 82 81 80 79 78 77
