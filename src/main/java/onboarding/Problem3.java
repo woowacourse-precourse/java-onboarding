@@ -3,7 +3,7 @@ package onboarding;
 public class Problem3 {
     public static int[] divide=new int[] {0,0,0,0,0};
     public static int[] division=new int[] {10000,1000,100,10,10};
-    public static int count=0;
+    public static int[] numbercount=new int[] {0,0,0,0,0};
 
 
     public static void dividenumber(int number){
@@ -24,8 +24,13 @@ public class Problem3 {
     }
 
     public static void singlefigure(){
-        count=divide[4]/3;
+        numbercount[4]=divide[4]/3;
     }
+
+    public static void doublefigure(){
+        numbercount[3]=3*divide[3]+threesixnine(divide[3])+divide[4]+1;
+    }
+
 
 
     public static int solution(int number) {
