@@ -21,3 +21,15 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+
+<br>
+
+---
+
+## 기능 구현 목록
+
+- nicknameDecomposition(String nickname)
+  - 인수로 들어온 닉네임을 2자씩 끊어서 Set<String> 에 넣는다.
+- setUpData(List<List<String>> forms)
+  - forms에서 닉네임을 꺼내서 분해하고 partsOfNicknameList에 채운다. 그리고 이를 바탕으로 nicknameAndCountMap 변수를 채운다.
