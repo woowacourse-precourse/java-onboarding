@@ -6,6 +6,7 @@ public class Problem4 {
     private static int LOWER_CASE_A = 97;
     private static int LOWER_CASE_Z = 122;
     private static int UPPER_CASE_TOTAL = 155;
+    private static int LOWER_CASE_TOTAL = 219;
 
     public static String solution(String word) {
         String answer = "";
@@ -32,6 +33,11 @@ public class Problem4 {
 
     private static void reverseUpperCase(StringBuilder stringBuilder, char character, int index) {
         char reverse = (char) (UPPER_CASE_TOTAL - character);
+        stringBuilder.setCharAt(index, reverse);
+    }
+
+    private static void reverseLowerCase(StringBuilder stringBuilder, char character, int index) {
+        char reverse = (char) (LOWER_CASE_TOTAL - character);
         stringBuilder.setCharAt(index, reverse);
     }
 }
