@@ -1,17 +1,26 @@
 package onboarding;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Problem6 {
     static HashMap<String, String> names = new HashMap<>();
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
+        answer = new ArrayList<>();
+
+        for (List<String> strings : forms) {
+            inputNames(strings.get(1));
+        }
+        for (List<String> strings : forms) {
+            if (overlapNames(strings.get(1))) {
+                answer.add(strings.get(0));
+            }
+        }
+        Collections.sort(answer);
+
         return answer;
     }
-    
+
     static void inputNames(String form) {
         Set<String> set = new HashSet<>();
         for(int i=0; i<form.length()-1; i++) {
