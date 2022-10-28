@@ -22,7 +22,7 @@ public class ThreefoldGamer {
     public int runGame() {
         int count = 0;
         for (int i = 1; i <= NUM; i++) {
-            String numStr = String.valueOf(NUM);
+            String numStr = String.valueOf(i);
             count += countThreefoldNum(numStr);
         }
         return count;
