@@ -77,9 +77,17 @@ class Problem1 {
             return WRONG_INPUT;
         }
 
+        int pobiScore = getMyScore(pobi);
+        int crongScore = getMyScore(crong);
 
+        if (pobiScore > crongScore) {
+            return POBI_WIN;
+        }
 
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        if (pobiScore < crongScore) {
+            return CRONG_WIN;
+        }
+
+        return DRAW;
     }
 }
