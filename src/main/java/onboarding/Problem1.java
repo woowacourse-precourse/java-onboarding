@@ -37,11 +37,11 @@ class Problem1 {
     }
 
     private static boolean isNotOddNumber(int pageNumber) {
-        return pageNumber % 2 == 1;
+        return pageNumber % 2 != 1;
     }
 
     private static boolean isNotEvenNumber(int pageNumber) {
-        return pageNumber % 2 == 0;
+        return pageNumber % 2 != 0;
     }
 
     private static boolean checkPageOrder(int leftPage, int rightPage) {
