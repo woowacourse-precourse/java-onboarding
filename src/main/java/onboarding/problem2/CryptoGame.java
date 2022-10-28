@@ -11,7 +11,7 @@ public class CryptoGame {
 
     public static String start(String cryptogram) {
         checkInput(cryptogram);
-        return removeUl(cryptogram);
+        return remove(cryptogram);
     }
 
     private static void checkInput(String cryptogram) {
@@ -38,7 +38,7 @@ public class CryptoGame {
         }
     }
 
-    private static String removeUl(String crypto) {
+    private static String remove(String crypto) {
 
         if (crypto.length() == 0 || crypto.length() == 1)
             return crypto;
@@ -48,10 +48,10 @@ public class CryptoGame {
                 crypto = crypto.substring(1);
             }
             crypto = crypto.substring(1);
-            return removeUl(crypto);
+            return remove(crypto);
         }
 
-        String remCrypto = removeUl(crypto.substring(1));
+        String remCrypto = remove(crypto.substring(1));
 
         if (remCrypto.length() != 0 && remCrypto.charAt(0) == crypto.charAt(0)) {
             last_removed = crypto.charAt(0);
