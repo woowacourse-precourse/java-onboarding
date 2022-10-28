@@ -16,6 +16,25 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+    
+    /**
+     * 사용자의 점수를 구한다.
+     * 예외 발생 시 -1을 반환한다.
+     * @param person 유저 List
+     * @return 유저의 점수를 반환한다.
+     */
+    private static int getUserScore(List<Integer> person) {
+        Integer leftPage = person.get(0);
+        Integer rightPage = person.get(1);
+
+        // 책은 펼쳤을 때 연속된 수가 나와야한다.
+        // 왼쪽 페이지는 홀수, 오른쪽 페이지는 짝수번호다.
+        if((rightPage - leftPage) != 1 || (rightPage % 2) != 0 || (leftPage % 2) != 1) {
+            return -1;
+        }
+
+        return Math.max(getMaxScore(leftPage), getMaxScore(rightPage));
+    }
 
     /**
      * 주어진 페이지 각 자리수의 합과 곱중 큰 값을 반환한다.
