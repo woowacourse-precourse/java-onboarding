@@ -4,8 +4,7 @@ import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        return getDuplicatedEmailList(forms);
     }
 
 
@@ -21,7 +20,7 @@ public class Problem6 {
 
         for (String nickName : nickNameList) {
             for (String duplicatedWord : duplicatedWords) {
-                if (nickName.contains(duplicatedWord)) {   // <- 리팩토링 가능할 덧
+                if (nickName.contains(duplicatedWord)) {   // TODO: 리팩토링 필요
                     index = nickNameList.indexOf(nickName);
                     set.add(emailList.get(index));
                 }
@@ -37,12 +36,11 @@ public class Problem6 {
         List<String> duplicatedWords = new ArrayList<>();
         int[] indexList = new int[checkList.size()];
         Arrays.fill(indexList, 0);
-        String duplicatedWord;
 
         for (String nickName : nickNameList) {
 
             for (String check : checkList) {
-                if (nickName.contains(check)) {
+                if (nickName.contains(check)) {  // TODO: 23번 라인과 동일한 메소드로 리팩토링 필견
                     int index = checkList.indexOf(check);
                     indexList[index]++;
                 }
