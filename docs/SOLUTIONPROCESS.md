@@ -52,6 +52,14 @@
 
 ##📍 Problem5
 
+### 💡 Issues
+- 기능별 메서드 분리가 가능한가?
+- `List<Integer> list = Collections.EMPTY_LIST;` 로 선언되어 있던 이유는 무엇일까?
+
+
+### 🛠 Todo
+- \-
+
 
 ##📍 Problem6
 
