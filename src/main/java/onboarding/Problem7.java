@@ -6,7 +6,15 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         HashMap<String, Integer> recommend = giveVisitScore(visitors,giveFriendsScore(user,friends));
+        removeUserAndFriendsInRecommendationFriends(user,friends,recommend);
         return answer;
+    }
+    private static HashMap<String, Integer> giveFriendsScore(String user, List<List<String>> friends){
+        HashMap<String,Integer> recommendationFriends = new HashMap<>();
+        for (String friendsOfUser: findUserRelation(user,friends)) {
+            recommendationFriends = findFriendsOfUserLoop(friendsOfUser,friends,recommendationFriends);
+        }
+        return recommendationFriends;
     }
     private static List<String> findUserRelation(String user, List<List<String>> friends){
         List<String> friendsOfUser = new ArrayList<>();
@@ -16,13 +24,6 @@ public class Problem7 {
             }
         });
         return friendsOfUser;
-    }
-    private static HashMap<String, Integer> giveFriendsScore(String user, List<List<String>> friends){
-        HashMap<String,Integer> recommendationFriends = new HashMap<>();
-        for (String friendsOfUser: findUserRelation(user,friends)) {
-            recommendationFriends = findFriendsOfUserLoop(friendsOfUser,friends,recommendationFriends);
-        }
-        return recommendationFriends;
     }
     private static HashMap<String,Integer> findFriendsOfUserLoop(String friendsOfUser, List<List<String>> friends, HashMap<String, Integer> recommendationFriends) {
         for (String newFriendsOfUser: findUserRelation(friendsOfUser, friends)) {
@@ -41,4 +42,15 @@ public class Problem7 {
         visitors.forEach(visitor -> giveRecommendationScore(visitor,recommendationFriends,1));
         return recommendationFriends;
     }
+    private static HashMap<String,Integer> removeUserAndFriendsInRecommendationFriends(String user, List<List<String>> friends, HashMap<String,Integer> recommend){
+        List<String> userAndFriends = createUserAndFriends(user,friends);
+        userAndFriends.forEach(userId -> recommend.remove(userId));
+        return recommend;
+    }
+    private static List<String> createUserAndFriends(String user, List<List<String>> friends) {
+        List<String> userAndFriends = findUserRelation(user,friends);
+        userAndFriends.add(user);
+        return userAndFriends;
+    }
+
 }
