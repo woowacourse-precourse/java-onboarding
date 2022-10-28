@@ -28,8 +28,20 @@ class Problem1 {
         return result;
     }
 
-    private static int multipliedNumbers(int firstNumber, int secondNumber) {
-        return firstNumber * secondNumber;
+    private static int multipliedNumbers(int number) {
+        List<Integer> separatedNumbers = new ArrayList<>();
+        while (true) {
+            separatedNumbers.add(number % 10);
+            if (number / 10 == 0)
+                break;
+            number /= 10;
+        }
+
+        int result = 0;
+        for (int i : separatedNumbers) {
+            result *= i;
+        }
+        return result;
     }
 
     private static int comparingNumbers(int addedNum, int multipliedNum) {
