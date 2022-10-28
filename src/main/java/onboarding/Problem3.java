@@ -3,7 +3,23 @@ package onboarding;
 public class Problem3 {
 	public static int solution(int number) {
 		int answer = 0;
+		answer = getClappingGameResult(number);
 		return answer;
+	}
+
+	public static int getClappingGameResult(int number) {
+		if (!InputValidator.isRightNumberRange(number)) {
+			throw new IllegalArgumentException();
+		}
+		return countTotalNumbers(number);
+	}
+
+	private static int countTotalNumbers(int endNumber) {
+		int count = 0;
+		for (int number = 0; number <= endNumber; number++) {
+			count += countOneNumber(number);
+		}
+		return count;
 	}
 
 	private static int countOneNumber(int number) {
