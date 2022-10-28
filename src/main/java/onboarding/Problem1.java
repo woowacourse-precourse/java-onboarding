@@ -45,4 +45,13 @@ class Problem1 {
     private static boolean checkPageOrder(int leftPage, int rightPage) {
         return (rightPage - leftPage) == 1;
     }
+
+    private static int sumOfEachDigitNumber(int number) {
+        int result = 0;
+        while (number != 0) {
+            result += number % 10;
+            number /= 10;
+        }
+        return result;
+    }
 }
