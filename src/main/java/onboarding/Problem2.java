@@ -2,12 +2,26 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "";
+        String answer = duplicated(cryptogram);
         return answer;
     }
-
     static String duplicated(String cryptogram) {
-
+        for (int i = 0; i < cryptogram.length()-1; i++){
+            int j = 2;
+            if (cryptogram.substring(i, i+1).equals(cryptogram.substring(i+1, i+2))){
+                while(i+j+1 <= cryptogram.length() &&
+                        cryptogram.substring(i, i+1).equals(cryptogram.substring(i+j, i+j+1))) {
+                    j++;
+                }
+                if (i == 0){
+                    cryptogram = cryptogram.substring(i+j);
+                    return duplicated(cryptogram);
+                }
+                cryptogram = cryptogram.substring(0, i) + cryptogram.substring(i+j);
+                return duplicated(cryptogram);
+            }
+        }
+        return cryptogram;
     }
 }
 /**
