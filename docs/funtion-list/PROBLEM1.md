@@ -18,7 +18,21 @@
 
 #### package service.problem1
 
-#### class Problem1Service
+#### public interface Problem1Serviceable
+
+| return  | Method                                                       | Description                                                  |
+| ------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Integer | getWinner(List\<Integer> player1, List\<Integer> player2)    | 승자를 가리는 메소드입니다.                                  |
+| Integer | isWinner(List\<Integer> player1pages, List\<Integer> player2pages) | 승자를 가리는 논리적인 연산이 들어가 있는 메소드입니다.      |
+| boolean | isRestrict(List\<Integer> player1pages, List\<Integer> player2pages) | 제한사항을 모두 판별하는 메소드입니다. 만약 제한사항이 있다면 true를 리턴합니다. |
+| boolean | isWrongPageInputNumber(List\<Integer> player1pages, List\<Integer> player2pages) | 사용자가 잘못된 값을 입력한 경우 true를 리턴하는 메소드입니다. |
+| boolean | isRestrictPage(List\<Integer> player1pages, List\<Integer> player2pages) | 사용자가 제한된 페이지를 입력할 경우 true를 리턴하는 메소드입니다. |
+
+<br>
+
+#### package service.problem1
+
+#### class Problem1ServiceImpl implements Problem1Service
 
 | return  | Method                                                       | Description                                                  |
 | ------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
