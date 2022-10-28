@@ -13,11 +13,13 @@ class Problem1 {
         List<Integer> pobiPages = new ArrayList<>();
         pobiPages.add(getMaxPageNumber(pobi.get(0)));
         pobiPages.add(getMaxPageNumber(pobi.get(1)));
+        int pobiScore = maxNumber(pobiPages.get(0), pobiPages.get(1));
 
         //크롱
         List<Integer> crongPages = new ArrayList<>();
         crongPages.add(getMaxPageNumber(crong.get(0)));
         crongPages.add(getMaxPageNumber(crong.get(1)));
+        int crongScore = maxNumber(crongPages.get(0), crongPages.get(1));
 
         return answer;
     }
