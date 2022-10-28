@@ -1,18 +1,24 @@
 package onboarding;
 
 
+import onboarding.problem1.Comparator;
+
 import java.util.List;
+
+import static onboarding.problem1.Comparator.getBigger;
+import static onboarding.problem1.Comparator.getWinner;
 
 public class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
         int answer = Integer.MAX_VALUE;
 
+
+
         // 페이지 펼칠 때 예외 상황
         if (runtimeException(pobi) || runtimeException(crong)) answer = -1;
+        // 정상 흐름으로 제어권 이동
         else {
-            // 정상 흐름으로 제어권 이동
-
             // 왼쪽 페이지, 오른쪽 페이지 각 자리수 더하기, 곱하기
             int pobiAddLeft = getEachNumberBySum(pobi.get(0));
             int pobiAddRight = getEachNumberBySum(pobi.get(1));
@@ -60,33 +66,10 @@ public class Problem1 {
         }
     }
 
-    public static int getWinner(int pobiMax, int crongMax) {
-        int result = 0;
-        if (pobiMax > crongMax) {
-            result = 1;
-        } else if (crongMax > pobiMax) {
-            result = 2;
-        } else if (crongMax == pobiMax) {
-            result = 0;
-        }
 
-        return result;
-    }
-
-    static int getBigger(int a, int b) {
-        int result = 0;
-        if (a > b) {
-            result = a;
-        } else if (b > a) {
-            result = b;
-        } else if (a == b) {
-            result = a;
-        }
-        return result;
-    }
 
     public static Integer getEachNumberBySum(int pageNumber) {
-        int eachNumber = 0;
+        int eachNumber = 0; // 중복 x 지점
         while (pageNumber != 0 && pageNumber != 400) {
             eachNumber += pageNumber % 10;
             pageNumber /= 10;
@@ -96,7 +79,7 @@ public class Problem1 {
     }
 
     public static Integer getEachNumberByMultiply(Integer pageNumber) {
-        int eachNumber = 1;
+        int eachNumber = 1; // 중복 x 지점
         while (pageNumber != 0 && pageNumber != 400) {
             eachNumber *= pageNumber % 10;
             pageNumber /= 10;
