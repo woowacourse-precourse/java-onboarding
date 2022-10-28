@@ -6,6 +6,16 @@ public class Problem4 {
         return answer;
     }
 
+    public static char isAlphabet(char letter){
+        String something = Character.toString(letter);
+        if(something.matches("[a-zA-Z]")){
+            return convertAlphabet(letter);
+        }
+        if(something.matches("[^a-zA-Z]")){
+            return letter;
+        }
+        return '@';
+    }
 
     public static char convertAlphabet(char letter){
         String alphabet = Character.toString(letter);
