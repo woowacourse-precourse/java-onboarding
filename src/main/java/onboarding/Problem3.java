@@ -25,5 +25,14 @@ public class Problem3 {
     }
 
     //  3,6,9 개수 세는 메서드
+    public static int count369(ArrayList<Integer> intToLst) {
+        int cnt = 0;
+        for (int num : intToLst) {
+            if (num == 3 || num == 6 || num == 9) {
+                cnt ++;
+            }
+        }
+        return cnt;
+    }
 
 }
