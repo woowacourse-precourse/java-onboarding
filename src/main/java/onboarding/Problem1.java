@@ -56,7 +56,7 @@ class Problem1 {
     }
 
     private static int multipleEveryPlaceValue(int number) {
-        int multiple_value = 0;
+        int multiple_value = 1;
         String[] string_array = String.valueOf(number).split("");
         for (String place_value: string_array) {
             multiple_value *= Integer.valueOf(place_value);
