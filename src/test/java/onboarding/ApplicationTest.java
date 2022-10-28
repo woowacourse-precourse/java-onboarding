@@ -144,6 +144,17 @@ class ApplicationTest {
       int result = 14;
       assertThat(Problem3.solution(number)).isEqualTo(result);
     }
+
+    @Test
+    void isAllowedNumberTest() {
+      //given
+      int numberSize = 10001;
+
+      //then
+      assertThrows(IllegalStateException.class, () -> {
+        Problem3.isAllowedNumber(numberSize);
+      });
+     }
   }
 
   @Nested
