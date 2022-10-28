@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -11,6 +8,8 @@ public class Problem6 {
 
         Map<String, String> listMap = new HashMap<>();
         String[] nickList = new String[forms.size()];
+        Set<String> collectNickname = new HashSet<>();
+
         // 리스트에 있는 닉네임과 이메일을 맵에 넣음
         Iterator<List<String>> listItr = forms.iterator();
         for(int i=0; i<forms.size(); i++){
@@ -31,7 +30,13 @@ public class Problem6 {
                 int criteriaLength = j;
                 String[] criteriaList = makeCriteria(name, criteriaLength);
 
+                // 닉네임들 중에 기준 문자열과 중복인 닉네임이 있는지 찾음
+                List<String> duplicatedNickname = findDuplicatedNickname(nickList, criteriaList);
 
+                Iterator<String> dupNicknameItr = duplicatedNickname.iterator();
+                for(int s=0; s<duplicatedNickname.size(); s++){
+                    collectNickname.add(dupNicknameItr.next());
+                }
             }
         }
 
@@ -54,6 +59,25 @@ public class Problem6 {
         }
 
         return criteriaList;
+    }
+
+    /**
+     * 중복이 있는 닉네임 찾는 메소드
+     * @param nickList 입력받은 닉네임 리스트
+     * @param criteriaList 구한 기준 문자열 리스트
+     * @return 중복이 있는 닉네임을 리스트로 반환
+     */
+    static List<String> findDuplicatedNickname(String[] nickList, String[] criteriaList){
+        List<String> dup = new ArrayList<>();
+        for(int i=0; i<criteriaList.length; i++){
+            for(int j=0; j<nickList.length; j++){
+                if(nickList[j].contains(criteriaList[i])){
+                    dup.add(nickList[j]);
+                }
+            }
+        }
+
+        return dup;
     }
 
 }
