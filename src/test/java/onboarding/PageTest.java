@@ -15,6 +15,19 @@ class PageTest {
     Page crong = new Page(Arrays.asList(201, 202));
 
     @Test
+    void 두_객체를_비교한_뒤_더_큰_수를_가진_객체의_사용자_이름_꺼내기() {
+        //given
+        Page pobi = this.pobi.findMaxValue("pobi");
+        Page crong = this.crong.findMaxValue("crong");
+
+        //when
+        String maxValueUser = pobi.findMaxValue(crong);
+
+        //then
+        Assertions.assertThat(maxValueUser).isEqualTo("pobi");
+    }
+
+    @Test
     void 더하기_곱하기_최대값을_가지고_있는_Page_객체_꺼내기() {
         //when
         Page pobi = this.pobi.findMaxValue("pobi");

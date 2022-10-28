@@ -31,6 +31,17 @@ public class Page {
         return maxValueUser;
     }
 
+    public String findMaxValue(Page page) {
+
+        if (this.maxValue == page.maxValue) {
+            return "NOTHING";
+        }
+        if (this.maxValue > page.maxValue) {
+            return this.maxValueUser;
+        }
+        return page.maxValueUser;
+    }
+
     public Page findMaxValue(String userName) {
         this.maxValueUser = userName;
         return getPageWithMaxValue();
