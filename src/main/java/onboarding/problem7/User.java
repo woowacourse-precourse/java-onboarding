@@ -25,6 +25,10 @@ public class User {
         visitedUserNames.add(visitedUserName);
     }
 
+    public String getName(){
+        return name;
+    }
+
     public HashSet<String> getFriendNames(){
         return friendNames;
     }
