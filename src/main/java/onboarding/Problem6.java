@@ -26,4 +26,8 @@ public class Problem6 {
     }
     return keywordStore;
   }
+
+  private static boolean notLimitedNickname(Integer nicknames) {
+    return nicknames < 2;
+  }
 }
