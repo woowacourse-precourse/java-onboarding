@@ -1,6 +1,7 @@
 필요 기능 목록
 - friends 리스트에서 scoring 하는 메소드
 - visitors 에서 scoring 하는 메소드
+- score 순으로 정렬하는 메소드
 
 예외 사항 목록
 - ID
