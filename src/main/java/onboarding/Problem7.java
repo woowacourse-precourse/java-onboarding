@@ -20,8 +20,6 @@ public class Problem7 {
             if(idx == MAXRECOMMEND) break;
             String recomFriend = entryRecomFirends.get(idx).getKey();
             answer.add(recomFriend);
-            System.out.println(recomFriend);
-            System.out.println(entryRecomFirends.get(idx).getValue());
         }
         return answer;
     }
