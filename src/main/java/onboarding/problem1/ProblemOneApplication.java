@@ -51,6 +51,6 @@ public class ProblemOneApplication {
         book2.setLastScore(book2);
         System.out.println("book.getLastScore() = " + book.getLastScore());
         System.out.println("book2.getLastScore() = " + book2.getLastScore());
-        System.out.println(calculator.compare(book, book2));
+        System.out.println(calculator.compareScore(book, book2));
     }
 }
