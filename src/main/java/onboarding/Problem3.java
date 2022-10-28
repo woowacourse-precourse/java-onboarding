@@ -6,7 +6,7 @@ public class Problem3 {
     static final char NINE = '9';
 
     public static int solution(int number) {
-        int answer = 0;
+        int answer = getAnswer(number);
         return answer;
     }
 
