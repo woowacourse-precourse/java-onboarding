@@ -16,6 +16,7 @@ public class Problem2 {
 
     public static String deleteRepeated(String cryptogram) {
 
+        return cryptogram.replaceAll("([a-z])\\1+","");
     }
 
     public static String deleteRecursive(String cryptogram) {
