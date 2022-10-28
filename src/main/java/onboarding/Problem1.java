@@ -55,4 +55,12 @@ class Problem1 {
     public enum Result {
         DRAW, POBI_WIN, CRONG_WIN
     }
+
+    public static class GameException extends Exception {
+        private static final int value = -1;
+
+        public int getValue() {
+            return value;
+        }
+    }
 }

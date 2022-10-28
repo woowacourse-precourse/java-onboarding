@@ -19,7 +19,7 @@
 - [x] FEATURE3. 최대 점수 계산 함수
 - [x] FEATURE4. 점수 비교 결과 클래스
 - [x] FEATURE5. 포비 크롱 점수 비교 함수
-- [ ] FEATURE6. 예외 사항 Exception 클래스
+- [x] FEATURE6. 예외 사항 Exception 클래스
 - [ ] FEATURE7. solution 함수
 
 ### 제한사항
