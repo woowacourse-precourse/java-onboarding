@@ -44,6 +44,13 @@ class Problem1 {
         return plusDigits(rightPage);
     }
 
+    public static int compareMultipleNumber(int leftPage, int rightPage) {
+        if (multipleDigits(leftPage) - multipleDigits(rightPage) >= 0) {
+            return multipleDigits(leftPage);
+        }
+        return multipleDigits(rightPage);
+    }
+
     public static boolean isException(int leftPage, int rightPage) {
         if (rightPage - leftPage == 1) {
             return true;
