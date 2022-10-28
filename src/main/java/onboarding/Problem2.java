@@ -11,13 +11,25 @@ public class Problem2 {
         for (int i = 0; i < len; i++) {
             char ch = cryptogram.charAt(i);
 
-            if (!stack.isEmpty() && stack.peek() == ch) {
-                stack.pop();
-            } else {
-                stack.add(ch);
+            if (!stack.isEmpty() && stack.peek() != ch) {
+                removeDuplicatedCharacter(stack);
             }
+            stack.add(ch);
         }
+        removeDuplicatedCharacter(stack);
 
         return stack.stream().map(String::valueOf).collect(Collectors.joining());
+    }
+
+    private static void removeDuplicatedCharacter(Stack<Character> stack) {
+        char ch = stack.pop();
+        boolean isDuplicatedChar = false;
+        while (!stack.isEmpty() && ch == stack.peek()) {
+            stack.pop();
+            isDuplicatedChar = true;
+        }
+        if (!isDuplicatedChar) {
+            stack.add(ch);
+        }
     }
 }
