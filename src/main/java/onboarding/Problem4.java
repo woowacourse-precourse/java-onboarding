@@ -11,7 +11,7 @@ public class Problem4 {
         return answer;
     }
 
-    static char convertWord(char word) {
+    public static char convertWord(char word) {
         char newWord;
 
         if('a' <= word && word <= 'z') {            // 소문자
