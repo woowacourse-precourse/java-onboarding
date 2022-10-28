@@ -27,7 +27,14 @@ class Problem1 {
         //각 리스트의 가장 큰 값을 추출한다.
         int pobiMax = Collections.max(pobiResult);
         int crongMax = Collections.max(crongResult);
-
+        //비교해서 값을 반환한다.
+        if(pobiMax > crongMax){
+            answer = 1;
+        }else if(crongMax > pobiMax){
+            answer = 2;
+        }else{
+            answer = 0;
+        }
         return answer;
     }
 
