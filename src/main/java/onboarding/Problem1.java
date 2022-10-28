@@ -8,11 +8,26 @@ import java.util.stream.Stream;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        List<List<Integer>> pobiSeperateedDigits = separateDigits(pobi);
-        List<List<Integer>> crongSeperatedDigits = separateDigits(crong);
+
+        int pobiScore = getFinalScore(pobi);
+        int crongScore = getFinalScore(crong);
 
         int answer = Integer.MAX_VALUE;
         return answer;
+    }
+
+    public static int getFinalScore(List<Integer> participant) {
+        List<List<Integer>> seperatedDigits = separateDigits(participant);
+        List<Integer> cases = new ArrayList<>();
+
+        for (List<Integer> page : seperatedDigits) {
+            cases.add(add(page));
+            cases.add(multiply(page));
+        }
+
+        int max = getMax(cases);
+
+        return max;
     }
 
     public static List<List<Integer>> separateDigits(List<Integer> pages) {
