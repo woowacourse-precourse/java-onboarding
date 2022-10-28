@@ -46,7 +46,16 @@ public class Problem6 {
      * WordMap에서 중복된 단어를 가진 유저가 있는 경우 emailList에 추가해 반환하는 함수
      */
     private static List<String> checkDuplicateUser(Map<String, List<String>> wordMap) {
-        return Collections.emptyList();
+        List<String> duplicateEmailList = new ArrayList<>();
+        for (String word : wordMap.keySet()) {
+            List<String> wordEmailList = wordMap.get(word);
+
+            updateDuplicateEmailList(duplicateEmailList, wordEmailList);
+        }
+
+        Collections.sort(duplicateEmailList);
+
+        return duplicateEmailList;
     }
 
     public static List<String> solution(List<List<String>> forms) {
