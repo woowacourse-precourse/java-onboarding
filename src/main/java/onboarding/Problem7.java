@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -49,14 +50,26 @@ public class Problem7 {
         for (int i = 0; i < visitors.size(); i++) {
             String visitorsName = visitors.get(i);
             if (notToCountName.contains(visitorsName)) {
-                System.out.println("pass");
             } else {
                 countingMap.merge(visitorsName, 1, (integer, integer2) -> integer + integer2);
             }
         }
 
+
+        Stream<Map.Entry<String, Integer>> reverseSorted = sortByReverseOrder(countingMap);
+
+
         List<String> answer = Collections.emptyList();
         return answer;
+    }
+
+    private static Stream<Map.Entry<String, Integer>> sortByReverseOrder(LinkedHashMap<String, Integer> countingMap) {
+        Stream<Map.Entry<String, Integer>> sorted =
+                countingMap.
+                entrySet().
+                stream().
+                sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()));
+        return sorted;
     }
 
 
