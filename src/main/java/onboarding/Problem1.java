@@ -60,6 +60,19 @@ class Problem1 {
         return score;
     }
 
+    private static int getGameResult(int pobiScore, int crongScore) {
+
+        if (pobiScore > crongScore) {
+            return POBI_WIN;
+        }
+
+        if (pobiScore < crongScore) {
+            return CRONG_WIN;
+        }
+
+        return DRAW;
+    }
+
     /**
      * 1. 책을 임의로 펼친다.
      * 2. 왼쪽 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구한다.
@@ -77,17 +90,6 @@ class Problem1 {
             return WRONG_INPUT;
         }
 
-        int pobiScore = getMyScore(pobi);
-        int crongScore = getMyScore(crong);
-
-        if (pobiScore > crongScore) {
-            return POBI_WIN;
-        }
-
-        if (pobiScore < crongScore) {
-            return CRONG_WIN;
-        }
-
-        return DRAW;
+        return getGameResult(getMyScore(pobi), getMyScore(crong));
     }
 }
