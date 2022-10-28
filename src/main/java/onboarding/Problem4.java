@@ -31,6 +31,22 @@ public class Problem4 {
 
     static public String reverseWord(String word) {
 
+        StringBuilder result = new StringBuilder();
+        result.append(word);
+
+        for (int i = 0; i < word.length(); i++) {
+
+            char oldWord = result.charAt(i);  // 현재 문자 저장
+
+            if (isAlphabet(oldWord)) { // 알파벳 일 경우
+                // 알파벳 리버스 실행
+                char newWord = reVerseAlphabet(oldWord);
+                result.setCharAt(i, newWord);
+            }
+
+        }
+
+        return result.toString();
     }
 
 
