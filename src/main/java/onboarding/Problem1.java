@@ -45,4 +45,14 @@ class Problem1 {
         int max = cases.stream().mapToInt(x -> x).max().getAsInt();
         return max;
     }
+
+    public static int determinateWinner(int pobi, int crong) {
+        if (pobi > crong) {
+            return 1;
+        }
+        if (crong > pobi) {
+            return 2;
+        }
+        return 0;
+    }
 }
