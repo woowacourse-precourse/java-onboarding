@@ -110,7 +110,7 @@ class ApplicationTest {
         }
 
         @Test
-        void testValidateLength() {
+        void should_ThrowException_ForInvalidLength() {
             String cryptogram = "";
             assertThatThrownBy(() -> Problem2.validateLength(cryptogram))
                     .isInstanceOf(IllegalArgumentException.class)
@@ -118,11 +118,17 @@ class ApplicationTest {
         }
 
         @Test
-        void testValidateIsLower() {
+        void should_ThrowException_IfCryptogramIsNotLower() {
             String cryptogram = "Aa";
             assertThatThrownBy(() -> Problem2.validateIsLower(cryptogram))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("소문자가 아닌 다른 값이 포함되어 있습니다.");
+        }
+
+        @Test
+        void testValidator() {
+            String cryptogram = "abcd";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo("answer");
         }
     }
 
