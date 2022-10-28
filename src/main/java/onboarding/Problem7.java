@@ -62,7 +62,7 @@ public class Problem7 {
     }
 }
 
-class Friend {
+class Friend implements Comparable<Friend>{
     String id;
     int score;
 
@@ -87,6 +87,15 @@ class Friend {
 
     public void addScore(int score) {
         this.score += score;
+    }
+
+    @Override
+    public int compareTo(Friend o) {
+        if(score<o.getScore())
+            return -1;
+        if(score>o.getScore())
+            return 1;
+        return id.compareTo(o.getId());
     }
 }
 
@@ -133,5 +142,9 @@ class Friends {
         return friends.stream()
                 .filter(x -> x.getId().equals(id))
                 .findFirst().orElse(null);
+    }
+
+    public List<String> getRecommendIds(){
+        Collections.sort(friends);
     }
 }
