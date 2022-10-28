@@ -7,14 +7,14 @@ class Problem1 {
 
     }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if(listException(pobi) || listException(crong)){
+        if(listSizeException(pobi) || listSizeException(crong)){
             return -1;
         }
         int answer = Integer.MAX_VALUE;
         return answer;
     }
 
-    public static boolean listException(List<Integer> list){
+    public static boolean listSizeException(List<Integer> list){
         return list.size() != 2;
     }
 }

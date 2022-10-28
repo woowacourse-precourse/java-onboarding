@@ -14,6 +14,6 @@ public class Problem1Test {
     void listSize() {
         List<Integer> list = List.of(197, 198, 199);
         boolean result = true;
-        assertThat(problem.listException(list)).isEqualTo(result);
+        assertThat(problem.listSizeException(list)).isEqualTo(result);
     }
 }
