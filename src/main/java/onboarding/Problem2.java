@@ -17,8 +17,19 @@ public class Problem2 {
         return str;
     }
 
+    //기능 2
     public static String solution(String cryptogram) {
         String answer = "answer";
+        while(true) {
+            String newAnswer=cutSameWord(cryptogram);
+            if(cryptogram.equals(newAnswer)) {
+                answer=cryptogram;
+                break;
+            }
+            else {
+                cryptogram=newAnswer;
+            }
+        }
         return answer;
     }
 }
