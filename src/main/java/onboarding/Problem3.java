@@ -1,4 +1,7 @@
 package onboarding;
+
+import java.util.Arrays;
+
 /**
  * 1. 유효범위 숫자 확인
  * 2. 숫자를 String으로 변환 후 각 자리수 별로 나누기
@@ -11,11 +14,9 @@ public class Problem3 {
         int answer = 0;
         for(int i = 1; i <= number ; i ++ ){
             String[] check369 = String.valueOf(i).split(SPLIT_POINT);
-            for (String step : check369) {
-                if (step.equals("3") || step.equals("6") || step.equals("9")) {
-                    answer += 1;
-                }
-            }
+            answer += Arrays.stream(check369)
+                .filter(step -> step.equals("3") || step.equals("6") || step.equals("9"))
+                .count();
         }
         return answer;
     }
