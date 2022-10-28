@@ -51,7 +51,8 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
         List<String> friendList = createFriendList(user, friends);
-        HashMap<String, Integer> pointMap = getRecommendPoint(friendList, visitors);
+        List<String> ffList = createFriendsFriendList(friendList, friends);
+        HashMap<String, Integer> pointMap = getRecommendPoint(ffList, visitors);
 
         Object[] pointMapKey = pointMap.keySet().toArray();
         Arrays.sort(pointMapKey);
