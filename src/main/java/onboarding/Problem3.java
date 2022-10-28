@@ -18,4 +18,11 @@ public class Problem3 {
         return numberList;
     }
 
+    public static boolean isThreeSixNine(int number) {
+        if (number == 3 || number == 6 || number == 9) {
+            return true;
+        }
+        return false;
+    }
+
 }
