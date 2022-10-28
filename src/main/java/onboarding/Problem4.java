@@ -11,9 +11,9 @@ public class Problem4 {
             word_char[i] = chager(word_char[i]);
 
         }
-        word = new String(word_char);
+        answer = new String(word_char);
 
-        return  word;
+        return  answer;
 
     }
     public static char chager(char word)
