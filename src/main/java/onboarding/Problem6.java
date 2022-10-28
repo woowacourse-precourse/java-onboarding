@@ -4,32 +4,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Problem6 {
-    private static List<String> confirm;
-    private static List<String> duplicatedEmails;
+    private static List<String> nicknames;
+    private static List<String> answer;
 
     public static List<String> solution(List<List<String>> forms) {
         initSystem(forms);
         checkNicknameInForms(forms);
-        return duplicatedEmails;
+        return answer;
     }
 
     private static void initSystem(List<List<String>> forms) {
-        confirm = new ArrayList<>();
-        confirm.add(forms.get(0).get(1));
-        duplicatedEmails = new ArrayList<>();
+        nicknames = new ArrayList<>();
+        nicknames.add(forms.get(0).get(1));
+        answer = new ArrayList<>();
     }
 
     private static void checkNicknameInForms(List<List<String>> forms) {
         for(int i=1; i<forms.size(); i++) {
             if(isConfirmListContainsWord(forms.get(i).get(1))) {
-                duplicatedEmails.add(forms.get(i).get(0));
+                answer.add(forms.get(i).get(0));
             }
-            confirm.add(forms.get(i).get(1));
+            nicknames.add(forms.get(i).get(1));
         }
     }
 
     private static boolean isConfirmListContainsWord(String nickname) {
-        for (String value : confirm) {
+        for (String value : nicknames) {
             for (int j = 0; j < nickname.length(); j++) {
                 if (value.contains(String.valueOf(nickname.charAt(j)))) {
                     String s = nickname.substring(j, j + 2);
