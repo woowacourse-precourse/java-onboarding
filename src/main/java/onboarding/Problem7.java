@@ -8,31 +8,39 @@ public class Problem7 {
 		Set<String> userFriends = new HashSet<>();
 
 		for (List<String> friend : friends) {
-			userFriends.add(friend.get(0));
-			if (friend.get(1).equals(user)) {
+			String idA = friend.get(0);
+			String idB = friend.get(1);
+			userFriends.add(idA);
+			if (idB.equals(user)) {
 				continue;
 			}
-
-			if (recommendFriends.containsKey(friend.get(1))) {
-				recommendFriends.put(friend.get(1), recommendFriends.get(friend.get(1)) + 10);
-			} else {
-				recommendFriends.put(friend.get(1), 10);
-			}
+			addRecommendFriendScore(recommendFriends, idB);
 		}
 
 		for (String visitor : visitors) {
 			if (userFriends.contains(visitor)) {
 				continue;
 			}
-
-			if (recommendFriends.containsKey(visitor)) {
-				recommendFriends.put(visitor, recommendFriends.get(visitor) + 1);
-			} else {
-				recommendFriends.put(visitor, 1);
-			}
+			addVisitorScore(recommendFriends, visitor);
 		}
 		System.out.println(recommendFriends);
 
 		return Collections.emptyList();
+	}
+
+	private static void addVisitorScore(HashMap<String, Integer> recommendFriends, String id) {
+		if (recommendFriends.containsKey(id)) {
+			recommendFriends.put(id, recommendFriends.get(id) + 1);
+		} else {
+			recommendFriends.put(id, 1);
+		}
+	}
+
+	private static void addRecommendFriendScore(HashMap<String, Integer> recommendFriends, String id) {
+		if (recommendFriends.containsKey(id)) {
+			recommendFriends.put(id, recommendFriends.get(id) + 10);
+		} else {
+			recommendFriends.put(id, 10);
+		}
 	}
 }
