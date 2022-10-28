@@ -63,4 +63,7 @@ class Problem1 {
         return getMaxValue(chooseMaxValueBetweenAddAndMultiply(pageList.get(0)), chooseMaxValueBetweenAddAndMultiply(pageList.get(1)));
     }
 
+    public static List<Integer> userResult(List<Integer> user1, List<Integer> user2) {
+        return List.of(chooseMaxValueLeftOrRight(user1), chooseMaxValueLeftOrRight(user2));
+    }
 }
