@@ -23,6 +23,28 @@ public class Problem4 {
         return -1;
     }
 
+    /**
+     * 2. 청개구리 사전 - 아스키코드 이용
+     * @param chk : 대문자, 소문자 구별할 체크 인자
+     * @param a : 바꿀 문자
+     * @return : 바뀐 문자
+     */
+
+    static char dictionary(int chk, char a){
+        // 대문자
+        if (chk == 1) {
+            int asciiA = (int)a;
+            return (char)(155-asciiA);
+        }
+        // 소문자
+        if (chk == 2){
+            int asciiA = (int)a;
+            return (char)(219-asciiA);
+        }
+        // 그 외의 문자
+        return a;
+    }
+
     public static String solution(String word) {
         String answer = "";
         return answer;
