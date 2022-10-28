@@ -3,7 +3,11 @@ package onboarding;
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
-        check(number);
+        try {check(number);}
+        catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+            return -1;
+        }
         answer = count369(number, answer);
         return answer;
     }
@@ -25,5 +29,10 @@ public class Problem3 {
             }
         }
         return answer;
+    }
+
+    public static void main(String[] args) {
+        int solution = Problem3.solution(10001);
+        System.out.println(solution);
     }
 }
