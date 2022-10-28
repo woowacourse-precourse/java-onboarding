@@ -34,7 +34,14 @@ class ApplicationTest {
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
-        
+        @Test
+        void getScore() {
+        	List<Integer> pobi = List.of(131, 132);
+            List<Integer> crong = List.of(197, 198);
+            
+        	assertThat(Problem1.getScore(pobi.get(0), pobi.get(1))).isEqualTo(6);
+        	assertThat(Problem1.getScore(crong.get(0), crong.get(1))).isEqualTo(72);
+        }
         @Test
         void nullPageTest() {
         	//given
