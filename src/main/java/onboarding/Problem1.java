@@ -3,8 +3,30 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+    public static int getAddition(int number) {
+        return 0;
+    }
+
+    public static int getMultiplication(int number) {
+        return 0;
+    }
+
+    public static int getBestScore(List<Integer> numbers) {
+        return 0;
+    }
+
+    public static boolean isValidPages(List<Integer> pages) {
+        return true;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        // invalid input
+        if(!isValidPages(pobi)) return -1;
+        if(!isValidPages(crong)) return -1;
+
+        int score1 = getBestScore(pobi), score2 = getBestScore(crong);
+        if(score1 > score2) return 1;
+        if(score1 < score2) return 2;
+        return 0;
     }
 }
