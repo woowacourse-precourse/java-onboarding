@@ -12,4 +12,11 @@ public class Problem4 {
 
         return answer;
     }
+
+    static boolean isAlpha(char c) {
+        if ( ('A' <= c && c <= 'Z') || ('a' <= c && c <= 'z') )
+            return true;
+        else
+            return false;
+    }
 }
