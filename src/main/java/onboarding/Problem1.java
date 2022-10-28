@@ -34,16 +34,16 @@ class Problem1 {
                 }
             }
         }
-//        pobiMax = Math.max(pobiSum, pobiMul); // 각 자리수 더한 값과 곱한값 중 최대값 찾기
-//        crongMax = Math.max(crongSum, crongMul);
-//
-//        if(pobiMax > crongMax) {
-//            answer = 1;
-//        }else if(pobiMax < crongMax) {
-//            answer = 2;
-//        }else {
-//            answer = 0;
-//        }
+        pobiMax = Math.max(pobiSum, pobiMul); // 각 자리수 더한 값과 곱한값 중 최대값 찾기
+        crongMax = Math.max(crongSum, crongMul);
+
+        if(pobiMax > crongMax) {
+            answer = 1;
+        }else if(pobiMax < crongMax) {
+            answer = 2;
+        }else {
+            answer = 0;
+        }
 
         return answer;
 
