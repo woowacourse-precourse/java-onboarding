@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.PriorityQueue;
 
 public class Problem7 {
@@ -26,8 +27,8 @@ public class Problem7 {
     }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
-        getFriendsHashMap(friends);
-        PriorityQueue<Score> scorePriorityQueue = getScorePriorityQueue();
+        HashMap<String, ArrayList<String>> friendsHashMap = getFriendsHashMap(friends);
+        PriorityQueue<Score> scorePriorityQueue = getScorePriorityQueue(user, friendsHashMap);
         return answer;
     }
 
@@ -50,8 +51,14 @@ public class Problem7 {
         friendsHashMap.get(user1).add(user2);
     }
 
-    public static PriorityQueue<Score> getScorePriorityQueue() {
+    public static PriorityQueue<Score> getScorePriorityQueue(String user, HashMap<String, ArrayList<String>> friendsHashMap) {
+        PriorityQueue<Score> scorePriorityQueue = initPriorityQueue();
+
+        return scorePriorityQueue;
+    }
+
+    public static PriorityQueue<Score> initPriorityQueue() {
         return new PriorityQueue<>((a, b) -> (a.score == b.score) ?
-                                            a.username.compareTo(b.username) : b.score-a.score);
+            a.username.compareTo(b.username) : b.score - a.score);
     }
 }
