@@ -46,7 +46,14 @@ class Problem1 {
         List<Integer> leftPageValues = seperatePage(leftPage);
         List<Integer> rightPageValues = seperatePage(rightPage);
 
-        return Integer.MAX_VALUE;
+        int leftMaxValue = compareSumAndMultValue(leftPageValues);
+        int rightMaxValue = compareSumAndMultValue(rightPageValues);
+        return Math.max(leftMaxValue, rightMaxValue);
+    }
+
+    // 분리된 페이지의 int 값의 합과 곱 중에 더 큰 값을 리턴
+    private static int compareSumAndMultValue(List<Integer> pageValues){
+        return Math.max(sumPageValues(pageValues), multPageValues(pageValues));
     }
 
     // page를 각각의 정수로 분리
@@ -57,6 +64,16 @@ class Problem1 {
             page /= 10;
         }
         return seperatedPage;
+    }
+
+    // 분리된 page의 값 sum
+    private static int sumPageValues(List<Integer> seperatedPage){
+        return seperatedPage.stream().mapToInt(Integer::intValue).sum();
+    }
+
+    // 분리된 page의 값 Mult
+    private static int multPageValues(List<Integer> seperatedPage){
+        return seperatedPage.stream().reduce(1, (x,y) -> x*y);
     }
 
 }
