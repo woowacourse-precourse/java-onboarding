@@ -18,6 +18,14 @@ public class Problem7 {
 				recommendFriends.put(friend.get(1), 10);
 			}
 		}
+
+		for (String visitor : visitors) {
+			if (recommendFriends.containsKey(visitor)) {
+				recommendFriends.put(visitor, recommendFriends.get(visitor) + 1);
+			} else {
+				recommendFriends.put(visitor, 1);
+			}
+		}
 		System.out.println(recommendFriends);
 
 		return Collections.emptyList();
