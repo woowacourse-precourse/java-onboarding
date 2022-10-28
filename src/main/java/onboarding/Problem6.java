@@ -16,9 +16,9 @@ public class Problem6 {
 
         for (int i = 0; i < forms.size(); i++) {
             List<String> substrings = new ArrayList<>();
-            String Nickname = forms.get(i).get(1);
-            for (int j = 0; j < Nickname.length() - 1; j++) {
-                String substring = Nickname.substring(j, j + 2);
+            String nickname = forms.get(i).get(1);
+            for (int j = 0; j < nickname.length() - 1; j++) {
+                String substring = nickname.substring(j, j + 2);
                 substrings.add(substring);
             }
             substringList.add(substrings);
@@ -79,12 +79,7 @@ public class Problem6 {
             }
         }
 
-        Set<String> emailSet = new HashSet<>();
-
-        for (int i = 0; i < emailList.size(); i++) {
-            emailSet.add(emailList.get(i));
-        }
-
+        Set<String> emailSet = new HashSet<>(emailList);
         List<String> sortedEmailList = new ArrayList<>(emailSet);
 
         return sortedEmailList;
