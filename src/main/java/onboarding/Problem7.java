@@ -31,11 +31,14 @@ public class Problem7 {
         return friendsFriendList;
     }
 
-    private static HashMap<String, Integer> getRecommendPoint(List<String> friendList, List<String> visitorList){
+    private static HashMap<String, Integer> getRecommendPoint(List<String> friendList, List<String> ffList, List<String> visitorList){
         HashMap<String, Integer> pointMap = new HashMap<>();
 
-        for(int i = 0; i < friendList.size(); i++){
-            pointMap.put(friendList.get(i), 10);
+        for(int i = 0; i < ffList.size(); i++){
+            if(pointMap.containsKey(ffList.get(i)))
+                pointMap.put(ffList.get(i), pointMap.get(ffList.get(i)) + 10);
+            else
+                pointMap.put(ffList.get(i), 10);
         }
 
         for(int i = 0; i < visitorList.size(); i++){
@@ -45,6 +48,11 @@ public class Problem7 {
                 pointMap.put(visitorList.get(i), 1);
         }
 
+        for(int i = 0; i < friendList.size(); i++){
+            if(pointMap.containsKey(friendList.get(i)))
+                pointMap.remove(friendList.get(i));
+        }
+
         return pointMap;
     }
 
@@ -52,14 +60,15 @@ public class Problem7 {
         List<String> answer = new ArrayList<>();
         List<String> friendList = createFriendList(user, friends);
         List<String> ffList = createFriendsFriendList(friendList, friends);
-        HashMap<String, Integer> pointMap = getRecommendPoint(ffList, visitors);
+        HashMap<String, Integer> pointMap = getRecommendPoint(friendList, ffList, visitors);
 
-        Object[] pointMapKey = pointMap.keySet().toArray();
-        Arrays.sort(pointMapKey);
+        List<Map.Entry<String, Integer>> sortedPointList = new ArrayList<>(pointMap.entrySet());
+        sortedPointList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
+        sortedPointList.forEach(System.out::println);
 
-        for(int i = 0; i < pointMapKey.length; i++) {
-            if (pointMap.get(pointMapKey[i]) != 0 && answer.size() < 5)
-                answer.add(Objects.toString(pointMapKey[i]));
+        for(int i = 0; i < sortedPointList.size(); i++) {
+            if (pointMap.get(sortedPointList.get(i).getKey()) != 0 && answer.size() < 5)
+                answer.add(Objects.toString(sortedPointList.get(i).getKey()));
             else
                 break;
         }
