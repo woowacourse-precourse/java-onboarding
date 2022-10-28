@@ -7,7 +7,15 @@ public class Problem4 {
      * 2. 매핑 배열을 가지고 문자열 변환하기
      * */
 
+    static int upperCase[] = new int[26];
+    static int lowerCase[] = new int[26]; // private or protected 정의 하는 것 생각할 것. static 항상 붙어야 하는 이유도 알아낼 것
 
+    static void setLetterCaseMappingTable() {
+        for (int i = 0; i < 26; i++) {
+            upperCase[i] = 'Z' - i;
+            lowerCase[i] = 'z' - i;
+        }
+    }
 
     public static String solution(String word) { // 문자열인데 이름을 word로 해놓은 이유
         setLetterCaseMappingTable();
