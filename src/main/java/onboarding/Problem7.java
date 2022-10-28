@@ -115,6 +115,18 @@ public class Problem7 {
         }
     }
 
+    private static void sortRecommendList(List<Map.Entry<String, Integer>> recommendList) {
+        recommendList.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                if (o1.getValue().equals(o2.getValue())) {
+                    return o1.getKey().compareTo(o2.getKey());
+                }
+                return o2.getValue().compareTo(o1.getValue());
+            }
+        });
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         Map<String, Set<String>> friendsByName;
@@ -122,6 +134,7 @@ public class Problem7 {
         Map<String, Integer> visitorScore;
         Set<String> candidates;
         Map<String, Integer> scoreByName;
+        List<Map.Entry<String, Integer>> recommendList;
 
         friendsByName = getRelation(friends);
         userFriends = new ArrayList<>(friendsByName.get(user));
@@ -130,7 +143,8 @@ public class Problem7 {
         scoreByName = createScoreByName(candidates);
         calcFriendScore(scoreByName, friendsByName, userFriends);
         calcVisitorScore(scoreByName, visitorScore);
-
+        recommendList = new ArrayList<>(scoreByName.entrySet());
+        sortRecommendList(recommendList);
         return answer;
     }
 }
