@@ -21,3 +21,29 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+## 구현 과정
+
+Stack 자료구조를 이용
+
+주어진 문자열 : `cryptogram`
+
+
+
+1. `cryptogram`의 각 문자에 접근
+
+2. 조건에 따라 Stack에 문자를 `add` / Stack에 존재하는 문자를 `pop`
+3. `cryptogram`의 모든 문자를 탐색한 후, <br>Stack에 남은 문자를 역순으로 연결
+
+---
+**문자가 Stack에 add될 조건**
+- Stack이 비어있을 경우
+- 현재 탐색중인 문자와 Stack의 최상단에 위치하는 문자가
+  <br>일치하지 않을 경우
+
+**문자가 스택에서 pop될 조건**
+- Stack의 최상단에 위치하는 문자와 현재 탐색중인 문자가 동일할 경우
+- 위의 과정이 가능할 때까지 반복 후 Stack의 최상단 문자
+
+   
+    
