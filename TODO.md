@@ -4,7 +4,7 @@
 
 ## 설계 및 추가 사항, 구현된 기능은 체크됨
 
-<h3>
+<span style="font-size:13pt"> 
 
 <details>
 <summary>문제 1</summary>
@@ -98,9 +98,7 @@
 - [x] 문제 요구사항에 맞는 Crew의 구현체는 WooaCrew이다.
 - [x] WooaCrew는 CrewValidator를 주입 받아 입력이 유효한지 판단한다.
 - [x] CrewFinder의 구현체 DuplicateWarningCrewFinder는<br/>
-문제의 조건에 따라 같은 글자가 연속적으로 포함되는 닉네임을 신청한 크루의 이메일 리스트를 반환한다.
-
-
+  문제의 조건에 따라 같은 글자가 연속적으로 포함되는 닉네임을 신청한 크루의 이메일 리스트를 반환한다.
 
 </details><br/>
 
@@ -113,8 +111,13 @@
 
 설계<br/>
 
+FriendSystem
+
+- [x] void connectFriend(String userA, String userB): 입력된 두 친구들을 친구 상태로 연결
+- [x] Set<String> getFriendsOf(String user): 해당 유저의 친구의 목록을 조회
+- [x] List<String> getRecommendFriendsOf(String user, List<String> visitor): 해당 유저의 추천 목록 조회
 
 </details>
 
 
-</h3>
+</span>
