@@ -48,8 +48,15 @@
 - [x] 부분 연속 문자열 중 중복이 있는 문자열만 추출
 - [x] 닉네임 중에 같은 글자가 연속적으로 포함되는 닉네임을 리스트로 반환
 - [x] 같은 글자가 연속적으로 포함 되는 닉네임을 작성한 지원자의 이메일 목록 리스트로 반환
-- [ ] 이메일 목록 리스트를 오름차순으로 정렬, 중복 제거 후 반환
+- [x] 이메일 목록 리스트를 오름차순으로 정렬, 중복 제거 후 반환
 - [ ] 예외 사항을 체크해줄 Problem6ValidateChecker class
   - [ ] etc...
+
 ## 문제 7번
-- 테스트
+- [ ] 사람 이름을 key, 점수를 value로 저장하는 friendScoreMap 생성
+- [ ] user와 현재 친구인 사람을 저장할  userFriendList를 생성
+- [ ] friend 리스트 중에서 userFriendList와 겹치는 값을 갖고 있는 사람을 탐색하여, friendScoreMap에서 + 10
+- [ ] visitor를 참조하여 friendScoreMap에 +1
+- [ ] friendScoreMap을 점수 기준으로 내림차순 정렬
+- [ ] 내림차순 정렬한 값을 리스트로 반환 후, userFriendList에 있는 값을 제외하고, 반환
+- [ ] 예외 사항을 체크해줄 Problem7ValidateChecker class 추가
