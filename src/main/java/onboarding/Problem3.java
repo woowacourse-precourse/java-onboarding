@@ -13,16 +13,16 @@ public class Problem3 {
         return clapCount;
     }
 
-    static int countingNumberThreeSixNine(int number) {
-        int countedNumber = 0;
-        while (number > 0) {
-            if (isThreeSixNine(number)) countedNumber++;
-            number /= 10;
+    static int countingNumberThreeSixNine(int num) {
+        int countedNum = 0;
+        while (num > 0) {
+            if (isThreeSixNine(num)) countedNum++;
+            num /= 10;
         }
-        return countedNumber;
+        return countedNum;
     }
 
-    static boolean isThreeSixNine(int number) {
-        return (number % 10) == 3 || (number % 10) == 6 || (number % 10) == 9;
+    static boolean isThreeSixNine(int num) {
+        return (num % 10) == 3 || (num % 10) == 6 || (num % 10) == 9;
     }
 }

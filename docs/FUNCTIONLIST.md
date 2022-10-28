@@ -27,7 +27,9 @@
 <div markdown="1">
 
 - `solution(int number)`: 숫자 number가 매개변수로 주어질 때, 1부터 손뼉을 몇번 쳐야 하는지 횟수를 반환한다.
-- `isThreeSixNine(int number)`: 숫자 number가 매개변수로 주어질 때, 1의 자리(10으로 나눈 나머지)가 3, 6, 9 중 하나 이면 true를, 그렇지 않으면 false를 반환한다.
+- `countingClapCount(int endNum)`: endNum을 매개변수로 주어질 때, 1부터 endNum까지의 손뼉을 쳐야 하는 횟수를 구해 반환한다.
+- `countingNumberThreeSixNine(int num)`: number가 매개변수로 주어질 때, 수에서 3, 6, 9의 개수를 구해 반환한다.   
+- `isThreeSixNine(int num)`: 숫자 num이 매개변수로 주어질 때, 1의 자리(10으로 나눈 나머지)가 3, 6, 9 중 하나 이면 true를, 그렇지 않으면 false를 반환한다.
 </div>
 </details>
 
