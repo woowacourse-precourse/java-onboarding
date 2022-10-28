@@ -8,22 +8,20 @@ class Problem1 {
         return answer;
     }
 
-    private static int addedNumbers(int firstNumber, int secondNumber) {
-        return firstNumber + secondNumber;
-    }
+    
 
-    private int multipliedNumbers(int firstNumber, int secondNumber) {
+    private static int multipliedNumbers(int firstNumber, int secondNumber) {
         return firstNumber * secondNumber;
     }
 
-    private int judgmentException(int firstNumber, int secondNumber) {
+    private static int judgmentException(int firstNumber, int secondNumber) {
         if (secondNumber - firstNumber > 1) {
             return -1;
         }
         return 0;
     }
 
-    private int comparingNumbers(int addedNum, int multipliedNum) {
+    private static int comparingNumbers(int addedNum, int multipliedNum) {
         return addedNum > multipliedNum ? addedNum : multipliedNum;
     }
 
