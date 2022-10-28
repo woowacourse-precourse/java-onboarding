@@ -5,7 +5,26 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        answer = getGameResult(pobi, crong);
         return answer;
+    }
+
+    public static int getGameResult(List<Integer> player1, List<Integer> player2) {
+
+        if(identifyException(player1, player2)) return -1;
+
+        int player1Left = calculatePageScoreV1(player1.get(0));
+        int player1Right = calculatePageScoreV1(player1.get(1));
+
+        int player2Left = calculatePageScoreV1(player2.get(0));
+        int player2Right = calculatePageScoreV1(player2.get(1));
+
+
+        int player1UltimateScore = Math.max(player1Left, player1Right);
+        int player2UltimateScore = Math.max(player2Left, player2Right);
+
+        return player1UltimateScore > player2UltimateScore ? 1 :
+                player1UltimateScore == player2UltimateScore ? 0 : 2;
     }
 
     public static int calculatePageScoreV1(int pageNum) {

@@ -34,3 +34,24 @@
       따라서 왼쪽 페이지 값은 1 초과, 오른쪽 페이지 값은 400 미만이어야 합니다.
 
 위 상황에 하나라도 해당되는 페이지 값이 존재한다면 true, 해당되는 페이지 값이 존재하지 않는다면 false를 반환합니다.
+
+
+## 3. public static int getGameResult(List<Integer\> player1, List<Integer\> player2) {}
+
+### input
+- **int List<Integer\> player1** : 첫 번째 플레이어가 펼친 **책의 왼쪽, 오른쪽 페이지 값**을 가지고 있는 리스트.
+- **int List<Integer\> player2** : 두 번째 플레이어가 펼친 **책의 왼쪽, 오른쪽 페이지 값**을 가지고 있는 리스트.
+
+### output
+- **(int)** 게임 결과.
+    - player1이 이긴 경우 : 1
+    - player2가 이긴 경우 : 2
+    - 무승부 : 0
+    - 예외 상황 : -1
+
+### 기능 상세
+게임을 진행하는 메소드입니다.</br></br>
+우선 identicyException()을 호출하여 예외 상황인지 여부를 우선적으로 파악한 후, 리턴 값이 true인 경우 -1을 반환하고 메소드를 종료합니다.</br>
+예외가 발생하지 않은 경우 계속해서 게임을 진행합니다.</br>
+calculatePageScore()와 Math.max()를 통해 각 플레이어들의 최종 점수를 연산합니다.</br>
+두 플레이어의 최종 점수 값을 비교하여 그 결과에 따라 1, 0, 2를 반환합니다.
