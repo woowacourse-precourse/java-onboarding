@@ -18,4 +18,9 @@ public class Problem3 {
 
         return arr;
     }
+
+    static boolean doesStringContain369(String str) {
+
+        return str.contains("3") || str.contains("6") || str.contains("9");
+    }
 }
