@@ -8,7 +8,19 @@ public class Problem4 {
 
 	public static String solution(String word) {
 		String answer = "";
+		answer = getTreeFrogLanguage(word);
 		return answer;
+	}
+
+	private static String getTreeFrogLanguage(String word) {
+		String treeFrogLanguage = "";
+		if (!InputValidator.isRightWordRange(word)) {
+			throw new IllegalArgumentException();
+		}
+		for (char c : word.toCharArray()) {
+			treeFrogLanguage += changeValueFromTreeFrogDict(c);
+		}
+		return treeFrogLanguage;
 	}
 
 	public static char changeValueFromTreeFrogDict(char c) {
