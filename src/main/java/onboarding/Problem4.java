@@ -21,6 +21,13 @@ public class Problem4 {
         return answer;
     }
 
+    private static char addNext(char nextCharacter){
+        if(isUppercase(nextCharacter)) return flipUpperCase(nextCharacter);
+        if(isLowercase(nextCharacter)) return flipLowerCase(nextCharacter);
+
+        return nextCharacter;
+    }
+
     private static boolean isUppercase(char nextCharacter){
         if(nextCharacter - 'A' >= ALPHABET_START_INDEX && nextCharacter - 'A' <= ALPHABET_LAST_INDEX)
             return true;
