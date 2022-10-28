@@ -13,7 +13,9 @@ public class Problem2 {
      */
 
     static String duplicated(String cryptogram) {
+        for (int i = 0; i < cryptogram.length()-1; i++){
 
+        }
     }
     /**
      * "browoanoommnaon"
