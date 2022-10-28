@@ -124,20 +124,24 @@ public class Problem7 {
         }
     }
 
-    private static void updateScoreMapByUserFriendList(FriendGraph friendGraph,
-                                                       Map<String, Integer> scoreMap,
-                                                       List<String> userFriendList) {
+    private static void updateScoreByUserFriendList(MemberRepository memberRepository,
+                                                    String user) {
 
-        Iterator<String> friendMapList = friendGraph.getIteratorFriendGraph();
-        for (String userFriend : userFriendList) {
-            while (friendMapList.hasNext()) {
-                String next = friendMapList.next();
-                if (friendGraph.getFriendList(next).contains(userFriend)) {
-                    scoreMap.put(next, scoreMap.get(next) + 10);
+        Optional<List<String>> friendListByUsername = memberRepository.findFriendListByUsername(user);
+
+        if (!friendListByUsername.isPresent()) {
+            return;
+        }
+
+        for (String userFriend : friendListByUsername.get()) {
+            for (Member member : memberRepository.findAll()) {
+                if (member.getFriendList().contains(userFriend)) {
+                    member.changeScore(member.score + 10);
                 }
             }
         }
     }
+    
     private static void deleteScoreMapMemberByUserFriendList(String user, Map<String, Integer> scoreMap, List<String> userFriendList) {
         for (String userFriend : userFriendList) {
             scoreMap.remove(userFriend);
