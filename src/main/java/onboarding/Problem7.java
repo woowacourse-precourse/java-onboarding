@@ -46,6 +46,14 @@ public class Problem7 {
          * visitors 점수 카운팅 기능
          */
 
+        for (int i = 0; i < visitors.size(); i++) {
+            String visitorsName = visitors.get(i);
+            if (notToCountName.contains(visitorsName)) {
+                System.out.println("pass");
+            } else {
+                countingMap.merge(visitorsName, 1, (integer, integer2) -> integer + integer2);
+            }
+        }
 
         List<String> answer = Collections.emptyList();
         return answer;
