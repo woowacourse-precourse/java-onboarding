@@ -43,15 +43,50 @@ public class Problem7 {
         return visitorScore;
     }
 
+    private static void storeCandidatesFromFriendsByName(Set<String> candidates,
+                                                         Map<String, Set<String>> friendsByName,
+                                                         List<String> userFriends,
+                                                         String user) {
+        for (String name : friendsByName.keySet()) {
+            if (!userFriends.contains(name) && !name.equals(user)) {
+                candidates.add(name);
+            }
+        }
+    }
+
+    private static void storeCandidatesFromVisitorScore(Set<String> candidates,
+                                                        Map<String, Integer> visitorScore,
+                                                        List<String> userFriends,
+                                                        String user) {
+        for (String visitor : visitorScore.keySet()) {
+            if (!userFriends.contains(visitor) && !visitor.equals(user)) {
+                candidates.add(visitor);
+            }
+        }
+    }
+
+    private static Set<String> getCandidates(Map<String, Set<String>> friendsByName,
+                                             Map<String, Integer> visitorScore,
+                                             List<String> userFriends,
+                                             String user) {
+        Set<String> candidates = new HashSet<>();
+
+        storeCandidatesFromFriendsByName(candidates, friendsByName, userFriends, user);
+        storeCandidatesFromVisitorScore(candidates, visitorScore, userFriends, user);
+        return candidates;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         Map<String, Set<String>> friendsByName;
         List<String> userFriends;
         Map<String, Integer> visitorScore;
+        Set<String> candidates;
 
         friendsByName = getRelation(friends);
         userFriends = new ArrayList<>(friendsByName.get(user));
         visitorScore = getVisitorScore(visitors);
+        candidates = getCandidates(friendsByName, visitorScore, userFriends, user);
 
         return answer;
     }
