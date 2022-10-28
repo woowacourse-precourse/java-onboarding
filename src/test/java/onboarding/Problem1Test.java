@@ -38,4 +38,12 @@ public class Problem1Test {
         assertThat(problem.sumEachNum(197)).isEqualTo(17);
         assertThat(problem.sumEachNum(5)).isEqualTo(5);
     }
+
+    @Test
+    @DisplayName("Multiply Each Num Test")
+    void multiEachNum() {
+        assertThat(problem.multiEachNum(12)).isEqualTo(2);
+        assertThat(problem.multiEachNum(197)).isEqualTo(63);
+        assertThat(problem.multiEachNum(300)).isEqualTo(0);
+    }
 }

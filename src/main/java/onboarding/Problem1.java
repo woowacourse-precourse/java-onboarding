@@ -39,4 +39,13 @@ class Problem1 {
         }
         return sum;
     }
+
+    public static int multiEachNum(int num){
+        int multi = 1;
+        while(num != 0){
+            multi *= num % 10;
+            num /= 10;
+        }
+        return multi;
+    }
 }
