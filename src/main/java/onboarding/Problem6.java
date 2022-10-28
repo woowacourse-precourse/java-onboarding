@@ -89,4 +89,9 @@ public class Problem6 {
         }
         return false;
     }
+    public List<String> sortAndReturn(HashMap<String, String> hashMap) {
+        List<String> list = new ArrayList<>(hashMap.values());
+        Collections.sort(list);
+        return list;
+    }
 }
