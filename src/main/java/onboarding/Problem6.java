@@ -32,12 +32,25 @@ public class Problem6 {
         return dupMailSet;
     }
 
+    public static List<String> getDupUsers(List<List<String>> forms) {
+        HashSet<String> dupUserSet = new HashSet<>();
 
+        for(List<String> form: forms) {
+            HashSet<String> dupMailSet = chckDuplicates(form, forms);
+            System.out.println(dupMailSet.toString());
+            dupUserSet.addAll(dupMailSet);
+        }
+
+        List<String> dupUserList = new ArrayList<>(dupUserSet);
+        Collections.sort(dupUserList);
+
+        return dupUserList;
+    }
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
 
-
+        answer = getDupUsers(forms);
 
         return answer;
     }
