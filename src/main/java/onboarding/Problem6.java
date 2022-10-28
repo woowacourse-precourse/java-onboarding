@@ -1,11 +1,13 @@
 package onboarding;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class Problem6 {
-
+	private static Set<String> emails = new HashSet<>();
 	private static Map<String, String> keys = new HashMap<>(); // word, email
 
 	public static List<String> solution(List<List<String>> forms) {
@@ -19,11 +21,23 @@ public class Problem6 {
 			String email = form.get(0);
 			for (int j = 0; j < nickname.length() - 1; j++) {
 				String key = nickname.substring(j, j + 2);
-				keys.put(key, email);
+				if (keys.containsKey(key)) {
+					String keyMail = keys.get(key);
+					checkExistKey(keyMail, email);
+				} else {
+					keys.put(key, email);
+				}
 			}
 		}
 
 		List<String> answer = List.of("answer");
 		return answer;
+	}
+
+	private static void checkExistKey(String keyMail, String email) {
+		if (!email.equals(keyMail)) {
+			emails.add(email);
+			emails.add(keyMail);
+		}
 	}
 }
