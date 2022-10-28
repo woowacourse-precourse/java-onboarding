@@ -9,13 +9,15 @@ public class Problem2 {
     }
 
     private static String decode(String cryptogram){
-        var s = new Stack<Character>();
+        Stack<Character> s = new Stack<>();
         for(var c : cryptogram.toCharArray()){
             if(!s.empty() && s.peek().equals(c))
                 s.pop();
             else
                 s.push(c);
         }
-        return s.stream().map(String::valueOf).collect(Collectors.joining());
+        return s.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining());
     }
 }
