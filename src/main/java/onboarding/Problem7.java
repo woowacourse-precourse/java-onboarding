@@ -52,6 +52,9 @@ public class Problem7 {
         checkAll(user, friends, visitors);
         List<String> myFriends = myFriends(user, friends);
 
+        Friends recommendFriends = new Friends();
+        recommendFriends.findAcquaintance(myFriends, friends);
+
         List<String> answer = Collections.emptyList();
         return answer;
     }
@@ -71,6 +74,18 @@ class Friend{
             throw new IllegalArgumentException("user는 1이상 30이하여야합니다.");
         return id;
     }
+
+    public String getId(){
+        return id;
+    }
+
+    public int getScore(){
+        return score;
+    }
+
+    public void addScore(int score) {
+        this.score+=score;
+    }
 }
 
 class Friends{
@@ -80,5 +95,30 @@ class Friends{
         friends = new ArrayList<>();
     }
 
+    private String getAcquaintanceId(List<String> myFriends, List<String> friends){
+        if(myFriends.contains(friends.get(0)))
+            return friends.get(1);
+        return friends.get(0);
+    }
 
+    public void findAcquaintance(List<String> myFriends, List<List<String>> friends){
+        friends.stream()
+                .filter(x->myFriends.stream().anyMatch(x::contains))
+                .forEach(x->putFriends(getAcquaintanceId(myFriends, x),10));
+    }
+
+    private void putFriends(String id, int score){
+        Friend friend = idExist(id);
+        if(friend!=null)
+            friend.addScore(score);
+        else
+            friends.add(new Friend(id, score));
+
+    }
+
+    private Friend idExist(String id){
+        return friends.stream()
+                .filter(x->x.getId().equals(id))
+                .findFirst().orElse(null);
+    }
 }
