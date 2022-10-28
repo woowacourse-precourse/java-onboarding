@@ -3,9 +3,6 @@ package onboarding;
 import java.util.HashMap;
 
 public class Problem4 {
-    public static void main(String[] args){
-        solution("I love you");
-    }
     public static String solution(String word) {
         HashMap<Character, Character> map = new HashMap<>();
         StringBuilder answer = new StringBuilder();
