@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 /** 구현 기능 목록
  * 1. 문자열에서 연속으로 중복된 문자의 인덱스 찾기
- * 2. 인덱스를 통해 연속으로 중복된 문자열 구하기
+ * 2. 인덱스를 통해 연속으로 중복된 문자열 부분 구하기
  * 3. 문자열에서 연속으로 중복된 문자 삭제
  * 4. 문자열이 암호화되어 있는지 검사
  * 5. 암호문 복호화
@@ -27,5 +27,19 @@ public class Problem2 {
             }
         }
         return redundancyLetterIndex.stream().distinct().collect(Collectors.toList());
+    }
+
+    private static List<String> getRedundancyLetters(List<Integer> indexes, String cryptogram) {
+        List<String> redundancyLetters = new ArrayList<>();
+        int checkPoint = indexes.get(0);
+        for (int i = 0; i < indexes.size(); i++) {
+            if (indexes.get(i) != checkPoint && indexes.get(i) != indexes.get(i-1)+1) {
+                redundancyLetters.add(cryptogram.substring(checkPoint, indexes.get(i-1)+1));
+                checkPoint = indexes.get(i);
+            }
+        }
+        redundancyLetters.add(cryptogram.substring(checkPoint, indexes.get(indexes.size()-1)+1));
+
+        return redundancyLetters;
     }
 }
