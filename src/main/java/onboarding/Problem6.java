@@ -28,11 +28,20 @@ public class Problem6 {
     }
 
     private static Set<String> makeSubstringSet(List<List<String>> substringList) {
-        Set<String> substringSet = new HashSet<>();
+        Set<String> tmpSet = new HashSet<>();
+        Set<String> substringSet = new HashSet<>(); // 최소 2개 이상 존재하는 부분 닉네임들만 저장하는 set
 
         for (int i = 0; i < substringList.size(); i++) {
             for (int j = 0; j < substringList.get(i).size(); j++) {
-                substringSet.add(substringList.get(i).get(j));
+                String substring = substringList.get(i).get(j);
+
+                if (tmpSet.contains(substring)) {
+                    // tmpSet에 이미 substring이 존재했다면, 최소 2개 이상이라는 의미이므로 substringSet에 추가한다.
+                    substringSet.add(substring);
+                    continue;
+                }
+
+                tmpSet.add(substring);
             }
         }
 
