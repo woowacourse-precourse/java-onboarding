@@ -19,7 +19,43 @@ public class Problem7 {
         }
         //TODO: 'user 친구' 리스트
         //TODO: user와 친구가 아닌 'user 친구의 친구' 리스트 만들기
+        List<String> userFriends=network.get(user);
+        List<String> userFriendFriends=new ArrayList<>();
+        for(String userFriend:userFriends){//user 친구들의
+            for(String nominee:network.get(userFriend)){//친구들이
+                //user와 친구가 아니라면,
+                boolean isFriend=false;
+                for(String uf:userFriends){
+                    if(uf.equals(nominee)){
+                        isFriend=true;
+                        break;
+                    }
+                }
+                if(isFriend==false&&!nominee.equals(user))
+                    userFriendFriends.add(nominee);
+            }
+        }
+        Map<String, Integer> score=new HashMap<>();//{'이름':점수}
+        for(String uff :userFriendFriends){
+            int prevScore=score.getOrDefault(uff,0);
+            prevScore+=10;
+            score.put(uff,prevScore);
+        }
 
+        for(String visitor:visitors){
+            boolean isFriend=false;
+            for(String userFriend:userFriends){
+                if(userFriend.equals(visitor)){
+                    isFriend=true;
+                    break;
+                }
+            }
+            if(isFriend==false){
+                int prevScore=score.getOrDefault(visitor,0);
+                prevScore+=1;
+                score.put(visitor,prevScore);
+            }
+        }
         //TODO: score 높은 순서대로 정렬 + 최대 5명
 
         List<String> answer = Collections.emptyList();
