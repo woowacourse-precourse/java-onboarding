@@ -4,7 +4,7 @@ public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
 
-        if(answer<3){
+        if(number<3){
             return 0;
         }
 
