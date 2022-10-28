@@ -22,6 +22,14 @@ class Problem1 {
         return false;
     }
 
+    public static int getMaxValueOfPage(int page) {
+        String pageTypeOfString = String.valueOf(page);
+        int sum = getSumOfPage(pageTypeOfString);
+        int mul = getMultipleOfPage(pageTypeOfString);
+        int max = sum >= mul ? sum : mul;
+        return max;
+    }
+
     public static int getSumOfPage(String pageTypeOfString) {
         int sum = 0;
         for (int i = 0; i < pageTypeOfString.length(); i++) {
