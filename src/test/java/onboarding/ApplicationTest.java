@@ -3,6 +3,7 @@ package onboarding;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -32,6 +33,44 @@ class ApplicationTest {
             List<Integer> crong = List.of(211, 212);
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+        
+        @Test
+        void pobiNullPage() {
+        	//given
+        	List<Integer> pobi = new LinkedList<>();
+        	pobi.add(null);
+        	pobi.add(2);
+        	List<Integer> pobi2 = new LinkedList<>();
+        	pobi2.add(1);
+        	pobi2.add(null);
+        	List<Integer> crong = List.of(211, 212);
+        	
+        	//when
+        	boolean result = true;
+        	
+        	//then
+        	assertThat(Problem1.isException(pobi, crong)).isEqualTo(result);
+        	assertThat(Problem1.isException(pobi2, crong)).isEqualTo(result);
+        }
+        
+        @Test
+        void crongNullPage() {
+        	//given
+        	List<Integer> pobi = List.of(1, 2);
+        	List<Integer> crong1 = new LinkedList<>();
+        	crong1.add(null);
+        	crong1.add(2);
+        	List<Integer> crong2 = new LinkedList<>();
+        	crong2.add(5);
+        	crong2.add(null);
+        	
+        	//when
+        	boolean result = true;
+        	
+        	//then
+        	assertThat(Problem1.isException(pobi, crong1)).isEqualTo(result);
+        	assertThat(Problem1.isException(pobi, crong2)).isEqualTo(result);
         }
     }
 
@@ -101,11 +140,11 @@ class ApplicationTest {
         @Test
         void case1() {
             List<List<String>> forms = List.of(
-                    List.of("jm@email.com", "제이엠"),
-                    List.of("jason@email.com", "제이슨"),
-                    List.of("woniee@email.com", "워니"),
-                    List.of("mj@email.com", "엠제이"),
-                    List.of("nowm@email.com", "이제엠")
+                    List.of("jm@email.com", "�젣�씠�뿞"),
+                    List.of("jason@email.com", "�젣�씠�뒯"),
+                    List.of("woniee@email.com", "�썙�땲"),
+                    List.of("mj@email.com", "�뿞�젣�씠"),
+                    List.of("nowm@email.com", "�씠�젣�뿞")
             );
             List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
