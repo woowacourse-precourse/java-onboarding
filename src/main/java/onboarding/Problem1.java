@@ -5,12 +5,10 @@ import java.util.List;
 class Problem1 {
     private static boolean checkList(List<Integer> list) {
         if (list.size() != 2)
-            return false;
+            return true;
         if (list.get(0) % 2 == 0 || list.get(1) != (list.get(0) + 1))
-            return false;
-        if (list.get(0) <= 1 || list.get(1) >= 400)
-            return false;
-        return true;
+            return true;
+        return list.get(0) <= 1 || list.get(1) >= 400;
     }
 
     private static int getPlusNumber(int leftPage) {
@@ -38,8 +36,18 @@ class Problem1 {
         return Math.max(plusNumber, multiNumber);
     }
 
-    public static int solution(List<Integer> pobi, List<Integer> crong) {
+    private static int getWinner(List<Integer> pobi, List<Integer> crong) {
+        int pobiNumber = maxNumber(pobi);
+        int crongNumber = maxNumber(crong);
 
+        if (pobiNumber > crongNumber)
+            return 1;
+        return 0;
     }
 
+    public static int solution(List<Integer> pobi, List<Integer> crong) {
+        if (checkList(pobi) || checkList(crong))
+            return -1;
+        return getWinner(pobi, crong);
+    }
 }
