@@ -11,9 +11,9 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
-        HashMap<String, Integer> friendList = getTotalUser(friends);
+        HashMap<String, Integer> friendMap = getTotalUser(friends);
 
-        Set<String> friendNameSet = friendList.keySet();
+        Set<String> friendNameSet = friendMap.keySet();
         List<String> friendNameList = new ArrayList<>();
         Iterator<String> iterator = friendNameSet.iterator();
         while (iterator.hasNext()) {
@@ -24,6 +24,10 @@ public class Problem7 {
 
         int userIndex = friendNameList.indexOf(user);
         List<Integer> userFriendIndexes = getUserFriendIndexes(matrix, userIndex);
+
+        List<Integer> matchFriendIndexes = matchFriendList(matrix, userFriendIndexes);
+        List<String> matchFriendString = changeIndexesToName(matchFriendIndexes, friendNameList);
+        friendMap = giveTenPoint(matchFriendString, friendMap);
 
         return answer;
     }
@@ -57,11 +61,42 @@ public class Problem7 {
         List<Integer> friendIndexes = new ArrayList<>();
 
         for (int i = 0; i < matrix.length; i++) {
-            if(matrix[userIndex][i] == 1) {
+            if (matrix[userIndex][i] == 1) {
                 friendIndexes.add(i);
             }
         }
 
         return friendIndexes;
+    }
+
+    public static List<Integer> matchFriendList(int[][] matrix, List<Integer> friendIndexes) {
+        List<Integer> matchFriedIndexes = new ArrayList<>();
+
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < friendIndexes.size(); j++) {
+                if (matrix[i][j] == 1) {
+                    matchFriedIndexes.add(i);
+                }
+            }
+        }
+
+        return matchFriedIndexes;
+    }
+
+    public static List<String> changeIndexesToName(List<Integer> indexes, List<String> nameList) {
+        List<String> names = new ArrayList<>();
+
+        for (Integer index : indexes) {
+            names.add(nameList.get(index));
+        }
+
+        return names;
+    }
+
+    public static HashMap<String, Integer> giveTenPoint(List<String> nameList, HashMap<String, Integer> friendMap) {
+        for (String name : nameList) {
+            friendMap.put(name, friendMap.getOrDefault(name, 0) + 10);
+        }
+        return friendMap;
     }
 }
