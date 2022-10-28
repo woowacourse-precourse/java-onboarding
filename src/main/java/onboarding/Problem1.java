@@ -1,17 +1,41 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.util.List;
-import java.util.Scanner;
+
 
 class Problem1 {
 
+
+
+
+    public static int solution(List<Integer> pobi, List<Integer> crong) {
+        int answer = Integer.MAX_VALUE;
+
+
+        return answer;
+    }
+
+
+    //pobi, crong 각각의 큰수를 구하는 메서드
     public static int maxNum(List<Integer> li) {
         int maxP = 0;
 
+        int p1 = li.get(0);
+        int p2 = li.get(1);
+
+        //예외 사항 처리
+        if (p2-p1 != 1) {
+            return 0;
+        }
+
 
         for (int p : li) {
+            //예외 사항 처리
+            if (p == 0 || p == 401) {
+                return 0;
+            }
+
             String page = Integer.toString(p);
             int a_tmpp = 0;
             int m_tmpp = 1;
@@ -20,15 +44,11 @@ class Problem1 {
 
             for (int i = 0; i < page.length(); i++) {
 
-                //각 자리 수 중 0이 있을 경우는 예외사항(?)
                 int n = page.charAt(i) - '0';
-                if (n == 0) { return 0; }
+
                 a_tmpp += n;
                 m_tmpp *= n;
             }
-//            System.out.println(p);
-//            System.out.println("a_tmpp="+a_tmpp);
-//            System.out.println("m_tmpp = " + m_tmpp);
 
 
             if (a_tmpp >= m_tmpp) {
@@ -45,34 +65,6 @@ class Problem1 {
         }
 
         return maxP;
-    }
-
-
-    public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-
-        int pobiMax = maxNum(pobi);
-        int crongMax = maxNum(crong);
-
-
-//        System.out.println("pobiMax=" + pobiMax);
-//        System.out.println("crongMax=" + crongMax);
-
-
-        if (pobiMax == 0 || crongMax == 0) {
-            return -1;
-        }
-
-
-        if (pobiMax > crongMax) {
-            answer = 1;
-        } else if (pobiMax < crongMax) {
-            answer = 2;
-        } else if (pobiMax == crongMax) {
-            answer = 0;
-        }
-
-        return answer;
     }
 
 
