@@ -45,6 +45,14 @@ public class Problem2 {
         deletedCryptogram.push(alphabet);
     }
 
+    private static String changeStackToString(Stack<String> stack){
+        StringBuilder result = new StringBuilder();
+        while(!stack.isEmpty()){
+            result.insert(0, stack.pop());
+        }
+        return result.toString();
+    }
+
     private static boolean isEmpty(String cryptogram){
         if(cryptogram.length() == 0) return true;
         return false;
