@@ -104,6 +104,17 @@ public class Problem7 {
         }
     }
 
+    private static void calcVisitorScore(Map<String, Integer> scoreByName,
+                                         Map<String, Integer> visitorScore) {
+        Set<String> names = scoreByName.keySet();
+
+        for (String name : names) {
+            if (visitorScore.containsKey(name)) {
+                scoreByName.replace(name, visitorScore.get(name));
+            }
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         Map<String, Set<String>> friendsByName;
@@ -118,6 +129,7 @@ public class Problem7 {
         candidates = getCandidates(friendsByName, visitorScore, userFriends, user);
         scoreByName = createScoreByName(candidates);
         calcFriendScore(scoreByName, friendsByName, userFriends);
+        calcVisitorScore(scoreByName, visitorScore);
 
         return answer;
     }
