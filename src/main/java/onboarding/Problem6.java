@@ -1,6 +1,8 @@
 package onboarding;
 
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -27,10 +29,24 @@ public class Problem6 {
     public static final String EMAIL_PATTERN = "email.com";
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
         validate(forms);
-        findPattern(forms);
+        List<String> answer = new ArrayList<>(getOverlapEmailsByNickname(findPattern(forms), forms));
+        Collections.sort(answer);
+
         return answer;
+    }
+    public static Set<String> getOverlapEmailsByNickname(Set<String> overlapPattern, List<List<String>> forms) {
+        Set<String> emails = new HashSet<>();
+        for (String pattern : overlapPattern) {
+            int[] kmpTable = makeKmpTable(pattern);
+            for (List<String> form : forms) {
+                if (doKMP(form.get(1), pattern, kmpTable)){
+                    emails.add(form.get(0));
+                }
+            }
+        }
+
+        return emails;
     }
 
     public static int[] makeKmpTable(String pattern){
@@ -62,9 +78,8 @@ public class Problem6 {
             if (nickname.charAt(i) == pattern.charAt(count)) {
                 if (count == patternLen - 1) {
                     return true;
-                }else{
-                    count += 1;
                 }
+                count += 1;
             }
         }
         return false;
@@ -152,5 +167,4 @@ public class Problem6 {
         }
 
     }
-
 }
