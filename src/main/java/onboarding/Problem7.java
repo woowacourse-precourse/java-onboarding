@@ -16,11 +16,15 @@ public class Problem7 {
         Set<String> friendNameSet = friendList.keySet();
         List<String> friendNameList = new ArrayList<>();
         Iterator<String> iterator = friendNameSet.iterator();
-        while(iterator.hasNext()) {
+        while (iterator.hasNext()) {
             friendNameList.add(iterator.next());
         }
 
-        fillMatrixByFriend(friends, friendNameList);
+        int[][] matrix = fillMatrixByFriend(friends, friendNameList);
+
+        int userIndex = friendNameList.indexOf(user);
+        List<Integer> userFriendIndexes = getUserFriendIndexes(matrix, userIndex);
+
         return answer;
     }
 
@@ -38,7 +42,7 @@ public class Problem7 {
     public static int[][] fillMatrixByFriend(List<List<String>> friends, List<String> friendNameList) {
         int[][] matrix = new int[friendNameList.size()][friendNameList.size()];
 
-        for(List<String> friend : friends) {
+        for (List<String> friend : friends) {
             int x = friendNameList.indexOf(friend.get(0));
             int y = friendNameList.indexOf(friend.get(1));
 
@@ -47,5 +51,17 @@ public class Problem7 {
         }
 
         return matrix;
+    }
+
+    public static List<Integer> getUserFriendIndexes(int[][] matrix, int userIndex) {
+        List<Integer> friendIndexes = new ArrayList<>();
+
+        for (int i = 0; i < matrix.length; i++) {
+            if(matrix[userIndex][i] == 1) {
+                friendIndexes.add(i);
+            }
+        }
+
+        return friendIndexes;
     }
 }
