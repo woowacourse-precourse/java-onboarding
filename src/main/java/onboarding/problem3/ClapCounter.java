@@ -16,8 +16,17 @@ public class ClapCounter {
     public int count() {
         return 0;
     }
-    
+
     private boolean isSatisfy369Rules(int digit) {
         return digit == CONSTANT_THREE || digit == CONSTANT_SIX || digit == CONSTANT_NINE;
+    }
+
+    private int countSatisfiedDigit(int number) {
+        int count=0;
+        while(number>0){
+            if(isSatisfy369Rules(number%10)) count++;
+            number/=10;
+        }
+        return count;
     }
 }
