@@ -18,12 +18,27 @@ class Problem1 {
         return Math.max(addedNum, multipliedNum);
     }
 
+    public static boolean isValidInput(int leftPageNum, int rightPageNum){
+        if (0 > leftPageNum || 400 < rightPageNum){
+            return false;
+        }
+        if (leftPageNum%2 != 1 || rightPageNum - leftPageNum != 1){
+            return false;
+        }
+        return true;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int pobiLeftPageNum = pobi.get(0);
         int pobiRightPageNum = pobi.get(1);
 
         int crongLeftPageNum = crong.get(0);
         int crongRightPageNum = crong.get(1);
+
+        //예외사항
+        if (!isValidInput(pobiLeftPageNum,pobiRightPageNum) || !isValidInput(crongLeftPageNum,crongRightPageNum)){
+            return -1;
+        }
 
         int pobiMaxNum = Math.max(getBiggerNum(pobiLeftPageNum), getBiggerNum(pobiRightPageNum));
         int crongMaxNum = Math.max(getBiggerNum(crongLeftPageNum), getBiggerNum(crongRightPageNum));
