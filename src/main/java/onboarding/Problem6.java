@@ -1,13 +1,12 @@
 package onboarding;
 
-import org.mockito.internal.matchers.Null;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
 public class Problem6 {
+
     public static boolean isValidDomain(String email) {
         String pattern = "([a-zA-z0-9]+)(@email.com)";
 
@@ -16,6 +15,7 @@ public class Problem6 {
         }
         return false;
     }
+
 
     public static String sliceNickname(String nickname, int idx) {
         return nickname.substring(idx, idx+2);
@@ -26,6 +26,10 @@ public class Problem6 {
         String userNickname = userForm.get(1);
         String otherMail = otherForm.get(0);
         String otherNickname = otherForm.get(1);
+
+        if(!isValidDomain(userMail) || !isValidDomain(otherMail)) { // 유효하지 않은 도메인은 체크하지 않음
+            return false;
+        }
 
         if(otherMail.equals(userMail)) {
             return false;
@@ -39,6 +43,7 @@ public class Problem6 {
         }
         return false;
     }
+
     public static HashSet<String> getDupUserMail(List<String> userForm, List<List<String>> forms) {
         HashSet<String> dupUserMailSet = new HashSet<>();
 
