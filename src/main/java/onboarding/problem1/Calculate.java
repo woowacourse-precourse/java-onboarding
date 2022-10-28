@@ -14,9 +14,7 @@ public class Calculate {
                 getSum(rightPage),
                 getMult(leftPage),
                 getMult(rightPage)};
-        int biggest = Arrays.stream(allPossibleValues)
-                .max()
-                .getAsInt();
+        int biggest = Arrays.stream(allPossibleValues).max().getAsInt();
         return biggest;
     }
 
