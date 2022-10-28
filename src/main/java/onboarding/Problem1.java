@@ -16,4 +16,11 @@ class Problem1 {
         return firstNumber * secondNumber;
     }
 
+    private int judgmentException(int firstNumber, int secondNumber) {
+        if (secondNumber - firstNumber > 1) {
+            return -1;
+        }
+        return 0;
+    }
+
 }
