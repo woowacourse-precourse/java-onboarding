@@ -44,6 +44,12 @@ public class Problem7 {
     private static List<String> answer = new ArrayList<>();
 
     public static List<String> solution(String mainUserId, List<List<String>> friends, List<String> visitors) {
+        initUserList(friends, visitors);
+        initFriends(friends);
+
+        scoring(mainUserId, visitors);
+        List<User> sortedUserList = sortScoreId();
+        makeAnswer(mainUserId, sortedUserList);
         return answer;
     }
 
@@ -98,13 +104,13 @@ public class Problem7 {
     }
 
     public static List<User> sortScoreId() {
-        List<User> result = (List<User>) userList.values();
+        List<User> result = new ArrayList<>(userList.values());
 
         Collections.sort(result, (userA, userB) -> {
             if (userA.getScore() == userB.getScore()) {
                 return userA.getId().compareTo(userB.getId());
             }
-            return userA.getScore() - userB.getScore();
+            return -(userA.getScore() - userB.getScore());
         });
 
         return result;
@@ -119,7 +125,7 @@ public class Problem7 {
                 return;
 
             List<User> friends = user.getFriends();
-            if (!friends.contains(mainUser)) {
+            if (!friends.contains(mainUser) && user != mainUser) {
                 answer.add(user.getId());
                 answerSize++;
             }
