@@ -16,8 +16,9 @@ public class Problem6 {
         List<String> answer = new ArrayList<>();
         for(int i = 0; i < forms.size(); i++) {
             splitList = nickNameSplit(i, forms);
-
+            emailList = chkNicks(splitList, forms);
         }
+        Collections.sort(answer); // 제출 전 오름차순 정렬, 대소문자 구분?
         return answer;
     }
 
@@ -44,5 +45,27 @@ public class Problem6 {
         splitList.add(nickName);
 
         return splitList;
+    }
+
+    // 두글자씩 분리한 닉네임을 forms 리스트에 닉네임들과 비교
+    // splitList 의 요소가 forms 요소에 포함되면 해당 이메일을 리턴 해줄 리스트에 추가
+    private static List<String> chkNicks(List<String> splitList, List<List<String>> forms) {
+        List<String> emailList = new ArrayList<>();
+        String ID = splitList.get(0);
+
+        for(int i = 1; i < splitList.size(); i++) {
+            for(int j = 0; j < forms.size(); j++) {
+
+                if(forms.get(j).get(1).equals(splitList.get(0))) {
+                    continue;
+                }
+
+                if(forms.get(j).get(1).contains(splitList.get(i))) {
+                    emailList.add(forms.get(j).get(0));
+                }
+            }
+        }
+
+        return emailList;
     }
 }
