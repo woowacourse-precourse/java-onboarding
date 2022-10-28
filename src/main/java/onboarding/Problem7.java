@@ -21,6 +21,11 @@ public class Problem7 {
         // 정렬한 recommentMap 의 키값을 answer List 로 return;
         answer.addAll(recommendMap.keySet());
 
+        // 5명을 초과할 경우
+        if (answer.size() > 5) {
+            return answer.subList(0, 5);
+        }
+
         return answer;
     }
 
@@ -83,13 +88,14 @@ public class Problem7 {
 
 
         for (String friendsFriend : friendsFriendList) {
-            // 유저의 친구가 아닐경우 (친구의친구 , 10점) 을 map 에 추가.
             // Fix !!
+            // 유저의 친구가 아니고
             if (!userFriendList.contains(friendsFriend)) {
-
+                // map 에 이미 포함된 key 일경우 value += 10
                 if (map.containsKey(friendsFriend)) {
                     map.put(friendsFriend,map.get(friendsFriend)+10);
                 }
+                // map 에 포함된 key 가 아닐경우 value = 10;
                 if (!map.containsKey(friendsFriend)) {
                     map.put(friendsFriend, 10);
                 }
