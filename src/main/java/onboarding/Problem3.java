@@ -1,9 +1,5 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public class Problem3 {
     // number에서 3, 6, 9의 개수를 세주는 메서드
     public static int count(int number) {
