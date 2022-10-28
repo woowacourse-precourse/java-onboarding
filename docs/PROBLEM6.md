@@ -21,3 +21,12 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능 구현 
+1. crew의 닉네임으로 2글자의 토큰들로 만드는 기능
+2. 모든 crew의 닉네임의 토큰들을 전부 모으고 나온 횟수를 저장하는 기능
+   - 한번만 나온 토큰 삭제 기능
+   - 닉네임의 토큰들이 나올 때마다 merge해주는 기능
+3. 같은 글자가 연속적으로 포함 되는 닉네임을 작성한 지원자의 이메일 목록을 오름차순으로 하는 기능
+   - 중복 제거
+   - 오름차순
