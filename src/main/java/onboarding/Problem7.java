@@ -13,7 +13,6 @@ public class Problem7 {
     }
     private static Set<String> findUserFriend(String user, List<List<String>> friends) {
         Set<String> friend = new HashSet<>();
-        //friend.add(user);
         for(int i=0;i<friends.size();i++){
             String leftPerson = friends.get(i).get(0);
             String rightPerson = friends.get(i).get(1);
@@ -28,7 +27,7 @@ public class Problem7 {
             String leftPerson = friends.get(i).get(0);
             String rightPerson = friends.get(i).get(1);
             if(isAlreadyFriend(leftPerson,userFriend))friendRecommend.put(rightPerson,friendRecommend.getOrDefault(rightPerson,0)+10);
-            if(isAlreadyFriend(leftPerson,userFriend))friendRecommend.put(leftPerson,friendRecommend.getOrDefault(leftPerson,0)+10);
+            if(isAlreadyFriend(rightPerson,userFriend))friendRecommend.put(leftPerson,friendRecommend.getOrDefault(leftPerson,0)+10);
         }
         return friendRecommend;
     }
