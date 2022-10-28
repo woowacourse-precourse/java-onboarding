@@ -56,4 +56,15 @@ class Problem1 {
         }
         return multiplication;
     }
+
+
+    private static int findWinner(int pobiMaxnumber, int crongMaxNumber) {
+        if (pobiMaxnumber > crongMaxNumber) {
+            return 1;
+        } else if (pobiMaxnumber < crongMaxNumber) {
+            return 2;
+        } else {
+            return 0;
+        }
+    }
 }
