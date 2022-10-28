@@ -43,3 +43,6 @@
 
 5. removeDuplication(List<String> list)
 - stream()과 distinct()를 사용해 입력 받은 리스트의 중복을 제거 한 뒤 해당 리스트를 반환합니다.
+
+6. doValidation(List<List<String>> forms)
+- forms에 대한 예외사항 검사 기능들을 한번에 실행하고 예외가 있을시 반환합니다.

@@ -103,4 +103,14 @@ public class Problem6 {
     public static List<String> removeDuplication(List<String> list) {
         return list.stream().distinct().collect(Collectors.toList());
     }
+
+    /**
+     * 예외사항 검사 로직들을 실행합니다.
+     * @param {List<List<String></>></>}forms
+     * @throws Exception
+     */
+    public static void doValidation(List<List<String>> forms) throws Exception {
+        validateEmails(forms);
+        validateNickNames(forms);
+    }
 }
