@@ -33,6 +33,18 @@ public class Problem2 {
         return changeStackToString(deletedCryptogram);
     }
 
+    private static void encryptCryptogram(Stack<String> deletedCryptogram, String alphabet){
+        if(deletedCryptogram.isEmpty()){
+            deletedCryptogram.push(alphabet);
+            return;
+        }
+        if(deletedCryptogram.peek().equals(alphabet)) {
+            deletedCryptogram.pop();
+            return;
+        }
+        deletedCryptogram.push(alphabet);
+    }
+
     private static boolean isEmpty(String cryptogram){
         if(cryptogram.length() == 0) return true;
         return false;
