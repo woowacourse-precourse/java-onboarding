@@ -16,4 +16,12 @@ public class Problem3 {
         }
         return clappingCount;
     }
+
+    public static int getRangeNumberClappingCount(int rangeEndNumber) {
+        int rangeNumberClappingCount = 0;
+        for(int rangeIncreaseNumber = 1; rangeIncreaseNumber <= rangeEndNumber; rangeIncreaseNumber++) {
+            rangeNumberClappingCount += getOneNumberClappingCount(rangeIncreaseNumber);
+        }
+        return rangeNumberClappingCount;
+    }
 }
