@@ -20,10 +20,12 @@ public class Problem2 {
         if (startIdx == -1) return cryptogram;
 
         int endIdx = startIdx;
+
         for (; endIdx < cryptogram.length(); endIdx++) {
             if (cryptogram.charAt(startIdx) == cryptogram.charAt(endIdx)) continue;
             break;
         }
+
         String result = "";
         result = cryptogram.substring(0, startIdx) + cryptogram.substring(endIdx);
         return deleteCryptogram(result);
