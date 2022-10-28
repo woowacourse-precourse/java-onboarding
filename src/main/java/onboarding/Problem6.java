@@ -27,6 +27,8 @@ public class Problem6 {
         //크루들의 닉네임으로 만들 수 있는 모든 두 글자의 문자
         HashSet<String> referenceWord = makeReferenceWord(forms);
 
+        //두 글자의 문자가 각 크루들의 닉네임에 몇 번이나 속해있는지 구하는 메서드
+        HashMap<String, Integer> wordReference_cnt = makeReferenceWordCnt(forms, referenceWord);
 
         List<String> answer = new ArrayList<>();
         Collections.sort(answer);
@@ -50,6 +52,21 @@ public class Problem6 {
         return referenceWords;
     }
 
+    private static HashMap<String, Integer> makeReferenceWordCnt(List<List<String>> forms, HashSet<String> wordReference) {
+        HashMap<String, Integer> referenceWordCnt = new HashMap<>();
+        for (String s : wordReference) {
+            referenceWordCnt.put(s, 0);
+        }
+
+        for (int i = 0; i < forms.size(); i++) {
+            for (String s : referenceWordCnt.keySet()) {
+                if (forms.get(i).get(1).contains(s)) {
+                    referenceWordCnt.put(s, referenceWordCnt.get(s) + 1);
+                }
+            }
+        }
+        return referenceWordCnt;
+    }
 
 
 }
