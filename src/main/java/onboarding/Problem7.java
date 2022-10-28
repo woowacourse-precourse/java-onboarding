@@ -13,6 +13,18 @@ public class Problem7 {
         return answer;
     }
 
+    public static void removeMyFriendsAndValueIsZero() {
+        for (String friend : myFriendsSet) {
+            userAndScoreMap.remove(friend);
+        }
+
+        for (String key : userAndScoreMap.keySet()) {
+            if (userAndScoreMap.get(key) == 0) {
+                userAndScoreMap.remove(key);
+            }
+        }
+    }
+
     public static void updateScore(List<List<String>> friends, List<String> visitors) {
         for (List<String> friend : friends) {
             if (myFriendsSet.contains(friend.get(0)) || myFriendsSet.contains(friend.get(1))) {
