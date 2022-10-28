@@ -17,13 +17,9 @@ class Problem1 {
     public static final int DIVIDE_NUMBER = 10;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if (isException(pobi) || isException(crong)) {
-            return EXCEPTION;
-        }
-
         int pobiMax = maxScore(pobi);
         int crongMax = maxScore(crong);
-        int answer = makeWinner(pobiMax, crongMax);
+        int answer = (isException(pobi) || isException(crong))? EXCEPTION : makeWinner(pobiMax, crongMax);
 
         return answer;
     }
@@ -95,7 +91,8 @@ class Problem1 {
     public static int makeWinner(int pobiMax, int crongMax) {
         if (pobiMax < crongMax) {
             return CRONG_WIN;
-        } else if (pobiMax > crongMax) {
+        }
+        if (pobiMax > crongMax) {
             return POBI_WIN;
         }
         return DRAW;
