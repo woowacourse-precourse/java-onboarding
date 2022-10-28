@@ -2,9 +2,14 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-        char[] word_pre = word.toCharArray();
-        char[] word_post = new char[word_pre.length];
+        String answer = changeWordToFrogWord(word);
+        return answer;
+    }
+
+    public static String changeWordToFrogWord(String word){
+        String changedWord;
+        char[] preWord = word.toCharArray();
+        char[] postWord = new char[preWord.length];
 
         /**
          *  ASCII Table
@@ -14,17 +19,16 @@ public class Problem4 {
          *  z = 122
          *  아스키 코드를 활용하여 문자변환
          */
-        for(int i=0; i<word_pre.length; i++){
-            if((word_pre[i] >= 'A') && (word_pre[i] <= 'Z'))
-                word_post[i] = (char) (155 - word_pre[i]);
-            else if((word_pre[i] >= 'a') && (word_pre[i] <= 'z'))
-                word_post[i] = (char) (219 - word_pre[i]);
+        for(int i=0; i<preWord.length; i++){
+            if((preWord[i] >= 'A') && (preWord[i] <= 'Z'))
+                postWord[i] = (char) (155 - preWord[i]);
+            else if((preWord[i] >= 'a') && (preWord[i] <= 'z'))
+                postWord[i] = (char) (219 - preWord[i]);
             else
-                word_post[i] = word_pre[i];
+                postWord[i] = preWord[i];
         }
 
-        answer = new String(word_post);
-
-        return answer;
+        changedWord = new String(postWord);
+        return changedWord;
     }
 }
