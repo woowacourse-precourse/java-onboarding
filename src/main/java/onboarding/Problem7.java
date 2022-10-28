@@ -8,7 +8,23 @@ public class Problem7 {
         Map<String, List<String>> map = new HashMap<>();
 
         makeMap(user, friends, map);
+
+
+        List<String> user_friend= new ArrayList<>();
+        user_friend=map.get(user);
+        Map<String, Integer> friend_score = new HashMap<>();
+
+        userFriendDelete(map, user_friend); // 사용자 친구는 항목에서 제거 (추천할 필요 없으니)
+
+
+
         return answer;
+    }
+
+    private static void userFriendDelete(Map<String, List<String>> map, List<String> user_friend) {
+        for(String s: user_friend){
+            map.remove(s);
+        }
     }
 
     private static void makeMap(String user, List<List<String>> friends, Map<String, List<String>> map) {
