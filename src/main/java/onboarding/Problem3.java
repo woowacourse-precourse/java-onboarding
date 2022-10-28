@@ -6,14 +6,14 @@ public class Problem3 {
 
         checkException(number);
 
-        answer = start(number);
+        answer = startGame(number);
 
         return answer;
     }
 
-    public static int start(int num)
-    {
+    public static int startGame(int num) {
         int cnt = 0;
+
         for (int i = 0; i <= num; i++)
             cnt += checkDuplication(i);
 
@@ -21,8 +21,7 @@ public class Problem3 {
     }
 
     //중복 체크
-    public static int checkDuplication(int num)
-    {
+    public static int checkDuplication(int num) {
         int cnt = 0;
 
         while (num > 0)
