@@ -9,12 +9,27 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
-        pobi.stream().forEach((page) -> {
-            System.out.println(sumOfEachNum(page));
-            System.out.println(multiplyOfEachNum(page));
-        });
+
+        if (!(validatePageList(pobi) && validatePageList(crong))) {
+            return -1;
+        }
 
         return answer;
+    }
+
+
+    private static boolean validatePageList(List<Integer> pages) {
+        if (pages.size() > 2) {
+            return false;
+        }
+
+        for (Integer page: pages) {
+            if (page < 1 || page > 400) {
+                return false;
+            }
+        }
+
+        return pages.get(1) - pages.get(0) == 1;
     }
 
     private static Integer sumOfEachNum(Integer num) {
