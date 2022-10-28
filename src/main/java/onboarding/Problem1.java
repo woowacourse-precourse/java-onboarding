@@ -1,6 +1,5 @@
 package onboarding;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
@@ -52,7 +51,7 @@ class Problem1 {
         return max;
     }
 
-    //시작면이나 마지막 면인 경우 예외처리
+    //예외사항
     public static void validatePage(List<Integer> pobi, List<Integer> crong){
         if(
                 pobi.contains(1) || pobi.contains(400) || crong.contains(1) || crong.contains(400)
