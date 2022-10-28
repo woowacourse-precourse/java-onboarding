@@ -31,13 +31,17 @@ public class Problem7 {
             }
         }
 
-        private static void calculateFriendsRelationScore(String user) {
+        private static void initFriendsRelationScore(String user) {
             for (Account target : accountInfoMap.values()) {
-                if (target.isAccountId(user) || target.isFriend(user)) {
-                    continue;
-                }
-                target.addScore(target.getNumberOfFriends() * 10);
+                calculateFriendsRelationScore(target, user);
             }
+        }
+
+        private static void calculateFriendsRelationScore(Account target, String user) {
+            if (target.isAccountId(user) || target.isFriend(user)) {
+                return;
+            }
+            target.addScore(target.getNumberOfFriends() * 10);
         }
     }
 }
