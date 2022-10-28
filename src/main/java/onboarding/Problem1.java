@@ -13,6 +13,9 @@ class Problem1 {
         return answer;
     }
 
+    private static int findMaxScore(int a, int b) {
+        return Math.max(a, b);
+    }
 
     private static int sumScore(List<Integer> pageList, int index) {
         int pageNumber = pageList.get(index);
@@ -36,4 +39,5 @@ class Problem1 {
         }
         return multiplication;
     }
+
 }
