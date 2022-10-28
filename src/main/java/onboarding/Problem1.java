@@ -41,6 +41,17 @@ class Problem1 {
             result[1] = answer[3];
         }
 
+        // WHO IS THE WINNER?
+        if(result[0]>result[1]){ //pobi is the winner
+            return 1;
+        }
+        else if(result[0]<result[1]){ //crong is the winner
+            return 2;
+        }
+        else{ //draw
+            return 0;
+        }
+
         return answer;
     }
 }
