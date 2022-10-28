@@ -66,7 +66,7 @@ public class Problem6 {
             if (!form.get(0).split("@")[1].equals("email.com")) { // 이메일 도메인
                 flag = true;
             }
-            if (!form.get(1).matches("^[가-힣]")) { // 닉네임 한글
+            if (!form.get(1).matches("^[가-힣]*$")) { // 닉네임 한글
                 flag = true;
             }
             if (form.get(1).length() < 1 || form.get(1).length() >= 20) { // 닉네임 길이
