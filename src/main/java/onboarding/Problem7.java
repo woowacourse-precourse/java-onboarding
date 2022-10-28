@@ -37,7 +37,7 @@ public class Problem7 {
         }
         //Step3. visitors 를 탐색하며 해당 친구이름을 Map 에 넣고 1점부여
         for (String visitor : visitors) {
-            scoreVisitorPoint(recommendPoint, visitor);
+            scoreVisitorPoint(recommendPoint, visitor, friendList);
         }
         //Step4. Map을 value 기준 오름차순 정렬 -> 점수가 같은 경우 이름순으로 정렬
         List<Map.Entry<String, Integer>> recommendPointRank = new LinkedList<>(recommendPoint.entrySet());
@@ -83,9 +83,26 @@ public class Problem7 {
         return friendList;
     }
 
-    private static void scoreVisitorPoint(Map<String, Integer> recommendRank, String visitor) {
+    private static void scoreVisitorPoint(Map<String, Integer> recommendRank, String visitor, List<String> friendList) {
 
-        recommendRank.put(visitor, recommendRank.getOrDefault(visitor, 0) + 1);
+        boolean visitorValid = myfriendCheck(friendList, visitor);
+
+        if (visitorValid == true) {
+            recommendRank.put(visitor, recommendRank.getOrDefault(visitor, 0) + 1);
+        }
+    }
+
+    private static boolean myfriendCheck(List<String> friendList, String visitor) {
+
+        boolean result = true;
+
+        for (String myFriend : friendList) {
+            if (visitor.equals(myFriend)) {
+                result = false;
+                break;
+            }
+        }
+        return result;
     }
 
     private static void scoreFriendPoint(Map<String, Integer> recommendRank, List<String> friend, List<String> friendList) {
