@@ -7,7 +7,7 @@ public class Problem4 {
 
         Frog frog=new Frog();
 
-        String answer = "";
+        String answer = frog.convert(word);
         return answer;
     }
 }
