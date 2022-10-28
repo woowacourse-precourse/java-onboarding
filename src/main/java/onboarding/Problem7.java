@@ -18,6 +18,7 @@ public class Problem7 {
         }
         void findFriendsKnownUser () {
             friendWithUser = new ArrayList<>();
+
             // 유저와 알고있는 친구목록 입력
             for (int i = 0; i < friends.size(); i++) {
                 String friend1 = friends.get(i).get(0);
