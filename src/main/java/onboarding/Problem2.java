@@ -1,15 +1,40 @@
 package onboarding;
 
+import java.util.Stack;
+
 public class Problem2 {
     public static final char NOT_LOWER_CASE = '0';
+    public static final int MINIMUM_STRING_LENGTH = 1;
+    public static final int MAXIMUM_STRING_LENGTH = 1000;
+
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        validateString(cryptogram);
+
         Stack<Character> cryptogramStack = stringToStack(cryptogram);
         Stack<Character> filteredStack = filterDuplicatedChar(cryptogramStack);
 
         return stackToString(filteredStack);
     }
+
+    public static void validateString(String string) {
+        validateSize(string);
+        validateLowerCase(string);
+    }
+
+    public static void validateSize(String string) {
+        if (string.length() < MINIMUM_STRING_LENGTH || string.length() > MAXIMUM_STRING_LENGTH) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void validateLowerCase(String string) {
+        for (char letter : string.toCharArray()) {
+            if (!Character.isLowerCase(letter)) {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+
     public static Stack<Character> filterDuplicatedChar(Stack<Character> originalStack) {
         Stack<Character> resultStack = new Stack<>();
         char duplicateChar = NOT_LOWER_CASE;
