@@ -50,6 +50,13 @@ public class Problem7 {
             }        
         } 
         
+        /* 최종 친구 점수 */
+        visitScore.forEach((key, value) -> friendScore.merge(key, value, (v1, v2) -> v1 + v2));
+        for (int i = 0; i < userFriends.size(); i++) {
+            friendScore.containsKey(userFriends.get(i));
+            friendScore.remove(userFriends.get(i));
+        }
+        
         return answer;
     }
 }
