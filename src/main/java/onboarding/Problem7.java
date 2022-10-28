@@ -16,6 +16,7 @@ public class Problem7 {
         Set<String> crews = new HashSet<>();
         HashMap<String, Integer> crewIndex = new HashMap<>();
         HashMap<String, Integer> crewScore = new HashMap<>();
+        List<String> onlyFriends;
         boolean[][] relationship;
         int len = 0;
 
@@ -29,6 +30,8 @@ public class Problem7 {
             crewIndex.put(crew, idx++);
             crewScore.put(crew, 0);
         }
+        onlyFriends = new ArrayList<>(crews);
+        crews.addAll(visitors);
 
         // 2. 2차원 배열을 활용하여 친구관계를 표시
         len = crews.size();
@@ -47,6 +50,15 @@ public class Problem7 {
                         crewScore.put(name, crewScore.getOrDefault(name, 0) + 10);
                     }
                 }
+            }
+        }
+        /*
+         4. visitors가 방문한 수만큼 1점씩 부여
+         bedi같은 경우를 대비해서 친구관계였던 배열만 따로 구해두기
+         */
+        for(String visitor : visitors) {
+            if(!onlyFriends.contains(visitor) || !relationship[crewIndex.get(user)][crewIndex.get(visitor)]) {
+                crewScore.put(visitor, crewScore.getOrDefault(visitor, 0) + 1);
             }
         }
         return answer;
