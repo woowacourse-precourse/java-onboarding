@@ -12,7 +12,12 @@ public class Problem6 {
         }
         Set<Integer> duplicateCrews = getDuplicateCrews(subNicknameMap);
         List<String> duplicateEmails = getDuplicateEmails(forms, duplicateCrews);
-        return Collections.emptyList();
+        return sortEmails(duplicateEmails);
+    }
+
+    private static List<String> sortEmails(List<String> duplicateEmails) {
+        Collections.sort(duplicateEmails);
+        return duplicateEmails;
     }
 
     private static List<String> getDuplicateEmails(List<List<String>> forms, Set<Integer> duplicateCrews) {
