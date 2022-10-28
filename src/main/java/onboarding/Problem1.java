@@ -28,7 +28,7 @@ class Problem1 {
             multiply *= units;
             number /= 10;
         }
-        return (sum >= multiply) ? sum : multiply;
+        return (sum >= multiply) ? sum : multiply;  // Math. max?
     }
 
 }
