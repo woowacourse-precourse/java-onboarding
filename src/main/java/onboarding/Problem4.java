@@ -7,10 +7,19 @@ public class Problem4 {
         return answer;
     }
 
-    private static char translate(char c) {
-        if (Character.isAlphabetic(c)) {
-
+    private static char translate(char letter) {
+        if (Character.isAlphabetic(letter)) {
+            return replaceLetter(letter);
         }
-        return c;
+        return letter;
     }
+
+    private static char replaceLetter(char letter) {
+        if (Character.isLowerCase(letter)) {
+            return (char) ('z' - (letter - 'a'));
+        }
+        return (char) ('Z' - (letter - 'A'));
+    }
+
 }
+
