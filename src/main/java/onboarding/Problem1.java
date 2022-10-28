@@ -7,6 +7,9 @@ import java.util.Optional;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        if (PageValidator.hasPageException(pobi, crong)) {
+            return -1;
+        }
         answer = Math.min(answer, compareUserScore(pobi, crong));
         return answer;
     }
@@ -34,21 +37,58 @@ class Problem1 {
         public int addPlaceValue() {
             return hundreds + tens + units;
         }
+
     }
 
-    private static int compareUserScore(List<Integer> pobi, List<Integer> crong) {
-        int pobiScore = getScore(pobi);
-        int crongScore = getScore(crong);
+    private static class PageValidator {
+        public static boolean hasPageException(List<Integer> pobiPages, List<Integer> crongPages) {
+            if (checkPageLength(pobiPages) || checkPageLength(crongPages)) {
+                return true;
+            }
+            if (checkPageOrder(pobiPages) || checkPageOrder(crongPages)) {
+                return true;
+            }
+            return false;
+        }
+
+        private static boolean checkPageLength(List<Integer> pages) {
+            return pages.size() != 2;
+        }
+
+        private static boolean checkPageOrder(List<Integer> pages) {
+            int leftPage = pages.get(0);
+            int rightPage = pages.get(1);
+
+            if (leftPage > rightPage) {
+                return true;
+            }
+            if (leftPage % 2 != 1) {
+                return true;
+            }
+            if (rightPage % 2 != 0) {
+                return true;
+            }
+            if (rightPage - leftPage != 1) {
+                return true;
+            }
+            return false;
+        }
+    }
+
+    private static int compareUserScore(List<Integer> pobiPages, List<Integer> crongPages) {
+        int pobiScore = findScore(pobiPages);
+        int crongScore = findScore(crongPages);
 
         if (pobiScore > crongScore) {
             return 1;
-        } else if (pobiScore < crongScore) {
+        }
+        if (pobiScore < crongScore) {
             return 2;
         }
         return 0;
     }
 
-    private static int getScore(List<Integer> pages) {
+    private static int findScore(List<Integer> pages) {
         Optional<Integer> score = pages.stream().map(page -> {
                 PlaceValue placeValue = new PlaceValue(page);
                 return compareNumber(placeValue.addPlaceValue(), placeValue.multiplyPlaceValue());
