@@ -86,3 +86,10 @@
   보내고 난 뒤 *usedNickNamePart*에 *myEmail*을 value로 모두 추가 **checkNickName**
   * 받은 2글자가 usedNickNamePart에 있는지 확인하고 있으면 해당 key를 가진 value(Email)와 
   myEmail을 *emailToBeSent*에 추가해 줌 **checkNIckNamePart**
+### 문제7
+1. 친구 관계를 그래프로 만들기 (인접 리스트)
+2. 친구의 친구 찾기
+3. 친구의 친구를 key로 HashMap(이름=점수)에 value를 10으로 추가하는데 이미 있으면 value+10해준다.
+4. visitor를 key로 value를 1로 추가 이미 있으면 value+1하기
+5. HashMap(이름=점수)을 List로 변환해서 value(점수)기준(같을 경우 key(이름)기준)으로 내림차순 정렬한다.
+6. 본인이름을 제외한 5개 뽑고 이름만 answer에 담아 return한다.
