@@ -19,6 +19,8 @@ public class Problem2 {
                         }
                         /* 연속되는 구간을 빈 문자열로 교체한다 */
                         cryptogram = cryptogram.replace(cryptogram.substring(i, j), "");
+                        /* label break로 처음으로 돌아간다 */
+                        break duplicate;
                     }
                 }
             }
