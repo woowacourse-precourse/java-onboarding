@@ -8,7 +8,7 @@ public class Problem7 {
     private static String user;
     private static List<String> visitors;
     private static Map<String, Integer> userScore;
-    private static List<String> friendsOfUser;
+    private static Set<String> friendsOfUser;
     private static List<List<String>> friends;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
@@ -42,8 +42,8 @@ public class Problem7 {
         return result;
     }
 
-    private static List<String> getUserFriends() {
-        List<String> result = new ArrayList<>();
+    private static Set<String> getUserFriends() {
+        Set<String> result = new HashSet<>();
         for (List<String> pairOfFriends : friends) {
             if (pairOfFriends.get(0).equals(user))
                 result.add(pairOfFriends.get(1));
@@ -54,13 +54,13 @@ public class Problem7 {
     }
 
     private static void calculateCommonFriends() {
+        // ["A","B"] 형식으로 서로 친구인 상태로 들어있습니다.
         for (List<String> pairOfFriends : friends) {
-            for (String friendOfUser : friendsOfUser) {
-                if (pairOfFriends.get(0).equals(friendOfUser))
-                    userScore.put(pairOfFriends.get(1), userScore.get(pairOfFriends.get(1)) + 10);
-                if (pairOfFriends.get(1).equals(friendOfUser))
-                    userScore.put(pairOfFriends.get(0), userScore.get(pairOfFriends.get(0)) + 10);
-            }
+            // 둘 중 하나라도 유저의 친구의 친구이면 10을 더해줍니다.
+            if (friendsOfUser.contains(pairOfFriends.get(0)))
+                userScore.put(pairOfFriends.get(1), userScore.get(pairOfFriends.get(1)) + 10);
+            if (friendsOfUser.contains(pairOfFriends.get(1)))
+                userScore.put(pairOfFriends.get(0), userScore.get(pairOfFriends.get(0)) + 10);
         }
     }
 
