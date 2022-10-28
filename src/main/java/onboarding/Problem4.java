@@ -10,6 +10,7 @@ public class Problem4 {
     static int upperCase[] = new int[26];
     static int lowerCase[] = new int[26]; // private or protected 정의 하는 것 생각할 것. static 항상 붙어야 하는 이유도 알아낼 것
 
+    //1. 기능1
     static void setLetterCaseMappingTable() {
         for (int i = 0; i < 26; i++) {
             upperCase[i] = 'Z' - i;
@@ -17,6 +18,7 @@ public class Problem4 {
         }
     }
 
+    //2. 기능2
     static String getChangedString(String str) {
         String newStr = "";
 
