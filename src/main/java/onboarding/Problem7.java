@@ -1,22 +1,32 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Problem7 {
 
+    private static Map<String, Integer> friendScoreMap;
     private static Map<String, List<String>> friendGraph;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         initFriendGraph(friends);
 
+        computeOfTogetherKnowFriendScore(user);
+
         return null;
+    }
+
+    private static void computeOfTogetherKnowFriendScore(String user) {
+        for (Map.Entry<String, List<String>> entry : friendGraph.entrySet()) {
+            String friend = entry.getKey();
+            if (!friend.equals(user) && !friendGraph.get(user).contains(friend)) {
+                Optional.ofNullable(friendScoreMap.computeIfPresent(friend, (k, v) -> v + 10)).orElse(friendScoreMap.put(friend, 10));
+            }
+        }
     }
 
     private static void initFriendGraph(List<List<String>> friends) {
         friendGraph = new HashMap<>();
+        friendScoreMap = new HashMap<>();
 
         for (List<String> relation : friends) {
             String friend1 = relation.get(0);
