@@ -1,5 +1,6 @@
 package onboarding.problem5.collection;
 
+import onboarding.problem5.validation.WalletValidator;
 import onboarding.problem5.vo.Change;
 
 import java.util.ArrayList;
@@ -24,6 +25,8 @@ public class Wallet {
     }
 
     public void saveMoney(int money) {
+        WalletValidator.validate(money);
+
         money = saveAsChange(money, FIFTY_THOUSANDS);
         money = saveAsChange(money, TEN_THOUSANDS);
         money = saveAsChange(money, FIVE_THOUSANDS);
