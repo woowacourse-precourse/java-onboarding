@@ -11,6 +11,14 @@ public class Problem4 {
         return answer.toString();
     }
 
+    private static int distributeUpper(int strToCharDigit) {
+        if (Character.isUpperCase(strToCharDigit)) {
+            strToCharDigit = (155 - strToCharDigit);
+        } else {
+            strToCharDigit = (219 - strToCharDigit);
+        }
+        return strToCharDigit;
+    }
 
     private static boolean isAlphabet(StringBuilder answer, int strToCharDigit) {
         if (strToCharDigit == 32) {
