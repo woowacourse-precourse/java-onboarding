@@ -14,6 +14,10 @@ class Problem1 {
         int pobiMax = getLeftRightMax(pobi.get(0).toString(),pobi.get(1).toString());
         int crongMax = getLeftRightMax(crong.get(0).toString(),crong.get(1).toString());
 
+        return getWinner(pobiMax, crongMax);
+    }
+
+    private static int getWinner(int pobiMax, int crongMax) {
         int answer = Integer.compare(pobiMax, crongMax);
         return (answer > -1) ? answer : 2;
     }
