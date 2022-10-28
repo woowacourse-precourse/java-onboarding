@@ -7,7 +7,7 @@ public class Problem3 {
 
     static int countingClapCount(int endNum) {
         int clapCount = 0;
-        for (int eachNum = 0; eachNum < endNum; eachNum++) {
+        for (int eachNum = 1; eachNum <= endNum; eachNum++) {
             clapCount += countingNumberThreeSixNine(eachNum);
         }
         return clapCount;
