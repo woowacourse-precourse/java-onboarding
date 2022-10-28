@@ -17,7 +17,15 @@ public class Problem3 {
     }
 
     public static int countTargetNum(int number) {
+        int cnt = 0;
+        String strNumber = String.valueOf(number);
 
-        return 0;
+        for (int i = 0; i < strNumber.length(); i++) {
+            int curr = strNumber.charAt(i) - '0';
+            if(curr == TARGET_NUMBERS[0] || curr == TARGET_NUMBERS[1] || curr == TARGET_NUMBERS[2]) {
+                cnt++;
+            }
+        }
+        return cnt;
     }
 }
