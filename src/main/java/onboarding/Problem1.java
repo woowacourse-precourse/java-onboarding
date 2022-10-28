@@ -6,7 +6,7 @@ class Problem1 {
     public static int maxVal(List<Integer> pages)
     {
         int maxVal = Integer.MIN_VALUE;
-        
+
         for (Integer page : pages) {
             int sum = 0;
             int mul = 1;
