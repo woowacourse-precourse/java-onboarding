@@ -4,21 +4,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Problem2 {
+	static final int start = 0;
+	static final int finish = 1;
+
     public static String solution(String cryptogram) {
         String answer = "answer";
+		List<Character> word = createList(cryptogram);
 
-		List<Character> testList = createList(cryptogram);
-
-
+		//연속해서 중복되는 문자가 없을 때 까지
 		while (true)
 		{
-			int [] testArray = findDuplication(testList);
-			remove(testList, testArray[0], testArray[1]);
+			//연속해서 중복되는 범위를 구함
+			int [] range = findDuplication(word);
+			//문자의 중복되는 범위를 제거
+			remove(word, range[start], range[finish]);
 
-			if (testArray[1] == 0)
+			//연속해서 중복되는 문자가 없을 경우 종료
+			if (range[1] == 0)
 				break;
 		}
-		answer = listToString(testList);
+		answer = listToString(word);
 
         return answer;
     }
@@ -52,24 +57,26 @@ public class Problem2 {
 		return wordlist;
 	}
 
-	//중복되는 문자의 인덱스 찾는 함수
+	//중복되는 문자의 범위를 찾는 함수
 	public static int[] findDuplication(List<Character> wordlist) {
 		boolean isVisited = false;
 		int[ ] range = new int[2];
-		int second = 0;
+		int last = 0;
 
 		for (int i = 0; i < wordlist.size(); i++) {
-
+			//연속해서 중복이 된 문자의 범위를 저장함
 			if (isVisited) {
 				range[0] = i - 1;
-				range[1] = second + 1;
+				range[1] = last + 1;
 				return range;
 			}
 			for (int j = i + 1; j < wordlist.size(); j++) {
+				//연속해서 중복되지 않았을 때
 				if (wordlist.get(i) != wordlist.get(j))
 					break;
+				//연속해서 중복되었을 때
 				if (wordlist.get(i) == wordlist.get(j)) {
-					second = j;
+					last = j;		//인덱스를 저장
 					isVisited = true;
 				}
 			}
