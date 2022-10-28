@@ -86,6 +86,8 @@ public class Problem6 {
                 hashMap.put(str, arrayList);
             }
         }
-        return new ArrayList<>(answerSet);
+        ArrayList<String> answerArray = new ArrayList<>(answerSet);
+        Collections.sort(answerArray);
+        return answerArray;
     }
 }
