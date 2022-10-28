@@ -25,6 +25,7 @@ public class Problem7 {
 
         HashMap<String, HashSet<String>> friendsList = makeFriendList(users, friends);
 
+        Map<String, Integer> recommendScoreMap = makeRecommendScore(user, users, friendsList);
 
 
         List<String> answer = new ArrayList<>();
@@ -68,6 +69,24 @@ public class Problem7 {
             }
         }
         return friendsList;
+    }
+
+    private static Map<String, Integer> makeRecommendScore(String user, HashSet<String> users, HashMap<String, HashSet<String>> friendsList) {
+        //TreeMap으로 만들어서 recommendScore에 friendsList를 넣을 때 알파벳 순서로 정렬하기
+        Map<String, Integer> recommendScoreMap = new TreeMap<>();
+        for (String s : users) {
+            recommendScoreMap.put(s, 0);
+        }
+
+        //이미 user와 친구인 사용자는 recommendScoreMap에서 제외
+        List<String> removeKey = new ArrayList<>(recommendScoreMap.keySet());
+        for (String s : removeKey) {
+            if (friendsList.get(user).contains(s)) {
+                recommendScoreMap.remove(s);
+            }
+        }
+        recommendScoreMap.remove(user);
+        return recommendScoreMap;
     }
 
 
