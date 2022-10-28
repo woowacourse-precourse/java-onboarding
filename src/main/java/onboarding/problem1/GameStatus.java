@@ -6,17 +6,15 @@ import java.util.function.BiPredicate;
 
 public enum GameStatus {
 
-    POBI_WIN((pobi, crong) -> pobi > crong, 1),
-    CRONG_WIN((pobi, crong) -> pobi < crong, 2),
-    DRAW(Objects::equals, 0),
-    ERROR((pobi, crong) -> false, -1);
+    POBI_WIN((pobi, crong) -> pobi > crong),
+    CRONG_WIN((pobi, crong) -> pobi < crong),
+    DRAW(Objects::equals),
+    ERROR((pobi, crong) -> false);
 
     private final BiPredicate<Integer, Integer> policy;
-    private final Integer point;
 
-    GameStatus(final BiPredicate<Integer, Integer> policy, final Integer point) {
+    GameStatus(final BiPredicate<Integer, Integer> policy) {
         this.policy = policy;
-        this.point = point;
     }
 
     public static GameStatus of(final Game game) {
@@ -41,9 +39,5 @@ public enum GameStatus {
             firstPlayer.calculatePoint(),
             secondPlayer.calculatePoint()
         );
-    }
-
-    public int getResult() {
-        return this.point;
     }
 }
