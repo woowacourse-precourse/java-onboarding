@@ -4,7 +4,12 @@ import java.util.List;
 
 class Problem1 {
     public static int getAddition(int number) {
-        return 0;
+        int ret = 0;
+        while(number > 0) {
+            ret += number%10;
+            number /= 10;
+        }
+        return ret;
     }
 
     public static int getMultiplication(int number) {
