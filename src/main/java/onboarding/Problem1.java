@@ -59,4 +59,19 @@ class Problem1 {
         return result;
     }
 
+    /**
+     * 각각의 자릿수를 곱하는 메소드
+     * @param num
+     * @return
+     */
+    public static int multiplyEachDigits(int num){
+        String strNum = Integer.toString(num);
+        int result = 1;
+        for(int i = 0 ; i < strNum.length(); i++){
+            result *= Integer.parseInt(strNum.substring(i, i + 1));
+        }
+
+        return result;
+    }
+
 }
