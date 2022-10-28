@@ -35,7 +35,7 @@ class Problem1 {
         int leftPage = pageList.get(0);
         int rightPage = pageList.get(1);
 
-        if (rightPage - leftPage != 1 || leftPage < 3 || rightPage < 4 || leftPage > 397 || rightPage > 398)
+        if (leftPage % 2 == 0 || rightPage % 2 == 1 || rightPage - leftPage != 1 || leftPage < 3 || rightPage < 4 || leftPage > 397 || rightPage > 398)
             return PAGE_ERROR;
 
         return max(pageToCalMaxNum(leftPage), pageToCalMaxNum(rightPage));
@@ -46,13 +46,13 @@ class Problem1 {
                 .mapToInt(Integer::parseInt)
                 .toArray();
 
-        int sumNum = 0;
-        int multiplyNum = 1;
+        int sum = 0;
+        int multiply = 1;
         for (int num : arrPage) {
-            sumNum += num;
-            multiplyNum *= num;
+            sum += num;
+            multiply *= num;
         }
 
-        return max(sumNum, multiplyNum);
+        return max(sum, multiply);
     }
 }
