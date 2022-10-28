@@ -1,9 +1,28 @@
 package onboarding;
 
 public class Problem4 {
+	private static final int A_UPPER_ASCII = 65;
+	private static final int Z_UPPER_ASCII = 90;
+	private static final int A_LOWER_ASCII = 97;
+	private static final int Z_LOWER_ASCII = 122;
+
 	public static String solution(String word) {
 		String answer = "";
 		return answer;
+	}
+
+	public static char getValueFromTreeFrogDict(char c) {
+		int key = charToAscii(c);
+		if (Character.isUpperCase(c)) {
+			return (char)(Z_UPPER_ASCII - (key - A_UPPER_ASCII));
+		} else if (Character.isLowerCase(c)) {
+			return (char)(Z_LOWER_ASCII - (key - A_LOWER_ASCII));
+		}
+		return ' ';
+	}
+
+	private static int charToAscii(char c) {
+		return (int)c;
 	}
 
 	public static boolean isAlpha(char c) {
