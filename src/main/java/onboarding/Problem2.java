@@ -9,6 +9,9 @@ public class Problem2 {
 
     public static String solution(String cryptogram) {
         String answer = "answer";
+
+		exceptionCheck(cryptogram);
+
 		List<Character> word = createList(cryptogram);
 
 		//연속해서 중복되는 문자가 없을 때 까지
@@ -82,5 +85,23 @@ public class Problem2 {
 			}
 		}
 		return range;
+	}
+
+	public static boolean isUpperCase(String word)
+	{
+		for (int i = 0; i < word.length(); i++)
+		{
+			if (Character.isUpperCase(word.charAt(i)))
+				return true;
+		}
+		return false;
+	}
+	public static boolean exceptionCheck(String word){
+		if (word.length() < 1 || word.length() > 1000)
+			throw new IllegalArgumentException("ERROR");
+		//대문자가 있는지
+		if (isUpperCase(word))
+			throw new IllegalArgumentException("ERROR");
+		return true;
 	}
 }
