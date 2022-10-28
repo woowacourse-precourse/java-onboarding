@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Problem6 {
 
@@ -38,7 +39,11 @@ public class Problem6 {
             loopStartIdx++;
         }
 
-        return answer;
+
+        return answer.stream()
+                .distinct()
+                .sorted()
+                .collect(Collectors.toList());
 
     }
 
