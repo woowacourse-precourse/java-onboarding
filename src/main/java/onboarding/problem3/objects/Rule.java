@@ -2,13 +2,7 @@ package onboarding.problem3.objects;
 
 public class Rule {
 
-    private Clap clap;
-
-    public Rule(Clap clap) {
-        this.clap = clap;
-    }
-
-    public int numberComeTrue(int number) {
+    public int numberComeTrue(int number, Clap clap) {
         return clap.getClapCount(number);
     }
 }
