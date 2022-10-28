@@ -4,11 +4,15 @@ import java.util.HashMap;
 
 public class Problem4 {
     private static final HashMap<Character, Character> map = new HashMap<>();
+    private static boolean isFirstInit = true;
 
     public static String solution(String word) {
-        initMap();
+        if (isFirstInit) {
+            initMap();
+            isFirstInit = false;
+        }
 
-        return "";
+        return wordConvertByMap(word);
     }
 
 
@@ -23,4 +27,13 @@ public class Problem4 {
     }
 
 
+    private static String wordConvertByMap(String word) {
+        StringBuffer buffer = new StringBuffer();
+
+        for (char ch : word.toCharArray()) {
+            buffer.append(map.getOrDefault(ch, ch));
+        }
+
+        return buffer.toString();
+    }
 }
