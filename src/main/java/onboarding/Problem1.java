@@ -79,7 +79,10 @@ class Problem1 {
         if (crong > pobi) {
             return 2;
         }
-        return 0;
+        if (crong == pobi) {
+            return 0;
+        }
+        return -1;
     }
 }
 
