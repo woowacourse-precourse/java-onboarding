@@ -6,10 +6,10 @@ import java.util.stream.Collectors;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, List<String>> friendsMap = makeFriendsMap(friends, user);
-        Set<String> acquaintance = findAcquaintance(friendsMap, user);
+        Map<String, Integer> acquaintance = findAcquaintance(friendsMap, user);
         Map<String, Integer> scoreByFriends = new HashMap<>();
 
-        for(String a : acquaintance) scoreByFriends.put(a, 10);
+        for(String a : acquaintance.keySet()) scoreByFriends.put(a, 10 * acquaintance.get(a));
         for (String visitor : visitors) {
             if(friendsMap.get(user).contains(visitor)) continue;
             scoreByFriends.put(visitor, scoreByFriends.getOrDefault(visitor, 0) + 1);
@@ -26,14 +26,14 @@ public class Problem7 {
 
     }
 
-    private static Set<String> findAcquaintance(Map<String, List<String>> friendsMap, String user) {
-        Set<String> tmp = new HashSet<>();
+    private static Map<String, Integer> findAcquaintance(Map<String, List<String>> friendsMap, String user) {
+        Map<String, Integer> tmp = new HashMap<>();
         List<String> friendsOfUser = friendsMap.get(user);
 
         for (String friend : friendsOfUser) {
             for (String f : friendsMap.get(friend)) {
                 if(f.equals(user)) continue;
-                tmp.add(f);
+                tmp.put(f, tmp.getOrDefault(tmp, 0) + 1);
             }
         }
         return tmp;
