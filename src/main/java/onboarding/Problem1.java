@@ -12,13 +12,11 @@ class Problem1 {
         // pobi, crong 모두 왼쪽 숫자, 오른쪽 숫자 각각 곱하거나 더해서 큰수 고른다
         // 둘중 큰수
         // 둘 비교해서 값 반환.
-        int pobiNum = 0;
-        int crongNum = 0;
+        int pobiMaxNumber = getGameScore(pobi);
+        int crongMaxNumber = getGameScore(crong);
 
-        if (pobiNum > crongNum) return 1;
-        if (pobiNum < crongNum) return 2;
-        if (pobiNum == crongNum) return 0;
-        return -1;
+        if (pobiMaxNumber == crongMaxNumber) return 0;
+        return pobiMaxNumber > crongMaxNumber ? 1 : 2;
     }
 
     static int getGameScore(List<Integer> pages) {
