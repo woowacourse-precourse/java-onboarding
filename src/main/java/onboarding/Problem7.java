@@ -1,64 +1,73 @@
 package onboarding;
 
 import java.util.*;
+import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 public class Problem7 {
+    private static final int FRIEND_SCORE = 10;
+    private static final int VISITOR_SCORE = 1;
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = new ArrayList<>();
-        //user의 친구 리스트에 담기
-        Set<String> fr = new HashSet<>();
-        for (List<String> friend : friends) {
-            fr.add(friend.get(0));
-        }
-
+        //user의 친구 리스트
+        Set<String> friendList = getFriendList(friends);
+        //user의 친구의 친구 리스트
+        List<String> friendOfFriendList = getFriendOfFriendList(user, friends);
+        //이름과 점수
         Map<String, Integer> nameAndScore = new HashMap<>();
+        //친구의 친구 점수 셋팅
+        setScore(friendOfFriendList, nameAndScore, FRIEND_SCORE);
+        //방문자 제거 추가Filtered visitor list
+        List<String> visitorList = getFilteredVisitorList(visitors, friendList);
+        //방문자 점수 셋팅
+        setScore(visitorList, nameAndScore, VISITOR_SCORE);
 
-        //user의 친구의 친구 리스트에 담기
-        List<String> oneDari = new ArrayList<>();
-        for (List<String> friend : friends) {
-            if (!friend.get(1).equals(user)) {
-                oneDari.add(friend.get(1));
-            }
-        }
+        //Friend recommendation
+        List<Entry<String, Integer>> recommendationList = new LinkedList<>(nameAndScore.entrySet());
 
-        for (String s : oneDari) {
-            if (nameAndScore.containsKey(s)) {
-                Integer integer = nameAndScore.get(s);
-                integer += 10;
-                nameAndScore.replace(s, integer);
-            }
-            if (!nameAndScore.containsKey(s)) {
-                nameAndScore.put(s, 10);
-            }
-        }
+        sortByScoreAndName(recommendationList);
 
-        //방문자 제거 추가
-        List<String> vi = new ArrayList<>(visitors);
-        //방문자 리스트중 친구들 제거
-        for (String s : fr) {
-            vi.remove(s);
-        }
-
-        for (String s : vi) {
-            if (nameAndScore.containsKey(s)) {
-                Integer integer = nameAndScore.get(s);
-                integer += 1;
-                nameAndScore.replace(s, integer);
-            }
-            if (!nameAndScore.containsKey(s)) {
-                nameAndScore.put(s, 1);
-            }
-        }
-
-        List<Map.Entry<String, Integer>> list = new LinkedList<>(nameAndScore.entrySet());
-        list.sort((o1, o2) -> {
-            int comparison = (o1.getValue() - o2.getValue()) * -1;
-            return comparison == 0 ? o1.getKey().compareTo(o2.getKey()) : comparison;
-        });
-
-        list.stream().limit(5).filter(i -> answer.add(i.getKey())).collect(Collectors.toList());
+        List<String> answer = new ArrayList<>();
+        recommendationList.stream().limit(5).forEach(list -> answer.add(list.getKey()));
 
         return answer;
+    }
+
+    private static void sortByScoreAndName(List<Entry<String, Integer>> list) {
+        list.sort((first, second) -> {
+            int comparison = (first.getValue() - second.getValue()) * -1;
+            return comparison == 0 ? first.getKey().compareTo(second.getKey()) : comparison;
+        });
+    }
+
+    private static void setScore(List<String> friendOfFriendList, Map<String, Integer> nameAndScore, int score) {
+        friendOfFriendList.forEach(name -> scoreSetting(nameAndScore, score, name));
+    }
+
+    private static void scoreSetting(Map<String, Integer> nameAndScore, int score, String name) {
+        if (nameAndScore.containsKey(name)) {
+            Integer integer = nameAndScore.get(name) + score;
+            nameAndScore.replace(name, integer);
+        }
+        if (!nameAndScore.containsKey(name)) {
+            nameAndScore.put(name, score);
+        }
+    }
+
+    private static List<String> getFilteredVisitorList(List<String> visitors, Set<String> friendList) {
+        List<String> visitorList = new ArrayList<>(visitors);
+        return visitorList.stream().filter(name -> !friendList.contains(name)).collect(Collectors.toList());
+    }
+
+    private static List<String> getFriendOfFriendList(String user, List<List<String>> friends) {
+        List<String> friendOfFriendList = new ArrayList<>();
+        friends.forEach(name -> friendOfFriendList.add(name.get(1)));
+        return friendOfFriendList.stream().filter(name -> !name.equals(user)).collect(Collectors.toList());
+    }
+
+    private static Set<String> getFriendList(List<List<String>> friends) {
+        Set<String> friendList = new HashSet<>();
+        friends.forEach(name -> friendList.add(name.get(0)));
+        return friendList;
     }
 }
