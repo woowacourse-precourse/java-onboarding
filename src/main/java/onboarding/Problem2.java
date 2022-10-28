@@ -21,7 +21,7 @@ public class Problem2 {
 
     private static int getDuplicateRange(StringBuilder cryptogram, int start) {
         int range = 1;
-        for (int i = start; i < cryptogram.length()-1; i++) {
+        for (int i = start; i < cryptogram.length() - 1; i++) {
             if (cryptogram.charAt(i) == cryptogram.charAt(i + 1)) {
                 range += 1;
             }
