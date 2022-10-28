@@ -27,7 +27,7 @@ public class Problem7 {
         userName = user;
 
         //예외 확인
-        checkException(friends.size(), visitors.size());
+        checkException(friends, visitors);
 
         givePoint(user, visitors, friends);
         tmpArray = sortList();
@@ -199,24 +199,50 @@ public class Problem7 {
     /*
     예외 처리 함수
      */
-    public static void checkException(int friendLength, int visitorLength)
+    public static void checkException(List<List<String>> friends, List<String> visitors)
     {
-        //사용자 아이디 체크
-        checkUserNameException();
-        checkListException(friendLength);
-        checkListException(visitorLength);
+        //null 체크
+        checkNullException(friends, visitors);
+        /*
+        아이디 체크
+         */
+        //사용자 아이디
+        checkUserNameException(userName);
+        //friends 리스트 아이디
+        for (int i = 0; i < friends.size(); i++)
+        {
+            checkUserNameException(friends.get(i).get(firstFriend));
+            checkUserNameException(friends.get(i).get(secondFriend));
+        }
+        //visitor 리스트 아이디
+        for (int i = 0; i < visitors.size(); i++)
+            checkUserNameException(visitors.get(i));
+        //리스트 길이 확인
+        checkListException(friends.size());
+        checkListException(visitors.size());
     }
     //사용자 아이디 체크
-    public static void checkUserNameException()
-    {
-        if (userName.length() < 1 || userName.length() > 30)
-            throw new IllegalArgumentException("USER NAME ERROR");
+    public static void checkUserNameException(String user) {
+        String errorMessage = "USER NAME ERROR";
+
+        if (user.length() < 1 || user.length() > 30)
+            throw new IllegalArgumentException(errorMessage);
+        //소문자인지
+        for (int i = 0; i < user.length(); i++)
+            if (Character.isUpperCase(user.charAt(i)))
+                throw new IllegalArgumentException(errorMessage);
+    }
+    public static void checkNullException(List<List<String>> friends, List<String> visitors) {
+        String errorMessage = "NULL ERROR";
+        if (friends == null || visitors == null)
+            throw new IllegalArgumentException(errorMessage);
+        if (userName == null)
+            throw new IllegalArgumentException(errorMessage);
     }
     //리스트 길이 체크
-    public static void checkListException(int length)
-    {
+    public static void checkListException(int length) {
         if (length < 1 || length > 10000)
-            throw new IllegalArgumentException("FRIEND LIST ERROR");
-        if (length < 1 || length > 10000);
+            throw new IllegalArgumentException("LIST ERROR");
     }
+
 }

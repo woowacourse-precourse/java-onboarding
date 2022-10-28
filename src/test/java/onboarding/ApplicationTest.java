@@ -151,5 +151,20 @@ class ApplicationTest {
             List<String> result = List.of("kevin", "unio", "seri", "uazi", "uazo");
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
+        //추천할 친구가 없는 경우 :error 발생
+        @Test
+        void case3() {
+            String user = "youdik";
+            List<List<String>> friends = List.of(
+                    List.of("donut", "youdik"),
+                    List.of("youdik", "jun"),
+                    List.of("youdik", "kevin"),
+                    List.of("shakevan", "youdik"),
+                    List.of("uazo", "youdik")
+            );
+            List<String> visitors = List.of("donut", "jun", "shakevan", "uazo", "shakevan");
+            List<String> result = List.of("kevin", "unio", "seri", "uazi", "uazo");
+            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+        }
     }
 }
