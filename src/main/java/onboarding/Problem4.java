@@ -28,4 +28,14 @@ public class Problem4 {
         return value.toString();
     }
 
+    private static boolean needConvert(char ch){
+        if('a'< ch && ch < 'z'){
+            return true;
+        }
+        if('A'< ch && ch < 'Z'){
+            return true;
+        }
+        return false;
+    }
+
 }
