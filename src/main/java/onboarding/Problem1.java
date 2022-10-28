@@ -10,6 +10,7 @@ class Problem1 {
     private final static int USER_INPUT_LENGTH = 2;
     private final static int PAGE_NUM_MIN = 1;
     private final static int PAGE_NUM_MAX = 400;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (Problem1Validation.problem1InputValidation(pobi, USER_INPUT_LENGTH, PAGE_NUM_MIN, PAGE_NUM_MAX)
                 && Problem1Validation.problem1InputValidation(crong, USER_INPUT_LENGTH, PAGE_NUM_MIN, PAGE_NUM_MAX)) {
@@ -33,7 +34,6 @@ class Problem1 {
     public static int getMaxValue(Integer integer1, Integer integer2) {
         return max(integer1, integer2);
     }
-
 
     public static int getDigitAddValue(int value) {
         int summation = 0;

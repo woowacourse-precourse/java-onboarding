@@ -30,6 +30,7 @@ public class Problem1CustomTest {
                     Problem1Validation.userInputSizeEquals(list, USER_INPUT_LENGTH))
                     .isFalse();
         }
+
         @Test
         void 길이가2보다작은경우테스트() {
             List<Integer> list = List.of(97);
@@ -37,6 +38,7 @@ public class Problem1CustomTest {
                     Problem1Validation.userInputSizeEquals(list, USER_INPUT_LENGTH))
                     .isFalse();
         }
+
         @Test
         void 길이가2인경우테스트() {
             List<Integer> list = List.of(97, 98);
@@ -44,6 +46,7 @@ public class Problem1CustomTest {
                     Problem1Validation.userInputSizeEquals(list, USER_INPUT_LENGTH))
                     .isTrue();
         }
+
         @Test
         void 책페이지가1미만이포함되있다면() {
             List<Integer> list = List.of(0, 3);
@@ -52,6 +55,7 @@ public class Problem1CustomTest {
                     .isFalse();
 
         }
+
         @Test
         void 책페이지가400초과인값이포함되어있다면() {
             List<Integer> list = List.of(401, 398);
@@ -59,6 +63,7 @@ public class Problem1CustomTest {
                     Problem1Validation.isBookNumberBetweenMinAndMax(list, BOOK_MIN, BOOK_MAX))
                     .isFalse();
         }
+
         @Test
         void 책페이지가1과400사이인유효한값인지() {
             List<Integer> list = List.of(97, 98);
@@ -66,6 +71,7 @@ public class Problem1CustomTest {
                     Problem1Validation.isBookNumberBetweenMinAndMax(list, BOOK_MIN, BOOK_MAX))
                     .isTrue();
         }
+
         @Test
         void 리스트속원소가연속된값이아니면() {
             List<Integer> list = List.of(39,41);
@@ -73,6 +79,7 @@ public class Problem1CustomTest {
                     Problem1Validation.isBookNumberContinuous(list))
                     .isFalse();
         }
+
         @Test
         void 리스트속원소가연속된값이면() {
             List<Integer> list = List.of(39, 40);
@@ -80,6 +87,7 @@ public class Problem1CustomTest {
                     Problem1Validation.isBookNumberContinuous(list))
                     .isTrue();
         }
+
         @Test
         void 리스트의쌍이홀수홀수쌍인경우() {
             List<Integer> list = List.of(39, 41);
@@ -87,6 +95,7 @@ public class Problem1CustomTest {
                     Problem1Validation.isBookNumberOddEvenPair(list))
                     .isFalse();
         }
+
         @Test
         void 리스트의쌍이짝수짝수쌍인경우() {
             List<Integer> list = List.of(38, 40);
@@ -94,6 +103,7 @@ public class Problem1CustomTest {
                     Problem1Validation.isBookNumberOddEvenPair(list))
                     .isFalse();
         }
+
         @Test
         void 리스트의쌍이짝수홀수쌍인경우() {
             List<Integer> list = List.of(38, 39);
@@ -101,6 +111,7 @@ public class Problem1CustomTest {
                     Problem1Validation.isBookNumberOddEvenPair(list))
                     .isFalse();
         }
+
         @Test
         void 리스트의쌍이홀수짝수쌍인경우() {
             List<Integer> list = List.of(39, 40);
@@ -108,6 +119,7 @@ public class Problem1CustomTest {
                     Problem1Validation.isBookNumberOddEvenPair(list))
                     .isTrue();
         }
+
         @Test
         void 첫번째값에1더한값이두번째값이안되는경우() {
             List<Integer> list = List.of(39, 42);
@@ -115,6 +127,7 @@ public class Problem1CustomTest {
                     Problem1Validation.isFirstAddOneEqualsSecondValue(list))
                     .isFalse();
         }
+
         @Test
         void 첫번째값에1더한값이두번째값이되는경우() {
             List<Integer> list = List.of(39, 40);
@@ -149,6 +162,7 @@ public class Problem1CustomTest {
                     .count();
             assertThat(count).isEqualTo(0L);
         }
+
         @Test
         void validation메써드들을통과하는가() {
             List<List<Integer>> testList = new ArrayList<>();
@@ -178,12 +192,14 @@ public class Problem1CustomTest {
             int result = Problem1.result(testList.get(0), testList.get(1));
             assertThat(result).isEqualTo(2);
         }
+
         @Test
         void pobi가이기면() {
             List<Integer> testList = List.of(2, 1);
             int result = Problem1.result(testList.get(0), testList.get(1));
             assertThat(result).isEqualTo(1);
         }
+
         @Test
         void 무승부면() {
             List<Integer> testList = List.of(1, 1);
@@ -204,5 +220,7 @@ public class Problem1CustomTest {
             int summation = Problem1.getDigitAddValue(value);
             assertThat(summation).isEqualTo(6);
         }
+
+
     }
 }
