@@ -30,6 +30,22 @@ class Problem1 {
         }
         return maxValue;
     }
+
+    public int getScoreByMaxValue(List<Integer> pages){
+        int scoreByMaxValue=0;
+        int leftPage=pages.get(0);
+        int rightPage=pages.get(1);
+
+        int leftMaxValue=getMaxValue(leftPage);
+        int rightMaxValue=getMaxValue(rightPage);
+
+        if(leftMaxValue >= rightMaxValue){
+            scoreByMaxValue=leftMaxValue;
+        } else{
+            scoreByMaxValue=rightMaxValue;
+        }
+        return scoreByMaxValue;
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
