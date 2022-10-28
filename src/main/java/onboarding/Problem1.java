@@ -15,10 +15,11 @@ class Problem1 {
     }
 
     public static boolean exceptionHandler(List<Integer> pobi, List<Integer> crong){
-        //페이지 숫자 제한 ExceptionHandling (ex: 1 , 2 or -10 , 600)
         if(rangeMatch(pobi) || rangeMatch(crong))
             return true;
         if(evenOddMatch(pobi) || evenOddMatch(crong))
+            return true;
+        if(numberMatch(pobi) || numberMatch(crong))
             return true;
         return false;
     }
@@ -27,6 +28,9 @@ class Problem1 {
     }
     public static boolean evenOddMatch(List<Integer> nums){
         return (nums.get(0) % 2 != 1) || (nums.get(1) % 2 != 0);
+    }
+    public static boolean numberMatch(List<Integer> nums){
+        return (nums.get(1) - nums.get(0)) != 1;
     }
 
 }
