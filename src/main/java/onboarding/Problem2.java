@@ -8,6 +8,8 @@ public class Problem2 {
     public static final String ALPHABET_DELIMITER = "abcdefghijklmnopqrstuvwxyz";
     public static final int START_INDEX = 0;
     public static final int INIT_SAME_LETTER_COUNT = 1;
+    public static final int INIT_INDEX = -1;
+    public static final String INIT_STRING ="";
 
     public static String solution(String cryptogram) {
         List<String> letterList = new LinkedList<>();
@@ -20,7 +22,7 @@ public class Problem2 {
     }
 
     public static String listToString(List<String> list) {
-        String answer = "";
+        String answer = INIT_STRING;
         for (String alphabet : list) {
             answer += alphabet;
         }
@@ -46,7 +48,7 @@ public class Problem2 {
 
             if (sameLetterCount != INIT_SAME_LETTER_COUNT) {
                 removeSameLetter(letterList, index, sameLetterCount);
-                index = -INIT_SAME_LETTER_COUNT;
+                index = INIT_INDEX;
             }
         }
     }
