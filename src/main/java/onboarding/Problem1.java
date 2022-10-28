@@ -40,7 +40,7 @@ class Problem1 {
     }
 
     public static int multiple(int number){
-        int result = 0;
+        int result = 1;
         String[] array = String.valueOf(number).split("");
         for(String s: array){
             result *= Integer.parseInt(s);
@@ -50,7 +50,7 @@ class Problem1 {
 
     public static int getMaxValue(List<Integer> array){
         int addResult = Math.max(add(array.get(0)), add(array.get(1)));
-        int multipleResult = Math.max(multiple(array.get(0)), multiple(array.get(2)));
+        int multipleResult = Math.max(multiple(array.get(0)), multiple(array.get(1)));
         return Math.max(addResult, multipleResult);
     }
 }
