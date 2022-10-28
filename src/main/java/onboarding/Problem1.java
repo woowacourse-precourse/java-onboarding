@@ -4,14 +4,14 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int answer;
 
         // 예외사항
-        if ((pobi.length > 2) || (crong.length > 2)) {
+        if ((pobi.size() > 2) || (crong.size() > 2)) {
             return -1;
-        } else if ((pobi[1] - pobi[0] != 1) || (crong[1] - pobi[0] != 0) || ) {
+        } else if ((pobi.get(1) - pobi.get(0) != 1) || (crong.get(1) - pobi.get(0) != 0)) {
             return -1;
-        } else if ((pobi[0] == 1) || (pobi[1] == 400) || (crong[0] == 1) || (crong[1] == 400)) {
+        } else if ((pobi.get(0) == 1) || (pobi.get(1) == 400) || (crong.get(0) == 1) || (crong.get(1) == 400)) {
             return -1;
         }
 
@@ -36,7 +36,7 @@ class Problem1 {
     public static int addNumber(int a) {
         int sum = 0;
         for (; a > 0; a /= 10) {
-            sum += (int)(a % 10);
+            sum += a % 10;
         }
         return sum;
     }
@@ -45,7 +45,7 @@ class Problem1 {
     public static int multNumber(int a) {
         int sum = 1;
         for (; a > 0; a /= 10) {
-            sum = (int)(sum * (a % 10));
+            sum = sum * (a % 10);
         }
         return sum;
     }
@@ -54,11 +54,11 @@ class Problem1 {
     public static int comparison(List<Integer> person) {
         int sum = 0;
         for (int i = 0; i < 2; i++) {
-            if (sum < addNumber(person[i])) {
-                sum = addNumber(person[i]);
+            if (sum < addNumber(person.get(i))) {
+                sum = addNumber(person.get(i));
             }
-            if (sum < multNumber(person[i])) {
-                sum = multNumber(person[i]);
+            if (sum < multNumber(person.get(i))) {
+                sum = multNumber(person.get(i));
             }
         }
         return sum;
