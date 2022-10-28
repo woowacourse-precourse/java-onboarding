@@ -7,24 +7,25 @@ import java.util.List;
 
 public class MoneySorter {
     private int money = 0;
-    private List<Integer> billsSorted;
+    private List<Integer> currentBillsSorted = new ArrayList<>();
     private int numberOfBill = 0;
 
     public MoneySorter(int money) {
         this.money = money;
-        for (int i = 0; i < CURRENCY_UNIT.size(); i++) {
-            billsSorted.add(numberOfBill);
-        }
-    }
-    public static void increaseNumberOfBill(List<Integer> billsSorted, Integer increasement) {
-        for (int i = 0; i < billsSorted.size(); i++) {
-            Integer currentNumberOfBill = billsSorted.get(i);
-            currentNumberOfBill += increasement;
-            billsSorted.set(i, currentNumberOfBill);
+        for (int i = 0; i< CURRENCY_UNIT.size(); i++) {
+            currentBillsSorted.add(numberOfBill);
         }
     }
 
-    public static Integer calculateNumberOfBillFromMoney(Integer currencyUnit, int money) {
+    public void increaseNumberOfBill(List<Integer> currentBillsSorted, Integer increasement) {
+        for (int i = 0; i < currentBillsSorted.size(); i++) {
+            Integer currentNumberOfBill = currentBillsSorted.get(i);
+            currentNumberOfBill += increasement;
+            currentBillsSorted.set(i, currentNumberOfBill);
+        }
+    }
+
+    public Integer calculateNumberOfBillFromMoney(Integer currencyUnit, int money) {
         Integer numberOfBill = money / currencyUnit;
         return numberOfBill;
     }
