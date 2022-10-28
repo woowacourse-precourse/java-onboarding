@@ -14,6 +14,7 @@ public class Problem5 {
             }
             if (money / unit >= 1) {
                 answer.add(money / unit);
+                money %= unit;
             }
         }
         return answer;
