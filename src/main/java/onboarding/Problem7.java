@@ -16,7 +16,6 @@ public class Problem7 {
         int friendsSize = friends.size();
         int visitorsSize = visitors.size();
 
-        ArrayList<ScoreInfo> arrayList = new ArrayList<>();
 
         //1. 예외사항
         //1-1 user 길이 1 이상 30 이하인지 체크
@@ -94,6 +93,11 @@ public class Problem7 {
             }
         }
 
+        // 5. 추천 점수 목록을 List 로 변환
+        ArrayList<ScoreInfo> arrayList = new ArrayList<>();
+        for (Map.Entry<String, Integer> recommendScoreMap : recommendScore.entrySet()) {
+            arrayList.add(new ScoreInfo(recommendScoreMap.getKey(),recommendScoreMap.getValue()));
+        }
 
 
         return answer;
