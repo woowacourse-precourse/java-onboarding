@@ -22,19 +22,15 @@ public class Problem4 {
             chLst.add(characterArr(w).get(i));
         }
 
-//        System.out.println("chlst"+chLst);
-
 
         for(int i=0; i<chLst.size(); i++) {
             Character c = chLst.get(i);
             int num = (int)c;
-//            System.out.println(num);
 
             if(num>=65 && num<=90) {
                 int tr = 25 - (num - 65);
                 int numLast = 65 + tr;
                 cToiLst.add(numLast);
-//                System.out.println("trNumLast"+cToiLst.add(numLast));
             } else if (num == 32) {
                 cToiLst.add(num);
 
@@ -65,34 +61,28 @@ public class Problem4 {
 //                    }
 //                    break;
 //            }
-
         }
-//
-////        System.out.println("cToLstresult"+cToiLst);
-//
-//        return cToiLst;
-//    }
-//
-//    public static ArrayList<Character> iToCtran(String w) {
-//        /**
-//         * 아스키코드 -> 캐릭터 변환
-//         */
-//        ArrayList<Character> iToaLst = new ArrayList<>();
-//        ArrayList<Integer> inLst = cToitran(w);
-////        System.out.println(inLst);
-//
-//        for(int i=0; i<cToitran(w).size(); i++) {
-//            int integer = inLst.get(i);
-//            char ch = (char) integer;
-//            iToaLst.add(ch);
-//        }
-//
-//
-//        return iToaLst;
-//
-//
-//    }
-//
+
+        return cToiLst;
+    }
+
+    public static ArrayList<Character> iToCtran(String w) {
+        /**
+         * 아스키코드 -> 캐릭터 변환
+         */
+        ArrayList<Character> iToaLst = new ArrayList<>();
+        ArrayList<Integer> inLst = cToitran(w);
+
+        for(int i=0; i<cToitran(w).size(); i++) {
+            int integer = inLst.get(i);
+            char ch = (char) integer;
+            iToaLst.add(ch);
+        }
+        return iToaLst;
+
+
+    }
+
 //    public static String join(String w) {
 //        /**
 //         * 아스키코드 -> 최종 반환 스트링 변환
@@ -118,7 +108,6 @@ public class Problem4 {
         for(int i=0; i<s.length(); i++) {
             characters.add(s.charAt(i));
         }
-//        System.out.println(characters);
         return characters;
     }
 }
