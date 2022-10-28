@@ -18,7 +18,12 @@ public class Problem2 {
         return cryptogram;
     }
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        String answer;
+        
+        while(true) {
+            answer = deleteRepeat(cryptogram);
+            if (cryptogram.equals(answer))
+                return answer;
+        }
     }
 }
