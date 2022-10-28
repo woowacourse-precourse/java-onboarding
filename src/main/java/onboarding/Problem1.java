@@ -16,6 +16,12 @@ class Problem1 {
         return answer;
     }
 
+    public static int getResult(int scoreOfPobi, int scoreOfCrong) {
+        if (scoreOfPobi == scoreOfCrong)
+            return DRAW;
+        return scoreOfPobi > scoreOfCrong ? POBI_WIN : CRONG_WIN;
+    }
+
     public static boolean checkException(List<Integer> pages) {
         if (pages.get(LEFT_PAGE) + 1 != pages.get(RIGHT_PAGE) || pages.get(LEFT_PAGE) % 2 == 0)
             return true;
