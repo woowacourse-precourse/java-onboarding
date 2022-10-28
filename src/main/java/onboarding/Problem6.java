@@ -22,4 +22,9 @@ public class Problem6 {
         }
         return validation;
     }
+
+    public static boolean isNickName(String nickName){
+        return Pattern.matches("^[가-힣]*$", nickName)
+                && nickName.length() >= 1 && nickName.length() < 20;
+    }
 }
