@@ -19,6 +19,17 @@ class Problem1 {
         }
         return productOfEachDigit;
     }
+    public int getMaxValue(int pageNum){
+        int maxValue=0;
+        int sumOfEachDigit=addEachDigitOfPageNum(pageNum);
+        int productOfEachDigit=multiplyEachDigitOfPageNum(pageNum);
+        if(sumOfEachDigit >= productOfEachDigit){
+            maxValue=sumOfEachDigit;
+        } else {
+            maxValue=productOfEachDigit;
+        }
+        return maxValue;
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
