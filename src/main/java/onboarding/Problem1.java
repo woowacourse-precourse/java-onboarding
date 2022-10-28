@@ -4,8 +4,19 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        //예외처리
+        if(hasError(pobi) || hasError(crong)) return -1;
+
+        //점수 정하기
+        int pobiScore = getScore(pobi);
+        int crongScore = getScore(crong);
+
+        //포비와 크롱의 숫자 비교해서 리턴 (포비가 이기면 1, 크롱이 이기면 2를 리턴)
+        if(pobiScore > crongScore) return 1;
+        if(crongScore > pobiScore) return 2;
+
+        //무승부이면 0을 리턴
+        return 0;
     }
 
     public static boolean hasError(List<Integer> list) {
