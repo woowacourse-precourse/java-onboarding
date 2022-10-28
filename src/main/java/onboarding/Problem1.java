@@ -16,7 +16,16 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
-    
+
+    /**
+     * 주어진 페이지 각 자리수의 합과 곱중 큰 값을 반환한다.
+     * @param page 페이지
+     * @return 합, 곱 중 큰 값을 반환한다.
+     */
+    private static int getMaxScore(Integer page) {
+        return Math.max(getPageSum(page), getPageMultiple(page));
+    }
+
     /**
      * 주어진 페이지의 각 자리수 합을 구한다.
      * @param page 페이지
