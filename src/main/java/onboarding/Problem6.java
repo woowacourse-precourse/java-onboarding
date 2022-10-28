@@ -22,5 +22,13 @@ public class Problem6 {
             checkNames(strings);
         }
     }
+    static void checkNames(String tmp) {
+        if(names.get(tmp) == null) {
+            names.put(tmp,"1");
+        }
+        else {
+            names.put(tmp,"2");
+        }
+    }
 
 }
