@@ -113,6 +113,22 @@ class ApplicationTest {
             int result = 2;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
+    
+        @Test
+        void case14() {
+            List<Integer> pobi = List.of(401, 402);
+            List<Integer> crong = List.of(211, 212);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+    
+        @Test
+        void case15() {
+            List<Integer> pobi = List.of(99, 100);
+            List<Integer> crong = List.of(-1, 0);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
     }
     
     @Nested
@@ -198,6 +214,27 @@ class ApplicationTest {
         void case12() {
             String cryptogram = "saddaas";
             String result = "sas";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+    
+        @Test
+        void case13() {
+            String cryptogram = "zyalllelyz";
+            String result = "zyaelyz";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+    
+        @Test
+        void case14() {
+            String cryptogram = "aabba";
+            String result = "a";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+    
+        @Test
+        void case15() {
+            String cryptogram = "abbaa";
+            String result = "a";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
     }
@@ -449,6 +486,13 @@ class ApplicationTest {
         void case19() {
             String word = "ZY XWV";
             String result = "AB CDE";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+    
+        @Test
+        void case20() {
+            String word = "Hello  Everyone!";
+            String result = "Svool  Veviblmv!";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
     }
@@ -915,6 +959,23 @@ class ApplicationTest {
             );
             List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
             List<String> result = List.of("andole", "bedi");
+            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+        }
+    
+        @Test
+        void case16() {
+            String user = "andole";
+            List<List<String>> friends = List.of(
+                    List.of("andole", "jun"),
+                    List.of("donut", "jun"),
+                    List.of("donut", "shakevan"),
+                    List.of("shakevan", "andole"),
+                    List.of("shakevan", "jun"),
+                    List.of("shakevan", "bedi"),
+                    List.of("anne", "jun")
+            );
+            List<String> visitors = List.of("donut", "mrko", "peter", "sam");
+            List<String> result = List.of("donut", "anne", "bedi", "mrko", "peter");
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
     }

@@ -24,10 +24,10 @@ public class Player {
     }
     
     public int compareTo(final Player rightPlayer) {
-        final int resultOfCompare = Integer.compare(getMaxNumber(), rightPlayer.getMaxNumber());
         if (isNotCorrectPages(rightPlayer)) {
             return RESULT_OF_EXCEPTION;
         }
+        final int resultOfCompare = Integer.compare(getMaxNumber(), rightPlayer.getMaxNumber());
         
         if (isRightPlayerVictory(resultOfCompare)) {
             return RESULT_OF_RIGHT_PLAYER_WIN;
