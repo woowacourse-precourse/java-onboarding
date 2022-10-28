@@ -8,6 +8,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 class Problem4MethodTest {
 
     @Test
+    void transformUpperTest() {
+        char c1 = 'X';
+        char c2 = 'H';
+
+        char result1 = transformUpper(c1);
+        char result2 = transformUpper(c2);
+
+        assertThat(result1).isEqualTo('C');
+        assertThat(result2).isEqualTo('S');
+    }
+
+    @Test
     void isUpperTest() {
         char c1 = 'X';
         char c2 = 'a';
