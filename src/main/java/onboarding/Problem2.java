@@ -22,7 +22,14 @@ public class Problem2 {
     }
 
     private static boolean checkValidation(String inputString) {
-        int inputStringLength = inputString.length();
+        int inputStringLength;
+
+        // null 값이 들어갔는지 확인하다.
+        if (inputString == null) {
+            return false;
+        }
+
+        inputStringLength = inputString.length();
 
         // 길이가 1 이상 400 이하여야 한다.
         if (!(1 <= inputStringLength && inputStringLength <= 400)) {
