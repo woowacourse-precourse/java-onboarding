@@ -7,6 +7,10 @@ public class Problem2 {
     }
 
     public boolean isStringContainingRegularExpression(String string, String regularExpression) {
-        return string.matches(String.format("(.*)%s(.*)", regularExpression));
+        return string.matches(regularExpression);
+    }
+
+    public String deleteStringByRegularExpression(String string, String regularExpression) {
+        return string.replaceAll(regularExpression, "");
     }
 }
