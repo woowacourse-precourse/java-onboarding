@@ -44,12 +44,12 @@ public class Problem7 {
     private static List<String> answer = new ArrayList<>();
 
     public static List<String> solution(String mainUserId, List<List<String>> friends, List<String> visitors) {
-        initUserList(friends, visitors);
-        initFriends(friends);
+        initUserList(friends, visitors);                // 유저 리스트 초기화
+        initFriends(friends);                           // 각 유저의 친구 리스트 초기화
 
-        scoring(mainUserId, visitors);
-        List<User> sortedUserList = sortScoreId();
-        makeAnswer(mainUserId, sortedUserList);
+        scoring(mainUserId, visitors);                  // 모든 유저 점수 부여
+        List<User> sortedUserList = sortScoreId();      // 점수 > 이름 순으로 유저 리스트 정렬
+        makeAnswer(mainUserId, sortedUserList);         // 조건에 맞게 answer 리스트에 추가
         return answer;
     }
 
@@ -107,9 +107,8 @@ public class Problem7 {
         List<User> result = new ArrayList<>(userList.values());
 
         Collections.sort(result, (userA, userB) -> {
-            if (userA.getScore() == userB.getScore()) {
+            if (userA.getScore() == userB.getScore())
                 return userA.getId().compareTo(userB.getId());
-            }
             return -(userA.getScore() - userB.getScore());
         });
 
