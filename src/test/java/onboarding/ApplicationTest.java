@@ -72,6 +72,32 @@ class ApplicationTest {
         	assertThat(Problem1.isException(pobi, crong1)).isEqualTo(result);
         	assertThat(Problem1.isException(pobi, crong2)).isEqualTo(result);
         }
+        
+        @Test
+        void isLeftPageInRange() {
+        	//given
+        	List<Integer> pobi = List.of(1, 6);
+        	List<Integer> crong = List.of(399, 8);
+        	
+        	//when
+        	boolean result = true;
+        	
+        	//then
+        	assertThat(Problem1.isLeftPageInRange(pobi, crong)).isEqualTo(result);
+        }
+        
+        @Test
+        void isLeftPageInRangeException() {
+        	//given
+        	List<Integer> pobi = List.of(0, 8);
+        	List<Integer> crong = List.of(401, 8);
+        	
+        	//when
+        	boolean result = false;
+        	
+        	//then
+        	assertThat(Problem1.isLeftPageInRange(pobi, crong)).isEqualTo(result);
+        }
     }
 
     @Nested
