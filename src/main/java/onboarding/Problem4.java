@@ -15,4 +15,16 @@ public class Problem4 {
         }
         return false;
     }
+
+    public static char changeUpperWithFrogDict(char c) {
+        if (c >= 'A' && c <= 'M') {
+            c += 25 - ((c - 65) * 2);
+            return c;
+        }
+        if (c >= 'N' && c <= 'Z') {
+            c -= ((c - 78) * 2) + 1;
+            return c;
+        }
+        return c;
+    }
 }
