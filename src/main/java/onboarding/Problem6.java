@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Problem6 {
     private static List<String> confirm;
-    private static List<String> duplicatedNicknames;
+    private static List<String> duplicatedEmails;
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
@@ -16,6 +16,7 @@ public class Problem6 {
     private static void initSystem(List<List<String>> forms) {
         confirm = new ArrayList<>();
         confirm.add(forms.get(0).get(1));
-        duplicatedNicknames = new ArrayList<>();
+        duplicatedEmails = new ArrayList<>();
+        duplicatedEmails.add(forms.get(0).get(0));
     }
 }
