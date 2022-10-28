@@ -12,4 +12,10 @@ public class Problem5 {
     public static int calculateMoneyNum(int money, int balance) {
         return balance / money;
     }
+
+    public static int calculateBalance(int money, int balance) {
+        int moneyUseCount = calculateMoneyNum(money, balance);
+
+        return balance - money * moneyUseCount;
+    }
 }
