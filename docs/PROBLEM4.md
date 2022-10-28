@@ -2,12 +2,13 @@
 
 ## 기능 목록
 
-- [ ] Map을 사용하여 청개구리의 사전을 알수 있다
-- [ ] word를 하나씩 나눌 수 있다.
-- [ ] 특정자리가 소문자인지 대문자인지 알수 있다
-   - [ ] 특정자리가 공백인지 아닌지 알수 있다.
-- [ ] 특정자리의 문자를 소문자에서 대문자로 변환 할수 있다.
-   - [ ] 대문자일 경우 변환하지 않는다. 
+- [ ] Map을 사용하여 청개구리의 사전을 만들어 사용할 수 있다. DictionaryGenerator#createDictionary()
+- [ ] word를 하나씩 나눌 수 있다. DividedWord#division()
+   - [ ] 대문자일 경우 변환하지 않는다.
+- [ ] 특정자리의 문자를 소문자에서 대문자로 변환 할수 있다. ChangeWord#wordConversion()
+- [ ] 특정자리가 소문자인지 대문자인지 알수 있다 PlaceCheck#wordCompare()
+   - [ ] 특정자리가 공백인지 아닌지 알수 있다. PlaceCheck#SpacesCompare()
+
 
 ## 기능 요구 사항
 
