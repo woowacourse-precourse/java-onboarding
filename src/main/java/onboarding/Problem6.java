@@ -12,16 +12,6 @@ public class Problem6 {
         return priorityQueueToList(overlapNamesQueue);
     }
 
-    static List<String> priorityQueueToList(PriorityQueue<String> queue) {
-        List<String> result = new ArrayList<>();
-
-        Stream.generate(queue::poll)
-            .limit(queue.size())
-            .forEach(value -> result.add(value));
-
-        return result;
-    }
-
     static PriorityQueue<String> getOverlapNamesQueue(List<List<String>> forms) {
         int size = forms.size();
         PriorityQueue<String> overlapNamesQueue = new PriorityQueue<>();
@@ -83,5 +73,15 @@ public class Problem6 {
             }
         }
         return false;
+    }
+
+    static List<String> priorityQueueToList(PriorityQueue<String> queue) {
+        List<String> result = new ArrayList<>();
+
+        Stream.generate(queue::poll)
+            .limit(queue.size())
+            .forEach(value -> result.add(value));
+
+        return result;
     }
 }
