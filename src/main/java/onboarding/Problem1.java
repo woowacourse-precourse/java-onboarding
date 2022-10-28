@@ -27,7 +27,34 @@ class Problem1 {
     }
 
     private static int getResult(List<Integer> pages) {
-        return 0;
+        int leftPageScore = Math.max(getSumOfEachPages(pages.get(0)),getMulOfEachPages(pages.get(0)));
+        int rightPageScore = Math.max(getSumOfEachPages(pages.get(1)),getMulOfEachPages(pages.get(1)));
+
+        return Math.max(leftPageScore, rightPageScore);
+    }
+
+    private static int getSumOfEachPages(int page) {
+        int sum = 0;
+        int num = page;
+
+        while (num != 0) {
+            sum += num % 10;
+            num /= 10;
+        }
+
+        return sum;
+    }
+
+    private static int getMulOfEachPages(int page) {
+        int mul = 1;
+        int num = page;
+
+        while (num != 0) {
+            mul *= num % 10;
+            num /= 10;
+        }
+
+        return mul;
     }
 
     private static int getWinner(int pobiResult, int crongResult) {
