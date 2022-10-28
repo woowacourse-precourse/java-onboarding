@@ -25,4 +25,15 @@ class Problem1 {
 
         return sum;
     }
+
+    private static int mulitplyScore(List<Integer> pageList, int index) {
+        int pageNumber = pageList.get(index);
+        int multiplication = 1;
+
+        while (pageNumber > 1) {
+            multiplication *= pageNumber % 10;
+            pageNumber /= 10;
+        }
+        return multiplication;
+    }
 }
