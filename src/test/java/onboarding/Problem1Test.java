@@ -22,9 +22,12 @@ public class Problem1Test {
     void pageIndex() {
         List<Integer> list1 = List.of(1, 3);
         List<Integer> list2 = List.of(197, 198);
+        List<Integer> list3 = List.of(98, 99);
         boolean result1 = true; // Page Index Error가 발생함 -> true
         boolean result2 = false;
+        boolean result3 = true;
         assertThat(problem.pageIndexException(list1)).isEqualTo(result1);
         assertThat(problem.pageIndexException(list2)).isEqualTo(result2);
+        assertThat(problem.pageIndexException(list3)).isEqualTo(result3);
     }
 }
