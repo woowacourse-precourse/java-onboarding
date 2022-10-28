@@ -5,7 +5,11 @@ import java.util.List;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
+        List<Integer> upperCharIndex = getUpperCharIndex(word.toCharArray());
+        char[] wordCharacter = word.toLowerCase().toCharArray();
+        wordCharacter = reverseWord(wordCharacter);
+        wordCharacter = restoreUpperCharacter(wordCharacter, upperCharIndex);
+        String answer = new String(wordCharacter);
         return answer;
     }
 
