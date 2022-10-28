@@ -23,14 +23,14 @@ class Problem1 {
             return true;
         return false;
     }
-    public static boolean rangeMatch(List<Integer> nums){
-        return (nums.get(0)<3) || (nums.get(1)>399);
+    public static boolean rangeMatch(List<Integer> pages){
+        return (pages.get(0)<3) || (pages.get(1)>399);
     }
-    public static boolean evenOddMatch(List<Integer> nums){
-        return (nums.get(0) % 2 != 1) || (nums.get(1) % 2 != 0);
+    public static boolean evenOddMatch(List<Integer> pages){
+        return (pages.get(0) % 2 != 1) || (pages.get(1) % 2 != 0);
     }
-    public static boolean numberMatch(List<Integer> nums){
-        return (nums.get(1) - nums.get(0)) != 1;
+    public static boolean numberMatch(List<Integer> pages){
+        return (pages.get(1) - pages.get(0)) != 1;
     }
 
 }
