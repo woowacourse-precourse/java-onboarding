@@ -6,23 +6,23 @@ import onboarding.problem4.WordValidator;
 public class Problem4 {
 
     static StringBuilder answer;
+    static char[] words;
 
-    static void input() {
+    static void input(String oldWord) {
         answer = new StringBuilder();
+        words = oldWord.toCharArray();
     }
 
     static String doConvertWord(String oldWord) {
-        input();
-        final char[] words = oldWord.toCharArray();
+        input(oldWord);
 
         for (char word : words) {
-            if (!Character.isAlphabetic(word)) {
-                answer.append(word);
-                continue;
+            if (Character.isAlphabetic(word)) {
+                word = AlphabetFactory.doConvert(word);
             }
-            final Character convertAlphabet = AlphabetFactory.doConvert(word);
-            answer.append(convertAlphabet);
+            answer.append(word);
         }
+
         return answer.toString();
     }
 
@@ -30,6 +30,4 @@ public class Problem4 {
         WordValidator.validateWord(word);
         return doConvertWord(word);
     }
-
-
 }
