@@ -126,7 +126,13 @@ public class Problem7 {
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        // user의 친구 목록
+        List<String> userFriends = findUserFriends(user, friends);
+
+        makeFriendList(user, friends, visitors);
+        countFriends(user, userFriends, friends);
+        countVisitors(visitors);
+        
+        return selectFriends (userFriends);
     }
 }
