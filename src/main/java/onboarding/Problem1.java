@@ -60,6 +60,6 @@ class Problem1 {
     }
 
     public static int chooseMaxValueLeftOrRight(List<Integer> pageList) {
-        return 0;
+        return getMaxValue(chooseMaxValueBetweenAddAndMultiply(pageList.get(0)), chooseMaxValueBetweenAddAndMultiply(pageList.get(1)));
     }
 }
