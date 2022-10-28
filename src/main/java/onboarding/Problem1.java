@@ -4,7 +4,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
 
-class Problem1 {
+public class Problem1 {
     static int answer;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
