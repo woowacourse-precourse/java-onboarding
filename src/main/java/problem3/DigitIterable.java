@@ -1,7 +1,6 @@
 package problem3;
 
 import java.util.function.Consumer;
-import java.util.function.IntFunction;
 
 public class DigitIterable {
     public static void forEachDigit(int number, Consumer<Integer> something) {
