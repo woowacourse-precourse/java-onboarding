@@ -5,10 +5,19 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        if (judgmentException(pobi, crong) == -1)
+            return -1;
         int answer = Integer.MAX_VALUE;
         int pobiLeft, pobiRight, crongLeft, crongRight;
+        pobiLeft = comparingNumbers(addedNumber(pobi.get(0)), multipliedNumbers(pobi.get(0)));
+        pobiRight = comparingNumbers(addedNumber(pobi.get(1)), multipliedNumbers(pobi.get(1)));
+        crongLeft = comparingNumbers(addedNumber(crong.get(0)), multipliedNumbers(crong.get(0)));
+        crongRight = comparingNumbers(addedNumber(crong.get(1)), multipliedNumbers(crong.get(1)));
 
+        int pobiNumber = comparingNumbers(pobiLeft, pobiRight);
+        int crongNumber = comparingNumbers(crongLeft, crongRight);
 
+        answer = selectingWinner(pobiNumber, crongNumber);
 
         return answer;
     }
@@ -49,7 +58,7 @@ class Problem1 {
         return addedNum > multipliedNum ? addedNum : multipliedNum;
     }
 
-    private int selectingWinner(int pobiNumber, int crongNumber) {
+    private static int selectingWinner(int pobiNumber, int crongNumber) {
         if (pobiNumber > crongNumber) {
             return 1;
         } else if (pobiNumber < crongNumber) {
