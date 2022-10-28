@@ -16,10 +16,11 @@ import java.util.*;
     프로그램 구현
     Map 자료구조를 사용하여 해당 이름에 대한 점수 부여할것
     Step1. Map 자료구조 만들기
-    Step2. friends를 탐색하며 user가 들어가있는 경우 친구 이름을 Map 넣고 점수 10점 부여
-    Step3. visitors 를 탐색하며 해당 친구이름을 Map 에 넣고 1점부여
-    Step4. Map을 value 기준 오름차순 정렬 -> 점수가 같은 경우 이름순으로 정렬
-    Step5. 위에서 부터 하나씩 answer에 넣되 점수가 0인 경우에는 넣지 않고, answer 리턴
+    Step2. user의 친구 목록 만들기
+    Step3. friends를 탐색하며 friendList의 friend가 들어가있는 경우 친구 이름을 Map 넣고 점수 10점 부여
+    Step4. visitors 를 탐색하며 해당 친구이름을 Map 에 넣고 1점부여    단, 이미 친구인 사람에게는 점수부여를 해서는 안된다
+    Step5. Map을 value 기준 오름차순 정렬 -> 점수가 같은 경우 이름순으로 정렬
+    Step6. 위에서 부터 하나씩 answer에 넣되 점수가 0인 경우에는 넣지 않고, answer 리턴
  */
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -28,6 +29,8 @@ public class Problem7 {
         //Step1. Map 자료구조 만들기
         Map<String, Integer> recommendPoint = new HashMap<>();
 
+        //Step2. user의 친구 목록 만들기
+        List<String> friendList = makeFriendList(friends, user);
         //Step2. friends를 탐색하며 user가 들어가있는 경우 친구 이름을 Map 넣고 점수 10점 부여
         for (List<String> friend : friends) {
             scoreFriendPoint(recommendPoint, friend, user);
@@ -51,7 +54,7 @@ public class Problem7 {
         //Step5. 위에서 부터 하나씩 answer에 넣되 점수가 0인 경우에는 넣지 않고, answer 리턴
         int count = 0;
         for (Map.Entry<String, Integer> friend : recommendPointRank) {
-            if (friend.getValue() == 0 || count < 5) {
+            if (friend.getValue() == 0 || count > 5) {
                 break;
             } else {
                 answer.add(friend.getKey());
@@ -60,6 +63,20 @@ public class Problem7 {
         }
 
         return answer;
+    }
+
+    private static List<String> makeFriendList(List<List<String>> friends, String user) {
+
+        List<String> friendList = new ArrayList<>();
+
+        for (List<String> friend : friends) {
+            if (friend.get(0).equals(user)) {
+                friendList.add(friend.get(1));
+            } else if (friend.get(1).equals(user)) {
+                friendList.add(friend.get(0));
+            }
+        }
+        return friendList;
     }
 
     private static void scoreVisitorPoint(Map<String, Integer> recommendRank, String visitor) {
