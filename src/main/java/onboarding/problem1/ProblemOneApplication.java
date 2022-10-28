@@ -1,5 +1,6 @@
 package onboarding.problem1;
 
+import onboarding.problem1.domain.Book;
 import onboarding.problem1.domain.Calculator;
 
 import java.util.ArrayList;
@@ -14,5 +15,9 @@ public class ProblemOneApplication {
         List<Integer> notEmptyList = Arrays.asList(1);
         System.out.println("calculator.hasList(emptyList) = " + calculator.hasList(emptyList));
         System.out.println("calculator.hasList(notEmptyList) = " + calculator.hasList(notEmptyList));
+
+        Book book = new Book();
+        int page = book.openBook();
+        System.out.println("page = " + page);
     }
 }

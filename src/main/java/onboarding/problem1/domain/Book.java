@@ -1,5 +1,7 @@
 package onboarding.problem1.domain;
 
+import java.util.Random;
+
 public class Book {
     private int leftPage;
     private int rightPage;
@@ -8,7 +10,7 @@ public class Book {
     private int rightPageScore;
 
     public int openBook() {
-        return 0;
+        return new Random().nextInt(400) + 1;
     }
 
     public boolean isEvenPage(int page) {
