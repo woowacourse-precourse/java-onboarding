@@ -13,4 +13,9 @@ public class Sns {
 			}
 		}
 	}
+
+	private static void addUserFromVisit(List<String> visitors) {
+		visitors.stream().forEach(userName -> registeredUsers.putIfAbsent(userName, new User(userName)));
+	}
+	
 }
