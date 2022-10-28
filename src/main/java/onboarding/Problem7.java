@@ -96,4 +96,17 @@ public class Problem7 {
             user.addOnePoint();
         }
     }
+
+    public static List<User> sortScoreId() {
+        List<User> result = (List<User>) userList.values();
+
+        Collections.sort(result, (userA, userB) -> {
+            if (userA.getScore() == userB.getScore()) {
+                return userA.getId().compareTo(userB.getId());
+            }
+            return userA.getScore() - userB.getScore();
+        });
+
+        return result;
+    }
 }
