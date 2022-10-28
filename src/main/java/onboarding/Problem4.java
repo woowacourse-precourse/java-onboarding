@@ -14,7 +14,24 @@ public class Problem4 {
     }
 
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        char currentChar;
+
+        for(int i = 0; i < word.length(); i++){
+            currentChar = word.charAt(i);
+            if((int)currentChar >= 97 && (int)currentChar <= 122){
+                currentChar = lowerChange(currentChar);
+                word = word.substring(0, i)
+                        .concat(Character.toString(currentChar))
+                        .concat(word.substring(i + 1));
+            }
+            else  if((int)currentChar >= 65 && (int)currentChar <= 90) {
+                currentChar = upperChange(currentChar);
+                word = word.substring(0, i)
+                        .concat(Character.toString(currentChar))
+                        .concat(word.substring(i + 1));
+            }
+        }
+
+        return word;
     }
 }
