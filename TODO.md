@@ -91,6 +91,15 @@
 
 설계<br/>
 
+- [x] 인터페이스 Crew는 List<String> get()를 통해 크루원의 정보를 전달한다.
+- [x] 인터페이스 CrewVailator는 boolean isValid(List<String> data)를 통해 입력된 정보가 유효한지 검사해준다.
+- [x] 인터페이스 CrewFinder는 요구사항 조건에 맞는 List<String> result를 반환하는 findCrews()를 가진다.
+
+- [ ] Crew의 구현체는 WooaCrew이다.
+- [ ] CrewFinder의 구현체 DuplicateWarningCrewFinder는<br/>
+문제의 조건에 따라 같은 글자가 연속적으로 포함되는 닉네임을 신청한 크루의 이메일 리스트를 반환한다.
+
+
 
 </details><br/>
 
