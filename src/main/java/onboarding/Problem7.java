@@ -63,28 +63,22 @@ public class Problem7 {
                 }
             }
         }
+        public List<Map.Entry<String, Integer>> desendingByScore(){
+            List<Map.Entry<String, Integer>> entryList = new ArrayList<>(result.entrySet());
+            Collections.sort(entryList, (o1, o2) -> o2.getValue().compareTo(o1.getValue()));
+            return entryList;
+        }
         public List<String> inSolution(){
 
             saveFriend(friends); // map에 친구목록 저장
             ArrayList<String> userFriends = map.get(user); // user 의 친구목록 가져옴
             isFriendOfUser(userFriends); // 친구의 친구 -> 10점을 더해줌
             visitorScore(userFriends); // 방문자 -> 1점을 더해줌
-
-            // 스코어 기준 내림차순
-            List<Map.Entry<String, Integer>> entryList = new ArrayList<>(result.entrySet());
-            Collections.sort(entryList, (o1, o2) -> o2.getValue().compareTo(o1.getValue()));
-
-            // 상위 5명 추출
-            for (Map.Entry<String, Integer> stringIntegerEntry : entryList) {
-                if(answer.size() == 5) break;
-                answer.add(String.valueOf(stringIntegerEntry.getKey()));
-            }
-
-            return answer;
+            return null;
         }
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        return new SolutionClass(user, friends, visitors).inSolution();
+        return null;
     }
 }
