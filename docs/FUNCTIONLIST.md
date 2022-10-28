@@ -47,7 +47,7 @@
 <div markdown="1">
 
 - `solution(int money)`: 돈의 액수 money가 매개변수로 주어질 때, 오만 원권, 만 원권, 오천 원권, 천 원권, 오백원 동전, 백원 동전, 오십원 동전, 십원 동전, 일원 동전 각 몇개로 변환되는지 금액이 큰 순서대로 리스트에 담아 반환한다.
-
+- `moneyChanger(List<Integer> currencyUnitList, int money)`: 돈의 액수 money와 화폐 단위들이 list로 currencyUnitList가 주어질 때, 화폐단위가 큰 것부터 거슬러 리스트에 각 화폐단위의 개수를 반환한다.
 </div>
 </details>
 
