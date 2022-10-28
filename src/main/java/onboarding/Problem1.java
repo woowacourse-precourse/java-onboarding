@@ -6,27 +6,22 @@ import java.util.List;
 import java.util.PriorityQueue;
 
 class Problem1 {
-    static int pobiNum;
-
-    static int crongNum;
+    static int answer;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
 
-        validatePage(pobi);
-        validatePage(crong);
-
-        pobiNum = findMaxNum(pobi);
-        crongNum = findMaxNum(crong);
+        int pobiNum = findMaxNum(pobi);
+        int crongNum = findMaxNum(crong);
 
         if(pobiNum == crongNum){
             answer = 0;
         } else if( pobiNum > crongNum) {
             answer = 1;
         } else {
-            answer = -1;
+            answer = 2;
         }
 
+        validatePage(pobi, crong);
 
         return answer;
     }
@@ -58,12 +53,16 @@ class Problem1 {
     }
 
     //시작면이나 마지막 면인 경우 예외처리
-    public static void validatePage(List<Integer> pageList){
-        if(pageList.contains(1)){
-            throw new RuntimeException("첫번째 페이지는 펼칠 수 없습니다.");
-        } else if(pageList.contains(400)){
-            throw new RuntimeException("마지막 페이지느 펼칠 수 없습니다.");
+    public static void validatePage(List<Integer> pobi, List<Integer> crong){
+        if(
+                pobi.contains(1) || pobi.contains(400) || crong.contains(1) || crong.contains(400)
+                || pobi.get(1)- pobi.get(0) != 1 || crong.get(1) - crong.get(0) != 1
+
+        ){
+            answer = -1;
         }
+
     }
+
 
 }
