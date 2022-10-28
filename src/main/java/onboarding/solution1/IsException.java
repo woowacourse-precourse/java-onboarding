@@ -22,6 +22,11 @@ public class IsException {
         return 0;
     }
 
+    private static int nextPage(int oddPage, int evenPage){
+        if (oddPage + 1 != evenPage)
+            return -1;
+        return 0;
+    }
     public static int isException(List<Integer> page){
         if (numOfIndex(page) == -1)
             return -1;
@@ -29,7 +34,7 @@ public class IsException {
             return -1;
         if (odd(page.get(0)) == -1)
             return -1;
-        if (page.get(0) + 1 != page.get(1))
+        if (nextPage(page.get(0), page.get(1)) == -1)
             return -1;
         return 0;
     }
