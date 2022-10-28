@@ -7,6 +7,7 @@ public class Problem6 {
     final static int NAME = 1;
     public static List<String> solution(List<List<String>> forms) {
         HashMap<String, Integer> combinationCount = new HashMap<>();
+        HashSet<String> duplicateEmails = new HashSet<>();
         for (int i=0; i<forms.size(); i++) {
             List<String> form = forms.get(i);
             HashSet<String> combinations = getCombinations(form.get(NAME));
@@ -15,8 +16,18 @@ public class Problem6 {
             }
         }
 
+        for (String twoName : combinationCount.keySet()) {
+            if (combinationCount.get(twoName)>1) {
+                duplicateEmails.addAll(getDuplicateList(twoName, forms));
+            }
+        }
         List<String> answer = List.of("answer");
         return answer;
+    }
+
+    private static List<String> getDuplicateList(String twoName, List<List<String>> forms) {
+        List<String> duplicateEmails = new ArrayList<>();
+        return duplicateEmails;
     }
 
     private static HashSet<String> getCombinations(String name) {
