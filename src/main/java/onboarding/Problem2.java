@@ -1,49 +1,43 @@
 package onboarding;
 
-
-import java.util.ArrayList;
-import java.util.List;
-
 // 중복된 문자열 검사
 // 어렵다...
 public class Problem2 {
 
     public static String overlapRemover(String cryptogram) {
-        int cryptogramLength = cryptogram.length();
-        List<String> stringToList = new ArrayList<>(cryptogramLength);
-
-        // 입력 암호문 String 리스트로 치환
-        for (int i = 0; i < cryptogramLength; i++) {
-            stringToList.add(String.valueOf(cryptogram.charAt(i)));
-        }
+        StringBuilder cryptogramStringBuilder = new StringBuilder(cryptogram);
 
         int i = 0;
 
-        while (i < stringToList.size() - 1) {
-            String lowIndexValue = stringToList.get(i);
-            String highIndexValue = stringToList.get(i + 1);
+        // 암호 문자열 길이 -1 까지 반복한다.
+        while (i < cryptogramStringBuilder.length() - 1) {
+            int overlapStartIndex = 0;
+            int overlapEndIndex = 0;
+            
+            // 인덱스 0, 1 쌍을 시작으로하여 순차적으로 비교를 시작한다. 그 값이 같을경우 제거 로직 시작
+            if (cryptogramStringBuilder.charAt(i) == cryptogramStringBuilder.charAt(i + 1)) {
+                overlapStartIndex = i;
+                overlapEndIndex = i + 1;
 
-            if (lowIndexValue.equals(highIndexValue)) {
-                stringToList.remove(i);
-                stringToList.remove(i);
+                while (overlapEndIndex + 1 < cryptogramStringBuilder.length()) {
+                    if (cryptogramStringBuilder.charAt(overlapEndIndex) ==
+                            cryptogramStringBuilder.charAt(overlapEndIndex + 1)) {
+                        overlapEndIndex += 1;
+                    }
+                    else if (cryptogramStringBuilder.charAt(overlapEndIndex) !=
+                            cryptogramStringBuilder.charAt(overlapEndIndex + 1)) {
+                        break;
+                    }
+                }
+                // 중복 문자열 제거 후 처음 부터 다시 검사
+                cryptogramStringBuilder.delete(overlapStartIndex, overlapEndIndex + 1);
                 i = 0;
             }
-            else if (!lowIndexValue.equals(highIndexValue)) {
-                i ++;
+            else if (cryptogramStringBuilder.charAt(i) != cryptogramStringBuilder.charAt(i + 1)) {
+                i += 1;
             }
         }
-
-        // 암호 해독 후 문자열이 비어있으면 빈 문자열 반환
-        if (stringToList.size() == 0) {
-            return "";
-        }
-
-        StringBuilder result = new StringBuilder();
-        for (String element : stringToList) {
-            result.append(element);
-        }
-
-        return result.toString();
+        return cryptogramStringBuilder.toString();
     }
 
     public static String solution(String cryptogram) {
