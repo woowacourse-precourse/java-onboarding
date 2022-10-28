@@ -10,9 +10,16 @@ import java.util.*;
  * */
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> result = new ArrayList<>();
+        ArrayList<String> result = new ArrayList<>();
 
         return result;
+    }
+
+    public static boolean compareBothNickname(String curNickname, String compareNickname) {
+        List<String> slicingCurNick = sliceStringNTime(curNickname, 2);
+        List<String> stringsCompareNic = sliceStringNTime(compareNickname, 2);
+
+        return slicingCurNick.stream().anyMatch(stringsCompareNic::contains);
     }
 
     public static List<String> sliceStringNTime(String target, int n) {
