@@ -10,6 +10,11 @@ class Problem1 {
         int[] multi = {1,1,1,1};
         int[] page = {pobi.get(0), pobi.get(1) ,crong.get(0),crong.get(1)}; // pages
 
+        // Exceptions
+        if(page[1]-page[0]!=1 || page[3]-page[2]!=1 || page[0]==1 || page[1]==400 || page[2]==1 || page[3]==400){
+            return -1;
+        }
+        
         // each page's additions and multiplications
         for(int i=0; i<page.length; i++){
             while(page[i]>0){
