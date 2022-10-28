@@ -13,8 +13,11 @@ class Problem1 {
         try {
             Exception.validateSizeTwo(pobi);
             Exception.validatePageRange(pobi);
+            Exception.validateInOrder(pobi);
             Exception.validateSizeTwo(crong);
             Exception.validatePageRange(crong);
+            Exception.validateInOrder(crong);
+
 
             int pobiScore = getFinalScore(pobi);
             int crongScore = getFinalScore(crong);
@@ -101,4 +104,14 @@ class Exception {
             }
         }
     }
+
+    public static void validateInOrder(List<Integer> participant) {
+        int left = participant.get(0);
+        int right = participant.get(1);
+
+        if (left + 1 != right) {
+            throw new IllegalArgumentException(ERROR_MESSAGE);
+        }
+    }
+
 }
