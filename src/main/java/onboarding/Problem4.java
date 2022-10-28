@@ -12,4 +12,12 @@ public class Problem4 {
 
         return answer;
     }
+
+    private static boolean isUpperCase(char a){
+        if('A'<=a && a<='Z') {
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
