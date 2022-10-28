@@ -14,8 +14,16 @@ public class Problem4 {
     static public char reVerseAlphabet(char in) {
 
         char out = ' ';
-        return out;
 
+        if ('a' <= in && in <= 'z') {
+           out = (char)(in - ('a' - 'A'));
+        }
+
+        if ('A' <= in && in <= 'Z') {
+            out = (char)(in + ('a' - 'A'));
+        }
+
+        return out;
     }
 
     static public char reverseWord(String word) {
