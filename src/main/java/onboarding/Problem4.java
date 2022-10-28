@@ -30,4 +30,11 @@ public class Problem4 {
         }
         return wordCharacter;
     }
+
+    static char[] restoreUpperCharacter(char[] wordCharacter, List<Integer> upperCharIndex) {
+        for (int i : upperCharIndex) {
+            wordCharacter[i] = Character.toUpperCase(wordCharacter[i]);
+        }
+        return wordCharacter
+    }
 }
