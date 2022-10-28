@@ -5,6 +5,17 @@ import java.util.*;
 public class Problem6 {
     public HashMap<String,Integer> makeCheckMap(List<List<String>> forms){
         HashMap<String,Integer> map = new HashMap<>();
+        for(List<String> form : forms){
+            String nickname = form.get(1);
+            for(int i=0; i<nickname.length()-1; i++){
+                String subNickname = nickname.substring(i,i+2);
+                map.put(subNickname, map.getOrDefault(subNickname,0)+1);
+            }
+        }
+        String[] keyArr = map.keySet().toArray(new String[map.size()]);
+        for(String key : keyArr){
+            if(map.get(key)==1) map.remove(key);
+        }
         return map;
     }
 
