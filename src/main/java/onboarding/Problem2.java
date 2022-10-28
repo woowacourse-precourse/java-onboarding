@@ -19,4 +19,32 @@ public class Problem2 {
         }
         return false;
     }
+
+    /***
+     * 중복 문자 제거
+     * - 같은 문자가 연속되는 경우, 해당 문자들을 제거한다.
+     * @param cryptogram
+     * @return
+     */
+    private static String decryption(String cryptogram) {
+        String decrypto_str = "";
+        int i = 0;
+        for (; i < cryptogram.length()-1; i++) {
+            if (cryptogram.charAt(i) == cryptogram.charAt(i + 1)) {
+                int count = 0;
+                for (int j = i; j < cryptogram.length() - 1; j++) {
+                    if (cryptogram.charAt(j) == cryptogram.charAt(j + 1)) count++;
+                    else break;
+                }
+                i += count;
+            } else {
+                decrypto_str += cryptogram.charAt(i);
+            }
+        }
+        if(i == cryptogram.length()-1) {
+            decrypto_str += cryptogram.charAt(i);
+        }
+
+        return decrypto_str;
+    }
 }
