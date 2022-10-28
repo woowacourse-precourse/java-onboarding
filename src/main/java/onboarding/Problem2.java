@@ -5,7 +5,8 @@ public class Problem2 {
 	static String answer;
 
 	public static String solution(String cryptogram) {
-		answer = "";
+		answer = cryptogram.substring(0, 1);
+		cryptogram = cryptogram.substring(1);
 		char[] chars = cryptogram.toCharArray();
 
 		for (Character c : chars) {
