@@ -4,7 +4,7 @@ import java.util.Stack;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        Stack<Character> stack = new Stack();
+        Stack<Character> stack = new Stack<>();
 
         char popped = ' ';
         for (char letter : cryptogram.toCharArray()) {
@@ -15,7 +15,10 @@ public class Problem2 {
             }
             stack.push(letter);
         }
+        return characterStackToString(stack);
+    }
 
+    static String characterStackToString(Stack<Character> stack) {
         StringBuilder result = new StringBuilder(stack.size());
         while (!stack.isEmpty()) {
             result.append(stack.pop());
