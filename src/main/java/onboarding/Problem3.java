@@ -12,4 +12,14 @@ public class Problem3 {
 
         return countNum(charArr);
     }
+
+    public static int countNum (char[] charArr){
+        int countNum=0;
+        for(char ch : charArr){
+            if(ch == '3' || ch == '6' || ch == '9'){
+                countNum++;
+            }
+        }
+        return countNum;
+    }
 }
