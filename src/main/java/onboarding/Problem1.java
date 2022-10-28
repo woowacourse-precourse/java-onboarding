@@ -6,6 +6,7 @@ import java.util.List;
 class Problem1 {
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
 		int answer = Integer.MAX_VALUE;
+		
 		return answer;
 	}
 	
@@ -17,26 +18,34 @@ class Problem1 {
         }while(Page <= 1 || Page >= 400); //조건 충족 시 리셋
         return Page;
 	}
-	public static int PageL(int A) {
-		int L = A;
-		int PageL;
-		if(L % 2 == 1) {//홀수
-			PageL = L;
-    		} else {//짝수
-    		PageL = L+1;
-    		}
-		return PageL;
+	public static int Odd_Even_N_HighScore(int Page) { //홀수 짝수,점수
+		int PageL = 0;
+        int PageR = 0;
+		int length = (int)(Math.log10(PageL)+1);
+		if(Page % 2 == 1) {//홀수
+			PageL = Page;
+			PageR = Page+1;
+	    }else {//짝수
+	    	PageL = Page-1;
+	    	PageR = Page;
+	    }
+		int hun1 = PageL / 100; // 백
+		int ten1 = (PageL / 10) % 10; // 십
+		int one1 = PageL % 10; // 일*/
+		int hun2 = PageR / 100; // 백
+		int ten2 = (PageR / 10) % 10; // 십
+		int one2 = PageR % 10; // 일*/
+		int plusL = hun1+ten1+one1;
+		int multiL = hun1*ten1*one1;
+		int plusR = hun2+ten2+one2;
+		int multiR = hun2*ten2*one2;
+		int PageLSco = (plusL < multiL) ? multiL : plusL;
+		int PageRSco = (plusR < multiR) ? multiR : plusR;
+		int HighSco = (PageLSco < PageRSco) ? PageRSco : PageLSco;
+			
+		return HighSco;
 	}
-	public static int PageR(int A) {
-		int R = A;
-		int pageR;
-		if(R % 2 == 1) {//홀수
-			pageR = R;
-    		} else {//짝수
-    		pageR = R-1;
-    		}
-		return pageR;
-	}
+	
     public static void main(String[] args){
     	
     	int pobiPage = makePage();
@@ -47,7 +56,6 @@ class Problem1 {
         int crongL = 0;
         int crongR = 0;
 
-        
         if(pobiPage % 2 == 1) {//홀수
     		pobiL = pobiPage;
     		pobiR = pobiPage+1;
@@ -62,10 +70,11 @@ class Problem1 {
     		crongL = crongPage-1;
     		crongR = crongPage;
     		}
-    	 System.out.println(pobiL);
-         System.out.println(pobiR);
-         System.out.println(crongL);
-         System.out.println(crongR);
+    	/*int hun = i / 100; // 백
+		int ten = (i / 10) % 10; // 십
+		int one = i % 10; // 일*/
+    	 
+         
     	
     	}
     	
