@@ -76,17 +76,48 @@ public class Problem7 {
         return candidates;
     }
 
+    private static Map<String, Integer> createScoreByName(Set<String> candidates) {
+        Map<String, Integer> scoreByName = new HashMap<>();
+
+        for (String candidate : candidates) {
+            scoreByName.put(candidate, 0);
+        }
+        return scoreByName;
+    }
+
+    private static void calcFriendScore(Map<String, Integer> scoreByName,
+                                        Map<String, Set<String>> friendByName,
+                                        List<String> userFriends) {
+        Set<String> names = scoreByName.keySet();
+
+        for (String name : names) {
+            Set<String> friends = friendByName.get(name);
+            if (friends == null) {
+                continue;
+            }
+            for (String userFriend : userFriends) {
+                if (friends.contains(userFriend)) {
+                    Integer score = scoreByName.get(name);
+                    scoreByName.replace(name, score + 10);
+                }
+            }
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         Map<String, Set<String>> friendsByName;
         List<String> userFriends;
         Map<String, Integer> visitorScore;
         Set<String> candidates;
+        Map<String, Integer> scoreByName;
 
         friendsByName = getRelation(friends);
         userFriends = new ArrayList<>(friendsByName.get(user));
         visitorScore = getVisitorScore(visitors);
         candidates = getCandidates(friendsByName, visitorScore, userFriends, user);
+        scoreByName = createScoreByName(candidates);
+        calcFriendScore(scoreByName, friendsByName, userFriends);
 
         return answer;
     }
