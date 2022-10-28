@@ -99,6 +99,8 @@ public class Problem7 {
             arrayList.add(new ScoreInfo(recommendScoreMap.getKey(),recommendScoreMap.getValue()));
         }
 
+        // 6. 친구 추천 규칙에 따라 점수가 가장 높은 순대로 정렬 후 최대 5명의 user 를 뽑음
+        answer = arrayList.stream().sorted().map(scoreInfo -> scoreInfo.getId()).limit(5).collect(Collectors.toList());
 
         return answer;
     }
