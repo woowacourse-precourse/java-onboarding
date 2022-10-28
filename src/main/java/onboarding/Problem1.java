@@ -5,29 +5,17 @@ import static onboarding.problem1.Problem1Constant.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import onboarding.problem1.application.PlayerService;
-import onboarding.problem1.application.ScoreService;
-import onboarding.problem1.application.Validation;
+import onboarding.problem1.Problem1Application;
 import onboarding.problem1.config.BookGameDependencyConfigurer;
-import onboarding.problem1.exception.BookGameException;
 
 class Problem1 {
 
 	private static final BookGameDependencyConfigurer bookGameConfig = new BookGameDependencyConfigurer();
 
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
-		PlayerService playerService = bookGameConfig.playerService();
-		ScoreService scoreService = bookGameConfig.scoreService();
-		Validation validation = bookGameConfig.validation();
+		Problem1Application problem1 = new Problem1Application(bookGameConfig);
 
-		try {
-			validation.isValid(pobi);
-			validation.isValid(crong);
-		} catch (BookGameException bookGameException) {
-			return bookGameException.getExceptionCode();
-		}
-
-		return answer;
+		return problem1.play(pobi, crong);
 	}
 
 	public static int getScore(List<Integer> pages) {
@@ -51,7 +39,7 @@ class Problem1 {
 		} else if (pobiScore < crongScore) {
 			resultCode = CRONG_WIN_CODE;
 		} else {
-			resultCode =  DRAW_CODE;
+			resultCode = DRAW_CODE;
 		}
 
 		return resultCode;

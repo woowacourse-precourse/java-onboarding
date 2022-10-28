@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface Validation {
 
-	boolean isValid(List<Integer> infos) throws RuntimeException;
+	boolean validate(List<Integer> infos) throws RuntimeException;
 }

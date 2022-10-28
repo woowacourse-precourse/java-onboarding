@@ -12,7 +12,7 @@ public class BookGameValidation implements Validation {
 
 
 	@Override
-	public boolean isValid(List<Integer> infos) throws BookGameException {
+	public boolean validate(List<Integer> infos) throws BookGameException {
 		Integer leftPage = infos.get(LEFT_PAGE_INDEX);
 		Integer rightPage = infos.get(RIGHT_PAGE_INDEX);
 
