@@ -20,12 +20,16 @@ import java.util.List;
  * list 를 매개변수로 받아 가장 큰수를 return 하는 함수
  * pobi 점수와 crong 점수를 매개변수로 받아 비교하여 최종 return 값을 결정하는 함수
  */
+
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE; // int 범위에서 최대값 2147483647
 
         int pobyScore = maxScore(pobi);
         int crongScore = maxScore(crong);
+
+        answer = winResult(pobyScore, crongScore);
+
         return answer;
     }
 
@@ -54,5 +58,14 @@ class Problem1 {
             return leftMaxScore;
 
         return rightMaxScore; // 오른쪽 페이지가 크거나 같을 때
+    }
+
+    public static int winResult(int poby, int crong) {
+        if(poby > crong) // poby 가 승리
+            return 1;
+        else if (crong < poby) // crong 이 승리
+            return 2;
+
+        return 0;
     }
 }
