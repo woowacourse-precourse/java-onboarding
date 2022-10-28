@@ -8,11 +8,11 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         HashMap<String, Integer> combinationCount = new HashMap<>();
         HashSet<String> duplicateEmails = new HashSet<>();
-        for (int i=0; i<forms.size(); i++) {
-            List<String> form = forms.get(i);
+
+        for (List<String> form : forms) {
             HashSet<String> combinations = getCombinations(form.get(NAME));
             for (String combination : combinations) {
-                combinationCount.put(combination, combinationCount.getOrDefault(combination, 0)+1);
+                combinationCount.put(combination, combinationCount.getOrDefault(combination, 0) + 1);
             }
         }
 
