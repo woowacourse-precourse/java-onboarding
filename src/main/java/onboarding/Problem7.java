@@ -4,16 +4,20 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        HashMap<String, Integer> allUserPoint = new HashMap<>();
         HashMap<String, List<String>> contacts = new HashMap<>();
         for (List<String> friend : friends) { // 친구 목록 만들기
             String peopleA = friend.get(0);
             String peopleB = friend.get(1);
 
+            allUserPoint.put(peopleA, 0);
+            allUserPoint.put(peopleB, 0);
+
             contacts.put(peopleA, makeFriendList(peopleB, contacts.get(peopleA)));
             contacts.put(peopleB, makeFriendList(peopleA, contacts.get(peopleB)));
         }
 
+        List<String> answer = Collections.emptyList();
         return answer;
     }
 
