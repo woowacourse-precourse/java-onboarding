@@ -7,6 +7,7 @@ import java.util.List;
 
 import onboarding.problem1.Problem1Application;
 import onboarding.problem1.config.BookGameDependencyConfigurer;
+import onboarding.problem1.exception.BookGameException;
 
 class Problem1 {
 
@@ -15,7 +16,11 @@ class Problem1 {
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
 		Problem1Application problem1 = new Problem1Application(bookGameConfig);
 
-		return problem1.play(pobi, crong);
+		try {
+			return problem1.play(pobi, crong);
+		} catch (BookGameException bookGameException) {
+			return bookGameException.getExceptionCode();
+		}
 	}
 
 	public static int getScore(List<Integer> pages) {

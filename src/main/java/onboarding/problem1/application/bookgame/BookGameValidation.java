@@ -5,13 +5,10 @@ import static onboarding.problem1.application.bookgame.BookGameStatus.*;
 
 import java.util.List;
 
-import onboarding.problem1.application.Validation;
 import onboarding.problem1.exception.BookGameException;
 
-public class BookGameValidation implements Validation {
+public class BookGameValidation {
 
-
-	@Override
 	public boolean validate(List<Integer> infos) throws BookGameException {
 		Integer leftPage = infos.get(LEFT_PAGE_INDEX);
 		Integer rightPage = infos.get(RIGHT_PAGE_INDEX);
