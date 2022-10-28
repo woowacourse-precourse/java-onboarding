@@ -76,7 +76,7 @@
   - [x] 유사한 닉네임 크루 이메일 리스트 변환 & 반환
 
 
-- [ ] solution method 구현
+- [x] solution method 구현
 
 ___
 
