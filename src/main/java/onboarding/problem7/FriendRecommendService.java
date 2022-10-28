@@ -1,6 +1,7 @@
 package onboarding.problem7;
 
 import static java.util.stream.Collectors.toList;
+import static onboarding.problem7.consts.FriendListConst.RECOMMEND_FRIEND_LIST_LIMIT;
 import static onboarding.problem7.consts.FriendScoreConst.FRIEND_RELATION_SCORE;
 import static onboarding.problem7.consts.FriendScoreConst.VISITOR_SCORE;
 
@@ -25,7 +26,7 @@ public class FriendRecommendService {
         sortedScoreDescAndNameAsc(accounts);
         return accounts.stream()
             .map(Account::getId)
-            .limit(5)
+            .limit(RECOMMEND_FRIEND_LIST_LIMIT)
             .collect(toList());
     }
 
