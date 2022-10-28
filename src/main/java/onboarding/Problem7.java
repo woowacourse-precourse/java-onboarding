@@ -32,8 +32,17 @@ public class Problem7 {
         for (List<String> friend : friends) {
             scoreFriendPoint(recommendPoint, friend, user);
         }
+        //Step3. visitors 를 탐색하며 해당 친구이름을 Map 에 넣고 1점부여
+        for (String visitor : visitors) {
+            scoreVisitorPoint(recommendPoint, visitor);
+        }
 
         return answer;
+    }
+
+    private static void scoreVisitorPoint(Map<String, Integer> recommendRank, String visitor) {
+
+        recommendRank.put(visitor, recommendRank.getOrDefault(visitor, 0) + 1);
     }
 
     private static void scoreFriendPoint(Map<String, Integer> recommendRank, List<String> friend, String user) {
