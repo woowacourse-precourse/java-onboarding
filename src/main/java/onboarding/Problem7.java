@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 /** 기능 목록
  * solutionLogic            : 메인 솔루션
@@ -18,11 +15,10 @@ import java.util.List;
  */
 
 public class Problem7 {
-    public final int commonFriendScore = 10;
-    public final int visitedTimeLineScore = 10;
+    public static final int commonFriendScore = 10;
+    public static final int visitedTimeLineScore = 10;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
         if (!checkLowerCase(user)) {
             return Collections.emptyList();
         }
@@ -39,11 +35,7 @@ public class Problem7 {
             mySns.addVisited(visitor);
         }
 
-
-
-
-        return answer;
-
+        return friendRepository.getFriendRecommendation(user);
     }
 
     public static boolean checkValidName(String name) {
@@ -101,16 +93,65 @@ public class Problem7 {
             world.put(name2, name2Sns);
         }
 
-        private void addVisited(String my, String visitor) {
-            MySns mySns = world.getOrDefault(my, new MySns());
-            mySns.addVisited(visitor);
+        private List<String> getFriendRecommendation(String user) {
+            Map<String, Integer> result = new HashMap<>();
+            Set<String> allUsers = getAllUsers();
+            MySns userSns = getUserSns(user);
+            HashSet<String> myFriends = userSns.getMyFriends();
+            Set<String> notMyFriends = getNotMyFriends(myFriends, allUsers);
+            for (String other : notMyFriends) {
+                int score = getScore(user, other);
+                result.put(other, score);
+            }
+            return getSortedRecommend(result);
+        }
+
+        private List<String> getSortedRecommend(Map<String, Integer> map) {
+            List<String> result = new ArrayList<>();
+            List<Map.Entry<String, Integer>> entryList = new ArrayList<>(map.entrySet());
+            entryList.sort((o1, o2) ->
+                    Objects.equals(o1.getValue(), o2.getValue()) ? o1.getKey().compareTo(o2.getKey()) : o2.getValue() - o1.getValue());
+            for (Map.Entry<String, Integer> entry : entryList) {
+                result.add(entry.getKey());
+            }
+
+            return result;
+        }
+
+        private Set<String> getAllUsers() {
+            return world.keySet();
+        }
+
+        private Set<String> getNotMyFriends(Set<String> myFriends, Set<String> allUsers) {
+            Set<String> result = new HashSet<>(allUsers);
+            result.removeAll(myFriends);
+            return result;
+        }
+
+        private int getScore(String user, String other) {
+            Set<String> userFriends = getUserSns(user).getMyFriends();
+            Set<String> otherFriends = getUserSns(other).getMyFriends();
+            int overlapped = countOverlap(userFriends, otherFriends);
+            int visited = countVisited(user, other);
+            return overlapped * commonFriendScore + visited * visitedTimeLineScore;
+        }
+
+        private int countOverlap(Set<String> A, Set<String> B) {
+            Set<String> compare = new HashSet<>(A);
+            compare.retainAll(B);
+            return compare.size();
+        }
+
+        private int countVisited(String user, String visited) {
+            MySns userSns = getUserSns(user);
+            HashMap<String, Integer> visitedMap = userSns.getVisited();
+            return visitedMap.getOrDefault(visited, 0);
         }
     }
 
     private static class MySns {
         private final HashSet<String> friends = new HashSet<>();
         private final HashMap<String, Integer> visited = new HashMap<>();
-        private final HashMap<String, Integer> recommend = new HashMap<>();
 
         private void addFriend(String name) {
             friends.add(name);
@@ -128,7 +169,5 @@ public class Problem7 {
         private HashMap<String, Integer> getVisited() {
             return visited;
         }
-
-
     }
 }
