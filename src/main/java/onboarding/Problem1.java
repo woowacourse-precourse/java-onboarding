@@ -11,13 +11,7 @@ class Problem1 {
         int answer = -1;
 
         try {
-            Exception.validateSizeTwo(pobi);
-            Exception.validatePageRange(pobi);
-            Exception.validateInOrder(pobi);
-            Exception.validateSizeTwo(crong);
-            Exception.validatePageRange(crong);
-            Exception.validateInOrder(crong);
-
+            Exception.validateParticipantPages(Arrays.asList(pobi, crong));
 
             int pobiScore = getFinalScore(pobi);
             int crongScore = getFinalScore(crong);
@@ -91,6 +85,14 @@ class Problem1 {
 
 class Exception {
     static final String ERROR_MESSAGE = "페이지 번호가 잘못 입력되었습니다.";
+
+    public static void validateParticipantPages(List<List<Integer>> participants) {
+        for (List<Integer> participant : participants) {
+            validateSizeTwo(participant);
+            validatePageRange(participant);
+            validateInOrder(participant);
+        }
+    }
     public static void validateSizeTwo(List<Integer> participant) {
         if (participant.size() != 2) {
             throw new IllegalArgumentException(ERROR_MESSAGE);
