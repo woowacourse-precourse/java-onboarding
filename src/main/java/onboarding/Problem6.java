@@ -13,8 +13,9 @@ public class Problem6 {
      * 4. 기존에 있던게 나오면 해당 email과 map에 있는 email을 treeSet에 저장한다.
      */
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer;
         Map<String, String> map = new HashMap<>();
+        Set<String> result = new TreeSet<>(); // 정렬과 중복 제거를 한 번에
 
         // 1. forms의 각 닉네임을 2자씩 잘라서 hashSet에 보관(중복 제거)
         for (List<String> form : forms) {
@@ -27,13 +28,18 @@ public class Problem6 {
             /*
              2. hashSet 원소를 map에 email과 함께 보관할껀데
              3. 처음보는 2글자 원소에 대해서만 저장하고
+             4. 기존에 있던게 나오면 해당 email과 map에 있는 email을 treeSet에 저장한다.
              */
             for(String substr : substrings) {
                 if(!map.containsKey(substr)) {
                     map.put(substr, form.get(0));
+                } else {
+                    result.add(form.get(0));
+                    result.add(map.get(substr));
                 }
             }
         }
+        answer = new ArrayList<>(result);
         return answer;
     }
 }
