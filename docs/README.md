@@ -27,6 +27,8 @@
 - [x] 1부터 number 까지 손뼉을 몇 번 쳐야 하는지 횟수를 return
 
 - [] [Problem4](PROBLEM4.md)
+- [x] 입력받은 문자열을 아스키코드를 통해 반대되는값 return
 - [] [Problem5](PROBLEM5.md)
+- 
 - [] [Problem6](PROBLEM6.md)
 - [] [Problem7](PROBLEM7.md)
