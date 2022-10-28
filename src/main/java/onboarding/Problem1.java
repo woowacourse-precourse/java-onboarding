@@ -40,5 +40,13 @@ class Problem1 {
         return result;
     }
 
+    private static int getMultiplyOfPage(int page){
+        int result = 1;
+        for(String number_each : Integer.toString(page).split("")){
+            result *= Integer.parseInt(number_each);
+        }
+        return result;
+    }
+
 
 }
