@@ -165,6 +165,27 @@ class ApplicationTest {
             String result = "R olev blf";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
+
+        @Test
+        void parameter_length_under1_exception() {
+            String word = "";
+            String result = "";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+
+        @Test
+        void parameter_length_over1000_exception() {
+            String word = "A".repeat(1001);
+            String result = word;
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+
+        @Test
+        void parameter_nonalphabetic_exception() {
+            String word = "I& love you";
+            String result = word;
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
     }
 
     @Nested
