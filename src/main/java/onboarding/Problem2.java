@@ -16,6 +16,7 @@ public class Problem2 {
                     //겹치는 문자를 1로 대체
                     str.setCharAt(i-1, '1');
                     str.setCharAt(i, '1');
+                    count++;
                 }
                 a = b;
             }
