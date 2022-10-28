@@ -2,8 +2,11 @@ package onboarding.problem6;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class Crews {
+
+    private static final Integer CREWS_SIZE = 10000;
 
     private List<Crew> crews;
     private InvalidEmails invalidEmails;
@@ -20,7 +23,7 @@ public class Crews {
     }
 
     private void validateCrewsSize() {
-        if (crews.size() >= 10000) {
+        if (crews.size() >= CREWS_SIZE) {
             throw new IllegalStateException("크루는 10,000명 이하입니다.");
         }
     }
@@ -28,12 +31,16 @@ public class Crews {
     private void validateContainNickNameContinuously(String nickName) {
         List<Crew> removeCrewList = new ArrayList<>();
         crews.stream()
-                .filter(crew -> nickNameFilter(crew.getNickName(), nickName))
+                .filter(nickNameFilter(nickName))
                 .forEach(crew -> {
                     removeCrewList.add(crew);
                     invalidEmails.add(crew.getEmail());
         });
         crews.removeAll(removeCrewList);
+    }
+
+    private Predicate<Crew> nickNameFilter(String nickName) {
+        return crew -> nickNameFilter(crew.getNickName(), nickName);
     }
 
     private boolean nickNameFilter(String crewNickName, String nickName) {
