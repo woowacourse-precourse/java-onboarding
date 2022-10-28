@@ -4,7 +4,9 @@ import static onboarding.Problem6.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Problem7 {
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -17,19 +19,57 @@ public class Problem7 {
 
 		// 유저 친구의 친구 관계 리스트 생성
 		List<List<String>> userFriendsFriendsList = makeFriendFriendList(user, friends, userFriendsList);
-		System.out.println(userFriendsFriendsList);
 
 		// 전체 유저 리스트에서 유저와 친구를 뺀 리스트 생성
 		List<String> noFriendList = makeNoFriendList(userList, userFriendsList);
-		System.out.println(noFriendList);
 
-		// 유저 및 친구 제외 리스트의 구성원 중 방문객 점수 부여
-		// 유저및 친구 제외 리스트의 구성원 중 친구의 친구 점수 부여
-		// answer 리스트에 add
-		// 추천 점수가 같은 경우는 이름순
+		HashMap<String, Integer> friendshipScore = new HashMap<>();
+		for (String person : noFriendList) {
+			friendshipScore.put(person, 0);
+		}
 
-		List<String> answer = Collections.emptyList();
+		for (String person : noFriendList) {
+			// 유저및 친구 제외 리스트의 구성원 중 친구의 친구 점수 부여
+			for (List<String> friendList : userFriendsFriendsList) {
+				if (friendList.contains(person)) {
+					friendshipScore.put(person, friendshipScore.get(person) + 10);
+				}
+			}
+			// 유저 및 친구 제외 리스트의 구성원 중 방문객 점수 부여
+			for (String visitor : visitors) {
+				if (visitor.equals(person)) {
+					friendshipScore.put(person, friendshipScore.get(person) + 1);
+				}
+			}
+		}
+
+		List<String> answer = new ArrayList<>();
+		while (!friendshipScore.isEmpty()) {
+			List<String> maxValueKeys = findMaxValueKeys(friendshipScore);
+			// answer 리스트에 add
+			answer.addAll(maxValueKeys);
+			if (maxValueKeys.size() > 0) {
+				for (String key : maxValueKeys) {
+					friendshipScore.remove(key);
+				}
+			}
+		}
+
 		return answer;
+	}
+
+	static List<String> findMaxValueKeys(HashMap<String, Integer> friendshipScore) {
+		int maxValue = Collections.max(friendshipScore.values());
+		List<String> maxValueKeys = new ArrayList<>();
+		for (Map.Entry<String, Integer> entry : friendshipScore.entrySet()) {
+			if (entry.getValue() == maxValue) {
+				String key = entry.getKey();
+				maxValueKeys.add(key);
+			}
+		}
+		// 추천 점수가 같은 경우는 이름순
+		Collections.sort(maxValueKeys);
+		return maxValueKeys;
 	}
 
 	static List<String> makeUserList(List<List<String>> friends, List<String> visitors) {
