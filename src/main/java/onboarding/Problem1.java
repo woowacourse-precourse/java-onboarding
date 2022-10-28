@@ -3,6 +3,8 @@ package onboarding;
 import java.util.List;
 //1.책을 임의로 펼쳤을 때 옳은 값이 들어왔는지 확인한다.
 //2.왼쪽 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구한다.
+//  2-1. 페이지 번호의 각 자리 숫자를 모두 더한다.
+//  2-2. 페이지 번호의 각 자리 숫자를 모두 곱한다.
 //3.오른쪽 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구한다.
 //4.2~3 과정에서 가장 큰 수를 본인의 점수로 한다.
 //5.점수를 비교해 가장 높은 사람이 게임의 승자가 된다.
@@ -29,5 +31,25 @@ class Problem1 {
                     return -1;
         }
         return answer;
+    }
+    //2-1. 페이지 번호의 자리수를 모두 더한다.
+    public int sum_all(int number){
+        int sum_n = 0;
+        while(number > 0)
+        {
+            sum_n += number % 10;
+            number /= 10;
+        }
+        return sum_n;
+    }
+    //2-2. 페이지 번호의 자리수를 모두 곱한다.
+    public int times_all(int number){
+        int times_n = 1;
+        while(number > 0)
+        {
+            times_n *= number % 10;
+            number /= 10;
+        }
+        return times_n;
     }
 }
