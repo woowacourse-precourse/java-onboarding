@@ -40,8 +40,8 @@
     - [ ] 방문자가 나의 친구이면 추천하지 않는다.
     - [ ] 방문자가 자기 자신이면 추천하지 않는다.
     - [ ] 방문자가 나와 모르는 사람이면 추천 점수 1점을 얻는다.
-- [ ] Recommend 클래스를 만든다.
-  - [ ] field : name(이름), score(점수) 
+- [x] Recommend 클래스를 만든다.
+  - [x] field : name(이름), score(점수) 
 - [ ] RecommendFactory : 추천 친구 알고리즘을 만들어 친구를 추천해준다. 
   - [ ] getRecommendFriendList() : 친구를 추천한다.
     - [ ] 추천 점수가 높은 순으로 최대 5명 추천한다.
