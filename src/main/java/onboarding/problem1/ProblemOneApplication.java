@@ -45,5 +45,12 @@ public class ProblemOneApplication {
 
         book.setLastScore(book);
         System.out.println("book.getLastScore() = " + book.getLastScore());
+
+        Book book2 = new Book(33, 34);
+        book2.setLeftRightPageScore(book2);
+        book2.setLastScore(book2);
+        System.out.println("book.getLastScore() = " + book.getLastScore());
+        System.out.println("book2.getLastScore() = " + book2.getLastScore());
+        System.out.println(calculator.compare(book, book2));
     }
 }
