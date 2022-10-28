@@ -63,5 +63,16 @@ class Problem1 {
         return multi;
     }
 
+    /* 기능4 : 가장 큰 수를 구하는 기능 */
+    private static int MaxPage(List<Integer> list){
+        int LeftPage = list.get(0);
+        int RightPage = list.get(1);
+
+        int LeftMax = Math.max(SumPage(LeftPage), MultiPage(LeftPage));
+        int RightMax = Math.max(SumPage(RightPage),MultiPage(RightPage));
+
+        return Math.max(LeftMax, RightMax);
+    }
+
 
 }
