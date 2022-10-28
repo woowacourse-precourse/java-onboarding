@@ -1,41 +1,41 @@
 package onboarding;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
-        List<Integer> result = Collections.emptyList();
-        changeMoney(money);
+        List<Integer> result = new ArrayList<>();
+        changeMoney(money, result);
         return result;
     }
 
-    private static void changeMoney(int money) {
-        change50000(money);
+    private static void changeMoney(int money, List<Integer> result) {
+        result.add(change50000(money));
         money -= 50000 * change50000(money);
 
-        change10000(money);
+        result.add(change10000(money));
         money -= 10000 * change10000(money);
 
-        change5000(money);
+        result.add(change5000(money));
         money -= 5000 * change5000(money);
 
-        change1000(money);
+        result.add(change1000(money));
         money -= 1000 * change1000(money);
 
-        change500(money);
+        result.add(change500(money));
         money -= 500 * change500(money);
 
-        change100(money);
+        result.add(change100(money));
         money -= 100 * change100(money);
 
-        change50(money);
+        result.add(change50(money));
         money -= 50 * change50(money);
 
-        change10(money);
+        result.add(change10(money));
         money -= 10 * change10(money);
 
-        change1(money);
+        result.add(change1(money));
         money -= 1 * change1(money);
 
     }
