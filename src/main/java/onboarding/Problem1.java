@@ -3,8 +3,8 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-    private static final int MIN_PAGE = 1;
-    private static final int MAX_PAGE = 400;
+    private static final int FIRST_PAGE = 1;
+    private static final int LAST_PAGE = 400;
     private static final int POBI_WIN = 1;
     private static final int CRONG_WIN = 2;
     private static final int TIE = 0;
@@ -74,10 +74,10 @@ class Problem1 {
     }
 
     public static boolean checkPageNumberRange(int pageNumber){
-        return (pageNumber >= MIN_PAGE && pageNumber <= MAX_PAGE);
+        return (pageNumber > FIRST_PAGE && pageNumber < LAST_PAGE);
     }
     public static boolean checkInterval(int leftPageNumber, int rightPageNumber){
-        return (rightPageNumber - leftPageNumber == 1);
+        return (rightPageNumber - leftPageNumber == INTERVAL);
     }
 
     public static boolean isOdd(int pageNumber){
