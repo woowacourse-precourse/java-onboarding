@@ -11,6 +11,10 @@ public class Problem3 {
         return answer;
     }
 
+    /**
+     * @param n
+     * @return n에 들어가는 3, 6, 9의 개수
+     */
     public static int count(int n) {
         int cnt = 0;
 
