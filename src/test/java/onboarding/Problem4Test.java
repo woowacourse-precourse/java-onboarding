@@ -29,4 +29,28 @@ class Problem4Test {
 		assertThat(Problem4.isAlpha('$')).isEqualTo(false);
 	}
 
+	@Test
+	void 청개구리_사전대로_변환() {
+		assertThat(Problem4.getValueFromTreeFrogDict('A')).isEqualTo('Z');
+		assertThat(Problem4.getValueFromTreeFrogDict('b')).isEqualTo('y');
+		assertThat(Problem4.getValueFromTreeFrogDict('z')).isEqualTo('a');
+		assertThat(Problem4.getValueFromTreeFrogDict('M')).isEqualTo('N');
+		assertThat(Problem4.getValueFromTreeFrogDict('n')).isEqualTo('m');
+	}
+
+	@Test
+	void 알파벳인지_구분해서_변환() {
+		assertThat(Problem4.changeValueFromTreeFrogDict('A')).isEqualTo('Z');
+		assertThat(Problem4.changeValueFromTreeFrogDict(' ')).isEqualTo(' ');
+		assertThat(Problem4.changeValueFromTreeFrogDict('[')).isEqualTo('[');
+	}
+
+	@Test
+	void 올바른_입출력() {
+		assertThat(Problem4.solution("    ")).isEqualTo("    ");
+		assertThat(Problem4.solution("<>?:;\\\"'[]{}|-=_+!@#$%^&*()1234567890~`;"))
+			.isEqualTo("<>?:;\\\"'[]{}|-=_+!@#$%^&*()1234567890~`;");
+		assertThat(Problem4.solution("Hello")).isEqualTo("Svool");
+	}
+
 }
