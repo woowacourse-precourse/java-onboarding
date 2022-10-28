@@ -19,4 +19,15 @@ public class Problem4 {
         }
         return upperCharIndex;
     }
+
+    static char[] reverseWord(char[] wordCharacter) {
+        for (int i = 0; i < wordCharacter.length; i++) {
+            int asciiChar = (int)wordCharacter[i];
+            if (asciiChar >= 97 & asciiChar <=122) {
+                char reverseChar = (char)(122+97-asciiChar);
+                wordCharacter[i] = reverseChar;
+            }
+        }
+        return wordCharacter;
+    }
 }
