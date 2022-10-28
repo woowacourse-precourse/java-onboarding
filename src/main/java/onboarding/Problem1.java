@@ -19,11 +19,21 @@ class Problem1 {
         pobiMax = getMaxScore(pobiLeftPage, pobiRightPage);
         crongMax = getMaxScore(crongLeftPage, crongRightPage);
 
-        if(pobiMax > crongMax) answer = 1;
-        else if(pobiMax < crongMax) answer = 2;
-        else if(pobiMax == crongMax) answer = 0;
+        answer = getCompareScore(pobiMax, crongMax);
         return answer;
     }
+
+    public static int getCompareScore(int pobiMax, int crongMax){
+        if(pobiMax > crongMax)
+            return 1;
+        else if(pobiMax < crongMax)
+            return 2;
+        else if(pobiMax == crongMax)
+            return 0;
+
+        return -1;
+    }
+
 
     public static int getMaxScore(int leftPage, int rightPage){
         return Math.max(Math.max(plusBookNum(leftPage), multiBookNum(leftPage)),
