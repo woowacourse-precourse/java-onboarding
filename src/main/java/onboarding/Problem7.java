@@ -10,4 +10,8 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
         return answer;
     }
+
+    public static boolean isFriendsContainUser(List<String> friends, String user) {
+        return friends.contains(user);
+    }
 }
