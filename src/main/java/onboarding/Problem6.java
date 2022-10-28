@@ -1,8 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class Problem6 {
     public static List<String> nameByTwo(String compareTarget) {
@@ -57,6 +55,13 @@ public class Problem6 {
 
         return answer;
     }
+    public static List<String> checkDuplicateEmail(List<String> userEmail){
+        Set<String> userEmailSet = new HashSet<>(userEmail);
+        List<String> userEmailList = new ArrayList<>(userEmailSet);
+
+        return userEmailList;
+    }
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
         List<String> userNameFroms = new ArrayList<>();
