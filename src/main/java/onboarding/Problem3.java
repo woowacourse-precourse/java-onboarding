@@ -6,6 +6,15 @@ package onboarding;
  * 2. 1~number까지 1번 함수를 호출하고 리턴값을 모두 더해 반환
  */
 public class Problem3 {
+    static int calClapCnt(int num) {
+        int cnt = 0;
+        for (char ch: Integer.toString(num).toCharArray()) {
+            if (ch == '3' || ch == '6' || ch == '9') {
+                cnt++;
+            }
+        }
+        return cnt;
+    }
     public static int solution(int number) {
         int answer = 0;
         return answer;
