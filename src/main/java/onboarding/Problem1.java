@@ -22,7 +22,7 @@ class Problem1 {
         checkPages(left,right);
         checkPageRange(left);
         checkPageRange(right);
-        if (isEven(left)&&isOdd(right)){
+        if (isOdd(left)&&isEven(right)){
             return Math.max(getScore(left),getScore(right));
         }else {
             throw new Exception("홀수 짝수가 지켜지지 않음");
