@@ -17,6 +17,20 @@ public class Problem4 {
             map.put(i + 65, (char) +value);
         }
 
+        for (int i = 1; i <= word.length(); i++) {
+
+            int charNumber = word.charAt(i - 1);
+
+            if (charNumber <= 90 && charNumber >= 65) {
+                answer += map.get(charNumber);
+
+            } else if (charNumber >= 90 && charNumber<=122) {
+                int i1 = map.get(charNumber - 32) + 32;
+                answer += (char) i1;
+            }else {
+                answer += word.charAt(i-1);
+            }
+        }
 
         return answer;
     }
