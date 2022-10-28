@@ -5,7 +5,6 @@ import java.util.HashMap;
 import onboarding.validatechecker.Problem4ValidateChecker;
 
 public class Problem4 {
-	private static final HashMap<Character,Character> frogDic = new HashMap<>();
 	private static final char LOWER_FIRST_CHAR='a';
 	private static final char LOWER_MIDDLE_CHAR='m';
 	private static final char LOWER_END_CHAR='z';
@@ -16,11 +15,11 @@ public class Problem4 {
 
 	public static String solution(String word) {
 		Problem4ValidateChecker.isWordValidate(word);
-		initFrogDic();
 		return translateWord(word);
 	}
 
 	private static String translateWord(String word) {
+		HashMap<Character,Character> frogDic = generateFrogDic();
 		StringBuilder answerBuilder = new StringBuilder();
 		for (char key : word.toCharArray()) {
 			if(key == SPACE){
@@ -32,10 +31,12 @@ public class Problem4 {
 		return answerBuilder.toString();
 	}
 
-	private static void initFrogDic(){
+	private static HashMap<Character,Character> generateFrogDic(){
+		HashMap<Character,Character> frogDic = new HashMap<>();
 		for(char ch = UPPER_FIRST_CHAR; ch<=UPPER_END_CHAR; ch++)
 			frogDic.put(ch,(char)(2*UPPER_MIDDLE_CHAR-ch+1));
 		for(char ch = LOWER_FIRST_CHAR; ch<=LOWER_END_CHAR; ch++)
 			frogDic.put(ch,(char)(2*LOWER_MIDDLE_CHAR-ch+1));
+		return frogDic;
 	}
 }
