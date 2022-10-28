@@ -12,7 +12,9 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         initVariables(forms);
 
-        return null;
+        return findDuplicatedCrewEmails().stream()
+                .sorted(String::compareTo)
+                .collect(Collectors.toList());
     }
 
     private static Set<String> findDuplicatedCrewEmails() {
@@ -32,7 +34,21 @@ public class Problem6 {
     }
 
     private static boolean isDuplicated(String ori, String cmp) {
-        return true;
+        int[][] lcs = new int[totalCrewNumber + 1][totalCrewNumber + 1];
+        int duplicatedLength = Integer.MIN_VALUE;
+
+        for (int oriIdx = 0; oriIdx <= ori.length(); oriIdx++) {
+            for (int cmpIdx = 0; cmpIdx <= cmp.length(); cmpIdx++) {
+                if (oriIdx == 0 || cmpIdx == 0) {
+                    lcs[oriIdx][cmpIdx] = 0;
+                } else if (ori.charAt(oriIdx - 1) == cmp.charAt(cmpIdx - 1)) {
+                    lcs[oriIdx][cmpIdx] = lcs[oriIdx - 1][cmpIdx - 1] + 1;
+                    duplicatedLength = Math.max(duplicatedLength, lcs[oriIdx][cmpIdx]);
+                }
+            }
+        }
+
+        return duplicatedLength >= 2;
     }
 
     private static void initVariables(List<List<String>> forms) {
