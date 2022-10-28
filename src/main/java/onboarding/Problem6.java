@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -46,6 +47,12 @@ public class Problem6 {
         }
 
         List<String> retAnswer = new ArrayList<>(answer);
+        Collections.sort(retAnswer);
+
+        for (int i = 0; i < retAnswer.size(); i++) {
+            retAnswer.set(i, retAnswer.get(i) + "@email.com");
+        }
+
         return retAnswer;
     }
 }
