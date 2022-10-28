@@ -5,10 +5,10 @@ import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
         HashMap<String, Integer> recommend = giveVisitScore(visitors,giveFriendsScore(user,friends));
         removeUserAndFriendsInRecommendationFriends(user,friends,recommend);
         List<Map.Entry<String, Integer>> recommends = sortRecommendationFriends(recommend);
+        List<String> answer = fiveRecommendFriends(recommends);
         return answer;
     }
     private static HashMap<String, Integer> giveFriendsScore(String user, List<List<String>> friends){
