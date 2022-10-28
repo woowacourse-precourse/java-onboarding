@@ -6,7 +6,15 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int answer;
+
+        if (!isValidPages(pobi) || !isValidPages(crong)) return -1;
+
+        int pobiScore = getScore(pobi);
+        int crongScore = getScore(crong);
+
+        answer = getResult(pobiScore, crongScore);
+
         return answer;
     }
 
