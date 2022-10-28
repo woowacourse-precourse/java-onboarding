@@ -4,7 +4,8 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+
+        List<String> answer =   new ArrayList<>();
 
         // user의 direct friend 구하기
         HashSet<String> directFriends = new HashSet<String>();
@@ -25,6 +26,7 @@ public class Problem7 {
             for(List<String> friendList: friends){
                 for(String friendName: friendList){
                     if(friendName != directFriend && friendName != user){
+
                         mutualFriends.add(friendName);
                     }
                 }
@@ -65,6 +67,20 @@ public class Problem7 {
 
         System.out.println(score);
 
+        LinkedHashMap<String, Integer> sortedScore = new LinkedHashMap<>();
+        score.entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .forEachOrdered(x -> sortedScore.put(x.getKey(), x.getValue()));
+
+        System.out.println(sortedScore);
+
+        for(Map.Entry<String,Integer> entry: score.entrySet()){
+            answer.add(entry.getKey());
+            if(answer.size()>=5){
+                break;
+            }
+        }
 
 
 
