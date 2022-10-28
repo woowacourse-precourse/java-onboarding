@@ -12,7 +12,25 @@ public class Problem3 {
      * @return : 마지막 숫자까지 손뼉을 친 횟수
      */
     private static int getClapCount(int number){
+        //손뼉을 친 횟수 초기화
+        int clapCount = 0;
 
+        //1의 자리 3,6,9에 의해 손뼉을 친 횟수를 더함
+        clapCount += digitBaseCount(number, 1);
+        //10의 자리 3,6,9에 의해 손뼉을 친 횟수를 더함
+        if(number >= 10){
+            clapCount += digitBaseCount(number, 10);
+        }
+        //100의 자리 3,6,9에 의해 손뼉을 친 횟수를 더함
+        if(number >= 100){
+            clapCount += digitBaseCount(number, 100);
+        }
+        //1000의 자리 3,6,9에 의해 손뼉을 친 횟수를 더함
+        if(number >= 1000){
+            clapCount += digitBaseCount(number, 1000);
+        }
+
+        return clapCount;
     }
 
     /**
