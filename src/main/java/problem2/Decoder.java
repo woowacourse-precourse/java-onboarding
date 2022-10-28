@@ -7,6 +7,23 @@ public class Decoder {
         this.cryptogram = cryptogram;
     }
 
+    public String decode() {
+        String now = eliminateDuplication(cryptogram);
+        if (now.equals(""))
+            return "";
+        String next = eliminateDuplication(now);
+
+        while (isContinue(now, next)) {
+            now = next;
+            next = eliminateDuplication(now);
+        }
+        return next;
+    }
+
+    private boolean isContinue(String now, String next) {
+        return !next.equals("") && !now.equals(next);
+    }
+
     private String eliminateDuplication(String cryptogram) {
         StringBuilder decryption = new StringBuilder(cryptogram);
         handleLastProcess(decryption, handleMidProcess(decryption));
