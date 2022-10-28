@@ -1,10 +1,10 @@
 ## 기능 목록
 
-| Date  | Method Name        | Feature  | Parameter Type | Return Type | Progress   |
-|-------|--------------------|----------|----------------|-------------|------------|
-| 10.27 | reverseCharacter() | 문자 반대로 변환 | char           | char        | committed  |
-| 10.27 | isLowerCase()      | 소문자 확인   | char           | boolean     | committed  |
-| 10.27 | isUpperCase()      | 대문자 확인   | char           | boolean     | committed  |
+| Date  | Feature  | Method Name        | Parameter Type | Return Type | Progress   |
+|-------|----------|--------------------|----------------|-------------|------------|
+| 10.27 | 문자 반대로 변환 | reverseCharacter() | char           | char        | committed  |
+| 10.27 | 소문자 확인   | isLowerCase()      | char           | boolean     | committed  |
+| 10.27 | 대문자 확인   | isUpperCase()      | char           | boolean     | committed  |
 
 ### TODO
 
