@@ -6,6 +6,8 @@ public class Problem7 {
 
     //{인간=[이 인간의 친구들]} 매핑
     private static Map<String, List<String>> friendsOfPerson = new HashMap<>();
+    //본인과 이미 친구인 사람 목록 List
+    private static List<String> alreadyFriends = new ArrayList<>();
 
 
 
@@ -28,6 +30,17 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
+
+        //결과에 포함되지않는 user, user 친구 제외 list
+        alreadyFriends.add(user);
+        alreadyFriends.addAll(mapFriendsOfPerson(friends, user).get(user));
+
+        //제외 List의 친구들 매핑
+        for (String alreadyFriend : alreadyFriends) {
+            mapFriendsOfPerson(friends, alreadyFriend);
+        }
+
+        
 
 
         return answer;
