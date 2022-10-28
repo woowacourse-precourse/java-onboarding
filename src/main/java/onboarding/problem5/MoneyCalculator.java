@@ -23,9 +23,9 @@ public class MoneyCalculator {
             ONE_THOUSAND_WON, FIVE_HUNDRED_WON, ONE_HUNDRED_WON, FIFTY_WON, TEN_WON, ONE_WON};
         List<Integer> result = new ArrayList<>();
 
-        for (int i : moneyTypes) {
-            result.add(money / i);
-            money %= i;
+        for (int moneyType : moneyTypes) {
+            result.add(money / moneyType);
+            money %= moneyType;
         }
         return result;
     }
