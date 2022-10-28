@@ -4,7 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -215,6 +214,20 @@ class ApplicationTest {
         void case2() {
             int money = 15_000;
             List<Integer> result = List.of(0, 1, 1, 0, 0, 0, 0, 0, 0);
+            assertThat(Problem5.solution(money)).isEqualTo(result);
+        }
+
+        @Test
+        void edgeCaseDown() {
+            int money = 1;
+            List<Integer> result = List.of(0, 0, 0, 0, 0, 0, 0, 0, 1);
+            assertThat(Problem5.solution(money)).isEqualTo(result);
+        }
+
+        @Test
+        void edgeCaseUp() {
+            int money = 1_000_000;
+            List<Integer> result = List.of(20, 0, 0, 0, 0, 0, 0, 0, 0);
             assertThat(Problem5.solution(money)).isEqualTo(result);
         }
     }
