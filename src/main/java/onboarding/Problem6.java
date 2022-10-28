@@ -22,25 +22,23 @@ public class Problem6 {
 
     private static void makeEmailsOfDuplicatedName() {
         for (int i=0; i<forms.size(); i++) {
-            for (String twoSubName : getTwoCharsAfterSplit(getNickname(i))) {
-                if (subNameAndIndex.containsKey(twoSubName))
-                    addEmailToAnswer(i, twoSubName);
+            List<String> twoSubNames = getTwoSubNames(getNickname(i));
+            for (String twoSubName : twoSubNames) {
+                if (subNameAndIndex.containsKey(twoSubName)) {
+                    answer.add(getEmail(i));
+                    answer.add(getEmail(twoSubName));
+                }
                 subNameAndIndex.put(twoSubName, i);
             }
         }
     }
 
-    private static List<String> getTwoCharsAfterSplit(String name) {
+    private static List<String> getTwoSubNames(String name) {
         List<String> result = new ArrayList<>();
         for (int i=0; i<name.length()-1; i++) {
             result.add(name.substring(i, i+2));
         }
         return result;
-    }
-
-    private static void addEmailToAnswer(int index, String twoSubName) {
-        answer.add(getEmail(index));
-        answer.add(getEmail(twoSubName));
     }
 
     private static String getEmail(int index) {
