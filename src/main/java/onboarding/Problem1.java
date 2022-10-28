@@ -9,6 +9,16 @@ class Problem1 {
         int pobiMax = Math.max(findMaxNum(pobi.get(0)), findMaxNum(pobi.get(1)));
         int crongMax = Math.max(findMaxNum(crong.get(0)), findMaxNum(crong.get(1)));
 
+        if (pobiMax > crongMax) {
+            answer = 1;
+        }
+        else if (pobiMax < crongMax) {
+            answer = 2;
+        }
+        else {
+            answer = 0;
+        }
+
         return answer;
     }
 
