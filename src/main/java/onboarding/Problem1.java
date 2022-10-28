@@ -4,10 +4,6 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if (!validateInput(pobi) || !validateInput(crong)) {
-            return -1;
-        }
-
         int pobiMaxValue = getMaxValue(pobi);
         int crongMaxValue = getMaxValue(crong);
         if (pobiMaxValue == crongMaxValue) {
@@ -19,20 +15,6 @@ class Problem1 {
         }
 
         return 2;
-    }
-
-    private static boolean validateInput(List<Integer> pageList) {
-        for (int page : pageList) {
-            if (page == 1 || page == 400) {
-                return false;
-            }
-        }
-
-        if (pageList.get(1) - pageList.get(0) != 1) {
-            return false;
-        }
-
-        return true;
     }
 
     private static int getMaxValue(List<Integer> values) {
