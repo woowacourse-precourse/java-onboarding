@@ -5,6 +5,31 @@ import java.util.*;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
+
+        boolean check = true;
+
+        List<String> cryptogramIngredients = getCryptogramIngredients(cryptogram);
+
+        while (check) {
+            check = false;
+
+            List<String> temp = new ArrayList<>(cryptogramIngredients);
+
+            Set<Integer> duplicatedCharIndex = getDuplicatedCharIndex(temp);
+            List<Integer> duplicatedCharIndexReverseOrder = setToListWithReverseOrder(duplicatedCharIndex);
+
+            // 문자열에서 인덱스 제거하기
+            if (!duplicatedCharIndexReverseOrder.isEmpty()) {
+                for (int charIndex : duplicatedCharIndexReverseOrder) {
+                    temp.remove(charIndex);
+                }
+
+                check = true;
+            }
+
+            cryptogramIngredients = temp;
+        }
+
         return answer;
     }
 
