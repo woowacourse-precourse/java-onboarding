@@ -11,6 +11,18 @@ public class Problem1Validation {
     }
 
     public static boolean isBookNumberBetweenMinAndMax(List<Integer> userInput, int bookMin, int bookMax) {
-        return false;
+        long count = userInput.stream()
+                .filter(pageNum -> isBetween(pageNum,bookMin, bookMax))
+                .count();
+        return Long.valueOf(userInput.size()) == count;
     }
+
+    private static boolean isBetween(Integer pageNum, int bookMin, int bookMax) {
+        if (bookMin <= pageNum && pageNum <= bookMax) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

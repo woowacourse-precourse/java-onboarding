@@ -52,7 +52,7 @@ public class Problem1CustomTest {
         }
         @Test
         void 책페이지가400초과인값이포함되어있다면() {
-            List<Integer> list = List.of(97, 98);
+            List<Integer> list = List.of(401, 398);
             assertThat(
                     Problem1Validation.isBookNumberBetweenMinAndMax(list, BOOK_MIN, BOOK_MAX))
                     .isFalse();
