@@ -1,9 +1,12 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
 public class Problem6 {
+    private static ArrayList<String> twoLetterSplitNicknames = new ArrayList<>();
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
@@ -54,5 +57,21 @@ public class Problem6 {
         }
 
         return splitAndBindNickname;
+    }
+
+
+    /**
+     * 분할 된 글자 검색
+     * @param splitNicknames 2글자씩 묶인 글자 집합
+     * @return 존재 여부
+     */
+    private static boolean isExistTwoLetterNickname(String[] splitNicknames) {
+        for(String splitNickname : splitNicknames) {
+            if (twoLetterSplitNicknames.contains(splitNickname)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
