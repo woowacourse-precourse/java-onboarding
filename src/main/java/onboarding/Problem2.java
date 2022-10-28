@@ -32,11 +32,3 @@ public class Problem2 {
         return cryptogram;
     }
 }
-
-/*
-"browoanoommnaon"
-"browoannaon"
-"browoaaon"
-"browoon"
-"brown"
- */
