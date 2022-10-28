@@ -6,6 +6,7 @@ class Problem1 {
     public static int firstnumber;
     public static int middlenumber;
     public static int lastnumber;
+    public static int thispagenumber;
 
 
     public static boolean isSuccessivePage(List<Integer> pagenumber){
@@ -45,6 +46,14 @@ class Problem1 {
             multinumber=firstnumber*middlenumber*lastnumber;
         }
         return multinumber;
+    }
+
+    public static void comparePageNumber(int sum, int multiple){
+        if(sum>=multiple){
+            thispagenumber=sum;
+        }else{
+            thispagenumber=multiple;
+        }
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
