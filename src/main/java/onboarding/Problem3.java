@@ -10,6 +10,15 @@ public class Problem3 {
         return answer;
     }
 
+    public static int getAnswer(int number) {
+        int count = 0;
+        for (int i = 1; i <= number; i++) {
+            String numberStr = makeStringNumber(i);
+            count += getClapCountByStrNumber(numberStr);
+        }
+        return count;
+    }
+
     public static int getClapCountByStrNumber(String numberStr) {
         int count = 0;
         for (int i = 0; i < numberStr.length(); i++) {
