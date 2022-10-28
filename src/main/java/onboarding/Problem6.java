@@ -35,4 +35,18 @@ public class Problem6 {
 
         return result;
     }
+
+    static List<List<String>> getCombination(List<String> keys){
+        List<List<String>> result = new ArrayList<>();
+        int keyCnt = keys.size();
+
+        for (int i = 0; i < keyCnt - 1; i++){
+            String key1 = keys.get(i);
+            List<String> remainKeys = keys.subList(i + 1, keyCnt + 1);
+            remainKeys.stream().forEach(email -> result.add(List.of(key1, email)));
+        }
+
+        return result;
+    }
+
 }
