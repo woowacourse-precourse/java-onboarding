@@ -6,7 +6,7 @@ class Crew {
     private String email;
     private String nickname;
     private boolean isDuplicate;
-    private Set<String> tokens = new HashSet(); // 개인이 가지고 있는 tokens
+    private Set<String> tokens = new HashSet(); // 크루 개인의 중복 토큰
 
     public Crew(String email, String nickname) {
         this.email = email;
@@ -15,6 +15,7 @@ class Crew {
         makeTokens(this.nickname);
     }
 
+    // 크루의 닉네임으로 중복 token 생성
     private void makeTokens(String nickname) {
         for (int i = 0; i < nickname.length() - 1; i++) {
             String token = nickname.substring(i, i+2);
@@ -51,9 +52,9 @@ class Crew {
 
 public class Problem6 {
 
-    static List<Crew> crews = new ArrayList<>();
-    static Map<String, Set<String>> totalTokens = new HashMap<>(); // 모든 crew의 토큰을 관리
-    static List<String> answer = new ArrayList<>();
+    static private List<Crew> crews = new ArrayList<>();
+    static private Map<String, Set<String>> totalTokens = new HashMap<>(); // 모든 크루의 중복 토큰 저장
+    static private List<String> answer = new ArrayList<>();
 
     public static List<String> solution(List<List<String>> forms) {
         initCrews(forms);
@@ -64,24 +65,24 @@ public class Problem6 {
         return answer;
     }
 
-    // 모든 크루 초기화하여 list에 저장
+    // 모든 크루 초기화하여 List에 저장
     public static void initCrews(List<List<String>> forms) {
         for (List<String> form : forms)
             crews.add(new Crew(form.get(0), form.get(1)));
     }
 
-    // `crew의 닉네임`과 `해당 crew의 token`을 HashMap에 저장
+    // `크루의 닉네임`과 `해당 크루의 토큰`을 HashMap에 저장
     public static void putTokens() {
         for (Crew crew : crews)
             totalTokens.put(crew.getNickname(), crew.getTokens());
     }
 
-    // 모든 crew를 비교하며 미리 만들어놓은 token을 이용하여 중복인지 체크
+    // 모든 크루를 비교하며 미리 만들어놓은 토큰을 이용하여 중복인지 체크
     public static void checkDuplicate() {
         for (Crew crew : crews) {
             for (String nickname : totalTokens.keySet()) {
-                if (crew.getNickname() != nickname) { // 다른 crew의 토큰과 비교하기 위함
-                    Set<String> tokensOfOtherCrew = totalTokens.get(nickname); // 다른 crew의 토큰
+                if (crew.getNickname() != nickname) { // 다른 크루의 토큰과 비교하기 위함
+                    Set<String> tokensOfOtherCrew = totalTokens.get(nickname); // 다른 크루의 토큰
                     Iterator<String> it = tokensOfOtherCrew.iterator();
 
                     while (it.hasNext()) {
