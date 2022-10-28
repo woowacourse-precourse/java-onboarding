@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
@@ -16,6 +17,18 @@ class Problem1 {
             return false;
         else
             return true;
+    }
+
+    public static List<Integer> breakNum(Integer page) {
+
+        List<Integer> broken = new ArrayList<>();
+
+        while(page > 0) {
+            broken.add(page % 10);
+            page /= 10;
+        }
+
+        return broken;
     }
 
 }
