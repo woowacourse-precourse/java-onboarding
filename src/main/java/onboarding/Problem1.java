@@ -5,7 +5,24 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        Integer pobiLeftPage = pobi.get(0);
+        Integer pobiRightPage = pobi.get(1);
+        Integer crongLeftPage = crong.get(0);
+        Integer crongRightPage = crong.get(1);
         
+        if(isCorrectPage(pobiLeftPage, pobiRightPage) && isCorrectPage(crongLeftPage, crongRightPage)) {
+        	int pobiScore = getScore(pobiLeftPage, pobiRightPage);
+        	int crongScore = getScore(crongLeftPage, crongRightPage);
+        	if(pobiScore < crongScore) {
+        		answer = 2;
+        	} else if(pobiScore > crongScore){
+        		answer = 1;
+        	} else {
+        		answer = 0;
+        	}
+        } else {
+        	answer = -1;
+        }
         return answer;
     }
     public static int getScore(int leftPage, int rightPage) {
