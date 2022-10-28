@@ -15,7 +15,7 @@ public class Problem6 {
         for(int i = 0; i < name1.length() - 1; i++){
             name1List.add(name1.substring(i, i + 2));
         }
-        for(int i = 0; i < name2.length(); i++){
+        for(int i = 0; i < name2.length() - 1; i++){
             name2List.add(name2.substring(i, i + 2));
         }
 
