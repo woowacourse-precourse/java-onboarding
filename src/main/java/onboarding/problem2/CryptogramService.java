@@ -4,6 +4,7 @@ public class CryptogramService {
     public static final String REPEATING_MORE_THAN_ONCE_REGEX = "(.)\\1+";
 
     public static String decodeCryptogram(String cryptogram) {
+        CryptogramValidator.validate(cryptogram);
         cryptogram = removeSpacing(cryptogram);
         return removeDuplicated(cryptogram);
     }
