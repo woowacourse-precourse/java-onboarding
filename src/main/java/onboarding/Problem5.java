@@ -1,14 +1,16 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-class money{
+class Money{
     static final int[] moneyList = {50000,10000,5000,1000,500,100,50,10,1};
     static final String invalidArgument = "InvalidArgument";
 }
-class validateMoney{
-    public static boolean isDivide(int money,int divideMoney){
+class validateMoney extends calculateMoney{
+    public static boolean isDivide(int money){
         return (money/divideMoney)>0;
     }
     public static boolean isValidAmount(int money){
@@ -16,7 +18,7 @@ class validateMoney{
     }
 }
 class calculateMoney{
-    private static int divideMoney;
+    static int divideMoney;
     public static void setDivideMoney(int money){
         divideMoney = money;
     }
