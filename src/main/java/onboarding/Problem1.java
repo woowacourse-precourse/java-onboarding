@@ -5,8 +5,26 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        try {
+            // 포비와 크롱의 점수 계산
+            int pobiScore = getScoreFromPages(pobi);
+            int crongScore = getScoreFromPages(crong);
+
+            // 최대 점수로 게임 시작
+            Result result = startGame(pobiScore, crongScore);
+
+            // 게임 결과 반환
+            switch (result) {
+                case DRAW:
+                    return 0;
+                case POBI_WIN:
+                    return 1;
+                case CRONG_WIN:
+                    return 2;
+            }
+        } catch (GameException e) {
+            return e.getValue();
+        }
     }
 
     private static int getScoreFromPages(List<Integer> pages) {
