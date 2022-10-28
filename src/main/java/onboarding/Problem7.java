@@ -57,4 +57,22 @@ public class Problem7 {
         }
         return count;
     }
+
+    private class People {
+        String name;
+        int point = 0;
+        List<String> friendList = new ArrayList<>();
+
+        public People(String name) {
+            this.name = name;
+        }
+
+        public void plusPoint(int point) {
+            this.point += point;
+        }
+
+        public void addFriendList(String friend) {
+            this.friendList.add(friend);
+        }
+    }
 }
