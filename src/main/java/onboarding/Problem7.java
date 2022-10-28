@@ -1,38 +1,52 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
         LinkedHashMap<String, Integer> countingMap = new LinkedHashMap<String, Integer>();
+        List<String> notToCountName = new ArrayList<>();
+
+
+        /**
+         * friends 점수 카운팅 기능
+         */
         for (int i = 0; i < friends.size(); i++) {
             List friendsList = friends.get(i);
-
-//            System.out.println("--------------");
-//            System.out.println(friendsList);
 
             for (int j = 0; j < 2; j++) {
                 String friendName = (String) friendsList.get(j);
                 String pairName = getPairName(friendsList, j);
-//                System.out.println("--------------");
-//                System.out.println(friendName);
-//                System.out.println(pairName);
+
                 for (int k = 0; k < friends.size(); k++) {
                     if (k == i) {
                     } else {
                         List otherFriendsList = friends.get(k);
                         if (otherFriendsList.contains(friendName) == true && otherFriendsList.contains(user) == true) {
+                            notToCountName.add(friendName);
                             break;
-                        } else if ( pairName == user){
+                        } else if (pairName == user) {
+                            notToCountName.add(pairName);
                             break;
-                        }else if (otherFriendsList.contains(pairName) == true && otherFriendsList.contains(user) == true) {
+                        } else if (otherFriendsList.contains(pairName) == true && otherFriendsList.contains(user) == true) {
                             countingMap.merge(friendName, 10, (integer, integer2) -> integer + integer2);
                         }
                     }
                 }
             }
         }
+
+
+        notToCountName = removeDuplication(notToCountName);
+
+
+        /**
+         * visitors 점수 카운팅 기능
+         */
+
+
         List<String> answer = Collections.emptyList();
         return answer;
     }
@@ -48,5 +62,11 @@ public class Problem7 {
         String pairName = (String) friendsList.get(j);
 
         return pairName;
+    }
+
+    private static List<String> removeDuplication(List<String> selectedList) {
+        List<String> answer = new ArrayList<String>();
+        answer = selectedList.stream().distinct().collect(Collectors.toList());
+        return answer;
     }
 }
