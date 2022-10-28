@@ -101,6 +101,20 @@ class ApplicationTest {
             String result="c";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
+
+        @Test
+        void case6() {
+            String cryptogram = "cccccccccc";
+            String result="";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void case7() {
+            String cryptogram = "c";
+            String result="c";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
     }
 
     @Nested
