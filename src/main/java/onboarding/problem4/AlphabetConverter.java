@@ -16,6 +16,10 @@ public class AlphabetConverter {
 
     public String convert() {
         for (Character charInWord : targetWord.toCharArray()) {
+            if (!Character.isAlphabetic(charInWord)) {
+                appendWithoutConverting(charInWord);
+                continue;
+            }
             if (Character.isLowerCase(charInWord)) {
                 convertLowerCase(charInWord);
                 continue;
@@ -26,6 +30,10 @@ public class AlphabetConverter {
             }
         }
         return convertedWord.toString();
+    }
+
+    private void appendWithoutConverting(char currentChar) {
+        convertedWord.append(currentChar);
     }
 
     public void convertLowerCase(char currentChar) {
