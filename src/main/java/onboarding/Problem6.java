@@ -21,7 +21,7 @@ public class Problem6 {
         }
 
         List<String> result = convertSetToList(duplicatedEmail);
-        result.sort(String.CASE_INSENSITIVE_ORDER);
+        sortList(result, String.CASE_INSENSITIVE_ORDER);
         return result;
     }
 
@@ -32,10 +32,6 @@ public class Problem6 {
         return cloneForms;
     }
 
-    private static <T> List<T> convertSetToList(Set<T> set) {
-        return new ArrayList<>(set);
-    }
-
     private static Set<String> getEmailOfDuplicationNickname(List<List<String>> forms, List<String> target) {
         Set<String> duplicatedEmail = new HashSet<>();
 
@@ -43,6 +39,14 @@ public class Problem6 {
             addIfDuplicated(duplicatedEmail, target, form);
         }
         return duplicatedEmail;
+    }
+
+    private static <T> List<T> convertSetToList(Set<T> set) {
+        return new ArrayList<>(set);
+    }
+
+    private static <T> void sortList(List<T> list, Comparator<T> comparator) {
+        list.sort(comparator);
     }
 
     private static void addIfDuplicated(Set<String> duplicatedEmail, List<String> target, List<String> compare) {
