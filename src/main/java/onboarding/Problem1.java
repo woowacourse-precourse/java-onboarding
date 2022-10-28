@@ -61,7 +61,10 @@ class Problem1 {
     }
 
     private static boolean verifyEdgePage(int leftPage, int rightPage) {
-        return false;
+        if (leftPage == 1 || rightPage == 400) {
+            return false;
+        }
+        return true;
     }
 
     private static boolean verifyPageBoundary(int leftPage, int rightPage) {
