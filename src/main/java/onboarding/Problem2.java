@@ -31,6 +31,17 @@ public class Problem2 {
 
         return resultStack;
     }
+
+    public static String stackToString(Stack<Character> stack) {
+        StringBuilder sb = new StringBuilder();
+
+        while (!stack.empty()) {
+            sb.append(stack.pop());
+        }
+
+        return sb.toString();
+    }
+
     public static Stack<Character> stringToStack(String string) {
         Stack<Character> stack = new Stack<>();
 
