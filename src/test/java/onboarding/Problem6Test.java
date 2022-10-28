@@ -47,42 +47,14 @@ class Problem6Test {
 
     public static final int LIMIT = 2;
 
-    public static String isDuplicated(String before, String after) {
-        if (before.length() < LIMIT || after.length() < LIMIT) return null;
-        if (isValid(before, after)) {
-            return before;
-        }
-        return null;
-    }
-
-    private static boolean isValid(String str1, String str2) {
-        for (int i = 0; i <= str2.length() - 2; i++) {
-            if (str1.contains(str2.substring(i, i + 2))) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public static List<String> getAnswer(List<List<String>> forms) {
         Map<String, Set<String>> map = new HashMap<>();
-        List<String> result = new ArrayList<>();
         for (List<String> form : forms) {
             String nickName = form.get(1);
             String email = form.get(0);
             makeMap(map, nickName, email);
         }
-        for (Map.Entry<String, Set<String>> e : map.entrySet()) {
-            makeResult(result, e);
-        }
-        Collections.sort(result);
-        return result;
-    }
-
-    private static void makeResult(List<String> result, Map.Entry<String, Set<String>> e) {
-        if (e.getValue().size() >= 2) {
-            result.addAll(e.getValue());
-        }
+        return makeResult(map);
     }
 
     private static void makeMap(Map<String, Set<String>> map, String nickName, String email) {
@@ -97,5 +69,33 @@ class Problem6Test {
                 map.get(key).add(email);
             }
         }
+    }
+
+    public static String isDuplicated(String before, String after) {
+        if (before.length() < LIMIT || after.length() < LIMIT) return null;
+        if (isMatched(before, after)) {
+            return before;
+        }
+        return null;
+    }
+
+    private static boolean isMatched(String str1, String str2) {
+        for (int i = 0; i <= str2.length() - 2; i++) {
+            if (str1.contains(str2.substring(i, i + 2))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static List<String> makeResult(Map<String, Set<String>> map) {
+        List<String> result = new ArrayList<>();
+        for (Map.Entry<String, Set<String>> e : map.entrySet()) {
+            if (e.getValue().size() >= 2) {
+                result.addAll(e.getValue());
+            }
+        }
+        Collections.sort(result);
+        return result;
     }
 }
