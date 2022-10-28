@@ -17,34 +17,31 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 public class Problem1CustomTest {
     private final static int USER_INPUT_LENGTH = 2;
+    private final static int BOOK_MIN = 1;
+    private final static int BOOK_MAX = 400;
     @Nested
     class Problem1Test {
         @Test
         void 길이가2보다큰경우테스트() {
-            List<Integer> pobi = List.of(97, 98, 100);
-            List<Integer> crong = List.of(197, 198, 201);
+            List<Integer> list = List.of(97, 98, 100);
             assertThat(
-                    Problem1Validation.userInputSizeEquals(pobi, USER_INPUT_LENGTH)
-                            && Problem1Validation.userInputSizeEquals(crong, USER_INPUT_LENGTH))
-                    .isFalse();
+                    Problem1Validation.userInputSizeEquals(list, USER_INPUT_LENGTH))
+                            .isFalse();
         }
         @Test
         void 길이가2보다작은경우테스트() {
-            List<Integer> pobi = List.of(97);
-            List<Integer> crong = List.of(197);
+            List<Integer> list = List.of(97);
             assertThat(
-                    Problem1Validation.userInputSizeEquals(pobi, USER_INPUT_LENGTH)
-                            && Problem1Validation.userInputSizeEquals(crong, USER_INPUT_LENGTH))
-                    .isFalse();
+                    Problem1Validation.userInputSizeEquals(list, USER_INPUT_LENGTH))
+                            .isFalse();
         }
         @Test
         void 길이가2인경우테스트() {
-            List<Integer> pobi = List.of(97, 98);
-            List<Integer> crong = List.of(197, 198);
+            List<Integer> list = List.of(97, 98);
             assertThat(
-                    Problem1Validation.userInputSizeEquals(pobi, USER_INPUT_LENGTH)
-                            && Problem1Validation.userInputSizeEquals(crong, USER_INPUT_LENGTH))
-                    .isTrue();
+                    Problem1Validation.userInputSizeEquals(list, USER_INPUT_LENGTH))
+                            .isTrue();
         }
+
     }
 }

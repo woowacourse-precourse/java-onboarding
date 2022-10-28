@@ -9,4 +9,8 @@ public class Problem1Validation {
         }
         return false;
     }
+
+    public static boolean isBookNumberBetweenMinAndMax(List<Integer> userInput, int bookMin, int bookMax) {
+        return false;
+    }
 }
