@@ -44,16 +44,20 @@ public class Problem7 {
             target.addScore(target.getNumberOfFriends() * 10);
         }
 
-        private static void calculateVisitorScore(List<String> visitors, String user) {
+        private static void initVisitorScore(List<String> visitors, String user) {
             for (String visitor : visitors) {
-                if (!accountInfoMap.containsKey(visitor)) {
-                    accountInfoMap.put(visitor, new Account(visitor));
-                }
-                if (accountInfoMap.get(visitor).isFriend(user)) {
-                    continue;
-                }
-                accountInfoMap.get(visitor).addScore(1);
+                calculateVisitorScore(visitor, user);
             }
+        }
+
+        private static void calculateVisitorScore(String visitor, String user) {
+            if (!accountInfoMap.containsKey(visitor)) {
+                accountInfoMap.put(visitor, new Account(visitor));
+            }
+            if (accountInfoMap.get(visitor).isFriend(user)) {
+                return;
+            }
+            accountInfoMap.get(visitor).addScore(1);
         }
     }
 }
