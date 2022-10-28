@@ -1,8 +1,8 @@
 package onboarding.problem1;
 
+import static onboarding.common.consts.NumberCommonConst.CALCULATE_REMAINDER_VALUE;
+import static onboarding.common.consts.NumberCommonConst.DECIMAL_UNIT_VALUE;
 import static onboarding.problem1.consts.CalculateGameScoreConst.ADD_SCORE_DEFAULT_VALUE;
-import static onboarding.problem1.consts.CalculateGameScoreConst.CALCULATE_REMAINDER_VALUE;
-import static onboarding.problem1.consts.CalculateGameScoreConst.DECIMAL_UNIT_VALUE;
 import static onboarding.problem1.consts.CalculateGameScoreConst.MULTIPLY_SCORE_DEFAULT_VALUE;
 
 public class Player {
