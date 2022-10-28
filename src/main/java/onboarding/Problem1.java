@@ -61,12 +61,9 @@ class Problem1 {
         leftPageNumber = player.get(0);
         rightPageNumber = player.get(1);
 
-        if(checkPageNumberRange(leftPageNumber) && checkPageNumberRange(rightPageNumber)
-        && checkInterval(leftPageNumber, rightPageNumber)
-        && isOdd(leftPageNumber) && isEven(rightPageNumber)) {
-            return true;
-        }
-        return false;
+        return checkPageNumberRange(leftPageNumber) && checkPageNumberRange(rightPageNumber)
+                && checkInterval(leftPageNumber, rightPageNumber)
+                && isOdd(leftPageNumber) && isEven(rightPageNumber);
     }
 
     public static boolean checkListSize(List<Integer> player){
