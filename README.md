@@ -18,6 +18,14 @@
   - 받은 String의 길이가 1 이하인 경우 바로 그 값을 리턴한다
 - cryptogram을 받아 요구사항을 처리하고 결과를 반환하는 solution 메서드
 
+## 문제3
+
+- 10단위의 숫자를 받아서 이때의 손뼉 수를 반환하는 clapTen 메서드
+- 100단위의 숫자를 받아서 이때의 손뼉 수를 반환하는 clapHundred 메서드
+- 1000단위의 숫자를 받아서 이때의 손뼉 수를 반환하는 clapThousand 메서드
+- 숫자 number를 받아서 자리수에 따라 메서드를 적용하여 손뼉수를 반환하는 solution
+  - number가 10000인 경우에는 9999로 변환하여 처리한다.
+
 ## 참고 문헌
 
 - 좋은 코드를 위한 자바 변수명 네이밍(https://tecoble.techcourse.co.kr/post/2020-04-24-variable_naming/)
