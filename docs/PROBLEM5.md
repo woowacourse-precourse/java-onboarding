@@ -18,7 +18,14 @@
 ---
 ## 기능 목록
 
-#### 1. 특정 금액권의 변환 개수와 나머지 금액 구하기 ```unitCountRemain```
-```int unit, int money``` => ```int count (변환 개수), int remains (나머지 금액)```
+#### 1. 돈 액수 money에 대한 특정 금액권의 변환 개수 구하기 ```unitCount```
+```int unit, int money``` => ```int```
 
-#### 2. 금액권 배열에 대한 변환 개수 배열 구하기 ```solution```
+<br/>
+
+#### 2. 돈 액수 money에 대해 특정 금액권 변환 후 나머지 금액 구하기 ```unitRemain```
+```int unit, int money``` => ```int```
+
+<br/>
+
+#### 3. 금액권 배열에 대한 변환 개수 배열 구하기 ```solution```
