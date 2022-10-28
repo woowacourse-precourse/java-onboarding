@@ -13,18 +13,19 @@ public class Encryption {
         List<Character> lettersEncrypted = new ArrayList<>();
         for (Character letter : givenLetters) {
             if (AlphabetValidator.isUppercase(letter)) {
-                shiftLetter(UPPER_CASE, letter);
+                letter = shiftLetter(UPPER_CASE, letter);
             }
             if (AlphabetValidator.isLowercase(letter)) {
-                shiftLetter(LOWER_CASE, letter);
+                letter = shiftLetter(LOWER_CASE, letter);
             }
             lettersEncrypted.add(letter);
         }
         return lettersEncrypted;
     }
 
-    public static void shiftLetter(List<Character> letterCase, Character letter) {
+    public static Character shiftLetter(List<Character> letterCase, Character letter) {
         int indexOfLetter = letterCase.indexOf(letter);
         letter  = letterCase.get(SHIFT_AMOUNT - indexOfLetter);
+        return letter;
     }
 }
