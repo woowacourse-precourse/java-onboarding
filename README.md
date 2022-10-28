@@ -64,7 +64,7 @@
 
 ### Problem6
 
-- [ ] Crew
+- [x] Crew
   - 이름, 이메일 정보를 포함하는 class 생성
 
 
