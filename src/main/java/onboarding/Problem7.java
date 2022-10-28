@@ -5,6 +5,9 @@ import java.util.*;
 import static java.util.stream.Collectors.*;
 
 public class Problem7 {
+	public static final int RECOMMEND_SCORE = 10;
+	public static final int VISITOR_SCORE = 1;
+
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 		HashMap<String, Integer> recommendFriends = new HashMap<>();
 		Set<String> userFriends = new HashSet<>();
@@ -38,17 +41,17 @@ public class Problem7 {
 
 	private static void addVisitorScore(HashMap<String, Integer> recommendFriends, String id) {
 		if (recommendFriends.containsKey(id)) {
-			recommendFriends.put(id, recommendFriends.get(id) + 1);
+			recommendFriends.put(id, recommendFriends.get(id) + VISITOR_SCORE);
 		} else {
-			recommendFriends.put(id, 1);
+			recommendFriends.put(id, VISITOR_SCORE);
 		}
 	}
 
 	private static void addRecommendFriendScore(HashMap<String, Integer> recommendFriends, String id) {
 		if (recommendFriends.containsKey(id)) {
-			recommendFriends.put(id, recommendFriends.get(id) + 10);
+			recommendFriends.put(id, recommendFriends.get(id) + RECOMMEND_SCORE);
 		} else {
-			recommendFriends.put(id, 10);
+			recommendFriends.put(id, RECOMMEND_SCORE);
 		}
 	}
 }
