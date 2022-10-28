@@ -1,8 +1,6 @@
 package onboarding;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -12,6 +10,18 @@ public class Problem6 {
     public static Map<String, String> listToMap(List<List<String>> forms){
         Map<String, String> result = new HashMap<>();
         forms.stream().forEach(form -> result.put(form.get(0), form.get(1)));
+
+        return result;
+    }
+
+    static List<String> getTokens(String name){
+        List<String> result = name.length() > 1 ? new ArrayList<>()
+                : Collections.emptyList();
+
+        for (int i = 0; i < name.length() - 1; i++){
+            String token = name.substring(i, i+2);
+            result.add(token);
+        }
 
         return result;
     }
