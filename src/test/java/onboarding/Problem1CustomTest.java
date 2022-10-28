@@ -120,5 +120,13 @@ public class Problem1CustomTest {
                     Problem1Validation.isFirstAddOneEqualsSecondValue(list))
                     .isTrue();
         }
+
+        @Test
+        void validation메써드들이lazyChecking하는지확인하자() {
+            List<Integer> list = List.of(39);
+            assertThat(Problem1Validation.userInputSizeEquals(list, USER_INPUT_LENGTH) && Problem1Validation.isBookNumberContinuous(list))
+                    .isFalse();
+
+        }
     }
 }
