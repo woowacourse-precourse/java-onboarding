@@ -1,4 +1,4 @@
-package onboarding.problem2;
+package onboarding.problem2.validation;
 
 /**
  * 괴짜 개발자 브라운의 암호문 해독 알고리즘을 실행하기에 유효한 문자열인지 검증하는 작업을 모아둔 Validator 클래스입니다.

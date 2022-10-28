@@ -1,4 +1,6 @@
-package onboarding.problem2;
+package onboarding.problem2.service;
+
+import onboarding.problem2.validation.CryptogramValidator;
 
 /**
  * 괴짜 개발자 브라운의 암호문 해독 알고리즘과 관련된 비즈니스 로직을 진행하는 서비스 레이어 클래스입니다.
