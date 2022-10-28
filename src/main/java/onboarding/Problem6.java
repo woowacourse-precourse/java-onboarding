@@ -1,14 +1,40 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
+    }
+
+
+
+
+    // 닉네임 리스트와 체크리스트를 비교하여 체크리스트 중 중복된 값만 반환하는 메소드
+    private static List<String> getDuplicatedWords(List<String> nickNameList, List<String> checkList) {
+        List<String> duplicatedWords = new ArrayList<>();
+        int[] indexList = new int[checkList.size()];
+        Arrays.fill(indexList, 0);
+        String duplicatedWord;
+
+        for (String nickName : nickNameList) {
+
+            for (String check : checkList) {
+                if (nickName.contains(check)) {
+                    int index = checkList.indexOf(check);
+                    indexList[index]++;
+                }
+            }
+        }
+
+        for (int i = 0; i < indexList.length; i++) {
+            if (indexList[i] > 1) {
+                duplicatedWords.add(checkList.get(i));
+            }
+        }
+
+        return duplicatedWords;
     }
 
 
