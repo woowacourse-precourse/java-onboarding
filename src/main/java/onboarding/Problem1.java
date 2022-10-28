@@ -28,10 +28,10 @@ class Problem1 {
         return answer;
     }
 
-    public static Integer findMaxNum(List<Integer> eachList){
+    public static Integer findMaxNum(List<Integer> pageList){
         int max = Integer.MAX_VALUE;
 
-        for(Integer page : eachList){
+        for(Integer page : pageList){
             String[] pageSplits = page.toString().split("");
 
             int plus = 0;
