@@ -7,7 +7,30 @@ public class Problem6 {
   public static List<String> solution(List<List<String>> forms) {
     List<String> nicknames = forms.stream().map(item -> item.get(1)).collect(Collectors.toList());
     Map<String, Set<String>> keywordStore = getKeywordStore(nicknames);
-    return List.of("");
+    Set<String> limitedNicknames = getLimitedNicknames(keywordStore);
+    return getEmails(forms, limitedNicknames);
+  }
+
+  private static List<String> getEmails(List<List<String>> forms, Set<String> limitedNicknames) {
+    List<String> emails = new ArrayList<>();
+    for (List<String> form : forms) {
+      if (limitedNicknames.contains(form.get(1))) {
+        emails.add(form.get(0));
+      }
+    }
+    Collections.sort(emails);
+    return emails;
+  }
+
+  private static Set<String> getLimitedNicknames(Map<String, Set<String>> keywordStore) {
+    Set<String> result = new HashSet<>();
+    for (Map.Entry<String, Set<String>> names : keywordStore.entrySet()) {
+      if (notLimitedNickname(names.getValue().size())) {
+        continue;
+      }
+      names.getValue().stream().forEach(name -> result.add(name));
+    }
+    return result;
   }
 
   private static Map<String, Set<String>> getKeywordStore(List<String> nicknames) {
