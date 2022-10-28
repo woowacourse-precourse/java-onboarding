@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Problem3 {
 	private static final String NUMBER_OF_DIGIT_DIVISION = "";
-	private static final String CLAP_NUMBER = "[369]";
+	private static final String CLAP_NUMBER_REGEX = "[369]";
 
 	public static int solution(int number) {
 		int clapCount = 0;
@@ -16,7 +16,7 @@ public class Problem3 {
 
 	private static int isClap(String number) {
 		return (int)Arrays.stream(number.split(NUMBER_OF_DIGIT_DIVISION))
-			.filter(digit -> digit.matches(CLAP_NUMBER))
+			.filter(digit -> digit.matches(CLAP_NUMBER_REGEX))
 			.count();
 	}
 }
