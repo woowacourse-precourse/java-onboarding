@@ -30,4 +30,8 @@ public class Problem2 {
         }
         return range;
     }
+
+    private static StringBuilder removeDuplicate(StringBuilder crpytogram, int start, int range) {
+        return crpytogram.delete(start, start + range);
+    }
 }
