@@ -18,13 +18,9 @@ public class SNSController {
         HashMap<String, RecommendPoint> recommendPoints = new HashMap<>();
 
         List<RecommendPoint> friendPoints = generateFriendRecommendPoint(userName);
-        for(RecommendPoint point : friendPoints){
-            addPointToHashMap(recommendPoints, point);
-        }
+        addPointsToHashMap(recommendPoints, friendPoints);
         List<RecommendPoint> visitorPoints = generateVisitorRecommendPoint(userName);
-        for(RecommendPoint point : visitorPoints){
-            addPointToHashMap(recommendPoints, point);
-        }
+        addPointsToHashMap(recommendPoints, visitorPoints);
         removeMyFriends(userName, recommendPoints);
 
         List<RecommendPoint> points = new ArrayList<>(recommendPoints.values());
@@ -41,14 +37,20 @@ public class SNSController {
         return recommendUserNames;
     }
 
-    private void addPointToHashMap(HashMap<String, RecommendPoint> points, RecommendPoint point){
-        if(points.containsKey(point.getName())){
-            RecommendPoint originalPoint = points.get(point.getName());
+    private void addPointsToHashMap(HashMap<String, RecommendPoint> pointHasMap, List<RecommendPoint> points){
+        for(RecommendPoint point : points){
+            addPointToHashMap(pointHasMap, point);
+        }
+    }
+
+    private void addPointToHashMap(HashMap<String, RecommendPoint> pointHashMap, RecommendPoint point){
+        if(pointHashMap.containsKey(point.getName())){
+            RecommendPoint originalPoint = pointHashMap.get(point.getName());
             originalPoint.addPoints(point.getPoint());
-            points.put(point.getName(), originalPoint);
+            pointHashMap.put(point.getName(), originalPoint);
             return;
         }
-        points.put(point.getName(), point);
+        pointHashMap.put(point.getName(), point);
     }
 
     private void removeMyFriends(String userName, HashMap<String, RecommendPoint> points){
