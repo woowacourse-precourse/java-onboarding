@@ -6,6 +6,7 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         Map<String, List<String>> friendsInformation = initializeFriendsInformation(friends);
+        List<String> friendsOfFriendsOfUser = findFriendsOfFriendsOfUser(user, friendsInformation);
         return answer;
     }
 
@@ -24,5 +25,24 @@ public class Problem7 {
             friendsInformation.get(person2).add(person1);
         }
         return friendsInformation;
+    }
+
+    public static List<String> findFriendsOfFriendsOfUser(String user, Map<String, List<String>> friendsInformation){
+        List<String> friendsOfFriendsOfUser = new ArrayList<>();
+        if(!friendsInformation.containsKey(user)){
+            return null;
+        }
+        for(String friend : friendsInformation.get(user)) {
+            if(!friendsInformation.containsKey(friend)) {
+                continue;
+            }
+            for(String friendOfFriend : friendsInformation.get(friend)) {
+                if(friendOfFriend.equals(user)){
+                    continue;
+                }
+                friendsOfFriendsOfUser.add(friendOfFriend);
+            }
+        }
+        return friendsOfFriendsOfUser;
     }
 }
