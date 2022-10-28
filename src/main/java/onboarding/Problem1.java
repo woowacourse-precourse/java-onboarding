@@ -3,17 +3,52 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+    static int maxPoint(List<Integer> player) {
+        String leftPage = String.valueOf(player.get(0));
+        String rightPage = String.valueOf(player.get(1));
+        int myPoint;
+
+        if (Math.abs(Integer.parseInt(leftPage) - Integer.parseInt(rightPage)) == 1) {
+            int leftPlus = 0;
+            int leftTimes = 1;
+            int rightPlus = 0;
+            int rightTimes = 1;
+
+            for (int i = 0; i < leftPage.length(); i++) {
+                //nSystem.out.println("Before leftPlus: "+leftPlus);
+                leftPlus += (int) leftPage.charAt(i) - '0';
+                leftTimes *= ((int) leftPage.charAt(i) - '0');
+            }
+
+            for (int i = 0; i < rightPage.length(); i++) {
+                rightPlus += (int) rightPage.charAt(i) - '0';
+                rightTimes *= ((int) rightPage.charAt(i) - '0');
+            }
+
+            myPoint = Math.max(Math.max(leftPlus, leftTimes), Math.max(rightPlus, rightTimes));
+
+        } else {
+            myPoint = -1;
+        }
+
+        return myPoint;
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        // 구현해야할 기능
-        /*
-        * (pobi[0]%2!=0 && pobi[1]%2==0 && crong[0]%2!=0 && crong[1]%2==0) false ==> -1
-        * name[0]이 홀수, name[1]이 짝수가 아니라면 -1 이 사항은 상관안써도 될듯
-        * 점수가 1<= 400 범위 밖이라면 -1
-        * 각 자리수 더해서 max 값 찾음
-        * 비교후 포비가 이긴다면 1, 크롱이 이긴다면 2, 비긴다면 0
-        * */
-        //System.out.println(pobi);
+        // 시작 면과 마지막 면 ([1,2] 또는 [399,400] 이 있는지 확인)
+        int pobiMaxPoint = maxPoint(pobi);
+        int crongMaxPoint = maxPoint(crong);
+        int answer;
+
+        if (pobiMaxPoint==-1 || crongMaxPoint==-1){
+            answer = -1;
+        } else if (pobiMaxPoint>crongMaxPoint){
+            answer = 1;
+        } else if (pobiMaxPoint<crongMaxPoint){
+            answer = 2;
+        } else {
+            answer = 0;
+        }
+        // System.out.println("pobi: " + pobiMaxPoint + "crong: " + crongMaxPoint + "answer: " + answer);
         return answer;
     }
 }
