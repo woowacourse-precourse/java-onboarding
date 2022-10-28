@@ -29,13 +29,10 @@ class Problem1 {
         int pobiScore = calcScore(pobi);
         int crongScore = calcScore(crong);
 
-        System.out.println("pobiScore = " + pobiScore);;
-        System.out.println("crongScore = " + crongScore);
+        return resultGame(pobiScore, crongScore);
+    }
 
-        if (pobiScore == Integer.MAX_VALUE || crongScore == Integer.MAX_VALUE) {
-            return -1;
-        }
-
+    private static int resultGame(int pobiScore, int crongScore) {
         if (pobiScore > crongScore) {
             return 1;
         } else if (pobiScore < crongScore) {
@@ -46,7 +43,32 @@ class Problem1 {
     }
 
     private static boolean verifyGame(List<Integer> list) {
+        int leftPage = list.get(0);
+        int rightPage = list.get(1);
+        
+        if (!verifyPageBoundary(leftPage, rightPage) || !verifyEdgePage(leftPage, rightPage) || !verifyContinuePage(leftPage, rightPage) || !verifyOddEven(leftPage, rightPage)) {
+            return false;
+        }
+        return true;
+    }
+
+    private static boolean verifyOddEven(int leftPage, int rightPage) {
         return false;
+    }
+
+    private static boolean verifyContinuePage(int leftPage, int rightPage) {
+        return false;
+    }
+
+    private static boolean verifyEdgePage(int leftPage, int rightPage) {
+        return false;
+    }
+
+    private static boolean verifyPageBoundary(int leftPage, int rightPage) {
+        if (leftPage < 1 || leftPage > 400 || rightPage < 1 || rightPage > 400) {
+            return false;
+        }
+        return true;
     }
 
     private static int operMulti(int[] arr) {
