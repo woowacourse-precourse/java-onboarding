@@ -11,6 +11,8 @@ public class Problem5 {
      * 2. 가장 큰 금액의 화폐부터 받아내어, 가장 적은 양으로 화폐를 받고 받은 화폐를 list에 저장.
      * */
 
+    //기능1. setMoneyMapping
+    static int moneyTable[] = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
 
 
 
