@@ -37,5 +37,37 @@ public class Problem6 {
         answer.add(idx);
     }
 
+    static void calc(String s, Integer idx) {
+        for (int i = 0; i + 1 < s.length(); i++) {
+            if (nickname.containsKey(s.substring(i, i + 2))) {
+                if (!Objects.equals(nickname.get(s.substring(i, i + 2)), idx)) {
+                    addAnswer(idx);
+                    addAnswer(nickname.get(s.substring(i,i+2)));
+                    answer.add(idx);
+                    answer.add(nickname.get(s.substring(i, i + 2)));
+                }
+            } else {
+                nickname.put(s.substring(i, i + 2), idx);
+            }
+        }
+    }
+
+    public static List<String> solution(List<List<String>> forms) {
+        nickname.clear();
+        answer.clear();
+
+        List<User> ids = forms.stream().map(s -> new User(s.get(1), s.get(0))).collect(Collectors.toList());
+
+        for (int i = 0; i < ids.size(); i++) {
+            calc(ids.get(i).nick, i);
+        }
+        List<Integer> ans = new ArrayList<>(answer);
+        Set<String> answer = new HashSet<>();
+        ans.forEach((i) -> answer.add(ids.get(i).getEmail()));
+        List<String> result = new ArrayList<>(answer);
+        Collections.sort(result);
+        return result;
+    }
+
 
 }
