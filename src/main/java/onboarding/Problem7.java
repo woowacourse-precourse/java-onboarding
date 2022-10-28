@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.Map;
 
 public class Problem7 {
+    static final int friendScore = 10;
+    static final int visitorScore = 1;
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = getResult(user, friends, visitors);
         return answer;
@@ -60,12 +63,12 @@ public class Problem7 {
                 .filter(friend -> userFriends.contains(friend))
                 .count();
 
-        scoreMap.put(name, count * 10);
+        scoreMap.put(name, count * friendScore);
     }
 
     static void getVisitorsPoint(Map<String, Integer> scoreMap, List<String> visitors) {
         visitors.stream()
-                .forEach(v -> scoreMap.put(v, scoreMap.getOrDefault(v,0) + 1));
+                .forEach(v -> scoreMap.put(v, scoreMap.getOrDefault(v,0) + visitorScore));
     }
 
     static List<String> validateScoreMap(Map<String, Integer> scoreMap, List<String> userFriends) {
