@@ -1,5 +1,6 @@
 package onboarding;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -145,5 +146,47 @@ class Problem1Test {
         //then
         assertThat(pobiScore).isEqualTo(72);
         assertThat(crongScore).isEqualTo(72);
+    }
+
+    @Test
+    @DisplayName("무승부 - 0을 return한다")
+    public void whoWinBetweenTest() {
+        //given
+        List<Integer> pobi = List.of(97, 98);
+        List<Integer> crong = List.of(197, 198);
+
+        //when
+        int result = whoWinBetween(pobi, crong);
+
+        //then
+        assertThat(result).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("pobi 승 - 1을 return한다")
+    public void whoWinBetweenTest2() {
+        //given
+        List<Integer> pobi = List.of(131, 132);
+        List<Integer> crong = List.of(211, 212);
+
+        //when
+        int result = whoWinBetween(pobi, crong);
+
+        //then
+        assertThat(result).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("crong 승 - 2를 return한다")
+    public void whoWinBetweenTest3() {
+        //given
+        List<Integer> pobi = List.of(111, 112);
+        List<Integer> crong = List.of(233, 234);
+
+        //when
+        int result = whoWinBetween(pobi, crong);
+
+        //then
+        assertThat(result).isEqualTo(2);
     }
 }

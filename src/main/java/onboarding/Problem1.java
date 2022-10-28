@@ -65,4 +65,20 @@ class Problem1 {
 
         return someoneScore;
     }
+
+    static int whoWinBetween(List<Integer> pobi, List<Integer> crong) {
+
+        int pobiScore = getSomeoneScore(pobi);
+        int crongScore = getSomeoneScore(crong);
+
+        if (pobiScore > crongScore) {
+            return 1;
+        }
+
+        if (pobiScore < crongScore) {
+            return 2;
+        }
+
+        return 0;
+    }
 }
