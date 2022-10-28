@@ -19,6 +19,25 @@ public class Problem7 {
             this.visitors = visitors;
         }
 
+        public void saveFriend(List<List<String>> friends) {
+            int f1 = 0, f2 = 1;
+
+            for(int i=0; i<2; i++) {
+                for (List<String> friend : friends) {
+                    if (map.containsKey(friend.get(f1))) {
+                        map.get(friend.get(f1)).add(friend.get(f2));
+                    } else {
+                        map.put(friend.get(f1), new ArrayList<>());
+                        map.get(friend.get(f1)).add(friend.get(f2));
+                    }
+                }
+
+                int temp = f1;
+                f1 = f2;
+                f2 = temp;
+            }
+        }
+
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
