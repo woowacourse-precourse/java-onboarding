@@ -7,6 +7,11 @@ package onboarding;
  * 3. 연속하는 중복 문자를 삭제할 수 있을 때까지 삭제하는 함수
  */
 public class Problem2 {
+    static String deleteDupl(String cry, int startPos, int endPos) {
+        String front = cry.substring(0, startPos);
+        String back = cry.substring(endPos);
+        return front + back;
+    }
     public static String solution(String cryptogram) {
         String answer = "answer";
         return answer;
