@@ -79,6 +79,10 @@ public class Problem7 {
             this.addFriendList(friend);
         }
 
+        public People(String name) {
+            this.name = name;
+        }
+
         public void plusPoint(int point) {
             this.point += point;
         }
