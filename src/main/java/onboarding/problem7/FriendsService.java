@@ -42,4 +42,15 @@ public class FriendsService {
 
         return friendsOfUser;
     }
+
+    // map을 List<Friend>로 바꿔주는 로직
+    public List<Friend> mapToFriendList(Map<String, Integer> totalScore) {
+        List<Friend> result = new ArrayList<>();
+
+        for (String name : totalScore.keySet()) {
+            result.add(new Friend(name, totalScore.get(name)));
+        }
+
+        return result;
+    }
 }

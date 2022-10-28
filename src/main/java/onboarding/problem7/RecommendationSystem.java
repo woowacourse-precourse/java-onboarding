@@ -1,11 +1,10 @@
 package onboarding.problem7;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static onboarding.problem7.InputValueValidator.*;
+import static onboarding.problem7.InputValueValidator.validateInputValue;
 
 public class RecommendationSystem {
 
@@ -20,12 +19,12 @@ public class RecommendationSystem {
     public List<String> doRecommend(String user, List<List<String>> friends, List<String> visitors) {
         validateInputValue(user, friends, visitors);
 
-        Map<String, Integer> totalScore = getTotalScore(user, friends, visitors);
+        List<Friend> friendList = friendsService
+                .mapToFriendList(getTotalScore(user, friends, visitors));
 
-        // TODO 객체화 및 compareTo 재정의를 통해 마지막 조건을 변경하자.
-        return totalScore.entrySet().stream()
-                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
-                .map(Map.Entry::getKey)
+        return friendList.stream()
+                .sorted()
+                .map(Friend::getName)
                 .collect(Collectors.toList());
     }
 

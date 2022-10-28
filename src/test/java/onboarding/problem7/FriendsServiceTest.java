@@ -3,6 +3,7 @@ package onboarding.problem7;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -10,7 +11,7 @@ import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class FriendsServiceTest {
+class FriendServiceTest {
 
     @DisplayName("사용자가 아는 친구의 수를 구해 점수를 산정한다.")
     @Test
@@ -61,7 +62,7 @@ class FriendsServiceTest {
         System.out.println("1." + relationshipScore);
 
         VisitorService visitorService = new VisitorService();
-        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "a", "a", "a", "shakevan");
 
         List<String> knownFriends = friendsService.getKnownFriends(user, friends);
         Map<String, Integer> visitScore = visitorService.getVisitScore(visitors, knownFriends);
@@ -83,6 +84,13 @@ class FriendsServiceTest {
                 .collect(Collectors.toList());
 
         System.out.println(collect);
+
+        System.out.println("sorting....");
+
+        List<Friend> friendList = friendsService.mapToFriendList(relationshipScore);
+        Collections.sort(friendList);
+
+        System.out.println(friendList);
     }
 
 }
