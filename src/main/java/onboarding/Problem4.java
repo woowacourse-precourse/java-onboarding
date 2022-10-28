@@ -1,17 +1,18 @@
 package onboarding;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Problem4 {
 
-    private static final HashMap<Character, Character> frogMap = new HashMap<>();
-
     public static String solution(String word) {
-        initializeFrogMap();
-        return transform(word);
+        Map<Character, Character> frogMap = generateFrogMap();
+        return transform(frogMap, word);
     }
 
-    private static void initializeFrogMap() {
+    private static Map<Character, Character> generateFrogMap() {
+        HashMap<Character, Character> frogMap = new HashMap<>();
+
         char upperCaseLetterA = 'A';
         char upperCaseLetterZ = 'Z';
         char lowerCaseLetterA = 'a';
@@ -21,9 +22,11 @@ public class Problem4 {
             frogMap.put(upperCaseLetterA++, upperCaseLetterZ--);
             frogMap.put(lowerCaseLetterA++, lowerCaseLetterZ--);
         }
+
+        return frogMap;
     }
 
-    private static String transform(String word) {
+    private static String transform(Map<Character, Character> frogMap, String word) {
         StringBuilder result = new StringBuilder();
 
         for (char c : word.toCharArray()) {
