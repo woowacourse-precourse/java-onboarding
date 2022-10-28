@@ -46,6 +46,13 @@ public class Problem4 {
                 is_upper_case = false;
                 alphabet = _alphabet.toUpperCase();
             }
+
+            String replace_alphabet = alphabet_map.get(alphabet);
+            if (is_upper_case) {
+                answer += replace_alphabet;
+                continue;
+            }
+            answer += replace_alphabet.toLowerCase();
         }
         return answer;
     }
