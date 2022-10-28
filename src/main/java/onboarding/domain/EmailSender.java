@@ -1,5 +1,6 @@
 package onboarding.domain;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
@@ -32,5 +33,11 @@ public class EmailSender {
         }
 
         return isDuplicate;
+    }
+
+    public List<String> sendEmail() {
+        ArrayList<String> duplicateCrewsEmail = new ArrayList<>(duplicateCrews);
+        duplicateCrewsEmail.sort(String::compareTo);
+        return duplicateCrewsEmail;
     }
 }
