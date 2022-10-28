@@ -11,6 +11,22 @@ class Problem1 {
 
         return answer;
     }
+
+    static int getPlus(List<Integer> list) {
+        int listPlusLeft, listPlusRight;
+
+        if (list.get(0)/10 == 0) {
+            return list.get(1);
+        } else if (list.get(0)/100 == 0) {
+            listPlusLeft = (list.get(0) % 10) + (list.get(0) / 10);
+            listPlusRight = (list.get(1) % 10) + (list.get(1) / 10);
+        } else {
+            listPlusLeft = (list.get(0) / 100) + ((list.get(0) % 100) / 10) + (list.get(0) % 10);
+            listPlusRight = (list.get(1) / 100) + ((list.get(1) % 100) / 10) + (list.get(1) % 10);
+        }
+
+        return listPlusLeft > listPlusRight ? listPlusLeft : listPlusRight;
+    }
 }
     /**
      * 왼쪽 페이지의 번호 각자리를 더하거나 곱해서 가장 큰 수
