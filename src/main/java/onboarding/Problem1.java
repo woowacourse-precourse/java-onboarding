@@ -32,6 +32,22 @@ class Problem1 {
         return result;
     }
 
+    /*
+     * 기능 요구사항 4. 양쪽 페이지의 큰 수를 비교해서 높은 숫자를 반환하는 함수
+     * parameter : List
+     * return : int
+     * */
+    public static int calScore(List<Integer> list) {
+        int leftPage = list.get(0);
+        int rightPage = list.get(1);
+        List<Integer> leftPageList = toList(leftPage);
+        List<Integer> rightPageList = toList(rightPage);
+
+        int result = Integer.max(maxNum(leftPageList), maxNum(rightPageList));
+
+        return result;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
