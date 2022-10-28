@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 class Problem1 {
@@ -20,5 +22,26 @@ class Problem1 {
         if (leftPage + 1 != rightPage) return false;
 
         return true;
+    }
+
+    private static int calculateScore(int page) {
+        int score;
+        int scoreBySum = 0;
+        int scoreByMultiplication = 1;
+        List<Integer> numberList = new ArrayList<>();
+
+        String numberString = String.valueOf(page);
+        Arrays.stream(numberString.split(""))
+                .mapToInt(Integer::parseInt)
+                .forEach(numberList::add);
+
+        for (int number : numberList) {
+            scoreBySum += number;
+            scoreByMultiplication *= number;
+        }
+
+        score = Math.max(scoreBySum, scoreByMultiplication);
+
+        return score;
     }
 }
