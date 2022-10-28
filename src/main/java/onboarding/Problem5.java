@@ -33,4 +33,16 @@ class Bank {
     public boolean isCashExisted (int cash) {
         return cashList.contains(cash);
     }
+
+    public void addCash (int cash) {
+        cashList.add(cash);
+    }
+
+    public void deleteCash (int cash) {
+        if (!isCashExisted(cash)) {
+            System.out.printf("%d 화폐 종류는 존재하지 않습니다.\n", cash);
+            return;
+        }
+        cashList.remove(cash);
+    }
 }
