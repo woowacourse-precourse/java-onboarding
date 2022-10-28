@@ -41,7 +41,7 @@ public class Problem6 {
         HashSet<String> combinations = new HashSet<>();
 
         for (int i=0; i<name.length()-1; i++) {
-            combinations.add(name.substring(i, i+1));
+            combinations.add(name.substring(i, i+2));
         }
         return combinations;
     }
