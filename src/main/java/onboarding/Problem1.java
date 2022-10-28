@@ -44,8 +44,8 @@ class Problem1 {
      * @return
      */
     private static int getMaxScore(List<Integer> pages) {
-        int leftPageSize = String.valueOf(pages.get(0)).length();
-        int rightPageSize = String.valueOf(pages.get(1)).length();
+        int leftPageSize = (int) Math.log10(pages.get(0)) + 1;
+        int rightPageSize = (int) Math.log10(pages.get(1)) + 1;
         int rightPage = pages.get(1);
         int leftPage = pages.get(0);
         return Math.max(getScore(leftPage, leftPageSize), getScore(rightPage, rightPageSize));
