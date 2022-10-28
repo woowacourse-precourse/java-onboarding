@@ -10,11 +10,11 @@ public class Problem3 {
 
     public static int solution(int number) {
         initGame();
-        IntStream.range(1, number + 1).forEach(Problem3::checkNumberInRange);
+        IntStream.range(1, number + 1).forEach(Problem3::checkEachDigitInNumber);
         return count;
     }
 
-    private static void checkNumberInRange(int number) {
+    private static void checkEachDigitInNumber(int number) {
         while (number != 0) {
             if (numbers.contains(number % 10)) {
                 count++;
