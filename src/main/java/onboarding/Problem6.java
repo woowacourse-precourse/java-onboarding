@@ -27,29 +27,31 @@ public class Problem6 {
         PriorityQueue<String> overlapNamesQueue = new PriorityQueue<>();
 
         for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                if (i != j && !validateOverlapName(overlapNamesQueue, forms.get(i), forms.get(j))) {
-                    break;
-                }
-            }
+            setOverlapNamesQueue(forms, overlapNamesQueue, i);
         }
 
         return overlapNamesQueue;
     }
 
-    static void setOverlapNamesQueue(List<List<String>> forms, PriorityQueue<String> overlapNamesQueue, int i, int j) {
-        if (isException(forms, i, j)) {
-            return;
-        }
+    static void setOverlapNamesQueue(List<List<String>> forms, PriorityQueue<String> overlapNamesQueue, int i) {
+        for (int j = 0; j < forms.size(); j++) {
+            String currentEmail = forms.get(i).get(0);
+            String currentName = forms.get(i).get(1);
+            String targetName = forms.get(j).get(1);
 
+            if (!isException(forms, i, j) && isOverlapName(currentName, targetName)) {
+                overlapNamesQueue.add(currentEmail);
+                break;
+            }
+        }
     }
 
     static boolean isException(List<List<String>> forms, int i, int j) {
-        if (!isSameIdx(i, j) || isOverOneLetter(forms, i, j)) {
-            return false;
+        if (isSameIdx(i, j) || !isOverOneLetter(forms, i, j)) {
+            return true;
         }
 
-        return true;
+        return false;
     }
 
 
@@ -72,38 +74,21 @@ public class Problem6 {
         return true;
     }
 
-    static boolean validateOverlapName(PriorityQueue<String> overlapNamesQueue, List<String> form1, List<String> form2) {
-        String name1 = form1.get(1);
-        String name2 = form2.get(1);
-
-        if (!isOverlapName(name1, name2)) {
-            overlapNamesQueue.add(form1.get(0));
-            return false;
-        }
-
-        return true;
-    }
-
     static boolean isOverlapName(String currentName, String targetName) {
         for (int i = 0; i < currentName.length() -1; i++) {
-            String target = currentName.substring(i, i+2);
+            String substrCurName = currentName.substring(i, i+2);
 
-            if (targetName.contains(target)) {
-                return false;
+            if (targetName.contains(substrCurName)) {
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
     public static void main(String[] args) {
-        List<List<String>> forms = List.of(
-            List.of("jm@email.com", "제이가가위들자보자기를낸다"),
-            List.of("jason@email.com", "가휘들이춤을춘다"),
-            List.of("woniee@email.com", "아메바골짜기가지잉위잉"),
-            List.of("mj@email.com", "우째쓰까요맘때"),
-            List.of("nowm@email.com", "골로가다골룸이되었다")
-        );
+        String name1 = "제이엠";
+        String name2 = "워니";
 
-        System.out.println(solution(forms));
+        System.out.println(isOverlapName(name1, name2));
     }
 }
