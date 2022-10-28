@@ -14,12 +14,10 @@ public class Problem4 {
             int asciiCode = word.charAt(i);
             append(asciiCode, answer);
         }
-        System.out.println("answer.toString() = " + answer.toString());
         return answer.toString();
     }
 
     public static void append(int asciiCode, StringBuilder answer){
-        // 공백 ASCII code -> 32
         if (asciiCode == space){
             answer.append((char) space);
             return;
