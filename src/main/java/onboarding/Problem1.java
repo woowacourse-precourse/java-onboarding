@@ -3,6 +3,11 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+    public static int firstnumber;
+    public static int middlenumber;
+    public static int lastnumber;
+
+
     public static boolean isSuccessivePage(List<Integer> pagenumber){
         if (pagenumber.get(1) - pagenumber.get(0)!=1){
             return false;
@@ -18,6 +23,13 @@ class Problem1 {
             return false;
         }
     }
+
+    public static void divideNumber(int pagenumber){
+        firstnumber=pagenumber/100;
+        middlenumber=pagenumber/10;
+        lastnumber=pagenumber%10;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         if(isSuccessivePage(pobi)==false||isSuccessivePage(crong)==false){
