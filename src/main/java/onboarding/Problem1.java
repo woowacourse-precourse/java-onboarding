@@ -7,8 +7,8 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
 
         //예외 처리
-        if(pobi.get(0) < 1 || pobi.get(1) < 1 || crong.get(0) < 1 || crong.get(1) < 1 || pobi.get(0) > 400 || pobi.get(1) > 400 || crong.get(0) > 400 || crong.get(1) > 400){
-            //시작면이나 마지막면을 펼친 경우(1~400 범위 안의 숫자가 아닌 경우)
+        if(checkPageValidation(pobi) == false || checkPageValidation(crong) == false){
+            //시작면이나 마지막면을 펼친 경우(=유효한 페이지가 아님. 1~400 범위 안의 숫자가 아닌 경우)
             answer = -1;
             return answer;
         }else if(pobi.get(0)+1 != pobi.get(1) || crong.get(0)+1 != crong.get(1)){
@@ -64,5 +64,14 @@ class Problem1 {
             number /= 10;
         }
         return sum;
+    }
+
+    private static boolean checkPageValidation(List<Integer> pages){
+        for(int i = 0; i < pages.size(); i++){
+            if(pages.get(i) < 1 || pages.get(i) > 400){
+                return false;
+            }
+        }
+        return true;
     }
 }
