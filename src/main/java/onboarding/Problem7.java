@@ -13,14 +13,12 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
         friendRelation= new HashMap<>();
         Score = new HashMap<>();
-        for(int i=0;i<friends.size();i++){
-            makeFriendRelation(friends.get(i));
+        for (List<String> friend : friends) {
+            makeFriendRelation(friend);
         }
-
         plusScoreByFriend(user);
         plusScoreByVisitor(visitors);
-
-        answer = recommand(user);
+        answer = recommend(user);
         return answer;
     }
 
@@ -38,19 +36,19 @@ public class Problem7 {
     }
     public static void plusScoreByFriend(String user){
         List<String> userFriends = friendRelation.get(user);
-        for(int i=0;i< userFriends.size();i++){
-            plusFriendScore(userFriends.get(i));
+        for (String userFriend : userFriends) {
+            plusFriendScore(userFriend);
         }
     }
     public static void plusFriendScore(String userFriend){
         List<String> userFriendOfFriends = friendRelation.get(userFriend);
-        for(int i=0;i<userFriendOfFriends.size();i++) {
-            plusScore(userFriendOfFriends.get(i), 10);
+        for (String userFriendOfFriend : userFriendOfFriends) {
+            plusScore(userFriendOfFriend, 10);
         }
     }
     public static void plusScoreByVisitor(List<String> visitors){
-        for(int i=0;i<visitors.size();i++){
-            plusVisitorScore(visitors.get(i));
+        for (String visitor : visitors) {
+            plusVisitorScore(visitor);
         }
     }
     public static void plusVisitorScore(String visitor){
@@ -63,7 +61,7 @@ public class Problem7 {
         }
         Score.put(name, newScore);
     }
-    private static List<String> recommand(String user){
+    private static List<String> recommend(String user){
         List<String> recommendList = new ArrayList<>(Score.keySet());
         sortingByScore(recommendList);
         excludeUserFriendAndUser(recommendList, user);
@@ -89,17 +87,17 @@ public class Problem7 {
     private static void excludeUserFriendAndUser(List<String> recommendList, String user) {
         List<String> notRecommendList = friendRelation.get(user);
         notRecommendList.add(user);
-        for(int i=0;i<notRecommendList.size();i++){
-            recommendList.remove(notRecommendList.get(i));
+        for (String notRecommend : notRecommendList) {
+            recommendList.remove(notRecommend);
         }
     }
     private static List<String> cutFiveRecommendList(List<String> recommendList){
         List<String> fiveRecommends = new ArrayList<>();
         int count = 0;
-        for(int i = 0;i < recommendList.size(); i++){
-            fiveRecommends.add(recommendList.get(i));
+        for (String recommend : recommendList) {
+            fiveRecommends.add(recommend);
             count++;
-            if(count>4){
+            if (count > 4) {
                 break;
             }
         }
