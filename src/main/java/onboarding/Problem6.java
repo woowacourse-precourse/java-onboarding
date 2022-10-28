@@ -30,7 +30,7 @@ public class Problem6 {
             nameCaseInsertMap(form.get(NAME), form.get(EMAIL), map);
         }
 
-        return set.stream().collect(Collectors.toList());
+        return set.stream().sorted().collect(Collectors.toList());
     }
 
     private static void nameCaseInsertMap(String name, String email, Map<String, String> map) {
