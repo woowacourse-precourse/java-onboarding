@@ -20,4 +20,9 @@ class Problem1 {
 
         return person.get(0) == person.get(1) - 1;
     }
+
+    static int getPageLength(int page) {
+        return (int) (Math.log10(page) + 1);
+    }
+
 }
