@@ -2,8 +2,17 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        return getResultInStringRange(word);
+    }
+
+    private static String getResultInStringRange(String word) {
+        StringBuilder sb = new StringBuilder();
+        for(int i=0; i<word.length(); i++) {
+            String change = toString(word.charAt(i));
+            sb.append(change);
+        }
+
+        return sb.toString();
     }
 
     private static String toString(char character) {
