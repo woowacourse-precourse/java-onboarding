@@ -129,6 +129,13 @@ class ApplicationTest {
         }
 
         @Test
+        void case3() {
+            int number = 10000;
+            int result = 12000;
+            assertThat(Problem3.solution(number)).isEqualTo(result);
+        }
+
+        @Test
         void parameter_under1_return_minus_one() {
             int number = 0;
             int result = -1;
