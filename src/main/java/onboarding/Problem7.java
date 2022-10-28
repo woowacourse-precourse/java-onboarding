@@ -29,6 +29,9 @@ public class Problem7 {
     public static void makeScoresWithFriendship(HashMap<String, List<String>> friendship, HashMap<String, Integer> scores, List<String> userFriends, String crew) {
         int score = 0;
 
+가        if (userFriends.contains(crew)) {
+            return;
+        }
         for (String crewFriend : friendship.get(crew)) {
             if (userFriends.contains(crewFriend)) {
                 score += 10;
@@ -37,10 +40,13 @@ public class Problem7 {
         scores.put(crew, score);
     }
 
-    public static void updateScoresWithVisitors(HashMap<String, Integer> scores, List<String> visitors) {
+    public static void updateScoresWithVisitors(HashMap<String, Integer> scores, List<String> userFriends, List<String> visitors) {
         int score;
 
         for (String visitor : visitors) {
+            if (userFriends.contains(visitor)) {
+                continue;
+            }
             if (scores.containsKey(visitor)) {
                 score = scores.get(visitor);
                 scores.put(visitor, score++);
