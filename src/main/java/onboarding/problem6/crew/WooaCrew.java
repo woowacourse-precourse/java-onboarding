@@ -17,7 +17,12 @@ public class WooaCrew implements Crew {
     }
 
     @Override
-    public List<String> get() {
-        return data;
+    public String getNickname() {
+        return data.get(1);
+    }
+
+    @Override
+    public String getEmail() {
+        return data.get(0);
     }
 }
