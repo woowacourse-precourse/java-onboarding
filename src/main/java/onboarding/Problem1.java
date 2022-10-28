@@ -30,6 +30,18 @@ class Problem1 {
                 if(pobi.get(i) % 2 != 0 || crong.get(i) % 2 != 0)
                     return -1;
         }
+        Problem1 test = new Problem1();
+        int[] pobi_arr = {0, 0};
+        int[] crong_arr = {0, 0};
+        int pobi_n, crong_n;
+
+        //2.왼쪽 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구한다.
+        //3.오른쪽 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구한다.
+        for(int i = 0; i < 2; i++)
+        {
+            pobi_arr[i] = Math.max(test.sum_all(pobi.get(i)), test.times_all(pobi.get(i)));
+            crong_arr[i] = Math.max(test.sum_all(crong.get(i)), test.times_all(crong.get(i)));
+        }
         return answer;
     }
     //2-1. 페이지 번호의 자리수를 모두 더한다.
