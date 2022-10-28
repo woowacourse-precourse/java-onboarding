@@ -41,4 +41,8 @@ class Problem1 {
 
         return Math.max(sumOfNums, multiplyOfNums);
     }
+
+    private enum Result {
+        DRAW, POBI_WIN, CRONG_WIN
+    }
 }
