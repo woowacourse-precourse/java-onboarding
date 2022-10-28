@@ -91,6 +91,21 @@ public class Problem7 {
         return arrangedNames;
     }
 
+    //최대 5명, 0점 x
+    private static List<String> resultSize(List<String> names) {
+        List<String> result = new ArrayList<>();
+
+        int count = 0;
+        for (String name : names) {
+            if (count == 5 || strangerScoreMap.get(name) == 0) {
+                break;
+            }
+            result.add(name);
+            count++;
+        }
+        return result;
+    }
+
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
@@ -125,7 +140,8 @@ public class Problem7 {
         //전체 정렬
         names.addAll(arrangeSameScore(arrangeHighScore()));
 
-        
+        //최대 5명 0점 제외
+        answer.addAll(resultSize(names));
 
         return answer;
     }
