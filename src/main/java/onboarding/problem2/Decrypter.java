@@ -1,7 +1,7 @@
 package onboarding.problem2;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.Collections;
 import java.util.List;
 
 public class Decrypter {
@@ -15,16 +15,18 @@ public class Decrypter {
     }
 
     private static boolean isDecryptable(StringBuilder cryptogram){
-        if(findIndexOfRepeatedChar(cryptogram) == -1){
+        if(findIndexOfRepeatedChar(cryptogram, 0) == -1){
             return false;
         }
         return true;
     }
 
     private static void removeRepeatedChar(StringBuilder cryptogram){
-        int startingIndex = findIndexOfRepeatedChar(cryptogram);
-        int repeatedNum = findNumberOfRepeatedChar(cryptogram, startingIndex);
-        removeCharacters(cryptogram, startingIndex, repeatedNum);
+        List<List<Integer>> repeatedCharInfos = findIndexesOfRepeatedChar(cryptogram);
+        Collections.reverse(repeatedCharInfos);
+        for(List<Integer> repeatedCharInfo : repeatedCharInfos){
+            removeCharacters(cryptogram, repeatedCharInfo.get(0), repeatedCharInfo.get(1));
+        }
     }
 
     private static int findIndexOfRepeatedChar(StringBuilder cryptogram, int startIndex){
@@ -41,7 +43,7 @@ public class Decrypter {
     }
 
     private static List<List<Integer>> findIndexesOfRepeatedChar(StringBuilder cryptogram){
-        List<List<Integer>> repeatCharInfos = new LinkedList<>();
+        List<List<Integer>> repeatCharInfos = new ArrayList<>();
         int index = 0;
         while( index < cryptogram.length()-1){
             List<Integer> repeatCharInfo = new ArrayList<>();
