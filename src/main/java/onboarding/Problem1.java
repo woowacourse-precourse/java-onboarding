@@ -9,6 +9,7 @@ import java.util.List;
  * 3. 페이지 번호 각 자리 곳셈 함수 구현
  * 4. 가장 큰 수 출력을 위한 비교 함수
  * 5. 결과 값 출력을 위한 함수
+ *
  * **/
 /**
  * 1. 입력값 체크
@@ -24,6 +25,14 @@ import java.util.List;
 /**
  * 3. 페이지 번호 각 자리 곳셈 함수 구현
  * **/
+
+/**
+ * 4. 가장 큰 수 출력을 위한 비교 함수
+ * - 두 숫자의 비교함수
+ * - 왼쪽 -> 덧셈 , 곱셈 , 오른쪽 -> 덧셈, 곱셈 총 4개의 숫자를 넣을 리스트 만들 함수
+ * - 리스트를 통한 비교 위한 함수
+ * **/
+
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -45,10 +54,9 @@ class Problem1 {
 //        System.out.println(multiplyOfeach(testMul));
         }
     private static boolean checkInput(List<Integer> inputlist){
-        if(checkSize(inputlist))
+        if(checkSize(inputlist)&& checkOdd(inputlist) && checkNext(inputlist) && checkVal(inputlist))
         {
-            if(checkOdd(inputlist) && checkNext(inputlist) && checkVal(inputlist))
-                return true;
+            return true;
         }
         return false;
     }
@@ -88,5 +96,25 @@ class Problem1 {
         }
         return ret;
     }
-
+    private static int compareNum(int left, int right){
+        if(left > right)
+            return left;
+        return right;
+    }
+    private static int representNum(List<Integer> representList){
+        int represent = 0;
+        for(int i = 0; i < representList.size(); i++)
+        {
+            represent = compareNum(represent,representList.get(i));
+        }
+        return represent;
+    }
+    private static List<Integer> representList(int oddPage, int evenPage){
+        List<Integer> result = new ArrayList<>();
+        result.add(sumOfeach(oddPage));
+        result.add(multiplyOfeach(oddPage));
+        result.add(sumOfeach(evenPage));
+        result.add(multiplyOfeach(evenPage));
+        return result;
+    }
 }
