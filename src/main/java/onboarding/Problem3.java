@@ -9,4 +9,13 @@ public class Problem3 {
 
         return answer;
     }
+
+    public static int checkLength(int num) {
+        int cnt = 0;
+        for (int i = num; i > 0;) {
+            cnt++;
+            i /= 10;
+        }
+        return cnt;
+    }
 }
