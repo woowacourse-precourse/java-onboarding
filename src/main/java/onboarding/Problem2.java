@@ -41,6 +41,16 @@ public class Problem2 {
         return result;
     }
 
+    public static boolean isDuplicationExist(String cryptogram) {
+        List<String> cryptogramList = stringToList(cryptogram);
+
+        for (int i=0; i < cryptogramList.size() - 1; i++) {
+            if (cryptogramList.get(i).equals(cryptogramList.get(i + 1))) return false;
+        }
+
+        return true;
+    }
+
     public static String solution(String cryptogram) {
         String answer = "answer";
         return answer;
