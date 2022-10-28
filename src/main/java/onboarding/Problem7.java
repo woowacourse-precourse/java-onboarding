@@ -5,6 +5,25 @@ import java.util.*;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, List<String>> friendsMap = makeFriendsMap(friends, user);
+        Set<String> acquaintance = findAcquaintance(friendsMap, user);
+        Map<String, Integer> scoreByFriends = new HashMap<>();
+
+
+
+    }
+
+    private static Set<String> findAcquaintance(Map<String, List<String>> friendsMap, String user) {
+        Set<String> tmp = new HashSet<>();
+        List<String> friendsOfUser = friendsMap.get(user);
+
+        for (String friend : friendsOfUser) {
+            for (String f : friendsMap.get(friend)) {
+                if(f.equals(user)) continue;
+                tmp.add(f);
+            }
+        }
+        return tmp;
+    }
     }
 
     private static Map<String, List<String>> makeFriendsMap(List<List<String>> friends, String user) {
