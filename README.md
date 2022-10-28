@@ -37,6 +37,11 @@
 - 돈의 액수를 받아서 이를 최대한 가볍도록 하여 화폐 단위로 변환하는 withdraw 메서드
 - 돈의 액수 money를 받아서 withdraw 메서드를 통해 변환하여 결과값을 반환하는 solution
 
+## 문제6
+
+- 두 닉네임을 받아서 중복이 있는지 아닌지 반환하는 isRepeat 메서드
+- 닉네임 지원 목록 forms를 받아서 1:1로 비교하면서 중복 목록 result를 반환하는 solution
+
 ## 참고 문헌
 
 - 좋은 코드를 위한 자바 변수명 네이밍(https://tecoble.techcourse.co.kr/post/2020-04-24-variable_naming/)
