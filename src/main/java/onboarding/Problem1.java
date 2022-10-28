@@ -22,7 +22,9 @@ class Problem1 {
     }
 
     public static int getBestScore(List<Integer> numbers) {
-        return 0;
+        int result1 = Math.max(getAddition(numbers.get(0)), getMultiplication(numbers.get(0)));
+        int result2 = Math.max(getAddition(numbers.get(1)), getMultiplication(numbers.get(1)));
+        return Math.max(result1, result2);
     }
 
     public static boolean isValidPages(List<Integer> pages) {
