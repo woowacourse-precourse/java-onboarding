@@ -3,6 +3,7 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         //예외상황 확인
         if (isException(pobi) || isException(crong)) return -1;

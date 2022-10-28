@@ -9,19 +9,20 @@ public class Problem3 {
     public static int getCount(int number) {
         int count = 0;
         while (number > 10) {
-            if ((number % 10) % 3 == 0) count++;
-            number /= 10;
+            int digit = number % 10;
+            number/=10;
+            if (digit == 0) continue;
+            if (digit % 3 == 0) count++;
         }
 
         if (number % 3 == 0) count++;
-
         return count;
     }
 
-    public static int getSum(int number){
-        int sum =0;
-        while(number>0){
-            sum+=getCount(number);
+    public static int getSum(int number) {
+        int sum = 0;
+        while (number > 0) {
+            sum += getCount(number);
             number--;
         }
         return sum;
