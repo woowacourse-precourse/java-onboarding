@@ -19,3 +19,7 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+## 기능 목록
+* 청개구리 사전 만들기
+* 단어 변환
