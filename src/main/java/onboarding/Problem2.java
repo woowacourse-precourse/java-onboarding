@@ -9,6 +9,8 @@ public class Problem2 {
             int begin = repeated.get(1);
             int end = repeated.get(2);
             cryptogram = removeRepeated(cryptogram, begin, end);
+            if (cryptogram.equals(""))
+                break;
             repeated = repeatedNum(cryptogram);
         }
 
