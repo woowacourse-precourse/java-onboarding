@@ -1,13 +1,14 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 		HashMap<String, Integer> recommendFriends = new HashMap<>();
+		Set<String> userFriends = new HashSet<>();
+
 		for (List<String> friend : friends) {
+			userFriends.add(friend.get(0));
 			if (friend.get(1).equals(user)) {
 				continue;
 			}
@@ -20,6 +21,10 @@ public class Problem7 {
 		}
 
 		for (String visitor : visitors) {
+			if (userFriends.contains(visitor)) {
+				continue;
+			}
+
 			if (recommendFriends.containsKey(visitor)) {
 				recommendFriends.put(visitor, recommendFriends.get(visitor) + 1);
 			} else {
