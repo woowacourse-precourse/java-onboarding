@@ -1,7 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
@@ -9,6 +8,7 @@ public class Problem5 {
         if(!checkValidation(money)){
             return null;
         }
+        answer = getListOfBill(money);;
         return answer;
     }
 
@@ -18,4 +18,11 @@ public class Problem5 {
         }
         return false;
     }
+
+    private static List<Integer> getListOfBill(int money){
+        List<Integer> listOfMoney = getListOfMoney();
+        List<Integer> billsOfMoney = getLeastBills(money, listOfMoney);
+        return billsOfMoney;
+    }
+
 }
