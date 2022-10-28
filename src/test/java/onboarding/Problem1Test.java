@@ -16,4 +16,15 @@ public class Problem1Test {
         boolean result = true;
         assertThat(problem.listSizeException(list)).isEqualTo(result);
     }
+
+    @Test
+    @DisplayName("Page Index Test")
+    void pageIndex() {
+        List<Integer> list1 = List.of(1, 3);
+        List<Integer> list2 = List.of(197, 198);
+        boolean result1 = true; // Page Index Error가 발생함 -> true
+        boolean result2 = false;
+        assertThat(problem.pageIndexException(list1)).isEqualTo(result1);
+        assertThat(problem.pageIndexException(list2)).isEqualTo(result2);
+    }
 }

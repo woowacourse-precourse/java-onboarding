@@ -10,6 +10,9 @@ class Problem1 {
         if(listSizeException(pobi) || listSizeException(crong)){
             return -1;
         }
+        if(pageIndexException(pobi) || pageIndexException(crong)){
+            return -1;
+        }
         int answer = Integer.MAX_VALUE;
         return answer;
     }
