@@ -3,6 +3,17 @@ package onboarding;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
+
+        String crypto_str = cryptogram;
+        while(true) {
+            if(check(crypto_str)) {
+                crypto_str = decryption(crypto_str);
+            } else {
+                break;
+            }
+        }
+        answer = crypto_str;
+
         return answer;
     }
 
