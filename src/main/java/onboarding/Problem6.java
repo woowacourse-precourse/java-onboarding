@@ -1,7 +1,9 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 public class Problem6 {
     /*
@@ -48,6 +50,25 @@ public class Problem6 {
             }
         }
         return substrings;
+    }
+
+    // 리스트에서의 문자열 카운터 해시맵 생성 함수
+    private static HashMap<String, Integer> stringCounter(List<String> substrings) {
+        HashMap<String, Integer> counter = new HashMap<>();
+        Set<String> strSet = Set.copyOf(substrings);
+
+        // 카운터 해시맵의 value를 모두 0으로 초기화
+        for (String str : strSet)
+            counter.put(str, 0);
+
+        // 카운터 실행
+        for (String key : substrings) {
+            if (counter.containsKey(key)) {
+                int value = counter.get(key) + 1;
+                counter.put(key, value);
+            }
+        }
+        return counter;
     }
 
     public static List<String> solution(List<List<String>> forms) {
