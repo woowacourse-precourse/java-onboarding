@@ -19,6 +19,21 @@ class Problem1 {
         return true;
     }
 
+    //페이지 숫자가 입력으로 들어오면 (각 자리수 합 or 각 자리수 곱)중에서 큰 값을 리턴하는 함수
+    public static int getScore(int num){
+        int sum_value = 0;
+        int mul_value = 1;
+
+        while(num != 0){
+            int temp = num % 10;
+            sum_value += temp;
+            mul_value *= temp;
+            num = num / 10;
+        }
+
+        return Math.max(sum_value, mul_value);
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
@@ -28,7 +43,17 @@ class Problem1 {
             answer = -1;
         }
         else{
-            
+            //getScore함수를 통해 왼쪽페이지 점수와 오른쪽페이지 점수를 구한 후, 둘중에서 큰 값을 자신의 점수로 결정한다.
+            int pobi_score = Math.max(getScore(pobi.get(0)), getScore(pobi.get(1)));
+            int crong_score = Math.max(getScore(crong.get(0)), getScore(crong.get(1)));
+
+            //점수 결과에 따라서 answer값을 결정한다.
+            if(pobi_score > crong_score)
+                answer = 1;
+            else if(pobi_score < crong_score)
+                answer = 2;
+            else
+                answer = 0;
         }
 
         return answer;
