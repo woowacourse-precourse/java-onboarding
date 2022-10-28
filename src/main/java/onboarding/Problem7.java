@@ -3,6 +3,7 @@ package onboarding;
 import onboarding.problem7.NotMatchingFriendSize;
 import onboarding.problem7.NotMatchingFriendsSize;
 import onboarding.problem7.NotMatchingUserLength;
+import onboarding.problem7.NotMatchingVisitorsSize;
 
 import java.util.Collections;
 import java.util.List;
@@ -13,6 +14,7 @@ public class Problem7 {
 
         int userLength = user.length();
         int friendsSize = friends.size();
+        int visitorsSize = visitors.size();
 
         //1. 예외사항
         //1-1 user 길이 1 이상 30 이하인지 체크
@@ -31,29 +33,34 @@ public class Problem7 {
             throw new NotMatchingFriendSize("친구 관계 정보의 원소의 길이가 맞지 않습니다.");
         }
 
-
-
-        //- visitors 길이 0 이상 10000 이하인지 체크
+        //1-5 visitors 길이 0 이상 10000 이하인지 체크
+        if(isNotMatchingVisitorsSize(visitorsSize)){
+            throw new NotMatchingVisitorsSize("방문 기록의 길이가 맞지 않습니다.");
+        }
         //- 사용자 아이디 소문자인지 체크
 
 
         return answer;
     }
 
-    //1-4 아이디 길이 1 이상 30 이하인지 체크g
-    private static boolean isNotMatchingId(int idLength) {
-        return idLength < 1 || idLength > 30;
+    private static boolean isNotMatchingVisitorsSize(int size) {
+        return size < 0 || size > 10000;
     }
 
-    private static boolean isNotMatchingFriendSize(int friendSize) {
-        return friendSize != 2;
+    //1-4 아이디 길이 1 이상 30 이하인지 체크
+    private static boolean isNotMatchingId(int length) {
+        return length < 1 || length > 30;
+    }
+
+    private static boolean isNotMatchingFriendSize(int size) {
+        return size != 2;
     }
 
     private static boolean isNotMatchingFriendsSize(int size) {
-        return isNotMatchingId(size, 10000);
+        return size < 1 || size > 10000;
     }
 
     private static boolean isNotMatchingUserLength(int length) {
-        return isNotMatchingId(length, 30);
+        return length < 1 || length > 30;
     }
 }
