@@ -15,6 +15,16 @@ public class Problem3 {
         return answer;
     }
 
+    public int clapCounter(int[] numToken) {
+        int count = 0;
+
+        for(int num : numToken){
+            count += checkNumber(num);
+        }
+
+        return count;
+    }
+
     public static int checkNumber(int num) {
         int result = 0;
 
