@@ -8,6 +8,14 @@ public class Problem5 {
         List<Integer> answer = new ArrayList<>();
         int[] cash = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
 
+        for (int unit : cash) {
+            if (money / unit == 0) {
+                answer.add(0);
+            }
+            if (money / unit >= 1) {
+                answer.add(money / unit);
+            }
+        }
         return answer;
     }
 }
