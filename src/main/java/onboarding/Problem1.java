@@ -10,11 +10,24 @@ class Problem1 {
         if(listSizeException(pobi) || listSizeException(crong)){
             return -1;
         }
+        if(pageIndexException(pobi) || pageIndexException(crong)){
+            return -1;
+        }
         int answer = Integer.MAX_VALUE;
         return answer;
     }
 
     public static boolean listSizeException(List<Integer> list){
         return list.size() != 2;
+    }
+
+    public static boolean pageIndexException(List<Integer> list){
+        int left = list.get(0);
+        int right = list.get(1);
+        return !isOdd(left) || right != left + 1;
+    }
+
+    public static boolean isOdd(int num){
+        return num % 2 == 1;
     }
 }
