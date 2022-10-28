@@ -7,14 +7,14 @@ public class Problem2 {
 
     public static String solution(String cryptogram) {
         boolean flag = true;
-        String tmp = cryptogram;
+        String beforeCryptogram = cryptogram;
 
         while(flag) {
             cryptogram = decrypt(cryptogram);
 
-            if (tmp != cryptogram) {    // 중복을 삭제한 경우
-                tmp = cryptogram;
-            } else {                    // 중복이 없는 경우
+            if (beforeCryptogram != cryptogram) {   // 중복을 삭제한 경우
+                beforeCryptogram = cryptogram;
+            } else {                                // 중복이 없는 경우
                 answer = cryptogram;
                 flag = false;
             }
