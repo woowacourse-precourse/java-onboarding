@@ -1,7 +1,6 @@
 package onboarding;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Arrays;
 import java.util.stream.IntStream;
 
 /**
@@ -15,21 +14,17 @@ public class Problem3 {
     public static int solution(int number) {
         if (number < 1 || number > 10000)
             return EXCEPTION;
-        return count369(number);
+        return clapCount(number);
     }
-
-    private static int count369(int number) {
-        int[] numbers369 = IntStream.rangeClosed(1, number)
+    private static int[] find369(int number) {
+        return IntStream.rangeClosed(1, number)
                 .filter(num -> String.valueOf(num).matches("^[0-9]*[369][0-9]*$"))
                 .toArray();
+    }
 
-        Pattern pattern = Pattern.compile("[369]");
-        int clapCount = 0;
-        for (int i : numbers369) {
-            Matcher matcher = pattern.matcher(String.valueOf(i));
-            while (matcher.find())
-                clapCount += 1;
-        }
-        return clapCount;
+    private static int clapCount(int number) {
+        return Arrays.toString(find369(number))
+                .replaceAll("[^369]","")
+                .length();
     }
 }
