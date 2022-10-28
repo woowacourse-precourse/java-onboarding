@@ -21,6 +21,13 @@ import java.util.List;
  * pobi 점수와 crong 점수를 매개변수로 받아 비교하여 최종 return 값을 결정하는 함수
  */
 
+/**
+ * 예외사항(-1을 리턴)
+ * 왼쪽 페이지가 홀수이거나 오른쪽 페이지가 짝수
+ * 페이지가 1 ~ 400 이 아닐 때
+ * 페이지가 연속된 수가 아닐 때 ex) 102 105
+ */
+
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE; // int 범위에서 최대값 2147483647
@@ -68,4 +75,5 @@ class Problem1 {
 
         return 0;
     }
+
 }
