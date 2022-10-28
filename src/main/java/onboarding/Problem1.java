@@ -78,7 +78,7 @@ class Problem1 {
 
     //연산한 값에 0이 있을 경우
     public static int exceptionCheck(int num) {
-        if (num >= 1)
+        if (num == 0)
             return errorNum;
         return num;
     }
