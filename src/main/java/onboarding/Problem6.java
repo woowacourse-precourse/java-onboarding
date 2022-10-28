@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     private static final int EMAIL_INDEX = 0;
@@ -47,6 +48,11 @@ public class Problem6 {
             duplicatedCrewSet.addAll(OwnerCrewSet);
         }
 
+        answer = duplicatedCrewSet.stream()
+            .map(Crew::getEmail)
+            .distinct()
+            .sorted()
+            .collect(Collectors.toList());
 
         return answer;
     }
