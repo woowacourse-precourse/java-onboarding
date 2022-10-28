@@ -4,11 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -24,7 +22,7 @@ public class Problem7 {
 
         setFriendsPoint(friendsMap, userFriends, scoreMap);
         getVisitorsPoint(scoreMap, visitors);
-        result = sortScoreMap(scoreMap, userFriends);
+        result = validateScoreMap(scoreMap, userFriends);
 
         return result;
     }
@@ -65,81 +63,50 @@ public class Problem7 {
         scoreMap.put(name, count * 10);
     }
 
-    static List<String> getFriendList(List<List<String>> friends, String user) {
-        Set<String> friendSet = new HashSet<>();
-        List<String> friendList = new ArrayList<>();
-        friends.stream()
-            .forEach(list -> inputFriendSet(friendSet, list));
-
-        friendList.addAll(friendSet);
-        friendList.remove(user);
-        return friendList;
-    }
-
-    static void inputFriendSet(Set<String> set, List<String> list) {
-        set.add(list.get(0));
-        set.add(list.get(1));
-    }
-
-
-
-
-    
     static void getVisitorsPoint(Map<String, Integer> scoreMap, List<String> visitors) {
         visitors.stream()
-            .forEach(v -> scoreMap.put(v, scoreMap.getOrDefault(v,0) + 1));
+                .forEach(v -> scoreMap.put(v, scoreMap.getOrDefault(v,0) + 1));
     }
 
-    public static Comparator<Map.Entry<String, Integer>> mapComparator = new
+    static List<String> validateScoreMap(Map<String, Integer> scoreMap, List<String> userFriends) {
+        List<String> sortedScoreList = sortScoreMap(scoreMap, userFriends);
+        List<String> lengthUnderFiveScoreList = limitLengthUnderFive(sortedScoreList);
+
+        return lengthUnderFiveScoreList;
+    }
+
+    static List<String> sortScoreMap(Map<String, Integer> scoreMap, List<String> userFriends) {
+        List<Map.Entry<String, Integer>> scoreEntries = new LinkedList<>(scoreMap.entrySet());
+        Collections.sort(scoreEntries, scoreComparator);
+        List<String> sortedScoreList = new ArrayList<>();
+
+        scoreEntries.stream()
+                .filter(e -> !(userFriends.contains(e.getKey())))
+                .forEach(e -> sortedScoreList.add(e.getKey()));
+
+        return sortedScoreList;
+    }
+
+    static List<String> limitLengthUnderFive(List<String> sortedScoreList) {
+        if (sortedScoreList.size() > 5) {
+            List<String> subList = new ArrayList<>(sortedScoreList.subList(0,5));
+            return subList;
+        }
+
+        return sortedScoreList;
+    }
+
+    public static Comparator<Map.Entry<String, Integer>> scoreComparator = new
         Comparator<Map.Entry<String, Integer>>() {
             @Override
-            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
-                if(o1.getValue() >  o2.getValue()){
+            public int compare(Map.Entry<String, Integer> m1, Map.Entry<String, Integer> m2) {
+                if(m1.getValue() >  m2.getValue()){
                     return -1;
                 }
-                else if (o1.getValue() ==  o2.getValue()) {
-                    return o1.getKey().compareTo(o2.getKey());
+                else if (m1.getValue() ==  m2.getValue()) {
+                    return m1.getKey().compareTo(m2.getKey());
                 }
                 return 1;
             }
         };
-
-    static List<String> sortScoreMap(Map<String, Integer> scoreMap, List<String> userFriends) {
-
-        List<Map.Entry<String, Integer>> entries = new LinkedList<>(scoreMap.entrySet());
-        Collections.sort(entries, mapComparator);
-        List<String> result = new ArrayList<>();
-
-        entries.stream()
-            .filter(e -> !(userFriends.contains(e.getKey())))
-            .forEach(e -> result.add(e.getKey()));
-
-        if (result.size() > 5) {
-            List<String> subList = new ArrayList<>(result.subList(0,5));
-            return subList;
-        }
-        return result;
-    }
-
-    public static void main(String[] args) {
-        String user = "mrko";
-        List<List<String>> friends = List.of(
-                List.of("donut", "andole"),
-                List.of("donut", "jun"),
-                List.of("donut", "mrko"),
-                List.of("shakevan", "andole"),
-                List.of("shakevan", "jun"),
-                List.of("shakevan", "mrko")
-        );
-        Map<String, List<String>> friendsMap = getFriendsMap(friends);
-        Map<String, Integer> scoreMap = new HashMap<>();
-        List<String> userFriends = friendsMap.remove(user);
-
-        System.out.println("friendsMap: \n" + friendsMap);
-        System.out.println("userFriends: \n" + userFriends);
-
-        setFriendsPoint(friendsMap, userFriends, scoreMap);
-
-        System.out.println(scoreMap);
-    }
 }
