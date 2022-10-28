@@ -30,7 +30,7 @@ public class Problem2 {
             return;
         }
         if (Objects.equals(currentChar, stack.peek())){
-            String x = stack.pop();
+            stack.pop();
         }
     }
 
