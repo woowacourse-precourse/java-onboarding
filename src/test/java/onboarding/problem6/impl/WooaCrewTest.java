@@ -1,7 +1,8 @@
 package onboarding.problem6.impl;
 
-import onboarding.Problem4;
-import onboarding.problem6.CrewValidator;
+import onboarding.problem6.validator.CrewValidator;
+import onboarding.problem6.crew.WooaCrew;
+import onboarding.problem6.validator.CrewValidatorV1;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -9,7 +10,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.junit.jupiter.api.Assertions.*;
 
 class WooaCrewTest {

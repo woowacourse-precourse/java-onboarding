@@ -1,12 +1,13 @@
 package onboarding.problem6.impl;
 
+import onboarding.problem6.validator.CrewValidator;
+import onboarding.problem6.validator.CrewValidatorV1;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class CrewValidatorV1Test {
 
@@ -29,7 +30,7 @@ class CrewValidatorV1Test {
 
     @Test
     public void isValidNicknameCheck() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        CrewValidatorV1 validator = new CrewValidatorV1();
+        CrewValidator validator = new CrewValidatorV1();
 
         Method isValidNickname = validator.getClass().getDeclaredMethod("isValidNickname", String.class);
         isValidNickname.setAccessible(true);
