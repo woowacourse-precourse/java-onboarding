@@ -23,7 +23,7 @@ class Problem1 {
 
 
 
-    public static int result(Integer user1Result, Integer user2Result) {
+    private static int result(Integer user1Result, Integer user2Result) {
         if (user1Result > user2Result) {
             return 1;
         } else if (user1Result == user2Result) {
@@ -33,11 +33,11 @@ class Problem1 {
         }
     }
 
-    public static int getMaxValue(Integer integer1, Integer integer2) {
+    private static int getMaxValue(Integer integer1, Integer integer2) {
         return max(integer1, integer2);
     }
 
-    public static int getDigitAddValue(int value) {
+    private static int getDigitAddValue(int value) {
         int summation = 0;
         while (value > 0) {
             summation += value % 10;
@@ -46,7 +46,7 @@ class Problem1 {
         return summation;
     }
 
-    public static int getDigitMultiplyValue(int value) {
+    private static int getDigitMultiplyValue(int value) {
         int multiply = 1;
         while (value > 0) {
             multiply *= value % 10;
@@ -55,15 +55,15 @@ class Problem1 {
         return multiply;
     }
 
-    public static int chooseMaxValueBetweenAddAndMultiply(int value) {
+    private static int chooseMaxValueBetweenAddAndMultiply(int value) {
         return getMaxValue(getDigitAddValue(value), getDigitMultiplyValue(value));
     }
 
-    public static int chooseMaxValueLeftOrRight(List<Integer> pageList) {
+    private static int chooseMaxValueLeftOrRight(List<Integer> pageList) {
         return getMaxValue(chooseMaxValueBetweenAddAndMultiply(pageList.get(0)), chooseMaxValueBetweenAddAndMultiply(pageList.get(1)));
     }
 
-    public static List<Integer> userResult(List<Integer> user1, List<Integer> user2) {
+    private static List<Integer> userResult(List<Integer> user1, List<Integer> user2) {
         return List.of(chooseMaxValueLeftOrRight(user1), chooseMaxValueLeftOrRight(user2));
     }
 }
