@@ -12,7 +12,15 @@ public class Problem7 {
 
         computeOfTogetherKnowFriendScore(user);
 
+        computeOfVisitorsScore(visitors);
+
         return null;
+    }
+
+    private static void computeOfVisitorsScore(List<String> visitors) {
+        for (String visitor : visitors) {
+            Optional.ofNullable(friendScoreMap.computeIfPresent(visitor, (k, v) -> v + 1)).orElse(friendScoreMap.put(visitor, 1));
+        }
     }
 
     private static void computeOfTogetherKnowFriendScore(String user) {
