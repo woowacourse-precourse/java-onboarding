@@ -52,4 +52,12 @@ public class Problem7 {
             else return o.score -  this.score;
         }
     }
+    private static List<Person> MapToListAndSort(Map<String, Integer> friendRecommend, String user) {
+        List<Person> classList = new ArrayList<>();
+        for(String key : friendRecommend.keySet()) {
+            if(!key.equals(user))classList.add(new Person(key, friendRecommend.get(key)));
+        }
+        Collections.sort(classList);
+        return classList;
+    }
 }
