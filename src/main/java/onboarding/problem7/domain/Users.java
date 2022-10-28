@@ -1,20 +1,19 @@
 package onboarding.problem7.domain;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Users {
     private final Map<String, User> users;
     
-    public Users(final List<List<String>> friends, final List<String> visitors) {
-        this.users = initUsers(friends, visitors);
+    public Users(final String user, final List<List<String>> friends, final List<String> visitors) {
+        this.users = initAllUsers(user, friends, visitors);
     }
     
-    private Map<String, User> initUsers(List<List<String>> friends, final List<String> visitors) {
+    private Map<String, User> initAllUsers(final String user, List<List<String>> friends, final List<String> visitors) {
         List<List<String>> mergeUsers = mergeUsers(friends, visitors);
+        mergeUsers.add(List.of(user));
+    
         return mergeUsers.stream()
                 .flatMap(Collection::stream)
                 .collect(Collectors.toMap(friendName -> friendName, User::new, (firstUser, secondUser) -> firstUser));
