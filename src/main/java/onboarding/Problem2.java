@@ -22,6 +22,25 @@ public class Problem2 {
         return result;
     }
 
+    public static String removeStringDuplication(String cryptogram) {
+        List<String> temp = new ArrayList<>();
+        List<String> cryptogramList = stringToList(cryptogram);
+
+        for (int i=0; i < cryptogramList.size(); i++) {
+            if (i == cryptogramList.size() - 1) temp.add(cryptogramList.get(i));
+            else if (cryptogramList.get(i).equals(cryptogramList.get(i + 1))) {
+                i++;
+            }
+            else {
+                temp.add(cryptogramList.get(i));
+            }
+        }
+
+        String result = listToString(temp);
+
+        return result;
+    }
+
     public static String solution(String cryptogram) {
         String answer = "answer";
         return answer;
