@@ -23,6 +23,6 @@
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
 
 ## 기능 목록
-- [ ] 중복체크를 위해 HashMap에 닉네임을 2글자씩 잘라 Key로, 크루의 forms배열에서의 인덱스를 Value로 저장한다.
+- [x] 중복체크를 위해 HashMap에 닉네임을 2글자씩 잘라 Key로, 크루의 forms배열에서의 인덱스를 Value로 저장한다.
 - [ ] HashMap의 Value에 들어있는 값이 2개 이상이면 해당 크루의 이메일을 중복을 제거하여 저장한다.
 - [ ] 중복을 제거하여 저장한 이메일들을 오름차순으로 정렬하여 반환한다.
