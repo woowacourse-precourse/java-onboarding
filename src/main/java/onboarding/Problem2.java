@@ -1,5 +1,9 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
@@ -16,5 +20,18 @@ public class Problem2 {
 
         return false;
     }
+
+    private static String deleteDuplication(String cryptogram) {
+        List<String> code = new ArrayList<>(Arrays.asList(cryptogram.split("")));
+        for (int i = 0; i < code.size() - 1; i++) {
+            if (code.get(i) == code.get(i + 1)) {
+                code.remove(i);
+                code.remove(i + 1);
+                i--;
+            }
+        }
+
+    }
+
 
 }
