@@ -2,8 +2,16 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
+        int answer = countClap(number);
         return answer;
+    }
+
+    static int countClap(int i) {
+        int result = 0;
+        for (int j=3;j<=i;j++) {
+            result += countThreeSixNine(j);
+        }
+        return result;
     }
 
     static int countThreeSixNine(int i) {
