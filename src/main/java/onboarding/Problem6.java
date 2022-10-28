@@ -16,23 +16,25 @@ public class Problem6 {
 
 		for (List<String> form : forms) {
 			String nickname = form.get(1);
-			if (nickname.length() < 2) {
-				continue;
-			}
-
-			String email = form.get(0);
-			for (int j = 0; j < nickname.length() - 1; j++) {
-				String key = nickname.substring(j, j + 2);
-				if (keys.containsKey(key)) {
-					String keyMail = keys.get(key);
-					checkExistKey(keyMail, email);
-				} else {
-					keys.put(key, email);
-				}
+			if (nickname.length() > 1) {
+				String email = form.get(0);
+				checkInTwoLetters(nickname, email);
 			}
 		}
-		
+
 		return sortSet();
+	}
+
+	private static void checkInTwoLetters(String nickname, String email) {
+		for (int j = 0; j < nickname.length() - 1; j++) {
+			String key = nickname.substring(j, j + 2);
+			if (keys.containsKey(key)) {
+				String keyMail = keys.get(key);
+				checkExistKey(keyMail, email);
+			} else {
+				keys.put(key, email);
+			}
+		}
 	}
 
 	private static void checkExistKey(String keyMail, String email) {
