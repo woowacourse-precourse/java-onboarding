@@ -19,10 +19,10 @@ public class Problem7 {
     static List<String> getResult(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, List<String>> friendsMap = getFriendsMap(friends);
         Map<String, Integer> scoreMap = new HashMap<>();
-        List<String> userFriends = friendsMap.get(user);
+        List<String> userFriends = friendsMap.remove(user);
         List<String> result;
 
-        getTogetherKnowPoint(friends, user, scoreMap);
+        setFriendsPoint(friendsMap, userFriends, scoreMap);
         getVisitorsPoint(scoreMap, visitors);
         result = sortScoreMap(scoreMap, userFriends);
 
@@ -52,6 +52,19 @@ public class Problem7 {
         friendsMap.put(friend1, friend1Value);
     }
 
+    static void setFriendsPoint(Map<String, List<String>> friendsMap, List<String> userFriends, Map<String, Integer> scoreMap) {
+        friendsMap.entrySet().stream()
+                .forEach(e -> processScore(e.getKey(), e.getValue(), userFriends, scoreMap));
+    }
+
+    static void processScore(String name, List<String> friendsList, List<String> userFriends, Map<String, Integer> scoreMap) {
+        int count = (int) friendsList.stream()
+                .filter(friend -> userFriends.contains(friend))
+                .count();
+
+        scoreMap.put(name, count * 10);
+    }
+
     static List<String> getFriendList(List<List<String>> friends, String user) {
         Set<String> friendSet = new HashSet<>();
         List<String> friendList = new ArrayList<>();
@@ -68,22 +81,9 @@ public class Problem7 {
         set.add(list.get(1));
     }
 
-    static void getTogetherKnowPoint(List<List<String>> friends, String user, Map<String, Integer> scoreMap) {
-        Map<String, List<String>> friendsMap = getFriendsMap(friends);
-        List<String> friendList = getFriendList(friends,user);
-        List<String> userFriends = friendsMap.get(user);
 
-        friendList.stream()
-            .forEach(f -> inputScore(friendsMap, userFriends, scoreMap, f));
-    }
 
-    static void inputScore(Map<String, List<String>> friendsMap, List<String> userFriends, Map<String, Integer> scoreMap, String friend) {
-        int count = (int) friendsMap.get(friend).stream()
-            .filter(x -> userFriends.contains(x))
-            .count();
 
-        scoreMap.put(friend, count * 10);
-    }
     
     static void getVisitorsPoint(Map<String, Integer> scoreMap, List<String> visitors) {
         visitors.stream()
@@ -119,5 +119,27 @@ public class Problem7 {
             return subList;
         }
         return result;
+    }
+
+    public static void main(String[] args) {
+        String user = "mrko";
+        List<List<String>> friends = List.of(
+                List.of("donut", "andole"),
+                List.of("donut", "jun"),
+                List.of("donut", "mrko"),
+                List.of("shakevan", "andole"),
+                List.of("shakevan", "jun"),
+                List.of("shakevan", "mrko")
+        );
+        Map<String, List<String>> friendsMap = getFriendsMap(friends);
+        Map<String, Integer> scoreMap = new HashMap<>();
+        List<String> userFriends = friendsMap.remove(user);
+
+        System.out.println("friendsMap: \n" + friendsMap);
+        System.out.println("userFriends: \n" + userFriends);
+
+        setFriendsPoint(friendsMap, userFriends, scoreMap);
+
+        System.out.println(scoreMap);
     }
 }
