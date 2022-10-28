@@ -1,6 +1,10 @@
 package onboarding;
 
+import org.assertj.core.util.Lists;
+
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 
 public class Problem6 {
@@ -24,7 +28,20 @@ public class Problem6 {
     }
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        HashSet<String> repeatList = new HashSet<>();
+
+        for(int i = 0; i < forms.size(); i++){
+            for(int j = i + 1; j < forms.size(); j++){
+                if(isRepeat(forms.get(i).get(1), forms.get(j).get(1))){
+                    repeatList.add(forms.get(i).get(0));
+                    repeatList.add(forms.get(j).get(0));
+                }
+            }
+        }
+
+        List<String> answer = Lists.newArrayList(repeatList);
+        Collections.sort(answer);
+
         return answer;
     }
 }
