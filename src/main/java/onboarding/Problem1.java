@@ -7,35 +7,52 @@ class Problem1 {
         if(num / 10 == 0) {
             // 한자리 일 때
             return num;
-        } else if(num / 100 == 0) {
+        }
+
+        if(num / 100 == 0) {
             // 두자리 일 때
             int sumNumber = num % 10 + num / 10;
             int mulNumber = (num % 10) * (num / 10);
             return Math.max(sumNumber, mulNumber);
-        } else {
+        }
+
+        if(num / 1000 == 0) {
             // 세자리 일 때
             int sumNumber = num % 10 + (num % 100) / 10 + num / 100;
             int mulNumber = (num % 10) * ((num % 100) / 10) * (num / 100);
             return Math.max(sumNumber, mulNumber);
         }
+
+        return 0;
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        if(pobi.get(1)-pobi.get(0) != 1) {
+            return -1;
+        }
+
+        if(crong.get(1)-crong.get(0) != 1) {
+            return -1;
+        }
+
         int pobiScore = Math.max(calBigNum(pobi.get(0)), calBigNum(pobi.get(1)));
         int crongScore = Math.max(calBigNum(crong.get(0)), calBigNum(crong.get(1)));
 
         if(pobiScore > crongScore) {
             // pobi 승
-            answer = 1;
-        } else if(pobiScore < crongScore) {
-            // crong 승
-            answer = 2;
-        } else {
-            // 무승부
-            answer = 0;
+            return 1;
         }
 
-        return answer;
+        if(pobiScore < crongScore) {
+            // crong 승
+            return 2;
+        }
+
+        if(pobiScore == crongScore) {
+            // 무승부
+            return 0;
+        }
+
+        return -1;
     }
 }
