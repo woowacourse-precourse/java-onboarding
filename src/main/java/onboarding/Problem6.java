@@ -16,34 +16,29 @@ public class Problem6 {
         }
         findDuplicatedStudents();
         List<String> answer = List.of("answer");
-        return answer;
+        return answer; // 임시
     }
 
     private static void saveStudentsInfo(List<String> info) {
-        String emailId = getEmailId(info.get(0));
+        String email = info.get(0);
         String name = info.get(1);
 
         for (int i = 0; i < name.length() - 1; i++) {
             String partOfName = name.substring(i, i + 2);
             if (!studentsInfo.containsKey(partOfName)) {
-                Set<String> emailIds = new HashSet<String>();
-                emailIds.add(emailId);
-                studentsInfo.put(partOfName, emailIds);
+                Set<String> studentEmails = new HashSet<String>();
+                studentEmails.add(email);
+                studentsInfo.put(partOfName, studentEmails);
                 continue;
             }
-            studentsInfo.get(partOfName).add(emailId);
+            studentsInfo.get(partOfName).add(email);
         }
     }
 
-    private static String getEmailId(String email) {
-        int idx = email.indexOf("@");
-        return email.substring(0, idx);
-    }
-
     private static void findDuplicatedStudents() {
-        for (Set<String> emailIds : studentsInfo.values()) {
-            if (emailIds.size() >= 2) {
-                DUPLICATED_STUDENTS.addAll(emailIds);
+        for (Set<String> studentEmails : studentsInfo.values()) {
+            if (studentEmails.size() >= 2) {
+                DUPLICATED_STUDENTS.addAll(studentEmails);
             }
         }
     }
