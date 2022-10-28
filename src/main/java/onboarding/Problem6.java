@@ -45,8 +45,10 @@ public class Problem6 {
     }
 
     static boolean isException(List<List<String>> forms, int i, int j) {
-        if (!isSameIdx(i, j) || isOverOneLetter(forms, i, j))
+        if (!isSameIdx(i, j) || isOverOneLetter(forms, i, j)) {
             return false;
+        }
+
         return true;
     }
 
@@ -61,7 +63,7 @@ public class Problem6 {
 
     static boolean isOverOneLetter(List<List<String>> forms, int i, int j) {
         String currentName = forms.get(i).get(1);
-        String targetName = forms.get(i).get(1);
+        String targetName = forms.get(j).get(1);
 
         if(currentName.length() <= 1 || targetName.length() <= 1) {
             return false;
