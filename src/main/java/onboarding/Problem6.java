@@ -1,10 +1,7 @@
 package onboarding;
 
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Pattern;
 
 
@@ -93,5 +90,10 @@ public class Problem6 {
         List<String> list = new ArrayList<>(hashMap.values());
         Collections.sort(list);
         return list;
+    }
+    public List<String> removeOverlap(List<String> list) {
+        Set<String> forChange = new HashSet<>(list);
+        List<String> changedList = new ArrayList<>(forChange);
+        return changedList;
     }
 }
