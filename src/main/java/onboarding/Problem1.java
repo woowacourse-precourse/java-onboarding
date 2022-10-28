@@ -40,4 +40,9 @@ class Problem1 {
 
         return mul;
     }
+
+    public static int getMax(List<Integer> cases) {
+        int max = cases.stream().mapToInt(x -> x).max().getAsInt();
+        return max;
+    }
 }
