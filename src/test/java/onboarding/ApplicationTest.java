@@ -74,7 +74,6 @@ class ApplicationTest {
             int result = 4;
             assertThat(Problem3.solution(number)).isEqualTo(result);
         }
-
         @Test
         void case2() {
             int number = 33;
