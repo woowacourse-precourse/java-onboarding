@@ -33,7 +33,13 @@ public class Problem6 {
      * 이때 email이 이미 있으면 추가하지 않는다.
      */
     private static void updateDuplicateEmailList(List<String> duplicateEmailList, List<String> wordEmailList) {
+        if (wordEmailList.size() <= 1) return;
 
+        for (String email : wordEmailList) {
+            if (duplicateEmailList.contains(email)) continue;
+
+            duplicateEmailList.add(email);
+        }
     }
 
     /**
