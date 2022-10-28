@@ -9,6 +9,9 @@ public class Problem2 {
 
         while (true) {
             String[] checkString = checkDuplicate(str);
+            if (checkString[0].equals("")) {
+                return "";
+            }
             checkedLength = checkString.length;
             if (length == checkedLength) {
                 for (String ch : checkString) {
