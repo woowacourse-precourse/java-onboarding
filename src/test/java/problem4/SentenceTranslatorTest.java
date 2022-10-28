@@ -33,4 +33,13 @@ public class SentenceTranslatorTest {
         assertThat(result1).isEqualTo(' ');
         assertThat(result2).isEqualTo('!');
     }
+
+    @Test
+    void 대문자는_대문자_소문자는_소문자로_변환() {
+        char result1 = translator.translate('I');
+        char result2 = translator.translate('i');
+
+        assertThat(result1).isEqualTo('R');
+        assertThat(result2).isEqualTo('r');
+    }
 }
