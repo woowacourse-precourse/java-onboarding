@@ -6,6 +6,16 @@ class Player {
     private int maxNum;
     private int leftPageNum, rightPageNum;
 
+    protected int sumEachNum(int num) {// 정수의 각 자리수를 더함
+        int sum;// 각 자리수의 합을 저장할 변수
+        sum = 0;
+        while (num > 0) {// 반복
+            sum = sum + (num % 10); // 맨 뒷자리 하나씩을 더함
+            num /= 10; //맨 뒷자리를 없애줌
+        }
+        return sum;
+    }
+
     public void setLeftPageNum(int leftPageNum) {
         this.leftPageNum = leftPageNum;
     }
