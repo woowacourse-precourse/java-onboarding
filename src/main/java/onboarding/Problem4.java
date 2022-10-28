@@ -39,6 +39,12 @@ public class Problem4 {
             String alphabet = _alphabet;
             if (!Character.isAlphabetic(alphabet.charAt(0))) {
                 answer += alphabet;
+                continue;
+            }
+            boolean is_upper_case = true;
+            if (Character.isLowerCase(alphabet.charAt(0))) {
+                is_upper_case = false;
+                alphabet = _alphabet.toUpperCase();
             }
         }
         return answer;
