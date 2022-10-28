@@ -9,6 +9,12 @@ public class Problem7 {
     //본인과 이미 친구인 사람 목록 List
     private static List<String> alreadyFriends = new ArrayList<>();
 
+    //모르는 사람 = 점수 Map
+    private static Map<String, Integer> strangerScoreMap = new HashMap<>();
+
+    private static int friendsPoint = 10;
+    private static int visitPoint = 1;
+
 
     //{사용자=[사용자의 친구들]} friends 목록과 대조해 만들기
     private static Map<String, List<String>> mapFriendsOfPerson(List<List<String>> friends, String person) {
@@ -33,6 +39,21 @@ public class Problem7 {
         strangerList.addAll(knowMyFriends);
         strangerList.removeAll(alreadyFriends);
         return strangerList;
+    }
+
+    //점수 계산
+    private static void calculationScore(List<String> nameList, int point) {
+        int score = 0;
+
+        for (String name : nameList) {
+            if (strangerScoreMap.containsKey(name)) {
+                score = strangerScoreMap.get(name);
+            } else {
+                score=0;
+            }
+            score += point;
+            strangerScoreMap.put(name, score);
+        }
     }
 
 
@@ -61,9 +82,11 @@ public class Problem7 {
         knowMyFriendList.removeAll(alreadyFriends);
         visitorList.addAll(removeAlreadyFriend(visitors));
 
-        
+        //점수 계산해서 strangerScoreMap 매핑
+        calculationScore(knowMyFriendList, friendsPoint);
+        calculationScore(visitorList, visitPoint);
 
-
+        //
 
         return answer;
     }
