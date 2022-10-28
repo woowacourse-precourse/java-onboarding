@@ -19,13 +19,13 @@ public class Problem2 {
             }else stack.push(chars[i]); // 아니면 스택에 push
         }
 
-//        int k = stack.size();
-//        while(!stack.isEmpty()) { // 스택 뒤집어서 배열에 저장
-//            res[k--] = stack.pop();
-//        }
-//
-//        answer = String.valueOf(res).trim(); // 문자를 문자열로 변환
-//
+        int k = stack.size();
+        while(!stack.isEmpty()) { // 스택 뒤집어서 배열에 저장
+            res[k--] = stack.pop();
+        }
+
+        answer = String.valueOf(res).trim(); // 문자를 문자열로 변환
+
         return answer;
     }
 }
