@@ -23,6 +23,8 @@ public class Problem3 {
         int answer = 0;
 
         //주어진 숫자에 손뼉을 몇번 쳐야하는지 dp 테이블에서 구하기
+        fillTable(number);
+        answer = dp[number];
         return answer;
     }
 }
