@@ -4,11 +4,11 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        ExceptionChecker exceptionChecker = new ExceptionChecker(pobi, crong);
+        Game game = new Game(pobi, crong);
     }
 
-    private class ExceptionChecker{
+    static private class ExceptionChecker{
         int pobiLeftPage;
         int pobiRightPage;
         int crongLeftPage;
@@ -82,7 +82,7 @@ class Problem1 {
         }
     }
 
-    private class Game {
+    static private class Game {
         int pobiLeftPage;
         int pobiRightPage;
         int crongLeftPage;
