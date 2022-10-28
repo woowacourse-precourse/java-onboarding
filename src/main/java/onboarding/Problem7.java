@@ -24,7 +24,48 @@ public class Problem7 {
 
         initDictionary(user, friends);
 
+        getMemberScore(user, friends, visitors);
+
         return answer;
+    }
+
+    /**
+     * otherMembers에 존재하는 각각의 사용자에게 점수를 부여한다.
+     * @param user 사용자
+     * @param friends 친구관계 목록
+     * @param visitors 방문자 목록
+     */
+    private static void getMemberScore(String user, List<List<String>> friends, List<String> visitors) {
+        for (List<String> pair : friends) {
+            updateScoreByRelationShip(user, pair);
+        }
+
+        for (String visitor : visitors) {
+            updateScoreByVisit(visitor);
+        }
+    }
+
+    /**
+     * 방문 이력에 따라 해당 사용자의 점수를 올린다.
+     * @param visitor 방문자 목록
+     */
+    private static void updateScoreByVisit(String visitor) {
+        memberDictionary.merge(visitor, 1, Integer::sum);
+    }
+
+    /**
+     * 사용자의 친구와 친구 관계면 점수를 올린다.
+     * @param user 사용자
+     * @param pair 친구관계
+     */
+    private static void updateScoreByRelationShip(String user, List<String> pair) {
+        if (friendDictionary.contains(pair.get(0)) && !Objects.equals(pair.get(1), user)) {
+            memberDictionary.put(pair.get(1), memberDictionary.get(pair.get(1)) + 10);
+        }
+
+        if (friendDictionary.contains(pair.get(1)) && !Objects.equals(pair.get(0), user)) {
+            memberDictionary.put(pair.get(0), memberDictionary.get(pair.get(0)) + 10);
+        }
     }
 
     /**
