@@ -18,6 +18,10 @@ public class Problem3 {
     }
 
     private static int thisTurnClapCounts(int number) {
-        return 0;
+        String numberString = Integer.toString(number);
+        return (int) numberString.chars()
+                .filter(numberChar -> numberChar == '3' || numberChar == '6' || numberChar == '9')
+                .count();
+
     }
 }
