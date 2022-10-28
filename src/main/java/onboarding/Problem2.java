@@ -17,8 +17,12 @@ public class Problem2 {
     private static void checkSkipCharacter(Deque<Character> decryptionCharStack, int idx, int newIdx) {
 
         if (idx != newIdx) {
-            deleteLastdecryptionChar(decryptionCharStack);
+            deleteLastDecryptionChar(decryptionCharStack);
         }
+    }
+
+    private static void deleteLastDecryptionChar(Deque<Character> decryptionCharStack) {
+        decryptionCharStack.getLast();
     }
 
     /**
