@@ -1,5 +1,8 @@
 package onboarding.problem2;
 
+import static onboarding.common.CommonMessage.PERMIT_ONLY_LOWERCASE;
+import static onboarding.common.CommonValidator.isOnlyContainsLowerCase;
+
 public class CryptogramValidator {
 
     public static void validateCryptogram(String cryptogram) {
@@ -8,19 +11,15 @@ public class CryptogramValidator {
         }
 
         if (!isOnlyContainsLowerCase(cryptogram)) {
-            throw new IllegalArgumentException("문자는 소문자만 입력해야 합니다.");
+            throw new IllegalArgumentException(PERMIT_ONLY_LOWERCASE.message());
         }
     }
 
     private static boolean isValidLength(String cryptogram) {
-        final int MAX_VALUE = 1000;
+        final int MAX_VALUE = 1_000;
         final int MIN_VALUE = 1;
         int length = cryptogram.length();
 
         return MIN_VALUE <= length && length <= MAX_VALUE;
-    }
-
-    private static boolean isOnlyContainsLowerCase(String cryptogram) {
-        return cryptogram.matches("^[a-z]*$");  // 소문자만 있을 때 true를 반환하는 정규식이라고 한다.
     }
 }

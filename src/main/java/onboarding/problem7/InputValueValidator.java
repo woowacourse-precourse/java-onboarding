@@ -2,6 +2,9 @@ package onboarding.problem7;
 
 import java.util.List;
 
+import static onboarding.common.CommonMessage.PERMIT_ONLY_LOWERCASE;
+import static onboarding.common.CommonValidator.isOnlyContainsLowerCase;
+
 public class InputValueValidator {
 
     private static final int MIN_VALUE = 1;
@@ -15,8 +18,8 @@ public class InputValueValidator {
             throw new IllegalArgumentException("닉네임의 길이는 1 이상 30 이하여야 합니다.");
         }
 
-        if (notOnlyContainsLowerCase(user)) {
-            throw new IllegalArgumentException("닉네임은 소문자만 입력 해주세요.");
+        if (!isOnlyContainsLowerCase(user)) {
+            throw new IllegalArgumentException(PERMIT_ONLY_LOWERCASE.message());
         }
 
         validateFriendsList(friends);
