@@ -24,6 +24,8 @@ public class Main {
 //
 //        }
 
+        List<String> list = List.of("answer");
+
         Map<String, Integer> map = new HashMap<>();
 
         map.put("제이",1);

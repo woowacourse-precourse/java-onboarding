@@ -5,6 +5,7 @@ import onboarding.problem6.NotMatchingEmail;
 import onboarding.problem6.NotMatchingNickName;
 import org.junit.platform.commons.util.StringUtils;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,10 +14,11 @@ import java.util.regex.Pattern;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
 
+        ArrayList<String> answer = new ArrayList<>();
+        
         Map<String, Integer> nickNameDivideByTwoLetter = new HashMap<>();
-
+        
         int crewSize=0;
 
         for (List<String> form : forms) {
@@ -54,9 +56,24 @@ public class Problem6 {
             }
         }
 
+        for (List<String> form : forms) {
+            String email = form.get(0);
+            String nickName = form.get(1);
 
+            for (int i = 0; i < nickName.length()-1; i++) {
+                String nickNameDivide = nickName.substring(i,i+2);
 
+                // 3. 크루들 닉네임 확인하면서 두 글자 이상의 문자가 겹치는게 있는지 확인하기
+                if(isSameNickName(nickNameDivideByTwoLetter, nickNameDivide)){
+                }
+            }
+        }
+        
         return answer;
+    }
+
+    private static boolean isSameNickName(Map<String, Integer> nickNameDivideByTwoLetter, String nickNameDivide) {
+        return nickNameDivideByTwoLetter.get(nickNameDivide) >= 2;
     }
 
     private static boolean isContainNickName(Map<String, Integer> nickNameDivideByTwoLetter, String nickNameDivide) {
