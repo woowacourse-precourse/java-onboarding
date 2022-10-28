@@ -6,6 +6,9 @@ public class Problem3 {
     public static int solution(int number) {
         validateRange(number);
         int answer = 0;
+        for (int i = 1; i <= number; i++) {
+            String iToString = String.valueOf(i);
+        }
         return answer;
     }
     public static void validateRange(int number) {
