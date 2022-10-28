@@ -24,6 +24,14 @@ public class Problem6 {
             compareNicks.addAll(totalNicks);
             compareNicks.remove(nickname);
 
+            // 3. compareNicks 내의 닉네임을 모두 2글자 단위로 절단
+            HashSet<String> compareNicksSplit = new HashSet<>();
+            for(String compareNick: compareNicks) {
+                for (int k = 0; k < compareNick.length()-1; k++) {
+                    compareNicksSplit.add(compareNick.substring(k, k + 2));
+                }
+            }
+
         }
 
 
