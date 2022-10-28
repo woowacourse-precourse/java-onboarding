@@ -29,15 +29,19 @@ public class Problem1Validation {
 
     }
 
-    private static boolean isBetween(Integer pageNum, int bookMin, int bookMax) {
-        if (bookMin <= pageNum && pageNum <= bookMax) {
+    public static boolean isBookNumberOddEvenPair(List<Integer> list) {
+        if ((list.get(0) % 2 == 1) && (list.get(1) % 2 == 0)) {
             return true;
         } else {
             return false;
         }
     }
 
-    public static boolean isBookNumberOddEvenPair(List<Integer> list) {
-        return false;
+    private static boolean isBetween(Integer pageNum, int bookMin, int bookMax) {
+        if (bookMin <= pageNum && pageNum <= bookMax) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
