@@ -16,7 +16,19 @@ class Problem1 {
         return answer;
     }
 
-    
+    //자리수를 알아내서 배열에 저장하는 함수
+    public static List<Integer> findPlaceValue(int number)
+    {
+        List<Integer> numberList = new ArrayList<>();
+
+        while(number > 0)
+        {
+            numberList.add(number % 10);
+            number /= 10;
+        }
+
+        return numberList;
+    }
 
 
     //자리수 구하고 배열에 저장
