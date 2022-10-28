@@ -2,8 +2,11 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
-        return answer;
+        int clapCount = 0;
+        for (int turn = 1; turn <= number; turn++) {
+            clapCount += count369ByNumber(turn);
+        }
+        return clapCount;
     }
 
     private static int count369ByNumber(int number) {
