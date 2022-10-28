@@ -5,19 +5,17 @@ import java.util.Map;
 
 public class DictionaryGenerator {
 
-    // createDictionary
     public Map<Character, Character> createDictionary() {
 
         Map<Character, Character> characterMap = new HashMap<>();
 
         int asciiLast = 90;
 
-        for(int ascii = 65; ascii <= 90; ascii++) {
+        for (int ascii = 65; ascii <= 90; ascii++) {
             characterMap.put((char) ascii, (char) asciiLast--);
         }
 
         return characterMap;
     }
-
 
 }

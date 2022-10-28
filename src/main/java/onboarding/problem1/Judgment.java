@@ -18,7 +18,6 @@ public class Judgment {
         List<Integer> crongPlayer = calculation.calculation(crong);
         int crongMax = calculation.maxNumber(crongPlayer);
 
-
         if (pobiMax < crongMax) {
             return 2;
         } else if (pobiMax > crongMax) {

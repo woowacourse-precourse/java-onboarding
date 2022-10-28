@@ -15,6 +15,7 @@ public class PlaceCheck {
             getMap = Dictionary.get(split);
 
             result += Character.toLowerCase(getMap);
+
         } else {
 
             getMap = Dictionary.get(split);
