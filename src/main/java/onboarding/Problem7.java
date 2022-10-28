@@ -29,10 +29,11 @@ public class Problem7 {
 
     public static List<String> findFriendsOfFriendsOfUser(String user, Map<String, List<String>> friendsInformation){
         List<String> friendsOfFriendsOfUser = new ArrayList<>();
-        if(!friendsInformation.containsKey(user)){
-            return null;
+        List<String> userFriends = friendsInformation.get(user);
+        if(userFriends == null){
+            return new ArrayList<>();
         }
-        for(String friend : friendsInformation.get(user)) {
+        for(String friend : userFriends) {
             if(!friendsInformation.containsKey(friend)) {
                 continue;
             }
@@ -40,7 +41,9 @@ public class Problem7 {
                 if(friendOfFriend.equals(user)){
                     continue;
                 }
-                if(checkDirectFriend(friendOfFriend, friendsInformation.get(user)));
+                if(checkDirectFriend(friendOfFriend, userFriends)){
+                    continue;
+                }
                 friendsOfFriendsOfUser.add(friendOfFriend);
             }
         }
