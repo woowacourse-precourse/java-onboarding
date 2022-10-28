@@ -16,12 +16,13 @@ public class Problem4 {
         }
         return changeLowerCaseChar(chr);
     }
+
     private static char changeUpperCaseChar(char chr) {
-        return '0';
+        return (char) (155 - (int)chr);
     }
 
     private static char changeLowerCaseChar(char chr) {
-        return '0';
+        return (char) (219 - (int)chr);
     }
 }
 

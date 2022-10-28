@@ -125,16 +125,42 @@ class ApplicationTest {
             assertThat(result).isEqualTo(0);
         }
     }
-//
-//    @Nested
-//    class Problem4Test {
-//        @Test
-//        void case1() {
-//            String word = "I love you";
-//            String result = "R olev blf";
-//            assertThat(Problem4.solution(word)).isEqualTo(result);
-//        }
-//    }
+
+    @Nested
+    class Problem4Test {
+        @Test
+        void case1() {
+            String word = "I love you";
+            String result = "R olev blf";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+
+        @Test
+        void changeUpperCase() throws Exception {
+            Method testMethod = Problem4.class.getDeclaredMethod("changeUpperCaseChar", char.class);
+            testMethod.setAccessible(true);
+
+            //given
+            char test = 'B';
+            //when
+            char result = (char) testMethod.invoke(char.class, test);
+            //then
+            assertThat(result).isEqualTo('Y');
+        }
+
+        @Test
+        void changeLowerCase() throws Exception {
+            Method testMethod = Problem4.class.getDeclaredMethod("changeLowerCaseChar", char.class);
+            testMethod.setAccessible(true);
+
+            //given
+            char test = 'b';
+            //when
+            char result = (char) testMethod.invoke(char.class, test);
+            //then
+            assertThat(result).isEqualTo('y');
+        }
+    }
 //
 //    @Nested
 //    class Problem5Test {
