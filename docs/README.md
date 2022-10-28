@@ -31,6 +31,8 @@
 ## ✅[Problem5](PROBLEM5.md)
   - [x] 입력받은 금액이 최대한 가볍도록 큰 금액의 화폐를 위주로 각 몇개로 반환되는지 
 금액이 큰 순서대로 리스트에 담아 return
-- 
-- [] [Problem6](PROBLEM6.md)
+## ✅[Problem6](PROBLEM6.md)
+- [x] 입력받은 List 에서 닉네임 조회
+- [x] 닉네임 중 같은 글자가 연속적으로 포함 되는 닉네임 찾기
+- [x] 글자가 연속적으로 포함되는 닉네임을 신청한 이메일 리턴
 - [] [Problem7](PROBLEM7.md)
