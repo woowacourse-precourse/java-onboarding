@@ -23,6 +23,11 @@ public class Problem6 {
             for (int i = 0; i < nick.length() - 1; i++) {
                 substrings.add(nick.substring(i, i + 2));
             }
+
+            // 2. hashSet 원소를 map에 email과 함께 보관할껀데
+            for(String substr : substrings) {
+                map.put(substr, form.get(0));
+            }
         }
         return answer;
     }
