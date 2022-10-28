@@ -6,12 +6,10 @@ package onboarding;
 1. 알파벳인지 아닌지 확인하는 기능
     1-1. 알파벳이면 변환
     1-2. 알파벳이 아니면 그대로
-1. 문자가 대문자인지 소문자인지 확인하는 기능
-    1-1. 대문자는 아스키코드 65~90
-    1-2. 소문자는 아스키코드 97~122
-2. 문자 반대로 변환
-    2-1. 대문자는 (원래문자)+(반대문자)=155
-    2-2. 소문자는 (원래문자)+(반대문자)=219
+2. 문자 반대로 변환하는 기능
+    2-1. 소문자인지 대문자인지 확인
+    2-2. 대문자는 (원래문자)+(반대문자)=155
+    2-3. 소문자는 (원래문자)+(반대문자)=219
  */
 public class Problem4 {
     //알파벳인지 아닌지 확인하는 기능
@@ -21,10 +19,26 @@ public class Problem4 {
         }
         return false;
     }
+    //알파벳이 대문자인지 소문자인지 확인하는 기능
+    public static String changeWord(String word){
+        String newWord="";
+        for(int i=0; i<word.length(); i++){
+            char c=word.charAt(i);
+            if(isAlpha(c)){ //알파벳인지 확인
+                if(Character.isUpperCase(c)){ //대문자인 경우
+                    newWord+=(char)(155-c);
+                }else if(Character.isLowerCase(c)) { //소문자인 경우
+                    newWord += (char) (219 - c);
+                }
+            }else{
+                newWord+=c;
+            }
+        }
+        return newWord;
+    }
     public static String solution(String word) {
         String answer = "";
-        System.out.println(isAlpha('@'));
-        System.out.println(isAlpha('A'));
+        answer=changeWord(word);
         return answer;
     }
 }
