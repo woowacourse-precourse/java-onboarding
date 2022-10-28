@@ -54,7 +54,16 @@ public class Problem7 {
 
     /** 해당 점수의 유저 List를 반환하는 함수 */
     private static List<String> getScoreUserList(Map<String, Integer> scoreInfo, int score) {
-        return Collections.emptyList();
+        List<String> userList = new ArrayList<>();
+
+        for(String name : scoreInfo.keySet()) {
+            int userScore = scoreInfo.get(name);
+
+            if(score == userScore) {
+                userList.add(name);
+            }
+        }
+        return userList;
     }
 
     /** 추천할 친구 List를 반환하는 함수 */
