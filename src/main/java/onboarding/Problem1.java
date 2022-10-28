@@ -23,6 +23,8 @@ import java.util.List;
 /**TODO
  * 각 자리 합을 더하는 메서드
  * 각 자리를 모두 곱하는 메서드
+ * 합과 곱 중 가장 큰 값을 리턴
+ * 예외 처리
  */
 
 class Problem1 {
@@ -39,9 +41,19 @@ class Problem1 {
 
         System.out.println(solution(pobi, crong));
     }
-    
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
+    }
+
+    public static int addCalc(int num) {
+        String numToString = String.valueOf(num);
+        int result = 0;
+        for(int i = 0; i < numToString.length(); i++) {
+            char c = numToString.charAt(i);
+            result += Integer.valueOf(c) -'0';
+        }
+        return result;
     }
 }
