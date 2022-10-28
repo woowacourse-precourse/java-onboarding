@@ -24,7 +24,7 @@ class Problem1 {
 
     private static int pageNumberHighScore(List<Integer> pageNumberList, int direction) {
         int digitSum = 0;
-        int digitMul = 0;
+        int digitMul = 1;
         int score = pageNumberList.get(direction);
         while(score > 0) {
             digitSum += score % 10;
