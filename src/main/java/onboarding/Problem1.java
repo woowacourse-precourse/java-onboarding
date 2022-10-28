@@ -7,6 +7,7 @@ class Problem1 {
     public static int middlenumber;
     public static int lastnumber;
     public static int thispagenumber;
+    public static int[] personnumber= new int[] {0,0};
 
 
     public static boolean isSuccessivePage(List<Integer> pagenumber){
@@ -84,6 +85,16 @@ class Problem1 {
             answer=-1;
             return answer;
         }
+        personnumber[0]=whichPageNumber(pobi);
+        personnumber[1]=whichPageNumber(crong);
+        if(personnumber[0]>personnumber[1]){
+            answer=1;
+        }else if(personnumber[0]<personnumber[1]){
+            answer=2;
+        }else{
+            answer=0;
+        }
+
 
 
         return answer;
