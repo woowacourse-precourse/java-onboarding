@@ -19,3 +19,8 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+### 기능 구현 목록
+- [x] 문자를 변경해주는 기능
+- [x] 변경한 문자들을 StringBuilder 에 담은 기능
+- [x] StringBuilder 를 문자열로 변경해 출력하는 기능
