@@ -53,5 +53,21 @@ public class Problem7 {
         }
         Score.put(name, newScore);
     }
-
+    private static void sortingByScore(List<String> recommendList) {
+        recommendList.sort(new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return compareScore(o1, o2);
+            }
+        });
+    }
+    private static int compareScore(String o1, String o2){
+        if(Score.get(o1)<Score.get(o2)){
+            return 1;
+        }
+        if(Score.get(o1)>Score.get(o2)){
+            return -1;
+        }
+        return o1.compareTo(o2);
+    }
 }
