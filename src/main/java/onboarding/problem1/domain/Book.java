@@ -14,7 +14,7 @@ public class Book {
     }
 
     public boolean isEvenPage(int page) {
-        return true;
+        return (page % 2 == 0);
     }
 
     public void setPage(int page) {

@@ -17,7 +17,13 @@ public class ProblemOneApplication {
         System.out.println("calculator.hasList(notEmptyList) = " + calculator.hasList(notEmptyList));
 
         Book book = new Book();
+
         int page = book.openBook();
         System.out.println("page = " + page);
+
+        int page2 = 20;
+        int page3 = 21;
+        System.out.println("book.isEvenPage(page2) = " + book.isEvenPage(page2));
+        System.out.println("book.isEvenPage(page3) = " + book.isEvenPage(page3));
     }
 }
