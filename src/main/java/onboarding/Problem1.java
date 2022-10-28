@@ -26,6 +26,18 @@ class Problem1 {
         int product = getProductOfDigits(digits);
         return sum > product ? sum : product;
     }
+
+    static char[] getDigitsOfNumber(int number) {
+        return String.valueOf(number).toCharArray();
+    }
+
+    static int getBiggerScore(List<Integer> numbers) {
+        char[] leftdigits = getDigitsOfNumber(numbers.get(0));
+        char[] rightdigits = getDigitsOfNumber(numbers.get(1));
+        int leftNumber = getBiggerNumber(leftdigits);
+        int rightNumber = getBiggerNumber(rightdigits);
+        return leftNumber > rightNumber ? leftNumber : rightNumber;
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
