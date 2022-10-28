@@ -15,7 +15,7 @@ class Problem1 {
         int pobiScore = 0;
         int crongScore = 0;
 
-        if (isError(pobi) || isError(crong))
+        if (!canExecute(pobi) || !canExecute(crong))
             return EXCEPTION;
 
         pobiScore = calculateMaxScore(pobi);
@@ -26,16 +26,15 @@ class Problem1 {
         return answer;
     }
 
-    private static boolean isError(List<Integer> list) {
+    private static boolean canExecute(List<Integer> list) {
         int left = list.get(LEFT_PAGE);
         int right = list.get(RIGHT_PAGE);
 
-        return (right <= left)
-                || (left % 2 == 0)
-                || (right % 2 == 1)
-                || (right - left > 1)
-                || (left <= 1)
-                || (right >= 400);
+        return (right == left + 1)
+                && (left % 2 == 1)
+                && (right % 2 == 0)
+                && (right <= 400)
+                && (left >= 1);
     }
 
     private static int sum(int n) {
