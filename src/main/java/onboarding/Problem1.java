@@ -5,14 +5,26 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-
         return answer;
+    }
+
+    //num 절댓값 취하기
+    private static int abs(int num){
+        return num < 0 ? -num : num;
+    }
+
+    //error 검출
+    private static boolean detectError(List<Integer> list) {
+        for(int element : list)
+            if(element == 1 || element == 400)
+                return true;
+
+        return abs(list.get(0)-list.get(1)) == 1 ? false : true;
     }
 
     //리스트 안 숫자들의 getSum, getMultiple의 값들 중 최대값 구하기
     private static int getMax(List<Integer> list){
-        int ret = 0;
-        int num;
+        int ret = 0, num;
 
         for(int element : list) {
             num = getSum(element);
