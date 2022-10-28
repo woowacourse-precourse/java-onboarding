@@ -18,6 +18,38 @@ public class Problem7 {
         return answer;
     }
 
+    public static Map<String, Set<String>> getNonFriendsAndFriendList(
+            String user,
+            List<List<String>> friends,
+            List<String> visitors) {
+        Map<String, Set<String>> nonFriendsAndFriendList = new HashMap<>();
+        Set<String> nonFriends = getNonFriends(user, friends, visitors);
+
+        for (String nonFriend : nonFriends) {
+            nonFriendsAndFriendList.putIfAbsent(nonFriend, getMyFriends(nonFriend, friends));
+        }
+        return nonFriendsAndFriendList;
+    }
+
+    public static Set<String> getNonFriends(
+            String user,
+            List<List<String>> friends,
+            List<String> visitors)
+    {
+        Set<String> myFriends = getMyFriends(user, friends);
+        Set<String> nonFriendsWithoutVisitors = friends.stream()
+                .filter(list -> !list.contains(user))
+                .map(list -> list.toArray(String[]::new))
+                .flatMap(Arrays::stream)
+                .filter(s -> !s.equals(user) && !myFriends.contains(s))
+                .collect(Collectors.toSet());
+        Set<String> nonFriendsInVisitors = visitors.stream().filter(v -> !myFriends.contains(v))
+                .collect(Collectors.toSet());
+
+        nonFriendsWithoutVisitors.addAll(nonFriendsInVisitors);
+        return nonFriendsWithoutVisitors;
+    }
+
     public static Set<String> getMyFriends(String user, List<List<String>> friends) {
         return friends.stream()
                 .filter(list -> list.contains(user))
