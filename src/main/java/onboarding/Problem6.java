@@ -3,10 +3,11 @@ package onboarding;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
         HashMap<String, String> map = new HashMap<>();
         HashSet<String> emails = new HashSet<>();
 
@@ -31,6 +32,8 @@ public class Problem6 {
                 map.put(key, person.get(0));
             }
         }
+        ArrayList<String> answer = new ArrayList<>(emails);
+        Collections.sort(answer);
         return answer;
     }
 }
