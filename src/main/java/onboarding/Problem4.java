@@ -28,6 +28,15 @@ public class Problem4 {
         if (word < 65 || word > 122 || (word > 90 && word < 97)) {
             return true;
         }
+
+        return false;
+    }
+
+    public static boolean isLowerCase(char word) {
+        if (word >= 97 && word <= 122) {
+            return true;
+        }
+
         return false;
     }
 
