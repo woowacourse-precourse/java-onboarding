@@ -42,4 +42,20 @@ class Problem1MethodTest {
             e.printStackTrace();
         }
     }
+
+    @Test
+    void startGameTest() {
+        Problem1 problem1 = new Problem1();
+        try {
+            Method startGame = problem1.getClass().getDeclaredMethod("startGame", int.class, int.class);
+            startGame.setAccessible(true);
+
+            assertThat((Problem1.Result) startGame.invoke(problem1, 5, 0)).isEqualTo(Problem1.Result.POBI_WIN);
+            assertThat((Problem1.Result) startGame.invoke(problem1, 0, 5)).isEqualTo(Problem1.Result.CRONG_WIN);
+            assertThat((Problem1.Result) startGame.invoke(problem1, 5, 5)).isEqualTo(Problem1.Result.DRAW);
+        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+    }
 }
