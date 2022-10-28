@@ -7,6 +7,18 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+    private static int calMaxPageNum(int page) {
+        String pageToString = String.valueOf(page);
+
+        int addSum=0;
+        int mulSum=1;
+        for (int i = 0; i < pageToString.length(); i++) {
+            addSum += pageToString.charAt(i)-'0';
+            mulSum*= pageToString.charAt(i)-'0';
+        }
+
+        return Math.max(addSum, mulSum);
+    }
 
     private static boolean isIncludePage(List<Integer> pages){
         int leftPage = pages.get(0);
