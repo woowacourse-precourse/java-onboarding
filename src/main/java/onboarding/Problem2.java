@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.Stack;
+
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
@@ -29,5 +31,24 @@ public class Problem2 {
         }
 
         return result;
+    }
+
+    /* Stack으로 2개 연속된 문자를 제거 */
+    private static String deleteRepeatation(String cryptogram) {
+        Stack<Character> stack = new Stack<>();
+
+        for (int i = 0; i < cryptogram.length(); i++) {
+            char tmp = cryptogram.charAt(i);
+            boolean checkEmpty = stack.isEmpty();
+            Character topOfStack = stack.peek();
+
+            if (checkEmpty || topOfStack != tmp) {
+                stack.push(tmp);
+                continue;
+            }
+            stack.pop();
+        }
+
+        return stack.toString();
     }
 }
