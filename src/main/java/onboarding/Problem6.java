@@ -23,6 +23,25 @@ public class Problem6 {
             }
 
         }
+
+        /* 같은 글자가 연속적으로 포함될 경우 사용제한 기능 */
+        for (int i = 0; i < ar.size(); i++) {
+            /* 연속적으로 단어를 포함하는 크루수인 cnt 변수 */
+            int cnt = 0;
+
+            for (int j = 0; j < forms.size(); j++) {
+                /* contains을 이용하여 닉네임에 같은 단어가 포함되어 있는지 검색 */
+                if (forms.get(j).get(1).contains(ar.get(i))) {
+                    /* 이메일 값을 answer에 추가 */
+                    answer.add(forms.get(j).get(0));
+                    cnt++;
+                }
+            }
+            /* 사용하는 크루가 혼자일시 answer에 추가한 값 제거 */
+            if (cnt == 1) {
+                answer.remove(answer.size() - 1);
+            }
+        }
         return answer;
     }
 }
