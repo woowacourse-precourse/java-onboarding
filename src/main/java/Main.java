@@ -11,9 +11,8 @@ public class Main {
 //        System.out.println(Problem1.solution(Arrays.asList(97,98) ,Arrays.asList(197,198)));
 //        System.out.println(Problem1.solution(Arrays.asList(131,132) ,Arrays.asList(211,212)));
 //        System.out.println(Problem1.solution(Arrays.asList(99,102) ,Arrays.asList(211,212)));
-
-        String cryptogram = "browoanoommnaon";
-        String result = "brown";
-        System.out.println(Problem2.solution(cryptogram));
+        for (int i = 0; i < 26; i++) {
+            System.out.print((char)('A'+i));
+        }
     }
 }
