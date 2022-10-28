@@ -30,6 +30,11 @@ class Problem1 {
         lastnumber=pagenumber%10;
     }
 
+    public static int sumNumber(){
+        int plusnumber=firstnumber+middlenumber+lastnumber;
+        return plusnumber;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         if(isSuccessivePage(pobi)==false||isSuccessivePage(crong)==false){
