@@ -33,7 +33,7 @@ class Problem2Test {
         String trueCase2 = "ababb";
         assertThat(problem2.isStringContainingRegularExpression(trueCase2, RegularExpressionOfConsecutiveDuplicateCharacters)).isEqualTo(true);
 
-        String trueCase3 = "  ";
+        String trueCase3 = "bbabbbbaooo";
         assertThat(problem2.isStringContainingRegularExpression(trueCase3, RegularExpressionOfConsecutiveDuplicateCharacters)).isEqualTo(true);
     }
 }
