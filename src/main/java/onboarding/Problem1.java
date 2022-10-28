@@ -66,8 +66,14 @@ class Problem1 {
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int pointPobi, pointCrong;
 
-        return answer;
+        if(handleException(pobi) || handleException(crong))
+            return -1;
+
+        pointPobi = getPoint(pobi);
+        pointCrong = getPoint(crong);
+
+        return getResult(pointPobi, pointCrong);
     }
 }
