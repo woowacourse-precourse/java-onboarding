@@ -3,17 +3,26 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
-    public static List<String> friendsWithUser = new ArrayList<>();
-    public static Map<String, Integer> sameFriendWithUser = new HashMap<>();
+    public static final int FRIEND_POINT = 20;
+    public static final int ZERO_POINT = 0;
+    public static final int ONE_POINT = 1;
+    public static List<String> userFriend = new ArrayList<>();
+    public static Map<String, Integer> sameFriend = new HashMap<>();
+    public static String currentUser;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        initUser(user);
 
-        addFriendsWithUser(user, friends);
-        findSameFriendWithUser(user, friends);
-        findVisitor(visitors);
+        searchUserFriend(friends);
+        searchSameFriend(friends);
+        searchVisitor(visitors);
 
         List<String> answer = makeOrder();
         return answer;
+    }
+
+    public static void initUser(String user) {
+        currentUser = user;
     }
 
     public static List<String> addResult(List<Map.Entry<String, Integer>> listEntries) {
@@ -24,7 +33,7 @@ public class Problem7 {
 
         for (int i = 0; i < listEntries.size(); i++) {
 
-            if(count>=5){
+            if (count >= 5) {
                 break;
             }
 
@@ -58,7 +67,7 @@ public class Problem7 {
     }
 
     private static List<String> makeOrder() {
-        List<Map.Entry<String, Integer>> listEntries = new ArrayList<Map.Entry<String, Integer>>(sameFriendWithUser.entrySet());
+        List<Map.Entry<String, Integer>> listEntries = new ArrayList<Map.Entry<String, Integer>>(sameFriend.entrySet());
 
         Collections.sort(listEntries, new Comparator<Map.Entry<String, Integer>>() {
             public int compare(Map.Entry<String, Integer> obj1, Map.Entry<String, Integer> obj2) {
@@ -69,47 +78,75 @@ public class Problem7 {
         return addResult(listEntries);
     }
 
-    private static void findVisitor(List<String> visitors) {
+    private static void searchVisitor(List<String> visitors) {
         for (String visitor : visitors) {
-            if (!friendsWithUser.contains(visitor)) {
-                if (sameFriendWithUser.containsKey(visitor)) {
-                    sameFriendWithUser.replace(visitor, sameFriendWithUser.get(visitor) + 1);
-                } else {
-                    sameFriendWithUser.put(visitor, 1);
-                }
-            }
-
-        }
-    }
-
-    public static void findSameFriendWithUser(String user, List<List<String>> friends) {
-        for (List<String> list : friends) {
-            for (String friendWithUser : friendsWithUser) {
-                if (list.contains(friendWithUser)) {
-                    for (String friend : list) {
-                        if (!friend.equals(user) && !friend.equals(friendWithUser)) {
-                            if (sameFriendWithUser.containsKey(friend)) {
-                                sameFriendWithUser.replace(friend, sameFriendWithUser.get(friend) + 20);
-                            } else {
-                                sameFriendWithUser.put(friend, 20);
-
-                            }
-                        }
-                    }
-                }
+            if(!isSameWithUserFriend(visitor)) {
+                checkNameInSameFriend(visitor);
+                addNameInSameFriend(visitor,ONE_POINT);
             }
         }
     }
 
-    public static void addFriendsWithUser(String user, List<List<String>> friends) {
+    public static void searchSameFriend(List<List<String>> friends) {
         for (List<String> list : friends) {
-            if (list.contains(user)) {
-                for (String friend : list) {
-                    if (!friend.equals(user)) {
-                        friendsWithUser.add(friend);
-                    }
-                }
-            }
+            checkUserFriends(list);
         }
+    }
+
+    private static void checkUserFriends(List<String> list) {
+        for (String name : list) {
+            checkSameFriend(name);
+        }
+    }
+
+    private static void checkSameFriend(String name) {
+        if (!isSameWithUser(name) && !isSameWithUserFriend(name)) {
+            checkNameInSameFriend(name);
+            addNameInSameFriend(name, FRIEND_POINT);
+        }
+    }
+
+    private static void addNameInSameFriend(String name, int point) {
+        sameFriend.put(name, sameFriend.get(name) + point);
+    }
+
+    private static void checkNameInSameFriend(String name) {
+        if (!isContainName(name)) {
+            sameFriend.put(name, ZERO_POINT);
+        }
+    }
+
+    private static boolean isContainName(String name) {
+        return sameFriend.containsKey(name);
+    }
+
+    public static boolean isSameWithUserFriend(String name) {
+        return userFriend.contains(name);
+    }
+
+    public static boolean isSameWithUser(String name) {
+        return name.equals(currentUser);
+    }
+
+    public static void searchUserFriend(List<List<String>> friends) {
+        for (List<String> list : friends) {
+            findUserFriends(list);
+        }
+    }
+
+    public static void findUserFriends(List<String> list) {
+        for (String friend : list) {
+            addUserFriend(friend, list);
+        }
+    }
+
+    public static void addUserFriend(String friend, List<String> list) {
+        if (checkUserFriend(friend, list)) {
+            userFriend.add(friend);
+        }
+    }
+
+    public static boolean checkUserFriend(String friend, List<String> list) {
+        return (list.contains(currentUser) && !friend.equals(currentUser));
     }
 }
