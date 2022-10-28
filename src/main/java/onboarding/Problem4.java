@@ -3,8 +3,6 @@ package onboarding;
 import java.util.*;
 
 public class Problem4 {
-
-//    protected  static String SPACE = " ";
     protected static final Map<String,String> REVERSE_VALUE = new HashMap<>(){
         {
             put("A","Z"); put("B","Y");put("C","X");put("D","W");put("E","V");put("F","U");put("G","T");put("H","S");put("I","R");put("J","Q");put("K","P");put("L","O");put("M","N");
