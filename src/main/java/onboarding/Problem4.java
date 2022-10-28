@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /*
@@ -11,30 +12,13 @@ import java.util.stream.Stream;
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
+        StringTokenizer stringTokenizer = new StringTokenizer(word);
+        answer = stringTokenizer.getToken().map(Problem4::converseAlpha)
+                .map(String::valueOf).collect(Collectors.joining());
         return answer;
     }
-}
 
-class StringTokenizer {
-    private Stream wordToken;
-
-    public StringTokenizer(String word) {
-        this.wordToken = word.chars().mapToObj(a -> (char)a);
-    }
-
-    public Stream getToken(){
-        return wordToken;
-    }
-}
-
-class AlphaSwaper {
-    private Stream token;
-    public AlphaSwaper(Stream token){
-        this.token = token;
-    }
-
-
-    public char converseAlpha(char alpha) {
+    public static char converseAlpha(char alpha) {
         if(!Character.isAlphabetic(alpha)) {
             return alpha;
         }
@@ -45,5 +29,17 @@ class AlphaSwaper {
             return (char) ('z' - alpha + 'a');
         }
     }
+}
 
+class StringTokenizer {
+
+    final private Stream<Character> wordToken;
+
+    public StringTokenizer(String word) {
+        this.wordToken = word.chars().mapToObj(a -> (char)a);
+    }
+
+    public Stream<Character> getToken(){
+        return wordToken;
+    }
 }
