@@ -6,7 +6,7 @@ import java.util.stream.IntStream;
 
 public class Problem3 {
     private static final List<Integer> numbers = Arrays.asList(3, 6, 9);
-    private static int count = 0;
+    private static int count;
 
     public static int solution(int number) {
         initGame();
