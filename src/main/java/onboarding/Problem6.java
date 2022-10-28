@@ -26,7 +26,6 @@ public class Problem6 {
 
 
                     if (checkConsecutiveCharacter(setName, compareName) == true) {
-                        System.out.println(setEmail);
                         selectedList.add(setEmail);
                     }
                 }
@@ -34,6 +33,7 @@ public class Problem6 {
         }
 
         List<String> answer = removeDuplication(selectedList);
+        answer.sort(Comparator.naturalOrder());
 
         return answer;
     }
