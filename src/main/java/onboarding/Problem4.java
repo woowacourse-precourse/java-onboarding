@@ -8,7 +8,7 @@ public class Problem4 {
             char currentChar = word.charAt(i);
             if(isUpperCase(currentChar)){
                 //알파벳 대문자일 경우 변환
-
+                answer += changeUpperCase(currentChar);
             }
             //알파벳 소문자일 경우 변환
 
