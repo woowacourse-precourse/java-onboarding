@@ -52,6 +52,17 @@ public class Problem7 {
                 }
             }
         }
+        public void visitorScore(ArrayList<String> userFriends){
+            for (String visitor : visitors) {
+                if(!(userFriends.contains(visitor))) {
+                    if (!(result.containsKey(visitor))) {
+                        result.put(visitor, 1);
+                    } else {
+                        result.put(visitor, result.get(visitor) + 1);
+                    }
+                }
+            }
+        }
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
