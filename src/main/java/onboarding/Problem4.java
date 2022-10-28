@@ -6,8 +6,31 @@ public class Problem4 {
 
         return answer;
     }
+    private static char changeCharter(char chr) {
+        if (!isAlphabet(chr)) {
+            return chr;
+        }
+        if (isUpperCase(chr)) {
+            return changeUpperCaseChar(chr);
+        }
+        return changeLowerCaseChar(chr);
+    }
 
+    private static boolean isAlphabet(char chr) {
+        return false;
+    }
 
+    private static boolean isUpperCase(char chr) {
+        return false;
+    }
+
+    private static char changeUpperCaseChar(char chr) {
+        return '0';
+    }
+
+    private static char changeLowerCaseChar(char chr) {
+        return '0';
+    }
 }
 
 /* 구현 로직
