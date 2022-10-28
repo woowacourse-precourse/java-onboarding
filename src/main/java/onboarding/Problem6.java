@@ -33,9 +33,8 @@ public class Problem6 {
             List<String> crewForm = forms.get(i);
             String email = crewForm.get(0);
             String nickname = crewForm.get(1);
-            if (!validateEmail(email) || !validateNickname(nickname)) {
-                continue;
-            }
+            validateEmail(email);
+            validateNickname(nickname);
             findDuplicateNickname(nickname, i);
         }
     }
@@ -53,28 +52,24 @@ public class Problem6 {
         }
     }
 
-    private static boolean validateEmail(String email) {
+    private static void validateEmail(String email) {
         if (email.length() < 11 || email.length() >= 20) {
-            return false;
+            throw new IllegalArgumentException("이메일의 길이는 11이상 20미만이어야 합니다.");
         }
 
         if (!email.contains("email.com")) {
-            return false;
+            throw new IllegalArgumentException("도메인은 email.com만 가능합니다.");
         }
-
-        return true;
     }
 
-    private static boolean validateNickname(String nickname) {
+    private static void validateNickname(String nickname) {
         String expression = "^[ㄱ-ㅎ가-힣]*$";
         if (!nickname.matches(expression)) {
-            return false;
+            throw new IllegalArgumentException("닉네임은 한글만 가능합니다.");
         }
 
         if (nickname.length() < 1 || nickname.length() >= 20) {
-            return false;
+            throw new IllegalArgumentException("닉네임의 길이는 1이상 20미만이어야 합니다.");
         }
-
-        return true;
     }
 }
