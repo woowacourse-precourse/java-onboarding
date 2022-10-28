@@ -9,8 +9,17 @@ public class Problem6 {
     private static ArrayList<String> twoLetterSplitNicknames = new ArrayList<>();
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        ArrayList<String> needChangeCrewEmail = new ArrayList<>();
+
+        for (List<String> crew : forms) {
+            if (!validateCrew(crew)) {
+                needChangeCrewEmail.add(crew.get(0));
+
+                System.out.println(crew.get(1));
+            }
+        }
+
+        return needChangeCrewEmail;
     }
 
     /**
