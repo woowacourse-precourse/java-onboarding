@@ -40,7 +40,6 @@ class ApplicationTest {
         @Test
         void case1() {
             String cryptogram = "browoanoommnaon";
-            System.out.println(Problem2.solution(cryptogram));
             String result = "brown";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
