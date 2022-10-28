@@ -178,7 +178,7 @@ ex) 현재 문자 : C -> Z - C + A = X
 
 ### checkNicknameInForms
 - 두번째 크루 닉네임부터 돌면서 체크하는 메서드
-- [ ] 돌면서 크루 닉네임을 체크한다.
+- [x] 돌면서 크루 닉네임을 체크한다.
 
 ### checkConfirmListWordContains
 - 확인리스트에 단어가 포함되는지 확인하는 메서드
