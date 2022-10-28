@@ -38,10 +38,10 @@ public class Problem6 {
             String email = form.get(0);
             String nickName = form.get(1);
 
-            if (isEmail(email)){
+            if (isNotEmail(email)){
                 throw new NotMatchingEmail("이메일 형식 및 길이가 맞지 않습니다.");
             }
-            if(isNickName(nickName)){
+            if(isNotNickName(nickName)){
                 throw new NotMatchingNickName("닉네임이 한글 및 길이가 맞지 않습니다.");
             }
 
@@ -94,7 +94,7 @@ public class Problem6 {
     }
 
     // 이메일 형식 체킹 및 전체 길이 체킹
-    public static boolean isEmail(String email){
+    public static boolean isNotEmail(String email){
         boolean found = true;
 
         if(StringUtils.isBlank(email)){
@@ -112,7 +112,7 @@ public class Problem6 {
     }
 
     // 닉네임 한글 및 길이 체킹
-    public static boolean isNickName(String name){
+    public static boolean isNotNickName(String name){
         boolean found = true;
 
         if(StringUtils.isBlank(name)){

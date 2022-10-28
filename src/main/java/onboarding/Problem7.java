@@ -4,9 +4,12 @@ import onboarding.problem7.NotMatchingFriendSize;
 import onboarding.problem7.NotMatchingFriendsSize;
 import onboarding.problem7.NotMatchingUserLength;
 import onboarding.problem7.NotMatchingVisitorsSize;
+import org.junit.platform.commons.util.StringUtils;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -37,6 +40,7 @@ public class Problem7 {
         if(isNotMatchingVisitorsSize(visitorsSize)){
             throw new NotMatchingVisitorsSize("방문 기록의 길이가 맞지 않습니다.");
         }
+
         //- 사용자 아이디 소문자인지 체크
 
 
@@ -62,5 +66,21 @@ public class Problem7 {
 
     private static boolean isNotMatchingUserLength(int length) {
         return length < 1 || length > 30;
+    }
+
+    public static boolean isId(String id){
+        boolean found = true;
+
+        if(StringUtils.isBlank(id)){
+            found = true;
+        }
+
+        String regex = "^[ㄱ-ㅎㅏ-ㅣ가-힣]{1,19}$";
+        Pattern p = Pattern.compile(regex);
+        Matcher matcher = p.matcher(id);
+        if(matcher.matches()){
+            found = false;
+        }
+        return found;
     }
 }
