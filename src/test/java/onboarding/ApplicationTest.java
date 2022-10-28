@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.*;
 
 import java.util.List;
 
+import onboarding.problem2.CryptogramValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -138,7 +139,7 @@ class ApplicationTest {
             // when && then
             assertThatThrownBy(() -> Problem2.solution(cryptogram))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(String.format(Problem2.INVALID_STRING_LENGTH_MASSAGE_FORMAT, 1, 1000));
+                    .hasMessage(String.format(CryptogramValidator.INVALID_STRING_LENGTH_MASSAGE_FORMAT, CryptogramValidator.MIN_LENGTH, CryptogramValidator.MAX_LENGTH));
         }
 
         @Test
@@ -150,7 +151,7 @@ class ApplicationTest {
             // when && then
             assertThatThrownBy(() -> Problem2.solution(cryptogram))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(String.format(Problem2.INVALID_STRING_LENGTH_MASSAGE_FORMAT, 1, 1000));
+                    .hasMessage(String.format(CryptogramValidator.INVALID_STRING_LENGTH_MASSAGE_FORMAT, CryptogramValidator.MIN_LENGTH, CryptogramValidator.MAX_LENGTH));
         }
 
         @Test
