@@ -50,13 +50,17 @@ public class Problem7 {
             }        
         } 
         
-        /* 최종 친구 점수 */
+        /* 추천 점수 합치기 */
         visitScore.forEach((key, value) -> friendScore.merge(key, value, (v1, v2) -> v1 + v2));
         for (int i = 0; i < userFriends.size(); i++) {
             friendScore.containsKey(userFriends.get(i));
             friendScore.remove(userFriends.get(i));
         }
+
+        /* Value값이 큰 순서대로 정렬 */
+        List<String> result = new ArrayList<>(friendScore.keySet());
+    	Collections.sort(result, (v1, v2) -> (friendScore.get(v2).compareTo(friendScore.get(v1))));
         
-        return answer;
+        return answer = result;
     }
 }
