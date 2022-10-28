@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 class Problem1 {
-
     /*
     두 게임 참여자의 pages를 List<Integer>로 받아 승자를 return하는 메서드
     - 예외 사항
@@ -17,17 +16,22 @@ class Problem1 {
      */
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-
-        // 예외 사항 체크. boolean isVaild(List<Integer> pages)
-
-        // pobi의 점수 구하기. int getScore(List<Integer> pages)
-        // crong의 점수 구하기. int getScore(List<Integer> pages)
-
+        // 예외 사항 체크. 예외 발생 시 return -1
+        if (isVaild(pobi) == false || isVaild(crong) == false) {
+            answer = -1;
+            return answer;
+        }
+        // pobi와 crong의 점수 구하기
+        int pobiScore = getScore(pobi);
+        int crongScore = getScore(crong);
         // pobi와 crong의 점수 비교
-         // pobi win
-         // crong win
-         // 무승부 발생
-
+        if (pobiScore > crongScore) {
+            answer = 1;
+        } else if (pobiScore < crongScore) {
+            answer = 1;
+        } else {
+            answer = 0;
+        }
         return answer;
     }
 
@@ -81,7 +85,6 @@ class Problem1 {
             multiple += num;
         }
         return multiple;
-    }
     }
 
     /*
