@@ -13,6 +13,31 @@ class Problem1 {
         return true;
     }
 
+    private static int getPlusNumber(int leftPage) {
+        int result = 0;
+        while (leftPage != 0) {
+            result += leftPage % 10;
+            leftPage /= 10;
+        }
+        return result;
+    }
+
+    private static int getMultiNumber(int rightPage) {
+        int result = 1;
+        while (rightPage != 0) {
+            result *= rightPage % 10;
+            rightPage /= 10;
+        }
+        return result;
+    }
+
+    private static int maxNumber(List<Integer> list) {
+        int plusNumber = getPlusNumber(list.get(0));
+        int multiNumber = getMultiNumber(list.get(1));
+
+        return Math.max(plusNumber, multiNumber);
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
     }
