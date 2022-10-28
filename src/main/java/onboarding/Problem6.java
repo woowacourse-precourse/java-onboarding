@@ -13,6 +13,25 @@ import java.util.*;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
+        HashMap<String, List<String>> hashMap = new HashMap<>();
+        for(int i=0;i<forms.size();i++){
+            putAllSubstringInHashMap(forms.get(i),hashMap);
+        }
         return answer;
+    }
+
+    public static void putAllSubstringInHashMap(List<String> info, HashMap<String,List<String>> hashMap){
+        String email = info.get(0);
+        String nickname = info.get(1);
+        for(int i=2;i<nickname.length();i++){
+            for(int j =0;j<nickname.length()-i+1;j++){
+                String substr = nickname.substring(j,j+i);
+                if(!hashMap.containsKey(substr)){
+                    List<String> list = new ArrayList<>();
+                    hashMap.put(substr,list);
+                }
+                hashMap.get(substr).add(email);
+            }
+        }
     }
 }
