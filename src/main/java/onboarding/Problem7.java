@@ -13,6 +13,8 @@ public class Problem7 {
             contacts.put(peopleA, makeFriendList(peopleB, contacts.get(peopleA)));
             contacts.put(peopleB, makeFriendList(peopleA, contacts.get(peopleB)));
         }
+
+
         return answer;
     }
 
@@ -22,5 +24,9 @@ public class Problem7 {
         }
         friendList.add(people);
         return friendList;
+    }
+
+    private static boolean isFriends(String name, List<String> friendList) {
+        return friendList.contains(name);
     }
 }
