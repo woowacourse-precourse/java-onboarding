@@ -12,9 +12,8 @@ public class Problem5 {
         return answer; // 임시
     }
 
-    private static List<Integer> getMoney(int money) {
+    private static List<Integer> getAllCntByUnit(int money) {
         List<Integer> answer = new ArrayList<>();
-
         for (int unit : UNITS) {
             answer.add(money / unit);
             money %= unit;
