@@ -28,6 +28,18 @@ public class Problem7 {
         scores.put(crew, score);
     }
 
+    public static void updateScoresWithVisitors(HashMap<String, Integer> scores, List<String> visitors) {
+        int score;
+
+        for (String visitor : visitors) {
+            if (scores.containsKey(visitor)) {
+                score = scores.get(visitor);
+                scores.put(visitor, score++);
+                continue;
+            }
+            scores.put(visitor, 1);
+        }
+    }
     public static void makeFriendship(List<List<String>> friends, HashMap<String, List<String>> friendship) {
         String crew1, crew2;
 
