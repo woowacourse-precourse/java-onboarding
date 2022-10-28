@@ -19,8 +19,13 @@ public class Problem6 {
     private static Set<String> emails = new HashSet<>();
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        setDataOnHashMap(forms);
+        return sortList(getEmailsWithCommonNickname(forms));
+    }
+
+    private static List<String> sortList(List<String> unsorted){
+        Collections.sort(unsorted);
+        return unsorted;
     }
 
     private static List<String> getEmailsWithCommonNickname(List<List<String>> forms){
