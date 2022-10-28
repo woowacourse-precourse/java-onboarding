@@ -1,8 +1,6 @@
 package onboarding;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 /*
  *  구현 기능
@@ -18,13 +16,13 @@ public class Problem4 {
 }
 
 class StringTokenizer {
-    private IntStream wordToken;
+    private Stream wordToken;
 
     public StringTokenizer(String word) {
-        this.wordToken = word.chars();
+        this.wordToken = word.chars().mapToObj(a -> (char)a);
     }
 
-    public IntStream getToken(){
+    public Stream getToken(){
         return wordToken;
     }
 }
