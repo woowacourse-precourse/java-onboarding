@@ -24,9 +24,20 @@ public class Problem4 {
             String[] wordArr = word.split("");
             String[] answerArr = new String[wordArr.length];
 
+            setAnswerArr(map, wordArr, answerArr);
         }
 
 
         return answer;
+    }
+
+    private static void setAnswerArr(Map<String, String> map, String[] wordArr, String[] answerArr) {
+        for (int i = 0; i < wordArr.length; i++) {
+            if (Character.isUpperCase(wordArr[i].charAt(0))) {
+                answerArr[i] = map.get(wordArr[i].toLowerCase()).toUpperCase();
+            } else {
+                answerArr[i] = map.get(wordArr[i]);
+            }
+        }
     }
 }
