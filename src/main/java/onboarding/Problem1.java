@@ -19,7 +19,7 @@ class Problem1 {
         return (pobi_max_score > crong_max_score) ? 1 : (pobi_max_score < crong_max_score) ? 2 : 0;
     }
 
-    public static int plus_score(int num) {
+    private static int plus_score(int num) {
         int total_score = 0;
         while(num > 0) {
             total_score += num % 10;
@@ -28,7 +28,7 @@ class Problem1 {
         return total_score;
     }
 
-    public static int multiply_score(int num) {
+    private static int multiply_score(int num) {
         int total_score = 1;
         while(num > 0) {
             total_score *= num % 10;
