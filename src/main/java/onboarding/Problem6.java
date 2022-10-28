@@ -1,32 +1,32 @@
 package onboarding;
 
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
 import onboarding.problem6.DuplicateNickname;
 
 public class Problem6 {
-
-    final static int USER_EMAIL = 0;
-    static ArrayList<String> DuplicateEmail(Set<Integer> duplicateIndex, List<List<String>> forms) {
+    private final static int USER_EMAIL = 0;
+    static ArrayList<String> duplicateEmail(Set<Integer> duplicateIndex, List<List<String>> forms) {
         ArrayList<String> result = new ArrayList<>();
 
-        for(int i : duplicateIndex) {
+        for (int i : duplicateIndex) {
             result.add(forms.get(i).get(USER_EMAIL));
         }
         return result;
     }
-    static List<String> EmailSort(List<String> email) {
-        List<String> result = email;
 
+    static void sortEmail(List<String> email) {
         Collections.sort(email);
-        return result;
     }
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
 
         DuplicateNickname duplicateNickname = new DuplicateNickname(forms);
-        answer = DuplicateEmail(duplicateNickname.DuplicateNicknameIndex(), forms);
-        EmailSort(answer);
+        answer = duplicateEmail(duplicateNickname.duplicateNicknameIndex(), forms);
+        sortEmail(answer);
 
         return answer;
     }
