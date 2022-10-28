@@ -35,6 +35,13 @@ public class Problem3 {
 
     public static int solution(int number) {
         int answer = 0;
+
+        // 1 ~ number 까지 3, 6, 9의 개수 구하는 반복문
+        for (int i = 1; i <= number; i++){
+            String num = convert(i);
+            answer += find369(num);
+        }
+
         return answer;
     }
 }
