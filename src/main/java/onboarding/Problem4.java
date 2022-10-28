@@ -3,11 +3,10 @@ package onboarding;
 import java.util.*;
 
 public class Problem4 {
-    public static Map<Character, Character> alphabetMap = new HashMap<>();
-    public static List<Character> motherWord = new ArrayList<>();
     public static final String UPPERCASE_ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     public static final String LOWERCASE_ALPHABET = "abcdefghijklmnopqrstuvwxyz";
     public static final String DELIMITER = UPPERCASE_ALPHABET + LOWERCASE_ALPHABET + " ";
+    public static final String INIT_STRING = "";
     public static final int indexStart = 0;
     public static final int indexEnd = 26;
     public static int upperCaseA = 65;
@@ -15,27 +14,23 @@ public class Problem4 {
     public static int lowerCaseA = 97;
     public static int lowerCaseZ = 122;
 
-    public static String solution(String word) {
-        String answer = "";
 
-        makeFrogDictionary();
-        letterInList(word);
-        answer = reverseWord();
+    public static String solution(String word) {
+        Map<Character, Character> alphabetMap = new HashMap<>();
+        List<Character> motherWord = new ArrayList<>();
+
+        makeFrogDictionary(alphabetMap);
+        separateLetter(word, motherWord);
+        String answer = reverseWord(alphabetMap, motherWord);
 
         return answer;
     }
 
-    public static String reverseWord() {
-        String reverseResult = "";
+    public static String reverseWord(Map<Character, Character> alphabetMap, List<Character> motherWord) {
+        String reverseResult = INIT_STRING;
 
         for (Character letter : motherWord) {
-            int letterToInt = (int)letter;
-
-            if (isAlphabet(letterToInt)) {
-                reverseResult += alphabetMap.get(letter);
-            } else {
-                reverseResult += letter;
-            }
+            reverseResult += (isAlphabet((int) letter)) ? alphabetMap.get(letter) : letter;
         }
         return reverseResult;
     }
@@ -47,29 +42,31 @@ public class Problem4 {
         return false;
     }
 
-    public static void letterInList(String word) {
+    public static void separateLetter(String word, List<Character> motherWord) {
         StringTokenizer st = new StringTokenizer(word, DELIMITER, true);
 
-        for (int index = indexStart; index < word.length(); index++) {
+        while (st.hasMoreTokens()) {
             String str = st.nextToken();
-            motherWord.add(str.charAt(0));
+            addMotherLetter(motherWord, str.charAt(0));
         }
     }
 
-    public static void makeFrogDictionary() {
-        AddUpperCaseLetter();
-        AddLowerCaseLetter();
+    public static void addMotherLetter(List<Character> motherWord, char letter) {
+        motherWord.add(letter);
     }
 
-    public static void AddLowerCaseLetter() {
+    public static void makeFrogDictionary(Map<Character, Character> alphabetMap) {
         for (int index = indexStart; index < indexEnd; index++) {
-            alphabetMap.put((char) (lowerCaseA + index), (char) (lowerCaseZ - index));
+            addLowerCase(alphabetMap,index);
+            addUpperCase(alphabetMap,index);
         }
     }
 
-    public static void AddUpperCaseLetter() {
-        for (int index = indexStart; index < indexEnd; index++) {
-            alphabetMap.put((char) (upperCaseA + index), (char) (upperCaseZ - index));
-        }
+    public static void addUpperCase(Map<Character, Character> alphabetMap, int index) {
+        alphabetMap.put((char) (upperCaseA + index), (char) (upperCaseZ - index));
+    }
+
+    public static void addLowerCase(Map<Character, Character> alphabetMap, int index) {
+        alphabetMap.put((char) (lowerCaseA + index), (char) (lowerCaseZ - index));
     }
 }
