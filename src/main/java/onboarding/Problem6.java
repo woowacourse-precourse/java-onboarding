@@ -33,6 +33,18 @@ public class Problem6 {
             }
         }
 
+        for (String key : limitedNicknameMap.keySet()) {
+            Set<String> emailListSet = limitedNicknameMap.get(key);
+
+            if (emailListSet.size() <= 1)
+                continue;
+
+            for (String email : emailListSet) {
+                String splitEmail = email.split("@")[0];
+                answer.add(splitEmail);
+            }
+        }
+
         List<String> retAnswer = new ArrayList<>(answer);
         return retAnswer;
     }
