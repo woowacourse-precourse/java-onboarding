@@ -2,8 +2,13 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        StringBuffer stringBuffer = new StringBuffer();
+
+        for (int i = 0; i < word.length(); i++) {
+            stringBuffer.append(classifyCharacter(word.charAt(i)));
+        }
+
+        return stringBuffer.toString();
     }
 
     /* 주어진 소문자를 기능 구현 조건대로 치환하는 메서드 */
