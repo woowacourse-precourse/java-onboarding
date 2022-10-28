@@ -77,7 +77,7 @@ public class Problem7 {
         return count;
     }
 
-    private static class People {
+    private static class People implements Comparable<People>{
         String name;
         int point = 0;
         List<String> friendList = new ArrayList<>();
@@ -97,6 +97,11 @@ public class Problem7 {
 
         public void addFriendList(String friend) {
             this.friendList.add(friend);
+        }
+
+        @Override
+        public int compareTo(People o) {
+            return o.point-this.point;
         }
     }
 }
