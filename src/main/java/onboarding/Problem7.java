@@ -15,6 +15,7 @@ public class Problem7 {
             User friend0 = getUserData(userDataBase, friendList.get(0));
             User friend1 = getUserData(userDataBase, friendList.get(1));
 
+            makeFriend(friend0, friend1);
         }
         return answer;
     }
@@ -27,6 +28,15 @@ public class Problem7 {
 
         return userDataBase.get(userName);
     }
+
+    private static void makeFriend(User friend1, User friend2) {
+        List<User> friendList1 = friend1.getFriendList();
+        friendList1.add(friend2);
+
+        List<User> friendList2 = friend2.getFriendList();
+        friendList2.add(friend1);
+    }
+
     static class User implements Comparable<User> {
         private String name;
         private int recommendScore;
