@@ -32,6 +32,12 @@ class Problem1 {
         return false;
     }
 
+    private static int getScore(List<Integer> person){
+        int firstPage = getBiggerResult(person.get(0));
+        int secondPage = getBiggerResult(person.get(1));
+        return Math.max(firstPage, secondPage);
+    }
+
     private static int getBiggerResult(int page){
         return Math.max(getSumOfPage(page), getMultiplyOfPage(page));
     }
