@@ -19,12 +19,8 @@ public class Problem7 {
         for (int i = 0; i < friends.size(); i++) {
             if (friends.get(i).get(0).equals(user)) {
                 u_friend.add(friends.get(i).get(1));
-//            friends.get(i).remove(0);
-//            friends.get(i).remove(1);
             } else if (friends.get(i).get(1).equals(user)) {
                 u_friend.add(friends.get(i).get(0));
-//            friends.get(i).remove(0);
-//            friends.get(i).remove(1);
             }else{
                 fri.add(friends.get(i));
             }
