@@ -34,4 +34,16 @@ public class Problem2 {
     private static StringBuilder removeDuplicate(StringBuilder crpytogram, int start, int range) {
         return crpytogram.delete(start, start + range);
     }
+
+    private static StringBuilder decrypt(String cryptogram) {
+        StringBuilder stringBuilderCryptogram = changeToStringBuilder(cryptogram);
+        for (int i = 0; i < stringBuilderCryptogram.length(); i++) {
+            if (isDuplicate(stringBuilderCryptogram, i)) {
+                int range = getDuplicateRange(stringBuilderCryptogram, i);
+                removeDuplicate(stringBuilderCryptogram, i, range);
+                i = 0;
+            }
+        }
+        return stringBuilderCryptogram;
+    }
 }
