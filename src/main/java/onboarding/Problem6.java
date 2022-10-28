@@ -27,4 +27,12 @@ public class Problem6 {
         return Pattern.matches("^[가-힣]*$", nickName)
                 && nickName.length() >= 1 && nickName.length() < 20;
     }
+
+    public static boolean overlapNickName(String nickName, String nickNameChk){
+
+        for(int i=0; i < nickName.length()-1; i++) {
+            if (nickNameChk.contains(nickName.substring(i, i + 2))) return true;
+        }
+        return false;
+    }
 }
