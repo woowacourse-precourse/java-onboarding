@@ -16,13 +16,13 @@ class Problem1 {
             return -1;
         }
 
-        final int maxOfPobi = Math.max(getLargestNum(pobi.get(0)), getLargestNum(pobi.get(1)));
-        final int maxOfCrong = Math.max(getLargestNum(crong.get(0)), getLargestNum(crong.get(1)));
+        final int scoreOfPobi = getScore(pobi);
+        final int scoreOfCrong = getScore(crong);
 
-        if (maxOfPobi == maxOfCrong) {
+        if (scoreOfPobi == scoreOfCrong) {
             return 0;
         } else {
-            return (maxOfPobi > maxOfCrong) ? 1 : 2;
+            return (scoreOfPobi > scoreOfCrong) ? 1 : 2;
         }
     }
 
@@ -80,7 +80,7 @@ class Problem1 {
     /**
      * 본인의 점수 계산
      * @param pages
-     * @return 본인의 점수
+     * @return 본인의 점현
      */
     private static int getScore(List<Integer> pages) {
         final int leftPage = getLargestNum(pages.get(0));
