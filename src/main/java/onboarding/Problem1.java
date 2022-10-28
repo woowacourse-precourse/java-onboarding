@@ -44,7 +44,7 @@ class Problem1 {
         return answer;
     }
 
-    /*
+    /**
     게임 참여자의 점수를 계산하는 메서드
     List<Integer> 객체를 매개변수로 받음.
     두 요소(숫자)의 각 자리 합과 각 자리 곱을 계산하여 리스트에 저장
@@ -74,7 +74,7 @@ class Problem1 {
         return score;
     }
 
-    /*
+    /**
     페이지 자릿수들의 합을 계산하는 메서드
      */
     private static int sumOfPageNum(List<Integer> pageNum) {
@@ -85,7 +85,7 @@ class Problem1 {
         return sum;
     }
 
-    /*
+    /**
     페이지 자릿수들의 곱을 계산하는 메서드
      */
     private static int multipleOfPageNum(List<Integer> pageNum) {
@@ -96,7 +96,7 @@ class Problem1 {
         return multiple;
     }
 
-    /*
+    /**
     특정 페이지 번호의 각 자리 숫자를 리스트에 저장하여 반환하는 메서드
     각 숫자를 더하거나 곱하므로 리스트 배치 순서를 고려하지 않아도 됨
      */
@@ -109,7 +109,7 @@ class Problem1 {
         return pageNum;
     }
 
-    /*
+    /**
     매개변수로 받은 List<Integer>가 유효한지 체크하는 메서드
     유효할 시 true, 유효하지 않을 시 false
      */
