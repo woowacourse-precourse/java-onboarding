@@ -36,6 +36,15 @@ class Problem1 {
             crongMax = Math.max(crongMax, f);
         }
 
+        //포비와 크롱을 비교하여 반환값 설정
+        if(pobiMax > crongMax){
+            answer = 1;
+        }else if(pobiMax < crongMax){
+            answer = 2;
+        }else{
+            answer = 0;
+        }
+
         return answer;
     }
 
