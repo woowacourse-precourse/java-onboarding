@@ -6,6 +6,15 @@ public class Problem3 {
         return answer;
     }
 
+    public static int totalNum(int number) {
+        int countNum=0;
+        for(int i=1; i<=number; i++){
+            System.out.print(i + " ");
+            countNum += oneNumToCharArr(i);
+        }
+        return countNum;
+    }
+
     public static int oneNumToCharArr(int number){
         String str = String.valueOf(number);
         char[] charArr = str.toCharArray();
