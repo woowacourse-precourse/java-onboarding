@@ -2,18 +2,47 @@ package onboarding;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.CsvSource;
+
+import java.util.Arrays;
 
 class PageTest {
 
     @ParameterizedTest
-    @ValueSource(ints = {2, 399})
-    @DisplayName("시작면과 끝면이 아닌 페이지가 나오는 테스트 -> true값 반환")
-    public void 페이지_정상_경계값_테스트(int normal) {
+    @CsvSource(value = {"2:3", "220:221"}, delimiter = ':')
+    @DisplayName("왼쪽 페이지는 짝수, 오른쪽 페이지는 홀수 확인 테스트 -> false값 반환")
+    public void 왼쪽_페이지_짝수_오른쪽_페이지_홀수_테스트_실패(int leftPage, int rightPage) {
         //given
-        Page page = new Page(normal);
+        Page page = new Page(Arrays.asList(leftPage, rightPage));
+
+        //when
+        boolean expected = page.validationCheck();
+
+        //then
+        Assertions.assertThat(expected).isFalse();
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"401:402", "-1:0"}, delimiter = ':')
+    @DisplayName("페이지의 범위를 초과하는 경우 테스트 -> false값 반환")
+    public void 페이지_범위_테스트_실패(int leftPage, int rightPage) {
+        //given
+        Page page = new Page(Arrays.asList(leftPage, rightPage));
+
+        //when
+        boolean expected = page.validationCheck();
+
+        //then
+        Assertions.assertThat(expected).isFalse();
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"3:4", "5:6"}, delimiter = ':')
+    @DisplayName("오른쪽 페이지에서 왼쪽 페이지의 차이가 1일 경우 테스트 -> true값 반환")
+    public void 페이지_차이_테스트_정상(int leftPage, int rightPage) {
+        //given
+        Page page = new Page(Arrays.asList(leftPage, rightPage));
 
         //when
         boolean expected = page.validationCheck();
@@ -23,16 +52,44 @@ class PageTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1, 400})
-    @DisplayName("시작면과 끝면이 나오는 페이지가 나오는 테스트 -> false값 반환")
-    public void 페이지_초과_경계값_테스트(int error) {
+    @CsvSource(value = {"1:4", "3:2"}, delimiter = ':')
+    @DisplayName("오른쪽 페이지에서 왼쪽 페이지의 차이가 1이 아닐 경우 테스트 -> false값 반환")
+    public void 페이지_차이_테스트_실패(int leftPage, int rightPage) {
         //given
-        Page page = new Page(error);
+        Page page = new Page(Arrays.asList(leftPage, rightPage));
 
         //when
         boolean expected = page.validationCheck();
 
         //then
         Assertions.assertThat(expected).isFalse();
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1:2", "399:400"}, delimiter = ':')
+    @DisplayName("시작면과 끝면인 페이지가 나오는 테스트 -> false값 반환")
+    public void 페이지_경계값_테스트_false(int leftPage, int rightPage) {
+        //given
+        Page page = new Page(Arrays.asList(leftPage, rightPage));
+
+        //when
+        boolean expected = page.validationCheck();
+
+        //then
+        Assertions.assertThat(expected).isFalse();
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"3:4", "397:398"}, delimiter = ':')
+    @DisplayName("시작면과 끝면인 페이지가 나오는 테스트 -> true값 반환")
+    public void 페이지_경계값_테스트_true(int leftPage, int rightPage) {
+        //given
+        Page page = new Page(Arrays.asList(leftPage, rightPage));
+
+        //when
+        boolean expected = page.validationCheck();
+
+        //then
+        Assertions.assertThat(expected).isTrue();
     }
 }
