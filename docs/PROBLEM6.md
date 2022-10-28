@@ -21,3 +21,18 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 구현 기능 목록
+1. 하나의 닉네임을 이루는 모든 연속된 2글자 문자열을 구하는 기능
+    - HashSet getAllTwoWordsByNickname(String nickname)
+    - 동일한 문자열이 여러 번 사용될 수 있으므로 중복방지를 위해 HashSet을 사용한다.
+2. 모든 지원자의 닉네임에 존재하는 모든 연속된 2글자 문자열에 대해, 해당되는 모든 사용자의 인덱스를 구하는 기능
+    - HashMap getUserIdxMapByTwoWords(List<String> nicknames)
+    - key: 2글자 문자열, value: 해당 문자열이 사용된 닉네임을 가진 사용자들의 인덱스 리스트
+3. 특정 2글자 문자열을 여러 사용자가 사용했는지 확인하는 기능
+    - solution 메소드에서 구현
+    - 2번 기능으로 반환받은 HashMap의 원소 중 value에 담긴 list의 size가 1 이상인 경우를 확인한다.
+4. 여러 사용자가 사용한 2글자 문자열을 포함한 닉네임을 가진 사용자의 이메일을 구하는 기능
+    - 2번 기능으로 반환받은 HashMap의 value값을 이용해 해당하는 이메일 정보를 TreeSet에 저장해 반환하는 기능
+    - 동일한 이메일이 여러 번 저장될 수 있으므로 중복방지를 위해 Set을, 그 중 정렬을 지원하는 TreeSet을 사용한다.
+    - solution 메소드에서 구현
