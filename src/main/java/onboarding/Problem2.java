@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.ArrayList;
+
 public class Problem2 {
     public static String solution(String cryptogram) {
 
@@ -10,7 +12,12 @@ public class Problem2 {
         if (throwCapitalException(cryptogram)) {
             return "failed with capital exception";
         }
-        
+
+        while (isContinuous(cryptogram)) {
+            cryptogram = removeContinuousLetter(cryptogram);
+        }
+
+
         return cryptogram;
     }
 
@@ -51,4 +58,33 @@ public class Problem2 {
         return false;
     }
 
+    public static String removeContinuousLetter(String cryptogram) {
+        char[] charArray = cryptogram.toCharArray();
+        ArrayList<Character> newCharArray= new ArrayList<>();
+        String joinedCharArray;
+        char prev = '!';
+        int index;
+
+        for(index = 0; index < charArray.length; index++) {
+            if (prev != charArray[index]) {
+                prev = charArray[index];
+                newCharArray.add(charArray[index]);
+                continue;
+            }
+
+            if (prev == charArray[index]) {
+                newCharArray.remove(newCharArray.size() - 1);
+            }
+        }
+
+        StringBuilder sb = new StringBuilder();
+
+        for(char ch : newCharArray){
+            sb.append(ch);
+        }
+
+        joinedCharArray = sb.toString();
+
+        return joinedCharArray;
+    }
 }
