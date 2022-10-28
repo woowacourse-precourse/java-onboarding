@@ -4,18 +4,12 @@ import java.util.List;
 
 class Problem1 {
 
-    public int Max(int a, int b) {
-        if (a > b) return a;
-        else return b;
-    }
-
     public static int splitSum(int target) {
         int sum = 0;
         while (target != 0) {
             sum += target % 10;
             target = (int) (target / 10);
         }
-
         return sum;
     }
 
