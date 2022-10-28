@@ -8,11 +8,9 @@ public class Problem2 {
     	char[] cryptogramArr = cryptogram.toCharArray();
     	findDuplicateChars(cryptogramArr);
     	
-        String answer = "";
+        String deduplicationCrypto = getFinalCrypto(cryptogramArr);
         
-        
-        
-        return answer;
+        return deduplicationCrypto;
     }
     public static void findDuplicateChars(char[] cryptogramArr) {
     	Stack<int[]> pastCharAndIdxes = new Stack<int[]>();
@@ -40,5 +38,14 @@ public class Problem2 {
     	cryptogramArr[pastIdx] = '0';
     	cryptogramArr[curIdx] = '0';
     }
-    
+    public static String getFinalCrypto(char[] cryptogramArr) {
+        String deduplicationCrypto = "";
+    	StringBuilder sb = new StringBuilder();
+        for(char c: cryptogramArr) {
+        	if(c=='0') continue;
+        	sb.append(c);
+        }
+        deduplicationCrypto = sb.toString();
+        return deduplicationCrypto;
+    }
 }
