@@ -21,8 +21,8 @@ public class ThreefoldGamer {
      */
     public int runGame() {
         int count = 0;
-        for (int i = 1; i <= NUM; i++) {
-            String numStr = String.valueOf(i);
+        for (int num = 1; num <= NUM; num++) {
+            String numStr = String.valueOf(num);
             count += countThreefoldNum(numStr);
         }
         return count;
