@@ -6,7 +6,7 @@ public class Problem3 {
         return answer;
     }
 
-    public static int getClappingCount(int number) {
+    public static int getOneNumberClappingCount(int number) {
         int clappingCount = 0;
         while(number != 0) {
             if(number % 10 == 3 || number % 10 == 6 || number % 10 == 9) {
