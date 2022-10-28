@@ -1,36 +1,21 @@
 package onboarding.problem4.service;
 
+import onboarding.problem4.collection.Sentence;
 import onboarding.problem4.validation.BlueFrogValidator;
 
+/**
+ * 청개구리의 엄마말 거꾸로 읽기와 관련된 비즈니스 로직을 진행하는 서비스 레이어 클래스입니다.
+ * @author BackFoxx
+ */
 public class BlueFrogService {
-    public static String reverseMotherSaying(String sentence) {
-        BlueFrogValidator.validate(sentence);
-        return reverseSentence(sentence);
-    }
-
-    private static String reverseSentence(String word) {
-        StringBuilder resultBuilder = new StringBuilder();
-        char[] spells = word.toCharArray();
-        for (char spell : spells) {
-            resultBuilder.append(reverseSpell(spell));
-        }
-        return resultBuilder.toString();
-    }
-
-    private static char reverseSpell(char spell) {
-        if (Character.isLowerCase(spell)) {
-            return reverseLowerCase(spell);
-        } else if (Character.isUpperCase(spell)) {
-            return reverseUpperCase(spell);
-        }
-        return spell;
-    }
-
-    private static char reverseUpperCase(char asciiCode) {
-        return (char)('Z' - (asciiCode - 'A'));
-    }
-
-    private static char reverseLowerCase(char asciiCode) {
-        return (char)('z' - (asciiCode - 'a'));
+    /**
+     * 인자로 들어온 엄마의 문자열을 알고리즘에 따라 거꾸로 읽어 반환하는 메소드입니다.
+     * @param target 거꾸로 읽을 문자열입니다.
+     * @return 거꾸로 읽힌 결과물입니다.
+     */
+    public static String reverseMotherSaying(String target) {
+        BlueFrogValidator.validate(target);
+        Sentence sentence = Sentence.of(target);
+        return sentence.reverse();
     }
 }
