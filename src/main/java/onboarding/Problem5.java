@@ -12,7 +12,12 @@ import java.util.List;
  */
 public class Problem5 {
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
-        return answer;
+        return restrictions(money)
+                ? Collections.emptyList()
+                : Collections.emptyList();
+    }
+
+    private static boolean restrictions(int money) {
+        return money < 1 || money > 1_000_000;
     }
 }
