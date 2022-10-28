@@ -90,6 +90,13 @@ class ApplicationTest {
             String result = "R olev blf";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
+
+        @Test
+        void case2() {
+            Problem4 problem4 = new Problem4();
+            System.out.println(problem4.keyList);
+            System.out.println(problem4.valueList);
+        }
     }
 
     @Nested
