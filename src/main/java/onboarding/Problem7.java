@@ -15,7 +15,7 @@ public class Problem7 {
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
 		findFriend(user, friends);
-		findFriendofFriend(user, friends);
+		findFriendOfFriend(user, friends);
 		findVisitor(visitors);
 		List<String> answer = Collections.emptyList();
 		return answer;
@@ -42,7 +42,7 @@ public class Problem7 {
 		recommendation.put(user, score);
 	}
 
-	private static void findFriendofFriend(String user, List<List<String>> friends) {
+	private static void findFriendOfFriend(String user, List<List<String>> friends) {
 		for (List<String> relation : friends) {
 			if (relation.contains(user)) {
 				continue;
