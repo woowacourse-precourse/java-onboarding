@@ -4,11 +4,16 @@ public class Problem4 {
     public static String solution(String word) {
         String answer = "";
 
-        //알파벳 대문자일 경우 변환
+        for(int i = 0; i < word.length(); i++){
+            char currentChar = word.charAt(i);
+            if(isUpperCase(currentChar)){
+                //알파벳 대문자일 경우 변환
 
-        //알파벳 소문자일 경우 변환
+            }
+            //알파벳 소문자일 경우 변환
 
-        //공백일 경우 유지
+            //공백일 경우 유지
+        }
 
         return answer;
     }
@@ -28,4 +33,12 @@ public class Problem4 {
             return false;
         }
     }
+
+    private static char changeUpperCase(char currentChar){
+        int upperCaseConstant = 'A' + 'Z';
+        int conversion = upperCaseConstant - currentChar;
+        char newChar = (char)conversion;
+        return newChar;
+    }
+
 }
