@@ -23,6 +23,8 @@ public class Problem7 {
 
         HashSet<String> users = makeUsers(user, friends, visitors);
 
+        HashMap<String, HashSet<String>> friendsList = makeFriendList(users, friends);
+
 
 
         List<String> answer = new ArrayList<>();
@@ -44,6 +46,29 @@ public class Problem7 {
         return users;
     }
 
-    
+    private static HashMap<String, HashSet<String>> makeFriendList(HashSet<String> users, List<List<String>> friends) {
+        HashMap<String, HashSet<String>> friendsList = new HashMap<>();
+        //users를 기반으로 친구관계 파악 Map 만들기
+        for (String user : users) {
+            //Map 초기화
+            friendsList.put(user, new HashSet<>());
+        }
+        for (String s : friendsList.keySet()) {
+            HashSet<String> friend = new HashSet<>();
+            for (int i = 0; i < friends.size(); i++) {
+                for (int j = 0; j < 2; j++) {
+                    if (friends.get(i).get(0) == s) {
+                        friend.add(friends.get(i).get(1));
+                        friendsList.put(s, friend);
+                    } else if (friends.get(i).get(1) == s) {
+                        friend.add(friends.get(i).get(0));
+                        friendsList.put(s, friend);
+                    }
+                }
+            }
+        }
+        return friendsList;
+    }
+
 
 }
