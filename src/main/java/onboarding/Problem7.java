@@ -4,8 +4,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class Problem7 {
-    private static void checkUser(String user) {
-        if (user.length() > 30 || user.length() < 1)
+    private static void checkId(String id) {
+        if (id.length() > 30 || id.length() < 1)
             throw new IllegalArgumentException("user는 1이상 30이하여야합니다.");
     }
 
@@ -19,7 +19,18 @@ public class Problem7 {
             throw new IllegalArgumentException("visitors는 0이상 10000이하여야합니다.");
     }
 
+    private static void checkIds(List<List<String>> friends){
+        for(List<String> friend : friends){
+            friend.forEach(Problem7::checkId);
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        checkId(user);
+        checkFriends(friends);
+        checkVisitors(visitors);
+        checkIds(friends);
+
         List<String> answer = Collections.emptyList();
         return answer;
     }
