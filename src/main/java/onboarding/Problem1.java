@@ -19,11 +19,15 @@ class Problem1 {
         //페이지 숫자 제한 ExceptionHandling (ex: 1 , 2 or -10 , 600)
         if(rangeMatch(pobi) || rangeMatch(crong))
             return true;
+        if(evenOddMatch(pobi) || evenOddMatch(crong))
+            return true;
         return false;
     }
-
     public static boolean rangeMatch(List<Integer> nums){
         return (nums.get(0)<3) || (nums.get(1)>399);
+    }
+    public static boolean evenOddMatch(List<Integer> nums){
+        return (nums.get(0) % 2 != 1) || (nums.get(1) % 2 != 0);
     }
 
 }
