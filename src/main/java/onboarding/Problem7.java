@@ -70,4 +70,11 @@ public class Problem7 {
         }
         return o1.compareTo(o2);
     }
+    private static void excludeUserFriendAndUser(List<String> recommendList, String user) {
+        List<String> notRecommendList = friendRelation.get(user);
+        notRecommendList.add(user);
+        for(int i=0;i<notRecommendList.size();i++){
+            recommendList.remove(notRecommendList.get(i));
+        }
+    }
 }
