@@ -26,9 +26,7 @@
 
 ## 기능 구현 목록
 
-- getCharacterByUpperCase(char alphabet)
-  - 알파벳이 대문자인 경우 청개구리 사전을 참고해서 알파벳을 바꾸고 리턴해준다.
-- getCharacterByLowerCase(char alphabet)
-  - 알파벳이 소문자인 경우 청개구리 사전을 참고해서 알파벳을 바꾸고 리턴해준다.
+- getFrogWord(char alphabet)
+  - 들어온 알파벳을 청개구리 사전을 참고해서 바꿔주고 리턴한다.
 - getAnswer(String word)
-  - 들어온 word를 청개구리 사전을 참고해서 바꿔주고 리턴한다.
+  - 들어온 문자열을 청개구리 사전을 참고해서 바꿔주고 리턴한다.
