@@ -1,11 +1,9 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Problem7 {
     private static void checkId(String id) {
@@ -63,7 +61,7 @@ public class Problem7 {
     }
 }
 
-class Friend implements Comparable<Friend>{
+class Friend implements Comparable<Friend> {
     String id;
     int score;
 
@@ -92,9 +90,9 @@ class Friend implements Comparable<Friend>{
 
     @Override
     public int compareTo(Friend o) {
-        if(score<o.getScore())
+        if (score < o.getScore())
             return 1;
-        if(score>o.getScore())
+        if (score > o.getScore())
             return -1;
         return id.compareTo(o.getId());
     }
@@ -123,7 +121,7 @@ class Friends {
         visitors.forEach(x -> addFriends(x, 1));
     }
 
-    public void removeOverlap(String user, List<String> myFriends){
+    public void removeOverlap(String user, List<String> myFriends) {
         removeUser(user);
         removeMyFriends(myFriends);
     }
@@ -135,7 +133,7 @@ class Friends {
                 .forEach(x -> friends.remove(x));
     }
 
-    private void removeUser(String user){
+    private void removeUser(String user) {
         friends.remove(idExist(user));
     }
 
@@ -154,7 +152,7 @@ class Friends {
                 .findFirst().orElse(null);
     }
 
-    public List<String> getRecommendIds(){
+    public List<String> getRecommendIds() {
         Collections.sort(friends);
         return friends.stream()
                 .limit(5)
