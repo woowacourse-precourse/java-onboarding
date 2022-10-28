@@ -11,8 +11,22 @@ public class Problem7 {
 		
 		List<String> myFriendList = findFriends(user, friends);
 		
+		List<List<String>> exceptFriendList = findnoFriends(user, friends);
+		
 		
 		return answer;
+	}
+	
+	private static List<List<String>> findnoFriends(String user, List<List<String>> friends) {
+		List<List<String>> exceptFriendList = new ArrayList<>();
+		
+		for (List<String> relationship : friends) {
+			if (!relationship.get(0).equals(user) && !relationship.get(1).equals(user)) {
+				exceptFriendList.add(relationship);
+			}
+		}
+		
+		return exceptFriendList;
 	}
 	
 	private static List<String> findFriends(String user, List<List<String>> friends) {
@@ -22,8 +36,7 @@ public class Problem7 {
 		for (List<String> relationship : friends) {
 			if (relationship.get(0).equals(user)) {
 				myFriendList.add(relationship.get(1));
-			}
-			if (relationship.get(1).equals(user)) {
+			} else if (relationship.get(1).equals(user)) {
 				myFriendList.add(relationship.get(0));
 			}
 		}
