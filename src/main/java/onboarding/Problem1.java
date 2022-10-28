@@ -30,7 +30,22 @@ class Problem1 {
 		return false;
 		}
 		
+		
+		// 2. 각자리수의 max(합 , 곱) 구현 
+		public static int getMax(int pageNum) {
+			int sum = 0;
+			int multiplication = 1;
+			
+			while (pageNum != 0) {
+				sum += pageNum % 10;
+				multiplication *= pageNum % 10;
+				pageNum /= 10;
+			}
+			return Math.max(sum, multiplication);	
+		}	
 	
+		
+		
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
