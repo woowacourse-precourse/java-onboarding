@@ -243,5 +243,12 @@ public class Problem1CustomTest {
 
         }
 
+        @Test
+        void 사용자1과사용자2의결과를비교해줄메써드() {
+            List<Integer> user1 = List.of(29, 30);
+            List<Integer> user2 = List.of(31, 32);
+            List<Integer> result = Problem1.userResult(user1, user2);
+            assertThat(result).containsExactly(18, 6);
+        }
     }
 }
