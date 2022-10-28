@@ -17,7 +17,6 @@ public class Problem6 {
         confirm = new ArrayList<>();
         confirm.add(forms.get(0).get(1));
         duplicatedEmails = new ArrayList<>();
-        duplicatedEmails.add(forms.get(0).get(0));
     }
 
     private static void checkNicknameInForms(List<List<String>> forms) {
