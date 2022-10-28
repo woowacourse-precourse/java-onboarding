@@ -1,12 +1,13 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>();
 
         // 1. 전체 nickname을 담은 set 생성
         HashSet<String> totalNicks = new HashSet<>();
@@ -31,10 +32,15 @@ public class Problem6 {
                     compareNicksSplit.add(compareNick.substring(k, k + 2));
                 }
             }
+            System.out.println(compareNicksSplit);
+
+            // 4. 내 닉네임을 2글자 단위로 절단
+            HashSet<String> myNickSplit = new HashSet<>();
+            for (int k = 0; k < nickname.length()-1; k++) {
+                myNickSplit.add(nickname.substring(k, k + 2));
+            }
 
         }
-
-
 
         return answer;
     }
