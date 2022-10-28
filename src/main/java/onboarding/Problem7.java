@@ -14,7 +14,6 @@ public class Problem7 {
             contacts.put(peopleB, makeFriendList(peopleA, contacts.get(peopleB)));
         }
 
-
         return answer;
     }
 
@@ -28,5 +27,15 @@ public class Problem7 {
 
     private static boolean isFriends(String name, List<String> friendList) {
         return friendList.contains(name);
+    }
+
+    private static int duplicateCount(List<String> userFriendList, List<String> otherFriendList) {
+        int count = 0;
+        for (String name : userFriendList) {
+            if (otherFriendList.contains(name)) {
+                count+=1;
+            }
+        }
+        return count;
     }
 }
