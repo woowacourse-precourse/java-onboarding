@@ -4,7 +4,7 @@ public class Problem2 {
 
     static private final String BLANK = "";
 
-    static private final String sampleRegex = "{2,}";
+    static private final String SAMPLE_REGEX = "{2,}";
     static private String answer = "";
 
     public static String solution(String cryptogram) {
@@ -27,7 +27,7 @@ public class Problem2 {
 
     public static String decrypt(String cryptogram) {
         for (int i = 'a'; i <= 'z'; i++) {
-            String regex = (char)i + sampleRegex;
+            String regex = (char)i + SAMPLE_REGEX;
             cryptogram = cryptogram.replaceAll(regex, BLANK);
         }
 
