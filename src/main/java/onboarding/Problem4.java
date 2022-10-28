@@ -6,6 +6,19 @@ package onboarding;
 public class Problem4 {
     public static String solution(String word) {
         StringBuilder answer = new StringBuilder();
+        char[] words = word.toCharArray();
+        for (char w : words){
+            //대문자
+            if(w >= 65 && w <= 90 ){
+
+            //소문자
+            } else if (w >= 97 && w <= 122) {
+
+            //공백 그외 잡다한 것들..
+            } else {
+
+            }
+        }
         return answer.toString();
     }
 }
