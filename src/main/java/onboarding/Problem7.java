@@ -54,6 +54,35 @@ public class Problem7 {
             }
         }
 
+        Map<String, Integer> recommendScore = new HashMap<>();
+        //3. 유저와 함께 아는 친구 확인하고 점수 매기기
+        for (List<String> friend : friends) {
+            String friendA = friend.get(0);
+            String friendB = friend.get(1);
+
+            if(isUser(user, friendA, friendB)) continue;
+
+            if(isMapContain(userFriendInfo, friendA)){
+                if(!isMapContain(userFriendInfo, friendB)){ // 친구A 가 유저와 함께 아는 친구일 경우
+                    if(isMapContain(recommendScore, friendB)){ // 추천점수목록에 존재할 때와 존재하지 않을 때 구분해서 점수 등록
+                        recommendScore.put(friendB,recommendScore.get(friendB)+10);
+                    }else{
+                        recommendScore.put(friendB, 10);
+                    }
+                }
+            }
+
+            if(isMapContain(userFriendInfo, friendB)){
+                if(!isMapContain(userFriendInfo, friendA)){ // 친구B 가 유저와 함께 아는 친구일 경우
+                    if(isMapContain(recommendScore, friendA)){ // 추천점수목록에 존재할 때와 존재하지 않을 때 구분해서 점수 등록
+                        recommendScore.put(friendA,recommendScore.get(friendA)+10);
+                    }else{
+                        recommendScore.put(friendA, 10);
+                    }
+                }
+            }
+        }
+
 
 
         return answer;
