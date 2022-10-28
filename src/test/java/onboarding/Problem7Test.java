@@ -27,8 +27,7 @@ class Problem7Test {
 
     static class Person {
 
-
-        private String name;
+        private final String name;
         private int point = 0;
 
         public Person(String name) {
@@ -101,6 +100,7 @@ class Problem7Test {
         }
 
         @Test
+        @DisplayName("애플리케이션 로직 작성")
         void scoreTest() {
             List<String> answer = new ArrayList<>();
             List<Person> userFriends = getUserFriends(new Person(user), friends); // 사용자의 친구
@@ -113,6 +113,7 @@ class Problem7Test {
             for (Person p : targetList) {
                 isValid(answer, p); // 최대 5개, point != 0, point가 같다면 이름으로 정렬
             }
+
             assertThat(answer).isEqualTo(List.of("andole", "jun", "bedi"));
         }
     }
