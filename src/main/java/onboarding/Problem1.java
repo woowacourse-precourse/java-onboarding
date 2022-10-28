@@ -76,7 +76,7 @@ class Problem1 {
             return 2;
         return -1;
     }
-    
+
     /*
     * 예외 처리
     */
