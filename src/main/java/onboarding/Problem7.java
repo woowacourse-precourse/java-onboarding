@@ -13,7 +13,6 @@ public class Problem7 {
         // 5. 가장 높은 점수 인덱스를 제출 할 리스트에 입력한다
         // 6. 이름 순서대로 제출 할 리스트에 입력하고 친구의 친구 리스트와 점수 리스트에서 해당 인덱스를 삭제한다
         // 7. 5-6을 반복하고 가장 높은 점수가 0이거나 더이상 인덱스가 없을 경우 루프를 탈출하고 리턴
-        List<String> answer = new ArrayList<>();
         List<String> friendsList = findMyFriends(user, friends);
         List<String> stepFriendsList = findStepFriends(user, friends, friendsList);
         List<Integer> scr = new ArrayList<>();
