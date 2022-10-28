@@ -43,4 +43,8 @@ class Problem1 {
         }
         return summation;
     }
+
+    public static int getDigitMultiplyValue(int value) {
+        return 0;
+    }
 }

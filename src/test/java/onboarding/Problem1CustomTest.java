@@ -221,6 +221,11 @@ public class Problem1CustomTest {
             assertThat(summation).isEqualTo(6);
         }
 
-
+        @Test
+        void 각자릿수곱한값을반환해주는메써드() {
+            int value = 322;
+            int summation = Problem1.getDigitMultiplyValue(value);
+            assertThat(summation).isEqualTo(12);
+        }
     }
 }
