@@ -292,6 +292,11 @@ class ApplicationTest {
         void calculateMoneyNumTest() {
             assertThat(Problem5.calculateMoneyNum(5000, 19000)).isEqualTo(3);
         }
+
+        @Test
+        void calculateBalanceTest() {
+            assertThat(Problem5.calculateBalance(5000, 19000)).isEqualTo(4000);
+        }
     }
 
 //        @Test
