@@ -5,14 +5,12 @@ import java.util.Locale;
 public class Problem2 {
     public static String solution(String cryptogram) {
         Cryptogram crypto = new Cryptogram(cryptogram);
-
         doingZip(crypto);
         return crypto.getCryptogram();
     }
 
     private static void doingZip(Cryptogram crypto) {
         int idx = crypto.getZipIdx();
-
         while (idx != -1){
             crypto.zipCryptogram(idx);
             idx = crypto.getZipIdx();
@@ -30,7 +28,6 @@ public class Problem2 {
         public void zipCryptogram(int start){
             StringBuilder sb = new StringBuilder(cryptogram);
             int end = start + 1;
-
             while (end < cryptogram.length() && charAt(start) == charAt(end)){
                 end++;
             }

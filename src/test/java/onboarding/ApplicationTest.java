@@ -148,17 +148,17 @@ class ApplicationTest {
             assertThat(Problem3.solution(number)).isEqualTo(result);
         }
 
-        @Test
-        void isCorrectRange1() {
-            int number = 0;
-            assertThat(Problem3.Validator.isValidate(number)).isFalse();
-        }
-
-        @Test
-        void isCorrectRange2() {
-            int number = 10001;
-            assertThat(Problem3.Validator.isValidate(number)).isFalse();
-        }
+//        @Test
+//        void isCorrectRange1() {
+//            int number = 0;
+//            assertThat(Problem3.Validator.isValidate(number)).isFalse();
+//        }
+//
+//        @Test
+//        void isCorrectRange2() {
+//            int number = 10001;
+//            assertThat(Problem3.Validator.isValidate(number)).isFalse();
+//        }
     }
 
     @Nested
