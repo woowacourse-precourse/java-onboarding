@@ -9,26 +9,21 @@ public class Problem5 {
     public static List<Integer> answer;
 
     public static List<Integer> solution(int money) {
-        answer = new ArrayList<>();
         myMoney = money;
-
+        answer = new ArrayList<>();
         Validator.isValidate(myMoney);
         convertToUnit();
         return answer;
     }
+
     private static void convertToUnit(){
-        subMoney(50000);
-        subMoney(10000);
-        subMoney(5000);
-        subMoney(1000);
-        subMoney(500);
-        subMoney(100);
-        subMoney(50);
-        subMoney(10);
-        subMoney(1);
+        int[] units = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
+        for (int unit : units){
+            exchangeMoney(unit);
+        }
     }
 
-    private static void subMoney(int unit){
+    private static void exchangeMoney(int unit){
         int maxUnitCount = getMaxUnitCount(unit);
         myMoney -= maxUnitCount * unit;
         answer.add(maxUnitCount);
@@ -41,8 +36,6 @@ public class Problem5 {
         }
         return count;
     }
-
-
 
     static class Validator{
         public static boolean isValidate(int money){

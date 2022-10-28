@@ -42,52 +42,52 @@ class ApplicationTest {
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
 
-        @Test
-        void isCorrectSize(){
-            List<Integer> pobi = List.of(101, 102);
-            List<Integer> crong = List.of(41, 42, 43);
-
-            assertThat(Problem1.solution(pobi, crong)).isEqualTo(-1);
-        }
-
-        @Test
-        void isCorrectRange1(){
-            List<Integer> pobi = List.of(1, 2);
-            List<Integer> crong = List.of(41, 42);
-
-            assertThat(Problem1.solution(pobi, crong)).isEqualTo(-1);
-        }
-        @Test
-        void isCorrectRange2(){
-            List<Integer> pobi = List.of(10, 11);
-            List<Integer> crong = List.of(399, 400);
-
-            assertThat(Problem1.solution(pobi, crong)).isEqualTo(-1);
-        }
-
-        @Test
-        void isConsecutive(){
-            List<Integer> pobi = List.of(11, 14);
-            List<Integer> crong = List.of(399, 400);
-
-            assertThat(Problem1.solution(pobi, crong)).isEqualTo(-1);
-        }
-
-        @Test
-        void leftOddCheck(){
-            List<Integer> pobi = List.of(10, 12);
-            List<Integer> crong = List.of(399, 400);
-
-            assertThat(Problem1.solution(pobi, crong)).isEqualTo(-1);
-        }
-
-        @Test
-        void rightEvenCheck(){
-            List<Integer> pobi = List.of(11, 12);
-            List<Integer> crong = List.of(398, 399);
-
-            assertThat(Problem1.solution(pobi, crong)).isEqualTo(-1);
-        }
+//        @Test
+//        void isCorrectSize(){
+//            List<Integer> pobi = List.of(101, 102);
+//            List<Integer> crong = List.of(41, 42, 43);
+//
+//            assertThat(Problem1.solution(pobi, crong)).isEqualTo(-1);
+//        }
+//
+//        @Test
+//        void isCorrectRange1(){
+//            List<Integer> pobi = List.of(1, 2);
+//            List<Integer> crong = List.of(41, 42);
+//
+//            assertThat(Problem1.solution(pobi, crong)).isEqualTo(-1);
+//        }
+//        @Test
+//        void isCorrectRange2(){
+//            List<Integer> pobi = List.of(10, 11);
+//            List<Integer> crong = List.of(399, 400);
+//
+//            assertThat(Problem1.solution(pobi, crong)).isEqualTo(-1);
+//        }
+//
+//        @Test
+//        void isConsecutive(){
+//            List<Integer> pobi = List.of(11, 14);
+//            List<Integer> crong = List.of(399, 400);
+//
+//            assertThat(Problem1.solution(pobi, crong)).isEqualTo(-1);
+//        }
+//
+//        @Test
+//        void leftOddCheck(){
+//            List<Integer> pobi = List.of(10, 12);
+//            List<Integer> crong = List.of(399, 400);
+//
+//            assertThat(Problem1.solution(pobi, crong)).isEqualTo(-1);
+//        }
+//
+//        @Test
+//        void rightEvenCheck(){
+//            List<Integer> pobi = List.of(11, 12);
+//            List<Integer> crong = List.of(398, 399);
+//
+//            assertThat(Problem1.solution(pobi, crong)).isEqualTo(-1);
+//        }
     }
 
     @Nested
@@ -170,11 +170,11 @@ class ApplicationTest {
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
 
-        @Test
-        void correctSizeTest(){
-            String word = "";
-            assertThat(Problem4.Validator.isValidate(word)).isFalse();
-        }
+//        @Test
+//        void correctSizeTest(){
+//            String word = "";
+//            assertThat(Problem4.Validator.isValidate(word)).isFalse();
+//        }
     }
 
     @Nested
@@ -200,17 +200,17 @@ class ApplicationTest {
             assertThat(Problem5.solution(money)).isEqualTo(result);
         }
 
-        @Test
-        void correctRangeTest1(){
-            int money = 0;
-            assertThat(Problem5.Validator.isValidate(money)).isFalse();
-        }
-
-        @Test
-        void correctRangeTest2(){
-            int money = 1000001;
-            assertThat(Problem5.Validator.isValidate(money)).isFalse();
-        }
+//        @Test
+//        void correctRangeTest1(){
+//            int money = 0;
+//            assertThat(Problem5.Validator.isValidate(money)).isFalse();
+//        }
+//
+//        @Test
+//        void correctRangeTest2(){
+//            int money = 1000001;
+//            assertThat(Problem5.Validator.isValidate(money)).isFalse();
+//        }
     }
 
     @Nested
