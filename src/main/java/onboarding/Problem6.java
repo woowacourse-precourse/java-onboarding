@@ -1,15 +1,38 @@
 package onboarding;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
+        List<String> words = List.of("");
 
         if (isError(forms)) {
             return answer = List.of("-1");
         }
+
+        words = findTwoWord(forms);
+
         return answer;
+    }
+
+    public static List<String> findTwoWord(List<List<String>> forms) {
+        Map<String, Integer> allWords = new HashMap<>();
+        for (List<String> form : forms) {
+            String nickName = form.get(1);
+            for (int j = 0; j < nickName.length() - 1; j++) {
+                String word = nickName.substring(j, j + 2);
+                allWords.put(word, allWords.getOrDefault(word, 0) + 1);
+            }
+        }
+
+        return allWords.entrySet().stream()
+                .filter(e -> e.getValue() >= 2)
+                .map(Map.Entry :: getKey)
+                .collect(Collectors.toList());
     }
 
     public static boolean isError(List<List<String>> forms) {
