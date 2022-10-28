@@ -2,6 +2,11 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
+        StringBuilder sb = new StringBuilder();
+        for (char c : word.toCharArray()) {
+            sb.append(convertAlpha(c));
+        }
+        return sb.toString();
     }
 
     private static char convertAlpha(char alphabet) {
