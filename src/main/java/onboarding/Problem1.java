@@ -30,4 +30,13 @@ class Problem1 {
         }
         return sum;
     }
+
+    public static int getMultipleOfPage(String pageTypeOfString) {
+        int multiple = 1;
+        for (int i = 0; i < pageTypeOfString.length(); i++) {
+            int temp = pageTypeOfString.charAt(i) - '0';
+            multiple *= temp;
+        }
+        return multiple;
+    }
 }
