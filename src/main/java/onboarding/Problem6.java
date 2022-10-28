@@ -20,8 +20,13 @@ public class Problem6 {
                 for(int k = j+1; k < nickname.length(); k++){
                     String str = nickname.substring(j, k+1);
                     //map에 저장된 단어가 사용자의 닉네임에 들어가는지 체크하는 기능
-                    //이미 map에 있던 단어는 중복 닉네임이 되므로 이메일을 set에 추가
-                    //처음 발견된 단어는 map에 <단어, 이메일>로 저장
+                    if(map.containsKey(str)){
+                        //이미 map에 있던 단어는 중복 닉네임이 되므로 이메일을 set에 추가
+
+                    }else{
+                        //처음 발견된 단어는 map에 <단어, 이메일>로 저장
+
+                    }
                     }
                 }
             }
