@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static java.util.stream.Collectors.toList;
+
 public class Problem6 {
     private static final String VALID_DOMAIN = "email.com";
     private static final String EMAIL_AT_SIGN = "@";
@@ -29,7 +31,9 @@ public class Problem6 {
             result.addAll(invalidEmails);
         }
 
-        return List.of();
+        return result.stream()
+                .sorted()
+                .collect(toList());
     }
 
     private static boolean isValidDomain(String email) {
