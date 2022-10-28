@@ -33,7 +33,7 @@ public class Problem7 {
 
             for(String shareFriendName : shareFriends) {
                 if(shareFriendName.equals(user)) continue;
-                
+
                 int score = scoreInfo.getOrDefault(shareFriendName, 0);
                 scoreInfo.put(shareFriendName, score + 10);
             }
@@ -43,6 +43,12 @@ public class Problem7 {
 
     /** 방문자의 방문 가산점을 추가하는 함수 */
     private static void updatVisitorScore(Map<String, Integer> scoreInfo, List<String> userFriends, List<String> visitors) {
+        for(String visitorName : visitors) {
+            if(userFriends.contains(visitorName)) continue;
+
+            int score = scoreInfo.getOrDefault(visitorName, 0);
+            scoreInfo.put(visitorName, score + 1);
+        }
 
     }
 
