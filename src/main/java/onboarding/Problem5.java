@@ -37,7 +37,10 @@ public class Problem5 {
         }
         return false;
     }
-    
+    public static int getQuotient(int money, int baseMoney) {
+        int quotient = money / baseMoney;
+        return quotient;
+    }
 }
 
 
