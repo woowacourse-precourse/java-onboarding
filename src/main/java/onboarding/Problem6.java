@@ -13,4 +13,11 @@ public class Problem6 {
         return answer;
     }
 
+    public static Set<String> nicknameDecomposition(String nickname) {
+        Set<String> separatedNickname = new HashSet<>();
+        for (int i = 0; i < nickname.length() - 1; i++) {
+            separatedNickname.add(nickname.substring(i, i + 2));
+        }
+        return separatedNickname;
+    }
 }
