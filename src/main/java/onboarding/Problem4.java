@@ -18,17 +18,20 @@ public class Problem4 {
         return dictionary;
     }
 
+    public static String convertWord(String word, Map<Character, Character> dictionary){
+        StringBuilder text = new StringBuilder(word);
+
+        for (int i = 0; i < text.length(); i++) {
+            char nextChar = text.charAt(i);
+            text.setCharAt(i, dictionary.getOrDefault(nextChar, nextChar));
+        }
+
+        return text.toString();
+    }
+
     public static String solution(String word) {
         Map<Character, Character> dictionary = initDictionary();
 
-        StringBuilder sb = new StringBuilder(word);
-        for (int i = 0; i < sb.length(); i++) {
-            char next = sb.charAt(i);
-
-            if (dictionary.containsKey(next))
-                sb.setCharAt(i, dictionary.get(next));
-        }
-
-        return sb.toString();
+        return convertWord(word, dictionary);
     }
 }
