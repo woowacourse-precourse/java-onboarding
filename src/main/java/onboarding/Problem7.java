@@ -1,9 +1,12 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+
+        List<String> answer = new ArrayList<>();
 
         // user 의 friend 를 반환하는 userFriendList
         List<String> userFriendList = userFriendList(user, friends);
@@ -12,14 +15,11 @@ public class Problem7 {
         List<String> friendsFriendList = friendsFriend(userFriendList, friends,user);
 
         // friendsFriendList, userFriendList, visitors 를 이용하여 recommendFriend 와 점수를 반환하는 recommendMap
-        HashMap<String, Integer> recommendMap = recommendMap(friendsFriendList, userFriendList, visitors);
+        HashMap<String, Integer> recommendMap = sortByValue(recommendMap(friendsFriendList, userFriendList, visitors));
 
-        // recommendMap 의 key 값을 정렬하여 answer 에 반환.
-        Arrays.sort(recommendMap.keySet().toArray());
+        answer.addAll(recommendMap.keySet());
 
-        List<String> answer = new ArrayList<>(recommendMap.keySet());
-
-// 테스트는 통과했지만 정렬을 구현하지 못함.
+        System.out.println("answer = " + answer);
 
         return answer;
     }
@@ -104,5 +104,21 @@ public class Problem7 {
         }
 
         return map;
+    }
+
+    // key 추천친구 value 추천점수 로 이루어진 map 을 점수순으로 점수가 같다면 이름순으로 정렬하는 메서드.
+    static HashMap<String, Integer> sortByValue(HashMap<String, Integer> map) {
+
+    // value 를 기준으로 map 을 정렬.
+        HashMap<String, Integer> recomandMap
+                = map.entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (e1, e2) -> e1, LinkedHashMap::new));
+
+        return recomandMap;
     }
 }
