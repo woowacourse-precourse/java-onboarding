@@ -5,6 +5,29 @@ import java.lang.Math;
 
 
 class Problem1 {
+    public static boolean isInRange(List<Integer> pageList) {
+        int leftPage = pageList.get(0);
+        int rightPage = pageList.get(1);
+
+        if (leftPage <= 1 || rightPage >= 400) {
+            return false;
+        }
+        return true;
+    }
+    public static boolean isValid(List<Integer> pageList) {
+        int leftPage = pageList.get(0);
+        int rightPage = pageList.get(1);
+
+        if (pageList.get(1) - pageList.get(0) != 1 ) {
+            return false;
+        }
+
+        if (!isInRange(pageList)) {
+            return false;
+        }
+
+        return true;
+    }
     public static int getMul(int page) {
         int result = 1;
 
@@ -31,13 +54,6 @@ class Problem1 {
         int leftPage = pageList.get(0);
         int rightPage = pageList.get(1);
 
-        if (leftPage <= 1 || rightPage >= 400) {
-            return -1;
-        }
-        if (rightPage - leftPage != 1) {
-            return -1;
-        }
-
         int leftRes = Math.max(getSum(leftPage), getMul(leftPage));
         int rightRes = Math.max(getSum(rightPage), getMul(rightPage));
 
@@ -50,11 +66,6 @@ class Problem1 {
 
         int pobiScore = getPageResult(pobi);
         int crongScore = getPageResult(crong);
-
-        // 예외 처리
-        if (pobiScore == -1 || crongScore == -1) {
-            return -1;
-        }
 
         // 승자 처리
         if (pobiScore > crongScore) {
@@ -71,6 +82,10 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+
+        if (!isValid(pobi) || !isValid(crong)) {
+            return -1;
+        }
 
         answer = getWinner(pobi, crong);
 
