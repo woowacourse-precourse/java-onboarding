@@ -12,6 +12,7 @@ class Problem1 {
         }
         return answer;
     }
+
     private static List<Integer> splitInteger(int number) {
         List<Integer> numberList = new ArrayList<Integer>();
         while(number > 0){
@@ -19,5 +20,9 @@ class Problem1 {
             number /= 10;
         }
         return numberList;
+    }
+
+    private static int sumIntegerList(List<Integer> numberList) {
+        return numberList.stream().mapToInt(Integer::intValue).sum();
     }
 }
