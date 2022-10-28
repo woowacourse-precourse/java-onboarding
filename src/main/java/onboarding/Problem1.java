@@ -1,11 +1,10 @@
 package onboarding;
 
-import java.util.List;
-
-import onboarding.problem1.vo.Pages;
 import onboarding.problem1.service.ScoreService;
-import onboarding.problem1.validation.PageValidator;
+import onboarding.problem1.vo.Pages;
 import onboarding.problem1.vo.Score;
+
+import java.util.List;
 
 class Problem1 {
     public static final int EXCEPTION_RETURN_VALUE = -1;
@@ -17,9 +16,6 @@ class Problem1 {
         try {
             Pages pobiPages = Pages.of(pobi);
             Pages crongPages = Pages.of(crong);
-
-            PageValidator.isInValidPages(pobiPages);
-            PageValidator.isInValidPages(crongPages);
 
             Score pobiScore = ScoreService.getHighestScore(pobiPages);
             Score crongScore = ScoreService.getHighestScore(crongPages);

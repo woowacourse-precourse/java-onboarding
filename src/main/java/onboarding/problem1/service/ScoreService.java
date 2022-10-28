@@ -1,5 +1,6 @@
 package onboarding.problem1.service;
 
+import onboarding.problem1.validation.PageValidator;
 import onboarding.problem1.vo.Pages;
 import onboarding.problem1.vo.Page;
 import onboarding.problem1.vo.Score;
@@ -15,6 +16,7 @@ public class ScoreService {
 	 * 가장 높은 점수를 계산하는 메소드입니다.
 	 */
 	public static Score getHighestScore(Pages pages) {
+		PageValidator.isInValidPages(pages);
 		int highestScore = Math.max(
 			Math.max(
 				add(pages.getLeftPage()), add(pages.getRightPage())
