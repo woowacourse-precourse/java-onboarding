@@ -2,7 +2,16 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = "";
+
+        while (true) {
+            duplicate: {
+                /* 문자열을 왼쪽부터 읽는다 */
+                for (int i=0; i<cryptogram.length() - 1; i++) {
+                    ;
+                }
+            }
+        }
         return answer;
     }
 }
