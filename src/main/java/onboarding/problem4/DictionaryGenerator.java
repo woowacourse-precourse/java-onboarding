@@ -6,7 +6,7 @@ import java.util.Map;
 public class DictionaryGenerator {
 
     // createDictionary
-    public Map<Character, Character> createDictionary(String word) {
+    public Map<Character, Character> createDictionary() {
 
         HashMap<Character, Character> characterMap = new HashMap<>();
 

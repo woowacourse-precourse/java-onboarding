@@ -1,9 +1,9 @@
 ## 369 게임
 
 ## 기능 목록
-- [ ] input값 만큼 반복을 해주며 특정 숫자일때 마다 형변환을 해준다. IterativeGenerator#typeConversion()
-- [ ] 형변환 된 문자의 특정자리 마다 '3', '6', '9' 가 있는지 확인한다. CheckNumbers#compare()
-   - [ ] 있다면 result++  
+- [x] input값 만큼 반복을 해주며 특정 숫자일때 마다 형변환을 해준다. IterativeGenerator#typeConversion()
+- [x] 형변환 된 문자의 특정자리 마다 '3', '6', '9' 가 있는지 확인한다. CheckNumbers#compare()
+   - [x] 있다면 result++  
 
 ## 기능 요구 사항
 
