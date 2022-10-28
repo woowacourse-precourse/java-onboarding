@@ -5,23 +5,23 @@ import java.util.stream.Collectors;
 
 public class Problem6 {
 	public static List<String> solution(List<List<String>> forms) {
-		Set<String> blacklist = new HashSet<>();
+		Set<String> duplicateTokens = new HashSet<>();
 		Set<String> answer = new TreeSet<>();
 		List<User> userList = forms.stream()
 				.map(User::new)
 				.collect(Collectors.toList());
 
 		for (User user : userList) {
-			for (String blackName : blacklist) {
-				if (user.checkDuplicate(blackName)) {
+			for (String token : duplicateTokens) {
+				if (user.checkDuplicate(token)) {
 					for (User targetUser : userList) {
-						if (targetUser.checkDuplicate(blackName)) {
+						if (targetUser.checkDuplicate(token)) {
 							answer.add(targetUser.email);
 						}
 					}
 				}
 			}
-			blacklist.addAll(user.getDuplicateNicknameTokens());
+			duplicateTokens.addAll(user.getDuplicateNicknameTokens());
 		}
 
 		return List.copyOf(answer);
