@@ -26,4 +26,14 @@ public class Problem7 {
 
         return allUserNameList;
     }
+
+    private static Map<String, Integer> mappingNameToNumber(List<String> allUserNameList) {
+        Map<String, Integer> map = new TreeMap<>();
+
+        for (int i = 0; i < allUserNameList.size(); i++) {
+            map.put(allUserNameList.get(i), i + 1);
+        }
+
+        return map;
+    }
 }
