@@ -5,6 +5,9 @@ import java.util.List;
 
 public class Problem5 {
 
+    private static final Integer MONEY_MINIMUM_LENGTH = 1;
+    private static final Integer MONEY_MAXIMUM_LENGTH = 1000000;
+
     static List<Integer> answer;
     static int[] moneyArr;
 
@@ -14,7 +17,7 @@ public class Problem5 {
     }
 
     private static void validateMoney(int money) {
-        if (money < 1 || money > 1000000) {
+        if (money < MONEY_MINIMUM_LENGTH || money > MONEY_MAXIMUM_LENGTH) {
             throw new IllegalArgumentException("money는 1 이상 1,000,000 이하인 자연수입니다.");
         }
     }
