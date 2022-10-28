@@ -23,7 +23,7 @@ class Problem1 {
 
         int crongLeftMaxNumber = getMaxNumber(getPlusEachNumber(crong.get(0)), getMultiplyEachNumber(crong.get(0)));
         int crongRightMaxNumber = getMaxNumber(getPlusEachNumber(crong.get(1)), getMultiplyEachNumber(crong.get(1)));
-        int crongMaxNumber = getMaxNumber(pobiLeftMaxNumber, pobiRightMaxNumber);
+        int crongMaxNumber = getMaxNumber(crongLeftMaxNumber, crongRightMaxNumber);
 
         if(pobiMaxNumber > crongMaxNumber)
             return 1;
@@ -36,8 +36,11 @@ class Problem1 {
     public static boolean checkException(List<Integer> list) {
         if (list.size() != 2)
             return false;
-        if (list.contains(null))
-            return false;
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i) == null)
+                return false;
+        }
+
         if (list.get(1) - list.get(0) != 1)
             return false;
         if (list.get(0) % 2 != 1 || list.get(1) % 2 != 0)
