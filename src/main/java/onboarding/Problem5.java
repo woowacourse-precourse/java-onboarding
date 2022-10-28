@@ -5,19 +5,17 @@ import java.util.List;
 
 public class Problem5 {
     public static final int START_INDEX = 0;
-    public static int moneyForCalculate;
-    public static int[] unit = new int[9];
+    public static final int UNIT_NUMBER = 9;
 
     public static List<Integer> solution(int money) {
-        List<Integer> answer = new ArrayList<Integer>();
-
-        initUnit();
-        atm(money, answer);
+        List<Integer> answer = atm(initUnit(), money);
 
         return answer;
     }
 
-    public static void initUnit() {
+    public static int[] initUnit() {
+        int[] unit = new int[UNIT_NUMBER];
+
         unit[0] = 50000;
         unit[1] = 10000;
         unit[2] = 5000;
@@ -27,14 +25,18 @@ public class Problem5 {
         unit[6] = 50;
         unit[7] = 10;
         unit[8] = 1;
+
+        return unit;
     }
 
-    public static void atm(int money, List<Integer> answer) {
-        moneyForCalculate = money;
+    public static List<Integer> atm(int[] unit, int money) {
+        List<Integer> result = new ArrayList<>();
 
         for (int index = START_INDEX; index < unit.length; index++) {
-            answer.add(moneyForCalculate / unit[index]);
-            moneyForCalculate %= unit[index];
+            result.add(money / unit[index]);
+            money %= unit[index];
         }
+
+        return result;
     }
 }
