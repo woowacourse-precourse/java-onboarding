@@ -2,7 +2,7 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
+        int clap = 0;
         String stringNumber = "";
         int stringLength = 0;
 
@@ -12,10 +12,10 @@ public class Problem3 {
 
             for (int s = 0; s < stringLength; s++) {
                 if (stringNumber.charAt(s) == '3') {
-                    //
+                    clap++;
                 }
             }
         }
-        return answer;
+        return clap;
     }
 }
