@@ -15,14 +15,24 @@ public class Problem4 {
         ArrayList<String> lower_cases = new ArrayList<>(Arrays.asList(lower));
         ArrayList<String> cases;
 
-        ArrayList<String> originWord = new ArrayList<>();
-        for(int i=0; i<word.length(); i++)
-            originWord.add(Character.toString(word.charAt(i)));
-
-        for(int i=0; i<originWord.size(); i++) {
-
-        }
         String answer = "";
+        for(int i=0; i<word.length(); i++) {
+            char tmp = word.charAt(i);
+
+            if(tmp >= 'A' && tmp <= 'Z')
+                cases = upper_cases;
+            else if(tmp >= 'a' && tmp <= 'z')
+                cases = lower_cases;
+            else {
+                answer += Character.toString(tmp);
+                continue;
+            }
+
+            String convert = Character.toString(tmp);
+            int idx = cases.indexOf(convert);
+            idx = 25 - idx;
+            answer += cases.get(idx);
+        }
 
         return answer;
     }
