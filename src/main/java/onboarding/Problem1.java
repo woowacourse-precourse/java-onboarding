@@ -10,7 +10,24 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
+        int pobiLeftPageMaxScore = findMaxScore(pobi, 0);
+        int pobiRightPageMaxScore = findMaxScore(pobi, 1);
+        int pobiMaxScore = findMaxScore(pobiLeftPageMaxScore, pobiRightPageMaxScore);
+
+        int crongLeftPageMaxScore = findMaxScore(crong, 0);
+        int crongRightPageMaxScore = findMaxScore(crong, 1);
+        int crongMaxScore = findMaxScore(crongLeftPageMaxScore, crongRightPageMaxScore);
+
+        answer = findWinner(pobiMaxScore, crongMaxScore);
+
         return answer;
+    }
+
+    private static int findMaxScore(List<Integer> pageList, int index) {
+        int sumOfScore = sumScore(pageList, index);
+        int multiplicationOfScore = mulitplyScore(pageList, index);
+
+        return findMaxScore(sumOfScore, multiplicationOfScore);
     }
 
     private static int findMaxScore(int a, int b) {
@@ -39,5 +56,4 @@ class Problem1 {
         }
         return multiplication;
     }
-
 }
