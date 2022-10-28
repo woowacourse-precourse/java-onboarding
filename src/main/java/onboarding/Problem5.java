@@ -6,13 +6,19 @@ import java.util.List;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
+        List<Integer> answer = countAmountMoney(money);
+        return answer;
+    }
+
+    public static List<Integer> countAmountMoney(int money){
         int[] amount = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
-        List<Integer> answer = new ArrayList<>();
+        List<Integer> countedMoney = new ArrayList<>();
 
         for(int i=0; i<amount.length; i++){
-            answer.add(money / amount[i]);
+            countedMoney.add(money / amount[i]);
             money %= amount[i];
         }
-        return answer;
+
+        return countedMoney;
     }
 }
