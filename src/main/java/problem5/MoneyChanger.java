@@ -24,7 +24,14 @@ public class MoneyChanger {
     public static List<Integer> change(int money) {
         validateAmount(money);
 
+        List<Integer> result = new ArrayList<>();
 
+        for (Integer bill : bills) {
+            result.add(money / bill);
+            money %= bill;
+        }
+
+        return result;
     }
 
     private static void validateAmount(int money) {
