@@ -3,9 +3,9 @@
 ## 기능 목록
 
 - [x] Map을 사용하여 청개구리의 사전을 만들어 사용할 수 있다. DictionaryGenerator#createDictionary()
-- [ ] 특정자리의 문자를 소문자에서 대문자로 변환 할수 있다. CompareWords#wordConversion()
-- [ ] 특정자리가 소문자인지 대문자인지 알수 있다 PlaceCheck#wordCompare()
-   - [ ] 특정자리가 공백인지 아닌지 알수 있다. CompareWords#SpacesCompare()
+- [x] word 데이터를 하나씩 나눌수 있고, word를 다시 병합할 수 있다. CompareWords#wordConversion()
+- [x] 특정자리가 소문자인지 대문자인지 알수 있고 변환 할수 있다. PlaceCheck#wordCompare()
+- [x] 특정자리가 공백인지 아닌지 알수 있다. CompareWords#SpacesCompare()
 
 
 ## 기능 요구 사항
