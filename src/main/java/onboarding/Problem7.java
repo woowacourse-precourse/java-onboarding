@@ -15,7 +15,34 @@ import java.util.stream.Stream;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+
         return answer;
+    }
+
+    public static Map<String, Integer> calRecFriends(
+            String user,
+            List<List<String>> friends,
+            List<String> visitors)
+    {
+        Map<String, Integer> nonFriendAndScore = new HashMap<>();
+        Set<String> myFriends = getMyFriends(user, friends);
+        Map<String, Set<String>> nonFriends = getNonFriendsAndFriendList(user, friends, visitors);
+
+        nonFriends.forEach((key, values) -> {
+            int associatedScore = calAssociatedScore(values, myFriends);
+            int visitorsScore = catVisitorsScore(key, visitors);
+            nonFriendAndScore.computeIfAbsent(key, v -> associatedScore + visitorsScore);
+        });
+
+        return nonFriendAndScore;
+    }
+
+    private static int catVisitorsScore(String nonFriend, List<String> visitors) {
+        return (int) visitors.stream().filter(v -> v.equals(nonFriend)).count();
+    }
+
+    public static int calAssociatedScore(Set<String> friendsOfNonFriend, Set<String> myFriends) {
+        return (int) friendsOfNonFriend.stream().filter(myFriends::contains).count() * 10;
     }
 
     public static Map<String, Set<String>> getNonFriendsAndFriendList(
