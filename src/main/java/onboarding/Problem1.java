@@ -23,4 +23,8 @@ class Problem1 {
         return 0;
     }
 
+    private int comparingNumbers(int addedNum, int multipliedNum) {
+        return addedNum > multipliedNum ? addedNum : multipliedNum;
+    }
+
 }
