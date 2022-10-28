@@ -5,11 +5,17 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Problem4 {
+
+    private static final int Z_UPPER_CASE = 90;
+    private static final int Z_LOWER_CASE = 122;
+
+
     public static String solution(String word) {
         List<Character> result = new ArrayList<>();
 
         for (int i = 0; i < word.length(); i++) {
             int ascii = word.toCharArray()[i];
+
 
             if (Character.isAlphabetic(ascii)) {
                 ascii = changeAsciiValue(ascii);
@@ -25,16 +31,17 @@ public class Problem4 {
     }
 
     private static int changeAsciiValue(int ascii) {
+        int val = ascii + 25;
 
-        if (ascii + 25 > 122) {
-            return 122 - ((ascii + 25) % 122);
+        if (val > Z_LOWER_CASE) {
+            return Z_LOWER_CASE - ((val) % Z_LOWER_CASE);
         }
 
-        if (ascii + 25 > 90 && ascii != 97) {
-            return 90 - ((ascii + 25) % 90);
+        if (val > Z_UPPER_CASE && val != Z_LOWER_CASE) {
+            return Z_UPPER_CASE - ((val) % Z_UPPER_CASE);
         }
 
-        return ascii + 25;
+        return val;
 
     }
 }
