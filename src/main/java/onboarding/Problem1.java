@@ -11,7 +11,7 @@ class Problem1 {
         return -1;
 
     }
-
+    /* 기능1 : input 확인 */
     private static boolean check(List<Integer> list) {
         if (isCountTwo(list) && isLeftOdd(list) && isRightEven(list) && isConsecutive(list) && isInBook(list)) return true;
         return false;
@@ -41,5 +41,17 @@ class Problem1 {
         if(Math.max(list.get(0),list.get(1)) < 400 && Math.min(list.get(0),list.get(1)) > 1) return true;
         return false;
     }
+
+
+    /* 기능2 : 각 자리 숫자를 더하는 기능*/
+    private static int SumPage(int Page){
+        int sum = 0;
+        while(Page > 0){
+            sum += Page % 10;
+            Page /= 10;
+        }
+        return sum;
+    }
+
 
 }
