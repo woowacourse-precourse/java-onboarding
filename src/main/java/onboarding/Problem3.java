@@ -6,37 +6,34 @@ public class Problem3 {
 
         checkException(number);
 
-        answer = checkNum(number);
+        answer = start(number);
 
         return answer;
     }
 
-    //중복되는 수 체크
-    public static int checkDuplicaion(String number_string) {
-        int duplicationCnt = 0;
+    public static int start(int num)
+    {
+        int cnt = 0;
+        for (int i = 0; i <= num; i++)
+            cnt += checkDuplication(i);
 
-        for (int i = 0; i < number_string.length(); i++) {
-            if (number_string.charAt(i) == '3' || number_string.charAt(i) == '6' || number_string.charAt(i) == '9')
-                duplicationCnt++;
-        }
-        return duplicationCnt;
+        return cnt;
     }
 
-    //3,6,9 가 포함되는지 확인
-    public static int checkNum(int number)
+    //중복 체크
+    public static int checkDuplication(int num)
     {
-        String number_string = "";
         int cnt = 0;
 
-        for (int i = 1; i <= number; i++) {
-            number_string = Integer.toString(i);
-            if (number_string.contains("3") || number_string.contains("6") || number_string.contains("9")) {
-                cnt += checkDuplicaion(number_string);
-            }
+        while (num > 0)
+        {
+            if ((num % 10) == 3 || (num % 10) == 6 || (num % 10) == 9)
+                cnt++;
+            num /= 10;
         }
-        return cnt ;
-    }
 
+        return cnt;
+    }
     /*
     예외 처리 함수
      */
