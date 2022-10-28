@@ -14,7 +14,7 @@ public class Problem5 {
         return answer;
     }
 
-    public static Map<Integer, Integer> initMoneyMap() {
+    public static void initMoneyMap() {
         moneyMap.put(50000, 0);
         moneyMap.put(10000, 0);
         moneyMap.put(5000, 0);
@@ -24,7 +24,6 @@ public class Problem5 {
         moneyMap.put(50, 0);
         moneyMap.put(10, 0);
         moneyMap.put(1, 0);
-        return moneyMap;
     }
 
     public static void convertWithdrawMoney() {
