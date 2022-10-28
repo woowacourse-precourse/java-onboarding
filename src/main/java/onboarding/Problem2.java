@@ -1,9 +1,10 @@
 package onboarding;
 
 public class Problem2 {
+    private static final String EXCEPTION = "EXCEPTION";
     public static String solution(String cryptogram) {
         if (cryptogram.length() < 1 || cryptogram.length() > 1000 || !cryptogram.matches("^[a-z]*$"))
-            return cryptogram;
+            return EXCEPTION;
         return decode(cryptogram);
     }
 
