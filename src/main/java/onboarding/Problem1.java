@@ -66,6 +66,13 @@ class Problem1 {
             if (tmpPobiPageNum < 1 || tmpPobiPageNum > 400 || tmpCrongPageNum < 1 || tmpCrongPageNum > 400) {
                 return false;
             }
+
+            if (i == 0 && (tmpPobiPageNum % 2 == 0 || tmpCrongPageNum % 2 == 0)) {
+                return false;
+            }
+            if (i == 1 && (tmpPobiPageNum % 2 != 0 || tmpCrongPageNum % 2 != 0)) {
+                return false;
+            }
         }
 
         if (pobi.get(0) == 1 || crong.get(0) == 1 || pobi.get(1) == 400 || crong.get(1) == 400) {
