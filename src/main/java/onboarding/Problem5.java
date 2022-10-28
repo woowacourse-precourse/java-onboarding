@@ -5,17 +5,17 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Problem5 {
-    private static final List<Integer> moneys = Arrays.asList(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1);
+    private static final List<Integer> accountMoneys = Arrays.asList(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1);
     public static List<Integer> solution(int money) {
-        return getAccountMoneyInRange(money);
+        return getMoneyInAccountMoneys(money);
     }
 
-    private static List<Integer> getAccountMoneyInRange(int money) {
-        int[] arr = new int[moneys.size()];
+    private static List<Integer> getMoneyInAccountMoneys(int money) {
+        int[] arr = new int[accountMoneys.size()];
 
-        for(int i=0; i<moneys.size(); i++) {
-            arr[i] += money / moneys.get(i);
-            money %= moneys.get(i);
+        for(int i=0; i<accountMoneys.size(); i++) {
+            arr[i] += money / accountMoneys.get(i);
+            money %= accountMoneys.get(i);
         }
         return Arrays.stream(arr).boxed().collect(Collectors.toList());
     }
