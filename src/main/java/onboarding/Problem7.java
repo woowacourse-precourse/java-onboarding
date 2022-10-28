@@ -6,7 +6,22 @@ public class Problem7 {
 
     /** 친구 관계 리스트를 각 유저를 Key로 가지는 친구 List Map으로 변환 */
     private static Map<String, List<String>> analyzeFirendsInfo(List<List<String>> friends) {
-        return null;
+        Map<String, List<String>> friendsMap = new HashMap<>();
+
+        for(List<String> friend : friends) {
+            String user1 = friend.get(0);
+            String user2 = friend.get(1);
+
+            List<String> friend1 = friendsMap.getOrDefault(user1, new ArrayList<>());
+            friend1.add(user2);
+            friendsMap.put(user1, friend1);
+
+            List<String> friend2 = friendsMap.getOrDefault(user2, new ArrayList<>());
+            friend2.add(user1);
+            friendsMap.put(user2, friend2);
+        }
+
+        return friendsMap;
     }
 
     /** 친구의 친구인 경우 친구 가산점을 추가하는 함수*/
