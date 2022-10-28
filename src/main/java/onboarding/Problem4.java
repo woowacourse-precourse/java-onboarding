@@ -14,7 +14,8 @@ public class Problem4 {
             }
             int key = wo.toUpperCase().charAt(0)-'A';
 
-
+            if(wo.equals(wo.toUpperCase()))
+                answer+= wordMap[key];
         }
         return answer;
     }
