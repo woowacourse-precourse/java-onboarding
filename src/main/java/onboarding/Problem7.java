@@ -78,9 +78,9 @@ public class Problem7 {
     public static List<Integer> matchFriendList(int[][] matrix, List<Integer> friendIndexes) {
         List<Integer> matchFriedIndexes = new ArrayList<>();
 
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < friendIndexes.size(); j++) {
-                if (matrix[i][j] == 1) {
+        for(Integer friendIndex : friendIndexes) {
+            for (int i = 0; i < matrix.length; i++) {
+                if (matrix[i][friendIndex] == 1) {
                     matchFriedIndexes.add(i);
                 }
             }
