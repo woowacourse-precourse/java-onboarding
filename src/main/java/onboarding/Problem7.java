@@ -15,7 +15,7 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
         HashMap<String,Integer> dic = new HashMap<String,Integer>();
         HashMap<String,Integer> new_dic = new HashMap<String,Integer>();
-        List std = new ArrayList();
+        List<String> std = new ArrayList<>();
         for(List relate : friends) {
             for(int i = 0; i < 2; i++) {
                 dic.put((String) relate.get(i), 0);
@@ -24,7 +24,14 @@ public class Problem7 {
         for (String who : visitors) {
             dic.put(who, 0);
         }
-        System.out.println(dic);
+
+        for(List relate : friends) {
+            if (relate.contains(user)){
+                List<String> list = new ArrayList<String>(relate);
+                list.remove(user);
+                std.add((String) list.get(0));
+            }
+        }
         return answer;
     }
 }
