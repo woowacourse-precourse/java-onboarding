@@ -1,5 +1,6 @@
 package onboarding;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -7,8 +8,7 @@ import java.util.Set;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        return getEmailList(forms);
     }
 
     private static List<List<String>> makeSubstringWithTwoWords(List<List<String>> forms) {
@@ -66,5 +66,27 @@ public class Problem6 {
         }
 
         return isConsecutive;
+    }
+
+    private static List<String> getEmailList(List<List<String>> forms) {
+        List<String> emailList = new ArrayList<>();
+        boolean[] isConsecutive = makeConsecutiveNicknameCheckArray(forms);
+
+        for (int i = 0; i < forms.size(); i++) {
+            if (isConsecutive[i]) {
+                String email = forms.get(i).get(0);
+                emailList.add(email);
+            }
+        }
+
+        Set<String> emailSet = new HashSet<>();
+
+        for (int i = 0; i < emailList.size(); i++) {
+            emailSet.add(emailList.get(i));
+        }
+
+        List<String> sortedEmailList = new ArrayList<>(emailSet);
+
+        return sortedEmailList;
     }
 }
