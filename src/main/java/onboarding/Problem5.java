@@ -45,4 +45,8 @@ public class Problem5 {
         return moneyMap.values().stream()
                 .collect(Collectors.toList());
     }
+
+    public static boolean validateWithdrawMoneyRange(int withdrawMoney) {
+        return (withdrawMoney >= 1 && withdrawMoney <= 1000000);
+    }
 }
