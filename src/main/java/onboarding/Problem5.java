@@ -10,8 +10,9 @@ public class Problem5 {
 
     public static List<Integer> solution(int inputWithdrawMoney) {
         withdrawMoney = inputWithdrawMoney;
-        List<Integer> answer = Collections.emptyList();
-        return answer;
+        initMoneyMap();
+        convertWithdrawMoney();
+        return moneyMapValuesConvertToMoneyList();
     }
 
     public static void initMoneyMap() {
