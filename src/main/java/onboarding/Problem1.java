@@ -9,7 +9,7 @@ class Problem1 {
         return answer;
     }
 
-    private int getScoreFromPages(List<Integer> pages) {
+    private static int getScoreFromPages(List<Integer> pages) {
         // 입력받은 페이지 배열에서 왼쪽 페이지와 오른쪽 페이지를 따로 계산
         int leftPage = pages.get(0);
         int rightPage = pages.get(1);
@@ -26,7 +26,7 @@ class Problem1 {
         return Math.max(maxLeftPage, maxRightPage);
     }
 
-    private List<Integer> getDigitsFromNumber(int num) {
+    private static List<Integer> getDigitsFromNumber(int num) {
         List<Integer> digits = new ArrayList<>();
         while (num > 0) {
             digits.add(num % 10);
@@ -35,14 +35,14 @@ class Problem1 {
         return digits;
     }
 
-    private int getMaxScore(List<Integer> numList) {
+    private static int getMaxScore(List<Integer> numList) {
         int sumOfNums = numList.stream().reduce(0, Integer::sum);
         int multiplyOfNums = numList.stream().reduce(1, (a, b) -> a * b);
 
         return Math.max(sumOfNums, multiplyOfNums);
     }
 
-    private Result startGame(int pobiScore, int crongScore) {
+    private static Result startGame(int pobiScore, int crongScore) {
         if (pobiScore > crongScore) {
             return Result.POBI_WIN;
         } else if (crongScore > pobiScore) {
