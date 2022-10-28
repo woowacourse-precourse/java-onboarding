@@ -23,6 +23,7 @@ public class Problem6 {
         Map<String, List<Integer>> tmp = new HashMap<>();
         for (int i = 0; i < forms.size(); i++) {
             String nickName = forms.get(i).get(1);
+            if(nickName.length() < 2) continue;
             for (int j = 0; j < nickName.length() - 1; j++) {
                 tmp.computeIfAbsent(nickName.substring(j, j + 2), s -> new ArrayList<>()).add(i);
             }
