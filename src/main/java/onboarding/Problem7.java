@@ -1,16 +1,13 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
         // user의 direct friend 구하기
-        ArrayList<String> directFriends = new ArrayList<String>();
+        HashSet<String> directFriends = new HashSet<String>();
         for(List<String> friendList : friends){
             if(friendList.contains(user)){
                 // add friend
@@ -34,11 +31,14 @@ public class Problem7 {
             }
         }
         mutualFriends.removeAll(directFriends);
-        System.out.println(mutualFriends);
 
+        // 추천인 리스트 만들기
+        HashSet<String> suggestedAccouts = new HashSet<>();
+        suggestedAccouts.addAll(mutualFriends);
+        suggestedAccouts.addAll(visitors);
+        suggestedAccouts.removeAll(directFriends);
 
-
-
+        System.out.println(suggestedAccouts);
 
         return answer;
     }
