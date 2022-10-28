@@ -13,7 +13,7 @@ public class Problem7 {
     private static final int FROM = 0;
     private static final int TO = 1;
 
-    private static Map<String, Set<String>> storeRelation(List<List<String>> friends) {
+    private static Map<String, Set<String>> getRelation(List<List<String>> friends) {
         Map<String, Set<String>> friendsByName = new HashMap<>();
 
         for (List<String> friend : friends) {
@@ -30,7 +30,7 @@ public class Problem7 {
         }
         return friendsByName;
     }
-    private static Map<String, Integer> storeVisitorScore(List<String> visitors) {
+    private static Map<String, Integer> getVisitorScore(List<String> visitors) {
         Map<String, Integer> visitorScore = new HashMap<>();
 
         for (String visitor : visitors) {
@@ -49,9 +49,9 @@ public class Problem7 {
         List<String> userFriends;
         Map<String, Integer> visitorScore;
 
-        friendsByName = storeRelation(friends);
+        friendsByName = getRelation(friends);
         userFriends = new ArrayList<>(friendsByName.get(user));
-        visitorScore = storeVisitorScore(visitors);
+        visitorScore = getVisitorScore(visitors);
 
         return answer;
     }
