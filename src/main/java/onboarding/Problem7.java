@@ -71,6 +71,7 @@ public class Problem7 {
                     (recommendFriends.get(value2)).compareTo(recommendFriends.get(value1)));
             ArrayList<String> answer = new ArrayList<>();
             answer.addAll(friends);
+
             return answer;
         }
 
