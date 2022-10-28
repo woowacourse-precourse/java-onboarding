@@ -23,23 +23,6 @@ class Problem1 {
         return answer;
     }
 
-    public static int getCompareScore(int pobiMax, int crongMax){
-        if(pobiMax > crongMax)
-            return 1;
-        else if(pobiMax < crongMax)
-            return 2;
-        else if(pobiMax == crongMax)
-            return 0;
-
-        return -1;
-    }
-
-
-    public static int getMaxScore(int leftPage, int rightPage){
-        return Math.max(Math.max(plusBookNum(leftPage), multiBookNum(leftPage)),
-                Math.max(plusBookNum(rightPage), multiBookNum(rightPage)));
-    }
-
     public static boolean checkException(int leftPage, int rightPage){
         if(leftPage+1 != rightPage
                 ||(leftPage < 3) ||(rightPage < 3)
@@ -48,6 +31,11 @@ class Problem1 {
             return true;
         else
             return false;
+    }
+
+    public static int getMaxScore(int leftPage, int rightPage){
+        return Math.max(Math.max(plusBookNum(leftPage), multiBookNum(leftPage)),
+                Math.max(plusBookNum(rightPage), multiBookNum(rightPage)));
     }
 
     public static int plusBookNum(int num){
@@ -66,5 +54,16 @@ class Problem1 {
             num /= 10;
         }
         return sum;
+    }
+
+    public static int getCompareScore(int pobiMax, int crongMax){
+        if(pobiMax > crongMax)
+            return 1;
+        else if(pobiMax < crongMax)
+            return 2;
+        else if(pobiMax == crongMax)
+            return 0;
+
+        return -1;
     }
 }
