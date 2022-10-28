@@ -5,7 +5,7 @@ import java.util.List;
 class Problem1 {
     public static int calculateMax(int val) {
         int[] arr = new int[3];
-        int original_val=val;
+        int original_val = val;
         int tmp1 = 0;
         int tmp2 = 0;
         arr[0] = val / 100;
@@ -44,8 +44,18 @@ class Problem1 {
         return -1;
     }
 
+    public static boolean catchException(List<Integer> list) {
+        if ((list.get(0) + 1) != list.get(1))
+            return true;
+        if (list.size() != 2)
+            return true;
+        return false;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        if (catchException(pobi) || catchException(crong))
+            return -1;
         int pobi1 = calculateMax(pobi.get(0));
         int pobi2 = calculateMax(pobi.get(1));
         int crong1 = calculateMax(crong.get(0));
