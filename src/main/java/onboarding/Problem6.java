@@ -1,13 +1,31 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        HashSet<String> overlapList = new HashSet<String>();
+
+        for(int i=0; i<forms.size(); i++){
+            String email = forms.get(i).get(0);
+            String nickName = forms.get(i).get(1);
+
+            //이메일, 닉네임 체크
+            if(!(isEmail(email) || isNickName(nickName))) break;
+            //중복 체크
+            for(int j=forms.size()-1; j > 0; j--){
+                String nickNameChk = forms.get(j).get(1);
+                if(j==i) continue;
+                if(overlapNickName(nickName, nickNameChk)) overlapList.add(email);
+            }
+        }
+
+        List<String> overlapEmail = new ArrayList<>(overlapList);
+        return overlapEmail;
     }
 
     public static boolean isEmail(String email){
