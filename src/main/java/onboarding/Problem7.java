@@ -1,5 +1,9 @@
 package onboarding;
 
+import static onboarding.Problem7.AccountConst.FRIEND_A_INDEX;
+import static onboarding.Problem7.AccountConst.FRIEND_B_INDEX;
+import static onboarding.Problem7.FriendScoreConst.FRIEND_RELATION_SCORE;
+import static onboarding.Problem7.FriendScoreConst.VISITOR_SCORE;
 import static onboarding.Problem7.FriendsRecommender.getRecommendedFriendsName;
 
 import java.util.HashMap;
@@ -22,13 +26,13 @@ public class Problem7 {
 
         private static void initFriendsRelation(List<List<String>> friends) {
             for (List<String> friend : friends) {
-                Account accountA = new Account(friend.get(0));
-                Account accountB = new Account(friend.get(1));
+                Account accountA = new Account(friend.get(FRIEND_A_INDEX));
+                Account accountB = new Account(friend.get(FRIEND_B_INDEX));
 
                 accountA.addFriend(accountB);
                 accountB.addFriend(accountA);
-                accountInfoMap.put(friend.get(0), accountA);
-                accountInfoMap.put(friend.get(1), accountB);
+                accountInfoMap.put(friend.get(FRIEND_A_INDEX), accountA);
+                accountInfoMap.put(friend.get(FRIEND_B_INDEX), accountB);
             }
         }
 
@@ -42,7 +46,7 @@ public class Problem7 {
             if (target.isAccountId(user) || target.isFriend(user)) {
                 return;
             }
-            target.addScore(target.getNumberOfFriends() * 10);
+            target.addScore(target.getNumberOfFriends() * FRIEND_RELATION_SCORE);
         }
 
         private static void initVisitorScore(List<String> visitors, String user) {
@@ -58,7 +62,7 @@ public class Problem7 {
             if (accountInfoMap.get(visitor).isFriend(user)) {
                 return;
             }
-            accountInfoMap.get(visitor).addScore(1);
+            accountInfoMap.get(visitor).addScore(VISITOR_SCORE);
         }
 
         private static List<Account> mapAccountInfoMapToAccountList(String user) {
@@ -85,6 +89,16 @@ public class Problem7 {
             sortedScoreDescAndNameAsc(accounts);
             return accounts.stream().map(Account::getId).limit(5).collect(Collectors.toList());
         }
+    }
+
+    public abstract class AccountConst {
+        public static final int FRIEND_A_INDEX = 0;
+        public static final int FRIEND_B_INDEX = 1;
+    }
+
+    public abstract class FriendScoreConst {
+        public static final int FRIEND_RELATION_SCORE = 10;
+        public static final int VISITOR_SCORE = 1;
     }
 }
 
