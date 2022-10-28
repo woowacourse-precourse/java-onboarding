@@ -11,12 +11,31 @@ public class Problem4 {
     public static String solution(String word) {
         validateRange(word);
         Map<Character, Character> dictionary = generateDictionary();
+        return findReversedWord(word, dictionary);
     }
 
     public static void validateRange(String word) {
         if (word.length() < MINIMUM_STRING_LENGTH || MAXIMUM_STRING_LENGTH < word.length()) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private static String findReversedWord(String word, Map<Character, Character> dictionary) {
+        StringBuilder sb = new StringBuilder();
+
+        for (char c : word.toCharArray()) {
+            char charFromDictionary = findCharFromDictionary(dictionary, c);
+            sb.append(charFromDictionary);
+        }
+
+        return sb.toString();
+    }
+
+    private static Character findCharFromDictionary(Map<Character, Character> dictionary, char c) {
+        if (dictionary.get(c) == null) {
+            return c;
+        }
+        return dictionary.get(c);
     }
 
     private static Map<Character, Character> generateDictionary() {
