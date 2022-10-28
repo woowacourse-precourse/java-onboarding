@@ -1,6 +1,9 @@
 package onboarding;
 
+
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * 1. 제약사항 확인
@@ -24,18 +27,35 @@ public class Problem6 {
     public static final String EMAIL_PATTERN = "email.com";
 
     public static List<String> solution(List<List<String>> forms) {
+        List<String> answer = List.of("answer");
         validate(forms);
+        findPattern(forms);
+        return answer;
+    }
 
-        //패턴 찾기
+    public static Set<String> findPattern(List<List<String>> forms) {
+        Set<String> allPattern = new HashSet<>();
+        Set<String> overlapPattern = new HashSet<>();
         for (List<String> form : forms) {
-            String[] splitWord = form.get(1).split("");
-
-
+            findPatternByWord(allPattern, overlapPattern, form.get(1));
         }
 
+        return overlapPattern;
+    }
+    public static void findPatternByWord(Set<String> allPattern, Set<String> overlapPattern, String word) {
+        for (int i = 2; i <= word.length(); i ++ ) {
+            for (int j = 0; j <= word.length() - i; j ++ ) {
+                String subWord = word.substring(j, j + i);
+                addPatternToHashSet(allPattern, overlapPattern, subWord);
+            }
+        }
+    }
 
-        List<String> answer = List.of("answer");
-        return answer;
+    private static void addPatternToHashSet(Set<String> allPattern, Set<String> overlapPattern, String subWord) {
+        if (allPattern.contains(subWord)) {
+            overlapPattern.add(subWord);
+        }
+        allPattern.add(subWord);
     }
 
     private static void validate(final List<List<String>> forms) {
