@@ -28,7 +28,7 @@ public class Problem4 {
                 return getConvertedChar(ch);
             }
             return ch;
-        }).map(String::valueOf).collect(Collectors.joining());
+        }).collect(()-> new StringBuffer(), (c, e)->c.append(e), (c1,c2)-> c1.append(c2)).toString();
         return convertedString;
     }
 
