@@ -70,7 +70,7 @@ class Problem1 {
     }
 
     private static boolean verifyException(List<Integer> someone) {
-        if (!sizeCheck(someone))
+        if (!checkSize(someone))
             return false;
         if (!isInRange(someone))
             return false;
@@ -81,7 +81,7 @@ class Problem1 {
         return true;
     }
 
-    private static boolean sizeCheck(List<Integer> someone) {
+    private static boolean checkSize(List<Integer> someone) {
         if (someone == null)
             System.out.println("null");
         return (someone != null && someone.size() == 2);
