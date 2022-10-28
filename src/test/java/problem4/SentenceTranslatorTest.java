@@ -42,4 +42,10 @@ public class SentenceTranslatorTest {
         assertThat(result1).isEqualTo('R');
         assertThat(result2).isEqualTo('r');
     }
+
+    @Test
+    void 문장전체를_변환하는_기능() {
+        String result = translator.translate("I love you");
+        assertThat(result).isEqualTo("R olev blf");
+    }
 }
