@@ -46,4 +46,28 @@ public class SNSController {
         }
         users.put(userName, user);
     }
+
+    private class FriendRecommendPoint {
+
+        private final String name;
+        private int point;
+
+        public FriendRecommendPoint(String name){
+            this.name = name;
+            point = 0;
+        }
+
+        public void addPoints(int point){
+            this.point += point;
+        }
+
+        public int getPoint(){
+            return point;
+        }
+
+        public String getName(){
+            return name;
+        }
+    }
+
 }
