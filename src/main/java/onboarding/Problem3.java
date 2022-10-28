@@ -5,9 +5,13 @@ import java.util.stream.Stream;
 
 public class Problem3 {
 
+    private static final Integer NUMBER_MINIMUM_LENGTH = 1;
+    private static final Integer NUMBER_MAXIMUM_LENGTH = 10000;
+
     static int[] Dy;
 
-    static void preProcess() {
+    static void input(int number) {
+        Dy = new int[number + 1];
         Dy[1] = 0;
     }
 
@@ -23,8 +27,7 @@ public class Problem3 {
 
     public static int solution(int number) {
         validateNumber(number);
-        Dy = new int[number + 1];
-        preProcess();
+        input(number);
 
         for (int i = 2; i <= number; i++) {
             final int[] digitArr = getDigitArr(i);
@@ -35,7 +38,7 @@ public class Problem3 {
     }
 
     private static void validateNumber(int number) {
-        if (number < 1 || number > 10000) {
+        if (number < NUMBER_MINIMUM_LENGTH || number > NUMBER_MAXIMUM_LENGTH) {
             throw new IllegalArgumentException("number는 1 이상 10,000 이하인 자연수입니다.");
         }
     }
