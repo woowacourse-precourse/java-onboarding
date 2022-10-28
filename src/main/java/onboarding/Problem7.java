@@ -38,4 +38,18 @@ public class Problem7 {
             if(!isAlreadyFriend(visitor, userFriend))friendRecommend.put(visitor,friendRecommend.getOrDefault(visitor,0)+1);
         }
     }
+    static class Person implements Comparable<Person>{
+        private String name;
+        private int score;
+        public String getName(){return name;};
+        public Person(String name, int score){
+            this.name= name;
+            this.score=score;
+        }
+        @Override
+        public int compareTo(Person o) {
+            if(o.score == this.score)return this.name.compareTo(o.name);
+            else return o.score -  this.score;
+        }
+    }
 }
