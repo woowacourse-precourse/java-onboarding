@@ -52,4 +52,38 @@ class Problem2Test {
         assertThat(duplicatedCharIndex4).containsExactly(4, 5);
         assertThat(duplicatedCharIndex5).isEmpty();
     }
+
+    @Test
+    public void setToListWithReverseOrderTest() {
+        //given
+        String cryptogram1 = "browoanoommnaon";
+        String cryptogram2 = "browoannaon";
+        String cryptogram3 = "browoaaon";
+        String cryptogram4 = "browoon";
+        String cryptogram5 = "brown";
+        List<String> cryptogramIngredients1 = Problem2.getCryptogramIngredients(cryptogram1);
+        List<String> cryptogramIngredients2 = Problem2.getCryptogramIngredients(cryptogram2);
+        List<String> cryptogramIngredients3 = Problem2.getCryptogramIngredients(cryptogram3);
+        List<String> cryptogramIngredients4 = Problem2.getCryptogramIngredients(cryptogram4);
+        List<String> cryptogramIngredients5 = Problem2.getCryptogramIngredients(cryptogram5);
+        Set<Integer> duplicatedCharIndex1 = Problem2.getDuplicatedCharIndex(cryptogramIngredients1);
+        Set<Integer> duplicatedCharIndex2 = Problem2.getDuplicatedCharIndex(cryptogramIngredients2);
+        Set<Integer> duplicatedCharIndex3 = Problem2.getDuplicatedCharIndex(cryptogramIngredients3);
+        Set<Integer> duplicatedCharIndex4 = Problem2.getDuplicatedCharIndex(cryptogramIngredients4);
+        Set<Integer> duplicatedCharIndex5 = Problem2.getDuplicatedCharIndex(cryptogramIngredients5);
+
+        //when
+        List<Integer> duplicatedCharIndexReverseOrder1 = Problem2.setToListWithReverseOrder(duplicatedCharIndex1);
+        List<Integer> duplicatedCharIndexReverseOrder2 = Problem2.setToListWithReverseOrder(duplicatedCharIndex2);
+        List<Integer> duplicatedCharIndexReverseOrder3 = Problem2.setToListWithReverseOrder(duplicatedCharIndex3);
+        List<Integer> duplicatedCharIndexReverseOrder4 = Problem2.setToListWithReverseOrder(duplicatedCharIndex4);
+        List<Integer> duplicatedCharIndexReverseOrder5 = Problem2.setToListWithReverseOrder(duplicatedCharIndex5);
+
+        //then
+        assertThat(duplicatedCharIndexReverseOrder1).containsExactly(10, 9, 8, 7);
+        assertThat(duplicatedCharIndexReverseOrder2).containsExactly(7, 6);
+        assertThat(duplicatedCharIndexReverseOrder3).containsExactly(6, 5);
+        assertThat(duplicatedCharIndexReverseOrder4).containsExactly(5, 4);
+        assertThat(duplicatedCharIndexReverseOrder5).isEmpty();
+    }
 }

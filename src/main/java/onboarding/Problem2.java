@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
@@ -30,5 +27,12 @@ public class Problem2 {
         }
 
         return duplicatedCharIndex;
+    }
+
+    static List<Integer> setToListWithReverseOrder(Set<Integer> duplicatedCharIndexSet) {
+        List<Integer> duplicatedCharIndexReverseOrder = new ArrayList<>(duplicatedCharIndexSet);
+        Collections.reverse(duplicatedCharIndexReverseOrder);
+
+        return duplicatedCharIndexReverseOrder;
     }
 }
