@@ -12,10 +12,19 @@ public class Problem4 {
 
     static final int UPPERCASE_DICTIONARY_SUM = 'A' + 'Z';
     static final int LOWERCASE_DICTIONARY_SUM = 'a' + 'z';
+    static final int ALPHABET_LAST_INDEX = 25;
+    static final int ALPHABET_START_INDEX = 0;
+
 
     public static String solution(String word) {
         String answer = "";
         return answer;
+    }
+
+    private static boolean isUppercase(char nextCharacter){
+        if(nextCharacter - 'A' >= ALPHABET_START_INDEX && nextCharacter - 'A' <= ALPHABET_LAST_INDEX)
+            return true;
+        return false;
     }
 
     private static char flipUpperCase(char alphabet){
