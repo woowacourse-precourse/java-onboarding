@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
 
@@ -14,7 +15,18 @@ public class Problem7 {
 
         computeOfVisitorsScore(visitors);
 
-        return null;
+        return friendScoreMap.entrySet().stream()
+                .filter(entry -> entry.getValue() != 0)
+                .sorted((e1, e2) -> {
+                    if (e1.getValue() == e2.getValue()) {
+                        return e1.getKey().compareTo(e2.getKey());
+                    }
+                    return Integer.compare(e2.getValue(), e1.getValue());
+                })
+                .map(Map.Entry::getKey)
+                .filter(nickname -> !friendGraph.get(user).contains(nickname))
+                .limit(5L)
+                .collect(Collectors.toList());
     }
 
     private static void computeOfVisitorsScore(List<String> visitors) {
