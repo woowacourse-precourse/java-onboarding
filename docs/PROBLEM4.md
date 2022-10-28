@@ -29,4 +29,4 @@
   - ✅ 주어진 word를 구성하는 문자들 중 알파벳은 하나씩 dictionary를 이용하여 변환
   - ✅ 알파벳이 아닌 문자는 변환하지 않고 StringBuilder 클래스 객체에 추가
   - ✅ StringBuilder 클래스 객체를 통해 변환이 완료된 문자를 더해서 최종 변환된 문자열을 반환
-- ⬜ 청개구리 사전 데이터를 나타내는 HashMap 클래스 객체를 생성하는 makeDictionary 메소드 작성
+- ✅ 청개구리 사전 데이터를 나타내는 HashMap 클래스 객체를 생성하는 makeDictionary 메소드 작성
