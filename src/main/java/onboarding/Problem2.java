@@ -3,6 +3,18 @@ package onboarding;
 public class Problem2 {
     public static String solution(String cryptogram) {
 
+        // 예외 처리
+        if (cryptogram.length() < 1 || cryptogram.length() > 1000) {
+            return "제한사항 위반";
+        }
+
+        // isLowerCase 는 int 도 true 로 반환하지만 charAt 이 char 로 반환되므로 괜찮다.
+        for (int i = 0; i < cryptogram.length(); i++) {
+            if (!Character.isLowerCase(cryptogram.charAt(i))) {
+                return "제한사항 위반";
+            }
+        }
+
         String answer = cryptogram;
 
         // decode 반복
