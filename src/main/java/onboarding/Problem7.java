@@ -11,6 +11,10 @@ public class Problem7 {
         return answer;
     }
 
+    public static void updateRecommendScore(String user, int score) {
+        userAndScoreMap.put(user, userAndScoreMap.getOrDefault(user, 0) + score);
+    }
+
     public static void friendsSetup(List<List<String>> friends, String user) {
         for (List<String> friend : friends) {
             if (isFriendsContainUser(friend, user)) {
