@@ -20,7 +20,10 @@ public class Problem4 {
         return temp;
     }
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        StringBuilder answer = new StringBuilder();
+        for(char unit : word.toCharArray()) {
+            answer.append(trans_char(unit));
+        }
+        return answer.toString();
     }
 }
