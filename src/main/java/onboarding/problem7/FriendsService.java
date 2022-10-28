@@ -21,14 +21,14 @@ public class FriendsService {
                 if (name.equals(user)) {
                     continue;
                 }
-                results.put(name, (results.getOrDefault(name, 0) + 1) * KNOWN_SCORE);  // 점수를 산정
+                results.put(name, (results.getOrDefault(name, 0) + KNOWN_SCORE));  // 점수를 산정
             }
         }
 
         return results;
     }
 
-    private List<String> getKnownFriends(String user, List<List<String>> friends) {
+    public List<String> getKnownFriends(String user, List<List<String>> friends) {
         List<String> friendsOfUser = new ArrayList<>();  // user를 알고 있는 친구.
         friends.stream()
                 .filter(list -> list.contains(user))  // 유저 이름이 들어있는 리스트

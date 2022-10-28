@@ -1,6 +1,9 @@
 package onboarding.problem7;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import static onboarding.problem7.InputValueValidator.*;
 
@@ -17,6 +20,27 @@ public class RecommendationSystem {
     public List<String> doRecommend(String user, List<List<String>> friends, List<String> visitors) {
         validateInputValue(user, friends, visitors);
 
-        return null;
+        Map<String, Integer> totalScore = getTotalScore(user, friends, visitors);
+
+        // TODO 객체화 및 compareTo 재정의를 통해 마지막 조건을 변경하자.
+        return totalScore.entrySet().stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
+    }
+
+    private Map<String, Integer> getTotalScore(String user, List<List<String>> friends, List<String> visitors) {
+        Map<String, Integer> relationshipScore = friendsService.getRelationshipScore(user, friends);
+
+        List<String> knownFriends = friendsService.getKnownFriends(user, friends);
+        Map<String, Integer> visitScore = visitorService.getVisitScore(visitors, knownFriends);  // 유저가 알고있는 친구 정보를 준다.
+
+        // 방문 점수를 relationshipScore로 합산.
+        for (String friend : visitScore.keySet()) {
+            int value = relationshipScore.getOrDefault(friend, 0) + visitScore.get(friend);
+            relationshipScore.put(friend, value);
+        }
+
+        return relationshipScore;
     }
 }
