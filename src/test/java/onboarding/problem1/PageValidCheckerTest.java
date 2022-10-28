@@ -14,7 +14,7 @@ class PageValidCheckerTest {
 
 	@BeforeEach
 	public void beforeEach() {
-		pageValidChecker = new PageValidCheckerImp(400);
+		pageValidChecker = new PageValidCheckerImp();
 	}
 
 	@Test
