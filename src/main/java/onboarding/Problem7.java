@@ -4,34 +4,54 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = new ArrayList<>();
-        Set<String> my_friends = new HashSet<>();
-        Map<String, Integer> score = new HashMap<>();
-        List<Map.Entry<String, Integer>> sort_list;
+        List<String> answer;
+        Map<String, Integer> score;
 
+        score = calculateFriendScore(user, friends, visitors);
+        answer = sortScore(score);
+
+        return answer;
+    }
+
+    public static Set<String> findMyFriends(String user, List<List<String>> friends){
+        Set<String> myFriends = new HashSet<>();
         for(List<String> list : friends){
             if(list.get(0).equals(user))
-                my_friends.add(list.get(1));
+                myFriends.add(list.get(1));
             else if(list.get(1).equals(user))
-                my_friends.add(list.get(0));
+                myFriends.add(list.get(0));
         }
+
+        return myFriends;
+    }
+
+    public static Map<String, Integer> calculateFriendScore(String user, List<List<String>> friends, List<String> visitors){
+        Set<String> myFriends = new HashSet<>();
+        myFriends = findMyFriends(user, friends);
+        Map<String, Integer> score = new HashMap<>();
 
         for(List<String> list : friends){
             if(list.get(0).equals(user) || list.get(1).equals(user))
                 continue;
-            else if(my_friends.contains(list.get(0)))
+            else if(myFriends.contains(list.get(0)))
                 score.put(list.get(1), (score.getOrDefault(list.get(1), 0) + 10));
-            else if(my_friends.contains(list.get(1)))
+            else if(myFriends.contains(list.get(1)))
                 score.put(list.get(0), (score.getOrDefault(list.get(0), 0) + 10));
         }
 
         for(String name : visitors){
-            if(name.equals(user) || my_friends.contains(name))
+            if(name.equals(user) || myFriends.contains(name))
                 continue;
 
             score.put(name, (score.getOrDefault(name, 0) + 1));
         }
 
+        return score;
+    }
+
+    public static List<String> sortScore(Map<String, Integer> score){
+        List<String> sortedScore = new ArrayList<>();
+        List<Map.Entry<String, Integer>> sort_list;
         sort_list = new ArrayList<Map.Entry<String, Integer>>(score.entrySet());
         Collections.sort(sort_list, new Comparator<Map.Entry<String, Integer>>() {
             @Override
@@ -44,11 +64,11 @@ public class Problem7 {
         });
 
         for(Map.Entry<String, Integer> entry : sort_list) {
-            answer.add(entry.getKey());
-            if(answer.size() > 5)
+            sortedScore.add(entry.getKey());
+            if(sortedScore.size() > 5)
                 break;
         }
 
-        return answer;
+        return sortedScore;
     }
 }
