@@ -30,14 +30,16 @@ public class ClapCalculator {
         while (target != CALCULATE_REMAINDER_VALUE) {
             int targetDigit = target % DECIMAL_UNIT_VALUE;
             target /= DECIMAL_UNIT_VALUE;
-
-            if (isCached(targetDigit)) {
-                clapCount += clapCountArr[targetDigit];
-                continue;
-            }
-            clapCount += calculateTargetDigitClapCount(targetDigit);
+            clapCount += calculateClapCount(targetDigit);
         }
         return clapCount;
+    }
+
+    private static int calculateClapCount(int targetDigit) {
+        if (isCached(targetDigit)) {
+            return clapCountArr[targetDigit];
+        }
+        return calculateTargetDigitClapCount(targetDigit);
     }
 
     private static int calculateTargetDigitClapCount(int target) {
