@@ -1,4 +1,4 @@
-package onboarding.problem2Validation;
+package onboarding.problem2;
 
 import java.util.Arrays;
 import java.util.List;

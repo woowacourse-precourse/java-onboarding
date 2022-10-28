@@ -1,6 +1,6 @@
 package onboarding;
 
-import onboarding.problem1Validation.Problem1Validation;
+import onboarding.problem1.Problem1Validation;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
