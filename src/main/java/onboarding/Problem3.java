@@ -1,7 +1,11 @@
 package onboarding;
 
+import onboarding.problem3.validation.ThreeSixNineValidator;
+
 public class Problem3 {
     public static int solution(int number) {
+        ThreeSixNineValidator.validate(number);
+
         int totalClap = 0;
         for (int count = 1; count <= number; count++) {
             totalClap += countThreeSixNine(count);
