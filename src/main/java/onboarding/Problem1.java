@@ -1,47 +1,46 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 class Problem1 {
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
-		if (!(checkNumber(pobi) && checkNumber(crong))) {
+		if (isWrongNumber(pobi) || isWrongNumber(crong)) {
 			return -1;
 		}
 
 		int pobiScore = getScore(pobi);
 		int crongScore = getScore(crong);
 
-		if (pobiScore > crongScore) {
-			return 1;
-		} else if (pobiScore < crongScore) {
-			return 2;
-		} else {
-			return 0;
-		}
+		return compareValues(pobiScore, crongScore);
 	}
 
-	private static boolean checkNumber(List<Integer> pages) {
+	private static int compareValues(int a, int b) {
+		if (a > b) {
+			return 1;
+		} else if (a < b) {
+			return 2;
+		}
+		return 0;
+	}
+
+	private static boolean isWrongNumber(List<Integer> pages) {
 		int left = pages.get(0);
 		int right = pages.get(1);
 
-		return !(left == 1 || right == 400 || left != right - 1);
+		return left == 1 || right == 400 || right - left != 1;
 	}
 
 	private static int getScore(List<Integer> pages) {
+		List<Integer> scores = new ArrayList<>();
 
-		int left = pages.get(0);
-		int right = pages.get(1);
+		for (Integer page : pages) {
+			List<Integer> digits = getDigit(page);
+			scores.add(getValues(digits));
+		}
 
-		List<Integer> leftDigits = getDigit(left);
-		List<Integer> rightDigits = getDigit(right);
-
-		int leftScore = getValues(leftDigits);
-		int rightScore = getValues(rightDigits);
-
-		int score = Math.max(leftScore, rightScore);
-
-		return score;
+		return Collections.max(scores);
 	}
 
 	private static List<Integer> getDigit(int number) {
@@ -59,13 +58,11 @@ class Problem1 {
 		int valueSum = 0;
 		int valueMultiple = 1;
 
-		for (int v : values) {
-			valueSum += v;
-			valueMultiple *= v;
+		for (int value : values) {
+			valueSum += value;
+			valueMultiple *= value;
 		}
 
-		int value = Math.max(valueSum, valueMultiple);
-
-		return value;
+		return Math.max(valueSum, valueMultiple);
 	}
 }
