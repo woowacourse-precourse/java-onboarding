@@ -14,8 +14,8 @@ class Problem1 {
             return Math.max(sumNumber, mulNumber);
         } else {
             // 세자리 일 때
-            int sumNumber = num % 10 + num / 10 + num / 100;
-            int mulNumber = (num % 10) * (num / 10) * (num / 100);
+            int sumNumber = num % 10 + (num % 100) / 10 + num / 100;
+            int mulNumber = (num % 10) * ((num % 100) / 10) * (num / 100);
             return Math.max(sumNumber, mulNumber);
         }
     }
