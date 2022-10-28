@@ -50,6 +50,16 @@ public class Problem6 {
 		List<Set<String>> allCrewTokenList = createAllCrewNicknameTokens(forms, allCrewNicknameTokens);
 		allCrewNicknameTokens = deleteNotDuplicatedToken(allCrewNicknameTokens);
 
+		for (int i = 0; i < allCrewTokenList.size(); i++) {
+			Map<String, Integer> finalNicknamesTokens = allCrewNicknameTokens;
+
+			if (allCrewTokenList.get(i).stream().anyMatch(finalNicknamesTokens::containsKey)) {
+				answer.add(forms.get(i).get(0));
+			}
+		}
+
+		answer = answer.stream().distinct().sorted().collect(Collectors.toList());
+
         return answer;
     }
 }
