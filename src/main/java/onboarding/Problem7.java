@@ -1,9 +1,11 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 public class Problem7 {
 
@@ -17,8 +19,10 @@ public class Problem7 {
 		findFriend(user, friends);
 		findFriendOfFriend(user, friends);
 		findVisitor(visitors);
-		List<String> answer = Collections.emptyList();
-		return answer;
+		List<Map.Entry<String, Integer>> sortedRecommendation = sortRecommadation();
+		System.out.println("sortedRecommendation = " + sortedRecommendation);
+		List<String> finalList = makeFinalList(sortedRecommendation);
+		return finalList;
 	}
 
 	private static void findFriend(String user, List<List<String>> friends) {
@@ -67,5 +71,34 @@ public class Problem7 {
 				addPoint(visitor, VISITOR_POINT);
 			}
 		}
+	}
+
+	private static List<Map.Entry<String, Integer>> sortRecommadation() {
+		List<Map.Entry<String, Integer>> entries = new ArrayList<>(recommendation.entrySet());
+
+		entries.sort((o1, o2) -> {
+			Integer v1 = o1.getValue();
+			Integer v2 = o2.getValue();
+
+			if (Objects.equals(v1, v2)) {
+				return o1.getKey().compareTo(o2.getKey());
+			}
+			return v2.compareTo(v1);
+		});
+
+		return entries;
+	}
+
+	private static List<String> makeFinalList(List<Map.Entry<String, Integer>> recommendList) {
+		List<String> finalList = new LinkedList<>();
+
+		for (Map.Entry<String, Integer> entry : recommendList) {
+			finalList.add(entry.getKey());
+			if (finalList.size() == 5) {
+				break;
+			}
+		}
+
+		return finalList;
 	}
 }
