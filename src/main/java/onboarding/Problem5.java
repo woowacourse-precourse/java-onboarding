@@ -18,7 +18,7 @@ public class Problem5 {
 
         for (int i = 0; i < moneyValue.length; i++) {
             answer.add(money / moneyValue[i]);
-            money -= answer.get(i) * moneyValue[i];
+            money%=moneyValue[i];
         }
         return answer;
     }
