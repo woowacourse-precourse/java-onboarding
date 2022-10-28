@@ -15,6 +15,20 @@ class Problem1 {
 
         int pobiScore = getScore(pobi);
         int crongScore = getScore(crong);
+
+        return getResult(pobiScore, crongScore);
+    }
+
+    private static int getResult(int pobiScore, int crongScore) {
+        if (pobiScore > crongScore) {
+            return Result.POBI.number;
+        }
+
+        if (pobiScore < crongScore) {
+            return Result.CRONG.number;
+        }
+
+        return Result.DRAW.number;
     }
 
     private static int getScore(List<Integer> pages) {
