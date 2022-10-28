@@ -21,6 +21,14 @@ public class Problem6 {
 
     public ArrayList<String> duplicatedEmails(HashMap<String,Integer> map, List<List<String>> forms){
         ArrayList<String> emails = new ArrayList<>();
+        for(List<String> form : forms){
+            String email = form.get(0);
+            String nickname = form.get(1);
+            for(String key : map.keySet()){
+                if(nickname.contains(key)) emails.add(email);
+            }
+        }
+        emails.sort(Comparator.naturalOrder());
         return emails;
     }
 
