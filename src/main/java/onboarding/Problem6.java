@@ -28,7 +28,6 @@ public class Problem6 {
                         //처음 발견된 단어는 map에 <단어, 이메일>로 저장
                         map.put(str, forms.get(i).get(0));
                     }
-                    }
                 }
             }
         }
