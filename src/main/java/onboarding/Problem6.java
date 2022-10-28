@@ -15,8 +15,7 @@ public class Problem6 {
     }
 
     static List<String> getTokens(String name){
-        List<String> result = name.length() > 1 ? new ArrayList<>()
-                : Collections.emptyList();
+        List<String> result = new ArrayList<String>();
 
         for (int i = 0; i < name.length() - 1; i++){
             String token = name.substring(i, i+2);
