@@ -7,15 +7,17 @@ import java.util.Map;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = new ArrayList<String>();
-
         Map<String, Member> memberDataBase = new HashMap<>();
 
+        checkFriendStatus(memberDataBase, friends);
+    private static void checkFriendStatus(Map<String, Member> memberDataBase, List<List<String>> friends) {
         for (List<String> friendList : friends) {
             Member friend0 = getMemberData(memberDataBase, friendList.get(0));
             Member friend1 = getMemberData(memberDataBase, friendList.get(1));
 
-            makeFriend(friend0, friend1);
+            addFriendEachOther(friend0, friend1);
+        }
+    }
         }
         return answer;
     }
