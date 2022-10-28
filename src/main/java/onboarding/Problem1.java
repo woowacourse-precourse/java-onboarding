@@ -5,6 +5,7 @@ import java.util.List;
 
 class Problem1 {
 
+    private static final int MOD_NUMBER = 10;
     public static void main(String[] args) {
         List<Integer> pobi = new ArrayList<>();
         List<Integer> crong = new ArrayList<>();
@@ -62,9 +63,9 @@ class Problem1 {
      */
     private static int sum_page(int pageNumber) {
         int sum = 0;
-        while(pageNumber / 10 != 0) {
-            int rest = pageNumber % 10;
-            pageNumber /= 10;
+        while(pageNumber / MOD_NUMBER != 0) {
+            int rest = pageNumber % MOD_NUMBER;
+            pageNumber /= MOD_NUMBER;
 
             sum += rest;
         }
@@ -75,9 +76,9 @@ class Problem1 {
 
     private static int multiple_page(int pageNumber) {
         int result = 1;
-        while(pageNumber / 10 != 0) {
-            int rest = pageNumber % 10;
-            pageNumber /= 10;
+        while(pageNumber / MOD_NUMBER != 0) {
+            int rest = pageNumber % MOD_NUMBER;
+            pageNumber /= MOD_NUMBER;
 
             result *= rest;
         }
