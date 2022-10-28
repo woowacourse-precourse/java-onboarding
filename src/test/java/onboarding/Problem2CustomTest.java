@@ -54,5 +54,34 @@ public class Problem2CustomTest {
             assertThat(possible).isTrue();
         }
 
+
+        @Test
+        void case1() {
+            String cryptogram = "bnnnnb";
+            String result = "";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void case2() {
+            String cryptogram = "brrk";
+            String result = "bk";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void case3() {
+            String cryptogram = "brrrk";
+            String result = "bk";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void case4() {
+            String cryptogram = "abcdadfase";
+            String result = "abcdadfase";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
     }
 }
