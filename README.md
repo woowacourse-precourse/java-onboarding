@@ -97,7 +97,7 @@
     - [x] 이미 친구인 사용자 점수 제거하기
 
 
-- [ ] solution method 구현
+- [x] solution method 구현
 
 ___
 
