@@ -2,7 +2,55 @@ package onboarding;
 
 import java.util.List;
 class Problem1 {
-    static int MaxScore(int num)
+
+    private final static int ERROR = -1;
+    private final static int DRAW = 0;
+    private final static int POBI_WIN = 1;
+    private final static int CRONG_WIN = 2;
+    private final static int MAX_PAGE = 398;
+    private final static int MIN_PAGE= 2;
+    private final static int EXPANDED_PAGE = 2;
+
+
+    public static int solution(List<Integer> pobi, List<Integer> crong) {
+        int answer;
+        int pobiScore;
+        int crongScore;
+
+        if(exception(pobi) || exception(crong))
+            return ERROR;
+
+        pobiScore = getMaxScore(pobi);
+        crongScore = getMaxScore(crong);
+        answer = GameResult(pobiScore, crongScore);
+
+        return answer;
+    }
+
+    private static boolean exception(List<Integer> page) {
+        int leftPage = page.get(0);
+        int rightPage = page.get(1);
+
+        if (page.size() != EXPANDED_PAGE)
+            return true;
+        if (leftPage != rightPage - 1)
+            return true;
+        if (leftPage < MIN_PAGE)
+            return true;
+        if (rightPage > MAX_PAGE)
+            return true;
+        return false;
+    }
+    private static int getMaxScore(List<Integer> user) {
+        int score = 0;
+
+        for (int i = 0; i < EXPANDED_PAGE; i++) {
+            score = Math.max(score, maxScore(user.get(i)));
+        }
+        return score;
+    }
+
+    private static int maxScore(int num)
     {
         int page_sum = 0;
         int page_mult = 1;
@@ -16,53 +64,16 @@ class Problem1 {
         max = Math.max(page_sum, page_mult);
         return max;
     }
-    static int CompareMaxScore(List<Integer> user) {
-        int score = 0;
-
-        for (int i = 0; i < 2; i++) {
-            if (score < MaxScore(user.get(i)))
-                score = MaxScore(user.get(i));
-        }
-        return score;
-    }
 
     static int GameResult(int pobi_score, int crong_score) {
-        int result = 0;
+        int result = DRAW;
 
-        if (pobi_score > crong_score)
-            result = 1;
-        else if (crong_score > pobi_score)
-            result = 2;
-        else if (crong_score == pobi_score)
-            result = 0;
+        if (pobi_score > crong_score) {
+            result = POBI_WIN;
+        } else if (crong_score > pobi_score) {
+            result = CRONG_WIN;
+        }
         return result;
-    }
-    static boolean exception(List<Integer> page) {
-        int left_page = page.get(0);
-        int right_page = page.get(1);
-
-        if (page.size() != 2)
-            return true;
-        if (left_page != right_page - 1)
-            return true;
-        else if (left_page < 2 && 398 < right_page)
-            return true;
-
-        return false;
-    }
-    public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        int pobi_score;
-        int crong_score;
-
-        if(exception(pobi) || exception(crong))
-            return -1;
-
-        pobi_score = CompareMaxScore(pobi);
-        crong_score = CompareMaxScore(crong);
-        answer = GameResult(pobi_score, crong_score);
-
-        return answer;
     }
 }
 
