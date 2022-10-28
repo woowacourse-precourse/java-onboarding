@@ -29,6 +29,38 @@ public class Problem7 {
                 .collect(Collectors.toList());
     }
 
+
+    static class Member {
+        private String name;
+        private Integer score;
+
+        private List<String> friendList = new ArrayList<>();
+
+
+        public Member(String name, Integer score) {
+            this.name = name;
+            this.score = score;
+        }
+
+        public List<String> getFriendList() {
+            return friendList;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public Integer getScore() {
+            return score;
+        }
+
+        public void changeScore(Integer score) {
+            this.score = score;
+        }
+
+    }
+
+
     static class FriendGraph {
         private Map<String, List<String>> friendMap = new HashMap<>();
 
