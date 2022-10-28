@@ -9,7 +9,12 @@ class Problem1 {
      * ex) 123 -> [3, 2, 1]
      */
     private static int[] splitDigit(int num) {
-        return new int[]{};
+        int rest = num / 10;
+        int place1 = num % 10;
+        int place2 = rest % 10;
+        int place3 = rest / 10;
+
+        return new int[]{place1, place2, place3};
     }
 
     /**
