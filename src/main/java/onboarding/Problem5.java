@@ -5,7 +5,6 @@ import java.util.List;
 
 public class Problem5 {
     public static int[] solution(int money) {
-        //List<Integer> answer = Collections.emptyList();
         int[] answer=new int[9];
         int[] sort_money = new int[]{50000,10000,5000,1000,500,100,50,10,1};
 
