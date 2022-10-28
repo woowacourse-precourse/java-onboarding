@@ -21,4 +21,11 @@ public class UserEmail {
     public int hashCode() {
         return Objects.hash(userEmail);
     }
+    
+    @Override
+    public String toString() {
+        return "UserEmail{" +
+                "userEmail='" + userEmail + '\'' +
+                '}';
+    }
 }

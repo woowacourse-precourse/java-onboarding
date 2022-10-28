@@ -1,6 +1,8 @@
 package onboarding.problem6.domain;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class User {
     private final UserName userName;
@@ -15,6 +17,12 @@ public class User {
         this.userEmail = userEmail;
     }
     
+    public List<User> twoLetterNames() {
+        return userName.twoLetterNames().stream()
+                .map(twoLetterName -> new User(twoLetterName, userEmail))
+                .collect(Collectors.toList());
+    }
+    
     @Override
     public boolean equals(final Object o) {
         if (this == o) return true;
@@ -26,5 +34,13 @@ public class User {
     @Override
     public int hashCode() {
         return Objects.hash(userName, userEmail);
+    }
+    
+    @Override
+    public String toString() {
+        return "User{" +
+                "userName=" + userName +
+                ", userEmail=" + userEmail +
+                '}';
     }
 }
