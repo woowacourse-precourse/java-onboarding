@@ -19,7 +19,13 @@ public class Problem4 {
 	}
 
 	public static char isAlpha(char c) {
-		
+		int asciValue = c;
+		if (asciValue >= 65 && asciValue <= 90) {
+			return translateUpper(asciValue);
+		}
+		if (asciValue >= 97 && asciValue <= 122) {
+			return translateLower(asciValue);
+		}
 		return c;
 	}
 
