@@ -104,65 +104,76 @@ class ApplicationTest {
     }
 
     @Nested
+    @DisplayName("문제 2 테스트")
     class Problem2Test {
-        @Test
-        void case1() {
-            String cryptogram = "browoanoommnaon";
-            String result = "brown";
-            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        @Nested
+        @DisplayName("문제 2 성공 케이스 테스트")
+        class Problem2SuccessTest {
+            @Test
+            @DisplayName("보편적인 해독 알고리즘 성공 케이스")
+            void case1() {
+                String cryptogram = "browoanoommnaon";
+                String result = "brown";
+                assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+            }
+
+            @Test
+            @DisplayName("해독 결과로 빈 문자열이 나올 수 있음")
+            void case2() {
+                String cryptogram = "zyelleyz";
+                String result = "";
+                assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+            }
+
+            @DisplayName("3개 이상의 연속된 중복 문자열이 나와도 정상적으로 수행됨")
+            @Test
+            void case3() {
+                String cryptogram = "bannnana";
+                String result = "bna";
+                assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+            }
+
+            @Test
+            @DisplayName("문자열 사이에 띄어쓰기가 있으면 띄어쓰기 제거 후 정상작동")
+            void case4() {
+                // given
+                String cryptogram = "b r  o w o a  no  om   mn  a o n";
+                String result = "brown";
+
+                // when & then
+                assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+            }
         }
 
-        @Test
-        void case2() {
-            String cryptogram = "zyelleyz";
-            String result = "";
-            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
-        }
+        @Nested
+        @DisplayName("문제 2 실패 케이스 테스트")
+        class Problem2FailureTest {
+            @Test
+            @DisplayName("비정상적인 입력값 - 문자열 길이가 최대치를 초과하는 경우 예외 발생")
+            void case1() {
+                // given
+                String cryptogram = "aaaaaaaaaa".repeat(101);
 
-        @Test
-        @DisplayName("연속된 문자 3개")
-        void case3() {
-            String cryptogram = "bannnana";
-            String result = "bna";
-            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
-        }
+                assertThat(cryptogram.length())
+                        .isGreaterThan(1000);
 
-        @Test
-        @DisplayName("비정상적인 입력값 - 문자열 길이가 최대치를 초과하는 경우 예외 발생")
-        void case4() {
-            // given
-            String cryptogram = "aaaaaaaaaa".repeat(101);
+                // when && then
+                assertThatThrownBy(() -> Problem2.solution(cryptogram))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage(String.format(CryptogramValidator.INVALID_STRING_LENGTH_MASSAGE_FORMAT, CryptogramValidator.MIN_LENGTH, CryptogramValidator.MAX_LENGTH));
+            }
 
-            assertThat(cryptogram.length())
-                    .isGreaterThan(1000);
+            @Test
+            @DisplayName("비정상적인 입력값 - 문자열이 빈 경우 예외 발생")
+            void case2() {
+                // given
+                String cryptogram = "";
 
-            // when && then
-            assertThatThrownBy(() -> Problem2.solution(cryptogram))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(String.format(CryptogramValidator.INVALID_STRING_LENGTH_MASSAGE_FORMAT, CryptogramValidator.MIN_LENGTH, CryptogramValidator.MAX_LENGTH));
-        }
-
-        @Test
-        @DisplayName("비정상적인 입력값 - 문자열이 빈 경우 예외 발생")
-        void case5() {
-            // given
-            String cryptogram = "";
-
-            // when && then
-            assertThatThrownBy(() -> Problem2.solution(cryptogram))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(String.format(CryptogramValidator.INVALID_STRING_LENGTH_MASSAGE_FORMAT, CryptogramValidator.MIN_LENGTH, CryptogramValidator.MAX_LENGTH));
-        }
-
-        @Test
-        @DisplayName("문자열 사이에 띄어쓰기가 있으면 띄어쓰기 제거 후 정상작동")
-        void case6() {
-            // given
-            String cryptogram = "b r  o w o a  no  om   mn  a o n";
-            String result = "brown";
-
-            // when & then
-            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+                // when && then
+                assertThatThrownBy(() -> Problem2.solution(cryptogram))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage(String.format(CryptogramValidator.INVALID_STRING_LENGTH_MASSAGE_FORMAT, CryptogramValidator.MIN_LENGTH, CryptogramValidator.MAX_LENGTH));
+            }
         }
     }
 
