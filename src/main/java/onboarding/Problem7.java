@@ -30,6 +30,7 @@ public class Problem7 {
 
         friendMap = giveTenPoint(matchFriendString, friendMap);
         friendMap = giveOnePoint(visitors, friendMap);
+        friendMap = deleteUserAndUserFriend(friendMap, friendNameList, user);
 
         return answer;
     }
@@ -103,8 +104,17 @@ public class Problem7 {
     }
 
     public static HashMap<String, Integer> giveOnePoint(List<String> visitors, HashMap<String, Integer> friendMap) {
-        for(String visitor : visitors){
+        for (String visitor : visitors) {
             friendMap.put(visitor, friendMap.getOrDefault(visitor, 0) + 1);
+        }
+        return friendMap;
+    }
+
+    public static HashMap<String, Integer> deleteUserAndUserFriend(HashMap<String, Integer> friendMap,
+                                                                   List<String> frinedNameList, String user) {
+        friendMap.put(user, 0);
+        for (String friendName : frinedNameList) {
+            friendMap.put(friendName, 0);
         }
         return friendMap;
     }
