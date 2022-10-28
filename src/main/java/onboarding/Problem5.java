@@ -13,7 +13,7 @@ public class Problem5 {
 			money %= moneyUnit[i];
 		}
 
-		return  Arrays.asList(moneyArray);
+		return Arrays.asList(moneyArray);
 	}
 
 }
