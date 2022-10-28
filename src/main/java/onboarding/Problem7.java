@@ -4,31 +4,24 @@ import java.util.*;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
+import static java.util.Map.Entry.*;
+
 public class Problem7 {
     private static final int FRIEND_SCORE = 10;
     private static final int VISITOR_SCORE = 1;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        //user의 친구 리스트
-        Set<String> friendList = getFriendList(friends);
-        //user의 친구의 친구 리스트
+        //방문자, 친구의 친구 리스트 생성
+        List<String> visitorList = getVisitorList(friends, visitors);
         List<String> friendOfFriendList = getFriendOfFriendList(user, friends);
-        //이름과 점수
-        Map<String, Integer> nameAndScore = new HashMap<>();
-        //친구의 친구 점수 셋팅
-        setScore(friendOfFriendList, nameAndScore, FRIEND_SCORE);
-        //방문자 제거 추가Filtered visitor list
-        List<String> visitorList = getFilteredVisitorList(visitors, friendList);
-        //방문자 점수 셋팅
-        setScore(visitorList, nameAndScore, VISITOR_SCORE);
 
-        //Friend recommendation
-        List<Entry<String, Integer>> recommendationList = new LinkedList<>(nameAndScore.entrySet());
-
-        sortByScoreAndName(recommendationList);
+        //이름과 점수 리스트 생성
+        Map<String, Integer> nameAndScore = getNameAndScoreList(visitorList, friendOfFriendList);
 
         List<String> answer = new ArrayList<>();
-        recommendationList.stream()
+        nameAndScore.entrySet().stream()
+                .sorted(Collections.reverseOrder(Entry.<String, Integer>comparingByValue())
+                        .thenComparing(comparingByKey()))
                 .limit(5)
                 .filter(list -> list.getValue() != 0)
                 .forEach(list -> answer.add(list.getKey()));
@@ -36,11 +29,16 @@ public class Problem7 {
         return answer;
     }
 
-    private static void sortByScoreAndName(List<Entry<String, Integer>> list) {
-        list.sort((first, second) -> {
-            int comparison = (first.getValue() - second.getValue()) * -1;
-            return comparison == 0 ? first.getKey().compareTo(second.getKey()) : comparison;
-        });
+    private static List<String> getVisitorList(List<List<String>> friends, List<String> visitors) {
+        Set<String> friendList = getFriendList(friends);
+        return getFilteredVisitorList(visitors, friendList);
+    }
+
+    private static Map<String, Integer> getNameAndScoreList(List<String> visitorList, List<String> friendOfFriendList) {
+        Map<String, Integer> nameAndScore = new HashMap<>();
+        setScore(friendOfFriendList, nameAndScore, FRIEND_SCORE);
+        setScore(visitorList, nameAndScore, VISITOR_SCORE);
+        return nameAndScore;
     }
 
     private static void setScore(List<String> friendOfFriendList, Map<String, Integer> nameAndScore, int score) {
