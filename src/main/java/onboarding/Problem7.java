@@ -32,4 +32,10 @@ public class Problem7 {
         if(userFriend.contains(person))return true;
         else return false;
     }
+    private static void visitorFindRecommend(List<String> visitors, Map<String, Integer> friendRecommend, Set<String> userFriend) {
+        for(int i=0;i<visitors.size();i++){
+            String visitor = visitors.get(i);
+            if(!isAlreadyFriend(visitor, userFriend))friendRecommend.put(visitor,friendRecommend.getOrDefault(visitor,0)+1);
+        }
+    }
 }
