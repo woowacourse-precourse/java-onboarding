@@ -7,8 +7,21 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         //페이지 연속성에 대한 예외처리
-        if(!pobi.get(1).equals(pobi.get(0)+1) || !crong.get(1).equals(crong.get(0)+1)){
+        if(!pobi.get(1).equals(pobi.get(0)+1) || !crong.get(1).equals(crong.get(0)+1) || crong.size() != pobi.size()){
             return -1;
+        }
+        List<Integer> pobiResult = new ArrayList<Integer>();
+        List<Integer> crongResult = new ArrayList<Integer>();
+
+        //각 페이지를 더하고 곱한 값을 리스트에 넣는다.
+        for(int i=0; pobi.size() > i; i++){
+            List<Integer> pobiPageNumber = splitInteger(pobi.get(i));
+            List<Integer> crongPageNumber = splitInteger(crong.get(i));
+
+            pobiResult.add(sumIntegerList(pobiPageNumber));
+            pobiResult.add(multipleIntegerList(pobiPageNumber));
+            crongResult.add(sumIntegerList(crongPageNumber));
+            crongResult.add(multipleIntegerList(crongPageNumber));
         }
         return answer;
     }
