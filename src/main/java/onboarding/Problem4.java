@@ -9,11 +9,11 @@ public class Problem4 {
         return answer;
     }
 
-    static List<Integer> getUpperCharIndex(char[] wordCharacter) {
+    static List<Integer>getUpperCharIndex(char[] wordCharacter) {
         List<Integer> upperCharIndex = new ArrayList<>();
         for (int i = 0; i < wordCharacter.length; i++) {
             int asciiChar = (int)wordCharacter[i];
-            if (asciiChar >= 97 & asciiChar <=122) {
+            if (asciiChar >= 65 & asciiChar <= 90) {
                 upperCharIndex.add(i);
             }
         }
@@ -35,6 +35,6 @@ public class Problem4 {
         for (int i : upperCharIndex) {
             wordCharacter[i] = Character.toUpperCase(wordCharacter[i]);
         }
-        return wordCharacter
+        return wordCharacter;
     }
 }
