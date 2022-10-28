@@ -13,21 +13,12 @@ public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
-        Map<String, List<String>> map = new LinkedHashMap<>();
-
-        for (List<String> form : forms) {
-            String nickname = form.get(NICKNAME);
-            List<String> list = new ArrayList<>();
-            for (int i = 0; i < nickname.length() - 1; i++) {
-                list.add(nickname.substring(i, i + 2));
-            }
-            map.put(form.get(EMAIL), list);
-        }
+        Map<String, List<String>> emailToSplitNickname = extractedSplitNickname(forms);
 
         int loopStartIdx = 1;
 
-        for (String email : map.keySet()) {
-            List<String> list = map.get(email);
+        for (String email : emailToSplitNickname.keySet()) {
+            List<String> list = emailToSplitNickname.get(email);
             for (int i = loopStartIdx; i < forms.size(); i++) {
                 for (String splitNickname : list) {
                     if (forms.get(i).get(NICKNAME).contains(splitNickname)) {
@@ -39,12 +30,26 @@ public class Problem6 {
             loopStartIdx++;
         }
 
-
         return answer.stream()
                 .distinct()
                 .sorted()
                 .collect(Collectors.toList());
 
+    }
+
+    private static Map<String, List<String>> extractedSplitNickname(List<List<String>> forms) {
+        Map<String, List<String>> emailToSplitNickname = new LinkedHashMap<>();
+
+        for (List<String> form : forms) {
+            String nickname = form.get(NICKNAME);
+            List<String> splitNicknames = new ArrayList<>();
+            for (int i = 0; i < nickname.length() - 1; i++) {
+                splitNicknames.add(nickname.substring(i, i + 2));
+            }
+            emailToSplitNickname.put(form.get(EMAIL), splitNicknames);
+        }
+
+        return emailToSplitNickname;
     }
 
 }
