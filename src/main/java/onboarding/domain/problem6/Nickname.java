@@ -1,5 +1,7 @@
 package onboarding.domain.problem6;
 
+import java.util.List;
+
 public class Nickname {
     final private String name;
     public Nickname(String name) {
