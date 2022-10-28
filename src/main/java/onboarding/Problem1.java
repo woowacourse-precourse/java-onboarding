@@ -43,4 +43,20 @@ class Problem1 {
         return pobi.get(0) + 1 != pobi.get(1) || crong.get(0) + 1 != crong.get(1);
     }
 
+    /**
+     *
+     * 각각의 자릿수를 더하는 메소드
+     * @param num
+     * @return
+     */
+    public static int addEachDigits(int num){
+        String strNum = Integer.toString(num);
+        int result = 0;
+        for(int i = 0 ; i < strNum.length(); i++){
+            result += Integer.parseInt(strNum.substring(i, i + 1));
+        }
+
+        return result;
+    }
+
 }
