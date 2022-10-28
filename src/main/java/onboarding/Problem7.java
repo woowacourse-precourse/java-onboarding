@@ -28,7 +28,10 @@ public class Problem7 {
         sortByScoreAndName(recommendationList);
 
         List<String> answer = new ArrayList<>();
-        recommendationList.stream().limit(5).filter(list -> list.getValue() != 0).forEach(list -> answer.add(list.getKey()));
+        recommendationList.stream()
+                .limit(5)
+                .filter(list -> list.getValue() != 0)
+                .forEach(list -> answer.add(list.getKey()));
 
         return answer;
     }
