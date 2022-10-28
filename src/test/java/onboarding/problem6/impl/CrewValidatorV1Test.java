@@ -50,4 +50,24 @@ class CrewValidatorV1Test {
         assertThat(ret5).isEqualTo(false);
     }
 
+    @Test
+    public void isValidEmailTest() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        CrewValidatorV1 validator = new CrewValidatorV1();
+
+        Method method = validator.getClass().getDeclaredMethod("isValidEmail", String.class);
+        method.setAccessible(true);
+
+        boolean ret1 = (boolean) method.invoke(validator, "hello@email.com");
+        assertThat(ret1).isEqualTo(true);
+
+        boolean ret2 = (boolean) method.invoke(validator, "nogmail@gmail.com");
+        assertThat(ret2).isEqualTo(false);
+
+        boolean ret3 = (boolean) method.invoke(validator, "notemail");
+        assertThat(ret3).isEqualTo(false);
+
+        boolean ret4 = (boolean) method.invoke(validator, "noover20noover20noover20noover20noover20@email.com");
+        assertThat(ret4).isEqualTo(false);
+    }
+
 }
