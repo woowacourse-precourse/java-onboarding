@@ -7,7 +7,8 @@ public class Problem6 {
 
         Map<String, Integer> twoLetters = makeTwoLetters(forms);
 
-        return answer;
+
+        return getResult(forms, twoLetters.keySet());
     }
 
     static Map<String, Integer> makeTwoLetters(List<List<String>> forms){
@@ -40,5 +41,20 @@ public class Problem6 {
         }
 
         deleteKeys.stream().forEach( s -> map.remove(s));
+    }
+
+    static List<String> getResult(List<List<String>> forms, Set<String> set){
+        List<String> result = new ArrayList<>();
+
+        Iterator<String> it = set.iterator();
+        while (it.hasNext()) {
+            for (List<String> list : forms){
+                if (list.get(1).contains(it.next())) {
+                    result.add(list.get(0));
+                }
+            }
+        }
+        
+        return result;
     }
 }
