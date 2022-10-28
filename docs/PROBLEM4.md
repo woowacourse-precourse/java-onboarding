@@ -13,7 +13,7 @@
 - [x] FEATURE1. 문자 대소문자 및 알파벳 구별 함수
 - [x] FEATURE2. 청개구리 사전 대문자 변환 함수
 - [x] FEATURE3. 청개구리 사전 소문자 변환 함수
-- [ ] FEATURE4. 문자 변환 함수
+- [x] FEATURE4. 문자 변환 함수
 - [ ] FEATURE5. solution 함수
 - [ ] FEATURE6. 기능 요구 사항 예외처리
 

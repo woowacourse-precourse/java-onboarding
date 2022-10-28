@@ -6,6 +6,14 @@ public class Problem4 {
         return answer;
     }
 
+    public static char transformChar(char c) {
+        if (isUpper(c))
+            return transformUpper(c);
+        else if (isLower(c))
+            return transformLower(c);
+        return c;
+    }
+
     public static char transformUpper(char upperChar) {
         return (char) (155 - (int) upperChar);
     }
