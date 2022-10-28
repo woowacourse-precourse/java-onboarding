@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -32,7 +29,22 @@ public class Problem7 {
             hashMap.put(list.get(1), temp);
         }
 
-        
+        //각 id별로 점수를 저장할 TreeMap
+        Map<String, Integer> scoreMap = new TreeMap<>();
+
+        //user의 친구 목록에서 id를 하나씩 꺼내서
+        for(String f : hashMap.get(user)){
+            //해당 id의 친구 목록해서 user의 친구를 포함하고 있다면 +10점
+            for(String person : hashMap.keySet()){
+                if(hashMap.get(person).contains(f)){
+                    scoreMap.put(person, scoreMap.getOrDefault(person, 0)+10);
+                }
+            }
+        }
+
+
+
+
 
         List<String> answer = Collections.emptyList();
         return answer;
