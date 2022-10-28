@@ -26,5 +26,23 @@ public class Sns {
 			registeredUsers.get(userTwo.getName()).getFriends().add(userOne);
 		}
 	}
-	
+
+	/**
+	 * step0. 친구 목록을 통해 SNS에 가입한 사용자 리스트에 추가한다.
+	 * step1. 타임 라인 방문 기록을 이용해 SNS에 가입한 사용자 리스트에 추가한다.
+	 * step2. SNS에 가입한 사용자들의 친구 목록을 업데이트 해준다.
+	 *
+	 * @param friends
+	 * @param visitors
+	 */
+	public static void init(List<List<String>> friends, List<String> visitors) {
+		// step0
+		addUserFromRelation(friends);
+
+		//step1
+		addUserFromVisit(visitors);
+
+		//step2
+		addFriend(friends);
+	}
 }
