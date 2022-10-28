@@ -10,4 +10,11 @@ public class Problem2 {
         StringBuilder stringBuilder = new StringBuilder(crpytogram);
         return stringBuilder;
     }
+
+    private static boolean isDuplicate(StringBuilder cryptogram, int index) {
+        if (cryptogram.charAt(index) == cryptogram.charAt(index + 1)) {
+            return true;
+        }
+        return false;
+    }
 }
