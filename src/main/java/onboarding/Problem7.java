@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -34,4 +35,30 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
         return answer;
     }
+}
+
+class Friend{
+    String id;
+    int score;
+
+    public Friend(String id, int score){
+        this.id = checkId(id);
+        this.score = score;
+    }
+
+    private String checkId(String id) {
+        if (id.length() > 30 || id.length() < 1)
+            throw new IllegalArgumentException("user는 1이상 30이하여야합니다.");
+        return id;
+    }
+}
+
+class Friends{
+    List<Friend> friends;
+
+    public Friends(){
+        friends = new ArrayList<>();
+    }
+
+
 }
