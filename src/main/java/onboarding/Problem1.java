@@ -29,6 +29,15 @@ class Problem1 {
         return result;
     }
 
+    private static int multiplyAllNumbers(int number) {
+        int result = 1;
+        while (number > 0) {
+            result *= number % 10;
+            number /= 10;
+        }
+        return result;
+    }
+
     private static boolean validateLength(List<Integer> input) {
         if (input.size() != INPUT_SIZE) {
             return false;
