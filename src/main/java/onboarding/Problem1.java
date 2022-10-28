@@ -39,6 +39,14 @@ class Problem1 {
     private static void checkException(List<Integer> pobi, List<Integer> crong)
             throws RuntimeException {
 
+        if(pobi.get(0) < 1 || crong.get(0) < 1) {
+            throw new RuntimeException("페이지는 0보다 커야합니다.");
+        }
+        
+        if(pobi.get(1) > 400 || crong.get(1) > 400) {
+            throw new RuntimeException("페이지는 400보다 작아야합니다.");
+        }
+
         if(pobi.get(0)%2 != 1 || crong.get(0)%2 != 1) {
             throw new RuntimeException("왼쪽 페이지는 홀수만 입력 가능합니다.");
         }
