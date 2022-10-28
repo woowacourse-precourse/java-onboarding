@@ -1,6 +1,5 @@
 package onboarding;
 
-import java.util.List;
 import java.util.stream.Stream;
 
 /*
@@ -12,10 +11,16 @@ import java.util.stream.Stream;
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
+        StringNumSpliter stringNumSpliter = new StringNumSpliter();
+
+        for(int i = 1; i <= number ; i++) {
+            answer += clapCounter(stringNumSpliter.splitNum(i));
+        }
+
         return answer;
     }
 
-    public int clapCounter(int[] numToken) {
+    public static int clapCounter(int[] numToken) {
         int count = 0;
 
         for(int num : numToken){
@@ -40,7 +45,7 @@ class StringNumSpliter {
         return Stream.of(makeStringArr(num)).mapToInt(Integer::parseInt).toArray();
     }
 
-    public String[] makeStringArr(int num){
+    private String[] makeStringArr(int num){
         return String.valueOf(num).split("");
     }
 }
