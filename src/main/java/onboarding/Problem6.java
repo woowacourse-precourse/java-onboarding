@@ -26,6 +26,11 @@ public class Problem6 {
         }
         System.out.println("중복체크"+checkDuplicateName);
 //seprateName에서 중복값이 존재하는 경우에만 checkDuplicateName에 담음. 블록커 : ==연산이 적용되지않고 Objects.equals로 변경하여 비교해야함
+        HashSet<String> hashSet = new HashSet<>(checkDuplicateName);
+        System.out.println(hashSet);
+//HashSet을 이용한 중복제거
+
+
         List<String> answer = List.of("answer");
         return answer;
     }
