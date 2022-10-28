@@ -1,12 +1,12 @@
 package onboarding;
 
 import java.util.List;
-import onboarding.problem6.CrewNicknameChecker;
+import onboarding.problem6.CrewInfo;
 
 public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
-        CrewNicknameChecker checker = new CrewNicknameChecker(forms);
+        CrewInfo checker = new CrewInfo(forms);
 
         return checker.calculateDuplicateCrews();
     }
