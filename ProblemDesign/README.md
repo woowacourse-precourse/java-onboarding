@@ -140,3 +140,59 @@ void compare3()
     assertThat(Problem1.compare(pobi,crong)).isEqualTo(result);
 }
 ~~~
+---
+##5. Exception
+~~~java
+/**
+ * 5. 제한사항 처리하기
+ * 1) pobi와 crong의 길이는 2이다.
+ * 2) pobi와 crong에는 [왼쪽 페이지 번호, 오른쪽 페이지 번호]가 순서대로 들어있다.
+ * 3) 입력 범위는 1~400
+ *
+ * @param pobi pobi에 제한 사항을 처리해준다
+ * @param crong crong에 제한 사항을 처리해준다
+
+ */
+public static void exception(List<Integer> pobi, List<Integer> crong) throws Exception {
+     /*
+        ex1) 23, 24 => 23 - 24 = -1 * -1 = 정상
+        ex2) 24, 23 => 24 - 23 = 1 * -1 = 비정상
+        ex3) 23, 25 => 23 - 25 = -2 *- 1  = 비정상
+        그 외 사항도 처리.
+     */
+    if(pobi.size()>=3 || crong.size()>=3) throw new InputException("지정하지 않은 범위에 값이 입력되었습니다");
+    else if((pobi.get(0)-pobi.get(1))*-1!=1||(crong.get(0)-crong.get(1))*-1!=1) throw new PageSortException("연속되지 않은 페이지입니다");
+    else if(pobi.get(0)<=0||pobi.get(0)>=401||pobi.get(1)<=0||pobi.get(1)>=401||
+            crong.get(0)<=0||crong.get(0)>=401||crong.get(1)<=0||crong.get(1)>=401) throw new PageException("페이지의 범위가 아닙니다");
+
+}
+~~~
+###5.1 정의한 Exception
+~~~java
+/**
+ * 입력값의 길이가 2이상인 예외
+ */
+public class InputException extends Exception {
+    public InputException(String message) {
+        super(message);
+    }
+}
+
+/**
+ * 페이지가 1~400이 아닌경우
+ */
+public class PageException extends Exception {
+    public PageException(String message) {
+        super(message);
+    }
+}
+
+/**
+ * 페이지가 연속적인 범위가 아닌경우
+ */
+public class PageSortException extends Exception{
+    public PageSortException(String message) {
+        super(message);
+    }
+}
+~~~

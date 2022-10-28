@@ -1,5 +1,9 @@
 package onboarding;
 
+import Excption.InputException;
+import Excption.PageException;
+import Excption.PageSortException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,7 +15,7 @@ class Problem1 {
         return answer;
     }
 
-    /***
+    /**
      *  1. 들어온 리스트들을 잘라서 더하는 sum method
      *
      * @param human 페이지 리스트
@@ -26,7 +30,7 @@ class Problem1 {
         return sumList;
     }
 
-    /***
+    /**
      * 2. 들어온 리스트들을 잘라서 곱하는 mul method
      *
      * @param human 페이지 리스트
@@ -40,7 +44,7 @@ class Problem1 {
         sumList.add(Stream.of(String.valueOf(human.get(1)).split("")).mapToInt(Integer::parseInt).reduce(1,(a,b)-> a*b));
         return sumList;
     }
-    /***
+    /**
      * 3. sum과 mul에서 받은 리스트중에 가장 큰 값을 찾는 max method
      *
      * @param sumList sum을 한 리스트
@@ -54,7 +58,7 @@ class Problem1 {
         return maxAnswer;
     }
 
-    /***
+    /**
      * 4. pobi와 crong을 비교해주는 method
      *
      * @param pobi  max에서 받은 pobi에서 가장 큰 값
@@ -67,5 +71,27 @@ class Problem1 {
         return answer;
     }
 
+    /**
+     * 5. 제한사항 처리하기
+     * 1) pobi와 crong의 길이는 2이다.
+     * 2) pobi와 crong에는 [왼쪽 페이지 번호, 오른쪽 페이지 번호]가 순서대로 들어있다.
+     * 3) 입력 범위는 1~400
+     *
+     * @param pobi pobi에 제한 사항을 처리해준다
+     * @param crong crong에 제한 사항을 처리해준다
 
+     */
+    public static void exception(List<Integer> pobi, List<Integer> crong) throws Exception {
+         /*
+            ex1) 23, 24 => 23 - 24 = -1 * -1 = 정상
+            ex2) 24, 23 => 24 - 23 = 1 * -1 = 비정상
+            ex3) 23, 25 => 23 - 25 = -2 *- 1  = 비정상
+            그 외 사항도 처리.
+         */
+        if(pobi.size()>=3 || crong.size()>=3) throw new InputException("지정하지 않은 범위에 값이 입력되었습니다");
+        else if((pobi.get(0)-pobi.get(1))*-1!=1||(crong.get(0)-crong.get(1))*-1!=1) throw new PageSortException("연속되지 않은 페이지입니다");
+        else if(pobi.get(0)<=0||pobi.get(0)>=401||pobi.get(1)<=0||pobi.get(1)>=401||
+                crong.get(0)<=0||crong.get(0)>=401||crong.get(1)<=0||crong.get(1)>=401) throw new PageException("페이지의 범위가 아닙니다");
+
+    }
 }
