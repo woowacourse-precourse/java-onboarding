@@ -27,6 +27,19 @@ public class Problem7 {
 
     private static List<String> findMyFriends(String user, List<List<String>> friends) {
         List<String> friendsList = new ArrayList<>();
+
+        for(List<String> list : friends) {
+            if(list.get(0).equals(user)) {
+                friendsList.add(list.get(1));
+
+                continue;
+            }
+
+            if(list.get(1).equals(user)) {
+                friendsList.add(list.get(0));
+            }
+        }
+
         return friendsList;
     }
 
@@ -35,7 +48,7 @@ public class Problem7 {
         return stepFriendsList;
     }
 
-    private static List<Integer> cntScore(String user,List<List<String>>friends, List<String> visitors, List<String> stepFriendsList) {
+    private static List<Integer> cntScore(String user, List<List<String>>friends, List<String> visitors, List<String> stepFriendsList) {
         List<Integer> scr = new ArrayList<>();
         return scr;
     }
