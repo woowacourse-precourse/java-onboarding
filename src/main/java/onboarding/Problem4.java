@@ -10,7 +10,7 @@ public class Problem4 {
     public static String solution(String word) {
         String answer = "";
         Map<Character, Character> map = new HashMap<>();
-        for(int i = 0; i <= 26; i++){
+        for(int i = 0; i < 26; i++){
             map.put( (char)('a'+i), (char)('z'-i)); //개구리 사전을 만든다. 단 소문자와 대문자 둘다 만들어준다.
             map.put((char)('A'+i), (char)('Z'-i));
         }
