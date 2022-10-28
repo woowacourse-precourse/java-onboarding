@@ -92,6 +92,22 @@ public class Problem7 {
         }
     }
 
+    /**
+     * 6. 이미 친구인 사이 삭제
+     * @param answer : 추천인 5명 목록
+     * @param userFriends : user 친구 목록
+     */
+    static void deleteAlreadyFriend(List<String> answer, List<String> userFriends){
+        for (String userFriend : userFriends) {
+            for (int j = 0; j < answer.size(); j++) {
+                if (userFriend.equals(answer.get(j))) {
+                    answer.remove(j);
+                    j--;
+                }
+            }
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
