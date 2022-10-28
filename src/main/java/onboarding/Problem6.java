@@ -17,6 +17,7 @@ public class Problem6 {
         for(int i=0;i<forms.size();i++){
             putAllSubstringInHashMap(forms.get(i),hashMap);
         }
+        findRestrictedUser(answer,hashMap);
         return answer;
     }
 
@@ -31,6 +32,14 @@ public class Problem6 {
                     hashMap.put(substr,list);
                 }
                 hashMap.get(substr).add(email);
+            }
+        }
+    }
+
+    public static void findRestrictedUser(List<String> answer, HashMap<String,List<String>> hashMap){
+        for(String key : hashMap.keySet()){
+            if(hashMap.get(key).size()>=2){
+                answer.addAll(hashMap.get(key));
             }
         }
     }
