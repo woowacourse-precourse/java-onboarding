@@ -277,6 +277,7 @@ class ApplicationTest {
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
 
+        @Test
         void nickname_not_korean_exception() {
             List<List<String>> forms = List.of(
                     List.of("jm@email.com", "j엠"),
