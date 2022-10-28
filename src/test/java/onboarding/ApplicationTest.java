@@ -125,6 +125,44 @@ class ApplicationTest {
             String result = "bna";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
+
+        @Test
+        @DisplayName("비정상적인 입력값 - 문자열 길이가 최대치를 초과하는 경우 예외 발생")
+        void case4() {
+            // given
+            String cryptogram = "aaaaaaaaaa".repeat(101);
+
+            assertThat(cryptogram.length())
+                    .isGreaterThan(1000);
+
+            // when && then
+            assertThatThrownBy(() -> Problem2.solution(cryptogram))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(String.format(Problem2.INVALID_STRING_LENGTH_MASSAGE_FORMAT, 1, 1000));
+        }
+
+        @Test
+        @DisplayName("비정상적인 입력값 - 문자열이 빈 경우 예외 발생")
+        void case5() {
+            // given
+            String cryptogram = "";
+
+            // when && then
+            assertThatThrownBy(() -> Problem2.solution(cryptogram))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(String.format(Problem2.INVALID_STRING_LENGTH_MASSAGE_FORMAT, 1, 1000));
+        }
+
+        @Test
+        @DisplayName("문자열 사이에 띄어쓰기가 있으면 띄어쓰기 제거 후 정상작동")
+        void case6() {
+            // given
+            String cryptogram = "b r  o w o a  no  om   mn  a o n";
+            String result = "brown";
+
+            // when & then
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
     }
 
     @Nested
