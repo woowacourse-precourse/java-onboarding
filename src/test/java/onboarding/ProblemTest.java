@@ -159,9 +159,9 @@ public class ProblemTest {
 
 		@Test
 		public void testCase(){
-			String[] cryptograms = {"test", "abbbd", "nhdddjjh", "woowacourse"};
-			String[] result = {"test", "ad", "n", "acourse"};
-			for(int i=0;i<4;i++)
+			String[] cryptograms = {"abbbd", "nhhhj","nhdddjjh", "woowacourse", "test"};
+			String[] result = {"ad", "nj","n", "acourse", "test"};
+			for(int i=0;i<cryptograms.length;i++)
 				Assertions.assertThat(Problem2.solution(cryptograms[i]))
 					.isEqualTo(result[i]);
 		}
