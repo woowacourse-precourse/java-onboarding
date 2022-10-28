@@ -18,6 +18,8 @@ class Problem1 {
         int right = list.get(1);
 
         checkPages(left,right);
+        checkPageRange(left);
+        checkPageRange(right);
         if (isEven(left)&&isOdd(right)){
 
         }else {
@@ -42,4 +44,7 @@ class Problem1 {
         else return false;
     }
 
+    public static void checkPageRange(int page) throws Exception{
+        if(page<1||page>400) throw new Exception("페이지 범위 초과");
+    }
 }
