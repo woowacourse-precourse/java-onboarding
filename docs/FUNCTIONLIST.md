@@ -14,9 +14,10 @@
 ## Problem2
 <details>
 <summary><b>기능 목록</b></summary>
-<div markdown="1"> 
+<div markdown="1">
 
-- `solution(String cryptogram)` : 임의의 문자열 cryptogram이 매개변수로 주어질 때, 연속하는 중복 문자들을 삭제한 결과를 반환한다.
+- `String characterStackToString(Stack<Character> stack)`: character형 stack을 string으로 변환해 반환한다.
+- `solution(String cryptogram)`: 임의의 문자열 cryptogram이 매개변수로 주어질 때, 연속하는 중복 문자들을 삭제한 결과를 반환한다.
 </div>
 </details>
 
@@ -25,8 +26,8 @@
 <summary><b>기능 목록</b></summary>
 <div markdown="1">
 
-- `solution(int number)` : 숫자 number가 매개변수로 주어질 때, 1부터 손뼉을 몇번 쳐야 하는지 횟수를 반환한다.
-- `isThreeSixNine(int number)` : 숫자 number가 매개변수로 주어질 때, 1의 자리(10으로 나눈 나머지)가 3, 6, 9 중 하나 이면 true를, 그렇지 않으면 false를 반환한다.
+- `solution(int number)`: 숫자 number가 매개변수로 주어질 때, 1부터 손뼉을 몇번 쳐야 하는지 횟수를 반환한다.
+- `isThreeSixNine(int number)`: 숫자 number가 매개변수로 주어질 때, 1의 자리(10으로 나눈 나머지)가 3, 6, 9 중 하나 이면 true를, 그렇지 않으면 false를 반환한다.
 </div>
 </details>
 
@@ -35,8 +36,8 @@
 <summary><b>기능 목록</b></summary>
 <div markdown="1">
 
-- `solution(String word)` : 엄마 말씀 word가 매개변수로 주어질 때, 청개구리 사전을 참고해 반대로 반환하여 return 한다.
-- `convertWithDictionary(char letter)` : char 변수 letter가 매개변수로 주어질 때, 청개구리 사전을 참고해 반대로 반환한 char 값을 반환한다.
+- `solution(String word)`: 엄마 말씀 word가 매개변수로 주어질 때, 청개구리 사전을 참고해 반대로 반환하여 return 한다.
+- `convertWithDictionary(char letter)`: char 변수 letter가 매개변수로 주어질 때, 청개구리 사전을 참고해 반대로 반환한 char 값을 반환한다.
 </div>
 </details>
 
