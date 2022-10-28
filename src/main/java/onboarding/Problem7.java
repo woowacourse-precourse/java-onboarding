@@ -6,9 +6,19 @@ public class Problem7 {
     private static HashMap<Integer, Integer> weight = new HashMap<>();
     private static HashMap<String, Integer> uniqueIDs = new HashMap<>();
     private static int forID = 0;
+    private static int FRIEND_WEIGHT = 10;
+    private static int VISITOR_WEIGHT = 1;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
+    }
+    public static void addWeight(List<String> list, int WEIGHT) {
+        for (int i = 0; i < list.size(); i++) {
+            String user = list.get(i);
+            int updatedValue = weight.get(user) + WEIGHT;
+            int uniqueID = uniqueIDs.get(user);
+            weight.put(uniqueID, updatedValue);
+        }
     }
     public static List<String> getFriendsList(List<List<String>> friends, String user) {
         List<String> friendsList = Collections.emptyList();
