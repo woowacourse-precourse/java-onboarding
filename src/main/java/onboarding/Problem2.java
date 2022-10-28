@@ -8,7 +8,12 @@ public class Problem2 {
             duplicate: {
                 /* 문자열을 왼쪽부터 읽는다 */
                 for (int i=0; i<cryptogram.length() - 1; i++) {
-                    ;
+                    char currentCh = cryptogram.charAt(i);
+                    char nextCh = cryptogram.charAt(i + 1);
+                    /* 연속되는 문자가 있는지 체크한다 */
+                    if (currentCh == nextCh) {
+                        ;
+                    }
                 }
             }
         }
