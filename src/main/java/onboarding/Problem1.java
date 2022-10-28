@@ -20,6 +20,12 @@ class Problem1 {
         return answer;
     }
 
+    private static int getMyScore(List<Integer> player) {
+        int result1 = getMaxScore(addAllNumbers(player.get(0)), multiplyAllNumbers(player.get(0)));
+        int result2 = getMaxScore(addAllNumbers(player.get(0)), multiplyAllNumbers(player.get(0)));
+        return getMaxScore(result1, result2);
+    }
+
     private static int addAllNumbers(int number) {
         int result = 0;
         while (number > 0) {
