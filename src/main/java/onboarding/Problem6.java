@@ -42,6 +42,11 @@ public class Problem6 {
                 answer.remove(answer.size() - 1);
             }
         }
+
+        /* 오름차순으로 정렬하고 중복은 제거하는 기능 */
+        TreeSet<String> ts = new TreeSet<>(answer);
+        answer = new ArrayList<>(ts);
+
         return answer;
     }
 }
