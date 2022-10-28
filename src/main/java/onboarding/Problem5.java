@@ -27,9 +27,12 @@ public class Problem5 {
 
 class Bank {
     HashSet<Integer> cashList;
+    List<Integer> sortedCashList;
 
     public Bank(List<Integer> cashList) {
         this.cashList = new HashSet<>(cashList);
+        this.sortedCashList = cashList;
+        Collections.sort(this.sortedCashList, (a,b) -> b-a);
     }
 
     public boolean isCashExisted (int cash) {
