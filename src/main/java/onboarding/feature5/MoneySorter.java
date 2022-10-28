@@ -17,16 +17,23 @@ public class MoneySorter {
         }
     }
 
-    public void increaseNumberOfBill(List<Integer> currentBillsSorted, Integer increasement) {
+    public List<Integer> calculateNumberOfBill() {
         for (int i = 0; i < currentBillsSorted.size(); i++) {
             Integer currentNumberOfBill = currentBillsSorted.get(i);
+            Integer increasement = getNumberOfBillFromMoney(CURRENCY_UNIT.get(i));
             currentNumberOfBill += increasement;
             currentBillsSorted.set(i, currentNumberOfBill);
         }
+        return currentBillsSorted;
     }
 
-    public Integer calculateNumberOfBillFromMoney(Integer currencyUnit, int money) {
-        Integer numberOfBill = money / currencyUnit;
+    public Integer getNumberOfBillFromMoney(Integer currencyUnit) {
+        Integer numberOfBill = 0;
+        if (money >= currencyUnit) {
+            Integer quotient = money / currencyUnit;
+            money -= quotient * currencyUnit;
+            return numberOfBill += quotient;
+        }
         return numberOfBill;
     }
 }
