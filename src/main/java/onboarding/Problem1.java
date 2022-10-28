@@ -13,18 +13,7 @@ class Problem1 {
 		if (checkIrregularPages(pobi) || checkIrregularPages(crong)) {
 			return ERROR;
 		}
-
-		Integer pobiMaxPage = pobi.stream()
-				.map(Problem1::getMaxPage)
-				.max(Integer::compareTo)
-				.orElseThrow(NoSuchElementException::new);
-
-		Integer crongMaxPage = crong.stream()
-				.map(Problem1::getMaxPage)
-				.max(Integer::compareTo)
-				.orElseThrow(NoSuchElementException::new);
-
-		return compareMaxPage(pobiMaxPage, crongMaxPage);
+		return pickWinner(getMaxPage(pobi), getMaxPage(crong));
 	}
 
 	private static boolean checkIrregularPages(List<Integer> pages) {
@@ -34,7 +23,14 @@ class Problem1 {
 		return pages.get(0) - pages.get(1) != -1;
 	}
 
-	private static int getMaxPage(Integer page) {
+	private static Integer getMaxPage(List<Integer> pages) {
+		return pages.stream()
+				.map(Problem1::compareMaxPage)
+				.max(Integer::compareTo)
+				.orElseThrow(NoSuchElementException::new);
+	}
+
+	private static int compareMaxPage(Integer page) {
 		int sum = 0;
 		int mul = 1;
 		int temp;
@@ -47,7 +43,7 @@ class Problem1 {
 		return Math.max(sum, mul);
 	}
 
-	private static int compareMaxPage(Integer pobiPage, Integer crongPage) {
+	private static int pickWinner(Integer pobiPage, Integer crongPage) {
 		if (pobiPage > crongPage) {
 			return POBI_WIN;
 		}
