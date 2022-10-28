@@ -8,6 +8,34 @@ class Problem1 {
         
         return answer;
     }
+    public static int getScore(int leftPage, int rightPage) {
+    	
+    	int leftPageScore = Math.max(sumAllNum(leftPage), multiAllNum(leftPage));
+    	int rightPageScore = Math.max(sumAllNum(rightPage), multiAllNum(rightPage));
+    	
+    	if(leftPageScore < rightPageScore) {
+    		return rightPageScore;
+    	}
+    	return leftPageScore;
+    }
+    
+    public static int sumAllNum(int page) {
+    	String p = page + "";
+    	int totalSum = 0;
+    	for(int i=0; i<p.length(); i++) {
+    		totalSum += p.charAt(i) - '0';
+    	}
+    	return totalSum;
+    }
+    public static int multiAllNum(int page) {
+    	String p = page + "";
+    	int totalMulti = 1;
+    	for(int i=0; i<p.length(); i++) {
+    		totalMulti *= p.charAt(i) - '0';
+    	}
+    	return totalMulti;
+    }
+    
     public static boolean isCorrectPage(Integer leftPage, Integer rightPage) {
     	
     	if(isNullPage(leftPage, rightPage)) {
