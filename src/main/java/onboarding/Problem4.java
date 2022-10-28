@@ -18,19 +18,11 @@ public class Problem4 {
     }
 
     public static boolean isLowerCase(char target){
-        boolean result = false;
-        if(target >= 'a' && target <= 'z'){
-            result = true;
-        }
-        return result;
+        return (target >= 'a' && target <= 'z');
     }
 
     public static boolean isUpperCase(char target){
-        boolean result = false;
-        if(target >= 'A' && target <= 'Z'){
-            result = true;
-        }
-        return result;
+        return (target >= 'A' && target <= 'Z');
     }
 
     public static String solution(String word) {
