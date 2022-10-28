@@ -17,5 +17,14 @@ public class Sns {
 	private static void addUserFromVisit(List<String> visitors) {
 		visitors.stream().forEach(userName -> registeredUsers.putIfAbsent(userName, new User(userName)));
 	}
+
+	private static void addFriend(List<List<String>> friends) {
+		for (List<String> friend : friends) {
+			User userOne = registeredUsers.get(friend.get(0));
+			User userTwo = registeredUsers.get(friend.get(1));
+			registeredUsers.get(userOne.getName()).getFriends().add(userTwo);
+			registeredUsers.get(userTwo.getName()).getFriends().add(userOne);
+		}
+	}
 	
 }
