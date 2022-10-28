@@ -17,31 +17,37 @@ import java.util.stream.Collectors;
 
 public class CrewNicknameChecker {
 
-    private static Map<String, String> partOfNicknameMap = new HashMap<>();
-    private static Set<String> duplicateNicknameCrewSet = new HashSet<>();
+    private final Map<String, String> partOfNicknameMap;
+    private final Set<String> duplicateNicknameCrewSet;
+    private final List<Crew> crews;
 
-    public static List<String> calculateDuplicateCrews(List<List<String>> forms) {
-        partOfNicknameMap.clear();
-        duplicateNicknameCrewSet.clear();
+    public CrewNicknameChecker(List<List<String>> forms) {
+        this.partOfNicknameMap = new HashMap<>();
+        this.duplicateNicknameCrewSet = new HashSet<>();
+        this.crews = initCrews(forms);
+    }
 
-        List<Crew> crews = forms.stream()
+    private List<Crew> initCrews(List<List<String>> forms) {
+        return forms.stream()
             .map(crew -> new Crew(crew.get(FORM_EMAIL_INDEX), crew.get(FORM_NICKNAME_INDEX)))
             .collect(Collectors.toList());
+    }
 
+    public List<String> calculateDuplicateCrews() {
         for (Crew crew : crews) {
             processDuplicateCrewNickname(crew);
         }
         return getAscSortedCrewEmails();
     }
 
-    private static List<String> getAscSortedCrewEmails() {
+    private List<String> getAscSortedCrewEmails() {
         List<String> duplicateCrewEmail = new ArrayList<>(duplicateNicknameCrewSet);
 
         Collections.sort(duplicateCrewEmail);
         return duplicateCrewEmail;
     }
 
-    private static void processDuplicateCrewNickname(Crew crew) {
+    private void processDuplicateCrewNickname(Crew crew) {
         String nickname = crew.getNickname();
 
         if (validateNickname(nickname)) {
@@ -58,17 +64,16 @@ public class CrewNicknameChecker {
         }
     }
 
-    private static void addDuplicateCrew(Crew crew, String email) {
+    private void addDuplicateCrew(Crew crew, String email) {
         duplicateNicknameCrewSet.add(email);
         duplicateNicknameCrewSet.add(crew.getEmail());
     }
 
-    private static boolean validateNickname(String nickname) {
+    private boolean validateNickname(String nickname) {
         return nickname.length() < NICKNAME_MINIMUM_LENGTH;
     }
 
-    private static String calculatePartOfNickname(String nickname, int index) {
-        return nickname.substring(index - PART_OF_NICKNAME_RANGE,
-            index + PART_OF_NICKNAME_RANGE);
+    private String calculatePartOfNickname(String nickname, int index) {
+        return nickname.substring(index - PART_OF_NICKNAME_RANGE, index + PART_OF_NICKNAME_RANGE);
     }
 }
