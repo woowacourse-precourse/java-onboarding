@@ -41,9 +41,9 @@ public class Problem6 {
         ArrayList<String> item2 = new ArrayList<>();
         boolean flag = false;
 
-        for(int i=0; i<s1.length()-1; i++)
+        for(int i=0; i<s1.length(); i++)
             item1.add(s1.substring(i, i+1));
-        for(int i=0; i<s2.length()-1; i++)
+        for(int i=0; i<s2.length(); i++)
             item2.add(s2.substring(i,i+1));
 
         for(int i=0; i<item1.size()-1; i++) {
