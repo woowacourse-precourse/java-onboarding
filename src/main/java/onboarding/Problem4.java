@@ -40,5 +40,11 @@ public class Problem4 {
         char newChar = (char)conversion;
         return newChar;
     }
+    private static char changeLowerCase(char currentChar){
+        int lowerCaseConstant = 'a' + 'z';
+        int conversion = lowerCaseConstant - currentChar;
+        char newChar = (char)conversion;
+        return newChar;
+    }
 
 }
