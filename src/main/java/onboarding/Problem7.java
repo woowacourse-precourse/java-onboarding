@@ -17,7 +17,9 @@ public class Problem7 {
     private static void findVisitor(List<String> visitors) {
         for (String visitor : visitors) {
             if(sameFriendWithUser.containsKey(visitor)){
+                sameFriendWithUser.replace(visitor, sameFriendWithUser.get(visitor)+1);
             }else{
+                sameFriendWithUser.put(visitor,1);
             }
         }
     }
