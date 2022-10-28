@@ -18,7 +18,7 @@
 ## 문제 2번
 - [x] 문자열의 연속하는 문자를 제거해 반환하는 메소드
 - [x] 연속하는 문자의 존재여부를 체크해주는 flag
-- [x] 예외 사항을 체크해줄 Problem2ValidateCheck class
+- [x] 예외 사항을 체크해줄 Problem2ValidateChecker class
     - [x] 문자열의 길이가 0이거나, 1000 초과인 경우
     - [x] 문자열에 대문자가 포함되어 있는 경우
     - [x] 입력된 문자열이 null인 경우
@@ -26,22 +26,28 @@
 ## 문제 3
 - [x] 숫자에 3,6,9가 포함되어 있는 개수를 반환하는 메소드
 - [x] 1~10000 까지의 3,6,9 결과를 저장해줄 배열 선언
-- [x] 예외 사항을 체크해줄 Problem3ValidateCheck class
+- [x] 예외 사항을 체크해줄 Problem3ValidateChecker class
   - [x] 숫자가 0 이하이거나, 10,000 초과인 경우
 
 ## 문제 4번
 - [x] 청개구리 사전을 초기화 해주는 메소드
 - [x] 문자열을 청개구리 사전에 맞게 번역하는 메소드
-- [x] 예외 사항을 체크해줄 Problem4ValidateCheck class
+- [x] 예외 사항을 체크해줄 Problem4ValidateChecker class
   - [x] 문자열의 길이가 0이거나, 1,000 초과인 경우 
   - [x] 입력된 문자열이 null인 경우
 
 ## 문제 5번
-- [ ] 주어진 money를 화폐로 변환해 리스트에 담는 메소드.
-- [ ] 예외 사항을 체크해줄 Problem5ValidateCheck class
-  - [ ] money가 0이거나, 1,000,000 초과인 경우
+- [x] 주어진 money를 화폐로 변환해 리스트에 담는 메소드.
+- [x] 예외 사항을 체크해줄 Problem5ValidateChecker class
+  - [x] money가 0이거나, 1,000,000 초과인 경우
 
 ## 문제 6번
-- 테스트
+- [ ] map을 하나 선언해 닉네임을 key, 이메일을 value로 저장
+- [ ] 닉네임만을 저장하는 List 하나 생성
+- [ ] 닉네임 중에 같은 글자가 연속적으로 포함되는 닉네임을 리스트로 반환
+- [ ] 같은 글자가 연속적으로 포함 되는 닉네임을 작성한 지원자의 이메일 목록 리스트로 반환
+- [ ] 이메일 목록 리스트를 오름차순으로 정렬, 중복 제거 후 반환
+- [ ] 예외 사항을 체크해줄 Problem6ValidateChecker class
+  - [ ] etc...
 ## 문제 7번
 - 테스트
