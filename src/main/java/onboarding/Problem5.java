@@ -9,6 +9,8 @@ public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> answer = new ArrayList<>();
 
+        validateCase(money);
+
             int fTThousand = money / 50000;
             answer.add(fTThousand);
             int TThousand = (money % 50000 ) / 10000;
@@ -29,5 +31,9 @@ public class Problem5 {
             answer.add(one);
 
         return answer;
+    }
+
+    public static void validateCase(int money){
+        if( money < 1 || money > 1000000) throw new RuntimeException("돈의 금액이 범위에 적합하지 않습니다.");
     }
 }
