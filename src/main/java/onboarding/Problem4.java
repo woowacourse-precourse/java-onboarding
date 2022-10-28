@@ -11,6 +11,11 @@ public class Problem4 {
         String answer = "";
         return answer;
     }
+    // public static boolean Lowcase(String word){
+    //     for(int i = 0; i < answer.length();i++){
+    //         if('A' <= answer.charAt(i) && answer.charAt(i) <= 'Z'){
+    //     return false;
+    // }
     public static void main(String[] args){
         String answer = "I LOVE YOU";
         // char[] answer_arry = answer.toCharArray();
@@ -22,9 +27,6 @@ public class Problem4 {
             else{
                 System.out.print(answer.charAt(i));
             }
-    }
-        // for(int j = 0; j < answer_arry.length;j++){
-        //     System.out.print(answer_arry[j]);
-        // }
+        }
     }
 }

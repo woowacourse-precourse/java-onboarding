@@ -11,10 +11,6 @@ package onboarding;
 public class Problem3 {
   public static int solution(int number) {
         int answer = 0;
-        return answer;
-    }
-    public static void main(String[] args){
-        int number = 10000;
         int count = 0;
 
         for(int i = 1; i <= number; i++){
@@ -24,6 +20,7 @@ public class Problem3 {
                 if(number_char.charAt(k) == '3' || number_char.charAt(k) == '6' || number_char.charAt(k) == '9') count++;
             }
         }
-        System.out.print(count);
+        answer = count;
+        return answer;
     }
 }

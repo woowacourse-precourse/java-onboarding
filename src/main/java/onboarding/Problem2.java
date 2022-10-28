@@ -12,24 +12,9 @@ import java.util.StringTokenizer;
  * 2, 중복 문자 찾기
  */
 public class Problem2 {
-    static String cryptogram = "browoanoommnaon";
-    static String alphbet = "abcdefghijklmnopqrstuvwxyz";
-    
+    // public static String cryptogram = "browoanoommnaon";
     public static String solution(String cryptogram) {
         String answer = "answer";
-
-        StringtoList(cryptogram);
         return answer;
-    }
-    public static void StringtoList(String crcryptogram){
-        List<String> list = new LinkedList<>();
-        StringTokenizer str = new StringTokenizer(cryptogram,alphbet,true);
-        while (str.hasMoreTokens()){
-            list.add(str.nextToken());
-        }
-    }
-    
-    
-    public static void main(String[] args){
     }
 }
