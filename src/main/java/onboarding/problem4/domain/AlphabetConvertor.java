@@ -18,11 +18,11 @@ public class AlphabetConvertor {
     
     static {
         IntStream.rangeClosed(MIN_NUMBER_OF_UPPER_CASE_ASCII_NUMBERS, MAX_NUMBER_OF_UPPER_CASE_ASCII_NUMBERS)
-                .mapToObj(number -> (char) number)
+                .mapToObj(asciiNumber -> (char) asciiNumber)
                 .forEach(character -> ALPHABET_CONVERTOR.put(character, UpperCaseConvertStrategy::new));
         
         IntStream.rangeClosed(MIN_NUMBER_OF_LOWER_CASE_ASCII_NUMBERS, MAX_NUMBER_OF_LOWER_CASE_ASCII_NUMBERS)
-                .mapToObj(number -> (char) number)
+                .mapToObj(asciiNumber -> (char) asciiNumber)
                 .forEach(character -> ALPHABET_CONVERTOR.put(character, LowerCaseConvertStrategy::new));
     }
     
