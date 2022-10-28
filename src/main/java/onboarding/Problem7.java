@@ -36,6 +36,18 @@ public class Problem7 {
         for (String visitor : visitors) {
             scoreVisitorPoint(recommendPoint, visitor);
         }
+        //Step4. Map을 value 기준 오름차순 정렬 -> 점수가 같은 경우 이름순으로 정렬
+        List<Map.Entry<String, Integer>> recommendPointRank = new LinkedList<>(recommendPoint.entrySet());
+        recommendPointRank.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                if (o1.getValue() == o2.getValue()) {
+                    return o1.getKey().compareTo(o2.getKey());
+                } else {
+                    return o2.getValue() - o1.getValue();
+                }
+            }
+        });
 
         return answer;
     }
