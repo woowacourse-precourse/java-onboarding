@@ -7,7 +7,7 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (judgmentException(pobi, crong) == -1)
             return -1;
-        int answer = Integer.MAX_VALUE;
+        int answer;
         int pobiLeft, pobiRight, crongLeft, crongRight;
         pobiLeft = comparingNumbers(addedNumber(pobi.get(0)), multipliedNumbers(pobi.get(0)));
         pobiRight = comparingNumbers(addedNumber(pobi.get(1)), multipliedNumbers(pobi.get(1)));
