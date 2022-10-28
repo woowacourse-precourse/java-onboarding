@@ -15,15 +15,19 @@ public class Problem4 {
     private static String convertIntoBlueFrogWord(String word) {
         char[] letters = word.toCharArray();
         for (int i = 0; i < letters.length; i++) {
-            char letter = letters[i];
-            if (isLowerCase(letter)) {
-                letters[i] = convertLowerCaseIntoFrogLetter(letter);
-            }
-            if (isUpperCase(letter)) {
-                letters[i] = convertUpperCaseIntoFrogLetter(letter);
-            }
+            convertIntoBlueFrogLetter(letters, i);
         }
         return String.valueOf(letters);
+    }
+
+    private static void convertIntoBlueFrogLetter(char[] letters, int i) {
+        char letter = letters[i];
+        if (isLowerCase(letter)) {
+            letters[i] = convertLowerCaseIntoFrogLetter(letter);
+        }
+        if (isUpperCase(letter)) {
+            letters[i] = convertUpperCaseIntoFrogLetter(letter);
+        }
     }
 
     private static char convertUpperCaseIntoFrogLetter(char letter) {
