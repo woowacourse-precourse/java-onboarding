@@ -6,13 +6,14 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer;
         Set<String> getDuplicateEmail = new HashSet<>();
-        Map<String, Set<String>> allTraineeSplitNames = new HashMap<>();
+        Map<Integer, Set<String>> allTraineeSplitNames = new HashMap<>();
 
         getAllSplitNames(forms, allTraineeSplitNames);
 
-        for(List<String> trainee : forms){
+        for(int traineeId=0; traineeId<forms.size(); traineeId++){
+            List<String> trainee = forms.get(traineeId);
             String email = trainee.get(0);
-            if(isDuplicate(trainee, allTraineeSplitNames)){
+            if(isDuplicate(traineeId, trainee, allTraineeSplitNames)){
                 getDuplicateEmail.add(email);
             }
         }
@@ -21,14 +22,13 @@ public class Problem6 {
         return answer;
     }
 
-    public static boolean isDuplicate(List<String> trainee, Map<String, Set<String>> allTraineeSplitNames){
-        String email = trainee.get(0);
+    public static boolean isDuplicate(int traineeId, List<String> trainee, Map<Integer, Set<String>> allTraineeSplitNames){
         String name = trainee.get(1);
 
-        Set<String> allTraineeEmail = allTraineeSplitNames.keySet();
-        for(String traineeEmail : allTraineeEmail){
-            if(email.equals(traineeEmail)) continue;
-            Set<String> splitName = allTraineeSplitNames.get(traineeEmail);
+        Set<Integer> allTraineeIdx = allTraineeSplitNames.keySet();
+        for(Integer traineeIdx : allTraineeIdx){
+            if(traineeId == traineeIdx) continue;
+            Set<String> splitName = allTraineeSplitNames.get(traineeIdx);
             for(String word : splitName){
                 if(name.contains(word)) return true;
             }
@@ -36,12 +36,11 @@ public class Problem6 {
         return false;
     }
 
-    public static void getAllSplitNames(List<List<String>> forms, Map<String, Set<String>> allTraineeSplitNames){
-        for(List<String> trainee : forms){
-            String email = trainee.get(0);
-            String name = trainee.get(1);
+    public static void getAllSplitNames(List<List<String>> forms, Map<Integer, Set<String>> allTraineeSplitNames){
+        for(int traineeId=0; traineeId<forms.size(); traineeId++){
+            String name = forms.get(traineeId).get(1);
 
-            allTraineeSplitNames.put(email, getSplitName(name));
+            allTraineeSplitNames.put(traineeId, getSplitName(name));
         }
     }
 
