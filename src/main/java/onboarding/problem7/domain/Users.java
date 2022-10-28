@@ -50,10 +50,10 @@ public class Users {
         }
     }
     
-    public void addVisitScore(final List<String> visitors) {
+    public void addScoreOfVisit(final List<String> visitors) {
         visitors.stream()
                 .map(users::get)
-                .forEach(User::addVisitScore);
+                .forEach(User::addScoreOfVisit);
     }
     
     public List<String> recommendedFriends(String user) {

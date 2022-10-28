@@ -25,7 +25,7 @@ public class User implements Comparable<User> {
         userBasicInformation.addScoreOfNumberOfFriendsYouKnowTogether(numberOfFriendsYouKnowTogether);
     }
     
-    public void addVisitScore() {
+    public void addScoreOfVisit() {
         userBasicInformation.scoreIncrease();
     }
     

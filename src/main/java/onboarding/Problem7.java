@@ -10,7 +10,7 @@ public class Problem7 {
         
         users.addAllUserFriends(friends);
         users.addScoreOfNumberOfFriendsYouKnowTogether(user);
-        users.addVisitScore(visitors);
+        users.addScoreOfVisit(visitors);
     
         return users.recommendedFriends(user);
     }
