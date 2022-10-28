@@ -26,4 +26,8 @@ class Problem1 {
 
         return digitsNum;
     }
+
+    public static int add(List<Integer> page) {
+        return page.stream().mapToInt(Integer::intValue).sum();
+    }
 }
