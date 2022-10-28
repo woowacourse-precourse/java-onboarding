@@ -17,7 +17,8 @@ public class Problem2 {
                         while (j < cryptogram.length() && cryptogram.charAt(j) == currentCh) {
                             j++;
                         }
-
+                        /* 연속되는 구간을 빈 문자열로 교체한다 */
+                        cryptogram = cryptogram.replace(cryptogram.substring(i, j), "");
                     }
                 }
             }
