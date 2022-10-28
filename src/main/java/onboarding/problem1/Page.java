@@ -14,36 +14,23 @@ public class Page {
         this.page = page;
     }
 
-    public boolean isValidPage() {
+    public boolean isValidLeftPage() {
+        return isValidPage()
+            && page % 2 == 1;
+    }
+
+    public boolean isValidRightPage() {
+        return isValidPage()
+            && page % 2 == 0;
+    }
+
+    private boolean isValidPage() {
         return page >= FIRST_PAGE
             && page <= LAST_PAGE;
     }
 
-    public boolean isRightSidePairOf(final Page leftExpectedPage) {
-        return isRightPage()
-            && leftExpectedPage.isLeftPage()
-            && isAfter(leftExpectedPage)
-            && isConnectedTo(leftExpectedPage);
-    }
-
-    private boolean isRightPage() {
-        return page % 2 == 0;
-    }
-
-    private boolean isLeftPage() {
-        return page % 2 == 1;
-    }
-
-    private boolean isAfter(final Page targetPage) {
-        return page.compareTo(targetPage.getPage()) > 0;
-    }
-
-    private boolean isConnectedTo(final Page targetPage) {
-        return Math.abs(page - targetPage.getPage()) == 1;
-    }
-
-    private Integer getPage() {
-        return page;
+    public boolean isPlacedRightAfter(final Page leftExpectedPage) {
+        return page == leftExpectedPage.getPage() + 1;
     }
 
     public int findMaxValue() {
@@ -74,5 +61,9 @@ public class Page {
     private int calculateMultiplyOf(final List<Integer> digits) {
         return digits.stream()
             .reduce(1, (a, b) -> a * b);
+    }
+
+    private Integer getPage() {
+        return page;
     }
 }

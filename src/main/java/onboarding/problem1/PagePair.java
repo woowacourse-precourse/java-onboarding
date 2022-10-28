@@ -12,9 +12,9 @@ public class PagePair {
 
     public boolean isValidPair() {
 
-        return left.isValidPage()
-            && right.isValidPage()
-            && right.isRightSidePairOf(left);
+        return left.isValidLeftPage()
+            && right.isValidRightPage()
+            && right.isPlacedRightAfter(left);
     }
 
     public int findMaxPoint() {
