@@ -3,6 +3,7 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     private static void checkId(String id) {
@@ -34,8 +35,22 @@ public class Problem7 {
         visitors.forEach(Problem7::checkId);
     }
 
+    private static String getFriendId(List<String> friend, String user){
+        if(friend.indexOf(user)==0)
+            return friend.get(1);
+        return friend.get(0);
+    }
+
+    private static List<String> myFriends(String user, List<List<String>> friends){
+        return friends.stream()
+                .filter(x->x.contains(user))
+                .map(x->getFriendId(x,user))
+                .collect(Collectors.toList());
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         checkAll(user, friends, visitors);
+        List<String> myFriends = myFriends(user, friends);
 
         List<String> answer = Collections.emptyList();
         return answer;
