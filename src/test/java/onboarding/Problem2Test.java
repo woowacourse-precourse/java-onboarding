@@ -99,4 +99,18 @@ class Problem2Test {
         //then
         assertThat(result).isEqualTo(cryptogram);
     }
+
+    @Test
+    void case1() {
+        String cryptogram = "sadddaaaas";
+        String result = "sas";
+        assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+    }
+
+    @Test
+    void case2() {
+        String cryptogram = "baaaoat";
+        String result = "boat";
+        assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+    }
 }

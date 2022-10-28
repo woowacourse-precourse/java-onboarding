@@ -30,6 +30,8 @@ public class Problem2 {
             cryptogramIngredients = temp;
         }
 
+        answer = listToString(cryptogramIngredients);
+
         return answer;
     }
 
