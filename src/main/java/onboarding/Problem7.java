@@ -35,13 +35,21 @@ public class Problem7 {
             nowPeople.plusPoint(point*10);
             contacts.put(name, nowPeople);
         }
-//
-//        for (String visitor : visitors) {
-//            if (isFriends(visitor, contacts.get(user))) {
-//                continue;
-//            }
-//            allUserPoint.put(visitor, allUserPoint.getOrDefault(visitor, 0)+1);
-//        }
+
+        for (String visitor : visitors) {
+            if (isFriends(visitor, userFriends)) {
+                continue;
+            }
+            People newPeople;
+            if (contacts.get(visitor) == null){
+                newPeople = new People(visitor);
+
+            } else {
+                newPeople = contacts.get(visitor);
+            }
+            newPeople.plusPoint(1);
+            contacts.put(visitor, newPeople);
+        }
 
         List<String> answer = Collections.emptyList();
         return answer;
