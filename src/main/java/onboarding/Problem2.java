@@ -12,6 +12,7 @@ public class Problem2 {
         }
         return result;
     }
+
     public static boolean[] findRedundantPosition(String target){
         boolean[] isRedundant = new boolean[target.length()];
         for(int i = 0; i < isRedundant.length; i++){ //initialize array
@@ -29,16 +30,14 @@ public class Problem2 {
     }
 
     public static boolean existsRedundant(String target){
-        boolean result = false;
         for(int currentPosition = 0; currentPosition < target.length() - 1; currentPosition++) {
             int currentCharacter = target.charAt(currentPosition);
             int nextCharacter = target.charAt(currentPosition + 1);
             if (currentCharacter == nextCharacter) {
-                result = true;
-                return result;
+                return true;
             }
         }
-        return result;
+        return false;
     }
     public static String solution(String cryptogram) {
         String answer = "answer";
