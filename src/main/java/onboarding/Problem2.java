@@ -4,9 +4,12 @@ import java.util.Objects;
 import java.util.Stack;
 
 public class Problem2 {
+    static String result = "";
 
     public static String solution(String cryptogram) {
-        String result = "";
+        //제한사항 처리
+        cryptogram = cryptogram.toLowerCase();
+        validateCase(cryptogram);
 
         while(!cryptogram.isEmpty()){
             String[] cryptograms = cryptogram.split("");
@@ -31,5 +34,11 @@ public class Problem2 {
         }
 
         return cryptogram;
+    }
+
+    public static void validateCase(String cryptogram){
+        if( cryptogram.length() <= 1 || cryptogram.length() > 1000){
+            throw new RuntimeException("암호문의 길이가 적합하지 않습니다.");
+        }
     }
 }
