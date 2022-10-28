@@ -93,4 +93,8 @@ class Account {
     public void addScore(int score) {
         this.score += score;
     }
+
+    public boolean scoreOverThanZero() {
+        return score > 0;
+    }
 }
