@@ -4,7 +4,7 @@ public class Problem4 {
     public static String solution(String word) {
         String result = "";
         for (int i = 0; i < word.length(); i++) {
-             result += checkWord(word.charAt(i));
+            result += checkWord(word.charAt(i));
         }
 
         return result;
@@ -23,10 +23,10 @@ public class Problem4 {
     }
 
     private static char changeLowercase(char word) {
-        return (char) (word + 25 -(word - 'a') * 2);
+        return (char) (word + 25 - (word - 'a') * 2);
     }
 
     private static char changeUppercase(char word) {
-        return (char) (word + 25 -(word - 'A') * 2);
+        return (char) (word + 25 - (word - 'A') * 2);
     }
 }
