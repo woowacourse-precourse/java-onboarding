@@ -22,14 +22,14 @@ public class Problem6 {
 
     private static void checkNicknameInForms(List<List<String>> forms) {
         for(int i=1; i<forms.size(); i++) {
-            if(checkConfirmListWordContains(forms.get(i).get(1))) {
+            if(isConfirmListContainsWord(forms.get(i).get(1))) {
                 duplicatedEmails.add(forms.get(i).get(0));
             }
             confirm.add(forms.get(i).get(1));
         }
     }
 
-    private static boolean checkConfirmListWordContains(String nickname) {
+    private static boolean isConfirmListContainsWord(String nickname) {
         for (String value : confirm) {
             for (int j = 0; j < nickname.length(); j++) {
                 if (value.contains(String.valueOf(nickname.charAt(j)))) {
