@@ -23,7 +23,7 @@ class Problem1 {
     private static boolean isNormal(List<Integer> pages) {
         if (pages.get(0) + pages.get(1) < 2 || pages.get(0) + pages.get(1) > 800) return false;
         if (pages.get(0) - pages.get(1) != -1) return false;
-        if (pages.get(0) % 2 != 0) return false;
+        if (pages.get(0) % 2 == 0) return false;
         return true;
     }
 
