@@ -11,62 +11,62 @@ public class Problem4 {
 //        return answer;
 //    }
 //
-//    public static ArrayList<Integer> cToitran(String w) {
-//        /**
-//         * 캐릭터 -> 아스키 코드 변환
-//         */
-//        ArrayList<Integer> cToiLst = new ArrayList<>();
-//        ArrayList<Character> chLst = new ArrayList<>();
-//
-//        for(int i=0; i< characterArr(w).size(); i++) {
-//            chLst.add(characterArr(w).get(i));
-//        }
-//
-////        System.out.println("chlst"+chLst);
-//
-//
-//        for(int i=0; i<chLst.size(); i++) {
-//            Character c = chLst.get(i);
-//            int num = (int)c;
-////            System.out.println(num);
-//
-//            if(num>=65 && num<=90) {
-//                int tr = 25 - (num - 65);
-//                int numLast = 65 + tr;
-//                cToiLst.add(numLast);
-////                System.out.println("trNumLast"+cToiLst.add(numLast));
-//            } else if (num == 32) {
-//                cToiLst.add(num);
-//
-//            } else {
-//                int tr = 25 - (num - 97);
-//                int numLast = 97 + tr;
-//                cToiLst.add(numLast);
+    public static ArrayList<Integer> cToitran(String w) {
+        /**
+         * 캐릭터 -> 아스키 코드 변환
+         */
+        ArrayList<Integer> cToiLst = new ArrayList<>();
+        ArrayList<Character> chLst = new ArrayList<>();
+
+        for(int i=0; i< characterArr(w).size(); i++) {
+            chLst.add(characterArr(w).get(i));
+        }
+
+//        System.out.println("chlst"+chLst);
+
+
+        for(int i=0; i<chLst.size(); i++) {
+            Character c = chLst.get(i);
+            int num = (int)c;
+//            System.out.println(num);
+
+            if(num>=65 && num<=90) {
+                int tr = 25 - (num - 65);
+                int numLast = 65 + tr;
+                cToiLst.add(numLast);
+//                System.out.println("trNumLast"+cToiLst.add(numLast));
+            } else if (num == 32) {
+                cToiLst.add(num);
+
+            } else {
+                int tr = 25 - (num - 97);
+                int numLast = 97 + tr;
+                cToiLst.add(numLast);
+            }
+
+            /**
+             * switch문 실패
+             */
+
+//            switch (num) {
+//                case 1:
+//                    if (num>=65 && num<=90) {
+//                        int tr = 25 + (num - 65);
+//                        int numLast = 65 + tr;
+//                        cToiLst.add(numLast);
+//                        System.out.println("trNumLast"+cToiLst.add(numLast));
+//                    }
+//                    break;
+//                case 2:
+//                    if (num>=97 && num<=122) {
+//                        int tr = 25 + (num - 97);
+//                        int numLast = 97 + tr;
+//                        cToiLst.add(numLast);
+//                    }
+//                    break;
 //            }
-//
-//            /**
-//             * switch문 실패
-//             */
-//
-////            switch (num) {
-////                case 1:
-////                    if (num>=65 && num<=90) {
-////                        int tr = 25 + (num - 65);
-////                        int numLast = 65 + tr;
-////                        cToiLst.add(numLast);
-////                        System.out.println("trNumLast"+cToiLst.add(numLast));
-////                    }
-////                    break;
-////                case 2:
-////                    if (num>=97 && num<=122) {
-////                        int tr = 25 + (num - 97);
-////                        int numLast = 97 + tr;
-////                        cToiLst.add(numLast);
-////                    }
-////                    break;
-////            }
-//
-//        }
+
+        }
 //
 ////        System.out.println("cToLstresult"+cToiLst);
 //
