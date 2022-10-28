@@ -14,15 +14,12 @@
 
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
-        return answer;
+        Bank bank = new Bank(Arrays.asList(1, 10, 50, 100, 500, 1000, 5000, 10000, 50000));
+        return bank.withdraw(money);
     }
 }
 
