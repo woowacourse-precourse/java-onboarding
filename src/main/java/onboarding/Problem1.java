@@ -32,5 +32,13 @@ class Problem1 {
         return false;
     }
 
+    private static int getSumOfPage(int page){
+        int result = 0;
+        for(String number_each : Integer.toString(page).split("")){
+            result += Integer.parseInt(number_each);
+        }
+        return result;
+    }
+
 
 }
