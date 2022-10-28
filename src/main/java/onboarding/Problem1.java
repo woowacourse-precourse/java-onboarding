@@ -12,6 +12,11 @@ class Problem1 {
         pobiMax = (getPlus(pobi) > getMul(pobi)) ? getPlus(pobi) : getMul(pobi);
         crongMax = (getPlus(crong) > getMul(crong) ? getPlus(crong) : getMul(crong));
 
+        answer = getMax(pobiMax, crongMax);
+
+        if((pobi.get(1) - pobi.get(0) != 1) || (crong.get(1) - crong.get(0) != 1))
+            answer = -1;
+
         return answer;
     }
 
