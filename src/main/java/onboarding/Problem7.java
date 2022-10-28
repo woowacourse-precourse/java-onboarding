@@ -2,7 +2,7 @@ package onboarding;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -55,21 +55,23 @@ public class Problem7 {
             }
         }
 
-
-        Stream<Map.Entry<String, Integer>> reverseSorted = sortByReverseOrder(countingMap);
+        int limit = 5;
+        countingMap = sortByDescendingOrder(countingMap, limit);
 
 
         List<String> answer = Collections.emptyList();
         return answer;
     }
 
-    private static Stream<Map.Entry<String, Integer>> sortByReverseOrder(LinkedHashMap<String, Integer> countingMap) {
-        Stream<Map.Entry<String, Integer>> sorted =
-                countingMap.
-                entrySet().
-                stream().
-                sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()));
-        return sorted;
+    private static LinkedHashMap<String, Integer> sortByDescendingOrder(LinkedHashMap<String, Integer> countingMap, int limit) {
+        LinkedHashMap<String, Integer> reverseSortedMap = new LinkedHashMap<>();
+        countingMap.entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .limit(limit)
+                .forEachOrdered(x -> reverseSortedMap.put(x.getKey(), x.getValue()));
+
+        return reverseSortedMap;
     }
 
 
