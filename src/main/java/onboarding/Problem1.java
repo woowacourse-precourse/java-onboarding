@@ -21,6 +21,14 @@ class Problem1 {
         return false;
     }
 
+    private static int getMyScore(List<Integer> pages) {
+
+        int leftPage = pages.get(0);
+        int rightPage = pages.get(1);
+
+        return Math.max(getMaxScoreOnEachPage(leftPage), getMaxScoreOnEachPage(rightPage));
+    }
+
     /**
      * 1. 책을 임의로 펼친다.
      * 2. 왼쪽 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구한다.
@@ -37,6 +45,8 @@ class Problem1 {
         if (isWrongInput(pobi) || isWrongInput(crong)) {
             return WRONG_INPUT;
         }
+
+
 
         int answer = Integer.MAX_VALUE;
         return answer;
