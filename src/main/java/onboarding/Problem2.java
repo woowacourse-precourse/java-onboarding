@@ -34,7 +34,7 @@ public class Problem2 {
     }
 
     /* Stack으로 2개 연속된 문자를 제거 */
-    private static String deleteRepeatation(String cryptogram) {
+    private static String deleteRepetition(String cryptogram) {
         Stack<Character> stack = new Stack<>();
 
         for (int i = 0; i < cryptogram.length(); i++) {
