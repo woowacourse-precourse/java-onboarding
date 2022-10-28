@@ -14,6 +14,15 @@ class Problem1 {
         }
     }
 
+    private static int getProductPageNumber(int pageNumber) {
+        int productPageNumber = 1;
+        while (pageNumber > 0) {
+            productPageNumber *= pageNumber % 10;
+            pageNumber /= 10;
+        }
+        return productPageNumber;
+    }
+
     private static int getSumPageNumber(int pageNumber) {
         int sumPageNumber = 0;
         while (pageNumber > 0) {
