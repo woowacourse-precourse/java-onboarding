@@ -12,7 +12,7 @@ public class ProblemOneApplication {
     public static void main(String[] args) {
         Calculator calculator = new Calculator();
         List<Integer> emptyList = new ArrayList<>();
-        List<Integer> notEmptyList = Arrays.asList(1);
+        List<Integer> notEmptyList = Arrays.asList(3);
 
         System.out.println("calculator.hasList(emptyList) = " + calculator.hasList(emptyList));
         System.out.println("calculator.hasList(notEmptyList) = " + calculator.hasList(notEmptyList));
@@ -42,5 +42,8 @@ public class ProblemOneApplication {
         book.setLeftRightPageScore(book);
         System.out.println("book.getLeftPageScore() = " + book.getLeftPageScore());
         System.out.println("book.getRightPageScore() = " + book.getRightPageScore());
+
+        book.setLastScore(book);
+        System.out.println("book.getLastScore() = " + book.getLastScore());
     }
 }

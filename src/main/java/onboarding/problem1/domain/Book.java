@@ -58,6 +58,7 @@ public class Book {
     }
 
     public void setLastScore(Book book) {
+        lastScore = Math.max(book.getLeftPageScore(), book.getRightPageScore());
     }
 
     public int getLastScore() {
