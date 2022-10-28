@@ -21,6 +21,41 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+
+        initDictionary(user, friends);
+
         return answer;
+    }
+
+    /**
+     * friendDictionary와 memberDictionary에 초기값을 넣는다
+     * @param user : 사용자 이름
+     * @param friends : 친구관계 목록
+     */
+    private static void initDictionary(String user, List<List<String>> friends) {
+        friends.forEach(pair -> updateDictionary(pair, user));
+    }
+
+    /**
+     * 사용자의 친구를 memberFriends List에 저장한다.
+     * 모든 사용자를 구해 otherMembers Map에 저장한다.
+     * @param pair 한 쌍의 친구관계
+     * @param user 사용자 이름
+     */
+    private static void updateDictionary(List<String> pair, String user) {
+        if (pair.get(0).equals(user)) {
+            friendDictionary.add(pair.get(1));
+            memberDictionary.put(pair.get(1), 0);
+        }
+
+        if (pair.get(1).equals(user)) {
+            friendDictionary.add(pair.get(0));
+            memberDictionary.put(pair.get(0), 0);
+        }
+
+        if (!pair.contains(user)) {
+            memberDictionary.put(pair.get(0), 0);
+            memberDictionary.put(pair.get(1), 0);
+        }
     }
 }
