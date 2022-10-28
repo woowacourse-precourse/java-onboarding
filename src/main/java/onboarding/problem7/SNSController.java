@@ -2,6 +2,7 @@ package onboarding.problem7;
 
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class SNSController {
 
@@ -30,11 +31,8 @@ public class SNSController {
             points = points.subList(0, 5);
         }
 
-        List<String> recommendUserNames = new LinkedList<>();
-        for(RecommendPoint point : points){
-            recommendUserNames.add(point.getName());
-        }
-        return recommendUserNames;
+        return points.stream().map(p -> p.getName() ).collect(Collectors.toList());
+
     }
 
     private void addPointsToHashMap(HashMap<String, RecommendPoint> pointHasMap, List<RecommendPoint> points){
