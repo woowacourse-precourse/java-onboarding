@@ -21,7 +21,17 @@ public class Problem2 {
      * 연속되는 중복 문자의 갯수 반환
      */
     private static int getDuplicateCharCount(String cryptogram, int idx) {
-        return Integer.MAX_VALUE;
+        char checkChar = cryptogram.charAt(idx);
+        int duplicateCount = 0;
+        for (int i = idx; i < cryptogram.length(); i++) {
+            char ch = cryptogram.charAt(i);
+            if (checkChar == ch) {
+                duplicateCount++;
+            } else {
+                break;
+            }
+        }
+        return duplicateCount;
     }
 
     /**
