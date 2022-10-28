@@ -1,5 +1,8 @@
 package onboarding;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Problem4 {
     public static String solution(String word) {
         Map<Character, Character> frogDictionary = new HashMap<>();
@@ -24,6 +27,11 @@ public class Problem4 {
                 char convertedCurChar = frogDictionary.get(upperCurChar);
                 char lowerConvertedCurChar = Character.toLowerCase(convertedCurChar);
                 answer += lowerConvertedCurChar;
+            }
+            // 알파벳 대문자는 알파벳 대문자로 변환한다.
+            else if ( Character.isUpperCase(curChar) ) {
+                char convertedCurChar = frogDictionary.get(curChar);
+                answer += convertedCurChar;
             }
         }
 
