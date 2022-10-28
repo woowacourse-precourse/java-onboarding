@@ -7,12 +7,12 @@ public class Problem4 {
 
     public static String convertWord(String word) {
         String convertWord = "";
-        for(int wordIndex = 0; wordIndex < word.length(); wordIndex++) {
+        for (int wordIndex = 0; wordIndex < word.length(); wordIndex++) {
             char charAtWord = word.charAt(wordIndex);
-            if(Character.isAlphabetic(charAtWord)) {
+            if (Character.isAlphabetic(charAtWord)) {
                 convertWord += convertAlphabet(charAtWord);
             }
-            if(!Character.isAlphabetic(charAtWord)) {
+            if (!Character.isAlphabetic(charAtWord)) {
                 convertWord += charAtWord;
             }
         }
@@ -21,15 +21,15 @@ public class Problem4 {
 
     public static Character convertAlphabet(Character inputCharacter) {
         int calculationNum = getCalculationNumberByAlphabetUpperOrLowerCase(inputCharacter);
-        return (char)(calculationNum - inputCharacter);
+        return (char) (calculationNum - inputCharacter);
     }
 
     public static int getCalculationNumberByAlphabetUpperOrLowerCase(Character alphabet) {
         int calculationNumberByAlphabetUpperOrLowerCase = 0;
-        if(Character.isUpperCase(alphabet)) {
+        if (Character.isUpperCase(alphabet)) {
             calculationNumberByAlphabetUpperOrLowerCase = getUpperCaseCalculationNumber();
         }
-        if(Character.isLowerCase(alphabet)) {
+        if (Character.isLowerCase(alphabet)) {
             calculationNumberByAlphabetUpperOrLowerCase = getLowerCaseCalculationNumber();
         }
         return calculationNumberByAlphabetUpperOrLowerCase;
@@ -41,5 +41,9 @@ public class Problem4 {
 
     public static int getLowerCaseCalculationNumber() {
         return 'a' + 'z';
+    }
+
+    public static boolean isCorrectWordRange(String momWord) {
+        return (momWord.length() >= 1 && momWord.length() <= 1000);
     }
 }
