@@ -64,7 +64,13 @@ class Problem1 {
     /*
     페이지 자릿수들의 합을 계산하는 메서드
      */
-    private static int sumOfPageNum(List<Integer> pageNum);
+    private static int sumOfPageNum(List<Integer> pageNum) {
+        int sum = 0;
+        for (int num : pageNum) {
+            sum += num;
+        }
+        return sum;
+    }
 
     /*
     페이지 자릿수들의 곱을 계산하는 메서드
