@@ -34,7 +34,20 @@ public class Problem7 {
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
+        List<String> friendList = createFriendList(user, friends);
+        HashMap<String, Integer> pointMap = getRecommendPoint(friendList, visitors);
+
+        Object[] pointMapKey = pointMap.keySet().toArray();
+        Arrays.sort(pointMapKey);
+
+        for(int i = 0; i < pointMapKey.length; i++) {
+            if (pointMap.get(pointMapKey[i]) != 0 && answer.size() < 5)
+                answer.add(Objects.toString(pointMapKey[i]));
+            else
+                break;
+        }
+
         return answer;
     }
 }
