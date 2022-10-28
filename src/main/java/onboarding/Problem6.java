@@ -33,7 +33,7 @@ public class Problem6 {
         String crewName = crews.get(1);
         List<String> parseNameList = new ArrayList<>();
         for (int i = 0; i < crewName.length() -1; i++) {
-            parseNameList.add(crewName.substring(i, i + 1));
+            parseNameList.add(crewName.substring(i, i + 2));
         }
         return parseNameList;
     }
