@@ -6,10 +6,8 @@ public class Counter369 {
     private static int totalCount = 0;
 
     private static int count369(int number) {
-        forEachDigit(number, (int digit)->{
-            if(is369(digit))현
-                return totalCount++;
-            return totalCount;
+        forEachDigit(number, digit->{
+            if(is369(digit)) totalCount++;
         });
         return totalCount;
     }
