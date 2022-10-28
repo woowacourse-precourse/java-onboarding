@@ -11,7 +11,6 @@ public class Problem6 {
      */
     public static List<String> solution(List<List<String>> forms) {
         int peopleNum = forms.size();
-        System.out.println(forms);
         final Stream<String> memberStream = forms.stream().map(s -> s.get(1));
         final List<String> memberList = new ArrayList<>(memberStream.collect(Collectors.toList()));
         Map<String, String> emailDict = new HashMap<>();
@@ -25,19 +24,14 @@ public class Problem6 {
                 break;
             }
             String target = memberList.get(0);
-            System.out.println("target : "+target);
             memberList.remove(target);
-
             Set<String> cases = getAllCase(target);
-            System.out.println(cases);
-            System.out.println(memberList);
             int existCase = (int) cases.stream().filter(s->isExist(s,memberList)).count();
             if(existCase>0){
                 answer.add(emailDict.get(target));
             }
             memberList.add(target);
             cnt+=1;
-            System.out.println(answer+"\n");
         }
         return answer.stream().sorted(new EmailComparator()).collect(Collectors.toList());
     }
