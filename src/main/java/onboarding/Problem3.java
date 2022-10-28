@@ -1,8 +1,9 @@
 package onboarding;
 
 public class Problem3 {
-    public static int solution(int number) {
-        int answer = 0;
-        return answer;
-    }
+	public static int solution(int number) {
+		ThreeSixNine threeSixNine = new ThreeSixNine(number);
+		int answer = threeSixNine.run();
+		return answer;
+	}
 }
