@@ -43,7 +43,7 @@ public class Problem2 {
     }
 
     public static boolean validateCryptogramLength(String cryptogram) {
-        return !(cryptogram.length() < MIN_CRYPTOGRAM_LENGTH || cryptogram.length() > MAX_CRYPTOGRAM_LENGTH);
+        return (cryptogram.length() >= MIN_CRYPTOGRAM_LENGTH && cryptogram.length() <= MAX_CRYPTOGRAM_LENGTH);
     }
 
     public static boolean validateCryptogramType(String cryptogram) {
