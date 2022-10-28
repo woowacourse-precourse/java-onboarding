@@ -41,7 +41,6 @@ public class Problem7 {
             throw new NotMatchingVisitorsSize("방문 기록의 길이가 맞지 않습니다.");
         }
 
-        //- 사용자 아이디 소문자인지 체크
 
 
         return answer;
@@ -68,14 +67,15 @@ public class Problem7 {
         return length < 1 || length > 30;
     }
 
-    public static boolean isId(String id){
+    // 1-4,6 한번에 처리
+    public static boolean isNotId(String id){
         boolean found = true;
 
         if(StringUtils.isBlank(id)){
             found = true;
         }
 
-        String regex = "^[ㄱ-ㅎㅏ-ㅣ가-힣]{1,19}$";
+        String regex = "^[a-z]{1,29}$";
         Pattern p = Pattern.compile(regex);
         Matcher matcher = p.matcher(id);
         if(matcher.matches()){
