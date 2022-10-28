@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ApplauseGame {
-    private static final List<Boolean> claps = new ArrayList<>();
+    private final List<Boolean> claps = new ArrayList<>();
 
-    public static int start(int number, ClapRule clapRule) {
+    public int start(int number, ClapRule clapRule) {
         ApplauseParameter applauseParameter = new ApplauseParameter(number);
         String numbers = applauseParameter.getNumbers();
 
@@ -16,7 +16,7 @@ public class ApplauseGame {
         return getAnInt(claps);
     }
 
-    private static int getAnInt(List<Boolean> claps) {
+    private int getAnInt(List<Boolean> claps) {
         return Math.toIntExact(claps.stream().filter(clapOrNot -> clapOrNot).count());
     }
 

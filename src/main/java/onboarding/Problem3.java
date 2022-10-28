@@ -6,6 +6,7 @@ import onboarding.problem3.ClapRule;
 public class Problem3 {
     public static int solution(int number) {
         ClapRule clapRule = new ClapRule();
-        return ApplauseGame.start(number, clapRule);
+        ApplauseGame applauseGame = new ApplauseGame();
+        return applauseGame.start(number, clapRule);
     }
 }
