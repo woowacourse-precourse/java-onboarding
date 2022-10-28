@@ -32,11 +32,16 @@ public class Problem2 {
     }
 
     /**
-     * 문자열의 중복 문자열을 찾아 제거하는 메소드
-     * @param str : 중복 문자열을 삭제할 메소드
-     * @return 중복 문자열이 제거된 문자열
+     * 문자열의 중복 문자를 찾아 제거하는 메소드
+     * @param str : 중복 문자를 삭제할 메소드
+     * @return 중복 문자가 제거된 문자열
      */
     private static String removeDuplication(String str){
+        //중복 소문자를 찾는 정규표현식
+        String regex = "(([a-z])\\2{1,})";
+        //정규 표현식에 해당하는 문자를 빈 문자열로 치환
+        String result = str.replaceAll(regex, "");
 
+        return result;
     }
 }
