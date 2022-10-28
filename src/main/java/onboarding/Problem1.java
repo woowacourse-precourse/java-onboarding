@@ -53,7 +53,10 @@ class Problem1 {
     }
 
     private static boolean verifyOddEven(int leftPage, int rightPage) {
-        return false;
+        if (leftPage % 2 != 1 || rightPage % 2 != 0) {
+            return false;
+        }
+        return true;
     }
 
     private static boolean verifyContinuePage(int leftPage, int rightPage) {
@@ -105,10 +108,9 @@ class Problem1 {
 
     private static int[] intToArr(int page) {
         int[] arr = new int[LEN_NUMBER_OF_DIGITS];
-        for (int i = 0; i < arr.length; i++) {
+        for (int i =0; i < arr.length; i++) {
             arr[i] = (page % (int) Math.pow(10, i + 1)) / (int) Math.pow(10, i);
         }
-        System.out.println(page + " " + Arrays.toString(arr));
         return arr;
     }
 
