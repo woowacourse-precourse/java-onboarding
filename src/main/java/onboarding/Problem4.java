@@ -6,6 +6,11 @@ public class Problem4 {
         return answer;
     }
 
+    public static Character convertAlphabet(Character inputCharacter) {
+        int calculationNum = getCalculationNumberByAlphabetUpperOrLowerCase(inputCharacter);
+        return (char)(calculationNum - inputCharacter);
+    }
+
     public static int getCalculationNumberByAlphabetUpperOrLowerCase(Character alphabet) {
         int calculationNumberByAlphabetUpperOrLowerCase = 0;
         if(Character.isUpperCase(alphabet)) {
