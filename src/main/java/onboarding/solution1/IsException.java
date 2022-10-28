@@ -10,7 +10,7 @@ public class IsException {
         return 0;
     }
 
-    private static int range(int page){
+    private static int oddRange(int page){
         if (page < 0 || page > 399)
             return -1;
         return 0;
@@ -25,7 +25,7 @@ public class IsException {
     public static int isException(List<Integer> page){
         if (numOfIndex(page) == -1)
             return -1;
-        if (range(page.get(0)) == -1)
+        if (oddRange(page.get(0)) == -1)
             return -1;
         if (odd(page.get(0)) == -1)
             return -1;
