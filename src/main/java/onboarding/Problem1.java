@@ -60,6 +60,15 @@ class Problem1 {
         /* 각자 왼쪽 오른쪽 페이지에서 구한 점수 중 큰 점수를 최종점수로 취하기 */
         int pobiFinalScore = Math.max(pobiLeftMax, pobiRightMax);
         int crongFinalScore = Math.max(crongLeftMax, crongRightMax);
+
+        /* 최종점수 비교해 정답 도출하기 */
+        if (pobiFinalScore > crongFinalScore)
+            answer = 1;
+        else if (pobiFinalScore < crongFinalScore)
+            answer = 2;
+        else
+            answer = 0;
+
         return answer;
     }
 }
@@ -79,5 +88,5 @@ class Problem1 {
 - [V] 포비와 크롱의 왼쪽 페이지 번호에 대해 각 자리 수를 모두 더하거나 모두 곱한 것 중 가장 큰 수를 구한다
 - [V] 포비와 크롱의 오른쪽 페이지 번호에 대해 각 자리 수를 모두 더하거나 모두 곱한 것 중 가장 큰 수를 구한다
 - [V] 포비와 크롱이 각자 왼쪽 오른쪽 페이지에 대해 구한 값 중 더 큰 값을 자신의 최종점수로 갖게 한다
-- [] 포비와 크롱의 최종점수를 비교해 포비가 이기면 1, 크롱이 이기면 2, 무승부는 0을 리턴한다.
+- [V] 포비와 크롱의 최종점수를 비교해 포비가 이기면 1, 크롱이 이기면 2, 무승부는 0으로 answer를 바꾼다
  */
