@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -13,7 +14,18 @@ public class Problem6 {
      * </pre>
      */
     private static void updateWordMap(List<String> userInfo, Map<String, List<String>> wordMap) {
+        String email = userInfo.get(0);
+        String nickname = userInfo.get(1);
 
+        for (int i = 0; i < nickname.length() - 1; i++) {
+            String word = nickname.substring(i, i + 2);
+
+            List<String> emailList = wordMap.getOrDefault(word, new ArrayList<>());
+
+            emailList.add(email);
+
+            wordMap.put(word, emailList);
+        }
     }
 
     /**
