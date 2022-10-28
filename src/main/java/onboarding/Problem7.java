@@ -13,18 +13,23 @@ public class Problem7 {
     private Map<String, ArrayList> map_friends = new HashMap<>();
     private Map<String, Integer> map_points = new TreeMap<>();
 
-    // 각자의 친구 목록을 자료구조 hashmap 을 사용해 저장해주는 메소드
+    // 각자의 친구 목록을 자료구조 hashmap 을 사용해 구현한다.
     private void makeFriendsMap(List<List<String>> friends) {
         for (List<String> list : friends) {
-            ArrayList A_List = map_friends.getOrDefault(list.get(0), new ArrayList());
-            ArrayList B_List = map_friends.getOrDefault(list.get(1), new ArrayList());
-
-            A_List.add(list.get(1));
-            B_List.add(list.get(0));
-
-            map_friends.put(list.get(0), A_List);
-            map_friends.put(list.get(1), B_List);
+            putFriendsToMap(list);
         }
+    }
+
+    // 각 사용자 별로 친구 목록을 저장하는 메소드
+    private void putFriendsToMap(List<String> list) {
+        ArrayList A_List = map_friends.getOrDefault(list.get(0), new ArrayList());
+        ArrayList B_List = map_friends.getOrDefault(list.get(1), new ArrayList());
+
+        A_List.add(list.get(1));
+        B_List.add(list.get(0));
+
+        map_friends.put(list.get(0), A_List);
+        map_friends.put(list.get(1), B_List);
     }
 
     // 함께 아는 친구 점수 추가해주는 메서드
