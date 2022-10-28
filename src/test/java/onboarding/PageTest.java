@@ -2,12 +2,26 @@ package onboarding;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.Arrays;
 
 class PageTest {
+    Page pobi = new Page(Arrays.asList(199, 200));
+    Page crong = new Page(Arrays.asList(201, 202));
+
+    @Test
+    void 더하기_곱하기_비교_테스트() {
+        //when
+        int leftMaxValue = pobi.compareNumberPerPageSumTimes(pobi.getLeftPageNumber());
+        int rightMaxValue = pobi.compareNumberPerPageSumTimes(pobi.getRightPageNumber());
+
+        //then
+        Assertions.assertThat(leftMaxValue).isEqualTo(81);
+        Assertions.assertThat(rightMaxValue).isEqualTo(2);
+    }
 
     @ParameterizedTest
     @CsvSource(value = {"2:3", "220:221"}, delimiter = ':')
