@@ -37,7 +37,21 @@ public class Problem7 {
                 f2 = temp;
             }
         }
+        public void isFriendOfUser(ArrayList<String> userFriends){
+            for (String userFriend : userFriends) {
+                ArrayList<String> friendsFriendsList = map.get(userFriend);
 
+                for (String friendsFriend : friendsFriendsList) {
+                    if(!(userFriends.contains(friendsFriend)) && friendsFriend != user){
+                        if(!(result.containsKey(friendsFriend))){
+                            result.put(friendsFriend, 10);
+                        } else{
+                            result.put(friendsFriend, result.get(friendsFriend) + 10);
+                        }
+                    }
+                }
+            }
+        }
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
