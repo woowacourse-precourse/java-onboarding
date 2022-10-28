@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -30,7 +31,7 @@ public class Problem6 {
     /**
      * 제한사항을 검증하는 기능
      */
-    public static boolean isValidate(List<List<String>> forms) {
+    private static boolean isValidate(List<List<String>> forms) {
         for (List<String> form : forms) {
             if (!validateForm(form)) {
                 return false;
@@ -77,14 +78,14 @@ public class Problem6 {
      * 중복된 닉네임이 존재하는 이메일을 저장하는 기능
      */
 
-    public static void getNicknames(List<List<String>> forms, String[] nicknames) {
+    private static void getNicknames(List<List<String>> forms, String[] nicknames) {
         int i = 0;
         for (List<String> form : forms) {
             nicknames[i] = form.get(NICKNAME);
             i++;
         }
     }
-    public static void getEmails(List<List<String>> forms, String[] emails) {
+    private static void getEmails(List<List<String>> forms, String[] emails) {
         int i = 0;
         for (List<String> form : forms) {
             emails[i] = form.get(EMAIL);
@@ -92,31 +93,30 @@ public class Problem6 {
         }
     }
 
-    public static List<String> getAnswer(String[] nicknames, String[] emails) {
+    private static List<String> getAnswer(String[] nicknames, String[] emails) {
         List<String> answer = new ArrayList<>();
-        int idx = 0;
-        for (String nickname : nicknames) {
-            List<String> result = findDuplicated(nicknames, emails, nickname, idx);
+        HashMap<String, String> twoLetters = new HashMap<>();
+        for (int i = 0; i < nicknames.length; i++) {
+            List<String> result = findDuplicated(nicknames[i], emails[i], twoLetters);
             if (result.size() != 0) {
                 answer.removeAll(result);
                 answer.addAll(result);
             }
-            idx++;
         }
         return answer;
     }
 
-    public static List<String> findDuplicated(String[] nicknames, String[] emails, String nickname, int idx) {
-        List<String> answer = new ArrayList<>();
+    private static List<String> findDuplicated(String nickname, String email, HashMap<String, String> twoLetters) {
+        List<String> result = new ArrayList<>();
         for (int i = 0; i < nickname.length() - 1; i++) {
-            String twoLetters = nickname.substring(i, i + 2);
-            for (int j = idx + 1; j < nicknames.length; j++) {
-                if (nicknames[j].contains(twoLetters)) {
-                    answer.add(emails[i]);
-                    answer.add(emails[j]);
-                }
+            String twoLetter = nickname.substring(i, i + 2);
+            if (!twoLetters.containsKey(twoLetter)) {
+                twoLetters.put(twoLetter, email);
+                continue;
             }
+            result.add(twoLetters.get(twoLetter));
+            result.add(email);
         }
-        return answer;
+        return result;
     }
 }
