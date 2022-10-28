@@ -1,5 +1,6 @@
 package onboarding;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,26 +34,29 @@ import java.util.List;
  * - 리스트를 통한 비교 위한 함수
  * **/
 
+/**
+ * 5. 결과 값 출력을 위한 함수
+ * - 이기는 경우와 지는경우 비기는 경우에  따른 비교 출력 함수
+ * - 게임 시작 함수 구현 -> 예외처리도 포함 시킨다.
+ * **/
+
+
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int answer = gameStart(pobi,crong);
         return answer;
     }
-    public static void main(String[] args){
+    /* test : main문을 통한 결과값 확인 */
+//    public static void main(String[] args){
 //        List<Integer> test1 = new ArrayList<Integer>();
-//        test1.add(3);
-//        test1.add(4);
+//        test1.add(99);
+//        test1.add(102);
 //        List<Integer> test2 = new ArrayList<Integer>();
-//        test2.add(10);
-//        test2.add(12);
-//        System.out.println(checkInput(test1));
-//        System.out.println(checkInput(test2));
-//        int testNum = 020;
-//        System.out.println(sumOfeach(testNum));
-//        int testMul = 203;
-//        System.out.println(multiplyOfeach(testMul));
-        }
+//        test2.add(211);
+//        test2.add(212);
+//        System.out.println(solution(test1,test2));
+//        }
     private static boolean checkInput(List<Integer> inputlist){
         if(checkSize(inputlist)&& checkOdd(inputlist) && checkNext(inputlist) && checkVal(inputlist))
         {
@@ -101,20 +105,35 @@ class Problem1 {
             return left;
         return right;
     }
-    private static int representNum(List<Integer> representList){
+    private static int representNum(List<Integer> inputList){
         int represent = 0;
+        List <Integer> representList = representList(inputList);
         for(int i = 0; i < representList.size(); i++)
         {
             represent = compareNum(represent,representList.get(i));
         }
         return represent;
     }
-    private static List<Integer> representList(int oddPage, int evenPage){
+    private static List<Integer> representList(List<Integer> inputList){
         List<Integer> result = new ArrayList<>();
-        result.add(sumOfeach(oddPage));
-        result.add(multiplyOfeach(oddPage));
-        result.add(sumOfeach(evenPage));
-        result.add(multiplyOfeach(evenPage));
+        for(int i = 0; i < inputList.size(); i++)
+        {
+            result.add(sumOfeach(inputList.get(i)));
+            result.add(multiplyOfeach(inputList.get(i)));
+        }
+        return result;
+    }
+    private static int gameResult(int playerRep, int otherPlayRep){
+        if(playerRep > otherPlayRep)
+            return 1;
+        else if(playerRep < otherPlayRep)
+            return 2;
+        return 0;
+    }
+    private static int gameStart(List<Integer> player, List<Integer> otherPlayer) {
+        if(checkInput(player) == false  || checkInput(otherPlayer) == false)
+            return -1;
+        int result = gameResult(representNum(player),representNum(otherPlayer));
         return result;
     }
 }
