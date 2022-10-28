@@ -1,7 +1,6 @@
 package onboarding;
 
 import onboarding.problem1.service.ScoreService;
-import onboarding.problem1.vo.Pages;
 import onboarding.problem1.vo.Score;
 
 import java.util.List;
@@ -14,11 +13,8 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         try {
-            Pages pobiPages = Pages.of(pobi);
-            Pages crongPages = Pages.of(crong);
-
-            Score pobiScore = ScoreService.getHighestScore(pobiPages);
-            Score crongScore = ScoreService.getHighestScore(crongPages);
+            Score pobiScore = ScoreService.getHighestScore(pobi);
+            Score crongScore = ScoreService.getHighestScore(crong);
 
             if (pobiScore.isHigherThan(crongScore)) {
                 return POBI_WINNER_RETURN_VALUE;

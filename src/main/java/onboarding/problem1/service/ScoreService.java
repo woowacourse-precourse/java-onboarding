@@ -5,6 +5,8 @@ import onboarding.problem1.vo.Pages;
 import onboarding.problem1.vo.Page;
 import onboarding.problem1.vo.Score;
 
+import java.util.List;
+
 /**
  * Score 과 관련한 비즈니스 로직을 진행하는 서비스 레이어 클래스입니다.
  * @author BackFoxx
@@ -12,10 +14,13 @@ import onboarding.problem1.vo.Score;
 public class ScoreService {
 	/**
 	 * 문제 1의 요구사항에서 만든 게임 규칙에 따라
-	 * 인자로 넘어온 Pages 객체를 분석해
+	 * 인자로 넘어온 두 페이지의 숫자를 분석해
 	 * 가장 높은 점수를 계산하는 메소드입니다.
+	 * @param target 왼쪽 페이지와 오른쪽 페이지가 차례로 담긴 Integer 리스트입니다.
 	 */
-	public static Score getHighestScore(Pages pages) {
+	public static Score getHighestScore(List<Integer> target) {
+		Pages pages = Pages.of(target);
+
 		PageValidator.isInValidPages(pages);
 		int highestScore = Math.max(
 			Math.max(
