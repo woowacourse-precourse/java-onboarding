@@ -9,6 +9,17 @@ public class Problem4 {
         return answer;
     }
 
+    private static void addTokenToMakingConvertedString(StringBuilder makingConvertedString, ConvertMap convertMap, char token) {
+        if (Character.isAlphabetic(token)) {
+            char convertedLetter = convertMap.getConvertedLetter(token);
+            makingConvertedString.append(convertedLetter);
+            return ;
+        }
+
+        makingConvertedString.append(token);
+    }
+
+
     static class ConvertMap{
         private final Map<Character, Character> convertMap;
 
