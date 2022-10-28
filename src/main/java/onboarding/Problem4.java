@@ -5,8 +5,8 @@ public class Problem4 {
     public static final char Z_LOWER_CASE = 'z';
     public static final char A_UPPER_CASE = 'A';
     public static final char Z_UPPER_CASE = 'Z';
-    public static final String EMPTY_STRING = "";
-    public static final int LOWER_CASE_CONVERTER = 155;
+    public static final int UPPER_CASE_CONVERTER = 155;
+    public static final int LOWER_CASE_CONVERTER = 219;
 
     public static String solution(String word) {
         return convertIntoBlueFrogWord(word);
@@ -20,9 +20,14 @@ public class Problem4 {
                 letters[i] = convertLowerCaseIntoFrogLetter(letter);
             }
             if (isUpperCase(letter)) {
+                letters[i] = convertUpperCaseIntoFrogLetter(letter);
             }
         }
-        return null;
+        return String.valueOf(letters);
+    }
+
+    private static char convertUpperCaseIntoFrogLetter(char letter) {
+        return (char)(UPPER_CASE_CONVERTER - letter);
     }
 
     private static char convertLowerCaseIntoFrogLetter(char letter) {
