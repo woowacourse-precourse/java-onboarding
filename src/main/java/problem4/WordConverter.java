@@ -7,9 +7,29 @@ public class WordConverter {
     private static final String ERR_NON_ALPHABETIC_WORD = "단어는 영어와 공백 문자로만 구성되어야 합니다.";
     private static final int LENGTH_LOWER_BOUNDS = 1;
     private static final int LENGTH_UPPER_BOUNDS = 1000;
+    private static final int UPPERCASE_TRANSLATION_NUMBER = 'A' + 'Z';
+    private static final int LOWERCASE_TRANSLATION_NUMBER = 'a' + 'z';
+
     public static String convert(String word) {
         validate(word);
-        return null;
+        return new String(convert(word.toCharArray()));
+    }
+
+    private static char[] convert(char[] word) {
+        for (int i = 0; i < word.length; i++) {
+            word[i] = convert(word[i]);
+        }
+        return word;
+    }
+
+    private static char convert(char letter) {
+        if (Character.isLowerCase(letter)) {
+            return (char) (LOWERCASE_TRANSLATION_NUMBER - letter);
+        }
+        if (Character.isUpperCase(letter)) {
+            return (char) (UPPERCASE_TRANSLATION_NUMBER - letter);
+        }
+        return ' ';
     }
 
     private static void validate(String word) {
