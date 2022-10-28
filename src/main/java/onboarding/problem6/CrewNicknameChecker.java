@@ -56,12 +56,16 @@ public class CrewNicknameChecker {
         for (int i = NICKNAME_DUPLICATE_START_INDEX; i < nickname.length(); i++) {
             String partOfNickname = calculatePartOfNickname(nickname, i);
 
-            if (partOfNicknameMap.containsKey(partOfNickname)) {
-                addDuplicateCrew(crew, partOfNicknameMap.get(partOfNickname));
-                continue;
-            }
-            partOfNicknameMap.put(partOfNickname, crew.getEmail());
+            checkDuplicateCrewNickname(crew, partOfNickname);
         }
+    }
+
+    private void checkDuplicateCrewNickname(Crew crew, String partOfNickname) {
+        if (partOfNicknameMap.containsKey(partOfNickname)) {
+            addDuplicateCrew(crew, partOfNicknameMap.get(partOfNickname));
+            return;
+        }
+        partOfNicknameMap.put(partOfNickname, crew.getEmail());
     }
 
     private void addDuplicateCrew(Crew crew, String email) {
