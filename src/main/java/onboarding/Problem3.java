@@ -5,6 +5,8 @@ public class Problem3 {
     public static int solution(int number) {
         int clap = 0;
 
+        validateCase(number);
+
         for(int i=1 ; i <= number ; i++){
             String stringNumber = Integer.valueOf(i).toString();
             System.out.println(stringNumber);
@@ -21,5 +23,9 @@ public class Problem3 {
             }
         }
         return clap;
+    }
+
+    public static void validateCase(int number){
+        if(number < 1 || number > 10000) throw new RuntimeException("숫자의 범위가 적합하지 않습니다.");
     }
 }
