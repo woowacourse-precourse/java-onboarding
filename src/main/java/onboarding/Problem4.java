@@ -2,8 +2,11 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        StringBuilder answer = new StringBuilder();
+        for (int idx = 0; idx < word.length(); idx++) {
+            answer.append(transformChar(word.charAt(idx)));
+        }
+        return answer.toString();
     }
 
     public static char transformChar(char c) {
