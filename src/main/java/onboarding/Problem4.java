@@ -4,42 +4,55 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Problem4 {
+
     static final String ERROR = "ERROR";
-    static ArrayList<Integer> InitAscii() {
-        ArrayList<Integer> result = new ArrayList<>(
-                Collections.nCopies(256, -1)
-        );
-        for (int i = 0; i < 26; i++) {
-            result.set('A'+i, 'A'+25-i);
-            result.set('a'+i, 'a'+25-i);
-        }
-        return result;
-    }
+    static final int ASCII_MAX = 256;
+    static final int NO_CHANGE = -1;
+    private final static int MIN_NUMBER = 1;
+    private final static int MAX_NUMBER = 1001;
+    private final static int ALPHABAT_MAX = 26;
 
-    static String ReverseStr(String word) {
-        String result = "";
-        ArrayList<Integer> ascii_array = InitAscii();
-
-        for(char c : word.toCharArray()) {
-            if (ascii_array.get(c) != -1)
-                result += Character.toString(ascii_array.get(c));
-            else if (ascii_array.get(c) == -1)
-                result += c;
-        }
-        return result;
-    }
-
-    static boolean Exception(String word) {
-        return (0 < word.length() && word.length() < 1001) ? false : true;
-    }
     public static String solution(String word) {
         String answer;
 
-        if (Exception(word))
+        if (exception(word)) {
             return ERROR;
+        }
 
-        answer = ReverseStr(word);
+        answer = reverseStr(word);
 
         return answer;
     }
+
+    static boolean exception(String word) {
+        return (MIN_NUMBER < word.length() && word.length() < MAX_NUMBER)
+            ? false : true;
+    }
+
+    static String reverseStr(String word) {
+        String result = "";
+        ArrayList<Integer> asciiArray = initAscii();
+
+        for (char c : word.toCharArray()) {
+            if (asciiArray.get(c) != NO_CHANGE) {
+                result += Character.toString(asciiArray.get(c));
+            } else if (asciiArray.get(c) == NO_CHANGE) {
+                result += c;
+            }
+        }
+        return result;
+    }
+
+    static ArrayList<Integer> initAscii() {
+        ArrayList<Integer> result = new ArrayList<>(
+            Collections.nCopies(ASCII_MAX, NO_CHANGE)
+        );
+        for (int i = 0; i < ALPHABAT_MAX; i++) {
+            result.set('A' + i, 'Z' - i);
+            result.set('a' + i, 'z' - i);
+        }
+        return result;
+    }
+
+
 }
