@@ -29,4 +29,8 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+
+    private static int max(int a, int b){
+        return a > b? a : b;
+    }
 }
