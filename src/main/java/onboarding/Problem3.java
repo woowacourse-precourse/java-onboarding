@@ -1,13 +1,13 @@
 package onboarding;
 
 public class Problem3 {
-
     public static int solution(int number) {
-        int answer = 0;
-        return gameController(number, answer);
+        return gameController(number);
     }
 
-    static int gameController(int number, int answer) {
+    static int gameController(int number) {
+        int answer = 0;
+
         for (int i = 1; i <= number; i++) {
             answer += checkNumber(i);
         }
@@ -16,8 +16,8 @@ public class Problem3 {
     }
 
     static int checkNumber(int number) {
-        String target = "369";
         String[] numberArr = Integer.toString(number).split("");
+        String target = "369";
         int result = 0;
 
         for(String num : numberArr) {
@@ -27,9 +27,5 @@ public class Problem3 {
         }
 
         return result;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(solution(33));
     }
 }

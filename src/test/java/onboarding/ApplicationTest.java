@@ -72,7 +72,7 @@ class ApplicationTest {
 
         @Test
         void case3() {
-            String cryptogram = "booobuusssvivt";
+            String cryptogram = "booooobuusssvivt";
             String result = "vivt";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
@@ -91,6 +91,13 @@ class ApplicationTest {
         void case2() {
             int number = 33;
             int result = 14;
+            assertThat(Problem3.solution(number)).isEqualTo(result);
+        }
+
+        @Test
+        void case3() {
+            int number = 1;
+            int result = 0;
             assertThat(Problem3.solution(number)).isEqualTo(result);
         }
     }
