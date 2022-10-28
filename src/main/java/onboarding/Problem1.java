@@ -11,6 +11,7 @@ class Problem1 {
         }
         int pobiScore = compareScore(pageNumberHighScore(pobi, 0),pageNumberHighScore(pobi, 1));
         int crongScore = compareScore(pageNumberHighScore(crong, 0),pageNumberHighScore(crong, 1));
+        answer = selectWinner(pobiScore, crongScore);
         return answer;
     }
 
@@ -37,5 +38,11 @@ class Problem1 {
         if(compare1 > compare2) return compare1;
         if(compare1 < compare2) return compare2;
         return compare2;
+    }
+
+    private static int selectWinner(int pobiScore, int crongScore){
+        if(pobiScore > crongScore) return 1;
+        if(pobiScore < crongScore) return 2;
+        return 0;
     }
 }
