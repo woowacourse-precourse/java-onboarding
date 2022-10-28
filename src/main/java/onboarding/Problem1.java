@@ -10,6 +10,10 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
+        if (checkValidation(pobi) == -1 || checkValidation(pobi) == -1) {
+            return -1;
+        }
+
         int pobiLeftPageMaxScore = findMaxScore(pobi, 0);
         int pobiRightPageMaxScore = findMaxScore(pobi, 1);
         int pobiMaxScore = findMaxScore(pobiLeftPageMaxScore, pobiRightPageMaxScore);
@@ -57,6 +61,16 @@ class Problem1 {
         return multiplication;
     }
 
+    private static int checkValidation(List<Integer> pageList) {
+        int lefPage = pageList.get(0);
+        int rightPage = pageList.get(1);
+
+        if (rightPage - lefPage > 2) {
+            return -1;
+        } else {
+            return 0;
+        }
+    }
 
     private static int findWinner(int pobiMaxnumber, int crongMaxNumber) {
         if (pobiMaxnumber > crongMaxNumber) {
