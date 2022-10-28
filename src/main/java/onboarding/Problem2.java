@@ -23,9 +23,8 @@ public class Problem2 {
         return answer;
     }
 
-	//String을 List로 변환하는 함수
-	public static List<Character> createList(String word)
-	{
+	//String을 List로 변환
+	public static List<Character> createList(String word) {
 		List<Character> wordList = new ArrayList<>();
 
 		for (int i = 0; i < word.length(); i++)
@@ -34,9 +33,17 @@ public class Problem2 {
 		return wordList;
 	}
 
+	//list를 String으로 변환
+	public static String listToString(List<Character> list) {
+		String str = "";
+
+		for (int i = 0; i < list.size(); i++)
+			str += list.get(i);
+		return str;
+	}
+
 	//중복 제거 함수
-	public static List<Character> remove(List<Character> wordlist, int first, int last)
-	{
+	public static List<Character> remove(List<Character> wordlist, int first, int last) {
 		int index = first;
 
 		for (int i = index; i < last; i++)
@@ -45,42 +52,28 @@ public class Problem2 {
 		return wordlist;
 	}
 
-	//중복하는 단어를 제거
-	public static List<Character> remove(List<Character> duplication)
-	{
-		for (int i = 0; i < duplication.size() - 1; i++)
-		{
-			if (duplication.get(i) == duplication.get(i + 1))
-			{
-				duplication.remove(i);
-				duplication.remove(i);
-				i--;
-			}
+	//중복되는 문자의 인덱스 찾는 함수
+	public static int[] findDuplication(List<Character> wordlist) {
+		boolean isVisited = false;
+		int[ ] range = new int[2];
+		int second = 0;
 
-			if (i + 1 == duplication.size() - 1)
-			{
-				if (!duplicaionCheck(duplication))
-					i = -1;
+		for (int i = 0; i < wordlist.size(); i++) {
+
+			if (isVisited) {
+				range[0] = i - 1;
+				range[1] = second + 1;
+				return range;
+			}
+			for (int j = i + 1; j < wordlist.size(); j++) {
+				if (wordlist.get(i) != wordlist.get(j))
+					break;
+				if (wordlist.get(i) == wordlist.get(j)) {
+					second = j;
+					isVisited = true;
+				}
 			}
 		}
-		return duplication;
-	}
-
-	public static boolean duplicaionCheck(List<Character> list)
-	{
-		for (int i = 0; i < list.size() - 1; i++)
-		{
-			if (list.get(i) == list.get(i + 1))
-				return false;
-		}
-		return true;
-	}
-	public static String listToString(List<Character> list)
-	{
-		String str = "";
-
-		for (int i = 0; i < list.size(); i++)
-			str += list.get(i);
-		return str;
+		return range;
 	}
 }
