@@ -37,7 +37,7 @@ public class Problem2 {
                 else { // 이전이랑 현재 문자가 다르면
                     if (count == 0)  // 문자가 연속되지 않음
                         answer += previous;
-                    if ((i == before_len -1) && (previous != now)) // 마지막 문자이고 연속되지 않으면 마지막 문자 추가
+                    if (i == before_len -1) // 마지막 문자이고 연속되지 않으면 마지막 문자 추가
                         answer += now;
                     previous = now;
                     count = 0;
