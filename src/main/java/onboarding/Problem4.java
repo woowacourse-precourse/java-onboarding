@@ -9,9 +9,10 @@ public class Problem4 {
             if(isUpperCase(currentChar)){
                 //알파벳 대문자일 경우 변환
                 answer += changeUpperCase(currentChar);
+            }else if(isLowerCase(currentChar)){
+                //알파벳 소문자일 경우 변환
+                answer += changeLowerCase(currentChar);
             }
-            //알파벳 소문자일 경우 변환
-
             //공백일 경우 유지
         }
 
