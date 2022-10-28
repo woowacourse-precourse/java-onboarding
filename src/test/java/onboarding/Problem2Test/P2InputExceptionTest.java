@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Nested
-public class InputExceptionTest {
+public class P2InputExceptionTest {
 
     @Test
     void case1() {

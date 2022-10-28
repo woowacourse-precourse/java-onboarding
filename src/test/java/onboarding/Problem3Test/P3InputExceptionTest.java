@@ -1,6 +1,5 @@
 package onboarding.Problem3Test;
 
-import onboarding.Problem2;
 import onboarding.Problem3;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -8,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Nested
-public class InputExceptionTest {
+public class P3InputExceptionTest {
 
     @Test
     void case1() {
