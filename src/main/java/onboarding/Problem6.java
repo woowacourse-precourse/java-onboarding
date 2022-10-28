@@ -18,6 +18,7 @@ public class Problem6 {
             putAllSubstringInHashMap(forms.get(i),hashMap);
         }
         findRestrictedUser(answer,hashMap);
+        answer = removeDuplicateAndSort(answer);
         return answer;
     }
 
@@ -42,5 +43,12 @@ public class Problem6 {
                 answer.addAll(hashMap.get(key));
             }
         }
+    }
+
+    public static List<String> removeDuplicateAndSort(List<String> list){
+        HashSet<String> hashSet = new HashSet<>(list);
+        list = new ArrayList<>(hashSet);
+        list.sort(Comparator.naturalOrder());
+        return list;
     }
 }
