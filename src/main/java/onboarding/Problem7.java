@@ -3,6 +3,8 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
+    static final int DUPLICATE_POINT = 10;
+    static final int VISITOR_POINT = 1;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         HashMap<String, People> contacts = new HashMap<>();
         for (List<String> friend : friends) { // 친구 목록 만들기
@@ -32,7 +34,7 @@ public class Problem7 {
                 continue;
             }
             int point = duplicateCount(userFriends, contacts.get(name).friendList);
-            nowPeople.plusPoint(point*10);
+            nowPeople.plusPoint(point*DUPLICATE_POINT);
             contacts.put(name, nowPeople);
         }
 
@@ -47,7 +49,7 @@ public class Problem7 {
             } else {
                 newPeople = contacts.get(visitor);
             }
-            newPeople.plusPoint(1);
+            newPeople.plusPoint(VISITOR_POINT);
             contacts.put(visitor, newPeople);
         }
         List<People> keyList = new ArrayList<>(contacts.values());
