@@ -6,10 +6,13 @@ import java.util.stream.IntStream;
 
 public class UpperCaseConvertStrategy implements AlphabetConvertStrategy {
     private static final List<Character> UPPERCASE_LETTERS = uppercaseLettersInit();
+    private static final int MAX_NUMBER_OF_UPPER_CASE_ASCII_NUMBERS = 90;
+    private static final int MAX_NUMBER_OF_NUMBER_TO_SUBTRACT = 25;
+    private static final int MIN_NUMBER_OF_NUMBER_TO_SUBTRACT = 0;
     
     private static List<Character> uppercaseLettersInit() {
-        return IntStream.rangeClosed(0, 25)
-                .mapToObj(number -> (char) (90 - number))
+        return IntStream.rangeClosed(MIN_NUMBER_OF_NUMBER_TO_SUBTRACT, MAX_NUMBER_OF_NUMBER_TO_SUBTRACT)
+                .mapToObj(number -> (char) (MAX_NUMBER_OF_UPPER_CASE_ASCII_NUMBERS - number))
                 .collect(Collectors.toList());
     }
     

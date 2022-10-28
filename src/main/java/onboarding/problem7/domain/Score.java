@@ -1,6 +1,8 @@
 package onboarding.problem7.domain;
 
 public class Score {
+    private static final int EACH_SCORE_OF_NUMBER_OF_FRIENDS_YOU_KNOW_TOGETHER = 10;
+    
     private final int score;
     
     public Score() {
@@ -12,7 +14,7 @@ public class Score {
     }
     
     public Score addScoreOfNumberOfFriendsYouKnowTogether(final int numberOfFriendsYouKnowTogether) {
-        return new Score(score + numberOfFriendsYouKnowTogether * 10);
+        return new Score(score + numberOfFriendsYouKnowTogether * EACH_SCORE_OF_NUMBER_OF_FRIENDS_YOU_KNOW_TOGETHER);
     }
     
     public Score increase() {

@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class Cryptogram {
     private static final String DELIMITER = "";
+    private static final int NOT_EXIST_OVERLAP_CHARACTER = -1;
     
     private String cryptogram;
     
@@ -26,7 +27,7 @@ public class Cryptogram {
     }
     
     private static boolean isOverlapCharacterExist(final int overlapEndIndex) {
-        return overlapEndIndex != -1;
+        return overlapEndIndex != NOT_EXIST_OVERLAP_CHARACTER;
     }
     
     private String[] split() {

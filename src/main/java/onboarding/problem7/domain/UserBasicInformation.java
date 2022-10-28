@@ -1,6 +1,8 @@
 package onboarding.problem7.domain;
 
 public class UserBasicInformation {
+    private static final int DRAW_NUMBER = 0;
+    
     private final String userName;
     private Score score;
     
@@ -10,11 +12,15 @@ public class UserBasicInformation {
     }
     
     public int compareTo(final UserBasicInformation otherUserBasicInformation) {
-        if (score.compareTo(otherUserBasicInformation.score) == 0) {
+        if (isDraw(otherUserBasicInformation)) {
             return userName.compareTo(otherUserBasicInformation.userName);
         }
         
         return otherUserBasicInformation.score.compareTo(score);
+    }
+    
+    private boolean isDraw(final UserBasicInformation otherUserBasicInformation) {
+        return score.compareTo(otherUserBasicInformation.score) == DRAW_NUMBER;
     }
     
     public void addScoreOfNumberOfFriendsYouKnowTogether(final int numberOfFriendsYouKnowTogether) {

@@ -4,6 +4,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Users {
+    private static final int MAX_LENGTH_OF_RETURN_LENGTH = 5;
+    
     private final Map<String, User> users;
     
     public Users(final String user, final List<List<String>> friends, final List<String> visitors) {
@@ -61,7 +63,7 @@ public class Users {
                 .map(users::get)
                 .filter(User::isNotZeroScore)
                 .sorted()
-                .limit(5)
+                .limit(MAX_LENGTH_OF_RETURN_LENGTH)
                 .map(User::getUserName)
                 .collect(Collectors.toList());
     }

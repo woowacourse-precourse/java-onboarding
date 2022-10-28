@@ -6,10 +6,13 @@ import java.util.stream.IntStream;
 
 public class LowerCaseConvertStrategy implements AlphabetConvertStrategy {
     private static final List<Character> LOWERCASE_LETTERS = lowercaseLettersInit();
+    private static final int MAX_NUMBER_OF_LOWER_CASE_ASCII_NUMBERS = 122;
+    private static final int MAX_NUMBER_OF_NUMBER_TO_SUBTRACT = 25;
+    private static final int MIN_NUMBER_OF_NUMBER_TO_SUBTRACT = 0;
     
     private static List<Character> lowercaseLettersInit() {
-        return IntStream.rangeClosed(0, 25)
-                .mapToObj(number -> (char) (122 - number))
+        return IntStream.rangeClosed(MIN_NUMBER_OF_NUMBER_TO_SUBTRACT, MAX_NUMBER_OF_NUMBER_TO_SUBTRACT)
+                .mapToObj(numberToSubtract -> (char) (MAX_NUMBER_OF_LOWER_CASE_ASCII_NUMBERS - numberToSubtract))
                 .collect(Collectors.toList());
     }
     

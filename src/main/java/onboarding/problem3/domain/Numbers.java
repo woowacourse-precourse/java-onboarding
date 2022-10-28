@@ -5,6 +5,8 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Numbers {
+    private static final int START_NUMBER = 1;
+    
     private final List<Number> numbers;
     
     public Numbers(final int maxNumber) {
@@ -16,7 +18,7 @@ public class Numbers {
     }
     
     private static List<Number> initNumbers(final int maxNumber) {
-        return IntStream.rangeClosed(1, maxNumber)
+        return IntStream.rangeClosed(START_NUMBER, maxNumber)
                 .mapToObj(Number::new)
                 .collect(Collectors.toList());
     }
