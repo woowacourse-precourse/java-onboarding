@@ -18,20 +18,31 @@ import java.util.Map;
  */
 
 public class Problem4 {
+    private static final Map<Character, Character> greenFrog = new HashMap<>();
     public static String solution(String word) {
-        Map<Character, Character> greenFrog = new HashMap<>();
-        for (char i = 'a', j = 'z', k = 'A', l = 'Z'; i <= 'z'; i++, j--, k++, l--) {
-            greenFrog.put(i, j);
-            greenFrog.put(k, l);
+        if (!greenFrog.isEmpty()) {
+            return convertWord(word);
         }
-        StringBuilder answer = new StringBuilder();
+        initializeGreenFrogWord('a', 'z');
+        initializeGreenFrogWord('A', 'Z');
+        return convertWord(word);
+    }
+
+    private static String convertWord(String word) {
+        StringBuilder frogLanguage = new StringBuilder();
         for (char c : word.toCharArray()) {
             if (greenFrog.containsKey(c)) {
-                answer.append(greenFrog.get(c));
+                frogLanguage.append(greenFrog.get(c));
                 continue;
             }
-            answer.append(c);
+            frogLanguage.append(c);
         }
-        return answer.toString();
+        return frogLanguage.toString();
+    }
+
+    private static void initializeGreenFrogWord(char firstCharacter, char lastCharacter) {
+        for (char c = firstCharacter; c <= lastCharacter; c++) {
+            greenFrog.put(c, (char) (lastCharacter - (c - firstCharacter)));
+        }
     }
 }
