@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.stream.IntStream;
+
 /**
  * 🚀 기능 요구 사항
  * 배달이가 좋아하는 369게임을 하고자 한다. 놀이법은 1부터 숫자를 하나씩 대면서, 3, 6, 9가 들어가는 숫자는 숫자를 말하는 대신 3, 6, 9의 개수만큼 손뼉을 쳐야 한다.
@@ -22,21 +24,18 @@ public class Problem3 {
     }
 
     private static void initializeNumbers369Count() {
-        for (int i = 3; i < numberArray.length; i++) {
-            String numStr = i + "";
-            numberArray[i] = numberArray[i - 1] + getCount369Num(numStr);
-        }
+        IntStream.range(3, numberArray.length)
+                .forEach(i -> {
+                    String numStr = i + "";
+                    numberArray[i] = numberArray[i - 1] + getCount369Num(numStr);
+                });
     }
 
     private static int getCount369Num(String numStr) {
-        int count = 0;
-        for (int j = 0; j < numStr.length(); j++) {
-            int digitNumber = Character.getNumericValue(numStr.charAt(j));
-            boolean isInclude369 = digitNumber % 3 == 0 && digitNumber != 0;
-            if (isInclude369) {
-                count++;
-            }
-        }
-        return count;
+        return (int) IntStream.range(0, numStr.length())
+                .filter(i -> {
+                    int digitNumber = Character.getNumericValue(numStr.charAt(i));
+                    return digitNumber % 3 == 0 && digitNumber != 0;
+                }).count();
     }
 }
