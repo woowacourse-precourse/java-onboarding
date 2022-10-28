@@ -34,12 +34,12 @@ class Problem1 {
                 max = sum;
                 sum = 0;
             }
+
             if(max < multiple) {
                 max = multiple;
                 multiple = 1;
             }
         }
-
         return max;
     }
 
@@ -51,7 +51,7 @@ class Problem1 {
         int crongScore = getBigScore(crong);
 
         if (pobiScore > crongScore) return 1;
-        else if (pobiScore == crongScore) return 0;
-        else return -1;
+        if (pobiScore == crongScore) return 0;
+        return -1;
     }
 }
