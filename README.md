@@ -64,7 +64,7 @@ BUILD SUCCESSFUL in 0s
 <div markdown="1">
 
 - 입력 문자열을 분리하여 배열로 저장한 후 리스트로 변환
-- while문을 진행하여 연속적으로 중복되는 문자열은 삭제
+- while문을 진행하여 리스트에서 연속적으로 중복되는 문자열은 삭제
   - 모두 중복되어 문자열이 없거나 더이상 중복되는 문자열이 없을 경우 반복문 빠져나옴
 - 리스트의 문자열을 합쳐서 출력 
 
@@ -80,6 +80,22 @@ BUILD SUCCESSFUL in 0s
   - 배열의 길이만큼 반복문을 진행하며 3,6,9를 포함하였는지 판별
     - 포함하였다면 answer += 1
 - answer 값 출력
+
+</div>
+</details>
+
+<details>
+<summary>문제 4</summary>
+<div markdown="1">
+
+- map에 반대되는 알파벳들을 쌍 형태로 저장
+  - for문을 진행하며 아스키코드를 변환하여 저장
+- 입력 문자열을 배열 형태로 저장, 변환하여 string을 담을 배열 선언
+- 배열의 문자를 key 값으로 갖는 value를 answerArr에 담는 메소드 선언
+  - for문을 진행하며 key 값에 맞는 value를 배열에 저장
+  - 대문자일 경우 대문자, 소문자일 경우 소문자로 배열에 저장
+- answerArr의 문자열을 합쳐서 출력
+
 
 </div>
 </details>
