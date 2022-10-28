@@ -23,6 +23,10 @@ public class NicknameChecker {
         return this;
     }
 
+    public List<String> getSimilarNicknameCrewEmail(){
+        return new LinkedList<>(similarUserEmails);
+    }
+
 
     public void addCrew(List<String> crewInfo){
         crews.add(new Crew(crewInfo.get(0), crewInfo.get(1)));
