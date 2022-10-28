@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
@@ -28,7 +29,22 @@ class Problem1 {
         return false;
     }
 
+    /**
+     * 각 자릿수의 숫자를 구하는 메서드
+     *
+     * @param num 책의 페이지
+     * @return 각 자릿수를 구해 Integer형 List로 반환
+     */
+    static List<Integer> calcEachDigitNum (Integer num) {
+        List<Integer> list = new ArrayList<>();
 
+        while (num > 0) {
+            list.add(num % 10);
+            num /= 10;
+        }
+
+        return list;
+    }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
