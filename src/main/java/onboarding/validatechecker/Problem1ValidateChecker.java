@@ -10,32 +10,37 @@ public class Problem1ValidateChecker {
 	private static final int MAX_PAGE_NUM=400;
 
 	public static boolean isPageValidate(List<Integer> pages){
-		return  isPageSizeCorrect(pages) && isPageNumberNotNull(pages)
-			&& isPageNumberContinuous(pages) && isPageNumberCheckOddOrEven(pages)
-			&& isRightBiggerThanLeft(pages) && isPageNumberInRange(pages);
+		return  isPagesNotNull(pages) && isPageSizeCorrect(pages)
+			&& isPageNumberNotNull(pages) && isPageNumberContinuous(pages)
+			&& isPageNumberCheckOddOrEven(pages) && isRightBiggerThanLeft(pages)
+			&& isPageNumberInRange(pages);
 	}
 
-	public static boolean isPageNumberNotNull(List<Integer> pages){
+	private static boolean isPagesNotNull(List<Integer> pages){
+		return pages != null;
+	}
+
+	private static boolean isPageNumberNotNull(List<Integer> pages){
 		return pages.get(RIGHT_PAGE) != null && pages.get(LEFT_PAGE) != null;
 	}
 
-	public static boolean isPageSizeCorrect(List<Integer> pages){
+	private static boolean isPageSizeCorrect(List<Integer> pages){
 		return pages.size() == PAGE_SIZE;
 	}
 
-	public static boolean isPageNumberContinuous(List<Integer> pages){
+	private static boolean isPageNumberContinuous(List<Integer> pages){
 		return pages.get(LEFT_PAGE)+1 == pages.get(RIGHT_PAGE);
 	}
 
-	public static boolean isPageNumberCheckOddOrEven(List<Integer> pages){
+	private static boolean isPageNumberCheckOddOrEven(List<Integer> pages){
 		return pages.get(LEFT_PAGE)%2==1 && pages.get(RIGHT_PAGE)%2==0;
 	}
 
-	public static boolean isPageNumberInRange(List<Integer> pages){
+	private static boolean isPageNumberInRange(List<Integer> pages){
 		return pages.get(LEFT_PAGE) >= MIN_PAGE_NUM && pages.get(RIGHT_PAGE) <= MAX_PAGE_NUM;
 	}
 
-	public static boolean isRightBiggerThanLeft(List<Integer> pages){
+	private static boolean isRightBiggerThanLeft(List<Integer> pages){
 		return pages.get(LEFT_PAGE) < pages.get(RIGHT_PAGE);
 	}
 }

@@ -2,8 +2,14 @@ package onboarding.validatechecker;
 
 public class Problem2ValidateChecker {
 	public static void isCryptogramValidate(String cryptogram){
+		isCryptogramNotNull(cryptogram);
 		isLengthInRange(cryptogram);
 		isCryptogramContainUpper(cryptogram);
+	}
+
+	private static void isCryptogramNotNull(String cryptogram){
+		if(cryptogram == null)
+			throw new IllegalArgumentException("입력된 cryptogram이 null입니다.");
 	}
 
 	private static void isLengthInRange(String cryptogram){
