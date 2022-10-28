@@ -20,6 +20,15 @@ class Problem1 {
         return answer;
     }
 
+    private static int addAllNumbers(int number) {
+        int result = 0;
+        while (number > 0) {
+            result += number % 10;
+            number /= 10;
+        }
+        return result;
+    }
+
     private static boolean validateLength(List<Integer> input) {
         if (input.size() != INPUT_SIZE) {
             return false;
