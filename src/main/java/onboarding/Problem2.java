@@ -17,6 +17,11 @@ public class Problem2 {
         return answer;
     }
 
+    private static String makeNewCryptogram(String cryptogram){
+        if(isEmpty(cryptogram) || cannotDeleteMore(cryptogram)) return cryptogram;
+        return makeNewCryptogram(encodeCryptogram(cryptogram));
+    }
+
     private static boolean isEmpty(String cryptogram){
         if(cryptogram.length() == 0) return true;
         return false;
