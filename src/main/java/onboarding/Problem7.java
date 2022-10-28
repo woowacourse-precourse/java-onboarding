@@ -15,10 +15,11 @@ public class Problem7 {
         // 7. 5-6을 반복하고 가장 높은 점수가 0이거나 더이상 인덱스가 없을 경우 루프를 탈출하고 리턴
         List<String> friendsList = findMyFriends(user, friends);
         List<String> stepFriendsList = findStepFriends(user, friends, friendsList);
+        List<String> recomUsers = addVisitors(user, visitors, stepFriendsList);
         List<Integer> scr = cntScore(user, friends, visitors, stepFriendsList);
 
 
-        return sort(stepFriendsList, scr);
+        return sort(recomUsers, scr);
     }
 
     private static List<String> findMyFriends(String user, List<List<String>> friends) {
@@ -69,6 +70,20 @@ public class Problem7 {
                 }
             }
         }
+
+        return stepFriendsList;
+    }
+
+    private static List<String> addVisitors(String user, List<String> visitors, List<String> stepFriendsList) {
+        for(String str : visitors) {
+            if(stepFriendsList.contains(str)) {
+                continue;
+            }
+
+            stepFriendsList.add(str);
+        }
+
+        Collections.sort(stepFriendsList);
 
         return stepFriendsList;
     }
