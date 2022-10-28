@@ -69,4 +69,22 @@ public class Problem7 {
 
         return score;
     }
+
+    private static List<String> getResult(int[] score, Map<Integer, String> numberToName) {
+        List<String> result = new ArrayList<>();
+        int scoreLength = Math.min(score.length, 5);
+
+        for (int i = 0; i < scoreLength; i++) {
+            int maxScore = Integer.MIN_VALUE;
+            for (int j = 0; j < score.length; j++) {
+                maxScore = Math.max(maxScore, score[j]);
+            }
+            if (maxScore == 0) break;
+            for (int j = 0; j < score.length; j++) {
+                if (score[j] == maxScore) result.add(numberToName.get(j));
+            }
+        }
+
+        return result;
+    }
 }
