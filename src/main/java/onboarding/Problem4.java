@@ -26,7 +26,21 @@ public class Problem4 {
         String answer = "";
         HashMap<String,Character> upperDictionary = new HashMap<String, Character>();
         HashMap<String,Character> lowerDictionary = new HashMap<String, Character>();
+        createUpperCaseDictionary(upperDictionary);
+        createLowerCaseDictionary(lowerDictionary);
 
+        for(int i=0; i<word.length(); i++){
+            char ch = word.charAt(i);
+            if(ch ==(char)32){
+                answer += ch;
+            }
+            else if(isUpperCase(ch) == true){
+                answer += upperDictionary.get(ch);
+            }
+            else if(isUpperCase(ch) == false){
+                answer += lowerDictionary.get(ch);
+            }
+        }
         return answer;
     }
 }
