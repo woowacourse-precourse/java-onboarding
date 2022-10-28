@@ -23,10 +23,10 @@
 1. 어떤 숫자에서 3, 6, 9의 개수를 세는 기능
 2. 1부터 number까지 369게임을 진행하는 기능
 
-### 1. public int countTargetNumberInNumber(int targetNumber, int number)
-- number 안에 찾는 숫자(targetNumber)의 개수를 세서 반환하는 메소드
+### 1. public int countTargetCharacterInNumber(char targetCharacter, int number)
+- number 안에 찾는 숫자(targetCharacter)의 개수를 세서 반환하는 메소드
 - 기능 : 
-  - number 안에 찾는 숫자(targetNumber)가 있는지 확인한다.
+  - number 안에 찾는 숫자(targetCharacter)가 있는지 확인한다.
   - 찾는 숫자가 있으면 그 수를 세서 반환한다. 없으면 0을 반환한다.
 
 ### 2. public int play369Game(int endNumber)
@@ -38,7 +38,7 @@
   - 박수의 횟수를 반환한다.
 
 ## Test Code
-### 1. countTargetNumberInNumberTest()
+### 1. countTargetCharacterInNumberTest()
 - 숫자와 찾는 숫자를 입력 시 숫자의 찾는 수의 개수를 반환하는지 확인
   - 테스트 : (3, 3), (6, 636), (6, 993)
   - 정답 : (1), (1), (0)
