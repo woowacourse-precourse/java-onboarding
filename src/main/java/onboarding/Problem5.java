@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
@@ -19,14 +18,10 @@ public class Problem5 {
     }
 
     public static boolean checkInput(int money) {
-        if (money < 1 || money > 1_000_001) {
-            return true;
-        }
-        return false;
+        return money < 1 || money > 1_000_001;
     }
 
     private static List<Integer> changeUnit(int money, List<Integer> answer) {
-
         for (int unit : UNITS) {
             answer.add(money / unit);
             money %= unit;
