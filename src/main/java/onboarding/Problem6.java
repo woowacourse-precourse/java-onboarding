@@ -2,8 +2,10 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.IntStream;
 
 public class Problem6 {
@@ -11,8 +13,9 @@ public class Problem6 {
     private static final int TWO = 2;
 
     public static List<String> solution(List<List<String>> forms) {
-        Map<String, List<String>> nicknameToTwoLetter = new HashMap();
+        Map<String, List<String>> nicknameToTwoLetters = new HashMap();
         Map<String, String> nicknameToEmail = new HashMap<>();
+        Set<String> twoLettersSet = new HashSet<>();
         List<String> answer = new ArrayList<>();
 
         forms.forEach(man -> {
@@ -20,50 +23,30 @@ public class Problem6 {
             String nickname = man.get(1);
             List<String> twoLetters = computeTwoLetters(nickname);
 
-            nicknameToTwoLetter.put(nickname, twoLetters);
+            nicknameToTwoLetters.put(nickname, twoLetters);
             nicknameToEmail.put(nickname, email);
+            twoLetters.forEach(twoLetter -> twoLettersSet.add(twoLetter));
         });
 
-        //
-        //        forms.forEach(man -> {
-        //            String nickname = man.get(1);
-        //            List<String> twoLetters = computeTwoLetters(nickname);
-        //
-        //            nicknameTwoLetter.put(nickname, twoLetters);
-        //            nicknameToEmail.put(nickname, man.get(0));
-        //        });
-        //
-        //        IntStream.range(0, forms.size())
-        //            .map(i -> forms.size() - i - 1)
-        //            .forEach(i -> {
-        //                String email = forms.get(i)
-        //                    .get(0);
-        //                String nickname = forms.get(i)
-        //                    .get(1);
-        //                System.out.println("email : " + email);
-        //                System.out.println("nickname : " + nickname);
-        //
-        //                forms.remove(i);
-        //                List<String> nicknames = nicknameTwoLetter.get(nickname)
-        //                    .stream()
-        //                    .filter(twoLetter -> forms.stream()
-        //                        .filter(form -> nicknameTwoLetter.get(form.get(1))
-        //                            .contains(twoLetter))
-        //                        .count() != 0)
-        //                    .collect(Collectors.toList());
-        //                if (nicknames.isEmpty()) {
-        //                    return ;
-        //                }
-        //                answer.add(email);
-        //                nicknames.stream().map(name -> nicknameToEmail.get(name)).forEach(em -> answer.add(em));
-        //            });
+        nicknameToTwoLetters.forEach((baseNickname, baseTwoLetters) -> {
+            nicknameToTwoLetters.forEach((nickname, twoLetters) -> {
+                if (baseNickname.equals(nickname)) {
+                    return;
+                }
+                if (baseTwoLetters.stream()
+                    .filter(baseTwoLetter -> twoLetters.contains(baseTwoLetter))
+                    .count() != 0) {
+                    answer.add(nicknameToEmail.get(baseNickname));
+                }
+            });
+        });
         return answer;
     }
 
     private static List<String> computeTwoLetters(String input) {
         List<String> twoLetter = new ArrayList<>();
 
-        IntStream.range(0, input.length() - TWO)
+        IntStream.rangeClosed(0, input.length() - TWO)
             .forEach(i -> twoLetter.add(input.substring(i, i + TWO)));
         return twoLetter;
     }
