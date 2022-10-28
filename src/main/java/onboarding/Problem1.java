@@ -7,13 +7,15 @@ class Problem1 {
         int answer = 0;
         try{
             checkLength(pobi,crong);
-
+            int pobiScore = getPageBestScore(pobi);
+            int crongScore = getPageBestScore(crong);
         } catch (Exception e){
             answer=-1;
         }
         return answer;
     }
-    public static void getPageBestScore(List<Integer> list) throws Exception {
+
+    public static int getPageBestScore(List<Integer> list) throws Exception {
         int left = list.get(0);
         int right = list.get(1);
 
@@ -21,11 +23,35 @@ class Problem1 {
         checkPageRange(left);
         checkPageRange(right);
         if (isEven(left)&&isOdd(right)){
-
+            return Math.max(getScore(left),getScore(right));
         }else {
             throw new Exception("홀수 짝수가 지켜지지 않음");
         }
     }
+
+    public static int getScore(int page){
+        return Math.max(sumMaxValue(page),mulMaxValue(page));
+    }
+
+    public static int sumMaxValue(int page){
+        int sum=0;
+        while (page>0){
+            sum += page % 10;
+            page /=10;
+        }
+        return sum;
+    }
+
+    public static int mulMaxValue(int page){
+        int mul=1;
+        while (page>0){
+            mul*=page%10;
+            page=page/10;
+        }
+        return mul;
+    }
+
+
 
     public static void checkLength(List<Integer> pobi,List<Integer> crong) throws Exception{
         if (pobi.size()!=2||crong.size()!=2) throw new Exception("페이지 불일치");
