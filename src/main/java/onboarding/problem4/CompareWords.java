@@ -17,7 +17,7 @@ public class CompareWords {
                 continue;
             }
 
-            result = placeCheck.wordCompare(Dictionary, split);
+            result += placeCheck.wordCompare(Dictionary, split);
         }
 
         return result;

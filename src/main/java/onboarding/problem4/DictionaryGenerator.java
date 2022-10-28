@@ -8,7 +8,7 @@ public class DictionaryGenerator {
     // createDictionary
     public Map<Character, Character> createDictionary() {
 
-        HashMap<Character, Character> characterMap = new HashMap<>();
+        Map<Character, Character> characterMap = new HashMap<>();
 
         int asciiLast = 90;
 
