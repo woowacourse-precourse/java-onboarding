@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 /*
 - 기능 구현사항 목록 -
@@ -16,8 +17,15 @@ public class Problem3 {
             String temp = Integer.toString(num);
             int[] digits = new int[temp.length()];
             for (int j = 0; j < temp.length(); j++) digits[j] = temp.charAt(j) - '0';
-            System.out.print( Arrays.toString(digits) );
+            int[] counter = new int[10];
+            for(int k = 0; k < digits.length; k++){
+                counter[digits[k]]++;
+            }
+            for(int m = 1; m<4; m++){
+                answer += counter[3*m];
+            }
         }
+
         return answer;
     }
 }
