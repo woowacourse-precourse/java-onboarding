@@ -14,7 +14,7 @@ class Problem1 {
         int answer = exceptionNum;
 
         //길이가 2일 경우
-        if (exceptionCheck(pobi) && exceptionCheck(crong))
+        if (checkException(pobi) && checkException(crong))
         {
             int pobiScore = Math.max(findScore(pobi.get(leftPage)), findScore(pobi.get(rightPage)));
             int crongScore = Math.max(findScore(crong.get(leftPage)), findScore(crong.get(rightPage)));
@@ -24,47 +24,48 @@ class Problem1 {
         return answer;
     }
 
-    //자리수를 알아내서 배열에 저장하는 함수
-    public static List<Integer> findPlaceValue(int number) {
-        List<Integer> numberList = new ArrayList<>();
+    //자리수를 알아내 리스트에 저장
+    public static List<Integer> findPlaceValue(int num) {
+        List<Integer> num_list = new ArrayList<>();
 
-        if (number == 0)
-            numberList.add(number);
-        while(number > 0)
-        {
-            numberList.add(number % 10);
-            number /= 10;
+        if (num == 0)
+            num_list.add(num);
+        while(num > 0) {
+            num_list.add(num % 10);
+            num /= 10;
         }
 
-        return numberList;
+        return num_list;
     }
-    //곱셈과 덧셈을 하는 함수
-    public static int calculation(List<Integer> numberList, char type) {
+    //곱셈과 덧셈 연산 수행
+    public static int calculation(List<Integer> num_list, char type) {
         int result = 0;
 
+        //곱셈일 경우 초기화
         if (type == '*')
             result = 1;
 
-        for (int i = 0; i < numberList.size(); i++) {
+        for (int i = 0; i < num_list.size(); i++) {
             if (type == '+')
-                result += numberList.get(i);
+                result += num_list.get(i);
             if (type == '*')
-                result *= numberList.get(i);
+                result *= num_list.get(i);
         }
 
         return result;
     }
 
-    //연산한 값의 max값을 찾기
+    //max 찾기
     public static int findScore(int number) {
         int sumResult = calculation(findPlaceValue(number), '+');
         int multiplicationResult = calculation(findPlaceValue(number), '*');
 
-        return Math.max(sumResult,  exceptionCheck(multiplicationResult));
+        return Math.max(sumResult,  checkException(multiplicationResult));
     }
 
-    //점수 비교 후 결과 반환
+    //점수 비교해 결과 반환
     public static int compareNum(int pobiNum, int crongNum) {
+        //연산한 결과가 0일 경우
         if (pobiNum >= errorNum || crongNum >= errorNum)
             return -1;
         if (pobiNum == crongNum)
@@ -75,17 +76,19 @@ class Problem1 {
             return 2;
         return -1;
     }
-
-    //연산한 값에 0이 있을 경우
-    public static int exceptionCheck(int num) {
+    
+    /*
+    * 예외 처리
+    */
+    public static int checkException(int num) {
+        //연산한 값에 0이 있을 경우
         if (num == 0)
             return errorNum;
         return num;
     }
-
-    //size가 없을 경우
-    public static boolean exceptionCheck(List<Integer> numList) {
-        if (numList.size() == listSize)
+    public static boolean checkException(List<Integer> num_list) {
+        //num_list가 null일경우
+        if (num_list.size() == listSize)
             return true;
         return false;
     }

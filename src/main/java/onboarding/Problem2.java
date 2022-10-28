@@ -29,7 +29,6 @@ public class Problem2 {
 
         return answer;
     }
-
 	//String을 List로 변환
 	public static List<Character> toList(String cryptogram) {
 		List<Character> cryptogram_list = new ArrayList<>();
@@ -39,7 +38,6 @@ public class Problem2 {
 
 		return cryptogram_list;
 	}
-
 	//list를 String으로 변환
 	public static String toString(List<Character> cryptogram_list) {
 		String str = "";
@@ -48,7 +46,6 @@ public class Problem2 {
 			str += cryptogram_list.get(i);
 		return str;
 	}
-
 	//중복 제거 함수
 	public static List<Character> remove(List<Character> cryptogram_list, int first, int last) {
 		int index = first;
@@ -58,7 +55,6 @@ public class Problem2 {
 
 		return cryptogram_list;
 	}
-
 	//중복되는 문자의 범위를 찾는 함수
 	public static int[] findDuplication(List<Character> cryptogram_list) {
 		boolean isVisited = false;
@@ -85,7 +81,6 @@ public class Problem2 {
 		}
 		return range;
 	}
-
 	//대문자 있는지 확인
 	public static boolean checkUpperCase(String cryptogram) {
 		for (int i = 0; i < cryptogram.length(); i++)
