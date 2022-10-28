@@ -2,34 +2,52 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Problem6 {
 
-    private static void putListToCrews(List<List<String>> forms, List<Crew> crews){
-        for(List<String> strings: forms){
+    private static void putListToCrews(List<List<String>> forms, List<Crew> crews) {
+        for (List<String> strings : forms) {
             crews.add(new Crew(strings.get(0), strings.get(1)));
         }
     }
 
     private static void checkCrews(List<Crew> crews) {
-        if(crews.size()>10000||crews.size()<1)
+        if (crews.size() > 10000 || crews.size() < 1)
             throw new IllegalArgumentException("크루는 1명 이상 10,000명 이하입니다.");
+    }
+
+    private static List<String> findDuplicate(List<Crew> crews) {
+        return crews.stream()
+                .filter(x -> checkNickNames(x, crews))
+                .map(Crew::getEmail)
+                .collect(Collectors.toList())
+                .stream()
+                .distinct()
+                .sorted()
+                .collect(Collectors.toList());
+    }
+
+    private static boolean checkNickNames(Crew crew, List<Crew> crews) {
+        return crews.stream()
+                .filter(x -> !x.equals(crew))
+                .anyMatch(x -> crew.checkOverlap(x.getNickname()));
     }
 
     public static List<String> solution(List<List<String>> forms) {
         List<Crew> crews = new ArrayList<>();
         putListToCrews(forms, crews);
         checkCrews(crews);
-        List<String> answer = List.of("answer");
-        return answer;
+
+        return findDuplicate(crews);
     }
 }
 
 class Crew {
-    private String email;
-    private String nickname;
+    private final String email;
+    private final String nickname;
 
     public Crew(String email, String nickname) {
         this.email = checkEmail(email);
@@ -63,5 +81,13 @@ class Crew {
     public boolean checkOverlap(String otherNickname) {
         return IntStream.range(0, otherNickname.length() - 1)
                 .anyMatch(x -> nickname.contains(otherNickname.substring(x, x + 3)));
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getNickname() {
+        return nickname;
     }
 }
