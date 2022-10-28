@@ -30,7 +30,11 @@ public class Problem2 {
                 i--;
             }
         }
-
+        StringBuilder result = new StringBuilder();
+        for (String s : code) {
+            result.append(s);
+        }
+        return result.toString();
     }
 
 
