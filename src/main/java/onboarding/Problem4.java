@@ -19,8 +19,11 @@ public class Problem4 {
         return upperCase;
     }
 
-    public static void toLowerCaseBackward(char lowerCase) {
-
+    public static char toLowerCaseBackward(char lowerCase) {
+        if (lowerCase >= 65 && lowerCase <= 90) {
+            lowerCase = (char)(122 - (lowerCase - 97));
+        }
+        return lowerCase;
     }
 
 
