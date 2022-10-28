@@ -22,7 +22,7 @@ class Problem1 {
      * 페이지의 각 자릿수를 더하는 함수
      */
     private static int getPageDigitSum(int[] splitedPage) {
-        return Integer.MAX_VALUE;
+        return splitedPage[0] + splitedPage[1] + splitedPage[2];
     }
 
     /**
