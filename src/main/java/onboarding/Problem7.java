@@ -5,26 +5,31 @@ import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        Map<String, Integer> scoreMap = new HashMap<>();
-        FriendGraph friendGraph = new FriendGraph();
+
+        MemberRepository memberRepository = new MemberRepository();
 
         for (List<String> friend : friends) {
-            initUserScoreMap(scoreMap, friend.get(0));
-            initUserScoreMap(scoreMap, friend.get(1));
-            friendGraph.addFriend(friend.get(0),friend.get(1));
-            friendGraph.addFriend(friend.get(1),friend.get(0));
+            memberRepository.addFriend(new Member(friend.get(0), 0), friend.get(1));
+            memberRepository.addFriend(new Member(friend.get(1), 0), friend.get(0));
         }
 
-        List<String> userFriendList = friendGraph.getFriendList(user);
-        updateScoreMapByUserFriendList(friendGraph, scoreMap, userFriendList);
-        updateScoreMapByVisitorList(visitors, scoreMap);
+        updateScoreByUserFriendList(memberRepository, user);
+        updateScoreByVisitors(memberRepository, visitors);
 
-        deleteScoreMapMemberByUserFriendList(user, scoreMap, userFriendList);
+        deleteMemberByUserFriendList(user, memberRepository);
 
-        return scoreMap.entrySet()
+        return memberRepository.findAll()
                 .stream()
-                .sorted((o1, o2) -> o2.getValue() - o2.getValue())
-                .map(i -> i.getKey())
+                .sorted((o1, o2) -> {
+                    if (o1.getScore() < o2.getScore()) {
+                        return 1;
+                    } else if (o1.getScore() > o2.getScore()) {
+                        return -1;
+                    } else {
+                        return o1.getName().compareTo(o2.getName());
+                    }
+                })
+                .map(i -> i.getName())
                 .limit(5)
                 .collect(Collectors.toList());
     }
@@ -99,25 +104,6 @@ public class Problem7 {
 
     }
 
-    static class FriendGraph {
-        private Map<String, List<String>> friendMap = new HashMap<>();
-
-        public void addFriend(String user, String friend) {
-            if (!friendMap.containsKey(user)) {
-                friendMap.put(user,new ArrayList<>());
-            }
-            friendMap.get(user).add(friend);
-        }
-
-        public List<String> getFriendList(String user) {
-            return friendMap.get(user);
-        }
-
-        public Iterator<String> getIteratorFriendGraph(){
-            return friendMap.keySet().iterator();
-        }
-
-    }
     private static void initUserScoreMap(Map<String, Integer> scoreMap, String user) {
         if (!scoreMap.containsKey(user)) {
             scoreMap.put(user, 0);
@@ -142,11 +128,16 @@ public class Problem7 {
         }
     }
 
-    private static void deleteScoreMapMemberByUserFriendList(String user, Map<String, Integer> scoreMap, List<String> userFriendList) {
-        for (String userFriend : userFriendList) {
-            scoreMap.remove(userFriend);
+    private static void deleteMemberByUserFriendList(String user, MemberRepository memberRepository) {
+        Optional<List<String>> friendListByUsername = memberRepository.findFriendListByUsername(user);
+        if (!friendListByUsername.isPresent()) {
+            return;
         }
-        scoreMap.remove(user);
+
+        for (String userFriend : friendListByUsername.get()) {
+            memberRepository.deleteMember(userFriend);
+        }
+        memberRepository.deleteMember(user);
     }
 
     private static void updateScoreByVisitors(MemberRepository memberRepository, List<String> visitors) {
