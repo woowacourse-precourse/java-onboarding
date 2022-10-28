@@ -13,9 +13,9 @@ public class Problem6 {
 
 		for (User user : userList) {
 			for (String blackName : blacklist) {
-				if (user.nickname.contains(blackName)) {
+				if (user.checkDuplicate(blackName)) {
 					for (User targetUser : userList) {
-						if (targetUser.nickname.contains(blackName)) {
+						if (targetUser.checkDuplicate(blackName)) {
 							answer.add(targetUser.email);
 						}
 					}
@@ -48,6 +48,10 @@ public class Problem6 {
 				}
 			}
 			return duplicateTokens;
+		}
+
+		public boolean checkDuplicate(String token) {
+			return nickname.contains(token);
 		}
 	}
 }
