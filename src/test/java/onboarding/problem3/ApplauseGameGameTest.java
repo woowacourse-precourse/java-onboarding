@@ -23,14 +23,6 @@ public class ApplauseGameGameTest {
             assertThat(ApplauseGame.start(number)).isEqualTo(result);
         }
 
-        @Test
-        void if_Under_Min(){
-            assertThrows(ApplauseException.class, () -> ApplauseGame.start(0));
-        }
 
-        @Test
-        void if_Over_MAX(){
-            assertThrows(ApplauseException.class, () -> ApplauseGame.start(10_001));
-        }
     }
 }
