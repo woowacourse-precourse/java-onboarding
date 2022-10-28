@@ -4,12 +4,15 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        answer = 0;
+        int answer = 0;
         if(isPageInvalid(pobi) || isPageInvalid(crong)) return -1;
         if (isPageNotContinuous(pobi) || isPageNotContinuous(crong)) return -1;
+
         int pobi_score = Math.max(maxAddorMultiply(pobi.get(0)), maxAddorMultiply(pobi.get(1)));
         int crong_score = Math.max(maxAddorMultiply(crong.get(0)), maxAddorMultiply(crong.get(1)));
+
+        if (pobi_score > crong_score) answer = 1;
+        if (pobi_score < crong_score) answer = 2;
         return answer;
     }
     public static boolean isPageInvalid(List<Integer> array) {
