@@ -47,7 +47,7 @@ public class SNSController {
         users.put(userName, user);
     }
 
-    private class FriendRecommendPoint {
+    private class FriendRecommendPoint implements Comparable<FriendRecommendPoint>{
 
         private final String name;
         private int point;
@@ -67,6 +67,11 @@ public class SNSController {
 
         public String getName(){
             return name;
+        }
+
+        @Override
+        public int compareTo(FriendRecommendPoint o) {
+            return this.point - o.getPoint();
         }
     }
 

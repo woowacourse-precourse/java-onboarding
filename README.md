@@ -91,7 +91,7 @@
   - [x] 방문자 등록
   - [ ] 친구추천 점수 계산
     - [x] 이름, 점수를 포함하는 내부 private class 생성
-      - [ ] comparable -> compareTo 구현 : 추천점수로
+      - [x] comparable -> compareTo 구현 : 추천점수로
     - [ ] 친구의 친구 점수 더하기
     - [ ] 방문자 점수 점수 더하기
     - [ ] 이미 친구인 사용자 점수 제거하기
