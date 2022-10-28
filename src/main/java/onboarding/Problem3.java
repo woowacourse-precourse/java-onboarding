@@ -1,5 +1,8 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Problem3 {
     public static int solution(int number) {
         int numberOfClap = 0;
@@ -10,10 +13,10 @@ public class Problem3 {
     }
 
     private static int check369(int digit) {
-        if (digit == 3) return 1;
-        if (digit == 6) return 1;
-        if (digit == 9) return 1;
+        List<Integer> checkList = List.of(3, 6, 9);
 
+        if (checkList.contains(digit))
+            return 1;
         return 0;
     }
 
