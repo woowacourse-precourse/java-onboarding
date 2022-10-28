@@ -34,8 +34,8 @@ class Problem1 {
 
   private static int Winner (List<Integer> pobi, List<Integer> crong){
 
-    int pobi_Score = CompareScore(pobi);
-    int crong_Score = CompareScore(crong);
+    int pobi_Score = compareScore(pobi);
+    int crong_Score = compareScore(crong);
     int result = Integer.MAX_VALUE;
 
     if(pobi_Score>crong_Score)
@@ -48,7 +48,7 @@ class Problem1 {
     return result;
   }
 
-  private static int CompareScore(List<Integer> page){
+  private static int compareScore(List<Integer> page){
     int LeftPage_Score = getPageBestScore(page.get(LEFT_PAGE));
     int RightPage_Score = getPageBestScore(page.get(RIGHT_PAGE));
     return Math.max(LeftPage_Score,RightPage_Score);
