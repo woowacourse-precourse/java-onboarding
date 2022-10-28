@@ -79,7 +79,7 @@ class Problem1 {
         if(!checkInterval(number1, number2)){ //페이지 간격 예외 확인
             result = false;
         }
-        if( number1 % 2 == 0 && isOdd(number2)){ //페이제 홀수 짝수 예외 확인
+        if(isEven(number1) && isOdd(number2)){ //페이제 홀수 짝수 예외 확인
             result = false;
         }
         return result;
@@ -111,6 +111,14 @@ class Problem1 {
     public static boolean isOdd(int number){
         boolean result = true;
         if(number % 2 == 0){
+            result = false;
+        }
+        return result;
+    }
+
+    public static boolean isEven(int number){
+        boolean result = true;
+        if(number % 2 == 1){
             result = false;
         }
         return result;

@@ -10,7 +10,7 @@
 | 10.27 | checkNumberRange() | 입력 범위 예외 확인 | int            | boolean     | committed        |
 | 10.28 | checkInterval()    | 입력 페이지 간격 확인 | int, int       | boolean     | committed        |
 | 10.28 | isOdd()            | 홀수 확인     | int            | boolean     | committed |
-| 10.28 | isEven()           | 짝수 확인     | int            | boolean     | work in progress |
+| 10.28 | isEven()           | 짝수 확인     | int            | boolean     | committed |
 
 ### TODO
 -change variable number to pageNumber  
