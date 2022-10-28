@@ -21,8 +21,9 @@ public class Problem6 {
         List<String> duplicateSubStrList = getDuplicateSubStr();
         List<String> hasDuplicateNickNameEmailList =
             generateHasDuplicateNickNameEmailList(duplicateSubStrList);
+        Collections.sort(hasDuplicateNickNameEmailList);
 
-        return Collections.emptyList();
+        return hasDuplicateNickNameEmailList;
     }
 
     private static List<String> generateHasDuplicateNickNameEmailList(List<String> duplicateSubStrList) {
