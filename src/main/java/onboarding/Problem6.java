@@ -40,7 +40,7 @@ public class Problem6 {
         for (String pattern : overlapPattern) {
             int[] kmpTable = makeKmpTable(pattern);
             for (List<String> form : forms) {
-                if (doKMP(form.get(1), pattern, kmpTable)){
+                if (form.get(1).length() != 1 && doKMP(form.get(1), pattern, kmpTable)){
                     emails.add(form.get(0));
                 }
             }
@@ -89,6 +89,9 @@ public class Problem6 {
         Set<String> allPattern = new HashSet<>();
         Set<String> overlapPattern = new HashSet<>();
         for (List<String> form : forms) {
+            if (form.get(1).length() == 1) {
+                continue;
+            }
             findPatternByWord(allPattern, overlapPattern, form.get(1));
         }
 
