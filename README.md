@@ -44,11 +44,11 @@
 
 ## 문제7
 
-- friends 목록과 user를 받아서 해당 user의 친구만 List로 만들어 반환하는 createFriendList 메서드
-- friends 목록을 받아서 friends 목록의 사용자와 친구인 리스트를 만들어 반환하는 createFriendsFriendList 메서드
-  - user가 friend의 friend로 들어갈 때 제거
-- 친구 목록과 방문자 목록을 받아서 각 사용자와 그 추천 점수를 반환하는 getRecommendPoint 메서드
-  - user가 pointMap에 들어갈 때 제거
+- friends 목록과 user를 받아서 해당 user의 친구만 List로 만들어 반환하는 createUserFriends 메서드
+- friends 목록을 받아서 friends 목록의 사용자와 친구인 리스트를 만들어 반환하는 createUserFriendFriends 메서드
+  - user가 userFriendFriends로 들어갈 때 제거
+- 친구 목록과 방문자 목록을 받아서 각 사용자와 그 추천 점수를 반환하는 createPoints 메서드
+  - user가 points에 들어갈 때 제거
 - user와 friends, visitor를 받아서 메서드들을 사용하여 최종 result 리스트를 반환하는 solution
 
 ## 참고 문헌
