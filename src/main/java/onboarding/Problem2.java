@@ -19,20 +19,20 @@ public class Problem2 {
 
         Deque<Character> queue = new ArrayDeque<>();
 
-        char lastWord = ' ';
+        char lastWord = ' '; // 중복 된 단어를 저장하기 위한 임시 변수
         for (int i = 0; i < cryptogram.length(); i++) {
             char word = cryptogram.charAt(i);
-            if (word == lastWord) {
+            if (word == lastWord) { // 만약 중복 된 단어와 현재 단어가 같은 경우 그대로 진행, 연속 된 모든 단어를 지우기 위함
                 continue;
             }
 
-            if (queue.isEmpty()) {
+            if (queue.isEmpty()) { // queue 가 비어있을 때 단어 삽입
                 queue.offerLast(word);
                 lastWord = ' ';
             } else {
-                if (queue.peekLast() == word) {
+                if (queue.peekLast() == word) { // queue 의 마지막 단어와 현재 단어가 같다면 queue 의 마지막 단어를 빼내어 변수에 저장
                     lastWord = queue.pollLast();
-                } else {
+                } else { // 현재 단어를 queue 에 삽입하고, 단어가 다르기 때문에 lastWord 를 초기화 시켜준다.
                     queue.offerLast(word);
                     lastWord = ' ';
                 }
