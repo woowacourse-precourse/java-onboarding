@@ -3,6 +3,9 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+    public Problem1(){
+
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if(listException(pobi) || listException(crong)){
             return -1;
@@ -11,7 +14,7 @@ class Problem1 {
         return answer;
     }
 
-    private static boolean listException(List<Integer> list){
+    public static boolean listException(List<Integer> list){
         return list.size() != 2;
     }
 }
