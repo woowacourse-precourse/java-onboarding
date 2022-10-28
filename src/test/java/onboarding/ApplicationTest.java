@@ -272,7 +272,7 @@ class ApplicationTest {
                 String word = "VALIDWORDS".repeat(101);
                 assertThatThrownBy(() -> Problem4.solution(word))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessage("문자열의 길이는 %d 이상 %d 이하여야 합니다.", 1, 1000);
+                        .hasMessage("문자열은 %d 이상 %d 이하의 길이로 주어져야 합니다.", 1, 1000);
             }
 
             @Test
@@ -281,7 +281,7 @@ class ApplicationTest {
                 String word = "";
                 assertThatThrownBy(() -> Problem4.solution(word))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessage("문자열의 길이는 %d 이상 %d 이하여야 합니다.", 1, 1000);
+                        .hasMessage("문자열은 %d 이상 %d 이하의 길이로 주어져야 합니다.", 1, 1000);
             }
         }
     }
