@@ -12,6 +12,11 @@
 - 두 점수를 받아서 게임 결과를 반환하는 getResult 메서드
 - pobi와 crong의 값을 받아서 요구사항을 처리 한 후 결과값을 반환하는 solution 메서드
 
+## 문제2
+
+- String을 받아 연속된 문자를 제거하여 반환하는 deleteRepeat 메서드
+- cryptogram을 받아 요구사항을 처리하고 결과를 반환하는 solution 메서드
+
 ## 참고 문헌
 
 - 좋은 코드를 위한 자바 변수명 네이밍(https://tecoble.techcourse.co.kr/post/2020-04-24-variable_naming/)
