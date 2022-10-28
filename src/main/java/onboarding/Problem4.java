@@ -17,6 +17,23 @@ public class Problem4 {
         }
     }
 
+    static String getChangedString(String str) {
+        String newStr = "";
+
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (Character.isUpperCase(ch)) {
+                newStr += (char)upperCase[ch - 'A'];
+            } else if (Character.isLowerCase(ch)) {
+                newStr += (char)lowerCase[ch - 'a'];
+            } else if (Character.isSpaceChar(ch)) {
+                newStr += ' ';
+            }
+        }
+
+        return newStr;
+    }
+
     public static String solution(String word) { // 문자열인데 이름을 word로 해놓은 이유
         setLetterCaseMappingTable();
         String answer = getChangedString(word);
