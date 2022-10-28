@@ -3,6 +3,9 @@ package onboarding;
 import java.util.*;
 
 class User {
+    private final int TEN_POINT = 10;
+    private final int ONE_POINT = 1;
+
     private String id;
     private int score;
     private List<User> friends;
@@ -30,15 +33,17 @@ class User {
     }
 
     public void addTenPoints() {
-        this.score += 10;
+        this.score += TEN_POINT;
     }
 
     public void addOnePoint() {
-        this.score += 1;
+        this.score += ONE_POINT;
     }
 }
 
 public class Problem7 {
+
+    private static final int ANSWER_MAX_SIZE = 5;
 
     private static Map<String, User> userList = new HashMap<>();
     private static List<String> answer = new ArrayList<>();
@@ -120,7 +125,7 @@ public class Problem7 {
         User mainUser = userList.get(mainUserId);
 
         for (User user : sortedUserList) {
-            if(answerSize > 5)
+            if(answerSize > ANSWER_MAX_SIZE)
                 return;
 
             List<User> friends = user.getFriends();
