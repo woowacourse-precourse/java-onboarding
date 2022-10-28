@@ -15,6 +15,7 @@
 ## 문제2
 
 - String을 받아 연속된 문자를 제거하여 반환하는 deleteRepeat 메서드
+  - 받은 String의 길이가 1 이하인 경우 바로 그 값을 리턴한다
 - cryptogram을 받아 요구사항을 처리하고 결과를 반환하는 solution 메서드
 
 ## 참고 문헌
