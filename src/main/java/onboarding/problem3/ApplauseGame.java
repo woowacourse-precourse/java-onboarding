@@ -8,13 +8,16 @@ public class ApplauseGame {
 
     public static int start(ApplauseParameter applauseParameter, ClapRule clapRule) {
         String numbers = applauseParameter.getNumbers();
-
-        for (int i = 0; i < numbers.length(); i++) {
-            claps.add(clapRule.isClap(numbers, i));
-        }
+        addClaps(clapRule, numbers);
         int result = getAnInt();
         resetClaps();
         return result;
+    }
+
+    private static void addClaps(ClapRule clapRule, String numbers) {
+        for (int i = 0; i < numbers.length(); i++) {
+            claps.add(clapRule.isClap(numbers, i));
+        }
     }
 
     private static void resetClaps() {
