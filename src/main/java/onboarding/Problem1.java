@@ -55,7 +55,7 @@ class Problem1 {
         return multiply;
     }
 
-    public static int chooseMaxValueBetweenAddAndMultiply(List<Integer> pageList) {
+    public static int chooseMaxValueBetweenAddAndMultiply(int value) {
         return 0;
 
     }
