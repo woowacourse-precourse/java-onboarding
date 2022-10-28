@@ -13,6 +13,14 @@ public class Problem6 {
         return answer;
     }
 
+    public static void getAnswer(List<List<String>> forms) {
+        for (int i = 0; i < partsOfNicknameList.size(); i++) {
+            if (partsOfNicknameList.get(i).stream().anyMatch(part -> nicknameAndCountMap.get(part) > 1)) {
+                answer.add(forms.get(i).get(FORM_EMAIL));
+            }
+        }
+    }
+
     public static void setupData(List<List<String>> forms) {
         forms.stream()
                 .map(form -> nicknameDecomposition(form.get(FORM_NICKNAME)))
