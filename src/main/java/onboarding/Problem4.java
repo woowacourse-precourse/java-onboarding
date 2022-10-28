@@ -12,8 +12,10 @@ public class Problem4 {
             }else if(isLowerCase(currentChar)){
                 //알파벳 소문자일 경우 변환
                 answer += changeLowerCase(currentChar);
+            }else{
+                //공백일 경우 유지
+                answer += ' ';
             }
-            //공백일 경우 유지
         }
 
         return answer;
