@@ -7,7 +7,6 @@ public class Problem3 {
         if (number > 3) {
             answer = getHandClap(number);
         }
-        System.out.println(answer);
         return answer;
     }
 
