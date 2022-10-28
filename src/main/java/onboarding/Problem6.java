@@ -41,8 +41,14 @@ public class Problem6 {
         System.out.println(getEmail);
 // duplicateName이 포함되어있는 유저의 이메일을 getEmail에 add
 //forms.get(s).get(1).indexOf(duplicateName.get(k) --> forms.get(s).get(1).contains(duplicateName.get(k)) 리팩토링
+        HashSet<String> hashSet2 = new HashSet<>(getEmail);
+        ArrayList<String> getDupUserEmail = new ArrayList<String>(hashSet2);
+//HashSet을 이용한 중복제거 후 다시 getDupUserEmail 동적배열로 선언
+        Collections.sort(getDupUserEmail);
+//Coletions.sort()를 통해 오름차순 정렬;
 
-        List<String> answer = List.of("answer");
+
+        List<String> answer = getDupUserEmail;
         return answer;
     }
 }
