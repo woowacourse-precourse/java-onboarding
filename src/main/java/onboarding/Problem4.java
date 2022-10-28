@@ -5,8 +5,16 @@ import java.util.Map;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        StringBuilder makingConvertedString = new StringBuilder();
+        ConvertMap convertMap = new ConvertMap(getConvertMap());
+
+        char[] letters = word.toCharArray();
+        for (char token : letters) {
+            addTokenToMakingConvertedString(makingConvertedString, convertMap, token);
+        }
+        String convertedString = makingConvertedString.toString();
+
+        return convertedString;
     }
 
     private static void addTokenToMakingConvertedString(StringBuilder makingConvertedString, ConvertMap convertMap, char token) {
