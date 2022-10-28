@@ -38,6 +38,13 @@ class Problem1 {
         return result;
     }
 
+    private static int getMaxScore(int num1, int num2) {
+        if (num1 > num2) {
+            return num1;
+        }
+        return num2;
+    }
+
     private static boolean validateLength(List<Integer> input) {
         if (input.size() != INPUT_SIZE) {
             return false;
