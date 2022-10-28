@@ -1,13 +1,10 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-		List<String> answer = Collections.emptyList();
+		List<String> answer = null;
 		
 		List<String> myFriendList = findFriends(user, friends);
 		List<List<String>> exceptFriendList = findnoFriends(user, friends);
@@ -23,9 +20,25 @@ public class Problem7 {
 			}
 		}
 		
+		for (String visitorName : visitors) {
+			if(myFriendList.contains(visitorName)){
+				continue;
+			}
+			
+			if(!scoreList.containsKey(visitorName)){
+				scoreList.put(visitorName, 1);
+			}else{
+				int beforeScore = scoreList.get(visitorName);
+				scoreList.put(visitorName, beforeScore + 1);
+			}
+		}
+		
+		answer = new ArrayList<>(scoreList.keySet());
+		
 		return answer;
 	}
 	
+
 	private static HashMap<String, Integer> calculateScore(HashMap<String, Integer> scoreList, String s) {
 		boolean flag = scoreList.containsKey(s);
 		if(!flag){
