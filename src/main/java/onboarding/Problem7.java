@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     private static final Map<String, Integer> userAndScoreMap = new HashMap<>();
@@ -9,7 +10,16 @@ public class Problem7 {
     private static final int VISITOR_POINT = 1;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        friendsSetup(friends, user);
+        updateScore(friends, visitors);
+        removeMyFriendsAndValueIsZero();
+
+        List<String> answer = userAndScoreMap.entrySet().stream()
+                .sorted(Map.Entry.comparingByKey())
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .map(Map.Entry::getKey)
+                .limit(5)
+                .collect(Collectors.toList());
         return answer;
     }
 
