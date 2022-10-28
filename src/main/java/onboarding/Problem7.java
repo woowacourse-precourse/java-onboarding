@@ -23,9 +23,13 @@ public class Problem7 {
         for(int i=0;i<friends.size();i++){
             String leftPerson = friends.get(i).get(0);
             String rightPerson = friends.get(i).get(1);
-            if(userFriend.contains(leftPerson))friendRecommend.put(rightPerson,friendRecommend.getOrDefault(rightPerson,0)+10);
-            if(userFriend.contains(rightPerson))friendRecommend.put(leftPerson,friendRecommend.getOrDefault(leftPerson,0)+10);
+            if(isAlreadyFriend(leftPerson,userFriend))friendRecommend.put(rightPerson,friendRecommend.getOrDefault(rightPerson,0)+10);
+            if(isAlreadyFriend(leftPerson,userFriend))friendRecommend.put(leftPerson,friendRecommend.getOrDefault(leftPerson,0)+10);
         }
         return friendRecommend;
+    }
+    private static boolean isAlreadyFriend(String person, Set<String> userFriend) {
+        if(userFriend.contains(person))return true;
+        else return false;
     }
 }
