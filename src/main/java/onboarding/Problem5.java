@@ -8,11 +8,19 @@ public class Problem5 {
     static final int MONEY_LOWERBOUND = 1;
     static final int MONEY_UPPERBOUND = 1_000_000;
     static final List<Integer> MONEY_LIST = Arrays.asList(50000,10000,5000,1000,500,100,50,10,1);
-    public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
-        return answer;
-    }
+    static final List<Integer> EXCEPTION = Collections.emptyList();
 
+    public static List<Integer> solution(int money) {
+        List<Integer> solution = getSolution(money);
+        return solution;
+    }
+    public static List<Integer> getSolution(int money) {
+        if (validationCheck(money)) {
+            List<Integer> result = splitMoney(money);
+            return result;
+        }
+        return EXCEPTION;
+    }
     public static boolean validationCheck(int money) {
         if (MONEY_LOWERBOUND <= money && money <= MONEY_UPPERBOUND) {
             return true;
@@ -32,7 +40,7 @@ public class Problem5 {
         return resultList;
     }
     public static boolean isBigger(int money, int baseMoney) {
-        if (money > baseMoney) {
+        if (money >= baseMoney) {
             return true;
         }
         return false;
