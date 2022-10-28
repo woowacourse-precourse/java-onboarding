@@ -64,6 +64,24 @@ public class Problem7 {
         }
     }
 
+    /**
+     * 3. user와 함께 아는 친구의 수 점수 계산
+     * @param user : user 아이디
+     * @param userFriends : user의 친구목록
+     * @param friends : 친구 관계
+     */
+    static void countFriends (String user, List<String> userFriends, List<List<String>> friends){
+        for (List<String> friend : friends) {
+            String id1 = friend.get(0);
+            String id2 = friend.get(1);
+
+            for (String userFriend : userFriends) {
+                if (id1.equals(userFriend) && !user.equals(id2)) friendList.put(id2, friendList.get(id2) + 10);
+                if (id2.equals(userFriend) && !user.equals(id2)) friendList.put(id1, friendList.get(id1) + 10);
+            }
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
