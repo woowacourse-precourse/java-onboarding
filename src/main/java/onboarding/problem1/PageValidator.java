@@ -4,6 +4,8 @@ import java.util.List;
 
 public class PageValidator {
 
+    private static final Integer PAGE_SIZE = 2;
+
     public static boolean isValidatePage(List<Integer> pobi, List<Integer> crong) {
 
         if (!validatePageSize(pobi, crong)) {
@@ -22,7 +24,7 @@ public class PageValidator {
     }
 
     private static boolean validatePageSize(List<Integer> pobi, List<Integer> crong) {
-        return pobi.size() == 2 && crong.size() == 2;
+        return pobi.size() == PAGE_SIZE && crong.size() == PAGE_SIZE;
     }
 
     private static boolean validatePageNumber(List<Integer> pobi, List<Integer> crong) {
