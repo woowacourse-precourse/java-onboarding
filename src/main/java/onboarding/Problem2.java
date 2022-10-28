@@ -21,4 +21,11 @@ public class Problem2 {
         if(cryptogram.length() == 0) return true;
         return false;
     }
+
+    private static boolean cannotDeleteMore(String cryptogram){
+        for(int i=0; i<cryptogram.length()-1; i++){
+            if(cryptogram.charAt(i) == cryptogram.charAt(i+1)) return false;
+        }
+        return true;
+    }
 }
