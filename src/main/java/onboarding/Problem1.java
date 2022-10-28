@@ -27,7 +27,11 @@ class Problem1 {
     }
 
     private static boolean isValidatePage(List<Integer> pageNumList) {
-        return pageNumList.get(SECOND_PAGE_INDEX) - pageNumList.get(FIRST_PAGE_INDEX) == 1;
+        Integer leftPageNum = pageNumList.get(FIRST_PAGE_INDEX);
+        Integer rightPageNum = pageNumList.get(SECOND_PAGE_INDEX);
+        return (leftPageNum > 0) && (leftPageNum <= 399) &&
+                (rightPageNum > 0) && (rightPageNum <= 400) &&
+                (rightPageNum - leftPageNum == 1);
     }
 
     private static int getScore(List<Integer> pageNumList) {
