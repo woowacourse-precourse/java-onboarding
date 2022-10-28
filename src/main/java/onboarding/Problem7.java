@@ -13,7 +13,7 @@ public class Problem7 {
                         .reverseOrder(Map.Entry.<String, Integer>comparingByValue())
                         .thenComparing(Map.Entry.comparingByKey()))
                 .limit(5)
-                .map(entry -> entry.getKey())
+                .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
     }
 
