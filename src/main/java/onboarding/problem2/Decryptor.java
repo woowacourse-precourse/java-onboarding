@@ -19,9 +19,7 @@ public class Decryptor {
     private static String decryptCharacterToString(Stack<Character> cryptogramStack) {
         StringBuilder decryptStringBuilder = new StringBuilder();
 
-        for (Character character : cryptogramStack) {
-            decryptStringBuilder.append(character);
-        }
+        cryptogramStack.forEach(decryptStringBuilder::append);
         return decryptStringBuilder.toString();
     }
 
