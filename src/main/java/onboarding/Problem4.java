@@ -8,6 +8,12 @@ package onboarding;
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
+        Problem4 problem4 = new Problem4();
+
+        for (char letter : word.toCharArray()) {
+            answer += problem4.reverse(letter);
+        }
+
         return answer;
     }
 
