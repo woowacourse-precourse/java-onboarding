@@ -4,14 +4,26 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int answer = -1;
+        if (isNormal(pobi) && isNormal(crong))
+            switch (getMax(pobi).compareTo(getMax(crong))) {
+                case -1: // getMax(pobi) < getMax(crong)
+                    answer = 2;
+                    break;
+                case 0: // getMax(pobi) == getMax(crong)
+                    answer = 0;
+                    break;
+                case 1: // getMax(pobi) > getMax(crong)
+                    answer = 1;
+                    break;
+            }
         return answer;
     }
 
     private static boolean isNormal(List<Integer> pages) {
-        if(pages.get(0) + pages.get(1) < 2 || pages.get(0) + pages.get(1) > 800) return false;
-        if(pages.get(0) - pages.get(1) != -1) return false;
-        if(pages.get(0) % 2 != 0) return false;
+        if (pages.get(0) + pages.get(1) < 2 || pages.get(0) + pages.get(1) > 800) return false;
+        if (pages.get(0) - pages.get(1) != -1) return false;
+        if (pages.get(0) % 2 != 0) return false;
         return true;
     }
 
@@ -41,5 +53,5 @@ class Problem1 {
         }
         return Integer.valueOf(sum);
     }
-    
+
 }
