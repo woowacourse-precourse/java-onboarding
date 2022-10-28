@@ -21,3 +21,8 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+### 기능 목록
+1. 중복검사 하기
+
+2. 예외처리
