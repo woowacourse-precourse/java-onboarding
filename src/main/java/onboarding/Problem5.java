@@ -11,6 +11,8 @@ public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
 
+        checkException(money);
+        
         answer = Arrays.asList(divisionMoney(placeNumber(money)));
         Collections.reverse(answer);
 
@@ -58,6 +60,11 @@ public class Problem5 {
         return money_list;
     }
     /*
-    예외 ㅓ리
+    예외 처리
      */
+    public static void checkException(int money)
+    {
+        if (money < 1 || money > 1_000_000)
+            throw new IllegalArgumentException("ERROR");
+    }
 }
