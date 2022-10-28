@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 public class Problem5 {
 
     private static int withdrawMoney;
-    private static Map<Integer, Integer> moneyMap = new LinkedHashMap<>();
+    private static final Map<Integer, Integer> moneyMap = new LinkedHashMap<>();
 
     public static List<Integer> solution(int inputWithdrawMoney) {
         withdrawMoney = inputWithdrawMoney;
