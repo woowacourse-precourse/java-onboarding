@@ -4,27 +4,40 @@ import java.util.ArrayList;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-
-        char[] charArray = cryptogram.toCharArray();
-        ArrayList<Character> charArrayList = new ArrayList<Character>();
-        for (char a : charArray) {
-            charArrayList.add(a);
-        }
-        boolean isExist = true;
-
-        A:
-        do {
-            for (int i = 0; i < charArrayList.size() - 1; i++) {
-                if (charArrayList.get(i) == charArrayList.get(i + 1)) {
-                    charArrayList.remove(i);
-                    charArrayList.remove(i);
-                    continue A;
-                }
+        ArrayList<Integer> indexs = new ArrayList<Integer>();
+        String decoding = cryptogram;
+        String decoded;
+        while (true) {
+            indexs.clear();
+            search(decoding, indexs);
+            decoded = delete(decoding, indexs);
+            if(decoding.equals(decoded)) {
+                break;
             }
-            isExist = false;
-        } while (isExist);
-
-        String answer = "answer";
+            decoding = decoded;
+        }
+        String answer = decoded;
         return answer;
     }
+
+    public static void search(String decoding, ArrayList<Integer> indexs) {
+        char[] charArray = decoding.toCharArray();
+        for (int i = 0; i < charArray.length - 1; i++) {
+            if (charArray[i] == charArray[i + 1]) {
+                indexs.add(i);
+            }
+        }
+    }
+
+    public static String delete(String decoding, ArrayList<Integer> indexs) {
+        char[] charArray = decoding.toCharArray();
+        for (int i = 0; i < indexs.size(); i++) {
+            charArray[indexs.get(i)] = '?';
+            charArray[indexs.get(i) + 1] = '?';
+        }
+        return String.valueOf(charArray).replace("?", "");
+    }
+
+
+
 }
