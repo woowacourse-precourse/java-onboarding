@@ -12,10 +12,15 @@ import java.util.stream.IntStream;
 public class Problem3 {
     private static final Integer EXCEPTION = -1;
     public static int solution(int number) {
-        if (number < 1 || number > 10000)
-            return EXCEPTION;
-        return clapCount(number);
+        return restrictions(number)
+                ? EXCEPTION
+                : clapCount(number);
     }
+
+    private static boolean restrictions(int number) {
+        return number < 1 || number > 10000;
+    }
+
     private static int[] find369(int number) {
         return IntStream.rangeClosed(1, number)
                 .filter(num -> String.valueOf(num).matches("^[0-9]*[369][0-9]*$"))
