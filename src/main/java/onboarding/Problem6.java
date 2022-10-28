@@ -21,17 +21,25 @@ public class Problem6 {
 
             String str = forms.get(i).get(1);
 
-            for (int j = 0; j < str.length()-1; j++) {
-
-                //비교할 두 글자 불러오기
-                String subNickName = str.substring(j,j+2);
-
-                //중복시 이메일 추가
-                if(!validateNickName(subNickName, i, forms)) set.add(forms.get(i).get(0));
-            }
+            addEmailSet(str, i, forms, set);
         }
 
         return new ArrayList<>(set);
+    }
+
+    // 두 글자씩 확인하는 메소드
+    private static void addEmailSet(String str, int n, List<List<String>> forms
+            ,Set<String> set) {
+
+        for (int i = 0; i < str.length()-1; i++) {
+
+            //비교할 두 글자 불러오기
+            String subNickName = str.substring(i,i+2);
+
+            //중복시 이메일 추가
+            if(!validateNickName(subNickName, n, forms)) set.add(forms.get(n).get(0));
+        }
+        
     }
 
     //중복 확인 메소드
