@@ -8,15 +8,18 @@ public class Problem4 {
     private static String getResultInStringRange(String word) {
         StringBuilder sb = new StringBuilder();
         for(int i=0; i<word.length(); i++) {
-            String changeChar = isUpperCase(word.charAt(i));
+            String changeChar = checkChar(word.charAt(i));
             sb.append(changeChar);
         }
 
         return sb.toString();
     }
 
-    private static String isUpperCase(char character) {
-        if('A' <= character && character <= 'Z') {
+    private static String checkChar(char character) {
+        if(character == ' ') {
+            return " ";
+        }
+        else if('A' <= character && character <= 'Z') {
             return toString('A', character, 'Z');
         }
 
