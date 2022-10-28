@@ -14,46 +14,26 @@ class Problem1 {
         int pobiMax = calc(pobi.get(0), pobi.get(1));
         int crongMax = calc(crong.get(0), crong.get(1));
 
-        int answer;
-
-        if (pobiMax == -1 || crongMax == -1) {
-            answer = -1;
-        }
-        else if (pobiMax > crongMax) {
-            answer = 1;
-        }
-        else if (pobiMax < crongMax) {
-            answer = 2;
-        }
-        else {
-            answer = 0;
-        }
-
-        return answer;
+        return getWinner(pobiMax, crongMax);
     }
 
-    private static boolean validateNumbers(Integer left, Integer right) {
+    private static int getWinner(int pobi, int crong) {
 
-        boolean isNull = left == null || right == null;
-        boolean isLeftOdd = left % 2 == 1;
-        boolean isRightEven = right % 2 == 0;
-        boolean isLeftWithinRange = (MIN_LEFT_PAGE <= left) && (left <= MAX_LEFT_PAGE);
-        boolean isRightWithinRange = (MIN_RIGHT_PAGE <= right) && (right <= MAX_RIGHT_PAGE);
-        boolean isCorrectPages = right - left == 1;
-
-
-        if (
-            !isNull &&
-            isLeftOdd &&
-            isRightEven &&
-            isLeftWithinRange &&
-            isRightWithinRange &&
-            isCorrectPages
-        ) {
-            return false;
+        if (pobi == -1 || crong == -1) {
+            return -1;
         }
-
-        return true;
+        else if (pobi > crong) {
+            return 1;
+        }
+        else if (pobi < crong) {
+            return 2;
+        }
+        else if (pobi == crong) {
+            return 0;
+        }
+        else {
+            throw new IllegalArgumentException("???");
+        }
     }
 
     private static int calc(int left, int right) {
@@ -80,5 +60,28 @@ class Problem1 {
         }
 
         return Math.max(sum, mul);
+    }
+
+    private static boolean validateNumbers(Integer left, Integer right) {
+
+        boolean isNull = left == null || right == null;
+        boolean isLeftOdd = left % 2 == 1;
+        boolean isRightEven = right % 2 == 0;
+        boolean isLeftWithinRange = (MIN_LEFT_PAGE <= left) && (left <= MAX_LEFT_PAGE);
+        boolean isRightWithinRange = (MIN_RIGHT_PAGE <= right) && (right <= MAX_RIGHT_PAGE);
+        boolean isCorrectPages = right - left == 1;
+
+        if (
+            !isNull &&
+            isLeftOdd &&
+            isRightEven &&
+            isLeftWithinRange &&
+            isRightWithinRange &&
+            isCorrectPages
+        ) {
+            return false;
+        }
+
+        return true;
     }
 }
