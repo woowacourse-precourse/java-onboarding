@@ -85,7 +85,7 @@
   - 사용자 이름, 친구, 방문자 정보를 포함하는 class
 
 
-- [ ] SNS Controller
+- [x] SNS Controller
   - [x] 사용자 등록
   - [x] 친구관계 등록
   - [x] 방문자 등록
