@@ -15,11 +15,17 @@ public class Problem6 {
     public static String address = "@email.com";
     public static List<String> nameDivideTwo(String s) {
         List<String> list = new ArrayList<>();
-        for(int i = 0; i < s.length(); i++) {
-            if(s.length() % 2 == 1 && i == s.length()-1) {
-                list.add(String.valueOf(s.charAt(i)));
+        if(s.length() % 2 == 0) {
+            for(int i = 0; i < s.length()/2; i++) {
+                list.add(String.valueOf(s.charAt(i)+s.charAt(i+1)));
             }
-            list.add(String.valueOf(s.charAt(i)+s.charAt(i+1)));
+        } else {
+            for(int i = 0; i < s.length()/2 + 1; i++) {
+                if(i == s.length()/2 + 1) {
+                    list.add(String.valueOf(s.charAt(i)));
+                }
+                list.add(String.valueOf(s.charAt(i)+s.charAt(i+1)));
+            }
         }
         return list;
     }
