@@ -21,6 +21,8 @@ class Problem1 {
         crongPages.add(getMaxPageNumber(crong.get(1)));
         int crongScore = maxNumber(crongPages.get(0), crongPages.get(1));
 
+        //승자 선택
+        answer = selectWinner(pobiScore, crongScore);
         return answer;
     }
 
@@ -72,4 +74,11 @@ class Problem1 {
         return num2;
     }
 
+    private static int selectWinner(int pobi, int crong){
+        if(pobi == crong)
+            return 0;
+        if(pobi > crong)
+            return 1;
+        return 2;
+    }
 }
