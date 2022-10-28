@@ -12,7 +12,6 @@ public class Problem3 {
 			for(int j = 0 ; j < strNum.length(); j++){
 				char target = strNum.charAt(j);
 				if(target == '3' || target == '6' || target == '9'){
-					System.out.println("i = " + i);
 					answer++;
 				}
 			}
