@@ -130,4 +130,117 @@ public class Problem7 {
         }
         return recommendScore;
     }
+
+    public static List<String> solution2(String user, List<List<String>> friends, List<String> visitors) {
+
+        //문제에 나오는 모든 crew를 리스트로 만들기
+        HashSet<String> crewList = makeCrewList(user, friends, visitors);
+
+        // user의 친구 리스트 만들기
+        ArrayList<String> userFriendList = makeUserFriendsList(user, friends);
+
+        // 추천 친구 목록 Map 만들기 (추천 crew, 추천 점수)
+        Map<String, Integer> recommendFriendsMap = makeRecommendFriendsMap(user, crewList, userFriendList);
+
+        // 추천 crew 점수계산 메서드
+        recommendFriendsMap = makeRecommendFriendScore(friends, visitors, recommendFriendsMap, userFriendList);
+
+        // 추천 친구 리스트 만들기 (정렬)
+        List<Map.Entry<String, Integer>> recommendFriendsList = new ArrayList<>(recommendFriendsMap.entrySet());
+        Collections.sort(recommendFriendsList, (listUser1, listUser2) -> listUser2.getValue().compareTo(listUser1.getValue()));
+
+        //최대 5명을 조회할 수 있도록 제한 걸어주기
+        List<String> answer = new ArrayList<>();
+        if (recommendFriendsList.size() <= 5) {
+            for (int i = 0; i < recommendFriendsList.size(); i++) {
+                answer.add(recommendFriendsList.get(i).getKey());
+            }
+        } else {
+            for (int i = 0; i < 5; i++) {
+                answer.add(recommendFriendsList.get(i).getKey());
+            }
+        }
+        return answer;
+    }
+
+    private static HashSet<String> makeCrewList(String user, List<List<String>> friends, List<String> visitors) {
+        HashSet<String> crewList = new HashSet<>();
+        crewList.add(user);
+        for (int i = 0; i < friends.size(); i++) {
+            for (int j = 0; j < 2; j++) {
+                crewList.add(friends.get(i).get(j));
+            }
+        }
+        for (int i = 0; i < visitors.size(); i++) {
+            crewList.add(visitors.get(i));
+        }
+        return crewList;
+    }
+
+    private static ArrayList<String> makeUserFriendsList(String user, List<List<String>> friends) {
+        ArrayList<String> userFriendsList = new ArrayList<>();
+        for (int i = 0; i < friends.size(); i++) {
+            if (friends.get(i).get(0).equals(user)) {
+                userFriendsList.add(friends.get(i).get(1));
+            } else if (friends.get(i).get(1).equals(user)) {
+                userFriendsList.add(friends.get(i).get(0));
+            }
+        }
+        return userFriendsList;
+    }
+
+    private static TreeMap<String, Integer> makeRecommendFriendsMap(String user, HashSet<String> crewList, ArrayList<String> userFriendList) {
+        TreeMap<String, Integer> recommendFriendList = new TreeMap<>();
+        for (String crew : crewList) {
+            recommendFriendList.put(crew, 0);
+            for (String userFriend : userFriendList) {
+                if (crew.equals(userFriend)) {
+                    recommendFriendList.remove(crew);
+                }
+            }
+        }
+        recommendFriendList.remove(user);
+        return recommendFriendList;
+    }
+
+    private static Map<String, Integer> makeRecommendFriendScore(List<List<String>> friends, List<String> visitors, Map<String, Integer> recommendFriendsList, ArrayList<String> userFriendList) {
+        for (String recommendFriend : recommendFriendsList.keySet()) {
+            for (int i = 0; i < friends.size(); i++) {
+                if (friends.get(i).get(0) == recommendFriend && userFriendList.contains(friends.get(i).get(1))) {
+                    recommendFriendsList.put(recommendFriend, recommendFriendsList.get(recommendFriend) + 10);
+                } else if (friends.get(i).get(1) == recommendFriend && userFriendList.contains(friends.get(i).get(0))) {
+                    recommendFriendsList.put(recommendFriend, recommendFriendsList.get(recommendFriend) + 10);
+                }
+            }
+            for (int i = 0; i < visitors.size(); i++) {
+                if (visitors.get(i).equals(recommendFriend)) {
+                    recommendFriendsList.put(recommendFriend, recommendFriendsList.get(recommendFriend) + 1);
+                }
+            }
+        }
+        for (String recommendFriend : recommendFriendsList.keySet()) {
+            if(recommendFriendsList.get(recommendFriend)==0){
+                recommendFriendsList.remove(recommendFriend);
+            }
+        }
+        return recommendFriendsList;
+    }
+
+
+    public static void main(String[] args) {
+        Problem7 problem7 = new Problem7();
+        String user = "mrko";
+        List<List<String>> friends = List.of(
+                List.of("donut", "andole"),
+                List.of("donut", "jun"),
+                List.of("donut", "mrko"),
+                List.of("shakevan", "andole"),
+                List.of("shakevan", "jun"),
+                List.of("shakevan", "mrko")
+        );
+        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+        problem7.solution2(user, friends, visitors);
+    }
+
 }
+
