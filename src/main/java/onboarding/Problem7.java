@@ -1,6 +1,7 @@
 package onboarding;
 
 import onboarding.problem7.NotMatchingFriendSize;
+import onboarding.problem7.NotMatchingFriendsSize;
 import onboarding.problem7.NotMatchingUserLength;
 
 import java.util.Collections;
@@ -21,18 +22,25 @@ public class Problem7 {
 
         //- friends 길이 1 이상 10000 이하인지 체크
         if(isNotMatchingFriendsSize(friendsSize)){
-            throw new NotMatchingFriendSize("친구 관계 정보의 길이가 맞지 않습니다.");
+            throw new NotMatchingFriendsSize("친구 관계 정보의 길이가 맞지 않습니다.");
         }
 
         //- friends 의 각 원소의 길이가 2인지 체크
+        int friendSize = friends.get(0).size();
+        if(isNotMatchingFriendSize(friendSize)){
+            throw new NotMatchingFriendSize("친구 관계 정보의 원소의 길이가 맞지 않습니다.");
+        }
 
-
-        //- 아이디 길이 1 이상 30 이하인지 체크
+        //- 아이디 길이 1 이상 30 이하인지 체크g
         //- visitors 길이 0 이상 10000 이하인지 체크
         //- 사용자 아이디 소문자인지 체크
 
 
         return answer;
+    }
+
+    private static boolean isNotMatchingFriendSize(int friendSize) {
+        return friendSize != 2;
     }
 
     private static boolean isNotMatchingFriendsSize(int size) {
