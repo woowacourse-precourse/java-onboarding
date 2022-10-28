@@ -26,10 +26,11 @@ public class Problem7 {
         sortResult(friend_score, listValueSet, listKeySet); // 점수가 같을 경우 알파벳 순으로 출력하기 위한 점수별 내림차순 정렬 과정, 이름도 같이 매칭되게 리스트 분류
 
 
+        List<String> result = printResult(listValueSet, listKeySet);  // 최종적으로 출력하기 위하여서 문제 상황과 최대값이 같을시 알파벳 순으로 출력시키기 위한 과정
+
+        return result;
 
 
-
-        return answer;
     }
 
     private static void userFriendDelete(Map<String, List<String>> map, List<String> user_friend) {
@@ -119,4 +120,31 @@ public class Problem7 {
 
         Collections.sort(listValueSet, Collections.reverseOrder()); // 점수 내림차순
     }
+
+
+    private static List<String> printResult(List<Integer> listValueSet, List<String> listKeySet) {
+        List<String> result = new ArrayList<>();
+        for(int i = 0; i< listKeySet.size(); i++){
+            List<String> comp = new ArrayList<>(); // comp 점수가 같을 경우 알파벳 순으로 출력시킬 수 있도록 분류
+
+            if(result.contains(listKeySet.get(i))){ // 점수 동일 여부 확인 후 이미 알파벳 순으로 정렬되고 결과 값으로 들어갈 수도 있는 경우 건너뛰기
+                continue;
+            }
+            comp.add(listKeySet.get(i));
+            for(int j = i+1; j< listKeySet.size(); j++){
+                if(listValueSet.get(i) == listValueSet.get(j)){   //-> 이거 하는 이유? 그 comp라는게 존재하는 이유가 점수 같을 경우 알파벳순으로 추출할 문자열들을 추가하기 위함.
+                    comp.add(listKeySet.get(j));
+                }
+            }
+            Collections.sort(comp); // 만약 점수가 같지 않고 고유한 값인 경우 comp에는 값이 1개, 같은 경우 점수가 같은 만큼의 size가 나오게 됨.
+
+            for(int j=0; j<comp.size(); j++){ // result에는 comp에서 이미 알파벳 정렬이 끝난 친구와 미리미리 상관없이 넣은 친구들을 위하여 넣음
+                if(result.size()<5) {
+                    result.add(comp.get(j));
+                }
+            }
+        }
+        return result;
+    }
+
 }
