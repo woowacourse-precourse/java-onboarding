@@ -16,8 +16,12 @@ public class Problem4 {
         }
         return word;
     }
-
+public static void catchException(String word){
+        assert (word.length()>=1);
+        assert (word.length()<=1000);
+}
     public static String solution(String word) {
+        catchException(word);
         String answer = "";
         for (int i = 0; i < word.length(); i++) {
             answer += String.valueOf(convertFrogDictionary(word.charAt(i)));
