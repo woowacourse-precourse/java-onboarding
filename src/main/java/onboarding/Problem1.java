@@ -51,6 +51,12 @@ class Problem1 {
     }
 
 
+    public static int getScore(List<Integer> list) {
+        int leftScore = getMaxPageValue(list.get(0));
+        int rightScore = getMaxPageValue(list.get(1));
+        return Math.max(leftScore, rightScore);
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
