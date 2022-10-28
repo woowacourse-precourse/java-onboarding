@@ -2,8 +2,17 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        return decrypt(cryptogram);
+    }
+
+    private static String decrypt(String cryptogram) {
+        String result = cryptogram;
+        String tmp;
+        do {
+            tmp = result;
+            result = removeContinuousDupChar(result);
+        } while (!tmp.equals(result));
+        return result;
     }
 
     private static String removeContinuousDupChar(String dupStr) {
