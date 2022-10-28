@@ -30,11 +30,24 @@ public class Problem7 {
         }
         return friendsByName;
     }
+    private static Map<String, Integer> storeVisitorScore(List<String> visitors) {
+        Map<String, Integer> visitorScore = new HashMap<>();
+
+        for (String visitor : visitors) {
+            if (!visitorScore.containsKey(visitor)) {
+                visitorScore.put(visitor, 0);
+            }
+            int visitCnt = visitorScore.get(visitor);
+            visitorScore.replace(visitor, visitCnt + 1);
+        }
+        return visitorScore;
+    }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         Map<String, Set<String>> friendsByName = storeRelation(friends);
         List<String> userFriends = new ArrayList<>(friendsByName.get(friends));
+        Map<String, Integer> visitorScore = storeVisitorScore(visitors);
 
         return answer;
     }
