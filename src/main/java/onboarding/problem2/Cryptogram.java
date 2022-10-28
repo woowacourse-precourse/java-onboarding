@@ -18,4 +18,11 @@ public class Cryptogram {
             return decryptCryptogram(sb.toString());
         }
     }
+    
+    private static int findDuplication(StringBuffer sb, int next) {
+        while (next < sb.length() - 1 && sb.charAt(next + 1) == sb.charAt(next)) {
+            next += 1;
+        }
+        return next;
+    }
 }
