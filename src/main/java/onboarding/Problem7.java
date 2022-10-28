@@ -20,13 +20,24 @@ public class Problem7 {
     static Map<String, Integer> memberDictionary = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-
         initDictionary(user, friends);
 
         getMemberScore(user, friends, visitors);
 
-        return answer;
+        return getResults();
+    }
+
+    /**
+     * 결과값을 정제, 정렬, 개수제한을 필터링해서 반환한다.
+     * @return 사용자 이메일 List
+     */
+    private static List<String> getResults() {
+        return memberDictionary.keySet().stream()
+                .filter(o -> memberDictionary.get(o) != 0 && !friendDictionary.contains(o))
+                .sorted()
+                .sorted((o1, o2) -> memberDictionary.get(o2).compareTo(memberDictionary.get(o1)))
+                .limit(5)
+                .collect(Collectors.toList());
     }
 
     /**
