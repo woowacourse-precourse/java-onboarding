@@ -43,5 +43,11 @@ public class Problem7 {
                 }
             }
         }
+
+        for (String id : visitors) {
+            if (!userList.containsKey(id)) {
+                userList.put(id, new User(id));
+            }
+        }
     }
 }
