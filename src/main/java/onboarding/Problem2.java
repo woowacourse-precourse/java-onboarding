@@ -6,6 +6,8 @@ import java.util.ArrayList;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
+        List<String> cryptogramList = stringToArrayList(cryptogram);
+        answer = arrayListToSting(decodeCryptogram(cryptogramList));
         return answer;
     }
 
@@ -32,5 +34,14 @@ public class Problem2 {
         }
         return cryptogram;
     }
+
+    public static String arrayListToSting(List<String> cryptogram) {
+        StringBuilder resultString = new StringBuilder();
+        for(String c : cryptogram) {
+            resultString.append(c);
+        }
+        return resultString.toString();
+    }
+
 }
 
