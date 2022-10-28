@@ -31,7 +31,16 @@ class calculateMoney{
 }
 public class Problem5 {
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
+        int i;
+        List<Integer> answer = new ArrayList<>(Arrays.asList(0,0,0,0,0,0,0,0,0));
+        for(i=0; i<Money.moneyList.length-1;i++){
+            calculateMoney.setDivideMoney(Money.moneyList[i]);
+            if(validateMoney.isDivide(money)){
+                answer.set(i,calculateMoney.divide(money));
+                money = calculateMoney.remainder(money);
+            }
+        }
+        answer.set(i,money);
         return answer;
     }
 }
