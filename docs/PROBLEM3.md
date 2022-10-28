@@ -1,4 +1,42 @@
 ## 기능 목록
+### 오류 발생
+기존 작성한 방식은 number가 박수를 한번 이상 치는 숫자인 경우 그 부분을 계산 못하는 오류가 있다.\
+이에 따라 기능 목록을 다시 작성한다.
+### 구현에 사용한 규칙
+
+### 구현 방법
+1. 매개변수로 주어진 char변수가 '3', '6', '9' 이면 true를 반환하는 메서드 checkToClap 생성 
+2. number 를 String으로 변환 후 하나씩 꺼내 checkToClap이 true인 갯수를 반환하는 메서드 calculateClapNumber 생성
+3. solution 메서드에서 number를 1씩 감소시키며 calculateCalpNumber반복, number 2되면 종료.
+### 구현 메서드 상세
+#### boolean checkToClap
+1. <매개변수>\
+   (char) 비교할 문자형 singlenumber
+2. <변수>\
+없음
+3. <구현>\
+singlenum이 '3', '6', '9' 와 같으면 true 반환.\
+다 다르면 false반환.
+#### int calculateClapNumber
+1. <매개변수>\
+   (int) 박수 갯수 계산할 number
+2. <변수>\
+   (int) 박수 갯수(checkToClap의 true 개수)를 저장할 clapnumber
+3. <구현>\
+number를 String형으로 바꾼 후\
+문자형으로 하나씩 꺼내 checkToClap실행\
+true인 경우 clapnumber 1증가, 종료 후 clapnumber 반환
+#### int solution
+1. <매개변수>\
+   (int) number (입력값)
+2. <변수>\
+   (int) 최종 박수 갯수를 저장할 answer
+3. <구현>\
+for문을 돌며 calculateClapNumber 실행, number 1씩 감소.\
+answer 에 calculateClapNumber의 리턴값 더함.\ 
+종료 후 answer 반환
+
+# 오류 발생한 구현 방식 (사용 X)
 ### 구현에 사용한 규칙
 * 369 게임의 규칙성과 number의 제한사항을 활용한다.
   * 1~9 에선 3번의 손뼉이\
