@@ -77,4 +77,16 @@ public class Problem7 {
             recommendList.remove(notRecommendList.get(i));
         }
     }
+    private static List<String> recomand(List<String> recommendList){
+        List<String> answer = new ArrayList<>();
+        int count=0;
+        for(int i=0;i<recommendList.size();i++){
+            answer.add(recommendList.get(i));
+            count++;
+            if(count>4){
+                break;
+            }
+        }
+        return answer;
+    }
 }
