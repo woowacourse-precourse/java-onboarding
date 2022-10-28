@@ -21,6 +21,7 @@ public class Problem2 {
         }
 
         deleteContinuousAndDuplicatedLetters(cryptogram);
+        answer = convertStackToString();
 
         return answer;
     }
@@ -73,5 +74,15 @@ public class Problem2 {
 
     private static boolean checkStackIsEmptyAndTopEqualToLetter(char letter) {
         return ((!charStack.isEmpty()) && charStack.peek() == letter);
+    }
+
+    private static String convertStackToString() {
+        StringBuilder sb = new StringBuilder();
+
+        for (char letter : charStack) {
+            sb.append(letter);
+        }
+
+        return sb.toString();
     }
 }
