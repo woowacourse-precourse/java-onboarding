@@ -1,10 +1,24 @@
 package onboarding;
 
+import onboarding.problem1Validation.Problem1Validation;
+
 import java.util.List;
 
 class Problem1 {
+    private final static int USER_INPUT_LENGTH = 2;
+    private final static int PAGE_NUM_MIN = 1;
+    private final static int PAGE_NUM_MAX = 400;
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        if (Problem1Validation.problem1InputValidation(pobi, USER_INPUT_LENGTH, PAGE_NUM_MIN, PAGE_NUM_MAX)
+                && Problem1Validation.problem1InputValidation(crong, USER_INPUT_LENGTH, PAGE_NUM_MIN, PAGE_NUM_MAX)) {
+            int answer = Integer.MAX_VALUE;
+            return answer;
+        } else {
+            return -1;
+        }
+    }
+
+    public static int result(Integer user1Result, Integer user2Result) {
+        return 1;
     }
 }

@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 /*
@@ -165,6 +166,29 @@ public class Problem1CustomTest {
                     .filter(list -> Problem1Validation.problem1InputValidation(list, USER_INPUT_LENGTH, BOOK_MIN, BOOK_MAX))
                     .count();
             assertThat(count).isEqualTo(2L);
+        }
+/*
+- 각각의 user는 각자리숫자를 다 더하거나, 다 곱한 결과 값 중 최대값을 선택한다.
+- 각각의 user는 왼쪽 페이지, 오른쪽 페이지 각각 위의 연산을 진행하여 최대값을 선택한다.
+- 각각의 user는 반환된 최대값을 기준으로 승패가 결정된다.
+ */
+        @Test
+        void crong이이기면() {
+            List<Integer> testList = List.of(1, 2);
+            int result = Problem1.result(testList.get(0), testList.get(1));
+            assertThat(result).isEqualTo(2);
+        }
+        @Test
+        void pobi가이기면() {
+            List<Integer> testList = List.of(2, 1);
+            int result = Problem1.result(testList.get(0), testList.get(1));
+            assertThat(result).isEqualTo(1);
+        }
+        @Test
+        void 무승부면() {
+            List<Integer> testList = List.of(1, 1);
+            int result = Problem1.result(testList.get(0), testList.get(1));
+            assertThat(result).isEqualTo(0);
         }
     }
 }
