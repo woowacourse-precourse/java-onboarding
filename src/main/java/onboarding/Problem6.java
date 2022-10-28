@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Problem6 {
@@ -13,6 +14,17 @@ public class Problem6 {
         6. 중복 문자열이 포함된 이메일 추출 함수
         7. solution (함수 순서대로 실행)
     */
+
+    // 사용자의 닉네임만 추출하는 함수
+    private static List<String> allNicknames(List<List<String>> forms) {
+        List<String> nicknames = new ArrayList<>();
+
+        for (List<String> form : forms) {
+            String nickname = form.get(1);
+            nicknames.add(nickname);
+        }
+        return nicknames;
+    }
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
