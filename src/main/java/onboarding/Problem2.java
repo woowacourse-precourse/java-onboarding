@@ -1,6 +1,6 @@
 package onboarding;
 
-import java.util.Stack;
+import java.util.regex.Pattern;
 
 public class Problem2 {
 
@@ -10,24 +10,12 @@ public class Problem2 {
             throw new IllegalArgumentException();
         }
 
-        Stack<Character> stack = new Stack<>();
-
-        for (int i = 0; i < cryptogram.length(); i++) {
-            char c = cryptogram.charAt(i);
-
-            if (!stack.isEmpty() && stack.peek() == c) {
-                stack.pop();
-            } else {
-                stack.push(c);
-            }
+        Pattern pattern = Pattern.compile("([a-z])\\1+");
+        while (pattern.matcher(cryptogram).find()) {
+            cryptogram = cryptogram.replaceFirst("([a-z])\\1+", "");
         }
 
-        StringBuilder sb = new StringBuilder();
-        while (!stack.isEmpty()) {
-            sb.insert(0, stack.pop());
-        }
-
-        return sb.toString();
+        return cryptogram;
     }
 
     private static boolean isNotValidateCryptogram(String cryptogram) {

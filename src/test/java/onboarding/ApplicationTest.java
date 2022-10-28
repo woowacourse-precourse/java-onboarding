@@ -149,7 +149,28 @@ class ApplicationTest {
         @Test
         void case6() {
             String cryptogram = "aabbccc";
-            String result = "c";
+            String result = "";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void case7() {
+            String cryptogram = "nmmnn";
+            String result = "";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void case8() {
+            String cryptogram = "z";
+            String result = "z";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void case9() {
+            String cryptogram = "aabbccddee".repeat(100);
+            String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
 
