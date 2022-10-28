@@ -6,8 +6,24 @@ import java.util.stream.Stream;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        List<String> answer = new ArrayList<>();
+
+        Map<String, String> formsMap = listToMap(forms);
+        List<String> keyList = new ArrayList<>(formsMap.keySet()) ;
+
+        List<List<String>> combinations = getCombination(keyList);
+
+        for (List<String> keyPair : combinations) {
+            String key1 = keyPair.get(0);
+            String key2 = keyPair.get(1);
+
+            if (isSimilar(formsMap.get(key1), formsMap.get(key2))){
+                answer.add(key1);
+                answer.add(key2);
+            }
+        }
+
+        return answer.stream().distinct().collect(Collectors.toList());
     }
     public static Map<String, String> listToMap(List<List<String>> forms){
         Map<String, String> result = new HashMap<>();
@@ -42,11 +58,13 @@ public class Problem6 {
 
         for (int i = 0; i < keyCnt - 1; i++){
             String key1 = keys.get(i);
-            List<String> remainKeys = keys.subList(i + 1, keyCnt + 1);
+            List<String> remainKeys = keys.subList(i + 1, keyCnt);
             remainKeys.stream().forEach(email -> result.add(List.of(key1, email)));
         }
 
         return result;
     }
+
+
 
 }
