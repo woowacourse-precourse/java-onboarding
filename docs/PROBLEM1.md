@@ -31,12 +31,12 @@
 - [X] 오른쪽 페이지가 홀수
 - [X] 두 페이지 간의 차이가 1이 아닌 경우
 - [X] 시작면, 혹은 마지막 면을 펼쳤을 경우 (책의 범위를 벗어난 경우)
-- [X] checkInvalidInput(List\<Integer\> list)
+- [X] checkValid -> PageGamePlayer 생성자 내부에서 유효성 검사
 ### 2. 왼쪽 혹은 오른쪽 페이지 번호에 대한 합 연산
-- [X] addEachDigitOfPage(int num)
+- [X] add(int num) - EachDigitCalculator 클래스
 ### 3. 왼쪽 혹은 오른쪽 페이지 번호에 대한 곱 연산
-- [X] multiplyEachDigitOfPage(int num)
+- [X] multiply(int num) - EachDigitCalculator 클래스
 ### 4. 가장 큰 수를 결정하는 메서드
-- [X] calculateMax(int num1, int num2)
+- [X] Math.max 사용
 ### 5. 승자를 결정하는 메서드
-- [X] getResult(int pobiNum, int crongNum)
+- [X] winner() - PageGame 클래스
