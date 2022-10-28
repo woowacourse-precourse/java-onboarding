@@ -37,6 +37,35 @@ public class Problem7 {
             relationship[crewIndex.get(friend.get(0))][crewIndex.get(friend.get(1))] = true;
             relationship[crewIndex.get(friend.get(1))][crewIndex.get(friend.get(0))] = true;
         }
+
+        // 3. user의 친구의 친구들 중 user를 제외하고 10점씩 부여
+        for (int i = 0; i < len; i++) {
+            if(relationship[crewIndex.get(user)][i]) {
+                for (int j = 0; j < len; j++) {
+                    if(relationship[i][j] && j != crewIndex.get(user)) {
+                        String name = findCrewNameByIndex(crewIndex, j);
+                        crewScore.put(name, crewScore.getOrDefault(name, 0) + 10);
+                    }
+                }
+            }
+        }
         return answer;
+    }
+
+    /**
+     * crewIndex의 value를 인자로 key인 name을 찾아주는 함수
+     * @param crewIndex
+     * @param k
+     * @return
+     */
+    public static String findCrewNameByIndex(HashMap<String, Integer> crewIndex, int k) {
+        String name = "";
+        for (String n : crewIndex.keySet()) {
+            Integer index = crewIndex.get(n);
+            if(k == index) {
+                name = n;
+            }
+        }
+        return name;
     }
 }
