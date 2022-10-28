@@ -26,6 +26,17 @@ public class Problem6 {
         return nicknames;
     }
 
+    // 사용자의 이메일만 추출하는 함수
+    private static List<String> allEmails(List<List<String>> forms) {
+        List<String> emails = new ArrayList<>();
+
+        for (List<String> form : forms) {
+            String email = form.get(0);
+            emails.add(email);
+        }
+        return emails;
+    }
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
