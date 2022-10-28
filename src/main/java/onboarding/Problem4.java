@@ -1,8 +1,10 @@
 package onboarding;
 
+import onboarding.problem4.AlphabetConverter;
+
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        AlphabetConverter alphabetConverter = new AlphabetConverter(word);
+        return alphabetConverter.convert();
     }
 }
