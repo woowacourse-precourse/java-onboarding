@@ -1,5 +1,8 @@
 package onboarding;
 
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 public class Problem4 {
     private static void checkWord(String word) {
         if (word.length() > 1000 || word.length() < 1)
@@ -14,9 +17,14 @@ public class Problem4 {
         return c;
     }
 
+    private static String reverseString(String word){
+        return Stream.of(word.split(""))
+                .map(x->String.valueOf(convert(x.charAt(0))))
+                .collect(Collectors.joining());
+    }
+
     public static String solution(String word) {
         checkWord(word);
-        String answer = "";
-        return answer;
+        return reverseString(word);
     }
 }
