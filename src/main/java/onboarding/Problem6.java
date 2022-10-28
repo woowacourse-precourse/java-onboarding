@@ -113,4 +113,15 @@ public class Problem6 {
         validateEmails(forms);
         validateNickNames(forms);
     }
+
+    /**
+     * 순서에 맞게 요구 사항 기능들을 수행
+     * @param {List<List<String></>></>}forms
+     */
+    public static void logic(List<List<String>> forms) {
+        List<List<String>> sortedForms = sortFormByNickName(forms);
+        findDuplicateNickName(sortedForms);
+        sort();
+        answer = removeDuplication(answer);
+    }
 }

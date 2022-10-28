@@ -46,3 +46,6 @@
 
 6. doValidation(List<List<String>> forms)
 - forms에 대한 예외사항 검사 기능들을 한번에 실행하고 예외가 있을시 반환합니다.
+
+7. logic(List<List<String>> forms)
+- 실행 순서에 맞에 요구 사항 기능들을 실행합니다.
