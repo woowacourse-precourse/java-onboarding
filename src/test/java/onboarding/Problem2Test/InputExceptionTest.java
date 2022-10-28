@@ -19,12 +19,13 @@ public class InputExceptionTest {
     @Test
     void case2() {
         String cryptogram = "";
-        for (int i = 0; i < 1001 ; i++) {
+        for (int i = 0; i < 1001; i++) {
             cryptogram += "a";
         }
         String result = "INPUT_ERROR";
         assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
     }
+
     @Test
     void case3() {
         String cryptogram = "ContainsCapital";

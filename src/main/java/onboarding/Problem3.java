@@ -1,6 +1,8 @@
 package onboarding;
 
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class Problem3 {
     private static final int MINIMUM_INPUT = 1;
@@ -19,14 +21,11 @@ public class Problem3 {
     }
 
     private static int getClapCount(int num) {
-        int clapCount = 0;
-
-        while (num > 0) {
-            int oneNum = num % 10;
-            num /= 10;
-            if (oneNum != 0 && oneNum % 3 == 0) clapCount++;
-        }
-        return clapCount;
+        return (int) Stream.of(String.valueOf(num).split(""))
+                .mapToInt(Integer::parseInt)
+                .filter(x -> x != 0)
+                .filter(x -> x % 3 == 0)
+                .count();
     }
 
 }
