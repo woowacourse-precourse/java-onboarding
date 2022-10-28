@@ -1,12 +1,14 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         HashMap<String, Integer> recommend = giveVisitScore(visitors,giveFriendsScore(user,friends));
         removeUserAndFriendsInRecommendationFriends(user,friends,recommend);
+        List<Map.Entry<String, Integer>> recommends = sortRecommendationFriends(recommend);
         return answer;
     }
     private static HashMap<String, Integer> giveFriendsScore(String user, List<List<String>> friends){
@@ -52,5 +54,15 @@ public class Problem7 {
         userAndFriends.add(user);
         return userAndFriends;
     }
-
+    private static List<Map.Entry<String, Integer>> sortRecommendationFriends(HashMap<String,Integer> recommend){
+        return recommend.entrySet()
+                        .stream()
+                        .sorted((o1, o2) -> {
+                            if(o1.getValue() == o2.getValue()){
+                                return o1.getKey().compareTo(o2.getKey());
+                            }
+                            return o2.getValue() - o1.getValue();
+                        })
+                        .collect(Collectors.toList());
+    }
 }
