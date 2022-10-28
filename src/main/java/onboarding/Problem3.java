@@ -9,17 +9,14 @@ public class Problem3 {
     public static int solution(int number) {
         checkValidRange(number);
         int answer = 0;
-        int result = 0;
         for(int i = 1; i <= number ; i ++ ){
             String[] check369 = String.valueOf(i).split(SPLIT_POINT);
             for (String step : check369) {
                 if (step.equals("3") || step.equals("6") || step.equals("9")) {
-                    result += 1;
+                    answer += 1;
                 }
             }
         }
-
-        answer = result;
         return answer;
     }
 
