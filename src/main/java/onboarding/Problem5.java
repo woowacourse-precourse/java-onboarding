@@ -1,22 +1,22 @@
 package onboarding;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
-        return answer;
+        return getCoinList(money);
     }
 
     public static List<Integer> getCoinList(int money) {
-        List<Integer> coinList = Collections.emptyList();
+        List<Integer> coinList = new ArrayList<>();
         int[] coinUnitArray = getCoinUnitToArray();
         int index = 0;
         while (money > 0) {
             int coinUnit = coinUnitArray[index];
             coinList.add(money / coinUnit);
             money = money % coinUnit;
+            index++;
         }
         return coinList;
     }
