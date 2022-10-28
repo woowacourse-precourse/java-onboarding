@@ -20,4 +20,14 @@ public class NicknameChecker {
             addCrew(crewInfo);
         }
     }
+
+    private boolean isSimilar(String nickname1, String nickname2){
+        for(int index1 = 0; index1 < nickname1.length()-1; index1++){
+            String pattern = nickname1.substring(index1, index1+2);
+            if(nickname2.contains(pattern)){
+                return true;
+            }
+        }
+        return false;
+    }
 }
