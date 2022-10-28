@@ -12,38 +12,49 @@ public class Problem7 {
         List<String> u_friend = new ArrayList<>();
         HashMap<String, Integer> map = new HashMap<>();
 
+        List<List<String>>fri = new ArrayList<>();
+        List<String> vis = new ArrayList<>();
+
+
         for (int i = 0; i < friends.size(); i++) {
             if (friends.get(i).get(0).equals(user)) {
                 u_friend.add(friends.get(i).get(1));
-                friends.remove(i);
+//            friends.get(i).remove(0);
+//            friends.get(i).remove(1);
             } else if (friends.get(i).get(1).equals(user)) {
                 u_friend.add(friends.get(i).get(0));
-                friends.remove(i);
+//            friends.get(i).remove(0);
+//            friends.get(i).remove(1);
+            }else{
+                fri.add(friends.get(i));
             }
         }
+        for(int i=0; i<visitors.size(); i++){
+            vis.add(visitors.get(i));
+        }
 
-        for (int i = 0; i < visitors.size(); i++) {
+        for (int i = 0; i < vis.size(); i++) {
             for (int j = 0; j < u_friend.size(); j++) {
-                if (visitors.get(i).equals(u_friend.get(j))) {
-                    visitors.remove(i);
+                if (vis.get(i).equals(u_friend.get(j))) {
+                    vis.remove(i);
                 }
             }
         }
 
-        for (int i = 0; i < friends.size(); i++) {
+        for (int i = 0; i < fri.size(); i++) {
             for (int j = 0; j < u_friend.size(); j++) {
-                if (friends.get(i).get(0).equals(u_friend.get(j))) {
-                    String tmp = friends.get(i).get(1);
+                if (fri.get(i).get(0).equals(u_friend.get(j))) {
+                    String tmp = fri.get(i).get(1);
                     map.put(tmp, map.getOrDefault(tmp, 0) + 10);
-                } else if (friends.get(i).get(1).equals(u_friend.get(j))) {
-                    String tmp = friends.get(i).get(0);
+                } else if (fri.get(i).get(1).equals(u_friend.get(j))) {
+                    String tmp = fri.get(i).get(0);
                     map.put(tmp, map.getOrDefault(tmp, 0) + 10);
                 }
             }
         }
 
-        for (int i = 0; i < visitors.size(); i++) {
-            String tmp = visitors.get(i);
+        for (int i = 0; i < vis.size(); i++) {
+            String tmp = vis.get(i);
             map.put(tmp, map.getOrDefault(tmp, 0) + 1);
         }
 
