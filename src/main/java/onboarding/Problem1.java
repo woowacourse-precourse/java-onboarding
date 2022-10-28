@@ -34,9 +34,9 @@ class Problem1 {
      */
     private static int compareScore(int score1, int score2) {
         int answer = Integer.MAX_VALUE;
-        if (score > score) {
+        if (score1 > score2) {
             answer = 1;
-        } else if (score < score) {
+        } else if (score1 < score2) {
             answer = 2;
         } else {
             answer = 0;
@@ -51,12 +51,12 @@ class Problem1 {
     해당 리스트의 요소 중 가장 큰 숫자를 반환
      */
     private static int getScore(List<Integer> pages) {
-        int score = null;
+        int score = 0;
         int leftPage = pages.get(0);
         int rightPage = pages.get(1);
 
         // 각 페이지 숫자의 자리 합과 곱(4개)을 저장할 배열 scores 선언
-        List<Integer> scores = ArrayList<Integer>();
+        List<Integer> scores = new ArrayList<Integer>();
 
         // pageList 순회하며 배열 scores에 요소의 합과 곱을 저장. List<Integer> pageNumToList(int page)
         List<Integer> leftPageNum = pageNumToList(leftPage);
@@ -71,7 +71,7 @@ class Problem1 {
         // 배열 scores 요소 중 가장 큰 값을 score에 저장
         score = Collections.max(scores);
 
-        return score
+        return score;
     }
 
     /*
@@ -101,7 +101,7 @@ class Problem1 {
     각 숫자를 더하거나 곱하므로 리스트 배치 순서를 고려하지 않아도 됨
      */
     private static List<Integer> pageNumToList(int page) {
-        List<Integer> pageNum = ArrayList<Integer>();
+        List<Integer> pageNum = new ArrayList<Integer>();
         while(page > 0) {
             pageNum.add(page % 10);
             page = (int)(page / 10);
