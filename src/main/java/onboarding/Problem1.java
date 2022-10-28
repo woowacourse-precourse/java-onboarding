@@ -1,6 +1,9 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.PriorityQueue;
 
 class Problem1 {
     static int pobiNum;
@@ -30,6 +33,7 @@ class Problem1 {
 
     public static Integer findMaxNum(List<Integer> pageList){
         int max = Integer.MAX_VALUE;
+        PriorityQueue<Integer> candidate = new PriorityQueue<>(Comparator.reverseOrder());
 
         for(Integer page : pageList){
             String[] pageSplits = page.toString().split("");
@@ -41,11 +45,14 @@ class Problem1 {
                 int number = Integer.parseInt(pageString);
                 plus += number;
                 multi *= number;
-
-                if(plus >= multi){
-                    max = plus;
-                }
             }
+            candidate.add(plus);
+            candidate.add(multi);
+
+        }
+
+        if(!candidate.isEmpty()){
+            max = candidate.poll();
         }
         return max;
     }
