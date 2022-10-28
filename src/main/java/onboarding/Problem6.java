@@ -10,7 +10,7 @@ public class Problem6 {
 
     /**
      * forms 이메일중 예외가 존재하면 exception을 반환합니다.
-     * @param forms
+     * @param {List<List<String>>} forms
      * @throws Exception
      */
     public static void validateEmails(List<List<String>> forms) throws Exception {
@@ -25,7 +25,7 @@ public class Problem6 {
 
     /**
      * forms의 닉네임중 예외가 존재하면 exception을 반환합니다.
-     * @param forms
+     * @param {List<List<String>>} forms
      * @throws Exception
      */
     public static void validateNickNames(List<List<String>> forms) throws Exception {
@@ -36,5 +36,16 @@ public class Problem6 {
             if(nickName.length() < 1 || 20 <= nickName.length()) throw new Exception("닉네임의 길이는 1자 이상 20자 미만이여야 합니다.");
             if(!nickName.matches(reg)) throw new Exception("닉네임은 한글만 가능합니다.");
         }
+    }
+
+    /**
+     * 입력받은 forms의 닉네임 글자 수 기준으로 오름차순 정렬합니다.
+     * @param {List<List<String>>} forms
+     * @return {List<List<String>>} forms
+     */
+    public static List<List<String>> sortFormByNickName(List<List<String>> forms) {
+        forms = new ArrayList<>(forms);
+        Collections.sort(forms, Comparator.comparingInt(o -> o.get(1).length()));
+        return forms;
     }
 }
