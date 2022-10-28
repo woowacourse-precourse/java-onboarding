@@ -13,6 +13,15 @@ public class Problem6 {
         return answer;
     }
 
+    public static void setupData(List<List<String>> forms) {
+        forms.stream()
+                .map(form -> nicknameDecomposition(form.get(FORM_NICKNAME)))
+                .forEach(parts -> {
+                    partsOfNicknameList.add(parts);
+                    parts.forEach(part -> nicknameAndCountMap.put(part, nicknameAndCountMap.getOrDefault(part, 0) + 1));
+                });
+    }
+
     public static Set<String> nicknameDecomposition(String nickname) {
         Set<String> separatedNickname = new HashSet<>();
         for (int i = 0; i < nickname.length() - 1; i++) {
