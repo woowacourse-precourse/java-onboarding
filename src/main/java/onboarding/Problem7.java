@@ -26,11 +26,16 @@ public class Problem7 {
         }
     }
 
-    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+    private static void checkAll(String user, List<List<String>> friends, List<String> visitors){
         checkId(user);
         checkFriends(friends);
         checkVisitors(visitors);
         checkIds(friends);
+        visitors.forEach(Problem7::checkId);
+    }
+
+    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        checkAll(user, friends, visitors);
 
         List<String> answer = Collections.emptyList();
         return answer;
