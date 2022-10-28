@@ -24,12 +24,13 @@ public class Problem6 {
             String nickname = form.get(1);
             int count = getCountInDic(nickname);
             
-            //딕셔너리에 닉네임 부분이 2개 이상이라면 answer에 추가
-            if(count > 1){
+            //딕셔너리에 닉네임 부분이 2개 이상
+            //중복 제거를 위해 contains 사용
+            if(count > 1 && !answer.contains(email)){
                 answer.add(email);
             }
         }
-        Collections.sort(answer);
+        Collections.sort(answer); //오름차순 정렬
         return answer;
     }
 
