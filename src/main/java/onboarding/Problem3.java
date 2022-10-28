@@ -14,7 +14,7 @@ public class Problem3 {
         return answer;
     }
 
-    // 3.6.9가 존재하는지 확인하는 메소드
+    // 3.6.93 6 9 의 개수만큼 더해주는 메소드
     private static int checkClap(String str) {
         int count = 0;
 
