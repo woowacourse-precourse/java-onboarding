@@ -8,7 +8,6 @@ class Problem1 {
     private static final int MAX_PAGE = 400;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
 
         if (!(isValidation(pobi) && isValidation(crong))) {
             return -1;
@@ -17,7 +16,7 @@ class Problem1 {
         int pobiValue = maxValueOfSumOrMultiply(pobi);
         int crongValue = maxValueOfSumOrMultiply(crong);
 
-        return answer;
+        return getWinner(pobiValue, crongValue);
     }
 
     private static boolean isValidation(List<Integer> page) {
@@ -73,5 +72,23 @@ class Problem1 {
             number /= 10;
         }
         return result;
+    }
+
+    private static int getWinner(int pobi, int crong) {
+        if (isPobiWinner(pobi, crong)) {
+            return 1;
+        } else if (isCrongWinner(pobi, crong)) {
+            return 2;
+        } else {
+            return 0;
+        }
+    }
+
+    private static boolean isPobiWinner(int pobi, int crong) {
+        return pobi > crong;
+    }
+
+    private static boolean isCrongWinner(int pobi, int crong) {
+        return pobi < crong;
     }
 }
