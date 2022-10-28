@@ -1,18 +1,26 @@
 package onboarding;
 
 public class Problem2 {
-	public static String solution(String cryptogram) {
 
-		String answer = "";
+	static String answer;
+
+	public static String solution(String cryptogram) {
+		answer = "";
 		char[] chars = cryptogram.toCharArray();
+
 		for (Character c : chars) {
-			String ch = String.valueOf(c);
-			if (answer.endsWith(ch)) {
-				answer = answer.substring(0, answer.length() - 1);
-			} else {
-				answer += ch;
-			}
+			answer += String.valueOf(c);
+			checkEndChars();
 		}
+
 		return answer;
+	}
+
+	private static void checkEndChars() {
+		char c1 = answer.charAt(answer.length() - 2);
+		char c2 = answer.charAt(answer.length() - 1);
+		if (c1 == c2) {
+			answer = answer.substring(0, answer.length() - 2);
+		}
 	}
 }
