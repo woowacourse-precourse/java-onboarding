@@ -1,7 +1,9 @@
 package onboarding;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.HashSet;
 
 /*
 문제 설명
@@ -17,7 +19,8 @@ import java.util.ArrayList;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = new ArrayList<>();
+        // 이메일을 받을 때, 중복된 값 없이 받기 위해 HashSet으로 선언해준다.
+        HashSet<String> answer = new HashSet<>();
 
         // 중복되는 닉네임을 찾아준다.
         for (int i = 0; i < forms.size(); i++) {
@@ -46,6 +49,11 @@ public class Problem6 {
             }
         }
 
-        return answer;
+        // HashSet을 반환 타입과 맞춰주기 위하여 List로 바꿔준다.
+        List<String> answer_list = new ArrayList<>(answer);
+        // 오름차순으로 정렬해준다.
+        Collections.sort(answer_list);
+
+        return answer_list;
     }
 }
