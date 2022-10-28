@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,13 +18,13 @@ public class Problem6 {
         initNickNameList(forms);
         generateContinuousSubStrList();
 
-        return new ArrayList<>();
+        return Collections.emptyList();
     }
 
     private static void generateContinuousSubStrList() {
         for (String nickName : nickNameList) {
             for(int i = 0; i < nickName.length()-1; i++){
-                String continuousStr = nickName.substring(i, i + 1);
+                String continuousStr = nickName.substring(i, i + 2);
                 continuousSubStrList.add(continuousStr);
             }
         }
