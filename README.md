@@ -32,6 +32,11 @@
 - 알파벳 대문자를 받아 ASCII code를 사용하여 청개구리 사전으로 변환하는 upperChange 메서드
 - 엄마 말씀 word를 받아서 반복문을 통해 한글자씩 청개구리 사전으로 변환한 결과를 반환하는 solution
 
+## 문제5
+
+- 돈의 액수를 받아서 이를 최대한 가볍도록 하여 화폐 단위로 변환하는 withdraw 메서드
+- 돈의 액수 money를 받아서 withdraw 메서드를 통해 변환하여 결과값을 반환하는 solution
+
 ## 참고 문헌
 
 - 좋은 코드를 위한 자바 변수명 네이밍(https://tecoble.techcourse.co.kr/post/2020-04-24-variable_naming/)
