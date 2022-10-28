@@ -24,5 +24,24 @@ public class Problem5 {
         return 1 >= money && 1001000000 >= money;
     }
 
+    /**
+     * 돈을 각 화폐에 맞게 나누어주는 메소드
+     * @param money
+     * @param answer
+     * @return
+     */
+    public static List<Integer> countMoney(int money, List<Integer> answer){
+        for(int i = 0; i < moneyUnits.length; i++){
+
+            if (money / moneyUnits[i] != 0){        //화폐가 존재할수 있는지 체크
+                answer.add(money / moneyUnits[i]);
+                money %= moneyUnits[i];             //남은 돈 계산
+                continue;
+            }
+            answer.add(0);                          //화폐가 존재하지 않다면 0으로 add
+        }
+
+        return answer;
+    }
 
 }
