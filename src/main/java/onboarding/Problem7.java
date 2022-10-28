@@ -15,26 +15,73 @@ public class Problem7 {
     return answer;
   }
 
+  enum Point {
+    RELATED_POINT(10), VISIT_POINT(1);
+
+    Point(int point) {
+      this.point = point;
+    }
+
+    private final int point;
+
+    public int getPoint() {
+      return point;
+    }
+  }
+
   static class FriendShip {
 
-    public static Map<String, Set<String>> makeFriends(List<List<String>> friends) {
-      Map<String, Set<String>> friendShipMap = new HashMap<>();
+    private final Map<String, Set<String>> friendShip;
+    private final Map<String, Integer> networkScore;
+
+    public FriendShip() {
+      friendShip = new HashMap<>();
+      networkScore = new HashMap<>();
+    }
+
+    public Map<String, Set<String>> createFriendShip(List<List<String>> friends) {
       for (List<String> friend : friends) {
         String name1 = friend.get(0);
         String name2 = friend.get(1);
-        establishFriendShip(friendShipMap, name1, name2);
-        establishFriendShip(friendShipMap, name2, name1);
+        connect(name1, name2);
+        connect(name2, name1);
       }
-      return friendShipMap;
+      return friendShip;
     }
 
-    private static void establishFriendShip(Map<String, Set<String>> friendShipMap, String keyName,
-        String valueName) {
-      if (!friendShipMap.containsKey(keyName)) {
-        friendShipMap.put(keyName, new HashSet<>());
+    private void connect(String user, String friend) {
+      if (!friendShip.containsKey(user)) {
+        friendShip.put(user, new HashSet<>());
       }
-      friendShipMap.get(keyName).add(valueName);
+      friendShip.get(user).add(friend);
+    }
+
+    public Map<String, Integer> createNetworkScore(String user, List<String> visitors) {
+      for (String other : friendShip.keySet()) {
+        relatedFriends(user, other);
+      }
+
+      for (String visitor : visitors) {
+        networkScore.put(visitor,
+            networkScore.getOrDefault(visitor, 0) + Point.VISIT_POINT.getPoint());
+      }
+
+      return networkScore;
+    }
+
+    private void relatedFriends(String user, String other) {
+      Set<String> userFriends = friendShip.get(user);
+      for (String friend : friendShip.get(other)) {
+        calculateScore(other, userFriends, friend);
+      }
+    }
+
+    private void calculateScore(String other, Set<String> userFriends, String friend) {
+      if (userFriends.contains(friend)) {
+        networkScore.put(other, networkScore.getOrDefault(other, 0) + Point.RELATED_POINT.getPoint());
+      }
     }
 
   }
+
 }
