@@ -11,10 +11,15 @@
 
 
 #### 예외사항 기능 목록
+
 1. validateEmails(List<List<String>> forms) 
 - 정규식 reg를 @기준으로 앞 부분은 영문자, 숫자 범위로 제한했고 @뒷부분은 email.com으로 제한했습니다.
-- 입력받은 forms의 이메일을 matchs() 메서드를 이용해 정규식과 일치하지 않으면 예외를 반환합니다.
+- 입력받은 forms의 이메일을 matchs() 메서드를 이용해 정규식의 범위를 벗어나면 예외를 반환합니다.
 - 입력받은 forms의 이메일의 길이가 11자 미만 20자 이상이면 예외를 반환합니다.
 
+2. validateNickNames(List<List<String>> forms)
+- 정규식 reg를 한글로 제한했습니다.
+- 입력받은 forms의 닉네임을 matchs() 메서드를 이용해 정규식의 범위를 벗어나면 예외를 반환합니다.
+- 입력받은 forms의 닉네임의 길이가 1자 미만 20자 이상이면 예외를 반환합니다.
 
 

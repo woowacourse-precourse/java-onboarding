@@ -8,6 +8,11 @@ public class Problem6 {
         return answer;
     }
 
+    /**
+     * forms 이메일중 예외가 존재하면 exception을 반환합니다.
+     * @param forms
+     * @throws Exception
+     */
     public static void validateEmails(List<List<String>> forms) throws Exception {
         String reg = "[A-Za-z0-9]+@email.com$";
 
@@ -18,4 +23,18 @@ public class Problem6 {
         }
     }
 
+    /**
+     * forms의 닉네임중 예외가 존재하면 exception을 반환합니다.
+     * @param forms
+     * @throws Exception
+     */
+    public static void validateNickNames(List<List<String>> forms) throws Exception {
+        String reg = "^[ㄱ-ㅎ가-힣]*$";
+
+        for (int i = 0; i < forms.size(); i++) {
+            String nickName = forms.get(i).get(1);
+            if(nickName.length() < 1 || 20 <= nickName.length()) throw new Exception("닉네임의 길이는 1자 이상 20자 미만이여야 합니다.");
+            if(!nickName.matches(reg)) throw new Exception("닉네임은 한글만 가능합니다.");
+        }
+    }
 }
