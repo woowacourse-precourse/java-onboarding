@@ -10,6 +10,7 @@ public class Problem4 {
 
     public static String solution(String word) {
         String answer = "";
+        answer = toString(makeFrogWord(word));
         return answer;
     }
 
@@ -53,5 +54,9 @@ public class Problem4 {
             }
         }
         return frogWord;
+    }
+
+    private static String toString(StringBuilder stringBuilder) {
+        return stringBuilder.toString();
     }
 }
