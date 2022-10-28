@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
@@ -8,6 +9,9 @@ class Problem1 {
         if(checkPageException(pobi) || checkPageException(crong)){
             return -1;
         }
+        int pobiPoint = findHighValue(pobi);
+        int crongPoint = findHighValue(crong);
+
         return answer;
     }
 
@@ -34,4 +38,25 @@ class Problem1 {
         }
         return false;
     }
+
+    private static int findHighValue(List<Integer> pages){
+        int leftPage = pages.get(0);
+        int rightPage = pages.get(1);
+
+        List<Integer> leftPageValues = seperatePage(leftPage);
+        List<Integer> rightPageValues = seperatePage(rightPage);
+
+        return Integer.MAX_VALUE;
+    }
+
+    // page를 각각의 정수로 분리
+    private static List<Integer> seperatePage(int page){
+        List<Integer> seperatedPage = new ArrayList<>();
+        while(page > 0){
+            seperatedPage.add(page % 10);
+            page /= 10;
+        }
+        return seperatedPage;
+    }
+
 }
