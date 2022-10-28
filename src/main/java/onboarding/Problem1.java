@@ -11,7 +11,7 @@ class Problem1 {
     static final int PAGE_LENGTH_MAX = 400;
     static final int INPUT_LENGTH = 2;
     static final int LEFT_PAGE_INDEX = 0;
-    static final int RIGHT_PAGE_INDEX = 0;
+    static final int RIGHT_PAGE_INDEX = 1;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
@@ -24,6 +24,22 @@ class Problem1 {
         }
         pobiScore = calculateScore(pobi);
         crongScore = calculateScore(crong);
+        answer = getAnswer(pobiScore, crongScore);
+        return answer;
+    }
+
+    private static int getAnswer(int pobiScore, int crongScore) {
+        int answer = Integer.MAX_VALUE;
+
+        if (pobiScore > crongScore) {
+            answer = POBI_WIN;
+        }
+        if (pobiScore < crongScore) {
+            answer = CRONG_WIN;
+        }
+        if (pobiScore == crongScore) {
+            answer = TIE;
+        }
         return answer;
     }
 
