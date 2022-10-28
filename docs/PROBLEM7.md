@@ -24,3 +24,17 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 구현해야할 기능 목록
+1. friends에서 user와 친구인 id를 저장하는 기능
+2. 전체 id를 저장하는 기능
+   - friends에서 처음 등장하는 id를 저장하는 기능
+   - visitors에서 처음 등장하는 id를 저장하는 기능
+   - 예외사항으로 1번 기능에서 찾은 user의 id는 저장하지도 추천하지도 않는다.
+3. user와 동일한 친구를 가진 id에게 10점을 부여하는 기능
+4. visitors에서 id가 나타날 때마다 해당 id에게 1점을 부여하는 기능
+5. 모든 id의 점수를 내림차순으로 정렬하는 기능
+6. 모든 id를 이름순으로 정렬하는 기능
+7. 가장 점수가 높은 id를 최대 5개 반환하는 기능
+   - 점수순으로 5개 안에 포함되는 id라도 점수가 0이라면 반환하지 않는다
+   - 점수가 같다면 id가 앞에 오는 순서대로 반환한다.

@@ -21,3 +21,9 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+### 구현해야할 기능 목록
+1. 문자열에서 중복 문자 찾기
+    - 중복이 시작되는 index와 끝나는 index를 원소로 가지는 list를 return
+    - 중복된 문자가 없을 경우 -1을 return
+2. 문자열에서 중복 문자 제거하기
