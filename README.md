@@ -88,7 +88,7 @@
 - [ ] SNS Controller
   - [x] 사용자 등록
   - [x] 친구관계 등록
-  - [ ] 방문자 등록
+  - [x] 방문자 등록
   - [ ] 친구추천 점수 계산
     - [ ] 이름, 점수를 포함하는 내부 private class 생성
       - [ ] comparable -> compareTo 구현 : 추천점수로

@@ -2,6 +2,7 @@ package onboarding.problem7;
 
 
 import java.util.HashMap;
+import java.util.List;
 
 public class SNSController {
 
@@ -30,5 +31,19 @@ public class SNSController {
     private void addFriend(User user, String friendName){
         user.addFriend(friendName);
         users.put(user.getName(), user);
+    }
+
+    public void addVisitor(String userName, String visitedUserName){
+        User user = users.get(userName);
+        user.addVisitedUser(visitedUserName);
+        users.put(userName, user);
+    }
+
+    public void addVisitors(String userName, List<String> visitedUserNames){
+        User user = users.get(userName);
+        for(String visitedUserName : visitedUserNames){
+            user.addVisitedUser(visitedUserName);
+        }
+        users.put(userName, user);
     }
 }
