@@ -15,7 +15,7 @@ public class Problem4 {
         ArrayList<String> lower_cases = new ArrayList<>(Arrays.asList(lower));
         ArrayList<String> cases;
 
-        String answer = "";
+        StringBuilder sb = new StringBuilder();
         for(int i=0; i<word.length(); i++) {
             char tmp = word.charAt(i);
 
@@ -24,16 +24,18 @@ public class Problem4 {
             else if(tmp >= 'a' && tmp <= 'z')
                 cases = lower_cases;
             else {
-                answer += Character.toString(tmp);
+                sb.append(tmp);
                 continue;
             }
 
             String convert = Character.toString(tmp);
             int idx = cases.indexOf(convert);
             idx = 25 - idx;
-            answer += cases.get(idx);
+            convert = cases.get(idx);
+            sb.append(convert);
         }
 
+        String answer = sb.toString();
         return answer;
     }
 }
