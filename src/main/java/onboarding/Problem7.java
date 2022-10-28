@@ -42,7 +42,21 @@ public class Problem7 {
             }
         }
 
+        //해당 user 타임라인을 방문한 사람들에게 +1점씩 부여
+        for(String f : visitors){
+            scoreMap.put(f, scoreMap.getOrDefault(f, 0) + 1);
+        }
 
+        //scoreMap에서 이미 user와 친구인 사람은 추천친구에서 제외
+        for(String f : hashMap.get(user)){
+            if(scoreMap.containsKey(f)){
+                scoreMap.remove(f);
+            }
+        }
+
+        //scoreMap에 자기자신(user)은 추천친구에서 제외
+        if(scoreMap.containsKey(user))
+            scoreMap.remove(user);
 
 
 
