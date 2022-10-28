@@ -8,6 +8,7 @@ public class Problem2 {
             for (int i = 0; i < cryptogram.length() - 1; i++) {
                 if (cryptogram.charAt(i) == cryptogram.charAt(i + 1)) {
                     cryptogram = removeRepeatedChar(cryptogram, i);
+                    i--;
                 }
             }
         }
