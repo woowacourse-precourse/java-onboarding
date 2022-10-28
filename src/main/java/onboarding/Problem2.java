@@ -4,45 +4,59 @@ import java.util.Locale;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = new String(cryptogram);
-        int idx = 0;
+        Cryptogram crypto = new Cryptogram(cryptogram);
 
-        try {
-            Validator.isValidate(answer);
-        } catch (Exception error){
-            System.out.println("[ERROR] : " + error);
-        }
-
-        while (answer.length() > 0){
-            idx = getRemoveIdx(answer);
-            if (idx < 0){
-                break;
-            }
-            answer = removeString(answer, idx);
-        }
-        return answer;
+        doingZip(crypto);
+        return crypto.getCryptogram();
     }
 
-    private static int getRemoveIdx(String cryptogram){
-        char check = cryptogram.charAt(0);
-        for (int i = 1; i < cryptogram.length(); i++) {
-            if (check == cryptogram.charAt(i)){
-                return i;
-            }
-            check = cryptogram.charAt(i);
+    private static void doingZip(Cryptogram crypto) {
+        int idx = crypto.getZipIdx();
+
+        while (idx != -1){
+            crypto.zipCryptogram(idx);
+            idx = crypto.getZipIdx();
         }
-        return -1;
     }
 
-    private static String removeString(String cryptogram, int idx){
-        String result = "";
-        for (int i = 0; i < cryptogram.length(); i++) {
-            if (i == idx - 1 || i == idx){
-                continue;
-            }
-            result += String.valueOf(cryptogram.charAt(i));
+    static class Cryptogram{
+        private String cryptogram;
+
+        public Cryptogram(String word) {
+            Validator.isValidate(word);
+            setCryptogram(word);
         }
-        return result;
+
+        public void zipCryptogram(int start){
+            StringBuilder sb = new StringBuilder(cryptogram);
+            int end = start + 1;
+
+            while (end < cryptogram.length() && charAt(start) == charAt(end)){
+                end++;
+            }
+            setCryptogram(new String(sb.delete(start, end)));
+        }
+
+        public int getZipIdx(){
+            for (int i = 0; i < cryptogram.length() - 1; i++) {
+                if (cryptogram.charAt(i) == cryptogram.charAt(i + 1)){
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        public char charAt(int i){
+            return cryptogram.charAt(i);
+        }
+
+        public String getCryptogram() {
+            return cryptogram;
+        }
+
+        public void setCryptogram(String cryptogram) {
+            this.cryptogram = cryptogram;
+        }
     }
 
     static class Validator{

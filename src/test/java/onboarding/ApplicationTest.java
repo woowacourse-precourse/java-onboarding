@@ -106,23 +106,30 @@ class ApplicationTest {
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
 
-        @Test
-        void isCorrectSize1() {
-            String cryptogram = "";
-            assertThat(Problem2.Validator.isValidate(cryptogram)).isFalse();
-        }
+//        @Test
+//        void case3() {
+//            String cryptogram = "zzeeelleyz";
+//            String result = "eyz";
+//            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+//        }
 
-        @Test
-        void isCorrectSize2() {
-            String cryptogram = "adbawkbdadjvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkb";
-            assertThat(Problem2.Validator.isValidate(cryptogram)).isFalse();
-        }
-
-        @Test
-        void isOnlyLowerCase() {
-            String cryptogram = "zyelleAyz";
-            assertThat(Problem2.Validator.isValidate(cryptogram)).isFalse();
-        }
+//        @Test
+//        void isCorrectSize1() {
+//            String cryptogram = "";
+//            assertThat(Problem2.Validator.isValidate(cryptogram)).isFalse();
+//        }
+//
+//        @Test
+//        void isCorrectSize2() {
+//            String cryptogram = "adbawkbdadjvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkb";
+//            assertThat(Problem2.Validator.isValidate(cryptogram)).isFalse();
+//        }
+//
+//        @Test
+//        void isOnlyLowerCase() {
+//            String cryptogram = "zyelleAyz";
+//            assertThat(Problem2.Validator.isValidate(cryptogram)).isFalse();
+//        }
     }
 
     @Nested
