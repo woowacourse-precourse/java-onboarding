@@ -8,7 +8,7 @@ class Problem1 {
         return answer;
     }
 
-    private int addedNumbers(int firstNumber, int secondNumber) {
+    private static int addedNumbers(int firstNumber, int secondNumber) {
         return firstNumber + secondNumber;
     }
 
