@@ -11,22 +11,22 @@ class Problem1 {
     private static final int EXCEPTION = -1;
     private static final int INTERVAL = 1;
 
-    public static int addDigits(int number){
+    public static int addDigits(int pageNumber){
         int sum = 0;
-        while(number > 0){
-            int digit = number % 10;
+        while(pageNumber > 0){
+            int digit = pageNumber % 10;
             sum += digit;
-            number /= 10;
+            pageNumber /= 10;
         }
         return sum;
     }
 
-    public static int multiplyDigits(int number){
+    public static int multiplyDigits(int pageNumber){
         int product = 1;
-        while(number > 0){
-            int digit = number % 10;
+        while(pageNumber > 0){
+            int digit = pageNumber % 10;
             product *= digit;
-            number /= 10;
+            pageNumber /= 10;
         }
         return product;
     }
@@ -37,20 +37,20 @@ class Problem1 {
         int leftProduct = multiplyDigits(player.get(0));
         int rightProduct = multiplyDigits(player.get(1));
 
-        int leftMax = compareNumbers(leftSum, leftProduct);
-        int rightMax = compareNumbers(rightSum, rightProduct);
+        int leftMax = comparePageNumbers(leftSum, leftProduct);
+        int rightMax = comparePageNumbers(rightSum, rightProduct);
 
-        int result = compareNumbers(leftMax, rightMax);
+        int result = comparePageNumbers(leftMax, rightMax);
         return result;
     }
 
-    public static int compareNumbers(int number1, int number2){
+    public static int comparePageNumbers(int leftPageNumber, int rightPageNumber){
         int result = 0;
-        if(number1 > number2){
-            result = number1;
+        if(leftPageNumber > rightPageNumber){
+            result = leftPageNumber;
         }
-        if(number2 >= number1){
-            result = number2;
+        if(rightPageNumber >= leftPageNumber){
+            result = rightPageNumber;
         }
         return result;
     }
@@ -59,27 +59,27 @@ class Problem1 {
 
     public static boolean checkValidity(List<Integer> player){
         boolean result = true;
-        int number1;
-        int number2;
+        int leftPageNumber;
+        int rightPageNumber;
 
         if(!checkListSize(player)){
             result = false;
             return result;
         }
 
-        number1 = player.get(0);
-        number2 = player.get(1);
+        leftPageNumber = player.get(0);
+        rightPageNumber = player.get(1);
 
-        if(!checkNumberRange(number1)){
+        if(!checkPageNumberRange(leftPageNumber)){
             result = false;
         }
-        if(!checkNumberRange(number2)){
+        if(!checkPageNumberRange(rightPageNumber)){
             result = false;
         }
-        if(!checkInterval(number1, number2)){ //페이지 간격 예외 확인
+        if(!checkInterval(leftPageNumber, rightPageNumber)){ //페이지 간격 예외 확인
             result = false;
         }
-        if(isEven(number1) && isOdd(number2)){ //페이제 홀수 짝수 예외 확인
+        if(isEven(leftPageNumber) && isOdd(rightPageNumber)){ //페이제 홀수 짝수 예외 확인
             result = false;
         }
         return result;
@@ -93,32 +93,32 @@ class Problem1 {
         return result;
     }
 
-    public static boolean checkNumberRange(int number){
+    public static boolean checkPageNumberRange(int pageNumber){
         boolean result = true;
-        if(number < MIN_PAGE || number > MAX_PAGE){
+        if(pageNumber < MIN_PAGE || pageNumber > MAX_PAGE){
             result = false;
         }
         return result;
     }
-    public static boolean checkInterval(int number1, int number2){
+    public static boolean checkInterval(int leftPageNumber, int rightPageNumber){
         boolean result = true;
-        if(number2 - number1 != 1){
-            result = false;
-        }
-        return result;
-    }
-
-    public static boolean isOdd(int number){
-        boolean result = true;
-        if(number % 2 == 0){
+        if(rightPageNumber - leftPageNumber != 1){
             result = false;
         }
         return result;
     }
 
-    public static boolean isEven(int number){
+    public static boolean isOdd(int pageNumber){
         boolean result = true;
-        if(number % 2 == 1){
+        if(pageNumber % 2 == 0){
+            result = false;
+        }
+        return result;
+    }
+
+    public static boolean isEven(int pageNumber){
+        boolean result = true;
+        if(pageNumber % 2 == 1){
             result = false;
         }
         return result;

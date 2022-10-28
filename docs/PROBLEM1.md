@@ -13,7 +13,6 @@
 | 10.28 | isEven()           | 짝수 확인     | int            | boolean     | committed |
 
 ### TODO
--change variable number to pageNumber  
 -remove !(not) from if statements  
 
 
