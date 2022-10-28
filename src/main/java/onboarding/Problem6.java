@@ -23,6 +23,21 @@ public class Problem6 {
             map.put(form.get(EMAIL), list);
         }
 
+        int loopStartIdx = 1;
+
+        for (String email : map.keySet()) {
+            List<String> list = map.get(email);
+            for (int i = loopStartIdx; i < forms.size(); i++) {
+                for (String splitNickname : list) {
+                    if (forms.get(i).get(NICKNAME).contains(splitNickname)) {
+                        answer.add(forms.get(i).get(EMAIL));
+                        answer.add(email);
+                    }
+                }
+            }
+            loopStartIdx++;
+        }
+
         return answer;
 
     }
