@@ -1,5 +1,6 @@
 package onboarding;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -46,5 +47,12 @@ class Problem4Test {
         assertThat((char) result2).isEqualTo('y');
         assertThat((char) result3).isEqualTo('b');
         assertThat((char) result4).isEqualTo('a');
+    }
+
+    @Test
+    void case1() {
+        String word = "Hello, World! 안녕";
+        String result = "Svool, Dliow! 안녕";
+        Assertions.assertThat(Problem4.solution(word)).isEqualTo(result);
     }
 }
