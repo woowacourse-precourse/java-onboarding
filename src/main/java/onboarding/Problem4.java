@@ -43,7 +43,7 @@ public class Problem4 {
         return 'a' + 'z';
     }
 
-    public static boolean isCorrectWordRange(String momWord) {
+    public static boolean validateWordRange(String momWord) {
         return (momWord.length() >= 1 && momWord.length() <= 1000);
     }
 }
