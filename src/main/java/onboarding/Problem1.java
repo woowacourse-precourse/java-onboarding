@@ -22,7 +22,8 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-
+        int pobiScore = Math.max(calBigNum(pobi.get(0)), calBigNum(pobi.get(1)));
+        int crongScore = Math.max(calBigNum(crong.get(0)), calBigNum(crong.get(1)));
 
         return answer;
     }
