@@ -1,11 +1,9 @@
 package onboarding.domain;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 public class EmailSender {
-    private final HashSet<String> duplicateCrews = new HashSet<>();
+    private final SortedSet<String> duplicateCrews = new TreeSet<>();
 
     public EmailSender(List<List<String>> forms) {
         for (int i = 0; i < forms.size() - 1; i++) {
@@ -36,8 +34,6 @@ public class EmailSender {
     }
 
     public List<String> sendEmail() {
-        ArrayList<String> duplicateCrewsEmail = new ArrayList<>(duplicateCrews);
-        duplicateCrewsEmail.sort(String::compareTo);
-        return duplicateCrewsEmail;
+        return new ArrayList<>(duplicateCrews);
     }
 }
