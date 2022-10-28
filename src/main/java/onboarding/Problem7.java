@@ -16,22 +16,26 @@ public class Problem7 {
         return friendList;
     }
 
-    private static List<String> createFriendsFriendList(List<String> friendList, List<List<String>> friends){
+    private static List<String> createFriendsFriendList(String user, List<String> friendList, List<List<String>> friends){
         List<String> friendsFriendList = new ArrayList<>();
 
         for(int i = 0; i < friendList.size(); i++){
             for(int j = 0; j < friends.size(); j++){
                 if(friendList.get(i) == friends.get(j).get(0))
-                    friendsFriendList.add(friends.get(i).get(1));
+                    friendsFriendList.add(friends.get(j).get(1));
                 else if(friendList.get(i) == friends.get(j).get(1))
-                    friendsFriendList.add(friends.get(i).get(0));
+                    friendsFriendList.add(friends.get(j).get(0));
             }
+        }
+
+        if(friendsFriendList.contains(user)){
+            friendsFriendList.remove(user);
         }
 
         return friendsFriendList;
     }
 
-    private static HashMap<String, Integer> getRecommendPoint(List<String> friendList, List<String> ffList, List<String> visitorList){
+    private static HashMap<String, Integer> getRecommendPoint(String user, List<String> friendList, List<String> ffList, List<String> visitorList){
         HashMap<String, Integer> pointMap = new HashMap<>();
 
         for(int i = 0; i < ffList.size(); i++){
@@ -53,14 +57,18 @@ public class Problem7 {
                 pointMap.remove(friendList.get(i));
         }
 
+        if(pointMap.containsKey(user)){
+            pointMap.remove(user);
+        }
+
         return pointMap;
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
         List<String> friendList = createFriendList(user, friends);
-        List<String> ffList = createFriendsFriendList(friendList, friends);
-        HashMap<String, Integer> pointMap = getRecommendPoint(friendList, ffList, visitors);
+        List<String> ffList = createFriendsFriendList(user, friendList, friends);
+        HashMap<String, Integer> pointMap = getRecommendPoint(user, friendList, ffList, visitors);
 
         List<Map.Entry<String, Integer>> sortedPointList = new ArrayList<>(pointMap.entrySet());
         sortedPointList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
