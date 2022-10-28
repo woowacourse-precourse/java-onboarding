@@ -20,6 +20,8 @@ public class Problem4 {
         }
 
         String answer = "";
+        for(char c : list)
+            answer += c;
 
         return answer;
     }
