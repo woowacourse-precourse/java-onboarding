@@ -6,7 +6,7 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = -1;
         if(validation(pobi, crong)){
-
+            
         }
         return answer;
     }
@@ -36,5 +36,11 @@ class Problem1 {
             result *= Integer.parseInt(s);
         }
         return result;
+    }
+
+    public static int getMaxValue(List<Integer> array){
+        int addResult = Math.max(add(array.get(0)), add(array.get(1)));
+        int multipleResult = Math.max(multiple(array.get(0)), multiple(array.get(2)));
+        return Math.max(addResult, multipleResult);
     }
 }
