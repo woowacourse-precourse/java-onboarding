@@ -10,9 +10,13 @@ public class Problem5 {
 
 	public static List<Integer> solution(int money) {
 		// 돈을 받고
-		// 몫은 리스트에 입력,
-		// 나머지는 업데이트
 		List<Integer> answer = new ArrayList<Integer>();
+		for (int j : moneyArr) {
+			// 몫은 리스트에 입력,
+			answer.add(money / j);
+			// 돈의 액수는 잔액으로 바꿔주기
+			money %= j;
+		}
 		return answer;
 	}
 
