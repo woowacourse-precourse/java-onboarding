@@ -5,7 +5,7 @@ public class Problem2 {
         String answer = "answer";
 
         // crytogram와 길이, 값이 일치한 StringBuffer 생성
-        StringBuffer sb = getSStringBuffer(cryptogram);
+        StringBuffer sb = getStringBuffer(cryptogram);
 
         //
 
@@ -13,7 +13,7 @@ public class Problem2 {
     }
 
     // String 매개변수와 길이, 값이 일치한 StringBuffer 반환
-    private static StringBuffer getSStringBuffer(String cryptogarm) {
+    private static StringBuffer getStringBuffer(String cryptogarm) {
         StringBuffer sb = new StringBuffer(cryptogram.length());
         sb.append(cryptogram);
         return sb;
