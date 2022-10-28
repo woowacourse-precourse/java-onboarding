@@ -1,6 +1,7 @@
 package onboarding;
 
-import java.util.Collections;
+import static onboarding.Problem7.FriendsRecommender.getRecommendedFriendsName;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -12,8 +13,7 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends,
         List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        return getRecommendedFriendsName(user, friends, visitors);
     }
 
     public static class FriendsRecommender {
@@ -73,6 +73,17 @@ public class Problem7 {
                 }
                 return accountB.getScore() - accountA.getScore();
             });
+        }
+
+        public static List<String> getRecommendedFriendsName(String user,
+            List<List<String>> friends,
+            List<String> visitors) {
+            initFriendsRelation(friends);
+            initFriendsRelationScore(user);
+            initVisitorScore(visitors, user);
+            List<Account> accounts = mapAccountInfoMapToAccountList(user);
+            sortedScoreDescAndNameAsc(accounts);
+            return accounts.stream().map(Account::getId).limit(5).collect(Collectors.toList());
         }
     }
 }
