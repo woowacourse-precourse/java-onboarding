@@ -25,12 +25,17 @@ class Problem1 {
         } catch (GameException e) {
             return e.getValue();
         }
+        return -1;
     }
 
-    private static int getScoreFromPages(List<Integer> pages) {
+    private static int getScoreFromPages(List<Integer> pages) throws GameException {
         // 입력받은 페이지 배열에서 왼쪽 페이지와 오른쪽 페이지를 따로 계산
         int leftPage = pages.get(0);
         int rightPage = pages.get(1);
+
+        // 기능 요구 사항 예외 처리
+        if (!verifyPageCondition(leftPage, rightPage))
+            throw new GameException();
 
         // 정수형 페이지 변수의 자릿수를 통해 점수를 계산하기 위해 자릿수 배열 생성
         List<Integer> leftPageDigits = getDigitsFromNumber(leftPage);
@@ -68,6 +73,16 @@ class Problem1 {
         } else {
             return Result.DRAW;
         }
+    }
+
+    private static Boolean verifyPageCondition(int leftPage, int rightPage) {
+        if (leftPage % 2 == 0 || rightPage % 2 == 1)
+            return false;
+        if (rightPage - leftPage != 1)
+            return false;
+        if (leftPage == 1 || rightPage == 400)
+            return false;
+        return true;
     }
 
     public enum Result {

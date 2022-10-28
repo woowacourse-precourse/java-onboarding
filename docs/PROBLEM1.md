@@ -21,7 +21,7 @@
 - [x] FEATURE5. 포비 크롱 점수 비교 함수
 - [x] FEATURE6. 예외 사항 Exception 클래스
 - [x] FEATURE7. solution 함수
-- [ ] FEATURE8. 게임 예외 처리
+- [x] FEATURE8. 게임 예외 처리
 
 ### 제한사항
 
