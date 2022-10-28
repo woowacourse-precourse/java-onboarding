@@ -29,16 +29,20 @@ public class Decryptor {
 
         cryptogramStack.push(cryptogramCharArray[CRYPTOGRAM_START_INDEX]);
         for (int i = CRYPTOGRAM_DUPLICATE_START_INDEX; i < cryptogram.length(); i++) {
-            if (duplicateCharacter(cryptogramStack, cryptogramCharArray[i])) {
-                cryptogramStack.pop();
-                continue;
-            }
-            cryptogramStack.push(cryptogramCharArray[i]);
+            addValidCryptogramCharacter(cryptogramStack, cryptogramCharArray[i]);
         }
         return cryptogramStack;
     }
 
-    private static boolean duplicateCharacter(Stack<Character> cryptogramStack, Character target) {
+    private static void addValidCryptogramCharacter(Stack<Character> cryptogramStack, char target) {
+        if (duplicateCharacter(cryptogramStack, target)) {
+            cryptogramStack.pop();
+            return;
+        }
+        cryptogramStack.push(target);
+    }
+
+    private static boolean duplicateCharacter(Stack<Character> cryptogramStack, char target) {
         return !cryptogramStack.isEmpty() && cryptogramStack.peek() == target;
     }
 }
