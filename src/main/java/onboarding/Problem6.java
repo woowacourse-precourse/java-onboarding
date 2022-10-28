@@ -8,11 +8,13 @@ import java.util.Set;
 
 public class Problem6 {
     private static final Map<String, Set<String>> studentsInfo = new HashMap<String, Set<String>>();
+    private static final Set<String> DUPLICATED_STUDENTS = new HashSet<>();
 
     public static List<String> solution(List<List<String>> forms) {
         for (List<String> info : forms) {
             saveStudentsInfo(info);
         }
+        findDuplicatedStudents();
         List<String> answer = List.of("answer");
         return answer;
     }
@@ -36,5 +38,13 @@ public class Problem6 {
     private static String getEmailId(String email) {
         int idx = email.indexOf("@");
         return email.substring(0, idx);
+    }
+
+    private static void findDuplicatedStudents() {
+        for (Set<String> emailIds : studentsInfo.values()) {
+            if (emailIds.size() >= 2) {
+                DUPLICATED_STUDENTS.addAll(emailIds);
+            }
+        }
     }
 }
