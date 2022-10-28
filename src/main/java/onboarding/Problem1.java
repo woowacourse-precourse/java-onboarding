@@ -94,7 +94,7 @@ class Problem1 {
     }
 
     /**
-     * 결과를 반환하는 함수
+     * 결과를 반환
      *
      * @param pobi
      * @param crong
