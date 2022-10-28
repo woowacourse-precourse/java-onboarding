@@ -4,8 +4,10 @@ import java.util.Stack;
 public class Problem2 {
     public static String solution(String cryptogram) {
         char[] ch = cryptogram.toCharArray();
-        while(check1(ch)){
-            Stack<Character> decodeStack = dremove(ch);                       //?
+        while(check1(ch) & check2(ch)){
+            Stack<Character> decodeStack = dremove(ch);
+            String answer = stacktostr(decodeStack);
+            return answer;
 
         }
         return answer;
@@ -49,7 +51,13 @@ public class Problem2 {
     }
 
     public static String stacktostr(Stack<Character> stack){                    // string형으로 변환
+        StringBuilder stringBuilder = new StringBuilder();
 
+        for ( char c : stack){
+            stringBuilder.append(c);
+
+        }
+        return stringBuilder.toString();
     }
 
 
