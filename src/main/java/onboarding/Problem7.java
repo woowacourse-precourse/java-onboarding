@@ -29,12 +29,25 @@ public class Problem7 {
 
         recommendScoreMap = calculateRecommendScore(user, visitors, recommendScoreMap, friendsList);
 
-
+        List<Map.Entry<String, Integer>> recommendFriendsList = new ArrayList<>(recommendScoreMap.entrySet());
+        Collections.sort(recommendFriendsList, (listUser1, listUser2) -> listUser2.getValue().compareTo(listUser1.getValue()));
 
         List<String> answer = new ArrayList<>();
-
+        if (recommendFriendsList.size() <= 5) {
+            for (int i = 0; i < recommendFriendsList.size(); i++) {
+                answer.add(recommendFriendsList.get(i).getKey());
+            }
+        } else {
+            for (int i = 0; i < 5; i++) {
+                answer.add(recommendFriendsList.get(i).getKey());
+            }
+        }
+        for (String s : answer) {
+            System.out.println("s = " + s);
+        }
         return answer;
     }
+
     private static HashSet<String> makeUsers(String user, List<List<String>> friends, List<String> visitors) {
         HashSet<String> users = new HashSet<>();
         //문제에서 제시한 모든 사용자들 묶어주기
@@ -117,5 +130,4 @@ public class Problem7 {
         }
         return recommendScore;
     }
-
 }
