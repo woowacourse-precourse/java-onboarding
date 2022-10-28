@@ -27,4 +27,8 @@ class Problem1 {
             return 2;
         }
     }
+
+    public static int getMaxValue(Integer integer1, Integer integer2) {
+        return 0;
+    }
 }

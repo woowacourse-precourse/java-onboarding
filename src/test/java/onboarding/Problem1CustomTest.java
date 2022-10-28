@@ -190,5 +190,12 @@ public class Problem1CustomTest {
             int result = Problem1.result(testList.get(0), testList.get(1));
             assertThat(result).isEqualTo(0);
         }
+
+        @Test
+        void 최대값을반환해주는메써드() {
+            List<Integer> testList = List.of(1, 2);
+            int maxValue = Problem1.getMaxValue(testList.get(0), testList.get(1));
+            assertThat(maxValue).isEqualTo(2);
+        }
     }
 }
