@@ -26,7 +26,7 @@ public class Problem5 {
 
     }
 
-    private static void checkValidRange(int money) {
+    private static void checkValidRange(final int money) {
         if (money < 1 || money > 1000000) {
             throw new IllegalArgumentException();
         }

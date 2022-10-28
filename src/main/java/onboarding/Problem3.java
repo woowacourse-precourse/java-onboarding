@@ -23,7 +23,7 @@ public class Problem3 {
         return answer;
     }
 
-    private static void checkValidRange(int number) {
+    private static void checkValidRange(final int number) {
         if (number > 10000 || number <= 0) {
             throw new IllegalArgumentException();
         }

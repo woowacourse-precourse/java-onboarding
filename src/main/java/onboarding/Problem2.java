@@ -68,8 +68,8 @@ public class Problem2 {
         return answer;
     }
 
-    private static boolean isCheckChanged(Stack<String> stack, int indexNumber, boolean checkChanged,
-        String[] splitWord) {
+    private static boolean isCheckChanged(
+        final Stack<String> stack, final int indexNumber, final boolean checkChanged, String[] splitWord) {
         if (stack.peek().equals(splitWord[indexNumber])) {
             List<Integer> eraseList = getEraseList(indexNumber, splitWord);
             checkChanged = doEraseAndCheckChanged(checkChanged, splitWord, eraseList);
@@ -77,7 +77,8 @@ public class Problem2 {
         return checkChanged;
     }
 
-    private static boolean doEraseAndCheckChanged(boolean checkChanged, String[] splitWord, List<Integer> eraseList) {
+    private static boolean doEraseAndCheckChanged(
+        final boolean checkChanged, final String[] splitWord, final List<Integer> eraseList) {
         for (Integer eraseIndex : eraseList) {
             splitWord[eraseIndex] = "";
             checkChanged = true;
@@ -85,7 +86,7 @@ public class Problem2 {
         return checkChanged;
     }
 
-    private static List<Integer> getEraseList(int indexNumber, String[] splitWord) {
+    private static List<Integer> getEraseList(final int indexNumber, final String[] splitWord) {
         int samePoint = indexNumber - 1;
         if (samePoint < 0) samePoint = 0;
         List<Integer> eraseList = new ArrayList<>();
@@ -98,7 +99,7 @@ public class Problem2 {
         return eraseList;
     }
 
-    private static void checkValidRange(int wordLength) {
+    private static void checkValidRange(final int wordLength) {
         if (wordLength < 1 || wordLength > 1000) {
             throw new IllegalArgumentException();
         }
