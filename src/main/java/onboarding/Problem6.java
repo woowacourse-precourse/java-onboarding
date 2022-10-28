@@ -1,8 +1,13 @@
 package onboarding;
 
 import java.util.List;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.HashMap;
+import java.util.Set;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.stream.Collectors;
+
 
 public class Problem6 {
     private static final int EMAIL = 0;
@@ -12,13 +17,20 @@ public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
         Map<String, String> map = new HashMap<>();
-        List<String> answer = List.of("answer");
+        Set<String> set = new HashSet<>();
 
         for (List<String> form : forms) {
+
+            String str = checkOverlabByMap(form.get(NAME), map);
+            if (!str.isEmpty()) {
+                set.add(str);
+                set.add(form.get(EMAIL));
+            }
+
             nameCaseInsertMap(form.get(NAME), form.get(EMAIL), map);
         }
 
-        return answer;
+        return set.stream().collect(Collectors.toList());
     }
 
     private static void nameCaseInsertMap(String name, String email, Map<String, String> map) {
@@ -34,5 +46,16 @@ public class Problem6 {
         }
     }
 
+    private static String checkOverlabByMap(String name, Map<String, String> map) {
+        Iterator<String> iter = map.keySet().iterator();
 
+        while (iter.hasNext()) {
+            String str = iter.next();
+            if (name.contains(str)) {
+                return map.get(str);
+            }
+        }
+
+        return "";
+    }
 }
