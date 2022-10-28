@@ -8,12 +8,11 @@ import java.util.HashMap;
 public class Problem7 {
     static HashMap<String,Integer> map = new HashMap<>();
     public static void connect(List<List<String>> friends){
-
+        Stack<String> stack = new Stack<>();
     }
     public static void visit(List<String> visitors){
-        for(int i = 0; i < visitors.size(); i++){
-            String key = visitors.get(i);
-            map.put(key, map.getOrDefault(key, 1) + 1);
+        for(String v : visitors){
+            map.put(v, map.getOrDefault(v, 1) + 1);
         }
     }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
