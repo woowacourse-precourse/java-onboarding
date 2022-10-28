@@ -167,6 +167,13 @@ class ApplicationTest {
         }
 
         @Test
+        void parameter_mixed_upper_and_lower() {
+            String word = "I   lOve  YoU";
+            String result = "R   oLev  BlF";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+
+        @Test
         void parameter_length_under1_exception() {
             String word = "";
             String result = "";
