@@ -278,16 +278,22 @@ class ApplicationTest {
             assertThat(Problem4.changeCharacter(data)).isEqualTo(25 - data + 'a' * 2);
         }
     }
-//
-//    @Nested
-//    class Problem5Test {
-//        @Test
-//        void case1() {
-//            int money = 50_237;
-//            List<Integer> result = List.of(1, 0, 0, 0, 0, 2, 0, 3, 7);
-//            assertThat(Problem5.solution(money)).isEqualTo(result);
-//        }
-//
+
+    @Nested
+    class Problem5Test {
+        @Test
+        void case1() {
+            int money = 50_237;
+            List<Integer> result = List.of(1, 0, 0, 0, 0, 2, 0, 3, 7);
+            assertThat(Problem5.solution(money)).isEqualTo(result);
+        }
+
+        @Test
+        void calculateMoneyNumTest() {
+            assertThat(Problem5.calculateMoneyNum(5000, 19000)).isEqualTo(3);
+        }
+    }
+
 //        @Test
 //        void case2() {
 //            int money = 15_000;
