@@ -4,8 +4,16 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        if(detectError(pobi) || detectError(crong))
+            return -1;
+
+        int pobiNum = getMax(pobi), crongNum = getMax(crong);
+        if(pobiNum==crongNum)
+            return 0;
+        else if(pobiNum>crongNum)
+            return 1;
+        else
+            return 2;
     }
 
     //num 절댓값 취하기
