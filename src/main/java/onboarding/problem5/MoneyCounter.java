@@ -1,6 +1,7 @@
 package onboarding.problem5;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class MoneyCounter {
@@ -9,6 +10,15 @@ public class MoneyCounter {
     public MoneyCounter(int bill) {
         this.bill = bill;
     }
+
+    public List<Integer> count() {
+        ArrayList<Integer> answer = new ArrayList<>();
+
+        calculateCount(answer);
+
+        return answer;
+    }
+
 
     private void calculateCount(ArrayList<Integer> answer) {
         int currentBill = bill;
