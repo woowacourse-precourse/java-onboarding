@@ -3,7 +3,6 @@ package onboarding;
 public class Problem4 {
     public static String solution(String word) {
         Validator.isValidate(word);
-
         return convertWord(word);
     }
 
@@ -18,16 +17,14 @@ public class Problem4 {
     }
 
     private static char convertChar(char ch){
-        char convert;
-        int div;
-
+        int div = 0;
         if ('a' <= ch && ch <= 'z'){
             div = 'a' + 'z';
-        } else {
+        }
+        else if ('A' <= ch && ch <= 'Z'){
             div = 'A' + 'Z';
         }
-        convert = (char)(div - ch);
-        return convert;
+        return (char)(div - ch);
     }
 
     static class Validator {
