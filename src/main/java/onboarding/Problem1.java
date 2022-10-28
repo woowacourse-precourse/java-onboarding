@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
@@ -11,8 +12,20 @@ class Problem1 {
         return answer;
     }
 
-    private static int addedNumbers(int firstNumber, int secondNumber) {
-        return firstNumber + secondNumber;
+    private static int addedNumber(int number) {
+        List<Integer> separatedNumbers = new ArrayList<>();
+        while (true) {
+            separatedNumbers.add(number % 10);
+            if (number / 10 == 0)
+                break;
+            number /= 10;
+        }
+
+        int result = 0;
+        for (int i : separatedNumbers) {
+            result += i;
+        }
+        return result;
     }
 
     private static int multipliedNumbers(int firstNumber, int secondNumber) {
