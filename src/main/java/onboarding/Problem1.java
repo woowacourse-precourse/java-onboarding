@@ -45,22 +45,21 @@ class Problem1 {
 
         resultArray[leftPage] = sum;
         resultArray[rightPage] = multiply;
-        
+
         return resultArray;
     }
 
     //점수 구하기 : 연산한 값의 max값을 찾기
-    public static int findScore(int leftNum, int rightNum)
+    public static int findScore(int number)
     {
-        List<Integer> leftDigit;
-        List<Integer> rightDigit;
+        int sum = 0;
+        int multiply = 1;
 
-        leftDigit = findPlaceValue(leftNum);
-        rightDigit = findPlaceValue(rightNum);
+        int[ ] numArray;
 
-        int max = Math.max(calculation(leftDigit), calculation(rightDigit));
+        numArray = calculation(findPlaceValue(number));
 
-        return max;
+        return Math.max(numArray[sum], numArray[multiply]);
     }
 
     //점수 비교 후 결과 반환
