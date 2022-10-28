@@ -4,7 +4,7 @@ import java.util.List;
 
 class Problem1 {
 
-    private int plusNumber(int pageNumber){
+    private static int plusNumber(int pageNumber){
         int result = 0;
 
         result += pageNumber / 100;
@@ -16,7 +16,7 @@ class Problem1 {
         return result;
     }
 
-    private int multiplyNumber(int pageNumber){
+    private static int multiplyNumber(int pageNumber){
         int result = 1;
 
         if(pageNumber / 100 != 0){
@@ -34,7 +34,7 @@ class Problem1 {
         return result;
     }
 
-    private boolean handleException(List<Integer> pages){
+    private static boolean handleException(List<Integer> pages){
         if(pages.get(0) <= 1 || pages.get(1) >= 400)
             return true;
         if(pages.get(0) % 2 == 0 || pages.get(1) % 2 == 1)
@@ -45,7 +45,7 @@ class Problem1 {
         return false;
     }
 
-    private int getPoint(List<Integer> pages){
+    private static int getPoint(List<Integer> pages){
         int point = 0;
 
         point = plusNumber(pages.get(0)) > point ? plusNumber(pages.get(0)) : point;
