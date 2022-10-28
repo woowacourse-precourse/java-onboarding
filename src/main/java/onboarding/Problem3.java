@@ -16,9 +16,10 @@ package onboarding;
 public class Problem3 {
     public static int clapTen(int number){
         int digit369 = number / 30;
-        int digitNormal = number / 10 - digit369 + 1;
+        int digitNormal = number / 10 - digit369;
+        int number1digit = number % 10;
 
-        return digit369 * 10 + digitNormal * 3;
+        return digit369 * 10 + digitNormal * 3 + number1digit / 3;
     }
 
     public static int clapHundred(int number){
