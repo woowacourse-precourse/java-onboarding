@@ -33,6 +33,24 @@ public class Problem6 {
         return answer;
     }
 
+    public static int[] makeKmpTable(String pattern){
+        int patternLength = pattern.length();
+        int[] kmpTable = new int[patternLength];
+
+        int count = 0;
+        for (int i = 1; i < patternLength; i++) {
+            while (count > 0 && pattern.charAt(i) != pattern.charAt(count)) {
+                count = kmpTable[count - 1];
+            }
+
+            if (pattern.charAt(i) == pattern.charAt(count)) {
+                count += 1;
+                kmpTable[i] = count;
+            }
+        }
+        return kmpTable;
+    }
+
     public static Set<String> findPattern(List<List<String>> forms) {
         Set<String> allPattern = new HashSet<>();
         Set<String> overlapPattern = new HashSet<>();
