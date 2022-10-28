@@ -49,21 +49,20 @@ class Problem1 {
         return valueArray;
     }
 
-    public static int calculation(int[] num)
+
+    //곱셈과 덧셈을 하는 함수
+    public static int calculation(List<Integer> numberList)
     {
         int sum = 0;
         int multiply = 0;
-        int max = 0;
 
-        for (int i = 0; i < num.length; i++)
+        for (int i = 0; i < numberList.size(); i++)
         {
-            sum += num[i];
-            multiply *= num[i];
+            sum += numberList.get(i);
+            multiply *= numberList.get(i);
         }
 
-        max = Math.max(sum, exceptionCheck(multiply));
-
-        return max;
+        return Math.max(sum, exceptionCheck(multiply));
     }
 
     //점수 구하기 : 연산한 값의 max값을 찾기
