@@ -23,7 +23,6 @@ public class Problem6 {
          *  2. 중복 문자를 가지고 있는 유저의 email주소를 담고, 오름차순으로 정렬
          */
 
-
         //크루들의 닉네임으로 만들 수 있는 모든 두 글자의 문자
         HashSet<String> referenceWord = makeReferenceWord(forms);
 
