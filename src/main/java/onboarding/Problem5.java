@@ -5,10 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Problem5 {
-    public static void main(String[] args) {
-        System.out.println(solution(50237));
-    }
-
     private static List<Integer> moneyUnit;
     private static List<Integer> moneyStorage;
 
@@ -25,14 +21,15 @@ public class Problem5 {
 
     private static void validateMoneyUnit(int money) {
         for (int i = 0; i < moneyUnit.size(); i++) {
-            while (true) {
-                if (money / moneyUnit.get(i) > 0) {
-                    moneyStorage.set(i, money / moneyUnit.get(i));
-                    money %= moneyUnit.get(i);
-                } else {
-                    break;
-                }
+            if (isValidMoneyUnit(i, money)) {
+                moneyStorage.set(i, money / moneyUnit.get(i));
+                money %= moneyUnit.get(i);
             }
         }
+    }
+
+    // 거스를 수 있는 돈의 단위인가
+    private static boolean isValidMoneyUnit(int index, int money) {
+        return money / moneyUnit.get(index) > 0;
     }
 }
