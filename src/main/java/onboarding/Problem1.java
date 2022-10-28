@@ -73,5 +73,10 @@ class Problem1 {
 }
 
 class Exception {
-    
+    static final String ERROR_MESSAGE = "페이지 번호가 잘못 입력되었습니다.";
+    private static void validateSizeTwo(List<Integer> participant) {
+        if (participant.size() != 2) {
+            throw new IllegalArgumentException(ERROR_MESSAGE);
+        }
+    }
 }
