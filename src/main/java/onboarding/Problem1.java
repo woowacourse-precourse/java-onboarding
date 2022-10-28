@@ -10,14 +10,24 @@ class Problem1 {
     private final static int INPUT_SIZE = 2;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
         if (!validateLength(pobi) || !validateRange(pobi) || !validateSequence(pobi)) {
             return exception;
         }
         if (!validateLength(crong) || !validateRange(crong) || !validateSequence(crong)) {
             return exception;
         }
-        return answer;
+
+        int pobiScore = getMyScore(pobi);
+        int crongScore = getMyScore(crong);
+
+        if (pobiScore > crongScore) {
+            return POBI_WIN;
+        } else if (pobiScore < crongScore) {
+            return CRONG_WIN;
+        } else if (pobiScore == crongScore) {
+            return SAME_SCORE;
+        }
+        return 0;
     }
 
     private static int getMyScore(List<Integer> player) {
