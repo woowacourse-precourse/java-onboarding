@@ -57,6 +57,7 @@
 - `List<Integer> list = Collections.EMPTY_LIST;` 로 선언되어 있던 이유는 무엇일까?
 
 
+
 ### 🛠 Todo
 - \-
 
