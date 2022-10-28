@@ -30,4 +30,14 @@ class Problem1 {
     public static int add(List<Integer> page) {
         return page.stream().mapToInt(Integer::intValue).sum();
     }
+
+    public static int multiply(List<Integer> page) {
+        int mul = 1;
+
+        for (int num : page) {
+            mul *= num;
+        }
+
+        return mul;
+    }
 }
