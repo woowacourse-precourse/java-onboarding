@@ -18,7 +18,16 @@ public class Problem3 {
         }
         return count;
     }
+    private static int checkNumber(int number) {
+        if (number < 1 || number > 100) {
+            return 0;
+        }
+        return 1;
+    }
     public static int solution(int number) {
+        if (checkNumber(number) == 0) {
+            return -1;
+        }
         int result = 0;
 
         for (int i = 1; i <= number; i++) {
