@@ -1,11 +1,12 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
     private static List<Integer> withdraw(int money){
-        List<Integer> moneyList = Collections.emptyList();
+        List<Integer> moneyList = new ArrayList<>();
 
         moneyList.add(money / 50000);
         money %= 50000;
