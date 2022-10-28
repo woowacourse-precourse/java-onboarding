@@ -4,23 +4,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
+    static final int leftPage = 0;
+    static final int rigitPage = 1;
     static int errorNum = 250;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int left = 0;
-        int right = 1;
         int answer = Integer.MAX_VALUE;
 
-        answer = compareNum(findMaxNumber(pobi.get(left), pobi.get(right)), findMaxNumber(crong.get(left), crong.get(left)));
+        answer = compareNum(findMaxNumber(pobi.get(leftPage), pobi.get(rigitPage)), findMaxNumber(crong.get(leftPage), crong.get(rigitPage)));
 
         return answer;
     }
+
+    
+
 
     //자리수 구하고 배열에 저장
     public static int[] digit(int num)
     {
         int [] valueArray;
-        ArrayList<Integer> valueList = new ArrayList<>();
+        List<Integer> valueList = new ArrayList<>();
 
         while(num > 0)
         {
@@ -57,11 +60,10 @@ class Problem1 {
         int [] leftDigit;
         int [] rightDigit;
 
-        int max = 0;
         leftDigit = digit(leftNum);
         rightDigit = digit(rightNum);
 
-        max = Math.max(calculation(leftDigit), calculation(rightDigit));
+        int max = Math.max(calculation(leftDigit), calculation(rightDigit));
 
         return max;
     }
