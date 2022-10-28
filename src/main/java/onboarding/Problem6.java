@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,8 +13,25 @@ public class Problem6 {
     3. 이메일 리스트에서 중복을 제거하는 기능
     4. 이메일 리스트를 정렬하는 기능
      */
+
+    private static final int EMAIL_INDEX = 0;
+    private static final int NICKNAME_INDEX = 1;
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
+        NicknameChecker nicknameChecker = new NicknameChecker();
+        Map<String, Boolean> duplicatedNicknameList = new HashMap<>();
+        for (List<String> form : forms) {
+            String email = form.get(EMAIL_INDEX);
+            String nickname = form.get(NICKNAME_INDEX);
+
+            Boolean validNickname = nicknameChecker.addNicknameToCheckMap(nickname);
+            if (!validNickname) {
+                Boolean isExistEmail = duplicatedNicknameList.getOrDefault(email, false);
+                if (!isExistEmail) {
+                    duplicatedNicknameList.put(email, true);
+                }
+            }
+        }
 
         return answer;
     }
@@ -29,16 +47,20 @@ public class Problem6 {
             if (nickname.length() < 2) {
                 return true;
             }
+            Boolean result = true;
             for (int i = 1; i < nickname.length(); i++) {
                 String partial = String.valueOf(nickname.charAt(i-1)) +
                                 String.valueOf(nickname.charAt(i));
                 Boolean isExist = checkMap.getOrDefault(partial, false);
                 if (isExist) {
-                    return false;
+                    result = false;
+                    continue;
                 }
                 checkMap.put(partial, true);
             }
-            return true;
+            return result;
         }
+        
+        
     }
 }
