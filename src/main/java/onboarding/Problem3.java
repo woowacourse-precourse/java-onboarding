@@ -5,10 +5,13 @@ import java.util.Arrays;
 public class Problem3 {
 
   private static final int MAX_NUMBER = 10000;
+  private static final int EXCEPTION_ANSWER = -1;
 
   public static int solution(int number) {
-    int answer = clapCount(number);
-    return answer;
+    if (isAllowedNumber(number)) {
+      return clapCount(number);
+    }
+    return EXCEPTION_ANSWER;
   }
 
   public static int clapCount(int number) {
