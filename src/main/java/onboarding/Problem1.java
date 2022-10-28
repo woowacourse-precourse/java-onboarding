@@ -42,6 +42,10 @@ class Problem1 {
             pobi_arr[i] = Math.max(test.sum_all(pobi.get(i)), test.times_all(pobi.get(i)));
             crong_arr[i] = Math.max(test.sum_all(crong.get(i)), test.times_all(crong.get(i)));
         }
+
+        //4.2~3 과정에서 가장 큰 수를 본인의 점수로 한다.
+        pobi_n = Math.max(pobi_arr[0], pobi_arr[1]);
+        crong_n = Math.max(crong_arr[0], crong_arr[1]);
         return answer;
     }
     //2-1. 페이지 번호의 자리수를 모두 더한다.
