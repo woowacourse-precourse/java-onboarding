@@ -5,7 +5,7 @@ import java.util.List;
 class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if (isOpenCover(pobi) || isOpenCover(crong)) {
+        if (isOpenPageBoundOut(pobi) || isOpenPageBoundOut(crong)) {
             return Result.EXCEPTION.number;
         }
 
@@ -67,12 +67,12 @@ class Problem1 {
         return (rightPage - leftPage) == 1;
     }
 
-    private static boolean isOpenCover(List<Integer> openPages) {
-        if (openPages.get(PageDirection.LEFT.index) == 400) {
+    private static boolean isOpenPageBoundOut(List<Integer> openPages) {
+        if (openPages.get(PageDirection.LEFT.index) < 1) {
             return true;
         }
 
-        if (openPages.get(PageDirection.RIGHT.index) == 1) {
+        if (openPages.get(PageDirection.RIGHT.index) > 400) {
             return true;
         }
 
