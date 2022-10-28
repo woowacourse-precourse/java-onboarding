@@ -25,6 +25,8 @@ public class Problem4 {
             String[] answerArr = new String[wordArr.length];
 
             setAnswerArr(map, wordArr, answerArr);
+
+            answer = String.join("", answerArr);
         }
 
 
