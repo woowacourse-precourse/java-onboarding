@@ -22,7 +22,8 @@ public class Problem6 {
                     //map에 저장된 단어가 사용자의 닉네임에 들어가는지 체크하는 기능
                     if(map.containsKey(str)){
                         //이미 map에 있던 단어는 중복 닉네임이 되므로 이메일을 set에 추가
-
+                        set.add(forms.get(i).get(0));
+                        set.add(map.get(str));
                     }else{
                         //처음 발견된 단어는 map에 <단어, 이메일>로 저장
                         map.put(str, forms.get(i).get(0));
