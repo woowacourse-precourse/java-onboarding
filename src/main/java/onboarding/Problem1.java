@@ -8,7 +8,10 @@ class Problem1 {
             return -1;
         }
 
-        return 0;
+        int pobiResult = getResult(pobi);
+        int crongResult = getResult(crong);
+
+        return getWinner(pobiResult, crongResult);
     }
 
     private static boolean isInvalidPages(List<Integer> pages) {
@@ -21,5 +24,21 @@ class Problem1 {
         }
 
         return false;
+    }
+
+    private static int getResult(List<Integer> pages) {
+        return 0;
+    }
+
+    private static int getWinner(int pobiResult, int crongResult) {
+        if (pobiResult > crongResult) {
+            return 1;
+        }
+
+        if (pobiResult < crongResult) {
+            return 2;
+        }
+
+        return 0;
     }
 }
