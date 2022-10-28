@@ -31,4 +31,17 @@ class Problem1 {
         return broken;
     }
 
+    public static Integer pageScore(List<Integer> broken) {
+
+        Integer sum = 0;
+        Integer product = 1;
+
+        for (Integer i : broken) {
+            sum += i;
+            product *= i;
+        }
+
+        return Math.max(sum, product);
+    }
+
 }
