@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     static class Pair implements Comparable<Pair>{
@@ -24,32 +21,40 @@ public class Problem7 {
         }
     }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer;
         HashMap<String, Integer> map=new HashMap<>();
+        Set<String> alreadyFriend=new HashSet<>();
         for (List<String> friend : friends) {
             String str1=friend.get(0);
             String str2=friend.get(1);
             if(str1.equals(user)||str2.equals(user)){
-                if(!str1.equals(user)){
-                    map.put(str1, 10);
-                }
-                if(!str2.equals(user)){
-                    map.put(str2,10);
-                }
+                    alreadyFriend.add(str2);
+                    alreadyFriend.add(str1);
+            }else {
+                    map.put(str1, map.getOrDefault(str1, 0)+10);
+                    map.put(str2, map.getOrDefault(str2, 0)+10);
             }
         }
+
         for (String visitor : visitors) {
-            map.put(visitor, map.getOrDefault(visitor, 0)+1);
+            if(!alreadyFriend.contains(visitor)){
+                map.put(visitor, map.getOrDefault(visitor, 0)+1);
+            }
         }
+
         ArrayList<Pair> arrayList=new ArrayList<>();
         for (String s : map.keySet()) {
-            arrayList.add(new Pair(s, map.get(s)));
+            if(!alreadyFriend.contains(s)){
+                arrayList.add(new Pair(s, map.get(s)));
+            }
         }
-        Collections.sort(arrayList);
 
+        Collections.sort(arrayList);
+        ArrayList<String> answer1=new ArrayList<>();
         for (Pair pair : arrayList) {
-            System.out.println(pair.name+" "+pair.score);
+            answer1.add(pair.name);
         }
+        answer=new ArrayList<>(answer1);
         return answer;
     }
 }

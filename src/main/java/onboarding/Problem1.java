@@ -16,7 +16,6 @@ class Problem1 {
         if(pobiMaxNumber>crongMaxNumber)answer=1;
         else if(pobiMaxNumber==crongMaxNumber)answer=0;
         else answer=2;
-        System.out.println(answer);
         return answer;
     }
     public static boolean bookCheck(List<Integer> book){
