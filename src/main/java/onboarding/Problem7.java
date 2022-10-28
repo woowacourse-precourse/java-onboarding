@@ -21,13 +21,13 @@ public class Problem7 {
             throw new IllegalArgumentException("visitors는 0이상 10000이하여야합니다.");
     }
 
-    private static void checkIds(List<List<String>> friends){
-        for(List<String> friend : friends){
+    private static void checkIds(List<List<String>> friends) {
+        for (List<String> friend : friends) {
             friend.forEach(Problem7::checkId);
         }
     }
 
-    private static void checkAll(String user, List<List<String>> friends, List<String> visitors){
+    private static void checkAll(String user, List<List<String>> friends, List<String> visitors) {
         checkId(user);
         checkFriends(friends);
         checkVisitors(visitors);
@@ -35,16 +35,16 @@ public class Problem7 {
         visitors.forEach(Problem7::checkId);
     }
 
-    private static String getFriendId(List<String> friend, String user){
-        if(friend.indexOf(user)==0)
+    private static String getFriendId(List<String> friend, String user) {
+        if (friend.indexOf(user) == 0)
             return friend.get(1);
         return friend.get(0);
     }
 
-    private static List<String> myFriends(String user, List<List<String>> friends){
+    private static List<String> myFriends(String user, List<List<String>> friends) {
         return friends.stream()
-                .filter(x->x.contains(user))
-                .map(x->getFriendId(x,user))
+                .filter(x -> x.contains(user))
+                .map(x -> getFriendId(x, user))
                 .collect(Collectors.toList());
     }
 
@@ -55,17 +55,18 @@ public class Problem7 {
         Friends recommendFriends = new Friends();
         recommendFriends.addAcquaintance(myFriends, friends);
         recommendFriends.addVisitors(visitors);
+        recommendFriends.removeMyFriends(myFriends);
 
         List<String> answer = Collections.emptyList();
         return answer;
     }
 }
 
-class Friend{
+class Friend {
     String id;
     int score;
 
-    public Friend(String id, int score){
+    public Friend(String id, int score) {
         this.id = checkId(id);
         this.score = score;
     }
@@ -76,54 +77,61 @@ class Friend{
         return id;
     }
 
-    public String getId(){
+    public String getId() {
         return id;
     }
 
-    public int getScore(){
+    public int getScore() {
         return score;
     }
 
     public void addScore(int score) {
-        this.score+=score;
+        this.score += score;
     }
 }
 
-class Friends{
+class Friends {
     List<Friend> friends;
 
-    public Friends(){
+    public Friends() {
         friends = new ArrayList<>();
     }
 
-    private String getAcquaintanceId(List<String> myFriends, List<String> friends){
-        if(myFriends.contains(friends.get(0)))
+    private String getAcquaintanceId(List<String> myFriends, List<String> friends) {
+        if (myFriends.contains(friends.get(0)))
             return friends.get(1);
         return friends.get(0);
     }
 
-    public void addAcquaintance(List<String> myFriends, List<List<String>> friends){
+    public void addAcquaintance(List<String> myFriends, List<List<String>> friends) {
         friends.stream()
-                .filter(x->myFriends.stream().anyMatch(x::contains))
-                .forEach(x->addFriends(getAcquaintanceId(myFriends, x),10));
+                .filter(x -> myFriends.stream().anyMatch(x::contains))
+                .forEach(x -> addFriends(getAcquaintanceId(myFriends, x), 10));
     }
 
-    public void addVisitors(List<String> visitors){
-        visitors.forEach(x->addFriends(x,1));
+    public void addVisitors(List<String> visitors) {
+        visitors.forEach(x -> addFriends(x, 1));
     }
 
-    private void addFriends(String id, int score){
+    public void removeMyFriends(List<String> myFriends) {
+        myFriends.stream()
+                .filter(x -> (idExist(x) != null))
+                .map(this::idExist)
+                .forEach(x -> friends.remove(x));
+    }
+
+    private void addFriends(String id, int score) {
         Friend friend = idExist(id);
-        if(friend!=null)
+        if (friend != null)
             friend.addScore(score);
         else
             friends.add(new Friend(id, score));
 
     }
 
-    private Friend idExist(String id){
+    private Friend idExist(String id) {
         return friends.stream()
-                .filter(x->x.getId().equals(id))
+                .filter(x -> x.getId().equals(id))
                 .findFirst().orElse(null);
     }
 }
