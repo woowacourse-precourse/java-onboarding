@@ -26,7 +26,14 @@ public class Problem3 {
      * 박수를 쳐야하는 횟수를 구하는 함수
      */
     private static int getClapCount(List<Integer> digitList) {
-        return Integer.MAX_VALUE;
+        int count = 0;
+        for (int digit : digitList) {
+            if (digit == 3 || digit == 6 || digit == 9) {
+                count++;
+            }
+        }
+
+        return count;
     }
 
     public static int solution(int number) {
