@@ -69,5 +69,30 @@ void mul()
 }
 ~~~
 ---
-
-
+##3. max
+###3.1 max method
+~~~java
+/***
+ * 3. sum과 mul에서 받은 리스트중에 가장 큰 값을 찾는 max method
+ *
+ * @param sumList sum을 한 리스트
+ * @param mulList mul을 한 리스트
+ * @return  각 인물의 가장 큰 값을 return 해준다
+ */
+public static int max(List<Integer> sumList,List<Integer> mulList)
+{
+    List<Integer> maxList = Stream.of(sumList,mulList).flatMap(x->x.stream()).collect(Collectors.toList());
+    int maxAnswer = maxList.stream().max((x, y) -> x - y).orElse(Integer.MIN_VALUE);
+    return maxAnswer;
+}
+~~~
+###3.2 max Test
+~~~java
+@Test
+void max()
+{
+    List<Integer> human = List.of(123,124);
+    int result = 8;
+    assertThat(Problem1.max(Problem1.sum(human),Problem1.mul(human))).isEqualTo(result);
+}
+~~~

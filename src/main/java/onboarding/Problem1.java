@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 class Problem1 {
@@ -39,5 +40,17 @@ class Problem1 {
         sumList.add(Stream.of(String.valueOf(human.get(1)).split("")).mapToInt(Integer::parseInt).reduce(1,(a,b)-> a*b));
         return sumList;
     }
-
+    /***
+     * 3. sum과 mul에서 받은 리스트중에 가장 큰 값을 찾는 max method
+     *
+     * @param sumList sum을 한 리스트
+     * @param mulList mul을 한 리스트
+     * @return  각 인물의 가장 큰 값을 return 해준다
+     */
+    public static int max(List<Integer> sumList,List<Integer> mulList)
+    {
+        List<Integer> maxList = Stream.of(sumList,mulList).flatMap(x->x.stream()).collect(Collectors.toList());
+        int maxAnswer = maxList.stream().max((x, y) -> x - y).orElse(Integer.MIN_VALUE);
+        return maxAnswer;
+    }
 }

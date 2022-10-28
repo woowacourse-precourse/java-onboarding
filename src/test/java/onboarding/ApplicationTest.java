@@ -28,6 +28,14 @@ class ApplicationTest {
         }
 
         @Test
+        void max()
+        {
+            List<Integer> human = List.of(123,124);
+            int result = 8;
+            assertThat(Problem1.max(Problem1.sum(human),Problem1.mul(human))).isEqualTo(result);
+        }
+
+        @Test
         void case1() {
             List<Integer> pobi = List.of(97, 98);
             List<Integer> crong = List.of(197, 198);
