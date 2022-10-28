@@ -23,13 +23,50 @@ class Problem6Test {
 	 *       => kmp : O(N) , 중복없이 저장된 패턴을 순회하며 일치찾기? O(N) O(N^2)일거같은데.... 일단 구현해보자
 	 */
 
-	// List<List<String>> forms = List.of(
-	// 	List.of("jm@email.com", "제이엠"),
-	// 	List.of("jason@email.com", "제이슨"),
-	// 	List.of("woniee@email.com", "워니"),
-	// 	List.of("mj@email.com", "엠제이"),
-	// 	List.of("nowm@email.com", "이제엠")
-	// );
+	@Test
+	void 추가_테스트_케이스(){
+		List<List<String>> forms = List.of(
+			List.of("jm@email.com", "제"),
+			List.of("jason@email.com", "제"),
+			List.of("woniee@email.com", "워니"),
+			List.of("mj@email.com", "엠제이"),
+			List.of("nowm@email.com", "이제엠")
+		);
+		Assertions.assertThat(Problem6.solution(forms).size()).isEqualTo(0);
+	}
+
+	@Test
+	void 추가_테스트_케이스2(){
+		List<List<String>> forms = List.of(
+			List.of("jm@email.com", "제이엠"),
+			List.of("jason@email.com", "제이슨"),
+			List.of("woniee@email.com", "워니"),
+			List.of("mj@email.com", "엠제이"),
+			List.of("nowm@email.com", "이엠제")
+		);
+
+		List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com", "nowm@email.com");
+
+		Assertions.assertThat(Problem6.solution(forms).size()).isEqualTo(4);
+		Assertions.assertThat(Problem6.solution(forms)).isEqualTo(result);
+	}
+
+	@Test
+	void 추가_테스트_케이스3(){
+		List<List<String>> forms = List.of(
+			List.of("jm@email.com", "제이엠"),
+			List.of("jason@email.com", "제이슨"),
+			List.of("woniee@email.com", "워니"),
+			List.of("mj@email.com", "엠제이"),
+			List.of("mk@email.com", "엠제웅"),
+			List.of("nawm@email.com", "팍이제이"),
+			List.of("nbwm@email.com", "팍제워니"),
+			List.of("ncwm@email.com", "팍제웅니")
+		);
+
+		Assertions.assertThat(Problem6.solution(forms).size()).isEqualTo(forms.size());
+
+	}
 
 	@Test
 	void forms_길이_체크() {
