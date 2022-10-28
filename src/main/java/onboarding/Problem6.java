@@ -14,15 +14,29 @@ public class Problem6 {
                 if (j == i) {
                 } else {
                     List ElementByOneDimension = forms.get(j);
-                    System.out.println(ElementByTwoDimension);
-                    System.out.println(ElementByOneDimension);
+
+                    String setName = (String) ElementByTwoDimension.get(1);
+                    String compareName = (String) ElementByOneDimension.get(1);
+
+                    if (checkConsecutiveCharacter(setName, compareName) == true) {
+                        System.out.println(setName);
+                    }
                 }
             }
-
-
         }
 
         List<String> answer = List.of("answer");
         return answer;
+    }
+
+    private static boolean checkConsecutiveCharacter(String setName, String compareName) {
+        boolean isContainsConsecutive = false;
+        for (int i = 0; i < setName.length() - 1; i++) {
+            String sub = setName.substring(i, i + 2);
+            if (compareName.contains(sub)) {
+                isContainsConsecutive = true;
+            }
+        }
+        return isContainsConsecutive;
     }
 }
