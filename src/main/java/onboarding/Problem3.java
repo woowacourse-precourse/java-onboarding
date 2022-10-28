@@ -12,6 +12,10 @@ public class Problem3 {
     }
     public static int solution(int number) {
         int answer = 0;
+        while(number != 0){
+            answer += clapNum(number);
+            number--;
+        }
         return answer;
     }
 }
