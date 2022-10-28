@@ -11,8 +11,14 @@ package onboarding;
 public class Problem4 {
     private static final int NUM_OF_ALPHABET=26;
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        StringBuilder answer = new StringBuilder();
+
+        for(int i=0; i<word.length(); i++){
+            char characterToConvert = word.charAt(i);
+            answer.append(convert(characterToConvert));
+        }
+
+        return answer.toString();
     }
 
     public static char convert(char characterToConvert) {
