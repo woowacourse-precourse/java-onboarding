@@ -27,7 +27,9 @@ public class Problem7 {
 
         List<Integer> matchFriendIndexes = matchFriendList(matrix, userFriendIndexes);
         List<String> matchFriendString = changeIndexesToName(matchFriendIndexes, friendNameList);
+
         friendMap = giveTenPoint(matchFriendString, friendMap);
+        friendMap = giveOnePoint(visitors, friendMap);
 
         return answer;
     }
@@ -96,6 +98,13 @@ public class Problem7 {
     public static HashMap<String, Integer> giveTenPoint(List<String> nameList, HashMap<String, Integer> friendMap) {
         for (String name : nameList) {
             friendMap.put(name, friendMap.getOrDefault(name, 0) + 10);
+        }
+        return friendMap;
+    }
+
+    public static HashMap<String, Integer> giveOnePoint(List<String> visitors, HashMap<String, Integer> friendMap) {
+        for(String visitor : visitors){
+            friendMap.put(visitor, friendMap.getOrDefault(visitor, 0) + 1);
         }
         return friendMap;
     }
