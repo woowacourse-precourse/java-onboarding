@@ -27,22 +27,22 @@ public class Problem2 {
 //        }
 
         for (char c : cryptogram.toCharArray()) {
-            if(!characterStack.isEmpty() && characterStack.peek().equals(c)){
+            if (!characterStack.isEmpty() && characterStack.peek().equals(c)) {
                 temp = characterStack.peek();
                 characterStack.pop();
-            }else if(temp!=c){
+            } else if (temp != c) {
                 characterStack.push(c);
-                temp=' ';
+                temp = ' ';
             }
         }
 
         String answer = "";
-        if(characterStack.isEmpty()){
+        if (characterStack.isEmpty()) {
             return answer;
         }
 
         for (Character character : characterStack) {
-            answer+=character;
+            answer += character;
         }
         return answer;
     }
