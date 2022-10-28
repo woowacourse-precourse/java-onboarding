@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest {
     @Nested
@@ -167,6 +168,20 @@ class ApplicationTest {
             int number = 33;
             int result = 14;
             assertThat(Problem3.solution(number)).isEqualTo(result);
+        }
+
+        @Test
+        void outOfRangeDown() {
+            int number = 0;
+            assertThatThrownBy(() -> Problem3.solution(number))
+                    .isInstanceOfAny(IllegalArgumentException.class);
+        }
+
+        @Test
+        void outOfRangeUp() {
+            int number = 10001;
+            assertThatThrownBy(() -> Problem3.solution(number))
+                    .isInstanceOfAny(IllegalArgumentException.class);
         }
     }
 

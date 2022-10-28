@@ -4,6 +4,10 @@ public class Problem3 {
 
     public static int solution(int number) {
 
+        if (number < 1 || number > 10000) {
+            throw new IllegalArgumentException();
+        }
+
         int answer = 0;
 
         for (int now = 1; now <= number; now++) {
