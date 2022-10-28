@@ -79,6 +79,38 @@ class ApplicationTest {
         	assertThat(Problem1.isLeftPageInRange(pobi.get(0))).isEqualTo(result);
         	assertThat(Problem1.isLeftPageInRange(crong.get(0))).isEqualTo(result);
         }
+        
+        @Test
+        void ExceptionTest() {
+        	
+        	//case1: 앞면 or 뒷면을 갖고 있는 경우
+        	//given, when
+        	List<Integer> pobiA = new LinkedList<>();
+        	pobiA.add(null);
+        	pobiA.add(4);
+        	//then
+        	assertThat(Problem1.isCorrectPage(pobiA.get(0), pobiA.get(1))).isEqualTo(false);
+        	
+        	//case2: 연속된 페이지가 아닌 경우
+        	//given, when
+        	List<Integer> crongA = List.of(1, 8);
+        	//then
+        	assertThat(Problem1.isCorrectPage(crongA.get(0), crongA.get(1))).isEqualTo(false);
+        	
+        	//case3: 범위밖인 경우
+        	//given, when
+        	List<Integer> crongB = List.of(401, 402);
+        	List<Integer> crongC = List.of(-1, 0);
+        	//then
+        	assertThat(Problem1.isCorrectPage(crongB.get(0), crongB.get(1))).isEqualTo(false);
+        	assertThat(Problem1.isCorrectPage(crongC.get(0), crongC.get(1))).isEqualTo(false);
+        	
+        	//case4: 홀,짝이 다른 경우
+        	//given, when
+        	List<Integer> crongD = List.of(388, 389);
+        	//then
+        	assertThat(Problem1.isCorrectPage(crongD.get(0), crongD.get(1))).isEqualTo(false);
+        }
     }
 
     @Nested
