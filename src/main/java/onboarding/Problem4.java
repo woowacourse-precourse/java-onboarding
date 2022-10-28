@@ -6,7 +6,7 @@ public class Problem4 {
         String answer = "";
 
         checkException(word);
-        
+
         answer = returnAlpha(word);
 
         return answer;
