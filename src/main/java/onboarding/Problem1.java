@@ -7,6 +7,20 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
         int answer = Integer.MAX_VALUE;
+        Integer pScore = Math.max(pageScore(breakNum(pobi.get(0))), pageScore(breakNum(pobi.get(1))));
+        Integer cScore = Math.max(pageScore(breakNum(crong.get(0))), pageScore(breakNum((crong.get(1)))));
+
+        if(isException(pobi, crong))
+            answer = -1;
+
+        else if (pScore.equals(cScore))
+            answer = 0;
+
+        else if (pScore > cScore)
+            answer = 1;
+
+        else
+            answer = 2;
 
         return answer;
     }
