@@ -6,13 +6,9 @@ public class Validation {
 
     public Validation(int number) {
         this.number = number;
-    }
-
-    public boolean isValid() {
-        if (isNumberRangeValid()) {
-            return true;
+        if (!isNumberRangeValid()) {
+            throw new IllegalArgumentException("유요하지 않는 숫자입니다.");
         }
-        return false;
     }
 
     private boolean isNumberRangeValid() {
