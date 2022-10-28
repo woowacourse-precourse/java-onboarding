@@ -17,16 +17,17 @@ public class Problem3 {
     public static int clapTen(int number){
         int digit369 = number / 30;
         int digitNormal = number / 10 - digit369;
-        int number1digit = number % 10;
+        int number1Digit = number % 10;
 
-        return digit369 * 10 + digitNormal * 3 + number1digit / 3;
+        return digit369 * 10 + digitNormal * 3 + number1Digit / 3;
     }
 
     public static int clapHundred(int number){
         int digit369 = number / 300;
-        int digitNormal = number / 100 - digit369 + 1;
+        int digitNormal = number / 100 - digit369;
+        int number10Digit = number % 100;
 
-        return digit369 * 100 + digitNormal * clapTen(99);
+        return digit369 * 100 + digitNormal * clapTen(99) + clapTen(number10Digit);
     }
 
     public static int clapThousand(int number){
