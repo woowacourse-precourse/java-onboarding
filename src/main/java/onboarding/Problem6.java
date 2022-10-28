@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -73,8 +74,11 @@ public class Problem6 {
                 }
             }
         }
+
+        //5. 오름차순으로 정렬하고 중복은 제거
+        answer=sameNickNameEmail.stream().sorted().distinct().collect(Collectors.toList());
         
-        return sameNickNameEmail;
+        return answer;
     }
 
     private static boolean isSameNickName(Map<String, Integer> nickNameDivideByTwoLetter, String nickNameDivide) {
