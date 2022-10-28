@@ -21,3 +21,9 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+### 기능 목록
+
+1. 주어진 인덱스와 다음 인덱스의 문자가 중복되었는 지 확인하는 duplicate 메서드
+2. 만약 중복되지 않았다면 문자열에 더하는 add 메서드
+3. 중복된 문자들을 제거하는 duplicateRemover 메서드
