@@ -7,6 +7,7 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
         MemberRepository memberRepository = new MemberRepository();
+        memberRepository.addMember(new Member(user, 0));
 
         for (List<String> friend : friends) {
             memberRepository.addFriend(new Member(friend.get(0), 0), friend.get(1));
@@ -70,6 +71,10 @@ public class Problem7 {
 
         private Map<String, Member> store = new HashMap();
 
+        public void addMember(Member member) {
+            store.put(member.getName(), member);
+        }
+
         public void addFriend(Member user, String friend) {
             if (!store.containsKey(user.getName())) {
                 store.put(user.getName(), user);
@@ -101,7 +106,6 @@ public class Problem7 {
             }
             return Optional.ofNullable(member.get().getFriendList());
         }
-
     }
 
     private static void updateScoreByUserFriendList(MemberRepository memberRepository,
