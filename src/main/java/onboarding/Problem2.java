@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.regex.Pattern;
+import java.util.stream.IntStream;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
@@ -8,7 +9,7 @@ public class Problem2 {
 
         if (checkValidation(cryptogram)) {
             while(checkDuplicateString(cryptogram)) {
-
+                cryptogram = getAmendString(cryptogram);
             }
             answer = cryptogram;
         } else {
@@ -36,16 +37,9 @@ public class Problem2 {
     }
 
     private static boolean checkDuplicateString(String inputString) {
-        char previousChar = inputString.charAt(0);
-        char nowChar;
+        IntStream inputIntStream = inputString.chars();
+        int result = inputIntStream.reduce(0, (a, b) -> a == -1 ? a : (a == b) ? -1 : b);
 
-        for(int i = 1; i < inputString.length(); i++) {
-            nowChar = inputString.charAt(i);
-            if (previousChar == nowChar) {
-                return true;
-            }
-            previousChar = nowChar;
-        }
-        return false;
+        return result == -1;
     }
 }
