@@ -1,14 +1,28 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Problem6 {
 
-    public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+    private static void putListToCrews(List<List<String>> forms, List<Crew> crews){
+        for(List<String> strings: forms){
+            crews.add(new Crew(strings.get(0), strings.get(1)));
+        }
+    }
 
+    private static void checkCrews(List<Crew> crews) {
+        if(crews.size()>10000||crews.size()<1)
+            throw new IllegalArgumentException("크루는 1명 이상 10,000명 이하입니다.");
+    }
+
+    public static List<String> solution(List<List<String>> forms) {
+        List<Crew> crews = new ArrayList<>();
+        putListToCrews(forms, crews);
+        checkCrews(crews);
+        List<String> answer = List.of("answer");
         return answer;
     }
 }
