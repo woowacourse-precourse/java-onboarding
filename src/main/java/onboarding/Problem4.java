@@ -9,4 +9,8 @@ public class Problem4 {
     static int changeUpperCase(int temp) {
         return 155 - temp;
     }
+
+    static int changeLowerCase(int temp) {
+        return 219 - temp;
+    }
 }

@@ -26,4 +26,25 @@ class Problem4Test {
         assertThat((char) result3).isEqualTo('B');
         assertThat((char) result4).isEqualTo('A');
     }
+
+    @Test
+    public void changeLowerCaseTest() {
+        //given
+        char ch1 = 'a';
+        char ch2 = 'b';
+        char ch3 = 'y';
+        char ch4 = 'z';
+
+        //when
+        int result1 = Problem4.changeLowerCase(ch1);
+        int result2 = Problem4.changeLowerCase(ch2);
+        int result3 = Problem4.changeLowerCase(ch3);
+        int result4 = Problem4.changeLowerCase(ch4);
+
+        //then
+        assertThat((char) result1).isEqualTo('z');
+        assertThat((char) result2).isEqualTo('y');
+        assertThat((char) result3).isEqualTo('b');
+        assertThat((char) result4).isEqualTo('a');
+    }
 }
