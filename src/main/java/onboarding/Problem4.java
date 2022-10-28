@@ -30,7 +30,7 @@ public class Problem4 {
         } else {
             System.out.println(originalChar + " : 소문자입니다.");
 
-            return originalChar;
+            return getLowerCharConvert(originalChar);
         }
     }
 
@@ -40,5 +40,9 @@ public class Problem4 {
 
     private static char getUpperCharConvert(char originalChar) {
         return (char) ('A' + ('Z' - originalChar));
+    }
+
+    private static char getLowerCharConvert(char originalChar) {
+        return (char) ('a' + ('z' - originalChar));
     }
 }
