@@ -1,14 +1,32 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
+        List<Member> members = initialize(forms);
+
         return answer;
     }
 
-    class Member {
+    private static List<Member> initialize(List<List<String>> forms) {
+        List<Member> members = new ArrayList<>();
+        String email;
+        String nickname;
+
+        for(List<String> person : forms) {
+            email = person.get(0);
+            nickname = person.get(1);
+
+            members.add(new Member(email, nickname));
+        }
+
+        return members;
+    }
+
+    private static class Member {
         private final String email;
         private final String nickname;
 
