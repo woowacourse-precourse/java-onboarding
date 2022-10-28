@@ -82,6 +82,16 @@ public class Problem7 {
         }
     }
 
+    /**
+     * 4. user의 타임 라인에 방문한 친구 점수 계산
+     * @param visitors : 방문자
+     */
+    static void countVisitors (List<String> visitors){
+        for (String visitor : visitors) {
+            friendList.put(visitor, friendList.get(visitor) + 1);
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
