@@ -1,11 +1,11 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        int setFriendNameCount = 0;
+
+        LinkedHashMap<String, Integer> countingMap = new LinkedHashMap<String, Integer>();
         for (int i = 0; i < friends.size(); i++) {
             List friendsList = friends.get(i);
 
@@ -13,16 +13,20 @@ public class Problem7 {
 //            System.out.println(friendsList);
 
             for (int j = 0; j < 2; j++) {
-                String FriendName = (String) friendsList.get(j);
+                String friendName = (String) friendsList.get(j);
                 String pairName = getPairName(friendsList, j);
 //                System.out.println("--------------");
-//                System.out.println(FriendName);
+//                System.out.println(friendName);
+//                System.out.println(pairName);
                 for (int k = 0; k < friends.size(); k++) {
                     if (k == i) {
                     } else {
-                        List otherFriendsList = friends.get(k);         // 기준 친구 리스트와 다른 친구리스트를 비교
-                        if (otherFriendsList.contains(FriendName) == true) {
-                            System.out.println(otherFriendsList);
+                        List otherFriendsList = friends.get(k);
+                        if (otherFriendsList.contains(friendName) == true && otherFriendsList.contains(user) == true) {
+                            break;
+                        } else if (otherFriendsList.contains(pairName) == true && otherFriendsList.contains(user) == true) {
+
+                            countingMap.merge(friendName, 10, (integer, integer2) -> integer + integer2);
                         }
                     }
                 }
