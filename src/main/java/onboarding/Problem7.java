@@ -84,11 +84,9 @@ public class Problem7 {
         return recommendCrews;
     }
 
-    public static List<String> removeFriends(List<String> crews, Map<String, Set<String>> friendGraph, String me) {
-        Set<String> myFriends = friendGraph.get(me);
-
+    public static List<String> removeFriends(List<String> crews, Set<String> friends) {
         return crews.stream()
-                .filter(crew -> !myFriends.contains(crew))
+                .filter(crew -> !friends.contains(crew))
                 .collect(Collectors.toList());
     }
 
@@ -98,7 +96,7 @@ public class Problem7 {
 
         Map<String, Integer> recommendScoreByCrew = getRecommendScoreByCrew(user, friendGraph, visitors);
         List<String> recommendCrews = getRecommendCrews(recommendScoreByCrew);
-        recommendCrews = removeFriends(recommendCrews, friendGraph, user);
+        recommendCrews = removeFriends(recommendCrews, friendGraph.get(user));
 
         return recommendCrews;
     }
