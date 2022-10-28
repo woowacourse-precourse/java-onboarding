@@ -6,6 +6,7 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        int pobiLeft, pobiRight, crongLeft, crongRight;
 
 
 
@@ -37,7 +38,7 @@ class Problem1 {
             number /= 10;
         }
 
-        int result = 0;
+        int result = 1;
         for (int i : separatedNumbers) {
             result *= i;
         }
@@ -57,8 +58,8 @@ class Problem1 {
         return 0;
     }
 
-    private static int judgmentException(int firstNumber, int secondNumber) {
-        if (secondNumber - firstNumber > 1) {
+    private static int judgmentException(List<Integer> pobi, List<Integer> crong) {
+        if (pobi.get(1) - pobi.get(0) != 1 || crong.get(1) - crong.get(0) != 1) {
             return -1;
         }
         return 0;
