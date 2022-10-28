@@ -15,4 +15,17 @@ public class Problem4 {
     private static char changeUpperCase(char c) {
         return (char)('Z'+'A'-c);
     }
+
+    /* 대문자인지, 소문자인지, 모두 아닌지 구분해서 결과 리턴하는 메서드 */
+    private static char classifyCharacter(char c) {
+        if (c >= 'a' && c <= 'z') {
+            return changeLowerCase(c);
+        }
+
+        if (c >= 'A' && c <= 'Z') {
+            return changeUpperCase(c);
+        }
+
+        return c;
+    }
 }
