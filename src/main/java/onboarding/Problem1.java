@@ -33,4 +33,9 @@ class Problem1 {
     public static int getMaxValue(Integer integer1, Integer integer2) {
         return max(integer1, integer2);
     }
+
+
+    public static int getDigitAddValue(int value) {
+        return 0;
+    }
 }

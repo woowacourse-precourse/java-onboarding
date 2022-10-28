@@ -197,5 +197,12 @@ public class Problem1CustomTest {
             int maxValue = Problem1.getMaxValue(testList.get(0), testList.get(1));
             assertThat(maxValue).isEqualTo(2);
         }
+
+        @Test
+        void 각자릿수더한값을반환해주는메써드() {
+            int value = 312;
+            int summation = Problem1.getDigitAddValue(value);
+            assertThat(summation).isEqualTo(6);
+        }
     }
 }
