@@ -13,8 +13,4 @@ public class Problem3 {
             return 0;
         }
     }
-
-    public static void main(String[] args) {
-        System.out.println(solution(100001));
-    }
 }
