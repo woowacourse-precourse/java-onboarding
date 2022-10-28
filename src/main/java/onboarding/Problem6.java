@@ -24,9 +24,14 @@ public class Problem6 {
                 substrings.add(nick.substring(i, i + 2));
             }
 
-            // 2. hashSet 원소를 map에 email과 함께 보관할껀데
+            /*
+             2. hashSet 원소를 map에 email과 함께 보관할껀데
+             3. 처음보는 2글자 원소에 대해서만 저장하고
+             */
             for(String substr : substrings) {
-                map.put(substr, form.get(0));
+                if(!map.containsKey(substr)) {
+                    map.put(substr, form.get(0));
+                }
             }
         }
         return answer;
