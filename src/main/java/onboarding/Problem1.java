@@ -4,6 +4,8 @@ import onboarding.problem1Validation.Problem1Validation;
 
 import java.util.List;
 
+import static java.lang.Math.*;
+
 class Problem1 {
     private final static int USER_INPUT_LENGTH = 2;
     private final static int PAGE_NUM_MIN = 1;
@@ -29,6 +31,6 @@ class Problem1 {
     }
 
     public static int getMaxValue(Integer integer1, Integer integer2) {
-        return 0;
+        return max(integer1, integer2);
     }
 }
