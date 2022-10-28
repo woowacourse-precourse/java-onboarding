@@ -30,7 +30,7 @@ public class Manager {
         return new User(user.get(1), user.get(0));
     }
     
-    private void saveDuplicateAccounts() {
+    public void saveDuplicateAccounts() {
         users.saveDuplicateAccounts(duplicateAccountEmails);
     }
 }
