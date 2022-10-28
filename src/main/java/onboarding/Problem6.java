@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class Problem6 {
-    private static final Map<String, Set<String>> studentsInfo = new HashMap<String, Set<String>>();
+    private static final Map<String, Set<String>> STUDENTS_INFO = new HashMap<String, Set<String>>();
     private static final Set<String> DUPLICATED_STUDENTS = new HashSet<>();
 
     public static List<String> solution(List<List<String>> forms) {
@@ -25,18 +25,18 @@ public class Problem6 {
 
         for (int i = 0; i < name.length() - 1; i++) {
             String partOfName = name.substring(i, i + 2);
-            if (!studentsInfo.containsKey(partOfName)) {
+            if (!STUDENTS_INFO.containsKey(partOfName)) {
                 Set<String> studentEmails = new HashSet<String>();
                 studentEmails.add(email);
-                studentsInfo.put(partOfName, studentEmails);
+                STUDENTS_INFO.put(partOfName, studentEmails);
                 continue;
             }
-            studentsInfo.get(partOfName).add(email);
+            STUDENTS_INFO.get(partOfName).add(email);
         }
     }
 
     private static void findDuplicatedStudents() {
-        for (Set<String> studentEmails : studentsInfo.values()) {
+        for (Set<String> studentEmails : STUDENTS_INFO.values()) {
             if (studentEmails.size() >= 2) {
                 DUPLICATED_STUDENTS.addAll(studentEmails);
             }
