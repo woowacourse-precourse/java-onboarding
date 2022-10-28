@@ -15,7 +15,7 @@ class Problem1 {
             //리스트의 숫자가 연속되지 않을 경우
             answer = -1;
             return answer;
-        }else if(pobi.get(0)%2 == 0 || crong.get(0)%2 == 0){
+        }else if(checkPagePosition(pobi) == false || checkPagePosition(crong) == false){
             //리스트의 숫자가 홀짝 순서가 아니라 짝홀 순서로 왔을 경우
             answer = -1;
             return answer;
@@ -83,6 +83,14 @@ class Problem1 {
             }else{
                 num = pages.get(i);
             }
+        }
+        return true;
+    }
+
+    private static boolean checkPagePosition(List<Integer> pages){
+        //왼쪽 페이지는 홀수, 오른쪽 페이지는 짝수여야 함
+        if(pages.get(0)%2 == 0 || pages.get(1)%2 == 1){
+            return false;
         }
         return true;
     }
