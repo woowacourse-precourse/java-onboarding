@@ -39,11 +39,8 @@ public class Problem6 {
         for (int i = 0; i < forms.size(); i++) {
             String subject = forms.get(i).get(NICKNAME);
 
-            for (int j = 0; j < forms.size(); j++) {
+            for (int j = i+1; j < forms.size(); j++) {
                 String target = forms.get(j).get(NICKNAME);
-
-                if (target.equals(subject))
-                    continue;
 
                 if (isDuplicate(subject, target)) {
                     duplicatedIndexes[i] = true;
