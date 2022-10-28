@@ -1,5 +1,7 @@
 package onboarding;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 /**
  * 기능 구현
  * 1. 소문자 알파벳 반대로, 대문자 알파벳 반대로 된 문자열 변수 생성.
@@ -8,8 +10,19 @@ package onboarding;
  * 4. 알파벳이 아니라면 문자열에 넣기
  */
 public class Problem4 {
+    static String alphabet = "zyxwvutsrqponmlkjihgfedcba";
+    static int gap = 'A' - 'a'; /** 소문자에서 갭을 더하면 대문자가 됨. */
     public static String solution(String word) {
         String answer = "";
+        for (int i = 0; i < word.length(); i++){
+            if ('a' <= word.charAt(i) && word.charAt(i) <= 'z'){
+                answer += alphabet.charAt(word.charAt(i) - 'a');
+            } else if ('A' <= word.charAt(i) && word.charAt(i) <= 'Z'){
+                answer += (char)(alphabet.charAt(word.charAt(i) - 'A') + gap);
+            } else {
+                answer += word.charAt(i);
+            }
+        }
         return answer;
     }
 }
