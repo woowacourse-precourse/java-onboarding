@@ -141,7 +141,7 @@ public class Problem7 {
             }
         }
     }
-    
+
     private static void deleteScoreMapMemberByUserFriendList(String user, Map<String, Integer> scoreMap, List<String> userFriendList) {
         for (String userFriend : userFriendList) {
             scoreMap.remove(userFriend);
@@ -149,12 +149,20 @@ public class Problem7 {
         scoreMap.remove(user);
     }
 
-    private static void updateScoreMapByVisitorList(List<String> visitors, Map<String, Integer> scoreMap) {
+    private static void updateScoreByVisitors(MemberRepository memberRepository, List<String> visitors) {
+
         for (String visitor : visitors) {
-            if (!scoreMap.containsKey(visitor)) {
-                scoreMap.put(visitor, 0);
+
+            if (!memberRepository.containUsername(visitor)) {
+                memberRepository.addFriend(new Member(visitor, 1), null);
+                continue;
             }
-            scoreMap.put(visitor, scoreMap.get(visitor) + 1);
+
+            for (Member member : memberRepository.findAll()) {
+                if (member.getName().equals(visitor)) {
+                    member.changeScore(member.score + 1);
+                }
+            }
         }
     }
 
