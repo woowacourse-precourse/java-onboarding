@@ -48,4 +48,25 @@ public class Problem6 {
         Collections.sort(forms, Comparator.comparingInt(o -> o.get(1).length()));
         return forms;
     }
+
+    /**
+     * forms 안의 닉네임 조합들을 compareNickName()에 넣은 후 참이면 answer 리스트에 넣습니다.
+     * @param {List<List<String>>} forms
+     */
+    public static void findDuplicateNickName(List<List<String>> forms) {
+        for (int i = 0; i < forms.size() - 1; i++) {
+            for (int j = i+1; j < forms.size(); j++) {
+                String first_nickName = forms.get(i).get(1);
+                String second_nickName = forms.get(j).get(1);
+
+                String first_email = forms.get(i).get(0);
+                String second_email = forms.get(j).get(0);
+
+                if(compareNickName(first_nickName, second_nickName)) {
+                    if(!answer.contains(first_email)) answer.add(first_email);
+                    if(!answer.contains(second_email)) answer.add(second_email);
+                }
+            }
+        }
+    }
 }

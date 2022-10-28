@@ -27,3 +27,8 @@
 - ArrayList의 get기능을 사용하기 위해 forms을 ArrayList 타입으로 변환합니다
 - Collections의 comparator 기능을 사용하여 forms의 닉네임의 글자 수를 기준으로 오름차순 정렬합니다. 
 
+2. findDuplicateNickName(List<List<String>> forms)
+- forms을 입력받습니다. 입력받은 forms은 현재 닉네임의 글자수를 기준으로 오름차순 정렬된 상태입니다.
+- 이중 for문을 통해 forms의 닉네임 쌍들을 compareNickName() 메서드에 넣습니다.
+- compareNickName()의 반환값이 true이면 answer 리스트에 해당 닉네임 쌍에 대응하는 이메일 쌍들이 있는지 확인합니다.
+- 이메일이 answer 리스트에 존재하지 않는다면 이메일을 넣고 존재한다면 넣지 않습니다.
