@@ -61,6 +61,44 @@ public class Problem7 {
     }
 
 
+    static class MemberRepository {
+
+        private Map<String, Member> store = new HashMap();
+
+        public void addFriend(Member user, String friend) {
+            if (!store.containsKey(user.getName())) {
+                store.put(user.getName(), user);
+            }
+            store.get(user.getName()).getFriendList().add(friend);
+        }
+
+        public void deleteMember(String user) {
+            store.remove(user);
+        }
+
+        private boolean containUsername(String user) {
+            return store.containsKey(user);
+        }
+
+
+        public Optional<Member> findMemberByUsername(String user) {
+            return Optional.ofNullable(store.get(user));
+        }
+
+        public List<Member> findAll() {
+            return new ArrayList<>(store.values());
+        }
+
+        public Optional<List<String>> findFriendListByUsername(String user) {
+            Optional<Member> member = findMemberByUsername(user);
+            if (!member.isPresent()) {
+                return Optional.empty();
+            }
+            return Optional.ofNullable(member.get().getFriendList());
+        }
+
+    }
+
     static class FriendGraph {
         private Map<String, List<String>> friendMap = new HashMap<>();
 
