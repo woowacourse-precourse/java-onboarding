@@ -5,29 +5,29 @@ import java.util.stream.Collectors;
 
 public class RecommendFactory {
 
+    private static final Integer LIMITED_SIZE = 5;
+
     public static List<String> getRecommendFriendList(List<Recommend> recommendList) {
-        HashMap<String, Integer> map = new HashMap<>();
-        input(recommendList, map);
+        final HashMap<String, Integer> map = input(recommendList);
+        return recommendFriendLimitedSortedList(map);
+    }
 
-        for (Map.Entry<String, Integer> stringIntegerEntry : map.entrySet()) {
-            System.out.println(stringIntegerEntry.getKey() + " : " + stringIntegerEntry.getValue());
-        }
-
+    private static List<String> recommendFriendLimitedSortedList(HashMap<String, Integer> map) {
         return map.entrySet().stream()
-                .sorted((o1, o2) -> {
-                    if (Objects.equals(o1.getValue(), o2.getValue())) {
-                        return o1.getKey().compareTo(o2.getKey());
-                    }
-                    return o2.getValue().compareTo(o1.getValue());
-                })
+                .sorted(Collections
+                        .reverseOrder(Map.Entry.<String, Integer>comparingByValue())
+                        .thenComparing(Map.Entry.comparingByKey())
+                )
                 .map(Map.Entry::getKey)
-                .limit(5)
+                .limit(LIMITED_SIZE)
                 .collect(Collectors.toUnmodifiableList());
     }
 
-    private static void input(List<Recommend> recommendList, HashMap<String, Integer> map) {
+    private static HashMap<String, Integer> input(List<Recommend> recommendList) {
+        HashMap<String, Integer> map = new HashMap<>();
         recommendList.forEach(recommend ->
-                        map.put(recommend.getName(), map.getOrDefault(recommend.getName(), 0) + recommend.getScore())
-        );
+                        map.put(recommend.getName(),
+                        map.getOrDefault(recommend.getName(), 0) + recommend.getScore()));
+        return map;
     }
 }

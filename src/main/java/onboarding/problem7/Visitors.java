@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 public class Visitors {
 
+    private static final Integer VISITORS_SIZE = 10000;
     private static final Integer VISITOR_SCORE = 1;
 
     private List<Visitor> visitors;
@@ -24,7 +25,7 @@ public class Visitors {
     }
 
     private void validateVisitorsSize() {
-        if (visitors.size() > 100000) {
+        if (visitors.size() > VISITORS_SIZE) {
             throw new IllegalStateException("Visitors의 크기는 10000이하어야 합니다.");
         }
     }

@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 public class Friends {
 
+    private static final Integer FRIENDS_SIZE = 10000;
     private static final Integer FRIEND_SCORE = 10;
 
     private List<Friend> friends;
@@ -33,7 +34,7 @@ public class Friends {
     }
 
     private void validateFriendsSize() {
-        if (friends.size() > 100000) {
+        if (friends.size() > FRIENDS_SIZE) {
             throw new IllegalStateException("Friends의 크기는 10000이하어야 합니다.");
         }
     }

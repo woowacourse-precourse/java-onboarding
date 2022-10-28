@@ -2,6 +2,9 @@ package onboarding.problem7;
 
 public class NameValidator {
 
+    private static final Integer MINIMUM_LENGTH = 1;
+    private static final Integer MAXIMUM_LENGTH = 30;
+
     public static void validateName(String name) {
         validateNameLength(name);
         validateNameIsLowerCase(name);
@@ -14,7 +17,7 @@ public class NameValidator {
     }
 
     private static void validateNameLength(String name) {
-        if (name.length() < 1 || name.length() > 30) {
+        if (name.length() < MINIMUM_LENGTH || name.length() > MAXIMUM_LENGTH) {
             throw new IllegalArgumentException("아이디는 길이가 1 이상 30 이하인 문자열이어야 합니다.");
         }
     }

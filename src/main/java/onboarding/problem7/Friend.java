@@ -1,9 +1,10 @@
 package onboarding.problem7;
 
 import java.util.List;
-import java.util.Objects;
 
 public class Friend {
+
+    private static final Integer FORM_SIZE = 2;
 
     private String name;
     private String friendName;
@@ -26,7 +27,7 @@ public class Friend {
     }
 
     private void validateFormSize(List<String> form) {
-        if (form.size() != 2) {
+        if (form.size() != FORM_SIZE) {
             throw new IllegalArgumentException("입력받은 form의 길이가 2가 아닙니다.");
         }
     }
