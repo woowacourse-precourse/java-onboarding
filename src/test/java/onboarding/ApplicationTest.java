@@ -437,6 +437,20 @@ class ApplicationTest {
             String result = "  ";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
+    
+        @Test
+        void case18() {
+            String word = "zyx wv";
+            String result = "abc de";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+    
+        @Test
+        void case19() {
+            String word = "ZY XWV";
+            String result = "AB CDE";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
     }
     
     @Nested
