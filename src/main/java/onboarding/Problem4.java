@@ -16,6 +16,9 @@ public class Problem4 {
 
             if(wo.equals(wo.toUpperCase()))
                 answer+= wordMap[key];
+            else{
+                answer+= String.valueOf(wordMap[key]).toLowerCase();
+            }
         }
         return answer;
     }
