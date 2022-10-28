@@ -47,10 +47,9 @@ public class Problem6 {
     public static HashSet<String> getDupUserMail(List<String> userForm, List<List<String>> forms) {
         HashSet<String> dupUserMailSet = new HashSet<>();
 
-        for(int i = 0; i < forms.size(); i++) {
-            List<String> otherForm = forms.get(i);
-            if(isDuplicate(userForm, otherForm)) {
-                String dupUserMail = otherForm.get(0);
+        for(List<String> form: forms) {
+            if(isDuplicate(userForm, form)) {
+                String dupUserMail = form.get(0);
 
                 dupUserMailSet.add(dupUserMail);
             }
