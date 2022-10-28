@@ -10,7 +10,7 @@ public class Problem4 {
             if Character.isUpperCase(w): // 만약 대문자면
                 w_index = Arrays.asList(mother).indexOf(w)
                     answer_list.append(toUpperCase(son[w_index])) // 엄마 리스트 인덱스랑 같은 아들 리스트 인덱스 값 대문자로 넣어주기
-            elif Character.isLowerCase(w): // 만약 소문자면
+            else if Character.isLowerCase(w): // 만약 소문자면
                 w_index = Arrays.asList(mother).indexOf(w)
                     answer_list.append(toLowerCase(son[w_index])) // 엄마 리스트 인덱스랑 같은 아들 리스트 인덱스 값 소문자로 넣어주기
             else:

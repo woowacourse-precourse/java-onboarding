@@ -45,13 +45,13 @@ class Problem1 {
             
             if pobi_big_num > crong_big_num:  // 포비 윈 : 1
                 int result = 1
-            elif crong_big_num > pobi_big_num: // 크롱 윈 : 2
+            else if crong_big_num > pobi_big_num: // 크롱 윈 : 2
                 int result = 2
             else pobi_big_num = crong_big_num: // 무승부 : 0
                 int result = 0
-        elif pobi_left_num < 2 or pobi_right_num > 399: // 포비 책 페이지가 첫페이지 전이거나 마지막페이지 뒤인 경우
+        else if pobi_left_num < 2 or pobi_right_num > 399: // 포비 책 페이지가 첫페이지 전이거나 마지막페이지 뒤인 경우
             int result = -1
-        elif crong_left_num < 2 or crong_right_num > 399: // 크롱 책 페이지가 첫페이지 전이거나 마지막페이지 뒤인 경우
+        else if crong_left_num < 2 or crong_right_num > 399: // 크롱 책 페이지가 첫페이지 전이거나 마지막페이지 뒤인 경우
             int result = -1
         else:  // 그 외 모든 예외상황
             int result = -1
