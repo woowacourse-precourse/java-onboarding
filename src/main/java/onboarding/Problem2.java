@@ -7,6 +7,9 @@ public class Problem2 {
 		while (ptr2 < cryptogram.length()) {
 			if (cryptogram.charAt(ptr1) == cryptogram.charAt(ptr2)) {
 				cryptogram = cryptogram.substring(0, ptr1) + cryptogram.substring(ptr2 + 1);
+				ptr1 = 0;
+				ptr2 = 1;
+				continue;
 			}
 			ptr1++;
 			ptr2++;
