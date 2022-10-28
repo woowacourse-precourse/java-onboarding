@@ -27,16 +27,20 @@ public class ProblemOneApplication {
         System.out.println("book.isEvenPage(page2) = " + book.isEvenPage(page2));
         System.out.println("book.isEvenPage(page3) = " + book.isEvenPage(page3));
 
-        book.setPage(page2);
+        book.setLeftRightPage(page2);
         System.out.println("book.getLeftPage() = " + book.getLeftPage());
         System.out.println("book.getRightPage() = " + book.getRightPage());
 
-        book.setPage(page3);
+        book.setLeftRightPage(page3);
         System.out.println("book.getLeftPage() = " + book.getLeftPage());
         System.out.println("book.getRightPage() = " + book.getRightPage());
 
-        book.setPage(notEmptyList.get(0));
+        book.setLeftRightPage(notEmptyList.get(0));
         System.out.println("book.getLeftPage() = " + book.getLeftPage());
         System.out.println("book.getRightPage() = " + book.getRightPage());
+
+        book.setLeftRightPageScore(book);
+        System.out.println("book.getLeftPageScore() = " + book.getLeftPageScore());
+        System.out.println("book.getRightPageScore() = " + book.getRightPageScore());
     }
 }

@@ -3,11 +3,20 @@ package onboarding.problem1.domain;
 import java.util.Random;
 
 public class Book {
+
     private int leftPage;
     private int rightPage;
     private int lastScore;
     private int leftPageScore;
     private int rightPageScore;
+
+    public Book() {
+    }
+
+    public Book(int leftPage, int rightPage) {
+        this.leftPage = leftPage;
+        this.rightPage = rightPage;
+    }
 
     public int openBook() {
         return new Random().nextInt(400) + 1;
@@ -17,7 +26,7 @@ public class Book {
         return (page % 2 == 0);
     }
 
-    public void setPage(int page) {
+    public void setLeftRightPage(int page) {
         if (isEvenPage(page)) {
             leftPage = page - 1;
             rightPage = page;
@@ -27,7 +36,25 @@ public class Book {
         rightPage = page + 1;
     }
 
-    public void setPageScore(int page) {
+    public void setLeftRightPageScore(Book book) {
+        setPageScore(book.getLeftPage());
+        setPageScore(book.getRightPage());
+    }
+
+    private void setPageScore(int page) {
+        int addScore = 0;
+        int multiplyScore = 1;
+        String[] PageDigits = String.valueOf(page).split("");
+        for (String pageDigit : PageDigits) {
+            addScore += Integer.parseInt(pageDigit);
+            multiplyScore *= Integer.parseInt(pageDigit);
+        }
+        int score = addScore >= multiplyScore ? addScore : multiplyScore;
+        if (isEvenPage(page)) {
+            rightPageScore = score;
+            return;
+        }
+        leftPageScore = score;
     }
 
     public void setLastScore() {
