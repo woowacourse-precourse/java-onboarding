@@ -23,6 +23,14 @@ public class Problem2 {
 		return wordList;
 	}
 
+	//중복 제거 함수
+	public static List<Character> remove(List<Character> wordlist, int first, int last)
+	{
+		for (int i = 0; i < last; i++)
+			wordlist.remove(first - 1);
+
+		return wordlist;
+	}
 	//중복하는 단어를 제거
 	public static List<Character> remove(List<Character> duplication)
 	{
