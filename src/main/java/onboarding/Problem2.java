@@ -1,10 +1,21 @@
 package onboarding;
 
 public class Problem2 {
+
+    // 주어진 문자열의 연속하는 중복 문자를 제거하는 메소
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        String answer;
+
+        while (true) {
+            answer = deleteRepetition(cryptogram);
+            cryptogram = answer;
+
+            if (isRepetitive(cryptogram) == 0) {
+                return answer;
+            }
+        }
     }
+
 
     // 연속하는 중복 문자를 제거하는 메소드
     private static String deleteRepetition(String cryptogram) {
