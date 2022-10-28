@@ -3,11 +3,11 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+    static final int EXCEPTION = -1;
+    static final int POBIWIN = 1;
+    static final int CRONGWIN = 2;
+    static final int TIE = 0;
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        final int EXCEPTION = -1;
-        final int POBIWIN = 1;
-        final int CRONGWIN = 2;
-        final int TIE = 0;
 
         if(!isOk(pobi) || !isOk(crong)) return EXCEPTION;
 
