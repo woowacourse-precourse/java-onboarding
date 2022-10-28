@@ -13,10 +13,9 @@ public class Problem5 {
         int[] ans = new int[9];
         while (money != 0) {
             for (int i = 0; i < units.length; i++) {
-                if(money >= units[i]){
-                    ans[i] += (money / units[i]);
-                    money %= units[i];
-                }
+                if (money < units[i]) continue;
+                ans[i] += (money / units[i]);
+                money %= units[i];
             }
         }
 
