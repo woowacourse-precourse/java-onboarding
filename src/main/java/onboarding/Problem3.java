@@ -13,7 +13,6 @@ public class Problem3 {
 
     public static int count(int n) {
         int cnt = 0;
-        int num = n;
 
         while (n > 0) {
             int tmp = n % 10;
