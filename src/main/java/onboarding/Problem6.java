@@ -71,6 +71,17 @@ public class Problem6 {
         return counter;
     }
 
+    // 카운터 해시맵에서 value가 1보다 큰 key만 추출하는 함수
+    private static List<String> repeatedSubstr(HashMap<String, Integer> counter) {
+        List<String> repeats = new ArrayList<>();
+
+        for (String key : counter.keySet()) {
+            int value = counter.get(key);
+            if (value > 1) repeats.add(key);
+        }
+        return repeats;
+    }
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
