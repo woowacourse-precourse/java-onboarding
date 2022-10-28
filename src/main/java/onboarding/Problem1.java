@@ -19,6 +19,12 @@ class Problem1 {
     }
 
     public static int result(Integer user1Result, Integer user2Result) {
-        return 1;
+        if (user1Result > user2Result) {
+            return 1;
+        } else if (user1Result == user2Result) {
+            return 0;
+        } else {
+            return 2;
+        }
     }
 }
