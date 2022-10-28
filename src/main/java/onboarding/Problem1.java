@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 class Problem1 {
@@ -23,6 +24,10 @@ class Problem1 {
             crongResult.add(sumIntegerList(crongPageNumber));
             crongResult.add(multipleIntegerList(crongPageNumber));
         }
+        //각 리스트의 가장 큰 값을 추출한다.
+        int pobiMax = Collections.max(pobiResult);
+        int crongMax = Collections.max(crongResult);
+
         return answer;
     }
 
