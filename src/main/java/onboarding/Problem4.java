@@ -10,7 +10,6 @@ public class Problem4 {
         for(int i = 0; i < word.length(); i++){
             answer.append(map.get(word.charAt(i)));
         }
-        System.out.println(answer);
         return answer.toString();
     }
 
