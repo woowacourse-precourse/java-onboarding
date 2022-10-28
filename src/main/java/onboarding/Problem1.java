@@ -1,13 +1,9 @@
 package onboarding;
 
-import static java.util.stream.Collectors.maxBy;
-
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import onboarding.problem1.Person;
 
@@ -34,7 +30,7 @@ class Problem1 {
             int leftPageNumber = person.getLeftPageNumber();
             int rightPageNumber = person.getRightPageNumber();
 
-            // 시작면(0) 또는 마지막면(401) 입력한 경우
+            // 책의 범위 (0<=x<=400)를 벗어난 경우
             if (isOutRange(leftPageNumber) || isOutRange(rightPageNumber)) {
                 return scoreMenu.get("exception");
             }
@@ -46,6 +42,11 @@ class Problem1 {
 
             // 오른쪽페이지가 짝수가 아닌 경우
             if (!isEvenNumber(rightPageNumber)) {
+                return scoreMenu.get("exception");
+            }
+
+            // 왼쪽 페이지와 오른쪽 페이지 차이가 1이 아닌 경우
+            if (rightPageNumber-leftPageNumber != 1) {
                 return scoreMenu.get("exception");
             }
 
@@ -74,9 +75,9 @@ class Problem1 {
         return scoreMenu.get(winner.getName());
     }
 
-    // 책의 시작 면이나 마지막 면이 있는지 확인하는 메서드
+    // 페이지의 범위를 확인하는 메서드
     public static boolean isOutRange(int number) {
-        return number == firstPageNumber || number == lastPageNumber;
+        return number <= firstPageNumber || number >= lastPageNumber;
     }
 
     // 홀수인지 확인하는 메서드
