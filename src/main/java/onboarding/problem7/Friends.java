@@ -1,12 +1,15 @@
 package onboarding.problem7;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Friends {
 
-    private List<Friend> friends = new ArrayList<>();
+    private List<Friend> friends;
+
+    protected Friends() {
+
+    }
 
     public Friends(List<Friend> friends) {
         this.friends = friends;
