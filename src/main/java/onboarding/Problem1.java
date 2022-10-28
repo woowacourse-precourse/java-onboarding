@@ -6,8 +6,8 @@ class Pages implements Comparable<Pages>
 {
     private static final int DIVISION_VALUE = 10;
     private static final int INPUT_SIZE = 2;
-    private static final int LEFT_BOUND= 0;
-    private static final int RIGHT_BOUND = 401;
+    private static final int LEFT_BOUND= 1;
+    private static final int RIGHT_BOUND = 400;
 
     private List<Integer> pages;
 
