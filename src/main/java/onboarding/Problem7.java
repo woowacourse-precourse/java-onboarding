@@ -50,4 +50,23 @@ public class Problem7 {
 
         return adj;
     }
+
+    private static int[] calculateScore(List<List<Integer>> adj, List<String> visitors, Map<String, Integer> map, List<String> allUserNameList) {
+        int[] score = new int[allUserNameList.size() + 1];
+
+        for (int i = 0; i < adj.get(1).size(); i++) {
+            int node = adj.get(1).get(i);
+            for (int j = 0; j < adj.get(node).size(); i++) {
+                int targetNode = adj.get(node).get(j);
+                score[targetNode] += 10;
+            }
+        }
+
+        for (int i = 0; i < visitors.size(); i++) {
+            int index = map.get(visitors.get(i));
+            score[index]++;
+        }
+
+        return score;
+    }
 }
