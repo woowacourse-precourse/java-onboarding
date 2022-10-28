@@ -40,9 +40,14 @@ public class Problem7 {
                 if(friendOfFriend.equals(user)){
                     continue;
                 }
+                if(checkDirectFriend(friendOfFriend, friendsInformation.get(user)));
                 friendsOfFriendsOfUser.add(friendOfFriend);
             }
         }
         return friendsOfFriendsOfUser;
+    }
+
+    public static boolean checkDirectFriend(String person, List<String> userFriends){
+        return userFriends.contains(person);
     }
 }
