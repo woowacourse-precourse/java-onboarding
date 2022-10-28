@@ -54,6 +54,10 @@ public class Problem1Validation {
     }
 
     public static boolean problem1InputValidation(List<Integer> list, int userInputLength, int bookMin, int bookMax) {
-        return false;
+        return userInputSizeEquals(list, userInputLength)
+                && isBookNumberBetweenMinAndMax(list, bookMin, bookMax)
+                && isBookNumberContinuous(list)
+                && isBookNumberOddEvenPair(list)
+                &&isFirstAddOneEqualsSecondValue(list);
     }
 }

@@ -148,6 +148,7 @@ public class Problem1CustomTest {
                     .count();
             assertThat(count).isEqualTo(0L);
         }
+        @Test
         void validation메써드들을통과하는가() {
             List<List<Integer>> testList = new ArrayList<>();
             testList.add(List.of(1, 2));
