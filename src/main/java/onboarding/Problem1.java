@@ -24,16 +24,9 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (!checkValidation(pobi) || !checkValidation(crong)) {
-            return -1;
-        }
-
-        final int scoreOfPobi = getScore(pobi);
-        final int scoreOfCrong = getScore(crong);
-
-        if (scoreOfPobi == scoreOfCrong) {
-            return 0;
+            return Result.EXCEPTION.result;
         } else {
-            return (scoreOfPobi > scoreOfCrong) ? 1 : 2;
+            return getResult(getScore(pobi), getScore(crong));
         }
     }
 
