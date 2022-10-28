@@ -2,8 +2,7 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
-        return answer;
+        return getSum(number);
     }
 
     // 입력받은 숫자에 3의 배수가 몇 개인지 반환하는 함수
@@ -17,6 +16,15 @@ public class Problem3 {
         if (number % 3 == 0) count++;
 
         return count;
+    }
+
+    public static int getSum(int number){
+        int sum =0;
+        while(number>0){
+            sum+=getCount(number);
+            number--;
+        }
+        return sum;
     }
 }
 
