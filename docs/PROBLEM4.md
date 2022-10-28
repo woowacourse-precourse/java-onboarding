@@ -19,3 +19,9 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+### 기능 구현 목록
+
+[  ] 문자열을 입력 받아서 Character 배열로 바꾼다  
+[  ] 해당 문자열을 ASCII 값과 비교해 변경함
+[  ] 변경된 character 배열을 다시 문자열로 변경해 return
