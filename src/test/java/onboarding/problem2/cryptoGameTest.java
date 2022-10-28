@@ -27,6 +27,12 @@ public class cryptoGameTest {
         String result = "bc";
         assertThat(CryptoGame.start(cryptogram)).isEqualTo(result);
     }
+    @Test
+    void if_capital_letter() {
+        String cryptogram = "aAbBBCC1!";
+        assertThrows(CryptoException.class, () -> CryptoGame.start(cryptogram));
+    }
+
 
     @Test
     void if_under_MIN() {

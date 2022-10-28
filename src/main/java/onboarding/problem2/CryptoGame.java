@@ -1,15 +1,29 @@
 package onboarding.problem2;
 
 
+import java.util.regex.Pattern;
+
 public class CryptoGame {
     private static char last_removed = Character.MIN_VALUE;
+    private static final Pattern pattern = Pattern.compile("^[a-z]+$");
     private static final int MIN = 1;
     private static final int MAX = 1_000;
 
     public static String start(String cryptogram) {
+        checkInput(cryptogram);
+        return removeUl(cryptogram);
+    }
+
+    private static void checkInput(String cryptogram) {
         validateMin(cryptogram);
         validateMAX(cryptogram);
-        return removeUl(cryptogram);
+        checkSmallLetter(cryptogram);
+    }
+
+    private static void checkSmallLetter(String cryptogram) {
+        if (!pattern.matcher(cryptogram).matches()) {
+            throw new CryptoException("소문자 영어만 입력해주세요.");
+        }
     }
 
     private static void validateMAX(String cryptogram) {
