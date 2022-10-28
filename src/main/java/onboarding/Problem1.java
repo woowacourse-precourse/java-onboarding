@@ -36,7 +36,9 @@ class Problem1 {
     }
 
     private int getMaxScore(List<Integer> numList) {
-        int maxScore = Integer.MAX_VALUE;
-        return maxScore;
+        int sumOfNums = numList.stream().reduce(0, Integer::sum);
+        int multiplyOfNums = numList.stream().reduce(1, (a, b) -> a * b);
+
+        return Math.max(sumOfNums, multiplyOfNums);
     }
 }

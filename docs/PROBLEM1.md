@@ -16,7 +16,7 @@
 
 - [x] FEATURE1. 점수 계산 함수
 - [x] FEATURE2. 점수 자릿수 배열 반환 함수
-- [ ] FEATURE3. 최대 점수 계산 함수
+- [x] FEATURE3. 최대 점수 계산 함수
 - [ ] FEATURE4. 점수 비교 결과 클래스
 - [ ] FEATURE5. 포비 크롱 점수 비교 함수
 - [ ] FEATURE6. 예외 사항 Exception 클래스
