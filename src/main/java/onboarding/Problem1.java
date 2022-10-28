@@ -16,6 +16,11 @@ import java.util.List;
  */
 class Problem1 {
 
+    /**
+     * 주어진 입력값들이 문제의 제한사하에 유효한지 확인하는 method
+     * @param list 왼쪽, 오른쪽 페이지 번호가 담겨있는 List<Integer> 전달
+     * @return 유효성 검증을 모두 통과할시 true, 예외사항 발생시 false return
+     */
     public static boolean validCheck(List<Integer> list) {
         if (list.size() != 2) {
             return false;
@@ -34,29 +39,43 @@ class Problem1 {
         return true;
     }
 
-
-    public static int getMaxPageValue(int pageNum) {
+    /**
+     * 왼쪽, 오른쪽 페이지 방향을 입력받아 해당 페이지에 적힌 번호의 자리값들의 합 또는 곱 중 더 높은 값을 return
+     * @param pageDirection 값이 0이면 left, 1이면 right 페이지를 의미
+     * @return 자리수의 합과 곱 중, 더 높은 값을 return 한다. Math.max 사용
+     */
+    public static int getMaxPageValue(int pageDirection) {
         int sum = 0;
         int multi = 0;
-        while (pageNum != 0) {
-            sum += pageNum % 10;
+        while (pageDirection != 0) {
+            sum += pageDirection % 10;
             if (multi == 0) {
-                multi = pageNum % 10;
+                multi = pageDirection % 10;
             } else {
-                multi *= pageNum % 10;
+                multi *= pageDirection % 10;
             }
-            pageNum /= 10;
+            pageDirection /= 10;
         }
         return Math.max(sum, multi);
     }
 
-
+    /**
+     * getMaxPageValue Method에 의해 얻은 왼쪽 오른쪽 페이지에 대한 값 중, 게임 참가자의 점수가 될 더 큰 값을 return
+     * @param list 점수를 산출하기 위해 List를 전달.
+     * @return getMaxPAgeValue Method에 의해 얻어진 각 페이지의 값들 중 더 큰 값을 return
+     */
     public static int getScore(List<Integer> list) {
         int leftScore = getMaxPageValue(list.get(0));
         int rightScore = getMaxPageValue(list.get(1));
         return Math.max(leftScore, rightScore);
     }
 
+    /**
+     * 문제의 조건에 맞춰 결과를 return 하는 method
+     * @param pobi pobi가 펼친 책에 관한 정보를 담고 있는 List
+     * @param crong crong가 펼친 책에 관한 정보를 담고 있는 List
+     * @return 결과 값이 저장된 answer return
+     */
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         int pobiScore = getScore(pobi);
