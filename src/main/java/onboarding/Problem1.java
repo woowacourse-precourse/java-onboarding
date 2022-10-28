@@ -12,6 +12,29 @@ class Problem1 {
         if(!isValidPages)
             return -1;
 
+        /* 각자 왼쪽 페이지 번호의 각 자리수를 더한 것과 곱한 것중 가장 큰 수 취하기 */
+        String pobiLeftPage = Integer.toString(pobi.get(0));
+        String crongLeftPage = Integer.toString(crong.get(0));
+
+        int pobiLeftAdd = 0;
+        int pobiLeftMultiply = 1;
+        int pobiLeftMax = -1;
+        int crongLeftAdd = 0;
+        int crongLeftMultiply = 1;
+        int crongLeftMax = -1;
+
+        for (int i=0; i<pobiLeftPage.length(); i++) {
+            pobiLeftAdd += Character.getNumericValue(pobiLeftPage.charAt(i));
+            pobiLeftMultiply *= Character.getNumericValue(pobiLeftPage.charAt(i));
+        }
+        for (int i=0; i<crongLeftPage.length(); i++) {
+            crongLeftAdd += Character.getNumericValue(crongLeftPage.charAt(i));
+            crongLeftMultiply *= Character.getNumericValue(crongLeftPage.charAt(i));
+        }
+
+        pobiLeftMax = Math.max(pobiLeftAdd, pobiLeftMultiply);
+        crongLeftMax = Math.max(crongLeftAdd, crongLeftMultiply);
+
         return answer;
     }
 }
