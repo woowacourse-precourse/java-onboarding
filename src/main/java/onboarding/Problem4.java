@@ -20,4 +20,12 @@ public class Problem4 {
             return false;
         }
     }
+
+    private static boolean isLowerCase(char a){
+        if('a'<=a && a<='z') {
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
