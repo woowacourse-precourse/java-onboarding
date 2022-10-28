@@ -3,9 +3,7 @@ package onboarding;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -178,6 +176,26 @@ class ApplicationTest {
             );
             List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
+
+        @Test
+        void determineIsDuplicateTest(){
+            List<List<String>> forms = List.of(
+                    List.of("jm@email.com", "제이엠"),
+                    List.of("jason@email.com", "제이슨"),
+                    List.of("woniee@email.com", "워니"),
+                    List.of("mj@email.com", "엠제이"),
+                    List.of("nowm@email.com", "이제엠")
+            );
+            boolean[] isDuplicate = new boolean[forms.size()];
+            Map<String, Integer> twoChars = new HashMap<>();
+            boolean result = true;
+            Problem6.determineIsDuplicate(forms,  twoChars, isDuplicate, 0);
+            Problem6.determineIsDuplicate(forms,  twoChars, isDuplicate, 1);
+            Problem6.determineIsDuplicate(forms,  twoChars, isDuplicate, 2);
+            assertThat(isDuplicate[0]).isEqualTo(result);
+            assertThat(isDuplicate[1]).isEqualTo(result);
+            assertThat(isDuplicate[2]).isEqualTo(!result);
         }
     }
 
