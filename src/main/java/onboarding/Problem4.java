@@ -2,9 +2,12 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-
-        return answer;
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < word.length(); i++) {
+            char eachChar = word.charAt(i);
+            sb.append(changeCharter(eachChar));
+        }
+        return sb.toString();
     }
 
     private static char changeCharter(char chr) {
@@ -18,11 +21,11 @@ public class Problem4 {
     }
 
     private static char changeUpperCaseChar(char chr) {
-        return (char) (155 - (int)chr);
+        return (char) (155 - (int) chr);
     }
 
     private static char changeLowerCaseChar(char chr) {
-        return (char) (219 - (int)chr);
+        return (char) (219 - (int) chr);
     }
 }
 
