@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
 
@@ -90,6 +87,26 @@ public class Problem7 {
         for (String visitor : visitors) {
             friendList.put(visitor, friendList.get(visitor) + 1);
         }
+    }
+
+    /**
+     * 5. 추천인 5명 뽑기
+     * @param userFriends : user 친구목록
+     * @return : 추천인 5명
+     */
+    static List<String> selectFriends (List<String> userFriends) {
+        List<Map.Entry<String, Integer>> entries = new LinkedList<>(friendList.entrySet());
+        entries.sort((value1, value2) -> value2.getValue().compareTo(value1.getValue()));
+
+        List<String> result = new ArrayList<>();
+        for (Map.Entry<String, Integer> entry : entries){
+            if (entry.getValue() != 0 && result.size() < 5) result.add(entry.getKey());
+            if (entry.getValue() == 0) break;
+        }
+
+        deleteAlreadyFriend(result, userFriends);
+
+        return result;
     }
 
     /**
