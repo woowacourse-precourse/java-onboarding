@@ -10,10 +10,23 @@ class Problem1 {
             return true;
         }
     }
+
+    public static boolean isLeftOddNumber(List<Integer> pagenumber){
+        if(pagenumber.get(0)%2==1){
+            return true;
+        }else{
+            return false;
+        }
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         if(isSuccessivePage(pobi)==false||isSuccessivePage(crong)==false){
             answer=-1;
+            return answer;
+        }
+        if(isLeftOddNumber(pobi)==false||isLeftOddNumber(crong)==false){
+            answer=-1;
+            return answer;
         }
 
 
