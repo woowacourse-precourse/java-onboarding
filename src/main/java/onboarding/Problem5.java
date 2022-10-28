@@ -9,6 +9,7 @@ public class Problem5 {
     private static final Map<Integer, Integer> moneyMap = new LinkedHashMap<>();
 
     public static List<Integer> solution(int inputWithdrawMoney) {
+        validateWithdrawMoney(inputWithdrawMoney);
         withdrawMoney = inputWithdrawMoney;
         initMoneyMap();
         convertWithdrawMoney();
@@ -44,6 +45,12 @@ public class Problem5 {
     public static List<Integer> moneyMapValuesConvertToMoneyList() {
         return moneyMap.values().stream()
                 .collect(Collectors.toList());
+    }
+
+    public static void validateWithdrawMoney(int withdrawMoney) {
+        if(!validateWithdrawMoneyRange(withdrawMoney)) {
+            throw new IllegalArgumentException("[ERROR] : 출금 금액의 범위는 1원 이상 1,000,000원 이하입니다.");
+        }
     }
 
     public static boolean validateWithdrawMoneyRange(int withdrawMoney) {
