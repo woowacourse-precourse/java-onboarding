@@ -17,11 +17,11 @@ public class Problem5 {
         return wallet;
     }
 
-    public static int changes(int money, int unit) {
+    private static int changes(int money, int unit) {
         return money - (unit * convert(money, unit));
     }
 
-    public static int convert(int money, int unit) {
+    private static int convert(int money, int unit) {
         return money / unit;
     }
 }
