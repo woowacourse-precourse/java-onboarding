@@ -27,4 +27,13 @@ class Problem1 {
         return addedNum > multipliedNum ? addedNum : multipliedNum;
     }
 
+    private int selectingWinner(int pobiNumber, int crongNumber) {
+        if (pobiNumber > crongNumber) {
+            return 1;
+        } else if (pobiNumber < crongNumber) {
+            return 2;
+        }
+        return 0;
+    }
+
 }
