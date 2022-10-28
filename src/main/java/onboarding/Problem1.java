@@ -5,7 +5,12 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         ExceptionChecker exceptionChecker = new ExceptionChecker(pobi, crong);
+        if (!exceptionChecker.checkException()) {
+            return -1;
+        }
+
         Game game = new Game(pobi, crong);
+        return game.play();
     }
 
     static private class ExceptionChecker{
