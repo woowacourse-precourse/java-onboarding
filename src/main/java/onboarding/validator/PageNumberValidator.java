@@ -8,6 +8,7 @@ public class PageNumberValidator {
     public static final int LAST_PAGE_NUMBER = 400;
     public static final String PAGE_NUMBER_CONTAIN_BOUNDARY_PAGE_ERROR = "[ERROR] 책의 시작 면이나 마지막 면은 펼칠 수 없습니다.";
     public static final String PAGE_NUMBER_NOT_SEQUENTIAL_ERROR = "[ERROR] 페이지 번호는 연속된 숫자여야 합니다.";
+    public static final String CANNOT_GET_MAX_VALUE_ERROR = "[ERROR] 최대값이 존재하지 않습니다.";
 
     public static void isValidPageNumbers(List<Integer> pageNumbers) {
         isSequentialPageNumber(pageNumbers);

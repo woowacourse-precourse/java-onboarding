@@ -3,6 +3,7 @@ package onboarding.domain;
 import java.util.List;
 
 import static java.lang.Math.max;
+import static onboarding.validator.PageNumberValidator.CANNOT_GET_MAX_VALUE_ERROR;
 import static onboarding.validator.PageNumberValidator.isValidPageNumbers;
 
 public class Score {
@@ -20,7 +21,7 @@ public class Score {
     private int calculateScore(List<Integer> pageNumbers) {
         return pageNumbers.stream()
                 .mapToInt(pageNumber -> max(sumAllPageNumbers(pageNumber), multiAllPageNumbers(pageNumber)))
-                .max().orElse(0);
+                .max().orElseThrow(() -> new IllegalArgumentException(CANNOT_GET_MAX_VALUE_ERROR));
     }
 
     private int sumAllPageNumbers(Integer pageNumber) {
