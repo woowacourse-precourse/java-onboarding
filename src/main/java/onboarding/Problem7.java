@@ -20,10 +20,28 @@ import java.util.List;
 public class Problem7 {
     public final int commonFriendScore = 10;
     public final int visitedTimeLineScore = 10;
-    public static HashMap<String, HashSet<String>> friendBook = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+        if (!checkLowerCase(user)) {
+            return Collections.emptyList();
+        }
+        if(!checkValidFriendLength(friends) || !checkValidVisitorsLength(visitors)){
+            return Collections.emptyList();
+        }
+
+        FriendRepository friendRepository = new FriendRepository();
+        for (List<String> relationship : friends) {
+            friendRepository.addRelationship(relationship.get(0), relationship.get(1));
+        }
+        MySns mySns = friendRepository.getUserSns(user);
+        for (String visitor : visitors) {
+            mySns.addVisited(visitor);
+        }
+
+
+
+
         return answer;
 
     }
@@ -67,8 +85,50 @@ public class Problem7 {
         return name.equals(compare);
     }
 
-    private static class Sns {
-        private HashSet<String> friends = new HashSet<>();
+    static class FriendRepository{
+        private final HashMap<String, MySns> world = new HashMap<>();
+
+        private MySns getUserSns(String name) {
+            return world.getOrDefault(name, new MySns());
+        }
+
+        private void addRelationship(String name1, String name2) {
+            MySns name1Sns = getUserSns(name1);
+            MySns name2Sns = getUserSns(name2);
+            name1Sns.addFriend(name2);
+            name2Sns.addFriend(name1);
+            world.put(name1, name1Sns);
+            world.put(name2, name2Sns);
+        }
+
+        private void addVisited(String my, String visitor) {
+            MySns mySns = world.getOrDefault(my, new MySns());
+            mySns.addVisited(visitor);
+        }
+    }
+
+    private static class MySns {
+        private final HashSet<String> friends = new HashSet<>();
+        private final HashMap<String, Integer> visited = new HashMap<>();
+        private final HashMap<String, Integer> recommend = new HashMap<>();
+
+        private void addFriend(String name) {
+            friends.add(name);
+        }
+
+        private HashSet<String> getMyFriends() {
+            return friends;
+        }
+
+        private void addVisited(String name) {
+            Integer before = visited.getOrDefault(name, 0);
+            visited.put(name, before + 1);
+        }
+
+        private HashMap<String, Integer> getVisited() {
+            return visited;
+        }
+
 
     }
 }
