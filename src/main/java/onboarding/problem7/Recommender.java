@@ -1,5 +1,6 @@
 package onboarding.problem7;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -27,5 +28,9 @@ public class Recommender {
 			}
 		}
 	}
-	
+
+	private static void updateScoreByVisitor(Map<String, Integer> scoreBoard, List<String> visitors) {
+		visitors.stream().forEach(visitor -> scoreBoard.computeIfPresent(visitor, (k, v) -> v + 1));
+	}
+
 }
