@@ -3,6 +3,8 @@ package onboarding.problem4;
 public class AlphabetConverter {
     private static final char MIN_LOWER_CASE = 'a';
     private static final char MAX_LOWER_CASE = 'z';
+    private static final char MIN_UPPER_CASE = 'A';
+    private static final char MAX_UPPER_CASE = 'Z';
 
     private String targetWord;
     private StringBuilder convertedWord;
@@ -18,11 +20,19 @@ public class AlphabetConverter {
                 convertLowerCase(charInWord);
                 continue;
             }
+            if (Character.isUpperCase(charInWord)) {
+                convertUpperCase(charInWord);
+                continue;
+            }
         }
         return convertedWord.toString();
     }
 
     public void convertLowerCase(char currentChar) {
         convertedWord.append((char) (MAX_LOWER_CASE - currentChar + MIN_LOWER_CASE));
+    }
+
+    public void convertUpperCase(char currentChar) {
+        convertedWord.append((char) (MAX_UPPER_CASE - currentChar + MIN_UPPER_CASE));
     }
 }
