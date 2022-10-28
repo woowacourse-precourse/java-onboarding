@@ -152,6 +152,34 @@ class ApplicationTest {
             String result = "c";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
+
+        @Test
+        void invalidCryptogramNotAlphabet() {
+            String cryptogram = "!@#$%^&*1234567890";
+            assertThatThrownBy(() -> Problem2.solution(cryptogram))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        void invalidCryptogramUpperCase() {
+            String cryptogram = "AABBCC";
+            assertThatThrownBy(() -> Problem2.solution(cryptogram))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        void invalidCryptogramEmpty() {
+            String cryptogram = "";
+            assertThatThrownBy(() -> Problem2.solution(cryptogram))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        void invalidCryptogramTooLong() {
+            String cryptogram = "a".repeat(1001);
+            assertThatThrownBy(() -> Problem2.solution(cryptogram))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
     }
 
     @Nested
