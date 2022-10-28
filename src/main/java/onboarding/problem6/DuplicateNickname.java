@@ -20,30 +20,35 @@ public class DuplicateNickname {
         initNicknameSplit(froms);
     }
 
-    public Set<Integer> duplicateNicknameIndex() {
-        Map<String,Integer> withoutDuplicateNickname = new HashMap();
+    public Set<Integer> getDuplicateNickname() {
         Set<Integer> result = new TreeSet<>();
+        Map<String, Integer> withoutDuplicateNickname = new HashMap();
 
-        for(int i = 0; i < this.splitNickname.size(); i++) {
-            if (withoutDuplicateNickname.containsKey(splitNickname.get(i))) {
-                result.add(formsIdx.get(i));
-                result.add(withoutDuplicateNickname.get(splitNickname.get(i)));
-            } else if (!withoutDuplicateNickname.containsKey(splitNickname.get(i))) {
-                withoutDuplicateNickname.put(splitNickname.get(i), i);
-            }
+        for (int i = 0; i < this.splitNickname.size(); i++) {
+            makeDuplicateNickname(result, withoutDuplicateNickname, i);
         }
         return result;
     }
 
+    private void makeDuplicateNickname(Set<Integer> result,
+        Map<String, Integer> withoutDuplicateNickname, int i) {
+        if (withoutDuplicateNickname.containsKey(splitNickname.get(i))) {
+            result.add(formsIdx.get(i));
+            result.add(withoutDuplicateNickname.get(splitNickname.get(i)));
+        } else if (!withoutDuplicateNickname.containsKey(splitNickname.get(i))) {
+            withoutDuplicateNickname.put(splitNickname.get(i), i);
+        }
+    }
+
     private void initNicknameSplit(List<List<String>> froms) {
-        for (int i=0; i < froms.size(); i++) {
+        for (int i = 0; i < froms.size(); i++) {
             String nickname = froms.get(i).get(NICKNAME);
 
-            for (int j=0; j < nickname.length() - 1; j++) {
+            for (int j = 0; j < nickname.length() - 1; j++) {
                 this.formsIdx.add(i);
-                this.splitNickname.add(nickname.substring(j, j+2));
+                this.splitNickname.add(nickname.substring(j, j + 2));
             }
         }
     }
 
- }
+}

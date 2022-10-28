@@ -7,7 +7,9 @@ import java.util.Set;
 import onboarding.problem6.DuplicateNickname;
 
 public class Problem6 {
+
     private final static int USER_EMAIL = 0;
+
     static ArrayList<String> duplicateEmail(Set<Integer> duplicateIndex, List<List<String>> forms) {
         ArrayList<String> result = new ArrayList<>();
 
@@ -22,10 +24,10 @@ public class Problem6 {
     }
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = new ArrayList<>();
+        List<String> answer;
 
         DuplicateNickname duplicateNickname = new DuplicateNickname(forms);
-        answer = duplicateEmail(duplicateNickname.duplicateNicknameIndex(), forms);
+        answer = duplicateEmail(duplicateNickname.getDuplicateNickname(), forms);
         sortEmail(answer);
 
         return answer;
