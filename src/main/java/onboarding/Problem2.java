@@ -25,7 +25,8 @@ public class Problem2 {
                     sw = 1;
                     continue;
                 }
-
+                //2. 연속하는 중복 문자 제거
+                answer += s.charAt(i);
             }
             if(sw == 0)
                 break;
