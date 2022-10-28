@@ -14,11 +14,22 @@ public class Problem6 {
         List<String> splitList = new ArrayList<>();
         List<String> emailList = new ArrayList<>();
         List<String> answer = new ArrayList<>();
+
         for(int i = 0; i < forms.size(); i++) {
+
             splitList = nickNameSplit(i, forms);
+
             emailList = chkNicks(splitList, forms);
+
+            for(String s : emailList) { // 추가해야할 이메일 리스트 가져와서 답안에 추가, 이미 추가됐다면 패스
+                if(!answer.contains(s)) {
+                    answer.add(s);
+                }
+            }
         }
+
         Collections.sort(answer); // 제출 전 오름차순 정렬, 대소문자 구분?
+
         return answer;
     }
 
