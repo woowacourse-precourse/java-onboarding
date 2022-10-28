@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     private static Map<String,String> nickEmailMapper = new HashMap<>();
@@ -17,14 +18,33 @@ public class Problem6 {
         initNickEmailMapper(forms);
         initNickNameList(forms);
         generateContinuousSubStrList();
+        List<String> duplicateSubStrList = getDuplicateSubStr();
+        List<String> hasDuplicateNickNameEmailList =
+            generateHasDuplicateNickNameEmailList(duplicateSubStrList);
 
         return Collections.emptyList();
+    }
+
+    private static List<String> generateHasDuplicateNickNameEmailList(List<String> duplicateSubStrList) {
+        List<String> hasDuplicateNickNameEmailList = Collections.emptyList();
+        for (String duplicateSubStr : duplicateSubStrList) {
+            hasDuplicateNickNameEmailList = nickNameList.stream().filter(str -> str.contains(duplicateSubStr))
+                .map(str -> nickEmailMapper.get(str)).collect(Collectors.toList());
+        }
+        return hasDuplicateNickNameEmailList;
+    }
+
+    private static List<String> getDuplicateSubStr() {
+        return continuousSubStrList.stream()
+            .filter(str -> Collections.frequency(continuousSubStrList, str) > 1)
+            .collect(Collectors.toList());
     }
 
     private static void generateContinuousSubStrList() {
         for (String nickName : nickNameList) {
             for(int i = 0; i < nickName.length()-1; i++){
                 String continuousStr = nickName.substring(i, i + 2);
+                System.out.println("continuousStr = " + continuousStr);
                 continuousSubStrList.add(continuousStr);
             }
         }
