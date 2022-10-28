@@ -6,14 +6,17 @@
 <summary style="font-size: large">문제 1</summary>
 <div markdown="1">
 
+- 인자값에 대한 유효성검사 기능
+- 숫자의 각 자릿수의 합과 곱을 비교하는 기능
+- 두개의 숫자의 크기를 비교하는 기능
 
 </div>
 </details>
 
 <details>
 <summary style="font-size: large">문제 2</summary>
-
 <div markdown="1">
+
 
 
 </div>
