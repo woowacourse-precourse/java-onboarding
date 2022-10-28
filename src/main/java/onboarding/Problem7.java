@@ -12,7 +12,6 @@ import java.util.List;
  */
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
         HashMap<String,Integer> dic = new HashMap<String,Integer>();
         HashMap<String,Integer> new_dic = new HashMap<String,Integer>();
         List<String> std = new ArrayList<>();
@@ -32,6 +31,37 @@ public class Problem7 {
                 std.add((String) list.get(0));
             }
         }
+        for (List relate : friends) {
+            for (String j : std) {
+                if (relate.contains(j)) {
+                    if(relate.contains(user)){
+                        continue;
+                    }
+                    else{
+                        List<String> list2 = new ArrayList<String>(relate);
+                        list2.remove(j);
+                        dic.put(list2.get(0), dic.get(list2.get(0))+10);
+                    }
+                }
+            }
+        }
+        for(String who : visitors){
+            dic.put(who, dic.get(who)+1);
+        }
+        for(String key : dic.keySet()){
+            if(dic.get(key) > 0) {
+                if(std.contains(key)){
+                    continue;
+                }
+                else {
+                    new_dic.put(key, dic.get(key));
+                }
+            }
+        }
+        List<String> listKeySet = new ArrayList<>(new_dic.keySet());
+        Collections.sort(listKeySet, (value1, value2) -> (new_dic.get(value2).compareTo(new_dic.get(value1))));
+        System.out.println(new_dic);
+        List<String> answer = new ArrayList<>(new_dic.keySet());
         return answer;
     }
 }
