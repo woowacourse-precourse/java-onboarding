@@ -1,5 +1,9 @@
 package onboarding.problem2;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 public class Decrypter {
 
     public static String decrypt(String cryptogram){
@@ -23,17 +27,32 @@ public class Decrypter {
         removeCharacters(cryptogram, startingIndex, repeatedNum);
     }
 
-    private static int findIndexOfRepeatedChar(StringBuilder cryptogram){
-        int startingIndex = -1;
+    private static int findIndexOfRepeatedChar(StringBuilder cryptogram, int startIndex){
+        int repeatedIndex = -1;
         int index = 0;
-        for(int i=0; i<cryptogram.length()-1; i++ ){
+        for(int i=startIndex; i<cryptogram.length()-1; i++ ){
             char temp = cryptogram.charAt(i);
             if(temp == cryptogram.charAt(i+1)){
-                startingIndex = i;
-                return startingIndex;
+                repeatedIndex = i;
+                return repeatedIndex;
             }
         }
-        return startingIndex;
+        return repeatedIndex;
+    }
+
+    private static List<List<Integer>> findIndexesOfRepeatedChar(StringBuilder cryptogram){
+        List<List<Integer>> repeatCharInfos = new LinkedList<>();
+        int index = 0;
+        while( index < cryptogram.length()-1){
+            List<Integer> repeatCharInfo = new ArrayList<>();
+            int startIndex = findIndexOfRepeatedChar(cryptogram, index);
+            int repeatNum = findNumberOfRepeatedChar(cryptogram, startIndex);
+            repeatCharInfo.add(startIndex);
+            repeatCharInfo.add(repeatNum);
+            repeatCharInfos.add(repeatCharInfo);
+            index = startIndex+repeatNum;
+        }
+        return repeatCharInfos;
     }
 
     private static int findNumberOfRepeatedChar(StringBuilder cryptogram, int startingIndex){
