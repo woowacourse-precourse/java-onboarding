@@ -8,7 +8,9 @@ class Problem1 {
         return answer;
     }
 
-    
+    private static int addedNumbers(int firstNumber, int secondNumber) {
+        return firstNumber + secondNumber;
+    }
 
     private static int multipliedNumbers(int firstNumber, int secondNumber) {
         return firstNumber * secondNumber;
