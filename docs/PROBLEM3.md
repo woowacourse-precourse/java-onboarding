@@ -14,3 +14,13 @@
 | --- | --- |
 | 13 | 4 |
 | 33 | 14 |
+-------------
+## 기능 목록
+* 입력 받은 숫자 String으로 변환
+~~~
+private static int intToStringAndCount(int number, int answer)
+~~~
+* 3,6,9 카운트 로직
+~~~
+private static int countNumber(int count, String num)
+~~~
