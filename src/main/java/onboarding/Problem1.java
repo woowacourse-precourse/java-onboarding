@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
-    private static Problem1 problem = new Problem1();
+    private static final Problem1 problem = new Problem1();
 
     public static void main(String[] args) {
         List<Integer> pobi = new ArrayList<>();
@@ -36,8 +36,8 @@ class Problem1 {
     private int getValue(List<Integer> page) {
         int left_plus = 0, left_multi = 0,
                 right_plus = 0, right_multi = 0;
-        List<Integer> left_split = getSplit(page.get(0).intValue());
-        List<Integer> right_split = getSplit(page.get(1).intValue());
+        List<Integer> left_split = getSplit(page.get(0));
+        List<Integer> right_split = getSplit(page.get(1));
 
         left_plus = getPlus(left_split);
         left_multi = getMultiply(left_split);
@@ -49,8 +49,8 @@ class Problem1 {
 
     private int getPlus(List<Integer> splited_int) {
         int plus = 0;
-        for(int i = 0; i < splited_int.size(); i++) {
-            plus += splited_int.get(i).intValue();
+        for (Integer integer : splited_int) {
+            plus += integer;
         }
 
         return plus;
@@ -58,8 +58,8 @@ class Problem1 {
 
     private int getMultiply(List<Integer> splited_int) {
         int multi = 1;
-        for(int i = 0; i < splited_int.size(); i++) {
-            multi *= splited_int.get(i).intValue();
+        for (Integer integer : splited_int) {
+            multi *= integer;
         }
 
         return multi;
@@ -68,7 +68,7 @@ class Problem1 {
     private List<Integer> getSplit(int number) {
         List<Integer> result = new ArrayList<>();
         int temp = number;
-        while(number > 0) {
+        while(temp > 0) {
             result.add(temp % 10);
             temp /= 10;
         }
@@ -77,8 +77,8 @@ class Problem1 {
     }
 
     private boolean validation(List<Integer> page) {
-        Integer left = page.get(0).intValue(),
-                right = page.get(1).intValue();
+        Integer left = page.get(0),
+                right = page.get(1);
 
         if(left + 1 != right) {
             return false;
