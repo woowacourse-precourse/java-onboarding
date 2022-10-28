@@ -1,14 +1,11 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /*
  * # 기능 정리
  * [O] 문자열 비교 메서드
- * [X] 결과 리스트 정렬
+ * [O] 결과 리스트 정렬
  * [X] 결과 리스트 중복 제거
  * [X] solution 작성
  * [X] 테스트 확인
@@ -17,6 +14,8 @@ import java.util.Map;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = findEmailsWithDuplicateNickname(forms);
+        Collections.sort(answer);
+
         return answer;
     }
 
