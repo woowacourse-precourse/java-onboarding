@@ -21,7 +21,9 @@ public class Problem6 {
                 duplicateEmails.addAll(getDuplicateList(twoName, forms));
             }
         }
-        List<String> answer = List.of("answer");
+
+        ArrayList<String> answer = new ArrayList<>(duplicateEmails);
+        Collections.sort(answer);
         return answer;
     }
 
