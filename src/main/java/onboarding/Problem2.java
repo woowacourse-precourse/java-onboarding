@@ -26,7 +26,7 @@ public class Problem2 {
 
             }else{
                 //숫자로 대체된 문자들을 한번에 삭제
-
+                cryptogram = str.toString().replaceAll("1", "");
             }
         }
 
