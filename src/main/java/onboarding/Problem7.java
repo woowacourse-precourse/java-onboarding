@@ -28,6 +28,14 @@ class User {
     public void addFriend(User user) {
         this.friends.add(user);
     }
+
+    public void addTenPoints() {
+        this.score += 10;
+    }
+
+    public void addOnePoint() {
+        this.score += 1;
+    }
 }
 
 public class Problem7 {
@@ -64,6 +72,28 @@ public class Problem7 {
 
             userA.addFriend(userB);
             userB.addFriend(userA);
+        }
+    }
+
+    public static void scoring(String mainUserId, List<String> visitors) {
+        User mainUser = userList.get(mainUserId);
+
+        // 사용자와 함께 아는 친구
+        for (User currentUser : userList.values()) {
+            if (currentUser.getId() != mainUserId) { // 사용 유저가 아니면
+                for (User targetUser : currentUser.getFriends()) { // 현재 유저의 친구 리스트돌면서
+                    List<User> targetFriends = targetUser.getFriends();
+                    if (targetFriends.contains(mainUser)) { // 친구의 친구에 mainUser가 있다면
+                        currentUser.addTenPoints();
+                    }
+                }
+            }
+        }
+
+        // 타임라인에 방문한 점수
+        for (String id : visitors) {
+            User user = userList.get(id);
+            user.addOnePoint();
         }
     }
 }
