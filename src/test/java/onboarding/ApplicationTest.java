@@ -309,6 +309,24 @@ class ApplicationTest {
             List<Integer> result = List.of(12, 0, 0, 0, 1, 0, 0, 0, 0);
             assertThat(Problem5.solution(money)).isEqualTo(result);
         }
+
+        @Test
+        @DisplayName("비정상적인 입력값 - 1,000,000을 초과하는 입력값에 대해 예외 발생")
+        void case4() {
+            int money = 1_000_001;
+            assertThatThrownBy(() -> Problem5.solution(money))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(String.format("입력값은 %d 이상 %d 이하의 자연수여야 합니다.", 1, 1000000));
+        }
+
+        @Test
+        @DisplayName("비정상적인 입력값 - 1 미만인 입력값에 대해 예외 발생")
+        void case5() {
+            int money = 0;
+            assertThatThrownBy(() -> Problem5.solution(money))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(String.format("입력값은 %d 이상 %d 이하의 자연수여야 합니다.", 1, 1000000));
+        }
     }
 
     @Nested
