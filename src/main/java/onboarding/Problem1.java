@@ -8,30 +8,20 @@ class Problem1 {
         
         return answer;
     }
-    public static boolean isException(List<Integer> pobi, List<Integer> crong) {
+    public static boolean isException(Integer leftPage, Integer rightPage) {
     	
-    	if(isNullPage(pobi, crong)) {
+    	if(isNullPage(leftPage, rightPage)) {
     		return true;
     	}
     	
     	return false;
     	
     }
-    public static boolean isNullPage(List<Integer> pobi, List<Integer> crong) {
-    	
-    	if((pobi.get(0)==null) || (pobi.get(1)==null) || (crong.get(0)==null) || (crong.get(1)==null)) {
-    		return true;
-    	}
-    	return false;
+    public static boolean isNullPage(Integer leftPage, Integer rightPage) {
+    	return leftPage==null || rightPage==null;
     }
-    public static boolean isLeftPageInRange(List<Integer> pobi, List<Integer> crong) {
-    	
-    	int pobiLeftPage = pobi.get(0);
-    	int crongLeftPage = crong.get(0);
-    	
-    	if(1<=pobiLeftPage && pobiLeftPage<=399 && 1<=crongLeftPage && crongLeftPage<=399) {
-    		return true;
-    	}
-    	return false;
+    public static boolean isLeftPageInRange(int leftPage) {
+    	return 1<=leftPage && leftPage<=399;
     }
+    
 }
