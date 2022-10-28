@@ -126,5 +126,21 @@ class Problem1 {
 
             return result;
         }
+
+        /* 최종 승자 판별 */
+        private int play(){
+            int pobi = getMax(pobiLeftPage, pobiRightPage);
+            int crong = getMax(crongLeftPage, crongRightPage);
+
+            if (pobi>crong) {
+                return 1;
+            }
+
+            if (pobi < crong) {
+                return 2;
+            }
+
+            return 0;
+        }
     }
 }
