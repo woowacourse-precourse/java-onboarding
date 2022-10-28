@@ -42,7 +42,17 @@ class Problem1 {
         return Math.max(sumOfNums, multiplyOfNums);
     }
 
-    private enum Result {
+    private Result startGame(int pobiScore, int crongScore) {
+        if (pobiScore > crongScore) {
+            return Result.POBI_WIN;
+        } else if (crongScore > pobiScore) {
+            return Result.CRONG_WIN;
+        } else {
+            return Result.DRAW;
+        }
+    }
+
+    public enum Result {
         DRAW, POBI_WIN, CRONG_WIN
     }
 }
