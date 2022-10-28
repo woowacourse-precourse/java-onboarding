@@ -38,7 +38,7 @@ public class Problem2 {
      * 주어진 범위의 문제열을 제거하는 함수
      */
     private static String removeStringRange(String cryptogram, int idx, int count) {
-        return "";
+        return cryptogram.substring(0, idx) + cryptogram.substring(idx + count);
     }
 
 
