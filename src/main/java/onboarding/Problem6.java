@@ -15,6 +15,17 @@ public class Problem6 {
             totalNicks.add(nickname);
         }
 
+        // 2. 나의 닉네임을 제외한 nickname set 생성
+        for (List<String> info: forms) {
+            String email = info.get(0);
+            String nickname = info.get(1);
+
+            HashSet<String> compareNicks = new HashSet<String>();
+            compareNicks.addAll(totalNicks);
+            compareNicks.remove(nickname);
+
+        }
+
 
 
         return answer;
