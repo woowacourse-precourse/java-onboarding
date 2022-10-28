@@ -29,6 +29,7 @@ public class Problem2 {
                 //2. 연속하는 중복 문자 제거
                 answer += s.charAt(i);
             }
+            //4. 연속하는 중복 문자들을 삭제한 결과를 return
             if(sw == 0)
                 break;
         }
