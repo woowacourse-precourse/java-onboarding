@@ -34,18 +34,18 @@ public class Problem2 {
 
     /**
      * deque의 요소들을 String으로 반환
-     * @param deque
-     * @return String
+     * @param {deque} deque
+     * @return {String} convert
      */
     public static String dequeToString(Deque<Character> deque) {
-        String s = "";
+        String convert = "";
 
-        if(deque.isEmpty()) return s;
+        if(deque.isEmpty()) return convert;
         else {
-            while(!deque.isEmpty()) s += deque.pollFirst();
+            while(!deque.isEmpty()) convert += deque.pollFirst();
         }
 
-        return s;
+        return convert;
     }
 
 }

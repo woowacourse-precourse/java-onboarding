@@ -25,9 +25,9 @@ class Problem1 {
 
     /**
      * n1, n2 중 예외사항에 걸리면 false 반환 통과하면 true 반환
-     * @param n1
-     * @param n2
-     * @return boolean
+     * @param {int} n1
+     * @param {int} n2
+     * @return {boolean}
      */
     public static boolean inputValidation(int n1, int n2) {
         if(n1 % 2 != 1  || n2 % 2 != 0) return false;
@@ -37,9 +37,9 @@ class Problem1 {
 
     /**
      * n1, n2 각각 자릿수의 합과 곱을 비교해 큰 수 반환
-     * @param n1
-     * @param n2
-     * @return int
+     * @param {int} n1
+     * @param {int} n2
+     * @return {int}
      */
     public static int maxValue(int n1, int n2) {
         char[] charN1 = String.valueOf(n1).toCharArray();

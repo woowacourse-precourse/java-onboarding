@@ -11,7 +11,7 @@ public class Problem4 {
     /**
      * 입력받은 문자열을 청개구리 사전에 맞추어 변환
      * @param {String} word
-     * @return
+     * @return {string} result
      */
     public static String convert(String word) {
         String result = "";
