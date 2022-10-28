@@ -23,7 +23,7 @@ public class Problem6 {
         Member comparisonMember;
         for(int i = 0; i < members.size(); i++) {
             member = members.get(i);
-            for(int j = i; j < members.size(); j++) {
+            for(int j = i + 1; j < members.size(); j++) {
                 comparisonMember = members.get(j);
                 if(isDuplicated(member, comparisonMember)) {
                     restrictedEmail.add(member.getEmail());
