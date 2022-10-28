@@ -13,23 +13,28 @@ public class Problem2 {
         return deduplicationCrypto;
     }
     public static void findDuplicateChars(char[] cryptogramArr) {
-    	Stack<int[]> pastCharAndIdxes = new Stack<int[]>();
+    	
+    	Stack<Character> pastChars = new Stack<>();
+    	Stack<Integer> pastIdxes = new Stack<>();
     	
     	for(int i=0; i<cryptogramArr.length; i++) {
     		char cur = cryptogramArr[i];
     		
-    		if(pastCharAndIdxes.isEmpty()) {
-    			pastCharAndIdxes.add(new int[] {cur, i});
+    		if(pastChars.isEmpty()) {
+    			pastChars.add(cur);
+    			pastIdxes.add(i);
     		} else {
-    			int[] pastCharAndIdx = pastCharAndIdxes.peek();
-    			char pastChar = (char)pastCharAndIdx[0];
-    			int pastCharIdx = pastCharAndIdx[1];
+
+    			char pastChar = pastChars.peek();
+    			int pastIdx = pastIdxes.peek();
     			
     			if(pastChar == cur) {
-    				pastCharAndIdxes.pop();
-    				removeDuplicateChars(cryptogramArr, pastCharIdx, i);
+    				pastChars.pop();
+    				pastIdxes.pop();
+    				removeDuplicateChars(cryptogramArr, pastIdx, i);
     			} else {
-    				pastCharAndIdxes.add(new int[] {cur, i});
+    				pastChars.add(cur);
+    				pastIdxes.add(i);
     			}
     		}
     	}
