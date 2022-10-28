@@ -57,7 +57,7 @@ public class Problem7 {
         Friends recommendFriends = new Friends();
         recommendFriends.addAcquaintance(myFriends, friends);
         recommendFriends.addVisitors(visitors);
-        recommendFriends.removeMyFriends(myFriends);
+        recommendFriends.removeOverlap(user, myFriends);
 
         return recommendFriends.getRecommendIds();
     }
@@ -123,11 +123,20 @@ class Friends {
         visitors.forEach(x -> addFriends(x, 1));
     }
 
-    public void removeMyFriends(List<String> myFriends) {
+    public void removeOverlap(String user, List<String> myFriends){
+        removeUser(user);
+        removeMyFriends(myFriends);
+    }
+
+    private void removeMyFriends(List<String> myFriends) {
         myFriends.stream()
                 .filter(x -> (idExist(x) != null))
                 .map(this::idExist)
                 .forEach(x -> friends.remove(x));
+    }
+
+    private void removeUser(String user){
+        friends.remove(idExist(user));
     }
 
     private void addFriends(String id, int score) {
