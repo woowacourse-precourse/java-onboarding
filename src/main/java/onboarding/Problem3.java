@@ -15,6 +15,11 @@ public class Problem3 {
     }
 
     public static int solution(int number) {
-        return 0;
+        // 1부터 number까지 3,6,9 개수 계산하기
+        int cnt = 0;
+        for (int i=1; i<=number; i++){
+            cnt += count(i);
+        }
+        return cnt;
     }
 }
