@@ -12,7 +12,12 @@ public class Problem2 {
                     char nextCh = cryptogram.charAt(i + 1);
                     /* 연속되는 문자가 있는지 체크한다 */
                     if (currentCh == nextCh) {
-                        ;
+                        int j = i + 1;
+                        /* 어디까지 연속되는지 체크한다 */
+                        while (j < cryptogram.length() && cryptogram.charAt(j) == currentCh) {
+                            j++;
+                        }
+
                     }
                 }
             }
