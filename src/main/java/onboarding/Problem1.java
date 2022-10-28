@@ -7,8 +7,8 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-        //페이지 연속성에 대한 예외처리
-        if(!pobi.get(1).equals(pobi.get(0)+1) || !crong.get(1).equals(crong.get(0)+1) || crong.size() != pobi.size()){
+        //제한사항에 대한 예외처리
+        if(BookPageException(pobi) || BookPageException(crong)){
             return -1;
         }
         List<Integer> pobiResult = new ArrayList<Integer>();
@@ -71,5 +71,15 @@ class Problem1 {
             number *= numberList.get(i);
         }
         return number;
+    }
+    /**
+     * @param pageList : 책 페이지 리스트
+     * @return pageList가 두개의 값, 연속된 정수, 두개의 정수가 0과 400사이에 숫자가 아닐경우 true, 맞을경우 false를 반환
+     */
+    private static boolean BookPageException(List<Integer> pageList){
+        if(pageList.size() != 2 || !pageList.get(1).equals(pageList.get(0)+1) || !(pageList.get(1) > 0 && pageList.get(1) < 400) || !(pageList.get(0) > 0 && pageList.get(0) < 400)){
+            return true;
+        }else
+            return false;
     }
 }
