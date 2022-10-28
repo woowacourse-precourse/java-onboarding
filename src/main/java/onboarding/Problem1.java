@@ -79,4 +79,12 @@ class Exception {
             throw new IllegalArgumentException(ERROR_MESSAGE);
         }
     }
+
+    private static void validatePageRange(List<Integer> participant) {
+        for (int page : participant) {
+            if (page < 1 || page > 400) {
+                throw new IllegalArgumentException(ERROR_MESSAGE);
+            }
+        }
+    }
 }
