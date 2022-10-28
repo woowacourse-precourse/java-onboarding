@@ -13,6 +13,24 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
 
 
+        int pobiMax = maxNum(pobi);
+        int crongMax = maxNum(crong);
+
+        //예외 상황시 -1리턴
+        if (pobiMax == 0 || crongMax == 0){
+            return -1;
+        }
+
+        //maxNum로 구한 값들을 비교하고 상황에 맞는 값을 리턴
+        if (pobiMax > crongMax) {
+            answer = 1;
+        } else if (pobiMax < crongMax) {
+            answer = 2;
+        } else if (pobiMax == crongMax) {
+            answer = 0;
+        }
+
+
         return answer;
     }
 
