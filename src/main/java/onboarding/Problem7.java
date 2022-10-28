@@ -5,14 +5,19 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Problem7 {
 
+  private final static FriendShip friendShip = new FriendShip();
+  private final static Recommendation recommendation = new Recommendation();
+
   public static List<String> solution(String user, List<List<String>> friends,
       List<String> visitors) {
-    List<String> answer = Collections.emptyList();
-    return answer;
+    friendShip.createFriendShip(friends);
+    return recommendation.recommendUsers(friendShip.createRecommendedScore(user, visitors), user);
   }
 
   enum Point {
@@ -32,11 +37,11 @@ public class Problem7 {
   static class FriendShip {
 
     private final Map<String, Set<String>> friendShip;
-    private final Map<String, Integer> networkScore;
+    private final Map<String, Integer> recommendedScore;
 
     public FriendShip() {
       friendShip = new HashMap<>();
-      networkScore = new HashMap<>();
+      recommendedScore = new HashMap<>();
     }
 
     public Map<String, Set<String>> createFriendShip(List<List<String>> friends) {
@@ -56,32 +61,53 @@ public class Problem7 {
       friendShip.get(user).add(friend);
     }
 
-    public Map<String, Integer> createNetworkScore(String user, List<String> visitors) {
+    public Map<String, Integer> createRecommendedScore(String user, List<String> visitors) {
       for (String other : friendShip.keySet()) {
         relatedFriends(user, other);
       }
 
       for (String visitor : visitors) {
-        networkScore.put(visitor,
-            networkScore.getOrDefault(visitor, 0) + Point.VISIT_POINT.getPoint());
+        addVisitedScore(user, visitor);
       }
 
-      return networkScore;
+      return recommendedScore;
     }
 
     private void relatedFriends(String user, String other) {
       Set<String> userFriends = friendShip.get(user);
       for (String friend : friendShip.get(other)) {
-        calculateScore(other, userFriends, friend);
+        addRelatedScore(other, userFriends, friend);
       }
     }
 
-    private void calculateScore(String other, Set<String> userFriends, String friend) {
-      if (userFriends.contains(friend)) {
-        networkScore.put(other, networkScore.getOrDefault(other, 0) + Point.RELATED_POINT.getPoint());
+    private void addRelatedScore(String other, Set<String> userFriends, String friend) {
+      if (!userFriends.contains(other) && userFriends.contains(friend)) {
+        recommendedScore.put(other,
+            recommendedScore.getOrDefault(other, 0) + Point.RELATED_POINT.getPoint());
       }
     }
 
+    private void addVisitedScore(String user, String visitor) {
+      Set<String> userFriends = friendShip.get(user);
+      if (!userFriends.contains(visitor)) {
+        recommendedScore.put(visitor,
+            recommendedScore.getOrDefault(visitor, 0) + Point.VISIT_POINT.getPoint());
+      }
+    }
+
+  }
+
+  static class Recommendation {
+
+    public List<String> recommendUsers(Map<String, Integer> recommendedScore, String user) {
+      return recommendedScore.entrySet().stream()
+          .filter(entry -> !entry.getKey().equals(user) && entry.getValue() != 0)
+          .sorted(Map.Entry.<String, Integer>comparingByValue(Collections.reverseOrder())
+              .thenComparing(Entry::getKey))
+          .limit(5)
+          .map(Map.Entry::getKey)
+          .collect(Collectors.toList());
+    }
   }
 
 }
