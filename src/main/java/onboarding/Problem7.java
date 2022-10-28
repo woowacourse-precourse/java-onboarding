@@ -79,7 +79,7 @@ public class Problem7 {
     public static List<Integer> matchFriendList(int[][] matrix, List<Integer> friendIndexes) {
         List<Integer> matchFriedIndexes = new ArrayList<>();
 
-        for(Integer friendIndex : friendIndexes) {
+        for (Integer friendIndex : friendIndexes) {
             for (int i = 0; i < matrix.length; i++) {
                 if (matrix[i][friendIndex] == 1) {
                     matchFriedIndexes.add(i);
@@ -125,11 +125,20 @@ public class Problem7 {
 
     public static List<String> sortByScoreAndName(HashMap<String, Integer> friendMap) {
         List<Integer> scoreList = new ArrayList(friendMap.values());
-        Collections.sort(scoreList);
+        Collections.sort(scoreList, Collections.reverseOrder());
 
         List<String> sortedList = new ArrayList<>();
-        for(Integer score : scoreList) {
-            sortedList.addAll(findNameByValue(friendMap, score));
+        for (Integer score : scoreList) {
+            if (score != 0) {
+                List<String> nameList = findNameByValue(friendMap, score);
+                for (String name : nameList) {
+                    {
+                        if (!sortedList.contains(name)) {
+                            sortedList.add(name);
+                        }
+                    }
+                }
+            }
         }
 
         return sortedList;
