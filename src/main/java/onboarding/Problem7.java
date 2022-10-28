@@ -65,6 +65,15 @@ public class Problem7 {
             return accountInfoMap.values().stream().filter(account -> !account.isAccountId(user))
                 .filter(Account::scoreOverThanZero).collect(Collectors.toList());
         }
+
+        private static void sortedScoreDescAndNameAsc(List<Account> accounts) {
+            accounts.sort((accountA, accountB) -> {
+                if (accountA.isEqualsScore(accountB)) {
+                    return accountA.getId().compareTo(accountB.getId());
+                }
+                return accountB.getScore() - accountA.getScore();
+            });
+        }
     }
 }
 
