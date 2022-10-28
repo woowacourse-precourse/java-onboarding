@@ -189,4 +189,60 @@ class Problem1Test {
         //then
         assertThat(result).isEqualTo(2);
     }
+
+    @Test
+    @DisplayName("무승부 - 0을 return한다")
+    public void solutionTest() {
+        //given
+        List<Integer> pobi = List.of(97, 98);
+        List<Integer> crong = List.of(197, 198);
+
+        //when
+        int result = solution(pobi, crong);
+
+        //then
+        assertThat(result).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("pobi 승 - 1을 return한다")
+    public void solutionTest2() {
+        //given
+        List<Integer> pobi = List.of(131, 132);
+        List<Integer> crong = List.of(211, 212);
+
+        //when
+        int result = solution(pobi, crong);
+
+        //then
+        assertThat(result).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("crong 승 - 2를 return한다")
+    public void solutionTest3() {
+        //given
+        List<Integer> pobi = List.of(111, 112);
+        List<Integer> crong = List.of(233, 234);
+
+        //when
+        int result = solution(pobi, crong);
+
+        //then
+        assertThat(result).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("예외 사항(올바르지 않은 배열 값) - -1을 return한다")
+    public void solutionTest4() {
+        //given
+        List<Integer> pobi = List.of(99, 102);
+        List<Integer> crong = List.of(211, 212);
+
+        //when
+        int result = solution(pobi, crong);
+
+        //then
+        assertThat(result).isEqualTo(-1);
+    }
 }

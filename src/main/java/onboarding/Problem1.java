@@ -6,6 +6,16 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+
+        boolean validatePageForPobi = validatePage(pobi);
+        boolean validatePageForCrong = validatePage(crong);
+
+        if (!validatePageForPobi || !validatePageForCrong) {
+            return -1;
+        }
+
+        answer = whoWinBetween(pobi, crong);
+
         return answer;
     }
 
