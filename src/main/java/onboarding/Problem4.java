@@ -26,14 +26,11 @@ public class Problem4 {
 
     private static int changeAsciiValue(int ascii) {
 
-        if (Character.isLowerCase(ascii)) {
-            if (ascii + 25 > 122) {
-                return 122 - ((ascii + 25) % 122);
-            }
-            return ascii + 25;
+        if (ascii + 25 > 122) {
+            return 122 - ((ascii + 25) % 122);
         }
 
-        if (ascii + 25 > 90) {
+        if (ascii + 25 > 90 && ascii != 97) {
             return 90 - ((ascii + 25) % 90);
         }
 
