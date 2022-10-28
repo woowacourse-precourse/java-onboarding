@@ -10,7 +10,14 @@ public class Problem3 {
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
+
+    public static void checkNumber(int number){
+        if(number>10000||number<1)
+            throw new IllegalArgumentException("올바르지 않은 입력값입니다.");
+    }
+
     public static int solution(int number) {
+        checkNumber(number);
         int answer = 0;
         return answer;
     }
