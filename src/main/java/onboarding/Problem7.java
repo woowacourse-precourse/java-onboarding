@@ -58,13 +58,14 @@ public class Problem7 {
         return count;
     }
 
-    private class People {
+    private static class People {
         String name;
         int point = 0;
         List<String> friendList = new ArrayList<>();
 
-        public People(String name) {
+        public People(String name, String friend) {
             this.name = name;
+            this.addFriendList(friend);
         }
 
         public void plusPoint(int point) {
