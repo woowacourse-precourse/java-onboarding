@@ -2,9 +2,12 @@ package onboarding;
 
 public class Problem4 {
     private static char conversionUpperLower(char c) {
-        char result = 0;
-
-        return result;
+        if (Character.isUpperCase(c)) {
+            c = Character.toLowerCase(c);
+        }else if (Character.isLowerCase(c)) {
+            c = Character.toUpperCase(c);
+        }
+        return c;
     }
     private static char conversionAscii(char c) {
         char result = 0;
