@@ -9,7 +9,7 @@ public class Problem3 {
     private static int count;
 
     public static int solution(int number) {
-        initGame();
+        count = 0;
         IntStream.range(1, number + 1).forEach(Problem3::checkEachDigitInNumber);
         return count;
     }
@@ -22,9 +22,5 @@ public class Problem3 {
 
             number /= 10;
         }
-    }
-
-    private static void initGame() {
-        count = 0;
     }
 }
