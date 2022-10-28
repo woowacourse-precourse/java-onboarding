@@ -6,8 +6,19 @@ public class Problem3 {
     static final int MAX_INDEX = 10001;
 
     public static int solution(int number) {
-        int answer = 0;
-        return answer;
+
+        countRecord = new Integer[MAX_INDEX];
+
+        int clapCountSum = 0;
+
+        for (int i = 1; i <= number; i++) {
+            int clapCount = getClapCount(i);
+            clapCountSum += clapCount;
+            countRecord[i] = clapCount;
+        }
+
+        return clapCountSum;
+
     }
 
     static int getClapCount(int number) {
