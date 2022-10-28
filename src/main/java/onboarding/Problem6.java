@@ -18,7 +18,7 @@ public class Problem6 {
         final Set<Crew> crews = new HashSet<>();
         final Map<String, Set<Crew>> twoSizeWordOwnerMap = new HashMap<>();
 
-        Set<String> duplicatedCrewEmailSet = new HashSet<>();
+        Set<Crew> duplicatedCrewSet = new HashSet<>();
         List<String> answer = new ArrayList<>();
 
 
@@ -34,14 +34,20 @@ public class Problem6 {
             Set<TwoSizeWord> crewTwoSizeWordSet = crew.getTwoSizeWordSet();
             for (TwoSizeWord twoSizeWord : crewTwoSizeWordSet) {
                 String keyWord = twoSizeWord.getWord();
-                if (twoSizeWordOwnerMap.get(keyWord) == null) {
-                    twoSizeWordOwnerMap.put(keyWord, new HashSet<>());
-                    continue;
-                }
-
+                twoSizeWordOwnerMap.computeIfAbsent(keyWord, k -> new HashSet<>());
                 twoSizeWordOwnerMap.get(keyWord).add(crew);
             }
         }
+
+        for (Set<Crew> OwnerCrewSet : twoSizeWordOwnerMap.values()) {
+            if (OwnerCrewSet.size() == 1) {
+                continue;
+            }
+
+            duplicatedCrewSet.addAll(OwnerCrewSet);
+        }
+
+
         return answer;
     }
 }
@@ -72,7 +78,7 @@ class Crew {
 
     private Set<TwoSizeWord> splitToTwoSizeWord(String nickname) {
         Set<TwoSizeWord> twoSizeWordSet = new HashSet<>();
-        String[] split = nickname.split(" ");
+        String[] split = nickname.split("");
 
         StringBuilder word = new StringBuilder();
         for (int i = 0; i < split.length; i++) {
