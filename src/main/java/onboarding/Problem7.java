@@ -35,4 +35,13 @@ public class Problem7 {
         return answer;
     }
 
+    public static void initUserList(List<List<String>> friends, List<String> visitors) {
+        for (List<String> data : friends) {
+            for (String id : data) {
+                if(!userList.containsKey(id)) {
+                    userList.put(id, new User(id));
+                }
+            }
+        }
+    }
 }
