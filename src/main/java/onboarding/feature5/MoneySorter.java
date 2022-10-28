@@ -6,22 +6,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MoneySorter {
-    private int money = 0;
+    private int money;
     private List<Integer> currentBillsSorted = new ArrayList<>();
-    private int numberOfBill = 0;
+    private int initialNumberOfBill = 0;
 
     public MoneySorter(int money) {
         this.money = money;
         for (int i = 0; i< CURRENCY_UNIT.size(); i++) {
-            currentBillsSorted.add(numberOfBill);
+            currentBillsSorted.add(initialNumberOfBill);
         }
     }
 
     public List<Integer> calculateNumberOfBill() {
         for (int i = 0; i < currentBillsSorted.size(); i++) {
             Integer currentNumberOfBill = currentBillsSorted.get(i);
-            Integer increasement = getNumberOfBillFromMoney(CURRENCY_UNIT.get(i));
-            currentNumberOfBill += increasement;
+            Integer increasedNumber = getNumberOfBillFromMoney(CURRENCY_UNIT.get(i));
+            currentNumberOfBill += increasedNumber;
             currentBillsSorted.set(i, currentNumberOfBill);
         }
         return currentBillsSorted;
