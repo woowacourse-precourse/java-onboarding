@@ -1,37 +1,27 @@
 package onboarding;
 
 public class Problem2 {
-	private static final int CHECK_INIT = 0;
+	private static final String REPEAT_REGEX = "{2,}";
+	private static final String REMOVE_BLANK = "";
 
 	public static String solution(String cryptogram) {
-		String answer = cryptogram;
-		int answerLength;
+		String plainText = cryptogram;
+		int cryptogramLength;
 		do {
-			answerLength = answer.length();
-			answer = removeString(answer);
-
-		} while (answerLength != answer.length() && answer.length() != 0);
-
-		return answer;
+			cryptogramLength = plainText.length();
+			plainText = removeString(plainText);
+		} while (checkMatching(cryptogramLength, plainText.length()));
+		return plainText;
 	}
 
-	private static String removeString(String answer) {
-		StringBuilder plainIndex = new StringBuilder();
-		char checkText = answer.charAt(CHECK_INIT);
-		for (int i = 1; i < answer.length(); i++) {
-			if (checkText != answer.charAt(i)) {
-				checkText = answer.charAt(i);
-				plainIndex.append(answer.charAt(i - 1));
-			} else {
-				while (i < answer.length() && checkText == answer.charAt(i)) {
-					i++;
-				}
-			}
+	private static String removeString(String plainText) {
+		for (char alphabet : plainText.toCharArray()) {
+			plainText = plainText.replaceAll(alphabet + REPEAT_REGEX, REMOVE_BLANK);
 		}
-		if (plainIndex.toString().length() > 0) {
-			return plainIndex.append(answer.charAt(answer.length() - 1)).toString();
-		}
-		return plainIndex.toString();
+		return plainText;
 	}
 
+	private static boolean checkMatching(int cryptogram, int plainText) {
+		return cryptogram == plainText;
+	}
 }
