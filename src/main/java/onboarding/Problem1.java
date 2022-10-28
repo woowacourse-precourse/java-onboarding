@@ -1,7 +1,6 @@
 package onboarding;
 
-import java.util.Collection;
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
@@ -28,7 +27,11 @@ class Problem1 {
     }
 
     private List<Integer> getDigitsFromNumber(int num) {
-        List<Integer> digits = List.of();
+        List<Integer> digits = new ArrayList<>();
+        while (num > 0) {
+            digits.add(num % 10);
+            num /= 10;
+        }
         return digits;
     }
 
