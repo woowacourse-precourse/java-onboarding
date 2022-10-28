@@ -13,7 +13,6 @@
 | 10.28 | isEven()           | 짝수 확인     | int            | boolean     | committed |
 
 ### TODO
--remove !(not) from if statements  
 
 
 ## 🚀 기능 요구 사항

@@ -40,88 +40,52 @@ class Problem1 {
         int leftMax = comparePageNumbers(leftSum, leftProduct);
         int rightMax = comparePageNumbers(rightSum, rightProduct);
 
-        int result = comparePageNumbers(leftMax, rightMax);
-        return result;
+        return comparePageNumbers(leftMax, rightMax);
     }
 
     public static int comparePageNumbers(int leftPageNumber, int rightPageNumber){
-        int result = 0;
         if(leftPageNumber > rightPageNumber){
-            result = leftPageNumber;
+            return leftPageNumber;
         }
-        if(rightPageNumber >= leftPageNumber){
-            result = rightPageNumber;
-        }
-        return result;
+        return rightPageNumber;
     }
 
-
-
     public static boolean checkValidity(List<Integer> player){
-        boolean result = true;
         int leftPageNumber;
         int rightPageNumber;
 
         if(!checkListSize(player)){
-            result = false;
-            return result;
+            return false;
         }
 
         leftPageNumber = player.get(0);
         rightPageNumber = player.get(1);
 
-        if(!checkPageNumberRange(leftPageNumber)){
-            result = false;
+        if(checkPageNumberRange(leftPageNumber) && checkPageNumberRange(rightPageNumber)
+        && checkInterval(leftPageNumber, rightPageNumber)
+        && isOdd(leftPageNumber) && isEven(rightPageNumber)) {
+            return true;
         }
-        if(!checkPageNumberRange(rightPageNumber)){
-            result = false;
-        }
-        if(!checkInterval(leftPageNumber, rightPageNumber)){ //페이지 간격 예외 확인
-            result = false;
-        }
-        if(isEven(leftPageNumber) && isOdd(rightPageNumber)){ //페이제 홀수 짝수 예외 확인
-            result = false;
-        }
-        return result;
+        return false;
     }
 
     public static boolean checkListSize(List<Integer> player){
-        boolean result = true;
-        if(player.size() != 2){
-            result = false;
-        }
-        return result;
+        return (player.size() == 2);
     }
 
     public static boolean checkPageNumberRange(int pageNumber){
-        boolean result = true;
-        if(pageNumber < MIN_PAGE || pageNumber > MAX_PAGE){
-            result = false;
-        }
-        return result;
+        return (pageNumber >= MIN_PAGE && pageNumber <= MAX_PAGE);
     }
     public static boolean checkInterval(int leftPageNumber, int rightPageNumber){
-        boolean result = true;
-        if(rightPageNumber - leftPageNumber != 1){
-            result = false;
-        }
-        return result;
+        return (rightPageNumber - leftPageNumber == 1);
     }
 
     public static boolean isOdd(int pageNumber){
-        boolean result = true;
-        if(pageNumber % 2 == 0){
-            result = false;
-        }
-        return result;
+        return (pageNumber % 2 == 1);
     }
 
     public static boolean isEven(int pageNumber){
-        boolean result = true;
-        if(pageNumber % 2 == 1){
-            result = false;
-        }
-        return result;
+        return (pageNumber % 2 == 0);
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
