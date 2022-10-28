@@ -1,30 +1,23 @@
 package onboarding.problem1;
 
+// 리팩터링 : 클래스 크기 줄이기
 public class Comparator {
 
-    // 리팩터링 : 인스턴스 없이 메서드 호출하기
+    // 리팩터링 : else 키워드 제거
     public static int getWinner(int pobiMax, int crongMax) {
-        int result = 0;
-        if (pobiMax > crongMax) {
-            result = 1;
-        } else if (crongMax > pobiMax) {
-            result = 2; // 중복 x 지점
-        } else if (crongMax == pobiMax) {
-            result = 0;
-        }
+
+        int result = (pobiMax > crongMax) ? 1 : 2;
+        if (crongMax == pobiMax) {result = 0;}
 
         return result;
     }
 
     public static int getBigger(int a, int b) {
-        int result = 0;
-        if (a > b) {
-            result = a;
-        } else if (b > a) {
-            result = b;
-        } else if (a == b) {
-            result = a;
-        }
+
+        int result = (a > b) ? a : b;
+        if (a==b){result = a;}
+
         return result;
+
     }
 }
