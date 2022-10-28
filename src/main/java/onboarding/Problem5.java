@@ -6,27 +6,26 @@ import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
-    static int max = 9;
+    static final int max = 9;
+    static final int division = 5;
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
 
-        answer = Arrays.asList(divisionMoney(digit(money)));
+        answer = Arrays.asList(divisionMoney(placeNumber(money)));
         Collections.reverse(answer);
 
         return answer;
     }
 
     //자리수 구분해 리스트에 넣음음
-   public static List<Integer> digit(int number)
-    {
-        List<Integer> digitNumber = new ArrayList<>();
+   public static List<Integer> placeNumber(int money) {
+        List<Integer> digitNumber_list = new ArrayList<>();
 
-        while (number > 0)
-        {
-            digitNumber.add(number % 10);
-            number /= 10;
+        while (money > 0) {
+            digitNumber_list.add(money % 10);
+            money /= 10;
         }
-        return digitNumber;
+        return digitNumber_list;
     }
 
     public static Integer [] divisionMoney(List<Integer> digitNumber_list) {
@@ -34,17 +33,16 @@ public class Problem5 {
         int j = 0;
 
         money_list[0] = digitNumber_list.get(0);
-
         for (int i = 1; i < max; i++) {
             //홀수 일 때
             if (i % 2 == 1)
                 money_list[i] = digitNumber_list.get(i - j);
             //짝수일 때
             if (i % 2 == 0) {
-                if (money_list[i - 1] >= 5) {
+                if (money_list[i - 1] >= division) {
                     money_list[i] = 1;
-                    money_list[i - 1] = money_list[i - 1] - 5;
-                } else if (money_list[i - 1] < 5)
+                    money_list[i - 1] = money_list[i - 1] - division;
+                } else if (money_list[i - 1] < division)
                     money_list[i] = 0;
                 j++;
             }
@@ -52,13 +50,9 @@ public class Problem5 {
             if (i == max - 1)
             {
                 if (digitNumber_list.size() == 6)
-                {
-                    money_list[i] += (digitNumber_list.get(5) * 10) / 5;
-                }
+                    money_list[i] += (digitNumber_list.get(5) * 10) / division;
                 if (digitNumber_list.size() == 7)
-                {
-                    money_list[i] += (digitNumber_list.get(6) * 100) / 5;
-                }
+                    money_list[i] += (digitNumber_list.get(6) * 100) / division;
             }
         }
         return money_list;
