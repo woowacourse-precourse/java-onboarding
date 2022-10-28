@@ -7,7 +7,18 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
 
-		answer = listToString(remove(createList(cryptogram)));
+		List<Character> testList = createList(cryptogram);
+
+
+		while (true)
+		{
+			int [] testArray = findDuplication(testList);
+			remove(testList, testArray[0], testArray[1]);
+
+			if (testArray[1] == 0)
+				break;
+		}
+		answer = listToString(testList);
 
         return answer;
     }
@@ -26,11 +37,14 @@ public class Problem2 {
 	//중복 제거 함수
 	public static List<Character> remove(List<Character> wordlist, int first, int last)
 	{
-		for (int i = 0; i < last; i++)
-			wordlist.remove(first - 1);
+		int index = first;
+
+		for (int i = index; i < last; i++)
+			wordlist.remove(first);
 
 		return wordlist;
 	}
+
 	//중복하는 단어를 제거
 	public static List<Character> remove(List<Character> duplication)
 	{
