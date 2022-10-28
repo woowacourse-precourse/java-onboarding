@@ -21,10 +21,10 @@ class PageTest {
         Page crong = this.crong.findMaxValue("crong");
 
         //when
-        String maxValueUser = pobi.findMaxValue(crong);
+        int winner = pobi.findMaxValue(crong);
 
         //then
-        Assertions.assertThat(maxValueUser).isEqualTo("pobi");
+        Assertions.assertThat(winner).isEqualTo(1);
     }
 
     @Test

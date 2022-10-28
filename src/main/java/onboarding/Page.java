@@ -4,6 +4,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Page {
+    private static final int DRAW = 0;
+    private static final int POBI = 1;
+    private static final int CRONG = 2;
     private final int leftPageNumber;
     private final int rightPageNumber;
     private int maxValue;
@@ -31,15 +34,15 @@ public class Page {
         return maxValueUser;
     }
 
-    public String findMaxValue(Page page) {
+    public int findMaxValue(Page page) {
 
         if (this.maxValue == page.maxValue) {
-            return "NOTHING";
+            return DRAW;
         }
         if (this.maxValue > page.maxValue) {
-            return this.maxValueUser;
+            return POBI;
         }
-        return page.maxValueUser;
+        return CRONG;
     }
 
     public Page findMaxValue(String userName) {
