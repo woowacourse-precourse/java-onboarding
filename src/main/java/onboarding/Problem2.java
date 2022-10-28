@@ -6,7 +6,15 @@ public class Problem2 {
      * 연속되는 중복 문자의 idx 반환
      */
     private static int getDuplicateCharIdx(String cryptogram) {
-        return Integer.MAX_VALUE;
+        for (int i = 0; i < cryptogram.length() - 1; i++) {
+            char left = cryptogram.charAt(i);
+            char right = cryptogram.charAt(i + 1);
+
+            if (left == right) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     /**
