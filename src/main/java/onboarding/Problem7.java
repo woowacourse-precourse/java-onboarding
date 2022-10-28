@@ -9,11 +9,20 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         HashMap<String, List<String>> friendship = new HashMap<>();
+        List<String> userFriends;
+        HashMap<String, Integer> scores = new HashMap<>();
 
         makeFriendship(friends, friendship);
-
-
-
+        userFriends = friendship.get(user);
+        for (String crew : friendship.keySet()) {
+            if (crew.equals(user)) {
+                continue;
+            }
+            makeScoresWithFriendship(friendship, scores, userFriends, crew);
+        }
+        updateScoresWithVisitors(scores, userFriends, visitors);
+        System.out.println("scores = " + scores);
+        //TODO: 가장 큰 5개 뽑는 것과 정렬 만들기
         return answer;
     }
 
