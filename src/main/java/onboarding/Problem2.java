@@ -24,8 +24,13 @@ public class Problem2 {
 	}
 
 	public static String deleteConsecutive(String cryptogram) {
-		
-		return cryptogram;
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < cryptogram.length(); i++) {
+			if (!isConsecutive[i]) {
+				sb.append(cryptogram.charAt(i));
+			}
+		}
+		return sb.toString();
 	}
 
 }
