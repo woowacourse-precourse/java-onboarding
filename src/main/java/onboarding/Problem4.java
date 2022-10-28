@@ -2,6 +2,7 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String momWord) {
+        validateWord(momWord);
         return convertWord(momWord);
     }
 
@@ -41,6 +42,12 @@ public class Problem4 {
 
     public static int getLowerCaseCalculationNumber() {
         return 'a' + 'z';
+    }
+
+    public static void validateWord(String momWord) {
+        if(!validateWordRange(momWord)) {
+            throw new IllegalArgumentException("[ERROR] : 엄마 말씀은 1 이상 1,000이하의 문자열이어야합니다.");
+        }
     }
 
     public static boolean validateWordRange(String momWord) {
