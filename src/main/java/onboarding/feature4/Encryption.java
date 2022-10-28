@@ -25,6 +25,6 @@ public class Encryption {
 
     public static void shiftLetter(List<Character> letterCase, Character letter) {
         int indexOfLetter = letterCase.indexOf(letter);
-        letter  = letterCase.get(25 - indexOfLetter);
+        letter  = letterCase.get(SHIFT_AMOUNT - indexOfLetter);
     }
 }
