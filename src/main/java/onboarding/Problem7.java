@@ -15,11 +15,11 @@ public class Problem7 {
         List<String> friendsFriendList = friendsFriend(userFriendList, friends,user);
 
         // friendsFriendList, userFriendList, visitors 를 이용하여 recommendFriend 와 점수를 반환하는 recommendMap
+        // sortByValue 를 사용하여 map 의 value 값을 기준으로 정렬한다.
         HashMap<String, Integer> recommendMap = sortByValue(recommendMap(friendsFriendList, userFriendList, visitors));
 
+        // 정렬한 recommentMap 의 키값을 answer List 로 return;
         answer.addAll(recommendMap.keySet());
-
-        System.out.println("answer = " + answer);
 
         return answer;
     }
