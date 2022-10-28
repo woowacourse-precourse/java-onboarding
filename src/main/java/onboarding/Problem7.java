@@ -10,6 +10,8 @@ public class Problem7 {
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 		// 전체 유저 리스트 생성
 		List<String> userList = makeUserList(friends, visitors);
+		userList.remove(user);
+		System.out.println(userList);
 		// 유저 친구 관계 리스트 생성
 		List<String> userFriendsList = makeFriendList(friends, user);
 		// 유저 친구의 친구 관계 리스트 생성
@@ -21,6 +23,8 @@ public class Problem7 {
 		}
 		System.out.println(userFriendsFriendsList);
 		// 전체 유저 리스트에서 유저와 친구를 뺀 리스트 생성
+		List<String> noFriendList = makeNoFriendList(userList, userFriendsList);
+		System.out.println(noFriendList);
 		// 유저 및 친구 제외 리스트의 구성원 중 방문객 점수 부여
 		// 유저및 친구 제외 리스트의 구성원 중 친구의 친구 점수 부여
 		// answer 리스트에 add
@@ -28,6 +32,14 @@ public class Problem7 {
 
 		List<String> answer = Collections.emptyList();
 		return answer;
+	}
+
+	static List<String> makeNoFriendList(List<String> userList, List<String> userFriendsList) {
+		List<String> noFriendList = new ArrayList<>(userList);
+		for(String friend : userFriendsList) {
+			noFriendList.remove(friend);
+		}
+		return noFriendList;
 	}
 
 	static List<String> makeUserList(List<List<String>> friends, List<String> visitors) {
