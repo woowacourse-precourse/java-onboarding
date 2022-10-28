@@ -22,10 +22,10 @@ class Problem1 {
         int pobiLeftPage = pobi.get(0), pobiRightPage = pobi.get(1);
         int crongLeftPage = crong.get(0), crongRightPage = crong.get(1);
 
-        if (checkException(pobiLeftPage, pobiRightPage) || checkException(crongLeftPage, crongRightPage)) {
+        if (checkInitValue(pobiLeftPage, pobiRightPage) || checkInitValue(crongLeftPage, crongRightPage)) {
             return INIT_ERROR;
         }
-        if (pobi.size() != 2 || crong.size() != 2) {
+        if (checkListSize(pobi) || checkListSize(crong)) {
             return INIT_ERROR;
         }
 
@@ -36,6 +36,10 @@ class Problem1 {
 
         System.out.println("answer = " + answer);
         return answer;
+    }
+
+    private static boolean checkListSize(List<Integer> list) {
+        return list.size() != 2;
     }
 
     private static int getResult(int pobiMaxScore, int crongMaxScore) {
@@ -65,7 +69,7 @@ class Problem1 {
         return max(sum, mul);
     }
 
-    private static boolean checkException(int leftPage, int rightPage) {
+    private static boolean checkInitValue(int leftPage, int rightPage) {
         if (leftPage >= rightPage) {
             return true;
         }
@@ -73,6 +77,9 @@ class Problem1 {
             return true;
         }
         if (rightPage - leftPage != 1) {
+            return true;
+        }
+        if (leftPage % 2 != 1) {
             return true;
         }
         return false;
