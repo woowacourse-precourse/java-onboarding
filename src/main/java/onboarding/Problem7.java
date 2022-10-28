@@ -59,7 +59,7 @@ public class Problem7 {
         return userDataBase.get(userName);
     }
 
-    private static void makeFriend(Member friend1, Member friend2) {
+    private static void addFriendEachOther(Member friend1, Member friend2) {
         List<Member> friendList1 = friend1.getFriendList();
         friendList1.add(friend2);
 
