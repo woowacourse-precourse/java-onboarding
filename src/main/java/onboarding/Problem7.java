@@ -5,16 +5,21 @@ import java.util.stream.Collectors;
 import java.util.Comparator;
 
 public class Problem7 {
-    static HashMap<String,Integer> pointMap = new HashMap<>();
+    static Map<String,Integer> pointMap = new HashMap<>();
     //find connected friends
     public static void connect(String start, HashMap<String, ArrayList<String>> lst){
         Stack<String> stack = new Stack<>();
         //DFS
-        stack.addAll(lst.get(start));
+        stack.add(start);
         while(!stack.isEmpty()){
             String v = stack.pop();
-            pointMap.put(v, pointMap.getOrDefault(v, 10) + 10);
-            stack.addAll(lst.get(v));
+            if(!pointMap.containsKey(v)) {
+                pointMap.put(v, 10);
+                stack.addAll(lst.get(v));
+            }
+            else{
+                pointMap.put(v, pointMap.get(v)+10);
+            }
         }
     }
     //check visited people
@@ -57,7 +62,18 @@ public class Problem7 {
         for(String e : except){
             pointMap.remove(e);
         }
-
-        return res;
+        List<String> res = pointMap.entrySet().stream()
+                .sorted(Comparator.comparingLong(Map.Entry<String, Integer>::getValue)
+                        .reversed()
+                        .thenComparing(Map.Entry::getKey)
+                )
+                .map(it -> it.getKey())
+                .collect(Collectors.toList());
+        if(res.size() >= 6){
+            return res.subList(0, 5);
+        }
+        else{
+            return res.subList(0, res.size());
+        }
     }
 }
