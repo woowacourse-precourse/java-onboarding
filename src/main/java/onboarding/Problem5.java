@@ -41,6 +41,8 @@ class Bank {
 
     public void addCash (int cash) {
         cashList.add(cash);
+        sortedCashList.add(cash);
+        Collections.sort(this.sortedCashList);
     }
 
     public void deleteCash (int cash) {
@@ -49,5 +51,6 @@ class Bank {
             return;
         }
         cashList.remove(cash);
+        sortedCashList.remove(cash);
     }
 }
