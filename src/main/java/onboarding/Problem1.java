@@ -6,7 +6,21 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
-        int answer = Integer.MAX_VALUE;
+        int answer;
+
+        if(bookGame(pobi) == -1 || bookGame(crong) == -1){
+            answer = -1;
+        }
+        else if(bookGame(pobi) < bookGame(crong)){
+            answer = 2;
+        }
+        else if(bookGame(pobi) > bookGame(crong)){
+            answer = 1;
+        }
+        else{
+            answer = 0;
+        }
+
         return answer;
     }
 
