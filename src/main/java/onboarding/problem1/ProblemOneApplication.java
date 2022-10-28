@@ -13,6 +13,7 @@ public class ProblemOneApplication {
         Calculator calculator = new Calculator();
         List<Integer> emptyList = new ArrayList<>();
         List<Integer> notEmptyList = Arrays.asList(1);
+
         System.out.println("calculator.hasList(emptyList) = " + calculator.hasList(emptyList));
         System.out.println("calculator.hasList(notEmptyList) = " + calculator.hasList(notEmptyList));
 
@@ -25,5 +26,17 @@ public class ProblemOneApplication {
         int page3 = 21;
         System.out.println("book.isEvenPage(page2) = " + book.isEvenPage(page2));
         System.out.println("book.isEvenPage(page3) = " + book.isEvenPage(page3));
+
+        book.setPage(page2);
+        System.out.println("book.getLeftPage() = " + book.getLeftPage());
+        System.out.println("book.getRightPage() = " + book.getRightPage());
+
+        book.setPage(page3);
+        System.out.println("book.getLeftPage() = " + book.getLeftPage());
+        System.out.println("book.getRightPage() = " + book.getRightPage());
+
+        book.setPage(notEmptyList.get(0));
+        System.out.println("book.getLeftPage() = " + book.getLeftPage());
+        System.out.println("book.getRightPage() = " + book.getRightPage());
     }
 }
