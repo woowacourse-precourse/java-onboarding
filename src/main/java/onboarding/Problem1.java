@@ -14,6 +14,15 @@ class Problem1 {
         }
     }
 
+    private static int getSumPageNumber(int pageNumber) {
+        int sumPageNumber = 0;
+        while (pageNumber > 0) {
+            sumPageNumber += pageNumber % 10;
+            pageNumber /= 10;
+        }
+        return sumPageNumber;
+    }
+
     private static boolean isOpenPageCorrect(List<Integer> openPages) {
         int leftPage = openPages.get(PageDirection.LEFT.index);
         int rightPage = openPages.get(PageDirection.RIGHT.index);
