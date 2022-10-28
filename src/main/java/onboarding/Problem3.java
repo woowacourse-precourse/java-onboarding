@@ -1,10 +1,13 @@
 package onboarding;
 
 public class Problem3 {
+
+    private static final int START_NUM = 1;
+
     public static int solution(int number) {
         int answer = 0;
 
-        for(int i = 1; i <= number; i++) {
+        for(int i = START_NUM; i <= number; i++) {
             answer += count369(i);
         }
 
