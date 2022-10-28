@@ -50,17 +50,23 @@ public class Problem4 {
         return decreasedValueCharacter;
     }
 
+    private static void makeConvertMap(Map<Character, Character> convertMap, char key, char value) {
+        // A~Z ,also a~z, has 26 alphabet
+        for (int i = 0; i < 26; i++) {
+            convertMap.put(key, value);
+            key = increaseKeyCharacter(key);
+            value = decreaseValueCharacter(value);
+        }
+    }
 
     private static Map<Character, Character> getUpperCaseConvertMap() {
         Map<Character, Character> upperCaseConvertMap = new HashMap<>();
         char upperCaseKey = 'A';
         char upperCaseValue = 'Z';
-        //while(upperCaseKey <= 'Z')
-        while (upperCaseKey<=90) {
-            upperCaseConvertMap.put(upperCaseKey,upperCaseValue);
-            upperCaseKey = increaseKeyCharacter(upperCaseKey);
-            upperCaseValue = decreaseValueCharacter(upperCaseValue);
-        }
+
+        //making upperCaseConvertMap
+        makeConvertMap(upperCaseConvertMap,upperCaseKey,upperCaseValue);
+
         return upperCaseConvertMap;
     }
 
@@ -68,12 +74,9 @@ public class Problem4 {
         Map<Character, Character> lowerCaseConvertMap = new HashMap<>();
         char lowerCaseKey = 'a';
         char lowerCaseValue = 'z';
-        //while(upperCaseKey <= 'z')
-        while (lowerCaseKey<=122) {
-            lowerCaseConvertMap.put(lowerCaseKey,lowerCaseValue);
-            lowerCaseKey = increaseKeyCharacter(lowerCaseKey);
-            lowerCaseValue = decreaseValueCharacter(lowerCaseValue);
-        }
+
+        //making lowerCaseConvertMap
+        makeConvertMap(lowerCaseConvertMap,lowerCaseKey,lowerCaseValue);
 
         return lowerCaseConvertMap;
     }
