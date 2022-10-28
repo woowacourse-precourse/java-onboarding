@@ -45,6 +45,11 @@ class Problem1 {
     }
 
     public static int getDigitMultiplyValue(int value) {
-        return 0;
+        int multiply = 1;
+        while (value > 0) {
+            multiply *= value % 10;
+            value /= 10;
+        }
+        return multiply;
     }
 }
