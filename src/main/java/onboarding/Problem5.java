@@ -14,6 +14,7 @@
 
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -52,5 +53,14 @@ class Bank {
         }
         cashList.remove(cash);
         sortedCashList.remove(cash);
+    }
+
+    public List<Integer> withdraw (int money) {
+        List<Integer> withdrawal = new ArrayList<>();
+        for (int cash : sortedCashList) {
+            withdrawal.add(money / cash);
+            money %= cash;
+        }
+        return withdrawal;
     }
 }
