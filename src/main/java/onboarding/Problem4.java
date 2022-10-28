@@ -9,4 +9,8 @@ public class Problem4 {
     public static int getUpperCaseCalculationNumber() {
         return 'A' + 'Z';
     }
+
+    public static int getLowerCaseCalculationNumber() {
+        return 'a' + 'z';
+    }
 }
