@@ -114,6 +114,9 @@ class Problem1 {
             this.result = result;
         }
 
+        /**
+         * 열거형 클래스의 각 값을 가지고 오기 위한 메서드
+         */
         public int getResult() {
             return result;
         }
