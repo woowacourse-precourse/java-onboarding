@@ -1,9 +1,13 @@
 package onboarding;
 
+import static java.util.stream.Collectors.maxBy;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import onboarding.problem1.Person;
 
@@ -60,8 +64,14 @@ class Problem1 {
             }
         }
 
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        /* [요구] 게임 승자 구하기 */
+        Person winner = Stream.of(personList).max(Comparator.comparingInt(Person::getMaxScore)).get();
+
+        // 승자와 같은 점수를 가진 사람이 있다면 무승부
+        if (Stream.of(personList).filter(p->p.getMaxScore()==winner.getMaxScore()).count() > 1)
+            return scoreMenu.get("draw");
+
+        return scoreMenu.get(winner.getName());
     }
 
     // 책의 시작 면이나 마지막 면이 있는지 확인하는 메서드

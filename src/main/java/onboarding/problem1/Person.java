@@ -25,7 +25,12 @@ public class Person {
         return rightPageNumber;
     }
 
+    public int getMaxScore() {
+        return maxScore;
+    }
+
     public void setMaxScore(int maxScore) {
         this.maxScore = maxScore;
     }
+
 }
