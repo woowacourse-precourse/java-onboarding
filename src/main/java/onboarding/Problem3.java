@@ -15,51 +15,51 @@ package onboarding;
  */
 public class Problem3 {
     public static int clapTen(int number){
-        int digit369, digitNormal, number1Digit;
+        int digit369, digitNormal, numberUnder10;
         boolean is369 = number % 30 < 10 ? true : false;
         if(is369){
             digit369 = number / 30 - 1;
             digitNormal = number / 10 - digit369;
-            number1Digit = number % 10 + 1 + (number % 10 / 3);
+            numberUnder10 = number % 10 + 1 + (number % 10 / 3);
         }
         else{
             digit369 = number / 30;
             digitNormal = number / 10 - digit369;
-            number1Digit = number % 10 / 3;
+            numberUnder10 = number % 10 / 3;
         }
-        return digit369 * 13 + digitNormal * 3 + number1Digit;
+        return digit369 * 13 + digitNormal * 3 + numberUnder10;
     }
 
     public static int clapHundred(int number){
-        int digit369, digitNormal, number10Digit;
+        int digit369, digitNormal, numberUnder100;
         boolean is369 = number % 300 < 100 ? true : false;
         if(is369){
             digit369 = number / 300 - 1;
             digitNormal = number / 100 - digit369;
-            number10Digit = number % 100 + 1 + clapTen(number % 100);
+            numberUnder100 = number % 100 + 1 + clapTen(number % 100);
         }
         else{
             digit369 = number / 300;
             digitNormal = number / 100 - digit369;
-            number10Digit = clapTen(number % 100);
+            numberUnder100 = clapTen(number % 100);
         }
-        return digit369 * 160 + digitNormal * 60 + number10Digit;
+        return digit369 * 160 + digitNormal * 60 + numberUnder100;
     }
 
     public static int clapThousand(int number){
-        int digit369, digitNormal, number100Digit;
+        int digit369, digitNormal, numberUnder1000;
         boolean is369 = number % 3000 < 1000 ? true : false;
         if(is369){
             digit369 = number / 3000 - 1;
             digitNormal = number / 1000 - digit369;
-            number100Digit = number % 1000 + 1 + clapHundred(number % 1000);
+            numberUnder1000 = number % 1000 + 1 + clapHundred(number % 1000);
         }
         else{
             digit369 = number / 3000;
             digitNormal = number / 1000 - digit369;
-            number100Digit = clapHundred(number % 1000);
+            numberUnder1000 = clapHundred(number % 1000);
         }
-        return digit369 * 1900 + digitNormal * 900 + number100Digit;
+        return digit369 * 1900 + digitNormal * 900 + numberUnder1000;
     }
 
     public static int solution(int number) {
