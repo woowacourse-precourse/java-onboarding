@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class Problem7 {
@@ -31,6 +32,8 @@ public class Problem7 {
         friendMap = giveTenPoint(matchFriendString, friendMap);
         friendMap = giveOnePoint(visitors, friendMap);
         friendMap = deleteUserAndUserFriend(friendMap, friendNameList, user);
+
+        answer = sortByScoreAndName(friendMap);
 
         return answer;
     }
@@ -117,5 +120,30 @@ public class Problem7 {
             friendMap.put(friendName, 0);
         }
         return friendMap;
+    }
+
+    public static List<String> sortByScoreAndName(HashMap<String, Integer> friendMap) {
+        List<Integer> scoreList = new ArrayList(friendMap.values());
+        Collections.sort(scoreList);
+
+        List<String> sortedList = new ArrayList<>();
+        for(Integer score : scoreList) {
+            sortedList.addAll(findNameByValue(friendMap, score));
+        }
+
+        return sortedList;
+    }
+
+    public static List<String> findNameByValue(HashMap<String, Integer> friendMap, int score) {
+        List<String> nameList = new ArrayList<>();
+
+        for (Map.Entry<String, Integer> entry : friendMap.entrySet()) {
+            if (entry.getValue().equals(score)) {
+                nameList.add(entry.getKey());
+            }
+        }
+
+        Collections.sort(nameList);
+        return nameList;
     }
 }
