@@ -1,31 +1,25 @@
 package onboarding.problem3;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class ApplauseGame {
-    private static final int MIN = 1;
-    private static final int MAX = 10_000;
+    private static final List<Boolean> claps = new ArrayList<>();
 
-    public static int start(int number) {
+    public static int start(int number, ClapRule clapRule) {
         ApplauseParameter applauseParameter = new ApplauseParameter(number);
-        int clap = 0;
-        for (int i = 0; i < applauseParameter.getNumbers().length(); i++) {
-            clap = addClap(applauseParameter.getNumbers(), clap, i);
+        String numbers = applauseParameter.getNumbers();
+
+        for (int i = 0; i < numbers.length(); i++) {
+            claps.add(clapRule.isClap(numbers, i));
         }
-        return clap;
-    }
-    private static int addClap(String numbers, int count, int i) {
-        if (isClap(numbers, i)) {
-            count++;
-        }
-        return count;
+        return getAnInt(claps);
     }
 
-
-
-    private static boolean isClap(String string, int i) {
-        return string.charAt(i) == '3' || string.charAt(i) == '6' || string.charAt(i) == '9';
+    private static int getAnInt(List<Boolean> claps) {
+        return Math.toIntExact(claps.stream().filter(aBoolean -> aBoolean).count());
     }
+
 
 }
