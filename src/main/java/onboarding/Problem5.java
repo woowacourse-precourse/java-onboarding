@@ -1,7 +1,9 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 /*
 - 기능 구현사항 목록 -
 1. 화폐 단위가 들어있는 array 생성(내림차순)
@@ -11,7 +13,14 @@ import java.util.List;
  */
 public class Problem5 {
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
+        ArrayList answer = new ArrayList();
+        int[] arr_money = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
+        int i = 0;
+        for(int unit : arr_money) {
+            answer.add(money / unit);
+            i++;
+            money %= unit;
+        }
         return answer;
     }
 }
