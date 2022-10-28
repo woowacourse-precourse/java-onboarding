@@ -6,18 +6,16 @@ public class Problem2 {
 
         StringBuilder cryptogramSb = new StringBuilder(cryptogram);
 
-        int i = 0, j = 1;
-        for (; j < cryptogramSb.length(); ) {
-            if (cryptogramSb.charAt(i) != cryptogramSb.charAt(j)) {
+        int i = 0;
+        for (; i < cryptogramSb.length() - 1; ) {
+            if (cryptogramSb.charAt(i) != cryptogramSb.charAt(i+1)) {
                 answer = cryptogramSb.substring(0, i+1);
                 i++;
-                j++;
             }
             else {
-                cryptogramSb.deleteCharAt(j);
+                cryptogramSb.deleteCharAt(i+1);
                 cryptogramSb.deleteCharAt(i);
                 i--;
-                j = i + 1;
             }
         }
 
