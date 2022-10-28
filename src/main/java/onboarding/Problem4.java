@@ -1,6 +1,8 @@
 package onboarding;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -23,13 +25,17 @@ public class Problem4 {
 
     private static String convertStringByDict(String word){
         Stream<Character> charStream = word.chars().mapToObj(i -> (char)i);
-        String convertedString = charStream.map(ch -> {
+        String convertedString = charStream.map(getFilter()).collect(()-> new StringBuffer(), (c, e)->c.append(e), (c1,c2)-> c1.append(c2)).toString();
+        return convertedString;
+    }
+
+    private static Function<Character, Character> getFilter(){
+        return (Character ch) -> {
             if (needConvert(ch)) {
                 return getConvertedChar(ch);
             }
             return ch;
-        }).collect(()-> new StringBuffer(), (c, e)->c.append(e), (c1,c2)-> c1.append(c2)).toString();
-        return convertedString;
+        };
     }
 
     private static boolean needConvert(char ch){
