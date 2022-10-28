@@ -17,27 +17,15 @@ public class Problem4 {
 
     public static boolean throwBoundaryException(String word) {
 
-        if (word.length() < 1 || word.length() > 1000) {
-            return true;
-        }
-
-        return false;
+        return word.length() < 1 || word.length() > 1000;
     }
 
     public static boolean isAlphabet(char word) {
-        if (word < 65 || word > 122 || (word > 90 && word < 97)) {
-            return true;
-        }
-
-        return false;
+        return word < 65 || word > 122 || (word > 90 && word < 97);
     }
 
     public static boolean isLowerCase(char word) {
-        if (word >= 97 && word <= 122) {
-            return true;
-        }
-
-        return false;
+        return word >= 97 && word <= 122;
     }
 
 }
