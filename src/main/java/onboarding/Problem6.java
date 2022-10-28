@@ -47,4 +47,24 @@ public class Problem6 {
 
         return substringSet;
     }
+
+    private static boolean[] makeConsecutiveNicknameCheckArray(List<List<String>> forms) {
+        boolean[] isConsecutive = new boolean[forms.size()];
+        List<List<String>> substringList = makeSubstringWithTwoWords(forms);
+        Set<String> substringSet = makeSubstringSet(substringList);
+
+        for (int i = 0; i < substringList.size(); i++) {
+            List<String> substrings = substringList.get(i);
+            for (int j = 0; j < substrings.size(); j++) {
+                String substring = substrings.get(j);
+
+                if (substringSet.contains(substring)) {
+                    isConsecutive[i] = true;
+                    break;
+                }
+            }
+        }
+
+        return isConsecutive;
+    }
 }
