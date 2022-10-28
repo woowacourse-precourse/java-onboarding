@@ -10,6 +10,13 @@ public class Problem3 {
         return answer;
     }
 
+    public static boolean isClapTiming(char numTypeOfChar) {
+        boolean isClapTiming = false;
+        if(numTypeOfChar == THREE || numTypeOfChar == SIX || numTypeOfChar == NINE)
+            isClapTiming = true;
+        return isClapTiming;
+    }
+
     public static String makeStringNumber(int number) {
         return String.valueOf(number);
     }
