@@ -11,6 +11,14 @@ public class Problem7 {
         return answer;
     }
 
+    public static void friendsSetup(List<List<String>> friends, String user) {
+        for (List<String> friend : friends) {
+            if (isFriendsContainUser(friend, user)) {
+                myFriendsSet.addAll(friend);
+            }
+        }
+    }
+
     public static boolean isFriendsContainUser(List<String> friends, String user) {
         return friends.contains(user);
     }
