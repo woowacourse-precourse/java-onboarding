@@ -16,6 +16,11 @@ public class Problem5 {
             this.target = target;
         }
 
+        List<Integer> getResult() {
+            calculate();
+            return money;
+        }
+
         private void calculate() {
             int tmp = target;
             for(int i=0 ; i<MONEY_MAX_COUNT ; i++){
@@ -26,7 +31,7 @@ public class Problem5 {
 
     }
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
-        return answer;
+        Wallet wallet = new Wallet(money);
+        return wallet.getResult();
     }
 }
