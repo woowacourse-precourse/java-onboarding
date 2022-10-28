@@ -8,7 +8,7 @@ public class Problem3 {
             return 0;
         }
 
-        for(int i=3;i<number;i++){
+        for(int i=3;i<=number;i++){
             answer+=clapCount(Integer.toString(i));
         }
 
