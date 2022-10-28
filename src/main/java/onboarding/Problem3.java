@@ -15,8 +15,12 @@ public class Problem3 {
         }
         return cnt;
     }
+
     public static int solution(int number) {
         int answer = 0;
+        for (int i = 1; i <= number; i++) {
+            answer += calClapCnt(i);
+        }
         return answer;
     }
 }
