@@ -20,6 +20,12 @@ public class Problem7 {
 
         removeNoResult(user, friend_score, visitors, user_friend); // 추천친구 목록에 들어가면 안되는 친구 분별하고 제외하는 과정
 
+        List<Integer> listValueSet = new ArrayList<>(friend_score.values());
+        List<String> listKeySet = new ArrayList<>(friend_score.keySet());
+
+        sortResult(friend_score, listValueSet, listKeySet); // 점수가 같을 경우 알파벳 순으로 출력하기 위한 점수별 내림차순 정렬 과정, 이름도 같이 매칭되게 리스트 분류
+
+
 
 
 
@@ -106,5 +112,11 @@ public class Problem7 {
         for(int i=0; i<removed.size(); i++){
             friend_score.remove(removed.get(i)); // 0점인 친구들 제거
         }
+    }
+
+    private static void sortResult(Map<String, Integer> friend_score, List<Integer> listValueSet, List<String> listKeySet) {
+        Collections.sort(listKeySet, (value1, value2) -> (friend_score.get(value2).compareTo(friend_score.get(value1)))); // 점수별로 내림차순으로 친구 이름 정렬
+
+        Collections.sort(listValueSet, Collections.reverseOrder()); // 점수 내림차순
     }
 }
