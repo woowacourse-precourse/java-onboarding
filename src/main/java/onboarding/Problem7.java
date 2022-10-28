@@ -97,7 +97,12 @@ public class Problem7 {
         return answer;
     }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        Map<String, List<String>> friendsMap = analyzeFirendsInfo(friends);
+
+        Map<String, Integer> scoreMap = new HashMap<>();
+        updateFriendsScore(user, friendsMap, scoreMap);
+        updatVisitorScore(scoreMap, friendsMap.getOrDefault(user, new ArrayList<>()), visitors);
+
+        return extractSuggestionFriends(scoreMap);
     }
 }
