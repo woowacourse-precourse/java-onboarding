@@ -42,4 +42,11 @@ public class Problem2 {
 
         return redundancyLetters;
     }
+
+    private static String deleteRedundancyLetter(List<String> redundancyLetters, String cryptogram) {
+        for (String redundancy : redundancyLetters)
+            cryptogram = cryptogram.replace(redundancy, "");
+
+        return cryptogram;
+    }
 }
