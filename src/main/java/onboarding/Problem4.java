@@ -21,7 +21,14 @@ public class Problem4 {
          * ABCDEFGHIJKLMNOPQRSTUVWXYZ
          */
         for (int i = 0; i < word.length(); i++) {
-
+            if(alphabetS.contains(word.charAt(i))) {
+                idx = alphabetS.indexOf(word.charAt(i));
+                answer += String.valueOf(alphabetS.get(25 - idx));
+            } else if (alphabetL.contains(word.charAt(i))) {
+                idx = alphabetL.indexOf(word.charAt(i));
+                answer += String.valueOf(alphabetL.get(25 - idx));
+            } else
+                answer += String.valueOf(word.charAt(i));
         }
         return answer;
     }
