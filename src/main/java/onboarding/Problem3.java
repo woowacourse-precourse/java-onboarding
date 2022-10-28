@@ -8,6 +8,15 @@ package onboarding;
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
+
+        for(int i = 1; i<= number; i++) {
+            String numToStr = String.valueOf(i);
+
+            for(int j = 0; j< numToStr.length(); j++) {
+                if(numToStr.charAt(j) == '3' || numToStr.charAt(j) == '6' || numToStr.charAt(j) == '9')
+                    answer++;
+            }
+        }
         return answer;
     }
 }
