@@ -31,7 +31,7 @@ public class Problem6 {
                 String[] criteriaList = makeCriteria(name, criteriaLength);
 
                 // 닉네임들 중에 기준 문자열과 중복인 닉네임이 있는지 찾음
-                List<String> duplicatedNickname = findDuplicatedNickname(nickList, criteriaList);
+                List<String> duplicatedNickname = findDuplicatedNickname(nickList, i, criteriaList);
 
                 Iterator<String> dupNicknameItr = duplicatedNickname.iterator();
                 for(int s=0; s<duplicatedNickname.size(); s++){
@@ -64,13 +64,16 @@ public class Problem6 {
     /**
      * 중복이 있는 닉네임 찾는 메소드
      * @param nickList 입력받은 닉네임 리스트
+     * @param nowNameIdx 기준 문자열을 만들 때 사용한 닉네임의 인덱스
      * @param criteriaList 구한 기준 문자열 리스트
      * @return 중복이 있는 닉네임을 리스트로 반환
      */
-    static List<String> findDuplicatedNickname(String[] nickList, String[] criteriaList){
+    static List<String> findDuplicatedNickname(String[] nickList, int nowNameIdx, String[] criteriaList){
         List<String> dup = new ArrayList<>();
         for(int i=0; i<criteriaList.length; i++){
             for(int j=0; j<nickList.length; j++){
+                if(j == nowNameIdx) continue;
+
                 if(nickList[j].contains(criteriaList[i])){
                     dup.add(nickList[j]);
                 }
