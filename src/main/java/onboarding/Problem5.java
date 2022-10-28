@@ -21,7 +21,7 @@ public class Problem5 {
      * @return
      */
     public static boolean isValid(int money){
-        return 1 >= money && 1001000000 >= money;
+        return 1 >= money && 1000000 >= money;
     }
 
     /**
