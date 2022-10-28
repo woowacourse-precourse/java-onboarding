@@ -26,7 +26,7 @@ public class Game {
     }
 
     private int getScore(Pages pages) {
-        int score = -Integer.MIN_VALUE;
+        int score = Integer.MIN_VALUE;
 
         score = Math.max(score, Math.max(
                 getSumOfDigits(pages.getPage1()), getMultipleOfDigits(pages.getPage1())
