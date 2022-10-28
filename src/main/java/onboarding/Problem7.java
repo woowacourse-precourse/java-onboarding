@@ -25,14 +25,16 @@ public class Problem7 {
                 contacts.put(nameB, peopleB);
             }
         }
-
-//        for (String name : allUserPoint.keySet()) {
-//            if (isFriends(name, contacts.get(user)) || name.equals(user)) { // user의 친구 목록에 들어있고, 자기 자신이면 continue
-//                continue;
-//            }
-//            int point = duplicateCount(contacts.get(user), contacts.get(name));
-//            allUserPoint.put(name, allUserPoint.get(name)+(point*10));
-//        }
+        List<String> userFriends = contacts.get(user).friendList;
+        for (String name : contacts.keySet()) {
+            People nowPeople = contacts.get(name);
+            if (isFriends(name, userFriends) || name.equals(user)) { // user의 친구 목록에 들어있고, 자기 자신이면 continue
+                continue;
+            }
+            int point = duplicateCount(userFriends, contacts.get(name).friendList);
+            nowPeople.plusPoint(point*10);
+            contacts.put(name, nowPeople);
+        }
 //
 //        for (String visitor : visitors) {
 //            if (isFriends(visitor, contacts.get(user))) {
