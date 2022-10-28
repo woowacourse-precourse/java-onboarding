@@ -15,6 +15,7 @@ public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
 
+        // 제한할 닉네임 목록 정리
         for (List<String> form : forms) {
             String email = form.get(0);
             String nickname = form.get(1);
@@ -34,6 +35,7 @@ public class Problem6 {
             }
         }
 
+        // 전송할 이메일 목록 정리
         for (String key : limitedNicknameMap.keySet()) {
             Set<String> emailListSet = limitedNicknameMap.get(key);
 
