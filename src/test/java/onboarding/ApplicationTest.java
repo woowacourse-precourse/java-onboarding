@@ -132,6 +132,16 @@ class ApplicationTest {
             int result = 14;
             assertThat(Problem3.solution(number)).isEqualTo(result);
         }
+
+        @Test
+        void case3() {
+            int number = 3;
+            Boolean result = true;
+            assertThat(Problem3.check369(number)).isEqualTo(result);
+            number = 2;
+            result = false;
+            assertThat(Problem3.check369(number)).isEqualTo(result);
+        }
     }
 
     @Nested
