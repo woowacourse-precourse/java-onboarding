@@ -19,8 +19,8 @@ public class Problem5 {
 
     private static int countNumberOfBills(int unit, int money){
         int count = 0;
-        if(money >= 50000){
-            count = money/50000;
+        if(money >= unit){
+            count = money/unit;
         }
         return count;
     }
