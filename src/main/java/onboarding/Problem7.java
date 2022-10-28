@@ -36,6 +36,10 @@ public class Problem7 {
 
         answer = sortByScoreAndName(friendMap);
 
+        if(answer.size() > 5) {
+            answer = answer.subList(0,5);
+        }
+
         return answer;
     }
 
