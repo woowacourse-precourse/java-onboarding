@@ -7,19 +7,19 @@ class Problem1 {
     static final int leftPage = 0;
     static final int rightPage = 1;
     static final int exceptionNum = -1;
+    static final int listSize = 2;
     static int errorNum = 244;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int answer = exceptionNum;
 
-        //null일 경우
-        if (exceptionCheck(pobi) || exceptionCheck(crong))
-            return exceptionNum;
-
-        int pobiScore = Math.max(findScore(pobi.get(leftPage)), findScore(pobi.get(rightPage)));
-        int crongScore = Math.max(findScore(crong.get(leftPage)), findScore(crong.get(rightPage)));
-
-        answer = compareNum(pobiScore, crongScore);
+        //길이가 2일 경우
+        if (exceptionCheck(pobi) && exceptionCheck(crong))
+        {
+            int pobiScore = Math.max(findScore(pobi.get(leftPage)), findScore(pobi.get(rightPage)));
+            int crongScore = Math.max(findScore(crong.get(leftPage)), findScore(crong.get(rightPage)));
+            answer = compareNum(pobiScore, crongScore);
+        }
 
         return answer;
     }
@@ -85,7 +85,7 @@ class Problem1 {
 
     //size가 없을 경우
     public static boolean exceptionCheck(List<Integer> numList) {
-        if (numList.size() == 0)
+        if (numList.size() == listSize)
             return true;
         return false;
     }
