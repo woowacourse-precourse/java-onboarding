@@ -14,10 +14,6 @@ class Problem1 {
         if(pobi_R-1==pobi_L && corng_R-1==crong_L){
             pobi_num=slove(pobi_L,pobi_R);
             crong_num=slove(crong_L,corng_R);
-
-            System.out.println(pobi_num);
-            System.out.println(crong_num);
-
             if(pobi_num>crong_num){
                 answer = 1;
             }
@@ -36,7 +32,6 @@ class Problem1 {
         int Lsum =0,Rsum=0,Lpro=1,Rpro=1;
         int LLnum =Lnum;
         int RRnum =Rnum;
-
         while (Lnum>0){
             Lsum += Lnum %10;
             Lnum /= 10;
@@ -47,8 +42,6 @@ class Problem1 {
         }
         if (Lsum>Rsum)sum=Lsum;
         if (Rsum>Lsum)sum=Rsum;
-
-
         while (LLnum>0){
             Lpro *= LLnum %10;
             LLnum /= 10;
