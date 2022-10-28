@@ -19,9 +19,10 @@ public class WordConverter {
 
 		for (int i = 0; i < word.length(); i++) {
 			char oneCharacter = word.charAt(i);
-			if (checkCharacterCategory(oneCharacter) == CharacterCategory.LOWERCASE) {
+			CharacterCategory characterCategory = checkCharacterCategory(oneCharacter);
+			if (characterCategory == CharacterCategory.LOWERCASE) {
 				convertedWordList.add(convertLowerCharacter(oneCharacter));
-			} else if (checkCharacterCategory(oneCharacter) == CharacterCategory.UPPERCASE) {
+			} else if (characterCategory == CharacterCategory.UPPERCASE) {
 				convertedWordList.add(convertUpperCharacter(oneCharacter));
 			} else {
 				convertedWordList.add(oneCharacter);
