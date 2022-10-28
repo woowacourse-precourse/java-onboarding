@@ -2,17 +2,57 @@ package problem6;
 
 import problem1.Page;
 
-import java.util.List;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SimilarNicknameVerifier {
+
+    private final Set<String> caughtEmails = new HashSet<>();
+    private final List<List<String>> forms;
     public SimilarNicknameVerifier(List<List<String>> forms) {
         Validator.validate(forms);
+        this.forms = forms;
+        verify();
     }
 
+    private void verify() {
+        for (int i = 0; i < forms.size(); i++) {
+            catchSimilar(forms.get(i), i);
+        }
+    }
+
+    private void catchSimilar(List<String> form, int position) {
+        for (int i = 0; i < position; i++) {
+            catchSimilar(forms.get(i), form);
+        }
+    }
+
+    private void catchSimilar(List<String> otherForm, List<String> myForm) {
+        String myNickname = myForm.get(1);
+        String otherNickname = otherForm.get(1);
+
+        if (isSimilar(myNickname, otherNickname)) {
+            caughtEmails.add(myForm.get(0));
+            caughtEmails.add(otherForm.get(0));
+        }
+    }
+
+    private boolean isSimilar(String myNickname, String otherNickname) {
+        for (int i = 0; i < myNickname.length() - 1; i++) {
+            if (otherNickname.contains(myNickname.substring(i, i + 2)))
+                return true;
+        }
+        return false;
+    }
+
+
     public List<String> getEmails() {
-        return null;
+        List<String> result = new ArrayList<>(caughtEmails);
+
+        Collections.sort(result);
+
+        return result;
     }
 
     public static class Validator {
