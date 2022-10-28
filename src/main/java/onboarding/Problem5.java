@@ -12,8 +12,7 @@ public class Problem5 {
         List<Integer> answer = new ArrayList<>();
 
         for(int unit : amountUnit) {
-            int value = money / unit;
-            answer.add(value);
+            answer.add(money / unit);
             money %= unit;
         }
 
