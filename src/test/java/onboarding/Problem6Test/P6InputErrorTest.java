@@ -35,7 +35,7 @@ public class P6InputErrorTest {
         List<List<String>> emailLengthShortErrorForms = List.of(List.of("@email.com","닉네임"));
         assertThat(Problem6.solution(emailLengthShortErrorForms)).isEqualTo(Collections.emptyList());
 
-        List<List<String>> emailLengthLongErrorForms = List.of(List.of("test@email.com","닉네임"));
+        List<List<String>> emailLengthLongErrorForms = List.of(List.of("testtest20@email.com","닉네임"));
         assertThat(Problem6.solution(emailLengthLongErrorForms)).isEqualTo(Collections.emptyList());
 
         List<List<String>> nameLengthShortErrorForms = List.of(List.of("test@email.com",""));
@@ -46,5 +46,9 @@ public class P6InputErrorTest {
 
         List<List<String>> nameNotKoreanErrorForms = List.of(List.of("test@email.com","abcd가나다123"));
         assertThat(Problem6.solution(nameNotKoreanErrorForms)).isEqualTo(Collections.emptyList());
+
+        List<List<String>> noErrorForms = List.of(List.of("test@email.com","닉네임"));
+        assertThat(Problem6.solution(noErrorForms)).isEqualTo(List.of("success@email.com"));
+
     }
 }
