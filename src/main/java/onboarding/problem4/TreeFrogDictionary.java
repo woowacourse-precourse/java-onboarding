@@ -17,6 +17,14 @@ public class TreeFrogDictionary {
         }
     }
 
+    public String translate(String originalStr) {
+        String translatedStr = "";
+        for (char originalCh : originalStr.toCharArray()) {
+            translatedStr += translateLetter(originalCh);
+        }
+        return translatedStr;
+    }
+
     public Character translateLetter(char ch) {
         return DICTIONARY.getOrDefault(ch, ch);
     }
