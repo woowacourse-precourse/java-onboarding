@@ -31,6 +31,7 @@ public class Problem6 {
         Collections.sort(answer); // 제출 전 오름차순 정렬, 대소문자 구분?
 
         return answer;
+        //테스트케이스 통과
     }
 
     // 검사 대상 닉네임을 이웃한 두글자씩 추출 한 경우의 수를 담은 리스트
