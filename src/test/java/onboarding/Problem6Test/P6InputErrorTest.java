@@ -18,7 +18,7 @@ public class P6InputErrorTest {
         List<List<String>> crewNumShortErrorForms = Collections.emptyList();
         assertThat(Problem6.solution(crewNumShortErrorForms)).isEqualTo(Collections.emptyList());
 
-        List<List<String>> crewNumOverErrorForms = IntStream.rangeClosed(1, 10000)
+        List<List<String>> crewNumOverErrorForms = IntStream.range(0, 10001)
                                                     .mapToObj(x -> List.of("email@email.com", "닉네임"))
                                                     .collect(Collectors.toList());
         assertThat(Problem6.solution(crewNumOverErrorForms)).isEqualTo(Collections.emptyList());
@@ -46,9 +46,6 @@ public class P6InputErrorTest {
 
         List<List<String>> nameNotKoreanErrorForms = List.of(List.of("test@email.com","abcd가나다123"));
         assertThat(Problem6.solution(nameNotKoreanErrorForms)).isEqualTo(Collections.emptyList());
-
-        List<List<String>> noErrorForms = List.of(List.of("test@email.com","닉네임"));
-        assertThat(Problem6.solution(noErrorForms)).isEqualTo(List.of("success@email.com"));
 
     }
 }
