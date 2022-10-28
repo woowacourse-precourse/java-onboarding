@@ -5,7 +5,8 @@
 <summary><b>기능 목록</b></summary>
 <div markdown="1">
 
-- highestNum(List<Integer>) : 책 페이지인 Integer형 List를 매개변수로 받아 요구하는 가장 큰 수(int)를 반환한다.
+- getGameScore(List<Integer> pages) : 책 페이지인 Integer형 List를 매개변수로 받아 게임 룰에 맞는 수를 반환한다.
+- findGreaterOfSumAndProduct(int number) : number의 각 수를 곱한 수과 더한 수 중 더 큰 수를 반환한다.
 - solution(List<Integer> pobi, List<Integer> crong) : 기능 요구사항을 구현 해 적절한 값을 반환한다.
 </div>
 </details>
