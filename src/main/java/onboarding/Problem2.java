@@ -8,7 +8,8 @@ import java.util.Stack;
 public class Problem2 {
 
     public static String solution(String cryptogram) {
-        return CryptoGame.remove(cryptogram);
+        CryptoGame cryptoGame = new CryptoGame(cryptogram);
+        return cryptoGame.remove();
     }
 
 }

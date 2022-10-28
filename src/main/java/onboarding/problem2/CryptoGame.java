@@ -3,12 +3,17 @@ package onboarding.problem2;
 
 public class CryptoGame {
     public static char last_removed = Character.MIN_VALUE;
+    public final String cryptogram;
 
-    public static String remove(String crypto) {
-        return removeUl(crypto);
+    public CryptoGame(String cryptogram) {
+        this.cryptogram = cryptogram;
     }
 
-    public static String removeUl(String crypto) {
+    public String remove() {
+        return removeUl(cryptogram);
+    }
+
+    private String removeUl(String crypto) {
         if (crypto.length() == 0 || crypto.length() == 1)
             return crypto;
         if (crypto.charAt(0) == crypto.charAt(1)) {
