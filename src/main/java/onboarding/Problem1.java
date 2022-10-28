@@ -14,8 +14,8 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (Problem1Validation.problem1InputValidation(pobi, USER_INPUT_LENGTH, PAGE_NUM_MIN, PAGE_NUM_MAX)
                 && Problem1Validation.problem1InputValidation(crong, USER_INPUT_LENGTH, PAGE_NUM_MIN, PAGE_NUM_MAX)) {
-            int answer = Integer.MAX_VALUE;
-            return answer;
+            List<Integer> userResults = userResult(pobi, crong);
+            return result(userResults.get(0), userResults.get(1));
         } else {
             return -1;
         }
