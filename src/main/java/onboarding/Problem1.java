@@ -14,6 +14,10 @@ class Problem1 {
                 || !isException(crongLeftPage, crongRightPage)) {
             return -1;
         }
+
+        int pobiScore = findMaxScore(pobiLeftPage, pobiRightPage);
+        int crongScore = findMaxScore(crongLeftPage, crongRightPage);
+
         return answer;
     }
 
@@ -50,6 +54,15 @@ class Problem1 {
         }
         return multipleDigits(rightPage);
     }
+
+    public static int findMaxScore(int leftPage, int rightPage) {
+        if (compareMultipleNumber(leftPage, rightPage)
+                - comparePlusNumber(leftPage, rightPage) >= 0) {
+            return compareMultipleNumber(leftPage, rightPage);
+        }
+        return comparePlusNumber(leftPage, rightPage);
+    }
+
 
     public static boolean isException(int leftPage, int rightPage) {
         if (rightPage - leftPage == 1) {
