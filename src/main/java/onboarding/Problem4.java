@@ -14,9 +14,7 @@ public class Problem4 {
                 return (char) lower_ascii_number;
             lower_ascii_number--;
         }
-        if ((int) word == 32)
-            return (char) 32;
-        return (char) 0;
+        return word;
     }
 
     public static String solution(String word) {
