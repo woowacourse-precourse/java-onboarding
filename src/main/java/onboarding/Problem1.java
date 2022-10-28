@@ -28,4 +28,13 @@ class Problem1 {
         }
         return result;
     }
+
+    public static int multiple(int number){
+        int result = 0;
+        String[] array = String.valueOf(number).split("");
+        for(String s: array){
+            result *= Integer.parseInt(s);
+        }
+        return result;
+    }
 }
