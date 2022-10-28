@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Problem6 {
     /**
@@ -59,7 +56,13 @@ public class Problem6 {
     }
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        Map<String, List<String>> wordMap = new HashMap<>();
+
+        for (List<String> userInfo : forms) {
+            updateWordMap(userInfo, wordMap);
+        }
+
+        return checkDuplicateUser(wordMap);
+
     }
 }
