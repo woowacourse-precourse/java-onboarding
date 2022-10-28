@@ -6,6 +6,15 @@ public class Problem4 {
         return answer;
     }
 
+    public static char change(char c) {
+        if (Character.isUpperCase(c)) {
+            return changeUpperWithFrogDict(c);
+        }
+        if (Character.isLowerCase(c)) {
+            return changeLowerWithFrogDict(c);
+        }
+        return c;
+    }
     public static boolean isAlphabet(char c) {
         if (c >= 65 && c <= 90) {
             return true;
