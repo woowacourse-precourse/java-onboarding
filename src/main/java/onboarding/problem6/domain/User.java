@@ -23,6 +23,14 @@ public class User {
                 .collect(Collectors.toList());
     }
     
+    public UserName getUserName() {
+        return userName;
+    }
+    
+    public UserEmail getUserEmail() {
+        return userEmail;
+    }
+    
     @Override
     public boolean equals(final Object o) {
         if (this == o) return true;
