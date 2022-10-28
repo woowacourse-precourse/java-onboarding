@@ -25,7 +25,7 @@ class Problem1 {
         }
         return answer;
     }
-    public static int getScore(int leftPage, int rightPage) {
+    private static int getScore(int leftPage, int rightPage) {
     	
     	int leftPageScore = Math.max(sumAllNum(leftPage), multiAllNum(leftPage));
     	int rightPageScore = Math.max(sumAllNum(rightPage), multiAllNum(rightPage));
@@ -35,8 +35,7 @@ class Problem1 {
     	}
     	return leftPageScore;
     }
-    
-    public static int sumAllNum(int page) {
+    private static int sumAllNum(int page) {
     	String p = page + "";
     	int totalSum = 0;
     	for(int i=0; i<p.length(); i++) {
@@ -44,7 +43,7 @@ class Problem1 {
     	}
     	return totalSum;
     }
-    public static int multiAllNum(int page) {
+    private static int multiAllNum(int page) {
     	String p = page + "";
     	int totalMulti = 1;
     	for(int i=0; i<p.length(); i++) {
@@ -52,8 +51,7 @@ class Problem1 {
     	}
     	return totalMulti;
     }
-    
-    public static boolean isCorrectPage(Integer leftPage, Integer rightPage) {
+    private static boolean isCorrectPage(Integer leftPage, Integer rightPage) {
     	
     	if(isNullPage(leftPage, rightPage)) {
     		return false;
@@ -76,22 +74,22 @@ class Problem1 {
     	return true;
     	
     }
-    public static boolean isRightPageEven(int rightPage) {
+    private static boolean isRightPageEven(int rightPage) {
     	return (rightPage % 2) == 0;
     }
-    public static boolean isLeftPageOdd(int leftPage) {
+    private static boolean isLeftPageOdd(int leftPage) {
     	return (leftPage % 2) == 1;
     }
-    public static boolean isRightPageOneMore(int leftPage, int rightPage) {
+    private static boolean isRightPageOneMore(int leftPage, int rightPage) {
     	return (rightPage - leftPage)==1;
     }
-    public static boolean isNullPage(Integer leftPage, Integer rightPage) {
+    private static boolean isNullPage(Integer leftPage, Integer rightPage) {
     	return leftPage==null || rightPage==null;
     }
-    public static boolean isLeftPageInRange(int leftPage) {
+    private static boolean isLeftPageInRange(int leftPage) {
     	return 1<=leftPage && leftPage<=399;
     }
-    public static boolean isRightPageInRange(int rightPage) {
+    private static boolean isRightPageInRange(int rightPage) {
     	return 2<=rightPage && rightPage<=400;
     }
     
