@@ -11,6 +11,13 @@ public class Problem4 {
 		return answer;
 	}
 
+	public static char changeValueFromTreeFrogDict(char c) {
+		if (isAlpha(c)) {
+			return getValueFromTreeFrogDict(c);
+		}
+		return c;
+	}
+
 	public static char getValueFromTreeFrogDict(char c) {
 		int key = charToAscii(c);
 		if (Character.isUpperCase(c)) {
