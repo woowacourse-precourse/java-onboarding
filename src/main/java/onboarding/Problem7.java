@@ -27,11 +27,19 @@ public class Problem7 {
         return friendsOfPerson;
     }
 
+    //이미 친구인 목록 제거
+    private static List<String> removeAlreadyFriend(List<String> knowMyFriends) {
+        List<String> strangerList = new ArrayList<>();
+        strangerList.addAll(knowMyFriends);
+        strangerList.removeAll(alreadyFriends);
+        return strangerList;
+    }
+
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
 
-        //점수 부여에 사용 할 함께아는 친구, 방문자 List
+        //점수 계산에 사용할 함께아는 친구, 방문자 List
         List<String> knowMyFriendList = new ArrayList<>();
         List<String> visitorList = new ArrayList<>();
 
@@ -39,16 +47,21 @@ public class Problem7 {
         alreadyFriends.add(user);
         alreadyFriends.addAll(mapFriendsOfPerson(friends, user).get(user));
 
-        //제외 List 사용자들을 friendsOfPerson 추가
+        //결과에 포함되지 않는 사용자들(alreadyFriends)을 friendsOfPerson 추가
         for (String alreadyFriend : alreadyFriends) {
             mapFriendsOfPerson(friends, alreadyFriend);
         }
 
-        //제외 List의 사용자들의 친구들을 합쳐 점수를 부여할 List
+        //alreadyFriends 친구들을 합쳐 점수를 부여할 List
         for (List<String> friendName : friendsOfPerson.values()) {
             knowMyFriendList.addAll(friendName);
         }
 
+        //친구끼리 아는 경우, 본인 등 제외
+        knowMyFriendList.removeAll(alreadyFriends);
+        visitorList.addAll(removeAlreadyFriend(visitors));
+
+        
 
 
 
