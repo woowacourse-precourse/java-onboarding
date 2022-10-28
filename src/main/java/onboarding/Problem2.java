@@ -21,6 +21,15 @@ public class Problem2 {
 
     public static String deleteRecursive(String cryptogram) {
 
+        String decoding = cryptogram;
+
+        if (!isRepeated(decoding))
+            return decoding;
+
+        else {
+            decoding = deleteRepeated(decoding);
+            return solution(decoding);
+        }
     }
 
 }
