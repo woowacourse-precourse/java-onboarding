@@ -15,6 +15,6 @@ public class Problem2 {
         while (!stack.isEmpty()){ // 스택이 텅 빌때까지
             answer.insert(0, stack.pop()); // 스트링 빌더에 스택 값을 넣는다.
         }
-        return answer.toString();
+        return answer.toString(); //문자열로 변환
     }
 }
