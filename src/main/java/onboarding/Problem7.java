@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
         HashMap<String, Integer> map = new HashMap<>(); //사용자 친구추천 후보들
         HashSet<String> set = new HashSet<>(); //사용자와 이미 친구인 사람들
 
@@ -54,7 +54,18 @@ public class Problem7 {
             }
         });
 
-        //위에서부터 6명 잘라서 리스트에 넣기
+        //위에서부터 5명 잘라서 리스트에 넣기
+        for(int i = 0; i < list.size(); i++){
+            if(i == 5){
+                break;
+            }
+            if(list.get(i).getValue() == 0){
+                //점수가 0이면 리스트에 넣지 않음
+                break;
+            }else{
+                answer.add(list.get(i).getKey());
+            }
+        }
 
         return answer;
     }
