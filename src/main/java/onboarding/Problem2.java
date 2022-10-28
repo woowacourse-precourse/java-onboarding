@@ -40,4 +40,15 @@ public class Problem2 {
 
         return List.of(hasRepeatedNum, beginRepeatedNum, endRepeatedNum);
     }
+
+    public static String removeRepeated(String cryptogram, int begin, int end) {
+        String toBeginString = cryptogram.substring(0, begin);
+        String fromEndString;
+        if (end == cryptogram.length())
+            fromEndString = "";
+        else
+            fromEndString = cryptogram.substring(end + 1);
+
+        return toBeginString + fromEndString;
+    }
 }
