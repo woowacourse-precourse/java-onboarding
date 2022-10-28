@@ -19,25 +19,23 @@ public class SNSController {
 
 
     private List<RecommendPoint> generateVisitorRecommendPoint(String userName){
-        List<RecommendPoint> recommendPoints = new LinkedList<>();
         User user = users.get(userName);
         List<String> visitorsName = user.getVisitedUserNames();
-        for(String visitorName : visitorsName){
-            RecommendPoint recommendPoint = new RecommendPoint(visitorName);
-            recommendPoint.addPoints(VISITED_USER_RECOMMEND_POINT);
-            recommendPoints.add(recommendPoint);
-        }
-        return recommendPoints;
+        return generateRecommendPoints(visitorsName, VISITED_USER_RECOMMEND_POINT);
     }
 
     private List<RecommendPoint> generateFriendRecommendPoint(String userName){
+        List<String> friendsFriendNames = findFriendsFriend(userName);
+        return generateRecommendPoints(friendsFriendNames, FRIENDS_FRIEND_RECOMMEND_POINT);
+    }
+
+    private List<RecommendPoint> generateRecommendPoints(List<String> recommendUserNames, int point) {
 
         List<RecommendPoint> recommendPoints = new LinkedList<>();
 
-        List<String> friendsFriendNames = findFriendsFriend(userName);
-        for(String recommendUserName : friendsFriendNames){
+        for(String recommendUserName : recommendUserNames){
             RecommendPoint recommendPoint = new RecommendPoint(recommendUserName);
-            recommendPoint.addPoints(FRIENDS_FRIEND_RECOMMEND_POINT);
+            recommendPoint.addPoints(point);
             recommendPoints.add(recommendPoint);
         }
         return recommendPoints;
