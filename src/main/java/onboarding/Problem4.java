@@ -27,4 +27,16 @@ public class Problem4 {
         }
         return c;
     }
+
+    public static char changeLowerWithFrogDict(char c) {
+        if (c >= 'a' && c <= 'm') {
+            c += 25 - ((c - 97) * 2);
+            return c;
+        }
+        if (c >= 'n' && c <= 'z') {
+            c -= ((c - 110) * 2) + 1;
+            return c;
+        }
+        return c;
+    }
 }
