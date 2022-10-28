@@ -96,3 +96,47 @@ void max()
     assertThat(Problem1.max(Problem1.sum(human),Problem1.mul(human))).isEqualTo(result);
 }
 ~~~
+---
+##4. compare
+###4.1 compare method
+~~~java
+/***
+     * 4. pobi와 crong을 비교해주는 method
+     *
+     * @param pobi  max에서 받은 pobi에서 가장 큰 값
+     * @param crong max에서 받은 crong에서 가장 큰 값
+     * @return 출력 요구사항대로 return 해준다
+     */
+    public static int compare(int pobi, int crong)
+    {
+        int answer = (pobi == crong) ? 0 : (pobi>crong)? 1 : 2;
+        return answer;
+    }
+~~~
+###4.2 compare Test
+~~~java
+@Test
+void compare1()
+{
+    int pobi = 1;
+    int crong = 2;
+    int result = 2;
+    assertThat(Problem1.compare(pobi,crong)).isEqualTo(result);
+}
+@Test
+void compare2()
+{
+    int pobi = 2;
+    int crong = 1;
+    int result = 1;
+    assertThat(Problem1.compare(pobi,crong)).isEqualTo(result);
+}
+@Test
+void compare3()
+{
+    int pobi = 1;
+    int crong = 1;
+    int result = 0;
+    assertThat(Problem1.compare(pobi,crong)).isEqualTo(result);
+}
+~~~

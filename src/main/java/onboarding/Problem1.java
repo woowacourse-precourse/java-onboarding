@@ -53,4 +53,19 @@ class Problem1 {
         int maxAnswer = maxList.stream().max((x, y) -> x - y).orElse(Integer.MIN_VALUE);
         return maxAnswer;
     }
+
+    /***
+     * 4. pobi와 crong을 비교해주는 method
+     *
+     * @param pobi  max에서 받은 pobi에서 가장 큰 값
+     * @param crong max에서 받은 crong에서 가장 큰 값
+     * @return 출력 요구사항대로 return 해준다
+     */
+    public static int compare(int pobi, int crong)
+    {
+        int answer = (pobi == crong) ? 0 : (pobi>crong)? 1 : 2;
+        return answer;
+    }
+
+
 }

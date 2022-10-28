@@ -34,7 +34,30 @@ class ApplicationTest {
             int result = 8;
             assertThat(Problem1.max(Problem1.sum(human),Problem1.mul(human))).isEqualTo(result);
         }
-
+        @Test
+        void compare1()
+        {
+            int pobi = 1;
+            int crong = 2;
+            int result = 2;
+            assertThat(Problem1.compare(pobi,crong)).isEqualTo(result);
+        }
+        @Test
+        void compare2()
+        {
+            int pobi = 2;
+            int crong = 1;
+            int result = 1;
+            assertThat(Problem1.compare(pobi,crong)).isEqualTo(result);
+        }
+        @Test
+        void compare3()
+        {
+            int pobi = 1;
+            int crong = 1;
+            int result = 0;
+            assertThat(Problem1.compare(pobi,crong)).isEqualTo(result);
+        }
         @Test
         void case1() {
             List<Integer> pobi = List.of(97, 98);
