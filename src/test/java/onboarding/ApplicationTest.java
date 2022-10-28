@@ -95,6 +95,12 @@ class ApplicationTest {
             Boolean result=false;
             assertThat(Problem2.duplicate(cryptogram,0)).isEqualTo(result);
         }
+        @Test
+        void case5() {
+            String cryptogram = "ccccccccccc";
+            String result="c";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
     }
 
     @Nested
