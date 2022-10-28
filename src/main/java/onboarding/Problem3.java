@@ -21,6 +21,13 @@ public class Problem3 {
         return digit369 * 10 + digitNormal * 3;
     }
 
+    public static int clapHundred(int number){
+        int digit369 = number / 300;
+        int digitNormal = number / 100 - digit369 + 1;
+
+        return digit369 * 100 + digitNormal * clapTen(99);
+    }
+
     public static int solution(int number) {
         int answer = 0;
         return answer;
