@@ -16,7 +16,7 @@ import java.util.*;
 
 public class Problem7 {
     public static final int commonFriendScore = 10;
-    public static final int visitedTimeLineScore = 10;
+    public static final int visitedTimeLineScore = 1;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         if (!checkLowerCase(user)) {
@@ -32,7 +32,7 @@ public class Problem7 {
         }
         MySns mySns = friendRepository.getUserSns(user);
         for (String visitor : visitors) {
-            mySns.addVisited(visitor);
+            friendRepository.addVisitor(user, visitor);
         }
 
         return friendRepository.getFriendRecommendation(user);
@@ -84,6 +84,15 @@ public class Problem7 {
             return world.getOrDefault(name, new MySns());
         }
 
+        private void addVisitor(String user, String visitor) {
+            Set<String> allUsers = getAllUsers();
+            MySns userSns = getUserSns(user);
+            userSns.addVisited(visitor);
+            if (!allUsers.contains(visitor)) {
+                world.put(visitor, new MySns());
+            }
+        }
+
         private void addRelationship(String name1, String name2) {
             MySns name1Sns = getUserSns(name1);
             MySns name2Sns = getUserSns(name2);
@@ -96,13 +105,18 @@ public class Problem7 {
         private List<String> getFriendRecommendation(String user) {
             Map<String, Integer> result = new HashMap<>();
             Set<String> allUsers = getAllUsers();
+            System.out.println("allUsers = " + allUsers);
             MySns userSns = getUserSns(user);
             HashSet<String> myFriends = userSns.getMyFriends();
+            System.out.println("myFriends = " + myFriends);
             Set<String> notMyFriends = getNotMyFriends(myFriends, allUsers);
+            notMyFriends.remove(user);
+            System.out.println("notMyFriends = " + notMyFriends);
             for (String other : notMyFriends) {
                 int score = getScore(user, other);
                 result.put(other, score);
             }
+            System.out.println("result = " + result);
             return getSortedRecommend(result);
         }
 
@@ -133,6 +147,7 @@ public class Problem7 {
             Set<String> otherFriends = getUserSns(other).getMyFriends();
             int overlapped = countOverlap(userFriends, otherFriends);
             int visited = countVisited(user, other);
+            System.out.println(user + " overLapped : " + overlapped +" visited : "+visited);
             return overlapped * commonFriendScore + visited * visitedTimeLineScore;
         }
 
