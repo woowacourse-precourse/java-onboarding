@@ -17,6 +17,9 @@ public class Problem7 {
      * 6. 이미 친구인 사이 삭제
      */
 
+    // friends와 visitors의 친구 목록 정리
+    static HashMap<String, Integer> friendList = new HashMap<>();
+
     /**
      * 1. user의 친구목록
      * @param user : user 아이디
@@ -36,6 +39,29 @@ public class Problem7 {
         }
 
         return userFriends;
+    }
+
+    /**
+     * 2. friends와 visitors에 있는 친구 정리
+     * @param user : user 아이디
+     * @param friends : 친구 관계
+     * @param visitors : 방문자
+     */
+    static void makeFriendList(String user, List<List<String>> friends, List<String> visitors){
+
+        for (List<String> friend : friends) {
+            String id1 = friend.get(0);
+            String id2 = friend.get(1);
+
+            // user 아이디가 아니면서 friendList에 없는 경우 친구 목록에 추가
+            if (!id1.equals(user)) friendList.put(id1, 0);
+            if (!id2.equals(user)) friendList.put(id2, 0);
+        }
+
+        // 방문자 친구 목록에 추가
+        for (String visitor : visitors) {
+            friendList.put(visitor, 0);
+        }
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
