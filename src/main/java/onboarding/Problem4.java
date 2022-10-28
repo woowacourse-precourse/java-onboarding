@@ -17,14 +17,20 @@ public class Problem4 {
 
 
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        return transferWordToOpposite(word);
+    }
+
+    private static String transferWordToOpposite(String word){
+        StringBuilder wordBuilder = new StringBuilder();
+        for(int i=0; i<word.length(); i++){
+            wordBuilder.append(addNext(word.charAt(i)));
+        }
+        return wordBuilder.toString();
     }
 
     private static char addNext(char nextCharacter){
         if(isUppercase(nextCharacter)) return flipUpperCase(nextCharacter);
         if(isLowercase(nextCharacter)) return flipLowerCase(nextCharacter);
-
         return nextCharacter;
     }
 
