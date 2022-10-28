@@ -9,6 +9,7 @@ public class Problem3 {
     private static int count = 0;
 
     public static int solution(int number) {
+        initGame();
         IntStream.range(1, number + 1).forEach(Problem3::checkNumberInRange);
         return count;
     }
@@ -21,5 +22,9 @@ public class Problem3 {
 
             number /= 10;
         }
+    }
+
+    private static void initGame() {
+        count = 0;
     }
 }
