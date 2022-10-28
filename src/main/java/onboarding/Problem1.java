@@ -29,6 +29,11 @@ class Problem1 {
         return Math.max(getMaxScoreOnEachPage(leftPage), getMaxScoreOnEachPage(rightPage));
     }
 
+    private static int getMaxScoreOnEachPage(int page) {
+
+        return Math.max(getScoreBySumAllDigits(page), getScoreByMulAllDigits(page));
+    }
+
     /**
      * 1. 책을 임의로 펼친다.
      * 2. 왼쪽 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구한다.
