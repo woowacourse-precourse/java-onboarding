@@ -29,7 +29,9 @@ class Problem1 {
             answer = -1;
             return answer;
         }
-        
+
+        int pobiScore = maxVal(pobi);
+        int crongScore = maxVal(crong);
         
 
         return answer;
