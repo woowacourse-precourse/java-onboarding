@@ -16,7 +16,7 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
-        // 예외 사항 체크. boolean isException(List<Integer> pages)
+        // 예외 사항 체크. boolean isVaild(List<Integer> pages)
 
         // pobi의 점수 구하기. int getScore(List<Integer> pages)
         // crong의 점수 구하기. int getScore(List<Integer> pages)
@@ -52,9 +52,14 @@ class Problem1 {
     private static List<Integer> pageNumToList(int pageNum);
 
     /*
-    매개변수로 받은 List<Integer>의 예외를 체크하는 메서드
-    예외 존재 시 true, 존재하지 않을 시 false
+    매개변수로 받은 List<Integer>가 유효한지 체크하는 메서드
+    유효할 시 true, 유효하지 않을 시 false
      */
-    private static boolean isException(List<Integer> pages);
+    private static boolean isVaild(List<Integer> pages) {
+        leftPage = pages.get(0);
+        rightPage = pages.get(1);
+            // 왼쪽 페이지가 홀수이고, 오른페이지가 짝수이고, 페이지 수가 2이고, 첫 장(1, 2)이나 마지막 장(399, 400)이 아니면 true
+        return leftPage % 2 == 1 && rightPage % 2 == 0 && pages.size() == 2 && leftPage != 1 && rightPage != 400;
+    }
 
 }
