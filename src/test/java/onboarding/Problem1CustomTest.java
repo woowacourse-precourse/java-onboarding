@@ -21,6 +21,8 @@ public class Problem1CustomTest {
     private final static int USER_INPUT_LENGTH = 2;
     private final static int BOOK_MIN = 1;
     private final static int BOOK_MAX = 400;
+
+
     @Nested
     class Problem1Test {
         @Test

@@ -5,6 +5,14 @@ import java.util.List;
 import static java.lang.Math.*;
 
 public class Problem1Validation {
+    public static boolean problem1InputValidation(List<Integer> list, int userInputLength, int bookMin, int bookMax) {
+        return userInputSizeEquals(list, userInputLength)
+                && isBookNumberBetweenMinAndMax(list, bookMin, bookMax)
+                && isBookNumberContinuous(list)
+                && isBookNumberOddEvenPair(list)
+                &&isFirstAddOneEqualsSecondValue(list);
+    }
+
     public static boolean userInputSizeEquals(List<Integer> userInput, int listSize) {
         if (userInput.size() == 2) {
             return true;
@@ -51,13 +59,5 @@ public class Problem1Validation {
         } else {
             return false;
         }
-    }
-
-    public static boolean problem1InputValidation(List<Integer> list, int userInputLength, int bookMin, int bookMax) {
-        return userInputSizeEquals(list, userInputLength)
-                && isBookNumberBetweenMinAndMax(list, bookMin, bookMax)
-                && isBookNumberContinuous(list)
-                && isBookNumberOddEvenPair(list)
-                &&isFirstAddOneEqualsSecondValue(list);
     }
 }
