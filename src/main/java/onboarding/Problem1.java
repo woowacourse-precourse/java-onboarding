@@ -49,4 +49,20 @@ class Problem1 {
 
         return pageIngredient.stream().reduce(1, (a, b) -> a * b);
     }
+
+    static int getSomeoneScore(List<Integer> person) {
+
+        int someoneScore = Integer.MIN_VALUE;
+
+        for (Integer page : person) {
+            List<Integer> separatedPageNum = getPageIngredients(page);
+
+            int sum = sumPageIngredient(separatedPageNum);
+            int multiply = multiplyPageIngredient(separatedPageNum);
+
+            someoneScore = Math.max(sum, multiply);
+        }
+
+        return someoneScore;
+    }
 }

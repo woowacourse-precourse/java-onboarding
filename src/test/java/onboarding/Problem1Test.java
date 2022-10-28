@@ -131,4 +131,19 @@ class Problem1Test {
         assertThat(crongFirstPageIngredientMultiply).isEqualTo(63);
         assertThat(crongSecondPageIngredientMultiply).isEqualTo(72);
     }
+
+    @Test
+    public void getSomeoneScoreTest() {
+        //given
+        List<Integer> pobi = List.of(97, 98);
+        List<Integer> crong = List.of(197, 198);
+
+        //when
+        int pobiScore = getSomeoneScore(pobi);
+        int crongScore = getSomeoneScore(crong);
+
+        //then
+        assertThat(pobiScore).isEqualTo(72);
+        assertThat(crongScore).isEqualTo(72);
+    }
 }
