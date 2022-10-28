@@ -39,4 +39,11 @@ public class DuplicateAccountEmails {
         return twoLetterNameUsers.stream()
                 .collect(Collectors.toMap(User::getUserName, User::getUserEmail, (firstUserEmail, secondUserEmail) -> firstUserEmail));
     }
+    
+    public List<String> duplicateAccountEmails() {
+        return duplicateAccountEmails.stream()
+                .map(UserEmail::getUserEmail)
+                .sorted()
+                .collect(Collectors.toList());
+    }
 }

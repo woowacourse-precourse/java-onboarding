@@ -631,6 +631,22 @@ class ApplicationTest {
             List<String> result = List.of("ad@email.com", "bfff@email.com", "cee@email.com", "dbb@email.com", "ec@email.com", "fg@email.com", "ga@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
+    
+        @Test
+        void case6() {
+            List<List<String>> forms = List.of(
+                    List.of("ga@email.com", "제이제이"),
+                    List.of("dbb@email.com", "이제이제"),
+                    List.of("ec@email.com", "제이"),
+                    List.of("ad@email.com", "이제"),
+                    List.of("cee@email.com", "제이야"),
+                    List.of("bfff@email.com", "아제이"),
+                    List.of("fg@email.com", "이야"),
+                    List.of("adg@email.com", "이")
+            );
+            List<String> result = List.of("ad@email.com", "bfff@email.com", "cee@email.com", "dbb@email.com", "ec@email.com", "fg@email.com", "ga@email.com");
+            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
     }
     
     @Nested
@@ -756,6 +772,22 @@ class ApplicationTest {
         void case8() {
             String user = "mrko";
             List<List<String>> friends = List.of(
+                    List.of("donut", "andole"),
+                    List.of("donut", "jun"),
+                    List.of("donut", "mrko"),
+                    List.of("shakevan", "andole"),
+                    List.of("shakevan", "jun"),
+                    List.of("shakevan", "donut")
+            );
+            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+            List<String> result = List.of("shakevan", "andole", "jun", "bedi");
+            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+        }
+    
+        @Test
+        void case9() {
+            String user = "mrko";
+            List<List<String>> friends = List.of(
                     List.of("shakevan", "mrko")
             );
             List<String> visitors = List.of("jun");
@@ -764,7 +796,7 @@ class ApplicationTest {
         }
     
         @Test
-        void case9() {
+        void case10() {
             String user = "mrko";
             List<List<String>> friends = List.of(
                     List.of("shakevan", "mrko"),

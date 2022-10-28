@@ -33,4 +33,8 @@ public class Manager {
     public void saveDuplicateAccounts() {
         users.saveDuplicateAccounts(duplicateAccountEmails);
     }
+    
+    public List<String> duplicateAccountEmails() {
+        return duplicateAccountEmails.duplicateAccountEmails();
+    }
 }
