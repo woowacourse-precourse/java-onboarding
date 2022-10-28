@@ -13,4 +13,10 @@ public class Problem3 {
         return sum;
     }
 
+    private static int isClap(char c){
+        if(c=='3'||c=='6'||c=='9'){
+            return 1;
+        }
+        return 0;
+    }
 }
