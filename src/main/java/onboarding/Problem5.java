@@ -7,6 +7,11 @@ import java.util.List;
 public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
+        // 1. List 0 으로 초기화
+        answer = initList(answer);
+        // 2. 돈 출금
+        answer = moneyChange(money, answer);
+        // 3. 결과 리턴
         return answer;
     }
 
