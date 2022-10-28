@@ -23,6 +23,19 @@ public class Problem2 {
         }
         return cnt;
     }
+
+    public static void continuityToZero(int start, int end) {
+        for (int i = start; i <= end; i++) {
+            cryptogramArray[i] = '0';
+        }
+    }
+    public static void charArrayToString() {
+        for (int i=0; i<cryptogramArray.length; i++) {
+            if (cryptogramArray[i]!='0') {
+                answer = answer + cryptogramArray[i];
+            }
+        }
+
     public static String solution(String cryptogram) {
     String answer="";
     return answer;

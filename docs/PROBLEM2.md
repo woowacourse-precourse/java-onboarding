@@ -25,3 +25,4 @@
 ### 기능 목록
 - continuityToZero 메소드 : 시작 인덱스와 끝 인덱스를 입력받아 cryptogramArray의 해당 인덱스 문자를 0으로 바꾼다.
 - howManyZero 메소드 : 시작 인덱스와 세는 방향을 입력받아 cryptogramArray의 연속된 0이 몇 개인지 반환한다.
+- -concatToAnswer 메소드 : cryptogramArray의 문자를 0을 제외하고 answer에 추가한다.
