@@ -8,12 +8,65 @@ public class Problem7 {
     private static int forID = 0;
     private static int FRIEND_WEIGHT = 10;
     private static int VISITOR_WEIGHT = 1;
-
+    private static int MAX_RECOMMEND = 5;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = getSolution(user, friends, visitors);
         return answer;
     }
-    
+    public static List<String> getSolution(String user, List<List<String>> friends, List<String> visitors) {
+        List<String> distinctFriends = getDistinctFriends(friends);
+        List<String> distinctVisitors = getDistinctVisitors(visitors);
+        setDistinctID(distinctFriends, distinctVisitors);
+        List<String> myFriends = getFriendsList(friends, user);
+
+        initializeWeight();
+        for (int i = 0; i < myFriends.size(); i++) {
+            List<String> acquaintance = getFriendsList(friends, myFriends.get(i));
+            addWeight(acquaintance, FRIEND_WEIGHT);
+        }
+        addWeight(visitors, VISITOR_WEIGHT);
+        List<String> recommendedList = recommendedList(user);
+        List<String> friendList = getFriendsList(friends, user);
+        for (int i = 0; i < recommendedList.size(); i++) {
+            String person = recommendedList.get(i);
+            if (friendList.contains(person)) {
+                recommendedList.remove(person);
+            }
+        }
+        return recommendedList;
+    }
+    public static List<String> recommendedList(String user) {
+        int myID = uniqueIDs.get(user); // 결과에서 본인은 제외
+        List<Integer> IDList = new ArrayList<>(weight.values());
+        List<Map.Entry<Integer, Integer>> entryList = new LinkedList<>(weight.entrySet());
+        entryList.sort(Map.Entry.comparingByValue());
+        List<String> resultList = new ArrayList<>();
+        int count = 0;
+        for (int i = entryList.size() - 1; i >= 0; i--) {
+            if (entryList.get(i).getKey() == myID) {
+                count++;
+                continue;
+            }
+            if (count >= MAX_RECOMMEND) {
+                break;
+            }
+            if (entryList.get(i).getValue() != 0) {
+                String name = getKeyFromValue(entryList.get(i).getKey());
+                resultList.add(name);
+            }
+            count++;
+        }
+        return resultList;
+    }
+    public static String getKeyFromValue(int value) {
+        String result = "";
+        for (String key :  uniqueIDs.keySet()) {
+            if (value == uniqueIDs.get(key)) {
+                result = key;
+            }
+        }
+        return result;
+    }
     public static void initializeWeight() {
         for (int i = 0; i < uniqueIDs.size(); i++) {
             weight.put(i, 0);
