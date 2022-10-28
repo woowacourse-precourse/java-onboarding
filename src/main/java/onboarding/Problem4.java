@@ -12,6 +12,7 @@ public class Problem4 {
         StringBuilder sb = new StringBuilder();
         for(int i=0; i<word.length(); i++) {
             isUpperCase(word.charAt(i));
+            sb.append(toString(charDto));
         }
 
         return sb.toString();
@@ -26,8 +27,8 @@ public class Problem4 {
         }
     }
 
-    private static String toString(char character, char lastChar, char firstChar) {
-        return String.valueOf((char) lastChar - character + firstChar);
+    private static String toString(CharDto charDto) {
+        return String.valueOf((char) (charDto.lastChar - charDto.nowChar + charDto.firstChar));
     }
 
     private static class CharDto {
