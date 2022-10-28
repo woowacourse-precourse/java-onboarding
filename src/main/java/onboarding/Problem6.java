@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -58,7 +59,7 @@ class Crew {
         if (!email.contains("@") || email.length() < 11 || email.length() >= 20) {
             throw new IllegalArgumentException("이메일 형식에 부합하지 않습니다.");
         }
-        if (email.split("@", 1)[1].equals("email.com")) {
+        if (!email.split("@", 2)[1].equals("email.com")) {
             throw new IllegalArgumentException("이메일의 도메인이 email.com가 아닙니다.");
         }
         return email;
@@ -80,7 +81,7 @@ class Crew {
 
     public boolean checkOverlap(String otherNickname) {
         return IntStream.range(0, otherNickname.length() - 1)
-                .anyMatch(x -> nickname.contains(otherNickname.substring(x, x + 3)));
+                .anyMatch(x -> nickname.contains(otherNickname.substring(x, x + 2)));
     }
 
     public String getEmail() {
