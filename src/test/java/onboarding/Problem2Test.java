@@ -86,4 +86,17 @@ class Problem2Test {
         assertThat(duplicatedCharIndexReverseOrder4).containsExactly(5, 4);
         assertThat(duplicatedCharIndexReverseOrder5).isEmpty();
     }
+
+    @Test
+    public void listToStringTest() {
+        //given
+        String cryptogram = "browoanoommnaon";
+        List<String> cryptogramIngredients = Problem2.getCryptogramIngredients(cryptogram);
+
+        //when
+        String result = Problem2.listToString(cryptogramIngredients);
+
+        //then
+        assertThat(result).isEqualTo(cryptogram);
+    }
 }

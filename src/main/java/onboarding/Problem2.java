@@ -60,4 +60,13 @@ public class Problem2 {
 
         return duplicatedCharIndexReverseOrder;
     }
+
+    static String listToString(List<String> list) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (String s : list) {
+            stringBuilder.append(s);
+        }
+
+        return stringBuilder.toString();
+    }
 }
