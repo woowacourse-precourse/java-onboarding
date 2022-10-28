@@ -28,6 +28,10 @@ class Problem1 {
     }
 
     public static boolean isValidPages(List<Integer> pages) {
+        int page1 = pages.get(0), page2 = pages.get(1);
+        if(page1 < 1 || page1 > 400) return false;
+        if(page2 < 1 || page2 > 400) return false;
+        if(page1+1 != page2) return false;
         return true;
     }
 
