@@ -8,6 +8,7 @@ public class Problem2 {
 
         Stack<Character> stack = checkDuplicate(cryptogram);
         Object[] toArray = stackToArray(stack);
+        answer = getAnswer(toArray);
         return answer;
     }
 
@@ -29,6 +30,14 @@ public class Problem2 {
             }
         }
         return stack;
+    }
+
+    private static String getAnswer(Object[] toArray) {
+        String sumLetter = "";
+        for (Object o : toArray) {
+            sumLetter += o;
+        }
+        return sumLetter;
     }
 
     private static Object[] stackToArray(Stack<Character> stack) {
