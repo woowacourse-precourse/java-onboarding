@@ -12,6 +12,13 @@ class Problem1 {
         pobiNum = findMaxNum(pobi);
         crongNum = findMaxNum(crong);
 
+        if(pobiNum == crongNum){
+            answer = 0;
+        } else if( pobiNum > crongNum) {
+            answer = 1;
+        } else {
+            answer = -1;
+        }
 
 
         return answer;
