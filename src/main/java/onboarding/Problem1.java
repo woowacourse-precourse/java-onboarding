@@ -76,4 +76,15 @@ class Problem1 {
 
         return Math.max(totalAdd, totalMultiply);
     }
+
+    /**
+     * 본인의 점수 계산
+     * @param pages
+     * @return 본인의 점수
+     */
+    private static int getScore(List<Integer> pages) {
+        final int leftPage = getLargestNum(pages.get(0));
+        final int rightPage = getLargestNum(pages.get(1));
+        return Math.max(leftPage, rightPage);
+    }
 }
