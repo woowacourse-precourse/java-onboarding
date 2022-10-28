@@ -66,9 +66,14 @@ public class Problem7 {
         // Value 값으로 오름차순 정렬
         keySet.sort((o1, o2) -> map_points.get(o2).compareTo(map_points.get(o1)));
         for (String str : keySet) {
-            if (map_points.get(str) != 0) {
-                answer.add(str);
-            }
+            addAnswer(answer, str);
+        }
+    }
+
+    // 점수가 0점인 사용자를 제외하고 정렬한 순서에 따라 정답에 넣어주는 메서드
+    private static void addAnswer(List<String> answer, String str) {
+        if (map_points.get(str) != 0) {
+            answer.add(str);
         }
     }
 
