@@ -257,6 +257,24 @@ class ApplicationTest {
             String result = "$zEv ¥0F";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
+
+        @Test
+        @DisplayName("길이가 1,000을 초과하는 문자열이 들어오면 예외가 발생한다.")
+        void case3() {
+            String word = "VALIDWORDS".repeat(101);
+            assertThatThrownBy(() -> Problem4.solution(word))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("문자열의 길이는 %d 이상 %d 이하여야 합니다.", 1, 1000);
+        }
+
+        @Test
+        @DisplayName("길이가 1 미만인 문자열이 들어오면 예외가 발생한다.")
+        void case4() {
+            String word = "";
+            assertThatThrownBy(() -> Problem4.solution(word))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("문자열의 길이는 %d 이상 %d 이하여야 합니다.", 1, 1000);
+        }
     }
 
     @Nested
