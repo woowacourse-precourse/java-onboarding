@@ -21,7 +21,6 @@ public class Friend implements Comparable<Friend> {
         return score;
     }
 
-
     @Override
     public int compareTo(Friend friend) {
         if (this.getScore().equals(friend.getScore())) {

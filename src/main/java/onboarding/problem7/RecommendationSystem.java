@@ -23,8 +23,10 @@ public class RecommendationSystem {
                 .mapToFriendList(getTotalScore(user, friends, visitors));
 
         return friendList.stream()
+                .filter(friend -> !friend.getScore().equals(0))
                 .sorted()
                 .map(Friend::getName)
+                .limit(5)
                 .collect(Collectors.toList());
     }
 
