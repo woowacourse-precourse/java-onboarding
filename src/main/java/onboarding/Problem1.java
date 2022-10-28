@@ -46,6 +46,24 @@ class Problem1 {
         return list;
     }
 
+    /**
+     * 자릿수의 계산 중 큰 수를 구하는 메서드
+     *
+     * @param digitNumList 각 자릿수의 수가 들어있는 List
+     * @return 각 자리수의 덧셈과 곱셈중 큰 수를 리턴
+     */
+    static int calcLargestNum(List<Integer> digitNumList) {
+        int sum = 0;
+        int mul = 1;
+
+        for (int i = 0; i < digitNumList.size(); i++) {
+            sum += digitNumList.get(i);
+            mul *= digitNumList.get(i);
+        }
+
+        return sum > mul ? sum : mul;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
