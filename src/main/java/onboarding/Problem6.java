@@ -1,6 +1,7 @@
 package onboarding;
 
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -17,11 +18,18 @@ public class Problem6 {
     static final String KOREAN_REGEX = "^[가-힇]$";
     static final String EMAIL_REGEX = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@(?:\\w+\\.)+\\w+$";
     static final String EMAIL_DOMAIN = "email.com";
+    static final List<String> EXCEPTION = Collections.emptyList();
 
-    static final HashMap<String, String> hm = new HashMap<>();
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = Collections.emptyList();
         return answer;
+    }
+    public static List<String> getSolution(List<List<String>> forms) {
+        if (validationCheck(forms)) {
+
+        }
+        return EXCEPTION;
     }
     public static boolean validationCheck(List<List<String>> forms) {
         if (inputValidation(forms) && contentValidation(forms)) {
@@ -75,5 +83,10 @@ public class Problem6 {
             repository.add(name.substring(j, j+2));
         }
     }
-
+    public static boolean appearMoreThanTwice(List<String> repository, String lexim) {
+        if (Collections.frequency(repository, lexim) >= 2) {
+            return true;
+        }
+        return false;
+    }
 }
