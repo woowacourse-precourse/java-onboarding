@@ -21,11 +21,29 @@ public class Problem7 {
         visitors는 길이가 0이상 10000이하인 리스트/배열이다
          */
 
+        HashSet<String> users = makeUsers(user, friends, visitors);
+
+
 
         List<String> answer = new ArrayList<>();
 
         return answer;
     }
+    private static HashSet<String> makeUsers(String user, List<List<String>> friends, List<String> visitors) {
+        HashSet<String> users = new HashSet<>();
+        //문제에서 제시한 모든 사용자들 묶어주기
+        users.add(user);
+        for (int i = 0; i < friends.size(); i++) {
+            for (int j = 0; j < 2; j++) {
+                users.add(friends.get(i).get(j));
+            }
+        }
+        for (int i = 0; i < visitors.size(); i++) {
+            users.add(visitors.get(i));
+        }
+        return users;
+    }
+
     
 
 }
