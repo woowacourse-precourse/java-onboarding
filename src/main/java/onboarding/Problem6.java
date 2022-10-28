@@ -1,10 +1,15 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
 
+        List<String> selectedList = new ArrayList<String>();
 
         for (int i = 0; i < forms.size(); i++) {
 
@@ -16,16 +21,26 @@ public class Problem6 {
                     List ElementByOneDimension = forms.get(j);
 
                     String setName = (String) ElementByTwoDimension.get(1);
+                    String setEmail = (String) ElementByTwoDimension.get(0);
                     String compareName = (String) ElementByOneDimension.get(1);
 
+
                     if (checkConsecutiveCharacter(setName, compareName) == true) {
-                        System.out.println(setName);
+                        System.out.println(setEmail);
+                        selectedList.add(setEmail);
                     }
                 }
             }
         }
 
-        List<String> answer = List.of("answer");
+        List<String> answer = removeDuplication(selectedList);
+
+        return answer;
+    }
+
+    private static List<String> removeDuplication(List<String> selectedList) {
+        List<String> answer = new ArrayList<String>();
+        answer = selectedList.stream().distinct().collect(Collectors.toList());
         return answer;
     }
 
