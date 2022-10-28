@@ -28,4 +28,31 @@ public class Problem6 {
         List<String> answer = List.of("answer");
         return answer;
     }
+    private static HashMap<String, ? extends List<String>> getHash(List<List<String>> forms) {
+        HashMap<String, ArrayList<String>> map = new HashMap<>();
+        for(List<String> form : forms) {
+            String nickName = form.get(1);
+            String email = form.get(0);
+
+            if(nickName.length() < 2) {
+                ArrayList<String> emails = map.getOrDefault(nickName, new ArrayList<>());
+                emails.add(email);
+                map.put(nickName, emails);
+                continue;
+            }
+
+            for(int i = 1; i < nickName.length(); i++) {
+                StringBuilder stringBuilder = new StringBuilder();
+                stringBuilder.append(nickName.charAt(i - 1));
+                stringBuilder.append(nickName.charAt(i));
+
+                String key = stringBuilder.toString();
+
+                ArrayList<String> emails = map.getOrDefault(key, new ArrayList<>());
+                emails.add(email);
+                map.put(key, emails);
+            }
+        }
+        return map;
+    }
 }
