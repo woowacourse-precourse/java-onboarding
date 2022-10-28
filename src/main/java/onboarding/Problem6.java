@@ -10,6 +10,28 @@ public class Problem6 {
         return checkDuplicate(forms, answer);
     }
 
+    // 두 글자 이상의 문자가 중복된 닉네임이 존재하는지 검사하는 기능
+    public static List<String> checkDuplicate (List<List<String>> forms, List<String> answer) {
+        String otherNicknames = "";
+        List<String> nicknames = new ArrayList<>();
+
+        for (List<String> form : forms) {
+            nicknames.add(form.get(1));
+        }
+
+        for (int i = 0; i < nicknames.size(); i++){
+            otherNicknames = nicknamesToString(nicknames, i);
+            for (String twoUnit : twoUnits(nicknames.get(i))) {
+                if (otherNicknames.contains(twoUnit)) {
+                    answer.add(forms.get(i).get(0));
+                    break;
+                }
+            }
+        }
+        Collections.sort(answer);
+        return answer;
+    }
+
     // 닉네임을 2문자 단위로 쪼개는 기능
     public static List<String> twoUnits (String nickname) {
         List<String> twoUnitList = new ArrayList<>();
