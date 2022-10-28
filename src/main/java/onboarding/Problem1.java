@@ -36,6 +36,7 @@ class Problem1 {
         }else{
             answer = -1;
         }
+        System.out.println("hello");
         return answer;
     }
 
