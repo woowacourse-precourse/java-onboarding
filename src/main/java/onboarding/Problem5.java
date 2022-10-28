@@ -3,12 +3,17 @@ package onboarding;
 import java.util.*;
 
 public class Problem5 {
-    public static List<Integer> solution(int money) {
+
+    private static int withdrawMoney;
+    private static Map<Integer, Integer> moneyMap;
+
+    public static List<Integer> solution(int inputWithdrawMoney) {
+        withdrawMoney = inputWithdrawMoney;
         List<Integer> answer = Collections.emptyList();
         return answer;
     }
 
-    public static Map<Integer, Integer> initMoneyMap(Map<Integer, Integer> moneyMap) {
+    public static Map<Integer, Integer> initMoneyMap() {
         moneyMap.put(50000, 0);
         moneyMap.put(10000, 0);
         moneyMap.put(5000, 0);
@@ -21,8 +26,7 @@ public class Problem5 {
         return moneyMap;
     }
 
-    public static void inputMoney(Map<Integer, Integer> moneyMap, int moneyUnit, int numberOfMoney) {
+    public static void inputMoney(int moneyUnit, int numberOfMoney) {
         moneyMap.put(moneyUnit, numberOfMoney);
     }
-
 }
