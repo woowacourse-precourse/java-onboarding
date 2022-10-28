@@ -78,5 +78,33 @@ public class Problem1CustomTest {
                     Problem1Validation.isBookNumberContinuous(list))
                     .isTrue();
         }
+        @Test
+        void 리스트의쌍이홀수홀수쌍인경우() {
+            List<Integer> list = List.of(39, 41);
+            assertThat(
+                    Problem1Validation.isBookNumberOddEvenPair(list))
+                    .isFalse();
+        }
+        @Test
+        void 리스트의쌍이짝수짝수쌍인경우() {
+            List<Integer> list = List.of(38, 40);
+            assertThat(
+                    Problem1Validation.isBookNumberOddEvenPair(list))
+                    .isFalse();
+        }
+        @Test
+        void 리스트의쌍이짝수홀수쌍인경우() {
+            List<Integer> list = List.of(38, 39);
+            assertThat(
+                    Problem1Validation.isBookNumberOddEvenPair(list))
+                    .isFalse();
+        }
+        @Test
+        void 리스트의쌍이홀수짝수쌍인경우() {
+            List<Integer> list = List.of(39, 40);
+            assertThat(
+                    Problem1Validation.isBookNumberOddEvenPair(list))
+                    .isTrue();
+        }
     }
 }

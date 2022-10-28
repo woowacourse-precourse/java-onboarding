@@ -36,4 +36,8 @@ public class Problem1Validation {
             return false;
         }
     }
+
+    public static boolean isBookNumberOddEvenPair(List<Integer> list) {
+        return false;
+    }
 }
