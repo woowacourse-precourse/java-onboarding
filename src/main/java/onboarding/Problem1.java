@@ -57,7 +57,10 @@ class Problem1 {
     }
 
     private static boolean verifyContinuePage(int leftPage, int rightPage) {
-        return false;
+        if (rightPage - leftPage != 1) {
+            return false;
+        }
+        return true;
     }
 
     private static boolean verifyEdgePage(int leftPage, int rightPage) {
