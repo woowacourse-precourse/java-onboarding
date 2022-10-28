@@ -25,10 +25,19 @@ class Problem1 {
         int pobiScore = getScore(pobi);
         int crongScore = getScore(crong);
         // pobi와 crong의 점수 비교
-        if (pobiScore > crongScore) {
+        answer = compareScore(pobiScore, crongScore);
+        return answer;
+    }
+
+    /*
+    두 게임 참여자의 점수를 비교하는 메서드
+     */
+    private static compareScore(int score1, int score2) {
+        int answer = Integer.MAX_VALUE;
+        if (score > score) {
             answer = 1;
-        } else if (pobiScore < crongScore) {
-            answer = 1;
+        } else if (score < score) {
+            answer = 2;
         } else {
             answer = 0;
         }
