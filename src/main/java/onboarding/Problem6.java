@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.List;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Problem6 {
@@ -45,5 +46,10 @@ class Crew{
                     if(Character.getType(x)!=5)
                         throw new IllegalArgumentException("닉네임은 모두 한글로 이루어져야합니다.");
                 });
+    }
+
+    public boolean checkOverlap(String otherNickname){
+        return IntStream.range(0, otherNickname.length()-1)
+                .anyMatch(x -> nickname.contains(otherNickname.substring(x, x + 3)));
     }
 }
