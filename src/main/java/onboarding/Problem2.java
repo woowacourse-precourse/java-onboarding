@@ -44,7 +44,12 @@ public class Problem2 {
     }
 
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        while (true) {
+            Duplication dupl = hasDuplStr(cryptogram);
+            if (!dupl.isDupl)
+                break;
+            cryptogram = deleteDupl(cryptogram, dupl.startPos, dupl.endPos);
+        }
+        return cryptogram;
     }
 }
