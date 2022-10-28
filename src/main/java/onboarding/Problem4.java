@@ -23,6 +23,7 @@ public class Problem4 {
             }
             StringBuilderWord.append(frogWord);
         }
+        answer = StringBuilderWord.toString();
         return answer;
     }
 }
