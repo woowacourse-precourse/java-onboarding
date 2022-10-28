@@ -20,7 +20,7 @@ public class Problem3 {
 			if (curNum != 0 && curNum % THREE == 0) {
 				cnt++;
 			}
-			num /= 10;
+			num /= MOD;
 		}
 		return cnt;
 	}
