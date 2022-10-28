@@ -28,7 +28,7 @@ class MoneyCounter {
     }
 
     public List<Integer> getList() {
-        return List.of();
+        return List.of(fiveM(), oneM(), fiveT(), oneT(), fiveH(), oneH(), fifty(), ten(), money);
     }
 
     private int fiveM(){
