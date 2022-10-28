@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -14,7 +15,8 @@ public class Problem6 {
     for (List<String> form : forms) {
       parsingForms.add(Converter.convert(form));
     }
-    return new ArrayList<String>();
+    Map<String, Set<Integer>> indexMap = Factory.generateDuplicationIndexMap(parsingForms);
+    return Result.generateResult(indexMap, forms);
   }
 
   static class Converter {
@@ -31,7 +33,7 @@ public class Problem6 {
     }
   }
 
-  static class Factory 
+  static class Factory {
 
     public static Map<String, Set<Integer>> generateDuplicationIndexMap(
         List<List<String>> parsingForms) {
@@ -51,5 +53,30 @@ public class Problem6 {
       }
     }
 
+  }
+
+  static class Result {
+
+    public static List<String> generateResult(Map<String, Set<Integer>> indexMap,
+        List<List<String>> forms) {
+      Set<String> resultSet = new HashSet<>();
+      for (String key : indexMap.keySet()) {
+        Set<Integer> indexes = indexMap.get(key);
+        addEmail(resultSet, indexes, forms);
+      }
+      List<String> result = new ArrayList<>(resultSet);
+      Collections.sort(result);
+      return result;
+    }
+
+    private static void addEmail(Set<String> result, Set<Integer> indexes,
+        List<List<String>> forms) {
+      if (indexes.size() <= 1) {
+        return;
+      }
+      for (Integer index : indexes) {
+        result.add(forms.get(index).get(0));
+      }
+    }
   }
 }
