@@ -5,14 +5,17 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-        if (check(pobi) && check(crong)) {
-
+        if (Check(pobi) && Check(crong)) {
+            int PobiMax = MaxPage(pobi);
+            int CrongMax = MaxPage(crong);
+            return RunGame(PobiMax, CrongMax);
         }
         return -1;
-
     }
+
+
     /* 기능1 : input 확인 */
-    private static boolean check(List<Integer> list) {
+    private static boolean Check(List<Integer> list) {
         if (isCountTwo(list) && isLeftOdd(list) && isRightEven(list) && isConsecutive(list) && isInBook(list)) return true;
         return false;
     }
@@ -63,6 +66,7 @@ class Problem1 {
         return multi;
     }
 
+
     /* 기능4 : 가장 큰 수를 구하는 기능 */
     private static int MaxPage(List<Integer> list){
         int LeftPage = list.get(0);
@@ -71,8 +75,17 @@ class Problem1 {
         int LeftMax = Math.max(SumPage(LeftPage), MultiPage(LeftPage));
         int RightMax = Math.max(SumPage(RightPage),MultiPage(RightPage));
 
-        return Math.max(LeftMax, RightMax);
+        int FinalMax = Math.max(LeftMax, RightMax);
+
+        return FinalMax;
     }
 
 
+    /* 기능5 : 승자 출력하기 */
+    private static int RunGame(int PobiMax, int CrongMax){
+        if (PobiMax > CrongMax) return 1;
+        if (PobiMax < CrongMax) return 2;
+        if (PobiMax == CrongMax) return 0;
+        return -1;
+    }
 }
