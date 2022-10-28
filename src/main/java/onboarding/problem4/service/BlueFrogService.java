@@ -1,4 +1,6 @@
-package onboarding.problem4;
+package onboarding.problem4.service;
+
+import onboarding.problem4.validation.BlueFrogValidator;
 
 public class BlueFrogService {
     public static String reverseMotherSaying(String sentence) {

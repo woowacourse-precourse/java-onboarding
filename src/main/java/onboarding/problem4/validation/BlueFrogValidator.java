@@ -1,4 +1,4 @@
-package onboarding.problem4;
+package onboarding.problem4.validation;
 
 public class BlueFrogValidator {
     public static final String INVALID_STRING_LENGTH_MASSAGE_FORMAT = "문자열은 %d 이상 %d 이하의 길이로 주어져야 합니다.";
