@@ -2,7 +2,7 @@ package onboarding.problem6;
 
 import java.util.*;
 
-import static onboarding.problem6.ValidationForms.*;
+import static onboarding.problem6.FormValidator.*;
 
 public class CrewService {
 

@@ -3,7 +3,7 @@ package onboarding.problem1;
 import java.util.List;
 
 import static onboarding.problem1.GameResults.*;
-import static onboarding.problem1.PageValidation.*;
+import static onboarding.problem1.PageValidator.*;
 
 public class BookGame {
 

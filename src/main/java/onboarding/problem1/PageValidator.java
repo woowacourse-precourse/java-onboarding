@@ -6,7 +6,7 @@ import java.util.List;
  * true : 검증 성공
  * false  : 검증 실패
  */
-public class PageValidation {
+public class PageValidator {
 
     public static boolean isValidPage(List<List<Integer>> pagesList) {
         // page들을 받아 validation 합니다.

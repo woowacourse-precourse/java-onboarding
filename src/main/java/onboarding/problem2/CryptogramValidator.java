@@ -1,6 +1,6 @@
 package onboarding.problem2;
 
-public class CryptogramValidation {
+public class CryptogramValidator {
 
     public static void validateCryptogram(String cryptogram) {
         if (!isValidLength(cryptogram)) {

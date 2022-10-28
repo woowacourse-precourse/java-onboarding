@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-public class ValidationForms {
+public class FormValidator {
 
     public static void validateSize(int size) {
         final int MIN_VALUE = 1;

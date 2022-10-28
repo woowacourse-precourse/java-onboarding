@@ -3,7 +3,7 @@ package onboarding.problem5;
 import java.util.ArrayList;
 import java.util.List;
 
-import static onboarding.problem5.ValidationMoney.*;
+import static onboarding.problem5.MoneyValidator.*;
 
 public class Atm {
 

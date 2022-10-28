@@ -2,7 +2,7 @@ package onboarding.problem4;
 
 import static java.lang.Character.*;
 
-public class WordValidation {
+public class WordValidator {
 
     public static void validateWord(String word) {
         if (!isValidLength(word)) {

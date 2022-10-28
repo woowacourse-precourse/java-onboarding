@@ -1,6 +1,6 @@
 package onboarding.problem2;
 
-import static onboarding.problem2.CryptogramValidation.*;
+import static onboarding.problem2.CryptogramValidator.*;
 
 public class Decrypt {
 

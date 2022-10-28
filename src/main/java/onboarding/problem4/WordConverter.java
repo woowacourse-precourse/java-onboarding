@@ -1,6 +1,6 @@
 package onboarding.problem4;
 
-import static onboarding.problem4.WordValidation.*;
+import static onboarding.problem4.WordValidator.*;
 
 public class WordConverter {
 

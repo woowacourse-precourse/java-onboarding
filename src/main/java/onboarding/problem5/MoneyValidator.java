@@ -1,8 +1,6 @@
 package onboarding.problem5;
 
-import java.util.List;
-
-public class ValidationMoney {
+public class MoneyValidator {
 
     public static void validateMoney(int money) {
         final int MIN_VALUE = 1;

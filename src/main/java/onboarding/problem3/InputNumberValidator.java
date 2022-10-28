@@ -1,6 +1,6 @@
 package onboarding.problem3;
 
-public class InputNumberValidation {
+public class InputNumberValidator {
 
     public static void validateNumber(int number) {
         int MAX_VALUE = 10_000;
