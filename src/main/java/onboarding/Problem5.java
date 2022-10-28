@@ -5,7 +5,14 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Problem5 {
+    public static final int MIN_RANGE = 1;
+    public static final int MAX_RANGE = 1_000_000;
+    public static final String INVALID_NUMBER_RANGE_MESSAGE_FORMAT = "입력값은 %d 이상 %d 이하의 자연수여야 합니다.";
+
+
     public static List<Integer> solution(int money) {
+        isNumberInValidRange(money);
+
         Wallet wallet = new Wallet();
         money = wallet.changeToFiftyThousands(money);
         money = wallet.changeToTenThousands(money);
@@ -18,6 +25,12 @@ public class Problem5 {
         wallet.changeToOne(money);
 
         return wallet.getMoney();
+    }
+
+    private static void isNumberInValidRange(int number) {
+        if (number < MIN_RANGE || MAX_RANGE < number) {
+            throw new IllegalArgumentException(String.format(INVALID_NUMBER_RANGE_MESSAGE_FORMAT, MIN_RANGE, MAX_RANGE));
+        }
     }
 
     public static class Wallet {
