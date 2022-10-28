@@ -27,14 +27,26 @@ package onboarding;
  * 4. stack 에 있는 자료들을 문자열로 return
  */
 
+import java.util.Stack;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
-
+        answer = decrypt(cryptogram);
         return answer;
     }
 
+    public static String decrypt(String cryptogram) {
 
+        Stack<Character> stack = new Stack<>();
+        stack.push(cryptogram.charAt(0)); // Stack 첫 번째에는 무조건 값을 넣음
 
+        for (int i=1; i<cryptogram.length(); i++) {
+            if (stack.peek() == cryptogram.charAt(i)) {  // 현재 Stack 의 마지막값과 넣으려고 하는 값을 비교해서 같으면 pop => continue
+                stack.pop();
+                continue;
+            }
+            stack.push(cryptogram.charAt(i)); // 스택에 cryptogram 를 하나씩 push
+        }
 
+    }
 }
