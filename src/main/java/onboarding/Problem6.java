@@ -19,9 +19,10 @@ public class Problem6 {
             String item1 = nickNames.get(i);
             for(int j=i+1; j<nickNames.size(); j++) {
                 String item2 = nickNames.get(j);
-//                for(int k=0; k<item1.length(); k++){
-//
-//                }
+                if(CompareString(item1, item2)) {
+                    emails.add(crews.get(item1));
+                    emails.add(crews.get(item2));
+                }
             }
         }
 
@@ -33,5 +34,26 @@ public class Problem6 {
 
         Collections.sort(answer);
         return answer;
+    }
+
+    public static boolean CompareString(String s1, String s2) {
+        ArrayList<String> item1 = new ArrayList<>();
+        ArrayList<String> item2 = new ArrayList<>();
+        boolean flag = false;
+
+        for(int i=0; i<s1.length()-1; i++)
+            item1.add(s1.substring(i, i+1));
+        for(int i=0; i<s2.length()-1; i++)
+            item2.add(s2.substring(i,i+1));
+
+        for(int i=0; i<item1.size()-1; i++) {
+            for(int j=0; j<item2.size()-1; j++) {
+                if (item1.get(i).equals(item2.get(j)) && item1.get(i + 1).equals(item2.get(j + 1))) {
+                    flag = true;
+                    break;
+                }
+            }
+        }
+        return flag;
     }
 }
