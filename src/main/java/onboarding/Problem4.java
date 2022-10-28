@@ -1,5 +1,9 @@
 package onboarding;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.IntStream;
+
 /*
  *  구현 기능
  *  1. 문자열을 각 토큰으로 분할하는 기능
@@ -14,14 +18,14 @@ public class Problem4 {
 }
 
 class StringTokenizer {
-    private String[] wordToken;
+    private IntStream wordToken;
 
     public StringTokenizer(String word) {
-        this.wordToken = word.split("");
+        this.wordToken = word.chars();
     }
 
-    public String[] getToken(){
+    public IntStream getToken(){
         return wordToken;
     }
-
 }
+
