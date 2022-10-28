@@ -235,5 +235,13 @@ public class Problem1CustomTest {
             assertThat(maxValue).isEqualTo(6);
         }
 
+        @Test
+        void 왼쪽과오른쪽페이지의결과중최대값을뱉어내는지() {
+            List<Integer> testList = List.of(29, 30);
+            int maxValue = Problem1.chooseMaxValueLeftOrRight(testList);
+            assertThat(maxValue).isEqualTo(18);
+
+        }
+
     }
 }

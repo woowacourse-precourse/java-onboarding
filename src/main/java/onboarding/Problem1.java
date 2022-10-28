@@ -57,6 +57,9 @@ class Problem1 {
 
     public static int chooseMaxValueBetweenAddAndMultiply(int value) {
         return getMaxValue(getDigitAddValue(value), getDigitMultiplyValue(value));
+    }
 
+    public static int chooseMaxValueLeftOrRight(List<Integer> pageList) {
+        return 0;
     }
 }
