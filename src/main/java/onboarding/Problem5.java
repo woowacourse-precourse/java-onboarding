@@ -1,11 +1,13 @@
 package onboarding;
 
-import java.util.Collections;
+import onboarding.problem5.Atm;
+
 import java.util.List;
 
 public class Problem5 {
-    public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
-        return answer;
-    }
+	public static List<Integer> solution(int money) {
+		Atm atm = new Atm();
+		List<Integer> answer = atm.withdrawMoney(money);
+		return answer;
+	}
 }
