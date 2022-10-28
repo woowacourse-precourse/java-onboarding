@@ -56,4 +56,22 @@ class Problem3Test {
         assertThat(couldBeOne).isEqualTo(1);
         assertThat(couldBeTwo).isEqualTo(2);
     }
+
+    @Test
+    public void solutionTest() {
+        //given
+        int testNumber1 = 13;
+        int testNumber2 = 33;
+        int testNumber3 = 40;
+
+        //when
+        int result1 = Problem3.solution(testNumber1);
+        int result2 = Problem3.solution(testNumber2);
+        int result3 = Problem3.solution(testNumber3);
+
+        //then
+        assertThat(result1).isEqualTo(4);
+        assertThat(result2).isEqualTo(14);
+        assertThat(result3).isEqualTo(22);
+    }
 }

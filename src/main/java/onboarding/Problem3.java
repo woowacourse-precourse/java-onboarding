@@ -6,6 +6,15 @@ import java.util.List;
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
+
+        List<String> list = makeList(number);
+
+        for (String str : list) {
+            if (doesStringContain369(str)) {
+                answer += howManyStringContains369(str);
+            }
+        }
+
         return answer;
     }
 
