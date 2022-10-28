@@ -1,5 +1,6 @@
 package onboarding;
 
+import onboarding.problem1Validation.Problem1Validation;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -15,28 +16,35 @@ import static org.assertj.core.api.Assertions.assertThat;
 * - pobi와 crong의 input이 [홀수, 짝수]인 쌍에서 짝수값이 홀수 값보다 1 큰지 확인한다.
  */
 public class Problem1CustomTest {
+    private final static int USER_INPUT_LENGTH = 2;
     @Nested
     class Problem1Test {
         @Test
         void 길이가2보다큰경우테스트() {
             List<Integer> pobi = List.of(97, 98, 100);
             List<Integer> crong = List.of(197, 198, 201);
-            int result = -1;
-            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+            assertThat(
+                    Problem1Validation.userInputSizeEquals(pobi, USER_INPUT_LENGTH)
+                            && Problem1Validation.userInputSizeEquals(crong, USER_INPUT_LENGTH))
+                    .isFalse();
         }
         @Test
         void 길이가2보다작은경우테스트() {
             List<Integer> pobi = List.of(97);
             List<Integer> crong = List.of(197);
-            int result = -1;
-            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+            assertThat(
+                    Problem1Validation.userInputSizeEquals(pobi, USER_INPUT_LENGTH)
+                            && Problem1Validation.userInputSizeEquals(crong, USER_INPUT_LENGTH))
+                    .isFalse();
         }
         @Test
         void 길이가2인경우테스트() {
             List<Integer> pobi = List.of(97, 98);
             List<Integer> crong = List.of(197, 198);
-            int result = -1;
-            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+            assertThat(
+                    Problem1Validation.userInputSizeEquals(pobi, USER_INPUT_LENGTH)
+                            && Problem1Validation.userInputSizeEquals(crong, USER_INPUT_LENGTH))
+                    .isTrue();
         }
     }
 }
