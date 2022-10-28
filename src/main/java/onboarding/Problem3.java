@@ -37,6 +37,16 @@ public class Problem3 {
 
     public static int solution(int number) {
         int answer = 0;
+
+        if(number == 10000)
+            answer = clapThousand(9999);
+        else if(number / 1000 > 0)
+            answer = clapThousand(number);
+        else if(number / 100 > 0)
+            answer = clapHundred(number);
+        else
+            answer = clapTen(number);
+
         return answer;
     }
 }
