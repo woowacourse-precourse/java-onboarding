@@ -19,3 +19,9 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+### 기능목록
+
+- 기능1. String process(String word) : 문자열을 입력 받아 처리를 하고 변경된 값을 return한다.
+- 기능2. int isCapital(char elem) : 입력 받은 문자열의 문자가 대문자인지 소문자인지 또는 예외문자인지 파악한다.
+- 기능3. char reverse(char elem, int determination) : 대문자면 대문자 중 반대문자로 변환, 소문자면 소문자 중 반대문자로 변환을 한다.
