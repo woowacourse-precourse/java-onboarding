@@ -58,6 +58,27 @@ public class Problem7 {
                 recommendFriends.put(key, 1);
             }
         }
+        List<String> selectFriendsList () {
+            recommendFriends.remove(user);
+            removeUsersFriend();
+
+            return sortRecommendFriends();
+        }
+
+        private List<String> sortRecommendFriends() {
+            List<String> friends = new ArrayList<>(recommendFriends.keySet());
+            Collections.sort(friends, (value1, value2) ->
+                    (recommendFriends.get(value2)).compareTo(recommendFriends.get(value1)));
+            ArrayList<String> answer = new ArrayList<>();
+            answer.addAll(friends);
+            return answer;
+        }
+
+        void removeUsersFriend() {
+            for (int i = 0; i< friendWithUser.size(); i++) {
+                recommendFriends.remove(friendWithUser.get(i));
+            }
+        }
     }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
@@ -66,8 +87,7 @@ public class Problem7 {
         groupFriends.findFriendsKnownUser();
         groupFriends.GroupingFriendsByName();
         groupFriends.GroupingVisitorsByName();
-        System.out.println(groupFriends.recommendFriends);
-        System.out.println(groupFriends.friendWithUser);
+        answer = groupFriends.selectFriendsList();
         return answer;
     }
 
@@ -83,6 +103,7 @@ public class Problem7 {
         );
         List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
         List<String> result = List.of("andole", "jun", "bedi");
-        solution(user, friends, visitors);
+        List<String> solution = solution(user, friends, visitors);
+        System.out.println(solution);
     }
 }
