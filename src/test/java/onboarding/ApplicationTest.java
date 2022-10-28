@@ -18,6 +18,15 @@ class ApplicationTest {
             List<Integer> results = Arrays.asList(6,7);
             assertThat(Problem1.sum(human)).isEqualTo(results);
         }
+
+        @Test
+        void mul()
+        {
+            List<Integer> human = List.of(123,124);
+            List<Integer> results = Arrays.asList(6,8);
+            assertThat(Problem1.mul(human)).isEqualTo(results);
+        }
+
         @Test
         void case1() {
             List<Integer> pobi = List.of(97, 98);

@@ -9,6 +9,7 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+
     /***
      *  1. 들어온 리스트들을 잘라서 더하는 sum method
      *
@@ -21,6 +22,21 @@ class Problem1 {
         //입력의 경우가 두개뿐 따라서 반복문을 사용하지 않음
         sumList.add(Stream.of(String.valueOf(human.get(0)).split("")).mapToInt(Integer::parseInt).sum());
         sumList.add(Stream.of(String.valueOf(human.get(1)).split("")).mapToInt(Integer::parseInt).sum());
+        return sumList;
+    }
+
+    /***
+     * 2. 들어온 리스트들을 잘라서 곱하는 mul method
+     *
+     * @param human 페이지 리스트
+     * @return mul을 한 리스트가 출력한다.
+     */
+    public static List<Integer> mul(List<Integer> human)
+    {
+        List<Integer> sumList = new ArrayList<>();
+        //입력의 경우가 두개뿐 따라서 반복문을 사용하지 않음
+        sumList.add(Stream.of(String.valueOf(human.get(0)).split("")).mapToInt(Integer::parseInt).reduce(1,(a,b)-> a*b));
+        sumList.add(Stream.of(String.valueOf(human.get(1)).split("")).mapToInt(Integer::parseInt).reduce(1,(a,b)-> a*b));
         return sumList;
     }
 
