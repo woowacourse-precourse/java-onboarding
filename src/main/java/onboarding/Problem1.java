@@ -3,6 +3,22 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+    public static int maxVal(List<Integer> pages)
+    {
+        int maxVal = Integer.MIN_VALUE;
+        for (Integer page : pages) {
+            int sum = 0;
+            int mul = 1;
+            for (String strPage : page.toString().split("")) {
+                sum += Integer.parseInt(strPage);
+                mul *= Integer.parseInt(strPage);
+            }
+            if(maxVal<sum) maxVal = sum;
+            if(maxVal<mul) maxVal = mul;
+        }
+        
+        return maxVal;
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         if ((pobi.get(1)-pobi.get(0) != 1)
@@ -13,6 +29,8 @@ class Problem1 {
             answer = -1;
             return answer;
         }
+        
+        
 
         return answer;
     }
