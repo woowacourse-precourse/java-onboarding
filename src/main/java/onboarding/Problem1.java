@@ -21,6 +21,21 @@ class Problem1 {
             return answer;
         }
 
+        //모든 예외를 통과한 정상 입력
+        int pobiMax = 0;
+        int crongMax = 0;
+        for(int i = 0; i < 2; i++){
+            int a = plusDigits(pobi.get(i));
+            int b = multiplyDigits(pobi.get(i));
+            int c = Math.max(a, b);
+            pobiMax = Math.max(pobiMax, c);
+
+            int d = plusDigits(crong.get(i));
+            int e = multiplyDigits(crong.get(i));
+            int f = Math.max(d, e);
+            crongMax = Math.max(crongMax, f);
+        }
+
         return answer;
     }
 
