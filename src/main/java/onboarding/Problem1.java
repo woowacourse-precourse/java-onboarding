@@ -59,4 +59,20 @@ class Problem1 {
 
     }
 
+    public static boolean identifyException(List<Integer> player1, List<Integer> player2) {
+        if (player1.size() != 2 || player2.size() != 2) return true;
+
+        int player1Left = player1.get(0);
+        int player1Right = player1.get(1);
+
+        int player2Left = player2.get(0);
+        int player2Right = player2.get(1);
+
+        return (player1Left % 2 != 1) || (player2Left % 2 != 1) ||
+                (player1Right % 2 != 0) || (player2Right % 2 != 0) ||
+                (player1Right - player1Left != 1) || (player2Right - player2Left != 1) ||
+                (player1Left <= 1) || (player2Left <= 1) ||
+                (player1Right >= 400) || (player2Right >= 400);
+    }
+
 }

@@ -31,4 +31,17 @@ public class Problem1UnitTest {
         System.out.println("processing time : "+(end - start));
     }
 
+    @Test
+    public void identifyExceptionTest() {
+        List<Integer> test1 = new ArrayList<>();
+        test1.add(101);
+        test1.add(102);
+
+        List<Integer> test2 = new ArrayList<>();
+        test2.add(211);
+        test2.add(212);
+
+        Assertions.assertThat(Problem1.solution(test1, test2)).isEqualTo(2);
+    }
+
 }
