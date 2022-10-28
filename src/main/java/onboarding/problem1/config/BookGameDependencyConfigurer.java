@@ -2,19 +2,24 @@ package onboarding.problem1.config;
 
 import onboarding.problem1.application.bookgame.BookGamePlayerService;
 import onboarding.problem1.application.bookgame.BookGameScoreService;
-import onboarding.problem1.application.bookgame.BookGameValidation;
 
 public class BookGameDependencyConfigurer {
 
+	private static BookGamePlayerService bookGamePlayerService;
+	private static BookGameScoreService bookGameScoreService;
+
 	public BookGamePlayerService playerService() {
-		return new BookGamePlayerService();
+		if(bookGamePlayerService == null){
+			bookGamePlayerService = new BookGamePlayerService(scoreService());
+		}
+		return bookGamePlayerService;
 	}
 
 	public BookGameScoreService scoreService() {
-		return new BookGameScoreService();
-	};
-
-	public BookGameValidation validation() {
-		return new BookGameValidation();
+		if (bookGameScoreService == null) {
+			bookGameScoreService = new BookGameScoreService();
+		}
+		return bookGameScoreService;
 	}
+
 }

@@ -17,6 +17,8 @@ class Problem1 {
 		Problem1Application problem1 = new Problem1Application(bookGameConfig);
 
 		try {
+			problem1.validateInput(pobi, crong);
+
 			return problem1.play(pobi, crong);
 		} catch (BookGameException bookGameException) {
 			return bookGameException.getExceptionCode();

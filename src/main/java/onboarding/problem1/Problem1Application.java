@@ -4,10 +4,8 @@ import java.util.List;
 
 import onboarding.problem1.application.PlayerService;
 import onboarding.problem1.application.ScoreService;
-import onboarding.problem1.application.Validation;
 import onboarding.problem1.application.bookgame.BookGameValidation;
 import onboarding.problem1.config.BookGameDependencyConfigurer;
-import onboarding.problem1.exception.BookGameException;
 import onboarding.problem1.model.Player;
 
 public class Problem1Application {
@@ -21,16 +19,13 @@ public class Problem1Application {
 	}
 
 	public int play(List<Integer> pages1, List<Integer> pages2) {
-		if (validateBookGame(pages1, pages2)) {
-
-
-
-		}
+		Player player1 = playerService.joinPlayer(pages1);
+		Player player2 = playerService.joinPlayer(pages2);
 
 		return -1;
 	}
 
-	private boolean validateBookGame(List<Integer> pages1, List<Integer> pages2) {
+	public boolean validateInput(List<Integer> pages1, List<Integer> pages2) {
 		BookGameValidation bookGameValidation = new BookGameValidation();
 
 		if (bookGameValidation.validate(pages1)
