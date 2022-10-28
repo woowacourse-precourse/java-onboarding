@@ -3,41 +3,44 @@ package onboarding;
 import java.util.*;
 
 public class Problem6 {
-    public static List<String> solution(List<List<String>> forms) {
-        Map<String, Integer> subNameSpace = new HashMap<>();
 
-        for(List<String> form : forms) addSubName(form.get(1), subNameSpace);
-        Set<String> duplicatedSubNames = duplicatedSubNameSet(subNameSpace);
-        subNameSpace.clear();
+    static private Map<String, Integer> repositoryOfPair;
+
+    public static List<String> solution(List<List<String>> forms) {
+        repositoryOfPair = new HashMap<>();
+
+        for(List<String> form : forms) addPairToRepository(form.get(1));
+        Set<String> duplicatedPairs = TransformDuplicatedPairSet();
+        repositoryOfPair.clear();
 
         Set<String> answer = new TreeSet<>();
         for(List<String> x : forms) {
             String email = x.get(0);
             String name  = x.get(1);
-            if (isCorrectedDomain(email) && isDuplicatedName(name, duplicatedSubNames))
+            if (isCorrectedDomain(email) && hasDuplicatedPair(name, duplicatedPairs))
                 answer.add(email);
         }
 
         return new ArrayList<>(answer);
     }
 
-    static Set<String> subNameCreator(String name){
+    static Set<String> pairCreator(String name){
         Set<String> set = new HashSet<>();
         for(int i=0; i<name.length()-1; i++){
-            String subName = name.substring(i,i+2);
-            set.add(subName);
+            String pair = name.substring(i,i+2);
+            set.add(pair);
         }
         return set;
     }
 
-    static void addSubName(String name, Map<String, Integer> map){
-        Set<String> subNames = subNameCreator(name);
-        subNames.forEach(x->map.put(x, map.getOrDefault(x,0)+1));
+    static void addPairToRepository(String name){
+        Set<String> subNames = pairCreator(name);
+        subNames.forEach(x-> repositoryOfPair.put(x, repositoryOfPair.getOrDefault(x,0)+1));
     }
 
-    static Set<String> duplicatedSubNameSet(Map<String, Integer> map) {
+    static Set<String> TransformDuplicatedPairSet() {
         Set<String> set = new HashSet<>();
-        map.keySet().stream().filter(x->map.get(x)>1).forEach(set::add);
+        repositoryOfPair.keySet().stream().filter(x-> repositoryOfPair.get(x)>1).forEach(set::add);
         return set;
     }
 
@@ -45,8 +48,8 @@ public class Problem6 {
         return email.substring(email.length()-10).equals("@email.com");
     }
 
-    static boolean isDuplicatedName(String name, Set<String> set) {
-        Set<String> subNames = subNameCreator(name);
+    static boolean hasDuplicatedPair(String name, Set<String> set) {
+        Set<String> subNames = pairCreator(name);
         long count = subNames.stream().filter(set::contains).count();
         return count != 0;
     }
