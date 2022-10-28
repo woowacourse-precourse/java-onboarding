@@ -138,14 +138,6 @@ class ApplicationTest {
             String result = "R olev blf";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
-
-        @Test
-        void tokenizerTest() {
-            String word = "Hi, my name is woojoong.";
-            StringTokenizer stringTokenizer = new StringTokenizer(word);
-            String[] result = word.split("");
-            assertThat(stringTokenizer.getToken()).isEqualTo(result);
-        }
     }
 
     @Nested
