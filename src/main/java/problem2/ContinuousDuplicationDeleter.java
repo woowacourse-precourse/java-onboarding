@@ -4,44 +4,44 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ContinuousDuplicationDeleter {
-    public static String delete(String target) {
-        List<Character> deleted = delete(target.toCharArray());
+    public static String deleteDuplication(String target) {
+        List<Character> deleted = deleteDuplication(target.toCharArray());
         return asString(deleted);
     }
 
-    private static List<Character> delete(char[] target) {
-        List<Character> charactersInOrder = new ArrayList<>();
+    private static List<Character> deleteDuplication(char[] target) {
+        List<Character> charactersWithoutDuplication = new ArrayList<>();
         List<Integer> numberOfDuplication = new ArrayList<>();
 
         for (int ind = 0; ind < target.length; ) {
-            int lastIndex = charactersInOrder.size() - 1;
+            int lastIndex = charactersWithoutDuplication.size() - 1;
 
-            if (charactersInOrder.isEmpty()) {
-                add(charactersInOrder, numberOfDuplication, target[ind]);
+            if (charactersWithoutDuplication.isEmpty()) {
+                add(charactersWithoutDuplication, numberOfDuplication, target[ind]);
                 ind += 1;
                 continue;
             }
 
-            if (isSame(charactersInOrder.get(lastIndex), target[ind])) {
+            if (isSame(charactersWithoutDuplication.get(lastIndex), target[ind])) {
                 increaseByOne(numberOfDuplication, lastIndex);
                 ind += 1;
                 continue;
             }
 
             if (isDuplicate(numberOfDuplication, lastIndex)) {
-                remove(charactersInOrder, numberOfDuplication, lastIndex);
+                remove(charactersWithoutDuplication, numberOfDuplication, lastIndex);
                 continue;
             }
 
-            add(charactersInOrder, numberOfDuplication, target[ind]);
+            add(charactersWithoutDuplication, numberOfDuplication, target[ind]);
             ind++;
         }
 
         if (isDuplicate(numberOfDuplication, numberOfDuplication.size() -1)) {
-            remove(charactersInOrder, numberOfDuplication, numberOfDuplication.size() -1);
+            remove(charactersWithoutDuplication, numberOfDuplication, numberOfDuplication.size() -1);
         }
 
-        return charactersInOrder;
+        return charactersWithoutDuplication;
     }
 
     private static void add(List<Character> charactersInOrder, List<Integer> numberOfDuplication, char toAdd) {

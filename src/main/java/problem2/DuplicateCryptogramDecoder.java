@@ -1,9 +1,6 @@
 package problem2;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
-import java.util.Stack;
 
 public class DuplicateCryptogramDecoder {
     private static final String ERR_EMPTY_CODE = "암호는 1 이상 1000 이하 길이를 가져야 합니다.";
@@ -16,7 +13,7 @@ public class DuplicateCryptogramDecoder {
     public static String decode(String cryptogram) {
         validateLength(cryptogram);
         validateLowerCase(cryptogram);
-        return ContinuousDuplicationDeleter.delete(cryptogram);
+        return ContinuousDuplicationDeleter.deleteDuplication(cryptogram);
     }
 
     private static void validateLength(String cryptogram) {
