@@ -47,6 +47,13 @@ public class Problem4 {
 
     public static String solution(String word) {
         String answer = "";
+
+        // 문자열 한 글자씩 청개구리 사전에 대입
+        for (int i = 0; i < word.length(); i++){
+            int check = checkCapital(word.charAt(i));
+            answer += dictionary(check, word.charAt(i));
+        }
+
         return answer;
     }
 }
