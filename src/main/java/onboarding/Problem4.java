@@ -3,6 +3,12 @@ package onboarding;
 import java.util.HashMap;
 
 public class Problem4 {
+    static boolean isUpperCase(char ch){
+        if(Character.isUpperCase(ch) == true){
+            return true;
+        }
+        return false;
+    }
     static void createLowerCaseDictionary(HashMap dictionary){
         int n = 25;
         for(int i=97; i<123; i++,n-=2){
