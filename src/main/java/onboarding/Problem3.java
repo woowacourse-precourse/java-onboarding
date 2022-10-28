@@ -11,8 +11,22 @@ package onboarding;
  */
 
 public class Problem3 {
+    private static final int[] numberArray = new int[10_001];
     public static int solution(int number) {
-        int answer = 0;
-        return answer;
+        if (numberArray[3] != 0) {
+            return numberArray[number];
+        }
+        for (int i = 3; i < numberArray.length; i++) {
+            String numStr = i + "";
+            int count = 0;
+            for (int j = 0; j < numStr.length(); j++) {
+                int digitNumber = Character.getNumericValue(numStr.charAt(j));
+                if (digitNumber % 3 == 0 && digitNumber != 0) {
+                    count++;
+                }
+            }
+            numberArray[i] = numberArray[i - 1] + count;
+        }
+        return numberArray[number];
     }
 }
