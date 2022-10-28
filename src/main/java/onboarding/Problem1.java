@@ -4,17 +4,13 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer;
-
         // 예외사항
-        if ((pobi.size() > 2) || (crong.size() > 2)) {
-            return -1;
-        } else if ((pobi.get(1) - pobi.get(0) != 1) || (crong.get(1) - pobi.get(0) != 0)) {
-            return -1;
-        } else if ((pobi.get(0) == 1) || (pobi.get(1) == 400) || (crong.get(0) == 1) || (crong.get(1) == 400)) {
+        if ((pobi.size() > 2) || (crong.size() > 2) || (pobi.get(1) - pobi.get(0) != 1) || (crong.get(1) - crong.get(0) != 1) ||
+                (pobi.get(0) == 1) || (pobi.get(1) == 400) || (crong.get(0) == 1) || (crong.get(1) == 400)) {
             return -1;
         }
 
+        int answer;
         int pobi_sum = comparison(pobi);   // 결과 비교 변수
         int crong_sum = comparison(crong);  // 결과 비교 변수
 
@@ -23,10 +19,8 @@ class Problem1 {
             answer = 1;
         } else if (pobi_sum < crong_sum) {
             answer = 2;
-        } else if (pobi_sum == crong_sum) {
-            answer = 0;
         } else {
-            answer = -1;
+            answer = 0;
         }
 
         return answer;
