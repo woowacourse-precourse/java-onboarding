@@ -6,6 +6,7 @@ package onboarding;
     3. 두 페이지의 각 자릿수에 1, 2를 적용한 후 Max값을 구하는 기능 -> getMax
  */
 import java.util.List;
+import java.lang.Math;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -31,5 +32,9 @@ class Problem1 {
             page /= 10;
         }
         return ret;
+    }
+
+    private static int getMax(int page) {
+        return Math.max(getSum(page), getMul(page));
     }
 }
