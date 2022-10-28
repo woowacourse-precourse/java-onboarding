@@ -2,7 +2,7 @@ package onboarding.problem3.objects;
 
 public enum RuleValue {
 
-    TREE("3"),
+    THREE("3"),
     SIX("6"),
     NINE("9");
 
@@ -10,5 +10,9 @@ public enum RuleValue {
 
     RuleValue(String value) {
         this.value = value;
+    }
+
+    public String getValue() {
+        return value;
     }
 }
