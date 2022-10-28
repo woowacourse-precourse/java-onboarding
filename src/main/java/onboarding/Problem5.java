@@ -14,7 +14,7 @@ public class Problem5 {
     }
 
 
-    // 매개변수에서 지폐, 동전이 각 몇개로 변환되는지 반환하는 메소드
+    // 매개변수에서 지폐, 동전이 각 몇 개로 변환되는지 반환하는 메소드
     private static ArrayList<Integer> coinsCount(int money) {
         int coinCount;
         ArrayList<Integer> coinsCount = new ArrayList<>();
@@ -30,6 +30,5 @@ public class Problem5 {
         return coinsCount;
 
     }
-
 
 }
