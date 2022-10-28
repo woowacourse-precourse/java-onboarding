@@ -13,7 +13,7 @@ public class Problem7 {
     public static void visit(List<String> visitors){
         for(int i = 0; i < visitors.size(); i++){
             String key = visitors.get(i);
-            map.put(key, map.containsKey(key) ? map.get(key) + 3: 3);
+            map.put(key, map.getOrDefault(key, 1) + 1);
         }
     }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
