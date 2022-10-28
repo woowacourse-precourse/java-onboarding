@@ -4,8 +4,15 @@ import java.util.List;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        List<Integer> repeated = repeatedNum(cryptogram);
+        while (repeated.get(0) == 1) {
+            int begin = repeated.get(1);
+            int end = repeated.get(2);
+            cryptogram = removeRepeated(cryptogram, begin, end);
+            repeated = repeatedNum(cryptogram);
+        }
+
+        return cryptogram;
     }
 
     public static List<Integer> repeatedNum(String cryptogram) {
@@ -26,11 +33,13 @@ public class Problem2 {
                 hasRepeatedNum = 1;
                 beginRepeatedNum = i - 1;
                 checkFirst = false;
-            } else if ((nowChar != beforeChar) && !checkFirst) {
+            }
+            if ((nowChar != beforeChar) && !checkFirst) {
                 // 중복 문자 발견 및 연결된 문자 다를 시 끝 지점 저장
                 endRepeatedNum = i - 1;
                 break;
-            } else if ((i == cryptogram.length() - 1) && !checkFirst) {
+            }
+            if ((i == cryptogram.length() - 1) && !checkFirst) {
                 // 중복 문자 발견 및 문자열 끝까지 탐색 완료 시 끝 지점 저장
                 endRepeatedNum = i;
                 break;
