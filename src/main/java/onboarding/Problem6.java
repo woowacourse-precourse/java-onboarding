@@ -15,7 +15,9 @@ import java.util.regex.Pattern;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
 
-        ArrayList<String> answer = new ArrayList<>();
+        List<String> answer = List.of("answer");
+
+        ArrayList<String> sameNickNameEmail = new ArrayList<>();
         
         Map<String, Integer> nickNameDivideByTwoLetter = new HashMap<>();
         
@@ -65,11 +67,14 @@ public class Problem6 {
 
                 // 3. 크루들 닉네임 확인하면서 두 글자 이상의 문자가 겹치는게 있는지 확인하기
                 if(isSameNickName(nickNameDivideByTwoLetter, nickNameDivide)){
+
+                    // 4. 중복 닉네임을 가진 크루 이메일 sameNickNameEmail 에 담기
+                    sameNickNameEmail.add(email);
                 }
             }
         }
         
-        return answer;
+        return sameNickNameEmail;
     }
 
     private static boolean isSameNickName(Map<String, Integer> nickNameDivideByTwoLetter, String nickNameDivide) {
