@@ -2,6 +2,14 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
+        StringBuilder sb = resultString(word);
+
+        return sb.toString();
+    }
+
+    //바꾼 문자들을 StringBuilder 형태로 리턴
+    private static StringBuilder resultString(String word) {
+
         StringBuilder sb = new StringBuilder();
 
         // 대문자 'A' 와 'Z' 의 아스키코드를 더한다.
@@ -16,7 +24,7 @@ public class Problem4 {
             sb.append(changeChar(c, upper, lower));
         }
 
-        return sb.toString();
+        return sb;
     }
 
     // 문자를 바꾸는 메소드
