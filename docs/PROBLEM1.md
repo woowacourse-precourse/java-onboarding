@@ -1,21 +1,10 @@
 ### 설계
 
-#### 1. 시간복잡도
-
-- Worst Case: 400 페이지
-- 1초 기준, O(N^3)까지 가능
-
-#### 2. 유형분석
-
-- 단순 구현
-
-#### 3. Edge Case 고려
+#### 1. Edge Case 고려
 
 1. null point Exception
-
-​	판단근거1) 파라미터 타입 (List<Integer>)
-
-​	판단근거2) 게임규칙: 시작 "면"이나 마지막 "면"이 나오도록 책을 펼치지 않는다.
+   - 판단근거1) 파라미터 타입 (List< Integer >)
+   - 판단근거2) 게임규칙: 시작 "면"이나 마지막 "면"이 나오도록 책을 펼치지 않는다.
 
 2. 왼쪽 페이지 범위 밖
 3. 오른쪽 페이지 범위 밖
@@ -23,39 +12,40 @@
 5. 오른쪽 페이지 홀수
 6. 1차이가 아닌 경우
 
-#### 4. 프로세스
+#### 2. 프로세스
 
-1) 예외사항이면 리턴-1, 아니면 게임시작
+1) 옳바른 페이지면 게임시작, 아니면 -1리턴
 2) 포비 점수구하기
 3) 크롬 점수구하기
 4) 승자 결정
 
-#### 5. 기능목록
+#### 3. 기능목록
 
-1. checkException: 예외사항 확인
+1. isCorrect: 옳바른 페이지인지 확인
 
-   1. isNullPage: 시작면, 마지막면 확인
+   - isNullPage: 시작면, 마지막면 확인
 
-   2. isLeftPageInRange: 왼쪽 페이지 범위 확인
+   - isLeftPageInRange: 왼쪽 페이지 범위 확인
 
-   3. isRightPageInRange: 오른쪽 페이지 범위 확인
+   - isRightPageInRange: 오른쪽 페이지 범위 확인
 
-   4. isLeftPageOdd: 왼쪽 페이지 홀수 확인
+   - isLeftPageOdd: 왼쪽 페이지 홀수 확인
 
-   5. isRightPageEven: 오른쪽 페이지 짝수 확인
+   - isRightPageEven: 오른쪽 페이지 짝수 확인
 
-   6. isCorrectPages: 오른쪽 페이지가 1이 더 큰지 확인
-
-      
-
-2. calPageScore: 점수 구하기 메소드
-
-   1. sumAllNum: 합으로 점수 구하기 메소드
-   2. multiAllNum: 곱으로 점수 구하기 메소드
+   - isCorrectPages: 오른쪽 페이지가 1이 더 큰지 확인
 
    
 
-3. checkWinner: 승자 결정 메소드
+2. getScore: 점수 구하기 메소드
+
+   - sumAllNum: 각 자릿수별 합 구하기
+
+   - multiAllNum: 각 자릿수별 곱 구하기
+
+#### 4. 시간복잡도
+
+- O(3)
 
 
 
