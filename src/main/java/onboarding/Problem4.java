@@ -3,6 +3,19 @@ package onboarding;
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
+        // 1. String 을 char[] 로 변환
+        char[] input = changeToChar(word);
+        // 2. 결과를 담을 배열 result[] 를 생성
+        char[] result = new char[input.length];
+
+        // 3. 규칙에 맞게 문자를 반대로 바꾸는 함수를 이용하여 변환
+        for(int i = 0; i<result.length; i++) {
+            result[i] = converseResult(input[i]);
+        }
+
+        // 4. 다시 char[] -> String 으로
+        answer = new String(result);
+        // 5. 결과 리턴
         return answer;
     }
 
