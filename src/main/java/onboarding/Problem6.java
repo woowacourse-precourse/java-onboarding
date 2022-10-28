@@ -26,6 +26,12 @@ public class Problem6 {
         return answer;
     }
 
+    private static void setDataOnHashMap(List<List<String>> forms){
+        for(List<String> person : forms){
+            putPersonToHashMap(person);
+        }
+    }
+
     private static void putPersonToHashMap(List<String> person){
         String nickname = person.get(NICKNAME_INDEX);
         for(int i=0; i<nickname.length()-1; i++){
