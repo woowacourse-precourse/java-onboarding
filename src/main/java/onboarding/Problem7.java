@@ -60,4 +60,10 @@ public class Problem7 {
         Collections.sort(classList);
         return classList;
     }
+
+    private static List<String> classToString(List<Person> sortList) {
+        List<String> str = new ArrayList<>();
+        for(int i=0;i<sortList.size();i++)str.add(sortList.get(i).getName());
+        return str;
+    }
 }
