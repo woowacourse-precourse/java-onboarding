@@ -3,6 +3,7 @@ package onboarding;
 import java.util.stream.Stream;
 
 public class Problem3 {
+    static int lstNumber = 0;
     static int[] dp = Stream.generate(() -> 0).limit(10000 + 1).mapToInt(v -> v).toArray();
 
     public static boolean check369(int n) {
@@ -10,22 +11,22 @@ public class Problem3 {
     }
     
     public static int solution(int number) {
-        if (dp[number] > 0) {
+        if (lstNumber >= number) {
             return dp[number];
         } else {
-            int answer = 0;
-            for (int n = 1; n < 10 && n < number; n++)
-                if (check369(n)) {
-                    dp[n] = 1;
-                    answer++;
+            for (int n = lstNumber + 1; n <= number; n++) {
+                dp[n] = dp[n - 1];
+
+                int p = n;
+                while (p != 0) {
+                    if (check369(p % 10))
+                        dp[n]++;
+                    p /= 10;
                 }
-
-            for (int n = 10; n <= number; n++) {
-                dp[n] = dp[n / 10] + dp[n % 10];
-                answer += dp[n];
             }
+            lstNumber = number;
 
-            return answer;
+            return dp[number];
         }
     }
 }
