@@ -1,11 +1,10 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> friendsWithUser = new ArrayList<>();
+    public static Map<String, Integer> sameFriendWithUser = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
@@ -20,6 +19,9 @@ public class Problem7 {
                 if(list.contains(friendWithUser)) {
                     for (String friend : list) {
                         if(!friend.equals(user) && friend.equals(friendWithUser)){
+                            if(sameFriendWithUser.containsKey(friend)){
+                            }else{
+                            }
                         }
                     }
                 }
