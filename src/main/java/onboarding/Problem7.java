@@ -1,8 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -12,7 +10,7 @@ public class Problem7 {
 
     private static List<String> makeFriendList(String people, List<String> friendList) {
         if (friendList==null) {
-            return List.of(people);
+            return new ArrayList(Arrays.asList(people));
         }
         friendList.add(people);
         return friendList;
