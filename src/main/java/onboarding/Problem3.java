@@ -3,8 +3,6 @@ package onboarding;
 public class Problem3 {
     public static final int MEMOIZATION_START_INDEX = 3;
     public static final int LETTER_START_INDEX = 0;
-    public static final int MIN_NUMBER = 1;
-    public static final int MAX_NUMBER = 10000;
     public static final char THREE = '3';
     public static final char SIX = '6';
     public static final char NINE = '9';
@@ -25,10 +23,8 @@ public class Problem3 {
     }
 
     public static int countClap(int[] memoization, int number) {
-        String indexToString = "";
-
         for (int index = MEMOIZATION_START_INDEX; index < number + 1; index++) {
-            indexToString = String.valueOf(index);
+            String indexToString = String.valueOf(index);
             memoization[index] = memoization[index - 1];
 
             checkThreeSixNine(memoization, indexToString, index);
