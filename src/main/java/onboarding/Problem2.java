@@ -15,8 +15,7 @@ public class Problem2 {
 
 
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        return makeNewCryptogram(cryptogram);
     }
 
     private static String makeNewCryptogram(String cryptogram){
