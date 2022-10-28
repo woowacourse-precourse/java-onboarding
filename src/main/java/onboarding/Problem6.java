@@ -4,7 +4,6 @@ import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
 
 
         Map<String,String> validMap = new HashMap<>();
@@ -21,8 +20,6 @@ public class Problem6 {
             for (int j = 0; j <nickName.length()-1 ; j++) {
                 String minDuplicatePart = nickName.charAt(j)+""+nickName.charAt(j+1);
 
-                validMap.put(minDuplicatePart,email);
-
                 if(validMap.containsKey(minDuplicatePart)){
 
                     emailSet.add(email);
@@ -36,6 +33,9 @@ public class Problem6 {
             }
 
         }
+
+        List<String> answer = new ArrayList<>(emailSet);
+        Collections.sort(answer);
 
         return answer;
     }
