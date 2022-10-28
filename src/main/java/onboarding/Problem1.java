@@ -12,4 +12,8 @@ class Problem1 {
         return firstNumber + secondNumber;
     }
 
+    private int multipliedNumbers(int firstNumber, int secondNumber) {
+        return firstNumber * secondNumber;
+    }
+
 }
