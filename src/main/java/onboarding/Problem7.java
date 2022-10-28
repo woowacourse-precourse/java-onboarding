@@ -68,6 +68,13 @@ public class Problem7 {
             Collections.sort(entryList, (o1, o2) -> o2.getValue().compareTo(o1.getValue()));
             return entryList;
         }
+        public List<String> getTopFive(List<Map.Entry<String, Integer>> entryList){
+            for (Map.Entry<String, Integer> stringIntegerEntry : entryList) {
+                if(answer.size() == 5) break;
+                answer.add(String.valueOf(stringIntegerEntry.getKey()));
+            }
+            return answer;
+        }
         public List<String> inSolution(){
 
             saveFriend(friends); // map에 친구목록 저장
