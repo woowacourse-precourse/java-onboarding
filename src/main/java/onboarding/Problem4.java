@@ -29,18 +29,18 @@ public class Problem4 {
         return String.valueOf(sb);
     }
 
-    public static char convertAlpha(char alpha) {
+    private static char convertAlpha(char alpha) {
         int index = getIndexOfAlpha(alpha);
         int covert = 27 - 2 * index;
         return (char) (alpha + covert);
     }
 
-    public static int getIndexOfAlpha(char alpha) {
+    private static int getIndexOfAlpha(char alpha) {
         char upperCase = Character.toUpperCase(alpha);
         return upperCase - 'A' + 1;
     }
 
-    public static boolean isAlpha(char ch) {
+    private static boolean isAlpha(char ch) {
         return ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z'));
     }
 }
