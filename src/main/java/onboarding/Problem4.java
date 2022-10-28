@@ -38,4 +38,13 @@ public class Problem4 {
         return false;
     }
 
+    private static char getConvertedChar(char ch){
+        if('a'< ch && ch < 'z'){
+            return (char)('a'+('z' - ch));
+        }
+        if('A'< ch && ch < 'Z'){
+            return (char)('A'+('Z' - ch));
+        }
+        return ' ';
+    }
 }
