@@ -12,16 +12,16 @@ class Problem1 {
         PageGameInfo pageGame = new PageGameInfo();
 
         try {
-            registryPlayers(pageGame, pobi, crong);
+            registryTwoPlayers(pageGame, pobi, crong);
         } catch (IllegalArgumentException e) {
             return EXCEPTION_RESULT;
         }
         return pageGame.playGameResult(POBI_NAME, CRONG_NAME);
     }
 
-    private static void registryPlayers(PageGameInfo pageGame, List<Integer> pobi,
-        List<Integer> crong) {
-        pageGame.registryPlayer(POBI_NAME, pobi);
-        pageGame.registryPlayer(CRONG_NAME, crong);
+    private static void registryTwoPlayers(PageGameInfo pageGame, List<Integer> player1,
+        List<Integer> player2) {
+        pageGame.registryPlayer(POBI_NAME, player1);
+        pageGame.registryPlayer(CRONG_NAME, player2);
     }
 }
