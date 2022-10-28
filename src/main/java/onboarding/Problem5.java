@@ -29,30 +29,38 @@ public class Problem5 {
         return digitNumber;
     }
 
-    public static Integer [] divisionMoney(List<Integer> digitNumber) {
-        Integer[] moneyList = new Integer[max];
+    public static Integer [] divisionMoney(List<Integer> digitNumber_list) {
+        Integer[] money_list = new Integer[max];
         int j = 0;
 
-        moneyList[0] = digitNumber.get(0);
-        for (int i = 1; i < max; i++)
-        {
+        money_list[0] = digitNumber_list.get(0);
+
+        for (int i = 1; i < max; i++) {
             //홀수 일 때
-            if (i % 2 == 1 && i < max - 1)
-                moneyList[i] = digitNumber.get(i - j);
+            if (i % 2 == 1)
+                money_list[i] = digitNumber_list.get(i - j);
             //짝수일 때
-            else if (i % 2 == 0)
-            {
-                if (moneyList[i - 1] >= 5)
-                {
-                    moneyList[i] = 1;
-                    moneyList[i - 1] = moneyList[i - 1] - 5;
-                }
-                else if (moneyList[i - 1] < 5)
-                    moneyList[i] = 0;
+            if (i % 2 == 0) {
+                if (money_list[i - 1] >= 5) {
+                    money_list[i] = 1;
+                    money_list[i - 1] = money_list[i - 1] - 5;
+                } else if (money_list[i - 1] < 5)
+                    money_list[i] = 0;
                 j++;
             }
+            //9의 자리가 있을 경우
+            if (i == max - 1)
+            {
+                if (digitNumber_list.size() == 6)
+                {
+                    money_list[i] += (digitNumber_list.get(5) * 10) / 5;
+                }
+                if (digitNumber_list.size() == 7)
+                {
+                    money_list[i] += (digitNumber_list.get(6) * 100) / 5;
+                }
+            }
         }
-
-        return moneyList;
+        return money_list;
     }
 }
