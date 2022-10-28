@@ -27,6 +27,22 @@ class Problem1 {
 
         return listPlusLeft > listPlusRight ? listPlusLeft : listPlusRight;
     }
+
+    static int getMul(List<Integer> list) {
+        int listMulLeft, listMulRight;
+
+        if (list.get(0)/10 == 0) {
+            return list.get(1);
+        } else if (list.get(0)/100 == 0) {
+            listMulLeft = (list.get(0) % 10) * (list.get(0) / 10);
+            listMulRight = (list.get(1) % 10) * (list.get(1) / 10);
+        } else {
+            listMulLeft = (list.get(0) / 100) * ((list.get(0) % 100) / 10) * (list.get(0) % 10);
+            listMulRight = (list.get(1) / 100) * ((list.get(1) % 100) / 10) * (list.get(1) % 10);
+        }
+
+        return listMulLeft > listMulRight ? listMulLeft : listMulRight;
+    }
 }
     /**
      * 왼쪽 페이지의 번호 각자리를 더하거나 곱해서 가장 큰 수
