@@ -9,9 +9,12 @@ public class Problem3 {
     private static final int RANGE_START_NUMBER = 1;
     private static final int MIN_NUMBER_RANGE = 1;
     private static final int MAX_NUMBER_RANGE = 10000;
+    private static final String EXCEPTION_MESSAGE_PREFIX = "[ERROR] : ";
+    private static final String NUMBER_RANGE_EXCEPTION_MESSAGE = "숫자는 1이상 10,000이하의 자연수만 가능합니다.";
 
     public static int solution(int number) {
         int answer = INT_VARIABLE_INIT_VALUE;
+        validateNumber(number);
         answer = getRangeNumberClappingCount(number);
         return answer;
     }
@@ -33,6 +36,12 @@ public class Problem3 {
             rangeNumberClappingCount += getOneNumberClappingCount(rangeIncreaseNumber);
         }
         return rangeNumberClappingCount;
+    }
+
+    public static void validateNumber(int number) {
+        if(!validateNumberRange(number)) {
+            throw new IllegalArgumentException(EXCEPTION_MESSAGE_PREFIX + NUMBER_RANGE_EXCEPTION_MESSAGE);
+        }
     }
 
     public static boolean validateNumberRange(int number) {
