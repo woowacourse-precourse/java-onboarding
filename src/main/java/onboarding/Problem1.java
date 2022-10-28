@@ -56,4 +56,15 @@ class Problem1 {
         }
         return result;
     }
+
+    public static int mulCalc(int num) {
+
+        String numToString = String.valueOf(num);
+        int result = 1;
+        for(int i = 0; i < numToString.length(); i++) {
+            char c = numToString.charAt(i);
+            result *= Integer.valueOf(c) -'0';
+        }
+        return result;
+    }
 }
