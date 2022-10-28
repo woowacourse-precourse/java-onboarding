@@ -4,7 +4,11 @@ import java.util.Stack;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = deleteRepetition(inputLowercaseAlphabets(cryptogram));
+        answer = answer.replace("[","");
+        answer = answer.replace("]","");
+        answer = answer.replace(", ","");
+
         return answer;
     }
 
