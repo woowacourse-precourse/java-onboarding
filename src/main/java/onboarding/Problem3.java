@@ -7,6 +7,7 @@ public class Problem3 {
 
     public static int solution(int number) {
         int answer = 0;
+        answer = runGame(number);
         return answer;
     }
 
@@ -32,5 +33,15 @@ public class Problem3 {
 
     private static int getStringLength(String number) {
         return number.length();
+    }
+
+    private static int runGame(int number) {
+        int result = 0;
+        for (int i = 1; i <= number; i++) {
+            String stringNumber = toString(i);
+            int length = getStringLength(stringNumber);
+            result += hasThreeSixNine(stringNumber, length);
+        }
+        return result;
     }
 }
