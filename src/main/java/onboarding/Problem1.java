@@ -44,7 +44,13 @@ class Problem1 {
      * 플레이어의 점수를 계산하는 함수
      */
     private static int getScore(List<Integer> pageList) {
-        return Integer.MAX_VALUE;
+        int[] splitedLeftPage = splitDigit(pageList.get(0));
+        int[] splitedRightPage = splitDigit(pageList.get(1));
+
+        int leftScore = Math.max(getPageDigitSum(splitedLeftPage), getPageDigitMul(splitedLeftPage));
+        int rightScore = Math.max(getPageDigitSum(splitedRightPage), getPageDigitMul(splitedRightPage));
+
+        return Math.max(leftScore, rightScore);
     }
 
     /**
