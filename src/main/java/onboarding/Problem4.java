@@ -17,12 +17,20 @@ public class Problem4 {
     }
 
     private static String treeFrogDictionary(String word) {
-        if (Character.isUpperCase(word.charAt(0))) {
-            return String.valueOf((char) (UPPER_A_ASCII + UPPER_Z_ASCII - (int) word.charAt(0)));
+        char wordChar = word.charAt(0);
+        int wordAscii = wordChar;
+
+        if (Character.isUpperCase(wordChar)) {
+            return asciiToString(UPPER_A_ASCII + UPPER_Z_ASCII - wordAscii);
         }
-        if (Character.isLowerCase(word.charAt(0))) {
-            return String.valueOf((char) (LOWER_A_ASCII + LOWER_Z_ASCII - (int) word.charAt(0)));
+        if (Character.isLowerCase(wordChar)) {
+            return asciiToString(LOWER_A_ASCII + LOWER_Z_ASCII - wordAscii);
         }
         return word;
     }
+
+    private static String asciiToString(int ascii) {
+        return String.valueOf((char) ascii);
+    }
+
 }
