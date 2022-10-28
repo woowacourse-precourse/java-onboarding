@@ -9,8 +9,11 @@ public class Problem3 {
     }
 
     public static int getAnswer(int number) {
-
-        return 0;
+        int cnt = 0;
+        for (int i = 1; i <= number; i++) {
+            cnt += countTargetNum(i);
+        }
+        return cnt;
     }
 
     public static int countTargetNum(int number) {
