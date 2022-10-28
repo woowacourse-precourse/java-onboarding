@@ -6,9 +6,9 @@ import java.util.stream.Collectors;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, List<String>> friendGraph = makeFriendGraph(friends);
-        Map<String, Integer> score = calculateScore(user, visitors, friendGraph);
+        Map<String, Integer> scoreByFriend = calculateScore(user, visitors, friendGraph);
 
-        return score.entrySet().stream()
+        return scoreByFriend.entrySet().stream()
                 .sorted(Collections
                         .reverseOrder(Map.Entry.<String, Integer>comparingByValue())
                         .thenComparing(Map.Entry.comparingByKey()))
