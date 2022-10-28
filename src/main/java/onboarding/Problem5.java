@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Problem5 {
-    public static int moneyForCalculate;
     public static final int START_INDEX = 0;
+    public static int moneyForCalculate;
     public static int[] unit = new int[9];
 
     public static List<Integer> solution(int money) {
