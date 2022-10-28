@@ -20,29 +20,22 @@ public class Problem6 {
         return form.get(NICKNAME);
     }
 
-    private static void addDuplicateNickname(String nickname,
-                                             Set<String> duplicateNickname) {
-        Map<String, Set<String>> nicknameByword = new HashMap<>();
-
-        for (int i = 0; i < nickname.length() - 1; i++) {
-            String part = nickname.substring(i, i + 2);
-            if (!nicknameByword.containsKey(part)) {
-                nicknameByword.put(part, new HashSet<>());
-            }
-            nicknameByword.get(part).add(nickname);
-            if (nicknameByword.get(part).size() >= 2) {
-                duplicateNickname.addAll(nicknameByword.get(part));
-            }
-        }
-    }
-
     private static Set<String> getDuplicateNickname(List<List<String>> forms) {
         Set<String> duplicateNickname = new HashSet<>();
+        Map<String, Set<String>> nicknameByword = new HashMap<>();
 
         for (List<String> form : forms) {
-            String email = getEmail(form);
             String nickname = getNickName(form);
-            addDuplicateNickname(nickname, duplicateNickname);
+            for (int i = 0; i < nickname.length() - 1; i++) {
+                String part = nickname.substring(i, i + 2);
+                if (!nicknameByword.containsKey(part)) {
+                    nicknameByword.put(part, new HashSet<>());
+                }
+                nicknameByword.get(part).add(nickname);
+                if (nicknameByword.get(part).size() >= 2) {
+                    duplicateNickname.addAll(nicknameByword.get(part));
+                }
+            }
         }
         return duplicateNickname;
     }
