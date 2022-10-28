@@ -55,16 +55,16 @@ public class Problem7 {
         }
     }
     public static List<String> sorting(){
-        List<Recommend> list = new ArrayList<>();
+        List<Recommend> scoreList = new ArrayList<>();
         List<String> ans = new ArrayList<>();
 
         for (String key : scores.keySet()){
-            list.add(new Recommend(key, scores.get(key)));
+            scoreList.add(new Recommend(key, scores.get(key)));
         }
 
-        list.sort(Comparator.comparing(Recommend::getScore).reversed().thenComparing(Recommend::getName));
-        if(list.size()>5)list=list.subList(0,5);
-        for(Recommend r : list){
+        scoreList.sort(Comparator.comparing(Recommend::getScore).reversed().thenComparing(Recommend::getName));
+        if(scoreList.size()>5)scoreList=scoreList.subList(0,5);
+        for(Recommend r : scoreList){
             ans.add(r.getName());
         }
         return ans;
