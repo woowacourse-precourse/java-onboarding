@@ -36,11 +36,11 @@ public class AlphabetConverter {
         convertedWord.append(currentChar);
     }
 
-    public void convertLowerCase(char currentChar) {
+    private void convertLowerCase(char currentChar) {
         convertedWord.append((char) (MAX_LOWER_CASE - currentChar + MIN_LOWER_CASE));
     }
 
-    public void convertUpperCase(char currentChar) {
+    private void convertUpperCase(char currentChar) {
         convertedWord.append((char) (MAX_UPPER_CASE - currentChar + MIN_UPPER_CASE));
     }
 }
