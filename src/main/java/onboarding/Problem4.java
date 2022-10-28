@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 public class Problem4 {
 
-//    public static String solution(String word) {
-//        String answer = word;
-//        answer = join(answer);
-//
-//        return answer;
-//    }
-//
+    public static String solution(String word) {
+        String answer = word;
+        answer = join(answer);
+
+        return answer;
+    }
+
     public static ArrayList<Integer> cToitran(String w) {
         /**
          * 캐릭터 -> 아스키 코드 변환
@@ -83,20 +83,19 @@ public class Problem4 {
 
     }
 
-//    public static String join(String w) {
-//        /**
-//         * 아스키코드 -> 최종 반환 스트링 변환
-//         */
-//        ArrayList<Character> chr = iToCtran(w);
-//        StringBuilder sb = new StringBuilder();
-//        for(char ch : chr) {
-//            sb.append(ch);
-//        }
-//        String str = sb.toString();
-////        System.out.println("string"+chr);
-//
-//        return str;
-//    }
+    public static String join(String w) {
+        /**
+         * 아스키코드 -> 최종 반환 스트링 변환
+         */
+        ArrayList<Character> chr = iToCtran(w);
+        StringBuilder sb = new StringBuilder();
+        for(char ch : chr) {
+            sb.append(ch);
+        }
+        String str = sb.toString();
+
+        return str;
+    }
 
 
     public static ArrayList<Character> characterArr(String s) {
