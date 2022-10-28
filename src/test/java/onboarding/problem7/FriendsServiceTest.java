@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class FriendsServiceTest {
 
-    @DisplayName("사용자가 아는 친구의 수를 잘 구한다.")
+    @DisplayName("사용자가 아는 친구의 수를 구해 점수를 산정한다.")
     @Test
     void getRelationship() {
         FriendsService friendsService = new FriendsService();
@@ -25,8 +25,18 @@ class FriendsServiceTest {
                 List.of("shakevan", "mrko")
         );
 
-        Map<String, Integer> relationship = friendsService.getRelationship(user, friends);
+        Map<String, Integer> relationship = friendsService.getRelationshipScore(user, friends);
         System.out.println(relationship);
+    }
+
+    @DisplayName("방문 횟수를 구하고 점수를 산정한다.")
+    @Test
+    void getVisitScore() {
+        VisitorService visitorService = new VisitorService();
+        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+
+        Map<String, Integer> visitScore = visitorService.getVisitScore(visitors);
+        System.out.println(visitScore);
     }
 
 }

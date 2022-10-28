@@ -1,16 +1,14 @@
 package onboarding.problem7;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class FriendsService {
 
-    // 사용자 아이디와 친구 정보를 이용하여 사용자가 아는 친구의 수를 구한다.
-    public Map<String, Integer> getRelationship(String user, List<List<String>> friends) {
-        // "user가 아는 친구"를 "알고 있는 친구"를 구하자.
+    public static final int KNOWN_SCORE = 10;
 
+    // 사용자 아이디와 친구 정보를 이용하여 사용자가 아는 친구의 수를 구한다.
+    public Map<String, Integer> getRelationshipScore(String user, List<List<String>> friends) {
+        // "user가 아는 친구"를 "알고 있는 친구"를 구하자.
         // 1. user가 알고 있는 친구 : 유저 이름이 있는 리스트 조회
         List<String> knownFriends = getKnownFriends(user, friends);
 
@@ -23,7 +21,7 @@ public class FriendsService {
                 if (name.equals(user)) {
                     continue;
                 }
-                results.put(name, results.getOrDefault(name, 0) + 1);
+                results.put(name, (results.getOrDefault(name, 0) + 1) * KNOWN_SCORE);  // 점수를 산정
             }
         }
 
