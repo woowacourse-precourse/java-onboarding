@@ -11,12 +11,16 @@ import java.util.*;
  * */
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        ArrayList<String> result = new ArrayList<>();
+        Set<String> duplicatedEmail = new HashSet<>();
 
         for (List<String> form : forms) {
             List<List<String>> cloneForms = cloneAndRemove(forms, form);
+
+            duplicatedEmail.addAll(getEmailOfDuplicationNickname(cloneForms, form));
         }
 
+        ArrayList<String> result = new ArrayList<>(duplicatedEmail);
+        result.sort(String.CASE_INSENSITIVE_ORDER);
         return result;
     }
 
@@ -25,6 +29,27 @@ public class Problem6 {
         cloneForms.remove(target);
 
         return cloneForms;
+    }
+
+    public static Set<String> getEmailOfDuplicationNickname(List<List<String>> forms, List<String> target) {
+        Set<String> duplicatedEmail = new HashSet<>();
+
+        for (List<String> form : forms) {
+            addIfDuplicated(duplicatedEmail, target, form);
+        }
+        return duplicatedEmail;
+    }
+
+    private static void addIfDuplicated(Set<String> duplicatedEmail, List<String> target, List<String> compare) {
+        String targetEmail = target.get(0);
+        String targetNickname = target.get(1);
+        String compareEmail = compare.get(0);
+        String compareNickname = compare.get(1);
+
+        if (compareBothNickname(targetNickname, compareNickname)) {
+            duplicatedEmail.add(targetEmail);
+            duplicatedEmail.add(compareEmail);
+        }
     }
 
     public static boolean compareBothNickname(String curNickname, String compareNickname) {
