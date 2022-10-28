@@ -2,8 +2,7 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String ans = "ans";
-        return ans;
+        return decipher(cryptogram);
     }
 
     private static String decipher(String cryptogram) {
