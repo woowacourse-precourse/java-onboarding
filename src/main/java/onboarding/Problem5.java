@@ -11,6 +11,7 @@ public class Problem5 {
         if (!isValid(money)){
             return new ArrayList<>();   // 조건이 맞지 않으면 빈 리스트를 반환.
         }
+
         countMoney(money, answer);
 
         return answer;
