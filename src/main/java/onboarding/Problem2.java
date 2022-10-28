@@ -12,7 +12,6 @@ public class Problem2 {
         }
         Stack<Character> stack = new Stack<>();
         answer = eraseDuplicatedElements(cryptogram, stack);
-        System.out.println("결과 : crypto:" + cryptogram);
         return answer;
     }
 
@@ -51,6 +50,5 @@ public class Problem2 {
         }
         return cryptogram;
     }
-
 
 }
