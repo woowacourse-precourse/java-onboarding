@@ -9,18 +9,18 @@ import java.util.List;
 
 public class Problem6 {
     private static boolean isRepeat(String name1, String name2){
-        List<String> name1List = new ArrayList<>();
-        List<String> name2List = new ArrayList<>();
+        List<String> names1 = new ArrayList<>();
+        List<String> names2 = new ArrayList<>();
 
         for(int i = 0; i < name1.length() - 1; i++){
-            name1List.add(name1.substring(i, i + 2));
+            names1.add(name1.substring(i, i + 2));
         }
         for(int i = 0; i < name2.length() - 1; i++){
-            name2List.add(name2.substring(i, i + 2));
+            names2.add(name2.substring(i, i + 2));
         }
 
-        for(int i = 0; i < name1List.size(); i++){
-            if(name2List.contains(name1List.get(i))){
+        for(int i = 0; i < names1.size(); i++){
+            if(names2.contains(names1.get(i))){
                 return true;
             }
         }
@@ -28,18 +28,18 @@ public class Problem6 {
     }
 
     public static List<String> solution(List<List<String>> forms) {
-        HashSet<String> repeatList = new HashSet<>();
+        HashSet<String> repeats = new HashSet<>();
 
         for(int i = 0; i < forms.size(); i++){
             for(int j = i + 1; j < forms.size(); j++){
                 if(isRepeat(forms.get(i).get(1), forms.get(j).get(1))){
-                    repeatList.add(forms.get(i).get(0));
-                    repeatList.add(forms.get(j).get(0));
+                    repeats.add(forms.get(i).get(0));
+                    repeats.add(forms.get(j).get(0));
                 }
             }
         }
 
-        List<String> answer = Lists.newArrayList(repeatList);
+        List<String> answer = Lists.newArrayList(repeats);
         Collections.sort(answer);
 
         return answer;
