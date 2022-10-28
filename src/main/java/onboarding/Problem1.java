@@ -12,7 +12,7 @@ class Problem1 {
         int pobiScore = getFinalScore(pobi);
         int crongScore = getFinalScore(crong);
 
-        int answer = Integer.MAX_VALUE;
+        int answer = determinateWinner(pobiScore, crongScore);
         return answer;
     }
 
