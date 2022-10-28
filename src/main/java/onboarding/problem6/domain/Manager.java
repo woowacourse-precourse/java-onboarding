@@ -37,4 +37,12 @@ public class Manager {
     public List<String> duplicateAccountEmails() {
         return duplicateAccountEmails.duplicateAccountEmails();
     }
+    
+    @Override
+    public String toString() {
+        return "Manager{" +
+                "users=" + users +
+                ", duplicateAccountEmails=" + duplicateAccountEmails +
+                '}';
+    }
 }

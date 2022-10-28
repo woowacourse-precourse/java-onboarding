@@ -15,6 +15,15 @@ public class Users {
     }
     
     private List<List<User>> parseTwoLetterNames() {
-        return users.stream().map(User::twoLetterNames).collect(Collectors.toList());
+        return users.stream()
+                .map(User::twoLetterNames)
+                .collect(Collectors.toList());
+    }
+    
+    @Override
+    public String toString() {
+        return "Users{" +
+                "users=" + users +
+                '}';
     }
 }
