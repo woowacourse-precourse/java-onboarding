@@ -96,7 +96,13 @@ public class Problem6 {
     }
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> nicknames = allNicknames(forms);
+        List<String> emails = allEmails(forms);
+        List<String> possibleStr = possibleSubstrings(nicknames);
+        HashMap<String, Integer> counter = stringCounter(possibleStr);
+        List<String> repeats = repeatedSubstr(counter);
+        List<String> answer = sendEmail(repeats, nicknames, emails);
+
         return answer;
     }
 }
