@@ -25,13 +25,14 @@ public class Problem7 {
 
         int userIndex = friendNameList.indexOf(user);
         List<Integer> userFriendIndexes = getUserFriendIndexes(matrix, userIndex);
+        List<String> userFriendList = changeIndexesToName(userFriendIndexes, friendNameList);
 
         List<Integer> matchFriendIndexes = matchFriendList(matrix, userFriendIndexes);
         List<String> matchFriendString = changeIndexesToName(matchFriendIndexes, friendNameList);
 
         friendMap = giveTenPoint(matchFriendString, friendMap);
         friendMap = giveOnePoint(visitors, friendMap);
-        friendMap = deleteUserAndUserFriend(friendMap, friendNameList, user);
+        friendMap = deleteUserAndUserFriend(friendMap, userFriendList, user);
 
         answer = sortByScoreAndName(friendMap);
 
