@@ -33,6 +33,37 @@ class ApplicationTest {
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
+
+        @Test
+        //페이지 범위가 1~400인지 테스트
+        void case4() {
+            List<Integer> pobi1 = List.of(-51, -50);
+            List<Integer> pobi2 = List.of(0, 1);
+            List<Integer> pobi3 = List.of(401, 402);
+            List<Integer> crong = List.of(211, 212);
+            int result = -1;
+            assertThat(Problem1.solution(pobi1, crong)).isEqualTo(result);
+            assertThat(Problem1.solution(pobi2, crong)).isEqualTo(result);
+            assertThat(Problem1.solution(pobi3, crong)).isEqualTo(result);
+        }
+
+        @Test
+        //왼쪽 페이지가 홀수, 오른쪽 페이지가 짝수인지 테스트
+        void case5() {
+            List<Integer> pobi = List.of(100, 101);
+            List<Integer> crong = List.of(211, 212);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        //무승부일 경우 테스트
+        void case6() {
+            List<Integer> pobi = List.of(121, 122);
+            List<Integer> crong = List.of(211, 212);
+            int result = 0;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
     }
 
     @Nested
