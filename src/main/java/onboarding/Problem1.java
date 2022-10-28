@@ -35,7 +35,7 @@ class Problem1 {
         int leftPage = pageList.get(0);
         int rightPage = pageList.get(1);
 
-        if (rightPage - leftPage != 1 || leftPage < 1 || rightPage < 1 || leftPage > 400 || rightPage > 400)
+        if (rightPage - leftPage != 1 || leftPage < 3 || rightPage < 4 || leftPage > 397 || rightPage > 398)
             return PAGE_ERROR;
 
         return max(pageToCalMaxNum(leftPage), pageToCalMaxNum(rightPage));
