@@ -4,82 +4,81 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Problem2 {
-	static final int start = 0;
-	static final int finish = 1;
+	static final int first = 0;
+	static final int last = 1;
 
     public static String solution(String cryptogram) {
         String answer = "answer";
 
-		exceptionCheck(cryptogram);
+		checkException(cryptogram);
 
-		List<Character> word = createList(cryptogram);
+		List<Character> cryptogram_list = toList(cryptogram);
 
 		//연속해서 중복되는 문자가 없을 때 까지
-		while (true)
-		{
+		while (true) {
 			//연속해서 중복되는 범위를 구함
-			int [] range = findDuplication(word);
+			int [] range = findDuplication(cryptogram_list);
 			//문자의 중복되는 범위를 제거
-			remove(word, range[start], range[finish]);
+			remove(cryptogram_list, range[first], range[last]);
 
 			//연속해서 중복되는 문자가 없을 경우 종료
-			if (range[1] == 0)
+			if (range[last] == 0)
 				break;
 		}
-		answer = listToString(word);
+		answer = toString(cryptogram_list);
 
         return answer;
     }
 
 	//String을 List로 변환
-	public static List<Character> createList(String word) {
-		List<Character> wordList = new ArrayList<>();
+	public static List<Character> toList(String cryptogram) {
+		List<Character> cryptogram_list = new ArrayList<>();
 
-		for (int i = 0; i < word.length(); i++)
-			wordList.add(word.charAt(i));
+		for (int i = 0; i < cryptogram.length(); i++)
+			cryptogram_list.add(cryptogram.charAt(i));
 
-		return wordList;
+		return cryptogram_list;
 	}
 
 	//list를 String으로 변환
-	public static String listToString(List<Character> list) {
+	public static String toString(List<Character> cryptogram_list) {
 		String str = "";
 
-		for (int i = 0; i < list.size(); i++)
-			str += list.get(i);
+		for (int i = 0; i < cryptogram_list.size(); i++)
+			str += cryptogram_list.get(i);
 		return str;
 	}
 
 	//중복 제거 함수
-	public static List<Character> remove(List<Character> wordlist, int first, int last) {
+	public static List<Character> remove(List<Character> cryptogram_list, int first, int last) {
 		int index = first;
 
 		for (int i = index; i < last; i++)
-			wordlist.remove(first);
+			cryptogram_list.remove(first);
 
-		return wordlist;
+		return cryptogram_list;
 	}
 
 	//중복되는 문자의 범위를 찾는 함수
-	public static int[] findDuplication(List<Character> wordlist) {
+	public static int[] findDuplication(List<Character> cryptogram_list) {
 		boolean isVisited = false;
 		int[ ] range = new int[2];
-		int last = 0;
+		int lastIndex = 0;
 
-		for (int i = 0; i < wordlist.size(); i++) {
+		for (int i = 0; i < cryptogram_list.size(); i++) {
 			//연속해서 중복이 된 문자의 범위를 저장함
 			if (isVisited) {
-				range[0] = i - 1;
-				range[1] = last + 1;
+				range[first] = i - 1;
+				range[last] = lastIndex + 1;
 				return range;
 			}
-			for (int j = i + 1; j < wordlist.size(); j++) {
+			for (int j = i + 1; j < cryptogram_list.size(); j++) {
 				//연속해서 중복되지 않았을 때
-				if (wordlist.get(i) != wordlist.get(j))
+				if (cryptogram_list.get(i) != cryptogram_list.get(j))
 					break;
 				//연속해서 중복되었을 때
-				if (wordlist.get(i) == wordlist.get(j)) {
-					last = j;		//인덱스를 저장
+				if (cryptogram_list.get(i) == cryptogram_list.get(j)) {
+					lastIndex = j;		//인덱스를 저장
 					isVisited = true;
 				}
 			}
@@ -88,20 +87,18 @@ public class Problem2 {
 	}
 
 	//대문자 있는지 확인
-	public static boolean checkUpperCase(String word)
-	{
-		for (int i = 0; i < word.length(); i++)
-		{
-			if (Character.isUpperCase(word.charAt(i)))
+	public static boolean checkUpperCase(String cryptogram) {
+		for (int i = 0; i < cryptogram.length(); i++)
+			if (Character.isUpperCase(cryptogram.charAt(i)))
 				return true;
-		}
+
 		return false;
 	}
-	public static boolean exceptionCheck(String word){
-		if (word.length() < 1 || word.length() > 1000)
+	public static boolean checkException(String cryptogram){
+		if (cryptogram.length() < 1 || cryptogram.length() > 1000)
 			throw new IllegalArgumentException("ERROR");
 		//대문자가 있는지
-		if (checkUpperCase(word))
+		if (checkUpperCase(cryptogram))
 			throw new IllegalArgumentException("ERROR");
 		return true;
 	}
