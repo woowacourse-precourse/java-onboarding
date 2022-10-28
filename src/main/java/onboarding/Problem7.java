@@ -10,6 +10,8 @@ public class Problem7 {
         Map<String, Member> memberDataBase = new HashMap<>();
 
         checkFriendStatus(memberDataBase, friends);
+
+        addScoreByUserFriend(memberDataBase, user);
     private static void checkFriendStatus(Map<String, Member> memberDataBase, List<List<String>> friends) {
         for (List<String> friendList : friends) {
             Member friend0 = getMemberData(memberDataBase, friendList.get(0));
@@ -18,6 +20,22 @@ public class Problem7 {
             addFriendEachOther(friend0, friend1);
         }
     }
+    private static void addScoreByUserFriend(Map<String, Member> memberDataBase, String user) {
+        List<Member> memberFriendList = getMemberData(memberDataBase, user).getFriendList();
+
+        if (memberFriendList != null) {
+            for (Member myFriend : memberFriendList) {
+                myFriend.setFriendState();
+
+                List<Member> friendListOfMyFriend = getMemberData(memberDataBase, myFriend.getName()).getFriendList();
+
+                for (Member friend : friendListOfMyFriend) {
+                    if (friend.getName().equals(user))
+                        continue;
+
+                    friend.addRecommendScoreByFriendship();
+                }
+            }
         }
         return answer;
     }
