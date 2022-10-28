@@ -1,5 +1,8 @@
 package onboarding;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 🚀 기능 요구 사항
  * 어느 연못에 엄마 말씀을 좀처럼 듣지 않는 청개구리가 살고 있었다. 청개구리는 엄마가 하는 말은 무엇이든 반대로 말하였다.
@@ -16,7 +19,19 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        Map<Character, Character> greenFrog = new HashMap<>();
+        for (char i = 'a', j = 'z', k = 'A', l = 'Z'; i <= 'z'; i++, j--, k++, l--) {
+            greenFrog.put(i, j);
+            greenFrog.put(k, l);
+        }
+        StringBuilder answer = new StringBuilder();
+        for (char c : word.toCharArray()) {
+            if (greenFrog.containsKey(c)) {
+                answer.append(greenFrog.get(c));
+                continue;
+            }
+            answer.append(c);
+        }
+        return answer.toString();
     }
 }
