@@ -12,7 +12,7 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> friendList = generateFriendList(friends, user);
-        List<String> relatedUserList = generateRelatedUser(friends, user);
+        List<String> relatedUserList = generateRelatedUser(friends, friendList,user);
         List<String> unknownVisitors = exceptFriend(visitors, friendList);
         Map<String, Integer> scoreMap = generateScoreMap(relatedUserList, unknownVisitors);
         List<String> sortedUserList = sortScoreMap(scoreMap);
@@ -33,11 +33,13 @@ public class Problem7 {
         return friendList;
     }
 
-    private static List<String> generateRelatedUser(List<List<String>> friends, String user) {
+    private static List<String> generateRelatedUser(List<List<String>> friends, List<String> friendList, String user) {
         List<String> relatedUserList = new ArrayList<>();
         for (List<String> friend : friends) {
             String userName = friend.get(1);
-            if (!userName.equals(user)) {
+            if (!userName.equals(user)
+                    && !friendList.contains(userName)
+                    && friendList.contains(friend.get(0))) {
                 relatedUserList.add(userName);
             }
         }
