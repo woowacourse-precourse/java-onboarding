@@ -13,7 +13,7 @@ public class Visitor {
         this.name = name;
     }
 
-    public static Visitor of(String name) {
+    public static Visitor create(String name) {
         return new Visitor(name);
     }
 
