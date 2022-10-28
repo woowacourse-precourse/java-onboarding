@@ -10,6 +10,10 @@ public class Problem4 {
         return (char) (155 - (int) upperChar);
     }
 
+    public static char transformLower(char lowerChar) {
+        return (char) (219 - (int) lowerChar);
+    }
+
     public static boolean isUpper(char c) {
         return 65 <= (int) c && (int) c <= 90;
     }
