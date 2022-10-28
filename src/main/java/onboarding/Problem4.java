@@ -4,6 +4,10 @@ public class Problem4 {
 
     public static String solution(String word) {
 
+        if (word.length() < 1 || word.length() > 1000) {
+            throw new IllegalArgumentException();
+        }
+
         StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < word.length(); i++) {

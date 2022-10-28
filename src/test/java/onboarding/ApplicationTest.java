@@ -242,6 +242,20 @@ class ApplicationTest {
             String result = "aA !@#$%^&*()-=_+[]{}:<>,./? 1234567890 zZ";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
+
+        @Test
+        void invalidWordEmpty() {
+            String word = "";
+            assertThatThrownBy(() -> Problem4.solution(word))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        void invalidWordTooLong() {
+            String word = "a".repeat(1001);
+            assertThatThrownBy(() -> Problem4.solution(word))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
     }
 
     @Nested
