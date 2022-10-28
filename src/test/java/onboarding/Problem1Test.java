@@ -46,4 +46,15 @@ public class Problem1Test {
         assertThat(problem.multiEachNum(197)).isEqualTo(63);
         assertThat(problem.multiEachNum(300)).isEqualTo(0);
     }
+
+    @Test
+    @DisplayName("Get Max Score Test")
+    void getScoreTest() {
+        List<Integer> list1 = List.of(197, 198);
+        List<Integer> list2 = List.of(299, 300);
+        List<Integer> list3 = List.of(101, 102);
+        assertThat(problem.getScore(list1)).isEqualTo(72);
+        assertThat(problem.getScore(list2)).isEqualTo(162);
+        assertThat(problem.getScore(list3)).isEqualTo(3);
+    }
 }

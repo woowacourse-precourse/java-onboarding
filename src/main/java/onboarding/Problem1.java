@@ -13,8 +13,15 @@ class Problem1 {
         if(pageIndexException(pobi) || pageIndexException(crong)){
             return -1;
         }
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        int pobiScore = getScore(pobi);
+        int crongScore = getScore(crong);
+
+        if (pobiScore < crongScore){
+            return 2;
+        } else if (pobiScore > crongScore) {
+            return 1;
+        }
+        return 0;
     }
 
     public static boolean listSizeException(List<Integer> list){
@@ -29,6 +36,20 @@ class Problem1 {
 
     private static boolean isOdd(int num){
         return num % 2 == 1;
+    }
+
+    public static int getScore(List<Integer> list){
+        int left = list.get(0);
+        int right = list.get(1);
+        return Math.max(getMaxLeftPage(left), getMaxRightPage(right));
+    }
+
+    private static int getMaxLeftPage(int left){
+        return Math.max(sumEachNum(left), multiEachNum(left));
+    }
+
+    private static int getMaxRightPage(int right){
+        return Math.max(sumEachNum(right), multiEachNum(right));
     }
 
     public static int sumEachNum(int num){
