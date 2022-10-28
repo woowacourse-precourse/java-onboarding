@@ -7,7 +7,7 @@ public class Problem2 {
     // 기능 요구 사항
     // TODO 중복 문자의 시작 인덱스를 리턴하는 메서드
     public static int getIndex(String cryptogram) {
-        for (int i = 0; i <cryptogram.length(); i++) {
+        for (int i = 0; i <cryptogram.length()-1; i++) {
             if (cryptogram.charAt(i) == cryptogram.charAt(i+1)) return i;
         }
         return -1;
