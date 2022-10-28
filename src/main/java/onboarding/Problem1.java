@@ -5,6 +5,7 @@ import java.util.List;
 /**
  * 요구 사항
  * 책을 임의로 펼친다.
+ * 왼쪽 페이지는 짝수, 오른쪽 페이지는 홀수
  * 왼쪽 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구한다.
  * 오른쪽 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구한다.
  * 2~3 과정에서 가장 큰 수를 본인의 점수로 한다.
@@ -23,6 +24,35 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE; // int 범위에서 최대값 2147483647
 
+        int pobyScore = maxScore(pobi);
+        int crongScore = maxScore(crong);
         return answer;
+    }
+
+    public static int maxScore(List<Integer> name) {  // 각 페이지의 최대값을 구해 각 페이지의 최대값을 비교하여 return
+        int leftMaxScore = 0; // 왼쪽 페이지에서 가장 큰 값
+        int rightMaxScore = 0; // 오른쪽 페이지에서 가장 큰 값
+
+        for (int i=0; i<2; i++) {
+            int pageNumber = name.get(i); // 0일 때 왼쪽, 1일 때 오른쪽
+            int sum = 0; // 각 페이지의 자리수를 합한 결과
+            int multi = 1; // 각 페이지의 자리수를 곱한 결과
+
+            while (pageNumber > 0) {
+                sum += pageNumber % 10; // 각 자리수를 더함
+                multi *= pageNumber % 10; // 각 자리수를 곱함
+                pageNumber /= 10;
+            }
+
+            if(sum > multi)  // 더한 값이 클 때
+                leftMaxScore = sum;
+            else   // 곱한 값이 클 때
+                rightMaxScore = multi;
+        }
+
+        if (leftMaxScore > rightMaxScore) // 왼쪽 페이지가 클 떄
+            return leftMaxScore;
+
+        return rightMaxScore; // 오른쪽 페이지가 크거나 같을 때
     }
 }
