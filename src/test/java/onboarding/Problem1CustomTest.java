@@ -106,5 +106,19 @@ public class Problem1CustomTest {
                     Problem1Validation.isBookNumberOddEvenPair(list))
                     .isTrue();
         }
+        @Test
+        void 첫번째값에1더한값이두번째값이안되는경우() {
+            List<Integer> list = List.of(39, 42);
+            assertThat(
+                    Problem1Validation.isFirstAddOneEqualsSecondValue(list))
+                    .isFalse();
+        }
+        @Test
+        void 첫번째값에1더한값이두번째값이되는경우() {
+            List<Integer> list = List.of(39, 40);
+            assertThat(
+                    Problem1Validation.isFirstAddOneEqualsSecondValue(list))
+                    .isFalse();
+        }
     }
 }

@@ -44,4 +44,8 @@ public class Problem1Validation {
             return false;
         }
     }
+
+    public static boolean isFirstAddOneEqualsSecondValue(List<Integer> list) {
+        return false;
+    }
 }
