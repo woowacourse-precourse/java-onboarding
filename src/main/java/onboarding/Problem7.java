@@ -17,6 +17,17 @@ public class Problem7 {
         return answer;
     }
 
+    public static void makeScoresWithFriendship(HashMap<String, List<String>> friendship, HashMap<String, Integer> scores, List<String> userFriends, String crew) {
+        int score = 0;
+
+        for (String crewFriend : friendship.get(crew)) {
+            if (userFriends.contains(crewFriend)) {
+                score += 10;
+            }
+        }
+        scores.put(crew, score);
+    }
+
     public static void makeFriendship(List<List<String>> friends, HashMap<String, List<String>> friendship) {
         String crew1, crew2;
 
