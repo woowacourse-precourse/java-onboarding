@@ -10,7 +10,7 @@ public class Problem3 {
     }
     public static int changeCountByExists(int number, int count) {
         for (int j = 0; j < numberStringify(number).length(); j += 1) {
-            if (validate369(numberStringify(number), j)) { count += 1; }
+            if (isNumber369(numberStringify(number), j)) { count += 1; }
         }
         return count;
     }
@@ -19,7 +19,7 @@ public class Problem3 {
         return number + "";
     }
 
-    public static boolean validate369(String string, int j){
+    public static boolean isNumber369(String string, int j){
         return string.charAt(j) == '3' || string.charAt(j) == '6' || string.charAt(j) == '9';
     }
 
