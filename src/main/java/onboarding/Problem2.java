@@ -24,6 +24,14 @@ public class Problem2 {
                 break;
             }
         }
-        return cryptogram;
+
+        // 중복 문자를 제거한 새로운 cryptogram 구하기
+        String newCryptogram;
+        if (startIndex == 0){
+            newCryptogram = cryptogram.substring(endIndex+1);
+            return solution(newCryptogram);
+        }
+        newCryptogram = cryptogram.substring(0,startIndex) + cryptogram.substring(endIndex+1);
+        return solution(newCryptogram);
     }
 }
