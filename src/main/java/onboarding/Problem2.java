@@ -10,10 +10,7 @@ public class Problem2 {
         String tmp = cryptogram;
 
         while(flag) {
-            for (int i = 'a'; i <= 'z'; i++) {
-                String regex = (char)i + sampleRegex;
-                cryptogram = cryptogram.replaceAll(regex, "");
-            }
+            cryptogram = decrypt(cryptogram);
 
             if (tmp != cryptogram) {    // 중복을 삭제한 경우
                 tmp = cryptogram;
@@ -24,5 +21,14 @@ public class Problem2 {
         }
 
         return answer;
+    }
+
+    public static String decrypt(String cryptogram) {
+        for (int i = 'a'; i <= 'z'; i++) {
+            String regex = (char)i + sampleRegex;
+            cryptogram = cryptogram.replaceAll(regex, "");
+        }
+
+        return cryptogram;
     }
 }
