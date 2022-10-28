@@ -50,6 +50,25 @@ public class Problem6 {
         }
         return kmpTable;
     }
+    public static Boolean doKMP(String nickname, String pattern, int[] kmpTable){
+        int nicknameLen = nickname.length();
+        int patternLen = pattern.length();
+
+        int count = 0;
+        for (int i = 0; i < nicknameLen; i++) {
+            while (count > 0 && nickname.charAt(i) != pattern.charAt(count)) {
+                count = kmpTable[count - 1];
+            }
+            if (nickname.charAt(i) == pattern.charAt(count)) {
+                if (count == patternLen - 1) {
+                    return true;
+                }else{
+                    count += 1;
+                }
+            }
+        }
+        return false;
+    }
 
     public static Set<String> findPattern(List<List<String>> forms) {
         Set<String> allPattern = new HashSet<>();
