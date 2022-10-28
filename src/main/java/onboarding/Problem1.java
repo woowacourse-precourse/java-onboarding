@@ -36,6 +36,11 @@ class Problem1 {
 
 
     public static int getDigitAddValue(int value) {
-        return 0;
+        int summation = 0;
+        while (value > 0) {
+            summation += value % 10;
+            value /= 10;
+        }
+        return summation;
     }
 }
