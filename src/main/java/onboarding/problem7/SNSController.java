@@ -2,14 +2,42 @@ package onboarding.problem7;
 
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 
 public class SNSController {
 
     private HashMap<String, User> users;
 
+    private static final int FRIENDS_FRIEND_RECOMMEND_POINT = 10;
+    private static final int VISITED_USER_RECOMMEND_POINT = 1;
+
     public SNSController(){
         users = new HashMap<>();
+    }
+
+
+    private List<RecommendPoint> generateFriendRecommendPoint(String userName){
+
+        List<RecommendPoint> recommendPoints = new LinkedList<>();
+
+        List<String> friendsFriendNames = findFriendsFriend(userName);
+        for(String recommendUserName : friendsFriendNames){
+            RecommendPoint recommendPoint = new RecommendPoint(recommendUserName);
+            recommendPoint.addPoints(FRIENDS_FRIEND_RECOMMEND_POINT);
+            recommendPoints.add(recommendPoint);
+        }
+        return recommendPoints;
+    }
+
+    private List<String> findFriendsFriend(String userName){
+        List<String> friendsFriend = new LinkedList<>();
+        User user = users.get(userName);
+        for(String friendName : user.getFriendNames()){
+            User friend = users.get(friendName);
+            friendsFriend.addAll(friend.getFriendNames());
+        }
+        return friendsFriend;
     }
 
     public void addUser(String userName){
@@ -47,12 +75,12 @@ public class SNSController {
         users.put(userName, user);
     }
 
-    private class FriendRecommendPoint implements Comparable<FriendRecommendPoint>{
+    private class RecommendPoint implements Comparable<RecommendPoint>{
 
         private final String name;
         private int point;
 
-        public FriendRecommendPoint(String name){
+        public RecommendPoint(String name){
             this.name = name;
             point = 0;
         }
@@ -70,7 +98,7 @@ public class SNSController {
         }
 
         @Override
-        public int compareTo(FriendRecommendPoint o) {
+        public int compareTo(RecommendPoint o) {
             return this.point - o.getPoint();
         }
     }
