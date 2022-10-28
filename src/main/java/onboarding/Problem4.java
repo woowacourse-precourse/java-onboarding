@@ -5,9 +5,10 @@ public class Problem4 {
         StringBuilder answer = new StringBuilder();
         for (int i = 0; i < word.length(); i++) {
             int strToCharDigit = word.charAt(i);                //글자 하나를 불러온다.
-            if (isAlphabet(answer, strToCharDigit)) continue;
+            if (isAlphabet(answer, strToCharDigit)) continue;   //알파벳인지 체크
 
-
+            strToCharDigit = distributeUpper(strToCharDigit);   //대소문자 구분
+            answer.append(Character.toString(strToCharDigit));  //문자추가
         }
         return answer.toString();
     }
