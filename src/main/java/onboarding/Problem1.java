@@ -14,7 +14,7 @@ class Problem1 {
         if(page[1]-page[0]!=1 || page[3]-page[2]!=1 || page[0]==1 || page[1]==400 || page[2]==1 || page[3]==400){
             return -1;
         }
-        
+
         // each page's additions and multiplications
         for(int i=0; i<page.length; i++){
             while(page[i]>0){
@@ -56,7 +56,5 @@ class Problem1 {
         else{ //draw
             return 0;
         }
-
-        return answer;
     }
 }
