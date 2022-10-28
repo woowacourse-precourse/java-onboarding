@@ -1,7 +1,7 @@
 package onboarding.problem6;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+
 
 public class DuplicateNickname {
 
@@ -22,6 +22,22 @@ public class DuplicateNickname {
                 this.split_nickname.add(nickname.substring(j, j+2));
             }
         }
+    }
+
+    public Set<Integer> DuplicatEmailIndex() {
+        Map<String,Integer> map = new HashMap();
+        Set<Integer> result = new TreeSet<>();
+
+        for(int i = 0; i < this.split_nickname.size(); i++) {
+            if (map.containsKey(split_nickname.get(i))) {
+                result.add(forms_idx.get(i));
+                result.add(map.get(split_nickname.get(i)));
+            }
+            else if (!map.containsKey(split_nickname.get(i)))
+                map.put(split_nickname.get(i), i);
+        }
+
+        return result;
     }
 
 }
