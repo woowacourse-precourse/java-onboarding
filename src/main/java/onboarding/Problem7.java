@@ -25,6 +25,13 @@ public class Problem7 {
             allUserPoint.put(name, allUserPoint.get(name)+(point*10));
         }
 
+        for (String visitor : visitors) {
+            if (isFriends(visitor, contacts.get(user))) {
+                continue;
+            }
+            allUserPoint.put(visitor, allUserPoint.getOrDefault(visitor, 0)+1);
+        }
+
         List<String> answer = Collections.emptyList();
         return answer;
     }
