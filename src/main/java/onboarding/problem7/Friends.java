@@ -1,9 +1,12 @@
 package onboarding.problem7;
 
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Friends {
+
+    private static final Integer FRIEND_SCORE = 10;
 
     private List<Friend> friends;
 
@@ -33,5 +36,21 @@ public class Friends {
         if (friends.size() > 100000) {
             throw new IllegalStateException("Friends의 크기는 10000이하어야 합니다.");
         }
+    }
+
+    public List<Recommend> getFriendsRecommend(User user, List<String> myFriendList) {
+        return friends.stream()
+                .filter(isNotMyFriendFilter(myFriendList))
+                .filter(friendsFriendIsNotMeFilter(user))
+                .map(friend -> Recommend.create(friend.getFriendName(), FRIEND_SCORE))
+                .collect(Collectors.toUnmodifiableList());
+    }
+
+    private Predicate<Friend> friendsFriendIsNotMeFilter(User user) {
+        return friend -> !user.getName().equals(friend.getFriendName());
+    }
+
+    private Predicate<Friend> isNotMyFriendFilter(List<String> myFriendList) {
+        return friend -> !myFriendList.contains(friend.getFriendName());
     }
 }
