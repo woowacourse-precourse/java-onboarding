@@ -13,20 +13,30 @@ package onboarding;
 public class Problem3 {
     private static final int[] numberArray = new int[10_001];
     public static int solution(int number) {
-        if (numberArray[3] != 0) {
+        boolean isAlreadyInitialized = numberArray[3] != 0;
+        if (isAlreadyInitialized) {
             return numberArray[number];
         }
+        initializeNumbers369Count();
+        return numberArray[number];
+    }
+
+    private static void initializeNumbers369Count() {
         for (int i = 3; i < numberArray.length; i++) {
             String numStr = i + "";
-            int count = 0;
-            for (int j = 0; j < numStr.length(); j++) {
-                int digitNumber = Character.getNumericValue(numStr.charAt(j));
-                if (digitNumber % 3 == 0 && digitNumber != 0) {
-                    count++;
-                }
-            }
-            numberArray[i] = numberArray[i - 1] + count;
+            numberArray[i] = numberArray[i - 1] + getCount369Num(numStr);
         }
-        return numberArray[number];
+    }
+
+    private static int getCount369Num(String numStr) {
+        int count = 0;
+        for (int j = 0; j < numStr.length(); j++) {
+            int digitNumber = Character.getNumericValue(numStr.charAt(j));
+            boolean isInclude369 = digitNumber % 3 == 0 && digitNumber != 0;
+            if (isInclude369) {
+                count++;
+            }
+        }
+        return count;
     }
 }
