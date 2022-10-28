@@ -17,9 +17,9 @@ public class Problem4 {
 }
 
 class TreeFrog {
-    String word;
-    String answer;
-    StringBuilder sb = new StringBuilder();
+    private String word;
+    private String answer;
+    private StringBuilder sb = new StringBuilder();
 
     TreeFrog(String word) {
         this.word = word;
@@ -46,8 +46,4 @@ class TreeFrog {
         }
         answer = sb.toString();
     }
-
-
-
-
 }
