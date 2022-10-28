@@ -2,8 +2,15 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
-        return answer;
+        return getTotalClapCount(number);
+    }
+
+    private static int getTotalClapCount(int maxNumber) {
+        int totalCount = 0;
+        for (int number = 1; number <= maxNumber; number++) {
+            totalCount += getClapCount(number);
+        }
+        return totalCount;
     }
 
     private static int getClapCount(int number) {
