@@ -19,7 +19,6 @@ class Problem1 {
         int pobiLeftPageNumber = pobi.get(0), pobiRightPageNumber = pobi.get(1);
         int crongLeftPageNumber = crong.get(0), crongRightPageNumber = crong.get(1);
 
-
         if (!isOdd(pobiLeftPageNumber) || isOdd(pobiRightPageNumber) || !isOdd(crongLeftPageNumber) || isOdd(crongRightPageNumber)) {
             answer = -1;
             return answer;
@@ -75,7 +74,7 @@ class Problem1 {
         int maxValue = number % 10;
         number /= 10;
         while (number != 0) {
-            maxValue += number % 10;
+            maxValue *= number % 10;
             number /= 10;
         }
         return maxValue;
