@@ -9,7 +9,7 @@ public class Pages {
     private final int right;
 
     public Pages(List<Integer> pages) {
-        if(!Validator.validatePages(pages)){
+        if (!Validator.validatePages(pages)) {
             throw new IllegalArgumentException();
         }
 
@@ -21,7 +21,7 @@ public class Pages {
         int leftMaxValue = getMaxBetweenSumAndMultiple(this.left);
         int rightMaxValue = getMaxBetweenSumAndMultiple(this.right);
 
-        return Math.max(leftMaxValue,rightMaxValue);
+        return Math.max(leftMaxValue, rightMaxValue);
     }
 
     private int getMaxBetweenSumAndMultiple(int value) {

@@ -9,16 +9,16 @@ class Problem1 {
     private static Pages crongPages;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        try{
+        try {
             pobiPages = new Pages(pobi);
             crongPages = new Pages(crong);
             return checkWinner();
-        }catch (IllegalArgumentException ex){
+        } catch (IllegalArgumentException ex) {
             return -1;
         }
     }
 
-    private static int checkWinner () {
+    private static int checkWinner() {
         int pobiMaxValue = pobiPages.getMaxValue();
         int crongMaxValue = crongPages.getMaxValue();
 
