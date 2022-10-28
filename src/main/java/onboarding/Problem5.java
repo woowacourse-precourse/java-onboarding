@@ -9,7 +9,7 @@ public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> answer = new ArrayList<>();
         int index=0;
-        while (money!=0 && index < values.size()){
+        while (index < values.size()){
             money=calculate(answer,money,values.get(index));
             index++;
         }
