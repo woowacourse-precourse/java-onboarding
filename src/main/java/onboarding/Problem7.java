@@ -29,8 +29,8 @@ public class Problem7 {
             hashMap.put(list.get(1), temp);
         }
 
-        //각 id별로 점수를 저장할 TreeMap
-        Map<String, Integer> scoreMap = new TreeMap<>();
+        //각 id별로 점수를 저장할 hashMap
+        Map<String, Integer> scoreMap = new HashMap<>();
 
         //user의 친구 목록에서 id를 하나씩 꺼내서
         for(String f : hashMap.get(user)){
@@ -59,8 +59,27 @@ public class Problem7 {
             scoreMap.remove(user);
 
 
+        //각 id별로 점수를 저장한 scoreMap(HashMap)을 value를 기준으로 내림차순으로 정렬하는 코드
+        List<Map.Entry<String, Integer>> list_entries = new ArrayList<>(scoreMap.entrySet());
+        Collections.sort(list_entries, new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o2.getValue().compareTo(o1.getValue());
+            }
+        });
 
-        List<String> answer = Collections.emptyList();
+        //정답을 저장하는 arrayList
+        List<String> answer = new ArrayList<>();
+        int size_count = 0;
+
+        for(Map.Entry<String,Integer> entry : list_entries){
+            answer.add(entry.getKey());
+            size_count++;
+            //최대 5명까지만 출력하는 문제라서, 5명을 arrayList에 추가했다면 break
+            if(size_count == 5)
+                break;
+        }
+
         return answer;
     }
 }
