@@ -5,6 +5,8 @@ public class Problem4 {
     public static String solution(String word) {
         String answer = "";
 
+        checkException(word);
+        
         answer = returnAlpha(word);
 
         return answer;
@@ -35,5 +37,14 @@ public class Problem4 {
         }
 
         return alpha;
+    }
+
+    /*
+    예외 처리 함수
+     */
+    public static void checkException(String word)
+    {
+        if (word.length() < 1 || word.length() > 1000)
+            throw new IllegalArgumentException("ERROR");
     }
 }
