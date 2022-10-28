@@ -15,6 +15,15 @@ public class Problem4 {
         return answer;
     }
 
+    public static char convert(char characterToConvert) {
+        if (Character.isLowerCase(characterToConvert))
+            return convertCharacter('a', characterToConvert);
+
+        if(Character.isUpperCase(characterToConvert))
+            return convertCharacter('A', characterToConvert);
+
+        return characterToConvert;
+    }
     public static char convertCharacter(char entryPoint, char alphabet){
         return (char)(entryPoint + NUM_OF_ALPHABET-1 - (alphabet-entryPoint));
     }

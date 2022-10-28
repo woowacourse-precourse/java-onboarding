@@ -124,6 +124,16 @@ class ApplicationTest {
             assertThat(Problem4.convertCharacter('A', ch1)).isEqualTo(result1);
             assertThat(Problem4.convertCharacter('a', ch2)).isEqualTo(result2);
         }
+
+        @Test
+        void convertTest(){
+            char ch1 = 'C';
+            char ch2 = 'a';
+            char ch3 = '!';
+            assertThat(Problem4.convert(ch1)).isEqualTo('X');
+            assertThat(Problem4.convert(ch2)).isEqualTo('z');
+            assertThat(Problem4.convert(ch3)).isEqualTo('!');
+        }
     }
 
     @Nested
