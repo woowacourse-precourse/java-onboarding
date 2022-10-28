@@ -1,9 +1,11 @@
 package onboarding;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -19,6 +21,21 @@ public class Problem7 {
                     userFriends.addAll(friends.get(i));      
                     userFriends.remove(user);
                 }
+            }
+        }
+        
+        /* 함께 아는 친구 점수 */
+        Map<String, Integer> friendScore = new HashMap<>();
+        for (List<String> list : friends) {
+            // 이미 친구인 친구는 제외
+            if (list.get(0).equals(user) || list.get(1).equals(user)) {
+                continue;
+            } else if (userFriends.contains(list.get(0))) {
+                String key = list.get(1);
+                friendScore.put(key, friendScore.getOrDefault(key, 0) + 10);
+            } else if (userFriends.contains(list.get(1))) {
+                String key = list.get(0);
+                friendScore.put(list.get(0), friendScore.getOrDefault(key, 0) + 10);
             }
         }
         
