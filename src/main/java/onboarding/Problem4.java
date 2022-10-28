@@ -6,6 +6,15 @@ public class Problem4 {
         return answer;
     }
 
+    public static String getAnswer(String word) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < word.length(); i++) {
+            char c = word.charAt(i);
+            sb.append(getFrogWord(c));
+        }
+        return sb.toString();
+    }
+
     public static char getFrogWord(char alphabet) {
         if (!Character.isAlphabetic(alphabet))
             return alphabet;
