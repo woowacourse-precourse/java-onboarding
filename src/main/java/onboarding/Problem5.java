@@ -33,14 +33,20 @@ public class Problem5 {
         ArrayList<Integer> result = new ArrayList<>();
         Map<Integer,Integer> billStorage = new HashMap<>();
         moneyList.iterator().forEachRemaining(a -> billStorage.put(a,0));
+        calculateLeastBill(money,billStorage);
+        billStorage.keySet().stream().sorted(Comparator.reverseOrder()).forEach(a-> result.add(billStorage.get(a)));
+        return result;
+    }
+
+    private static void calculateLeastBill(int money, Map moneyStorage){
+        List<Integer> listOfUsableBill = new ArrayList<>(moneyStorage.keySet());
+        Collections.sort(listOfUsableBill, Collections.reverseOrder());
         while(money!=0){
-            for(int i=0; i<moneyList.size(); i++){
-                int bill = moneyList.get(i);
-                billStorage.put(bill, money/bill);
+            for(int i=0; i<listOfUsableBill.size(); i++){
+                int bill = listOfUsableBill.get(i);
+                moneyStorage.put(bill, money/bill);
                 money%=bill;
             }
         }
-        billStorage.keySet().stream().sorted(Comparator.reverseOrder()).forEach(a-> result.add(billStorage.get(a)));
-        return result;
     }
 }
