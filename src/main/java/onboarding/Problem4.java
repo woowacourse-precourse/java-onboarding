@@ -8,8 +8,19 @@ package onboarding;
  */
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < word.length(); i++) {
+            char c = word.charAt(i);
+            if (c == ' ')
+                sb.append(c);
+            else if (isUpperCase(c))
+                sb.append((char)(155 - c));
+            else
+                sb.append((char)(219 - c));
+        }
+
+        return sb.toString();
     }
 
     public static boolean isUpperCase(char c) {
