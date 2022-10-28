@@ -1,6 +1,5 @@
 package onboarding;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -12,20 +11,6 @@ class Problem1 {
         return getWinner(getPoint(pobi), getPoint(crong));
     }
 
-    private static boolean isValid(List<Integer> pages) {
-        if (pages.get(0) % 2 != 1 && pages.get(1) % 2 != 0) {
-            return false;
-        }
-        if (pages.get(1) - pages.get(0) != 1) {
-            return false;
-        }
-
-        if(pages.get(0)<=1 || pages.get(1)<=2)
-            if(pages.get(0)>=399 || pages.get(0)>=400){
-                return false;
-            }
-        return true;
-    }
 
     private static int getWinner(int result, int result2) {
         if (result == result2) {
@@ -74,5 +59,20 @@ class Problem1 {
             addAll += arrNum[i];
         }
         return addAll;
+    }
+
+    private static boolean isValid(List<Integer> pages) {
+        if (pages.get(0) % 2 != 1 && pages.get(1) % 2 != 0) {
+            return false;
+        }
+        if (pages.get(1) - pages.get(0) != 1) {
+            return false;
+        }
+
+        if (pages.get(0) <= 1 || pages.get(1) <= 2)
+            if (pages.get(0) >= 399 || pages.get(0) >= 400) {
+                return false;
+            }
+        return true;
     }
 }
