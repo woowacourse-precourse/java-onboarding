@@ -34,23 +34,23 @@
    - replaceAll() 메소드와 정규식을 활용하자
    - String 값을 반환하자
 
-### 1. public boolean isStringContainRegex(String string, String regex)
+### 1. public boolean isStringContainingRegularExpression(String string, String regex)
 - 문자열이 정규식 표현을 포함하는지 확인하는 메소드
 - 기능 : 정규식 표현을 포함하면 `true`, 포함하지 않으면 `false`를 반환
 
-### 2. public String deleteStringByRegex(String string, String regex)
+### 2. public String deleteStringByRegularExpression(String string, String regex)
 - 문자열에서 정규식 표현에 해당하는 문자열을 삭제하는 메소드
 - 기능 : 문자열에서 정규식 표현에 해당하는 문자열을 모두 ""으로 바꾸고 반환한다.
 
 ## Test Code
-### 1. void isStringContainRegexTest()
+### 1. void isStringContainingRegularExpressionTest()
 - regex = "(\w)\2"
 - 실패 테스트 입력 시 `false` 반환 확인
   - 테스트 : "brown", "", "ab"
 - 성공 테스트 입력 시 `true` 반환 확인
   - 테스트 : "browoanoommnaon", "ababb", "  "
-
-### 2. void deleteStringByRegexTest()
+   
+### 2. void deleteStringByRegularExpressionTest()
 - regex = "(\w)\2"
 - 테스트 입력 시 연속되는 중복 문자 제거 확인
   - 테스트 : "browoanoommnaon", "aabbb", "brown"
