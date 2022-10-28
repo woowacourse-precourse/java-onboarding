@@ -1,5 +1,9 @@
 package onboarding;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
@@ -18,14 +22,14 @@ public class Problem4 {
     }
 
     private static String convertStringByDict(String word){
-        StringBuffer value = new StringBuffer(word);
-        for(int i=0; i<value.length(); i++){
-            if(needConvert(value.charAt(i))){
-                char convetedChar = getConvertedChar(value.charAt(i));
-                value.setCharAt(i,convetedChar);
+        Stream<Character> charStream = word.chars().mapToObj(i -> (char)i);
+        String convertedString = charStream.map(ch -> {
+            if (needConvert(ch)) {
+                return getConvertedChar(ch);
             }
-        }
-        return value.toString();
+            return ch;
+        }).map(String::valueOf).collect(Collectors.joining());
+        return convertedString;
     }
 
     private static boolean needConvert(char ch){
