@@ -1,3 +1,9 @@
+/*
+ * 클래스명: Problem1
+ *
+ * 시작 날짜: 2022-10-27
+ */
+
 package onboarding;
 
 import java.util.List;
@@ -48,7 +54,6 @@ class Problem1 {
         } else {
             answer = 0;
         }
-        // System.out.println("pobi: " + pobiMaxPoint + "crong: " + crongMaxPoint + "answer: " + answer);
         return answer;
     }
 }
