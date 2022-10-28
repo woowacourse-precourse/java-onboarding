@@ -4,13 +4,6 @@ import java.util.List;
 
 class Problem1 {
 
-    static int min = 1;
-    static int max = 399;
-    static int x = (int) (Math.random() * (max - min) + min);
-    static int y = x + 1;
-
-    static int a = (int) (Math.random() * (max - min) + min);
-    static int b = a + 1;
     public static int pageSum(int x){
         int answer = 0;
         while (x != 0){
@@ -29,10 +22,11 @@ class Problem1 {
     }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-        pobi.add(x);
-        pobi.add(y);
-        crong.add(a);
-        crong.add(b);
+
+        int x = pobi.get(0);
+        int y = pobi.get(1);
+        int a = crong.get(0);
+        int b = crong.get(1);
 
         int [] pobiMaxNumber = {pageSum(x), pageSum(y), pageMultiplication(x), pageMultiplication(y)};
         int tmp;
@@ -59,12 +53,16 @@ class Problem1 {
                 }
             }
         }
-        if (pobiMaxNumber[0] > crongMaxNumber[0]){
-            answer = 1;
-        } else if (pobiMaxNumber[0] < crongMaxNumber[0]){
-            answer = 2;
-        }else{
+        answer = 0;
+
+        if (x+1 != y || a+1 != b){
             answer = -1;
+        }else if (pobiMaxNumber[0] > crongMaxNumber[0]){
+            answer = 1;
+        } else if (pobiMaxNumber[0] < crongMaxNumber[0]) {
+            answer = 2;
+        }else if (pobiMaxNumber[0] == crongMaxNumber[0]){
+            answer = 0;
         }
         return answer;
     }
