@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.List;
-import java.util.stream.Stream;
 
 class Problem1 {
     private static final int DRAW=0;
