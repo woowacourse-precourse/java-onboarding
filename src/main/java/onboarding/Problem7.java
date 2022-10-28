@@ -65,4 +65,12 @@ public class Problem7 {
                         })
                         .collect(Collectors.toList());
     }
+    private static List<String> fiveRecommendFriends(List<Map.Entry<String, Integer>> recommends){
+        List<String> recommend = new ArrayList<>();
+        for (int i = 0; i < recommends.size(); i++) {
+            if(i == 5)break;
+            recommend.add(recommends.get(i).getKey());
+        }
+        return recommend;
+    }
 }
