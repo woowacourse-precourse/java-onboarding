@@ -39,6 +39,18 @@ public class Problem3 {
         return count;
     }
 
+    //3. 기능3
+    static int getCountSummation(int number){
+        int totalCount = 0;
+
+        List<Integer> numberList = getNumberList(number);
+
+        for(int i=0; i<numberList.size(); i++){
+            totalCount += getMultipleOfThreeCount(numberList.get(i));
+        }
+
+        return totalCount;
+    }
 
     public static int solution(int number) {
         int answer = getCountSummation(number);

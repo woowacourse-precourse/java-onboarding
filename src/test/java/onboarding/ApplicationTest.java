@@ -52,7 +52,7 @@ class ApplicationTest {
         }
     }
 
-    /*
+
     @Nested
     class Problem3Test {
         @Test
@@ -70,6 +70,7 @@ class ApplicationTest {
         }
     }
 
+    /*
     @Nested
     class Problem4Test {
         @Test

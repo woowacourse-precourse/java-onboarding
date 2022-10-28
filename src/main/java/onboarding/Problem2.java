@@ -37,6 +37,7 @@ public class Problem2 {
     }
 
     public static String solution(String cryptogram) {
-        return removeDuplicates(cryptogram);
+        String answer = removeDuplicates(cryptogram);
+        return answer;
     }
 }
