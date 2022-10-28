@@ -11,15 +11,17 @@ import java.util.stream.Stream;
  * 3. 친구 추천 점수 계산 기능
  *  3-1. 서로 일치하는 친구 점수 계산 기능
  *  3-2. visitors 점수 계산 기능
+ * 4. 점수 별 정렬 기능
  * */
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        Map<String, Integer> recFriends = calRecFriends(user, friends, visitors);
+        Map<String, Integer> sortedRecFriends = sortMapByValue(recFriends);
 
-        return answer;
+        return new ArrayList<>(sortedRecFriends.keySet());
     }
 
-    public static Map<String, Integer> calRecFriends(
+    private static Map<String, Integer> calRecFriends(
             String user,
             List<List<String>> friends,
             List<String> visitors)
@@ -37,15 +39,16 @@ public class Problem7 {
         return nonFriendAndScore;
     }
 
-    private static int catVisitorsScore(String nonFriend, List<String> visitors) {
-        return (int) visitors.stream().filter(v -> v.equals(nonFriend)).count();
+    private static Set<String> getMyFriends(String user, List<List<String>> friends) {
+        return friends.stream()
+                .filter(list -> list.contains(user))
+                .map(list -> list.toArray(String[]::new))
+                .flatMap(Arrays::stream)
+                .filter(s -> !s.equals(user))
+                .collect(Collectors.toSet());
     }
 
-    public static int calAssociatedScore(Set<String> friendsOfNonFriend, Set<String> myFriends) {
-        return (int) friendsOfNonFriend.stream().filter(myFriends::contains).count() * 10;
-    }
-
-    public static Map<String, Set<String>> getNonFriendsAndFriendList(
+    private static Map<String, Set<String>> getNonFriendsAndFriendList(
             String user,
             List<List<String>> friends,
             List<String> visitors) {
@@ -58,7 +61,7 @@ public class Problem7 {
         return nonFriendsAndFriendList;
     }
 
-    public static Set<String> getNonFriends(
+    private static Set<String> getNonFriends(
             String user,
             List<List<String>> friends,
             List<String> visitors)
@@ -77,12 +80,25 @@ public class Problem7 {
         return nonFriendsWithoutVisitors;
     }
 
-    public static Set<String> getMyFriends(String user, List<List<String>> friends) {
-        return friends.stream()
-                .filter(list -> list.contains(user))
-                .map(list -> list.toArray(String[]::new))
-                .flatMap(Arrays::stream)
-                .filter(s -> !s.equals(user))
-                .collect(Collectors.toSet());
+    private static int catVisitorsScore(String nonFriend, List<String> visitors) {
+        return (int) visitors.stream().filter(v -> v.equals(nonFriend)).count();
+    }
+
+    private static int calAssociatedScore(Set<String> friendsOfNonFriend, Set<String> myFriends) {
+        return (int) friendsOfNonFriend.stream().filter(myFriends::contains).count() * 10;
+    }
+
+    private static Map<String, Integer> sortMapByValue(Map<String, Integer> target) {
+        List<Map.Entry<String, Integer>> sortedEntryList = target.entrySet().stream()
+                .sorted(Collections.reverseOrder(Map.Entry.<String, Integer>comparingByValue())
+                        .thenComparing(Map.Entry.comparingByKey()))
+                .collect(Collectors.toList());
+
+        HashMap<String, Integer> result = new HashMap<>();
+        for (Map.Entry<String, Integer> entry : sortedEntryList) {
+            result.putIfAbsent(entry.getKey(), entry.getValue());
+        }
+
+        return result;
     }
 }
