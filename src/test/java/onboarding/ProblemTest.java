@@ -119,6 +119,11 @@ public class ProblemTest {
 				Assertions.assertThat(Problem1.solution(validatePage,testCase)).isEqualTo(-1);
 		}
 
+		@Test
+		public void pageIsNull(){
+			List<Integer> test = null;
+			Assertions.assertThat(Problem1.solution(validatePage,test)).isEqualTo(-1);
+		}
 
 		/*
 		시간 나면 실제 유의미한 값을 가진 list들로 테스트 해보기.
@@ -153,6 +158,13 @@ public class ProblemTest {
 		@Test
 		public void stringContainUpperCase(){
 			String str = "Test String";
+			Assertions.assertThatThrownBy(()->Problem2.solution(str))
+				.isInstanceOf(IllegalArgumentException.class);
+		}
+
+		@Test
+		public void stringIsNull(){
+			String str = null;
 			Assertions.assertThatThrownBy(()->Problem2.solution(str))
 				.isInstanceOf(IllegalArgumentException.class);
 		}
@@ -199,6 +211,13 @@ public class ProblemTest {
 		public void checkWordLengthOver1000(){
 			String testString = new String(new char[1001]).replace('\0','A');
 			Assertions.assertThatThrownBy(()->Problem4.solution(testString))
+				.isInstanceOf(IllegalArgumentException.class);
+		}
+
+		@Test
+		public void stringIsNull(){
+			String str = null;
+			Assertions.assertThatThrownBy(()->Problem2.solution(str))
 				.isInstanceOf(IllegalArgumentException.class);
 		}
 	}
