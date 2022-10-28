@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -45,6 +42,19 @@ public class Problem7 {
         }
 
         //점수높은 5명 뽑는 기능
+        //일단 점수 높은 순으로 정렬
+        List<Map.Entry<String, Integer>> list = new ArrayList<>(map.entrySet());
+        Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
+            public int compare(Map.Entry<String, Integer> a, Map.Entry<String, Integer> b) {
+                int res = b.getValue().compareTo(a.getValue());
+                if(res == 0){
+                    res = a.getKey().compareTo(b.getKey());
+                }
+                return res;
+            }
+        });
+
+        //위에서부터 6명 잘라서 리스트에 넣기
 
         return answer;
     }
