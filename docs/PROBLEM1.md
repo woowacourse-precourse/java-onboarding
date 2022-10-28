@@ -13,8 +13,8 @@
 
 ### 🔥 구현 기능 목록
 
-- [ ] FEATURE1. 포비 점수 계산 함수
-- [ ] FEATURE2. 크롱 점수 계산 함수
+- [ ] FEATURE1. 점수 계산 함수
+- [ ] FEATURE2. 점수 자릿수 배열 반환 함수
 - [ ] FEATURE3. 점수 비교 결과 클래스
 - [ ] FEATURE4. 포비 크롱 점수 비교 함수
 - [ ] FEATURE5. 예외 사항 Exception 클래스
