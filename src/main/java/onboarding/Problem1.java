@@ -4,6 +4,10 @@ import java.util.List;
 
 class Problem1 {
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
+		if (checkIrregularPages(pobi) || checkIrregularPages(crong)) {
+			return -1;
+		}
+
 		Integer pobiMax = pobi.stream()
 				.map(Problem1::getMaxPage)
 				.max(Integer::compareTo)
@@ -21,6 +25,10 @@ class Problem1 {
 			return 2;
 		}
 		return 0;
+	}
+
+	private static boolean checkIrregularPages(List<Integer> pages) {
+		return pages.get(0) - pages.get(1) != -1;
 	}
 
 	private static int getMaxPage(Integer page) {
