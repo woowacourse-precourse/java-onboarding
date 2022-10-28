@@ -14,23 +14,16 @@ public class Problem2 {
         boolean flag = true;
 
         while (flag) {
-            StringBuilder chars = new StringBuilder(cryptogram);
+            StringBuilder check = new StringBuilder(cryptogram);
             StringBuilder sb = new StringBuilder();
             flag = false;
 
-            for (int i = 0; i < chars.length() - 1; i++) {
-                if (chars.charAt(i) == chars.charAt(i + 1)) {
-                    i++;
-                } else {
-                    sb.append(chars.charAt(i));
-                }
+            checkDuplicateCharacters(check, sb);
+
+            if (!(check.charAt(cryptogram.length() - 2) == check.charAt(cryptogram.length() - 1))) {
+                sb.append(check.charAt(cryptogram.length() - 1));
             }
 
-            if (!(chars.charAt(cryptogram.length() - 2) == chars.charAt(cryptogram.length() - 1))) {
-                sb.append(chars.charAt(cryptogram.length() - 1));
-            }
-
-            System.out.println("sb = " + sb);
 
             for (int i = 0; i < sb.length() - 1; i++) {
                 if (sb.charAt(i) == sb.charAt(i + 1)) {
@@ -46,5 +39,15 @@ public class Problem2 {
 
         return answer;
 
+    }
+
+    private static void checkDuplicateCharacters(StringBuilder check, StringBuilder sb) {
+        for (int i = 0; i < check.length() - 1; i++) {
+            if (check.charAt(i) == check.charAt(i + 1)) {
+                i++;
+            } else {
+                sb.append(check.charAt(i));
+            }
+        }
     }
 }
