@@ -4,6 +4,7 @@ public class Problem2 {
     private static final int MINIMUM_INPUT = 1;
     private static final int MAXIMUM_INPUT = 1000;
     private static final String INPUT_ERROR = "INPUT_ERROR";
+    private static final String PATTERN = "(\\w)\\1{1,}";
 
     public static String solution(String cryptogram) {
         if (isExceptionCase(cryptogram)) return INPUT_ERROR;
@@ -22,6 +23,6 @@ public class Problem2 {
     }
 
     private static String decodeCryptogram(String cryptogram) {
-        return cryptogram.replaceAll("(\\w)\\1{1,}", "");
+        return cryptogram.replaceAll(PATTERN, "");
     }
 }

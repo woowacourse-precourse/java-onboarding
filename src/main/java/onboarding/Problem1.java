@@ -11,8 +11,8 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (isExceptionCase(pobi, crong)) return INPUT_ERROR;
 
-        int pobiMax = getLeftRightMax(pobi.get(0).toString(),pobi.get(1).toString());
-        int crongMax = getLeftRightMax(crong.get(0).toString(),crong.get(1).toString());
+        int pobiMax = getLeftRightMax(pobi.get(0).toString(), pobi.get(1).toString());
+        int crongMax = getLeftRightMax(crong.get(0).toString(), crong.get(1).toString());
 
         return getWinner(pobiMax, crongMax);
     }

@@ -11,7 +11,7 @@ public class Problem3 {
         if (isExceptionInput(number)) return INPUT_ERROR;
 
         IntStream numbers = IntStream.rangeClosed(0, number);
-        return numbers.reduce((x,y)->x + getClapCount(y)).orElse(0);
+        return numbers.reduce((x, y) -> x + getClapCount(y)).orElse(0);
     }
 
     private static boolean isExceptionInput(int number) {
