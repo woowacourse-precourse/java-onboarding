@@ -91,12 +91,11 @@ class Problem1 {
 
     }
 
-    public static int exception(Integer leftPageNum, Integer rightPageNum) throws IOException{
+    public static void exception(Integer leftPageNum, Integer rightPageNum) throws IOException{
         int exception = 0;
         if(rightPageNum - leftPageNum != 1){
-            exception = -1;
+            throw new IOException();
         }
-        return exception;
     }
 
 
