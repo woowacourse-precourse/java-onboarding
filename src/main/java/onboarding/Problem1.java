@@ -34,6 +34,17 @@ class Problem1 {
         return result;
     }
 
+    private boolean handleException(List<Integer> pages){
+        if(pages.get(0) <= 1 || pages.get(1) >= 400)
+            return true;
+        if(pages.get(0) % 2 == 0 || pages.get(1) % 2 == 1)
+            return true;
+        if(pages.get(0) + 1 != pages.get(1))
+            return true;
+
+        return false;
+    }
+
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
