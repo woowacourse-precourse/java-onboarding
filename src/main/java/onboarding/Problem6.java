@@ -40,7 +40,35 @@ public class Problem6 {
             return false;
         }
 
+        if (isNeedChangeNickname(nickname)) {
+            return false;
+        }
+
         return true;
+    }
+
+    /**
+     * 닉네임 중복 확인
+     * @param nickname 닉네임
+     * @return 중복 여부 반환
+     */
+    private static boolean isNeedChangeNickname(String nickname) {
+        String[] splitNicknames = splitAndBindNickname(nickname);
+        ArrayList<String> tempSplitNicknames = new ArrayList<>();
+
+        for (String twoLetterNickname : splitNicknames) {
+            if (!tempSplitNicknames.contains(twoLetterNickname)) {
+                tempSplitNicknames.add(twoLetterNickname);
+
+                if (existTwoLetterNickname(twoLetterNickname)) {
+                    return true;
+                }
+
+                addTwoLetterNickname(twoLetterNickname);
+            }
+        }
+
+        return false;
     }
 
     /**
@@ -63,24 +91,19 @@ public class Problem6 {
 
     /**
      * 분할 된 글자 검색
-     * @param splitNicknames 2글자씩 묶인 글자 집합
+     * @param twoLetterNickname 2글자씩 묶인 닉네임
      * @return 존재 여부
      */
-    private static boolean isExistTwoLetterNickname(String[] splitNicknames) {
-        for(String splitNickname : splitNicknames) {
-            if (twoLetterSplitNicknames.contains(splitNickname)) {
-                return true;
-            }
-        }
-
-        return false;
+    private static boolean existTwoLetterNickname(String twoLetterNickname) {
+        return twoLetterSplitNicknames.contains(twoLetterNickname);
     }
 
     /**
      * 분할 된 글자 저장
-     * @param splitNicknames 2글자씩 묶인 글자 집합
+     * @param twoLetterNickname 2글자씩 묶인 글자
      */
-    private static void storeTwoLetterNickname(String[] splitNicknames) {
-        twoLetterSplitNicknames.addAll(Arrays.asList(splitNicknames));
+    private static void addTwoLetterNickname(String twoLetterNickname) {
+        twoLetterSplitNicknames.add(twoLetterNickname);
     }
+
 }
