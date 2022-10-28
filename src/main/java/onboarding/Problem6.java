@@ -84,11 +84,4 @@ public class Problem6 {
         }
         return false;
     }
-
-    public static void main(String[] args) {
-        String name1 = "제이엠";
-        String name2 = "워니";
-
-        System.out.println(isOverlapName(name1, name2));
-    }
 }
