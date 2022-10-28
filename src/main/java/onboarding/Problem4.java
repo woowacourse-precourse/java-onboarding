@@ -6,6 +6,13 @@ public class Problem4 {
 		return answer;
 	}
 
+	public static boolean isAlpha(char c) {
+		if (!(c >= 'A' && c <= 'Z') && !(c >= 'a' && c <= 'z')) {
+			return false;
+		}
+		return true;
+	}
+
 	static class InputValidator {
 		private static boolean isRightWordRange(String word) {
 			int wordLength = word.length();
