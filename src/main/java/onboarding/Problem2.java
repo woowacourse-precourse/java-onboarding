@@ -2,8 +2,10 @@ package onboarding;
 
 public class Problem2 {
 
-    static final String sampleRegex = "{2,}";
-    static String answer = "";
+    static private final String BLANK = "";
+
+    static private final String sampleRegex = "{2,}";
+    static private String answer = "";
 
     public static String solution(String cryptogram) {
         boolean flag = true;
@@ -26,7 +28,7 @@ public class Problem2 {
     public static String decrypt(String cryptogram) {
         for (int i = 'a'; i <= 'z'; i++) {
             String regex = (char)i + sampleRegex;
-            cryptogram = cryptogram.replaceAll(regex, "");
+            cryptogram = cryptogram.replaceAll(regex, BLANK);
         }
 
         return cryptogram;
