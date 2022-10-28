@@ -22,4 +22,13 @@ public class Problem4 {
         char covertedAlphabet = (char) (asciiOfz - (asciiOfLowerCase - asciiOfa));
         return covertedAlphabet;
     }
+
+    private static char convertUpperCase(char upperCase) {
+        int asciiOfA = 'A';
+        int asciiOfZ = 'Z';
+        int asciiOfUpperCase = upperCase;
+
+        char covertedAlphabet = (char) (asciiOfZ - (asciiOfUpperCase - asciiOfA));
+        return covertedAlphabet;
+    }
 }
