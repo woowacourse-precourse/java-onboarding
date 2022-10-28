@@ -9,7 +9,7 @@ class Problem1 {
 	public static final int MULTIPLY_START = 1;
 	public static final int LEFT_PAGE = 0;
 	public static final int RIGHT_PAGE = 1;
-	public static final int NORMAL_BOOK_SIZE = 2;
+	public static final int NORMAL_PAGE_SIZE = 2;
 	public static final int TEN = 10;
 	public static final int EXCEPTION = -1;
 	public static final int POBI_WIN = 1;
@@ -47,15 +47,15 @@ class Problem1 {
 	}
 
 	private static boolean isRightSize(List<Integer> book) {
-		return book.size() == NORMAL_BOOK_SIZE &&
+		return book.size() == NORMAL_PAGE_SIZE &&
 				FIRST_PAGE <= leftPage(book) &&
 				rightPage(book) <= LAST_PAGE;
 	}
 
 	private static boolean isRightOrder(List<Integer> book) {
-		return leftPage(book) < rightPage(book) &&
-				isLeftPageOdd(book) &&
-				rightPageEven(book);
+		return isLeftPageOdd(book) &&
+				rightPageEven(book) &&
+				rightPage(book) - leftPage(book) == 1;
 	}
 
 	private static Integer leftPage(List<Integer> book) {
