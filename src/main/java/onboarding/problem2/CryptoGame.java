@@ -2,18 +2,30 @@ package onboarding.problem2;
 
 
 public class CryptoGame {
-    public static char last_removed = Character.MIN_VALUE;
-    public final String cryptogram;
+    private static char last_removed = Character.MIN_VALUE;
+    private static final int MIN = 1;
+    private static final int MAX = 1_000;
 
-    public CryptoGame(String cryptogram) {
-        this.cryptogram = cryptogram;
-    }
-
-    public String remove() {
+    public static String start(String cryptogram) {
+        validateMin(cryptogram);
+        validateMAX(cryptogram);
         return removeUl(cryptogram);
     }
 
-    private String removeUl(String crypto) {
+    private static void validateMAX(String cryptogram) {
+        if (cryptogram.length() > MAX) {
+            throw new CryptoException("1000을 초과한 크기를 가진 문자열은 입력할 수 없습니다.");
+        }
+    }
+
+    private static void validateMin(String cryptogram) {
+        if (cryptogram.length() < MIN) {
+            throw new CryptoException("최소 한 글자를 입력해주세요.");
+        }
+    }
+
+    private static String removeUl(String crypto) {
+
         if (crypto.length() == 0 || crypto.length() == 1)
             return crypto;
         if (crypto.charAt(0) == crypto.charAt(1)) {
