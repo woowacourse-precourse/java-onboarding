@@ -22,6 +22,14 @@ class Problem1 {
         return false;
     }
 
+    public static int getMaxValueOfPlayer(List<Integer> pages) {
+        int leftMaxValue = getMaxValueOfPage(pages.get(LEFT_PAGE));
+        int rightMaxValue = getMaxValueOfPage(pages.get(RIGHT_PAGE));
+
+        int maxValueOfPages = leftMaxValue >= rightMaxValue ? leftMaxValue : rightMaxValue;
+        return maxValueOfPages;
+    }
+
     public static int getMaxValueOfPage(int page) {
         String pageTypeOfString = String.valueOf(page);
         int sum = getSumOfPage(pageTypeOfString);
