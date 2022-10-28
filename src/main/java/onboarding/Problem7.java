@@ -1,14 +1,32 @@
 package onboarding;
 
-import java.util.Collections;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<String>();
+
+        Map<String, User> userDataBase = new HashMap<>();
+
+        for (List<String> friendList : friends) {
+            User friend0 = getUserData(userDataBase, friendList.get(0));
+            User friend1 = getUserData(userDataBase, friendList.get(1));
+
+        }
         return answer;
     }
 
+    private static User getUserData(Map<String, User> userDataBase, String userName) {
+        User tempUser = userDataBase.get(userName);
+        if (tempUser == null) {
+            userDataBase.put(userName, new User(userName, 0));
+        }
+
+        return userDataBase.get(userName);
+    }
     static class User implements Comparable<User> {
         private String name;
         private int recommendScore;
