@@ -4,7 +4,11 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        Set<String> userFriend = findUserFriend(user, friends);
+        Map<String, Integer> friendRecommend = withUserFriend(friends, userFriend);
+        visitorFindRecommend(visitors, friendRecommend, userFriend);
+        List<Person> sortList = MapToListAndSort(friendRecommend, user);
+        List<String> answer = classToString(sortList);
         return answer;
     }
     private static Set<String> findUserFriend(String user, List<List<String>> friends) {
