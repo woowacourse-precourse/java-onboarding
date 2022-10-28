@@ -31,7 +31,13 @@ public class Problem5 {
         }
         return resultList;
     }
-
+    public static boolean isBigger(int money, int baseMoney) {
+        if (money > baseMoney) {
+            return true;
+        }
+        return false;
+    }
+    
 }
 
 
