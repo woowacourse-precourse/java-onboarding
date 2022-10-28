@@ -24,6 +24,10 @@ class User {
     public List<User> getFriends() {
         return friends;
     }
+
+    public void addFriend(User user) {
+        this.friends.add(user);
+    }
 }
 
 public class Problem7 {
@@ -48,6 +52,18 @@ public class Problem7 {
             if (!userList.containsKey(id)) {
                 userList.put(id, new User(id));
             }
+        }
+    }
+
+    public static void initFriends(List<List<String>> friends) {
+        for (List<String> data : friends) {
+            String idA = data.get(0);
+            String idB = data.get(1);
+            User userA = userList.get(idA);
+            User userB = userList.get(idB);
+
+            userA.addFriend(userB);
+            userB.addFriend(userA);
         }
     }
 }
