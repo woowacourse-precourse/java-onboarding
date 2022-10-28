@@ -37,3 +37,9 @@
 - sortFormByNickName()을 실행 한 뒤여서 입력받는 first_nickName은 항상 second_nickName보다 글자수가 작습니다.
 - for문을 수행 할 때마다 first_nickName의 연속된 두 글자 조합을 만들어 second_nickName이 해당 두 글자 조합을 가지고 있는지 확인합니다.
 - second_nickName이 두 글자 조합을 가지고 있으면 즉시 true를 반환하고 for문이 끝날 때 까지 없다면 false를 반환합니다. 
+
+4. sort()
+- Collection의 sort를 사용해 전역변수로 설정된 answer 리스트를 정렬합니다.
+
+5. removeDuplication(List<String> list)
+- stream()과 distinct()를 사용해 입력 받은 리스트의 중복을 제거 한 뒤 해당 리스트를 반환합니다.

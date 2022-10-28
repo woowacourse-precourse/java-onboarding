@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     static List<String> answer = new ArrayList<>();
@@ -85,5 +86,21 @@ public class Problem6 {
             if(first_nickName.contains(splitWorld)) return true;
         }
         return false;
+    }
+
+    /**
+     * 전역변수 answer를 정렬합니다.
+     */
+    public static void sort() {
+        Collections.sort(answer);
+    }
+
+    /**
+     * 입력받은 list의 중복을 제거한 뒤 해당 리스트를 반환합니다.
+     * @param {List<String>} list
+     * @return {List<String>} list
+     */
+    public static List<String> removeDuplication(List<String> list) {
+        return list.stream().distinct().collect(Collectors.toList());
     }
 }
