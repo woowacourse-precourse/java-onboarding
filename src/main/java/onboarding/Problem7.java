@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -11,8 +12,8 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         
-        // user와 친구         
-        HashSet<String> userFriends = new HashSet<>();     
+        /* user와 친구 */         
+        List<String> userFriends = new ArrayList<>();     
         for (int i = 0; i < friends.size(); i++) {
             Iterator it = friends.get(i).iterator();
             while(it.hasNext()) {
