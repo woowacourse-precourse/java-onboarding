@@ -14,7 +14,9 @@ public class Problem2 {
 
     static String duplicated(String cryptogram) {
         for (int i = 0; i < cryptogram.length()-1; i++){
+            if (cryptogram.substring(i, i+1).equals(cryptogram.substring(i+1, i+2))){
 
+            }
         }
     }
     /**
