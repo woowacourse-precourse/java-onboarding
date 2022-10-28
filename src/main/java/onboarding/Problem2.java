@@ -4,7 +4,6 @@ import java.util.Stack;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        StringBuilder answer = new StringBuilder();
         Stack<Character> s = new Stack<>();
 
 
@@ -16,11 +15,19 @@ public class Problem2 {
             s.push(c);
         }
 
+        return stackToString(s);
+    }
 
-        while (!s.empty()) {
-            answer.insert(0, s.pop());
+    private static String stackToString(Stack<Character> stack) {
+        StringBuilder result = new StringBuilder();
+
+        while (!stack.empty()) {
+            result.insert(0, stack.pop());
         }
 
-        return answer.toString();
+        return result.toString();
     }
 }
+
+
+
