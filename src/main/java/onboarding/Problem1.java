@@ -16,4 +16,32 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+    
+    /**
+     * 주어진 페이지의 각 자리수 합을 구한다.
+     * @param page 페이지
+     * @return 페이지의 각 자리수 합을 반환한다.
+     */
+    private static int getPageSum(Integer page) {
+        String str = page.toString();
+        int result = 0;
+        for (int i = 0; i < str.length(); i++) {
+            result += str.charAt(i) - '0';
+        }
+        return result;
+    }
+
+    /**
+     * 주어진 페이지의 각 자리수 곱을 구한다.
+     * @param page 페이지
+     * @return 페이지의 각 자리수 곱을 반환한다.
+     */
+    private static int getPageMultiple(Integer page) {
+        String str = page.toString();
+        int result = 1;
+        for (int i = 0; i < str.length(); i++) {
+            result *= str.charAt(i) - '0';
+        }
+        return result;
+    }
 }
