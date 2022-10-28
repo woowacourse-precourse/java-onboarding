@@ -27,15 +27,15 @@ public class Problem2 {
         return cryptogram.toString();
     }
 
-    private static boolean checkRules(String cryptogram){
+    private static void checkRules(String cryptogram){
         if(cryptogram.length()>1000||cryptogram.length()<1)
-            return false;
-        return cryptogram.toLowerCase().equals(cryptogram);
+            throw new IllegalArgumentException("올바르지 않은 범위의 입력값입니다.");
+        if(!cryptogram.toLowerCase().equals(cryptogram))
+            throw new IllegalArgumentException("입력값은 모두 소문자이여야합니다.");
     }
 
     public static String solution(String cryptogram) {
-        if(!checkRules(cryptogram))
-            throw new IllegalArgumentException("올바르지 않은 입력값입니다.");
+        checkRules(cryptogram);
 
         StringBuffer stringBuffer = new StringBuffer();
         stringBuffer.append(cryptogram);
