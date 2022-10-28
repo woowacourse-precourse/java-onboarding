@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         int size = forms.size();
-        //사이즈가 1이하이면 그냥 리턴
+
         if (size <= 1) {
             return new ArrayList<>();
         }
