@@ -13,11 +13,20 @@
 package onboarding;
 
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
         return answer;
+    }
+}
+
+class Bank {
+    HashSet<Integer> cashList;
+
+    public Bank(List<Integer> cashList) {
+        this.cashList = new HashSet<>(cashList);
     }
 }
