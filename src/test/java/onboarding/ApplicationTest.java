@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.*;
 import java.util.List;
 
 import onboarding.problem2.validation.CryptogramValidator;
+import onboarding.problem3.validation.ThreeSixNineValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -198,6 +199,32 @@ class ApplicationTest {
             int number = 49;
             int result = 25;
             assertThat(Problem3.solution(number)).isEqualTo(result);
+        }
+
+        @Test
+        @DisplayName("비정상적인 입력값 - 최대 범위를 초과한 숫자를 입력하면 예외 발생")
+        void case4() {
+            int number = 10001;
+            assertThatThrownBy(() -> Problem3.solution(number))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(String.format(
+                            ThreeSixNineValidator.INVALID_NUMBER_RANGE_MESSAGE_FORMAT,
+                            ThreeSixNineValidator.MIN_RANGE,
+                            ThreeSixNineValidator.MAX_RANGE
+                    ));
+        }
+
+        @Test
+        @DisplayName("비정상적인 입력값 - 최소 범위 미만인 숫자를 입력하면 예외 발생")
+        void case5() {
+            int number = 0;
+            assertThatThrownBy(() -> Problem3.solution(number))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(String.format(
+                            ThreeSixNineValidator.INVALID_NUMBER_RANGE_MESSAGE_FORMAT,
+                            ThreeSixNineValidator.MIN_RANGE,
+                            ThreeSixNineValidator.MAX_RANGE
+                    ));
         }
     }
 
