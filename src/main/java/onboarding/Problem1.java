@@ -46,6 +46,10 @@ class Problem1 {
 
         return listMulLeft > listMulRight ? listMulLeft : listMulRight;
     }
+
+    static int getMax(int pobi, int crong) {
+        return (pobi == crong) ? 0 : (pobi > crong) ? 1 : 2;
+    }
 }
     /**
      * 왼쪽 페이지의 번호 각자리를 더하거나 곱해서 가장 큰 수
