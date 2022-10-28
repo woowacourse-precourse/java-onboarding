@@ -43,7 +43,7 @@ class Problem1 {
     }
 
 
-    /* 기능2 : 각 자리 숫자를 더하는 기능*/
+    /* 기능2 : 각 자리 숫자를 더하는 기능 */
     private static int SumPage(int Page){
         int sum = 0;
         while(Page > 0){
@@ -51,6 +51,16 @@ class Problem1 {
             Page /= 10;
         }
         return sum;
+    }
+
+    /* 기능3 : 각 자리 숫자를 곱하는 기능 */
+    private static int MultiPage(int Page){
+        int multi = 1;
+        while(Page > 0){
+            multi *= Page % 10;
+            Page /= 10;
+        }
+        return multi;
     }
 
 
