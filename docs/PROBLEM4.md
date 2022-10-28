@@ -99,6 +99,8 @@
 ## ✋ 예외 사항
 
 - 1 <= word <= 1000
+- convertLowerCharacter() : 소문자 알파벳만 가능
+- convertUpperCharacter() : 대문자 알파벳만 가능
 
 
 
@@ -216,3 +218,70 @@ public enum AsciiOfAZ {
 - 이렇게 '제공되는 형태'의 기능을 구현할 때는 static 메소드로 구현하는 것도 나쁘지 않은 방법인 듯 하다.
 - 남은 문제들 중에서 private 하게 동작하는 방식 위주로도 한번 구현해 보면 좋을 것 같다.
 
+
+### 4. 사용자 정의 예외 클래스
+
+- 문제를 다 해결하고 예외처리 과정에서 문득 예외 클래스를 직접 생성해서 관리할 수 있는 방법에 대해 떠올랐다.
+- problem4 패키지 내에 exception 패키지를 생성한 후, 예외 클래스를 직접 생성해 보았다.
+- java에서 예외는 **일반 예외(Exception)**와 **실행 예외(RuntimeException)**가 있다.
+  - 일반 예외 : 코드를 컴파일하는 과정에서 예외 처리에 대한 검사 수행
+    - 컴파일 과정에서 예외가 발생할 수 있는 경우들에 대해 try-catch로 처리를 해주면 된다.
+  - 실행 예외 : 컴파일하는 과정에서 예외 처리에 대한 검사 미수행
+    - 컴파일 과정에서는 통과되고, 런타임 시 예외가 발생하게 되므로 주의해야 한다. 보통 개발자의 부주의 혹은 경험 부족으로 인해 발생하기 때문에 로직으로 예외처리를 할 필요는 없다.
+    - 다만, 오류 메세지를 통해 어떤 오류인지 파악할 수 있어야 하며, 애초에 실행 예외가 발생하지 않도록 주의해야 한다.
+    - NullPointerException, ArrayIndexOutOfBoundsException, NumberFormatException, ClassCastException 등
+
+##### < 사용자 정의 예외 클래스 >
+
+- 선언
+
+  - 일반 예외로 선언 : Exception 상속
+  - 실행 예외로 선언 : RuntimeException 상속
+  - 클래스 이름은 ~~Exception으로 끝내기
+  - 필드, 생성자, 메소드 등을 선언할 수도 있지만, 대부분 생성자만 선언한다.
+
+  ```java
+  public class CharacterCategoryMistmatchException extends Exception {
+    
+  }
+  ```
+
+
+
+- 생성자
+
+  - 생성자는 2개를 선언하는 것이 일반적. (**매개 변수 없는 기본 생성자**, **예외 메세지를 매개 변수로 받는 생성자**)
+
+  ```java
+  public class CharacterCategoryMistmatchException extends Exception {
+    // 매개 변수 없는 기본 생성자
+    public CharacterCategoryMistmatchException() {  }
+    
+    // 예외 메세지를 매개 변수로 받는 생성자
+    public CharacterCategoryMistmatchException(String errorMessage) {
+      super(errorMessage);
+    }
+  }
+  ```
+
+  - Exception 클래스를 상속받기 때문에 getMessage(), printStackTrace()와 같은 Exception 클래스의 메소드들을 활용할 수 있다.
+    - printStackTrace() : 예외 발생 코드를 추적해서 모두 콘솔에 출력한다. 어떤 예외가 어디서 발생했는지 상세하게 출력되어 디버깅에 활용될 수 있다.
+
+- 예외 발생
+
+  - Exception에서 발생시킨 것과 동일한 방식으로 throw new ~~Exception("메세지"); 하면 된다.
+
+    ```java
+    try {
+      if (lowercaseCharacter < ASCII_OF_LOWERCASE_A || ASCII_OF_LOWERCASE_Z < lowercaseCharacter) {
+        throw new CharacterCategoryMismatchException("The character is NOT LOWERCASE. Or not alphabet");
+        
+        ...
+          
+      } catch (CharacterCategoryMismatchException e) {
+        System.out.println(e.getMessage());
+    		return 0;
+      }
+    }
+    ```
+  
