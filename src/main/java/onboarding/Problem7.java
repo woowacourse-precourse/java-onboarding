@@ -97,4 +97,8 @@ class Account {
     public boolean scoreOverThanZero() {
         return score > 0;
     }
+
+    public int getScore() {
+        return this.score;
+    }
 }
