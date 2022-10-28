@@ -13,22 +13,47 @@ public class Problem7 {
         }
 
         for (String id : friendsOfUser) {
-            recommendScore.replace(id, recommendScore.get(id) + 10);
+            for (List<String> friend : friends) {
+                if(friend.get(0) == id && friend.get(1) != user)
+                    recommendScore.put(friend.get(1), recommendScore.get(friend.get(1)) + 10);
+                if(friend.get(1) == id && friend.get(0) != user)
+                    recommendScore.put(friend.get(1), recommendScore.get(friend.get(0)) + 10);
+            }
         }
 
         for (String id : visitors) {
-            recommendScore.replace(id, recommendScore.get(id) + 1);
+            recommendScore.put(id, recommendScore.get(id) + 1);
         }
 
-        // 사용자들 뽑아내기
-        // 유저의 친구들 구하기
-        // 유저의 친구들의 친구 구해서 +10하기
-        // 타임 라인 visitor +1하기
-        // 추천 점수대로 정렬하기
-        // 추천 점수가 같은 친구들 이름순으로 정렬하기
+        Map<Long, List<String>> recommendFriendList = new HashMap<>();
+        for (Long value : recommendScore.values()) {
+            if(!recommendFriendList.containsKey(value)) recommendFriendList.put(value, new ArrayList<>());
+        }
 
-        List<String> a = new ArrayList<>();
-        return a;
+        for (String id : recommendScore.keySet()) {
+            recommendFriendList.get(recommendScore.get(id)).add(id);
+            recommendFriendList.put(recommendScore.get(id), recommendFriendList.get(recommendScore.get(id)));
+        }
+
+        for (Long score : recommendFriendList.keySet()) {
+            Collections.sort(recommendFriendList.get(score));
+        }
+
+        List<Long> keySet = new ArrayList<>(recommendFriendList.keySet());
+        Collections.sort(keySet, Collections.reverseOrder());
+
+        List<String> recommendFriends = new ArrayList<>();
+        for (Long score : keySet) {
+            if(score == 0L) break;
+            if(recommendFriends.size() == 5) break;
+
+            for (String id : recommendFriendList.get(score)) {
+                if(!friendsOfUser.contains(id)) recommendFriends.add(id);
+                if(recommendFriends.size() == 5) break;
+            }
+        }
+
+        return recommendFriends;
     }
 
     private static List<String> createUserList(List<List<String>> friends, List<String> visitors) {
