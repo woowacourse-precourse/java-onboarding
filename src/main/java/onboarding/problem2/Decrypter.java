@@ -5,7 +5,7 @@ public class Decrypter {
     public static String decrypt(String cryptogram){
         StringBuilder resultBuilder = new StringBuilder(cryptogram);
         while (isDecryptable(resultBuilder)){
-            resultBuilder = removeRepeatedChar(resultBuilder);
+            removeRepeatedChar(resultBuilder);
         }
         return resultBuilder.toString();
     }
@@ -17,10 +17,10 @@ public class Decrypter {
         return true;
     }
 
-    private static StringBuilder removeRepeatedChar(StringBuilder cryptogram){
+    private static void removeRepeatedChar(StringBuilder cryptogram){
         int startingIndex = findIndexOfRepeatedChar(cryptogram);
         int repeatedNum = findNumberOfRepeatedChar(cryptogram, startingIndex);
-        return removeCharacters(cryptogram, startingIndex, repeatedNum);
+        removeCharacters(cryptogram, startingIndex, repeatedNum);
     }
 
     private static int findIndexOfRepeatedChar(StringBuilder cryptogram){
@@ -50,8 +50,7 @@ public class Decrypter {
         return num;
     }
 
-    private static StringBuilder removeCharacters(StringBuilder cryptogram, int startingIndex, int charNum){
+    private static void removeCharacters(StringBuilder cryptogram, int startingIndex, int charNum){
         cryptogram.delete(startingIndex, startingIndex+charNum);
-        return cryptogram;
     }
 }
