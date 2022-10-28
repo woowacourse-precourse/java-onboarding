@@ -11,6 +11,12 @@ public class Problem3 {
                 .collect(Collectors.toList());
     }
 
+    public static int count369(List<Integer> number){
+        return (int) number.stream()
+                .filter(x->x==3||x==6||x==9)
+                .count();
+    }
+
     public static void checkNumber(int number){
         if(number>10000||number<1)
             throw new IllegalArgumentException("올바르지 않은 입력값입니다.");
