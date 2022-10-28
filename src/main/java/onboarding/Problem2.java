@@ -4,19 +4,29 @@ import java.util.List;
 import java.util.Stack;
 public class Problem2 {
     static void removeOverLap(List data){
-        while(true){
-            boolean overlap = false;
-            for(int i=0; i<data.size() -1; i++){
-                if(data.get(i) == data.get(i+1)){
+        for(int i=0; i<data.size(); i++){
+            int count = 0;
+            char ch = (char)data.get(i);
+            for(int j=i; j<data.size(); j++){
+                if(ch != (char)data.get(j)){
+                    break;
+                }
+                count +=1 ;
+            }
+            if(count >1) {
+                for (int k = 0; k < count; k++) {
                     data.remove(i);
-                    data.remove(i);
-                    overlap = true;
                 }
             }
-            if(overlap == false){
-                break;
+        }
+    }
+    static boolean checkOverLap(List data){
+        for(int i=0; i<data.size(); i++){
+            if(data.get(i) == data.get(i+1)){
+                return true;
             }
         }
+        return false;
     }
     public static String solution(String cryptogram) {
         String answer = "";
@@ -25,7 +35,14 @@ public class Problem2 {
             char ch = cryptogram.charAt(i);
             crypcryptogramList.add(ch);
         }
-        removeOverLap(crypcryptogramList);
+
+        while(true){
+            if(checkOverLap(crypcryptogramList) == false){
+                break;
+            }
+            removeOverLap(crypcryptogramList);
+        }
+
         for(char ch : crypcryptogramList){
             answer += ch;
         }
