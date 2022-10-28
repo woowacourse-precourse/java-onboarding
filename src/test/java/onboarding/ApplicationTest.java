@@ -142,6 +142,13 @@ class ApplicationTest {
             result = false;
             assertThat(Problem3.check369(number)).isEqualTo(result);
         }
+
+        @Test
+        void case4() {
+            int number = 3543;
+            int[] result= {3,5,4,3};
+            assertThat(Problem3.converter(number)).isEqualTo(result);
+        }
     }
 
     @Nested
