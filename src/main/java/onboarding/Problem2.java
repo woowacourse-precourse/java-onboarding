@@ -9,7 +9,7 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         cryptogramTranslation = new StringBuilder(cryptogram);
 
-        while (cryptogram.length() > 0 && checkOverlap(cryptogramTranslation)) {
+        while (cryptogramTranslation.length() > 1 && checkOverlap(cryptogramTranslation)) {
             removeOverlap(cryptogramTranslation);
         }
 
@@ -17,11 +17,30 @@ public class Problem2 {
         return answer;
     }
 
-    public static boolean checkOverlap(StringBuilder cryptogram) {
-        return true;
+    public static boolean checkOverlap(StringBuilder cryptogramTranslation) {
+        char prevWord = cryptogramTranslation.charAt(0);
+        int prevIdx = 0;
+
+        for (int i = 0; i < cryptogramTranslation.length() - 1; i++) {
+            int idx = i + 1;
+            if(prevWord == cryptogramTranslation.charAt(idx)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static void removeOverlap(StringBuilder cryptogram) {
 
+    }
+
+    class Point {
+        int prev;
+        int next;
+
+        public Point(int prev, int next) {
+            this.prev = prev;
+            this.next = next;
+        }
     }
 }
