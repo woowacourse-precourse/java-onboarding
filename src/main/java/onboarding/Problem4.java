@@ -12,13 +12,21 @@ public class Problem4 {
 
     private static char checkWord(char word) {
         if (word >= 'A' && word <= 'Z') {
-            changeWord(word);
+            return changeUppercase(word);
         }
 
         if (word >= 'a' && word <= 'z') {
-            changeWord(word);
+            return changeLowercase(word);
         }
 
         return word;
+    }
+
+    private static char changeLowercase(char word) {
+        return (char) (word + 25 -(word - 'a') * 2);
+    }
+
+    private static char changeUppercase(char word) {
+        return (char) (word + 25 -(word - 'A') * 2);
     }
 }
