@@ -11,9 +11,19 @@ public class Problem4 {
 
 
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        return conversionString(word);
     }
+
+    public static String conversionString(String word) {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (char character : word.toCharArray()) {
+            stringBuilder.append(conversionChar(character));
+        }
+
+        return stringBuilder.toString();
+    }
+
 
     private static char conversionChar(char character) {
         if (isLower(character)) {
