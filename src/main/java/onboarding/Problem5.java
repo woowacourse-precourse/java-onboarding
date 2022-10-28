@@ -26,6 +26,16 @@ public class Problem5 {
         return moneyMap;
     }
 
+    public static void convertWithdrawMoney() {
+        moneyMap.keySet().stream()
+                .forEach(moneyUnit -> {
+                    int numberOfMoney = 0;
+                    numberOfMoney = withdrawMoney / moneyUnit;
+                    withdrawMoney %= moneyUnit;
+                    inputMoney(moneyUnit, numberOfMoney);
+                });
+    }
+
     public static void inputMoney(int moneyUnit, int numberOfMoney) {
         moneyMap.put(moneyUnit, numberOfMoney);
     }
