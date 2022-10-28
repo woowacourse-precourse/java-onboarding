@@ -19,3 +19,19 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+## 구현 과정
+
+변환하려는 글자 - `currentChar`
+
+---
+1. 문자를 변환할 때, 알파벳 외의 문자는 변환하지 않는다.
+2. `ASCII CODE`를 이용해 문자를 변환한다.
+
+---
+- 알파벳이 소문자일 경우
+>변환된 문자 : (char)('a' + ('z' - currentChar)
+- 알파벳이 대문자일 경우
+
+
+>변환된 문자 : (char)('A' + ('Z' - currentChar)
