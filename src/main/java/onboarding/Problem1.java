@@ -32,6 +32,7 @@ class Problem1 {
         int right = user.get(1);
 
         if (left < 0 || right > 400) return false;
+        if ( (left==1 && right ==2) || (left==399 && right==400) ) return false;
         if (left % 2 != 1 || right % 2 != 0) return false;
         if (right - left != 1) return false;
 
