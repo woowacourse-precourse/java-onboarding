@@ -1,6 +1,9 @@
 package onboarding;
 
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
+
+
 /*
 - 기능 구현사항 목록 -
 1. email과 nickname을 가지는 class 생성
@@ -8,8 +11,31 @@ import java.util.List;
 3. 중복된다면 set에 저장
  */
 public class Problem6 {
-    public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+
+    static Map<String, Integer> nickname = new HashMap<>();
+    static Set<Integer> answer = new HashSet<>();
+
+    static class User {
+        private String nick;
+        private String email;
+
+        public String getNick() {
+            return nick;
+        }
+
+        public String getEmail(){
+            return email;
+        }
+
+        public User(String nick, String email){
+            this.nick = nick;
+            this.email = email;
+        }
     }
+
+    static void addAnswer(int idx) {
+        answer.add(idx);
+    }
+
+
 }
