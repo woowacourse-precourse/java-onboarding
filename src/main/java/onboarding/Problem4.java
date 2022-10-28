@@ -14,7 +14,7 @@ public class Problem4 {
 }
 
 class StringTokenizer {
-    String[] wordToken;
+    private String[] wordToken;
 
     public StringTokenizer(String word) {
         this.wordToken = word.split("");
