@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -15,8 +17,7 @@ public class Problem6 {
             saveStudentsInfo(info);
         }
         findDuplicatedStudents();
-        List<String> answer = List.of("answer");
-        return answer; // 임시
+        return getAnswer();
     }
 
     private static void saveStudentsInfo(List<String> info) {
@@ -40,5 +41,11 @@ public class Problem6 {
                 DUPLICATED_STUDENTS.addAll(studentEmails);
             }
         }
+    }
+
+    private static List<String> getAnswer() {
+        ArrayList<String> answer = new ArrayList<>(DUPLICATED_STUDENTS);
+        Collections.sort(answer);
+        return answer;
     }
 }
