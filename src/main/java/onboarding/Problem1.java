@@ -3,8 +3,10 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+    public static final int LEFT = 0;
+    public static final int RIGHT = 1;
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int answer;
 
         try {
             Validator.isValidate(pobi, crong);
@@ -16,12 +18,11 @@ class Problem1 {
         return answer;
     }
 
-    private static int getMaxNum(List<Integer> array){
+    private static int getMaxNum(List<Integer> page){
         int result = 0;
 
-
-        result = Math.max(result, getDigitSum(array.get(0)) + getDigitSum(array.get(1)));
-        result = Math.max(result, getDigitMultiple(array.get(0)) + getDigitMultiple(array.get(1)));
+        result = Util.getMax(result, getDigitSum(page.get(LEFT)) + getDigitSum(page.get(RIGHT)));
+        result = Util.getMax(result, getDigitMultiple(page.get(LEFT)) + getDigitMultiple(page.get(RIGHT)));
         return result;
     }
 
@@ -57,7 +58,7 @@ class Problem1 {
         if (getMaxNum(pobi) == getMaxNum(crong)) {
             return 0;
         }
-        return -1;
+        throw new IllegalStateException("Can't find who is win");
     }
 
     static class Validator {
