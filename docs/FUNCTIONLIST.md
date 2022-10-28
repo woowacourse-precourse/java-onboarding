@@ -1,6 +1,6 @@
 # :pushpin: 각 문제별 기능 목록
 
-## 1. Problem1
+## Problem1
 <details>
 <summary><b>기능 목록</b></summary>
 <div markdown="1">
@@ -11,7 +11,7 @@
 </div>
 </details>
 
-## 2. Problem2
+## Problem2
 <details>
 <summary><b>기능 목록</b></summary>
 <div markdown="1"> 
@@ -20,7 +20,7 @@
 </div>
 </details>
 
-## 3. Problem3
+## Problem3
 <details>
 <summary><b>기능 목록</b></summary>
 <div markdown="1">
@@ -30,7 +30,7 @@
 </div>
 </details>
 
-## 4. Problem4
+## Problem4
 <details>
 <summary><b>기능 목록</b></summary>
 <div markdown="1">
@@ -40,7 +40,7 @@
 </div>
 </details>
 
-## 5. Problem5
+## Problem5
 <details>
 <summary><b>기능 목록</b></summary>
 <div markdown="1">
@@ -50,7 +50,7 @@
 </div>
 </details>
 
-## 6. Problem6
+## Problem6
 <details>
 <summary><b>기능 목록</b></summary>
 <div markdown="1">
@@ -60,7 +60,7 @@
 </div>
 </details>
 
-## 7. Problem 7
+## Problem 7
 <details>
 <summary><b>기능 목록</b></summary>
 <div markdown="1">
