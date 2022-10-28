@@ -33,20 +33,17 @@ public class Problem7 {
         }
         void GroupingFriendsByName() {
             for (int i = 0; i < friends.size(); i++) {
-                findFriend(i);
+                insertFriend(friends.get(i).get(0));
+                insertFriend(friends.get(i).get(1));
             }
         }
         void GroupingVisitorsByName() {
             for (int i = 0; i < visitors.size(); i++) {
-
+                insertVisitor(visitors.get(i));
             }
         }
-        void findFriend (int i) {
 
-
-        }
-
-        void insertFriend (String key, int i) {
+        void insertFriend (String key) {
             if (recommendFriends.containsKey(key)) {
                 recommendFriends.put(key, recommendFriends.get(key) + 10);
             } else {
