@@ -1,5 +1,6 @@
 package onboarding;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -8,6 +9,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Nested
+@DisplayName("문제 1번")
 public class Problem1Test {
     @Test
     void case1() {
@@ -26,9 +28,73 @@ public class Problem1Test {
     }
 
     @Test
-    void case3() {
+    @DisplayName("입력값 무효 #1, 왼쪽 페이지 번호가 홀수가 아니다.")
+    void errorCase1() {
+        List<Integer> pobi = List.of(100, 102);
+        List<Integer> crong = List.of(211, 212);
+        int result = -1;
+        assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+    }
+
+    @Test
+    @DisplayName("입력값 무효 #2, 오른쪽 페이지 번호가 짝수가 아니다.")
+    void errorCase2() {
+        List<Integer> pobi = List.of(299, 300);
+        List<Integer> crong = List.of(93, 95);
+        int result = -1;
+        assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+    }
+
+    @Test
+    @DisplayName("입력값 무효 #3, 페이지 번호가 1 미만이다.")
+    void errorCase3() {
+        List<Integer> pobi = List.of(-1, 0);
+        List<Integer> crong = List.of(211, 212);
+        int result = -1;
+        assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+    }
+
+    @Test
+    @DisplayName("입력값 무효 #4, 페이지 번호가 400을 초과한다.")
+    void errorCase4() {
+        List<Integer> pobi = List.of(33, 34);
+        List<Integer> crong = List.of(401, 402);
+        int result = -1;
+        assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+    }
+
+    @Test
+    @DisplayName("입력값 무효 #5, 왼쪽과 오른쪽 페이지 번호가 연속적이지 않다.")
+    void InvalidInput_NotContinousPageNumber() {
         List<Integer> pobi = List.of(99, 102);
         List<Integer> crong = List.of(211, 212);
+        int result = -1;
+        assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+    }
+
+    @Test
+    @DisplayName("입력값 무효 #6, 왼쪽 페이지 번호가 오른쪽 페이지 번호 보다 더 크다.")
+    void errorCase6() {
+        List<Integer> pobi = List.of(99, 100);
+        List<Integer> crong = List.of(213, 210);
+        int result = -1;
+        assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+    }
+
+    @Test
+    @DisplayName("입력값 무효 #7, 페이지 번호가 시작 면이다.")
+    void errorCase7() {
+        List<Integer> pobi = List.of(99, 100);
+        List<Integer> crong = List.of(213, 210);
+        int result = -1;
+        assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+    }
+
+    @Test
+    @DisplayName("입력값 무효 #8, 페이지 번호가 마지막 면이다.")
+    void errorCase8() {
+        List<Integer> pobi = List.of(99, 100);
+        List<Integer> crong = List.of(213, 210);
         int result = -1;
         assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
     }
