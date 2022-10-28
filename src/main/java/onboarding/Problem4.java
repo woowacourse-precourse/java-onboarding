@@ -11,18 +11,18 @@ public class Problem4 {
     }
 
     private static String toOpposite(char[] chars) {
-        String answer = "";
+        StringBuilder answer = new StringBuilder();
 
         for (char ch : chars) {
             if (Character.isUpperCase(ch)) {
-                answer += (char)('Z' - (ch - 'A'));
+                answer.append((char) ('Z' - (ch - 'A')));
             } else if (Character.isLowerCase(ch)) {
-                answer += (char)('z' - (ch - 'a'));
+                answer.append((char) ('z' - (ch - 'a')));
             } else {
-                answer += ch;
+                answer.append(ch);
             }
         }
 
-        return answer;
+        return answer.toString();
     }
 }
