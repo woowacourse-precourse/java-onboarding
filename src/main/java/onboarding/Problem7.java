@@ -1,15 +1,12 @@
 package onboarding;
 
-import onboarding.problem7.NotMatchingFriendSize;
-import onboarding.problem7.NotMatchingFriendsSize;
-import onboarding.problem7.NotMatchingUserLength;
-import onboarding.problem7.NotMatchingVisitorsSize;
+import onboarding.problem7.*;
 import org.junit.platform.commons.util.StringUtils;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -18,6 +15,8 @@ public class Problem7 {
         int userLength = user.length();
         int friendsSize = friends.size();
         int visitorsSize = visitors.size();
+
+        ArrayList<ScoreInfo> arrayList = new ArrayList<>();
 
         //1. 예외사항
         //1-1 user 길이 1 이상 30 이하인지 체크
@@ -41,9 +40,35 @@ public class Problem7 {
             throw new NotMatchingVisitorsSize("방문 기록의 길이가 맞지 않습니다.");
         }
 
+        //2. 유저 친구 관계 표현하기
+        Map<String, Integer> userFriendInfo = new HashMap<>();
+        for (List<String> friend : friends) {
+            String friendA = friend.get(0);
+            String friendB = friend.get(1);
+
+            if(isUserFriendName(user, friendA)){
+                userFriendInfo.put(friendB,1);
+            }
+            if(isUserFriendName(user, friendB)){
+                userFriendInfo.put(friendA,1);
+            }
+        }
+
 
 
         return answer;
+    }
+
+    private static boolean isUser(String user, String friendA, String friendB) {
+        return friendA == user || friendB == user;
+    }
+
+    private static boolean isMapContain(Map<String, Integer> userFriendInfo, String friendA) {
+        return userFriendInfo.containsKey(friendA);
+    }
+
+    private static boolean isUserFriendName(String user, String friendA) {
+        return user.equals(friendA);
     }
 
     private static boolean isNotMatchingVisitorsSize(int size) {
