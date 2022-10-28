@@ -9,13 +9,15 @@ public class Problem6 {
 		// 닉네임 리스트 생성
 		List<String> nicknameList = makeNicknameList(forms);
 		// 중복 여부 판단 문자열 리스트 생성
-		List<String> splitStringLists = new ArrayList<>();
+		List<String> splitStringList = new ArrayList<>();
 		for (String nickname : nicknameList) {
-			List<String> splitStringList = makeSplitStringList(nickname);
-			splitStringLists.addAll(splitStringList);
+			List<String> splitStrings = makeSplitStringList(nickname);
+			splitStringList.addAll(splitStrings);
 		}
-
+		// 중복 여부 판단 문자열 리스트 내 중복 제거
+		List<String> splitStringLists = removeListDuplication(splitStringList);
 		// 중복 여부 확인 (contain 함수)
+
 		// 중복된 닉네임의 이메일을 리스트에 추가
 		// 리스트 중복 제거 (set 함수 이용)
 		// 리스트 오름차순 정렬  (sort 함수)
