@@ -8,6 +8,15 @@ import java.util.HashSet;
 import java.util.List;
 
 public class Problem6 {
+    public static boolean isValidDomain(String email) {
+        String pattern = "([a-zA-z0-9]+)(@email.com)";
+
+        if (email.matches(pattern)) {
+            return true;
+        }
+        return false;
+    }
+
     public static String sliceNickname(String nickname, int idx) {
         return nickname.substring(idx, idx+2);
     }
