@@ -21,10 +21,11 @@ class Problem1 {
             return -1;
         }
         // 4. 1 <= left <= 399 and 2 <= right <= 400
-        for (List<Integer> nums : Arrays.asList(pobi, crong)) {
-            if (nums.get(0)<1 | nums.get(0)>399 | nums.get(1)<2 | nums.get(1)>400) {
-                return -1;
-            }
+        if (pobi.get(0)<1 | pobi.get(0)>399 | pobi.get(1)<2 | pobi.get(1)>400) {
+            return -1;
+        }
+        if (crong.get(0)<1 | crong.get(0)>399 | crong.get(1)<2 | crong.get(1)>400) {
+            return -1;
         }
 
         List<Integer> scoresPobi = merge(mapToSum(pobi), mapToMul(crong));
