@@ -55,24 +55,37 @@ public class Problem6 {
     }
 
     public static boolean isError(List<List<String>> forms) {
-        boolean flag = false;
-        if (forms.size() < 1 || forms.size() > 10000) { // 크루 수
-            flag = true;
+        if (checkFormsLength(forms)) {
+            return true;
         }
         for (List<String> form : forms) {
-            if (form.get(0).length() < 11 || form.get(0).length() >= 20) { // 이메일 길이
-                flag = true;
-            }
-            if (!form.get(0).split("@")[1].equals("email.com")) { // 이메일 도메인
-                flag = true;
-            }
-            if (!form.get(1).matches("^[가-힣]*$")) { // 닉네임 한글
-                flag = true;
-            }
-            if (form.get(1).length() < 1 || form.get(1).length() >= 20) { // 닉네임 길이
-                flag = true;
+            String email = form.get(0);
+            String nickName = form.get(1);
+            if (checkEmailLength(email) || checkEmailDomain(email) || checkNicknameLanguage(nickName) || checkNicknameLength(nickName)) {
+                return true;
             }
         }
-        return flag;
+
+        return false;
+    }
+
+    public static boolean checkFormsLength(List<List<String>> forms) {
+        return forms.size() < 1 || forms.size() > 10000;
+    }
+
+    public static boolean checkEmailLength(String email) {
+        return email.length() < 11 || email.length() >= 20;
+    }
+
+    public static boolean checkEmailDomain(String email) {
+        return !email.split("@")[1].equals("email.com");
+    }
+
+    public static boolean checkNicknameLanguage(String nickName) {
+        return !nickName.matches("^[가-힣]*$");
+    }
+
+    public static boolean checkNicknameLength(String nickName) {
+        return nickName.length() < 1 || nickName.length() >= 20;
     }
 }
