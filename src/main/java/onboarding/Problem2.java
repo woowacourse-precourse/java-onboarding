@@ -87,7 +87,8 @@ public class Problem2 {
 		return range;
 	}
 
-	public static boolean isUpperCase(String word)
+	//대문자 있는지 확인
+	public static boolean checkUpperCase(String word)
 	{
 		for (int i = 0; i < word.length(); i++)
 		{
@@ -100,7 +101,7 @@ public class Problem2 {
 		if (word.length() < 1 || word.length() > 1000)
 			throw new IllegalArgumentException("ERROR");
 		//대문자가 있는지
-		if (isUpperCase(word))
+		if (checkUpperCase(word))
 			throw new IllegalArgumentException("ERROR");
 		return true;
 	}
