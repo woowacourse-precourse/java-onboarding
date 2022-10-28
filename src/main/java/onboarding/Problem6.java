@@ -22,9 +22,24 @@ public class Problem6 {
 
     private static void checkNicknameInForms(List<List<String>> forms) {
         for(int i=1; i<forms.size(); i++) {
-            for(int j=0; j<forms.get(i).size(); j++) {
-                //TODO : checkConfirmListWordContains 구현
+            if(checkConfirmListWordContains(forms.get(i).get(1))) {
+                duplicatedEmails.add(forms.get(i).get(0));
+            }
+            confirm.add(forms.get(i).get(1));
+        }
+    }
+
+    private static boolean checkConfirmListWordContains(String nickname) {
+        for (String value : confirm) {
+            for (int j = 0; j < nickname.length(); j++) {
+                if (value.contains(String.valueOf(nickname.charAt(j)))) {
+                    String s = nickname.substring(j, j + 2);
+                    if (value.contains(s)) {
+                        return true;
+                    }
+                }
             }
         }
+        return false;
     }
 }
