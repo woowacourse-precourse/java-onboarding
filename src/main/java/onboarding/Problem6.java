@@ -6,34 +6,28 @@ import onboarding.problem6.DuplicateNickname;
 
 public class Problem6 {
 
+    final static int USER_EMAIL = 0;
+    static ArrayList<String> DuplicateEmail(Set<Integer> duplicateIndex, List<List<String>> forms) {
+        ArrayList<String> result = new ArrayList<>();
+
+        for(int i : duplicateIndex) {
+            result.add(forms.get(i).get(USER_EMAIL));
+        }
+        return result;
+    }
     static List<String> EmailSort(List<String> email) {
         List<String> result = email;
 
-        Collections.sort(result);
-
+        Collections.sort(email);
         return result;
     }
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
 
         DuplicateNickname duplicateNickname = new DuplicateNickname(forms);
-
+        answer = DuplicateEmail(duplicateNickname.DuplicateNicknameIndex(), forms);
+        EmailSort(answer);
 
         return answer;
-    }
-
-    public static void main(String str[]) {
-        List<List<String>> forms = List.of(
-                List.of("jm@email.com", "제이엠"),
-                List.of("jason@email.com", "제이슨"),
-                List.of("woniee@email.com", "워니"),
-                List.of("mj@email.com", "엠제이"),
-                List.of("nowm@email.com", "이제엠")
-        );
-
-
-        System.out.print(solution(forms));
-
-
     }
 }

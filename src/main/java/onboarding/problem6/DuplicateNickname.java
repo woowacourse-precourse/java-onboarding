@@ -1,6 +1,11 @@
 package onboarding.problem6;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.HashMap;
 
 
 public class DuplicateNickname {
@@ -24,7 +29,7 @@ public class DuplicateNickname {
         }
     }
 
-    private Set<Integer> DuplicateNicknameIndex() {
+    public Set<Integer> DuplicateNicknameIndex() {
         Map<String,Integer> map = new HashMap();
         Set<Integer> result = new TreeSet<>();
 
@@ -39,4 +44,5 @@ public class DuplicateNickname {
         return result;
     }
 
-}
+
+ }
