@@ -41,7 +41,8 @@ public class Problem7 {
             int score = 0;
             for(String userFriend : friendsMap.getOrDefault(user, new ArrayList<>())) {
                 if(friendsMap.get(friend).contains(userFriend)) { // 함께 아는 친구가 존재하면 10점이 주어집니다
-                    scoreMap.put(friend, score += 10);
+                    score += 10;
+                    scoreMap.put(friend, score);
                 }
             }
         }
@@ -51,9 +52,8 @@ public class Problem7 {
             if(friendsMap.getOrDefault(user, new ArrayList<>()).contains(visitor)) {
                 continue;    // 이미 방문자와 친구라면 추천 친구에서 제외
             }
-
-            int score = 0;
-            scoreMap.put(visitor, score++);
+            int score = scoreMap.getOrDefault(visitor, 0) + 1;    // 함께아는 친구 점수에 이어서 +1
+            scoreMap.put(visitor, score);
         }
 
         // 정렬: 점수는 내림차순으로 정렬하고 점수가 같으면 이름으로 오름차순 정렬
