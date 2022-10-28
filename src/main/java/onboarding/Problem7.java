@@ -20,7 +20,7 @@ public class Problem7 {
         }
     }
 
-    // 각 사용자 별로 친구 목록을 저장하는 메소드
+    // 각 사용자 별로 친구 목록을 저장하는 메서드
     private static void putFriendsToMap(List<String> list) {
         ArrayList A_List = map_friends.getOrDefault(list.get(0), new ArrayList());
         ArrayList B_List = map_friends.getOrDefault(list.get(1), new ArrayList());
@@ -49,9 +49,14 @@ public class Problem7 {
     // visitor 기반으로 방문한 친구 점수 추가해주는 메서드
     private static void visitorPlusPoint(List<String> visitors, ArrayList arrayList) {
         for (String str : visitors) {
-            if (!arrayList.contains(str)) {
-                map_points.put(str, map_points.getOrDefault(str, 0) + 1);
-            }
+            putPointsToMap(str, arrayList);
+        }
+    }
+
+    // 각 사용자 별로 추천 점수를 저장해주는 메서드
+    private static void putPointsToMap(String str, ArrayList arrayList) {
+        if (!arrayList.contains(str)) {
+            map_points.put(str, map_points.getOrDefault(str, 0) + 1);
         }
     }
 
