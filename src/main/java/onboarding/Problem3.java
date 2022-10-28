@@ -2,20 +2,25 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
-        int num;
-        int tmp;
+        int answer = countThreeSixNine(number);
+        return answer;
+    }
 
-        // count 3, 6, 9
+    public static int countThreeSixNine(int number){
+        int count = 0;
+        int tmpNumber;
+        int unitNumber;
+
         for(int i=1; i<= number; i++){
-            num = i;
-            while(num > 0){
-                tmp = num % 10;
-                if((tmp == 3) || (tmp == 6) || (tmp == 9))
-                    answer++;
-                num /= 10;
+            tmpNumber = i;
+            while(tmpNumber > 0){
+                unitNumber = tmpNumber % 10;
+                if((unitNumber == 3) || (unitNumber == 6) || (unitNumber == 9))
+                    count++;
+                tmpNumber /= 10;
             }
         }
-        return answer;
+
+        return count;
     }
 }
