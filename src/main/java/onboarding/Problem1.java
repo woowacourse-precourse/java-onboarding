@@ -48,8 +48,39 @@ class Problem1 {
         return result;
     }
 
-    public static int solution(List<Integer> pobi, List<Integer> crong) {
+    /*
+    * 예외사항을 처리하는 메서드.
+    * parameter : List
+    * return : boolean => 에러가 없으면 true, 있으면 false;
+    * */
+    public static boolean errorCheck(List<Integer> list) {
+        boolean result = true;
+        if (list.get(0) == null || list.get(1) == null) {
+            result = false;
+        }
 
+        int leftPage = list.get(0);
+        int rightPage = list.get(1);
+
+        if (rightPage - leftPage != 1) {
+            result = false;
+        }
+        if (leftPage < 1 || leftPage > 400 || leftPage % 2 != 1
+                || rightPage < 1 || rightPage > 400 || rightPage % 2 != 0) {
+            result = false;
+        }
+        return result;
+    }
+
+    /*
+    * 기능 요구 사항 연산을 진행하여 승부의 결과를 반환하는 함수
+    * parameter : List1, List2
+    * return : int
+    * */
+    public static int solution(List<Integer> pobi, List<Integer> crong) {
+        if (!(errorCheck(pobi) && errorCheck(crong))) {
+            return -1;
+        }
         int pobiScore = calScore(pobi);
         int crongScore = calScore(crong);
         int result = 0;
