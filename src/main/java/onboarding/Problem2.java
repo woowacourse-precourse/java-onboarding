@@ -4,7 +4,15 @@ import java.util.Stack;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = "";
+        int count = 99;
+        try{ check(cryptogram); }
+        catch (IllegalArgumentException e){
+            return e.toString();
+        }
+        Stack<Character> stack = new Stack<>();
+        answer = eraseDuplicatedElements(cryptogram, stack);
+        System.out.println("결과 : crypto:" + cryptogram);
         return answer;
     }
 
