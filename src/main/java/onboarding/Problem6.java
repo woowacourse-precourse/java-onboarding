@@ -9,6 +9,27 @@ public class Problem6 {
     }
 
 
+    // 중복된 닉네임을 사용중인 크루의 이메일 리스트를 반환하는 메소드
+    private static List<String> getDuplicatedEmailList(List<List<String>> forms) {
+        List<String> checkList = getCheckList(forms);
+        List<String> nickNameList = getNickNameList(forms);
+        List<String> emailList = getEmailList(forms);
+        List<String> duplicatedWords = getDuplicatedWords(nickNameList, checkList);
+        Set<String> set = new TreeSet<>();
+
+        int index;
+
+        for (String nickName : nickNameList) {
+            for (String duplicatedWord : duplicatedWords) {
+                if (nickName.contains(duplicatedWord)) {   // <- 리팩토링 가능할 덧
+                    index = nickNameList.indexOf(nickName);
+                    set.add(emailList.get(index));
+                }
+            }
+        }
+
+        return new ArrayList<>(set);
+    }
 
 
     // 닉네임 리스트와 체크리스트를 비교하여 체크리스트 중 중복된 값만 반환하는 메소드
