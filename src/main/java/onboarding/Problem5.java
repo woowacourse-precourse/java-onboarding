@@ -18,5 +18,15 @@ public class Problem5 {
     public static List<Integer> exchange(int money) {
         int[] moneyTypeArr = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
         List<Integer> wallet = new ArrayList<>();
+
+        for (int i = 0; i <moneyTypeArr.length; i++) {
+            if (money < moneyTypeArr[i]) {
+                wallet.add(0);
+            } else if (money >= moneyTypeArr[i]) {
+                wallet.add(money / moneyTypeArr[i]);
+                money = money - (money / moneyTypeArr[i]) * moneyTypeArr[i];
+            }
+        }
+        return wallet;
     }
 }
