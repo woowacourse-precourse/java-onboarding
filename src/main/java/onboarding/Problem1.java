@@ -58,7 +58,13 @@ class Problem1 {
      * 입력받은 페이지가 유효한지 확인하는 함수
      */
     private static boolean checkPagesValidation(List<Integer> pageList) {
-        return false;
+        int leftPage = pageList.get(0);
+        int rightPage = pageList.get(1);
+
+        boolean pageRangeCheck = leftPage >= 1 && rightPage <= 400;
+        boolean pageValidationCheck = leftPage % 2 == 1 && rightPage % 2 == 0 && leftPage + 1 == rightPage;
+
+        return  pageRangeCheck && pageValidationCheck;
     }
 
     /**
