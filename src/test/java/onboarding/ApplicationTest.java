@@ -7,61 +7,61 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ApplicationTest {
-//    @Nested
-//    class Problem1Test {
-//
-//        @Test
-//        void case1() {
-//            List<Integer> pobi = List.of(97, 98);
-//            List<Integer> crong = List.of(197, 198);
-//            int result = 0;
-//            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
-//        }
-//
-//        @Test
-//        void case2() {
-//            List<Integer> pobi = List.of(131, 132);
-//            List<Integer> crong = List.of(211, 212);
-//            int result = 1;
-//            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
-//        }
-//
-//        @Test
-//        void case3() {
-//            List<Integer> pobi = List.of(99, 102);
-//            List<Integer> crong = List.of(211, 212);
-//            int result = -1;
-//            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
-//        }
-//
-//        @Test
-//        @DisplayName("시작 면이나 마지막 면이 나도록 책을 펼친 경우")
-//        void whenOpenedFirstOrLastPage() {
-//            List<Integer> pobi = List.of(1, 2);
-//            List<Integer> crong = List.of(399, 400);
-//            int result = -1;
-//            Assertions.assertEquals(result, Problem1.solution(pobi,crong), "첫페이지나 마지막 페이지 오픈 금지");
-//        }
-//
-//        @Test
-//        @DisplayName("페이지가 차이가 1이 아닌 경우")
-//        void whenPagesAreNotNumber() {
-//            List<Integer> pobi = List.of(3,6);
-//            List<Integer> crong = List.of(8, 10);
-//            int result = -1;
-//            Assertions.assertEquals(result, Problem1.solution(pobi,crong), "페이지 차이가 1 이상시 -1 반환해야함");
-//        }
-//
-//        @Test
-//        @DisplayName("페이지 숫자가 1~400을 벗어나는 경우")
-//        void whenPagesAreOutOfBound () {
-//            List<Integer> pobi = List.of(-1, 0);
-//            List<Integer> crong = List.of(400, 401);
-//            int result = -1;
-//            Assertions.assertEquals(result, Problem1.solution(pobi,crong), "오른쪽 페이지가 값이 작을 경우 -1 반환해야함");
-//        }
-//
-//    }
+    @Nested
+    class Problem1Test {
+
+        @Test
+        void case1() {
+            List<Integer> pobi = List.of(97, 98);
+            List<Integer> crong = List.of(197, 198);
+            int result = 0;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        void case2() {
+            List<Integer> pobi = List.of(131, 132);
+            List<Integer> crong = List.of(211, 212);
+            int result = 1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        void case3() {
+            List<Integer> pobi = List.of(99, 102);
+            List<Integer> crong = List.of(211, 212);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        @DisplayName("시작 면이나 마지막 면이 나도록 책을 펼친 경우")
+        void whenOpenedFirstOrLastPage() {
+            List<Integer> pobi = List.of(1, 2);
+            List<Integer> crong = List.of(399, 400);
+            int result = -1;
+            Assertions.assertEquals(result, Problem1.solution(pobi,crong), "첫페이지나 마지막 페이지 오픈 금지");
+        }
+
+        @Test
+        @DisplayName("페이지가 차이가 1이 아닌 경우")
+        void whenPagesAreNotNumber() {
+            List<Integer> pobi = List.of(3,6);
+            List<Integer> crong = List.of(8, 10);
+            int result = -1;
+            Assertions.assertEquals(result, Problem1.solution(pobi,crong), "페이지 차이가 1 이상시 -1 반환해야함");
+        }
+
+        @Test
+        @DisplayName("페이지 숫자가 1~400을 벗어나는 경우")
+        void whenPagesAreOutOfBound () {
+            List<Integer> pobi = List.of(-1, 0);
+            List<Integer> crong = List.of(400, 401);
+            int result = -1;
+            Assertions.assertEquals(result, Problem1.solution(pobi,crong), "오른쪽 페이지가 값이 작을 경우 -1 반환해야함");
+        }
+
+    }
 
     @Nested
     class Problem2Test {
