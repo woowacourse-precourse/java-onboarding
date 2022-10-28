@@ -11,16 +11,11 @@ public class Problem4 {
         if (!Character.isAlphabetic(chr)) {
             return chr;
         }
-        if (isUpperCase(chr)) {
+        if (Character.isUpperCase(chr)) {
             return changeUpperCaseChar(chr);
         }
         return changeLowerCaseChar(chr);
     }
-
-    private static boolean isUpperCase(char chr) {
-        return false;
-    }
-
     private static char changeUpperCaseChar(char chr) {
         return '0';
     }
