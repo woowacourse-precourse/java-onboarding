@@ -105,18 +105,16 @@ public class Problem7 {
         private List<String> getFriendRecommendation(String user) {
             Map<String, Integer> result = new HashMap<>();
             Set<String> allUsers = getAllUsers();
-            System.out.println("allUsers = " + allUsers);
+//            System.out.println("allUsers = " + allUsers);
             MySns userSns = getUserSns(user);
             HashSet<String> myFriends = userSns.getMyFriends();
-            System.out.println("myFriends = " + myFriends);
+//            System.out.println("myFriends = " + myFriends);
             Set<String> notMyFriends = getNotMyFriends(myFriends, allUsers);
             notMyFriends.remove(user);
-            System.out.println("notMyFriends = " + notMyFriends);
             for (String other : notMyFriends) {
                 int score = getScore(user, other);
                 result.put(other, score);
             }
-            System.out.println("result = " + result);
             return getSortedRecommend(result);
         }
 
@@ -125,8 +123,9 @@ public class Problem7 {
             List<Map.Entry<String, Integer>> entryList = new ArrayList<>(map.entrySet());
             entryList.sort((o1, o2) ->
                     Objects.equals(o1.getValue(), o2.getValue()) ? o1.getKey().compareTo(o2.getKey()) : o2.getValue() - o1.getValue());
-            for (Map.Entry<String, Integer> entry : entryList) {
-                result.add(entry.getKey());
+
+            for (int i = 0; i < Math.min(5, entryList.size()); i++) {
+                result.add(entryList.get(i).getKey());
             }
 
             return result;
@@ -147,7 +146,6 @@ public class Problem7 {
             Set<String> otherFriends = getUserSns(other).getMyFriends();
             int overlapped = countOverlap(userFriends, otherFriends);
             int visited = countVisited(user, other);
-            System.out.println(user + " overLapped : " + overlapped +" visited : "+visited);
             return overlapped * commonFriendScore + visited * visitedTimeLineScore;
         }
 
