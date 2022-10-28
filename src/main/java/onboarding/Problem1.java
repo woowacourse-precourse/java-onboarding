@@ -5,13 +5,15 @@ import java.util.List;
 
 class Problem1 {
     static final int leftPage = 0;
-    static final int rigitPage = 1;
+    static final int rightPage = 1;
+    static final int userListSize = 2;
+
     static int errorNum = 250;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
-        answer = compareNum(findMaxNumber(pobi.get(leftPage), pobi.get(rigitPage)), findMaxNumber(crong.get(leftPage), crong.get(rigitPage)));
+        answer = compareNum(findMaxNumber(pobi.get(leftPage), pobi.get(rightPage)), findMaxNumber(crong.get(leftPage), crong.get(rigitPage)));
 
         return answer;
     }
@@ -30,49 +32,31 @@ class Problem1 {
         return numberList;
     }
 
-
-    //자리수 구하고 배열에 저장
-    public static int[] digit(int num)
-    {
-        int [] valueArray;
-        List<Integer> valueList = new ArrayList<>();
-
-        while(num > 0)
-        {
-            valueList.add(num % 10);
-            num /= 10;
-        }
-
-        valueArray = new int[valueList.size()];
-        for (int i = 0; i < valueArray.length; i++)
-            valueArray[i] = valueList.get(i);
-        return valueArray;
-    }
-
-
     //곱셈과 덧셈을 하는 함수
-    public static int calculation(List<Integer> numberList)
-    {
+    public static int[] calculation(List<Integer> numberList) {
         int sum = 0;
         int multiply = 0;
+        int[ ] resultArray = new int[userListSize];
 
-        for (int i = 0; i < numberList.size(); i++)
-        {
+        for (int i = 0; i < numberList.size(); i++) {
             sum += numberList.get(i);
             multiply *= numberList.get(i);
         }
 
-        return Math.max(sum, exceptionCheck(multiply));
+        resultArray[leftPage] = sum;
+        resultArray[rightPage] = multiply;
+        
+        return resultArray;
     }
 
     //점수 구하기 : 연산한 값의 max값을 찾기
-    public static int findMaxNumber(int leftNum, int rightNum)
+    public static int findScore(int leftNum, int rightNum)
     {
-        int [] leftDigit;
-        int [] rightDigit;
+        List<Integer> leftDigit;
+        List<Integer> rightDigit;
 
-        leftDigit = digit(leftNum);
-        rightDigit = digit(rightNum);
+        leftDigit = findPlaceValue(leftNum);
+        rightDigit = findPlaceValue(rightNum);
 
         int max = Math.max(calculation(leftDigit), calculation(rightDigit));
 
