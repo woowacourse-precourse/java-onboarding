@@ -6,18 +6,15 @@ public class Problem4 {
 
         return answer;
     }
+
     private static char changeCharter(char chr) {
-        if (!isAlphabet(chr)) {
+        if (!Character.isAlphabetic(chr)) {
             return chr;
         }
         if (isUpperCase(chr)) {
             return changeUpperCaseChar(chr);
         }
         return changeLowerCaseChar(chr);
-    }
-
-    private static boolean isAlphabet(char chr) {
-        return false;
     }
 
     private static boolean isUpperCase(char chr) {
