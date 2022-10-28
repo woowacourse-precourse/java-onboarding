@@ -36,4 +36,18 @@ public class Problem7 {
 
         return map;
     }
+
+    private static List<List<Integer>> makeUndirectedGraph(List<List<String>> friends, List<String> allUserNameList) {
+        Map<String, Integer> map = mappingNameToNumber(allUserNameList);
+        List<List<Integer>> adj = new ArrayList<>();
+        for (int i = 0; i <= allUserNameList.size(); i++) adj.add(new ArrayList<>());
+
+        for (int i = 0; i < friends.size(); i++) {
+            String friend1 = friends.get(i).get(0);
+            String friend2 = friends.get(i).get(1);
+            adj.get(map.get(friend1)).add(map.get(friend2));
+        }
+
+        return adj;
+    }
 }
