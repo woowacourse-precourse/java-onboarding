@@ -7,9 +7,8 @@ import java.util.stream.Collectors;
 
 public class Problem6 {
 	public static List<String> solution(List<List<String>> forms) {
-		// NicknameFilter nicknameFilter = new NicknameFilter();
-		// return nicknameFilter.filter(forms);
-		return null;
+		NicknameFilter nicknameFilter = new NicknameFilter();
+		return nicknameFilter.filter(forms);
 	}
 
 	static class NicknameFilter {
@@ -20,6 +19,35 @@ public class Problem6 {
 
 		NicknameFilter() {
 			this.userMap = new HashMap<>();
+		}
+
+		public List<String> filter(List<List<String>> forms) {
+			for (List<String> userInfo : forms) {
+				initUserInfo(userInfo);
+			}
+
+			HashSet<String> filteredUserSet = new HashSet<>();
+
+			for (int i = 0; i < forms.size(); i++) {
+
+				String targetNickname = forms.get(i).get(1);
+				HashSet<String> nicknamePattern = nicknamePatternCreator(targetNickname);
+
+				for (int j = 0; j < forms.size(); j++) {
+					if (i == j) {
+						continue;
+					}
+					String nickname = forms.get(j).get(1);
+					if (isDuplicatedPattern(nickname, nicknamePattern)) {
+						filteredUserSet.add(userMap.get(nickname));
+					}
+				}
+			}
+			return filteredUserSet
+					.stream()
+					.sorted()
+					.map(email -> email + EMAIL_FORM)
+					.collect(Collectors.toList());
 		}
 
 		private boolean isDuplicatedPattern(String nickname, HashSet<String> nicknamePattern) {
