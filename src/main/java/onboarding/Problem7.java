@@ -10,7 +10,16 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
         addFriendsWithUser(user,friends);
         findSameFriendWithUser(user,friends);
+        findVisitor(visitors);
         return answer;
+    }
+
+    private static void findVisitor(List<String> visitors) {
+        for (String visitor : visitors) {
+            if(sameFriendWithUser.containsKey(visitor)){
+            }else{
+            }
+        }
     }
 
     public static void findSameFriendWithUser(String user, List<List<String>> friends) {
