@@ -26,22 +26,43 @@ public class Problem1CustomTest {
             List<Integer> list = List.of(97, 98, 100);
             assertThat(
                     Problem1Validation.userInputSizeEquals(list, USER_INPUT_LENGTH))
-                            .isFalse();
+                    .isFalse();
         }
         @Test
         void 길이가2보다작은경우테스트() {
             List<Integer> list = List.of(97);
             assertThat(
                     Problem1Validation.userInputSizeEquals(list, USER_INPUT_LENGTH))
-                            .isFalse();
+                    .isFalse();
         }
         @Test
         void 길이가2인경우테스트() {
             List<Integer> list = List.of(97, 98);
             assertThat(
                     Problem1Validation.userInputSizeEquals(list, USER_INPUT_LENGTH))
-                            .isTrue();
+                    .isTrue();
         }
+        @Test
+        void 책페이지가1미만이포함되있다면() {
+            List<Integer> list = List.of(0, 3);
+            assertThat(
+                    Problem1Validation.isBookNumberBetweenMinAndMax(list, BOOK_MIN, BOOK_MAX))
+                    .isFalse();
 
+        }
+        @Test
+        void 책페이지가400초과인값이포함되어있다면() {
+            List<Integer> list = List.of(97, 98);
+            assertThat(
+                    Problem1Validation.isBookNumberBetweenMinAndMax(list, BOOK_MIN, BOOK_MAX))
+                    .isFalse();
+        }
+        @Test
+        void 책페이지가1과400사이인유효한값인지() {
+            List<Integer> list = List.of(97, 98);
+            assertThat(
+                    Problem1Validation.isBookNumberBetweenMinAndMax(list, BOOK_MIN, BOOK_MAX))
+                    .isTrue();
+        }
     }
 }
