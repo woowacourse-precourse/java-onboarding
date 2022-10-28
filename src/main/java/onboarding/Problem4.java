@@ -3,10 +3,12 @@ package onboarding;
 public class Problem4 {
     public static String solution(String word) {
         char[] chars = word.toCharArray();
+        StringBuffer buffer = new StringBuffer("");
+
         for (char c : chars) {
-            getChar(c);
+            buffer.append(getChar(c));
         }
-        return " "; // 임시
+        return buffer.toString();
     }
 
     private static char getChar(char c) {
