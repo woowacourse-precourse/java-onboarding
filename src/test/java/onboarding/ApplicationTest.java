@@ -135,9 +135,23 @@ class ApplicationTest {
     @Nested
     class Problem4Test {
         @Test
-        void case1() {
+        void case1() throws Exception {
             String word = "I love you";
             String result = "R olev blf";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+
+        @Test
+        void case2() throws Exception {
+            String word = "ABCDEFG2HI";
+            String result = "ZYXWVUT2SR";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+
+        @Test
+        void case3() throws Exception {
+            String word = "@";
+            String result = "@";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
     }
