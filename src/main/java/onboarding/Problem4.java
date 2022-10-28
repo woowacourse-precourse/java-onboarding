@@ -6,6 +6,17 @@ public class Problem4 {
         return answer;
     }
 
+    public static int getCalculationNumberByAlphabetUpperOrLowerCase(Character alphabet) {
+        int calculationNumberByAlphabetUpperOrLowerCase = 0;
+        if(Character.isUpperCase(alphabet)) {
+            calculationNumberByAlphabetUpperOrLowerCase = getUpperCaseCalculationNumber();
+        }
+        if(Character.isLowerCase(alphabet)) {
+            calculationNumberByAlphabetUpperOrLowerCase = getLowerCaseCalculationNumber();
+        }
+        return calculationNumberByAlphabetUpperOrLowerCase;
+    }
+
     public static int getUpperCaseCalculationNumber() {
         return 'A' + 'Z';
     }
