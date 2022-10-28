@@ -31,7 +31,7 @@ class Problem1 {
 		}
 		
 		
-		// 2. 각자리수의 max(합 , 곱) 구현 
+		// 2. 각자리수의 max(합 , 곱) 구현  
 		public static int getMax(int pageNum) {
 			int sum = 0;
 			int multiplication = 1;
@@ -43,11 +43,28 @@ class Problem1 {
 			}
 			return Math.max(sum, multiplication);	
 		}	
-	
 		
-		
-    public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
-    }
+		// 3. 포비가 이긴다면 1, 크롱이 이긴다면 2, 무승부는 0, 예외사항은 -1 구현  
+	    public static int solution(List<Integer> pobi, List<Integer> crong) {
+	        // 예외 발생시 -1 리턴 
+	    	if (exceptionCheck(pobi) || exceptionCheck(crong))
+	        	return -1;
+	    	// 포비 
+	        int pobiLeft = getMax(pobi.get(0));
+	        int pobiRight = getMax(pobi.get(1));
+	        int maxPobi = Math.max(pobiLeft, pobiRight);
+	        // 크롱
+	        int crongLeft = getMax(crong.get(0));
+	        int crongRight = getMax(crong.get(1));
+	        int maxCrong = Math.max(crongLeft, crongRight);
+	        
+	        if (maxPobi == maxCrong) {
+	        	return 0;
+	        } else if (maxPobi > maxCrong) {
+	        	return 1;
+	        } else if (maxPobi < maxCrong) {
+	        	return 2;
+	        }
+	        return -1;
+	    }
 }
