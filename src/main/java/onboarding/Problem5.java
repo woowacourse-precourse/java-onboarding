@@ -41,6 +41,10 @@ public class Problem5 {
         int quotient = money / baseMoney;
         return quotient;
     }
+    public static int updateMoney(int money, int baseMoney) {
+        int updatedMoney = money % baseMoney;
+        return updatedMoney;
+    }
 }
 
 
