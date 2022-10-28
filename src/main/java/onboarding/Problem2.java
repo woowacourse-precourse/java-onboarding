@@ -18,29 +18,30 @@ public class Problem2 {
     }
 
     public static boolean checkOverlap(StringBuilder cryptogramTranslation) {
-        char prevWord = cryptogramTranslation.charAt(0);
-        int prevIdx = 0;
-
         for (int i = 0; i < cryptogramTranslation.length() - 1; i++) {
-            int idx = i + 1;
-            if(prevWord == cryptogramTranslation.charAt(idx)) {
+            if(cryptogramTranslation.charAt(i) == cryptogramTranslation.charAt(i + 1)) {
                 return true;
             }
         }
         return false;
     }
 
-    public static void removeOverlap(StringBuilder cryptogram) {
+    public static void removeOverlap(StringBuilder cryptogramTranslation) {
+        for (int i = 0; i < cryptogramTranslation.length() - 1; i++) {
+            if(cryptogramTranslation.charAt(i) == cryptogramTranslation.charAt(i + 1)) {
+                int idx = i + 1;
+                while (idx < cryptogramTranslation.length()) {
+                    if(cryptogramTranslation.charAt(i) == cryptogramTranslation.charAt(idx)) {
+                        idx++;
+                        continue;
+                    }
+                    if(cryptogramTranslation.charAt(i) != cryptogramTranslation.charAt(idx)) {
+                        break;
+                    }
+                }
 
-    }
-
-    class Point {
-        int prev;
-        int next;
-
-        public Point(int prev, int next) {
-            this.prev = prev;
-            this.next = next;
+                cryptogramTranslation.delete(i, idx);
+            }
         }
     }
 }
