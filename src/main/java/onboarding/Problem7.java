@@ -24,8 +24,9 @@ public class Problem7 {
                         List otherFriendsList = friends.get(k);
                         if (otherFriendsList.contains(friendName) == true && otherFriendsList.contains(user) == true) {
                             break;
-                        } else if (otherFriendsList.contains(pairName) == true && otherFriendsList.contains(user) == true) {
-
+                        } else if ( pairName == user){
+                            break;
+                        }else if (otherFriendsList.contains(pairName) == true && otherFriendsList.contains(user) == true) {
                             countingMap.merge(friendName, 10, (integer, integer2) -> integer + integer2);
                         }
                     }
