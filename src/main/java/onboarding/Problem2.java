@@ -4,9 +4,10 @@ import java.util.Objects;
 import java.util.Stack;
 
 public class Problem2 {
-    static String result = "";
+
 
     public static String solution(String cryptogram) {
+        String result = "";
         //제한사항 처리
         cryptogram = cryptogram.toLowerCase();
         validateCase(cryptogram);
