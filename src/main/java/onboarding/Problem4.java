@@ -7,10 +7,16 @@ public class Problem4 {
             int strToCharDigit = word.charAt(i);                //글자 하나를 불러온다.
             if (isAlphabet(answer, strToCharDigit)) continue;
 
+
         }
         return answer.toString();
     }
 
+    /**
+     * 대/소문자를 구분하여 문자변환을 하는 메소드
+     * @param strToCharDigit
+     * @return
+     */
     private static int distributeUpper(int strToCharDigit) {
         if (Character.isUpperCase(strToCharDigit)) {
             strToCharDigit = (155 - strToCharDigit);
@@ -20,6 +26,12 @@ public class Problem4 {
         return strToCharDigit;
     }
 
+    /**
+     * 알파벳인지 체크하는 메소드
+     * @param answer
+     * @param strToCharDigit
+     * @return
+     */
     private static boolean isAlphabet(StringBuilder answer, int strToCharDigit) {
         if (strToCharDigit == 32) {
             answer.append(Character.toString(strToCharDigit));
