@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import onboarding.problem4.exception.CharacterCategoryMismatchException;
+
 public class WordConverter {
 	public static final int ASCII_OF_LOWERCASE_A = 97;
 	public static final int ASCII_OF_LOWERCASE_Z = 122;
@@ -45,18 +47,40 @@ public class WordConverter {
 	}
 
 	public static char convertLowerCharacter(char lowercaseCharacter) {
-		int convertedCharacter = lowercaseCharacter;
+		try {
+			if (lowercaseCharacter < ASCII_OF_LOWERCASE_A || ASCII_OF_LOWERCASE_Z < lowercaseCharacter) {
+				throw new CharacterCategoryMismatchException("The character is NOT LOWERCASE. Or not alphabet");
+			}
 
-		convertedCharacter = convertedCharacter + ((109 - convertedCharacter)*2 + 1);
+			int convertedCharacter = lowercaseCharacter;
 
-		return (char)convertedCharacter;
+			convertedCharacter = convertedCharacter + ((109 - convertedCharacter)*2 + 1);
+
+			return (char)convertedCharacter;
+
+		} catch (CharacterCategoryMismatchException e) {
+			System.out.println(e.getMessage());
+			return 0;
+		}
+
 	}
 
 	public static char convertUpperCharacter(char uppercaseCharacter) {
-		int convertedCharacter = uppercaseCharacter;
+		try {
+			if (uppercaseCharacter < ASCII_OF_UPPERCASE_A || ASCII_OF_UPPERCASE_Z < uppercaseCharacter) {
+				throw new CharacterCategoryMismatchException("The character is NOT UPPERCASE. Or not alphabet");
+			}
 
-		convertedCharacter = convertedCharacter + ((77 - convertedCharacter)*2 + 1);
+			int convertedCharacter = uppercaseCharacter;
 
-		return (char)convertedCharacter;
+			convertedCharacter = convertedCharacter + ((77 - convertedCharacter)*2 + 1);
+
+			return (char)convertedCharacter;
+
+		} catch (CharacterCategoryMismatchException e) {
+			System.out.println(e.getMessage());
+			return 0;
+		}
+
 	}
 }
