@@ -40,4 +40,18 @@ public class Problem4 {
         char reverse = (char) (LOWER_CASE_TOTAL - character);
         stringBuilder.setCharAt(index, reverse);
     }
+
+    private static StringBuilder makeFrogWord(String word) {
+        StringBuilder frogWord = toStringBuilder(word);
+        for (int i = 0; i < frogWord.length(); i++) {
+            char character = frogWord.charAt(i);
+            if (isUpperCase(character)) {
+                reverseUpperCase(frogWord, character, i);
+            }
+            if (isLowerCase(character)) {
+                reverseLowerCase(frogWord, character, i);
+            }
+        }
+        return frogWord;
+    }
 }
