@@ -30,7 +30,10 @@ public class Problem6 {
         //두 글자의 문자가 각 크루들의 닉네임에 몇 번이나 속해있는지 구하는 메서드
         HashMap<String, Integer> wordReference_cnt = makeReferenceWordCnt(forms, referenceWord);
 
-        List<String> answer = new ArrayList<>();
+        // 2번 이상 나온 문자가 속하여 경고를 보내야 할 크루의 이메일을 구하는 메서드 (중복 제거)
+        HashSet<String> alertEmail = makeAlertEmail(forms, wordReference_cnt);
+
+        List<String> answer = new ArrayList<>(alertEmail);
         Collections.sort(answer);
 
         return answer;
@@ -68,5 +71,16 @@ public class Problem6 {
         return referenceWordCnt;
     }
 
+    private static HashSet<String> makeAlertEmail(List<List<String>> forms, HashMap<String, Integer> wordReference_cnt) {
+        HashSet<String> alertEmail = new HashSet<>();
+        for (int i = 0; i < forms.size(); i++) {
+            for (String s : wordReference_cnt.keySet()) {
+                if (wordReference_cnt.get(s) >= 2 && forms.get(i).get(1).contains(s)) {
+                    alertEmail.add(forms.get(i).get(0));
+                }
+            }
+        }
+        return alertEmail;
+    }
 
 }
