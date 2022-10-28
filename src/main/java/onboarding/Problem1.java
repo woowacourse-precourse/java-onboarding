@@ -9,6 +9,10 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+
+        validatePage(pobi);
+        validatePage(crong);
+
         pobiNum = findMaxNum(pobi);
         crongNum = findMaxNum(crong);
 
@@ -44,6 +48,15 @@ class Problem1 {
             }
         }
         return max;
+    }
+
+    //시작면이나 마지막 면인 경우 예외처리
+    public static void validatePage(List<Integer> pageList){
+        if(pageList.contains(1)){
+            throw new RuntimeException("첫번째 페이지는 펼칠 수 없습니다.");
+        } else if(pageList.contains(400)){
+            throw new RuntimeException("마지막 페이지느 펼칠 수 없습니다.");
+        }
     }
 
 }
