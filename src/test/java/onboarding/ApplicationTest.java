@@ -3,6 +3,7 @@ package onboarding;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -10,6 +11,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 class ApplicationTest {
     @Nested
     class Problem1Test {
+        @Test
+        void sum()
+        {
+            List<Integer> human = List.of(123,124);
+            List<Integer> results = Arrays.asList(6,7);
+            assertThat(Problem1.sum(human)).isEqualTo(results);
+        }
         @Test
         void case1() {
             List<Integer> pobi = List.of(97, 98);
