@@ -50,7 +50,7 @@ public class Problem7 {
         Map<String, Integer> visitorScore;
 
         friendsByName = storeRelation(friends);
-        userFriends = new ArrayList<>(friendsByName.get(friends));
+        userFriends = new ArrayList<>(friendsByName.get(user));
         visitorScore = storeVisitorScore(visitors);
 
         return answer;
