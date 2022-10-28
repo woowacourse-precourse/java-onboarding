@@ -6,7 +6,37 @@ package onboarding;
  */
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        StringBuffer crypto = new StringBuffer(cryptogram);
+        while(!validation(crypto.toString())) {
+            
+            for (int i = 0; i < crypto.length(); i++) {
+                char c = crypto.charAt(i);
+                int strIdx = i;
+
+                for (int j = i + 1; j < crypto.length(); j++) {
+                    if (crypto.charAt(j) != c)
+                        break;
+                    else
+                        strIdx = j;
+                }
+                if (strIdx != i)
+                    crypto.delete(i, strIdx+1);
+            }
+        }
+
+        return crypto.toString();
+    }
+
+    public static boolean validation(String cryptogram) {
+        for(int i = 0; i < cryptogram.length(); i++ ) {
+            for(int j = i + 1; j < cryptogram.length(); j++) {
+                if(cryptogram.charAt(j) == cryptogram.charAt(i))
+                    return false;
+                else
+                    break;
+            }
+        }
+
+        return true;
     }
 }
