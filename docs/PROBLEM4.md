@@ -19,3 +19,14 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+### 기능 목록 (Todo)
+로직
+1. getUpperCharIndex : 주어진 char 배열에서 대문자 알파벳의 인덱스 배열 생성
+2. word -> 소문자로 변환 -> 캐릭터 배열로 변환
+3. reverseWord : 주어진 캐릭터 배열에서 알파벳(97~122)을 반대로 변환
+4. 대문자 알파벳 인덱스 배열을 참고해 소문자 -> 대문자 변환
+
+기능
+1. getUpperCharIndex
+2. reverseWord
