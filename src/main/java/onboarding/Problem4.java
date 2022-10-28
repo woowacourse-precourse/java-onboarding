@@ -1,7 +1,7 @@
 package onboarding;
 
 public class Problem4 {
-    private static char[] dictionary = {'Z', 'Y', 'X', 'W', 'V', 'U', 'T', 'S', 'R', 'Q', 'P', 'O', 'N', 'M', 'L', 'K', 'J', 'I', 'H', 'G', 'F', 'E', 'D', 'C', 'B', 'A'};
+    private static final char[] DICTIONARY = {'Z', 'Y', 'X', 'W', 'V', 'U', 'T', 'S', 'R', 'Q', 'P', 'O', 'N', 'M', 'L', 'K', 'J', 'I', 'H', 'G', 'F', 'E', 'D', 'C', 'B', 'A'};
 
     public static String solution(String word) {
         String answer = "";
@@ -38,10 +38,10 @@ public class Problem4 {
         int check = checkUpperOrLower(alphabet);
 
         if (check == 2) {
-            return dictionary[(int)alphabet - 65];
+            return DICTIONARY[(int)alphabet - 65];
         }
         if (check == 1) {
-            return Character.toLowerCase(dictionary[(int)Character.toUpperCase(alphabet) - 65]);
+            return Character.toLowerCase(DICTIONARY[(int)Character.toUpperCase(alphabet) - 65]);
         }
 
         return alphabet;
