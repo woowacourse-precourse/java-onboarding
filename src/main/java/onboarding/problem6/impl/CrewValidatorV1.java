@@ -15,28 +15,34 @@ public class CrewValidatorV1 implements CrewValidator {
 
     private boolean isValidNickname(String nickname) {
         // 닉네임 길이 검사
-        if(20 <= nickname.length() || nickname.length() < 1){
+        if (20 <= nickname.length() || nickname.length() < 1) {
             return false;
         }
-        // 닉네임 길이 검사
+        // 한국어인지 검사
+        return isOnlyKorean(nickname);
+    }
+
+    /**
+     * @return 문자열이 한글로만 이루어져 있는지 여부 판정
+     */
+    private boolean isOnlyKorean(String nickname) {
         String[] spellings = nickname.split("");
         for (String spelling : spellings) {
-            if (isKorean(spelling) == false) {
+            if (!spelling.matches(".*[ㄱ-ㅎㅏ-ㅣ가-힣]+.*")) {
                 return false;
             }
         }
         return true;
     }
 
-    /**
-     * @param spelling 한 글자 짜리 String
-     * @return 한글 여부 판정
-     */
-    private boolean isKorean(String spelling) {
-        return spelling.matches(".*[ㄱ-ㅎㅏ-ㅣ가-힣]+.*");
+    private boolean isValidEmail(String email) {
+        if (20 <= email.length() || email.length() < 1) {
+            return false;
+        }
+        return isEmailFormat(email);
     }
 
-    private boolean isValidEmail(String email) {
+    private boolean isEmailFormat(String email) {
         return email.matches("^.+@email[.]com$");
     }
 

@@ -14,7 +14,7 @@ class CrewValidatorV1Test {
     public void koreanSpellingCheck() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         CrewValidatorV1 validator = new CrewValidatorV1();
 
-        Method isKorean = validator.getClass().getDeclaredMethod("isKorean", String.class);
+        Method isKorean = validator.getClass().getDeclaredMethod("isOnlyKorean", String.class);
         isKorean.setAccessible(true);
 
         boolean ret1 = (boolean) isKorean.invoke(validator, "한");
