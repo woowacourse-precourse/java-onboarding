@@ -17,14 +17,14 @@ public class Problem2 {
                 add(answer,cryptogram,i);
             if(duplicate(cryptogram,i))
                 i++;
+            if(i==cryptogram.length()-2){
+                answer.append(cryptogram.charAt(i+1));
+            }
         }
         return answer.toString();
     }
     public static void add(StringBuilder answer,String cryptogram,int index){
         answer.append(cryptogram.charAt(index));
-        if(index==cryptogram.length()-2){
-            answer.append(cryptogram.charAt(index+1));
-        }
     }
     public static boolean duplicate(String cryptogram,int index){
         return cryptogram.charAt(index) == cryptogram.charAt(index + 1);
