@@ -8,9 +8,15 @@ class Problem1 {
         if(validation(pobi) || validation(crong)) {
             return -1;
         }
+
         return answer;
     }
     public static boolean validation(List<Integer> pages) {
+        for (Integer page : pages) {
+            if (page >= 400 || 0 <= page) {
+                return false;
+            }
+        }
         if (pages.get(0) + 1 != pages.get(1)) {
             return false;
         }
@@ -19,6 +25,4 @@ class Problem1 {
         }
         return true;
     }
-
-
 }
