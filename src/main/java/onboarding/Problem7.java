@@ -18,4 +18,14 @@ public class Problem7 {
         }
         return friend;
     }
+    private static Map<String, Integer> withUserFriend(List<List<String>> friends, Set<String> userFriend) {
+        Map<String,Integer> friendRecommend = new HashMap<>();
+        for(int i=0;i<friends.size();i++){
+            String leftPerson = friends.get(i).get(0);
+            String rightPerson = friends.get(i).get(1);
+            if(userFriend.contains(leftPerson))friendRecommend.put(rightPerson,friendRecommend.getOrDefault(rightPerson,0)+10);
+            if(userFriend.contains(rightPerson))friendRecommend.put(leftPerson,friendRecommend.getOrDefault(leftPerson,0)+10);
+        }
+        return friendRecommend;
+    }
 }
