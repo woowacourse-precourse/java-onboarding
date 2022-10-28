@@ -21,6 +21,10 @@ class Problem1 {
         return -1;
     }
 
+    static int getGameScore(List<Integer> pages) {
+        return pages.stream().mapToInt(Problem1::findGreaterOfSumAndProduct).max().getAsInt();
+    }
+
     static int findGreaterOfSumAndProduct(int number) {
         int sum = 0;
         int multiply = 1;
