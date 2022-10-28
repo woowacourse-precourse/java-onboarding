@@ -31,5 +31,5 @@
 - [x] 중복이 끝나는 지점의 인덱스 체크
 - [x] 원래 문자열에서 중복되는 처음 - 끝 인덱스 제거
 - [x] 중복된 문자가 있는지 체크하는 boolean flag
-- [ ] boolean flag가 true일 때까지 while문 돌리기
+- [ ] boolean flag가 true일 때까지 while문 돌리기 (가공 이전, 이후 길이 체크)
 - [ ] 문자열의 길이가 1 이하면 while문 break
