@@ -24,8 +24,8 @@ public class MoneySorter {
         }
     }
 
-    public static Integer getNumberOfBill(Integer currencyUnit, int givenMoney) {
-        Integer numberOfBill = givenMoney / currencyUnit;
+    public static Integer calculateNumberOfBillFromMoney(Integer currencyUnit, int money) {
+        Integer numberOfBill = money / currencyUnit;
         return numberOfBill;
     }
 }
