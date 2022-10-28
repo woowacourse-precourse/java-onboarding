@@ -5,7 +5,9 @@ import java.util.*;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> users = createUserList(friends);
+        List<String> friendsOfUser = createFriendList(user, friends);
         Map<String, Long> recommendScore = new HashMap<>();
+
 
         // 사용자들 뽑아내기
         // 유저의 친구들 구하기
@@ -26,5 +28,16 @@ public class Problem7 {
         }
 
         return users;
+    }
+
+    private static List<String> createFriendList(String user, List<List<String>> friends) {
+        List<String> friendsOfUser = new ArrayList<>();
+
+        for (List<String> friend : friends) {
+            if(friend.get(0).equals(user)) friendsOfUser.add(friend.get(1));
+            if(friend.get(1).equals(user)) friendsOfUser.add(friend.get(0));
+        }
+
+        return friendsOfUser;
     }
 }
