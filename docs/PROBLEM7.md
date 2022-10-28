@@ -24,3 +24,9 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 구현 목록
+- user와 친구인 아이디와 아닌 아이디를 구분하는 기능
+- 사용자와 함께 아는 친구인 아이디에게 점수를 부여하는 기능
+- 사용자 타임라인에 방문한 아이디에게 점수를 부여하는 기능
+- 가장 점수가 높은순, 점수가 같으면 이름순으로 정렬하여 최대 5명까지 반환하는 기능

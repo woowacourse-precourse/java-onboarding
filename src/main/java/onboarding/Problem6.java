@@ -4,9 +4,16 @@ import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
+        List<String> answer = getWrongNameList(forms);
+        Collections.sort(answer);
+
+        return answer;
+    }
+
+    public static List<String> getWrongNameList(List<List<String>> forms){
         Map<String, String> userMap = new HashMap<>();
         Set<String> wrongNameSet = new HashSet<>();
-        List<String> answer;
+        List<String> wrongNameList;
         String name;
         String email;
         String partedWord;
@@ -20,13 +27,11 @@ public class Problem6 {
                     wrongNameSet.add(email);
                     wrongNameSet.add(userMap.get(partedWord));
                 }else
-                    map.put(partedWord, email);
+                    userMap.put(partedWord, email);
             }
         }
 
-        answer = new ArrayList<>(wrongNameSet);
-        Collections.sort(answer);
-
-        return answer;
+        wrongNameList = new ArrayList<>(wrongNameSet);
+        return wrongNameList;
     }
 }
