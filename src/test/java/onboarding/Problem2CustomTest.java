@@ -22,35 +22,35 @@ public class Problem2CustomTest {
             for (int i = 0; i < 1001; i++) {
                 userInput += "a";
             }
-            boolean impossible = Problem2Validation.Problem2InputValidation(userInput, INPUT_LENGTH_MIN, INPUT_LENGTH_MAX);
+            boolean impossible = Problem2Validation.problem2InputValidation(userInput, INPUT_LENGTH_MIN, INPUT_LENGTH_MAX);
             assertThat(impossible).isFalse();
         }
 
         @Test
         void 길이0인문자열통과못하게() {
             String userInput = "";
-            boolean impossible = Problem2Validation.Problem2InputValidation(userInput, INPUT_LENGTH_MIN, INPUT_LENGTH_MAX);
+            boolean impossible = Problem2Validation.problem2InputValidation(userInput, INPUT_LENGTH_MIN, INPUT_LENGTH_MAX);
             assertThat(impossible).isFalse();
         }
 
         @Test
         void 알파벳이아닌문자열통과못하게() {
             String userInput = "가";
-            boolean impossible = Problem2Validation.Problem2InputValidation(userInput, INPUT_LENGTH_MIN, INPUT_LENGTH_MAX);
+            boolean impossible = Problem2Validation.problem2InputValidation(userInput, INPUT_LENGTH_MIN, INPUT_LENGTH_MAX);
             assertThat(impossible).isFalse();
         }
 
         @Test
         void 소문자아닌문자열통과못하게() {
             String userInput = "A";
-            boolean impossible = Problem2Validation.Problem2InputValidation(userInput, INPUT_LENGTH_MIN, INPUT_LENGTH_MAX);
+            boolean impossible = Problem2Validation.problem2InputValidation(userInput, INPUT_LENGTH_MIN, INPUT_LENGTH_MAX);
             assertThat(impossible).isFalse();
         }
 
         @Test
         void 모든걸만족하는문자열이통과하는지() {
             String userInput = "abcdadfase";
-            boolean possible = Problem2Validation.Problem2InputValidation(userInput, INPUT_LENGTH_MIN, INPUT_LENGTH_MAX);
+            boolean possible = Problem2Validation.problem2InputValidation(userInput, INPUT_LENGTH_MIN, INPUT_LENGTH_MAX);
             assertThat(possible).isTrue();
         }
     }
