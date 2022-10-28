@@ -32,7 +32,7 @@ class Problem1 {
     /*
     두 게임 참여자의 점수를 비교하는 메서드
      */
-    private static compareScore(int score1, int score2) {
+    private static int compareScore(int score1, int score2) {
         int answer = Integer.MAX_VALUE;
         if (score > score) {
             answer = 1;
