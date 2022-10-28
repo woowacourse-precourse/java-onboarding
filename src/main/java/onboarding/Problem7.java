@@ -16,6 +16,21 @@ public class Problem7 {
         return friendList;
     }
 
+    private static List<String> createFriendsFriendList(List<String> friendList, List<List<String>> friends){
+        List<String> friendsFriendList = new ArrayList<>();
+
+        for(int i = 0; i < friendList.size(); i++){
+            for(int j = 0; j < friends.size(); j++){
+                if(friendList.get(i) == friends.get(j).get(0))
+                    friendsFriendList.add(friends.get(i).get(1));
+                else if(friendList.get(i) == friends.get(j).get(1))
+                    friendsFriendList.add(friends.get(i).get(0));
+            }
+        }
+
+        return friendsFriendList;
+    }
+
     private static HashMap<String, Integer> getRecommendPoint(List<String> friendList, List<String> visitorList){
         HashMap<String, Integer> pointMap = new HashMap<>();
 
