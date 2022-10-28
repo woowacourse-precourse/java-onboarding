@@ -10,7 +10,15 @@ import java.util.*;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         ArrayList<String> answer = new ArrayList<>();
-
+        //연속되는 단어 두 글자 씩 해쉬맵 추가
+        HashMap<String,Integer> userData = new HashMap<>();
+        for(List<String> form :forms){
+            String[] name = form.get(1).split("");
+            for(int i = 0 ; i<name.length - 1 ; i++){
+                String n = name[i] + name[i+1];
+                userData.put(n,userData.containsKey(n) ? userData.get(n) + 1 : 1);
+            }
+        }
         return answer;
     }
 }
