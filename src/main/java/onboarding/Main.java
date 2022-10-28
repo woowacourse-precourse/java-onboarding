@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] Problem6) {
 
 //        String s = "aaaaaaab";
 //        String ss = Problem2.solution(s);
@@ -17,5 +17,11 @@ public class Main {
 //        String aa = Problem4.solution("A B0231");
 //        System.out.println("aa = " + aa);
 //        Problem5.solution(1234567);
+
+        if(onboarding.Problem6.isEmail("aa12345678@email.com")){
+            System.out.println("이메일 형식 통과");
+        }else{
+            System.out.println("이메일 형식 통과 못함");
+        }
     }
 }
