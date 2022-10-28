@@ -8,8 +8,8 @@ class Problem4Test {
     @Test
     void test() {
         assertThat((char)('Z' - ('A' - 'A'))).isEqualTo('Z');
-        assertThat((char)('Z' - ('B' - 'A'))).isEqualTo('Y');
+        assertThat((char)('z' - ('b' - 'a'))).isEqualTo('y');
         assertThat((char)('Z' - ('C' - 'A'))).isEqualTo('X');
-        assertThat((char)('Z' - ('Z' - 'A'))).isEqualTo('A');
+        assertThat((char)('z' - ('z' - 'a'))).isEqualTo('a');
     }
 }

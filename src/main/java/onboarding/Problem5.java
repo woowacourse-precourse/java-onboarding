@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
-    private static List<Integer> entry = Arrays.asList(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1);
+    private static final List<Integer> entry = Arrays.asList(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1);
 
     public static List<Integer> solution(int money) {
         List<Integer> answer = new ArrayList<>();
@@ -21,6 +21,13 @@ public class Problem5 {
         }
     }
 
+    private static void getAnswer(int money, List<Integer> answer) {
+        int idx = 0;
+        while (money > 0) {
+            money = makeResult(money, answer, idx++);
+        }
+    }
+
     private static int makeResult(int money, List<Integer> answer, int idx) {
         Integer targetBill = entry.get(idx);
         int operateResult = money / targetBill;
@@ -30,12 +37,5 @@ public class Problem5 {
             return money - (targetBill * operateResult);
         }
         return money;
-    }
-
-    private static void getAnswer(int money, List<Integer> answer) {
-        int idx = 0;
-        while (money > 0) {
-            money = makeResult(money, answer, idx++);
-        }
     }
 }
