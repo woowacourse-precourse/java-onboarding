@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
@@ -10,15 +9,9 @@ public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> answer = new ArrayList<>();
 
-        for(int i = 0; i < amounts.length; i++) {
-            int amount = amounts[i];
-            int count = 0;
-
-            // 현재 가지고 있는 돈이 화폐 단위보다 크면 실행
-            while(money >= amount) {
-                money -= amount;    // 해당 금액만큼 차감
-                count++;            // 카운트
-            }
+        for(int amount : amounts) {
+            int count = money / amount; // (현재 가진돈 / 금액)
+            money -= (amount * count);  // 현재 가진 돈에서 출금한 금액만큼 차감
 
             answer.add(count);
         }

@@ -20,6 +20,7 @@ public class Problem3 {
         return count;
     }
 
+    // 해당 숫자에 3, 6, 9가 총 몇 개 들어 있는지 카운트하는 함수
     static int count(String number) {
         int count = 0;
 

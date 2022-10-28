@@ -3,8 +3,8 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-    static int pobi_score = Integer.MIN_VALUE;  // pobi의 점수
-    static int crong_score = Integer.MIN_VALUE; // crong의 점수
+    static int pobi_score;  // pobi의 점수
+    static int crong_score; // crong의 점수
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
@@ -15,8 +15,8 @@ class Problem1 {
         int left_crong = crong.get(0);  // crong의 왼쪽 페이지
         int right_crong = crong.get(1); // crong의 오른쪽 페이지
 
-        if(exceptionCheck(left_pobi, right_pobi)) return -1;    // pobi에서 예외상황
-        if(exceptionCheck(left_crong, right_crong)) return -1;  // crong에서 예외상황
+        if(exceptionCheck(left_pobi, right_pobi)) return -1;    // pobi 에서 예외상황
+        if(exceptionCheck(left_crong, right_crong)) return -1;  // crong 에서 예외상황
 
         calcPobiScore(left_pobi, right_pobi);
         calcCrongScore(left_crong, right_crong);
@@ -28,6 +28,7 @@ class Problem1 {
         return answer;
     }
 
+    // 예외 상황을 체크하는 함수 (예외 상황일 경우에 true를 리턴한다)
     static boolean exceptionCheck(int left_page, int right_page) {
         if(left_page % 2 == 0) return true;          // 왼쪽 페이지가 홀수가 아닐 경우
         if(right_page % 2 != 0) return true;         // 오른쪽 페이지가 짝수가 아닐 경우
@@ -35,6 +36,7 @@ class Problem1 {
         return false; // 이 외의 경우는 예외사항이 아님
     }
 
+    // pobi의 점수를 계산하는 함수
     static void calcPobiScore(int left_pobi, int right_pobi) {
         // 왼쪽 페이지
         pobi_score = Math.max(pobi_score, sum(left_pobi));      // 왼쪽 페이지 숫자의 합
@@ -45,6 +47,7 @@ class Problem1 {
         pobi_score = Math.max(pobi_score, multiply(right_pobi)); // 오른쪽 페이지 숫자의 곱
     }
 
+    // crong의 점수를 계산하는 함수
     static void calcCrongScore(int left_crong, int right_crong) {
         // 왼쪽 페이지
         crong_score = Math.max(crong_score, sum(left_crong));      // 왼쪽 페이지 숫자의 합
@@ -55,6 +58,7 @@ class Problem1 {
         crong_score = Math.max(crong_score, multiply(right_crong)); // 오른쪽 페이지 숫자의 곱
     }
 
+    // 합을 계산하는 함수
     static int sum(int page) {
         int sum = 0;
         String p = String.valueOf(page);
@@ -64,6 +68,7 @@ class Problem1 {
         return sum;
     }
 
+    // 곱을 계산하는 함수
     static int multiply(int page) {
         int total = 1;
         String p = String.valueOf(page);

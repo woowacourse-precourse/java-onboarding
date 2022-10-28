@@ -14,26 +14,27 @@ public class Problem6 {
             String nickname = forms.get(i).get(1);
 
             for(int j = 0; j < nickname.length() - 1; j++) {
+                // 두 글자씩 조합하여 중복인지 확인한다
                 String str = String.valueOf(nickname.charAt(j)) + String.valueOf(nickname.charAt(j + 1));
 
                 boolean isFound = false;
                 for (int k = 0; k < forms.size(); k++) {
-                    if(k == i) continue;
+                    if(k == i) continue;                    // 자기 자신의 닉네임을 탐색하는 경우
                     String mail = forms.get(k).get(0);
                     String name = forms.get(k).get(1);
-                    isFound = name.contains(str);
-                    if(isFound) {
-                        if(!answer.contains(mail)) answer.add(mail);
-                        if(!answer.contains(email)) answer.add(email);
+                    isFound = name.contains(str);           // 다른 크루의 이름에 해당 문자가 들어 있는지 확인
+                    if(isFound) {                           // 중복이 확인 될 경우 정답 리스트에 이메일을 추가
+                        if(!answer.contains(mail)) answer.add(mail);   // 새로운 이메일 주소일 경우 추가
+                        if(!answer.contains(email)) answer.add(email); // 새로운 이메일 주소일 경우 추가
                         break;
                     }
                     else continue;
                 }
-                if(isFound) break;
+                if(isFound) break; // 중복이 확인 되었으면 더이상 탐색할 필요가 없으므로 탐색을 중단한다
             }
         }
 
-        Collections.sort(answer);
+        Collections.sort(answer); // 정답 리스트를 오름차순으로 정렬한다.
 
         return answer;
     }
