@@ -3,6 +3,7 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
@@ -20,7 +21,14 @@ class Problem1 {
     }
 
     //TODO(페이지 번호를 모두 곱하는 함수)
-
+    private static int multiplicationOfDigits(int pageNumber) {
+        int result = 1;
+        while (pageNumber > 0) {
+            result *= pageNumber % 10;
+            pageNumber /= 10;
+        }
+        return result;
+    }
 
     //TODO(숫자 비교 함수)
 
