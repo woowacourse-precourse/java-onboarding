@@ -19,6 +19,13 @@ public class Problem4 {
     public static String solution(final String word) {
         checkValidRange(word.length());
         String answer = "";
+        answer = changeWordToAscii(word);
+
+        return answer;
+    }
+
+    private static String changeWordToAscii(String word) {
+        String answer;
         List<Integer> asciiWord = turnWordIntoAscii(word.split(""));
 
         List<Integer> changedAsciiWord = new ArrayList<>();
@@ -26,9 +33,9 @@ public class Problem4 {
             changedAsciiWord.add(changeWordReferToGreenFrogDic(ascii));
         }
         answer = turnAsciiIntoWord(changedAsciiWord);
-
         return answer;
     }
+
     public static void checkValidRange(final int wordLength) {
         if (wordLength < 1 || wordLength > 1000) {
             throw new IllegalArgumentException();
