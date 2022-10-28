@@ -5,8 +5,17 @@ import java.util.stream.Collectors;
 
 public class Problem6 {
     static List<String> answer = new ArrayList<>();
+
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        try {
+            doValidation(forms);
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
+            return answer;
+        }
+
+        logic(forms);
+
         return answer;
     }
 
