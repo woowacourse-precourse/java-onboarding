@@ -12,7 +12,13 @@ class Problem1 {
     static final int EXCEPTION = -1;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        if (checkException(pobi) || checkException(crong))
+            return EXCEPTION;
+
+        int maxValueOfPobi = getMaxValueOfPlayer(pobi);
+        int maxValueOfCrong = getMaxValueOfPlayer(crong);
+
+        int answer = getResult(maxValueOfPobi, maxValueOfCrong);
         return answer;
     }
 
