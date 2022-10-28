@@ -1,8 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 
 public class Problem6 {
@@ -25,9 +23,20 @@ public class Problem6 {
      *
      */
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>(findOverlapUsers(getHash(forms)));
+        answer.sort(Comparator.naturalOrder());
         return answer;
     }
+
+    private static HashSet<String> findOverlapUsers(HashMap<String, ? extends List<String>> hash) {
+        HashSet<String> set = new HashSet<>();
+        hash.forEach((key, emails) -> {
+            if(emails.size() > 1) emails.forEach(set::add);
+        });
+        return set;
+    }
+
+
     private static HashMap<String, ? extends List<String>> getHash(List<List<String>> forms) {
         HashMap<String, ArrayList<String>> map = new HashMap<>();
         for(List<String> form : forms) {
