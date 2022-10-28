@@ -13,8 +13,12 @@ public class Problem3 {
     }
 
     private static void checkRole(int number) {
-        if (checkNumbers.contains(number)) {
-            count += 1;
+        while(number != 0) {
+            if(checkNumbers.contains(number%10)) {
+                count++;
+            }
+
+            number /= 10;
         }
     }
 }
