@@ -18,7 +18,7 @@ public class Problem3 {
         int count=0;
 
         while (num>0){
-             if(num%10%3==0){
+             if(num%10!=0 && num%10%3==0){
                  count++;
              }
              num=num/10;
