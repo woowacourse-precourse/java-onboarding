@@ -6,6 +6,11 @@ import java.util.List;
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
+        List<Integer> numberList = new ArrayList<>();
+
+        for(int i = 1; i <= number; i++){
+            answer += countClaps(putDigitsToList(i));
+        }
         return answer;
     }
 
