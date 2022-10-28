@@ -6,8 +6,7 @@ import java.util.List;
 
 public class Problem5 {
     public int exchange(int money, int cUnit){
-        int result=0;
-        return result;
+        return money/cUnit;
     }
     public static List<Integer> solution(int money) {
         Problem5 T = new Problem5();
