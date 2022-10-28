@@ -1,6 +1,6 @@
 package onboarding;
 
-import java.util.List;
+import java.util.*;
 
 public class Problem6 {
     /**
@@ -14,6 +14,16 @@ public class Problem6 {
      */
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
+        Map<String, String> map = new HashMap<>();
+
+        // 1. forms의 각 닉네임을 2자씩 잘라서 hashSet에 보관(중복 제거)
+        for (List<String> form : forms) {
+            String nick = form.get(1);
+            HashSet<String> substrings = new HashSet<>();
+            for (int i = 0; i < nick.length() - 1; i++) {
+                substrings.add(nick.substring(i, i + 2));
+            }
+        }
         return answer;
     }
 }
