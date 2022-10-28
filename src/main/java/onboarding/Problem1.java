@@ -9,6 +9,7 @@ class Problem1 {
     private static final int CRONG_WIN = 2;
     private static final int TIE = 0;
     private static final int EXCEPTION = -1;
+    private static final int INTERVAL = 1;
 
     public static int addDigits(int number){
         int sum = 0;
@@ -54,20 +55,7 @@ class Problem1 {
         return result;
     }
 
-    public static boolean checkListSize(List<Integer> player){
-        boolean result = true;
-        if(player.size() != 2){
-            result = false;
-        }
-        return result;
-    }
-    public static boolean checkNumberRange(int number){
-        boolean result = true;
-        if(number < MIN_PAGE || number > MAX_PAGE){
-            result = false;
-        }
-        return result;
-    }
+
 
     public static boolean checkValidity(List<Integer> player){
         boolean result = true;
@@ -88,7 +76,7 @@ class Problem1 {
         if(!checkNumberRange(number2)){
             result = false;
         }
-        if(number2 - number1 != 1){ //페이지 간격 예외 확인
+        if(!checkInterval(number1, number2)){ //페이지 간격 예외 확인
             result = false;
         }
         if(number1 % 2 == 0 && number2 % 2 == 1){ //페이제 홀수 짝수 예외 확인
@@ -97,6 +85,28 @@ class Problem1 {
         return result;
     }
 
+    public static boolean checkListSize(List<Integer> player){
+        boolean result = true;
+        if(player.size() != 2){
+            result = false;
+        }
+        return result;
+    }
+
+    public static boolean checkNumberRange(int number){
+        boolean result = true;
+        if(number < MIN_PAGE || number > MAX_PAGE){
+            result = false;
+        }
+        return result;
+    }
+    public static boolean checkInterval(int number1, int number2){
+        boolean result = true;
+        if(number2 - number1 != 1){
+            result = false;
+        }
+        return result;
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         boolean isValidInput = checkValidity(pobi) && checkValidity(crong);
