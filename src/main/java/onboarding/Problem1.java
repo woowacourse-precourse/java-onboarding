@@ -13,10 +13,29 @@ import java.util.List;
  */
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        int pobiScore = getUserScore(pobi);
+        int crongScore = getUserScore(crong);
+
+        // 예외 발생
+        if(pobiScore == -1 || crongScore == -1) {
+            return -1;
+        }
+
+        if(pobiScore > crongScore) {
+            return 1;
+        }
+
+        if(pobiScore < crongScore) {
+            return 2;
+        }
+
+        if(pobiScore == crongScore) {
+            return 0;
+        }
+
+        return -1;
     }
-    
+
     /**
      * 사용자의 점수를 구한다.
      * 예외 발생 시 -1을 반환한다.
