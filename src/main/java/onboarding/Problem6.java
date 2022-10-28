@@ -10,6 +10,9 @@ public class Problem6 {
     static Map<String, Integer> nicknameAndCountMap = new HashMap<>();
 
     public static List<String> solution(List<List<String>> forms) {
+        setupData(forms);
+        getAnswer(forms);
+        Collections.sort(answer);
         return answer;
     }
 
