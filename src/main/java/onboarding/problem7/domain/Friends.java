@@ -28,7 +28,7 @@ public class Friends {
         return friends.contains(userName);
     }
     
-    public Set<String> getFriends() {
+    public Set<String> friends() {
         return friends;
     }
     

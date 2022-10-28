@@ -27,22 +27,22 @@ public class DuplicateAccountEmails {
     }
     
     private void saveDuplicateTwoLetterNameAccountEmail(final Map<UserName, UserEmail> checkDuplicateAccounts, final User twoLetterNameAccount) {
-        final UserName twoLetterName = twoLetterNameAccount.getUserName();
+        final UserName twoLetterName = twoLetterNameAccount.userName();
         
         if (checkDuplicateAccounts.containsKey(twoLetterName)) {
             duplicateAccountEmails.add(checkDuplicateAccounts.get(twoLetterName));
-            duplicateAccountEmails.add(twoLetterNameAccount.getUserEmail());
+            duplicateAccountEmails.add(twoLetterNameAccount.userEmail());
         }
     }
     
     private Map<UserName, UserEmail> parseCheckDuplicateAccounts(final List<User> twoLetterNameUsers) {
         return twoLetterNameUsers.stream()
-                .collect(Collectors.toMap(User::getUserName, User::getUserEmail, (firstUserEmail, secondUserEmail) -> firstUserEmail));
+                .collect(Collectors.toMap(User::userName, User::userEmail, (firstUserEmail, secondUserEmail) -> firstUserEmail));
     }
     
     public List<String> duplicateAccountEmails() {
         return duplicateAccountEmails.stream()
-                .map(UserEmail::getUserEmail)
+                .map(UserEmail::userEmail)
                 .sorted()
                 .collect(Collectors.toList());
     }

@@ -13,7 +13,7 @@ public class CryptogramTest {
         Cryptogram cryptogram = new Cryptogram("zyellleyz");
         assertAll(
                 () -> assertThat(cryptogram.decrypt()).isTrue(),
-                () -> assertThat(cryptogram.getCryptogram()).isEqualTo("zyeeyz")
+                () -> assertThat(cryptogram.cryptogram()).isEqualTo("zyeeyz")
         );
     }
     
@@ -23,7 +23,7 @@ public class CryptogramTest {
         Cryptogram cryptogram = new Cryptogram("abc");
         assertAll(
                 () -> assertThat(cryptogram.decrypt()).isFalse(),
-                () -> assertThat(cryptogram.getCryptogram()).isEqualTo("abc")
+                () -> assertThat(cryptogram.cryptogram()).isEqualTo("abc")
         );
     }
 }

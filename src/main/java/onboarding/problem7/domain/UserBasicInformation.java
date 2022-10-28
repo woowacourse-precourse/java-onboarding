@@ -35,7 +35,7 @@ public class UserBasicInformation {
         return score.isNotZero();
     }
     
-    public String getUserName() {
+    public String userName() {
         return userName;
     }
     

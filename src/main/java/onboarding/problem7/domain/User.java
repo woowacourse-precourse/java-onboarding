@@ -37,8 +37,8 @@ public class User implements Comparable<User> {
         return friends.contains(userName);
     }
     
-    public String getUserName() {
-        return userBasicInformation.getUserName();
+    public String userName() {
+        return userBasicInformation.userName();
     }
     
     @Override

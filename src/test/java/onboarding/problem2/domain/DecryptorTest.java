@@ -11,6 +11,6 @@ public class DecryptorTest {
     void decrypt() {
         Decryptor decryptor = new Decryptor("zyellleyz");
         decryptor.decrypt();
-        assertThat(decryptor.getCryptogram()).isEqualTo("");
+        assertThat(decryptor.cryptogram()).isEqualTo("");
     }
 }

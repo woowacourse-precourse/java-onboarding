@@ -21,7 +21,7 @@ class FriendsTest {
     @DisplayName("유저의 친구목록 저장하기")
     void addFriend() {
         jun.add("pobi");
-        assertThat(jun.getFriends()).isEqualTo(Set.of("pobi"));
+        assertThat(jun.friends()).isEqualTo(Set.of("pobi"));
     }
     
     @Test
