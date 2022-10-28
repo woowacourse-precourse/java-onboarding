@@ -29,4 +29,8 @@ public class Problem3 {
         }
         return clapCount;
     }
+
+    private static int getStringLength(String number) {
+        return number.length();
+    }
 }
