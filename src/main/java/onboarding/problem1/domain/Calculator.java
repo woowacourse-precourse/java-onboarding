@@ -9,6 +9,6 @@ public class Calculator {
     }
 
     public boolean hasList(List<Integer> list) {
-        return true;
+        return list.isEmpty();
     }
 }
