@@ -18,10 +18,7 @@ public class Problem4 {
     }
 
     public static boolean checkInput(String word) {
-        if (word.length() < 1 || word.length() > 1000) {
-            return true;
-        }
-        return false;
+        return word.length() < 1 || word.length() > 1000;
     }
 
     public static int checkUpperOrLower(char alphabet) {
