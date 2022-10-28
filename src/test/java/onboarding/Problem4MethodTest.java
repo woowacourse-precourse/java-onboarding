@@ -20,6 +20,18 @@ class Problem4MethodTest {
     }
 
     @Test
+    void transformLowerTest() {
+        char c1 = 'x';
+        char c2 = 'h';
+
+        char result1 = transformLower(c1);
+        char result2 = transformLower(c2);
+
+        assertThat(result1).isEqualTo('c');
+        assertThat(result2).isEqualTo('s');
+    }
+
+    @Test
     void isUpperTest() {
         char c1 = 'X';
         char c2 = 'a';
