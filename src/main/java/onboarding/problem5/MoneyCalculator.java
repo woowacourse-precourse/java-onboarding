@@ -15,6 +15,9 @@ import java.util.List;
 
 public class MoneyCalculator {
 
+    private MoneyCalculator() {
+    }
+
     public static List<Integer> calculateMoneyCount(int money) {
         int[] moneyTypes = {FIFTY_THOUSAND_WON, TEN_THOUSAND_WON, FIVE_THOUSAND_WON,
             ONE_THOUSAND_WON, FIVE_HUNDRED_WON, ONE_HUNDRED_WON, FIFTY_WON, TEN_WON, ONE_WON};
