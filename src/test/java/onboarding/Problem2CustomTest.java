@@ -53,5 +53,6 @@ public class Problem2CustomTest {
             boolean possible = Problem2Validation.problem2InputValidation(userInput, INPUT_LENGTH_MIN, INPUT_LENGTH_MAX);
             assertThat(possible).isTrue();
         }
+
     }
 }
