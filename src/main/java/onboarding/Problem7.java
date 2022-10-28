@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Problem7 {
 
@@ -58,6 +59,11 @@ public class Problem7 {
                 return;
             }
             accountInfoMap.get(visitor).addScore(1);
+        }
+
+        private static List<Account> mapAccountInfoMapToAccountList(String user) {
+            return accountInfoMap.values().stream().filter(account -> !account.isAccountId(user))
+                .filter(Account::scoreOverThanZero).collect(Collectors.toList());
         }
     }
 }
