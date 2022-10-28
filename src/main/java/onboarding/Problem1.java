@@ -35,6 +35,18 @@ class Problem1 {
         return plusnumber;
     }
 
+    public static int multipleNumber(){
+        int multinumber;
+        if(firstnumber==0&&middlenumber==0){
+            multinumber=lastnumber;
+        }else if(firstnumber==0&&middlenumber!=0){
+            multinumber=middlenumber*lastnumber;
+        }else{
+            multinumber=firstnumber*middlenumber*lastnumber;
+        }
+        return multinumber;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         if(isSuccessivePage(pobi)==false||isSuccessivePage(crong)==false){
