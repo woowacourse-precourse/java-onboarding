@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Problem6 {
     /*
@@ -80,6 +77,22 @@ public class Problem6 {
             if (value > 1) repeats.add(key);
         }
         return repeats;
+    }
+
+    // 중복 문자열이 포함된 사용자의 이메일 추출 함수
+    private static List<String> sendEmail(List<String> repeats, List<String> nicknames, List<String> emails) {
+        List<String> alert = new ArrayList<>();
+
+        for (int i = 0; i < nicknames.size(); i++) {
+            for (String str : repeats) {
+                String nickname = nicknames.get(i);
+                String email = emails.get(i);
+
+                if (nickname.contains(str)) alert.add(email);
+            }
+        }
+        Collections.sort(alert);
+        return alert;
     }
 
     public static List<String> solution(List<List<String>> forms) {
