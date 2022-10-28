@@ -19,6 +19,20 @@ public class Problem6 {
                 userData.put(n,userData.containsKey(n) ? userData.get(n) + 1 : 1);
             }
         }
+
+        for (String k: userData.keySet()){
+            //키값이 1이 넘으면 반복문을 돌림
+            if(userData.get(k) > 1){
+                //키값을 가지고 있으면 email add
+                for(List<String> form : forms){
+                    if(form.get(1).contains(k)){
+                        answer.add(form.get(0));
+                    }
+                }
+            }
+        }
+        //정렬
+        Collections.sort(answer);
         return answer;
     }
 }
