@@ -15,7 +15,7 @@ public class Problem3 {
     private static int count369(int number) {
         int count = 0;
         while (number > 0) {
-            if ((number % 10) % 3 == 0)
+            if (number % 10 != 0 && (number % 10) % 3 == 0)
                 count++;
             number /= 10;
         }
