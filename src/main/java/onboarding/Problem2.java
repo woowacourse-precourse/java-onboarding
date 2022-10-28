@@ -8,7 +8,7 @@ public class Problem2 {
         return answer;
     }
 
-    public static List<Integer> reapeatedNum(String cryptogram) {
+    public static List<Integer> repeatedNum(String cryptogram) {
         // 중복 문자 체크를 위한 변수 선언
         int hasRepeatedNum = -1;
         int beginRepeatedNum = -1;
