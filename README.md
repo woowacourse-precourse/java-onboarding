@@ -1,4 +1,7 @@
-[이미지 넣기]
+<p align="center">
+    <img src="./mainbanner.png" alt="메인배너" width="100%">
+</p>
+
 # 프리코스 1주차 미션 - 온보딩
 ![Generic badge](https://img.shields.io/badge/language-java-green.svg)
 ![Generic badge](https://img.shields.io/badge/version-1.0.0-green.svg)
@@ -67,3 +70,19 @@
     - 조건을 충족하면 청개구리 사전을 참고해 해당 요소를 반대로 변환한다.
     - 모든 요소는 `lettersEncrypted`에 담긴다.
 - `lettersEncrypted`를 String으로 바꾼 뒤 값을 반환한다.
+
+## 📌문제5
+계좌에 들어있는 돈 일부를 은행에서 출금하고자 한다. 돈 담을 지갑이 최대한 가볍도록 큰 금액의 화폐 위주로 받는다.
+
+돈의 액수 money가 매개변수로 주어질 때, 오만 원권, 만 원권, 오천 원권, 천 원권, 오백원 동전, 백원 동전, 오십원 동전, 십원 동전, 일원 동전 각 몇 개로 변환되는지 금액이 큰 순서대로 리스트/배열에 담아 return 하도록 solution 메서드를 완성하라.
+([문제 요구사항](https://github.com/areyouhun/java-onboarding/blob/areyouhun/docs/PROBLEM5.md))
+
+### 기능 목록
+- 매개변수 money를 받아 클래스 `MoneySorter`를 생성한다.
+    - 이 클래스에는 **금액**을 나타내는 `money`, <b>지폐와 동전 개수에 대한 초깃값(0)</b>을 나타내는 `initialNumberOfBIll`, **금액에 필요한 지폐와 동전 개수들을 담을 리스트** `currentBillsSorted`가 있다.
+- `calculateNumberOfBill` 메소드를 이용해 각 화폐 단위 당 필요한 지폐와 동전 개수를 구하고 이를 `currentBillsSorted`에 반영한다.
+    - 내부에선 for문이 돌아가며 `getNumberOfBillFromMoney` 메소드가 아래 사항을 체크한다.🔍
+    - 금액이 주어진 화폐 단위보다 크거나 같아야 한다.
+    - 조건을 만족하면 금액을 화폐 단위로 나눈 뒤 몫을 구한다. **이 몫이 필요한 지폐 또는 동전의 개수가 된다.**
+    - 계산이 끝날 때마다 금액에서 <b>(화폐 단위 * 몫)</b>을 뺀다.
+- for문이 끝나면 업데이트된 `currentBillsSorted에`를 반환한다.
