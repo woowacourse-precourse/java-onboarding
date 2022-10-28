@@ -10,6 +10,9 @@ class Problem1 {
         if(listSizeException(pobi) || listSizeException(crong)){
             return -1;
         }
+        if(pageNumException(pobi) || pageNumException(crong)){
+            return -1;
+        }
         if(pageIndexException(pobi) || pageIndexException(crong)){
             return -1;
         }
@@ -26,6 +29,12 @@ class Problem1 {
 
     public static boolean listSizeException(List<Integer> list){
         return list.size() != 2;
+    }
+
+    public static boolean pageNumException(List<Integer> list){
+        int start = list.get(0);
+        int end = list.get(1);
+        return start == 1 || end == 400;
     }
 
     public static boolean pageIndexException(List<Integer> list){

@@ -18,6 +18,23 @@ public class Problem1Test {
     }
 
     @Test
+    @DisplayName("Page Num Test")
+    void pageNum() {
+        List<Integer> list1 = List.of(1, 2);
+        List<Integer> list2 = List.of(399, 400);
+        List<Integer> list3 = List.of(98, 99);
+        List<Integer> list4 = List.of(1, 4);
+        boolean result1 = true;
+        boolean result2 = true;
+        boolean result3 = false;
+        boolean result4 = true;
+        assertThat(problem.pageNumException(list1)).isEqualTo(result1);
+        assertThat(problem.pageNumException(list2)).isEqualTo(result2);
+        assertThat(problem.pageNumException(list3)).isEqualTo(result3);
+        assertThat(problem.pageNumException(list4)).isEqualTo(result4);
+    }
+
+    @Test
     @DisplayName("Page Index Test")
     void pageIndex() {
         List<Integer> list1 = List.of(1, 3);
