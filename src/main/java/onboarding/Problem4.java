@@ -10,8 +10,10 @@ public class Problem4 {
         for(String wo:word.split("")){
             if(!wo.matches("[a-zA-Z]")){
                 answer += wo;
-
+                continue;
             }
+            int key = wo.toUpperCase().charAt(0)-'A';
+
 
         }
         return answer;
