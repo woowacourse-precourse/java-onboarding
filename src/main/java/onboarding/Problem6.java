@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,7 +17,22 @@ public class Problem6 {
 
         words = findTwoWord(forms);
 
+        answer = containsWords(forms, words);
+
         return answer;
+    }
+
+    public static List<String> containsWords(List<List<String>> forms, List<String> words) {
+        List<String> nickNames = new ArrayList<>();
+        for (List<String> form : forms) {
+            for (String word : words) {
+                if (form.get(1).contains(word)) {
+                    nickNames.add(form.get(0));
+                }
+            }
+        }
+
+        return nickNames;
     }
 
     public static List<String> findTwoWord(List<List<String>> forms) {
