@@ -84,10 +84,17 @@ public class Problem7 {
 
         for (String friendsFriend : friendsFriendList) {
             // 유저의 친구가 아닐경우 (친구의친구 , 10점) 을 map 에 추가.
+            // Fix !!
             if (!userFriendList.contains(friendsFriend)) {
-                map.put(friendsFriend, 10);
-            }
 
+                if (map.containsKey(friendsFriend)) {
+                    map.put(friendsFriend,map.get(friendsFriend)+10);
+                }
+                if (!map.containsKey(friendsFriend)) {
+                    map.put(friendsFriend, 10);
+                }
+
+            }
         }
 
         for (String visitor : visitors) {
