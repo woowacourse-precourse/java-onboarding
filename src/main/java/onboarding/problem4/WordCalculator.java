@@ -10,6 +10,10 @@ import static onboarding.problem4.consts.WordConst.WORD_START_INDEX;
 
 public class WordCalculator {
 
+    private WordCalculator() {
+
+    }
+
     public static String calculateWord(String word) {
         char[] chars = word.toCharArray();
         char standardA;

@@ -7,6 +7,9 @@ import static onboarding.problem4.consts.AlphabetConst.UPPER_CASE_CHAR_Z;
 
 public class CharacterValidator {
 
+    private CharacterValidator() {
+    }
+
     public static boolean isAlphabet(char target) {
         return isUpperCase(target) || isLowerCase(target);
     }
