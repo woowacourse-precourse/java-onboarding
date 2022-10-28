@@ -4,8 +4,8 @@
 
 ## 구현 기능 목록
 - [X] 이름과 점수를 인스턴스 변수로 갖는 내부클래스 score를 만든다.
-- [ ] score의 점수 내림차순으로 정렬하고 같은 점수일 시 이름으로 오름차순 정렬하는 priorityQueue를 생성한다.
-- [ ] friends 리스트를 (key, value) = (user, friendsList)인 HashMap으로 변환한다
+- [X] score의 점수 내림차순으로 정렬하고 같은 점수일 시 이름으로 오름차순 정렬하는 priorityQueue를 생성한다.
+- [X] friends 리스트를 (key, value) = (user, friendsList)인 HashMap으로 변환한다
 - [ ] 지정된 user의 친구 리스트를 가져와 다시 그 친구들의 친구들을 10점씩 부여한 score객체를 priorityQueue에 넣는다.
 - [ ] visitors 리스트를 사용해 방문자에 대한 점수 객체를 priorityQueue에 추가한다
 - [ ] priorityQueue의 크기를 가늠, 최대 5명까지 poll하여 result 리스트를 완성한다.

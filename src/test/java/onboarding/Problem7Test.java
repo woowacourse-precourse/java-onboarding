@@ -3,6 +3,9 @@ package onboarding;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.PriorityQueue;
 
 import org.assertj.core.api.Assertions;
@@ -50,5 +53,35 @@ class Problem7Test {
 		assertThat(scorePriorityQueue.poll()).isSameAs(user3);
 		assertThat(scorePriorityQueue.poll()).isSameAs(user1);
 		assertThat(scorePriorityQueue.poll()).isSameAs(user5);
+	}
+
+	@Test
+	void getFriendsHashMapTest() {
+		List<List<String>> friends = List.of(
+			List.of("donut", "andole"),
+			List.of("donut", "jun"),
+			List.of("donut", "mrko"),
+			List.of("shakevan", "andole"),
+			List.of("shakevan", "jun"),
+			List.of("shakevan", "mrko")
+		);
+
+		Map<String, ArrayList<String>> friendsHashMap = Problem7.getFriendsHashMap(friends);
+		ArrayList<String> donutFriends = friendsHashMap.get("donut");
+		ArrayList<String> andoleFriends = friendsHashMap.get("andole");
+		ArrayList<String> junFriends = friendsHashMap.get("jun");
+		ArrayList<String> mrkoFriends = friendsHashMap.get("mrko");
+		ArrayList<String> shakevanFriends = friendsHashMap.get("shakevan");
+		ArrayList<String> bediFriends = friendsHashMap.get("bedi");
+
+		assertThat(donutFriends.size()).isEqualTo(3);
+		assertTrue(donutFriends.contains("andole"));
+		assertTrue(donutFriends.contains("jun"));
+		assertTrue(donutFriends.contains("mrko"));
+		assertThat(andoleFriends.size()).isEqualTo(2);
+		assertThat(junFriends.size()).isEqualTo(2);
+		assertThat(mrkoFriends.size()).isEqualTo(2);
+		assertThat(shakevanFriends.size()).isEqualTo(3);
+		assertThat(bediFriends).isNull();
 	}
 }
