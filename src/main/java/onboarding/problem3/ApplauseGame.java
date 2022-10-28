@@ -2,7 +2,6 @@ package onboarding.problem3;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ApplauseGame {
     private static final List<Boolean> claps = new ArrayList<>();
@@ -18,8 +17,7 @@ public class ApplauseGame {
     }
 
     private static int getAnInt(List<Boolean> claps) {
-        return Math.toIntExact(claps.stream().filter(aBoolean -> aBoolean).count());
+        return Math.toIntExact(claps.stream().filter(clapOrNot -> clapOrNot).count());
     }
-
 
 }
