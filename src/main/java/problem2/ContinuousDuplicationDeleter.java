@@ -22,7 +22,7 @@ public class ContinuousDuplicationDeleter {
                 continue;
             }
 
-            if (isSame(charactersInOrder, lastIndex, target[ind])) {
+            if (isSame(charactersInOrder.get(lastIndex), target[ind])) {
                 increaseByOne(numberOfDuplication, lastIndex);
                 ind += 1;
                 continue;
@@ -44,27 +44,26 @@ public class ContinuousDuplicationDeleter {
         return charactersInOrder;
     }
 
-    private static void add(List<Character> charactersInOrder, List<Integer> numberOfDuplication, char target) {
-        charactersInOrder.add(target);
+    private static void add(List<Character> charactersInOrder, List<Integer> numberOfDuplication, char toAdd) {
+        charactersInOrder.add(toAdd);
         numberOfDuplication.add(1);
     }
 
-    private static boolean isSame(List<Character> charactersInOrder, int lastIndex, char target) {
-        return charactersInOrder.get(lastIndex) == target;
+    private static boolean isSame(int lhs, char rhs) {
+        return lhs == rhs;
     }
 
-    private static void increaseByOne(List<Integer> numberOfDuplication, int lastIndex) {
-        numberOfDuplication.set(lastIndex
-                , numberOfDuplication.get(lastIndex) + 1);
+    private static void increaseByOne(List<Integer> numberOfDuplication, int index) {
+        numberOfDuplication.set(index, numberOfDuplication.get(index) + 1);
     }
 
-    private static boolean isDuplicate(List<Integer> numberOfDuplication, int lastIndex) {
-        return numberOfDuplication.get(lastIndex) > 1;
+    private static boolean isDuplicate(List<Integer> numberOfDuplication, int index) {
+        return numberOfDuplication.get(index) > 1;
     }
 
-    private static void remove(List<Character> charactersInOrder, List<Integer> numberOfDuplication, int lastIndex) {
-        charactersInOrder.remove(lastIndex);
-        numberOfDuplication.remove(lastIndex);
+    private static void remove(List<Character> charactersInOrder, List<Integer> numberOfDuplication, int index) {
+        charactersInOrder.remove(index);
+        numberOfDuplication.remove(index);
     }
 
     private static String asString(List<Character> characters) {
