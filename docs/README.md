@@ -6,6 +6,7 @@
 5. 각 페이지의 숫자들을 더하고 곱한 값들을 각각 포비와 크롱을 기준으로 나눠 두 개의 IntegerList에 담는다.
 6. 각 List에서 가장 큰 값을 구해서 비교한다.
 7. 포비가 크다면 1, 크롱이 크다면 2, 같다면 0을 결과값으로 반환한다.
+
 - <code>splitInteger</code>: Integer를 자릿수별로 나눠 IntegerList를 반환하는 메서드
 - <code>sumOfIntegerList</code>: IntegerList를 모두 더하는 메서드
 - <code>multipleOfIntegerList</code>: IntegerList를 모두 곱하는 메서드
