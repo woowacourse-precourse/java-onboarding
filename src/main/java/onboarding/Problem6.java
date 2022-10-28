@@ -44,17 +44,20 @@ public class Problem6 {
     }
 
     static List<String> getResult(List<List<String>> forms, Set<String> set){
-        List<String> result = new ArrayList<>();
+
+        Set<String> tmpSet = new HashSet<>();
 
         Iterator<String> it = set.iterator();
         while (it.hasNext()) {
             String str = it.next();
             for (List<String> list : forms){
                 if (list.get(1).contains(str)) {
-                    result.add(list.get(0));
+                    tmpSet.add(list.get(0));
                 }
             }
         }
+
+        List<String> result = new ArrayList<>(tmpSet);
         result.sort(new Comparator<String>() {
             @Override
             public int compare(String o1, String o2) {
