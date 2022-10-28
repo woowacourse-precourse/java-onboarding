@@ -35,28 +35,34 @@ public class Problem6 {
         }
         return hasCommon;
     }
+    public static List<String> finalNameList(List<List<String>> nameSplit, List<List<String>> forms) {
+        List<String> emailList = new ArrayList<>();
+        for (int i = 0; i < nameSplit.size()-1; i++) {
+            if(hasCommon(nameSplit.get(i), nameSplit.get(i+1))) {
+                if(!emailList.contains(nameSplit.get(i).get(0))) {
+                    emailList.add(forms.get(i).get(0));
+                }
+                emailList.add(forms.get(i).get(1));
+            }
+        }
+        return emailList;
+    }
     public static List<String> sortList(List<String> list) {
         List<String> newList = new ArrayList<>();
         for (String s : list) {
+            s = s.replace(address, "");
             char[] arr = s.toCharArray();
             Arrays.sort(arr);
-            newList.add(Arrays.toString(arr));
-            //new String(arr)
+            newList.add(Arrays.toString(arr)+address);
         }
         return newList;
     }
     public static List<String> solution(List<List<String>> forms) {
         List<List<String>> nameSplit = new ArrayList<>();
-        List<String> emailList = new ArrayList<>();
         for (List<String> form : forms) {
             nameSplit.add(nameDivideTwo(form.get(1)));
         }
-        for (int i = 0; i < nameSplit.size()-1; i++) {
-            if(hasCommon(nameSplit.get(i), nameSplit.get(i+1))) {
-                emailList.add(forms.get(i).get(0));
-                emailList.add(forms.get(i).get(0));
-            }
-        }
-        return answer;
+        List<String> emailList = finalNameList(nameSplit, forms);
+        return sortList(emailList);
     }
 }
