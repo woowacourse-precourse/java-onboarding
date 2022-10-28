@@ -24,8 +24,14 @@ public class Problem2 {
         String result = "";
 
         // 예외처리
-        if (str.length() == 0) {
-            return result;
+        if (str.length() == 0 || str.length() == 1) {
+            return str;
+        } else if (str.length() == 2) {
+            if (str.charAt(0) == str.charAt(1)) {
+                return result;
+            } else {
+                return str;
+            }
         }
 
         // 첫번째 문자 체크
