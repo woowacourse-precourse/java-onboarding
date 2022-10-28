@@ -37,4 +37,23 @@ class Problem3Test {
         assertThat(notInclude).isEqualTo(false);
         assertThat(include).isEqualTo(true);
     }
+
+    @Test
+    public void howManyStringContains369Test() {
+        //given
+        int number = 33;
+        List<String> list = Problem3.makeList(number);
+        String strIncludeOne3 = list.get(2);
+        String strIncludeTwo3 = list.get(list.size() - 1);
+
+        //when
+        int couldBeOne = Problem3.howManyStringContains369(strIncludeOne3);
+        int couldBeTwo = Problem3.howManyStringContains369(strIncludeTwo3);
+
+        //then
+        assertThat(strIncludeOne3).isEqualTo("3");
+        assertThat(strIncludeTwo3).isEqualTo("33");
+        assertThat(couldBeOne).isEqualTo(1);
+        assertThat(couldBeTwo).isEqualTo(2);
+    }
 }
