@@ -30,6 +30,12 @@ public class Problem6 {
         return new ArrayList<>(emails);
     }
 
+    private static void addCommonNameEmail(List<List<String>> forms, String key){
+        for(List<String> person : forms){
+            addPersonsEmailIfContains(key, person);
+        }
+    }
+
 
     private static void setDataOnHashMap(List<List<String>> forms){
         for(List<String> person : forms){
