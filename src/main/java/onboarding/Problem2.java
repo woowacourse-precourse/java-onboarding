@@ -8,7 +8,7 @@ public class Problem2 {
 	public static String solution(String cryptogram) {
 		Problem2ValidateChecker.isCryptogramValidate(cryptogram);
 		String answer = cryptogram;
-		duplicateFlag=true;
+		duplicateFlag = true;
 
 		while(duplicateFlag) {
 			answer = removeDuplicateCharacter(answer);
@@ -18,20 +18,29 @@ public class Problem2 {
 	}
 
 	private static String removeDuplicateCharacter(String str){
-		duplicateFlag=false;
 		char[] charArray = str.toCharArray();
 		StringBuilder resultBuilder = new StringBuilder();
 		char preChar = '\0';
+		boolean eraseFirstCharacterFlag=false;
+		duplicateFlag = false;
 
 		for (char ch : charArray) {
-			if(ch != preChar)
+			if(ch != preChar) {
+				if(eraseFirstCharacterFlag){
+					resultBuilder.setLength(resultBuilder.length()-1);
+					eraseFirstCharacterFlag=false;
+				}
 				resultBuilder.append(ch);
+			}
 			else {
 				duplicateFlag = true;
-				resultBuilder.setLength(resultBuilder.length()-1);
+				eraseFirstCharacterFlag = true;
 			}
 			preChar=ch;
 		}
+
+		if (eraseFirstCharacterFlag)
+			resultBuilder.setLength(resultBuilder.length()-1);
 
 		return resultBuilder.toString();
 	}
