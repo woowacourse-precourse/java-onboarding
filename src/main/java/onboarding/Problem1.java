@@ -30,8 +30,8 @@ public class Problem1 {
 
     // 2개의 값중 큰값을 리턴한다.
     private static int getMaxTwoIntValue(Integer valueOne, Integer valueTwo) {
-        int getLeftMaxValue = getMaxSeatValueNum(valueOne);
-        int getRightMaxValue = getMaxSeatValueNum(valueTwo);
+        int getLeftMaxValue = getMaxSeatIntValue(valueOne);
+        int getRightMaxValue = getMaxSeatIntValue(valueTwo);
         return Math.max(getLeftMaxValue, getRightMaxValue);
     }
 
