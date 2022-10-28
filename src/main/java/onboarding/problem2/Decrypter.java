@@ -46,9 +46,12 @@ public class Decrypter {
         List<List<Integer>> repeatCharInfos = new ArrayList<>();
         int index = 0;
         while( index < cryptogram.length()-1){
-            List<Integer> repeatCharInfo = new ArrayList<>();
             int startIndex = findIndexOfRepeatedChar(cryptogram, index);
+            if(startIndex == -1){
+                return repeatCharInfos;
+            }
             int repeatNum = findNumberOfRepeatedChar(cryptogram, startIndex);
+            List<Integer> repeatCharInfo = new ArrayList<>();
             repeatCharInfo.add(startIndex);
             repeatCharInfo.add(repeatNum);
             repeatCharInfos.add(repeatCharInfo);
