@@ -16,7 +16,19 @@ public class Problem2 {
      * @return 해독된 문자열
      */
     private static String decodeCryptogram(String cryptogram){
+        // 해독 결과 변수
+        String result = cryptogram;
+        // result의 값을 저장하기 위한 변수
+        String tempResult = null;
 
+        // 중복 제거 후 변화가 없을 때까지 중복 제거
+        while (!result.equals(tempResult)){
+            tempResult = result;
+            result = removeDuplication(result);
+        }
+
+        // 모든 중복이 제거된 (해독된) 결과 반환
+        return result;
     }
 
     /**
