@@ -2,6 +2,7 @@ package onboarding.problem1.application.bookgame;
 
 import static onboarding.problem1.Problem1Constant.*;
 import static onboarding.problem1.application.bookgame.BookGameStatus.*;
+import static onboarding.problem1.exception.BookGameExceptionType.*;
 
 import java.util.List;
 
@@ -46,7 +47,7 @@ public class BookGameValidation {
 
 	private void validateContinuous(int a, int b) {
 		if (b - a != 1) {
-			throw new BookGameException(RIGHT_PAGE_NOT_EVEN);
+			throw new BookGameException(PAGE_NOT_CONTINUOUS);
 		}
 	}
 }

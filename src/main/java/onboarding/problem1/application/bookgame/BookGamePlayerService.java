@@ -5,15 +5,9 @@ import static onboarding.problem1.Problem1Constant.*;
 import java.util.List;
 
 import onboarding.problem1.application.PlayerService;
-import onboarding.problem1.application.ScoreService;
 import onboarding.problem1.model.Player;
 
 public class BookGamePlayerService implements PlayerService {
-	private final ScoreService scoreService;
-
-	public BookGamePlayerService(ScoreService scoreService) {
-		this.scoreService = scoreService;
-	}
 
 	@Override
 	public Player joinPlayer(List<Integer> infos) {

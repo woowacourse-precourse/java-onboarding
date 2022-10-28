@@ -3,28 +3,21 @@ package onboarding.problem1.application.bookgame;
 import static onboarding.problem1.Problem1Constant.*;
 
 public enum BookGameStatus {
-	/**
-	 * 예외 케이스
-	 * 1. 페이지를 벗어난 숫자가 입력된 경우
-	 * 2. 왼쪽 페이지가 홀수가 아닌 경우
-	 * 3. 오른쪽 페이지가 짝수가 아닌 경우
-	 * 4. 연속된 페이지가 아닌 경우
-	 */
 
-	PAGE_OUT_OF_RANGE("페이지를 벗어난 숫자 입니다.", EXCEPTION_CODE),
-	LEFT_PAGE_NOT_ODD("왼쪽 페이지는 홀수이어야 합니다", EXCEPTION_CODE),
-	RIGHT_PAGE_NOT_EVEN("오른쪽 페이지는 짝수이어야 합니다", EXCEPTION_CODE),
-	PAGE_NOT_CONTINUOUS("페이지는 연속된 숫자이어야 합니다", EXCEPTION_CODE);
+	WINNER_POBI("Pobi가 이겼습니다.", POBI_WIN_CODE),
+	WINNER_CRONG("Crong이 이겼습니다.", CRONG_WIN_CODE),
+	DRAW("비겼습니다.", DRAW_CODE),
+	ERROR("예외 사항이 발생하였습니다.", EXCEPTION_CODE);
 
 	private final String message;
-	private final int exceptionCode;
+	private final int statusCode;
 
-	BookGameStatus(String message, int exceptionCode) {
+	BookGameStatus(String message, int statusCode) {
 		this.message = message;
-		this.exceptionCode = exceptionCode;
+		this.statusCode = statusCode;
 	}
 
-	public int getExceptionCode() {
-		return exceptionCode;
+	public int getStatusCode() {
+		return statusCode;
 	}
 }

@@ -10,7 +10,7 @@ public class BookGameDependencyConfigurer {
 
 	public BookGamePlayerService playerService() {
 		if(bookGamePlayerService == null){
-			bookGamePlayerService = new BookGamePlayerService(scoreService());
+			bookGamePlayerService = new BookGamePlayerService();
 		}
 		return bookGamePlayerService;
 	}
