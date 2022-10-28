@@ -5,17 +5,17 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class Problem3 {
-    private static final List<Integer> checkNumbers = Arrays.asList(3, 6, 9);
+    private static final List<Integer> numbers = Arrays.asList(3, 6, 9);
     private static int count = 0;
 
     public static int solution(int number) {
-        IntStream.range(1, number+1).forEach(Problem3::checkRole);
+        IntStream.range(1, number+1).forEach(Problem3::checkNumberInRange);
         return count;
     }
 
-    private static void checkRole(int number) {
+    private static void checkNumberInRange(int number) {
         while(number != 0) {
-            if(checkNumbers.contains(number%10)) {
+            if(numbers.contains(number%10)) {
                 count++;
             }
 
