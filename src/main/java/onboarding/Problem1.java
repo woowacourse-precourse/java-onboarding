@@ -7,13 +7,29 @@ class Problem1 {
   private static final int pobi_Win = 1;
   private static final int crong_Win = 2;
   private static final int draw = 0;
+  private static final int exception = -1;
   private static final int LeftPage = 0;
   private static final int RightPage = 1;
+  private static final int FirstPage = 0;
+  private static final int LastPage = 400;
 
   public static int solution(List<Integer> pobi, List<Integer> crong) {
     int answer = Integer.MAX_VALUE;
 
+    if(findPageException(pobi,crong)) return exception;
+
     return answer = Winner(pobi,crong);
+  }
+
+  private static boolean findPageException(List<Integer> pobi, List<Integer> crong) {
+    if (pobi.get(LeftPage) < FirstPage || pobi.get(RightPage) > LastPage
+            || crong.get(LeftPage) < FirstPage || crong.get(RightPage) > LastPage) {
+      return true;
+    }
+    if ((pobi.get(RightPage) - pobi.get(LeftPage)) != 1 || (crong.get(RightPage) - crong.get(LeftPage)) != 1) {
+      return true;
+    }
+    return false;
   }
 
   private static int Winner (List<Integer> pobi, List<Integer> crong){
