@@ -14,6 +14,42 @@ public class SNSController {
         users = new HashMap<>();
     }
 
+    public List<String> findRecommendUser(String userName){
+        HashMap<String, RecommendPoint> recommendPoints = new HashMap<>();
+
+        List<RecommendPoint> friendPoints = generateFriendRecommendPoint(userName);
+        for(RecommendPoint point : friendPoints){
+            addPointToHashMap(recommendPoints, point);
+        }
+        List<RecommendPoint> visitorPoints = generateVisitorRecommendPoint(userName);
+        for(RecommendPoint point : visitorPoints){
+            addPointToHashMap(recommendPoints, point);
+        }
+        removeMyFriends(userName, recommendPoints);
+
+        List<RecommendPoint> points = new ArrayList<>(recommendPoints.values());
+        Collections.sort(points, Comparator.reverseOrder());
+
+        if(points.size() > 5){
+            points = points.subList(0, 5);
+        }
+
+        List<String> recommendUserNames = new LinkedList<>();
+        for(RecommendPoint point : points){
+            recommendUserNames.add(point.getName());
+        }
+        return recommendUserNames;
+    }
+
+    private void addPointToHashMap(HashMap<String, RecommendPoint> points, RecommendPoint point){
+        if(points.containsKey(point.getName())){
+            RecommendPoint originalPoint = points.get(point.getName());
+            originalPoint.addPoints(point.getPoint());
+            points.put(point.getName(), originalPoint);
+            return;
+        }
+        points.put(point.getName(), point);
+    }
 
     private void removeMyFriends(String userName, HashMap<String, RecommendPoint> points){
         User user = users.get(userName);
