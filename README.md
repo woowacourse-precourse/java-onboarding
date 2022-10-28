@@ -98,6 +98,19 @@ BUILD SUCCESSFUL in 0s
     - 대문자일 경우 대문자, 소문자일 경우 소문자로 배열에 저장
 - answerArr의 문자열을 합쳐서 출력
 
+</div>
+</details>
+
+<details>
+<summary>문제 5</summary>
+<div markdown="1">
+
+- 화폐 단위를 순서대로 배열로 저장
+- for문을 진행하며 화폐 개수를 리스트에 추가
+  - money를 화폐 단위의 배열값으로 나눠서 얻은 몫을 리스트에 추가
+  - 나눈 나머지 값을 money로 for문 진행
+- 리스트 출력
+
 
 </div>
 </details>
