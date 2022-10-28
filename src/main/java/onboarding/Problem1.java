@@ -3,6 +3,12 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+    /*
+     *  간단한 구현문제
+     *  1. 입력값이 올바른지 확인
+     *  2. digitSum, digitMul 함수 (각각 자릿수를 더해주는 함수와 곱해주는 함수임)를 사용해 점수를 계산
+     *  3. 계산된 점수에 따라 결과값 반환
+     */
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if(!isValid(pobi) || !isValid(crong))
             return -1;
