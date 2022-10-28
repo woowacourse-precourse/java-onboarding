@@ -18,6 +18,14 @@ class Problem1 {
     static final int LEN_NUMBER_OF_DIGITS = 3;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        if (!verifyGame(pobi) || !verifyGame(crong)) {
+            return -1;
+        } else {
+            return playGame(pobi, crong);
+        }
+    }
+
+    private static int playGame(List<Integer> pobi, List<Integer> crong) {
         int pobiScore = calcScore(pobi);
         int crongScore = calcScore(crong);
 
@@ -35,6 +43,10 @@ class Problem1 {
         } else {
             return 0;
         }
+    }
+
+    private static boolean verifyGame(List<Integer> list) {
+        return false;
     }
 
     private static int operMulti(int[] arr) {
