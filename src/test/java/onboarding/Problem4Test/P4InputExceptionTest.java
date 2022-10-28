@@ -28,4 +28,11 @@ public class P4InputExceptionTest {
         assertThat(Problem4.solution(word)).isEqualTo(result);
     }
 
+    @Test
+    void case4() {
+        String word = "I love you";
+        String result = "R olev blf";
+        assertThat(Problem4.solution(word)).isEqualTo(result);
+    }
+
 }
