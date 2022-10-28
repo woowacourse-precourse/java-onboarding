@@ -56,7 +56,7 @@ class Problem1 {
     }
 
     public static int chooseMaxValueBetweenAddAndMultiply(int value) {
-        return 0;
+        return getMaxValue(getDigitAddValue(value), getDigitMultiplyValue(value));
 
     }
 }
