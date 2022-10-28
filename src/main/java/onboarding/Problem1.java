@@ -71,9 +71,20 @@ class Problem1 {
     }
 
     public static boolean isException(int leftPage, int rightPage) {
-        if (rightPage - leftPage == 1) {
-            return true;
+        //연속된 페이지가 아닌 경우
+        if (rightPage - leftPage != 1) {
+            return false;
         }
-        return false;
+
+        // 왼쪽 페이지가 홀수, 오른쪽 페이지가 짝수가 아닌 경우
+        if ((leftPage - 1) / 2 != 0 || rightPage / 2 != 0) {
+            return false;
+        }
+
+        // 시작 면이나 마지막 면을 포함하여 페이지를 벗어난 곳 펼친 경우
+        if (leftPage <= 1 || rightPage >= 400) {
+            return false;
+        }
+        return true;
     }
 }
