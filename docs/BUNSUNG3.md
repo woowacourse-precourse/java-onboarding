@@ -1,4 +1,4 @@
-## Solution: bunsung92
+# Solution: bunsung92
 
 배달이가 좋아하는 369게임을 하고자 한다.
 놀이법은 1부터 숫자를 하나씩 대면서,
