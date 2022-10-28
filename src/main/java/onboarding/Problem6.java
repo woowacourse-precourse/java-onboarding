@@ -40,8 +40,14 @@ public class Problem6 {
                 myNickSplit.add(nickname.substring(k, k + 2));
             }
 
+            // 5. 전체와 교집합이 있으면 메일을 list에 추가
+            compareNicksSplit.retainAll(myNickSplit);
+            if(compareNicksSplit.size()>0){
+                answer.add(email);
+            }
         }
 
+        Collections.sort(answer);
         return answer;
     }
 }
