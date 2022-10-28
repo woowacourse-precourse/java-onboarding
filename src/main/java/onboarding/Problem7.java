@@ -10,7 +10,21 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
         return answer;
     }
+    public static List<String> getFriendsList(List<List<String>> friends, String user) {
+        List<String> friendsList = Collections.emptyList();
+        for (int i = 0; i < friends.size(); i++) {
+            List<String> relation = friends.get(i);
+            String friend1 = relation.get(0);
+            String friend2 = relation.get(1);
 
+            if (friend1.equals(user)) {
+                friendsList.add(friend2);
+            } else if (friend2.equals(user)) {
+                friendsList.add(friend1);
+            }
+        }
+        return friendsList;
+    }
     public static void setDistinctID(List<String> friends) { // getDistinctFriends 이후 호출됨
         for (int i = 0; i < friends.size(); i++) {
             String name = friends.get(i);
