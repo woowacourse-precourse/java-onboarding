@@ -14,6 +14,10 @@ public class Problem7 {
         addScoreByUserFriend(memberDataBase, user);
 
         addScoreByVisit(memberDataBase, user, visitors);
+
+        return extractResultByScore(memberDataBase, user);
+    }
+
     private static void checkFriendStatus(Map<String, Member> memberDataBase, List<List<String>> friends) {
         for (List<String> friendList : friends) {
             Member friend0 = getMemberData(memberDataBase, friendList.get(0));
@@ -22,6 +26,26 @@ public class Problem7 {
             addFriendEachOther(friend0, friend1);
         }
     }
+
+    private static List<String> extractResultByScore(Map<String, Member> memberDataBase, String user) {
+        List<String> rtValList = new ArrayList<>();
+
+        List<Member> memberDataBaseList = new ArrayList<Member>(memberDataBase.values());
+
+        memberDataBaseList.sort(null);
+
+        for (Member tempMember : memberDataBaseList) {
+            if (tempMember.getName().equals(user)) {
+                continue;
+            }
+
+            if (tempMember.getRecommendScore() > 0) {
+                rtValList.add(tempMember.getName());
+            }
+        }
+        return rtValList;
+    }
+
     private static void addScoreByVisit(Map<String, Member> memberDataBase, String user, List<String> visitors) {
         for (String visitor : visitors) {
             Member tempVisitor = getMemberData(memberDataBase, visitor);
@@ -47,7 +71,6 @@ public class Problem7 {
                 }
             }
         }
-        return answer;
     }
 
     private static Member getMemberData(Map<String, Member> userDataBase, String userName) {
