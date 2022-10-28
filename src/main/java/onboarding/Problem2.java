@@ -43,18 +43,10 @@ public class Problem2 {
     }
 
     public static boolean validateCryptogramLength(String cryptogram) {
-        boolean isCorrectCryptogramLength = true;
-        if(cryptogram.length() < MIN_CRYPTOGRAM_LENGTH || cryptogram.length() > MAX_CRYPTOGRAM_LENGTH) {
-            isCorrectCryptogramLength = false;
-        }
-        return isCorrectCryptogramLength;
+        return !(cryptogram.length() < MIN_CRYPTOGRAM_LENGTH || cryptogram.length() > MAX_CRYPTOGRAM_LENGTH);
     }
 
     public static boolean validateCryptogramType(String cryptogram) {
-        boolean isCorrectCryptogramType = false;
-        if(Pattern.compile(CRYPTOGRAM_TYPE_REGEX).matcher(cryptogram).matches()) {
-            isCorrectCryptogramType = true;
-        }
-        return isCorrectCryptogramType;
+        return (Pattern.compile(CRYPTOGRAM_TYPE_REGEX).matcher(cryptogram).matches());
     }
 }
