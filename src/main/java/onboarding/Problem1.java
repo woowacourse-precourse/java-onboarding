@@ -1,16 +1,23 @@
 package onboarding;
 
+import javax.swing.plaf.ListUI;
 import java.util.List;
 
 class Problem1 {
-    public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int pobiNum = 0;
-        int crongNum = 0;
-        int answer = Integer.MAX_VALUE;
+    public boolean checkNum(List<Integer> a, List<Integer> b){
+        if (a.get(1) - a.get(0) == 1 && b.get(1) - b.get(0) == 1){
+            return true;
+        } else {
+            return false;
+        }
 
-        for (int i: pobi){
-            int num1 = 0;
-            int num2 =0;
+    }
+
+    public int makeNum(List<Integer> numList){
+        int maxNum = -1000000;
+        for (int i: numList){
+            int num1 = 1;
+            int num2 = 1;
 
             String s = String.valueOf(i);
             for (int j=0; j < s.length(); j++){
@@ -19,16 +26,21 @@ class Problem1 {
             }
 
             int temp = Math.max(num1, num2);
-            pobiNum = Math.max(crongNum, temp);
+            maxNum = Math.max(maxNum, temp);
+        }
+        return maxNum;
+    }
+
+    public static int solution(List<Integer> pobi, List<Integer> crong) {
+        Problem1 problem1 = new Problem1();
+
+        if (problem1.checkNum(pobi, crong) != true){
+            return -1;
         }
 
-        for (int i: crong){
-            int num1 = 0;
-            int num2 = 1;
-
-            int temp = Math.max(num1, num2);
-            crongNum = Math.max(pobiNum, temp);
-        }
+        int pobiNum = problem1.makeNum(pobi);
+        int crongNum = problem1.makeNum(crong);
+        int answer = Integer.MAX_VALUE;
 
         if (pobiNum > crongNum){
             answer = 1;
@@ -36,8 +48,6 @@ class Problem1 {
             answer = 2;
         } else if (pobiNum == crongNum) {
             answer = 0;
-        } else {
-            answer = -1;
         }
 
         return answer;
