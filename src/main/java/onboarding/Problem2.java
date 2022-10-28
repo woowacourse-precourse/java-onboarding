@@ -1,7 +1,5 @@
 package onboarding;
 
-import java.util.regex.Pattern;
-
 public class Problem2 {
     private static final int MINIMUM_INPUT = 1;
     private static final int MAXIMUM_INPUT = 1000;

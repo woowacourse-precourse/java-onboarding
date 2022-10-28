@@ -1,19 +1,17 @@
 package onboarding;
 
+import java.util.stream.IntStream;
+
 public class Problem3 {
     private static final int MINIMUM_INPUT = 1;
     private static final int MAXIMUM_INPUT = 10000;
     private static final int INPUT_ERROR = -1;
 
     public static int solution(int number) {
-        int answer = 0;
-
         if (isExceptionInput(number)) return INPUT_ERROR;
 
-        for (int i = 1; i <= number; i++) {
-            answer += getClapCount(i);
-        }
-        return answer;
+        IntStream numbers = IntStream.rangeClosed(0, number);
+        return numbers.reduce((x,y)->x + getClapCount(y)).orElse(0);
     }
 
     private static boolean isExceptionInput(int number) {
