@@ -27,7 +27,16 @@ class Problem1 {
         return !isOdd(left) || right != left + 1;
     }
 
-    public static boolean isOdd(int num){
+    private static boolean isOdd(int num){
         return num % 2 == 1;
+    }
+
+    public static int sumEachNum(int num){
+        int sum = 0;
+        while(num != 0){
+            sum += num % 10;
+            num /= 10;
+        }
+        return sum;
     }
 }

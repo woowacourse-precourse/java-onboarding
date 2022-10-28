@@ -30,4 +30,12 @@ public class Problem1Test {
         assertThat(problem.pageIndexException(list2)).isEqualTo(result2);
         assertThat(problem.pageIndexException(list3)).isEqualTo(result3);
     }
+
+    @Test
+    @DisplayName("Sum Each Num Test")
+    void sumEachNum() {
+        assertThat(problem.sumEachNum(12)).isEqualTo(3);
+        assertThat(problem.sumEachNum(197)).isEqualTo(17);
+        assertThat(problem.sumEachNum(5)).isEqualTo(5);
+    }
 }
