@@ -9,6 +9,9 @@ class Problem1 {
         int pobiMax;
         int crongMax;
 
+        pobiMax = (getPlus(pobi) > getMul(pobi)) ? getPlus(pobi) : getMul(pobi);
+        crongMax = (getPlus(crong) > getMul(crong) ? getPlus(crong) : getMul(crong));
+
         return answer;
     }
 
