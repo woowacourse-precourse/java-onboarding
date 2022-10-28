@@ -85,14 +85,14 @@ public class Problem7 {
 
     private static void scoreVisitorPoint(Map<String, Integer> recommendRank, String visitor, List<String> friendList) {
 
-        boolean visitorValid = myfriendCheck(friendList, visitor);
+        boolean visitorValid = myFriendCheck(friendList, visitor);
 
         if (visitorValid == true) {
             recommendRank.put(visitor, recommendRank.getOrDefault(visitor, 0) + 1);
         }
     }
 
-    private static boolean myfriendCheck(List<String> friendList, String visitor) {
+    private static boolean myFriendCheck(List<String> friendList, String visitor) {
 
         boolean result = true;
 
