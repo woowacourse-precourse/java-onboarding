@@ -21,4 +21,13 @@ class Problem1 {
             return true;
         return false;
     }
+
+    public static int getSumOfPage(String pageTypeOfString) {
+        int sum = 0;
+        for (int i = 0; i < pageTypeOfString.length(); i++) {
+            int temp = pageTypeOfString.charAt(i) - '0';
+            sum += temp;
+        }
+        return sum;
+    }
 }
