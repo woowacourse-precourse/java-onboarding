@@ -10,6 +10,12 @@ public class Problem4 {
         return answer;
     }
 
+    public static char convert(char c) {
+        if (isAlphabet(c) == BIG)
+            return (char) ('A' + 'Z' - c);
+        return (char) ('a' + 'z' - c);
+    }
+
     public static int isAlphabet(char c) {
         if ('A' <= c && c <= 'Z')
             return BIG;
