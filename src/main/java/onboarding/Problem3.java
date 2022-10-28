@@ -11,12 +11,12 @@ public class Problem3 {
                 int tmp = currentNumber%10;
                 if(tmp != 0 && tmp%3 == 0){
                     //3,6,9가 들어간 경우
-
+                    //3,6,9가 포함된 횟수만큼 answer를 증가
+                    answer++;
                 }
                 currentNumber /= 10;
             }
         }
-        //3,6,9가 포함된 횟수만큼 answer를 증가
 
         return answer;
     }
