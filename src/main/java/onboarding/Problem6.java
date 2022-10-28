@@ -27,13 +27,15 @@ public class Problem6 {
                 if(!totalTwoNames.containsKey(splitName)){
                     totalTwoNames.put(splitName, 0);
                 } else{
+
                     totalTwoNames.put(splitName, totalTwoNames.get(splitName)+1);
-                    String previousEmail = forms.get(i-1).get(0);
-                    String previousName = forms.get(i-1).get(1);
-                    if(!answer.contains(previousEmail) && previousName.contains(splitName)){
-                        answer.add(previousEmail);
+                    for(int k=i;k>=0;k--){
+                        String previousEmail = forms.get(k).get(0);
+                        String previousName = forms.get(k).get(1);
+                        if(!answer.contains(previousEmail) && previousName.contains(splitName)){
+                            answer.add(previousEmail);
+                        }
                     }
-                    answer.add(email);
                     break;
                 }
             }
@@ -56,9 +58,12 @@ public class Problem6 {
         List<List<String>> test2 = List.of(
                 List.of("ab@email.com", "에이비"),
                 List.of("hi@email.com", "하이"),
+                List.of("jm@email.com", "제이엠"),
+                List.of("jason@email.com", "제이슨"),
+                List.of("woniee@email.com", "워니"),
                 List.of("hello@email.com", "이하이"),
-                List.of("copy.com", "이하동문"),
-                List.of("bb.com", "비비")
+                List.of("copy@email.com", "이하동문"),
+                List.of("bb@email.com", "비비")
         );
         System.out.println(solution(test2)); // [copy.com, hello@email.com, hi@email.com]
 
