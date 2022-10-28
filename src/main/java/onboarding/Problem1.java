@@ -40,4 +40,8 @@ class Problem1 {
         return result;
     }
 
+    static int sumPageIngredient(List<Integer> pageIngredient) {
+
+        return pageIngredient.stream().reduce(0, Integer::sum);
+    }
 }

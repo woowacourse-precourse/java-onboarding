@@ -83,4 +83,28 @@ class Problem1Test {
         assertThat(crongFirstPageIngredient).containsExactly(7, 9, 1);
         assertThat(crongSecondPageIngredient).containsExactly(8, 9, 1);
     }
+
+    @Test
+    public void sumPageIngredientTest() {
+        //given
+        List<Integer> pobi = List.of(97, 98);
+        List<Integer> crong = List.of(197, 198);
+
+        List<Integer> pobiFirstPageIngredient = getPageIngredients(pobi.get(0));
+        List<Integer> pobiSecondPageIngredient = getPageIngredients(pobi.get(1));
+        List<Integer> crongFirstPageIngredient = getPageIngredients(crong.get(0));
+        List<Integer> crongSecondPageIngredient = getPageIngredients(crong.get(1));
+
+        //when
+        int pobiFirstPageIngredientSum = sumPageIngredient(pobiFirstPageIngredient);
+        int pobiSecondPageIngredientSum = sumPageIngredient(pobiSecondPageIngredient);
+        int crongFirstPageIngredientSum = sumPageIngredient(crongFirstPageIngredient);
+        int crongSecondPageIngredientSum = sumPageIngredient(crongSecondPageIngredient);
+
+        //then
+        assertThat(pobiFirstPageIngredientSum).isEqualTo(16);
+        assertThat(pobiSecondPageIngredientSum).isEqualTo(17);
+        assertThat(crongFirstPageIngredientSum).isEqualTo(17);
+        assertThat(crongSecondPageIngredientSum).isEqualTo(18);
+    }
 }
