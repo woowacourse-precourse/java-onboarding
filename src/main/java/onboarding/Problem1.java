@@ -31,16 +31,21 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
-        // 포비와 크롱의 예외 확인
-        Boolean isExceptionPobi = handleException(pobi.get(0), pobi.get(1));
-        Boolean isExceptionCrong = handleException(crong.get(0), crong.get(1));
+        int pobiLeftPage = pobi.get(0);
+        int pobiRightPage = pobi.get(1);
+        int crongLeftPage = crong.get(0);
+        int crongRightPage = pobi.get(1);
 
-        if (isExceptionPobi == true || isExceptionCrong == true) {
+        // 포비와 크롱의 예외 확인
+        Boolean isExceptionPobi = handleException(pobiLeftPage, pobiRightPage);
+        Boolean isExceptionCrong = handleException(crongLeftPage, crongRightPage);
+
+        if (isExceptionPobi || isExceptionCrong) {
             answer = -1;
         }
 
-        int sumPobi = sumPage(pobi.get(1));
-        int sumCrong = sumPage(crong.get(1));
+        int sumPobi = sumPage(pobiRightPage);
+        int sumCrong = sumPage(crongRightPage);
 
         return answer;
     }
