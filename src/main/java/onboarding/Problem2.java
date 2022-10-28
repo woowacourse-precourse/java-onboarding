@@ -3,10 +3,6 @@ package onboarding;
 import java.util.Stack;
 
 public class Problem2 {
-    public static void main(String[] args) {
-        System.out.println(solution("zyelloleyz"));
-    }
-
     public static Stack<Character> stack;
 
     public static String solution(String cryptogram) {
