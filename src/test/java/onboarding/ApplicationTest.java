@@ -3,10 +3,12 @@ package onboarding;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest {
     @Nested
@@ -105,6 +107,22 @@ class ApplicationTest {
             String cryptogram = "zyelleyz";
             String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void testValidateLength() {
+            String cryptogram = "";
+            assertThatThrownBy(() -> Problem2.validateLength(cryptogram))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("허용되지 않은 길이의 문자열입니다.");
+        }
+
+        @Test
+        void testValidateIsLower() {
+            String cryptogram = "Aa";
+            assertThatThrownBy(() -> Problem2.validateIsLower(cryptogram))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("소문자가 아닌 다른 값이 포함되어 있습니다.");
         }
     }
 
