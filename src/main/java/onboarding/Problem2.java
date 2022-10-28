@@ -1,22 +1,34 @@
-import java.util.Scanner;
-
 package onboarding;
+
+import java.util.ArrayList;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
+		
         String answer = "";
-        // i번째의 문자의 인덱스 번호와 같으면(처음등장 or 유일한 str) 해당 인덱스 문자를 추가
-		for (int i = 0; i < str.length(); i++) { 
-			if (str.indexOf(str.charAt(i)) == i)
-				answer += str.charAt(i);
 
-		}
-		return answer;
-    public static void main(String[] args) {
-		Main T = new Main();
-		Scanner kb = new Scanner(System.in);
-		String str = kb.next();
-		System.out.println(T.solution(str));
-	}
+        char[] char_arr = cryptogram.toCharArray();
+        ArrayList<Character> arr = new ArrayList<>();
+        for(int i = 0; i < char_arr.length; i++) {
+        	arr.add(char_arr[i]);
+        }
+
+        int idx = 0;
+        while(arr.size() != 0) {
+        	if(arr.get(idx) == arr.get(idx+1)) {
+        		arr.remove(idx);
+        		arr.remove(idx);
+        		idx = 0;
+        	} else {
+        		idx++;
+        		if(idx == arr.size() - 1) break;
+        	}
+        }
+
+        for(int i = 0; i < arr.size(); i++) {
+        	answer += arr.get(i);
+        }
+
+        return answer;
     }
 }
