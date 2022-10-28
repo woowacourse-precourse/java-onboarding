@@ -8,20 +8,20 @@ import java.util.stream.Collectors;
 
 public class Problem6 {
 
-    public static void decompose(String nickName, HashMap<String, String> map, HashMap<String, List<String>> overlap) {
-        for (int i = 2; i <= nickName.length(); i++) {
-            for (int j = 0; j <= nickName.length() - i; j++) {
-                String subNickName = nickName.substring(j, j + i); // 이거 고칠 우려있음
+    public static void decompose(String nickName, HashMap<String, List<String>> overlap) {
+        int cutLength = 2;
 
-                if (overlap.containsKey(subNickName)) { // 이미 키가 존재하는 경우, List 에다가 닉네임만 추가해주면 된다.
-                    List<String> getList = overlap.get(subNickName);
-                    getList.add(nickName);
-                    overlap.put(subNickName, getList);
-                } else {
-                    List<String> addList = new ArrayList<>();
-                    addList.add(nickName);
-                    overlap.put(subNickName, addList);
-                }
+        for (int j = 0; j <= nickName.length() - cutLength; j++) {
+            String subNickName = nickName.substring(j, j + cutLength);
+
+            if (overlap.containsKey(subNickName)) { // 이미 키가 존재하는 경우, List 에다가 닉네임만 추가해주면 된다.
+                List<String> getList = overlap.get(subNickName);
+                getList.add(nickName);
+                overlap.put(subNickName, getList);
+            } else {
+                List<String> addList = new ArrayList<>();
+                addList.add(nickName);
+                overlap.put(subNickName, addList);
             }
         }
     }
@@ -41,7 +41,7 @@ public class Problem6 {
 
             String nickName = info.get(1);
             // 닉네임 분해하면서, HashMap 에다가 담아줄 것임
-            decompose(nickName, map, overlap);
+            decompose(nickName, overlap);
         }
 
         HashSet<String> emailList = new HashSet<>();
