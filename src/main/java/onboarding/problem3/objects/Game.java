@@ -25,7 +25,7 @@ public class Game {
     private void processPhase(Rule rule) {
         for (int num = START_NUMBER; num <= this.gameNumber; num++) {
             Player player = new Player(num);
-            int clapCount = player.numberComeTrue(num, rule);
+            int clapCount = player.numberComeTrue(rule);
             claps.add(clapCount);
         }
     }
