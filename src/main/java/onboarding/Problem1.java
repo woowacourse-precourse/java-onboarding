@@ -8,12 +8,19 @@ class Problem1 {
         return answer;
     }
 
-    public static boolean check(List<Integer> list) {
-        //왼쪽 페이지 번호가 홀수 인지 확인
-        if(list.get(0)%2 == 0) return false;
+    public static boolean hasError(List<Integer> list) {
+        int left = list.get(0);
+        int right = list.get(1);
 
-        //숫자가 연속적인지 확인
-        return (list.get(1) - list.get(0) == 1);
+        //페이지 번호가 1~400인지 확인
+        if(left < 1 || left > 400) return true;
+        if(right < 1 || right > 400) return true;
+
+        //왼쪽 페이지 번호가 홀수 인지 확인
+        if (left % 2 == 0) return true;
+
+        //숫자가 연속적인지 확인 (오른쪽 페이지 번호가 짝수 인지 확인)
+        return (right - left != 1);
     }
 
     public static int getScore(List<Integer> list){
