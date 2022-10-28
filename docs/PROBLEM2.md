@@ -1,23 +1,13 @@
-## 🚀 기능 요구 사항
+# [Problem 2](https://www.notion.so/2-2ca70805a4bb4db28d9bd48a7666f387) 기능별 명세
 
-암호문을 좋아하는 괴짜 개발자 브라운이 이번에는 중복 문자를 이용한 새로운 암호를 만들었다. 예를 들어 "browoanoommnaon"이라는 암호문은 다음과 같은 순서로 해독할 수 있다.
+## 1. public static List<String\> stringToArrayList(String cryptogram) {}
+### input
+- **String cryptogram** : 해독할 암호 데이터.
 
-1. "browoanoommnaon"
-2. "browoannaon"
-3. "browoaaon"
-4. "browoon"
-5. "brown"
+### output
+- **(List<String\>)** String 타입의 cryptogram을 ArrayList 타입으로 변환한 결과 값.
 
-임의의 문자열 cryptogram이 매개변수로 주어질 때, 연속하는 중복 문자들을 삭제한 결과를 return 하도록 solution 메서드를 완성하라.
-
-### 제한사항
-
-- cryptogram은 길이가 1 이상 1000 이하인 문자열이다.
-- cryptogram은 알파벳 소문자로만 이루어져 있다.
-
-### 실행 결과 예시
-
-| cryptogram | result |
-| --- | --- |
-| "browoanoommnaon" | "brown" |
-| "zyelleyz" | "" |
+### 기능 상세
+파라미터로 넘겨 받은 String 타입의 cryptogram을 ArrayList<String>으로 변환하는 기능을 하는 메소드입니다.<br/>
+암호 해독을 위해서는 문자열 내 각 문자들에 접근해야 하는데, String 타입에서는 그것이 불가능하므로 ArrayList로 변환해 인덱스로 접근하기 위함입니다.<br/>
+cryptogram.toCharArray()를 통해 String 타입 데이터를 char형 배열 데이터로 바꾼 후, 이 배열의 각 원소 값을 다시 String으로 타입 캐스팅하여 리스트에 하나씩 추가하는 방식입니다.
