@@ -25,7 +25,12 @@ public class Problem6 {
         }
         return true;
     }
-
+    public static boolean contentValidation(List<List<String>> forms) {
+        if (emailValidation(forms) && nameValidation(forms)) {
+            return true;
+        }
+        return false;
+    }
     public static void splitLexim(List<String> repository, String name) {
         for (int j = 0; j < name.length()-1; j++) {
             repository.add(name.substring(j, j+2));
