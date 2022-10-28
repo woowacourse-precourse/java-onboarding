@@ -127,6 +127,20 @@ public class Problem7 {
         });
     }
 
+    public static List<String> checkRecommendList(List<Map.Entry<String, Integer>> recommendList) {
+        List<String> checkedList = new ArrayList<>();
+
+        for (Map.Entry<String, Integer> score : recommendList) {
+            if (score.getValue() != 0) {
+                checkedList.add(score.getKey());
+            }
+        }
+        if (checkedList.size() > 5) {
+            checkedList = checkedList.subList(0, 5);
+        }
+        return checkedList;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         Map<String, Set<String>> friendsByName;
@@ -145,6 +159,7 @@ public class Problem7 {
         calcVisitorScore(scoreByName, visitorScore);
         recommendList = new ArrayList<>(scoreByName.entrySet());
         sortRecommendList(recommendList);
+        answer = checkRecommendList(recommendList);
         return answer;
     }
 }
