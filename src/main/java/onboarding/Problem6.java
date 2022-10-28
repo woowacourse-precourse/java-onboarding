@@ -48,12 +48,15 @@ public class Problem6 {
     public static void main(String[] args){
         String[][] email = {{"jm@email.com", "제이엠"},{"jason@email.com", "제이슨"},{"woniee@email.com", "워니"},{"mj@email.com", "엠제이"},{"nowm@email.com", "이제엠"}};
         for(int i = 0; i < email.length;i++){
-        if ( (email_check(email[i][0])) && (email_lenght_check(email[i][0]))){
-            System.out.print("성공");
-        }
-        else{
-            System.out.print("실패");
-        }
+            char[] arr = email[i][0].toCharArray();
+            System.out.print(arr[i]);
+        // if ( (email_check(email[i][0])) && (email_lenght_check(email[i][0]))){
+        //     System.out.print("성공");
+        // }
+        // else{
+        //     System.out.print("실패");
+        // }
+
         // for(int j = 0; j < email.length;j++){
         //     if (Hangeul_check(email[j][1])){
         //         System.out.print("성공");
