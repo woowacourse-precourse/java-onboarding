@@ -44,15 +44,11 @@ class Problem1 {
     }
 
     private static int calculateScore(List<Integer> userInput) {
-        int leftPage;
-        int rightPage;
-        int sum;
-        int mul;
+        int leftPage = getLeftPage(userInput);
+        int rightPage = getRightPage(userInput);
+        int sum = getBiggerSum(leftPage, rightPage);
+        int mul = getBiggerMultiply(leftPage, rightPage);
 
-        leftPage = getLeftPage(userInput);
-        rightPage = getRightPage(userInput);
-        sum = getBiggerSum(leftPage, rightPage);
-        mul = getBiggerMultiply(leftPage, rightPage);
         return sum > mul ? sum : mul;
     }
 
@@ -65,33 +61,37 @@ class Problem1 {
     }
 
     private static int getBiggerSum(int leftPage, int rightPage) {
-        int leftSum = 0;
-        int rightSum = 0;
+        int leftSum = getSum(leftPage);
+        int rightSum = getSum(rightPage);
 
-        while (leftPage > 0) {
-            leftSum += leftPage % 10;
-            leftPage /= 10;
-        }
-        while (rightPage > 0) {
-            rightSum += rightPage % 10;
-            rightPage /= 10;
-        }
         return leftSum > rightSum ? leftSum : rightSum;
     }
 
-    private static int getBiggerMultiply(int leftPage, int rightPage) {
-        int leftMul = 1;
-        int rightMul = 1;
+    private static int getSum(int page) {
+        int sum = 0;
 
-        while (leftPage > 0) {
-            leftMul *= leftPage % 10;
-            leftPage /= 10;
+        while (page > 0) {
+            sum += page % 10;
+            page /= 10;
         }
-        while (rightPage > 0) {
-            rightMul *= rightPage % 10;
-            rightPage /= 10;
-        }
+        return sum;
+    }
+
+    private static int getBiggerMultiply(int leftPage, int rightPage) {
+        int leftMul = getMul(leftPage);
+        int rightMul = getMul(rightPage);
+
         return leftMul > rightMul ? leftMul : rightMul;
+    }
+
+    private static int getMul(int page) {
+        int mul = 1;
+
+        while (page > 0) {
+            mul *= page % 10;
+            page /= 10;
+        }
+        return mul;
     }
 
     private static boolean isValidInput(List<Integer> userInput) {
@@ -133,7 +133,6 @@ class Problem1 {
         int leftPage = getLeftPage(userInput);
         int rightPage = getRightPage(userInput);
 
-        return (leftPage >= PAGE_LENGTH_MIN && leftPage <= PAGE_LENGTH_MAX)
-            && (rightPage >= PAGE_LENGTH_MIN && rightPage <= PAGE_LENGTH_MAX);
+        return (leftPage >= PAGE_LENGTH_MIN && rightPage <= PAGE_LENGTH_MAX);
     }
 }
