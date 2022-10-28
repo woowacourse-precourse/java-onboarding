@@ -9,6 +9,10 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        pobiNum = findMaxNum(pobi);
+        crongNum = findMaxNum(crong);
+
+
 
         return answer;
     }
