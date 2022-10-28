@@ -2,13 +2,16 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        StringBuilder answer = new StringBuilder();
-        answer.append(cryptogram);
+        int beforeLength = 0;
+        while (beforeLength != cryptogram.length()) {
+            beforeLength = cryptogram.length();
+            for (int i = 0; i < cryptogram.length() - 1; i++) {
 
-        boolean isContinued = true;
-        while (isContinued) {
-
+            }
         }
-        return answer.toString();
+        return cryptogram;
+    }
+    public static String removeRepeatedChar(String cryptogram, int starting) {
+
     }
 }
