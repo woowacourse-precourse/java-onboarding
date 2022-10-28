@@ -14,13 +14,13 @@ public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
         for (List<String> info : forms) {
-            saveStudentsInfo(info);
+            saveInfoForStudent(info);
         }
         findDuplicatedStudents();
         return getAnswer();
     }
 
-    private static void saveStudentsInfo(List<String> info) {
+    private static void saveInfoForStudent(List<String> info) {
         String email = info.get(0);
         String name = info.get(1);
         for (int i = 0; i < name.length() - 1; i++) {
