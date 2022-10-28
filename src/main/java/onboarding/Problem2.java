@@ -23,7 +23,8 @@ public class Problem2 {
 
             if(count == 0){
                 //연속되는 중복되는 문자가 더 이상 없을 경우 반복문 탈출
-
+                answer = cryptogram; //반환값 설정
+                break;
             }else{
                 //숫자로 대체된 문자들을 한번에 삭제
                 cryptogram = str.toString().replaceAll("1", "");
