@@ -26,5 +26,32 @@ public class Problem7 {
         newFriend.add(friend2);
         friendRelation.put(friend1,newFriend);
     }
+    public static void plusScoreByFriend(String user){
+        List<String> userFriends = friendRelation.get(user);
+        for(int i=0;i< userFriends.size();i++){
+            plusFriendScore(userFriends.get(i));
+        }
+    }
+    public static void plusFriendScore(String userFriend){
+        List<String> userFriendOfFriends = friendRelation.get(userFriend);
+        for(int i=0;i<userFriendOfFriends.size();i++) {
+            plusScore(userFriendOfFriends.get(i), 10);
+        }
+    }
+    public static void plusScoreByVisitor(List<String> visitors){
+        for(int i=0;i<visitors.size();i++){
+            plusVisitorScore(visitors.get(i));
+        }
+    }
+    public static void plusVisitorScore(String visitor){
+        plusScore(visitor, 1);
+    }
+    public static void plusScore(String name, int score){
+        int newScore = score;
+        if(Score.containsKey(name)){
+            newScore += Score.get(name);
+        }
+        Score.put(name, newScore);
+    }
 
 }
