@@ -7,14 +7,17 @@ public class Problem7 {
     private static final int RELATED_POINT = 10;
     private static final int VISITOR_POINT = 1;
 
-    static Map<String, User> users = new HashMap<>();
+    private static Map<String, User> users = new HashMap<>();
+    private static Set<User> recommendedFriends = new HashSet<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = new ArrayList<>();
-        Set<User> recommendedFriends = new HashSet<>();
+        createUserRelation(user, friends);
+        checkPoint(user, visitors);
+        return getAnswer(getTopFiveUserAsc());
+    }
 
+    private static void createUserRelation(String user, List<List<String>> friends) {
         users.put(user, new User(user));
-
         for (List<String> friend : friends) {
             String userA = friend.get(0);
             String userB = friend.get(1);
@@ -27,44 +30,66 @@ public class Problem7 {
             }
             users.get(userA).addFriend(users.get(userB));
         }
+    }
 
-        for (User friend : users.get(user).friends) {
-            for (User relatedFriend : friend.friends) {
+    private static void checkPoint(String user, List<String> visitors) {
+        User findUser = users.get(user);
+        checkRelatedFriendPoint(findUser);
+        checkVisitorPoint(findUser, visitors);
+    }
+
+    private static void checkRelatedFriendPoint(User user) {
+        for (User friend : user.getFriends()) {
+            for (User relatedFriend : friend.getFriends()) {
                 recommendedFriends.add(relatedFriend);
                 relatedFriend.plusPoint(RELATED_POINT);
             }
         }
+    }
 
+    private static void checkVisitorPoint(User user, List<String> visitors) {
         for (String visitor : visitors) {
             User findUser = users.get(visitor);
             if (findUser == null) {
                 findUser = new User(visitor);
                 users.put(visitor, findUser);
             }
-            if (users.get(user).hasNoFriend(findUser)) {
+            if (user.hasNoFriend(findUser)) {
                 recommendedFriends.add(findUser);
                 findUser.plusPoint(VISITOR_POINT);
             }
         }
+    }
 
-        List<User> result = recommendedFriends.stream()
+    private static List<User> getTopFiveUserAsc() {
+        return recommendedFriends.stream()
                 .sorted().limit(5)
                 .collect(Collectors.toList());
+    }
 
-        for (User recommend : result) {
-            answer.add(recommend.id);
-        }
-        return answer;
+    private static List<String> getAnswer(List<User> result) {
+        return result.stream()
+                .map(User::getId)
+                .collect(Collectors.toList());
     }
 
     static class User implements Comparable<User>{
-        String id;
-        int point;
-        List<User> friends = new ArrayList<>();
+
+        private String id;
+        private int point;
+        private List<User> friends = new ArrayList<>();
 
         public User(String id) {
             this.id = id;
             this.point = 0;
+        }
+
+        public String getId() {
+            return id;
+        }
+
+        public List<User> getFriends() {
+            return friends;
         }
 
         public void addFriend(User user) {
