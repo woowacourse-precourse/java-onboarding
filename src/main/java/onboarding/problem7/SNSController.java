@@ -90,7 +90,9 @@ public class SNSController {
         User user = users.get(userName);
         for(String friendName : user.getFriendNames()){
             User friend = users.get(friendName);
-            friendsFriend.addAll(friend.getFriendNames());
+            HashSet<String> friendNames = friend.getFriendNames();
+            friendNames.remove(userName);
+            friendsFriend.addAll(friendNames);
         }
         return friendsFriend;
     }
