@@ -18,8 +18,6 @@ public class Problem6 {
 
         Collections.sort(answer);
 
-        System.out.println(map);
-
         return answer;
     }
 
