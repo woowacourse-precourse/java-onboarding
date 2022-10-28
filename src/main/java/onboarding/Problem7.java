@@ -61,6 +61,17 @@ public class Problem7 {
                 crewScore.put(visitor, crewScore.getOrDefault(visitor, 0) + 1);
             }
         }
+
+        // 5. 점수를 역순으로 정렬한 후 앞에서 최대 5명까지 잘라서 출력
+        List<Map.Entry<String, Integer>> scoreSort = new LinkedList<>(crewScore.entrySet());
+        scoreSort.sort((o1, o2) -> o2.getValue() - o1.getValue());
+        idx = 0;
+        for(Map.Entry<String, Integer> entry : scoreSort) {
+            if (++idx > 5) break;
+            if (entry.getValue() != 0) { // 추천 점수가 0인 경우 추천하지 않음
+                answer.add(entry.getKey());
+            }
+        }
         return answer;
     }
 
