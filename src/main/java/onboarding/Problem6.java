@@ -17,7 +17,7 @@ public class Problem6 {
         List<String> answer = new ArrayList<>();
 
         DuplicateNickname duplicateNickname = new DuplicateNickname(forms);
-        System.out.println(duplicateNickname.DuplicatEmailIndex());
+
 
         return answer;
     }

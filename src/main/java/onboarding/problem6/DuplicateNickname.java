@@ -24,7 +24,7 @@ public class DuplicateNickname {
         }
     }
 
-    public Set<Integer> DuplicatEmailIndex() {
+    private Set<Integer> DuplicateNicknameIndex() {
         Map<String,Integer> map = new HashMap();
         Set<Integer> result = new TreeSet<>();
 
@@ -36,7 +36,6 @@ public class DuplicateNickname {
             else if (!map.containsKey(split_nickname.get(i)))
                 map.put(split_nickname.get(i), i);
         }
-
         return result;
     }
 
