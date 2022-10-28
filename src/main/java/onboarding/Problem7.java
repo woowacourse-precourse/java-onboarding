@@ -9,40 +9,40 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<String>();
 
-        Map<String, User> userDataBase = new HashMap<>();
+        Map<String, Member> memberDataBase = new HashMap<>();
 
         for (List<String> friendList : friends) {
-            User friend0 = getUserData(userDataBase, friendList.get(0));
-            User friend1 = getUserData(userDataBase, friendList.get(1));
+            Member friend0 = getMemberData(memberDataBase, friendList.get(0));
+            Member friend1 = getMemberData(memberDataBase, friendList.get(1));
 
             makeFriend(friend0, friend1);
         }
         return answer;
     }
 
-    private static User getUserData(Map<String, User> userDataBase, String userName) {
-        User tempUser = userDataBase.get(userName);
-        if (tempUser == null) {
-            userDataBase.put(userName, new User(userName, 0));
+    private static Member getMemberData(Map<String, Member> userDataBase, String userName) {
+        Member tempMember = userDataBase.get(userName);
+        if (tempMember == null) {
+            userDataBase.put(userName, new Member(userName, 0));
         }
 
         return userDataBase.get(userName);
     }
 
-    private static void makeFriend(User friend1, User friend2) {
-        List<User> friendList1 = friend1.getFriendList();
+    private static void makeFriend(Member friend1, Member friend2) {
+        List<Member> friendList1 = friend1.getFriendList();
         friendList1.add(friend2);
 
-        List<User> friendList2 = friend2.getFriendList();
+        List<Member> friendList2 = friend2.getFriendList();
         friendList2.add(friend1);
     }
 
-    static class User implements Comparable<User> {
+    static class Member implements Comparable<Member> {
         private String name;
         private int recommendScore;
-        private List<User> friendList = new ArrayList<>();
+        private List<Member> friendList = new ArrayList<>();
 
-        public User(String name, int recommendScore) {
+        public Member(String name, int recommendScore) {
             this.name = name;
             this.recommendScore = recommendScore;
         }
@@ -55,7 +55,7 @@ public class Problem7 {
             this.name = name;
         }
 
-        public List<User> getFriendList() {
+        public List<Member> getFriendList() {
             return friendList;
         }
 
@@ -88,7 +88,7 @@ public class Problem7 {
         }
 
         @Override
-        public int compareTo(User u) {
+        public int compareTo(Member u) {
             if (this.getRecommendScore() > u.getRecommendScore()) {
                 return -1;
             } else if (this.getRecommendScore() < u.getRecommendScore()) {
