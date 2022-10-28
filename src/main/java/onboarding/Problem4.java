@@ -16,20 +16,13 @@ public class Problem4 {
             }
         }
 
-        System.out.println(answer);
-
         return answer.toString();
     }
 
     private static char getGreenFrogChar(char originalChar) {
         if (isCapitalLetter(originalChar)) {
-            System.out.println(originalChar + " : 대문자입니다.");
-            System.out.println(getUpperCharConvert(originalChar));
-
             return getUpperCharConvert(originalChar);
         } else {
-            System.out.println(originalChar + " : 소문자입니다.");
-
             return getLowerCharConvert(originalChar);
         }
     }
