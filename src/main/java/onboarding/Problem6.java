@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.Set;
 
 public class Problem6 {
     private static final Map<String, Set<String>> STUDENTS_INFO = new HashMap<String, Set<String>>();
-    private static final Set<String> DUPLICATED_STUDENTS = new HashSet<>();
+    private static final ArrayList<String> DUPLICATED_STUDENTS = new ArrayList<>();
 
     public static List<String> solution(List<List<String>> forms) {
         for (List<String> info : forms) {
