@@ -27,6 +27,7 @@ public class ProblemTest {
 			System.out.println(emptyArray[0]);
 			//int는 primitive이기에 0으로 값이 초기화 되어 있음.
 		}
+
 	}
 
 	@Nested
@@ -217,7 +218,29 @@ public class ProblemTest {
 		@Test
 		public void stringIsNull(){
 			String str = null;
-			Assertions.assertThatThrownBy(()->Problem2.solution(str))
+			Assertions.assertThatThrownBy(()->Problem4.solution(str))
+				.isInstanceOf(IllegalArgumentException.class);
+		}
+	}
+
+	@Nested
+	class TestProblem5{
+		@Test
+		public void testCase(){
+			List<Integer> solution = Problem5.solution(66666);
+			List<Integer> expected = List.of(1,1,1,1,1,1,1,1,6);
+
+			Assertions.assertThat(solution).isEqualTo(expected);
+		}
+
+		@Test
+		public void numberIsNotInRange(){
+			int zero = 0;
+			int overRangeNumber = 1000001;
+
+			Assertions.assertThatThrownBy(()->Problem5.solution(zero))
+				.isInstanceOf(IllegalArgumentException.class);
+			Assertions.assertThatThrownBy(()->Problem5.solution(overRangeNumber))
 				.isInstanceOf(IllegalArgumentException.class);
 		}
 	}
