@@ -8,7 +8,7 @@
 7. 포비가 크다면 1, 크롱이 크다면 2, 같다면 0을 결과값으로 반환한다.
 
 - <code>splitInteger</code>: Integer를 자릿수별로 나눠 IntegerList를 반환하는 메서드
-- <code>sumOfIntegerList</code>: IntegerList를 모두 더하는 메서드
-- <code>multipleOfIntegerList</code>: IntegerList를 모두 곱하는 메서드
+- <code>sumIntegerList</code>: IntegerList를 모두 더하는 메서드
+- <code>multipleIntegerList</code>: IntegerList를 모두 곱하는 메서드
 
 ---
