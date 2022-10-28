@@ -11,7 +11,7 @@ class Problem1 {
             //시작면이나 마지막면을 펼친 경우(=유효한 페이지가 아님. 1~400 범위 안의 숫자가 아닌 경우)
             answer = -1;
             return answer;
-        }else if(pobi.get(0)+1 != pobi.get(1) || crong.get(0)+1 != crong.get(1)){
+        }else if(checkPageSequence(pobi) == false || checkPageSequence(crong) == false){
             //리스트의 숫자가 연속되지 않을 경우
             answer = -1;
             return answer;
@@ -70,6 +70,18 @@ class Problem1 {
         for(int i = 0; i < pages.size(); i++){
             if(pages.get(i) < 1 || pages.get(i) > 400){
                 return false;
+            }
+        }
+        return true;
+    }
+
+    private static boolean checkPageSequence(List<Integer> pages){
+        int num = pages.get(0);
+        for(int i = 1; i < pages.size(); i++){
+            if(pages.get(i) != num+1){
+                return false;
+            }else{
+                num = pages.get(i);
             }
         }
         return true;
