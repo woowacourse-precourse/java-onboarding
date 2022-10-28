@@ -23,14 +23,16 @@
 
 ## 문제 분석
 
-### 소문자 → 대문자 / 대문자 → 소문자로 변환
+### 주어진 문장 리버스
 
-- 알파벳 확인 후 소문자이면 대문자로 대문자이면 소문자로 변환
-    - ASCII 코드를 이용
+- 알파벳 확인 후 리버스 실행
+    - ASCII 코드를 이용하여 변경
+        - 기존 : a 입력 시 97(ASCII)
+        - 변경 : a 입력 시 127(ASCII) = z - (input value 알파벳 순서)
 
 ## 필요 기능
 
 - word 뒤집기 - reverseWord
-- 대, 소문자 뒤집기 - reverseAlphabet
+- 알파벳 뒤집기 - reverseAlphabet
 - 알파벳 확인 - isAlphabet
 </aside>
