@@ -35,7 +35,7 @@ public class Problem4 {
 	static class InputValidator {
 		private static boolean isRightWordRange(String word) {
 			int wordLength = word.length();
-			if (wordLength < 1 && wordLength > 1000) {
+			if (wordLength < 1 || wordLength > 1000) {
 				return false;
 			}
 			return true;
