@@ -16,7 +16,14 @@ class Problem1 {
     }
 
     public static boolean exceptionHandler(List<Integer> pobi, List<Integer> crong){
+        //페이지 숫자 제한 ExceptionHandling (ex: 1 , 2 or -10 , 600)
+        if(rangeMatch(pobi) || rangeMatch(crong))
+            return true;
         return false;
+    }
+
+    public static boolean rangeMatch(List<Integer> nums){
+        return (nums.get(0)<3) || (nums.get(1)>399);
     }
 
 }
