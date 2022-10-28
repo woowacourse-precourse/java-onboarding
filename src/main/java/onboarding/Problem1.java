@@ -4,9 +4,35 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        if ((isPageNotEmpty(pobi) && isPageNotEmpty(crong)) == false) {
+            return -1;
+        }
+        if ((isTwoPages(pobi) && isTwoPages(crong)) == false) {
+            return -1;
+        }
 
-        return answer;
+        if ((isValidPageNumber(pobi) && isValidPageNumber(crong)) == false) {
+            return -1;
+        }
+
+        if ((isValidPlace(pobi) && isValidPlace(crong)) == false) {
+            return -1;
+        }
+
+        if ((isGapOfPagesOne(pobi) && isGapOfPagesOne(crong)) == false) {
+            return -1;
+        }
+
+        int pobiScore = findBiggerCalculatedPage(pobi);
+        int crongScore = findBiggerCalculatedPage(crong);
+
+        if (crongScore == pobiScore) {
+            return 0;
+        }
+        if (pobiScore > crongScore) {
+            return 1;
+        }
+        return 2;
     }
 
     public static boolean isTwoPages(List<Integer> page) {
@@ -17,17 +43,15 @@ class Problem1 {
     }
 
     public static boolean isPageNotEmpty(List<Integer> page) {
-        if (page.contains(null)) {
+        if (page.get(0) == null || page.get(1) == null) {
             return false;
         }
         return true;
     }
 
     public static boolean isValidPageNumber(List<Integer> page) {
-        for (Integer i : page) {
-            if (i < 3 || i > 398) {
-                return false;
-            }
+        if ((page.get(0) < 3 || page.get(0) > 398) || (page.get(1) < 3 || page.get(1) > 398)) {
+            return false;
         }
         return true;
     }
@@ -39,10 +63,50 @@ class Problem1 {
         return true;
     }
 
-    public static boolean isRightPlaced(List<Integer> page) {
+    public static boolean isValidPlace(List<Integer> page) {
         if (page.get(0) % 2 != 1 || page.get(1) % 2 != 0) {
             return false;
         }
         return true;
     }
+
+    public static int findBiggerCalculatedPage(List<Integer> page) {
+        int leftBig = compareAddMultiple(Integer.toString(page.get(0)));
+        int rightBig = compareAddMultiple(Integer.toString(page.get(1)));
+
+        if (leftBig > rightBig) {
+            return leftBig;
+        }
+        return rightBig;
+    }
+
+    private static int compareAddMultiple(String number) {
+        int addResult = 0;
+        int multipleResult = 0;
+
+        addResult = addNumbersOfString(number);
+        multipleResult = multipleNumbersOfString(number);
+
+        if (addResult < multipleResult) {
+            return multipleResult;
+        }
+        return addResult;
+    }
+
+    private static int addNumbersOfString(String number) {
+        int sum = 0;
+        for (int i = 0; i < number.length(); i++) {
+            sum += number.charAt(i) - '0';
+        }
+        return sum;
+    }
+
+    private static int multipleNumbersOfString(String number) {
+        int sum = 1;
+        for (int i = 0; i < number.length(); i++) {
+            sum *= number.charAt(i) - '0';
+        }
+        return sum;
+    }
+
 }
