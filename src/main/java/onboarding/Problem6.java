@@ -8,6 +8,15 @@ public class Problem6 {
         List<String> answer = new ArrayList<>();
         Map<String, List<Integer>> twoConsecutiveLetters = findConsecutiveLetters(forms);
 
+        for (List<Integer> list : twoConsecutiveLetters.values()) {
+            if (list.size() < 2) continue;
+            for (int idx : list) {
+                answer.add(forms.get(idx).get(0));
+            }
+        }
+
+        return answer.stream().distinct().sorted(String::compareTo).collect(Collectors.toList());
+
     }
 
     private static Map<String, List<Integer>> findConsecutiveLetters(List<List<String>> forms) {
