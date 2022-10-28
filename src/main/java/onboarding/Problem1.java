@@ -15,15 +15,7 @@ class Problem1 {
     }
 
     private static boolean isInvalidPages(List<Integer> pages) {
-        if (pages.get(1) - pages.get(0) != 1) {
-            return true;
-        }
-
-        if (pages.get(0) % 2 == 0 || pages.get(1) % 2 == 1) {
-            return true;
-        }
-
-        return false;
+        return pages.get(1) - pages.get(0) != 1 || pages.get(0) % 2 == 0 || pages.get(1) % 2 == 1;
     }
 
     private static int getResult(List<Integer> pages) {
