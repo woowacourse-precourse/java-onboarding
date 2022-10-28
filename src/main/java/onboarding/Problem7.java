@@ -20,10 +20,7 @@ public class Problem7 {
         plusScoreByFriend(user);
         plusScoreByVisitor(visitors);
 
-        List<String> recommendList = new ArrayList<>(Score.keySet());
-        sortingByScore(recommendList);
-        excludeUserFriendAndUser(recommendList, user);
-        answer = recomand(recommendList);
+        answer = recommand(user);
         return answer;
     }
 
@@ -66,6 +63,12 @@ public class Problem7 {
         }
         Score.put(name, newScore);
     }
+    private static List<String> recommand(String user){
+        List<String> recommendList = new ArrayList<>(Score.keySet());
+        sortingByScore(recommendList);
+        excludeUserFriendAndUser(recommendList, user);
+        return cutFiveRecommendList(recommendList);
+    }
     private static void sortingByScore(List<String> recommendList) {
         recommendList.sort(new Comparator<String>() {
             @Override
@@ -90,16 +93,16 @@ public class Problem7 {
             recommendList.remove(notRecommendList.get(i));
         }
     }
-    private static List<String> recomand(List<String> recommendList){
-        List<String> answer = new ArrayList<>();
-        int count=0;
-        for(int i=0;i<recommendList.size();i++){
-            answer.add(recommendList.get(i));
+    private static List<String> cutFiveRecommendList(List<String> recommendList){
+        List<String> fiveRecommends = new ArrayList<>();
+        int count = 0;
+        for(int i = 0;i < recommendList.size(); i++){
+            fiveRecommends.add(recommendList.get(i));
             count++;
             if(count>4){
                 break;
             }
         }
-        return answer;
+        return fiveRecommends;
     }
 }
