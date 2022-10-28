@@ -19,7 +19,10 @@ public class Problem6 {
 
         answer = containsWords(forms, words);
 
-        return answer;
+        return answer.stream()
+                .distinct()
+                .sorted()
+                .collect(Collectors.toList());
     }
 
     public static List<String> containsWords(List<List<String>> forms, List<String> words) {
