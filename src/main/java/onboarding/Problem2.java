@@ -14,6 +14,13 @@ public class Problem2 {
         return idx;
     }
 
+    private static void checkSkipCharacter(Deque<Character> decryptionCharStack, int idx, int newIdx) {
+
+        if (idx != newIdx) {
+            deleteLastdecryptionChar(decryptionCharStack);
+        }
+    }
+
     /**
      * 임의의 문자열 cryptogram이 매개변수로 주어질 때, 연속하는 중복 문자들을 삭제한 결과를 return 하도록 solution 메서드를 완성하라.
      *
