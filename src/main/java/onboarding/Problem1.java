@@ -14,6 +14,11 @@ class Problem1 {
             return -1;
         }
 
+        return comparePobiCrong(pobi,crong);
+    }
+
+    private static int comparePobiCrong(List<Integer> pobi, List<Integer> crong) {
+
         //pobi의 최대 점수 구하기
         int pobiScore = Math.max(getMaxNum(pobi.get(0)),getMaxNum(pobi.get(1)));
 
@@ -25,8 +30,8 @@ class Problem1 {
 
         //crong의 점수가 큰 경우 리턴 2
         if(crongScore>pobiScore) return 2;
-
-        //같을 경우 리턴 0
+        
+        //같을 경우
         return 0;
     }
 
