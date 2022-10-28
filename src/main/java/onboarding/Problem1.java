@@ -12,8 +12,25 @@ import java.util.stream.Stream;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        try {
+            exception(pobi,crong);
+            int pobiMax = max(sum(pobi), mul(pobi));
+            int crongMax = max(sum(crong), mul(crong));
+            answer = compare(pobiMax, crongMax);
+        }catch (InputException e1)
+        {
+            return -1;
+        }catch (PageException e2)
+        {
+            return -1;
+        }catch (PageSortException e3)
+        {
+            return -1;
+        }
+
         return answer;
     }
+
 
     /**
      *  1. 들어온 리스트들을 잘라서 더하는 sum method
@@ -81,7 +98,7 @@ class Problem1 {
      * @param crong crong에 제한 사항을 처리해준다
 
      */
-    public static void exception(List<Integer> pobi, List<Integer> crong) throws Exception {
+    public static void exception(List<Integer> pobi, List<Integer> crong) throws InputException,PageException,PageSortException {
          /*
             ex1) 23, 24 => 23 - 24 = -1 * -1 = 정상
             ex2) 24, 23 => 24 - 23 = 1 * -1 = 비정상
