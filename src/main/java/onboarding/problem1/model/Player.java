@@ -2,14 +2,8 @@ package onboarding.problem1.model;
 
 public class Player {
 
-	private Pages pages;
-	private Score score;
+	private Page leftPage;
+	private Page rightPage;
+	private Score bestScore;
 
-	public Pages getPages() {
-		return pages;
-	}
-
-	public Score getScore() {
-		return score;
-	}
 }

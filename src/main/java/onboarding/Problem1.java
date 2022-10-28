@@ -5,9 +5,17 @@ import static onboarding.problem1.Problem1Constant.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import onboarding.problem1.application.PlayerService;
+import onboarding.problem1.application.ScoreService;
+import onboarding.problem1.application.config.BookGameDependencyConfigurer;
+
 class Problem1 {
 
+	private static final BookGameDependencyConfigurer bookGameConfig = new BookGameDependencyConfigurer();
+
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
+		PlayerService playerService = bookGameConfig.playerService();
+		ScoreService scoreService = bookGameConfig.scoreService();
 		int answer = Integer.MAX_VALUE;
 
 		if (isValidPages(pobi) && isValidPages(crong)) {
