@@ -34,7 +34,14 @@ class Problem1 {
     }
 
     private static boolean isWrongPage(List<Integer> pobi, List<Integer> crong) {
-        return pobi.get(1) - pobi.get(0) != 1 || crong.get(1) - crong.get(0) != 1;
+        int p0 = pobi.get(0);
+        int p1 = pobi.get(1);
+
+        int c0 = crong.get(0);
+        int c1 = crong.get(1);
+        return p1 - p0 != 1 || c1 - c0 != 1
+            || p0 <= 1 || 400 <= p0 || p1 <= 1 || 400 <= p1
+            || c0 <= 1 || 400 <= c0 || c1 <= 1 || 400 <= c1;
     }
 
     private static int plus(int number) {
