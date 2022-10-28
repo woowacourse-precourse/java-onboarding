@@ -37,6 +37,19 @@ public class Problem6 {
         return emails;
     }
 
+    // 연속될 수 있는 문자열 모두 추출하는 함수 (중복값이 포함된 리스트)
+    private static List<String> possibleSubstrings(List<String> nicknames) {
+        List<String> substrings = new ArrayList<>();
+
+        for (String nickname : nicknames) {
+            for (int i = 0; i < nickname.length()-1; i++) {
+                String str = nickname.substring(i, i+2);
+                substrings.add(str);
+            }
+        }
+        return substrings;
+    }
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
