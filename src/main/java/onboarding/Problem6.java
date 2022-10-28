@@ -1,10 +1,12 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class Problem6 {
     private static final int EMAIL = 0;
@@ -45,10 +47,26 @@ public class Problem6 {
         return duplicateNickname;
     }
 
-    public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        Set<String> duplicateNickname = getDuplicateNickname(forms);
+    private static Set<String> createEmailList(List<List<String>> forms,
+                                               Set<String> duplicateNickname) {
+        Set<String> emailList = new TreeSet<>();
 
+        for (List<String> form : forms) {
+            String email = getEmail(form);
+            String nickName = getNickName(form);
+            if (duplicateNickname.contains(nickName)) {
+                emailList.add(email);
+            }
+        }
+        return emailList;
+    }
+
+    public static List<String> solution(List<List<String>> forms) {
+        List<String> answer;
+        Set<String> duplicateNickname = getDuplicateNickname(forms);
+        Set<String> emailList = createEmailList(forms, duplicateNickname);
+
+        answer = new ArrayList<>(emailList);
         return answer;
     }
 }

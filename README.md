@@ -34,8 +34,8 @@
 ## 문제 6 기능 목록
 - [x] 겹칠 가능성이 있는 두 글자 단어와 닉네임을 가져와 Map 생성
 - [x] Map에서 value에 닉네임이 2개이상 들어있으면 Set에 추가
-- [ ] Set에 저장된 닉네임에 해당하는 email을 TreeSet에 저장
-- [ ] TreeSet을 List로 변환
+- [x] Set에 저장된 닉네임에 해당하는 email을 TreeSet에 저장
+- [x] TreeSet을 List로 변환하여 반환
 
 ## 🔍 진행 방식
 
