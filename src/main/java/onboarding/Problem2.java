@@ -10,7 +10,7 @@ public class Problem2 {
         if (throwCapitalException(cryptogram)) {
             return "failed with capital exception";
         }
-
+        
         return cryptogram;
     }
 
@@ -27,6 +27,24 @@ public class Problem2 {
 
         for (index = 0; index < charArray.length; index++) {
             if (Character.isUpperCase(charArray[index])) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static Boolean isContinuous(String cryptogram) {
+        char[] charArray = cryptogram.toCharArray();
+        char prev = '!';
+        int index;
+
+        for (index = 0; index < charArray.length; index++) {
+            if (prev != charArray[index]) {
+                prev = charArray[index];
+                continue;
+            }
+
+            if (prev == charArray[index]) {
                 return true;
             }
         }
