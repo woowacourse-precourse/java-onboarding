@@ -2,6 +2,7 @@ package onboarding;
 
 import onboarding.problem6.NotMatchingCrewSize;
 import onboarding.problem6.NotMatchingEmail;
+import onboarding.problem6.NotMatchingNickName;
 import org.junit.platform.commons.util.StringUtils;
 
 import java.util.List;
@@ -25,9 +26,17 @@ public class Problem6 {
 
         // 예외사항 1-2,3 이메일 체크 (형식 및 길이)
         for (List<String> form : forms) {
-            if (isEmail(form.get(0))){
+            String email = form.get(0);
+            String nickName = form.get(1);
+
+            if (isEmail(email)){
                 throw new NotMatchingEmail("이메일 형식 및 길이가 맞지 않습니다.");
             }
+            if(isNickName(nickName)){
+                throw new NotMatchingNickName("닉네임이 한글 및 길이가 맞지 않습니다.");
+            }
+
+
         }
 
 
@@ -48,12 +57,29 @@ public class Problem6 {
         }
 
         String regex = "^[a-zA-Z0-9]{1,9}@email[.]com$";
-        Pattern p = Pattern.compile(regex);
-        Matcher m = p.matcher(email);
-        if(m.matches()) {
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(email);
+        if(matcher.matches()) {
             found = false;
         }
 
+        return found;
+    }
+
+    // 닉네임 한글 및 길이 체킹
+    public static boolean isNickName(String name){
+        boolean found = true;
+
+        if(StringUtils.isBlank(name)){
+            found = true;
+        }
+
+        String regex = "^[ㄱ-ㅎㅏ-ㅣ가-힣]{1,19}$";
+        Pattern p = Pattern.compile(regex);
+        Matcher matcher = p.matcher(name);
+        if(matcher.matches()){
+            found = false;
+        }
         return found;
     }
 }

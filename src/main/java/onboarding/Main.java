@@ -18,10 +18,13 @@ public class Main {
 //        System.out.println("aa = " + aa);
 //        Problem5.solution(1234567);
 
-        if(onboarding.Problem6.isEmail("aa12345678@email.com")){
-            System.out.println("이메일 형식 통과");
+        if(onboarding.Problem6.isNickName("이이이이이이이이이이이이이이이이이이이")){
+            System.out.println("닉네임 형식 통과 못함");
+
         }else{
-            System.out.println("이메일 형식 통과 못함");
+            System.out.println("닉네임 형식 통과");
+
         }
+
     }
 }
