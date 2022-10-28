@@ -6,9 +6,13 @@ import java.util.Map;
 public class Problem4 {
     public static String solution(String word) {
         StringBuilder answer = new StringBuilder();
+        // 2. word를 탐색하며 문자 변형
+        for (char x : word.toCharArray()) {
+            answer.append(change(x));
+        }
         return answer.toString();
     }
-    //1. 소문자, 대문자 경우에 따른 변형값 생성
+    // 1. 소문자, 대문자 경우에 따른 변형값 생성
    public static String change(char w) {
         int num = (int) w;
        if (w == ' ') {
