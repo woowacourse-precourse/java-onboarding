@@ -2,12 +2,21 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-        char[] splitWord = word.toCharArray();
+        String answer = translate(word);
         return answer;
     }
 
-    private static char translate(char letter) {
+    private static String translate(String word) {
+        StringBuilder sb = new StringBuilder();
+
+        char[] splitWord = word.toCharArray();
+        for (char c : splitWord) {
+            sb.append(convert(c));
+        }
+        return sb.toString();
+    }
+
+    private static char convert(char letter) {
         if (Character.isAlphabetic(letter)) {
             return replaceLetter(letter);
         }
