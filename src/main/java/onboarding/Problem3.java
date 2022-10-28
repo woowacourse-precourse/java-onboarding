@@ -2,7 +2,12 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
-        return answer;
+        int count = 0;
+
+        for (int oneFromNumber = 1; oneFromNumber <= number; oneFromNumber++) {
+
+        }
+
+        return count;
     }
 }
