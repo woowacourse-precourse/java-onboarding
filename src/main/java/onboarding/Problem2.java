@@ -11,7 +11,7 @@ public class Problem2 {
                 if(ch != (char)data.get(j)){
                     break;
                 }
-                count +=1 ;
+                count +=1;
             }
             if(count >1) {
                 for (int k = 0; k < count; k++) {
@@ -21,7 +21,7 @@ public class Problem2 {
         }
     }
     static boolean checkOverLap(List data){
-        for(int i=0; i<data.size(); i++){
+        for(int i=0; i<data.size()-1; i++){
             if(data.get(i) == data.get(i+1)){
                 return true;
             }
