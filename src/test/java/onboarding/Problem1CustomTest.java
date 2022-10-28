@@ -118,7 +118,7 @@ public class Problem1CustomTest {
             List<Integer> list = List.of(39, 40);
             assertThat(
                     Problem1Validation.isFirstAddOneEqualsSecondValue(list))
-                    .isFalse();
+                    .isTrue();
         }
     }
 }
