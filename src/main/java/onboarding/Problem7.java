@@ -72,7 +72,18 @@ public class Problem7 {
             ArrayList<String> answer = new ArrayList<>();
             answer.addAll(friends);
 
+            answer = printFriends(answer);
+
             return answer;
+        }
+
+        private ArrayList<String> printFriends(ArrayList<String> answer) {
+            if (answer.size() < 5)
+                return answer;
+            else {
+                answer = (ArrayList<String>) answer.subList(0, 5);
+                return answer;
+            }
         }
 
         void removeUsersFriend() {
