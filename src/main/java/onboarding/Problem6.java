@@ -17,4 +17,14 @@ public class Problem6 {
 	static List<String> removeListDuplication(List<String> list) {
 		return list.stream().distinct().collect(Collectors.toList());
 	}
+
+	static void splitCheckString(String s) {
+		for (int i = 0; i <= s.length(); i++) {
+			for (int j = i+2; j <= s.length(); j++) {
+				String subStr = s.substring(i, j);
+				System.out.print(subStr + " ");
+			}
+		}
+	}
+
 }
