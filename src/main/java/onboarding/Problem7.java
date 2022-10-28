@@ -101,9 +101,7 @@ public class Problem7 {
 
         public Optional<List<String>> findFriendListByUsername(String user) {
             Optional<Member> member = findMemberByUsername(user);
-            if (!member.isPresent()) {
-                return Optional.empty();
-            }
+
             return Optional.ofNullable(member.get().getFriendList());
         }
     }
