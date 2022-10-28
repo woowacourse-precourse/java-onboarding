@@ -18,8 +18,6 @@ class Problem1 {
     private static Boolean checkPageException(List<Integer> pages) {
         int leftPage = pages.get(0);
         int rightPage = pages.get(1);
-        System.out.println("leftPage = " + leftPage);
-        System.out.println("rightPage = " + rightPage);
         final int FIRST_PAGE = 3;
         final int LAST_PAGE = 398;
 
@@ -77,12 +75,12 @@ class Problem1 {
     }
 
     // pobi의 max값과 crong의 max값 비교하여 결과 return
-    private static int comparePoint(int pobiValue, int cronValue) {
-        if (pobiValue > cronValue) {
+    private static int comparePoint(int pobiValue, int crongValue) {
+        if (pobiValue > crongValue) {
             return 1;
-        } else if (cronValue > pobiValue) {
+        } else if (crongValue > pobiValue) {
             return 2;
-        } else if (cronValue == pobiValue) {
+        } else if (crongValue == pobiValue) {
             return 0;
         }
         return -1;
