@@ -35,6 +35,13 @@ public class Problem7 {
 		return friendName.contains(friend);
 	}
 
+	private static void addPoint(String user, int score) {
+		if (recommendation.containsKey(user)) {
+			score += recommendation.get(user);
+		}
+		recommendation.put(user, score);
+	}
+
 	private static void findFriendofFriend(String user, List<List<String>> friends) {
 		for (List<String> relation : friends) {
 			if (relation.contains(user)) {
@@ -46,35 +53,19 @@ public class Problem7 {
 
 			if (isFriend(friend1) ^ isFriend(friend2)) {
 				if (isFriend(friend1)) {
-					addFriendPoint(friend2);
+					addPoint(friend2, FRIEND_POINT);
 				} else {
-					addFriendPoint(friend1);
+					addPoint(friend1, FRIEND_POINT);
 				}
 			}
 		}
 	}
 
-	private static void addFriendPoint(String user) {
-		int score = FRIEND_POINT;
-		if (recommendation.containsKey(user)) {
-			score += recommendation.get(user);
-		}
-		recommendation.put(user, score);
-	}
-
 	private static void findVisitor(List<String> visitors) {
 		for (String visitor : visitors) {
 			if (!isFriend(visitor)) {
-				addVisitorPoint(visitor);
+				addPoint(visitor, VISITOR_POINT);
 			}
 		}
-	}
-
-	private static void addVisitorPoint(String user) {
-		int score = VISITOR_POINT;
-		if (recommendation.containsKey(user)) {
-			score += recommendation.get(user);
-		}
-		recommendation.put(user, score);
 	}
 }
