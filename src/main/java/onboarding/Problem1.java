@@ -4,35 +4,41 @@ import java.util.List;
 import java.util.ArrayList; //ArrayList를 사용하기 위해 import
 
 class Problem1 {
-    public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int pobiRight =(int) (Math.random()*197+2)*2;
-        int pobiLeft = pobiRight -1;                       
-        
-        int crongRight =(int) (Math.random()*197+2)*2;
-        int crongLeft = crongRight -1;                     //포비와 크롱의 임의의 페이지 두쪽
+    public static int solution(List<Integer> pobi, List<Integer> crong) {        
+        int pRight = pobi.get(1);
+        int pLeft = pobi.get(0);
+        int cRight = crong.get(1);
+        int cLeft = crong.get(0);
+        if(pRight<3 || pRight>398 || pLeft<3 || pLeft>398 || cRight<3 || cRight>398 || cLeft<3 || cLeft>398){
+            return -1;
+        }
+        else if(pRight != pLeft + 1 || cRight != cLeft + 1){
+            return -1;
+        }                                                                      
         
         List<Integer> listpobiRight = new ArrayList<>();
-        while(pobiRight > 0){
-            listpobiRight.add(pobiRight%10);
-            pobiRight /= 10;                               
+        while(pRight > 0){
+            listpobiRight.add(pRight%10);
+            pRight /= 10;                               
         }
         List<Integer> listpobiLeft = new ArrayList<>();
-        while(pobiLeft > 0){
-            listpobiLeft.add(pobiLeft%10);
-            pobiLeft /= 10;
+        while(pLeft > 0){
+            listpobiLeft.add(pLeft%10);
+            pLeft /= 10;
         }
         
         List<Integer> listcrongRight = new ArrayList<>();
-        while(crongRight > 0){
-            listcrongRight.add(crongRight%10);
-            crongRight /= 10;
+        while(cRight > 0){
+            listcrongRight.add(cRight%10);
+            cRight /= 10;
         }
         
         List<Integer> listcrongLeft = new ArrayList<>();
-        while(crongLeft > 0){
-            listcrongLeft.add(crongLeft%10);
-            crongLeft /= 10;                               // 포비와 크롱이 펼친 페이지들의 각 자리수를 List자료형으로 저장 
-            
+        while(cLeft > 0){
+            listcrongLeft.add(cLeft%10);
+            cLeft /= 10;                               // 포비와 크롱이 펼친 페이지들의 각 자리수를 List자료형으로 저장 
+        }    
+        
         int pobiRightsum = 0;
         for (int i=0; i < listpobiRight.size(); i++){
             pobiRightsum += listpobiRight.get(i);
@@ -80,9 +86,18 @@ class Problem1 {
         int[] crongValue ={crongRightsum, crongRightmultipl, crongLeftsum, crongLeftmultipl};
         
         for(int i : crongValue) crongMax = Math.max(i,crongMax);        // 포비와 크롱의 왼쪽 오른쪽 각각의 합과 곱을 구하고 그중의 최대값을 뽑아냈다.
-
+        
+        if(crongMax < pobiMax){
+            return 1;
         }
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        else if(crongMax > pobiMax){
+            return 2;
+        }
+        else {
+            return 0;
+        }
+        
     }
+        
+    
 }
