@@ -12,7 +12,21 @@ public class Problem7 {
      * 5. 점수를 역순으로 정렬한 후 앞에서 최대 5명까지 잘라서 출력
      */
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
+        Set<String> crews = new HashSet<>();
+        HashMap<String, Integer> crewIndex = new HashMap<>();
+        HashMap<String, Integer> crewScore = new HashMap<>();
+
+        // 1. 크루원들 이름을 구하고 2차원 배열을 위한 인덱스 부여
+        for (List<String> friend : friends) {
+            crews.add(friend.get(0));
+            crews.add(friend.get(1));
+        }
+        int idx = 0;
+        for (String crew : crews) {
+            crewIndex.put(crew, idx++);
+            crewScore.put(crew, 0);
+        }
         return answer;
     }
 }
