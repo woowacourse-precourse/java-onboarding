@@ -2,7 +2,7 @@ package service.problem1;
 
 import java.util.List;
 
-public class Problem1ServiceImpl implements Problem1Service {
+public class Problem1ServiceImpl implements Problem1Serviceable {
     // 승자 판별 메소드 -> player1 승리하면 1, player2 승리하면 2, 비기면 0, 예외상황인 경우 -1을 반환합니다.
     public Integer getWinner(List<Integer> player1Pages, List<Integer> player2pages){
         // 제한 사항을 체크하고, 제한 사항에 걸린다면 -1을 리턴합니다.
