@@ -8,109 +8,85 @@ import java.util.Map;
 import java.util.Set;
 
 public class Problem6 {
-
     private static final int EMAIL_INDEX = 0;
-    private static final int NICK_NAME_INDEX = 1;
+    private static final int NICKNAME_INDEX = 1;
 
 
-    private static final Map<String, LetterNode> letterNodeMap = new HashMap<>();
 
     public static List<String> solution(List<List<String>> forms) {
+
+        final Set<Crew> crews = new HashSet<>();
+        final Map<String, Set<Crew>> twoSizeWordOwnerMap = new HashMap<>();
+
+        Set<String> duplicatedCrewEmailSet = new HashSet<>();
         List<String> answer = new ArrayList<>();
 
-        List<Person> people = new ArrayList<>();
 
-        for (List<String> infos : forms) {
-            String nickname = infos.get(NICK_NAME_INDEX);
-            String email = infos.get(EMAIL_INDEX);
-            people.add(new Person(email, nickname));
+        for (List<String> form : forms) {
+            String email = form.get(EMAIL_INDEX);
+            String nickname = form.get(NICKNAME_INDEX);
+
+            Crew crew = new Crew(email, nickname);
+            crews.add(crew);
         }
-        for (Person person : people) {
-            String nickname = person.getNickname();
 
-            String[] letters = nickname.split("");
-            LetterNode prev = null;
-
-            for (String letter : letters) {
-                LetterNode letterNode =
-                    letterNodeMap.getOrDefault(letter, new LetterNode(letter));
-                letterNode.addOwner(person);
-                letterNodeMap.put(letter, letterNode);
-                if (prev == null) {
-                    prev = letterNode;
+        for (Crew crew : crews) {
+            Set<TwoSizeWord> crewTwoSizeWordSet = crew.getTwoSizeWordSet();
+            for (TwoSizeWord twoSizeWord : crewTwoSizeWordSet) {
+                String keyWord = twoSizeWord.getWord();
+                if (twoSizeWordOwnerMap.get(keyWord) == null) {
+                    twoSizeWordOwnerMap.put(keyWord, new HashSet<>());
                     continue;
                 }
 
-                prev.addNext(letterNode);
-                prev = letterNode;
+                twoSizeWordOwnerMap.get(keyWord).add(crew);
             }
         }
-
-        for (Person person : people) {
-            String email = person.getEmail();
-            String nickname = person.getNickname();
-            String[] letters = nickname.split("");
-
-            for (int i = 0; i < letters.length - 1; i++) {
-                LetterNode primaryLetter = letterNodeMap.get(letters[i]);
-                LetterNode secondaryLetter = letterNodeMap.get(letters[i + 1]);
-                if (primaryLetter.isNextLetter(secondaryLetter)
-                    && !primaryLetter.isOnlyOwner(person)
-                    && !secondaryLetter.isOnlyOwner(person)) {
-                    answer.add(email);
-                    break;
-                }
-            }
-        }
-
         return answer;
     }
 }
 
-class LetterNode {
-    private String letter;
-    private Set<LetterNode> next = new HashSet<>();
-    private Set<Person> letterOwners = new HashSet<>();
+class TwoSizeWord {
+    private String word;
 
-
-    public LetterNode(String letter) {
-        this.letter = letter;
+    public TwoSizeWord(String word) {
+        this.word = word;
     }
 
-    public void addNext(LetterNode letterNode) {
-        this.next.add(letterNode);
-    }
-
-    public boolean isNextLetter(LetterNode letterNode) {
-        return next.contains(letterNode);
-    }
-
-    public void addOwner(Person person) {
-        this.letterOwners.add(person);
-    }
-
-    public boolean isOnlyOwner(Person person) {
-        if (letterOwners.size() == 1 && letterOwners.contains(person)) {
-            return true;
-        }
-        return false;
-    }
-    public String getLetter() {
-        return letter;
-    }
-
-    public Set<LetterNode> getNext() {
-        return next;
+    public String getWord() {
+        return word;
     }
 }
 
-class Person {
+class Crew {
     private String email;
     private String nickname;
 
-    public Person(String email, String nickname) {
+    private Set<TwoSizeWord> twoSizeWordSet;
+
+    public Crew(String email, String nickname) {
         this.email = email;
         this.nickname = nickname;
+        this.twoSizeWordSet = splitToTwoSizeWord(nickname);
+    }
+
+    private Set<TwoSizeWord> splitToTwoSizeWord(String nickname) {
+        Set<TwoSizeWord> twoSizeWordSet = new HashSet<>();
+        String[] split = nickname.split(" ");
+
+        StringBuilder word = new StringBuilder();
+        for (int i = 0; i < split.length; i++) {
+            word.append(split[i]);
+
+            if (word.length() == 2) {
+                TwoSizeWord twoSizeWord = new TwoSizeWord(word.toString());
+                twoSizeWordSet.add(twoSizeWord);
+
+                word.deleteCharAt(0);
+            }
+        }
+
+        return twoSizeWordSet;
     }
 
     public String getEmail() {
@@ -119,5 +95,9 @@ class Person {
 
     public String getNickname() {
         return nickname;
+    }
+
+    public Set<TwoSizeWord> getTwoSizeWordSet() {
+        return twoSizeWordSet;
     }
 }
