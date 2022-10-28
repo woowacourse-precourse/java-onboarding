@@ -44,4 +44,14 @@ class Problem1 {
 
         return score;
     }
+
+    private static int getScore(List<Integer> pages) {
+        int score = 0;
+
+        for (int page : pages) {
+            score = Math.max(score, calculateScore(page));
+        }
+
+        return score;
+    }
 }
