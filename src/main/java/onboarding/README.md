@@ -44,5 +44,5 @@
 
 |     | 번호  | 기능 코드                       | Depth1   | Depth2    | Depth3 | method                                                        | 설명                        |
 |-----|-----|-----------------------------|----------|-----------|--------|---------------------------------------------------------------|---------------------------|
-| X   | 1   | onBoarding-back-Problem6-01 | solution |           |        | public static List<String> solution(List<List<String>> forms) | 닉네임이 2자 이상 같은 이용자의 이메일 반환 |
-| X   | 2   | onBoarding-back-Problem6-02 | solution | substring |        | private static List<String> getSubStringList(String nickName) | 닉네임을 2자씩 짤라서 리스트로 변환      |
+| O   | 1   | onBoarding-back-Problem6-01 | solution |           |        | public static List<String> solution(List<List<String>> forms) | 닉네임이 2자 이상 같은 이용자의 이메일 반환 |
+| O   | 2   | onBoarding-back-Problem6-02 | solution | substring |        | private static List<String> getSubStringList(String nickName) | 닉네임을 2자씩 짤라서 리스트로 변환      |
