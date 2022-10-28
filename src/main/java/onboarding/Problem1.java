@@ -11,7 +11,7 @@ class Problem1 {
         }
         int pobiPoint = findHighValue(pobi);
         int crongPoint = findHighValue(crong);
-
+        answer = comparePoint(pobiPoint, crongPoint);
         return answer;
     }
 
@@ -74,6 +74,18 @@ class Problem1 {
     // 분리된 page의 값 Mult
     private static int multPageValues(List<Integer> seperatedPage){
         return seperatedPage.stream().reduce(1, (x,y) -> x*y);
+    }
+
+    // pobi의 max값과 crong의 max값 비교하여 결과 return
+    private static int comparePoint(int pobiValue, int cronValue){
+        if(pobiValue > cronValue){
+            return 1;
+        } else if(cronValue > pobiValue){
+            return 2;
+        } else if (cronValue == pobiValue){
+            return 0;
+        }
+        return -1;
     }
 
 }
