@@ -29,6 +29,21 @@ public class Problem7 {
         }
 
         //visitor 점수 계산하는 기능
+        for(int i = 0; i < visitors.size(); i++){
+            String visitor = visitors.get(i);
+            if(set.contains(visitor)){
+                //이미 사용자와 친구인 경우
+                continue;
+            }
+            //사용자와 아직 친구가 아닌 경우엔 점수 추가
+            if(map.containsKey(visitor)){
+                int sum = map.get(visitor) + 1;
+                map.put(visitor, sum);
+            }else{
+                map.put(visitor, 1);
+            }
+        }
+
         //점수높은 5명 뽑는 기능
 
         return answer;
