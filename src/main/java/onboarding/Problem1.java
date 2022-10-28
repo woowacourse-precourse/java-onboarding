@@ -8,11 +8,22 @@ import java.util.stream.Stream;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        int answer = -1;
 
-        int pobiScore = getFinalScore(pobi);
-        int crongScore = getFinalScore(crong);
+        try {
+            Exception.validateSizeTwo(pobi);
+            Exception.validatePageRange(pobi);
+            Exception.validateSizeTwo(crong);
+            Exception.validatePageRange(crong);
 
-        int answer = determinateWinner(pobiScore, crongScore);
+            int pobiScore = getFinalScore(pobi);
+            int crongScore = getFinalScore(crong);
+
+            answer = determinateWinner(pobiScore, crongScore);
+        } catch (IllegalArgumentException e) {
+
+        }
+
         return answer;
     }
 
