@@ -7,6 +7,8 @@ public class Problem6 {
     private static Map<String, Integer> nameTokens = new HashMap<>();
 
     public static List<String> solution(List<List<String>> forms) {
+        crews.clear();
+        nameTokens.clear();
         crewToMap(forms);
         return getDuplicateNames(forms);
     }
