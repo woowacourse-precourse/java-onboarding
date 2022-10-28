@@ -53,7 +53,8 @@ public class Problem7 {
         List<String> myFriends = myFriends(user, friends);
 
         Friends recommendFriends = new Friends();
-        recommendFriends.findAcquaintance(myFriends, friends);
+        recommendFriends.addAcquaintance(myFriends, friends);
+        recommendFriends.addVisitors(visitors);
 
         List<String> answer = Collections.emptyList();
         return answer;
@@ -101,13 +102,17 @@ class Friends{
         return friends.get(0);
     }
 
-    public void findAcquaintance(List<String> myFriends, List<List<String>> friends){
+    public void addAcquaintance(List<String> myFriends, List<List<String>> friends){
         friends.stream()
                 .filter(x->myFriends.stream().anyMatch(x::contains))
-                .forEach(x->putFriends(getAcquaintanceId(myFriends, x),10));
+                .forEach(x->addFriends(getAcquaintanceId(myFriends, x),10));
     }
 
-    private void putFriends(String id, int score){
+    public void addVisitors(List<String> visitors){
+        visitors.forEach(x->addFriends(x,1));
+    }
+
+    private void addFriends(String id, int score){
         Friend friend = idExist(id);
         if(friend!=null)
             friend.addScore(score);
