@@ -3,9 +3,17 @@ package onboarding;
 import java.util.Stack;
 
 public class Problem2 {
+    static Stack<Character> stack=new Stack<>();
     public static String solution(String cryptogram) {
         StringBuilder sb=new StringBuilder();
-        Stack<Character> stack=new Stack<>();
+        distinctElement(cryptogram);
+        while (!stack.isEmpty()){
+            sb.append(stack.pop());
+        }
+        return sb.reverse().toString();
+    }
+
+    public static void distinctElement(String cryptogram){
         for (char x:cryptogram.toCharArray()){
             if (stack.isEmpty()) stack.push(x);
             else {
@@ -17,9 +25,5 @@ public class Problem2 {
                 stack.push(x);
             }
         }
-        while (!stack.isEmpty()){
-            sb.append(stack.pop());
-        }
-        return sb.reverse().toString();
     }
 }
