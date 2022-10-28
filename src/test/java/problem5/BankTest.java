@@ -1,14 +1,22 @@
 package problem5;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class BankTest {
 
     @Test
-    void _50000만원권_환전() {
+    void _50000원권_환전() {
         Bank bank = new Bank();
         int result = bank.changeMoneyTo(50237, 50000);
-        Assertions.assertThat(result).isEqualTo(1);
+        assertThat(result).isEqualTo(1);
+    }
+
+    @Test
+    void _10000원권_환전() {
+        Bank bank = new Bank();
+        int result = bank.changeMoneyTo(50237, 10000);
+        assertThat(result).isEqualTo(5);
     }
 }
