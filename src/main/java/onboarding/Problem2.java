@@ -8,7 +8,25 @@ public class Problem2 {
      * 3. 배열을 문자열로 붙인 다음, ' '은 없앤 결과값을 리턴한다.
      */
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = "";
+
+        // 1.
+        char[] arr = cryptogram.toCharArray();
+
+        // 2.
+        while (true) {
+            boolean flag = false;
+            for (int i = 0; i < arr.length; i++) {
+                if (arr[i] == arr[i+1]) {
+                    arr[i] = ' ';
+                    arr[i + 1] = ' ';
+                    flag = true;
+                }
+            }
+            if (!flag) break;
+        }
+
+
         return answer;
     }
 }
