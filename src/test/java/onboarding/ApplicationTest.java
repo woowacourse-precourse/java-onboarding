@@ -254,7 +254,41 @@ class ApplicationTest {
             List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
+
+        @Test
+        void email_domain_exception() {
+            List<List<String>> forms = List.of(
+                    List.of("jm@email.com", "제이엠"),
+                    List.of("jason@wooteco.com", "제이슨"),
+                    List.of("nowm@email.com", "이제엠")
+            );
+            List<String> result = null;
+            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
+
+        @Test
+        void email_format_exception() {
+            List<List<String>> forms = List.of(
+                    List.of("jm한글@email.com", "제이엠"),
+                    List.of("jason@email.com", "제이슨"),
+                    List.of("nowm@email.com", "이제엠")
+            );
+            List<String> result = null;
+            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
+
+        void nickname_not_korean_exception() {
+            List<List<String>> forms = List.of(
+                    List.of("jm@email.com", "j엠"),
+                    List.of("jason@email.com", "제이슨"),
+                    List.of("nowm@email.com", "이제엠")
+            );
+            List<String> result = null;
+            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
     }
+
+
 
     @Nested
     class Problem7Test {
