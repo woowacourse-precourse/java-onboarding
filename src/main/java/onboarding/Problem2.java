@@ -10,6 +10,20 @@ public class Problem2 {
                 break;
             }
         }
+
+        // 중복 문자가 존재하지 않는다면 기존 문자열을 return
+        if (startIndex == -1){
+            return cryptogram;
+        }
+
+        // 연속한 중복 문자가 끝나는 index 구하기
+        int endIndex = startIndex + 1;
+        for (int i=endIndex; i<cryptogram.length()-1; i++){
+            if (cryptogram.charAt(i) != cryptogram.charAt(i+1)) {
+                endIndex = i;
+                break;
+            }
+        }
         return cryptogram;
     }
 }
