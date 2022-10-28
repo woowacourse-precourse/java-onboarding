@@ -27,6 +27,9 @@ public class Problem7 {
 
         Map<String, Integer> recommendScoreMap = makeRecommendScore(user, users, friendsList);
 
+        recommendScoreMap = calculateRecommendScore(user, visitors, recommendScoreMap, friendsList);
+
+
 
         List<String> answer = new ArrayList<>();
 
@@ -89,5 +92,30 @@ public class Problem7 {
         return recommendScoreMap;
     }
 
+    private static Map<String, Integer> calculateRecommendScore(String user, List<String> visitors, Map<String, Integer> recommendScore, HashMap<String, HashSet<String>> friendsList) {
+
+        for (String recommendFriend : recommendScore.keySet()) {
+            //user와 공통으로 아는 친구가 있다면 +10점
+            for (String userFriend : friendsList.get(user)) {
+                if (friendsList.get(recommendFriend).contains(userFriend)) {
+                    recommendScore.put(recommendFriend, recommendScore.get(recommendFriend) + 10);
+                }
+            }
+            // 방문 횟수에 따른 추천 친구 점수 +1
+            for (String visitor : visitors) {
+                if (recommendFriend.equals(visitor)) {
+                    recommendScore.put(recommendFriend, recommendScore.get(recommendFriend) + 1);
+                }
+            }
+        }
+
+        // 점수 계산 후 추천 점수가 0인 user 제거
+        for (String s : recommendScore.keySet()) {
+            if (recommendScore.get(s) == 0) {
+                recommendScore.remove(s);
+            }
+        }
+        return recommendScore;
+    }
 
 }
