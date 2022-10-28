@@ -68,8 +68,33 @@ public class Problem7 {
         return name;
     }
 
+    //같은 점수일 때, 이름 순으로 정렬
+    private static List<String> arrangeSameScore(List<String> sortedNames) {
+        List<String> sameScores = new ArrayList<>();
+        List<String> arrangedNames = new ArrayList<>();
+        String before = "";
+
+        for (String name : sortedNames) {
+            if (strangerScoreMap.get(name) == strangerScoreMap.get(before)) {
+                sameScores.add(name);
+            } else {
+                sameScores.sort(Comparator.naturalOrder());
+                arrangedNames.addAll(sameScores);
+                sameScores.clear();
+                sameScores.add(name);
+            }
+            before = name;
+        }
+        sameScores.sort(Comparator.naturalOrder());
+        arrangedNames.addAll(sameScores);
+
+        return arrangedNames;
+    }
+
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
+        List<String> names = new ArrayList<>();
 
         //점수 계산에 사용할 함께아는 친구, 방문자 List
         List<String> knowMyFriendList = new ArrayList<>();
@@ -97,7 +122,10 @@ public class Problem7 {
         calculationScore(knowMyFriendList, friendsPoint);
         calculationScore(visitorList, visitPoint);
 
-        //
+        //전체 정렬
+        names.addAll(arrangeSameScore(arrangeHighScore()));
+
+        
 
         return answer;
     }
