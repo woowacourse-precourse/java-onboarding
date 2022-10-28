@@ -45,9 +45,13 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
-        Map<String, Set<String>> friendsByName = storeRelation(friends);
-        List<String> userFriends = new ArrayList<>(friendsByName.get(friends));
-        Map<String, Integer> visitorScore = storeVisitorScore(visitors);
+        Map<String, Set<String>> friendsByName;
+        List<String> userFriends;
+        Map<String, Integer> visitorScore;
+
+        friendsByName = storeRelation(friends);
+        userFriends = new ArrayList<>(friendsByName.get(friends));
+        visitorScore = storeVisitorScore(visitors);
 
         return answer;
     }
