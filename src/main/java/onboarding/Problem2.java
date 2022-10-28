@@ -4,8 +4,13 @@ import java.util.Stack;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+
+        Stack<Character> stack = removeDuplication(cryptogram);
+
+        StringBuilder resultSb = getRemainStrFromStack(stack);
+
+        return resultSb.toString();
+
     }
 
     public static Stack<Character> removeDuplication(String cryptogram) {
@@ -16,7 +21,7 @@ public class Problem2 {
 
             char currentChar = cryptogram.charAt(i);
 
-            if(!stack.isEmpty() && stack.peek() == currentChar) {
+            if (!stack.isEmpty() && stack.peek() == currentChar) {
                 i += getEqualCharCount(cryptogram, i + 1, currentChar);
                 stack.pop();
                 continue;
@@ -33,9 +38,9 @@ public class Problem2 {
 
         int equalCount = 0;
 
-        while(index < cryptogram.length()) {
+        while (index < cryptogram.length()) {
 
-            if(cryptogram.charAt(index) != currentChar)
+            if (cryptogram.charAt(index) != currentChar)
                 return equalCount;
 
             index++;
@@ -49,7 +54,7 @@ public class Problem2 {
 
         StringBuilder resultSb = new StringBuilder();
 
-        while(!stack.isEmpty()) {
+        while (!stack.isEmpty()) {
             resultSb.insert(0, stack.pop());
         }
 
