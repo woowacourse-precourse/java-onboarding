@@ -16,6 +16,16 @@ class Problem1 {
         return (list.get(1) - list.get(0) == 1);
     }
 
+    public static int getScore(List<Integer> list){
+        //왼쪽 페이지에서 큰 수
+        int left = Math.max(addNum(list.get(0)),mulNum(list.get(0)));
+        //오른쪽 페이지에서 큰 수
+        int right = Math.max(addNum(list.get(1)), mulNum(list.get(1)));
+
+        //두 숫자중 더 큰수 리턴
+        return Math.max(left, right);
+    }
+
     public static int addNum(int n){
         int sum = 0;
         while (n != 0) {
