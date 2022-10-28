@@ -17,11 +17,11 @@ public class Problem2 {
     }
 
     public static void validateString(String string) {
-        validateSize(string);
+        validateRange(string);
         validateLowerCase(string);
     }
 
-    public static void validateSize(String string) {
+    public static void validateRange(String string) {
         if (string.length() < MINIMUM_STRING_LENGTH || string.length() > MAXIMUM_STRING_LENGTH) {
             throw new IllegalArgumentException();
         }
