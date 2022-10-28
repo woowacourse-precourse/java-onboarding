@@ -39,7 +39,7 @@ class Problem1 {
         int score = null;
 
         // 각 페이지 숫자의 자리 합과 곱(4개)을 저장할 배열 scores 선언
-        // pageList 순회하며 배열 scores에 요소의 합과 곱을 저장. List<Integer> pageNumToList(int pageNum)
+        // pageList 순회하며 배열 scores에 요소의 합과 곱을 저장. List<Integer> pageNumToList(int page)
         // 배열 scores 요소 중 가장 큰 값을 score에 저장
 
         return score
@@ -49,7 +49,14 @@ class Problem1 {
     특정 페이지 번호의 각 자리 숫자를 리스트에 저장하여 반환하는 메서드
     각 숫자를 더하거나 곱하므로 리스트 배치 순서를 고려하지 않아도 됨
      */
-    private static List<Integer> pageNumToList(int pageNum);
+    private static List<Integer> pageNumToList(int page) {
+        List<Integer> pageNum = List<Integer>();
+        while(page > 0) {
+            pageNum.add(page % 10);
+            page = (int)(page / 10);
+        }
+        return pageNum;
+    }
 
     /*
     매개변수로 받은 List<Integer>가 유효한지 체크하는 메서드
@@ -61,5 +68,4 @@ class Problem1 {
             // 왼쪽 페이지가 홀수이고, 오른페이지가 짝수이고, 페이지 수가 2이고, 첫 장(1, 2)이나 마지막 장(399, 400)이 아니면 true
         return leftPage % 2 == 1 && rightPage % 2 == 0 && pages.size() == 2 && leftPage != 1 && rightPage != 400;
     }
-
 }
