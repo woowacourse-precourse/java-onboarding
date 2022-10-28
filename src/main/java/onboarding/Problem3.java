@@ -2,7 +2,17 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
+        int answer = 0;
 
+        if(answer<3){
+            return 0;
+        }
+
+        for(int i=3;i<number;i++){
+            answer+=clapCount(Integer.toString(i));
+        }
+
+        return answer;
     }
 
     public static int clapCount(String number){
