@@ -11,10 +11,19 @@ public class Problem4 {
 
     }
 
-    static public char reverseAlphabet(StringBuilder word) {
+    static public char reVerseAlphabet(char in) {
+
+        char out = ' ';
+        return out;
+
+    }
+
+    static public char reverseWord(String word) {
+
         char result = ' ';
         return result;
     }
+
 
     public static String solution(String word) {
         String answer = "";

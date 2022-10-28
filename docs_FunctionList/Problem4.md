@@ -30,6 +30,7 @@
 
 ## 필요 기능
 
+- word 뒤집기 - reverseWord
 - 대, 소문자 뒤집기 - reverseAlphabet
 - 알파벳 확인 - isAlphabet
 </aside>
