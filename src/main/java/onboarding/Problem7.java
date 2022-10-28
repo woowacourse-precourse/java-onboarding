@@ -67,14 +67,18 @@ public class Problem7 {
 
     private static List<String> makeFriendList(List<List<String>> friends, String user) {
 
-        List<String> friendList = new ArrayList<>();
+        List<String> friendList = new LinkedList<>();
+        int count = 0;
 
         for (List<String> friend : friends) {
             if (friend.get(0).equals(user)) {
                 friendList.add(friend.get(1));
+                friends.remove(count);
             } else if (friend.get(1).equals(user)) {
                 friendList.add(friend.get(0));
+                friend.remove(count);
             }
+            count++;
         }
         return friendList;
     }
