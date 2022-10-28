@@ -1,10 +1,20 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
 class Problem1 {
+    public static void main(String[] args) {
+        List<Integer> pobi = new ArrayList<>(Book.open());
+        List<Integer> crong = new ArrayList<>(Book.open());
+
+        System.out.println("pobi = " + pobi.toString());
+        System.out.println("crong = " + crong.toString());
+        System.out.println("result = " + solution(pobi, crong));
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         if (PageValidator.hasPageException(pobi, crong)) {
@@ -99,5 +109,16 @@ class Problem1 {
 
     private static int compareNumber(int addPlaceValue, int multiplyPlaceValue) {
         return Math.max(addPlaceValue, multiplyPlaceValue);
+    }
+
+    private static class Book {
+        private static final int END_PAGE = 400;
+
+        public static List<Integer> open() {
+            List<Integer> pages = new ArrayList<>();
+            pages.add((int) (Math.random() * (END_PAGE - 1) / 2) * 2 + 1);
+            pages.add(pages.get(0) + 1);
+            return pages;
+        }
     }
 }
