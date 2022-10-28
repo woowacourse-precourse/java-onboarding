@@ -5,8 +5,8 @@ import java.util.List;
 
 class Problem1 {
 
-	private static final int MIN_PAGE = 1;
-	private static final int MAX_PAGE = 400;
+	private static final int MIN_PAGE = 2;
+	private static final int MAX_PAGE = 399;
 
 	private static final int LEFT_PAGE_INDEX = 0;
 	private static final int RIGHT_PAGE_INDEX = 1;
