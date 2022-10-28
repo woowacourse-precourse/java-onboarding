@@ -71,3 +71,7 @@ class Problem1 {
         return 0;
     }
 }
+
+class Exception {
+    
+}
