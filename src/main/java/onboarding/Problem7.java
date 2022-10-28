@@ -1,14 +1,26 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
         HashMap<String, Integer> friendList = getTotalUser(friends);
+
+        Set<String> friendNameSet = friendList.keySet();
+        List<String> friendNameList = new ArrayList<>();
+        Iterator<String> iterator = friendNameSet.iterator();
+        while(iterator.hasNext()) {
+            friendNameList.add(iterator.next());
+        }
+
+        fillMatrixByFriend(friends, friendNameList);
         return answer;
     }
 
@@ -21,5 +33,19 @@ public class Problem7 {
         }
 
         return userList;
+    }
+
+    public static int[][] fillMatrixByFriend(List<List<String>> friends, List<String> friendNameList) {
+        int[][] matrix = new int[friendNameList.size()][friendNameList.size()];
+
+        for(List<String> friend : friends) {
+            int x = friendNameList.indexOf(friend.get(0));
+            int y = friendNameList.indexOf(friend.get(1));
+
+            matrix[x][y] = 1;
+            matrix[y][x] = 1;
+        }
+
+        return matrix;
     }
 }
