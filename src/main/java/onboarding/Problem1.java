@@ -9,6 +9,8 @@ class Problem1 {
             checkLength(pobi,crong);
             int pobiScore = getPageBestScore(pobi);
             int crongScore = getPageBestScore(crong);
+
+            answer = getWinner(pobiScore, crongScore);
         } catch (Exception e){
             answer=-1;
         }
@@ -72,5 +74,12 @@ class Problem1 {
 
     public static void checkPageRange(int page) throws Exception{
         if(page<1||page>400) throw new Exception("페이지 범위 초과");
+    }
+
+    public static int getWinner(int pScore,int cScore){
+        int winner = 0;
+        if (pScore>cScore) winner=1;
+        else if (cScore>pScore) winner=2;
+        return winner;
     }
 }
