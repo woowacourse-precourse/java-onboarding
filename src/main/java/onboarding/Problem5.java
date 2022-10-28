@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
@@ -10,7 +9,7 @@ public class Problem5 {
 
 	public static List<Integer> solution(int money) {
 		// 돈을 받고
-		List<Integer> answer = new ArrayList<Integer>();
+		List<Integer> answer = new ArrayList<>();
 		for (int j : moneyArr) {
 			// 몫은 리스트에 입력,
 			answer.add(money / j);
@@ -19,5 +18,4 @@ public class Problem5 {
 		}
 		return answer;
 	}
-
 }
