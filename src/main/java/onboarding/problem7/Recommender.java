@@ -1,6 +1,7 @@
 package onboarding.problem7;
 
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Recommender {
@@ -16,6 +17,15 @@ public class Recommender {
 
 		scores.remove(userName);
 		return scores;
+	}
+
+	private static void updateScoreByFriend(Map<String, Integer> scoreBoard, String userName) {
+		Set<User> userFriends = Sns.registeredUsers.get(userName).getFriends();
+		for (User friend : userFriends) {
+			for (User friendFriend : friend.getFriends()) {
+				scoreBoard.computeIfPresent(friendFriend.getName(), (k, v) -> v + 10);
+			}
+		}
 	}
 	
 }
