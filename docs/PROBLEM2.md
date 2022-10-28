@@ -4,8 +4,12 @@
 
 - 중복 제거
   - 배열 -> Set 변환으로 자연스럽게 중복 제거
-    - 선택이유 고민하기 : HashSet(순서보장x, 복잡도 성능 가장 우수) vs LinkedHashSet(입력한 순서대로 데이터를 정렬)
+    - 선택이유 고민하기 : HashSet(순서보장x, 복잡도 성능 가장 우수) 
+    - vs LinkedHashSet(입력한 순서대로 데이터를 정렬)
     - [출처2](http://kwseo.github.io/2015/09/24/time-complexity-about-collections/)
+    - 선택한 set 공부하기
+      - 주요 기능 확인
+    
 - 변환 기능
   - 제거된 값을 다시 배열로 변환
   - 변환 후 결과값에 사용할 문자열로 변환

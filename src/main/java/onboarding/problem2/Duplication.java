@@ -7,9 +7,15 @@ public class Duplication {
     public static String reduceDuplication(String cryptogram) {
 
         HashSet<String> hashSet = new HashSet<>();
-        hashSet.
-        for (String reduced : hashSet){
-            return reduced;
+        char[] toChar = cryptogram.toCharArray();
+
+        for (char c : toChar) {
+
+            String add = String.valueOf(hashSet.add(String.valueOf(c)));
+            add = cryptogram;
         }
+
+        return cryptogram;
+
     }
 }
