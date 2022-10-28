@@ -7,6 +7,7 @@ public class Problem2 {
         String answer = "";
 
         Stack<Character> stack = checkDuplicate(cryptogram);
+        Object[] toArray = stackToArray(stack);
         return answer;
     }
 
@@ -28,5 +29,10 @@ public class Problem2 {
             }
         }
         return stack;
+    }
+
+    private static Object[] stackToArray(Stack<Character> stack) {
+        Object[] toArray = stack.toArray();
+        return toArray;
     }
 }
