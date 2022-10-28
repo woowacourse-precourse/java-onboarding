@@ -9,6 +9,10 @@ class Problem1 {
         if(answer == -1){
             return answer;
         }
+        for(int i = 0; i < 2; i ++){
+            pageNumberHighScore(pobi, i);
+            pageNumberHighScore(crong, i);
+        }
         return answer;
     }
 
@@ -17,5 +21,20 @@ class Problem1 {
             return -1;
         }
         return 0;
+    }
+
+    private static int pageNumberHighScore(List<Integer> pageNumberList, int direction) {
+        int digitSum = 0;
+        int digitMul = 0;
+        int score = pageNumberList.get(direction);
+        while(score > 0) {
+            digitSum += score % 10;
+            digitMul *= score % 10;
+            score = score / 10;
+        }
+        if(digitMul > digitSum) return digitMul;
+        if(digitMul < digitSum) return digitSum;
+
+        return digitMul;
     }
 }
