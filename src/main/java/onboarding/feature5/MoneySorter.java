@@ -3,11 +3,11 @@ package onboarding.feature5;
 import java.util.List;
 
 public class MoneySorter {
-    public static void increaseNumberOfBill(List<Integer> bills, Integer increasement) {
-        for (int i = 0; i < bills.size(); i++) {
-            Integer currentNumberOfBill = bills.get(i);
+    public static void increaseNumberOfBill(List<Integer> billsSorted, Integer increasement) {
+        for (int i = 0; i < billsSorted.size(); i++) {
+            Integer currentNumberOfBill = billsSorted.get(i);
             currentNumberOfBill += increasement;
-            bills.set(i, currentNumberOfBill);
+            billsSorted.set(i, currentNumberOfBill);
         }
     }
 
