@@ -75,7 +75,14 @@ class Problem1 {
     /*
     페이지 자릿수들의 곱을 계산하는 메서드
      */
-    private static int multipleOfPageNum(List<Integer> pageNum);
+    private static int multipleOfPageNum(List<Integer> pageNum) {
+        int multiple = 0;
+        for (int num : pageNum) {
+            multiple += num;
+        }
+        return multiple;
+    }
+    }
 
     /*
     특정 페이지 번호의 각 자리 숫자를 리스트에 저장하여 반환하는 메서드
