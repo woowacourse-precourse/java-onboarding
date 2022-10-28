@@ -26,7 +26,7 @@ import java.util.Set;
  */
 public class Problem6 {
 
-    public static final String EMAIL_PATTERN = "email.com";
+    private static final String EMAIL_PATTERN = "email.com";
 
     public static List<String> solution(List<List<String>> forms) {
         validate(forms);
@@ -133,8 +133,8 @@ public class Problem6 {
 
 
     static class Advice{
-        public static final char KOREAN_START = "가".charAt(0);
-        public static final char KOREAN_FINAL = "힣".charAt(0);
+        private static final char KOREAN_START = "가".charAt(0);
+        private static final char KOREAN_FINAL = "힣".charAt(0);
 
         private Advice(){}
         public static void checkInputDataLength(final List<List<String>> forms) {
