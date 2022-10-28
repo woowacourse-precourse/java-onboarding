@@ -1,7 +1,9 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Problem6 {
 
@@ -45,7 +47,22 @@ public class Problem6 {
     }
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        Set<String> email = new HashSet<>();
+
+        for (int i = 0; i < forms.size() - 1; i++) {
+            List<String> twoWord = split(forms.get(i).get(1));
+            List<List<String>> subForms = forms.subList(i+1, forms.size());
+            List<String> duplicate = findDuplicate(twoWord, subForms);
+
+            // 중복된 닉네임이 없으면 다음 닉네임으로
+            if (duplicate.size() == 0) continue;
+
+            // 중복된 닉네임을 set에 추가하고, 본인도 추가
+            email.addAll(duplicate);
+            email.add(forms.get(i).get(0));
+        }
+
+        List<String> answer = new ArrayList<>(email);
         return answer;
     }
 }
