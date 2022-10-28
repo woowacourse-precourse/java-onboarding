@@ -33,4 +33,11 @@ public class BankTest {
         int result = bank.changeMoneyTo(15000, 1000);
         assertThat(result).isEqualTo(15);
     }
+
+    @Test
+    void _500원권_환전() {
+        Bank bank = new Bank();
+        int result = bank.changeMoneyTo(1000, 500);
+        assertThat(result).isEqualTo(2);
+    }
 }
