@@ -1,6 +1,7 @@
 package onboarding;
 
 import onboarding.problem6.NotMatchingCrewSize;
+import onboarding.problem6.NotMatchingEmail;
 import org.junit.platform.commons.util.StringUtils;
 
 import java.util.List;
@@ -22,7 +23,12 @@ public class Problem6 {
             throw new NotMatchingCrewSize("크루 인원수가 맞지 않습니다.");
         }
 
-        //
+        // 예외사항 1-2,3 이메일 체크 (형식 및 길이)
+        for (List<String> form : forms) {
+            if (isEmail(form.get(0))){
+                throw new NotMatchingEmail("이메일 형식 및 길이가 맞지 않습니다.");
+            }
+        }
 
 
 
@@ -33,5 +39,21 @@ public class Problem6 {
         return crewSize < 1 || crewSize > 10000;
     }
 
+    // 이메일 형식 체킹 및 전체 길이 체킹
+    public static boolean isEmail(String email){
+        boolean found = true;
 
+        if(StringUtils.isBlank(email)){
+            return true;
+        }
+
+        String regex = "^[a-zA-Z0-9]{1,9}@email[.]com$";
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(email);
+        if(m.matches()) {
+            found = false;
+        }
+
+        return found;
+    }
 }
