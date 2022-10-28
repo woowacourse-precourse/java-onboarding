@@ -15,8 +15,22 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-        return answer;
+        if(checkException(pobi) == false || checkException(crong) == false)
+            return -1;
+        int pobiLeftMaxNumber = getMaxNumber(getPlusEachNumber(pobi.get(0)), getMultiplyEachNumber(pobi.get(0)));
+        int pobiRightMaxNumber = getMaxNumber(getPlusEachNumber(pobi.get(1)), getMultiplyEachNumber(pobi.get(1)));
+        int pobiMaxNumber = getMaxNumber(pobiLeftMaxNumber, pobiRightMaxNumber);
 
+        int crongLeftMaxNumber = getMaxNumber(getPlusEachNumber(crong.get(0)), getMultiplyEachNumber(crong.get(0)));
+        int crongRightMaxNumber = getMaxNumber(getPlusEachNumber(crong.get(1)), getMultiplyEachNumber(crong.get(1)));
+        int crongMaxNumber = getMaxNumber(pobiLeftMaxNumber, pobiRightMaxNumber);
+
+        if(pobiMaxNumber > crongMaxNumber)
+            return 1;
+        else if (pobiMaxNumber < crongMaxNumber)
+            return 2;
+        else
+            return 0;
     }
 
     public static boolean checkException(List<Integer> list) {
