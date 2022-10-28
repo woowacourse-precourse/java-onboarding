@@ -19,4 +19,15 @@ public class Problem2 {
 
         return result;
     }
+
+    /* 소문자 알파벳의 최대 연속 길이를 2로 만듬 */
+    private static String inputLowercaseAlphabets(String cryptogram) {
+        String result = cryptogram;
+
+        for (int i = 0; i < 26; i++) {
+            result = compressToSizeTwo(result, (char)('a'+i));
+        }
+
+        return result;
+    }
 }
