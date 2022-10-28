@@ -14,7 +14,10 @@ import java.util.stream.Collectors;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = cryptogram;
+        while (isEncryption(answer)) {
+            answer = decryption(answer);
+        }
         return answer;
     }
 
@@ -56,5 +59,10 @@ public class Problem2 {
                 return true;
         }
         return false;
+    }
+
+    private static String decryption(String cryptogram) {
+        cryptogram = deleteRedundancyLetter(getRedundancyLetters(getRedundancyLetterIndex(cryptogram), cryptogram), cryptogram);
+        return cryptogram;
     }
 }
