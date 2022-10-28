@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>();
         List<String> words = List.of("");
 
         if (isError(forms)) {
@@ -17,7 +17,11 @@ public class Problem6 {
 
         words = findTwoWord(forms);
 
-        answer = containsWords(forms, words);
+        for (List<String> form : forms) {
+            if (containsWords(form, words)) {
+                answer.add(form.get(0));
+            }
+        }
 
         return answer.stream()
                 .distinct()
@@ -25,17 +29,14 @@ public class Problem6 {
                 .collect(Collectors.toList());
     }
 
-    public static List<String> containsWords(List<List<String>> forms, List<String> words) {
-        List<String> nickNames = new ArrayList<>();
-        for (List<String> form : forms) {
-            for (String word : words) {
-                if (form.get(1).contains(word)) {
-                    nickNames.add(form.get(0));
-                }
+    public static boolean containsWords(List<String> form, List<String> words) {
+        for (String word : words) {
+            if (form.get(1).contains(word)) {
+                return true;
             }
         }
 
-        return nickNames;
+        return false;
     }
 
     public static List<String> findTwoWord(List<List<String>> forms) {
