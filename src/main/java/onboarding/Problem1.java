@@ -12,6 +12,16 @@ import java.util.List;
  */
 
 class Problem1 {
+    private enum Result {
+        EXCEPTION(-1), DRAW(0), POBI(1), CRONG(2);
+
+        private final int result;
+
+        Result(int result) {
+            this.result = result;
+        }
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (!checkValidation(pobi) || !checkValidation(crong)) {
             return -1;
@@ -80,6 +90,7 @@ class Problem1 {
 
     /**
      * 본인의 점수 계산
+     *
      * @param pages
      * @return 본인의 점현
      */
@@ -87,5 +98,22 @@ class Problem1 {
         final int leftPage = getLargestNum(pages.get(0));
         final int rightPage = getLargestNum(pages.get(1));
         return Math.max(leftPage, rightPage);
+    }
+
+    /**
+     * 결과를 반환하는 함수
+     *
+     * @param pobi
+     * @param crong
+     * @return result
+     */
+    private static int getResult(int pobi, int crong) {
+        if (pobi == crong) {
+            return Result.DRAW.result;
+        } else if (pobi > crong) {
+            return Result.POBI.result;
+        } else {
+            return Result.CRONG.result;
+        }
     }
 }
