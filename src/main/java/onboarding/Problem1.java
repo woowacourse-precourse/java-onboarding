@@ -20,7 +20,7 @@ class Problem1 {
     /**
      * 들어온 값에 대해 예외처리 하는 함수들 (책을 임의로 펼친다)
      */
-    public static boolean isValidate(List<Integer> pobi, List<Integer> crong) {
+    private static boolean isValidate(List<Integer> pobi, List<Integer> crong) {
         return (validatePages(pobi) && validatePages(crong));
     }
 
@@ -85,7 +85,7 @@ class Problem1 {
     /**
      * 본인의 점수를 구하는 기능
      */
-    public static int getScore(List<Integer> pages) {
+    private static int getScore(List<Integer> pages) {
         int leftScore = getScoreOfEachPage(pages.get(LEFT));
         int rightScore = getScoreOfEachPage(pages.get(RIGHT));
 
@@ -101,7 +101,7 @@ class Problem1 {
     /**
      * 승자를 구하는 기능을 추가
      */
-    public static int getWinner(int pobiScore, int crongScore) {
+    private static int getWinner(int pobiScore, int crongScore) {
         if (pobiScore > crongScore) {
             return 1;
         }

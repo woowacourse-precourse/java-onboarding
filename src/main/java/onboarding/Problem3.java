@@ -11,14 +11,14 @@ public class Problem3 {
     /**
      * 제한사항을 검증하는 기능
      */
-    public static boolean isValidate(int number) {
+    private static boolean isValidate(int number) {
         return (number > 0 && number < 10001);
     }
 
     /**
      * 3과 6과 9의 개수를 세는 기능
      */
-    public static int getSumOfCount(int number) {
+    private static int getSumOfCount(int number) {
         int sum = 0;
         for (int i = 1; i <= number; i++) {
             sum += countClap(i, 0);
@@ -26,7 +26,7 @@ public class Problem3 {
         return sum;
     }
 
-    public static int countClap(int number, int result) {
+    private static int countClap(int number, int result) {
         if (number == 0) {
             return result;
         }
@@ -36,7 +36,7 @@ public class Problem3 {
         return countClap(number / 10, result);
     }
 
-    public static boolean isClapNumber(int number) {
+    private static boolean isClapNumber(int number) {
         return (number == 3 || number == 6 || number == 9);
     }
 }

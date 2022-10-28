@@ -20,14 +20,14 @@ public class Problem5 {
     /**
      * 제한사항 검증하는 기능
      */
-    public static boolean isValidate(int money) {
+    private static boolean isValidate(int money) {
         return (money > 0 && money < 1_000_001);
     }
 
     /**
      * 큰 돈 위주로 지갑에 담는 기능
      */
-    public static void getAnswer(int money, int[] unit, int idx, List<Integer> answer) {
+    private static void getAnswer(int money, int[] unit, int idx, List<Integer> answer) {
         if (idx == unit.length) {
             return;
         }

@@ -16,7 +16,7 @@ public class Problem2 {
     /**
      * 제한사항 검증하는 기능
      */
-    public static boolean isValidate(String cryptogram) {
+    private static boolean isValidate(String cryptogram) {
         return (validateLength(cryptogram) && isLowerCase(cryptogram));
     }
 
@@ -42,7 +42,7 @@ public class Problem2 {
     /**
      * 중복되는 문자열 찾아서 제거
      */
-    public static String removeDuplicated(String cryptogram) {
+    private static String removeDuplicated(String cryptogram) {
         String result = cryptogram;
         while (start.size() != 0 || findRange(result)) {
             String substring = result.substring(start.pop(), end.pop());
@@ -51,7 +51,7 @@ public class Problem2 {
         return result;
     }
 
-    public static boolean findRange(String cryptogram) {
+    private static boolean findRange(String cryptogram) {
         for (int i = 0; i < cryptogram.length(); i++) {
             char ch = cryptogram.charAt(i);
             int endTemp = findEnd(cryptogram, i, ch);

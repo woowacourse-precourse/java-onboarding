@@ -11,12 +11,12 @@ public class Problem4 {
     /**
      * word의 길이를 검증하는 기능
      */
-    public static boolean isValidate(String word) {
+    private static boolean isValidate(String word) {
         int length = word.length();
         return (length > 0 && length < 1001);
     }
 
-    public static String convertString(String word) {
+    private static String convertString(String word) {
         StringBuilder sb = new StringBuilder();
         char[] toCharArray = word.toCharArray();
         for (char ch : toCharArray) {
