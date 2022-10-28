@@ -42,16 +42,13 @@ class Problem1 {
     	int pobiPage = makePage();
     	int crongPage = makePage();
     	
-    	if(pobiPage % 2 == 1) {
-    		
-    	}
-    	
     	int pobiL = 0;
         int pobiR = 0;
         int crongL = 0;
         int crongR = 0;
+
         
-    	if(pobiPage % 2 == 1) {//홀수
+        if(pobiPage % 2 == 1) {//홀수
     		pobiL = pobiPage;
     		pobiR = pobiPage+1;
     		} else {//짝수
@@ -65,6 +62,10 @@ class Problem1 {
     		crongL = crongPage-1;
     		crongR = crongPage;
     		}
+    	 System.out.println(pobiL);
+         System.out.println(pobiR);
+         System.out.println(crongL);
+         System.out.println(crongR);
     	
     	}
     	
@@ -74,8 +75,8 @@ class Problem1 {
 
 
 /*
- * 랜덤번호 3~398 첫,막페이지 x *완료*
- * 나온번호 올수짝수 구분 후 홀수 +1 짝수 -1
+ * 랜덤번호 3~398 첫,막페이지 x **
+ * 나온번호 올수짝수 구분 후 홀수 +1 짝수 -1 **
  * 나온 두 수 *페이지 번호의 각 자리 숫자를 모두 더함 || 모두 곱해 가장 큰 수를 구한다.
  * 더하거나 곱한 수 큰수로 비교
  * 포비 win = 1, 크롱 win = 2, 무승부 = 0, 각 페이지 차가 1이 아니면 -1 ex) 99,102 = -1
