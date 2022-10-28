@@ -15,8 +15,14 @@ public class Problem5 {
         return answer;
     }
 
+    /**
+     * 주어진 money가 범위안에 들어가는지 체크하는 메소드
+     * @param money
+     * @return
+     */
     public static boolean isValid(int money){
         return 1 >= money && 1001000000 >= money;
     }
+
 
 }
