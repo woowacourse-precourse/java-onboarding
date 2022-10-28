@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -20,5 +21,15 @@ public class Problem5 {
             money=money%bill[i];
         }
         return answer;
+    }
+
+    /**
+     * int[] -> List<Integer> 변환하는 함수
+     */
+    private static List<Integer> to_list(int[] arr){
+        List<Integer> list = new ArrayList<>(arr.length);
+        for (int i: arr)
+            list.add(Integer.valueOf(i));
+        return list;
     }
 }
