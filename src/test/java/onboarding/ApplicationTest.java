@@ -83,12 +83,16 @@ class ApplicationTest {
     class Problem5Test {
         @Test
         void case1() {
-
+            int mon1 = 50237;
+            List<Integer> result = List.of(1, 0, 0, 0, 0, 2, 0, 3, 7);
+            assertThat(Problem5.solution(mon1)).isEqualTo(result);
         }
 
         @Test
         void case2() {
-
+            int mon2 = 15000;
+            List<Integer> result = List.of(0, 1, 1, 0, 0, 0, 0, 0, 0);
+            assertThat(Problem5.solution(mon2)).isEqualTo(result);
         }
     }
 }
