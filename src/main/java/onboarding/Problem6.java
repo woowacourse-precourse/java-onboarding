@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -29,9 +31,8 @@ public class Problem6 {
 				}
 			}
 		}
-
-		List<String> answer = List.of("answer");
-		return answer;
+		
+		return sortSet();
 	}
 
 	private static void checkExistKey(String keyMail, String email) {
@@ -39,5 +40,11 @@ public class Problem6 {
 			emails.add(email);
 			emails.add(keyMail);
 		}
+	}
+
+	private static List<String> sortSet() {
+		List<String> target = new ArrayList<>(emails);
+		Collections.sort(target);
+		return target;
 	}
 }
