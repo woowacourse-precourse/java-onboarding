@@ -11,7 +11,7 @@ public class Problem7 {
     public static final int RECOMMEND_COUNT = 5;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        Set<String> friendList = generateFriendList(friends);
+        List<String> friendList = generateFriendList(friends, user);
         List<String> relatedUserList = generateRelatedUser(friends, user);
         List<String> unknownVisitors = exceptFriend(visitors, friendList);
         Map<String, Integer> scoreMap = generateScoreMap(relatedUserList, unknownVisitors);
@@ -23,10 +23,12 @@ public class Problem7 {
         return pickHighScoreUser(sortedUserList);
     }
 
-    private static Set<String> generateFriendList(List<List<String>> friends) {
-        Set<String> friendList = new HashSet<>();
+    private static List<String> generateFriendList(List<List<String>> friends, String user) {
+        List<String> friendList = new ArrayList<>();
         for (List<String> friend : friends) {
-            friendList.add(friend.get(0));
+            if(friend.get(1).equals(user)){
+                friendList.add(friend.get(0));
+            }
         }
         return friendList;
     }
@@ -42,7 +44,7 @@ public class Problem7 {
         return relatedUserList;
     }
 
-    private static List<String> exceptFriend(List<String> visitors, Set<String> friendList) {
+    private static List<String> exceptFriend(List<String> visitors, List<String> friendList) {
         for (String friend : friendList) {
             visitors = visitors.stream()
                     .filter(v -> !v.equals(friend))
