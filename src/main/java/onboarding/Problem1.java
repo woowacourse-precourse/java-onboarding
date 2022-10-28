@@ -14,6 +14,9 @@ class Problem1 {
             return -1;
         }
 
+        int pobiValue = maxValueOfSumOrMultiply(pobi);
+        int crongValue = maxValueOfSumOrMultiply(crong);
+
         return answer;
     }
 
@@ -44,6 +47,14 @@ class Problem1 {
 
     private static boolean checkPageOrder(int leftPage, int rightPage) {
         return (rightPage - leftPage) == 1;
+    }
+
+    private static int maxValueOfSumOrMultiply(List<Integer> page) {
+        int leftPage = page.get(0);
+        int rightPage = page.get(1);
+        int leftPageResult = Math.max(sumOfEachDigitNumber(leftPage), multiplyOfEachDigitNumber(leftPage));
+        int rightPageResult = Math.max(sumOfEachDigitNumber(rightPage), multiplyOfEachDigitNumber(rightPage));
+        return Math.max(leftPageResult, rightPageResult);
     }
 
     private static int sumOfEachDigitNumber(int number) {
