@@ -43,7 +43,17 @@ public class Problem2 {
 
 
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        String processedCryptogram = cryptogram;
+
+        int idx = getDuplicateCharIdx(processedCryptogram);
+        while (idx >= 0) {
+            int duplicateCount = getDuplicateCharCount(processedCryptogram, idx);
+
+            processedCryptogram = removeStringRange(processedCryptogram, idx, duplicateCount);
+
+            idx = getDuplicateCharIdx(processedCryptogram);
+        }
+
+        return processedCryptogram;
     }
 }
