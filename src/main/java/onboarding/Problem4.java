@@ -6,6 +6,14 @@ public class Problem4 {
                 'J','I','H','G','F','E','D','C', 'B', 'A'};
 
         String answer = "";
+
+        for(String wo:word.split("")){
+            if(!wo.matches("[a-zA-Z]")){
+                answer += wo;
+
+            }
+
+        }
         return answer;
     }
 }
