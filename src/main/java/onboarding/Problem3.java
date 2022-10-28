@@ -1,10 +1,12 @@
 package onboarding;
 
 public class Problem3 {
-    static int answer;
 
     public static int solution(int number) {
-        answer = 0;
+        int answer = 0;
+        for(int i = number; i>2; i--){
+            answer += calculateClapNumber(i);
+        }
         return answer;
     }
     public static boolean checkToClap(char singlenumber){
