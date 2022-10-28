@@ -19,7 +19,7 @@ public class Problem3 {
         return String.valueOf(number);
     }
 
-    // 2. 리스트에 3,6,9가 포함되면 개수만큼 "answer"에 1 더하기
+    // 2. 리스트에 3,6,9가 포함되면 개수만큼 세어서 반환
     public static int counter(char[] num) {
         int count = 0;
         String[] arr = {"3", "6", "9"};
