@@ -12,4 +12,8 @@ public class Problem5 {
 	private static int withdrawMoney(int money, int won) {
 		return money / won;
 	}
+
+	private static int updateMoney(int money, int won) {
+		return money % won;
+	}
 }
