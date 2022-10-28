@@ -5,11 +5,19 @@ import java.util.List;
 
 public class Problem3 {
 	public static int solution(int number) {
-		int answer = 0;
-		return answer;
+		Counter counter = new Counter();
+		return counter.countTotal369(number);
 	}
 
 	static class Counter {
+
+		public int countTotal369(int number) {
+			int result = 0;
+			for(int i = 1; i <= number; i++) {
+				result += count369(i);
+			}
+			return result;
+		}
 
 		public int count369(int number) {
 			List<Integer> numberList = new ArrayList<>();
