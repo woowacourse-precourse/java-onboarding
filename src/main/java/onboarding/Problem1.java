@@ -93,7 +93,7 @@ class Exception {
 
     public static void validatePageRange(List<Integer> participant) {
         for (int page : participant) {
-            if (page < 1 || page > 400) {
+            if (page < 2 || page > 399) {
                 throw new IllegalArgumentException(ERROR_MESSAGE);
             }
         }
