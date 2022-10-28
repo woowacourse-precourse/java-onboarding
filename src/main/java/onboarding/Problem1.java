@@ -47,6 +47,19 @@ class Problem1 {
         return score;
     }
 
+    private static int getScoreByMulAllDigits(int page) {
+
+        int score = 1;
+
+        while (page > 0) {
+            score *= page % 10;
+
+            page /= 10;
+        }
+
+        return score;
+    }
+
     /**
      * 1. 책을 임의로 펼친다.
      * 2. 왼쪽 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구한다.
