@@ -18,11 +18,16 @@ public class Book {
     }
 
     public void setPage(int page) {
-        leftPage = isEvenPage(page) ? page - 1 : page;
-        rightPage = isEvenPage(page) ? page : page + 1;
+        if (isEvenPage(page)) {
+            leftPage = page - 1;
+            rightPage = page;
+            return;
+        }
+        leftPage = page;
+        rightPage = page + 1;
     }
 
-    public void setPageScore(int Page) {
+    public void setPageScore(int page) {
     }
 
     public void setLastScore() {
@@ -38,5 +43,13 @@ public class Book {
 
     public int getRightPage() {
         return rightPage;
+    }
+
+    public int getLeftPageScore() {
+        return leftPageScore;
+    }
+
+    public int getRightPageScore() {
+        return rightPageScore;
     }
 }
