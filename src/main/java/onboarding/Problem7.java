@@ -1,9 +1,11 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Problem7 {
     private static void checkId(String id) {
@@ -57,8 +59,7 @@ public class Problem7 {
         recommendFriends.addVisitors(visitors);
         recommendFriends.removeMyFriends(myFriends);
 
-        List<String> answer = Collections.emptyList();
-        return answer;
+        return recommendFriends.getRecommendIds();
     }
 }
 
@@ -92,9 +93,9 @@ class Friend implements Comparable<Friend>{
     @Override
     public int compareTo(Friend o) {
         if(score<o.getScore())
-            return -1;
-        if(score>o.getScore())
             return 1;
+        if(score>o.getScore())
+            return -1;
         return id.compareTo(o.getId());
     }
 }
@@ -146,5 +147,9 @@ class Friends {
 
     public List<String> getRecommendIds(){
         Collections.sort(friends);
+        return friends.stream()
+                .limit(5)
+                .map(Friend::getId)
+                .collect(Collectors.toList());
     }
 }
