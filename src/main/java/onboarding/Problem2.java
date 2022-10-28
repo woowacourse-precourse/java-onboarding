@@ -8,6 +8,7 @@ public class Problem2 {
         String s = cryptogram;
         String answer;
         int sw;
+        //3. 1~2를 연속하는 중복문자가 없을 때 까지 반복
         while(true)
         {
             answer = "";
