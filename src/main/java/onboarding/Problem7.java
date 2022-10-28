@@ -81,7 +81,9 @@ public class Problem7 {
             ArrayList<String> userFriends = map.get(user); // user 의 친구목록 가져옴
             isFriendOfUser(userFriends); // 친구의 친구 -> 10점을 더해줌
             visitorScore(userFriends); // 방문자 -> 1점을 더해줌
-            return null;
+            List<Map.Entry<String, Integer>> entryList = desendingByScore(); // 스코어 기준 내림차순
+
+            return getTopFive(entryList); // 상위 점수 5명 리스트 반환
         }
     }
 
