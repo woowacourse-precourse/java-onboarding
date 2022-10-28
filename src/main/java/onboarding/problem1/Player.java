@@ -1,4 +1,4 @@
-package onboarding;
+package onboarding.problem1;
 
 import java.util.List;
 import java.util.stream.Collectors;

@@ -1,4 +1,4 @@
-package onboarding;
+package onboarding.problem1;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -48,17 +48,22 @@ public class Page {
 
     public int findMaxValue() {
 
-        List<Integer> digits = String.valueOf(page)
-            .chars()
-            .map(it -> (char)it)
-            .map(Character::getNumericValue)
-            .boxed()
-            .collect(Collectors.toList());
+        List<Integer> digits = parseToDigits(page);
 
         return Math.max(
             calculateSumOf(digits),
             calculateMultiplyOf(digits)
         );
+    }
+
+    private List<Integer> parseToDigits(final Integer number) {
+
+        return String.valueOf(number)
+            .chars()
+            .map(it -> (char)it)
+            .map(Character::getNumericValue)
+            .boxed()
+            .collect(Collectors.toList());
     }
 
     private int calculateSumOf(final List<Integer> digits) {
