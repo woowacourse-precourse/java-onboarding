@@ -8,6 +8,12 @@ public class Problem7 {
         Set<String> acquaintance = findAcquaintance(friendsMap, user);
         Map<String, Integer> scoreByFriends = new HashMap<>();
 
+        for(String a : acquaintance) scoreByFriends.put(a, 10);
+        for (String visitor : visitors) {
+            if(friendsMap.get(user).contains(visitor)) continue;
+            scoreByFriends.put(visitor, scoreByFriends.getOrDefault(visitor, 0) + 1);
+        }
+
 
 
     }
