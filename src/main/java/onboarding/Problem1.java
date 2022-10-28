@@ -59,7 +59,20 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        int pobiScore = getScore(pobi);
+        int crongScore = getScore(crong);
 
+        if (!validCheck(pobi) || !validCheck(crong)) {
+            answer = -1;
+            return answer;
+        }
+        if (pobiScore > crongScore) {
+            answer = 1;
+        } else if (pobiScore < crongScore) {
+            answer = 2;
+        } else {
+            answer = 0;
+        }
         return answer;
     }
 }
