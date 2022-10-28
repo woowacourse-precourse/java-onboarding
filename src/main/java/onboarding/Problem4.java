@@ -6,12 +6,12 @@ public class Problem4 {
         return answer;
     }
 
-    private static char toString(char character) {
+    private static String toString(char character) {
         if('a' <= character && character <= 'z') {
-            return (char) ('z' - character + 'a');
+            return String.valueOf((char) ('z' - character + 'a'));
         }
         else {
-            return (char) ('Z' - character + 'A');
+            return String.valueOf((char) ('Z' - character + 'A'));
         }
     }
 }
