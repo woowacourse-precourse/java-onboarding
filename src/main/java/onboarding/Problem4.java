@@ -11,6 +11,7 @@ public class Problem4 {
     */
 
     static final int UPPERCASE_DICTIONARY_SUM = 'A' + 'Z';
+    static final int LOWERCASE_DICTIONARY_SUM = 'a' + 'z';
 
     public static String solution(String word) {
         String answer = "";
@@ -19,5 +20,9 @@ public class Problem4 {
 
     private static char flipUpperCase(char alphabet){
         return (char) (UPPERCASE_DICTIONARY_SUM - alphabet);
+    }
+
+    private static char flipLowerCase(char alphabet){
+        return (char) (LOWERCASE_DICTIONARY_SUM - alphabet);
     }
 }
