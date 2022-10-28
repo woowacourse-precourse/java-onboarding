@@ -2,32 +2,65 @@ package onboarding.problem7;
 
 import java.util.*;
 
+//TODO 로직 전면 개편 필요!
 public class FriendsService {
 
     public static final int KNOWN_SCORE = 10;
 
-    // 사용자 아이디와 친구 정보를 이용하여 사용자가 아는 친구의 수를 구한다.
+    /**
+     * 유저 간 친구 관계에 대한 점수를 반환 해주는 로직입니다.
+     * @param user : 친구를 추천해 줄 유저의 닉네임입니다.
+     * @param friends : 친구 관게도 입니다.
+     * @return : Map<String, Integer> 형식으로 값을 리턴합니다.
+     */
     public Map<String, Integer> getRelationshipScore(String user, List<List<String>> friends) {
-        // 1. user가 알고 있는 친구 : 유저 이름이 있는 리스트 조회
-        List<String> knownFriends = getKnownFriends(user, friends);
+        Set<String> users = getNameSet(friends);  // 유저 이름 Set을 만든다.
+        Map<String, Set<String>> friendsMap = getFriendsMap(friends, users);  // Map<String, Set<String>> 형태로 친구 관계를 만든다.
+        List<String> knownFriends = getKnownFriends(user, friends);  // user가 아는 친구들을 구한다.
 
-        // 2. user를 알고 있는 친구를 아는 친구 조회하여, Map형태로 알고있는 인원 수를 적어준다.
-        Map<String, Integer> results = new HashMap<>();
-        for (String knownFriend : knownFriends) {
-            // 알고 있는 친구 조회
-            List<String> friendsName = getKnownFriends(knownFriend, friends);  // 삼중 포문임ㅠ 방법을 찾아보자...
-            for (String name : friendsName) {  // 알고 있는 친구의 이름을 조회해서
-                if (name.equals(user)) {  // 유저랑 같으면 continue
-                    continue;
-                }
-                // 유저랑 다르면 점수를 산정함.
-                results.put(name, (results.getOrDefault(name, 0) + KNOWN_SCORE));  // 점수를 산정
-            }
-        }
-
-        return results;
+        // 공통 분모를 아는 친구를 조회하여 점수를 산정해준다.
+        return evaluateScore(user, friendsMap, knownFriends);
     }
 
+    /**
+     * map을 List<Friend>로 바꿔주는 로직
+     * @param totalScore : 방문 점수도 합산한 값을 넣어야 합니다.
+     * @return : List<Friend>를 리턴합니다.
+     */
+    public List<Friend> mapToFriendList(Map<String, Integer> totalScore) {
+        List<Friend> result = new ArrayList<>();
+
+        for (String name : totalScore.keySet()) {
+            result.add(new Friend(name, totalScore.get(name)));
+        }
+
+        return result;
+    }
+
+    // 유저 이름 정보와 친구 관계 정보를 받아 Map<String, Set<String> 형태로 반환함.
+    private Map<String, Set<String>> getFriendsMap(List<List<String>> friends, Set<String> users) {
+        Map<String, Set<String>> friendsMap = new HashMap<>();
+        users.forEach(name -> friendsMap.put(name, new HashSet<>()));  // map init.
+
+        // value를 넣어준다.
+        friends.forEach(list -> {
+            String user1 = list.get(0);
+            String user2 = list.get(1);
+
+            friendsMap.get(user1).add(user2);
+            friendsMap.get(user2).add(user1);
+        });
+        return friendsMap;
+    }
+
+    // 친구 관계 정보에서 이름 셋을 얻음.
+    private Set<String> getNameSet(List<List<String>> friends) {
+        Set<String> users = new HashSet<>();
+        friends.forEach(users::addAll);
+        return users;
+    }
+
+    // user를 아는 친구들 조회.
     public List<String> getKnownFriends(String user, List<List<String>> friends) {
         List<String> friendsOfUser = new ArrayList<>();  // user를 알고 있는 친구.
         friends.stream()
@@ -43,14 +76,19 @@ public class FriendsService {
         return friendsOfUser;
     }
 
-    // map을 List<Friend>로 바꿔주는 로직
-    public List<Friend> mapToFriendList(Map<String, Integer> totalScore) {
-        List<Friend> result = new ArrayList<>();
-
-        for (String name : totalScore.keySet()) {
-            result.add(new Friend(name, totalScore.get(name)));
+    private Map<String, Integer> evaluateScore(String user, Map<String, Set<String>> friendsMap, List<String> knownFriends) {
+        Map<String, Integer> result = new HashMap<>();
+        for (String knownFriend : knownFriends) {
+            friendsMap.entrySet().stream()
+                    .filter(entry -> entry.getValue().contains(knownFriend))  //value에 공통 분모가 있는 놈만 가져옴.
+                    .filter(entry -> !entry.getKey().equals(user))
+                    .forEach(entry -> {
+                        String name = entry.getKey();
+                        result.put(name, result.getOrDefault(name, 0) + KNOWN_SCORE);
+                    });
         }
-
         return result;
     }
+
+
 }
