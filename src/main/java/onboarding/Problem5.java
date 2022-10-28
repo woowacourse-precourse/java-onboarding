@@ -7,8 +7,10 @@ public class Problem5 {
 
     private static final List<Integer> coins = List.of(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1);
 
+    // 최종 결과를 반환하기 위한 solution 내부 코드 작성
     public static List<Integer> solution(int money) {
         List<Integer> answer;
+        answer = coinsCount(money);
         return answer;
     }
 
