@@ -28,7 +28,7 @@ public class SNSController {
         removeMyFriends(userName, recommendPoints);
 
         List<RecommendPoint> points = new ArrayList<>(recommendPoints.values());
-        Collections.sort(points, Comparator.reverseOrder());
+        Collections.sort(points);
 
         if(points.size() > 5){
             points = points.subList(0, 5);
@@ -156,7 +156,10 @@ public class SNSController {
 
         @Override
         public int compareTo(RecommendPoint o) {
-            return this.point - o.getPoint();
+            if(this.point == o.point){
+                return this.name.compareTo(o.getName());
+            }
+            return -(this.point - o.getPoint());
         }
     }
 
