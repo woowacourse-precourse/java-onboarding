@@ -101,4 +101,8 @@ class Account {
     public int getScore() {
         return this.score;
     }
+
+    public boolean isEqualsScore(Account account) {
+        return this.score == account.getScore();
+    }
 }
