@@ -11,6 +11,26 @@ class Problem1 {
 	***/
 	
 	
+	//1. 예외검사 - 페이 수가 1~400 인지 검사하고 / 오른쪽페이지수 - 왼쪽페이지수 = 1 인지 검사 / 시작면 마지막 면이 아닌지 검사	
+		public static boolean exceptionCheck(List<Integer> pageNumber) {
+			// false - 예외 없음
+			// true - 예외 발생
+			int leftPage = pageNumber.get(0);
+			int rightPage = pageNumber.get(1);
+			
+			// 페이지 수가 1~400 인지 검사 / 시작면 , 마지막면 인지 아닌지 검사
+			if (leftPage < 2 || rightPage > 399) {
+				return true;
+			}
+				
+			// 페이지 수가 연속적인지 검사  
+			if (rightPage - leftPage != 1) {
+				return true;
+			}
+		return false;
+		}
+		
+	
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
