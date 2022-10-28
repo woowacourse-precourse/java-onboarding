@@ -33,7 +33,7 @@ public class Problem7 {
         List<String> friendList = makeFriendList(friends, user);
         //Step2. friends를 탐색하며 user가 들어가있는 경우 친구 이름을 Map 넣고 점수 10점 부여
         for (List<String> friend : friends) {
-            scoreFriendPoint(recommendPoint, friend, user);
+            scoreFriendPoint(recommendPoint, friend, friendList);
         }
         //Step3. visitors 를 탐색하며 해당 친구이름을 Map 에 넣고 1점부여
         for (String visitor : visitors) {
@@ -88,15 +88,19 @@ public class Problem7 {
         recommendRank.put(visitor, recommendRank.getOrDefault(visitor, 0) + 1);
     }
 
-    private static void scoreFriendPoint(Map<String, Integer> recommendRank, List<String> friend, String user) {
+    private static void scoreFriendPoint(Map<String, Integer> recommendRank, List<String> friend, List<String> friendList) {
 
         String friendName1 = friend.get(0);
         String friendName2 = friend.get(1);
 
-        if (friendName1.equals(user)) {
-            recommendRank.put(friendName2, recommendRank.getOrDefault(friendName2, 0) + 10);
-        } else if (friendName2.equals(user)) {
-            recommendRank.put(friendName1, recommendRank.getOrDefault(friendName1, 0) + 10);
+        for (String myFriend : friendList) {
+            if (friendName1.equals(myFriend)) {
+                recommendRank.put(friendName2, recommendRank.getOrDefault(friendName2, 0) + 10);
+                break;
+            } else if (friendName2.equals(myFriend)) {
+                recommendRank.put(friendName1, recommendRank.getOrDefault(friendName1, 0) + 10);
+                break;
+            }
         }
     }
 
