@@ -6,6 +6,7 @@ public class Problem4 {
         if(!checkValidation(word)){
             return null;
         }
+        answer = convertStringByDict(word);
         return answer;
     }
 
@@ -14,6 +15,17 @@ public class Problem4 {
             return true;
         }
         return false;
+    }
+
+    private static String convertStringByDict(String word){
+        StringBuffer value = new StringBuffer(word);
+        for(int i=0; i<value.length(); i++){
+            if(needConvert(value.charAt(i))){
+                char convetedChar = getConvertedChar(value.charAt(i));
+                value.setCharAt(i,convetedChar);
+            }
+        }
+        return value.toString();
     }
 
 }
