@@ -8,10 +8,10 @@ class Problem1 {
         if(pobi.size() != 2 || crong.size() != 2) return -1;
         if(pobi.get(0) + 1 != pobi.get(1) || crong.get(0) + 1 != crong.get(1)) return -1;
 
-        int pobi_high_score0 = Math.max(plus_score(pobi.get(0)), multiply_score(pobi.get(0)));
-        int pobi_high_score1 = Math.max(plus_score(pobi.get(1)), multiply_score(pobi.get(1)));
-        int crong_high_score0 = Math.max(plus_score(crong.get(0)), multiply_score(crong.get(0)));
-        int crong_high_score1 = Math.max(plus_score(crong.get(1)), multiply_score(crong.get(1)));
+        int pobi_high_score0 = Math.max(plusScore(pobi.get(0)), multiplyScore(pobi.get(0)));
+        int pobi_high_score1 = Math.max(plusScore(pobi.get(1)), multiplyScore(pobi.get(1)));
+        int crong_high_score0 = Math.max(plusScore(crong.get(0)), multiplyScore(crong.get(0)));
+        int crong_high_score1 = Math.max(plusScore(crong.get(1)), multiplyScore(crong.get(1)));
 
         int pobi_max_score = Math.max(pobi_high_score0, pobi_high_score1);
         int crong_max_score = Math.max(crong_high_score0, crong_high_score1);
@@ -19,7 +19,7 @@ class Problem1 {
         return (pobi_max_score > crong_max_score) ? 1 : (pobi_max_score < crong_max_score) ? 2 : 0;
     }
 
-    private static int plus_score(int num) {
+    private static int plusScore(int num) {
         int total_score = 0;
         while(num > 0) {
             total_score += num % 10;
@@ -28,7 +28,7 @@ class Problem1 {
         return total_score;
     }
 
-    private static int multiply_score(int num) {
+    private static int multiplyScore(int num) {
         int total_score = 1;
         while(num > 0) {
             total_score *= num % 10;
