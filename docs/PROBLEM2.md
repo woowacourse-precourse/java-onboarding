@@ -15,6 +15,7 @@
 - [x] FEATURE1. 중복 문자 유무 및 시작 및 끝 지점 확인 함수
 - [x] FEATURE2. 중복 문자 제거 함수
 - [ ] FEATURE3. solution 함수
+- [ ] FEATURE4. 예외 처리 구현
 
 ### 제한사항
 
