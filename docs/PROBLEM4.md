@@ -25,12 +25,49 @@
 ## 구현 기능 목록
 
 - (1) String을 StringBuilder로 변환하는 기능
+
+  ```java
+  private static StringBuilder toStringBuilder(String word)
+  ```
+
 - (2) 문자가 대문자인지 확인하는 기능
-  - 'A' = 65, 'Z' = 90
+
+  ```java
+  private static boolean isUpperCase(char character)
+  ```
+
+  - true : ('A' = 65) <= character <= ('Z' = 90)
+
 - (3) 문자가 소문자인지 확인하는 기능
-  - 'a' = 97, 'z' = 219
+
+  ```java
+  private static boolean isLowerCase(char character)
+  ```
+
+  - true : ('a' = 97) <= character <= ('z' = 219)
+
 - (4) 알파벳 대문자를 반대로 변환하는 기능
+
+  ```java
+  private static void reverseUpperCase(StringBuilder stringBuilder, char character, int index)
+  ```
+
 - (5) 알파벳 소문자를 반대로 변환하는 기능
+
+  ```java
+  private static void reverseLowerCase(StringBuilder stringBuilder, char character, int index)
+  ```
+
 - (6) 청개구리 말하기 기능
+
+  ```java
+  private static StringBuilder makeFrogWord(String word)
+  ```
+
   - (1), (2), (3), (4), (5) 기능을 이용해 청개구리 말하기
+
 - (7) StringBuilder를 String로 변환하는 기능
+
+  ```java
+  private static String toString(StringBuilder stringBuilder)
+  ```
