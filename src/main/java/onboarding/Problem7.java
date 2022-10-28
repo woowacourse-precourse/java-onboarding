@@ -26,6 +26,18 @@ public class Problem7 {
 
     /** 친구의 친구인 경우 친구 가산점을 추가하는 함수*/
     private static void updateFriendsScore(String user, Map<String, List<String>> friendsMap, Map<String, Integer> scoreInfo) {
+        List<String> userFriends = friendsMap.getOrDefault(user, new ArrayList<>());
+
+        for(String friendName : userFriends) {
+            List<String> shareFriends = friendsMap.getOrDefault(friendName, new ArrayList<>());
+
+            for(String shareFriendName : shareFriends) {
+                if(shareFriendName.equals(user)) continue;
+                
+                int score = scoreInfo.getOrDefault(shareFriendName, 0);
+                scoreInfo.put(shareFriendName, score + 10);
+            }
+        }
 
     }
 
