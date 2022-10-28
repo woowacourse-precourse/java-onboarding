@@ -27,6 +27,11 @@ public class Problem6 {
 
     private static List<String> getDuplicateList(String twoName, List<List<String>> forms) {
         List<String> duplicateEmails = new ArrayList<>();
+        for (List<String> form : forms) {
+            if (form.get(NAME).contains(twoName)) {
+                duplicateEmails.add(form.get(EMAIL));
+            }
+        }
         return duplicateEmails;
     }
 
