@@ -4,33 +4,34 @@ import java.util.Stack;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "";
-        Stack<Character> stack = new Stack<>();
-        Stack<Character> back = new Stack<>();
-        char[] arr;
-        // 중복제거
-        // Q1. 스택으로 중복제거시 다시 스택으로 문자열을 되돌려야 하는데 양방향 큐를 쓰는게 낫지 않는가?
-        // Q2. replaceAll 사용가능성?
-        for(int i=0; i<cryptogram.length(); i++){
-            if(!stack.empty() && stack.peek() == cryptogram.charAt(i))
-                stack.pop();
-            else
-                stack.push(cryptogram.charAt(i));
-        }
-
-        // 원래 문자열로 되돌리기
-        // Q1. StringBuilder 사용하면 코드 단축가능
-        while(!stack.empty()) {
-            back.push(stack.pop());
-        }
-
-        // char to string
-        arr = new char[back.size()];
-        for(int i=0; i<arr.length; i++){
-            arr[i] = back.pop();
-        }
-        answer = new String(arr);
-
+        String answer = deleteDuplicatedString(cryptogram);
         return answer;
     }
+
+    public static String deleteDuplicatedString(String cryptogram){
+        String plainText;
+        Stack<Character> stack = new Stack<>();
+        char[] cryptogramChar = cryptogram.toCharArray();
+
+        char preDeletedChar = Character.MAX_VALUE;
+        for(int i=0; i<cryptogramChar.length; i++){
+            if(preDeletedChar == cryptogramChar[i])
+                continue;
+            if(!stack.empty() && (stack.peek() == cryptogramChar[i]))
+                preDeletedChar = stack.pop();
+            else {
+                stack.push(cryptogramChar[i]);
+                preDeletedChar = Character.MAX_VALUE;
+            }
+        }
+        plainText = changeStackCharToString(stack);
+        return plainText;
+    }
+
+    public static String changeStackCharToString(Stack<Character> stack){
+        StringBuilder sb = new StringBuilder();
+        stack.forEach(sb::append);
+        return sb.toString();
+    }
+
 }
