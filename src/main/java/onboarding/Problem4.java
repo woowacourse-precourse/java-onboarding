@@ -12,8 +12,7 @@ public class Problem4 {
     static final int upperZ = 'Z';
 
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        return ReverseWord(word).toString();
     }
 
     public static StringBuilder ReverseWord(String words) {
