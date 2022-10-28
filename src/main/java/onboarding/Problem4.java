@@ -17,6 +17,6 @@ public class Problem4 {
         } else if (Character.isUpperCase(ch)) {
             return (char) ('Z' - (ch - 'A'));
         }
-        return ch;
+        return ch; // 알파벳이 아닌 문자는 무시
     }
 }

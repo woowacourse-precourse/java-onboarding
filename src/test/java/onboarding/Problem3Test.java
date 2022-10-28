@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class Problem3Test {
     @Test
-    void validTest() {
+    void validNumTest() {
         assertThat(Problem3Util.validCnt(13)).isEqualTo(1);
         assertThat(Problem3Util.validCnt(63)).isEqualTo(2);
         assertThat(Problem3Util.validCnt(19)).isEqualTo(1);
