@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.Stack;
+
 public class Problem2 {
     /*
     기능 목록
@@ -20,6 +22,15 @@ public class Problem2 {
     private static String makeNewCryptogram(String cryptogram){
         if(isEmpty(cryptogram) || cannotDeleteMore(cryptogram)) return cryptogram;
         return makeNewCryptogram(encodeCryptogram(cryptogram));
+    }
+
+    private static String encodeCryptogram(String cryptogram){
+        Stack<String> deletedCryptogram = new Stack<>();
+        String[] alphabetSeperated = cryptogram.split("");
+        for(String alphabet : alphabetSeperated){
+            encryptCryptogram(deletedCryptogram, alphabet);
+        }
+        return changeStackToString(deletedCryptogram);
     }
 
     private static boolean isEmpty(String cryptogram){
