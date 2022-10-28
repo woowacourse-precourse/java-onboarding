@@ -8,6 +8,7 @@ package onboarding;
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
+        answer = totalCount69(number);
         return answer;
     }
 
@@ -19,5 +20,12 @@ public class Problem3 {
             number /= 10;
         }
         return count;
+    }
+
+    private static int totalCount69(int number) {
+        int totalCount = 0;
+        for (int i=0; i <= number; i++)
+            totalCount += count369(i);
+        return totalCount;
     }
 }
