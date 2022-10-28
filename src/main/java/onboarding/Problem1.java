@@ -9,9 +9,14 @@ class Problem1 {
             return -1;
         }
 
+        int pobiMax = Math.max(Math.max(addEachDigits(pobi.get(0)), addEachDigits(pobi.get(1))),
+                Math.max(multiplyEachDigits(pobi.get(0)), multiplyEachDigits(pobi.get(1))));
 
+        int crongMax = Math.max(Math.max(addEachDigits(crong.get(0)), addEachDigits(crong.get(1))),
+                Math.max(multiplyEachDigits(crong.get(0)), multiplyEachDigits(crong.get(1))));
 
-        return 0;
+        return answerChoose(pobiMax, crongMax);
+
     }
 
     /**
