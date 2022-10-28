@@ -49,7 +49,7 @@ public class Book {
             addScore += Integer.parseInt(pageDigit);
             multiplyScore *= Integer.parseInt(pageDigit);
         }
-        int score = addScore >= multiplyScore ? addScore : multiplyScore;
+        int score = Math.max(addScore, multiplyScore);
         if (isEvenPage(page)) {
             rightPageScore = score;
             return;
@@ -57,7 +57,7 @@ public class Book {
         leftPageScore = score;
     }
 
-    public void setLastScore() {
+    public void setLastScore(Book book) {
     }
 
     public int getLastScore() {
