@@ -15,12 +15,7 @@ public class Problem4 {
         return sb.toString();
     }
 
-    private static String toString(char character) {
-        if('a' <= character && character <= 'z') {
-            return String.valueOf((char) ('z' - character + 'a'));
-        }
-        else {
-            return String.valueOf((char) ('Z' - character + 'A'));
-        }
+    private static String toString(char character, char lastChar, char firstChar) {
+        return String.valueOf((char) lastChar - character + firstChar);
     }
 }
