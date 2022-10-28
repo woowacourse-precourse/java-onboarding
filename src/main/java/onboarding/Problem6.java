@@ -48,13 +48,20 @@ public class Problem6 {
 
         Iterator<String> it = set.iterator();
         while (it.hasNext()) {
+            String str = it.next();
             for (List<String> list : forms){
-                if (list.get(1).contains(it.next())) {
+                if (list.get(1).contains(str)) {
                     result.add(list.get(0));
                 }
             }
         }
-        
+        result.sort(new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return o1.compareTo(o2);
+            }
+        });
+
         return result;
     }
 }
