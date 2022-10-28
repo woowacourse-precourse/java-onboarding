@@ -9,6 +9,7 @@ public class ExceptionHandler {
         int leftNumber = pageByPlayer.get(0);
         int rightNumber = pageByPlayer.get(1);
 
+
         //when
         if (leftNumber < 1){return true;}
         if (rightNumber >= 400){return true;}
