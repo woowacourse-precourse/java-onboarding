@@ -16,24 +16,24 @@ public class Problem7 {
         });
         return friendsOfUser;
     }
-    private static void findFriendsOfUser(String user, List<List<String>> friends){
-        findUserRelation(user,friends).forEach(friendsOfUser -> {
-            HashMap<String,Integer> recommendationFriends = findFriendsOfUserLoop(friendsOfUser,friends);
-        });
+    private static HashMap<String, Integer> findFriendsOfUser(String user, List<List<String>> friends){
+        HashMap<String,Integer> recommendationFriends = new HashMap<>();
+        for (String friendsOfUser: findUserRelation(user,friends)) {
+            recommendationFriends = findFriendsOfUserLoop(friendsOfUser,friends,recommendationFriends);
+        }
+        return recommendationFriends;
     }
-    private static HashMap<String,Integer> findFriendsOfUserLoop(String friendsOfUser, List<List<String>> friends) {
-        Map<String,Integer> recommendationFriends = new HashMap<>();
+    private static HashMap<String,Integer> findFriendsOfUserLoop(String friendsOfUser, List<List<String>> friends, HashMap<String, Integer> recommendationFriends) {
         for (String newFriendsOfUser: findUserRelation(friendsOfUser, friends)) {
             giveRecommendationScore(newFriendsOfUser,recommendationFriends);
         }
-        return (HashMap<String, Integer>) recommendationFriends;
+        return recommendationFriends;
     }
     private static void giveRecommendationScore(String newFriendsOfUser, Map<String, Integer> recommendationFriends) {
-            if(recommendationFriends.get(newFriendsOfUser) != null){
-                recommendationFriends.put(newFriendsOfUser,recommendationFriends.get(newFriendsOfUser)+10);
-                return;
-            }
-            recommendationFriends.put(newFriendsOfUser, 10);
+        if(recommendationFriends.get(newFriendsOfUser) != null){
+            recommendationFriends.put(newFriendsOfUser,recommendationFriends.get(newFriendsOfUser)+10);
+            return;
+        }
+        recommendationFriends.put(newFriendsOfUser, 10);
     }
-
 }
