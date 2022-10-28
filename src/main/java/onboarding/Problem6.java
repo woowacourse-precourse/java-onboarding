@@ -14,9 +14,10 @@ public class Problem6 {
             String name = trainee.get(1);
 
             splitName = getSplitName(name);
-
+            if(isDuplicate(splitName, splitNameAll)){
+                getDuplicateEmail.add(email);
+            }
         }
-
         answer = new ArrayList<>(getDuplicateEmail);
         Collections.sort(answer);
         return answer;
@@ -29,5 +30,16 @@ public class Problem6 {
             splitWords.add(splitWord);
         }
         return splitWords;
+    }
+
+    public static boolean isDuplicate(Set<String> splitName, Set<String> splitNameAll){
+        for(String word : splitName){
+            if(splitNameAll.contains(word)) {
+                splitNameAll.addAll(splitName);
+                return true;
+            }
+        }
+        splitNameAll.addAll(splitName);
+        return false;
     }
 }
