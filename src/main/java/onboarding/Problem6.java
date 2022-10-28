@@ -16,7 +16,7 @@ public class Problem6 {
             //신청한 닉네임을 두글자씩 잘라서 HashSet에 저장(중복 제거)
             for(int i=0; i<nickname.length()-1; i++)
                 hashSet.add(nickname.substring(i, i+2));
-            
+
             for(String s : hashSet){
                 //잘라낸 닉네임의 2글자가 hashMap에 없으면 추가
                 if(!hashMap.containsKey(s))
