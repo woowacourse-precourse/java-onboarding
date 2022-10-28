@@ -7,18 +7,27 @@ public class PageValidator {
 	public static final int PAGE_MIN_LIMIT = 1;
 
 	public static boolean isInValidPages(Pages pages) {
-		return isPageSeparated(pages) || isPageLastOrHigher(pages) || isPageFirstOrLower(pages);
+		return isPageSeparated(pages) ||
+				isLeftPageNotOdd(pages) ||
+				isPageLastOrHigher(pages) ||
+				isPageFirstOrLower(pages);
 	}
 
 	private static boolean isPageSeparated(Pages pages) {
-		return (pages.getBackPage().getNumber() - pages.getFrontPage().getNumber()) != 1;
+		Integer higherPageNumber = Math.max(pages.getLeftPage().getNumber(), pages.getRightPage().getNumber());
+		Integer lowerPageNumber = Math.min(pages.getLeftPage().getNumber(), pages.getRightPage().getNumber());
+		return (higherPageNumber - lowerPageNumber) != 1;
+	}
+
+	private static boolean isLeftPageNotOdd(Pages pages) {
+		return (pages.getLeftPage().getNumber() % 2) == 0;
 	}
 
 	private static boolean isPageLastOrHigher(Pages pages) {
-		return PAGE_MAX_LIMIT <= pages.getBackPage().getNumber();
+		return PAGE_MAX_LIMIT <= pages.getLeftPage().getNumber() || PAGE_MAX_LIMIT <= pages.getRightPage().getNumber();
 	}
 
 	private static boolean isPageFirstOrLower(Pages pages) {
-		return pages.getFrontPage().getNumber() <= PAGE_MIN_LIMIT;
+		return pages.getLeftPage().getNumber() <= PAGE_MIN_LIMIT || pages.getRightPage().getNumber() <= PAGE_MIN_LIMIT;
 	}
 }

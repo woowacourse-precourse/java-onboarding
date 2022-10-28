@@ -8,10 +8,10 @@ public class ScoreService {
 	public static Score getHighestScore(Pages pages) {
 		int highestScore = Math.max(
 			Math.max(
-				add(pages.getFrontPage()), add(pages.getBackPage())
+				add(pages.getLeftPage()), add(pages.getRightPage())
 			),
 			Math.max(
-				multiply(pages.getFrontPage()), multiply(pages.getBackPage())
+				multiply(pages.getLeftPage()), multiply(pages.getRightPage())
 			)
 		);
 		return Score.of(highestScore);
