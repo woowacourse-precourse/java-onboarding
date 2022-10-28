@@ -1,13 +1,51 @@
 package onboarding;
 
-import utils.Problem1Util;
-
 import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int pobiResult = Problem1Util.getMaxBetweenSumAndMultiply(pobi);
-        int crongResult = Problem1Util.getMaxBetweenSumAndMultiply(crong);
-        return Problem1Util.whoIsWinner(pobiResult, crongResult);
+        return whoIsWinner(getMaxBetweenSumAndMultiply(pobi), getMaxBetweenSumAndMultiply(crong));
+    }
+
+    public static int getMaxBetweenSumAndMultiply(List<Integer> nums) {
+        if (!isValid(nums)) return -1;
+        int result = Integer.MIN_VALUE;
+        for (Integer num : nums) {
+            result = isMax(result, num);
+        }
+        return result;
+    }
+
+    private static boolean isValid(List<Integer> nums) {
+        if (nums.size() != 2) return false; //  input되는 숫자가 두 개인가
+        if (nums.get(1) - nums.get(0) != 1) return false; // 연속된 두 숫자인가
+        for (int i = 0; i < 2; i++) {
+            Integer num = nums.get(i);
+            if (num <= 1 || num >= 400) return false; // 1 ~ 400 범위 내에 있으며, 1과 400을 포함하는 페이지는 없는가
+            if (num % 2 != 1 - i) {
+                return false; // 해당 숫자가 [홀수, 짝수]인가
+            }
+        }
+        return true;
+    }
+
+    private static int isMax(int result, Integer num) {
+        int sum = 0, mult = 1;
+        while (num > 0) {
+            int tmp = num % 10;
+            sum += tmp;
+            mult *= tmp;
+            num /= 10;
+        }
+        result = Math.max(result, sum);
+        result = Math.max(result, mult);
+        return result;
+    }
+
+    public static int whoIsWinner(int pobiResult, int crongResult) {
+        if (pobiResult == -1 || crongResult == -1) return -1; // 주의
+        else if (pobiResult > crongResult) return 1;
+        else if (pobiResult < crongResult) return 2;
+        return 0;
     }
 }
