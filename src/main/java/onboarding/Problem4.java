@@ -10,6 +10,9 @@ public class Problem4 {
         for (int i = 0; i < wordLength; i++) {
             char nowChar = word.charAt(i);
 
+            if (nowChar < 'A' || nowChar > 'z' || (nowChar > 'Z' && nowChar < 'a')) {
+                frogWord = nowChar;
+            }
             if ('A' <= nowChar && nowChar <= 'Z') {
                 int reversedIndex = 155 - (int) nowChar;
                 frogWord = (char) reversedIndex;
