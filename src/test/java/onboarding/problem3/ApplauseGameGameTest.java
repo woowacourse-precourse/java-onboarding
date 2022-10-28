@@ -15,18 +15,14 @@ public class ApplauseGameGameTest {
         void case1() {
             int number = 13;
             int result = 4;
-            ApplauseGame applauseGame = new ApplauseGame();
-            assertThat(applauseGame.start(number, clapRule)).isEqualTo(result);
+            assertThat(ApplauseGame.start(new ApplauseParameter(number), clapRule)).isEqualTo(result);
         }
 
         @Test
         void case2() {
             int number = 33;
             int result = 14;
-            ApplauseGame applauseGame = new ApplauseGame();
-            assertThat(applauseGame.start(number, clapRule)).isEqualTo(result);
+            assertThat(ApplauseGame.start(new ApplauseParameter(number), clapRule)).isEqualTo(result);
         }
-
-
     }
 }

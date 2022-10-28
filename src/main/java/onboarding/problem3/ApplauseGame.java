@@ -4,20 +4,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ApplauseGame {
-    private final List<Boolean> claps = new ArrayList<>();
+    private static final List<Boolean> claps = new ArrayList<>();
 
-    public int start(int number, ClapRule clapRule) {
-        ApplauseParameter applauseParameter = new ApplauseParameter(number);
+    public static int start(ApplauseParameter applauseParameter, ClapRule clapRule) {
         String numbers = applauseParameter.getNumbers();
 
         for (int i = 0; i < numbers.length(); i++) {
             claps.add(clapRule.isClap(numbers, i));
         }
-        return getAnInt(claps);
+        int result = getAnInt();
+        resetClaps();
+        return result;
     }
 
-    private int getAnInt(List<Boolean> claps) {
-        return Math.toIntExact(claps.stream().filter(clapOrNot -> clapOrNot).count());
+    private static void resetClaps() {
+        claps.clear();
+    }
+
+    private static int getAnInt() {
+        return Math.toIntExact(ApplauseGame.claps.stream().filter(clapOrNot -> clapOrNot).count());
     }
 
 }
