@@ -27,4 +27,7 @@ public class Problem6 {
 		}
 	}
 
+	static boolean isDuplicate(String nickname, String checkString) {
+			return nickname.contains(checkString);
+	}
 }
