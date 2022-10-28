@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem5 {
 
@@ -38,5 +39,10 @@ public class Problem5 {
 
     public static void inputMoney(int moneyUnit, int numberOfMoney) {
         moneyMap.put(moneyUnit, numberOfMoney);
+    }
+
+    public static List<Integer> moneyMapValuesConvertToMoneyList() {
+        return moneyMap.values().stream()
+                .collect(Collectors.toList());
     }
 }
