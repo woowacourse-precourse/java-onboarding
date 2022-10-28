@@ -1,35 +1,45 @@
 package onboarding;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 public class Problem2 {
+    private static Deque<Character> deque = new ArrayDeque<>();
+
     public static String solution(String cryptogram) {
-        return removeLetter(cryptogram);
+        deque.clear();
+        return removeDuplicate(cryptogram);
+
     }
 
-
-    private static int isOverlap(String cryptogram) {
-        for (int i = 0; i < cryptogram.length() - 1; i++) {
-            if (cryptogram.charAt(i) == cryptogram.charAt(i + 1)) {
-                return i;
-            }
-        }
-        return -1;
-    }
-
-    private static String removeLetter(String cryptogram) {
-        StringBuilder stringBuilder = new StringBuilder();
-        int index = isOverlap(cryptogram);
-
-        if (index == -1) {
-            return cryptogram;
-        }
-
+    private static String removeDuplicate(String cryptogram) {
+        boolean changeFlag = false;
+        char before = '@';
         for (int i = 0; i < cryptogram.length(); i++) {
-            if (index == i) {
-                i++;
-            } else if (index != i) {
-                stringBuilder.append(cryptogram.charAt(i));
+            if (deque.isEmpty()) {
+                deque.offerLast(cryptogram.charAt(i));
+                before = cryptogram.charAt(i);
+            } else if (before != cryptogram.charAt(i) && deque.peekLast() != cryptogram.charAt(i)) {
+                deque.offerLast(cryptogram.charAt(i));
+                before=cryptogram.charAt(i);
+                changeFlag = false;
+            } else if (before == cryptogram.charAt(i) && !changeFlag) {
+                changeFlag = true;
+                deque.removeLast();
+            } else if (deque.peekLast() == cryptogram.charAt(i)) {
+                before = cryptogram.charAt(i);
+                deque.removeLast();
             }
         }
-        return removeLetter(String.valueOf(stringBuilder));
+        return getString(deque);
     }
+
+    private static String getString(Deque<Character> deque) {
+        StringBuilder stringBuilder = new StringBuilder();
+        while (!Problem2.deque.isEmpty()) {
+            stringBuilder.append(Problem2.deque.pollFirst());
+        }
+        return String.valueOf(stringBuilder);
+    }
+
 }
