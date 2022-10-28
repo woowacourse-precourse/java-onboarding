@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
@@ -14,6 +15,19 @@ class Problem1 {
         return false;
     }
 
+    static int sumPage(int rightPage) {
+        int sum = 0;
+
+        String numPage = Integer.toString(rightPage);
+        char[] numPageChar = numPage.toCharArray();
+
+        for (char x : numPageChar) {
+            sum += x - '0';
+        }
+
+        return sum;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
@@ -21,8 +35,12 @@ class Problem1 {
         Boolean isExceptionPobi = handleException(pobi.get(0), pobi.get(1));
         Boolean isExceptionCrong = handleException(crong.get(0), crong.get(1));
 
+        if (isExceptionPobi == true || isExceptionCrong == true) {
+            answer = -1;
+        }
 
-
+        int sumPobi = sumPage(pobi.get(1));
+        int sumCrong = sumPage(crong.get(1));
 
         return answer;
     }
