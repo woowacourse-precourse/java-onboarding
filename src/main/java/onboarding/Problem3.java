@@ -32,9 +32,10 @@ public class Problem3 {
 
     public static int clapThousand(int number){
         int digit369 = number / 3000;
-        int digitNormal = number / 1000 - digit369 + 1;
+        int digitNormal = number / 1000 - digit369;
+        int number100Digit = number % 1000;
 
-        return digit369 * 1000 + digitNormal * clapHundred(999);
+        return digit369 * 1000 + digitNormal * clapHundred(999) + clapHundred(number100Digit);
     }
 
     public static int solution(int number) {
