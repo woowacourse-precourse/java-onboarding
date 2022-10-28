@@ -21,3 +21,13 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+---
+## 기능 구현
+1. 한 사람의 닉네임을 연속 두 글자 단위로 substring한다
+2. substring한 문자열이 다른 사람 닉네임과 중복인지 체크한다.
+3. 중복일 경우, 해당 닉네임의 이메일을 추가한다. 이 때, 이미 중복의 이메일일 경우 추가하지 않는다 (set 사용)
+4. 다음 연속 두 글자를 substring한다.
+5. 한 사람의 마지막 글자까지 1~4를 반복한다.
+4. 모든 사람들의 닉네임에 대해 1~5를 수행한다.
+5. set으로 입력받은 이메일을 list로 변환 후 정렬한다.
