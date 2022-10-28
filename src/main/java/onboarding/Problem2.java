@@ -17,4 +17,17 @@ public class Problem2 {
         }
         return false;
     }
+
+    private static int getDuplicateRange(StringBuilder cryptogram, int start) {
+        int range = 1;
+        for (int i = start; i < cryptogram.length(); i++) {
+            if (cryptogram.charAt(i) == cryptogram.charAt(i + 1)) {
+                range += 1;
+            }
+            if (cryptogram.charAt(i) != cryptogram.charAt(i + 1)) {
+                break;
+            }
+        }
+        return range;
+    }
 }
