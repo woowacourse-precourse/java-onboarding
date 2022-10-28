@@ -1,6 +1,8 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -14,11 +16,20 @@ public class Problem6 {
         return result;
     }
 
-    static List<String> getTokens(String name){
+    static boolean isSimilar(String name1, String name2){
+
+        Stream<String> tokenStream = getTokens(name1).stream();
+        Stream<String> containedTokens =  tokenStream.filter(token -> name2.contains(token));
+
+        return containedTokens.count() > 0;
+
+    }
+
+    static List<String> getTokens(String name) {
         List<String> result = new ArrayList<String>();
 
-        for (int i = 0; i < name.length() - 1; i++){
-            String token = name.substring(i, i+2);
+        for (int i = 0; i < name.length() - 1; i++) {
+            String token = name.substring(i, i + 2);
             result.add(token);
         }
 
