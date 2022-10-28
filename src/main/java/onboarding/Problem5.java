@@ -12,7 +12,7 @@ public class Problem5 {
         List<Integer> answer = Collections.emptyList();
 
         checkException(money);
-        
+
         answer = Arrays.asList(divisionMoney(placeNumber(money)));
         Collections.reverse(answer);
 

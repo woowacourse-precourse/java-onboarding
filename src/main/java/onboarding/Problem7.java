@@ -15,24 +15,19 @@ public class Problem7 {
     static final int visitPoint = 1;
     static final int recommendNum = 5;
 
-    static List<List<String>> friendsList;
-    static Map<String, Integer> friendsPointMap= new HashMap<>();
+    static Map<String, Integer> friendsPointMap = new HashMap<>();
 
     static String userName;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         List<String> result = new ArrayList<>();
-
         Integer [] tmpArray;
 
-        friendsList = friends;
         userName = user;
 
-        givePoint(user, visitors);
+        givePoint(user, visitors, friends);
         tmpArray = sortList();
-
-        System.out.println(friendsPointMap);
 
         List<String> recommedList = getKey(sortList());
         saveSortCheckPoint(tmpArray);
@@ -45,26 +40,27 @@ public class Problem7 {
 
         answer = result;
 
+        friendsPointMap.clear();
         return answer;
     }
 
     //특정 사람과 친구인 사람 구하기
-    public static List<String> findUserFriends(String user) {
+    public static List<String> findUserFriends(String user, List<List<String>> friends_list) {
         List<String> userFriendsList = new ArrayList<>();
         String friends = "";
 
-        for (int i = 0; i < friendsList.size(); i++) {
-            if (user.equals(friendsList.get(i).get(firstFriend)))
+        for (int i = 0; i < friends_list.size(); i++) {
+            if (user.equals(friends_list.get(i).get(firstFriend)))
             {
-                if (!user.equals(userName) && userName.equals(friendsList.get(i).get(secondFriend)))
+                if (!user.equals(userName) && userName.equals(friends_list.get(i).get(secondFriend)))
                     continue;
-                userFriendsList.add(friendsList.get(i).get(secondFriend));
+                userFriendsList.add(friends_list.get(i).get(secondFriend));
             }
-            if (user.equals((friendsList.get(i).get(secondFriend))))
+            if (user.equals((friends_list.get(i).get(secondFriend))))
             {
-                if (!user.equals(userName) && userName.equals(friendsList.get(i).get(secondFriend)))
+                if (!user.equals(userName) && userName.equals(friends_list.get(i).get(secondFriend)))
                     continue;
-                userFriendsList.add(friendsList.get(i).get(firstFriend));
+                userFriendsList.add(friends_list.get(i).get(firstFriend));
             }
         }
         return userFriendsList;
@@ -80,26 +76,26 @@ public class Problem7 {
 
         return visitorsList;
     }
-    public static void givePoint(String user, List<String> visitors)
+    public static void givePoint(String user, List<String> visitors, List<List<String>> friends_list)
     {
         List<String> userFriendsList;
 
         //사용자와 친구인 목록
-        userFriendsList = findUserFriends(user);
+        userFriendsList = findUserFriends(user, friends_list);
 
         //친구의 친구 목록을 구하고 점수를 구함
-        saveUserPoint(findFriendsOfFriend(userFriendsList), knowPoint);
+        saveUserPoint(findFriendsOfFriend(userFriendsList, friends_list), knowPoint);
         saveUserPoint(removeDuplication(saveVisitorList(visitors), userFriendsList), visitPoint);
     }
     //사용자와 친구인 친구의 목록을 구해서 점수를 주는 함수
-    public static List<String> findFriendsOfFriend(List<String> userFriendsList)
+    public static List<String> findFriendsOfFriend(List<String> userFriendsList, List<List<String>> friends_list)
     {
         List<String> friendOfFriendsList;
 
         //사용자와 친구인 친구의 목록
-        friendOfFriendsList = findUserFriends(userFriendsList.get(0));
+        friendOfFriendsList = findUserFriends(userFriendsList.get(0), friends_list);
         for (int i = 1; i < userFriendsList.size(); i++)
-            friendOfFriendsList.addAll(findUserFriends(userFriendsList.get(i)));
+            friendOfFriendsList.addAll(findUserFriends(userFriendsList.get(i), friends_list));
 
         //사용자와 친구인 목록은 삭제
         removeDuplication(friendOfFriendsList,userFriendsList);
@@ -177,8 +173,6 @@ public class Problem7 {
             i = cnt;
             checkPointList.add(cnt);
         }
-
-        System.out.println(checkPointList);
         return checkPointList;
     }
 
