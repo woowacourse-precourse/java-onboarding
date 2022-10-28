@@ -20,6 +20,8 @@ public class Problem7 {
             if(idx == MAXRECOMMEND) break;
             String recomFriend = entryRecomFirends.get(idx).getKey();
             answer.add(recomFriend);
+            System.out.println(recomFriend);
+            System.out.println(entryRecomFirends.get(idx).getValue());
         }
         return answer;
     }
@@ -50,9 +52,9 @@ public class Problem7 {
                 String secondHuman = friend.get(1);
                 if(!(user.equals(firstHuman)||user.equals(secondHuman))) {
                     if (alreadyFriend.equals(firstHuman) && !alreadyFriends.contains(secondHuman))
-                        recommendFriend.put(secondHuman,10);
+                        recommendFriend.put(secondHuman,recommendFriend.getOrDefault(secondHuman,0) + 10);
                     if (alreadyFriend.equals(secondHuman) && !alreadyFriends.contains(firstHuman))
-                        recommendFriend.put(firstHuman,10);
+                        recommendFriend.put(firstHuman,recommendFriend.getOrDefault(firstHuman,0) + 10);
                 }
             }
         }
