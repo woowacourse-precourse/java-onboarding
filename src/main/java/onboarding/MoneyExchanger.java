@@ -5,20 +5,14 @@ import java.util.List;
 
 public class MoneyExchanger {
     private List<Integer> numberOfUnits = new ArrayList<>();
-    private int moneyToExchange;
 
-    public MoneyExchanger(int money) {
-        this.moneyToExchange = money;
-    }
-
-    public List<Integer> toUnits() {
-        toBills();
-        toCoins();
+    public List<Integer> toUnits(int moneyToExchange) {
+        toCoins(toBills(moneyToExchange));
 
         return numberOfUnits;
     }
 
-    private void toBills() {
+    private int toBills(int moneyToExchange) {
         int countOfBills;
         int[] bills = {50000, 10000, 5000, 1000};
 
@@ -27,9 +21,11 @@ public class MoneyExchanger {
             numberOfUnits.add(countOfBills);
             moneyToExchange -= countOfBills * bills[i];
         }
+
+        return moneyToExchange;
     }
 
-    private void toCoins() {
+    private void toCoins(int moneyToExchange) {
         int countOfCoins;
         int[] coins = {500, 100, 50, 10, 1};
 

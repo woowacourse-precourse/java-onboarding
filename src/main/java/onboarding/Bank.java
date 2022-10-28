@@ -11,8 +11,8 @@ public class Bank {
     }
 
     public List<Integer> exchangeToUnits() {
-        MoneyExchanger moneyExchanger = new MoneyExchanger(money);
+        MoneyExchanger moneyExchanger = new MoneyExchanger();
 
-        return moneyExchanger.toUnits();
+        return moneyExchanger.toUnits(money);
     }
 }
