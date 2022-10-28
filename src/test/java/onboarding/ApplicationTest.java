@@ -241,39 +241,48 @@ class ApplicationTest {
     }
 
     @Nested
+    @DisplayName("문제 4 테스트")
     class Problem4Test {
-        @Test
-        @DisplayName("대문자는 대문자로, 소문자는 소문자로")
-        void case1() {
-            String word = "I love you";
-            String result = "R olev blf";
-            assertThat(Problem4.solution(word)).isEqualTo(result);
+        @Nested
+        @DisplayName("문제 4 성공 케이스 테스트")
+        class Problem4SuccessTest {
+            @Test
+            @DisplayName("대문자는 대문자로, 소문자는 소문자로 청개구리 실행")
+            void case1() {
+                String word = "I love you";
+                String result = "R olev blf";
+                assertThat(Problem4.solution(word)).isEqualTo(result);
+            }
+
+            @Test
+            @DisplayName("알파벳 외 문자는 그대로 반환")
+            void case2() {
+                String word = "$aVe ¥0U";
+                String result = "$zEv ¥0F";
+                assertThat(Problem4.solution(word)).isEqualTo(result);
+            }
         }
 
-        @Test
-        @DisplayName("알파벳 외 문자는 변환하지 않는다.")
-        void case2() {
-            String word = "$aVe ¥0U";
-            String result = "$zEv ¥0F";
-            assertThat(Problem4.solution(word)).isEqualTo(result);
-        }
+        @Nested
+        @DisplayName("문제 4 실패 케이스 테스트")
+        class Problem4FailureTest {
+            @Test
+            @DisplayName("길이가 1,000을 초과하는 문자열이 들어오면 예외 발생")
+            void case1() {
+                String word = "VALIDWORDS".repeat(101);
+                assertThatThrownBy(() -> Problem4.solution(word))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage("문자열의 길이는 %d 이상 %d 이하여야 합니다.", 1, 1000);
+            }
 
-        @Test
-        @DisplayName("길이가 1,000을 초과하는 문자열이 들어오면 예외가 발생한다.")
-        void case3() {
-            String word = "VALIDWORDS".repeat(101);
-            assertThatThrownBy(() -> Problem4.solution(word))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("문자열의 길이는 %d 이상 %d 이하여야 합니다.", 1, 1000);
-        }
-
-        @Test
-        @DisplayName("길이가 1 미만인 문자열이 들어오면 예외가 발생한다.")
-        void case4() {
-            String word = "";
-            assertThatThrownBy(() -> Problem4.solution(word))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("문자열의 길이는 %d 이상 %d 이하여야 합니다.", 1, 1000);
+            @Test
+            @DisplayName("길이가 1 미만인 문자열이 들어오면 예외 발생")
+            void case2() {
+                String word = "";
+                assertThatThrownBy(() -> Problem4.solution(word))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage("문자열의 길이는 %d 이상 %d 이하여야 합니다.", 1, 1000);
+            }
         }
     }
 
