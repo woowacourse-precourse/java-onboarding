@@ -26,7 +26,7 @@ public class Problem2 {
 }
 
 class Password_solver {
-    Stack<Character> stack;
+    private Stack<Character> stack;
 
     Password_solver() {
         stack = new Stack<>();
