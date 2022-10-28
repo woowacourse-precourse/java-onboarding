@@ -4,10 +4,14 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem7 {
+
     private static List<String> userFriends = new ArrayList<>();
     private static Map<String, Integer> friendPoints = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        userFriends.clear();
+        friendPoints.clear();
+
         getUserFriends(user, friends);
         getFriendPoint(user, friends);
         getVisitorPoints(visitors);
@@ -28,12 +32,12 @@ public class Problem7 {
         for (List<String> friendship : friends) {
             String leftFriend = friendship.get(0);
             String rightFriend = friendship.get(1);
-            if (friendship.contains(user)) {
-                continue;
-            } else if (userFriends.contains(leftFriend)) {
-                friendPoints.put(rightFriend, friendPoints.getOrDefault(rightFriend, 10) + 10);
-            } else if (userFriends.contains(rightFriend)) {
-                friendPoints.put(leftFriend, friendPoints.getOrDefault(leftFriend, 10) + 10);
+            if (!friendship.contains(user)) {
+                if (userFriends.contains(leftFriend)) {
+                    friendPoints.put(rightFriend, friendPoints.getOrDefault(rightFriend, 10) + 10);
+                } else if (userFriends.contains(rightFriend)) {
+                    friendPoints.put(leftFriend, friendPoints.getOrDefault(leftFriend, 10) + 10);
+                }
             }
         }
     }
