@@ -1,7 +1,9 @@
 package onboarding;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.IntStream;
 
 /**
  * 🚀 기능 요구 사항
@@ -23,26 +25,28 @@ public class Problem4 {
         if (!greenFrog.isEmpty()) {
             return convertWord(word);
         }
-        initializeGreenFrogWord('a', 'z');
-        initializeGreenFrogWord('A', 'Z');
+        initializeGreenFrogWord();
         return convertWord(word);
     }
 
     private static String convertWord(String word) {
-        StringBuilder frogLanguage = new StringBuilder();
-        for (char c : word.toCharArray()) {
-            if (greenFrog.containsKey(c)) {
-                frogLanguage.append(greenFrog.get(c));
-                continue;
-            }
-            frogLanguage.append(c);
-        }
-        return frogLanguage.toString();
+        return word.chars()
+                .mapToObj(c -> (char) c)
+                .collect(StringBuilder::new,
+                        (acc, character) ->
+                                acc.append(greenFrog.getOrDefault(character, character)),
+                        StringBuilder::append)
+                .toString();
     }
 
-    private static void initializeGreenFrogWord(char firstCharacter, char lastCharacter) {
-        for (char c = firstCharacter; c <= lastCharacter; c++) {
-            greenFrog.put(c, (char) (lastCharacter - (c - firstCharacter)));
-        }
+    private static void initializeGreenFrogWord() {
+        registerGreenFrogWord('a', 'z');
+        registerGreenFrogWord('A', 'Z');
+    }
+
+    private static void registerGreenFrogWord(char firstCharacter, char lastCharacter) {
+        IntStream.rangeClosed(firstCharacter, lastCharacter)
+                .forEach(c ->
+                        greenFrog.put((char) c, (char) (lastCharacter - (c - firstCharacter))));
     }
 }
