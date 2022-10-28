@@ -33,12 +33,41 @@ public class Problem7 {
         mutualFriends.removeAll(directFriends);
 
         // 추천인 리스트 만들기
-        HashSet<String> suggestedAccouts = new HashSet<>();
-        suggestedAccouts.addAll(mutualFriends);
-        suggestedAccouts.addAll(visitors);
-        suggestedAccouts.removeAll(directFriends);
+        HashSet<String> suggestedAccounts = new HashSet<>();
+        suggestedAccounts.addAll(mutualFriends);
+        suggestedAccounts.addAll(visitors);
+        suggestedAccounts.removeAll(directFriends);
 
-        System.out.println(suggestedAccouts);
+        System.out.println("suggested: "+suggestedAccounts);
+        System.out.println("mutual: "+mutualFriends);
+        System.out.println("visited: "+visitors);
+
+        // score 정의하기
+        HashMap<String, Integer> score = new HashMap<String, Integer>();
+        for(String suggestedAccount: suggestedAccounts){
+            score.put(suggestedAccount, 0);
+        }
+        System.out.println(score);
+
+        // mutual friend => + 10점
+        for(String mutualFriend: mutualFriends){
+            if(suggestedAccounts.contains(mutualFriend)){
+                score.put(mutualFriend, score.get(mutualFriend)+10);
+            }
+        }
+
+        // visitor => + 1 점
+        for(String visitor: visitors){
+            if(suggestedAccounts.contains(visitor)){
+                score.put(visitor, score.get(visitor)+1);
+            }
+        }
+
+        System.out.println(score);
+
+
+
+
 
         return answer;
     }
