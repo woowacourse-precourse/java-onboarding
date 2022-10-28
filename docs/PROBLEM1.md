@@ -45,4 +45,11 @@
 - java에서 if문안에 여러가지 논리연산자가 포함되는 경우 ex) if (method1() && method2() && method3())
  lazy checking을 하는 지 만약에 eager checking을 하면 성능에서도 비효율적이고, 무엇보다 runtime error에 위험성이 있음...
   ( 후에 다시 돌아와서 고려해볼 점 : eager checking에 과정에서 런타임 오류가 난다면 validation에 들어가는 메써드들간에 결합도가 있다는 소리인데 이부분을 어떻게 제거할 지 생각해보기)
+ <br>해결방안 (refactor) : validation에서 기본적으로 리스트 속 원소가 2개와 맞지 않으면 모든 validation에서 의미가 없어짐 -> 모든 validation에 userInput의 리스트 길이가 2인지 확인하는 코드를 삽입
+
+----- 
+
 - 모든 메써드를 public으로 하지말고 정말 필요한 함수 호출만 public으로 하고 나머지는 private으로 작성하는 연습을 해보자 (refactor 해보자!)
+<br> 해결방안 (refactor) : 외부로부터 필요한 메써드 input이 valid한지, 결과값이 무엇인지에 대한 메써드만 public으로 열고 나머지는 private으로 감싸기
+<br> ++ 추가적으로 앞으로 테스트코드는 public호출로 잘 작동하는지 정도만 작성하자!!!!
+-----
