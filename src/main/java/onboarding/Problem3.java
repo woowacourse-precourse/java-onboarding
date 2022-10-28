@@ -10,7 +10,7 @@ public class Problem3 {
 
             while (nowNumber != 0) {
                 if (nowNumber % 10 == 3 || nowNumber % 10 == 6 || nowNumber % 10 == 9) {
-
+                    answer += 1;
                 }
                 nowNumber /= 10;
             }
