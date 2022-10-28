@@ -140,7 +140,6 @@ class Compare {
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
         
         List<Integer> pobi_number = pobi;
         List<Integer> crong_number = crong;
