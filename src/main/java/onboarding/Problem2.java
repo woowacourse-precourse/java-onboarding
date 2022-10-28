@@ -1,6 +1,15 @@
 package onboarding;
 
 public class Problem2 {
+    static boolean isReversible(String cryptogram) {
+        char[] cryptogramCharArray = cryptogram.toCharArray();
+        for (int i = 0; i < cryptogramCharArray.length/2; i++) {
+            if (cryptogramCharArray[i] != cryptogramCharArray[cryptogramCharArray.length - 1 - i]) {
+                return false;
+            }
+        }
+        return true;
+    }
     public static String solution(String cryptogram) {
         String answer = cryptogram;
         while (true) {
