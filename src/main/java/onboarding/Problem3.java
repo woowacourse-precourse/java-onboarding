@@ -1,5 +1,7 @@
 package onboarding;
 
+import onboarding.problem3.ThreefoldGamer;
+
 /**
  * Problem 3 function list
  * - Running game (search each number)
@@ -7,7 +9,7 @@ package onboarding;
  */
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
-        return answer;
+        ThreefoldGamer gamer = new ThreefoldGamer(number);
+        return gamer.runGame();
     }
 }
