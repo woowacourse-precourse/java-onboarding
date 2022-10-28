@@ -10,8 +10,8 @@ public class Problem3 {
 
     /**
      * 369 게임을 입력 된 수까지 진행할 때 총 박수 횟수 반환
-     * @param number
-     * @return int
+     * @param {int} number
+     * @return {int} count
      */
     public static int clapCount(int number) {
         int count = 0;
