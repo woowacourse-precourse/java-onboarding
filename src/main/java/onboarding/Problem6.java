@@ -1,14 +1,37 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         List<Member> members = initialize(forms);
 
+
+
         return answer;
+    }
+
+    private static Set<String> getRestrictedEmail(List<Member> members) {
+        Set<String> restrictedEmail = new HashSet<>();
+        Member member;
+        Member comparisonMember;
+        for(int i = 0; i < members.size(); i++) {
+            member = members.get(i);
+            for(int j = i; j < members.size(); j++) {
+                comparisonMember = members.get(j);
+                if(isDuplicated(member, comparisonMember)) {
+                    restrictedEmail.add(member.getEmail());
+                    restrictedEmail.add(comparisonMember.getEmail());
+                    break;
+                }
+            }
+        }
+
+        return restrictedEmail;
     }
 
     private static List<Member> initialize(List<List<String>> forms) {
@@ -35,6 +58,14 @@ public class Problem6 {
             isValidNickname(nickname);
             this.email = email;
             this.nickname = nickname;
+        }
+
+        public String getEmail() {
+            return this.email;
+        }
+
+        public String getNickname() {
+            return this.nickname;
         }
 
         private void isValidEmail(String email) {
