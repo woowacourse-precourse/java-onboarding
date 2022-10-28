@@ -13,12 +13,12 @@ public class Problem5 {
         List<Integer> answer = new ArrayList<>();
 
         boolean flag = false;
-        int money_bill = 50000;
+        int money_bill = 50000; //
         while (true) {
-            answer.add(money / money_bill); //
+            answer.add(money / money_bill);
             money -= (money / money_bill) * money_bill;
 
-            // 종료 조건
+            // 10원 -> 1원으로 변경될때는 예외사항 & 종료조건
             if (money_bill == 10) {
                 money_bill /= 10; // 1
                 answer.add(money / money_bill); // 1
@@ -26,6 +26,7 @@ public class Problem5 {
                 break;
             }
 
+            // boolean flag 사용하여 money_bill /5 와 /2 를 번갈아가며 실행함
             if (!flag) {
                 money_bill /= 5;
                 flag = true;
@@ -33,7 +34,6 @@ public class Problem5 {
                 money_bill /= 2;
                 flag = false;
             }
-
         }
 
         return answer;
