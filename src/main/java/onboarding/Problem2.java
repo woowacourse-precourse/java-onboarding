@@ -4,6 +4,11 @@ public class Problem2 {
 
     public static String solution(String cryptogram) {
         String answer = "";
+
+        //만약 초기 데이터가 더블이 아니면 바로 리턴
+        if(isDouble(cryptogram)){
+            answer = findAnswer(cryptogram);
+        }
         return answer;
     }
 
