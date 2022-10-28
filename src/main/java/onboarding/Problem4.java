@@ -16,7 +16,13 @@ public class Problem4 {
         for (int i = (int)'A'; i <= (int)'Z'; i++) {
             alphabetL.add((char)i);
         }
+        /**
+         * abcdefghijklmnopqrstuvwxyz
+         * ABCDEFGHIJKLMNOPQRSTUVWXYZ
+         */
+        for (int i = 0; i < word.length(); i++) {
 
+        }
         return answer;
     }
     /**
