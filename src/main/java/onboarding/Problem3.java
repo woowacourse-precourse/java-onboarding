@@ -9,13 +9,13 @@ public class Problem3 {
     private static int count = 0;
 
     public static int solution(int number) {
-        IntStream.range(1, number+1).forEach(Problem3::checkNumberInRange);
+        IntStream.range(1, number + 1).forEach(Problem3::checkNumberInRange);
         return count;
     }
 
     private static void checkNumberInRange(int number) {
-        while(number != 0) {
-            if(numbers.contains(number%10)) {
+        while (number != 0) {
+            if (numbers.contains(number % 10)) {
                 count++;
             }
 
