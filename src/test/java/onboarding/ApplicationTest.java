@@ -38,9 +38,8 @@ class ApplicationTest {
         void getScore() {
         	List<Integer> pobi = List.of(131, 132);
             List<Integer> crong = List.of(197, 198);
-            
-        	assertThat(Problem1.getScore(pobi.get(0), pobi.get(1))).isEqualTo(6);
-        	assertThat(Problem1.getScore(crong.get(0), crong.get(1))).isEqualTo(72);
+            int result = 2;
+        	assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
         @Test
         void nullPageTest() {
@@ -52,11 +51,10 @@ class ApplicationTest {
         	pobi.add(3);
         	pobi.add(null);
         	//when
-        	boolean result = true;
+        	int result = -1;
         	
         	//then
-        	assertThat(Problem1.isNullPage(crong.get(0), crong.get(1))).isEqualTo(result);
-        	assertThat(Problem1.isNullPage(pobi.get(0), pobi.get(1))).isEqualTo(result);
+        	assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
         
         @Test
@@ -66,11 +64,10 @@ class ApplicationTest {
         	List<Integer> crong = List.of(399, 8);
         	
         	//when
-        	boolean result = true;
+        	int result = -1;
         	
         	//then
-        	assertThat(Problem1.isLeftPageInRange(pobi.get(0))).isEqualTo(result);
-        	assertThat(Problem1.isLeftPageInRange(crong.get(0))).isEqualTo(result);
+        	assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
         
         @Test
@@ -80,43 +77,43 @@ class ApplicationTest {
         	List<Integer> crong = List.of(401, 8);
         	
         	//when
-        	boolean result = false;
+        	int result = -1;
         	
         	//then
-        	assertThat(Problem1.isLeftPageInRange(pobi.get(0))).isEqualTo(result);
-        	assertThat(Problem1.isLeftPageInRange(crong.get(0))).isEqualTo(result);
+        	assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
         
         @Test
         void ExceptionTest() {
-        	
+        	int result = -1;
         	//case1: 앞면 or 뒷면을 갖고 있는 경우
         	//given, when
         	List<Integer> pobiA = new LinkedList<>();
+        	List<Integer> crongA = List.of(3,4);
         	pobiA.add(null);
         	pobiA.add(4);
         	//then
-        	assertThat(Problem1.isCorrectPage(pobiA.get(0), pobiA.get(1))).isEqualTo(false);
+        	assertThat(Problem1.solution(pobiA, crongA)).isEqualTo(result);
         	
         	//case2: 연속된 페이지가 아닌 경우
         	//given, when
-        	List<Integer> crongA = List.of(1, 8);
+        	List<Integer> pobiB = List.of(1, 8);
         	//then
-        	assertThat(Problem1.isCorrectPage(crongA.get(0), crongA.get(1))).isEqualTo(false);
+        	assertThat(Problem1.solution(pobiB, crongA)).isEqualTo(result);
         	
         	//case3: 범위밖인 경우
         	//given, when
-        	List<Integer> crongB = List.of(401, 402);
+        	List<Integer> pobiC = List.of(401, 402);
         	List<Integer> crongC = List.of(-1, 0);
         	//then
-        	assertThat(Problem1.isCorrectPage(crongB.get(0), crongB.get(1))).isEqualTo(false);
-        	assertThat(Problem1.isCorrectPage(crongC.get(0), crongC.get(1))).isEqualTo(false);
+        	assertThat(Problem1.solution(pobiC, crongC)).isEqualTo(result);
         	
         	//case4: 홀,짝이 다른 경우
         	//given, when
+        	List<Integer> pobiD = List.of(43, 44);
         	List<Integer> crongD = List.of(388, 389);
         	//then
-        	assertThat(Problem1.isCorrectPage(crongD.get(0), crongD.get(1))).isEqualTo(false);
+        	assertThat(Problem1.solution(pobiD, crongD)).isEqualTo(result);
         }
     }
 
