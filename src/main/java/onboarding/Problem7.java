@@ -56,6 +56,17 @@ public class Problem7 {
         }
     }
 
+    // value(점수)기준 내림차순 정렬
+    private static List<String> arrangeHighScore(){
+        List<String> name = new ArrayList<>();
+        List<String> keySet = new ArrayList<>(strangerScoreMap.keySet());
+
+        keySet.sort((o1, o2) -> strangerScoreMap.get(o2) - strangerScoreMap.get(o1));
+        for (String key : keySet) {
+            name.add(key);
+        }
+        return name;
+    }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
