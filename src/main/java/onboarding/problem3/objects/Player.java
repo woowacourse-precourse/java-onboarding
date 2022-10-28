@@ -5,10 +5,10 @@ public class Player {
     private Clap clap;
 
     public Player(int number) {
-        this.clap = new Clap();
+        this.clap = new Clap(number);
     }
 
-    public int numberComeTrue(int num, Rule rule) {
-        return rule.numberComeTrue(num, clap);
+    public int numberComeTrue(Rule rule) {
+        return rule.numberComeTrue(this.clap);
     }
 }
