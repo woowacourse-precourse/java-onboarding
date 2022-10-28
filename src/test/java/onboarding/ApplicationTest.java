@@ -40,6 +40,24 @@ class ApplicationTest {
         }
 
         @Test
+        @DisplayName("비정상적인 입력값 - 왼쪽 페이지가 홀수가 아님")
+        void case3_5() {
+            List<Integer> pobi = List.of(100, 101);
+            List<Integer> crong = List.of(211, 212);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        @DisplayName("오른쪽에서 왼쪽으로 읽는 책의 경우 왼쪽 페이지의 숫자가 더 클 수 있음")
+        void case3_6() {
+            List<Integer> pobi = List.of(101, 100);
+            List<Integer> crong = List.of(211, 212);
+            int result = 2;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
         @DisplayName("크롱의 최고 점수가 더 높을 때 2 반환")
         void case4() {
             List<Integer> pobi = List.of(211, 212);
