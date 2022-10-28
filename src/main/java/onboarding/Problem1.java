@@ -66,7 +66,19 @@ class Problem1 {
      *  점수를 비교해 승자를 구분하고 게임 결과를 반환하는 함수
      */
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        if(!(checkPagesValidation(pobi) && checkPagesValidation(crong))) {
+            return -1;  // 예외 사항
+        }
+
+        int pobiScore = getScore(pobi);
+        int crongScore = getScore(crong);
+
+        if(pobiScore > crongScore) {
+            return 1;   // 포비 우승
+        } else if(pobiScore < crongScore) {
+            return 2;   // 크롱 우승
+        } else {
+            return 0;   // 무승부
+        }
     }
 }
