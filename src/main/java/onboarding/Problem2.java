@@ -6,11 +6,7 @@ import java.util.stream.Collectors;
 public class Problem2 {
     public static String solution(String cryptogram) {
         Stack<Character> stack = new Stack<>();
-
-        char[] chars = cryptogram.toCharArray();
-        for (Character aChar : chars) {
-            duplicateCheck(stack, aChar);
-        }
+        cryptogram.chars().forEach(i -> duplicateCheck(stack, (char) i));
         return stack.stream().map(String::valueOf).collect(Collectors.joining());
     }
 
