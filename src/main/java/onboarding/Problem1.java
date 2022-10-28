@@ -32,8 +32,8 @@ class Problem1 {
     }
 
     public static int sumNumber(){
-        int plusnumber=firstnumber+middlenumber+lastnumber;
-        return plusnumber;
+        int sumnumber=firstnumber+middlenumber+lastnumber;
+        return sumnumber;
     }
 
     public static int multipleNumber(){
@@ -54,6 +54,24 @@ class Problem1 {
         }else{
             thispagenumber=multiple;
         }
+    }
+
+    public static int whichPageNumber(List<Integer> pagelist){
+        int leftpagenumber=pagelist.get(0);
+        int rightpagenumber=pagelist.get(1);
+        divideNumber(leftpagenumber);
+        comparePageNumber(sumNumber(),multipleNumber());
+        int leftnumber=thispagenumber;
+        divideNumber(rightpagenumber);
+        comparePageNumber(sumNumber(),multipleNumber());
+        int thispersonnumber=0;
+        if(leftnumber>=thispagenumber){
+            thispersonnumber=leftnumber;
+        }else{
+            thispersonnumber=thispagenumber;
+        }
+        return thispersonnumber;
+
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
