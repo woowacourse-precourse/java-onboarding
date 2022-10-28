@@ -1,7 +1,11 @@
 package onboarding;
 
 public class Problem4 {
-    public static String solution(String word) {
+    public static String solution(String word) throws Exception {
+        // word 길이 예외처리
+        if (word.length() < 1 || word.length() > 1000)
+            throw new Exception("Word's length must be 1 and 1000");
+
         StringBuilder answer = new StringBuilder();
         for (int idx = 0; idx < word.length(); idx++) {
             answer.append(transformChar(word.charAt(idx)));

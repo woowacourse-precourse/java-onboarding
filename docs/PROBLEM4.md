@@ -15,7 +15,7 @@
 - [x] FEATURE3. 청개구리 사전 소문자 변환 함수
 - [x] FEATURE4. 문자 변환 함수
 - [x] FEATURE5. solution 함수
-- [ ] FEATURE6. 기능 요구 사항 예외처리
+- [x] FEATURE6. 기능 요구 사항 예외처리
 
 ### 제한사항
 
