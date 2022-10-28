@@ -39,6 +39,7 @@ public class Problem2 {
 
         Stack<Character> stack = new Stack<>();
         stack.push(cryptogram.charAt(0)); // Stack 첫 번째에는 무조건 값을 넣음
+        StringBuilder sb = new StringBuilder();
 
         for (int i=1; i<cryptogram.length(); i++) {
             if (stack.peek() == cryptogram.charAt(i)) {  // 현재 Stack 의 마지막값과 넣으려고 하는 값을 비교해서 같으면 pop => continue
@@ -48,5 +49,9 @@ public class Problem2 {
             stack.push(cryptogram.charAt(i)); // 스택에 cryptogram 를 하나씩 push
         }
 
+        while (!stack.empty()) {  // 스택에 값이 있을 때 까지 pop 을 통해 StringBuilder 에 추가
+            sb.append(stack.pop());
+        }
+        return sb.reverse().toString();  // 스택은 LIFO 이므로 역으로 변환한 뒤 return
     }
 }
