@@ -10,6 +10,14 @@ public class Problem4 {
             frogDictionary.put(alpha, (char)('Z' - i));
         }
 
+        for (int i = 0; i < word.length(); i++) {
+            char curChar = word.charAt(i);
+            if ( !isAlpha(curChar) ) {
+                answer += curChar;
+                continue;
+            }
+        }
+
         return answer;
     }
 
