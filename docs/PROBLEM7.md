@@ -24,3 +24,9 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 목록
+1. 모든 사람들의 친구 관계 초기화 기능
+2. user와 친구가 아닌, user의 친구와 친구 정보 탐색 기능
+3. 친구의 친구 점수 계산 기능
+4. 방문자 점수 계산 기능
