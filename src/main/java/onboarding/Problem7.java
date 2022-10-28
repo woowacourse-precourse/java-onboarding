@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 1. 친구목록 생성하기
 2. 지인 확인하기
 3. 지인, 방믄자 점수 계산하기
-4. 추천 점수 내림차순 정렬하기(같으면 이름 오름차순 정렬)
+4. 추천 점수 내림차순 정렬하기 (같으면 이름 오름차순 정렬)
 */
 
 public class Problem7 {
