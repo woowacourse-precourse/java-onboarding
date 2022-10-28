@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.List;
+
 class Problem1 {
 
     private final static int ERROR = -1;
@@ -8,7 +9,7 @@ class Problem1 {
     private final static int POBI_WIN = 1;
     private final static int CRONG_WIN = 2;
     private final static int MAX_PAGE = 398;
-    private final static int MIN_PAGE= 2;
+    private final static int MIN_PAGE = 2;
     private final static int EXPANDED_PAGE = 2;
 
 
@@ -17,8 +18,9 @@ class Problem1 {
         int pobiScore;
         int crongScore;
 
-        if(exception(pobi) || exception(crong))
+        if (exception(pobi) || exception(crong)) {
             return ERROR;
+        }
 
         pobiScore = getMaxScore(pobi);
         crongScore = getMaxScore(crong);
@@ -31,16 +33,21 @@ class Problem1 {
         int leftPage = page.get(0);
         int rightPage = page.get(1);
 
-        if (page.size() != EXPANDED_PAGE)
+        if (page.size() != EXPANDED_PAGE) {
             return true;
-        if (leftPage != rightPage - 1)
+        }
+        if (leftPage != rightPage - 1) {
             return true;
-        if (leftPage < MIN_PAGE)
+        }
+        if (leftPage < MIN_PAGE) {
             return true;
-        if (rightPage > MAX_PAGE)
+        }
+        if (rightPage > MAX_PAGE) {
             return true;
+        }
         return false;
     }
+
     private static int getMaxScore(List<Integer> user) {
         int score = 0;
 
@@ -50,8 +57,7 @@ class Problem1 {
         return score;
     }
 
-    private static int maxScore(int num)
-    {
+    private static int maxScore(int num) {
         int page_sum = 0;
         int page_mult = 1;
         int max;
