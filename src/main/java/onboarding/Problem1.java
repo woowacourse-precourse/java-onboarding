@@ -7,6 +7,8 @@ class Problem1 {
     private static final int DRAW = 0;
     private static final int WIN_POBI = 1;
     private static final int WIN_CRONG = 2;
+    private static final int LEFT_PAGE = 0;
+    private static final int RIGHT_PAGE = 1;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
@@ -25,8 +27,8 @@ class Problem1 {
     }
 
     private static boolean isError(List<Integer> list) {
-        int left = list.get(0);
-        int right = list.get(1);
+        int left = list.get(LEFT_PAGE);
+        int right = list.get(RIGHT_PAGE);
 
         return (right <= left)
                 || (left % 2 == 0)
