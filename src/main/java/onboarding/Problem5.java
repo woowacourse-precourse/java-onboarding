@@ -11,7 +11,7 @@ public class Problem5 {
     }
 
     public static List<Integer> changeMoney(int money) {
-        int[] exchangeMoneyList = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
+        int[] exchangeMoneyList = {50_000, 10_000, 5000, 1000, 500, 100, 50, 10, 1};
         List<Integer> list = new ArrayList<Integer>();
 
         for (int exchangeMoney : exchangeMoneyList) {
