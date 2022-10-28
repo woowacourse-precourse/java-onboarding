@@ -20,12 +20,16 @@ import java.util.List;
 /**
  * 2. 페이지 번호 각 자리 덧셈 함수 구현
  * **/
+
+/**
+ * 3. 페이지 번호 각 자리 곳셈 함수 구현
+ * **/
+
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
-
     public static void main(String[] args){
 //        List<Integer> test1 = new ArrayList<Integer>();
 //        test1.add(3);
@@ -37,6 +41,8 @@ class Problem1 {
 //        System.out.println(checkInput(test2));
 //        int testNum = 020;
 //        System.out.println(sumOfeach(testNum));
+//        int testMul = 203;
+//        System.out.println(multiplyOfeach(testMul));
         }
     private static boolean checkInput(List<Integer> inputlist){
         if(checkSize(inputlist))
@@ -71,7 +77,14 @@ class Problem1 {
         while(num != 0){
             ret += num % 10;
             num = num / 10;
-            System.out.println(ret);
+        }
+        return ret;
+    }
+    private static int multiplyOfeach(int num){
+        int ret = 1;
+        while(num != 0){
+            ret *= num % 10;
+            num = num / 10;
         }
         return ret;
     }
