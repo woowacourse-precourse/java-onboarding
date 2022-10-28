@@ -4,15 +4,17 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
         List<Member> members = initialize(forms);
 
+        Set<String> restrictedEmail = getRestrictedEmail(members);
 
-
-        return answer;
+        return restrictedEmail.stream()
+                .sorted()
+                .collect(Collectors.toList());
     }
 
     private static Set<String> getRestrictedEmail(List<Member> members) {
@@ -32,6 +34,20 @@ public class Problem6 {
         }
 
         return restrictedEmail;
+    }
+
+    private static boolean isDuplicated(Member member, Member comparisonMember) {
+        String nickname = member.getNickname();
+        String partNickname;
+
+        for(int i = 0; i < nickname.length() - 1; i++) {
+            partNickname = nickname.substring(i, i + 2);
+            if(comparisonMember.getNickname().contains(partNickname)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private static List<Member> initialize(List<List<String>> forms) {
@@ -70,7 +86,7 @@ public class Problem6 {
 
         private void isValidEmail(String email) {
             int length = email.length();
-            if(11 <= length && length <= 20) {
+            if(length < 11 || 20 < length) {
                 throw new IllegalArgumentException("이메일의 길이가 적절하지 않습니다.");
             }
             if(!email.endsWith("@email.com")) {
