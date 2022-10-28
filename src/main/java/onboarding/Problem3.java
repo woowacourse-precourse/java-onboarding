@@ -17,6 +17,15 @@ public class Problem3 {
         return answer;
     }
 
+    private static int addClapCount(String counted_number){
+        int totalClapCount = 0;
+        for(String each_number : counted_number.split("")){
+            totalClapCount += countClaps(each_number);
+        }
+        return totalClapCount;
+    }
+
+
     private static int countClaps(String each_number){
         if(each_number.equals(THREE)) return 1;
         if(each_number.equals(SIX)) return 1;
