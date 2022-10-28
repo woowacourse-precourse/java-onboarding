@@ -9,7 +9,7 @@ public class Problem7 {
         // friends 리스트에 주어진 친구 관계를 Map으로 변환
         for(List<String> friend : friends) {
             // 첫 번째 친구의 친구 리스트에 두 번쨰 친구를 입력
-            if(friendsMap.containsKey(friend.get(0))) {
+            if(friendsMap.containsKey(friend.get(0))) { // nullPointException 방지
                 friendsMap.get(friend.get(0)).add(friendsMap.get(friend.get(0)).size(), friend.get(1));
             }
             else {
@@ -18,7 +18,7 @@ public class Problem7 {
             }
 
             // 두 번째 친구의 친구 리스트에 첫 번쨰 친구를 입력
-            if(friendsMap.containsKey(friend.get(1))) {
+            if(friendsMap.containsKey(friend.get(1))) { // nullPointException 방지
                 friendsMap.get(friend.get(1)).add(friendsMap.get(friend.get(1)).size(), friend.get(0));
             }
             else {
