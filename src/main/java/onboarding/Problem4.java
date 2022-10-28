@@ -4,11 +4,10 @@ public class Problem4 {
     public static String solution(String word) {
         char[] charArray = word.toCharArray();
         for (int i = 0; i < charArray.length; i++) {
-            toUpperCaseBackward(charArray[i]);
-            toLowerCaseBackward(charArray[i]);
+            charArray[i] = toUpperCaseBackward(charArray[i]);
+            charArray[i] = toLowerCaseBackward(charArray[i]);
         }
-
-        String answer = "";
+        String answer = String.valueOf(charArray);
         return answer;
     }
 
@@ -20,7 +19,7 @@ public class Problem4 {
     }
 
     public static char toLowerCaseBackward(char lowerCase) {
-        if (lowerCase >= 65 && lowerCase <= 90) {
+        if (lowerCase >= 97 && lowerCase <= 122) {
             lowerCase = (char)(122 - (lowerCase - 97));
         }
         return lowerCase;
