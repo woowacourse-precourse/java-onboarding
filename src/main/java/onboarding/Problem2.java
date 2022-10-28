@@ -69,7 +69,7 @@ public class Problem2 {
     }
 
     private static boolean isCheckChanged(
-        final Stack<String> stack, final int indexNumber, final boolean checkChanged, String[] splitWord) {
+        final Stack<String> stack, final int indexNumber, boolean checkChanged, String[] splitWord) {
         if (stack.peek().equals(splitWord[indexNumber])) {
             List<Integer> eraseList = getEraseList(indexNumber, splitWord);
             checkChanged = doEraseAndCheckChanged(checkChanged, splitWord, eraseList);
@@ -78,7 +78,7 @@ public class Problem2 {
     }
 
     private static boolean doEraseAndCheckChanged(
-        final boolean checkChanged, final String[] splitWord, final List<Integer> eraseList) {
+        boolean checkChanged, final String[] splitWord, final List<Integer> eraseList) {
         for (Integer eraseIndex : eraseList) {
             splitWord[eraseIndex] = "";
             checkChanged = true;
