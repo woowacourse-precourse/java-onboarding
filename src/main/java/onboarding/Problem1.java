@@ -5,8 +5,8 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = -1;
-        int pobiScore = 0;
-        int crongScore = 0;
+        int pobiScore;
+        int crongScore;
 
         if(validation(pobi, crong)){
             pobiScore = getMaxValue(pobi);
