@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
@@ -13,6 +14,30 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class ApplicationTest {
     @Nested
     class Problem1Test {
+        @Test
+        void case1() {
+            List<Integer> pobi = List.of(97, 98);
+            List<Integer> crong = List.of(197, 198);
+            int result = 0;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        void case2() {
+            List<Integer> pobi = List.of(131, 132);
+            List<Integer> crong = List.of(211, 212);
+            int result = 1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        void case3() {
+            List<Integer> pobi = List.of(99, 102);
+            List<Integer> crong = List.of(211, 212);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
         @Test
         @DisplayName("리스트나 배열의 길이가 2인지 검증")
         void testValidateListSize() {
@@ -64,30 +89,6 @@ class ApplicationTest {
         void testValidateNotFirstOrLastPages2() {
             List<Integer> pobi = List.of(55, 56);
             List<Integer> crong = List.of(399, 400);
-            int result = -1;
-            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
-        }
-
-        @Test
-        void case1() {
-            List<Integer> pobi = List.of(97, 98);
-            List<Integer> crong = List.of(197, 198);
-            int result = 0;
-            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
-        }
-
-        @Test
-        void case2() {
-            List<Integer> pobi = List.of(131, 132);
-            List<Integer> crong = List.of(211, 212);
-            int result = 1;
-            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
-        }
-
-        @Test
-        void case3() {
-            List<Integer> pobi = List.of(99, 102);
-            List<Integer> crong = List.of(211, 212);
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
@@ -146,6 +147,15 @@ class ApplicationTest {
             int number = 33;
             int result = 14;
             assertThat(Problem3.solution(number)).isEqualTo(result);
+        }
+
+        @ParameterizedTest
+        @ValueSource(ints = {-1, 0, 10001})
+        void testValidateRange() {
+            int number = -1;
+            assertThatThrownBy(() -> Problem3.validateRange(number))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("유효하지 않은 범위 내의 숫자입니다.");
         }
     }
 
