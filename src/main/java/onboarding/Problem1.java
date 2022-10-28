@@ -20,6 +20,8 @@ class Problem1 {
     static final int CRONG_WINS = 2;
     static final int DRAWS = 0;
     static final int ERROR = -1;
+    static final int MAX_PAGE = 400;
+    static final int MIN_PAGE = 1;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if(isNotValidPage(pobi) || isNotValidPage(crong)) return ERROR;
@@ -30,6 +32,12 @@ class Problem1 {
         if(person.get(RIGHT_PAGE) > MAX_PAGE || person.get(RIGHT_PAGE) < MIN_PAGE) return true;
         if(person.get(RIGHT_PAGE) - person.get(LEFT_PAGE) != PAGE_GAP) return true;
         return false;
+    }
+
+    private static int getResult(int pobis, int crongs){
+        if(pobis == crongs) return DRAWS;
+        if(pobis > crongs) return POBI_WINS;
+        return CRONG_WINS;
     }
 
     private static int getScore(List<Integer> person){
