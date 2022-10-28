@@ -71,17 +71,18 @@ class Problem1 {
         int leftScore = getMaxPageValue(list.get(0));
         int rightScore = getMaxPageValue(list.get(1));
         return Math.max(leftScore, rightScore);
+
     }
 
     /**
-     * 문제의 조건에 맞춰 결과를 return 하는 method
+     * pobi와 crong이 펼친 책의 정보가 담긴 List를 통해 승자에 따른 값을 결정하는 method
      *
-     * @param pobi  pobi가 펼친 책에 관한 정보를 담고 있는 List
-     * @param crong crong가 펼친 책에 관한 정보를 담고 있는 List
-     * @return 결과 값이 저장된 answer return
+     * @param pobi  pobi가 펼친 책에 관한 정보
+     * @param crong crong이 펼친 책에 관한 정보
+     * @return 문제의 조건에 맞춰 알맞은 answer를 return
      */
-    public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+    private static int getAnswer(List<Integer> pobi, List<Integer> crong) {
+        int answer;
         int pobiScore = getScore(pobi);
         int crongScore = getScore(crong);
 
@@ -96,6 +97,19 @@ class Problem1 {
         } else {
             answer = 0;
         }
+        return answer;
+    }
+
+    /**
+     * 문제의 조건에 맞춰 결과를 return 하는 method
+     *
+     * @param pobi  pobi가 펼친 책에 관한 정보를 담고 있는 List
+     * @param crong crong가 펼친 책에 관한 정보를 담고 있는 List
+     * @return 결과 값이 저장된 answer return
+     */
+    public static int solution(List<Integer> pobi, List<Integer> crong) {
+        int answer = Integer.MAX_VALUE;
+        answer = getAnswer(pobi, crong);
         return answer;
     }
 }
