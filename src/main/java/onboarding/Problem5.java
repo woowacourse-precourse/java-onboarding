@@ -21,5 +21,8 @@ public class Problem5 {
         return moneyMap;
     }
 
+    public static void inputMoney(Map<Integer, Integer> moneyMap, int moneyUnit, int numberOfMoney) {
+        moneyMap.put(moneyUnit, numberOfMoney);
+    }
 
 }
