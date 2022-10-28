@@ -12,6 +12,8 @@ public class Problem7 {
         checkFriendStatus(memberDataBase, friends);
 
         addScoreByUserFriend(memberDataBase, user);
+
+        addScoreByVisit(memberDataBase, user, visitors);
     private static void checkFriendStatus(Map<String, Member> memberDataBase, List<List<String>> friends) {
         for (List<String> friendList : friends) {
             Member friend0 = getMemberData(memberDataBase, friendList.get(0));
@@ -20,6 +22,14 @@ public class Problem7 {
             addFriendEachOther(friend0, friend1);
         }
     }
+    private static void addScoreByVisit(Map<String, Member> memberDataBase, String user, List<String> visitors) {
+        for (String visitor : visitors) {
+            Member tempVisitor = getMemberData(memberDataBase, visitor);
+
+            tempVisitor.addRecommendScoreByVisitors();
+        }
+    }
+
     private static void addScoreByUserFriend(Map<String, Member> memberDataBase, String user) {
         List<Member> memberFriendList = getMemberData(memberDataBase, user).getFriendList();
 
