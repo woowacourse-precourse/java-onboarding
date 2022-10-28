@@ -6,17 +6,18 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
-        GameStatus gameStatus = execute(pobi, crong);
+        GameStatus gameStatus = playGame(pobi, crong);
+
         return gameStatus.getResult();
     }
 
-    private static GameStatus execute(List<Integer> firstPlayer, List<Integer> secondPlayer) {
+    private static GameStatus playGame(List<Integer> firstPlayer, List<Integer> secondPlayer) {
 
-        Game game = new Game(Player.from(firstPlayer), Player.from(secondPlayer));
+        Game game = new Game(
+            Player.from(firstPlayer),
+            Player.from(secondPlayer)
+        );
 
-        if (game.isValid()) {
-            return GameStatus.of(game);
-        }
-        return GameStatus.ERROR;
+        return GameStatus.of(game);
     }
 }

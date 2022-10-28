@@ -19,6 +19,9 @@ public class PagePair {
 
     public int findMaxPoint() {
 
-        return Math.max(left.findMaxValue(), right.findMaxValue());
+        return Math.max(
+            left.findMaxValue(),
+            right.findMaxValue()
+        );
     }
 }

@@ -1,6 +1,5 @@
 package onboarding;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -48,33 +47,26 @@ public class Page {
     }
 
     public int findMaxValue() {
-        List<Integer> digits = convertToDigits(page);
 
-        return Math.max(calculateSum(digits), calculateMultiply(digits));
-    }
-
-    private List<Integer> convertToDigits(final Integer num) {
-        List<Character> chars = convertToList(String.valueOf(num));
-
-        return chars.stream()
+        List<Integer> digits = String.valueOf(page)
+            .chars()
+            .map(it -> (char)it)
             .map(Character::getNumericValue)
-            .collect(Collectors.toUnmodifiableList());
+            .boxed()
+            .collect(Collectors.toList());
+
+        return Math.max(
+            calculateSumOf(digits),
+            calculateMultiplyOf(digits)
+        );
     }
 
-    private List<Character> convertToList(final String input) {
-        List<Character> chars = new ArrayList<>();
-        for (Character aChar : input.toCharArray()) {
-            chars.add(aChar);
-        }
-        return chars;
-    }
-
-    private int calculateSum(final List<Integer> digits) {
+    private int calculateSumOf(final List<Integer> digits) {
         return digits.stream()
             .reduce(0, Integer::sum);
     }
 
-    private int calculateMultiply(final List<Integer> digits) {
+    private int calculateMultiplyOf(final List<Integer> digits) {
         return digits.stream()
             .reduce(1, (a, b) -> a * b);
     }

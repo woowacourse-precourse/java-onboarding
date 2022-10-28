@@ -21,20 +21,33 @@ public enum GameStatus {
 
     public static GameStatus of(final Game game) {
 
+        if (game.isValid()) {
+            return resultOf(game);
+        }
+
+        return GameStatus.ERROR;
+    }
+
+    private static GameStatus resultOf(final Game game) {
+
         return Arrays.stream(values())
-            .filter(status -> status.isResultOf(game))
+            .filter(status -> status.hasPolicyMatchedTo(game))
             .findFirst()
             .orElseThrow(IllegalArgumentException::new);
     }
 
-    private boolean isResultOf(final Game game) {
+    private boolean hasPolicyMatchedTo(final Game game) {
+
         Player firstPlayer = game.getFirstPlayer();
         Player secondPlayer = game.getSecondPlayer();
 
-        return policy.test(firstPlayer.calculatePoint(), secondPlayer.calculatePoint());
+        return policy.test(
+            firstPlayer.calculatePoint(),
+            secondPlayer.calculatePoint()
+        );
     }
 
-    public int getResult(){
+    public int getResult() {
         return this.point;
     }
 }
