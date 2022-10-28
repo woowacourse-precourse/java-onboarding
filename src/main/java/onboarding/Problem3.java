@@ -12,8 +12,7 @@ public class Problem3 {
     }
 
     /**
-     * @param n
-     * @return n에 들어가는 3, 6, 9의 개수
+     * 매개변수로 주어진 n에 들어가는 3, 6, 9의 개수를 구해 리턴
      */
     public static int count(int n) {
         int cnt = 0;
