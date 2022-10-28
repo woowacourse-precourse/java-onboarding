@@ -8,22 +8,21 @@ public class Problem2 {
     private static final char FIRST_LETTER = 'a';
     private static final char LAST_LETTER = 'z';
 
+    private static final String EMPTY_STRING = "";
+
     private static Stack<Character> charStack;
 
     public static String solution(String cryptogram) {
-        String answer = "";
 
         try {
             validate(cryptogram);
         } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-            return answer;
+            return EMPTY_STRING;
         }
 
         deleteContinuousAndDuplicatedLetters(cryptogram);
-        answer = convertStackToString();
 
-        return answer;
+        return convertStackToString();
     }
 
     public static void validate(String cryptogram) {

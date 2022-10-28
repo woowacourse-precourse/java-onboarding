@@ -15,8 +15,6 @@ class Problem1 {
     private static Pages crongPages;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-
         try {
             pobiPages = Pages.of(pobi);
             crongPages = Pages.of(crong);
@@ -27,9 +25,7 @@ class Problem1 {
         pobiScore = Pages.makeScore(pobiPages);
         crongScore = Pages.makeScore(crongPages);
 
-        answer = findWinnerAndMakeAnswer(pobiScore, crongScore);
-
-        return answer;
+        return findWinnerAndMakeAnswer(pobiScore, crongScore);
     }
 
     private static int findWinnerAndMakeAnswer(int pobiScore, int crongScore) {
