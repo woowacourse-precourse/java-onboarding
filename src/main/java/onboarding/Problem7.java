@@ -11,6 +11,19 @@ public class Problem7 {
     public static HashMap<String, Integer> Score;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+        friendRelation= new HashMap<>();
+        Score = new HashMap<>();
+        for(int i=0;i<friends.size();i++){
+            makeFriendRelation(friends.get(i));
+        }
+
+        plusScoreByFriend(user);
+        plusScoreByVisitor(visitors);
+
+        List<String> recommendList = new ArrayList<>(Score.keySet());
+        sortingByScore(recommendList);
+        excludeUserFriendAndUser(recommendList, user);
+        answer = recomand(recommendList);
         return answer;
     }
 
