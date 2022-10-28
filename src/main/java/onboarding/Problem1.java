@@ -18,9 +18,8 @@ class Problem1 {
             Pages pobiPages = Pages.of(pobi);
             Pages crongPages = Pages.of(crong);
 
-            if (PageValidator.isInValidPages(pobiPages) || PageValidator.isInValidPages(crongPages)) {
-                return EXCEPTION_RETURN_VALUE;
-            }
+            PageValidator.isInValidPages(pobiPages);
+            PageValidator.isInValidPages(crongPages);
 
             Score pobiScore = ScoreService.getHighestScore(pobiPages);
             Score crongScore = ScoreService.getHighestScore(crongPages);
