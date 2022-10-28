@@ -44,4 +44,9 @@ class Problem1 {
 
         return pageIngredient.stream().reduce(0, Integer::sum);
     }
+
+    static int multiplyPageIngredient(List<Integer> pageIngredient) {
+
+        return pageIngredient.stream().reduce(1, (a, b) -> a * b);
+    }
 }

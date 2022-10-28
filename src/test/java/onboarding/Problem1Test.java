@@ -107,4 +107,28 @@ class Problem1Test {
         assertThat(crongFirstPageIngredientSum).isEqualTo(17);
         assertThat(crongSecondPageIngredientSum).isEqualTo(18);
     }
+
+    @Test
+    public void multiplyPageIngredient() {
+        //given
+        List<Integer> pobi = List.of(97, 98);
+        List<Integer> crong = List.of(197, 198);
+
+        List<Integer> pobiFirstPageIngredient = getPageIngredients(pobi.get(0));
+        List<Integer> pobiSecondPageIngredient = getPageIngredients(pobi.get(1));
+        List<Integer> crongFirstPageIngredient = getPageIngredients(crong.get(0));
+        List<Integer> crongSecondPageIngredient = getPageIngredients(crong.get(1));
+
+        //when
+        int pobiFirstPageIngredientMultiply = Problem1.multiplyPageIngredient(pobiFirstPageIngredient);
+        int pobiSecondPageIngredientMultiply = Problem1.multiplyPageIngredient(pobiSecondPageIngredient);
+        int crongFirstPageIngredientMultiply = Problem1.multiplyPageIngredient(crongFirstPageIngredient);
+        int crongSecondPageIngredientMultiply = Problem1.multiplyPageIngredient(crongSecondPageIngredient);
+
+        //then
+        assertThat(pobiFirstPageIngredientMultiply).isEqualTo(63);
+        assertThat(pobiSecondPageIngredientMultiply).isEqualTo(72);
+        assertThat(crongFirstPageIngredientMultiply).isEqualTo(63);
+        assertThat(crongSecondPageIngredientMultiply).isEqualTo(72);
+    }
 }
