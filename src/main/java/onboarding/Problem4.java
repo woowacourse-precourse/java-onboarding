@@ -27,6 +27,11 @@ public class Problem4 {
         return false;
     }
 
+    private static boolean isLowercase(char nextCharacter){
+        if(nextCharacter - 'a' >= ALPHABET_START_INDEX && nextCharacter - 'a' <= ALPHABET_LAST_INDEX) return true;
+        return false;
+    }
+
     private static char flipUpperCase(char alphabet){
         return (char) (UPPERCASE_DICTIONARY_SUM - alphabet);
     }
