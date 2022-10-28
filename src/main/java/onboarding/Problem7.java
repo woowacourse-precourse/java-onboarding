@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -57,9 +58,11 @@ public class Problem7 {
             }
         }
         //TODO: score 높은 순서대로 정렬 + 최대 5명
-
-        List<String> answer = Collections.emptyList();
-
+        List<String> answer=score.entrySet().stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .limit(5)
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
         return answer;
     }
 }
