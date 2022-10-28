@@ -1,9 +1,7 @@
 package onboarding.problem7;
 
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class SNSController {
 
@@ -16,6 +14,16 @@ public class SNSController {
         users = new HashMap<>();
     }
 
+
+    private void removeMyFriends(String userName, HashMap<String, RecommendPoint> points){
+        User user = users.get(userName);
+        List<String> myFriends = new LinkedList<>(user.getFriendNames());
+        for(String myFriend : myFriends){
+            if(points.containsKey(myFriend)){
+                points.remove(myFriend);
+            }
+        }
+    }
 
 
     private List<RecommendPoint> generateVisitorRecommendPoint(String userName){
