@@ -56,6 +56,15 @@ class Problem1 {
         return point;
     }
 
+    private static int getResult(int point1, int point2){
+        if(point1 == point2)
+            return 0;
+        else if(point1 > point2)
+            return 1;
+        else
+            return 2;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
