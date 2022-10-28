@@ -25,6 +25,17 @@ class Problem1 {
         int pobiScore = Math.max(calBigNum(pobi.get(0)), calBigNum(pobi.get(1)));
         int crongScore = Math.max(calBigNum(crong.get(0)), calBigNum(crong.get(1)));
 
+        if(pobiScore > crongScore) {
+            // pobi 승
+            answer = 1;
+        } else if(pobiScore < crongScore) {
+            // crong 승
+            answer = 2;
+        } else {
+            // 무승부
+            answer = 0;
+        }
+
         return answer;
     }
 }
