@@ -6,4 +6,11 @@ public class Problem4 {
         char[] splitWord = word.toCharArray();
         return answer;
     }
+
+    private static char translate(char c) {
+        if (Character.isAlphabetic(c)) {
+
+        }
+        return c;
+    }
 }
