@@ -24,3 +24,20 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+<br>
+
+---
+
+## 기능 구현 목록
+
+- isFriendsContainUser(List<String> friends, String user)
+  - 유저와 친구 관계인지 확인해주는 기능
+- updateRecommendScore(String user, int score)
+  - 추천 점수를 올려주는 기능
+- friendsSetup(List<List<String>> friends, String user)
+  - user의 친구 관계를 구해주는 기능
+- removeMyFriendsAndValueIsZero
+  - user와 친구이거나, 추천 점수가 0점이라면 추천 목록에서 제거해주는 기능
+- updateScore(List<List<String>> friends, List<String> visitors)
+  - 친구와 함께아는 친구이거나, 방문자라면 추천 점수를 올려주는 기능
