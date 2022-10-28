@@ -18,9 +18,14 @@ public class Problem2 {
             return crtpto;
         return removeDuplication(result);
     }
-
+public  static  void catchException(String crtpro){
+        assert (crtpro.length()>=1);
+        assert (crtpro.length()<=1000);
+        assert (crtpro.equals(crtpro.toLowerCase()));
+}
     public static String solution(String cryptogram) {
         String answer = "answer";
+        catchException(cryptogram);
         answer = removeDuplication(cryptogram);
         return answer;
     }
