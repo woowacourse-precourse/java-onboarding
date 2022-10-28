@@ -28,9 +28,13 @@ public class Problem3 {
 
         int remainedNumber = number;
         int count = 0;
+        int digit;
 
         for (; remainedNumber > 0; ) {
-            if (remainedNumber % 3 == 0 || remainedNumber % 6 == 0 || remainedNumber % 9 == 0) {
+
+            digit = remainedNumber % 10;
+
+            if (digit == 3 || digit == 6 || digit == 9 ) { //digit % 3 == 0 || digit % 6 == 0 || digit % 9 == 0 안되는 이유 알아내기
                 count++;
             }
             remainedNumber /= 10;
@@ -40,17 +44,23 @@ public class Problem3 {
     }
 
     //3. 기능3
-    static int getCountSummation(int number){
+    static int getCountSummation(int number) {
         int totalCount = 0;
 
         List<Integer> numberList = getNumberList(number);
 
+	 /*
         for(int i=0; i<numberList.size(); i++){
-            totalCount += getMultipleOfThreeCount(numberList.get(i));
+            //totalCount += getMultipleOfThreeCount(numberList.get(i));
+        }
+         */
+        for (int index : numberList) {
+            totalCount += getMultipleOfThreeCount(index);
         }
 
         return totalCount;
     }
+
 
     public static int solution(int number) {
         int answer = getCountSummation(number);
