@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -20,19 +21,14 @@ import java.util.List;
 public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
-
+        List<Integer> unitList = new ArrayList(Arrays.asList(50000,10000,5000,1000,500,100,50,10,1));
         answer = new ArrayList<>();
 
-        money = changeDivider(50000, money, answer);
-        money = changeDivider(10000, money, answer);
-        money = changeDivider(5000, money, answer);
-        money = changeDivider(1000, money, answer);
-        money = changeDivider(500, money, answer);
-        money = changeDivider(100, money, answer);
-        money = changeDivider(50, money, answer);
-        money = changeDivider(10, money, answer);
-        money = changeDivider(1, money, answer);
+        for (int unit : unitList) {
+            money = changeDivider(unit, money, answer);
+        }
 
+        System.out.println(answer);
         return answer;
     }
 
