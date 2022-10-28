@@ -9,13 +9,13 @@ public class Problem6 {
 
         Map<String,String> validMap = new HashMap<>();
 
-        List<String> emailList = new ArrayList<>();
+        Set<String> emailSet = new HashSet<>();
 
         for (int i = 0; i <forms.size() ; i++) {
-            List<String> member = forms.get(i);
+            List<String> members = forms.get(i);
 
-            String email = member.get(0);
-            String nickName = member.get(1);
+            String email = members.get(0);
+            String nickName = members.get(1);
 
 
             for (int j = 0; j <nickName.length()-1 ; j++) {
@@ -24,9 +24,15 @@ public class Problem6 {
                 validMap.put(minDuplicatePart,email);
 
                 if(validMap.containsKey(minDuplicatePart)){
-                    emailList.add(validMap.get(minDuplicatePart));
-                }
 
+                    emailSet.add(email);
+                    emailSet.add(validMap.get(minDuplicatePart));
+
+                }else {
+
+                    validMap.put(minDuplicatePart,email);
+
+                }
             }
 
         }
