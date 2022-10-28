@@ -6,7 +6,7 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         HashMap<String, List<String>> contacts = new HashMap<>();
-        for (List<String> friend : friends) {
+        for (List<String> friend : friends) { // 친구 목록 만들기
             String peopleA = friend.get(0);
             String peopleB = friend.get(1);
 
