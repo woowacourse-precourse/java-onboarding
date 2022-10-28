@@ -13,13 +13,13 @@ public class Problem4 {
         for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
 
-            if (word.charAt(i) == 32) {
+            if (word.charAt(i) == 32) { // 만약 빈칸이라면 그냥 sb에 추가
                 sb.append(c);
             }
 
-            if (c >= 64 && c <= 90) {
+            if (c >= 64 && c <= 90) { // 대문자에 해당하는 경우
                 sb.append((char) ('Z' - c + 65));
-            } else if (c >= 97 && c <= 122) {
+            } else if (c >= 97 && c <= 122) { // 소문자에 해당하는 경우
                 sb.append((char) ('z' - c + 97));
             }
         }
