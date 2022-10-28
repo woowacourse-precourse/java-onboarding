@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -73,5 +74,13 @@ public class Problem6 {
         }
 
         return false;
+    }
+
+    /**
+     * 분할 된 글자 저장
+     * @param splitNicknames 2글자씩 묶인 글자 집합
+     */
+    private static void storeTwoLetterNickname(String[] splitNicknames) {
+        twoLetterSplitNicknames.addAll(Arrays.asList(splitNicknames));
     }
 }
