@@ -11,7 +11,7 @@ public class Problem3 {
             stringLength = stringNumber.length();
 
             for (int s = 0; s < stringLength; s++) {
-                if (stringNumber.charAt(s) == '3') {
+                if (stringNumber.charAt(s) == '3' || stringNumber.charAt(s) == '6' || stringNumber.charAt(s) == '9') {
                     clap++;
                 }
             }
