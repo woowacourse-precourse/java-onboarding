@@ -3,7 +3,9 @@ package onboarding;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -31,6 +33,22 @@ class ApplicationTest {
             List<Integer> pobi = List.of(99, 102);
             List<Integer> crong = List.of(211, 212);
             int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        void case4() {
+            List<Integer> pobi = List.of(211, 212);
+            List<Integer> crong = List.of(397, 398);
+            int result = 2;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        void case5() {
+            List<Integer> pobi = List.of(211, 212);
+            List<Integer> crong = List.of(399, 400);
+            int result = 2;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
     }
