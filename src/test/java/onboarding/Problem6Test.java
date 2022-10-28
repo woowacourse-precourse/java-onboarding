@@ -1,5 +1,6 @@
 package onboarding;
 
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
@@ -8,13 +9,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class Problem6Test {
 
-    List<List<String>> forms = List.of(
-            List.of("jm@email.com", "제이엠"),
-            List.of("jason@email.com", "제이슨"),
-            List.of("woniee@email.com", "워니"),
-            List.of("mj@email.com", "엠제이"),
-            List.of("nowm@email.com", "이제엠")
-    );
+    public static final int LIMIT = 2;
+    public static final String EMAIL_FORMAT = "@email.com";
 
     @Test
     void nameMatchingTest() {
@@ -37,24 +33,59 @@ class Problem6Test {
         map.get("제이엠").add("jm@email.com");
         map.get("제이엠").add("abc@email.com");
         assertThat(map.get("제이엠").size()).isEqualTo(2);
-        assertThat(map.get("제이엠")).containsExactly("abc@email.com", "jm@email.com");
     }
 
     @Test
-    void formsTest() {
-        assertThat(getAnswer(forms)).isEqualTo(List.of("jason@email.com", "jm@email.com", "mj@email.com"));
+    void sortTest() {
+        // '@'가 1보다 큼
+        List<String> list = Arrays.asList("hello2@email.com", "hello1@email.com", "hello@email.com");
+        Collections.sort(list);
+        assertThat(list).isEqualTo(Arrays.asList("hello1@email.com", "hello2@email.com", "hello@email.com"));
     }
 
-    public static final int LIMIT = 2;
+
+    @Nested
+    class FormsTest {
+        @Test
+        void case1() {
+            List<List<String>> forms = List.of(
+                    List.of("jm@email.com", "제이엠"),
+                    List.of("jason@email.com", "제이슨"),
+                    List.of("woniee@email.com", "워니"),
+                    List.of("mj@email.com", "엠제이"),
+                    List.of("nowm@email.com", "이제엠")
+            );
+            assertThat(getAnswer(forms)).isEqualTo(List.of("jason@email.com", "jm@email.com", "mj@email.com"));
+        }
+
+        @Test
+        void case2() {
+            List<List<String>> forms = List.of(
+                    List.of("jason@email.com", "제이슨"),
+                    List.of("hello@email.com", "토마스타이슨"),
+                    List.of("hello1@email.com", "마이클마이클이클립스이슨"),
+                    List.of("woniee@email.com", "워니"),
+                    List.of("mj@email.com", "엠제이"),
+                    List.of("jm@email.com", "제이엠"),
+                    List.of("jm@email.com", "이엠제"),
+                    List.of("nowm@email.com", "이제엠")
+            );
+            assertThat(getAnswer(forms)).isEqualTo(List.of("hello@email.com", "hello1@email.com", "jason@email.com", "jm@email.com", "mj@email.com"));
+        }
+    }
 
     public static List<String> getAnswer(List<List<String>> forms) {
         Map<String, Set<String>> map = new HashMap<>();
         for (List<String> form : forms) {
             String nickName = form.get(1);
-            String email = form.get(0);
+            String email = form.get(0).split("@")[0]; // @ 이전 문자만 관리
             makeMap(map, nickName, email);
         }
-        return makeResult(map);
+        List<String> answer = makeResult(map);
+        for (int i = 0; i < answer.size(); i++) {
+            answer.set(i, answer.get(i) + EMAIL_FORMAT);
+        }
+        return answer;
     }
 
     private static void makeMap(Map<String, Set<String>> map, String nickName, String email) {

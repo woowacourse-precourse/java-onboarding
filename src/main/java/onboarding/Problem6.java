@@ -39,6 +39,12 @@ public class Problem6 {
         return null;
     }
 
+    /**
+     * 크기가 2인 윈도우로 밀고나가면서 중복되는 값이 있는지 확인
+     * @param str1
+     * @param str2
+     * @return
+     */
     private static boolean isMatched(String str1, String str2) {
         for (int i = 0; i <= str2.length() - 2; i++) {
             if (str1.contains(str2.substring(i, i + 2))) {
