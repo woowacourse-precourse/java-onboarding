@@ -1,6 +1,6 @@
 package onboarding.problem6.crew;
 
-import onboarding.problem6.validator.CrewValidator;
+import onboarding.problem6.crew.validator.CrewValidator;
 
 import java.util.List;
 

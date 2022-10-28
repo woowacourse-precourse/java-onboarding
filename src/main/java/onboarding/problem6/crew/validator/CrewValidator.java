@@ -1,4 +1,4 @@
-package onboarding.problem6.validator;
+package onboarding.problem6.crew.validator;
 
 import java.util.List;
 

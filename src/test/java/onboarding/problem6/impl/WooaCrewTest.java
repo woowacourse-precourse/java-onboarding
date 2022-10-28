@@ -1,8 +1,8 @@
 package onboarding.problem6.impl;
 
-import onboarding.problem6.validator.CrewValidator;
+import onboarding.problem6.crew.validator.CrewValidator;
 import onboarding.problem6.crew.WooaCrew;
-import onboarding.problem6.validator.CrewValidatorV1;
+import onboarding.problem6.crew.validator.CrewValidatorV1;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

@@ -4,8 +4,8 @@ import onboarding.problem6.crew.Crew;
 import onboarding.problem6.crew.WooaCrew;
 import onboarding.problem6.finder.CrewFinder;
 import onboarding.problem6.finder.DuplicateWarningCrewFinder;
-import onboarding.problem6.validator.CrewValidator;
-import onboarding.problem6.validator.CrewValidatorV1;
+import onboarding.problem6.crew.validator.CrewValidator;
+import onboarding.problem6.crew.validator.CrewValidatorV1;
 
 import java.util.ArrayList;
 import java.util.List;
