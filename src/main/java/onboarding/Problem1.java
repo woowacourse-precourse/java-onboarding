@@ -16,6 +16,14 @@ class Problem1 {
         int result = 0;
 
 
+        if(palyer.get(1) - palyer.get(0) != 1){
+            return -1;
+        }
+        if(palyer.get(0) < 1 || palyer.get(1) > 400){
+            return -1;
+        }
+
+
         for(int i = 0; i < palyer.size(); i++){
 
             int page = palyer.get(i);
