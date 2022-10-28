@@ -2,6 +2,8 @@ package onboarding;
 
 import java.util.*;
 
+import static java.util.stream.Collectors.*;
+
 public class Problem7 {
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 		HashMap<String, Integer> recommendFriends = new HashMap<>();
@@ -23,9 +25,15 @@ public class Problem7 {
 			}
 			addVisitorScore(recommendFriends, visitor);
 		}
-		System.out.println(recommendFriends);
 
-		return Collections.emptyList();
+		return recommendFriends.entrySet()
+				.stream()
+				.sorted(Collections.reverseOrder(Map.Entry.<String, Integer>comparingByValue())
+						.thenComparing(Map.Entry.comparingByKey()))
+				.limit(5)
+				.filter(recommendFriend -> recommendFriend.getValue() != 0)
+				.map(Map.Entry::getKey)
+				.collect(toList());
 	}
 
 	private static void addVisitorScore(HashMap<String, Integer> recommendFriends, String id) {
