@@ -114,6 +114,16 @@ class ApplicationTest {
             String result = "R olev blf";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
+
+        @Test
+        void convertCharacterTest(){
+            char ch1 = 'C';
+            char result1 = 'X';
+            char ch2 = 'e';
+            char result2 = 'v';
+            assertThat(Problem4.convertCharacter('A', ch1)).isEqualTo(result1);
+            assertThat(Problem4.convertCharacter('a', ch2)).isEqualTo(result2);
+        }
     }
 
     @Nested
