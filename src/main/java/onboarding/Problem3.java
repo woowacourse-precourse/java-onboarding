@@ -15,9 +15,8 @@ public class Problem3 {
         int result = 0;
         String numStr = String.valueOf(number);
 
-        for (int i = 0; i < numStr.length(); i++) {
-            String tmpStr = Character.toString(numStr.charAt(i));
-            int checkNum = Integer.parseInt(tmpStr);
+        for(char ch : numStr.toCharArray()) {
+            int checkNum = Integer.parseInt(String.valueOf(ch));
             if(is369(checkNum))
                 result++;
         }
