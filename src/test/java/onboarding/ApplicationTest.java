@@ -36,45 +36,24 @@ class ApplicationTest {
         }
         
         @Test
-        void pobiNullPage() {
+        void nullPageTest() {
         	//given
+        	List<Integer> crong = new LinkedList<>();
         	List<Integer> pobi = new LinkedList<>();
+        	crong.add(null);
+        	crong.add(4);
+        	pobi.add(3);
         	pobi.add(null);
-        	pobi.add(2);
-        	List<Integer> pobi2 = new LinkedList<>();
-        	pobi2.add(1);
-        	pobi2.add(null);
-        	List<Integer> crong = List.of(211, 212);
-        	
         	//when
         	boolean result = true;
         	
         	//then
-        	assertThat(Problem1.isException(pobi, crong)).isEqualTo(result);
-        	assertThat(Problem1.isException(pobi2, crong)).isEqualTo(result);
+        	assertThat(Problem1.isNullPage(crong.get(0), crong.get(1))).isEqualTo(result);
+        	assertThat(Problem1.isNullPage(pobi.get(0), pobi.get(1))).isEqualTo(result);
         }
         
         @Test
-        void crongNullPage() {
-        	//given
-        	List<Integer> pobi = List.of(1, 2);
-        	List<Integer> crong1 = new LinkedList<>();
-        	crong1.add(null);
-        	crong1.add(2);
-        	List<Integer> crong2 = new LinkedList<>();
-        	crong2.add(5);
-        	crong2.add(null);
-        	
-        	//when
-        	boolean result = true;
-        	
-        	//then
-        	assertThat(Problem1.isException(pobi, crong1)).isEqualTo(result);
-        	assertThat(Problem1.isException(pobi, crong2)).isEqualTo(result);
-        }
-        
-        @Test
-        void isLeftPageInRange() {
+        void leftPageInRangeTest() {
         	//given
         	List<Integer> pobi = List.of(1, 6);
         	List<Integer> crong = List.of(399, 8);
@@ -83,11 +62,12 @@ class ApplicationTest {
         	boolean result = true;
         	
         	//then
-        	assertThat(Problem1.isLeftPageInRange(pobi, crong)).isEqualTo(result);
+        	assertThat(Problem1.isLeftPageInRange(pobi.get(0))).isEqualTo(result);
+        	assertThat(Problem1.isLeftPageInRange(crong.get(0))).isEqualTo(result);
         }
         
         @Test
-        void isLeftPageInRangeException() {
+        void leftPageInRangeExceptionTest() {
         	//given
         	List<Integer> pobi = List.of(0, 8);
         	List<Integer> crong = List.of(401, 8);
@@ -96,7 +76,8 @@ class ApplicationTest {
         	boolean result = false;
         	
         	//then
-        	assertThat(Problem1.isLeftPageInRange(pobi, crong)).isEqualTo(result);
+        	assertThat(Problem1.isLeftPageInRange(pobi.get(0))).isEqualTo(result);
+        	assertThat(Problem1.isLeftPageInRange(crong.get(0))).isEqualTo(result);
         }
     }
 
