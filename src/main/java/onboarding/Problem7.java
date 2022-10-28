@@ -4,33 +4,42 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        HashMap<String, Integer> allUserPoint = new HashMap<>();
-        HashMap<String, List<String>> contacts = new HashMap<>();
+        HashMap<String, People> contacts = new HashMap<>();
         for (List<String> friend : friends) { // 친구 목록 만들기
-            String peopleA = friend.get(0);
-            String peopleB = friend.get(1);
+            String nameA = friend.get(0);
+            String nameB = friend.get(1);
 
-            allUserPoint.put(peopleA, 0);
-            allUserPoint.put(peopleB, 0);
-
-            contacts.put(peopleA, makeFriendList(peopleB, contacts.get(peopleA)));
-            contacts.put(peopleB, makeFriendList(peopleA, contacts.get(peopleB)));
-        }
-
-        for (String name : allUserPoint.keySet()) {
-            if (isFriends(name, contacts.get(user)) || name.equals(user)) { // user의 친구 목록에 들어있고, 자기 자신이면 continue
-                continue;
+            People peopleA = contacts.get(nameA);
+            if (contacts.get(nameA)==null) {
+                contacts.put(nameA, new People(nameA, nameB));
+            } else {
+                peopleA.addFriendList(nameB);
+                contacts.put(nameA, peopleA);
             }
-            int point = duplicateCount(contacts.get(user), contacts.get(name));
-            allUserPoint.put(name, allUserPoint.get(name)+(point*10));
+
+            People peopleB = contacts.get(nameB);
+            if (contacts.get(nameB)==null) {
+                contacts.put(nameB, new People(nameB, nameA));
+            } else {
+                peopleB.addFriendList(nameA);
+                contacts.put(nameB, peopleB);
+            }
         }
 
-        for (String visitor : visitors) {
-            if (isFriends(visitor, contacts.get(user))) {
-                continue;
-            }
-            allUserPoint.put(visitor, allUserPoint.getOrDefault(visitor, 0)+1);
-        }
+//        for (String name : allUserPoint.keySet()) {
+//            if (isFriends(name, contacts.get(user)) || name.equals(user)) { // user의 친구 목록에 들어있고, 자기 자신이면 continue
+//                continue;
+//            }
+//            int point = duplicateCount(contacts.get(user), contacts.get(name));
+//            allUserPoint.put(name, allUserPoint.get(name)+(point*10));
+//        }
+//
+//        for (String visitor : visitors) {
+//            if (isFriends(visitor, contacts.get(user))) {
+//                continue;
+//            }
+//            allUserPoint.put(visitor, allUserPoint.getOrDefault(visitor, 0)+1);
+//        }
 
         List<String> answer = Collections.emptyList();
         return answer;
