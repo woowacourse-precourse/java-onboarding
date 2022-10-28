@@ -18,4 +18,19 @@ public class Problem2 {
         return convertedList;
     }
 
+    public static List<String> decodeCryptogram(List<String> cryptogram) {
+        int beforeSize = 0;
+        int afterSize = -1;
+        while(beforeSize != afterSize) {
+            beforeSize = cryptogram.size();
+            for(int i = 0; i + 1 < cryptogram.size(); i++) {
+                String currIdxValue = cryptogram.get(i);
+                String nextIdxValue = cryptogram.get(i+1);
+                cryptogram.subList(i, i+2).removeIf(s -> currIdxValue.equals(nextIdxValue));
+            }
+            afterSize = cryptogram.size();
+        }
+        return cryptogram;
+    }
 }
+
