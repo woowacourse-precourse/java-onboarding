@@ -15,6 +15,7 @@ public class CollectionVariable {
         int leftMax = getEachNumber(pageLeft(player));
         int rightMax = getEachNumber(pageRight(player));
 
+        // 조건문 쪼개기
         int max = leftMax > rightMax ? leftMax : rightMax;
 
         return max;
