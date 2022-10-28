@@ -50,6 +50,7 @@ public class Problem7 {
                 recommendFriends.put(key, 10);
             }
         }
+
         void insertVisitor (String key) {
             if (recommendFriends.containsKey(key)) {
                 recommendFriends.put(key, recommendFriends.get(key) + 1);
