@@ -1,7 +1,6 @@
 package onboarding;
 
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem6 {
 
@@ -24,8 +23,33 @@ public class Problem6 {
          *  2. 중복 문자를 가지고 있는 유저의 email주소를 담고, 오름차순으로 정렬
          */
 
-        List<String> answer = List.of("answer");
+
+        //크루들의 닉네임으로 만들 수 있는 모든 두 글자의 문자
+        HashSet<String> referenceWord = makeReferenceWord(forms);
+
+
+        List<String> answer = new ArrayList<>();
+        Collections.sort(answer);
+
         return answer;
     }
+
+
+    private static HashSet<String> makeReferenceWord(List<List<String>> forms) {
+        HashSet<String> referenceWords = new HashSet<>();
+        // forms.size()를 for문으로 돌렸을 때, get(i).get(0)은 이메일, get(i).get(1)은 닉네임이다.
+        // 닉네임의 길이가 2 이상인 경우에만 검증을 돌린다.
+        for (int i = 0; i < forms.size(); i++) {
+            if (forms.get(i).get(1).length() >= 2) {
+                String nickName = forms.get(i).get(1);
+                for (int j = 0; j < nickName.length() - 1; j++) {
+                    referenceWords.add(nickName.substring(j, j + 2));
+                }
+            }
+        }
+        return referenceWords;
+    }
+
+
 
 }
