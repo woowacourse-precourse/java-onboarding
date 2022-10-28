@@ -6,7 +6,9 @@ public class Problem3 {
         if (!isValid(number)){
             return Integer.MAX_VALUE;
         }
-
+        for (int i = 1; i <= number; i++){
+            answer += check(i);
+        }
         return answer;
     }
 
