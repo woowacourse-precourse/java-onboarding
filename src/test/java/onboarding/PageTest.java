@@ -8,9 +8,25 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.Arrays;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
+
 class PageTest {
     Page pobi = new Page(Arrays.asList(199, 200));
     Page crong = new Page(Arrays.asList(201, 202));
+
+    @Test
+    void 더하기_곱하기_최대값을_가지고_있는_Page_객체_꺼내기() {
+        //when
+        Page pobi = this.pobi.findMaxValue("pobi");
+
+        //then
+        assertAll(
+                () -> Assertions.assertThat(pobi.getLeftPageNumber()).isEqualTo(199),
+                () -> Assertions.assertThat(pobi.getRightPageNumber()).isEqualTo(200),
+                () -> Assertions.assertThat(pobi.getMaxValue()).isEqualTo(81),
+                () -> Assertions.assertThat(pobi.getMaxValueUser()).isEqualTo("pobi")
+        );
+    }
 
     @Test
     void 더하기_곱하기_비교_테스트() {

@@ -31,6 +31,23 @@ public class Page {
         return maxValueUser;
     }
 
+    public Page findMaxValue(String userName) {
+        this.maxValueUser = userName;
+        return getPageWithMaxValue();
+    }
+
+    private Page getPageWithMaxValue() {
+        int leftMaxValue = compareNumberPerPageSumTimes(leftPageNumber);
+        int rightMaxValue = compareNumberPerPageSumTimes(rightPageNumber);
+
+        if (leftMaxValue > rightMaxValue) {
+            this.maxValue = leftMaxValue;
+            return this;
+        }
+        this.maxValue = rightMaxValue;
+        return this;
+    }
+
     public int compareNumberPerPageSumTimes(int side) {
         int numberPerPageSum = getNumberPerPageSum(side);
         int numberPerPageTimes = getNumberPerPageTimes(side);
