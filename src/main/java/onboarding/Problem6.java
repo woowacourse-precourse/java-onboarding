@@ -3,6 +3,7 @@ package onboarding;
 import java.util.*;
 
 public class Problem6 {
+    static List<String> answer = new ArrayList<>();
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
@@ -68,5 +69,21 @@ public class Problem6 {
                 }
             }
         }
+    }
+
+    /**
+     * second_nickName이 first_nickName의 연속된 두 글자를 가지고 있으면 true를 반환 없다면 false 반환
+     * @param {String} first_nickName
+     * @param {String} second_nickName
+     * @return {boolean}
+     */
+    public static boolean compareNickName(String first_nickName, String second_nickName) {
+        for (int i = 0; i < second_nickName.length()-1; i++) {
+            String splitWorld = "";
+            splitWorld += second_nickName.charAt(i) +""+second_nickName.charAt(i+1);
+
+            if(first_nickName.contains(splitWorld)) return true;
+        }
+        return false;
     }
 }

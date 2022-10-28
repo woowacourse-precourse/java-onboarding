@@ -29,6 +29,11 @@
 
 2. findDuplicateNickName(List<List<String>> forms)
 - forms을 입력받습니다. 입력받은 forms은 현재 닉네임의 글자수를 기준으로 오름차순 정렬된 상태입니다.
-- 이중 for문을 통해 forms의 닉네임 쌍들을 compareNickName() 메서드에 넣습니다.
+- 이중 for문을 통해 forms의 모든 닉네임 쌍들을 compareNickName() 메서드에 넣습니다.
 - compareNickName()의 반환값이 true이면 answer 리스트에 해당 닉네임 쌍에 대응하는 이메일 쌍들이 있는지 확인합니다.
 - 이메일이 answer 리스트에 존재하지 않는다면 이메일을 넣고 존재한다면 넣지 않습니다.
+
+3. compareNickName(String first_nickName, String second_nickName)
+- sortFormByNickName()을 실행 한 뒤여서 입력받는 first_nickName은 항상 second_nickName보다 글자수가 작습니다.
+- for문을 수행 할 때마다 first_nickName의 연속된 두 글자 조합을 만들어 second_nickName이 해당 두 글자 조합을 가지고 있는지 확인합니다.
+- second_nickName이 두 글자 조합을 가지고 있으면 즉시 true를 반환하고 for문이 끝날 때 까지 없다면 false를 반환합니다. 
