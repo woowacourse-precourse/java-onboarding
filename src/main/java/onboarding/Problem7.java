@@ -50,8 +50,15 @@ public class Problem7 {
             newPeople.plusPoint(1);
             contacts.put(visitor, newPeople);
         }
+        List<People> keyList = new ArrayList<>(contacts.values());
+        Collections.sort(keyList);
 
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
+        for (People people : keyList) {
+            if (people.point>0 && !people.name.equals(user)){
+                answer.add(people.name);
+            }
+        }
         return answer;
     }
 
@@ -101,6 +108,9 @@ public class Problem7 {
 
         @Override
         public int compareTo(People o) {
+            if (o.point == this.point) {
+                return this.name.compareTo(o.name);
+            }
             return o.point-this.point;
         }
     }
