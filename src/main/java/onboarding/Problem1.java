@@ -5,7 +5,6 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-
         int pobiLeftPage = pobi.get(0);
         int pobiRightPage = pobi.get(1);
         int crongLeftPage = crong.get(0);
@@ -15,7 +14,6 @@ class Problem1 {
                 || !isException(crongLeftPage, crongRightPage)) {
             return -1;
         }
-
         return answer;
     }
 
@@ -30,13 +28,20 @@ class Problem1 {
     }
 
     public static int multipleDigits(int number) {
-        int multipleNumber = 0;
+        int multipleNumber = 1;
 
         while (number > 0) {
             multipleNumber *= number % 10;
             number /= 10;
         }
         return number;
+    }
+
+    public static int comparePlusNumber(int leftPage, int rightPage) {
+        if (plusDigits(leftPage) - plusDigits(rightPage) >= 0) {
+            return plusDigits(leftPage);
+        }
+        return plusDigits(rightPage);
     }
 
     public static boolean isException(int leftPage, int rightPage) {
