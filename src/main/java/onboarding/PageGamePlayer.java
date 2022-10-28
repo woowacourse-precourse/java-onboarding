@@ -9,7 +9,6 @@ public class PageGamePlayer {
         validPageList(list);
         this.leftPage = list.get(0);
         this.rightPage = list.get(1);
-        validPageNum();
     }
 
     private void validPageList(List<Integer> pages){
@@ -17,18 +16,20 @@ public class PageGamePlayer {
             throw new IllegalArgumentException("2개의 페이지를 입력해주세요.");
     }
 
-    private void validPageNum(){
+    public boolean isValid(){
         if (leftPage <= 0 || rightPage > 400)
-            throw new IllegalArgumentException("페이지 범위를 벗어났습니다.");
+            return false;
 
         if (rightPage - leftPage != 1)
-            throw new IllegalArgumentException("페이지 번호가 연속적이지 않습니다.");
+            return false;
 
         if (leftPage % 2 != 1)
-            throw new IllegalArgumentException("왼쪽에는 짝수 페이지 번호가 와야합니다.");
+            return false;
 
         if (rightPage % 2 != 0)
-            throw new IllegalArgumentException("오른쪽에는 홀수 페이지 번호가 와야합니다.");
+            return false;
+
+        return true;
     }
 
     public int maxPageNum() {
