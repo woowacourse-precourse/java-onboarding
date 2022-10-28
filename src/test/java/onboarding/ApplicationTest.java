@@ -3,6 +3,8 @@ package onboarding;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -150,6 +152,16 @@ class ApplicationTest {
             int money = 15_000;
             List<Integer> result = List.of(0, 1, 1, 0, 0, 0, 0, 0, 0);
             assertThat(Problem5.solution(money)).isEqualTo(result);
+        }
+
+        @Test
+        void calculateRequiredMoneyTest(){
+            List<Integer> ans = new ArrayList<>(Arrays.asList(0,0,0,0,0,0,0,0,0));
+            List<Integer> result = List.of(0, 4, 0, 0, 0, 0, 0, 0, 0);
+            Problem5.calculateRequiredMoneyCount(45000,1,ans);
+
+            for(int i=0; i<9; i++)
+                assertThat(ans.get(i)).isEqualTo(result.get(i));
         }
     }
 
