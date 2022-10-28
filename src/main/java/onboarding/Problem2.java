@@ -6,10 +6,9 @@ public class Problem2 {
 
         char[] ch = cryptogram.toCharArray();
 
-        if (cryptogram == null || cryptogram.length() == 0 || ch[0] == ch[1]) {
+        if (cryptogram == null || cryptogram.length() == 0 || (ch[0] == ch[1] && ch.length == 2)) {
             return "";
         }
-
 
         int i, k = 0;
 

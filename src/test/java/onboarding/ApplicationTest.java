@@ -67,4 +67,28 @@ class ApplicationTest {
             assertThat(Problem3.solution(num2)).isEqualTo(14);
         }
     }
+
+    @Nested
+    class Problem4Test {
+        @Test
+        void case1() {
+            String str = "I love you";
+
+            assertThat(Problem4.solution(str)).isEqualTo("R olev blf");
+        }
+
+    }
+
+    @Nested
+    class Problem5Test {
+        @Test
+        void case1() {
+
+        }
+
+        @Test
+        void case2() {
+
+        }
+    }
 }
