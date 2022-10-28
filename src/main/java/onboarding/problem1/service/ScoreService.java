@@ -1,6 +1,6 @@
 package onboarding.problem1.service;
 
-import onboarding.problem1.collection.Pages;
+import onboarding.problem1.vo.Pages;
 import onboarding.problem1.vo.Page;
 import onboarding.problem1.vo.Score;
 

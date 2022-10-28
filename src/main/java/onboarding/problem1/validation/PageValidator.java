@@ -1,6 +1,6 @@
 package onboarding.problem1.validation;
 
-import onboarding.problem1.collection.Pages;
+import onboarding.problem1.vo.Pages;
 
 public class PageValidator {
 	public static final int PAGE_MAX_LIMIT = 400;
