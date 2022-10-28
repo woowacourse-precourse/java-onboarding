@@ -7,9 +7,9 @@ public class Problem4 {
 
         for(int i = 0; i < word.length(); i++){
             byte asciiCode =  (byte)wordArray[i];
-            if(asciiCode >= 65 && asciiCode <= 90){
+            if(asciiCode >= 65 && asciiCode <= 90){ // 그 글자가 대문자인지?
                 answer.append(convertBigLetter(wordArray[i]));
-            }else if(asciiCode >= 97 && asciiCode <= 122){
+            }else if(asciiCode >= 97 && asciiCode <= 122){ // 그 글자가 소문자인지?
                 answer.append(convertSmallLetter(wordArray[i]));
             }else{
                 answer.append(wordArray[i]);

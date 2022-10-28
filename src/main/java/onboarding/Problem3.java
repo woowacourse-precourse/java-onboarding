@@ -11,9 +11,9 @@ public class Problem3 {
     }
     static int clap(int number){
         int count = 0;
-        String[] array = Integer.toString(number).split("");
-        for(int i = 0; i < array.length; i++){
-            if(haveToClap(array[i])){
+        String[] individualNumber = Integer.toString(number).split("");
+        for (String numberString : individualNumber) {
+            if (haveToClap(numberString)) {
                 count++;
             }
         }

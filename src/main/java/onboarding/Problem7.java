@@ -8,7 +8,7 @@ public class Problem7 {
 
         scoreBoardOfSuggestedFriends = scoreBoardMapping(peopleNameSet(friends));
 
-        Map<String,LinkedList<String>> eachFriendsList = friendsList();
+        Map<String,LinkedList<String>> eachFriendsList = friendsAdjacencyListByMap();
         setFriendsInfo(eachFriendsList,friends);
 
         LinkedList<String> userFriendList = eachFriendsList.get(user);
@@ -28,14 +28,14 @@ public class Problem7 {
 
     static Set<String> peopleNameSet(List<List<String>> friends) {
         Set<String> friendSet = new HashSet<>();
-        for(int i = 0; i < friends.size(); i++){
-            friendSet.add(friends.get(i).get(0));
-            friendSet.add(friends.get(i).get(1));
+        for (List<String> twoOfFriend : friends) {
+            friendSet.add(twoOfFriend.get(0));
+            friendSet.add(twoOfFriend.get(1));
         }
 
         return friendSet;
     }
-    static Map<String,LinkedList<String>> friendsList(){
+    static Map<String,LinkedList<String>> friendsAdjacencyListByMap(){
         Map<String,LinkedList<String>> friendsList = new HashMap<>();
 
         scoreBoardOfSuggestedFriends.forEach((nameOfPerson,value) -> {
@@ -45,15 +45,15 @@ public class Problem7 {
         return friendsList;
     }
 
-    static void setFriendsInfo(Map<String,LinkedList<String>> list,List<List<String>> friends){
+    static void setFriendsInfo(Map<String,LinkedList<String>> listMap,List<List<String>> friends){
         // add friends information
         for (List<String> twoOfFriend : friends) {
             String personA = twoOfFriend.get(0);
             String personB = twoOfFriend.get(1);
 
             // add friends on LinkedList
-            list.get(personA).addLast(personB);
-            list.get(personB).addLast(personA);
+            listMap.get(personA).addLast(personB);
+            listMap.get(personB).addLast(personA);
         }
     }
     static void considerFriendsScore(String user,LinkedList<String> userFriendList,ArrayList<String> countedFriend,Map<String,LinkedList<String>> friendsList){
@@ -77,17 +77,16 @@ public class Problem7 {
         }
     }
     static void considerVisitorScore(List<String> visitors){
-        for(int i = 0; i < visitors.size(); i++){
-            String visitedPerson = visitors.get(i);
-            changeScoreOfVisitors(scoreBoardOfSuggestedFriends,visitedPerson);
+        for (String visitedPerson : visitors) {
+            changeScoreOfVisitors(visitedPerson);
         }
     }
-    static void changeScoreOfVisitors(Map<String,Integer> map, String visitor){
+    static void changeScoreOfVisitors(String visitor){
         try{
-            int score = map.get(visitor);
-            map.replace(visitor,score+1);
+            int score = scoreBoardOfSuggestedFriends.get(visitor);
+            scoreBoardOfSuggestedFriends.replace(visitor,score+1);
         }catch(NullPointerException ex){
-            map.put(visitor,1);
+            scoreBoardOfSuggestedFriends.put(visitor,1);
         }
     }
     static List<String> finalSortedFriendList(ArrayList<String> alreadyCountedFriend){
