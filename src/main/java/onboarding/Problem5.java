@@ -28,7 +28,6 @@ public class Problem5 {
         }
 
         answer.add(money / moneyUnit);
-        money = money % moneyUnit;
-        return money;
+        return money % moneyUnit;
     }
 }
