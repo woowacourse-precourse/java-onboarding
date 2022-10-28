@@ -6,9 +6,10 @@
 - [x] 주어진 리스트가 있는지 알 수 있다. - Calculator.hasList()
   - [x] 주어진 리스트가 없으면 책을 임의로 펼친다(1 ~ 400범위의 수를 생성한다) - Book.openBook()
   - [x] 해당 페이지가 짝수인지 알 수 있다. - Book.isEvenPage()
-  - [x] 각 페이지를 저장, 조회할 수 있다. - Book.setPage(), Book.getLeftPage(), Book.getRightPage()
-  - [ ] 각 페이지의 각 자리 숫자를 더한 값과 곱한 값을 비교하여 저장, 조회할 수 있다. - Book.setPageScore(), Book.getLeftPageScore(), Book.getRightPageScore()
-  - [ ] 왼쪽, 오른쪽 페이지의 각 자리 숫자를 더한 값과 곱한 값을 비교하여 가장 큰 값을 최종 점수에 저장, 조회할 수 있다. - Book.setLastScore(), Book.getLastScore()
+  - [x] 각 페이지를 저장, 조회할 수 있다. - Book.setLeftRightPage(), Book.getLeftPage(), Book.getRightPage()
+  1. - [x] 각 페이지의 각 자리 숫자를 더한 값과 곱한 값을 비교하여 저장, 조회할 수 있다. - Book.setLeftRightPageScore(), setPageScore(), Book.getLeftPageScore(), Book.getRightPageScore()
+  2. - [ ] 왼쪽, 오른쪽 페이지의 각 자리 숫자를 더한 값과 곱한 값을 비교하여 가장 큰 값을 최종 점수에 저장, 조회할 수 있다. - Book.setLastScore(), Book.getLastScore()
+  - [ ] 주어진 리스트가 있으면 i, ii 과정을 거친다.
 
 ## 🚀 기능 요구 사항
 
