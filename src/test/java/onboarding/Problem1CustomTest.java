@@ -64,5 +64,19 @@ public class Problem1CustomTest {
                     Problem1Validation.isBookNumberBetweenMinAndMax(list, BOOK_MIN, BOOK_MAX))
                     .isTrue();
         }
+        @Test
+        void 리스트속원소가연속된값이아니면() {
+            List<Integer> list = List.of(39,41);
+            assertThat(
+                    Problem1Validation.isBookNumberContinuous(list))
+                    .isFalse();
+        }
+        @Test
+        void 리스트속원소가연속된값이면() {
+            List<Integer> list = List.of(39, 40);
+            assertThat(
+                    Problem1Validation.isBookNumberContinuous(list))
+                    .isTrue();
+        }
     }
 }

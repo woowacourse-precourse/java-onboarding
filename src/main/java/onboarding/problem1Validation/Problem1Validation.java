@@ -25,4 +25,7 @@ public class Problem1Validation {
         }
     }
 
+    public static boolean isBookNumberContinuous(List<Integer> list) {
+        return false;
+    }
 }
