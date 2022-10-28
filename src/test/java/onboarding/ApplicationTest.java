@@ -132,6 +132,69 @@ class ApplicationTest {
             String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
+        
+        @Test
+        void worstCaseTest1() {
+        	//given
+        	StringBuilder sb = new StringBuilder();
+        	for(char c=97; c<=122; c++) {
+        		for(int j=0; j<38; j++) {
+        			sb.append(c);
+        		}
+        	}
+        	String cryptogram = sb.toString();
+        	//when
+        	String result = "";
+        	//then
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+        @Test
+        void worstCaseTest2() {
+        	//given
+        	char[] cryptogramArr = new char[1000];
+        	int p1= 0;
+        	int p2= 999;
+        	char alphabet = 97;
+        	while(p1 < p2) {
+        		cryptogramArr[p1] = alphabet;
+        		cryptogramArr[p2] = alphabet;
+        		alphabet += 1;
+        		if(alphabet == 123) {
+        			alphabet = 97;
+        		}
+        		p1 += 1;
+        		p2 -= 1;
+        	}
+        	String cryptogram = String.valueOf(cryptogramArr);
+        	//when
+        	String result = "";
+        	//then
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        	
+        }
+        @Test
+        void worstCaseException() {
+        	//given
+        	char[] cryptogramArr = new char[999];
+        	int p1= 0;
+        	int p2= 998;
+        	char alphabet = 97;
+        	while(p1 <= p2) {
+        		cryptogramArr[p1] = alphabet;
+        		cryptogramArr[p2] = alphabet;
+        		alphabet += 1;
+        		if(alphabet == 123) {
+        			alphabet = 97;
+        		}
+        		p1 += 1;
+        		p2 -= 1;
+        	}
+        	String cryptogram = String.valueOf(cryptogramArr);
+        	//when
+        	String expected = cryptogram;
+        	//then
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(expected);
+        }
     }
 
     @Nested
