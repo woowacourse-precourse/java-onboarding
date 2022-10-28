@@ -1,78 +1,27 @@
 package onboarding;
 
-import java.lang.management.MonitorInfo;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> answer = new ArrayList<>();
+        List<Integer> moneyUnits = List.of(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1);
 
-        if (money >= 50000) {
-            answer.add(money / 50000);
-            money = money % 50000;
-        } else {
-            answer.add(0);
+        for (Integer moneyUnit : moneyUnits) {
+            money = changeMoney(money, answer, moneyUnit);
         }
-
-        if (money >= 10000) {
-            answer.add(money / 10000);
-            money = money % 10000;
-        } else {
-            answer.add(0);
-        }
-
-        if (money >= 5000) {
-            answer.add(money / 5000);
-            money = money % 5000;
-        } else {
-            answer.add(0);
-        }
-
-        if (money >= 1000) {
-            answer.add(money / 1000);
-            money = money % 1000;
-        } else {
-            answer.add(0);
-        }
-
-
-        if (money >= 500) {
-            answer.add(money / 500);
-            money = money % 500;
-        } else {
-            answer.add(0);
-        }
-
-        if (money >= 100) {
-            answer.add(money / 100);
-            money = money % 100;
-        } else {
-            answer.add(0);
-        }
-
-        if (money >= 50) {
-            answer.add(money / 50);
-            money = money % 50;
-        } else {
-            answer.add(0);
-        }
-
-        if (money >= 10) {
-            answer.add(money / 10);
-            money = money % 10;
-        } else {
-            answer.add(0);
-        }
-
-        if (money >= 1) {
-            answer.add(money / 1);
-            money = money % 1;
-        } else {
-            answer.add(0);
-        }
-
         return answer;
+    }
+
+    private static int changeMoney(int money, List<Integer> answer, int moneyUnit) {
+        if (money < moneyUnit) {
+            answer.add(0);
+            return money;
+        }
+
+        answer.add(money / moneyUnit);
+        money = money % moneyUnit;
+        return money;
     }
 }
