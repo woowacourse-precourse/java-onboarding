@@ -38,4 +38,21 @@ public class Problem6 {
 
         return true;
     }
+
+    /**
+     * 글자 분할
+     * @param nickname 닉네임
+     * @return 2글자씩 묶인 글자 집합을 반환
+     */
+    private static String[] splitAndBindNickname(String nickname) {
+        String[] splitNickname = nickname.split("");
+        int lengthSplitNickname = splitNickname.length;
+        String[] splitAndBindNickname = new String[lengthSplitNickname - 1];
+
+        for (int i = 1; i < splitNickname.length; i++) {
+            splitAndBindNickname[i - 1] = splitNickname[i - 1] + splitNickname[i];
+        }
+
+        return splitAndBindNickname;
+    }
 }
