@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Problem6 {
 
@@ -25,6 +22,14 @@ public class Problem6 {
         List<String> answer = List.of("answer");
         return answer;
     }
+
+    private static List<String> getEmailsWithCommonNickname(List<List<String>> forms){
+        for(String key : countOfSameWords.keySet()){
+            addCommonNameEmail(forms, key);
+        }
+        return new ArrayList<>(emails);
+    }
+
 
     private static void setDataOnHashMap(List<List<String>> forms){
         for(List<String> person : forms){
