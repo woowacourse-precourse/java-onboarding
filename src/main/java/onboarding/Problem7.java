@@ -68,7 +68,33 @@ public class Problem7 {
 
     /** 추천할 친구 List를 반환하는 함수 */
     private static List<String> extractSuggestionFriends(Map<String, Integer> scoreInfo) {
-        return Collections.emptyList();
+        List<Integer> scoreList = new ArrayList<>();
+        for(String name : scoreInfo.keySet()) {
+            int score = scoreInfo.get(name);
+
+            scoreList.add(score);
+        }
+        scoreList.sort(Collections.reverseOrder());
+
+        int lastScore = 0;
+        List<String> answer = new ArrayList<>();
+        for(int score : scoreList) {
+            if(lastScore == score) continue;
+
+            List<String> userList = getScoreUserList(scoreInfo, score);
+            Collections.sort(userList);
+
+            answer.addAll(userList);
+
+            if(answer.size() >= 5) {
+                answer = answer.subList(0, 5);
+                break;
+            }
+
+            lastScore = score;
+        }
+
+        return answer;
     }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
