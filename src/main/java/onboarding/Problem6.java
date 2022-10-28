@@ -21,6 +21,7 @@ public class Problem6 {
             List<String> twoLetters = computeTwoLetters(nickname);
 
             nicknameToTwoLetter.put(nickname, twoLetters);
+            nicknameToEmail.put(nickname, email);
         });
 
         //
