@@ -118,14 +118,14 @@ class ApplicationTest {
     @Nested
     class Problem3Test {
         @Test
-        void case1() {
+        void case1() throws Exception {
             int number = 13;
             int result = 4;
             assertThat(Problem3.solution(number)).isEqualTo(result);
         }
 
         @Test
-        void case2() {
+        void case2() throws Exception {
             int number = 33;
             int result = 14;
             assertThat(Problem3.solution(number)).isEqualTo(result);
