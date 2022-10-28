@@ -29,4 +29,8 @@ class Bank {
     public Bank(List<Integer> cashList) {
         this.cashList = new HashSet<>(cashList);
     }
+
+    public boolean isCashExisted (int cash) {
+        return cashList.contains(cash);
+    }
 }
