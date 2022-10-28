@@ -45,6 +45,16 @@ class Problem1 {
         return false;
     }
 
+    private int getPoint(List<Integer> pages){
+        int point = 0;
+
+        point = plusNumber(pages.get(0)) > point ? plusNumber(pages.get(0)) : point;
+        point = plusNumber(pages.get(1)) > point ? plusNumber(pages.get(1)) : point;
+        point = multiplyNumber(pages.get(0)) > point ? multiplyNumber(pages.get(0)) : point;
+        point = multiplyNumber(pages.get(1)) > point ? multiplyNumber(pages.get(1)) : point;
+
+        return point;
+    }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
