@@ -29,16 +29,17 @@ public class SentenceTranslator {
     }
 
     private char translateLowerCase(char alphabet) {
-        int temp = alphabet - DEFAULT_LOWER_ALPHABET_A;
-        temp = ALPHABET_MAX_INDEX - temp;
-
-        return (char) (temp + DEFAULT_LOWER_ALPHABET_A);
+        return translateCase(alphabet, DEFAULT_LOWER_ALPHABET_A);
     }
 
     private char translateUpperCase(char alphabet) {
-        int temp = alphabet - DEFAULT_UPPER_ALPHABET_A;
+        return translateCase(alphabet, DEFAULT_UPPER_ALPHABET_A);
+    }
+
+    private char translateCase(char alphabet, char defaultAlphabetA) {
+        int temp = alphabet - defaultAlphabetA;
         temp = ALPHABET_MAX_INDEX - temp;
 
-        return (char) (temp + DEFAULT_UPPER_ALPHABET_A);
+        return (char) (temp + defaultAlphabetA);
     }
 }
