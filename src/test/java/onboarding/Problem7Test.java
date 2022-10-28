@@ -2,12 +2,10 @@ package onboarding;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -22,6 +20,35 @@ class Problem7Test {
 
     String user;
     List<List<String>> friends;
+    List<String> visitors;
+
+    static class Person {
+        String name;
+        int point;
+
+        public Person(String name) {
+            this.name = name;
+        }
+
+        public Person(String name, int point) {
+            this(name);
+            this.point = point;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            Person person = (Person) o;
+            return Objects.equals(name, person.name);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(name);
+        }
+    }
+
 
     @BeforeEach
     void init() {
@@ -34,36 +61,69 @@ class Problem7Test {
                 List.of("shakevan", "jun"),
                 List.of("shakevan", "mrko")
         );
+        visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+    }
+
+    @Nested
+    class FindFriends {
+
+        @Test
+        @DisplayName("사용자의 친구를 찾는다.")
+        void getUserFriendsTest() {
+            List<Person> userFriends = getUserFriends(new Person(user), friends);
+            assertThat(userFriends).containsExactly(new Person("donut"), new Person("shakevan"));
+        }
+
+        @Test
+        @DisplayName("사용자와 함께 아는 친구를 찾는다.")
+        void getMutualFriendsTest() {
+            List<Person> userFriends = getUserFriends(new Person(user), friends);
+            assertThat(userFriends).containsExactly(new Person("donut"), new Person("shakevan"));
+
+            Set<Person> mutualFriends = getMutualFriends(user, userFriends, friends);
+            assertThat(mutualFriends).contains(new Person("jun"), new Person("andole"));
+        }
     }
 
     @Test
-    @DisplayName("사용자와 함께 아는 친구를 찾는다.")
-    void findMutualFriend() {
+    void scoreTest() {
+//        assertThat(getScore(user, friends, visitors)).isEqualTo(List.of("andole", "jun", "bedi"));
+    }
+
+   /* private List<String> getScore(String user, List<List<String>> friends, List<String> visitors) {
+        Map<String, Integer> map = new HashMap<>();
         List<String> userFriends = getUserFriends(user, friends);
-        assertThat(userFriends).containsExactly("donut", "shakevan");
-        List<String> mutualFriends = getMutualFriends(user, userFriends, friends);
-        assertThat(mutualFriends).contains("jun", "andole");
-    }
-
-    private List<String> getMutualFriends(String user, List<String> userFriends, List<List<String>> friends) {
-        Set<String> set = new HashSet<>();
-        for (List<String> friend : friends) {
-            if (!friend.contains(user)) {
-                String a = friend.get(0), b = friend.get(1);
-                if (userFriends.contains(a)) set.add(b);
-                else if (userFriends.contains(b)) set.add(a);
-            }
+        Set<String> mutualFriends = getMutualFriends(user, userFriends, friends);
+        for (String friend : mutualFriends) {
+            map.put(friend, 10);
         }
-        return new ArrayList<>(set);
-    }
+        for (String friend : visitors) {
+            map.put(friend, map.getOrDefault(friend, 0) + 1);
+        }
 
-    private List<String> getUserFriends(String user, List<List<String>> friends) {
-        List<String> list = new ArrayList<>();
+        return null;
+    }*/
+
+
+    private List<Person> getUserFriends(Person user, List<List<String>> friends) {
+        List<Person> list = new ArrayList<>();
         for (List<String> friend : friends) {
-            String a = friend.get(0), b = friend.get(1);
+            Person a = new Person(friend.get(0)), b = new Person(friend.get(1));
             if (a.equals(user)) list.add(b);
             else if (b.equals(user)) list.add(a);
         }
         return list;
+    }
+
+    private Set<Person> getMutualFriends(String user, List<Person> userFriends, List<List<String>> friends) {
+        Set<Person> set = new HashSet<>();
+        for (List<String> friend : friends) {
+            if (!friend.contains(user)) {
+                Person a = new Person(friend.get(0)), b = new Person(friend.get(1));
+                if (userFriends.contains(a)) set.add(b);
+                else if (userFriends.contains(b)) set.add(a);
+            }
+        }
+        return set;
     }
 }
