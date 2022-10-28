@@ -88,6 +88,6 @@ public class Problem7 {
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        return null;
+        return new SolutionClass(user, friends, visitors).inSolution();
     }
 }
