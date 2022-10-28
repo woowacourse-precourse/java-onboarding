@@ -13,6 +13,6 @@ public class Problem3 {
     private static int getClapCount(int target) {
         String strNum = Integer.toString(target);
         int originCount = strNum.length();
-        return originCount - strNum.replaceAll("3|6|9", "").length();
+        return originCount - strNum.replaceAll("[369]", "").length();
     }
 }
