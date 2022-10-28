@@ -50,7 +50,6 @@ public class Problem6 {
     public static Map<String, Member> nameStorage = new HashMap<>();
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
         List<Member> members = forms.stream()
                 .map(form -> new Member(form.get(0), form.get(1)))
                 .collect(Collectors.toList());
@@ -63,6 +62,11 @@ public class Problem6 {
                 checkDuplicateName(slice, member);
             }
         }
+
+        List<String> answer = duplicateMemberList.stream()
+                .map(o -> o.email)
+                .sorted()
+                .collect(Collectors.toList());
 
         return answer;
     }
