@@ -18,10 +18,13 @@ public class Problem7 {
             for (String friendWithUser : friendsWithUser) {
                 if(list.contains(friendWithUser)) {
                     for (String friend : list) {
-                        if(sameFriendWithUser.containsKey(friend)){
-                            sameFriendWithUser.replace(friend, sameFriendWithUser.get(friend)+20);
-                        }else{
-                            sameFriendWithUser.put(friend,20);
+                        if(!friend.equals(user) && !friend.equals(friendWithUser)){
+                            if(sameFriendWithUser.containsKey(friend)){
+                                sameFriendWithUser.replace(friend, sameFriendWithUser.get(friend)+20);
+                            }else{
+                                sameFriendWithUser.put(friend,20);
+
+                            }
                         }
                     }
                 }
