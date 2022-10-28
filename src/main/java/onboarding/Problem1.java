@@ -20,6 +20,26 @@ class Exception{
     }
 }
 
+class CalNumber{
+    public int getAddValue(int value){
+        int sum = 0;
+        while(value != 0){
+            sum += value % 10;
+            value /= 10;
+        }
+        return sum;
+    }
+
+    public int getMulValue(int value){
+        int val = 1;
+        while(value != 0){
+            val *= value % 10;
+            value /= 10;
+        }
+        return val;
+    }
+}
+
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
