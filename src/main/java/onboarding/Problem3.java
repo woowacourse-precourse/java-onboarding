@@ -12,6 +12,17 @@ public class Problem3 {
         return answer;
     }
 
+    public static int countAllClapInNumber(int number) {
+        int count = 0;
+        while(number!=0){
+            int digit = number%10;
+            count+= clapIfDigitIsRight(digit);
+            number/=10;
+        }
+
+        return count;
+    }
+
     public static int clapIfDigitIsRight(int digit) {
         if(digit==3 || digit==6 || digit==9)
             return 1;

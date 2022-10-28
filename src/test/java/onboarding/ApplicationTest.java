@@ -97,6 +97,13 @@ class ApplicationTest {
             int result = 14;
             assertThat(Problem3.solution(number)).isEqualTo(result);
         }
+
+        @Test
+        void countAllClapInNumberTest(){
+            int number = 1334;
+            int result = 2;
+            assertThat(Problem3.countAllClapInNumber(number)).isEqualTo(result);
+        }
     }
 
     @Nested
