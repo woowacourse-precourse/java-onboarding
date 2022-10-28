@@ -3,15 +3,28 @@ package onboarding;
 import java.util.List;
 /*
 기능목록
-1. 페이지 규칙
+1. 페이지 규칙 확인하는 기능
     1-1. 시작면이나 마지막 면이 나오는 경우X
-    1-2. 왼족 오른쪽 페이지의 차이가 1인지
+    1-2. 왼쪽 오른쪽 페이지의 차이가 1인지
 2. 페이지별 최대 점수 구하는 기능
-    1-1. 모두 더한 경우와 모두 곱한 경우 구해서 최대 찾기
+    2-1. 모두 더한 경우와 모두 곱한 경우 구해서 최대 찾기
 3. 오른쪽, 왼쪽 중 최대 기능 구하는 기능
 4. 승자 구하는 기능
  */
 class Problem1 {
+    //페이지 규칙 확인하는 기능
+    public static boolean checkPage(Integer left, Integer right){
+        if(Math.abs(left-right)>1){ //왼쪽 오른쪽 페이지의 차이가 1보다 큰 경우
+            return false;
+        }
+        if(left==1){ //시작 면인경우
+            return false;
+        }
+        if(right==400){ //마지막인경우
+            return false;
+        }
+        return true;
+    }
     //페이지를 전달인자로 최대 점수 구하는 기능
     public static Integer calcScore(Integer page){
         int plus=0; //모두 더하는 경우
@@ -27,6 +40,9 @@ class Problem1 {
 
     //오른쪽, 왼쪽 페이지 중에 최대 구하는 기능
     public static Integer MaxPage(List<Integer> pages){
+        if (!checkPage(pages.get(0), pages.get(1))){
+            return -1;
+        }
         int left=calcScore(pages.get(0));
         int right=calcScore(pages.get(1));
         return left>right? left : right;
