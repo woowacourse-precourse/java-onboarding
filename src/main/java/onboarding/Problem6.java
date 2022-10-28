@@ -12,6 +12,14 @@ public class Problem6 {
         return answer;
     }
 
+    //모든 닉네임들에 대하여 subNicknameCount하는 함수
+    private static void checkAllNickname(List<List<String>> forms){
+        for(int i=0;i<forms.size();i++){
+            List<String> form = forms.get(0);
+            subNicknameCount(form.get(1));
+        }
+    }
+
     //각 닉네임에 대한 부분 숫자 카운트
     private static void subNicknameCount(String nickname){
         for(int i=0;i<nickname.length()-1;i++){
