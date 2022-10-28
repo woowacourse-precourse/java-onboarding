@@ -45,7 +45,7 @@ class Problem1 {
             return true;
         if (left_page != right_page - 1)
             return true;
-        else if (left_page < 1 && 399 < right_page)
+        else if (left_page < 2 && 398 < right_page)
             return true;
 
         return false;
