@@ -7,13 +7,19 @@ public class Problem3 {
             return -1;
         }
 
+        for (int i = 1; i <= number; i++) {
+            answer += countNum(i);
+        }
+
         return answer;
     }
 
-    public static int checkLength(int num) {
+    public static int countNum(int num) {
         int cnt = 0;
         for (int i = num; i > 0;) {
-            cnt++;
+            if (i % 10 == 3 || i % 10 == 6 || i % 10 == 9) {
+                cnt++;
+            }
             i /= 10;
         }
         return cnt;
