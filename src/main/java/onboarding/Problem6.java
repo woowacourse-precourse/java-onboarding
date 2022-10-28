@@ -19,15 +19,19 @@ public class Problem6 {
         for (int i = 0; i < forms.size(); i++) {
             String nickName = forms.get(i).get(1);
             if(nickName.length() < 2) continue;
-            for (int j = 0; j < nickName.length() - 1; j++) {
-                String subName = nickName.substring(j, j + 2);
-                if(!tmp.containsKey(subName)) tmp.put(subName, i);
-                else {
-                    duplicated.add(forms.get(i).get(0));
-                    duplicated.add(forms.get(tmp.get(subName)).get(0));
-                }
-            }
+            checkDuplicated(forms, duplicated, tmp, i, nickName);
         }
         return duplicated;
+    }
+
+    private static void checkDuplicated(List<List<String>> forms, List<String> duplicated, Map<String, Integer> tmp, int index, String nickName) {
+        for (int i = 0; i < nickName.length() - 1; i++) {
+            String subName = nickName.substring(i, i + 2);
+            if (!tmp.containsKey(subName)) tmp.put(subName, index);
+            else {
+                duplicated.add(forms.get(index).get(0));
+                duplicated.add(forms.get(tmp.get(subName)).get(0));
+            }
+        }
     }
 }
