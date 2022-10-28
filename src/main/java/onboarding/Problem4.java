@@ -1,9 +1,8 @@
 package onboarding;
 
 public class Problem4 {
-    public static String solution(String word) {
-        String answer = "";
-        return answer;
+    public static String solution(String momWord) {
+        return convertWord(momWord);
     }
 
     public static String convertWord(String word) {
