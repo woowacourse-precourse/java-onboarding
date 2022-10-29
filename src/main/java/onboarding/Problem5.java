@@ -12,7 +12,7 @@ public class Problem5 {
         int [] count = new int[9];
         for (int i=0; i<moneyType.length; i++){
             count[i] = money / moneyType[i];
-            money -= count[i] * moneyType[i];
+            money %= moneyType[i];
         }
 
         return Arrays.stream(count).boxed().collect(Collectors.toList());
