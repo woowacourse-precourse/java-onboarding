@@ -8,7 +8,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class MoneyTest {
+class MoneyTest {
     @Test
     @DisplayName("각 화폐 개수 구하기")
     void numberOfEachCurrency() {

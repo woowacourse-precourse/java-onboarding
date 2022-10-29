@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class MonetaryUnitsTest {
+class MonetaryUnitsTest {
     @Test
     @DisplayName("오만원 권 개수 구하기")
     void fiftyThousandDivide() {
