@@ -30,7 +30,31 @@ class Problem1 {
         return answer;
     }
 
-    private static int max(int a, int b){
+    public static int max(int a, int b){
         return a > b? a : b;
+    }
+
+    public static int calculate(List<Integer> pages){
+
+        int max_value = -1;
+        for(Integer page: pages){
+            int addValue = 0;
+            int multiplyValue = 1;
+
+            while(page!=0){
+                addValue += (page%10);
+                multiplyValue *= (page%10);
+
+                page /=10;
+            }
+
+            int temp = max(addValue, multiplyValue);
+
+            if(temp > max_value){
+                max_value = temp;
+            }
+        }
+
+        return max_value;
     }
 }
