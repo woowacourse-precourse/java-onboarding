@@ -7,8 +7,36 @@ import java.util.InputMismatchException;
 import java.util.List;
 
 class Problem1 {
+
     final static int FIRST_PAGE = 1;
     final static int LAST_PAGE = 400;
+
+    final static int LEFT_WIN = 1;
+    final static int DRAW = 0;
+    final static int RIGHT_WIN = 2;
+    final static int EXCEPT_CASE = -1;
+
+    public static int getResult(List<Integer> leftUser, List<Integer> rightUser) {
+        int result = 0;
+        try {
+            int leftPoint = getUserMaxPoint(leftUser);
+            int rightPoint = getUserMaxPoint(rightUser);
+
+            if (leftPoint > rightPoint) {
+                result = LEFT_WIN;
+            } else if (leftPoint == rightPoint) {
+                result = DRAW;
+            } else {
+                result = RIGHT_WIN;
+            }
+        } catch (InputMismatchException e) {
+            result = EXCEPT_CASE;
+        } finally {
+            return result;
+        }
+
+    }
+
     public static int getUserMaxPoint(List<Integer> pages) {
         if (pages.get(0) == FIRST_PAGE || pages.get(1) == LAST_PAGE) {
             throw new InputMismatchException("허용되지 않는 입력입니다.");
