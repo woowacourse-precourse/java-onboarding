@@ -28,6 +28,29 @@ class Problem1 {
         return sum;
     }
 
+    static int mulPage(int leftPage, int rightPage) {
+        int Leftmul = 1;
+        int Rightmul = 1;
+
+        String numLeftPage = Integer.toString(leftPage);
+        char[] numLeftPageChar = numLeftPage.toCharArray();
+
+        String numRightPage = Integer.toString(rightPage);
+        char[] numRightPageChar = numRightPage.toCharArray();
+
+        for (char x : numLeftPageChar) {
+            Leftmul *= x;
+        }
+
+        for (char x : numRightPageChar) {
+            Rightmul *= x;
+        }
+
+        int maxMul = getMaxScore(Leftmul, Rightmul);
+
+        return maxMul;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
@@ -46,6 +69,8 @@ class Problem1 {
 
         int sumPobi = sumPage(pobiRightPage);
         int sumCrong = sumPage(crongRightPage);
+        int mulPobi = mulPage(pobiLeftPage, pobiRightPage);
+        int mulCrong = mulPage(crongLeftPage, crongRightPage);
 
         return answer;
     }
