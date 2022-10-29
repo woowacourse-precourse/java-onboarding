@@ -2,6 +2,13 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
+
+        try {
+            ExceptionProblem3.validateNumber(number);
+        } catch (IllegalArgumentException e) {
+            return 0;
+        }
+        
         String num = "";
         int answer;
 
@@ -21,5 +28,13 @@ public class Problem3 {
         answer = num.length() - compare.length();
 
         return answer;
+    }
+}
+
+class ExceptionProblem3 {
+    public static void validateNumber(int number) {
+        if (number < 1 || number > 10000) {
+            throw new IllegalArgumentException();
+        }
     }
 }
