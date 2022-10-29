@@ -16,4 +16,16 @@ public class Problem6 {
 		}
 		return collection;
 	}
+
+	private static boolean checkNickname(String name, List<String> comparedNames) {
+
+		for (String target : comparedNames) {
+			for (int i = 0; i < name.length() - 1; i++) {
+				if (target.contains(name.substring(i, i + 2))) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 }
