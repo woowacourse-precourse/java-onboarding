@@ -81,4 +81,17 @@ public class Problem7 {
         }
         return friendPoints;
     }
+
+    private static List<Map.Entry<String, Integer>> sortFriendPoints(Map<String, Integer> friendPoints){
+        // (추천 점수, 친구 이름) 순으로 정렬하는 메소드
+        List<Map.Entry<String, Integer>> sortedfriendPoints = new LinkedList<>(friendPoints.entrySet());
+        sortedfriendPoints.sort(((o1, o2) -> {
+            if (!o1.getValue().equals(o2.getValue())) {
+                return o2.getValue() - o1.getValue();
+            } else {
+                return o1.getKey().compareTo(o2.getKey());
+            }
+        }));
+        return sortedfriendPoints;
+    }
 }
