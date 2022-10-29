@@ -4,7 +4,7 @@ public class Nickname {
     private final String value;
 
     public Nickname(String value) {
-        value = isValidName(value);
+        isValidName(value);
 
         this.value = value;
     }
@@ -13,11 +13,9 @@ public class Nickname {
         return value;
     }
 
-    private String isValidName(String value) {
+    private void isValidName(String value) {
         if (!value.matches("^[가-힣+]{1,19}$")) {
-            return "Invalid";
+            throw new IllegalArgumentException("Invalid Nickname Value!");
         }
-
-        return value;
     }
 }

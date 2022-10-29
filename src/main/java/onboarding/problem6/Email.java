@@ -4,7 +4,7 @@ public class Email {
     private final String value;
 
     public Email(String value) {
-        value = isValidEmail(value);
+        isValidEmail(value);
 
         this.value = value;
     }
@@ -13,11 +13,9 @@ public class Email {
         return value;
     }
 
-    private String isValidEmail(String value) {
+    private void isValidEmail(String value) {
         if (!value.matches("^[a-z0-9-A-Z]{1,9}+@email.com$")) {
-            return "Invalid";
+            throw new IllegalArgumentException("Invalid Email value!");
         }
-
-        return value;
     }
 }
