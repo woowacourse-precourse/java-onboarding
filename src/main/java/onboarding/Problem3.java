@@ -3,7 +3,7 @@ package onboarding;
 public class Problem3 {
 
     /**
-     * 해당 숫자가 박수를 쳐야 하는지 확인한다.
+     * 해당 숫자에 대해 박수를 쳐야 하는 횟수를 확인한다.
      * @param input
      * @return
      */
