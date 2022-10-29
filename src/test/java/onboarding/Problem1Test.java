@@ -14,10 +14,12 @@ class Problem1Test {
 
     @Test
     void sumAndMultiplyTest() {
-        List<Integer> nums1 = Arrays.asList(21, 22);
-        List<Integer> nums2 = Arrays.asList(35, 36);
+        List<Integer> nums1 = Arrays.asList(111, 112);
+        List<Integer> nums2 = Arrays.asList(197, 198);
+        List<Integer> nums3 = Arrays.asList(131, 132);
         assertThat(Problem1.getMaxBetweenSumAndMultiply(nums1)).isEqualTo(4);
-        assertThat(Problem1.getMaxBetweenSumAndMultiply(nums2)).isEqualTo(18);
+        assertThat(Problem1.getMaxBetweenSumAndMultiply(nums2)).isEqualTo(72);
+        assertThat(Problem1.getMaxBetweenSumAndMultiply(nums3)).isEqualTo(6);
     }
 
     @Nested
@@ -46,7 +48,7 @@ class Problem1Test {
         }
 
         @Test
-        @DisplayName("crong이가 이긴 경우")
+        @DisplayName("crong이 이긴 경우")
         void case3() {
             List<Integer> pobi = List.of(99, 100);
             List<Integer> crong = List.of(299, 300);
@@ -78,8 +80,10 @@ class Problem1Test {
         @Test
         @DisplayName("잘못된 입력 - 범위값을 벗어난 입력")
         void case3() {
-            assertThat(Problem1.getMaxBetweenSumAndMultiply(List.of(399, 400))).isEqualTo(-1);
+            assertThat(Problem1.getMaxBetweenSumAndMultiply(List.of(-1, 0))).isEqualTo(-1);
             assertThat(Problem1.getMaxBetweenSumAndMultiply(List.of(1, 2))).isEqualTo(-1);
+            assertThat(Problem1.getMaxBetweenSumAndMultiply(List.of(399, 400))).isEqualTo(-1);
+            assertThat(Problem1.getMaxBetweenSumAndMultiply(List.of(401, 402))).isEqualTo(-1);
         }
 
         @Test
