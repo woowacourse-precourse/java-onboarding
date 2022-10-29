@@ -67,4 +67,15 @@ public class Problem6 {
         return nicknamePieces;
     }
 
+    private static void manageNicknamePieces(String owner, List<String> pieces){
+        for(int i = 0; i<pieces.size(); i++){
+            String nicknamePiece = pieces.get(i);
+            if(nicknamePieceAndOwner.containsKey(nicknamePiece)){
+                addUserInDuplicatedUser(owner);
+                addUserInDuplicatedUser(nicknamePieceAndOwner.get(nicknamePiece));
+            }
+            nicknamePieceAndOwner.put(nicknamePiece,owner);
+        }
+    }
+
 }
