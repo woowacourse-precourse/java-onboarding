@@ -7,7 +7,10 @@ public class Problem4 {
     static final int ALPHABET_COUNT_WITHOUT_A = 25;
 
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        StringBuilder answer = new StringBuilder();
+        for (int i = 0; i < word.length(); i++) {
+            // 로직
+        }
+        return answer.toString();
     }
 }
