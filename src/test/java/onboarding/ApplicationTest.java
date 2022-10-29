@@ -138,6 +138,7 @@ class ApplicationTest {
     @Nested
     class Problem3Test {
         @Test
+        @DisplayName("3 6 9 13")
         void case1() {
             int number = 13;
             int result = 4;
@@ -145,6 +146,7 @@ class ApplicationTest {
         }
 
         @Test
+        @DisplayName("3 6 9 13 16 19 23 26 29 30 31 32 33")
         void case2() {
             int number = 33;
             int result = 14;
@@ -152,6 +154,7 @@ class ApplicationTest {
         }
 
         @Test
+        @DisplayName("x")
         void case3() {
             int number = 1;
             int result = 0;
@@ -159,6 +162,7 @@ class ApplicationTest {
         }
 
         @Test
+        @DisplayName("조금 긴 테스트")
         void case4() {
             int number = 40;
             int result = 22;
@@ -166,6 +170,7 @@ class ApplicationTest {
         }
 
         @Test
+        @DisplayName("많이 긴 테스트")
         void case5() {
             int number = 333;
             int result = 228;
