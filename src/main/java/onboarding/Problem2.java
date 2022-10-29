@@ -17,15 +17,13 @@ public class Problem2 {
             if(cryptogram.charAt(i) != cryptogram.charAt(i+1)) {
                 if(!isOverlap) {
                     removedCrytogram = removedCrytogram + cryptogram.charAt(i);
-
-                    if(i == cryptogram.length()-2) {
-                        removedCrytogram = removedCrytogram + cryptogram.charAt(i+1);
-                    }
                 }
 
-                if(isOverlap) {
-                    isOverlap = false;
+                if(i == cryptogram.length()-2) {
+                    removedCrytogram = removedCrytogram + cryptogram.charAt(i+1);
                 }
+
+                isOverlap = false;
             }
         }
 
@@ -34,9 +32,7 @@ public class Problem2 {
 
     public static String solution(String cryptogram) {
         String answer = cryptogram;
-        while(!removeOverlap(answer).equals(answer)) {
-            answer = removeOverlap(answer);
-        }
+
 
         return answer;
     }
