@@ -4,14 +4,18 @@ import java.util.List;
 
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
+        int answer = extractingNumbers(number);
         return answer;
     }
 
-    private static List<Integer> extractingNumbers(int number) {
+    private static int extractingNumbers(int number) {
+        int result = 0;
         for (int i = 1; i <= number; i++) {
-            if ()
+            if (checkingNumber(i)) {
+                result += includedCountingCheck(i);
+            }
         }
+        return result;
     }
 
     private static boolean checkingNumber(int number) {
