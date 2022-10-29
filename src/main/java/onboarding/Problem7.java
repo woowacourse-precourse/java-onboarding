@@ -41,6 +41,10 @@ public class Problem7 {
                 }
             }
         }
+        //1점씩 부여
+        for(int i=0;i<visitors.size();i++){
+            map.put(visitors.get(i),(Integer)map.get(visitors.get(i))+1);
+        }
         return answer;
     }
 }
