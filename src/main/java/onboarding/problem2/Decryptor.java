@@ -1,5 +1,8 @@
 package onboarding.problem2;
 
+import static onboarding.problem2.consts.CryptogramIndexConst.CHARACTER_BEFORE_INDEX;
+import static onboarding.problem2.consts.CryptogramIndexConst.CHARACTER_START_INDEX;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,8 +18,8 @@ public class Decryptor {
 
         while (!removeDuplicateCharacter) {
             removeDuplicateCharacter = true;
-            for (int i = 1; i < strings.size(); i++) {
-                int startCursor = i - 1;
+            for (int i = CHARACTER_START_INDEX; i < strings.size(); i++) {
+                int startCursor = i - CHARACTER_BEFORE_INDEX;
                 if (strings.get(startCursor).equals(strings.get(i))) {
                     removeDuplicateCharacter = false;
                     String target = strings.get(i);
