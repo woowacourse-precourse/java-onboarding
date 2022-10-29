@@ -8,6 +8,17 @@ class Problem1 {
 
         if(!validData(pobi, crong)) return -1;
 
+        int pobiScore = getMaxScore(pobi);
+        int crongScore = getMaxScore(crong);
+
+
+        if (pobiScore > crongScore){
+            answer = 1;
+        } else if (pobiScore < crongScore) {
+            answer = 2;
+        }else {
+            answer = 0;
+        }
         return answer;
     }
 
