@@ -6,7 +6,14 @@ public class Problem3 {
         return answer;
     }
 
+    public static int clapCount(int value) {
 
+        if (value / 10 == 0) {
+            return clap(value);
+        }
+
+        return clapCount(value / 10) + clap(value % 10);
+    }
     public static int clap(int value) {
         if (value == 3 || value == 6 || value == 9) {
             return 1;
