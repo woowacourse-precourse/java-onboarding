@@ -19,6 +19,11 @@ public class Problem6 {
         }
         return result;
     }
+    public static void contain(HashSet<String> result, List<List<String>> forms, List<String> targets){
+        for(List<String> form:forms){
+            add(result,form,targets);
+        }
+    }
     public static void add(HashSet<String> result, List<String> form, List<String> targets){
         for(String target:subStrings(targets.get(NAME))){
             if(form.get(NAME).contains(target)) {
