@@ -40,7 +40,18 @@ public class Problem7 {
             if(isFriend) continue;
             map.put(visitor,map.containsKey(visitor) ? map.get(visitor) +1 : 1);
         }
+        List<Map.Entry<String,Integer>> entArr = new ArrayList<>(map.entrySet());
         List<String> answer = new ArrayList<>();
+        //해쉬맵의 value 값으로 정렬하기
+        entArr.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o2.getValue().compareTo(o1.getValue());
+            }
+        });
+        for (Map.Entry<String,Integer> entry : entArr){
+            answer.add(entry.getKey());
+        }
         return answer;
     }
 }
