@@ -40,30 +40,6 @@ class Money {
         this.oneWon = this.origin % 10;
     }
 
-    public int getOrigin() {
-        return origin;
-    }
-
-    public int getOneMillionWon() {
-        return oneMillionWon;
-    }
-
-    public int getOneThousandWon() {
-        return oneThousandWon;
-    }
-
-    public int getOneHundredWon() {
-        return oneHundredWon;
-    }
-
-    public int getTenWon() {
-        return tenWon;
-    }
-
-    public int getOneWon() {
-        return oneWon;
-    }
-
     static void validateMoneyRange(int money) {
         if (money < 1 || 1000000 < money) {
             throw new IllegalStateException("1이상 1,000,000 이하로 입력해 주세요");
