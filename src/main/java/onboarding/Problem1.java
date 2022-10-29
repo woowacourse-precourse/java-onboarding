@@ -7,27 +7,59 @@ import java.util.Random;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        int pobimax=resultMax(pobi);
+        int crongmax=resultMax(crong);
+        if(pobimax>crongmax){
+            answer=1;
+        }else if(pobimax<crongmax){
+            answer=2;
+        }else  if(pobimax==crongmax)
+            answer=0;
+        else answer=-1;
         return answer;
     }
     public static int resultMax(List<Integer> list){
         int Plusmax;//더하기 최대값
         int Multimax;//곱하기 최대값
         Plusmax=PlusMax(list.get(0), list.get(1));
-        
+        Multimax = Multimax(list.get(0), list.get(1));
+        if(Plusmax>Multimax){
+            return Plusmax;
+        }else if(Plusmax<Multimax){
+            return Multimax;
+        }else return Plusmax;
+
         }
-    }
-    public static int PlusMax(int odd,int max){ //각 자리수의 합을 구하는 기능
+
+    public static int PlusMax(int odd,int even){ //각 자리수의 합을 구하는 기능
             int sum=0;
-            if(max%10==0){//페이지가 39 40처럼 앞자리수가 달라질때를 구분
+            if(even%10==0){//페이지가 39 40처럼 앞자리수가 달라질때를 구분
             while(odd!=0){
                 sum+=odd&10;
                 odd/=10;
             }} else {
-                while(max!=0){
-                    sum+=max&10;
-                    max/=10;
+                while(even!=0){
+                    sum+=even&10;
+                    even/=10;
                 }
             }
             return sum;
+    }
+    public static int Multimax(int odd,int even) {
+        int multiodd = 1;
+        int multieven = 1;
+        while (odd != 0) {
+            multiodd *= odd & 10;
+            odd /= 10;
+        }
+        while (even != 0) {
+            multieven *= even & 10;
+            even /= 10;
+        }
+        if(multieven>multiodd){
+            return multieven;
+        }else if(multieven<multiodd){
+            return multiodd;
+        }else return multieven;
     }
 }
