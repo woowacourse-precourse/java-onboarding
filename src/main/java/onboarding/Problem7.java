@@ -27,6 +27,10 @@ public class Problem7 {
             friendScore.put(name, score);
         }
 
+        for (String name : visitors) {
+            friendScore.put(name, friendScore.getOrDefault(name, 0) + 1);
+        }
+
         return answer;
     }
 
