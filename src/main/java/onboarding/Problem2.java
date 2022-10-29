@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.Stack;
+
 public class Problem2 {
     /**
      * 기능 목록
@@ -12,6 +14,13 @@ public class Problem2 {
      */
     public static String solution(String cryptogram) {
         String answer = "answer";
+        Stack<Character> stack = new Stack<>();
+
+        // 1. cryptogram의 문자를 돌면서 stack에 push
+        for (int i = 0; i < cryptogram.length(); i++) {
+            char cur = cryptogram.charAt(i);
+            stack.push(cur);
+        }
         return answer;
     }
 }
