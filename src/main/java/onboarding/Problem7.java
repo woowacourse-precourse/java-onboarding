@@ -46,5 +46,13 @@ public class Problem7 {
         return listOfScore;
     }
 
+    public static HashMap<String, Integer> getVisitorScore (HashMap<String, Integer> listOfScore, List<String> visitors, List<String> userFriends) {
+        for(String visitor: visitors) {
+            if(userFriends.contains(visitor) == false) {
+                listOfScore.put(visitor, listOfScore.getOrDefault(visitor, 0) + 1);
+            }
+        }
 
+        return listOfScore;
+    }
 }
