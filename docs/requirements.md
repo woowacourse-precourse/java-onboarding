@@ -82,6 +82,28 @@
 - 입력받은 cryptogram을 decryptString에 전달한다.
 - 받은 결과값을 return한다.
 
+## 문제 3
+### 구현 및 메소드 설명
+- shouldClap
+- getTotalClaps
+- solution
+
+### shouldClap
+- int를 매개변수로 받는다. 이 값은 박수를 쳐야 하는지의 여부이다.
+- 받은 숫자가 10 이상일 때, 아래 과정을 반복한다.
+  - 숫자의 1의 자리가 3인지 확인한다. 맞다면 박수를 쳐야 한다.
+  - 그렇지 않다면, 숫자를 10으로 나눈다.
+- 최종적으로 박수를 쳐야 하는지 여부를 리턴한다.
+
+### getTotalClaps
+- int를 매개변수로 받는다. 이 값은 박수를 몇 번 쳐야 하는지 구하고자 하는 number이다.
+- 1부터 number까지 shouldClap을 호출한다. true의 횟수를 기록한다.
+- 기록한 총 횟수를 리턴한다.
+
+### solution
+- int를 매개변수로 받는다. 이 값은 박수를 몇 번 쳐야 하는지 구하고자 하는 number이다.
+- shouldClap을 호출하고, 결과값을 답으로써 리턴한다.
+
 ## 문제 4
 ### 구현 메소드 및 설명
 - reverseAlphabet
