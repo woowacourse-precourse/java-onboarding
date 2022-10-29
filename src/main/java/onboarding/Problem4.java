@@ -14,10 +14,10 @@ public class Problem4 {
     private static void incodeIndexOf(int index, StringBuffer sb) {
         char indexChar = sb.charAt(index);
         char reversedChar = ' ';
-        if ('a' <= indexChar <= 'z') {
+        if ('a' <= indexChar || indexChar <= 'z') {
             reversedChar = (char)('a' + 'z' - indexChar);
         }
-        if ('A' <= indexChar <= 'Z') {
+        if ('A' <= indexChar || indexChar <= 'Z') {
             reversedChar = (char)('A' + 'Z' - indexChar);
         }
         sb.replace(index, index + 1, String.valueOf(reversedChar));
