@@ -1,11 +1,12 @@
 ## 기능 목록
 
-| Date  | Feature                               | Method Name                    | Parameter Type       | Return Type  | Progress  |
-|-------|---------------------------------------|--------------------------------|----------------------|--------------|-----------|
-| 10.29 | 문자열을 두글자 단위로 나눔                       | splitStringEveryTwoCharacter() | String               | List<String> | committed |
+| Date  | Feature                   | Method Name                      | Parameter Type | Return Type  | Progress         |
+|-------|---------------------------|----------------------------------|----------------|--------------|------------------|
+| 10.29 | 문자열을 두 글자 단위로 나눔          | splitStringEveryTwoCharacter()   | String         | List<String> | committed        |
+| 10.29 | 두 글자 리스트 중복 체크            | checkTwoCharacterListDuplicate() | List<String>   | void         | committed        |
+| 10.29 | 중복 두 글자 닉네임의 이메일 정답 셋에 추가 | addEmailOfNewDuplicate()         | String, String | void         | work in progress |
 
 ### TODO
--using hashmap, key = two consecutive characters, value = email.  
 -add email to result set if duplicate 
 
 ## 🚀 기능 요구 사항
