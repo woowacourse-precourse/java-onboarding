@@ -9,7 +9,7 @@ import java.util.*;
  */
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = new ArrayList<>();
+        List<String> result = new ArrayList<>();
         Map<String, Integer> duplication = new HashMap<>();
 
         for(List<String> list : forms){
@@ -19,6 +19,18 @@ public class Problem6 {
                 duplication.put(strcase, duplication.getOrDefault(strcase, 0) +1);
             }
         }
-        return answer;
+
+        for(List<String> list: forms) {
+            String email = list.get(0);
+            String nickname = list.get(1);
+            for(int i = 0; i < nickname.length()-1; i++){
+                String strcase = nickname.substring(i, i+2);
+                if(duplication.get(strcase) >= 2 && !result.contains(email)){
+                    result.add(email);
+                }
+            }
+        }
+        Collections.sort(result);
+        return result;
     }
 }
