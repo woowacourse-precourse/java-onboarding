@@ -32,4 +32,13 @@ class Problem1 {
         return sumValue;
     }
 
+    private static int getMulByArray(int[] array){
+        // 배열의 각 자리수를 모두 곱하는 메소드
+        int mulValue = 1;
+        for (int value : array){
+            mulValue *= value;
+        }
+
+        return mulValue;
+    }
 }
