@@ -34,6 +34,15 @@ public class Problem6 {
         List<String> answer = new ArrayList<>();
         boolean[] isDuplicate = new boolean[forms.size()];
 
+        for(int i=0; i<forms.size(); i++){
+            determineIsDuplicate(forms, substringsOfNickname, isDuplicate, i);
+        }
+
+        for(int i=0; i<forms.size(); i++){
+            addEmail(emails, forms.get(i).get(0), isDuplicate[i], answer);
+        }
+
+        Collections.sort(answer);
 
         return answer;
     }
@@ -65,7 +74,7 @@ public class Problem6 {
     public static void addEmail(Set<String> emails, String email,
                                 boolean isDuplicate, List<String> answer){
 
-        if(isDuplicate  && !emails.contains(email)){
+        if(isDuplicate && !emails.contains(email)){
             answer.add(email);
             emails.add(email);
         }
