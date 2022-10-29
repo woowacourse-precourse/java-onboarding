@@ -7,6 +7,12 @@ import java.util.regex.Pattern;
 public class Problem4 {
     public static String solution(String word) {
 
+        try {
+            ExceptionProblem4.validateStringLength(word);
+        } catch (IllegalArgumentException e){
+            return "";
+        }
+
         char[] wordCharArray = word.toCharArray();
 
         List<Character> answer = new ArrayList<>();
@@ -47,10 +53,17 @@ public class Problem4 {
 class ExceptionProblem4 {
     public static void validateWord(String word) {
         enterWord(word);
+        validateStringLength(word);
     }
 
     public static void enterWord(String word) {
         if (word.equals("")) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void validateStringLength(String word) {
+        if (word.length() < 1 || word.length() > 1000) {
             throw new IllegalArgumentException();
         }
     }
