@@ -64,9 +64,7 @@ public class Problem7 {
 
     public static List<List<String>> sortRecommendFriends(HashMap<String, Integer> friendMap) {
         List<List<String>> sortedList = new ArrayList<>();
-        for (Map.Entry<String, Integer> entry : friendMap.entrySet()) {
-            sortedList.add(List.of(entry.getKey(), Integer.toString(entry.getValue())));
-        };
+        setSortList(sortedList, friendMap);
         sortedList.sort((List<String> a, List<String> b) -> {
             if (a.get(1).equals(b.get(1))) {
                 return String.CASE_INSENSITIVE_ORDER.compare(a.get(0), b.get(0));
@@ -74,6 +72,12 @@ public class Problem7 {
             return -Integer.compare(Integer.parseInt(a.get(1)), Integer.parseInt(b.get(1)));
         });
         return sortedList;
+    }
+
+    public static void setSortList(List<List<String>> list, HashMap<String, Integer> friendMap) {
+        for (Map.Entry<String, Integer> entry : friendMap.entrySet()) {
+            list.add(List.of(entry.getKey(), Integer.toString(entry.getValue())));
+        }
     }
 
     public static List<String> limitFiveLength(List<List<String>> list) {
