@@ -18,11 +18,22 @@ class Problem1 {
             int pobiScore = findScore(pobi);
             int crongScore = findScore(crong);
 
+            answer = makeResult(pobiScore, crongScore);
         } catch (Exception e) {
             //System.out.print(e.getMessage());
             answer = ERROR_NUM;
         }
         return answer;
+    }
+
+    public static int makeResult(int player1, int player2) {
+        if (player1 > player2) {
+            return 1;
+        }
+        if (player1 < player2) {
+            return 2;
+        }
+        return 0;
     }
 
     public static int findScore(List<Integer> player) {
