@@ -3,9 +3,9 @@ package onboarding;
 import static java.lang.Integer.*;
 
 public class Problem3 {
+
     public static int solution(int number) {
         int answer = 0;
-
         for(int i = 1; i <= number; i++) {
             answer += count369(i);
         }
@@ -15,10 +15,10 @@ public class Problem3 {
 
     public static int count369(int number){
         int clapCount = 0;
-        char[] array = integerToCharArr(number);
-
-        for (char c : array) {
-            if (is369(characterToInteger(c))) {
+        char[] parseArray = integerToCharArr(number);
+        for (char c : parseArray) {
+            int parseNumber = characterToInteger(c);
+            if (is369(parseNumber)) {
                 clapCount++;
             }
         }
