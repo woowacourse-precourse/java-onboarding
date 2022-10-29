@@ -16,7 +16,8 @@ public class Problem2 {
         if (list.size() == 0) {
             return "";
         }
-        StringBuilder sb = new StringBuilder();
+
+        StringBuilder sb = new StringBuilder(list.size());
         while (list.size() != 0) {
             sb.append(list.removeFirst());
         }
