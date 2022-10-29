@@ -16,4 +16,11 @@ public class Problem2 {
         }
         return -1;
     }
+    // 중복 문자열 삭제
+    public static ArrayList<String> removeLetter(ArrayList<String> word, int index){
+        word.remove(index);
+        word.remove(index);
+
+        return word;
+    }
 }
