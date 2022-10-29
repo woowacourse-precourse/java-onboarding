@@ -43,7 +43,7 @@ public class Problem6 {
 
             for (int i = 0; i < nickname.length() - 1; i++) {
                 String check = nickname.substring(i, i + 2);
-                if(rememberDto.nickname.contains(check)) {
+                if (rememberDto.nickname.contains(check)) {
                     answer.add(rememberDto.email);
                     rememberDto = new RememberDto();
                     return true;
@@ -53,7 +53,7 @@ public class Problem6 {
                 }
             }
         }
-        rememberDto.init(email, nickname);
+        rememberDto.rememberCrew(email, nickname);
         return false;
     }
 
@@ -75,7 +75,7 @@ public class Problem6 {
             this.nickname = "";
         }
 
-        public void init(String email, String nickname) {
+        public void rememberCrew(String email, String nickname) {
             this.email = email;
             this.nickname = nickname;
         }
