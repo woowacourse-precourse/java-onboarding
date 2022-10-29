@@ -39,4 +39,14 @@ public class Problem7 {
         }
         return scoreboard;
     }
+
+    static Map<String, Integer> exceptFriend(Map<String, Integer> scoreboard, String user, List<String> myFriends) {
+        myFriends.add(user);
+        for (String myFriend : myFriends) {
+            if (scoreboard.containsKey(myFriend)) {
+                scoreboard.remove(myFriend);
+            }
+        }
+        return scoreboard;
+    }
 }
