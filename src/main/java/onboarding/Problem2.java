@@ -51,3 +51,11 @@ public class Problem2 {
         return answer;
     }
 }
+
+class ExceptionProblem2 {
+    static final String ERROR_MESSAGE = "입력이 잘못 입력되었습니다.";
+
+    public static void validateCryptogram(String cryptogram) {
+
+    }
+}
