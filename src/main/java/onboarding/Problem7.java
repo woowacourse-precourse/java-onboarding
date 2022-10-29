@@ -6,22 +6,26 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
         HashMap<String, Integer> map = new HashMap<>(); //사용자 친구추천 후보들
-        HashSet<String> set = new HashSet<>(); //사용자와 이미 친구인 사람들
+
+        //사용자와 이미 친구인 사람들 목록 만들기
+        HashSet<String> set = makeFriendList(friends, user);
 
         //함께아는 친구 점수 계산하는 기능
         for(int i = 0; i < friends.size(); i++){
-            String friend = friends.get(i).get(0);
-            String friendOfFriend = friends.get(i).get(1);
-            set.add(friend);
-            if(friendOfFriend.equals(user)){
+            List<String> pair = friends.get(i);
+
+            //사용자는 제외
+            if(pair.get(0).equals(user) || pair.get(1).equals(user)){
                 continue;
             }
-            //점수 계산
-            if(map.containsKey(friendOfFriend)){
-                int sum = map.get(friendOfFriend) + 10;
-                map.put(friendOfFriend, sum);
-            }else{
-                map.put(friendOfFriend, 10);
+
+            //점수계산
+            if(set.contains(pair.get(0))){
+                String friendOfFriend = pair.get(1);
+                map = accumulateRecommendedScore(map, friendOfFriend, 10);
+            }else if(set.contains(pair.get(1))){
+                String friendOfFriend = pair.get(0);
+                map = accumulateRecommendedScore(map, friendOfFriend, 10);
             }
         }
 
@@ -80,5 +84,15 @@ public class Problem7 {
             }
         }
         return set;
+    }
+
+    private static HashMap<String, Integer> accumulateRecommendedScore(HashMap<String, Integer> map, String recommendedFriend, int score){
+        if(map.containsKey(recommendedFriend)){
+            int sum = map.get(recommendedFriend) + score;
+            map.put(recommendedFriend, sum);
+        }else{
+            map.put(recommendedFriend, score);
+        }
+        return map;
     }
 }
