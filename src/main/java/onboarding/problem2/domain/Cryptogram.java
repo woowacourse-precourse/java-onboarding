@@ -20,6 +20,10 @@ public class Cryptogram {
         return this.cryptogram.length() == cryptogram.cryptogram.length();
     }
 
+    public String text() {
+        return this.cryptogram;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
