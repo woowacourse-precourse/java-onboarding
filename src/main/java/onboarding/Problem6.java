@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -35,12 +32,14 @@ public class Problem6 {
                 String cutString = nickname.substring(j, j + 2);
 
                 for (int h = i + 1; h < formsLength; h++) {
-                    if (forms[h][2].contains(cutString)) {
+                    if (forms[h][1].contains(cutString)) {
                         result.add(forms[i][0]);
                         result.add(forms[h][0]);
                     }
                 }
             }
         }
+
+        return result;
     }
 }
