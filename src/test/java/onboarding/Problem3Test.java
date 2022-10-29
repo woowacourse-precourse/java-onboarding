@@ -13,11 +13,15 @@ class Problem3Test {
         assertThat(Problem3.validCnt(76)).isEqualTo(1);
         assertThat(Problem3.validCnt(11)).isEqualTo(0);
         assertThat(Problem3.validCnt(27)).isEqualTo(0);
+        assertThat(Problem3.validCnt(999)).isEqualTo(3);
+        assertThat(Problem3.validCnt(909)).isEqualTo(2);
+        assertThat(Problem3.validCnt(939)).isEqualTo(3);
+
     }
 
     @Test
     void clapCntTest() {
-        assertThat(Problem3.getResult(13)).isEqualTo(4);
-        assertThat(Problem3.getResult(33)).isEqualTo(14);
+        assertThat(Problem3.solution(13)).isEqualTo(4);
+        assertThat(Problem3.solution(33)).isEqualTo(14);
     }
 }
