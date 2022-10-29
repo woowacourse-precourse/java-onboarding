@@ -3,8 +3,7 @@ import java.util.*;
 import java.io.*;
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        return solve(cryptogram);
     }
 
     public static String removeDuplication(String input){
@@ -30,4 +29,18 @@ public class Problem2 {
         }
         return sb.toString().substring(1);
     }
+
+    public static String solve(String input){
+        String result = "";
+
+        while(true){
+            result = removeDuplication(input);
+
+            if(input.equals(result)) break;
+            else input = result;
+        }
+
+        return result;
+    }
+
 }
