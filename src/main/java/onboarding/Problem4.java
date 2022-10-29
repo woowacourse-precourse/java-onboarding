@@ -15,7 +15,11 @@ public class Problem4 {
     }
     private static String compareLetter(String letter){
         if(65 <= letter.charAt(0) && 90 >= letter.charAt(0))
-            return "대문자";
+            return reverseCapitalLetter(letter.charAt(0));
         return "소문자";
+    }
+    private static String reverseCapitalLetter(char letter){
+        char reverseLetter = (char) (65 + 90 - letter);
+        return  String.valueOf(reverseLetter);
     }
 }
