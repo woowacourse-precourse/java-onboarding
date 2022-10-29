@@ -93,6 +93,7 @@ class RightPage extends Page {
 class Book {
     private static final int LEFT_PAGE_INDEX = 0;
     private static final int RIGHT_PAGE_INDEX = 1;
+    private static final int LEFT_AND_RIGHT_INTERVAL=1;
     private static final String LEFT_RIGHT_PAGE_DIFFERENCE = "왼쪽과 오른쪽 페이지는 1 차이 나야합니다.";
 
     private final LeftPage leftPage;
@@ -105,7 +106,7 @@ class Book {
     }
 
     private void validateLeftAndRightInterval(List<Integer> user) {
-        if (user.get(RIGHT_PAGE_INDEX) - user.get(LEFT_PAGE_INDEX) != 1) {
+        if (user.get(RIGHT_PAGE_INDEX) - user.get(LEFT_PAGE_INDEX) != LEFT_AND_RIGHT_INTERVAL) {
             throw new IllegalStateException(LEFT_RIGHT_PAGE_DIFFERENCE);
         }
     }
