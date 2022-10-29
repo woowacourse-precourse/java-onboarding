@@ -33,6 +33,8 @@ public class Problem4 {
     }
     static char changeAlpha(String oneword){
         char reverseword = 0;
+        if(flag == 1) reverseword = (char)(155-(int)oneword.charAt(0));
+        if(flag == 2) reverseword = (char)(219-(int)oneword.charAt(0));
         return reverseword;
     }
 }
