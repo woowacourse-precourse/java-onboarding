@@ -28,5 +28,5 @@
   - [x] 닉네임을 두 글자씩 나누는 함수 (`splitTwoLetter`)
   - [x] 두 글자씩 나눈 닉네임에 맞게 이메일을 HashMap에 저장하는 함수 (`storeEmails`)
     - key(String): 두 글자로 나눈 닉네임, value(List<String>): 이메일
-- [ ] 글자에 해당하는 이메일이 2개 이상이라면, 그 이메일들을 결과로 추출하는 함수 (`getDuplicateEmails`)
+- [x] 글자에 해당하는 이메일이 2개 이상이라면, 그 이메일들을 결과로 추출하는 함수 (`getDuplicateEmails`)
 - [ ] 결과를 오름차순으로 정렬하는 함수 (`sortAnswer`)

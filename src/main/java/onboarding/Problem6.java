@@ -1,15 +1,28 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Problem6 {
+    private static final int DUPLICATED_COUNT = 2;
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         Map<String, List<String>> nicknames = createNicknameMap(forms);
+        Set<String> duplicateEmails = getDuplicateEmails(nicknames);
+
         return answer;
+    }
+
+    private static Set<String> getDuplicateEmails(Map<String, List<String>> nicknameDict) {
+        Set<String> duplicatedEmails = new HashSet<>();
+
+        nicknameDict.forEach((nickname, emails) -> {
+            if (emails.size() >= DUPLICATED_COUNT) {
+                duplicatedEmails.addAll(emails);
+            }
+        });
+
+        return duplicatedEmails;
     }
 
     private static Map<String, List<String>> createNicknameMap(List<List<String>> forms) {
