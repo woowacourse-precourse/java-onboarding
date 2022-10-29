@@ -6,6 +6,14 @@ public class Problem2 {
         return answer;
     }
 
+    private static boolean isInvalidInput(String cryptogram) {
+        return isInvalidLength(cryptogram);
+    }
+
+    private static boolean isInvalidLength(String cryptogram) {
+        return cryptogram.length() < 1 || cryptogram.length() > 1000;
+    }
+
     private static String decode(String cryptogram) {
         while (!cryptogram.equals(removeRepetition(cryptogram))) {
             cryptogram = removeRepetition(cryptogram);
