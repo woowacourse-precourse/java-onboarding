@@ -19,6 +19,8 @@ public class Problem5 {
                 numberOfCurrency++;
                 money -= currency;
             }
+
+            numberByCurrency.add(numberOfCurrency);
         }
 
         return numberByCurrency;
