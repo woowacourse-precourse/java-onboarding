@@ -23,7 +23,7 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         init(friends);
-        System.out.println(friendsListVerifier(user, friends));
+        System.out.println("myFriends : " + friendsListVerifier(user, friends));
         return null;
     }
 
@@ -51,6 +51,8 @@ public class Problem7 {
         }
         sortList();
         removeMyId(myId);
+        calculationAFriendsWeNow();
+        System.out.println("result = " + result);
         System.out.println("aFriendWeKnow = " + aFriendWeKnow);
         return myFriends;
     }
@@ -103,6 +105,12 @@ public class Problem7 {
                 aFriendWeKnow.remove(i);
                 i--;
             }
+        }
+    }
+
+    private static void calculationAFriendsWeNow() {
+        for (String user : aFriendWeKnow) {
+            result.put(user, result.get(user) + 10);
         }
     }
 
