@@ -1,51 +1,57 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Problem2 {
     public static String solution(String cryptogram) {
-        Object[] check_result = new Object[2];
-        while (true) {
-            check_result = letterCheck(cryptogram);
-            cryptogram = (String) check_result[0];
-            if ((int) check_result[1] == 0) {
-                break;
-            }
-        }
         return cryptogram;
     }
-    static String letterRemove(String temp1){
-        if(temp1.length() != 1){
-            return "";
-        }
-        return temp1;
-    }
-    static Object[] letterCheck(String crytogram){
-        String temp1;
-        String temp2;
-        int check_remove = 0;
-        String new_crytogram = "";
-        Object[] check_result = new Object[2];
 
-        if(crytogram.length()==0){
-            check_result[0] = "";
-            check_result[1] = check_remove;
-            return check_result;
+    static class CheckLetter {
+        int front = 0;
+        int back = 1;
+        List<Integer> remove_range = new ArrayList<>();
+        String cryptogram;
+
+        CheckLetter(String cryptogram) {
+            this.cryptogram = cryptogram;
         }
-        temp1 = String.valueOf(crytogram.charAt(0));
-        for(int i=1; i<crytogram.length();i++){
-            temp2 = String.valueOf(crytogram.charAt(i));
-            if(temp1.equals(temp2)){
-                temp1 = temp1 + temp2;
-                temp2 = "";
-                check_remove = 1;
-            }else if(!temp1.equals(temp2)) {
-                new_crytogram = new_crytogram + letterRemove(temp1);
-                temp1 = temp2;
-                temp2 = "";
+        List<Integer> getRemove_range() {
+            return remove_range;
+        }
+        boolean checkLoop() {
+            return back != cryptogram.length();
+        }
+        void letterCheck () {
+            if (cryptogram.charAt(front) != cryptogram.charAt((back))) {
+                this.workMismatch();
+            } else if (cryptogram.charAt(front) == cryptogram.charAt(back)) {
+                this.workMatch();
             }
         }
-        new_crytogram += letterRemove(temp1);
-        check_result[0] = new_crytogram;
-        check_result[1] = check_remove;
-        return check_result;
+        void workMismatch() {
+            if (back == cryptogram.length() - 1) {
+                back += 1;
+            } else if (back - front == 1) {
+                back += 1;
+                front += 1;
+            } else if (back - front > 1) {
+                remove_range.add(back);
+                back += 1;
+                front = back - 1;
+            }
+        }
+        void workMatch() {
+            if (back == cryptogram.length() - 1) {
+                back += 1;
+                remove_range.add(back);
+            } else if (back - front == 1) {
+                remove_range.add(front);
+                back += 1;
+            } else if (back - front > 1) {
+                back += 1;
+            }
+        }
     }
 }
