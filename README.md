@@ -53,7 +53,8 @@ BUILD SUCCESSFUL in 0s
 6. [문제 6](./docs/PROBLEM6.md)
 7. [문제 7](./docs/PROBLEM7.md)
   * 출력값 요구사항   
-    1. 추천 점수 Descending Order로 높은 상위 5명의 이름의 리스트를 반환   
+    1. 추천 점수 Descending Order로 출력
+    1. 높은 상위 5명의 이름의 리스트를 반환   
     1. 추천 점수가 같은 경우 이름순으로 정렬    
     1. 추천 점수가 0점이면 반환리스트에 추가하지 않음   
 
@@ -97,3 +98,16 @@ BUILD SUCCESSFUL in 0s
 | :---:  | :---: | :--- | 
 |  2.0 | 주어진 텍스트의 최종 cipher text를 출력 | Problem2.solution  | 
 |  2.1 | 주어진 텍스트를 1회 해독한 결과를 출력 | Problem2.decipher  | 
+
+7. 문제 7
+
+|기능목록 번호| 내용 | 구현상황 |
+| :---:  | :--- | :--- | 
+|  7.0 | 출력값 요구사항 1: 추천 점수  상위 5명의 이름의 리스트를 반환 | Problem7.solution | 
+|  7.0.1 | 출력값 요구사항 3: 추천 점수가 0점이면 반환리스트에 추가하지 않음  | Problem7.solution | 
+|  7.1 | 주어진 친구관계 정보 friends의 정보를 지닌 그래프 객체 | Problem7.socialGraph | 
+|  7.1.1 | 주어진 두 유저의 공통 친구의 수를 출력 | Problem7.socialGraph.numberOfCommonFriends | 
+|  7.1.2 | 주어진 두 유저가 서로 친구인지를 출력 | Problem7.socialGraph.areFriend | 
+|  7.1.3 | 출력값 요구사항 2: 주어진 유저들의 목록을 이름순으로 출력 | Problem7.socialGraph.users | 
+|  7.1.2 | 주어진 유저들의 목록의 길이를 출력 | Problem7.socialGraph.usersLength | 
+|  7.2 | 출력값 요구사항 1: 추천 점수 Descending Order로 유저들의 목록을 출력  | Problem7.makeUserListByRecomandation | 
