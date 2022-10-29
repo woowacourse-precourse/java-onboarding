@@ -26,4 +26,12 @@ class Withdrawal {
         }
         money_array.add(1);
     }
+
+    List<Integer> makeAnswerArray() {
+        List<Integer> answer_array = new ArrayList<>(9);
+        for (int i=0; i<9; i++) {
+            answer_array.add(0);
+        }
+        return answer_array;
+    }
 }
