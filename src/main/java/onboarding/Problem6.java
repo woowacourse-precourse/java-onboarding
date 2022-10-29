@@ -63,4 +63,12 @@ public class Problem6 {
         return duplicateCrewNicknames;
     }
 
+    private static List<String> getDuplicateCrewEmails(List<String> duplicateCrewNicknames) {
+        List<String> duplicateCrewEmails = duplicateCrewNicknames.stream()
+                .map(crewInfoMap::get)
+                .distinct()
+                .sorted()
+                .collect(Collectors.toList());
+        return duplicateCrewEmails;
+    }
 }
