@@ -65,6 +65,15 @@ public class Problem7 {
         entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
             @Override
             public int compare(Map.Entry<String, Integer> user1, Map.Entry<String, Integer> user2) {
+                if (user2.getValue() == user1.getValue()) {
+                    String user1Key = user1.getKey();
+                    String user2Key = user2.getKey();
+                    int n = 0;
+                    while (n < Math.min(user1Key.length(), user2Key.length())&& user1Key.charAt(n) == user2Key.charAt(n)) {
+                        n++;
+                    }
+                    return user1Key.charAt(n) - user2Key.charAt(n);
+                }
                 return user2.getValue() - user1.getValue();
             }
         });
