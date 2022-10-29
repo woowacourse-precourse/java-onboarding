@@ -1,28 +1,28 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
         HashSet<String> userFriendMap = new HashSet<>(getFriendListOfUser(user, friends));
+        ;
         System.out.println(userFriendMap);
-        System.out.println(getScoreMap(user, userFriendMap, friends));
+        System.out.println(getScoreMap(userFriendMap,
+                friends.stream().filter((users) -> !users.contains(user)).collect(Collectors.toList())
+                ));
         return answer;
     }
 
-    private static HashMap<String, Integer> getScoreMap(String user, HashSet<String> userFriendMap, List<List<String>> friends) {
+    private static HashMap<String, Integer> getScoreMap(HashSet<String> userFriendMap, List<List<String>> friends) {
         HashMap<String, Integer> result = new HashMap<>();
 
 
         for (List<String> list: friends) {
             String friendA = list.get(0);
             String friendB = list.get(1);
-
-            if (friendA.equals(user) || friendB.equals(user)) {
-                continue;
-            }
 
             updateMutualFriendScore(userFriendMap, result, friendA, friendB);
             updateMutualFriendScore(userFriendMap, result, friendB, friendA);
