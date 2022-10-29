@@ -35,7 +35,10 @@ class Problem1 {
         return newList;
     }
     public static int isValid(List<Integer> A,List<Integer> B, int a, int b) {
-        if (A.get(0)+1 == A.get(1) & B.get(0)+1 == B.get(1)) {
+        if (A.size()!=2 || B.size()!=2){
+            return -1;
+        }
+        if (A.get(0)%2==0 && A.get(0)+1 == A.get(1) & B.get(0)%2==0 && B.get(0)+1 == B.get(1)) {
             if(a < b){return 2;}
             else if (a > b){return 1;}
             else { return 0; }
