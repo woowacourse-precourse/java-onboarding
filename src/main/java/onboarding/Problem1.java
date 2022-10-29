@@ -26,6 +26,10 @@ class Problem1 {
         }
         return multiplication;
     }
+    // 큰 숫자 구하기
+    public static int getMaxNumber(int sum, int multiple) {
+        return Math.max(sum,multiple);
+    }
 
 }
 
