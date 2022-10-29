@@ -24,17 +24,14 @@ public class Game369ClapCounter {
     }
 
     private static int countClaps(int num) {
-        int result = 0;
-
-        while (num > 0) {
-            result += clapDigit(num % 10);
-            num /= 10;
-        }
-
-        return result;
+        return String.valueOf(num)
+                .chars()
+                .map(Character::getNumericValue)
+                .map(digit -> clapOf(digit))
+                .sum();
     }
 
-    private static int clapDigit(int digit) {
+    private static int clapOf(int digit) {
         if (claps.contains(digit)) {
             return 1;
         }
