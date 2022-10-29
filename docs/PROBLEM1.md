@@ -30,8 +30,8 @@
 3. 왼쪽 페이지와 오른쪽 페이지를 비교하여 본인의 점수를 결정
 4. 1,2,3을 활용하여 본인의 점수를 반환
 5. pobi와 crong의 점수를 비교해 알맞은 응답을 출력
-   - pobi < crong -> 1
-   - pobi > crong -> 2
+   - pobi > crong -> 1
+   - pobi < crong -> 2
    - pobi == crong -> 0
    - Exception 발생시 -1 
 6. Exception 처리

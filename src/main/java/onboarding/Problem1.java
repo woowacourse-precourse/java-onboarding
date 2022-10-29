@@ -69,10 +69,10 @@ class Problem1 {
     }
 
     private static int comPareTwoScore (int pobi, int crong) {
-        if (pobi < crong) {
+        if (pobi > crong) {
             return 1;
         }
-        if (pobi > crong) {
+        if (pobi < crong) {
             return 2;
         }
         return 0;
