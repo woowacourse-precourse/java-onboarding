@@ -1,9 +1,10 @@
 package onboarding;
 
+import java.util.Enumeration;
+
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
-        return answer;
+        return getGameResult(number);
     }
 
     private static boolean isIn369(String string){
@@ -20,6 +21,16 @@ public class Problem3 {
             if (isIn369(s)){
                 totalCount += 1;
             }
+        }
+
+        return totalCount;
+    }
+
+    private static int getGameResult(int number) {
+        // 손뼉을 몇 번 치는지 구하는 메소드
+        int totalCount = 0;
+        for (int i = 1; i < number + 1; i++) {
+            totalCount += getCount(i);
         }
 
         return totalCount;
