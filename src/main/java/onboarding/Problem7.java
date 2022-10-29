@@ -1,9 +1,13 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Problem7 {
+    private static List<String> myFriendsList = new ArrayList<>();
+    private static List<List<String>> notFriendsList = new ArrayList<>();
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
@@ -11,7 +15,26 @@ public class Problem7 {
             return List.of("-1");
         }
 
+        divideFriends(user, friends);
+
         return answer;
+    }
+
+    private static void divideFriends(String user, List<List<String>> friends) {
+        for (List<String> friend : friends) {
+            String id = "";
+            if (friend.get(0).equals(user)) {
+                id = friend.get(1);
+            } else {
+                id = friend.get(0);
+            }
+
+            if (friend.contains(user)) {
+                myFriendsList.add(id);
+            } else {
+                notFriendsList.add(friend);
+            }
+        }
     }
 
     public static boolean isError(String user, List<List<String>> friends, List<String> visitors) {
