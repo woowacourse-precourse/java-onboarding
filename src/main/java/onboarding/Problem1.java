@@ -18,6 +18,12 @@ class Problem1 {
         return true;
     }
 
+    private static int getMaxScore(List<Integer> pages) {
+        int rightPage = pages.get(1);
+        int leftPage = pages.get(0);
+        return Math.max(getScore(leftPage), getScore(rightPage));
+    }
+
     private static int getScore(int page){
         int sum = 0;
         int temp = page;
