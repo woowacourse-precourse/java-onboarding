@@ -11,6 +11,7 @@ public class Problem2 {
 
         try{
             checkCryptogramLength(cryptogram);
+            checkCryptogramRegex(cryptogram);
             distinctElement(cryptogram);
             while (!stack.isEmpty()){
                 sb.append(stack.pop());
@@ -40,4 +41,8 @@ public class Problem2 {
         if (length<1||length>1000) throw new Exception("문자열의 길이가 범위를 벗어났습니다.");
     }
 
+    public static void checkCryptogramRegex(String cryptogram) throws Exception{
+        boolean matches = cryptogram.matches("^[a-z]*$");
+        if(!matches) throw new Exception("암호문이 소문자로만 구성되지 않았습니다");
+    }
 }
