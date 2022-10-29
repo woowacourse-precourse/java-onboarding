@@ -108,3 +108,22 @@ BUILD SUCCESSFUL in 0s
 - [ ] 이메일이 중복되면 예외를 반환한다
 - [ ] 이메일에 영소문자,숫자 이외가 들어가면 예외를 반환한다
 - [ ] 닉네임에 한글 이외가 들어가면 예외를 반환한다
+
+객체
+- Crew, Email, Nickname, NicknameDuplicateValidator
+  - Crew
+    - 이메일과 닉네임을 갖는다
+  - Email
+    - 마지막에 @email.com으로 끝난다
+    - 영소문자, 숫자만 가능하다
+    - 11자 이상, 20자 미만이어야 한다
+  - Nickname
+    - 1글자 이상 20글자 미만이어야 한다
+    - 한글만 가능하다
+  - NicknameDuplicateValidator
+    - 닉네임을 두 글자 단위로 쪼개서, 배열에 Crew정보를 저장한다
+    - 배열에 2개 이상의 Crew가 있다면, result에 추가한다
+    - result는 중복을 제거해서 반환한다(Set형태로 구현)
+  - EmailDuplicateValidator
+    - Map의 key로 email, value로 객체를 갖는다
+    - 만약 Map에 저장된 값이 있었으면 예외를 반환한다
