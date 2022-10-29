@@ -1,9 +1,6 @@
 package onboarding;
 
 public class Problem4 {
-    public static void main(String[] args) {
-
-    }
     public static String solution(String word) {
         StringBuilder sb = new StringBuilder();
         for (char c : word.toCharArray()) {
