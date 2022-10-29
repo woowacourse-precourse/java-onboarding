@@ -10,12 +10,21 @@ public class Problem3 {
     private static final String SIX = "6";
     private static final String NINE = "9";
     private static final int START_NUM = 1;
+    private static final int NUM_MIN = 1;
+    private static final int NUM_MAX = 10000;
 
     public static int solution(int number) {
-        return (int) IntStream.rangeClosed(START_NUM, number)
+        validateNum(number);
+        return IntStream.rangeClosed(START_NUM, number)
             .map(Problem3::computeClapCount)
             .reduce((clapCount1, clapCount2) -> clapCount1 + clapCount2)
             .getAsInt();
+    }
+
+    private static void validateNum(int number) {
+        if (number < NUM_MIN || number > NUM_MAX) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private static int computeClapCount(int num) {
