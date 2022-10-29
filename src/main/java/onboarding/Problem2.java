@@ -16,7 +16,52 @@ public class Problem2 {
             throw new NotMatchingCryptogramLengthOrLowerCase("cryptogram 길이 및 소문자가 아닙니다.");
         }
 
+        // 2. 반복해서 연속하는 중복 문자 제거
+        while(true){
+            String removedCrpytogram="";
+            
+            boolean foundDuplicateChar = false;
+
+            for (int i = 0; i < cryptogram.length()-1; i++) {
+                
+                if(!isDuplicateChar(cryptogram, i)){
+                    if(foundDuplicateChar){
+                        foundDuplicateChar = false;
+                        continue;
+                    }
+                    removedCrpytogram += cryptogram.charAt(i);
+                }
+                
+                if(isDuplicateChar(cryptogram,i)){
+                    foundDuplicateChar=true;
+                }
+            }
+
+            if(isNotDuplicatedLastChar(cryptogram, foundDuplicateChar)) {
+                removedCrpytogram += cryptogram.charAt(cryptogram.length() - 1);
+            }
+
+            if(isClosed(cryptogram, removedCrpytogram)) {
+                break;
+            }
+
+            cryptogram=removedCrpytogram;
+        }
+
+
         return answer;
+    }
+
+    private static boolean isClosed(String cryptogram, String removedCrpytogram) {
+        return removedCrpytogram.equals(cryptogram);
+    }
+
+    private static boolean isNotDuplicatedLastChar(String cryptogram, boolean foundDuplicateChar) {
+        return cryptogram.length() > 0 && !foundDuplicateChar;
+    }
+
+    private static boolean isDuplicateChar(String cryptogram, int i) {
+        return cryptogram.charAt(i) == cryptogram.charAt(i + 1);
     }
 
     // 예외사항 1-1,2 cryptogram 길이와 소문자 체크
