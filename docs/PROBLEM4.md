@@ -36,3 +36,50 @@
    - 수학
 4. 입력된 문자열에서 알파벳을 반대로 바꾸어서 새로운 문자열을 반환하는 기능
    - stream을 활용하자
+
+### 1. public boolean isUpperCase(int characterInt)
+- char 자료형이 int로 입력되면 대문자에 해당되는지 아스키코드로 확인하는 메소드
+- 기능 : 대문자에 해당되면 `true`, 해당되지 않으면 `false`를 반환
+
+### 2. public boolean isLowerCase(int characterInt)
+- char 자료형이 int로 입력되면 소문자에 해당되는지 아스키코드로 확인하는 메소드
+- 기능 : 소문자에 해당되면 `true`, 해당되지 않으면 `false`를 반환
+
+### 3. public int getInverseAlphabet(int alphabetInt)
+- alphabet이 int 자료형으로 입력되면 아스키코드로 역순의 알파벳을 반환하는 메소드
+- 기능 : a가 입력되면 z가 반환되는 형식으로 본래 알파벳 순서의 반대 순서의 알파벳을 반환
+  - 구하고자 하는 알파벳이 I 혹은 i 일때 아스키코드로 다음과 같은 연산을 진행
+  - 공식 : 알파벳 첫 순서 + 알파벳 마지막 순서 - 입력 알파벳
+  - 소문자 :  a + z - i = r => 97 + 122 - 105 = 114
+  - 대문자 : A + Z - I =  R => 65 + 90 - 73 = 82
+
+### 4. public String getInverseWord(String word)
+- String 자료형의 word가 입력되면 각 단어의 알파벳을 거꾸로 뒤집어서 반환하는 메소드
+- 기능 : "I love you"가 입력되면 "R olev blf"를 반환
+
+## Test Code
+### 1. isUpperCaseTest()
+- 임의의 아스키코드 숫자 입력 시 알파벳 대문자로 판단하는지 확인
+- 대문자 아스키코드 입력 시 `true` 반환 확인
+  - 테스트 : 67, 90
+- 기타 아스키코드 입력 시 `false` 반환 확인
+  - 테스트 : 91, 98
+
+### 2. isLowerCaseTest()
+- 임의의 아스키코드 숫자 입력 시 알파벳 소문자로 판단하는지 확인
+- 소문자 아스키코드 입력 시 `true` 반환 확인
+   - 테스트 : 97, 125
+- 기타 아스키코드 입력 시 `false` 반환 확인
+   - 테스트 : 65, 9
+
+### 3. getInverseAlphabetTest()
+- 알파벳 아스키코드 입력 시 역순의 알파벳 아스키코드를 반환하는지 확인
+- 소문자 아스키코드
+  - 테스트 : 105 정답 : 114
+- 대문자 아스키코드
+  - 테스트 : 73 정답 : 82
+
+### 4. getInverseWordTest()
+- String 입력 시 알파벳 대소문자을 역순의 알파벳으로 바꿔 반환하는지 확인
+- 테스트 : "I love you", "---A___Babc"
+- 정답 : "R olev blf" "---Z___Yzyx"
