@@ -11,6 +11,11 @@ public class Problem4 {
         for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
 
+            if (!Character.isAlphabetic(c)) {
+                stringBuilder.append(c);
+                continue;
+            }
+
         }
 
         return answer;
