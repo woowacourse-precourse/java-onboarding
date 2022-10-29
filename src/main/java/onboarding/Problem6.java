@@ -34,9 +34,6 @@ public class Problem6 {
             nicknameEmailQ.add(checkNicknameEmail);
         }
         Collections.sort(answer);
-        answer.stream()
-                .distinct()
-                .collect(Collectors.toList());
 
         return answer.stream()
                 .distinct()
