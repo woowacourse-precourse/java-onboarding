@@ -8,7 +8,14 @@ import java.util.stream.Stream;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int answer;
+        try {
+            int pobiScore = maxScore(pobi);
+            int crongScore = maxScore(crong);
+            answer = compareScore(pobiScore, crongScore);
+        } catch (Exception e) {
+            answer = -1;
+        }
         return answer;
     }
 
