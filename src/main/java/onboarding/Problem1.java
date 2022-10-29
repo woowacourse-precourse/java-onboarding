@@ -20,6 +20,13 @@ class Problem1 {
         int pobiScore = calculateScore(pobi, calculations);
         int crongScore = calculateScore(crong, calculations);
 
+        if (pobiScore == crongScore) {
+            answer = 0;
+        } else if (pobiScore > crongScore){
+            answer = 1;
+        } else {
+            answer = 2;
+        }
         return answer;
     }
 
