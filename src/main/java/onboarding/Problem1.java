@@ -15,14 +15,16 @@ class Problem1 {
     private static final int USER_1_WIN = 1;
     private static final int USER_2_WIN = 2;
     private static final int DRAW = 0;
-
+    private static final int USER_1_RESULT = 0;
+    private static final int USER_2_RESULT = 1;
+    private static final int DIGIT = DIGIT;
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int result = -1;
 
         if (Problem1Validation.problem1InputValidation(pobi, USER_INPUT_LENGTH, PAGE_NUM_MIN, PAGE_NUM_MAX)
                 && Problem1Validation.problem1InputValidation(crong, USER_INPUT_LENGTH, PAGE_NUM_MIN, PAGE_NUM_MAX)) {
             List<Integer> userResults = getUserResults(pobi, crong);
-            result = chooseWinnerResult(userResults.get(0), userResults.get(1));
+            result = chooseWinnerResult(userResults.get(USER_1_RESULT), userResults.get(USER_2_RESULT));
         }
 
         return result;
@@ -43,8 +45,8 @@ class Problem1 {
     private static int getDigitAddValue(int value) {
         int summation = 0;
         while (value > 0) {
-            summation += value % 10;
-            value /= 10;
+            summation += value % DIGIT;
+            value /= DIGIT;
         }
         return summation;
     }
@@ -52,8 +54,8 @@ class Problem1 {
     private static int getDigitMultiplyValue(int value) {
         int multiply = 1;
         while (value > 0) {
-            multiply *= value % 10;
-            value /= 10;
+            multiply *= value % DIGIT;
+            value /= DIGIT;
         }
         return multiply;
     }
