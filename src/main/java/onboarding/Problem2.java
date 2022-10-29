@@ -39,4 +39,13 @@ public class Problem2 {
         return false;
     }
 
+    public static String solution(String cryptogram) {
+
+        while(cryptogram.length() > 0 && checkDuplicateCharacters(cryptogram)){
+
+            cryptogram = removeDuplicateCharacters(cryptogram);
+        }
+
+        return cryptogram;
+    }
 }
