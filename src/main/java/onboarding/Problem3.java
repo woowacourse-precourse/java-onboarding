@@ -2,12 +2,18 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
-        for(int index=1;index<=number;index++){
-            answer += count369(index);
-        }
+        int answer = oneToNumberCount(number);
         return answer;
     }
+
+    private static int oneToNumberCount(int number) {
+        int allCount = 0;
+        for(int index = 1; index<= number; index++){
+            allCount += count369(index);
+        }
+        return allCount;
+    }
+
     public static int count369(int number){
         int count = 0;
         while(number>0){
