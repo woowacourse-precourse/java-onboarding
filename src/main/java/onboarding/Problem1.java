@@ -60,7 +60,11 @@ class Problem1 {
 
 		if (rightPage - leftPage != 1) {
 			return true;
-		} else if (rightPage < 1 || leftPage < 1) {
+		} else if (leftPage % 2 != 1 || rightPage % 2 != 0) {
+			return true;
+		} else if (leftPage == 1 || rightPage == 400) {
+			return true;
+		} else if (leftPage < 1 || rightPage > 400) {
 			return true;
 		}
 		return false;
