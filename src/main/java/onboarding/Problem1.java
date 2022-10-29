@@ -49,30 +49,35 @@ class Problem1 {
 
     private static int getScore(List<Integer> pageList) {
 
-        // !!! Try New Method for Cleaning the code
-        // if pageList => [97,98]
-        // get four numbers => [16,17,63,72]
-        // parse ints 97 => 9 & 7
-        // add or multiply ints => 16, 63
-        // add to resList => get Max by sorting
-
-        ArrayList<Integer> resArr = new ArrayList<>();
+        ArrayList<Integer> resArr = new ArrayList<>();  // arraylist to get four numbers => [16,17,63,72]
 
         for (int page: pageList){
-            String pageStr = Integer.toString(page);
-            String[] parsedPage = pageStr.split(""); // [9,7]
-            int addRes = 0;
-            int multRes = 1;
-            for (String StrParsed: parsedPage){
-                addRes += Integer.parseInt(StrParsed);
-                multRes *= Integer.parseInt(StrParsed);
-            }
-            resArr.add(addRes);
-            resArr.add(multRes);
+            pareAndAdd(resArr, page);
+            parseAndMult(resArr, page);
         }
-        Collections.sort(resArr);
-        System.out.println(resArr);
-
+        Collections.sort(resArr); // get Max by sorting
         return resArr.get(3);
+    }
+
+    private static void parseAndMult(ArrayList<Integer> resArr, int page) {
+        // parse ints 97 => 9 & 7
+        String pageStr = Integer.toString(page);
+        String[] parsedPage = pageStr.split("");
+        int multRes = 1;
+        for (String StrParsed: parsedPage){ // 97 => 9 * 7 = 63
+            multRes *= Integer.parseInt(StrParsed);
+        }
+        resArr.add(multRes);
+    }
+
+    private static void pareAndAdd(ArrayList<Integer> resArr, int page) {
+        // parse ints 97 => 9 & 7
+        String pageStr = Integer.toString(page);
+        String[] parsedPage = pageStr.split("");
+        int addRes = 0;
+        for (String StrParsed: parsedPage){ // 97 => 9 + 7 = 16
+            addRes += Integer.parseInt(StrParsed);
+        }
+        resArr.add(addRes);
     }
 }
