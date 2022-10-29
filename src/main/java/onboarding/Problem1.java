@@ -26,4 +26,10 @@ class Page {
                 .mapToInt(Integer::parseInt)
                 .sum();
     }
+
+    public int multiplePage() {
+        return Stream.of(String.valueOf(pageNumber).split(""))
+                .mapToInt(Integer::parseInt)
+                .reduce(1, (a, b) -> a * b);
+    }
 }
