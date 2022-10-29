@@ -3,8 +3,12 @@ package onboarding;
 import java.util.Collections;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Map;
 import java.util.HashMap;
-
+import java.util.LinkedHashMap;
+import java.util.Comparator;
+import java.util.Iterator;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
@@ -52,6 +56,22 @@ public class Problem7 {
         for(int i=0;i<list.size();i++){
             map.put(list.get(i),0);
         }
+
+        List<Map.Entry<String, Integer>> list2 = new LinkedList<>(map.entrySet());
+        Collections.sort(list2, new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                int comparision = (o1.getValue() - o2.getValue()) * -1;
+                return comparision == 0 ? o1.getKey().compareTo(o2.getKey()) : comparision;
+            }
+        });
+        Map<String, Integer> sortedMap = new LinkedHashMap<>();
+        for(Iterator<Map.Entry<String, Integer>> iter = list2.iterator(); iter.hasNext();){
+            Map.Entry<String, Integer> entry = iter.next();
+            if(entry.getValue()==0) continue;
+            answer.add(entry.getKey());
+        }
+
         return answer;
     }
 }
