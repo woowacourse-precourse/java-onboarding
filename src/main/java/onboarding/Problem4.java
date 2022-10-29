@@ -6,9 +6,7 @@ public class Problem4 {
     private static final int ELSE = 3;
 
     public static String solution(String word) throws Exception {
-        char[] charArray = word.toCharArray();
-        char[] reverseArray = reverse(charArray);
-        String answer = new String(reverseArray);
+        String answer = new String(reverse(word.toCharArray()));
         return answer;
     }
     private static char[] reverse(char[] charArray){
