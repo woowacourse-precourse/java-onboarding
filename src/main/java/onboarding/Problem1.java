@@ -69,14 +69,11 @@ class Problem1 {
             return -1;
         }
 
-        ScoreCalculator scoreCalculator = new ScoreCalculator();
-        scoreCalculator.setPlayerPages(pobi);
-        int pobiScore = scoreCalculator.getScore();
+        ScoreCalculator scoreCalculator = ScoreCalculator.getInstance();
+        int pobiScore = scoreCalculator.getScore(pobi);
+        int crongScore = scoreCalculator.getScore(crong);
 
-        scoreCalculator.setPlayerPages(crong);
-        int crongScore = scoreCalculator.getScore();
-
-        int answer = Integer.MAX_VALUE;
+        int answer = getWinner(pobiScore, crongScore);
         return answer;
     }
 
@@ -109,6 +106,18 @@ class Problem1 {
 
     private static boolean isEndPage(int rightPage) {
         return rightPage == END_PAGE_NO;
+    }
+
+    private static int getWinner(int score1, int score2) {
+        if (score1 > score2) {
+            return 1;
+        }
+
+        if (score1 < score2) {
+            return 2;
+        }
+
+        return 0;
     }
 
 }
