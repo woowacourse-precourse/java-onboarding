@@ -24,6 +24,15 @@ public class Problem3 {
      * 수의 3,6,9 의 갯수
      */
     public static int cntNum(int number){
-        return 0;
+        int cnt = 0;
+
+        while(number > 0){
+            if(number % 10 == 3 || number % 10 == 6 || number % 10 == 9){
+                cnt++;
+            }else{
+                number /= 10;
+            }
+        }
+        return cnt;
     }
 }
