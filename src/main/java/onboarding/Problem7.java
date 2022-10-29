@@ -3,7 +3,7 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
-    public static boolean isUser(String user, List<String> friend) {
+    public static boolean isContainUser(String user, List<String> friend) {
         if(friend.contains(user)) {
             return true;
         }
@@ -21,7 +21,7 @@ public class Problem7 {
         Set<String> friendSet = new HashSet<>();
 
         for(List<String> friend: friends) {
-            if(isUser(user, friend)) {  // user가 있는 친구 목록일 경우
+            if(isContainUser(user, friend)) {  // user가 있는 친구 목록일 경우
                 String friendName = getFriendName(user, friend);
                 friendSet.add(friendName);
             }
