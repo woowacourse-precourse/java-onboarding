@@ -1,42 +1,34 @@
 package onboarding;
 
+import java.util.Stack;
+import java.util.stream.Collector;
+
 public class Problem2 {
+    static char temp;
 
     public static String solution(String cryptogram) {
-
-        String answer = cryptogram;
-
-        while (true) {
-            String extractedString = extract(answer);
-            if (extractedString.equals(answer)) break;
-            answer = extractedString;
-        }
-        return answer;
+        Stack<Character> stack = new Stack<>();
+        cryptogram.chars().forEach(s -> extract((char) s, stack));
+        return stack.stream().collect(Collector.of(
+                StringBuilder::new,
+                StringBuilder::append,
+                StringBuilder::append,
+                StringBuilder::toString
+        ));
     }
-
-    private static String extract(String cryptogram) {
-        StringBuilder sb = new StringBuilder();
-
-        for (int i = 0; i < cryptogram.length(); i++) {
-            if (isDuplicated(cryptogram,i)) {
-                continue;
-            }
-            if (isDuplicated(cryptogram, i)) {
-                continue;
-            }
-            sb.append(cryptogram.charAt(i));
+    private static void extract(char s, Stack<Character> stack) {
+        if (stack.isEmpty()) {
+            stack.push(s);
+            return;
         }
-        return sb.toString();
-    }
-
-    private static boolean isDuplicated(String cryptogram, int i) {
-        if (i != 0 && cryptogram.charAt(i - 1) == cryptogram.charAt(i)) {
-            return true;
+        if (stack.peek().equals(s)) {
+            temp = stack.pop();
+            return;
         }
-        if (i != cryptogram.length() - 1 && cryptogram.charAt(i + 1) == cryptogram.charAt(i)) {
-            return true;
+        if (temp==s){
+            return;
         }
-        return false;
+        stack.push(s);
     }
 
 }
