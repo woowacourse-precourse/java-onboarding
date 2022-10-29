@@ -3,7 +3,7 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-    private int pageSumMul(int pageNum) {
+    private static int pageSumMul(int pageNum) {
         int sum = 0, multiply = 1;
         while(pageNum > 0) {
             sum += pageNum % 10;
@@ -27,7 +27,8 @@ class Problem1 {
         if(!checkPage(pobi) || !checkPage(crong)) return -1;
         int pobiSocre = calcScore(pobi), crongScore = calcScore(crong);
 
-        if()
-        return answer;
+        if(pobiSocre > crongScore) return 1;
+        else if(pobiSocre < crongScore) return 2;
+        else return 0;
     }
 }
