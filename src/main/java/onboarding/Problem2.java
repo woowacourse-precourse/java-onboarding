@@ -5,7 +5,6 @@ import java.util.LinkedList;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
 
         Deque<Character> deque = new LinkedList<>();
 
@@ -22,7 +21,7 @@ public class Problem2 {
                 deleteDuplicatedWord(deque);
         }
 
-        return answer;
+        return printResult(deque);
     }
 
     public static boolean isDequeEmpty(Deque<Character> deque) {
@@ -39,5 +38,13 @@ public class Problem2 {
 
     public static void deleteDuplicatedWord(Deque<Character> deque) {
         deque.pollLast();
+    }
+
+    public static String printResult(Deque<Character> deque) {
+        String resultCryptogram = "";
+        while (!isDequeEmpty(deque)) {
+            resultCryptogram += deque.pollFirst();
+        }
+        return resultCryptogram;
     }
 }
