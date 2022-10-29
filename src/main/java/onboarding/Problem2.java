@@ -22,7 +22,7 @@ public class Problem2 {
     }
 
     private static String getRemovedDuplicateCryptogram(String cryptogram) {
-        String answer;
+
         while(true){
             String removedCrpytogram="";
 
@@ -43,9 +43,7 @@ public class Problem2 {
                 }
             }
 
-            if(isNotDuplicatedLastChar(cryptogram, foundDuplicateChar)) {
-                removedCrpytogram += cryptogram.charAt(cryptogram.length() - 1);
-            }
+            removedCrpytogram = getCryptogramLastChar(cryptogram, removedCrpytogram, foundDuplicateChar);
 
             if(isClosed(cryptogram, removedCrpytogram)) {
                 break;
@@ -54,9 +52,14 @@ public class Problem2 {
             cryptogram =removedCrpytogram;
         }
 
-        //3. 결과값 담기
-        answer= cryptogram;
-        return answer;
+        return cryptogram;
+    }
+
+    private static String getCryptogramLastChar(String cryptogram, String removedCrpytogram, boolean foundDuplicateChar) {
+        if(isNotDuplicatedLastChar(cryptogram, foundDuplicateChar)) {
+            removedCrpytogram += cryptogram.charAt(cryptogram.length() - 1);
+        }
+        return removedCrpytogram;
     }
 
     private static boolean isClosed(String cryptogram, String removedCrpytogram) {
