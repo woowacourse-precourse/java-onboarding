@@ -9,6 +9,15 @@ import java.util.Random;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ApplicationTest {
+    /**
+     * Problem 1 : 랜덤한 값 가져오기
+     * @return 사이즈 2인 랜덤 리스트
+     */
+    public static List<Integer> getRandomPages(){
+        Random random = new Random();
+        random.setSeed(System.currentTimeMillis());
+        return List.of(random.nextInt(399) + 1, random.nextInt(399) + 1);
+    }
 
     @Nested
     class Problem1Test {
