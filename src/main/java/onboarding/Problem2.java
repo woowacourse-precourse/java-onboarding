@@ -4,18 +4,16 @@ public class Problem2 {
 
     public static StringBuilder sb;
     public static String solution(String cryptogram) {
-        String answer = "answer";
 
         boolean hasRepetition = true;
+        //3.문자열 내에 중복되는 문자가 없을 때까지 반복한다.
         while(hasRepetition && !cryptogram.isBlank()) {
             hasRepetition = deleteRepetition(cryptogram, cryptogram.length());
             cryptogram = sb.toString();
-            //2번 예제 안됨
         }
 
-        System.out.println(sb.toString());
-        //
-        return answer;
+        //4.중복되는 문자가 없다면 반복을 종료하고 결과 문자열을 출력한다.
+        return sb.toString();
     }
 
     public static boolean deleteRepetition(String cryptogram, int length) {
@@ -54,5 +52,4 @@ public class Problem2 {
 
         return hasSequence;
     }
-
 }
