@@ -1,14 +1,19 @@
 package onboarding;
 
-import java.util.List;
+import java.util.*;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class Problem6 {
+    private static Map<String, String> nicknamePieceAndOwner = new HashMap<>();
+    private static Set<String> duplicatedUserEmail = new HashSet<>();
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         if(!checkValidation(forms)){
             return null;
         }
+        answer = getListOfDuplicateNickname(forms);
         return answer;
     }
 
@@ -42,6 +47,16 @@ public class Problem6 {
                 && (MIN_LENGTH<=((String) a.get(0)).length()));
     }
 
-
+    private static List<String> getListOfDuplicateNickname(List<List<String>> forms){
+        List<String> result;
+        for(int i=0; i<forms.size(); i++){
+            List<String> user = forms.get(i);
+            List<String> devidedNicknamePiece = getDevidedNicknamePiece(user.get(1));
+            String pieceOwnerEmail = user.get(0);
+            manageNicknamePieces(pieceOwnerEmail, devidedNicknamePiece);
+        }
+        result=getSortedDuplicatedList();
+        return result;
+    }
 
 }
