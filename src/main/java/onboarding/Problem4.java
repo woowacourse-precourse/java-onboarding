@@ -15,4 +15,10 @@ public class Problem4 {
         return 0;
     }
 
+    private static char alphabeticalTransformation(char word, int size) {
+        if (size == 0) {
+            
+        }
+    }
+
 }
