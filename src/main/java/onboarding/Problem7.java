@@ -83,6 +83,11 @@ public class Problem7 {
             }
         });
 
+        /* 추첨점수가 0점인 경우에는 추천에서 제외하는 기능 */
+        for (Map.Entry<String, Integer> entry : entryList) {
+            if(m.get(entry.getKey()) != 0) answer.add(entry.getKey());
+        }
+
         return answer;
     }
 }
