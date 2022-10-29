@@ -1,21 +1,18 @@
 package onboarding;
 
 public class Problem4 {
+
+    static final char START_CHAR = 'A';
+    static final char END_CHAR = 'Z';
+    static final char DIFF_A_Z = (char) (END_CHAR- START_CHAR);
     public static char transformChar(char ch) {
         if(Character.isLowerCase(ch)) {
-            char diff = (char) ('A' - 'a');
-
             return Character.toLowerCase(transformChar(Character.toUpperCase(ch)));
         }
-
-        int MID_COUNT = ('Z' - 'A' )/ 2;
-        char startChar = 'A';
-        char endChar = 'Z';
-
-        if(ch < MID_COUNT) {
-            return (char) (ch - startChar + endChar);
+        if(ch < DIFF_A_Z/2) {
+            return (char) (ch - START_CHAR + END_CHAR);
         } else {
-            return (char) (endChar - ch + startChar);
+            return (char) (END_CHAR - ch + START_CHAR);
         }
     }
     public static String solution(String word) {
