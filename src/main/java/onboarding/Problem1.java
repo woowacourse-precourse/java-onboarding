@@ -7,4 +7,13 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+
+    private static Integer sumDigit (Integer num){
+        int sum=0;
+        while(num > 0){
+            sum += num%10;
+            num /= 10;
+        }
+        return sum;
+    }
 }
