@@ -19,6 +19,16 @@ public class Problem7 {
                 .collect(Collectors.toList());
         return user_friends;
     }
+
+    static List<String> findFriendsOfFriend (List<String> user_friends, List<List<String>> friends){
+        List<String> user_unknown_friends;
+        user_unknown_friends = Stream.of(friends).flatMap(List::stream)
+                .flatMap(List::stream)
+                .collect(Collectors.toList());
+        user_unknown_friends.removeAll(user_friends);
+        // user 는 지워지지 않아 나중에 solution 메서드에서 지워야한다.
+        return user_unknown_friends;
+    }
 }
 class Friend{
     String name;
