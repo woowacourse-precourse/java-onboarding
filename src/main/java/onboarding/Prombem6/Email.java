@@ -16,4 +16,8 @@ public class Email {
     public String getValue() {
         return value;
     }
+
+    public Object format() {
+        return value + "@email.com";
+    }
 }
