@@ -1,7 +1,12 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -12,10 +17,17 @@ class Problem1 {
         return answer;
     }
 
+
+
     // 페이지 번호 각자리 숫자 더하기, 곱한 후 가장 큰 수 구하기
     // 두개를 비교해서 큰 숫자 구하기
     // 점수 비교 승자 나타내기
     // 예외사항
+
+    public static int getMaxNum(List<Integer> list){
+        List<Integer> collect = list.stream().map(Problem1::getMaxPageNum).collect(Collectors.toList());
+        return collect.stream().max(Comparator.comparing(x -> x)).get();
+    }
 
     public static int getMaxPageNum(Integer integer){
         List<Integer> digit = new ArrayList<>();
