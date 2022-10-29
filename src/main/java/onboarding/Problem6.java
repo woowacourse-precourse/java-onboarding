@@ -13,14 +13,23 @@ public class Problem6 {
         return null;
     }
 
-    public static void checkDuplicate(List<List<String>> forms, String checkName) {
+    public static void checkDuplicate(List<List<String>> forms, String checkName, List<String> originForm) {
+        String originEmail = originForm.get(0);
+        String originName = originForm.get(1);
+        boolean isDuplicate = false;
+
         for (List<String> form : forms) {
             String email = form.get(0);
             String name = form.get(1);
 
-            if (name.contains(checkName)) {
+            if (name.contains(checkName) && !originEmail.equals(email) && !originName.equals(name)) {
                 answer.add(email);
+                isDuplicate = true;
             }
+        }
+
+        if (isDuplicate) {
+            answer.add(originEmail);
         }
     }
 }
