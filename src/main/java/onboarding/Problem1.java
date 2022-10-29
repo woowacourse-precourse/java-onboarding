@@ -9,7 +9,6 @@ class Problem1 {
 		
 		return answer;
 	}
-	
 	public static int makePage() { //makePage와 동시 3~398까지 추출
 		
         int Page = (int) (Math.random() * (398+1)-3)+3; //(최대+1)-최소)+최소 3~398
@@ -18,7 +17,10 @@ class Problem1 {
         }while(Page <= 1 || Page >= 400); //조건 충족 시 리셋
         return Page;
 	}
-
+	public static int exception(int Page) {
+		int error = -1;
+		return error;
+	}
 	public static int Odd_L_HighScore(int Page) {
 		int PageL = 0;
 		
@@ -97,7 +99,6 @@ class Problem1 {
 		return HighSco;
 	}
 	
-	
     public static void main(String[] args){
     	
     	int pobiPage = makePage();
@@ -115,23 +116,12 @@ class Problem1 {
     	int crongScore = HighScore(crongLScore,crongRScore);
     	System.out.println(crongScore);
     	whoWin(pobiScore,crongScore);
-    	/*int hun = i / 100; // 백
-		int ten = (i / 10) % 10; // 십
-		int one = i % 10; // 일*/
-    	
-        
-    	
     	}
-    	
-        
     }
-
-
-
 /*
  * 랜덤번호 3~398 첫,막페이지 x **
  * 나온번호 올수짝수 구분 후 홀수 +1 짝수 -1 **
- * 나온 두 수 *페이지 번호의 각 자리 숫자를 모두 더함 || 모두 곱해 가장 큰 수를 구한다.
- * 더하거나 곱한 수 큰수로 비교
- * 포비 win = 1, 크롱 win = 2, 무승부 = 0, 각 페이지 차가 1이 아니면 -1 ex) 99,102 = -1
+ * 나온 두 수 *페이지 번호의 각 자리 숫자를 모두 더함 || 모두 곱해 가장 큰 수를 구한다. **
+ * 더하거나 곱한 수 큰수로 비교 **
+ * 포비 win = 1, 크롱 win = 2, 무승부 = 0, 각 페이지 차가 1이 아니면 -1 ex) 99,102 = -1 
  */
