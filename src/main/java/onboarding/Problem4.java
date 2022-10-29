@@ -29,6 +29,15 @@ public class Problem4 {
         return result;
     }
 
+    public static char[] changeString(String s){
+        char[] chars = s.toCharArray();
+        for(int i = 0; i<s.length(); i++){
+            if(isAlphabet(chars[i]))
+                chars[i] = changeAlphabet(chars[i]);
+        }
+        return chars;
+    }
+
     public static String solution(String word) {
         String answer = "";
         return answer;
