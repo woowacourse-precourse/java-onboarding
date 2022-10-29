@@ -1,13 +1,18 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
-    public static List<Integer> solution(int money) {
+	public static List<Integer> solution(int money) {
 		if (!isValidNumber(money)) {
 			return Collections.emptyList();
 		}
+
+		List<Integer> answer = changeMoney(money);
+		return answer;
+	}
 
 	private static boolean isValidNumber(int money) {
 		return money >= 1 && money <= 1000000;
