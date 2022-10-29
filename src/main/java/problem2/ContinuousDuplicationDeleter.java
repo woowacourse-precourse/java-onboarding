@@ -9,13 +9,11 @@ public class ContinuousDuplicationDeleter {
         Stack<Character> result = new Stack<>();
 
         for (int i = 0; i < target.length(); i++) {
-
             Character targetCharacter = target.charAt(i);
             Character nextCharacter = (i == target.length() - 1) ?
                     null : target.charAt(i + 1);
 
             deleteDuplication(result, targetCharacter, nextCharacter);
-
         }
 
         return asString(result);
@@ -37,9 +35,9 @@ public class ContinuousDuplicationDeleter {
         return !Objects.equals(curr, next);
     }
 
-    private static void deleteFrom(Stack<Character> stack, char toDelete) {
-        while (!stack.isEmpty() && stack.peek().equals(toDelete)) {
-            stack.pop();
+    private static void deleteFrom(Stack<Character> duplicationCharacters, char toDelete) {
+        while (isSameWithPrev(duplicationCharacters, toDelete)) {
+            duplicationCharacters.pop();
         }
     }
 
