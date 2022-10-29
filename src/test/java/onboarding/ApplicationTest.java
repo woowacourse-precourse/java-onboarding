@@ -3,12 +3,16 @@ package onboarding;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import onboarding.problem4.WordConverter;
+import onboarding.problem5.BillConverter;
+import onboarding.problem5.UnitsOfBill;
 
 class ApplicationTest {
     @Nested
@@ -357,6 +361,38 @@ class ApplicationTest {
 
     @Nested
     class Problem5Test {
+        // 화폐 개수 및 잔돈 출력 기능 테스트
+        // private 메소드에 대한 테스트는 권장되지 않지만, 방법에 대해 경험해 보기 위해 구현
+        @Test
+        void calculateNumberOfBillsTest() {
+            try {
+                BillConverter billConverter = new BillConverter();
+
+                // REFLECTION 활용
+                // private 메소드 테스트를 위한 접근 가능 여부 수정
+                // Method와 Field를 받아와 Accessible을 true로 설정하여 접근 가능하도록 한다.
+                Method calculateNumberOfBillsMethod = billConverter.getClass()
+                    .getDeclaredMethod("calculateNumberOfBills", UnitsOfBill.class, int.class);
+                Field numberOfBillsField = billConverter.getClass().getDeclaredField("numberOfBills");
+                calculateNumberOfBillsMethod.setAccessible(true);
+                numberOfBillsField.setAccessible(true);
+
+                int money = 32_345;
+
+                List<Integer> resultNumberOfBills = new ArrayList<>(List.of(0, 3, 0, 0, 0, 0, 0, 0, 0));
+                int resultChange = 2_345;
+
+                Object change = calculateNumberOfBillsMethod.invoke(billConverter, UnitsOfBill.valueOf("TEN_THOUSAND"), money);
+                Object numberOfBills = numberOfBillsField.get(billConverter);
+
+                assertThat(change).isEqualTo(resultChange);
+                assertThat(numberOfBills).isEqualTo(resultNumberOfBills);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
         @Test
         void case1() {
             int money = 50_237;
