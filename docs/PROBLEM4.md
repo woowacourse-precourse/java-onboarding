@@ -1,21 +1,13 @@
-## 🚀 기능 요구 사항
+# [Problem 4](https://www.notion.so/4-2b52442d0b8045b9856edcbaa1700e62) 기능별 명세
 
-어느 연못에 엄마 말씀을 좀처럼 듣지 않는 청개구리가 살고 있었다. 청개구리는 엄마가 하는 말은 무엇이든 반대로 말하였다.
+## 1. public static List<String> stringToList(String word) {}
 
-엄마 말씀 word가 매개변수로 주어질 때, 아래 청개구리 사전을 참고해 반대로 변환하여 return 하도록 solution 메서드를 완성하라.
+### input
+- **String word** : 반대로 변환하고자 하는 문자열.
 
-| A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Z | Y | X | W | V | U | T | S | R | Q | P | O | N | M | L | K | J | I | H | G | F | E | D | C | B | A |
+### output
+- **(List<String>)** word를 ArrayList로 변환한 결과
 
-### 제한사항
-
-- word는 길이가 1 이상 1,000 이하인 문자열이다.
-- 알파벳 외의 문자는 변환하지 않는다.
-- 알파벳 대문자는 알파벳 대문자로, 알파벳 소문자는 알파벳 소문자로 변환한다.
-
-### 실행 결과 예시
-
-| word | result |
-| --- | --- |
-| "I love you" | "R olev blf" |
+### 기능 상세
+파라미터로 주어지는 word 데이터의 각 문자에 인덱스로 접근하기 위하여 해당 데이터를 ArrayList로 변환하는 기능을 합니다.</br>
+word.toCharArray()를 통해 String 타입 데이터를 char형 배열 데이터로 바꾼 후, 이 배열의 각 원소 값을 다시 String으로 타입 캐스팅하여 리스트에 하나씩 추가하는 방식입니다.

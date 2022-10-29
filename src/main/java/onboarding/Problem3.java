@@ -14,7 +14,6 @@ public class Problem3 {
         return count;
     }
 
-
     public static int countClapsPerANumber(int number) {
         int count = 0;
         for(int temp = number; temp > 0; temp /= 10) {
