@@ -5,10 +5,10 @@ import java.util.Stack;
 public class Problem2 {
     public static final int MAX_LENGTH = 1000;
 
-    private static final char FIRST_LETTER = 'a';
-    private static final char LAST_LETTER = 'z';
+    public static final char FIRST_LETTER = 'a';
+    public static final char LAST_LETTER = 'z';
 
-    private static final String EMPTY_STRING = "";
+    public static final String EMPTY_STRING = "";
 
     private static Stack<Character> charStack;
 
