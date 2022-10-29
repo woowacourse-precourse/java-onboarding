@@ -14,21 +14,11 @@ public class Problem6 {
 	public static List<String> solution(List<List<String>> forms) {
 		List<String> answer;
 		Map<String, Integer> twoWordNickNames = makeSubStrings(forms);
-		Set<String> warnEmail = new HashSet<>();
+		Set<String> warnEmail = makeWarnEmails(forms, twoWordNickNames);
 
-		for (List<String> form : forms) {
-			String email = form.get(0);
-			String nickName = form.get(1);
-			for (int j = 0; j < nickName.length() - 1; j++) {
-				String twoWord = nickName.substring(j, j + 2);
-				if (twoWordNickNames.get(twoWord) > 1) {
-					warnEmail.add(email);
-					break;
-				}
-			}
-		}
 		answer = new ArrayList<>(warnEmail);
 		Collections.sort(answer);
+
 		return answer;
 	}
 
@@ -42,5 +32,21 @@ public class Problem6 {
 			}
 		}
 		return subStrings;
+	}
+
+	private static HashSet<String> makeWarnEmails(List<List<String>> forms, Map<String, Integer> nickNameMap) {
+		HashSet<String> warnEmails = new HashSet<>();
+		for (List<String> form : forms) {
+			String email = form.get(0);
+			String nickName = form.get(1);
+			for (int j = 0; j < nickName.length() - 1; j++) {
+				String twoWord = nickName.substring(j, j + MIN_SAME_LENGTH);
+				if (nickNameMap.get(twoWord) > 1) {
+					warnEmails.add(email);
+					break;
+				}
+			}
+		}
+		return warnEmails;
 	}
 }
