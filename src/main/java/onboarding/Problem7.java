@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 /*
@@ -12,29 +11,29 @@ import java.util.List;
  */
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        HashMap<String,Integer> dic = new HashMap<String,Integer>();
-        HashMap<String,Integer> new_dic = new HashMap<String,Integer>();
+        HashMap<String,Integer> dic = new HashMap<>();
+        HashMap<String,Integer> new_dic = new HashMap<>();
         List<String> std = new ArrayList<>();
-        for(List relate : friends) {
+        for(List<String> relate : friends) {
             for(int i = 0; i < 2; i++) {
-                dic.put((String) relate.get(i), 0);
+                dic.put(relate.get(i), 0);
             }
         }
         for (String who : visitors) {
             dic.put(who, 0);
         }
 
-        for(List relate : friends) {
+        for(List<String> relate : friends) {
             if (relate.contains(user)){
-                List<String> list = new ArrayList<String>(relate);
+                List<String> list = new ArrayList<>(relate);
                 list.remove(user);
-                std.add((String) list.get(0));
+                std.add(list.get(0));
             }
         }
-        for (List relate : friends) {
+        for (List<String> relate : friends) {
             for (String j : std) {
                 if (relate.contains(j) && !relate.contains(user)) {
-                    List<String> list2 = new ArrayList<String>(relate);
+                    List<String> list2 = new ArrayList<>(relate);
                     list2.remove(j);
                     dic.put(list2.get(0), dic.get(list2.get(0))+10);
                     }
@@ -46,17 +45,11 @@ public class Problem7 {
         }
         for(String key : dic.keySet()){
             if(dic.get(key) > 0) {
-                if(std.contains(key)){
-                    continue;
-                }
-                else {
-                    new_dic.put(key, dic.get(key));
-                }
+                if(!std.contains(key)) new_dic.put(key, dic.get(key));
             }
         }
         List<String> listKeySet = new ArrayList<>(new_dic.keySet());
-        Collections.sort(listKeySet, (value1, value2) -> (new_dic.get(value2).compareTo(new_dic.get(value1))));
-        List<String> answer = new ArrayList<>(new_dic.keySet());
-        return answer;
+        listKeySet.sort((value1, value2) -> (new_dic.get(value2).compareTo(new_dic.get(value1))));
+        return new ArrayList<>(new_dic.keySet());
     }
 }
