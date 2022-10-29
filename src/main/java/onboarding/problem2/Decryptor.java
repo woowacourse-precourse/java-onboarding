@@ -24,12 +24,18 @@ public class Decryptor {
 
     private static boolean findAndDeleteDuplicateCharacter(List<String> cryptogramList) {
         boolean removeDuplicateCharacter = false;
+        int startCursor;
+        String startCharacter;
+        String nowCharacter;
+
         for (int i = CHARACTER_START_INDEX; i < cryptogramList.size(); i++) {
-            int startCursor = i - CHARACTER_BEFORE_INDEX;
-            String nowCharacter = cryptogramList.get(i);
-            if (cryptogramList.get(startCursor).equals(nowCharacter)) {
-                removeDuplicateCharacter = true;
+            startCursor = i - CHARACTER_BEFORE_INDEX;
+            startCharacter = cryptogramList.get(startCursor);
+            nowCharacter = cryptogramList.get(i);
+
+            if (startCharacter.equals(nowCharacter)) {
                 deleteDuplicateCharacter(cryptogramList, nowCharacter, startCursor);
+                removeDuplicateCharacter = true;
                 i = startCursor;
             }
         }
