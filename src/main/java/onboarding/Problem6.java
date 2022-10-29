@@ -37,4 +37,13 @@ public class Problem6 {
                 .collect(Collectors.toList());
         return nickname_list;
     }
+
+    static boolean checkID(String nickname1, List<String> nickname_list){
+        for(String nickname2:nickname_list){
+            if(checkSame(nickname1, nickname2)){
+                return true;
+            }
+        }
+        return false;
+    }
 }
