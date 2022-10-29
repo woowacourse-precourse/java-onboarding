@@ -18,4 +18,16 @@ public class Problem2 {
         }
         return - 1;
     }
+
+    static String deleteContinuous(String s) {
+        int start = isContinuous(s);
+        if(start == -1) return s;
+        int end = start;
+        for (; end < s.length(); end++) {
+            if(s.charAt(end) == s.charAt(start)) continue;
+            break;
+        }
+        s = s.substring(0, start) + s.substring(end);
+        return s;
+    }
 }
