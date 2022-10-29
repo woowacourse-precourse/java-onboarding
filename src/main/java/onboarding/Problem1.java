@@ -67,6 +67,12 @@ class Problem1 {
             return answer;
         }
 
+        int pobiMaxScore = Math.max(getMaxSum(pobi), getMaxMul(pobi));
+        int crongMaxScore = Math.max(getMaxSum(crong), getMaxMul(crong));
+
+        if(pobiMaxScore > crongMaxScore) answer = 1;
+        if(crongMaxScore > pobiMaxScore) answer = 2;
+
         return answer;
     }
 }
