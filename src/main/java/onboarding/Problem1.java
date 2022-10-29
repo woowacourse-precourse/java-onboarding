@@ -21,6 +21,8 @@ class Problem1 {
             // #3 : Result Max Value
             max = sum > mul ? sum : mul;
         }
+        // #4 : Final Max score
+        int p_score = max;
 
         // #2 : Find the Maximum (crong)
         max = 0; sum = 0; mul = 1;
@@ -34,6 +36,21 @@ class Problem1 {
             // #3 : Result Max Value
             max = sum > mul ? sum : mul;
         }
+        // #4 : Final Max score
+        int c_score = max;
+
+        // #5 : Compare score (pobi, crong)
+        if(p_score > c_score){
+            answer = 1;
+        }
+        else if(p_score < c_score){
+            answer = 2;
+        }
+        else if(p_score == c_score){
+            answer = 0;
+        }
+        // #6 : Exception
+        else answer = -1;
 
         return answer;
     }
