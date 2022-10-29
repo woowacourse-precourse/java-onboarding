@@ -77,3 +77,38 @@ class Money {
         return wonCountList;
     }
 }
+
+class ATM {
+    static ArrayList<Integer> transfer(List<Integer> wonCountList) {
+        ArrayList<Integer> atmWonCountList = initList(9);
+        pushInputToATM(wonCountList, atmWonCountList);
+        optimizeCount(atmWonCountList);
+        return atmWonCountList;
+    }
+
+    private static void optimizeCount(ArrayList<Integer> atmWonCountList) {
+        for (int i = atmWonCountList.size() - 1 - 1; i > 0; i--) {
+            if (atmWonCountList.get(i) >= 5) {
+                atmWonCountList.set(i - 1, atmWonCountList.get(i - 1) + atmWonCountList.get(i) / 5);
+                atmWonCountList.set(i, atmWonCountList.get(i) % 5);
+            }
+        }
+    }
+
+    private static void pushInputToATM(List<Integer> wonCountList, ArrayList<Integer> atmWonCountList) {
+        for (int i = 0; i < wonCountList.size() - 1; i++) {
+            atmWonCountList.set(2 * i, 0);
+            atmWonCountList.set(2 * i + 1, wonCountList.get(i));
+        }
+        atmWonCountList.set(atmWonCountList.size() - 1, wonCountList.get(wonCountList.size() - 1));
+    }
+
+    private static ArrayList<Integer> initList(int capacity) {
+        ArrayList<Integer> atmWonCountList = new ArrayList<>(capacity);
+        for (int i = 0; i < capacity; i++) {
+            atmWonCountList.add(0);
+        }
+        return atmWonCountList;
+    }
+
+}
