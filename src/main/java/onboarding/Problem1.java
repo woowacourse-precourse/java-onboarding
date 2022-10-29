@@ -30,6 +30,12 @@ class Problem1 {
         }
     }
 
+    public static int compare(int v1, int v2) {
+        int largerValue = v1 >= v2 ? v1 : v2;
+        return largerValue;
+    }
+
+
 
 
 }
