@@ -85,4 +85,8 @@ public class Problem6 {
         return Pattern.compile("^[a-zA-Z0-9]+@email.com$").matcher(crewEmail).matches();
     }
 
+    private static boolean validateEmailLength(String crewEmail) {
+        return (crewEmail.length() >= 11 && crewEmail.length() < 20);
+    }
+
 }
