@@ -1,7 +1,9 @@
 package onboarding;
 
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * > 요구사항
@@ -12,6 +14,17 @@ import java.util.List;
 public class Problem5 {
 
     public static List<Integer> solution(int money) {
-
+        int[] moneyUnit = new int[]{50_000, 10_000, 5_000, 1_000, 500, 100, 50, 10, 1};
+        int[] result = new int[moneyUnit.length];
+        int idx = 0;
+        
+        while (money > 0) {
+            if (money >= moneyUnit[idx]) {
+                result[idx] += money / moneyUnit[idx];
+                money %= moneyUnit[idx];
+            }
+            idx += 1;
+        }
+        return Arrays.stream(result).boxed().collect(Collectors.toList());
     }
 }
