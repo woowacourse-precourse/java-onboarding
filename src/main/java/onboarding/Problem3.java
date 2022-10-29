@@ -16,8 +16,8 @@ public class Problem3 {
         int count = 0;
         for (int i = 0; i < numberStr.length(); i++) {
             char c = numberStr.charAt(i);
-            if (c == '3' || c || '6' && c || '9') {
-                answer++;
+            if (c == '3' || c == '6' || c == '9') {
+                count++;
             }
         }
         return count;
