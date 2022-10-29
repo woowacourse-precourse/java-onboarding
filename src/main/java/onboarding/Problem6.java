@@ -15,6 +15,21 @@ public class Problem6 {
         }
         return answer;
     }
+    static List<Integer> repeat(List<List<String>> forms, List<String> param, int num) {
+        List<Integer> plus = new ArrayList<>();
+        for (int i = 0; i < forms.size(); i++) {
+            if (forms.get(i).get(1).equals(param.get(1))) {
+                continue;
+            }
+            for (int j = 0; j < forms.get(i).get(1).length() - 1; j++) {
+                if (param.get(1).substring(num, num + 2).equals(forms.get(i).get(1).substring(j, j+2))) {
+                    plus.add(i);
+                    break;
+                }
+            }
+        }
+        return plus;
+    }
 }
 //문자열을 받아오게 될 것이다.
 //그러면 어떻게 할까
