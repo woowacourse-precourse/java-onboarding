@@ -25,7 +25,17 @@ public class Problem6 {
     }
     //함수 배치하는 순서 생각해볼 것
     static void createNumberOfCases(String name){
-        
+        for(int i=0; i<name.length()-1; i++){
+            for(int j=i+1; j<name.length(); j++){
+                String newString = name.substring(i,j+1);
+                int count = 1;
+
+                if(nameCountMap.containsKey(newString)){
+                    count = nameCountMap.get(newString)+1;
+                }
+                nameCountMap.put(newString,count);
+            }
+        }
     }
 
     static void setNameCountMap(List<List<String>> forms){
