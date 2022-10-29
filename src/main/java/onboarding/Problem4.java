@@ -16,6 +16,7 @@ public class Problem4 {
                     int distanceFromBegin = currentCh - 'a';
                     convertedCh = (char)((int)'z' - distanceFromBegin);
                 }
+                answer += convertedCh;
             }
             else {
                 answer += currentCh;
@@ -40,5 +41,5 @@ public class Problem4 {
 - [V] 알파벳이 아니면 그대로 answer에 더한다
 - [V] 알파벳이면 소문자인지 대문자인지 판별한다
 - [V] 알파벳을 변환한다
-- [] 변환한 알파벳을 answer에 더한다
+- [V] 변환한 알파벳을 answer에 더한다
  */
