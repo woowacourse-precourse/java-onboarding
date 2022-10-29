@@ -21,6 +21,7 @@ public class Problem7 {
 		// 전체 유저 리스트에서 유저와 친구를 뺀 리스트 생성
 		List<String> noFriendList = makeNoFriendList(userList, userFriendsList);
 
+		// 친구 점수 집계용 hashmap 생성 및 초기회
 		HashMap<String, Integer> friendshipScore = new HashMap<>();
 		for (String person : noFriendList) {
 			friendshipScore.put(person, 0);
@@ -30,11 +31,7 @@ public class Problem7 {
 			// 유저및 친구 제외 리스트의 구성원 중 친구의 친구 점수 부여
 			addFriendFriendScore(userFriendsFriendsList, friendshipScore, person);
 			// 유저 및 친구 제외 리스트의 구성원 중 방문객 점수 부여
-			for (String visitor : visitors) {
-				if (visitor.equals(person)) {
-					friendshipScore.put(person, friendshipScore.get(person) + 1);
-				}
-			}
+			addVisitorScore(visitors, friendshipScore, person);
 		}
 
 		List<String> answer = new ArrayList<>();
@@ -50,6 +47,14 @@ public class Problem7 {
 		}
 
 		return answer;
+	}
+
+	private static void addVisitorScore(List<String> visitors, HashMap<String, Integer> friendshipScore, String person) {
+		for (String visitor : visitors) {
+			if (visitor.equals(person)) {
+				friendshipScore.put(person, friendshipScore.get(person) + 1);
+			}
+		}
 	}
 
 	private static void addFriendFriendScore(List<List<String>> userFriendsFriendsList, HashMap<String, Integer> friendshipScore,
