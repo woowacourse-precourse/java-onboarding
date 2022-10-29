@@ -2,8 +2,9 @@ package onboarding;
 
 public class Problem4 {
     public static void main(String[] args) {
-        
+        System.out.println(solution("I love you"));
     }
+
     public static String solution(String word) {
         // 1. 비교해서 변화하려는 코드표를 char 배열로 생성
         // 2-1. word를 매개변수로 받아서 char.At()을 이용해 char 배열의 원소들과 비교하는 메서드 생성
@@ -30,6 +31,11 @@ public class Problem4 {
     public static char convertWords(char preWord) {
         char[] DictionaryOfWords = {'Z', 'Y', 'X', 'W', 'V', 'U', 'T', 'S', 'R', 'Q', 'P', 'O', 'N', 'M'
                 , 'L', 'K', 'J', 'I', 'H', 'G', 'F', 'E', 'D', 'C', 'B', 'A'};
+
+        if (preWord == ' ') {
+            return ' ';
+        }
+
         int idx = preWord - 65;
 
         return DictionaryOfWords[idx];
