@@ -2,6 +2,7 @@ package onboarding.problem6;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeSet;
 
 public class SimilarNicknameCrewSelector {
 	private List<List<String>> crewInformations;
@@ -18,6 +19,15 @@ public class SimilarNicknameCrewSelector {
 		for (int i = 0; i < this.numberOfCrews; i++) {
 			this.hasSimilarNickname.add(false);
 		}
+	}
+
+	private boolean isSimilar(TreeSet<String> dividedNickname, int comparedCrewIndex) {
+		for(String twoCharacters : dividedNickname) {
+			if (crewInformations.get(comparedCrewIndex).get(1).contains(twoCharacters)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

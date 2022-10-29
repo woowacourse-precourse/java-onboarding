@@ -46,7 +46,7 @@
     - hasSimilarNicknames : numberOfCrews 크기로 false 채우기
     - similarNicknameCrewsEmail : 빈 ArrayList 생성
 
-- public List< String > makeSimilarNicknameCrewEmailList(List<List< String > > forms) : 최상위 메소드
+- public List< String > makeSimilarNicknameCrewEmailList() : 최상위 메소드
 - private void compareCrewsNickname(int comparingCrewIndex) : 닉네임 비교과정 수행
 - private TreeSet< String > makeDividedNickname(int comparingCrewIndex) : 두 글자씩 분할된 닉네임 생성
 - private boolean isSimilar(TreeSet< String > dividedNickname, int comparedCrewIndex) : 닉네임 비슷한지 판별
@@ -75,7 +75,7 @@
 
 ### 2. 함수 별 동작 과정
 
-- public List< String > makeSimilarNicknameCrewEmailList(List<List< String > > forms)
+- public List< String > makeSimilarNicknameCrewEmailList()
     -  "int i = 0~크루 인원 수" for문 설정
     - i번째 인덱스의 hasSimilarNickname 값이 true이면 continue, false이면 compareCrewsNickname() 호출
     - listSimilarNicknameCrewsEmail() 호출
