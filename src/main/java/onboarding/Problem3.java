@@ -24,6 +24,8 @@ public class Problem3 {
                     countClapOfNumber++;
                 }
             }
+
+            allClapCount += countClapOfNumber;
         }
 
         int answer = 0;
