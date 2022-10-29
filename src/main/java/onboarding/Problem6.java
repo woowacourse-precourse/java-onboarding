@@ -10,16 +10,14 @@ import java.util.stream.Collectors;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         Map<String, String> usingNameMap = new HashMap<>();
-        Set<String> renamedListSet = new HashSet<>();
+        Set<String> renamedRegisterSet = new HashSet<>();
         forms.stream()
-                .filter(Problem6::isCheckForms)
-                .forEach(list -> validateSameNameInList(list, usingNameMap, renamedListSet));
+                .filter(Problem6::isCheckEmailAndName)
+                .forEach(list -> validateSameNameInList(list, usingNameMap, renamedRegisterSet));
 
-        List<String> answer = renamedListSet.stream()
+        return renamedRegisterSet.stream()
                 .sorted()
                 .collect(Collectors.toList());
-
-        return answer;
     }
 
     private static void validateSameNameInList(List<String> list, Map<String, String> usingNameMap, Set<String> renamedListSet) {
@@ -35,7 +33,7 @@ public class Problem6 {
         }
     }
 
-    private static boolean isCheckForms(List<String> list) {
+    private static boolean isCheckEmailAndName(List<String> list) {
         return list.size() == 2
                 && isCheckEmail(list.get(0))
                 && isCheckName(list.get(1));
