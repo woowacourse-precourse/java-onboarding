@@ -13,13 +13,7 @@ public class Problem7 {
         makeNearList(user, friends, near);
         makeFarList(user, friends, near, far);
 
-        for (String name : far) {
-            int point = 10;
-            if (result.get(name) != null && !near.contains(name)) {
-                point += (result.get(name));
-            }
-            result.put(name, point);
-        }
+        PointToFarList(near, far, result);
 
         for (String name : visitors) {
             if (near.contains(name)) continue;
@@ -32,6 +26,16 @@ public class Problem7 {
 
         answer = sortedAnswer(answer, result);
         return answer;
+    }
+
+    private static void PointToFarList(Set<String> near, List<String> far, Map<String, Integer> result) {
+        for (String name : far) {
+            int point = 10;
+            if (result.get(name) != null && !near.contains(name)) {
+                point += (result.get(name));
+            }
+            result.put(name, point);
+        }
     }
 
     private static void makeFarList(String user, List<List<String>> friends, Set<String> near, List<String> far) {
