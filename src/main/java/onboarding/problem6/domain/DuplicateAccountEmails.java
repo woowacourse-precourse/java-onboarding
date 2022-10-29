@@ -27,11 +27,10 @@ public class DuplicateAccountEmails {
     }
     
     private void saveDuplicateTwoLetterNameAccountEmail(final Map<UserName, UserEmail> checkDuplicateAccounts, final User twoLetterNameAccount) {
-        final UserName twoLetterName = twoLetterNameAccount.getUserName();
-        
-        if (checkDuplicateAccounts.containsKey(twoLetterName)) {
-            duplicateAccountEmails.add(checkDuplicateAccounts.get(twoLetterName));
-            duplicateAccountEmails.add(twoLetterNameAccount.getUserEmail());
+        if (twoLetterNameAccount.isInADuplicateAccountEmail(checkDuplicateAccounts)) {
+            final UserEmail duplicateAccountEmail = twoLetterNameAccount.findDuplicateAccountEmail(checkDuplicateAccounts);
+            duplicateAccountEmails.add(duplicateAccountEmail);
+            twoLetterNameAccount.addDuplicateAccountEmail(duplicateAccountEmails);
         }
     }
     
