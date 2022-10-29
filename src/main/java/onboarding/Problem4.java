@@ -12,7 +12,7 @@ public class Problem4 {
         char c;
         for (int i = 0; i < word.length(); i++) {
             c = word.charAt(i);
-            StringBuilder sb = new StringBuilder(1000);
+            StringBuilder sb = new StringBuilder();
             if ('A' <= c && c <= 'Z') {
                 sb.append(answer);
                 sb.append((char)('Z' - (c - 'A')));
