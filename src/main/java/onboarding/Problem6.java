@@ -14,6 +14,7 @@ public class Problem6 {
         }
 
         answer = extractDuplicateEmails();
+        answer = removeDuplicateEmailData(answer);
 
         return answer;
     }
@@ -44,6 +45,12 @@ public class Problem6 {
             }
         }
 
+        return answer;
+    }
+
+    private static List<String> removeDuplicateEmailData(List<String> answer) {
+        HashSet<String> tempSet = new HashSet<>(answer);
+        answer = new ArrayList<>(tempSet);
         return answer;
     }
 }
