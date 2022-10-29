@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class UserTest {
+class UserTest {
     @Test
     @DisplayName("서로의 객체가 같은지 확인")
     void isSameUser() {
