@@ -41,4 +41,23 @@ class Problem3Test {
         assertThat(Problem3.getClapCount(num3)).isEqualTo(0);
         assertThat(Problem3.getClapCount(num4)).isEqualTo(1);
     }
+
+    @Test
+    void 결과테스트() {
+
+        //given
+        int num1 = 3;
+        int num2 = 93;
+        int num3 = 1;
+        int num4 = 611;
+
+        //when
+
+        //then
+        assertThat(Problem3.getClapCountSum(num1)).isEqualTo(1);
+        assertThat(Problem3.getClapCountSum(num2)).isEqualTo(52);
+        assertThat(Problem3.getClapCountSum(num3)).isEqualTo(0);
+        assertThat(Problem3.getClapCountSum(num4)).isEqualTo(475);
+    }
+
 }
