@@ -22,6 +22,22 @@ public class Problem7 {
         //System.out.println(friendMap);
 
         // 2. 친구 관계 그래프 돌면서 친구 포함 관계에 따라 점수 계산하기
+        List<String> usersFriendList = friendMap.getOrDefault(user, Collections.emptyList());
+        Map<String, Integer> friendScore = new HashMap<>();
+        if (!usersFriendList.isEmpty()){
+            for(String keyUser : friendMap.keySet()){
+                if (keyUser.equals(user))
+                    continue;
+                for (String valFriend : friendMap.get(keyUser)){
+                    if (usersFriendList.contains(valFriend))
+                        friendScore.put(keyUser, friendScore.containsKey(keyUser) ? friendScore.get(keyUser) + 1 : 1);
+                }
+            }
+        }
+        friendScore.replaceAll((u, v) -> friendScore.get(u) * 10);
+        //System.out.println(friendScore);
+
+        // 3. 방문자 목록 돌면서 방문 횟수에 따라 점수 계산하기
 
         List<String> answer = Collections.emptyList();
         return answer;
