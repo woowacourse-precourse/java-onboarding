@@ -29,14 +29,24 @@ public class Problem7 {
         for(String friend : relation.get(user)){
             addPointToRecommended(relation,recommend,friend);
         }
+
         //3. add score by visitor
         addPointToVisitor(recommend, visitors);
-        //4. delete all which is already his friends or himself.
+
+        //4. delete all who is already his friends or himself.
+        removeAlreadyFriendsOrHimself(relation,recommend, user);
 
         //5. add to array and sort
 
 
         return answer;
+    }
+
+    public static void removeAlreadyFriendsOrHimself(Map<String, List<String>> relation, Map<String, Integer> recommend, String user) {
+        for(String friend : relation.get(user)){
+            if(recommend.containsKey(friend)) recommend.remove(friend);
+        }
+        recommend.remove(user);
     }
 
     public static void addPointToVisitor(Map<String, Integer> recommend, List<String> visitors) {

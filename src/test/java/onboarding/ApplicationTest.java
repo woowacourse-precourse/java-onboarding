@@ -278,5 +278,22 @@ class ApplicationTest {
             assertThat(recommend.get("donut")).isEqualTo(11);
             assertThat(recommend.get("bedi")).isEqualTo(3);
         }
+
+        @Test
+        void removeAlreadyFriendOrHimselfTest(){
+            String user = "me";
+            Map<String, List<String>> relation = new HashMap<>();
+            Map<String, Integer> recommend = new HashMap<>();
+            relation.put(user, new ArrayList<>());
+            List<String> friends = relation.get(user);
+            friends.add("man");
+
+            recommend.put("donut",10);
+            recommend.put(user, 30);
+            Problem7.removeAlreadyFriendsOrHimself(relation,recommend,user);
+
+            assertThat(recommend.containsKey(user)).isEqualTo(false);
+            assertThat(recommend.containsKey("donut")).isEqualTo(true);
+        }
     }
 }
