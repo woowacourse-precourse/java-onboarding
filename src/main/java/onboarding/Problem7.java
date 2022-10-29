@@ -5,9 +5,32 @@ import java.util.*;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
+        List<HashMap<String, Integer>> nameAndScoreMap = new ArrayList<>();
+
+        // create a set to get all users in friends and visitors
+        HashSet<String> usernameSet = new HashSet<>();
+
+        // add users from friends
+        for(List<String> friendList: friends){ // ["donut", "andole"]
+            for(String name: friendList){ // "donut"
+                usernameSet.add(name);
+            }
+        }
+        //add users from visitors
+        for(String visitor: visitors){
+            usernameSet.add(visitor);
+        }
+        System.out.println(usernameSet);
+
+
+
+
+
+
+
         List<String> answer =   new ArrayList<>();
 
-        // user의 direct friend 구하기
+       /* // user의 direct friend 구하기
         HashSet<String> directFriends = new HashSet<String>();
         for(List<String> friendList : friends){
             if(friendList.contains(user)){
@@ -42,12 +65,7 @@ public class Problem7 {
         System.out.println("mutual: "+mutualFriends);
         System.out.println("visited: "+visitors);
 
-        // score 정의하기
-        HashMap<String, Integer> score = new HashMap<String, Integer>();
-        for(String suggestedAccount: suggestedAccounts){
-            score.put(suggestedAccount, 0);
-        }
-        System.out.println(score);
+
 
         // mutual friend => + 10점
         for(String mutualFriend: mutualFriends){
@@ -69,7 +87,7 @@ public class Problem7 {
 
         System.out.println(score);
 
-        LinkedHashMap<String, Integer> sortedScore = new LinkedHashMap<>();
+        HashMap<String, Integer> sortedScore = new HashMap<>();
         score.entrySet()
                 .stream()
                 .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
@@ -82,7 +100,7 @@ public class Problem7 {
             if(answer.size()>=5){
                 break;
             }
-        }
+        }*/
 
         return answer;
     }
