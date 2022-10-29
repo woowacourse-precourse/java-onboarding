@@ -1,9 +1,8 @@
 package onboarding.problem2;
 
-import static onboarding.problem2.consts.CryptogramIndexConst.CRYPTOGRAM_DUPLICATE_START_INDEX;
-import static onboarding.problem2.consts.CryptogramIndexConst.CRYPTOGRAM_START_INDEX;
-
-import java.util.Stack;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Decryptor {
 
@@ -11,54 +10,25 @@ public class Decryptor {
     }
 
     public static String decrypt(String cryptogram) {
-        Stack<Character> cryptogramStack = deleteDuplicateCharacter(cryptogram);
+        List<String> strings = Arrays.stream(cryptogram.split("")).collect(Collectors.toList());
+        boolean removeDuplicateCharacter = false;
 
-        return decryptCharacterToString(cryptogramStack);
-    }
-
-    private static String decryptCharacterToString(Stack<Character> cryptogramStack) {
-        StringBuilder decryptStringBuilder = new StringBuilder();
-
-        cryptogramStack.forEach(decryptStringBuilder::append);
-        return decryptStringBuilder.toString();
-    }
-
-    private static Stack<Character> deleteDuplicateCharacter(String cryptogram) {
-        Stack<Character> cryptogramStack = new Stack<>();
-        char[] cryptogramCharArray = cryptogram.toCharArray();
-
-        cryptogramStack.push(cryptogramCharArray[CRYPTOGRAM_START_INDEX]);
-        for (int i = CRYPTOGRAM_DUPLICATE_START_INDEX; i < cryptogram.length(); i++) {
-            boolean skipCursorFlag = addValidCryptogramCharacter(cryptogramStack,
-                cryptogramCharArray[i]);
-            if (skipCursorFlag) {
-                i += skipCryptogramCursor(cryptogramCharArray, cryptogramCharArray[i], i);
+        while (!removeDuplicateCharacter) {
+            removeDuplicateCharacter = true;
+            for (int i = 1; i < strings.size(); i++) {
+                int startCursor = i - 1;
+                if (strings.get(startCursor).equals(strings.get(i))) {
+                    removeDuplicateCharacter = false;
+                    String target = strings.get(i);
+                    while (strings.size() > 0 && strings.get(startCursor).equals(target)) {
+                        strings.remove(startCursor);
+                    }
+                    i = startCursor;
+                }
             }
         }
-        return cryptogramStack;
-    }
-
-    private static boolean addValidCryptogramCharacter(Stack<Character> cryptogramStack,
-        char target) {
-        if (duplicateCharacter(cryptogramStack, target)) {
-            cryptogramStack.pop();
-            return true;
-        }
-        cryptogramStack.push(target);
-        return false;
-    }
-
-    private static int skipCryptogramCursor(char[] cryptogramCharArray, char target,
-        int nowCursor) {
-        int skipCursor = 0;
-        while (++nowCursor != cryptogramCharArray.length
-            && cryptogramCharArray[nowCursor] == target) {
-            skipCursor++;
-        }
-        return skipCursor;
-    }
-
-    private static boolean duplicateCharacter(Stack<Character> cryptogramStack, char target) {
-        return !cryptogramStack.isEmpty() && cryptogramStack.peek() == target;
+        StringBuilder sb = new StringBuilder();
+        strings.stream().forEach(sb::append);
+        return sb.toString();
     }
 }
