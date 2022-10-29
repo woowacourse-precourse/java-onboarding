@@ -11,7 +11,7 @@ import static onboarding.problem3.consts.ClapNumberConst.CLAP_THREE;
 import static onboarding.problem3.consts.ClapNumberConst.CLAP_VALUE;
 import static onboarding.problem3.consts.ClapNumberConst.NOT_CLAPPED_VALUE;
 
-public class ClapCalculator {
+public class ClapGamePlayer {
 
     private static final int[] clapCountArr = new int[CLAP_GAME_NUMBER_MAX_VALUE + 1];
 

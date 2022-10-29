@@ -1,6 +1,6 @@
 package onboarding;
 
-import static onboarding.problem3.ClapCalculator.calculateTotalClapCount;
+import static onboarding.problem3.ClapGamePlayer.calculateTotalClapCount;
 
 public class Problem3 {
 
