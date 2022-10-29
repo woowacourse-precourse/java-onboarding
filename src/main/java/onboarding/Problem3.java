@@ -1,6 +1,10 @@
 package onboarding;
 
 public class Problem3 {
+    private static final int THREE = 3;
+    private static final int SIX = 6;
+    private static final int NINE = 9;
+
     public static int solution(int number) {
         return countClapsFrom1ToNumber(number);
     }
@@ -22,6 +26,6 @@ public class Problem3 {
     }
 
     private static boolean has369(int digit) {
-        return digit == 3 || digit == 6 || digit == 9;
+        return digit == THREE || digit == SIX || digit == NINE;
     }
 }
