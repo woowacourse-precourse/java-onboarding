@@ -34,4 +34,30 @@ public class Problem2 {
         }
         return false;
     }
+
+    public static String deleteContinuedSameChar(String cryptogram) {
+        String deletedCrytogram = "";
+        boolean checkOverlap = false;
+        for (int i = 0; i < cryptogram.length(); i++) {
+            String checkText = Character.toString(cryptogram.charAt(i));
+            if (i + 1 == cryptogram.length()) {
+                break;
+            }
+            String nextText = Character.toString(cryptogram.charAt(i + 1));
+            if (checkText.equals(nextText)) {
+                checkOverlap = true;
+                continue;
+            }
+            if (checkOverlap) {
+                checkOverlap = false;
+                continue;
+            }
+            deletedCrytogram += checkText;
+        }
+        // 문자열 중 마지막 문자처리
+        if (!checkOverlap) {
+            deletedCrytogram += Character.toString(cryptogram.charAt(cryptogram.length() - 1));
+        }
+        return deletedCrytogram;
+    }
 }
