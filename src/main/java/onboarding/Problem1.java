@@ -27,16 +27,17 @@ class Problem1 {
     }
 
     private static int exception(List<Integer> pobi, List<Integer> crong) {
+        // 시작 면이나 마지막 면이 나오도록 책을 펼치지 않는다.
         if (pobi.get(0) == 1 || pobi.get(1) == 400
                 || crong.get(0) == 1 || crong.get(1) == 400) {
             return -1;
         }
-        //책을 살펴보니 왼쪽 페이지는 홀수, 오른쪽 페이지는 짝수 번호.
+        // 책을 살펴보니 왼쪽 페이지는 홀수, 오른쪽 페이지는 짝수 번호.
         else if (pobi.get(0) % 2 == 0 || pobi.get(1) % 2 != 0
                 || crong.get(0) % 2 == 0 || crong.get(1) % 2 != 0) {
             return -1;
         }
-        //왼쪽 / 오른쪽 책 페이지가 1만큼 차이가 나야함.
+        // 왼쪽, 오른쪽 책 페이지가 1만큼 차이가 나야함.
         else if (pobi.get(1) - pobi.get(0) != 1
                 || crong.get(1) - crong.get(0) != 1) {
             return -1;
