@@ -17,7 +17,7 @@ class Problem1 {
 
         pobiScore = calculationPobi(pobi);
         crongScore = calculationCrong(crong);
-
+        answer = compareScore(pobiScore, crongScore);
 
         return answer;
     }
@@ -61,6 +61,7 @@ class Problem1 {
         return Math.max(leftMax, rightMax);
     }
 
+    // 크롱의 점수를 계산하는 메서드
     static int calculationCrong(List<Integer> crong) {
         String[] left = String.valueOf(crong.get(0)).split("");
         int leftMax = 0;
@@ -83,5 +84,16 @@ class Problem1 {
         }
 
         return Math.max(leftMax, rightMax);
+    }
+
+    // 포비와 크롱의 점수를 비교하는 메서드
+    static int compareScore(int pobiScore, int crongScore) {
+        if(pobiScore > crongScore) {
+            return 1;
+        } else if (pobiScore < crongScore) {
+            return 2;
+        } else {
+            return 0;
+        }
     }
 }
