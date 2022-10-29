@@ -1,5 +1,5 @@
 package onboarding;
-
+//알파벳이 대문자인지 소문자인지 나누고 기준을 M,n 으로잡고 그 차이를 이용하여 바꿔주기
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
