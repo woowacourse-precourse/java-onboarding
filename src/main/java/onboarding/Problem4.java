@@ -7,6 +7,12 @@ import java.util.Map;
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
+        GreenFlog greenflog = new GreenFlog();
+        greenflog.makeMap();
+
+        for (int i=0; i<word.length(); i++) {
+            answer += greenflog.reform(word.charAt(i));
+        }
         return answer;
     }
 }
