@@ -17,4 +17,8 @@ public class Problem3 {
     public static boolean isSix(Character element) {
         return element == '6';
     }
+
+    public static boolean isNine(Character element) {
+        return element == '9';
+    }
 }
