@@ -4,16 +4,25 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        highestScore(pobi.get(0));
-        return answer;
+        if(!bookValidation(pobi)||!bookValidation(crong)){
+            return -1;
+        }
+        int pobiscore = Math.max(highestScore(pobi.get(0)), highestScore(pobi.get(1)));
+        int crongscore  = Math.max(highestScore(crong.get(0)), highestScore(crong.get(1)));
+        if(pobiscore>crongscore){
+            return 1;
+        }else if(pobiscore<crongscore){
+            return 2;
+        }else {
+            return 0;
+        }
     }
 
     public static int highestScore(int book){
 
         int addscore=0;
         int multiplyscore=1;
-        int maxscore =0;
+        int maxscore;
         String strbook = Integer.toString(book);
         for (int i = 0; i < strbook.length(); i++) {
             addscore+=book%10;
@@ -21,7 +30,6 @@ class Problem1 {
             book = book/10;
         }
         maxscore = Math.max(addscore, multiplyscore);
-        System.out.println("addscore : " + addscore + " multiplyscore : " + multiplyscore + " maxscore : " + maxscore);
 
         return maxscore;
     }
