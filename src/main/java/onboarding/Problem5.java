@@ -12,4 +12,8 @@ public class Problem5 {
     private static void setMoneyCnt(List<Integer> moneyCnt, int money, int unit) {
         moneyCnt.add(money / unit);
     }
+
+    private static int getChange(int money, int unit) {
+        return money % unit;
+    }
 }
