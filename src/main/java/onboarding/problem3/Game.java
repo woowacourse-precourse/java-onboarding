@@ -12,4 +12,13 @@ public class Game {
         }
         return clap;
     }
+
+    private static int getNumberClap(int number) {
+        String numberStr = String.valueOf(number);
+        int clap = 0;
+        for(int idx = 0; idx < numberStr.length(); idx++){
+            clap += getDigitClap(numberStr.charAt(idx));
+        }
+        return clap;
+    }
 }
