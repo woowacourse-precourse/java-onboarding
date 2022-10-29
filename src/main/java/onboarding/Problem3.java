@@ -13,6 +13,7 @@ public class Problem3 {
         int allClapCount = 0;
 
         for (int i = START_NUMBER; i <= number; i++) {
+            String intToStringNumber = String.valueOf(i);
         }
 
         int answer = 0;
