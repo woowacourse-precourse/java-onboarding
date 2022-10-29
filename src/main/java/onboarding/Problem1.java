@@ -16,12 +16,11 @@ class Problem1 {
 
 	/**
 	 * 1. 제한사항 체크
-	 * 리스트의 길이가 2가 아니거나, 왼쪽 오른쪽 페이지 순서로 있지 않은 경우
 	 */
 	public static boolean isValidCondition(List<Integer> list) {
-		if (list.size() > 2)
+		if (list.size() != 2)            // 리스트의 길이가 2 이상인 경우
 			return false;
-		if (list.get(0) >= list.get(1))
+		if (list.get(0) >= list.get(1)) //왼쪽 오른쪽 페이지 순서로 있지 않은 경우
 			return false;
 		return true;
 	}
