@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Problem2 {
     /* compare: 중복 문자가 존재하는지 확인하는 함수 */
@@ -33,8 +34,13 @@ public class Problem2 {
                     break;
                 }
             }
-
+            int index = overlap.get(0); //중복시작되는 인덱스 저장
+            for(int i=0; i<overlap.size(); i++){ //중복된 문자 제거
+                cyp.remove(index); //삭제 후 인덱스가 줄기 때문에 index 고정하고 중복 숫자만큼 삭제한다.
+            }
         }
+
+        answer = cyp.stream().map(String::valueOf).collect(Collectors.joining());
 
         return answer;
     }
