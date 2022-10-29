@@ -426,5 +426,17 @@ class ApplicationTest {
             assertThat(Problem7.relationships.get("donut").size()).isEqualTo(3);
             assertThat(Problem7.relationships.get("donut")).isEqualTo(List.of("andole", "jun","youngho"));
         }
+
+        @Test
+        void addRecommendScoreTest() {
+            Problem7.addRecommendScore("youngho", 10);
+            Problem7.addRecommendScore("youngho", 1);
+            Problem7.addRecommendScore("youngho", 1);
+            Problem7.addRecommendScore("youngho", 10);
+
+            Problem7.addRecommendScore("donut", 10);
+            assertThat(Problem7.recommendScore.size()).isEqualTo(2);
+            assertThat(Problem7.recommendScore.get("youngho")).isEqualTo(22);
+        }
     }
 }
