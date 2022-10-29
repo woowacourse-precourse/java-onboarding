@@ -3,6 +3,7 @@
 ## 기능 목록
 
 - [x] 주어진 리스트가 있는지 알 수 있다. - Calculator.hasList()
+- [x] 잘못된 입력이 들어오는것을 비교할 수 있다. - Calculator.wrongInput()
 - [x] 포비, 크롱의 최종 점수를 비교할 수 있다. - Calculator.compareScore()
   - [x] 해당 페이지가 짝수인지 알 수 있다. - Book.isEvenPage()
   - [x] 주어진 리스트가 없으면 책을 임의로 펼친다(1 ~ 400범위의 수를 생성한다) - Book.openBook()
