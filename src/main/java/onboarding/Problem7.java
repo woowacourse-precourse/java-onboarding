@@ -22,7 +22,7 @@ public class Problem7 {
         Map<String, Integer> friendScore = new HashMap<>();
 
         // 3. 사용자 친구 목록을 통한 사용자와 함께 아는 친구의 수 계산
-        addfFirstRulePoint(user, friendGraph, userFriends, friendScore);
+        addFirstRulePoint(user, friendGraph, userFriends, friendScore);
 
         // 4. 사용자 친구 목록을 통해 친구를 제외하고 사용자의 타임 라인에 방문한 횟수 계산
         addSecondRulePoint(visitors, userFriends, friendScore);
@@ -67,7 +67,7 @@ public class Problem7 {
     }
 
     // 3. 사용자 친구 목록을 통한 사용자와 함께 아는 친구의 수 계산
-    private static void addfFirstRulePoint(String user, Map<String, Set<String>> friendGraph,
+    private static void addFirstRulePoint(String user, Map<String, Set<String>> friendGraph,
         Set<String> userFriends, Map<String, Integer> friendScore) {
         for (String friend : friendGraph.keySet()) {
             if (friend.equals(user)) {
