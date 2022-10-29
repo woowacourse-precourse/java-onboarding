@@ -7,8 +7,8 @@ import java.util.stream.Collectors;
 public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
-        List<List<String>> notified = findContinuousNameForms(forms);
-        List<String> emails = getEmails(notified);
+        List<List<String>> notifiedForms = findFormsWithDuplicatedName(forms);
+        List<String> emails = getEmails(notifiedForms);
 
         return emails.stream()
                     .distinct()
@@ -16,34 +16,34 @@ public class Problem6 {
                     .collect(Collectors.toList());
     }
 
-    private static List<List<String>> findContinuousNameForms(List<List<String>> forms) {
-        List<List<String>> notified = new ArrayList<>();
+    private static List<List<String>> findFormsWithDuplicatedName(List<List<String>> forms) {
+        List<List<String>> notifiedForms = new ArrayList<>();
 
         for (int size = forms.size(), i = 0; i < size; i++) {
-            notified.addAll(findContinuousNameForms(forms, i));
+            notifiedForms.addAll(findFormsWithDuplicatedName(forms, i));
         }
 
-        return notified;
+        return notifiedForms;
     }
 
-    private static List<List<String>> findContinuousNameForms(List<List<String>> forms, int currentIdx) {
-        List<List<String>> notified = new ArrayList<>();
+    private static List<List<String>> findFormsWithDuplicatedName(List<List<String>> forms, int currentIdx) {
+        List<List<String>> notifiedForms = new ArrayList<>();
         List<String> currentForm = forms.get(currentIdx);
         String currentName = currentForm.get(1);
 
         for (int len = currentName.length() - 1, i = 0; i < len; i++) {
             String target = currentName.substring(i, i + 2);
-            notified.addAll(findContinuousNameForms(forms, currentIdx, target));
+            notifiedForms.addAll(findFormsWithTarget(forms, currentIdx, target));
         }
 
-        if (!notified.isEmpty()) {
-            notified.add(currentForm);
+        if (!notifiedForms.isEmpty()) {
+            notifiedForms.add(currentForm);
         }
 
-        return notified;
+        return notifiedForms;
     }
 
-    private static List<List<String>> findContinuousNameForms(List<List<String>> forms, int currentIdx, String target) {
+    private static List<List<String>> findFormsWithTarget(List<List<String>> forms, int currentIdx, String target) {
         List<List<String>> notified = new ArrayList<>();
 
         for (int size = forms.size(), i = currentIdx + 1; i < size; i++) {
@@ -63,16 +63,13 @@ public class Problem6 {
 
         for (List<String> form : notified) {
             String email = form.get(0);
-            addEmail(emails, email);
+
+            if (isEmail(email)) {
+                emails.add(email);
+            }
         }
 
         return emails;
-    }
-
-    private static void addEmail(List<String> emails, String email) {
-        if (isEmail(email)) {
-            emails.add(email);
-        }
     }
 
     private static boolean isEmail(String email) {
