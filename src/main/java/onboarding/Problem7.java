@@ -10,7 +10,8 @@ import java.util.Set;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Set<String> userFriends = createUserFriendList(friends, user);
-        HashMap<String, Integer> recommendFriends = createRecommendList(friends, userFriends, user);
+        HashMap<String, Integer> recommendFriends = createRecommendList(friends, userFriends);
+        isNotFriend(recommendFriends ,user);
         recommendVisitor(recommendFriends, visitors, userFriends);
         return limitFiveLength(sortRecommendFriends(recommendFriends));
     }
@@ -32,12 +33,11 @@ public class Problem7 {
         }
     }
 
-    public static HashMap<String, Integer> createRecommendList(List<List<String>> friends, Set<String> friendSet, String user) {
+    public static HashMap<String, Integer> createRecommendList(List<List<String>> friends, Set<String> friendSet) {
         HashMap<String, Integer> recommendMap = new HashMap<>();
         for (List<String> friend : friends) {
             updateRecommendFriend(recommendMap, friend, friendSet);
         }
-        recommendMap.remove(user);
         return recommendMap;
     }
 
@@ -60,6 +60,10 @@ public class Problem7 {
         if (!friendSet.contains(visitor)){
             friendMap.put(visitor, friendMap.getOrDefault(visitor, 0) + 1);
         }
+    }
+
+    public static void isNotFriend(HashMap<String, Integer> recommendFriends, String user) {
+        recommendFriends.remove(user);
     }
 
     public static List<List<String>> sortRecommendFriends(HashMap<String, Integer> friendMap) {
