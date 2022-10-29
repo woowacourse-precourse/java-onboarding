@@ -1,13 +1,33 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        List<String> answer = new ArrayList<>();
+        // 1. nickname 만 모아서 String 배열로 반환
+        String[] nicknames = returnNickname(forms);
+        // 2. nicknames 배열에 담긴 닉네임을 차례로 중복되는 부분이 있는지 탐색
+        for(int i = 0; i<nicknames.length; i++) {
+            String[] standard = splitString(nicknames[i]);
+            for(int j = i+1; j<nicknames.length; j++) {
+                String[] nickname = splitString(nicknames[j]);
+                // 3. 중복되는 부분이 있다면, 그 인덱스의 이메일을 answer 에 담기
+                if(findWord(standard, nickname)) {
+                    answer.add(forms.get(i).get(0));
+                    answer.add(forms.get(j).get(0));
+                }
+            }
+        }
+
+        // 4. 이메일 리스트 중복 항목 제거
+        answer = removeDuplication(answer);
+
+        // 5. 이메일 리스트 오름차순 후 리턴
+        return sort(answer);
     }
 
     // nickname 만 모아서 String 배열로 반환하는 함수
