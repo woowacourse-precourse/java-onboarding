@@ -1,4 +1,4 @@
-package onboarding.problem2.domain.util;
+package onboarding.problem2.util;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
