@@ -19,13 +19,13 @@ public class AccountRepository {
 
     private void initFriendsRelation(List<List<String>> friends) {
         for (List<String> friend : friends) {
-            Account accountA = new Account(friend.get(FRIEND_A_INDEX));
-            Account accountB = new Account(friend.get(FRIEND_B_INDEX));
+            Account accountA = accountInfoMap.computeIfAbsent(friend.get(FRIEND_A_INDEX),
+                Account::new);
+            Account accountB = accountInfoMap.computeIfAbsent(friend.get(FRIEND_B_INDEX),
+                Account::new);
 
             accountA.addFriend(accountB);
             accountB.addFriend(accountA);
-            accountInfoMap.put(friend.get(FRIEND_A_INDEX), accountA);
-            accountInfoMap.put(friend.get(FRIEND_B_INDEX), accountB);
         }
     }
 
@@ -34,6 +34,6 @@ public class AccountRepository {
     }
 
     public Account getAccount(String user) {
-        return accountInfoMap.computeIfAbsent(user, key -> new Account(key));
+        return accountInfoMap.computeIfAbsent(user, Account::new);
     }
 }
