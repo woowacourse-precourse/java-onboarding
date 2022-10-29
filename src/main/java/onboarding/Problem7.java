@@ -85,4 +85,12 @@ class Intimacy {
         this.targetId = targetId;
         this.userId = userId;
     }
+
+    public int getNumOfMutualFriends() {
+        return numOfMutualFriends;
+    }
+
+    public void setNumOfMutualFriends(Relations relations) {
+        this.numOfMutualFriends = relations.getNumOfMutualFriends(this.targetId, this.userId);
+    }
 }
