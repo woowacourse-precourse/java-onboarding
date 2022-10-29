@@ -26,7 +26,7 @@
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
 
 ## 기능 목록
-- [ ] 친구관계를 HashMap에 (아이디, 친구목록) 형태로 저장한다.
+- [x] 친구관계를 HashMap에 (아이디, 친구목록) 형태로 저장한다.
 - [ ] 사용자와 함께 아는 친구의 수를 구하여 점수에 더하는 기능
 - [ ] 사용자의 타임 라인에 방문한 횟수를 구하여 점수에 더하는 기능
 - [ ] 점수가 0이 아닌 사용자가 아닌 유저들을 친구 추천 리스트에 저장한다.
