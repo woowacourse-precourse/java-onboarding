@@ -219,6 +219,33 @@ class ApplicationTest {
             int result = 14;
             assertThat(Problem3.solution(number)).isEqualTo(result);
         }
+        @Test
+        void countThreeSixNineTest() {
+        	//given
+        	int number = 336;
+        	//when
+        	int result = 3;
+        	//then
+        	assertThat(Problem3.countAllThreeSixNine(number)).isEqualTo(result);
+        	
+        	//given
+        	int number2 = 3335;
+        	//when
+        	int result2 = 3;
+        	//then
+        	assertThat(Problem3.countAllThreeSixNine(number2)).isEqualTo(result2);
+        	
+        	//given
+        	int number3 = 10000;
+        	//when
+        	int result3 = 0;
+        	//then
+        	assertThat(Problem3.countAllThreeSixNine(number3)).isEqualTo(result3);
+        	
+        	int number4 = 1;
+        	int result4 = 0;
+        	assertThat(Problem3.countAllThreeSixNine(number4)).isEqualTo(result4);
+        }
     }
 
     @Nested
