@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -45,5 +46,16 @@ public class Problem6 {
             }
         }
         return false;
+    }
+
+    static List<String> findSameNickname(List<String> nickname_list){
+        List<String> same_nickname_list = new ArrayList<>();
+
+        for (String nickname:nickname_list){
+            if(checkID(nickname, nickname_list)){
+                same_nickname_list.add(nickname);
+            }
+        }
+        return same_nickname_list;
     }
 }
