@@ -28,6 +28,14 @@ public class Problem2 {
         return currentElement == lastRemove;
     }
 
+    private static boolean isSamePrevElement(char currentElement, char prevElement, Deque<Character> deque) {
+        if(currentElement == prevElement){
+            removeDuplicate(deque);
+            return true;
+        }
+        return false;
+    }
+
     private static void removeDuplicate(Deque<Character> deque) {
         deque.removeLast();
     }
