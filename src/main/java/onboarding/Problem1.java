@@ -14,6 +14,14 @@ import java.util.List;
  */
 
 class Problem1 {
+
+    public boolean isOdd(List<Integer> page){
+        if((page.get(0) & 1) != 0)
+            return true;
+        else
+            return false;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
