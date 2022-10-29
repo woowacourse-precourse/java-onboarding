@@ -13,4 +13,13 @@ public class Problem4 {
     public boolean isLowerCase(int characterInt) {
         return ((characterInt >= 97) && (characterInt <= 122));
     }
+
+    public int getInverseAlphabet(int alphabetInt) {
+        if (isUpperCase(alphabetInt)) {
+            return 65 + 90 - alphabetInt;
+        } else if(isLowerCase(alphabetInt)) {
+            return 97 + 122 - alphabetInt;
+        }
+        return alphabetInt;
+    }
 }
