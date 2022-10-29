@@ -20,6 +20,7 @@ public class Problem7 {
         classifyOlderFriend(olderFriends);
         increaseFriendWeightByOldFriends(olderFriends);
         increaseFriendWeightByVisted(visitors);
+        return getMostSuitableFriend(5);
     }
 
     private static List<String> getFriendOfUser(String user) {
@@ -70,5 +71,10 @@ public class Problem7 {
         }
     }
 
+    private static List<String> getMostSuitableFriend(int count){
+        List<String> keySet =  new ArrayList<>(friendCandidate.keySet());
+        keySet.sort((o1, o2) -> friendCandidate.get(o2).compareTo(friendCandidate.get(o1)));
+        return keySet.stream().limit(count).collect(Collectors.toList());
+    }
 
 }
