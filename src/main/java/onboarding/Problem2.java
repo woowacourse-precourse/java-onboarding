@@ -51,7 +51,7 @@ public class Problem2 {
     public static void main(String[] args) {
         String[] test = {"browoanoommnaon", "zyelleyz"};
 
-        String solution = solution(test[0]);
+        String solution = solution(test[1]);
         System.out.println(solution);
     }
 }
