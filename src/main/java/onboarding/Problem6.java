@@ -24,6 +24,15 @@ public class Problem6 {
         return twoCharsFromNickname;
     }
 
+    private static void putTwoCharsAndEmails(Map<String, Set<String>> twoCharsAndEmails, Set<String> twoCharsSet, String email) {
+
+        for (String twoChars : twoCharsSet) {
+            Set<String> emails = twoCharsAndEmails.getOrDefault(twoChars, new HashSet<>());
+            emails.add(email);
+            twoCharsAndEmails.put(twoChars, emails);
+        }
+    }
+
     /**
      * 신청받은 닉네임 중 같은 글자가 연속적으로 포함되는 닉네임을 작성한 지원자의 이메일 목록을 return 하도록 solution 메서드를 완성하라.
      *
