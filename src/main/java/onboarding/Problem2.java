@@ -29,15 +29,11 @@ public class Problem2 {
             else
                 changed = true;
             cryptoList = cryptoListCopy;
+
             if (cryptoList.isEmpty())
                 break;
         }
-        return cryptoList.toString();
-    }
-
-
-    public static void main(String args[]) {
-        String cryptogram = "browoanoommnaon";
-        System.out.println(Problem2.solution(cryptogram));
+        String answer= String.join("", cryptoList);
+        return answer;
     }
 }
