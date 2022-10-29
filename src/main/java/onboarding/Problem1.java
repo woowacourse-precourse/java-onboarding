@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -11,11 +13,10 @@ class Problem1 {
 
         return answer;
     }
-    public static boolean validation(List<Integer> pages) {
+    private static boolean validation(List<Integer> pages) {
         for (Integer page : pages) {
-            if (page >= 400 || 0 <= page) {
+            if (page >= 400 || 0 <= page)
                 return false;
-            }
         }
         if (pages.get(0) + 1 != pages.get(1)) {
             return false;
@@ -24,5 +25,26 @@ class Problem1 {
             return false;
         }
         return true;
+    }
+    private static int pageMax(List<Integer> pages) {
+        int leftPage = pages.get(0);
+        int rightPage = pages.get(1);
+
+        return compareTo(splitEachNumbers(leftPage), splitEachNumbers(rightPage));
+    }
+
+    private static int splitEachNumbers(int pageValue) {
+        int sumOfPlusPages = 0;
+        int sumOfMulPages = 1;
+
+        while (pageValue != 0) {
+            sumOfPlusPages += pageValue % 10;
+            sumOfMulPages *= pageValue % 10;
+            pageValue /= 10;
+        }
+        return compareTo(sumOfPlusPages, sumOfMulPages);
+    }
+    private static int compareTo(int left, int right) {
+        return (left >= right) ? left : right;
     }
 }
