@@ -119,3 +119,16 @@ class Encode {
         return (char) standard;
     }
 }
+
+class OutView4 {
+    static void printStart() {
+        System.out.println("길이가 1이상 1000이하인 문장을 입력해 주세요");
+    }
+    static void printHead() {
+        System.out.println("word" + "\t" + "result");
+    }
+
+    static void printResult(String inputWord, String result) {
+        System.out.println(inputWord + "\t" + result);
+    }
+}
