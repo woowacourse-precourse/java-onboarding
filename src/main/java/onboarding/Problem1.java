@@ -24,17 +24,22 @@ class Problem1 {
 
 		//점수를 비교해 가장 높은 사람이 게임의 승자가 된다.
 		if (isException(pobi) && isException(crong)) {
-			if (pobiMaxValue == crongMaxValue) {
-				return 0;
-			}
-			return (pobiMaxValue > crongMaxValue) ? 1 : 2;
+			return getResult(pobiMaxValue, crongMaxValue);
 		}
 		return -1;
+	}
+
+	static int getResult(int pobiMaxValue, int crongMaxValue) {
+		if (pobiMaxValue == crongMaxValue) {
+			return 0;
+		}
+		return (pobiMaxValue > crongMaxValue) ? 1 : 2;
 	}
 
 	static boolean is1t0400(List<Integer> list) {
 		return list.get(0) > 0 && list.get(0) < 401 && list.get(1) > 0 && list.get(1) < 401;
 	}
+
 	static boolean isException(List<Integer> list) {
 		return list.get(0) == list.get(1) - 1 && list.get(0) % 2 == 1 && list.size() == 2;
 	}
