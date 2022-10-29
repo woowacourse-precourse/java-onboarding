@@ -27,7 +27,17 @@ public class Problem3 {
     }
 
     private static int includedCountingCheck(int number) {
+        int count = 0;
+        while (true) {
+            if (number % 10 == 3 || number % 10 == 6 || number % 10 == 9) {
+                count++;
+            }
+            if (number / 10 == 0) {
+                return count;
+            }
 
+            number /= 10;
+        }
     }
 
 }
