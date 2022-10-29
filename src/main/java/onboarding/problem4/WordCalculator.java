@@ -11,27 +11,25 @@ import static onboarding.problem4.consts.WordConst.WORD_START_INDEX;
 public class WordCalculator {
 
     private WordCalculator() {
-
     }
 
     public static String calculateWord(String word) {
-        char[] chars = word.toCharArray();
-        char standardA;
-        char standardZ;
+        char[] wordCharacters = word.toCharArray();
 
-        for (int i = WORD_START_INDEX; i < chars.length; i++) {
-            if (!isAlphabet(chars[i])) {
-                continue;
-            }
-            standardA = LOWER_CASE_CHAR_A;
-            standardZ = LOWER_CASE_CHAR_Z;
-            if (isUpperCase(chars[i])) {
-                standardA = UPPER_CASE_CHAR_A;
-                standardZ = UPPER_CASE_CHAR_Z;
-            }
-            chars[i] = calculateCharacter(standardA, standardZ, chars[i]);
+        for (int i = WORD_START_INDEX; i < wordCharacters.length; i++) {
+            wordCharacters[i] = changeCharacter(wordCharacters[i]);
         }
-        return String.valueOf(chars);
+        return String.valueOf(wordCharacters);
+    }
+
+    private static char changeCharacter(char target) {
+        if (!isAlphabet(target)) {
+            return target;
+        }
+        if (isUpperCase(target)) {
+            return calculateCharacter(UPPER_CASE_CHAR_A, UPPER_CASE_CHAR_Z, target);
+        }
+        return calculateCharacter(LOWER_CASE_CHAR_A, LOWER_CASE_CHAR_Z, target);
     }
 
     private static char calculateCharacter(char standardA, char standardZ, char target) {
