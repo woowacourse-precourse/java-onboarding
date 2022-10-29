@@ -55,12 +55,32 @@ public class Problem7 {
             }
         }
 
+
+        /**
+         *  출력 조건 설정
+         *  1) 높은순 정렬
+         *  2) 5명 미만으로 제한
+         *  3) 추천 점수가 0점인 경우 제외
+         *  4) 추천 점수가 같으면 이름순 정렬
+         */
+
         int limit = 5;
         countingMap = sortByDescendingOrder(countingMap, limit);
+        countingMap = removeIfCountEqualsZero(countingMap);
 
+
+        System.out.println(countingMap);
 
         List<String> answer = Collections.emptyList();
         return answer;
+    }
+
+    private static LinkedHashMap<String, Integer> removeIfCountEqualsZero(LinkedHashMap<String, Integer> countingMap) {
+        LinkedHashMap<String, Integer> zeroRemoveCountingMap = countingMap;
+
+        countingMap.entrySet().removeIf(entry -> "0".equalsIgnoreCase(String.valueOf(entry.getValue())));
+
+        return zeroRemoveCountingMap;
     }
 
     private static LinkedHashMap<String, Integer> sortByDescendingOrder(LinkedHashMap<String, Integer> countingMap, int limit) {
