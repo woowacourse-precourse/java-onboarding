@@ -17,7 +17,7 @@ public class Users {
     public List<String> getRecommendFriendsRankingFive() {
         return users.stream()
                 .takeWhile(Objects::nonNull)
-                .sorted(Comparator.comparing(User::getVisits).reversed())
+                .sorted(Comparator.comparing(User::getScore).reversed())
                 .limit(5)
                 .map(User::getName)
                 .collect(Collectors.toList());

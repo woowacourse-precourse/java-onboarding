@@ -24,7 +24,7 @@ public class Problem7 {
             for(String friend : friendship) {
                 if(!friend.equals(user)) {
                     User findUser = users.findUser(friend);
-                    findUser.addVisits();
+                    findUser.addFriendScore();
                 }
             }
         }
