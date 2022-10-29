@@ -4,16 +4,24 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        if(pobi.get(1) - pobi.get(0) != 1 || crong.get(1) - crong.get(0) != 1){
+            return -1;
+        }
 
+        int pobiValue = Math.max(getMaxNum(pobi.get(0)), getMaxNum(pobi.get(1)));
+        int crongValue = Math.max(getMaxNum(crong.get(0)), getMaxNum(crong.get(1)));
 
-        return answer;
+        if(pobiValue == crongValue){
+            return 0;
+        }
+
+        return (pobiValue > crongValue) ? 1 : 2;
     }
 
     /**
      * 각 자리수를 더하거나 곱한 수 중 큰값 추출
      */
-    private int getMaxNum(int page){
+    private static int getMaxNum(int page){
         int sum = 0;
         int mul = 1;
         int maxNum;
