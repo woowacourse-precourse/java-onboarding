@@ -15,6 +15,19 @@ class Problem1 {
         return 0;
     }
 
+    private static int findMaxFromOnePage(Integer page) {
+        int addMaxNum = 0;
+        int multipleMaxNum = 1;
+
+        while ( page > 0) {
+            int i = page % 10;
+            addMaxNum += i;
+            multipleMaxNum *= i;
+            page /= 10;
+        }
+        return Math.max(addMaxNum, multipleMaxNum);
+    }
+
     private static boolean checkInvalidPage(List<Integer> pages) {
         return !isRightPageRange(pages.get(0), pages.get(1)) || !isValidPageFormat(pages.get(0), pages.get(1));
     }
