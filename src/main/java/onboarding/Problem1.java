@@ -2,16 +2,24 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Collections;
 
 class Problem1 {
 
     static List<Integer> pobiList = new ArrayList<>();
     static List<Integer> crongList = new ArrayList<>();
+    static int pobiMaxValue;
+    static int crongMaxValue;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         pobiList = countList(pobi);
         crongList = countList(crong);
+
+        pobiMaxValue = getMaxValue(pobiList);
+        crongMaxValue = getMaxValue(crongList);
+
+
         return answer;
     }
 
@@ -49,5 +57,11 @@ class Problem1 {
 
         return elementMul;
 
+    }
+
+    public static int getMaxValue(List<Integer> userList){
+       int maxUserValue;
+       maxUserValue = Collections.max(userList);
+       return maxUserValue;
     }
 }
