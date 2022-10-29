@@ -4,11 +4,12 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        friends(friends);
+        Map<String, List<String>> map = friends(friends);
         List<String> userFriends = extractUserFriendsList(friends, user);
         List<String> allUser = extractAllUserList(friends);
         List<String> userNotFriends = extractUserNotFriendsList(userFriends, user, allUser);
 
+        userInFriendsLinkedList(map, userNotFriends);
         return userFriends;
     }
 
@@ -85,6 +86,17 @@ public class Problem7 {
         }
 
         System.out.println(friendsLinkedList);
+        return friendsLinkedList;
+    }
+
+    public static Map<String, List<String>> userInFriendsLinkedList(
+            Map<String, List<String>> friendsLinkedList,
+            List<String> userNotFriendList) {
+        for (int i = 0; i < friendsLinkedList.size(); i++) {
+            friendsLinkedList.remove(userNotFriendList.get(i));
+        }
+
+        System.out.println("연결된 리스트의 값에서 user가 없는 부분 제거"+friendsLinkedList);
         return friendsLinkedList;
     }
 }
