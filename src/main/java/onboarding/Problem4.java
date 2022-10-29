@@ -5,4 +5,7 @@ public class Problem4 {
         String answer = "";
         return answer;
     }
+    private static int getAscii(char c){
+        return (int)c;
+    }
 }
