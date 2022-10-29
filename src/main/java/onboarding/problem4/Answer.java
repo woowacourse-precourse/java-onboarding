@@ -6,6 +6,15 @@ public class Answer {
     private static final int UPPER_A = 65;
     private static final int UPPER_Z = 90;
 
+    public static String sayTheOpposite(String word) {
+        String answer = "";
+        for(int idx = 0; idx < word.length(); idx++){
+            char message = word.charAt(idx);
+            answer += getOppositeChar(message);
+        }
+        return answer;
+    }
+
     private static char getOppositeChar(char message) {
         char oppositeChar = message;
         if (isLowerCase(message)) {
@@ -25,7 +34,7 @@ public class Answer {
     }
 
     private static boolean isLowerCase(char message) {
-        return ((int)message >= LOWER_A) && ((int)message <= LOWER_Z);
+        return ((int) message >= LOWER_A) && ((int) message <= LOWER_Z);
     }
 
     private static boolean isUpperCase(char message) {
