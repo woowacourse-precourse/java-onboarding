@@ -17,6 +17,7 @@ public class Problem3 {
             int numberOfDigits = intToStringNumber.length();
 
             for (int j = 0; j < numberOfDigits; j++) {
+                char digit = intToStringNumber.charAt(j);
             }
         }
 
