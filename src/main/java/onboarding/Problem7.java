@@ -83,21 +83,22 @@ public class Problem7 {
                 .collect(Collectors.toList());
         return top_five;
     }
+    static class Friend{
+        String name;
+        int point;
+
+        Friend(String name, int point){
+            this.name = name;
+            this.point = point;
+        }
+        int getPoint() {
+            return this.point;
+        }
+        String getName(){return this.name;}
+        void addPoint(int addpoint){
+            point += addpoint;
+        }
+    }
 }
 
-class Friend{
-    String name;
-    int point;
 
-    Friend(String name, int point){
-        this.name = name;
-        this.point = point;
-    }
-    int getPoint() {
-        return this.point;
-    }
-    String getName(){return this.name;}
-    void addPoint(int addpoint){
-        point += addpoint;
-    }
-}
