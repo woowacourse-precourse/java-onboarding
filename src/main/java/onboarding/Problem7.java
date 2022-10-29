@@ -91,6 +91,10 @@ class Relations {
         }
     }
 
+    public boolean isFriend(String user1, String user2) {
+        return relations.get(user1).contains(user2);
+    }
+
     public int getNumOfMutualFriends (String user1, String user2) {
         Set<String> mutualFriends = new HashSet<>(this.relations.get(user1));
         mutualFriends.retainAll(this.relations.get(user2));
