@@ -10,9 +10,15 @@ public class Problem2 {
         Deque<Character> deque = new LinkedList<>();
 
         for (char ele : cryptogram.toCharArray()) {
-
+            if (!isDequeEmpty(deque)) {
+                
+            }
         }
 
         return answer;
+    }
+
+    public static boolean isDequeEmpty(Deque<Character> deque) {
+        return deque.isEmpty();
     }
 }
