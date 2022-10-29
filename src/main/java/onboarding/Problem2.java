@@ -14,10 +14,14 @@ public class Problem2 {
                 stack.push(c);
             }
         }
+        return stackToString(stack);
+    }
+
+    public static String stackToString (Stack<Character> stack){
+        String answer = "";
         for (char c: stack){
             answer += c;
         }
-
         return answer;
     }
 }
