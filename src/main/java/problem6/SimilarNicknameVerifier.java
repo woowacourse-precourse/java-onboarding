@@ -5,6 +5,8 @@ import problem1.Page;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class SimilarNicknameVerifier {
 
@@ -39,11 +41,17 @@ public class SimilarNicknameVerifier {
     }
 
     private boolean isSimilar(String myNickname, String otherNickname) {
-        for (int i = 0; i < myNickname.length() - 1; i++) {
-            if (otherNickname.contains(myNickname.substring(i, i + 2)))
-                return true;
-        }
-        return false;
+//        return Stream.iterate(0, i -> i + 1).limit(myNickname.length() - 1)
+//                .map(i -> myNickname.substring(i, i + 2))
+//                .anyMatch(substr -> otherNickname.contains(substr));
+        return IntStream.range(0, myNickname.length() - 1)
+                .mapToObj(i -> myNickname.substring(i, i + 2))
+                .anyMatch(substr -> otherNickname.contains(substr));
+//        for (int i = 0; i < myNickname.length() - 1; i++) {
+//            if (otherNickname.contains(myNickname.substring(i, i + 2)))
+//                return true;
+//        }
+//        return false;
     }
 
 

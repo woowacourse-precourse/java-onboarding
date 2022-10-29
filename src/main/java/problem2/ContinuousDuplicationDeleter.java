@@ -1,70 +1,45 @@
 package problem2;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 public class ContinuousDuplicationDeleter {
-    public static String deleteDuplication(String target) {
-        List<Character> deleted = deleteDuplication(target.toCharArray());
-        return asString(deleted);
-    }
+    public static String deleteFrom(String target) {
+        Stack<Character> result = new Stack<>();
 
-    private static List<Character> deleteDuplication(char[] target) {
-        List<Character> charactersWithoutDuplication = new ArrayList<>();
-        List<Integer> numberOfDuplication = new ArrayList<>();
+        for (int i = 0; i < target.length(); i++) {
 
-        for (int ind = 0; ind < target.length; ) {
-            int lastIndex = charactersWithoutDuplication.size() - 1;
+            String t = (i == target.length() - 1) ?
+                            target.substring(i) : target.substring(i, i + 2);
+            deleteDuplication(result, t);
 
-            if (charactersWithoutDuplication.isEmpty()) {
-                add(charactersWithoutDuplication, numberOfDuplication, target[ind]);
-                ind += 1;
-                continue;
-            }
-
-            if (isSame(charactersWithoutDuplication.get(lastIndex), target[ind])) {
-                increaseByOne(numberOfDuplication, lastIndex);
-                ind += 1;
-                continue;
-            }
-
-            if (isDuplicate(numberOfDuplication, lastIndex)) {
-                remove(charactersWithoutDuplication, numberOfDuplication, lastIndex);
-                continue;
-            }
-
-            add(charactersWithoutDuplication, numberOfDuplication, target[ind]);
-            ind++;
         }
 
-        if (isDuplicate(numberOfDuplication, numberOfDuplication.size() -1)) {
-            remove(charactersWithoutDuplication, numberOfDuplication, numberOfDuplication.size() -1);
+        return asString(result);
+    }
+
+    private static void deleteDuplication(Stack<Character> result, String t) {
+        if (isSameWithPrev(result, t.charAt(0)) && isDifferentWithNext(t)) {
+            deleteFrom(result, t.charAt(0));
+            return;
         }
-
-        return charactersWithoutDuplication;
+        result.push(t.charAt(0));
     }
 
-    private static void add(List<Character> charactersInOrder, List<Integer> numberOfDuplication, char toAdd) {
-        charactersInOrder.add(toAdd);
-        numberOfDuplication.add(1);
+    private static boolean isSameWithPrev(Stack<Character> stack, Character curr) {
+        return !stack.isEmpty() && stack.peek().equals(curr);
     }
 
-    private static boolean isSame(int lhs, char rhs) {
-        return lhs == rhs;
+    private static boolean isDifferentWithNext(String target) {
+        return target.length() == 1 || target.charAt(0) != target.charAt(1);
     }
 
-    private static void increaseByOne(List<Integer> numberOfDuplication, int index) {
-        numberOfDuplication.set(index, numberOfDuplication.get(index) + 1);
+    private static void deleteFrom(Stack<Character> stack, char toDelete) {
+        while (!stack.isEmpty() && stack.peek().equals(toDelete)) {
+            stack.pop();
+        }
     }
 
-    private static boolean isDuplicate(List<Integer> numberOfDuplication, int index) {
-        return numberOfDuplication.get(index) > 1;
-    }
-
-    private static void remove(List<Character> charactersInOrder, List<Integer> numberOfDuplication, int index) {
-        charactersInOrder.remove(index);
-        numberOfDuplication.remove(index);
-    }
 
     private static String asString(List<Character> characters) {
         StringBuilder sb = new StringBuilder();
