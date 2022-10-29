@@ -49,6 +49,10 @@ class Problem7Test {
             .isEqualTo(20);
         Assertions.assertThat(bothKnowFriendsCount.get("jun"))
             .isEqualTo(20);
+        Assertions.assertThat(bothKnowFriendsCount.get("donut"))
+            .isEqualTo(0);
+        Assertions.assertThat(bothKnowFriendsCount.get("shakevan"))
+            .isEqualTo(0);
     }
 
     @Test
