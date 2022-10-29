@@ -12,9 +12,7 @@ public class Problem7 {
 
         makeNearList(user, friends, near);
         makeFarList(user, friends, near, far);
-
         PointToFarList(near, far, result);
-
         PointToVisitors(visitors, near, result);
 
         answer = sortedAnswer(answer, result);
@@ -45,7 +43,7 @@ public class Problem7 {
     private static void makeFarList(String user, List<List<String>> friends, Set<String> near, List<String> far) {
         for (List<String> AB : friends) {
             for (String name : AB) {
-                if(near.contains(name) && !AB.contains(user)){
+                if (near.contains(name) && !AB.contains(user)) {
                     far.addAll(AB);
                 }
             }
