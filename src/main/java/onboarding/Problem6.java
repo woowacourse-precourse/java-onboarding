@@ -21,38 +21,12 @@ public class Problem6 {
         List<String> emailList = new ArrayList<>();
         String[] returnedNickNames = duplicatedNickNames.toArray(new String[0]);
         System.out.println(Arrays.toString(returnedNickNames));
-        
+
         for (int i = 0; i < returnedNickNames.length; i++) {
             emailList.add(getKey(formsMap, returnedNickNames[i]));
         }
 
-
-//        for (int index = 0; index < returnedNickNames.length; index++) {
-//            int finalIndex = index;
-//            emailList.add(formsMap.entrySet().stream()
-//                .filter(entry -> Objects.equals(entry.getValue(), returnedNickNames[finalIndex]))
-//                .map(Map.Entry::getKey)
-//                .collect(Collectors.toList()).toString());
-//        }
-
-        System.out.println(emailList);
-//        Iterator iterator = duplicateNickName.iterator();
-//        while (iterator.hasNext()) {
-//            System.out.println(iterator.next());
-
-//
-//        }
-
-//        Collection<String> nicknames = formsMap.values();
-//
-//        Iterator iterator = nicknames.iterator();
-//        while (iterator.hasNext()) {
-//            String nickname = (String) iterator.next();
-//            System.out.println(nickname);
-//
-//            checkNickName(nickname, nicknames);
-//        }
-
+        Collections.sort(emailList);
 
         return emailList;
     }
@@ -84,17 +58,4 @@ public class Problem6 {
             }
         }
     }
-
-//    private static void checkNickName(String nickname, Collection<String> nicknames) {
-//        for (int i = 0; i < nickname.length() - 1; i++) {
-//            String currChar = String.valueOf(nickname.charAt(i));
-//            String nextChar = String.valueOf(nickname.charAt(i + 1));
-//            String duplicationWord = currChar + nextChar;
-//            System.out.println(duplicationWord);
-//            nicknames.remove(nickname);
-//            System.out.println(nicknames);
-//
-//        }
-//    }
-
 }
