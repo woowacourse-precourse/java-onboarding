@@ -69,4 +69,19 @@ class Problem1 {
 
         return leftPage;
     }
+
+    // 각자의 점수 비교후 결과값 리턴
+    public static int result (int pobiScore, int crongScore) {
+        if (pobiScore > crongScore) {
+            return 1;
+
+        } else if (pobiScore < crongScore) {
+            return 2;
+
+        } else if (pobiScore == crongScore) {
+            return 0;
+        }
+
+        return pobiScore;
+    }
 }
