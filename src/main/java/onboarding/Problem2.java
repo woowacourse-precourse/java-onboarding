@@ -30,4 +30,12 @@ public class Problem2 {
         ArrayList<String> convertedList = new ArrayList<String>(Arrays.asList(wordSplit));
         return convertedList;
     }
+    // arrayList -> String로 변환
+    public static String convertToString(ArrayList<String> word){
+        String str = "";
+        for(String letter: word){
+            str += letter;
+        }
+        return str;
+    }
 }
