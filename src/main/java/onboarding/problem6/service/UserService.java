@@ -5,6 +5,7 @@ import onboarding.problem6.validation.UserInfoValidator;
 import onboarding.problem6.vo.User;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class UserService {
     private final UserRepository userRepository;
@@ -19,18 +20,19 @@ public class UserService {
     }
 
     public List<String> findAllEmailByUserHavingInvalidName() {
-        List<User> users = userRepository.findAll();
+        List<User> allUsers = userRepository.findAll();
         Set<String> emailSet = new HashSet<>();
 
-        users.forEach(user -> {
+        allUsers.forEach(user -> {
             String name = user.getName();
             for (int spellIndex = 0; spellIndex < name.length() - 1; spellIndex++) {
                 String duplicatingWord = makeDuplicatingWord(name, spellIndex);
-                users.forEach(target -> {
-                    if (!isNameExactlySame(user, target) && hasDuplicatedName(duplicatingWord, target)) {
-                        emailSet.add(user.getEmail());
-                    }
-                });
+                emailSet.addAll(
+                        userRepository.findAllByNameContaining(duplicatingWord)
+                                .stream().filter(find -> !user.equals(find))
+                                .map(find -> find.getEmail())
+                                .collect(Collectors.toSet())
+                );
             }
         });
 
@@ -40,15 +42,7 @@ public class UserService {
         return resultList;
     }
 
-    private static boolean hasDuplicatedName(String duplicatingWord, User target) {
-        return target.getName().contains(duplicatingWord);
-    }
-
-    private static boolean isNameExactlySame(User user, User target) {
-        return user.equals(target);
-    }
-
-    private static String makeDuplicatingWord(String name, int spellIndex) {
-        return name.substring(spellIndex, spellIndex + 2);
+    private static String makeDuplicatingWord(String name, int index) {
+        return name.substring(index, index + 2);
     }
 }
