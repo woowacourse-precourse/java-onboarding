@@ -6,7 +6,7 @@ public class Problem2 {
         String answer2 = "";
         while(answer!=answer2){
             answer=decrypt(cryptogram);
-            answer2 = decrypt(cryptogram);
+            answer2 = decrypt(answer);
         }
         return answer;
     }
