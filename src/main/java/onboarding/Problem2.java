@@ -8,6 +8,16 @@ public class Problem2 {
         return answer;
     }
 
+    public static String convertToString(Stack<Character> stack) {
+        StringBuilder result = new StringBuilder();
+
+        for (Character c : stack) {
+            result.append(c);
+        }
+
+        return result.toString();
+    }
+
     public static Stack<Character> deleteChar(String cryptogram) {
         Stack<Character> stack = new Stack<>();
 
