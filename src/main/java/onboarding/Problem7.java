@@ -23,9 +23,9 @@ public class Problem7 {
     }
 
     private static void createUserInFriends(List<List<String>> friends, String user) {
-        for(List<String> friendship : friends) {
-            for(String friend : friendship) {
-                if(!friend.equals(user)) {
+        for (List<String> friendship : friends) {
+            for (String friend : friendship) {
+                if (!friend.equals(user)) {
                     User findUser = users.findUser(friend);
                     findUser.addFriendScore();
                     continue;
@@ -36,16 +36,15 @@ public class Problem7 {
     }
 
     private static void addUserFriends(List<String> friendship, String user) {
-        if(friendship.indexOf(user) == 1) {
+        if (friendship.indexOf(user) == 1) {
             userFriends.add(friendship.get(0));
-        }
-        else if(friendship.indexOf(user) == 0) {
+        } else if (friendship.indexOf(user) == 0) {
             userFriends.add(friendship.get(1));
         }
     }
 
     private static void checkVisitors(List<String> visitors) {
-        for(String visitor : visitors) {
+        for (String visitor : visitors) {
             User findUser = users.findUser(visitor);
             findUser.addVisitsScore();
         }
