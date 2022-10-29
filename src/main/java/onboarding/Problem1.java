@@ -17,14 +17,14 @@ class Problem1 {
         List<Integer> crongRightPage = seperatePageNumber(crong.get(1));
 
         // 자릿수 더한값과 자릿수 곱한값중 큰 값 추출
-        int pobiLeftPageResult = Math.max(sumPageNumber(pobiLeftPage), multiflyPageNumber(pobiLeftPage));
-        int pobiRightPageResult = Math.max(sumPageNumber(pobiRightPage), multiflyPageNumber(pobiRightPage));
-        int crongLeftPageResult = Math.max(sumPageNumber(crongLeftPage), multiflyPageNumber(crongLeftPage));
-        int crongRightPageResult = Math.max(sumPageNumber(crongRightPage), multiflyPageNumber(crongRightPage));
+        int pobiLeftPageMax = Math.max(sumPageNumber(pobiLeftPage), multiflyPageNumber(pobiLeftPage));
+        int pobiRightPageMax = Math.max(sumPageNumber(pobiRightPage), multiflyPageNumber(pobiRightPage));
+        int crongLeftPageMax = Math.max(sumPageNumber(crongLeftPage), multiflyPageNumber(crongLeftPage));
+        int crongRightPageMax = Math.max(sumPageNumber(crongRightPage), multiflyPageNumber(crongRightPage));
 
         //각자의 점수 추출
-        int pobiScore = Math.max(pobiLeftPageResult, pobiRightPageResult);
-        int crongScore = Math.max(crongLeftPageResult, crongRightPageResult);
+        int pobiScore = Math.max(pobiLeftPageMax, pobiRightPageMax);
+        int crongScore = Math.max(crongLeftPageMax, crongRightPageMax);
 
         //누가 이겼는지 결과
         int answer = result(pobiScore, crongScore);
@@ -41,6 +41,7 @@ class Problem1 {
 
         return beforeScore;
     }
+
     //페이지 숫자 쪼개는 메소드
     public static List<Integer> seperatePageNumber (int pageNumber) {
         List <Integer> pageNumberArray = new ArrayList();
