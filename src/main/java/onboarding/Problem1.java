@@ -10,7 +10,8 @@ import java.util.List;
 //예외에는 페이지의 맨처음이 펼처지거나, 마지막이 펼처지는 경우를 포함한다.
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-    return 0;
+
+        return 0;
     }
     //책의 각 자리 수를 곱하는 함수 구현
     public static int multyplyResult(int num){
@@ -35,6 +36,19 @@ class Problem1 {
         }
         return result;
     }
+//곱하고 더한 결과값들을 비교해서 제일 큰 수를 리턴한다.
+    public static int CheckBiggerOne(List<Integer> numList){
 
+        System.out.println(numList);
+        int num1 =multyplyResult(numList.get(0));
+        int num2 =multyplyResult(numList.get(1));
+        int num3 =plusResult(numList.get(0));
+        int num4 =plusResult(numList.get(1));
 
+        List<Integer> resultArray = List.of(num1,num2,num3,num4);
+        System.out.println(resultArray);
+        int result = Collections.max(resultArray);
+
+        return result;
+    }
 }
