@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 // [이메일, 닉네임]으로 이루어진 리스트를 받음
 // 이메일은 이메일 형식에 맞추어, 11자 이상 20자 미만으로 한다.
@@ -41,7 +38,8 @@ public class Problem6 {
         Set<String> hashSetForDeduplication = new HashSet<String>(answer);
         answer =new ArrayList<String>(hashSetForDeduplication);
 
-        System.out.println(answer);
+        answer.sort(Comparator.naturalOrder());
+
         return answer;
     }
 }
