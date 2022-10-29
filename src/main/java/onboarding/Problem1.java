@@ -6,6 +6,9 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
+        if (!validateBoundary(pobi) || !validateBoundary(crong)) {
+            return -1;
+        }
         if (!validateInputFormat(pobi) || !validateInputFormat(crong)) {
             return -1;
         }
@@ -25,5 +28,11 @@ class Problem1 {
         Integer leftNum = numList.get(0);
         Integer rightNum = numList.get(1);
         return (rightNum - leftNum) == 1;
+    }
+
+    private static boolean validateBoundary(List<Integer> numList) {
+        Integer leftNum = numList.get(0);
+        Integer rightNum = numList.get(1);
+        return leftNum >= 1 && leftNum <= 400 && rightNum >= 1 && rightNum <= 400;
     }
 }
