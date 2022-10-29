@@ -10,24 +10,23 @@ class Problem1 {
             return fail;
         }
 
+        //각 페이지 자릿수 쪼개기
         List<Integer> pobiLeftPage = seperatePageNumber(pobi.get(0));
         List<Integer> pobiRightPage = seperatePageNumber(pobi.get(1));
         List<Integer> crongLeftPage = seperatePageNumber(crong.get(0));
         List<Integer> crongRightPage = seperatePageNumber(crong.get(1));
 
-        List<Integer> result1 = beforeScore(sumPageNumber(pobiLeftPage), multiflyPageNumber(pobiLeftPage));
-        List<Integer> result2 = beforeScore(sumPageNumber(pobiRightPage), multiflyPageNumber(pobiRightPage));
-        List<Integer> result3 = beforeScore(sumPageNumber(crongLeftPage), multiflyPageNumber(crongLeftPage));
-        List<Integer> result4 = beforeScore(sumPageNumber(crongRightPage), multiflyPageNumber(crongRightPage));
+        // 자릿수 더한값과 자릿수 곱한값중 큰 값 추출
+        int pobiLeftPageResult = Math.max(sumPageNumber(pobiLeftPage), multiflyPageNumber(pobiLeftPage));
+        int pobiRightPageResult = Math.max(sumPageNumber(pobiRightPage), multiflyPageNumber(pobiRightPage));
+        int crongLeftPageResult = Math.max(sumPageNumber(crongLeftPage), multiflyPageNumber(crongLeftPage));
+        int crongRightPageResult = Math.max(sumPageNumber(crongRightPage), multiflyPageNumber(crongRightPage));
 
-        int result11 = maxPageNumber(result1);
-        int result22 = maxPageNumber(result2);
-        int result33 = maxPageNumber(result3);
-        int result44 = maxPageNumber(result4);
+        //각자의 점수 추출
+        int pobiScore = Math.max(pobiLeftPageResult, pobiRightPageResult);
+        int crongScore = Math.max(crongLeftPageResult, crongRightPageResult);
 
-        int pobiScore = score(result11, result22);
-        int crongScore = score(result33, result44);
-
+        //누가 이겼는지 결과
         int answer = result(pobiScore, crongScore);
 
         return answer;
@@ -68,30 +67,6 @@ class Problem1 {
             pageMultifly *= pageNumberArray.get(i);
         }
         return pageMultifly;
-    }
-
-    // 자릿수 곱한거와 더한것중 가장 큰 수를 추출
-    public static int maxPageNumber (List<Integer> beforeScore) {
-        if ((beforeScore.get(0) > beforeScore.get(1))) {
-            return beforeScore.get(0);
-
-        } else if ((beforeScore.get(1) > beforeScore.get(0))) {
-            return beforeScore.get(1);
-        }
-
-        return beforeScore.get(0);
-    }
-
-    //최종 각자의 점수 추출
-    public static int score (int leftPage, int rightPage) {
-        if (leftPage > rightPage) {
-            return leftPage;
-
-        } else if(rightPage > leftPage) {
-            return rightPage;
-        }
-
-        return leftPage;
     }
 
     // 각자의 점수 비교후 결과값 리턴
