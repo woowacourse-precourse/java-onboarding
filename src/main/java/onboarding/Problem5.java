@@ -22,12 +22,13 @@ public class Problem5 {
         return answer;
     }
 
-    public static void addBillUnitQueue() {
-        List<Integer> billList
-                = List.of(FIVE_MILLION_WON, ONE_MILLION_WON,
-                FIVE_THOUSAND_WON, ONE_THOUSAND_WON, FIVE_HUNDRED_WON,
-                ONE_HUNDRED_WON, FIFTY_WON, TEN_WON, ONE_WON);
-        billUnitQueue.addAll(billList);
+    public static List<Integer> putInArray(List<Integer> countedList, int money) {
+        int balance = money;
+        while (!billUnitQueue.isEmpty()) {
+            countedList.add(countBills(balance, billUnitQueue.peek()));
+            balance = calculateBalance(balance, billUnitQueue.poll());
+        }
+        return countedList;
     }
 
     public static int countBills(int money, int bill) {
@@ -38,4 +39,11 @@ public class Problem5 {
         return money % bill;
     }
 
+    public static void addBillUnitQueue() {
+        List<Integer> billList
+                = List.of(FIVE_MILLION_WON, ONE_MILLION_WON,
+                FIVE_THOUSAND_WON, ONE_THOUSAND_WON, FIVE_HUNDRED_WON,
+                ONE_HUNDRED_WON, FIFTY_WON, TEN_WON, ONE_WON);
+        billUnitQueue.addAll(billList);
+    }
 }
