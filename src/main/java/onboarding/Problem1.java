@@ -46,4 +46,8 @@ class Problem1 {
         }
         return result;
     }
+
+    static int getLeftScore(List<Integer> pages){
+        return Math.max(addPageNum(pages.get(0)),multiplyPageNum(pages.get(0)));
+    }
 }
