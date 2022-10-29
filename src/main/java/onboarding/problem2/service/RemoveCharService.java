@@ -6,7 +6,7 @@ public class RemoveCharService {
     public static String removeWordFromRange(String word, ArrayList<int[]> removeRange){
         ArrayList<String> removeWordList = getWordListFromRange(word, removeRange);
         String resultWord = removeWord(word, removeWordList);
-        return word;
+        return resultWord;
     }
 
     private static String removeWord(String word, ArrayList<String> removeWordList){
