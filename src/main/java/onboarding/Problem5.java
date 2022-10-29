@@ -16,6 +16,8 @@ public class Problem5 {
         answer.add(money/5000);
         money%=5000;
         answer.add(money/1000);
+        money%=1000;
+        answer.add(money/500);
 
         return answer;
 
