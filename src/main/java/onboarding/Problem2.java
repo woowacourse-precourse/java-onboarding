@@ -12,6 +12,7 @@ public class Problem2 {
         }
         return String.join("", splitCryptogram);
     }
+
     public static int decipherCode(List<String> code, int idx) {
         if (isDuplicate(code, idx)) {
             removeDuplicate(code, idx);
