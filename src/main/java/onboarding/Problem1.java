@@ -12,7 +12,18 @@ class Problem1 {
         if (checkInvalidPage(pobi) || checkInvalidPage(crong)) {
             return -1;
         }
+
+        // 2. 참여자 각각의 최대 점수를 구한다.
+        int pobiResult = getMaxResult(pobi);
+        int crongResult = getMaxResult(crong);
+
         return 0;
+    }
+
+    private static int getMaxResult(List<Integer> pages) {
+        int leftResult = findMaxFromOnePage(pages.get(0));
+        int rightResult = findMaxFromOnePage(pages.get(1));
+        return Math.max(leftResult, rightResult);
     }
 
     private static int findMaxFromOnePage(Integer page) {
