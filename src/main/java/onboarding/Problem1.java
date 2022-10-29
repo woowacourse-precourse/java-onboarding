@@ -14,8 +14,8 @@ class Problem1 {
             return EXCEPTION_MESSAGE;
         }
 
-        int pobiScore = PageNumberGame.saveMaxPageNumberByUser(pobi);
-        int crongScore = PageNumberGame.saveMaxPageNumberByUser(crong);
+        int pobiScore = PageNumberGame.getMaxPageNumberByUser(pobi);
+        int crongScore = PageNumberGame.getMaxPageNumberByUser(crong);
 
         return PageNumberGame.winnerUser(pobiScore, crongScore);
     }

@@ -18,23 +18,23 @@ public class PageNumberGame {
         return SCORE_SAME_MESSAGE;
     }
 
-    public static int saveMaxPageNumberByUser(List<Integer> user) {
-        List<Integer> maxPageNumbers = new ArrayList<>();
+    public static int getMaxPageNumberByUser(List<Integer> user) {
+        List<Integer> eachMaxPageNumbers = new ArrayList<>();
         for (Integer pageNumber : user) {
-            int sumPage = sumEachNumber(pageNumber);
-            int multPage = multEachNumber(pageNumber);
-            maxPageNumbers.add(Math.max(sumPage, multPage));
+            int sumPage = getSumEachNumber(pageNumber);
+            int multPage = getMultEachNumber(pageNumber);
+            eachMaxPageNumbers.add(Math.max(sumPage, multPage));
         }
 
-        return Math.max(maxPageNumbers.get(0), maxPageNumbers.get(1));
+        return Math.max(eachMaxPageNumbers.get(0), eachMaxPageNumbers.get(1));
     }
 
-    private static int sumEachNumber(int pageNumber) {
+    private static int getSumEachNumber(int pageNumber) {
         List<Integer> pageNumberList = toList(String.valueOf(pageNumber));
         return pageNumberList.stream().reduce(0, Integer::sum);
     }
 
-    private static int multEachNumber(int pageNumber) {
+    private static int getMultEachNumber(int pageNumber) {
         List<Integer> pageNumberList = toList(String.valueOf(pageNumber));
         return pageNumberList.stream().reduce(1, (a, b) -> a * b);
     }
