@@ -17,18 +17,19 @@ public class MoneySorter {
         }
     }
 
-    public List<Integer> calculateNumberOfBills() {
+    public List<Integer> getBillsSorted() {
         for (int i = 0; i < currentBillsSorted.size(); i++) {
             Integer currentCurrencyUnit = CURRENCY_UNIT.get(i);
             Integer currentNumberOfBill = currentBillsSorted.get(i);
-            Integer increasedNumberOfBill = increaseNumberOfBill(currentCurrencyUnit, currentNumberOfBill);
+            Integer increasedNumberOfBill = calculateNumberOfBill(currentCurrencyUnit, currentNumberOfBill);
+
             currentNumberOfBill += increasedNumberOfBill;
             currentBillsSorted.set(i, currentNumberOfBill);
         }
         return currentBillsSorted;
     }
 
-    public Integer increaseNumberOfBill(Integer currencyUnit, Integer numberOfBill) {
+    public Integer calculateNumberOfBill(Integer currencyUnit, Integer numberOfBill) {
         if (money >= currencyUnit) {
             Integer quotient = money / currencyUnit;
             numberOfBill += quotient;
