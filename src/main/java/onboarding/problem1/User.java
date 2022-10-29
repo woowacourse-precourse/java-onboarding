@@ -26,10 +26,9 @@ public class User {
         return score;
     }
 
-    public User(String userName, Integer leftPage, Integer rightPage, Integer score) {
+    public User(String userName, Integer leftPage, Integer rightPage) {
         this.userName = userName;
         this.leftPage = leftPage;
         this.rightPage = rightPage;
-        this.score = score;
     }
 }
