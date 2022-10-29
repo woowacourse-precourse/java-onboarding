@@ -25,4 +25,8 @@ public class Problem3 {
     private static boolean isClapNumber(int number) {
         return number == CLAP_CONDITION1 || number == CLAP_CONDITION2 || number == CLAP_CONDITION3;
     }
+
+    private static int addClapSum(int clapCnt) {
+        return clapCnt + 1;
+    }
 }
