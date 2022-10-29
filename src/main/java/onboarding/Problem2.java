@@ -1,22 +1,13 @@
 package onboarding;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        List<String> cryptogramList = Arrays.asList(cryptogram);
+        String answer = "";
+
+//        1. for문을 사용하여 1차적으로 연속하는 중복 문자들을 삭제할 수 있는 기능
+//        2. while 문을 통해 연속되는 중복문자들이 없을 때까지 실행
 
 
-        for(int i = 0 ; i < cryptogram.length()-1 ; i++){
-            if (cryptogramList.get(i) == cryptogramList.get(i+1)){
-                cryptogramList.remove(i);
-                cryptogramList.remove(i+1);
-                cryptogramList.add(i," ");
-            }
-            cryptogramList.remove(" ");
-        }
         return answer;
     }
 
