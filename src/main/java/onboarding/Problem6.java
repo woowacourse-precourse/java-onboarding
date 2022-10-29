@@ -89,4 +89,8 @@ public class Problem6 {
         return (crewEmail.length() >= 11 && crewEmail.length() < 20);
     }
 
+
+    private static boolean validateNicknameType(String crewNickname) {
+        return Pattern.compile("^[가-힣]+$").matcher(crewNickname).matches();
+    }
 }
