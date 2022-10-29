@@ -6,6 +6,15 @@ public class Problem2 {
 		return answer;
 	}
 
+	public static int getSameCharCount(char lastChar, String cryptogram) {
+		int sameCharCount = 0;
+		int i = 0;
+		while (i < cryptogram.length() && lastChar == cryptogram.charAt(i)) {
+			sameCharCount = ++i;
+		}
+		return sameCharCount;
+	}
+
 	static class InputValidator {
 
 		public static void checkRightInput(String cryptogram) {
