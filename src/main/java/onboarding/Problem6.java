@@ -12,7 +12,7 @@ public class Problem6 {
             if(nickname.length() == 1){
                 continue;
             }
-            //중복 닉네임이 될 수 있는 단어들을 추출
+            //중복 닉네임이 될 수 있는 단어들(part)을 추출
             for(int j = 0; j < nickname.length() - 1; j++){
                 for(int k = j+1; k < nickname.length(); k++){
                     String str = nickname.substring(j, k+1);
@@ -27,6 +27,7 @@ public class Problem6 {
                     }
                 }
             }
+
         }
         //set을 list로 변경하여 같은 글자가 연속적으로 포함되는 닉네임을 작성한 지원자의 메일 목록을 반환하는 기능
         List<String> answer = new ArrayList<>(set); //set -> list
@@ -41,6 +42,17 @@ public class Problem6 {
             }
         }
         return false;
+    }
+
+    private HashSet<String> extractNicknameParts(String nickname){
+        HashSet<String> part = new HashSet<>();
+        for(int j = 0; j < nickname.length() - 1; j++){
+            for(int k = j+1; k < nickname.length(); k++){
+                String str = nickname.substring(j, k+1);
+                part.add(str);
+            }
+        }
+        return part;
     }
 
 }
