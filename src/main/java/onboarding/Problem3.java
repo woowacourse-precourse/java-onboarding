@@ -6,6 +6,8 @@ import java.util.Scanner;
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
+        ThreeSixNine.checkNumberRange(number);
+        answer = ThreeSixNine.accumulatedClaps(number);
         return answer;
     }
 }
