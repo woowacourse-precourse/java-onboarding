@@ -4,10 +4,16 @@ import java.util.List;
 import java.util.stream.Stream;
 
 class Problem1 {
-    public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
-    }
+	public static int solution(List<Integer> pobi, List<Integer> crong) {
+		int answer = Integer.MAX_VALUE;
+
+		int pobiScore = getScore(pobi);
+		int crongScore = getScore(crong);
+
+		answer = getResult(pobiScore, crongScore);
+
+		return answer;
+	}
 
 	private static boolean isValidPage(List<Integer> pages) {
 		int leftPage = pages.get(0);
@@ -54,3 +60,12 @@ class Problem1 {
 		}
 		return score;
 	}
+
+	private static int getResult(int pobiScore, int crongScore) {
+		if (pobiScore > crongScore)
+			return 1;
+		else if (pobiScore < crongScore)
+			return 2;
+		return 0;
+	}
+}
