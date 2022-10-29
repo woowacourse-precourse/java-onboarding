@@ -9,6 +9,9 @@ class Problem1 {
 
         int a = ls.get(0);
         int b = ls.get(1);
+
+        if( b != a+1 ) throw new Error("two value is not consecutive");
+
         int x = Math.max(sumOfDigits(a), productOfDigits(a));
         int y = Math.max(sumOfDigits(b), productOfDigits(b));
 
