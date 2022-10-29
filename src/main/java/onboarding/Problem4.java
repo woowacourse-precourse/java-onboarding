@@ -5,8 +5,8 @@ import java.util.HashMap;
 public class Problem4 {
     private static HashMap<Character, Character> map = new HashMap<>();
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        makeDictionary();
+        return convert(word);
     }
 
     private static void makeDictionary() {
@@ -24,9 +24,11 @@ public class Problem4 {
             if (!isAlphabetic(c)) {
                 sb.append(c);
             }
-
             if (isUpperCase(c)) {
                 sb.append(map.get(c));
+            }
+            if (isLowerCase(c)) {
+                sb.append(Character.toLowerCase(map.get(Character.toUpperCase(c))));
             }
         }
         return sb.toString();
@@ -38,5 +40,9 @@ public class Problem4 {
 
     private static boolean isUpperCase(char c) {
         return Character.isUpperCase(c);
+    }
+
+    private static boolean isLowerCase(char c) {
+        return Character.isLowerCase(c);
     }
 }
