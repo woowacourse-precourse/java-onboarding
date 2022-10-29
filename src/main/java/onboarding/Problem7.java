@@ -69,4 +69,16 @@ public class Problem7 {
 
         return answer;
     }
+
+    private static  HashSet<String> makeFriendList(List<List<String>> friends, String user){
+        HashSet<String> set = new HashSet<>(); //사용자와 이미 친구인 사람 목록에 중복으로 추가하지 않기 위함
+        for(int i = 0; i < friends.size(); i++){
+            if(friends.get(i).get(0).equals(user)){
+                set.add(friends.get(i).get(1));
+            }else if(friends.get(i).get(1).equals(user)){
+                set.add(friends.get(i).get(0));
+            }
+        }
+        return set;
+    }
 }
