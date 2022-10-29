@@ -73,4 +73,29 @@ class Problem7Test {
 		assertThat(userScoreHashMap.get("shakevan")).isNull();
 		assertThat(userScoreHashMap.get("bedi")).isNull();
 	}
+
+	@Test
+	void setUserScoreHashMapTest() {
+		List<List<String>> friends = List.of(
+			List.of("donut", "andole"),
+			List.of("donut", "jun"),
+			List.of("donut", "mrko"),
+			List.of("shakevan", "andole"),
+			List.of("shakevan", "jun"),
+			List.of("shakevan", "mrko")
+		);
+		String user = "mrko";
+		List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+		HashMap<String, Integer> userScoreHashMap = Problem7.userScoreHashMap;
+
+		HashMap<String, ArrayList<String>> friendsHashMap = Problem7.getFriendsHashMap(friends);
+		Problem7.setUserScoreHashMap(user, friendsHashMap, visitors);
+
+		assertThat(userScoreHashMap.get("jun")).isEqualTo(20);
+		assertThat(userScoreHashMap.get("andole")).isEqualTo(20);
+		assertThat(userScoreHashMap.get("donut")).isNull();
+		assertThat(userScoreHashMap.get("mrko")).isNull();
+		assertThat(userScoreHashMap.get("shakevan")).isNull();
+		assertThat(userScoreHashMap.get("bedi")).isEqualTo(3);
+	}
 }

@@ -48,7 +48,6 @@ public class Problem7 {
     public static void addScoreToTwoHopUsers(HashMap<String, ArrayList<String>> friendsHashMap, ArrayList<String> friendsList,
         HashSet<String> excludeUser) {
         for (String friend : friendsList) {
-            System.out.println("checking friend : " + friend);
             ArrayList<String> twoHopFriendsList = friendsHashMap.get(friend);
             for (String twoHopFriend : twoHopFriendsList) {
                addScoreIfAvailable(twoHopFriend, excludeUser, 10);
@@ -57,18 +56,18 @@ public class Problem7 {
     }
 
     public static void addScoreToVisitors(List<String> visitors, HashSet<String> excludeUser) {
-
+        for (String visitor : visitors) {
+            addScoreIfAvailable(visitor, excludeUser, 1);
+        }
     }
 
     public static void addScoreIfAvailable(String twoHopFriend, HashSet<String> excludeUser, int score) {
         if (!excludeUser.contains(twoHopFriend)) {
             if (!userScoreHashMap.containsKey(twoHopFriend)) {
                 userScoreHashMap.put(twoHopFriend, score);
-                System.out.println("twoHopFriend " + twoHopFriend + " made with score 10");
                 return;
             }
-            userScoreHashMap.put(twoHopFriend, userScoreHashMap.get(twoHopFriend) + 10);
-            System.out.println("twoHopFriend " + twoHopFriend + " added score 10");
+            userScoreHashMap.put(twoHopFriend, userScoreHashMap.get(twoHopFriend) + score);
         }
     }
 }
