@@ -9,6 +9,11 @@ public class Problem6 {
         List<String> answer = new ArrayList<>();
         nicknameEmailQ = new LinkedList<>();
         for (List<String> form : forms) {
+            String email = form.get(0);
+            if (email.length() < 11 || email.length() > 19 || !email.endsWith("email.com")) {
+                System.out.println(email);
+                continue;
+            }
             nicknameEmailQ.offer(form);
         }
         int qLength = nicknameEmailQ.size();
@@ -33,7 +38,9 @@ public class Problem6 {
                 .distinct()
                 .collect(Collectors.toList());
 
-        return answer;
+        return answer.stream()
+                .distinct()
+                .collect(Collectors.toList());
     }
 
     public static List<String> separateNickname(String nickname) {
