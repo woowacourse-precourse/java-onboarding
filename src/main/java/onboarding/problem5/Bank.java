@@ -17,4 +17,9 @@ public class Bank {
     private static void addBill(int billIdx, int[] changes) {
         changes[billIdx]++;
     }
+
+    private static int calculateMoney(int billIdx, int restMoney, int[] changes) {
+        addBill(billIdx, changes);
+        return restMoney - BILLS[billIdx];
+    }
 }
