@@ -6,6 +6,24 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Problem7 {
+
+    static class Friend implements Comparable<Friend> {
+        String name;
+        int score;
+
+        public Friend(String name, int score) {
+            this.name = name;
+            this.score = score;
+        }
+
+        @Override
+        public int compareTo(Friend o) {
+            if (this.score == o.score)
+                return this.name.compareTo(o.name);
+            return o.score - this.score;
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
 
@@ -33,6 +51,14 @@ public class Problem7 {
             if (!userFriend.contains(name))
                 friendScore.put(name, friendScore.getOrDefault(name, 0) + 1);
         }
+
+        List<Friend> friendList = new ArrayList<>();
+        for (String name : friendScore.keySet()) {
+            System.out.println(name + " " + friendScore.get(name));
+            friendList.add(new Friend(name, friendScore.get(name)));
+        }
+
+        findMaxFiveFriends(friendList, answer);
 
         return answer;
     }
@@ -69,5 +95,15 @@ public class Problem7 {
         }
 
         return cnt;
+    }
+
+    public static void findMaxFiveFriends(List<Friend> friendList, List<String> answer) {
+        Collections.sort(friendList);
+
+        for (int i = 0; i < friendList.size(); i++) {
+            if (i == 5) break;
+
+            answer.add(friendList.get(i).name);
+        }
     }
 }
