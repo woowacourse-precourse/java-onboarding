@@ -6,6 +6,18 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         if (!findPageException(pobi) || !findPageException(crong)) return -1;
+
+        int pobiScore = Integer.MIN_VALUE;
+        for (Integer pageNum : pobi) {
+            int curPobiMaxScore = Math.max(addPageDigits(pageNum), mulPageDigits(pageNum));
+            pobiScore = Math.max(pobiScore, curPobiMaxScore);
+        }
+
+        int crongScore = Integer.MIN_VALUE;
+        for (Integer pageNum : crong) {
+            int curCrongMaxScore = Math.max(addPageDigits(pageNum), mulPageDigits(pageNum));
+            crongScore = Math.max(crongScore, curCrongMaxScore);
+        }
         return answer;
     }
 
