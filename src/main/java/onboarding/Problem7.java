@@ -38,7 +38,7 @@ public class Problem7 {
         return false;
     }
 
-    private static Map<String, Integer> getRecommendList(String user, List<List<String>> friends, List<String> friendList) {
+    private static Map<String, Integer> getRecommendList(String user, List<List<String>> friends, List<String> friendList, List<String> visitors) {
         Map<String, Integer> recommendList = new HashMap<String, Integer>();
         List<String> friend;
 
@@ -49,6 +49,29 @@ public class Problem7 {
             if (friends.get(1).equals(user) == false && checkFriend(friend.get(1), friendList) == false)
                 recommendList.put(friend.get(1), 0);
         }
+        for (int i = 0; i < visitors.size(); i++) {
+            if (checkFriend(visitors.get(i), friendList) == false)
+                recommendList.put(visitors.get(i), 0);
+        }
         return recommendList;
+    }
+
+    private static void setPoint(String user, Map<String, Integer> recommendList, List<String> friendList,
+                                 List<List<String>> friends, List<String> visitors) {
+        List<String> friend;
+
+        for (int i = 0; i < friends.size(); i++) {
+            friend = friends.get(i);
+            if (friend.get(0).equals(user) || friend.get(1).equals(user))
+                continue;
+            if (checkFriend(friend.get(0), friendList) == false && checkFriend(friend.get(1), friendList) == true)
+                recommendList.put(friend.get(0), recommendList.get(friend.get(0)) + 10);
+            else if (checkFriend(friend.get(1), friendList) == false && checkFriend(friend.get(0), friendList) == true)
+                recommendList.put(friend.get(1), recommendList.get(friend.get(1)) + 10);
+        }
+        for (int i = 0; i < visitors.size(); i++) {
+            if (checkFriend(visitors.get(i), friendList) == false)
+                recommendList.put(visitors.get(i), recommendList.get(visitors.get(i) + 10));
+        }
     }
 }
