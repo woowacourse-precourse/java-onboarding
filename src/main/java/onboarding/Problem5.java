@@ -10,6 +10,7 @@ public class Problem5 {
         money = toOneWon(money, change);
         money = toRestWon(money, change);
         toFinalWon(money, change);
+        Collections.reverse(change);
         return change;
     }
 
