@@ -57,10 +57,17 @@ class ExceptionProblem2 {
 
     public static void validateCryptogram(String cryptogram) {
         enteredName(cryptogram);
+        isSpace(cryptogram);
     }
 
     public static void enteredName(String cryptogram) {
         if (cryptogram.equals("")) {
+            throw new IllegalArgumentException(ERROR_MESSAGE);
+        }
+    }
+
+    public static void isSpace(String cryptogram) {
+        if (cryptogram.contains(" ")) {
             throw new IllegalArgumentException(ERROR_MESSAGE);
         }
     }
