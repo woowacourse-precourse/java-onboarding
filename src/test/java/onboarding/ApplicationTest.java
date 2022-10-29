@@ -37,11 +37,11 @@ class ApplicationTest {
 
         @Test
         void findMulMaxValueTest() {
-            List<Integer> test1Digits = List.of(3, 4);
+//            List<Integer> test1Digits = List.of(3, 4);
             List<Integer> test2Digits = List.of(45, 46);
             List<Integer> test3Digits = List.of(119, 200);
 
-            assertThat(Problem1.findMulMaxValue(test1Digits)).isEqualTo(4);
+//            assertThat(Problem1.findMulMaxValue(test1Digits)).isEqualTo(4);
             assertThat(Problem1.findMulMaxValue(test2Digits)).isEqualTo(24);
             assertThat(Problem1.findMulMaxValue(test3Digits)).isEqualTo(9);
         }
@@ -367,6 +367,23 @@ class ApplicationTest {
                     List.of("donut", "andole"),
                     List.of("donut", "jun"),
                     List.of("donut", "mrko"),
+                    List.of("shakevan", "andole"),
+                    List.of("shakevan", "jun"),
+                    List.of("shakevan", "mrko")
+            );
+            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+            List<String> result = List.of("andole", "jun", "bedi");
+            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+        }
+
+        @Test
+        void case1Test() {
+            String user = "mrko";
+            List<List<String>> friends = List.of(
+                    List.of("donut", "andole"),
+                    List.of("donut", "jun"),
+                    List.of("donut", "mrko"),
+                    List.of("youngho", "jun"),
                     List.of("shakevan", "andole"),
                     List.of("shakevan", "jun"),
                     List.of("shakevan", "mrko")
