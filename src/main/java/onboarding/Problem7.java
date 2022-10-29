@@ -19,6 +19,15 @@ public class Problem7 {
                 arr.add(friend.get(0));
             }
         }
+        // 사용자와 함께 아는 친구를 해쉬맵에 추가하고 10점을 준다.
+        for (List<String> friend : friends){
+            for(String userFriend : arr){
+                if(!friend.contains(userFriend) || friend.contains(user)) continue;
+                String name = Objects.equals(friend.get(0), userFriend) ? friend.get(1) : friend.get(0);
+                map.put(name,map.containsKey(name) ? map.get(name) + 10 : 10);
+            }
+        }
+
         return arr;
     }
 }
