@@ -67,6 +67,11 @@ public class Problem7 {
         if(rightIsNotFriendButLeft(relation)) giveScoreForFriendTo(relation.get(RIGHT_INDEX));
     }
 
+    private static void giveScoreForFriendTo(String name){
+        int oldScore = scoreToUser.get(name);
+        scoreToUser.replace(name, oldScore, oldScore+SCORE_FOR_FRIEND);
+    }
+
     private static boolean leftIsNotFriendButRight(List<String> relation){
         if(!usersFriend.contains(relation.get(LEFT_INDEX)) && usersFriend.contains(relation.get(RIGHT_INDEX)))
             return true;
