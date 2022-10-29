@@ -178,7 +178,7 @@ class ApplicationTest {
     class Problem6Test {
         @Test
         @DisplayName("정상적인 결과를 출력한다")
-        void case1() {
+        void case1() throws Exception {
             List<List<String>> forms = List.of(
                     List.of("jm@email.com", "제이엠"),
                     List.of("jason@email.com", "제이슨"),
@@ -194,7 +194,7 @@ class ApplicationTest {
         @DisplayName("크루가 10_000명 초과한 경우 예외를 반환한다")
         void case2() {
             List<List<String>> forms = new ArrayList<>();
-            for(int i=0;i<10001;i++) {
+            for(int i=0;i<10001;i++) { //0~10000까지 10_001개
                 forms.add(List.of(i+"ja@email.com", "이름"+i));
             }
             assertThatThrownBy(() -> Problem6.solution(forms)).isInstanceOf(Exception.class);
