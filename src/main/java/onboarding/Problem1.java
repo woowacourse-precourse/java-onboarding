@@ -85,6 +85,20 @@ class Problem1 {
         return (leftHighScore >= rightHighScore) ? leftHighScore : rightHighScore;
     }
 
+    public String getWinner(List<Integer> pobi, List<Integer> crong){
+        int pobiHighScore, crongHighScore;
+
+        pobiHighScore = getHighScore(pobi);
+        crongHighScore = getHighScore(crong);
+
+        if(pobiHighScore > crongHighScore)
+            return "pobi";
+        else if(pobiHighScore < crongHighScore)
+            return "crong";
+        else
+            return "draw";
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
