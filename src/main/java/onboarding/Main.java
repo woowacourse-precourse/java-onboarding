@@ -24,14 +24,14 @@ public class Main {
 //
 //        }
 
-        List<String> list = List.of("answer");
-
-        Map<String, Integer> map = new HashMap<>();
-
-        map.put("제이",1);
-        Integer cnt = map.get("제이");
-        map.put("제이", cnt + 1);
-        System.out.println("map.get(\"\") = " + map.get("제이"));
+//        List<String> list = List.of("answer");
+//
+//        Map<String, Integer> map = new HashMap<>();
+//
+//        map.put("제이",1);
+//        Integer cnt = map.get("제이");
+//        map.put("제이", cnt + 1);
+//        System.out.println("map.get(\"\") = " + map.get("제이"));
 
     }
 }
