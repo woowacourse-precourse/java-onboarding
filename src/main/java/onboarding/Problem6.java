@@ -20,11 +20,11 @@ public class Problem6 {
     public static final String VALID_EMAIL_FORM = "email.com";
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
         validate(forms);
         Map<String, List<String>> splitNickname = makeMap(forms);
         List<String> emailsWithDuplicatedNickname = getEmailsWithDuplicatedNickname(splitNickname);
+        Collections.sort(emailsWithDuplicatedNickname);
+
         return emailsWithDuplicatedNickname;
     }
 
