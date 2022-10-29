@@ -7,11 +7,11 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class Problem1 {
-    public static void main(String[] args) {
-        List<Integer> pobi = List.of(111, 112);
-        List<Integer> crong = List.of(223, 224);
-        System.out.println(Problem1.solution(pobi, crong));
-    }
+//    public static void main(String[] args) {
+//        List<Integer> pobi = List.of(111, 112);
+//        List<Integer> crong = List.of(223, 224);
+//        System.out.println(Problem1.solution(pobi, crong));
+//    }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         // 예외사항 확인
