@@ -4,8 +4,19 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        Map<String, Integer> recommendedFriendsList = descendingSort(user, friends, visitors);
+        Map<String, Integer> top5 = recommendedFriendsList;
+
+        // TODO: TOP5 정렬
+
+        return new ArrayList<>(top5.keySet());
+    }
+
+    // TODO: 최종 추천 친구 리스트에서 TOP5만 반환하는 메소드
+    // 예외처리: 점수가 0일 경우 반환하지 않음
+    private static List<String> getTop5(Map<String, Integer> recommendedFriendsList) {
+        List<String> top5 = new ArrayList<>();
+        return top5;
     }
 
 
