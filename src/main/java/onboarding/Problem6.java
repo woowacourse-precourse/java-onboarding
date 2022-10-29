@@ -1,6 +1,8 @@
 package onboarding;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 class validateInformation{
@@ -25,7 +27,18 @@ class validateInformation{
         return true;
     }
 }
-
+class handleList{
+    public static List<String> removeSamethings(List<String> list){
+        List<String> newlList = list.stream()
+                .distinct()
+                .collect(Collectors.toList());
+        return newlList;
+    }
+    public static List<String> sortList(List<String> list){
+        Collections.sort(list);
+        return list;
+    }
+}
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
