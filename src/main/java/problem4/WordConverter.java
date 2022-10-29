@@ -12,7 +12,8 @@ public class WordConverter {
 
     public static String convert(String word) {
         validate(word);
-        return new String(convert(word.toCharArray()));
+        char[] converted = convert(word.toCharArray());
+        return new String(converted);
     }
 
     private static char[] convert(char[] word) {
