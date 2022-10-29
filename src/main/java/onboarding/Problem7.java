@@ -95,6 +95,10 @@ class Relations {
         mutualFriends.retainAll(this.relations.get(user2));
         return mutualFriends.size();
     }
+
+    public Set<String> getAllUsers() {
+        return new HashSet<>(this.relations.keySet());
+    }
 }
 
 class Intimacy implements Comparable<Intimacy> {
