@@ -34,6 +34,20 @@ class Problem1 {
             }
         }
 
+        // 페이지 번호의 차가 1인지 (서로 마주보고 있는 페이지인지 검증)
+        if (pobi.get(1) - pobi.get(0) != 1) {
+            isValid = false;
+        } else if (crong.get(1) - crong.get(0) != 1) {
+            isValid = false;
+        }
+
+        // 두 페이지의 번호가 홀수와 짝수인지
+        if ((pobi.get(0) % 2 == 0) | (pobi.get(1) % 2 != 0)) {
+            isValid = false;
+        } else if ((crong.get(0) % 2 == 0) | (crong.get(1) % 2 != 0)) {
+            isValid = false;
+        }
+
         return isValid;
     }
 }
