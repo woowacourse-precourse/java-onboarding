@@ -1,7 +1,12 @@
 package onboarding.problem2;
 
+import onboarding.validation.MinMaxInputValidatable;
+
 import java.util.Arrays;
 import java.util.List;
+
+import static onboarding.validation.MinMaxIntegerInputValidate.getMinMaxIntegerInputValidate;
+import static onboarding.validation.MinMaxStringInputValidate.getMinMaxStringInputValidate;
 
 public class Problem2Validation {
     public static boolean problem2InputValidation(String userInput, int inputMinLength, int inputMaxLength) {
@@ -9,12 +14,8 @@ public class Problem2Validation {
     }
 
     private static boolean inputLengthBetweenMinAndMax(String userInput, int inputMinLength, int inputMaxLength) {
-        int length = userInput.length();
-        if (inputMinLength <= length && length <= inputMaxLength) {
-            return true;
-        } else {
-            return false;
-        }
+        MinMaxInputValidatable minMaxInputValidator = getMinMaxStringInputValidate();
+        return minMaxInputValidator.isInputBetweenMinAndMax(userInput, inputMinLength, inputMaxLength);
     }
 
     private static boolean isAlphabetAndLower(String userInput) {

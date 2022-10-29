@@ -1,10 +1,13 @@
 package onboarding.problem1;
 
+import onboarding.validation.MinMaxInputValidatable;
 import onboarding.validation.MinMaxIntegerInputValidate;
 
 import java.util.List;
 
 import static java.lang.Math.*;
+import static onboarding.validation.MinMaxIntegerInputValidate.*;
+
 /*
  * - pobi와 crong의 input이 길이가 2인지 판단한다.
  * - pobi와 crong의 input의 원소들이 페이지의 최소값인 1과 최대값인 400사이인지 확인한다.
@@ -17,7 +20,7 @@ public class Problem1Validation {
         return isBookNumberBetweenMinAndMax(list, bookMin, bookMax, userInputLength)
                 && isBookNumberContinuous(list, userInputLength)
                 && isBookNumberOddEvenPair(list, userInputLength)
-                &&isFirstAddOneEqualsSecondValue(list, userInputLength);
+                && isFirstAddOneEqualsSecondValue(list, userInputLength);
     }
 
     private static boolean userInputSizeEquals(List<Integer> userInput, int listSize) {
@@ -29,8 +32,9 @@ public class Problem1Validation {
 
     private static boolean isBookNumberBetweenMinAndMax(List<Integer> userInput, int bookMin, int bookMax, int userInputLength) {
         if (userInputSizeEquals(userInput, userInputLength)) {
+            MinMaxInputValidatable minMaxInputValidator = getMinMaxIntegerInputValidate();
             long count = userInput.stream()
-                    .filter(pageNum -> isBetween(pageNum, bookMin, bookMax))
+                    .filter(pageNum -> minMaxInputValidator.isInputBetweenMinAndMax(pageNum, bookMin, bookMax))
                     .count();
             return Long.valueOf(userInput.size()) == count;
         } else {

@@ -1,5 +1,10 @@
 package onboarding.problem6;
 
+import onboarding.validation.MinMaxInputValidatable;
+
+import static onboarding.validation.MinMaxIntegerInputValidate.getMinMaxIntegerInputValidate;
+import static onboarding.validation.MinMaxStringInputValidate.getMinMaxStringInputValidate;
+
 public class Problem6Validation {
 
     private final static String AT = "@";
@@ -19,8 +24,8 @@ public class Problem6Validation {
     }
 
     private static boolean problem6InputLengthValidation(String email, String nickname, int minEmailInput, int maxEmailInput, int minNicknameInput, int maxNicknameInput) {
-        return ((minEmailInput <= email.length() && email.length() <= maxEmailInput)
-                && (minNicknameInput <= nickname.length() && nickname.length() <= maxNicknameInput));
+        MinMaxInputValidatable minMaxInputValidator = getMinMaxStringInputValidate();
+        return minMaxInputValidator.isInputBetweenMinAndMax(email, minEmailInput, maxEmailInput) && minMaxInputValidator.isInputBetweenMinAndMax(nickname, minNicknameInput, maxNicknameInput);
     }
 
     private static boolean problem6InputDetailValidation(String email, String nickname) {
@@ -38,12 +43,12 @@ public class Problem6Validation {
     }
 
     private static boolean dotComEmailValidation(String email) {
-        return email.endsWith("@email.com");
+        return email.endsWith(EMAIL_ENDS);
     }
 
     private static boolean problem6NicknameValidation(String nickname) {
         return nickname.chars()
-                .filter(nicknameChar -> Character.getType(nicknameChar) == 5)
+                .filter(nicknameChar -> Character.getType(nicknameChar) == Character.OTHER_LETTER)
                 .count() == nickname.length();
     }
 }
