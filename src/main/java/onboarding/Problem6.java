@@ -15,6 +15,11 @@ public class Problem6 {
             String curName = forms.get(i).get(1);
             permutation(curName, i);
         }
+        for(int i=0; i<isDuplication.length; i++){
+            if(!isDuplication[i]) continue;
+            answer.add(list.get(i).get(0));
+        }
+        Collections.sort(answer);
         return answer;
     }
     public static void permutation(String name, int listIdx){
