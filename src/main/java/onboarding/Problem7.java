@@ -36,7 +36,8 @@ public class Problem7 {
         Set<String> userSFriend = p.userSFriendInit(user, friends);
         p.addScoreLinkFriend(friends, score, userSFriend);
         p.addScoreVisitors(score, visitors);
-
+        p.deleteUserAndUserSFriend(score, userSFriend);
+        answer = p.returnResult(score);
         System.out.println(userSFriend.toString());
         System.out.println(score.toString());
         return answer;
@@ -99,7 +100,17 @@ public class Problem7 {
         }
     }
 
-    // result 반환
+    // 사용자, 사용자 친구들 삭제
+    public void deleteUserAndUserSFriend(Map<String, Integer> score, Set<String> userSFriend) {
+        for (String friend : userSFriend) {
+            score.remove(friend);
+        }
+    }
+
+    // return
+    public List<String> returnResult(Map<String, Integer> score) {
+        return new ArrayList<>(score.keySet());
+    }
 
 
 }
