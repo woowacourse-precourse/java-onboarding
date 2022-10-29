@@ -9,17 +9,17 @@ public class Problem3 {
     private static final List<Integer> clapNumbers = List.of(3, 6, 9);
     private int number;
 
-    public Game369(int number) {
+    public void setEndNumber(int number) {
       this.number = number;
     }
 
     public int getTotalClapping() {
       return IntStream.rangeClosed(1, number)
-              .map(Game369::countClapping)
+              .map(this::countClapping)
               .sum();
     }
 
-    private static int countClapping(int number) {
+    private int countClapping(int number) {
       return (int) Stream.of(Integer.toString(number).split(""))
               .mapToInt(Integer::parseInt)
               .filter(n -> clapNumbers.contains(n))
@@ -28,7 +28,8 @@ public class Problem3 {
   }
 
   public static int solution(int number) {
-    Game369 game = new Game369(number);
+    Game369 game = new Game369();
+    game.setEndNumber(number);
     return game.getTotalClapping();
   }
 }
