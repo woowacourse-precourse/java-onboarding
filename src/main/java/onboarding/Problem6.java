@@ -24,7 +24,14 @@ public class Problem6 {
     private static void checkNick(List<List<String>> forms, List<String> answer, int i, int j, String firstNick, String secNick) {
         if (firstNick.length() <= 19 && Pattern.matches("^[가-힣]*$", firstNick)
                 && secNick.length() <= 19 && Pattern.matches("^[가-힣]*$", secNick)) {
-            
+
+            for (int k = 0; k < firstNick.length() - 1; k++) {
+                String substringOfFisrtNick = firstNick.substring(k, k + 2);
+
+                if (secNick.indexOf(substringOfFisrtNick) != -1) {
+
+                }
+            }
         }
     }
 }
