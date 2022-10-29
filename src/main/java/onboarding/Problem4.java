@@ -4,11 +4,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 public class Problem4 {
-    public static String solution(String word) {
-        String answer = "";
-        HashMap<Character,Character> dictionary = new HashMap<>();
-        char[] chars = word.toCharArray();
-
+    public static HashMap<Character,Character> dictionary;
+    public static void setDictionary() {
         int currentUpperValue = 'Z';
         for(int ascii = 'A'; ascii <= 'Z'; ascii++) {
             dictionary.put((char) ascii, (char) currentUpperValue);
@@ -20,7 +17,10 @@ public class Problem4 {
             dictionary.put((char)ascii,(char)currentLowerValue);
             currentLowerValue--;
         }
-
+    }
+    public static String changeFrogWord(String word) {
+        String answer = "";
+        char[] chars = word.toCharArray();
         for(int index=0; index < chars.length; index++) {
             if(dictionary.containsKey(chars[index]) == true){
                 answer = answer + dictionary.get(chars[index]);
@@ -29,7 +29,13 @@ public class Problem4 {
                 answer = answer + chars[index];
             }
         }
+        return answer;
+    }
+    public static String solution(String word) {
+        dictionary = new HashMap<>();
+        setDictionary();
 
+        String answer = changeFrogWord(word);
         return answer;
     }
 }
