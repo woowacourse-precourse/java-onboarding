@@ -41,6 +41,13 @@ class Problem1 {
         return Math.max(sum, mul);
     }
 
+    public static int biggerPage(List<Integer> integerList){
+        int lPage = cal(integerList.get(0));
+        int rPage = cal(integerList.get(1));
+
+        return Math.max(lPage,rPage);
+    }
+
 
 
 }
