@@ -26,4 +26,19 @@ public class Problem7 {
         friendsList.add(userA);
     }
 
+    public static void initRelationships(List<String> relationship) {
+        String userA = relationship.get(0);
+        String userB = relationship.get(1);
+
+        addRelationships(userA,userB);
+        addRelationships(userB,userA);
+    }
+
+    public static void addRelationships(String userA, String userB) {
+        if(relationships.containsKey(userA)){
+            relationships.get(userA).add(userB);
+            return;
+        }
+        relationships.put(userA, new ArrayList<>(List.of(userB)));
+    }
 }
