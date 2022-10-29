@@ -19,7 +19,7 @@ public class Problem4 {
                 }
             } else sb.append(word.charAt(i));
         }
-        String answer = "";
+        String answer = sb.toString();
         return answer;
     }
 }
