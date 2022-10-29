@@ -49,10 +49,10 @@ public class Problem6 {
         return DuplicateSubstringCrewNicknames;
     }
 
-    private static List<String> getDuplicateCrewNicknames(List<String> duplicableCrewNicknames, Set<String> DuplicateSubstringCrewNicknames) {
+    private static List<String> getDuplicateCrewNicknames(List<String> duplicableCrewNicknames, Set<String> duplicateSubstringCrewNicknames) {
         List<String> duplicateCrewNicknames = new ArrayList<>();
         duplicableCrewNicknames.forEach(duplicableCrewNickname -> {
-            DuplicateSubstringCrewNicknames.forEach(
+            duplicateSubstringCrewNicknames.forEach(
                     duplicateSubstringCrewNickname -> {
                         if(duplicableCrewNickname.contains(duplicateSubstringCrewNickname)) {
                             duplicateCrewNicknames.add(duplicableCrewNickname);
