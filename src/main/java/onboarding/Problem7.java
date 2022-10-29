@@ -17,6 +17,30 @@ public class Problem7 {
             }
         }
 
+        /*
+         * 전체 아이디 정리 기능
+         *
+         * key : 아이디
+         * value : 추천 점수
+         */
+        Map<String, Integer> m = new HashMap<>();
+
+        /* friends 리스트에 주어진 모든 아이디를 찾는 기능 구현  */
+        for (int i = 0; i < friends.size(); i++) {
+            for (int j = 0; j < 2; j++) {
+                if (!m.containsKey(friends.get(i).get(j))) {
+                    m.put(friends.get(i).get(j), 0);
+                }
+            }
+        }
+
+        /* 친구 관계정보에는 없지만 현재 사용자 아이디의 타임라인에 방문한 아이디를 찾는 기능 구현 */
+        for (int i = 0; i < visitors.size(); i++) {
+            if (!m.containsKey(visitors.get(i))) {
+                m.put(visitors.get(i), 0);
+            }
+        }
+
         return answer;
     }
 }
