@@ -16,20 +16,20 @@ public class Problem7 {
     private static List<String> findFriendListByUser(String user, List<List<String>> friends) {
         List<String> friendList = new ArrayList<>();
         for (List<String> friend : friends) {
-            if (isUserFriend(user, friend)) {
-                String friendName = findFriendByUser(user, friend);
+            if (isFriend(user, friend)) {
+                String friendName = findFriendByName(user, friend);
                 friendList.add(friendName);
             }
         }
         return friendList;
     }
 
-    private static boolean isUserFriend(String user, List<String> friend) {
-        return nameEq(user, friend.get(0)) || nameEq(user, friend.get(1));
+    private static boolean isFriend(String target, List<String> friend) {
+        return nameEq(target, friend.get(0)) || nameEq(target, friend.get(1));
     }
 
-    private static String findFriendByUser(String user, List<String> friend) {
-        if (nameEq(user, friend.get(0))) {
+    private static String findFriendByName(String target, List<String> friend) {
+        if (nameEq(target, friend.get(0))) {
             return friend.get(1);
         } else {
             return friend.get(0);
