@@ -44,12 +44,6 @@ public class Problem2 {
     }
 
     public static String solution(String cryptogram) {
-        String answer = "";
-
-        StringBuffer stringBuffer = dequeToStr(cryptogram);
-
-        answer = stringBuffer.toString();
-
-        return answer;
+        return dequeToStr(cryptogram).toString();
     }
 }
