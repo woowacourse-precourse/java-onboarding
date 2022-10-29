@@ -10,7 +10,11 @@ public class Problem4 {
      * 알파벳의 대문자는 소문자로 소문자는 대문자로 바꾸는 기능
      */
     public static Character changeAlphabetCase(char c){
-        return null;
+        if(Character.isLowerCase(c)){
+            return Character.toUpperCase(c);
+        }else{
+            return Character.toLowerCase(c);
+        }
     }
 
     /**
