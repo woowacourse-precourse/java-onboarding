@@ -9,18 +9,20 @@ import java.util.regex.Pattern;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "";
-
-        // 예외사항
-        // 1-1,2 cryptogram 길이와 소문자 체크
-        if(isNotCryptogramLengthOrLowerCase(cryptogram)){
-            throw new NotMatchingCryptogramLengthOrLowerCase("cryptogram 길이 및 소문자가 아닙니다.");
-        }
-
-        // 2. 반복해서 연속하는 중복 문자 제거
+        checkException(cryptogram);
         answer = getRemovedDuplicateCryptogram(cryptogram);
         return answer;
     }
 
+    // 예외사항
+    // 1-1,2 cryptogram 길이와 소문자 체크
+    private static void checkException(String cryptogram) {
+        if(isNotCryptogramLengthOrLowerCase(cryptogram)){
+            throw new NotMatchingCryptogramLengthOrLowerCase("cryptogram 길이 및 소문자가 아닙니다.");
+        }
+    }
+
+    // 2. 반복해서 연속하는 중복 문자 제거 알고리즘
     private static String getRemovedDuplicateCryptogram(String cryptogram) {
 
         while(true){
