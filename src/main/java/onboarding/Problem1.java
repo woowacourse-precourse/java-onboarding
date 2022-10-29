@@ -9,6 +9,9 @@ class Problem1 {
         if (!validateInputFormat(pobi) || !validateInputFormat(crong)) {
             return -1;
         }
+        if (!validateContinuous(pobi) || !validateContinuous(crong)) {
+            return -1;
+        }
         return answer;
     }
 
@@ -16,5 +19,11 @@ class Problem1 {
         Integer leftNum = numList.get(0);
         Integer rightNum = numList.get(1);
         return (leftNum % 2) == 1 && (rightNum % 2) == 0;
+    }
+
+    private static boolean validateContinuous(List<Integer> numList) {
+        Integer leftNum = numList.get(0);
+        Integer rightNum = numList.get(1);
+        return (rightNum - leftNum) == 1;
     }
 }
