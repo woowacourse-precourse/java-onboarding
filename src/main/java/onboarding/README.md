@@ -52,6 +52,6 @@
 
 |     | 번호  | 기능 코드                       | Depth1   | Depth2 | Depth3 | method                                                                                              | 설명                |
 |-----|-----|-----------------------------|----------|--------|--------|-----------------------------------------------------------------------------------------------------|-------------------|
-| X   | 1   | onBoarding-back-Problem7-01 | solution |        |        | public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) | 추천친구 5명을 반환       |
-| O   | 2   | onBoarding-back-Problem7-02 | solution |        |        | private static Set<String> getFriend(String user, List<List<String>> friends)                       | user의 현재 친구목록 구하기 |
+| O   | 1   | onBoarding-back-Problem7-01 | solution |        |        | public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) | 추천친구 5명을 반환       |
+| O   | 2   | onBoarding-back-Problem7-02 | solution |        |        | private static Map<String, Integer> getFriend(String user, List<List<String>> friends               | user의 현재 친구목록 구하기 |
 
