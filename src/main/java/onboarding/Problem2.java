@@ -32,7 +32,13 @@ public class Problem2 {
                 }
                 return answer;
             }
+            int a = j-1;
 
+            while (a>=0) {
+                list.remove(remove_index[a]+1);
+                list.remove(remove_index[a]);
+                a--;
+            }
         }
     }
 }
