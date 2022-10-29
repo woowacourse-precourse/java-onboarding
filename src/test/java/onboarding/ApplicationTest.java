@@ -1,5 +1,6 @@
 package onboarding;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -11,6 +12,7 @@ class ApplicationTest {
     @Nested
     class Problem1Test {
         @Test
+        @DisplayName("비기는 경우 - 135점")
         void case1() {
             List<Integer> pobi = List.of(97, 98);
             List<Integer> crong = List.of(197, 198);
@@ -19,6 +21,7 @@ class ApplicationTest {
         }
 
         @Test
+        @DisplayName("포비가 이기는 경우 - 포비: 5 + 6 = 11 크롱: 4 + 5 = 9")
         void case2() {
             List<Integer> pobi = List.of(131, 132);
             List<Integer> crong = List.of(211, 212);
@@ -27,6 +30,7 @@ class ApplicationTest {
         }
 
         @Test
+        @DisplayName("잘못된 페이지 들어오는 경우 - 연속된 페이지 아님")
         void case3() {
             List<Integer> pobi = List.of(99, 102);
             List<Integer> crong = List.of(211, 212);
@@ -35,6 +39,7 @@ class ApplicationTest {
         }
 
         @Test
+        @DisplayName("잘못된 페이지 들어오는 경우 - 연속된 페이지 아님2")
         void case4() {
             List<Integer> pobi = List.of(99, 103);
             List<Integer> crong = List.of(211, 212);
@@ -43,6 +48,7 @@ class ApplicationTest {
         }
 
         @Test
+        @DisplayName("포비가 이기는 경우 - 포비: 243 + 0 = 243 크롱: 4 + 5 = 9")
         void case5() {
             List<Integer> pobi = List.of(399, 400);
             List<Integer> crong = List.of(211, 212);
@@ -51,14 +57,16 @@ class ApplicationTest {
         }
 
         @Test
+        @DisplayName("잘못된 페이지 들어오는 경우 - 400 페이지 초과")
         void case6() {
-            List<Integer> pobi = List.of(401, 402);
+            List<Integer> pobi = List.of(400, 401);
             List<Integer> crong = List.of(211, 212);
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
 
         @Test
+        @DisplayName("잘못된 페이지 들어오는 경우 - 음수 페이지")
         void case7() {
             List<Integer> pobi = List.of(99, 100);
             List<Integer> crong = List.of(-1, 0);
