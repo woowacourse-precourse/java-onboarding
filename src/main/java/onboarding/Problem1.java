@@ -6,6 +6,10 @@ import java.util.ArrayList;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        if (!(isRightPageNum(pobi) && (isRightPageNum(crong)))) {
+            return -1;
+        }
+
         return answer;
     }
 
@@ -17,7 +21,7 @@ class Problem1 {
         return result;
     }
 
-    private boolean isRightPageNum (List<Integer> pageNumbers) {
+    private static boolean isRightPageNum (List<Integer> pageNumbers) {
         int leftPage = pageNumbers.get(0);
         int rightPage = pageNumbers.get(1);
 
@@ -50,5 +54,15 @@ class Problem1 {
             result *= numbers.get(i);
         }
         return result;
+    }
+
+    private int comPareTwoScore (int pobi, int crong) {
+        if (pobi < crong) {
+            return 1;
+        }
+        if (pobi > crong) {
+            return 2;
+        }
+        return 0;
     }
 }
