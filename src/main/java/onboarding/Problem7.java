@@ -9,11 +9,8 @@ import java.util.Set;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        Set<String> userFriends = new HashSet<>();
         HashMap<String, Integer> recommendFriends = new HashMap<>();
-        for (List<String> friend : friends) {
-            makeUserFriendList(userFriends ,friend, user);
-        }
+        Set<String> userFriends = createUserFriendList(friends, user);
         for (List<String> friend : friends) {
             isAcquaintance(recommendFriends, friend, userFriends);
         }
@@ -24,7 +21,15 @@ public class Problem7 {
         return limitFiveLength(sortRecommendFriends(recommendFriends));
     }
 
-    public static void makeUserFriendList(Set<String> friendSet, List<String> friendship, String user) {
+    public static Set<String> createUserFriendList(List<List<String>> friends, String user) {
+        Set<String> friendSet = new HashSet<>();
+        for (List<String> f : friends) {
+            addUserFriend(friendSet, f, user);
+        }
+        return friendSet;
+    }
+
+    public static void addUserFriend(Set<String> friendSet, List<String> friendship ,String user) {
         if (friendship.get(0).equals(user)) {
             friendSet.add(friendship.get(1));
         }
