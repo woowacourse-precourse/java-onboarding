@@ -28,15 +28,7 @@ public class Problem7 {
         makeRecommendScore(user, friends, userFriendInfo, recommendScore);
 
         //4. 유저의 타임라인에 방문한 횟수를 토대로 점수 매기기
-        for (String visitor : visitors) {
-            if(!isMapContain(userFriendInfo, visitor)) { // 유저의 친구가 아니여야 함
-                if (isMapContain(recommendScore, visitor)) { // 추천점수목록에 존재할 때와 존재하지 않을 때 구분해서 점수 등록
-                    recommendScore.put(visitor, recommendScore.get(visitor) + 1);
-                } else {
-                    recommendScore.put(visitor, 1);
-                }
-            }
-        }
+        makeRecommendScoreByVisitor(visitors, userFriendInfo, recommendScore);
 
         // 5. 추천 점수 목록을 List 로 변환
         ArrayList<ScoreInfo> arrayList = new ArrayList<>();
@@ -48,6 +40,18 @@ public class Problem7 {
         answer = arrayList.stream().sorted().map(scoreInfo -> scoreInfo.getId()).limit(5).collect(Collectors.toList());
 
         return answer;
+    }
+
+    private static void makeRecommendScoreByVisitor(List<String> visitors, Map<String, Integer> userFriendInfo, Map<String, Integer> recommendScore) {
+        for (String visitor : visitors) {
+            if(!isMapContain(userFriendInfo, visitor)) { // 유저의 친구가 아니여야 함
+                if (isMapContain(recommendScore, visitor)) { // 추천점수목록에 존재할 때와 존재하지 않을 때 구분해서 점수 등록
+                    recommendScore.put(visitor, recommendScore.get(visitor) + 1);
+                } else {
+                    recommendScore.put(visitor, 1);
+                }
+            }
+        }
     }
 
     private static void makeRecommendScore(String user, List<List<String>> friends, Map<String, Integer> userFriendInfo, Map<String, Integer> recommendScore) {
