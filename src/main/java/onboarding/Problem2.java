@@ -3,14 +3,23 @@ package onboarding;
 import java.util.Stack;
 
 public class Problem2 {
+
     static Stack<Character> stack=new Stack<>();
+
     public static String solution(String cryptogram) {
         StringBuilder sb=new StringBuilder();
-        distinctElement(cryptogram);
-        while (!stack.isEmpty()){
-            sb.append(stack.pop());
+
+        try{
+            checkCryptogramLength(cryptogram);
+            distinctElement(cryptogram);
+            while (!stack.isEmpty()){
+                sb.append(stack.pop());
+            }
+
+            return sb.reverse().toString();
+        }catch (Exception e){
+            return e.getMessage();
         }
-        return sb.reverse().toString();
     }
 
     public static void distinctElement(String cryptogram){
@@ -26,4 +35,9 @@ public class Problem2 {
             }
         }
     }
+    public static void checkCryptogramLength(String cryptogram) throws Exception {
+        int length = cryptogram.length();
+        if (length<1||length>1000) throw new Exception("문자열의 길이가 범위를 벗어났습니다.");
+    }
+
 }
