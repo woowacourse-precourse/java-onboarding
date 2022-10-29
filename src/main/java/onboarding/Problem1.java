@@ -19,7 +19,7 @@ class Problem1 {
         return answer;
     }
 
-    private static Boolean isValid(List<Integer> pageList) {
+    private static boolean isValid(List<Integer> pageList) {
         if (pageList.get(0) < 1 || pageList.get(0) > 400 || pageList.get(1) < 1 || pageList.get(1) > 400) {
             return false;
         }
@@ -33,5 +33,30 @@ class Problem1 {
         return true;
     }
 
-    
+    private static int score(List<Integer> pageList) {
+        int left = pageList.get(0);
+        int right = pageList.get(1);
+        int leftPlus = 0;
+        int leftMultiply = 1;
+        int rightPlus = 0;
+        int rightMultiply = 1;
+        while (left != 0) {
+            int leftTmp = left%10;
+            leftPlus += leftTmp;
+            leftMultiply *= leftTmp;
+            left = left/10;
+        }
+
+        while (right != 0) {
+            int rightTmp = right%10;
+            rightPlus += rightTmp;
+            rightMultiply *= rightTmp;
+            right = right/10;
+        }
+
+        int leftScore = Math.max(leftPlus, leftMultiply);
+        int rightScore = Math.max(rightPlus, rightMultiply);
+
+        return Math.max(leftScore, rightScore);
+    }
 }
