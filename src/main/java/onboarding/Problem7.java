@@ -14,7 +14,7 @@ public class Problem7 {
         init();
         createUserInFriends(friends, user);
         checkVisitors(visitors);
-        return users.getRecommendFriendsRankingFive();
+        return users.getRecommendFriendsRankingFive(userFriends);
     }
 
     private static void init() {

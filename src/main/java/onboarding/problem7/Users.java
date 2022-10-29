@@ -14,9 +14,10 @@ public class Users {
         users = new ArrayList<>();
     }
 
-    public List<String> getRecommendFriendsRankingFive() {
+    public List<String> getRecommendFriendsRankingFive(List<String> userFriends) {
         return users.stream()
                 .takeWhile(Objects::nonNull)
+                .filter(user -> !userFriends.contains(user.getName()))
                 .sorted(Comparator.comparing(User::getScore).reversed())
                 .limit(5)
                 .map(User::getName)
