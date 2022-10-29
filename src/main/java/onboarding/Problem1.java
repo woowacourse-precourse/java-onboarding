@@ -12,6 +12,7 @@ class Problem1 {
     }
     int pobiScore = getScore(pobi);
     int crongScore = getScore(crong);
+    return getWinner(pobiScore, crongScore);
   }
 
   private static boolean isInvalidBook(List<Integer> book) {
@@ -60,5 +61,15 @@ class Problem1 {
       number /= 10;
     }
     return result;
+  }
+
+  private static int getWinner(int pobiScore, int crongScore) {
+    if (pobiScore > crongScore) {
+      return 1;
+    }
+    if (pobiScore < crongScore) {
+      return 2;
+    }
+    return 0;
   }
 }
