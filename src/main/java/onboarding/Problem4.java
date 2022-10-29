@@ -9,7 +9,7 @@ public class Problem4 {
         StringBuilder answer = new StringBuilder();
         char[] arr = word.toCharArray();
         for (char a : arr){
-            if(a >= 'A' && a <='Z' || a >= 'a' && a <= 'z') {
+            if((Character.isAlphabetic(a))){
                 answer.append(change(a));
             }else{
                 answer.append(a);
