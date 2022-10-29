@@ -52,6 +52,11 @@ public class Problem7 {
         }
         System.out.println(map);
         List<String> keySet = new ArrayList<>(map.keySet());
+        keySet.sort(new Comparator<String>() {
+            public int compare(String o1, String o2){
+                return map.get(o2).compareTo(map.get(o1));
+            }
+        });
 
         answer = keySet;
         return answer;
