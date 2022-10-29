@@ -21,19 +21,18 @@ public class Problem6 {
 
     private static void checkNicknameInForms(List<List<String>> forms) {
         for(int i=1; i<forms.size(); i++) {
-            if(isConfirmListContainsWord(forms.get(i).get(1))) {
+            if(isNicknamesContainsNickname(forms.get(i).get(1))) {
                 answer.add(forms.get(i).get(0));
             }
             nicknames.add(forms.get(i).get(1));
         }
     }
 
-    private static boolean isConfirmListContainsWord(String nickname) {
-        for (String value : nicknames) {
-            for (int j = 0; j < nickname.length(); j++) {
-                if (value.contains(String.valueOf(nickname.charAt(j)))) {
-                    String s = nickname.substring(j, j + 2);
-                    if (value.contains(s)) {
+    private static boolean isNicknamesContainsNickname(String nickname) {
+        for (String name : nicknames) {
+            for (int i = 0; i < nickname.length(); i++) {
+                if (name.charAt(i) == nickname.charAt(i)) {
+                    if(name.charAt(i+1) == nickname.charAt(i+1)) {
                         return true;
                     }
                 }
