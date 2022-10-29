@@ -50,7 +50,14 @@ public class Problem2 {
 
     public static String solution(String cryptogram) {
         String answer = "answer";
+        String modifyCrypto = cryptogram;
 
+        while(true){
+            if(isFinished) break;
+            modifyCrypto = removeRedundant(modifyCrypto);
+        }
+
+        answer = modifyCrypto;
         return answer;
     }
 }
