@@ -1,7 +1,11 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 class Problem1 {
 
@@ -21,6 +25,7 @@ class Problem1 {
     private static Integer getMaxValue(List<Integer> pages) {
         Integer leftPage = pages.get(0);
         Integer rightPage = pages.get(1);
+
         if (isExceptionCase(leftPage, rightPage)) {
             return EXCEPTION_CASE;
         }
@@ -58,20 +63,13 @@ class Problem1 {
                 .reduce(1, (i, j) -> i * j);
 
         return Math.max(sum, multiply);
-
     }
 
     private static List<Integer> getEachNumbers(Integer page) {
-        List<Integer> eachNumbers = new ArrayList<>();
-        int loopTimes = page.toString().length();
-        for (int i = 0; i < loopTimes; i++) {
-            eachNumbers.add(page % 10);
-            page /= 10;
-        }
-
-        return eachNumbers;
+        return Stream.of(page.toString().split(""))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
-
 
     private static int getAnswer(Integer x, Integer y) {
         if (x == EXCEPTION_CASE || y == EXCEPTION_CASE) {
