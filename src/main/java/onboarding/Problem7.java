@@ -61,9 +61,23 @@ public class Problem7 {
             }
         }
 
-
-
         // 방문자로 점수 처리
+        // 방문자를 리스트로 정리
+        List<String> visitorList = new ArrayList<>();
+        for(int i=0; i<visitors.size(); i++){
+            if(!visitorList.contains(visitors.get(i))){
+                visitorList.add(visitors.get(i));
+            }
+        }
+
+        // 방문자 횟수로 점수 매김
+        int[] visitorPoint = new int[visitorList.size()];
+        for(int i=0; i<visitors.size(); i++){
+            String nowVisitor = visitors.get(i);
+            int visitorIdx = visitorList.indexOf(nowVisitor);
+            visitorPoint[visitorIdx]++;
+        }
+
 
         return answer;
     }
