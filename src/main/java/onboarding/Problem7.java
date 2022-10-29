@@ -1,7 +1,9 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class Problem7 {
     public static void main(String[] args) {
@@ -19,13 +21,21 @@ public class Problem7 {
     }
 
     private static final List<String> myFriends = new ArrayList<>();
+    private static final List<String> aFriendWeKnow = new ArrayList<>();
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         System.out.println(friendsListVerifier(user, friends));
         return null;
     }
 
-    private static List<String> friendsListVerifier(String user, List<List<String>> friends) {
-        saveMyFriends(user, friends);
+    private static List<String> friendsListVerifier(String myId, List<List<String>> friends) {
+        saveMyFriends(myId, friends);
+        for (List<String> users : friends) {
+            checkFriendsOfOtherUser(users);
+        }
+        sortList();
+        removeMyId(myId);
+        System.out.println("aFriendWeKnow = " + aFriendWeKnow);
         return myFriends;
     }
 
@@ -41,5 +51,45 @@ public class Problem7 {
                 }
             }
         }
+    }
+
+    private static void checkFriendsOfOtherUser(List<String> users) {
+        for (int i = 0; i < users.size(); i++) {
+            String userId = users.get(i);
+            for (String myFriendsId : myFriends) {
+                if (Objects.equals(userId, myFriendsId)) {
+                    if (i == 0) {
+                        if (!isMyFriend(users.get(1))) {
+                            aFriendWeKnow.add(users.get(1));
+                        }
+                    } else {
+                        if (!isMyFriend(users.get(0))) {
+                            aFriendWeKnow.add(users.get(0));
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private static boolean isMyFriend(String userId) {
+        for (String id : myFriends) {
+            if (Objects.equals(id, userId)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static void removeMyId(String myId) {
+        for (int i = 0; i < aFriendWeKnow.size(); i++) {
+            if (Objects.equals(aFriendWeKnow.get(i), myId)) {
+                aFriendWeKnow.remove(i);
+                i--;
+            }
+        }
+    }
+    private static void sortList() {
+        Collections.sort(aFriendWeKnow);
     }
 }
