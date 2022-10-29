@@ -1,15 +1,10 @@
 package onboarding;
 
-import java.util.List;
-
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.Iterator;
+import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of();
+        List<String> answer = new ArrayList<String>();
         // 이메일 도메인 유효성 검사
         String emailDomain = "email.com";
         deleteInvalidEmailInList(forms, emailDomain);
@@ -61,16 +56,14 @@ public class Problem6 {
         for (int start = 0; start < nickname.length(); start++) {
             for (int end = start + 2; end < nickname.length()+1; end++) {   // 중복식별은 두 글자부터이므로 end = start + 2
                 String letter = nickname.substring(start, end);
-                if (otherNickname.indexOf(letter) != -1) {    // 중복이 있다면
+                if (otherNickname.contains(letter)) {    // 중복이 있다면
                     isDuplicated = true;
+                    break;
                 }
             }
         }
         return isDuplicated;
     }
-
-
-
 }
 
 
