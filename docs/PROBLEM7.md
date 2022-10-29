@@ -3,12 +3,12 @@
 ---
 
 ## 구현 기능 목록
-- [X] 이름과 점수를 인스턴스 변수로 갖는 내부클래스 score를 만든다.
-- [X] score의 점수 내림차순으로 정렬하고 같은 점수일 시 이름으로 오름차순 정렬하는 priorityQueue를 생성한다.
 - [X] friends 리스트를 (key, value) = (user, friendsList)인 HashMap으로 변환한다
-- [ ] 지정된 user의 친구 리스트를 가져와 다시 그 친구들의 친구들을 10점씩 부여한 score객체를 priorityQueue에 넣는다.
-- [ ] visitors 리스트를 사용해 방문자에 대한 점수 객체를 priorityQueue에 추가한다
-- [ ] priorityQueue의 크기를 가늠, 최대 5명까지 poll하여 result 리스트를 완성한다.
+- [ ] 친구 HashMap과 방문자 List를 기반으로 친구 추천 점수 HashMap을 구성한다
+  - [ ] 지정된 사용자의 친구의 친구들에 10점을 친구 추천 점수 HashMap에 추가한다.
+  - [ ] 방문자들에게 1점을 친구 추천 점수 HashMap에 추가한다.
+- [ ] 친구 추천 점수 HashMap을 점수와 이름 기반으로 정렬한다.
+- [ ]  최대 5명까지 poll하여 result 리스트를 완성한다.
 ## 🚀 기능 요구 사항
 
 레벨 2의 팀 프로젝트 미션으로 SNS(Social Networking Service)를 만들고자 하는 팀이 있다. 팀에 속한 크루 중 평소 알고리즘에 관심이 많은 미스터코는 친구 추천 알고리즘을 구현하고자 아래와 같은 규칙을 세웠다.

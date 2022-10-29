@@ -4,6 +4,8 @@ import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
@@ -14,46 +16,6 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 class Problem7Test {
-
-	@Test
-	void scoreClassTest() {
-		String username = "kim";
-		int score = 10;
-
-		Problem7.Score user1 = new Problem7.Score(username, score);
-
-		assertThat(user1).isInstanceOf(Problem7.Score.class);
-		assertThat(user1.score).isEqualTo(10);
-
-		user1.addScore10();
-		assertThat(user1.score).isEqualTo(20);
-
-		user1.addScore1();
-		assertThat(user1.score).isEqualTo(21);
-	}
-
-	@Test
-	@DisplayName("점수가 높은 순, 같은 점수라면 이름을 오름차순으로 가져야 한다.")
-	void initPriorityQueueTest() {
-		PriorityQueue<Problem7.Score> priorityQueue = Problem7.initPriorityQueue();
-		Problem7.Score user1 = new Problem7.Score("abe", 100);
-		Problem7.Score user2 = new Problem7.Score("abc", 100);
-		Problem7.Score user3 = new Problem7.Score("abd", 100);
-		Problem7.Score user4 = new Problem7.Score("efg", 101);
-		Problem7.Score user5 = new Problem7.Score("aaa", 99);
-
-		priorityQueue.add(user1);
-		priorityQueue.add(user2);
-		priorityQueue.add(user3);
-		priorityQueue.add(user4);
-		priorityQueue.add(user5);
-
-		assertThat(priorityQueue.poll()).isSameAs(user4);
-		assertThat(priorityQueue.poll()).isSameAs(user2);
-		assertThat(priorityQueue.poll()).isSameAs(user3);
-		assertThat(priorityQueue.poll()).isSameAs(user1);
-		assertThat(priorityQueue.poll()).isSameAs(user5);
-	}
 
 	@Test
 	void getFriendsHashMapTest() {
@@ -83,5 +45,32 @@ class Problem7Test {
 		assertThat(mrkoFriends.size()).isEqualTo(2);
 		assertThat(shakevanFriends.size()).isEqualTo(3);
 		assertThat(bediFriends).isNull();
+	}
+
+	@Test
+	void addScoreToTwoHopUsersTest() {
+		List<List<String>> friends = List.of(
+			List.of("donut", "andole"),
+			List.of("donut", "jun"),
+			List.of("donut", "mrko"),
+			List.of("shakevan", "andole"),
+			List.of("shakevan", "jun"),
+			List.of("shakevan", "mrko")
+		);
+		String user = "mrko";
+		HashMap<String, Integer> userScoreHashMap = Problem7.userScoreHashMap;
+
+		HashMap<String, ArrayList<String>> friendsHashMap = Problem7.getFriendsHashMap(friends);
+		ArrayList<String> friendsList = friendsHashMap.get(user);
+		HashSet<String> excludeUser = new HashSet<>(friendsList);
+		excludeUser.add(user);
+		Problem7.addScoreToTwoHopUsers(friendsHashMap, friendsList, excludeUser);
+
+		assertThat(userScoreHashMap.get("andole")).isEqualTo(20);
+		assertThat(userScoreHashMap.get("jun")).isEqualTo(20);
+		assertThat(userScoreHashMap.get("donut")).isNull();
+		assertThat(userScoreHashMap.get("mrko")).isNull();
+		assertThat(userScoreHashMap.get("shakevan")).isNull();
+		assertThat(userScoreHashMap.get("bedi")).isNull();
 	}
 }

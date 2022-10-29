@@ -3,32 +3,17 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.PriorityQueue;
 
 public class Problem7 {
-    public static class Score {
-        String username;
-        int score;
+    public static HashMap<String, Integer> userScoreHashMap = new HashMap<>();
 
-        public Score(String username, int score) {
-            this.username = username;
-            this.score = score;
-        }
-
-        public void addScore1() {
-            this.score += 1;
-        }
-
-        public void addScore10() {
-            this.score += 10;
-        }
-    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         HashMap<String, ArrayList<String>> friendsHashMap = getFriendsHashMap(friends);
-        PriorityQueue<Score> scorePriorityQueue = getScorePriorityQueue(user, friendsHashMap);
+        setUserScoreHashMap(user, friendsHashMap, visitors);
         return answer;
     }
 
@@ -51,14 +36,39 @@ public class Problem7 {
         friendsHashMap.get(user1).add(user2);
     }
 
-    public static PriorityQueue<Score> getScorePriorityQueue(String user, HashMap<String, ArrayList<String>> friendsHashMap) {
-        PriorityQueue<Score> scorePriorityQueue = initPriorityQueue();
-
-        return scorePriorityQueue;
+    public static void setUserScoreHashMap(String user, HashMap<String, ArrayList<String>> friendsHashMap,
+        List<String> visitors) {
+        ArrayList<String> friendsList = friendsHashMap.get(user);
+        HashSet<String> excludeUser = new HashSet<>(friendsList);
+        excludeUser.add(user);
+        addScoreToTwoHopUsers(friendsHashMap, friendsList, excludeUser);
+        addScoreToVisitors(visitors, excludeUser);
     }
 
-    public static PriorityQueue<Score> initPriorityQueue() {
-        return new PriorityQueue<>((a, b) -> (a.score == b.score) ?
-            a.username.compareTo(b.username) : b.score - a.score);
+    public static void addScoreToTwoHopUsers(HashMap<String, ArrayList<String>> friendsHashMap, ArrayList<String> friendsList,
+        HashSet<String> excludeUser) {
+        for (String friend : friendsList) {
+            System.out.println("checking friend : " + friend);
+            ArrayList<String> twoHopFriendsList = friendsHashMap.get(friend);
+            for (String twoHopFriend : twoHopFriendsList) {
+               addScoreIfAvailable(twoHopFriend, excludeUser, 10);
+            }
+        }
+    }
+
+    public static void addScoreToVisitors(List<String> visitors, HashSet<String> excludeUser) {
+
+    }
+
+    public static void addScoreIfAvailable(String twoHopFriend, HashSet<String> excludeUser, int score) {
+        if (!excludeUser.contains(twoHopFriend)) {
+            if (!userScoreHashMap.containsKey(twoHopFriend)) {
+                userScoreHashMap.put(twoHopFriend, score);
+                System.out.println("twoHopFriend " + twoHopFriend + " made with score 10");
+                return;
+            }
+            userScoreHashMap.put(twoHopFriend, userScoreHashMap.get(twoHopFriend) + 10);
+            System.out.println("twoHopFriend " + twoHopFriend + " added score 10");
+        }
     }
 }
