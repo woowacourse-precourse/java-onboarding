@@ -82,10 +82,6 @@ public class Problem6 {
         }
 
         private boolean isDupChar(List<List<String>> forms, String compName, int j) {
-            /**
-             * [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"],
-             * ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ]
-             */
             for (int m = 0; m < forms.get(j).get(1).length() - 1; m++) {
                 for (int n = 0; n < compName.length() - 1; n++) {
                     String compNameSlicing = compName.substring(n, n + 2);
