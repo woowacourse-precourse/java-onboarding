@@ -22,4 +22,18 @@ public class Problem3 {
         return broken;
     }
 
+    public static int clapCnt(List<Integer> broken) {
+
+        int cnt = 0;
+
+        for(int i : broken) {
+
+            if (i == 3 || i == 6 || i == 9) {
+                cnt++;
+            }
+        }
+
+        return cnt;
+    }
+
 }
