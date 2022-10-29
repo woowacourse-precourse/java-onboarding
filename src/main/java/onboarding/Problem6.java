@@ -8,6 +8,33 @@ public class Problem6 {
         return answer;
     }
 
+    static List<String> get_duplicated_list(Map<String, List<String>> map){
+
+        List<String> duplicated_list = get_identical_list(map);
+        ArrayList<String> key_list = new ArrayList<>(map.keySet());
+
+        for(int i=0; i<key_list.size(); i++) {
+            for(int j=0; j<key_list.size(); j++) {
+
+                if(i ==j) continue;
+
+                if(is_duplicate(key_list.get(i), key_list.get(j))){
+
+                    for(String email: map.get(key_list.get(i))) {
+                        duplicated_list.add(email);
+                    }
+                    for(String email: map.get(key_list.get(j))) {
+                        duplicated_list.add(email);
+                    }
+
+                }
+
+            }
+        }
+
+        return duplicated_list;
+    }
+
     static List<String> get_identical_list(Map<String, List<String>> map){
 
         List<String> identical_list = new ArrayList<>();
