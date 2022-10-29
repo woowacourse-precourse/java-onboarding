@@ -9,7 +9,9 @@ class Problem1 {
         int pobiScore = Integer.MIN_VALUE;
         int crongScore = Integer.MIN_VALUE;
         //TODO(예외 처리)
-
+        if(pageErrorChecking(pobi, crong)) {
+            return -1;
+        }
         //pobi, crong 점수 구하기
         for (int i : pobi) {
             pobiScore = Math.max(makeScore(i), pobiScore);
@@ -25,6 +27,22 @@ class Problem1 {
 
         return answer;
     }
+    private static boolean pageErrorChecking(List<Integer> pobi, List<Integer> crong) {
+       if(pobi.get(1) - pobi.get(0) != 1) {
+           return true;
+       }
+       if(crong.get(1) - crong.get(0) != 1) {
+           return true;
+       }
+       if(pobi.get(0) == 1 || pobi.get(1) == 400) {
+           return true;
+       }
+        if(crong.get(0) == 1 || crong.get(1) == 400) {
+            return true;
+        }
+       return false;
+    }
+
     private static int makeScore(int score) {
         return Math.max(sumOfDigits(score), multiplicationOfDigits(score));
     }
