@@ -14,7 +14,8 @@ public class Problem5 {
             return null;
         }
 
-        List<Integer> answer = null;
+        Bank bank = new Bank();
+        List<Integer> answer = bank.convertMoneyToMonetaryUnit(money);
         return answer;
     }
 
