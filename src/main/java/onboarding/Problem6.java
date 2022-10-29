@@ -13,7 +13,6 @@ import java.util.stream.Collectors;
  */
 public class Problem6 {
 
-    /** 사용자 */
     public static class Member {
         private String name;
         private String email;
@@ -44,9 +43,7 @@ public class Problem6 {
         }
     }
 
-    /** 중복이름을 가진 사용자 저장소 */
     public static Set<Member> duplicateMemberList = new HashSet<>();
-    /** 2글자로 잘린 이름 저장소 */
     public static Map<String, Member> nameStorage = new HashMap<>();
 
     public static List<String> solution(List<List<String>> forms) {
@@ -79,7 +76,6 @@ public class Problem6 {
      * @param member : 사용자
      */
     private static void checkDuplicateName(String slice, Member member) {
-        // 이제엠엠엠엠엠 같은 경우 한 멤버가 동일한 이름을 여럿 가질 경우를 고려해야함.
         if (nameStorage.containsKey(slice) && !member.name.equals(nameStorage.get(slice).getName())) {
             duplicateMemberList.add(member);
             duplicateMemberList.add(nameStorage.get(slice));
