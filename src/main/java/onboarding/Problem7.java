@@ -3,7 +3,6 @@ package onboarding;
 import onboarding.problem7.User;
 import onboarding.problem7.Users;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Problem7 {
@@ -12,6 +11,7 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         init();
         createUserInFriends(friends, user);
+        checkVisitors(visitors);
         return users.getRecommendFriendsRankingFive();
     }
 
@@ -27,6 +27,13 @@ public class Problem7 {
                     findUser.addFriendScore();
                 }
             }
+        }
+    }
+
+    private static void checkVisitors(List<String> visitors) {
+        for(String visitor : visitors) {
+            User findUser = users.findUser(visitor);
+            findUser.addVisitsScore();
         }
     }
 }
