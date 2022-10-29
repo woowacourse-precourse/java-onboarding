@@ -46,6 +46,13 @@ class Problem1 {
         }
         return scoreByMaxValue;
     }
+    public static boolean isInValidRange(List<Integer> pages){
+        boolean isInValidRange=true;
+        if(pages.get(0)==1 || pages.get(1)==400){
+            isInValidRange=false;
+        }
+        return isInValidRange;
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         int pobiScore=getScoreByMaxValue(pobi);
