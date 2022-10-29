@@ -33,10 +33,7 @@ public class AccountRepository {
         return accountInfoMap.values();
     }
 
-    public Account getAccountOrPutDefaultAccount(String user) {
-        if (!accountInfoMap.containsKey(user)) {
-            accountInfoMap.put(user, new Account(user));
-        }
-        return accountInfoMap.get(user);
+    public Account getAccount(String user) {
+        return accountInfoMap.computeIfAbsent(user, key -> new Account(key));
     }
 }

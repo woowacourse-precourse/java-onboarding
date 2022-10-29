@@ -49,7 +49,7 @@ public class FriendRecommendService {
     }
 
     private void calculateVisitorScore(String visitorId) {
-        Account visitor = accountRepository.getAccountOrPutDefaultAccount(visitorId);
+        Account visitor = accountRepository.getAccount(visitorId);
 
         if (!visitor.isFriend(targetUser)) {
             visitor.addScore(VISITOR_SCORE);
