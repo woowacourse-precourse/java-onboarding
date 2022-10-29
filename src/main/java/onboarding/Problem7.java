@@ -20,10 +20,8 @@ public class Problem7 {
 		addSharedFriendsScore(friends, userFriends, friendsScore);
 		addVisitorScore(friendsScore, visitors);
 		removeUserFriendsScore(user, userFriends, friendsScore);
+		addEmptyFriends(friendsScore);
 
-		while (friendsScore.size() < PERSON_NUM_SHOW) {
-			friendsScore.put("emptyUser", 0);
-		}
 		List<Map.Entry<String, Integer>> sortedFriendScore = new ArrayList<>(friendsScore.entrySet());
 		sortedFriendScore.sort(new Comparator<Map.Entry<String, Integer>>() {
 			@Override
@@ -83,6 +81,12 @@ public class Problem7 {
 		friendsScore.remove(user);
 		for (String userFriend : userFriends) {
 			friendsScore.remove(userFriend);
+		}
+	}
+
+	private static void addEmptyFriends(HashMap<String, Integer> friendsScore) {
+		while (friendsScore.size() < PERSON_NUM_SHOW) {
+			friendsScore.put("emptyUser" + friendsScore.size(), 0);
 		}
 	}
 }
