@@ -5,17 +5,15 @@ package onboarding;
  *
 */
 public class Problem3 {
-    public static int solution(int number) { // 메모이제이션 활용
-
+    public static int solution(int number) {
         int count = 0;
         for (int i = 1; i <= number; i++) {
-            int current = i;
-            int temp = count;
-            while (current != 0) {
-                if (current % 10 == 3 || current % 10 == 6 || current % 10 == 9) {
+            int current_number = i;
+            while (current_number != 0) {
+                if (current_number % 10 == 3 || current_number % 10 == 6 || current_number % 10 == 9) {
                     count++;
                 }
-                current /= 10;
+                current_number /= 10;
             }
         }
         return count;
