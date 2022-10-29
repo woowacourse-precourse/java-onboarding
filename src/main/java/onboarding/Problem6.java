@@ -9,11 +9,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Problem6 {
-    private static final HashMap<String, Integer> nicknameMap = new HashMap<>();
-    private static final TreeSet<String> alertList = new TreeSet<>();
-
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
+        HashMap<String, Integer> nicknameMap = new HashMap<>();
+        TreeSet<String> alertList = new TreeSet<>();
         for(int i = 0; i < forms.size(); i++) {
             List<String> user = forms.get(i);
             String email = user.get(0);
@@ -22,8 +21,7 @@ public class Problem6 {
             if(!checkEmail(email)) {
                 continue;
             }
-
-            getNickname(nickname, i, forms);
+            getNickname(nickname, i, forms, nicknameMap, alertList);
         }
 
         answer = Lists.newArrayList(alertList);
@@ -34,13 +32,10 @@ public class Problem6 {
         String regex = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@email.com";
         Pattern p = Pattern.compile(regex);
         Matcher m = p.matcher(email);
-        if(m.matches() && email.length() >= 11 && email.length() <= 20) {
-            return true;
-        }
-        return false;
+        return m.matches() && email.length() >= 11 && email.length() <= 20;
     }
 
-    public static void getNickname(String nickname, int idx, List<List<String>> forms) {
+    public static void getNickname(String nickname, int idx, List<List<String>> forms, HashMap<String, Integer> nicknameMap, TreeSet<String> alertList) {
         for (int i = 0; i < nickname.length() - 1; i++){
             char nicknameChar1 = nickname.charAt(i);
             char nicknameChar2 = nickname.charAt(i + 1);
@@ -51,13 +46,13 @@ public class Problem6 {
                 continue;
             }
             int overlapIdx = nicknameMap.get(words);
-            putAlertList(overlapIdx, forms);
-            putAlertList(idx, forms);
+            putAlertList(overlapIdx, forms, alertList);
+            putAlertList(idx, forms, alertList);
         }
     }
 
 
-    public static void putAlertList(int index, List<List<String>> forms) {
+    public static void putAlertList(int index, List<List<String>> forms, TreeSet<String> alertList) {
         List<String> userInfo = forms.get(index);
         String email = userInfo.get(0);
         alertList.add(email);
