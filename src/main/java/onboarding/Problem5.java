@@ -6,18 +6,24 @@ import java.util.List;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
-        int a = money;
         List<Integer> change = new ArrayList<>();
-        a = oneWon(a,change);
+        money = toOneWon(money, change);
 
 
         return change;
     }
 
-    public static int oneWon(int a, List<Integer> change) {
-        change.add(a % 10);
-        return a / 10;
+    public static int toOneWon(int money, List<Integer> change) {
+        change.add(money % 10);
+        return money / 10;
     }
 
-
+    public static void toRestWon(int money, List<Integer> change) {
+        for (int i = 0; i < 4; i++) {
+            int oneOfNumber = money % 10;
+            change.add(oneOfNumber % 5);
+            change.add(oneOfNumber / 5);
+            money /= money;
+        }
+    }
 }
