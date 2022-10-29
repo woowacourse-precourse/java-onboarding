@@ -45,14 +45,7 @@ public class Problem7 {
                 if (friend.equals(user)) continue;
 
                 // 사용자와 이미 친구인 관계도 건너뜀
-                boolean isAlreadyFriend = false;
-                for (String uf : userFriends) {
-                    if (friend.equals(uf)) {
-                        isAlreadyFriend = true;
-                        break;
-                    }
-                }
-                if (isAlreadyFriend) continue;
+                if (userFriend.contains(friend)) continue;
 
                 // 사용자도 아니고, 사용자의 친구도 아닌 사용자의 친구와 아는 사이라면(10점)
                 Integer friendScore = score.get(friend);
