@@ -9,9 +9,19 @@ public class Problem4 {
     public static String solution(String word) {
         StringBuilder answer = new StringBuilder();
         for (int i = 0; i < word.length(); i++) {
-            // 로직
+            answer.append(getReverseAlphabet(word.charAt(i)));
         }
         return answer.toString();
+    }
+
+    private static char getReverseAlphabet(char alphabet) {
+        if (Character.isLowerCase(alphabet)) {
+            return getLowerReverseCase(alphabet);
+        }
+        if (Character.isUpperCase(alphabet)) {
+            return getUpperReverseCase(alphabet);
+        }
+        return alphabet;
     }
 
     private static char getLowerReverseCase(char alphabet) {
