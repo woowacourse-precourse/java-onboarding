@@ -1,11 +1,19 @@
 package onboarding;
 
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+
+        Map<String, List<String>> nickname_emails_map = list_to_map(forms);
+        List<String> email_list = get_duplicated_list(nickname_emails_map);
+        List<String> modified_email_list = modify_list(email_list);
+
+        return modified_email_list;
     }
 
     static List<String> modify_list(List<String> list){
