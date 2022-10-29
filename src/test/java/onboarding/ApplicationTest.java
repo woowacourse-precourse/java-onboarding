@@ -217,6 +217,7 @@ class ApplicationTest {
     @Nested
     class Problem5Test {
         @Test
+        @DisplayName("50237 -> 50000 + (2 * 100) + (3 * 10) + (7 * 1)")
         void case1() {
             int money = 50_237;
             List<Integer> result = List.of(1, 0, 0, 0, 0, 2, 0, 3, 7);
@@ -224,6 +225,7 @@ class ApplicationTest {
         }
 
         @Test
+        @DisplayName("15000 -> 10000 + 5000")
         void case2() {
             int money = 15_000;
             List<Integer> result = List.of(0, 1, 1, 0, 0, 0, 0, 0, 0);
