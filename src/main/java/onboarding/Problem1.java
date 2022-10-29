@@ -19,6 +19,9 @@ class Problem1 {
         List<Integer> pobiScores = getScores(pobi);
         List<Integer> crongScores = getScores(crong);
 
+        Integer pobiMaxScore = selectMyMaxScore(pobiScores);
+        Integer crongMaxScore = selectMyMaxScore(crongScores);
+        
         return answer;
     }
 
@@ -69,6 +72,13 @@ class Problem1 {
             scores.add(getPageElementsMultiplyScore(page));
         }
         return scores;
+    }
+
+    public static Integer selectMyMaxScore(List<Integer> scoreList) {
+        int maxScore = Integer.MIN_VALUE;
+        for (Integer score : scoreList)
+            maxScore = Math.max(maxScore, score);
+        return maxScore;
     }
 
 }
