@@ -1,5 +1,6 @@
 package onboarding.problem5.collection;
 
+import onboarding.problem5.dto.Money;
 import onboarding.problem5.validation.WalletValidator;
 import onboarding.problem5.vo.Change;
 
@@ -26,22 +27,23 @@ public class Wallet {
 
     public List<Integer> saveMoney(int money) {
         WalletValidator.validate(money);
+        Money moneyDto = Money.of(money);
 
-        money = saveAsChange(money, FIFTY_THOUSANDS);
-        money = saveAsChange(money, TEN_THOUSANDS);
-        money = saveAsChange(money, FIVE_THOUSANDS);
-        money = saveAsChange(money, THOUSAND);
-        money = saveAsChange(money, FIVE_HUNDREDS);
-        money = saveAsChange(money, HUNDRED);
-        money = saveAsChange(money, FIFTY);
-        money = saveAsChange(money, TEN);
-        saveAsChange(money, ONE);
+        saveAsChange(moneyDto, FIFTY_THOUSANDS);
+        saveAsChange(moneyDto, TEN_THOUSANDS);
+        saveAsChange(moneyDto, FIVE_THOUSANDS);
+        saveAsChange(moneyDto, THOUSAND);
+        saveAsChange(moneyDto, FIVE_HUNDREDS);
+        saveAsChange(moneyDto, HUNDRED);
+        saveAsChange(moneyDto, FIFTY);
+        saveAsChange(moneyDto, TEN);
+        saveAsChange(moneyDto, ONE);
 
         return getChanges();
     }
 
-    private int saveAsChange(int money, Change change) {
-        changes[change.getIndex()] = money / change.getValue();
-        return money % change.getValue();
+    private void saveAsChange(Money money, Change change) {
+        changes[change.getIndex()] = money.getMoney() / change.getValue();
+        money.setMoney(money.getMoney() % change.getValue());
     }
 }
