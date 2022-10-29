@@ -11,6 +11,15 @@ public class Problem3 {
     }
 
     private static int clapNum(int num) {
-        return 0;
+        int clapTime = 0;
+
+        while(num > 0) {
+            int lastDec = num % 10;
+            if (lastDec != 0 && lastDec % 3 == 0)
+                clapTime++;
+            num /= 10;
+        }
+
+        return clapTime;
     }
 }
