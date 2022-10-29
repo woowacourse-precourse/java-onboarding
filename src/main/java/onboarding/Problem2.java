@@ -8,6 +8,8 @@ package onboarding;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
+
+        answer =decode(cryptogram);
         return answer;
     }
 
@@ -28,5 +30,17 @@ public class Problem2 {
             result.append(code.charAt(i));
         }
         return result;
+    }
+
+    static String decode(String cryptogram) {
+        StringBuilder code = new StringBuilder(cryptogram);
+        int codeLength=0;
+
+        do {
+            codeLength = code.length();
+            code = deleteOverlab(code);
+        }while (code.length()!=codeLength && code.length()!=0);
+
+        return code.toString();
     }
 }
