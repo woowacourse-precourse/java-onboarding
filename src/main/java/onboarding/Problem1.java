@@ -9,7 +9,7 @@ class Problem1 {
         return answer;
     }
 
-    private static int caculateSingePageScore(int number){
+    private static int calculateSingePageScore(int number){
         int[] tokenizedNumber = tokenize(Integer.toString(number));
 
         // init
