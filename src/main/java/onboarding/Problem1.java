@@ -43,4 +43,16 @@ class Problem1 {
             return leftMul;
         return rightMul;
     }
+
+    public static int compareBoth(List<Integer> pages) {
+
+        int leftPage = pages.get(0), rightPage = pages.get(1);
+
+        int addVal = addPages(leftPage, rightPage);
+        int mulVal = mulPages(leftPage, rightPage);
+
+        if (addVal >= mulVal)
+            return addVal;
+        return mulVal;
+    }
 }
