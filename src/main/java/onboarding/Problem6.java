@@ -1,7 +1,9 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     private static List<String> nicknames;
@@ -10,7 +12,7 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         initSystem(forms);
         checkNicknameInForms(forms);
-        return answer;
+        return getDuplicatedNicknames(answer);
     }
 
     private static void initSystem(List<List<String>> forms) {
@@ -43,5 +45,14 @@ public class Problem6 {
             }
         }
         return false;
+    }
+
+    private static List<String> getDuplicatedNicknames(List<String> answer) {
+        if(answer.size() == 1) {
+            answer.remove(0);
+            return answer;
+        }
+
+        return answer.stream().sorted().collect(Collectors.toList());
     }
 }
