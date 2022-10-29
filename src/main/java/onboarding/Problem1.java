@@ -44,17 +44,12 @@ class Problem1 {
         return (left>right) ? left : right;
     }
 
-    /** char type의 값을 int type 값으로 바꾸어 반환합니다. */
-    private static int ascii2int(char chr) {
-        return chr - 48;
-    }
-
     /** 각 자리 숫자를 모두 더한 값을 반환합니다. */
     private static int sum(Integer page) {
         int result = 0;
         String pageStr = page.toString();
         for(int i=0;i<pageStr.length();i++)
-            result = result +ascii2int(pageStr.charAt(i));
+            result = result +Character.getNumericValue(pageStr.charAt(i));
         return result;
     }
 
@@ -63,7 +58,7 @@ class Problem1 {
         int result = 1;
         String pageStr = page.toString();
         for(int i=0;i<pageStr.length();i++)
-            result = result * ascii2int(pageStr.charAt(i));
+            result = result * Character.getNumericValue(pageStr.charAt(i));
         return result;
     }
 }
