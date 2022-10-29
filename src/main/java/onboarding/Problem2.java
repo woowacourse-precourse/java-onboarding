@@ -4,6 +4,10 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
 
+        while (hasDuplicated(cryptogram)) {
+            cryptogram = decryption(cryptogram);
+        }
+        answer = cryptogram;
         return answer;
     }
 
