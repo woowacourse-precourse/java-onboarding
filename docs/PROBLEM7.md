@@ -24,3 +24,9 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+## 🚀 기능 목록
+### solution
+-[ ] 친구 추천 목록이 점수가 가장 높은 순으로 출력 되어야함
+- [ ] 친구 추천 목록의 수는 최대 5명까지 출력해야함
+- [ ] 점수가 0인 경우, 친구 추천 목록에 넣지 않는다.
