@@ -19,8 +19,25 @@ public class Problem2 {
         return deque;
     }
 
+
+    private static StringBuffer dequeToStr(String cryptogram) {
+        StringBuffer stringBuffer = new StringBuffer();
+        Deque<Character> deque = removeDuplicates(cryptogram);
+
+        while (!deque.isEmpty()) {
+            stringBuffer.append(deque.getFirst());
+            deque.removeFirst();
+        }
+        return stringBuffer;
+    }
+
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = "";
+
+        StringBuffer stringBuffer = dequeToStr(cryptogram);
+
+        answer = stringBuffer.toString();
+
         return answer;
     }
 }
