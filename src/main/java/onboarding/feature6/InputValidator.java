@@ -16,11 +16,11 @@ public class InputValidator {
         nickname = userInfo.get(1);
     }
 
-    public boolean emailChecker(String email) {
+    public boolean emailChecker() {
         return isValidLength(email, 11, 20) && isValidEmailAddress(email);
     }
 
-    public boolean nicknameChecker(String nickname) {
+    public boolean nicknameChecker() {
         return  isValidLength(nickname, 1, 20) && isValidNickname(nickname);
     }
 
