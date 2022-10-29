@@ -2,12 +2,26 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = decode(cryptogram);
+        String answer = "";
+        if (!isInvalidInput(cryptogram)) {
+            answer = decode(cryptogram);
+        }
         return answer;
     }
 
     private static boolean isInvalidInput(String cryptogram) {
-        return isInvalidLength(cryptogram);
+        return isInvalidLength(cryptogram) || isNotLowerCase(cryptogram);
+    }
+
+    private static boolean isNotLowerCase(String cryptogram) {
+        int i = 0;
+        while (i < cryptogram.length()) {
+            if (cryptogram.charAt(i) < 'a' || cryptogram.charAt(i) > 'z') {
+                return true;
+            }
+            i++;
+        }
+        return false;
     }
 
     private static boolean isInvalidLength(String cryptogram) {
