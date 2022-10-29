@@ -14,7 +14,7 @@ public class Problem2 {
 
     private static String deleteDuplicateChars(String cryptogram) {
         for (int i = 1; i < cryptogram.length(); i++) {
-            if(rememberChar == cryptogram.charAt(i)) {
+            if (rememberChar == cryptogram.charAt(i)) {
                 continue;
             }
 
