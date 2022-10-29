@@ -28,4 +28,13 @@ class Problem1 {
         }
         return false;
     }
+
+    static int addPageNum(int page){
+        int sum = 0;
+        while(page>0){
+            sum+=page%10;
+            page=page/10;
+        }
+        return sum;
+    }
 }
