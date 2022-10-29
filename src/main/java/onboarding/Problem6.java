@@ -7,11 +7,27 @@
 
 package onboarding;
 
-import java.util.List;
+import java.util.*;
 
 public class Problem6 {
+    static Map<String, Set<Integer>> twoLettersRepository = new HashMap<>();
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
+    }
+
+    public static void analyzeNickname (String nickname, int index) {
+        int len = nickname.length();
+        for (int i = 0; i < len - 1; i++) {
+            addToRepository(nickname.substring(i, i+2), index);
+        }
+    }
+
+    public static void addToRepository (String twoLetters, int index) {
+        if (!twoLettersRepository.containsKey(twoLetters)) {
+            twoLettersRepository.put(twoLetters, new HashSet<>());
+        }
+        twoLettersRepository.get(twoLetters).add(index);
     }
 }
