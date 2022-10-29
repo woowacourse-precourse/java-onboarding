@@ -15,15 +15,15 @@ import java.util.List;
 
 class Problem1 {
 
-    public boolean isOdd(List<Integer> page){
-        if((page.get(0) & 1) != 0)
+    public boolean isOdd(List<Integer> param){
+        if((param.get(0) & 1) != 0)
             return true;
         else
             return false;
     }
 
-    public boolean isEven(List<Integer> page){
-        if((page.get(1) & 1) == 0)
+    public boolean isEven(List<Integer> param){
+        if((param.get(1) & 1) == 0)
             return true;
         else
             return false;
@@ -35,6 +35,7 @@ class Problem1 {
         else
             return false;
     }
+
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
