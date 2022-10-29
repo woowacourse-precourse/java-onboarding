@@ -21,6 +21,10 @@ class RecommendedFriend implements Comparable<RecommendedFriend> {
         return score;
     }
 
+    public void addScore(int score) {
+        this.score += score;
+    }
+
     @Override
     public int compareTo(RecommendedFriend other) {
         if (this.score < other.score) {
@@ -39,6 +43,7 @@ public class Problem7 {
         List<String> userFriendList = findFriendListByUser(user, friends);
 
         List<RecommendedFriend> recommendedFriendList = createRecommendedFriends(user, userFriendList, friends);
+        recommendedFriendList = visitorScore(recommendedFriendList, visitors, userFriendList);
 
         return null;
     }
@@ -69,14 +74,25 @@ public class Problem7 {
         return result;
     }
 
-    private static Map<String, Integer> visitorScore(Map<String, Integer> recommendedFriendMap, List<String> visitors, List<String> userFriendList) {
+    private static List<RecommendedFriend> visitorScore(List<RecommendedFriend> recommendedFriendList, List<String> visitors, List<String> userFriendList) {
+        List<RecommendedFriend> result = new ArrayList<>();
         for (String visitor : visitors) {
             if (!userFriendList.contains(visitor)) {
-                Integer score = recommendedFriendMap.getOrDefault(visitor, 0);
-                recommendedFriendMap.put(visitor, score + 1);
+                RecommendedFriend findRecommendedFriend = findRecommendedFriendByName(visitor, recommendedFriendList);
+                findRecommendedFriend.addScore(1);
+                result.add(findRecommendedFriend);
             }
         }
-        return recommendedFriendMap;
+        return result;
+    }
+
+    private static RecommendedFriend findRecommendedFriendByName(String name, List<RecommendedFriend> recommendedFriendList) {
+        for (RecommendedFriend recommendedFriend : recommendedFriendList) {
+            if (recommendedFriend.getName().equals(name)) {
+                return recommendedFriend;
+            }
+        }
+        return new RecommendedFriend(name);
     }
 
     private static List<String> findTop5ScoreUser(Map<String, Integer> recommendedFriendMap) {
