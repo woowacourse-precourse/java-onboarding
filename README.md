@@ -86,3 +86,10 @@ BUILD SUCCESSFUL in 0s
 |  1.1 | 주어진 리스트 배열의 게임의 결과값을 반환 | Problem1.findGameValue | 
 |  1.2 | 주어진 숫자의 자릿수들의 합 | Problem1.sumOfDigits | 
 |  1.3 | 주어진 숫자의 자릿수들의 겁 | Problem1.productOfDigits| 
+
+2. 문제2
+
+|기능목록 번호| 내용 | 구현상황 |
+| :---:  | :---: | :--- | 
+|  2.0 | 주어진 텍스트의 최종 cipher text를 출력 | Problem2.solve  | 
+|  2.1 | 주어진 텍스트를 1회 해독한 결과를 출력 | Problem2.decipher  | 
