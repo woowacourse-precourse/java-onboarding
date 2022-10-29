@@ -15,6 +15,33 @@ class Problem1 {
         return (int)(Math.log10(digits) + 1);
     }
 
+    List<Integer> divideDigits(int digits){
+        int numberOfDigits = checkNumberOfDigits(digits);
+        int units = 0;
+        int tens = 0;
+        int hundreds = 0;
+        int result = 0;
+        List<Integer> dividedDigit;
+
+        if(numberOfDigits == 1) {
+            units = digits;
+            dividedDigit = List.of(units);
+        }
+        else if(numberOfDigits == 2){
+            units = digits % 10;
+            tens = digits / 10;
+            dividedDigit = List.of(units, tens);
+        }
+        else {
+            units = digits % 10;
+            tens = (digits % 100) / 10;
+            hundreds = digits / 100;
+            dividedDigit = List.of(units, tens, hundreds);
+        }
+
+        return dividedDigit;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
