@@ -64,12 +64,12 @@ public class Problem7 {
         return answer;
     }
 
-    private static List<String> makeFriendList(String people, List<String> friendList) {
-        if (friendList==null) {
-            return new ArrayList(Arrays.asList(people));
+    private static People makeFriendList(People people, String name1, String name2) {
+        if (people==null) {
+            people = new People(name1);
         }
-        friendList.add(people);
-        return friendList;
+        people.addFriendList(name2);
+        return people;
     }
 
     private static boolean isFriends(String name, List<String> friendList) {
