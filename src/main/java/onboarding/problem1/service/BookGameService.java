@@ -6,22 +6,25 @@ import java.util.List;
 
 public class BookGameService {
 
-    public int result(List<Integer> beforeNumbers, List<Integer> afterNumbers) {
+    public static int result(List<Integer> beforeNumbers, List<Integer> afterNumbers) {
         try {
-            Page before = new Page(beforeNumbers.get(0), beforeNumbers.get(1));
-            Page after = new Page(afterNumbers.get(0), afterNumbers.get(1));
-
-            if (before.maxScore() > after.maxScore()) {
-                return 1;
-            }
-            if (before.maxScore() < after.maxScore()) {
-                return 2;
-            }
-            if (before.maxScore() == after.maxScore()) {
-                return 0;
-            }
+            Page before = new Page(beforeNumbers);
+            Page after = new Page(afterNumbers);
+            return result(before.maxScore(), after.maxScore());
         } catch (Exception exception) {
             return -1;
+        }
+    }
+
+    private static int result(int beforeScore, int afterScore) {
+        if (beforeScore > afterScore) {
+            return 1;
+        }
+        if (beforeScore < afterScore) {
+            return 2;
+        }
+        if (beforeScore == afterScore) {
+            return 0;
         }
         return -1;
     }

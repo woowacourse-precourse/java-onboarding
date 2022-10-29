@@ -1,6 +1,7 @@
 package onboarding.problem1.domain;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 import java.util.stream.IntStream;
 
@@ -8,6 +9,10 @@ public class Page {
 
     private final int left;
     private final int right;
+
+    public Page(List<Integer> pageNumbers) {
+        this(pageNumbers.get(0), pageNumbers.get(1));
+    }
 
     public Page(int left, int right) {
         PageValidator.pageInputValidation(left, right);
