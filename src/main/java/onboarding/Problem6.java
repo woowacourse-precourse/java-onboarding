@@ -8,6 +8,21 @@ public class Problem6 {
         return answer;
     }
 
+    static List<String> get_identical_list(Map<String, List<String>> map){
+
+        List<String> identical_list = new ArrayList<>();
+
+        for(String key: map.keySet()) {
+            if(map.get(key).size() > 1 && key.length() > 1) {
+                for(String email : map.get(key)) {
+                    identical_list.add(email);
+                }
+            }
+        }
+
+        return identical_list;
+    }
+
     static boolean is_duplicate(String key, String nickname) {
 
         for(int i=0; i<nickname.length()-2; i++) {
