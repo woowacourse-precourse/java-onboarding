@@ -16,6 +16,7 @@ public class Problem5 {
             int numberOfCurrency = 0;
 
             while (Math.subtractExact(money, currency) >= 0) {
+                numberOfCurrency++;
             }
         }
 
