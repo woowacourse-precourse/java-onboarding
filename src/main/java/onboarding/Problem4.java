@@ -78,4 +78,12 @@ public class Problem4 {
     private static char convertUppercaseLetter(char letter) {
         return UPPERCASE_LETTERS.get(letter - 'A');
     }
+
+    private static boolean isUppercaseLetter(char letter) {
+        return (letter > 'A' && letter < 'Z');
+    }
+
+    private static boolean isLowercaseLetter(char letter) {
+        return (letter > 'a' && letter < 'z');
+    }
 }
