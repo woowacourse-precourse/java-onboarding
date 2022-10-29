@@ -6,7 +6,6 @@ import java.util.stream.Stream;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-
         int answer = Integer.MAX_VALUE;
         return answer;
     }
@@ -17,5 +16,7 @@ class Problem1 {
     private static int sumSplitNum(int[] splitNum){
         return Arrays.stream(splitNum).sum();
     }
-
+    private static int multipleSplitNum(int[] splitNum){
+        return Arrays.stream(splitNum).reduce((a, b) -> a * b).getAsInt();
+    }
 }
