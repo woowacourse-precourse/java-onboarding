@@ -29,4 +29,17 @@ public class Problem2 {
         }
         return sb;
     }
+
+    public static int findConsecutiveWordEndIndex(StringBuilder cryptogram, int start) {
+        int end = start;
+
+        for (int i = start; i < cryptogram.length() - 1; i++) {
+            if (cryptogram.charAt(i) == cryptogram.charAt(i + 1)) {
+                end++;
+                continue;
+            }
+            break;
+        }
+        return end;
+    }
 }
