@@ -57,4 +57,25 @@ class Problem1 {
 
         return max_value;
     }
+
+    public static int exceptionValidate(List<Integer> list1, List<Integer> list2){
+        int list1_1 = list1.get(0);
+        int list1_2 = list1.get(1);
+
+        int list2_1 = list2.get(0);
+        int list2_2 = list2.get(1);
+
+        // 경우1. 둘 중 한명이라도 펼친 페이지의 두 수가 연속하지 않는 경우
+        if ((list1_2- list1_1) != 1 || (list2_2 - list2_1) != 1) {
+
+            return -1;
+        }
+
+        // 경우2. 펼친 페이지의 두 수가 책의 범위를 벗어나는 경우
+        if (list1_1 < 1 || list1_2 > 400 || list2_1 < 1 || list2_2 > 400){
+            return -1;
+        }
+
+        return 1;
+    }
 }
