@@ -1,5 +1,6 @@
 package onboarding.problem1.domain;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 public class Page {
@@ -30,6 +31,12 @@ public class Page {
 
     private static boolean isValidSequence(int left, int right) {
         return (right - left) != 1;
+    }
+
+    public int addEachDigit(int number) {
+        return Arrays.stream(String.valueOf(number).split(""))
+                .mapToInt(Integer::parseInt)
+                .sum();
     }
 
     @Override
