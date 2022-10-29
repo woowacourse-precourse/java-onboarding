@@ -44,8 +44,16 @@ class Problem1 {
         Integer score;
         Integer value1 = maxNumber(pageList.get(0));
         Integer value2 = maxNumber(pageList.get(1));
+
         if (value1.compareTo(value2) == 1) score = value1;
         else score = value2;
         return score;
+    }
+
+    // 점수를 비교해 게임의 승자가 누구인지 정하는 함수
+    public static Integer findWinner(List<Integer> pobi, List<Integer> crong) {
+        Integer scoreOfPobi = calcScore(pobi);
+        Integer scoreOfCrong = calcScore(crong);
+        return scoreOfPobi.compareTo(scoreOfCrong);
     }
 }
