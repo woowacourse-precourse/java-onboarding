@@ -89,11 +89,23 @@ class Problem1 {
         int leftPage = pages.get(0);
         int rightPage = pages.get(1);
 
+        if (!isLeftPage(leftPage) || !isRightPage(rightPage)) {
+            return false;
+        }
+
         if (!isContinuousPage(leftPage, rightPage)) {
             return false;
         }
 
         return !isStartPage(leftPage) && !isEndPage(rightPage);
+    }
+
+    private static boolean isLeftPage(int leftPage) {
+        return (leftPage & 1) == 1;
+    }
+
+    private static boolean isRightPage(int rightPage) {
+        return (rightPage & 1) == 0;
     }
 
     private static boolean isContinuousPage(int leftPage, int rightPage) {
