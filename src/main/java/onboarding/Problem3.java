@@ -18,4 +18,8 @@ public class Problem3 {
         return cnt;
     }
 
+    public static int solution(int number) {
+
+        return getCountBy369(number);
+    }
 }
