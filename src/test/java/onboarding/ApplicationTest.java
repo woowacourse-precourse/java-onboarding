@@ -73,6 +73,15 @@ class ApplicationTest {
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
+
+        @Test
+        @DisplayName("크롱이 이기는 경우 - 포비: 6 + 8 = 14 크롱: 72 + 0 = 72")
+        void case8() {
+            List<Integer> pobi = List.of(123, 124);
+            List<Integer> crong = List.of(89, 90);
+            int result = 2;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
     }
 
     @Nested
