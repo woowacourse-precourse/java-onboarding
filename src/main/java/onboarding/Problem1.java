@@ -4,7 +4,7 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int answer = findWinner(pobi, crong);
         return answer;
     }
 
@@ -51,9 +51,13 @@ class Problem1 {
     }
 
     // 점수를 비교해 게임의 승자가 누구인지 정하는 함수
-    public static Integer findWinner(List<Integer> pobi, List<Integer> crong) {
+    public static int findWinner(List<Integer> pobi, List<Integer> crong) {
         Integer scoreOfPobi = calcScore(pobi);
         Integer scoreOfCrong = calcScore(crong);
-        return scoreOfPobi.compareTo(scoreOfCrong);
+        int result;
+        if (scoreOfPobi.compareTo(scoreOfCrong) == 1) result = 1;
+        else if (scoreOfPobi.compareTo(scoreOfCrong) == -1) result = 2;
+        else result = 0;
+        return result;
     }
 }

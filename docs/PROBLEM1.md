@@ -34,4 +34,4 @@
 - 양 페이지 번호를 전달받아 점수를 구하는 함수
 > Integer calcScore(List<Integer>)
 - 점수를 비교해 게임의 승자가 누구인지 정하는 함수
-> Integer findWinner(List<Integer>, List<Integer>)
+> int findWinner(List<Integer>, List<Integer>)
