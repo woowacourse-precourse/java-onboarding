@@ -14,7 +14,7 @@ public class Problem2 {
     }
 
     private static void iterateList(List<String> list) {
-        for (int i = 0; i < list.stream().count() - 1; i++) {
+        for (int i = 0; i < list.size(); i++) {
             if (list.get(i).equals(list.get(i + 1))) {
                 list.remove(i + 1);
                 list.remove(i);
