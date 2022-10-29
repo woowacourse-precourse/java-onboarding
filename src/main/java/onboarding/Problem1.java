@@ -17,7 +17,7 @@ class Problem1 {
     private static final int DRAW = 0;
     private static final int USER_1_RESULT = 0;
     private static final int USER_2_RESULT = 1;
-    private static final int DIGIT = DIGIT;
+    private static final int DIGIT = 10;
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int result = -1;
 
