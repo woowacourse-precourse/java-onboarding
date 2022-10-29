@@ -1,35 +1,59 @@
 package onboarding;
 
-import java.util.Stack;
-import java.util.stream.Collectors;
+import java.util.Arrays;
 
 public class Problem2 {
 
+    private static final char EMPTY_CHARACTER = ' ';
+
     public static String solution(String cryptogram) {
-        Stack<Character> stack = new Stack<>();
-        int len = cryptogram.length();
-        for (int i = 0; i < len; i++) {
-            char ch = cryptogram.charAt(i);
+        char[] cryptogramArr = cryptogram.toCharArray();
+        String result = "";
 
-            if (!stack.isEmpty() && stack.peek() != ch) {
-                removeDuplicatedCharacter(stack);
+        while (true) {
+            result = removeDuplicatedChars(cryptogramArr);
+            if (result.equals(cryptogramArrToString(cryptogramArr))) {
+                break;
             }
-            stack.add(ch);
+            cryptogramArr = result.toCharArray();
         }
-        removeDuplicatedCharacter(stack);
 
-        return stack.stream().map(String::valueOf).collect(Collectors.joining());
+        return result;
     }
 
-    private static void removeDuplicatedCharacter(Stack<Character> stack) {
-        char ch = stack.pop();
-        boolean isDuplicatedChar = false;
-        while (!stack.isEmpty() && ch == stack.peek()) {
-            stack.pop();
-            isDuplicatedChar = true;
+    private static String cryptogramArrToString(char[] cryptogramArr) {
+        StringBuilder ret = new StringBuilder();
+        for (char ch : cryptogramArr) {
+            if (ch != EMPTY_CHARACTER) {
+                ret.append(ch);
+            }
         }
-        if (!isDuplicatedChar) {
-            stack.add(ch);
+
+        return ret.toString();
+    }
+
+    private static String removeDuplicatedChars(char[] cryptogramArr) {
+        int left = 0, right = 1, len = cryptogramArr.length;
+        cryptogramArr = Arrays.copyOf(cryptogramArr, len);
+
+        while (right < len) {
+            char leftCh = cryptogramArr[left];
+            char rightCh = cryptogramArr[right];
+            if (leftCh == rightCh) {
+                cryptogramArr[left] = EMPTY_CHARACTER;
+                while (leftCh == rightCh) {
+                    cryptogramArr[right++] = EMPTY_CHARACTER;
+                    if (right >= len) {
+                        break;
+                    }
+                    rightCh = cryptogramArr[right];
+                }
+                left = right - 1;
+            }
+            left++;
+            right++;
         }
+
+        return cryptogramArrToString(cryptogramArr);
     }
 }
