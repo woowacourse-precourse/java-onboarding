@@ -21,6 +21,7 @@ public class Problem3 {
                 char digit = intToStringNumber.charAt(j);
 
                 if (clapRule.contains(digit)) {
+                    countClapOfNumber++;
                 }
             }
         }
