@@ -10,7 +10,7 @@ public class Problem7 {
 
         if(user.length() < 1 || user.length() > 30) return answer;
         if(friends.size() < 1 || friends.size() > 10_000) return answer;
-        if(visitors.size() < 0 || visitors.size() > 10_000) return answer;
+        if(visitors.size() > 10_000) return answer;
 
         // 1. 내 친구 찾기.
         List<String> myFriends = findMyFriends(user, friends);
@@ -41,15 +41,14 @@ public class Problem7 {
         for(Map.Entry<String, Integer> recommendPerson: recommendScoreList){
             answer.add(recommendPerson.getKey());
         }
-
         return answer;
     }
 
     /**
      * 파라미터가 두개라면, 내 친구 찾기.
-     * @param user
-     * @param friends
-     * @return
+     * @param user 사용자의 이름
+     * @param friends 모든 사람의 친구 관계 리스트
+     * @return friends 중에서 내 친구들만 선택된 리스트
      */
     public static List<String> findMyFriends(String user, List<List<String>> friends){
         List<String> myFriends = new ArrayList<>();
@@ -62,16 +61,15 @@ public class Problem7 {
             if(friend2.equals(user))
                 myFriends.add(friend1);
         }
-
         return myFriends;
     }
 
     /**
      * 파라미터가 3개라면 함께 아는 친구 찾기.
-     * @param user
-     * @param friends
-     * @param myFriendName
-     * @return
+     * @param user 사용자의 이름
+     * @param friends 모든 사람의 친구 관계
+     * @param myFriendName 내 친구들의 이름 리스트
+     * @return (내 친구와) 함께 아는 사람 리스트
      */
     public static List<String> findMyFriends(String user, List<List<String>> friends, String myFriendName){
         List<String> myFriends = new ArrayList<>();
@@ -88,9 +86,6 @@ public class Problem7 {
                     myFriends.add(friend1);
             }
         }
-
         return myFriends;
     }
-
-
 }
