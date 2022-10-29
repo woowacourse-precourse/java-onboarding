@@ -1,13 +1,13 @@
-package onboarding;
+package onboarding.problem2;
 
 import java.util.Iterator;
 import java.util.LinkedList;
 
 import static onboarding.problem2.Returner.returnLinkedList;
-import static onboarding.problem2.Tester.testingDuplicate;
 
-public class Problem2 {
-    public static String solution(String cryptogram) {
+public class Tester {
+
+    public static String testingDuplicate(String cryptogram) {
 
         String result = "";
 
@@ -15,8 +15,8 @@ public class Problem2 {
 
         // 문자열 저장을 순회
         for (int i = 0; i < cryptogram.length(); i++) {
-            Character c = cryptogram.charAt(i);
-            Character d = cryptogram.charAt(i + 1);
+            char c = cryptogram.charAt(i);
+            char d = cryptogram.charAt(i - 1);
 
             // 중복 여부 == true시 삭제
             if (c == d) {
@@ -27,10 +27,9 @@ public class Problem2 {
             }
 
             // 삭제후 남은 문자 저장
-            for (String character : linkedList) {
-                linkedList.add(character);
+            for (String s : linkedList) {
+                linkedList.add(s);
             }
-
 
             // linkedList에 저장된 값 문자열로 전달
             Iterator<String> stringIterator = returnLinkedList(linkedList);
@@ -38,8 +37,8 @@ public class Problem2 {
         }
 
         return result;
-
     }
 }
+
 
 
