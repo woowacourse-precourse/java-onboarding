@@ -70,4 +70,12 @@ class ThreeSixNine {
         return digit;
     }
 
+    static int accumulatedClaps(int number) {
+        int accumulateClap = 0;
+        for (int i = 1; i <= number; i++) {
+            accumulateClap += clapsPerNumber(i);
+        }
+        return accumulateClap;
+    }
+
 }
