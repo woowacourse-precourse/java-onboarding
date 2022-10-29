@@ -22,4 +22,14 @@ class Problem1 {
         return digits;
     }
 
+    private static int getSumByArray(int[] array) {
+        // 배열의 각 자리수를 모두 더하는 메소드
+        int sumValue = 0;
+        for (int value : array) {
+            sumValue += value;
+        }
+
+        return sumValue;
+    }
+
 }
