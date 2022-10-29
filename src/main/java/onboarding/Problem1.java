@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
@@ -14,6 +15,9 @@ class Problem1 {
 
         if (!isValidPages(pobi) || !isValidPages(crong))
             return EXCEPTION_CASE_CODE;
+
+        List<Integer> pobiScores = getScores(pobi);
+        List<Integer> crongScores = getScores(crong);
 
         return answer;
     }
@@ -56,4 +60,15 @@ class Problem1 {
 
         return multiply;
     }
+
+    public static List<Integer> getScores(List<Integer> pages) {
+
+        List<Integer> scores = new ArrayList<>();
+        for (Integer page : pages) {
+            scores.add(getPageElementsSumScore(page));
+            scores.add(getPageElementsMultiplyScore(page));
+        }
+        return scores;
+    }
+
 }
