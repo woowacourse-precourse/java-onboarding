@@ -29,6 +29,16 @@ import java.util.List;
 class Problem1 {
 
     public static class Card {
+        List<Integer> selectCard(List<Integer> player) {
+            // divide the number by each digit
+            List<Integer> digits = new ArrayList<>();
+            Integer getPage = player.get(0);
+            while (getPage > 0) {
+                digits.add(getPage % 10);
+                getPage = getPage / 10;
+            }
+            return digits;
+        }
 
     }
 
@@ -36,9 +46,11 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         //pobi's card
         Card pobiCard = new Card();
+        System.out.println(pobiCard.selectCard(pobi));
 
         //crong's card
         Card crongCard = new Card();
+        System.out.println(crongCard.selectCard(crong));
 
         return answer;
     }
