@@ -50,6 +50,34 @@ class ApplicationTest {
             String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
+
+        @Test
+        void customCase1() {
+            String cryptogram = "abbc";
+            String result = "ac";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void customCase2() {
+            String cryptogram = "a";
+            String result = "a";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void customCase3() {
+            String cryptogram = "aaaaa";
+            String result = "";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void customCase4() {
+            String cryptogram = "aaaaabbaz";
+            String result = "az";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
     }
 
     @Nested
