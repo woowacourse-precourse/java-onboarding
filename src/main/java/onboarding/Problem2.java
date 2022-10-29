@@ -23,7 +23,7 @@ public class Problem2 {
     }
 
     private static String removeDuplicate(String cryptogram) {
-        int endIndex;
+        int endIndex = 0;
         String result = "";
 
         for (int i = 0; i < cryptogram.length(); i++) {
