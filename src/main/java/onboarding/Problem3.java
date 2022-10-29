@@ -14,7 +14,6 @@ public class Problem3 {
         for(int m = 1; m < 4; m++){
             cnt += counter[3*m];
         }
-        System.out.println(cnt);
         return cnt;
     }
     private static int[] IntegerToList(int n){
