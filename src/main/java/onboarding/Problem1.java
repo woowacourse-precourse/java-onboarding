@@ -16,4 +16,23 @@ class Problem1 {
         }
         return result;
     }
+
+    private boolean isRightPageNum (List<Integer> pageNumbers) {
+        int leftPage = pageNumbers.get(0);
+        int rightPage = pageNumbers.get(1);
+
+        if (leftPage < 1 || rightPage > 400) {
+            return false;
+        }
+
+        if (rightPage - leftPage != 1) {
+            return false;
+        }
+
+        if (leftPage % 2 == 0) {
+            return false;
+        }
+
+        return true;
+    }
 }
