@@ -15,6 +15,14 @@ public class Problem4 {
 
         String answer = "";
 
+        for (char c : word.toCharArray()) {
+            if (c == ' ') {
+                answer += ' ';
+                continue;
+            }
+            answer += frogMap.get(c);
+        }
+
         return answer;
     }
 }
