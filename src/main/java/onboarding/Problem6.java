@@ -6,9 +6,9 @@ import java.util.stream.Collectors;
 
 /*
 - 기능 구현사항 목록 -
-1. email과 nickname을 가지는 class 생성
+1. email 과 nickname 을 가지는 class 생성
 2. 2글자 단위로 잘라서
-3. 중복된다면 set에 저장
+3. 중복된다면 set 에 저장
  */
 public class Problem6 {
 
@@ -29,11 +29,11 @@ public class Problem6 {
         }
     }
 
-    static void addAnswer(int idx) {
+    private static void addAnswer(int idx) {
         answer.add(idx);
     }
 
-    static void calc(String s, Integer idx) {
+    private static void calc(String s, Integer idx) {
         for (int i = 0; i + 1 < s.length(); i++) {
             if (nickname.containsKey(s.substring(i, i + 2))) {
                 if (!Objects.equals(nickname.get(s.substring(i, i + 2)), idx)) {
