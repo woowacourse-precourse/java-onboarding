@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
@@ -8,8 +9,8 @@ class Problem1 {
             checkException(pobi);
             checkException(crong);
 
-            int pobiScore = calMaxScore(pobi);
-            int crongScore = calMaxScore(crong);
+            int pobiScore = calScore(pobi);
+            int crongScore = calScore(crong);
 
             return findWinner(pobiScore, crongScore);
 
@@ -17,6 +18,50 @@ class Problem1 {
             System.out.println(e.getMessage());
             return -1;
         }
+    }
+
+    private static int calScore(List<Integer> pages) {
+        int leftPage = pages.get(0);
+        int rightPage = pages.get(1);
+
+        int leftPageScore = calPageScore(leftPage);
+        int rightPageScore = calPageScore(rightPage);
+
+        return Math.max(leftPageScore, rightPageScore);
+    }
+
+    private static int calPageScore(int page) {
+        List<Integer> eachDigitNumbers = splitNumbers(page);
+
+        int addScore = calAddScore(eachDigitNumbers);
+        int multipleScore = calMultipleScore(eachDigitNumbers);
+
+        return Math.max(addScore, multipleScore);
+    }
+
+    public static List<Integer> splitNumbers(int page) {
+        List<Integer> seperatedNumbers = new ArrayList<>();
+        while (page != 0) {
+            seperatedNumbers.add(page % 10);
+            page /= 10;
+        }
+        return seperatedNumbers;
+    }
+
+    private static int calAddScore(List<Integer> eachDigitNumbers) {
+        int score = 0;
+        for (Integer digitNumber : eachDigitNumbers) {
+            score += digitNumber;
+        }
+        return score;
+    }
+
+    private static int calMultipleScore(List<Integer> eachDigitNumbers) {
+        int score = 1;
+        for (Integer digitNumber : eachDigitNumbers) {
+            score *= digitNumber;
+        }
+        return score;
     }
 
     public static void checkException(List<Integer> pages) {
