@@ -29,12 +29,10 @@ class Database {
     public void addRelation(List<String> relation) {
         for (var name : relation)
             if (!database.containsKey(name)) addUser(name);
-        for (int i = 0; i < 2; i++) {
-            User user1 = findByName(relation.get(0));
-            User user2 = findByName(relation.get(1));
-            user1.addFriend(user2);
-            user2.addFriend(user1);
-        }
+        User user1 = findByName(relation.get(0));
+        User user2 = findByName(relation.get(1));
+        user1.addFriend(user2);
+        user2.addFriend(user1);
     }
 
     private void calculateScoreByTargetName(String name) {
