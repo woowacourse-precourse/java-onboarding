@@ -16,12 +16,16 @@ public class Problem2 {
         return str.toCharArray();
     }
 
-    private static boolean isEmptyDeque(Deque<Character> deque, int DequeIndex) {
-        return DequeIndex == 0 || deque.isEmpty();
+    private static boolean isEmptyDeque(Deque<Character> deque, int dequeIndex) {
+        return dequeIndex == 0 || deque.isEmpty();
     }
 
     private static void addElementToDeque(Deque<Character> deque, char element) {
         deque.add(element);
+    }
+
+    private static boolean isSameLastRemove(char currentElement, char lastRemove) {
+        return currentElement == lastRemove;
     }
 
     private static void removeDuplicate(Deque<Character> deque) {
