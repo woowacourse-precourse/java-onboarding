@@ -1,5 +1,12 @@
 package onboarding.problem5.vo;
 
+/**
+ * 잔돈 단위,
+ * Wallet 에서 단위에 해당하는 배열의 인덱스,
+ * 잔돈 단위에 해당하는 돈의 액수를 담고 있는
+ * VO enum 클래스입니다.
+ * @author BackFoxx
+ */
 public enum Change {
     FIFTY_THOUSANDS(0, 50_000),
     TEN_THOUSANDS(1, 10_000),
