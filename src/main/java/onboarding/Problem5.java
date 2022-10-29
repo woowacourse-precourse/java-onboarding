@@ -7,6 +7,7 @@ import java.util.List;
 public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> result = new ArrayList<>();
+        if (money < 1 || money > 1000000)   return result;
         if (money >= 50000) {
             result.add(money / 50000);
             money %= 50000;
@@ -28,6 +29,12 @@ public class Problem5 {
         if (money >= 1000) {
             result.add(money / 1000);
             money %= 1000;
+        } else {
+            result.add(0);
+        }
+        if (money >= 500) {
+            result.add(money / 500);
+            money %= 500;
         } else {
             result.add(0);
         }
