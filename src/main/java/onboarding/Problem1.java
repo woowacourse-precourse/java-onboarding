@@ -3,8 +3,26 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-    public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
-    }
+	public static final int ERROR_CODE = -1;
+
+	public static int solution(List<Integer> pobi, List<Integer> crong) {
+		int answer = Integer.MAX_VALUE;
+
+		if (isValidCondition(pobi) && isValidCondition(crong))
+			return ERROR_CODE;
+
+		return answer;
+	}
+
+	/**
+	 * 1. 제한사항 체크
+	 * 리스트의 길이가 2가 아니거나, 왼쪽 오른쪽 페이지 순서로 있지 않은 경우
+	 */
+	public static boolean isValidCondition(List<Integer> list) {
+		if (list.size() > 2)
+			return false;
+		if (list.get(0) >= list.get(1))
+			return false;
+		return true;
+	}
 }
