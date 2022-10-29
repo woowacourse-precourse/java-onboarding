@@ -23,6 +23,18 @@ public class Problem4 {
 
             count+=2;
         }
+        frogMap.put( (char)32, (char)32);
         return frogMap;
+    }
+
+    public  static String getAnswer(String word, Map<Character,Character> frogMap){
+        char[] wordCh = word.toCharArray();
+        StringBuilder st = new StringBuilder();
+
+        for(char c : wordCh) {
+            st.append(frogMap.get(c));
+        }
+
+        return  st.toString();
     }
 }
