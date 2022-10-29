@@ -1,6 +1,9 @@
 package onboarding;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -43,13 +46,11 @@ class Problem1 {
         int mulResult = 0;
 
         for (Integer value : values) {
-            int tmp = 1;
 
-            char[] currentPage = value.toString().toCharArray();
-            for (char page : currentPage) {
-                tmp *= Integer.parseInt(String.valueOf(page));
-            }
-            mulResult = Math.max(mulResult, tmp);
+            int reduce = String.valueOf(value).chars()
+                    .map(Character::getNumericValue)
+                    .reduce(1, (a, b) -> (a * b));
+            mulResult = Math.max(mulResult, reduce);
         }
 
         return mulResult;
