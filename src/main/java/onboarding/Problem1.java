@@ -24,15 +24,15 @@ class Problem1 {
     }
 
     private static boolean isPageSeparated(List<Integer> list) {
-        return list.get(1) > list.get(0);
+        return list.get(1) < list.get(0);
     }
 
     private static boolean isPageInconsecutive(List<Integer> list) {
-        return list.get(1) - list.get(0) == 1;
+        return list.get(1) - list.get(0) != 1;
     }
 
     private static boolean isPageRangeUncorrect(List<Integer> list) {
-        return list.get(0) > 1 || list.get(1) < 400;
+        return list.get(0) <= 1 || list.get(1) >= 400;
     }
 
     public static int getUserMaxNumber(List<Integer> list) {
