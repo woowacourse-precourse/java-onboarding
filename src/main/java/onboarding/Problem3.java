@@ -31,6 +31,7 @@ public class Problem3 {
                 findNumber = findNumber / 10;
             }
         }
+        answer = count;
         return answer;
     }
 }
