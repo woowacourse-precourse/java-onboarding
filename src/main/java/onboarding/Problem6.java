@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Problem6 {
 
@@ -15,6 +12,16 @@ public class Problem6 {
             Set<String> twoCharsSet = makeTwoCharsKeyUsingNickname(nickname);
             putTwoCharsAndEmails(twoCharsAndEmails, twoCharsSet, email);
         }
+    }
+
+    private static Set<String> makeTwoCharsKeyUsingNickname(String nickname) {
+        Set<String> twoCharsFromNickname = new HashSet<>();
+
+        for (int i = 0; i < nickname.length() - 1; i++) {
+            twoCharsFromNickname.add(nickname.substring(i, i + 2));
+        }
+
+        return twoCharsFromNickname;
     }
 
     /**
