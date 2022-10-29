@@ -5,6 +5,7 @@ import java.util.List;
 public class Problem6 {
     public static final int EMAIL = 0;
     public static final int NICKNAME = 1;
+    public static final int NUM_OF_LETTER = 2;
     public static final int MINIMUM_FORMS_RANGE = 1;
     public static final int MAXIMUM_FORMS_RANGE = 10000;
     public static final int MINIMUM_EMAIL_RANGE = 11;
@@ -94,6 +95,18 @@ public class Problem6 {
                 }
             }
         }
+    }
+
+    private static Set<String> splitNicknames(String nickname) {
+        Set<String> substringNickname = new HashSet<>();
+        int nicknameRange = nickname.length() - 1;
+
+        for (int i = 0; i < nicknameRange; i++) {
+            String substring = nickname.substring(i, i + NUM_OF_LETTER);
+            substringNickname.add(substring);
+        }
+
+        return substringNickname;
     }
 
     private static String getEmail(List<String> form) {
