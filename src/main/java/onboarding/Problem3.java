@@ -7,6 +7,11 @@ public class Problem3 {
 
         int answer = 0;
 
+        for(int i = 1; i <= number;i++) {
+
+            answer += clapCnt(breakNum(i));
+        }
+
         return answer;
     }
 
