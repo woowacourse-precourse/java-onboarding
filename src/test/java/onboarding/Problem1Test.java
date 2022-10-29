@@ -166,10 +166,61 @@ public class Problem1Test {
             //then
             assertThatThrownBy(()->Problem1.whoIsWin(pobiBook, crongBook)).isInstanceOf(e);
         }
+
+        @Test
+        public void whoIsWinFailTestCase5(){
+            //given
+            Book pobiBook = new Book(new Page(398), new Page(399));
+            Book crongBook = new Book(new Page(197), new Page(198));
+            //when
+            Class<IllegalArgumentException> e = IllegalArgumentException.class;
+            //then
+            assertThatThrownBy(()->Problem1.whoIsWin(pobiBook, crongBook)).isInstanceOf(e);
+        }
     }
 
     @Nested
     class BookTest {
+
+        @Test
+        void getIsNotLeftPageOddTest(){
+            //given
+            Book book = new Book(new Page(2), new Page(3));
+            //when
+            boolean result=true;
+            //then
+            assertThat(book.isNotLeftPageOdd()).isEqualTo(result);
+        }
+
+        @Test
+        void getIsNotRightPageEvenTest(){
+            //given
+            Book book = new Book(new Page(2), new Page(3));
+            //when
+            boolean result=true;
+            //then
+            assertThat(book.isNotLeftPageOdd()).isEqualTo(result);
+        }
+
+        @Test
+        void getIsNotLeftPageOddFailTest(){
+            //given
+            Book book = new Book(new Page(1), new Page(2));
+            //when
+            boolean result=false;
+            //then
+            assertThat(book.isNotLeftPageOdd()).isEqualTo(result);
+        }
+
+        @Test
+        void getIsNotRightPageEvenFailTest(){
+            //given
+            Book book = new Book(new Page(1), new Page(2));
+            //when
+            boolean result=false;
+            //then
+            assertThat(book.isNotLeftPageOdd()).isEqualTo(result);
+        }
 
         @Test
         void hasFirstPageOrLessTest() {
@@ -223,41 +274,45 @@ public class Problem1Test {
 
         @Test
         void leftPageCalcForSumTest() {
+            //given
             Book book = new Book(new Page(333), new Page(334));
             PageCalculator pageCalculator = new SumPageCalculator();
-
+            //when
             int result=9;
-
+            //then
             assertThat(book.leftPageCalc(pageCalculator)).isEqualTo(result);
         }
 
         @Test
         void leftPageCalcForMulTest() {
+            //given
             Book book = new Book(new Page(333), new Page(334));
             PageCalculator pageCalculator = new MulPageCalculator();
-
+            //when
             int result=27;
-
+            //then
             assertThat(book.leftPageCalc(pageCalculator)).isEqualTo(result);
         }
 
         @Test
         void rightPageCalcForSumTest() {
+            //given
             Book book = new Book(new Page(333), new Page(334));
             PageCalculator pageCalculator = new SumPageCalculator();
-
+            //when
             int result=10;
-
+            //then
             assertThat(book.rightPageCalc(pageCalculator)).isEqualTo(result);
         }
 
         @Test
         void rightPageCalcForMulTest() {
+            //given
             Book book = new Book(new Page(333), new Page(334));
             PageCalculator pageCalculator = new MulPageCalculator();
-
+            //when
             int result=36;
-
+            //then
             assertThat(book.rightPageCalc(pageCalculator)).isEqualTo(result);
         }
     }

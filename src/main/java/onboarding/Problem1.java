@@ -35,7 +35,8 @@ class Problem1 {
     }
 
     private static void validBook(Book page) {
-        if(page.hasFirstPageOrLess() || page.hasLastPageOrMore() || page.getDifference()!=1)
+        if(page.hasFirstPageOrLess() || page.hasLastPageOrMore() || page.getDifference()!=1
+                || page.isNotLeftPageOdd() || page.isNotRightPageEven())
             throw new IllegalArgumentException("잘못된 입력입니다.");
     }
 

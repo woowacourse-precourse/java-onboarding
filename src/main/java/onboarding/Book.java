@@ -13,6 +13,16 @@ public class Book {
         this.rightPage=rightPage;
     }
 
+    public boolean isNotLeftPageOdd(){
+        if(this.leftPage.getPage()%2!=1) return true;
+        return false;
+    }
+
+    public boolean isNotRightPageEven(){
+        if(this.rightPage.getPage()%2!=0) return true;
+        return false;
+    }
+
     public boolean hasFirstPageOrLess() {
         if(this.leftPage.getPage() <= FIRST_PAGE ||this.rightPage.getPage()<=FIRST_PAGE )return true;
         return false;
