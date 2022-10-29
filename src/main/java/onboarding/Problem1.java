@@ -3,8 +3,8 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-    public static int solution(List<Integer> pobi, List<Integer> crong) {
-        return whoIsWinner(getMaxBetweenSumAndMultiply(pobi), getMaxBetweenSumAndMultiply(crong));
+    public static int solution(List<Integer> a, List<Integer> b) {
+        return whoIsWinner(getMaxBetweenSumAndMultiply(a), getMaxBetweenSumAndMultiply(b));
     }
 
     public static int getMaxBetweenSumAndMultiply(List<Integer> nums) {
@@ -17,16 +17,35 @@ class Problem1 {
     }
 
     private static boolean isValid(List<Integer> nums) {
-        if (nums.size() != 2) return false; //  input되는 숫자가 두 개인가
-        if (nums.get(1) - nums.get(0) != 1) return false; // 연속된 두 숫자인가
+        if (!isValidLength(nums)) return false; //  input되는 숫자가 두 개인가
+        if (!isSequenceNum(nums)) return false; // 연속된 두 숫자인가
+        if (!isInRange(nums)) return false; // 해당 숫자가 [홀수, 짝수]인가
+        return true;
+    }
+
+    private static boolean isValidLength(List<Integer> nums) {
+        return nums.size() == 2;
+    }
+
+    private static boolean isSequenceNum(List<Integer> nums) {
+        return nums.get(1) - nums.get(0) == 1;
+    }
+
+    private static boolean isInRange(List<Integer> nums) {
         for (int i = 0; i < 2; i++) {
             Integer num = nums.get(i);
-            if (num <= 1 || num >= 400) return false; // 1 ~ 400 범위 내에 있으며, 1과 400을 포함하는 페이지는 없는가
-            if (num % 2 != 1 - i) {
-                return false; // 해당 숫자가 [홀수, 짝수]인가
-            }
+            if (!inBound(num)) return false;
+            if (!oddAndEven(i, num)) return false;
         }
         return true;
+    }
+
+    private static boolean inBound(Integer num) {
+        return num > 1 && num < 400;
+    }
+
+    private static boolean oddAndEven(int i, Integer num) {
+        return num % 2 == 1 - i;
     }
 
     private static int isMax(int result, Integer num) {
@@ -42,10 +61,10 @@ class Problem1 {
         return result;
     }
 
-    public static int whoIsWinner(int pobiResult, int crongResult) {
-        if (pobiResult == -1 || crongResult == -1) return -1; // 주의
-        else if (pobiResult > crongResult) return 1;
-        else if (pobiResult < crongResult) return 2;
+    public static int whoIsWinner(int a, int b) {
+        if (a == -1 || b == -1) return -1; // 주의
+        else if (a > b) return 1;
+        else if (a < b) return 2;
         return 0;
     }
 }
