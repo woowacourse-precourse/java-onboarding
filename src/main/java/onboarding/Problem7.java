@@ -1,5 +1,12 @@
 package onboarding;
-
+/*
+    기능 목록
+    1. 이미 친구인 유저의 목록을 만드는 기능 -> getFriendList
+    2. 이 유저가 친구인지 아닌지 확인하는 기능 -> checkFriend
+    3. 추천 할 수 있는 유저 목록을 해쉬맵으로 만드는 기능 -> getRecommendList
+    4. 목록의 유저들의 추천 점수를 구하는 기능 -> setPoint
+ */
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -7,5 +14,17 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
+    }
+
+    private static List<String> getFriendList(String user, List<List<String>> friends) {
+        List<String> friendList = new ArrayList<>();
+
+        for (int i = 0; i < friends.size(); i++) {
+            if (friends.get(i).get(0).equals(user))
+                friendList.add(friends.get(i).get(1));
+            else if (friends.get(i).get(1).equals(user))
+                friendList.add(friends.get(i).get(0));
+        }
+        return friendList;
     }
 }
