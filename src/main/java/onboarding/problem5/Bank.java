@@ -6,4 +6,11 @@ public class Bank {
     private static boolean isLessMoneyThanBill(int billIdx, int restMoney) {
         return restMoney < BILLS[billIdx];
     }
+
+    private static int selectBill(int billIdx, int restMoney){
+        while (isLessMoneyThanBill(billIdx, restMoney)) {
+            billIdx++;
+        }
+        return billIdx;
+    }
 }
