@@ -17,6 +17,10 @@ class Problem1 {
             return 2;
     }
 
+    private static int max(int n1, int n2){
+        return n1 > n2 ? n1 : n2;
+    }
+
     //error 검출
     private static boolean detectError(List<Integer> list) {
         for(int element : list)
