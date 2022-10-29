@@ -3,8 +3,11 @@ package onboarding;
 public class Problem4 {
 
 	public static final int ALPHABET_SIZE = 26;
+    public static final String WORD_LENGTH_IS_TOO_LONG_OR_SHORT = "문자의 길이가 너무 짧거나 너무 깁니다.";
+    public static final int MIN_WORD_LENGTH = 1;
+    public static final int MAX_WORD_LENGTH = 1000;
 
-	private static char[] reverseUpperLetter;
+    private static char[] reverseUpperLetter;
 	private static char[] reverseLowerLetter;
 
 	static {
@@ -33,12 +36,21 @@ public class Problem4 {
 	}
 
 	public static String solution(String word) {
-		char[] wordToChars = word.toCharArray();
+
+        validateWord(word);
+
+        char[] wordToChars = word.toCharArray();
 
         StringBuilder result = appendAlphabet(wordToChars);
 
         return result.toString();
 	}
+
+    private static void validateWord(String word) {
+        if (word.length() < MIN_WORD_LENGTH || word.length() > MAX_WORD_LENGTH) {
+            throw new IllegalArgumentException(WORD_LENGTH_IS_TOO_LONG_OR_SHORT);
+        }
+    }
 
     private static StringBuilder appendAlphabet(char[] wordToChars) {
         StringBuilder result = new StringBuilder();
