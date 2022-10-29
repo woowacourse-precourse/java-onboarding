@@ -14,4 +14,13 @@ class Problem1 {
     private static boolean exceptional(List<Integer> pobi, List<Integer> crong) {
         return !PageValidator.validate(pobi) || !PageValidator.validate(crong);
     }
+
+    private static int sum(int page) {
+        int sum = 0;
+        while (page > 0) {
+            sum += page % 10;
+            page /= 10;
+        }
+        return sum;
+    }
 }
