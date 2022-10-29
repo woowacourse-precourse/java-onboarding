@@ -23,6 +23,7 @@ class Problem1 {
 
         //점수를 비교한다
         //포비승=1, 크롱승=2, 무승부 0 리턴한다.
+        //todo refactor 다른 벨류값을 리턴하는 if문 통합 고민
         if (pobiNum > crongNum) return answer.POBI.value;
         if (crongNum > pobiNum) return answer.CRONG.value;
         return answer.TIESCORE.value;
@@ -42,11 +43,11 @@ class Problem1 {
                 .mapToInt(Integer::parseInt).sum();
 
         //각 숫자의 곱
-        int gobNum = Arrays.stream(pageNum.toString().split(""))
+        int multiNum = Arrays.stream(pageNum.toString().split(""))
                 .mapToInt(Integer::parseInt)
                 .reduce(1, (num1, num2) -> num1*num2);
 
-        return Math.max(plusNum, gobNum);
+        return Math.max(plusNum, multiNum);
     }
 
     public enum answer {
