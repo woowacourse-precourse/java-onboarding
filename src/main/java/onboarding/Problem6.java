@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * >> 기능 요구 사항 정리
@@ -29,6 +30,7 @@ public class Problem6 {
                 ,new ArrayList<>(Arrays.asList("woniee@email.com", "워니"))
                 ,new ArrayList<>(Arrays.asList("jason@email.com", "제이슨"))
                 ,new ArrayList<>(Arrays.asList("mj@email.com", "엠제이"))
+                ,new ArrayList<>(Arrays.asList("mj@email.com", "제엠이"))
                 ,new ArrayList<>(Arrays.asList("nowm@email.com", "이제엠"))));
         List<String> solution = solution(forms);
         System.out.println("solution = " + solution);
@@ -53,10 +55,13 @@ public class Problem6 {
 
     // Map에서 VALUE의 size가 1이 아닌 아이들만의 Set 생성
     public Set<Integer> sortOverlapCrew(){
+
         return nickKeywordMap.entrySet()
                 .stream()
-                .map(nickKeywordMap -> nickKeywordMap.getValue().size())
-                .filter(s -> s > 1)
+                .filter(n -> n.getValue().size() > 1)
+                .map(n -> n.getValue())
+                .collect(Collectors.toList())
+                .stream().flatMap(List::stream)
                 .collect(Collectors.toSet());
     }
 
