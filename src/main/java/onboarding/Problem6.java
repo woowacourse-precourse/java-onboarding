@@ -8,6 +8,7 @@ public class Problem6 {
         List<String> nameList = new ArrayList<>();
         List<String> sameList = new ArrayList<>();
         List<String> isOverlap = new ArrayList<>();
+        List<String> resultName = new ArrayList<>();
         List<String> result = new ArrayList<>();
 
         String temp="";
@@ -50,6 +51,13 @@ public class Problem6 {
             // cnt==1 means there is no duplication
             if(cnt==1){
                 isOverlap.remove(isOverlap.size()-1);
+            }
+        }
+
+        // remove duplicate value
+        for (int i = 0; i < isOverlap.size(); i++) {
+            if(!resultName.contains(isOverlap.get(i))){
+                resultName.add(isOverlap.get(i));
             }
         }
 
