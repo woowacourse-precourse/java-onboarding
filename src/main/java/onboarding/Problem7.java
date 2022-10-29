@@ -58,16 +58,16 @@ public class Problem7 {
         Map<String, Integer> scoreMap = new HashMap<>();
 
         for(List<String> friend : friends) {
-            for(String user : friendSet) {
-                if(isUser(user, friend)) {
-                    String friendName = getFriendName(user, friend);
+            String friendName = getSameFriendName(user, friendSet, friend);
 
-                    if(!scoreMap.containsKey(friendName)) {
-                        scoreMap.put(friendName, 0);
-                    }
-                    scoreMap.put(friendName, scoreMap.get(friendName) + 10);
-                }
+            if(friendName == null) {
+                continue;
             }
+
+            if(!scoreMap.containsKey(friendName)) {
+                scoreMap.put(friendName, 0);
+            }
+            scoreMap.put(friendName, scoreMap.get(friendName) + 10);
         }
 
         return scoreMap;
@@ -79,7 +79,7 @@ public class Problem7 {
         Map<String, Integer> friendsScore;
 
         friendSet = getFriendSet(user, friends);
-        friendsScore = getFriendsScore(friendSet, friends);
+        friendsScore = getFriendsScore(user, friendSet, friends);
 
         return answer;
     }
