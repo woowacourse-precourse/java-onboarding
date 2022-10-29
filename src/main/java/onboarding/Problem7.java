@@ -1,11 +1,14 @@
 package onboarding;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 생각 정리
- * 사용자와 함께아는 친구의 수*10 + 타임라인 방문횟수
- * 친구추천 점수는 자료구조 HashMap <String, Integer>에 저장.
+ * 점수 = 사용자와 함께아는 친구의 수*10 + 타임라인 방문횟수
+ * 친구추천 점수는 자료구조 HashMap <String, Integer>에 저장
  * 인접리스트를 사용해 친구 관계를 구현해보자.
  * user의 친구들에 각각 접근해서 친구들의 친구에 대해 아이디로 HashMap에서 찾아서 친구추천 점수에 더해준다.
  * 이때 이미 user와 친구인 사람은 추천해주면 안되므로 다 추가한 뒤에 다시 유저의 친구들만 HashMap에서 삭제
@@ -23,6 +26,9 @@ public class Problem7 {
         Map<String, Integer> recommend = new HashMap<>();
         //1. initialize relation
         Map<String, List<String>> relation = initializeRelation(friends);
+
+        //return empty list if no relation with user after initialize
+        if(!relation.containsKey(user))return answer;
 
         //2. calculate friend score by friend info
         for(String friend : relation.get(user)){
@@ -66,7 +72,7 @@ public class Problem7 {
     }
 
     public static void addPointToRecommended(Map<String, List<String>> relation,
-                                    Map<String, Integer> recommend, String friend) {
+                                             Map<String, Integer> recommend, String friend) {
         for(String toAdd : relation.get(friend)){
             recommend.put(toAdd, recommend.getOrDefault(toAdd,0)+10);
         }

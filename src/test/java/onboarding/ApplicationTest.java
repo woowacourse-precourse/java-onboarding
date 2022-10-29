@@ -235,6 +235,45 @@ class ApplicationTest {
         }
 
         @Test
+        void case2() {
+            String user = "mrko";
+            List<List<String>> friends = List.of(
+                    List.of("donut", "andole"),
+                    List.of("donut", "jun")
+            );
+            List<String> visitors = List.of("donut");
+            List<String> result = Collections.emptyList();
+            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+        }
+
+        @Test
+        void case3() {
+            String user = "mrko";
+            List<List<String>> friends = List.of(
+                    List.of("mrko", "andole"),
+                    List.of("donut", "jun"),
+                    List.of("mrko", "dd")
+            );
+
+            List<String> visitors = List.of("andole");
+            List<String> result = Collections.emptyList();
+            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+        }
+
+        @Test
+        void case4() {
+            String user = "mrko";
+            List<List<String>> friends = List.of(
+                    List.of("mrko", "andole"),
+                    List.of("donut", "jun"),
+                    List.of("mrko", "dd")
+            );
+
+            List<String> visitors = List.of("donut");
+            List<String> result = List.of("donut");
+            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+        }
+        @Test
         void initializeRelationTest() {
             String user = "mrko";
             List<List<String>> friends = List.of(
