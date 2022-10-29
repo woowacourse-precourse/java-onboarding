@@ -215,6 +215,19 @@ class ApplicationTest {
       List<Integer> result = List.of(0, 1, 1, 0, 0, 0, 0, 0, 0);
       assertThat(Problem5.solution(money)).isEqualTo(result);
     }
+
+    @Test
+    void isAllowedMoneyTest() {
+      //given
+      int money1 = 10_237;
+      int money2 = 1_000_021;
+
+      //then
+      assertThat(Problem5.isAllowedMoney(money1)).isEqualTo(true);
+      assertThrows(IllegalStateException.class, () -> {
+        Problem5.isAllowedMoney(money2);
+      });
+    }
   }
 
   @Nested
