@@ -27,6 +27,13 @@ public class Problem6 {
         Collections.sort(answer);
         return answer;
     }
+    public static int compare(String nickname1, String nickname2) {
+        int check = 0;
+        for (int i = 0; i < nickname1.length() - 1; i++) {
+            check += nickname2.indexOf(nickname1.substring(i, i + 2));
+        }
+        return check;
+    }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int member = sc.nextInt();
