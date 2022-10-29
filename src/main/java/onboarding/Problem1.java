@@ -1,21 +1,23 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        int valueOfPobi = 0;
+        int valueOfCrong = 0;
 
-        if(validation(pobi) || validation(crong)) {
+        if(!validation(pobi) || !validation(crong))
             return -1;
-        }
+        valueOfPobi = pageMax(pobi);
+        valueOfCrong = pageMax(crong);
+        answer = makeGameResult(valueOfPobi, valueOfCrong);
 
         return answer;
     }
     private static boolean validation(List<Integer> pages) {
         for (Integer page : pages) {
-            if (page >= 400 || 0 <= page)
+            if (page > 400 || 0 > page)
                 return false;
         }
         if (pages.get(0) + 1 != pages.get(1)) {
@@ -46,5 +48,16 @@ class Problem1 {
     }
     private static int compareTo(int left, int right) {
         return (left >= right) ? left : right;
+    }
+
+    private static int makeGameResult(int pobi, int crong) {
+        int max = 0;
+
+        max = compareTo(pobi, crong);
+        if (pobi == crong)
+            return 0;
+        if (max == pobi)
+            return 1;
+        return 2;
     }
 }
