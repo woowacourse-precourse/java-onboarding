@@ -58,9 +58,12 @@ class Problem1 {
         return result;
     }
 
-    int cmpMulAdd(int multiplyResult, int addResult){
-        if(multiplyResult >= addResult) return multiplyResult;
-        else return addResult;
+    static int findMax(int digits){
+        List<Integer> dividedDigit = divideDigits(digits);
+        int multiplyResult = multiplyDigits(dividedDigit);
+        int addResult = addDigits(dividedDigit);
+        int res = Math.max(multiplyResult, addResult);
+        return res;
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -86,6 +89,14 @@ class Problem1 {
         if(crong.get(1) - crong.get(0) != 1){
             return EXCEPTION;
         }
+
+        int pobiLeftMax = findMax(pobi.get(0));
+        int pobiRightMax = findMax(pobi.get(1));
+        int pobiMax = Math.max(pobiLeftMax, pobiRightMax);
+
+        int crongLeftMax = findMax(crong.get(0));
+        int crongRightMax = findMax(crong.get(1));
+        int crongMax = Math.max(crongLeftMax, crongRightMax);
 
         return answer;
     }
