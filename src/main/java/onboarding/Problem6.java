@@ -13,7 +13,7 @@ public class Problem6 {
 
 	static class NicknameFilter {
 
-		private static final String EMAIL_FORM = "@email.com";
+		private final String EMAIL_FORM = "@email.com";
 
 		private final HashMap<String, String> userMap;
 
@@ -22,9 +22,7 @@ public class Problem6 {
 		}
 
 		public List<String> filter(List<List<String>> forms) {
-			for (List<String> userInfo : forms) {
-				initUserInfo(userInfo);
-			}
+			initUserInfo(forms);
 
 			HashSet<String> filteredUserSet = new HashSet<>();
 
@@ -51,27 +49,23 @@ public class Problem6 {
 		}
 
 		private boolean isDuplicatedPattern(String nickname, HashSet<String> nicknamePattern) {
-			String[] split = nickname.split("");
-			int i = 0;
-			while (true) {
-				String pattern = split[i] + split[i + 1];
-
-				if (nicknamePattern.contains(pattern)) {
+			for (String pattern : nicknamePattern) {
+				if (nickname.contains(pattern)) {
 					return true;
 				}
-				if (i == split.length - 2) {
-					return false;
-				}
-				i++;
 			}
+			return false;
 		}
 
-		private void initUserInfo(List<String> forms) {
-			String email = forms.get(0);
-			email = emailParser(email);
-			String nickname = forms.get(1);
+		private void initUserInfo(List<List<String>> forms) {
+			for (List<String> form : forms) {
+				String email = form.get(0);
+				String nickname = form.get(1);
 
-			userMap.put(nickname, email);
+				email = emailParser(email);
+
+				userMap.put(nickname, email);
+			}
 		}
 
 		private HashSet<String> nicknamePatternCreator(String nickname) {
