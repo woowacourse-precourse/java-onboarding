@@ -20,4 +20,8 @@ public class Problem2 {
     private static boolean charEq(char target, char ch) {
         return target == ch;
     }
+
+    private static String deduplication(String str, int startIndex, int lastIndex) {
+        return str.substring(0, startIndex) + str.substring(lastIndex + 1);
+    }
 }
