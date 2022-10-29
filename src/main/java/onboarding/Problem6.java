@@ -69,6 +69,17 @@ public class Problem6 {
                 }
             }
         }
+        // sort in ascending order
+        for(int i=0; i<result.size(); i++){
+            for(int j=0; j<result.size(); j++){
+                if(result.get(i).compareTo(result.get(j))<0){
+                    temp=result.get(i);
+                    result.set(i,result.get(j));
+                    result.set(j,temp);
+                }
+
+            }
+        }
 
         return result;
     }
