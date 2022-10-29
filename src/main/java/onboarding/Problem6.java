@@ -50,7 +50,15 @@ public class Problem6 {
      * @return
      */
     public static ArrayList<String> searchWord(int idx, List<List<String>> forms) {
-        return new ArrayList<>();
+        ArrayList<String> words = new ArrayList<>();
+        for (int i = 0; i < forms.get(idx).get(1).length()-1;i++) {
+
+            String searchString = "";
+            searchString += Character.toString(forms.get(idx).get(1).charAt(i));
+            searchString += Character.toString(forms.get(idx).get(1).charAt(i+1));
+            words.add(searchString);
+        }
+        return words;
     }
 
     /**
