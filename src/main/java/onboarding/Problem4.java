@@ -2,7 +2,13 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        if(isIncludeAlpa(word)) return "제한사항에 위반되는 문자열입니다.";
+        try {
+            if(!isIncludeAlpa(word)) {
+                throw new Exception("제한사항에 위반되는 문자열입니다.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         String answer = "";
         for (int index = 0; index < word.length(); index++) {
