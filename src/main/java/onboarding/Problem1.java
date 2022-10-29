@@ -10,13 +10,13 @@ class Problem1 {
     }
 
     //페이지의 자릿수 더한값과 곱한값을 담은 List를 리턴
-    public static List<Integer> test(List<Integer> page) {
-        List<Integer> testList = new ArrayList<>();
+    public static List<Integer> beforeScore(int page1, int page2) {
+        List<Integer> beforeScore = new ArrayList<>();
 
-        testList.add(0, multiflyPageNumber(page));
-        testList.add(1, sumPageNumber(page));
+        beforeScore.add(0, page1);
+        beforeScore.add(1, page2);
 
-        return testList;
+        return beforeScore;
     }
     //페이지 숫자 쪼개는 메소드
     public static List<Integer> seperatePageNumber (int pageNumber) {
@@ -46,18 +46,15 @@ class Problem1 {
         return pageMultifly;
     }
 
-    // 가장 큰 수를 추출
-    public static int maxPageNumber (int sumNum, int multiflyNum) {
-        int maxNumber = sumNum - multiflyNum;
+    // 자릿수 곱한거와 더한것중 가장 큰 수를 추출
+    public static int maxPageNumber (List<Integer> beforeScore) {
+        if ((beforeScore.get(0) > beforeScore.get(1))) {
+            return beforeScore.get(0);
 
-        int seperateNumber = maxNumber > 0 ? 1 : 0;
-
-        switch (seperateNumber) {
-            case 1:
-                return sumNum;
-            case 0:
-                return multiflyNum;
+        } else if ((beforeScore.get(1) > beforeScore.get(0))) {
+            return beforeScore.get(1);
         }
-        return maxNumber;
+
+        return beforeScore.get(0);
     }
 }
