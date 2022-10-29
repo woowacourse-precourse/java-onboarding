@@ -24,7 +24,9 @@ public class Problem7 {
 
             List<String> findFriend = friendMap.get(name);
             int score = getScore(userFriend, findFriend);
-            friendScore.put(name, score);
+
+            if (score > 0)
+                friendScore.put(name, score);
         }
 
         for (String name : visitors) {
