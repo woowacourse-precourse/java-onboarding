@@ -17,51 +17,15 @@ public class Problem7 {
         int visitorsSize = visitors.size();
 
 
-        //1. 예외사항
         checkException(friends, userLength, friendsSize, visitorsSize);
 
         //2. 유저 친구 관계 표현하기
         Map<String, Integer> userFriendInfo = new HashMap<>();
-        for (List<String> friend : friends) {
-            String friendA = friend.get(0);
-            String friendB = friend.get(1);
-
-            if(isUserFriendName(user, friendA)){
-                userFriendInfo.put(friendB,1);
-            }
-            if(isUserFriendName(user, friendB)){
-                userFriendInfo.put(friendA,1);
-            }
-        }
+        makeUserFriendInfo(user, friends, userFriendInfo);
 
         Map<String, Integer> recommendScore = new HashMap<>();
         //3. 유저와 함께 아는 친구 확인하고 점수 매기기
-        for (List<String> friend : friends) {
-            String friendA = friend.get(0);
-            String friendB = friend.get(1);
-
-            if(isUser(user, friendA, friendB)) continue;
-
-            if(isMapContain(userFriendInfo, friendA)){
-                if(!isMapContain(userFriendInfo, friendB)){ // 친구A 가 유저와 함께 아는 친구일 경우
-                    if(isMapContain(recommendScore, friendB)){ // 추천점수목록에 존재할 때와 존재하지 않을 때 구분해서 점수 등록
-                        recommendScore.put(friendB,recommendScore.get(friendB)+10);
-                    }else{
-                        recommendScore.put(friendB, 10);
-                    }
-                }
-            }
-
-            if(isMapContain(userFriendInfo, friendB)){
-                if(!isMapContain(userFriendInfo, friendA)){ // 친구B 가 유저와 함께 아는 친구일 경우
-                    if(isMapContain(recommendScore, friendA)){ // 추천점수목록에 존재할 때와 존재하지 않을 때 구분해서 점수 등록
-                        recommendScore.put(friendA,recommendScore.get(friendA)+10);
-                    }else{
-                        recommendScore.put(friendA, 10);
-                    }
-                }
-            }
-        }
+        makeRecommendScore(user, friends, userFriendInfo, recommendScore);
 
         //4. 유저의 타임라인에 방문한 횟수를 토대로 점수 매기기
         for (String visitor : visitors) {
@@ -84,6 +48,45 @@ public class Problem7 {
         answer = arrayList.stream().sorted().map(scoreInfo -> scoreInfo.getId()).limit(5).collect(Collectors.toList());
 
         return answer;
+    }
+
+    private static void makeRecommendScore(String user, List<List<String>> friends, Map<String, Integer> userFriendInfo, Map<String, Integer> recommendScore) {
+        for (List<String> friend : friends) {
+            String friendA = friend.get(0);
+            String friendB = friend.get(1);
+
+            //recommendScore 에 user 의 점수가 입력 되면 안됨
+            if(isUser(user, friendA, friendB)) continue;
+
+            makeScore(userFriendInfo, recommendScore, friendA, friendB); // 친구B 가 친구A 와 유저가 함께 아는 친구일 경우
+            makeScore(userFriendInfo, recommendScore, friendB, friendA); // 반대의 경우
+        }
+    }
+
+    private static void makeScore(Map<String, Integer> userFriendInfo, Map<String, Integer> recommendScore, String friendA, String friendB) {
+        if(isMapContain(userFriendInfo, friendA)){
+            if(!isMapContain(userFriendInfo, friendB)){ // 친구B 가 친구A 와 유저가 함께 아는 친구일 경우
+                if(isMapContain(recommendScore, friendB)){ // 추천점수목록에 존재할 때와 존재하지 않을 때 구분해서 점수 등록
+                    recommendScore.put(friendB, recommendScore.get(friendB)+10);
+                }else{
+                    recommendScore.put(friendB, 10);
+                }
+            }
+        }
+    }
+
+    private static void makeUserFriendInfo(String user, List<List<String>> friends, Map<String, Integer> userFriendInfo) {
+        for (List<String> friend : friends) {
+            String friendA = friend.get(0);
+            String friendB = friend.get(1);
+
+            if(isUserFriendName(user, friendA)){
+                userFriendInfo.put(friendB,1);
+            }
+            if(isUserFriendName(user, friendB)){
+                userFriendInfo.put(friendA,1);
+            }
+        }
     }
 
     private static void checkException(List<List<String>> friends, int userLength, int friendsSize, int visitorsSize) {
