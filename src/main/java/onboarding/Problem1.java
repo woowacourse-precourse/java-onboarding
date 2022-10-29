@@ -10,8 +10,23 @@ import java.util.List;
 //예외에는 페이지의 맨처음이 펼처지거나, 마지막이 펼처지는 경우를 포함한다.
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        //책 페이지가 이상하게 지정되었거나, 맨 마지막이나 맨 첫번째 페이지가 열렸을 경우 -1리턴
+        if(pobi.get(1)!=pobi.get(0)+1||crong.get(1)!=crong.get(0)+1||pobi.get(0)==0||pobi.get(1)==400||crong.get(0)==0||crong.get(1)==400){
 
-        return 0;
+            return -1;
+        }
+        //포비와 크롱의 점수가 같다면 0 리턴
+        if(CheckBiggerOne(pobi)==CheckBiggerOne(crong)){
+            return 0;
+        }
+        //만약 둘의 점수를 비교해서 포비가 크면 1리턴
+        int result =Math.max(CheckBiggerOne(pobi),CheckBiggerOne(crong));
+        if(result == CheckBiggerOne(pobi)){
+            return 1;
+        }
+        //아니라면 2 리턴
+            return 2;
+
     }
     //책의 각 자리 수를 곱하는 함수 구현
     public static int multyplyResult(int num){
