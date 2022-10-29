@@ -38,10 +38,9 @@ class Problem1 {
 		if (pages.get(1) - pages.get(0) != 1 || pages.get(0) % 2 == 0 || pages.get(1) % 2 == 1)
 			// 왼쪽 오른쪽 페이지의 차가 1이 아닌 경우, 왼쪽페이지가 짝수인 경우, 오른쪽 페이지가 홀수인 경우
 			return true;
-		if (isFirstPage(pages) || isLastPage(pages)) {
+		if (isFirstPage(pages) || isLastPage(pages))
 			// 펏번째, 마지막 페이지인 경우
 			return true;
-		}
 		if (pages.stream().anyMatch(page -> (page > 400 || page < 1)))
 			// 1 ~ 400 범위 밖의 페이지 인 경우
 			return true;
@@ -50,14 +49,14 @@ class Problem1 {
 
 	public static boolean isFirstPage(List<Integer> pages) {
 		if (pages.get(0) == 1 && pages.get(1) == 2)
-			return false;
-		return true;
+			return true;
+		return false;
 	}
 
 	public static boolean isLastPage(List<Integer> pages) {
 		if (pages.get(0) == 399 && pages.get(1) == 400)
-			return false;
-		return true;
+			return true;
+		return false;
 	}
 
 	/**
