@@ -4,7 +4,6 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
         if (!findPageException(pobi) || !findPageException(crong)) return -1;
 
         int pobiScore = Integer.MIN_VALUE;
@@ -18,7 +17,10 @@ class Problem1 {
             int curCrongMaxScore = Math.max(addPageDigits(pageNum), mulPageDigits(pageNum));
             crongScore = Math.max(crongScore, curCrongMaxScore);
         }
-        return answer;
+
+        if (pobiScore > crongScore) return 1;
+        else if ((pobiScore < crongScore)) return 2;
+        else return 0;
     }
 
     public static boolean findPageException(List<Integer> user) {
