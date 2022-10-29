@@ -9,11 +9,20 @@ public class Problem4 {
     private static final int UPPER_Z_ASCII = 'Z';
     private static final int LOWER_A_ASCII = 'a';
     private static final int LOWER_Z_ASCII = 'z';
+    private static final int WORD_SIZE_MIN = 1;
+    private static final int WORD_SIZE_MAX = 1000;
 
     public static String solution(String word) {
+        validateWord(word);
         return Arrays.stream(word.split(""))
             .map(Problem4::treeFrogDictionary)
             .collect(Collectors.joining());
+    }
+
+    private static void validateWord(String word) {
+        if (word.length() < WORD_SIZE_MIN || word.length() > WORD_SIZE_MAX) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private static String treeFrogDictionary(String word) {
