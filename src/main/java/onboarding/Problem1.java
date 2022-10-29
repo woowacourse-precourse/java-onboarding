@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.Arrays;
 import java.util.List;
 
 class Problem1 {
@@ -88,13 +89,35 @@ class Problem1 {
         return Math.max(sum, product);
     }
 
+
     public static int getResult(int object1, int object2) {
-        if (object1 == object2) {
-            return 0;
+        return ResultStatus.fromTwoObject(object1, object2)
+                .getResult();
+    }
+
+    public enum ResultStatus {
+        EQUAL(0, 0),
+        LEFT_MORE_BIGGER(1, 1),
+        RIGHT_MORE_BIGGER(2, -1);
+
+        private final int resultValue;
+        private final Integer compareValue;
+
+        ResultStatus(int resultvalue, int compareValue) {
+            this.resultValue = resultvalue;
+            this.compareValue = compareValue;
         }
-        if (object1 > object2) {
-            return 1;
+
+        public static ResultStatus fromTwoObject(int object1, int object2) {
+            int compare = Integer.compare(object1, object2);
+            return Arrays.stream(ResultStatus.values())
+                    .filter(resultStatus -> resultStatus.compareValue.equals(compare))
+                    .findAny()
+                    .orElseThrow();
         }
-        return 2;
+
+        public int getResult() {
+            return resultValue;
+        }
     }
 }
