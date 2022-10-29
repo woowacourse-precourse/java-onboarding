@@ -385,5 +385,25 @@ class ApplicationTest {
             Problem7.recommendScore = new HashMap<>();
             Problem7.relationships = new HashMap<>();
         }
+        @Test
+        void initFriendsListTest() {
+            String user = "mrko";
+            List<List<String>> friends = List.of(
+                    List.of("donut", "andole"),
+                    List.of("donut", "jun"),
+                    List.of("donut", "mrko"),
+                    List.of("shakevan", "andole"),
+                    List.of("shakevan", "jun"),
+                    List.of("mrko", "shakevan")
+            );
+
+            for (List<String> friend : friends) {
+                if (friend.contains(user)) {
+                    Problem7.initFriendsList(friend, user);
+                }
+            }
+            assertThat(Problem7.friendsList).isEqualTo(List.of("donut","shakevan"));
+            assertThat(Problem7.friendsList.size()).isEqualTo(2);
+        }
     }
 }
