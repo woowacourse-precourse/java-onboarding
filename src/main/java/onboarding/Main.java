@@ -33,5 +33,8 @@ public class Main {
 //        map.put("제이", cnt + 1);
 //        System.out.println("map.get(\"\") = " + map.get("제이"));
 
+        if(Problem7.isNotId("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")){
+            System.out.println("되야됨");
+        };
     }
 }

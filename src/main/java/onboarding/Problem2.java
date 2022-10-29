@@ -1,6 +1,6 @@
 package onboarding;
 
-import onboarding.problem2.NotMatchingCryptogramLength;
+import onboarding.problem2.NotMatchingCryptogramLengthOrLowerCase;
 import org.junit.platform.commons.util.StringUtils;
 
 import java.util.regex.Matcher;
@@ -11,17 +11,29 @@ public class Problem2 {
         String answer = "";
 
         // 예외사항
-        // 1-1 cryptogram 길이 체크
-        if(isNotMatchingCryptogramLength(cryptogram)){
-            throw new NotMatchingCryptogramLength("cryptogram 길이가 맞지 않습니다.");
+        // 1-1,2 cryptogram 길이와 소문자 체크
+        if(isNotCryptogramLengthOrLowerCase(cryptogram)){
+            throw new NotMatchingCryptogramLengthOrLowerCase("cryptogram 길이 및 소문자가 아닙니다.");
         }
-
 
         return answer;
     }
 
-    private static boolean isNotMatchingCryptogramLength(String cryptogram) {
-        return cryptogram.length() < 1 || cryptogram.length() > 1000;
+    // 예외사항 1-1,2 cryptogram 길이와 소문자 체크
+    public static boolean isNotCryptogramLengthOrLowerCase(String cryptogram){
+        boolean found = true;
+
+        if(StringUtils.isBlank(cryptogram)){
+            found = true;
+        }
+
+        String regex = "^[a-z]{1,1000}$";
+        Pattern p = Pattern.compile(regex);
+        Matcher matcher = p.matcher(cryptogram);
+        if(matcher.matches()){
+            found = false;
+        }
+        return found;
     }
 
 }
