@@ -35,14 +35,19 @@ public class Problem6 {
             String email = form.get(0);
             String name = form.get(1);
 
-            if(hasSamePiece(name))
+            if(hasSamePiece(name, pieceNum))
                 invalidEmailList.add(email);
         }
 
         return invalidEmailList;
     }
 
-    private static boolean hasSamePiece(String name) {
-        return true;
+    private static boolean hasSamePiece(String name, Map<String, Integer> pieceNum) {
+        for(int i = 1; i < name.length(); i++) {
+            String piece = name.substring(i-1, i+1);
+            if(pieceNum.getOrDefault(piece, 0) > 1)
+                return true;
+        }
+        return false;
     }
 }
