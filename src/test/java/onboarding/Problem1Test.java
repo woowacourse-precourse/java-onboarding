@@ -1,6 +1,11 @@
 package onboarding;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.InputMismatchException;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class Problem1Test {
@@ -19,5 +24,28 @@ class Problem1Test {
         }
         //then
         assertArrayEquals(realResult, results);
+    }
+
+    @Test
+    void 유저점수테스트() {
+        List<Integer> firstPages = new ArrayList<>(Arrays.asList(1,2));
+
+        assertThrows(InputMismatchException.class, () -> Problem1.getUserMaxPoint(firstPages));
+
+
+        List<Integer> lastPages = new ArrayList<>(Arrays.asList(399,400));
+        assertThrows(InputMismatchException.class, () -> Problem1.getUserMaxPoint(lastPages));
+
+
+        List<Integer> pages1 = new ArrayList<>(Arrays.asList(123,124));
+
+        assertEquals(8, Problem1.getUserMaxPoint(pages1));
+
+
+        List<Integer> pages2 = new ArrayList<>(Arrays.asList(199,200));
+
+        assertEquals(81, Problem1.getUserMaxPoint(pages2));
+
+
     }
 }
