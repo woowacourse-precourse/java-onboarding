@@ -1,11 +1,15 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
+
+        String result = converter(money, 0);
+        List<Integer> answer = convertToList(result);
+
         return answer;
     }
 
@@ -18,5 +22,15 @@ public class Problem5 {
 
         return String.valueOf(value / measurement[i]) + converter(value % measurement[i], i + 1);
 
+    }
+
+    public static List<Integer> convertToList(String value) {
+        List<Integer> result = new ArrayList<Integer>();
+
+        for (int i = 0; i < value.length(); i++) {
+            Integer intValue = Integer.parseInt(String.valueOf(value.charAt(i)));
+            result.add(intValue);
+        }
+        return result;
     }
 }
