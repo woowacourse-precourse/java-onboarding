@@ -12,9 +12,30 @@ class Problem1 {
     private static final int RIGHT_PAGE = 1;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        final int pobiLeftPage = pobi.get(LEFT_PAGE);
+        final int pobiRightPage = pobi.get(RIGHT_PAGE);
+        final int crongLeftPage = crong.get(LEFT_PAGE);
+        final int crongRightPage = crong.get(RIGHT_PAGE);
 
-        return answer;
+        if (!handleException(pobiLeftPage, pobiRightPage, crongLeftPage, crongRightPage)) {
+            return EXCEPTION;
+        }
+
+        int pobiMaxScore = Math.max(getMaxScore(pobiLeftPage), getMaxScore(pobiRightPage));
+        int crongMaxScore = Math.max(getMaxScore(crongLeftPage), getMaxScore(crongRightPage));
+
+        return getWinner(pobiMaxScore, crongMaxScore);
+    }
+
+    private static boolean handleException(int pobiLeftPage, int pobiRightPage, int crongLeftPage, int crongRightPage) {
+        if (!oddEvenCheck(pobiLeftPage, pobiRightPage) || !oddEvenCheck(crongLeftPage, crongRightPage)) {
+            return false;
+        }
+        if (isNotOneDifferencePage(pobiLeftPage, pobiRightPage) || isNotOneDifferencePage(crongLeftPage, crongRightPage)) {
+            return false;
+        }
+
+        return !isStartOrEndPageNum(pobiLeftPage) && !isStartOrEndPageNum(pobiRightPage) && !isStartOrEndPageNum(crongLeftPage) && !isStartOrEndPageNum(crongRightPage);
     }
 
     private static boolean isStartOrEndPageNum(int pageNum) {
