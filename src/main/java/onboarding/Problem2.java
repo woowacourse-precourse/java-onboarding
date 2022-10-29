@@ -15,7 +15,7 @@ public class Problem2 {
             }
 
             if (!isDuplicatedWord(deque, ele)) {
-
+                insertWord(deque, ele);
             }
         }
 
