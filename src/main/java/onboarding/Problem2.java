@@ -19,14 +19,36 @@ public class Problem2 {
         return TransList;
     }
 
+    // 2. 리스트 요소 중 연속되는 문자 확인
+    static int getCheckList(List<Character> cryptogramList)
+    {
+        // 이전 문자 초기화
+        char preAlpha = cryptogramList.get(0);
+
+        for(int idx=1; idx<cryptogramList.size(); idx++)
+        {
+            // 이전 문자와 현 문자 비교
+            if(preAlpha == cryptogramList.get(idx))
+                return idx-1;
+
+            // 이전 문자 변경
+            preAlpha = cryptogramList.get(idx);
+        }
+
+        return 0;
+    }
+
     public static String solution(String cryptogram) {
         String answer = "answer";
 
         // 문자열 리스트화
         List<Character> cryptogramList = getTransList(cryptogram);
 
-        // 리스트화 결과 확인
-        System.out.println("리스트화 : " + cryptogramList);
+        // 연속되는 문자 인덱스 값 받아오기
+        int listIndex = getCheckList(cryptogramList);
+
+        // 시작 인덱스 값 결과 확인
+        System.out.println("시작 인덱스 : " + listIndex);
 
         return answer;
     }
@@ -35,7 +57,8 @@ public class Problem2 {
 // 기능 요구 사항
 // 1. 입력받은 문자열을 문자를 요소로하는 리스트로 변환
 // 2. 리스트 요소 중 연속되는 문자 확인
-// 3. "browoanoommnaon" → "browoannaon" → "browoaaon" → "browoon" → "brown"
+// 3. 리스트 내 문자 제거
+// 4. "browoanoommnaon" → "browoannaon" → "browoaaon" → "browoon" → "brown"
 
 // 프로그래밍 요구 사항
 // ✔ 1. JDK 11 버전
