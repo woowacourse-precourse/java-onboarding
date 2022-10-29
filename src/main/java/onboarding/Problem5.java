@@ -14,7 +14,7 @@ public class Problem5 {
     public static List<Integer> solution(int money) {
 
         List<Integer> answer = new ArrayList<>();
-
+        withdraw(money, answer, 0);
         return answer;
     }
 
