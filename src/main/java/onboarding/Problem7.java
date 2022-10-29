@@ -3,7 +3,7 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
-    public static HashSet<String> userList;
+    public static TreeSet<String> userList;
     public static HashMap<String, HashSet<String>> friendListInfo;
     public static void setUserList(String user, List<List<String>> friends, List<String> visitors) {
         HashSet<String> emptyList = new HashSet<>();
@@ -44,16 +44,18 @@ public class Problem7 {
         }
     }
     public static List<String> calculateScore(String user, List<String> visitors) {
-        HashMap<String,Integer> recommendScore = new HashMap<>();
+        TreeMap<String,Integer> recommendScore = new TreeMap<>();
         Iterator<String> iter = userList.iterator();
+
         while(iter.hasNext()) {
             String name = iter.next();
             int score = 0;
             HashSet<String> myFriendList = friendListInfo.get(user);
             if(name != user) {
                 HashSet<String> yourFriendList = friendListInfo.get(name);
-                myFriendList.retainAll(yourFriendList);
-                score += 10 * myFriendList.size();
+                HashSet<String> tempSet = new HashSet<>(myFriendList);
+                tempSet.retainAll(yourFriendList);
+                score += 10 * tempSet.size();
             }
             recommendScore.put(name,score);
         }
@@ -64,13 +66,19 @@ public class Problem7 {
             int visitorScore = recommendScore.get(visitorName) + 1;
             recommendScore.put(visitorName,visitorScore);
         }
+
         List<String> nameList = new ArrayList<String>(recommendScore.keySet());
         Collections.sort(nameList,((o1, o2) -> Double.compare(recommendScore.get(o2),recommendScore.get(o1))));
+        System.out.println(nameList);
+
+        while(nameList.size() > 3) {
+            nameList.remove(3);
+        }
 
         return nameList;
     }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        userList = new HashSet<>();
+        userList = new TreeSet<>();
         friendListInfo = new HashMap<>();
 
         setUserList(user,friends,visitors);
