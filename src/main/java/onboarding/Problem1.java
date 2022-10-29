@@ -7,7 +7,7 @@ class Problem1 {
         if(detectError(pobi) || detectError(crong))
             return -1;
 
-        int pobiNum = getMaxOfNumbers(pobi), crongNum = getMaxOfNumbers(crong);
+        int pobiNum = getMaxOfListNumber(pobi), crongNum = getMaxOfListNumber(crong);
 
         if(pobiNum == crongNum)
             return 0;
@@ -37,30 +37,18 @@ class Problem1 {
     }
 
     //리스트 안 숫자들의 getSum, getMultiple의 값들 중 최대값 구하기
-    private static int getMaxOfNumbers(List<Integer> list){
+    private static int getMaxOfListNumber(List<Integer> list){
         int ret = 0, num;
 
         for(int element : list) {
-            num = getSumEachDigit(element);
-            if(ret < num)
-                ret = num;
-
-            num = getMultipleEachDigit(element);
-            if(ret < num)
-                ret = num;
+            ret = max(ret, getMaxNumber(element));
         }
 
         return ret;
     }
 
-    private static int getMaxNumber(int num){
-        int n1 = getSumEachDigit(num), n2 = getMultipleEachDigit(num);
-
-        if(n1 < n2)
-            return n2;
-
-        return n1;
-
+    private static int getMaxNumber(int num) {
+        return max(getSumEachDigit(num), getMultipleEachDigit(num));
     }
 
     //각 자리 숫자 더하기 값 구하기
