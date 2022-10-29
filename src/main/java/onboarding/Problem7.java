@@ -93,4 +93,15 @@ class Intimacy {
     public void setNumOfMutualFriends(Relations relations) {
         this.numOfMutualFriends = relations.getNumOfMutualFriends(this.targetId, this.userId);
     }
+
+    public int getNumOfVisited() {
+        return numOfVisited;
+    }
+
+    public void setNumOfVisited(Map<String, Integer> visitedCount) {
+        this.numOfVisited = 0;
+        if (visitedCount.containsKey(this.userId)) {
+            this.numOfVisited = visitedCount.get(this.userId);
+        }
+    }
 }
