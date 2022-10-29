@@ -14,11 +14,15 @@ public class Problem7 {
         List<String> result=new ArrayList<>();
         for(List<String> friend:friends){
             if(friend.contains(user)) {
-                result.add(friend.get(0));
-                result.add(friend.get(1));
-                result.remove(user);
+                addFriend(result.indexOf(user),result,friend);
             }
         }
         return result;
+    }
+    public static void addFriend(int index,List<String> result,List<String> freind){
+        if(index==0)
+            result.add(freind.get(1));
+        if(index==1)
+            result.add(freind.get(0));
     }
 }
