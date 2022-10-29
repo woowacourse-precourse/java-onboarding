@@ -104,8 +104,6 @@ public class Problem7 {
         return scoreBoard;
     }
 
-
-
     private static List<? extends List<Integer>> getGraph(List<List<String>> friends) {
         List<List<Integer>> graph = new ArrayList<>();
         HashSet<String> users = getUserSet(friends);
@@ -152,6 +150,7 @@ public class Problem7 {
         users.forEach(set::addAll);
         return set;
     }
+
     private static <T> boolean validation(String type, T target){
         if(type.equals("user") && target instanceof String) {
             int userLength = ((String) target).length();
