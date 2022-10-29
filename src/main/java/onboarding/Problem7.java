@@ -44,14 +44,12 @@ public class Problem7 {
 
         List<String> visitors_list = saveVisitorList(visitors);
 
-        for (int i = 0; i < userFriends_list.size(); i++)
-        {
+        for (int i = 0; i < userFriends_list.size(); i++) {
             visitors_list = remove(userFriends_list.get(i), visitors_list);
         }
 
         //친구의 점수표를 MAP에 저장
         friendsPoint_map = saveUserPoint(friendsPoint_map, visitors_list, visitPoint);
-
 
         //point가 가장 높은 순으로 배열로 저장
         point_array = sortList(friendsPoint_map);
@@ -64,9 +62,9 @@ public class Problem7 {
         //point가 가장 높은 순으로 리스트를 정렬
         List<String> recommedList = getKey(point_array, friendsPoint_map, cnt);
 
-
+        //saveSortCheckPointTest
         //saveSortCheckPoint(point_array);
-        recommedList = sortList(saveSortCheckPoint(point_array, recommedList.size()), recommedList);
+        recommedList = sortList(saveSortCheckPointTest(point_array, recommedList.size()), recommedList);
 
         int min = Math.min(recommedList.size(), recommendNum);
 
@@ -170,35 +168,33 @@ public class Problem7 {
         return point_array;
     }
 
-    public static List<Integer> saveSortCheckPoint(Integer[] point_array, int length) {
-        int cnt;
+    public static List<Integer> saveSortCheckPointTest(Integer[] point_array, int length) {
         boolean isVisited = false;
 
         List<Integer> checkPointList = new ArrayList<>();
 
-        for (int i = 0; i < length - 1; i++)
-        {
-            cnt = i + 1;
-            while (point_array[i] == point_array[cnt] && cnt < length)
-            {
-                isVisited = true;
-                cnt++;
+        for (int i = 0; i < length - 1; i++) {
+            int cnt = 0;
+            for (int j = i + 1; j < length; j++) {
+                if (point_array[i] == point_array[j]) {
+                    isVisited = true;
+                    cnt++;
+                }
+                if (point_array[i] != point_array[j])
+                    break;
             }
+            if (!isVisited)
+                checkPointList.add(i);
             if (isVisited)
             {
-                checkPointList.add(cnt);
-                isVisited = false;
-                i = cnt;
-                continue;
+                checkPointList.add(i + cnt);
+                i += cnt;
             }
-            checkPointList.add(i);
         }
 
         return checkPointList;
     }
-
-    public static int testDuplicationPoint(Integer[] point_array)
-    {
+    public static int testDuplicationPoint(Integer[] point_array) {
         int cnt = recommendNum;
 
         for (int i = recommendNum - 1; i < point_array.length - 1; i++)
@@ -228,7 +224,10 @@ public class Problem7 {
                 Arrays.sort(arr, i, (cnt + checkPointList.get(i)));
                 continue;
             }
-            Arrays.sort(arr, (cnt + 1), checkPointList.get(i));
+            Arrays.sort(arr, (cnt + 1), checkPointList.get(i) + 1);
+
+
+           System.out.println((cnt + 1) + "번 부터" + checkPointList.get(i) + "번 까지 정렬 : " + Arrays.asList(arr));
 
             cnt = checkPointList.get(i);
         }
