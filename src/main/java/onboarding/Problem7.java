@@ -68,11 +68,10 @@ public class Problem7 {
                 }
             }
         });
-        for(Map.Entry<String, Integer> m : sort_sc){
-            answer.add(m.getKey());
+        for(int i = 0; i < Math.min(5, sort_sc.size()); i++){
+            answer.add(sort_sc.get(i).getKey());
         }
 
-        System.out.println(friend_sco);
         return answer;
     }
 
