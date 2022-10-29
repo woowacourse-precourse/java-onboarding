@@ -95,7 +95,6 @@ class Problem1 {
      *
      * @param pobi pobi에 제한 사항을 처리해준다
      * @param crong crong에 제한 사항을 처리해준다
-
      */
     public static void exception(List<Integer> pobi, List<Integer> crong) throws InputException, RangeException,PageSortException {
          /*
