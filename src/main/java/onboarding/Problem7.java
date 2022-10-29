@@ -5,18 +5,9 @@ import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
         Map<String, List<String>> friendship = getFriendshipByFriends(friends);
         Map<String, Integer> scores = calculateScores(user, visitors, friendship);
-        return answer;
-    }
-
-    private static List<Map.Entry<String, Integer>> sortRecommendations(Map<String, Integer> scores) {
-        return scores.entrySet().stream()
-                .sorted((o1, o2) -> o1.getValue() == o2.getValue()
-                        ? o1.getKey().compareTo(o2.getKey())
-                        : o2.getValue().compareTo(o1.getValue()))
-                .collect(Collectors.toList());
+        return getRecommendationsUp2Five(sortRecommendations(scores));
     }
 
     private static Map<String, List<String>> getFriendshipByFriends(List<List<String>> friends) {
@@ -70,5 +61,24 @@ public class Problem7 {
 
     private static boolean isFriend(String user, String otherUser, Map<String, List<String>> friendship) {
         return friendship.get(user).contains(otherUser);
+    }
+
+    private static List<Map.Entry<String, Integer>> sortRecommendations(Map<String, Integer> scores) {
+        return scores.entrySet().stream()
+                .sorted((o1, o2) -> o1.getValue() == o2.getValue()
+                        ? o1.getKey().compareTo(o2.getKey())
+                        : o2.getValue().compareTo(o1.getValue()))
+                .collect(Collectors.toList());
+    }
+
+    private static List<String> getRecommendationsUp2Five(List<Map.Entry<String, Integer>> recommendations) {
+        List<String> newRecommendations = new ArrayList<>();
+        for (Map.Entry<String, Integer> recommendation : recommendations) {
+            if (newRecommendations.size() == 5) {
+                return newRecommendations;
+            }
+            newRecommendations.add(recommendation.getKey());
+        }
+        return newRecommendations;
     }
 }
