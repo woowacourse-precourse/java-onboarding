@@ -46,8 +46,10 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        Relations relations = createRelations(friends);
+        Map<String, Integer> visitLog = countVisit(visitors);
+        Recommendation recommendation = createRecommendation(user, relations, visitLog);
+        return recommendation.recommend();
     }
 
     public static Relations createRelations (List<List<String>> friends) {
