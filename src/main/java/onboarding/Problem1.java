@@ -51,6 +51,12 @@ class Problem1 {
         return maxMul;
     }
 
+    static int getMaxScore(int score1, int score2) {
+        int max = Math.max(score1, score2);
+
+        return max;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
