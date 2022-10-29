@@ -7,7 +7,7 @@ public class Problem2 {
 
     public static String solution(String cryptogram) {
         if(!(checkCryptogramLength(cryptogram) || checkCryptogramConsistOfLowercase(cryptogram))){
-            throw new IllegalStateException("[error] 잘못된 암호문이 입력되었습니다.");
+            throw new IllegalArgumentException("[error] 잘못된 암호문이 입력되었습니다.");
         }
         String answer = deleteContinuedSameCharUntilNotOverlap(cryptogram);
         return answer;
