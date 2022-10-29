@@ -41,11 +41,11 @@ class Problem1 {
         char[] numRightPageChar = splitPageNum(leftPage);
 
         for (char x : numLeftPageChar) {
-            Leftmul *= x;
+            Leftmul *= x - '0';
         }
 
         for (char x : numRightPageChar) {
-            Rightmul *= x;
+            Rightmul *= x - '0';
         }
 
         int maxMul = getMaxScore(Leftmul, Rightmul);
