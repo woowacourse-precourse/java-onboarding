@@ -3,6 +3,7 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+    //x의 각 자리수들을 모두 더한 값을 반환
     int Sum(int x){
         int ret=0;
 
@@ -14,6 +15,7 @@ class Problem1 {
         return ret;
     }
 
+    //x의 각 자리수들을 모두 곱한 값을 반환
     int Mul(int x){
         int ret=1;
 
@@ -25,6 +27,7 @@ class Problem1 {
         return ret;
     }
 
+    //예외 처리 메서드
     boolean exception(List<Integer> page){
         int leftPage=page.get(0),rightPage=page.get(1);
         if(leftPage>rightPage || rightPage-leftPage!=1 || leftPage%2!=1 || rightPage%2!=0){
@@ -43,6 +46,7 @@ class Problem1 {
             return -1;
         }
 
+        //포비 점수 계산
         int pobiLeftSum=prob.Sum(pobi.get(0)),pobiLeftMul=prob.Mul(pobi.get(0));
         int pobiLeftMax=Math.max(pobiLeftSum,pobiLeftMul);
 
@@ -51,6 +55,7 @@ class Problem1 {
 
         int pobiMax=Math.max(pobiLeftMax,pobiRightMax);
 
+        //크롱 점수 계산
         int crongLeftSum=prob.Sum(crong.get(0)),crongLeftMul=prob.Mul(crong.get(0));
         int crongLeftMax=Math.max(crongLeftSum,crongLeftMul);
 
@@ -59,6 +64,7 @@ class Problem1 {
 
         int crongMax=Math.max(crongLeftMax,crongRightMax);
 
+        //승패 결정
         if(pobiMax>crongMax){
             answer=1;
         }
