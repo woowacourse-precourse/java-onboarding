@@ -4,22 +4,6 @@ import java.util.*;
 
 public class Problem6 {
     private static final Map<String, Set<String>> subNicknames = new HashMap<>();
-    public static void main(String[] args) {
-        List<String> answer = Problem6.solution(List.of(
-                List.of("jm@email.com", "제이엠"),
-                List.of("jason@email.com", "제이슨"),
-                List.of("woniee@email.com", "워닝닝"),
-                List.of("mj@email.com", "엠제이"),
-                List.of("nowm@email.com", "엠제임마"),
-                List.of("hhgg@email.com", "워니버니"),
-                List.of("dasd@email.com", "버니룽띵"),
-                List.of("asdas@email.com", "딩룽띵룽띵룽")
-        ));
-
-        for (String a : answer) {
-            System.out.println(a);
-        }
-    }
 
     public static List<String> solution(List<List<String>> forms) {
         for (List<String> form : forms) {
@@ -55,7 +39,11 @@ public class Problem6 {
 
     private static List<String> getCrewEmails() {
         Set<String> totalDuplicated = getTotalDuplicated();
-        return null;
+        List<String> crewEmails = new ArrayList<>(totalDuplicated);
+
+        Collections.sort(crewEmails);
+
+        return crewEmails;
     }
 
     private static Set<String> getTotalDuplicated() {
