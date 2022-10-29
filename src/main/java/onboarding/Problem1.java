@@ -16,4 +16,7 @@ class Problem1 {
         }
         return splitNumber;
     }
+    private static int getPlusScore(List<Integer> splitNumber) {
+        return splitNumber.stream().mapToInt(i -> i).sum();
+    }
 }
