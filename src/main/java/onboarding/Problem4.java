@@ -2,9 +2,17 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-        System.out.println(backwardAlphabet('h'));
-        return answer;
+        return convertWord(word);
+    }
+
+    private static String convertWord(String word) {
+        StringBuilder result = new StringBuilder();
+
+        for (char c: word.toCharArray()) {
+            result.append(backwardAlphabet(c));
+        }
+
+        return result.toString();
     }
 
     private static Character backwardAlphabet(char c) {
