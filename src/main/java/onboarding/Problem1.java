@@ -20,4 +20,16 @@ class Problem1 {
         }
         return multiply;
     }
+    private static int getMaxScore(List<Integer> pages) {
+        int maxScore = 0;
+        for(int page : pages) {
+            if(sumOfDigit(page) == 0 || multiplyOfDigit(page) == 0) return -1;
+
+            int newScore = Math.max(sumOfDigit(page), multiplyOfDigit(page));
+            maxScore = Math.max(newScore, maxScore);
+        }
+
+        return maxScore;
+    }
+
 }
