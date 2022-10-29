@@ -11,19 +11,19 @@ public class Problem6 {
     private static final boolean NO_DUPLICATE=false;
 
     public static List<String> solution(List<List<String>> forms) {
-
-        Map<String,Integer> nickMap = new HashMap<>();
-        mapSetting(forms, nickMap);
+        Map<String,Integer> nickMap = mapSetting(forms);
         List<Integer> duplicateUserIndex = duplicateIndex(forms, nickMap);
         Set<String> duplicateUserMailSet= mailSetting(forms, duplicateUserIndex);
         List<String> answer =setToList(duplicateUserMailSet);
         return answer;
     }
-    private static void mapSetting(List<List<String>> forms, Map<String, Integer> nickMap) {
+    private static Map<String, Integer> mapSetting(List<List<String>> forms) {
+        Map<String, Integer> nickMap = new HashMap<>();
         for(int i=0;i<forms.size();i++){
             String nowNick = forms.get(i).get(NICKNAME);
             mapAdd(nickMap, nowNick);
         }
+        return nickMap;
     }
     private static void mapAdd(Map<String,Integer> nickMap, String nowNick) {
         for(int i=0;i<nowNick.length()-1;i++){
