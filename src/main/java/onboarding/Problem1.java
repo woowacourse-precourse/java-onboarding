@@ -14,6 +14,10 @@ class Problem1 {
             answer=-1;
             return answer;
         }
+        if((pobi.get(0)%2==0) || (crong.get(0)%2==0)){
+            answer=-1;
+            return answer;
+        }
 
         int[] pobi_num=new int[2];
         int pobi_max;
