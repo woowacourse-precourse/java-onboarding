@@ -1,46 +1,30 @@
 package onboarding;
 
+import java.util.Stack;
+
 public class Problem2 {
 
-    private static final String SPECIFIC_VALUE = "-";
-
     public static String solution(String cryptogram) {
-        String answer = cryptogram;
-        String[] strArray = answer.split("");
+        Stack<Character> stack = new Stack<>();
 
-        while (isDuplication(strArray)){
-            answer = convertString(strArray);
-            strArray = answer.split("");
-        }
-        return answer;
-    }
-    private static boolean isDuplication(String[] array) {
-        for (int i = 0; i < array.length - 1; i++) {
-            String firstString = array[i];
-            String nextString = array[i + 1];
-
-            if(firstString.equals(nextString)) {
-                return true;
+        for (Character word : cryptogram.toCharArray()){
+            if(stack.isEmpty()) {
+                stack.push(word);
+                continue;
+            }
+            Character before = stack.peek();
+            if(before.equals(word)) {
+                stack.pop();
+            } else {
+                stack.push(word);
             }
         }
-        return false;
-    }
 
-    private static void convertSpecificValue(String[] array) {
-        for (int i = 0; i < array.length - 1; i++) {
-            String firstString = array[i];
-            String nextString = array[i + 1];
-
-            if(firstString.equals(nextString)) {
-                array[i] = SPECIFIC_VALUE;
-                array[i + 1] = SPECIFIC_VALUE;
-            }
+        StringBuilder sb = new StringBuilder();
+        for (Character character : stack) {
+            sb.append(character);
         }
-    }
 
-    private static String convertString(String[] array) {
-        convertSpecificValue(array);
-        return String.join("",array).replace(SPECIFIC_VALUE,"");
+        return sb.toString();
     }
-
 }
