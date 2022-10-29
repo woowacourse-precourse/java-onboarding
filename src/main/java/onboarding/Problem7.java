@@ -2,6 +2,8 @@ package onboarding;
 
 import java.util.*;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 /**
  * 기능 구현 목록
  * 1. user의 친구 목록 뽑기
@@ -11,49 +13,54 @@ import java.util.*;
  * 5. score 순서대로 정렬. 점수가 같다면 이름순으로 정렬
  */
 public class Problem7 {
+    static List<String> userFriends;
+    static HashMap<String, Integer> nonFriends;
+
+    private static void isNewFriend(List<String> friends, String userFriend){
+        if (friends.get(0).equals(userFriend)){
+            if (nonFriends.containsKey(friends.get(1))){
+                nonFriends.put(
+                        friends.get(1),
+                        nonFriends.get(friends.get(1)) + 10
+                );
+            } else {
+                nonFriends.put(friends.get(1), 10);
+            }
+        } else if (friends.get(1).equals(userFriend)){
+            if (nonFriends.containsKey(friends.get(0))){
+                nonFriends.put(
+                        friends.get(0),
+                        nonFriends.get(friends.get(0)) + 10
+                );
+            } else {
+                nonFriends.put(friends.get(0), 10);
+            }
+        }
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
-        List<String> userFriends = new ArrayList<>();
-        HashMap<String, Integer> nonFriends = new HashMap<>();
-
+        userFriends = new ArrayList<>();
+        nonFriends = new HashMap<>();
         // user의 친구 목록 추가
-        for (int i = 0; i < friends.size(); i++){
-            if (friends.get(i).get(0).equals(user)){
-                userFriends.add(friends.get(i).get(1));
-            } else if (friends.get(i).get(1).equals(user)){
-                userFriends.add(friends.get(i).get(0));
+        for (List<String> friend : friends){
+            if (friend.get(0).equals(user)){
+                userFriends.add(friend.get(1));
+            } else if (friend.get(1).equals(user)){
+                userFriends.add(friend.get(0));
             }
         }
 
         // 친구의 친구 목록 추가, score 합산
-        for (int i = 0; i < friends.size(); i++){
+        for (List<String> friend : friends){
             for (int j = 0; j < userFriends.size(); j++) {
-                if (friends.get(i).contains(user)) {
+                if (friend.contains(user)) {
                     continue;
                 }
-                if (userFriends.contains(friends.get(i).get(0)) && userFriends.contains(friends.get(i).get(1))){
+                if (userFriends.contains(friend.get(0)) && userFriends.contains(friend.get(1))){
                     continue;
                 }
 
-                if (friends.get(i).get(0).equals(userFriends.get(j))){
-                    if (nonFriends.containsKey(friends.get(i).get(1))){
-                        nonFriends.put(
-                                friends.get(i).get(1),
-                                nonFriends.get(friends.get(i).get(1)) + 10
-                        );
-                    } else {
-                        nonFriends.put(friends.get(i).get(1), 10);
-                    }
-                } else if (friends.get(i).get(1).equals(userFriends.get(j))){
-                    if (nonFriends.containsKey(friends.get(i).get(0))){
-                        nonFriends.put(
-                                friends.get(i).get(0),
-                                nonFriends.get(friends.get(i).get(0)) + 10
-                        );
-                    } else {
-                        nonFriends.put(friends.get(i).get(0), 10);
-                    }
-                }
+                isNewFriend(friend, userFriends.get(j));
             }
         }
 
@@ -91,60 +98,5 @@ public class Problem7 {
         }
 
         return answer;
-    }
-
-    public static void main(String[] args){
-//        String user = "mrko";
-//        List<List<String>> friends = List.of(
-//                List.of("donut", "andole"),
-//                List.of("donut", "jun"),
-//                List.of("donut", "mrko"),
-//                List.of("shakevan", "andole"),
-//                List.of("shakevan", "jun"),
-//                List.of("shakevan", "mrko")
-//        );
-//        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-
-
-//        String user = "mrko";
-//        List<List<String>> friends = List.of(
-//                List.of("mrko", "jun"),
-//                List.of("donut", "jun"),
-//                List.of("donut", "mrko"),
-//                List.of("shakevan", "andole"),
-//                List.of("jun", "andole"),
-//                List.of("shakevan", "jun"),
-//                List.of("shakevan", "mrko")
-//        );
-//        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-
-//        String user = "mrko";
-//        List<List<String>> friends = List.of(
-//                List.of("mrko", "jun"),
-//                List.of("bedi", "jun"),
-//                List.of("bedi", "donut"),
-//                List.of("donut", "jun"),
-//                List.of("donut", "mrko"),
-//                List.of("shakevan", "andole"),
-//                List.of("jun", "andole"),
-//                List.of("shakevan", "jun"),
-//                List.of("shakevan", "mrko")
-//        );
-//        List<String> visitors = List.of("donut", "shakevan");
-//        List<String> result = List.of("andole", "bedi");
-
-        String user = "andole";
-        List<List<String>>friends = List.of(
-                List.of("andole", "jun"),
-                List.of("donut", "jun"),
-                List.of("donut", "shakevan"),
-                List.of("shakevan", "andole"),
-                List.of("shakevan", "jun"),
-                List.of("shakevan", "bedi"),
-                List.of("anne", "jun")
-        );
-        List<String> visitors = List.of("donut", "mrko", "peter", "sam");
-        List<String> result = List.of("donut", "anne", "bedi", "mrko", "peter");
-        solution(user, friends, visitors);
     }
 }
