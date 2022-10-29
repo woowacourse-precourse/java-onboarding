@@ -28,4 +28,11 @@ class Problem1 {
         return value;
     }
 
+    // 각 자리수를 더하고 곱한 값 중 가장 큰 수를 구하는 함수
+    public static Integer maxNumber(Integer pageNum) {
+        Integer maxValue, addValue = addDigits(pageNum), mulValue = mulDigits(pageNum);
+        if (addValue.compareTo(mulValue) == 1) maxValue = addValue;
+        else maxValue = mulValue;
+        return maxValue;
+    }
 }
