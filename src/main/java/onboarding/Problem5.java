@@ -30,9 +30,11 @@ public class Problem5 {
 
             return res;
         }
+
         private int shareMoney(int money, int idx) {
             return money / moneyGrade[idx];
         }
+
         private int calculator(int count, int money, int idx) {
             if (count != 0) {
                 money -= moneyGrade[idx] * count;
