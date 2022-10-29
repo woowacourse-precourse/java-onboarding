@@ -7,6 +7,9 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         openBook(pobi);
         openBook(crong);
+        int pobiScore, crongScore;
+        pobiScore = getScore(pobi);
+        crongScore = getScore(crong);
         int answer = Integer.MAX_VALUE;
         return answer;
     }
@@ -27,6 +30,30 @@ class Problem1 {
             list.add(randomValue + 1);
         }
     }
-//    public static int getScore() {}
+    public static int getScore(List<Integer> list) {
+        int leftPage = list.get(0);
+        int rightPage = list.get(1);
+        int addScore = 0, multplyScore = 1;
+        int leftResult, rightResult, result;
+
+        while(leftPage != 0) {
+            addScore += leftPage%10;
+            multplyScore *= leftPage%10;
+            leftPage /= 10;
+        }
+        leftResult = addScore >= multplyScore ? addScore : multplyScore;
+
+        addScore = 0;
+        multplyScore = 1;
+
+        while(rightPage != 0) {
+            addScore += rightPage%10;
+            multplyScore *= rightPage%10;
+            rightPage /= 10;
+        }
+        rightResult = addScore >= multplyScore ? addScore : multplyScore;
+        result = leftResult >= rightResult ? leftResult : rightResult;
+        return result;
+    }
 //    public static int result() {}
 }
