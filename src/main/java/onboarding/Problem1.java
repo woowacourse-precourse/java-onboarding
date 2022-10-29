@@ -38,6 +38,14 @@ class Problem1 {
         int pobi_score = Collections.max(result_pobi);
         int crong_score = Collections.max(result_crong);
 
+        if(pobi_score > crong_score) {
+            answer = 1;
+        } else if(pobi_score < crong_score) {
+            answer = 2;
+        } else if(pobi_score == crong_score) {
+            answer = 0;
+        }
+
         return answer;
     }
 
