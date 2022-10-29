@@ -21,6 +21,21 @@ public class SimilarNicknameCrewSelector {
 		}
 	}
 
+	private void compareCrewsNickname(int comparingCrewIndex) {
+		TreeSet<String> dividedNickname = makeDividedNickname(comparingCrewIndex);
+
+		if (dividedNickname.isEmpty() == false) {
+			for(int comparedCrewIndex = comparingCrewIndex; comparedCrewIndex < numberOfCrews; comparedCrewIndex++) {
+				if (hasSimilarNickname.get(comparedCrewIndex) == false) {
+					if (isSimilar(dividedNickname, comparedCrewIndex)) {
+						hasSimilarNickname.set(comparingCrewIndex, true);
+						hasSimilarNickname.set(comparedCrewIndex, true);
+					}
+				}
+			}
+		}
+	}
+
 	private TreeSet<String> makeDividedNickname(int comparingCrewIndex) {
 		TreeSet<String> dividedNickname = new TreeSet<>();
 		String nickname = crewInformations.get(comparingCrewIndex).get(1);
