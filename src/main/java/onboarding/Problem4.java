@@ -6,6 +6,13 @@ public class Problem4 {
     public static String solution(String word) {
         String answer = "";
         HashMap<String,String> words = changeAlpha();
+        for(int i=0;i<word.length();i++){
+            if (String.valueOf(word.charAt(i)).isBlank()){
+                answer+=" ";
+            } else{
+                answer+=words.get(String.valueOf(word.charAt(i)));
+            }
+        }
         return answer;
     }
     public static HashMap<String,String> changeAlpha(){
