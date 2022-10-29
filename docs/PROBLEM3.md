@@ -24,3 +24,7 @@ private static int intToStringAndCount(int number, int answer)
 ~~~
 private static int countNumber(int count, String num)
 ~~~
+* 3,6,9 확인 로직
+~~~
+private static boolean existThreeSixNine(char checkNumber)
+~~~
