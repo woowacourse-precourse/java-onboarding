@@ -10,12 +10,15 @@ public class Problem7 {
     private static final int SECOND_FRIEND = 1;
 
     private static final int ZERO_POINT = 0;
+    private static final int ONE_POINT = 1;
     private static final int TEN_POINT = 10;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
         Map<String, List<String>> userToFriends = convertToFriendMap(friends);
         Map<String, Integer> scoreMap = calculateFriendsScore(userToFriends, user);
+
+        plusOnePointForVisitors(scoreMap, visitors);
 
         return List.of();
     }
@@ -49,6 +52,13 @@ public class Problem7 {
         for (String friend : friends) {
             Integer score = scoreMap.getOrDefault(friend, ZERO_POINT);
             scoreMap.put(friend, score + TEN_POINT);
+        }
+    }
+
+    private static void plusOnePointForVisitors(Map<String, Integer> scoreMap, List<String> visitors) {
+        for (String visitor : visitors) {
+            Integer score = scoreMap.getOrDefault(visitor, ZERO_POINT);
+            scoreMap.put(visitor, score + ONE_POINT);
         }
     }
 }
