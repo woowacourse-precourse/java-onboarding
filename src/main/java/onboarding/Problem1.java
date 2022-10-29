@@ -41,6 +41,12 @@ class Problem1 {
             return answer;
         }
 
+        // 1-4 pobi 와 crong 의 길이가 2가 아닐 경우
+        if(isNotPobiSizeOrCrongSize(pobi, crong)){
+            answer = EXCEPTION;
+            return answer;
+        }
+
         // 2. 왼쪽 페이지 최대 값 구하기
         pobiLeftMax = getMax(pobiLeftPage);
         crongLeftMax = getMax(crongLeftPage);
@@ -55,6 +61,10 @@ class Problem1 {
         answer = getAnswer(answer, pobiMax, crongMax);
 
         return answer;
+    }
+
+    private static boolean isNotPobiSizeOrCrongSize(List<Integer> pobi, List<Integer> crong) {
+        return pobi.size() != 2 || crong.size() != 2;
     }
 
     private static int getAnswer(int answer, int pobiMax, int crongMax) {
