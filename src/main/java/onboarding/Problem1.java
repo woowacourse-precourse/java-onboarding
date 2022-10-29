@@ -15,6 +15,12 @@ class Problem1 {
         return !PageValidator.validate(pobi) || !PageValidator.validate(crong);
     }
 
+    private static int maxScore(int page) {
+        int sum = sum(page);
+        int product = multiply(page);
+        return Math.max(sum, product);
+    }
+
     private static int sum(int page) {
         int sum = 0;
         while (page > 0) {
@@ -25,11 +31,11 @@ class Problem1 {
     }
 
     private static int multiply(int page) {
-        int result = 1;
+        int product = 1;
         while (page > 0) {
-            result *= page % 10;
+            product *= page % 10;
             page /= 10;
         }
-        return result;
+        return product;
     }
 }
