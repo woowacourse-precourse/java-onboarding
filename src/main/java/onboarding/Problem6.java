@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /* 기능 목록
@@ -10,6 +11,33 @@ import java.util.List;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
+        Problem6 problem6 = new Problem6();
+        answer = new ArrayList<>();
+        int len = forms.size();
+
+        for (int i = 0; i < len - 1; i++) {
+            String email1 = forms.get(i).get(0);
+            String name1 = forms.get(i).get(1);
+
+            for (int j = i + 1; j < len; j++) {
+                String email2 = forms.get(j).get(0);
+                String name2 = forms.get(j).get(1);
+
+                if (answer.contains(name1) && answer.contains(name2)) {
+                    continue;
+                } else if (problem6.isDuplicate(name1, name2)) {
+                    if (!answer.contains(email1)) {
+                        answer.add(email1);
+                    }
+                    if (!answer.contains(email2)) {
+                        answer.add(email2);
+                    }
+                }
+            }
+        }
+
+        answer.sort(String.CASE_INSENSITIVE_ORDER);
+
         return answer;
     }
 
