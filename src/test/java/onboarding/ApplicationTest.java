@@ -267,5 +267,16 @@ class ApplicationTest {
             assertThat(recommend.size()).isEqualTo(2);
             assertThat(recommend.get("donut")).isEqualTo(result);
         }
+
+        @Test
+        void addPointToVisitorTest(){
+            Map<String, Integer> recommend = new HashMap<>();
+            recommend.put("donut",10);
+            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi");
+            Problem7.addPointToVisitor(recommend, visitors);
+
+            assertThat(recommend.get("donut")).isEqualTo(11);
+            assertThat(recommend.get("bedi")).isEqualTo(3);
+        }
     }
 }

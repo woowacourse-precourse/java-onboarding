@@ -30,13 +30,18 @@ public class Problem7 {
             addPointToRecommended(relation,recommend,friend);
         }
         //3. add score by visitor
-
+        addPointToVisitor(recommend, visitors);
         //4. delete all which is already his friends or himself.
 
         //5. add to array and sort
 
 
         return answer;
+    }
+
+    public static void addPointToVisitor(Map<String, Integer> recommend, List<String> visitors) {
+        for(String visitor : visitors)
+            recommend.put(visitor, recommend.getOrDefault(visitor, 0)+1);
     }
 
     public static void addPointToRecommended(Map<String, List<String>> relation,
