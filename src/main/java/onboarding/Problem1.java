@@ -1,6 +1,9 @@
 package onboarding;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.StringTokenizer;
+import java.util.stream.Collectors;
 /*
 * 1. 페이지 넘버 값을 필드로 가지는 Page 클래스 생성
 * 2. 왼쪽 페이지와 오른쪽 페이지를 필드로 가지는 Gamer 클래스 생성
@@ -19,15 +22,34 @@ import java.util.List;
 
 class Page {
     private int num;
+    private int score;
 
     public Page(int num) {
         this.num = num;
+        this.score = 0;
+    }
+
+    public int getScore() {
+        // 최초 1번 score 를 저장하고 추후에는 저장된 score 를 리턴
+        if (score != 0)
+            return score;
+
+        int[] nums = Arrays.stream(String.valueOf(num).split(""))
+                .mapToInt(Integer::parseInt)
+                .toArray();
+
+        int sum = Arrays.stream(nums).sum();
+        int mul = Arrays.stream(nums).reduce(1,(a, b) -> a * b );
+
+        score = Math.max(sum, mul);
+
+        return score;
     }
 }
 
 class Gamer {
-    Page left;
-    Page right;
+    private Page left;
+    private Page right;
 
     public Gamer(int leftNum, int rightNum) {
         this.left = new Page(leftNum);
