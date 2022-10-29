@@ -2,7 +2,8 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        StringBuilder cryptogramBuilder = new StringBuilder(cryptogram);
+
+        return "";
     }
 }
