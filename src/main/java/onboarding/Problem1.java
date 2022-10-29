@@ -19,4 +19,7 @@ class Problem1 {
     private static int getPlusScore(List<Integer> splitNumber) {
         return splitNumber.stream().mapToInt(i -> i).sum();
     }
+    private static int getMultiplyScore(List<Integer> splitNumber) {
+        return splitNumber.stream().reduce(1, (a, b) -> a * b);
+    }
 }
