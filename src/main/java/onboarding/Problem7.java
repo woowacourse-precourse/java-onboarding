@@ -20,7 +20,7 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
-        Map<String, List<String>> friendsMap = new HashMap<>();
+        Map<String, Set<String>> friendsMap = new HashMap<>();
         Map<String, Integer> recommendPoints = new HashMap<>();
 
         initFriendsMap(friends, friendsMap);
@@ -46,17 +46,12 @@ public class Problem7 {
         }
     }
 
-    private static void calculateFriendsKnowTogether(String user, Map<String, List<String>> friendsMap, Map<String, Integer> recommendPoints) {
-        for(int i = 0; i < friendsMap.get(user).size(); i++){
-            String userFriendId = friendsMap.get(user).get(i);
-
-            for(int j = 0; j < friendsMap.get(userFriendId).size(); j++){
-                String friendKnowTogetherId = friendsMap.get(userFriendId).get(j);
-
+    private static void calculateFriendsKnowTogether(String user, Map<String, Set<String>> friendsMap, Map<String, Integer> recommendPoints) {
+        for(String userFriendId : friendsMap.get(user)){
+            for(String friendKnowTogetherId : friendsMap.get(userFriendId)){
                 if(friendKnowTogetherId != user){
                     if(!recommendPoints.containsKey(friendKnowTogetherId))
                         recommendPoints.put(friendKnowTogetherId, 0);
-
                     recommendPoints.put(friendKnowTogetherId, recommendPoints.get(friendKnowTogetherId) + FRIEND_POINT);
                 }
             }
@@ -73,15 +68,15 @@ public class Problem7 {
         }
     }
 
-    private static void initFriendsMap(List<List<String>> friends, Map<String, List<String>> friendsMap) {
+    private static void initFriendsMap(List<List<String>> friends, Map<String, Set<String>> friendsMap) {
         for(int i = 0; i < friends.size(); i++){
             String userA = friends.get(i).get(0);
             String userB = friends.get(i).get(1);
 
             if(!friendsMap.containsKey(userA))
-                friendsMap.put(userA, new ArrayList<>());
+                friendsMap.put(userA, new HashSet<>());
             if(!friendsMap.containsKey(userB))
-                friendsMap.put(userB, new ArrayList<>());
+                friendsMap.put(userB, new HashSet<>());
 
             friendsMap.get(userA).add(userB);
             friendsMap.get(userB).add(userA);
