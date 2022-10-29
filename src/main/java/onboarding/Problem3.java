@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Problem3 {
     private static final int CLAP_CONDITION1 = 3;
@@ -9,8 +10,9 @@ public class Problem3 {
     private static final int CLAP_CONDITION3 = 9;
 
     public static int solution(int number) {
-        int answer = 0;
-        return answer;
+        return IntStream.range(1, number + 1)
+                .map(Problem3::checkClapNumber)
+                .sum();
     }
 
     private static List<Integer> splitDigitNumber(int number) {
@@ -24,6 +26,17 @@ public class Problem3 {
 
     private static boolean isClapNumber(int number) {
         return number == CLAP_CONDITION1 || number == CLAP_CONDITION2 || number == CLAP_CONDITION3;
+    }
+
+    private static int checkClapNumber(int number) {
+        List<Integer> splitNumberList = splitDigitNumber(number);
+        int clapSum = 0;
+        for (int splitNumber : splitNumberList) {
+            if (isClapNumber(splitNumber)) {
+                clapSum = addClapSum(clapSum);
+            }
+        }
+        return clapSum;
     }
 
     private static int addClapSum(int clapCnt) {
