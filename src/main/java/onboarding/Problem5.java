@@ -13,4 +13,8 @@ public class Problem5 {
         return money / won;
     }
 
+    public static int calculateRemainder(int money, int won){
+        return money % won;
+    }
+
 }
