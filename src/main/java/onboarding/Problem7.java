@@ -45,6 +45,15 @@ public class Problem7 {
         saveAcquaintanceScore(user, relationship, pq, visited);
         saveVisitScore(user, relationship, visitors, pq);
         return pq.stream()
+                .sorted(new Comparator<Recommend>() {
+                    @Override
+                    public int compare(Recommend o1, Recommend o2) {
+                        if (o1.getScore() == o2.getScore()) {
+                            return o1.getRecommendedUser().compareTo(o2.getRecommendedUser());
+                        }
+                        return o2.getScore() - o1.getScore();
+                    }
+                })
                 .map(Recommend::getRecommendedUser)
                 .limit(5)
                 .collect(Collectors.toList());
@@ -66,7 +75,7 @@ public class Problem7 {
                     isAlreadyFriend = true;
                 }
             }
-            if (!isExist && !isAlreadyFriend) {
+            if (!isExist && !isAlreadyFriend && !visitor.equals(user)) {
                 pq.add(new Recommend(visitor, 1));
             }
         }
@@ -79,16 +88,20 @@ public class Problem7 {
         int level = 1;
         int nowSize = 1;
         int count = 0;
-        while (!queue.isEmpty()) {
+        Map<String, Recommend> recommendMap = new HashMap<>();
+        while (level <= 2) {
             String nickname = queue.poll();
             for (String friend : relationship.get(nickname)) {
                 if (!visited.get(friend)) {
-                    visited.put(friend, true);
-                    if (level == 2) {
-                        pq.add(new Recommend(friend, 10));
-                        continue;
-                    }
                     queue.add(friend);
+                    if (level == 2) {
+                        if (recommendMap.containsKey(friend)) {
+                            recommendMap.get(friend).addScore(10);
+                            continue;
+                        }
+                        recommendMap.put(friend, new Recommend(friend, 10));
+                        pq.add(new Recommend(friend, 10));
+                    }
                 }
             }
             count++;
@@ -96,9 +109,6 @@ public class Problem7 {
                 count = 0;
                 nowSize = queue.size();
                 level++;
-                if (level > 2) {
-                    break;
-                }
             }
         }
     }
@@ -126,10 +136,19 @@ public class Problem7 {
 
         @Override
         public int compareTo(Recommend o) {
-            if (this.score == o.score) {
-                return this.recommendedUser.compareTo(o.getRecommendedUser());
+            if (this.getScore() == o.getScore()) {
+                return this.getRecommendedUser().compareTo(o.getRecommendedUser());
             }
-            return o.getScore() - this.score;
+            return o.getScore() - this.getScore();
         }
+
+        @Override
+        public String toString() {
+            return "Recommend{" +
+                    "recommendedUser='" + recommendedUser + '\'' +
+                    ", score=" + score +
+                    '}';
+        }
+
     }
 }
