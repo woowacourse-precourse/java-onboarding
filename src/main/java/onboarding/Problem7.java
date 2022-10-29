@@ -62,6 +62,20 @@ public class Problem7 {
 		}
 	}
 
+	public static List<String> createFriendRecommendResult(Map<String, Integer> friendRecommendScore) {
+		List<String> answer;
+
+		answer = friendRecommendScore.entrySet().stream()
+			.filter(s -> s.getValue() > 0)
+			.sorted(Collections.reverseOrder(Map.Entry.<String, Integer>comparingByValue())
+				.thenComparing(Map.Entry.<String, Integer>comparingByKey()))
+			.limit(5)
+			.map(s -> s.getKey())
+			.collect(Collectors.toList());
+
+		return answer;
+	}
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 		// List<String> answer = Collections.emptyList();
 		List<String> answer;
@@ -70,6 +84,8 @@ public class Problem7 {
 
 		friendRelations = createFriendRelations(friends);
 		friendRecommendScore = createFriendRecommendScore(user, visitors, friendRelations);
+
+		answer = createFriendRecommendResult(friendRecommendScore);
 
         return answer;
     }
