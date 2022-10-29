@@ -44,6 +44,9 @@ public class Problem7 {
             if (people.point>0 && !people.name.equals(user)){
                 answer.add(people.name);
             }
+            if (answer.size()==5) {
+                break;
+            }
         }
         return answer;
     }
