@@ -15,7 +15,7 @@ public class User {
 
     private final List<String> relationships = new ArrayList<String>();
 
-    private final Map<String, Integer> SCORES_BY_USERS = new HashMap<String, Integer>();
+    private final Map<String, Integer> SCORES_FOR_USERS = new HashMap<String, Integer>();
 
     public User(String name, List<List<String>> friends, List<String> visitors) {
         this.name = name;
@@ -25,8 +25,8 @@ public class User {
 
     public List<String> getRecommendedUsers() {
         getScoresForUsers();
-        final Comparator<String> comp = Comparator.comparingInt(SCORES_BY_USERS::get);
-        return SCORES_BY_USERS.keySet().stream().sorted(comp.reversed()).limit(5).collect(Collectors.toList());
+        final Comparator<String> comp = Comparator.comparingInt(SCORES_FOR_USERS::get);
+        return SCORES_FOR_USERS.keySet().stream().sorted(comp.reversed()).limit(5).collect(Collectors.toList());
     }
 
     public void getScoresForUsers() {
@@ -55,11 +55,13 @@ public class User {
             String user2 = relation.get(1);
 
             if (relationships.contains(user1) && !user2.equals(this.name)) {
-                SCORES_BY_USERS.put(user2, SCORES_BY_USERS.containsKey(user2) ? SCORES_BY_USERS.get(user2) + 10 : 10);
+                SCORES_FOR_USERS.put(user2,
+                        SCORES_FOR_USERS.containsKey(user2) ? SCORES_FOR_USERS.get(user2) + 10 : 10);
             }
 
             if (relationships.contains(user2) && !user1.equals(this.name)) {
-                SCORES_BY_USERS.put(user1, SCORES_BY_USERS.containsKey(user1) ? SCORES_BY_USERS.get(user1) + 10 : 10);
+                SCORES_FOR_USERS.put(user1,
+                        SCORES_FOR_USERS.containsKey(user1) ? SCORES_FOR_USERS.get(user1) + 10 : 10);
             }
         }
     }
@@ -67,8 +69,8 @@ public class User {
     private void getScoresByVisitedUsers() {
         for (String visitor : visitors) {
             if (!relationships.contains(visitor)) {
-                SCORES_BY_USERS.put(visitor,
-                        SCORES_BY_USERS.containsKey(visitor) ? SCORES_BY_USERS.get(visitor) + 1 : 1);
+                SCORES_FOR_USERS.put(visitor,
+                        SCORES_FOR_USERS.containsKey(visitor) ? SCORES_FOR_USERS.get(visitor) + 1 : 1);
             }
         }
     }
