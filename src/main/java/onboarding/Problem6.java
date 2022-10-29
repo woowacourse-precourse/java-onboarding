@@ -1,12 +1,11 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Problem6 {
-    private static List<String> nicknames;
+    private static List<String> duplicateNicknames;
     private static List<String> answer;
 
     public static List<String> solution(List<List<String>> forms) {
@@ -16,8 +15,8 @@ public class Problem6 {
     }
 
     private static void initSystem(List<List<String>> forms) {
-        nicknames = new ArrayList<>();
-        nicknames.add(forms.get(0).get(1));
+        duplicateNicknames = new ArrayList<>();
+        duplicateNicknames.add(forms.get(0).get(1));
         answer = new ArrayList<>();
         answer.add(forms.get(0).get(0));
     }
@@ -27,12 +26,12 @@ public class Problem6 {
             if(isNicknamesContainsNickname(forms.get(i).get(1))) {
                 answer.add(forms.get(i).get(0));
             }
-            nicknames.add(forms.get(i).get(1));
+            duplicateNicknames.add(forms.get(i).get(1));
         }
     }
 
     private static boolean isNicknamesContainsNickname(String nickname) {
-        for (String name : nicknames) {
+        for (String name : duplicateNicknames) {
             if(name.length() == 1) {
                 continue;
             }
