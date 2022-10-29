@@ -77,18 +77,17 @@ class Problem1 {
     }
 
     public static int getMax(List<Integer> targetList) {
-        int sumLeftPage = addition(targetList.get(0));
-        int sumRightPage = addition(targetList.get(1));
+        int leftPageMax = getMaxAboutPage(targetList.get(LEFT_PAGE));
+        int rightPageMax = getMaxAboutPage(targetList.get(RIGHT_PAGE));
 
-        int productLeftPage = multiplication(targetList.get(0));
-        int productRigthPage = multiplication(targetList.get(1));
-
-        int sum = Math.max(sumLeftPage, sumRightPage);
-        int product = Math.max(productLeftPage, productRigthPage);
-
-        return Math.max(sum, product);
+        return Math.max(leftPageMax, rightPageMax);
     }
 
+    public static int getMaxAboutPage(int page) {
+        int sum = addition(page);
+        int product = multiplication(page);
+        return Math.max(sum, product);
+    }
 
     public static int getResult(int object1, int object2) {
         return ResultStatus.fromTwoObject(object1, object2)
