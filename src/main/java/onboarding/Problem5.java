@@ -1,6 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 //-----기능-----
@@ -11,7 +11,6 @@ public class Problem5 {
 
     private static int calPaper(int bankmoney, int money) {
         int cnt = 0;
-
         while (true){
             if (money - bankmoney < 0)
                 break;
@@ -23,14 +22,15 @@ public class Problem5 {
     }
 
     public static List<Integer> solution(int money) {
-        int[] bank = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
-        List<Integer> answer = Collections.emptyList();
+        int bank[] = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
+        List<Integer> answer = new ArrayList<>();
 
         for (int bankmoney: bank)
         {
             int num = calPaper(bankmoney, money);
+            money -= num * bankmoney;
+            answer.add(num);
         }
-
         return answer;
     }
 }
