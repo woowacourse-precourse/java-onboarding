@@ -4,8 +4,11 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        List<String> findFriends=findFriends(user, friends);
+        List<String> findAcquaintance=findAcquaintance(user,findFriends,friends);
+        Map<String, Integer> scores= friendScoreCalculator(findAcquaintance);
+        scores=visitScoreCalculator(scores,visitors);
+        return result(scores,findFriends);
     }
     public static List<String> findAcquaintance(String user,List<String> findFreinds,List<List<String>> friends){
         List<String> result=new ArrayList<>();
@@ -48,16 +51,16 @@ public class Problem7 {
         return scores;
     }
 
-    public static List<String> result(Map<String,Integer> scores,List<String> friends){
+    public static List<String> result(Map<String,Integer> scores,List<String> findFriends){
         List<String> result = new ArrayList<>();
-        for(String name:friends){
+        for(String name:findFriends){
             scores.remove(name);
         }
         List<Map.Entry<String,Integer>> entries=new ArrayList<>(scores.entrySet());
         entries.sort(new Comparator<Map.Entry<String, Integer>>() {
             @Override
             public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
-                return o1.getValue().compareTo(o2.getValue());
+                return o2.getValue().compareTo(o1.getValue());
             }
         });
         for (Map.Entry<String, Integer> entry : entries) {

@@ -150,6 +150,12 @@ class ApplicationTest {
             int[] result= {3,5,4,3};
             assertThat(Problem3.converter(number)).isEqualTo(result);
         }
+        @Test
+        void case5() {
+            int number = 10000;
+            int result= 12000;
+            assertThat(Problem3.solution(number)).isEqualTo(result);
+        }
     }
 
     @Nested
@@ -222,8 +228,8 @@ class ApplicationTest {
                     List.of("shakevan", "jun"),
                     List.of("shakevan", "mrko")
             );
-            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-            List<String> result = List.of("andole", "jun", "bedi");
+            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan","jun");
+            List<String> result = List.of("jun","andole", "bedi");
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
 
@@ -293,5 +299,23 @@ class ApplicationTest {
             result.put("shakevan",1);
             assertThat(Problem7.visitScoreCalculator(Problem7.friendScoreCalculator(Problem7.findAcquaintance(user,Problem7.findFriends(user,friends), friends)),visitors)).isEqualTo(result);
         }
+    }
+    @Test
+    void case6() {
+        String user = "hello";
+        List<List<String>> friends = List.of(
+                List.of("andole", "jun"),
+                List.of("andole", "bedi"),
+                List.of("jun", "shakevan"),
+                List.of("jun", "kane"),
+                List.of("jun", "sam"),
+                List.of("bedi", "shakevan"),
+                List.of("bedi", "anne"),
+                List.of("bedi", "sam"),
+                List.of("anne", "mrko")
+        );
+        List<String> visitors = List.of("donut", "anne", "mrko", "mrko", "sam");
+        List<String> result = List.of("mrko", "anne", "donut", "sam");
+        assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
     }
 }
