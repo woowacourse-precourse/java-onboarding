@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class SentenceTest {
+class SentenceTest {
     @Test
     @DisplayName("알파벳인 경우 대문자, 소문자 판별해서 변환하기")
     void convertAlphabet() {
