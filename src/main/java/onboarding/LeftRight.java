@@ -1,5 +1,5 @@
 package onboarding;
 
 public enum LeftRight {
-    Left, RIGHT
+    LEFT, RIGHT
 }

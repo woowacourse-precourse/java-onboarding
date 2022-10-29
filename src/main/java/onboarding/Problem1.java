@@ -1,6 +1,10 @@
 package onboarding;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+
+import static onboarding.LeftRight.*;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -26,4 +30,10 @@ class Problem1 {
         return multiply;
     }
 
+    public static Boolean isInRange(List<Integer> page){
+        if(page.get(LEFT.ordinal()) > 1
+        && page.get(RIGHT.ordinal()) < 400)
+            return true;
+        else return false;
+    }
 }

@@ -2,6 +2,9 @@ package onboarding;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class TestProblem1 {
@@ -24,4 +27,15 @@ public class TestProblem1 {
         assertThat(Problem1.multiplyDigit(198)).isEqualTo(72);
     }
 
+    @Test
+    void TestisInRange(){
+        List<Integer> T1 = List.of(97, 98);
+        List<Integer> T2 = List.of(1, 98);
+        List<Integer> T3 = List.of(97, 400);
+        List<Integer> T4 = List.of(0, 0);
+        assertThat(Problem1.isInRange(T1)).isEqualTo(true);
+        assertThat(Problem1.isInRange(T2)).isEqualTo(false);
+        assertThat(Problem1.isInRange(T3)).isEqualTo(false);
+        assertThat(Problem1.isInRange(T4)).isEqualTo(false);
+    }
 }
