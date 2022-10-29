@@ -5,19 +5,12 @@ import java.util.*;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         /*
-        * 1~400까지 페이지가 적힌 책을 주움.
-        * "왼쪽은 홀수, 오른쪽은 짝수"
-        * 왼쪽 페이지(홀수)의 max(각자리 숫자 더한거, 각자리 숫자 곱한거)
-        * 이 두 수를 비교해, pobi>crong이면 1 pobi<crong이면 2 pobi==crong이면 0
-        * 예외사항이면 -1
-        * 내가 생각한 예외 사항들
-        * 1.pobi[0]이 짝수 pobi[1]이 홀수 or crong[0]이 짝수 crong[1]이 홀수
-        * 2.pobi[0]+1 != pobi[1] or crong[0]+1 != crong[1]
-        * 3.시작면(1)이나 마지막면(400)이 있는 경우
-        *
-        * 이후 풀이는, 숫자배열인 pobi와 crong을 문자열 배열로 만든 다음,
-        * 문자열 배열을 문자마다 탐색하여, 숫자로 다시 변환시켜 plus,multiple에 각각 더하거나 곱해준다.
-        * 이 둘중 max를 구한다음, 다시 pobi와 crong중 max를 따져 answer값을 정한 다음, return해주는 문제.
+        기능목록
+        1.예외처리
+        2.숫자 -> 문자열 전환
+        3.문자열 -> 문자 -> 숫자 전환 후 덧셈/곱셈에 값 추가.
+        4. pobi,crong의 덧셈/곱셈 중 최대값 구하기
+        5. pobi,crong중 큰 값을 탐색하고, 이에 맞는 answer값 할당 후 return.
         * */
         int answer = Integer.MAX_VALUE;
 
