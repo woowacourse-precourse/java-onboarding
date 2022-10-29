@@ -50,12 +50,6 @@ class ApplicationTest {
             String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
-        @Test
-        void case3() {
-            String cryptogram = "z";
-            String result = "z";
-            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
-        }
     }
 
     @Nested
@@ -104,13 +98,6 @@ class ApplicationTest {
         void case2() {
             int money = 15_000;
             List<Integer> result = List.of(0, 1, 1, 0, 0, 0, 0, 0, 0);
-            assertThat(Problem5.solution(money)).isEqualTo(result);
-        }
-
-        @Test
-        void case3() {
-            int money = 928_742;
-            List<Integer> result = List.of(18, 2, 1, 3, 1 , 2, 0, 4, 2);
             assertThat(Problem5.solution(money)).isEqualTo(result);
         }
     }
