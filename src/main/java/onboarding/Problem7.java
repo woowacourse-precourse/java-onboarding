@@ -54,17 +54,31 @@ public class Problem7 {
     public static List<Integer> findFriendNumber(List<List<String>> newFriend, List<String> userFriend) {
         List<Integer> findCommonNumber = new ArrayList<>();
         for (List<String> strings : newFriend) {
-            findCommonNumber.add(Collections.frequency(strings, userFriend));
+            findCommonNumber.add(10*Collections.frequency(strings, userFriend));
         }
+
         return findCommonNumber;
     }
 
-    public static
-    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> allId = getFriend(friends, user);
-        List<String> userFriend = getUserFriend(friends, user);
-        List<List<String>> friendsList = getNewFriend(allId, friends);
+    public static List<Integer> findVisitNumber(List<String> visitors, List<Integer> findCommonNumber, List<String> allId) {
+        List<Integer> userScore = new ArrayList<>();
+        for(int i = 0; i < visitors.size(); i++) {
+            for(int j = 0; j < allId.size(); j++) {
+                if(allId.get(j).equals(visitors.get(i))) {
+                    userScore.add(j, findCommonNumber.get(j)+1);
+                }
+            }
+        }
+        return userScore;
+    }
 
+    public static List<>
+    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        List<String> allId = getFriend(friends, user); //사용자 이외의 사용자들 아이디 리스트
+        List<String> userFriend = getUserFriend(friends, user); //사용자의 친구들 리스트
+        List<List<String>> friendsList = getNewFriend(allId, friends); //사용자이외 친구들의 친구 리스트
+        List<Integer> findCommonNumber = findFriendNumber(friendsList, userFriend);
+        List<Integer> userScore = findVisitNumber(visitors, findCommonNumber, allId);
         return friendCommon;
     }
 }
