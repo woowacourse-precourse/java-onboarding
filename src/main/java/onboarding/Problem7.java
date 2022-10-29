@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * 기능 구현 목록
@@ -34,6 +31,9 @@ public class Problem7 {
                 if (friends.get(i).contains(user)) {
                     continue;
                 }
+                if (userFriends.contains(friends.get(i).get(0)) && userFriends.contains(friends.get(i).get(1))){
+                    continue;
+                }
 
                 if (friends.get(i).get(0).equals(userFriends.get(j))){
                     if (nonFriends.containsKey(friends.get(i).get(1))){
@@ -57,23 +57,83 @@ public class Problem7 {
             }
         }
 
+        for (String visitor : visitors){
+            if (userFriends.contains(visitor)){
+                continue;
+            }
+            if (nonFriends.containsKey(visitor)){
+                nonFriends.put(
+                        visitor,
+                        nonFriends.get(visitor) + 1
+                );
+            } else {
+                nonFriends.put(visitor, 1);
+            }
+        }
+
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(nonFriends.entrySet());
+        entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                if(o1.getValue() != o2.getValue()){
+                    return o1.getValue() - o2.getValue();
+                }else{
+                    return o1.getKey().compareTo(o2.getKey());
+                }
+            }
+        });
+
+        for (Map.Entry<String, Integer> ans : entryList){
+            answer.add(ans.getKey());
+        }
+
         System.out.println(userFriends);
         System.out.println(nonFriends);
+        System.out.println(answer);
 
         return answer;
     }
 
     public static void main(String[] args){
+//        String user = "mrko";
+//        List<List<String>> friends = List.of(
+//                List.of("donut", "andole"),
+//                List.of("donut", "jun"),
+//                List.of("donut", "mrko"),
+//                List.of("shakevan", "andole"),
+//                List.of("shakevan", "jun"),
+//                List.of("shakevan", "mrko")
+//        );
+//        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+
+
+//        String user = "mrko";
+//        List<List<String>> friends = List.of(
+//                List.of("mrko", "jun"),
+//                List.of("donut", "jun"),
+//                List.of("donut", "mrko"),
+//                List.of("shakevan", "andole"),
+//                List.of("jun", "andole"),
+//                List.of("shakevan", "jun"),
+//                List.of("shakevan", "mrko")
+//        );
+//        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+
         String user = "mrko";
         List<List<String>> friends = List.of(
-                List.of("donut", "andole"),
+                List.of("mrko", "jun"),
+                List.of("bedi", "jun"),
+                List.of("bedi", "donut"),
                 List.of("donut", "jun"),
                 List.of("donut", "mrko"),
                 List.of("shakevan", "andole"),
+                List.of("jun", "andole"),
                 List.of("shakevan", "jun"),
                 List.of("shakevan", "mrko")
         );
-        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+        List<String> visitors = List.of("donut", "shakevan");
+        List<String> result = List.of("andole", "bedi");
+
         solution(user, friends, visitors);
     }
 }
