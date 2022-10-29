@@ -46,6 +46,14 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
         return answer;
     }
+
+    public static Relations createRelations (List<List<String>> friends) {
+        Relations relations = new Relations();
+        for (List<String> relation : friends) {
+            relations.addRelation(relation.get(0), relation.get(1));
+        }
+        return relations;
+    }
 }
 
 class Relations {
