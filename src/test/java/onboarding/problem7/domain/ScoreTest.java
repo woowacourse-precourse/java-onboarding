@@ -37,6 +37,7 @@ class ScoreTest {
     @Test
     @DisplayName("스코어 비교")
     void compareTo() {
-        assertThat(score.increase().compareTo(new Score())).isEqualTo(1);
+        final Score increasedScore = score.increase();
+        assertThat(increasedScore.compareTo(new Score())).isEqualTo(1);
     }
 }
