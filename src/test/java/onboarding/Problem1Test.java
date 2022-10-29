@@ -86,122 +86,68 @@ public class Problem1Test {
         @Test
         public void whoIsWinTieTest(){
             //given
-            Book pobiBook = new Book(97, 98);
-            Book crongBook = new Book(197, 198);
+            Book pobiBook = new Book(new Page(97), new Page(98));
+            Book crongBook = new Book(new Page(197), new Page(198));
             //when
             int result=0;
             //then
-            assertThat(Problem1.whoIsWin(pobiBook,crongBook)).isEqualTo(result);
+            assertThat(Problem1.whoIsWin(pobiBook, crongBook)).isEqualTo(result);
         }
 
         @Test
         public void whoIsWinPobiWinTest(){
             //given
-            Book pobiBook = new Book(131, 132);
-            Book crongBook = new Book(211, 212);
+            Book pobiBook = new Book(new Page(131), new Page(132));
+            Book crongBook = new Book(new Page(211), new Page(212));
             //when
             int result=1;
             //then
-            assertThat(Problem1.whoIsWin(pobiBook,crongBook)).isEqualTo(result);
+            assertThat(Problem1.whoIsWin(pobiBook, crongBook)).isEqualTo(result);
         }
 
         @Test
         public void whoIsWinCrongWinTest(){
             //given
-            Book pobiBook = new Book(211, 212);
-            Book crongBook = new Book(131, 132);
+            Book pobiBook = new Book(new Page(211), new Page(212));
+            Book crongBook = new Book(new Page(131), new Page(132));
             //when
             int result=2;
             //then
-            assertThat(Problem1.whoIsWin(pobiBook,crongBook)).isEqualTo(result);
+            assertThat(Problem1.whoIsWin(pobiBook, crongBook)).isEqualTo(result);
         }
 
         @Test
         public void whoIsWinFailTestCase1(){
             //given
-            Book pobiBook = new Book(1, 2);
-            Book crongBook = new Book(197, 198);
+            Book pobiBook = new Book(new Page(1), new Page(2));
+            Book crongBook = new Book(new Page(197), new Page(198));
             //when
             Class<IllegalArgumentException> e = IllegalArgumentException.class;
             //then
-            assertThatThrownBy(()->Problem1.whoIsWin(pobiBook,crongBook)).isInstanceOf(e);
+            assertThatThrownBy(()->Problem1.whoIsWin(pobiBook, crongBook)).isInstanceOf(e);
         }
 
         @Test
         public void whoIsWinFailTestCase2(){
             //given
-            Book pobiBook = new Book(399, 400);
-            Book crongBook = new Book(197, 198);
+            Book pobiBook = new Book(new Page(399), new Page(400));
+            Book crongBook = new Book(new Page(197), new Page(198));
             //when
             Class<IllegalArgumentException> e = IllegalArgumentException.class;
             //then
-            assertThatThrownBy(()->Problem1.whoIsWin(pobiBook,crongBook)).isInstanceOf(e);
+            assertThatThrownBy(()->Problem1.whoIsWin(pobiBook, crongBook)).isInstanceOf(e);
         }
 
         @Test
         public void whoIsWinFailTestCase3(){
             //given
-            Book pobiBook = new Book(397, 399);
-            Book crongBook = new Book(197, 198);
+            Book pobiBook = new Book(new Page(397), new Page(399));
+            Book crongBook = new Book(new Page(197), new Page(198));
             //when
             Class<IllegalArgumentException> e = IllegalArgumentException.class;
             //then
-            assertThatThrownBy(()->Problem1.whoIsWin(pobiBook,crongBook)).isInstanceOf(e);
+            assertThatThrownBy(()->Problem1.whoIsWin(pobiBook, crongBook)).isInstanceOf(e);
         }
     }
 
-    @Nested
-    class BookTest {
-
-        @Test
-        public void hasFirstPageOrLessTest(){
-            //given
-            Book book = new Book(1, 2);
-            //when
-            boolean result=true;
-            //then
-            assertThat(book.hasFirstPageOrLess()).isEqualTo(result);
-        }
-
-        @Test
-        public void hasFirstPageOrLessFailTest(){
-            //given
-            Book book = new Book(2, 3);
-            //when
-            boolean result=false;
-            //then
-            assertThat(book.hasFirstPageOrLess()).isEqualTo(result);
-        }
-
-
-        @Test
-        void hasLastPageOrMoreTest() {
-            //given
-            Book book = new Book(399, 400);
-            //when
-            boolean result=true;
-            //then
-            assertThat(book.hasLastPageOrMore()).isEqualTo(result);
-        }
-
-        @Test
-        void hasLastPageOrMoreFailTest() {
-            //given
-            Book book = new Book(398, 399);
-            //when
-            boolean result=false;
-            //then
-            assertThat(book.hasFirstPageOrLess()).isEqualTo(result);
-        }
-
-        @Test
-        void getDifferenceTest() {
-            //given
-            Book book = new Book(398, 399);
-            //when
-            int result=1;
-            //then
-            assertThat(book.getDifference()).isEqualTo(result);
-        }
-    }
 }
