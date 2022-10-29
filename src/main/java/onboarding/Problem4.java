@@ -9,14 +9,14 @@ public class Problem4 {
     private final static int MAX_INPUT = 1000;
     public static String solution(String word) {
         if (Problem4Validation.problem4InputValidation(word, MIN_INPUT, MAX_INPUT)) {
-            return wordToReverseWord(word);
+            return stringToReverseString(word);
         } else {
             return "";
         }
 
     }
 
-    private static String wordToReverseWord(String word) {
+    private static String stringToReverseString(String word) {
         StringBuilder resultStringBuilder = new StringBuilder();
         for (int i = 0; i < word.length(); i++) {
             resultStringBuilder.append(charToReserveChar(word.charAt(i)));
@@ -24,8 +24,14 @@ public class Problem4 {
         return resultStringBuilder.toString();
     }
 
-    private static char charToReserveChar(char charAt) {
-        return 0;
+    private static char charToReserveChar(char charWord) {
+        if ('a' <= charWord && charWord <= 'z') {
+            return (char) ('z' - (charWord - 'a'));
+        } else if ('A' <= charWord && charWord <= 'Z') {
+            return (char) ('Z' - (charWord - 'A'));
+        } else {
+            return charWord;
+        }
     }
 
 
