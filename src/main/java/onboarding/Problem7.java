@@ -1,16 +1,15 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-
         List<String> userFriendList = findFriendListByUser(user, friends);
         Map<String, Integer> recommendedFriends = createRecommendedFriends(user ,userFriendList, friends);
         recommendedFriends = visitorScore(recommendedFriends, visitors);
 
-        return answer;
+        return findTop5ScoreUser(recommendedFriends);
     }
 
     private static List<String> findFriendListByUser(String user, List<List<String>> friends) {
@@ -48,6 +47,20 @@ public class Problem7 {
             }
         }
         return recommendedFriendMap;
+    }
+
+    private static List<String> findTop5ScoreUser(Map<String, Integer> recommendedFriendMap) {
+        List<Map.Entry<String, Integer>> collect = recommendedFriendMap.entrySet().stream()
+                .sorted(Map.Entry.comparingByValue())
+                .collect(Collectors.toList());
+        List<String> result = new ArrayList<>();
+        for (Map.Entry<String, Integer> entry : collect) {
+            result.add(entry.getKey());
+            if (result.size() == 5) {
+                break;
+            }
+        }
+        return result;
     }
 
     private static boolean isFriend(String target, List<String> friend) {
