@@ -37,11 +37,12 @@ BUILD SUCCESSFUL in 0s
 아래의 7가지 기능 요구 사항을 모두 해결해야 한다.
 
 1. [문제 1](./docs/PROBLEM1.md)
-  * 출력값 요구사항   
-    - 포비가 이긴다면 1, 크롱이 이긴다면 2, 무승부 0, 예외사항 -1 
+  * 처리 요구사항   
+    1. 포비가 이긴다면 1, 크롱이 이긴다면 2, 무승부 0, 예외사항 -1 
   * 예외처리 요구사항   
-    - 연속되지 않은 두 수가 리턴되면 예외처리   
-    - 왼쪽 페이지는 홀수, 오른쪽 페이지는 짝수가 아니면 예외처리   
+    1. 연속되지 않은 두 수가 리턴되면 예외처리   
+    1. 왼쪽 페이지는 홀수, 오른쪽 페이지는 짝수가 아니면 예외처리   
+    1. 매개변수 두 리스트의 길이가 각각 2인지 확인   
 
 2. [문제 2](./docs/PROBLEM2.md)
 3. [문제 3](./docs/PROBLEM3.md)
@@ -66,3 +67,20 @@ BUILD SUCCESSFUL in 0s
 
 - 미션은 [java-onboarding](https://github.com/woowacourse-precourse/java-onboarding) 저장소를 Fork & Clone해 시작한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+
+--- 
+## 🍀 기능 목록
+
+1. 문제1
+
+|기능목록 번호| 내용 | 구현상황 |
+| :---:  | :--- | :--- | 
+|  1.0 | 주어진 게임의 결과를 도출 | Problem1.solve | 
+|  1.0.0 | 출력값 요구사항1의 구현 : 포비가 이긴다면 1, 크롱이 이긴다면 2, 무승부 0, 예외사항 -1  | Problem1.solve | 
+|  1.0.1 | 예외 요구사항1의 구현 : 연속되지 않은 두 수가 리턴되면 예외처리    | Problem1.solve | 
+|  1.0.2 | 예외 요구사항2의 구현 : 왼쪽 페이지는 홀수, 오른쪽 페이지는 짝수가 아니면 예외처리    | Problem1.solve | 
+|  1.0.3 | 예외 요구사항3의 구현 : 매개변수 두 리스트의 길이가 2인지 확인 | Problem1.solve | 
+|  1.1 | 주어진 리스트 배열 | Problem1.findGameValue | 
+|  1.2 | 주어진 숫자의 자릿수들의 합 | Problem1.sumOfDigits | 
+|  1.3 | 주어진 숫자의 자릿수들의 겁 | Problem1.productOfDigits| 
