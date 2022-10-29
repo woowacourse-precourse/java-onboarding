@@ -11,9 +11,9 @@ public class Problem6 {
             for(int j=1;j<forms.size();j++)
             {
                 if(j!=i)
-                    if(Check_Name(forms.get(i).get(1),forms.get(j).get(1)))//
+                    if(Check_Name(forms.get(i).get(1),forms.get(j).get(1)))//두 단어가 같은지 비교
                     {
-                        answer.add(forms.get(i).get(0));//두 단어가 같은지 비교
+                        answer.add(forms.get(i).get(0));//answer에 추가
                     }
 
             }
