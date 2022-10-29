@@ -123,6 +123,16 @@ Game 에서 예외사항이 아닌 것(정상 입력)에 대해서만 Calculator
 ![image](./img/프리코스_1주차-Problem2_v2.drawio.png)
 
 
+### 기능 목록 v0.3
+
+응 아직 끝 아니야... 이번엔 test에서 오류가 또 났다...
+테스트 로그를 살펴본 결과, testcase2에서 문제가 있었는데
+return 값을 프린트해보며 debugging 해본 결과...
+
+1. "" 빈 String이 들어왔을 때 charAt으로 인덱싱 처리를 하는데서 오류가 발생
+    - deleteDuplicate 메소드에 빈 String이 들어왔을 때 바로 return 시키는 로직 추가
+2. 중복되는 값이 2개 이상 있는지 확인하는 "while ( i + dup_cnt < l )" while 문에서 indexing 에러 발생
+    - "while ( i + dup_cnt < l - 1)" 중복을 세는 범위를 1만큼 줄여줘서 String의 index 밖으로 벗어나지 않게 조정
 
 ## 문제 3
 
