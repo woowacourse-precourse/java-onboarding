@@ -77,7 +77,9 @@ class Problem1 {
         if ((pobiLeftPage % 2 == 1)
                 && (pobiRightPage - pobiLeftPage == 1)
                 && (crongLeftPage % 2 == 1)
-                && (crongRightPage - crongLeftPage == 1)) {
+                && (crongRightPage - crongLeftPage == 1)
+                && (pobiRightPage <= 400)
+                && (crongRightPage <= 400)) {
             return true;
         }
 
