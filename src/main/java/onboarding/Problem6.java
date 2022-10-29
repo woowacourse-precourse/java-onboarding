@@ -34,4 +34,16 @@ public class Problem6 {
         return str;
     }
 
+    // 닉네임을 두 글자씩 쪼갠 배열(기준)과 비교 대상 닉네임을 쪼갠 것을 매개변수로 받음
+    private static boolean findWord(String[] standard, String[] nickname) {
+        for(int i = 0; i< standard.length; i++) {
+            for(int j = 0; j < nickname.length; j++) {
+                if (standard[i].equals(nickname[j])) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
 }
