@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
+    public static final List<Integer> MONEY_UNIT = List.of(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1);
     public static final int MINIMUM_NUMBER = 1;
     public static final int MAXIMUM_NUMBER = 1000000;
 
