@@ -42,6 +42,16 @@ public class Problem7 {
             map.put(notFriend, 0);
         }
 
+        for(int i = 0; i < friends.size(); i ++){
+            for(int j = 0 ; j < 2; j ++){
+                for(String friend : userFriends){
+                    if(friends.get(i).get(j).equals(friend) && !friends.get(i).get(1-j).equals(user)){
+                        map.put(friends.get(i).get(1-j), map.get(friends.get(i).get(1-j))+10);
+                    }
+                }
+            }
+        }
+
         List<String> answer = Collections.emptyList();
         return answer;
     }
