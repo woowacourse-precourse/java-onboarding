@@ -22,6 +22,14 @@ class Problem1 {
         }
     }
 
+    public static int multiplier(int value) {
+        if (value / 10 == 0) {
+            return value;
+        } else {
+            return multiplier(value / 10) * value % 10;
+        }
+    }
+
 
 
 }
