@@ -1,26 +1,26 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         Map<String, String> usingNameMap = new HashMap<>();
-        Set<String> renamedRegisterSet = new HashSet<>();
+        List<String> renamedRegisters = new ArrayList<>();
         forms.stream()
                 .filter(Problem6::isCheckEmailAndName)
-                .forEach(list -> validateSameNameInList(list, usingNameMap, renamedRegisterSet));
+                .forEach(list -> validateSameNameInList(list, usingNameMap, renamedRegisters));
 
-        return renamedRegisterSet.stream()
+        return renamedRegisters.stream()
+                .distinct()
                 .sorted()
                 .collect(Collectors.toList());
     }
 
-    private static void validateSameNameInList(List<String> list, Map<String, String> usingNameMap, Set<String> renamedListSet) {
+    private static void validateSameNameInList(List<String> list, Map<String, String> usingNameMap, List<String> renamedListSet) {
         String name = list.get(1);
         for (int i = 0; i < name.length() - 1; i++) {
             String subName = name.substring(i, i + 2);
