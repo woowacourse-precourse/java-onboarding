@@ -3,12 +3,11 @@ package onboarding;
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
-
         answer = getAnswer(number);
-
         return answer;
     }
 
+    // 손뼉 횟수를 구하는 알고리즘
     private static int getAnswer(int number) {
         int threeNum=0;
         int sixNum=0;
