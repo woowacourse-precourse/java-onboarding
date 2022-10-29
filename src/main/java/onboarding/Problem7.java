@@ -26,9 +26,13 @@ public class Problem7 {
         friendsList.add(userA);
     }
 
-    public static void initRelationships(List<String> relationship) {
+    public static void initRelationships(List<String> relationship,String user) {
         String userA = relationship.get(0);
         String userB = relationship.get(1);
+
+        if (userA.equals(user) || userB.equals(user)) {
+            return;
+        }
 
         addRelationships(userA,userB);
         addRelationships(userB,userA);
