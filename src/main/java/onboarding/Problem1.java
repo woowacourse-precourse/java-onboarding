@@ -1,6 +1,5 @@
 package onboarding;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,7 +13,7 @@ import java.util.List;
  */
 
 class Problem1 {
-    static int Calculator (int val) {
+    static int calculator (int val) {
         int divTotal = 0;
         int mulTotal = 1;
 
@@ -38,11 +37,11 @@ class Problem1 {
         else if (pobi.get(1) - pobi.get(0) != 1 || crong.get(1) - crong.get(0) != 1)
             return -1;
         else {
-            int leftResultPobi = Calculator(pobi.get(0));
-            int rightResultPobi = Calculator(pobi.get(1));
+            int leftResultPobi = calculator(pobi.get(0));
+            int rightResultPobi = calculator(pobi.get(1));
 
-            int leftResultCrong = Calculator(crong.get(0));
-            int rightResultCrong = Calculator(crong.get(1));
+            int leftResultCrong = calculator(crong.get(0));
+            int rightResultCrong = calculator(crong.get(1));
 
             int pobiMax = Math.max(leftResultPobi, rightResultPobi);
             int crongMax = Math.max(leftResultCrong, rightResultCrong);
