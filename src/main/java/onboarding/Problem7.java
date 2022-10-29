@@ -94,7 +94,7 @@ public class Problem7 {
                 cnt++;
         }
 
-        return cnt;
+        return cnt * 10;
     }
 
     public static void findMaxFiveFriends(List<Friend> friendList, List<String> answer) {
