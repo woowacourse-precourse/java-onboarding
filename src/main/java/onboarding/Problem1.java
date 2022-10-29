@@ -15,4 +15,8 @@ class Problem1 {
     private static boolean isRightPageRange(Integer leftPage, Integer rightPage) {
         return leftPage > FIRST_PAGE_NUMBER || rightPage < LAST_PAGE_NUMBER;
     }
+
+    private static boolean isValidPageFormat(Integer leftPage, Integer rightPage) {
+        return leftPage < rightPage && (rightPage - leftPage) == 1;
+    }
 }
