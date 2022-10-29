@@ -47,7 +47,7 @@ public class Problem6CustomTest {
 
         @Test
         void 이메일잘통과하는지() {
-            String email = "marong@email.com1";
+            String email = "marong@email.com";
             boolean possible = Problem6Validation.problem6Validation(email, "제이엠", MIN_EMAIL_INPUT,MAX_EMAIL_INPUT,MIN_NICKNAME_INPUT,MAX_NICKNAME_INPUT);
             assertThat(possible).isTrue();
         }
