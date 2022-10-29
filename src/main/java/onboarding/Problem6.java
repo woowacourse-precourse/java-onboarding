@@ -49,4 +49,18 @@ public class Problem6 {
         return DuplicateSubstringCrewNicknames;
     }
 
+    private static List<String> getDuplicateCrewNicknames(List<String> duplicableCrewNicknames, Set<String> DuplicateSubstringCrewNicknames) {
+        List<String> duplicateCrewNicknames = new ArrayList<>();
+        duplicableCrewNicknames.forEach(duplicableCrewNickname -> {
+            DuplicateSubstringCrewNicknames.forEach(
+                    duplicateSubstringCrewNickname -> {
+                        if(duplicableCrewNickname.contains(duplicateSubstringCrewNickname)) {
+                            duplicateCrewNicknames.add(duplicableCrewNickname);
+                        }
+                    }
+            );
+        });
+        return duplicateCrewNicknames;
+    }
+
 }
