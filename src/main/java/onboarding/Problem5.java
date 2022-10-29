@@ -14,10 +14,10 @@ public class Problem5 {
     static int[] monetary_list = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
 
     public static List<Integer> solution(int money) {
-        return sortingMoney(money);
+        return dividingMoney(money);
     }
 
-    public static List<Integer> sortingMoney(int money) {
+    public static List<Integer> dividingMoney(int money) {
         int index = 0;
         List<Integer> result = new ArrayList<>(Collections.nCopies(9, 0));
         while (money > 0) {
