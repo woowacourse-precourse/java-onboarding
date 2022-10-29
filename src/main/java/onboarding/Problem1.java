@@ -24,6 +24,14 @@ class Problem1 {
     }
 
     private static int pageScore(Integer page) {
-        return 0;
+        int add = 0, mul = 1;
+
+        while(page > 0) {
+            add += page % 10;
+            mul *= page % 10;
+            page /= 10;
+        }
+
+        return Math.max(add, mul);
     }
 }
