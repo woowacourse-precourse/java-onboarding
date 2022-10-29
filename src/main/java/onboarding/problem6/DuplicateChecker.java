@@ -12,13 +12,17 @@ class DuplicateChecker {
         this.database = forms;
     }
 
+    private boolean hasSubString(String name, String subString){
+        return name.indexOf(subString) >= 0;
+    }
 
     boolean checkDuplicate(String name, int index) {
         for (int j = 0; j < database.size(); j++) {
             if (j == index) continue;
             String nameData = database.get(j).get(1);
             for (int i = 0; i < nameData.length() - 1; i++) {
-                if (name.indexOf(nameData.substring(i, i + 2)) >= 0) return true;
+                String substring = nameData.substring(i, i + 2);
+                if (hasSubString(name, substring)) return true;
             }
         }
         return false;
