@@ -1,21 +1,38 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.HashMap;
 
 public class Problem6 {
-    private static HashMap<String, String> wordEmailsMap; //연속된 글자, 이 연속된 글자가 닉네임에 포함되는 첫 크루의 이메일
-    private static HashMap<String, Boolean> isEmailInList; //이 이메일의 크루가 이미 반환 목록에 들어있는지 체크
-    private static List<String> answer;
+    private static HashMap<String, String> wordEmailsMap = new HashMap<>(); //연속된 글자, 이 연속된 글자가 닉네임에 포함되는 첫 크루의 이메일
+    private static HashMap<String, Boolean> isEmailInList = new HashMap<>(); //이 이메일의 크루가 이미 반환 목록에 들어있는지 체크
+    private static List<String> answer = new ArrayList<>();
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        initializeEmailInList(forms);
+
+        for (List<String> form : forms) {
+            String nickname = form.get(1);
+            String email = form.get(0);
+            checkDuplicateWordsInNickname(nickname, email);
+        }
+        Collections.sort(answer);
         return answer;
+    }
+
+    private static void initializeEmailInList(List<List<String>> forms) {
+        String email;
+        for (List<String> form : forms) {
+            email = form.get(0);
+            isEmailInList.put(email, false);
+        }
     }
 
     private static void checkDuplicateWordsInNickname(String nickname, String email) {
         StringBuilder sb = new StringBuilder(nickname);
         String words;
-        for(int i = 0; i < nickname.length()-2; i++) {
+        for(int i = 0; i <= nickname.length()-2; i++) {
             words = parseTwoWords(sb, i, i+1);
             putWordAndEmailInMap(words, email);
         }
