@@ -24,6 +24,10 @@ public class Problem4 {
             if (!isAlphabetic(c)) {
                 sb.append(c);
             }
+
+            if (isUpperCase(c)) {
+                sb.append(map.get(c));
+            }
         }
         return sb.toString();
     }
@@ -32,4 +36,7 @@ public class Problem4 {
         return Character.isAlphabetic(c);
     }
 
+    private static boolean isUpperCase(char c) {
+        return Character.isUpperCase(c);
+    }
 }
