@@ -1,7 +1,10 @@
 package onboarding;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.HashMap;
+import java.util.stream.Collectors;
+import java.util.Comparator;
 
 public class Problem6 {
     /* checkEmail: 이메일형식이 email.com인지 확인하는 함수 */
@@ -19,7 +22,7 @@ public class Problem6 {
         return false;
     }
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>();
         HashMap<String, String> dict = new HashMap<>(); //닉네임 두글자씩 잘라서 저장
 
         for(int i=0; i<forms.size(); i++){
@@ -38,6 +41,9 @@ public class Problem6 {
                 }
             }
         }
+
+        answer = answer.stream().distinct().collect(Collectors.toList()); //중복제거
+        answer.sort(Comparator.naturalOrder());//오름차순 정렬
 
         return answer;
     }
