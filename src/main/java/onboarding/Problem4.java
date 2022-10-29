@@ -10,4 +10,9 @@ public class Problem4 {
         int ascii = 155 - (int)one;
         return (char)ascii;
     }
+
+    public static char convertLowercase(char one) {
+        int ascii = 219 - (int)one;
+        return (char)ascii;
+    }
 }
