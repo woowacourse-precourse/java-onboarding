@@ -22,10 +22,18 @@ class Problem1 {
             return ERROR;
         }
 
+        if (isFirstOrLastPage(pobiLeftPage, pobiRightPage) || isFirstOrLastPage(crongLeftPage, crongRightPage)) {
+            return ERROR;
+        }
+
         return answer;
     }
 
     private static boolean isNotLeftAndRightPage(int leftPage, int rightPage) {
         return rightPage - leftPage != 1;
+    }
+
+    private static boolean isFirstOrLastPage(int leftPage, int rightPage) {
+        return leftPage == 1 || rightPage == 399;
     }
 }
