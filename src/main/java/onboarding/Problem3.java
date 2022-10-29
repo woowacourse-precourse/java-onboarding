@@ -20,7 +20,7 @@ public class Problem3 {
     // 1번부터 번호까지 돌면서 3,6,9 확인
     public static int checkNumber(int number){
         int count = 0;
-        for(int i=0; i<=number; i++){
+        for(int i=1; i<=number; i++){
             count += countClap(i);
         }
         return count;
