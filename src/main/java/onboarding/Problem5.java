@@ -31,6 +31,9 @@ public class Problem5 {
         answer.add(calculateOneHundred(money));
         money -= 100 * answer.get(5);
 
+        answer.add(calculateFifty(money));
+        money -= 50 * answer.get(6);
+
         return answer;
     }
 
@@ -60,6 +63,10 @@ public class Problem5 {
 
     public static int calculateOneHundred(int money) {
         return money / 100;
+    }
+
+    public static int calculateFifty(int money) {
+        return money / 50;
     }
 
 }
