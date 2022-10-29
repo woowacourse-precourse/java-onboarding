@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -10,7 +9,6 @@ import java.util.Set;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
         Set<String> userFriends = new HashSet<>();
         HashMap<String, Integer> recommendFriends = new HashMap<>();
         for (List<String> friend : friends) {
@@ -23,7 +21,7 @@ public class Problem7 {
         for (String v : visitors) {
             recommendVisitor(recommendFriends, v, userFriends);
         }
-        return answer;
+        return limitFiveLength(sortRecommendFriends(recommendFriends));
     }
 
     public static void makeUserFriendList(Set<String> friendSet, List<String> friendship, String user) {
@@ -61,5 +59,13 @@ public class Problem7 {
             return -Integer.compare(Integer.parseInt(a.get(1)), Integer.parseInt(b.get(1)));
         });
         return sortedList;
+    }
+
+    public static List<String> limitFiveLength(List<List<String>> list) {
+        List<String> limitList = new ArrayList<>();
+        for (List<String> s : list) {
+            limitList.add(s.get(0));
+        }
+        return limitList;
     }
 }
