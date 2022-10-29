@@ -34,9 +34,11 @@ class Problem1 {
         return sumValue;
     }
 
-    private static int getMulByArray(int[] array){
-        // 배열의 각 자리수를 모두 곱하는 메소드
+    private static int getMulByNumber(int number){
+        // 숫자의 각 자리수를 모두 곱하는 메소드
         int mulValue = 1;
+        int[] array = getArrayByNumber(number);
+
         for (int value : array){
             mulValue *= value;
         }
