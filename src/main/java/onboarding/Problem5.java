@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
-        List<Integer> answer = new ArrayList<Integer>();
+        List<Integer> answer = new ArrayList<>();
         bank(answer, money);
         return answer;
     }
