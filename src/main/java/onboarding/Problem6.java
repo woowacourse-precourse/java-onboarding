@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>();
 
         Map<String, String> listMap = new HashMap<>();
         String[] nickList = new String[forms.size()];
@@ -23,7 +23,7 @@ public class Problem6 {
         }
 
         // 닉네임 중 같은 글자가 연속적으로 포함 되는 경우 찾기
-        // 중복 확인할 기준 문자열 구하기
+        // 중복 확인할 기준 문자열 구하기, 중복 제거
         for(int i=0; i<nickList.length; i++){
             String name = nickList[i];
             for(int j=2; j<=name.length(); j++){
@@ -40,7 +40,22 @@ public class Problem6 {
             }
         }
 
-        // 오름차순 정렬, 중복 제거
+        // 보낼 이메일 구하고 오름차순 정렬
+        String[] makeEmailList = new String[collectNickname.size()];
+        Iterator<String> collectNicknameItr = collectNickname.iterator();
+        for(int i=0; i<makeEmailList.length; i++){
+            for(int j=0; j<collectNickname.size(); j++){
+                String nickName = collectNicknameItr.next();
+                String email = listMap.get(nickName);
+                makeEmailList[i] = email;
+            }
+        }
+
+        Arrays.sort(makeEmailList);
+
+        for(int i=0; i<makeEmailList.length; i++){
+            answer.add(makeEmailList[i]);
+        }
 
         return answer;
     }
