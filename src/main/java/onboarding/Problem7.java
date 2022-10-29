@@ -16,6 +16,11 @@ public class Problem7 {
         return answer;
     }
 
+    static Map<String, Integer> computeRecommendScore(Map<String, Integer> bothKnowFriendsCount,
+        Map<String, Integer> visitCount) {
+            return null;
+    }
+
     static Map<String, Integer> countVisit(List<String> visitors) {
         Map<String, Integer> visitCount = visitors.stream()
             .distinct()
