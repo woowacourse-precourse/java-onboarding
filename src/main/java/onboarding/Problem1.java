@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 class Problem1 {
     private static final int EXCEPTION_CASE = -1;
@@ -37,12 +38,10 @@ class Problem1 {
     }
 
     private static int sumDigits(int page) {
-        int sum = 0;
-        String pageStr = Integer.toString(page);
-        for (int i = 0; i < pageStr.length(); i++) {
-            sum += pageStr.charAt(i) - '0';
-        }
-        return sum;
+        return String.valueOf(page)
+                .chars()
+                .map(Character::getNumericValue)
+                .sum();
     }
 
     private static int productDigits(int page) {
