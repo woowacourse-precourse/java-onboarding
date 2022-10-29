@@ -84,6 +84,7 @@ public class Problem6 {
                 String twoLengthName = getString(nickname, i);
                 if (twoNameMap.get(twoLengthName).size() > 1) {
                     result.add(email);
+                    break;
                 }
             }
         }
