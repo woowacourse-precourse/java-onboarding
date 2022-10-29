@@ -42,6 +42,7 @@ public class Problem5 {
      * @return 화폐 단위로 바꿀 수 있는 최대 개수
      */
     private int getCurrencyCount(int money, int currency){
-
+        // 돈을 화폐단위로 나눈 몫 반환
+        return money / currency;
     }
 }
