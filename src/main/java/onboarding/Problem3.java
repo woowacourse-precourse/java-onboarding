@@ -6,6 +6,10 @@ public class Problem3 {
 
         for (int i=1; i<=number; i++) {
             char[] tmp = Integer.toString(i).toCharArray();
+            for (char element : tmp) {
+                if (isThree(element) || isSix(element) || isNine(element))
+                    answer++;
+            }
         }
         return answer;
     }
