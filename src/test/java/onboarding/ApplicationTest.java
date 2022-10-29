@@ -97,7 +97,7 @@ class ApplicationTest {
             assertThat(Problem5.solution(money)).isEqualTo(result);
         }
     }
-/*
+
     @Nested
     class Problem6Test {
         @Test
@@ -114,6 +114,7 @@ class ApplicationTest {
         }
     }
 
+    /*
     @Nested
     class Problem7Test {
         @Test
