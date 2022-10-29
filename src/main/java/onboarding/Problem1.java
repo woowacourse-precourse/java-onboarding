@@ -47,4 +47,10 @@ class Problem1 {
         }
         return pageMultiply;
     }
+
+    public static int PageMaxScore(List<Integer> page) {
+        int pageSumMax = Math.max(pageSum(page.get(0)), pageSum(page.get(1)));
+        int pageMultiplyMax = Math.max(pageMultiply(page.get(0)), pageMultiply(page.get(1)));
+        return Math.max(pageSumMax, pageMultiplyMax);
+    }
 }
