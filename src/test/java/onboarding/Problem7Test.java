@@ -21,4 +21,21 @@ class Problem7Test {
         String result2 = Problem7.returnFriendName(friend, "donut");
         assertThat(result2).isEqualTo("andole");
     }
+
+    @Test
+    void makeFriendsList() {
+        String user = "mrko";
+        List<List<String>> friends = List.of(
+                List.of("donut", "andole"),
+                List.of("donut", "jun"),
+                List.of("donut", "mrko"),
+                List.of("shakevan", "andole"),
+                List.of("shakevan", "jun"),
+                List.of("shakevan", "mrko")
+        );
+
+        List<String> result = Problem7.makeFriendsList(user, friends);
+
+        assertThat(result).contains("donut", "shakevan");
+    }
 }

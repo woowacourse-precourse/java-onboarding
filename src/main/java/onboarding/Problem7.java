@@ -10,11 +10,6 @@ public class Problem7 {
         return answer;
     }
 
-//    public static List<String> makeFriendsList(String user, List<List<String>> friends) {
-//        ArrayList<String> friendsList = new ArrayList<>();
-//
-//
-//    }
 
     public static String returnFriendName(List<String> friend, String myName) {
 
@@ -26,4 +21,18 @@ public class Problem7 {
 
         throw new RuntimeException("본인 이름 없음");
     }
+
+    public static List<String> makeFriendsList(String user, List<List<String>> friends) {
+        ArrayList<String> friendsList = new ArrayList<>();
+
+        for (int i = 0; i < friends.size(); i++) {
+            List<String> freind = friends.get(i);
+
+            if (freind.contains(user)) {
+                friendsList.add(returnFriendName(freind, user));
+            }
+        }
+        return friendsList;
+    }
+
 }
