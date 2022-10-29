@@ -28,8 +28,7 @@ public class Problem3 {
             allClapCount += countClapOfNumber;
         }
 
-        int answer = 0;
-        return answer;
+        return allClapCount;
     }
 
     private static void addClapRule() {
