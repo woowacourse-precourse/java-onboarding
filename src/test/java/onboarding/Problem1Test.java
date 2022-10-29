@@ -29,6 +29,14 @@ public class Problem1Test {
 
     @Test
     @DisplayName("페이지 번호의 각 자리 숫자의 총합과 총곱 중 131이 주어지면 총합인 5가 더 크다.")
+    void calculatePlayerScore_With189And190_WillBe72() {
+        List<Integer> player = List.of(189, 190);
+        int result = 72;
+        assertThat(Problem1.calculatePlayerScore(player)).isEqualTo(result);
+    }
+
+    @Test
+    @DisplayName("페이지 번호의 각 자리 숫자의 총합과 총곱 중 131이 주어지면 총합인 5가 더 크다.")
     void calculatePageScore_With131_WillBe5() {
         int pageNumber = 131;
         int result = 5;

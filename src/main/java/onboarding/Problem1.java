@@ -13,7 +13,9 @@ class Problem1 {
     }
 
     // 기능#3 주어지는 List의 left, right에 대해 2번을 실행하고, 더 큰 수를 반환
-
+    public static int calculatePlayerScore(List<Integer> player) {
+        return Integer.MAX_VALUE;
+    }
 
     // 기능#2 주어진 정수의 각 자리 숫자를 모두 더하거나 모두 곱해 가장 큰 수를 반환
     static int calculatePageScore(int pageNumber) {
