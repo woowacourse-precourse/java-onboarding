@@ -23,4 +23,15 @@ public class Problem2 {
         }
         return true;
     }
+
+    public static boolean checkCryptogramOverlap(String cryptogram) {
+        char preText = cryptogram.charAt(0);
+        for (int i = 1; i < cryptogram.length(); i++) {
+            if (preText == cryptogram.charAt(i)) {
+                return true;
+            }
+            preText = cryptogram.charAt(i);
+        }
+        return false;
+    }
 }
