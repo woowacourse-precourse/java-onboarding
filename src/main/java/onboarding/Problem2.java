@@ -10,7 +10,9 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         // 1. 중복 문자열을 제거한다.
         removeDuplicateString(cryptogram);
-        return "";
+
+        // 2. 스택의 크기에 따라 적절한 문자열을 반환한다.
+        return getResultFromStack();
     }
 
     private static void removeDuplicateString(String str) {
@@ -24,5 +26,13 @@ public class Problem2 {
             }
             st.add(c);
         }
+    }
+
+    private static String getResultFromStack() {
+        StringBuilder stringBuilder = new StringBuilder();
+        while (!st.isEmpty()) {
+            stringBuilder.append(st.pop());
+        }
+        return stringBuilder.length() == 0 ? "" : stringBuilder.reverse().toString();
     }
 }
