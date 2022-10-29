@@ -21,3 +21,21 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능 목록
+
+#### input이 적절한지 판단한다.
+
+- input[0] (이메일) 의 경우 @이 있는지 확인한다.
+- @이 있다면, email.com의 형태를 갖고있는지 확인한다.
+- 이메일의 길이가 11자 이상 20자 미만인지 확인한다.
+- input[1] (닉네임) 의 경우 한글인지 확인한다.
+- 닉네임의 길이가 1자 이상 20자 미만인지 확인한다.
+
+#### input이 적절하다면 실행결과를 반환한다.
+
+- 각각의 닉네임을 기준으로 길이 2의 substring을 구성한다.
+- 최대 깊이가 2인 트리를 구성한다.
+- 깊이 1인 노드에는 substring중 첫번째 글자를 넣어둔다.
+- 깊이 2인 노드에는 substring을 넣고, 처음으로 등장한 substring index를 넣어둔다.
+- 만약 그 후에 substring을 짤랐을때 깊이 2까지 똑같은 substring이 있다면 그 index와 리프노드의 index 모두를 결과에 넣는다.
