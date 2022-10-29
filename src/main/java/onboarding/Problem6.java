@@ -14,7 +14,7 @@ public class Problem6 {
                 continue;
             }
             //닉네임 중복 확인
-            List<String> duplicatedNicknameOwner = checkNicknameDuplication(nickname, map);
+            List<String> duplicatedNicknameOwner = checkNicknameDuplication(nickname, email, map);
             //중복된 이메일 저장
             for(int j = 0; j < duplicatedNicknameOwner.size(); j++){
                 set.add(duplicatedNicknameOwner.get(j));
@@ -36,11 +36,11 @@ public class Problem6 {
         return answer;
     }
 
-    private static List<String> checkNicknameDuplication(String nickname, HashMap<String, String> part){
+    private static List<String> checkNicknameDuplication(String nickname, String email, HashMap<String, String> part){
         HashSet<String> duplicatedNicknameOwner = new HashSet<>();
         for (String key : part.keySet()) {
             if(nickname.contains(key)){
-                duplicatedNicknameOwner.add(nickname);
+                duplicatedNicknameOwner.add(email);
                 duplicatedNicknameOwner.add(part.get(key));
             }
         }
