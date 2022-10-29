@@ -5,32 +5,13 @@ import java.util.Objects;
 
 public class Page {
 
-    private static final int PAGE_MIN = 1;
-    private static final int PAGE_MAX = 400;
     private final int left;
     private final int right;
 
     public Page(int left, int right) {
-        pageInputValidation(left, right);
+        PageValidator.pageInputValidation(left, right);
         this.left = left;
         this.right = right;
-    }
-
-    private void pageInputValidation(int left, int right) {
-        if (isValidSequence(left, right)) {
-            throw new IllegalArgumentException();
-        }
-        if (isEscapePageBound(left, right)) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private boolean isEscapePageBound(int left, int right) {
-        return (left <= PAGE_MIN) || (right >= PAGE_MAX);
-    }
-
-    private static boolean isValidSequence(int left, int right) {
-        return (right - left) != 1;
     }
 
     public int maxScore() {
