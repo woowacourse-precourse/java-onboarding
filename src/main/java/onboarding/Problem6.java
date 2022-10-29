@@ -21,7 +21,11 @@ public class Problem6 {
         List<String> email_list = new ArrayList<>();
 
         for (int i = 0; i < user_list.size(); i++)
+        {
+            if (user_list.contains(forms.get(user_list.get(i)).get(email)))
+                continue;
             email_list.add(forms.get(user_list.get(i)).get(email));
+        }
 
         Collections.sort(email_list);
 
@@ -30,8 +34,8 @@ public class Problem6 {
     //중복 닉네임 찾기
     //char형으로 비교하면 값이 안같아도 조건문을 넘어감..
     public static boolean findSameUser(String first, String second) {
-        int firstName = 0;
-        int secondName = 0;
+        int firstName;
+        int secondName;
 
         for (int i = 0; i < first.length() - 1; i++) {
             for (int j = 0; j < second.length() - 1; j++) {
