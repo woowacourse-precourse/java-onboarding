@@ -3,6 +3,7 @@ package onboarding;
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
+        answer = checkNumber(number);
         return answer;
     }
     // 박수 세기
