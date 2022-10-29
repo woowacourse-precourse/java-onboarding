@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class Problem6 {
@@ -40,5 +41,11 @@ public class Problem6 {
             }
         }
         return hasDupNameEmails;
+    }
+
+    private static List<String> removedDupEmail(List<String> emails) {
+        HashSet<String> hashSet = new HashSet<>(emails);
+        List<String> removedDupEmails = new ArrayList<>(hashSet);
+        return removedDupEmails;
     }
 }
