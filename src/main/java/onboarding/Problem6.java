@@ -23,13 +23,9 @@ public class Problem6 {
         Map<String, Integer> nickNameDivideByTwoLetter = new HashMap<>();
 
         int crewSize = getCrewSize(forms);
-
         checkException(forms, crewSize);
-
         makeNickNameDivideByTwoLetter(forms, nickNameDivideByTwoLetter);
-
         makeSameNickNameEmail(forms, sameNickNameEmail, nickNameDivideByTwoLetter);
-
         answer=sameNickNameEmail.stream().sorted().distinct().collect(Collectors.toList());
 
         return answer;

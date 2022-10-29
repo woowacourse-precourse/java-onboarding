@@ -18,26 +18,7 @@ public class Problem7 {
 
 
         //1. 예외사항
-        //1-1 user 길이 1 이상 30 이하인지 체크
-        if(isNotMatchingUserLength(userLength)){
-            throw new NotMatchingUserLength("사용자의 길이가 맞지 않습니다.");
-        }
-
-        //1-2 friends 길이 1 이상 10000 이하인지 체크
-        if(isNotMatchingFriendsSize(friendsSize)){
-            throw new NotMatchingFriendsSize("친구 관계 정보의 길이가 맞지 않습니다.");
-        }
-
-        //1-3 friends 의 각 원소의 길이가 2인지 체크
-        int friendSize = friends.get(0).size();
-        if(isNotMatchingFriendSize(friendSize)){
-            throw new NotMatchingFriendSize("친구 관계 정보의 원소의 길이가 맞지 않습니다.");
-        }
-
-        //1-5 visitors 길이 0 이상 10000 이하인지 체크
-        if(isNotMatchingVisitorsSize(visitorsSize)){
-            throw new NotMatchingVisitorsSize("방문 기록의 길이가 맞지 않습니다.");
-        }
+        checkException(friends, userLength, friendsSize, visitorsSize);
 
         //2. 유저 친구 관계 표현하기
         Map<String, Integer> userFriendInfo = new HashMap<>();
@@ -103,6 +84,29 @@ public class Problem7 {
         answer = arrayList.stream().sorted().map(scoreInfo -> scoreInfo.getId()).limit(5).collect(Collectors.toList());
 
         return answer;
+    }
+
+    private static void checkException(List<List<String>> friends, int userLength, int friendsSize, int visitorsSize) {
+        //1-1 user 길이 1 이상 30 이하인지 체크
+        if(isNotMatchingUserLength(userLength)){
+            throw new NotMatchingUserLength("사용자의 길이가 맞지 않습니다.");
+        }
+
+        //1-2 friends 길이 1 이상 10000 이하인지 체크
+        if(isNotMatchingFriendsSize(friendsSize)){
+            throw new NotMatchingFriendsSize("친구 관계 정보의 길이가 맞지 않습니다.");
+        }
+
+        //1-3 friends 의 각 원소의 길이가 2인지 체크
+        int friendSize = friends.get(0).size();
+        if(isNotMatchingFriendSize(friendSize)){
+            throw new NotMatchingFriendSize("친구 관계 정보의 원소의 길이가 맞지 않습니다.");
+        }
+
+        //1-5 visitors 길이 0 이상 10000 이하인지 체크
+        if(isNotMatchingVisitorsSize(visitorsSize)){
+            throw new NotMatchingVisitorsSize("방문 기록의 길이가 맞지 않습니다.");
+        }
     }
 
     private static boolean isUser(String user, String friendA, String friendB) {
