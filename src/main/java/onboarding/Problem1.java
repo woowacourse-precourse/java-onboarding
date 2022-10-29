@@ -14,10 +14,15 @@ class Problem1 {
 
         if (scoreOfPobi > scoreOfCrong) {
             return 1;
-        } else if (scoreOfPobi < scoreOfCrong) {
+        }
+        if (scoreOfPobi < scoreOfCrong) {
             return 2;
         }
-        return 0;
+        if (scoreOfPobi == scoreOfCrong) {
+            return 0;
+        }
+
+        return -1;
     }
 
     public static boolean isCorrectInput(int numOfFirstPage, int numOfSecondPage) {
