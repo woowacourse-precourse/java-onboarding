@@ -9,8 +9,7 @@ import java.util.*;
  * 인접리스트를 사용해 친구 관계를 구현해보자.
  * user의 친구들에 각각 접근해서 친구들의 친구에 대해 아이디로 HashMap에서 찾아서 친구추천 점수에 더해준다.
  * 이때 이미 user와 친구인 사람은 추천해주면 안되므로 다 추가한 뒤에 다시 유저의 친구들만 HashMap에서 삭제
- * 이후 정렬.
- * 만약 추천점수 0점이면 ㅂㅂ.
+ * 이후 정렬하고 최대 5개까지만 answer List에 추가한다.
  * 기능 명세
  * 1. 유저의 친구정보들을 초기화
  * 2. 친구정보를 사용해 친구추천 점수를 계산
@@ -20,7 +19,7 @@ import java.util.*;
  */
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
         Map<String, Integer> recommend = new HashMap<>();
         //1. initialize relation
         Map<String, List<String>> relation = initializeRelation(friends);
@@ -37,7 +36,19 @@ public class Problem7 {
         removeAlreadyFriendsOrHimself(relation,recommend, user);
 
         //5. add to array and sort
+        List<String> allId = new ArrayList<>(recommend.keySet());
+        allId.sort((o1, o2) -> {
+            Integer result = recommend.get(o2)-recommend.get(o1);
+            result = (result==0) ? o1.compareTo(o2) : result;
+            return result;
+        });
 
+        int count=0;
+        for(String id : allId){
+            if(count==5)break;
+            answer.add(id);
+            count++;
+        }
 
         return answer;
     }
