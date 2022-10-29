@@ -12,7 +12,7 @@ public class ClapGame {
 	private static IntStream convertDigitsOf(int number) {
 		return String.valueOf(number)
 			.chars()
-			.map(digit -> digit - 48);
+			.map(ch -> ch - 48);
 	}
 
 	private static boolean isMultipleOfThree(final int number) {
@@ -23,5 +23,13 @@ public class ClapGame {
 		return convertDigitsOf(number)
 			.filter(ClapGame::isMultipleOfThree)
 			.count();
+	}
+
+	public static int getTotalClapCountOf(final int number) {
+		int clapCount = 0;
+		for (int n = 3; n <= number; n++) {
+			clapCount += getClapCountOf(n);
+		}
+		return clapCount;
 	}
 }

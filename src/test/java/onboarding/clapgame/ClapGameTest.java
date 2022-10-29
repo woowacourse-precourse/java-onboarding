@@ -31,4 +31,12 @@ public class ClapGameTest {
 			ClapGame.getClapCountOf(33)
 		).isEqualTo(2);
 	}
+
+	@DisplayName("특정 숫자 범위까지의 전체 손뼉 횟수 테스트")
+	@Test
+	void 전체_손뼉_횟수_반환() {
+		assertThat(
+			ClapGame.getTotalClapCountOf(33)
+		).isEqualTo(14);
+	}
 }
