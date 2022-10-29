@@ -1,6 +1,9 @@
 package onboarding;
 
 public class Problem3 {
+    static final char gameFstNum = '3';
+    static final char gameSndNum = '6';
+    static final char gameThdNum = '9';
     public static int solution(int number) {
         int answer = 0;
 
@@ -9,7 +12,7 @@ public class Problem3 {
             char[] numChArr = str.toCharArray();
 
             for(char chNum : numChArr){
-                if(chNum == '3' || chNum == '6' || chNum == '9'){
+                if(chNum == gameFstNum || chNum == gameSndNum || chNum == gameThdNum){
                     answer++;
                 } // end if
             } // end for
