@@ -5,6 +5,15 @@ public class Problem4 {
         String answer = "";
         return answer;
     }
+
+    private static String changeWord(String word) {
+        String answer = "";
+        for (int i = 0; i < word.length(); i++) {
+            answer = answer.concat(String.valueOf(changeLetter(word.charAt(i))));
+        }
+        return answer;
+    }
+
     private static char changeLetter(char letter) {
         if (letter >= 'A' && letter <= 'Z') {
             return changeUpperCase(letter);
