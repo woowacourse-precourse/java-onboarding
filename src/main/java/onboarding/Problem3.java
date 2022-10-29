@@ -12,8 +12,33 @@ public class Problem3 {
     }
 
     public static int solution(int number) {
-        int answer = 0;
+        int answer = getTotalClapCount(number);
         return answer;
+    }
+
+    private static int getTotalClapCount(int number) {
+        int count = 0;
+
+        for (int i = 1; i <= number; i++) {
+            count += getClapCount(i);
+        }
+
+        return count;
+    }
+
+    private static int getClapCount(int number) {
+        String intToString = String.valueOf(number);
+        int count = 0;
+
+        for (int len = intToString.length(), i = 0; i < len; i++) {
+            char current = intToString.charAt(i);
+
+            if (CLAP_NUMBERS.contains(current - '0')) {
+                count++;
+            }
+        }
+
+        return count;
     }
 
 }
