@@ -1,4 +1,5 @@
 package onboarding;
+import java.util.Arrays;
 import java.util.List;
 
 class Problem1 {
@@ -7,9 +8,13 @@ class Problem1 {
         return answer;
     }
 
-    private static String[] tokenize(String number){
-        // @TODO :: String 토크나이즈 후 반환
+    private static int[] tokenize(String number){
         String[] strArray = number.split("");
-       return strArray;
+
+        int[] intArray = Arrays.stream(strArray)
+                .mapToInt(Integer::parseInt)
+                .toArray();
+
+        return intArray;
     }
 }
