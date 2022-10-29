@@ -1,13 +1,27 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
+        Map<String, List<String>> nicknames = createNicknameMap(forms);
         return answer;
+    }
+
+    private static Map<String, List<String>> createNicknameMap(List<List<String>> forms) {
+        Map<String, List<String>> nicknames = new HashMap<>();
+        for (List<String> form : forms) {
+            String email = form.get(0);
+            String nickname = form.get(1);
+
+            List<String> twoLetterNicknames = splitTwoLetter(nickname);
+            storeEmails(nicknames, email, twoLetterNicknames);
+        }
+        return nicknames;
     }
 
     private static List<String> splitTwoLetter(String nickname) {
