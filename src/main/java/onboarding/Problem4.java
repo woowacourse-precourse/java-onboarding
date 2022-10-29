@@ -7,11 +7,14 @@ public class Problem4 {
 
   private static Map<String, String> greenFrogDictionary;
   private static final int MAX_WORD_LENGTH = 1000;
+  private static final String EXCEPTION_ANSWER = "Exception";
 
   public static String solution(String word) {
     makeGreenFrogDictionary();
-    String answer = translateWord(word);
-    return answer;
+    if (isAllowedStringLength(word.length())) {
+      return translateWord(word);
+    }
+    return EXCEPTION_ANSWER;
   }
 
   public static void makeGreenFrogDictionary() {
