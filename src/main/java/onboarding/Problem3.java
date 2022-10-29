@@ -2,7 +2,7 @@ package onboarding;
 
 public class Problem3 {
 
-    private static int getCountBy369(int number) {
+    private static int getHandsClapCountBy369(int number) {
         int cnt = 0;
 
         for(int num = 1; num <= number; num++) {
@@ -20,6 +20,6 @@ public class Problem3 {
 
     public static int solution(int number) {
 
-        return getCountBy369(number);
+        return getHandsClapCountBy369(number);
     }
 }
