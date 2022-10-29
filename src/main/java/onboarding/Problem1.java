@@ -20,6 +20,19 @@ class Problem1 {
         return answer;
     }
 
+    private static int getCompareResult(int pobiScore, int crongScore) {
+        int ans = EXCEPTION;
+
+        if (pobiScore > crongScore) {
+            ans = POBI_WIN;
+        } else if (pobiScore < crongScore) {
+            ans = CRONG_WIN;
+        } else if (pobiScore == crongScore) {
+            ans = DRAW;
+        }
+
+        return ans;
+    }
 
     // 개선 가능 (with strategy pattern)
     private static boolean isWrongInput(List<Integer> inputs) {
