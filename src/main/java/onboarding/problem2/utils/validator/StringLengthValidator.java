@@ -10,11 +10,13 @@ public class StringLengthValidator {
 
     public StringLengthValidator(String word, int least, int maximum) throws StringLengthException {
         this.word = word;
-
+        this.least = least;
+        this.maximum = maximum;
+        validateStringLengthOver();
     }
 
     private void validateStringLengthOver() throws StringLengthException{
-        if((word.length()<least) || (word.length() > maximum)){
+        if(((word.length()<least) || (word.length() > maximum))){
             throw new StringLengthException("제한된 길이에 맞지않음");
         }
     }
