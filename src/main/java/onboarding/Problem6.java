@@ -1,12 +1,26 @@
 package onboarding;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Problem6 {
+
+    static class Student implements Comparable<Student> {
+        String email;
+        int idx;
+
+        public Student(String email, int idx) {
+            this.email = email;
+            this.idx = idx;
+        }
+
+        @Override
+        public int compareTo(Student o) {
+            return this.email.compareTo(o.email);
+        }
+    }
+
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>();
 
         int size = forms.size();
         Set<Integer> indexSet = new HashSet<>();
@@ -22,6 +36,20 @@ public class Problem6 {
                 }
             }
         }
+
+        List<Student> duplicateStudentList = new ArrayList<>();
+
+        for (int idx: indexSet) {
+            String email = forms.get(idx).get(0);
+            int splitIdx = email.indexOf('@');
+            email = email.substring(0, splitIdx);
+
+            duplicateStudentList.add(new Student(email, idx));
+        }
+
+        Collections.sort(duplicateStudentList);
+
+
 
         return answer;
     }
