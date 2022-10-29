@@ -14,7 +14,7 @@
 ### Problem 2
 - [x] 문자 중복 확인
 - [x] 문자 중복 제거
-- [ ] solution 메서드 완성
+- [x] solution 메서드 완성
 ---
 ### Problem 3
 
