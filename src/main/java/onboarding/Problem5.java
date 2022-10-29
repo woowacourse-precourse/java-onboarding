@@ -1,6 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Problem5 {
@@ -9,7 +9,7 @@ public class Problem5 {
 
     public static List<Integer> solution(int money) {
         final int NUMBER_OF_CURRENCYS = CURRENCYS_DESCENDING_ORDER.length;
-        List<Integer> answer = Collections.emptyList();
-        return answer;
+        List<Integer> numberByCurrency = new ArrayList<>(NUMBER_OF_CURRENCYS);
+        return numberByCurrency;
     }
 }
