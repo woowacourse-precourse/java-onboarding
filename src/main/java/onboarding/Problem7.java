@@ -10,10 +10,7 @@ public class Problem7 {
         List<String> far = new ArrayList<>();
         Map<String, Integer> result = new HashMap<>();
 
-        for (List<String> AB : friends) {
-            if (AB.contains(user)) near.addAll(AB);
-        }
-        near.remove(user);
+        makeNearList(user, friends, near);
 
         for (List<String> AB : friends) {
             for (String name : AB) {
@@ -48,6 +45,13 @@ public class Problem7 {
 
         answer = sortedAnswer(answer, result);
         return answer;
+    }
+
+    private static void makeNearList(String user, List<List<String>> friends, Set<String> near) {
+        for (List<String> AB : friends) {
+            if (AB.contains(user)) near.addAll(AB);
+        }
+        near.remove(user);
     }
 
     private static List<String> sortedAnswer(List<String> answer, Map<String, Integer> result) {
