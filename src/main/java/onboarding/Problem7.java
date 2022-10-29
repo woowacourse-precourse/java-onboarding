@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.Map.Entry;
 
 public class Problem7 {
     public static boolean isContainUser(String user, List<String> friend) {
@@ -90,6 +91,27 @@ public class Problem7 {
         return scoreMap;
     }
 
+    public static List<String> getResult(Map<String, Integer> totalScore) {
+        List<Entry<String, Integer>> entryList = new ArrayList<>(totalScore.entrySet());
+        entryList.sort(new Comparator<Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                if(o1.getValue() == o2.getValue()) {
+                    return o1.getKey().compareTo(o2.getKey());
+                }
+                return o2.getValue() - o1.getValue();
+            }
+        });
+
+        List<String> result = new ArrayList<>();
+        for(int i = 0; i < 5 && i < entryList.size(); i++) {
+            String name = entryList.get(i).getKey();
+            result.add(name);
+        }
+
+        return result;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         Set<String> friendSet;
@@ -103,6 +125,8 @@ public class Problem7 {
 
         totalScore = friendsScore;
         visitorsScore.forEach((k, v) -> totalScore.merge(k, v, (v1, v2) -> v1 + v2));
+
+        answer = getResult(totalScore);
 
         return answer;
     }
