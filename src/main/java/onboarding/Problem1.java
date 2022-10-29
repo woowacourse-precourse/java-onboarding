@@ -61,7 +61,7 @@ class Problem1 {
         return mul;
     }
 
-    public List<Integer> getHighScore(List<Integer> param){
+    public int getHighScore(List<Integer> param){
         int addLeftScore, addRightScore, mulLeftScore, mulRightScore, leftPage, rightPage, leftHighScore, rightHighScore;
         leftPage = param.get(0);
         rightPage = param.get(1);
@@ -82,7 +82,7 @@ class Problem1 {
         else
             rightHighScore = mulRightScore;
 
-        return Arrays.asList(leftHighScore, rightHighScore);
+        return (leftHighScore >= rightHighScore) ? leftHighScore : rightHighScore;
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
