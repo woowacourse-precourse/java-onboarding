@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -8,6 +9,14 @@ public class Problem6 {
     private static final HashMap<String, String> TwoCharacterMap = new HashMap<>();
     private static final HashSet<String> AnswerEmailSet = new HashSet<>();
 
+    public static void processForms(List<List<String>> forms){
+        for(List<String> user : forms){
+            String email = user.get(0);
+            String name = user.get(1);
+            List<String> twoCharacterList = splitNameEveryTwoCharacter(name);
+            checkTwoCharacterListDuplicate(twoCharacterList, email);
+        }
+    }
     public static List<String> splitNameEveryTwoCharacter(String name){
         List<String> twoCharacterList = new LinkedList<>();
         for(int i = 0; i < name.length() - 1; i++){
@@ -41,12 +50,8 @@ public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new LinkedList<>();
-        for(List<String> user : forms){
-            String email = user.get(0);
-            String name = user.get(1);
-            List<String> twoCharacterList = splitNameEveryTwoCharacter(name);
-            checkTwoCharacterListDuplicate(twoCharacterList, email);
-        }
+        processForms(forms);
+        //getsortedEmailListFromAnswerSet // move answerset to List // sortlist
         return answer;
     }
 }
