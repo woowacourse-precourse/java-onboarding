@@ -76,5 +76,8 @@ public class Problem6 {
         return duplicateCrewEmails;
     }
 
+    private static boolean validateNumberOfCrew(List<List<String>> crewForms) {
+        return (crewForms.size() >= 1 && crewForms.size() <= 10000);
+    }
 
 }
