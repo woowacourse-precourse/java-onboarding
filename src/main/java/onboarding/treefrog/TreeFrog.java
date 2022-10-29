@@ -24,4 +24,10 @@ public class TreeFrog {
 		}
 		return "" + (char)(UPPER_CASE_FACTOR - ch);
 	}
+
+	public static String translate(final String word) {
+		return word.chars()
+			.mapToObj(ch -> translateCode((char)ch))
+			.collect(Collectors.joining());
+	}
 }
