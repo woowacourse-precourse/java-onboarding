@@ -7,6 +7,15 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+
+    private boolean isInvalidInput(List<Integer> pageList) {
+        return isInvalidRange(pageList);
+    }
+
+    private boolean isInvalidRange(List<Integer> pageList) {
+        return pageList.get(0) < 3 || pageList.get(1) > 398;
+    }
+
     private int selectSide(List<Integer> pageList) {
         int left = selectOperation(pageList.get(0));
         int right = selectOperation(pageList.get(1));
