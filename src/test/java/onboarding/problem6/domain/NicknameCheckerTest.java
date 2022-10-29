@@ -1,6 +1,8 @@
 package onboarding.problem6.domain;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -33,5 +35,15 @@ public class NicknameCheckerTest {
     @MethodSource("provideForTextDistinctSubString")
     void distinct_subString(String text, List<String> expected) {
         assertThat(nicknameChecker.distinctSubString(text)).isEqualTo(expected);
+    }
+
+    @DisplayName("문자열을 키로 값 1을 저장한다. 만약 이미 존재하는 문자열이라면 값을 1 증가시킨다.")
+    @Test
+    void save_nickname_after_check_duplicate() {
+        String nickname = "제이제이";
+        nicknameChecker.saveNickname(nickname);
+        assertThat(nicknameChecker.isDuplicate(nickname)).isFalse();
+        nicknameChecker.saveNickname(nickname);
+        assertThat(nicknameChecker.isDuplicate(nickname)).isTrue();
     }
 }
