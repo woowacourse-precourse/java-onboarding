@@ -8,6 +8,11 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
         List<Integer> plus;
+        for (int i = 0; i < forms.size(); i++) {
+            for (int j = 0; j < forms.get(i).get(1).length() - 1; j++){
+
+            }
+        }
         return answer;
     }
 }
