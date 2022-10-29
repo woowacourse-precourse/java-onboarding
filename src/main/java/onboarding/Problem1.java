@@ -55,13 +55,12 @@ class Problem1 {
 	 * @return 연속된 두 숫자가 아니면 true 맞으면 false
 	 */
 	public static boolean checkWrongPage(List<Integer> pobi, List<Integer> crong) {
-		if (pobi.get(1) - pobi.get(0) == 1) {
-			return false;
-		}
-		if (crong.get(1) - crong.get(0) == 1) {
-			return false;
-		}
+		if ((Math.abs(pobi.get(1) - pobi.get(0)) > 1) 
+			  || (Math.abs(crong.get(1) - crong.get(0)) > 1)) {
 		return true;
+		}
+
+		return false;
 	}
 
 	/**
@@ -71,12 +70,10 @@ class Problem1 {
 	 * @return 더하기 또는 곱중 가장 큰 값을 리턴한다
 	 */
 	public static int maxPobiNumber(List<Integer> pobi) {
-		int sum = pobi.get(0) + pobi.get(1);
-		int times = pobi.get(0) * pobi.get(1);
 		int max = 0;
-		if (sum > times)
-			return sum;
-		return times;
+		max = Math.max(sum(pobi.get(0)), multiply(pobi.get(0)));
+		max = Math.max(max, Math.max(sum(pobi.get(1)), multiply(pobi.get(1))));
+		return max;
 	}
 
 	/**
@@ -86,12 +83,10 @@ class Problem1 {
 	 * @return 더하기 또는 곱중 가장 큰 값을 리턴한다
 	 */
 	public static int maxCrongNumber(List<Integer> crong) {
-		int sum = crong.get(0) + crong.get(1);
-		int times = crong.get(0) * crong.get(1);
 		int max = 0;
-		if (sum > times)
-			return sum;
-		return times;
+		max = Math.max(sum(crong.get(0)), multiply(crong.get(0)));
+		max = Math.max(max, Math.max(sum(crong.get(1)), multiply(crong.get(1))));
+		return max;
 	}
 
 	/**
@@ -123,7 +118,7 @@ class Problem1 {
      * @param number
      * @return 곱의 결과를 리턴한다
      */
-	public static int multi(int number) {
+	public static int multiply(int number) {
 		int times = 1;
 		while (number > 0) {
 			times *= (number % 10);
