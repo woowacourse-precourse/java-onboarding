@@ -32,7 +32,7 @@ public class Problem6 {
         return answer;
     }
 
-
+    // 존재하는 Key인지 확인
     public boolean checkKeyExist(String keyword){
         return nickKeywordMap.containsKey(keyword);
     }
