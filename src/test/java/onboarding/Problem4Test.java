@@ -65,4 +65,42 @@ class Problem4Test {
             }
         }
     }
+
+    @Nested
+    @DisplayName("getInverseAlphabet 메소드는")
+    class getInverseAlphabetTest {
+        @Nested
+        @DisplayName("소문자 아스키코드가 입력되면")
+        class Context_with_lower_case {
+            @Test
+            @DisplayName("역순의 소문자 아스키코드를 반환한다")
+            void it_returns_inverse_lower_case_alphabet() {
+                int lowerCaseAsciiCode = 97;
+                int inverseLowerCase = 122;
+                assertThat(problem4.getInverseAlphabet(lowerCaseAsciiCode)).isEqualTo(inverseLowerCase);
+            }
+        }
+        @Nested
+        @DisplayName("대문자 아스키코드가 입력되면")
+        class Context_with_upper_case {
+            @Test
+            @DisplayName("역순의 대문자 아스키코드를 반환한다")
+            void it_returns_inverse_upper_case_alphabet() {
+                int upperCaseAsciiCode = 67;
+                int inverseUpperCase = 88;
+                assertThat(problem4.getInverseAlphabet(upperCaseAsciiCode)).isEqualTo(inverseUpperCase);
+            }
+        }
+
+        @Nested
+        @DisplayName("그 외 아스키코드가 입력되면")
+        class Context_with_other_ascii_code {
+            @Test
+            @DisplayName("아스키코드를 그대로 반환한다")
+            void it_returns_as_it_is() {
+                int otherAsciiCode = 5;
+                assertThat(problem4.getInverseAlphabet(otherAsciiCode)).isEqualTo(otherAsciiCode);
+            }
+        }
+    }
 }
