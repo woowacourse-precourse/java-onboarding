@@ -771,15 +771,30 @@ class ApplicationTest {
         @Test
         void case11() {
             List<List<String>> forms = List.of(
-                    List.of("g@email.com", "제이제이"),
-                    List.of("d@email.com", "이제이제"),
-                    List.of("e@email.com", "제이"),
-                    List.of("a@email.com", "이제"),
-                    List.of("c@email.com", "제이야"),
-                    List.of("b@email.com", "아제이"),
-                    List.of("f@email.com", "이")
+                    List.of("사a@email.com", "제이제이"),
+                    List.of("라b@email.com", "이제이제"),
+                    List.of("마c@email.com", "제이"),
+                    List.of("가d@email.com", "이제"),
+                    List.of("다e@email.com", "제이야"),
+                    List.of("나f@email.com", "아제이"),
+                    List.of("바g@email.com", "이")
             );
-            List<String> result = List.of("a@email.com", "b@email.com", "c@email.com", "d@email.com", "e@email.com", "g@email.com");
+            List<String> result = List.of("가d@email.com", "나f@email.com", "다e@email.com", "라b@email.com", "마c@email.com", "사a@email.com");
+            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
+    
+        @Test
+        void case12() {
+            List<List<String>> forms = List.of(
+                    List.of("사a@email.com", "제이제이"),
+                    List.of("ㄱb@email.com", "이제이제"),
+                    List.of("마c@email.com", "제이"),
+                    List.of("가d@email.com", "이제"),
+                    List.of("ㄴe@email.com", "제이야"),
+                    List.of("나f@email.com", "아제이"),
+                    List.of("바g@email.com", "이")
+            );
+            List<String> result = List.of("ㄱb@email.com", "ㄴe@email.com", "가d@email.com", "나f@email.com", "마c@email.com", "사a@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
     }
