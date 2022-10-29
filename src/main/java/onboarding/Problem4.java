@@ -21,7 +21,7 @@ public class Problem4 {
                 }
             }
         }
-        
+
         return String.valueOf(words);
     }
 
