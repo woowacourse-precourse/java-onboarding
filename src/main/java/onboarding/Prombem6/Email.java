@@ -1,8 +1,8 @@
 package onboarding.Prombem6;
 
 public class Email {
+    private String LOWER_ALPHABET_AND_NUMBER_REGEX = "^[a-z0-9]*$";
     private String value;
-
     public Email(String input) throws Exception {
         if(input.length()<11 || input.length()>=20) {
             throw new Exception("이메일의 길이는 11자 이상 20자 미만이어야 합니다");
@@ -10,7 +10,11 @@ public class Email {
         if (!"@email.com".equals(input.substring(input.length() - 10))) {
             throw new Exception("이메일은 @email.com로 끝나야 합니다");
         }
-        this.value = input.substring(0, input.length() - 10);
+        String value = input.substring(0, input.length() - 10);
+        if (!value.matches(LOWER_ALPHABET_AND_NUMBER_REGEX)) {
+            throw new Exception("이메일은 숫자와 영소문자로만 만들 수 있습니다");
+        }
+        this.value = value;
     }
 
     public String getValue() {
