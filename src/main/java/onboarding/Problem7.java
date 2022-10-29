@@ -74,7 +74,7 @@ public class Problem7 {
 
             for (String userFriend : userFriends) {
                 if (id1.equals(userFriend) && !user.equals(id2)) friendList.put(id2, friendList.get(id2) + 10);
-                if (id2.equals(userFriend) && !user.equals(id2)) friendList.put(id1, friendList.get(id1) + 10);
+                if (id2.equals(userFriend) && !user.equals(id1)) friendList.put(id1, friendList.get(id1) + 10);
             }
         }
     }
@@ -95,7 +95,8 @@ public class Problem7 {
      * @return : 추천인 5명
      */
     static List<String> selectFriends (List<String> userFriends) {
-        List<Map.Entry<String, Integer>> entries = new LinkedList<>(friendList.entrySet());
+        Map<String, Integer> sortedMap = new TreeMap<>(friendList);
+        List<Map.Entry<String, Integer>> entries = new LinkedList<>(sortedMap.entrySet());
         entries.sort((value1, value2) -> value2.getValue().compareTo(value1.getValue()));
 
         List<String> result = new ArrayList<>();
