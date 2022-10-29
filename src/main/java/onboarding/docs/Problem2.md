@@ -3,7 +3,7 @@
 ---
 
 ## 👀 문제 확인하기  
-- 우아한테크코스 2주차 과제 중 '문제 2'의 구현 기능과 구현 로직을 담은 문서입니다.
+- 우아한테크코스 1주차 과제 중 '문제 2'의 구현 기능과 구현 로직을 담은 문서입니다.
 - 문제는 [여기](https://github.com/woowacourse-precourse/java-onboarding/blob/main/docs/PROBLEM2.md)에서 확인해 주세요.
 
 ---
