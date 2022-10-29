@@ -18,6 +18,7 @@ public class Problem7 {
       List<String> visitors) {
     initMyFriends(user, friends);
     initOthers(friends, visitors);
+    setScore(friends, visitors);
   }
 
   private static void initMyFriends(String user, List<List<String>> friends) {
@@ -48,6 +49,33 @@ public class Problem7 {
   private static void addOtherPeople(String person) {
     if (!myFriends.contains(person) && !scoreMap.containsKey(person)) {
       scoreMap.put(person, 0);
+    }
+  }
+
+  private static void setScore(List<List<String>> friends, List<String> visitors) {
+    setScoreWithFriendsOfFriends(friends);
+    setScoreWithVisitors(visitors);
+  }
+
+  private static void setScoreWithFriendsOfFriends(List<List<String>> friends) {
+    for (List<String> friend : friends) {
+      String friend1 = friend.get(0);
+      String friend2 = friend.get(1);
+
+      if (myFriends.contains(friend1) && scoreMap.containsKey(friend2)) {
+        scoreMap.put(friend2, scoreMap.get(friend2) + 10);
+      }
+      if (myFriends.contains(friend2) && scoreMap.containsKey(friend1)) {
+        scoreMap.put(friend1, scoreMap.get(friend1) + 10);
+      }
+    }
+  }
+
+  private static void setScoreWithVisitors(List<String> visitors) {
+    for (String visitor : visitors) {
+      if (scoreMap.containsKey(visitor)) {
+        scoreMap.put(visitor, scoreMap.get(visitor) + 1);
+      }
     }
   }
 }
