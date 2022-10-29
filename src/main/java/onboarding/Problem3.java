@@ -9,7 +9,15 @@ public class Problem3 {
     private static final char NINE = '9';
 
     public static int solution(int number) {
+        if (!checkNumberValid(number)) {
+            throw new IllegalArgumentException("[error] 잘못된 숫자가 입력되었습니다.");
+        }
         int answer = 0;
+        for (int i = 0; i <= number; i++) {
+            answer += countOfThree(i);
+            answer += countOfSix(i);
+            answer += countOfNine(i);
+        }
         return answer;
     }
 
