@@ -6,11 +6,8 @@ import java.util.Deque;
 public class DuplicateProcessor {
 
     private final Deque<Character> stack = new ArrayDeque<>();
-    private boolean flag = true;
 
-    public char[] checkDuplication(char[] cryptoCharArr) {
-        int duplicationCount = 0;
-
+    public String checkDuplication(char[] cryptoCharArr) {
         for (char cryptoChar : cryptoCharArr) {
             if (stack.isEmpty()) {
                 stack.addLast(cryptoChar);
@@ -19,38 +16,22 @@ public class DuplicateProcessor {
 
             if (stack.peekLast() == cryptoChar) {
                 stack.removeLast();
-                duplicationCount++;
                 continue;
             }
 
             stack.addLast(cryptoChar);
         }
 
-        return getDecryptedCharArray(stack, cryptoCharArr, duplicationCount);
+        return getDecryptedString(stack);
     }
 
-    private char[] getDecryptedCharArray(Deque<Character> stack, char[] cryptoCharArr,
-                                         int duplicationCount) {
-        if (duplicationCount == 0) {
-            flag = false;
-            return cryptoCharArr;
+    private String getDecryptedString(Deque<Character> stack) {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        while (!stack.isEmpty()) {
+            stringBuilder.append(stack.removeFirst());
         }
 
-        int size = stack.size();
-        char[] result = new char[size];
-
-        for (int i = 0; i < size; i++) {
-            if (stack.isEmpty()) {
-                break;
-            }
-
-            result[i] = stack.removeFirst();
-        }
-
-        return result;
-    }
-
-    public boolean flag() {
-        return flag;
+        return stringBuilder.toString();
     }
 }

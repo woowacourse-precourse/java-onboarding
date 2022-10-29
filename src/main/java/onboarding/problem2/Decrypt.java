@@ -12,13 +12,6 @@ public class Decrypt {
 
     public String doDecrypt(String cryptogram) {
         validateCryptogram(cryptogram);
-
-        char[] cryptoCharArr = cryptogram.toCharArray();
-
-        while (duplicateProcessor.flag()) {
-            cryptoCharArr = duplicateProcessor.checkDuplication(cryptoCharArr);
-        }
-
-        return StringConverter.charArrToString(cryptoCharArr);
+        return duplicateProcessor.checkDuplication(cryptogram.toCharArray());
     }
 }
