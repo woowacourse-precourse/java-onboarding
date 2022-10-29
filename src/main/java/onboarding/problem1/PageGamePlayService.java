@@ -6,9 +6,9 @@ import static onboarding.problem1.consts.PlayerNameConst.POBI_NAME;
 
 import java.util.List;
 
-public class GamePlayer {
+public class PageGamePlayService {
 
-    private GamePlayer() {
+    private PageGamePlayService() {
     }
 
     public static int play(List<Integer> pobi, List<Integer> crong) {
