@@ -5,8 +5,14 @@ import java.util.Map;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = transform(word);
-        return answer;
+        try {
+            validation(word);
+
+            String answer = transform(word);
+            return answer;
+        } catch (RuntimeException e) {
+            throw e;
+        }
     }
 
     public static Map<String, String> makeDict() {
@@ -32,5 +38,11 @@ public class Problem4 {
             }
         }
         return answer.toString();
+    }
+
+    public static void validation(String word) {
+        if (word.length() < 1 || word.length() > 1000) {
+            throw new RuntimeException("문자의 길이는 1 이상 1000 이하 입니다.");
+        }
     }
 }
