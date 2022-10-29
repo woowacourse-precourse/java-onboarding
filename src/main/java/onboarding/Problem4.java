@@ -10,10 +10,20 @@ public class Problem4 {
         StringBuilder sb=new StringBuilder();
         try {
             checkWordLength(word);
+
+            for (int i=0;i<word.length();i++){
+                sb.append(getFrogDictionary(word.charAt(i)));
+            }
             return sb.toString();
         }catch (Exception e){
             return "";
         }
+    }
+
+    public static char getFrogDictionary(char frog_word){
+        if ('A'<=frog_word && frog_word<='Z') return (char) ('Z'-(frog_word-'A'));
+        if ('a'<=frog_word && frog_word<='z') return (char) ('z'-(frog_word-'a'));
+        return frog_word;
     }
 
     public static void checkWordLength(String word) throws Exception {
