@@ -22,6 +22,7 @@ public class Problem6 {
         List<String> answer = List.of("answer");
         return answer;
         validate(forms);
+        Map<String, List<String>> splitNickname = makeMap(forms);
     }
 
     public static void validate(List<List<String>> forms) {
@@ -95,6 +96,30 @@ public class Problem6 {
                 }
             }
         }
+    }
+
+    private static Map<String, List<String>> makeMap(List<List<String>> forms) {
+        Map<String, List<String>> map = new HashMap<>();
+
+        for (List<String> form : forms) {
+            String nickname = getNickname(form);
+            Set<String> splitNicknames = splitNicknames(nickname);
+
+            for (String splitNickname : splitNicknames) {
+                List<String> emails = getEmails(map, splitNickname);
+                emails.add(getEmail(form));
+                map.put(splitNickname, emails);
+            }
+        }
+
+        return map;
+    }
+
+    private static List<String> getEmails(Map<String, List<String>> map, String splitNickname) {
+        if (map.containsKey(splitNickname)) {
+            return map.get(splitNickname);
+        }
+        return new ArrayList<>();
     }
 
     private static Set<String> splitNicknames(String nickname) {
