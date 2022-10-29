@@ -29,6 +29,14 @@ public class Problem7 {
                 }
             }
         }
+        for (String visit : visitors) {
+            if (near.contains(visit)) continue;
+            int point = 1;
+            if (result.get(visit) != null) {
+                point += (result.get(visit));
+            }
+            result.put(visit, point);
+        }
         return answer;
     }
 }
