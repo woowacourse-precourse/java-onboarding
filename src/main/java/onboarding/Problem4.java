@@ -1,7 +1,5 @@
 package onboarding;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 public class Problem4 {
 
     public static void main(String[] args) {
@@ -9,9 +7,10 @@ public class Problem4 {
         String result = "R olev blf";
         System.out.println(solution(word));
     }
+
     public static String solution(String word) {
         String answer;
-        if (word.length()==0 || word.length()>1000){
+        if (word.length() == 0 || word.length() > 1000) {
             return "";
         }
         answer = reverseString(word);
@@ -24,16 +23,15 @@ public class Problem4 {
      * @param word
      * @return
      */
-    public static String reverseString(String word){
+    public static String reverseString(String word) {
         StringBuilder reverseWord = new StringBuilder();
 
-        for(char c: word.toCharArray()) {
+        for (char c : word.toCharArray()) {
             if (c >= 'A' && c <= 'Z') {
-                reverseWord.append((char) ('Z' - c + 'A'));
+                reverseWord.append((char)('Z' - c + 'A'));
             } else if (c >= 'a' && c <= 'z') {
-                reverseWord.append((char) ('z' - c + 'a'));
-            }
-            else{
+                reverseWord.append((char)('z' - c + 'a'));
+            } else {
                 reverseWord.append(c);
             }
         }
