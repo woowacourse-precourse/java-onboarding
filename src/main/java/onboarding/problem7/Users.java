@@ -17,7 +17,7 @@ public class Users {
         users = new ArrayList<>();
     }
 
-    public List<String> getRecommendFriendsRankingFive(List<String> userFriends) {
+    public List<String> getRecommendFriendsByScore(List<String> userFriends) {
         return users.stream()
                 .takeWhile(Objects::nonNull)
                 .filter(user -> !userFriends.contains(user.getName()))
