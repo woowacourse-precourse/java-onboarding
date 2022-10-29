@@ -24,6 +24,8 @@ public class Problem7 {
         addfFirstRulePoint(user, friendGraph, userFriends, friendScore);
 
         // 4. 사용자 친구 목록을 통해 친구를 제외하고 사용자의 타임 라인에 방문한 횟수 계산
+        addSecondRulePoint(visitors, userFriends, friendScore);
+
         // 5. 추천 점수 내림차순으로 정렬하고, 같다면 이름순으로 정렬
 
         List<String> answer = Collections.emptyList();
@@ -70,6 +72,16 @@ public class Problem7 {
                 if (userFriends.contains(uf)) {
                     friendScore.put(friend, friendScore.getOrDefault(friend, 0) + 10);
                 }
+            }
+        }
+    }
+
+    // 4. 사용자 친구 목록을 통해 친구를 제외하고 사용자의 타임 라인에 방문한 횟수 계산
+    private static void addSecondRulePoint(List<String> visitors, Set<String> userFriends,
+        Map<String, Integer> friendScore) {
+        for (String visitor : visitors) {
+            if (!userFriends.contains(visitor)) {
+                friendScore.put(visitor, friendScore.getOrDefault(visitor, 0) + 1);
             }
         }
     }
