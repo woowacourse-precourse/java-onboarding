@@ -57,4 +57,31 @@ class Problem1 {
         return false;
     }
 
+    /**
+     * 승패 가리기
+     * @param pobi
+     * @param crong
+     * @return 포비가 이기면 1 / 크롱이 이기면 2
+     *          무승부면 0 / 예외 사항이면 -1
+     */
+    public static int solution(List<Integer> pobi, List<Integer> crong) {
+        Boolean isPobiContinu = isPageContinu(pobi);
+        Boolean isCrongContinu = isPageContinu(crong);
+        if (isPobiContinu == true || isCrongContinu == true) {
+            return -1;
+        }
+
+        Boolean isPobiListSize2 = isPageListSize2(pobi);
+        Boolean isCrongListSize2 = isPageListSize2(crong);
+        if (isPobiListSize2 == true || isCrongListSize2 == true) {
+            return -1;
+        }
+
+        int pobiMax = getMax(pobi);
+        int crongMax = getMax(crong);
+        if(pobiMax > crongMax) return 1;
+        else if(pobiMax < crongMax) return 2;
+        else return 0;
+    }
+
 }
