@@ -2,6 +2,7 @@ package onboarding.problem1.domain;
 
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.stream.IntStream;
 
 public class Page {
 
@@ -23,15 +24,18 @@ public class Page {
     }
 
     public int addEachDigit(int number) {
-        return Arrays.stream(String.valueOf(number).split(""))
-                .mapToInt(Integer::parseInt)
+        return numberEachDigitIntStream(number)
                 .sum();
     }
 
     public int multiplyEachDigit(int number) {
-        return Arrays.stream(String.valueOf(number).split(""))
-                .mapToInt(Integer::parseInt)
+        return numberEachDigitIntStream(number)
                 .reduce(1, Math::multiplyExact);
+    }
+
+    private static IntStream numberEachDigitIntStream(int number) {
+        return Arrays.stream(String.valueOf(number).split(""))
+                .mapToInt(Integer::parseInt);
     }
 
     @Override
