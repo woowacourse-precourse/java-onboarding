@@ -3,6 +3,13 @@ package onboarding;
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
+
+        if ((number < 1) && (number > 10000)) return -1;
+
+        for (int i = 1; i <= number; i++) {
+            answer += count369(i);
+        }
+
         return answer;
     }
 
