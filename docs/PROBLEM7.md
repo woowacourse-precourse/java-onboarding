@@ -5,7 +5,7 @@
     - 메서드명 (getRelationshipsByUser)
     - [x] 사용자의 친구 목록 저장 (추천 친구에 포함되지 않을 친구들)
     - 메서드명 (getScoresByOverlappedUsers)
-    - [ ] 사용자와 함께 아는 친구의 수에 따른 점수 매기기
+    - [x] 사용자와 함께 아는 친구의 수에 따른 점수 매기기
 
     - 메서드명 (getScoresByVisitedUsers)
     - [ ] 사용자의 타임라인에 방문한 횟수에 따른 점수 매기기

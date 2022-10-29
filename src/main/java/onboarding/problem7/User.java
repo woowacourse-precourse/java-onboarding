@@ -34,4 +34,19 @@ public class User {
             }
         }
     }
+
+    private void getScoresByOverlappedUsers() {
+        for (List<String> relation : friends) {
+            String user1 = relation.get(0);
+            String user2 = relation.get(1);
+
+            if (relationships.contains(user1) && !user2.equals(this.name)) {
+                SCORES_BY_USERS.put(user2, SCORES_BY_USERS.containsKey(user2) ? SCORES_BY_USERS.get(user2) + 10 : 10);
+            }
+
+            if (relationships.contains(user2) && !user1.equals(this.name)) {
+                SCORES_BY_USERS.put(user1, SCORES_BY_USERS.containsKey(user1) ? SCORES_BY_USERS.get(user1) + 10 : 10);
+            }
+        }
+    }
 }
