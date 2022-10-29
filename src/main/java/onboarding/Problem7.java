@@ -8,7 +8,17 @@ import java.util.*;
 //4.해쉬맵을 value값으로 내림차순 정렬 후 retun!
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = new ArrayList<>();
-        return answer;
+        List<String> arr = new ArrayList<>();
+        HashMap<String,Integer> map= new HashMap<>();
+        //사용자와 친구인 유저의 이름 배열에 담기
+        for(List<String> friend : friends){
+            if(!friend.contains(user)) continue;
+            if (Objects.equals(friend.get(0), user)) {
+                arr.add(friend.get(1));
+            } else {
+                arr.add(friend.get(0));
+            }
+        }
+        return arr;
     }
 }
