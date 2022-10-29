@@ -23,5 +23,13 @@ public class Problem4 {
         return dictionary;
     }
 
+    //값 변환해주는 함수
+    public static char changeCharacter(char c, HashMap<Integer,Integer> dictionary){
+        int charToInt = c;
+        int ascii = dictionary.get(charToInt);
+        char intToChar = (char) ascii;
+
+        return intToChar;
+    }
 
 }
