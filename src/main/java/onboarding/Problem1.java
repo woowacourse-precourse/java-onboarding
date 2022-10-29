@@ -31,6 +31,15 @@ class Problem1 {
         return (pages.get(0) + 1 == pages.get(1)); // 왼쪽 페이지 + 1 = 오른쪽 페이지
     }
 
+    public static int winner(List<Integer> player1, List<Integer> player2) { // player1 과 player2 중 점수가 높은 사람이 승자
+        int player1Score = score(player1);
+        int player2Score = score(player2);
+
+        if (player1Score > player2Score) return 1;
+        if (player1Score < player2Score) return 2;
+
+        return 0;
+    }
     public static int result(List<Integer> player1, List<Integer> player2) {
         if (validation(player1) && validation(player2)) {
             return winner(player1, player2);
