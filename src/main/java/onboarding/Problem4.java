@@ -6,6 +6,12 @@ public class Problem4 {
 
         for (int i=0; i<word.length(); i++) {
             char currentCh = word.charAt(i);
+            if (Character.isAlphabetic(currentCh)) {
+                ;
+            }
+            else {
+                ;
+            }
         }
 
         return answer;
