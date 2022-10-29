@@ -49,5 +49,9 @@ public class Problem7 {
         }
     }
 
+    private static void addNameIfNotUsersFriend(String name){
+        if(!usersFriend.contains(name)) scoreToUser.put(name, 0);
+    }
+
 
 }
