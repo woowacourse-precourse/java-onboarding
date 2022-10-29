@@ -32,7 +32,9 @@ public class Problem2 {
 
     public static String solution(String cryptogram) {
         String answer = cryptogram;
-
+        while(!removeOverlap(answer).equals(answer)) {
+            answer = removeOverlap(answer);
+        }
 
         return answer;
     }
