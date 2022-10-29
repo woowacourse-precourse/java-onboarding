@@ -1,7 +1,8 @@
 package onboarding;
 
 public class Problem3 {
-    static final String[] numForClaps = {"3", "6", "9"};
+    static final String THREE = "3", SIX = "6", NINE = "9";
+    static final String[] numForClaps = {THREE, SIX, NINE};
 
     public static int solution(int number) {
         int answer = 0;
