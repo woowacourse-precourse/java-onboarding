@@ -10,6 +10,7 @@ public class Problem2 {
         String answer = "answer";
         crypto = Arrays.asList(cryptogram);
         iterateList(crypto);
+        answer = concatList(crypto);
         return answer;
     }
 
@@ -21,5 +22,12 @@ public class Problem2 {
                 i--;
             }
         }
+    }
+    private static String concatList(List<String> list) {
+        String str = "";
+        for(String e : list) {
+            str += e;
+        }
+        return str;
     }
 }
