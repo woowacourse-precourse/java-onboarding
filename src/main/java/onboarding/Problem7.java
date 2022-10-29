@@ -44,6 +44,9 @@ public class Problem7 {
     public static void initFriendsList(List<String> relationship, String user) {
         String userA = relationship.get(0);
         String userB = relationship.get(1);
+        if(!(userA.equals(user) || userB.equals(user))){
+            return;
+        }
 
         if(userA.equals(user)){
             friendsList.add(userB);
