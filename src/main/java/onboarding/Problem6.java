@@ -17,6 +17,7 @@ public class Problem6 {
         nicknames = new ArrayList<>();
         nicknames.add(forms.get(0).get(1));
         answer = new ArrayList<>();
+        answer.add(forms.get(0).get(0));
     }
 
     private static void checkNicknameInForms(List<List<String>> forms) {
