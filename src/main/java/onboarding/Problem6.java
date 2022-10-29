@@ -1,6 +1,8 @@
 package onboarding;
 
 import java.util.*;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -39,13 +41,20 @@ public class Problem6 {
     }
 
     private static boolean emailValidation(List<List<String>> forms){
+        return forms.stream().map(a-> a.get(0)).allMatch(checkEmailValidation());
+    }
+
+    public static Predicate<Object> checkEmailValidation(){
         final int MIN_LENGTH = 11;
         final int MAX_LENGTH = 20;
         final String EMAIL_REGEX  = "^\\w+@email\\.com";
-        return forms.stream().allMatch((List a)-> Pattern.matches(EMAIL_REGEX, (String)a.get(0))
-                && ((String) a.get(0)).length()<=MAX_LENGTH
-                && (MIN_LENGTH<=((String) a.get(0)).length()));
-    }
+        return (a)-> {
+            String target = (String)a;
+            return Pattern.matches(EMAIL_REGEX, target)
+                    && (target.length() <= MAX_LENGTH
+                    && (MIN_LENGTH <= (target.length())));
+        };
+    }   
 
     private static List<String> getListOfDuplicateNickname(List<List<String>> forms){
         List<String> result;
@@ -73,6 +82,7 @@ public class Problem6 {
             if(nicknamePieceAndOwner.containsKey(nicknamePiece)){
                 addUserInDuplicatedUser(owner);
                 addUserInDuplicatedUser(nicknamePieceAndOwner.get(nicknamePiece));
+                continue;
             }
             nicknamePieceAndOwner.put(nicknamePiece,owner);
         }
