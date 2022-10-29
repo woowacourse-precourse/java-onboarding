@@ -17,6 +17,16 @@ public class Problem4 {
         return reverseChar(word, map);
     }
     public static String reverseChar(String word, HashMap<Character, Character> map) {
+        StringBuilder ret = new StringBuilder();
 
+        for (int i = 0; i < word.length(); i++) {
+            char c = word.charAt(i);
+            if (('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z')) {
+                ret.append(map.get(c));
+            } else {
+                ret.append(c);
+            }
+        }
+        return ret.toString();
     }
 }
