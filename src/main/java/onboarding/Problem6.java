@@ -43,6 +43,8 @@ public class Problem6 {
         }
     }
 
+    // comment : 변수 명은 List인데 자료형은 Set?
+    // comment : 같은 Collection을 상속받으니 List로 명명해도 무관한거 아닌가?
     public static Set<Member> duplicateMemberList = new HashSet<>();
     public static Map<String, Member> nameStorage = new HashMap<>();
 
@@ -75,6 +77,8 @@ public class Problem6 {
      * @param slice  : 잘라낸 이름
      * @param member : 사용자
      */
+    // comment : checkDuplicateName 함수명은 중복된 이름 체크만을 수행한다고 명시되어있지만 nameStorage에 저장하는 부수행위를 수행한다.
+    // comment : 하나의 함수는 하나의 기능만 가져아한다. 부수행위는 존재하면 안된다.
     private static void checkDuplicateName(String slice, Member member) {
         if (nameStorage.containsKey(slice) && !member.name.equals(nameStorage.get(slice).getName())) {
             duplicateMemberList.add(member);
