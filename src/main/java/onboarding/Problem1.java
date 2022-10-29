@@ -12,9 +12,48 @@ class Problem1 {
             return -1;
         }
 
+        // 포비와 크롱의 최대 값 구하기
+        Integer pobiNum = getLargestNum(pobi);
+        Integer crongNum = getLargestNum(crong);
+
+
         return answer;
     }
 
+    private static Integer getLargestNum(List<Integer> pages) {
+
+        // 페이지 값
+        Integer left = pages.get(0);
+        Integer right = pages.get(1);
+
+        // 스트림 연산을 위한 리스트화
+        List<Integer> leftNumList = getNumberList(left);
+        List<Integer> rightNumList = getNumberList(right);
+
+        // 최대값 구하기
+        Integer leftLargestNum = cal(leftNumList);
+        Integer rightLargestNum = cal(rightNumList);
+
+        return Math.max(leftLargestNum , rightLargestNum);
+    }
+
+    private static Integer cal(List<Integer> list) {
+        // 총합 , 총곱 중 최대 값 구하기
+        return Math.max(
+                list.stream().reduce((total, now) -> total + now).get() ,
+                list.stream().reduce((total, now) -> total * now).get()
+        );
+    }
+
+    private static List<Integer> getNumberList(Integer num) {
+        List<Integer> list = new ArrayList<>();
+        // 모듈러 연산을 통해 각 자리별 숫자 리스트 생성
+        while (num != 0) {
+            list.add(num % 10);
+            num /= 10;
+        }
+        return list;
+    }
 
     private static boolean isError(List<Integer> pages) {
         if (pages.size() != 2) {
