@@ -21,6 +21,7 @@ class Problem1 {
         pobiScore = Math.max(compareMaxNum(pobi.get(0)), compareMaxNum(pobi.get(1)));
         crongScore = Math.max(compareMaxNum(crong.get(0)), compareMaxNum(crong.get(1)));
 
+        answer = getResult(pobiScore, crongScore);
         return answer;
     }
 
@@ -52,7 +53,7 @@ class Problem1 {
     }
 
     private static int multiplyDigit(int num) {
-        int temp = 0;
+        int temp = 1;
         while (num != 0) {
             temp *= (num % 10);
             num /= 10;
@@ -63,4 +64,15 @@ class Problem1 {
     private static int compareMaxNum(int num) {
         return Math.max(addDigit(num), multiplyDigit(num));
     }
+
+    private static int getResult(int pobiScore, int crongScore) {
+        if (pobiScore > crongScore) {
+            return 1;
+        }
+        if (pobiScore < crongScore) {
+            return 2;
+        }
+        return 0;
+    }
+
 }
