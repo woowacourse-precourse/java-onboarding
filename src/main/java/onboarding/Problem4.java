@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Problem4 {
 
-  private static Map<Character, Character> greenFrogDictionary;
+  private static Map<String, String> greenFrogDictionary;
 
   public static String solution(String word) {
     String answer = "";
@@ -19,16 +19,19 @@ public class Problem4 {
     greenFrogDictionary = new HashMap<>();
 
     for (int i = 0; i < upperCase.length(); i++) {
-      greenFrogDictionary.put(upperCase.charAt(i), upperCase.charAt(upperCase.length()-1 - i));
+      greenFrogDictionary.put(String.valueOf(upperCase.charAt(i)),
+          String.valueOf(upperCase.charAt(upperCase.length() - 1 - i)));
     }
 
     for (int i = 0; i < lowerCase.length(); i++) {
-      greenFrogDictionary.put(lowerCase.charAt(i), lowerCase.charAt(lowerCase.length()-1 - i));
+      greenFrogDictionary.put(String.valueOf(lowerCase.charAt(i)),
+          String.valueOf(lowerCase.charAt(lowerCase.length() - 1 - i)));
+
     }
   }
 
-  public static boolean isAlphabet(char character) {
-    int ASCII = character - 0;
+  public static boolean isAlphabet(String character) {
+    int ASCII = character.charAt(0) - 0;
     if (ASCII < 65 || (ASCII > 90 && ASCII < 97) || ASCII > 122) {
       return false;
     }
