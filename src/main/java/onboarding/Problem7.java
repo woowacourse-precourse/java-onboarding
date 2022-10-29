@@ -91,11 +91,11 @@ public class Problem7 {
         return scoreMap;
     }
 
-    public static List<String> getResult(Map<String, Integer> totalScore) {
+    public static List<Entry<String, Integer>> getSortedEntries(Map<String, Integer> totalScore) {
         List<Entry<String, Integer>> entryList = new ArrayList<>(totalScore.entrySet());
         entryList.sort(new Comparator<Entry<String, Integer>>() {
             @Override
-            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+            public int compare(Entry<String, Integer> o1, Entry<String, Integer> o2) {
                 if(o1.getValue() == o2.getValue()) {
                     return o1.getKey().compareTo(o2.getKey());
                 }
@@ -103,14 +103,22 @@ public class Problem7 {
             }
         });
 
+        return entryList;
+    }
+
+    public static List<String> getResult(Map<String, Integer> totalScore) {
+        List<Entry<String, Integer>> entryList = getSortedEntries(totalScore);
+
         List<String> result = new ArrayList<>();
-        for(int i = 0; i < 5 && i < entryList.size(); i++) {
+        for(int i = 0; i < 5 && i < entryList.size(); i++) {    // 5명 미만인 경우도 고려
             String name = entryList.get(i).getKey();
             result.add(name);
         }
 
         return result;
     }
+
+
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
