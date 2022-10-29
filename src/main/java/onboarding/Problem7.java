@@ -9,6 +9,8 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -34,5 +36,19 @@ public class Problem7 {
                 return true;
         }
         return false;
+    }
+
+    private static Map<String, Integer> getRecommendList(String user, List<List<String>> friends, List<String> friendList) {
+        Map<String, Integer> recommendList = new HashMap<String, Integer>();
+        List<String> friend;
+
+        for (int i = 0; i < friends.size(); i++) {
+            friend = friends.get(i);
+            if (friends.get(0).equals(user) == false && checkFriend(friend.get(0), friendList) == false)
+                recommendList.put(friend.get(0), 0);
+            if (friends.get(1).equals(user) == false && checkFriend(friend.get(1), friendList) == false)
+                recommendList.put(friend.get(1), 0);
+        }
+        return recommendList;
     }
 }
