@@ -118,12 +118,23 @@ public class Problem7 {
             nowUser.addVisitededFriendsProint(visitorsName);
         }
 
-        List<RecommendFriend> allRecommendedFriedns = new ArrayList<>();
+        List<RecommendFriend> allRecommendedFriends = new ArrayList<>();
 
         for(String friendName : nowUser.recommendFriendsList.keySet()){
-            allRecommendedFriedns.add(nowUser.recommendFriendsList.get(friendName));
+            allRecommendedFriends.add(nowUser.recommendFriendsList.get(friendName));
         }
 
+        allRecommendedFriends.sort((o1, o2) -> {
+            if (o1.point == o2.point) {
+                return o1.name.compareTo(o2.name);
+            }
+            return o2.point - o1.point;
+        });
+
+
+        for (int i = 0; i < allRecommendedFriends.size() && i < 5; i++) {
+            answer.add(allRecommendedFriends.get(i).name);
+        }
 
         return answer;
     }
