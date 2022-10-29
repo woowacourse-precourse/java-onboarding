@@ -13,10 +13,14 @@ public class Problem6 {
     static Map<String, Set<Integer>> twoLettersRepository = new HashMap<>();
 
     static final int EMAIL = 0;
+    static final int NICKNAME = 1;
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        int formsSize = forms.size();
+        for (int i=0; i<formsSize; i++) {
+            analyzeNickname(forms.get(i).get(NICKNAME), i);
+        }
+        return getEmailListOfNicknameWarning(forms);
     }
 
     public static List<String> getEmailListOfNicknameWarning (List<List<String>> forms) {
