@@ -8,4 +8,8 @@ public class Problem2 {
     private static boolean isValidStringLength(String str) {
         return str.length() == 1;
     }
+
+    private static char[] getStringToChar(String str) {
+        return str.toCharArray();
+    }
 }
