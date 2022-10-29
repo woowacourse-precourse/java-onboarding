@@ -48,31 +48,39 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
-        // 덧셈, 곱셈 번호
-        int count_sum_number = 0;
-        int count_multi_number = 1;
+        if(isExecption(pobi) && isExecption(crong)) {
 
 
-        // pobi의 페이지들
-        int pobi_left_page = pobi.get(0);
-        int pobi_right_page = pobi.get(1);
+            // 덧셈, 곱셈 번호
+            int count_sum_number = 0;
+            int count_multi_number = 1;
 
-        // crong의 페이지들
-        int crong_left_page = crong.get(0);
-        int crong_right_page = crong.get(1);
 
-        // pobi의 합과 곱 페이지
-        int pobi_sum_page = Math.max(getSumNumber(pobi_left_page, count_sum_number), getSumNumber(pobi_right_page, count_sum_number));
-        int pobi_multi_page = Math.max(getMultiNumber(pobi_left_page, count_multi_number), getMultiNumber(pobi_right_page, count_multi_number));
+            // pobi의 페이지들
+            int pobi_left_page = pobi.get(0);
+            int pobi_right_page = pobi.get(1);
 
-        // crong의 합과 곱 페이지
-        int crong_sum_page = Math.max(getSumNumber(crong_left_page, count_sum_number), getSumNumber(crong_right_page, count_sum_number));
-        int crong_multi_page = Math.max(getMultiNumber(crong_left_page, count_multi_number), getMultiNumber(crong_right_page, count_multi_number));
+            // crong의 페이지들
+            int crong_left_page = crong.get(0);
+            int crong_right_page = crong.get(1);
 
-        // 3. pobi와 crong의 최종 페이지 구하기
-        int pobi_result_page = Math.max(pobi_sum_page, pobi_multi_page);
-        int crong_result_page = Math.max(crong_sum_page, crong_multi_page);
+            // pobi의 합과 곱 페이지
+            int pobi_sum_page = Math.max(getSumNumber(pobi_left_page, count_sum_number), getSumNumber(pobi_right_page, count_sum_number));
+            int pobi_multi_page = Math.max(getMultiNumber(pobi_left_page, count_multi_number), getMultiNumber(pobi_right_page, count_multi_number));
 
+            // crong의 합과 곱 페이지
+            int crong_sum_page = Math.max(getSumNumber(crong_left_page, count_sum_number), getSumNumber(crong_right_page, count_sum_number));
+            int crong_multi_page = Math.max(getMultiNumber(crong_left_page, count_multi_number), getMultiNumber(crong_right_page, count_multi_number));
+
+            // 3. pobi와 crong의 최종 페이지 구하기
+            int pobi_result_page = Math.max(pobi_sum_page, pobi_multi_page);
+            int crong_result_page = Math.max(crong_sum_page, crong_multi_page);
+
+            // answer에 getWinner return 값 넣어주기.
+            answer = getWinner(pobi_result_page, crong_result_page);
+            return answer;
+        }
+        answer = -1;
         return answer;
     }
 }
