@@ -38,6 +38,16 @@ public class Problem7 {
         deleteZeroValueOnMap();
     }
 
+    private static void deleteZeroValueOnMap(){
+        for(String name : scoreToUser.keySet()){
+            deleteIfZero(name);
+        }
+    }
+
+    private static void deleteIfZero(String name){
+        if(scoreToUser.get(name) == 0) scoreToUser.remove(name);
+    }
+
     private static void addFriendIfExists(String user, List<String> relation){
         if(!relation.contains(user)) return;
         usersFriend.addAll(relation);
