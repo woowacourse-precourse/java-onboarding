@@ -39,5 +39,13 @@ public class Problem7 {
         }
         return result;
     }
+    public static Map<String,Integer> visitScoreCalculator(Map<String,Integer> scores,List<String> visitors){
+        for(String name:visitors){
+            if(scores.get(name)!=null)
+                scores.put(name, scores.get(name)+1);
+            scores.putIfAbsent(name, 1);
+        }
+        return scores;
+    }
 
 }
