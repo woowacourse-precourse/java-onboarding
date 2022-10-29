@@ -97,7 +97,7 @@ class Problem1 {
      * @return 사이에 존재한다면 true, 아니라면 false를 반환
      */
     private static boolean isBetween(int min, int max, int target){
-        if(min<target && target<max)
+        if(min<=target && target<=max)
             return true;
         else
             return false;
