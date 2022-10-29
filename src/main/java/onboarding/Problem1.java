@@ -6,10 +6,13 @@ class Problem1 {
     // 기능#4 (기능#1과 기능#3을 실행하여) 상황에 맞는 결과값을 반환
     // 예외상황 -1, 무승부 0, 포비 승리 1, 크롱 승리 2 반환
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
         if(checkInvalidInput(pobi) || checkInvalidInput(crong))
             return -1;
-        return answer;
+        int result = calculatePlayerScore(pobi) - calculatePlayerScore(crong);
+
+        if(result == 0)
+            return 0;
+        return result > 0? 1: 2;
     }
 
     // 기능#3 주어지는 List의 left, right에 대해 2번을 실행하고, 더 큰 수를 반환
