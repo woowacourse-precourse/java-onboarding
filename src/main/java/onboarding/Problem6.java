@@ -46,6 +46,14 @@ public class Problem6 {
         return same;
     }
 
+    //기능 2
+    public static boolean checkEmail(List<String> emailList,String email) {
+
+        boolean containEmail=emailList.contains(email);
+
+        return containEmail;
+    }
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
