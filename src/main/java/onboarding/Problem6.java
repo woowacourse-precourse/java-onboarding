@@ -59,4 +59,12 @@ public class Problem6 {
         return result;
     }
 
+    private static List<String> getDevidedNicknamePiece(String nickname){
+        List<String> nicknamePieces = new ArrayList<>();
+        for(int i=0; i<nickname.length()-1; i++){
+            nicknamePieces.add(nickname.substring(i,i+2));
+        }
+        return nicknamePieces;
+    }
+
 }
