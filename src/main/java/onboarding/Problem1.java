@@ -43,6 +43,17 @@ class Problem1 {
             return rightPage;
     }
 
+    // 5-1. 점수를 비교하여 승부 가리기.
+    static int getGameResult(int pobiScore, int crongScore)
+    {
+        if(pobiScore > crongScore)
+            return 1;
+        else if(pobiScore == crongScore)
+            return 0;
+        else
+            return 2;
+    }
+
     // 1. 책을 임의로 펼친다.
     // 포비와 크롱의 임의의 책 페이지 받아오기
     public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -60,9 +71,11 @@ class Problem1 {
         int pobiScore = getScoreCalc(leftPageP,rightPageP);
         int crongScore = getScoreCalc(leftPageC,rightPageC);
 
-        // 내 점수 구하기 연산 결과
-        System.out.println("pobi : " + pobiScore);
-        System.out.println("crong : " + crongScore);
+        // 게임 승부 연산
+        answer = getGameResult(pobiScore,crongScore);
+
+        // 게임 결과 확인
+        System.out.println(answer);
 
         return answer;
     }
