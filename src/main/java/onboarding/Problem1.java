@@ -22,6 +22,7 @@ class Problem1 {
             mulTotal *= val % 10;
             val /= 10;
         }
+
         return Math.max(divTotal, mulTotal);
     }
 
@@ -40,6 +41,7 @@ class Problem1 {
                 || crong.get(1) - crong.get(0) != 1) {
             return -1;
         }
+
         return 0;
     }
 
@@ -50,19 +52,27 @@ class Problem1 {
         return Math.max(leftResultUserValue, rightResultUserValue);
     }
 
+    private static int returnAnswer(int pobiMax, int crongMax) {
+        if (pobiMax > crongMax) {
+            return 1;
+        } else if (pobiMax < crongMax) {
+            return 2;
+        }
+
+        return 0;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        //시작 면이나 마지막 면이 나오도록 책을 펼치지 않는다.
+
         int exception = exception(pobi, crong);
+
         if (exception == 0) {
+            int pobiMax = calculatorMaxValue(pobi);
+            int crongMax = calculatorMaxValue(crong);
 
+            return returnAnswer(pobiMax, crongMax);
+        }
 
-            if (pobiMax > crongMax)
-                return 1;
-            else if (pobiMax < crongMax)
-                return 2;
-            else
-                return 0;
-        } return exception;
+        return exception;
     }
 }
