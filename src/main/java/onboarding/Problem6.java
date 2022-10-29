@@ -12,9 +12,31 @@ import java.util.*;
 public class Problem6 {
     static Map<String, Set<Integer>> twoLettersRepository = new HashMap<>();
 
+    static final int EMAIL = 0;
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
+    }
+
+    public static List<String> getEmailListOfNicknameWarning (List<List<String>> forms) {
+        Set<Integer> formIndexOfNicknameWarning = new HashSet<>();
+        for (Set<Integer> indexSet : twoLettersRepository.values()) {
+            if ( indexSet.size() > 1 ) {
+                formIndexOfNicknameWarning.addAll(indexSet);
+            }
+        }
+        List<String> emailListOfNicknameWarning = indexToEmailList(forms, formIndexOfNicknameWarning);
+        Collections.sort(emailListOfNicknameWarning);
+        return emailListOfNicknameWarning;
+    }
+
+    public static List<String> indexToEmailList (List<List<String>> forms, Set<Integer> formIndexOfNicknameWarning) {
+        List<String> emailListOfNicknameWarning = new ArrayList<>();
+        for (int index : formIndexOfNicknameWarning) {
+            emailListOfNicknameWarning.add(forms.get(index).get(EMAIL));
+        }
+        return emailListOfNicknameWarning;
     }
 
     public static void analyzeNickname (String nickname, int index) {
