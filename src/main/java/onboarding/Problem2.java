@@ -18,7 +18,7 @@ public class Problem2 {
 
         while(cnt>0) {
             cnt=0;
-            
+
             // duplication start Index
             for (int i = 0; i < strList.size() - 1; i++) {
                 if (strList.get(i).equals(strList.get(i + 1))) {
