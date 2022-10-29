@@ -13,8 +13,8 @@ public class Problem3 {
 
     /**
      * 파라미터로 들어오는 숫자에 3이 몇번 들어갔는지 카운트
-     * @param value
-     * @return
+     * @param value 숫자
+     * @return 숫자의 자릿수마다 들어간 3의 갯수를 카운트 한 값
      */
     public static int count3(int value) {
         int count = 0;
