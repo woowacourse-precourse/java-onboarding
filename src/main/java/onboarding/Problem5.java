@@ -66,4 +66,14 @@ class Money {
             throw new IllegalStateException("1이상 1,000,000 이하로 입력해 주세요");
         }
     }
+
+    public ArrayList<Integer> getWonCountList() {
+        ArrayList<Integer> wonCountList = new ArrayList<>();
+        wonCountList.add(oneMillionWon);
+        wonCountList.add(oneThousandWon);
+        wonCountList.add(oneHundredWon);
+        wonCountList.add(tenWon);
+        wonCountList.add(oneWon);
+        return wonCountList;
+    }
 }
