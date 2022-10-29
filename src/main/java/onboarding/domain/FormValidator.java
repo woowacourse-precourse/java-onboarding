@@ -65,13 +65,12 @@ public class FormValidator {
      * 리스트이다.
      */
     private void initInvalidForms() {
-        Set<Form> invalidForms = new HashSet<>();
+        this.invalidForms = new HashSet<>();
         for (String twoWord : usedTwoWordsInfo.keySet()) {
             List<Form> usingForms = usedTwoWordsInfo.get(twoWord);
             if (usingForms.size() > 1) {
-                invalidForms.addAll(usingForms);
+                this.invalidForms.addAll(usingForms);
             }
         }
-        this.invalidForms = invalidForms;
     }
 }
