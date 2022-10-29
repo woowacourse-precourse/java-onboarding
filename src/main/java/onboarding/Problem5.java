@@ -1,14 +1,20 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
+    // 1. 화폐단위 배열 생성
+    // 2. 입력된 money를 withdraw 함수로 해석
+    // 3. 해석된 결과 리스트 반환
+
+    static int[] monetaryUnit = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
+
     public static List<Integer> solution(int money) {
-        // 1. 화폐단위 배열 생성
-        // 2. 입력된 money를 withdraw 함수로 해석
-        // 3. 해석된 결과 리스트 반환
-        List<Integer> answer = Collections.emptyList();
+
+        List<Integer> answer = new ArrayList<>();
+
         return answer;
     }
 
