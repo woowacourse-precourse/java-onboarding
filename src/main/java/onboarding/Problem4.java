@@ -10,8 +10,7 @@ public class Problem4 {
         if(checkLengthException(word)){
             return null;
         }
-
-        HashMap<Character, Character> reverseAlphabet = createAlphabetMap();
+        HashMap<Character, Character> alphabetMap = createAlphabetMap();
         return answer;
     }
 
@@ -51,5 +50,13 @@ public class Problem4 {
             result.put(alphaList.get(i), reverseAlphaList.get(i));
         }
         return result;
+    }
+
+    protected static List<Character> seperateText(String text){
+        List<Character> charList = new ArrayList<>();
+        for(int i = 0; i < text.length(); i++){
+            charList.add(text.charAt(i));
+        }
+        return charList;
     }
 }
