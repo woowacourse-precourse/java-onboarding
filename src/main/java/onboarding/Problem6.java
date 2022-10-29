@@ -20,15 +20,23 @@ public class Problem6 {
     public static void checkTwoCharacterListDuplicate(List<String> twoCharacterList, String email){
         for(String twoCharacter : twoCharacterList){
             if(TwoCharacterMap.containsKey(twoCharacter)){
-                addEmailOfNewDuplicate(twoCharacter, email);
+                addEmailOfDuplicate(twoCharacter, email);
                 continue;
             }
             TwoCharacterMap.put(twoCharacter, email);
         }
     }
 
-    public static void addEmailOfNewDuplicate(String twoCharacter, String email){
+    public static void addEmailOfDuplicate(String twoCharacter, String newEmail){
+        String matchingEmail = TwoCharacterMap.get(twoCharacter);
+        if(areDifferentEmails(newEmail, matchingEmail)){
+            AnswerEmailSet.add(newEmail);
+            AnswerEmailSet.add(matchingEmail);
+        }
+    }
 
+    public static boolean areDifferentEmails(String email1, String email2){
+        return !email1.equals(email2);
     }
 
     public static List<String> solution(List<List<String>> forms) {
