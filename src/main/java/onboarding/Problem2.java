@@ -1,20 +1,29 @@
 package onboarding;
 
+import java.util.Stack;
+
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = deleteReduplicationString(cryptogram);
         return answer;
     }
 
     // 반복문을 통해 문자를 만드는 함수
     public static String deleteReduplicationString(String cryptogram) {
-        String resultString = cryptogram.substring(0, 1);
-        for (int i = 1; i < cryptogram.length(); i++) {
-            String lastChar = resultString.substring(resultString.length()-1, resultString.length());
+        String resultString = "";
+
+        // 스택을 활용해 중복 문자 제거
+        Stack<String> stack = new Stack<String>();
+        for (int i = 0; i < cryptogram.length(); i++) {
             String nextChar = cryptogram.substring(i, i+1);
-            if (checkReduplication(lastChar, nextChar)) continue;
-            resultString += nextChar;
+            stack.push(nextChar);
+            while (stack.size() >= 2 && checkReduplication(stack.get(stack.size()-2), stack.get(stack.size()-1))) {
+                stack.pop();
+                stack.pop();
+            };
         }
+        for (String s : stack) resultString += s;
+
         return resultString;
     }
 
