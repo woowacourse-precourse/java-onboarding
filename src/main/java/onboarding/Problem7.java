@@ -36,23 +36,21 @@ public class Problem7 {
                         return o2.getValue().compareTo(o1.getValue());
                     }
                 })
-                .map(Map.Entry :: getKey)
+                .map(Map.Entry::getKey)
                 .limit(5)
                 .collect(Collectors.toList());
     }
 
     public static Map<String, Integer> giveScore(List<List<String>> friends, List<String> visitors, Map<String, Integer> score) {
-        for (String myFriend : myFriendsList) {
-            for (List<String> notFriend : notFriendsList) {
-                if (notFriend.contains(myFriend)) {
-                    String id = "";
-                    if (notFriend.get(0).equals(myFriend)) {
-                        id = notFriend.get(1);
-                    } else {
-                        id = notFriend.get(0);
-                    }
-                    score.put(id, score.getOrDefault(id, 0) + 10);
-                }
+        for (List<String> notFriend : notFriendsList) {
+            String id = "";
+            if (myFriendsList.contains(notFriend.get(0)) && !myFriendsList.contains(notFriend.get(1))) {
+                id = notFriend.get(1);
+            } else if (myFriendsList.contains(notFriend.get(1)) && !myFriendsList.contains(notFriend.get(0))) {
+                id = notFriend.get(0);
+            }
+            if (!id.equals("") && !myFriendsList.contains(id)) {
+                score.put(id, score.getOrDefault(id, 0) + 10);
             }
         }
 
