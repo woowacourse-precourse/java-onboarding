@@ -9,9 +9,23 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
+        if (checker(pobi) == -1 || checker(crong) == -1) {
+            return -1;
+        }
 
-        return answer;
-    }
+        int pobiMax = maxFinder(pobi);
+        int crongMax = maxFinder(crong);
+
+        if (pobiMax > crongMax) {
+            answer =  1;
+        } else if (pobiMax < crongMax) {
+            answer = 2;
+        } else {
+            answer =  0;
+        }
+
+
+        return answer;    }
 
 
     public static int adder(int value) {
@@ -42,6 +56,19 @@ class Problem1 {
         return valueMax;
     }
 
+    public static int checker(List<Integer> intList) {
+        if (intList.get(0) <= 1 || intList.get(1) >=400) {
+            return -1;
+        } else if (intList.get(1) - intList.get(0) != 1) {
+            return -1;
+        } else if ((intList.get(0) % 2 == 0) || (intList.get(1) % 2 == 1)) {
+            return -1;
+        } else if (intList.contains(null)) {
+            return -1;
+        } else {
+            return 0;
+        }
 
+    }
 
 }
