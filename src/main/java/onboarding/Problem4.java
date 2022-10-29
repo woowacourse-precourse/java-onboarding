@@ -24,6 +24,10 @@ public class Problem4 {
         }
     }
 
+    private static char treeFrogRule(char ch) {
+        return wordSwitchRule.getOrDefault(ch, ch);
+    }
+
     /**
      * 엄마 말씀 word가 매개변수로 주어질 때, 아래 청개구리 사전을 참고해 반대로 변환하여 return 하도록 solution 메서드를 완성하라.
      * @param word 원본 String
