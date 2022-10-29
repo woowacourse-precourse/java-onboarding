@@ -18,4 +18,13 @@ public class Problem3 {
         return list;
     }
 
+    private static List<Integer>  countMultipleOfThree(List<Integer> separateNumberList){
+        List<Integer> list = new ArrayList<>();
+        for(int i=0; i< separateNumberList.size(); i++){
+            list.add(separateNumberList.get(i)/3);
+        }
+
+        return list;
+    }
+
 }
