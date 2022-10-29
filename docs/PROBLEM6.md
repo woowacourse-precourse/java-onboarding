@@ -87,6 +87,7 @@
 
 - private void compareCrewsNickname(int comparingCrewIndex)
     - makeDividedNickname() 호출. comparingCrewIndex 크루의 닉네임이 두글자씩 분할된 TreeSet 생성 (= TreeSet< String > dividedNickname)
+    - dividedNickname.isEmpty() == false 이면 아래 내용 수행
     - "int i = comparingCrewIndex~크루 인원 수" for문 설정
         - i번째 인덱스의 hasSimilarNickname 값이 true이면 continue, false이면 isSimilar() 호출
         - isSimilar() 결과에 따라 다음을 수행
