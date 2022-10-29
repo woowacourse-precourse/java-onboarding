@@ -13,10 +13,8 @@ import java.util.stream.Collectors;
  */
 public class Problem7 {
 
-    /** 사용자의 친구 목록이 저장된다 */
     static Set<String> friendDictionary = new HashSet<>();
 
-    /** 모든 사용자의 이름,점수가 저장된다 */
     static Map<String, Integer> memberDictionary = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
