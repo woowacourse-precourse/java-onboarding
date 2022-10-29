@@ -13,6 +13,7 @@ public class Problem7 {
 
         makeFriendMap(friends);
         calcSameFriendScore(user);
+        calcVisitScore(user, visitors);
 
         return answer;
     }
@@ -48,5 +49,15 @@ public class Problem7 {
                 friendNum++;
 
         return friendNum;
+    }
+
+    private static void calcVisitScore(String user, List<String> visitors) {
+        for(String name : visitors) {
+            // skip if me or already friend
+            if(name.equals(user) || friendMap.get(user).contains(name))
+                continue;
+
+            scores.put(name, scores.getOrDefault(name, 0) + 1);
+        }
     }
 }
