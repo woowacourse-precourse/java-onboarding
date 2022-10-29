@@ -17,6 +17,15 @@ class Problem1 {
         }
         return sum;
     }
-   
+    // 각 자리 숫자 곱하기
+    public static int getMultiply(int page) {
+        int multiplication = 0;
+        while(page > 0) {
+            multiplication *= page % 10;
+            page /= 10;
+        }
+        return multiplication;
+    }
+
 }
 
