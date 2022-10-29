@@ -90,5 +90,12 @@ public class Problem7 {
         }
     }
 
+    private static void giveSpaceOrScoreOnMap(String visitor){
+        if(usersFriend.contains(visitor)) return;
+        if(!scoreToUser.containsKey(visitor)) scoreToUser.put(visitor, 0);
+        int oldScore = scoreToUser.get(visitor);
+        scoreToUser.replace(visitor, oldScore, oldScore + SCORE_FOR_VISIT);
+    }
+
 
 }
