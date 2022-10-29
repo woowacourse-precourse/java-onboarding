@@ -16,13 +16,18 @@ class Problem1 {
   }
 
   private static boolean isInvalidBook(List<Integer> book) {
-    if (isInvalidPageSize(book) ||
+    if (isPageHasNull(book) ||
+        isInvalidPageSize(book) ||
         isEvenLeftPageOrOddRightPage(book) ||
         isNotContinuousPages(book) ||
         isLeftPageBiggerThanRightPage(book)) {
       return true;
     }
     return false;
+  }
+
+  private static boolean isPageHasNull(List<Integer> book) {
+    return book.get(0) == null || book.get(1) == null;
   }
 
   private static boolean isInvalidPageSize(List<Integer> book) {
