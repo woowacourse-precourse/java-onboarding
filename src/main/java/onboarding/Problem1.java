@@ -12,7 +12,6 @@ class Problem1 {
 
         pobiScore = getScore(pobi);
         crongScore = getScore(crong);
-
         answer = gameResult(pobiScore, crongScore);
         return answer;
     }
@@ -34,22 +33,36 @@ class Problem1 {
     }
 
     private static int getScore(List<Integer> pages){
-        return getMax(sumScore(pages), mulScore(pages));
+        int leftScore, rightScore;
+        leftScore = getMax(getSumScore(pages.get(0)), getMulScore(pages.get(0)));
+        rightScore = getMax(getSumScore(pages.get(1)), getMulScore(pages.get(1)));
+        return getMax(leftScore, rightScore);
     }
+
+    private static int getSumScore(int num){
+        int sumScore = 0;
+        while (num != 0){
+            sumScore += num % 10;
+            num /= 10;
+        }
+        return sumScore;
+    }
+
+    private static int getMulScore(int num){
+        int mulScore = 1;
+        while (num != 0){
+            mulScore *= num % 10;
+            num /= 10;
+        }
+        return mulScore;
+    }
+
 
     private static int getMax(int a, int b){
         if (a > b){
             return a;
         }
         return b;
-    }
-
-    private static int sumScore(List<Integer> pages){
-        return pages.get(0) + pages.get(1);
-    }
-
-    private static int mulScore(List<Integer> pages){
-        return pages.get(0) * pages.get(1);
     }
 
     private static int gameResult(int pobiScore, int crongScore){
