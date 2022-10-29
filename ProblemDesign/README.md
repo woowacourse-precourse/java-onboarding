@@ -1,6 +1,22 @@
-S# 미션 - 온보딩
+# 미션 - 온보딩
 
-# 🔍 문제1
+##목차
+*[문제1](#문제1)
+
+*[문제2](#문제2)
+
+*[문제3](#문제3)
+
+*[문제4](#문제4)
+
+
+*[문제5](#문제5)
+
+*[문제6](#문제6)
+
+*[문제7](#문제7)
+
+#문제1
 
 
 ##예상 필요 기능 정의
@@ -196,3 +212,31 @@ public class PageSortException extends Exception{
     }
 }
 ~~~
+---
+##6. 최종 솔루션
+~~~java
+public static int solution(List<Integer> pobi, List<Integer> crong) {
+    int answer = Integer.MAX_VALUE;
+    try {
+        exception(pobi,crong);
+        int pobiMax = max(sum(pobi), mul(pobi));
+        int crongMax = max(sum(crong), mul(crong));
+        answer = compare(pobiMax, crongMax);
+    }catch (InputException e1)
+    {
+        return -1;
+    }catch (PageException e2)
+    {
+        return -1;
+    }catch (PageSortException e3)
+    {
+        return -1;
+    }
+    return answer;
+}
+~~~
+---
+#문제2
+##예상 필요 기능 정의
+1. 문자열에서 연속된 값이 있는지 확인하는 메소드
+---

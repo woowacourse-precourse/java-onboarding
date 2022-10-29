@@ -27,7 +27,6 @@ class Problem1 {
         {
             return -1;
         }
-
         return answer;
     }
 
