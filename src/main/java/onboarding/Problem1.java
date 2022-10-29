@@ -3,6 +3,13 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+    private static final int EXCEPTION = -1;
+    private static final int DRAW = 0;
+    private static final int POBI_WIN = 1;
+    private static final int CRONG_WIN = 2;
+
+    private static final int PAGE_START = 1;
+    private static final int PAGE_END = 400;
 
     /**
      * 숫자의 각 자릿수를 나누는 함수
@@ -61,7 +68,7 @@ class Problem1 {
         int leftPage = pageList.get(0);
         int rightPage = pageList.get(1);
 
-        boolean pageRangeCheck = leftPage >= 1 && rightPage <= 400;
+        boolean pageRangeCheck = leftPage >= PAGE_START && rightPage <= PAGE_END;
         boolean pageValidationCheck = leftPage % 2 == 1 && rightPage % 2 == 0 && leftPage + 1 == rightPage;
 
         return  pageRangeCheck && pageValidationCheck;
@@ -73,18 +80,18 @@ class Problem1 {
      */
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if(!(checkPagesValidation(pobi) && checkPagesValidation(crong))) {
-            return -1;  // 예외 사항
+            return EXCEPTION;  // 예외 사항
         }
 
         int pobiScore = getScore(pobi);
         int crongScore = getScore(crong);
 
         if(pobiScore > crongScore) {
-            return 1;   // 포비 우승
+            return POBI_WIN;   // 포비 우승
         } else if(pobiScore < crongScore) {
-            return 2;   // 크롱 우승
+            return CRONG_WIN;   // 크롱 우승
         } else {
-            return 0;   // 무승부
+            return DRAW;   // 무승부
         }
     }
 }
