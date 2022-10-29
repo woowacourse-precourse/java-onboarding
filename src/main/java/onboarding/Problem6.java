@@ -18,9 +18,8 @@ public class Problem6 {
 			List<String> ExtraNicknameList = makeExtraNicknameList(nicknameList, list.get(1));
 			for (String extraNickname : ExtraNicknameList) {
 				for (String splitString : splitStringList) {
-					// 중복 여부 판단
-					if (isDuplicate(extraNickname, splitString))
-						duplicateNicknameList.add(extraNickname);
+					// 중복된 닉네임 리스트에 추가
+					addDuplicateNickname(duplicateNicknameList, extraNickname, splitString);
 				}
 			}
 		}
@@ -31,15 +30,24 @@ public class Problem6 {
 
 		// 중복된 닉네임의 이메일을 리스트에 추가
 		for (String nickname : removeNicknameDuplicationList) {
-			for (List<String> list : forms) {
-				if (nickname.equals(list.get(1))) {
-					answer.add(list.get(0));
-				}
-			}
+			addDuplicateEmail(forms, answer, nickname);
 		}
 		// 리스트 오름차순 정렬  (sort 함수)
 		Collections.sort(answer);
 		return answer;
+	}
+
+	private static void addDuplicateNickname(List<String> duplicateNicknameList, String extraNickname, String splitString) {
+		if (isDuplicate(extraNickname, splitString))
+			duplicateNicknameList.add(extraNickname);
+	}
+
+	private static void addDuplicateEmail(List<List<String>> forms, List<String> answer, String nickname) {
+		for (List<String> list : forms) {
+			if (nickname.equals(list.get(1))) {
+				answer.add(list.get(0));
+			}
+		}
 	}
 
 	static List<String> makeNicknameList(List<List<String>> forms) {
@@ -75,4 +83,5 @@ public class Problem6 {
 	static List<String> removeListDuplication(List<String> list) {
 		return list.stream().distinct().collect(Collectors.toList());
 	}
+
 }

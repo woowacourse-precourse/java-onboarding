@@ -1,7 +1,5 @@
 package onboarding;
 
-import static onboarding.Problem6.*;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -78,7 +76,7 @@ public class Problem7 {
 			userList.addAll(friend);
 		}
 		userList.addAll(visitors);
-		return removeListDuplication(userList);
+		return Problem6.removeListDuplication(userList);
 	}
 
 	static List<String> makeFriendList(List<List<String>> friends, String user) {
