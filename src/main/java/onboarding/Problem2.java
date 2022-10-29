@@ -16,8 +16,16 @@ public class Problem2 {
 
         splitString(cryptogram, charList);
         removeDuplicateChar(charList);
+        return combineChar(charList);
 
-        return cryptogram;
+    }
+
+    private static String combineChar(List<Character> charList) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Character character : charList) {
+            stringBuilder.append(character);
+        }
+        return stringBuilder.toString();
     }
 
     private static List<Character> removeDuplicateChar(List<Character> charList) {
