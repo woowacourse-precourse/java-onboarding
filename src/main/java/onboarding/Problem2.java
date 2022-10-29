@@ -8,14 +8,14 @@ public class Problem2 {
 
         Deque<Character> deque = new LinkedList<>();
 
-        for (char ele : cryptogram.toCharArray()) {
+        for (char word : cryptogram.toCharArray()) {
             if (isDequeEmpty(deque)) {
-                insertWord(deque, ele);
+                insertWord(deque, word);
                 continue;
             }
 
-            if (!isDuplicatedWord(deque, ele)) {
-                insertWord(deque, ele);
+            if (!isDuplicatedWord(deque, word)) {
+                insertWord(deque, word);
             }
             else
                 deleteDuplicatedWord(deque);
