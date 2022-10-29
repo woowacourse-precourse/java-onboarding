@@ -13,9 +13,18 @@ class Problem1 {
         String page_str = String.valueOf(page);
         int sum = 0;
         for(char c : page_str.toCharArray()){
-            sum+=(c-48);
+            sum+=(c-'0');
         }
         return sum;
+    }
+
+    public static int Multi(int page){
+        String page_str = String.valueOf(page);
+        int multi = 1;
+        for(char c : page_str.toCharArray()){
+            multi*=(c-'0');
+        }
+        return multi;
     }
 
 }
