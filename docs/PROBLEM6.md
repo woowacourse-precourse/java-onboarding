@@ -21,3 +21,8 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능 목록
+
+1. 주어진 문자열을 2자리씩 분리하여 리스트 형식으로 반환해 주는 기능.(ex: apple-> [ap,pp,pl,le])
+2. 대상 문자열과 비교할 문자열이 주어지면 비교할 문자열이 대상 문자열에 포함되어 있으면 true 값을 반환해주는 기능.
