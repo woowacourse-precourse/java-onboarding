@@ -9,8 +9,12 @@ class Problem1 {
     private static final int CRONG_WIN = 2;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if (!isBoundary(pobi) || !isBoundary(crong)) return EXCEPTION_CASE;
-        if (!isContinue(pobi) || !isContinue(crong)) return EXCEPTION_CASE;
+        if (!isBoundary(pobi) || !isBoundary(crong)) {
+            return EXCEPTION_CASE;
+        }
+        if (!isContinue(pobi) || !isContinue(crong)) {
+            return EXCEPTION_CASE;
+        }
         return compareScore(calculateScore(pobi), calculateScore(crong));
     }
 
