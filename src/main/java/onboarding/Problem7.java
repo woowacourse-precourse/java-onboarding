@@ -11,7 +11,6 @@ public class Problem7 {
         HashSet<String> directFriends = new HashSet<String>();
         for(List<String> friendList : friends){
             if(friendList.contains(user)){
-                // add friend
                 for(String friendName: friendList){
                     if(friendName != user){
                         directFriends.add(friendName);
@@ -26,7 +25,6 @@ public class Problem7 {
             for(List<String> friendList: friends){
                 for(String friendName: friendList){
                     if(friendName != directFriend && friendName != user){
-
                         mutualFriends.add(friendName);
                     }
                 }
@@ -54,7 +52,11 @@ public class Problem7 {
         // mutual friend => + 10점
         for(String mutualFriend: mutualFriends){
             if(suggestedAccounts.contains(mutualFriend)){
-                score.put(mutualFriend, score.get(mutualFriend)+10);
+                for(List<String> friendList: friends){
+                    if(friendList.contains(mutualFriend)){
+                        score.put(mutualFriend, score.get(mutualFriend)+10);
+                    }
+                }
             }
         }
 
@@ -81,9 +83,6 @@ public class Problem7 {
                 break;
             }
         }
-
-
-
 
         return answer;
     }
