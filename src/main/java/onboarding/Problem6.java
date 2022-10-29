@@ -33,4 +33,14 @@ public class Problem6 {
         Collections.sort(answer);
         return answer;
     }
+
+    private boolean checkNicknameDuplication(String nickname, List<String> part){
+        for(int i = 0; i < part.size(); i++){
+            if(nickname.contains(part.get(i))){
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
