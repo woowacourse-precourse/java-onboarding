@@ -1,5 +1,7 @@
 package onboarding.problem2.domain;
 
+import onboarding.problem2.domain.util.IndexCalculator;
+
 import java.util.Objects;
 
 public class Cryptogram {

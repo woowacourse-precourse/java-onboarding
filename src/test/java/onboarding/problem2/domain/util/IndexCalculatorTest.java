@@ -1,5 +1,6 @@
-package onboarding.problem2.domain;
+package onboarding.problem2.domain.util;
 
+import onboarding.problem2.domain.util.IndexCalculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
