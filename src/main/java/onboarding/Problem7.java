@@ -14,12 +14,10 @@ public class Problem7 {
 
         // 1. 내 친구 찾기.
         List<String> myFriends = findMyFriends(user, friends);
-        System.out.println(myFriends);
         // 2. 내 친구와 아는(=함께 아는 친구) 찾기.
         for(String friend: myFriends){
             nearFriends.addAll(findMyFriends(user, friends, friend));
         }
-                System.out.println(nearFriends);
         // 3. 함께 아는 친구에 대한 점수 부여.(리스트의 중복을 이용하기)
         for(String nearFriend : nearFriends){
             if(recommendScore.containsKey(nearFriend))
@@ -35,12 +33,10 @@ public class Problem7 {
                 recommendScore.put(visitor, recommendScore.get(visitor)+1);
             else recommendScore.put(visitor, 1);
         }
-        System.out.println(recommendScore);
 
         // 5. 점수별로 정렬하기
         List<Map.Entry<String, Integer>> recommendScoreList = new LinkedList<>(recommendScore.entrySet());
         recommendScoreList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
-        System.out.println(recommendScoreList);
 
         for(Map.Entry<String, Integer> recommendPerson: recommendScoreList){
             answer.add(recommendPerson.getKey());
