@@ -7,7 +7,17 @@
 package onboarding;
 
 public class Problem2 {
-    static String solving(String word){
+
+    public static String solution(String cryptogram) {
+        Decryption decryption = new Decryption();
+
+        String answer = decryption.decryption(cryptogram);
+        return answer;
+    }
+}
+
+class Decryption{
+    public String decryption(String word){
         String solvedWord = "";
         char overlapChar = ' ';
         int wordLength = word.length();
@@ -25,12 +35,6 @@ public class Problem2 {
         if (word.charAt(wordLength-1)!=word.charAt(wordLength-2) && word.charAt(wordLength-1)!=overlapChar){
             solvedWord = solvedWord + word.charAt(wordLength-1);
         }
-
         return solvedWord;
-    }
-    public static String solution(String cryptogram) {
-
-        String answer = solving(cryptogram);
-        return answer;
     }
 }
