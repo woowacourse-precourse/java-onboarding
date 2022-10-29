@@ -33,17 +33,21 @@ class Problem1 {
     public static class Card {
         List<Integer> getMax = new ArrayList<>();
         List<Integer> selectCard(List<Integer> player) {
-            // divide the number by each digit
-            List<Integer> digits = new ArrayList<>();
-            Integer getPage = player.get(0);
-            while (getPage > 0) {
-                digits.add(getPage % 10);
-                getPage = getPage / 10;
+            // to get player's left and right pages
+            for (int i = 0; i < 2; i++) {
+                // divide the number by each digit
+                List<Integer> digits = new ArrayList<>();
+                Integer getPage = player.get(i);
+                while (getPage > 0) {
+                    digits.add(getPage % 10);
+                    getPage = getPage / 10;
+                }
+                // sum each number and add put it in the max list
+                getMax.add(sumDigits(digits));
+                // multiply each number and put it in the max list
+                getMax.add(multiplicationDigits(digits));
+                digits.clear();
             }
-            // sum each number and add put it in the max list
-            getMax.add(sumDigits(digits));
-            // multiply each number and put it in the max list
-            getMax.add(multiplicationDigits(digits));
             return getMax;
         }
 
