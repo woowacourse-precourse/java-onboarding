@@ -13,14 +13,14 @@ public class TreeFrogTest {
 	void 알파벳_변환() {
 		assertThat(
 			TreeFrog.translateCode('A')
-		).isEqualTo('Z');
+		).isEqualTo('z');
 
 		assertThat(
 			TreeFrog.translateCode('g')
-		).isEqualTo('t');
+		).isEqualTo('T');
 
 		assertThat(
 			TreeFrog.translateCode('Z')
-		).isEqualTo('A');
+		).isEqualTo('a');
 	}
 }
