@@ -16,7 +16,7 @@ class Problem1 {
 		int firstPersonScore = maxPageScore(firstPerson);
 		int secondPersonScore = maxPageScore(secondPerson);
 
-		if (!exceptionOccur(firstPerson) || !exceptionOccur(secondPerson)) {
+		if (exceptionOccur(firstPerson) || exceptionOccur(secondPerson)) {
 			return EXCEPTION;
 		} else if (firstPersonScore > secondPersonScore) {
 			return FIRST_PERSON_WIN;
@@ -59,11 +59,11 @@ class Problem1 {
 		int rightPage = person.get(1);
 
 		if (rightPage - leftPage != 1) {
-			return false;
+			return true;
 		} else if (rightPage < 1 || leftPage < 1) {
-			return false;
+			return true;
 		}
-		return true;
+		return false;
 	}
 
 }
