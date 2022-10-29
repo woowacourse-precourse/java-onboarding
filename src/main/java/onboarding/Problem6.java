@@ -32,11 +32,16 @@ public class Problem6 {
             }
         }
 
-        return overlappingMap.values().stream()
+        return getListsLongerThen1AsSet(overlappingMap);
+    }
+
+    private static Set<String> getListsLongerThen1AsSet(Map<String, List<String>> map){
+        return map.values().stream()
                 .filter(i -> i.size() > 1)
                 .flatMap(Collection::stream)
                 .collect(Collectors.toSet());
     }
+
 
     private static List<String> getSortedValues(Map<String, String> map, Set<String> keys){
         return keys.stream()
