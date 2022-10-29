@@ -12,6 +12,23 @@ public class Problem4 {
             return false;
     }
 
+    //알파벳을 반대로 바꾸는 method
+    public static Character changeAlphabet(char c){
+        char result = c;
+
+        for(int i = 65; i<91; i++) {
+            if (c == (char)(i)) {
+                result = (char) (155 - i);
+            }
+        }
+        for(int i =97; i<123; i++){
+            if(c == (char)(i)){
+                result = (char)(219-i);
+            }
+        }
+        return result;
+    }
+
     public static String solution(String word) {
         String answer = "";
         return answer;
