@@ -74,3 +74,15 @@ class Relations {
         return mutualFriends.size();
     }
 }
+
+class Intimacy {
+    private String targetId;
+    private String userId;
+    private int numOfMutualFriends;
+    private int numOfVisited;
+
+    public Intimacy (String targetId, String userId) {
+        this.targetId = targetId;
+        this.userId = userId;
+    }
+}
