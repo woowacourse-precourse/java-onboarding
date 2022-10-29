@@ -1,6 +1,25 @@
+package onboarding;
+
+import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
+
 class Problem4Test {
-  
+
+    @Test
+    void 문자판별() {
+        assertThat(check('a')).isEqualTo('z');
+        assertThat(check('A')).isEqualTo('Z');
+        assertThat(check(';')).isEqualTo(';');
+        assertThat(check(' ')).isEqualTo(' ');
+    }
+
+    private char check(char c) {
+        if (96<c && c<123) return lowercase(c);
+        if (64<c && c<91) return uppercase(c);
+        return c;
+    }
     // 대소문자 판별
 
     @Test
