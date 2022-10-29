@@ -81,6 +81,6 @@ BUILD SUCCESSFUL in 0s
 |  1.0.1 | 예외 요구사항1의 구현 : 연속되지 않은 두 수가 리턴되면 예외처리    | Problem1.solve | 
 |  1.0.2 | 예외 요구사항2의 구현 : 왼쪽 페이지는 홀수, 오른쪽 페이지는 짝수가 아니면 예외처리    | Problem1.solve | 
 |  1.0.3 | 예외 요구사항3의 구현 : 매개변수 두 리스트의 길이가 2인지 확인 | Problem1.solve | 
-|  1.1 | 주어진 리스트 배열 | Problem1.findGameValue | 
+|  1.1 | 주어진 리스트 배열의 게임의 결과값을 반환 | Problem1.findGameValue | 
 |  1.2 | 주어진 숫자의 자릿수들의 합 | Problem1.sumOfDigits | 
 |  1.3 | 주어진 숫자의 자릿수들의 겁 | Problem1.productOfDigits| 
