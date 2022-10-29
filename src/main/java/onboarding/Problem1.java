@@ -50,4 +50,75 @@ class Problem1 {
 
         return isValid;
     }
+
+    // 점수 산출 후 승자 결정하는 메소드
+    static int calcData(List<Integer> pobi, List<Integer> crong) {
+        int result = Integer.MAX_VALUE;
+
+        List<int[]> pobiPage = new ArrayList<>();
+        List<int[]> crongPage = new ArrayList<>();
+
+        int pobiScore = 0;
+        int crongScore = 0;
+
+        for (int i = 0; i < 2; i ++) {
+            pobiPage.add(i, Stream.of(String.valueOf(pobi.get(i)).split(""))
+                    .mapToInt(Integer::parseInt).toArray());
+            crongPage.add(i, Stream.of(String.valueOf(crong.get(i)).split(""))
+                    .mapToInt(Integer::parseInt).toArray());
+        }
+
+        // pobi의 점수 산출
+        for (int[] page: pobiPage) {
+            int tempSum = 0;
+            int tempMultiply = 1;
+            int tempMaxVal;
+
+            for (int num: page) {
+                tempSum += num;
+            }
+
+            for (int num: page) {
+                tempMultiply *= num;
+            }
+
+            tempMaxVal = Math.max(tempSum, tempMultiply);
+
+            if (pobiScore < tempMaxVal) {
+                pobiScore = tempMaxVal;
+            }
+        }
+
+        // crong의 점수 산출
+        for (int[] page: crongPage) {
+            int tempSum = 0;
+            int tempMultiply = 1;
+            int tempMaxVal;
+
+            for (int num: page) {
+                tempSum += num;
+            }
+
+            for (int num: page) {
+                tempMultiply *= num;
+            }
+
+            tempMaxVal = Math.max(tempSum, tempMultiply);
+
+            if (crongScore < tempMaxVal) {
+                crongScore = tempMaxVal;
+            }
+        }
+
+        // 점수 비교 후 조건문을 통해 반환 값 결정
+        if (pobiScore == crongScore) {
+            result = 0;
+        } else if (pobiScore > crongScore) {
+            result = 1;
+        } else if (pobiScore < crongScore) {
+            result = 2;
+        }
+
+        return result;
+    }
 }
