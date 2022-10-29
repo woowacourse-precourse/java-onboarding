@@ -33,18 +33,14 @@ public class Problem7 {
         }
         for (List relate : friends) {
             for (String j : std) {
-                if (relate.contains(j)) {
-                    if(relate.contains(user)){
-                        continue;
-                    }
-                    else{
-                        List<String> list2 = new ArrayList<String>(relate);
-                        list2.remove(j);
-                        dic.put(list2.get(0), dic.get(list2.get(0))+10);
+                if (relate.contains(j) && !relate.contains(user)) {
+                    List<String> list2 = new ArrayList<String>(relate);
+                    list2.remove(j);
+                    dic.put(list2.get(0), dic.get(list2.get(0))+10);
                     }
                 }
             }
-        }
+
         for(String who : visitors){
             dic.put(who, dic.get(who)+1);
         }
