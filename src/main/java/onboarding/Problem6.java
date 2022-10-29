@@ -1,11 +1,13 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = gather(forms);
         return answer;
     }
 
@@ -27,5 +29,18 @@ public class Problem6 {
             }
         }
         return false;
+    }
+
+    public static List<String> gather(List<List<String>> forms) {
+        ArrayList<String> emailList = new ArrayList<>();
+
+        for (int i = 0; i < forms.size(); i++) {
+            if (check(forms, i)) {
+                emailList.add(forms.get(i).get(0));
+            }
+        }
+
+        emailList.sort(Comparator.naturalOrder());
+        return emailList;
     }
 }

@@ -30,4 +30,19 @@ class Problem6Test {
         assertThat(result3).isFalse();
         assertThat(result4).isTrue();
     }
+
+    @Test
+    void gather() {
+        List<List<String>> forms = List.of(
+                List.of("jm@email.com", "제이엠"),
+                List.of("jason@email.com", "제이슨"),
+                List.of("woniee@email.com", "워니"),
+                List.of("mj@email.com", "엠제이"),
+                List.of("nowm@email.com", "이제엠")
+        );
+
+        List<String> result = Problem6.gather(forms);
+
+        assertThat(result).containsExactly("jason@email.com", "jm@email.com", "mj@email.com");
+    }
 }
