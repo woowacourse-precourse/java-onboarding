@@ -56,10 +56,9 @@ public class Problem6 {
     // 1. 이메일 형식에 부합하는가?
     // 2. 이메일 길이가 11자 이상 20자 미만인가?
     // 3. 신청한 이메일이 email 도메인인가?
-    // TODO 앞부분 문자 제한이 없다면 논리 오류 발생, 수정 필요
     private static boolean isValidEmail(String email) {
         if (11 <= email.length() && email.length() < 20) {
-            Pattern pattern = Pattern.compile("^[a-zA-Z0-9]+@email\\.com+$");
+            Pattern pattern = Pattern.compile("^(.*)+@email\\.com+$");
             Matcher matcher = pattern.matcher(email);
             return matcher.matches();
         }
