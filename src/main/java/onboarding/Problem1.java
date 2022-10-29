@@ -29,7 +29,6 @@ class Problem1 {
     }
     public static String[] int2intList(int page_number){
         String strNum = Integer.toString(page_number);
-        String[] arrNum;
         return strNum.split("");
     }
     public static int page_summation(int page_number){
