@@ -23,6 +23,7 @@ public class Problem4 {
         char[] wordCharArray = word.toCharArray();
         String answer = "";
 
+        // wordCharArray를 순회하면서 각각의 char letter를 변환
         for (char letter : wordCharArray) {
             // 알파벳 문자가 아닌 경우 변환하지 않는다.
             if (!(((int)letter >= 65 && (int)letter <= 90) || ((int)letter >= 97 && (int)letter <= 122))){
