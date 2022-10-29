@@ -33,19 +33,18 @@ package onboarding;
 
 /**
  * 5. 전체 기능을 실핼 시켜주는 기능
- * - switch 문을 이용한 경우의 수 함수
+ * - if 문을 이용한 case에 맞는 변환 후 합치기 함수
  * - 하나씩 읽어오는 for문 함수
  **/
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
+        String answer = gameStart(word);
         return answer;
     }
 
 //    public static void main(String[] args) {
-//        char test = 'A';
 //        String test2 = "abcedefghiqq";
-//        System.out.println(converCase("TeSt",'b'));
+//        System.out.println(gameStart("I 3lo4532ve you"));
 //    }
 
     private static String distinguishInput(char inputChar){
@@ -73,13 +72,20 @@ public class Problem4 {
         return result;
     }
 
-    private static String converCase(String result, char inputChar){
+    private static String convertCase(String result, char inputChar){
         String check = distinguishInput(inputChar);
         if (check.equals("lower"))
                  return appendChar(result,changeInLower(inputChar));
         else if(check.equals("upper"))
             return appendChar(result,changeInUpper(inputChar));
         return appendChar(result,inputChar);
+    }
+    private static String gameStart(String inputWord){
+        String result = "";
+        for(int i = 0; i < inputWord.length(); i++){
+            result = convertCase(result,inputWord.charAt(i));
+        }
+        return result;
     }
 
 }
