@@ -30,6 +30,12 @@ class Problem1 {
     public static int getMaxNumber(int sum, int multiple) {
         return Math.max(sum,multiple);
     }
+    // 결과 비교
+    public static int getResult(int pobiNumber, int crongNumber) {
+        if(pobiNumber>crongNumber) return 1;
+        else if (pobiNumber<crongNumber) return 2;
+        else return 0;
+    }
 
 }
 
