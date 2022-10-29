@@ -8,6 +8,17 @@ public class Problem2 {
         return cryptogram;
     }
 
+    static List<Integer> makeRemoveRange(String cryptogram){
+        CheckLetter checkletter = new CheckLetter(cryptogram);
+        List<Integer> remove_range;
+
+        while(checkletter.checkLoop()){
+            checkletter.letterCheck();
+        }
+        remove_range = checkletter.getRemove_range();
+        return remove_range;
+    }
+
     static class CheckLetter {
         int front = 0;
         int back = 1;
