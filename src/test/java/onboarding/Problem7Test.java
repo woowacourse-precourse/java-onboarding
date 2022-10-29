@@ -47,10 +47,10 @@ class Problem7Test {
                 List.of("jaewoo", "minjae"),
                 List.of("hansu", "jaewoo")
         );
-
+        Map<String, List<String>> relationShips = Problem7.makeRelationShips(friends);
         List<String> result = List.of("sungjoon", "jiwon", "minjae", "jaewoo");
 
-        assertThat(Problem7.fillUserFriends(user,friends)).isEqualTo(result);
+        assertThat(Problem7.fillUserFriends(user,relationShips)).isEqualTo(result);
     }
 
 }
