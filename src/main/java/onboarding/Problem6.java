@@ -48,6 +48,6 @@ public class Problem6 {
     private static boolean isCheckName(String name) {
         return 1 <= name.length()
                 && name.length() < 20
-                || name.matches("[가-힣]+");
+                && name.matches("[가-힣]+");
     }
 }
