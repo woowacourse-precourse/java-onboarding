@@ -4,10 +4,13 @@ public class Problem4 {
     public static String solution(String word) {
         String answer = "";
 
+        char[] array = word.toCharArray();
+        for (char character : array) {
+            answer += reverseAlphabet(character);
+        }
 
         return answer;
     }
-
 
     public static char reverseAlphabet(char character) {
         if ((65 <= character && character <= 90) || (97 <= character && character <= 122)) {
