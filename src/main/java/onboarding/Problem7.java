@@ -137,4 +137,19 @@ public class Problem7 {
         return scr;
     }
 
+    private static List<String> sort(List<String> recomUsers, List<Integer> scr) {
+        List<String> answer = new ArrayList<>();
+
+        while(scr.size() != 0 && answer.size() < 5) {
+            int maxScr = Collections.max(scr);
+            int idx = scr.indexOf(maxScr);
+
+            answer.add(recomUsers.get(idx));
+
+            recomUsers.remove(idx);
+            scr.remove(idx);
+        }
+
+        return answer;
+    }
 }
