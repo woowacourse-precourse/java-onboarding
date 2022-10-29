@@ -10,6 +10,18 @@ class Problem1 {
         return answer;
     }
 
+    static int calculatePageScore(int pageNumber) {
+        int multiple = 1;
+        int summation = 0;
+        while(pageNumber != 0) {
+            int placeValue = pageNumber % 10;
+            multiple *= placeValue;
+            summation += placeValue;
+            pageNumber /= 10;
+        }
+        return multiple > summation? multiple: summation;
+    }
+
     static boolean checkInvalidInput(List<Integer> list) {
         int left = list.get(0), right = list.get(1);
 
