@@ -14,8 +14,20 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
+        if (!(isValid(pobi) && isValid(crong))) {
+            return -1;
+        }
 
+        int pobiScore = score(pobi);
+        int crongScore = score(crong);
 
+        if (pobiScore > crongScore) {
+            return 1;
+        } else if (pobiScore == crongScore) {
+            return 0;
+        } else if (pobiScore < crongScore) {
+            return 2;
+        }
         return answer;
     }
 
@@ -23,13 +35,12 @@ class Problem1 {
         if (pageList.get(0) < 1 || pageList.get(0) > 400 || pageList.get(1) < 1 || pageList.get(1) > 400) {
             return false;
         }
-        if (pageList.get(0)%2 == 0 || pageList.get(1) != 0) {
+        if (pageList.get(0)%2 == 0 || pageList.get(1)%2 != 0) {
             return false;
         }
-        if (pageList.get(0) != pageList.get(1)-1) {
+        if ((pageList.get(0) - pageList.get(1)) != -1) {
             return false;
         }
-
         return true;
     }
 
