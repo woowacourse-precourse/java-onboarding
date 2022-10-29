@@ -19,7 +19,26 @@ public class Problem7 {
             }
         }
         System.out.println(Friends);
-
+        for (int i=0; i<friends.size(); i++){
+            if (Friends.contains(friends.get(i).get(0)) && friends.get(i).get(1)!=user) {
+                if (map.containsKey(friends.get(i).get(1))){
+                    int value = map.get(friends.get(i).get(1));
+                    map.replace(friends.get(i).get(1), value+10);
+                }
+                else{
+                    map.put(friends.get(i).get(1), 10);
+                }
+            }
+            else if (Friends.contains(friends.get(i).get(1)) && friends.get(i).get(1)!=user) {
+                if (map.containsKey(friends.get(i).get(0))){
+                    int value = map.get(friends.get(i).get(0));
+                    map.replace(friends.get(i).get(0), value+10);
+                }
+                else{
+                    map.put(friends.get(i).get(0), 10);
+                }
+            }
+        }
         for (int j=0; j<visitors.size(); j++){
             if (map.containsKey(visitors.get(j))){
                 int value = map.get(visitors.get(j));
