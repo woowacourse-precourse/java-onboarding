@@ -25,5 +25,49 @@ class ThreeSixNine {
             throw new IllegalStateException("1이상 10,000 이하인 자연수를 입력하세요");
         }
     }
-    
+
+    static int clapsPerNumber(int inputNumber) {
+        int clap = 0;
+        ArrayList<Integer> inputNumberList = new ArrayList<>();
+        int digitCount = digitCount(inputNumber);
+        inputNumerToList(inputNumber, inputNumberList, digitCount);
+        clap = countClaps(clap, inputNumberList);
+        return clap;
+    }
+
+    private static int countClaps(int clap, ArrayList<Integer> inputNumberList) {
+        for (int i = 0; i < inputNumberList.size(); i++) {
+            if (inputNumberList.get(i) == 3) {
+                clap++;
+            }
+            if (inputNumberList.get(i) == 6) {
+                clap++;
+            }
+            if (inputNumberList.get(i) == 9) {
+                clap++;
+            }
+        }
+        return clap;
+    }
+
+    private static void inputNumerToList(int inputNumber, ArrayList<Integer> inputNumberList, int digitCount) {
+        for (int i = digitCount; i > 0; i--) {
+            inputNumberList.add(
+                    inputNumber / (int) Math.pow(10, i - 1) % 10);
+        }
+    }
+
+    private static int digitCount(int inputNumber) {
+        boolean done = false;
+        int digit = 0;
+        while (!done) {
+            if (inputNumber / 10 == 0) {
+                done = true;
+            }
+            digit++;
+            inputNumber /= 10;
+        }
+        return digit;
+    }
+
 }
