@@ -5,9 +5,9 @@ import java.util.stream.Collectors;
 
 /**
  * ex.     bannonnoa
- *      			     | stack[]
- * i: 0...2	stack.push() | stack[b, a, n]
- * i: 3     stack.pop()  | stack[b, a]
+ *      			      | stack[]
+ * i: 0...2	stack.push()  | stack[b, a, n]
+ * i: 3     stack.pop()   | stack[b, a]
  * i: 4     stack.push()  | stack[b, a, o]
  * i: ...
  */
