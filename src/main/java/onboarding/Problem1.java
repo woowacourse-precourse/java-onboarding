@@ -57,6 +57,20 @@ class Problem1 {
         return max;
     }
 
+    static int compareScore(int pobi, int crong) {
+        int winner = Integer.MAX_VALUE;
+
+        if (pobi > crong) {
+            winner = 1;
+        } else if (pobi < crong) {
+            winner = 2;
+        } else if (pobi == crong) {
+            winner = 0;
+        }
+
+        return winner;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
@@ -71,13 +85,17 @@ class Problem1 {
 
         if (isExceptionPobi || isExceptionCrong) {
             answer = -1;
+        } else {
+            int sumPobi = sumPage(pobiRightPage);
+            int sumCrong = sumPage(crongRightPage);
+            int mulPobi = mulPage(pobiLeftPage, pobiRightPage);
+            int mulCrong = mulPage(crongLeftPage, crongRightPage);
+
+            int maxPobi = getMaxScore(sumPobi, mulPobi);
+            int maxCrong = getMaxScore(sumCrong, mulCrong);
+
+            answer = compareScore(maxPobi, maxCrong);
         }
-
-        int sumPobi = sumPage(pobiRightPage);
-        int sumCrong = sumPage(crongRightPage);
-        int mulPobi = mulPage(pobiLeftPage, pobiRightPage);
-        int mulCrong = mulPage(crongLeftPage, crongRightPage);
-
         return answer;
     }
 
