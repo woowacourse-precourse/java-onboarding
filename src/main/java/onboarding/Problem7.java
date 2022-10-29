@@ -45,6 +45,13 @@ public class Problem7 {
         for(int i=0;i<visitors.size();i++){
             map.put(visitors.get(i),(Integer)map.get(visitors.get(i))+1);
         }
+        //user의 value 0으로 수정
+        map.put(user,0);
+
+        //user의 친구들 value 0으로 수정
+        for(int i=0;i<list.size();i++){
+            map.put(list.get(i),0);
+        }
         return answer;
     }
 }
