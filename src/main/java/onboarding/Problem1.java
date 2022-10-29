@@ -1,6 +1,5 @@
 package onboarding;
 
-import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
@@ -93,17 +92,4 @@ class Problem1 {
         return answer;
     }
 
-    public static void main(String[] args) {
-        Problem1 a = new Problem1();
-        List<Integer> b = new ArrayList<Integer>();
-        b.add(0);
-        b.add(1);
-        List<Integer> c = new ArrayList<Integer>();
-        c.add(399);
-        c.add(400);
-
-        System.out.print(a.solution(b,c));
-
-
-    }
 }
