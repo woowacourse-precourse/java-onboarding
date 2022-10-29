@@ -7,7 +7,7 @@ import java.util.Set;
 
 public class Problem6 {
 
-    private static Set<String> answer = new HashSet<>();
+    private static Set<String> duplicateList = new HashSet<>();
 
     public static List<String> solution(List<List<String>> forms) {
 
@@ -18,7 +18,7 @@ public class Problem6 {
             }
         }
 
-        return new ArrayList<>(answer);
+        return new ArrayList<>(duplicateList);
     }
 
     public static void checkDuplicate(List<List<String>> forms, String checkName, List<String> originForm) {
@@ -31,13 +31,13 @@ public class Problem6 {
             String name = form.get(1);
 
             if (name.contains(checkName) && !originEmail.equals(email) && !originName.equals(name)) {
-                answer.add(email);
+                duplicateList.add(email);
                 isDuplicate = true;
             }
         }
 
         if (isDuplicate) {
-            answer.add(originEmail);
+            duplicateList.add(originEmail);
         }
     }
 }
