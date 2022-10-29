@@ -1,14 +1,14 @@
 package onboarding;
 
-import problem6.SimilarNicknameChecker;
+import problem6.SimilarNicknamesChecker;
 
 import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         try {
-            SimilarNicknameChecker verifier = new SimilarNicknameChecker(forms);
-            return verifier.getEmails();
+            SimilarNicknamesChecker checker = new SimilarNicknamesChecker(forms);
+            return checker.getEmailsOf();
         } catch (RuntimeException e) {
             return null;
         }
