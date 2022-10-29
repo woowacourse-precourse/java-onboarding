@@ -54,6 +54,18 @@ public class Problem7 {
         }
         return relations;
     }
+
+    public static Map<String, Integer> countVisit (List<String> visitors) {
+        Map<String, Integer> visitLog = new HashMap<>();
+        for (String visitor : visitors) {
+            int numOfVisit = 1;
+            if (visitLog.containsKey(visitor)) {
+                numOfVisit = visitLog.get(visitor) + 1;
+            }
+            visitLog.put(visitor, numOfVisit);
+        }
+        return visitLog;
+    }
 }
 
 class Relations {
