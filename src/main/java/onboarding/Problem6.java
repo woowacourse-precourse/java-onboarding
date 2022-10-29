@@ -14,6 +14,10 @@ public class Problem6 {
         for (List<String> f: forms) {
             Form form = new Form(f.get(0), f.get(1));
 
+            if (form.isPass()) {
+                continue;
+            }
+
             for (String part: sliceByLength(form.getNickname(), 2)) {
                 if (dupCheckMap.isDuplicate(part, form.getEmail())) {
                     emailSet.add(dupCheckMap.get(part));
@@ -35,6 +39,10 @@ public class Problem6 {
     private static class Form {
         private final String email;
         private final String nickname;
+
+        public boolean isPass() {
+            return this.nickname.length() == 1;
+        }
 
         public Form(String email, String nickname) {
             this.email = email;
