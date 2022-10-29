@@ -76,13 +76,8 @@ class Problem1 {
     }
 
     private static boolean checkPageSequenceException(List<Integer> pages){
-        int num = pages.get(0);
-        for(int i = 1; i < pages.size(); i++){
-            if(pages.get(i) != num+1){
-                return true;
-            }else{
-                num = pages.get(i);
-            }
+        if(pages.get(0)+1 != pages.get(1)){
+            return true;
         }
         return false;
     }
