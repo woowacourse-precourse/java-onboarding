@@ -5,13 +5,13 @@ public class Problem4 {
         int convertAscii = 0;
         int ascii = 0;
         if(Character.isUpperCase(alphabet)){
-            ascii = Character.getNumericValue(alphabet);
+            ascii = (int)alphabet;
             convertAscii = Math.abs(155 - ascii);
         } else if (Character.isLowerCase(alphabet)) {
-            ascii = Character.getNumericValue(alphabet);
+            ascii = (int)alphabet;
             convertAscii = Math.abs(219 - ascii);
         }
-        char convert = (char)(convertAscii);
+        char convert = (char)convertAscii;
         return convert;
     }
 
