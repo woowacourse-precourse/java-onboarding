@@ -42,8 +42,10 @@ public class PageGameInfo {
         int playerAScore = players.get(playerA).getPlayerScore();
         int playerBScore = players.get(playerB).getPlayerScore();
 
-        return playerAScore > playerBScore ? PLAYER_A_WIN_RESULT
-            : playerAScore < playerBScore ? PLAYER_B_WIN_RESULT : TIE_RESULT;
+        if (playerAScore == playerBScore) {
+            return TIE_RESULT;
+        }
+        return playerAScore > playerBScore ? PLAYER_A_WIN_RESULT : PLAYER_B_WIN_RESULT;
     }
 
     private void validatePageValue(List<Integer> playerPage) {
