@@ -1,12 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Problem7 {
     static final int friendScore = 10;
@@ -20,7 +14,7 @@ public class Problem7 {
     static List<String> getResult(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, List<String>> friendsMap = getFriendsMap(friends);
         Map<String, Integer> scoreMap = new HashMap<>();
-        List<String> userFriends = friendsMap.remove(user);
+        List<String> userFriends = getUserFriends(friendsMap, user);
         List<String> result;
 
         setFriendsPoint(friendsMap, userFriends, scoreMap);
@@ -51,6 +45,14 @@ public class Problem7 {
         List<String> friend1Value = friendsMap.getOrDefault(friend1, defaultList);
         friend1Value.add(friend2);
         friendsMap.put(friend1, friend1Value);
+    }
+
+    static List<String> getUserFriends(Map<String, List<String>> friendsMap, String user) {
+        List<String> emptyList = new ArrayList<>();
+        Optional<List<String>> optionalUserFriends = Optional.ofNullable(friendsMap.remove(user));
+        List<String> userFriends = optionalUserFriends.orElse(emptyList);
+
+        return userFriends;
     }
 
     static void setFriendsPoint(Map<String, List<String>> friendsMap, List<String> userFriends, Map<String, Integer> scoreMap) {
