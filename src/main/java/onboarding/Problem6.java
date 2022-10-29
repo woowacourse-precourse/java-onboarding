@@ -1,10 +1,16 @@
 package onboarding;
 
+import onboarding.Prombem6.Crew;
+
 import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) throws Exception {
         validate(forms);
+        for (List<String> form : forms) {
+            Crew crew = new Crew(form);
+            System.out.println(crew);
+        }
         List<String> answer = List.of("answer");
         return answer;
     }
