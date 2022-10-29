@@ -5,39 +5,26 @@ import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
-    enum Bill {
-        FIFTY_THOUSAND(50000),
-        TEN_THOUSAND(10000),
-        FIVE_THOUSAND(5000),
-        ONE_THOUSAND(1000),
-        FIVE_HUNDRED(500),
-        ONE_HUNDRED(100),
-        FIFTY(50),
-        TEN(10),
-        ONE(1);
+    final static int FIFTY_THOUSAND = 50_000;
+    final static int TEN_THOUSAND = 10_000;
+    final static int FIVE_THOUSAND = 5_000;
+    final static int ONE_THOUSAND = 1_000;
+    final static int FIVE_HUNDRED = 500;
+    final static int ONE_HUNDRED = 100;
+    final static int FIFTY = 50;
+    final static int TEN = 10;
+    final static int ONE = 1;
 
-        private final int value;
-        Bill(int value) {
-            this.value = value;
-        }
-
-        public int getValue() {
-            return value;
-        }
+    public static int getCapableBillCount(int bill, int money) {
+        return money / bill;
     }
 
-    public static int getCapableBillCount(Bill bill, int money) {
-        return money / bill.getValue();
-    }
-
-    public static List<Integer> getCapableBillsCount(List<Bill> bills, int money) {
+    public static List<Integer> getCapableBillsCount(List<Integer> bills, int money) {
         ArrayList<Integer> counts = new ArrayList<>();
 
-        // TODO: bills 정렬
-
-        for (Bill bill: bills) {
+        for (int bill: bills) {
             int count = getCapableBillCount(bill, money);
-            money -= count * bill.getValue();
+            money -= count * bill;
 
             counts.add(count);
         }
@@ -47,7 +34,7 @@ public class Problem5 {
 
     public static List<Integer> solution(int money) {
         return getCapableBillsCount(
-                List.of(Bill.FIFTY_THOUSAND, Bill.TEN_THOUSAND, Bill.FIVE_THOUSAND, Bill.ONE_THOUSAND, Bill.FIVE_HUNDRED, Bill.ONE_HUNDRED, Bill.FIFTY, Bill.TEN, Bill.ONE),
+                List.of(FIFTY_THOUSAND, TEN_THOUSAND, FIVE_THOUSAND, ONE_THOUSAND, FIVE_HUNDRED, ONE_HUNDRED, FIFTY, TEN, ONE),
                 money);
     }
 }
