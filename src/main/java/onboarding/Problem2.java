@@ -25,6 +25,13 @@ public class Problem2 {
                     remove_index[j++] = i;
                 }
             }
+            if(j==0) {
+                Object[] arr=list.toArray();
+                for(int i=0;i<arr.length;i++) {
+                    answer += (String) arr[i];
+                }
+                return answer;
+            }
 
         }
     }
