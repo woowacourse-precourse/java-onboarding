@@ -6,3 +6,18 @@ public class Problem2 {
         return answer;
     }
 }
+
+class Decrypter {
+
+    private static class DecrypterHolder {
+        private static final Decrypter INSTANCE = new Decrypter();
+    }
+
+    private Decrypter() {
+    }
+
+    public static Decrypter getInstance() {
+        return DecrypterHolder.INSTANCE;
+    }
+
+}
