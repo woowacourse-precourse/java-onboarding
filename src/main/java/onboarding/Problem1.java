@@ -34,6 +34,15 @@ class Problem1 {
             return resultMul;
     }
 
+    // 4. 가장 큰 수를 나의 점수로 하기.
+    static int getScoreCalc(int leftPage, int rightPage)
+    {
+        if(leftPage >= rightPage)
+            return leftPage;
+        else
+            return rightPage;
+    }
+
     // 1. 책을 임의로 펼친다.
     // 포비와 크롱의 임의의 책 페이지 받아오기
     public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -46,10 +55,14 @@ class Problem1 {
         // 오른쪽 페이지 연산
         int rightPageP = getPageCalc(pobi.get(1));
         int rightPageC = getPageCalc(crong.get(1));
-        
-        // 오른쪽 페이지 연산 결과 확인
-        System.out.println("pobi " + pobi + " : " + rightPageP);
-        System.out.println("crong " + crong + " : " + rightPageC);
+
+        // 내 점수 구하기 연산
+        int pobiScore = getScoreCalc(leftPageP,rightPageP);
+        int crongScore = getScoreCalc(leftPageC,rightPageC);
+
+        // 내 점수 구하기 연산 결과
+        System.out.println("pobi : " + pobiScore);
+        System.out.println("crong : " + crongScore);
 
         return answer;
     }
