@@ -7,9 +7,9 @@ import static onboarding.validator.PageNumberValidator.CANNOT_GET_MAX_VALUE_ERRO
 import static onboarding.validator.PageNumberValidator.isValidPageNumbers;
 
 public class PageScore {
-    public static final int WIN = 1;
-    public static final int LOSE = 2;
-    public static final int DRAW = 0;
+    private static final int WIN = 1;
+    private static final int LOSE = 2;
+    private static final int DRAW = 0;
 
     private final int score;
 

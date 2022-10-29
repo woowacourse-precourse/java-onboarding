@@ -1,8 +1,8 @@
 package onboarding.domain;
 
 public class Decoder {
-    public static final String REGEX_DUPLICATE_CHARACTER = "(([a-z])\\2+)";
-    public static final String BLANK = "";
+    private static final String REGEX_DUPLICATE_CHARACTER = "(([a-z])\\2+)";
+    private static final String BLANK = "";
 
     private final String decodeResult;
 

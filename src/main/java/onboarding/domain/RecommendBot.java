@@ -4,9 +4,9 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class RecommendBot {
-    public static final int RECOMMEND_SCORE_BY_FRIEND = 10;
-    public static final int RECOMMEND_SCORE_BY_VISITOR = 1;
-    public static final int MAX_SIZE_OF_RECOMMEND_LIST = 5;
+    private static final int RECOMMEND_SCORE_BY_FRIEND = 10;
+    private static final int RECOMMEND_SCORE_BY_VISITOR = 1;
+    private static final int MAX_SIZE_OF_RECOMMEND_LIST = 5;
 
     private final HashMap<String, Integer> recommendScore = new HashMap<>();
     private final List<String> userFriends;
