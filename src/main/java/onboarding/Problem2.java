@@ -13,7 +13,7 @@ public class Problem2 {
     }
 
     /** String 매개변수와 길이, 값이 일치한 StringBuffer 반환 */
-    private static StringBuffer getStringBuffer(String cryptogram) {
+    static StringBuffer getStringBuffer(String cryptogram) {
         StringBuffer sb = new StringBuffer(cryptogram.length());
         sb.append(cryptogram);
         return sb;
