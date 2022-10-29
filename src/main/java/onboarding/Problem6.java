@@ -8,6 +8,16 @@ public class Problem6 {
         return answer;
     }
 
+    static boolean is_duplicate(String key, String nickname) {
+
+        for(int i=0; i<nickname.length()-2; i++) {
+            String sub_nickname = nickname.substring(i, i+2);
+            if(key.contains(sub_nickname)) return true;
+        }
+
+        return false;
+    }
+
     static Map<String, List<String>> list_to_map(List<List<String>> forms){
 
         Map<String, List<String>> map = new HashMap<>();
