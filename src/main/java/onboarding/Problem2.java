@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
@@ -22,5 +23,11 @@ public class Problem2 {
         word.remove(index);
 
         return word;
+    }
+    // string -> arrayList로 변환
+    public static ArrayList<String> convertToList(String word){
+        String[] wordSplit = word.split("");
+        ArrayList<String> convertedList = new ArrayList<String>(Arrays.asList(wordSplit));
+        return convertedList;
     }
 }
