@@ -9,6 +9,18 @@ public class Problem5 {
 
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
+        answer = List.copyOf(convert(money));
         return answer;
+    }
+
+    static List<Integer> convert(int money) {
+        List<Integer> unit = new ArrayList<>();
+        int tmp = money;
+
+        for(Integer i : MONEY_UNIT) {
+            unit.add(tmp / i);
+            tmp = tmp % i;
+        }
+        return unit;
     }
 }
