@@ -7,8 +7,8 @@ import java.util.List;
 //문제 6번 기능 요구 사항
 //1. 닉네임 2개를 비교해서 같은 글자 연속적으로 포함되는지 확인하는 함수
 //2. 정답 리스트에 같은 이메일이 있는지 체크하는 함수
-//3. 각 닉네임을 돌면서 비교 함수에 넣고 같은 것이 있다면 정답 리스트에 넣는 함수
-//4. 리스트를 오름차순으로 정렬하는 함수
+//3. 리스트를 오름차순으로 정렬하는 함수
+//4. 각 닉네임을 돌면서 비교 함수에 넣고 같은 것이 있다면 정답 리스트에 넣는 함수
 
 public class Problem6 {
 
@@ -52,6 +52,12 @@ public class Problem6 {
         boolean containEmail=emailList.contains(email);
 
         return containEmail;
+    }
+
+    //기능 3
+    public static List<String> sortList(List<String> answer){
+        Collections.sort(answer);
+        return answer;
     }
 
     public static List<String> solution(List<List<String>> forms) {
