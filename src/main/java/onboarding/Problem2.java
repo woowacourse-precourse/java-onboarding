@@ -1,6 +1,6 @@
 package onboarding;
 
-import java.util.Stack;
+import java.util.*;
 
 public class Problem2 {
     public static Stack<Character> st= new Stack<>();
@@ -9,30 +9,16 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         answer = new StringBuilder();
 
-        for (char letter : cryptogram.toCharArray()) {
-            deleteOrPushLetter(letter);
-        }
-
-        for (Character character : st) {
-            answer.append(character);
-        }
-        st.clear();
         return answer.toString();
     }
 
-    public static boolean checkNotDuplicate(char letter) {
-        if (st.isEmpty() || st.lastElement() != letter) {
-            return true;
+    public static Set<Character> createCharactersSet(String cryptogram) {
+        Set<Character> charactersSet = new LinkedHashSet<>();
+
+        for (char c : cryptogram.toCharArray()) {
+            charactersSet.add(c);
         }
 
-        return false;
-    }
-
-    public static void deleteOrPushLetter(char letter) {
-        if (checkNotDuplicate(letter)) {
-            st.push(letter);
-            return;
-        }
-        st.pop();
+        return charactersSet;
     }
 }
