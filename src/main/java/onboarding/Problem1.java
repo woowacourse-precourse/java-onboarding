@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.Arrays;
 import java.util.List;
 
 /*
@@ -60,10 +61,32 @@ class Problem1 {
         return mul;
     }
 
+    public List<Integer> getHighScore(List<Integer> param){
+        int addLeftScore, addRightScore, mulLeftScore, mulRightScore, leftPage, rightPage, leftHighScore, rightHighScore;
+        leftPage = param.get(0);
+        rightPage = param.get(1);
+
+        addLeftScore = addNumberOfDigit(leftPage);
+        addRightScore = addNumberOfDigit(rightPage);
+
+        mulLeftScore = multipleNumberOfDigit(leftPage);
+        mulRightScore = multipleNumberOfDigit(rightPage);
+
+        if(addLeftScore >= mulLeftScore)
+            leftHighScore = addLeftScore;
+        else
+            leftHighScore = mulLeftScore;
+
+        if(addRightScore >= mulRightScore)
+            rightHighScore = addRightScore;
+        else
+            rightHighScore = mulRightScore;
+
+        return Arrays.asList(leftHighScore, rightHighScore);
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-
-
 
         return answer;
     }
