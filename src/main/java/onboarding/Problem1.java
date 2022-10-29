@@ -2,7 +2,6 @@ package onboarding;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.stream.Stream;
 
 import static java.util.Collections.max;
 
@@ -13,21 +12,31 @@ import static java.util.Collections.max;
 3. 1번 단계에서 얻은 값을 비교해 result 출
  */
 class Problem1 {
-    public static int find_max(int s) {
+    private static boolean exception(List<Integer> pobi, List<Integer> crong) {
+        if(pobi.get(1) - pobi.get(0) != 1) return false;
+        if(crong.get(1) - crong.get(0) != 1) return false;
+        if(pobi.get(0) % 2 != 1) return false;
+        return crong.get(0) % 2 == 1;
+    }
+    private static int find_max(int s) {
         int temp_max = 0;
         int temp_multi = 1;
-        int[] arrNum = Stream.of(String.valueOf(s).split("")).mapToInt(Integer::parseInt).toArray();
-        for (int j : arrNum) {
+        int[] digits = IntegerToList(s);
+        for (int j : digits) {
             temp_max = temp_max + j;
             temp_multi = temp_multi * j;
         }
         return Math.max(temp_multi, temp_max);
     }
+    private static int[] IntegerToList(int n){
+        String temp = Integer.toString(n);
+        int l = temp.length();
+        int[] digits = new int[l];
+        for (int i = 0; i < l; i++) digits[i] = temp.charAt(i) - '0';
+        return digits;
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        // 예외처리
-        if(pobi.get(1) - pobi.get(0) != 1 || crong.get(1) - crong.get(0) != 1 || pobi.get(0) % 2 != 1 || crong.get(0) %2 != 1) {
-            return -1;
-        }
+        if(!exception(pobi, crong)) return -1;
         // 각자 점수 산출
         List<Integer> pobi_new = new ArrayList<>(2);
         List<Integer> crong_new = new ArrayList<>(2);
