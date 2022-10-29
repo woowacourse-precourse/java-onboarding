@@ -41,6 +41,7 @@ Stream을 통해 닉네임만 추출해 리스트에 담아 반환한다
 2. <변수>\
    없음
 3. <구현>\
+   **(추가) nickname_list에 나의 닉네임도 있으므로, 이런 경우 continue로 ckeckSame 건너뛰기**
    nickname_list를 돌며 checkSame을 사용해 nickname과 중복이 있는지 확인\
    중복 있으면 멈추고 true 리턴
 #### List findSameNickname 메서드

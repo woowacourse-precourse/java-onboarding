@@ -8,7 +8,16 @@ import java.util.stream.Stream;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer;
+        Map<String, String> nickname_email_map = changeToMap(forms);
+        List<String> nickname_list = extractNickname(forms);
+        List<String> same_nickname_list = findSameNickname(nickname_list);
+        List<String> email_list = findEmail(same_nickname_list, nickname_email_map);
+
+        answer = email_list.stream().distinct()
+                .sorted()
+                .collect(Collectors.toList());
+
         return answer;
     }
     static boolean checkSame(String nickname1, String nickname2){
@@ -40,7 +49,11 @@ public class Problem6 {
     }
 
     static boolean checkID(String nickname1, List<String> nickname_list){
+
         for(String nickname2:nickname_list){
+            if(nickname1.equals(nickname2)){
+                continue;
+            }
             if(checkSame(nickname1, nickname2)){
                 return true;
             }
