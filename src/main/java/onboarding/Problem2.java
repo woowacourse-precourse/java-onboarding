@@ -6,7 +6,7 @@ public class Problem2 {
     {
         // 기본 케이스
         char[] chars = s.toCharArray();
-        if (chars.length==0 || (chars.length==2 && chars[0]==chars[1])){
+        if (chars.length==0 ){
             return "";
         }
         int i, k = 0;
@@ -24,10 +24,11 @@ public class Problem2 {
         }
         if (i<=chars.length) {chars[k++] = chars[i-1];};
         String new_s = new String(chars).substring(0, k);
+        System.out.println(new_s);
         if (k!=chars.length){
             return removeDuplicates(new_s);
         }
-        System.out.println(new_s);
+
         return new_s;
     }
     public static String solution(String cryptogram) {
