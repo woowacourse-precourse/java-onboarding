@@ -15,6 +15,7 @@ public class Problem3 {
         for (int i = START_NUMBER; i <= number; i++) {
             String intToStringNumber = String.valueOf(i);
             int numberOfDigits = intToStringNumber.length();
+            int countClapOfNumber = 0;
 
             for (int j = 0; j < numberOfDigits; j++) {
                 char digit = intToStringNumber.charAt(j);
