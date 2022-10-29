@@ -29,7 +29,8 @@ public class Problem4 {
     }
 
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        Problem4 problem4 = new Problem4();
+        String inverseAlphabetWord = problem4.getInverseWord(word);
+        return inverseAlphabetWord;
     }
 }
