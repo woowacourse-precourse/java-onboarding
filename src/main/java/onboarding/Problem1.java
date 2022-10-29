@@ -54,7 +54,7 @@ class Problem1 {
             return 2;
     }
 
-    // 5-2. 예외사항 처리.
+    // 5-2, 6. 예외사항 처리.
     static int getException(List<Integer> person)
     {
         // 책 페이지 수가 왼쪽이 더 클 경우
@@ -68,6 +68,9 @@ class Problem1 {
             return -1;
         // 책 오른쪽 페이지가 짝수가 아닐 경우
         else if(person.get(1)%2 != 0)
+            return -1;
+        // 시작 면이나 마지막 면이 나오는 경우
+        else if(person.get(0) == 1 || person.get(1) == 400)
             return -1;
         else
             return 1;
