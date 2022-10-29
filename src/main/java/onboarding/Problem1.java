@@ -10,7 +10,7 @@ class Problem1 {
         boolean crongValid = (crong.get(1) - crong.get(0) == 1) && (crong.get(0)%2 == 1); // crongValid: 왼쪽 페이지 번호와 오른쪽 페이지 번호가 연속된 숫자이면서, 왼쪽페이지가 홀수라면 true
 
         /* pobi 또는 crong 중 유효하지 않은 것이 있다면 예외사항 발생 */
-        if(!(pobiValid || crongValid)) {
+        if(!(pobiValid && crongValid)) {
             answer = -1;
         } else {
             if(getScore(pobi.get(0), pobi.get(1)) > getScore(crong.get(0), crong.get(1))) {
