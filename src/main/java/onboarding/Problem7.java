@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -60,8 +61,18 @@ public class Problem7 {
             }
         }
     }
+    static List<String> findTopFive(List<Friend> friends_list){
+        List<String> top_five;
 
+        top_five = friends_list.stream().sorted(Comparator.comparing(Friend::getPoint).reversed()
+                .thenComparing(Friend::getName))
+                .limit(5)
+                .map(Friend::getName)
+                .collect(Collectors.toList());
+        return top_five;
+    }
 }
+
 class Friend{
     String name;
     int point = 0;
