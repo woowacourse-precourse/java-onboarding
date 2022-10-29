@@ -20,6 +20,7 @@ public class Problem5 {
     }
 
     public static List<Integer> getCapableBillsCount(List<Integer> bills, int money) {
+        bills.sort(Collections.reverseOrder());
         ArrayList<Integer> counts = new ArrayList<>();
 
         for (int bill: bills) {
