@@ -17,7 +17,12 @@ public class Problem7 {
     }
 
     static Map<String, Integer> countVisit(List<String> visitors) {
-        return null;
+        Map<String, Integer> visitCount = visitors.stream()
+            .distinct()
+            .collect(Collectors.toMap(visitor -> visitor, visitor -> 0));
+
+        visitors.forEach(visitor -> visitCount.put(visitor, visitCount.get(visitor) + 1));
+        return visitCount;
     }
 
     static Map<String, Integer> countBothKnowFriends(String mainCharacter, Map<String, List<String>> userToFriends) {
