@@ -12,7 +12,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DisplayName("문제 1번")
 public class Problem1Test {
     @Test
-    void case1() {
+    @DisplayName("유효 입력으로 게임을 하니, 무승부가 났다.")
+    void validInput_And_Draw() {
         List<Integer> pobi = List.of(97, 98);
         List<Integer> crong = List.of(197, 198);
         int result = 0;
@@ -20,10 +21,20 @@ public class Problem1Test {
     }
 
     @Test
-    void case2() {
+    @DisplayName("유효 입력으로 게임을 하니, 포비가 이겼다.")
+    void validInput_And_PobiWins() {
         List<Integer> pobi = List.of(131, 132);
         List<Integer> crong = List.of(211, 212);
         int result = 1;
+        assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+    }
+
+    @Test
+    @DisplayName("유효 입력으로 게임을 하니, 크롱이 이겼다")
+    void validInput_And_CrongWins() {
+        List<Integer> pobi = List.of(309, 310);
+        List<Integer> crong = List.of(277, 278);
+        int result = 2;
         assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
     }
 
