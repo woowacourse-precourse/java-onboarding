@@ -14,12 +14,13 @@ import java.util.List;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<String>();
-        List<String> prohibition = makeProhibition();
+        List<String> prohibition = makeProhibition(forms);
         return answer;
     }
-    public static List<String> makeProhibition() {
+    public static List<String> makeProhibition(List<List<String>> forms) {
         List<String> appeared = new ArrayList<String>();
-        List<String> prohibition = makeProhibition();
+        List<String> prohibition = new ArrayList<String>();
+
 
     }
 }
