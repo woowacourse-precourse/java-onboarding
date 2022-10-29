@@ -9,12 +9,8 @@ import java.util.Set;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        HashMap<String, Integer> recommendFriends = new HashMap<>();
         Set<String> userFriends = createUserFriendList(friends, user);
-        for (List<String> friend : friends) {
-            isAcquaintance(recommendFriends, friend, userFriends);
-        }
-        recommendFriends.remove(user);
+        HashMap<String, Integer> recommendFriends = createRecommendList(friends, userFriends, user);
         for (String v : visitors) {
             recommendVisitor(recommendFriends, v, userFriends);
         }
@@ -38,7 +34,16 @@ public class Problem7 {
         }
     }
 
-    public static void isAcquaintance(HashMap<String, Integer> friendMap, List<String> friendship, Set<String> friendSet) {
+    public static HashMap<String, Integer> createRecommendList(List<List<String>> friends, Set<String> friendSet, String user) {
+        HashMap<String, Integer> recommendMap = new HashMap<>();
+        for (List<String> friend : friends) {
+            updateRecommendFriend(recommendMap, friend, friendSet);
+        }
+        recommendMap.remove(user);
+        return recommendMap;
+    }
+
+    public static void updateRecommendFriend(HashMap<String, Integer> friendMap, List<String> friendship, Set<String> friendSet) {
         if (friendSet.contains(friendship.get(0))) {
             friendMap.put(friendship.get(1), friendMap.getOrDefault(friendship.get(1), 0) + 10);
         }
