@@ -37,6 +37,9 @@ public class Problem2 {
         //나중에 중복 문자 제거 위해 string을 StringBuffer로 변경
         StringBuffer sb = new StringBuffer(answer);
 
+        while(isOverlap(sb)){
+            delOverlap(sb);
+        }
 
         //중복 제거 후 다시 string으로 변환
         answer = sb.toString();
