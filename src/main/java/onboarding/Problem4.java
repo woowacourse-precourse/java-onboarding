@@ -4,8 +4,11 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        StringBuilder answer = new StringBuilder();
+        for(int i=0; i<word.length();i++){
+            answer.append(wordChange(word.charAt(i)));
+        }
+        return answer.toString();
     }
     public static char wordChange(char singleword){
         final int BIGALPSTART = 65;
