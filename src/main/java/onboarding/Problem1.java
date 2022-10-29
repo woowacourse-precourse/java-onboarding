@@ -42,6 +42,14 @@ class Problem1 {
         return dividedDigit;
     }
 
+    int multiplyDigits(List<Integer> dividedDigit){
+        int result = 1;
+        for (Integer integer : dividedDigit) {
+            result *= integer;
+        }
+        return result;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
