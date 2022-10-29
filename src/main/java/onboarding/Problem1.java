@@ -37,6 +37,10 @@ class Problem1 {
      */
     public static int addEachNumber(int page) {
         int score = 0;
+        while (page > 0) {
+            score += page % 10;
+            page /= 10;
+        }
         return score;
     }
 
