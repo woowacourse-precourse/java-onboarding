@@ -6,8 +6,8 @@ import java.util.regex.Pattern;
 /**
  * 📚 기능 목록
  *
- * 1. 중복 문자의 존재여부를 확인하는 기능
- * 2. 문자 중복을 제거하는 기능
+ * 1. 중복문자의 유무를 확인하는 기능
+ * 2. 중복문자를 제거하는 기능
  */
 public class Problem2 {
     public static String solution(String cryptogram) {
@@ -17,9 +17,8 @@ public class Problem2 {
     }
 
     /**
-     * 문자의 중복을 제거한다.
+     * 중복문자가 제거된 문자열을 반환한다.
      * @param cryptogram 문자열
-     * @return 중복이 제거된 문자열
      */
     private static String removeDuplicate(String cryptogram) {
 
@@ -33,9 +32,8 @@ public class Problem2 {
     }
 
     /**
-     * 문자의 중복을 확인한다.
+     * 문자열에 연속된 중복문자가 있으면 true
      * @param cryptogram 문자열
-     * @return 문자의 중복 여부
      */
     private static boolean checkDuplicate(String cryptogram) {
         Pattern pattern = Pattern.compile("(\\w)\\1+");
