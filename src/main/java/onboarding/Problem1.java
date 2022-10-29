@@ -1,11 +1,12 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.stream.Stream;
 
 class Problem1 {
     public static <e> int solution(List<Integer> pobi, List<Integer> crong) {
-        
+
         int answer = 0;
 
         try{
@@ -47,27 +48,31 @@ class Problem1 {
     }
 
     private static int getScore(List<Integer> pageList) {
-        int[] resArr = new int[4];
-        for (int i = 0; i < pageList.size(); i++){
-            int[] numValue = Stream.of(String.valueOf(pageList.get(i)).split("")).mapToInt(Integer::parseInt).toArray();
+
+        // !!! Try New Method for Cleaning the code
+        // if pageList => [97,98]
+        // get four numbers => [16,17,63,72]
+        // parse ints 97 => 9 & 7
+        // add or multiply ints => 16, 63
+        // add to resList => get Max by sorting
+
+        ArrayList<Integer> resArr = new ArrayList<>();
+
+        for (int page: pageList){
+            String pageStr = Integer.toString(page);
+            String[] parsedPage = pageStr.split(""); // [9,7]
             int addRes = 0;
             int multRes = 1;
-            for (int num: numValue){
-                addRes += num;
-                multRes *= num;
+            for (String StrParsed: parsedPage){
+                addRes += Integer.parseInt(StrParsed);
+                multRes *= Integer.parseInt(StrParsed);
             }
-            if(addRes>multRes){
-                resArr[i]=addRes;
-            }else{
-                resArr[i]=multRes;
-            }
+            resArr.add(addRes);
+            resArr.add(multRes);
         }
-        int pobiMax = resArr[0];
-        for(int i=1 ; i<resArr.length ; i++) {
-            if(resArr[i]>pobiMax) {
-                pobiMax = resArr[i];
-            }
-        }
-        return pobiMax;
+        Collections.sort(resArr);
+        System.out.println(resArr);
+
+        return resArr.get(3);
     }
 }
