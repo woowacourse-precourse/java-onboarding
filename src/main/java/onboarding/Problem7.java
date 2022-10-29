@@ -16,6 +16,11 @@ public class Problem7 {
         return answer;
     }
 
+    static Map<String, Integer> countBothKnowFriends(String mainCharacter, Map<String, List<String>> userToFriends) {
+        return null;
+    }
+
+
     static List<String> findAllUserWithoutMainCharacter(String mainCharacter, Map<String, List<String>> userToFriends, List<String> visitors) {
         List<String> allUserWithoutMainCharacter = new ArrayList<>();
 
