@@ -74,23 +74,29 @@ public class Problem7 {
     }
 
     static List<String> validateScoreMap(Map<String, Integer> scoreMap, List<String> userFriends) {
-        List<String> sortedScoreList = sortScoreMap(scoreMap, userFriends);
-        List<String> lengthUnderFiveScoreList = limitLengthUnderFive(sortedScoreList);
+        List<Map.Entry<String, Integer>> sortedScoreList = sortScoreMap(scoreMap, userFriends);
+        List<String> exceptedScoreList = getExceptedFriends(sortedScoreList, userFriends);
+        List<String> lengthUnderFiveScoreList = limitLengthUnderFive(exceptedScoreList);
 
         return lengthUnderFiveScoreList;
     }
 
-    static List<String> sortScoreMap(Map<String, Integer> scoreMap, List<String> userFriends) {
+    static List<Map.Entry<String, Integer>> sortScoreMap(Map<String, Integer> scoreMap, List<String> userFriends) {
         List<Map.Entry<String, Integer>> scoreEntries = new LinkedList<>(scoreMap.entrySet());
         Collections.sort(scoreEntries, scoreComparator);
-        List<String> sortedScoreList = new ArrayList<>();
 
-        scoreEntries.stream()
+        return scoreEntries;
+    }
+
+    static List<String> getExceptedFriends(List<Map.Entry<String, Integer>> sortedScoreEntries, List<String> userFriends) {
+        List<String> exceptedScoreList = new ArrayList<>();
+
+        sortedScoreEntries.stream()
                 .filter(e -> !(userFriends.contains(e.getKey())))
                 .filter(e -> e.getValue() != 0)
-                .forEach(e -> sortedScoreList.add(e.getKey()));
+                .forEach(e -> exceptedScoreList.add(e.getKey()));
 
-        return sortedScoreList;
+        return exceptedScoreList;
     }
 
     static List<String> limitLengthUnderFive(List<String> sortedScoreList) {
