@@ -6,7 +6,7 @@ import java.util.stream.Stream;
 class Problem1 {
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
 		// 책의 범위가 1에서 400 사이 인지 확인
-		if (!is1t0400(pobi) || !is1t0400(crong)) {
+		if (!is1to400(pobi) || !is1to400(crong)) {
 			return -1;
 		}
 
@@ -36,7 +36,7 @@ class Problem1 {
 		return (pobiMaxValue > crongMaxValue) ? 1 : 2;
 	}
 
-	static boolean is1t0400(List<Integer> list) {
+	static boolean is1to400(List<Integer> list) {
 		return list.get(0) > 0 && list.get(0) < 401 && list.get(1) > 0 && list.get(1) < 401;
 	}
 

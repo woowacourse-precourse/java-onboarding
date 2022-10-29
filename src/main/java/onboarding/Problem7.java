@@ -10,8 +10,6 @@ public class Problem7 {
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 		// 전체 유저 리스트 생성
 		List<String> userList = makeUserList(friends, visitors);
-		// 전체 유저리스트에서 기준이 되는 유저 삭제
-		userList.remove(user);
 
 		// 유저 친구 관계 리스트 생성
 		List<String> userFriendsList = makeFriendList(friends, user);
@@ -20,6 +18,7 @@ public class Problem7 {
 		List<List<String>> userFriendsFriendsList = makeFriendFriendList(user, friends, userFriendsList);
 
 		// 전체 유저 리스트에서 유저와 친구를 뺀 리스트 생성
+		userList.remove(user);
 		List<String> noFriendList = makeNoFriendList(userList, userFriendsList);
 
 		// 친구 점수 집계용 hashmap 생성 및 초기화
@@ -41,7 +40,7 @@ public class Problem7 {
 			List<String> maxValueKeys = findMaxValueKeys(friendshipScore);
 			// answer 리스트에 add
 			answer.addAll(maxValueKeys);
-			//answer리스트에 추가된 유저 hashmap에서 삭제
+			//answer 리스트에 추가된 유저 hashmap에서 삭제
 			removeHighScoreUser(friendshipScore, maxValueKeys);
 		}
 
