@@ -39,4 +39,12 @@ public class PageTest {
 
         assertThat(page.addEachDigit(number)).isEqualTo(result);
     }
+
+    @ParameterizedTest(name = "각 자리의 숫자를 모두 곱한다")
+    @CsvSource(value = {"3:3", "34:12", "236:36", "340:0"}, delimiter = ':')
+    void multiply_each_digit(int number, int result) {
+        Page page = new Page(3, 4);
+
+        assertThat(page.multiplyEachDigit(number)).isEqualTo(result);
+    }
 }

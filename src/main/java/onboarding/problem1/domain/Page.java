@@ -39,6 +39,12 @@ public class Page {
                 .sum();
     }
 
+    public int multiplyEachDigit(int number) {
+        return Arrays.stream(String.valueOf(number).split(""))
+                .mapToInt(Integer::parseInt)
+                .reduce(1, Math::multiplyExact);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
