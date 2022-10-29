@@ -60,6 +60,7 @@ public class Problem7 {
             String friend1 = friends.get(i).get(0);
             String friend2 = friends.get(i).get(1);
             adj.get(map.get(friend1)).add(map.get(friend2));
+            adj.get(map.get(friend2)).add(map.get(friend1));
         }
 
         return adj;
