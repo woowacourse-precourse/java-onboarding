@@ -16,39 +16,13 @@ import java.util.List;
 // 1-2. 이메일의 길이가 11이상 20미만인지 검사
 // 1-3. 닉네임이 한글인지 검사
 // 1-4. 닉네임의 길이가 1이상 20미만인지 검사
+// 2. 두개 이상의 스트링 객체에서 길이가 2 이상인 같은 문자열이 있는지.. 검사하는 로직 생각해보기
+// 2-1.
+
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
-
-        String email = "";
-        String name = "";
-        int emailLength = 0;
-        int nameLength = 0;
-
-        for (List form : forms) {
-            email = (String) form.get(0);
-            name =  (String) form.get(1);
-            emailLength = email.length();
-            nameLength = name.length();
-
-            if(email.substring(emailLength-10, emailLength) != "@email.com"){
-                return answer;
-            }
-            if(11 <= emailLength && emailLength < 20){
-                return answer;
-            }
-
-            if(name.matches("^[가-힣]*$")) {
-                return answer;
-            }
-            if(1 <= nameLength && nameLength < 20){
-                return answer;
-            }
-        }
-
-
-
 
         return answer;
     }
