@@ -38,8 +38,8 @@
  - [x] 친구의 친구 카운트마다 점수 10점 추가
  - [x] 방문자 방문마다 점수 1점 추가
 * 친구 (friends)
- - [ ] friends 리스트를 받을 때 user의 친구이면 객체 생성
- - [ ] friends 리스트 만들기
+ - [x] friends 리스트를 받을 때 user의 친구이면 객체 생성
+ - [x] friends 리스트 만들기
 * 생성 규칙 설정
  - [ ] 인풋 리스트 순회하며 유저가 포함돼 있으면 리스트에 추가하고 friends 객체 만들어서 User의 generateFriends 호출하기
  - [ ] 유저의 friends 리스트 순환하며 친구가 포함돼 있으면 리스트 생성해서 각각의 friends에 추가해주기
