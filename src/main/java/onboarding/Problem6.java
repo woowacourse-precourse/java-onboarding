@@ -10,7 +10,14 @@ public class Problem6 {
         List<Integer> plus;
         for (int i = 0; i < forms.size(); i++) {
             for (int j = 0; j < forms.get(i).get(1).length() - 1; j++){
-
+                plus = repeat(forms, forms.get(i), j);
+                if(!plus.isEmpty()) {
+                    for (int k = 0; k < plus.size(); k++) {
+                        if (!answer.contains(forms.get(plus.get(k)).get(0))) {
+                            answer.add(forms.get(plus.get(k)).get(0));
+                        }
+                    }
+                }
             }
         }
         return answer;
