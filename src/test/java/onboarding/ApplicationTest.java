@@ -4,8 +4,12 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
+import static onboarding.Problem6.EMAIL_DOMAIN;
+import static onboarding.Problem6.MAX_NUM_OF_CREWS;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -322,6 +326,19 @@ class ApplicationTest {
                     List.of("nowm@email.com", "이제엠")
             );
             List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
+            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
+
+        @Test
+        void case2() {
+            List<List<String>> forms = new ArrayList<>();
+            List<String> result = new ArrayList<>();
+            for (int i = 0; i < MAX_NUM_OF_CREWS; i++) {
+                forms.add(List.of("a" + i + EMAIL_DOMAIN, "가나다라마거너더러머고노도로모구누두루"));
+                result.add("a" + i + EMAIL_DOMAIN);
+            }
+            Collections.sort(result);
+
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
     }
