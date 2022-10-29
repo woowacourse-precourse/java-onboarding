@@ -40,8 +40,7 @@ public class Problem7 {
             if (name.equals(user) || userFriend.contains(name))
                 continue;
 
-            List<String> findFriend = friendMap.get(name);
-            int score = getScore(userFriend, findFriend);
+            int score = getScore(userFriend, friendMap.get(name));
 
             if (score > 0)
                 friendScore.put(name, score);
@@ -85,11 +84,11 @@ public class Problem7 {
         }
     }
 
-    public static int getScore(List<String> userFriend, List<String> findFriend) {
+    public static int getScore(List<String> userFriend, List<String> findFriendsList) {
         int cnt = 0;
 
         for (String name : userFriend) {
-            if (findFriend.contains(name))
+            if (findFriendsList.contains(name))
                 cnt++;
         }
 
