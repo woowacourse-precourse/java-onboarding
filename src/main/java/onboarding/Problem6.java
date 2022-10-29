@@ -82,5 +82,8 @@ public class Problem6 {
         duplicatedUserEmail.add(useremail);
     }
 
+    private static List<String> getSortedDuplicatedList(){
+        return duplicatedUserEmail.stream().sorted().collect(Collectors.toList());
+    }
 
 }
