@@ -19,7 +19,7 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
         List<String> result = new ArrayList<>();
         Map<String, Integer> friendsPoint_map = new HashMap<>();
-        Integer [] tmpArray;
+        Integer [] point_array;
 
         userName = user;
 
@@ -52,18 +52,24 @@ public class Problem7 {
             visitors_list = remove(userFriends_list.get(i), visitors_list);
         }
 
-        //List<String> removeUser_list= removeDuplication(saveVisitorList(visitors), userFriends_list);
-
         //친구의 점수표를 MAP에 저장
         friendsPoint_map = saveUserPoint(friendsPoint_map, visitors_list, visitPoint);
 
 
+        //point가 가장 높은 순으로 배열로 저장
+        point_array = sortList(friendsPoint_map);
 
-        tmpArray = sortList(friendsPoint_map);
+        int cnt = Math.min(point_array.length , recommendNum);
+        if (point_array.length > recommendNum)
+            cnt = testDuplicationPoint(point_array);
 
-        List<String> recommedList = getKey(tmpArray, friendsPoint_map);
-        saveSortCheckPoint(tmpArray);
-        recommedList = sortList(saveSortCheckPoint(tmpArray), recommedList);
+
+        //point가 가장 높은 순으로 리스트를 정렬
+        List<String> recommedList = getKey(point_array, friendsPoint_map, cnt);
+
+
+        //saveSortCheckPoint(point_array);
+        recommedList = sortList(saveSortCheckPoint(point_array, recommedList.size()), recommedList);
 
         int min = Math.min(recommedList.size(), recommendNum);
 
@@ -71,8 +77,6 @@ public class Problem7 {
             result.add(recommedList.get(i));
 
         answer = result;
-
-        friendsPoint_map.clear();
 
         return answer;
     }
@@ -123,7 +127,7 @@ public class Problem7 {
         }
         return friendsOfFiends_list;
     }
-    
+
     //친구 점수표를 Map에 저장
     public static Map<String, Integer> saveUserPoint(Map<String,Integer> friendsPoint_map, List<String> userList, int point) {
         int tmp = point;
@@ -143,10 +147,10 @@ public class Problem7 {
     }
 
     //value 로 key 찾기
-    public static List<String> getKey(Integer[] valueList, Map<String, Integer> friendsPoint_map) {
+    public static List<String> getKey(Integer[] valueList, Map<String, Integer> friendsPoint_map, int cnt) {
         List<String> recommendFriendsList = new ArrayList<>();
 
-        for (int i = 0; i < valueList.length; i++) {
+        for (int i = 0; i < cnt; i++) {
             for (String key : friendsPoint_map.keySet()) {
                 if (valueList[i] == friendsPoint_map.get(key)) {
                     if (recommendFriendsList.contains(key))
@@ -161,27 +165,58 @@ public class Problem7 {
     }
     public static Integer[] sortList(Map<String, Integer> friendsPoint_map) {
         Collection <Integer> values = friendsPoint_map.values();
-        Integer [] intArray = values.toArray(new Integer[0]);
+        Integer [] point_array = values.toArray(new Integer[0]);
 
-        Arrays.sort(intArray, Collections.reverseOrder());
+        Arrays.sort(point_array, Collections.reverseOrder());
 
-        return intArray;
+        return point_array;
     }
-    public static List<Integer> saveSortCheckPoint(Integer[] intArray) {
+
+    public static List<Integer> saveSortCheckPoint(Integer[] point_array, int length) {
         int cnt;
+        boolean isVisited = false;
+
         List<Integer> checkPointList = new ArrayList<>();
 
-        for (int i = 0; i < intArray.length; i++)
+        for (int i = 0; i < length - 1; i++)
         {
             cnt = i + 1;
-            while (intArray[i] == intArray[cnt])
+            while (point_array[i] == point_array[cnt] && cnt < length)
+            {
+                isVisited = true;
                 cnt++;
-
-            i = cnt;
-            checkPointList.add(cnt);
+            }
+            if (isVisited)
+            {
+                checkPointList.add(cnt);
+                isVisited = false;
+                i = cnt;
+                continue;
+            }
+            checkPointList.add(i);
         }
 
         return checkPointList;
+    }
+
+    public static int testDuplicationPoint(Integer[] point_array)
+    {
+        int cnt = recommendNum;
+
+        for (int i = recommendNum - 1; i < point_array.length - 1; i++)
+        {
+            for (int j = i + 1; j < point_array.length; j++)
+            {
+                if (point_array[i] == point_array[j])
+                {
+                    cnt++;
+                }
+                else
+                    return cnt;
+            }
+        }
+
+        return cnt;
     }
     public static List<String> sortList(List<Integer> checkPointList, List<String> recommendFriendsList) {
         int cnt = 0;
@@ -190,11 +225,13 @@ public class Problem7 {
         String arr[] = recommendFriendsList.toArray(new String[arrListSize]);
 
         for (int i = 0; i < checkPointList.size(); i++) {
-            cnt += i;
+            if (i == 0)
+            {
+                Arrays.sort(arr, i, (cnt + checkPointList.get(i)));
+                continue;
+            }
+            Arrays.sort(arr, (cnt + 1), checkPointList.get(i));
 
-            int key = checkPointList.get(i);
-
-            Arrays.sort(arr, cnt, key);
             cnt = checkPointList.get(i);
         }
         recommendFriendsList = Arrays.asList(arr);
