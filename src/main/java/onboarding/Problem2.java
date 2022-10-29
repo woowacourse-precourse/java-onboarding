@@ -4,16 +4,12 @@ import java.util.Stack;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "";
         Stack<Character> stack = new Stack<>();
 
         for (char c : cryptogram.toCharArray()) {
-            if (!stack.isEmpty() && stack.peek() == c) {
-                stack.pop();
-            } else {
-                stack.push(c);
-            }
+            stack = checkRepetition(stack, c);
         }
+
         return stackToString(stack);
     }
 
@@ -24,4 +20,14 @@ public class Problem2 {
         }
         return answer;
     }
+
+    public static Stack<Character> checkRepetition(Stack<Character> stack, char c){
+        if (!stack.isEmpty() && stack.peek() == c) {
+            stack.pop();
+        } else {
+            stack.push(c);
+        }
+        return stack;
+    }
+
 }
