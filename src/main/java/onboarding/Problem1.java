@@ -42,7 +42,7 @@ class Problem1 {
 
             //분해한 자릿수별로 더하기/곱하기
             int addNum = 0;
-            int multNum = 0;
+            int multNum = 1;
             for (Integer number : arrNum) {
                 addNum += number;
                 multNum *= number;
@@ -50,17 +50,24 @@ class Problem1 {
             crong_max = Math.max(addNum, multNum);
         }
 
-    return Math.max(pobi_max,crong_max);
+        int result;
+        if (pobi_max > crong_max) {
+            result = 1;
+        } else if (pobi_max < crong_max) {
+            result = 2;
+        } else result = 0;
+
+        return result;
     }
 
     public static void main(String[] args) {
         List<Integer> pobi = new ArrayList<>();
-        pobi.add(131);
-        pobi.add(132);
+        pobi.add(97);
+        pobi.add(98);
 
         List<Integer> crong = new ArrayList<>();
-        crong.add(211);
-        crong.add(212);
+        crong.add(197);
+        crong.add(198);
 
         int result = Problem1.solution(pobi, crong);
         System.out.println(result);
