@@ -6,6 +6,7 @@ import java.util.List;
 public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> answer = new ArrayList<Integer>();
+        // 몫은 더하고 나머지로 다음 단위 계산
         answer.add(money / 50000);
         int temp = money % 50000;
         answer.add(temp / 10000);

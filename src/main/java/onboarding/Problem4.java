@@ -5,19 +5,30 @@ public class Problem4 {
         String answer = "";
         for (int i = 0; i < word.length(); i++) {
             int ascii = (int) word.charAt(i);
+            // 대문자일 경우
             if (ascii <= 90 && ascii >= 65) {
+                // 앞쪽 문자
                 if (ascii <= 77) {
                     answer += (char) (90 - (ascii - 65));
-                } else if (ascii >= 78) {
+                }
+                // 뒷쪽 문자
+                else if (ascii >= 78) {
                     answer += (char) (65 + (90 - ascii));
                 }
-            } else if (ascii <= 122 && ascii >= 97) {
+            }
+            // 소문자일 경우
+            else if (ascii <= 122 && ascii >= 97) {
+                // 앞쪽 문자
                 if (ascii <= 109) {
                     answer += (char) (122 - (ascii - 97));
-                } else if (ascii >= 110) {
+                }
+                // 뒷쪽 문자
+                else if (ascii >= 110) {
                     answer += (char) (97 + (122 - ascii));
                 }
-            } else {
+            }
+            // 띄어쓰기같은 알파벳이 아닌 문자
+            else {
                 answer += word.charAt(i);
             }
         }
