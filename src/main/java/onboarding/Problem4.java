@@ -4,7 +4,15 @@ import java.util.stream.Collectors;
 
 public class Problem4 {
   static class GreenFrogDictionary {
-    public static char translate(Character character) {
+    private String translatedWord;
+    public void translate(String word) {
+      translatedWord = word.chars().mapToObj(ch -> (char) ch)
+              .map(this::reverseConversion)
+              .map(Object::toString)
+              .collect(Collectors.joining());
+    }
+
+    public char reverseConversion(Character character) {
       if (character >= 'A' & character <= 'Z') {
         return (char) ('Z' - (character - 'A'));
       }
@@ -13,12 +21,14 @@ public class Problem4 {
       }
       return character;
     }
+    public String getTranslatedWord() {
+      return translatedWord;
+    }
   }
 
   public static String solution(String word) {
-    return word.chars().mapToObj(ch -> (char) ch)
-            .map(GreenFrogDictionary::translate)
-            .map(Object::toString)
-            .collect(Collectors.joining());
+    GreenFrogDictionary greenFrogDictionary = new GreenFrogDictionary();
+    greenFrogDictionary.translate(word);
+    return greenFrogDictionary.getTranslatedWord();
   }
 }
