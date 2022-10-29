@@ -12,4 +12,18 @@ public class Problem5 {
         return answer;
     }
 
+
+    public static int[] count(int[] priceList, int totalMoney) {
+        int[] countList = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+
+        int money = totalMoney;
+
+        for (int i = 0; i < countList.length; i++) {
+            countList[i] = money / priceList[i];
+            money = money % priceList[i];
+        }
+
+        return countList;
+    }
+
 }
