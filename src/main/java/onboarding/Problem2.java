@@ -8,7 +8,9 @@ public class Problem2 {
 
         for (char c : cryptogram.toCharArray()) {
             if (!stack.isEmpty()) {
-
+                if (stack.peek() == c){
+                    
+                }
             }
         }
 
