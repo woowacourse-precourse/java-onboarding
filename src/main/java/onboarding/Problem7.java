@@ -6,8 +6,8 @@ import java.util.*;
  * # 기능 정리
  * [O] 친구 관계 저장
  * [O] 방문자 점수 계산
- * [X] 함께 아는 친구 계산
- * [X] 추천 친구 목록 계산(원래 친구 제외)
+ * [O] 함께 아는 친구 계산
+ * [O] 추천 친구 목록 계산(원래 친구 제외)
  * [X] 추천 친구 정렬
  * [X] solution 작성
  * [X] 테스트 확인
@@ -24,10 +24,27 @@ public class Problem7 {
         Map<String, Integer> recommendPoints = new HashMap<>();
 
         initFriendsMap(friends, friendsMap);
-
         calculateVisitors(visitors, recommendPoints);
+        calculateFriendsKnowTogether(user, friendsMap, recommendPoints);
 
         return answer;
+    }
+
+    private static void calculateFriendsKnowTogether(String user, Map<String, List<String>> friendsMap, Map<String, Integer> recommendPoints) {
+        for(int i = 0; i < friendsMap.get(user).size(); i++){
+            String userFriendId = friendsMap.get(user).get(i);
+
+            for(int j = 0; j < friendsMap.get(userFriendId).size(); j++){
+                String friendKnowTogetherId = friendsMap.get(userFriendId).get(j);
+
+                if(friendKnowTogetherId != user){
+                    if(!recommendPoints.containsKey(friendKnowTogetherId))
+                        recommendPoints.put(friendKnowTogetherId, 0);
+
+                    recommendPoints.put(friendKnowTogetherId, recommendPoints.get(friendKnowTogetherId) + FRIEND_POINT);
+                }
+            }
+        }
     }
 
     private static void calculateVisitors(List<String> visitors, Map<String, Integer> recommendPoints) {
