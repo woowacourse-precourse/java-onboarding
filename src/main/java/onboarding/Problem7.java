@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
 
         List<String> member = new ArrayList<>();
 
@@ -77,6 +77,30 @@ public class Problem7 {
             int visitorIdx = visitorList.indexOf(nowVisitor);
             visitorPoint[visitorIdx]++;
         }
+
+        // 최종 점수 구하기
+        Map<String, Integer> recommendPoint = new HashMap<>();
+        // 10점 짜리 점수 넣기
+        for(int i=0; i<member.size(); i++){
+            String recommendName = member.get(i);
+            int recommendNamePoint = memberPoint[i];
+            recommendPoint.put(recommendName, recommendNamePoint);
+        }
+        // 방문자 횟수 점수 추가
+        for(int i=0; i< visitorList.size(); i++){
+            String visitorName = visitorList.get(i);
+            int visitorNamePoint = visitorPoint[i];
+
+            if(recommendPoint.containsKey(visitorName)){
+                int point = recommendPoint.get(visitorName);
+                recommendPoint.remove(visitorName);
+                recommendPoint.put(visitorName, point + visitorNamePoint);
+            } else {
+                recommendPoint.put(visitorName, visitorNamePoint);
+            }
+        }
+
+
 
 
         return answer;
