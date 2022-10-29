@@ -3,7 +3,9 @@ package onboarding;
 public class Problem4 {
     public static String solution(String word) {
     	
-    	String answer = "";
+    	char[] wordArr = word.toCharArray();
+    	convertCharArrReverse(wordArr);
+    	String answer = charArrToString(wordArr);
         return answer;
     }
     public static void convertCharArrReverse(char[] wordArr) {
@@ -21,5 +23,13 @@ public class Problem4 {
     	}
     	return convertedChar;
     }
-    
+    public static String charArrToString(char[] wordArr) {
+    	String result;
+    	StringBuilder sb = new StringBuilder();
+    	for(int i=0; i<wordArr.length; i++) {
+    		sb.append(wordArr[i]);
+    	}
+    	result = sb.toString();
+    	return result;
+    }
 }
