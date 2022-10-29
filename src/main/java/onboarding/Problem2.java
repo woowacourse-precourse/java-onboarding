@@ -16,6 +16,14 @@ public class Problem2 {
         return str.toCharArray();
     }
 
+    private static String getCharDequeToString(Deque<Character> charDeque) {
+        StringBuilder sb = new StringBuilder();
+        for (char dequeueElement : charDeque) {
+            sb.append(dequeueElement);
+        }
+        return sb.toString();
+    }
+
     private static boolean isOutputBlank(Deque<Character> deque) {
         return deque.isEmpty();
     }
@@ -33,7 +41,7 @@ public class Problem2 {
     }
 
     private static boolean isSamePrevElement(char currentElement, char prevElement, Deque<Character> deque) {
-        if(currentElement == prevElement){
+        if (currentElement == prevElement) {
             removeDuplicate(deque);
             return true;
         }
