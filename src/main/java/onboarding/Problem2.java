@@ -22,20 +22,23 @@ public class Problem2 {
     // 2. 리스트 요소 중 연속되는 문자 확인
     static int getCheckList(List<Character> cryptogramList)
     {
-        // 이전 문자 초기화
-        char preAlpha = cryptogramList.get(0);
-
-        for(int idx=1; idx<cryptogramList.size(); idx++)
+        // 리스트에 요소가 존재하는 경우
+        if(cryptogramList.size() != 0)
         {
-            // 이전 문자와 현 문자 비교
-            if(preAlpha == cryptogramList.get(idx))
-                return idx-1;
+            // 이전 문자 초기화
+            char preAlpha = cryptogramList.get(0);
 
-            // 이전 문자 변경
-            preAlpha = cryptogramList.get(idx);
+            for (int idx = 1; idx < cryptogramList.size(); idx++) {
+                // 이전 문자와 현 문자 비교
+                if (preAlpha == cryptogramList.get(idx))
+                    return idx - 1;
+
+                // 이전 문자 변경
+                preAlpha = cryptogramList.get(idx);
+            }
         }
 
-        return 0;
+        return -1;
     }
 
     // 3. 리스트 내 연속되는 중복 문자 제거
@@ -52,11 +55,17 @@ public class Problem2 {
                 endIndex = idx-1;
                 break;
             }
+            
+            // 끝까지 중복인 경우
+            if(idx == cryptogramList.size()-1)
+                endIndex = idx;
         }
 
         // 연속된 중복 문자 제거
         for(int rm=endIndex; rm>=startIndex; rm--)
+        {
             cryptogramList.remove(rm);
+        }
     }
 
     public static String solution(String cryptogram) {
@@ -64,16 +73,28 @@ public class Problem2 {
 
         // 문자열 리스트화
         List<Character> cryptogramList = getTransList(cryptogram);
-
-        // 연속되는 문자 인덱스 값 받아오기
-        int listIndex = getCheckList(cryptogramList);
         
-        // 중복 문자 확인 후 제거
-        deleteAlpha(cryptogramList,listIndex);
+        // 4. 2~3번 작업 반복하기
+        while(true)
+        {
+            // 연속되는 문자 인덱스 값 받아오기
+            int listIndex = getCheckList(cryptogramList);
 
-        // 문자 제거 후 결과 확인
-        System.out.println("연속 문자 제거 리스트 : " + cryptogramList);
+            // 연속되는 문자가 없는 경우
+            if(listIndex == -1)
+            {
+                break;
+            }
+            
+            // 연속되는 문자가 있는 경우
+            else
+                // 중복 문자 확인 후 제거
+                deleteAlpha(cryptogramList,listIndex);
+        }
 
+        // 작업 반복 결과 확인
+        System.out.println(cryptogramList);
+        
         return answer;
     }
 }
@@ -82,7 +103,9 @@ public class Problem2 {
 // 1. 입력받은 문자열을 문자를 요소로하는 리스트로 변환
 // 2. 리스트 요소 중 연속되는 문자 시작 인덱스 확인
 // 3. 리스트 내 문자 제거
-// 4. "browoanoommnaon" → "browoannaon" → "browoaaon" → "browoon" → "brown"
+// 4. 2~3번 작업 반복
+// 5. 리스트를 문자열로 변환
+// 6. "browoanoommnaon" → "browoannaon" → "browoaaon" → "browoon" → "brown"
 
 // 프로그래밍 요구 사항
 // ✔ 1. JDK 11 버전
