@@ -233,5 +233,23 @@ class ApplicationTest {
             List<String> result = List.of("andole", "jun", "bedi");
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
+
+        @Test
+        void initializeRelationTest() {
+            String user = "mrko";
+            List<List<String>> friends = List.of(
+                    List.of("donut", "andole"),
+                    List.of("donut", "jun"),
+                    List.of("donut", "mrko"),
+                    List.of("shakevan", "andole"),
+                    List.of("shakevan", "jun"),
+                    List.of("shakevan", "mrko")
+            );
+            Map<String, List<String>> relation = Problem7.initializeRelation(friends);
+            List<String> friendsOfUser = relation.get(user);
+            assertThat(friendsOfUser.contains("jun")).isEqualTo(false);
+            assertThat(friendsOfUser.contains("donut")).isEqualTo(true);
+            assertThat(friendsOfUser.contains("andole")).isEqualTo(false);
+        }
     }
 }
