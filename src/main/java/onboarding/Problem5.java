@@ -17,7 +17,10 @@ public class Problem5 {
         money -= 50_000 * answer.get(0);
 
         answer.add(calculateTenThousand(money));
-        money = 10_000 * answer.get(1);
+        money -= 10_000 * answer.get(1);
+
+        answer.add(calculateFiveThousand(money));
+        money -= 5_000 * answer.get(2);
 
         return answer;
     }
@@ -32,6 +35,10 @@ public class Problem5 {
 
     public static int calculateTenThousand(int money) {
         return money / 10_000;
+    }
+
+    public static int calculateFiveThousand(int money) {
+        return money / 5_000;
     }
 
 }
