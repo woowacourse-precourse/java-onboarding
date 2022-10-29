@@ -9,14 +9,14 @@ public class Problem3 {
 
     public static int solution(int number) {
         int[] numRange = getNumRange(number);
-        return getCntSum(numRange);
+        return getSum(numRange);
     }
 
     private static int[] getNumRange(int number) {
         return IntStream.rangeClosed(MIN_RANGE, number).toArray();
     }
 
-    private static int getCntSum(int[] numRange) {
+    private static int getSum(int[] numRange) {
         int result = 0;
         for (int num : numRange) {
             result = result + getCnt(num);
