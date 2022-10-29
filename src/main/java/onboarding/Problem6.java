@@ -1,10 +1,14 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class Problem6 {
     static final int EMAIL_INDEX = 0;
@@ -30,6 +34,8 @@ public class Problem6 {
 
     private static List<String> getDuplicatedNickNameCrew(List<List<String>> forms) {
         Map<String, Map<String, List<String>>> nickNameMap = new HashMap<>();
+        Set<String> duplicatedNickNameEmails = new HashSet<>();
+        List<String> duplicatedNickNameEmailsToList = new ArrayList<>();
         String crewEmail;
         List<String> crewEmails;
         String crewNickName;
@@ -41,7 +47,6 @@ public class Problem6 {
             crewNickName = crew.get(NICK_NAME_INDEX);
             for (int i = 0; i < crewNickName.length(); i++) {
                 nickNameOneLetter = crewNickName.substring(i, i + 1);
-                System.out.println("nickNameOneLetter: " + nickNameOneLetter);
                 if (!(nickNameMap.containsKey(nickNameOneLetter))) {
                     Map<String, List<String>> crewInfo = new HashMap<>();
                     if (i < crewNickName.length() - 1) {
@@ -61,6 +66,9 @@ public class Problem6 {
                         } else if (nickNameMap.get(nickNameOneLetter).containsKey(nickNameNextOneLetter)) {
                             crewEmails = nickNameMap.get(nickNameOneLetter).get(nickNameNextOneLetter);
                             crewEmails.add(crewEmail);
+                            for (String crewEmailToSet : crewEmails) {
+                                duplicatedNickNameEmails.add(crewEmailToSet);
+                            }
                             nickNameMap.get(nickNameOneLetter).put(nickNameNextOneLetter, crewEmails);
                         }
                     }
@@ -70,7 +78,10 @@ public class Problem6 {
         // for (String a : nickNameMap.keySet()) {
         //     System.out.println("[key]: " + a + " [value]: " + nickNameMap.get(a));
         // }
-        return null;
+        duplicatedNickNameEmailsToList = new ArrayList<>(duplicatedNickNameEmails);
+        Collections.sort(duplicatedNickNameEmailsToList);
+        // System.out.println(duplicatedNickNameEmailsToList);
+        return duplicatedNickNameEmailsToList;
     }
 
     private static boolean isValidInput(List<List<String>> forms) {
