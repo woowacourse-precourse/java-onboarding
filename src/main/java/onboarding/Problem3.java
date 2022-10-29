@@ -12,6 +12,7 @@ public class Problem3 {
         int answer = 0;
 
         playGame(number);
+        answer=crap;
         return answer;
     }
 
@@ -25,9 +26,14 @@ public class Problem3 {
     static void decideCrap(int num){
         while(num>0){
             if(num%10==3||num%10==6||num%10==9){
-
+                crap();
             }
             num/=10;
         }
+    }
+
+    static void crap(){
+        //System.out.print("짝!");
+        crap++;
     }
 }
