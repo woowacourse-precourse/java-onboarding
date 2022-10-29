@@ -5,16 +5,17 @@ import java.util.*;
 public class Problem7 {
 
     //<유저 : 친구목록>인 맵
-    private static HashMap<String, HashSet<String>> friendMap = new HashMap<>();
+    private static Map<String, HashSet<String>> friendMap = new HashMap<>();
     //<유저 : 점수>인 맵
-    private static HashMap<String, Integer> scoreMap = new HashMap<>();
+    private static Map<String, Integer> scoreMap = new HashMap<>();
     // 내 이름
     private static String myName;
     // 이미 친구
-    private static HashSet<String> userFriend;
+    private static Set<String> userFriend;
     // 추천 명단
     private static List<String> answer = new LinkedList<>();
 
+    //solution()
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
         //class 내에서 정적 변수로 쓰기 위해서 초기화
@@ -32,8 +33,32 @@ public class Problem7 {
         return answer;
     }
 
+    // 추천 친구
     private static void recommendFriend() {
-        
+        //점수를 키값으로 갖고 그 점수에 해당되는 유저를 리스트로 갖는 맵으로 변환
+        HashMap<Integer, List<String>> scoreToUser = new HashMap<>();
+        for (String user : scoreMap.keySet()) {
+            int score = scoreMap.get(user);
+            if (scoreToUser.containsKey(score)) {
+                scoreToUser.get(score).add(user);
+            } else {
+                List<String> list = new ArrayList<>();
+                list.add(user);
+                scoreToUser.put(score, list);
+            }
+        }
+        List<Integer> scoreList = new ArrayList<>(scoreToUser.keySet());
+        scoreList.sort((o1, o2) -> o2.compareTo(o1));
+        int idx = 0;
+        loop : for (Integer score : scoreList) {
+            List<String> users = scoreToUser.get(score);
+            users.sort((o1, o2)-> o1.compareTo(o2));
+            for (String user : users) {
+                answer.add(user);
+                idx++;
+                if (idx == 5) break loop;
+            }
+        }
     }
 
 
