@@ -26,12 +26,19 @@ public class Problem6 {
                 && secNick.length() <= 19 && Pattern.matches("^[가-힣]*$", secNick)) {
 
             for (int k = 0; k < firstNick.length() - 1; k++) {
-                String substringOfFisrtNick = firstNick.substring(k, k + 2);
+                String substringOfFirstNick = firstNick.substring(k, k + 2);
 
-                if (secNick.indexOf(substringOfFisrtNick) != -1) {
+                if (secNick.indexOf(substringOfFirstNick) != -1) {
+                    String firstEmail = forms.get(i).get(0);
+                    String secEmail = forms.get(j).get(0);
 
+                    addEmails(forms, answer, i, j, firstEmail, secEmail);
                 }
             }
         }
+    }
+
+    private static void addEmails(List<List<String>> forms, List<String> answer, int i, int j, String firstEmail, String secEmail) {
+
     }
 }
