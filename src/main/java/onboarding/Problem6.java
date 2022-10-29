@@ -12,12 +12,27 @@ public class Problem6 {
     /*
     *기능 정리
     *1. forms의 이름을 key, email은 value로 <String,String> hashMap에 저장
-    *2. key로 저장해둔 이름을 꺼내서 2글자 이상으로 만들 수 있는 문자열 경우의 수를 모두 따짐. 그리고 <String,int>hashMap에 각 문자열 개수를 저장.
-    *3. <String,int>hashMap의 value값이 2이상인 값은 중복된 이름이므로 해당 key값을 가진 value(email)을 list에 저장
-    *4. list 정렬 하고 return
+    *2. 이름에 대해 2글자 이상으로 만들 수 있는 문자열 경우의 수를 모두 따짐.
+    *3. 그리고 <String,int>hashMap에 각 문자열 개수를 저장.
+    *4. <String,int>hashMap의 value값이 2이상인 값은 중복된 이름이므로 해당 key값을 가진 value(email)을 list에 저장
+    *5. list 정렬 하고 return
     * */
 
+    static void createNumberOfCases(String name){
+
+    }
+    static void setFormMap(List<List<String>> forms){
+        for(int i=0; i<forms.size(); i++){
+            formMap.put(forms.get(i).get(1),forms.get(i).get(0));
+        }
+    }
+
+    static void setNameCountMap(List<List<String>> forms){
+
+    }
+
     public static List<String> solution(List<List<String>> forms) {
+        setFormMap(forms);
         List<String> answer =
         return answer;
     }
