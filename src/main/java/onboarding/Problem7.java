@@ -42,8 +42,24 @@ public class Problem7 {
             friendList[bIdx].add(A);
         }
 
+        // 사용자와 함께 아는 친구의 점수를 매김(10점)
+        int[] memberPoint = new int[member.size()]; // 추천 점수 표시할 배열
+        int userIdx = member.indexOf(user); // 파라미터로 받은 유저의 인덱스
 
+        List<String> userFriend = friendList[userIdx]; // 파라미터로 받은 유저의 직접 친구 리스트
+        for(int i=0; i<userFriend.size(); i++){
+            String friendOfUser = userFriend.get(i); // 파라미터로 받은 유저의 직접 친구
 
+            int friendOfUserIdx = member.indexOf(friendOfUser); // 파라미터로 받은 유저의 직접 친구 인덱스
+            List<String> indirectFriendList = friendList[friendOfUserIdx]; // 파라미터로 받은 유저의 직접 친구와 친구 관계인 유저 리스트
+            
+            Iterator<String> indirectFriendItr = indirectFriendList.iterator();
+            for(int j=0; j< indirectFriendList.size(); j++){
+                String indirectFriend = indirectFriendItr.next();
+                int indirectFriendIdx = member.indexOf(indirectFriend);
+                memberPoint[indirectFriendIdx] += 10;
+            }
+        }
 
 
 
