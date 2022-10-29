@@ -230,6 +230,12 @@ class ApplicationTest {
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
         @Test
+        void totalTest() {
+        	String word = "Woo wA PreCOuRsE";
+        	String expected = "Dll dZ KivXLfIhV";
+        	assertThat(Problem4.solution(word)).isEqualTo(expected);
+        }
+        @Test
         void convertCharReverseTest() {
         	char[] lowerAlphabets = new char[26];
         	for(int i=0; i<lowerAlphabets.length; i++) {
