@@ -21,10 +21,8 @@ public class NicknameCheckerTest {
     void save_nickname_after_check_duplicate() {
         String nickname = "제이제이";
         nicknameChecker.saveNickname(nickname);
-        assertThat(nicknameChecker.isDuplicate("제이")).isFalse();
-        assertThat(nicknameChecker.isDuplicate("이제")).isFalse();
+        assertThat(nicknameChecker.isDuplicate(nickname)).isFalse();
         nicknameChecker.saveNickname(nickname);
-        assertThat(nicknameChecker.isDuplicate("제이")).isTrue();
-        assertThat(nicknameChecker.isDuplicate("이제")).isTrue();
+        assertThat(nicknameChecker.isDuplicate(nickname)).isTrue();
     }
 }
