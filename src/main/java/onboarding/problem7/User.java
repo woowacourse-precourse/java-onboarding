@@ -24,12 +24,12 @@ public class User {
     }
 
     public List<String> getRecommendedUsers() {
-        getScoresByUsers();
+        getScoresForUsers();
         final Comparator<String> comp = Comparator.comparingInt(SCORES_BY_USERS::get);
         return SCORES_BY_USERS.keySet().stream().sorted(comp.reversed()).limit(5).collect(Collectors.toList());
     }
 
-    public void getScoresByUsers() {
+    public void getScoresForUsers() {
         getRelationshipsByUser();
         getScoresByOverlappedUsers();
         getScoresByVisitedUsers();
