@@ -31,7 +31,6 @@ public class Problem5 {
         }
         return howMany;
     }
-
     public static List<Integer> moneyInitList(List<Integer> list){
         list = Arrays.asList(50000,10000,5000,1000,500,100,50,10,1);
         return list;
