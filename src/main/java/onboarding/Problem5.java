@@ -30,7 +30,7 @@ class Money {
 
     Money(int origin) {
         this.origin = origin;
-        this.oneMillionWon = this.origin / 10000 % 10;
+        this.oneMillionWon = this.origin / 10000;
         this.oneThousandWon = this.origin / 1000 % 10;
         this.oneHundredWon = this.origin / 100 % 10;
         this.tenWon = this.origin / 10 % 10;
