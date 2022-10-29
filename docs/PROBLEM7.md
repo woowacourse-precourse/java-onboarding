@@ -24,3 +24,11 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능구현
+1. 모든 친구 관계 만드는 기능
+   - 한 개의 친구 관계를 보고 두사람 사이의 친구 관계를 생성하는 기능
+2. 친구 추천 점수를 계산하는 기능
+   - 친구의 친구인 경우의 점수를 계산하는 기능
+   - 방문자인 경우의 점수를 계산하는 기능
+3. 친구 추천 결과를 만드는 기능
