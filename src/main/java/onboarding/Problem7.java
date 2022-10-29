@@ -2,8 +2,6 @@ package onboarding;
 
 import java.util.*;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 public class Problem7 {
     static class User {
         List<String> friendList;
@@ -23,15 +21,18 @@ public class Problem7 {
 
             // 사용자와 함께 아는 친구의 수 계산
             // 친구가 user와 아는 사이인가? isFriendToUser가 true인가?
-            for (String friend : friendList) {
-                if (hashMap.get(friend).isFriendToUser) {
-                    this.score += 10;
+            // A - B - C
+            // 삼각관계 처리
+            if (!this.isFriendToUser) {
+                for (String friend : friendList) {
+
+                    if (hashMap.get(friend).isFriendToUser) {
+                        this.score += 10;
+                    }
                 }
+                // 사용자의 타임 라인에 방문한 횟수 계산
+                score += this.visitCount;
             }
-
-
-            // 사용자의 타임 라인에 방문한 횟수 계산
-            score += this.visitCount;
         }
 
         @Override
@@ -128,10 +129,12 @@ public class Problem7 {
             if (count == 5) {
                 break;
             }
+
             // 이미 친구면 추천하지 않음
-            if(entryList.get(i).getValue().isFriendToUser){
+            if (entryList.get(i).getValue().isFriendToUser) {
                 continue;
             }
+
             // 점수가 0이면 추천하지 않음
             if (entryList.get(i).getValue().score == 0) {
                 continue;
