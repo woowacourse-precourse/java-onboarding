@@ -14,10 +14,8 @@ public class Problem6 {
 
         Set<String> overlappingName = getOverlappingName(names);
 
-        return overlappingName.stream()
-                .map(formsMap::get)
-                .sorted()
-                .collect(Collectors.toList());
+        return getSortedValues(formsMap, overlappingName);
+
     }
 
     private static Set<String> getOverlappingName(List<String> names){
@@ -33,13 +31,19 @@ public class Problem6 {
                 overlappingMap.put(overlappingWord, registeredNames);
             }
         }
-        overlappingMap.entrySet().stream()
-                .forEach(i -> System.out.println(i.getKey() + " " + i.getValue()));
 
         return overlappingMap.values().stream()
                 .filter(i -> i.size() > 1)
                 .flatMap(Collection::stream)
                 .collect(Collectors.toSet());
+    }
+
+    private static List<String> getSortedValues(Map<String, String> map, Set<String> keys){
+        return keys.stream()
+                .map(map::get)
+                .sorted()
+                .collect(Collectors.toList());
+
     }
 }
 
