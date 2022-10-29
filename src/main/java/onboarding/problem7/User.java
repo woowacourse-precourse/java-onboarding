@@ -2,7 +2,7 @@ package onboarding.problem7;
 
 public class User {
 
-    private String name;
+    private final String name;
     private int score = 0;
 
     public static User createUser(String name) {
