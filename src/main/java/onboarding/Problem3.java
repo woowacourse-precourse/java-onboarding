@@ -18,6 +18,16 @@ public class Problem3 {
 
     private static int getCountOfNumber(int target, int number) {
         int count = 0;
+        while (true) {
+            int rest = number % TEN;
+            number /= TEN;
+            if (rest == target) {
+                count++;
+            }
+            if (number == 0) {
+                break;
+            }
+        }
         return count;
     }
 }
