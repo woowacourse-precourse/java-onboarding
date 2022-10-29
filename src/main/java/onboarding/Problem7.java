@@ -3,12 +3,14 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
-    public static TreeSet<String> userList;
-    public static HashMap<String, HashSet<String>> friendListInfo;
+    public static TreeSet<String> userList = new TreeSet<>();
+    public static HashMap<String, HashSet<String>> friendListInfo = new HashMap<>();
+    public static TreeMap<String,Integer> recommendScore = new TreeMap<>();
     public static void setUserList(String user, List<List<String>> friends, List<String> visitors) {
         HashSet<String> emptyList = new HashSet<>();
         friendListInfo.put(user,emptyList);
         userList.add(user);
+
         for(int index = 0; index < friends.size(); index++) {
             HashSet<String> emptyList2 = new HashSet<>();
             HashSet<String> emptyList3 = new HashSet<>();
@@ -20,6 +22,7 @@ public class Problem7 {
             userList.add(person1);
             userList.add(person2);
         }
+
         for(int index = 0; index < visitors.size(); index++) {
             HashSet<String> emptyList4 = new HashSet<>();
             String person = visitors.get(index);
@@ -44,7 +47,6 @@ public class Problem7 {
         }
     }
     public static List<String> calculateScore(String user, List<String> visitors) {
-        TreeMap<String,Integer> recommendScore = new TreeMap<>();
         Iterator<String> iter = userList.iterator();
 
         while(iter.hasNext()) {
@@ -69,18 +71,23 @@ public class Problem7 {
 
         List<String> nameList = new ArrayList<String>(recommendScore.keySet());
         Collections.sort(nameList,((o1, o2) -> Double.compare(recommendScore.get(o2),recommendScore.get(o1))));
-        System.out.println(nameList);
 
-        while(nameList.size() > 3) {
-            nameList.remove(3);
+        List<String> answer = selectRecommendFriend(nameList);
+
+        return answer;
+    }
+    public static List<String> selectRecommendFriend(List<String> nameList) {
+        List<String> answer = new ArrayList<>();
+        Iterator<String> iter = nameList.iterator();
+        for(int i = 0; i < 3; i++) {
+            String user = iter.next();
+            if(recommendScore.get(user) > 0){
+                answer.add(user);
+            }
         }
-
-        return nameList;
+        return answer;
     }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        userList = new TreeSet<>();
-        friendListInfo = new HashMap<>();
-
         setUserList(user,friends,visitors);
         setFriendList(friends);
         List<String> answer = calculateScore(user, visitors);
