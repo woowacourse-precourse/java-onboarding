@@ -13,8 +13,8 @@ public class Problem4 {
                 //알파벳 소문자일 경우 변환
                 answer += changeLowerCase(currentChar);
             }else{
-                //공백일 경우 유지
-                answer += ' ';
+                //알파벳 외의 문자
+                answer += currentChar;
             }
         }
 
