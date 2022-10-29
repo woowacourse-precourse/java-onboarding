@@ -69,6 +69,7 @@ class Problem1 {
         if(isInValidRange(pobi)==true && isInValidRange(crong)==true){
             int pobiScore=getScoreByMaxValue(pobi);
             int crongScore=getScoreByMaxValue(crong);
+            answer=compareScore(pobiScore, crongScore);
         } else {
             answer=-1;
         }
