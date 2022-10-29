@@ -5,6 +5,7 @@ import java.util.*;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> result = fillerEmail(forms);
+        result.sort(Comparator.naturalOrder());
         return result;
     }
 
