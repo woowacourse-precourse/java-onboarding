@@ -1,6 +1,6 @@
 package onboarding.problem2.domain;
 
-import onboarding.problem2.util.IndexCalculator;
+import onboarding.problem2.utils.IndexCalculator;
 
 import java.util.Objects;
 

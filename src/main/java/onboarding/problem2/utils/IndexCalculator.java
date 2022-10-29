@@ -1,4 +1,4 @@
-package onboarding.problem2.util;
+package onboarding.problem2.utils;
 
 import java.util.stream.IntStream;
 
