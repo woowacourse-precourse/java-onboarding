@@ -13,8 +13,10 @@ public class Problem4 {
         for (char element : word.toCharArray()) {
             if (isAlphabet(element)) {
                 if (isUpperCase(element)) {
-
+                    answer += convertUpper(element);
                 }
+                else
+                    answer += convertLower(element);
             }
             else
                 answer += element;
@@ -39,6 +41,11 @@ public class Problem4 {
 
     public static Character convertUpper(Character word) {
         int result = (UpperCaseMinCode + UpperCaseMaxCode) - (int) word;
+        return (char) result;
+    }
+
+    public static Character convertLower(Character word) {
+        int result = (LowerCaseMinCode + LowerCaseMaxCode) - (int) word;
         return (char) result;
     }
 }
