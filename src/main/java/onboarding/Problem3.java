@@ -4,6 +4,12 @@ public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
 
+        answer = getAnswer(number);
+
+        return answer;
+    }
+
+    private static int getAnswer(int number) {
         int threeNum=0;
         int sixNum=0;
         int nineNum=0;
@@ -16,9 +22,7 @@ public class Problem3 {
             nineNum+=countChar(s,'9');
         }
         // 2. 나온 3,6,9 의 갯수만큼 더하기
-        answer = threeNum + sixNum + nineNum;
-
-        return answer;
+        return threeNum + sixNum + nineNum;
     }
 
     public static int countChar(String str,char ch){
