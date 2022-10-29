@@ -3,6 +3,11 @@ package onboarding;
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
+        char[] chars = word.toCharArray();
+
+        for (int i = 0; word.length() > i; i++) {
+            answer+=translateCharacter(chars[i]);
+        }
         return answer;
     }
 
