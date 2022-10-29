@@ -5,6 +5,14 @@ public class Game {
     private static final char SIX = '6';
     private static final char NINE = '9';
 
+    public static int playGame(int number){
+        int clap = 0;
+        for (int gameNumber = 1; gameNumber <= number; gameNumber++){
+            clap += getNumberClap(gameNumber);
+        }
+        return clap;
+    }
+
     private static int getDigitClap(char digit) {
         int clap = 0;
         if((digit == THREE) || (digit == SIX) || (digit == NINE)){
