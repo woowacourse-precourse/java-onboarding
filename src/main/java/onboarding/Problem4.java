@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.regex.Pattern;
+
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
@@ -21,5 +23,13 @@ public class Problem4 {
 
     public static String convertLowerCaseLetterReverse(char letter){
         return Character.toString((char)(219 - letter));
+    }
+
+    public static boolean checkAlphabet(char letter){
+        String pattern = "^[a-zA-Z]*$";
+        if(Pattern.matches(pattern, String.valueOf(letter))){
+            return true;
+        }
+        return false;
     }
 }
