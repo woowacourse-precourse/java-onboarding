@@ -1,8 +1,8 @@
 package onboarding;
 
-import Excption.InputException;
-import Excption.PageException;
-import Excption.PageSortException;
+import Exception.InputException;
+import Exception.RangeException;
+import Exception.PageSortException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +20,7 @@ class Problem1 {
         }catch (InputException e1)
         {
             return -1;
-        }catch (PageException e2)
+        }catch (RangeException e2)
         {
             return -1;
         }catch (PageSortException e3)
@@ -97,7 +97,7 @@ class Problem1 {
      * @param crong crong에 제한 사항을 처리해준다
 
      */
-    public static void exception(List<Integer> pobi, List<Integer> crong) throws InputException,PageException,PageSortException {
+    public static void exception(List<Integer> pobi, List<Integer> crong) throws InputException, RangeException,PageSortException {
          /*
             ex1) 23, 24 => 23 - 24 = -1 * -1 = 정상
             ex2) 24, 23 => 24 - 23 = 1 * -1 = 비정상
@@ -107,7 +107,7 @@ class Problem1 {
         if(pobi.size()>=3 || crong.size()>=3) throw new InputException("지정하지 않은 범위에 값이 입력되었습니다");
         else if((pobi.get(0)-pobi.get(1))*-1!=1||(crong.get(0)-crong.get(1))*-1!=1) throw new PageSortException("연속되지 않은 페이지입니다");
         else if(pobi.get(0)<=0||pobi.get(0)>=401||pobi.get(1)<=0||pobi.get(1)>=401||
-                crong.get(0)<=0||crong.get(0)>=401||crong.get(1)<=0||crong.get(1)>=401) throw new PageException("페이지의 범위가 아닙니다");
+                crong.get(0)<=0||crong.get(0)>=401||crong.get(1)<=0||crong.get(1)>=401) throw new RangeException("페이지의 범위가 아닙니다");
 
     }
 }

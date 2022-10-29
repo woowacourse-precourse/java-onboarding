@@ -1,4 +1,4 @@
-package Excption;
+package Exception;
 
 /**
  * 입력값의 길이가 2이상인 예외
