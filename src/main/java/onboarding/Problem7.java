@@ -76,20 +76,19 @@ public class Problem7 {
             @Override
             public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
                 if(o1.getValue() != o2.getValue()){
-                    return o1.getValue() - o2.getValue();
+                    return o2.getValue() - o1.getValue();
                 }else{
                     return o1.getKey().compareTo(o2.getKey());
                 }
             }
         });
 
+        int count = 0;
         for (Map.Entry<String, Integer> ans : entryList){
+            if (count == 5) break;
             answer.add(ans.getKey());
+            count++;
         }
-
-        System.out.println(userFriends);
-        System.out.println(nonFriends);
-        System.out.println(answer);
 
         return answer;
     }
@@ -119,21 +118,33 @@ public class Problem7 {
 //        );
 //        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
 
-        String user = "mrko";
-        List<List<String>> friends = List.of(
-                List.of("mrko", "jun"),
-                List.of("bedi", "jun"),
-                List.of("bedi", "donut"),
-                List.of("donut", "jun"),
-                List.of("donut", "mrko"),
-                List.of("shakevan", "andole"),
-                List.of("jun", "andole"),
-                List.of("shakevan", "jun"),
-                List.of("shakevan", "mrko")
-        );
-        List<String> visitors = List.of("donut", "shakevan");
-        List<String> result = List.of("andole", "bedi");
+//        String user = "mrko";
+//        List<List<String>> friends = List.of(
+//                List.of("mrko", "jun"),
+//                List.of("bedi", "jun"),
+//                List.of("bedi", "donut"),
+//                List.of("donut", "jun"),
+//                List.of("donut", "mrko"),
+//                List.of("shakevan", "andole"),
+//                List.of("jun", "andole"),
+//                List.of("shakevan", "jun"),
+//                List.of("shakevan", "mrko")
+//        );
+//        List<String> visitors = List.of("donut", "shakevan");
+//        List<String> result = List.of("andole", "bedi");
 
+        String user = "andole";
+        List<List<String>>friends = List.of(
+                List.of("andole", "jun"),
+                List.of("donut", "jun"),
+                List.of("donut", "shakevan"),
+                List.of("shakevan", "andole"),
+                List.of("shakevan", "jun"),
+                List.of("shakevan", "bedi"),
+                List.of("anne", "jun")
+        );
+        List<String> visitors = List.of("donut", "mrko", "peter", "sam");
+        List<String> result = List.of("donut", "anne", "bedi", "mrko", "peter");
         solution(user, friends, visitors);
     }
 }
