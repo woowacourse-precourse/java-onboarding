@@ -6,6 +6,7 @@ import java.util.Set;
 public class Problem3 {
 
     private static Set<Character> clapRule = new HashSet<>();
+    private static final int START_NUMBER = 1;
 
     public static int solution(int number) {
         addClapRule();
