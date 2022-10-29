@@ -16,11 +16,9 @@ public class Problem3 {
         return cnt;
     }
     public static int solution(int number) {
-
-        int sum369Count = IntStream.range(1, number+1)
-                .map(num -> get369Count(num))
-                .sum();
-
-        return sum369Count;
+        
+        return IntStream.range(1, number+1)
+                .reduce((total, num) -> total + get369Count(num))
+                .orElse(0);
     }
 }
