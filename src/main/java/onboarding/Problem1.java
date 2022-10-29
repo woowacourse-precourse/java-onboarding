@@ -15,6 +15,12 @@ class Problem1 {
         return !PageValidator.validate(pobi) || !PageValidator.validate(crong);
     }
 
+    private static int maxScore(List<Integer> pages) {
+        int left = pages.get(0);
+        int right = pages.get(1);
+        return Math.max(maxScore(left), maxScore(right));
+    }
+
     private static int maxScore(int page) {
         int sum = sum(page);
         int product = multiply(page);
