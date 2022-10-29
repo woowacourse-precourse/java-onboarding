@@ -15,6 +15,7 @@
         - 공동 친구 수
         - 방문 횟수
     2) 메서드
+        - id getter
         - 공동 친구 수 getter / setter
         - 방문 횟수 getter / setter
         - 점수 구하기
