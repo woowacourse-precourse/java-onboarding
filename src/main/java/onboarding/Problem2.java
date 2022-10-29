@@ -22,27 +22,29 @@ public class Problem2 {
      */
     public static String decrypt(String encrypt) {
         Stack<Character> stack = new Stack<>();
-        StringBuilder result = new StringBuilder();
+        boolean isNotEnd = true;
 
-        char beforeChar = '0';
+        while (isNotEnd) {
+            StringBuilder result = new StringBuilder();
+            isNotEnd = false;
 
-        for (int idx = 0, size = encrypt.length(); idx < size; idx++) {
-            char currentChar = encrypt.charAt(idx);
+            for (int idx = 0, size = encrypt.length(); idx < size; idx++) {
+                char currentChar = encrypt.charAt(idx);
 
-            if (stack.isEmpty()) stack.push(currentChar);
-            else if (stack.peek() != currentChar && beforeChar != currentChar) stack.push(currentChar);
-            else if (stack.peek() == currentChar) {
-                while (!stack.isEmpty() && stack.peek() == currentChar) stack.pop();
+                if (stack.isEmpty()) stack.push(currentChar);
+                else if (stack.peek() != currentChar) stack.push(currentChar);
+                else if (stack.peek() == currentChar) {
+                    isNotEnd = true;
+                    while (!stack.isEmpty() && stack.peek() == currentChar) stack.pop();
+                }
             }
 
-            beforeChar = currentChar;
+            while (!stack.isEmpty()) result.append(stack.pop());
+            result.reverse();
+
+            encrypt = result.toString();
         }
 
-        while (!stack.isEmpty()) {
-            result.append(stack.pop());
-        }
-        result.reverse();
-
-        return result.toString();
+        return encrypt;
     }
 }
