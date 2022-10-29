@@ -6,19 +6,6 @@ import static java.lang.Math.max;
 
 class Problem1 {
 
-    // 문제 기능 목록
-    // 왼쪽 페이지, 오른쪽 페이지가 범위내에 있는지 확인하는 기능
-    // 왼쪽, 오른쪽 페이지가 홀수, 짝수로 되어있는지 확인하는 기능
-    // 왼쪽 오른쪽 페이지의 차가 1인지 확인하는 기능
-    // 위 기능이 모두 성립하는지 확인하는 기능
-    // 각 자릿수 더하는 기능
-    // 각 자릿수 곱하는 기능
-    // 더한것과 곱한것중 더 큰 것 선택하는 기능
-    // 왼쪽과 오른쪽중 더 큰 것 선택하는 기능
-    // 포비와 크롱의 결과에 따른 숫자 리턴하는 기능
-
-
-    // solution함수가 static이기 때문에 다른 함수들도 static으로 해야한다.
     // 모든 조건을 만족하는지 판별(페이지가 범위내에 있는지 * 서로 인접한 페이지인지 * 왼쪽이 홀수 오른쪽이 짝수인지)
     static boolean checkValid(List<Integer> pages) {
         return checkInterval(pages) && checkDiff(pages) && checkOddEven(pages);
