@@ -20,4 +20,18 @@ public class User {
         this.friends = friends;
         this.visitors = visitors;
     }
+
+    private void getRelationshipsByUser() {
+        for (List<String> relation : friends) {
+            String user1 = relation.get(0);
+            String user2 = relation.get(1);
+
+            if (user1.equals(this.name)) {
+                relationships.add(user2);
+            }
+            if (user2.equals(this.name)) {
+                relationships.add(user1);
+            }
+        }
+    }
 }
