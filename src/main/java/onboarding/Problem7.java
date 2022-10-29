@@ -136,4 +136,8 @@ class Recommendation {
         this.userId = userId;
         intimacies = new HashMap<>();
     }
+
+    public void addIntimacy (Intimacy intimacy) {
+        intimacies.put(intimacy.getUserId(), intimacy);
+    }
 }
