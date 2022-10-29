@@ -4,8 +4,15 @@ import java.util.stream.Stream;
 
 public class Problem3 {
     public static int solution(int number) {
-        int answer = count(number);
-        return answer;
+        try {
+            validation(number);
+
+            int answer = count(number);
+            return answer;
+        } catch (RuntimeException e) {
+            throw e;
+        }
+
     }
 
     public static int clap(int number) {
@@ -26,5 +33,11 @@ public class Problem3 {
             sum += clap(i);
         }
         return sum;
+    }
+
+    public static void validation(int number) {
+        if (number<1 || number > 10000) {
+            throw new RuntimeException("숫자는 1 이상 10000 이하입니다.");
+        }
     }
 }
