@@ -17,7 +17,6 @@ public class Problem2 {
         StringBuilder sb = new StringBuilder();
         char prev = 0;
         int i = 0;
-
         for(char c : chars) {
             if(prev!=c) {
                 chars[i++] = c;
