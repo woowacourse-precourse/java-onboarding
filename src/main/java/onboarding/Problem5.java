@@ -13,6 +13,41 @@ public class Problem5 {
         answer = ATM.transfer(inputMoney.getWonCountList());
         return answer;
     }
+
+    public static void main(String[] args) {
+        Program5.start();
+        int inputMoneyInt = Program5.inputMoney();
+        Money inputMoney = Program5.makeMoneyObj(inputMoneyInt);
+        List<Integer> result = Program5.transfer(inputMoney);
+        Program5.end(inputMoneyInt, result);
+    }
+}
+
+class Program5 {
+
+    static void start() {
+        OutView5.printStart();
+    }
+
+    static int inputMoney() {
+        int origin = Input5.inputMoney();
+        Money.validateMoneyRange(origin);
+        return origin;
+    }
+
+    static Money makeMoneyObj(int origin) {
+        return new Money(origin);
+    }
+
+    static List<Integer> transfer(Money money) {
+        ArrayList<Integer> wonCountList = money.getWonCountList();
+        return ATM.transfer(wonCountList);
+    }
+
+    static void end(int inputMoney, List<Integer> result) {
+        OutView5.printHead();
+        OutView5.printResult(inputMoney, result);
+    }
 }
 
 class Input5 {
