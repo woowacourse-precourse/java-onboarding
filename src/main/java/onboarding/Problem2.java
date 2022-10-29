@@ -13,7 +13,7 @@ public class Problem2 {
      * 4. 스택의 요소를 꺼내서 역순으로 뒤집기
      */
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        StringBuilder answer = new StringBuilder();
         Stack<Character> stack = new Stack<>();
         char dup = ' ';
 
@@ -32,6 +32,11 @@ public class Problem2 {
             }
             stack.push(cur);
         }
-        return answer;
+        // 4. 스택의 요소를 꺼내서 역순으로 뒤집기
+        while(!stack.isEmpty()) {
+            answer.append(Character.toString(stack.pop()));
+        }
+        answer.reverse();
+        return answer.toString();
     }
 }
