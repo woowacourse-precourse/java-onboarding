@@ -25,8 +25,13 @@ class Problem1 {
      * @return : int, 계산된 최대 점수
      */
     public static int getScore(List<Integer> pages) {
-        int score = 0;
-        return score;
+        int leftPage = pages.get(0);
+        int rightPage = pages.get(1);
+
+        int leftPageScore = Math.max(addEachNumber(leftPage), multipleEachNumber(leftPage));
+        int rightPageScore = Math.max(addEachNumber(rightPage), multipleEachNumber(rightPage));
+
+        return Math.max(leftPageScore, rightPageScore);
     }
 
     /**
