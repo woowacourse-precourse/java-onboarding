@@ -3,9 +3,20 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+    public static final int WIN_NUMBER = 1;
+    public static final int LOSE_NUMBER = 2;
+    public static final int DRAW_NUMBER = 0;
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int pobiNumber = calculateMaxNumber(pobi);
+        int crongNumber = calculateMaxNumber(crong);
+        int answer = compare(pobiNumber, crongNumber);
         return answer;
+    }
+
+    public static int compare(int number, int compareNumber){
+        if(number > compareNumber) return WIN_NUMBER;
+        if(number < compareNumber) return LOSE_NUMBER;
+        return DRAW_NUMBER;
     }
 
     public static int calculateMaxNumber(List<Integer> pageNumbers){
