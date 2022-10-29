@@ -28,6 +28,14 @@ public class Problem1Test {
     }
 
     @Test
+    @DisplayName("페이지 번호의 각 자리 숫자의 총합과 총곱 중 131이 주어지면 총합인 5가 더 크다.")
+    void calculatePageScore_With131_WillBe5() {
+        int pageNumber = 131;
+        int result = 5;
+        assertThat(Problem1.calculatePageScore(pageNumber)).isEqualTo(result);
+    }
+
+    @Test
     @DisplayName("입력값 무효 #1, 왼쪽 페이지 번호가 홀수가 아니다.")
     void invalidInput_LeftPageNumberIsNotOdd() {
         List<Integer> pobi = List.of(100, 102);
