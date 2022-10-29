@@ -1,6 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Problem5 {
@@ -9,8 +9,15 @@ public class Problem5 {
     public static final int MAXIMUM_NUMBER = 1000000;
 
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
         validateRange(money);
+
+        List<Integer> answer = new ArrayList<>();
+
+        for (int moneyUnit : MONEY_UNIT) {
+            answer.add(money / moneyUnit);
+            money = money % moneyUnit;
+        }
+
         return answer;
     }
 
