@@ -59,5 +59,13 @@ public class Problem7 {
         }
     }
 
+    private static void giveScoreIfNotUsersFriend(List<String> relation){
+        if(leftIsNotFriendButRight(relation)) {
+            giveScoreForFriendTo(relation.get(LEFT_INDEX));
+            return;
+        }
+        if(rightIsNotFriendButLeft(relation)) giveScoreForFriendTo(relation.get(RIGHT_INDEX));
+    }
+
 
 }
