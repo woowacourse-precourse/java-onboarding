@@ -29,10 +29,6 @@ public class Score {
         return Integer.compare(this.score, otherScore.score);
     }
     
-    public int getScore() {
-        return score;
-    }
-    
     @Override
     public String toString() {
         return "Score{" +
