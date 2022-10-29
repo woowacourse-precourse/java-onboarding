@@ -15,4 +15,15 @@ public class Problem3 {
         return answer;
     }
 
+    /**
+     * 문자열에 존재하는 clapNum (3/6/9)를 제거한다.
+     *
+     * @param strNum 기준 문자열
+     * @param clapNum 369 게임의 기준이 되는 번호 (3/6/9)
+     * @return String - 제거가 완료된 문자열을 리턴한다.
+     */
+    private static String removeClapNum(String strNum, String clapNum) {
+        return strNum.replaceAll(clapNum, "");
+    }
+
 }
