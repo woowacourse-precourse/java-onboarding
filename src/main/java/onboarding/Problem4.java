@@ -6,6 +6,7 @@ import java.util.Map;
 public class Problem4 {
 
   private static Map<String, String> greenFrogDictionary;
+  private static final int MAX_WORD_LENGTH = 1000;
 
   public static String solution(String word) {
     makeGreenFrogDictionary();
@@ -46,7 +47,14 @@ public class Problem4 {
         splitWord[i] = greenFrogDictionary.get(splitWord[i]);
       }
     }
-    return String.join("",splitWord);
+    return String.join("", splitWord);
+  }
+
+  public static boolean isAllowedStringLength(int wordLength) throws IllegalStateException {
+    if (wordLength < 1 || wordLength > MAX_WORD_LENGTH) {
+      throw new IllegalStateException("허용된 문자열 길이가 아닙니다.");
+    }
+    return true;
   }
 
 }
