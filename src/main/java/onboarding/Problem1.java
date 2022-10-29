@@ -17,6 +17,13 @@ class Problem1 {
 		int pobiScore = Math.max(getBigScore(pobi.get(0)), getBigScore(pobi.get(1)));
 		int crongScore = Math.max(getBigScore(crong.get(0)), getBigScore(crong.get(1)));
 
+		if(pobiScore > crongScore)
+			answer = 1;
+		else if(pobiScore == crongScore)
+			answer = 0;
+		else
+			answer = 2;
+
 		return answer;
 	}
 
