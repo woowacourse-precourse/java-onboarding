@@ -10,6 +10,8 @@ public class Problem3 {
 
     public static int solution(int number) {
         addClapRule();
+        int allClapCount = 0;
+
         int answer = 0;
         return answer;
     }
