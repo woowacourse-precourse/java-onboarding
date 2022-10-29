@@ -7,10 +7,10 @@
 package onboarding;
 
 /**
- * 우아한 테크코스 - 프리코스 1주차 페이지 번호 게임
+ * 우아한 테크코스 - 프리코스 1주차 암호문 해독
  *
  * @author 이준현
- * @version 1.00 2022년 10월 27일
+ * @version 1.00 2022년 10월 28일
  */
 public class Problem2 {
 
