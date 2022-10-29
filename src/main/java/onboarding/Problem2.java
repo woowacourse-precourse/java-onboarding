@@ -8,15 +8,12 @@ public class Problem2 {
         Stack<Character> stack = new Stack<>();
 
         for (char c : cryptogram.toCharArray()) {
-            if (!stack.isEmpty()) {
-                if (stack.peek() == c) {
-                    stack.pop();
-                } else {
-                    stack.push(c);
-                }
+            if (!stack.isEmpty() && stack.peek() == c) {
+                stack.pop();
+            } else {
+                stack.push(c);
             }
         }
-
         for (char c: stack){
             answer += c;
         }
