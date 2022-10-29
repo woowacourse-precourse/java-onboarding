@@ -114,18 +114,18 @@ class ApplicationTest {
       assertThrows(IllegalStateException.class, () -> {
         Problem2.isAllowedString(cryptogram);
       });
-     }
+    }
 
-     @Test
-     void isAllowedStringLength() {
-       //given
-       int cryptogramSize = 4001;
+    @Test
+    void isAllowedStringLength() {
+      //given
+      int cryptogramSize = 4001;
 
-       //then
-       assertThrows(IllegalStateException.class, () ->{
-         Problem2.isAllowedStringLength(cryptogramSize);
-       });
-      }
+      //then
+      assertThrows(IllegalStateException.class, () -> {
+        Problem2.isAllowedStringLength(cryptogramSize);
+      });
+    }
   }
 
   @Nested
@@ -154,7 +154,7 @@ class ApplicationTest {
       assertThrows(IllegalStateException.class, () -> {
         Problem3.isAllowedNumber(numberSize);
       });
-     }
+    }
   }
 
   @Nested
@@ -165,6 +165,24 @@ class ApplicationTest {
       String word = "I love you";
       String result = "R olev blf";
       assertThat(Problem4.solution(word)).isEqualTo(result);
+    }
+
+    @Test
+    void isAlphabetTest() {
+      //given
+      char c1 = 'a';
+      char c2 = 'A';
+      char c3 = '1';
+
+      //when
+      boolean b1 = Problem4.isAlphabet(c1);
+      boolean b2 = Problem4.isAlphabet(c2);
+      boolean b3 = Problem4.isAlphabet(c3);
+
+      //then
+      assertThat(b1).isEqualTo(true);
+      assertThat(b2).isEqualTo(true);
+      assertThat(b3).isEqualTo(false);
     }
   }
 
