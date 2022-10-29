@@ -3,7 +3,12 @@ package onboarding;
 
 public class Problem3 {
     public static boolean clap(int n, int digit){
-        return true;
+        String s = Integer.toString(n);
+        if(Character.getNumericValue(s.charAt(digit)) == 3
+                || Character.getNumericValue(s.charAt(digit)) == 6
+                || Character.getNumericValue(s.charAt(digit)) == 9)
+            return true;
+        else return false;
     }
     public static int clapSum(int number) {
         int count = 0;
