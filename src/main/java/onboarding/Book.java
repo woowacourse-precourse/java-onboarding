@@ -32,6 +32,6 @@ public class Book {
     }
 
     public int rightPageCalc(PageCalculator pageCalculator){
-        return pageCalculator.reduce(leftPage);
+        return pageCalculator.reduce(rightPage);
     }
 }

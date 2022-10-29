@@ -157,4 +157,77 @@ public class Problem1Test {
         }
     }
 
+    @Nested
+    class BookTest {
+
+        @Test
+        void hasFirstPageOrLessTest() {
+            //given
+            Book book = new Book(new Page(1), new Page(2));
+            //when
+            boolean result=true;
+            //then
+            assertThat(book.hasFirstPageOrLess()).isEqualTo(result);
+        }
+
+        @Test
+        void hasLastPageOrMore() {
+            //given
+            Book book = new Book(new Page(399), new Page(400));
+            //when
+            boolean result=true;
+            //then
+            assertThat(book.hasLastPageOrMore()).isEqualTo(result);
+        }
+
+        @Test
+        void getDifference() {
+            //given
+            Book book = new Book(new Page(2), new Page(3));
+            //when
+            int result=1;
+            //then
+            assertThat(book.getDifference()).isEqualTo(result);
+        }
+
+        @Test
+        void leftPageCalcForSum() {
+            Book book = new Book(new Page(333), new Page(334));
+            PageCalculator pageCalculator = new SumPageCalculator();
+
+            int result=9;
+
+            assertThat(book.leftPageCalc(pageCalculator)).isEqualTo(result);
+        }
+
+        @Test
+        void leftPageCalcForMul() {
+            Book book = new Book(new Page(333), new Page(334));
+            PageCalculator pageCalculator = new MulPageCalculator();
+
+            int result=27;
+
+            assertThat(book.leftPageCalc(pageCalculator)).isEqualTo(result);
+        }
+
+        @Test
+        void rightPageCalcForSum() {
+            Book book = new Book(new Page(333), new Page(334));
+            PageCalculator pageCalculator = new SumPageCalculator();
+
+            int result=10;
+
+            assertThat(book.rightPageCalc(pageCalculator)).isEqualTo(result);
+        }
+
+        @Test
+        void rightPageCalcForMul() {
+            Book book = new Book(new Page(333), new Page(334));
+            PageCalculator pageCalculator = new MulPageCalculator();
+
+            int result=36;
+
+            assertThat(book.rightPageCalc(pageCalculator)).isEqualTo(result);
+        }
+    }
 }
