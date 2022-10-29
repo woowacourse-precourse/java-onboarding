@@ -10,6 +10,11 @@ public class Problem5 {
         return answer;
     }
 
+    private static boolean isIncludeMoney(int money) {
+        if(money>=1&&money<=1000000) return true;
+        else return false;
+    }
+
     private static List<Integer> withdrawMoney(int money) {
         List<Integer> moneyList = new ArrayList<>();
         moneyList.add(money / 50000);
