@@ -10,6 +10,7 @@ class validateInformation{
     public static boolean isOverlappedName(List<String> dividedName, List<String> crew){
         String crewName=crew.get(1);
         for(int i=0;i<dividedName.size();i++){
+            if(crewName.equals(dividedName.get(0))){return false;}
             if(crewName.contains(dividedName.get(i))){return true;}
         }
         return false;
@@ -56,6 +57,7 @@ class handleInformation{
         List<String> dividedName = new ArrayList<String>();
         String name = crew.get(1);
         String newWord="";
+        dividedName.add(name);
         for(int i=0;i<name.length()-1;i++){
             newWord= Character.toString(name.charAt(i))+Character.toString(name.charAt(i+1));
             dividedName.add(newWord);
