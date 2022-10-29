@@ -1,11 +1,12 @@
 package onboarding;
 
-import java.util.Collections;
 import java.util.List;
+
+import onboarding.billcounter.BillCounter;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
-        return answer;
+        BillCounter counter = new BillCounter(money);
+        return counter.getBills();
     }
 }
