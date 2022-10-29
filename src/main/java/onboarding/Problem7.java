@@ -88,24 +88,40 @@ public class Problem7 {
 
     private static void checkException(List<List<String>> friends, int userLength, int friendsSize, int visitorsSize) {
         //1-1 user 길이 1 이상 30 이하인지 체크
-        if(isNotMatchingUserLength(userLength)){
-            throw new NotMatchingUserLength("사용자의 길이가 맞지 않습니다.");
-        }
+        checkUserLength(userLength);
 
         //1-2 friends 길이 1 이상 10000 이하인지 체크
-        if(isNotMatchingFriendsSize(friendsSize)){
-            throw new NotMatchingFriendsSize("친구 관계 정보의 길이가 맞지 않습니다.");
-        }
+        checkFriendsSize(friendsSize);
 
         //1-3 friends 의 각 원소의 길이가 2인지 체크
+        checkFriendLength(friends);
+
+        //1-5 visitors 길이 0 이상 10000 이하인지 체크
+        checkVisitorSize(visitorsSize);
+    }
+
+    private static void checkVisitorSize(int visitorsSize) {
+        if(isNotMatchingVisitorsSize(visitorsSize)){
+            throw new NotMatchingVisitorsSize("방문 기록의 길이가 맞지 않습니다.");
+        }
+    }
+
+    private static void checkFriendLength(List<List<String>> friends) {
         int friendSize = friends.get(0).size();
         if(isNotMatchingFriendSize(friendSize)){
             throw new NotMatchingFriendSize("친구 관계 정보의 원소의 길이가 맞지 않습니다.");
         }
+    }
 
-        //1-5 visitors 길이 0 이상 10000 이하인지 체크
-        if(isNotMatchingVisitorsSize(visitorsSize)){
-            throw new NotMatchingVisitorsSize("방문 기록의 길이가 맞지 않습니다.");
+    private static void checkFriendsSize(int friendsSize) {
+        if(isNotMatchingFriendsSize(friendsSize)){
+            throw new NotMatchingFriendsSize("친구 관계 정보의 길이가 맞지 않습니다.");
+        }
+    }
+
+    private static void checkUserLength(int userLength) {
+        if(isNotMatchingUserLength(userLength)){
+            throw new NotMatchingUserLength("사용자의 길이가 맞지 않습니다.");
         }
     }
 
