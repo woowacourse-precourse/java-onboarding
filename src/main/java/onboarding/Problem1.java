@@ -4,7 +4,6 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
         int pobiMax=Integer.MIN_VALUE;
         int crongMax=Integer.MIN_VALUE;
 
@@ -15,7 +14,15 @@ class Problem1 {
         crongMax = Math.max(crongMax, sum(crong));
         crongMax = Math.max(crongMax, mul(crong));
 
-        return answer;
+        if(pobiMax > crongMax){
+            return 1;
+        }
+        else if(pobiMax < crongMax){
+            return 2;
+        }
+        else{
+            return 0;
+        }
     }
     public static int mul(List<Integer> list){
         int max = Integer.MIN_VALUE;
