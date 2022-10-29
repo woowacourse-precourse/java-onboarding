@@ -29,6 +29,13 @@ class Problem1 {
             return false;
     }
 
+    public boolean checkPage(List<Integer> page){
+        if(isOdd(page) && isEven(page))
+            return true;
+        else
+            return false;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
