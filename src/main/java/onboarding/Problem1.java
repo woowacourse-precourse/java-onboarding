@@ -13,6 +13,7 @@ class Problem1 {
             return -1;
         }
 
+        List<CalculateNum> calculations = List.of(Problem1::firstMethod, Problem1::secondMethod);
 
 
         return answer;
@@ -32,4 +33,31 @@ class Problem1 {
         return true;
     }
 
+    private static int firstMethod(List<Integer> pages) {
+        int numAdded = 0, numMultiplied = 1;
+        int targetPage = pages.get(0);
+
+        while (targetPage != 0) {
+            int num = targetPage % 10;
+            numAdded += num;
+            numMultiplied *= num;
+            targetPage /= 10;
+        }
+
+        return Math.max(numAdded, numMultiplied);
+    }
+
+    private static int secondMethod(List<Integer> pages) {
+        int numAdded = 0, numMultiplied = 1;
+        int targetPage = pages.get(1);
+
+        while (targetPage != 0) {
+            int num = targetPage % 10;
+            numAdded += num;
+            numMultiplied *= num;
+            targetPage /= 10;
+        }
+
+        return Math.max(numAdded, numMultiplied);
+    }
 }
