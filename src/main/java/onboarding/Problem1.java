@@ -14,6 +14,17 @@ class Problem1 {
 
         return answer;
     }
+    private static boolean oddEvenCheck(int leftPage, int rightPage) {
+        return isLeftOdd(leftPage) && isRightEven(rightPage);
+    }
+
+    private static boolean isLeftOdd(int leftPage) {
+        return leftPage % 2 == 1;
+    }
+
+    private static boolean isRightEven(int rightPage) {
+        return rightPage % 2 == 0;
+    }
     private static int getMaxScore(int pageNumber) {
         List<Integer> splitNumber = splitDigitNumber(pageNumber);
         return Math.max(getPlusScore(splitNumber), getMultiplyScore(splitNumber));
@@ -41,5 +52,4 @@ class Problem1 {
         }
         return DRAW;
     }
-}
 }
