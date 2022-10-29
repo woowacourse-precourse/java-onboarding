@@ -72,17 +72,20 @@ public class Problem7 {
         List<String> nameList = new ArrayList<String>(recommendScore.keySet());
         Collections.sort(nameList,((o1, o2) -> Double.compare(recommendScore.get(o2),recommendScore.get(o1))));
 
-        List<String> answer = selectRecommendFriend(nameList);
+        List<String> answer = selectRecommendFriend(nameList,user);
 
         return answer;
     }
-    public static List<String> selectRecommendFriend(List<String> nameList) {
+    public static List<String> selectRecommendFriend(List<String> nameList, String user) {
         List<String> answer = new ArrayList<>();
+        HashSet<String> friendList = friendListInfo.get(user);
         Iterator<String> iter = nameList.iterator();
+
         for(int i = 0; i < 3; i++) {
-            String user = iter.next();
-            if(recommendScore.get(user) > 0){
-                answer.add(user);
+            String name = iter.next();
+            if(friendList.contains(name)) continue;
+            if(recommendScore.get(name) > 0){
+                answer.add(name);
             }
         }
         return answer;
