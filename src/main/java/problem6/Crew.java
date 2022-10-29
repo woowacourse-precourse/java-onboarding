@@ -35,4 +35,12 @@ public class Crew {
     private boolean isContainsNickname(String pattern) {
         return nickname.contains(pattern);
     }
+
+    public ResultResponseDto toResultResponseDto() {
+        return new ResultResponseDto(email);
+    }
+
+    public String getEmail() {
+        return email;
+    }
 }
