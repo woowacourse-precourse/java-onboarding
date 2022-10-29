@@ -11,4 +11,16 @@ public class User {
         this.visits = visits;
         this.isFriends = isFriends;
     }
+
+    public boolean isFriends() {
+        return this.isFriends;
+    }
+
+    public int getVisits() {
+        return this.visits;
+    }
+
+    public String getName() {
+        return this.name;
+    }
 }
