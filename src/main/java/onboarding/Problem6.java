@@ -27,7 +27,7 @@ public class Problem6 {
 
         for(int i=0;i<names.size();i++){
             String name = names.get(i);
-            if(resultEmails.contains(name))
+            if(resultEmails.contains(emails.get(i)))
                 continue;
 
             for(int j=i+1;j<names.size();j++){
