@@ -66,6 +66,11 @@ BUILD SUCCESSFUL in 0s
 5. 문제 5
    1. input 까지 지페, 동전으로 변환하는 기능
       1. 큰 단위의 돈 단위부터 사용해서 변환하기 
+6. 문제 6
+   1. input 닉네임 2자씩 끊어서 Map에 담는 기능
+      1. `Map<String, Set<String>>` 사용한다.
+   2. 1번 과정 완료 후 Map의 value를 조회하며 Set size가 2인 것 추출하는 기능
+   3. 오름차순으로 정렬하는 기능
 
 ---
 
