@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -10,7 +11,14 @@ public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
 
-        return null;
+        for (List<String> form : forms) {
+            String name = form.get(1);
+            for (int i = 0; i < name.length() - 1; i++) {
+                checkDuplicate(forms, name.substring(i, i + 2), form);
+            }
+        }
+
+        return new ArrayList<>(answer);
     }
 
     public static void checkDuplicate(List<List<String>> forms, String checkName, List<String> originForm) {
