@@ -20,6 +20,15 @@ public class Problem4 {
         return result;
     }
     static boolean checkAlpha(String oneword){
+        if((int)oneword.charAt(0) >= 65 && (int)oneword.charAt(0) <=90) {
+            flag = 1;
+            return true;
+        }
+        if((int)oneword.charAt(0) >= 97 && (int)oneword.charAt(0) <=122) {
+            flag = 2;
+            return true;
+        }
+        flag = 0;
         return false;
     }
     static char changeAlpha(String oneword){
