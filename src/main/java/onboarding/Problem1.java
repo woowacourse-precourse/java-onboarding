@@ -22,14 +22,11 @@ class Problem1 {
     public static int resultMax(List<Integer> list){
         int Plusmax;//더하기 최대값
         int Multimax;//곱하기 최대값
+        int result;
         Plusmax=PlusMax(list.get(0), list.get(1));
         Multimax = Multimax(list.get(0), list.get(1));
-        if(Plusmax>Multimax){
-            return Plusmax;
-        }else if(Plusmax<Multimax){
-            return Multimax;
-        }else return Plusmax;
-
+        result=CheckMax(Plusmax, Multimax);
+        return result;
         }
 
     public static int PlusMax(int odd,int even){ //각 자리수의 합을 구하는 기능
@@ -49,6 +46,7 @@ class Problem1 {
     public static int Multimax(int odd,int even) {
         int multiodd = 1;
         int multieven = 1;
+        int result;
         while (odd != 0) {
             multiodd *= odd % 10;
             odd /= 10;
@@ -57,10 +55,15 @@ class Problem1 {
             multieven *= even % 10;
             even /= 10;
         }
-        if(multieven>multiodd){
-            return multieven;
-        }else if(multieven<multiodd){
-            return multiodd;
-        }else return multieven;
+        result =CheckMax(multieven, multiodd);
+        return result;
+    }
+    public static int CheckMax(int A,int B){
+        if(A>B){
+            return A;
+        }else if(A<B){
+            return B;
+        }else return A;
+    }
     }
 }

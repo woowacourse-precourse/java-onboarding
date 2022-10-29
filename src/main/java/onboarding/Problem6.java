@@ -4,9 +4,7 @@ import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-
         List<String> duplicates=duplicates(forms);
-
         return duplicates;
     }
     public static List<String>  duplicates(List<List<String>> forms){//중복 닉네임 구하는 배열
@@ -24,7 +22,6 @@ public class Problem6 {
                 if(Nickname.contains(name)){
                     duplicatesSet.add(forms.get(k).get(0));
                 }}
-
             }
         }
         List<String> duplicates=new ArrayList<>(duplicatesSet);
