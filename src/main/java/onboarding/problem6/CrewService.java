@@ -15,13 +15,13 @@ public class CrewService {
     public List<String> checkCrew(List<List<String>> forms) {
         validateSize(forms.size());  // 크루 1명 이상 10,000명 이하
 
-        List<Crew> crewList = getCrewList(forms);
+        List<Crew> crewList = getCrewSet(forms);
         validateCrewInfo(crewList);  // 크루 정보 검증
 
         return nicknameCheckService.getDuplicateCrewEmail(crewList);
     }
 
-    private List<Crew> getCrewList(List<List<String>> forms) {
+    private List<Crew> getCrewSet(List<List<String>> forms) {
         List<Crew> crewList = new ArrayList<>();
 
         for (List<String> form : forms) {  // mail, nickname

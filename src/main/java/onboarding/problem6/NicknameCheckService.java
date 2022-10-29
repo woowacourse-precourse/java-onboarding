@@ -6,50 +6,20 @@ import java.util.stream.Collectors;
 public class NicknameCheckService {
 
     // 같은 글자가 연속으로 포함된 경우 닉네임 사용 제한.
-    public List<String> getDuplicateCrewEmail(List<Crew> crewList) {  // Map<email, nickname>
-        List<String> results = new ArrayList<>();
-        List<NicknameCasesBucket> casesBucket = getCasesBucket(getNicknames(crewList));
-        // Map<String, Set<String>>
+    public List<String> getDuplicateCrewEmail(List<Crew> crewList) {
+        List<String> result = new ArrayList<>();
 
-        for (Crew crew : crewList) {
-            String currentNickname = crew.getNickname();
-            String currentEmail = crew.getEmail();
+        Map<String, Integer> countOfCase = getCountOfCase(getAllCase(crewList), crewList);
+        List<String> duplicatedCase = getDuplicatedCase(countOfCase);
 
-            outer:
-            for (NicknameCasesBucket bucket : casesBucket) {
-                if (bucket.getNickname().equals(currentNickname)) {  // 현재 닉네임과 같은 경우를 찾지 않아도 됨.
-                    continue;
-                }
-
-                Set<String> nicknameCases = bucket.getNicknameCases();
-                for (String nicknameCase : nicknameCases) {
-                    if (currentNickname.contains(nicknameCase) && !results.contains(nicknameCase)) {
-                        results.add(currentEmail);
-                        break outer;
-                    }
-                }
-            }
+        for (String cases : duplicatedCase) {
+            crewList.stream()
+                    .filter(crew -> crew.getNickname().contains(cases))
+                    .forEach(crew -> result.add(crew.getEmail()));
         }
 
-        Collections.sort(results);
-        return results;
-    }
-
-    // 크루 리스트에서 닉네임만 추출
-    private List<String> getNicknames(List<Crew> crewList) {
-        return crewList.stream()
-                .map(Crew::getNickname)
-                .collect(Collectors.toList());
-    }
-
-    // 크루 닉네임 - 닉네임으로 나오는 경우의 수 <- 가 담긴 객체 리스트
-    private List<NicknameCasesBucket> getCasesBucket(List<String> nicknames) {
-        List<NicknameCasesBucket> results = new ArrayList<>();
-        for (String nickname : nicknames) {
-            results.add(new NicknameCasesBucket(nickname, getCases(nickname)));
-        }
-
-        return results;
+        Collections.sort(result);
+        return result;
     }
 
     // 유저 닉네임에 대한 경우의 수를 구하는 로직.
@@ -63,5 +33,35 @@ public class NicknameCheckService {
         }
 
         return results;
+    }
+
+    // 모든 경우의 수를 Set 형태로 반환.
+    private Set<String> getAllCase(List<Crew> crewList) {
+        Set<String> set = new HashSet<>();
+        crewList.forEach(crew -> set.addAll(getCases(crew.getNickname())));
+
+        return set;
+    }
+
+    // 경우의 수와 크루 목록을 이용해서 경우의 수가 크루에 포함될 경우 카운트 -> 경우의 수=카운트 형태의 맵 반환.
+    private Map<String, Integer> getCountOfCase(Set<String> allCase, List<Crew> crewList) {
+        Map<String, Integer> result = new HashMap<>();
+        for (String cases : allCase) {
+            int count = (int) crewList.stream()
+                    .filter(crew -> crew.getNickname().contains(cases))
+                    .count();
+
+            result.put(cases, count);
+        }
+
+        return result;
+    }
+
+    // 카운트가 2 이상인 경우의 수만 얻어내는 로직.
+    private List<String> getDuplicatedCase(Map<String, Integer> countOfCase) {
+        return countOfCase.entrySet().stream()
+                .filter(cases -> cases.getValue() >= 2)
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
     }
 }

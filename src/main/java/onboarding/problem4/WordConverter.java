@@ -11,8 +11,7 @@ public class WordConverter {
     }
 
     public String reverseWord(String word) {
-        // 검증
-        validateWord(word);
+        validateWord(word);  // 검증
 
         // 반대 단어로 변환 후 반환
         StringBuilder stringBuilder = new StringBuilder();

@@ -49,7 +49,10 @@ public class FormValidator {
 
         for (String nickname : nicknames) {
             int nicknameLength = nickname.length();
-            if (nicknameLength < 1 || 20 <= nicknameLength) {
+            final int MIN_LENGTH = 1;
+            final int MAX_LENGTH = 20;
+
+            if (nicknameLength < MIN_LENGTH || MAX_LENGTH <= nicknameLength) {
                 throw new IllegalArgumentException("닉네임은 1자 이상, 20자 미만이어야 합니다.");
             }
 

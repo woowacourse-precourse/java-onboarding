@@ -1,6 +1,7 @@
 package onboarding.problem4;
 
-import static java.lang.Character.*;
+import static java.lang.Character.isAlphabetic;
+import static java.lang.Character.isSpaceChar;
 
 public class WordValidator {
 
@@ -24,6 +25,7 @@ public class WordValidator {
 
     private static boolean containsOnlyAlphabet(String word) {  // 알파벳 체크
         char[] chars = word.toCharArray();
+
         for (char aChar : chars) {
             if (!isAlphabetic(aChar) && !isSpaceChar(aChar)) {
                 return false;
