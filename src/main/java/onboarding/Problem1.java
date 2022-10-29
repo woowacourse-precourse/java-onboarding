@@ -41,6 +41,12 @@ class Problem1 {
             crongMax = Math.max(crongMax, Math.max(crongSum, crongProduct));
         }
 
+        // Step 3. pobi와 crong의 최대 값 비교 후 answer에 값 저장
+        // pobi > crong -> 1
+        // pobi == crong -> 0
+        // pobi < crong -> 2
+        answer = pobiMax > crongMax ? 1 : pobiMax == crongMax ? 0 : 2;
+
         return answer;
     }
 
