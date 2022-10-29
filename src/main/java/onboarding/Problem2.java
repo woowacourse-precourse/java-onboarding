@@ -13,12 +13,12 @@ public class Problem2 {
                 stack.push(c);
         }
 
-        String result = "";
+        StringBuilder result = new StringBuilder();
 
         while (!stack.isEmpty()) {
-            result = stack.pop() + result;
+            result.insert(0, stack.pop());
         }
 
-        return result;
+        return result.toString();
     }
 }
