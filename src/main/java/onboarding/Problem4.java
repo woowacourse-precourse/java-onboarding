@@ -7,6 +7,8 @@ public class Problem4 {
     public static String solution(String word) {
         String answer = "";
         String dict = "ZYXWVUTSRQPONMLKJIHGFEDCBA";
+
+        for (int i = 0 ; i < )
         return answer;
     }
 }
