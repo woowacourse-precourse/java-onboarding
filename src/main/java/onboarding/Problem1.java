@@ -5,14 +5,45 @@ import java.util.List;
 
 // 문제 1 클래스
 class Problem1 {
+
+    // 2. 왼쪽 페이지 큰 수 찾기.
+    static int getPageCalc(int page)
+    {
+        int resultSum = 0;
+        int resultMul = 1;
+
+        // 각 자리 숫자를 하나씩 연산 수행
+        while((page/10) != 0)
+        {
+            resultSum += page%10;
+            resultMul *= page%10;
+
+            page /= 10;
+
+            if((page/10) == 0)
+            {
+                resultSum += page;
+                resultMul *= page;
+            }
+        }
+    
+        // 덧셈, 곱셉 결과 중 큰 수 반환
+        if(resultSum >= resultMul)
+            return resultSum;
+        else
+            return resultMul;
+    }
+
     // 1. 책을 임의로 펼친다.
     // 포비와 크롱의 임의의 책 페이지 받아오기
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
-        // 받아온 책 페이지 출력해보기
-        System.out.println("pobi가 펼친 책 페이지 : " + pobi);
-        System.out.println("crong이 펼친 책 페이지 : " + crong);
+        // 왼쪽 페이지 연산 결과 확인
+        int leftPageP = getPageCalc(pobi.get(0));
+        int leftPageC = getPageCalc(crong.get(0));
+        System.out.println("pobi " + pobi + " : " + leftPageP);
+        System.out.println("crong " + crong + " : " + leftPageC);
 
         return answer;
     }
