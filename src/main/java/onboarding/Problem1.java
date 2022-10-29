@@ -17,7 +17,7 @@ class Problem1 {
     }
 
     public static boolean exceptionCheck(int num1, int num2) {
-        return isRightRange(num1, num2) && isNumberContinuous(num1, num2);
+        return isRightRange(num1, num2) && isNumberContinuous(num1, num2) && isRightPage(num1, num2);
     }
 
     public static boolean isRightRange(int num1, int num2) {
@@ -26,6 +26,10 @@ class Problem1 {
 
     public static boolean isNumberContinuous(int num1, int num2) {
         return num1 + 1 == num2;
+    }
+
+    public static boolean isRightPage(int num1, int num2) {
+        return num1 % 2 == 1 && num2 % 2 == 0;
     }
 
     public static int gameResult(int pobiScore, int crongScore) {
