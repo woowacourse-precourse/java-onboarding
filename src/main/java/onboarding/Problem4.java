@@ -8,6 +8,11 @@ public class Problem4 {
         return sb.toString();
     }
 
+    // 대문자를 청개구리 대문자로 번역하는 기능
+    private static char toReverseUppercase(char alphabet) {
+        return (char)(90-(alphabet-65));
+    }
+
     // 소문자를 청개구리 소문자로 번역하는 기능
     private static char toReverseLowercase(char alphabet) {
         return (char)(122-(alphabet-97));
