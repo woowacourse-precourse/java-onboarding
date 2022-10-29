@@ -19,11 +19,15 @@ public class Problem4 {
         }
         return temp;
     }
-    public static String solution(String word) {
-        StringBuilder answer = new StringBuilder();
+
+    private static void joinString(String word, StringBuilder answer) {
         for(char unit : word.toCharArray()) {
             answer.append(trans_char(unit));
         }
+    }
+    public static String solution(String word) {
+        StringBuilder answer = new StringBuilder();
+        joinString(word, answer);
         return answer.toString();
     }
 }
