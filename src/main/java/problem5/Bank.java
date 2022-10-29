@@ -1,7 +1,6 @@
 package problem5;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Bank {
 
@@ -9,7 +8,16 @@ public class Bank {
     private final Map<Integer, Integer> bank;
 
     public Bank() {
-        bank = new HashMap<>();
+        bank = new LinkedHashMap<>();
+    }
+
+    public List<Integer> changeAllMoney(int fromMoney) {
+        for (MoneyUnit toMoney : MoneyUnit.values()) {
+            int count = changeMoneyTo(fromMoney, toMoney.getPrice());
+            fromMoney -= toMoney.getPrice() * count;
+        }
+
+        return new ArrayList<>(bank.values());
     }
 
     public int changeMoneyTo(int fromMoney, int toMoney) {
@@ -33,5 +41,4 @@ public class Bank {
     private void saveChangeMoney(int toMoney, int changeMoney) {
         bank.put(toMoney, changeMoney);
     }
-
 }
