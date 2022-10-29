@@ -12,6 +12,11 @@ public class Problem6 {
             String nickname = info.get(1);
             for (int j = 0; j < nickname.length() - 1; j++) {
                 String tmp = String.valueOf(nickname.charAt(j)) + (nickname.charAt(j + 1));
+                for (int q = 0; q < forms.size(); q++) {
+                    if (i == q) continue;
+                    String check = forms.get(q).get(1);
+                    if (check.contains(tmp)) set.add(forms.get(q).get(0));
+                }
             }
         }
 
