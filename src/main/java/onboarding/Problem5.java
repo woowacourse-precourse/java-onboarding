@@ -26,12 +26,17 @@ public class Problem5 {
         List<Integer> currencyCount = IntStream.of(new int[WON.length])
                 .boxed()
                 .collect(Collectors.toList());
+        countMoney(money, currencyCount);
+        return currencyCount;
+    }
+
+    private static void countMoney(int money, List<Integer> currencyCount) {
+        int currentMoney = money;
         for (int i = 0; i < WON.length; i++) {
-            if (money >= WON[i]) {
-                currencyCount.set(i, money / WON[i]);
-                money %= WON[i];
+            if (currentMoney >= WON[i]) {
+                currencyCount.set(i, currentMoney / WON[i]);
+                currentMoney %= WON[i];
             }
         }
-        return currencyCount;
     }
 }
