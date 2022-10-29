@@ -48,11 +48,11 @@ public class Problem2 {
     }
 
     public static int getRepetitionEndPoint(String target, int startPoint) {
-        char targetCharacter = target.charAt(startPoint);
+        char startPointCharacter = target.charAt(startPoint);
 
         int endPoint = startPoint + 1;
 
-        while (endPoint < target.length() && targetCharacter == target.charAt(endPoint)) {
+        while (endPoint < target.length() && startPointCharacter == target.charAt(endPoint)) {
             endPoint++;
         }
 
