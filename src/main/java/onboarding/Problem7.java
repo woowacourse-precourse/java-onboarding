@@ -8,12 +8,13 @@ public class Problem7 {
     private static List<String> friendRecommendationResult = new ArrayList<>();
     private static final int SCORE_BY_FRIENDS = 10;
     private static final int SCORE_BY_VISITORS = 1;
+    private static final int MAX_RECOMMENDATION_NUM = 5;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         convertToFriendAdjacencyList(friends);
         calculateFriendRecommendationScoreBy(user);
         calculateFriendRecommendationScoreBy(visitors);
-        makeFriendRecommendationResult(user);
+        completeFriendRecommendationResult(user);
         return friendRecommendationResult;
     }
 
@@ -60,6 +61,31 @@ public class Problem7 {
         friendRecommendationScore.replace(friend, updatedScore);
     }
 
-    private static void makeFriendRecommendationResult(String user) {
+    private static void completeFriendRecommendationResult(String user) {
+        String recommendedFriend;
+
+        while (!friendRecommendationScore.isEmpty()) {
+            recommendedFriend = "";
+            for (String friend : friendRecommendationScore.keySet()) {
+                if (hasHigherRecommendationPriority(friend, recommendedFriend)) {
+                    recommendedFriend = friend;
+                }
+            }
+            if (!isFriendsOfUser(recommendedFriend, user)) friendRecommendationResult.add(recommendedFriend);
+            friendRecommendationScore.remove(recommendedFriend);
+
+            if (friendRecommendationResult.size() >= MAX_RECOMMENDATION_NUM) break;
+        }
+    }
+
+    private static boolean hasHigherRecommendationPriority(String me, String comparedFriend) {
+        Integer scoreOfMe = friendRecommendationScore.get(me), scoreOfComparedFriend = friendRecommendationScore.get(comparedFriend);
+        return Objects.equals(comparedFriend, "") || scoreOfMe > scoreOfComparedFriend ||
+                Objects.equals(scoreOfMe, scoreOfComparedFriend) && me.compareTo(comparedFriend) < 0; //추천 점수가 같으면 이름순
+    }
+
+    private static boolean isFriendsOfUser(String friend, String user) {
+        List<String> friendsOfUser = friendAdjacencyList.get(user);
+        return friendsOfUser.contains(friend);
     }
 }
