@@ -55,4 +55,12 @@ public class PageTest {
 
         assertThat(page.maxAddAndMultiplyEachDigit(number)).isEqualTo(Math.max(addValue, multiplyValue));
     }
+
+    @ParameterizedTest(name = "왼쪽 페이지와 오른쪽 페이지 각 자리의 숫자를 모두 더한값과 모두 곱한값 중 가증 큰 값을 반환한다.")
+    @CsvSource(value = {"3:4:4", "9:10:9", "211:212:5", "339:340:81"}, delimiter = ':')
+    void max_score(int left, int right, int expected) {
+        Page page = new Page(left, right);
+
+        assertThat(page.maxScore()).isEqualTo(expected);
+    }
 }
