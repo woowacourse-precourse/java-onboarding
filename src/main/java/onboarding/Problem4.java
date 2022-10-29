@@ -28,9 +28,12 @@ public class Problem4 {
      */
     private static char getChangedChar(char letter){
         //사전에 등록되어 있는 글자일 경우에만 변환
-        if (letter >= 'a' && letter <= 'Z'){
-            //아스키 코드표에서 a-Z중 반대편에 있는 문자를 반환
-            return (char)('a'+'Z' - letter);
+        if (letter >= 'A' && letter <= 'Z'){
+            //아스키 코드표에서 A-Z중 반대편에 있는 문자를 반환
+            return (char)('A'+'Z' - letter);
+        } else if (letter >='a' && letter <='z') {
+            //아스키 코드표에서 a-z중 반대편에 있는 문자를 반환
+            return (char)('a'+'z' - letter);
         } else {
             return letter;
         }
