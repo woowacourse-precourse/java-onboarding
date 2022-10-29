@@ -28,13 +28,13 @@ public class Calculator {
         return ans;
     }
 
-    public int getMaxValue() {
-        int maxValue = 0;
-        int pageMaxValue;
+    public int getScore() {
+        int score = 0;
+        int maxValue;
         for (int page : this.pages) {
-            pageMaxValue = Math.max(getSumValue(page), getMultipliedValue(page));
-            maxValue = Math.max(maxValue, pageMaxValue);
+            maxValue = Math.max(getSumValue(page), getMultipliedValue(page));
+            score = Math.max(score, maxValue);
         }
-        return maxValue;
+        return score;
     }
 }

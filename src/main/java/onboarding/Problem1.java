@@ -15,8 +15,8 @@ class Problem1 {
             Calculator pobiCalculator = new Calculator(pobi);
             Calculator crongCalculator = new Calculator(crong);
 
-            int pobiScore = pobiCalculator.getMaxValue();
-            int crongScore = crongCalculator.getMaxValue();
+            int pobiScore = pobiCalculator.getScore();
+            int crongScore = crongCalculator.getScore();
 
             if (pobiScore == crongScore) {
                 return DRAW;
