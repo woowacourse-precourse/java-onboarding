@@ -2,8 +2,15 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
-        return answer;
+        int clapCnt = 0;
+
+        for(int i = 1; i <= number; i++){
+            if(includeNum(i)){
+                clapCnt += cntNum(i);
+            }
+        }
+
+        return clapCnt;
     }
 
     /**
@@ -29,6 +36,7 @@ public class Problem3 {
         while(number > 0){
             if(number % 10 == 3 || number % 10 == 6 || number % 10 == 9){
                 cnt++;
+                number /= 10;
             }else{
                 number /= 10;
             }
