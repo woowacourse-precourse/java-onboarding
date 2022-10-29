@@ -20,7 +20,14 @@ class Problem1 {
         if(crong.get(0) <= 1 || crong.get(0) >= 400 || crong.get(1) <= 1 || crong.get(1) >= 400) {
             return EXCEPTION;
         }
-        
+
+        if(pobi.get(0) % 2 != 1 || crong.get(0) % 2 != 1){
+            return EXCEPTION;
+        }
+        if(pobi.get(1) % 2 != 0 || crong.get(1) % 2 != 0){
+            return EXCEPTION;
+        }
+
         return answer;
     }
 }
