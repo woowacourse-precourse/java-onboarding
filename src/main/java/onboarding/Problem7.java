@@ -81,11 +81,6 @@ public class Problem7 {
         int point = 0;
         List<String> friendList = new ArrayList<>();
 
-        public People(String name, String friend) {
-            this.name = name;
-            this.addFriendList(friend);
-        }
-
         public People(String name) {
             this.name = name;
         }
