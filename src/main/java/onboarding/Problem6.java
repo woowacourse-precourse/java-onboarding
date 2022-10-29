@@ -25,7 +25,19 @@ public class Problem6 {
             }
         }
 
-        return answer;
+        List<Map.Entry<String, HashSet<String>>> list = new ArrayList<>(nicknameMap.entrySet());
+        list.sort((o1, o2) -> o2.getValue().size() - o1.getValue().size());
+
+        int max = list.get(0).getValue().size();
+        for(Map.Entry<String, HashSet<String>> entry : list) {
+            if (entry.getValue().size() != max) break;
+            answer.addAll(entry.getValue());
+        }
+
+        result = new ArrayList<>(answer);
+        Collections.sort(result);
+
+        return result;
     }
 
     public static ArrayList<String> separate(String nickname) {
