@@ -7,6 +7,8 @@ package onboarding;
 */
 
 public class Problem4 {
+    static final int UPPERCASE_ANCHOR = 155;
+    static final int LOWERCASE_ANCHOR = 219;
     public static String solution(String word) {
         StringBuilder sb = new StringBuilder();
         for (char character :
@@ -21,9 +23,9 @@ public class Problem4 {
 
     public static char reverseConverter(char character) {
         if (Character.isUpperCase(character)) {
-            return (char) (155 - character);
+            return (char) (UPPERCASE_ANCHOR - character);
         } else {
-            return (char) (219 - character);
+            return (char) (LOWERCASE_ANCHOR - character);
         }
     }
 }
