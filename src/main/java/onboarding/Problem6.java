@@ -1,7 +1,10 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 /*
 * 중복의 최소 단위인 2글자만 탐색하면 됨
 1. 금지 단어목록인 빈 리스트 생성, appeared 리스트 생성
@@ -15,6 +18,7 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<String>();
         List<String> prohibition = makeProhibition(forms);
+
         return answer;
     }
     public static List<String> makeProhibition(List<List<String>> forms) {
@@ -30,6 +34,8 @@ public class Problem6 {
                     prohibition.add(part);
             }
         }
-        return prohibition;
+        // prohibition 에 중복 부분 단어가 있을 수 있으므로 제거
+        Set<String> set = new HashSet<String>(prohibition);
+        return new ArrayList<String>(set);
     }
 }
