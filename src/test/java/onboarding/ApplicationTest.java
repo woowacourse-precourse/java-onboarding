@@ -4,10 +4,12 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ApplicationTest {
+
     @Nested
     class Problem1Test {
         @Test
@@ -33,6 +35,7 @@ class ApplicationTest {
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
+
     }
 
     @Nested
