@@ -15,6 +15,13 @@ public class Problem7 {
 
         PointToFarList(near, far, result);
 
+        PointToVisitors(visitors, near, result);
+
+        answer = sortedAnswer(answer, result);
+        return answer;
+    }
+
+    private static void PointToVisitors(List<String> visitors, Set<String> near, Map<String, Integer> result) {
         for (String name : visitors) {
             if (near.contains(name)) continue;
             int point = 1;
@@ -23,9 +30,6 @@ public class Problem7 {
             }
             result.put(name, point);
         }
-
-        answer = sortedAnswer(answer, result);
-        return answer;
     }
 
     private static void PointToFarList(Set<String> near, List<String> far, Map<String, Integer> result) {
