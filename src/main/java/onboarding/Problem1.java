@@ -5,6 +5,16 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        int pobiMax=Integer.MIN_VALUE;
+        int crongMax=Integer.MIN_VALUE;
+
+        if(!checkException(pobi, crong)) return -1;
+
+        pobiMax = Math.max(pobiMax, sum(pobi));
+        pobiMax = Math.max(pobiMax, mul(pobi));
+        crongMax = Math.max(crongMax, sum(crong));
+        crongMax = Math.max(crongMax, mul(crong));
+
         return answer;
     }
     public static int mul(List<Integer> list){
