@@ -25,7 +25,7 @@ public class Problem7 {
 
         plusOnePointForVisitors(scoreMap, visitors);
 
-        return convertToResult(scoreMap, new HashSet<>(userToFriends.get(user)), user);
+        return convertToResult(scoreMap, new HashSet<>(userToFriends.getOrDefault(user, List.of())), user);
     }
 
     private static Map<String, List<String>> convertToFriendMap(List<List<String>> friends) {
@@ -46,7 +46,7 @@ public class Problem7 {
     private static Map<String, Integer> calculateFriendsScore(Map<String, List<String>> userToFriends, String user) {
         HashMap<String, Integer> result = new HashMap<>();
 
-        for (String friend : userToFriends.get(user)) {
+        for (String friend : userToFriends.getOrDefault(user, List.of())) {
             plusTenPoint(result, userToFriends.get(friend));
         }
 
