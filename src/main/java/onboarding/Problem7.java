@@ -31,20 +31,14 @@ public class Problem7 {
             }
         }
 
-//        for (String name : near) {
-//            for (List<String> AB : friends) {
-//                int point = 10;
-//                int index = 1 - AB.indexOf(name);
-//                if (!AB.contains(user) && AB.contains(name) && !near.contains(AB.get(index))) {
-//                    far.add(AB.get(index));
-//                    if (result.get(AB.get(index)) != null) {
-//                        point += (result.get(AB.get(index)));
-//                    }
-//                    result.put(AB.get(index), point);
-//                }
-//            }
-//        }
-//
+        for (String name : far) {
+            int point = 10;
+            if (result.get(name) != null && !near.contains(name)) {
+                point += (result.get(name));
+            }
+            result.put(name, point);
+        }
+
         for (String name : visitors) {
             if (near.contains(name)) continue;
             int point = 1;
