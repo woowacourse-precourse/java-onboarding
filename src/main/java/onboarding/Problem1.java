@@ -15,7 +15,7 @@ import java.util.List;
  */
 class Problem1 {
 	
-static int answer = Integer.MAX_VALUE;
+   static int answer = Integer.MAX_VALUE;
 	
     public static int solution(List<Integer> pobi, List<Integer> crong) {
     	
@@ -60,8 +60,11 @@ static int answer = Integer.MAX_VALUE;
      * @return 더하기 또는 곱중 가장 큰 값을 리턴한다 
      */
     public static int maxPobiNumber(List<Integer> pobi) {
-    	
-    	return 1;
+    	int sum = pobi.get(0) + pobi.get(1);
+    	int times = pobi.get(0) * pobi.get(1);
+    	int max = 0;
+    	if(sum > times) return sum;
+    	return times;    	
     }
     /**
      * crong의 가장 큰 수를 찾는 기능이다.
@@ -69,8 +72,11 @@ static int answer = Integer.MAX_VALUE;
      * @return 더하기 또는 곱중 가장 큰 값을 리턴한다
      */
     public static int maxCrongNumber(List<Integer> crong) {
-    	
-    	return 1;
+    	int sum = crong.get(0) + crong.get(1);
+    	int times = crong.get(0) * crong.get(1);
+    	int max = 0;
+    	if(sum > times) return sum;
+    	return times;
     }
     /**
      * 게임의 결과를 확인하는 기능이다.
