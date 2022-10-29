@@ -11,6 +11,10 @@ class Problem1 {
     static final int CRONG = 2;
     static final int DRAW = 0;
 
+    int checkNumberOfDigits(int digits){
+        return (int)(Math.log10(digits) + 1);
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
@@ -34,6 +38,7 @@ class Problem1 {
         if(crong.get(1) - crong.get(0) != 1){
             return EXCEPTION;
         }
+
         return answer;
     }
 }
