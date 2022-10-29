@@ -20,6 +20,28 @@ public class Problem2 {
         return list;
     }
 
+    /**
+     * 연속적으로 중복되는 문자을 삭제하는 메서드
+     *
+     * @return 문자가 삭제 되었으면 true, 아니라면 false
+     */
+    static boolean deleteDuplicateChar() {
+        int index = 0;
+        boolean isDeleted = false;
+
+        while (index != list.size()) {
+            if (list.get(index).equals(list.get(index + 1))) {
+                list.remove(index);
+                list.remove(index + 1);
+                isDeleted = true;
+            }
+            else {
+                index++;
+            }
+        }
+
+        return isDeleted;
+    }
 
     public static String solution(String cryptogram) {
         String answer = "answer";
