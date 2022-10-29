@@ -14,4 +14,13 @@ public class Problem2 {
         return CRYPTOGRAM_MIN_LENGTH <= cryptogram.length()
             && cryptogram.length() <= CRYPTOGRAM_MAX_LENGTH;
     }
+
+    public static boolean checkCryptogramConsistOfLowercase(String cryptogram) {
+        for (char cryptogramChar : cryptogram.toCharArray()) {
+            if (Character.isUpperCase(cryptogramChar)) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
