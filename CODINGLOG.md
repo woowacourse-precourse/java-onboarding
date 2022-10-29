@@ -157,3 +157,13 @@ List 컬렉션 중 ArrayList를 자료구조로 활용해야겠다고 생각했�
 - 위 과정을 1의 자리까지 반복한다.
 
 ![image](./img/프리코스_1주차-Problem5.drawio.png)
+
+### 기능 목록 v0.2
+
+- 구현을 하다보니 모든 필드와 메소드를 default로 설정하면 패키지 내에서 충돌이 발생할 수 있겠다는 생각이 들었다.
+- 충돌 가능성 이유
+  - money_array는 setMoneyArray 메서드가 실행되기 전에는 무의미한 빈 값이다.
+  - getAnswer을 하기 전에 makeAnswerArray를 선행해서 실행해야 한다.
+- 이를 위해 접근 제한자를 private으로 설정해 '캡슐화'하여 외부에서는 getAnswer 메서드만 활용할 수 있게 변경했다.
+
+![image](./img/프리코스_1주차-Problem5_v2.drawio.png)
