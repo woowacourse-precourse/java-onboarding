@@ -19,7 +19,7 @@ public class Problem7 {
         HashMap<String, Integer> friendScore = new HashMap<>();
 
         for (String name : friendMap.keySet()) {
-            if (name.equals(user))
+            if (name.equals(user) || userFriend.contains(name))
                 continue;
 
             List<String> findFriend = friendMap.get(name);
@@ -28,7 +28,8 @@ public class Problem7 {
         }
 
         for (String name : visitors) {
-            friendScore.put(name, friendScore.getOrDefault(name, 0) + 1);
+            if (!userFriend.contains(name))
+                friendScore.put(name, friendScore.getOrDefault(name, 0) + 1);
         }
 
         return answer;
