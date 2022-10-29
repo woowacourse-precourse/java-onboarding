@@ -7,21 +7,22 @@ import java.util.List;
 public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> answer = generateList();
-        return getMoney(money,answer);
+        return getMoney(money, answer);
     }
 
     //리스트 생성 함수
-    public static List<Integer> generateList(){
+    public static List<Integer> generateList() {
         List<Integer> answer = new ArrayList<>();
-        for(int i =0;i<8;i++){
+        for (int i = 0; i < 9; i++) {
             answer.add(0);
         }
         return answer;
     }
-    //금액 리스트 반환 함수
-    public static List<Integer> getMoney(int money,List<Integer> answer) {
 
-        while(money>0){
+    //금액 리스트 반환 함수
+    public static List<Integer> getMoney(int money, List<Integer> answer) {
+
+        while (money > 0) {
             money = divideMoney(money, answer);
         }
         return answer;
