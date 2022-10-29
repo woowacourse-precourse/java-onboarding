@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -16,6 +13,7 @@ public class Problem7 {
         // 6. answer에 담은 후 반환
         Set<String> notFriends = new HashSet<>();
         Set<String> userFriends = new HashSet<>();
+        HashMap<String, Integer> map = new HashMap<>();
 
         for (int i = 0; i < friends.size(); i++) {
             for (int j = 0; j < 2; j++) {
@@ -38,6 +36,10 @@ public class Problem7 {
             if (!userFriends.contains(visitor)) {
                 notFriends.add(visitor);
             }
+        }
+
+        for (String notFriend : notFriends) {
+            map.put(notFriend, 0);
         }
 
         List<String> answer = Collections.emptyList();
