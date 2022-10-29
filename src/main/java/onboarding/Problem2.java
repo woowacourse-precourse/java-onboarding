@@ -30,6 +30,8 @@ public class Problem2 {
                     duplicate += String.valueOf(cryptogram.charAt(i));
                 }
             }
+            String pattern = String.format("[%s]{2,}", duplicate);
+            String answer = cryptogram.replaceAll(pattern, "");
         }
     }
 }
