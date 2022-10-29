@@ -10,9 +10,11 @@ class Problem1 {
         List<Integer> pobi = new ArrayList<>(Book.open());
         List<Integer> crong = new ArrayList<>(Book.open());
 
-        System.out.println("pobi = " + pobi.toString());
-        System.out.println("crong = " + crong.toString());
-        System.out.println("result = " + solution(pobi, crong));
+        System.out.printf("%-10s|%-10s|%-10s|", "pobi", "crong", "result");
+        System.out.println("\nㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
+        System.out.printf("%-10s|%-10s|%-10d|", pobi.toString(), crong.toString(),
+            solution(pobi, crong));
+        System.out.println("\nㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
