@@ -1,14 +1,21 @@
 package onboarding.problem7;
 
 
-public class RecommendationFriend{
+public class RecommendationFriend {
 
-    public int score;
-    public String id;
+    private final int score;
+    private final String id;
 
     public RecommendationFriend(String id, int score) {
         this.id = id;
         this.score = score;
     }
 
+    public int getScore() {
+        return score;
+    }
+
+    public String getId() {
+        return id;
+    }
 }
