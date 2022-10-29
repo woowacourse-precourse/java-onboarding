@@ -1,4 +1,5 @@
 package onboarding;
+
 import java.util.Stack;
 
 public class Problem2 {
@@ -8,8 +9,10 @@ public class Problem2 {
 
         for (char c : cryptogram.toCharArray()) {
             if (!stack.isEmpty()) {
-                if (stack.peek() == c){
+                if (stack.peek() == c) {
                     stack.pop();
+                } else {
+                    stack.push(c);
                 }
             }
         }
