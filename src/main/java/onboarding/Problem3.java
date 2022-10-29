@@ -8,6 +8,7 @@ public class Problem3 {
         int answer = 0;
         List<Integer> list = separateNumber(number);
         List<Integer> count = multiplyCount(countMultipleOfThree(list));
+        answer = sumCount(count);
         return answer;
     }
 
@@ -38,5 +39,13 @@ public class Problem3 {
             countList.add(list.get(i)* digit);
         }
         return countList;
+    }
+
+    private static int sumCount(List<Integer> list){
+        int result = 0;
+        for(int i=0; i<list.size(); i++){
+            result += list.get(i);
+        }
+        return result;
     }
 }
