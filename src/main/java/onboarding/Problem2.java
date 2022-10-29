@@ -23,4 +23,12 @@ public class Problem2 {
     private static void removeDuplicate(Deque<Character> deque) {
         deque.removeLast();
     }
+
+    private static char initLastRemove() {
+        return ' ';
+    }
+
+    private static char initLastRemove(char lastElement) {
+        return lastElement;
+    }
 }
