@@ -34,9 +34,11 @@ public class Users {
         for (List<String> friend : friends) {
             final String firstUserName = friend.get(0);
             final String secondUserName = friend.get(1);
-            
-            users.get(firstUserName).addFriend(secondUserName);
-            users.get(secondUserName).addFriend(firstUserName);
+    
+            final User firstUser = users.get(firstUserName);
+            final User secondUser = users.get(secondUserName);
+            firstUser.addFriend(secondUserName);
+            secondUser.addFriend(firstUserName);
         }
     }
     

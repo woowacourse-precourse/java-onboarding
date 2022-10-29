@@ -32,7 +32,8 @@ public class Sentence {
     }
     
     private static boolean isAlphabet(final char aChar) {
-        final Matcher matcher = Pattern.compile(CONVERTIBLE_CHARACTER_FORM).matcher(String.valueOf(aChar));
+        final Pattern pattern = Pattern.compile(CONVERTIBLE_CHARACTER_FORM);
+        final Matcher matcher = pattern.matcher(String.valueOf(aChar));
         return matcher.matches();
     }
 }

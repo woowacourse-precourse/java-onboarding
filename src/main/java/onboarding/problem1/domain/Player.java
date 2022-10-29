@@ -49,7 +49,9 @@ public class Player {
     }
     
     private boolean isExceededRange() {
-        return pages.get(0).isExceededRange() || pages.get(1).isExceededRange();
+        final Page leftPage = pages.get(0);
+        final Page rightPage = pages.get(1);
+        return leftPage.isExceededRange() || rightPage.isExceededRange();
     }
     
     private boolean isPlayersLeftBigger(final Player rightPlayer) {
@@ -57,7 +59,9 @@ public class Player {
     }
     
     private boolean isLeftBigger() {
-        return pages.get(0).isBigger(pages.get(1));
+        final Page leftPage = pages.get(0);
+        final Page rightPage = pages.get(1);
+        return leftPage.isBigger(rightPage);
     }
     
     private boolean isPlayersDifferenceNotOne(final Player rightPlayer) {
@@ -65,7 +69,9 @@ public class Player {
     }
     
     private boolean isDifferenceNotOne() {
-        return pages.get(0).isDifferenceNotOne(pages.get(1));
+        final Page leftPage = pages.get(0);
+        final Page rightPage = pages.get(1);
+        return leftPage.isDifferenceNotOne(rightPage);
     }
     
     private boolean isPlayersNotCorrectEvenAndOddNumber(final Player rightPlayer) {
@@ -73,7 +79,9 @@ public class Player {
     }
     
     private boolean isNotCorrectEvenAndOddNumbers() {
-        return pages.get(0).isNotOdd() || pages.get(1).isNotEven();
+        final Page leftPage = pages.get(0);
+        final Page rightPage = pages.get(1);
+        return leftPage.isNotOdd() || rightPage.isNotEven();
     }
     
     private int getMaxNumber() {

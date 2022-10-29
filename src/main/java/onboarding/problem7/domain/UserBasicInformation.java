@@ -13,10 +13,12 @@ public class UserBasicInformation {
     
     public int compareTo(final UserBasicInformation otherUserBasicInformation) {
         if (isDraw(otherUserBasicInformation)) {
-            return userName.compareTo(otherUserBasicInformation.userName);
+            final String otherUserName = otherUserBasicInformation.userName;
+            return userName.compareTo(otherUserName);
         }
-        
-        return otherUserBasicInformation.score.compareTo(score);
+    
+        final Score otherUserScore = otherUserBasicInformation.score;
+        return otherUserScore.compareTo(score);
     }
     
     private boolean isDraw(final UserBasicInformation otherUserBasicInformation) {

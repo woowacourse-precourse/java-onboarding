@@ -19,7 +19,8 @@ public class Number {
     }
     
     private String[] splitToString() {
-        return String.valueOf(number).split(DELIMITER);
+        final String stringNumber = String.valueOf(number);
+        return stringNumber.split(DELIMITER);
     }
     
     private boolean isContainsThreeSixNine(final int digit) {

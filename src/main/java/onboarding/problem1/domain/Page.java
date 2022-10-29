@@ -29,7 +29,8 @@ public class Page {
     }
     
     private String[] splitToStringPage() {
-        return String.valueOf(page).split(DELIMITER);
+        final String stringPage = String.valueOf(page);
+        return stringPage.split(DELIMITER);
     }
     
     public boolean isNotOdd() {
