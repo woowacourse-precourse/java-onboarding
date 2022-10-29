@@ -3,8 +3,17 @@ package onboarding;
 import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        if(exception(pobi, crong) == -1){
+            return -1;
+        }else{
+            return winnerLooser(getScore(pobi), getScore(crong));
+        }
+    }
+
+    public static int winnerLooser(int pobi, int crong){
+        if(pobi>crong) { return 1;}
+        else if(crong>pobi){ return 2;}
+        else {return 0;}
     }
 
     public static int getScore(List<Integer> one){
