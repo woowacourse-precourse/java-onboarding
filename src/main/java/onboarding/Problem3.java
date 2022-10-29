@@ -5,4 +5,24 @@ public class Problem3 {
         int answer = 0;
         return answer;
     }
+
+    public static int count369(int num) {
+        int cnt = 0;
+        if ((num / 1000 == 3) || (num / 1000 == 6) || (num / 1000 == 9)) {
+            cnt++;
+        }
+        num %= 1000;
+        if ((num / 100 == 3) || (num / 100 == 6) || (num / 100 == 9)) {
+            cnt++;
+        }
+        num %= 100;
+        if ((num / 10 == 3) || (num / 10 == 6) || (num / 10 == 9)) {
+            cnt++;
+        }
+        num %= 10;
+        if ((num == 3) || (num == 6) || (num == 9)) {
+            cnt++;
+        }
+        return cnt;
+    }
 }
