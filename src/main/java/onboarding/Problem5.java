@@ -17,9 +17,9 @@ public class Problem5 {
     private static List<Integer> exchangeChange(int money, int[] unitChange) {
         List<Integer> answer = new ArrayList<Integer>();
 
-        for (int i = 0; i < unitChange.length; i++){
-            answer.add(money / unitChange[i]);
-            money %= unitChange[i];
+        for (int unit : unitChange){
+            answer.add(money / unit);
+            money %= unit;
         }
         return answer;
     }
