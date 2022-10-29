@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
@@ -15,6 +16,49 @@ class Input5 {
     static int inputMoney() {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();
+    }
+
+}
+
+class Money {
+    private final int origin;
+    private int oneMillionWon;
+    private int oneThousandWon;
+    private int oneHundredWon;
+    private int tenWon;
+    private int oneWon;
+
+    Money(int origin) {
+        this.origin = origin;
+        this.oneMillionWon = this.origin / 10000 % 10;
+        this.oneThousandWon = this.origin / 1000 % 10;
+        this.oneHundredWon = this.origin / 100 % 10;
+        this.tenWon = this.origin / 10 % 10;
+        this.oneWon = this.origin % 10;
+    }
+
+    public int getOrigin() {
+        return origin;
+    }
+
+    public int getOneMillionWon() {
+        return oneMillionWon;
+    }
+
+    public int getOneThousandWon() {
+        return oneThousandWon;
+    }
+
+    public int getOneHundredWon() {
+        return oneHundredWon;
+    }
+
+    public int getTenWon() {
+        return tenWon;
+    }
+
+    public int getOneWon() {
+        return oneWon;
     }
 
 }
