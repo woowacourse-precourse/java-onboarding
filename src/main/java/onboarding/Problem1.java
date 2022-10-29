@@ -1,8 +1,6 @@
 package onboarding;
 
-import java.lang.reflect.Member;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 class Problem1 {
@@ -23,6 +21,7 @@ class Problem1 {
         for (int index = 0; index < 2; index++) {
             int pageIndexValue = pageList.get(index);
             returnList.add(getElementSum(pageIndexValue));
+            returnList.add(getElementMul(pageIndexValue));
         }
 
         return returnList;
@@ -37,6 +36,18 @@ class Problem1 {
         }
 
         return elementSum;
+
+    }
+
+    public static int getElementMul(int pageElement){
+        int elementMul = 1;
+        String pageStringNumber = Integer.toString(pageElement);
+
+        for (int index = 0; index < pageStringNumber.length(); index++) {
+            elementMul *= pageStringNumber.charAt(index) - '0';
+        }
+
+        return elementMul;
 
     }
 }
