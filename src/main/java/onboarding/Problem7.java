@@ -7,7 +7,7 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> userFriendList = findFriendListByUser(user, friends);
         Map<String, Integer> recommendedFriends = createRecommendedFriends(user ,userFriendList, friends);
-        recommendedFriends = visitorScore(recommendedFriends, visitors);
+        recommendedFriends = visitorScore(recommendedFriends, visitors, userFriendList);
 
         return findTop5ScoreUser(recommendedFriends);
     }
@@ -39,10 +39,10 @@ public class Problem7 {
         return result;
     }
 
-    private static Map<String, Integer> visitorScore(Map<String, Integer> recommendedFriendMap, List<String> visitors) {
+    private static Map<String, Integer> visitorScore(Map<String, Integer> recommendedFriendMap, List<String> visitors, List<String> userFriendList) {
         for (String visitor : visitors) {
-            if (recommendedFriendMap.containsKey(visitor)) {
-                Integer score = recommendedFriendMap.get(visitor);
+            if (!userFriendList.contains(visitor)) {
+                Integer score = recommendedFriendMap.getOrDefault(visitor, 0);
                 recommendedFriendMap.put(visitor, score + 1);
             }
         }
