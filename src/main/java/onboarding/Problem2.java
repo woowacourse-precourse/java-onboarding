@@ -7,12 +7,9 @@ public class Problem2 {
 
         Stack<String> charStack = getPlainText(cryptogram);
 
-        StringBuilder plainText = new StringBuilder();
-        for (String s : charStack) {
-            plainText.append(s);
-        }
+        String plainText = String.join("", charStack);
 
-        return plainText.toString();
+        return plainText;
     }
 
     private static Stack<String> getPlainText(String cryptogram) {
