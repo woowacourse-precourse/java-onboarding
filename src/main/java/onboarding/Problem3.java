@@ -7,17 +7,18 @@ public class Problem3 {
      * @param input
      * @return
      */
-    private static boolean shouldClap(int input) {
+    private static int shouldClap(int input) {
+        int count = 0;
         while(input >= 10) {
             if (input % 10 == 3 || input % 10 == 6 || input % 10 == 9) {
-                return true;
+                count++;
             }
             input /= 10;
         }
         if (input % 10 == 3 || input % 10 == 6 || input % 10 == 9) {
-            return true;
+            count++;
         }
-        return false;
+        return count;
     }
 
     /**
