@@ -25,7 +25,7 @@ class CountClapGame{
         for(int i=1;i<=number;i++){
             if(i < 10){
                 if(i == 3 || i == 6 || i == 9){
-                    cnt++;`
+                    cnt++;
                 }
             } else{
                 cnt += countInArrayClap(i);
