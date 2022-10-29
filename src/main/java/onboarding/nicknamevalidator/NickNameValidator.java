@@ -7,10 +7,13 @@ import java.util.Map;
 
 public class NickNameValidator {
 
+	private final List<List<String>> forms;
+
 	private final Map<String, Integer> occurrences;
 
 	public NickNameValidator(List<List<String>> forms) {
-		occurrences = new HashMap<>();
+		this.forms = forms;
+		this.occurrences = new HashMap<>();
 		for (List<String> form : forms) {
 			initMapWith(form);
 		}
@@ -41,5 +44,17 @@ public class NickNameValidator {
 
 	public int getOccurrenceOf(final String word) {
 		return occurrences.getOrDefault(word, 0);
+	}
+
+	public List<String> getEmailsMatches(final String word) {
+		List<String> emails = new ArrayList<>();
+
+		for (List<String> form : forms) {
+			String nickname = form.get(1);
+			if (nickname.contains(word)) {
+				emails.add(form.get(0));
+			}
+		}
+		return emails;
 	}
 }

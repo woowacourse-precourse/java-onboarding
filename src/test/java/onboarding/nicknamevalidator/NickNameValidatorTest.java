@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.*;
 
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -16,6 +17,9 @@ public class NickNameValidatorTest {
 		List.of("mj@email.com", "엠제이"),
 		List.of("nowm@email.com", "이제엠")
 	);
+
+	static NickNameValidator validator
+		= new NickNameValidator(forms);
 
 	@DisplayName("닉네임 문자 순열 생성 테스트")
 	@Test
@@ -36,12 +40,20 @@ public class NickNameValidatorTest {
 	@DisplayName("포함된 단어 횟수 반환 테스트")
 	@Test
 	void 단어_포함_횟수() {
-		NickNameValidator validator = new NickNameValidator(forms);
 		assertThat(validator.getOccurrenceOf("제이"))
 			.isEqualTo(3);
 		assertThat(validator.getOccurrenceOf("이엠"))
 			.isEqualTo(1);
 		assertThat(validator.getOccurrenceOf("이엠제"))
 			.isEqualTo(0);
+	}
+
+	@DisplayName("단어가 포함된 닉네임 이메일 반환 테스트")
+	@Test
+	void 단어_포함_닉네임_이메일() {
+		List<String> emails = validator.getEmailsMatches("제이");
+		assertThat(emails)
+			.isEqualTo(List.of("jm@email.com",
+				"jason@email.com", "mj@email.com"));
 	}
 }
