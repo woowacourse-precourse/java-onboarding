@@ -26,7 +26,25 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
+        int validationCode = exceptionValidate(pobi, crong);
+
+        if (validationCode == -1){
+            return -1;
+        }
+
         int answer = Integer.MAX_VALUE;
+
+        int pobiValue = calculate(pobi);
+        int crongValue = calculate(crong);
+
+        if(pobiValue > crongValue){
+            answer = 1;
+        } else if(crongValue > pobiValue){
+            answer = 2;
+        } else {
+            answer = 0;
+        }
+
         return answer;
     }
 
