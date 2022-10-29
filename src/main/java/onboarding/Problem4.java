@@ -1,9 +1,15 @@
 package onboarding;
 
+import java.util.InputMismatchException;
+
 public class Problem4 {
+
+    static final int START_RANGE = 1;
+    static final int END_RANGE = 1_000;
 
     static final char START_CHAR = 'A';
     static final char END_CHAR = 'Z';
+
     static final char DIFF_A_Z = (char) (END_CHAR - START_CHAR);
 
     public static char transformChar(char ch) {
@@ -47,6 +53,13 @@ public class Problem4 {
     }
 
     public static String solution(String word) {
+        if (!isValidLength(word)) {
+            throw new InputMismatchException("입력된 문자열의 크기가 [1,1000] 이내가 아닙니다.");
+        }
         return transformString(word);
+    }
+
+    private static boolean isValidLength(String string) {
+        return START_RANGE <= string.length() && string.length() <= END_RANGE;
     }
 }
