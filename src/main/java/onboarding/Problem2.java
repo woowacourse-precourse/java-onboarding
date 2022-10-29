@@ -36,8 +36,11 @@ public class Problem2 {
 
             if ((cryptogram.charAt(i) != cryptogram.charAt(i-1)) && lastIdx != startIdx) {
 
-                System.out.println("startIdx = " + startIdx);
-                System.out.println("lastIdx = " + lastIdx);
+
+                StringBuffer str = new StringBuffer(cryptogram);
+                cryptogram = str.delete(startIdx,lastIdx+1).toString();
+
+                System.out.println("cryptogram = " + cryptogram);
 
                 break;
 
