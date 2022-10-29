@@ -54,9 +54,17 @@ public class Problem2 {
         String[] cryptoWord = crypto.split("");
         ArrayList<String> cryptoList = new ArrayList<>(Arrays.asList(cryptoWord));
 
-        List<String> decode = removeDuplicationWords(findDuplication(cryptoList), cryptoList);
+        boolean flag = true;
 
-        System.out.println(decode);
+        while (flag) {
+            List<String> decode = removeDuplicationWords(findDuplication(cryptoList), cryptoList);
+
+            // stop loop when there are no more duplicate words
+            if (findDuplication(decode).isEmpty()){
+                flag = false;
+            }
+        }
+
         return answer;
     }
 }
