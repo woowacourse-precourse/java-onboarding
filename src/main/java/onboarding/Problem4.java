@@ -10,6 +10,10 @@ public class Problem4 {
             if (65 <= arr[i] && arr[i] <= 90) {
                 answer+=(char)(155-arr[i]);
             }
+            //소문자
+            else if (97 <= arr[i] && arr[i] <= 122) {
+                answer+=(char)(219-arr[i]);
+            }
         }
         return answer;
     }
