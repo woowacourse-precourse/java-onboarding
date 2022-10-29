@@ -37,4 +37,19 @@ class Problem1 {
         }
         return pageMultifly;
     }
+
+    // 가장 큰 수를 추출
+    public static int maxPageNumber (int sumNum, int multiflyNum) {
+        int maxNumber = sumNum - multiflyNum;
+
+        int seperateNumber = maxNumber > 0 ? 1 : 0;
+
+        switch (seperateNumber) {
+            case 1:
+                return sumNum;
+            case 0:
+                return multiflyNum;
+        }
+        return maxNumber;
+    }
 }
