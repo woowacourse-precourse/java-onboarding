@@ -1,5 +1,7 @@
 package onboarding;
 
+import onboarding.problem4.TreeFrogDictionary;
+
 import java.util.regex.Pattern;
 
 public class Problem4 {
@@ -7,7 +9,7 @@ public class Problem4 {
         if (!validateWord(word)) {
             return null;
         }
-        String answer = "";
+        String answer = TreeFrogDictionary.convertTreeFrogWord(word);
         return answer;
     }
 
