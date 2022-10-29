@@ -5,21 +5,24 @@ import java.util.*;
 public class Problem7 {
 
     //<유저 : 친구목록>인 맵
-    private static Map<String, HashSet<String>> friendMap = new HashMap<>();
+    private static Map<String, HashSet<String>> friendMap;
     //<유저 : 점수>인 맵
-    private static Map<String, Integer> scoreMap = new HashMap<>();
+    private static Map<String, Integer> scoreMap;
     // 내 이름
     private static String myName;
     // 이미 친구
     private static Set<String> userFriend;
     // 추천 명단
-    private static List<String> answer = new LinkedList<>();
+    private static List<String> answer;
 
     //solution()
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-
-        //class 내에서 정적 변수로 쓰기 위해서 초기화
+        // 정적 변수들 초기화
+        friendMap = new HashMap<>();
+        scoreMap = new HashMap<>();
+        answer = new LinkedList<>();
         myName = user;
+
         //친구 관계 짓기
         setFriendMap(friends);
         //내친구 목록
@@ -47,11 +50,14 @@ public class Problem7 {
                 scoreToUser.put(score, list);
             }
         }
+        // 점수를 통한 정렬
         List<Integer> scoreList = new ArrayList<>(scoreToUser.keySet());
         scoreList.sort((o1, o2) -> o2.compareTo(o1));
+        // 점수 순서대로 최대 5명까지만 추천
         int idx = 0;
         loop : for (Integer score : scoreList) {
             List<String> users = scoreToUser.get(score);
+            //동일 점수일 경우 이름으로 오름차순 정렬
             users.sort((o1, o2)-> o1.compareTo(o2));
             for (String user : users) {
                 answer.add(user);
