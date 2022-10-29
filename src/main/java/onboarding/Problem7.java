@@ -73,13 +73,32 @@ public class Problem7 {
         return scoreMap;
     }
 
+    public static Map<String, Integer> getVisitorScore(List<String> visitors, Set<String> friendSet) {
+        Map<String, Integer> scoreMap = new HashMap();
+
+        for(String visitor : visitors) {
+            if(friendSet.contains(visitor)) {   // 이미 친구인 사용자는 제외
+                continue;
+            }
+
+            if(!scoreMap.containsKey(visitor)) {
+                scoreMap.put(visitor, 0);
+            }
+            scoreMap.put(visitor, scoreMap.get(visitor) + 1);
+        }
+
+        return scoreMap;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         Set<String> friendSet;
         Map<String, Integer> friendsScore;
+        Map<String, Integer> visitorsScore;
 
         friendSet = getFriendSet(user, friends);
         friendsScore = getFriendsScore(user, friendSet, friends);
+        visitorsScore = getVisitorScore(visitors, friendSet);
 
         return answer;
     }
