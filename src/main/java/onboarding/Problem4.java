@@ -17,5 +17,17 @@ public class Problem4 {
         return true;
     }
 
+    private static char changeAlpa(char alpa) {
+        if(alpa == ' ') return ' ';
+        boolean isUpperCase = Character.isUpperCase(alpa);
 
+        char alpaToUpperCase = Character.toUpperCase(alpa);
+
+        char switchedAlpa = (char) (155 - alpaToUpperCase);
+
+        if(!isUpperCase)
+            switchedAlpa=Character.toLowerCase(switchedAlpa);
+
+        return switchedAlpa;
+    }
 }
