@@ -18,6 +18,10 @@ public class Problem7 {
         return answer;
     }
 
+    static List<String> computeAnswer(List<String> mainCharacterFriends, Map<String, Integer> recommendScore) {
+        return null;
+    }
+
     static Map<String, Integer> computeRecommendScore(Map<String, Integer> bothKnowFriendsScore, Map<String, Integer> visitScore) {
         Map<String, Integer> recommendScore = new HashMap<>(bothKnowFriendsScore);
 

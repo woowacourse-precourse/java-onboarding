@@ -57,8 +57,7 @@ class Problem7Test {
 
     @Test
     void computeVisitScore() {
-        Map<String, Integer> visitCount = Problem7.computeVisitScore(List.of("bedi", "bedi", "donut", "bedi",
-            "shakevan"));
+        Map<String, Integer> visitCount = Problem7.computeVisitScore(List.of("bedi", "bedi", "donut", "bedi", "shakevan"));
 
         Assertions.assertThat(visitCount.get("bedi"))
             .isEqualTo(3);
@@ -71,8 +70,7 @@ class Problem7Test {
     @Test
     void computeRecommendScore() {
         Map<String, Integer> bothKnowFriendsCount = Problem7.computeBothKnowFriendsScore("mrko", userToFriends);
-        Map<String, Integer> visitCount = Problem7.computeVisitScore(List.of("bedi", "bedi", "donut", "bedi",
-            "shakevan"));
+        Map<String, Integer> visitCount = Problem7.computeVisitScore(List.of("bedi", "bedi", "donut", "bedi", "shakevan"));
         Map<String, Integer> recommendScore = Problem7.computeRecommendScore(bothKnowFriendsCount, visitCount);
 
         Assertions.assertThat(recommendScore.get("donut"))
@@ -85,5 +83,18 @@ class Problem7Test {
             .isEqualTo(1);
         Assertions.assertThat(recommendScore.get("bedi"))
             .isEqualTo(3);
+    }
+
+    @Test
+    void computeAnswer() {
+        Map<String, Integer> bothKnowFriendsCount = Problem7.computeBothKnowFriendsScore("mrko", userToFriends);
+        Map<String, Integer> visitCount = Problem7.computeVisitScore(List.of("bedi", "bedi", "donut", "bedi", "shakevan"));
+        Map<String, Integer> recommendScore = Problem7.computeRecommendScore(bothKnowFriendsCount, visitCount);
+
+        List<String> answer = Problem7.computeAnswer(List.of("donut", "shakevan"), recommendScore);
+        Assertions.assertThat(answer.size()).isEqualTo(3);
+        Assertions.assertThat(answer.get(0)).isEqualTo("andole");
+        Assertions.assertThat(answer.get(1)).isEqualTo("jun");
+        Assertions.assertThat(answer.get(2)).isEqualTo("bedi");
     }
 }
