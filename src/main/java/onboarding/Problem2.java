@@ -12,9 +12,7 @@ import java.util.Stack;
 4. stack 에 남아있는 문자들을 문자열로 만들어서 Return
  */
 public class Problem2 {
-    public static String solution(String cryptogram) {
-        StringBuilder answer = new StringBuilder();
-        char[] s = cryptogram.toCharArray();
+    private static Stack<Character> decryption(char[] s){
         Stack<Character> stack = new Stack<>();
         stack.push(s[0]);
         for (int i = 1; i < s.length; i++) {
@@ -24,10 +22,19 @@ public class Problem2 {
             }
             stack.push(s[i]);
         }
-        for (int i = 0; i < stack.size(); i++) {
-            answer.append(stack.elementAt(i));
+        return stack;
+    }
+    private static String stackToString (Stack<Character> decryptionArray){
+        StringBuilder temp = new StringBuilder();
+        for (int i = 0; i < decryptionArray.size(); i++) {
+            temp.append(decryptionArray.elementAt(i));
         }
-        return answer.toString();
+        return temp.toString();
+    }
+    public static String solution(String cryptogram) {
+        char[] s = cryptogram.toCharArray();
+        Stack<Character> decryptionArray = decryption(s);
+        return stackToString(decryptionArray);
 
     }
     /*
