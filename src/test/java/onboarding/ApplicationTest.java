@@ -228,74 +228,74 @@ class ApplicationTest {
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
 
-        @Test
-        void crewCountTest(){
-            List<List<String>> forms = List.of();
-            assertThat(Problem6.Validator.isValidate(forms)).isFalse();
-        }
-
-        @Test
-        void emailFormTest1(){
-            List<List<String>> forms = List.of(
-                    List.of("jm@email.com", "제이엠"),
-                    List.of("nowm@emaail.com", "이제엠")
-            );
-            assertThat(Problem6.Validator.isValidate(forms)).isFalse();
-        }
-
-        @Test
-        void emailFormTest2(){
-            List<List<String>> forms = List.of(
-                    List.of("jm@email.com", "제이엠"),
-                    List.of("nowm@email.co", "이제엠")
-            );
-            assertThat(Problem6.Validator.isValidate(forms)).isFalse();
-        }
-
-        @Test
-        void emailSizeTest1(){
-            List<List<String>> forms = List.of(
-                    List.of("jmasdadasd@email.com", "제이엠"),
-                    List.of("nowm@email.co", "이제엠")
-            );
-            assertThat(Problem6.Validator.isValidate(forms)).isFalse();
-        }
-
-        @Test
-        void emailSizeTest2(){
-            List<List<String>> forms = List.of(
-                    List.of("@email.com", "제이엠"),
-                    List.of("nowm@email.co", "이제엠")
-            );
-            assertThat(Problem6.Validator.isValidate(forms)).isFalse();
-        }
-
-        @Test
-        void nickNameTest1(){
-            List<List<String>> forms = List.of(
-                    List.of("jason@email.com", ""),
-                    List.of("woniee@email.com", "워니")
-            );
-            assertThat(Problem6.Validator.isValidate(forms)).isFalse();
-        }
-
-        @Test
-        void nickNameTest2(){
-            List<List<String>> forms = List.of(
-                    List.of("jason@email.com", "jason"),
-                    List.of("woniee@email.com", "워니")
-            );
-            assertThat(Problem6.Validator.isValidate(forms)).isFalse();
-        }
-
-        @Test
-        void nickNameTest3(){
-            List<List<String>> forms = List.of(
-                    List.of("jason@email.com", "무구정광대다라나니경무구정광대다라나니경"),
-                    List.of("woniee@email.com", "워니")
-            );
-            assertThat(Problem6.Validator.isValidate(forms)).isFalse();
-        }
+//        @Test
+//        void crewCountTest(){
+//            List<List<String>> forms = List.of();
+//            assertThat(Problem6.Validator.isValidate(forms)).isFalse();
+//        }
+//
+//        @Test
+//        void emailFormTest1(){
+//            List<List<String>> forms = List.of(
+//                    List.of("jm@email.com", "제이엠"),
+//                    List.of("nowm@emaail.com", "이제엠")
+//            );
+//            assertThat(Problem6.Validator.isValidate(forms)).isFalse();
+//        }
+//
+//        @Test
+//        void emailFormTest2(){
+//            List<List<String>> forms = List.of(
+//                    List.of("jm@email.com", "제이엠"),
+//                    List.of("nowm@email.co", "이제엠")
+//            );
+//            assertThat(Problem6.Validator.isValidate(forms)).isFalse();
+//        }
+//
+//        @Test
+//        void emailSizeTest1(){
+//            List<List<String>> forms = List.of(
+//                    List.of("jmasdadasd@email.com", "제이엠"),
+//                    List.of("nowm@email.co", "이제엠")
+//            );
+//            assertThat(Problem6.Validator.isValidate(forms)).isFalse();
+//        }
+//
+//        @Test
+//        void emailSizeTest2(){
+//            List<List<String>> forms = List.of(
+//                    List.of("@email.com", "제이엠"),
+//                    List.of("nowm@email.co", "이제엠")
+//            );
+//            assertThat(Problem6.Validator.isValidate(forms)).isFalse();
+//        }
+//
+//        @Test
+//        void nickNameTest1(){
+//            List<List<String>> forms = List.of(
+//                    List.of("jason@email.com", ""),
+//                    List.of("woniee@email.com", "워니")
+//            );
+//            assertThat(Problem6.Validator.isValidate(forms)).isFalse();
+//        }
+//
+//        @Test
+//        void nickNameTest2(){
+//            List<List<String>> forms = List.of(
+//                    List.of("jason@email.com", "jason"),
+//                    List.of("woniee@email.com", "워니")
+//            );
+//            assertThat(Problem6.Validator.isValidate(forms)).isFalse();
+//        }
+//
+//        @Test
+//        void nickNameTest3(){
+//            List<List<String>> forms = List.of(
+//                    List.of("jason@email.com", "무구정광대다라나니경무구정광대다라나니경"),
+//                    List.of("woniee@email.com", "워니")
+//            );
+//            assertThat(Problem6.Validator.isValidate(forms)).isFalse();
+//        }
     }
 
     @Nested
