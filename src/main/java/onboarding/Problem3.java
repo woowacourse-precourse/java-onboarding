@@ -81,3 +81,17 @@ class ThreeSixNine {
     }
 
 }
+
+class OutView3 {
+
+    static void printStart() {
+        System.out.println("1 이상 10,000 이하인 자연수를 입력해주세요");
+    }
+    static void printHead() {
+        System.out.println("number" + "\t" + "result");
+    }
+
+    static void printResult(int inputNumber, int result) {
+        System.out.println(inputNumber + "\t" + result);
+    }
+}
