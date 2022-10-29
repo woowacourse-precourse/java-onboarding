@@ -8,16 +8,15 @@ class Problem1 {
 
     private static final int INIT_ERROR = -1;
     private static final int FIRST_PAGE = 1;
-    private static final int LAST_PAGE = 400;;
+    private static final int LAST_PAGE = 400;
 
     private static final int DRAW = 0;
     private static final int POBI_WIN = 1;
     private static final int CRONG_WIN = 2;
 
-
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
-        int answer = 0;
+        int answer;
 
         int pobiLeftPage = pobi.get(0), pobiRightPage = pobi.get(1);
         int crongLeftPage = crong.get(0), crongRightPage = crong.get(1);
@@ -34,7 +33,6 @@ class Problem1 {
 
         answer = getResult(pobiMaxScore, crongMaxScore);
 
-        System.out.println("answer = " + answer);
         return answer;
     }
 

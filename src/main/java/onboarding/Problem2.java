@@ -1,27 +1,35 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Stack;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
+        
         StringBuilder answer = new StringBuilder();
-        char[] array = cryptogram.toCharArray();
+        Stack<Character> cryptoStack = new Stack<>();
+        char[] parseCryptoArr = cryptogram.toCharArray();
 
-        Stack<Character> stack = new Stack<>();
-        stack.push(array[0]);
-        for (int i = 1; i < array.length; i++) {
-            if (stack.peek() == array[i]) {
-                stack.pop();
+        cryptoStack.push(parseCryptoArr[0]);
+
+        deleteDuplicateCryptoStack(cryptoStack, parseCryptoArr);
+        sortReverseCryptoStack(answer, cryptoStack);
+
+        return answer.toString();
+    }
+
+    private static void sortReverseCryptoStack(StringBuilder answer, Stack<Character> cryptoStack) {
+        for (int i = 0; i < cryptoStack.size(); i++) {
+            answer.append(cryptoStack.elementAt(i));
+        }
+    }
+
+    private static void deleteDuplicateCryptoStack(Stack<Character> cryptoStack, char[] parseCryptoArr) {
+        for (int i = 1; i < parseCryptoArr.length; i++) {
+            if (cryptoStack.peek() == parseCryptoArr[i]) {
+                cryptoStack.pop();
                 continue;
             }
-            stack.push(array[i]);
+            cryptoStack.push(parseCryptoArr[i]);
         }
-        for (int i = 0; i < stack.size(); i++) {
-            answer.append(stack.elementAt(i));
-        }
-        return answer.toString();
     }
 }
