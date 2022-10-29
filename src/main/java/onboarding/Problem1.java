@@ -3,6 +3,8 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.Math.max;
+
 class Problem1 {
     public static int getSum(List<Integer> nums) {
         int sum = 0;
@@ -23,6 +25,14 @@ class Problem1 {
             }
         }
         return mul;
+    }
+    public static ArrayList<Integer> splitNum(int oldNum){
+        String oldList = Integer.toString(oldNum);
+        ArrayList<Integer> newList = new ArrayList<>();
+        for (int i = 0; i < oldList.length(); i++){
+            newList.add(oldList.charAt(i) - '0');
+        }
+        return newList;
     }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
