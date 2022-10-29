@@ -4,7 +4,18 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+
         int answer = Integer.MAX_VALUE;
+
+        if(!verifyPages(pobi) || !verifyPages(crong)) return -1;
+
+        int pobiMaxVal = compareBoth(pobi);
+        int crongMaxVal = compareBoth(crong);
+
+        if (pobiMaxVal > crongMaxVal) answer = 1;
+        if (pobiMaxVal == crongMaxVal) answer = 0;
+        if (pobiMaxVal < crongMaxVal) answer = 2;
+
         return answer;
     }
 
