@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class Problem6 {
@@ -10,6 +11,12 @@ public class Problem6 {
         // 4. list 중복 제거
         // 5. list 오른차순 정렬
         // 6. list 반환
+        HashMap<String, String> map = new HashMap<>();
+        String[] nickNameArr = new String[forms.size()];
+        for (int i = 0; i < forms.size(); i++) {
+            map.put(forms.get(i).get(1), forms.get(i).get(0));
+            nickNameArr[i] = forms.get(i).get(1);
+        }
         List<String> answer = List.of("answer");
         return answer;
     }
