@@ -29,7 +29,7 @@ public class Score {
         return Integer.compare(this.score, otherScore.score);
     }
     
-    public int score() {
+    public int getScore() {
         return score;
     }
     

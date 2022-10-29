@@ -19,7 +19,7 @@ public class Decryptor {
         return true;
     }
     
-    public String cryptogram() {
-        return cryptogram.cryptogram();
+    public String getCryptogram() {
+        return cryptogram.getCryptogram();
     }
 }

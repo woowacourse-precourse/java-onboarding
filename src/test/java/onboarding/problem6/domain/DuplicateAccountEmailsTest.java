@@ -22,6 +22,6 @@ class DuplicateAccountEmailsTest {
         
         DuplicateAccountEmails duplicateAccountEmails = new DuplicateAccountEmails();
         duplicateAccountEmails.saveDuplicateAccountEmails(forms);
-        assertThat(duplicateAccountEmails.duplicateAccountEmails()).isEqualTo(result);
+        assertThat(duplicateAccountEmails.getDuplicateAccountEmails()).isEqualTo(result);
     }
 }

@@ -67,7 +67,7 @@ public class Users {
                 .filter(User::isNotZeroScore)
                 .sorted()
                 .limit(MAX_LENGTH_OF_RETURN_LENGTH)
-                .map(User::userName)
+                .map(User::getUserName)
                 .collect(Collectors.toList());
     }
     

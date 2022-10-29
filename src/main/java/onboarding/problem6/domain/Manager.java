@@ -34,8 +34,8 @@ public class Manager {
         users.saveDuplicateAccounts(duplicateAccountEmails);
     }
     
-    public List<String> duplicateAccountEmails() {
-        return duplicateAccountEmails.duplicateAccountEmails();
+    public List<String> getDuplicateAccountEmails() {
+        return duplicateAccountEmails.getDuplicateAccountEmails();
     }
     
     @Override

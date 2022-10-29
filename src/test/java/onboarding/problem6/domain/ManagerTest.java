@@ -24,6 +24,6 @@ class ManagerTest {
         final Manager manager = new Manager(forms);
         manager.saveDuplicateAccounts();
         
-        assertThat(manager.duplicateAccountEmails()).isEqualTo(result);
+        assertThat(manager.getDuplicateAccountEmails()).isEqualTo(result);
     }
 }

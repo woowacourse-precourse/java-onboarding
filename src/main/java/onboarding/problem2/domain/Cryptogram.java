@@ -36,7 +36,7 @@ public class Cryptogram {
         return cryptogram.split(DELIMITER);
     }
     
-    public String cryptogram() {
+    public String getCryptogram() {
         return cryptogram;
     }
     

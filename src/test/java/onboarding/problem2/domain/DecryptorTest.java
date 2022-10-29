@@ -11,6 +11,6 @@ class DecryptorTest {
     void decrypt() {
         Decryptor decryptor = new Decryptor("zyellleyz");
         decryptor.decrypt();
-        assertThat(decryptor.cryptogram()).isEmpty();
+        assertThat(decryptor.getCryptogram()).isEmpty();
     }
 }

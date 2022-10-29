@@ -23,11 +23,11 @@ public class User {
                 .collect(Collectors.toList());
     }
     
-    public UserName userName() {
+    public UserName getUserName() {
         return userName;
     }
     
-    public UserEmail userEmail() {
+    public UserEmail getUserEmail() {
         return userEmail;
     }
     
