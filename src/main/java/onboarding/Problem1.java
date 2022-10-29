@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
