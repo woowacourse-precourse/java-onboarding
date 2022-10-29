@@ -2,8 +2,7 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = reverseAlphabetic(word);
-        return answer;
+        return reverseAlphabetic(word);
     }
 
     private static String reverseAlphabetic(String word) {

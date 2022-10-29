@@ -12,9 +12,8 @@ public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
         List<Integer> datas = initDataOneToNumber(number);
-        for (Integer data : datas) {
+        for (Integer data : datas)
             answer += calcNumber(data);
-        }
         return answer;
     }
 

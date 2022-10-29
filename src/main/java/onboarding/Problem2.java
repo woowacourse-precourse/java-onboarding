@@ -8,18 +8,18 @@ public class Problem2 {
         return removeDuplicateString(cryptogram);
     }
 
-    public static String removeDuplicateString(String str) {
+    private static String removeDuplicateString(String str) {
         Stack<Character> stack = new Stack<>();
         str.chars().forEach(i -> {
-            if (!stack.isEmpty() && stack.peek() == i) {
+            if (!stack.isEmpty() && stack.peek() == i)
                 stack.pop();
-            } else
+            else
                 stack.push((char) i);
         });
         return charStackToString(stack);
     }
 
-    public static String charStackToString(Stack<Character> stack) {
+    private static String charStackToString(Stack<Character> stack) {
         return stack.stream()
                 .map(Object::toString)
                 .collect(Collectors.joining());
