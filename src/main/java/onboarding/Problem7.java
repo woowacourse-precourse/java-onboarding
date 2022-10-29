@@ -18,6 +18,7 @@ public class Problem7 {
         friendData=friends;
         List<String> olderFriends = getFriendOfUser(user);
         classifyOlderFriend(olderFriends);
+        increaseFriendWeightByOldFriends(olderFriends);
     }
 
     private static List<String> getFriendOfUser(String user) {
@@ -33,6 +34,13 @@ public class Problem7 {
 
     private static void classifyOlderFriend(List<String> oldfriends){
         oldfriends.stream().forEach(a->oldFriend.add(a));
+    }
+
+    private static void increaseFriendWeightByOldFriends(List<String> friend){
+        for(int i=0; i<friend.size(); i++){
+            List<String> friendList = getFriendOfUser(friend.get(i));
+            increaseWeightByRelationship(friendList);
+        }
     }
 
 }
