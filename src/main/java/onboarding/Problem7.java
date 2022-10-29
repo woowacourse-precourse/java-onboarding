@@ -37,4 +37,17 @@ public class Problem7 {
         usersFriend.addAll(relation);
     }
 
+    private static void createMappingIfNotFriend(List<List<String>> friends){
+        for(List<String> relation : friends){
+            addToMapIfNotUsersFriend(relation);
+        }
+    }
+
+    private static void addToMapIfNotUsersFriend(List<String> relation){
+        for(String name : relation){
+            addNameIfNotUsersFriend(name);
+        }
+    }
+
+
 }
