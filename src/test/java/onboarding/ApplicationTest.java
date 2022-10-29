@@ -106,8 +106,8 @@ class ApplicationTest {
 
         @Test
         void parameter_duplication_more_than_2() {
-            String cryptogram = "abbbbccbbbba";
-            String result = "";
+            String cryptogram = "abbbbccbbbbaa";
+            String result = "a";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
     }
