@@ -61,4 +61,9 @@ class Money {
         return oneWon;
     }
 
+    static void validateMoneyRange(int money) {
+        if (money < 1 || 1000000 < money) {
+            throw new IllegalStateException("1이상 1,000,000 이하로 입력해 주세요");
+        }
+    }
 }
