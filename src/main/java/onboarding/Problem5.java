@@ -22,5 +22,9 @@ public class Problem5 {
         // 1. withdraw 함수 탈출 조건 : 화폐 단위의 개수 만큼 반복
         // 2. 입력된 money를 n번째(step)화폐 단위로 나누고 값은 answer에 저장,
         // 나머지 값은 다음 화폐 단위와 함께 withdraw에 입력
+
+        if (step < 9) {
+
+        }
     }
 }
