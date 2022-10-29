@@ -20,7 +20,7 @@ public class Problem6 {
 
             return answer;
         }catch (Exception e){
-            return answer;
+            return new ArrayList<>();
         }
     }
 
