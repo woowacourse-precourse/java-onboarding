@@ -20,6 +20,18 @@ class Problem1 {
         return answer;
     }
 
+    private static int getMaxScore(String pageNumber) {
+        int sum = 0;
+        int mul = 1;
+
+        for (int i = 0; i < pageNumber.length(); i++) {
+            sum += Character.getNumericValue(pageNumber.charAt(i));
+            mul *= Character.getNumericValue(pageNumber.charAt(i));
+        }
+
+        return Math.max(sum, mul);
+    }
+
     private static int getCompareResult(int pobiScore, int crongScore) {
         int ans = EXCEPTION;
 
