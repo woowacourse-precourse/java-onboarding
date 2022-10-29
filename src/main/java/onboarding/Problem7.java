@@ -12,6 +12,8 @@ public class Problem7 {
     private static final int ID_B = 1;
     private static final int FRIEND_OF_FRIEND_SCORE = 10;
     private static final int VISIT_SCORE = 1;
+    private static final int LIMIT_RESULT_COUNT = 5;
+    private static final int STANDARD_SCORE = 0;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer;
@@ -28,7 +30,7 @@ public class Problem7 {
         List<String> resultList = makeFriends(friendScoreMap);
 
         answer = resultList.stream()
-                .limit(5)
+                .limit(LIMIT_RESULT_COUNT)
                 .collect(Collectors.toList());
 
         return answer;
@@ -93,7 +95,7 @@ public class Problem7 {
         List<String> friends = new LinkedList<>();
 
         for(String friend : friendScoreMap.keySet()) {
-            if (friendScoreMap.get(friend) > 0) {
+            if (friendScoreMap.get(friend) > STANDARD_SCORE) {
                 friends.add(friend);
             }
         }
