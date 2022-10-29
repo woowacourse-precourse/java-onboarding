@@ -15,6 +15,7 @@ public class Problem5 {
             int currency = currencyList.get(i);
             int numOfCurrency = money / currency;
             answer.add(numOfCurrency);
+            money %= currency;
         }
         return answer;
     }
@@ -30,8 +31,8 @@ public class Problem5 {
 
 /*
 <<기능 목록>>
-- [] 50,000 ~ 1 까지가 담긴 화폐리스트를 만든다
-- [] 화폐리스트를 순회하며 해당 화폐로 금액을 나눈 몫을 구한다
-- [] 구한 몫을 answer리스트에 추가한다
-- [] 해당 화폐로 금액을 나눈 나머지를 금액에 할당한다
+- [V] 50,000 ~ 1 까지가 담긴 화폐리스트를 만든다
+- [V] 화폐리스트를 순회하며 해당 화폐로 금액을 나눈 몫을 구한다
+- [V] 구한 몫을 answer리스트에 추가한다
+- [V] 해당 화폐로 금액을 나눈 나머지를 금액에 할당한다
  */
