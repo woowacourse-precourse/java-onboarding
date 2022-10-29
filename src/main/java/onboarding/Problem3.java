@@ -8,7 +8,7 @@ public class Problem3 {
         } catch (IllegalArgumentException e) {
             return 0;
         }
-        
+
         String num = "";
         int answer;
 
