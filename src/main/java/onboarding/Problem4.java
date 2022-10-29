@@ -4,7 +4,6 @@ package onboarding;
  * 예외 생각해보기
  */
 public class Problem4 {
-
     public static String solution(String word) {
 
         StringBuilder answer = new StringBuilder();

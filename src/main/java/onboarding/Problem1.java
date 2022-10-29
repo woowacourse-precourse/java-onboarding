@@ -9,6 +9,7 @@ class Problem1 {
 
     public static boolean check_list(List<Integer> list){
         return (list.get(0) % 2 != 1) ||
+                (list.get(1) % 2 != 0) ||
                 (list.get(1) - list.get(0) != 1) ||
                 (list.get(1) > 400 || list.get(0) < 1) ||
                 (list.size() != 2);
@@ -21,7 +22,7 @@ class Problem1 {
         int draw = 0;
         int except = -1;
 
-        int answer;
+        int answer = 0;
 
         if(check_list(pobi) || check_list(crong)){
             return answer = except;
@@ -34,7 +35,7 @@ class Problem1 {
         System.out.println("크롱승" + crong_cal);
 
         if (pobi_cal == crong_cal){
-            answer = draw;
+            return answer;
         }else{
             answer = (pobi_cal > crong_cal) ? pobi_win : crong_win;
         }
