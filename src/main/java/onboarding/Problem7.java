@@ -9,6 +9,14 @@ public class Problem7 {
                 throw new IllegalArgumentException("유저의 아이디는 1자 이상 30자 이하만 가능합니다.");
             }
         }
+
+        protected static void isFriendsLengthThan1CharactersAndLessThan10000List(List<List<String>> friends) {
+            if (friends.size() < 1 || 10000 < friends.size()) {
+                throw new IllegalArgumentException("friends는 길이가 1 이상 10,000 이하인 리스트/배열이어야 합니다.");
+            }
+        }
+
+
     }
     private static final List<String> myFriends = new ArrayList<>();
     private static final List<String> aFriendWeKnow = new ArrayList<>();
