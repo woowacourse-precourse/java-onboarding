@@ -11,7 +11,6 @@ class Problem1 {
     private static final int EXCEPTION_CASE_CODE = -1;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
 
         if (!isValidPages(pobi) || !isValidPages(crong))
             return EXCEPTION_CASE_CODE;
@@ -21,8 +20,8 @@ class Problem1 {
 
         Integer pobiMaxScore = selectMyMaxScore(pobiScores);
         Integer crongMaxScore = selectMyMaxScore(crongScores);
-        
-        return answer;
+
+        return determineWinner(pobiMaxScore, crongMaxScore);
     }
 
     public static boolean isValidPages(List<Integer> pages) {
@@ -81,4 +80,12 @@ class Problem1 {
         return maxScore;
     }
 
+    public static Integer determineWinner(Integer pobiMaxScore, Integer crongMaxScore) {
+        if (pobiMaxScore > crongMaxScore)
+            return POBY_WIN_CODE;
+        else if (crongMaxScore < pobiMaxScore)
+            return CRONG_WIN_CODE;
+        else
+            return DRAW_CODE;
+    }
 }
