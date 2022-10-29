@@ -20,6 +20,16 @@ class Problem1 {
         }
     }
 
+    private static int findWinner(int score1, int score2) {
+        if (score1 > score2) {
+            return 1;
+        }
+        if (score1 < score2) {
+            return 2;
+        }
+        return 0;
+    }
+
     private static int calScore(List<Integer> pages) {
         int leftPage = pages.get(0);
         int rightPage = pages.get(1);
