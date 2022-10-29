@@ -19,12 +19,23 @@ public class Problem2 {
         return answer;
     }
 
+    // 이름과 행위가 안맞음
+    // 메서드의 역할을 최대한 작게 - S of  SOLID
+    // 하튼 함수에서 분리하면 else 없앨 수 있음
     public static Stack<Character> checkRepetition(Stack<Character> stack, char c) {
         if (!stack.isEmpty() && stack.peek() == c) {
-            stack.pop();
-        } else {
-            stack.push(c);
+            return popStack(stack);
         }
+        return pushStack(stack, c);
+    }
+
+    public static Stack popStack(Stack stack) {
+        stack.pop();
+        return stack;
+    }
+
+    public static Stack pushStack(Stack stack, char c) {
+        stack.push(c);
         return stack;
     }
 
