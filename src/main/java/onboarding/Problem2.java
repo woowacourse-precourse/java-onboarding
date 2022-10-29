@@ -41,7 +41,14 @@ public class Problem2 {
                 if (!duplicationList.contains(i)){duplicationList.add(i);}
             }
         }
-        System.out.println(duplicationList);
+
+        // to delete duplication words
+        for (int i = duplicationList.size()-1; i >= 0; i--) {
+            int removeIndex = duplicationList.get(i);
+            cryptoList.remove(removeIndex);
+        }
+
+        System.out.println(cryptoList);
         return answer;
     }
 }
