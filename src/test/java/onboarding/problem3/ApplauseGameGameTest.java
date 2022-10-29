@@ -24,5 +24,12 @@ public class ApplauseGameGameTest {
             int result = 14;
             assertThat(ApplauseGame.start(new ApplauseParameter(number), clapRule)).isEqualTo(result);
         }
+
+        @Test
+        void case3() {
+            int number = 36;
+            int result = 18;
+            assertThat(ApplauseGame.start(new ApplauseParameter(number), clapRule)).isEqualTo(result);
+        }
     }
 }
