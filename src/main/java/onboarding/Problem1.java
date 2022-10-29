@@ -9,6 +9,16 @@ class Problem1 {
         return answer;
     }
 
+    private static int calculatePersonalScore(List<Integer> page){
+        int left = calculateSingePageScore(page.get(0));
+        int right = calculateSingePageScore(page.get(1));
+
+        if(left > right)
+            return left;
+        else
+            return right;
+    }
+
     private static int calculateSingePageScore(int number){
         int[] tokenizedNumber = tokenize(Integer.toString(number));
 
