@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Stack;
 import java.util.TreeMap;
 import onboarding.problem7.RecommendationFriend;
 
@@ -21,18 +22,37 @@ public class Problem7 {
         return answer;
     }
 
-    private static ArrayList<RecommendationFriend> sortRecommendationSocre(Map<String, Integer> recommendationFriends){
-        ArrayList<RecommendationFriend> result = new ArrayList<>();
+    private static List<RecommendationFriend> sortRecommendationSocre(Map<String, Integer> recommendationFriends){
+        List<RecommendationFriend> result = new ArrayList<>();
         ValueComparator valueComparator =  new ValueComparator(recommendationFriends);
         TreeMap<String,Integer> sortedMap = new TreeMap<>(valueComparator);
         int i = 0;
-
         sortedMap.putAll(recommendationFriends);
 
-        for (Map.Entry<String,Integer> entry : sortedMap.entrySet()) {
-            result.add(new RecommendationFriend(entry.getKey(), recommendationFriends.get(entry.getKey())));
+        result.add(new RecommendationFriend("NULL", -1));
+
+        for (Map.Entry<String,Integer> user : sortedMap.entrySet()) {
+            int recommendationScore = recommendationFriends.get(user.getKey());
+
+            if (overScoreCount(result.size(), result.get(i).getScore(), recommendationScore)) {
+                break;
+            }
+
+            i++;
+            result.add(new RecommendationFriend(user.getKey(), recommendationScore));
         }
+        result.remove(0);
+
         return result;
+    }
+
+    public static boolean overScoreCount(int scoreSize, int beforeScore, int currentScore) {
+        if (scoreSize < 6) {
+            return false;
+        } else if (currentScore != beforeScore) {
+            return true;
+        }
+        return false;
     }
 
     public static void main(String[] args) {
@@ -45,8 +65,11 @@ public class Problem7 {
         map.put("ab", 50);
         map.put("c", 30);
         map.put("d", 20);
+        map.put("da", 20);
+        map.put("dc", 20);
+        map.put("de", 19);
 
-        ArrayList<RecommendationFriend> result;
+        List<RecommendationFriend> result;
 
 
         result = sortRecommendationSocre(map);
