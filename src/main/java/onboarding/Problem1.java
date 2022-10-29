@@ -16,7 +16,10 @@ class Problem1 {
             return -1;
         }
 
-        return 0;
+        int pobiScore = Math.max(computeMaxScore(leftPobiPage), computeMaxScore(rightPobiPage));
+        int crongScore = Math.max(computeMaxScore(leftCrongPage), computeMaxScore(rightCrongPage));
+
+        return determineWinner(pobiScore, crongScore);
     }
 
     /*
@@ -25,7 +28,7 @@ class Problem1 {
      * @return boolean
      * */
     private static boolean checkExceptions(int leftPage, int rightPage) {
-        return isContinuousPages(leftPage, rightPage) && isInRange(leftPage) && isInRange(rightPage) && isOddAndEven(leftPage, rightPage);
+        return !(isContinuousPages(leftPage, rightPage) && isInRange(leftPage) && isInRange(rightPage) && isOddAndEven(leftPage, rightPage));
     }
 
     /*
