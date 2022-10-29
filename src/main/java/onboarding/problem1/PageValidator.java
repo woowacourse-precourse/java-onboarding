@@ -2,12 +2,11 @@ package onboarding.problem1;
 
 import java.util.List;
 
-/**
- * true : 검증 성공
- * false  : 검증 실패
- */
 public class PageValidator {
 
+    // 객체 지향에서 본인의 값은 본인이 관리해라!
+    // 검증과 생성 책임을 팩토리로 위임. > !!
+    // 재사용, 성능... 객체지향...
     public static boolean isValidPage(List<List<Integer>> pagesList) {
         // page들을 받아 validation 합니다.
         // pageList 중 하나라도 검증에 실패하면 false를 반환한다.
@@ -31,8 +30,11 @@ public class PageValidator {
 
     private static boolean isValidRange(List<Integer> pages) {
         // page의 범위를 validation 합니다.
+        int MAX_PAGE = 400;
+        int MIN_PAGE = 1;
+
         for (Integer page : pages) {
-            if (page < 1 || page > 400) {
+            if (page < MIN_PAGE || MAX_PAGE < page) {
                 return false;
             }
         }
@@ -47,5 +49,4 @@ public class PageValidator {
 
         return secondPage - firstPage == 1;
     }
-
 }

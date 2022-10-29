@@ -7,11 +7,8 @@ import java.util.Set;
  */
 public class NicknameCasesBucket {
 
-    private String nickname;
-    private Set<String> nicknameCases;
-
-    private NicknameCasesBucket() {
-    }
+    private final String nickname;
+    private final Set<String> nicknameCases;
 
     public NicknameCasesBucket(String nickname, Set<String> nicknameCases) {
         this.nickname = nickname;

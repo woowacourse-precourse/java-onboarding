@@ -24,7 +24,7 @@ public class CrewService {
     private List<Crew> getCrewList(List<List<String>> forms) {
         List<Crew> crewList = new ArrayList<>();
 
-        for (List<String> form : forms) {
+        for (List<String> form : forms) {  // mail, nickname
             String email = form.get(0);
             String nickname = form.get(1);
 

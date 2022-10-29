@@ -2,11 +2,8 @@ package onboarding.problem7;
 
 public class Friend implements Comparable<Friend> {
 
-    private String name;
-    private Integer score;
-
-    private Friend() {
-    }
+    private final String name;
+    private final Integer score;
 
     public Friend(String name, Integer score) {
         this.name = name;
@@ -23,8 +20,8 @@ public class Friend implements Comparable<Friend> {
 
     @Override
     public int compareTo(Friend friend) {
-        if (this.getScore().equals(friend.getScore())) {
-            return this.getName().compareTo(friend.getName());  // 이름 순서
+        if (this.getScore().equals(friend.getScore())) {  // 점수가 같을 경우,
+            return this.getName().compareTo(friend.getName());  // 이름 순서로 정렬.
         }
 
         return friend.getScore() - this.getScore();

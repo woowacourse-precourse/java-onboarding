@@ -7,12 +7,6 @@ public class FriendsService {
 
     public static final int KNOWN_SCORE = 10;
 
-    /**
-     * 유저 간 친구 관계에 대한 점수를 반환 해주는 로직입니다.
-     * @param user : 친구를 추천해 줄 유저의 닉네임입니다.
-     * @param friends : 친구 관게도 입니다.
-     * @return : Map<String, Integer> 형식으로 값을 리턴합니다.
-     */
     public Map<String, Integer> getRelationshipScore(String user, List<List<String>> friends) {
         Set<String> users = getNameSet(friends);  // 유저 이름 Set을 만든다.
         Map<String, Set<String>> friendsMap = getFriendsMap(friends, users);  // Map<String, Set<String>> 형태로 친구 관계를 만든다.
@@ -22,11 +16,6 @@ public class FriendsService {
         return evaluateScore(user, friendsMap, knownFriends);
     }
 
-    /**
-     * map을 List<Friend>로 바꿔주는 로직
-     * @param totalScore : 방문 점수도 합산한 값을 넣어야 합니다.
-     * @return : List<Friend>를 리턴합니다.
-     */
     public List<Friend> mapToFriendList(Map<String, Integer> totalScore) {
         List<Friend> result = new ArrayList<>();
 
@@ -80,7 +69,7 @@ public class FriendsService {
         Map<String, Integer> result = new HashMap<>();
         for (String knownFriend : knownFriends) {
             friendsMap.entrySet().stream()
-                    .filter(entry -> entry.getValue().contains(knownFriend))  //value에 공통 분모가 있는 놈만 가져옴.
+                    .filter(entry -> entry.getValue().contains(knownFriend))  //value에 공통 분모가 있는 놈만 가져옴. (logn)
                     .filter(entry -> !entry.getKey().equals(user))
                     .forEach(entry -> {
                         String name = entry.getKey();

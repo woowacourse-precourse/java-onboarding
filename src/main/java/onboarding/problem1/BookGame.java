@@ -5,12 +5,10 @@ import java.util.List;
 import static onboarding.problem1.GameResults.*;
 import static onboarding.problem1.PageValidator.*;
 
+// TODO 불변 객체..
 public class BookGame {
 
-    private PageCalculator pageCalculator;
-
-    private BookGame() {
-    }
+    private final PageCalculator pageCalculator;
 
     public BookGame(PageCalculator pageCalculator) {
         this.pageCalculator = pageCalculator;
@@ -33,8 +31,8 @@ public class BookGame {
             return ILLEGAL_VALUE;
         }
 
-        Integer firstResults = calculationResults.get(0);
-        Integer secondResults = calculationResults.get(1);
+        int firstResults = calculationResults.get(0);
+        int secondResults = calculationResults.get(1);
 
         if (firstResults > secondResults) {
             return FIRST_PAGE_WIN;

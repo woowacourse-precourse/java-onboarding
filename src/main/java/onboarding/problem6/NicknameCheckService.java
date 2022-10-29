@@ -6,9 +6,10 @@ import java.util.stream.Collectors;
 public class NicknameCheckService {
 
     // 같은 글자가 연속으로 포함된 경우 닉네임 사용 제한.
-    public List<String> getDuplicateCrewEmail(List<Crew> crewList) {
+    public List<String> getDuplicateCrewEmail(List<Crew> crewList) {  // Map<email, nickname>
         List<String> results = new ArrayList<>();
         List<NicknameCasesBucket> casesBucket = getCasesBucket(getNicknames(crewList));
+        // Map<String, Set<String>>
 
         for (Crew crew : crewList) {
             String currentNickname = crew.getNickname();

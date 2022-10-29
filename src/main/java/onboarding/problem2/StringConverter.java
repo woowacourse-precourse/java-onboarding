@@ -1,5 +1,6 @@
 package onboarding.problem2;
 
+//TODO Arrays.toString
 public class StringConverter {
 
     public static String charArrToString(char[] chars) {

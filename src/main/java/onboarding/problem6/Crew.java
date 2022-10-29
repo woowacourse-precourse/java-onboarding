@@ -1,13 +1,8 @@
 package onboarding.problem6;
 
-import java.util.List;
-
 public class Crew {
-    private String email;
-    private String nickname;
-
-    private Crew() {
-    }
+    private final String email;
+    private final String nickname;
 
     public Crew(String email, String nickname) {
         this.email = email;

@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class VisitorService {
 
-    public Map<String, Integer> getVisitScore(List<String> visitors, List<String> knownFriends) {
+    public Map<String, Integer> getVisitScore(List<String> visitors, List<String> knownFriends) {  // 내친구.
         Map<String, Integer> results = new HashMap<>();
         visitors.stream()
                 .filter(visitor -> !knownFriends.contains(visitor))

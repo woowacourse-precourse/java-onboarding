@@ -8,28 +8,25 @@ public class PageCalculator {
     public List<Integer> getResult(List<List<Integer>> pageList) {
         // page를 받아 계산 결과를 리턴한다.
         List<Integer> result = new ArrayList<>();
-
-        for (List<Integer> pages : pageList) {
-            // 게임 참여자의 최대값을 순서대로 리스트에 저장
-            result.add(calculatePage(pages));
-        }
+        pageList.forEach(pages -> result.add(getMaxValue(pages)));
 
         return result;
     }
 
-    private int calculatePage(List<Integer> pages) {
+    private int getMaxValue(List<Integer> pages) {
         // page를 받아 값을 계산한다.
         int max = Integer.MIN_VALUE;
+
         for (Integer page : pages) {
             // page의 자리수 별로 계산을 수행하여 max값을 산출한다.
             // 그 중에서도 골라서 max값에 저장.
-            max = Math.max(max, calculatePageNumber(page));
+            max = Math.max(max, calculatePage(page));
         }
 
         return max;
     }
 
-    private int calculatePageNumber(Integer page) {
+    private int calculatePage(Integer page) {
         char[] pageNums = String.valueOf(page).toCharArray();
 
         // 자릿수 별로 계산 수행
@@ -40,6 +37,6 @@ public class PageCalculator {
             multiplication *= (pageNum - '0');
         }
 
-        return Math.max(sum, multiplication);
+        return Math.max(sum, multiplication);  // 덧셈, 곱셈 중 최대값 반환.
     }
 }
