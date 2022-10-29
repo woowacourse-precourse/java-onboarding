@@ -22,8 +22,10 @@ public class Problem6 {
         Map<String, List<String>> overlappingMap = new HashMap<>();
 
         for (String name : names) {
+            char[] nameChars = name.toCharArray();
             for(int i=0; i<name.length() - 1; i++) {
-                String overlappingWord = name.substring(i, i+2);
+                String overlappingWord =
+                        new String(new char[]{nameChars[i], nameChars[i + 1]});
                 List<String> registeredNames =
                         overlappingMap.getOrDefault(overlappingWord, new ArrayList<>());
                 registeredNames.add(name);
