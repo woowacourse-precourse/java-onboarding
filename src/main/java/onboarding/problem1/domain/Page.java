@@ -33,6 +33,10 @@ public class Page {
         return (right - left) != 1;
     }
 
+    public int maxAddAndMultiplyEachDigit(int number) {
+        return Math.max(addEachDigit(number), multiplyEachDigit(number));
+    }
+
     public int addEachDigit(int number) {
         return Arrays.stream(String.valueOf(number).split(""))
                 .mapToInt(Integer::parseInt)

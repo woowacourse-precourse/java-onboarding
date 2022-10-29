@@ -47,4 +47,12 @@ public class PageTest {
 
         assertThat(page.multiplyEachDigit(number)).isEqualTo(result);
     }
+
+    @ParameterizedTest(name = "각 자리의 숫자를 모두 더한값과 모두 곱한값 중 큰 값을 반환한다.")
+    @CsvSource(value = {"3:3:3", "34:7:12", "211:4:2", "340:7:0"}, delimiter = ':')
+    void multiply_each_digit(int number, int addValue, int multiplyValue) {
+        Page page = new Page(3, 4);
+
+        assertThat(page.maxAddAndMultiplyEachDigit(number)).isEqualTo(Math.max(addValue, multiplyValue));
+    }
 }
