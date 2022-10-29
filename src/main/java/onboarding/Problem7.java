@@ -4,8 +4,9 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        Map<String, Integer> friendPoints = getFriendPoints(user, friends, visitors);
+        List<Map.Entry<String, Integer>> sortedFriendPoints = sortFriendPoints(friendPoints);
+        return getRecommendResult(sortedFriendPoints);
     }
 
     private static Set<String> getUserFriends(String user, List<List<String>> friends){
@@ -93,5 +94,22 @@ public class Problem7 {
             }
         }));
         return sortedfriendPoints;
+    }
+
+    private static List<String> getRecommendResult(List<Map.Entry<String, Integer>> sortedFriendPoints) {
+        // 최대 5개 까지 친구 추천 목록을 생성해주는 메소드
+        List<String> recommend = new ArrayList<>();
+        for (Map.Entry<String, Integer> sortedFriendPoint : sortedFriendPoints) {
+            if (sortedFriendPoint.getValue() == 0) {
+                continue;
+            } else {
+                recommend.add(sortedFriendPoint.getKey());
+            }
+
+            if (recommend.size() == 5) {
+                break;
+            }
+        }
+        return recommend;
     }
 }
