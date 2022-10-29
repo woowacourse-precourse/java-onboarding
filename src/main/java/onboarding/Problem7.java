@@ -11,24 +11,40 @@ public class Problem7 {
         ;
         System.out.println(userFriendMap);
         System.out.println(getScoreMap(userFriendMap,
-                friends.stream().filter((users) -> !users.contains(user)).collect(Collectors.toList())
-                ));
+                friends.stream().filter((users) -> !users.contains(user)).collect(Collectors.toList()),
+                visitors));
         return answer;
     }
 
-    private static HashMap<String, Integer> getScoreMap(HashSet<String> userFriendMap, List<List<String>> friends) {
+    private static HashMap<String, Integer> getScoreMap(HashSet<String> userFriendMap, List<List<String>> friends, List<String> visitors) {
         HashMap<String, Integer> result = new HashMap<>();
 
+        mutualFriendScore(result, userFriendMap, friends);
+        timelineScore(result, userFriendMap, visitors);
 
+        return result;
+    }
+
+    private static void timelineScore(HashMap<String, Integer> scoreMap, HashSet<String> userFriendMap,
+                                      List<String> visitors) {
+        for (String visitor: visitors) {
+            if (userFriendMap.contains(visitor)) {
+                continue;
+            }
+
+            updateScore(scoreMap, visitor, 1);
+        }
+    }
+
+    private static void mutualFriendScore(HashMap<String, Integer> scoreMap, HashSet<String> userFriendMap,
+                                          List<List<String>> friends) {
         for (List<String> list: friends) {
             String friendA = list.get(0);
             String friendB = list.get(1);
 
-            updateMutualFriendScore(userFriendMap, result, friendA, friendB);
-            updateMutualFriendScore(userFriendMap, result, friendB, friendA);
+            updateMutualFriendScore(userFriendMap, scoreMap, friendA, friendB);
+            updateMutualFriendScore(userFriendMap, scoreMap, friendB, friendA);
         }
-
-        return result;
     }
 
     private static void updateMutualFriendScore(HashSet<String> userFriendMap, HashMap<String, Integer> result,
