@@ -17,20 +17,11 @@ class Problem1 {
         final int crongLeftPage = crong.get(0);
         final int crongRightPage = crong.get(1);
 
-        int pobiLeftMax = 0;
-        int pobiRigtMax=0;
-        int crongLeftMax=0;
-        int crongRightMax=0;
-
-        int pobiMax=0;
-        int crongMax=0;
-
         // 예외 사항
         // 1-1 왼쪽 페이지가 짝수이거나 오른쪽 페이지가 홀수인 경우
         // 1-2 왼쪽 페이지와 오른쪽 페이지가 연속적이지 않은 경우
         // 1-3 펼친 페이지가 시작 페이지나 마지막 페이지일 경우
         // 1-4 pobi 와 crong 의 길이가 2가 아닐 경우
-
         if(isLeftPageEvenRightPageOdd(pobiLeftPage, pobiRightPage, crongLeftPage, crongRightPage)
         || isNotLeftPagePlusOneRightPage(pobiLeftPage, pobiRightPage, crongLeftPage, crongRightPage)
         || isStartPageOrEndPage(pobiLeftPage, pobiRightPage, crongLeftPage, crongRightPage)
@@ -39,31 +30,40 @@ class Problem1 {
             return answer;
         }
 
-        // 2. 왼쪽 페이지 최대 값 구하기
+        // 기능 2,3,4 를 수행후 answer 값 출력
+        answer = getAnswer(pobiLeftPage, pobiRightPage, crongLeftPage, crongRightPage);
+
+        return answer;
+    }
+
+    private static int getAnswer(int pobiLeftPage, int pobiRightPage, int crongLeftPage, int crongRightPage) {
+        int pobiLeftMax=0;
+        int crongLeftMax=0;
+        int crongMax=0;
+        int crongRightMax=0;
+        int pobiRigtMax=0;
+        int pobiMax=0;
+        // 2,3. 왼쪽 페이지 최대 값 구하기, 오른쪽 페이지 최대 값 구하기
         pobiLeftMax = getMax(pobiLeftPage);
         crongLeftMax = getMax(crongLeftPage);
-
-        // 3. 오른쪽 페이지 최대 값 구하기
         pobiRigtMax=getMax(pobiRightPage);
         crongRightMax = getMax(crongRightPage);
 
         // 4. 왼쪽 페이지와 오른쪽 페이지 최대값 비교
         pobiMax=Math.max(pobiLeftMax,pobiRigtMax);
         crongMax = Math.max(crongLeftMax, crongRightMax);
-        answer = getAnswer(answer, pobiMax, crongMax);
-
-        return answer;
+        return getAnswer(pobiMax, crongMax);
     }
 
     private static boolean isNotPobiSizeOrCrongSize(List<Integer> pobi, List<Integer> crong) {
         return pobi.size() != 2 || crong.size() != 2;
     }
 
-    private static int getAnswer(int answer, int pobiMax, int crongMax) {
-        if(pobiMax > crongMax) answer = POBI_WIN;
-        if(pobiMax == crongMax) answer =DRAW;
-        if(pobiMax < crongMax) answer = CRONG_WIN;
-        return answer;
+    private static int getAnswer(int pobiMax, int crongMax) {
+        if(pobiMax > crongMax) return POBI_WIN;
+        if(pobiMax == crongMax) return DRAW;
+        if(pobiMax < crongMax) return CRONG_WIN;
+        return -1;
     }
 
     private static int getMax(int page){
