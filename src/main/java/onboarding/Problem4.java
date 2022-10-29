@@ -7,6 +7,9 @@ public class Problem4 {
         String answer = "";
         for(int i=0; i<word.length(); i++){
             char letter = word.charAt(i);
+            if(!checkAlphabet(letter)){
+                answer+=letter;
+            }
             if(Character.isUpperCase(letter)){
                 answer += convertUpperCaseLetterReverse(letter);
             }
