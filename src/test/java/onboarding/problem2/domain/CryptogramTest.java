@@ -26,15 +26,4 @@ public class CryptogramTest {
 
         );
     }
-
-    @DisplayName("암호 두개의 길이가 같은지 비교한다.")
-    @Test
-    void compare_cryptogram_length() {
-        Assertions.assertAll(
-                () -> assertThat(new Cryptogram("").compareLength(new Cryptogram(""))).isTrue(),
-                () -> assertThat(new Cryptogram("").compareLength(new Cryptogram(" "))).isFalse(),
-                () -> assertThat(new Cryptogram("abc").compareLength(new Cryptogram("cde"))).isTrue(),
-                () -> assertThat(new Cryptogram("aabc").compareLength(new Cryptogram("abcd"))).isTrue()
-        );
-    }
 }

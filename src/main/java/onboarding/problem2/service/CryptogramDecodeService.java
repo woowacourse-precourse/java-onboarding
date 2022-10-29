@@ -10,7 +10,7 @@ public class CryptogramDecodeService {
 
     public static String decode(Cryptogram cryptogram) {
         Cryptogram decodeCryptogram = cryptogram.deleteConsecutiveCharacter();
-        if (decodeCryptogram.compareLength(cryptogram)) {
+        if (decodeCryptogram.equals(cryptogram)) {
             return decodeCryptogram.text();
         }
         return decode(decodeCryptogram);
