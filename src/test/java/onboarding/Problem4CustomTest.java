@@ -8,8 +8,8 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class Problem4CustomTest {
-    private final static int MIN_INPUT = 1;
-    private final static int MAX_INPUT = 1000;
+    private static final int MIN_INPUT = 1;
+    private static final int MAX_INPUT = 1000;
 
     @Nested
     class Problem4Test {

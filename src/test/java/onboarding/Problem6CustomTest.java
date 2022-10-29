@@ -8,11 +8,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class Problem6CustomTest {
 
-    private final static int MIN_EMAIL_INPUT = 11;
-    private final static int MAX_EMAIL_INPUT = 20;
+    private static final int MIN_EMAIL_INPUT = 11;
+    private static final int MAX_EMAIL_INPUT = 20;
 
-    private final static int MIN_NICKNAME_INPUT = 1;
-    private final static int MAX_NICKNAME_INPUT = 20;
+    private static final int MIN_NICKNAME_INPUT = 1;
+    private static final int MAX_NICKNAME_INPUT = 20;
 
     @Nested
     class Problem6Test {

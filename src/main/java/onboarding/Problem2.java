@@ -8,8 +8,8 @@ import java.util.Optional;
 
 public class Problem2 {
 
-    private final static int INPUT_MAX_LENGTH = 1000;
-    private final static int INPUT_MIN_LENGTH = 1;
+    private static final int INPUT_MAX_LENGTH = 1000;
+    private static final int INPUT_MIN_LENGTH = 1;
 
 
     public static String solution(String cryptogram) {

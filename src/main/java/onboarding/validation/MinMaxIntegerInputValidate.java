@@ -2,7 +2,7 @@ package onboarding.validation;
 
 public class MinMaxIntegerInputValidate implements MinMaxInputValidatable{
 
-    private final static MinMaxIntegerInputValidate minMaxIntegerInputValidate = new MinMaxIntegerInputValidate();
+    private static final MinMaxIntegerInputValidate minMaxIntegerInputValidate = new MinMaxIntegerInputValidate();
 
     private MinMaxIntegerInputValidate() {
 

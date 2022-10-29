@@ -8,3 +8,7 @@
 ## 공통 refactor 요소
 
 - java convention, else 예약어 쓰지 않기, 변수 및 함수명 좀 더 구체화 시키기
+
+### 1번 refactor 요소
+
+- 상수를 쓰지 않고 private 

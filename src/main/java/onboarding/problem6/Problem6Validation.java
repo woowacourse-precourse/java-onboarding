@@ -7,8 +7,8 @@ import static onboarding.validation.MinMaxStringInputValidate.getMinMaxStringInp
 
 public class Problem6Validation {
 
-    private final static String AT = "@";
-    private final static String EMAIL_ENDS = "@email.com";
+    private static final String AT = "@";
+    private static final String EMAIL_ENDS = "@email.com";
 
     public static boolean problem6Validation(String email, String nickname, int minEmailInput, int maxEmailInput, int minNicknameInput, int maxNicknameInput) {
         return problem6EmailNicknameValidation(email, nickname, minEmailInput, maxEmailInput, minNicknameInput, maxNicknameInput);

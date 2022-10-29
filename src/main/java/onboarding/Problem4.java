@@ -5,8 +5,8 @@ import onboarding.problem4.Problem4Validation;
 import java.util.stream.Collectors;
 
 public class Problem4 {
-    private final static int MIN_INPUT = 1;
-    private final static int MAX_INPUT = 1000;
+    private static final int MIN_INPUT = 1;
+    private static final int MAX_INPUT = 1000;
     public static String solution(String word) {
         if (Problem4Validation.problem4InputValidation(word, MIN_INPUT, MAX_INPUT)) {
             return stringToReverseString(word);

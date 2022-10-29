@@ -18,9 +18,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 * - pobi와 crong의 input이 [홀수, 짝수]인 쌍에서 짝수값이 홀수 값보다 1 큰지 확인한다.
  */
 public class Problem1CustomTest {
-    private final static int USER_INPUT_LENGTH = 2;
-    private final static int BOOK_MIN = 1;
-    private final static int BOOK_MAX = 400;
+    private static final int USER_INPUT_LENGTH = 2;
+    private static final int BOOK_MIN = 1;
+    private static final int BOOK_MAX = 400;
 
 
     @Nested

@@ -8,10 +8,10 @@ import java.util.List;
 
 public class Problem5 {
 
-    private final static int MIN_INPUT = 1;
-    private final static int MAX_INPUT = 1000000;
+    private static final int MIN_INPUT = 1;
+    private static final int MAX_INPUT = 1000000;
 
-    private final static List<Integer> MONEY_LIST = List.of(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1);
+    private static final List<Integer> MONEY_LIST = List.of(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1);
 
     public static List<Integer> solution(int money) {
 

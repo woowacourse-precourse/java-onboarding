@@ -10,8 +10,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class Problem2CustomTest {
 
-    private final static int INPUT_LENGTH_MIN = 1;
-    private final static int INPUT_LENGTH_MAX = 1000;
+    private static final int INPUT_LENGTH_MIN = 1;
+    private static final int INPUT_LENGTH_MAX = 1000;
 
 
     @Nested

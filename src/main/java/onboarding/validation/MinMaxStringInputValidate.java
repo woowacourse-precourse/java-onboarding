@@ -1,7 +1,7 @@
 package onboarding.validation;
 
 public class MinMaxStringInputValidate implements MinMaxInputValidatable{
-    private final static MinMaxStringInputValidate minMaxStringInputValidate = new MinMaxStringInputValidate();
+    private static final MinMaxStringInputValidate minMaxStringInputValidate = new MinMaxStringInputValidate();
 
     private MinMaxStringInputValidate() {
 
