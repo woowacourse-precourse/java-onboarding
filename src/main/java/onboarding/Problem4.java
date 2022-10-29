@@ -23,7 +23,7 @@ public class Problem4 {
                 continue;
             }
             int idx = alphabet.indexOf(text.toLowerCase());
-            result.append(dictionaryList.get(idx));
+            result.append(Character.isUpperCase(text.charAt(0)) ? dictionaryList.get(idx) : dictionaryList.get(idx).toLowerCase());
         }
 
         return result.toString();
