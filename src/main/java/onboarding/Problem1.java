@@ -26,10 +26,10 @@ class Problem1 {
      * @param person
      * @return
      */
-    public static int chooseBigOneInPerson(List<Integer> person) {
-        int pobiLeft = chooseBigOneInBook(separateNum(person.get(0)));
-        int pobiRight = chooseBigOneInBook(separateNum(person.get(1)));
-        return pobiLeft > pobiRight ? pobiLeft : pobiRight;
+    public static int chooseBigOneInPerson(List<Integer> pages) {
+        int BigValueInLeftPage = chooseBigOneInBook(separateNum(pages.get(0)));
+        int BigValueInRightPage = chooseBigOneInBook(separateNum(pages.get(1)));
+        return BigValueInLeftPage > BigValueInRightPage ? BigValueInLeftPage : BigValueInRightPage;
     }
 
     /**
