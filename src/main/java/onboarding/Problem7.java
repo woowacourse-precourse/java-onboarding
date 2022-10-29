@@ -37,6 +37,9 @@ public class Problem7 {
      */
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+        if(validation("user", user) && validation("visitors", visitors)) {
+            return getRecommendedFriends(user, friends, visitors);
+        }
         return answer;
     }
 
@@ -47,6 +50,7 @@ public class Problem7 {
                 Map.Entry.<String, Integer>comparingByValue(Comparator.reverseOrder())
                         .thenComparing(Map.Entry.comparingByKey());
 
+        entryList.sort(valueOrKey);
         List<String> recommendedList = new ArrayList<>();
         int count = 0;
         for(Map.Entry<String,Integer> entry: entryList) {
@@ -83,6 +87,7 @@ public class Problem7 {
         }
 
         for(String visitor : visitors) {
+            if(!validation("userId", visitor)) continue;
             boolean found = false;
             int visitorIndex = getUserIndex(visitor);
             for(int friend: graph.get(start)) {
@@ -108,6 +113,8 @@ public class Problem7 {
         for(int i = 0; i < users.size(); i++) graph.add(new ArrayList<>());
 
         for(List<String> edge : friends) {
+            if(!validation("edges", edge)) continue;
+
             String src = edge.get(0);
             String dest = edge.get(1);
 
@@ -132,9 +139,11 @@ public class Problem7 {
     private static void setUsersInHash(HashSet<String> users) {
         int index = 0;
         for (String key : users) {
-            indexHash.put(key, index);
-            nameHash.put(index, key);
-            index++;
+            if(validation("userId", key)) {
+                indexHash.put(key, index);
+                nameHash.put(index, key);
+                index++;
+            }
         }
     }
 
@@ -143,5 +152,24 @@ public class Problem7 {
         users.forEach(set::addAll);
         return set;
     }
-
+    private static <T> boolean validation(String type, T target){
+        if(type.equals("user") && target instanceof String) {
+            int userLength = ((String) target).length();
+            return 0 < userLength && userLength < 31;
+        }
+        else if(type.equals("userId") && target instanceof String) {
+            int idLength = ((String) target).length();
+            if(!((String) target).matches("^[a-z]*$")) return false;
+            return 0 < idLength && idLength < 31;
+        }
+        else if(type.equals("visitors") && target instanceof List) {
+            int visitorsLength = ((List<?>) target).size();
+            return visitorsLength < 10001;
+        }
+        else if(type.equals("edges") && target instanceof List) {
+            int edgesLength = ((List<?>) target).size();
+            return edgesLength == 2;
+        }
+        return false;
+    }
 }
