@@ -14,6 +14,7 @@ public class Problem3 {
 
         for (int i = START_NUMBER; i <= number; i++) {
             String intToStringNumber = String.valueOf(i);
+            int numberOfDigits = intToStringNumber.length();
         }
 
         int answer = 0;
