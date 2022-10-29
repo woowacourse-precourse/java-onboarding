@@ -3,17 +3,10 @@ package onboarding.problem7;
 public class User {
 
     private String name;
-    private int visits;
-    private boolean isFriends = false;
+    private int visits = 0;
 
-    public User(String name, int visits, boolean isFriends) {
+    public User(String name) {
         this.name = name;
-        this.visits = visits;
-        this.isFriends = isFriends;
-    }
-
-    public boolean isFriends() {
-        return this.isFriends;
     }
 
     public int getVisits() {
@@ -22,5 +15,9 @@ public class User {
 
     public String getName() {
         return this.name;
+    }
+
+    public void addVisits() {
+        this.visits += 1;
     }
 }

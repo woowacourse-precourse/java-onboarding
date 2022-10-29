@@ -1,5 +1,6 @@
 package onboarding;
 
+import onboarding.problem7.User;
 import onboarding.problem7.Users;
 
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         init();
         setUserFriend(friends, user);
+        setRecommendFriends(friends);
         return users.getRecommendFriendsRankingFive();
     }
 
@@ -29,6 +31,20 @@ public class Problem7 {
             }
             else if(friend2.equals(user)) {
                 userFriend.add(friend1);
+            }
+        }
+    }
+
+    private static void setRecommendFriends(List<List<String>> friends) {
+        for(List<String> friendship : friends) {
+            for (String friend : friendship) {
+                if (userFriend.indexOf(friend) == 0) {
+                    User user = users.findUser(friendship.get(1));
+                    user.addVisits();
+                } else {
+                    User user = users.findUser(friendship.get(0));
+                    user.addVisits();
+                }
             }
         }
     }
