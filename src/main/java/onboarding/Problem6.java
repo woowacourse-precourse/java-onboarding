@@ -28,7 +28,18 @@ public class Problem6 {
      * @return - 중복되는 이메일 정보
      */
     public static ArrayList<String> searchAll(List<List<String>> forms) {
-        return new ArrayList<>();
+        HashSet<String> result = new HashSet<>();
+        for (int i = 0; i < forms.size(); i++){
+            ArrayList<String> words = searchWord(i,forms);
+            for (String word : words){
+                HashSet<String> r = search(i,forms,word);
+                result.addAll(r);
+            }
+
+        }
+        ArrayList<String> answer = new ArrayList<>(result);
+        answer.sort(Comparator.naturalOrder());
+        return answer;
     }
 
     /**
