@@ -7,7 +7,7 @@ import java.util.List;
 public class Problem6 {
 	public static List<String> solution(List<List<String>> forms) {
 		List<String> answer = new ArrayList<>();
-		List<String> nicknames = collectNickname(forms);
+		List<String> nicknames = collectNicknames(forms);
 
 		for (List info : forms) {
 			String email = (String)info.get(0);
@@ -24,10 +24,10 @@ public class Problem6 {
 		return answer;
 	}
 
-	private static List collectNickname(List<List<String>> da) {
+	private static List collectNicknames(List<List<String>> data) {
 		List<String> collection = new ArrayList<>();
-		for (List a : da) {
-			collection.add((String)a.get(1));
+		for (List target : data) {
+			collection.add((String)target.get(1));
 		}
 		return collection;
 	}
