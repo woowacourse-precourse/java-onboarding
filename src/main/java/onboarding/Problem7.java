@@ -4,6 +4,10 @@ import java.util.*;
 
 public class Problem7 {
 
+    private static final int FRIEND_POINT = 10;
+    private static final int VISITOR_POINT = 1;
+    private static final int SUGGESTION_COUNT = 5;
+
     /** 친구 관계 리스트를 각 유저를 Key로 가지는 친구 List Map으로 변환 */
     private static Map<String, List<String>> analyzeFirendsInfo(List<List<String>> friends) {
         Map<String, List<String>> friendsMap = new HashMap<>();
@@ -35,7 +39,7 @@ public class Problem7 {
                 if(shareFriendName.equals(user)) continue;
 
                 int score = scoreInfo.getOrDefault(shareFriendName, 0);
-                scoreInfo.put(shareFriendName, score + 10);
+                scoreInfo.put(shareFriendName, score + FRIEND_POINT);
             }
         }
 
@@ -47,7 +51,7 @@ public class Problem7 {
             if(userFriends.contains(visitorName)) continue;
 
             int score = scoreInfo.getOrDefault(visitorName, 0);
-            scoreInfo.put(visitorName, score + 1);
+            scoreInfo.put(visitorName, score + VISITOR_POINT);
         }
 
     }
@@ -86,8 +90,8 @@ public class Problem7 {
 
             answer.addAll(userList);
 
-            if(answer.size() >= 5) {
-                answer = answer.subList(0, 5);
+            if(answer.size() >= SUGGESTION_COUNT) {
+                answer = answer.subList(0, SUGGESTION_COUNT);
                 break;
             }
 
