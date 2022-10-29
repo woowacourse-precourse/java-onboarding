@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Objects;
 
 class Problem1 {
+    private static final int EXCEPTION_CODE = -1;
 
     public static int solution(List<Integer> pobiPageNumbers, List<Integer> crongPageNumbers) {
         try {
@@ -19,7 +20,7 @@ class Problem1 {
             BattleResult battleResult = pobi.battleWith(crong);
             return battleResult.getCode();
         } catch (RuntimeException e) {
-            return -1;
+            return EXCEPTION_CODE;
         }
     }
 
