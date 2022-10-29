@@ -21,7 +21,7 @@ public class Problem6 {
                 }
             }
         }
-       // Collections.sort(answer);
+       Collections.sort(answer);
         return answer;
     }
 
@@ -39,7 +39,7 @@ public class Problem6 {
     private static int dupCnt(String str1, String str2) {
         int cnt = 0;
         int minLen = Math.min(str1.length(), str2.length());
-
+        
         while (cnt < minLen && str1.charAt(cnt) == str2.charAt(cnt))
             cnt++;
         return cnt;
