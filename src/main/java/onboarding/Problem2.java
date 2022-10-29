@@ -8,8 +8,7 @@ package onboarding;
 * */
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        return deleteContinuous(cryptogram);
     }
 
     static int isContinuous(String s) {
@@ -28,6 +27,6 @@ public class Problem2 {
             break;
         }
         s = s.substring(0, start) + s.substring(end);
-        return s;
+        return deleteContinuous(s);
     }
 }
