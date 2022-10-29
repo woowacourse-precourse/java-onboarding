@@ -31,6 +31,13 @@ class Problem1 {
             return false;
     }
 
+    public boolean isContinuum(List<Integer> param){
+        if((param.get(1) - param.get(0)) == 1)
+            return true;
+        else
+            return false;
+    }
+
     public boolean checkPage(List<Integer> page){
         if(isOdd(page) && isEven(page))
             return true;
