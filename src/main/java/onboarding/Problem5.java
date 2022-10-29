@@ -13,9 +13,9 @@ public class Problem5 {
 }
 
 class Withdrawal {
-    List<Integer> money_array = new ArrayList<>(9);
+    private List<Integer> money_array = new ArrayList<>(9);
 
-    void setMoneyArray() {
+    private void setMoneyArray() {
         int m = 50000;
         for (int i=0; i<8; i++) {
             int e = (int) Math.pow(10, i/2);
@@ -28,7 +28,7 @@ class Withdrawal {
         money_array.add(1);
     }
 
-    List<Integer> makeAnswerArray() {
+    private List<Integer> makeAnswerArray() {
         List<Integer> answer_array = new ArrayList<>(9);
         for (int i=0; i<9; i++) {
             answer_array.add(0);
