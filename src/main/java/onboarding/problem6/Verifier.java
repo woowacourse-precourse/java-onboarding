@@ -1,5 +1,6 @@
 package onboarding.problem6;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -22,22 +23,6 @@ public class Verifier {
 		return false;
 	}
 
-	public static List<String> extractDuplicateCrews(List<List<String>> forms) {
-		Set<String> result = new LinkedHashSet<>();
-		List<Crew> crews = Crew.createCrews(forms);
-
-		for (Crew crewOne : crews) {
-			for (Crew crewTwo : crews) {
-				if (isDuplicate(crewOne, crewTwo)) {
-					result.add(crewOne.getEmail());
-					break;
-				}
-			}
-		}
-
-		return result.stream().sorted().collect(Collectors.toList());
-	}
-
 	private static Set<String> checkDuplicate(Map<String, String> crewsSplitNameMap, Crew crew) {
 		Set<String> duplicateCrewsEmail = new HashSet<>();
 		for (String splitName : crew.getSplitNames()) {
@@ -49,5 +34,18 @@ public class Verifier {
 			}
 		}
 		return duplicateCrewsEmail;
+	}
+
+	public static List<String> extractDuplicateCrews(List<List<String>> forms) {
+		Set<String> result = new HashSet<>();
+		Map<String, String> crewsSplitNameMap = new HashMap<>();
+
+		List<Crew> crews = Crew.createCrews(forms);
+		for (Crew crew : crews) {
+			Set<String> duplicateCrewsEmail = checkDuplicate(crewsSplitNameMap, crew);
+			result.addAll(duplicateCrewsEmail);
+		}
+
+		return result.stream().sorted().collect(Collectors.toList());
 	}
 }
