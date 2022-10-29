@@ -5,25 +5,22 @@ import java.util.stream.Stream;
 
 class Problem1 {
     public static <e> int solution(List<Integer> pobi, List<Integer> crong) {
-
+        
         int answer = 0;
 
         try{
 
-            int[] pobiArr = pobi.stream().mapToInt(i->i).toArray();
-            int[] crongArr = crong.stream().mapToInt(i->i).toArray();
-
+            // validation test
             Exception e = new Exception("[왼쪽 페이지 번호, 오른쪽 페이지 번호]가 순서대로 들어있지 않음.");
-
-            Boolean isPobiValid = getIsValid(pobiArr);
-            Boolean isCrongValid = getIsValid(crongArr);
-
+            Boolean isPobiValid = getIsValid(pobi);
+            Boolean isCrongValid = getIsValid(crong);
             if(!isPobiValid || !isCrongValid){
                 throw e;
             }
 
-            int pobiScore = getMax(pobiArr);
-            int crongScore = getMax(crongArr);
+            // get score
+            int pobiScore = getScore(pobi);
+            int crongScore = getScore(crong);
 
             if(pobiScore > crongScore){
                 answer = 1;
@@ -35,23 +32,24 @@ class Problem1 {
                 answer = 0;
                 System.out.println("무승부");
             }
+
         } catch(Exception e) {
             answer = -1;
         }
         return answer;
     }
 
-    private static Boolean getIsValid(int[] arr) {
-        Boolean check1 = arr[0] % 2 == 1 && arr[1] % 2 == 0 && arr[1] == arr[0] + 1;
-        Boolean check2 = arr[0] != 1 && arr[1] != 400;
+    private static Boolean getIsValid(List<Integer> pageList) {
+        Boolean check1 = pageList.get(0) % 2 == 1 && pageList.get(1) % 2 == 0 && pageList.get(1) == pageList.get(0) + 1;
+        Boolean check2 = pageList.get(0) != 1 && pageList.get(1) != 400;
         Boolean isValid = check1 && check2;
         return isValid;
     }
 
-    private static int getMax(int[] arr) {
-        int[] resArr = new int[2];
-        for (int i = 0; i < arr.length; i++){
-            int[] numValue = Stream.of(String.valueOf(arr[i]).split("")).mapToInt(Integer::parseInt).toArray();
+    private static int getScore(List<Integer> pageList) {
+        int[] resArr = new int[4];
+        for (int i = 0; i < pageList.size(); i++){
+            int[] numValue = Stream.of(String.valueOf(pageList.get(i)).split("")).mapToInt(Integer::parseInt).toArray();
             int addRes = 0;
             int multRes = 1;
             for (int num: numValue){
