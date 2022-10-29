@@ -19,27 +19,42 @@ public class Problem4 {
             }
         }
     }
-    public static String solution(String word) {
-        ConvertAlphabet convertAlphabet = new ConvertAlphabet();
-        StringBuilder stringBuilder = new StringBuilder(word);
 
-        String answer = "";
-        for (int i = 0; i < stringBuilder.length(); i++) {
-            char isAlpha = stringBuilder.charAt(i);
+    static class StringBuilderWords {
+        StringBuilder stringBuilder;
+        String answer;
+        int stringLength;
 
-            if (isAlpha >='A' && isAlpha <= 'Z' || isAlpha >= 'a' && isAlpha <= 'z') {
-                char character =
-                        convertAlphabet.alphabet.get(stringBuilder.charAt(i));
-                answer += character;
-            } else
-                answer += stringBuilder.charAt(i);
+        StringBuilderWords(String word) {
+            this.stringBuilder = new StringBuilder(word);
+            this.answer = "";
+            stringLength = stringBuilder.length();
         }
-        return answer;
+
+        private String getConvertWord() {
+            for (int i = 0; i < stringLength; i++) {
+                char isAlpha = stringBuilder.charAt(i);
+                checkingAlphabet(i, isAlpha, new ConvertAlphabet());
+            }
+
+            return answer;
+        }
+
+        private void checkingAlphabet(int idx, char isAlpha, ConvertAlphabet convertAlphabet) {
+            if (isAlpha >='A' && isAlpha <= 'Z' ||
+                    isAlpha >= 'a' && isAlpha <= 'z') {
+                char character =
+                        convertAlphabet.alphabet.get(stringBuilder.charAt(idx));
+                answer += character;
+            } else {
+                answer += stringBuilder.charAt(idx);
+            }
+        }
     }
 
-    public static void main(String[] args) {
-        String sample = "I love you";
+    public static String solution(String word) {
+        StringBuilderWords stringBuilderWords = new StringBuilderWords(word);
 
-        System.out.println(solution(sample));
+        return stringBuilderWords.getConvertWord();
     }
 }
