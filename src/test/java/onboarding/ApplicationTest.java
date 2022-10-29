@@ -202,32 +202,9 @@ class ApplicationTest {
         }
 
         @Test
-        void checkNotDuplicateTest() {
-            assertThat(Problem2.checkNotDuplicate('a')).isEqualTo(true);
-            Problem2.st.clear();
-        }
-
-        @Test
-        void checkNotDuplicateExceptionTest() {
-            Problem2.st.push('a');
-            assertThat(Problem2.checkNotDuplicate('a')).isEqualTo(false);
-            Problem2.st.clear();
-        }
-
-        @Test
-        void deleteOrPushLetterDeleteTest() {
-            Problem2.st.push('a');
-            Problem2.deleteOrPushLetter('a');
-            assertThat(Problem2.st.size()).isEqualTo(0);
-            Problem2.st.clear();
-        }
-
-        @Test
-        void deleteOrPushLetterPushTest() {
-            Problem2.st.push('a');
-            Problem2.deleteOrPushLetter('b');
-            assertThat(Problem2.st.size()).isEqualTo(2);
-            Problem2.st.clear();
+        void createCharactersSetSetTest() {
+            String cryptogram = "zyelleyz";
+            assertThat(Problem2.createCharactersSet(cryptogram).size()).isEqualTo(4);
         }
     }
 
@@ -391,6 +368,8 @@ class ApplicationTest {
             List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
             List<String> result = List.of("andole", "jun", "bedi");
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+            assertThat(Problem7.relationships.get("jun").size()).isEqualTo(3);
+            assertThat(Problem7.relationships.get("jun")).isEqualTo(List.of("donut","youngho","shakevan"));
         }
 
     }
