@@ -28,11 +28,14 @@ public class PagePair {
         return Math.max(pagePair.get(0).getMaxValue(), pagePair.get(1).getMaxValue());
     }
 
-    public boolean judgeWinnable(PagePair otherPair){
-        return this.getMaxValueOfPair() > otherPair.getMaxValueOfPair();
-    }
+    public int comparePagePair(PagePair otherPair){
+        if(this.getMaxValueOfPair() > otherPair.getMaxValueOfPair()){
+            return 1;
+        }
+        if(this.getMaxValueOfPair() < otherPair.getMaxValueOfPair()){
+            return 2;
+        }
 
-    public boolean judgeDrawable(PagePair otherPair){
-        return this.getMaxValueOfPair() == otherPair.getMaxValueOfPair();
+        return 0;
     }
 }
