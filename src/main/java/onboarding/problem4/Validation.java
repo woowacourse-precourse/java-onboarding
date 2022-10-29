@@ -14,23 +14,12 @@ public class Validation {
     // 문자 검증 && 문자열 길이 검증
     private boolean isValid(String word) {
         // 1 부터 1000 이하
-        if (isLengthValid(word) && isStringValid(word)) {
+        if (isLengthValid(word)) {
             return true;
         }
         return false;
     }
 
-    // 문자 검증
-    private boolean isStringValid(String word) {
-        for (int i = 0; i < word.length(); i++) {
-            char data = word.charAt(i);
-
-            if (!Character.isLetter(data)) {
-                return false;
-            }
-        }
-        return true;
-    }
 
     // 문자열 길이 검증
     private boolean isLengthValid(String word) {
