@@ -7,4 +7,7 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+//    public static int openBook() {}
+//    public static int getScore() {}
+//    public static int result() {}
 }
