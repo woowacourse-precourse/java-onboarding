@@ -1,9 +1,6 @@
 package onboarding;
 
 public class Problem2 {
-        private static final int MIN_LENGTH = 1;
-        private static final int MAX_LENGTH = 1000;
-
     public static String solution(String cryptogram) {
         String errorMessage = null;
 
@@ -75,6 +72,6 @@ public class Problem2 {
     }
 
     private static boolean checkLength(String cryptogram) {
-        return (cryptogram.length() >= MIN_LENGTH && cryptogram.length() <= MAX_LENGTH);
+        return (cryptogram.length() >= 1 && cryptogram.length() <= 1000);
     }
 }
