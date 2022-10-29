@@ -1,6 +1,6 @@
 package onboarding;
 
-import java.util.List;
+import java.util.*;
 
 public class Problem6 {
     static class Crew {
@@ -22,6 +22,17 @@ public class Problem6 {
             for(List<String> f : forms){
                 Crew crew = new Crew(f);
                 crewSet.add(crew);
+            }
+        }
+
+        private void addNicknamePartition() {
+            for(Crew crew : crewSet){
+                for(int i=0 ; i<crew.nickname.length()-1 ; i++){
+                    String tmp = crew.nickname.substring(i,i+2);
+                    List<String> orDefault = overlapSet.getOrDefault(tmp, new ArrayList<>());
+                    orDefault.add(crew.email);
+                    overlapSet.put(tmp, orDefault);
+                }
             }
         }
     }
