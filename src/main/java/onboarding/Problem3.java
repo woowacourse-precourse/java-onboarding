@@ -7,8 +7,10 @@ public class Problem3 {
     }
 
     private static boolean inputExceptionChecker(int number){
-        // @TODO :: Input Exception 처리
-        return false ;
+        // 1. Input이 1 이상 10000이하가 아닌 경우
+        if(!isBetween(1,10000, number))
+            return true;
+        return false;
     }
 
     /**
