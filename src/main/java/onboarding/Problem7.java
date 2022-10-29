@@ -18,14 +18,25 @@ import java.util.*;
  * 2. 추린 사람들과 친구인 사람들을 해시맵으로 생성 후 10점씩 추가.
  * 3. 방문한 친구들 점수 추가.
  *
+ *
+ * 1. 전체 인원을 hashmap에 담음.
+ * 2. 유저와 친구인 사람을 set을 사용하여 추린다.
+ * 3. set을 반복하면서 친구의 친구인 사람들에게 점수 부여
+ * 4. visitors 점수 부여
+ * 5. 유저, 유저와 친구인 사람들을 hashmap에서 삭제
+ * 6. 출력
+ *
  */
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Problem7 p = new Problem7();
         List<String> answer = Collections.emptyList();
-        Set<String> userSFriend = p.userSFriendInit(user, friends);
 
+        Map<String, Integer> score = p.initScore(friends);
+        Set<String> userSFriend = p.userSFriendInit(user, friends);
+        p.addScoreLinkFriend(friends, score, userSFriend);
         System.out.println(userSFriend.toString());
+        System.out.println(score.toString());
         return answer;
     }
 
@@ -36,25 +47,43 @@ public class Problem7 {
         for (List<String> friendArr : friends) {
             String friendA = friendArr.get(0);
             String friendB = friendArr.get(1);
-            if (!friendA.equals(user) && !friendB.equals(user)) {
-                continue;
-            } else if (friendA.equals(user)) {
-                userSFriend.add(friendB);
-            } else {
-                userSFriend.add(friendA);
+            if (friendA.equals(user) || friendB.equals(user)) {
+                userSFriend.addAll(friendArr);
             }
         }
         return userSFriend;
     }
 
 
-    // Set과 비교하여 유저랑 친구가 아닌 사람들은 HashMap으로 name, value로 초기화한다.
+    // 모든 유저를 HashMap을 사용하여 name, value로 초기화한다.
     public Map<String, Integer> initScore(List<List<String>> friends) {
         Map<String, Integer> initScore = new HashMap<>();
+        for (List<String> friendArr : friends) {
+            for (String friend : friendArr) {
+                initScore.put(friend, 0);
+            }
+        }
         return initScore;
     }
 
     // 함께 아는 친구 점수 추가
+
+    public void addScoreLinkFriend(List<List<String>> friends, Map<String, Integer> score, Set<String> userSFriend) {
+        // 친구의 친구의 점수를 올려야하는 상황이므로
+        // 친구의 친구를 저장하고, 리스트에서 친구가 있을때, 해시맵에 저장
+        for (String friend : userSFriend) {
+            for (List<String> friendArr : friends) {
+                String friendA = friendArr.get(0);
+                String friendB = friendArr.get(1);
+
+                if (friendA.equals(friend)) {
+                    score.put(friendB, score.get(friendB) + 10);
+                } else if (friendB.equals(friend)) {
+                    score.put(friendA, score.get(friendA) + 10);
+                }
+            }
+        }
+    }
 
     // visitors 점수 추가
 
