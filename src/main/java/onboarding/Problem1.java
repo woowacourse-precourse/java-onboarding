@@ -17,5 +17,13 @@ class Problem1 {
         return sum;
     }
 
+    public static Integer multiplyDigit (Integer num){
+        int multiply=1;
+        while(num > 0){
+            multiply *= num%10;
+            num /= 10;
+        }
+        return multiply;
+    }
 
 }
