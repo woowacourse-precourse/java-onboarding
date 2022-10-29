@@ -263,7 +263,8 @@ class ApplicationTest {
                     List.of("woniee@email.com", "워니니아"),
                     List.of("mj@email.com", "엠제이"),
                     List.of("nowm@email.com", "이제엠"),
-                    List.of("abc@email.com", "니니아")
+                    List.of("abc@email.com", "니니아"),
+                    List.of("abcd123@email.com", "홀롤홀롤")
             );
 
             List<String> result = List.of("abc@email.com"

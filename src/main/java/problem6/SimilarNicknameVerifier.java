@@ -26,13 +26,16 @@ public class SimilarNicknameVerifier {
     }
 
     private void catchSimilar(String email, String nickname) {
-        for (int i = 0; i < nickname.length() - 1; i++) {
-            if (atomicNicknameToEmail.containsKey(nickname.substring(i, i + 2))) {
-                caughtEmails.add(email);
-                caughtEmails.add(atomicNicknameToEmail.get(nickname.substring(i, i + 2)));
-            }
-            atomicNicknameToEmail.put(nickname.substring(i, i + 2), email);
-        }
+        IntStream.range(0, nickname.length() - 1)
+                .mapToObj(index -> nickname.substring(index, index + 2))
+                .filter(key -> atomicNicknameToEmail.containsKey(key))
+                .forEach(key -> {
+                    caughtEmails.add(email);
+                    caughtEmails.add(atomicNicknameToEmail.get(key));
+                });
+        IntStream.range(0, nickname.length() - 1)
+                .mapToObj(index -> nickname.substring(index, index + 2))
+                .forEach(key -> atomicNicknameToEmail.put(key, email));
     }
 
     public List<String> getEmails() {
