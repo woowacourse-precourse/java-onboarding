@@ -5,7 +5,7 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if(!isValidPage(pobi)|| !isValidPage(crong)) {
+        if(isNotValidPage(pobi)|| isNotValidPage(crong)) {
             return -1;
         }
         int LIST_SIZE = 2;
@@ -57,16 +57,13 @@ class Problem1 {
     }
 
     // 예외 처리 체크
-    public static boolean isValidPage(List<Integer> user) {
+    public static boolean isNotValidPage(List<Integer> user) {
         int leftPage = user.get(0);
         int rightPage = user.get(1);
-
-        if (rightPage - leftPage != 1) {
-            return false;
-        }
-        if (leftPage % 2 == 0 || rightPage % 2 == 1) {
-            return false;
-        }
-        return leftPage != 1 && rightPage != 400;
+        boolean isLeftPageOdd = leftPage % 2 == 1;
+        boolean isRightPageEven = rightPage % 2 == 0;
+        final int firstPage = 1;
+        final int lastPage = 400;
+        return !isLeftPageOdd || !isRightPageEven || rightPage - leftPage != 1 || leftPage == firstPage || rightPage == lastPage;
     }
 }
