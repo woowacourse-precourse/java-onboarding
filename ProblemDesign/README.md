@@ -319,3 +319,7 @@ public static String solution(String cryptogram) {
 }
 ~~~
 ---
+#3. 문제3
+##예상 필요 기능 정의
+1. 3,6,9를 처리하는 메소드
+2. 예외처리하는 메소드
