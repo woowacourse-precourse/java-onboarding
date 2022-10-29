@@ -10,4 +10,13 @@ public class Problem3 {
         int answer = 0;
         return answer;
     }
+
+    static int sumCounts(int number) {
+        int cnt = 0;
+        for (int i = 1; i <= number; i++) {
+            cnt += getContain369(i);
+        }
+        return cnt;
+    }
+    
 }
