@@ -58,6 +58,7 @@ class ExceptionProblem2 {
     public static void validateCryptogram(String cryptogram) {
         enteredName(cryptogram);
         isSpace(cryptogram);
+        validateStringLength(cryptogram);
     }
 
     public static void enteredName(String cryptogram) {
@@ -68,6 +69,12 @@ class ExceptionProblem2 {
 
     public static void isSpace(String cryptogram) {
         if (cryptogram.contains(" ")) {
+            throw new IllegalArgumentException(ERROR_MESSAGE);
+        }
+    }
+
+    public static void validateStringLength(String cryptogram) {
+        if (cryptogram.length() < 1 || cryptogram.length() > 1000) {
             throw new IllegalArgumentException(ERROR_MESSAGE);
         }
     }
