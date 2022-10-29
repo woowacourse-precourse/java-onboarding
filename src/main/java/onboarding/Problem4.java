@@ -50,7 +50,6 @@ public class Problem4 {
             else{
                 answer += c;
             }
-
         }
         return answer;
     }
