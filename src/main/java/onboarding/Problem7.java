@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
 
@@ -28,6 +29,8 @@ public class Problem7 {
             for(String keyUser : friendMap.keySet()){
                 if (keyUser.equals(user))
                     continue;
+                if (usersFriendList.contains(keyUser))
+                    continue;
                 for (String valFriend : friendMap.get(keyUser)){
                     if (usersFriendList.contains(valFriend))
                         friendScore.put(keyUser, friendScore.containsKey(keyUser) ? friendScore.get(keyUser) + 1 : 1);
@@ -40,13 +43,25 @@ public class Problem7 {
         // 3. 방문자 목록 돌면서 방문 횟수에 따라 점수 계산하기
         Map<String, Integer> visitorScore = new HashMap<>();
         for (String visitor : visitors){
+            if (usersFriendList.contains(visitor))
+                continue;
             visitorScore.put(visitor, visitorScore.containsKey(visitor) ? visitorScore.get(visitor) + 1 : 1);
         }
         //System.out.println(visitorScore);
 
         // 4. 합산 후 정렬하고 return
+        friendScore.forEach((k, v) -> visitorScore.merge(k, v, Integer::sum));
+        Map<String, Integer> sortedMap = visitorScore.entrySet()
+                .stream()
+                .sorted(Collections
+                        .reverseOrder(Map.Entry.<String, Integer>comparingByValue())
+                .thenComparing(Map.Entry.comparingByKey()))
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (oldValue, newValue) -> oldValue, LinkedHashMap::new));
+        //System.out.println(sortedMap);
 
-        List<String> answer = Collections.emptyList();
-        return answer;
+        return new ArrayList<>(sortedMap.keySet());
     }
 }
