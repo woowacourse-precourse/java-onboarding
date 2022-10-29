@@ -9,7 +9,19 @@ public class Problem3 {
      */
 
     public static int solution(int number) {
-        int answer = 0;
-        return answer;
+        int clapCount = 0;
+
+        for(int i = 1; i <= number; i++) {
+            int digit = i;
+
+            while(digit != 0) {
+
+                if(digit % 10 == 3 || digit % 10 == 6 || digit % 10 == 9)
+                    clapCount += 1;
+
+                digit /= 10;
+            }
+        }
+        return clapCount;
     }
 }
