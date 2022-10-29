@@ -14,11 +14,19 @@
 
 package onboarding;
 
+import java.util.Arrays;
 import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int answer = result(pobi, crong);
         return answer;
+    }
+
+    public static int result(List<Integer> player1, List<Integer> player2) {
+        if (validation(player1) && validation(player2)) {
+            return winner(player1, player2);
+        }
+        return -1;  // 예외 사항은 -1 리턴
     }
 }
