@@ -352,6 +352,13 @@ class ApplicationTest {
             int result = 12000;
             assertThat(Problem3.solution(number)).isEqualTo(result);
         }
+    
+        @Test
+        void case17() {
+            int number = 333;
+            int result = 228;
+            assertThat(Problem3.solution(number)).isEqualTo(result);
+        }
     }
     
     @Nested
