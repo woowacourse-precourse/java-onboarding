@@ -505,8 +505,8 @@ class ApplicationTest {
     
         @Test
         void case21() {
-            String word = "    I     !loVe가.     ''\"\"/@you10\\    ";
-            String result = "    R     !olEv가.     ''\"\"/@blf10\\    ";
+            String word = "    I     !loVe가.     \n''\"\"/@you10\\    ";
+            String result = "    R     !olEv가.     \n''\"\"/@blf10\\    ";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
     }
