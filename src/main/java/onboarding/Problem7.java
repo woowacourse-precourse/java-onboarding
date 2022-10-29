@@ -75,7 +75,7 @@ public class Problem7 {
 
     static List<String> validateScoreMap(Map<String, Integer> scoreMap, List<String> userFriends) {
         List<Map.Entry<String, Integer>> sortedScoreList = sortScoreMap(scoreMap, userFriends);
-        List<String> exceptedScoreList = getExceptedFriends(sortedScoreList, userFriends);
+        List<String> exceptedScoreList = getExceptedScoreList(sortedScoreList, userFriends);
         List<String> lengthUnderFiveScoreList = limitLengthUnderFive(exceptedScoreList);
 
         return lengthUnderFiveScoreList;
@@ -88,7 +88,7 @@ public class Problem7 {
         return scoreEntries;
     }
 
-    static List<String> getExceptedFriends(List<Map.Entry<String, Integer>> sortedScoreEntries, List<String> userFriends) {
+    static List<String> getExceptedScoreList(List<Map.Entry<String, Integer>> sortedScoreEntries, List<String> userFriends) {
         List<String> exceptedScoreList = new ArrayList<>();
 
         sortedScoreEntries.stream()
