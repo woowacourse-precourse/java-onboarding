@@ -10,6 +10,13 @@ public class Problem5 {
         return answer;
     }
 
+    //금액 리스트 반환 함수
+    public static List<Integer> getMoney(int money, List<Integer> answer) {
+        while (money > 0) {
+            money = divideMoney(money, answer);
+        }
+        return answer;
+    }
 
     //큰 단위의 돈 순서로 금액을 변환하는 함수
     public static int divideMoney(int money, List<Integer> answer) {
