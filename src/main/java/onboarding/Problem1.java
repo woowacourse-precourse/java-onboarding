@@ -1,12 +1,13 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        return getGameResult(pobi, crong);
     }
 
     private static int[] getArrayByNumber(int number) {
@@ -69,4 +70,35 @@ class Problem1 {
         return false;
     }
 
+    private static int getGameResult(List<Integer> pobi, List<Integer> crong){
+        // 승부 결과를 구하는 기능
+        if (isInputError(pobi) || isInputError(crong)){
+            return -1;
+        }
+
+        // pobi의 최대값
+        List<Integer> pobiValues = new ArrayList<>();
+        for(int page : pobi){
+            pobiValues.add(getSumByNumber(page));
+            pobiValues.add(getMulByNumber(page));
+        }
+        int pobiMaxValue = Collections.max(pobiValues);
+
+        // crong의 최대값
+        List<Integer> crongValues = new ArrayList<>();
+        for(int page : crong){
+            crongValues.add(getSumByNumber(page));
+            crongValues.add(getMulByNumber(page));
+        }
+        int crongMaxValue = Collections.max(crongValues);
+        
+        // 최종 결과
+        if (pobiMaxValue > crongMaxValue){
+            return 1;
+        }
+        if (pobiMaxValue < crongMaxValue){
+            return 2;
+        }
+        return 0;
+    }
 }
