@@ -6,7 +6,8 @@ import java.util.stream.Collectors;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        List<String> cryptList = splitCryptogram(cryptogram);
+        String answer = decode(cryptList);
         return answer;
     }
 
