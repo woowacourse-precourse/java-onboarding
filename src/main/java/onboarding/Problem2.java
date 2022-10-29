@@ -12,9 +12,14 @@ public class Problem2 {
         for (int i = 1; i < cryptogram.length(); i++) {
             String lastChar = resultString.substring(resultString.length()-1, resultString.length());
             String nextChar = cryptogram.substring(i, i+1);
-            if (checkReduplication(lastChar, nextChar) continue;
+            if (checkReduplication(lastChar, nextChar)) continue;
             resultString += nextChar;
         }
         return resultString;
+    }
+
+    // 중복 여부를 체크하는 함수
+    public static boolean checkReduplication(String s1, String s2) {
+        return s1.equals(s2);
     }
 }
