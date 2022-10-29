@@ -11,7 +11,7 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
-        Map<String, Integer> userList = fillUserList(user, friends, visitors);
+        Map<String, Integer> userPoints = makeUserPoints(user, friends, visitors);
         Map<String, List<String>> relationships = makeRelationShips(friends);
         List<String> userFriends = fillUserFriends(user, relationships);
 
@@ -43,7 +43,7 @@ public class Problem7 {
         return list == null;
     }
 
-    public static Map<String, Integer> fillUserList(String user, List<List<String>> friends,
+    public static Map<String, Integer> makeUserPoints(String user, List<List<String>> friends,
             List<String> visitors) {
         Map<String, Integer> userList = new HashMap<String, Integer>();
         userList.put(user, 0);
