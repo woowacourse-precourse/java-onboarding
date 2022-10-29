@@ -21,14 +21,21 @@ class Problem4Test {
 
         String str1 = "I love you";
         String str2 = "I am Invidam";
-        String str3 = "";
+        String shortStr = "";
+        StringBuffer forLong = new StringBuffer();
+        for (int i = 0; i < 1005; i++) {
+            forLong.append('a');
+        }
+        String longStr = forLong.toString();
 
         //when
 
         //then
         assertThat(Problem4.solution(str1)).isEqualTo("R olev blf");
         assertThat(Problem4.solution(str2)).isEqualTo("R zn Rmerwzn");
-        assertThat(Problem4.solution(str3)).isEqualTo("");
+
+        assertThrows(InputMismatchException.class,() -> Problem4.solution(shortStr));
+        assertThrows(InputMismatchException.class,() -> Problem4.solution(longStr));
     }
 
 }
