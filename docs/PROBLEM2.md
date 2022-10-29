@@ -21,3 +21,10 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+### 기능 목록
+- 반복문을 통해 문자를 만드는 함수
+> String deleteReduplicationString(String)
+
+- 중복 여부를 체크하는 함수
+> boolean checkReduplication(String, String)
