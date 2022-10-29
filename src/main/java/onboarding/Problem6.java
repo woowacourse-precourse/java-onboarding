@@ -1,14 +1,13 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = new ArrayList<>();
         Map<String, Integer> pieceNum = countPiece(forms);
+        List<String> answer = getInvalidUserEmail(forms, pieceNum);
+
+        Collections.sort(answer);
 
         return answer;
     }
@@ -27,5 +26,23 @@ public class Problem6 {
         }
 
         return pieceNum;
+    }
+
+    private static List<String> getInvalidUserEmail(List<List<String>> forms, Map<String, Integer> pieceNum) {
+        List<String> invalidEmailList = new ArrayList<>();
+
+        for(List<String> form : forms) {
+            String email = form.get(0);
+            String name = form.get(1);
+
+            if(hasSamePiece(name))
+                invalidEmailList.add(email);
+        }
+
+        return invalidEmailList;
+    }
+
+    private static boolean hasSamePiece(String name) {
+        return true;
     }
 }
