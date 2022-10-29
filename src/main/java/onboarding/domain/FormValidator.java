@@ -1,4 +1,4 @@
-package domain;
+package onboarding.domain;
 
 import java.util.ArrayList;
 import java.util.HashMap;

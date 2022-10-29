@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import domain.Form;
-import domain.FormValidator;
+import onboarding.domain.Form;
+import onboarding.domain.FormValidator;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
