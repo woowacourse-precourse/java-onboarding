@@ -1,6 +1,7 @@
 package onboarding.problem6;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.TreeSet;
 
@@ -59,6 +60,16 @@ public class SimilarNicknameCrewSelector {
 			}
 		}
 		return false;
+	}
+
+	private void listSimilarNicknameCrewsEmail() {
+		for (int crewIndex = 0; crewIndex < numberOfCrews; crewIndex++) {
+			if (hasSimilarNickname.get(crewIndex)) {
+				similarNicknameCrewsEmail.add(crewInformations.get(crewIndex).get(0));
+			}
+		}
+
+		similarNicknameCrewsEmail.sort(Comparator.naturalOrder());
 	}
 
 }
