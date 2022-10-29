@@ -16,7 +16,15 @@ public class Problem4 {
     }
 
     //맵으로 각각의 알파벳 마다 매칭되는 값 저장하기
-
+    static HashMap<Character, Character> map = new HashMap<>();
+    static void setMap(){
+        for(int i=0; i<upperCase.length; i++){
+            map.put(upperCase[i],upperCase[25-i]);
+            map.put(lowerCase[i],lowerCase[25-i]);
+        }
+        map.put(' ',' ');
+        return;
+    }
     public static String solution(String word) {
         String answer = "";
 
