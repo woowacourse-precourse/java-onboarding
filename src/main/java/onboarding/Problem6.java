@@ -1,8 +1,6 @@
 package onboarding;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem6 {
@@ -21,6 +19,13 @@ public class Problem6 {
                     String crewEmail = crewInfo.get(0);
                     crewInfoMap.put(crewNickname, crewEmail);
                 });
+    }
+
+    private static List<String> excludeLengthOneCrewNickname() {
+        List<String> duplicableCrewNicknames = crewInfoMap.keySet().stream()
+                .filter(crewNickname -> crewNickname.length() != 1)
+                .collect(Collectors.toList());
+        return duplicableCrewNicknames;
     }
 
 }
