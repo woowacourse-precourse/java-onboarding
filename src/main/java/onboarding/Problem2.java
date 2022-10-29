@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
@@ -14,8 +15,24 @@ public class Problem2 {
         List<Character> charList = new LinkedList<>();
 
         splitString(cryptogram, charList);
+        removeDuplicateChar(charList);
 
         return cryptogram;
+    }
+
+    private static List<Character> removeDuplicateChar(List<Character> charList) {
+        for (int i = 1; i < charList.size(); i++) {
+            if (isDuplicate(charList, i)) {
+                charList.remove(i - 1);
+                charList.remove(i - 1);
+                i = 0;
+            }
+        }
+        return charList;
+    }
+
+    private static boolean isDuplicate(List<Character> charList, int i) {
+        return Objects.equals(charList.get(i - 1), charList.get(i));
     }
 
     private static List<Character> splitString(String cryptogram, List<Character> charList) {
