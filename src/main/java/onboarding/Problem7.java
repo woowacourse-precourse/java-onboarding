@@ -60,6 +60,17 @@ public class Problem7 {
             }
         }
 
+        // remove my friend in listName
+        for (int i = 0; i < listName.size(); i++) {
+            for (int j = 0; j < myFriend.size(); j++) {
+                if(listName.contains(myFriend.get(j))){
+                    idx=listName.indexOf(myFriend.get(j));
+                    listName.remove(idx);
+                    listScore.remove(idx);
+                }
+            }
+        }
+
         return listName;
     }
 }
