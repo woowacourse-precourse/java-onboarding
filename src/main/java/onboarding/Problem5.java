@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Problem5 {
@@ -15,5 +16,10 @@ public class Problem5 {
 
     public int moduloNumberAByNumberB(int numberA, int numberB) throws ArithmeticException{
         return numberA % numberB;
+    }
+
+    public List<Integer> sortListDescendingOrder(List<Integer> list) {
+        list.sort(Comparator.reverseOrder());
+        return list;
     }
 }
