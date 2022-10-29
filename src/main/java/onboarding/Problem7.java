@@ -9,8 +9,8 @@ import java.util.*;
  * [O] 함께 아는 친구 계산
  * [O] 추천 친구 목록 계산(원래 친구 제외)
  * [O] 추천 친구 정렬
- * [X] solution 작성
- * [X] 테스트 확인
+ * [O] solution 작성
+ * [O] 테스트 확인
  */
 
 public class Problem7 {
@@ -18,7 +18,7 @@ public class Problem7 {
     static final int FRIEND_POINT = 10;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
 
         Map<String, Set<String>> friendsMap = new HashMap<>();
         Map<String, Integer> recommendPoints = new HashMap<>();
@@ -26,12 +26,22 @@ public class Problem7 {
         initFriendsMap(friends, friendsMap);
         calculateVisitors(visitors, recommendPoints);
         calculateFriendsKnowTogether(user, friendsMap, recommendPoints);
-        sortRecommandPoints(recommendPoints);
+        ArrayList<Map.Entry<String, Integer>> recommendPointsEntries
+                = sortRecommendPoints(recommendPoints);
+
+        distinguishOriginFriends(user, answer, friendsMap, recommendPointsEntries);
 
         return answer;
     }
 
-    private static void sortRecommandPoints(Map<String, Integer> recommendPoints) {
+    private static void distinguishOriginFriends(String user, List<String> answer, Map<String, Set<String>> friendsMap, ArrayList<Map.Entry<String, Integer>> recommendPointsEntries) {
+        for (Map.Entry<String, Integer> r : recommendPointsEntries) {
+            if(!friendsMap.get(user).contains(r.getKey()))
+                answer.add(r.getKey());
+        }
+    }
+
+    private static ArrayList<Map.Entry<String, Integer>> sortRecommendPoints(Map<String, Integer> recommendPoints) {
         ArrayList<Map.Entry<String, Integer>> recommendPointsEntries
                 = new ArrayList<Map.Entry<String, Integer>>(recommendPoints.entrySet());
 
@@ -40,10 +50,8 @@ public class Problem7 {
                 return obj1.getKey().compareTo(obj2.getKey());
             return obj2.getValue().compareTo(obj1.getValue());
         });
-
-        for (Map.Entry<String, Integer> r : recommendPointsEntries) {
-            System.out.println(r.getKey() + " " + r.getValue());
-        }
+        
+        return recommendPointsEntries;
     }
 
     private static void calculateFriendsKnowTogether(String user, Map<String, Set<String>> friendsMap, Map<String, Integer> recommendPoints) {
