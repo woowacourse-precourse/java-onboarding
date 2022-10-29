@@ -29,4 +29,13 @@ public class Problem5 {
                 ONE_HUNDRED_WON, FIFTY_WON, TEN_WON, ONE_WON);
         billUnitQueue.addAll(billList);
     }
+
+    public static int countBills(int money, int bill) {
+        return money / bill;
+    }
+
+    public static int calculateBalance(int money, int bill) {
+        return money % bill;
+    }
+
 }
