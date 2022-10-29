@@ -22,11 +22,20 @@ public class Problem2 {
             }
             if (encodedCode.charAt(i) != encodedCode.charAt(i - 1) && count >= 2) {
                 flag = true;
+                String emptySpace = getEmptySpace(count);
                 count = 1;
             }
 
         }
         return flag;
+    }
+
+    private static String getEmptySpace(int count) {
+        StringBuilder emptySpace = new StringBuilder();
+        for (int i = 0; i < count; i++) {
+            emptySpace.append(" ");
+        }
+        return emptySpace.toString();
     }
 
 
