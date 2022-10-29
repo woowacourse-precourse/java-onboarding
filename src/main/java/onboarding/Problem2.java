@@ -6,7 +6,7 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         Stack<Character> stack = new Stack<>();
         for (char c : cryptogram.toCharArray()) {
-            stack = checkRepetition(stack, c);
+            stack = checkCharacterRepetition(stack, c);
         }
         return stackToString(stack);
     }
@@ -19,11 +19,8 @@ public class Problem2 {
         return answer;
     }
 
-    // 이름과 행위가 안맞음
-    // 메서드의 역할을 최대한 작게 - S of  SOLID
-    // 하튼 함수에서 분리하면 else 없앨 수 있음
-    public static Stack<Character> checkRepetition(Stack<Character> stack, char c) {
-        if (!stack.isEmpty() && stack.peek() == c) {
+    public static Stack<Character> checkCharacterRepetition(Stack<Character> stack, char c) {
+        if (isStackElementExists(stack) && isStackTopEqualsCharacter(stack, c)) {
             return popStack(stack);
         }
         return pushStack(stack, c);
@@ -37,6 +34,14 @@ public class Problem2 {
     public static Stack pushStack(Stack stack, char c) {
         stack.push(c);
         return stack;
+    }
+
+    private static boolean isStackElementExists(Stack stack) {
+        return !stack.isEmpty();
+    }
+
+    private static boolean isStackTopEqualsCharacter(Stack<Character> stack, char c) {
+        return stack.peek() == c;
     }
 
 }
