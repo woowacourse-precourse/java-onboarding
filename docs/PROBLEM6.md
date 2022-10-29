@@ -21,3 +21,24 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+
+## 💥 기능 목록 
+
+✅은 구현 완료한 기능
+
+1. forms 리스트(초기 설정)
+- 이메일은 중복 가능성 x, 11자 이상 20자 미만
+- 닉네임 2글자 이상 중복 가능, 1자 이상 20자 미만
+
+2. 각 닉네임의 길이가 n이라면, n-1번 동안 이어진 두 글자씩 추출한다.
+- HashMap을 사용하여 key-value 저장한다.
+- ex) 닉네임이 "제이엠"이라면, {"제이":"jm@email.com", "이엠":"jm@email.com"} 
+
+3. 중복 비교
+- 추출한 두 글자가 HashMap에 이미 존재하는 키라 -> 닉네임 중복
+- 일치하지 않는다면 HashMap에 저장한다.
+- 중복된 닉네임에 해당하는 이메일은 HashSet에 저장한다.
+
+4. 정렬면
+- HashSet에 저장된 닉네임이 중복되는 이메일은 오름차순으로 정렬한다.
