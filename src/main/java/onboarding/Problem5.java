@@ -22,6 +22,8 @@ public class Problem5 {
         answer.add(money/100);
         money%=100;
         answer.add(money/50);
+        money%=50;
+        answer.add(money/10);
 
         return answer;
 
