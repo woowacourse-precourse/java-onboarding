@@ -10,7 +10,7 @@ public class Problem4 {
         }
         return answer.toString();
     }
-    public static char wordChange(char singleword){
+    static char wordChange(char singleword){
         final int BIGALPSTART = 65;
         final int BIGALPEND = 90;
         final int SMALLALPSTART = 97;

@@ -9,11 +9,11 @@ public class Problem3 {
         }
         return answer;
     }
-    public static boolean checkToClap(char singlenumber){
+    static boolean checkToClap(char singlenumber){
         return singlenumber=='3' || singlenumber=='6' || singlenumber =='9';
     }
 
-    public static int calculateClapNumber(int number){
+    static int calculateClapNumber(int number){
         int clapnumber = 0;
         String stringnumber = Integer.toString(number);
 

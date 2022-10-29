@@ -27,7 +27,7 @@ class Problem1 {
     /*
     예외 상황을 체크하는 메서드
      */
-    public static int errorCheck(List<Integer> pobi, List<Integer> crong){
+    static int errorCheck(List<Integer> pobi, List<Integer> crong){
         int error = 0;
 
         if (pobi.get(0) +1 != pobi.get(1) | crong.get(0)+1 != crong.get(1)) {
@@ -44,7 +44,7 @@ class Problem1 {
     /*
     * pobi, crong의 페이지들의 더하기, 곱하기 결과값을 계산 후 큰 값을 반환하는 메서드
      */
-    public static int calculation(int num) {
+    static int calculation(int num) {
         int add_result = 0;     // 더하기 결과 초기화
         int multiple_result = 1;// 곱하기 결과 초기화
         int tmp;                // 한 자리씩 꺼낸 값을 임시 저장할 변수 선언
