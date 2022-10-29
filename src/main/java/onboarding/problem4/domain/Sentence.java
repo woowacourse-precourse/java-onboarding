@@ -1,10 +1,12 @@
 package onboarding.problem4.domain;
 
+import onboarding.problem4.domain.util.AlphabetConvertor;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Sentence {
-    private static final String CONVERTIBLE_CHARACTER_FORM = "[a-z]|[A-Z]";
+    private static final String CONVERTIBLE_CHARACTER_FORM = "[a-z|A-Z]";
     
     private final String sentence;
     

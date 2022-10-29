@@ -1,5 +1,6 @@
-package onboarding.problem4.domain;
+package onboarding.problem4.domain.util;
 
+import onboarding.problem4.domain.util.AlphabetConvertor;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
