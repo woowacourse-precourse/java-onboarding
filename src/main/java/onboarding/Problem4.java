@@ -7,14 +7,14 @@ public class Problem4 {
             if (97<=(int)str.charAt(i) && (int)str.charAt(i)<110){
                 newstr+=(char)(122-(int)str.charAt(i)+97);
             }
-            else if (78<=(int)str.charAt(i) && (int)str.charAt(i)<=122){
+            else if (110<=(int)str.charAt(i) && (int)str.charAt(i)<=122){
                 newstr+=(char)(97+122-(int)(str.charAt(i)));
             }
             else if (65<=(int)str.charAt(i) && (int)str.charAt(i)<78){
                 newstr+=(char)(90-(int)str.charAt(i)+65);
             }
             else if (78<=(int)str.charAt(i) && (int)str.charAt(i)<=90){
-                newstr+=(char)(65+(int)(str.charAt(i))-90);
+                newstr+=(char)(65+90-(int)(str.charAt(i)));
             }
             else{
                 newstr+=str.charAt(i);
