@@ -21,3 +21,14 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 구현 기능 목록 
+
+- [ ]  문자열에서 두 글자씩 불러오기
+- [ ]  중복 문자 HashMap에 키가 존재하는 지 확인
+    - [ ]  HashMap에 두 글자 키가 존재한다면 해당 키 값 배열에 이메일 추가
+    - [ ]  HashMap에 두 글자 키가 존재하지 않는다면 해당 키 생성 후 이메일 추가
+- [ ]  HashMap 키 별 배열 값의 개수가 2개 이상인지 확인
+    - [ ]  2개 이상 시 중복으로 간주해 해당 키에 포함되는 값 answer 배열에 추가
+- [ ]  중복 이메일 제거
+- [ ]  이메일 오름차순으로 정렬
