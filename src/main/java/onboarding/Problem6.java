@@ -1,6 +1,8 @@
 package onboarding;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Problem6 {
 
@@ -10,13 +12,18 @@ public class Problem6 {
     }
 
     // 1. 이메일 형식에 부합하는가?
-
     // 2. 이메일 길이가 11자 이상 20자 미만인가?
-
     // 3. 신청한 이메일이 email 도메인인가?
+    private static boolean isValidEmail(String email) {
+        if (11 <= email.length() && email.length() < 20) {
+            Pattern pattern = Pattern.compile("^[a-zA-Z0-9]+@email\\.com+$");
+            Matcher matcher = pattern.matcher(email);
+            return matcher.matches();
+        }
+        return false;
+    }
 
     // 4. 닉네임이 한글인가?
-
     // 5. 닉네임 길이가 1자 이상 20자 미만인가?
 
     // 6. 두 글자 이상의 문자가 연속적으로 순서에 맞추어 포함되어 있는 경우 중복으로 간주
