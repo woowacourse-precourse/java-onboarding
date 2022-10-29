@@ -19,6 +19,14 @@ public class Problem2 {
         return remove_range;
     }
 
+    static String removeLetter(List<Integer> remove_range, String cryptogram){
+        StringBuilder removed_cryptogram = new StringBuilder(cryptogram);
+        for(int i=0; i<remove_range.size(); i+=2){
+            removed_cryptogram.delete(remove_range.get(i),remove_range.get(i+1));
+        }
+        return remove_range.toString();
+    }
+
     static class CheckLetter {
         int front = 0;
         int back = 1;
