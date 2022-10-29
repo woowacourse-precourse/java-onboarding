@@ -12,9 +12,9 @@ public class Problem2 {
             if (charEq(target, str.charAt(index))) {
                 continue;
             }
-            return index;
+            return index - 1;
         }
-        return -1;
+        return str.length() - 1;
     }
 
     private static boolean charEq(char target, char ch) {
