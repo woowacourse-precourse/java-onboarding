@@ -9,8 +9,8 @@ class Problem1 {
         return answer;
     }
 
-    private static int[] getSortedArrayByNumber(int number) {
-        // 숫자를 정렬된 배열로 만드는 메소드
+    private static int[] getArrayByNumber(int number) {
+        // 숫자를 배열로 만드는 메소드
         String string = Integer.toString(number);
         int[] digits = new int[string.length()];
 
@@ -21,4 +21,5 @@ class Problem1 {
         Arrays.sort(digits);
         return digits;
     }
+
 }
