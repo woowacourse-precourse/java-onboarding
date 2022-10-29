@@ -7,7 +7,7 @@ public class Problem4 {
     static final char DIFF_A_Z = (char) (END_CHAR - START_CHAR);
 
     public static char transformChar(char ch) {
-        if(!Character.isAlphabetic(ch)) {
+        if (!Character.isAlphabetic(ch)) {
             return ch;
         }
         if (Character.isLowerCase(ch)) {
@@ -18,6 +18,16 @@ public class Problem4 {
         }
 
         return transformRightChar(ch);
+    }
+
+    public static String transformString(String str) {
+        StringBuffer stringBuffer = new StringBuffer();
+
+        for (char ch : str.toCharArray()) {
+            stringBuffer.append(transformChar(ch));
+        }
+
+        return stringBuffer.toString();
     }
 
     private static char transformLeftChar(char ch) {
@@ -37,7 +47,6 @@ public class Problem4 {
     }
 
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        return transformString(word);
     }
 }
