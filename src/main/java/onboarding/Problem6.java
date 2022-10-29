@@ -83,8 +83,7 @@ public class Problem6 {
     }
 
     private static String getNameFragment(String nickname, int j) {
-        String nicknameFragment = nickname.substring(j, j + 2);
-        return nicknameFragment;
+        return nickname.substring(j, j + 2);
     }
 
     private static boolean isEmptyList(Map<String, List<String>> nameFragmentOwners, String nicknameFragment) {
