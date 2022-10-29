@@ -15,8 +15,20 @@ public class Problem4 {
         return convert;
     }
 
+    public static String convertWord(String word){
+        char[] alphabetArr = word.toCharArray();
+        String convertW = "";
+        for (char c:alphabetArr) {
+            if (c != ' ') {
+                c = convertAlphabet(c);
+            }
+            convertW += c;
+        }
+        return convertW;
+    }
+
     public static String solution(String word) {
-        String answer = "";
+        String answer = convertWord(word);
         return answer;
     }
 }
