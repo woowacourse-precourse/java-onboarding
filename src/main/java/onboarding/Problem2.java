@@ -6,13 +6,14 @@ import java.util.Objects;
 
 public class Problem2 {
     public static void main(String[] args) {
-        String cryptogram = "browoanoommnaon";
-        System.out.println("cryptogram = " + "\"" + cryptogram + "\"");
-        System.out.println("result = " + "\"" + solution(cryptogram) + "\"");
-        System.out.println();
-        cryptogram = "zyelleyz";
-        System.out.println("cryptogram = " + "\"" + cryptogram + "\"");
-        System.out.println("result = " + "\"" + solution(cryptogram) + "\"");
+        List<String> cryptograms = List.of("browoanoommnaon", "zyelleyz");
+        System.out.printf("%-30s|%-30s|", "cryptogram", "result");
+        System.out.println("\nㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
+        cryptograms.stream().forEach(cryptogram -> {
+            System.out.printf("%-30s|%-30s|", "\"" + cryptogram + "\"",
+                "\"" + solution(cryptogram) + "\"");
+            System.out.println("\nㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
+        });
     }
 
     public static String solution(String cryptogram) {
