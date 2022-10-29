@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -52,5 +53,11 @@ public class Problem6 {
         list = list.stream().distinct().collect(Collectors.toList());
 
         return list;
+    }
+
+    // 이메일 리스트 오름차순 정렬
+    private static List<String> sort(List<String> input) {
+        input.sort(Comparator.naturalOrder());
+        return input;
     }
 }
