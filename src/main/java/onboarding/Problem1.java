@@ -17,9 +17,38 @@ class Problem1 {
         } // 예외 처리 통과 시 true return
         return true;
     }
+
+    // 2-1. 페이지 번호의 각 자리 숫자를 모두 더한 값을 return 하는 함수.
+    public static int getSumNumber(Integer pageNumber, Integer countSumNumber){
+        if(pageNumber / 10 >= 1){
+            countSumNumber += pageNumber%10;
+            return getSumNumber(pageNumber/10, countSumNumber);
+        }
+        return countSumNumber;
+    }
+    // 2-2. 페이지 번호의 각 자리 숫자를 모두 곱한 값을 return 하는 함수.
+    public static int getMultiNumber(Integer pageNumber, Integer countMultiNumber){
+        if(pageNumber/10 >= 1){
+            countMultiNumber *= pageNumber%10;
+            return getMultiNumber(pageNumber/10, countMultiNumber);
+        }
+        return countMultiNumber;
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-        // 2. 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구하는 함수 만들기.
+
+        // 덧셈, 곱셈 번호
+        int count_sum_number = 0;
+        int count_multi_number = 1;
+
+
+        // pobi의 페이지들
+        int pobi_left_page = pobi.get(0);
+        int pobi_right_page = pobi.get(1);
+
+        // crong의 페이지들
+        int crong_left_page = crong.get(0);
+        int crong_right_page = crong.get(1);
 
         // 3. pobi와 crong의 점수 구하기
 
