@@ -4,13 +4,19 @@ import java.util.Arrays;
 import java.util.List;
 
 class Problem1 {
+
+    public static final int POBI_WIN = 1;
+    public static final int CRONG_WIN = 2;
+    public static final int TIE = 0;
+    public static final int ILLEGAL_ARG = -1;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         try{
             Book pobiBook = new Book(pobi.get(0), pobi.get(1));
             Book crongBook = new Book(crong.get(0), crong.get(1));
             return whoIsWin(pobiBook,crongBook);
         }catch (IllegalArgumentException e){
-            return -1;
+            return ILLEGAL_ARG;
         }
     }
 
@@ -20,11 +26,11 @@ class Problem1 {
         int pobiMaxValue=getMaxValue(pobiBook);
         int crongMaxValue=getMaxValue(crongBook);
         if(crongMaxValue<pobiMaxValue){
-            return 1;
+            return POBI_WIN;
         }else if(crongMaxValue>pobiMaxValue){
-            return 2;
+            return CRONG_WIN;
         }else{
-            return 0;
+            return TIE;
         }
     }
 
@@ -37,25 +43,28 @@ class Problem1 {
         return Math.max(getMaxSumValue(book),getMaxMulValue(book));
     }
 
-    private static int getMaxMulValue(Book book) {
-        return Math.max(multiply(book.getLeftPage()), multiply(book.getRightPage()));
-    }
-
     private static int getMaxSumValue(Book book) {
         return Math.max(sum(book.getLeftPage()), sum(book.getRightPage()));
     }
 
+    private static int getMaxMulValue(Book book) {
+        return Math.max(multiply(book.getLeftPage()), multiply(book.getRightPage()));
+    }
+
+    private static int sum(Integer page) {
+        String[] split = getSplitString(page);
+        int sum = Arrays.stream(split).mapToInt(Integer::valueOf).sum();
+        return sum;
+    }
+
     private static int multiply(Integer page) {
-        String pageStr = String.valueOf(page);
-        String[] split = pageStr.split("");
+        String[] split = getSplitString(page);
         int mul=Arrays.stream(split).mapToInt(Integer::valueOf).reduce(1,(left,right)->left*right);
         return mul;
     }
 
-    private static int sum(Integer page) {
+    private static String[] getSplitString(Integer page) {
         String pageStr = String.valueOf(page);
-        String[] split = pageStr.split("");
-        int sum = Arrays.stream(split).mapToInt(Integer::valueOf).sum();
-        return sum;
+        return pageStr.split("");
     }
 }

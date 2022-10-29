@@ -181,7 +181,7 @@ public class Problem1Test {
             //when
             boolean result=true;
             //then
-            assertThat(book.hasFirstPageOrLess()).isEqualTo(result);
+            assertThat(book.hasLastPageOrMore()).isEqualTo(result);
         }
 
         @Test
@@ -201,7 +201,7 @@ public class Problem1Test {
             //when
             int result=1;
             //then
-            assertThat(book.hasFirstPageOrLess()).isEqualTo(result);
+            assertThat(book.getDifference()).isEqualTo(result);
         }
     }
 }

@@ -1,6 +1,8 @@
 package onboarding;
 
 public class Book {
+    public static final int LAST_PAGE = 400;
+    public static final int FIRST_PAGE = 1;
     private Integer leftPage;
     private Integer rightPage;
     public Book(Integer leftPage, Integer rightPage) {
@@ -9,12 +11,12 @@ public class Book {
     }
 
     public boolean hasFirstPageOrLess() {
-        if(this.leftPage<=1)return true;
+        if(this.leftPage<= FIRST_PAGE || this.rightPage<=FIRST_PAGE)return true;
         return false;
     }
 
     public boolean hasLastPageOrMore() {
-        if(400<=this.rightPage)return true;
+        if(LAST_PAGE<=this.leftPage || LAST_PAGE <=this.rightPage)return true;
         return false;
     }
 
