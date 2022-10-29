@@ -1,6 +1,9 @@
 package onboarding;
 
-import java.util.Stack;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicStampedReference;
+
 /*
 - 기능 구현사항 목록 -
 1. 문자열을 배열화한다.
@@ -12,26 +15,23 @@ import java.util.Stack;
  */
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "";
+        StringBuilder answer = new StringBuilder();
         char[] s = cryptogram.toCharArray();
-        Stack<String> stack = new Stack<>();
-        stack.push(String.valueOf(s[0]));
-
-        int l = s.length;
-        for(int i = 1; i < l; i++){
-            if(String.valueOf(stack.peek()).equals(String.valueOf(s[i]))) {
-                stack.pop();
-            }
-            else {
-                stack.add(String.valueOf(s[i]));
+        List <Character>temp = new ArrayList<>();
+        temp.add(s[0]);
+        for (int i = 1; i < s.length; i++) {
+            int l = temp.size();
+            if (s[i] == temp.get(l - 1)) {
+                temp.remove(l - 1);
+            } else {
+                temp.add(s[i]);
             }
         }
-        while(stack.size() != 0) {
-            answer = answer + stack.pop();
+        for (Character ch : temp) {
+            answer.append(ch);
         }
-        StringBuffer sb = new StringBuffer(answer);
-        String reverse = sb.reverse().toString();
-        return reverse;
+        String ans = answer.toString();
+        return ans;
     }
     /*
     지금까지 파이썬만 사용해 와서 자바의 문법이 어색하다.
