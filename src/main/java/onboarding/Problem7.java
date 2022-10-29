@@ -44,25 +44,24 @@ public class Problem7 {
     }
 
     private static void storeCandidatesFromFriendsByName(Set<String> candidates,
-                                                         Map<String, Set<String>> friendsByName,
-                                                         List<String> userFriends,
-                                                         String user) {
-        for (String name : friendsByName.keySet()) {
-            if (!userFriends.contains(name) && !name.equals(user)) {
-                candidates.add(name);
-            }
-        }
+                                                         Map<String, Set<String>> friendsByName) {
+        candidates.addAll(friendsByName.keySet());
     }
 
     private static void storeCandidatesFromVisitorScore(Set<String> candidates,
-                                                        Map<String, Integer> visitorScore,
-                                                        List<String> userFriends,
-                                                        String user) {
-        for (String visitor : visitorScore.keySet()) {
-            if (!userFriends.contains(visitor) && !visitor.equals(user)) {
-                candidates.add(visitor);
+                                                        Map<String, Integer> visitorScore) {
+        candidates.addAll(visitorScore.keySet());
+    }
+
+    private static void checkCandidates(Set<String> candidates,
+                                        List<String> userFriends,
+                                        String user) {
+        if (userFriends != null) {
+            for (String userFriend : userFriends) {
+                candidates.remove(userFriend);
             }
         }
+        candidates.remove(user);
     }
 
     private static Set<String> getCandidates(Map<String, Set<String>> friendsByName,
@@ -71,8 +70,9 @@ public class Problem7 {
                                              String user) {
         Set<String> candidates = new HashSet<>();
 
-        storeCandidatesFromFriendsByName(candidates, friendsByName, userFriends, user);
-        storeCandidatesFromVisitorScore(candidates, visitorScore, userFriends, user);
+        storeCandidatesFromFriendsByName(candidates, friendsByName);
+        storeCandidatesFromVisitorScore(candidates, visitorScore);
+        checkCandidates(candidates, userFriends, user);
         return candidates;
     }
 
@@ -88,6 +88,9 @@ public class Problem7 {
     private static void calcFriendScore(Map<String, Integer> scoreByName,
                                         Map<String, Set<String>> friendByName,
                                         List<String> userFriends) {
+        if (userFriends == null) {
+            return;
+        }
         Set<String> names = scoreByName.keySet();
 
         for (String name : names) {
@@ -110,7 +113,8 @@ public class Problem7 {
 
         for (String name : names) {
             if (visitorScore.containsKey(name)) {
-                scoreByName.replace(name, visitorScore.get(name));
+                int score = scoreByName.get(name);
+                scoreByName.replace(name, score + visitorScore.get(name));
             }
         }
     }
@@ -141,6 +145,13 @@ public class Problem7 {
         return checkedList;
     }
 
+    private static List<String> getUserFriends(Map<String, Set<String>> friendsByName, String user) {
+        if (friendsByName.get(user) != null) {
+            return new ArrayList<>(friendsByName.get(user));
+        }
+        return null;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         Map<String, Set<String>> friendsByName;
@@ -151,7 +162,7 @@ public class Problem7 {
         List<Map.Entry<String, Integer>> recommendList;
 
         friendsByName = getRelation(friends);
-        userFriends = new ArrayList<>(friendsByName.get(user));
+        userFriends = getUserFriends(friendsByName, user);
         visitorScore = getVisitorScore(visitors);
         candidates = getCandidates(friendsByName, visitorScore, userFriends, user);
         scoreByName = createScoreByName(candidates);
