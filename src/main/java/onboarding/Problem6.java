@@ -28,37 +28,32 @@ public class Problem6 {
         }
         return false;
     }
-    public static List<Boolean> solution(List<List<String>> forms) {
+    public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
         Duplicate = new ArrayList<>();
-
-        for (int i = 0; i < forms.size(); i++){
-            Duplicate.add(true);
-        }
-
         List<String> nicknames = new ArrayList<>();
+
         for (int i = 0; i < forms.size(); i++){
+            Duplicate.add(false);
             nicknames.add(forms.get(i).get(1));
         }
 
         for (int i = 0; i < forms.size() - 1; i++){
             for (int j = i + 1; j < forms.size(); j++){
-                if (isDuplicate(nicknames.get(i), nicknames.get(j))){
-                    Duplicate.set(i, false);
-                    Duplicate.set(j, false);
+                if (!Duplicate.get(j) && isDuplicate(nicknames.get(i), nicknames.get(j))){
+                    Duplicate.set(i, true);
+                    Duplicate.set(j, true);
                 }
             }
         }
-        return Duplicate;
-    }
 
-    public static void main(String[] args){
-        System.out.println(solution(List.of(
-                List.of("jm@email.com", "제이엠"),
-                List.of("jason@email.com", "제이슨"),
-                List.of("woniee@email.com", "워니"),
-                List.of("mj@email.com", "엠제이"),
-                List.of("nowm@email.com", "이제엠")
-        )));
+        for (int i = 0; i < forms.size(); i++){
+            if (Duplicate.get(i)){
+                answer.add(forms.get(i).get(0));
+            }
+        }
+
+        Collections.sort(answer);
+        return answer;
     }
 }
