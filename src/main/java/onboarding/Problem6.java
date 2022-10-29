@@ -6,13 +6,14 @@ public class Problem6 {
     private static final HashMap<String, List<String>> twoLetters = new HashMap<>();
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = new ArrayList<>();
+        List<String> answer;
 
         for (List<String> userInfo : forms) {
             int checkIndex = userInfo.get(1).length() - 1;
             checkDuplicate(checkIndex, userInfo);
-
         }
+
+        answer = extractDuplicateEmails();
 
         return answer;
     }
@@ -34,4 +35,15 @@ public class Problem6 {
         return twoLetters.containsKey(checkTwoLetter);
     }
 
+    private static List<String> extractDuplicateEmails() {
+        List<String> answer = new ArrayList<>();
+
+        for (String key : twoLetters.keySet()) {
+            if (twoLetters.get(key).size() > 1) {
+                Collections.addAll(answer, twoLetters.get(key).toArray(new String[0]));
+            }
+        }
+
+        return answer;
+    }
 }
