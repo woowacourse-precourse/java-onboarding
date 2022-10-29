@@ -15,5 +15,25 @@ public class Problem2 {
         return Arrays.stream(cryptogram.split("")).collect(Collectors.toList());
     }
 
+    // 중복되는 문자열 제거
+    private static String decode(List<String> cryptogramList) {
+        int index = 1;
+        while (index < cryptogramList.size()) {
+            if (isDuplicateInCryptogram(cryptogramList, index)) return decode(cryptogramList);
+            index++;
+        }
+        return String.join("", cryptogramList);
+    }
+
+    // 중복 여부 확인
+    private static boolean isDuplicateInCryptogram(List<String> cryptList, int index) {
+        if (cryptList.get(index).equals(cryptList.get(index - 1))) {
+            cryptList.remove(index);
+            cryptList.remove(index - 1);
+            return true;
+        }
+        return false;
+    }
+
 
 }
