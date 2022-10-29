@@ -11,6 +11,8 @@ public class Problem3 {
             }
         }
 
-        return 0;
+        int totalClapCount = clapCount[3] + clapCount[6] + clapCount[9];
+
+        return totalClapCount;
     }
 }
