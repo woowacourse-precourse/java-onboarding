@@ -5,8 +5,21 @@ import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        Map<String, Integer> nicknamesMap = new HashMap<>();
+        List<String> nicknamesInForms = getNicknamesInForms(forms);
+        for (String nicknamesInForm : nicknamesInForms) {
+            getSplitNicknames(nicknamesMap, nicknamesInForm);
+        }
+
+        List<String> getDuplicateNicknames = checkDuplicateNickname(nicknamesMap);
+
+        List<String> emails = new ArrayList<>();
+        for (String getDuplicateNickname : getDuplicateNicknames) {
+            List<String> emailFromNickname = findEmailsByDuplicateNickname(forms, getDuplicateNickname);
+            emails.addAll(emailFromNickname);
+        }
+
+        return emails;
     }
 
     private static List<String> getNicknamesInForms(List<List<String>> forms) {
