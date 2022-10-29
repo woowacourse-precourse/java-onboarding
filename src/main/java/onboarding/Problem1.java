@@ -23,4 +23,13 @@ class Problem1 {
         }
         return sum;
     }
+
+    private static int multiply(int page) {
+        int result = 1;
+        while (page > 0) {
+            result *= page % 10;
+            page /= 10;
+        }
+        return result;
+    }
 }
