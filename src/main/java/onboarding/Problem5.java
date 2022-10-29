@@ -15,7 +15,15 @@ money는 1 이상 1,000,000 이하인 자연수이다.
 public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> answer = new ArrayList<>();
-
+        answer.add(money/50000);
+        answer.add(money/10000);
+        answer.add(money/5000);
+        answer.add(money/1000);
+        answer.add(money/500);
+        answer.add(money/100);
+        answer.add(money/50);
+        answer.add(money/10);
+        answer.add(money);
         return answer;
     }
 }
