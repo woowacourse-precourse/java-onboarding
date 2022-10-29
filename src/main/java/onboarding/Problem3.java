@@ -3,6 +3,11 @@ package onboarding;
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
+
+        for (int currentNumber = 1; currentNumber <= number; currentNumber++) {
+            answer += countThreeSixNine(String.valueOf(currentNumber));
+        }
+
         return answer;
     }
 
