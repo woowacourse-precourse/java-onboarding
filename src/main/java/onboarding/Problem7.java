@@ -17,10 +17,12 @@ public class Problem7 {
             }
         }
 
+        System.out.println(FriendWithUser);
+
         for (List<String> friend : friends) {
             for (String DirectFriend : FriendWithUser) {
                 String acquaintance;
-                if (friend.contains(DirectFriend) && (acquaintance = friend.get(friend.indexOf(DirectFriend) ^ 1)) != user) {
+                if (friend.contains(DirectFriend) && (acquaintance = friend.get(friend.indexOf(DirectFriend) ^ 1)) != user && ! FriendWithUser.contains(acquaintance)) {
                     scores.computeIfPresent(acquaintance, (k, v) -> v + 10);
                     scores.computeIfAbsent(acquaintance, v -> 10);
                 }
@@ -34,6 +36,8 @@ public class Problem7 {
             }
         }
 
+        System.out.println(scores);
+
         List<Map.Entry<String, Integer>> list = new ArrayList<Map.Entry<String, Integer>>(scores.entrySet());
         Collections.sort(list, new ValueThenKeyComparator<String, Integer>());
 
@@ -41,9 +45,8 @@ public class Problem7 {
             answer.add(i.getKey());
         }
 
-        return answer;
+        return answer.subList(0,5);
    }
-
     private static class ValueThenKeyComparator<K extends Comparable<? super K>, V extends Comparable<? super V>>
             implements Comparator<Map.Entry<K, V>> {
 
