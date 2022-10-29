@@ -38,6 +38,13 @@ public class Problem6 {
         return emails;
     }
 
+    private static void updateCrewEmailForDuplicateNicknames(Set<String> crewEmailForDuplicateNicknames, Map<String, Set<String>> twoCharsAndEmails) {
+
+        for (Set<String> emails : twoCharsAndEmails.values()) {
+            getCrewEmailifNicknameDuplicate(crewEmailForDuplicateNicknames, emails);
+        }
+    }
+
     /**
      * 신청받은 닉네임 중 같은 글자가 연속적으로 포함되는 닉네임을 작성한 지원자의 이메일 목록을 return 하도록 solution 메서드를 완성하라.
      *
@@ -47,9 +54,14 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         Map<String, Set<String>> twoCharsAndEmails = new HashMap<>();
         putTwoCharsAndEmailsByTraversingForms(twoCharsAndEmails, forms);
+
+        Set<String> crewEmailForDuplicateNicknames = new HashSet<>();
+        updateCrewEmailForDuplicateNicknames(crewEmailForDuplicateNicknames, twoCharsAndEmails);
         List<String> answer = List.of("answer");
         return answer;
     }
+
+
 
 
 }
