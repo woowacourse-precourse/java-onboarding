@@ -2,8 +2,27 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        return decoder(cryptogram);
+    }
+
+    private static String decoder(String cryptogram) {
+        String a = "";
+        while (a.length() != cryptogram.length()) {
+            a = cryptogram;
+            cryptogram = checkDuplicate(cryptogram);
+        }
+        return cryptogram;
+    }
+
+    private static String checkDuplicate(String str) {
+        for (int index = 0; index < str.length(); index++) {
+            int lastIndex = duplicatedLastIndex(str, index);
+            if (index < lastIndex) {
+                str = deduplication(str, index, lastIndex);
+                index--;
+            }
+        }
+        return str;
     }
 
     private static int duplicatedLastIndex(String str, int startIndex) {
