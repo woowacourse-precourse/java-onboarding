@@ -36,5 +36,21 @@ class Problem7Test {
 
         assertThat(Problem7.fillUserList(user,friends,visitors)).isEqualTo(result);
     }
+    @Test
+    void 사용자친구목록테스트() {
+        String user = "hansu";
+        List<List<String>> friends = List.of(
+                List.of("hansu", "sungjoon"),
+                List.of("hansu", "jiwon"),
+                List.of("sungjoon", "chaemin"),
+                List.of("minjae", "hansu"),
+                List.of("jaewoo", "minjae"),
+                List.of("hansu", "jaewoo")
+        );
+
+        List<String> result = List.of("sungjoon", "jiwon", "minjae", "jaewoo");
+
+        assertThat(Problem7.fillUserFriends(user,friends)).isEqualTo(result);
+    }
 
 }
