@@ -7,4 +7,14 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+
+    public static Integer addDigits(Integer pageNum) {
+        Integer value = 0;
+        while (pageNum > 0) {
+            value += pageNum % 10;
+            pageNum /= 10;
+        }
+        return value;
+    }
+
 }
