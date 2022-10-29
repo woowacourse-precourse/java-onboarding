@@ -3,10 +3,12 @@ package onboarding;
 import java.util.*;
 
 public class Problem6 {
-    private static final HashMap<String, List<String>> twoLetters = new HashMap<>();
+    private static HashMap<String, List<String>> twoLetters = new HashMap<>();
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer;
+
+        initTwoLetters();
 
         for (List<String> userInfo : forms) {
             int checkIndex = userInfo.get(1).length() - 1;
@@ -18,6 +20,10 @@ public class Problem6 {
         Collections.sort(answer);
 
         return answer;
+    }
+
+    private static void initTwoLetters() {
+        twoLetters = new HashMap<>();
     }
 
     private static void checkDuplicate(int checkIndex, List<String> userInfo) {
