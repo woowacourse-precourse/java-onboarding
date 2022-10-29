@@ -9,8 +9,21 @@ public class Problem7 {
     }
 
 
+    // 최종 추천 친구 리스트에서 점수 기준으로 내림차순 정렬하고, 점수가 같을 경우 이름순으로 정렬하여 TOP5만 반환하는 메소드
+    private static Map<String, Integer> descendingSort(String user, List<List<String>> friends, List<String> visitors) {
+        Map<String,Integer> recommendedFriendsList = getRecommendedFriendsList(user, friends, visitors);
+
+        List<String> result = new ArrayList<>(recommendedFriendsList.keySet());
+        result.sort((o1, o2) ->  recommendedFriendsList.get(o2).compareTo(recommendedFriendsList.get(o1)));
+
+        //TODO: 점수가 같은 경우 이름순으로 정렬
+
+        return recommendedFriendsList;
+    }
+
+
     // friends 점수와 visitors 점수를 합하여 반환하는 메소드
-    private static Map<String, Integer> getRecommendedFriendsScore(String user, List<List<String>> friends, List<String> visitors) {
+    private static Map<String, Integer> getRecommendedFriendsList(String user, List<List<String>> friends, List<String> visitors) {
         List<String> recommendedFriends = recommendedFriendsOf(user, friends, visitors);
 
         Map<String, Integer> friendsScore = getFriendsScore(user, friends);
