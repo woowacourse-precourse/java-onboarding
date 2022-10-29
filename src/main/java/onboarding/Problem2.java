@@ -10,6 +10,13 @@ import java.util.stream.Collectors;
 public class Problem2 {
     public static String solution(String cryptogram) {
 
+        try {
+            ExceptionProblem2.validateCryptogram(cryptogram);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return "";
+        }
+
         List<Character> cryptogramList = cryptogram.chars().mapToObj(c -> (char) c).collect(Collectors.toList());
         List<Character> result = new ArrayList<>(cryptogramList);
 
