@@ -12,11 +12,18 @@ class Problem1 {
 
         int maxSum = getMaxSum(digits);
 
-        int cand2 = 1;
-        for(int digit: digits)
-            cand2 *= digit;
+        int maxMultiple = getMaxMultiple(digits);
 
-        return max(maxSum,cand2);
+        return max(maxSum,maxMultiple);
+    }
+
+    private static int getMaxMultiple(List<Integer> digits) {
+        int ret = 1;
+
+        for(int digit: digits)
+            ret *= digit;
+
+        return ret;
     }
 
     private static int getMaxSum(List<Integer> digits) {
