@@ -35,7 +35,7 @@ public class Problem3 {
 
     static List<Integer> splitNum = new ArrayList<Integer>();
     public static int solution(int number) {
-        int answer = 0;
+        int answer = totalClap(number);
         return answer;
     }
     private static int checkInput(int inputNum){
