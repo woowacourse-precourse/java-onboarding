@@ -10,6 +10,11 @@ public class Problem5 {
         List<Integer> answer = new ArrayList<>();
         List<Integer> currencyList = List.of(50000, 10000, 5000, 1000,
                 500, 100, 50, 10, 1);
+
+        for (int i=0; i<currencyList.size(); i++) {
+            int currency = currencyList.get(i);
+            int numOfCurrency = money / currency;
+        }
         return answer;
     }
 }
