@@ -11,15 +11,20 @@ public class Problem4 {
         return sb.toString();
     }
 
-    // 알파벳 대문자,소문자를 제외한 글자를 판별하는 기능
+    // 알파벳인지 아닌지 판별하는 기능
     private static char distinguishAlphabet(char alphabet) {
+        if (Character.isAlphabetic(alphabet)) {
+            return distinguishUppercase(alphabet);
+        }
+        return alphabet;
+    }
+
+    // 대문자인지 소문자인지 판별하는 기능
+    private static char distinguishUppercase(char alphabet) {
         if (Character.isUpperCase(alphabet)) {
             return toReverseUppercase(alphabet);
         }
-        if (Character.isLowerCase(alphabet)) {
-            return toReverseLowercase(alphabet);
-        }
-        return alphabet;
+        return toReverseLowercase(alphabet);
     }
 
     // 대문자를 청개구리 대문자로 번역하는 기능
@@ -31,5 +36,4 @@ public class Problem4 {
     private static char toReverseLowercase(char alphabet) {
         return (char)(122-(alphabet-97));
     }
-
 }
