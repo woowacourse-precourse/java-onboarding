@@ -3,10 +3,28 @@ package onboarding;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Collections;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> email = new ArrayList<>();
+        List<String> nickname = new ArrayList<>();
+        for (int i = 0; i < forms.size(); i++) {
+            nickname.add(forms.get(i).get(1));
+        }
+        for (int i = 0; i < forms.size(); i++) {
+            for (int j = i + 1; j < forms.size(); j++) {
+                if (compare(nickname.get(i), nickname.get(j)) != -1 * (nickname.get(i).length() - 1)) {
+                    email.add(forms.get(i).get(0));
+                    email.add(forms.get(j).get(0));
+                }
+            }
+        }
+        Set<String> set = new HashSet<String>(email);
+        List<String> answer = new ArrayList<String>(set);
+        Collections.sort(answer);
         return answer;
     }
     public static void main(String[] args) {
