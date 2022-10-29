@@ -13,7 +13,21 @@ import java.util.List;
  *  4-3 왼쪽 페이지와 오른쪽 페이지가 연속된 페이지인가?
  */
 class Problem1 {
+    private static boolean isErrorPages(List<Integer> pages){
 
+        int leftPage = pages.get(0);
+        int rightPage = pages.get(1);
+
+        boolean isLeftPage = (leftPage <= 1) || (leftPage >=400) || (leftPage % 2 == 0);
+        boolean isRightPage = (rightPage <= 1) || (rightPage >= 400) || (rightPage % 2 == 1);
+        boolean isCorrectPages = (rightPage - leftPage != 1) || (leftPage >= rightPage);
+
+        if(isLeftPage || isRightPage || isCorrectPages){
+            return true;
+        }else{
+            return false;
+        }
+    }
     private static int getMaxScore(int page){
         int result;
 
@@ -32,17 +46,23 @@ class Problem1 {
     }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
-        int pobiScore = Math.max(getMaxScore((pobi.get(0))), getMaxScore(pobi.get(1)));
-        int crongScore = Math.max(getMaxScore((crong.get(0))), getMaxScore(crong.get(1)));
+        if (isErrorPages(pobi) || isErrorPages(crong)){
+            return -1;
+        }else{
 
-        if (pobiScore > crongScore){
-            return 1;
-        } else if (pobiScore < crongScore) {
-            return 2;
-        } else if (pobiScore == crongScore) {
-            return 0;
+            int pobiScore = Math.max(getMaxScore((pobi.get(0))), getMaxScore(pobi.get(1)));
+            int crongScore = Math.max(getMaxScore((crong.get(0))), getMaxScore(crong.get(1)));
+
+            if (pobiScore > crongScore){
+                return 1;
+            } else if (pobiScore < crongScore) {
+                return 2;
+            } else if (pobiScore == crongScore) {
+                return 0;
+            }
+
+            return -1;
         }
-
-        return -1;
     }
+
 }
