@@ -71,8 +71,14 @@ public class Problem6 {
      * @return
      */
     public static HashSet<String> search(int startIdx,List<List<String>> forms, String word) {
-
-        return new HashSet<>();
+        HashSet<String> result = new HashSet<>();
+        for (int i = startIdx+1; i < forms.size(); i++) {
+            if (forms.get(i).get(1).contains(word)){
+                result.add(forms.get(i).get(0));
+                result.add(forms.get(startIdx).get(0));
+            }
+        }
+        return result;
     }
 
 
