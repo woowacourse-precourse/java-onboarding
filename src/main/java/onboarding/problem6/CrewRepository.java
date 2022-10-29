@@ -15,13 +15,13 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class CrewInfo {
+public class CrewRepository {
 
     private final Map<String, String> partOfNicknameMap;
     private final Set<String> duplicateNicknameCrewSet;
     private final List<Crew> crews;
 
-    public CrewInfo(List<List<String>> forms) {
+    public CrewRepository(List<List<String>> forms) {
         this.partOfNicknameMap = new HashMap<>();
         this.duplicateNicknameCrewSet = new HashSet<>();
         this.crews = initCrews(forms);
