@@ -23,6 +23,81 @@ class Problem1 {
      */
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+
+        if (Problem1.isPageError(pobi) || Problem1.isPageError(crong)) {
+            return -1;
+        }
+
+        int pobiResult = Problem1.calcOwnMostNum(pobi);
+        int crongResult = Problem1.calcOwnMostNum(crong);
+
         return answer;
+    }
+
+    /**
+     * 자신의 최대 점수 구하는 함수
+     * @param pages
+     * @return 최대 점수
+     */
+    public static int calcOwnMostNum(List<Integer> pages) {
+        int max = 0;
+        for (Integer page : pages) {
+            int plus = Problem1.plusEachIndex(page);
+            int mul = Problem1.mulEachIndex(page);
+            int tempMax = plus > mul ? plus : mul;
+
+            if (max < tempMax) {
+                max = tempMax;
+            }
+        }
+        return max;
+    }
+
+    /**
+     * 각 자리 더하는 함수
+     * @param page 페이지 값
+     * @return 각 자리 더한 값 or -1 ( 예외 사항 )
+     */
+    public static int plusEachIndex(int page){
+        int ret = 0;
+        int tempPage = page;
+
+        while (tempPage != 0) {
+            ret += (tempPage % 10);
+            tempPage /= 10;
+        }
+
+        return ret;
+    }
+
+    /**
+     * 각 자리 곱하는 함수
+     *
+     * @param page 페이지 값
+     * @return 각 자리 곱한 값
+     */
+    public static int mulEachIndex(int page){
+        int ret = 1;
+        int tempPage = page;
+
+        while (tempPage != 0) {
+            ret *= (tempPage % 10);
+            tempPage /= 10;
+        }
+
+        return ret;
+    }
+
+    /**
+     * 책 페이지가 범위 밖이나 있을 수 없는 값인지 확인
+     * @param pages
+     * @return 범위 밖이면 true, 아니면 false
+     */
+    public static boolean isPageError(List<Integer> pages){
+        int gap = pages.get(1) - pages.get(0);
+        if (gap != 1) {
+            return true;
+        }
+        return (pages.get(1) > 400 || pages.get(0) <= 0);
     }
 }
