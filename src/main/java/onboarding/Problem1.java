@@ -40,5 +40,14 @@ class Problem1 {
         else return 0;
     }
 
+    public static int solution(List<Integer> pobi,
+                               List<Integer> crong) {
+        int pobiMaxScore = Integer.MIN_VALUE,
+            crongMaxScore = Integer.MIN_VALUE;
 
+        pobiMaxScore = getMaxScore(pobi);
+        crongMaxScore = getMaxScore(crong);
+
+        return getPageNumberGameResult(pobiMaxScore, crongMaxScore);
+    }
 }
