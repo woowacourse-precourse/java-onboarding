@@ -8,6 +8,7 @@ public class Problem7 {
 
         List<String> userFriendList = findFriendListByUser(user, friends);
         Map<String, Integer> recommendedFriends = createRecommendedFriends(userFriendList, friends);
+        recommendedFriends = visitorScore(recommendedFriends, visitors);
 
         return answer;
     }
@@ -35,6 +36,16 @@ public class Problem7 {
             }
         }
         return result;
+    }
+
+    private static Map<String, Integer> visitorScore(Map<String, Integer> recommendedFriendMap, List<String> visitors) {
+        for (String visitor : visitors) {
+            if (recommendedFriendMap.containsKey(visitor)) {
+                Integer score = recommendedFriendMap.get(visitor);
+                recommendedFriendMap.put(visitor, score + 1);
+            }
+        }
+        return recommendedFriendMap;
     }
 
     private static boolean isFriend(String target, List<String> friend) {
