@@ -9,7 +9,8 @@ package onboarding;
 
 /**
  * 1. 문자열 비교 함수
- * - 문자열 비교 후 같으면 해당 문자 반환 아닐 시 char의 null 값 return
+ * - 문자열 비교 후 같으면 true 값으로 반환 , 아닐시 false 로 번환
+ * - 문자열 비교 하기 위한 탐색 함수 같은 문자 발견시 그 해당 char 값 반환, 아닐시 null값 반환
  *  **/
 
 public class Problem2 {
@@ -20,17 +21,28 @@ public class Problem2 {
 //    public static void main(String[] args){
 //        char test1 = 'a';
 //        char test2 = 'b';
-//        if(compareChar(test1,test2) == '\u0000')
-//            System.out.println("null");
-//        else
-//            System.out.println(compareChar(test1,test2));
+//        String test3 = "zyelleyz";
+//        char test4 =searchAt(test3);
+//        System.out.println(test4);
 //    }
 
-    private static char compareChar(char prev, char current)
+    private static boolean compareChar(char current, char next)
     {
-        char ret = '\u0000';
-        if(prev == current)
-            return prev;
+        if(current == next)
+            return true;
+        return false;
+    }
+
+    private static char searchAt(String inputStr){
+        char ret ='\u0000';
+        for (int i = 0; i < inputStr.length(); i++)
+        {
+            if(compareChar(ret,inputStr.charAt(i))){
+                return ret;
+            }
+            ret = inputStr.charAt(i);
+        }
+        ret = '\u0000';
         return ret;
     }
 }
