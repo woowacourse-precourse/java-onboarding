@@ -16,8 +16,11 @@ public class Game369Strategy implements GameStrategy {
 
     @Override
     public int count(int number) {
-        return Long.valueOf(Arrays.stream(String.valueOf(number).split(""))
-                .filter(checkList::contains)
-                .count()).intValue();
+        if (satisfyCondition(number)) {
+            return Long.valueOf(Arrays.stream(String.valueOf(number).split(""))
+                    .filter(checkList::contains)
+                    .count()).intValue();
+        }
+        return 0;
     }
 }
