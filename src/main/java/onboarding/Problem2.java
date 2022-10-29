@@ -16,6 +16,11 @@ public class Problem2 {
             }
         }
 
-        return null;
+        StringBuilder plainText = new StringBuilder();
+        for (String s : charStack) {
+            plainText.append(s);
+        }
+
+        return plainText.toString();
     }
 }
