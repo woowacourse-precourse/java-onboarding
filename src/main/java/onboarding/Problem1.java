@@ -54,28 +54,57 @@ class Problem1 {
             return 2;
     }
 
+    // 5-2. 예외사항 처리.
+    static int getException(List<Integer> person)
+    {
+        // 책 페이지 수가 왼쪽이 더 클 경우
+        if(person.get(0) > person.get(1))
+            return -1;
+        // 책 페이지 수가 1차이가 아닐 경우
+        else if(person.get(1)-person.get(0) != 1)
+            return -1;
+        // 책 왼쪽 페이지가 홀수가 아닌 경우
+        else if(person.get(0)%2 == 0)
+            return -1;
+        // 책 오른쪽 페이지가 짝수가 아닐 경우
+        else if(person.get(1)%2 != 0)
+            return -1;
+        else
+            return 1;
+    }
+
     // 1. 책을 임의로 펼친다.
     // 포비와 크롱의 임의의 책 페이지 받아오기
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
-        // 왼쪽 페이지 연산
-        int leftPageP = getPageCalc(pobi.get(0));
-        int leftPageC = getPageCalc(crong.get(0));
+        // 예외사항 확인
+        int errorFlagP = getException(pobi);
+        int errorFlagC = getException(crong);
 
-        // 오른쪽 페이지 연산
-        int rightPageP = getPageCalc(pobi.get(1));
-        int rightPageC = getPageCalc(crong.get(1));
 
-        // 내 점수 구하기 연산
-        int pobiScore = getScoreCalc(leftPageP,rightPageP);
-        int crongScore = getScoreCalc(leftPageC,rightPageC);
+        // 예외사항인 경우
+        if(errorFlagP == -1 || errorFlagC == -1)
+            answer = -1;
 
-        // 게임 승부 연산
-        answer = getGameResult(pobiScore,crongScore);
+        // 예외사항이 아닌 경우
+        else
+        {
+            // 왼쪽 페이지 연산
+            int leftPageP = getPageCalc(pobi.get(0));
+            int leftPageC = getPageCalc(crong.get(0));
 
-        // 게임 결과 확인
-        System.out.println(answer);
+            // 오른쪽 페이지 연산
+            int rightPageP = getPageCalc(pobi.get(1));
+            int rightPageC = getPageCalc(crong.get(1));
+
+            // 내 점수 구하기 연산
+            int pobiScore = getScoreCalc(leftPageP,rightPageP);
+            int crongScore = getScoreCalc(leftPageC,rightPageC);
+
+            // 게임 승부 연산
+            answer = getGameResult(pobiScore,crongScore);
+        }
 
         return answer;
     }
