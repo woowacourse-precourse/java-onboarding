@@ -20,13 +20,13 @@ class Problem1 {
             return EXCEPTION;
         }
 
-        String pobiLeft = pobi.get(LEFT) + "";
-        String pobiRight = pobi.get(RIGHT) + "";
-        String crongLeft = crong.get(LEFT) + "";
-        String crongRight = crong.get(RIGHT) + "";
+        String pobiLeftPage = Integer.toString(pobi.get(LEFT));
+        String pobiRightPage = Integer.toString(pobi.get(RIGHT));
+        String crongLeftPage = Integer.toString(crong.get(LEFT));
+        String crongRightPage = Integer.toString(crong.get(RIGHT));
 
-        int pobiMaxScore = Math.max(getMaxScore(pobiLeft), getMaxScore(pobiRight));
-        int crongMaxScore = Math.max(getMaxScore(crongLeft), getMaxScore(crongRight));
+        int pobiMaxScore = Math.max(getMaxScore(pobiLeftPage), getMaxScore(pobiRightPage));
+        int crongMaxScore = Math.max(getMaxScore(crongLeftPage), getMaxScore(crongRightPage));
 
         return getCompareResult(pobiMaxScore, crongMaxScore);
     }
