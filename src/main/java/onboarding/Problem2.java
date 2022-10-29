@@ -9,6 +9,12 @@ public class Problem2 {
         List<String> cryptogramList = new ArrayList<>(List.of(cryptogram.split("")));
         List<Integer> needToRemoveIndex = decryption(cryptogramList);
 
+        while(!needToRemoveIndex.isEmpty()) {
+            for (int i = needToRemoveIndex.size()-1; i >=0; i--) {
+                cryptogramList.remove(needToRemoveIndex.get(i).intValue());
+            }
+            needToRemoveIndex = decryption(cryptogramList);
+        }
         return String.join("", cryptogramList);
     }
 
