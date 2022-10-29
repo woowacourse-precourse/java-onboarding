@@ -6,14 +6,25 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-        int pobi_max = pobiMax(pobi);
-        int crong_max = crongMax(crong);
+        int pobi_max = findPobiMax(pobi);
+        int crong_max = findCrongMax(crong);
 
-        if (!(exception(crong) && exception(pobi))) {
+        if (isInputRight(pobi, crong)) {
             answer = -1;
             return answer;
         }
 
+        answer = comparePobiAndCrong(pobi_max, crong_max);
+
+        return answer;
+    }
+
+    private static boolean isInputRight(List<Integer> pobi, List<Integer> crong) {
+        return !(exception(crong) && exception(pobi));
+    }
+
+    private static int comparePobiAndCrong(int pobi_max, int crong_max) {
+        int answer=0;
         if (pobi_max > crong_max) {
             answer = 1;
         } else if (crong_max < pobi_max) {
@@ -21,38 +32,44 @@ class Problem1 {
         } else if (pobi_max == crong_max) {
             answer = 0;
         }
-
         return answer;
-
     }
 
-    public static boolean exception(List<Integer> judge) { // 예외 처리 기능
+    public static boolean exception(List<Integer> judge) {
         int left = judge.get(0);
         int right = judge.get(1);
-        if (Math.abs(right - left) > 1) { // 입력으로 연속된 페이지가 아닐 경우 예외 처리
+        if (isContinuedPage(left, right)) {
             return false;
-        } else if (right == 400 || left == 1) { // 펼쳤을때 첫 페이지, 끝 페이지 나올 경우 예외 처리
+        } else if (isFirstOrLast(left, right)) {
             return false;
         }
         return true;
     }
 
-    public static int pobiMax(List<Integer> pobi) {  // pobi의 값중 가장 큰 값 찾기
-
-        int left_max = divideNum(pobi.get(0));
-        int right_max = divideNum(pobi.get(1));
-
-        return Math.max(left_max, right_max);
+    private static boolean isFirstOrLast(int left, int right) {
+        return right == 400 || left == 1;
     }
 
-    public static int crongMax(List<Integer> crong) {  // crong의 값중 가장 큰 값 찾기
-        int left_max = divideNum(crong.get(0));
-        int right_max = divideNum(crong.get(1));
-
-        return Math.max(left_max, right_max);
+    private static boolean isContinuedPage(int left, int right) {
+        return Math.abs(right - left) > 1;
     }
 
-    public static int divideNum(Integer x) { // 각 자릿수 별로 나누고, 더한것이 가장 큰지 곱한 것이 가장 큰지 비교
+    public static int findPobiMax(List<Integer> pobi) {
+
+        int left_Page_Max = splitNum(pobi.get(0));
+        int right_Page_Max = splitNum(pobi.get(1));
+
+        return getMax(left_Page_Max, right_Page_Max);
+    }
+
+    public static int findCrongMax(List<Integer> crong) {
+        int left_max = splitNum(crong.get(0));
+        int right_max = splitNum(crong.get(1));
+
+        return getMax(left_max, right_max);
+    }
+
+    public static int splitNum(Integer x) {
         int addSum = 0;
         int mulSum = 1;
         while (x > 0) {
@@ -61,8 +78,12 @@ class Problem1 {
             x /= 10;
         }
 
-        int max = Math.max(addSum, mulSum);
+        int max = getMax(addSum, mulSum);
         return max;
+    }
+
+    private static int getMax(int a, int b) {
+        return Math.max(a, b);
     }
 
 }
