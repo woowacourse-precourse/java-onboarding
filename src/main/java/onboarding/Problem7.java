@@ -9,3 +9,17 @@ public class Problem7 {
         return answer;
     }
 }
+class Friend{
+    String name;
+    int point = 0;
+
+    Friend(String name){
+        this.name = name;
+    }
+    int getPoint() {
+        return this.point;
+    }
+    void addPoint(int addpoint){
+        point += addpoint;
+    }
+}
