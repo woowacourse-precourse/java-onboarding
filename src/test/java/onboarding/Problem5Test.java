@@ -43,4 +43,32 @@ class Problem5Test {
             }
         }
     }
+    
+    @Nested
+    @DisplayName("moduloNumberAByNumberB 메소드는")
+    class moduloNumberAByNumberBTest {
+        @Nested
+        @DisplayName("숫자A와 0이 아닌 숫자B를 입력하면")
+        class Context_with_numberA_and_non_zero_numberB {
+            @Test
+            @DisplayName("숫자A를 숫자B로 나눈 나머지를 반환한다")
+            void it_returns_remainder() {
+                int numberA = 5;
+                int numberB = 3;
+                assertThat(problem5.moduloNumberAByNumberB(numberA, numberB)).isEqualTo(numberA % numberB);
+            }
+        }
+
+        @Nested
+        @DisplayName("숫자A와 0을 입력하면")
+        class Context_with_numberA_and_zero_numberB {
+            @Test
+            @DisplayName("ArithmeticException을 반환한다")
+            void it_throws_ArithmeticException() {
+                int numberA = 5;
+                int numberB = 0;
+                assertThatThrownBy(() -> problem5.moduloNumberAByNumberB(numberA, numberB)).isInstanceOf(ArithmeticException.class);
+            }
+        }
+    }
 }
