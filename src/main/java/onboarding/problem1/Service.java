@@ -12,4 +12,12 @@ public class Service {
         return result;
     }
 
+    public Integer mulPage(Integer page) {
+        Integer result = 1;
+        while (page == 0) {
+            result *= page % 10;
+            page /= 10;
+        }
+        return result;
+    }
 }
