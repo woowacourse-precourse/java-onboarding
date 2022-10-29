@@ -10,6 +10,17 @@ public class Problem6 {
     private static class Constants {
         protected static final int EMAIL = 0;
         protected static final int NICKNAME = 1;
+        protected static final String EMAIL_TYPE = "email.com";
+    }
+
+    private static class UserVerifier {
+        protected void isRightEmailType(String email) {
+            if (!email.contains(Constants.EMAIL_TYPE)) {
+                throw new IllegalArgumentException("이메일 형식은" + Constants.EMAIL_TYPE + "도메인만 지원됩니다.");
+            }
+        }
+
+
     }
 
     public static List<List<String>> users = new ArrayList<>();
