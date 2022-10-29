@@ -18,16 +18,14 @@ public class Problem3 {
     private static int countNumber(int count, String num) {
         for (int j = 0; j < num.length(); j++) {
             char checkNumber = num.charAt(j);
-            if (checkNumber == '3') {
-                count++;
-            }
-            if (checkNumber == '6') {
-                count++;
-            }
-            if (checkNumber == '9') {
+            if (existThreeSixNine(checkNumber)) {
                 count++;
             }
         }
         return count;
+    }
+
+    private static boolean existThreeSixNine(char checkNumber) {
+        return checkNumber == '3' || checkNumber == '6' || checkNumber == '9';
     }
 }
