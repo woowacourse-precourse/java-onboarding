@@ -19,6 +19,7 @@ public class Problem7 {
     initMyFriends(user, friends);
     initOthers(friends, visitors);
     setScore(friends, visitors);
+    return getAnswer();
   }
 
   private static void initMyFriends(String user, List<List<String>> friends) {
@@ -77,5 +78,16 @@ public class Problem7 {
         scoreMap.put(visitor, scoreMap.get(visitor) + 1);
       }
     }
+  }
+
+  private static List<String> getAnswer() {
+    return scoreMap.entrySet()
+        .stream()
+        .filter(entry -> entry.getValue() != 0)
+        .sorted(Entry.<String, Integer>comparingByValue(Collections.reverseOrder())
+            .thenComparing(Entry::getKey))
+        .limit(5)
+        .map(Entry::getKey)
+        .collect(Collectors.toList());
   }
 }
