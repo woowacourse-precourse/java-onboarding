@@ -4,30 +4,49 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Problem6 {
-    private static final HashMap<String, String> dupCheckMap = new HashMap<>();
-    private static final HashSet<String> emailSet = new HashSet<>();
-    public static List<String> solution(List<List<String>> forms) {
-        for (List<String> form: forms) {
-            String email = form.get(0);
-            String nickname = form.get(1);
 
-            for (String part: sliceByLength(nickname, 2)) {
-                if (isAlreadyUse(part, email)) {
+    public static List<String> solution(List<List<String>> forms) {
+        final DupCheckMap dupCheckMap = new DupCheckMap();
+        final HashSet<String> emailSet = new HashSet<>();
+
+        for (List<String> f: forms) {
+            Form form = new Form(f.get(0), f.get(1));
+
+            for (String part: sliceByLength(form.getNickname(), 2)) {
+                if (dupCheckMap.isDuplicate(part, form.getEmail())) {
                     emailSet.add(dupCheckMap.get(part));
-                    emailSet.add(email);
+                    emailSet.add(form.getEmail());
                 }
-                dupCheckMap.put(part, email);
+                dupCheckMap.put(part, form.getEmail());
             }
         }
 
         return new ArrayList<>(emailSet);
     }
 
-    private static boolean isAlreadyUse(String part, String email) {
-        return dupCheckMap.containsKey(part) && !dupCheckMap.get(part).equals(email);
+    private static class DupCheckMap extends HashMap<String, String> {
+        private boolean isDuplicate(String part, String email) {
+            return this.containsKey(part) && !this.get(part).equals(email);
+        }
+    }
+
+    private static class Form {
+        private final String email;
+        private final String nickname;
+
+        public Form(String email, String nickname) {
+            this.email = email;
+            this.nickname = nickname;
+        }
+
+        public String getEmail() {
+            return email;
+        }
+        public String getNickname() {
+            return nickname;
+        }
     }
 
     private static List<String> sliceByLength(String str, Integer len) {
