@@ -3,6 +3,7 @@ package onboarding;
 import java.io.PrintStream;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.stream.Stream;
 
 import static java.util.Collections.max;
 
@@ -16,28 +17,22 @@ class Problem1 {
     public static int find_max(int s) {
         int temp_max = 0;
         int temp_multi = 1;
-        String str = String.valueOf(s);
-        char[] s_new = str.toCharArray();
-        int l = s_new.length;
-        List<Integer> temp = new ArrayList<>(l);
-        for (int i = 0; i < l; i++) {
-            int c = Character.getNumericValue(s_new[i]);
-            temp.add(c);
-        }
-        for(int i = 0; i < l; i++){
-            temp_max = temp_max + temp.get(i);
-            temp_multi = temp_multi * temp.get(i);
+        int[] arrNum = Stream.of(String.valueOf(s).split("")).mapToInt(Integer::parseInt).toArray();
+        for(int i = 0; i < arrNum.length; i++){
+            temp_max = temp_max + arrNum[i];
+            temp_multi = temp_multi * arrNum[i];
         }
         if (temp_multi > temp_max) {
-            temp_max = temp_multi;
+            return temp_multi;
         }
         return temp_max;
     }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        // 예외처리
         if(pobi.get(1) - pobi.get(0) != 1 || crong.get(1) - crong.get(0) != 1 || pobi.get(0) % 2 != 1 || crong.get(0) %2 != 1) {
             return -1;
         }
-
+        // 각자 점수 산출
         List<Integer> pobi_new = new ArrayList<>(2);
         List<Integer> crong_new = new ArrayList<>(2);
         for (int i = 0; i < 2; i++){
@@ -46,16 +41,13 @@ class Problem1 {
         }
         int pobi_max = max(pobi_new);
         int crong_max = max(crong_new);
-
+        // 비교
         if(pobi_max == crong_max){
             return 0;
         }
         else if(pobi_max > crong_max){
             return 1;
         }
-        else if(pobi_max < crong_max){
-            return 2;
-        }
-        return 0;
+        return 2;
     }
 }

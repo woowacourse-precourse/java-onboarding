@@ -60,7 +60,6 @@ public class Problem7 {
         }
         List<String> listKeySet = new ArrayList<>(new_dic.keySet());
         Collections.sort(listKeySet, (value1, value2) -> (new_dic.get(value2).compareTo(new_dic.get(value1))));
-        System.out.println(new_dic);
         List<String> answer = new ArrayList<>(new_dic.keySet());
         return answer;
     }
