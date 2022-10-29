@@ -41,5 +41,9 @@ class Problem1 {
         if(page.get(0) <=1 || page.get(1) <= 1 || page.get(0) >= 400 || page.get(1) >= 400) return false;
         return true;
     }
+    public static boolean isAvailablePageNumber(List<Integer> page){
+        if(page.get(0) %2 !=1 || page.get(1) %2 != 0) return false;
+        return true;
+    }
 }
 
