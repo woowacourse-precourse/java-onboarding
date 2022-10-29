@@ -6,7 +6,8 @@
 문자열을 검사해 중복있는 부분의 인덱스값을 [시작, 끝] 형태의 리스트로 찾고, 그 부분을 삭제한다.\
 위 검사, 삭제를 반복하며 삭제할 값이 없으면 종료 후 반환
 ### 구현 방법
-1. 2개의 포인터(앞,뒤)가 각각 0,1 부터 시작하며 아래 규칙에 따라 이동 및 삭제 범위 리스트를 만드는 메서드 checkLetter 생성.
+1. 2개의 포인터(앞,뒤)가 각각 0,1 부터 시작하며 아래 규칙에 따라 이동 및 삭제 범위 리스트를 만드는 ~~메서드 checkLetter 생성.~~\
+   (수정) 기존 메서드로 생성하려 했으나, 과한 들여쓰기 사용으로 해당 부분을 클래스 구현한 후 객체 생성을 통해 구현.
    1. 포인터가 가르키는 문자가 다를 때
       1. 포인터 뒤가 문자열 마지막 : 리스트 반환.
       2. 두 포인터 차이가 1 : 둘 다 1 증가.
@@ -17,16 +18,67 @@
       3. 두 포인터 차이가 1 이상 : 뒤만 1 증가
 2. checkLetter가 반환한 리스트의 범위에 해당하는 문자 삭제 후 반환하는 메서드 removeLetter 생성
 3. 무한루프를 돌며 위 두 메서드 반복, checkLetter가 반환하는 문자열이 빈문자열이면 루프 종료하도록 solution 메서드 생성
-### 구현 메서드 상세
-#### List checkLetter
+### 구현 클래스 상세
+### class CheckLetter
 1. <매개변수>\
    (String) 체크할 문자열 cryptogram
 2. <변수>\
-   (int) 포인터 앞 front
-   (int) 포인터 뒤 back
+   (int) 포인터 앞 front\
+   (int) 포인터 뒤 back\
+   (List) 삭제할 인덱스 저장할 리스트 remove_range\
+   (String) 체크할 문자열 cryptogram
+3. <생성자 & 메서드>
+#### (생성자) CheckLetter
+1. <매개변수>\
+   (String) 체크할 문자열 cryptogram
+2. <변수>\
+없음
+3. <구현>\
+cryptogram에 매개변수 값 넣기
+#### boolean checkLoop
+1. <매개변수>\
+없음
+2. <변수>\
+없음
+3. <구현>\
+back이 끝까지 도달하면 false 반환
+#### List getRemove_range
+1. <매개변수>\
+없음
+2. <변수>\
+없음
+3. <구현>\
+remove_range 반환
+#### void workMismatch
+1. <매개변수>\
+없음
+2. <변수>\
+없음
+3. <구현>\
+구현 방법 중 포인터가 가르키는 문자가 다를 때의 작업
+#### void workMath
+1. <매개변수>\
+없음
+2. <변수>\
+없음
+3. <구현>\
+구현 방법 중 포인터가 가르키는 문자가 같을 때의 작업
+#### void letterCheck
+1. <매개변수>\
+없음
+2. <변수>\
+없음
+3. <구현>\
+workMismatch, workMatch를 사용해 단어 체크 밑 remove_range 업데이트
+### 구현 메서드 상세
+#### List makeRemoveRange
+1. <매개변수>\
+   (String) 체크할 문자열 cryptogram
+2. <변수>\
+   (CheckLetter) letterCheck 위해 checkletter 객체 생성
    (List) 삭제할 인덱스 저장할 리스트 remove_range
 3. <구현>\
-구현방법에 적힌 방식을 따라 리스트를 만들어 반환한다.
+CheckLetter 클래스 활용해 remove_range 구해 반환
 #### String removeLetter
 1. <매개변수>\
    (List) 삭제할 인덱스 범위가 있는 리스트 remove_range
