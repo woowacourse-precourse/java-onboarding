@@ -24,7 +24,11 @@ public class Problem5 {
         // 나머지 값은 다음 화폐 단위와 함께 withdraw에 입력
 
         if (step < 9) {
-
+            int unit = monetaryUnit[step];
+            answer.add(money / unit);
+            int restMoney = money % unit;
+            step++;
+            withdraw(restMoney, answer, step);
         }
     }
 }
