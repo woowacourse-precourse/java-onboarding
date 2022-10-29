@@ -1,12 +1,11 @@
 package onboarding;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
-        List<Integer> result = new ArrayList<>();
+        List<Integer> result = Collections.emptyList();
         while (money > 0) {
             if (money >= 50000) {
                 result.add(money / 50000);
