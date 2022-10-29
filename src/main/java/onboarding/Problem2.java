@@ -51,11 +51,4 @@ public class Problem2 {
         }
         return emptySpace.toString();
     }
-
-
-    public static void main(String[] args) {
-        String[] test = {"browoanoommnaon", "zyelleyz"};
-        String solution = solution(test[1]);
-        System.out.println(solution);
-    }
 }
