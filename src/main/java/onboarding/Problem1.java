@@ -60,18 +60,28 @@ class Problem1 {
         return Math.max(leftScore, rightScore);
     }
 
+    private static boolean isEven(int number) {
+        return number % 2 == 0;
+    }
+    private static boolean isOdd(int number) {
+        return number % 2 == 1;
+    }
+
     /**
      * (요구사항 6번)
      * 입력받은 페이지가 유효한지 확인하는 함수
      */
     private static boolean checkPagesValidation(List<Integer> pageList) {
-        int leftPage = pageList.get(0);
-        int rightPage = pageList.get(1);
+        Integer leftPage = pageList.get(0);
+        Integer rightPage = pageList.get(1);
 
-        boolean pageRangeCheck = leftPage >= PAGE_START && rightPage <= PAGE_END;
-        boolean pageValidationCheck = leftPage % 2 == 1 && rightPage % 2 == 0 && leftPage + 1 == rightPage;
+        if(leftPage == null || rightPage == null) return false;
 
-        return  pageRangeCheck && pageValidationCheck;
+        boolean pageRange = leftPage >= PAGE_START && rightPage <= PAGE_END;
+        boolean pageValidation = isOdd(leftPage) &&  isEven(rightPage);
+        boolean pageContinues = leftPage + 1 == rightPage;
+
+        return  pageRange && pageValidation && pageContinues;
     }
 
     /**
