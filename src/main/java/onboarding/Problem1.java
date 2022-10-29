@@ -26,6 +26,8 @@ class Problem1 {
     }
 
     public static int getUserScore(List<Integer> pageList) {
+        if (validateListSize(pageList) == false) return -1;
+
         int leftPage = pageList.get(LEFT_IDX);
         int rightPage = pageList.get(RIGHT_IDX);
 
@@ -47,5 +49,13 @@ class Problem1 {
         }
 
         return Math.max(acc, mul);
+    }
+
+    private static Boolean validateListSize(List<Integer> pageList) {
+        if (pageList.size() != 2) {
+            return false;
+        }
+
+        return true;
     }
 }
