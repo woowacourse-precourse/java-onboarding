@@ -23,4 +23,12 @@ public class Problem3 {
         }
         return true;
     }
+
+    private static boolean checkNumberHas369(int num){
+        String strNum = String.valueOf(num);
+        if(strNum.contains("3") || strNum.contains("6") || strNum.contains("9")){
+            return true;
+        }
+        return false;
+    }
 }
