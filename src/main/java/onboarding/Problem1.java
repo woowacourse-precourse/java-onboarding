@@ -1,44 +1,22 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 class Problem1 {
+    static List <Integer> pageNumberArray = new ArrayList();
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-
-        int pobiLeftNum = pobi.get(0);
-        int pobiRightNum = pobi.get(1);
-        int pobiNumSum = 0;
-        int crongLeftNum = crong.get(0);
-        int crongRightNum = crong.get(1);
-
-        List <Integer> pobiLeftArray = new ArrayList();
-        List <Integer> pobiRightArray = new ArrayList();
-        List <Integer> crongLeftArray = new ArrayList<>();
-        List <Integer> crongRightArray = new ArrayList<>();
-
-        for (int i = 0; pobiLeftNum > 0; i ++) {
-            pobiLeftArray.add(pobiLeftNum % 10);
-            pobiLeftNum /= 10;
-        }
-
-        for (int i = 0; pobiRightNum > 0; i ++) {
-            pobiRightArray.add(pobiRightNum % 10);
-            pobiRightNum /= 10;
-        }
-
-        for (int i = 0; crongLeftNum > 0; i ++) {
-            crongLeftArray.add(crongLeftNum % 10);
-            crongLeftNum /= 10;
-        }
-
-        for (int i = 0; crongRightNum > 0; i ++) {
-            crongRightArray.add(crongRightNum % 10);
-            crongRightNum /= 10;
-        }
 
         int answer = Integer.MAX_VALUE;
         return answer;
+    }
+
+    //페이지 숫자 쪼개는 메소드
+    public static List<Integer> seperatePageNumber (int pageNumber) {
+        for (int i = 0; pageNumber > 0; i ++) {
+            pageNumberArray.add(pageNumber % 10);
+            pageNumber /= 10;
+        }
+        return pageNumberArray;
     }
 }
