@@ -2,12 +2,18 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
         List<List<String>> notified = findContinuousNameForms(forms);
-        return null;
+        List<String> emails = getEmails(notified);
+
+        return emails.stream()
+                    .distinct()
+                    .sorted()
+                    .collect(Collectors.toList());
     }
 
     private static List<List<String>> findContinuousNameForms(List<List<String>> forms) {
@@ -46,6 +52,39 @@ public class Problem6 {
         }
 
         return notified;
+    }
+
+    private static List<String> getEmails(List<List<String>> notified) {
+        List<String> emails = new ArrayList<>();
+
+        for (List<String> form : notified) {
+            String email = form.get(0);
+            addEmail(emails, email);
+        }
+
+        return emails;
+    }
+
+    private static void addEmail(List<String> emails, String email) {
+        if (isEmail(email)) {
+            emails.add(email);
+        }
+    }
+
+    private static boolean isEmail(String email) {
+        int atInx = email.indexOf("@");
+
+        if (atInx == -1) {
+            return false;
+        }
+
+        String domain = email.substring(atInx + 1);
+
+        if (!domain.equals("email.com")) {
+            return false;
+        }
+
+        return 11 <= email.length() && email.length() < 20;
     }
 
 }
