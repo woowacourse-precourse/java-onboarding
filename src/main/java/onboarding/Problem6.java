@@ -55,21 +55,3 @@ public class Problem6 {
         return false;
     }
 }
-
-class Pair{
-    private String x;
-    private int y;
-
-    public Pair(String x, int y) {
-        this.x = x;
-        this.y = y;
-    }
-
-    public String getX() {
-        return this.x;
-    }
-
-    public int getY() {
-        return this.y;
-    }
-}
