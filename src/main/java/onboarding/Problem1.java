@@ -5,10 +5,10 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int answer = -1;
 
         if (isException(pobi.get(0), pobi.get(1)) || isException(crong.get(0), crong.get(1))) {
-            return -1;
+            return answer;
         }
 
         int pobiNumber = calculateMaxNumber(pobi.get(0), pobi.get(1));
@@ -21,16 +21,19 @@ class Problem1 {
         } else {
             answer = 0;
         }
+        
         return answer;
     }
 
     private static boolean isException(int leftPage, int rightPage) {
         int pageDifference = rightPage - leftPage;
+
         if (pageDifference == 1) {
             return false;
         } else if (rightPage > 400 || leftPage < 1) {
             return false;
         }
+
         return true;
     }
 
@@ -41,20 +44,19 @@ class Problem1 {
         int leftPageMaxNumber = chooseSumOrMultiply(leftPageNumberList);
         int rightPageMaxNumber = chooseSumOrMultiply(rightPageNumberList);
 
-        if (leftPageMaxNumber > rightPageMaxNumber) {
-            return leftPageMaxNumber;
-        }
-        return rightPageMaxNumber;
+        return Math.max(leftPageMaxNumber, rightPageMaxNumber);
     }
 
     private static List<Integer> makeNumberList(int page) {
         List<Integer> numberList = new ArrayList<>();
+
         while (page / 10 > 0) {
             int remainder = page % 10;
             page = page / 10;
             numberList.add(0, remainder);
         }
         numberList.add(0, page);
+
         return numberList;
     }
 
@@ -67,9 +69,6 @@ class Problem1 {
             multiply *= i;
         }
 
-        if (sum > multiply) {
-            return sum;
-        }
-        return multiply;
+        return Math.max(sum, multiply);
     }
 }
