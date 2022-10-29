@@ -6,16 +6,17 @@ public class Problem6 {
     private static final int EMAIL=0;
     private static final int NAME=1;
     public static List<String> solution(List<List<String>> forms) {
-        HashSet<String> answer=new HashSet<>();
-
-
-        return sortResult(answer);
+        HashSet<String> result=new HashSet<>();
+        for(int i=0;i<forms.size()-1;i++){
+            contain(result,forms.subList(i+1,forms.size()),forms.get(i));
+        }
+        return sortResult(result);
     }
 
-    public static List<String> sortResult(HashSet<String> answer){
-        ArrayList<String> result=new ArrayList<>(answer);
-        Collections.sort(result);
-        return result;
+    public static List<String> sortResult(HashSet<String> result){
+        ArrayList<String> answer=new ArrayList<>(result);
+        Collections.sort(answer);
+        return answer;
     }
 
     public static List<String> subStrings(String s){
