@@ -3,17 +3,20 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+    private static final int POBI_WIN = 1;
+    private static final int CRONG_WIN = 2;
+    private static final int DRAW =0;
+    private static final int EXCEPT = -1;
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-        if(check(pobi)&& check(crong)){
-            int pobiMax = calculateMax(pobi);
-            int crongMax = calculateMax(crong);
-            if(pobiMax > crongMax) return 1;
-            if(pobiMax < crongMax) return 2;
-            if(pobiMax == crongMax) return 0;
-        }
         // 둘 중 한명이라도 책의 페이지가 연속적이지 않으면 예외사항 반환
-        if(!check(pobi)||!check(crong))return -1;
+        if(!check(pobi)||!check(crong))return EXCEPT;
+
+        int pobiMax = calculateMax(pobi);
+        int crongMax = calculateMax(crong);
+        if(pobiMax > crongMax) return POBI_WIN;
+        if(pobiMax < crongMax) return CRONG_WIN;
+        if(pobiMax == crongMax) return DRAW;
         return -100;
     }
 
