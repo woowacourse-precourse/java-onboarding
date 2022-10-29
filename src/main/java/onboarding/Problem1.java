@@ -10,6 +10,29 @@ class Problem1 {
         return answer;
     }
 
+    private static int getSum(int[] pageNumber) {
+        int result = 0;
+        for (int number : pageNumber) {
+            result += number;
+        }
+        return result;
+    }
+
+    private static int getMulti(int[] pageNumber) {
+        int result = 1;
+        for (int number : pageNumber) {
+            result *= number;
+        }
+        return result;
+    }
+
+    private static int getPageScore(int sidePageNumber) {
+        int[] pageNumber = Stream.of(String.valueOf(sidePageNumber).split("")).mapToInt(Integer::parseInt).toArray();
+        int sumValue = getSum(pageNumber);
+        int multiValue = getMulti(pageNumber);
+        return multiValue == 0 ? -1 : sumValue > multiValue ? sumValue : multiValue;
+    }
+
     private static int whoIsWinner(List<Integer> pobi, List<Integer> crong) {
         List<Integer> pobiPageScores = new ArrayList<>();
         pobiPageScores.add(getPageScore(pobi.get(0)));
