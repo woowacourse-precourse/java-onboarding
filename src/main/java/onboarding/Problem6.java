@@ -13,7 +13,7 @@ public class Problem6 {
                 if(j!=i)
                     if(Check_Name(forms.get(i).get(1),forms.get(j).get(1)))//
                     {
-                        answer.add(forms.get(i).get(0));
+                        answer.add(forms.get(i).get(0));//두 단어가 같은지 비교
                     }
 
             }
@@ -21,8 +21,7 @@ public class Problem6 {
 
         Collections.sort(answer);//오름차순 정렬
         Set<String> set = new HashSet<>(answer);//중복 제거
-        answer = new ArrayList<>(set);
-        System.out.println(answer);
+        answer = new ArrayList<>(set);//중복 제거 후 answer에 값 추가
 
         return answer;
     }
@@ -35,6 +34,7 @@ public class Problem6 {
 
             for(int j=1;j<name_two.length();j++)
             {
+                for(int o =1; o<Math.min(name_one.length(),name_two.length());o++)
                 if(name_one.substring(i-1,i+1).equals(name_two.substring(j-1,j+1)))
                 {
                     result = true;
