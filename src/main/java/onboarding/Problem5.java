@@ -32,7 +32,7 @@ public class Problem5 {
         return moneyMapValuesConvertToMoneyList();
     }
 
-    public static void initMoneyMap() {
+    private static void initMoneyMap() {
         moneyMap.put(CONVERT_MONEY_AMOUNT1, INIT_NUMBER_OF_MONEY_VALUE);
         moneyMap.put(CONVERT_MONEY_AMOUNT2, INIT_NUMBER_OF_MONEY_VALUE);
         moneyMap.put(CONVERT_MONEY_AMOUNT3, INIT_NUMBER_OF_MONEY_VALUE);
@@ -44,7 +44,7 @@ public class Problem5 {
         moneyMap.put(CONVERT_MONEY_AMOUNT9, INIT_NUMBER_OF_MONEY_VALUE);
     }
 
-    public static void convertWithdrawMoney() {
+    private static void convertWithdrawMoney() {
         moneyMap.keySet().stream()
                 .forEach(moneyUnit -> {
                     int numberOfMoney = INT_VARIABLE_INIT_VALUE;
@@ -54,22 +54,22 @@ public class Problem5 {
                 });
     }
 
-    public static void inputMoney(int moneyUnit, int numberOfMoney) {
+    private static void inputMoney(int moneyUnit, int numberOfMoney) {
         moneyMap.put(moneyUnit, numberOfMoney);
     }
 
-    public static List<Integer> moneyMapValuesConvertToMoneyList() {
+    private static List<Integer> moneyMapValuesConvertToMoneyList() {
         return moneyMap.values().stream()
                 .collect(Collectors.toList());
     }
 
-    public static void validateWithdrawMoney(int withdrawMoney) {
+    private static void validateWithdrawMoney(int withdrawMoney) {
         if(!validateWithdrawMoneyRange(withdrawMoney)) {
             throw new IllegalArgumentException(EXCEPTION_MESSAGE_PREFIX + WRONG_WITHDRAW_MONEY_RANGE_EXCEPTION_MESSAGE );
         }
     }
 
-    public static boolean validateWithdrawMoneyRange(int withdrawMoney) {
+    private static boolean validateWithdrawMoneyRange(int withdrawMoney) {
         return (withdrawMoney >= MIN_WITHDRAW_MONEY && withdrawMoney <= MAX_WITHDRAW_MONEY);
     }
 }
