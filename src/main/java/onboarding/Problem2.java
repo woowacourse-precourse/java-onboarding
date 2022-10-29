@@ -3,7 +3,26 @@ package onboarding;
 public class Problem2 {
 	public static String solution(String cryptogram) {
 		String answer = "answer";
+		answer = makeNewCryptogram(cryptogram);
 		return answer;
+	}
+
+	public static String makeNewCryptogram(String cryptogram) {
+		InputValidator.checkRightInput(cryptogram);
+		String newCryptogram = cryptogram.substring(0, 1);
+		int i = 1;
+		while (i < cryptogram.length()) {
+			String remainingCryptogram = cryptogram.substring(i);
+
+			newCryptogram = makeCryptogramByChar(i, cryptogram, newCryptogram);
+			i += getNextIndexRange(newCryptogram, remainingCryptogram);
+
+			if (i < cryptogram.length() && newCryptogram.isEmpty()) {
+				newCryptogram += cryptogram.charAt(i);
+				i++;
+			}
+		}
+		return newCryptogram;
 	}
 
 	private static String makeCryptogramByChar(int i, String cryptogram, String newCryptogram) {
