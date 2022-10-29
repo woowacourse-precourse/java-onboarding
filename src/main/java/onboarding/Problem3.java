@@ -7,18 +7,27 @@ package onboarding;
 3. 해당 배열에서 3/6/9 count -> answer += count
  */
 public class Problem3 {
+    static int[] counter = new int[10];
+    private static int count369(int[] counter){
+        int cnt = 0;
+        for(int m = 1; m < 4; m++){
+            cnt += counter[3*m];
+        }
+        return cnt;
+    }
+    private static int[] IntegerToList(int n){
+        String temp = Integer.toString(n);
+        int l = temp.length();
+        int[] digits = new int[l];
+        for (int i = 0; i < l; i++) digits[i] = temp.charAt(i) - '0';
+        return digits;
+    }
     public static int solution(int number) {
         int answer = 0;
         for(int i = 1; i < number+1; i++) {
-            String temp = Integer.toString(i);
-            int l = temp.length();
-            int[] digits = new int[l];
-            for (int j = 0; j < l; j++) digits[j] = temp.charAt(j) - '0';
-            int[] counter = new int[10];
+            int[] digits = IntegerToList(i);
             for (int digit : digits) counter[digit]++;
-            for(int m = 1; m<4; m++){
-                answer += counter[3*m];
-            }
+            answer += count369(counter);
         }
         return answer;
     }
