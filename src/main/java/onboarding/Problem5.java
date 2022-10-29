@@ -11,7 +11,7 @@ public class Problem5 {
         List<Integer> result = new ArrayList<>();
 
         for (int change : moneyList) {
-            int count = money / change;
+            result.add(money / change);
         }
 
         return result;
