@@ -41,19 +41,21 @@ class Problem1 {
             answer = -1;
         }
         return answer;
-
     }
 
-
+    //bigNum : pobi, crong 각각의 큰 수를 리턴하는 메서드
     public static int bigNum(List<Integer> array){
         int left = array.get(0);
         int right = array.get(1);
+        //페이지가 연속하지 않으면 -1 리턴
         if ((right-left)!=1){
             return -1;
         }
+        //cal_xxx : 각 페이지의 자리수, 곱 중 큰 값
         int cal_left = cal(left);
         int cal_right = cal(right);
 
+        // 두 cal_xxx 중 큰 값을 리턴
         if(cal_left > cal_right){
             return cal_left;
         }else {
@@ -61,7 +63,9 @@ class Problem1 {
         }
     }
 
+    //cal : 각 페이지 자리 숫자의 합 및 곱을 구하여 큰 값을 리턴하는 메서드
     public static int cal(int num){
+        //데이터 전처리
         char[] nums = String.valueOf(num).toCharArray();
         int add = Character.getNumericValue(nums[0]);
         int mul = Character.getNumericValue(nums[0]);
