@@ -8,17 +8,22 @@ public class Problem4 {
 
     public static String solution(String word) {
         StringBuilder answer = new StringBuilder("");
+
+        // 입력 문자열을 배열로 변환한다.
         char[] wordArr = getCharArr(word);
 
         for(Character wordVal : wordArr) {
+            // 만약 알파벳이 아니라면 공백으로 간주한다.
             if(isNotAlphabetic(wordVal)) {
                 answer.append(' ');
                 continue;
             }
-            
+
+            // 알파벳이라면 변환 작업을 진행한다.
             char reversedVal = changeReversed(wordVal);
             answer.append(reversedVal);
         }
+        
         return answer.toString();
     }
 
