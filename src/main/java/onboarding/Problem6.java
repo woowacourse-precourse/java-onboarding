@@ -1,6 +1,6 @@
 package onboarding;
 
-import java.util.List;
+import java.util.*;
 import java.util.regex.Pattern;
 
 public class Problem6 {
@@ -8,7 +8,7 @@ public class Problem6 {
         List<String> answer = List.of("answer");
 
         if (checkValidation(forms)) {
-            answer = List.of("valid");
+            answer = getDuplicateNickname(forms);
         }
 
         return answer;
@@ -70,5 +70,21 @@ public class Problem6 {
         }
 
         return true;
+    }
+
+    private static Map<String, TreeSet<String>> getAllTwoLengthNameMap(List<List<String>> forms) {
+        Map<String, TreeSet<String>> result = new TreeMap<>();
+
+        for (List<String> form : forms) {
+            String nickname = form.get(1);
+            for(int i = 1; i <nickname.length(); i++) {
+                String name = String.valueOf(nickname.charAt(i-1)) + nickname.charAt(i);
+                TreeSet<String> nameTreeSet = result.getOrDefault(name, new TreeSet<>());
+                nameTreeSet.add(nickname);
+                result.put(name, nameTreeSet);
+            }
+        }
+
+        return result;
     }
 }
