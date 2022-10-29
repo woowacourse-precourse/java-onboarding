@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -25,12 +26,20 @@ public class Problem6 {
 
     /* 상호간 공유하는 2 이상의 문자열이 있는지 체크하는 메서드 */
     private static Set<String> checkMutualContaning(String[][] forms) {
+        Set<String> result = new HashSet<>();
         int formsLength = forms.length;
         for (int i = 0; i < formsLength - 1; i++) {
             String nickname = forms[i][1];
 
             for (int j = 0; j < nickname.length() - 1; j++) {
                 String cutString = nickname.substring(j, j + 2);
+
+                for (int h = i + 1; h < formsLength; h++) {
+                    if (forms[h][2].contains(cutString)) {
+                        result.add(forms[i][0]);
+                        result.add(forms[h][0]);
+                    }
+                }
             }
         }
     }
