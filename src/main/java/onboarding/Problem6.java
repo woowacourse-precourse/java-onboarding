@@ -20,7 +20,16 @@ public class Problem6 {
     public static List<String> makeProhibition(List<List<String>> forms) {
         List<String> appeared = new ArrayList<String>();
         List<String> prohibition = new ArrayList<String>();
-
-
+        for (List<String> user : forms) {
+            String user_name = user.get(1);
+            for(int i = 0; i < user_name.length(); i++) {
+                String part = user_name.substring(i,i+1);
+                if (!appeared.contains(part))
+                    appeared.add(part);
+                else
+                    prohibition.add(part);
+            }
+        }
+        return prohibition;
     }
 }
