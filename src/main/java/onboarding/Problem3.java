@@ -13,4 +13,8 @@ public class Problem3 {
     public static boolean checkNumberValid(int number) {
         return NUMBER_MIN <= number && number <= NUMBER_MAX;
     }
+
+    public static String intToString(int number) {
+        return Integer.toString(number);
+    }
 }
