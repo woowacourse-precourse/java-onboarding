@@ -3,7 +3,7 @@ package onboarding;
 import java.util.List;
 /*
 * 1. 페이지 넘버 값을 필드로 가지는 Page 클래스 생성
-* 2. 왼쪽 페이지와 오른쪽 페이지를 필드로 가지는 클래스 생성
+* 2. 왼쪽 페이지와 오른쪽 페이지를 필드로 가지는 Gamer 클래스 생성
 * 3. Page class methods
 *   3-1. Page(int num): 페이지 값을 파라미터로 받는 생성자 메소드
 *   3-2. getScore(int page): 페이지의 최대 점수를 얻는 메소드
@@ -22,6 +22,16 @@ class Page {
 
     public Page(int num) {
         this.num = num;
+    }
+}
+
+class Gamer {
+    Page left;
+    Page right;
+
+    public Gamer(int leftNum, int rightNum) {
+        this.left = new Page(leftNum);
+        this.right = new Page(rightNum);
     }
 }
 
