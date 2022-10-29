@@ -2,6 +2,11 @@ package domain;
 
 import java.util.HashSet;
 
+/**
+ * 크루의 닉네임 신청 정보를 표현하는 vo 클래스 
+ * @author yoondgu
+ *
+ */
 public class Crew {
 	private String email;
 	private String nickname;
@@ -11,21 +16,19 @@ public class Crew {
 		this.email = email;
 		this.nickname = nickname;
 	}
+	
 	public String getEmail() {
 		return email;
 	}
+	
 	public String getNickname() {
 		return nickname;
 	}
-    @Override
-	public String toString() {
-		return "Crew [email=" + email + ", nickname=" + nickname + "]";
-	}
     
 	/**
-     * 객체가 가진 닉네임을 이루는 모든 두 글자 문자열을 반환한다.
+     * 닉네임을 이루는 모든 두 글자 문자열을 반환한다.
      * @param nickname
-     * @return 중복 없는 모든 두 글자 문자열
+     * @return 중복없는 모든 두 글자 문자열의 집합
      */
     public HashSet<String> getAllUsedTwoWordsByNickname() {
     	HashSet<String> twoWords = new HashSet<>();
