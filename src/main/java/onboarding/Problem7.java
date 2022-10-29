@@ -13,23 +13,23 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> result = Collections.emptyList();
 
-        Map<String, List<String>> friendsMap = toFriendsMap(friends);
+        Map<String, List<String>> userToFriends = convertToFriendMap(friends);
 
         return result;
     }
 
-    private static Map<String, List<String>> toFriendsMap(List<List<String>> friends) {
-        HashMap<String, List<String>> result = new HashMap<>();
+    private static Map<String, List<String>> convertToFriendMap(List<List<String>> friends) {
+        HashMap<String, List<String>> userToFriends = new HashMap<>();
 
         for (List<String> friendPair : friends) {
-            addFriendsList(result, friendPair.get(FIRST_FRIEND), friendPair.get(SECOND_FRIEND));
-            addFriendsList(result, friendPair.get(SECOND_FRIEND), friendPair.get(FIRST_FRIEND));
+            addFriendsList(userToFriends, friendPair.get(FIRST_FRIEND), friendPair.get(SECOND_FRIEND));
+            addFriendsList(userToFriends, friendPair.get(SECOND_FRIEND), friendPair.get(FIRST_FRIEND));
         }
 
-        return result;
+        return userToFriends;
     }
 
-    private static void addFriendsList(Map<String, List<String>> friendMap, String user, String friend) {
-        friendMap.computeIfAbsent(user, k -> new ArrayList<>()).add(friend);
+    private static void addFriendsList(Map<String, List<String>> userToFriends, String user, String friend) {
+        userToFriends.computeIfAbsent(user, k -> new ArrayList<>()).add(friend);
     }
 }
