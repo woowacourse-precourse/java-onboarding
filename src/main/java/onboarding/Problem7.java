@@ -41,6 +41,12 @@ public class Problem7 {
     }
 
     private static int countSameFriends(String user, String friend) {
-        return 0;
+        int friendNum = 0;
+
+        for(String name : friendMap.get(friend))
+            if(friendMap.get(user).contains(name))
+                friendNum++;
+
+        return friendNum;
     }
 }
