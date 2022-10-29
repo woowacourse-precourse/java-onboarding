@@ -13,8 +13,15 @@ public class Problem3 {
         }
         return cnt;
     }
+    static int playGame(int number) {
+        int clap = 0;
+        for(int num = 1; num <= number; num++) {
+            clap += countClap(num);
+        }
+        return clap;
+    }
     public static int solution(int number) {
-        int answer = 0;
+        int answer = playGame(number);
         return answer;
     }
 }
