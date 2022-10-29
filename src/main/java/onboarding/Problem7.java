@@ -16,26 +16,24 @@ public class Problem7 {
     static Map<String, List<String>> parseFriends(List<List<String>> friends) {
         Map<String, List<String>> parsedFriends = new HashMap<>();
 
-        friends.forEach(f -> {
-            String user1 = f.get(0);
-            String user2 = f.get(1);
+        friends.forEach(user -> {
+            String user1 = user.get(0);
+            String user2 = user.get(1);
 
-            if (!parsedFriends.containsKey(user1)) {
-                parsedFriends.put(user1, new ArrayList<>());
-            }
-            List<String> user1Friends = parsedFriends.get(user1);
-            user1Friends.add(user2);
-            parsedFriends.put(user1, user1Friends);
-
-            if (!parsedFriends.containsKey(user2)) {
-                parsedFriends.put(user2, new ArrayList<>());
-            }
-            List<String> user2Friends = parsedFriends.get(user2);
-            user2Friends.add(user1);
-            parsedFriends.put(user2, user2Friends);
+            addFriend(parsedFriends, user1, user2);
+            addFriend(parsedFriends, user2, user1);
         });
 
         return parsedFriends;
+    }
+
+    private static void addFriend(Map<String, List<String>> parsedFriends, String user1, String user2) {
+        if (!parsedFriends.containsKey(user1)) {
+            parsedFriends.put(user1, new ArrayList<>());
+        }
+        List<String> userFriends = parsedFriends.get(user1);
+        userFriends.add(user2);
+        parsedFriends.put(user1, userFriends);
     }
 
 }
