@@ -40,6 +40,7 @@ public class Crews {
     private List<String> mapToString(Set<Crew> result) {
         return result.stream()
                 .map(crew -> crew.toResultResponseDto().getEmail())
+                .sorted()
                 .collect(Collectors.toList());
     }
 }

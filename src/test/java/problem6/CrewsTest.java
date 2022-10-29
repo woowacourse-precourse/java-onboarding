@@ -17,6 +17,14 @@ public class CrewsTest {
         assertThat(emails).contains("jason@email.com", "jm@email.com", "mj@email.com");
     }
 
+    @Test
+    void 여러크루들중_닉네임중복_발생하는경우_오름차순으로_리스트반환() {
+        Crews crews = new Crews(createTestInputCrews());
+        List<String> emails = crews.filterDuplicateCrew();
+
+        assertThat(emails).containsExactly("jason@email.com", "jm@email.com", "mj@email.com");
+    }
+
     private List<List<String>> createTestInputCrews() {
         List<List<String>> crewList = new ArrayList<>();
 
