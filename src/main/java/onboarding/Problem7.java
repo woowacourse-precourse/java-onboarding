@@ -140,4 +140,22 @@ class Recommendation {
     public void addIntimacy (Intimacy intimacy) {
         intimacies.put(intimacy.getUserId(), intimacy);
     }
+
+    public List<String> recommend() {
+        List<Intimacy> otherUserIntimacies = new ArrayList<>(intimacies.values());
+        Collections.sort(otherUserIntimacies);
+        List<String> recommendations = new ArrayList<>();
+
+        int numOfRecommendation = 0;
+        for (Intimacy otherUserIntimacy : otherUserIntimacies) {
+            if (otherUserIntimacy.getScore() == 0) {
+                break;
+            }
+            recommendations.add(otherUserIntimacy.getUserId());
+            if (++numOfRecommendation >= 5) {
+                break;
+            }
+        }
+        return recommendations;
+    }
 }
