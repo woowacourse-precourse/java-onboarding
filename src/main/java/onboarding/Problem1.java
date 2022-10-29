@@ -52,6 +52,10 @@ class Problem1 {
      */
     public static int multipleEachNumber(int page) {
         int score = 1;
+        while (page > 0) {
+            score *= page % 10;
+            page /= 10;
+        }
         return score;
     }
 }
