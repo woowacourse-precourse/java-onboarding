@@ -9,6 +9,8 @@ public class Problem3 {
         int answer = 0;
         for (int i = 1; i <= number; i++) {
             String NUMBER = Integer.toString(i);
+            if (NUMBER.contains("3") || NUMBER.contains("6") || NUMBER.contains("9")) {
+            }
         }
         return answer;
     }
