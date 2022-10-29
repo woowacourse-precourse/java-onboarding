@@ -1,8 +1,7 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * >> 기능 요구 사항 정리
@@ -18,23 +17,35 @@ import java.util.Map;
  * - 모든 크루의 닉네임을 탐색하면서
  *  _ 해당 키워드가 Map KEY에 존재시 VALUE에 add 해준다.
  *  _ 존재하지 않을 시 새로운 KEY - VALUE를 생성한다.
- * - Map이 완성되면 VALUE의 길이가 1이 아닌 아이들을 List에 추가하고 중복제거, 오름차순 정렬한다.
+ * - Map이 완성되면 VALUE의 길이가 1이 아닌 아이들을 Set에 추가하고 중복제거, 오름차순 정렬한다.
  *
  * */
 public class Problem6 {
 
-    private Map<String, ArrayList<Integer>> nickKeywordMap;
+    private Map<String, ArrayList<Integer>> nickKeywordMap = new HashMap<>();
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        Problem6 problem6 = new Problem6();
+        List<String> answer = new ArrayList<>();
 
-
+        for(int idx = 0; idx < forms.size(); idx++){
+            problem6.makeKeyword(forms.get(idx).get(1),idx);
+        }
+        
         return answer;
     }
 
+    // Map에서 VALUE의 길이가 1이 아닌 아이들만의 Set 생성
+    public Set<Integer> sortOverlapCrew(){
+        return nickKeywordMap.entrySet()
+                .stream()
+                .map(nickKeywordMap -> nickKeywordMap.getValue().size())
+                .filter(s -> s > 1)
+                .collect(Collectors.toSet());
+    }
 
     // 닉네임 두글자씩으로 쪼개 keyword를 만든후 Map에 집어넣음
-    public void checkKeyExist(String nickname, int index){
+    public void makeKeyword(String nickname, int index){
         char[] nicknameCharArray = nickname.toCharArray();
         for(int i = 0; i < (nicknameCharArray.length-1); i++){
             // keyword 생성후 Map에 추가
