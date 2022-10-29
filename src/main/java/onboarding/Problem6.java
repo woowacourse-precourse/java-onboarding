@@ -17,6 +17,7 @@ public class Problem6 {
             checkTwoCharacterListDuplicate(twoCharacterList, email);
         }
     }
+
     public static List<String> splitNameEveryTwoCharacter(String name){
         List<String> twoCharacterList = new LinkedList<>();
         for(int i = 0; i < name.length() - 1; i++){
@@ -48,10 +49,16 @@ public class Problem6 {
         return !email1.equals(email2);
     }
 
+    public static void moveFromSetToList(List<String> answer){
+        for(String email : AnswerEmailSet){
+            answer.add(email);
+        }
+    }
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new LinkedList<>();
         processForms(forms);
-        //getsortedEmailListFromAnswerSet // move answerset to List // sortlist
+        // sortlist
         return answer;
     }
 }

@@ -1,11 +1,12 @@
 ## 기능 목록
 
-| Date  | Feature                   | Method Name                      | Parameter Type | Return Type  | Progress         |
-|-------|---------------------------|----------------------------------|----------------|--------------|------------------|
-| 10.29  | 각 신청 처리    | processForms()                   |  List<List<String>> | void         | committed  |
-| 10.29 | 문자열을 두 글자 단위로 나눔          | splitStringEveryTwoCharacter()   | String         | List<String> | committed        |
-| 10.29 | 두 글자 리스트 중복 체크            | checkTwoCharacterListDuplicate() | List<String>   | void         | committed        |
-| 10.29 | 중복 두 글자 닉네임의 이메일 정답 셋에 추가 | addEmailOfDuplicate()            | String, String | void         | committed  |
+| Date  | Feature                     | Method Name                      | Parameter Type | Return Type  | Progress         |
+|-------|-----------------------------|----------------------------------|----------------|--------------|------------------|
+| 10.29  | 각 신청 처리                     | processForms()                   |  List<List<String>> | void         | committed  |
+| 10.29 | 문자열을 두 글자 단위로 나눔            | splitStringEveryTwoCharacter()   | String         | List<String> | committed        |
+| 10.29 | 두 글자 리스트 중복 체크              | checkTwoCharacterListDuplicate() | List<String>   | void         | committed        |
+| 10.29 | 중복 두 글자 닉네임의 이메일 정답 Set에 추가 | addEmailOfDuplicate()            | String, String | void         | committed  |
+| 10.29 | Set에서 List로 중복 이메일 이동       | moveFromSetToList()              | List<String>   | void         |  committed |
 
 ### TODO
 -add email to result set if duplicate 
