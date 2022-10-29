@@ -11,18 +11,29 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
 
         List<String> answer = fillDuplicateNameOwners(fillNameFragmentOwners(forms));
-        Collections.sort(answer);
 
+        Collections.sort(answer);
+        return deduplicateInEmails(answer);
+    }
+
+    private static List<String> deduplicateInEmails(List<String> answer) {
         List<String> ret = new ArrayList<>();
         for (int i = 0; i < answer.size(); i++) {
-            if (i != 0 && answer.get(i).equals(answer.get(i - 1))) {
-                continue;
-            }
+            deduplicateInEmail(answer, ret, i);
+        }
+        return ret;
+    }
 
-            ret.add(answer.get(i));
+    private static void deduplicateInEmail(List<String> answer, List<String> ret, int i) {
+        if (isDuplicatedEmail(answer, i)) {
+            return;
         }
 
-        return ret;
+        ret.add(answer.get(i));
+    }
+
+    private static boolean isDuplicatedEmail(List<String> answer, int i) {
+        return i != 0 && answer.get(i).equals(answer.get(i - 1));
     }
 
     private static List<String> fillDuplicateNameOwners(Map<String, List<String>> nameFragmentOwners) {
