@@ -18,9 +18,13 @@ public class Problem4 {
     }
 
     /**
-     * 알바벳을 거꾸로 반환
+     * 알파벳을 거꾸로 반환
      */
     public static Character reverseAlphabet(char c){
-        return null;
+        if(Character.isLowerCase(c)){
+            return ((char) ('z' + 'a' - c));
+        }else{
+            return ((char) ('Z' + 'A' - c));
+        }
     }
 }
