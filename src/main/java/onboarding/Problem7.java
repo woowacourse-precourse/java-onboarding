@@ -11,9 +11,7 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Set<String> userFriends = createUserFriendList(friends, user);
         HashMap<String, Integer> recommendFriends = createRecommendList(friends, userFriends, user);
-        for (String v : visitors) {
-            recommendVisitor(recommendFriends, v, userFriends);
-        }
+        recommendVisitor(recommendFriends, visitors, userFriends);
         return limitFiveLength(sortRecommendFriends(recommendFriends));
     }
 
@@ -51,9 +49,16 @@ public class Problem7 {
             friendMap.put(friendship.get(0), friendMap.getOrDefault(friendship.get(0), 0) + 10);
         }
     }
-    public static void recommendVisitor(HashMap<String, Integer> friendMap, String v, Set<String> friendSet) {
-        if (!friendSet.contains(v)){
-            friendMap.put(v, friendMap.getOrDefault(v, 0) + 1);
+
+    public static void recommendVisitor(HashMap<String, Integer> friendMap, List<String> visitors, Set<String> friendSet) {
+        for (String v : visitors) {
+            addVisitorScore(friendMap, v, friendSet);
+        }
+    }
+
+    public static void addVisitorScore(HashMap<String, Integer> friendMap, String visitor, Set<String> friendSet) {
+        if (!friendSet.contains(visitor)){
+            friendMap.put(visitor, friendMap.getOrDefault(visitor, 0) + 1);
         }
     }
 
