@@ -54,9 +54,11 @@ public class Problem7 {
         //point가 가장 높은 순으로 배열로 저장
         point_array = sortList(friendsPoint_map);
 
-        int cnt = Math.min(point_array.length , recommendNum);
-        if (point_array.length > recommendNum)
+        int cnt = Math.max(point_array.length , recommendNum);
+        if (cnt == point_array.length)
             cnt = testDuplicationPoint(point_array);
+        if (cnt == recommendNum)
+            cnt = point_array.length;
 
 
         //point가 가장 높은 순으로 리스트를 정렬
@@ -146,6 +148,7 @@ public class Problem7 {
     public static List<String> getKey(Integer[] valueList, Map<String, Integer> friendsPoint_map, int cnt) {
         List<String> recommendFriendsList = new ArrayList<>();
 
+        System.out.println("cnt = " + cnt + " valueList = " + valueList.length);
         for (int i = 0; i < cnt; i++) {
             for (String key : friendsPoint_map.keySet()) {
                 if (valueList[i] == friendsPoint_map.get(key)) {
@@ -196,18 +199,13 @@ public class Problem7 {
     }
     public static int testDuplicationPoint(Integer[] point_array) {
         int cnt = recommendNum;
+        int lastValue = point_array[recommendNum - 1];
 
-        for (int i = recommendNum - 1; i < point_array.length - 1; i++)
-        {
-            for (int j = i + 1; j < point_array.length; j++)
-            {
-                if (point_array[i] == point_array[j])
-                {
-                    cnt++;
-                }
-                else
-                    return cnt;
-            }
+        for (int i = recommendNum - 1; i < point_array.length - 1; i++) {
+            if (point_array[i] == lastValue)
+                cnt++;
+            else
+                return cnt;
         }
 
         return cnt;

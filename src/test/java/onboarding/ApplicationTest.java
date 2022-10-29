@@ -291,7 +291,8 @@ class ApplicationTest {
                     List.of("kane", "donut"),
                     List.of("kane", "anne")
             );
-            List<String> visitors = List.of("kyoun", "andole", "kyoun", "abbun", "andole", "abbun");
+            List<String> visitors = List.of("kyoun", "andole", "kyoun", "abbun", "andole", "abbun", "hi", "stella", "ohoh", "hi",
+                    "stella", "ohoh", "kkk", "kkk");
             List<String> result = List.of("anne", "sam", "donut", "mrko", "abbun");
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
