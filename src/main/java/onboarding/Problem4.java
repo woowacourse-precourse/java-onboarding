@@ -1,3 +1,9 @@
+/*
+ * 클래스명: Problem2
+ *
+ * 시작 날짜: 2022-10-29
+ */
+
 package onboarding;
 
 public class Problem4 {
