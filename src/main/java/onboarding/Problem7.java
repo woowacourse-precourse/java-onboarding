@@ -52,12 +52,12 @@ public class Problem7 {
                 friendScore.put(name, friendScore.getOrDefault(name, 0) + 1);
         }
 
-        List<Friend> friendList = new ArrayList<>();
+        List<Friend> friendScoreList = new ArrayList<>();
         for (String name : friendScore.keySet()) {
-            friendList.add(new Friend(name, friendScore.get(name)));
+            friendScoreList.add(new Friend(name, friendScore.get(name)));
         }
 
-        findMaxFiveFriends(friendList, answer);
+        findMaxFiveFriends(friendScoreList, answer);
 
         return answer;
     }
@@ -96,13 +96,13 @@ public class Problem7 {
         return cnt * 10;
     }
 
-    public static void findMaxFiveFriends(List<Friend> friendList, List<String> answer) {
-        Collections.sort(friendList);
+    public static void findMaxFiveFriends(List<Friend> friendScoreList, List<String> answer) {
+        Collections.sort(friendScoreList);
 
-        for (int i = 0; i < friendList.size(); i++) {
+        for (int i = 0; i < friendScoreList.size(); i++) {
             if (i == 5) break;
 
-            answer.add(friendList.get(i).name);
+            answer.add(friendScoreList.get(i).name);
         }
     }
 }
