@@ -2,8 +2,11 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
-       int ans=0;
-       return ans=0;
+        int ans=0;
+        for (int num = 0; num <= number; num++) {
+            ans += countClap(num);
+        }
+        return ans;
     }
 
     private static int countClap(int num) {
