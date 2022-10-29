@@ -11,6 +11,7 @@ public class Problem4 {
             return null;
         }
         HashMap<Character, Character> alphabetMap = createAlphabetMap();
+        answer = changeText(word, alphabetMap);
         return answer;
     }
 
@@ -48,6 +49,18 @@ public class Problem4 {
         }
         for(int i=0; i<(ALPHABET_NUM*2);i++){
             result.put(alphaList.get(i), reverseAlphaList.get(i));
+        }
+        return result;
+    }
+
+    protected static String changeText(String text, HashMap<Character, Character> alphabetMap){
+        List<Character> charList = seperateText(text);
+        Character c, changedChar;
+        String result = "";
+        for(int i = 0;i < charList.size(); i++){
+            c = charList.get(i);
+            changedChar = alphabetMap.get(c);
+            result += String.valueOf(changedChar);
         }
         return result;
     }
