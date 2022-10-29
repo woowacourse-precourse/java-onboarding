@@ -5,6 +5,7 @@ import static onboarding.problem2.consts.CryptogramIndexConst.CHARACTER_START_IN
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Stack;
 import java.util.stream.Collectors;
 
 public class Decryptor {
@@ -13,25 +14,30 @@ public class Decryptor {
     }
 
     public static String decrypt(String cryptogram) {
-        List<String> strings = Arrays.stream(cryptogram.split("")).collect(Collectors.toList());
+        List<String> cryptogramList = Arrays.stream(cryptogram.split("")).collect(Collectors.toList());
         boolean removeDuplicateCharacter = false;
 
         while (!removeDuplicateCharacter) {
             removeDuplicateCharacter = true;
-            for (int i = CHARACTER_START_INDEX; i < strings.size(); i++) {
+            for (int i = CHARACTER_START_INDEX; i < cryptogramList.size(); i++) {
                 int startCursor = i - CHARACTER_BEFORE_INDEX;
-                if (strings.get(startCursor).equals(strings.get(i))) {
+                if (cryptogramList.get(startCursor).equals(cryptogramList.get(i))) {
                     removeDuplicateCharacter = false;
-                    String target = strings.get(i);
-                    while (strings.size() > 0 && strings.get(startCursor).equals(target)) {
-                        strings.remove(startCursor);
+                    String target = cryptogramList.get(i);
+                    while (cryptogramList.size() > 0 && cryptogramList.get(startCursor).equals(target)) {
+                        cryptogramList.remove(startCursor);
                     }
                     i = startCursor;
                 }
             }
         }
-        StringBuilder sb = new StringBuilder();
-        strings.stream().forEach(sb::append);
-        return sb.toString();
+        return decryptCharacterToString(cryptogramList);
+    }
+
+    private static String decryptCharacterToString(List<String> cryptogramList) {
+        StringBuilder decryptStringBuilder = new StringBuilder();
+
+        cryptogramList.forEach(decryptStringBuilder::append);
+        return decryptStringBuilder.toString();
     }
 }
