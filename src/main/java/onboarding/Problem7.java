@@ -33,6 +33,21 @@ public class Problem7 {
             }
         }
 
+        void makeRelationship(List<List<String>> friends) {
+            for(List<String> list : friends){
+                String p1 = list.get(0);
+                String p2 = list.get(1);
+
+                List<String> p1Friends = relationship.getOrDefault(p1, new ArrayList<>());
+                p1Friends.add(p2);
+                relationship.put(p1, p1Friends);
+
+                List<String> p2Friends = relationship.getOrDefault(p2, new ArrayList<>());
+                p2Friends.add(p1);
+                relationship.put(p2, p2Friends);
+            }
+        }
+
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
