@@ -7,6 +7,10 @@ import java.util.List;
 class Problem1 {
     static final int LEFT = 0;
     static final int RIGHT = 1;
+    static final int RADIX = 10;
+    static final int LEFT_PAGE_BOUNDARY = 1;
+    static final int RIGHT_PAGE_BOUNDARY = 400;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
         if (!isPageRange(pobi.get(LEFT), pobi.get(RIGHT)) || !isPageRange(crong.get(LEFT), crong.get(RIGHT))) {
@@ -26,8 +30,8 @@ class Problem1 {
     private static int getPlus(Integer pageNumber) {
         int value = 0;
         while(pageNumber>0) {
-            value += pageNumber%10;
-            pageNumber /= 10;
+            value += pageNumber%RADIX;
+            pageNumber /= RADIX;
         }
         return value;
     }
@@ -35,8 +39,8 @@ class Problem1 {
     private static int getMul(Integer pageNumber) {
         int value = 1;
         while(pageNumber>0) {
-            value *= pageNumber%10;
-            pageNumber /= 10;
+            value *= pageNumber%RADIX;
+            pageNumber /= RADIX;
         }
         return value;
     }
@@ -53,7 +57,7 @@ class Problem1 {
     }
 
     private static boolean isPageRange(int leftPage, int rightPage) {
-        if (leftPage<=1 || rightPage>=400) {
+        if (leftPage<=LEFT_PAGE_BOUNDARY || rightPage>=RIGHT_PAGE_BOUNDARY) {
             return false;
         }
         if (leftPage%2!=1 || rightPage%2!=0) {
