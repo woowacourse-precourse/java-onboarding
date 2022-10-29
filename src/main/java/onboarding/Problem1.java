@@ -31,10 +31,20 @@ class Problem1 {
     public static int pageSum(Integer page) {
         int pageSum = 0;
         Integer pageCheck = page;
-        while(pageCheck != 0) {
-            pageSum += pageCheck%10;
-            pageCheck = pageCheck/10;
+        while (pageCheck != 0) {
+            pageSum += pageCheck % 10;
+            pageCheck = pageCheck / 10;
         }
         return pageSum;
+    }
+
+    public static int pageMultiply(Integer page) {
+        int pageMultiply = 1;
+        Integer pageCheck = page;
+        while (pageCheck != 0) {
+            pageMultiply *= pageCheck % 10;
+            pageCheck = pageCheck / 10;
+        }
+        return pageMultiply;
     }
 }
