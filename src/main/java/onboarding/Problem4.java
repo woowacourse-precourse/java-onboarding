@@ -11,6 +11,10 @@ public class Problem4 {
     }
 
     private static char decode(char c) {
-        return '0';
+        if('a' <= c && c <= 'z')
+            return (char) ('z' - (c - 'a'));
+        else if('A' <= c && c <= 'Z')
+            return (char) ('Z' - (c - 'A'));
+        return c;
     }
 }
