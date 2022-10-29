@@ -58,7 +58,9 @@ class Problem1 {
         int crong_sum_page = Math.max(getSumNumber(crong_left_page, count_sum_number), getSumNumber(crong_right_page, count_sum_number));
         int crong_multi_page = Math.max(getMultiNumber(crong_left_page, count_multi_number), getMultiNumber(crong_right_page, count_multi_number));
 
-        // 3. pobi와 crong의 점수 구하기
+        // 3. pobi와 crong의 최종 페이지 구하기
+        int pobi_result_page = Math.max(pobi_sum_page, pobi_multi_page);
+        int crong_result_page = Math.max(crong_sum_page, crong_multi_page);
 
         // 4. 점수를 비교해서 승자를 구하기
 
