@@ -27,4 +27,12 @@ public class Problem7 {
         }
         return friendList;
     }
+
+    private static boolean checkFriend(String name, List<String> friendList) {
+        for (int i = 0; i < friendList.size(); i++) {
+            if (friendList.get(i).equals(name))
+                return true;
+        }
+        return false;
+    }
 }
