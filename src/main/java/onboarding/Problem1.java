@@ -9,13 +9,8 @@ class Problem1 {
         if (!isValidPage(pobi.get(0), pobi.get(1)) || !isValidPage(crong.get(0), crong.get(1)))
             return -1;
 
-        int pobiLeftMax = Integer.max(addAllNumbers(pobi.get(0)), multiplyAllNumbers(pobi.get(0)));
-        int pobiRightMax = Integer.max(addAllNumbers(pobi.get(1)), multiplyAllNumbers(pobi.get(1)));
-        int pobiScore = Integer.max(pobiLeftMax, pobiRightMax);
-
-        int crongLeftMax = Integer.max(addAllNumbers(crong.get(0)), multiplyAllNumbers(crong.get(0)));
-        int crongRightMax = Integer.max(addAllNumbers(crong.get(1)), multiplyAllNumbers(crong.get(1)));
-        int crongScore = Integer.max(crongLeftMax, crongRightMax);
+        int pobiScore = getMaxScore(pobi.get(0), pobi.get(1));
+        int crongScore = getMaxScore(crong.get(0), crong.get(1));
 
         if (pobiScore > crongScore){
             answer = 1;
@@ -56,5 +51,13 @@ class Problem1 {
 
     private static boolean isEven(int page){
         return page % 2 == 0;
+    }
+
+    private static int getMaxScore(int leftPage, int rightPage){
+        int leftMax = Integer.max(addAllNumbers(leftPage), multiplyAllNumbers(leftPage));
+        int rightMax = Integer.max(addAllNumbers(rightPage), multiplyAllNumbers(rightPage));
+        int maxScore = Integer.max(leftMax, rightMax);
+
+        return maxScore;
     }
 }
