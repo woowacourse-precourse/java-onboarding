@@ -13,4 +13,8 @@ public class Bank {
         }
         return billIdx;
     }
+
+    private static void addBill(int billIdx, int[] changes) {
+        changes[billIdx]++;
+    }
 }
