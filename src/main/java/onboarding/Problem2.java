@@ -15,11 +15,10 @@ public class Problem2 {
         Stack<Character> stack = new Stack<>();
         stack.push(cryptogram.charAt(index++));
 
-        while (index < cryptogramLength && !stack.isEmpty()) {
+        while (index < cryptogramLength) {
             char currentCharacter = cryptogram.charAt(index);
-            char topOfStack = stack.peek();
 
-            if (currentCharacter == topOfStack) {
+            if (!stack.empty() && currentCharacter == stack.peek()) {
                 stack.pop();
                 moveIndex(currentCharacter);
                 continue;
