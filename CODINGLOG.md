@@ -137,3 +137,23 @@ HashMap을 클래스 맴버 필드로 지정하고서 별도의 method 없이 ma
 - makeMap() 메소드 추가
 
 ![image](./img/프리코스_1주차-Problem4_v2.drawio.png)
+
+
+## 문제 5
+
+- 알고리즘
+그리디 알고리즘의 전형적인 예시로 비슷한 문제를 풀어본 적이 있다.
+큰 금액의 화폐로 최대한 채우고 나머지가 큰 금액 화폐보다 작아지면 다시 그 것보다 하나 작은 금액 화폐로 채우고를 반복하는 방식
+
+- Java 문법
+List 컬렉션 중 ArrayList를 자료구조로 활용해야겠다고 생각했다.
+
+### 기능 목록 v0.1
+
+- [50000, 10000, 5000, 1000, 500, 100, 50, 10, 1] 금액이 담긴 ArrayList를 하나 만든다 - money_array
+- [0, 0, 0, 0, 0, 0, 0, 0, 0] 모두 0이 담긴 ArrayList를 return 형식으로 지정한다. - answer_array
+- money에 대하여 money_array index에 해당하는 '값'으로 나눈 몫을 answer_array에 같은 index에 저장한다.
+- money를 나머지로 다시 할당한다.
+- 위 과정을 1의 자리까지 반복한다.
+
+![image](./img/프리코스_1주차-Problem5.drawio.png)
