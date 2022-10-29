@@ -8,8 +8,12 @@ public class Problem6 {
     private static final Map<String, String> crewInfoMap = new HashMap<>();
 
     public static List<String> solution(List<List<String>> crewInfoForms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        initCrewInfoMap(crewInfoForms);
+        List<String> duplicableCrewNicknames = excludeLengthOneCrewNickname();
+        List<String> substringCrewNicknames = getSubstringCrewNicknames(duplicableCrewNicknames);
+        Set<String> duplicateSubstringCrewNicknames = extractDuplicateSubstringCrewNicknames(substringCrewNicknames);
+        List<String> duplicateCrewNicknames = getDuplicateCrewNicknames(duplicableCrewNicknames, duplicateSubstringCrewNicknames);
+        return getDuplicateCrewEmails(duplicateCrewNicknames);
     }
 
     public static void initCrewInfoMap(List<List<String>> crewForms) {
