@@ -9,6 +9,10 @@ public class Problem5 {
         List<Integer> answer = Collections.emptyList();
         for(int i=0; i<currency.length; i++){
             int cur = currency[i];
+            if(money < cur) {
+                answer.add(0);
+                continue;
+            }
             answer.add(money/cur);
             money %= cur;
         }
