@@ -7,6 +7,7 @@ import problem1.Player;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 class Problem1 {
     private static final int EXCEPTION_CODE = -1;
@@ -25,11 +26,9 @@ class Problem1 {
     }
 
     public static List<Page> asPages(List<Integer> pageNumbers) {
-        List<Page> result = new ArrayList<>();
-        for (Integer pageNumber : pageNumbers) {
-            result.add(new Page(pageNumber));
-        }
-        return result;
+        return pageNumbers.stream()
+                .map(pageNumber -> new Page(pageNumber))
+                .collect(Collectors.toList());
     }
 
 
