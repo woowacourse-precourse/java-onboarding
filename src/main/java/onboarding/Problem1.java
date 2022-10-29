@@ -20,6 +20,25 @@ class Problem1 {
         if (pobi.size() != 2 || crong.size() != 2) throw new Exception();
     }
 
+    // 왼쪽, 오른쪽 페이지 합최대 구하기
+    public static int getMaxSum(List<Integer> list) {
+        int leftPage = list.get(0);
+        int leftSum = 0;
+        while(leftPage > 0) {
+            leftSum += leftPage%10;
+            leftPage /= 10;
+        }
+
+        int rightPage = list.get(1);
+        int rightSum = 0;
+        while(rightPage > 0) {
+            rightSum += rightPage%10;
+            rightPage /= 10;
+        }
+
+        return Math.max(leftSum, rightSum);
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = -1;
 
@@ -28,7 +47,7 @@ class Problem1 {
         } catch (Exception e) {
             return answer;
         }
-        
+
         return answer;
     }
 }
