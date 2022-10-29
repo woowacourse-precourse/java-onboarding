@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Problem6 {
     private static final String[] emailDomains = {"email.com"};
-    private static List<List<String>> badForms = new ArrayList<>();
+    private static final List<List<String>> badForms = new ArrayList<>();
 
     /**
      * <div> 신청받은 닉네임 중 <b>같은 글자가 연속적으로 포함 되는 닉네임</b>을 작성한 지원자의 이메일 목록을
