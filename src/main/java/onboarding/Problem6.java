@@ -10,19 +10,24 @@ public class Problem6 {
         List<String> answer = List.of("answer");
         for (int i = 0; i < forms.size(); i++) {
             String[] nickArr = forms.get(i).get(1).split("");
-            System.out.println(Arrays.toString(nickArr));
+
             combination(nickArr, "", 0, 0);
         }
 
         return answer;
     }
-    static void combination(String[] nickArr, String str, int idx, int depth) {
-        if(depth > 1) {
 
+    // 닉네임 조합 만드는 메서드
+    static void combination(String[] nickArr, String str, int idx, int depth) {
+        if (depth > 1) {
+            System.out.println(str);
         }
 
         for (int i = idx; i < nickArr.length; i++) {
-            combination(nickArr, str + nickArr[i], i + 1, depth + 1);
+            combination(nickArr,  str + nickArr[i], i + 1, depth + 1);
+            if(str.length() > 0) {
+                return;
+            }
         }
     }
 }
