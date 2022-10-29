@@ -14,11 +14,14 @@ public class Problem2 {
         return idx;
     }
 
-    private static void checkSkipCharacter(Deque<Character> decryptionCharStack, int idx, int newIdx) {
+    private static void deleteOrAppendDecryption(Deque<Character> decryptionCharStack, String cryptogram, int idx, int newIdx) {
 
         if (idx != newIdx) {
             deleteLastDecryptionChar(decryptionCharStack);
+            return;
         }
+
+        appendDecryptionChar(decryptionCharStack, cryptogram, newIdx);
     }
 
     private static void deleteLastDecryptionChar(Deque<Character> decryptionCharStack) {
@@ -43,8 +46,7 @@ public class Problem2 {
 
         while (idx < cryptogram.length()) {
             int newIdx = increaseIdxWhenCharEqual(decryptionCharStack.peekLast(), cryptogram, idx);
-            checkSkipCharacter(decryptionCharStack, idx, newIdx);
-            appendDecryptionChar(decryptionCharStack, cryptogram, newIdx);
+            deleteOrAppendDecryption(decryptionCharStack, cryptogram, idx, newIdx);
             idx = newIdx + 1;
         }
 
