@@ -7,7 +7,8 @@ import java.util.List;
 public class Problem5 {
     static class MoneyChange {
         int[] moneyGrade = new int[9];
-        public MoneyChange() {
+
+        MoneyChange() {
             moneyGrade[0] = 50000;
             moneyGrade[1] = 10000;
             moneyGrade[2] = 5000;
@@ -19,21 +20,30 @@ public class Problem5 {
             moneyGrade[8] = 1;
 
         }
-        List<Integer> calculatorMoney(int money) {
+        private List<Integer> calculatorMoney(int money) {
             List<Integer> res = new ArrayList<>(Collections.emptyList());
+
             for (int i = 0; i < moneyGrade.length; i++) {
-                int count = money / moneyGrade[i];
-                res.add(count);
-                if (count != 0) {
-                    money -= moneyGrade[i] * count;
-                }
+                res.add(shareMoney(money, i));
+                money = calculator(shareMoney(money, i), money, i);
             }
 
             return res;
         }
+        private int shareMoney(int money, int idx) {
+            return money / moneyGrade[idx];
+        }
+        private int calculator(int count, int money, int idx) {
+            if (count != 0) {
+                money -= moneyGrade[idx] * count;
+            }
+
+            return money;
+        }
     }
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
+
         MoneyChange moneyChange = new MoneyChange();
         answer = moneyChange.calculatorMoney(money);
 
