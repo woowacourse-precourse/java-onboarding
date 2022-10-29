@@ -56,14 +56,15 @@ class Encode {
     }
 
     static String encode(String word) {
+        loadTable();
         char[] charArray = word.toCharArray();
         for (int i = 0; i < charArray.length; i++) {
             int encodeType = encodeType(charArray[i]);
             if (encodeType == UPPERCASE) {
-                charArray[i] = encodeUpperCase(charArray[i]);
+                charArray[i] = encodeUpperCase2(charArray[i]);
             }
             if (encodeType == LOWERCASE) {
-                charArray[i] = encodeLowerCase(charArray[i]);
+                charArray[i] = encodeLowerCase2(charArray[i]);
             }
         }
         StringBuffer encodeResult = new StringBuffer();
@@ -89,19 +90,12 @@ class Encode {
         return SKIP;
     }
 
-    private static char encodeUpperCase(char c) {
-        int standard = ('A' + 'Z') / 2;
-        if (c <= standard) {
-            standard += (standard - c + 1);
-        }
-        if (c >= standard) {
-            standard -= (c - standard - 1);
-        }
-        return (char) standard;
-    }
-
     private static char encodeUpperCase2(char c) {
         return UPPERREVERSTABLE.get(UPPERTABLE.indexOf(c));
+    }
+
+    private static char encodeLowerCase2(char c) {
+        return LOWERREVERSTABLE.get(LOWERTABLE.indexOf(c));
     }
 
     private static char encodeLowerCase(char c) {
@@ -114,7 +108,14 @@ class Encode {
         }
         return (char) standard;
     }
-    private static char encodeLowerCase2(char c) {
-        return LOWERREVERSTABLE.get(LOWERTABLE.indexOf(c));
+    private static char encodeUpperCase(char c) {
+        int standard = ('A' + 'Z') / 2;
+        if (c <= standard) {
+            standard += (standard - c + 1);
+        }
+        if (c >= standard) {
+            standard -= (c - standard - 1);
+        }
+        return (char) standard;
     }
 }
