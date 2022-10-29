@@ -44,11 +44,18 @@ public class Problem7 {
         //visitor 점수를 추가하기 위해
         //단, 이미 친구인 사람은 제거함
         //visitor UnsupportedOperationException error 발생해서 list를 복제함
-        
-        List<String> removeUser_list= removeDuplication(saveVisitorList(visitors), userFriends_list);
+
+        List<String> visitors_list = saveVisitorList(visitors);
+
+        for (int i = 0; i < userFriends_list.size(); i++)
+        {
+            visitors_list = remove(userFriends_list.get(i), visitors_list);
+        }
+
+        //List<String> removeUser_list= removeDuplication(saveVisitorList(visitors), userFriends_list);
 
         //친구의 점수표를 MAP에 저장
-        friendsPoint_map = saveUserPoint(friendsPoint_map, removeUser_list, visitPoint);
+        friendsPoint_map = saveUserPoint(friendsPoint_map, visitors_list, visitPoint);
 
 
 
@@ -116,20 +123,7 @@ public class Problem7 {
         }
         return friendsOfFiends_list;
     }
-    public static List<String> removeDuplication(List<String> basicList, List<String> keywordList) {
-        for (int i = 0; i < basicList.size(); i++) {
-            //사용자의 친구가 리스트에 있을 경우
-            for (int j = 0; j < keywordList.size(); j++) {
-                if (basicList.get(i).equals(keywordList.get(j))) {
-                    basicList.remove(i);
-                    break;
-                }
-            }
-        }
-
-        return basicList;
-    }
-
+    
     //친구 점수표를 Map에 저장
     public static Map<String, Integer> saveUserPoint(Map<String,Integer> friendsPoint_map, List<String> userList, int point) {
         int tmp = point;
