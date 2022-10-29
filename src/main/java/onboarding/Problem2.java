@@ -6,6 +6,19 @@ import java.util.Arrays;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
+        ArrayList<String> word;
+        word = convertToList(cryptogram);
+
+        int index = -2;
+        while(index != -1){
+            index = isDuplicated(word);
+            if(index == -1){
+                break;
+            }
+            word = removeLetter(word, index);
+
+        }
+        answer = convertToString(word);
         return answer;
     }
     // 중복 문자열 있는 지 확인
