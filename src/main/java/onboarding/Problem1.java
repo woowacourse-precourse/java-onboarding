@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 
 class Problem1 {
-	private static final int NUMBER_OF_DIGIT_DIVISION = 10;
 	private static final int MIN_PAGE = 1;
 	private static final int MAX_PAGE = 400;
 	private static final int LEFT_PAGE = 0;
@@ -36,7 +35,7 @@ class Problem1 {
 	}
 
 	private static boolean checkBetweenPage(int leftPage, int rightPage) {
-		return (leftPage >= MIN_PAGE) && (rightPage <= MAX_PAGE);
+		return (leftPage > MIN_PAGE) && (rightPage < MAX_PAGE);
 	}
 
 	private static boolean checkLeftOddRightEven(int leftPage, int rightPage) {
