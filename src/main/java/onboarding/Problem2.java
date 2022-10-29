@@ -22,11 +22,21 @@ public class Problem2 {
         }
         return false;
     }
+    // 2. 연속하는 중복문자를 삭제하는 함수 만들기
+    public static String deleteDuplicate(String cryptogram){
+        String answer = "";
+        for(int i = 0; i<cryptogram.length(); i++){
+            if(cryptogram.indexOf(i) != cryptogram.indexOf(i+1)){
+                answer += cryptogram.indexOf(i);
+            }
+        }
+        return answer;
+    }
     public static String solution(String cryptogram) {
         String answer = "answer";
-
-
-        // 2. 연속하는 중복문자를 삭제하는 함수 만들기
+        if(isException(cryptogram)){
+            // 2. 연속하는 중복문자를 삭제하는 함수 만들기
+        }
 
         return answer;
     }
