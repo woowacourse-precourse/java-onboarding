@@ -5,7 +5,12 @@ import java.util.*;
 public class Problem7 {
     Map<String, Integer> scoreboard = new HashMap<>();
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> myFriends = getMyFriends(user, friends);
+        List<String> friendOfFriends = getMyFriends(myFriends, friends);
+
+        Map<String, Integer> scoreboard = getScoreboard(friendOfFriends, visitors);
+        exceptFriend(scoreboard, user, myFriends);
+        List<String> answer = recommendedFriends(scoreboard);
         return answer;
     }
 
@@ -50,7 +55,7 @@ public class Problem7 {
         return scoreboard;
     }
 
-    static List<String> recommendedFriends(String user, Map<String, Integer> scoreboard) {
+    static List<String> recommendedFriends(Map<String, Integer> scoreboard) {
         List<String> recommendedList = new ArrayList<>();
         String temp = "";
         while (recommendedList.size() < 6 && !scoreboard.isEmpty()) {
