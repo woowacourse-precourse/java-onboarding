@@ -9,8 +9,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class Problem1Test {
+
     @Nested
     class Problem1UnitTest{
+
+        public static final int ILLEGAL_ARG = -1;
+        public static final int TIE = 0;
+        public static final int POBI_WIN = 1;
+        public static final int CRONG_WIN = 2;
+
         @Test
         public void solutionTieTest(){
             //given
@@ -18,7 +25,7 @@ public class Problem1Test {
             List<Integer> crong = List.of(197, 198);
             //when
             //result=0 무승부를 의미한다.
-            int result = 0;
+            int result = TIE;
             //then
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
@@ -30,7 +37,7 @@ public class Problem1Test {
             List<Integer> crong = List.of(211, 212);
             //when
             //result=1 포비의 승리를 의미한다.
-            int result = 1;
+            int result = POBI_WIN;
             //then
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
@@ -42,7 +49,7 @@ public class Problem1Test {
             List<Integer> crong = List.of(131, 132);
             //when
             //result=2 크롱의 승리를 의미한다.
-            int result = 2;
+            int result = CRONG_WIN;
             //then
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
@@ -54,7 +61,7 @@ public class Problem1Test {
             List<Integer> crong = List.of(211, 212);
             //when
             //result=-1 에러를 의미한다.
-            int result = -1;
+            int result = ILLEGAL_ARG;
             //then
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
@@ -66,7 +73,7 @@ public class Problem1Test {
             List<Integer> crong = List.of(211, 212);
             //when
             //result=-1 에러를 의미한다.
-            int result = -1;
+            int result = ILLEGAL_ARG;
             //then
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
@@ -78,7 +85,7 @@ public class Problem1Test {
             List<Integer> crong = List.of(211, 212);
             //when
             //result=-1 에러를 의미한다.
-            int result = -1;
+            int result = ILLEGAL_ARG;
             //then
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
@@ -111,7 +118,7 @@ public class Problem1Test {
             Book pobiBook = new Book(new Page(211), new Page(212));
             Book crongBook = new Book(new Page(131), new Page(132));
             //when
-            int result=2;
+            int result= CRONG_WIN;
             //then
             assertThat(Problem1.whoIsWin(pobiBook, crongBook)).isEqualTo(result);
         }
