@@ -2,6 +2,7 @@ package onboarding.problem2;
 
 import static onboarding.problem2.consts.CryptogramIndexConst.CHARACTER_BEFORE_INDEX;
 import static onboarding.problem2.consts.CryptogramIndexConst.CHARACTER_START_INDEX;
+import static onboarding.problem2.consts.CryptogramStringConst.CRYPTOGRAM_SPLIT_VALUE;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +14,7 @@ public class Decryptor {
     }
 
     public static String decrypt(String cryptogram) {
-        List<String> cryptogramList = Arrays.stream(cryptogram.split(""))
+        List<String> cryptogramList = Arrays.stream(cryptogram.split(CRYPTOGRAM_SPLIT_VALUE))
             .collect(Collectors.toList());
         boolean removeDuplicateCharacter = true;
 
