@@ -7,8 +7,7 @@ import onboarding.problem5.vo.Change;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static onboarding.problem5.vo.Change.*;
+import java.util.stream.Stream;
 
 public class Wallet {
     private final int[] changes;
@@ -29,15 +28,8 @@ public class Wallet {
         WalletValidator.validate(money);
         Money moneyDto = Money.of(money);
 
-        saveAsChange(moneyDto, FIFTY_THOUSANDS);
-        saveAsChange(moneyDto, TEN_THOUSANDS);
-        saveAsChange(moneyDto, FIVE_THOUSANDS);
-        saveAsChange(moneyDto, THOUSAND);
-        saveAsChange(moneyDto, FIVE_HUNDREDS);
-        saveAsChange(moneyDto, HUNDRED);
-        saveAsChange(moneyDto, FIFTY);
-        saveAsChange(moneyDto, TEN);
-        saveAsChange(moneyDto, ONE);
+        Stream.of(Change.values())
+                .forEach(change -> saveAsChange(moneyDto, change));
 
         return getChanges();
     }
