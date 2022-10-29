@@ -87,6 +87,7 @@ class ApplicationTest {
     @Nested
     class Problem2Test {
         @Test
+        @DisplayName("\"browoanoommnaon\" -> \"browoannaon\" -> \"browoaaon\" -> \"browoon\" -> \"brown\"")
         void case1() {
             String cryptogram = "browoanoommnaon";
             String result = "brown";
@@ -94,6 +95,7 @@ class ApplicationTest {
         }
 
         @Test
+        @DisplayName("\"zyelleyz\" -> \"zyeeyz\" -> \"zyyz\" -> \"zz\" -> \"\"")
         void case2() {
             String cryptogram = "zyelleyz";
             String result = "";
@@ -101,6 +103,7 @@ class ApplicationTest {
         }
 
         @Test
+        @DisplayName("\"a\"")
         void case3() {
             String cryptogram = "a";
             String result = "a";
@@ -108,6 +111,7 @@ class ApplicationTest {
         }
 
         @Test
+        @DisplayName("\"abbawe\" -> \"aawe\" -> \"we\"")
         void case4() {
             String cryptogram = "abbawe";
             String result = "we";
@@ -115,6 +119,7 @@ class ApplicationTest {
         }
 
         @Test
+        @DisplayName("\"aaa\" -> \"\"")
         void case5() {
             String cryptogram = "aaa";
             String result = "";
@@ -122,6 +127,7 @@ class ApplicationTest {
         }
 
         @Test
+        @DisplayName("\"baaabbn\" -> \"bn\"")
         void case6() {
             String cryptogram = "baaabbn";
             String result = "bn";
