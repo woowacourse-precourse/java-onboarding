@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
@@ -14,7 +13,6 @@ public class Problem7 {
     private static final List<List<String>> notFriendsList = new ArrayList<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
         Map<String, Integer> score = new HashMap<>();
 
         if (isError(user, friends, visitors)) {
@@ -87,6 +85,7 @@ public class Problem7 {
         } else if (list.get(1).equals(id)) {
             return list.get(0);
         }
+
         return null;
     }
 
@@ -110,6 +109,7 @@ public class Problem7 {
                 return true;
             }
         }
+
         return false;
     }
 
