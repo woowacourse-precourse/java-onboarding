@@ -4,10 +4,9 @@ import java.util.*;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int fail = -1;
-
         if(checkPageContinuous(pobi, crong) == false) {
-            return fail;
+            int checkFail = -1;
+            return checkFail;
         }
 
         //각 페이지 자릿수 쪼개기
