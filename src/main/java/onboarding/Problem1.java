@@ -12,6 +12,10 @@ class Problem1 {
         int pobiScore = getUserScore(pobi);
         int crongScore = getUserScore(crong);
 
+        if(pobiScore == -1 || crongScore == -1) {
+            return -1;
+        }
+
         if (pobiScore > crongScore) {
             answer = 1;
         } else if (crongScore > pobiScore) {
@@ -30,6 +34,8 @@ class Problem1 {
 
         int leftPage = pageList.get(LEFT_IDX);
         int rightPage = pageList.get(RIGHT_IDX);
+
+        if (validateAdjacentPage(leftPage, rightPage) == false) return -1;
 
         int leftScore = getLargerValue(leftPage);
         int rightScore = getLargerValue(rightPage);
@@ -69,4 +75,11 @@ class Problem1 {
         return true;
     }
 
+    private static Boolean validateAdjacentPage(int leftPage, int rightPage) {
+        if (rightPage - leftPage != 1) {
+            return false;
+        }
+
+        return true;
+    }
 }
