@@ -5,15 +5,14 @@ import java.util.Collections;
 import java.util.List;
 
 import onboarding.domain.Form;
-import onboarding.domain.FormValidator;
+import onboarding.domain.InvalidForms;
+import onboarding.domain.UsedTwoWordsDictionary;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = new ArrayList<>();
-        FormValidator validator = new FormValidator(getFormList(forms));
-        for (Form form : validator.getInvalidForms()) {
-            answer.add(form.getEmail());
-        }
+        UsedTwoWordsDictionary dictionary = new UsedTwoWordsDictionary(getFormList(forms));
+        InvalidForms invalidForms = new InvalidForms(dictionary);
+        List<String> answer = invalidForms.getAllEmails();
         Collections.sort(answer);
         return answer;
     }
