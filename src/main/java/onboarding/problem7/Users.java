@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class Users {
 
-    private List<User> users;
+    private final List<User> users;
 
     public Users() {
         users = new ArrayList<>();
