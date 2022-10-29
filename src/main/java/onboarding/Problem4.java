@@ -2,18 +2,20 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        // 고민
-        // char 를 넣을 것이냐, String 을 넣을 것이냐
         String answer = "";
         Antonym antonym = new Antonym();
 
         for (int i=0; i<word.length(); i++) {
-            if (65 <= word.charAt(i) && word.charAt(i) <= 90) {
+            if (65 <= word.charAt(i) && word.charAt(i) <= 90) {// 대문자인 경우
                 answer += antonym.antonym(word.charAt(i), 65);
                 continue;
             }
+            if (97 <= word.charAt(i) && word.charAt(i) <= 122){// 소문자인 경우
+                answer += antonym.antonym(word.charAt(i), 97);
+                continue;
+            }
+            answer += word.charAt(i); //대문자도 소문자도 아닌 경우
         }
-        // System.out.println(answer);
         return answer;
     }
 }
