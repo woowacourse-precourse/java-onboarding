@@ -3,10 +3,21 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Map;
 
 public class Problem6 {
+
+    static final int LIST_START_RANGE = 1;
+    static final int LIST_END_RANGE = 10_000;
+
+    static final int EMAIL_START_RANGE = 11;
+    static final int EMAIL_END_RANGE = 20;
+    static final String EMAIL_SUFFIX = "@email.com";
+
+    static final int NICKNAME_START_RANGE = 1;
+    static final int NICKNAME_END_RANGE = 20;
 
     public static List<String> solution(List<List<String>> forms) {
 
@@ -17,6 +28,10 @@ public class Problem6 {
     }
 
     private static List<String> deduplicateInEmails(List<String> answer) {
+        if(!isValidLength(answer, LIST_START_RANGE,LIST_END_RANGE)) {
+            throw new InputMismatchException("리스트의 범위가 올바르지 않습니다.");
+        }
+
         List<String> ret = new ArrayList<>();
         for (int i = 0; i < answer.size(); i++) {
             deduplicateInEmail(answer, ret, i);
@@ -68,6 +83,12 @@ public class Problem6 {
     }
 
     private static void addFragmentsOwner(Map<String, List<String>> nameFragmentOwners, String email, String nickname) {
+        if(!isValidEmail(email)) {
+            throw new InputMismatchException("유효하지 않은 이메일 형식입니다.");
+        }
+        if(!isValidNickname(nickname)) {
+            throw new InputMismatchException("유효하지 않은 닉네임 형식입니다.");
+        }
         for (int j = 0; j < nickname.length() - 1; ++j) {
             addFragmentOwner(nameFragmentOwners, email, getNameFragment(nickname, j));
         }
@@ -89,4 +110,38 @@ public class Problem6 {
     private static boolean isEmptyList(Map<String, List<String>> nameFragmentOwners, String nicknameFragment) {
         return nameFragmentOwners.get(nicknameFragment) == null;
     }
+
+    private static boolean isValidLength(String str, int start, int end) {
+        return start <= str.length() && str.length() <= end;
+    }
+    private static boolean isValidLength(List<?> list, int start, int end) {
+        return start <= list.size() && list.size() <= end;
+    }
+
+    private static boolean isValidNickname(String nickname) {
+        if (!isValidLength(nickname, NICKNAME_START_RANGE, NICKNAME_END_RANGE - 1)) {
+            return false;
+        }
+        if (isHangul(nickname.matches(".*[ㄱ-ㅎㅏ-ㅣ가-힣]+.*"))) {
+            return false;
+        }
+
+        return true;
+    }
+
+    private static boolean isHangul(boolean nickname) {
+        return !nickname;
+    }
+
+    private static boolean isValidEmail(String email) {
+        if(!isValidLength(email, EMAIL_START_RANGE, EMAIL_END_RANGE -1))
+            return false;
+
+        return isEmailSuffixValid(email.substring(email.length() - EMAIL_SUFFIX.length()), EMAIL_SUFFIX);
+    }
+
+    private static boolean isEmailSuffixValid(String email, String emailSuffix) {
+        return email.equals(emailSuffix);
+    }
+
 }
