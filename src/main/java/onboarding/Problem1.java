@@ -7,6 +7,11 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = -1;
         int pMax=0, cMax=0;
+        // 예외 처리
+        if(pobi.get(1)-pobi.get(0)!=1 || crong.get(1)-crong.get(0)!=1) {
+            return answer;
+        }
+
         for(int i=0;i<2;i++) {
             // 각 자리 숫자 합, 곱 구하기
             int num1 = pobi.get(i);
