@@ -13,8 +13,12 @@ public class Problem4 {
                 strList.add(String.valueOf((char)((int)word.charAt(i)+25-(((int)word.charAt(i)-65)*2))));
             }
             // ASCII LOWER
-            else if((int)word.charAt(i)>=97 && (int)word.charAt(i)<=122) {
-                strList.add(String.valueOf((char) ((int) word.charAt(i) + 25 - (((int) word.charAt(i) - 97) * 2))));
+            else if((int)word.charAt(i)>=97 && (int)word.charAt(i)<=122){
+                strList.add(String.valueOf((char)((int)word.charAt(i)+25-(((int)word.charAt(i)-97)*2))));
+            }
+            // 공백
+            else{
+                strList.add(String.valueOf((char)(int)word.charAt(i)));
             }
         }
         answer=strList.toString().join("",strList);
