@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,7 +18,7 @@ class validateInformation{
         String crewEmail = crew.get(0);
         String domain = crewEmail.split("@")[1];
         if((crewEmail.length()<1)&&(crewEmail.length()>=20)){return false;}
-        if(domain!="email.com"){return false;}
+        if(!domain.equals("email.com")){return false;}
         return true;
     }
     public static boolean isValidNickName(List<String> crew){
@@ -25,6 +26,12 @@ class validateInformation{
         if((crewNickName.length()<1)&&(crewNickName.length()>=20)){return false;}
         if(!crewNickName.matches(".*[ㄱ-ㅎㅏ-ㅣ가-힣]+.*")){return false;}
         return true;
+    }
+    public static List<List<String>> removeInvalidCrew(List<List<String>> forms){
+        List<List<String>> validForms = forms.stream()
+                .filter(i->(isValidEmail(i))&&(isValidNickName(i)))
+                .collect(Collectors.toList());
+        return validForms;
     }
 }
 class handleList{
@@ -37,6 +44,18 @@ class handleList{
     public static List<String> sortList(List<String> list){
         Collections.sort(list);
         return list;
+    }
+}
+class handleInformation{
+    public static List<String> divideIntoTwoWords(List<String> crew){
+        List<String> dividedName = new ArrayList<String>();
+        String name = crew.get(1);
+        String newWord="";
+        for(int i=0;i<name.length()-1;i++){
+            newWord= Character.toString(name.charAt(i))+Character.toString(name.charAt(i+1));
+            dividedName.add(newWord);
+        }
+        return dividedName;
     }
 }
 public class Problem6 {
