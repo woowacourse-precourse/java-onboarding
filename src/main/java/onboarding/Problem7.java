@@ -23,8 +23,10 @@ public class Problem7 {
     private static Map<String, Integer> scoreToUser = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        addUsersFriend(user, friends);
+        createMappingIfNotFriend(friends);
+        getScore(friends, visitors);
+        return sortNameByScore();
     }
 
     private static List<String> sortNameByScore(){
