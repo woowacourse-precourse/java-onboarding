@@ -13,14 +13,34 @@ public class TreeFrogTest {
 	void 알파벳_변환() {
 		assertThat(
 			TreeFrog.translateCode('A')
-		).isEqualTo('z');
+		).isEqualTo("Z");
 
 		assertThat(
 			TreeFrog.translateCode('g')
-		).isEqualTo('T');
+		).isEqualTo("t");
 
 		assertThat(
 			TreeFrog.translateCode('Z')
-		).isEqualTo('a');
+		).isEqualTo("A");
+	}
+
+	@DisplayName("알파벳 사전 변환 공백문자 처리 테스트")
+	@Test
+	void 공백문자_처리() {
+		assertThat(
+			TreeFrog.translateCode(' ')
+		).isEqualTo(" ");
+
+		assertThat(
+			TreeFrog.translateCode('\n')
+		).isEqualTo("\n");
+
+		assertThat(
+			TreeFrog.translateCode('\r')
+		).isEqualTo("\r");
+
+		assertThat(
+			TreeFrog.translateCode('	')
+		).isEqualTo("	");
 	}
 }
