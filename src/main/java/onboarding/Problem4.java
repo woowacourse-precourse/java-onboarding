@@ -19,7 +19,7 @@ public class Problem4 {
         return convertWord(momWord);
     }
 
-    public static String convertWord(String word) {
+    private static String convertWord(String word) {
         String convertWord = STRING_INIT_VARIABLE_VALUE;
         for (int wordIndex = WORD_INDEX_START_NUM; wordIndex < word.length(); wordIndex++) {
             char charAtWord = word.charAt(wordIndex);
@@ -33,12 +33,12 @@ public class Problem4 {
         return convertWord;
     }
 
-    public static Character convertAlphabet(Character inputCharacter) {
+    private static Character convertAlphabet(Character inputCharacter) {
         int calculationNum = getCalculationNumberByAlphabetUpperOrLowerCase(inputCharacter);
         return (char) (calculationNum - inputCharacter);
     }
 
-    public static int getCalculationNumberByAlphabetUpperOrLowerCase(Character alphabet) {
+    private static int getCalculationNumberByAlphabetUpperOrLowerCase(Character alphabet) {
         int calculationNumberByAlphabetUpperOrLowerCase = INT_INIT_VARIABLE_VALUE;
         if (Character.isUpperCase(alphabet)) {
             calculationNumberByAlphabetUpperOrLowerCase = getUpperCaseCalculationNumber();
@@ -49,21 +49,21 @@ public class Problem4 {
         return calculationNumberByAlphabetUpperOrLowerCase;
     }
 
-    public static int getUpperCaseCalculationNumber() {
+    private static int getUpperCaseCalculationNumber() {
         return FIRST_UPPER_CASE_ALPHABET + LAST_UPPER_CASE_ALPHABET;
     }
 
-    public static int getLowerCaseCalculationNumber() {
+    private static int getLowerCaseCalculationNumber() {
         return FIRST_LOWER_CASE_ALPHABET + LAST_LOWER_CASE_ALPHABET;
     }
 
-    public static void validateWord(String momWord) {
+    private static void validateWord(String momWord) {
         if(!validateWordRange(momWord)) {
             throw new IllegalArgumentException(EXCEPTION_MESSAGE_PREFIX + WRONG_WORD_RANGE_EXCEPTION_MESSAGE);
         }
     }
 
-    public static boolean validateWordRange(String momWord) {
+    private static boolean validateWordRange(String momWord) {
         return (momWord.length() >= MIN_WORD_LENGTH && momWord.length() <= MAX_WORD_LENGTH);
     }
 }

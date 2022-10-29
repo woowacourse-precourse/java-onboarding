@@ -29,7 +29,7 @@ class Problem1 {
         return answer;
     }
 
-    public static int sumPageEachDigitNum(Integer pageNum) {
+    private static int sumPageEachDigitNum(Integer pageNum) {
         int eachDigitNumSum = VARIABLE_INIT_VALUE;
         while(pageNum != 0) {
             eachDigitNumSum += pageNum % 10;
@@ -38,7 +38,7 @@ class Problem1 {
         return eachDigitNumSum;
     }
 
-    public static int multiplyPageEachDigitNum(Integer pageNum) {
+    private static int multiplyPageEachDigitNum(Integer pageNum) {
         int eachDigitNumMultiplication = MULTIPLICATION_VARIABLE_INIT_VALUE;
         while(pageNum != 0) {
             eachDigitNumMultiplication *= pageNum % 10;
@@ -47,7 +47,7 @@ class Problem1 {
         return eachDigitNumMultiplication;
     }
 
-    public static int getPlayerScore(List<Integer> player) {
+    private static int getPlayerScore(List<Integer> player) {
         Integer leftPageNum = player.get(LEFT_PAGE_NUM_INDEX);
         Integer rightPageNum = player.get(RIGHT_PAGE_NUM_INDEX);
         int leftPageLargerNum = Math.max(sumPageEachDigitNum(leftPageNum), multiplyPageEachDigitNum(leftPageNum));
@@ -55,7 +55,7 @@ class Problem1 {
         return Math.max(leftPageLargerNum, rightPageLargerNum);
     }
 
-    public static int getWinnerNum(int player1Score, int player2Score) {
+    private static int getWinnerNum(int player1Score, int player2Score) {
         int winnerNum = VARIABLE_INIT_VALUE;
         if(player1Score > player2Score) winnerNum = PLAYER1_WINNING_NUMBER;
         if(player1Score < player2Score) winnerNum = PLAYER2_WINNING_NUMBER;
@@ -63,23 +63,23 @@ class Problem1 {
         return winnerNum;
     }
 
-    public static boolean validateGame(List<Integer> player) {
+    private static boolean validateGame(List<Integer> player) {
         return (validatePageNumOddOrEven(player) && validatePageRange(player) && validateContinuousPageNum(player));
     }
 
-    public static boolean validatePageNumOddOrEven(List<Integer> player) {
+    private static boolean validatePageNumOddOrEven(List<Integer> player) {
         Integer leftPageNum = player.get(LEFT_PAGE_NUM_INDEX);
         Integer rightPageNum = player.get(RIGHT_PAGE_NUM_INDEX);
         return ((leftPageNum % 2 != 0) && (rightPageNum % 2 == 0));
     }
 
-    public static boolean validatePageRange(List<Integer> player) {
+    private static boolean validatePageRange(List<Integer> player) {
         Integer leftPageNum = player.get(LEFT_PAGE_NUM_INDEX);
         Integer rightPageNum = player.get(RIGHT_PAGE_NUM_INDEX);
         return ((leftPageNum > MIN_PAGE_NUMBER) && (rightPageNum < MAX_PAGE_NUMBER));
     }
 
-    public static boolean validateContinuousPageNum(List<Integer> player) {
+    private static boolean validateContinuousPageNum(List<Integer> player) {
         Integer leftPageNum = player.get(LEFT_PAGE_NUM_INDEX);
         Integer rightPageNum = player.get(RIGHT_PAGE_NUM_INDEX);
         return (rightPageNum - leftPageNum == CONTINUITY_JUDGEMENT_NUMBER);

@@ -24,16 +24,16 @@ public class Problem2 {
         return decodeResult;
     }
 
-    public static String decodeString(String cryptogram) {
+    private static String decodeString(String cryptogram) {
         return cryptogram.replaceAll(DECODE_CRYPTOGRAM_REGEX, REPLACE_CRYPTOGRAM_WORD);
     }
 
-    public static boolean isDecodedSuccess(String beforeDecodeCryptogram) {
+    private static boolean isDecodedSuccess(String beforeDecodeCryptogram) {
         String afterDecodeCryptogram = decodeString(beforeDecodeCryptogram);
         return beforeDecodeCryptogram.equals(afterDecodeCryptogram);
     }
 
-    public static void validateCryptogram(String cryptogram) {
+    private static void validateCryptogram(String cryptogram) {
         if(!validateCryptogramLength(cryptogram)) {
             throw new IllegalArgumentException(EXCEPTION_MESSAGE_PREFIX + CRYPTOGRAM_LENGTH_EXCEPTION_MESSAGE);
         }
@@ -42,11 +42,11 @@ public class Problem2 {
         }
     }
 
-    public static boolean validateCryptogramLength(String cryptogram) {
+    private static boolean validateCryptogramLength(String cryptogram) {
         return (cryptogram.length() >= MIN_CRYPTOGRAM_LENGTH && cryptogram.length() <= MAX_CRYPTOGRAM_LENGTH);
     }
 
-    public static boolean validateCryptogramType(String cryptogram) {
+    private static boolean validateCryptogramType(String cryptogram) {
         return (Pattern.compile(CRYPTOGRAM_TYPE_REGEX).matcher(cryptogram).matches());
     }
 }

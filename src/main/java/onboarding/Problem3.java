@@ -19,7 +19,7 @@ public class Problem3 {
         return answer;
     }
 
-    public static int getOneNumberClappingCount(int number) {
+    private static int getOneNumberClappingCount(int number) {
         int clappingCount = INT_VARIABLE_INIT_VALUE;
         while (number != 0) {
             if (number % 10 == CLAPPING_NUMBER1 || number % 10 == CLAPPING_NUMBER2 || number % 10 == CLAPPING_NUMBER3) {
@@ -30,7 +30,7 @@ public class Problem3 {
         return clappingCount;
     }
 
-    public static int getRangeNumberClappingCount(int rangeEndNumber) {
+    private static int getRangeNumberClappingCount(int rangeEndNumber) {
         int rangeNumberClappingCount = INT_VARIABLE_INIT_VALUE;
         for (int rangeIncreaseNumber = RANGE_START_NUMBER; rangeIncreaseNumber <= rangeEndNumber; rangeIncreaseNumber++) {
             rangeNumberClappingCount += getOneNumberClappingCount(rangeIncreaseNumber);
@@ -38,13 +38,13 @@ public class Problem3 {
         return rangeNumberClappingCount;
     }
 
-    public static void validateNumber(int number) {
+    private static void validateNumber(int number) {
         if(!validateNumberRange(number)) {
             throw new IllegalArgumentException(EXCEPTION_MESSAGE_PREFIX + NUMBER_RANGE_EXCEPTION_MESSAGE);
         }
     }
 
-    public static boolean validateNumberRange(int number) {
+    private static boolean validateNumberRange(int number) {
         return (number >= MIN_NUMBER_RANGE && number <= MAX_NUMBER_RANGE);
     }
 }
