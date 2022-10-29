@@ -15,8 +15,8 @@ public class Problem2 {
     }
 
     static Boolean checkDuplication(ArrayList<Character> separatedCrypto) {
-        for (int i = 0; i < separatedCrypto.size(); i++) {
-            if (separatedCrypto.get(i) == separatedCrypto.get(i + 1)) {
+        for (int i = 1; i < separatedCrypto.size(); i++) {
+            if (separatedCrypto.get(i) == separatedCrypto.get(i - 1)) {
                 return true;
             }
         }
@@ -25,10 +25,10 @@ public class Problem2 {
 
     static ArrayList<Character> deleteDuplication(ArrayList<Character> separatedCrypto) {
 
-        for (int i = 0; i < separatedCrypto.size(); i++) {
-            if (separatedCrypto.get(i) == separatedCrypto.get(i + 1)) {
-                separatedCrypto.remove(i);
-                separatedCrypto.remove(i);
+        for (int i = 1; i < separatedCrypto.size(); i++) {
+            if (separatedCrypto.get(i) == separatedCrypto.get(i - 1)) {
+                separatedCrypto.remove(i - 1);
+                separatedCrypto.remove(i - 1);
             }
         }
 
