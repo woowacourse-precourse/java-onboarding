@@ -8,7 +8,7 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         //제한사항에 대한 예외처리
-        if(BookPageException(pobi) || BookPageException(crong)){
+        if(checkBookPage(pobi) || checkBookPage(crong)){
             return -1;
         }
         List<Integer> pobiResult = new ArrayList<Integer>();
@@ -76,7 +76,7 @@ class Problem1 {
      * @param pageList : 책 페이지 리스트
      * @return pageList가 두개의 값, 연속된 정수, 두개의 정수가 0과 400사이에 숫자가 아닐경우 true, 맞을경우 false를 반환
      */
-    private static boolean BookPageException(List<Integer> pageList){
+    private static boolean checkBookPage(List<Integer> pageList){
         if(pageList.size() != 2 || !pageList.get(1).equals(pageList.get(0)+1) || !(pageList.get(1) > 0 && pageList.get(1) < 400) || !(pageList.get(0) > 0 && pageList.get(0) < 400)){
             return true;
         }else

@@ -10,6 +10,7 @@
 - <code>splitInteger</code>: Integer를 자릿수별로 나눠 IntegerList를 반환하는 메서드
 - <code>sumIntegerList</code>: IntegerList를 모두 더하는 메서드
 - <code>multipleIntegerList</code>: IntegerList를 모두 곱하는 메서드
+- <code>checkBookPage</code>: 페이지가 잘못된 페이지인지 예외를 확이하는 메서드
 
 ---
 ## Problem2 기능 목록
