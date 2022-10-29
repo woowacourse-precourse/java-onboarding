@@ -1,11 +1,11 @@
 package onboarding;
 
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.*;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 
 class ApplicationTest {
     @Nested
@@ -82,6 +82,13 @@ class ApplicationTest {
         void case1() {
             String word = "I love you";
             String result = "R olev blf";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+
+        @Test
+        void case2() {
+            String word = "I Love! you4";
+            String result = "R Olev! blf4";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
     }
