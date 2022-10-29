@@ -16,7 +16,11 @@ public class Problem7 {
             }
         }
 
-
+        protected static void isEachElementLengthOf2(List<String> users) {
+            if (users.size() != 2) {
+                throw new IllegalArgumentException("friends의 각 원소는 길이가 2어야 합니다.");
+            }
+        }
     }
     private static final List<String> myFriends = new ArrayList<>();
     private static final List<String> aFriendWeKnow = new ArrayList<>();
