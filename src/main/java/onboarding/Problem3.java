@@ -12,7 +12,7 @@ public class Problem3 {
     }
 
     /**
-     * @param number : 0보다 큰 정수
+     * @param number : 자연수
      * @return 3, 6, 9의 총 개수
      */
     private static int checkNumber(int number) {
