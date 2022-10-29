@@ -405,5 +405,25 @@ class ApplicationTest {
             assertThat(Problem7.friendsList).isEqualTo(List.of("donut","shakevan"));
             assertThat(Problem7.friendsList.size()).isEqualTo(2);
         }
+
+        @Test
+        void initRelationshipsTest() {
+
+            List<List<String>> friends = List.of(
+                    List.of("donut", "andole"),
+                    List.of("donut", "jun"),
+                    List.of("youngho", "donut"),
+                    List.of("shakevan", "andole"),
+                    List.of("shakevan", "jun")
+//                    List.of("mrko", "shakevan")
+            );
+
+            for (List<String> friend : friends) {
+                Problem7.initRelationships(friend);
+            }
+
+            assertThat(Problem7.relationships.get("donut").size()).isEqualTo(3);
+            assertThat(Problem7.relationships.get("donut")).isEqualTo(List.of("andole", "jun","youngho"));
+        }
     }
 }
