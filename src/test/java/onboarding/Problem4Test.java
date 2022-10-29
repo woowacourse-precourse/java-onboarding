@@ -114,8 +114,8 @@ class Problem4Test {
             @DisplayName("word의 알파벳을 역순 알파벳으로 바꿔서 반환한다.")
             void it_returns_inverse_alphabet_word() {
                 String word = "I love you";
-                String reverseAlphabetWord = "R olev blf";
-                assertThat(problem4.getInverseWord(word)).isEqualTo(reverseAlphabetWord);
+                String inverseAlphabetWord = "R olev blf";
+                assertThat(problem4.getInverseWord(word)).isEqualTo(inverseAlphabetWord);
             }
         }
     }
