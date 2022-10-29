@@ -3,39 +3,44 @@ package onboarding;
 import java.util.List;
 
 /*
- * 각 숫자마다 답변 class에 따로 저장해놓고 그걸로 출력하기
- * else 최대한 줄여보는 쪽으로 생각해보기
- * 예외 생각하기 쪽수 < 0 || 쪽수 > 400 추가
+ * 예외 너무 더럽다 줄일 방법 생각
  */
 class Problem1 {
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
 
-        if(pobi.get(0) % 2 == 0 && crong.get(0) % 2 == 0){
-            return answer = -1;
-        }
-        if(pobi.get(1) - pobi.get(0) != 1 & crong.get(1) - pobi.get(0) != 1){
-            return answer = -1;
-        }
-        int pobi_cal = Math.max(SumOrMul(pobi.get(0)), SumOrMul(pobi.get(1)));
-        int crong_cal = Math.max(SumOrMul(crong.get(0)), SumOrMul(crong.get(1)));
+        int pobi_win = 1;
+        int crong_win = 2;
+        int draw = 0;
+        int except = -1;
 
-        if (pobi_cal > crong_cal){
-            answer = 1;
-        }else if (pobi_cal < crong_cal){
-            answer = 2;
+        int answer = Integer.MIN_VALUE;
+
+        if((pobi.get(0) % 2 == 0 || crong.get(0) % 2 == 0) ||
+                (pobi.get(1) - pobi.get(0) != 1 || crong.get(1) - crong.get(0) != 1) ||
+                ((pobi.get(1) > 400 || crong.get(1) > 400) || (pobi.get(0) < 1 || crong.get(0) < 1))){
+            return except;
+        }
+
+        int pobi_cal = Math.max(sum_or_mul(pobi.get(0)), sum_or_mul(pobi.get(1)));
+        int crong_cal = Math.max(sum_or_mul(crong.get(0)), sum_or_mul(crong.get(1)));
+
+        System.out.println("포비승" + pobi_cal);
+        System.out.println("크롱승" + crong_cal);
+
+        if (pobi_cal == crong_cal){
+            answer = draw;
         }else{
-            answer = 0;
+            answer = (pobi_cal > crong_cal) ? pobi_win : crong_win;
         }
-
         return answer;
     }
 
     /*
     계산 해주는 함수
      */
-    static int SumOrMul(int n){
-        int cal = 0; //계산 결과
+    static int sum_or_mul(int n){
+        int cal = 0;
         int sum = 0;
         int mul = 1;
         while(n != 0){
@@ -45,7 +50,6 @@ class Problem1 {
         }
         System.out.print(sum);
         System.out.print(mul);
-        cal = Math.max(sum, mul);
-        return cal;
+        return cal = Math.max(sum, mul);
     }
 }
