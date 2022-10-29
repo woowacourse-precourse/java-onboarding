@@ -19,7 +19,8 @@ public class Problem3 {
         String idxToStr = "";
 
         for (int idx = 3; idx < number; idx++) {
-            
+            idxToStr = String.valueOf(idx);
+            tqqq[idx] = tqqq[idx - 1];
         }
         return tqqq[number];
     }
