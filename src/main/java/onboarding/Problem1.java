@@ -2,6 +2,13 @@ package onboarding;
 
 import java.util.List;
 
+/*
+기능 구현 사항
+1. 게임 규칙에 맞는 각각의 점수 계산 기능
+2. 예외처리를 위한 유효성 검사 기능
+3. 규칙에 맞게 점수를 비교하여 결과를 출력하는 기능
+*/
+
 class Problem1 {
     static final int PAGE_MIN = 1;
     static final int PAGE_MAX = 399;
@@ -42,7 +49,6 @@ class Problem1 {
     }
 
     public static int getScore(int pageNumber) {
-        int score = 0;
         int pageMult = 1;
         int pageSum = 0;
         while (pageNumber > 0) {
@@ -51,8 +57,7 @@ class Problem1 {
             pageSum += digit;
             pageNumber = pageNumber / 10;
         }
-        score = Math.max(pageMult, pageSum);
-        return score;
+        return Math.max(pageMult, pageSum);
     }
 
 }
