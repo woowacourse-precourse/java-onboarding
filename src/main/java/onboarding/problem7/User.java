@@ -30,12 +30,12 @@ public class User {
     }
 
     public void getScoresForUsers() {
-        getRelationshipsByUser();
+        getRelationshipsForUser();
         getScoresByOverlappedUsers();
         getScoresByVisitedUsers();
     }
 
-    private void getRelationshipsByUser() {
+    private void getRelationshipsForUser() {
         for (List<String> relation : friends) {
             String user1 = relation.get(0);
             String user2 = relation.get(1);
