@@ -18,6 +18,11 @@ public class Problem2 {
     }
     static String splitString(String str, int index) {
         String newstring = "";
+        for(int i=0; i<str.length()-1; i++) {
+            if(i==index || i==index+1) continue;
+            newstring += str.charAt(i);
+        }
+        if(index!=str.length()-2) newstring += str.charAt(str.length()-1);
         return newstring;
     }
 }
