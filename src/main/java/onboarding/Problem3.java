@@ -13,4 +13,8 @@ public class Problem3 {
     public static boolean isThree(Character element) {
         return element == '3';
     }
+
+    public static boolean isSix(Character element) {
+        return element == '6';
+    }
 }
