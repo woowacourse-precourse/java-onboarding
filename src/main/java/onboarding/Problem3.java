@@ -30,10 +30,15 @@ public class Problem3 {
     private static int count369(int number) {
         int count = 0;
         while(number > 0) {
-            if (specificNumberSet.contains(number % 10)) {
-                count++;
-            }
+            count = updateCount(number, count);
             number /= 10;
+        }
+        return count;
+    }
+
+    private static int updateCount(int number, int count) {
+        if (specificNumberSet.contains(number % 10)) {
+            count++;
         }
         return count;
     }
