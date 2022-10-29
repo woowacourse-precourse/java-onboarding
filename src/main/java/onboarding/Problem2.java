@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
+        String answer = "";
 
         try {
             ExceptionProblem2.validateCryptogram(cryptogram);
@@ -51,10 +52,12 @@ public class Problem2 {
             cryptogramList = new ArrayList<>(result);
         }
 
-        String answer = result.stream()
-                .map(e->e.toString())
-                .reduce((acc, e) -> acc  + e)
-                .get();
+        if (result.size() != 0) {
+            answer = result.stream()
+                    .map(e -> e.toString())
+                    .reduce((acc, e) -> acc + e)
+                    .get();
+        }
 
         return answer;
     }
