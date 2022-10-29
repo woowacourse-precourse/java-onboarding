@@ -98,6 +98,10 @@ class Problem1 {
         int crongRightMax = findMax(crong.get(1));
         int crongMax = Math.max(crongLeftMax, crongRightMax);
 
+        if(pobiMax > crongMax) answer = POBI;
+        else if(pobiMax < crongMax) answer = CRONG;
+        else answer = DRAW;
+
         return answer;
     }
 }
