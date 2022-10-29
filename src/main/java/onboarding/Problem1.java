@@ -5,16 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 
 class Problem1 {
-    public static void main(String[] args) {
-        List<Integer> list1 = new ArrayList<>();
-        List<Integer> list2 = new ArrayList<>();
-        list1.add(97);
-        list1.add(98);
-        list2.add(197);
-        list2.add(198);
-
-        System.out.println(solution(list1, list2));
-    }
     static final int LEN_NUMBER_OF_DIGITS = 3;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
