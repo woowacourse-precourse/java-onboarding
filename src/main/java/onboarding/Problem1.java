@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.Arrays;
 import java.util.List;
 
 class Problem1 {
@@ -42,5 +43,18 @@ class Problem1 {
      * */
     private static boolean isOddAndEven(int leftPage, int rightPage) {
         return (leftPage % 2 == 1) && (rightPage % 2 == 0);
+    }
+
+    /*
+     * 주어진 숫자를 문자열로 변환한 후, split하여 한 자리씩 분리
+     * stream을 이용해 하나씩 정수로 변환하고 배열로 저장
+     *
+     * @return int[]
+     * */
+    private static int[] splitNumber(int page) {
+        String number = String.valueOf(page);
+        return Arrays.stream(number.split(""))
+                .mapToInt(Integer::parseInt)
+                .toArray();
     }
 }
