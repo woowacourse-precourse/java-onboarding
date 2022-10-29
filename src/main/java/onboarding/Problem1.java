@@ -24,6 +24,7 @@ class Problem1 {
             countSumNumber += pageNumber%10;
             return getSumNumber(pageNumber/10, countSumNumber);
         }
+        countSumNumber += pageNumber % 10;
         return countSumNumber;
     }
     // 2-2. 페이지 번호의 각 자리 숫자를 모두 곱한 값을 return 하는 함수.
@@ -32,6 +33,7 @@ class Problem1 {
             countMultiNumber *= pageNumber%10;
             return getMultiNumber(pageNumber/10, countMultiNumber);
         }
+        countMultiNumber *= pageNumber % 10;
         return countMultiNumber;
     }
 
