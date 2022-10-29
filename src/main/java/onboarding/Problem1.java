@@ -36,6 +36,20 @@ class Problem1 {
             return false;
     }
 
+    public int addNumberOfDigit(int digits){
+        int sum = 0, digit = 0;
+
+        for(;;){
+            digit = digits % 10;
+            if(digit != 0){
+                sum += digit;
+                digits %= 10;
+            }
+            else
+                break;
+        }
+        return sum;
+    }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
