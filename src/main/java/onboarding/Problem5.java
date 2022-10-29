@@ -6,8 +6,16 @@ import java.util.List;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
-        return answer;
+        try {
+            if(!isIncludeMoney(money)) {
+                throw new Exception("money의 범위는 1이상 1,000,000이하여야 합니다.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        List<Integer> moneyList = withdrawMoney(money);
+        return moneyList;
     }
 
     private static boolean isIncludeMoney(int money) {
