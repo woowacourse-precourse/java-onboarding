@@ -57,9 +57,14 @@ public class RecommendBot {
 
     public List<String> getRecommendUser() {
         return recommendScore.entrySet().stream()
-                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .sorted(comparingByValueThenKey())
                 .map(Map.Entry::getKey)
                 .limit(MAX_SIZE_OF_RECOMMEND_LIST)
                 .collect(Collectors.toList());
+    }
+
+    private static Comparator<Map.Entry<String, Integer>> comparingByValueThenKey() {
+        return Map.Entry.<String, Integer>comparingByValue(Comparator.reverseOrder())
+                .thenComparing(Map.Entry.comparingByKey());
     }
 }
