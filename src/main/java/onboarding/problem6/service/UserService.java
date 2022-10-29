@@ -21,13 +21,9 @@ public class UserService {
 
     public List<String> findAllEmailByUserHavingInvalidName() {
         List<User> allUsers = userRepository.findAll();
-        Set<String> emailSet = new TreeSet<>();
-
-        allUsers
-                .stream().map(user -> findAllInvalidEmailsFromUser(user))
-                .forEach(emailSet::addAll);
-
-        return new ArrayList<>(emailSet);
+        return allUsers
+                .stream().map(this::findAllInvalidEmailsFromUser)
+                .flatMap(Set::stream).distinct().sorted().collect(Collectors.toList());
     }
 
     private Set<String> findAllInvalidEmailsFromUser(User user) {
