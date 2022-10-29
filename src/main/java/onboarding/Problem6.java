@@ -64,7 +64,10 @@ public class Problem6 {
 
         Set<String> crewEmailForDuplicateNicknames = new HashSet<>();
         updateCrewEmailForDuplicateNicknames(crewEmailForDuplicateNicknames, twoCharsAndEmails);
-        List<String> answer = List.of("answer");
+
+        List<String> answer = new ArrayList<>(crewEmailForDuplicateNicknames);
+        answer.sort(Comparator.naturalOrder());
+
         return answer;
     }
 
