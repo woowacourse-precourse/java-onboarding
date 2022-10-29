@@ -19,8 +19,8 @@ public class Problem7 {
 
 		addSharedFriendsScore(friends, userFriends, friendsScore);
 		addVisitorScore(friendsScore, visitors);
-		
-		friendsScore.put(user, 0);
+		removeUserFriendsScore(user, userFriends, friendsScore);
+
 		while (friendsScore.size() < PERSON_NUM_SHOW) {
 			friendsScore.put("emptyUser", 0);
 		}
@@ -75,6 +75,14 @@ public class Problem7 {
 		List<String> visitors) {
 		for (String visitor : visitors) {
 			friendsScore.put(visitor, friendsScore.getOrDefault(visitor, 0) + 1);
+		}
+	}
+
+	private static void removeUserFriendsScore(String user, Set<String> userFriends,
+		HashMap<String, Integer> friendsScore) {
+		friendsScore.remove(user);
+		for (String userFriend : userFriends) {
+			friendsScore.remove(userFriend);
 		}
 	}
 }
