@@ -38,4 +38,14 @@ public class Problem7 {
         }
         return allNames;
     }
+    private static Map<String, Integer> initFriendPoints(List<List<String>> friends, List<String> visitors){
+        // 모든 친구의 추천 점수를 초기화 해주는 메소드
+        Map<String, Integer> friendPoints = new HashMap<>();
+        Set<String> allNames = getAllNames(friends, visitors);
+
+        for (String allName : allNames){
+            friendPoints.put(allName, 0);
+        }
+        return friendPoints;
+    }
 }
