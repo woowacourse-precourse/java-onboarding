@@ -79,6 +79,7 @@ class ApplicationTest {
         }
     }
 
+
     @Nested
     class Problem5Test {
         @Test
@@ -111,7 +112,7 @@ class ApplicationTest {
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
     }
-
+/*
     @Nested
     class Problem7Test {
         @Test
@@ -130,4 +131,6 @@ class ApplicationTest {
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
     }
+
+ */
 }
