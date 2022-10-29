@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Problem3 {
@@ -9,6 +10,40 @@ public class Problem3 {
         ThreeSixNine.checkNumberRange(number);
         answer = ThreeSixNine.accumulatedClaps(number);
         return answer;
+    }
+
+    public static void main(String[] args) {
+        Game3.start();
+        int inputNumber = Game3.inputNumber();
+        int accumulatedClaps = Game3.calculate(inputNumber);
+        Game3.end(inputNumber, accumulatedClaps);
+    }
+}
+
+class Game3 {
+    static void start() {
+        OutView3.printStart();
+    }
+
+    static int inputNumber() {
+        int inputNumber = 0;
+        try {
+            inputNumber = Input3.inputNumber();
+            ThreeSixNine.checkNumberRange(inputNumber);
+        } catch (InputMismatchException e) {
+            System.out.println("숫자를 입력해주세요!");
+            return inputNumber();
+        }
+        return inputNumber;
+    }
+
+    static int calculate(int inputNumber) {
+        return ThreeSixNine.accumulatedClaps(inputNumber);
+    }
+
+    static void end(int inputNumber, int accumulatedClaps) {
+        OutView3.printHead();
+        OutView3.printResult(inputNumber, accumulatedClaps);
     }
 }
 
