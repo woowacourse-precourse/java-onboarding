@@ -3,13 +3,13 @@ package onboarding;
 public class Problem4 {
 
     static boolean isUpperCase(char character){
-        return (character >= 'A' && character <= 'Z') ? true : false;
+        return (character >= 'A' && character <= 'Z');
     }
     static boolean isLowerCase(char character){
-        return (character >= 'a' && character <= 'z') ? true : false;
+        return (character >= 'a' && character <= 'z');
     }
     static boolean isAlphabet(char character){
-        return (isUpperCase(character)||isLowerCase(character)) ? true : false;
+        return (isUpperCase(character)||isLowerCase(character));
     }
 
     static char changeCharacterToReverse(char character){
