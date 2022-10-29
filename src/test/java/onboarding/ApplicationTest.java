@@ -204,6 +204,14 @@ class ApplicationTest {
             String result = "Svool  Veviblmv!";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
+
+        @Test
+        @DisplayName("전체 테스트")
+        void case4() {
+            String word = "?abcdefghijklmnopqrstuvwxyz\nZYXWVUTSRQPONMLKJIHGFEDCBA!";
+            String result = "?zyxwvutsrqponmlkjihgfedcba\nABCDEFGHIJKLMNOPQRSTUVWXYZ!";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
     }
 
     @Nested
