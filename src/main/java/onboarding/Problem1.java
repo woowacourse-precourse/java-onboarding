@@ -28,7 +28,12 @@ class Problem1 {
      * @return boolean
      * */
     private static boolean checkExceptions(int leftPage, int rightPage) {
-        return !(isContinuousPages(leftPage, rightPage) && isInRange(leftPage) && isInRange(rightPage) && isOddAndEven(leftPage, rightPage));
+        return !(isContinuousPages(leftPage, rightPage)
+                && isInRange(leftPage)
+                && isInRange(rightPage)
+                && isOdd(leftPage)
+                && !isOdd(rightPage)
+        );
     }
 
     /*
@@ -50,12 +55,12 @@ class Problem1 {
     }
 
     /*
-     * 왼쪽 페이지가 홀수이고, 오른쪽 페이지가 짝수인지 확인
+     * 주어진 페이지가 홀수인지 확인
      *
      * @return false
      * */
-    private static boolean isOddAndEven(int leftPage, int rightPage) {
-        return (leftPage % 2 == 1) && (rightPage % 2 == 0);
+    private static boolean isOdd(int page) {
+        return page % 2 == 1;
     }
 
     /*
