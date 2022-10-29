@@ -6,6 +6,8 @@ class Problem1 {
 
     public static final int FIRST_PAGE = 1;
     public static final int LAST_PAGE = 400;
+    public static final int LEFT_PAGE = 0;
+    public static final int RIGHT_PAGE = 1;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
@@ -23,13 +25,17 @@ class Problem1 {
     }
 
     public static boolean verificationCheck(List<Integer> checkList) {
+        if (checkList.get(LEFT_PAGE) + 1 != checkList.get(RIGHT_PAGE)) {
+            return false;
+        }
+
         for (Integer check : checkList) {
             if (check < FIRST_PAGE || check > LAST_PAGE) {
                 return false;
             }
         }
 
-        if (checkList.get(0) + 1 != checkList.get(1)) {
+        if (checkList.get(LEFT_PAGE) == FIRST_PAGE || checkList.get(RIGHT_PAGE) == LAST_PAGE) {
             return false;
         }
 
