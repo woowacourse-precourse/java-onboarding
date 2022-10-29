@@ -56,9 +56,41 @@ public class Page {
     }
 
     // 해당 페이지 값의 자릿수를 더하는 메서드
+    public static int addPageNum(int pageNum){
+        return getEachPageDigits(pageNum)
+                .stream()
+                .mapToInt(Integer::valueOf)
+                .sum();
+    }
 
     // 해당 페이지 값의 자릿수를 곱하는 메서드
+    public static int multiplyPageNum(int pageNum){
+        int result = 1;
+        for (int num : getEachPageDigits(pageNum)){
+            result *= num;
+        }
+        return result;
+    }
 
-    // 더한 값과 곱한 값 중에 최댓값을 반환하는 메서드
+    public static List<Integer> getEachPageDigits(int pageNum){
+        ArrayList<Integer> arrNumList = new ArrayList<>();
+        while(pageNum > 0) {
+            arrNumList.add(pageNum %10);
+            pageNum /= 10;
+        }
+        return arrNumList;
+    }
+
+    // 더한 값과 곱한 값 중에 최댓값인 최종 점수를 반환하는 메서드
+    public int getScore() {
+
+        ArrayList<Integer> PossibleScoreList = new ArrayList<>();
+        PossibleScoreList.add(addPageNum(leftPage));
+        PossibleScoreList.add(addPageNum(rightPage));
+        PossibleScoreList.add(multiplyPageNum(leftPage));
+        PossibleScoreList.add(multiplyPageNum(rightPage));
+
+        return max(PossibleScoreList);
+    }
 
 }
