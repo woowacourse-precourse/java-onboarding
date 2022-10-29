@@ -53,5 +53,11 @@ public class Problem7 {
         if(!usersFriend.contains(name)) scoreToUser.put(name, 0);
     }
 
+    private static void makeScoresForFriendship(List<List<String>> friends){
+        for(List<String> relation : friends){
+            giveScoreIfNotUsersFriend(relation);
+        }
+    }
+
 
 }
