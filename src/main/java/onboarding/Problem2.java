@@ -45,7 +45,8 @@ public class Problem2 {
         int start = 0;
 
         for (int i = 0; i < duplicates.size() ; i++) {
-            if (start == 0 && i % 2 == 0) {
+            if (start == 0 && i % 2 == 0)
+            {
               tmp += cryptogram.substring(start, duplicates.get(i)) ;
             }
             else if (i % 2 == 0 && duplicates.get(i) - start != 1)
