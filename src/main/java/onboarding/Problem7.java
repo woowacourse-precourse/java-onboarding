@@ -69,6 +69,17 @@ public class Problem7 {
             Integer visitorScore = score.get(visitor);
             score.put(visitor, visitorScore + 1);
         }
+
+        // 총 점수 내림차순으로 정렬
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(score.entrySet());
+        entryList.sort(((o1, o2) -> {
+            if(o1.getValue().equals(o2.getValue())) {
+                // 같은 점수일 때 정렬
+                return o1.getKey().compareTo(o2.getKey());
+            }
+            return Integer.compare(o2.getValue(), o1.getValue());
+        }));
+
         List<String> answer = Collections.emptyList();
         return answer;
     }
