@@ -45,6 +45,11 @@ class handleList{
         Collections.sort(list);
         return list;
     }
+    public static void copyList(List<String> target, List<String> object){
+        for(int i=0;i<object.size();i++){
+            target.add(object.get(i));
+        }
+    }
 }
 class handleInformation{
     public static List<String> divideIntoTwoWords(List<String> crew){
@@ -60,7 +65,18 @@ class handleInformation{
 }
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer=new ArrayList<String>();
+        forms=validateInformation.removeInvalidCrew(forms);
+        for(int i=0;i<forms.size();i++){
+            List<String> dividedNickNameList=handleInformation.divideIntoTwoWords(forms.get(i));
+            List<String> list = forms.stream()
+                    .filter(crewInfo -> validateInformation.isOverlappedName(dividedNickNameList,crewInfo))
+                    .map(crewInfo -> crewInfo.get(0))
+                    .collect(Collectors.toList());
+            handleList.copyList(answer,list);
+        }
+        answer = handleList.removeSamethings(answer);
+        answer = handleList.sortList(answer);
         return answer;
     }
 }
