@@ -3,6 +3,13 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
+    private static class UserVerifier {
+        protected static void isUserLengthThan1CharactersAndLessThan30Characters(String user) {
+            if (user.length() < 1 || 30 < user.length()) {
+                throw new IllegalArgumentException("유저의 아이디는 1자 이상 30자 이하만 가능합니다.");
+            }
+        }
+    }
     private static final List<String> myFriends = new ArrayList<>();
     private static final List<String> aFriendWeKnow = new ArrayList<>();
     private static final Map<String, Integer> result = new HashMap<>();
