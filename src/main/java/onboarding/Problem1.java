@@ -38,7 +38,7 @@ class Problem1 {
         if(book.size()!=2||book.get(1)-book.get(0)!=1){
             return false;
         }
-        if(book.get(0)==1 || book.get(0)==399){
+        if(book.get(0)<=1 || book.get(1)<2 || book.get(0)>=399 || book.get(1)>400){
             return false;
         }
         return true;
