@@ -17,13 +17,19 @@ public class Problem2 {
         }
 
         // 2. 반복해서 연속하는 중복 문자 제거
+        answer = getRemovedDuplicateCryptogram(cryptogram);
+        return answer;
+    }
+
+    private static String getRemovedDuplicateCryptogram(String cryptogram) {
+        String answer;
         while(true){
             String removedCrpytogram="";
-            
+
             boolean foundDuplicateChar = false;
 
             for (int i = 0; i < cryptogram.length()-1; i++) {
-                
+
                 if(!isDuplicateChar(cryptogram, i)){
                     if(foundDuplicateChar){
                         foundDuplicateChar = false;
@@ -31,7 +37,7 @@ public class Problem2 {
                     }
                     removedCrpytogram += cryptogram.charAt(i);
                 }
-                
+
                 if(isDuplicateChar(cryptogram,i)){
                     foundDuplicateChar=true;
                 }
@@ -45,11 +51,11 @@ public class Problem2 {
                 break;
             }
 
-            cryptogram=removedCrpytogram;
+            cryptogram =removedCrpytogram;
         }
 
         //3. 결과값 담기
-        answer=cryptogram;
+        answer= cryptogram;
         return answer;
     }
 
