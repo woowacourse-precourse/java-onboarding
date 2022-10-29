@@ -37,16 +37,11 @@ class Problem1 {
     }
 
     public int addNumberOfDigit(int digits){
-        int sum = 0, digit = 0;
+        int sum = 0;
+        String s = Integer.toString(digits);
 
-        for(;;){
-            digit = digits % 10;
-            if(digit != 0){
-                sum += digit;
-                digits %= 10;
-            }
-            else
-                break;
+        for(int i = 0;i < s.length();i++){
+            sum += Integer.parseInt(s.substring(i, i+1));
         }
         return sum;
     }
