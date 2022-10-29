@@ -20,10 +20,14 @@ public class Problem2 {
     }
 
     public static Stack deleteRepetitiveChar(Stack<Character> stack, char c){
-        if (isStackElementExists(stack) && isTopofStackEqualstoCharacter(stack, c)) {
+        if (isCharRepeat(stack, c)) {
             return popStack(stack);
         }
         return pushCharToStack(stack, c);
+    }
+
+    private static boolean isCharRepeat(Stack stack, char c){
+        return isStackElementExists(stack) && isTopofStackEqualstoChar(stack, c);
     }
 
     public static Stack popStack(Stack stack) {
@@ -40,7 +44,7 @@ public class Problem2 {
         return !stack.isEmpty();
     }
 
-    private static boolean isTopofStackEqualstoCharacter(Stack<Character> stack, char c) {
+    private static boolean isTopofStackEqualstoChar(Stack<Character> stack, char c) {
         return stack.peek() == c;
     }
 
