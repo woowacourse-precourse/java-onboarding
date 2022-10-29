@@ -39,8 +39,9 @@ class Problem1 {
                 digits.add(getPage % 10);
                 getPage = getPage / 10;
             }
-            Integer sumresult = sumDigits(digits);
-            return sumresult;
+            Integer sumResult = sumDigits(digits);
+            Integer multiplicationResult = multiplicationDigits(digits);
+            return multiplicationResult;
         }
 
         // function to find the sum of each number
@@ -50,6 +51,15 @@ class Problem1 {
                 sum += card.get(i);
             }
             return sum;
+        }
+
+        // function to find the multiplication of each number
+        Integer multiplicationDigits(List<Integer> card) {
+            Integer multiplication = 1;
+            for (int i = 0; i < card.size(); i++) {
+                multiplication *= card.get(i);
+            }
+            return multiplication;
         }
 
     }
