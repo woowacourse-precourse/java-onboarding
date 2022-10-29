@@ -19,4 +19,8 @@ public class Problem2 {
     private static void addElementToDeque(Deque<Character> deque, char element) {
         deque.add(element);
     }
+
+    private static void removeDuplicate(Deque<Character> deque) {
+        deque.removeLast();
+    }
 }
