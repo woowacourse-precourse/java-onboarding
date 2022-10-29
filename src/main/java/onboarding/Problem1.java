@@ -4,8 +4,19 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        if(isAvailablePageNumber(pobi) && isAvailablePageRange(pobi) && isLinkedPage(pobi)
+                && isAvailablePageNumber(crong)&&isAvailablePageRange(crong)&& isLinkedPage(crong)) {
+            int pobis = getMaxNumber(getSum(pobi.get(0)), getMultiply(pobi.get(0)));
+            int pobis2 = getMaxNumber(getSum(pobi.get(1)), getMultiply(pobi.get(1)));
+            int pobis3 = getMaxNumber(pobis,pobis2);
+
+            int crongs = getMaxNumber(getSum(crong.get(0)), getMultiply(crong.get(0)));
+            int crongs2 = getMaxNumber(getSum(crong.get(0)), getMultiply(crong.get(1)));
+            int crongs3 = getMaxNumber(crongs,crongs2);
+            return getResult(pobis3,crongs3);
+        }
+
+        return -1;
     }
 
     // 각 자리 숫자 더하기
