@@ -16,4 +16,20 @@ public class Problem4 {
             diff -= 2;
         }
     }
+
+    private static String convert(String word) {
+        StringBuilder sb = new StringBuilder(word.length());
+
+        for (char c : word.toCharArray()) {
+            if (!isAlphabetic(c)) {
+                sb.append(c);
+            }
+        }
+        return sb.toString();
+    }
+
+    private static boolean isAlphabetic(char c) {
+        return Character.isAlphabetic(c);
+    }
+
 }
