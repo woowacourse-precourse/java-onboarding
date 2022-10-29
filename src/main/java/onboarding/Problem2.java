@@ -32,9 +32,8 @@ public class Problem2 {
     }
 
 
-    private static StringBuffer dequeToStr(String cryptogram) {
+    private static StringBuffer dequeToStr(Deque<Character> deque) {
         StringBuffer stringBuffer = new StringBuffer();
-        Deque<Character> deque = removeDuplicates(cryptogram);
 
         while (!deque.isEmpty()) {
             stringBuffer.append(deque.getFirst());
@@ -44,6 +43,6 @@ public class Problem2 {
     }
 
     public static String solution(String cryptogram) {
-        return dequeToStr(cryptogram).toString();
+        return dequeToStr(removeDuplicates(cryptogram)).toString();
     }
 }
