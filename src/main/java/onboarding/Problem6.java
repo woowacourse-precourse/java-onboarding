@@ -12,7 +12,7 @@ public class Problem6 {
     public static List<String> subStrings(String s){
         List<String> result=new ArrayList<>();
         for(int i=0;i<s.length()-1;i++){
-            result.add(s.substring(i,i+1));
+            result.add(s.substring(i,i+2));
         }
         return result;
     }
