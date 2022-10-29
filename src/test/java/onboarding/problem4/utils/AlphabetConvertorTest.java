@@ -1,4 +1,4 @@
-package onboarding.problem4.util;
+package onboarding.problem4.utils;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
