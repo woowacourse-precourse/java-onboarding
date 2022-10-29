@@ -10,10 +10,16 @@ class Problem1 {
             return -1;
         }
 
-        int pobiLeftNumber = addEachNumber(pobi.get(0));
-        int pobiRightNumber = addEachNumber(pobi.get(1));
-        int crongLeftNumber = addEachNumber(crong.get(0));
-        int crongRightNumber = addEachNumber(crong.get(1));
+//        int pobiLeftNumber = addEachNumber(pobi.get(0));
+        int pobiLeftNumber = multiplyEachNumber(pobi.get(0));
+//        int pobiRightNumber = addEachNumber(pobi.get(1));
+        int pobiRightNumber = multiplyEachNumber(pobi.get(1));
+//        int crongLeftNumber = addEachNumber(crong.get(0));
+        int crongLeftNumber = multiplyEachNumber(crong.get(0));
+//        int crongRightNumber = addEachNumber(crong.get(1));
+        int crongRightNumber = multiplyEachNumber(crong.get(1));
+
+
 
         return answer;
     }
@@ -41,6 +47,18 @@ class Problem1 {
 
         System.out.println("sum 의 값 : " + sum);
         return sum;
+    }
+
+    private static int multiplyEachNumber(int num) {
+        int multiply = 1;
+
+        while(num != 0){
+            multiply *= num % 10;
+            num /= 10;
+        }
+
+        System.out.println("multiply 의 값 : " + multiply);
+        return multiply;
     }
 
     public static void main(String[] args) {
