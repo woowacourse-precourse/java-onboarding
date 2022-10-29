@@ -5,16 +5,16 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
-        if(!check1(pobi) | !check1(crong)) {
+        if(!FirstLastCheck(pobi) | !FirstLastCheck(crong)) {
             throw new IllegalArgumentException("첫페이지 또는 마지막페이지를 펼쳤습니다. 다시 펼치세요.");
         }
-        if(!check2(pobi) | !check2(crong)) {
+        if(!TwoSizeCheck(pobi) | !TwoSizeCheck(crong)) {
             throw new IllegalArgumentException("왼쪽 페이지 오른쪽 페이지 이렇게 두개만 입력하세요.");
         }
-        if(!check3(pobi) | !check3(crong)) {
+        if(!ContinuousCheck(pobi) | !ContinuousCheck(crong)) {
             throw new IllegalArgumentException("입력한 왼쪽과 오른쪽 페이지를 확인하세요.");
         }
-        if(!check4(pobi) | !check4(crong)) {                                                //검증에 실패하면 뭘 시켜야 하지?
+        if(!LeftRightCheck(pobi) | !LeftRightCheck(crong)) {                                                //검증에 실패하면 뭘 시켜야 하지?
             throw new IllegalArgumentException("왼쪽은 홀수 이고 오른쪽은 짝수여야 합니다.");
         }
 
@@ -24,12 +24,12 @@ class Problem1 {
 
     }
 
-    public static int pobicrongcompare(List<Integer> pobi, List<Integer> crong){
-        int pobiscore = Math.max(pluscompare(pobi), multicompare(pobi));
+    public static int pobicrongcompare(List<Integer> pobi, List<Integer> crong){        //비교
+        int pobiScore = Math.max(pluscompare(pobi), multicompare(pobi));
         int crongscore = Math.max(pluscompare(crong), multicompare(crong));
-        if (pobiscore > crongscore){
+        if (pobiScore > crongscore){
             return 1;
-        } else if (pobiscore < crongscore) {
+        } else if (pobiScore < crongscore) {
             return 2;
         } else{
             return 0;
@@ -37,27 +37,27 @@ class Problem1 {
 
     }
 
-    public static boolean check1(List<Integer> list){                         // 첫페이지 마지막 페이지인지 확인
+    public static boolean FirstLastCheck(List<Integer> list){                         // 첫페이지 마지막 페이지인지 확인
         if(list.get(0) > 1 & list.get(1) < 400 ){
             return true;
         }
         return false;
 
     }
-    public static boolean check2(List<Integer> list){                                 // 리스트 크기가 2인지 확인
+    public static boolean TwoSizeCheck(List<Integer> list){                                 // 리스트 크기가 2인지 확인
         if(list.size() ==2){
             return true;
         }
         return false;
     }
 
-    public static boolean check3(List<Integer> list){                              // 입력된 페이지의 차이가 1인지 확인
+    public static boolean ContinuousCheck(List<Integer> list){                              // 입력된 페이지의 차이가 1인지 확인
         if((list.get(1) - list.get(0)) == 1){
             return true;
         }
         return false;
     }
-    public static boolean check4(List<Integer> list){                             // 왼쪽은 홀수페이지인지 오른쪽은 짝수 페이지인지 확인
+    public static boolean LeftRightCheck(List<Integer> list){                             // 왼쪽은 홀수페이지인지 오른쪽은 짝수 페이지인지 확인
         if(list.get(0) % 2 ==1 & list.get(1) % 2 ==0){
             return true;
         }
@@ -84,7 +84,7 @@ class Problem1 {
     }
 
     public static int pluscompare(List<Integer> pc){
-        int themax = Math.max(pluscalculate(pc.get(0)), pluscalculate(pc.get(1));
+        int themax = Math.max(pluscalculate(pc.get(0)), pluscalculate(pc.get(1)));
         return themax;
 }
     public static int multicompare(List<Integer> mc){
