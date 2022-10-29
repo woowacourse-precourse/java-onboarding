@@ -194,8 +194,8 @@ class ApplicationTest {
         @DisplayName("크루가 10_000명 초과한 경우 예외를 반환한다")
         void case2() {
             List<List<String>> forms = new ArrayList<>();
-            for(int i=0;i<10001;i++) { //0~10000까지 10_001개
-                forms.add(List.of(i+"ja@email.com", "이름"+i));
+            for (int i = 0; i < 10001; i++) { //0~10000까지 10_001개
+                forms.add(List.of(i + "ja@email.com", "이름" + i));
             }
             assertThatThrownBy(() -> Problem6.solution(forms)).isInstanceOf(Exception.class);
         }
@@ -300,12 +300,61 @@ class ApplicationTest {
             assertThatThrownBy(() -> Problem6.solution(forms)).isInstanceOf(Exception.class);
         }
 
-        //TODO 정상결과를 조금 더 만들어주자
-        // 이메일 20자일때, 11글자일때
-        // 한글이름 1자일때, 19자일떄
-        // 이메일에 숫자 들어갈때
-        // 한글닉네임 중복이 아무도 없을떄
-    }
+        @Test
+        @DisplayName("이메일이 11글자 들어간경우 정상적으로 출력한다")
+        void case11() throws Exception {
+            List<List<String>> forms = List.of(
+                    List.of("jm@email.com", "제이엠"),
+                    List.of("j@email.com", "제이슨"), //11자 이메일
+                    List.of("w@email.com", "워니"),
+                    List.of("mj@email.com", "엠제이"),
+                    List.of("nowm@email.com", "이제엠")
+            );
+            List<String> result = List.of("j@email.com", "jm@email.com", "mj@email.com");
+            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
+
+        @Test
+        @DisplayName("닉네임이 1자여도 정상적으로 출력한다")
+        void case12() throws Exception {
+            List<List<String>> forms = List.of(
+                    List.of("jm@email.com", "제이엠"),
+                    List.of("jason@email.com", "제이슨"),
+                    List.of("woniee@email.com", "니"),
+                    List.of("mj@email.com", "엠제이"),
+                    List.of("nowm@email.com", "이제엠")
+            );
+            List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
+            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
+
+        @Test
+        @DisplayName("닉네임이 19자여도 정상적으로 출력한다")
+        void case13() throws Exception {
+            List<List<String>> forms = List.of(
+                    List.of("jm@email.com", "제이엠"),
+                    List.of("jason@email.com", "제이슨제이슨제이슨제이슨제이슨제이슨제"),
+                    List.of("woniee@email.com", "워니"),
+                    List.of("mj@email.com", "엠제이"),
+                    List.of("nowm@email.com", "이제엠")
+            );
+            List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
+            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
+
+        @Test
+        @DisplayName("닉네임 중복이 아무도 없으면 빈 리스트를 반환한다")
+        void case14() throws Exception {
+            List<List<String>> forms = List.of(
+                    List.of("jm@email.com", "제이엠"),
+                    List.of("jason@email.com", "가나다"),
+                    List.of("woniee@email.com", "워니"),
+                    List.of("mj@email.com", "라마바"),
+                    List.of("nowm@email.com", "이제엠")
+            );
+            List<String> result = List.of();
+            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }    }
 
     @Nested
     class Problem7Test {
