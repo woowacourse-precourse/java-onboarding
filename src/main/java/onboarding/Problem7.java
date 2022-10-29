@@ -54,7 +54,6 @@ public class Problem7 {
 
         List<Friend> friendList = new ArrayList<>();
         for (String name : friendScore.keySet()) {
-            System.out.println(name + " " + friendScore.get(name));
             friendList.add(new Friend(name, friendScore.get(name)));
         }
 
