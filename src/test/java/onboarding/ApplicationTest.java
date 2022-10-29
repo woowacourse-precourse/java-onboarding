@@ -789,12 +789,48 @@ class ApplicationTest {
                     List.of("사a@email.com", "제이제이"),
                     List.of("ㄱb@email.com", "이제이제"),
                     List.of("마c@email.com", "제이"),
-                    List.of("가d@email.com", "이제"),
+                    List.of("가나다라마바사아자@email.com", "이제"),
                     List.of("ㄴe@email.com", "제이야"),
                     List.of("나f@email.com", "아제이"),
-                    List.of("바g@email.com", "이")
+                    List.of("바g@email.com", "이"),
+                    List.of("abcdefgh@email.com", "가나다라마바사아자차카타파하가나다라마"),
+                    List.of("abcdefghi@email.com", "기리기리기리기리기리기리기리기리기이제")
             );
-            List<String> result = List.of("ㄱb@email.com", "ㄴe@email.com", "가d@email.com", "나f@email.com", "마c@email.com", "사a@email.com");
+            List<String> result = List.of("abcdefghi@email.com", "ㄱb@email.com", "ㄴe@email.com", "가나다라마바사아자@email.com", "나f@email.com", "마c@email.com", "사a@email.com");
+            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
+    
+        @Test
+        void case13() {
+            List<List<String>> forms = List.of(
+                    List.of("사a@email.com", "제이제이"),
+                    List.of("ㄱb@email.com", "이제이제"),
+                    List.of("마c@email.com", "제이"),
+                    List.of("가나다라마바사아자@email.com", "이제"),
+                    List.of("ㄴe@email.com", "제이야"),
+                    List.of("나f@email.com", "아제이"),
+                    List.of("바g@email.com", "이"),
+                    List.of("abcdefgh@email.com", "가나다라마바사아자차카타파하가나다라마"),
+                    List.of("abcdefghi@email.com", "기리기리기리이제기리기리기리기리기리기")
+            );
+            List<String> result = List.of("abcdefghi@email.com", "ㄱb@email.com", "ㄴe@email.com", "가나다라마바사아자@email.com", "나f@email.com", "마c@email.com", "사a@email.com");
+            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
+    
+        @Test
+        void case14() {
+            List<List<String>> forms = List.of(
+                    List.of("사a@email.com", "제이제이"),
+                    List.of("ㄱb@email.com", "이제이제"),
+                    List.of("마c@email.com", "제이"),
+                    List.of("가나다라마바사아자@email.com", "이제"),
+                    List.of("ㄴe@email.com", "제이야"),
+                    List.of("나f@email.com", "아제이"),
+                    List.of("바g@email.com", "이"),
+                    List.of("abcdefgh@email.com", "가나다라마바사아자차카타파하가나다라마"),
+                    List.of("abcdefghi@email.com", "이제기리기리기리기리기리기리기리기리기")
+            );
+            List<String> result = List.of("abcdefghi@email.com", "ㄱb@email.com", "ㄴe@email.com", "가나다라마바사아자@email.com", "나f@email.com", "마c@email.com", "사a@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
     }
