@@ -1,29 +1,17 @@
 package onboarding;
 
 public class Problem2 {
+    /**
+     * 기능 목록
+     * 0. 기존에 짰던 코드가 zyelllleyz 테스트케이스를 추가했을 때 에러가 있어 새로 작성
+     *    괄호 짝 맞추기 문제를 풀었던 기억을 살려서 stack을 사용
+     * 1. cryptogram의 문자를 돌면서 stack에 push
+     * 2. stack의 최상위와 현재 문자가 같다면 pop
+     * 3. 겹친 문자는 따로 저장해두고 겹친 문자가 나오면 건너뛴다
+     * 4. 스택의 요소를 꺼내서 역순으로 뒤집기
+     */
     public static String solution(String cryptogram) {
-        String answer = "";
-        char prev = ' ';
-        while(true) {
-            String temp = cryptogram.substring(0, 1);
-            int len = cryptogram.length();
-            for(int i = 1; i < len; i++) {
-                // 2. 이전 글자와 현재 글자가 같다면 temp 뒤에 이미 들어간 문자도 잘라준다.
-                if (prev == cryptogram.charAt(i)) {
-                    temp = temp.substring(0, temp.length() - 1);
-                    continue;
-                }
-                // 1. for문을 돌면서 temp에 한 글자씩 붙일 껀데
-                temp += cryptogram.substring(i, i + 1);
-                prev = cryptogram.charAt(i);
-            }
-            cryptogram = temp;
-            // 3. 같은 글자가 다 지워져서 없거나 조작 전 후의 길이가 같으면 while 탈출
-            if(cryptogram.length() == 0 || len == cryptogram.length()) {
-                answer = cryptogram;
-                break;
-            }
-        }
+        String answer = "answer";
         return answer;
     }
 }
