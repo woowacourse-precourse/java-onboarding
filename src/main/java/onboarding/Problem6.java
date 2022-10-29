@@ -11,6 +11,16 @@ public class Problem6 {
         return answer;
     }
 
+    private static boolean isDeduplication(String nickname, String compareNickname) {
+        List<String> subStrings = getSubNicknames(nickname);
+
+        for (String subString : subStrings) {
+            return compareNickname.contains(subString);
+        }
+
+        return false;
+    }
+
     private static List<String> getSubNicknames(String nickname) {
         List<String> subNicknames = new ArrayList<>();
         for (int i = 0; i <= nickname.length() - LETTERS; i++) {
