@@ -5,6 +5,8 @@ import java.util.Scanner;
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
+        Encode.validateInput(word);
+        answer = Encode.encode(word);
         return answer;
     }
 }
@@ -24,7 +26,7 @@ class Encode {
     static final int LOWERCASE = 2;
 
     static void validateInput(String word) {
-        if (word.length() < 1 || word.length() < 1000) {
+        if (word.length() < 1 || 1000 < word.length()) {
             throw new IllegalStateException("길이가 1이상 1000이하로 입력해 주세요!");
         }
     }
