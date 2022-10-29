@@ -1,8 +1,9 @@
 package onboarding;
 
+import onboarding.problem2.service.CryptogramDecodeService;
+
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        return CryptogramDecodeService.decode(cryptogram);
     }
 }
