@@ -28,7 +28,7 @@ public class Problem6 {
             }
         }
 
-        Collections.sort(answer); // 제출 전 오름차순 정렬, 대소문자 구분?
+        answer = sortEmails(answer);
 
         return answer;
         //테스트케이스 통과
@@ -79,5 +79,28 @@ public class Problem6 {
         }
 
         return emailList;
+    }
+
+    // 이메일 도메인은 모두 같은 도메인, 도메인까지 포함 할 경우 '@'보다 앞선문자들때문에 정렬 오류 발생
+    // ex) a123@email.com, a@email.com (x)
+    //  -> a@email.com, a123@email.com (o)
+    private static List<String> sortEmails(List<String> answer) {
+        for(int i = 0; i < answer.size(); i++) {
+            String str = answer.get(i);
+            str = str.substring(0, str.indexOf('@'));
+            answer.set(i, str);
+        }
+
+        Collections.sort(answer);
+
+        StringBuilder sb = new StringBuilder();
+
+        for(int i = 0; i < answer.size(); i++) {
+            sb.append(answer.get(i)).append("@email.com");
+            answer.set(i, sb.toString());
+            sb.setLength(0);
+        }
+
+        return answer;
     }
 }
