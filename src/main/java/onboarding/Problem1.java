@@ -15,7 +15,7 @@ class Problem1 {
      * @return boolean
      * */
     private static boolean checkExceptions(int leftPage, int rightPage) {
-        return isContiousPages(leftPage, rightPage) && isInRange(leftPage) && isInRange(rightPage) && isOddAndEven(leftPage, rightPage);
+        return isContinuousPages(leftPage, rightPage) && isInRange(leftPage) && isInRange(rightPage) && isOddAndEven(leftPage, rightPage);
     }
 
     /*
@@ -23,7 +23,7 @@ class Problem1 {
      *
      * @return false
      * */
-    private static boolean isContiousPages(int leftPage, int rightPage) {
+    private static boolean isContinuousPages(int leftPage, int rightPage) {
         return leftPage + 1 == rightPage;
     }
 
