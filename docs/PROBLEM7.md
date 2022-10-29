@@ -24,3 +24,11 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 목록
+
+1. 주어진 friends를 이용하여 user와 친구인 관계들을 찾아서 List로 반환해주는 기능.
+2. user의 친구들을 List로 대입했을 때 함께 아는 친구들을 찾아서 반환해주는 기능.
+3. 함께아는 친구들을 List로 대입했을 때 점수를 계산하여 List<List>형식으로 반환해 주는 기능.
+4. 함께 아는 친구들의 점수 결과값에 vistors값을 더해주는 기능(없으면 추가)
+5. 점수목록을 대입했을 때 정렬하여 반환해주는 기능.
