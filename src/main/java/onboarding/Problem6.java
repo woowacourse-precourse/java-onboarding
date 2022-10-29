@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 public class Problem6 {
 
@@ -17,8 +14,18 @@ public class Problem6 {
     }
 
 
-    public static String sliceNickname(String nickname, int idx) {
+    public static String getSubNickname(String nickname, int idx) {
         return nickname.substring(idx, idx+2);
+    }
+
+    public static String getMail(String mail) {
+        if(!isValidDomain(mail)) {
+            return null;
+        }
+        int atIdx = mail.indexOf('@');
+        String mailId = mail.substring(0, atIdx);
+
+        return mailId;
     }
 
     public static boolean isDuplicate(List<String> userForm, List<String> otherForm) {
@@ -27,7 +34,7 @@ public class Problem6 {
         String otherMail = otherForm.get(0);
         String otherNickname = otherForm.get(1);
 
-        if(!isValidDomain(userMail) || !isValidDomain(otherMail)) { // 유효하지 않은 도메인은 체크하지 않음
+        if(userMail == null || otherMail == null) { // 유효하지 않은 도메인은 체크하지 않음
             return false;
         }
 
@@ -36,7 +43,7 @@ public class Problem6 {
         }
 
         for(int i = 0; i < userNickname.length() - 1; i++) {
-            String subNickname = sliceNickname(userNickname, i);
+            String subNickname = getSubNickname(userNickname, i);
             if(otherNickname.contains(subNickname)) {
                 return true;
             }
@@ -57,6 +64,18 @@ public class Problem6 {
         return dupUserMailSet;
     }
 
+    public static List<String> getSortedList(HashSet<String> dupResult) {
+        List<String> dupUserList = new ArrayList<>(dupResult);
+        Collections.sort(dupUserList, new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return getMail(o1).compareTo(getMail(o2));
+            }
+        });
+
+        return dupUserList;
+    }
+
     public static List<String> getDupResult(List<List<String>> forms) {
         HashSet<String> dupResult = new HashSet<>();
 
@@ -66,8 +85,7 @@ public class Problem6 {
             dupResult.addAll(dupUserMailSet);
         }
 
-        List<String> dupUserList = new ArrayList<>(dupResult);
-        Collections.sort(dupUserList);
+        List<String> dupUserList = getSortedList(dupResult);
 
         return dupUserList;
     }
