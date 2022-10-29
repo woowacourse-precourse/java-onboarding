@@ -2,7 +2,6 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicStampedReference;
 
 /*
 - 기능 구현사항 목록 -
@@ -23,15 +22,15 @@ public class Problem2 {
             int l = temp.size();
             if (s[i] == temp.get(l - 1)) {
                 temp.remove(l - 1);
-            } else {
-                temp.add(s[i]);
+                continue;
             }
+            temp.add(s[i]);
         }
         for (Character ch : temp) {
             answer.append(ch);
         }
-        String ans = answer.toString();
-        return ans;
+        return answer.toString();
+
     }
     /*
     지금까지 파이썬만 사용해 와서 자바의 문법이 어색하다.
