@@ -12,4 +12,8 @@ public class Problem5 {
     private static int count(int money, int moneyType) {
         return money / moneyType;
     }
+
+    private static int remainder(int money, int moneyType) {
+        return money % moneyType;
+    }
 }
