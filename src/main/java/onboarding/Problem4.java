@@ -50,15 +50,15 @@ class Input4 {
 
 class Encode {
 
-    static final int SKIP = 0;
-    static final int UPPERCASE = 1;
-    static final int LOWERCASE = 2;
+    private static final int SKIP = 0;
+    private static final int UPPERCASE = 1;
+    private static final int LOWERCASE = 2;
 
-    static ArrayList<Character> UPPERTABLE = new ArrayList<>();
-    static ArrayList<Character> UPPERREVERSTABLE = new ArrayList<>();
+    private static ArrayList<Character> UPPERTABLE = new ArrayList<>();
+    private static ArrayList<Character> UPPERREVERSTABLE = new ArrayList<>();
 
-    static ArrayList<Character> LOWERTABLE = new ArrayList<>();
-    static ArrayList<Character> LOWERREVERSTABLE = new ArrayList<>();
+    private static ArrayList<Character> LOWERTABLE = new ArrayList<>();
+    private static ArrayList<Character> LOWERREVERSTABLE = new ArrayList<>();
 
 
     private static void loadTable() {
