@@ -1,11 +1,26 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
+        List<Integer> answer = new ArrayList<>();
+        int unit1 = 50000;
+        int unit2 = 10000;
+
+        for (int count = 0; count < 4; count++) {
+            answer.add(getCountByUnit(money, unit1));
+            money %= unit1;
+            answer.add(getCountByUnit(money, unit2));
+            money %= unit2;
+
+            unit1 /= 10;
+            unit2 /= 10;
+        }
+        answer.add(money);
+
         return answer;
     }
 
