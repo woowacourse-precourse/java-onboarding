@@ -4,10 +4,10 @@ import java.util.List;
 import java.util.stream.Stream;
 
 class Problem1 {
-    public static final int PAGE_EXCEPTION = -1;
-    public static final int DRAW = 0;
-    public static final int POBI_WINNER = 1;
-    public static final int CRONG_WINNER = 2;
+    private static final int PAGE_EXCEPTION = -1;
+    private static final int DRAW = 0;
+    private static final int POBI_WINNER = 1;
+    private static final int CRONG_WINNER = 2;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (isPageException(pobi) || isPageException(crong)) {
@@ -23,7 +23,7 @@ class Problem1 {
      * @param pages 양쪽 페이지의 번호
      * @return 예외사항의 유무
      */
-    public static boolean isPageException(List<Integer> pages) {
+    private static boolean isPageException(List<Integer> pages) {
         int leftPage = pages.get(0);
         int rightPage = pages.get(1);
         if(rightPage - leftPage != 1) {
@@ -38,7 +38,7 @@ class Problem1 {
      * @param scores 포비와 크롱의 점수
      * @return 승부 결과
      */
-    public static int getResult(List<Integer> scores) {
+    private static int getResult(List<Integer> scores) {
         int pobiScore = scores.get(0);
         int crongScore = scores.get(1);
         if (pobiScore > crongScore) {
@@ -55,7 +55,7 @@ class Problem1 {
      * @param pages 양쪽 페이지의 번호
      * @return 본인의 점수
      */
-    public static int getScore(List<Integer> pages) {
+    private static int getScore(List<Integer> pages) {
         int score = 0;
         int[][] pageNumber = new int[2][0];
         pageNumber[0] = Stream.of(String.valueOf(pages.get(0)).split("")).mapToInt(Integer::parseInt).toArray();
