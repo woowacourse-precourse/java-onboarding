@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
-class Problem1 {
+public class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = whoIsWinner(pobi, crong);
         return answer;
