@@ -8,7 +8,7 @@ class Problem1 {
         return answer;
     }
 
-    private static Integer sumDigit (Integer num){
+    public static Integer sumDigit (Integer num){
         int sum=0;
         while(num > 0){
             sum += num%10;
@@ -16,4 +16,6 @@ class Problem1 {
         }
         return sum;
     }
+
+
 }
