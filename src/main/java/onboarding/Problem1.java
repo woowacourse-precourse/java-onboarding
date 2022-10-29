@@ -7,6 +7,10 @@ class Problem1 {
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
 		int answer = Integer.MAX_VALUE;
 
+		if (!isValidPage(pobi) || !isValidPage(crong)) {
+			return -1;
+		}
+
 		int pobiScore = getScore(pobi);
 		int crongScore = getScore(crong);
 
@@ -51,9 +55,6 @@ class Problem1 {
 
 	private static int getScore(List<Integer> pages) {
 		int score = 0;
-
-		if (!isValidPage(pages))
-			return -1;
 
 		for (int page : pages) {
 			score = Math.max(score, calculatorScore(page));
