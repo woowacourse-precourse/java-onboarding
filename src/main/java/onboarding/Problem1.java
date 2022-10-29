@@ -31,6 +31,7 @@ class Problem1 {
         int pobiResult = Problem1.calcOwnMostNum(pobi);
         int crongResult = Problem1.calcOwnMostNum(crong);
 
+        answer = compTwoValue(pobiResult, crongResult);
         return answer;
     }
 
@@ -94,10 +95,29 @@ class Problem1 {
      * @return 범위 밖이면 true, 아니면 false
      */
     public static boolean isPageError(List<Integer> pages){
+        if ((pages.get(0) % 2 != 1) || (pages.get(1) % 2 != 0)){
+            return true;
+        }
+
         int gap = pages.get(1) - pages.get(0);
         if (gap != 1) {
             return true;
         }
         return (pages.get(1) > 400 || pages.get(0) <= 0);
+    }
+
+    /**
+     * 두 값을 비교하는 함수
+     * @param value1
+     * @param value2
+     * @return 왼쪽이 크면 1 / 오른쪽이 크면 2 / 같으면 0
+     */
+    public static int compTwoValue(int value1, int value2) {
+        if (value1 > value2) {
+            return 1;
+        } else if (value1 < value2) {
+            return 2;
+        }
+        return 0;
     }
 }
