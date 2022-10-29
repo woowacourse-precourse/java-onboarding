@@ -205,6 +205,57 @@ class ApplicationTest {
             List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
+
+        @Test
+        void case2() {
+            List<List<String>> forms = List.of(
+                    List.of("e@email.com", "중복이"),
+                    List.of("b@email.com", "하나도"),
+                    List.of("a@email.com", "되지않는"),
+                    List.of("d@email.com", "테스트"),
+                    List.of("c@email.com", "케이스")
+            );
+            List<String> result = List.of();
+            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
+
+        @Test
+        void case3() {
+            List<List<String>> forms = List.of(
+                    List.of("e@email.com", "알파벳순으로정렬되는지확인하는테스트"),
+                    List.of("b@email.com", "알파벳순으로정렬되는지확인하는테스트"),
+                    List.of("a@email.com", "알파벳순으로정렬되는지확인하는테스트"),
+                    List.of("aa@email.com", "알파벳순으로정렬되는지확인하는테스트"),
+                    List.of("d@email.com", "알파벳순으로정렬되는지확인하는테스트"),
+                    List.of("c@email.com", "알파벳순으로정렬되는지확인하는테스트")
+            );
+            List<String> result = List.of("a@email.com", "aa@email.com", "b@email.com", "c@email.com", "d@email.com", "e@email.com");
+            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
+
+        @Test
+        void case4() {
+            List<List<String>> forms = List.of(
+                    List.of("e@email.com", "중복완전많이"),
+                    List.of("b@email.com", "되는닉네임"),
+                    List.of("a@email.com", "중복"),
+                    List.of("aa@email.com", "완전"),
+                    List.of("d@email.com", "많이"),
+                    List.of("c@email.com", "되는")
+            );
+            List<String> result = List.of("a@email.com", "aa@email.com", "b@email.com", "c@email.com", "d@email.com", "e@email.com");
+            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
+
+        @Test
+        void case5() {
+            List<List<String>> forms = List.of(
+                    List.of("onlyme@email.com", "교육생이한명")
+            );
+            List<String> result = List.of();
+            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
+
     }
 
     @Nested
