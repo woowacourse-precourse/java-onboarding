@@ -5,4 +5,15 @@ public class Problem3 {
         int answer = 0;
         return answer;
     }
+    // 박수 세기
+    public static int countClap(int number){
+        int count = 0;
+        while(number != 0){
+            if(number%10 ==3 || number%10 ==6 || number%10==9){
+                count++;
+            }
+            number /= 10;
+        }
+        return count;
+    }
 }
