@@ -31,6 +31,23 @@ public class Problem2 {
         return deque;
     }
 
+    //연속된 문자열 제거
+    static String removeRedundant(String cryptogram){
+        String removedString = cryptogram;
+        Deque<Integer> deque = findRedundant(cryptogram);
+
+        if(isFinished) {
+            return removedString;
+        }
+
+        int firstIdx = deque.peekFirst();
+        int lastIdx = deque.peekLast();
+        removedString = removedString.substring(0,firstIdx)
+                + removedString.substring(lastIdx+1);
+
+        return removedString;
+    }
+
     public static String solution(String cryptogram) {
         String answer = "answer";
 
