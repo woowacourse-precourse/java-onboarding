@@ -12,9 +12,8 @@ public class Problem4 {
 
         for (char element : word.toCharArray()) {
             if (isAlphabet(element)) {
-                if (isUpperCase(element)) {
+                if (isUpperCase(element))
                     answer += convertUpper(element);
-                }
                 else
                     answer += convertLower(element);
             }
