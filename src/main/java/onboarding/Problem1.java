@@ -20,7 +20,8 @@ class Problem1 {
     }
     /* Check start page or last page && Check linked page a0, a1 */
     private static boolean checkPage(int leftPage, int rightPage) {
-        return (leftPage == 1 || rightPage == 400 || leftPage + 1 != rightPage);
+        return (leftPage == 1 || rightPage == 400 || leftPage + 1 != rightPage ||
+                leftPage > 400 || rightPage < 0);
     }
 
     private static int sumDigit(int number) {
