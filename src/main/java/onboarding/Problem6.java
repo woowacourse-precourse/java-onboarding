@@ -9,18 +9,13 @@ import java.util.Map;
 import java.util.Set;
 
 public class Problem6 {
+	private static final int MIN_SAME_LENGTH = 2;
+
 	public static List<String> solution(List<List<String>> forms) {
 		List<String> answer;
-		Map<String, Integer> twoWordNickNames = new HashMap<>();
+		Map<String, Integer> twoWordNickNames = makeSubStrings(forms);
 		Set<String> warnEmail = new HashSet<>();
 
-		for (List<String> form : forms) {
-			String nickName = form.get(1);
-			for (int j = 0; j < nickName.length() - 1; j++) {
-				String twoWord = nickName.substring(j, j + 2);
-				twoWordNickNames.put(twoWord, twoWordNickNames.getOrDefault(twoWord, 0) + 1);
-			}
-		}
 		for (List<String> form : forms) {
 			String email = form.get(0);
 			String nickName = form.get(1);
@@ -35,5 +30,17 @@ public class Problem6 {
 		answer = new ArrayList<>(warnEmail);
 		Collections.sort(answer);
 		return answer;
+	}
+
+	private static HashMap<String, Integer> makeSubStrings(List<List<String>> forms) {
+		HashMap<String, Integer> subStrings = new HashMap<>();
+		for (List<String> form : forms) {
+			String nickName = form.get(1);
+			for (int j = 0; j < nickName.length() - 1; j++) {
+				String twoWord = nickName.substring(j, j + MIN_SAME_LENGTH);
+				subStrings.put(twoWord, subStrings.getOrDefault(twoWord, 0) + 1);
+			}
+		}
+		return subStrings;
 	}
 }
