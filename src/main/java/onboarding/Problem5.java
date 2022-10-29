@@ -13,7 +13,7 @@ public class Problem5 {
         return answer;
     }
 
-    static List<Integer> convert(int money) {
+    private static List<Integer> convert(int money) {
         List<Integer> unit = new ArrayList<>();
         int tmp = money;
 
