@@ -2,12 +2,8 @@ package onboarding;
 
 import org.junit.jupiter.api.Test;
 
-import java.security.KeyStore;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Set;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class Problem4Test {
 
@@ -18,5 +14,13 @@ class Problem4Test {
         keySet.forEach(key -> {
             System.out.println("key = " + key + " value = " + map.get(key));
         });
+    }
+
+    @Test
+    void solutionTest(){
+        String result = Problem4.solution("I love you");
+        System.out.println("result = " + result);
+        org.assertj.core.api.Assertions.assertThat(result).isEqualTo("R olev blf");
+
     }
 }
