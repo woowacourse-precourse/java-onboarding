@@ -16,9 +16,8 @@ public class Problem4 {
     }
 
     /**
-     * 문자를 사전의 역순으로 변환한다.
+     * 주어진 알파벳을 사전의 역순으로 변환한 문자 반환한다.
      * @param letter 문자
-     * @return 문자를 사전의 역순으로 변환한 결과
      */
     private static char flipWord(char letter) {
         char result = letter;
