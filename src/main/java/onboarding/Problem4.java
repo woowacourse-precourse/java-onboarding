@@ -7,13 +7,10 @@ public class Problem4 {
         for(int i = 0; i < word.length(); i++){
             char currentChar = word.charAt(i);
             if(isUpperCase(currentChar)){
-                //알파벳 대문자일 경우 변환
                 answer += changeUpperCase(currentChar);
             }else if(isLowerCase(currentChar)){
-                //알파벳 소문자일 경우 변환
                 answer += changeLowerCase(currentChar);
             }else{
-                //알파벳 외의 문자
                 answer += currentChar;
             }
         }
