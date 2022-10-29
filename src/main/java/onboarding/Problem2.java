@@ -1,6 +1,13 @@
 package onboarding;
 
 public class Problem2 {
+    public static boolean isDuplicate(String cryptogram, int sIdx, int eIdx) {
+        if(cryptogram.charAt(sIdx) == cryptogram.charAt(eIdx)) {
+            return true;
+        }
+        return false;
+    }
+
     public static String decrypt(String cryptogram) {
         String decrpyto = cryptogram;
         int len = decrpyto.length();
