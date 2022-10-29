@@ -38,10 +38,9 @@ class Problem7Test {
     @Test
     void exceptAlreadyFriends() {
         Map<String, List<String>> parsedFriends = Problem7.parseFriends(friends);
-        List<String> notFriends = Problem7.exceptAlreadyFriends("mrko", List.of("donut", "andole", "jun", "shakevan", "bedi"), parsedFriends);
+        List<String> notFriends = Problem7.exceptAlreadyFriends(List.of("donut", "andole", "jun", "shakevan", "bedi"), List.of("donut", "shakevan"));
 
         Assertions.assertThat(notFriends)
             .contains("andole", "jun", "bedi");
-
     }
 }

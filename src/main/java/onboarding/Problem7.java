@@ -27,8 +27,10 @@ public class Problem7 {
             .collect(Collectors.toList());
     }
 
-    static List<String> exceptAlreadyFriends(String user, List<String> allFriends, Map<String, List<String>> userToFriends) {
-        return null;
+    static List<String> exceptAlreadyFriends(List<String> allFriends, List<String> alreadyFriends) {
+        return allFriends.stream()
+            .filter(friend -> !alreadyFriends.contains(friend))
+            .collect(Collectors.toList());
     }
 
     static Map<String, List<String>> parseFriends(List<List<String>> friends) {
