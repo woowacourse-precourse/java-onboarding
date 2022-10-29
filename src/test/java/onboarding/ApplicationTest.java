@@ -241,5 +241,19 @@ class ApplicationTest {
             List<String> result=List.of("donut","shakevan","hojin");
             assertThat(Problem7.findFriends(user, friends)).isEqualTo(result);
         }
+        @Test
+        void case3(){
+            String user = "mrko";
+            List<List<String>> friends = List.of(
+                    List.of("donut", "andole"),
+                    List.of("donut", "jun"),
+                    List.of("donut", "mrko"),
+                    List.of("shakevan", "andole"),
+                    List.of("shakevan", "jun"),
+                    List.of("shakevan", "mrko")
+            );
+            List<String> result=List.of("andole","jun","andole","jun");
+            assertThat(Problem7.findAcquaintance(user,Problem7.findFriends(user,friends), friends)).isEqualTo(result);
+        }
     }
 }

@@ -10,10 +10,11 @@ public class Problem7 {
         return answer;
     }
 
-    public static List<String> findAcquaintance(List<String> findFreinds,List<List<String>> friends){
+    public static List<String> findAcquaintance(String user,List<String> findFreinds,List<List<String>> friends){
         List<String> result=new ArrayList<>();
         for(String friend:findFreinds){
             result.addAll(findFriends(friend,friends));
+            result.remove(user);
         }
         return result;
     }
