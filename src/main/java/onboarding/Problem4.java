@@ -26,5 +26,12 @@ public class Problem4 {
       greenFrogDictionary.put(lowerCase.charAt(i), lowerCase.charAt(lowerCase.length()-1 - i));
     }
   }
-  
+
+  public static boolean isAlphabet(char character) {
+    int ASCII = character - 0;
+    if (ASCII < 65 || (ASCII > 90 && ASCII < 97) || ASCII > 122) {
+      return false;
+    }
+    return true;
+  }
 }
