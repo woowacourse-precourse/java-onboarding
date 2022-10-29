@@ -21,6 +21,18 @@ public class Problem2 {
         }
 
         while(compare(cyp)){
+            boolean same = false;
+            List<Integer> overlap = new ArrayList<>();
+            for(int i=0; i<cyp.size()-1; i++){
+                if(cyp.get(i)==cyp.get(i+1)){ //앞,뒤 문자가 중복이라면 index 저장
+                    same = true;
+                    overlap.add(i);
+                    overlap.add(i+1);
+                }
+                if(same & cyp.get(i)!=cyp.get(i+1)){ //연속하는 중복 문자가 끝난 경우 for문 종료
+                    break;
+                }
+            }
 
         }
 
