@@ -13,7 +13,7 @@ public class Problem4 {
         for (char element : word.toCharArray()) {
             if (isAlphabet(element)) {
                 if (isUpperCase(element)) {
-                    
+
                 }
             }
             else
@@ -35,5 +35,10 @@ public class Problem4 {
         if (UpperCaseMinCode <= wordCode && wordCode <= UpperCaseMaxCode)
             return true;
         return false;
+    }
+
+    public static Character convertUpper(Character word) {
+        int result = (UpperCaseMinCode + UpperCaseMaxCode) - (int) word;
+        return (char) result;
     }
 }
