@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -11,8 +8,10 @@ public class Problem6 {
         HashMap<String,Set<String>> words = new HashMap<>();
 
         for(int i=0;i<forms.size();i++){
-            List<String> word = getWord(forms.get(i).get(1));
-            word.stream().map((w) -> words.put(w,))
+            String word = forms.get(i).get(1);
+            String email = forms.get(i).get(0);
+            List<String> wordslist = getWord(word);
+            wordslist.stream().forEach(w -> words.put(word,getEmailList(words,word,email)));
         }
         return answer;
     }
@@ -22,5 +21,10 @@ public class Problem6 {
             words.add(word.substring(i,i+2));
         }
         return words;
+    }
+    public static Set<String> getEmailList(HashMap<String,Set<String>> words,String word,String email){
+        Set<String> str1 = words.getOrDefault(word,new TreeSet<>());
+        str1.add(email);
+        return str1;
     }
 }
