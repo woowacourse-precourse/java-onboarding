@@ -15,7 +15,33 @@ public class Problem5 {
     public static List<Integer> solution(int money) {
         Problem5 problem5 = new Problem5();
         List<Integer> answer = new ArrayList<>();
-        
+
+        // 50000원권 계산
+        answer.add(problem5.countBill(money, 50000));
+        money = problem5.countOutMoney(money,50000,answer.get(0));
+        // 10000원권 계산
+        answer.add(problem5.countBill(money, 10000));
+        money = problem5.countOutMoney(money,10000,answer.get(1));
+        // 5000원권 계산
+        answer.add(problem5.countBill(money, 5000));
+        money = problem5.countOutMoney(money,5000,answer.get(2));
+        // 1000원권 계산
+        answer.add(problem5.countBill(money, 1000));
+        money = problem5.countOutMoney(money,1000,answer.get(3));
+        // 500원권 계산
+        answer.add(problem5.countBill(money, 500));
+        money = problem5.countOutMoney(money,500,answer.get(4));
+        // 100원권 계산
+        answer.add(problem5.countBill(money, 100));
+        money = problem5.countOutMoney(money,100,answer.get(5));
+        // 50원권 계산
+        answer.add(problem5.countBill(money, 50));
+        money = problem5.countOutMoney(money,50,answer.get(6));
+        // 10원권 계산
+        answer.add(problem5.countBill(money, 10));
+        money = problem5.countOutMoney(money,10,answer.get(7));
+        // 1원권 계산
+        answer.add(problem5.countBill(money, 1));
 
         return answer;
     }
