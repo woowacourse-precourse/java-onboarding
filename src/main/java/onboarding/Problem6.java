@@ -58,4 +58,13 @@ public class Problem6 {
         }
         return same_nickname_list;
     }
+
+    static List<String> findEmail(List<String> same_nickname_list, Map<String, String> nickname_email_map){
+        List<String> email_list = new ArrayList<>();
+
+        for(String nickname:same_nickname_list){
+            email_list.add(nickname_email_map.get(nickname));
+        }
+        return email_list;
+    }
 }
