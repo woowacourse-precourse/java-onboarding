@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashSet;
+import java.util.Collections;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -41,6 +42,7 @@ public class Problem6 {
         for(int i=0;i<answerArr.length;i++){
             answer.add((String)answerArr[i]);
         }
+        Collections.sort(answer);
         return answer;
     }
 }
