@@ -42,4 +42,25 @@ public class Problem7 {
 
         return myFriends;
     }
+
+    /**
+     * 친구의 친구 목록을 반환합니다.
+     *
+     * @param userFriends user의 친구 리스트
+     * @param friends     친구 관계 목록
+     * @return 친구의 친구 목록 반환
+     */
+    List<String> getSubFriends(List<String> userFriends, List<List<String>> friends) {
+        List<String> subFriends = new ArrayList<>();
+
+        for (List<String> friend : friends) {
+            if (userFriends.contains(friend.get(0)) && !userFriends.contains(friend.get(1))) {
+                subFriends.add(friend.get(1));
+            } else if (userFriends.contains(friend.get(1)) && !userFriends.contains(friend.get(0))) {
+                subFriends.add(friend.get(0));
+            }
+        }
+
+        return subFriends;
+    }
 }
