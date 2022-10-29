@@ -1,5 +1,9 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /*
  *
  * Class : Problem 2
@@ -22,7 +26,12 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
         String crypto = cryptogram;
-        System.out.println(crypto);
+
+        // split the sting
+        String[] cryptoWord = crypto.split("");
+        ArrayList<String> cryptoList = new ArrayList<>(Arrays.asList(cryptoWord));
+
+        System.out.println(cryptoList);
         return answer;
     }
 }
