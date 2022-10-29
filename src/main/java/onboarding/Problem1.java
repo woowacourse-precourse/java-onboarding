@@ -4,16 +4,19 @@ import java.util.List;
 
 class ScoreCalculator {
 
-    private List<Integer> playerPages;
-
-    public ScoreCalculator() {
+    private static class ScoreCalculatorHolder {
+        private static final ScoreCalculator INSTANCE = new ScoreCalculator();
     }
 
-    public void setPlayerPages(List<Integer> playerPages) {
-        this.playerPages = playerPages;
+    private ScoreCalculator() {
+
     }
 
-    public int getScore() {
+    public static ScoreCalculator getInstance() {
+        return ScoreCalculatorHolder.INSTANCE;
+    }
+
+    public int getScore(List<Integer> playerPages) {
         int maxScore = Integer.MIN_VALUE;
 
         for (int len = playerPages.size(), i = 0; i < len; i++) {
@@ -62,6 +65,17 @@ class Problem1 {
     private static final int END_PAGE_NO = 400;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        if (!validate(pobi) || !validate(crong)) {
+            return -1;
+        }
+
+        ScoreCalculator scoreCalculator = new ScoreCalculator();
+        scoreCalculator.setPlayerPages(pobi);
+        int pobiScore = scoreCalculator.getScore();
+
+        scoreCalculator.setPlayerPages(crong);
+        int crongScore = scoreCalculator.getScore();
+
         int answer = Integer.MAX_VALUE;
         return answer;
     }
