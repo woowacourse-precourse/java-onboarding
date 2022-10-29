@@ -24,4 +24,13 @@ class Problem1 {
         }
         return pageDigitsSum;
     }
+
+    public static int mulPageDigits(int pageNum) {
+        int pageDigitsMul = 1;
+        while (pageNum > 0) {
+            pageDigitsMul *= pageNum % 10;
+            pageNum /= 10;
+        }
+        return pageDigitsMul;
+    }
 }
