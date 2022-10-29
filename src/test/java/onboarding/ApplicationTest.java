@@ -326,6 +326,19 @@ class ApplicationTest {
             List<String> answerList = List.of("제이", "이엠", "엠가", "제이엠", "이엠가", "제이엠가");
             assertThat(result).isEqualTo(answerList);
         }
+        @Test
+        void isDuplicateTest() {
+            String nickname = "차영호입니다";
+            String nicknameUnit = "영호";
+            assertThat(Problem6.isDuplicate(nickname, nicknameUnit)).isEqualTo(true);
+        }
+
+        @Test
+        void isDuplicateFalseTest() {
+            String nickname = "차영호입니다";
+            String nicknameUnit = "입다";
+            assertThat(Problem6.isDuplicate(nickname, nicknameUnit)).isEqualTo(false);
+        }
     }
 
     @Nested
