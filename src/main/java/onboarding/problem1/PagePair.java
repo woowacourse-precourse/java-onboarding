@@ -31,4 +31,8 @@ public class PagePair {
     public boolean judgeWinnable(PagePair otherPair){
         return this.getMaxValueOfPair() > otherPair.getMaxValueOfPair();
     }
+
+    public boolean judgeDrawable(PagePair otherPair){
+        return this.getMaxValueOfPair() == otherPair.getMaxValueOfPair();
+    }
 }
