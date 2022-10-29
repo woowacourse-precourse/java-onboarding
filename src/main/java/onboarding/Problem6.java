@@ -50,7 +50,7 @@ public class Problem6 {
     }
 
     public static void moveFromSetToList(List<String> answer){
-        for(String email : AnswerEmailSet){
+        for(String email : AnswerEmailSet){ //todo: should I use addall() and remove this method?
             answer.add(email);
         }
     }
@@ -58,7 +58,8 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new LinkedList<>();
         processForms(forms);
-        // sortlist
+        moveFromSetToList(answer);
+        Collections.sort(answer);
         return answer;
     }
 }

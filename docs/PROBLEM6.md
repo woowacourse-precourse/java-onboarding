@@ -9,7 +9,6 @@
 | 10.29 | Set에서 List로 중복 이메일 이동       | moveFromSetToList()              | List\<String\>         | void           |  committed |
 
 ### TODO
--add email to result set if duplicate 
 
 ## 🚀 기능 요구 사항
 
