@@ -11,7 +11,6 @@ public class Problem7 {
         UserScore userScore = new UserScore();
         userScore.addFriendsScore(user, relation.getFriendsRelations());
         userScore.addVisitorsScore(visitors, relation.getUserFriends());
-        userScore.getUserScoreTop5();
         return userScore.getUserScoreTop5();
     }
 }
