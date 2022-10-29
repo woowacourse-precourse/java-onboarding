@@ -47,6 +47,7 @@ public class Problem2 {
             }
         }
     }
+
     public static String solution(String cryptogram) {
 
         RFCryptogram rfCryptogram = new RFCryptogram(cryptogram);
