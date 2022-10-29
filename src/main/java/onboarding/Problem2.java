@@ -21,7 +21,28 @@ public class Problem2 {
      * @return : String, 복호화된 문자열
      */
     public static String decrypt(String encrypt) {
-        String answer = null;
-        return answer;
+        Stack<Character> stack = new Stack<>();
+        StringBuilder result = new StringBuilder();
+
+        char beforeChar = '0';
+
+        for (int idx = 0, size = encrypt.length(); idx < size; idx++) {
+            char currentChar = encrypt.charAt(idx);
+
+            if (stack.isEmpty()) stack.push(currentChar);
+            else if (stack.peek() != currentChar && beforeChar != currentChar) stack.push(currentChar);
+            else if (stack.peek() == currentChar) {
+                while (!stack.isEmpty() && stack.peek() == currentChar) stack.pop();
+            }
+
+            beforeChar = currentChar;
+        }
+
+        while (!stack.isEmpty()) {
+            result.append(stack.pop());
+        }
+        result.reverse();
+
+        return result.toString();
     }
 }
