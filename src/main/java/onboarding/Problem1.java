@@ -34,6 +34,17 @@ class Problem1 {
         }
         return countMultiNumber;
     }
+
+    // 4. 점수를 비교해서 승자를 구하는 함수 만들기
+    // 승자에 따라 결과 값 return => pobi : 1 / crong : 2 / 무승부 : 0
+    public static int getWinner(Integer pobiNumber, Integer crongNumber){
+        if(pobiNumber > crongNumber){ // pobi가 승리 시 return 1
+            return 1;
+        } else if(pobiNumber < crongNumber){ // crong이 승리 시 return 2;
+            return 2;
+        } // 무승부 시 return 0;
+        return 0;
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
@@ -62,9 +73,6 @@ class Problem1 {
         int pobi_result_page = Math.max(pobi_sum_page, pobi_multi_page);
         int crong_result_page = Math.max(crong_sum_page, crong_multi_page);
 
-        // 4. 점수를 비교해서 승자를 구하기
-
-        // 5. 승자에 따라 결과 값 return => pobi : 1 / crong : 2 / 무승부 : 0
         return answer;
     }
 }
