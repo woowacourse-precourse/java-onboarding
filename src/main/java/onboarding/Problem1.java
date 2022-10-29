@@ -38,13 +38,16 @@ class Problem1 {
      * @return 예외가 발생하면 true, 아니라면 false를 반환
      */
     private static boolean exceptionChecker(List<Integer> page){
-        // 1. 1부터 400 사이 값이 아닌 경우
+        // 1. page의 size 2가 아닌 경우
+        if(page.size()!= 2)
+            return true;
+        // 2. 1부터 400 사이 값이 아닌 경우
         if(!isBetween(1,400,page.get(0)) || !isBetween(1,400,page.get(0)))
             return true;
-        // 2. 왼쪽은 홀수 오른쪽은 짝수가 아닌 경우
+        // 3. 왼쪽은 홀수 오른쪽은 짝수가 아닌 경우
         if(!isOdd(page.get(0)) || !isEven(page.get(1)))
             return true;
-        // 3. 오른쪽 - 왼쪽이 1이 아닌 경우
+        // 4. 오른쪽 - 왼쪽이 1이 아닌 경우
         if(!isBookPage(page))
             return true;
 
