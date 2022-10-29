@@ -33,6 +33,11 @@ public class Problem2 {
             }
         }
 
+        // remove the duplication characters
+        for (int k = 0; k <= endIdx-startIdx; k++) {
+            strList.remove(startIdx);
+        }
+
         return answer;
     }
 }
