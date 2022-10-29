@@ -2,8 +2,16 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        return stringConverter(word);
+    }
+
+    private static String stringConverter(String target) {
+        StringBuilder builder = new StringBuilder();
+        for (int index = 0; index < target.length(); index++) {
+            char result = charConverter(target.charAt(index));
+            builder.append(result);
+        }
+        return String.valueOf(builder);
     }
 
     private static char charConverter(char target) {
