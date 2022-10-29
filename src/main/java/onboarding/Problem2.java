@@ -5,15 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Problem2 {
-    public static void main(String[] args) {
-        System.out.println(solution("browoanoommnaon"));
-    }
-
     public static String solution(String cryptogram) {
-        // 1. 받은 문자열을 String으로 나눠서 ArrayList로 저장
-        // 2. 내용에 바로 중복해서 나오는 문자가 있는지 확인하고 제거하는 메서드 생성
-        // 4. 중복하는 문자가 없으면 String으로 반환
-
         // 매개변수로 받은 cryptogram 문자열을 ArrayList로 변환
         String[] arrayOfCryptoString = cryptogram.split("");
         List<String> listOfCryptoString = new ArrayList<>(Arrays.asList(arrayOfCryptoString));
@@ -24,8 +16,7 @@ public class Problem2 {
             isContinuous = removeContinuousChar(listOfCryptoString);
         } while (isContinuous == true);
 
-        String answer = "answer";
-        return answer;
+        return getAnswer(listOfCryptoString);
     }
 
     private static boolean removeContinuousChar(List<String> listOfCryptoString) {
@@ -37,5 +28,13 @@ public class Problem2 {
             }
         }
         return false;
+    }
+
+    private static String getAnswer(List<String> listOfCryptoString) {
+        String answer = "";
+        for (int i = 0; i < listOfCryptoString.size(); i++) {
+            answer += listOfCryptoString.get(i);
+        }
+        return answer;
     }
 }
