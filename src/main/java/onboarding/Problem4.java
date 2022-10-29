@@ -29,6 +29,14 @@ public class Problem4 {
         String answer = "";
 
         //문자 하나씩 치환하고, 알파벳이 아니라면 추가하지 않기
+        createStringArray();
+        setMap();
+        for(int i=0; i<word.length(); i++){
+
+            char temp = map.getOrDefault(((char)(word.charAt(i))),'!');
+            if(temp!='!')
+                answer += temp;
+        }
 
         return answer;
     }
