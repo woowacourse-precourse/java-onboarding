@@ -52,8 +52,9 @@ class Problem7Test {
     }
 
     @Test
-    void countVisit() {
-        Map<String, Integer> visitCount = Problem7.countVisit(List.of("bedi", "bedi", "donut", "bedi", "shakevan"));
+    void computeVisitScore() {
+        Map<String, Integer> visitCount = Problem7.computeVisitScore(List.of("bedi", "bedi", "donut", "bedi",
+            "shakevan"));
 
         Assertions.assertThat(visitCount.get("bedi"))
             .isEqualTo(3);

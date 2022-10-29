@@ -23,7 +23,7 @@ public class Problem7 {
             return null;
     }
 
-    static Map<String, Integer> countVisit(List<String> visitors) {
+    static Map<String, Integer> computeVisitScore(List<String> visitors) {
         Map<String, Integer> visitCount = visitors.stream()
             .distinct()
             .collect(Collectors.toMap(visitor -> visitor, visitor -> 0));
@@ -36,8 +36,8 @@ public class Problem7 {
         Map<String, Integer> bothKnowFriendsScore = new HashMap<>();
         List<String> mainCharacterFriends = userToFriends.get(mainCharacter);
 
-        userToFriends.forEach((user, friends) -> bothKnowFriendsCount.put(user, countBothKnowFriends(mainCharacterFriends, friends)));
-        return bothKnowFriendsCount;
+        userToFriends.forEach((user, friends) -> bothKnowFriendsScore.put(user, BOTH_KNOW_ONE_FRIEND_SCORE * countBothKnowFriends(mainCharacterFriends, friends)));
+        return bothKnowFriendsScore;
     }
 
     private static int countBothKnowFriends(List<String> friends1, List<String> friends2) {
