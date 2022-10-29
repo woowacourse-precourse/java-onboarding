@@ -18,7 +18,7 @@ public class Problem3 {
     private static int increasingCrapCount(int number) {
         String idxToStr = "";
 
-        for (int idx = 3; idx < number; idx++) {
+        for (int idx = 3; idx <= number; idx++) {
             idxToStr = String.valueOf(idx);
             tqqq[idx] = tqqq[idx - 1];
 
