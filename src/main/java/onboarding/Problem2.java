@@ -4,8 +4,13 @@ import java.util.Stack;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        StringBuilder answer = new StringBuilder();
+
+        for(Character c : deleteDuplication(cryptogram)){
+            answer.append(c);
+        }
+
+        return answer.toString();
     }
 
     /**
