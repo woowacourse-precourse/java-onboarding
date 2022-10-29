@@ -2,7 +2,13 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-
+        while(true) {
+            String removedCrypto = removeDuplicatedChar(cryptogram);
+            if (cryptogram.equals(removedCrypto))
+                break;
+            cryptogram = removedCrypto;
+        }
+        return cryptogram;
     }
 
     private static boolean[] checkDuplicatedChar(String cryptogram) {
