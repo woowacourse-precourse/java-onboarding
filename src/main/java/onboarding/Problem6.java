@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Problem6 {
@@ -78,6 +79,10 @@ public class Problem6 {
 
     private static boolean validateNumberOfCrew(List<List<String>> crewForms) {
         return (crewForms.size() >= 1 && crewForms.size() <= 10000);
+    }
+
+    private static boolean validateEmailType(String crewEmail) {
+        return Pattern.compile("^[a-zA-Z0-9]+@email.com$").matcher(crewEmail).matches();
     }
 
 }
