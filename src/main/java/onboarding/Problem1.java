@@ -1,8 +1,29 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
+    public static int getSum(List<Integer> nums) {
+        int sum = 0;
+        for (int i: nums) {
+            ArrayList<Integer> newnums = splitNum(i);
+            for (int j: newnums){
+                sum+=j;
+            }
+        }
+        return sum;
+    }
+    public static int getMul(List<Integer> nums) {
+        int mul = 1;
+        for (int i: nums) {
+            ArrayList<Integer> newnums = splitNum(i);
+            for (int j: newnums){
+                mul *=j;
+            }
+        }
+        return mul;
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
