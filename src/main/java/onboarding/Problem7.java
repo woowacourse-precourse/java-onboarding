@@ -14,26 +14,23 @@ public class Problem7 {
     static final int knowPoint = 10;
     static final int visitPoint = 1;
     static final int recommendNum = 5;
-    static String userName;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         List<String> result = new ArrayList<>();
         Map<String, Integer> friendsPoint_map = new HashMap<>();
         Integer [] point_array;
 
-        userName = user;
-
         //예외 확인
         checkException(user, friends, visitors);
 
         //사용자와 이미 친구인 목록을 구함
         List<String> userFriends_list = findUserFriends(user, friends);
-        //사용자를 리스트에 집어넣음
 
-
+        //친구의 친구인 목록을 구함
         List<String> friendsOfFriend_list = findFriendsOfFriend(userFriends_list, friends);
 
         friendsOfFriend_list = remove(user, friendsOfFriend_list);
+
         for (int i = 0; i < userFriends_list.size(); i++)
             friendsOfFriend_list = remove(userFriends_list.get(i), friendsOfFriend_list);
 
@@ -109,8 +106,7 @@ public class Problem7 {
     }
 
     //친구의 친구 목록 저장
-    public static List<String> findFriendsOfFriend(List<String> userFriends_list, List<List<String>> friends_list)
-    {
+    public static List<String> findFriendsOfFriend(List<String> userFriends_list, List<List<String>> friends_list) {
         List<String> friendsOfFriends_list = new ArrayList<>();
 
         for (int i = 0; i < userFriends_list.size(); i++)
@@ -118,12 +114,14 @@ public class Problem7 {
 
         return friendsOfFriends_list;
     }
-    public static List<String> remove(String user, List<String> friendsOfFiends_list)
-    {
+    public static List<String> remove(String user, List<String> friendsOfFiends_list) {
         for (int i = 0; i < friendsOfFiends_list.size(); i++)
         {
             if (friendsOfFiends_list.get(i).equals(user))
+            {
                 friendsOfFiends_list.remove(i);
+                i--;
+            }
         }
         return friendsOfFiends_list;
     }

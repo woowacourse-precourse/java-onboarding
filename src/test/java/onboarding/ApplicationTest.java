@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -130,6 +131,7 @@ class ApplicationTest {
             List<String> result = List.of("andole", "jun", "bedi");
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
+        //리스트 첫번째 친구 목록이 있는 경우
         @Test
         void case2() {
             String user = "mrko";
@@ -151,7 +153,7 @@ class ApplicationTest {
             List<String> result = List.of("kevin", "unio", "seri", "uazi", "uazo");
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
-        //추천할 친구가 없는 경우 :error 발생
+        //추천할 친구가 없는 경우 
         @Test
         void case3() {
             String user = "youdik";
@@ -163,7 +165,7 @@ class ApplicationTest {
                     List.of("uazo", "youdik")
             );
             List<String> visitors = List.of("donut", "jun", "shakevan", "uazo", "shakevan");
-            List<String> result = List.of("kevin", "unio", "seri", "uazi", "uazo");
+            List<String> result = Collections.emptyList();
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
     }
