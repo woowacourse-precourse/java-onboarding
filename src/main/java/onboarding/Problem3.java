@@ -14,14 +14,19 @@ public class Problem3 {
         for(int i = 1; i <= number; i++) {
             int digit = i;
 
-            while(digit != 0) {
-
-                if(digit % 10 == 3 || digit % 10 == 6 || digit % 10 == 9)
-                    clapCount += 1;
-
-                digit /= 10;
-            }
+            clapCount = getClapCount(clapCount, digit);
         }
         return clapCount;
     }
+
+    private static int getClapCount(int clapCount, int digit) {
+        while(digit != 0) {
+            if(digit % 10 == 3 || digit % 10 == 6 || digit % 10 == 9)
+                clapCount += 1;
+
+            digit /= 10;
+        }
+        return clapCount;
+    }
+
 }
