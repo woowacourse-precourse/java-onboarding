@@ -1,17 +1,26 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     private static final int DUPLICATED_COUNT = 2;
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
         Map<String, List<String>> nicknames = createNicknameMap(forms);
         Set<String> duplicateEmails = getDuplicateEmails(nicknames);
 
+        return sortAnswer(duplicateEmails);
+    }
+
+    private static List<String> sortAnswer(Set<String> duplicateEmails) {
+        List<String> answer;
+        answer = duplicateEmails.stream()
+                .sorted()
+                .collect(Collectors.toList());
         return answer;
     }
+
 
     private static Set<String> getDuplicateEmails(Map<String, List<String>> nicknameDict) {
         Set<String> duplicatedEmails = new HashSet<>();
