@@ -87,6 +87,7 @@ public class Problem7 {
 
         scoreEntries.stream()
                 .filter(e -> !(userFriends.contains(e.getKey())))
+                .filter(e -> e.getValue() != 0)
                 .forEach(e -> sortedScoreList.add(e.getKey()));
 
         return sortedScoreList;
