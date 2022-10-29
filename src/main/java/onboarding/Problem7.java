@@ -19,6 +19,7 @@ public class Problem7 {
         List<Integer> scr = cntScore(user, friendsList, visitors, recomUsers, friends);
 
         return sort(recomUsers, scr);
+        // 테스트케이스 통과
     }
 
     private static List<String> findMyFriends(String user, List<List<String>> friends) {
