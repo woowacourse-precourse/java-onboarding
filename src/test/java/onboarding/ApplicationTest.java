@@ -412,14 +412,15 @@ class ApplicationTest {
             List<List<String>> friends = List.of(
                     List.of("donut", "andole"),
                     List.of("donut", "jun"),
+                    List.of("donut", "mrko"),
                     List.of("youngho", "donut"),
                     List.of("shakevan", "andole"),
-                    List.of("shakevan", "jun")
-//                    List.of("mrko", "shakevan")
+                    List.of("shakevan", "jun"),
+                    List.of("mrko", "shakevan")
             );
 
             for (List<String> friend : friends) {
-                Problem7.initRelationships(friend);
+                Problem7.initRelationships(friend, "mrko");
             }
 
             assertThat(Problem7.relationships.get("donut").size()).isEqualTo(3);
