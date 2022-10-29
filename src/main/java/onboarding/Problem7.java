@@ -16,8 +16,7 @@ public class Problem7 {
         List<String> friendsList = findMyFriends(user, friends);
         List<String> stepFriendsList = findStepFriends(user, friends, friendsList);
         List<String> recomUsers = addVisitors(user, visitors, stepFriendsList, friendsList);
-        List<Integer> scr = cntScore(user, friends, visitors, stepFriendsList);
-
+        List<Integer> scr = cntScore(user, friendsList, visitors, recomUsers, friends);
 
         return sort(recomUsers, scr);
     }
@@ -91,13 +90,51 @@ public class Problem7 {
         return stepFriendsList;
     }
 
-    private static List<Integer> cntScore(String user, List<List<String>>friends, List<String> visitors, List<String> stepFriendsList) {
-        List<Integer> scr = new ArrayList<>();
+    private static List<Integer> cntScore(String user, List<String> friendsList, List<String> visitors, List<String> recomUsers, List<List<String>> friends) {
+        List<Integer> scr = new ArrayList<>(recomUsers.size());
+
+        for(int i = 0; i < recomUsers.size(); i++) { // 방문 횟수 기반 점수 추가 루프
+            int cnt = 0;
+
+            for(String str : visitors) {
+                if(recomUsers.get(i).equals(str)) {
+                    cnt++;
+                }
+            }
+
+            scr.add(cnt);
+        }
+
+        List<String> tmp = new ArrayList<>();
+
+        for(int i = 0; i < recomUsers.size(); i++) { // 함께아는 친구 기반 점수 추가 루프
+            int cnt = scr.get(0);
+            scr.remove(0);
+
+            for(String str : friendsList) {
+                tmp.add(recomUsers.get(i));
+                tmp.add(str);
+
+                if(friends.contains(tmp)) {
+                    cnt += 10;
+                    continue;
+                }
+
+                tmp.clear();
+
+                tmp.add(str);
+                tmp.add(recomUsers.get(i));
+
+                if(friends.contains(tmp)) {
+                    cnt += 10;
+                }
+            }
+
+            scr.add(cnt);
+
+        }
+
         return scr;
     }
 
-    private static List<String> sort(List<String> stepFriendsList, List<Integer> scr) {
-        List<String> answer = new ArrayList<>();
-        return answer;
-    }
 }
