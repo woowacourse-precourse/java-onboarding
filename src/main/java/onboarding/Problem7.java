@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 public class Problem7 {
 
@@ -9,4 +10,9 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
         return answer;
     }
+
+    public static Map<String, List<String>> parseFriends(List<List<String>> friends) {
+        return null;
+    }
+
 }
