@@ -7,8 +7,25 @@ public class Problem6 {
     static HashMap<String, Set<String>> emailAndNicknameMap;
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+
+        emailAndNicknameMap = new HashMap<>();
+
+        for (List<String> form : forms) {
+
+            String email = form.get(0);
+            String nickname = form.get(1);
+
+            for (int i = 0; i < nickname.length() - 1; i++) {
+                addNicknameSubstring(i, email, nickname, "");
+            }
+        }
+
+        ArrayList<String> result = getResultFromHashMap();
+
+        Collections.sort(result);
+
+        return result;
+
     }
 
     static void addNicknameSubstring(int index, String email, String nickname, String substring) {
