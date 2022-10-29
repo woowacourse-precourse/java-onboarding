@@ -36,9 +36,9 @@ class Problem3Test {
         //when
 
         //then
-//        assertThat(Problem3.getClapCount(num1)).isEqualTo(1);
-//        assertThat(Problem3.getClapCount(num2)).isEqualTo(2);
-//        assertThat(Problem3.getClapCount(num3)).isEqualTo(0);
-//        assertThat(Problem3.getClapCount(num4)).isEqualTo(1);
+        assertThat(Problem3.getClapCount(num1)).isEqualTo(1);
+        assertThat(Problem3.getClapCount(num2)).isEqualTo(2);
+        assertThat(Problem3.getClapCount(num3)).isEqualTo(0);
+        assertThat(Problem3.getClapCount(num4)).isEqualTo(1);
     }
 }
