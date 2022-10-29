@@ -54,12 +54,9 @@ class Problem1 {
 	}
 
 	private static int multipleDigit(Integer page) {
-		int multipleValue = 1;
-		while (page != 0) {
-			multipleValue *= page % NUMBER_OF_DIGIT_DIVISION;
-			page /= NUMBER_OF_DIGIT_DIVISION;
-		}
-		return multipleValue;
+		return Arrays.stream(String.valueOf(page).split(""))
+			.mapToInt(Integer::parseInt)
+			.reduce(1, (a, b) -> a * b);
 	}
 
 	private static int pageMax(int leftPage, int rightPage) {
