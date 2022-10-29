@@ -19,6 +19,16 @@ public class Problem4 {
         }
     }
 
+    public static boolean checkCase(char word) { // true : 대문자 false : 소문자
+        if(Character.isUpperCase(word))
+            return true;
+        else
+            return false;
+    }
+
+    // 문장 리스트로 바꾸기
+
+
 
 
 
