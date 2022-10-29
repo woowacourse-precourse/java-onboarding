@@ -28,6 +28,15 @@ public class Problem7 {
 
         return myFriends;
     }
-    
 
+    static Map<String, Integer> getScoreboard(List<String> friendOfFriends, List<String> visitors) {
+        Map<String, Integer> scoreboard = new TreeMap<>();
+        for (String friendOfFriend : friendOfFriends) {
+            scoreboard.put(friendOfFriend, scoreboard.getOrDefault(friendOfFriend, 0) + 10);
+        }
+        for (String visitor : visitors) {
+            scoreboard.put(visitor, scoreboard.getOrDefault(visitor, 0) + 1);
+        }
+        return scoreboard;
+    }
 }
