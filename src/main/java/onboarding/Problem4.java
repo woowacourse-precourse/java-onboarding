@@ -14,6 +14,10 @@ public class Problem4 {
         return answer.toString();
     }
 
+    private static char getLowerReverseCase(char alphabet) {
+        return (char) (alphabet + (ALPHABET_COUNT_WITHOUT_A - (alphabet - LOWERCASE_A) * DOUBLE));
+    }
+
     private static char getUpperReverseCase(char alphabet) {
         return (char) (alphabet + (ALPHABET_COUNT_WITHOUT_A - (alphabet - UPPERCASE_A) * DOUBLE));
     }
