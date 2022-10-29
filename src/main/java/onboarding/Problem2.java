@@ -8,19 +8,30 @@ public class Problem2 {
         return false;
     }
 
+    public static int getDupIdx(String crpytogram, int sIdx) {
+        int eIdx = sIdx + 1;
+        while(eIdx < crpytogram.length() && isDuplicate(crpytogram, sIdx, eIdx)) {
+            eIdx ++;
+        }
+
+        return eIdx;
+    }
+
     public static String decrypt(String cryptogram) {
         String decrpyto = cryptogram;
         int len = decrpyto.length();
-        int idx = 0;
+        int sIdx = 0;
+        int eIdx = 0;
 
-        while (idx < len - 1) {
-            if (decrpyto.charAt(idx) == decrpyto.charAt(idx+1)) {   // 중복 문자일 경우 삭제
-                decrpyto = decrpyto.substring(0, idx) + decrpyto.substring(idx+2);
+        while (sIdx < len - 1) {
+            if(isDuplicate(decrpyto, sIdx, sIdx + 1)) {
+                eIdx = getDupIdx(decrpyto, sIdx);
+                decrpyto = decrpyto.substring(0, sIdx) + decrpyto.substring(eIdx);
 
                 len = decrpyto.length();
             }
             else {  // 아닐 경우 계속 진행
-                idx ++;
+                sIdx ++;
             }
         }
 
