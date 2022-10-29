@@ -4,8 +4,9 @@ import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        initTwoWordMap(forms);
+        Set<String> emailSet = getEmailSet(forms);
+        List<String> answer = new ArrayList<>(emailSet);
+        Collections.sort(answer);
         return answer;
     }
 
@@ -26,5 +27,24 @@ public class Problem6 {
         }
         return map;
     }
-    
+
+    private static Set<String> getEmailSet(List<List<String>> forms) {
+        // 중복된 이메일 목록을 구하는 메소드
+        Set<String> emailSet = new HashSet<>();
+        Map<String, Integer> twoWordMap = initTwoWordMap(forms);
+
+        for (List<String> form : forms) {
+            String email = form.get(0);
+            String username = form.get(1);
+            for (int i = 0; i < username.length() - 1; i++) {
+                String twoWord = String.valueOf(username.charAt(i)) + String.valueOf(username.charAt(i+1));
+                if (twoWordMap.get(twoWord) > 1){
+                    emailSet.add(email);
+                    break;
+                }
+            }
+        }
+
+        return emailSet;
+    }
 }
