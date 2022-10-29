@@ -51,6 +51,20 @@ class Problem1 {
         return sum;
     }
 
+    public int multipleNumberOfDigit(int digits){
+        int mul = 1, temp;
+        String s = Integer.toString(digits);
+
+        for(int i = 0;i < s.length();i++){
+            temp = Integer.parseInt(s.substring(i, i+1));
+            if(i == 0)
+                mul = temp;
+            else
+                mul *= temp;
+        }
+        return mul;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
