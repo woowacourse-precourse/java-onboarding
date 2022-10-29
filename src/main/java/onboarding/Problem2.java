@@ -9,7 +9,7 @@ public class Problem2 {
         Deque<Character> deque = new LinkedList<>();
 
         for (char ele : cryptogram.toCharArray()) {
-            if (!isDequeEmpty(deque)) {
+            if (isDequeEmpty(deque)) {
                 insertWord(deque, ele);
                 continue;
             }
