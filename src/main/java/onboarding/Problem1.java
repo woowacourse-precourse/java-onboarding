@@ -20,13 +20,16 @@ class Problem1 {
     //error 검출
     private static boolean detectError(List<Integer> list) {
         for(int element : list)
-            if(element == 1 || element == 400)
+            if(!(2 <= element && element <= 399))
                 return true;
 
-        if(list.get(0) % 2 == 1 && list.get(1) - list.get(0) == 1)
-            return false;
+        if(list.get(0) % 2 == 0 || list.get(1) % 2 == 1)
+            return true;
 
-        return true;
+        if(list.get(1) - list.get(0) != 1)
+            return true;
+
+        return false;
     }
 
     //리스트 안 숫자들의 getSum, getMultiple의 값들 중 최대값 구하기
@@ -44,6 +47,16 @@ class Problem1 {
         }
 
         return ret;
+    }
+
+    private static int getMaxNumber(int num){
+        int n1 = getSumEachDigit(num), n2 = getMultipleEachDigit(num);
+
+        if(n1 < n2)
+            return n2;
+
+        return n1;
+
     }
 
     //각 자리 숫자 더하기 값 구하기
