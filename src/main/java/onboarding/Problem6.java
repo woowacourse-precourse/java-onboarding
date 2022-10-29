@@ -33,6 +33,12 @@ public class Problem6 {
                 throw new IllegalArgumentException("닉네임에는 한글만 사용할 수 있습니다.");
             }
         }
+
+        protected void isCrewMemberSizeThan1MemberAndLessThan100Member(List<List<String>> crew) {
+            if (crew.size() < 1 || 100 < crew.size()) {
+                throw new IllegalArgumentException("크루의 멤버 수는 1명 이상 100명 이하만 입력 가능합니다.");
+            }
+        }
     }
 
     public static List<List<String>> users = new ArrayList<>();
