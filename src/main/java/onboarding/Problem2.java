@@ -43,7 +43,11 @@ public class Problem2 {
             cryptogramList = new ArrayList<>(result);
         }
 
-        String answer = "answer";
+        String answer = result.stream()
+                .map(e->e.toString())
+                .reduce((acc, e) -> acc  + e)
+                .get();
+
         return answer;
     }
 }
