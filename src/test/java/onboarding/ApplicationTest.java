@@ -60,6 +60,14 @@ class ApplicationTest {
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
+
+        @Test
+        void case7() {
+            List<Integer> pobi = List.of(402, 403);
+            List<Integer> crong = List.of(0, 1);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
     }
 
     @Nested
