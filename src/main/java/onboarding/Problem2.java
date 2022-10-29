@@ -5,6 +5,7 @@ import java.util.Stack;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
+        // 중복된 문자가 없을때까지 반복 호출
         while (checkString(cryptogram)) {
             cryptogram = removeOverlap(cryptogram);
         }
