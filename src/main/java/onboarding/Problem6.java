@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.List;
+import java.util.Objects;
 
 /** 구현해야할 기능
  *  객체 사용 Crew(부모 키, 이메일, 이름)
@@ -15,5 +16,29 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
+    }
+
+    public static class Crew {
+        int parentKey;
+        String email;
+        String name;
+    }
+
+    public static class TwoLetters {
+        int parentKey;
+        String letters;
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            TwoLetters that = (TwoLetters) o;
+            return Objects.equals(letters, that.letters);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(letters);
+        }
     }
 }
