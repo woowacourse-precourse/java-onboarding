@@ -27,3 +27,17 @@ class Problem1 {
 
 		return true;
 	}
+
+	private static int calculatorScore(int page) {
+		int sumScore = 0;
+		int mulScore = 1;
+
+		int[] numOfDigitList = Stream.of(String.valueOf(page).split("")).mapToInt(Integer::parseInt).toArray();
+
+		for (int num : numOfDigitList) {
+			sumScore += num;
+			mulScore *= num;
+		}
+
+		return Math.max(sumScore, mulScore);
+	}
