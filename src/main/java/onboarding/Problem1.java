@@ -13,9 +13,21 @@ class Problem1 {
     }
 
     // 점수 최고점 구하기
-    private static int maxScore(List<Integer> pageList){
+    private static int maxScore(List<Integer> pageList) throws Exception {
+        // 왼쪽 페이지는 홀수, 오른쪽 페이지는 짝수만이 올 수 있다.
+        if (pageList.get(0) % 2 == 0 ) {
+            throw new Exception("왼쪽 페이지는 홀수만 올 수 있다..");
+        } else if (pageList.get(1) % 2 == 1) {
+            throw new Exception("오른쪽 페이지는 짝수만 올 수 있다.");
+        } else if (pageList.get(1) - pageList.get(0) != 1) {
+            throw new Exception("페이지의 차이는 1이 되어야 한다.");
+        }
+
         List<Integer> scoreList = new ArrayList<>();
         for (Integer page : pageList) {
+            if (page < 0 || page > 400) {
+                throw new Exception("페이지의 1~399의 범위만 올 수 있다.");
+            }
             int[] splitPage = splitNum(page);
             scoreList.add(sumSplitNum(splitPage));
             scoreList.add(multipleSplitNum(splitPage));
