@@ -1,14 +1,56 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        List<ValidForm> validForms = new ArrayList<>();
+
+        for (List<String> form : forms) {
+            String email = form.get(0);
+            String nickname = form.get(1);
+
+            // 이메일, 닉네임 유효성 검사
+            if (isValidEmail(email) && isValidNickname(nickname)) {
+                validForms.add(new ValidForm(email, nickname));
+            }
+        }
+
+        Map<String, String> duplicateWords = new HashMap<>(); // word, email 저장, 중복 무시
+        Set<String> duplicateEmailSet = new HashSet<>(); // email 저장, 중복 무시
+
+        for (ValidForm validForm : validForms) {
+            String email = validForm.getEmail();
+            String nickname = validForm.getNickname();
+
+            if (nickname.length() != 1) { // 닉네임 한자리 수 제외
+                List<String> nicknameWords = getNicknameWords(nickname);
+
+                for (String word : nicknameWords) {
+                    if (duplicateWords.containsKey(word)) {
+                        duplicateEmailSet.add(email);
+                        duplicateEmailSet.add(duplicateWords.get(word));
+                    } else {
+                        duplicateWords.put(word, email);
+                    }
+                }
+            }
+        }
+        
+        // 문자열 오름차순 정렬 후 리턴
+        List<String> duplicateEmails = new ArrayList<>(duplicateEmailSet);
+        duplicateEmails.sort(Comparator.naturalOrder());
+
+        return duplicateEmails;
     }
 
     // 1. 이메일 형식에 부합하는가?
@@ -36,12 +78,34 @@ public class Problem6 {
         return false;
     }
 
-    // 6. 두 글자 이상의 문자가 연속적으로 순서에 맞추어 포함되어 있는 경우 중복으로 간주
+    private static List<String> getNicknameWords(String nickname) {
+        List<String> nicknameWords = new ArrayList<>();
 
-    // 7. result는 이메일에 해당하는 부분의 문자열을 오름차순으로 정렬하고 중복은 제거
+        for (int i = 0; i < nickname.length(); i++) {
+            for (int j = 2 + i; j < nickname.length() + 1; j++) {
+                nicknameWords.add(nickname.substring(i, j));
+            }
+        }
 
-    // MEMO
-    // 닉네임 : ABCD -> AB BC CD ABC BCD ABCD, 4글자 -> 6개
-    // 닉네임 : ABCDE -> AB BC CD DE ABC BCD CDE ABCD BCDE ABCDE, 5글자 -> 10개
-    // 닉네임 : ABCDEF -> AB BC CD DE EF ABC BCD CDE DEF ABCD BCDE CDEF ABCDE BCDEF ABCDEF, 6글자 -> 15개
+        return nicknameWords;
+    }
+
+    private static class ValidForm {
+
+        private final String email;
+        private final String nickname;
+
+        public ValidForm(String email, String nickname) {
+            this.email = email;
+            this.nickname = nickname;
+        }
+
+        public String getEmail() {
+            return email;
+        }
+
+        public String getNickname() {
+            return nickname;
+        }
+    }
 }
