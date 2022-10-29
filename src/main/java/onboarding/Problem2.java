@@ -19,6 +19,13 @@ public class Problem2 {
         // 1. cryptogram의 문자를 돌면서 stack에 push
         for (int i = 0; i < cryptogram.length(); i++) {
             char cur = cryptogram.charAt(i);
+            if (!stack.isEmpty()) {
+                // 2. stack의 최상위와 현재 문자가 같다면 pop
+                if (cur == stack.peek()) {
+                    stack.pop();
+                    continue;
+                }
+            }
             stack.push(cur);
         }
         return answer;
