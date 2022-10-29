@@ -21,7 +21,7 @@ public class UserService {
 
     public List<String> findAllEmailByUserHavingInvalidName() {
         List<User> allUsers = userRepository.findAll();
-        Set<String> emailSet = new HashSet<>();
+        Set<String> emailSet = new TreeSet<>();
 
         allUsers.forEach(user -> {
             String name = user.getName();
@@ -36,10 +36,7 @@ public class UserService {
             }
         });
 
-        List<String> resultList = new ArrayList<>(emailSet);
-        Collections.sort(resultList);
-
-        return resultList;
+        return new ArrayList<>(emailSet);
     }
 
     private static String makeDuplicatingWord(String name, int index) {
