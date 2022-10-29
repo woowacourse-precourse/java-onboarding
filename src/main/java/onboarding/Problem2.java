@@ -8,7 +8,6 @@ public class Problem2 {
             if(checkOverlap(solvedCryptogram)){break;}
             solvedCryptogram= removeOverlap(solvedCryptogram);
         }
-
         return solvedCryptogram;
     }
 
