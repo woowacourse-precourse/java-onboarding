@@ -1,13 +1,13 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        return new ArrayList<>(compareCrew(forms));
     }
 
     public static Set<String> compareCrew(List<List<String>> forms){
@@ -18,9 +18,10 @@ public class Problem6 {
             List<String> firstCrew = forms.get(i);
             for(int j=1; j<len; j++) {
                 List<String> secondCrew = forms.get(j);
-                if( compareString(firstCrew.get(1), secondCrew.get(1)) ){
-                    overlaped.add(firstCrew.get(i));
-                    overlaped.add(secondCrew.get(j));
+                if(i==j){break;}
+                else if( compareString(firstCrew.get(1), secondCrew.get(1)) ){
+                    overlaped.add(firstCrew.get(0));
+                    overlaped.add(secondCrew.get(0));
                 }
             }
         }
