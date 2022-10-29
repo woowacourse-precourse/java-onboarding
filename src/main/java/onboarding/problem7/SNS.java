@@ -1,5 +1,6 @@
 package onboarding.problem7;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,7 +17,12 @@ class SNS {
     }
 
     public List<String> recommendFriends(String name) {
-        return database.getRecommendedUsersByName(name).stream().map(user -> user.getName()).collect(Collectors.toList());
+        return database.getRecommendedUsersByName(name)
+                .stream()
+                .sorted(Comparator.comparing(user -> -user.getScore()))
+                .map(user -> user.getName())
+                .limit(5)
+                .collect(Collectors.toList());
     }
 
 }

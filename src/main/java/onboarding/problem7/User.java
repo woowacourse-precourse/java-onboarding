@@ -8,6 +8,8 @@ class User {
     private String name;
     private int score = 0;
 
+    private List<User> friends = new ArrayList<>();
+
     public int getScore() {
         return score;
     }
@@ -23,8 +25,6 @@ class User {
     public void resetScore() {
         score = 0;
     }
-
-    private List<User> friends = new ArrayList<>();
 
     public void addScore() {
         score++;
