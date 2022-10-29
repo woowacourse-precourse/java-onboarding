@@ -4,8 +4,32 @@ import java.util.*;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        int fail = -1;
 
-        int answer = Integer.MAX_VALUE;
+        if(checkPageContinuous(pobi, crong) == false) {
+            return fail;
+        }
+
+        List<Integer> pobiLeftPage = seperatePageNumber(pobi.get(0));
+        List<Integer> pobiRightPage = seperatePageNumber(pobi.get(1));
+        List<Integer> crongLeftPage = seperatePageNumber(crong.get(0));
+        List<Integer> crongRightPage = seperatePageNumber(crong.get(1));
+
+        List<Integer> result1 = beforeScore(sumPageNumber(pobiLeftPage), multiflyPageNumber(pobiLeftPage));
+        List<Integer> result2 = beforeScore(sumPageNumber(pobiRightPage), multiflyPageNumber(pobiRightPage));
+        List<Integer> result3 = beforeScore(sumPageNumber(crongLeftPage), multiflyPageNumber(crongLeftPage));
+        List<Integer> result4 = beforeScore(sumPageNumber(crongRightPage), multiflyPageNumber(crongRightPage));
+
+        int result11 = maxPageNumber(result1);
+        int result22 = maxPageNumber(result2);
+        int result33 = maxPageNumber(result3);
+        int result44 = maxPageNumber(result4);
+
+        int pobiScore = score(result11, result22);
+        int crongScore = score(result33, result44);
+
+        int answer = result(pobiScore, crongScore);
+
         return answer;
     }
 
@@ -83,5 +107,20 @@ class Problem1 {
         }
 
         return pobiScore;
+    }
+
+    //페이지가 연속되어있지 않는경우 확인
+    public static boolean checkPageContinuous (List<Integer> pobiPage, List<Integer> crongPage) {
+        boolean failCheck = false;
+        boolean successCheck = true;
+
+        if(pobiPage.get(0)+1 != pobiPage.get(1)) {
+            return failCheck;
+        }
+        if(crongPage.get(0)+1 != crongPage.get(1)) {
+            return failCheck;
+        }
+
+        return successCheck;
     }
 }
