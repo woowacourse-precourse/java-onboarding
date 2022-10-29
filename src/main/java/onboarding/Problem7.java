@@ -13,7 +13,7 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         init();
         createUserInFriends(friends, user);
-        checkVisitors(visitors);
+        createUserInVisitors(visitors);
         return users.getRecommendFriendsRankingFive(userFriends);
     }
 
@@ -43,7 +43,7 @@ public class Problem7 {
         }
     }
 
-    private static void checkVisitors(List<String> visitors) {
+    private static void createUserInVisitors(List<String> visitors) {
         for (String visitor : visitors) {
             User findUser = users.findUser(visitor);
             findUser.addVisitsScore();
