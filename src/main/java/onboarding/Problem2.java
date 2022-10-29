@@ -18,6 +18,16 @@ public class Problem2 {
         }
         return duplicated;
     }
+
+    private static String removeDuplicatedChar(String cryptogram) {
+        StringBuilder sb = new StringBuilder();
+        boolean[] duplicated = checkDuplicatedChar(cryptogram);
+        for (int i = 0; i < cryptogram.length(); i++) {
+            if (duplicated[i] == false)
+                sb.append(cryptogram.charAt(i));
+        }
+        return sb.toString();
+    }
 }
 
 
