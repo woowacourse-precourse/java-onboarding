@@ -14,6 +14,12 @@ public class Problem6 {
     }
 
     private static class UserVerifier {
+        protected void emailAndNicknameVerifier(String email, String nickname) {
+            isRightEmailType(email);
+            isEmailLengthThan11CharactersAndLessThan20Characters(email);
+            isNicknameKorean(nickname);
+        }
+
         protected void isRightEmailType(String email) {
             if (!email.contains(Constants.EMAIL_TYPE)) {
                 throw new IllegalArgumentException("이메일 형식은 " + Constants.EMAIL_TYPE + " 도메인만 지원됩니다.");
@@ -53,9 +59,7 @@ public class Problem6 {
     private static void initList(List<List<String>> forms) {
         String nickname = forms.get(0).get(Constants.NICKNAME);
         String email = forms.get(0).get(Constants.EMAIL);
-        new UserVerifier().isNicknameKorean(nickname);
-        new UserVerifier().isEmailLengthThan11CharactersAndLessThan20Characters(email);
-        new UserVerifier().isRightEmailType(email);
+        new UserVerifier().emailAndNicknameVerifier(email, nickname);
         users.add(forms.get(0));
     }
 
@@ -64,9 +68,7 @@ public class Problem6 {
             List<String> user = forms.get(i);
             String nickname = user.get(Constants.NICKNAME);
             String email = user.get(Constants.EMAIL);
-            new UserVerifier().isNicknameKorean(nickname);
-            new UserVerifier().isEmailLengthThan11CharactersAndLessThan20Characters(email);
-            new UserVerifier().isRightEmailType(email);
+            new UserVerifier().emailAndNicknameVerifier(email, nickname);
             // 만약 중복되는 닉네임이 있고
             if (isLetterWordsInAlreadyExistsNicknames(nickname)) {
                 // result 리스트에 이메일이 존재하지 않는다면
