@@ -2,8 +2,15 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = decode(cryptogram);
         return answer;
+    }
+
+    private static String decode(String cryptogram) {
+        while (!cryptogram.equals(removeRepetition(cryptogram))) {
+            cryptogram = removeRepetition(cryptogram);
+        }
+        return cryptogram;
     }
 
     private static String removeRepetition(String cryptogram) {
