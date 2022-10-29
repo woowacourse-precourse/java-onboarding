@@ -11,6 +11,7 @@ class Problem1 {
         int b = ls.get(1);
 
         if( b != a+1 ) throw new Error("two value is not consecutive");
+        if(a%2 == 0 || b%2 == 1) throw new Error("(first, second) value must be (odd,even)");
 
         int x = Math.max(sumOfDigits(a), productOfDigits(a));
         int y = Math.max(sumOfDigits(b), productOfDigits(b));
@@ -40,12 +41,11 @@ class Problem1 {
 
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int valueOfPobi = findGameValue(pobi);
-        int valueOfCrong = findGameValue(crong);
-
-//        System.out.printf("########## %d %d", valueOfPobi, valueOfCrong);
 
         try {
+            int valueOfPobi = findGameValue(pobi);
+            int valueOfCrong = findGameValue(crong);
+
             if (valueOfPobi > valueOfCrong) {
                 return 1;
             } else if (valueOfPobi < valueOfCrong) {
