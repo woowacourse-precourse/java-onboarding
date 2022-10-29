@@ -35,4 +35,20 @@ class Problem1 {
 
         return true;
     }
+
+    private int sumNumbers (List<Integer> numbers) {
+        int sum = 0;
+        for (int i = 0; i < numbers.size(); i++) {
+            sum += numbers.get(i);
+        }
+        return sum;
+    }
+
+    private int mulNumbers (List<Integer> numbers) {
+        int result = 1;
+        for (int i =0; i < numbers.size(); i++) {
+            result *= numbers.get(i);
+        }
+        return result;
+    }
 }
