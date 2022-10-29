@@ -9,7 +9,8 @@ public class Problem7 {
         HashMap<String, Integer> listOfScore = new HashMap<>();
         listOfScore = getAcquaintance(user, listOfScore, userFriends, friends);
         listOfScore = getVisitorScore(listOfScore, visitors, userFriends);
-        answer = getTheTopFive(listOfScore);
+        List<Map.Entry<String, Integer>> sortedListOfScore = getSortedListOfScore(listOfScore);
+        answer = getTopFive(sortedListOfScore);
         return answer;
     }
 
@@ -60,7 +61,7 @@ public class Problem7 {
         return listOfScore;
     }
 
-    public static List<String> getTheTopFive(HashMap<String, Integer> listOfScore) {
+    public static List<Map.Entry<String, Integer>>  getSortedListOfScore(HashMap<String, Integer> listOfScore) {
         List<Map.Entry<String, Integer>> entryList = new LinkedList<>(listOfScore.entrySet());
         entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
             @Override
@@ -78,6 +79,10 @@ public class Problem7 {
             }
         });
 
+        return entryList;
+    }
+
+    public static List<String> getTopFive(List<Map.Entry<String, Integer>> entryList) {
         List<String> recommendList = new ArrayList<>();
         int numOfPeople = 5;
         if(entryList.size() < 5) {
