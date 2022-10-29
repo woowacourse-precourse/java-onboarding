@@ -6,7 +6,7 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         Stack<Character> stack = new Stack<>();
         for (char c : cryptogram.toCharArray()) {
-            stack = checkCharacterRepetition(stack, c);
+            stack = deleteRepetitiveChar(stack, c);
         }
         return stackToString(stack);
     }
@@ -19,11 +19,11 @@ public class Problem2 {
         return answer;
     }
 
-    public static Stack<Character> checkCharacterRepetition(Stack<Character> stack, char c) {
-        if (isStackElementExists(stack) && isStackTopEqualsCharacter(stack, c)) {
+    public static Stack deleteRepetitiveChar(Stack<Character> stack, char c){
+        if (isStackElementExists(stack) && isTopofStackEqualstoCharacter(stack, c)) {
             return popStack(stack);
         }
-        return pushStack(stack, c);
+        return pushCharToStack(stack, c);
     }
 
     public static Stack popStack(Stack stack) {
@@ -31,7 +31,7 @@ public class Problem2 {
         return stack;
     }
 
-    public static Stack pushStack(Stack stack, char c) {
+    public static Stack pushCharToStack(Stack stack, char c) {
         stack.push(c);
         return stack;
     }
@@ -40,7 +40,7 @@ public class Problem2 {
         return !stack.isEmpty();
     }
 
-    private static boolean isStackTopEqualsCharacter(Stack<Character> stack, char c) {
+    private static boolean isTopofStackEqualstoCharacter(Stack<Character> stack, char c) {
         return stack.peek() == c;
     }
 
