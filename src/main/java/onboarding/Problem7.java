@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 /* 기능 목록
@@ -62,5 +63,38 @@ public class Problem7 {
         }
 
         return subFriends;
+    }
+
+    /**
+     * 추천 사용자 이름과 점수 쌍들을 반환합니다.
+     *
+     * @param subFriends 친구의 친구 리스트
+     * @param visitors   방문자 리스트
+     * @return 추천 사용자의 이름과 점수 쌍들 반환
+     */
+    HashMap<String, Integer> getRecommends(List<String> myFriends, List<String> subFriends, List<String> visitors) {
+        HashMap<String, Integer> recommends = new HashMap<>();
+
+        for (String friend : subFriends) {
+            if (recommends.containsKey(friend)) {
+                recommends.put(friend, recommends.get(friend) + 10);
+            } else {
+                recommends.put(friend, 10);
+            }
+        }
+
+        for (String visitor : visitors) {
+            if (myFriends.contains(visitor)) {
+                continue;
+            }
+
+            if (recommends.containsKey(visitor)) {
+                recommends.put(visitor, recommends.get(visitor) + 1);
+            } else {
+                recommends.put(visitor, 1);
+            }
+        }
+
+        return recommends;
     }
 }
