@@ -60,8 +60,34 @@ public class Problem6 {
         return answer;
     }
 
+    //기능 4
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
+        answer=new ArrayList<String>();
+
+        for(int i=0;i<forms.size()-1;i++) {
+            String name1=forms.get(i).get(1);
+
+            for(int j=0;j<forms.size();j++) {
+
+                if(i!=j) {
+                    String name2=forms.get(j).get(1);
+                    String email2=forms.get(j).get(0);
+
+                    if(checkName(name1,name2)) {
+                        if(!checkEmail(answer,email2)) {
+                            answer.add(email2);
+                        }
+                        else
+                            continue;
+                    }
+                    else
+                        continue;
+                }
+            }
+        }
+        answer=sortList(answer);
+
         return answer;
     }
 }
