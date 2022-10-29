@@ -28,7 +28,6 @@ public class Problem4 {
 
         if (isAlphabet) {
             return getConvertedChar(character);
-
         }
 
         return character;
@@ -40,6 +39,7 @@ public class Problem4 {
 
         return regex;
     }
+
     static Character getConvertedChar(char character) {
         char convertedChar;
 
@@ -47,7 +47,9 @@ public class Problem4 {
             convertedChar = upperCaseConversion(character);
             return convertedChar;
         }
+
         convertedChar = lowerCaseConversion(character);
+
         return convertedChar;
     }
 
@@ -55,6 +57,7 @@ public class Problem4 {
         if (character >= 'A' && character <= 'Z') {
             return true;
         }
+
         return false;
     }
 
