@@ -75,11 +75,21 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         //pobi's card
         Card pobiCard = new Card();
-        System.out.println(pobiCard.selectCard(pobi));
+        Integer pobiTurn = pobiCard.selectCard(pobi);
 
         //crong's card
         Card crongCard = new Card();
-        System.out.println(crongCard.selectCard(crong));
+        Integer crongTrun = crongCard.selectCard(crong);
+
+        if (pobiTurn > crongTrun) {
+            answer = 1;
+        }
+        else if (pobiTurn < crongTrun) {
+            answer = 2;
+        }
+        else {
+            answer = 0;
+        }
 
         return answer;
     }
