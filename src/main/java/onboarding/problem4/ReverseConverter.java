@@ -2,10 +2,15 @@ package onboarding.problem4;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class ReverseConverter {
+	public static final Map<Character, Character> ALPHABET_AND_REVERSE_MAP = IntStream.rangeClosed(0, 25)
+		.boxed()
+		.collect(Collectors.toMap(index -> (char)('A' + index), index -> (char)('Z' - index)));
+
 	public static final List<Character> DICTIONARY = IntStream.rangeClosed('A', 'Z')
 		.mapToObj(c -> (char)c)
 		.collect(Collectors.toList());
