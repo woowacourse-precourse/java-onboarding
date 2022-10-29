@@ -16,7 +16,7 @@ public class Problem6 {
         return getDuplicateCrewEmails(duplicateCrewNicknames);
     }
 
-    public static void initCrewInfoMap(List<List<String>> crewForms) {
+    private static void initCrewInfoMap(List<List<String>> crewForms) {
         crewForms.stream()
                 .forEach(crewInfo -> {
                     String crewNickname = crewInfo.get(1);
@@ -75,4 +75,6 @@ public class Problem6 {
                 .collect(Collectors.toList());
         return duplicateCrewEmails;
     }
+
+
 }
