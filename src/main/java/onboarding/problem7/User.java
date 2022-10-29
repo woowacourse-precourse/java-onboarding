@@ -1,9 +1,11 @@
 package onboarding.problem7;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class User {
 
@@ -19,6 +21,12 @@ public class User {
         this.name = name;
         this.friends = friends;
         this.visitors = visitors;
+    }
+
+    public List<String> getRecommendedUsers() {
+        getScoresByUsers();
+        final Comparator<String> comp = Comparator.comparingInt(SCORES_BY_USERS::get);
+        return SCORES_BY_USERS.keySet().stream().sorted(comp.reversed()).limit(5).collect(Collectors.toList());
     }
 
     public void getScoresByUsers() {
