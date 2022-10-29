@@ -5,7 +5,15 @@ import java.util.HashMap;
 public class Problem4 {
 
     //대문자, 소문자 배열생성
-
+    static char[] upperCase = new char[26];
+    static char[] lowerCase = new char[26];
+    static void createStringArray(){
+        for(int i=0; i<upperCase.length; i++){
+            upperCase[i] = (char)(i+'A');
+            lowerCase[i] = (char)(i+'a');
+        }
+        return;
+    }
 
     //맵으로 각각의 알파벳 마다 매칭되는 값 저장하기
 
