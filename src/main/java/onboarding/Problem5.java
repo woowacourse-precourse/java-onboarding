@@ -6,6 +6,7 @@ import java.util.List;
 
 public class Problem5 {
     static class MoneyChange {
+
         int[] moneyGrade = new int[9];
 
         MoneyChange() {
@@ -20,6 +21,7 @@ public class Problem5 {
             moneyGrade[8] = 1;
 
         }
+
         private List<Integer> calculatorMoney(int money) {
             List<Integer> res = new ArrayList<>(Collections.emptyList());
 
@@ -43,6 +45,7 @@ public class Problem5 {
             return money;
         }
     }
+
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
 
