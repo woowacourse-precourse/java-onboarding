@@ -16,6 +16,9 @@ class Problem1 {
             metConditions = false;
         else if((test.get(0)%2 != 1) | (test.get(1)%2 !=0))
             metConditions = false;
+        else if((test.get(0)+1) != (test.get(1)))
+            metConditions = false;
+
         return metConditions;
     }
 
@@ -41,6 +44,31 @@ class Problem1 {
         return result;
     }
 
+    //각 자리 숫자의 곱과 덧셈 중 더 큰 값을 점수로 하기
+    public static int score(List<Integer> list){
+        int a = list.get(0);
+        int b = list.get(1);
+        int resultA = 0;
+        int resultB = 0;
+
+        resultA = Math.max(Sum(a),Mul(a));
+        resultB = Math.max(Sum(b),Mul(b));
+
+        return Math.max(resultA, resultB);
+    }
+
+    public static int winner(int a, int b){
+        int result = 0;
+
+        if(a>b)
+            result = 1;
+        else if(a<b)
+            result = 2;
+
+        return result;
+    }
+
+
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
@@ -51,8 +79,7 @@ class Problem1 {
         else if(!(verifyConditions(crong)))
             answer = -1;
         else
-
-
+            answer = winner(score(pobi), score(crong));
 
         return answer;
     }
