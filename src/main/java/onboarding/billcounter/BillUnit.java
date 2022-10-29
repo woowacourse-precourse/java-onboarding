@@ -7,6 +7,7 @@ public enum BillUnit {
 	THOUSAND_WON(1_000),
 	FIVE_HUNDRED_WON(500),
 	HUNDRED_WON(100),
+	FIFTY_WON(50),
 	TEN_WON(10),
 	ONE_WON(1);
 
