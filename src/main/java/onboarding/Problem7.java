@@ -24,17 +24,8 @@ public class Problem7 {
 		for (String systemUser : userList.keySet()) {
 			userScore.put(systemUser, FRIEND_SCORE * addFriendScore(userList.get(user), userList.get(systemUser)));
 		}
-
 		userScore.putAll(addVisitScore(userScore, visitors));
-
-		List<Entry<String, Integer>> recommendFriendList = new ArrayList<>(userScore.entrySet());
-		recommendFriendList.sort((o1, o2) -> {
-			if (o1.getValue().equals(o2.getValue())) {
-				return o1.getKey().compareTo(o2.getKey());
-			}
-			return o2.getValue().compareTo(o1.getValue());
-		});
-
+		List<Entry<String, Integer>> recommendFriendList = sortRecommendFriend(userScore);
 		return makeRecommendFriendList(user, userList, recommendFriendList);
 	}
 
@@ -74,6 +65,17 @@ public class Problem7 {
 			scoreList.put(visitor, VISIT_SCORE);
 		}
 		return scoreList;
+	}
+
+	private static List<Entry<String, Integer>> sortRecommendFriend(Map<String, Integer> userScore) {
+		List<Entry<String, Integer>> recommendFriendList = new ArrayList<>(userScore.entrySet());
+		recommendFriendList.sort((o1, o2) -> {
+			if (o1.getValue().equals(o2.getValue())) {
+				return o1.getKey().compareTo(o2.getKey());
+			}
+			return o2.getValue().compareTo(o1.getValue());
+		});
+		return recommendFriendList;
 	}
 
 	private static List<String> makeRecommendFriendList(String user, Map<String, List<String>> userList,
