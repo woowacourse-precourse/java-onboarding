@@ -48,4 +48,37 @@ public class Problem7 {
         }
         return friendPoints;
     }
+
+    private static Map<String, Integer> getFriendPoints(String user, List<List<String>> friends, List<String> visitors){
+        // 친구 추천 점수를 계산하는 메소드
+        Set<String> curFriends = getUserFriends(user, friends);
+        Map<String, Integer> friendPoints = initFriendPoints(friends, visitors);
+
+        // 함께 친구면 추천 점수 10 증가
+        for (List<String> friend : friends){
+            String leftFriend = friend.get(0);
+            String rightFriend = friend.get(1);
+            if (leftFriend.equals(user) || rightFriend.equals(user)){
+                continue;
+            }
+
+            if (curFriends.contains(leftFriend)){
+                friendPoints.put(rightFriend, friendPoints.get(rightFriend) + 10);
+            }
+
+            if (curFriends.contains(rightFriend)){
+                friendPoints.put(leftFriend, friendPoints.get(leftFriend) + 10);
+            }
+
+        }
+
+        // 방문자면 점수 1 증가
+        for (String visitor : visitors){
+            if (curFriends.contains(visitor)){
+                continue;
+            }
+            friendPoints.put(visitor, friendPoints.get(visitor) + 1);
+        }
+        return friendPoints;
+    }
 }
