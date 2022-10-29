@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -35,7 +36,7 @@ public class Problem6 {
             }
         }
         List<String> answer = list.stream().distinct().collect(Collectors.toList());
-
+        Collections.sort(answer);
         return answer;
     }
 }
