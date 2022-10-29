@@ -34,4 +34,16 @@ class Problem1 {
         return Math.max(leftMax, rightMax);
     }
 
+    /**
+     * 포비와 크롱의 리스트 길이가 2가 아니면 예외
+     * @param list
+     * @return 리스트 길이가 2가 아니면 true / 맞으면 false
+     */
+    private static Boolean isPageListSize2(List<Integer> list) {
+        if (list.size() != 2) {
+            return true;
+        }
+        return false;
+    }
+
 }
