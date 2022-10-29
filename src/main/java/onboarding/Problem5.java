@@ -12,4 +12,8 @@ public class Problem5 {
     public int divideNumberAByNumberB(int numberA, int numberB) throws ArithmeticException{
         return numberA / numberB;
     }
+
+    public int moduloNumberAByNumberB(int numberA, int numberB) throws ArithmeticException{
+        return numberA % numberB;
+    }
 }
