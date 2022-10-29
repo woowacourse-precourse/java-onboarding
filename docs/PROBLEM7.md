@@ -32,11 +32,11 @@
 ## Problem7
 
 * 유저 (user)
- - [ ] user를 받아서 객체 생성
- - [ ] friends 리스트 만들기
- - [ ] acquaintances, visitors 해쉬맵
- - [ ] 친구의 친구 카운트마다 점수 10점 추가
- - [ ] 방문자 방문마다 점수 1점 추가
+ - [x] user를 받아서 객체 생성
+ - [x] friends 리스트 만들기
+ - [x] acquaintances, visitors 해쉬맵
+ - [x] 친구의 친구 카운트마다 점수 10점 추가
+ - [x] 방문자 방문마다 점수 1점 추가
 * 친구 (friends)
  - [ ] friends 리스트를 받을 때 user의 친구이면 객체 생성
  - [ ] friends 리스트 만들기
