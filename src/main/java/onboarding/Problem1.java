@@ -66,4 +66,14 @@ class Problem1 {
     private static int sumAllNumbers(int[] numbers) {
         return Arrays.stream(numbers).sum();
     }
+
+    /*
+     * 주어진 배열의 값을 정수로 변환하여 모두 곱함
+     *
+     * @return int
+     * */
+    private static int multiplyAllNumbers(int[] numbers) {
+        return Arrays.stream(numbers)
+                .reduce(1, (number1, number2) -> number1 * number2);
+    }
 }
