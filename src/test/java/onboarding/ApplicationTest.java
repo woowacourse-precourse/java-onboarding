@@ -149,90 +149,83 @@ class ApplicationTest {
         
         @Test
         void case3() {
-            String cryptogram = "";
-            String result = "";
-            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
-        }
-        
-        @Test
-        void case4() {
             String cryptogram = "a";
             String result = "a";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
         
         @Test
-        void case5() {
+        void case4() {
             String cryptogram = "aa";
             String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
         
         @Test
-        void case6() {
+        void case5() {
             String cryptogram = "abababab";
             String result = "abababab";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
         
         @Test
-        void case7() {
+        void case6() {
             String cryptogram = "aaaabbbb";
             String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
         
         @Test
-        void case8() {
+        void case7() {
             String cryptogram = "aaaacbbbb";
             String result = "c";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
         
         @Test
-        void case9() {
+        void case8() {
             String cryptogram = "aaaabcbbb";
             String result = "bcb";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
     
         @Test
-        void case10() {
+        void case9() {
             String cryptogram = "aaa";
             String result = "a";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
     
         @Test
-        void case11() {
+        void case10() {
             String cryptogram = "zyellleyz";
             String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
     
         @Test
-        void case12() {
+        void case11() {
             String cryptogram = "saddaas";
             String result = "sas";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
     
         @Test
-        void case13() {
+        void case12() {
             String cryptogram = "zyalllelyz";
             String result = "zyaelyz";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
     
         @Test
-        void case14() {
+        void case13() {
             String cryptogram = "aabba";
             String result = "a";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
     
         @Test
-        void case15() {
+        void case14() {
             String cryptogram = "abbaa";
             String result = "a";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
