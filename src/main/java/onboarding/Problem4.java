@@ -10,6 +10,34 @@ public class Problem4 {
         answer = Encode.encode(word);
         return answer;
     }
+
+    public static void main(String[] args) {
+        Program4.start();
+        String inputWord = Program4.inputWord();
+        String result = Program4.encode(inputWord);
+        Program4.end(inputWord, result);
+    }
+}
+
+class Program4 {
+
+    static void start() {
+        OutView4.printStart();
+    }
+
+    static String inputWord() {
+        return Input4.inputWord();
+    }
+
+    static String encode(String inputWord) {
+        Encode.validateInput(inputWord);
+        return Encode.encode(inputWord);
+    }
+
+    static void end(String inputWord, String result) {
+        OutView4.printHead();
+        OutView4.printResult(inputWord, result);
+    }
 }
 
 class Input4 {
