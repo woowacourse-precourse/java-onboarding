@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 class Problem1 {
@@ -22,19 +24,17 @@ class Problem1 {
         }
 
         //모든 예외를 통과한 정상 입력
-        int pobiMax = 0;
-        int crongMax = 0;
+        List<Integer> pobiNums = new ArrayList<>();
+        List<Integer> crongNums = new ArrayList<>();
         for(int i = 0; i < 2; i++){
-            int a = plusDigits(pobi.get(i));
-            int b = multiplyDigits(pobi.get(i));
-            int c = Math.max(a, b);
-            pobiMax = Math.max(pobiMax, c);
+            pobiNums.add(plusDigits(pobi.get(i)));
+            pobiNums.add(multiplyDigits(pobi.get(i)));
 
-            int d = plusDigits(crong.get(i));
-            int e = multiplyDigits(crong.get(i));
-            int f = Math.max(d, e);
-            crongMax = Math.max(crongMax, f);
+            crongNums.add(plusDigits(crong.get(i)));
+            crongNums.add(multiplyDigits(crong.get(i)));
         }
+        int pobiMax = max(pobiNums);
+        int crongMax = max(crongNums);
 
         //포비와 크롱을 비교하여 반환값 설정
         if(pobiMax > crongMax){
@@ -93,5 +93,11 @@ class Problem1 {
             return true;
         }
         return false;
+    }
+
+    private static int max(List<Integer> numbers){
+        //리스트를 내림차순으로 정렬해서 인덱스 0번째 수를 반환
+        Collections.sort(numbers, Collections.reverseOrder());
+        return numbers.get(0);
     }
 }
