@@ -32,6 +32,12 @@ public class Problem7 {
         }
     }
 
+    private static void getScore(List<List<String>> friends, List<String> visitors){
+        makeScoresForFriendship(friends);
+        getScoreOfVisitors(visitors);
+        deleteZeroValueOnMap();
+    }
+
     private static void addFriendIfExists(String user, List<String> relation){
         if(!relation.contains(user)) return;
         usersFriend.addAll(relation);
