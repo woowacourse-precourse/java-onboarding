@@ -11,21 +11,18 @@ import java.util.stream.Collectors;
 
 public class UserRelation {
     private String user;
+    private List<String> visitors = new ArrayList<>();
     private Map<String, Set<String>> friendsRelations = new HashMap<>();
     private Set<String> userFriends = new HashSet<>();
-    private List<String> notUserFriends = new ArrayList<>();
-    private List<String> visitors = new ArrayList<>();
-    private List<String> notUserFriendVisitors = new ArrayList<>();
 
-    protected UserRelation() {}
+    protected UserRelation() {
+    }
 
     public UserRelation(String user, List<List<String>> friendsRelationList, List<String> visitors) {
         this.user = user;
         this.visitors = visitors;
         createFriendsRelations(friendsRelationList);
         createUserFriends(friendsRelations);
-        createNotUserFriends(friendsRelations);
-        createNotUserFriendVisitors();
     }
 
     private void createFriendsRelations(List<List<String>> friends) {
@@ -48,18 +45,6 @@ public class UserRelation {
                 .collect(Collectors.toSet());
     }
 
-    private void createNotUserFriends(Map<String, Set<String>> friendsRelationMap) {
-        notUserFriends = friendsRelationMap.keySet().stream()
-                .filter(userId -> !userFriends.contains(userId))
-                .collect(Collectors.toList());
-    }
-
-    private void createNotUserFriendVisitors() {
-        notUserFriendVisitors = visitors.stream()
-                .filter(visitor -> !userFriends.contains(visitor))
-                .collect(Collectors.toList());
-    }
-
     public String getUser() {
         return user;
     }
@@ -72,15 +57,7 @@ public class UserRelation {
         return userFriends;
     }
 
-    public List<String> getNotUserFriends() {
-        return notUserFriends;
-    }
-
     public List<String> getVisitors() {
         return visitors;
-    }
-
-    public List<String> getNotUserFriendVisitors() {
-        return notUserFriendVisitors;
     }
 }

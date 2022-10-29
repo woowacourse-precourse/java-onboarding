@@ -9,31 +9,37 @@ import java.util.stream.Collectors;
 public class UserScore {
     private Map<String, Integer> userScores = new HashMap<>();
 
-    protected UserScore() {
-    }
-
-    public UserScore(List<String> notUserFriends, List<String> notUserFriendVisitors) {
-        notUserFriends.forEach(user -> userScores.put(user, 0));
-        notUserFriendVisitors.forEach(user -> userScores.put(user, 0));
-    }
-
-    public void increaseVisitors(List<String> visitors) {
-        visitors.forEach(user -> {
-            if (userScores.containsKey(user))
-                userScores.put(user, userScores.get(user) + 1);
-        });
-    }
-
-    public void increaseUserFriends(String user, Map<String, Set<String>> friendsRelations) {
-        for (String userFriend : friendsRelations.get(user)) {
-            friendsRelations.get(userFriend)
-                    .forEach(this::increaseFriend);
+    public void addFriendsScore(String user, Map<String, Set<String>> friendRelations) {
+        for (String userFriend : friendRelations.get(user)) {
+            friendRelations.get(userFriend)
+                    .stream()
+                    .filter(userId -> !user.equals(userId))
+                    .forEach(userId -> {
+                        if (userScores.containsKey(userId))
+                            increase10Score(userId);
+                        else
+                            userScores.put(userId, 10);
+                    });
         }
     }
 
-    private void increaseFriend(String friend) {
-        if (userScores.containsKey(friend))
-            userScores.put(friend, userScores.get(friend) + 10);
+    public void increase10Score(String user) {
+        userScores.put(user, userScores.get(user) + 10);
+    }
+
+    public void addVisitorsScore(List<String> visitors, Set<String> userFriends) {
+        visitors.forEach(visitor -> {
+            if (!userFriends.contains(visitor)) {
+                if (userScores.containsKey(visitor))
+                    increase1Score(visitor);
+                else
+                    userScores.put(visitor, 1);
+            }
+        });
+    }
+
+    public void increase1Score(String user) {
+        userScores.put(user, userScores.get(user) + 1);
     }
 
     public List<String> getUserScoreTop5() {
