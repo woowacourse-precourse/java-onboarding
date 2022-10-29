@@ -9,9 +9,20 @@ import java.util.Map;
 public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        Map<String, List<String>> userToFriends = parseFriends(friends);
+
         List<String> answer = Collections.emptyList();
         return answer;
     }
+
+    static List<String> findAllUserWithoutMainCharacter(String mainCharacter, Map<String, List<String>> userToFriends, List<String> visitors) {
+        return null;
+
+    }
+
+    //    static List<String> exceptAlreadyFriends(String user, List<String> friends) {
+    //        return null;
+    //    }
 
     static Map<String, List<String>> parseFriends(List<List<String>> friends) {
         Map<String, List<String>> parsedFriends = new HashMap<>();
