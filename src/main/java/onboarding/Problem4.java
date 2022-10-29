@@ -12,14 +12,19 @@ public class Problem4 {
 
         for (int i = 0 ; i < word.length(); i++)
         {
-            char c = word.charAt(i);
-            if (Character.isUpperCase(c))
-                answer += upperDict.charAt((int)c - 'A');
-            else if(Character.isLowerCase(c))
-                answer += lowwerDict.charAt((int)c - 'a');
-            else //대소문자가 아니라면 그대로 concat 한다.
-                answer += c;
+            answer = getAnswer(word, answer, upperDict, lowwerDict, i);
         }
+        return answer;
+    }
+
+    private static String getAnswer(String word, String answer, String upperDict, String lowwerDict, int i) {
+        char c = word.charAt(i);
+        if (Character.isUpperCase(c))
+            answer += upperDict.charAt((int)c - 'A');
+        else if(Character.isLowerCase(c))
+            answer += lowwerDict.charAt((int)c - 'a');
+        else //대소문자가 아니라면 그대로 concat 한다.
+            answer += c;
         return answer;
     }
 }
