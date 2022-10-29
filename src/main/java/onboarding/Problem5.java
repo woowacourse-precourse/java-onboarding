@@ -8,7 +8,7 @@ public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> change = new ArrayList<>();
         money = toOneWon(money, change);
-
+        toRestWon(money, change);
 
         return change;
     }
@@ -19,11 +19,11 @@ public class Problem5 {
     }
 
     public static void toRestWon(int money, List<Integer> change) {
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 3; i++) {
             int oneOfNumber = money % 10;
             change.add(oneOfNumber % 5);
             change.add(oneOfNumber / 5);
-            money /= money;
+            money /= 10;
         }
     }
 }
