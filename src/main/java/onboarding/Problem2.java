@@ -32,6 +32,7 @@ public class Problem2 {
             }
             String pattern = String.format("[%s]{2,}", duplicate);
             String answer = cryptogram.replaceAll(pattern, "");
+            return decode(answer);
         }
     }
 }
