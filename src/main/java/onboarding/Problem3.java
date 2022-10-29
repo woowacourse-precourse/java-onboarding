@@ -1,10 +1,17 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 
 public class Problem3 {
 
+    static final int START_RANGE = 1;
+    static final int END_RANGE = 10_000;
+
+    private static boolean isValidNumber(int num) {
+        return START_RANGE <= num && num <= END_RANGE;
+    }
     public static boolean isClapCase(int oneDigitNum) {
         int[] clapCases = {3, 6, 9};
 
@@ -43,6 +50,10 @@ public class Problem3 {
     }
 
     public static int getClapCountSum(int maxNum) {
+        if (!isValidNumber(maxNum)) {
+            throw new InputMismatchException("입력 범위가 [1, 10_000] 안에 있지 않습니다.");
+        }
+
         int ret = 0;
 
         for (int clapNum = 1; clapNum <= maxNum; ++clapNum) {
