@@ -1,5 +1,6 @@
 package onboarding.problem3.domain;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Game369Strategy implements GameStrategy {
@@ -11,5 +12,12 @@ public class Game369Strategy implements GameStrategy {
         String checkNumberText = String.valueOf(number);
         return checkList.stream()
                 .anyMatch(checkNumberText::contains);
+    }
+
+    @Override
+    public int count(int number) {
+        return Long.valueOf(Arrays.stream(String.valueOf(number).split(""))
+                .filter(checkList::contains)
+                .count()).intValue();
     }
 }

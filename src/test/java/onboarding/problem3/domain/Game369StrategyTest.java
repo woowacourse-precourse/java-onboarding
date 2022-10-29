@@ -20,4 +20,10 @@ public class Game369StrategyTest {
     void satisfy_condition(int value, boolean expected) {
         assertThat(gameStrategy.satisfyCondition(value)).isEqualTo(expected);
     }
+
+    @ParameterizedTest(name = "숫자에 3,6,9 개수를 반환한다.")
+    @CsvSource(value = {"1:0", "3:1", "10:0", "13:1", "66:2", "102:0", "109:1", "136:2", "369:3", "3693:4", "9999:4", "10000:0"}, delimiter = ':')
+    void count(int value, int expected) {
+        assertThat(gameStrategy.count(value)).isEqualTo(expected);
+    }
 }
