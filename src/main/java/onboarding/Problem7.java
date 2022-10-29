@@ -10,6 +10,7 @@ public class Problem7 {
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 		// 전체 유저 리스트 생성
 		List<String> userList = makeUserList(friends, visitors);
+		// 전체 유저리스트에서 기준이 되는 유저 삭제
 		userList.remove(user);
 
 		// 유저 친구 관계 리스트 생성
@@ -21,7 +22,7 @@ public class Problem7 {
 		// 전체 유저 리스트에서 유저와 친구를 뺀 리스트 생성
 		List<String> noFriendList = makeNoFriendList(userList, userFriendsList);
 
-		// 친구 점수 집계용 hashmap 생성 및 초기회
+		// 친구 점수 집계용 hashmap 생성 및 초기화
 		HashMap<String, Integer> friendshipScore = new HashMap<>();
 		for (String person : noFriendList) {
 			friendshipScore.put(person, 0);
@@ -36,17 +37,23 @@ public class Problem7 {
 
 		List<String> answer = new ArrayList<>();
 		while (!friendshipScore.isEmpty()) {
+			//가장 높은 점수인 유저들 리스트 생성
 			List<String> maxValueKeys = findMaxValueKeys(friendshipScore);
 			// answer 리스트에 add
 			answer.addAll(maxValueKeys);
-			if (maxValueKeys.size() > 0) {
-				for (String key : maxValueKeys) {
-					friendshipScore.remove(key);
-				}
-			}
+			//answer리스트에 추가된 유저 hashmap에서 삭제
+			removeHighScoreUser(friendshipScore, maxValueKeys);
 		}
 
 		return answer;
+	}
+
+	private static void removeHighScoreUser(HashMap<String, Integer> friendshipScore, List<String> maxValueKeys) {
+		if (maxValueKeys.size() > 0) {
+			for (String key : maxValueKeys) {
+				friendshipScore.remove(key);
+			}
+		}
 	}
 
 	private static void addVisitorScore(List<String> visitors, HashMap<String, Integer> friendshipScore, String person) {
