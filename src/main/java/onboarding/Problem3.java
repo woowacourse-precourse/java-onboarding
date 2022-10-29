@@ -4,8 +4,8 @@ package onboarding;
 public class Problem3 {
     public static boolean clap(int n, int digit){
         String s = Integer.toString(n);
-        int tmp = Character.getNumericValue(s.charAt(digit));
-        if(tmp == 3 || tmp ==  6 || tmp == 9)
+        char tmp = s.charAt(digit);
+        if(tmp == '3' || tmp ==  '6' || tmp == '9')
             return true;
         else return false;
     }
