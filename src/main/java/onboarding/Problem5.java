@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Problem5 {
     static class MoneyChange {
-        int [] moneyGrade = new int[9];
+        int[] moneyGrade = new int[9];
         public MoneyChange() {
             moneyGrade[0] = 50000;
             moneyGrade[1] = 10000;
@@ -23,16 +23,14 @@ public class Problem5 {
             List<Integer> res = new ArrayList<>(Collections.emptyList());
             for (int i = 0; i < moneyGrade.length; i++) {
                 int count = money / moneyGrade[i];
-
                 res.add(count);
-                if (count != 0)
+                if (count != 0) {
                     money -= moneyGrade[i] * count;
+                }
             }
 
             return res;
         }
-
-
     }
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
