@@ -9,11 +9,11 @@ import domain.FormValidator;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-    	List<String> answer = new ArrayList<>();
+        List<String> answer = new ArrayList<>();
         FormValidator validator = new FormValidator(getFormList(forms));
-    	for (Form form : validator.getInvalidForms()) {
-    		answer.add(form.getEmail());
-    	}
+        for (Form form : validator.getInvalidForms()) {
+            answer.add(form.getEmail());
+        }
         Collections.sort(answer);
         return answer;
     }
@@ -24,9 +24,9 @@ public class Problem6 {
      * @return Form 타입의 ArrayList
      */
     private static List<Form> getFormList(List<List<String>> forms) {
-    	List<Form> result = new ArrayList<>();
+        List<Form> result = new ArrayList<>();
         for (List<String> form : forms) {
-        	result.add(new Form(form.get(0), form.get(1)));
+            result.add(new Form(form.get(0), form.get(1)));
         }
         return result;
     }
