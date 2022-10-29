@@ -4,8 +4,13 @@ public class Problem4 {
 
     public static String solution(String word) {
 
-        String answer = "";
-        return answer;
+        StringBuffer answer = new StringBuffer();
+
+        for (int i = 0; i < word.length(); i++) {
+            answer.append(getReverseAlphabet(word.charAt(i)));
+        }
+
+        return answer.toString();
     }
 
     //알파벳만 반대로 반환
