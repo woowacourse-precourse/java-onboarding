@@ -29,6 +29,12 @@ public class Problem2 {
         if(target.length() < 1 || target.length() > 1000) {
             return false;
         }
+
+        String lowerAlphaRegex = "^[a-z]*$";
+        if(!target.matches(lowerAlphaRegex)) {
+            return false;
+        }
+
         return true;
     }
 
