@@ -105,17 +105,38 @@
   * static TreeSet<String> *emailToBeSent*
 * 메소드
 
-| 메소드              | 기능           |
-|------------------|--------------|
-| **checkNickName**| 받은 *emailAndName*에서 *Name*을 2글자 단위로 쪼개서 **checkNickNamePart**에 보내고 난 뒤 *usedNickNamePart*에 *myEmail*을 value로 모두 추가|
-|**checkNIckNamePart**|받은 2글자가 usedNickNamePart에 있는지 확인하고 있으면 해당 key를 가진 value(Email)와 myEmail을 *emailToBeSent*에 추가해 줌 |
+| 메소드                   | 기능                                                                                                                 |
+|-----------------------|--------------------------------------------------------------------------------------------------------------------|
+| **checkNickName**     | 받은 *emailAndName*에서 *Name*을 2글자 단위로 쪼개서 **checkNickNamePart**에 보내고 난 뒤 *usedNickNamePart*에 *myEmail*을 value로 모두 추가 |
+| **checkNIckNamePart** | 받은 2글자가 usedNickNamePart에 있는지 확인하고 있으면 해당 key를 가진 value(Email)와 myEmail을 *emailToBeSent*에 추가해 줌                    |
 
 ---------------------------------------
 
 ### 문제7
-1. 친구 관계를 
-2. 친구의 친구 찾기
-3. 친구의 친구를 key로 HashMap(이름=점수)에 value를 10으로 추가하는데 이미 있으면 value+10해준다.
-4. visitor를 key로 value를 1로 추가 이미 있으면 value+1하기
-5. HashMap(이름=점수)을 List로 변환해서 value(점수)기준(같을 경우 key(이름)기준)으로 내림차순 정렬한다.
-6. 본인이름을 제외한 5개 뽑고 이름만 answer에 담아 return한다.
+1. 이름을 key로 친구들을 value로 가지는 *friendRelation* 맵에 **makeFriendRelation**을 이용해 모든 친구 관계를 넣어준다.
+2. User의 친구의 친구에게 10점을 주도롤 **plusScoreByFriend**에 User를 넣는다.
+3. 친구의 친구 이름을 key로 *Score*(이름=점수)에 value를 10으로 추가하는데 이미 있으면 value+10을 넣는다.
+4. *visitor*를 key로 *Score*(이름=점수)에 value를 1로 추가 이미 있으면 value+1하는 **plusScoreByVisitor**에 *visitors*넣기. 
+5. *Score*의 key(이름)를 List로 변환해서 value(점수)기준(같을 경우 key(이름)기준)으로 내림차순 정렬한다.
+6. *User*와 *User*의 친구를 제외한 5개 뽑고 이름만 *answer*에 담아 return한다.
+
+#### Problem7 클래스
+* 필드
+  * HashMap<String, List<String>> *friendRelation*;
+  * HashMap<String, Integer> *Score*;
+* 메소드
+
+| 메소드                          | 기능                                                            |
+|------------------------------|---------------------------------------------------------------|
+| **makeFriendRelation**       | 각자의 이름을 key로 *friendRelation*에 상대의 이름을 value에 추가              |
+| **addFriendRelation**        | friend1을 key로 *Score*의 value에 freind2를 추가 없으면 새로 생성           |
+| **plusScoreByFriend**        | user의 친구를 plusFriendScore에 모두 넣어 친구의 친구의 *Score*의 value에 점수 추가 |
+| **plusFriendScore**          | plusScore에 freind의 친구를 넣어 점수 10점 추가                           |
+| **plusScoreByVisitor**       | 모든 visitor를 **plusVisitorScore**에 넣어 점수 추가                    |
+| **plusVisitorScore**         | **plusScore**에 visitor를 넣어 1점을 추가                             |
+| **plusScore**                | 입력받은 name을 키로 Score에 입력받은 score만큼 Value에 추가. 없으면 새로 생성        |
+| **recommend**                | Score의 key를 value를 기준으로 정렬해 User와 User의 친구를 제외한 5명까지 List로 반환함 |
+| **sortingByScore**           | List를 Score의 Value를 기준으로 정렬                                   |
+| **compareScore**             | List의 String의 key로 Value를 보고 비교하되 같은 값이면 key를 보고 비교함          |
+| **excludeUserFriendAndUser** | List에서 User와 User의 친구를 제외                                     |
+| **cutFiveRecommendList**     | List에서 순서대로 5개까지 뽑아 List로 반환                                  |
