@@ -13,12 +13,11 @@ public class Problem6 {
             if(nickname.length() == 1){
                 continue;
             }
+            
             //닉네임 중복 확인
             List<String> duplicatedNicknameOwner = checkNicknameDuplication(nickname, email, part);
             //중복된 이메일 저장
-            for(int j = 0; j < duplicatedNicknameOwner.size(); j++){
-                emailSet.add(duplicatedNicknameOwner.get(j));
-            }
+            emailSet = addEmail(emailSet, duplicatedNicknameOwner);
 
             //중복 닉네임이 될 수 있는 단어들(part)을 추출
             List<String> newPart = extractNicknameParts(nickname);
@@ -58,4 +57,10 @@ public class Problem6 {
         return new ArrayList<>(part);
     }
 
+    private static HashSet<String> addEmail(HashSet<String> emailSet, List<String> email){
+        for(int j = 0; j < email.size(); j++){
+            emailSet.add(email.get(j));
+        }
+        return emailSet;
+    }
 }
