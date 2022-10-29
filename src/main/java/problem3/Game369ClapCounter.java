@@ -2,6 +2,7 @@ package problem3;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.IntStream;
 
 public class Game369ClapCounter {
     private static final int LOWER_BOUNDS = 1;
@@ -18,12 +19,8 @@ public class Game369ClapCounter {
     public static int countFromOneTo(int lastNumber) {
         validateBounds(lastNumber);
 
-        int result = 0;
-
-        for (int num = LOWER_BOUNDS; num <= lastNumber; num++) {
-            result += countClaps(num);
-        }
-        return result;
+        return IntStream.rangeClosed(LOWER_BOUNDS, lastNumber)
+                .reduce(0, (counted, num) -> counted + countClaps(num));
     }
 
     private static int countClaps(int num) {
