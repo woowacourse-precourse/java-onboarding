@@ -83,9 +83,10 @@
    2. <변수>\
       (ArrayList) findUserFriends 의 리턴값을 담을 user_friends 리스트\
       (ArrayList) findFriendsOfFriend의 리턴값을 담을 user_unknown_friends 리스트
-   3. <구현>
-friends_list 초기화
+   3. <구현>\
+friends_list 초기화\
       findUserFriends, findFriendsOfFriend를 사용해 user_unknown_friends구하기\
+**(추가) user_unknown_friends 에서 user지우기, visitors에서 user_friends 지우기**\
       user_unknown_friends를 매개변수로 friendPointCalculate 메서드 수행\
       visitors 를 매개변수로 visitorPointCalculate 메서드 수행\
       findTopFive 메서드를 수행해 리턴값을 최종 반환

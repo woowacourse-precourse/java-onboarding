@@ -1,6 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -9,7 +9,19 @@ import java.util.stream.Stream;
 public class Problem7 {
     static List<Friend> friends_list;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        friends_list = new ArrayList<>();
+        List<String> answer;
+        List<String> user_friends = findUserFriends(user, friends);
+        List<String> user_unknown_friends = findFriendsOfFriend(user_friends, friends);
+        List<String> new_visitors = new ArrayList<>(visitors); // visitors 변수가 asList 고정되어 변경 불가해 새로운 리스트 생성
+
+        user_unknown_friends.removeIf(i -> i.equals(user)); // user_unknown_friends 리스트에서 user 삭제
+        new_visitors.removeAll(user_friends);    // new_visitors 에서 user_friends 삭제
+
+        friendPointCalculate(user_unknown_friends);
+        visitorPointCalculate(new_visitors);
+        answer = findTopFive(friends_list);
+
         return answer;
     }
 
@@ -75,11 +87,8 @@ public class Problem7 {
 
 class Friend{
     String name;
-    int point = 0;
+    int point;
 
-    Friend(String name){
-        this.name = name;
-    }
     Friend(String name, int point){
         this.name = name;
         this.point = point;
