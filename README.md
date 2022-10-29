@@ -109,4 +109,4 @@ BUILD SUCCESSFUL in 0s
 - [x] 본인(user) 점수를 0점으로 만든다.
 - [x] friendScore의 크기가 5(반환할 최대 갯수)보다 작으면 크기를 5로 만들어 준다.
 - [x] sortedFriendScore리스트를 만들어주고 friendScore를 담고 정렬한다.
-- [ ] 정렬한 사람 중 점수가 1점이상인 사람을 최대 5명까지 answer배열에 담는다.
+- [x] 정렬한 사람 중 점수가 1점이상인 사람을 최대 5명까지 answer배열에 담는다.

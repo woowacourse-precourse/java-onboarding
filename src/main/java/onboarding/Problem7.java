@@ -13,7 +13,7 @@ public class Problem7 {
 	private static final int PERSON_NUM_SHOW = 5;
 
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-		List<String> answer = Collections.emptyList();
+		List<String> answer = new ArrayList<>(Collections.emptyList());
 		Set<String> userFriends = new HashSet<>();
 		Map<String, Integer> friendScore = new HashMap<>();
 		for (int i = 0; i < friends.size(); i++) {
@@ -54,7 +54,13 @@ public class Problem7 {
 				return o2.getValue().compareTo(o1.getValue());
 			}
 		});
-		
+		for (int i = 0; i < PERSON_NUM_SHOW; i++) {
+			String name = sortedFriendScore.get(i).getKey();
+			Integer score = sortedFriendScore.get(i).getValue();
+			if (score > 0) {
+				answer.add(name);
+			}
+		}
 		return answer;
 	}
 }
