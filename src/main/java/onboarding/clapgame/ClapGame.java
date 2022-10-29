@@ -12,4 +12,12 @@ public class ClapGame {
 	private static boolean isMultipleOfThree(final int number) {
 		return number != 0 && number % 3 == 0;
 	}
+
+	public static long getClapCountOf(final int number) {
+		return String.valueOf(number)
+			.chars()
+			.map(digit -> digit - 48)
+			.filter(ClapGame::isMultipleOfThree)
+			.count();
+	}
 }
