@@ -7,6 +7,7 @@ import java.util.Random;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        if(pobi.get(0)+1==pobi.get(0)&&crong.get(0)+1== pobi.get(1)){
         int pobimax=resultMax(pobi);
         int crongmax=resultMax(crong);
         if(pobimax>crongmax){
@@ -14,7 +15,7 @@ class Problem1 {
         }else if(pobimax<crongmax){
             answer=2;
         }else  if(pobimax==crongmax)
-            answer=0;
+            answer=0;}
         else answer=-1;
         return answer;
     }
@@ -35,11 +36,11 @@ class Problem1 {
             int sum=0;
             if(even%10==0){//페이지가 39 40처럼 앞자리수가 달라질때를 구분
             while(odd!=0){
-                sum+=odd&10;
+                sum+=odd%10;
                 odd/=10;
             }} else {
                 while(even!=0){
-                    sum+=even&10;
+                    sum+=even%10;
                     even/=10;
                 }
             }
@@ -49,11 +50,11 @@ class Problem1 {
         int multiodd = 1;
         int multieven = 1;
         while (odd != 0) {
-            multiodd *= odd & 10;
+            multiodd *= odd % 10;
             odd /= 10;
         }
         while (even != 0) {
-            multieven *= even & 10;
+            multieven *= even % 10;
             even /= 10;
         }
         if(multieven>multiodd){
