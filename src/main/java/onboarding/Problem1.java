@@ -80,6 +80,28 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        int pobiScore;
+        int crongScore;
+
+        if (isException(pobi) || isException(crong)) {
+            return -1;
+        }
+
+        pobiScore = calcLargerScore(calcLargestNum(calcEachDigitNum(pobi.get(0))),
+                calcLargestNum(calcEachDigitNum(pobi.get(1))));
+        crongScore = calcLargerScore(calcLargestNum(calcEachDigitNum(crong.get(0))),
+                calcLargestNum(calcEachDigitNum(crong.get(1))));
+
+        if (pobiScore > crongScore) {
+            answer = 1;
+        }
+        else if (pobiScore < crongScore) {
+            answer = 2;
+        }
+        else {
+            answer = 0;
+        }
+
         return answer;
     }
 }
