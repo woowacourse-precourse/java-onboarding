@@ -46,4 +46,14 @@ class Problem1 {
 
         return sum;
     }
+
+    public static Integer getPageElementsMultiplyScore(Integer page) {
+        char[] pageElements = Integer.toString(page).toCharArray();
+
+        int multiply = 1;
+        for (char value : pageElements)
+            multiply *= (value - '0');
+
+        return multiply;
+    }
 }
