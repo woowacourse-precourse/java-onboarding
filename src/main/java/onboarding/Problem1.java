@@ -5,8 +5,18 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        int leftPobiPage = pobi.get(0);
+        int rightPobiPage = pobi.get(1);
+
+        int leftCrongPage = crong.get(0);
+        int rightCrongPage = crong.get(1);
+
+        if (checkExceptions(leftPobiPage, rightPobiPage)
+                || checkExceptions(leftCrongPage, rightCrongPage)) {
+            return -1;
+        }
+
+        return 0;
     }
 
     /*
@@ -43,6 +53,20 @@ class Problem1 {
      * */
     private static boolean isOddAndEven(int leftPage, int rightPage) {
         return (leftPage % 2 == 1) && (rightPage % 2 == 0);
+    }
+
+    /*
+     * 입력 페이지에 대해 최대 점수를 계산
+     * splitNumber()로 int[] 생성한 후, 더하거나 곱한 값 중 최대값 반환
+     *
+     * @return int
+     * */
+    private static int computeMaxScore(int page) {
+        int[] numberArray = splitNumber(page);
+        return Math.max(
+                sumAllNumbers(numberArray),
+                multiplyAllNumbers(numberArray)
+        );
     }
 
     /*
