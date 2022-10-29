@@ -63,9 +63,7 @@ public class Problem7 {
 
         //point가 가장 높은 순으로 리스트를 정렬
         List<String> recommedList = getKey(point_array, friendsPoint_map, cnt);
-
-        //saveSortCheckPointTest
-        //saveSortCheckPoint(point_array);
+        
         recommedList = sortList(saveSortCheckPointTest(point_array, recommedList.size()), recommedList);
 
         int min = Math.min(recommedList.size(), recommendNum);
