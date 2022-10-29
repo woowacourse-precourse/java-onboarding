@@ -15,10 +15,14 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        int pobiScore=0;
+        int crongScore=0;
 
         if(catchError(pobi)||catchError(crong)){
             return -1;
         }
+        pobiScore = getScore(pobi);
+        crongScore = getScore(crong);
         return answer;
     }
 
@@ -53,5 +57,9 @@ class Problem1 {
 
     static int getRightScore(List<Integer> pages){
         return Math.max(addPageNum(pages.get(1)),multiplyPageNum(pages.get(1)));
+    }
+
+    static int getScore(List<Integer> pages){
+        return Math.max(getLeftScore(pages),getRightScore(pages));
     }
 }
