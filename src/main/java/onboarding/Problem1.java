@@ -36,6 +36,10 @@ class Problem1 {
         else if (pobiNumber<crongNumber) return 2;
         else return 0;
     }
-
+    // 예외: 왼쪽 홀수. 오른쪽 짝수, 연결된 번호 인지 확인. 1이거나 400이면 안됨
+    public static boolean isAvailablePageRange(List<Integer> page){
+        if(page.get(0) <=1 || page.get(1) <= 1 || page.get(0) >= 400 || page.get(1) >= 400) return false;
+        return true;
+    }
 }
 
