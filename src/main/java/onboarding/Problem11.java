@@ -2,8 +2,7 @@ package onboarding;
 
 import java.util.List;
 
-class Problem1 {
-
+class Problem11 {
     static final int LEFT = 0;
     static final int RIGHT = 1;
 
@@ -14,6 +13,7 @@ class Problem1 {
 
     static final int BOOK_START_PAGE = 1;
     static final int BOOK_END_PAGE = 400;
+
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         // validate inputs
