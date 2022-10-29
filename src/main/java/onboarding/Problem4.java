@@ -52,6 +52,10 @@ public class Problem4 {
         return DIFF_A_Z / 2;
     }
 
+    private static boolean isValidLength(String string) {
+        return START_RANGE <= string.length() && string.length() <= END_RANGE;
+    }
+
     public static String solution(String word) {
         if (!isValidLength(word)) {
             throw new InputMismatchException("입력된 문자열의 크기가 [1,1000] 이내가 아닙니다.");
@@ -59,7 +63,4 @@ public class Problem4 {
         return transformString(word);
     }
 
-    private static boolean isValidLength(String string) {
-        return START_RANGE <= string.length() && string.length() <= END_RANGE;
-    }
 }
