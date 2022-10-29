@@ -1,8 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 //-----기능-----
 //1. 닉네임 배열 생성
@@ -36,17 +34,15 @@ public class Problem6 {
         String str = nick.get(i);
         for (int j = 2; j <= str.length(); j++)
             callComb(str.toCharArray(),  j);
-        System.out.println("StringComb : " + stringCombination);
     }
 
-    private static void getDupNick(int i) {
+    private static void getDupEmail(int i) {
         getnickComb(i); //조합 얻음
         for(int k = i + 1; k < nick.size(); k++)
         {
             dupCheck(i);
         } // 중복 검사
         stringCombination.clear();//  Comb 비우기
-        System.out.println("idx = " + idx);
     }
 
     private static void dupCheck(int i) {
@@ -71,9 +67,14 @@ public class Problem6 {
             nick.add(forms.get(i).get(1));
 
         for (int i = 0; i <forms.size(); i++)
-        {
-            getDupNick(i);
+            getDupEmail(i);
+
+        Iterator iter = idx.iterator();
+        while(iter.hasNext()) {
+           answer.add(forms.get((Integer) iter.next()).get(0));
         }
+
+        answer.sort(Comparator.naturalOrder());
 
         return answer;
     }
