@@ -9,6 +9,21 @@ public class Problem4 {
             upper[i] = (char)('A'+j);
             lower[i] = (char)('a'+j);
         }
+        StringBuilder sb = new StringBuilder();
+        for(int i=0; i<word.length(); i++){
+            char cur = word.charAt(i);
+            if(Character.isLetter(cur)){
+                if(Character.isUpperCase(cur)){
+                    sb.append(upper[cur-'A']);
+                }
+                else{
+                    sb.append(lower[cur-'a']);
+                }
+            }else{
+                sb.append(cur);
+            }
+        }
+        answer = sb.toString();
         return answer;
     }
 }
