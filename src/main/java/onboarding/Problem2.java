@@ -15,13 +15,17 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
         Stack<Character> stack = new Stack<>();
+        char dup = ' ';
 
         // 1. cryptogram의 문자를 돌면서 stack에 push
         for (int i = 0; i < cryptogram.length(); i++) {
             char cur = cryptogram.charAt(i);
             if (!stack.isEmpty()) {
-                // 2. stack의 최상위와 현재 문자가 같다면 pop
-                if (cur == stack.peek()) {
+                // 3. 겹친 문자는 따로 저장해두고 겹친 문자가 나오면 건너뛴다
+                if(cur == dup) {
+                    continue;
+                } else if (cur == stack.peek()) { // 2. stack의 최상위와 현재 문자가 같다면 pop
+                    dup = cur;
                     stack.pop();
                     continue;
                 }
