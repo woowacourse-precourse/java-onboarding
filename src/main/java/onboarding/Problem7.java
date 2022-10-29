@@ -1,8 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * 기능목록
@@ -41,6 +39,16 @@ public class Problem7 {
             }
         }
 
+        private void addVisitededFriendsProint(String name) {
+            if(isNotInFriendsList(name)) {
+                if (!recommendFriendsList.containsKey(name)) {
+                    addRecommendsFriends(name);
+                }
+                recommendFriendsList.get(name).addVisitedFriendPoint();
+            }
+        }
+
+
         //새로운 추천친구 생성
         private void addRecommendsFriends(String name) {
             recommendFriendsList.put(name, new RecommendFriend(name,0));
@@ -66,6 +74,11 @@ public class Problem7 {
         //친구의 친구인 경우
         private void addLinkedFriendPoint(){
             this.point+=10;
+        }
+
+        //친구가 타임라인에 방문한 경우
+        private void addVisitedFriendPoint(){
+            this.point+=1;
         }
 
     }
@@ -99,6 +112,16 @@ public class Problem7 {
             for (String friendOfFriend : nowFrienList) {
                 nowUser.addLinkedFriendsPoint(friendOfFriend);
             }
+        }
+
+        for (String visitorsName : visitors) {
+            nowUser.addVisitededFriendsProint(visitorsName);
+        }
+
+        List<RecommendFriend> allRecommendedFriedns = new ArrayList<>();
+
+        for(String friendName : nowUser.recommendFriendsList.keySet()){
+            allRecommendedFriedns.add(nowUser.recommendFriendsList.get(friendName));
         }
 
 
