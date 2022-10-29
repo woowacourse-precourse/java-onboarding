@@ -27,4 +27,14 @@ public class Problem6 {
 
         return nickname_email_map;
     }
+
+    static List<String> extractNickname(List<List<String>> forms){
+        List<String> nickname_list;
+
+        nickname_list = Stream.of(forms).flatMap(List::stream)
+                .flatMap(List::stream)
+                .filter(s->!s.contains("@"))
+                .collect(Collectors.toList());
+        return nickname_list;
+    }
 }
