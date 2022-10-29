@@ -28,16 +28,19 @@ public class Problem7 {
                 if(!friend.equals(user)) {
                     User findUser = users.findUser(friend);
                     findUser.addFriendScore();
+                    continue;
                 }
-                else {
-                    if(friendship.indexOf(user) == 1) {
-                        userFriends.add(friendship.get(0));
-                    }
-                    else if(friendship.indexOf(user) == 0) {
-                        userFriends.add(friendship.get(1));
-                    }
-                }
+                addUserFriends(friendship, user);
             }
+        }
+    }
+
+    private static void addUserFriends(List<String> friendship, String user) {
+        if(friendship.indexOf(user) == 1) {
+            userFriends.add(friendship.get(0));
+        }
+        else if(friendship.indexOf(user) == 0) {
+            userFriends.add(friendship.get(1));
         }
     }
 
