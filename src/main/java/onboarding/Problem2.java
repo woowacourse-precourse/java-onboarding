@@ -7,15 +7,24 @@ public class Problem2 {
         char cmp;
 
         while(flag == false&& answer.length() > 0){
-            cmp = answer.charAt(0);
-            for(int i = 1; i < answer.length();i++){
-                if(cmp == answer.charAt(i)){
-                    answer = answer.substring(0,i-1)+answer.substring(i);
+            flag = true;
+            for(int i = 0; i < answer.length()-1;i++){
+                if(answer.length() == 1)
+                    break;
+
+                if(answer.charAt(i) == answer.charAt(i+1)){
+                    int idx = i + 2;
+                    flag = false;
+                    while(idx<answer.length()){
+                        if(answer.charAt(i)!=answer.charAt(idx)){
+                            break;
+                        }
+                        idx++;
+                    }
+
+                    answer = answer.substring(0, i) + answer.substring(idx);
                 }
-                cmp = answer.charAt(i);
-
             }
-
         }
         return answer;
     }
