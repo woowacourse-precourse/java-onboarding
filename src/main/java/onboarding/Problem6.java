@@ -40,6 +40,7 @@ public class Problem6 {
             }
         }
 
+        // 크루의 멤버 수가 1명 이상 100명 이하인가
         protected void isCrewMemberSizeThan1MemberAndLessThan100Member(List<List<String>> crew) {
             if (crew.size() < 1 || 100 < crew.size()) {
                 throw new IllegalArgumentException("크루의 멤버 수는 1명 이상 100명 이하만 입력 가능합니다.");
@@ -47,8 +48,8 @@ public class Problem6 {
         }
     }
 
-    public static List<List<String>> users = new ArrayList<>();
-    public static List<String> result = new ArrayList<>();
+    private static List<List<String>> users = new ArrayList<>();
+    private static List<String> result = new ArrayList<>();
 
     public static List<String> solution(List<List<String>> forms) {
         new UserVerifier().isCrewMemberSizeThan1MemberAndLessThan100Member(forms);
