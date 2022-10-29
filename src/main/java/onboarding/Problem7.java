@@ -9,6 +9,7 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         HashMap<String, HashSet<String>> friendMap = arrangeFriends(friends);
+        HashMap<String, Integer> visitScore = isVisit(visitors);
 
 
         return answer;
@@ -41,4 +42,13 @@ public class Problem7 {
 
         return friendMap;
     }
+
+    public static HashMap<String, Integer> isVisit(List<String> visitors) {
+        HashMap<String, Integer> visitScore = new HashMap<>();
+        for(String visitor : visitors) {
+            visitScore.put(visitor, visitScore.getOrDefault(visitor, 0) + 1);
+        }
+        return visitScore;
+    }
+
 }
