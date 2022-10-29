@@ -9,7 +9,7 @@ public class Problem2 {
         while (checkConversion) {
             checkConversion = decode(cryptogramBuilder);
         }
-        return "";
+        return cryptogramBuilder.toString();
     }
 
     public static boolean decode(StringBuilder encodedCode) {
@@ -51,6 +51,7 @@ public class Problem2 {
     public static void main(String[] args) {
         String[] test = {"browoanoommnaon", "zyelleyz"};
 
-        solution(test[0]);
+        String solution = solution(test[0]);
+        System.out.println(solution);
     }
 }
