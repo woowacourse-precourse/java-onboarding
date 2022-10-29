@@ -3,25 +3,25 @@ package onboarding.problem5.collection;
 import onboarding.problem5.validation.WalletValidator;
 import onboarding.problem5.vo.Change;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static onboarding.problem5.vo.Change.*;
 
 public class Wallet {
-    private final List<Integer> money;
+    private final int[] changes;
 
-    public Wallet(List<Integer> money) {
-        this.money = money;
+    public Wallet() {
+        this.changes = new int[9];
     }
 
     public static Wallet makeNewWallet() {
-        return new Wallet(Arrays.asList(0, 0, 0, 0, 0, 0, 0, 0, 0));
+        return new Wallet();
     }
 
-    public List<Integer> getMoney() {
-        return new ArrayList<>(money);
+    public List<Integer> getChanges() {
+        return Arrays.stream(changes).boxed().collect(Collectors.toList());
     }
 
     public void saveMoney(int money) {
@@ -39,7 +39,7 @@ public class Wallet {
     }
 
     private int saveAsChange(int money, Change change) {
-        this.money.set(change.getIndex(), money / change.getValue());
+        changes[change.getIndex()] = money / change.getValue();
         return money % change.getValue();
     }
 }
