@@ -74,6 +74,17 @@ class Problem1 {
             return false;
         }
 
+        if (!isPositiveNum(leftNum, rightNum)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    static boolean isPositiveNum(int lefNum, int rightNum) {
+        if (lefNum <= 0 || rightNum <= 0) {
+            return false;
+        }
         return true;
     }
 
