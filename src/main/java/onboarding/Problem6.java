@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -46,4 +47,10 @@ public class Problem6 {
         return false;
     }
 
+    // 이메일 리스트 중복 제거
+    private static List<String> removeDuplication(List<String> list) {
+        list = list.stream().distinct().collect(Collectors.toList());
+
+        return list;
+    }
 }
