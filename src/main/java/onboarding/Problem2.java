@@ -3,10 +3,14 @@ package onboarding;
 public class Problem2 {
 	private static final String EXCEPTION_MESSAGE = "NOT LOWER CASE";
 
-    public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
-    }
+	public static String solution(String cryptogram) {
+		if (!isValidLowerCase(cryptogram) || !isValidLength(cryptogram)) {
+			return getExceptionMessage();
+		}
+
+		String answer = decodeString(cryptogram);
+		return answer;
+	}
 
 	private static boolean isValidLowerCase(String cryptogram) {
 		for (int i = 0; i < cryptogram.length(); i++) {
