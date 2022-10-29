@@ -23,9 +23,15 @@ public class Problem2 {
         ans = ans.replaceAll(" ", "");
         return ans;
     }
-
+    public static String getAnswer(String cryptogram) {
+        String tmp = cryptogram;
+        while (checkOverlap(tmp)) {
+            tmp = removeOverlap(tmp);
+        }
+        return tmp;
+    }
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = getAnswer(cryptogram);
         return answer;
     }
 }
