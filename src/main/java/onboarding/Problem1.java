@@ -10,7 +10,6 @@ class Problem1 {
         } else {
             return false;
         }
-
     }
 
     public int makeNum(List<Integer> numList){
