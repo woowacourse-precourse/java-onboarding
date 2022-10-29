@@ -53,4 +53,19 @@ class Relations {
     public Relations() {
         this.relations = new HashMap<>();
     }
+
+    public void addRelation (String friend1, String friend2) {
+        initRelationIfEmpty(friend1);
+        initRelationIfEmpty(friend2);
+
+        relations.get(friend1).add(friend2);
+        relations.get(friend2).add(friend1);
+    }
+
+    private void initRelationIfEmpty(String userId) {
+        if (!relations.containsKey(userId)) {
+            relations.put(userId, new HashSet<>());
+        }
+    }
+
 }
