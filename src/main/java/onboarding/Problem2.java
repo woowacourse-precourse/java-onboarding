@@ -13,6 +13,10 @@ public class Problem2 {
             if (!isDequeEmpty(deque)) {
                 insertWord(deque, ele);
             }
+
+            if (!isDuplicatedWord(deque, ele)) {
+
+            }
         }
 
         return answer;
@@ -24,5 +28,9 @@ public class Problem2 {
 
     public static void insertWord(Deque<Character> deque, Character word) {
         deque.offerLast(word);
+    }
+
+    public static boolean isDuplicatedWord(Deque<Character> deque, Character word) {
+        return deque.peekLast() == word;
     }
 }
