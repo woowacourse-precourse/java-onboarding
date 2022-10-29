@@ -10,15 +10,20 @@ class Problem1 {
 
         List<Integer> digits = getDigits(page);
 
-        int cand1 = 0;
-        for(int digit: digits)
-            cand1 += digit;
+        int maxSum = getMaxSum(digits);
 
         int cand2 = 1;
         for(int digit: digits)
             cand2 *= digit;
 
-        return max(cand1,cand2);
+        return max(maxSum,cand2);
+    }
+
+    private static int getMaxSum(List<Integer> digits) {
+        int ret = 0;
+        for(int digit: digits)
+            ret += digit;
+        return ret;
     }
 
     private static List<Integer> getDigits(int page) {
