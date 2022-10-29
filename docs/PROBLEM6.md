@@ -21,3 +21,34 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+## 기능 목록
+
+-[ ] 하나의 닉네임에 대해 길이가 2 이상인 연속적이고 순서에 맞추어 포함되어 있는 단어의 순열을 생성한다.
+-[ ] 전체 닉네임에서 일련의 글자가 연속적으로 포함되는 경우가 발생한 횟수를 구한다.
+-[ ] 일련의 단어를 포함하는 닉네임들의 이메일을 모두 반환한다.
+-[ ] 닉네임 중 같은 글자가 연속적으로 포함 될 경우 해당 닉네임을 신청한 크루들의 닉네임을 반환한다.
+
+### 아이디어
+
+닉네임에 대한 길이가 2이상인 순열 목록 생성 (중복 X):
+```java
+List<String> permutation
+    = NicknameValidator.getPermutationOf("제이엠")
+// ["제이", "이엠", "제이엠"]
+```
+
+전체 닉네임에서 일련의 단어들이 포함된 횟수를 계산한다.
+```java
+int occurences 
+    = NicknameValidator.getOccurenceOf("제이");
+// 3
+```
+
+일련의 단어를 포함하는 닉네임들을 모두 반환.
+
+```java
+List<String> emails 
+    = NicknameValidator.getEmailsOfMatches("제이");
+// ["jason@email.com", "jm@email.com", "mj@email.com"]
+```
