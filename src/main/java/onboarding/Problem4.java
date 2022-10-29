@@ -21,8 +21,31 @@ public class Problem4 {
             return 0;	//문자 아님
     }
 
+    //2번 기능
     public static String solution(String word) {
         String answer = "";
+
+        char[] small= new char[ALPHABET];
+        char[] big= new char[ALPHABET];
+
+        for(int i=0;i<ALPHABET;i++) {
+            small[i]=(char)(122-i);
+            big[i]=(char)(90-i);
+        }
+
+        for(int j=0;j<word.length();j++) {
+            char thisWord=word.charAt(j);
+            if(checkWord(thisWord)==1) {
+                answer+=big[thisWord-BIG_ALPHABET];
+            }
+            else if(checkWord(thisWord)==2) {
+                answer+=small[thisWord-SMALL_ALPHABET];
+            }
+            else {
+                answer+=word.charAt(j);
+            }
+        }
+
         return answer;
     }
 }
