@@ -14,6 +14,9 @@ public class Problem5 {
         for (int i = 0; i < NUMBER_OF_CURRENCYS; i++) {
             int currency = CURRENCYS_DESCENDING_ORDER[i];
             int numberOfCurrency = 0;
+
+            while (Math.subtractExact(money, currency) >= 0) {
+            }
         }
 
         return numberByCurrency;
