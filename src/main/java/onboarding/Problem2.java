@@ -7,7 +7,7 @@ public class Problem2 {
 
     private static int increaseIdxWhenCharEqual(Character decryptionLastChar, String cryptogram, int idx) {
 
-        while (decryptionLastChar == cryptogram.charAt(idx)) {
+        while (decryptionLastChar != null && decryptionLastChar == cryptogram.charAt(idx)) {
             idx++;
         }
 
