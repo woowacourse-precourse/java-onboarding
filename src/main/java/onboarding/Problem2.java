@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.Stack;
 import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class Problem2 {
     static char temp;
@@ -9,12 +10,7 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         Stack<Character> stack = new Stack<>();
         cryptogram.chars().forEach(s -> extract((char) s, stack));
-        return stack.stream().collect(Collector.of(
-                StringBuilder::new,
-                StringBuilder::append,
-                StringBuilder::append,
-                StringBuilder::toString
-        ));
+        return stack.stream().map(String::valueOf).collect(Collectors.joining());
     }
     private static void extract(char s, Stack<Character> stack) {
         if (stack.isEmpty()) {
