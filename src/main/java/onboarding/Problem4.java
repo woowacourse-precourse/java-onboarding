@@ -5,4 +5,8 @@ public class Problem4 {
         String answer = "";
         return answer;
     }
+
+    public boolean isUpperCase(int characterInt) {
+        return ((characterInt >= 65) && (characterInt <= 90));
+    }
 }
