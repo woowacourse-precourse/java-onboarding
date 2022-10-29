@@ -6,7 +6,10 @@ public class Problem2 {
     private static final int CRYPTOGRAM_MAX_LENGTH = 1000;
 
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        if(!(checkCryptogramLength(cryptogram) || checkCryptogramConsistOfLowercase(cryptogram))){
+            throw new IllegalStateException("[error] 잘못된 암호문이 입력되었습니다.");
+        }
+        String answer = deleteContinuedSameCharUntilNotOverlap(cryptogram);
         return answer;
     }
 
