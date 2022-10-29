@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.List;
-import java.util.stream.IntStream;
 
 class Problem1 {
     private static final int EXCEPTION_CASE = -1;
