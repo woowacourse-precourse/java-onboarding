@@ -1,5 +1,6 @@
 package onboarding.problem1.domain;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -18,5 +19,14 @@ public class PageTest {
     @Test
     void valid_sequence() {
         assertThatThrownBy(() -> new Page(99, 102)).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("1 이하혹은 400이상의 숫자가 포함되면 IllegalArgumentException 예외를 throw 한다.")
+    @Test
+    void valid_page_bound() {
+        Assertions.assertAll(
+                () -> assertThatThrownBy(() -> new Page(1, 2)).isInstanceOf(IllegalArgumentException.class),
+                () -> assertThatThrownBy(() -> new Page(399, 400)).isInstanceOf(IllegalArgumentException.class)
+        );
     }
 }
