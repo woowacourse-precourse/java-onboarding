@@ -77,7 +77,7 @@ class Problem1 {
         int pobiLeftPage = pobi.get(0);
         int pobiRightPage = pobi.get(1);
         int crongLeftPage = crong.get(0);
-        int crongRightPage = pobi.get(1);
+        int crongRightPage = crong.get(1);
 
         // 포비와 크롱의 예외 확인
         Boolean isExceptionPobi = handleException(pobiLeftPage, pobiRightPage);
