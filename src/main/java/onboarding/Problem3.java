@@ -13,7 +13,7 @@ public class Problem3 {
 		int cnt = 0;
 		while(num!=0) {
 			singleDigitNum = num % 10;
-			if(singleDigitNum % 3 == 0) {
+			if(singleDigitNum!=0 && singleDigitNum % 3 == 0) {
 				cnt += 1;
 			}
 			num = num / 10;
