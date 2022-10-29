@@ -26,7 +26,7 @@ public class Problem2 {
     public static boolean isDuplicate(String cryptomgram){
         for(int i = 0; i < cryptomgram.length(); i++){
             if(cryptomgram.charAt(i) == cryptomgram.charAt(i++)){
-                deleteDuplicate(cryptomgram);
+                return true;
             }
         }
         return false;
@@ -38,23 +38,29 @@ public class Problem2 {
         int k = 0;
 
         for(char c : chars){
-            if(prev != c){
+            if(prev != c) {
                 chars[k++] = c;
-
-                System.out.println("next : " + chars[k+1]);
-                System.out.println("current : " + chars[k]);
-                System.out.println("prev : " + c);
                 prev = c;
+            }else{
+                chars[k--] = chars[k+2];
             }
         }
-
         return new String(chars).substring(0, k);
     }
     public static String solution(String cryptogram) {
         String answer = "answer";
         if(isException(cryptogram)){
             // 중복제거 함수를 통해서 중복제거 하기.
-            answer = deleteDuplicate(cryptogram);
+            System.out.println("유효성 검사 통과");
+            while(isDuplicate(cryptogram)){
+                System.out.println("유효성 검사 통과 : " + cryptogram);
+                cryptogram = deleteDuplicate(cryptogram);
+                if(!isDuplicate(cryptogram)){
+                    answer = cryptogram;
+                    System.out.println("결과 : " + answer);
+                    break;
+                }
+            }
         }
 
         return answer;
