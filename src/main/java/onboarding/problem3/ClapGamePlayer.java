@@ -6,6 +6,9 @@ import static onboarding.problem3.consts.ClapGameConst.*;
 
 public class ClapGamePlayer {
 
+    private ClapGamePlayer() {
+    }
+
     public static int calculateTotalClapCount(int number) {
         int totalClapCount = 0;
 
