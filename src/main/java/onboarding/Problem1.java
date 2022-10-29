@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -40,4 +41,16 @@ class Problem1 {
 		}
 
 		return Math.max(sumScore, mulScore);
+	}
+
+	private static int getScore(List<Integer> pages) {
+		int score = 0;
+
+		if (!isValidPage(pages))
+			return -1;
+
+		for (int page : pages) {
+			score = Math.max(score, calculatorScore(page));
+		}
+		return score;
 	}
