@@ -3,23 +3,29 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int pobiScore;
         int crongScore;
-
-        if (exceptionCheck(pobi, crong)) return -1;
-
+        if (canGameStart(pobi, crong)) return -1;
         pobiScore = Math.max(howManyScore(pobi.get(0)), howManyScore(pobi.get(1)));
         crongScore = Math.max(howManyScore(crong.get(0)), howManyScore(crong.get(1)));
-
         return result(pobiScore, crongScore);
     }
 
-    public static boolean exceptionCheck(List<Integer> pobi, List<Integer> crong) {
-        if (pobi.get(0) == 0 || crong.get(0) == 0 || pobi.get(1) == 401 || crong.get(1) == 401) return true;
-        if (pobi.get(0) % 2 != 1 || pobi.get(1) % 2 != 0 || crong.get(0) % 2 != 1 || crong.get(1) % 2 != 0) return true;
-        return pobi.get(0) + 1 != pobi.get(1) || crong.get(0) + 1 != crong.get(1);
+    public static boolean canGameStart(List<Integer> pobi, List<Integer> crong) {
+        return exceptionCheck(pobi.get(0), pobi.get(1)) && exceptionCheck(crong.get(0), crong.get(1));
+    }
+
+    public static boolean exceptionCheck(int num1, int num2) {
+        return isRightRange(num1, num2) && isNumberContinuous(num1, num2);
+    }
+
+    public static boolean isRightRange(int num1, int num2) {
+        return 1 <= num1 && num2 <= 400 ;
+    }
+
+    public static boolean isNumberContinuous(int num1, int num2) {
+        return num1 + 1 == num2;
     }
 
     public static int result(int pobiScore, int crongScore) {
