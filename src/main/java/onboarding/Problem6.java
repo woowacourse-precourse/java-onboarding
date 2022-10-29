@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -78,7 +75,7 @@ public class Problem6 {
             }
         }
 
-        Set<String> emailSet = new HashSet<>(emailList);
+        Set<String> emailSet = new TreeSet<>(emailList);
         List<String> sortedEmailList = new ArrayList<>(emailSet);
 
         return sortedEmailList;
