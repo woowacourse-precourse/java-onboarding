@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Problem3 {
@@ -15,4 +16,14 @@ class Input3 {
         return scanner.nextInt();
     }
 
+}
+
+class ThreeSixNine {
+
+    static void checkNumberRange(int inputNumber) {
+        if (inputNumber < 1 || 10000 < inputNumber) {
+            throw new IllegalStateException("1이상 10,000 이하인 자연수를 입력하세요");
+        }
+    }
+    
 }
