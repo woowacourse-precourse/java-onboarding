@@ -34,9 +34,11 @@ class Problem1 {
         List<Integer> getMax = new ArrayList<>();
         Integer selectCard(List<Integer> player) {
             // to check an exception to a page that is invalid or cannot be opened.
-            if (player.get(0) == 1 || player.get(1) == 400){
+            if ((player.get(0) % 2) == 0 || (player.get(1) % 2) != 0 || (player.get(1) - player.get(0)) > 1
+                    || player.get(0) == 1 || player.get(1) == 400){
                 return -1;
             }
+
             else {
                 // to get player's left and right pages
                 for (int i = 0; i < 2; i++) {
