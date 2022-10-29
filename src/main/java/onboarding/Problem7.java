@@ -31,4 +31,10 @@ public class Problem7 {
             addFriendIfExists(user, relation);
         }
     }
+
+    private static void addFriendIfExists(String user, List<String> relation){
+        if(!relation.contains(user)) return;
+        usersFriend.addAll(relation);
+    }
+
 }
