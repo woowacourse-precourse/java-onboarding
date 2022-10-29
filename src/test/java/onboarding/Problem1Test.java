@@ -35,6 +35,9 @@ class Problem1Test {
         List<Integer> lastPages = new ArrayList<>(Arrays.asList(399, 400));
         assertThrows(InputMismatchException.class, () -> Problem1.getUserMaxPoint(lastPages));
 
+        List<Integer> invalidPages = new ArrayList<>(Arrays.asList(3, 77));
+        assertThrows(InputMismatchException.class, () -> Problem1.getUserMaxPoint(invalidPages));
+
         List<Integer> pages1 = new ArrayList<>(Arrays.asList(123, 124));
 
         assertEquals(8, Problem1.getUserMaxPoint(pages1));
