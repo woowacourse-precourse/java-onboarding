@@ -16,7 +16,6 @@ public class Problem2 {
 	/**
 	 * 1. 제한사항 확인
 	 * @param cryptogram : 검사할 문자열
-	 * @return 문자열의 유효 여부
 	 */
 	public static void isValidCryptogram(String cryptogram) throws IllegalStateException {
 		if (cryptogram.length() > 1000 || cryptogram.length() < 1)
