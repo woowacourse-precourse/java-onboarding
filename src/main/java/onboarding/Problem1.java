@@ -11,23 +11,23 @@ class Problem1 {
     public static final int EXCEPTION = -1;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if (isPageInconsecutive(pobi) || isPageInconsecutive(crong)) {
+        if (isPageUntorn(pobi) || isPageUntorn(crong)) {
             return EXCEPTION;
         }
         if (isPageRangeUncorrect(pobi) || isPageRangeUncorrect(crong)) {
             return EXCEPTION;
         }
-        if (isPageSeparated(pobi) || isPageSeparated(crong)) {
+        if (isPageInconsecutive(pobi) || isPageInconsecutive(crong)) {
             return EXCEPTION;
         }
         return getWinner(pobi, crong);
     }
 
-    private static boolean isPageSeparated(List<Integer> list) {
+    private static boolean isPageInconsecutive(List<Integer> list) {
         return list.get(1) < list.get(0);
     }
 
-    private static boolean isPageInconsecutive(List<Integer> list) {
+    private static boolean isPageUntorn(List<Integer> list) {
         return list.get(1) - list.get(0) != 1;
     }
 
