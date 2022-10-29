@@ -32,8 +32,28 @@ public class Problem6 {
         return answer;
     }
 
-    // 존재하는 Key인지 확인
-    public boolean checkKeyExist(String keyword){
-        return nickKeywordMap.containsKey(keyword);
+
+    // 닉네임 두글자씩으로 쪼개 keyword를 만든후 Map에 집어넣음
+    public void checkKeyExist(String nickname, int index){
+        char[] nicknameCharArray = nickname.toCharArray();
+        for(int i = 0; i < (nicknameCharArray.length-1); i++){
+            // keyword 생성후 Map에 추가
+            addToMap(String.valueOf(nicknameCharArray[i] + nicknameCharArray[i+1]),index);
+        }
     }
+
+    // keyword가 Key에 존재하는지 확인후 있다면 VALUE에 add, 없다면 새로운 KEY - VALUE를 생성
+    public void addToMap(String keyword, int index){
+        // keyword가 이미 존재할 때
+        if(nickKeywordMap.containsKey(keyword)){
+            nickKeywordMap.get(keyword).add(index);
+        }
+
+        // keyword가 존재하지 않을 때
+        nickKeywordMap.put(keyword,new ArrayList<>() {{
+            add(index);
+        }});
+
+    }
+
 }
