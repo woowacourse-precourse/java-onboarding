@@ -20,6 +20,22 @@ public class Problem3 {
         return false;
     }
 
+    /**
+     * 1부터 number까지 총 박수를 쳐야 하는 횟수를 구한다.
+     * @param number
+     * @return
+     */
+    private static int getTotalClaps(int number) {
+        int count = 0;
+
+        for (int i = 1; i <= number; i++) {
+            if (shouldClap(i)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
     public static int solution(int number) {
         int answer = 0;
         return answer;
