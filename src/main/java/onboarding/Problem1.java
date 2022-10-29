@@ -112,7 +112,19 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-        checkPage(pobi);
+        String winner;
+
+        if(!(checkPage(pobi) && checkPage(crong)))
+            return -1;
+
+        winner = getWinner(pobi, crong);
+
+        if(winner == "pobi")
+            answer = 1;
+        else if(winner == "crong")
+            answer = 2;
+        else
+            answer = 0;
 
         return answer;
     }
