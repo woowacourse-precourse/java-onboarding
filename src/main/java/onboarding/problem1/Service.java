@@ -4,17 +4,22 @@ import java.util.List;
 
 public class Service {
 
+    public Service() {
+    }
+
     public User createUser(List<Integer> pages, String userName) {
         User user = new User(userName, pages.get(0), pages.get(1));
 
         return user;
     }
 
-    public User getHigherUser(User userA, User userB) {
+    public Integer getHigherUser(User userA, User userB) {
         if (userA.getScore() > userB.getScore()) {
-            return userA;
+            return 1;
+        } else if (userA.getScore() > userB.getScore()) {
+            return 2;
         } else {
-            return userB;
+            return 0;
         }
     }
 
