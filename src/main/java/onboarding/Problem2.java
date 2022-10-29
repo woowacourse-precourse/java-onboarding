@@ -12,26 +12,26 @@ public class Problem2 {
     }
 
     public static String checkAfterChar(String cryptogram) {
-
-
         ArrayList<String> deleteList = new ArrayList<>();
         while (true){
-
         findDeleteList(cryptogram, deleteList);
         if(cryptogram==""||deleteList.isEmpty()){
-        return cryptogram;
+            return cryptogram;
         }
-//        cryptogram = afterDeleteCryptogram(cryptogram, deleteList);
+        cryptogram = afterDeleteCryptogram(cryptogram, deleteList);
         deleteList.clear();
         }
     }
-//
-//    private static String afterDeleteCryptogram(String cryptogram, ArrayList<String> deleteList) {
-//        for (int i = 0; i < deleteList.size(); i++) {
-//            cryptogram = cryptogram.replace(deleteList.get(i),"");
-//        }
-//        return cryptogram;
-//    }
+
+    /**
+     *  삭제할 리스트와 문자열을 받아서 cryptogram을 변경하는 함수
+     */
+    private static String afterDeleteCryptogram(String cryptogram, ArrayList<String> deleteList) {
+        for (int i = 0; i < deleteList.size(); i++) {
+            cryptogram = cryptogram.replace(deleteList.get(i),"");
+        }
+        return cryptogram;
+    }
 
     /**
      * 연속되는 문자열을 찾아서 미리 만들어둔 deleteList로 반환하는 함수
