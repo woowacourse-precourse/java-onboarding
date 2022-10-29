@@ -287,6 +287,19 @@ class ApplicationTest {
             assertThatThrownBy(() -> Problem6.solution(forms)).isInstanceOf(Exception.class);
         }
 
+        @Test
+        @DisplayName("닉네임이 20자 이상이면 예외를 반환한다")
+        void case10() {
+            List<List<String>> forms = List.of(
+                    List.of("jm@email.com", "제이엠제이엠제이엠제이엠제이엠제이엠제이"), //한글 20자 닉네임
+                    List.of("jason@email.com", "제이슨"),
+                    List.of("woniee@email.com", "워니"),
+                    List.of("mj@email.com", "엠제이"),
+                    List.of("nowm@email.com", "이제엠")
+            );
+            assertThatThrownBy(() -> Problem6.solution(forms)).isInstanceOf(Exception.class);
+        }
+
         //TODO 정상결과를 조금 더 만들어주자
         // 이메일 20자일때, 11글자일때
         // 한글이름 1자일때, 19자일떄
