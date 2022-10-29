@@ -61,9 +61,9 @@ class Problem1 {
         int sum = 0;
         int mul = 1;
 
-        for (int i = 0; i < numArr.length; i++) {
-            sum += numArr[i] - 48;
-            mul *= numArr[i] - 48;
+        for (char c : numArr) {
+            sum += c - 48;
+            mul *= c - 48;
         }
 
         return max(sum, mul);
