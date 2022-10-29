@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 /**
@@ -13,10 +14,8 @@ import java.util.List;
 public class Problem5 {
     public static List<Integer> solution(int money) {
         Problem5 problem5 = new Problem5();
-        List<Integer> answer = Collections.emptyList();
-
-        answer.add(problem5.countBill(money, 50000));
-
+        List<Integer> answer = new ArrayList<>();
+        
 
         return answer;
     }
@@ -26,4 +25,8 @@ public class Problem5 {
         return (money/targetBill);
     }
 
+    // 금액에서 원하는 지폐 몇장을 뺀 결과 금액 구하기
+    public int countOutMoney(int money, int bill, int billCount){
+        return money - (bill * billCount);
+    }
 }
