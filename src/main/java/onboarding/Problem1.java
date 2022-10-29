@@ -50,6 +50,14 @@ class Problem1 {
         return result;
     }
 
+    int addDigits(List<Integer> dividedDigit){
+        int result = 0;
+        for (Integer integer : dividedDigit) {
+            result += integer;
+        }
+        return result;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
