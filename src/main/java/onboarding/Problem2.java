@@ -21,6 +21,8 @@ public class Problem2 {
     }
 
     /**
+     * 연속된 중복 character 제거
+     *
      * @param stack character 가 담긴 stack
      * @param str   character
      * @return 연속된 중복 문자가 제거된 stack
@@ -38,7 +40,7 @@ public class Problem2 {
     /**
      * stack 을 String 으로 변환
      *
-     * @param stack
+     * @param stack character 가 담긴 stack
      * @return String
      */
     private static String stackChangeString(Stack<String> stack) {
