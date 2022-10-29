@@ -73,14 +73,12 @@ public class Problem6 {
     }
 
     private static boolean isEmail(String email) {
-        int atInx = email.indexOf("@");
-
-        if (atInx == -1) {
+        int atIdx = email.indexOf("@");
+        if (atIdx == -1) {
             return false;
         }
 
-        String domain = email.substring(atInx + 1);
-
+        String domain = email.substring(atIdx + 1);
         if (!domain.equals("email.com")) {
             return false;
         }
