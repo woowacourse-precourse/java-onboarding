@@ -18,7 +18,16 @@ public class Problem3 {
     static void playGame(int number){
         crap=0;
         for(int i=1; i<=number; i++){
+            decideCrap(i);
+        }
+    }
 
+    static void decideCrap(int num){
+        while(num>0){
+            if(num%10==3||num%10==6||num%10==9){
+
+            }
+            num/=10;
         }
     }
 }
