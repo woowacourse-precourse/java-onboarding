@@ -2,7 +2,7 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
+        int answer = calcNumberOfClap(number);
         return answer;
     }
 
@@ -21,5 +21,14 @@ public class Problem3 {
             number /= 10;
         }
         return numberOftarget;
+    }
+
+    // 1부터 number까지의 3, 6, 9 개수를 구하는 함수
+    public static int calcNumberOfClap(int number) {
+        int resultNumber = 0;
+        for (int i = 1; i <= number; i++) {
+            resultNumber += calcMultiDigitNumbers(i);
+        }
+        return resultNumber;
     }
 }
