@@ -38,6 +38,13 @@ public class Problem7 {
         //System.out.println(friendScore);
 
         // 3. 방문자 목록 돌면서 방문 횟수에 따라 점수 계산하기
+        Map<String, Integer> visitorScore = new HashMap<>();
+        for (String visitor : visitors){
+            visitorScore.put(visitor, visitorScore.containsKey(visitor) ? visitorScore.get(visitor) + 1 : 1);
+        }
+        //System.out.println(visitorScore);
+
+        // 4. 합산 후 정렬하고 return
 
         List<String> answer = Collections.emptyList();
         return answer;
