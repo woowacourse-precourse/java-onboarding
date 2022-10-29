@@ -48,14 +48,18 @@ class Problem1 {
 
         return result;
     }
+    public static int getPageMax(int page) {
+        int sum = getSum(page);
+        int mul = getMul(page);
 
-
+        return Math.max(sum, mul);
+    }
     public static int getPageResult(List<Integer> pageList) {
         int leftPage = pageList.get(0);
         int rightPage = pageList.get(1);
 
-        int leftRes = Math.max(getSum(leftPage), getMul(leftPage));
-        int rightRes = Math.max(getSum(rightPage), getMul(rightPage));
+        int leftRes = getPageMax(leftPage);
+        int rightRes = getPageMax(rightPage);
 
         return Math.max(leftRes, rightRes);
     }
