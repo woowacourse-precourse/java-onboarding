@@ -5,6 +5,12 @@ public class Problem2 {
         // 입력으로 들어온 문자열을 char형 배열로 분해한다.
         char[] cryptogramArr = getCharArr(cryptogram);
 
+        // 배열을 순회하며 해당 원소를 기준으로 중복 문자열을 체크한다.
+        for(Character element : cryptogramArr) {
+            // 해당 문자가 2번 이상 반복된다면 제거하여 원본 암호문을 변경한다.
+            cryptogram = cryptogram.replaceAll(element + "{2,}", "");
+        }
+
         return cryptogram;
     }
 
