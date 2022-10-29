@@ -6,7 +6,7 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
 
-        // 친구 관계를 그래프로 저장
+        // 친구 리스트 만듦
         List<String> member = makeFriendGraph(friends);
 
         // 친구 되어있는 관계를 리스트에 넣음
@@ -122,9 +122,9 @@ public class Problem7 {
     }
 
     /**
-     * 친구 관계를 그래프로 저장하는 메소드
+     * 등장하는 친구를 리스트에 중복 없이 넣음
      * @param friends 친구 관계 리스트
-     * @return 그래프로 구현한 친구 관계
+     * @return 친구 리스트
      */
     static List<String> makeFriendGraph(List<List<String>> friends){
         List<String> member = new ArrayList<>();
