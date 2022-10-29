@@ -17,9 +17,14 @@ public class Problem4 {
                 answer.add(one);
                 continue;
             }
+            if (Character.isUpperCase(one)) {
+                answer.add(convertUppercase(one));
+            }
+            if (Character.isLowerCase(one)) {
+                answer.add(convertLowercase(one));
+            }
         }
-
-
+        
         String result = answer.stream()
                 .map(e -> e.toString())
                 .reduce((acc, e) -> acc + e)
