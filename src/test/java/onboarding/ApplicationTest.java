@@ -273,5 +273,25 @@ class ApplicationTest {
             result.put("jun",20);
             assertThat(Problem7.friendScoreCalculator(Problem7.findAcquaintance(user,Problem7.findFriends(user,friends), friends))).isEqualTo(result);
         }
+        @Test
+        void case5(){
+            String user = "mrko";
+            List<List<String>> friends = List.of(
+                    List.of("donut", "andole"),
+                    List.of("donut", "jun"),
+                    List.of("donut", "mrko"),
+                    List.of("shakevan", "andole"),
+                    List.of("shakevan", "jun"),
+                    List.of("shakevan", "mrko")
+            );
+            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+            HashMap<String,Integer> result=new HashMap<>();
+            result.put("andole",20);
+            result.put("jun",20);
+            result.put("bedi",3);
+            result.put("donut",1);
+            result.put("shakevan",1);
+            assertThat(Problem7.visitScoreCalculator(Problem7.friendScoreCalculator(Problem7.findAcquaintance(user,Problem7.findFriends(user,friends), friends)),visitors)).isEqualTo(result);
+        }
     }
 }

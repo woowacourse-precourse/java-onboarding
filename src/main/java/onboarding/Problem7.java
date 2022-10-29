@@ -48,4 +48,22 @@ public class Problem7 {
         return scores;
     }
 
+    public static List<String> result(Map<String,Integer> scores,List<String> friends){
+        List<String> result = new ArrayList<>();
+        for(String name:friends){
+            scores.remove(name);
+        }
+        List<Map.Entry<String,Integer>> entries=new ArrayList<>(scores.entrySet());
+        entries.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o1.getValue().compareTo(o2.getValue());
+            }
+        });
+        for (Map.Entry<String, Integer> entry : entries) {
+            result.add(entry.getKey());
+        }
+        return result;
+    }
+
 }
