@@ -48,6 +48,13 @@ class Problem1 {
         return Math.max(lPage,rPage);
     }
 
+    public static int compare(int pobi, int crong){
+        if (pobi>crong) return 1;
+        else if (pobi<crong) return 2;
+        return 0;
+
+    }
+
 
 
 }
