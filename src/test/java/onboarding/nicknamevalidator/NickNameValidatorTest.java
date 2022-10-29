@@ -56,4 +56,13 @@ public class NickNameValidatorTest {
 			.isEqualTo(List.of("jm@email.com",
 				"jason@email.com", "mj@email.com"));
 	}
+
+	@DisplayName("중복된 닉네임 이메일 반환 테스트")
+	@Test
+	void 중복_닉네임_이메일_반환() {
+		List<String> emails = validator.getInvalidEmails();
+		assertThat(emails)
+			.isEqualTo(List.of("jason@email.com",
+				"jm@email.com", "mj@email.com"));
+	}
 }

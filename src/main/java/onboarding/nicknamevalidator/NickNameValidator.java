@@ -1,9 +1,11 @@
 package onboarding.nicknamevalidator;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class NickNameValidator {
 
@@ -56,5 +58,16 @@ public class NickNameValidator {
 			}
 		}
 		return emails;
+	}
+
+	public List<String> getInvalidEmails() {
+		return occurrences.keySet()
+			.stream()
+			.filter(word -> getOccurrenceOf(word) >= 2)
+			.map(this::getEmailsMatches)
+			.flatMap(Collection::stream)
+			.distinct()
+			.sorted()
+			.collect(Collectors.toList());
 	}
 }
