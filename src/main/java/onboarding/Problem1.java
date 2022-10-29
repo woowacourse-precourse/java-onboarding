@@ -91,10 +91,10 @@ class Problem1 {
     public static int getResult(int object1, int object2) {
         if (object1 == object2) {
             return 0;
-        } else if (object1 > object2) {
-            return 1;
-        } else {
-            return 2;
         }
+        if (object1 > object2) {
+            return 1;
+        }
+        return 2;
     }
 }
