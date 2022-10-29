@@ -8,6 +8,7 @@ package onboarding;
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
+        answer = changeWord(word);
         return answer;
     }
 
@@ -20,5 +21,14 @@ public class Problem4 {
             ascii += (110-ascii)*2-1;
         }
         return (char)ascii;
+    }
+
+    private static String changeWord(String word) {
+        for (int i=0; i < word.length(); i++) {
+            char letter = changeLetter(word.charAt(i));
+
+            word = word.substring(0, i) + letter + word.substring(i+1);
+        }
+        return word;
     }
 }
