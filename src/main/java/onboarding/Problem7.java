@@ -30,16 +30,20 @@ public class Problem7 {
         //4. 유저의 타임라인에 방문한 횟수를 토대로 점수 매기기
         makeRecommendScoreByVisitor(visitors, userFriendInfo, recommendScore);
 
-        // 5. 추천 점수 목록을 List 로 변환
-        ArrayList<ScoreInfo> arrayList = new ArrayList<>();
-        for (Map.Entry<String, Integer> recommendScoreMap : recommendScore.entrySet()) {
-            arrayList.add(new ScoreInfo(recommendScoreMap.getKey(),recommendScoreMap.getValue()));
-        }
+        //5. 추천 점수 목록을 List 로 변환
+        ArrayList<ScoreInfo> recommendScoreList = new ArrayList<>();
+        makeRecommendScoreList(recommendScore, recommendScoreList);
 
         // 6. 친구 추천 규칙에 따라 점수가 가장 높은 순대로 정렬 후 최대 5명의 user 를 뽑음
-        answer = arrayList.stream().sorted().map(scoreInfo -> scoreInfo.getId()).limit(5).collect(Collectors.toList());
+        answer = recommendScoreList.stream().sorted().map(scoreInfo -> scoreInfo.getId()).limit(5).collect(Collectors.toList());
 
         return answer;
+    }
+
+    private static void makeRecommendScoreList(Map<String, Integer> recommendScore, ArrayList<ScoreInfo> recommendScoreList) {
+        for (Map.Entry<String, Integer> recommendScoreMap : recommendScore.entrySet()) {
+            recommendScoreList.add(new ScoreInfo(recommendScoreMap.getKey(),recommendScoreMap.getValue()));
+        }
     }
 
     private static void makeRecommendScoreByVisitor(List<String> visitors, Map<String, Integer> userFriendInfo, Map<String, Integer> recommendScore) {
