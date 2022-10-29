@@ -35,4 +35,11 @@
    4. 이전의 값과 현재의 값이 같은 경우 deque의 마지막 element를 삭제하는 기능 
    5. 마지막으로 삭제한 중복 값을 초기화하는 기능 
    6. 결과 값이 비어있는지 확인하는 기능 : deque가 빈 경우 "" 출력, 아니면 string 출력 
-   7. deque의 문자 값들을 string으로 변환하는 기
+   7. deque의 문자 값들을 string으로 변환하는 기능
+
+### 문제 접근 : 어떤 방법으로 string을 저장
+- 마지막 원소 값을 확인하기 쉬운 stack
+- stack의 연산은 synchronized 되어있어, 모든 연산에 동기화가 보장되면 동기화 비용이 계속 든다는 단점
+- 메모리 소모량이 적은 경우 iterate 효율이 좋은 ArrayDeque 사용
+- 스택의 잦은 사이즈 변동이 있는 경우 LinkedList 사용
+- 이 문제에서는 ArrayDeque 를 사용했습니다.
