@@ -10,8 +10,8 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Problem7 {
-    private static List<String> myFriendsList = new ArrayList<>();
-    private static List<List<String>> notFriendsList = new ArrayList<>();
+    private static final List<String> myFriendsList = new ArrayList<>();
+    private static final List<List<String>> notFriendsList = new ArrayList<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
