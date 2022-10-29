@@ -12,16 +12,21 @@ class Problem1 {
      * @return 예외 사항이 있을 시 true, 그 외엔 false를 반환
      */
     static boolean isException(List<Integer> name) {
-        if ((name.get(0) < 1) || name.get(1) > 400)
+        if ((name.get(0) < 1) || name.get(1) > 400) {
             return true;
-        else if ((name.get(0) == null) || (name.get(1) == null))
+        }
+        else if ((name.get(0) == null) || (name.get(1) == null)) {
             return true;
-        else if (name.get(0) % 2 != 1)
+        }
+        else if (name.get(0) % 2 != 1) {
             return true;
-        else if (name.get(1) % 2 != 0)
+        }
+        else if (name.get(1) % 2 != 0) {
             return true;
-        else if ((name.get(1) - name.get(0)) != 1)
+        }
+        else if ((name.get(1) - name.get(0)) != 1) {
             return true;
+        }
         else if ((name.get(0) == 1 || name.get(0) == 399 || name.get(1) == 2 || name.get(1) == 400)) {
             return true;
         }
