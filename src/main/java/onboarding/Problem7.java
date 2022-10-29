@@ -13,8 +13,6 @@ public class Problem7 {
             }
             else ind.add(l);
         }
-        System.out.println(dir);
-        System.out.println(ind);
         HashMap<String,Integer>m=new HashMap<>();
         for(List<String> l:ind){
             for(String s:dir) {
@@ -25,16 +23,8 @@ public class Problem7 {
             }
         }
         for(String s:visitors)if(!dir.contains(s))m.put(s,m.get(s)==null?1:m.get(s)+1);
-        System.out.println(m);
         r=new ArrayList<>(m.keySet());
-        r.sort((a,b)->m.get(a).equals(m.get(b))?b.compareTo(a):m.get(b).compareTo(m.get(a)));
-        System.out.println("key desc | val desc\t"+r);
-        r.sort((a,b)->m.get(a).equals(m.get(b))?b.compareTo(a):m.get(a).compareTo(m.get(b)));
-        System.out.println("key desc | val asc\t"+r);
-        r.sort((a,b)->m.get(a).equals(m.get(b))?a.compareTo(b):m.get(a).compareTo(m.get(b)));
-        System.out.println("key asc | val asc\t"+r);
         r.sort((a,b)->m.get(a).equals(m.get(b))?a.compareTo(b):m.get(b).compareTo(m.get(a)));
-        System.out.println("key asc | val desc\t"+r);
         return r;
     }
 }
