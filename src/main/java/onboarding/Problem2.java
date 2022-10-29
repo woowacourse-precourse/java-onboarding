@@ -10,6 +10,9 @@ public class Problem2 {
         }
         return true;
     }
+    static String getRemovedDuplicateString(String cryptogram) {
+        return cryptogram.replaceAll("([a-z])\\1{1,}","");
+    }
     public static String solution(String cryptogram) {
         String answer = cryptogram;
         while (true) {
