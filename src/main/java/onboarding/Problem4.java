@@ -14,6 +14,10 @@ public class Problem4 {
             else if (97 <= arr[i] && arr[i] <= 122) {
                 answer+=(char)(219-arr[i]);
             }
+            //알파벳 외
+            else{
+                answer+=arr[i];
+            }
         }
         return answer;
     }
