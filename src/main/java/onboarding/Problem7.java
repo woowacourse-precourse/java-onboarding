@@ -11,20 +11,7 @@ public class Problem7 {
         Map<String, Integer> result = new HashMap<>();
 
         makeNearList(user, friends, near);
-
-        for (List<String> AB : friends) {
-            for (String name : AB) {
-                if(near.contains(name) && !AB.contains(user)){
-                    far.addAll(AB);
-                }
-            }
-        }
-
-        for (int i = far.size() - 1; i >= 0; i--) {
-            if (near.contains(far.get(i))) {
-                far.remove(i);
-            }
-        }
+        makeFarList(user, friends, near, far);
 
         for (String name : far) {
             int point = 10;
@@ -45,6 +32,25 @@ public class Problem7 {
 
         answer = sortedAnswer(answer, result);
         return answer;
+    }
+
+    private static void makeFarList(String user, List<List<String>> friends, Set<String> near, List<String> far) {
+        for (List<String> AB : friends) {
+            for (String name : AB) {
+                if(near.contains(name) && !AB.contains(user)){
+                    far.addAll(AB);
+                }
+            }
+        }
+        removeDuplicateFar(near, far);
+    }
+
+    private static void removeDuplicateFar(Set<String> near, List<String> far) {
+        for (int i = far.size() - 1; i >= 0; i--) {
+            if (near.contains(far.get(i))) {
+                far.remove(i);
+            }
+        }
     }
 
     private static void makeNearList(String user, List<List<String>> friends, Set<String> near) {
