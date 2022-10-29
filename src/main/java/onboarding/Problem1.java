@@ -12,6 +12,8 @@ class Problem1 {
             return -1;
         if(pobi.get(1)-pobi.get(0)!= 1 || crong.get(1)- crong.get(0)!=1)
             return -1;
+        if (pobi.size()!=2 || crong.size()!=2)
+            return -1;
 
         //변수선언
         List<Integer> eachnum; //숫자의 각 자리 수
