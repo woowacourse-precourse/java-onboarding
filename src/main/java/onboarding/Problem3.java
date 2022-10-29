@@ -10,14 +10,14 @@ public class Problem3 {
     }
 
     private static int count369ByNumber(int number) {
-        int count = 0;
-        while (number > 0) {
-            int digit = number % 10;
-            if (digit == 3 || digit == 6 || digit == 9) {
-                count++;
-            }
-            number /= 10;
-        }
-        return count;
+        return (int) String.valueOf(number)
+                .chars()
+                .map(Character::getNumericValue)
+                .filter(digit -> is369(digit))
+                .count();
+    }
+
+    private static boolean is369(int digit) {
+        return digit == 3 || digit == 6 || digit == 9;
     }
 }
