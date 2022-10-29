@@ -46,4 +46,15 @@ class Problem1 {
         return false;
     }
 
+    /**
+     * 페이지 번호가 연속되지 않을 때 예외
+     * @param list
+     * @return 연속되지 않으면 true / 연속되면 false
+     */
+    private static Boolean isPageContinu(List<Integer> list) {
+        if(list.get(1) - list.get(0) != 1)
+            return true;
+        return false;
+    }
+
 }
