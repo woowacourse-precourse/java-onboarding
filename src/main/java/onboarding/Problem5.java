@@ -16,15 +16,22 @@ public class Problem5 {
         answer.add(calculateFiftyThousand(money));
         money -= 50_000 * answer.get(0);
 
+        answer.add(calculateTenThousand(money));
+        money = 10_000 * answer.get(1);
+
         return answer;
     }
 
     public static boolean throwBoundaryException(int money) {
-        return money < 1 || money > 1000000;
+        return money < 1 || money > 1_000_000;
     }
 
     public static int calculateFiftyThousand(int money) {
         return money / 50000;
+    }
+
+    public static int calculateTenThousand(int money) {
+        return money / 10_000;
     }
 
 }
