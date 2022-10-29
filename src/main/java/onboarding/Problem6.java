@@ -3,6 +3,7 @@ package onboarding;
 import java.util.*;
 
 public class Problem6 {
+    static HashSet<String> duplicateNickName = new HashSet<>();
     public static List<String> solution(List<List<String>> forms) {
         Map<String, String> formsMap = new HashMap<>();
         for (int i = 0; i < forms.size(); i++) {
@@ -16,6 +17,7 @@ public class Problem6 {
         for (int i = 0; i < nickNameArray.length; i++) {
             getDuplicationStr(nickNameArray[i], nickNameArray);
         }
+        System.out.println(duplicateNickName);
 
 //        Collection<String> nicknames = formsMap.values();
 //
@@ -36,12 +38,19 @@ public class Problem6 {
             String currChar = String.valueOf(nickName.charAt(i));
             String nextChar = String.valueOf(nickName.charAt(i + 1));
             String duplicationWord = currChar + nextChar;
-            System.out.println(duplicationWord);
-            checkDuplication(duplicationWord, nickNameArray);
+            checkDuplication(duplicationWord, nickName, nickNameArray);
 
         }
     }
 
+    private static void checkDuplication(String duplicationWord, String nickName, String[] nickNameArray) {
+        for (int i = 0; i < nickNameArray.length; i++) {
+            nickNameArray[i].contains(duplicationWord);
+            if(nickNameArray[i].contains(duplicationWord) && nickNameArray[i].indexOf(nickName) != 0){
+                duplicateNickName.add(nickNameArray[i]);
+            }
+        }
+    }
 
 //    private static void checkNickName(String nickname, Collection<String> nicknames) {
 //        for (int i = 0; i < nickname.length() - 1; i++) {
