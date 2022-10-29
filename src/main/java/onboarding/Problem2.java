@@ -7,7 +7,6 @@ public class Problem2 {
         int l = 0;
         int r = 0;
         boolean isOverlap = false;
-        char tmp = '\0';
 
         while (l < cryptogram.length() - 1) {
 
