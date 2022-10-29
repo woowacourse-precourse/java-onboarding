@@ -27,7 +27,20 @@ public class Problem7 {
                 map.put(name,map.containsKey(name) ? map.get(name) + 10 : 10);
             }
         }
-
-        return arr;
+        //방문한 유저 찾기
+        for (String visitor : visitors){
+            Boolean isFriend = false;
+            for (List<String> friend : friends){
+                //이미 사용자와 친구라면 점수를 주지 않는다.
+                if (friend.contains(visitor) && friend.contains(user)) {
+                    isFriend = true;
+                    break;
+                }
+            }
+            if(isFriend) continue;
+            map.put(visitor,map.containsKey(visitor) ? map.get(visitor) +1 : 1);
+        }
+        List<String> answer = new ArrayList<>();
+        return answer;
     }
 }
