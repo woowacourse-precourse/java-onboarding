@@ -17,7 +17,17 @@ public class Problem7 {
         oldFriend.add(user);
         friendData=friends;
         List<String> olderFriends = getFriendOfUser(user);
+    }
 
+    private static List<String> getFriendOfUser(String user) {
+        List<String> friendList = new ArrayList<>();
+        for(int i=0; i<friendData.size(); i++){
+            if(friendData.get(i).contains(user)){
+                int friendIndex = (friendData.get(i).indexOf(user)+1)%2;
+                friendList.add(friendData.get(i).get(friendIndex));
+            }
+        }
+        return friendList;
     }
 
 }
