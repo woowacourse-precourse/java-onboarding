@@ -13,7 +13,8 @@ public class Decryptor {
     }
 
     public static String decrypt(String cryptogram) {
-        List<String> cryptogramList = Arrays.stream(cryptogram.split("")).collect(Collectors.toList());
+        List<String> cryptogramList = Arrays.stream(cryptogram.split(""))
+            .collect(Collectors.toList());
         boolean removeDuplicateCharacter = true;
 
         while (removeDuplicateCharacter) {
@@ -42,7 +43,8 @@ public class Decryptor {
         return removeDuplicateCharacter;
     }
 
-    private static void deleteDuplicateCharacter(List<String> cryptogramList, String nowCharacter, int startCursor) {
+    private static void deleteDuplicateCharacter(List<String> cryptogramList, String nowCharacter,
+        int startCursor) {
         while (cryptogramList.size() > 0 && cryptogramList.get(startCursor).equals(nowCharacter)) {
             cryptogramList.remove(startCursor);
         }
