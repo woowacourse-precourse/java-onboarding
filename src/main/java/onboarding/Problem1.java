@@ -1,6 +1,5 @@
 package onboarding;
 
-import java.util.Arrays;
 import java.util.List;
 
 class Problem1 {
@@ -15,8 +14,13 @@ class Problem1 {
             return answer;
         }
 
+        // 포비의 점수를 계산하는 메서드 호출
         pobiScore = calculationPobi(pobi);
+
+        // 크롱의 점수를 계산하는 메서드 호출
         crongScore = calculationCrong(crong);
+
+        // 포비와 크롱의 점수를 비교하는 메서드 호출
         answer = compareScore(pobiScore, crongScore);
 
         return answer;
