@@ -24,3 +24,12 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+
+### 기능 목록
+
+1. 입력받은 user를 기준으로 친구와 친구가 아닌 리스트를 분류
+2. visitors를 기준으로 친구와 친구가 아닌 리스트로 분류
+3. 친구가 아닐때 나의 친구와 접점을 기준으로 리스트 분류
+4. 카운팅하여 점수 높은 5명 추출
+5. 예외사항 처리
