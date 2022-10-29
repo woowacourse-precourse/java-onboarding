@@ -22,12 +22,7 @@ public class Problem6 {
             //중복 닉네임이 될 수 있는 단어들(part)을 추출
             List<String> newPart = extractNicknameParts(nickname);
             //추출한 단어들을 저장
-            for(int j = 0; j < newPart.size(); j++){
-                if(part.containsKey(newPart.get(j))){
-                    continue;
-                }
-                part.put(newPart.get(j), email); //추출한 단어 + 이메일
-            }
+            part = addPart(part, newPart, email);
         }
         //set을 list로 변경하여 같은 글자가 연속적으로 포함되는 닉네임을 작성한 지원자의 메일 목록을 반환하는 기능
         List<String> answer = new ArrayList<>(emailSet); //set -> list
@@ -62,5 +57,15 @@ public class Problem6 {
             emailSet.add(email.get(j));
         }
         return emailSet;
+    }
+
+    private static HashMap<String, String> addPart(HashMap<String, String> part, List<String> newPart, String email){
+        for(int j = 0; j < newPart.size(); j++){
+            if(part.containsKey(newPart.get(j))){
+                continue;
+            }
+            part.put(newPart.get(j), email); //추출한 단어 + 이메일
+        }
+        return part;
     }
 }
