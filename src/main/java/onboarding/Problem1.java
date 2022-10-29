@@ -11,11 +11,11 @@ class Problem1 {
     static final int CRONG = 2;
     static final int DRAW = 0;
 
-    int checkNumberOfDigits(int digits){
+    static int checkNumberOfDigits(int digits){
         return (int)(Math.log10(digits) + 1);
     }
 
-    List<Integer> divideDigits(int digits){
+    static List<Integer> divideDigits(int digits){
         int numberOfDigits = checkNumberOfDigits(digits);
         int units = 0;
         int tens = 0;
@@ -42,7 +42,7 @@ class Problem1 {
         return dividedDigit;
     }
 
-    int multiplyDigits(List<Integer> dividedDigit){
+    static int multiplyDigits(List<Integer> dividedDigit){
         int result = 1;
         for (Integer integer : dividedDigit) {
             result *= integer;
@@ -50,12 +50,17 @@ class Problem1 {
         return result;
     }
 
-    int addDigits(List<Integer> dividedDigit){
+    static int addDigits(List<Integer> dividedDigit){
         int result = 0;
         for (Integer integer : dividedDigit) {
             result += integer;
         }
         return result;
+    }
+
+    int cmpMulAdd(int multiplyResult, int addResult){
+        if(multiplyResult >= addResult) return multiplyResult;
+        else return addResult;
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
