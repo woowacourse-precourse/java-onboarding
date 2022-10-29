@@ -13,4 +13,10 @@ class Problem1 {
         int third = ((num%100) %10);
         return first + second + third;
     }
+    public static int multiplyEachDigit(int num){
+        int first = (num / 100) == 0 ? 1 : (num / 100);
+        int second = (num%100) /10 == 0 ? 1 : (num%100) /10;
+        int third = ((num%100) %10) == 0? 1 : ((num%100) %10);
+        return first * second * third;
+    }
 }
