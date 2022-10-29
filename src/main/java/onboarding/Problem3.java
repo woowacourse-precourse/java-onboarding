@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Problem3 {
-    static int[] numsToClap = new int[] {3, 6, 9} ;
+    static final int[] numsToClap = new int[] {3, 6, 9} ;
     public static int solution(int number) {
         int answer = 0;
 
