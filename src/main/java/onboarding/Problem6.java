@@ -1,18 +1,12 @@
 package onboarding;
-
-import org.assertj.core.util.Lists;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.TreeSet;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
         HashMap<String, Integer> nicknameMap = new HashMap<>();
-        TreeSet<String> alertList = new TreeSet<>();
+        HashSet<Integer> alertIdxSet = new HashSet<>();
         for(int i = 0; i < forms.size(); i++) {
             List<String> user = forms.get(i);
             String email = user.get(0);
@@ -21,10 +15,12 @@ public class Problem6 {
             if(!checkEmail(email)) {
                 continue;
             }
-            getNickname(nickname, i, forms, nicknameMap, alertList);
+
+            getNickname(nickname, i, nicknameMap, alertIdxSet);
         }
 
-        answer = Lists.newArrayList(alertList);
+        List<String> answer = putIndexInAlertList(alertIdxSet, forms);
+        sortAlertEmailList(answer);
         return answer;
     }
 
@@ -35,7 +31,7 @@ public class Problem6 {
         return m.matches() && email.length() >= 11 && email.length() <= 20;
     }
 
-    public static void getNickname(String nickname, int idx, List<List<String>> forms, HashMap<String, Integer> nicknameMap, TreeSet<String> alertList) {
+    public static void getNickname(String nickname, int idx, HashMap<String, Integer> nicknameMap, HashSet<Integer> alertIdxSet) {
         for (int i = 0; i < nickname.length() - 1; i++){
             char nicknameChar1 = nickname.charAt(i);
             char nicknameChar2 = nickname.charAt(i + 1);
@@ -46,15 +42,26 @@ public class Problem6 {
                 continue;
             }
             int overlapIdx = nicknameMap.get(words);
-            putAlertList(overlapIdx, forms, alertList);
-            putAlertList(idx, forms, alertList);
+            alertIdxSet.add(overlapIdx);
+            alertIdxSet.add(idx);
         }
     }
 
+    public static List<String> putIndexInAlertList(HashSet<Integer> alertIdxSet, List<List<String>> forms) {
+        List<String> alertEmailList = new ArrayList<>();
+        for(Integer index: alertIdxSet) {
+            String email = findUserEmail(index, forms);
+            alertEmailList.add(email);
+        }
+        return alertEmailList;
+    }
 
-    public static void putAlertList(int index, List<List<String>> forms, TreeSet<String> alertList) {
+    public static String findUserEmail(int index, List<List<String>> forms) {
         List<String> userInfo = forms.get(index);
-        String email = userInfo.get(0);
-        alertList.add(email);
+        return userInfo.get(0);
+    }
+
+    public static void sortAlertEmailList(List<String> alertEmailList) {
+        Collections.sort(alertEmailList);
     }
 }
