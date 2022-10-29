@@ -34,8 +34,8 @@ public class Problem4CustomTest {
                 input.append("a");
             }
             String userInput = input.toString();
-            boolean possible = Problem4Validation.problem4InputValidation(userInput, MIN_INPUT, MAX_INPUT);
-            assertThat(possible).isTrue();
+            boolean impossible = Problem4Validation.problem4InputValidation(userInput, MIN_INPUT, MAX_INPUT);
+            assertThat(impossible).isFalse();
         }
     }
 }
