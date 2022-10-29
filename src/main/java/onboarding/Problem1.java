@@ -69,10 +69,10 @@ class Problem1 {
         if (pages.get(1) - pages.get(0) != 1) return false;
 
         // 왼쪽 페이지는 1보다 작거나 홀수 번호가 아니면 false
-        if (pages.get(0) < 1 | pages.get(0) % 2 != 1) return false;
+        if (pages.get(0) < 1 || pages.get(0) % 2 != 1) return false;
 
         // 오른쪽 페이지는 400보다 크거나 짝수 번호가 아니면 false
-        if (pages.get(1) > 400 | pages.get(1) % 2 != 0) return false;
+        if (pages.get(1) > 400 || pages.get(1) % 2 != 0) return false;
 
         // 위의 제약조건에 모두 해당되지 않으면 true
         return true;
@@ -80,6 +80,6 @@ class Problem1 {
 
     // 입력 형식이 올바른지 체크하는 함수
     public static boolean checkInput(List<Integer> pobi, List<Integer> crong) {
-        return checkPageNum(pobi) & checkPageNum(crong);
+        return checkPageNum(pobi) && checkPageNum(crong);
     }
 }
