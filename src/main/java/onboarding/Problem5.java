@@ -7,10 +7,12 @@ public class Problem5 {
     private static final int[] units = {50000,10000,5000,1000,500,100,50,10,1};
     public static List<Integer> solution(int money) {
         List<Integer> answer = new ArrayList<>();
-        for(int i = 0; i < units.length; i++) {
-            int cnt = exchange(units[i], money);
+        if(!(0 < money && money < 1000001)) return answer;
+
+        for (int unit : units) {
+            int cnt = exchange(unit, money);
             answer.add(cnt);
-            money -= (units[i] * cnt);
+            money -= (unit * cnt);
         }
         return answer;
     }
