@@ -21,6 +21,10 @@ class Problem1 {
         return pageNum == 400 || pageNum == 1;
     }
 
+    private static boolean isNotOneDifferencePage(int leftPage, int rightPage) {
+        return (leftPage + 1) != rightPage;
+    }
+
     private static boolean oddEvenCheck(int leftPage, int rightPage) {
         return isLeftOdd(leftPage) && isRightEven(rightPage);
     }
