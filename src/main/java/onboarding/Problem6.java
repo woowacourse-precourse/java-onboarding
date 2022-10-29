@@ -1,21 +1,28 @@
 package onboarding;
 
+import net.bytebuddy.dynamic.scaffold.MethodGraph;
+
 import java.util.List;
 import java.util.LinkedList;
+import java.util.HashSet;
+import java.util.Collections;
+
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         Problem6 problem = new Problem6();
         List<String> answer = List.of("answer");
+
         LinkedList<String> nicknamelist = new LinkedList<>();
         LinkedList<String> splitnickname = new LinkedList<>();
+        LinkedList<String> duplicatenickname = new LinkedList<>();
 
         for(List e : forms) {
             nicknamelist.add((String) e.get(1));
         }
 
         splitnickname = problem.splitTwoNickname(nicknamelist);
-
+        duplicatenickname = problem.findDuplicateNick(splitnickname);
 
         return answer;
     }
@@ -32,4 +39,16 @@ public class Problem6 {
         return resultlist;
     }
 
+    public LinkedList<String> findDuplicateNick(LinkedList<String> nicknamelist) {
+            HashSet<String> resultset = new HashSet<>();
+
+            for(String e : nicknamelist) {
+                if(Collections.frequency(nicknamelist, e) > 1) {
+                    resultset.add(e);
+                }
+            }
+
+            LinkedList<String> resultlist = new LinkedList<>(resultset);
+            return resultlist;
+    }
 }
