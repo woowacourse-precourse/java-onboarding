@@ -418,7 +418,7 @@ class ApplicationTest {
         }
 
         @Test
-        @DisplayName("유저 친구 없는 경우: mrko: 2, anne: 1, donut: 1, sam: 1")
+        @DisplayName("유저 친구 없는 경우 - mrko: 2, anne: 1, donut: 1, sam: 1")
         void case7() {
             String user = "hello";
             List<List<String>> friends = List.of(
@@ -431,6 +431,22 @@ class ApplicationTest {
             );
             List<String> visitors = List.of("donut", "anne", "mrko", "mrko", "sam");
             List<String> result = List.of("mrko", "anne", "donut", "sam");
+            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+        }
+
+        @Test
+        @DisplayName("친구들이 친구가 없는 경우 - mrko: 2, donut: 1, sam: 1")
+        void case8() {
+            String user = "user";
+            List<List<String>> friends = List.of(
+                    List.of("andole", "user"),
+                    List.of("jun", "user"),
+                    List.of("bedi", "user"),
+                    List.of("shakevan", "user"),
+                    List.of("anne", "user")
+            );
+            List<String> visitors = List.of("donut", "anne", "mrko", "mrko", "sam");
+            List<String> result = List.of("mrko", "donut", "sam");
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
     }
