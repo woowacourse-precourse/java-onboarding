@@ -7,14 +7,9 @@ import java.util.List;
 
 class Problem1 {
     public static int getPageMaxPoint(int page) {
-
         List<Integer> digits = getDigits(page);
 
-        int maxSum = getMaxSum(digits);
-
-        int maxMultiple = getMaxMultiple(digits);
-
-        return max(maxSum,maxMultiple);
+        return max(getMaxSum(digits), getMaxMultiple(digits));
     }
 
     private static int getMaxMultiple(List<Integer> digits) {
