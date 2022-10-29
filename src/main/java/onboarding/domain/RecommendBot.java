@@ -1,12 +1,12 @@
 package onboarding.domain;
 
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class RecommendBot {
     public static final int RECOMMEND_SCORE_BY_FRIEND = 10;
     public static final int RECOMMEND_SCORE_BY_VISITOR = 1;
+    public static final int MAX_SIZE_OF_RECOMMEND_LIST = 5;
 
     private final HashMap<String, Integer> recommendScore = new HashMap<>();
     private final List<String> userFriends;
@@ -53,5 +53,13 @@ public class RecommendBot {
 
     private void updateRecommendScore(String person, int score) {
         recommendScore.put(person, recommendScore.getOrDefault(person, 0) + score);
+    }
+
+    public List<String> getRecommendUser() {
+        return recommendScore.entrySet().stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .map(Map.Entry::getKey)
+                .limit(MAX_SIZE_OF_RECOMMEND_LIST)
+                .collect(Collectors.toList());
     }
 }
