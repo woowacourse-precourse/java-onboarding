@@ -1,4 +1,6 @@
 package onboarding.problem4.application.treefrog;
 
-public class TreeFrogDictionary {
+import onboarding.problem4.application.Dictionary;
+
+public class TreeFrogDictionary implements Dictionary {
 }
