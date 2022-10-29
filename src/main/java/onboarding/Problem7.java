@@ -6,16 +6,14 @@ import java.util.stream.Collectors;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
-        List<String> near = new ArrayList<>();
+        Set<String> near = new HashSet<>();
         List<String> far = new ArrayList<>();
         Map<String, Integer> result = new HashMap<>();
 
         for (List<String> AB : friends) {
-            if (AB.contains(user)) {
-                int index = 1 - AB.indexOf(user);
-                near.add(AB.get(index));
-            }
+            if (AB.contains(user)) near.addAll(AB);
         }
+        near.remove(user);
 
         for (List<String> AB : friends) {
             for (String name : AB) {
