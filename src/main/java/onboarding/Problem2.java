@@ -6,6 +6,15 @@ public class Problem2 {
 	public static boolean haveDuplicated = false;
 
 	public static String solution(String cryptogram) {
+		validate(cryptogram);
+		do {
+			haveDuplicated = false;
+			cryptogram = decrypt(cryptogram);
+		} while (haveDuplicated && cryptogram.length() > 0);
+		return cryptogram;
+	}
+
+	private static void validate(String cryptogram) {
 		if (cryptogram.length() < minLength || cryptogram.length() > maxLength) {
 			throw new IllegalArgumentException("길이가 1이상 1000이하 문자열이어야합니다.");
 		}
@@ -14,11 +23,6 @@ public class Problem2 {
 				throw new IllegalArgumentException("알파벳 소문자로만 이루어져야합니다.");
 			}
 		}
-		do {
-			haveDuplicated = false;
-			cryptogram = decrypt(cryptogram);
-		} while (haveDuplicated && cryptogram.length() > 0);
-		return cryptogram;
 	}
 
 	private static String decrypt(String cryptogram) {
