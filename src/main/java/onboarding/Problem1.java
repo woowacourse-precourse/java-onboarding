@@ -8,6 +8,22 @@ class Problem1 {
         return answer;
     }
 
+    public static boolean verifyPages(List<Integer> pages) {
+
+        int leftPage = pages.get(0), rightPage = pages.get(1);
+
+        if (leftPage < 0 || leftPage > 400) return false;
+        if (rightPage < 0 || rightPage > 400) return false;
+
+        if (leftPage+1 != rightPage) return false;
+
+        if (leftPage % 2 == 0) return false;
+
+        if (leftPage == 1 || rightPage == 400) return false;
+
+        return true;
+    }
+
     public static int addPages(int leftPage, int rightPage) {
 
         int leftSum = 0, rightSum = 0;
