@@ -73,6 +73,7 @@ public class Problem7 {
             int node = adj.get(1).get(i);
             for (int j = 0; j < adj.get(node).size(); i++) {
                 int targetNode = adj.get(node).get(j);
+                if (targetNode == 1) continue;
                 score[targetNode] += 10;
             }
         }
