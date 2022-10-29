@@ -72,6 +72,27 @@ public class Problem6 {
         return true;
     }
 
+    private static List<String> getDuplicateNickname(List<List<String>> forms) {
+        List<String> result = new ArrayList<>();
+        Map<String, TreeSet<String>> twoNameMap = getAllTwoLengthNameMap(forms);
+
+        for(List<String> form : forms) {
+            String email = form.get(0);
+            String nickname = form.get(1);
+
+            for(int i = 1; i < nickname.length(); i++) {
+                String twoLengthName = String.valueOf(nickname.charAt(i-1)) + nickname.charAt(i);
+                if (twoNameMap.get(twoLengthName).size() > 1) {
+                    result.add(email);
+                }
+            }
+        }
+
+        Collections.sort(result);
+
+        return result;
+    }
+
     private static Map<String, TreeSet<String>> getAllTwoLengthNameMap(List<List<String>> forms) {
         Map<String, TreeSet<String>> result = new TreeMap<>();
 
