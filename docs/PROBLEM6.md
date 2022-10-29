@@ -21,3 +21,12 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+## ✅ 구현할 기능 목록
+
+- [ ] forms의 닉네임을 두 글자로 나누고, 나눈 닉네임에 해당하는 이메일을 HashMap에 저장 (`createNicknameMap`)
+  - [ ] 닉네임을 두 글자씩 나누는 함수 (`splitTwoLetter`)
+  - [ ] 두 글자씩 나눈 닉네임에 맞게 이메일을 HashMap에 저장하는 함수 (`storeEmails`)
+    - key(String): 두 글자로 나눈 닉네임, value(List<String>): 이메일
+- [ ] 글자에 해당하는 이메일이 2개 이상이라면, 그 이메일들을 결과로 추출하는 함수 (`getDuplicateEmails`)
+- [ ] 결과를 오름차순으로 정렬하는 함수 (`sortAnswer`)
