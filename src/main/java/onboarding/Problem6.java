@@ -28,23 +28,11 @@ public class Problem6 {
             crewSize += form.size();
         }
 
-        // 예외사항 1-1 크루 인원수 체크
-        if(isNotMatchingCrewSize(crewSize)){
-            throw new NotMatchingCrewSize("크루 인원수가 맞지 않습니다.");
-        }
+        checkException(forms, crewSize);
 
-        // 예외사항 1-2,3 이메일 체크 (형식 및 길이)
         for (List<String> form : forms) {
             String email = form.get(0);
             String nickName = form.get(1);
-
-            if (isNotEmail(email)){
-                throw new NotMatchingEmail("이메일 형식 및 길이가 맞지 않습니다.");
-            }
-            if(isNotNickName(nickName)){
-                throw new NotMatchingNickName("닉네임이 한글 및 길이가 맞지 않습니다.");
-            }
-
             // 2. 두 글자 이상의 문자가 연속적인 것을 확인하기 위해 교육생의 닉네임을 두 글자씩 끊어서 map 에 넣기
             for (int i = 0; i < nickName.length()-1; i++) {
                 String nickNameDivide = nickName.substring(i,i+2);
@@ -79,6 +67,27 @@ public class Problem6 {
         answer=sameNickNameEmail.stream().sorted().distinct().collect(Collectors.toList());
         
         return answer;
+    }
+
+    private static void checkException(List<List<String>> forms, int crewSize) {
+        // 예외사항 1-1 크루 인원수 체크
+        if(isNotMatchingCrewSize(crewSize)){
+            throw new NotMatchingCrewSize("크루 인원수가 맞지 않습니다.");
+        }
+
+        // 예외사항 1-2,3 이메일 체크 (형식 및 길이)
+        for (List<String> form : forms) {
+            String email = form.get(0);
+            String nickName = form.get(1);
+
+            if (isNotEmail(email)) {
+                throw new NotMatchingEmail("이메일 형식 및 길이가 맞지 않습니다.");
+            }
+            if (isNotNickName(nickName)) {
+                throw new NotMatchingNickName("닉네임이 한글 및 길이가 맞지 않습니다.");
+            }
+
+        }
     }
 
     private static boolean isSameNickName(Map<String, Integer> nickNameDivideByTwoLetter, String nickNameDivide) {
