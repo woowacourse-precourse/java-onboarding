@@ -22,6 +22,10 @@ import java.util.List;
  * -
  */
 
+/**
+ * 3. 배열을 읽으면서 3,6,9 포함시 int 값 상승 후 그 결과값 return 함수
+ */
+
 public class Problem3 {
 
     static List<Integer> splitNum = new ArrayList<Integer>();
@@ -47,5 +51,14 @@ public class Problem3 {
             num = num / 10;
         }
     }
+    private static int checkClap(){
+        int ret = 0;
+        for(int i = 0; i < splitNum.size();i++){
+            if(splitNum.get(i) == 3 || splitNum.get(i) == 6 || splitNum.get(i) == 9)
+                ret++;
+        }
+        return ret;
+    }
+
 
 }
