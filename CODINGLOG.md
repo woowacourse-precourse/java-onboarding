@@ -107,6 +107,22 @@ Game 에서 예외사항이 아닌 것(정상 입력)에 대해서만 Calculator
 - String 인덱싱 -> String.charAt()
 - String + char 덧셈 가능 -> new_str += str.charAt(i)
 
+그런데... 잘 구현된 것 같은데 오류가 난다...
+이러지마 제발...
+
+![image](./img/캡처_p2_v2.PNG)
+
+- 그러다 기본서에서 공부한 것을 깨달았다...
+- str == n_str 재귀 만료 부분이 잘못되었다는 사실...
+  - Java는 String이 참조 객체이기 때문에 참조 객체의 주소가 일치하는 여부를 알려주는 연산자가 "==" 였던 것
+  - str.equal(n_str)으로 해야 "값"이 같은지를 확인할 수 있다.
+- 또한, 재귀함수를 solution에서 돌리는 것보다 Decoder 클래스에서 돌리는게 더 낫다고 판단
+  - renDecoder 메소드 추가 및 deleteDuplicate 메소드 private 설정 변경
+- 그렇게 수정해서 완성된 구조
+
+![image](./img/프리코스_1주차-Problem2_v2.drawio.png)
+
+
 
 ## 문제 3
 
