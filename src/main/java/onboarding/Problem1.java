@@ -4,6 +4,7 @@ import java.util.*;
 
 class Problem1 {
     static List <Integer> pageNumberArray = new ArrayList();
+    static int pageSum = 0;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
@@ -18,5 +19,13 @@ class Problem1 {
             pageNumber /= 10;
         }
         return pageNumberArray;
+    }
+
+    // 페이지 자릿수를 더해주는 메소드
+    public static int sumPageNumber (List<Integer> pageNumberArray) {
+        for (int i = 0; pageNumberArray.size() > i; i++) {
+            pageSum += pageNumberArray.get(i);
+        }
+        return pageSum;
     }
 }
