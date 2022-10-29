@@ -11,27 +11,27 @@ class Problem1 {
     public static final int EXCEPTION = -1;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if (!validatePageConsecutive(pobi) || !validatePageConsecutive(crong)) {
+        if (!isPageConsecutive(pobi) || !isPageConsecutive(crong)) {
             return EXCEPTION;
         }
-        if (!validatePageRange(pobi) || !validatePageRange(crong)) {
+        if (!isPageRangeRight(pobi) || !isPageRangeRight(crong)) {
             return EXCEPTION;
         }
-        if (!validatePageSequence(pobi) || !validatePageSequence(crong)) {
+        if (!isPageSerial(pobi) || !isPageSerial(crong)) {
             return EXCEPTION;
         }
         return getWinner(pobi, crong);
     }
 
-    private static boolean validatePageSequence(List<Integer> list) {
+    private static boolean isPageSerial(List<Integer> list) {
         return list.get(1) > list.get(0);
     }
 
-    private static boolean validatePageConsecutive(List<Integer> list) {
+    private static boolean isPageConsecutive(List<Integer> list) {
         return list.get(1) - list.get(0) == 1;
     }
 
-    private static boolean validatePageRange(List<Integer> list) {
+    private static boolean isPageRangeRight(List<Integer> list) {
         return list.get(0) > 1 || list.get(1) < 400;
     }
 
