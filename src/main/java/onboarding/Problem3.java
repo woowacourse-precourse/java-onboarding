@@ -18,5 +18,14 @@ public class Problem3 {
         }
         return cnt;
     }
-    
+
+    static int getContain369(int number) {
+        int cnt = 0;
+        while (number > 0) {
+            int digit = number % 10;
+            if (digit == 3 || digit == 6 || digit == 9) cnt++;
+            number /= 10;
+        }
+        return cnt;
+    }
 }
