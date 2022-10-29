@@ -1,10 +1,14 @@
 package onboarding;
 
 import java.util.ArrayList;
-
+//"zyelleyz"
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = "";
+        while (answer.length() != cryptogram.length()) {
+            answer = cryptogram;
+            cryptogram = removeDup(answer);
+        }
         return answer;
     }
 
@@ -27,10 +31,9 @@ public class Problem2 {
             }
             result.add(s);
         }
+        if (flag == 1) {
+            result.remove(result.size()-1);
+        }
         return String.join("", result);
-    }
-
-    public static void main(String[] args){
-        System.out.println(removeDup("browoanoommnaon"));
     }
 }

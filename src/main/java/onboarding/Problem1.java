@@ -47,8 +47,5 @@ class Problem1 {
         }
         return true;
     }
-//    public static void main(String[] args){
-//        System.out.println(getWinner(10,1));
-//    }
 }
 
