@@ -38,11 +38,16 @@ class Problem1 {
     }
 
     public static int getUserMaxPoint(List<Integer> pages) {
-        if (pages.size() == 2 && ( pages.get(0) == FIRST_PAGE || pages.get(1) == LAST_PAGE || pages.get(0) + 1 != pages.get(1))) {
+        if (isInvalidPages(pages)) {
             throw new InputMismatchException("허용되지 않는 입력입니다.");
         }
 
         return max(getPageMaxPoint(pages.get(0)), getPageMaxPoint(pages.get(1)));
+    }
+
+    private static boolean isInvalidPages(List<Integer> pages) {
+        return pages.size() == 2 && (pages.get(0) == FIRST_PAGE || pages.get(1) == LAST_PAGE
+                || pages.get(0) + 1 != pages.get(1));
     }
 
     public static int getPageMaxPoint(int page) {
