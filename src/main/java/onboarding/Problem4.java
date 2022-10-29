@@ -26,7 +26,7 @@ public class Problem4 {
             return convertLowerCase(originalLetter);
         }
 
-        return " ";
+        return String.valueOf(originalLetter);
     }
 
     private static String convertUpperCase(char originalLetter) {
