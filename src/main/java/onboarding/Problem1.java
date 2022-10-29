@@ -81,9 +81,20 @@ class Problem1 {
 		int HighSco = (plusR < multiR) ? multiR : plusR;
 		return HighSco;
 	}
-	public static int HighScore(int Page) {
-		int score = 0;
-		return score;
+	public static int HighScore(int LScore,int RScore) {
+		int HighSco = (LScore < RScore) ? RScore : LScore;
+		return HighSco;
+	}
+	public static int whoWin(int pobiScore,int crongScore) {
+		int HighSco = 0;
+		if(pobiScore > crongScore) {
+			System.out.println(1);
+		}else if(pobiScore < crongScore) {
+			System.out.println(2);
+		}else if(pobiScore == crongScore) {
+			System.out.println(0);
+		}
+		return HighSco;
 	}
 	
 	
@@ -99,11 +110,16 @@ class Problem1 {
     	int crongLScore = Odd_L_HighScore(crongPage);
     	int crongRScore = Even_R_HighScore(crongPage);
        
+    	int pobiScore = HighScore(pobiLScore,pobiRScore);
+    	System.out.println(pobiScore);
+    	int crongScore = HighScore(crongLScore,crongRScore);
+    	System.out.println(crongScore);
+    	whoWin(pobiScore,crongScore);
     	/*int hun = i / 100; // 백
 		int ten = (i / 10) % 10; // 십
 		int one = i % 10; // 일*/
-    	 
-         
+    	
+        
     	
     	}
     	
