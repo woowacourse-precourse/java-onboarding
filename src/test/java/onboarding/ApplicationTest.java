@@ -3,6 +3,7 @@ package onboarding;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -254,6 +255,23 @@ class ApplicationTest {
             );
             List<String> result=List.of("andole","jun","andole","jun");
             assertThat(Problem7.findAcquaintance(user,Problem7.findFriends(user,friends), friends)).isEqualTo(result);
+        }
+
+        @Test
+        void case4(){
+            String user = "mrko";
+            List<List<String>> friends = List.of(
+                    List.of("donut", "andole"),
+                    List.of("donut", "jun"),
+                    List.of("donut", "mrko"),
+                    List.of("shakevan", "andole"),
+                    List.of("shakevan", "jun"),
+                    List.of("shakevan", "mrko")
+            );
+            HashMap<String,Integer> result=new HashMap<>();
+            result.put("andole",20);
+            result.put("jun",20);
+            assertThat(Problem7.friendScoreCalculator(Problem7.findAcquaintance(user,Problem7.findFriends(user,friends), friends))).isEqualTo(result);
         }
     }
 }
