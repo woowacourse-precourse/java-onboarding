@@ -3,8 +3,15 @@ package onboarding;
 public class Problem3 {
     public static int solution(int number) {
     
-    	int answer = 0;
+    	int answer = startGame(number);
         return answer;
+    }
+    public static int startGame(int number) {
+    	int totalClapNum = 0;
+    	for(int i=1; i<=number; i++) {
+    		totalClapNum += countAllThreeSixNine(i);
+    	}
+    	return totalClapNum;
     }
 
 	public static int countAllThreeSixNine(int num) {	
