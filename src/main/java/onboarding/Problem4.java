@@ -14,9 +14,17 @@ public class Problem4 {
     public static String solution(String word) {
 
 
-
-        String answer = "";
-
-        return answer;
+        /*
+            Dictionary is structured by reversed alphabet.
+            Modify String to char and change with ASCII code
+         */
+        StringBuilder answer = new StringBuilder();
+        for(int i = 0; i < word.length(); i++){
+            if (!check_alpha(word.charAt(i))) { answer.append(word.charAt(i)); continue;}
+            answer.append(word.charAt(i) > 96 ?
+                    String.valueOf((char) (122 - word.charAt(i) + 97)) :
+                    String.valueOf((char) (90 - word.charAt(i) + 65)));
+        }
+        return answer.toString();
     }
 }
