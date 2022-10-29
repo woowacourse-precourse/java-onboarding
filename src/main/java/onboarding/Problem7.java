@@ -16,12 +16,10 @@ public class Problem7 {
     public static final int MAX_SIZE = 5;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-
         Map<String, Set<String>> friendMap = makeFriendMap(friends);
         Map<String, Integer> recommendScore = getRecommendScore(user, visitors, friendMap);
-        answer = getRecommendList(recommendScore);
-        return answer;
+
+        return getRecommendList(recommendScore);
     }
 
     private static Map<String, Set<String>> makeFriendMap(List<List<String>> friends) {
