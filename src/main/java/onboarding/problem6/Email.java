@@ -1,10 +1,10 @@
 package onboarding.problem6;
 
-public class Nickname {
+public class Email {
     private final String value;
 
-    public Nickname(String value) {
-        value = isValidName(value);
+    public Email(String value) {
+        value = isValidEmail(value);
 
         this.value = value;
     }
@@ -13,8 +13,8 @@ public class Nickname {
         return value;
     }
 
-    private String isValidName(String value) {
-        if (!value.matches("^[가-힣+]{1,19}$")) {
+    private String isValidEmail(String value) {
+        if (!value.matches("^[a-z0-9-A-Z]{1,9}+@email.com$")) {
             return "Invalid";
         }
 
