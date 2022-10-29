@@ -26,6 +26,11 @@ import java.util.List;
  * 3. 배열을 읽으면서 3,6,9 포함시 int 값 상승 후 그 결과값 return 함수
  */
 
+
+/**
+ * 4. 게임을 시작할 함수
+ * - 토탈 횟수 구하는 기능 구현
+ */
 public class Problem3 {
 
     static List<Integer> splitNum = new ArrayList<Integer>();
@@ -33,11 +38,6 @@ public class Problem3 {
         int answer = 0;
         return answer;
     }
-//    public static void main(String[] args) {
-//        int test = 369;
-//        makeSplit(test);
-//        System.out.println(splitNum);
-//    }
     private static int checkInput(int inputNum){
         if(inputNum < 1 || inputNum > 10000)
             return -1;
@@ -60,5 +60,17 @@ public class Problem3 {
         return ret;
     }
 
-
+    private static int totalClap(int inputnum){
+        int totalNum = 0;
+        int startNum = 1;
+        if(checkInput(inputnum) == -1)
+            return -1;
+        while(startNum <= inputnum)
+        {
+            makeSplit(startNum);
+            totalNum+=checkClap();
+            startNum++;
+        }
+        return totalNum;
+    }
 }
