@@ -4,8 +4,12 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        List<String> allUserNameList = getAllUsersName(user, friends, visitors);
+        Map<String, Integer> nameToNumber = mappingNameToNumber(allUserNameList);
+        Map<Integer, String> numberToName = mappingNumberToName(allUserNameList);
+        List<List<Integer>> adj = makeUndirectedGraph(friends, allUserNameList);
+        int[] score = calculateScore(adj, visitors, nameToNumber, allUserNameList);
+        return getResult(score, numberToName);
     }
 
     private static List<String> getAllUsersName(String user, List<List<String>> friends, List<String> visitors) {
@@ -32,6 +36,16 @@ public class Problem7 {
 
         for (int i = 0; i < allUserNameList.size(); i++) {
             map.put(allUserNameList.get(i), i + 1);
+        }
+
+        return map;
+    }
+
+    private static Map<Integer, String> mappingNumberToName(List<String> allUserNameList) {
+        Map<Integer, String> map = new TreeMap<>();
+
+        for (int i = 0; i < allUserNameList.size(); i++) {
+            map.put(i + 1, allUserNameList.get(i));
         }
 
         return map;
