@@ -5,7 +5,7 @@ import java.util.Deque;
 
 public class Problem2 {
 
-    private static int increaseTail(Character decryptionLastChar, String cryptogram, int idx) {
+    private static int increaseIdxWhenCharEqual(Character decryptionLastChar, String cryptogram, int idx) {
 
         while (decryptionLastChar == cryptogram.charAt(idx)) {
             idx++;
@@ -42,7 +42,7 @@ public class Problem2 {
         int idx = 0;
 
         while (idx < cryptogram.length()) {
-            int newIdx = increaseTail(decryptionCharStack.peekLast(), cryptogram, idx);
+            int newIdx = increaseIdxWhenCharEqual(decryptionCharStack.peekLast(), cryptogram, idx);
             checkSkipCharacter(decryptionCharStack, idx, newIdx);
             appendDecryptionChar(decryptionCharStack, cryptogram, newIdx);
             idx = newIdx + 1;
