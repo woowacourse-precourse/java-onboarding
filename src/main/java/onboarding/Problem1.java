@@ -47,6 +47,14 @@ class Problem1 {
 		return rightPage - leftPage == 1;
 	}
 
+	private static int pageMax(int leftPage, int rightPage) {
+		int leftMaxValue = Math.max(addDigit(leftPage),
+			multipleDigit(rightPage));
+		int rightMaxValue = Math.max(addDigit(rightPage),
+			multipleDigit(leftPage));
+		return Math.max(leftMaxValue, rightMaxValue);
+	}
+
 	private static int addDigit(Integer page) {
 		return Arrays.stream(String.valueOf(page).split(""))
 			.mapToInt(Integer::parseInt)
@@ -57,14 +65,6 @@ class Problem1 {
 		return Arrays.stream(String.valueOf(page).split(""))
 			.mapToInt(Integer::parseInt)
 			.reduce(1, (a, b) -> a * b);
-	}
-
-	private static int pageMax(int leftPage, int rightPage) {
-		int leftMaxValue = Math.max(addDigit(leftPage),
-			multipleDigit(rightPage));
-		int rightMaxValue = Math.max(addDigit(rightPage),
-			multipleDigit(leftPage));
-		return Math.max(leftMaxValue, rightMaxValue);
 	}
 
 	private static int gameResult(int pobiScore, int crongScore) {
