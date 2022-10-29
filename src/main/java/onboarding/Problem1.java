@@ -53,6 +53,17 @@ class Problem1 {
         }
         return isInValidRange;
     }
+    public static int compareScore(int pobiScore, int crongScore){
+        int resultOfGame;
+        if(pobiScore == crongScore){
+            resultOfGame=0;
+        } else if (pobiScore > crongScore){
+            resultOfGame=1;
+        } else {
+            resultOfGame=2;
+        }
+        return resultOfGame;
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         if(isInValidRange(pobi)==true && isInValidRange(crong)==true){
