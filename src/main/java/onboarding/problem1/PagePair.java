@@ -7,8 +7,12 @@ import java.util.stream.Stream;
 import net.bytebuddy.agent.builder.AgentBuilder.FallbackStrategy;
 
 public class PagePair {
-    private static final boolean LEFT_PAGE = true;
-    private static final boolean RIGHT_PAGE = false;
+    public enum CompareResult{
+        DRAW, WIN, LOSE
+    }
+
+    public static final boolean LEFT_PAGE = true;
+    public static final boolean RIGHT_PAGE = false;
     private final List<Page> pagePair;
 
     public PagePair(List<Integer> pages){
@@ -30,12 +34,11 @@ public class PagePair {
 
     public int comparePagePair(PagePair otherPair){
         if(this.getMaxValueOfPair() > otherPair.getMaxValueOfPair()){
-            return 1;
+            return CompareResult.WIN.ordinal();
         }
         if(this.getMaxValueOfPair() < otherPair.getMaxValueOfPair()){
-            return 2;
+            return CompareResult.LOSE.ordinal();
         }
-
-        return 0;
+        return CompareResult.DRAW.ordinal();
     }
 }
