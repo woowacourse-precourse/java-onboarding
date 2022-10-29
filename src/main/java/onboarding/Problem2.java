@@ -13,6 +13,18 @@ public class Problem2 {
             password.add(cryptogram_i);
         }
 
+        while(true){
+            int password_size = password.size();        //검사 전 문자열의 길이 저장
+            removeSameStr(password);
+            if(password_size == password.size()){       //검사 전과 후의 문자열의 길이가 같으면 변하지 않았다는 뜻
+                break;
+            }
+        }
+
+        for(int i = 0; i < password.size(); i++){
+            answer += password.get(i);                  //answer에 password에 남은 문자 하나씩 더해서 붙여줌
+        }
+
         return answer;
     }
 
