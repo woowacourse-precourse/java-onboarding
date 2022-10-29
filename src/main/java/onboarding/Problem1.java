@@ -45,5 +45,10 @@ class Problem1 {
         if(page.get(0) %2 !=1 || page.get(1) %2 != 0) return false;
         return true;
     }
+    public static boolean isLinkedPage(List<Integer> page){
+        if(page.get(0) - page.get(1) != -1) return false;
+        return true;
+    }
+
 }
 
