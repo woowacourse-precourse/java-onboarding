@@ -7,7 +7,12 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+    private int selectSide(List<Integer> pageList) {
+        int left = selectOperation(pageList.get(0));
+        int right = selectOperation(pageList.get(1));
 
+        return Math.max(left, right);
+    }
     private int selectOperation(int num) {
         int sum = 0;
         int multiple = 1;
