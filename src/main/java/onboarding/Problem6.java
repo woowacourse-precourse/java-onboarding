@@ -18,11 +18,6 @@ public class Problem6 {
         return answer;
     }
 
-    /**
-     * 신청목록(forms)의 List<String> 객체를 vo객체 Form으로 바꾸어 반환한다.
-     * @param forms
-     * @return Form 타입의 ArrayList
-     */
     private static List<Form> getFormList(List<List<String>> forms) {
         List<Form> result = new ArrayList<>();
         for (List<String> form : forms) {
