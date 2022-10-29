@@ -23,8 +23,4 @@ public class Problem4 {
         }
         return sb.toString();
     }
-
-    public static void main(String[] args) {
-        System.out.println(solution("I love you"));
-    }
 }
