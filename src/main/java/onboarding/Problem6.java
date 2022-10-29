@@ -8,13 +8,12 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Problem6 {
-    private static final Map<String, String> usingNameMap = new HashMap<>();
-    private static final Set<String> renamedListSet = new HashSet<>();
-
     public static List<String> solution(List<List<String>> forms) {
+        Map<String, String> usingNameMap = new HashMap<>();
+        Set<String> renamedListSet = new HashSet<>();
         forms.stream()
                 .filter(Problem6::isCheckForms)
-                .forEach(Problem6::validateSameName);
+                .forEach(list -> validateSameNameInList(list, usingNameMap, renamedListSet));
 
         List<String> answer = renamedListSet.stream()
                 .sorted()
@@ -23,7 +22,7 @@ public class Problem6 {
         return answer;
     }
 
-    private static void validateSameName(List<String> list) {
+    private static void validateSameNameInList(List<String> list, Map<String, String> usingNameMap, Set<String> renamedListSet) {
         String name = list.get(1);
         for (int i = 0; i < name.length() - 1; i++) {
             String subName = name.substring(i, i + 2);
