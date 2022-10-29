@@ -6,67 +6,78 @@ public class Problem7 {
     public static final int FRIEND_POINT = 20;
     public static final int ZERO_POINT = 0;
     public static final int ONE_POINT = 1;
-    public static List<String> userFriend = new ArrayList<>();
-    public static Map<String, Integer> sameFriend = new HashMap<>();
+    public static List<String> userFriend;
+    public static Map<String, Integer> sameFriend;
+    public static List<String> result;
+    public static List<String> samePointList;
     public static String currentUser;
+    public static final int MAX_FRIEND_RECOMMEND = 5;
+    public static final int INIT_ZERO = 0;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        initUser(user);
+        init(user);
 
-        searchUserFriend(friends);
-        searchSameFriend(friends);
-        searchVisitor(visitors);
+        findUserFriend(friends);
+        findSameFriend(friends);
+        findVisitor(visitors);
 
         List<String> answer = makeOrder();
         return answer;
     }
 
-    public static void initUser(String user) {
+    public static void init(String user) {
         currentUser = user;
+        userFriend = new ArrayList<>();
+        sameFriend = new HashMap<>();
+        result = new ArrayList<>();
+        samePointList = new ArrayList<>();
     }
 
-    public static List<String> addResult(List<Map.Entry<String, Integer>> listEntries) {
-        List<String> result = new ArrayList<>();
-        List<String> sameValueList = new ArrayList<>();
+    public static List<String> orderSamePointFriend(List<Map.Entry<String, Integer>> listEntries) {
+        int count = INIT_ZERO;
 
-        int count = 0;
+        for (int targetIndex = INIT_ZERO; targetIndex < listEntries.size(); targetIndex++) {
+            int targetPoint = listEntries.get(targetIndex).getValue();
 
-        for (int i = 0; i < listEntries.size(); i++) {
-
-            if (count >= 5) {
-                break;
+            if (count >= MAX_FRIEND_RECOMMEND) {
+                return result;
             }
 
-            Map.Entry<String, Integer> entry = listEntries.get(i);
-            int target = entry.getValue();
-
-            for (int j = i + 1; j < listEntries.size(); j++) {
-                if (listEntries.get(j).getValue() == target) {
-                    sameValueList.add(listEntries.get(j).getKey());
-                }
-            }
-            if (!sameValueList.isEmpty()) {
-                sameValueList.add(listEntries.get(i).getKey());
-                i+=(sameValueList.size()-1);
-                Collections.sort(sameValueList);
-
-                for (int z = 0; z < sameValueList.size(); z++) {
-                    result.add(sameValueList.get(z));
-                    count++;
-                }
-
-                sameValueList.clear();
-
-            } else {
-                result.add(entry.getKey());
-                count++;
-            }
+            checkSamePointFriend(listEntries, targetIndex, targetPoint);
+            targetIndex = (samePointList.isEmpty() ? empty(listEntries, count, targetIndex): notEmpty(listEntries, targetIndex, count));
         }
-
         return result;
     }
 
-    private static List<String> makeOrder() {
+    private static int empty(List<Map.Entry<String, Integer>> listEntries, int count, int targetIndex) {
+        result.add(listEntries.get(targetIndex).getKey());
+        count++;
+        return targetIndex;
+    }
+
+    public static int notEmpty(List<Map.Entry<String, Integer>> listEntries, int targetIndex, int count) {
+        samePointList.add(listEntries.get(targetIndex).getKey());
+        Collections.sort(samePointList);
+
+        for (int samePointListIndex = INIT_ZERO; samePointListIndex < samePointList.size(); samePointListIndex++) {
+            result.add(samePointList.get(samePointListIndex));
+            count++;
+        }
+        targetIndex += (samePointList.size() - 1);
+        samePointList.clear();
+
+        return targetIndex;
+    }
+
+    public static void checkSamePointFriend(List<Map.Entry<String, Integer>> listEntries, int targetIndex, int targetPoint) {
+        for (int compareIndex = targetIndex + 1; compareIndex < listEntries.size(); compareIndex++) {
+            if (listEntries.get(compareIndex).getValue() == targetPoint) {
+                samePointList.add(listEntries.get(compareIndex).getKey());
+            }
+        }
+    }
+
+    public static List<String> makeOrder() {
         List<Map.Entry<String, Integer>> listEntries = new ArrayList<Map.Entry<String, Integer>>(sameFriend.entrySet());
 
         Collections.sort(listEntries, new Comparator<Map.Entry<String, Integer>>() {
@@ -75,48 +86,46 @@ public class Problem7 {
             }
         });
 
-        return addResult(listEntries);
+        return orderSamePointFriend(listEntries);
     }
 
-    private static void searchVisitor(List<String> visitors) {
+    public static void findVisitor(List<String> visitors) {
         for (String visitor : visitors) {
-            if(!isSameWithUserFriend(visitor)) {
-                checkNameInSameFriend(visitor);
-                addNameInSameFriend(visitor,ONE_POINT);
+
+            if (!isSameWithUserFriend(visitor)) {
+                checkExistName(visitor);
+                addName(visitor, ONE_POINT);
             }
         }
     }
 
-    public static void searchSameFriend(List<List<String>> friends) {
-        for (List<String> list : friends) {
-            checkUserFriends(list);
+    public static void findSameFriend(List<List<String>> friends) {
+        for (List<String> friendList : friends) {
+            checkUserFriends(friendList);
         }
     }
 
-    private static void checkUserFriends(List<String> list) {
-        for (String name : list) {
-            checkSameFriend(name);
+    //user와 겹치는 친구 있는지 체크하고 있으면 sameFriend에 넣음
+    public static void checkUserFriends(List<String> friendList) {
+        for (String name : friendList) {
+            if (!isSameWithUser(name) && !isSameWithUserFriend(name)) {
+                checkExistName(name);
+                addName(name, FRIEND_POINT);
+            }
         }
     }
 
-    private static void checkSameFriend(String name) {
-        if (!isSameWithUser(name) && !isSameWithUserFriend(name)) {
-            checkNameInSameFriend(name);
-            addNameInSameFriend(name, FRIEND_POINT);
-        }
-    }
-
-    private static void addNameInSameFriend(String name, int point) {
+    public static void addName(String name, int point) {
         sameFriend.put(name, sameFriend.get(name) + point);
     }
 
-    private static void checkNameInSameFriend(String name) {
+    public static void checkExistName(String name) {
         if (!isContainName(name)) {
             sameFriend.put(name, ZERO_POINT);
         }
     }
 
-    private static boolean isContainName(String name) {
+    public static boolean isContainName(String name) {
         return sameFriend.containsKey(name);
     }
 
@@ -128,25 +137,21 @@ public class Problem7 {
         return name.equals(currentUser);
     }
 
-    public static void searchUserFriend(List<List<String>> friends) {
-        for (List<String> list : friends) {
-            findUserFriends(list);
+    public static void findUserFriend(List<List<String>> friends) {
+        for (List<String> friendList : friends) {
+            for (String friend : friendList) {
+                checkUserFriend(friend, friendList);
+            }
         }
     }
 
-    public static void findUserFriends(List<String> list) {
-        for (String friend : list) {
-            addUserFriend(friend, list);
-        }
-    }
-
-    public static void addUserFriend(String friend, List<String> list) {
-        if (checkUserFriend(friend, list)) {
+    public static void checkUserFriend(String friend, List<String> friendList) {
+        if (isUserFriend(friend, friendList)) {
             userFriend.add(friend);
         }
     }
 
-    public static boolean checkUserFriend(String friend, List<String> list) {
-        return (list.contains(currentUser) && !friend.equals(currentUser));
+    public static boolean isUserFriend(String friend, List<String> friendList) {
+        return (friendList.contains(currentUser) && !friend.equals(currentUser));
     }
 }
