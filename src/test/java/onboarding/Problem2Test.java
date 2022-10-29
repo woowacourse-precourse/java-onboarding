@@ -15,6 +15,11 @@ class Problem2Test {
 	}
 
 	@Test
+	void test(){
+		String words = "zyelleyz";
+		Assertions.assertThat(Problem2.solution(words)).isEqualTo("");
+	}
+	@Test
 	void 테스트케이스_추가() {
 		String words = "hello";
 		Assertions.assertThat(Problem2.solution(words)).isEqualTo("heo");

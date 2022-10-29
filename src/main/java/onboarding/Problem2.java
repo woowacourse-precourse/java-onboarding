@@ -20,27 +20,26 @@ import java.util.Stack;
  *   문제를 풀다가 드는 의문점이다
  *   위 문자의 경우 앞에서부터 중복을 체크하면 z가 남고
  *   m부터 체크를하면 z만 남는다. 만약 최소한으로 줄이라면 두번째로 하는게 맞는데 일단... 이 부분도 고려해봐야겠다.
+ *
+ *   ***로직변경
+ *   기존 while문들 돌면서 문자를 재할당하는 형태로 처음부터 돌아가 탐색을 해 주었다.
+ *   하지만 이는 조금 비효율적인거같아서 스택의 peek값으로 비교를 해나가는 것으로 하는게 좋을 것 같다
  */
 public class Problem2 {
     public static String solution(String cryptogram) {
         checkValidRange(cryptogram.length());
-        String answer = getZipWord(cryptogram);
 
+        Stack<String> stack = findOverlapWord(cryptogram);
+        String answer = String.join("", stack);
         return answer;
     }
 
-    private static String getZipWord(String cryptogram) {
-        String answer = "answer";
-        Stack<String> stack = new Stack<>();
-
+    private static Stack<String> findOverlapWord(String cryptogram) {
         int indexNumber = 0;
-        while (true) {
-            boolean checkChanged = false;
-            String[] splitWord = cryptogram.split("");
-            if (String.join("", stack).trim().equals(String.join("", splitWord).trim())) {
-                break; // 종료조건 1번 (스택에 들어가 있는 데이터의 조합과 원본 데이터의 조합이 같을때. 즉, 중복이 발생하지않고 모두 돌았을 때
-            }
-            if (stack.size() == 0 ) {
+        String[] splitWord = cryptogram.split("");
+        Stack<String> stack = new Stack<>();
+        while (indexNumber < splitWord.length) {
+            if (stack.size() == 0) {
                 stack.add(splitWord[indexNumber]);
                 indexNumber += 1;
                 continue;
@@ -50,53 +49,29 @@ public class Problem2 {
                 indexNumber += 1;
                 continue;
             }
+            int erase = getEraseRange(indexNumber, splitWord, stack);
 
-            checkChanged = isCheckChanged(stack, indexNumber, checkChanged, splitWord);
-            String changedWord = String.join("", splitWord).trim();
-            cryptogram = changedWord;
-            indexNumber = 0;
-            stack.clear();
-
-            if (!checkChanged) {
-                break;
-            }
-            if (cryptogram.length() == 0) {
-                break;
-            }
+            indexNumber = assignToJumpEraseRange(indexNumber, stack, erase);
         }
-        answer = cryptogram;
-        return answer;
+        return stack;
     }
 
-    private static boolean isCheckChanged(
-        final Stack<String> stack, final int indexNumber, boolean checkChanged, String[] splitWord) {
-        if (stack.peek().equals(splitWord[indexNumber])) {
-            List<Integer> eraseList = getEraseList(indexNumber, splitWord);
-            checkChanged = doEraseAndCheckChanged(checkChanged, splitWord, eraseList);
-        }
-        return checkChanged;
+    private static int assignToJumpEraseRange(int indexNumber, Stack<String> stack, int erase) {
+        if (erase >= 1) stack.pop();
+        indexNumber += erase;
+        return indexNumber;
     }
 
-    private static boolean doEraseAndCheckChanged(
-        boolean checkChanged, final String[] splitWord, final List<Integer> eraseList) {
-        for (Integer eraseIndex : eraseList) {
-            splitWord[eraseIndex] = "";
-            checkChanged = true;
-        }
-        return checkChanged;
-    }
-
-    private static List<Integer> getEraseList(final int indexNumber, final String[] splitWord) {
-        int samePoint = indexNumber - 1;
-        if (samePoint < 0) samePoint = 0;
-        List<Integer> eraseList = new ArrayList<>();
-        for (int i = samePoint; i < splitWord.length; i++) {
-            if (!splitWord[samePoint].equals(splitWord[i])) {
+    private static int getEraseRange(int indexNumber, String[] splitWord, Stack<String> stack) {
+        int erase = 0;
+        int overlapCount = indexNumber;
+        for (int i = overlapCount; i < splitWord.length; i++) {
+            if (!stack.peek().equals(splitWord[i])) {
                 break;
             }
-            eraseList.add(i);
+            erase += 1;
         }
-        return eraseList;
+        return erase;
     }
 
     private static void checkValidRange(final int wordLength) {
