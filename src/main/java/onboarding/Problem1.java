@@ -27,4 +27,14 @@ class Problem1 {
         }
         return false;
     }
+
+    public static int pageSum(Integer page) {
+        int pageSum = 0;
+        Integer pageCheck = page;
+        while(pageCheck != 0) {
+            pageSum += pageCheck%10;
+            pageCheck = pageCheck/10;
+        }
+        return pageSum;
+    }
 }
