@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -176,6 +177,7 @@ class ApplicationTest {
     @Nested
     class Problem6Test {
         @Test
+        @DisplayName("정상적인 결과를 출력한다")
         void case1() {
             List<List<String>> forms = List.of(
                     List.of("jm@email.com", "제이엠"),
@@ -187,6 +189,109 @@ class ApplicationTest {
             List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
+
+        @Test
+        @DisplayName("크루가 10_000명 초과한 경우 예외를 반환한다")
+        void case2() {
+            List<List<String>> forms = new ArrayList<>();
+            for(int i=0;i<10001;i++) {
+                forms.add(List.of(i+"ja@email.com", "이름"+i));
+            }
+            assertThatThrownBy(() -> Problem6.solution(forms)).isInstanceOf(Exception.class);
+        }
+
+        @Test
+        @DisplayName("크루가 1명 미만인 경우 예외를 반환한다")
+        void case3() {
+            List<List<String>> forms = List.of();
+            assertThatThrownBy(() -> Problem6.solution(forms)).isInstanceOf(Exception.class);
+
+        }
+
+        @Test
+        @DisplayName("이메일이 11자보다 작으면 예외를 반환한다")
+        void case4() {
+            List<List<String>> forms = List.of(
+                    List.of("jm@email.com", "제이엠"),
+                    List.of("jason@email.com", "제이슨"),
+                    List.of("@email.com", "워니"), //10자
+                    List.of("mj@email.com", "엠제이"),
+                    List.of("nowm@email.com", "이제엠")
+            );
+            assertThatThrownBy(() -> Problem6.solution(forms)).isInstanceOf(Exception.class);
+
+        }
+
+        @Test
+        @DisplayName("이메일이 20자보다 크면 예외를 반환한다")
+        void case5() {
+            List<List<String>> forms = List.of(
+                    List.of("jm@email.com", "제이엠"),
+                    List.of("jasonjason@email.com", "제이슨"),
+                    List.of("woniee@email.com", "워니"),
+                    List.of("mj@email.com", "엠제이"),
+                    List.of("nowmsnowms1@email.com", "이제엠") // 21자
+            );
+            assertThatThrownBy(() -> Problem6.solution(forms)).isInstanceOf(Exception.class);
+        }
+
+        @Test
+        @DisplayName("이메일이 @email.com으로 끝나지 않으면 예외를 반환한다")
+        void case6() {
+            List<List<String>> forms = List.of(
+                    List.of("jm@email.com", "제이엠"),
+                    List.of("jason@emil.com", "제이슨"), //@email.com 아님
+                    List.of("woniee@email.com", "워니"),
+                    List.of("mj@email.com", "엠제이"),
+                    List.of("nowm@email.com", "이제엠")
+            );
+            assertThatThrownBy(() -> Problem6.solution(forms)).isInstanceOf(Exception.class);
+        }
+
+        @Test
+        @DisplayName("이메일이 중복되면 예외를 반환한다")
+        void case7() {
+            List<List<String>> forms = List.of(
+                    List.of("jm@email.com", "제이엠"),
+                    List.of("jason@email.com", "제이슨"), //중복
+                    List.of("woniee@email.com", "워니"),
+                    List.of("mj@email.com", "엠제이"),
+                    List.of("jason@email.com", "이제엠") //중복
+            );
+            assertThatThrownBy(() -> Problem6.solution(forms)).isInstanceOf(Exception.class);
+        }
+
+        @Test
+        @DisplayName("이메일에 영소문자, 숫자 이외 들어가면 예외를 반환한다")
+        void case8() {
+            List<List<String>> forms = List.of(
+                    List.of("jm@email.com", "제이엠"),
+                    List.of("jason@email.com", "제이슨"),
+                    List.of("wOniee@email.com", "워니"), //대문자 들어감
+                    List.of("mj@email.com", "엠제이"),
+                    List.of("nowm@email.com", "이제엠")
+            );
+            assertThatThrownBy(() -> Problem6.solution(forms)).isInstanceOf(Exception.class);
+        }
+
+        @Test
+        @DisplayName("닉네임에 한글 이외가 들어가면 예외를 반환한다")
+        void case9() {
+            List<List<String>> forms = List.of(
+                    List.of("jm@email.com", "제이엠0"), //한글 이외 들어감
+                    List.of("jason@email.com", "제이슨"),
+                    List.of("woniee@email.com", "워니"),
+                    List.of("mj@email.com", "엠제이"),
+                    List.of("nowm@email.com", "이제엠")
+            );
+            assertThatThrownBy(() -> Problem6.solution(forms)).isInstanceOf(Exception.class);
+        }
+
+        //TODO 정상결과를 조금 더 만들어주자
+        // 이메일 20자일때, 11글자일때
+        // 한글이름 1자일때, 19자일떄
+        // 이메일에 숫자 들어갈때
+        // 한글닉네임 중복이 아무도 없을떄
     }
 
     @Nested
