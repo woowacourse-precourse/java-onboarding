@@ -33,22 +33,28 @@ class Problem1 {
     public static class Card {
         List<Integer> getMax = new ArrayList<>();
         Integer selectCard(List<Integer> player) {
-            // to get player's left and right pages
-            for (int i = 0; i < 2; i++) {
-                // divide the number by each digit
-                List<Integer> digits = new ArrayList<>();
-                Integer getPage = player.get(i);
-                while (getPage > 0) {
-                    digits.add(getPage % 10);
-                    getPage = getPage / 10;
-                }
-                // sum each number and add put it in the max list
-                getMax.add(sumDigits(digits));
-                // multiply each number and put it in the max list
-                getMax.add(multiplicationDigits(digits));
-                digits.clear();
+            // to check an exception to a page that is invalid or cannot be opened.
+            if (player.get(0) == 1 || player.get(1) == 400){
+                return -1;
             }
-            return getMax.stream().max(Integer::compare).orElse(-1);
+            else {
+                // to get player's left and right pages
+                for (int i = 0; i < 2; i++) {
+                    // divide the number by each digit
+                    List<Integer> digits = new ArrayList<>();
+                    Integer getPage = player.get(i);
+                    while (getPage > 0) {
+                        digits.add(getPage % 10);
+                        getPage = getPage / 10;
+                    }
+                    // sum each number and add put it in the max list
+                    getMax.add(sumDigits(digits));
+                    // multiply each number and put it in the max list
+                    getMax.add(multiplicationDigits(digits));
+                    digits.clear();
+                }
+                return getMax.stream().max(Integer::compare).orElse(-1);
+            }
         }
 
         // function to find the sum of each number
@@ -73,15 +79,19 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-        //pobi's card
+        // pobi's card
         Card pobiCard = new Card();
         Integer pobiTurn = pobiCard.selectCard(pobi);
 
-        //crong's card
+        // crong's card
         Card crongCard = new Card();
         Integer crongTrun = crongCard.selectCard(crong);
 
-        if (pobiTurn > crongTrun) {
+        // compare the scores and choose the winner
+        if (pobiTurn == -1 || crongTrun == -1) {
+            answer = -1;
+        }
+        else if (pobiTurn > crongTrun) {
             answer = 1;
         }
         else if (pobiTurn < crongTrun) {
