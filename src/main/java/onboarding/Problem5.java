@@ -8,4 +8,8 @@ public class Problem5 {
         List<Integer> answer = Collections.emptyList();
         return answer;
     }
+
+    public int divideNumberAByNumberB(int numberA, int numberB) throws ArithmeticException{
+        return numberA / numberB;
+    }
 }
