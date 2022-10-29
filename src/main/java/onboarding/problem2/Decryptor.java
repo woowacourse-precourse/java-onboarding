@@ -46,9 +46,14 @@ public class Decryptor {
 
     private static void deleteDuplicateCharacter(List<String> cryptogramList, String nowCharacter,
         int startCursor) {
-        while (cryptogramList.size() > 0 && cryptogramList.get(startCursor).equals(nowCharacter)) {
+        while (validateDuplicateCharacter(cryptogramList, nowCharacter, startCursor)) {
             cryptogramList.remove(startCursor);
         }
+    }
+
+    private static boolean validateDuplicateCharacter(List<String> cryptogramList, String nowCharacter,
+        int startCursor) {
+        return !cryptogramList.isEmpty() && cryptogramList.get(startCursor).equals(nowCharacter);
     }
 
     private static String decryptCharacterToString(List<String> cryptogramList) {
