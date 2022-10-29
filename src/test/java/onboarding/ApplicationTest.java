@@ -3,6 +3,7 @@ package onboarding;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -166,6 +167,14 @@ class ApplicationTest {
             String word = "I love you";
             String result = "R olev blf";
             assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+
+        @Test
+        void should_ThrowException_ForInvalidLength() {
+            String word = "";
+            assertThatThrownBy(() -> Problem4.validateLength(word))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("허용되지 않은 길이의 문자열입니다.");
         }
     }
 
