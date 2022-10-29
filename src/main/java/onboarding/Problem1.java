@@ -44,4 +44,13 @@ class Problem1 {
         }
         return sum;
     }
+
+    private static int multiplyDigit(int num) {
+        int temp = 0;
+        while (num != 0) {
+            temp *= (num % 10);
+            num /= 10;
+        }
+        return temp;
+    }
 }
