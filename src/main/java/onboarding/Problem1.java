@@ -22,10 +22,7 @@ class Problem1 {
         // 1-2 왼쪽 페이지와 오른쪽 페이지가 연속적이지 않은 경우
         // 1-3 펼친 페이지가 시작 페이지나 마지막 페이지일 경우
         // 1-4 pobi 와 crong 의 길이가 2가 아닐 경우
-        if(isLeftPageEvenRightPageOdd(pobiLeftPage, pobiRightPage, crongLeftPage, crongRightPage)
-        || isNotLeftPagePlusOneRightPage(pobiLeftPage, pobiRightPage, crongLeftPage, crongRightPage)
-        || isStartPageOrEndPage(pobiLeftPage, pobiRightPage, crongLeftPage, crongRightPage)
-        || isNotPobiSizeOrCrongSize(pobi, crong)){
+        if(isCheckedException(pobi, crong, pobiLeftPage, pobiRightPage, crongLeftPage, crongRightPage)){
             answer = EXCEPTION;
             return answer;
         }
@@ -34,6 +31,13 @@ class Problem1 {
         answer = getAnswer(pobiLeftPage, pobiRightPage, crongLeftPage, crongRightPage);
 
         return answer;
+    }
+
+    private static boolean isCheckedException(List<Integer> pobi, List<Integer> crong, int pobiLeftPage, int pobiRightPage, int crongLeftPage, int crongRightPage) {
+        return isLeftPageEvenRightPageOdd(pobiLeftPage, pobiRightPage, crongLeftPage, crongRightPage)
+                || isNotLeftPagePlusOneRightPage(pobiLeftPage, pobiRightPage, crongLeftPage, crongRightPage)
+                || isStartPageOrEndPage(pobiLeftPage, pobiRightPage, crongLeftPage, crongRightPage)
+                || isNotPobiSizeOrCrongSize(pobi, crong);
     }
 
     private static int getAnswer(int pobiLeftPage, int pobiRightPage, int crongLeftPage, int crongRightPage) {
