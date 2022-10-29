@@ -32,14 +32,9 @@ public class Problem7 {
             if (isFriends(visitor, userFriends)) {
                 continue;
             }
-            People newPeople = findFriend(contacts.get(visitor), visitor);
-//            if (contacts.get(visitor) == null){
-//                newPeople = new People(visitor);
-//            } else {
-//                newPeople = contacts.get(visitor);
-//            }
-            newPeople.plusPoint(VISITOR_POINT);
-            contacts.put(visitor, newPeople);
+            People people = findFriend(contacts.get(visitor), visitor);
+            people.plusPoint(VISITOR_POINT);
+            contacts.put(visitor, people);
         }
         List<People> keyList = new ArrayList<>(contacts.values());
         Collections.sort(keyList);
