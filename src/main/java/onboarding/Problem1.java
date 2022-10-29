@@ -10,8 +10,6 @@ class Problem1 {
     public static final int ERROR = -1;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-
         int pobiLeftPage = pobi.get(0);
         int pobiRightPage = pobi.get(1);
         int crongLeftPage = crong.get(0);
@@ -29,7 +27,19 @@ class Problem1 {
         int pobiScore = Math.max(calculateScore(pobiLeftPage), calculateScore(pobiRightPage));
         int crongScore = Math.max(calculateScore(crongLeftPage), calculateScore(crongRightPage));
 
+        int answer = findWinner(pobiScore, crongScore);
+
         return answer;
+    }
+
+    private static int findWinner(int pobiScore, int crongScore) {
+        if (pobiScore > crongScore) {
+            return POBI_WIN;
+        } else if (pobiScore == crongScore) {
+            return DRAW;
+        }
+
+        return CRONG_WIN;
     }
 
     private static int calculateScore(int page) {
