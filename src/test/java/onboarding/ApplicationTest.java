@@ -236,6 +236,7 @@ class ApplicationTest {
     @Nested
     class Problem6Test {
         @Test
+        @DisplayName("'제이'엠, '제이'슨, 엠'제이'")
         void case1() {
             List<List<String>> forms = List.of(
                     List.of("jm@email.com", "제이엠"),
@@ -249,6 +250,7 @@ class ApplicationTest {
         }
 
         @Test
+        @DisplayName("중복 없는 케이스")
         void case2() {
             List<List<String>> forms = List.of(
                     List.of("e@email.com", "중복이"),
@@ -262,6 +264,7 @@ class ApplicationTest {
         }
 
         @Test
+        @DisplayName("이메일 오름차순 테스트")
         void case3() {
             List<List<String>> forms = List.of(
                     List.of("e@email.com", "알파벳순으로정렬되는지확인하는테스트"),
@@ -276,6 +279,7 @@ class ApplicationTest {
         }
 
         @Test
+        @DisplayName("이메일 중복 제거 테스트")
         void case4() {
             List<List<String>> forms = List.of(
                     List.of("e@email.com", "중복완전많이"),
@@ -290,6 +294,7 @@ class ApplicationTest {
         }
 
         @Test
+        @DisplayName("한 명 테스트")
         void case5() {
             List<List<String>> forms = List.of(
                     List.of("onlyme@email.com", "교육생이한명")
@@ -303,6 +308,7 @@ class ApplicationTest {
     @Nested
     class Problem7Test {
         @Test
+        @DisplayName("andole: 20, jun: 20, bedi: 3")
         void case1() {
             String user = "mrko";
             List<List<String>> friends = List.of(
@@ -319,6 +325,7 @@ class ApplicationTest {
         }
 
         @Test
+        @DisplayName("andole: 10, bedi: 3")
         void case2() {
             String user = "mrko";
             List<List<String>> friends = List.of(
@@ -335,6 +342,7 @@ class ApplicationTest {
         }
 
         @Test
+        @DisplayName("andole: 20, bedi: 3")
         void case3() {
             String user = "mrko";
             List<List<String>> friends = List.of(
@@ -352,6 +360,7 @@ class ApplicationTest {
         }
 
         @Test
+        @DisplayName("andole: 20, bedi: 20")
         void case4() {
             String user = "mrko";
             List<List<String>> friends = List.of(
@@ -371,6 +380,7 @@ class ApplicationTest {
         }
 
         @Test
+        @DisplayName("donut: 11, anne: 10, bedi: 10, mrko: 1, peter: 1 / sam: 1")
         void case5() {
             String user = "andole";
             List<List<String>> friends = List.of(
@@ -388,6 +398,7 @@ class ApplicationTest {
         }
 
         @Test
+        @DisplayName("sam: 21, shakevan: 20, anne: 11, kane: 10, mrko: 2 / donut: 1")
         void case6() {
             String user = "andole";
             List<List<String>> friends = List.of(
@@ -407,6 +418,7 @@ class ApplicationTest {
         }
 
         @Test
+        @DisplayName("유저 친구 없는 경우: mrko: 2, anne: 1, donut: 1, sam: 1")
         void case7() {
             String user = "hello";
             List<List<String>> friends = List.of(
@@ -414,11 +426,8 @@ class ApplicationTest {
                     List.of("andole", "bedi"),
                     List.of("jun", "shakevan"),
                     List.of("jun", "kane"),
-                    List.of("jun", "sam"),
                     List.of("bedi", "shakevan"),
-                    List.of("bedi", "anne"),
-                    List.of("bedi", "sam"),
-                    List.of("anne", "mrko")
+                    List.of("bedi", "anne")
             );
             List<String> visitors = List.of("donut", "anne", "mrko", "mrko", "sam");
             List<String> result = List.of("mrko", "anne", "donut", "sam");
