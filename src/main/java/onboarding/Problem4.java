@@ -10,20 +10,20 @@ public class Problem4 {
 	}
 	
 	public static String changeSmallLetters(String word) {
-		StringBuilder changeWord = new StringBuilder(word);
-		for (int i = 0; i < word.length(); i++) {
-			if (word.charAt(i) >= 'a' && word.charAt(i) <= 'z') {
-				char change = (char) ('a' + 'z' - word.charAt(i));
-				changeWord.setCharAt(i, change);
-			}
-		}
-		return changeWord.toString();
+		final char firstSmallLetter = 'a';
+		final char lastSmallLetter = 'z';
+		return changeLetters(word, firstSmallLetter, lastSmallLetter);
 	}
 	public static String changeCapitalLetters(String word) {
+		final char firstCapitalLetter = 'A';
+		final char lastCapitalLetter = 'Z';
+		return changeLetters(word, firstCapitalLetter, lastCapitalLetter);
+	}
+	public static String changeLetters(String word, char first, char last) {
 		StringBuilder changeWord = new StringBuilder(word);
 		for (int i = 0; i < word.length(); i++) {
-			if (word.charAt(i) >= 'A' && word.charAt(i) <= 'Z') {
-				char change = (char) ('A' + 'Z' - word.charAt(i));
+			if (word.charAt(i) >= first && word.charAt(i) <= last) {
+				char change = (char) (first + last - word.charAt(i));
 				changeWord.setCharAt(i, change);
 			}
 		}
