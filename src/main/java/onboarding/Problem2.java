@@ -1,7 +1,7 @@
 package onboarding;
 
 public class Problem2 {
-	private static final String EXCEPTION_MESSAGE = "NOT LOWER CASE";
+	private static final String EXCEPTION_MESSAGE = "ERROR";
 
 	public static String solution(String cryptogram) {
 		if (!isValidLowerCase(cryptogram) || !isValidLength(cryptogram)) {
