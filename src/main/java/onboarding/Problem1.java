@@ -22,4 +22,8 @@ class Problem1 {
     private static int getMultiplyScore(List<Integer> splitNumber) {
         return splitNumber.stream().reduce(1, (a, b) -> a * b);
     }
+    private static int getMaxScore(int pageNumber) {
+        List<Integer> splitNumber = splitDigitNumber(pageNumber);
+        return Math.max(getPlusScore(splitNumber), getMultiplyScore(splitNumber));
+    }
 }
