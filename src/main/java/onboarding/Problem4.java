@@ -11,9 +11,11 @@ public class Problem4 {
         for (int i = 0; i < word.length(); i++) {
             if (Character.isAlphabetic(word.charAt(i))) {
                 if (Character.isUpperCase(word.charAt(i))) {
-
+                    char convert = (char) (155 - (int) word.charAt(i));
+                    sb.append(convert);
                 } else {
-
+                    char convert = (char) (219 - (int) word.charAt(i));
+                    sb.append(convert);
                 }
             } else sb.append(word.charAt(i));
         }
