@@ -27,4 +27,8 @@ public class PagePair {
     public int getMaxValueOfPair(){
         return Math.max(pagePair.get(0).getMaxValue(), pagePair.get(1).getMaxValue());
     }
+
+    public boolean judgeWinnable(PagePair otherPair){
+        return this.getMaxValueOfPair() > otherPair.getMaxValueOfPair();
+    }
 }
