@@ -39,4 +39,12 @@ class Problem4Test {
         char answer = (char)(219 - a);
         return answer;
     }
+
+    // 추가 테스트
+
+
+    @Test
+    void 추가테스트1() {
+        assertThat(Problem4.solution("Hello  Everyone!")).isEqualTo("Svool  Veviblmv!");
+    }
 }
