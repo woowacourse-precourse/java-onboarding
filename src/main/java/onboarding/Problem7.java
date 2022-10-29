@@ -1,9 +1,12 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     private static final int FIRST_FRIEND = 0;
@@ -13,6 +16,8 @@ public class Problem7 {
     private static final int ONE_POINT = 1;
     private static final int TEN_POINT = 10;
 
+    private static final int RESULT_LIMIT = 5;
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
         Map<String, List<String>> userToFriends = convertToFriendMap(friends);
@@ -20,7 +25,7 @@ public class Problem7 {
 
         plusOnePointForVisitors(scoreMap, visitors);
 
-        return List.of();
+        return convertToResult(scoreMap, new HashSet<>(userToFriends.get(user)), user);
     }
 
     private static Map<String, List<String>> convertToFriendMap(List<List<String>> friends) {
@@ -60,5 +65,25 @@ public class Problem7 {
             Integer score = scoreMap.getOrDefault(visitor, ZERO_POINT);
             scoreMap.put(visitor, score + ONE_POINT);
         }
+    }
+
+    private static List<String> convertToResult(Map<String, Integer> scoreMap, HashSet<String> usersFriend, String user) {
+        return scoreMap.keySet().stream()
+                .filter(friend -> scoreMap.getOrDefault(friend, ZERO_POINT) != ZERO_POINT)
+                .filter(friend -> !usersFriend.contains(friend))
+                .filter(friend -> !friend.equals(user))
+                .sorted(sortByHighScoreAndLexicographicalOrder(scoreMap))
+                .limit(RESULT_LIMIT)
+                .collect(Collectors.toList());
+    }
+
+    private static Comparator<String> sortByHighScoreAndLexicographicalOrder(Map<String, Integer> scoreMap) {
+        return (friend1, friend2) -> {
+            int difference = scoreMap.get(friend2) - scoreMap.get(friend1);
+            if (difference == 0) {
+                return friend1.compareTo(friend2);
+            }
+            return difference;
+        };
     }
 }
