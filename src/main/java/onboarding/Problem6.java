@@ -1,11 +1,12 @@
 package onboarding;
 
-import java.util.List;
+import java.util.*;
 
 public class Problem6 {
     public static final int EMAIL = 0;
     public static final int NICKNAME = 1;
     public static final int NUM_OF_LETTER = 2;
+    public static final int NUM_OF_DUPLICATE_NICKNAME = 1;
     public static final int MINIMUM_FORMS_RANGE = 1;
     public static final int MAXIMUM_FORMS_RANGE = 10000;
     public static final int MINIMUM_EMAIL_RANGE = 11;
@@ -23,6 +24,8 @@ public class Problem6 {
         return answer;
         validate(forms);
         Map<String, List<String>> splitNickname = makeMap(forms);
+        List<String> emailsWithDuplicatedNickname = getEmailsWithDuplicatedNickname(splitNickname);
+        return emailsWithDuplicatedNickname;
     }
 
     public static void validate(List<List<String>> forms) {
@@ -96,6 +99,20 @@ public class Problem6 {
                 }
             }
         }
+    }
+
+
+    private static List<String> getEmailsWithDuplicatedNickname(Map<String, List<String>> splitNickname) {
+        Set<String> set = new HashSet<>();
+
+        for (String key : splitNickname.keySet()) {
+            List<String> emails = splitNickname.get(key);
+            if (emails.size() > NUM_OF_DUPLICATE_NICKNAME) {
+                set.addAll(emails);
+            }
+        }
+
+        return new ArrayList<>(set);
     }
 
     private static Map<String, List<String>> makeMap(List<List<String>> forms) {
