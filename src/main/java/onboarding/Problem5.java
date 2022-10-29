@@ -6,7 +6,8 @@ import java.util.List;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
+        Withdrawal withdraw = new Withdrawal();
+        List<Integer> answer = withdraw.getAnswer(money);
         return answer;
     }
 }
