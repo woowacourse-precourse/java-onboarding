@@ -3,7 +3,7 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-    public int addEachDigitOfPageNum(int pageNum){
+    public static int addEachDigitOfPageNum(int pageNum){
         int sumOfEachDigit=0;
         while(pageNum>0){
             sumOfEachDigit+=pageNum%10;
@@ -11,7 +11,7 @@ class Problem1 {
         }
         return sumOfEachDigit;
     }
-    public int multiplyEachDigitOfPageNum(int pageNum){
+    public static int multiplyEachDigitOfPageNum(int pageNum){
         int productOfEachDigit=1;
         while(pageNum>0){
             productOfEachDigit*=pageNum%10;
@@ -19,7 +19,7 @@ class Problem1 {
         }
         return productOfEachDigit;
     }
-    public int getMaxValue(int pageNum){
+    public static int getMaxValue(int pageNum){
         int maxValue=0;
         int sumOfEachDigit=addEachDigitOfPageNum(pageNum);
         int productOfEachDigit=multiplyEachDigitOfPageNum(pageNum);
@@ -31,7 +31,7 @@ class Problem1 {
         return maxValue;
     }
 
-    public int getScoreByMaxValue(List<Integer> pages){
+    public static int getScoreByMaxValue(List<Integer> pages){
         int scoreByMaxValue=0;
         int leftPage=pages.get(0);
         int rightPage=pages.get(1);
