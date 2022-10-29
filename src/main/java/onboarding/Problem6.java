@@ -35,10 +35,24 @@ public class Problem6 {
                 }
             }
         }
+
+        private List<String> findOverlappedNickname() {
+            addNicknamePartition();
+            Set<String> emailList = new HashSet<>();
+
+            overlapSet.keySet().stream()
+                    .map(k->overlapSet.get(k))
+                    .filter(v->v.size()>1)
+                    .forEach(emailList::addAll);
+
+            List<String> result = new ArrayList<>(emailList);
+            Collections.sort(result);
+            return result;
+        }
     }
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        Team team = new Team(forms);
+        return team.findOverlappedNickname();
     }
 }
