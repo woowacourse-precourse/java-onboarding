@@ -48,8 +48,8 @@ public class Problem6 {
         }
     }
 
-    private static List<List<String>> users = new ArrayList<>();
-    private static List<String> result = new ArrayList<>();
+    private static final List<List<String>> users = new ArrayList<>();
+    private static final List<String> result = new ArrayList<>();
 
     public static List<String> solution(List<List<String>> forms) {
         new UserVerifier().isCrewMemberSizeThan1MemberAndLessThan100Member(forms);
