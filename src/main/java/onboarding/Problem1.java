@@ -21,7 +21,11 @@ class Problem1 {
         return 0;
     }
     private static boolean isInvalidInput(List<Integer> pageList) {
-        return isInvalidRange(pageList) || isNotAdjoin(pageList);
+        return isInvalidRange(pageList) || isNotAdjoin(pageList) || isInvalidListSize(pageList);
+    }
+
+    private static boolean isInvalidListSize(List<Integer> pagelist) {
+        return pagelist.size() != 2;
     }
 
     private static boolean isNotAdjoin(List<Integer> pageList) {
