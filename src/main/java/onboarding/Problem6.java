@@ -3,6 +3,8 @@ package onboarding;
 import java.util.*;
 
 public class Problem6 {
+    private static final HashMap<String, List<String>> twoLetters = new HashMap<>();
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
 
@@ -18,7 +20,18 @@ public class Problem6 {
     private static void checkDuplicate(int checkIndex, List<String> userInfo) {
         for (int j = 0; j < checkIndex; j++) {
             String checkTwoLetter = userInfo.get(1).substring(j, j + 2);
-            System.out.println(checkTwoLetter);
+            List<String> tempList = new ArrayList<>();
+            if (isContainTwoLetter(checkTwoLetter)) {
+                tempList = twoLetters.get(checkTwoLetter);
+            }
+
+            tempList.add(userInfo.get(0));
+            twoLetters.put(checkTwoLetter, tempList);
         }
     }
+
+    private static boolean isContainTwoLetter(String checkTwoLetter) {
+        return twoLetters.containsKey(checkTwoLetter);
+    }
+
 }
