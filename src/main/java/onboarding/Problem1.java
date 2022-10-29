@@ -8,6 +8,8 @@ class Problem1 {
     public static final int POBI_WIN = 1;
     public static final int CRONG_WIN = 2;
     public static final int ERROR = -1;
+    public static final int FIRST_PAGE = 1;
+    public static final int LAST_PAGE = 399;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int pobiLeftPage = pobi.get(0);
@@ -63,6 +65,6 @@ class Problem1 {
     }
 
     private static boolean isFirstOrLastPage(int leftPage, int rightPage) {
-        return leftPage == 1 || rightPage == 399;
+        return leftPage == FIRST_PAGE || rightPage == LAST_PAGE;
     }
 }
