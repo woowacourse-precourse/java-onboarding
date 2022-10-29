@@ -16,6 +16,7 @@ class Problem1 {
         }
 
         pobiScore = calculationPobi(pobi);
+        crongScore = calculationCrong(crong);
 
 
         return answer;
@@ -59,5 +60,28 @@ class Problem1 {
 
         return Math.max(leftMax, rightMax);
     }
-    
+
+    static int calculationCrong(List<Integer> crong) {
+        String[] left = String.valueOf(crong.get(0)).split("");
+        int leftMax = 0;
+        int sumLeft = 0;
+        int multipleLeft = 1;
+        for (int i = 0; i < left.length; i++) {
+            sumLeft += Integer.parseInt(left[i]);
+            multipleLeft *= Integer.parseInt(left[i]);
+            leftMax = Math.max(sumLeft, multipleLeft);
+        }
+
+        String[] right = String.valueOf(crong.get(1)).split("");
+        int rightMax = 0;
+        int sumRight = 0;
+        int multipleRight = 1;
+        for (int i = 0; i < right.length; i++) {
+            sumRight += Integer.parseInt(right[i]);
+            multipleRight *= Integer.parseInt(right[i]);
+            rightMax = Math.max(sumRight, multipleRight);
+        }
+
+        return Math.max(leftMax, rightMax);
+    }
 }
