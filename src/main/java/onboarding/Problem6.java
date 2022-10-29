@@ -15,6 +15,7 @@ public class Problem6 {
 
         answer = extractDuplicateEmails();
         answer = removeDuplicateEmailData(answer);
+        Collections.sort(answer);
 
         return answer;
     }
