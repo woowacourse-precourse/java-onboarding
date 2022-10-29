@@ -10,9 +10,23 @@ import java.util.List;
 //예외에는 페이지의 맨처음이 펼처지거나, 마지막이 펼처지는 경우를 포함한다.
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        return 0;
+    return 0;
     }
-//책의 각 자리 숫자를 모두 더하는 함수 구현
+    //책의 각 자리 수를 곱하는 함수 구현
+    public static int multyplyResult(int num){
+        int result = 1;
+        while ((num)%10>0){
+            result *=(num%10);
+            if(num>10){
+            num = num / 10;
+            }else {
+                num = 0;
+            }
+        }
+
+        return result;
+    }
+//책의 각 자리 수를 더하는 함수 구현
     public static  int plusResult(int num){
         int result = 0;
         while ((num/10)>0){
@@ -21,5 +35,6 @@ class Problem1 {
         }
         return result;
     }
+
 
 }
