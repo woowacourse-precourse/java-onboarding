@@ -17,7 +17,8 @@
 - [x] solution 메서드 완성
 ---
 ### Problem 3
-
+- [ ] 3,6,9 개수 구하는 기능 추가
+- [ ] solution 메서드 완성
 ---
 ### Problem 4
 
