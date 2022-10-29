@@ -64,6 +64,9 @@ public class Sns {
 	}
 
 	private void removeFriend(String me, HashMap<String, Integer> scoreBoard) {
+		if(friendMap.get(me)==null )
+			return;
+
 		List<String> friendList = friendMap.get(me);
 		for (String friend : friendList) {
 			scoreBoard.remove(friend);
@@ -71,6 +74,10 @@ public class Sns {
 	}
 
 	private void friendToScore(String me, String userA, HashMap<String, Integer> scoreBoard) {
+
+		if(friendMap.get(me)==null || friendMap.get(userA)==null)
+			return;
+
 		List<String> friendListA = friendMap.get(me);
 		List<String> friendListB = friendMap.get(userA);
 
