@@ -74,7 +74,19 @@ public class Problem7 {
                 answer.add(key);
             }
         }
-        
+
+        //점수가 높은 순으로 정렬하고 점수가 같을 때는 이름 순으로 정렬
+        answer.sort(new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                if (score.get(o1) == score.get(o2)) {
+                    return o1.compareTo(o2);
+                } else {
+                    return score.get(o2) - score.get(o1);
+                }
+            }
+        });
+
         return answer;
     }
 }
