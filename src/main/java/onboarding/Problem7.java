@@ -19,7 +19,7 @@ public class Problem7 {
         List<String> olderFriends = getFriendOfUser(user);
         classifyOlderFriend(olderFriends);
         increaseFriendWeightByOldFriends(olderFriends);
-
+        increaseFriendWeightByVisted(visitors);
     }
 
     private static List<String> getFriendOfUser(String user) {
@@ -60,5 +60,15 @@ public class Problem7 {
         }
         friendCandidate.put(candidate,score);
     }
+
+    private static void increaseFriendWeightByVisted(List<String> visitors){
+        for(int i=0; i<visitors.size(); i++){
+            if(oldFriend.contains(visitors.get(i))){
+                continue;
+            }
+            increaseWeight(visitors.get(i),1);
+        }
+    }
+
 
 }
