@@ -13,6 +13,12 @@ public class Problem5 {
         }
     }
 
+    private static int getLeftMoney(List<Integer> answer, int money, int monetaryUnit) {
+        int bill = money / monetaryUnit;
+        AppendBills(answer, bill);
+        return money % monetaryUnit;
+    }
+
     /**
      * 돈의 액수 money가 매개변수로 주어질 때
      * 오만 원권, 만 원권, 오천 원권, 천 원권, 오백원 동전, 백원 동전, 오십원 동전, 십원 동전, 일원 동전 각 몇 개로 변환되는지
