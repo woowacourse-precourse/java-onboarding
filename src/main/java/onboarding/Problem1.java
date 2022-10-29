@@ -7,6 +7,10 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
+        if (isException(pobi) || isException(crong)) {
+            return -1;
+        }
+
         int differ = getScore(pobi) - getScore(crong);
 
         if (differ > 0) {
@@ -16,8 +20,27 @@ class Problem1 {
         } else {
             answer = 0;
         }
-        System.out.println(answer);
+
         return answer;
+    }
+
+    public static boolean isException(List<Integer> pages) {
+        int leftPage = pages.get(0);
+        int rightPage = pages.get(1);
+
+        if ((rightPage - leftPage) != 1) {
+            return true;
+        }
+
+        if (leftPage % 2 != 1) {
+            return true;
+        }
+
+        if (leftPage < 1 || rightPage > 400) {
+            return true;
+        }
+
+        return false;
     }
 
     public static List<Integer> splitNum(int num) {
