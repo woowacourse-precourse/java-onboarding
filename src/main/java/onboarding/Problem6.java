@@ -20,6 +20,12 @@ public class Problem6 {
             }
         }
 
+        // 이메일이 11자 이상 20자 미만인가
+        protected void isEmailLengthThan11CharactersAndLessThan20Characters(String email) {
+            if (email.length() <= 10 || 21 <= email.length()) {
+                throw new IllegalArgumentException("이메일의 길이는 11자 이상 20자 이하입니다.");
+            }
+        }
 
     }
 
