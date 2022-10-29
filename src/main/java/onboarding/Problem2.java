@@ -5,8 +5,19 @@ import java.util.List;
 import java.util.Objects;
 
 public class Problem2 {
+    public static void main(String[] args) {
+        String cryptogram = "browoanoommnaon";
+        System.out.println("cryptogram = " + "\"" + cryptogram + "\"");
+        System.out.println("result = " + "\"" + solution(cryptogram) + "\"");
+        System.out.println();
+        cryptogram = "zyelleyz";
+        System.out.println("cryptogram = " + "\"" + cryptogram + "\"");
+        System.out.println("result = " + "\"" + solution(cryptogram) + "\"");
+    }
+
     public static String solution(String cryptogram) {
         String answer = "answer";
+        CryptogramValidator.checkException(cryptogram);
         answer = decrypt(cryptogram);
         return answer;
     }
@@ -17,7 +28,6 @@ public class Problem2 {
         splitString(cryptogram, charList);
         removeDuplicateChar(charList);
         return combineChar(charList);
-
     }
 
     private static String combineChar(List<Character> charList) {
@@ -49,5 +59,39 @@ public class Problem2 {
             charList.add(aChar);
         }
         return charList;
+    }
+
+    private static class CryptogramValidator {
+        private static final int MIN_CRYPTOGRAM_LENGTH = 1;
+        private static final int MAX_CRYPTOGRAM_LENGTH = 1000;
+
+        public static void checkException(String cryptogram) {
+            if (isNull(cryptogram) || checkLengthOfCryptogram(cryptogram)) {
+                throw new IllegalArgumentException(
+                    "The cryptogram's length should be between 1 and 1000.");
+            }
+            if (isUpperCase(cryptogram)) {
+                throw new IllegalArgumentException("The cryptogram should be lowercase.");
+            }
+        }
+
+        private static boolean isNull(String cryptogram) {
+            return Objects.isNull(cryptogram);
+        }
+
+        private static boolean checkLengthOfCryptogram(String cryptogram) {
+            return cryptogram.length() < MIN_CRYPTOGRAM_LENGTH ||
+                cryptogram.length() > MAX_CRYPTOGRAM_LENGTH;
+        }
+
+        private static boolean isUpperCase(String cryptogram) {
+            char[] chars = cryptogram.toCharArray();
+            for (char aChar : chars) {
+                if (Character.isUpperCase(aChar)) {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }
