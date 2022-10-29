@@ -32,7 +32,7 @@ class Problem1 {
 
     public static class Card {
         List<Integer> getMax = new ArrayList<>();
-        List<Integer> selectCard(List<Integer> player) {
+        Integer selectCard(List<Integer> player) {
             // to get player's left and right pages
             for (int i = 0; i < 2; i++) {
                 // divide the number by each digit
@@ -48,7 +48,7 @@ class Problem1 {
                 getMax.add(multiplicationDigits(digits));
                 digits.clear();
             }
-            return getMax;
+            return getMax.stream().max(Integer::compare).orElse(-1);
         }
 
         // function to find the sum of each number
