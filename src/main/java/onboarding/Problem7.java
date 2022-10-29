@@ -139,10 +139,10 @@ class Intimacy implements Comparable<Intimacy> {
         return numOfVisited;
     }
 
-    public void setNumOfVisited(Map<String, Integer> visitedCount) {
+    public void setNumOfVisited(Map<String, Integer> visitedLog) {
         this.numOfVisited = 0;
-        if (visitedCount.containsKey(this.userId)) {
-            this.numOfVisited = visitedCount.get(this.userId);
+        if (visitedLog.containsKey(this.userId)) {
+            this.numOfVisited = visitedLog.get(this.userId);
         }
     }
 
