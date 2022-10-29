@@ -15,6 +15,20 @@ public class Problem7 {
                 near.add(AB.get(index));
             }
         }
+        for (String name : near) {
+            for (List<String> AB : friends) {
+                int point = 10;
+                if (!AB.contains(user) && AB.contains(name)) {
+                    int index = 1 - AB.indexOf(name);
+                    if (near.contains(AB.get(index))) continue;
+                    far.add(AB.get(index));
+                    if (result.get(AB.get(index)) != null) {
+                        point += (result.get(AB.get(index)));
+                    }
+                    result.put(AB.get(index), point);
+                }
+            }
+        }
         return answer;
     }
 }
