@@ -13,7 +13,19 @@ public class Problem2 {
 
         for(int i=0;i<LENGTH;i++) list.add(array[i]);
 
+        while(true) {
 
-        return answer;
+            int[] remove_index = new int[LENGTH];
+
+            for (int i = 0; i < LENGTH; i++) remove_index[i] = -1;
+
+            int j = 0;
+            for (int i = 0; i < list.size() - 1; i++) {
+                if (list.get(i).equals(list.get(i+1))) {
+                    remove_index[j++] = i;
+                }
+            }
+
+        }
     }
 }
