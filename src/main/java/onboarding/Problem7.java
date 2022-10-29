@@ -4,8 +4,8 @@ import java.util.*;
 
 public class Problem7 {
     private static class UserVerifier {
-        protected static void isUserLengthThan1CharactersAndLessThan30Characters(String user) {
-            if (user.length() < 1 || 30 < user.length()) {
+        protected static void isUserLengthThan1CharactersAndLessThan30Characters(String userId) {
+            if (userId.length() < 1 || 30 < userId.length()) {
                 throw new IllegalArgumentException("유저의 아이디는 1자 이상 30자 이하만 가능합니다.");
             }
         }
@@ -21,6 +21,15 @@ public class Problem7 {
                 throw new IllegalArgumentException("friends의 각 원소는 길이가 2어야 합니다.");
             }
         }
+
+        protected static void isUserIdConsistOfOnlyLowerAlphabet(String userId) {
+            for (int i = 0; i < userId.length(); i++) {
+                if (userId.charAt(i) < 97 && userId.charAt(i) > 122) {
+                    throw new IllegalArgumentException("사용자 아이디는 알파벳 소문자만 입력 가능합니다.");
+                }
+            }
+        }
+
     }
     private static final List<String> myFriends = new ArrayList<>();
     private static final List<String> aFriendWeKnow = new ArrayList<>();
