@@ -1,51 +1,74 @@
 package onboarding.feature6;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class DuplicateFinder {
-    private String duplicateLetters = "None";
-    private int increasement = 2;
-    private int indexI = 0;
-    private int indexJ = indexI + 1;
+    private Set<String> duplicateLetters = new HashSet<>();
 
-    List<String> nicknames = new ArrayList<>();
-    List<List<String>> forms;
-    List<List<String>> formsFiltered = new ArrayList<>();
+    private int indexI;
+    private int indexJ;
+    private int indexM;
+    private int indexN;
+    private int increment = 2;
 
-    public DuplicateFinder(List<List<String>> forms) {
-        this.forms = forms;
-        for (List<String> userInfo : forms) {
-            nicknames.add(userInfo.get(1));
-        }
+    private List<String> initialEmails;
+    private List<String> initialNicknames;
+
+    private Map<String, List<String>> result = new HashMap<>();
+
+    public DuplicateFinder(UserInfo userInfo) {
+        initialEmails = userInfo.getEmails();
+        initialNicknames = userInfo.getNicknames();
     }
 
-    public void checkNicknames() {
-        for (indexI = 0; indexI < nicknames.size(); indexI++) {
-            String currentNickname = nicknames.get(indexI);
-            String nextNickname = nicknames.get(indexJ);
-            String lettersOfCurrentNickname = currentNickname.substring(0, increasement);
-            String lettersOfNextNickname = nextNickname.substring(0, increasement);
-
-            isDuplicate(lettersOfCurrentNickname, lettersOfNextNickname);
-            increasement = 2;
+    public void findDuplicates() {
+        for (indexI = 0; indexI < initialNicknames.size() - 1; indexI++) {
+            for (indexJ = indexI + 1; indexJ < initialNicknames.size(); indexJ++) {
+                System.out.println("닉네임 - " + initialNicknames.get(indexI) + " " + initialNicknames.get(indexJ) + " 비교");
+                checkNicknames(initialNicknames.get(indexI), initialNicknames.get(indexJ));
+            }
         }
-        System.out.println(duplicateLetters);
+        for (String duplicateLetter : duplicateLetters) {
+            List<String> filteredEmails = new ArrayList<>();
+            for (int i = 0; i < initialNicknames.size(); i++) {
+                if (initialNicknames.get(i).contains(duplicateLetter)) {
+                    filteredEmails.add(initialEmails.get(i));
+                }
+                result.put(duplicateLetter, filteredEmails);
+            }
+        }
+        System.out.println(result);
     }
 
-    public void isDuplicate (String lettersOfCurrentNickname, String lettersOfNextNickname) {
-        if(lettersOfCurrentNickname.equals(lettersOfNextNickname)) {
-            duplicateLetters = lettersOfCurrentNickname;
-            increasement++;
-            while (increasement < nicknames.get(indexI).length() && increasement < nicknames.get(indexJ).length()) {
-                isDuplicate(lettersOfCurrentNickname, lettersOfNextNickname);
+    public void checkNicknames(String currentNickname, String nextNickname) {
+        for (indexM = 0; indexM < currentNickname.length() - 1; indexM++) {
+            for (indexN = 0; indexN < nextNickname.length() - 1; indexN++) {
+                compareLettersOfNickname(currentNickname, nextNickname);
+                increment = 2;
             }
         }
     }
 
-    public String getLettersInWord(int index, int increasement) {
-        String letters = nicknames.get(index).substring(0, increasement);
-        return letters;
+    public void compareLettersOfNickname(String currentNickname, String nextNickname) {
+        System.out.println(currentNickname.substring(indexM, indexM + increment) + " " + nextNickname.substring(indexN, indexN + increment) + " 비교");
+        if (currentNickname.substring(indexM, indexM + increment).equals(nextNickname.substring(indexN, indexN + increment))) {
+            System.out.println("글자 같음: " + currentNickname.substring(indexM, indexM + increment));
+            duplicateLetters.add(currentNickname.substring(indexM, indexM + increment));
+            increment++;
+            while (indexM + increment <= currentNickname.length() && indexN + increment <= nextNickname.length() && currentNickname.substring(indexM, indexM + increment).equals(nextNickname.substring(indexN, indexN + increment))) {
+                System.out.println(currentNickname.substring(indexM, indexM + increment) + " " + nextNickname.substring(indexN, indexN + increment) + " 추가 비교");
+                System.out.println("글자 같음: " + currentNickname.substring(indexM, indexM + increment));
+                duplicateLetters.add(currentNickname.substring(indexM, indexM + increment));
+                increment++;
+            }
+            System.out.println("글자 추가 시 안 같았음");
+        }
     }
 
     public static void main(String[] args) {
@@ -53,11 +76,13 @@ public class DuplicateFinder {
             List.of("jm@email.com", "제이엠"),
             List.of("jason@email.com", "제이슨"),
             List.of("woniee@email.com", "워니"),
-            List.of("mj@email.com", "엠제이"),
+            List.of("woniees@email.com", "워니스"),
+            List.of("mj@email.com", "엠제이슨"),
             List.of("nowm@email.com", "이제엠")
         );
 
-        DuplicateFinder duplicateFinder = new DuplicateFinder(forms);
-        duplicateFinder.checkNicknames();
+        UserInfo userInfo = new UserInfo(forms);
+        DuplicateFinder duplicateFinder = new DuplicateFinder(userInfo);
+        duplicateFinder.findDuplicates();
     }
 }
