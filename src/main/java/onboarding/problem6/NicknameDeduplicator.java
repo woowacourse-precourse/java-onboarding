@@ -19,13 +19,11 @@ public class NicknameDeduplicator {
     }
 
     public List<String> getDuplicatedCrewsEmail() {
-        Set<String> resultSet = new HashSet<>();
+        TreeSet<String> resultSet = new TreeSet<>();
         for (Set<String> emails : DICTIONARY.values()) {
             if (emails.size() > 1)
                 resultSet.addAll(emails);
         }
-        List<String> result = new ArrayList<>(resultSet);
-        Collections.sort(result);
-        return result;
+        return new ArrayList<>(resultSet);
     }
 }
