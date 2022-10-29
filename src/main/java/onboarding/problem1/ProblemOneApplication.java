@@ -4,19 +4,11 @@ import onboarding.problem1.domain.Book;
 import onboarding.problem1.domain.Calculator;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class ProblemOneApplication {
 
     public static void main(String[] args) {
-        Calculator calculator = new Calculator();
-        List<Integer> emptyList = new ArrayList<>();
-        List<Integer> notEmptyList = Arrays.asList(10, 50);
-
-        System.out.println("calculator.hasList(emptyList) = " + calculator.hasList(emptyList));
-        System.out.println("calculator.hasList(notEmptyList) = " + calculator.hasList(notEmptyList));
-
         Book book = new Book();
         List<Integer> pobiBook = book.openBook();
         System.out.println("pobiBook = " + pobiBook);
@@ -24,8 +16,13 @@ public class ProblemOneApplication {
         int lastScore = book.getLastScore();
         System.out.println("lastScore = " + lastScore);
 
-        Book book2 = new Book(169, 170);
+        Book book2 = new Book(269, 270);
         int lastScore2 = book2.getLastScore();
         System.out.println("lastScore2 = " + lastScore2);
+
+        Calculator calculator = new Calculator();
+        List<Integer> emptyList = new ArrayList<>();
+        List<Integer> notEmptyList = List.of(11, 15);
+        System.out.println("answer = " + calculator.compareScore(emptyList, notEmptyList));
     }
 }

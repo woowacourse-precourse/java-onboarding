@@ -1,6 +1,5 @@
 package onboarding.problem1.domain;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -24,7 +23,7 @@ public class Book {
     public List<Integer> openBook() {
         int page = new Random().nextInt(400) + 1;
         setLeftRightPage(page);
-        return Arrays.asList(leftPage, rightPage);
+        return List.of(leftPage, rightPage);
     }
 
     private void setLeftRightPage(int page) {
@@ -46,7 +45,7 @@ public class Book {
     private List<Integer> getLeftRightPageScore() {
         int leftPageScore = getPageScore(leftPage);
         int rightPageScore = getPageScore(rightPage);
-        return Arrays.asList(leftPageScore, rightPageScore);
+        return List.of(leftPageScore, rightPageScore);
     }
 
     private int getPageScore(int page) {
