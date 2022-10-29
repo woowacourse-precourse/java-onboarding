@@ -11,17 +11,33 @@ public class FrogWordTranslateStrategy implements WordTranslateStrategy {
         IntStream.range(0, charArray.length)
                 .map(i -> charArray[i])
                 .map(this::translate)
-                .forEach(c -> result.append((char) (c)));
+                .forEach(c -> result.append(asciiNumberToChar(c)));
         return result.toString();
     }
 
     private char translate(int asciiNumber) {
         if (Character.isUpperCase(asciiNumber)) {
-            return (char) ('Z' - asciiNumber + 'A');
+            return upperCaseStrategy(asciiNumber);
         }
         if (Character.isLowerCase(asciiNumber)) {
-            return (char) ('z' - asciiNumber + 'a');
+            return lowerCaseStrategy(asciiNumber);
         }
+        return defaultStrategy(asciiNumber);
+    }
+
+    private static char upperCaseStrategy(int asciiNumber) {
+        return asciiNumberToChar(('Z' - asciiNumber + 'A'));
+    }
+
+    private static char lowerCaseStrategy(int asciiNumber) {
+        return asciiNumberToChar(('z' - asciiNumber + 'a'));
+    }
+
+    private static char defaultStrategy(int asciiNumber) {
+        return asciiNumberToChar(asciiNumber);
+    }
+
+    private static char asciiNumberToChar(int asciiNumber) {
         return (char) asciiNumber;
     }
 }
