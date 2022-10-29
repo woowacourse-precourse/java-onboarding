@@ -21,14 +21,14 @@ public class Problem2 {
 
         // 반복되는 문자가 있는지 확인하며 있으면 삭제하는 기능을 반복
         do {
-            isContinuous = removeRepeatChar(listOfCryptoString);
+            isContinuous = removeContinuousChar(listOfCryptoString);
         } while (isContinuous == true);
 
         String answer = "answer";
         return answer;
     }
 
-    private static boolean removeRepeatChar(List<String> listOfCryptoString) {
+    private static boolean removeContinuousChar(List<String> listOfCryptoString) {
         for (int i = 1; i < listOfCryptoString.size(); i++) {
             if (listOfCryptoString.get(i - 1).equals(listOfCryptoString.get(i))) {
                 listOfCryptoString.remove(i);
