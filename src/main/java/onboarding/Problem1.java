@@ -8,12 +8,47 @@ class Problem1 {
     private static final int maxPage = 398;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-
         if(!validatePage(pobi) || !validatePage(crong)) {
             return -1;
         }
-        return answer;
+        return match(getScore(pobi), getScore(crong));
+    }
+
+    private static int match(int pobiScore, int crongScore) {
+        if(pobiScore > crongScore) {
+            return 1;
+        }
+        if(pobiScore < crongScore) {
+            return 2;
+        }
+        return 0;
+    }
+
+    private static int getScore(List<Integer> pages) {
+        int maxScore = 0;
+        for (Integer page : pages) {
+            maxScore = Math.max(maxScore, addEachDigits(page));
+            maxScore = Math.max(maxScore, multiplyEachDigits(page));
+        }
+        return maxScore;
+    }
+
+    private static int addEachDigits(int page) {
+        int score = 0;
+        String pageAsStr = String.valueOf(page);
+        for (int i = 0; i < pageAsStr.length(); i++) {
+            score += pageAsStr.charAt(i) - '0';
+        }
+        return score;
+    }
+
+    private static int multiplyEachDigits(int page) {
+        int score = 1;
+        String pageAsStr = String.valueOf(page);
+        for (int i = 0; i < pageAsStr.length(); i++) {
+            score *= pageAsStr.charAt(i) - '0';
+        }
+        return score;
     }
 
     private static boolean validatePage(List<Integer> pages) {
