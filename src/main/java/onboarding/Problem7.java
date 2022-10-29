@@ -36,14 +36,13 @@ public class Problem7 {
                     score.put(id, score.getOrDefault(id, 0) + 10);
                 }
             }
-
-            for (String visitor : visitors) {
-                if (!visitor.equals(myFriend)) {
-                    score.put(visitor, score.getOrDefault(visitor, 0) + 1);
-                }
-            }
         }
 
+        for (String visitor : visitors) {
+            if (!myFriendsList.contains(visitor)) {
+                score.put(visitor, score.getOrDefault(visitor, 0) + 1);
+            }
+        }
         return score;
     }
 
