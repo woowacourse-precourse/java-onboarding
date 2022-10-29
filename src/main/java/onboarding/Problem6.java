@@ -61,6 +61,15 @@ public class Problem6 {
             }
         }
 
+        // add the email in the resultList
+        for(int i=0; i < forms.size(); i++){
+            for(int j=0; j < resultName.size(); j++){
+                if(forms.get(i).get(1).equals(resultName.get(j))){
+                    result.add(forms.get(i).get(0));
+                }
+            }
+        }
+
         return result;
     }
 }
