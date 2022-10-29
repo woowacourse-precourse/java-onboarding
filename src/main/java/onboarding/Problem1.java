@@ -7,9 +7,7 @@ class Problem1 {
         int mulTmp = 1, addTmp = 0;
         for (int i = 0; i < str.length(); i++) {
             addTmp += Character.getNumericValue(str.charAt(i));
-            ;
             mulTmp *= Character.getNumericValue(str.charAt(i));
-            ;
         }
         int maxScore = Math.max(addTmp, mulTmp);
         return maxScore;
