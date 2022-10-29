@@ -6,6 +6,22 @@ public class Problem2 {
 		return answer;
 	}
 
+	private static String makeCryptogramByChar(int i, String cryptogram, String newCryptogram) {
+		char nowChar = cryptogram.charAt(i);
+		char lastCharOfNewCryptogram = newCryptogram.charAt(newCryptogram.length() - 1);
+
+		if (nowChar == lastCharOfNewCryptogram) {
+			newCryptogram = removeLastCharFromString(newCryptogram);
+		} else {
+			newCryptogram += nowChar;
+		}
+		return newCryptogram;
+	}
+
+	private static String removeLastCharFromString(String value) {
+		return value.substring(0, value.length() - 1);
+	}
+
 	private static int getNextIndexRange(String newCryptogram, String remainingCryptogram) {
 		char lastCharOfNewCryptogram = newCryptogram.charAt(newCryptogram.length() - 1);
 		int sameCharCount = getSameCharCount(lastCharOfNewCryptogram, remainingCryptogram);
