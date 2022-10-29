@@ -61,6 +61,7 @@ class ExceptionProblem2 {
         isSpace(cryptogram);
         validateStringLength(cryptogram);
         validateOnlyEnglish(cryptogram);
+        validateLowerCase(cryptogram);
     }
 
     public static void enteredName(String cryptogram) {
@@ -84,6 +85,14 @@ class ExceptionProblem2 {
     public static void validateOnlyEnglish(String cryptogram) {
         if (!Pattern.matches("^[a-zA-Z]*$", cryptogram)) {
             throw new IllegalArgumentException(ERROR_MESSAGE);
+        }
+    }
+
+    public static void validateLowerCase(String cryptogram) {
+        for (char c : cryptogram.toCharArray()) {
+            if (Character.isUpperCase(c)) {
+                throw new IllegalArgumentException(ERROR_MESSAGE);
+            }
         }
     }
 }
