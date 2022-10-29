@@ -1,16 +1,22 @@
 package onboarding;
 
+import java.util.Arrays;
 import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        int pobiScore = 0;
+        int crongScore = 0;
 
         // 예외 사항이 있다면 -1 리턴
         if(checkException(pobi, crong)) {
             answer = -1;
             return answer;
         }
+
+        pobiScore = calculationPobi(pobi);
+
 
         return answer;
     }
@@ -28,4 +34,30 @@ class Problem1 {
         }
         return pobiException || crongException;
     }
+
+    // 포비의 점수를 계산하는 메서드
+    static int calculationPobi(List<Integer> pobi) {
+        String[] left = String.valueOf(pobi.get(0)).split("");
+        int leftMax = 0;
+        int sumLeft = 0;
+        int multipleLeft = 1;
+        for (int i = 0; i < left.length; i++) {
+            sumLeft += Integer.parseInt(left[i]);
+            multipleLeft *= Integer.parseInt(left[i]);
+            leftMax = Math.max(sumLeft, multipleLeft);
+        }
+
+        String[] right = String.valueOf(pobi.get(1)).split("");
+        int rightMax = 0;
+        int sumRight = 0;
+        int multipleRight = 1;
+        for (int i = 0; i < right.length; i++) {
+            sumRight += Integer.parseInt(right[i]);
+            multipleRight *= Integer.parseInt(right[i]);
+            rightMax = Math.max(sumRight, multipleRight);
+        }
+
+        return Math.max(leftMax, rightMax);
+    }
+    
 }
