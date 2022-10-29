@@ -130,6 +130,19 @@ class ApplicationTest {
             List<String> result = List.of("caramel@email.com", "jason@email.com", "jm@email.com", "rmlo@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
+
+        @Test
+        void case3() {
+            List<List<String>> forms = List.of(
+                    List.of("kim@email.com", "김"),
+                    List.of("nam@email.com", "남"),
+                    List.of("choi@email.com", "최"),
+                    List.of("lee@email.com", "이"),
+                    List.of("jun@email.com", "준")
+            );
+            List<String> result = List.of();
+            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
     }
 
     @Nested
