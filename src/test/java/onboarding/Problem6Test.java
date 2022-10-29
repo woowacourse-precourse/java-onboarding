@@ -13,6 +13,7 @@ class Problem6Test {
     void 결과테스트() {
 
         List<List<String>> case1 = List.of(
+                List.of("asas2858@email.com", "박한수"),
                 List.of("abc@email.com", "바나나"),
                 List.of("zansu@email.com", "나나콘"),
                 List.of("zansu@email.com", "니르바나"),
