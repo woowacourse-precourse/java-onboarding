@@ -146,7 +146,7 @@ public class Problem7 {
             found = true;
         }
 
-        String regex = "^[a-z]{1,29}$";
+        String regex = "^[a-z]{1,30}$";
         Pattern p = Pattern.compile(regex);
         Matcher matcher = p.matcher(id);
         if(matcher.matches()){
