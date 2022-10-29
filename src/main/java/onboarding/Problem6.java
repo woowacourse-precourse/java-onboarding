@@ -3,6 +3,7 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -33,7 +34,8 @@ public class Problem6 {
                 }
             }
         }
-        List<String> answer = List.of("answer");
+        List<String> answer = list.stream().distinct().collect(Collectors.toList());
+
         return answer;
     }
 }
