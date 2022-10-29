@@ -150,6 +150,27 @@ class ApplicationTest {
             String result = "R olev blf";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
+
+        @Test
+        void case2() {
+            String word = "   123";
+            String result = "   123";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+
+        @Test
+        void case3() {
+            String word = "ABcD";
+            String result = "ZYxW";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+
+        @Test
+        void case4() {
+            String word = "aaaaaaaaaa AAAAAAAAAA bbbbbbbbbb BBBBBBBBBB cccccccccc CCCCCCCCCC";
+            String result = "zzzzzzzzzz ZZZZZZZZZZ yyyyyyyyyy YYYYYYYYYY xxxxxxxxxx XXXXXXXXXX";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
     }
 
     @Nested
