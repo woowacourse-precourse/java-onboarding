@@ -49,4 +49,22 @@ public class Problem7 {
         }
         return scoreboard;
     }
+
+    static List<String> recommendedFriends(String user, Map<String, Integer> scoreboard) {
+        List<String> recommendedList = new ArrayList<>();
+        String temp = "";
+        while (recommendedList.size() < 6 && !scoreboard.isEmpty()) {
+            int maxScore = Collections.max(scoreboard.values());
+            for (Map.Entry<String, Integer> entry : scoreboard.entrySet()) {
+                if (maxScore == entry.getValue()) {
+                    temp = entry.getKey();
+                    break;
+                }
+            }
+            recommendedList.add(temp);
+            scoreboard.remove(temp);
+        }
+
+        return recommendedList;
+    }
 }
