@@ -122,3 +122,13 @@ class Intimacy implements Comparable<Intimacy> {
         return o.getScore() - this.getScore();
     }
 }
+
+class Recommendation {
+    private String userId;
+    Map<String, Intimacy> intimacies;
+
+    public Recommendation(String userId) {
+        this.userId = userId;
+        intimacies = new HashMap<>();
+    }
+}
