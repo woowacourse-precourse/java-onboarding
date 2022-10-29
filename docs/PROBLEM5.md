@@ -1,12 +1,11 @@
 ## 기능 목록
 
-| Date  | Feature      | Method Name         | Parameter Type | Return Type | Progress         |
-|-------|--------------|---------------------|----------------|-------------|------------------|
-| 10.29 | 각 금액 별 갯수 계산 | countMoneyPerUnit() | int, int       | int         | committed        |
-| 10.29 | 새로운 돈 액수 계산  | calculateNewMoney() |  int, int   | int         | work in progress |
+| Date  | Feature         | Method Name                | Parameter Type | Return Type | Progress         |
+|-------|-----------------|----------------------------|----------------|-------------|------------------|
+| 10.29 | 각 금액 단위 별 갯수 계산 | countMoneyPerUnit()        | int, int       | int         | committed        |
+| 10.29 | money에서 뺄 금액 계산 | calculateMoneyToSubtract() |  int, int   | int         | committed |
 
 ### TODO
-큰 화폐부터 money - ((money / 화폐) * 화폐) 
 
 ## 🚀 기능 요구 사항
 
