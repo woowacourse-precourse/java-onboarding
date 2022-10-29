@@ -16,14 +16,10 @@ public class Problem7 {
 		List<String> answer = new ArrayList<>(Collections.emptyList());
 		Set<String> userFriends = findUserFriends(user, friends);
 		HashMap<String, Integer> friendsScore = new HashMap<>();
-		addSharedFriendsScore(friends, userFriends, friendsScore);
 
-		for (int i = 0; i < visitors.size(); i++) {
-			String visitor = visitors.get(i);
-			if (!userFriends.contains(visitor)) {
-				friendsScore.put(visitor, friendsScore.getOrDefault(visitor, 0) + 1);
-			}
-		}
+		addSharedFriendsScore(friends, userFriends, friendsScore);
+		addVisitorScore(friendsScore, visitors);
+		
 		friendsScore.put(user, 0);
 		while (friendsScore.size() < PERSON_NUM_SHOW) {
 			friendsScore.put("emptyUser", 0);
@@ -72,6 +68,13 @@ public class Problem7 {
 			} else if (userFriends.contains(idB)) {
 				friendsScore.put(idA, friendsScore.getOrDefault(idA, 0) + 10);
 			}
+		}
+	}
+
+	private static void addVisitorScore(HashMap<String, Integer> friendsScore,
+		List<String> visitors) {
+		for (String visitor : visitors) {
+			friendsScore.put(visitor, friendsScore.getOrDefault(visitor, 0) + 1);
 		}
 	}
 }
