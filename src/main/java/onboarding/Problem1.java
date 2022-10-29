@@ -20,16 +20,18 @@ class Problem1 {
             answer = 0;
         return answer;
     }
+
     /**
      * 사람이 뽑은 책 페이지의 배열을 넣으면 규칙에 맞게 계산하여 그 중 큰 값을 리턴한다.
      * @param person
      * @return
      */
-    public static int chooseBigOneInPerson(List<Integer> person){
+    public static int chooseBigOneInPerson(List<Integer> person) {
         int pobiLeft = chooseBigOneInBook(separateNum(person.get(0)));
         int pobiRight = chooseBigOneInBook(separateNum(person.get(1)));
-        return  pobiLeft > pobiRight ? pobiLeft : pobiRight;
+        return pobiLeft > pobiRight ? pobiLeft : pobiRight;
     }
+
     /**
      * 배열을 받아 각 자리의 수를 더하거나, 모두 곱한 것중 가장 큰 수를 구한다.
      *
