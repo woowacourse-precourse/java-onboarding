@@ -8,4 +8,15 @@ public class Problem5 {
         List<Integer> answer = Collections.emptyList();
         return answer;
     }
+
+    public static String converter(int value, int i) {
+        if (i == 8) {
+            return String.valueOf(value);
+        }
+
+        int[] measurement = new int[]{50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
+
+        return String.valueOf(value / measurement[i]) + converter(value % measurement[i], i + 1);
+
+    }
 }
