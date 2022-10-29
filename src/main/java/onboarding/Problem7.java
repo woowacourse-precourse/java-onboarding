@@ -73,7 +73,20 @@ public class Problem7 {
             return Integer.compare(o2.getValue(), o1.getValue());
         }));
 
-        List<String> answer = Collections.emptyList();
-        return answer;
+        // 결과
+        List<String> result = new ArrayList<>();
+        int cnt = 0;
+        for(Map.Entry<String, Integer> entry : entryList){
+            // 5명이 채워지면 멈추기
+            if (cnt == 5) break;
+
+            // 0점 이거나 이미 친구 사이면 무시
+            if (entry.getValue()==0) continue;
+            if (userFriends.contains(entry.getKey())) continue;
+
+            result.add(entry.getKey());
+            cnt++;
+        }
+        return result;
     }
 }
