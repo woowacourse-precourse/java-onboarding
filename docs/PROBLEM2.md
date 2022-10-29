@@ -26,4 +26,4 @@
 - [x] separateString() : 문자열을 분리한다.
 - [x] checkDuplication() : 중복된 문자열이 있는지 확인한다.
 - [x] deleteDuplication() : 중복된 문자열을 삭제한다.
-- [ ] makeString() : ArrayList를 다시 문자열로 변환한다.
+- [x] makeString() : ArrayList를 다시 문자열로 변환한다.
