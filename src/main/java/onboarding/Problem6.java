@@ -12,7 +12,10 @@ public class Problem6 {
 
             for (int i=0;i<forms.size();i++){
                 String email = forms.get(i).get(0);
+                String nickname = forms.get(i).get(1);
+
                 validationEmail(email);
+                validationNickname(nickname);
             }
 
             return answer;
@@ -29,6 +32,12 @@ public class Problem6 {
         int e_length = email.length();
         if (e_length<11||e_length>=20) throw new Exception("Eamil Length must Be 11~19");
         if (!email.matches("^[a-zA-Z0-9]+@email.com$")) throw new Exception("It's Wrong Format Email");
+    }
+
+    public static void validationNickname(String nickname) throws Exception{
+        int n_length = nickname.length();
+        if (!nickname.matches("^[가-힣]*$")) throw new Exception("Nickname Must be written Hangeul");
+        if (n_length<1||n_length>=20) throw new Exception("Nickname Length must Be 1~19");
     }
 
 }
