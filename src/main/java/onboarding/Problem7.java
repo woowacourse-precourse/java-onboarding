@@ -81,7 +81,7 @@ public class Problem7 {
         HashSet<String> friendList = friendListInfo.get(user);
         Iterator<String> iter = nameList.iterator();
 
-        for(int i = 0; i < 3; i++) {
+        for(int i = 0; i < 5; i++) {
             String name = iter.next();
             if(friendList.contains(name)) continue;
             if(recommendScore.get(name) > 0){
