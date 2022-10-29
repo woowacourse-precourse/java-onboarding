@@ -4,8 +4,13 @@ import java.util.List;
 
 class Problem1 {
 
-    private int findGameValue(List<Integer> ls){
-        return 0;
+    private static int findGameValue(List<Integer> ls){
+        int a = ls.get(0);
+        int b = ls.get(1);
+        int x = Math.max(sumOfDigits(a), productOfDigits(a));
+        int y = Math.max(sumOfDigits(b), productOfDigits(b));
+
+        return Math.max(x,y);
     }
 
     private static int sumOfDigits(int v){
@@ -31,7 +36,7 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-//        System.out.printf("%d", productOfDigits(1234));
+//        System.out.printf("########## %d", findGameValue(pobi));
         return answer;
     }
 
