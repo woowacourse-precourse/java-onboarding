@@ -4,17 +4,19 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        Map<String, List<String>> map = friends(friends);
+        Map<String, List<String>> friendsLinkedList = friendsLinkedList(friends);
         List<String> userFriends = extractUserFriendsList(friends, user);
         List<String> allUser = extractAllUserList(friends);
         List<String> userNotFriends = extractUserNotFriendsList(userFriends, user, allUser);
 
-        Map<String, List<String>> userInFriendsLinkedList = userInFriendsLinkedList(map, userNotFriends);
+        Map<String, List<String>> userInFriendsLinkedList = userInFriendsLinkedList(friendsLinkedList, userNotFriends);
 
         List<String> asd = createListFriendsOfFriends(userInFriendsLinkedList, userFriends);
-        countDuplicateFriends(asd,user);
+        Map<String, Integer> countDuplicateFriends = countDuplicateFriends(asd, user);
+        Map<String, Integer> countVisitors = countVisitors(countDuplicateFriends, visitors);
+        List<String> countFriends = countFriends(countVisitors, userFriends);
 
-        return userFriends;
+        return countFriends;
     }
 
     // 모든 friends 리스트 생성
@@ -78,7 +80,7 @@ public class Problem7 {
     }
 
     // 리스트로 나와있는것을 왼쪽 친구 이름 기준으로 맵에 등록
-    public static Map<String, List<String>> friends(List<List<String>> friends) {
+    public static Map<String, List<String>> friendsLinkedList(List<List<String>> friends) {
         Map<String, List<String>> friendsLinkedList = new TreeMap<>();
         List<String> belongFriendsList = new ArrayList<>();
 
@@ -107,8 +109,6 @@ public class Problem7 {
         }
 
         System.out.println("연결된 리스트의 값에서 user가 없는 부분 제거" + friendsLinkedList);
-
-
         return friendsLinkedList;
     }
 
@@ -117,12 +117,14 @@ public class Problem7 {
         List<String> allFriendOfFriendsLine = new ArrayList<>();
 
         for (int i = 0; i < friendsLinkedList.size(); i++) {
-            for (int j = 0; j < friendsLinkedList.get(userFriendsList.get(i)).size(); j++) {
-                allFriendOfFriendsLine.add(friendsLinkedList.get(userFriendsList.get(i)).get(j));
+            if (friendsLinkedList.containsKey(userFriendsList.get(i))) {
+                for (int j = 0; j < friendsLinkedList.get(userFriendsList.get(i)).size(); j++) {
+                    // System.out.println("fss" + friendsLinkedList.get(userFriendsList.get(i)).size());
+                    allFriendOfFriendsLine.add(friendsLinkedList.get(userFriendsList.get(i)).get(j));
+                }
             }
         }
-
-        System.out.println(allFriendOfFriendsLine);
+        System.out.println("allFriendOfFriends" + allFriendOfFriendsLine);
         return allFriendOfFriendsLine;
     }
 
@@ -134,14 +136,72 @@ public class Problem7 {
 
         for (int i = 0; i < allFriendOfFriendsLine.size(); i++) {
             if (countFriends.containsKey(allFriendOfFriendsLine.get(i))) {
-                countFriends.put(allFriendOfFriendsLine.get(i), countFriends.get(allFriendOfFriendsLine.get(i))+10);
+                countFriends.put(allFriendOfFriendsLine.get(i), countFriends.get(allFriendOfFriendsLine.get(i)) + 10);
             }
             if (!countFriends.containsKey(allFriendOfFriendsLine.get(i))) {
                 countFriends.put(allFriendOfFriendsLine.get(i), 10);
             }
         }
 
+        System.out.println("countFriends" + countFriends);
+        return countFriends;
+    }
+
+    // visitors 1점씩 추가
+    public static Map<String, Integer> countVisitors(Map<String, Integer> countFriends, List<String> visitors) {
+        for (int i = 0; i < visitors.size(); i++) {
+            if (countFriends.containsKey(visitors.get(i))) {
+                countFriends.put(visitors.get(i), countFriends.get(visitors.get(i)) + 1);
+            }
+            if (!countFriends.containsKey(visitors.get(i))) {
+                countFriends.put(visitors.get(i), 1);
+            }
+        }
         System.out.println(countFriends);
         return countFriends;
+    }
+
+    // 정렬된 카운팅
+    public static List<String> countFriends(Map<String, Integer> countFriends, List<String> userFriendsList) {
+        for (int i = 0; i < countFriends.size(); i++) {
+            for (int j = 0; j < userFriendsList.size(); j++) {
+                countFriends.remove(userFriendsList.get(j));
+            }
+        }
+        System.out.println(countFriends);
+        return sortCountFriends(countFriends);
+    }
+
+    // 점수가 많은 순으로 출력
+    public static List<String> sortCountFriends(Map<String, Integer> countFriends) {
+        List<String> sortCountFriends = new ArrayList<>();
+
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(countFriends.entrySet());
+        entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o2.getValue() - o1.getValue();
+            }
+        });
+        for (Map.Entry<String, Integer> entry : entryList) {
+            sortCountFriends.add(entry.getKey());
+        }
+        return showFifthSortedFriends(sortCountFriends);
+    }
+
+    // 상위 5위까지 출력
+    public static List<String> showFifthSortedFriends(List<String> list) {
+        int count = 0;
+        List<String> fifthFriends = new ArrayList<>();
+
+        for (int i = 0; i < list.size(); i++) {
+            fifthFriends.add(list.get(i));
+            count++;
+
+            if (count > 4) {
+                break;
+            }
+        }
+        return fifthFriends;
     }
 }
