@@ -38,6 +38,8 @@ class Problem1 {
 
     // 페이지 수가 1씩 증가하는지 판단.
     public static boolean isError(List<Integer> pobi, List<Integer> crong) {
+        // TODO [1,2], [399,400]은 펼치지 않음
+
         // 왼쪽 페이지가 홀수여야 함
         if (pobi.get(0) % 2 != 1 || crong.get(0) % 2 != 1) {
             return true;
@@ -49,16 +51,16 @@ class Problem1 {
         }
 
         // 페이지가 범위 내의 값이여야 함
-        if (!(1 <= pobi.get(0) && pobi.get(0) <= 400)) {
+        if (!(1 < pobi.get(0) && pobi.get(0) < 400)) {
             return true;
         }
-        if (!(1 <= pobi.get(1) && pobi.get(1) <= 400)) {
+        if (!(1 < pobi.get(1) && pobi.get(1) < 400)) {
             return true;
         }
-        if (!(1 <= crong.get(0) && crong.get(0) <= 400)) {
+        if (!(1 < crong.get(0) && crong.get(0) < 400)) {
             return true;
         }
-        if (!(1 <= crong.get(1) && crong.get(1) <= 400)) {
+        if (!(1 < crong.get(1) && crong.get(1) < 400)) {
             return true;
         }
 
@@ -115,9 +117,8 @@ class Problem1 {
     }
 
     public static void main(String[] args) {
-        List<Integer> pobi = List.of(97, 98);
-        List<Integer> crong = List.of(197, 198);
+        List<Integer> pobi = List.of(1, 2);
+        List<Integer> crong = List.of(399, 400);
         System.out.println(solution(pobi, crong));
-
     }
 }
