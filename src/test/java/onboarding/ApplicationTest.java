@@ -9,6 +9,7 @@ import java.util.stream.Stream;
 
 import onboarding.problem2.validation.CryptogramValidator;
 import onboarding.problem3.validation.ThreeSixNineValidator;
+import onboarding.problem6.validation.UserInfoValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -398,20 +399,28 @@ class ApplicationTest {
             List<List<String>> forms = List.of();
             assertThatThrownBy(() -> Problem6.solution(forms))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("크루가 아무도 없습니다");
+                    .hasMessage(String.format(
+                            UserInfoValidator.INVALID_COUNT_RANGE_MESSAGE_FORMAT,
+                            UserInfoValidator.MIN_RANGE,
+                            UserInfoValidator.MAX_RANGE)
+                    );
         }
 
         @Test
         @DisplayName("검증할 크루가 10,000명을 초과하는 경우 예외 발생")
         void case5() {
             List<List<String>> forms = new ArrayList<>();
-            for (int i = 0; i < 10_01; i++) {
+            for (int i = 0; i < 10_001; i++) {
                 forms.add(Arrays.asList("human@email.com", "휴먼"));
             }
 
             assertThatThrownBy(() -> Problem6.solution(forms))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("크루 수가 10,000명을 초과합니다.");
+                    .hasMessage(String.format(
+                            UserInfoValidator.INVALID_COUNT_RANGE_MESSAGE_FORMAT,
+                            UserInfoValidator.MIN_RANGE,
+                            UserInfoValidator.MAX_RANGE)
+                    );
         }
 
         @DisplayName("이메일 형식에 부합하지 않는 경우 예외 발생")
@@ -424,19 +433,39 @@ class ApplicationTest {
 
             assertThatThrownBy(() -> Problem6.solution(forms))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("크루 수가 10,000명을 초과합니다.");
+                    .hasMessage(UserInfoValidator.INVALID_EMAIL_FORMAT_MESSAGE);
+        }
+
+        @DisplayName("유효한 이메일 도메인이 아닌 경우 예외 발생")
+        @ParameterizedTest(name = "{displayName} {index} - {0}")
+        @MethodSource("onboarding.ApplicationTest#invalidEmailDomain")
+        void case6_5(String email, String name) {
+            List<List<String>> forms = List.of(
+                    List.of(email, name)
+            );
+
+            assertThatThrownBy(() -> Problem6.solution(forms))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(String.format(
+                            UserInfoValidator.INVALID_EMAIL_DOMAIN_MESSAGE_FORMAT,
+                            UserInfoValidator.VALID_EMAIL_DOMAIN)
+                    );
         }
 
         @Test
         @DisplayName("이메일 길이가 11자 미만일 경우 예외 발생")
         void case7() {
             List<List<String>> forms = List.of(
-                    List.of("mo@email.com", "간장게장")
+                    List.of("@email.com", "간장게장")
             );
 
             assertThatThrownBy(() -> Problem6.solution(forms))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("이메일 길이는 11자 이상 20자 미만이어야 한다");
+                    .hasMessage(String.format(
+                            "이메일 길이는 %d자 이상 %d자 미만이어야 합니다.",
+                            UserInfoValidator.MIN_EMAIL_LENGTH,
+                            UserInfoValidator.MAX_EMAIL_LENGTH)
+                    );
         }
 
         @Test
@@ -448,7 +477,11 @@ class ApplicationTest {
 
             assertThatThrownBy(() -> Problem6.solution(forms))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("이메일 길이는 11자 이상 20자 미만이어야 한다");
+                    .hasMessage(String.format(
+                            "이메일 길이는 %d자 이상 %d자 미만이어야 합니다.",
+                            UserInfoValidator.MIN_EMAIL_LENGTH,
+                            UserInfoValidator.MAX_EMAIL_LENGTH)
+                    );
         }
 
         @Test
@@ -460,7 +493,11 @@ class ApplicationTest {
 
             assertThatThrownBy(() -> Problem6.solution(forms))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("이메일 길이는 11자 이상 20자 미만이어야 한다");
+                    .hasMessage(String.format(
+                            UserInfoValidator.INVALID_NAME_LENGTH_MESSAGE_FORMAT,
+                            UserInfoValidator.MIN_NAME_LENGTH,
+                            UserInfoValidator.MAX_NAME_LENGTH)
+                    );
         }
 
         @Test
@@ -472,7 +509,11 @@ class ApplicationTest {
 
             assertThatThrownBy(() -> Problem6.solution(forms))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("이메일 길이는 11자 이상 20자 미만이어야 한다");
+                    .hasMessage(String.format(
+                            UserInfoValidator.INVALID_NAME_LENGTH_MESSAGE_FORMAT,
+                            UserInfoValidator.MIN_NAME_LENGTH,
+                            UserInfoValidator.MAX_NAME_LENGTH)
+                    );
         }
 
         @Test
@@ -484,14 +525,19 @@ class ApplicationTest {
 
             assertThatThrownBy(() -> Problem6.solution(forms))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("닉네임에는 한글만 들어갈 수 있다.");
+                    .hasMessage(UserInfoValidator.EMAIL_NOT_KOREAN_MESSAGE);
         }
     }
 
     public static Stream<Arguments> invalidEmailFormat() {
         return Stream.of(
                 Arguments.of("@hoho@email.com", "이메일기호두개"),
-                Arguments.of("배달의민족@email.com", "한글이메일"),
+                Arguments.of("배달의민족@email.com", "한글이메일")
+        );
+    }
+
+    public static Stream<Arguments> invalidEmailDomain() {
+        return Stream.of(
                 Arguments.of("validman@gmail.com", "지메일"),
                 Arguments.of("validman@email.net", "이메일닷넷")
         );
