@@ -6,6 +6,9 @@ import java.util.InputMismatchException;
 
 public class Problem2 {
 
+    static final int START_RANGE = 1;
+    static final int END_RANGE = 1_000;
+
     private static Deque<Character> removeDuplicates(String cryptogram) {
         Deque<Character> deque = new ArrayDeque<>();
         for (char ch : cryptogram.toCharArray()) {
@@ -43,6 +46,14 @@ public class Problem2 {
     }
 
     public static String solution(String cryptogram) {
+        if (!isValidLength(cryptogram)) {
+            throw new InputMismatchException("입력된 문자열의 크기가 [1,1000] 이내가 아닙니다.");
+        }
+
         return dequeToStr(removeDuplicates(cryptogram)).toString();
+    }
+
+    private static boolean isValidLength(String cryptogram) {
+        return START_RANGE <= cryptogram.length() && cryptogram.length() <= END_RANGE;
     }
 }
