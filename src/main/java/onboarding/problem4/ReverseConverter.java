@@ -20,10 +20,10 @@ public class ReverseConverter {
 
 	public static Character convert(Character character) {
 		if (Character.isUpperCase(character)) {
-			return REVERSE_DICTIONARY.get(DICTIONARY.indexOf(character));
+			return ALPHABET_AND_REVERSE_MAP.get(character);
 		} else {
-			int index = DICTIONARY.indexOf(Character.toUpperCase(character));
-			return Character.toLowerCase(REVERSE_DICTIONARY.get(index));
+			char characterToUpperCase = Character.toUpperCase(character);
+			return Character.toLowerCase(ALPHABET_AND_REVERSE_MAP.get(characterToUpperCase));
 		}
 	}
 
