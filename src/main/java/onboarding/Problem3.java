@@ -13,8 +13,7 @@ public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
         for(int i = 1; i < number+1; i++) {
-            int num = i;
-            String temp = Integer.toString(num);
+            String temp = Integer.toString(i);
             int[] digits = new int[temp.length()];
             for (int j = 0; j < temp.length(); j++) digits[j] = temp.charAt(j) - '0';
             int[] counter = new int[10];
@@ -25,7 +24,6 @@ public class Problem3 {
                 answer += counter[3*m];
             }
         }
-
         return answer;
     }
 }

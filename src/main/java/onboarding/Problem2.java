@@ -1,7 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Stack;
 
 /*
 - 기능 구현사항 목록 -
@@ -16,18 +15,17 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         StringBuilder answer = new StringBuilder();
         char[] s = cryptogram.toCharArray();
-        List <Character>temp = new ArrayList<>();
-        temp.add(s[0]);
+        Stack<Character> stack = new Stack<>();
+        stack.push(s[0]);
         for (int i = 1; i < s.length; i++) {
-            int l = temp.size();
-            if (s[i] == temp.get(l - 1)) {
-                temp.remove(l - 1);
+            if (stack.peek() == s[i]) {
+                stack.pop();
                 continue;
             }
-            temp.add(s[i]);
+            stack.push(s[i]);
         }
-        for (Character ch : temp) {
-            answer.append(ch);
+        for (int i = 0; i < stack.size(); i++) {
+            answer.append(stack.elementAt(i));
         }
         return answer.toString();
 
