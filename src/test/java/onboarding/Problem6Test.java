@@ -3,6 +3,7 @@ package onboarding;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -29,7 +30,8 @@ class Problem6Test {
     @Test
     void 예외결과테스트() {
 
-        List<List<String>> case1 = null;
+        List<List<String>> case1 = new ArrayList<List<String>>();
+
         for(int i=0;i<10_005;++i)
             case1.add(List.of("abc@gmail.com", "바나나"));
 
