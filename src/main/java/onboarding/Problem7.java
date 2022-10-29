@@ -71,6 +71,26 @@ public class Problem7 {
             }
         }
 
+        // sort order
+        String change;
+        for (int i = 0; i < listScore.size()-1; i++) {
+            for (int j = i+1; j < listScore.size(); j++) {
+                if(listScore.get(i)<listScore.get(j)){
+                    temp=listScore.get(i);
+                    listScore.set(i,listScore.get(j));
+                    listScore.set(j,temp);
+                    change=listName.get(i);
+                    listName.set(i,listName.get(j));
+                    listName.set(j,change);
+                }
+                if(listScore.get(i).equals(listScore.get(j)) && listName.get(i).compareTo(listName.get(j))>0){
+                    change=listName.get(i);
+                    listName.set(i,listName.get(j));
+                    listName.set(j,change);
+                }
+            }
+        }
+
         return listName;
     }
 }
