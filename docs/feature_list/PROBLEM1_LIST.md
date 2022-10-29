@@ -2,7 +2,7 @@ PROBLEM 1
 기능 목록
 1. 점수 표시(showScore(List<Integer> pages)) : List<Integer>로 받은 페이지 번호를 String로 바꾼 후, 점수 계산 메소드를 이용해 계산한 점수를 표시한다.
 2. 점수 계산(calScore(String str)) : String으로 표시된 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구한다.
-3. 점수 비교(versus(int p, int c)) : 점수를 비교해 가장 높은 사람이 게임의 승자가 된다.
+3. 점수 비교(versusScore(int p, int c)) : 점수를 비교해 가장 높은 사람이 게임의 승자가 된다.
 
 부가적인 요소 
 예외 사항 : 페이지는 연속된 숫자여야 한다 != ex) (101, 110), 
