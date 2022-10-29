@@ -1,5 +1,7 @@
 package onboarding.problem1;
 
+import onboarding.validation.MinMaxIntegerInputValidate;
+
 import java.util.List;
 
 import static java.lang.Math.*;
