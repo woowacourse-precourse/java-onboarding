@@ -69,6 +69,20 @@ public class Problem7 {
             }
         }
 
+        /* HashMap에서 value를 기준으로 정렬하는 기능 */
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(m.entrySet());
+        entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                /* 추천점수가 같을 경우 이름순 정렬 기능 구현 */
+                if (o2.getValue() == o1.getValue()) {
+                    return o1.getKey().compareTo(o2.getKey());
+                }
+                /* 점수가 높은 순으로 정렬 기능 구현 */
+                return o2.getValue() - o1.getValue();
+            }
+        });
+
         return answer;
     }
 }
