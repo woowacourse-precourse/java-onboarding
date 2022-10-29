@@ -2,6 +2,7 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
+        if(!isIncludeNum(number)) return -1; //입력 숫자는 1이상 10000이하여야한다.
         int ans=0;
         for (int num = 0; num <= number; num++) {
             ans += countClap(num);
