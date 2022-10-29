@@ -14,7 +14,9 @@ public class Problem4 {
 		StringBuilder stringBuilder = new StringBuilder();
 
 		for (char j : arr) {
+			//문자 변환
 			String result = changeWord(j);
+			//변환된 문자 stringBuilder 더해주기
 			stringBuilder.append(result);
 		}
 		return stringBuilder.toString();

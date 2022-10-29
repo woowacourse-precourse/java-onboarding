@@ -28,11 +28,7 @@ public class Problem7 {
 
 		for (String person : noFriendList) {
 			// 유저및 친구 제외 리스트의 구성원 중 친구의 친구 점수 부여
-			for (List<String> friendList : userFriendsFriendsList) {
-				if (friendList.contains(person)) {
-					friendshipScore.put(person, friendshipScore.get(person) + 10);
-				}
-			}
+			addFriendFriendScore(userFriendsFriendsList, friendshipScore, person);
 			// 유저 및 친구 제외 리스트의 구성원 중 방문객 점수 부여
 			for (String visitor : visitors) {
 				if (visitor.equals(person)) {
@@ -54,6 +50,15 @@ public class Problem7 {
 		}
 
 		return answer;
+	}
+
+	private static void addFriendFriendScore(List<List<String>> userFriendsFriendsList, HashMap<String, Integer> friendshipScore,
+		String person) {
+		for (List<String> friendList : userFriendsFriendsList) {
+			if (friendList.contains(person)) {
+				friendshipScore.put(person, friendshipScore.get(person) + 10);
+			}
+		}
 	}
 
 	static List<String> findMaxValueKeys(HashMap<String, Integer> friendshipScore) {
