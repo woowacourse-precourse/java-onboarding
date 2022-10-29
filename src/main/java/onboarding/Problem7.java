@@ -1,11 +1,16 @@
 package onboarding;
 
-import java.util.Collections;
+import entity.UserRelation;
+import entity.UserScore;
+
 import java.util.List;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        UserRelation relation = new UserRelation(user, friends, visitors);
+        UserScore userScore = new UserScore();
+        userScore.addFriendsScore(user, relation.getFriendsRelations());
+        userScore.addVisitorsScore(visitors, relation.getUserFriends());
+        return userScore.getUserScoreTop5();
     }
 }
