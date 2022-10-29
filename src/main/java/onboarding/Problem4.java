@@ -24,7 +24,7 @@ public class Problem4 {
                 answer.add(convertLowercase(one));
             }
         }
-        
+
         String result = answer.stream()
                 .map(e -> e.toString())
                 .reduce((acc, e) -> acc + e)
@@ -41,5 +41,17 @@ public class Problem4 {
     public static char convertLowercase(char one) {
         int ascii = 219 - (int)one;
         return (char)ascii;
+    }
+}
+
+class ExceptionProblem4 {
+    public static void validateWord(String word) {
+        enterWord(word);
+    }
+
+    public static void enterWord(String word) {
+        if (word.equals("")) {
+            throw new IllegalArgumentException();
+        }
     }
 }
