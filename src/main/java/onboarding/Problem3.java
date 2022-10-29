@@ -20,11 +20,17 @@ public class Problem3 {
         return answer;
     }
 
+    /**
+     * 인자로 주어진 number에서 3 / 6 / 9가 몇 개 포함되어 있는지를 return한다.
+     * @param number
+     * @return
+     */
     public static int get369Num(int number) {
         int count = 0; // 3 / 6 / 9의 개수 counter
 
         while(number > 0) {
-            if((number % 10) % 3 == 0) {
+            /* 끝자리가 3이거나 6이거나 9이면 박수 한번 추가 */
+            if(number % 10 == 3 || number % 10 == 6 || number % 10 == 9) {
                 count += 1;
             }
 
