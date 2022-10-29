@@ -20,6 +20,7 @@ public class Problem6 {
                 }
             }
         }
+        Collections.sort(answer);
         return answer;
     }
     static List<Integer> repeat(List<List<String>> forms, List<String> param, int num) {
