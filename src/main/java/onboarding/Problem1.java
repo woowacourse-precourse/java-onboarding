@@ -14,7 +14,6 @@ import java.util.List;
  */
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
         int pobiScore=0;
         int crongScore=0;
 
@@ -23,7 +22,13 @@ class Problem1 {
         }
         pobiScore = getScore(pobi);
         crongScore = getScore(crong);
-        return answer;
+
+        if(pobiScore > crongScore) {
+            return 1;
+        }else if(pobiScore < crongScore) {
+            return 2;
+        }
+        return 0;
     }
 
     static boolean catchError(List<Integer> pages){
