@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /* 기능 목록
  * user의 친구 목록 반환 기능 구현
@@ -15,6 +12,19 @@ import java.util.List;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+        Problem7 problem7 = new Problem7();
+
+        List<String> myFriends = problem7.getMyFriends(user, friends);
+        List<String> subFriends = problem7.getSubFriends(myFriends, friends);
+        HashMap<String, Integer> recommends = problem7.getRecommends(myFriends, subFriends, visitors);
+        List<Map.Entry<String, Integer>> sortedList = problem7.getSortedList(recommends);
+
+        answer = new ArrayList<>();
+        int len = sortedList.size() < 5 ? sortedList.size() : 5;
+        for (int i = 0; i < len; i++) {
+            answer.add(sortedList.get(i).getKey());
+        }
+
         return answer;
     }
 
@@ -96,5 +106,24 @@ public class Problem7 {
         }
 
         return recommends;
+    }
+
+    /**
+     * 맵의 value를 기준으로 정렬하고 같을 경우 key로 정렬한 결과 key, vlaue 리스트를 반환합니다.
+     *
+     * @param recommends 추천 사용자의 이름과 점수 쌍
+     * @return 정렬한 key, value 리스트 반환
+     */
+    List<Map.Entry<String, Integer>> getSortedList(HashMap<String, Integer> recommends) {
+        Comparator<Map.Entry<String, Integer>> valueComparator =
+                Map.Entry.comparingByValue(Comparator.reverseOrder());
+
+        Comparator<Map.Entry<String, Integer>> keyComparator =
+                Map.Entry.comparingByKey();
+
+        List<Map.Entry<String, Integer>> sortedList = new LinkedList<>(recommends.entrySet());
+        Collections.sort(sortedList, valueComparator.thenComparing(keyComparator));
+
+        return sortedList;
     }
 }
