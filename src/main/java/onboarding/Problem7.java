@@ -6,30 +6,16 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
 
-        List<String> member = new ArrayList<>();
-
         // 친구 관계를 그래프로 저장
-        Iterator<List<String>> friendsItr = friends.iterator();
-        for(int i=0; i<friends.size(); i++){
-            List<String> ABfriend = friendsItr.next();
-            String A = ABfriend.get(0);
-            String B = ABfriend.get(1);
+        List<String> member = makeFriendGraph(friends);
 
-            if(!member.contains(A)){
-                member.add(A);
-            }
-            if(!member.contains(B)){
-                member.add(B);
-            }
-        }
-
+        // 친구 되어있는 관계를 리스트에 넣음
         List<String>[] friendList = new ArrayList[member.size()];
         for(int i=0; i< member.size(); i++){
             friendList[i] = new ArrayList<>();
         }
 
-        // 친구 되어있는 관계를 리스트에 넣음
-        friendsItr = friends.iterator();
+        Iterator<List<String>> friendsItr = friends.iterator();
         for(int i=0; i<friends.size(); i++){
             List<String> ABfriend = friendsItr.next();
             String A = ABfriend.get(0);
@@ -101,11 +87,65 @@ public class Problem7 {
         }
 
 
+        // 점수 순으로 정렬하고 이름 출력
+        Map<Integer, String> scoreMap = new HashMap<>();
+        for(String key : recommendPoint.keySet()){
+            int score = recommendPoint.get(key);
+            scoreMap.put(score, key);
+        }
+
+        int[] pointArr = new int[recommendPoint.size()];
+        Iterator<Integer> recommendPointItr = recommendPoint.values().iterator();
+        for(int i=0; i<pointArr.length; i++){
+            pointArr[i] = recommendPointItr.next();
+        }
+        Arrays.sort(pointArr);
+
+        String[] recommendName = new String[5];
+        for(int i=0; i<5; i++){
+            int score = pointArr[i];
+            if(score>0){
+                String name = scoreMap.get(score);
+                recommendName[i] = name;
+            }
+        }
+
+        Arrays.sort(recommendName);
+        for(String name : recommendName){
+            if(name.isEmpty()) continue;
+
+            answer.add(name);
+        }
 
 
         return answer;
     }
 
+    /**
+     * 친구 관계를 그래프로 저장하는 메소드
+     * @param friends 친구 관계 리스트
+     * @return 그래프로 구현한 친구 관계
+     */
+    static List<String> makeFriendGraph(List<List<String>> friends){
+        List<String> member = new ArrayList<>();
+
+        Iterator<List<String>> friendsItr = friends.iterator();
+        for(int i=0; i<friends.size(); i++){
+            List<String> ABfriend = friendsItr.next();
+            String A = ABfriend.get(0);
+            String B = ABfriend.get(1);
+
+            if(!member.contains(A)){
+                member.add(A);
+            }
+            if(!member.contains(B)){
+                member.add(B);
+            }
+        }
+
+
+        return member;
+    }
 
 
 }
