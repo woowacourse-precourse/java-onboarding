@@ -10,6 +10,7 @@ public class Problem2 {
             List<Integer> rangeList = findDuplicationRange(cryptogram);
             if(rangeList.size() == 0)
                 break;
+            cryptogram = removeDuplication(cryptogram, rangeList);
         }
         answer = cryptogram;
         return answer;
@@ -34,5 +35,12 @@ public class Problem2 {
             }
         }
         return list;
+    }
+
+    private static String removeDuplication(String word, List<Integer> list){
+        for (int i=list.size()-1; i>0; i-=2){
+           word =  word.substring(0, list.get(i-1)) + word.substring(list.get(i)+1);
+    }
+        return word;
     }
 }
