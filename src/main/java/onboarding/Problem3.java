@@ -6,6 +6,7 @@ public class Problem3 {
     private static final int NUMBER_MAX = 10000;
     private static final char THREE = '3';
     private static final char SIX = '6';
+    private static final char NINE = '9';
 
     public static int solution(int number) {
         int answer = 0;
@@ -38,5 +39,15 @@ public class Problem3 {
             }
         }
         return countOfSix;
+    }
+
+    public static int countOfNine(int number) {
+        int countOfNine = 0;
+        for (char eachDigit : intToString(number).toCharArray()) {
+            if (eachDigit == NINE) {
+                countOfNine++;
+            }
+        }
+        return countOfNine;
     }
 }
