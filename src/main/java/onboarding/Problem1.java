@@ -76,4 +76,19 @@ class Problem1 {
         return Arrays.stream(numbers)
                 .reduce(1, (number1, number2) -> number1 * number2);
     }
+
+    /*
+     * 주어진 두 점수로 게임의 승자를 반환
+     *
+     * @return 0;
+     * */
+    private static int determineWinner(int pobi, int crong) {
+        if (pobi < crong) {
+            return 2;
+        }
+        if (pobi > crong) {
+            return 1;
+        }
+        return 0;
+    }
 }
