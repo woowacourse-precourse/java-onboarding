@@ -26,23 +26,12 @@ public class Problem5 {
 
         //큰 화폐부터 최대 개수를 리스트에 저장
         for (int currency : currencyList){
-            int currencyCount = getCurrencyCount(remain, currency);
+            int currencyCount = remain / currency;
             result.add(currencyCount);
             //남은 돈 계산
             remain -= currency * currencyCount;
         }
 
         return result;
-    }
-
-    /**
-     * 주어진 금액을 주어진 화폐로 바꿀 수 있는 최대 개수를 반환
-     * @param money : 주어진 금액
-     * @param currency : 바꿀 화폐 단위
-     * @return 화폐 단위로 바꿀 수 있는 최대 개수
-     */
-    private int getCurrencyCount(int money, int currency){
-        // 돈을 화폐단위로 나눈 몫 반환
-        return money / currency;
     }
 }
