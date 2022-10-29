@@ -4,9 +4,23 @@ import java.util.Stack;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        Stack<Character> stack = new Stack<>();
-        char lastDeleteAlphabet = ' ';
         char[] alphabetArray = cryptogram.toCharArray();
+        return getUniqueWord(alphabetArray);
+    }
+
+    private static String getUniqueWord(char[] alphabetArray) {
+        Stack<Character> stack = new Stack<>();
+        deleteDuplicatedAlphabet(stack, alphabetArray);
+
+        StringBuilder sb = new StringBuilder();
+        while (!stack.isEmpty()) {
+            sb.append(stack.pop());
+        }
+        return sb.reverse().toString();
+    }
+
+    private static void deleteDuplicatedAlphabet(Stack<Character> stack, char[] alphabetArray) {
+        char lastDeletedAlphabet = ' ';
         for (char alphabet : alphabetArray) {
             if (stack.isEmpty()) {
                 stack.push(alphabet);
@@ -15,20 +29,14 @@ public class Problem2 {
             char forefrontAlphabet = stack.peek();
             if (alphabet == forefrontAlphabet) {
                 stack.pop();
-                lastDeleteAlphabet = alphabet;
+                lastDeletedAlphabet = alphabet;
                 continue;
             }
-            if (alphabet == lastDeleteAlphabet) {
+            if (alphabet == lastDeletedAlphabet) {
                 continue;
             }
             stack.push(alphabet);
-            lastDeleteAlphabet = ' ';
+            lastDeletedAlphabet = ' ';
         }
-        StringBuilder sb = new StringBuilder();
-        while (!stack.isEmpty()) {
-            sb.append(stack.pop());
-        }
-        String answer = sb.reverse().toString();
-        return answer;
     }
 }
