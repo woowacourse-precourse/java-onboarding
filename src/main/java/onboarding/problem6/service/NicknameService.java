@@ -10,9 +10,9 @@ import java.util.stream.IntStream;
 
 public class NicknameService {
 
-    private static final int NICKNAME_DUPLICATE_LENGTH = 2;
     private static final int EMAIL_INDEX = 0;
     private static final int NICKNAME_INDEX = 1;
+    private static final int NICKNAME_DUPLICATE_LENGTH = 2;
 
     public static List<String> duplicateUserEmail(List<List<String>> applyList) {
         NicknameChecker nicknameChecker = new NicknameChecker();
@@ -32,8 +32,8 @@ public class NicknameService {
     }
 
     public static List<String> distinctSubString(String text) {
-        return IntStream.range(0, text.length() - 1)
-                .mapToObj(i -> text.substring(i, i + NICKNAME_DUPLICATE_LENGTH))
+        return IntStream.range(0, (text.length() - 1))
+                .mapToObj(i -> text.substring(i, (i + NICKNAME_DUPLICATE_LENGTH)))
                 .distinct()
                 .collect(Collectors.toList());
     }
