@@ -32,8 +32,9 @@ class Page {
 
     public int getScore() {
         // 최초 1번 score 를 저장하고 추후에는 저장된 score 를 리턴
-        if (score != 0)
+        if (score != 0) {
             return score;
+        }
 
         int[] nums = Arrays.stream(String.valueOf(num).split(""))
                 .mapToInt(Integer::parseInt)
@@ -64,13 +65,47 @@ class Gamer {
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        // 입력값에 대한 예외처리
+        if (isException(pobi) || isException(crong)) {
+            return -1;
+        }
+
         Gamer gamerPobi = new Gamer(pobi.get(0), pobi.get(1));
         Gamer gamerCrong = new Gamer(crong.get(0), crong.get(1));
 
-        if (gamerPobi.getMaxScore() == gamerCrong.getMaxScore())
+        if (gamerPobi.getMaxScore() == gamerCrong.getMaxScore()) {
             return 0;
-        if (gamerPobi.getMaxScore() > gamerCrong.getMaxScore())
+        }
+        if (gamerPobi.getMaxScore() > gamerCrong.getMaxScore()) {
             return 1;
+        }
         return 2;
+    }
+
+    private static boolean inbound(int page) {
+        return page >= 1 && page <= 400;
+    }
+
+    private static boolean isOdd(int page) {
+        return page % 2 == 1;
+    }
+
+    private static boolean isContinuous(int left, int right) {
+        return left - right == -1;
+    }
+
+    private static boolean isException(List<Integer> pages) {
+        int leftPage = pages.get(0);
+        int rightPage = pages.get(1);
+
+        if (!inbound(leftPage) || !inbound(rightPage)) {
+            return true;
+        }
+
+        if (!isOdd(leftPage) || isOdd(rightPage)) {
+            return true;
+        }
+
+        return !isContinuous(leftPage, rightPage);
     }
 }
