@@ -27,7 +27,8 @@ public class Problem6 {
                 for (int i = 0; i < name.length() - 1; i++) {
                     String partOfName = name.substring(i, i + 2);
                     if (nickNameArr[j].contains(partOfName)) {
-
+                        list.add(map.get(name));
+                        list.add(map.get(nickNameArr[j]));
                     }
                 }
             }
