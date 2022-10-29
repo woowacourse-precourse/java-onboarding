@@ -24,6 +24,15 @@ class Problem1 {
 
         int pobiScore = score[3];
 
+        score[0] = convertNumberPlus(crong.get(0));
+        score[1] = convertNumberMultiple(crong.get(0));
+        score[2] = convertNumberPlus(crong.get(1));
+        score[3] = convertNumberMultiple(crong.get(1));
+
+        Arrays.sort(score);
+
+        int crongScore = score[3];
+
         int answer = Integer.MAX_VALUE;
         return answer;
     }
