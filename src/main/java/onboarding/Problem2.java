@@ -1,8 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class Problem2 {
     public static String removeDuplicateLoop(String str) {

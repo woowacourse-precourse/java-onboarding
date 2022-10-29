@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.HashMap;
-import java.util.HashSet;
 
 public class Problem4 {
     public static HashMap<Character,Character> dictionary;
