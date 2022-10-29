@@ -25,14 +25,25 @@ public class Problem3 {
 
     public static int solution(int number) {
         int answer = 0;
-        
         int clapCount = 0;
-        
-        // 수에 따른 박수 수 구하기
-        clapCount = getClapCount(number);
+
+        int curNumber = 1;
+
+        // 2. 입력받은 숫자까지 박수 수 더하기
+        while(curNumber <= number)
+        {
+            // 수에 따른 박수 수 구하기
+            clapCount += getClapCount(curNumber);
+
+            // 체크할 수 증가시키기
+            curNumber += 1;
+        }
 
         // 박수 수 결과 확인
         System.out.println(clapCount);
+
+        // 총 박수 수
+        answer = clapCount;
 
         return answer;
     }
