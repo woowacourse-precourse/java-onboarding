@@ -7,7 +7,8 @@ public class Problem3 {
             StringBuilder sb = new StringBuilder(String.valueOf(i));
 
             for (int j=0;j<sb.length();j++) {
-                if (sb.charAt(j) -'0' != 0 && (sb.charAt(j) -'0') % 3 == 0) {
+                int splitNumber = sb.charAt(j) - '0';
+                if (splitNumber != 0 && splitNumber% 3 == 0) {
                     answer++;
                 }
             }
