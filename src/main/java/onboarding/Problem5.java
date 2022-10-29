@@ -15,4 +15,7 @@ public class Problem5 {
     public static int getCoin(int money,int coin){
             return money/coin;
     }
+    public static int moneyRemainder(int money,int coin){
+        return money%coin;
+    }
 }
