@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -54,5 +51,24 @@ public class Problem7 {
         }
 
         return listOfScore;
+    }
+
+    public static List<String> getTheTopFive(HashMap<String, Integer> listOfScore) {
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(listOfScore.entrySet());
+        entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> user1, Map.Entry<String, Integer> user2) {
+                return user1.getValue() - user2.getValue();
+            }
+        });
+
+        List<String> recommendList = new ArrayList<>();
+        int numOfPeople = 5;
+        for(int i = 0; i < numOfPeople; i++) {
+            Map.Entry<String, Integer> entry = entryList.get(i);
+            recommendList.add(entry.getKey());
+        }
+
+        return recommendList;
     }
 }
