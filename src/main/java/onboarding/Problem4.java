@@ -22,7 +22,12 @@ public class Problem4 {
         StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < word.length(); i++) {
-            char c = dictionary.get(word.charAt(i));
+            char c = word.charAt(i);
+
+            if (dictionary.containsKey(c)) {
+                c = dictionary.get(c);
+            }
+
             sb.append(c);
         }
 
@@ -30,9 +35,6 @@ public class Problem4 {
     }
 
     private static void initialDictionary(Map<Character, Character> dictionary) {
-
-        dictionary.put(' ', ' ');
-
         dictionary.put('A', 'Z'); dictionary.put('B', 'Y'); dictionary.put('C', 'X'); dictionary.put('D', 'W');
         dictionary.put('E', 'V'); dictionary.put('F', 'U'); dictionary.put('G', 'T'); dictionary.put('H', 'S');
         dictionary.put('I', 'R'); dictionary.put('J', 'Q'); dictionary.put('K', 'P'); dictionary.put('L', 'O');
