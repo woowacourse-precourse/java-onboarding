@@ -14,3 +14,14 @@
 | --- | --- |
 | 50237	| [1, 0, 0, 0, 0, 2, 0, 3, 7] |
 | 15000	| [0, 1, 1, 0, 0, 0, 0, 0, 0] |
+-------------
+## 기능 목록
+* 지폐 단위별 필요 수 계산
+~~~
+private static void calculate(int money, List<Integer> answer, int calculateMoney, int check)
+~~~
+
+* 반복문 탈출을 위한 로직
+~~~
+private static boolean isOnes(int calculateMoney)
+~~~
