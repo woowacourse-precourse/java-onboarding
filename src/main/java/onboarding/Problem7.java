@@ -76,6 +76,9 @@ class Relations {
 }
 
 class Intimacy {
+    static final int MUTUAL_FRIEND_WEIGHT = 10;
+    static final int VISITED_WEIGHT = 10;
+
     private String targetId;
     private String userId;
     private int numOfMutualFriends;
@@ -103,5 +106,9 @@ class Intimacy {
         if (visitedCount.containsKey(this.userId)) {
             this.numOfVisited = visitedCount.get(this.userId);
         }
+    }
+
+    public int getScore() {
+        return ( this.numOfMutualFriends * MUTUAL_FRIEND_WEIGHT ) + ( this.numOfVisited * VISITED_WEIGHT );
     }
 }
