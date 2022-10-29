@@ -21,11 +21,14 @@ class Problem1 {
     }
 
     private static int getBestPageScore(List<Integer> pages) throws Exception {
+
+        if(pages.size() != 2) throw new Exception("pobi와 crong의 길이는 2가 되어야 합니다.");
+
         Iterator<Integer> iterator = pages.iterator();
         int left = iterator.next();
         int right = iterator.next();
 
-        if(Math.abs(left - right) > 1) throw new Exception("예외발생");
+        if(Math.abs(left - right) > 1) throw new Exception("pobi와 crong에는 [왼쪽 페이지 번호, 오른쪽 페이지 번호]가 순서대로 들어있어야 합니다.");
 
         return Math.max(getScore(left), getScore(right));
 
