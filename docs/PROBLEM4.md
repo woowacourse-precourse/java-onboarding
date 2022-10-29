@@ -17,13 +17,13 @@ String word를 ArrayList가 아닌 Char Array 타입으로 변환해 문제를 �
 Char Array는 String.toCharArray()를 통해 변환할 수 있기 때문에 위 메소드는 삭제하였습니다.
 </span>
 
-## 2. public static String findOppositeLetter(int before) {}
+## 2. public static Character findOppositeLetter(int before) {}
 
 ### input
 - **int before** : 반대로 변환하고자 하는 문자의 아스키 코드 값.
 
 ### output
-- **(Character)** before을 반대로 변환한 문자.
+- **(char)** before을 반대로 변환한 문자.
 
 ### 기능 상세
 하나의 문자에 반대되는 문자가 무엇인지 찾는 기능을 합니다.</br>
@@ -36,3 +36,14 @@ Char Array는 String.toCharArray()를 통해 변환할 수 있기 때문에 위 
   - after = before + (109 - before) * 2 + 1 = 219 - before
 - 알파벳 외의 문자 (else)
   - 변환하지 않으므로 after = before
+  - 
+## 3. public static String getConvertedString(char [] word) {}
+
+### input
+- **char [] word** : 변환해야 할 word 데이터를 char array로 변환한 값.
+
+### output
+- **(String)** 변환이 완료된 문자열.
+
+### 기능 상세
+각 알파벳마다 findOppositeLetter()를 호출해서 반대되는 알파벳을 찾고, 변환 완료된 값을 String으로 반환하는 기능을 합니다.

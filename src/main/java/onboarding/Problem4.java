@@ -2,12 +2,18 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
+        String answer = getConvertedString(word.toCharArray());
         return answer;
     }
 
-    public static char [] stringToList(String word) {
-        return word.toCharArray();
+    public static String getConvertedString(char [] word) {
+        StringBuilder builder = new StringBuilder();
+
+        for(char letter : word) {
+            builder.append(findOppositeLetter(letter));
+        }
+
+        return builder.toString();
     }
 
     public static Character findOppositeLetter(int before) {
