@@ -53,7 +53,7 @@ public class Problem7 {
 
     private static Map<String, Integer> getRecommendScore(String user, List<String> visitors, Map<String, Set<String>> friendMap) {
         Map<String, Integer> recommendScore = new HashMap<>();
-        Set<String> userFriendSet = friendMap.get(user);
+        Set<String> userFriendSet = friendMap.getOrDefault(user, new HashSet<>());
 
         scoringFriendsOfFriends(user, friendMap, userFriendSet, recommendScore);
         scoringVisitors(visitors, userFriendSet, recommendScore);
