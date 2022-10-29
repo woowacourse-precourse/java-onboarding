@@ -34,4 +34,19 @@ class Withdrawal {
         }
         return answer_array;
     }
+
+    List<Integer> getAnswer(int money) {
+        List<Integer> answer = makeAnswerArray();
+        setMoneyArray();
+        for (int i=0; i<9; i++) {
+            int m = money_array.get(i);
+            if (money < m) {
+                continue;
+            }
+            int q = money / m;
+            answer.set(i, q);
+            money = money % m;
+        }
+        return answer;
+    }
 }
