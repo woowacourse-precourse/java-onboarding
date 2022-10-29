@@ -6,7 +6,8 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-        System.out.println();
+        System.out.println(getScore(pobi));
+        System.out.println(getScore(crong));
         return answer;
     }
 
@@ -22,14 +23,18 @@ class Problem1 {
     }
 
     public static int getScore(List<Integer> pages) {
-        int addScore = 0;
-        int mulScore = 1;
-
+        int score = -1;
         for (int page : pages) {
-            
+            List<Integer> splitedNum = splitNum(page);
+            int addScore = getAddScore(splitedNum);
+            int mulScore = getMulScore(splitedNum);
+
+            int temp = (addScore > mulScore) ? addScore : mulScore;
+
+            score = (temp > score) ? temp : score;
         }
 
-        return (addScore > mulScore) ? addScore : mulScore;
+        return score;
     }
 
     public static int getAddScore(List<Integer> splitedNum) {
