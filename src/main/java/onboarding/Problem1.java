@@ -1,11 +1,27 @@
 package onboarding;
 
 import java.util.List;
-
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
+    }
+
+    public static int getScore(List<Integer> one){
+        int[] leftrightArr = new int[2];
+        for(int listIndex=0; listIndex<2; listIndex++){
+            //각 숫자 더하기 빼기
+            for(int i=0;i<3;i++){
+                int first = one.get(listIndex)/100;
+                int second = (one.get(listIndex)/10) %10;
+                int third = one.get(listIndex)%10;
+                int add = first+second+third;
+                int mul= first*second*third;
+
+                leftrightArr[listIndex] = Math.max(add, mul);
+            }
+        }
+        return Math.max(leftrightArr[0], leftrightArr[1]);
     }
 
     public static int exception(List<Integer> pobi, List<Integer> crong) {
