@@ -1,5 +1,7 @@
 package problem1;
 
+import java.util.function.BinaryOperator;
+
 public class Page implements Comparable<Page> {
     private static final int LOWER_BOUND = 1;
     private static final int UPPER_BOUND = 400;
@@ -21,21 +23,19 @@ public class Page implements Comparable<Page> {
     }
 
     private int sumDigits() {
-        int result = 0, num = page;
-        while (num > 0) {
-            result += num % 10;
-            num /= 10;
-        }
-        return result;
+        return calculateDigits((result, digit) -> result + digit);
     }
 
     private int multiplyDigits() {
-        int result = 1, num = page;
-        while (num > 0) {
-            result *= num % 10;
-            num /= 10;
-        }
-        return result;
+        return calculateDigits((result, digit) -> result * digit);
+    }
+
+    private int calculateDigits(BinaryOperator<Integer> binaryOperator) {
+        return String.valueOf(page)
+                .chars()
+                .mapToObj(Character::getNumericValue)
+                .reduce(binaryOperator)
+                .orElse(-1);
     }
 
     public boolean isOdd() {
