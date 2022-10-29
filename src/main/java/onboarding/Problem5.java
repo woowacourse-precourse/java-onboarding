@@ -1,12 +1,11 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
     public static void main(String[] args) {
-
+        System.out.println(solution(9050));
     }
 
     public static List<Integer> solution(int money) {
@@ -15,9 +14,22 @@ public class Problem5 {
         // 3. for 반복문을 만들어서 위 메서드의 반환값을 int[] 배열에 삽입
         // 4. 결과값 반환
 
-        int[] kindOfMoney = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
+        List<Integer> answer = countHowManyChange(money);
 
-        List<Integer> answer = new ArrayList<>();
         return answer;
+    }
+
+    private static List countHowManyChange(int money) {
+        List<Integer> listOfChanges = new ArrayList<>();
+        int[] kindOfMoney = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
+        int count;
+
+        for (int i = 0; i < kindOfMoney.length; i++) {
+            count = money / kindOfMoney[i];
+            money %= kindOfMoney[i];
+            listOfChanges.add(count);
+        }
+
+        return listOfChanges;
     }
 }
