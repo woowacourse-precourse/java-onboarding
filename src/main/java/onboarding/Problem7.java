@@ -4,6 +4,13 @@ import java.util.*;
 
 public class Problem7 {
     private static class UserVerifier {
+
+        protected static void userIdAndFriendsListVerifier(String userId, List<List<String>> friends) {
+            isUserLengthThan1CharactersAndLessThan30Characters(userId);
+            isUserIdConsistOfOnlyLowerAlphabet(userId);
+            isFriendsLengthThan1CharactersAndLessThan10000List(friends);
+        }
+
         protected static void isUserLengthThan1CharactersAndLessThan30Characters(String userId) {
             if (userId.length() < 1 || 30 < userId.length()) {
                 throw new IllegalArgumentException("유저의 아이디는 1자 이상 30자 이하만 가능합니다.");
@@ -36,6 +43,7 @@ public class Problem7 {
     private static final Map<String, Integer> result = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        UserVerifier.userIdAndFriendsListVerifier(user, friends);
         init(friends, visitors);
         friendsVerifier(user, friends);
         visitorsVerifier(visitors);
@@ -45,6 +53,7 @@ public class Problem7 {
     private static void init(List<List<String>> friends, List<String> visitors) {
         List<String> userIds = new ArrayList<>();
         for (List<String> users : friends) {
+            UserVerifier.isEachElementLengthOf2(users);
             users.forEach(user -> {
                 boolean result = userIds.stream()
                         .anyMatch(id -> Objects.equals(id, user));
