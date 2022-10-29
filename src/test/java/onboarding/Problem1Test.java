@@ -171,7 +171,7 @@ public class Problem1Test {
         }
 
         @Test
-        void hasLastPageOrMore() {
+        void hasLastPageOrMoreTest() {
             //given
             Book book = new Book(new Page(399), new Page(400));
             //when
@@ -181,7 +181,27 @@ public class Problem1Test {
         }
 
         @Test
-        void getDifference() {
+        void hasFirstPageOrLessFailTest() {
+            //given
+            Book book = new Book(new Page(2), new Page(3));
+            //when
+            boolean result=false;
+            //then
+            assertThat(book.hasFirstPageOrLess()).isEqualTo(result);
+        }
+
+        @Test
+        void hasLastPageOrMoreFailTest() {
+            //given
+            Book book = new Book(new Page(398), new Page(399));
+            //when
+            boolean result=false;
+            //then
+            assertThat(book.hasLastPageOrMore()).isEqualTo(result);
+        }
+
+        @Test
+        void getDifferenceTest() {
             //given
             Book book = new Book(new Page(2), new Page(3));
             //when
@@ -191,7 +211,7 @@ public class Problem1Test {
         }
 
         @Test
-        void leftPageCalcForSum() {
+        void leftPageCalcForSumTest() {
             Book book = new Book(new Page(333), new Page(334));
             PageCalculator pageCalculator = new SumPageCalculator();
 
@@ -201,7 +221,7 @@ public class Problem1Test {
         }
 
         @Test
-        void leftPageCalcForMul() {
+        void leftPageCalcForMulTest() {
             Book book = new Book(new Page(333), new Page(334));
             PageCalculator pageCalculator = new MulPageCalculator();
 
@@ -211,7 +231,7 @@ public class Problem1Test {
         }
 
         @Test
-        void rightPageCalcForSum() {
+        void rightPageCalcForSumTest() {
             Book book = new Book(new Page(333), new Page(334));
             PageCalculator pageCalculator = new SumPageCalculator();
 
@@ -221,7 +241,7 @@ public class Problem1Test {
         }
 
         @Test
-        void rightPageCalcForMul() {
+        void rightPageCalcForMulTest() {
             Book book = new Book(new Page(333), new Page(334));
             PageCalculator pageCalculator = new MulPageCalculator();
 
