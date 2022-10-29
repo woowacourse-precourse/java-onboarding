@@ -28,15 +28,23 @@ public class Problem7 {
 
         //사용자와 이미 친구인 목록을 구함
         List<String> userFriends_list = findUserFriends(user, friends);
+        //사용자를 리스트에 집어넣음
 
-        //친구의 친구인 목록을 구하고 점수를 구함
+
         List<String> friendsOfFriend_list = findFriendsOfFriend(userFriends_list, friends);
+
+        friendsOfFriend_list = remove(user, friendsOfFriend_list);
+        for (int i = 0; i < userFriends_list.size(); i++)
+            friendsOfFriend_list = remove(userFriends_list.get(i), friendsOfFriend_list);
+
+
         //친구의 점수표를 Map에 저장
         friendsPoint_map = saveUserPoint(friendsPoint_map, friendsOfFriend_list, knowPoint);
 
         //visitor 점수를 추가하기 위해
         //단, 이미 친구인 사람은 제거함
         //visitor UnsupportedOperationException error 발생해서 list를 복제함
+        
         List<String> removeUser_list= removeDuplication(saveVisitorList(visitors), userFriends_list);
 
         //친구의 점수표를 MAP에 저장
@@ -69,13 +77,9 @@ public class Problem7 {
 
         for (int i = 0; i < friends_list.size(); i++) {
             if (user.equals(friends_list.get(i).get(firstFriend))) {
-                if (!user.equals(userName) && userName.equals(friends_list.get(i).get(secondFriend)))
-                    continue;
                 userFriendsList.add(friends_list.get(i).get(secondFriend));
             }
             if (user.equals((friends_list.get(i).get(secondFriend)))) {
-                if (!user.equals(userName) && userName.equals(friends_list.get(i).get(secondFriend)))
-                    continue;
                 userFriendsList.add(friends_list.get(i).get(firstFriend));
             }
         }
@@ -93,19 +97,24 @@ public class Problem7 {
         return visitorsList;
     }
 
-    //사용자와 친구인 친구의 목록을 구해서 점수를 주는 함수
-    public static List<String> findFriendsOfFriend(List<String> userFriendsList, List<List<String>> friends_list) {
-        List<String> friendOfFriendsList;
+    //친구의 친구 목록 저장
+    public static List<String> findFriendsOfFriend(List<String> userFriends_list, List<List<String>> friends_list)
+    {
+        List<String> friendsOfFriends_list = new ArrayList<>();
 
-        //사용자와 친구인 친구의 목록
-        friendOfFriendsList = findUserFriends(userFriendsList.get(0), friends_list);
-        for (int i = 1; i < userFriendsList.size(); i++)
-            friendOfFriendsList.addAll(findUserFriends(userFriendsList.get(i), friends_list));
+        for (int i = 0; i < userFriends_list.size(); i++)
+            friendsOfFriends_list.addAll(findUserFriends(userFriends_list.get(i), friends_list));
 
-        //사용자와 친구인 목록은 삭제
-        removeDuplication(friendOfFriendsList,userFriendsList);
-
-        return friendOfFriendsList;
+        return friendsOfFriends_list;
+    }
+    public static List<String> remove(String user, List<String> friendsOfFiends_list)
+    {
+        for (int i = 0; i < friendsOfFiends_list.size(); i++)
+        {
+            if (friendsOfFiends_list.get(i).equals(user))
+                friendsOfFiends_list.remove(i);
+        }
+        return friendsOfFiends_list;
     }
     public static List<String> removeDuplication(List<String> basicList, List<String> keywordList) {
         for (int i = 0; i < basicList.size(); i++) {
