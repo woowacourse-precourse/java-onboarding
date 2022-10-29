@@ -25,4 +25,7 @@ class Problem1 {
         return Math.max(addEachDigit(num), multiplyEachDigit(num));
     }
 
+    private static int maxScore(List<Integer> list){
+        return Math.max(maxAddOrMultiply(list.get(0)), maxAddOrMultiply(list.get(1)));
+    }
 }
