@@ -3,6 +3,7 @@ package onboarding;
 public class Problem2 {
     public static String solution(String cryptogram) {
         while(true) {
+            if(cryptogram.isEmpty()) return cryptogram;
             cryptogram += " ";
             String nextCryptogram = "";
             char current = cryptogram.charAt(0);
