@@ -9,9 +9,23 @@ package onboarding;
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
-        char s;
+        char c;
         for (int i = 0; i < word.length(); i++) {
-            s = word.charAt(i);
+            c = word.charAt(i);
+            StringBuilder sb = new StringBuilder(10);
+            if ('A' <= c && c <= 'Z') {
+                sb.append(answer);
+                sb.append((char)('Z' - (c - 'A')));
+                answer = sb.toString();
+            } else if ('a' <= c && c <= 'z') {
+                sb.append(answer);
+                sb.append((char)('z' - (c - 'a')));
+                answer = sb.toString();
+            } else {
+                sb.append(answer);
+                sb.append(c);
+                answer = sb.toString();
+            }
         }
         return answer;
     }
