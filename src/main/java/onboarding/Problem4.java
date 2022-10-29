@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Problem4 {
+    private static final int ALPHABETS_COUNT = 26;
 
     public static String solution(String word) {
         Map<Character, Character> frogMap = generateFrogMap();
@@ -18,7 +19,7 @@ public class Problem4 {
         char lowerCaseLetterA = 'a';
         char lowerCaseLetterZ = 'z';
 
-        for (int i = 0; i < 26; i++) {
+        for (int i = 0; i < ALPHABETS_COUNT; i++) {
             frogMap.put(upperCaseLetterA++, upperCaseLetterZ--);
             frogMap.put(lowerCaseLetterA++, lowerCaseLetterZ--);
         }
