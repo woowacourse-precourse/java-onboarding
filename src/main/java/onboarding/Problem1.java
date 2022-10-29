@@ -35,4 +35,13 @@ class Problem1 {
         Integer rightNum = numList.get(1);
         return leftNum >= 1 && leftNum <= 400 && rightNum >= 1 && rightNum <= 400;
     }
+
+    private static int addDigit(int num) {
+        int sum = 0;
+        while (num != 0) {
+            sum += (num % 10);
+            num /= 10;
+        }
+        return sum;
+    }
 }
