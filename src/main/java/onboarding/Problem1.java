@@ -16,7 +16,6 @@ class Problem1 {
         return answer;
     }
     public static int calculate(Integer leftPage,Integer rightPage){   //왼쪽 오른쪽중 누가 더 큰지
-
         String left = leftPage.toString();
         String right =rightPage.toString();
         int tmp = max(max(calculateMul(left),calculatePlus(left)),max(calculatePlus(right),calculateMul(right)));
