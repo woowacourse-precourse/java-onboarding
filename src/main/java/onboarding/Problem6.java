@@ -1,19 +1,26 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Problem6 {
+    static List<List<String>> list;
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        permutation(0,2,0, forms.get(0).get(1),"");
+        List<String> answer = new ArrayList<>();
+        list = forms;
+
+        for(int i=0; i<forms.size(); i++) {
+            String curName = forms.get(i).get(1);
+            permutation(curName, i);
+        }
+
         return answer;
     }
-    public static void permutation(int depth, int n, int idx, String name, String s){
-        if(depth == n){
+    public static void permutation(String name, int listIdx){
+        for(int i=0; i<name.length(); i++){
+            if(i+1 >= name.length()) break;
+            String s = name.substring(i, i+2);
             System.out.println(s);
-        }
-        for(int i=idx; i<name.length(); i++){
-            permutation(depth+1, n, i+1, name, s+name.charAt(i));
         }
     }
 }
