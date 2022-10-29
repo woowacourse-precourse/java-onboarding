@@ -6,8 +6,17 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-        System.out.println(getScore(pobi));
-        System.out.println(getScore(crong));
+
+        int differ = getScore(pobi) - getScore(crong);
+
+        if (differ > 0) {
+            answer = 1;
+        } else if (differ < 0) {
+            answer = 2;
+        } else {
+            answer = 0;
+        }
+        System.out.println(answer);
         return answer;
     }
 
@@ -56,6 +65,4 @@ class Problem1 {
 
         return mulScore;
     }
-
-
 }
