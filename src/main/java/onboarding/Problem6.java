@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
@@ -9,6 +10,9 @@ public class Problem6 {
 		for (List<String> form : forms) {
 			crewHashData.put(form.get(0), form.get(1));
 		}
+
+		Collection<String> crewNicknames  = crewHashData.values();
+
 		List<String> answer = List.of("answer");
 		return answer;
 	}
