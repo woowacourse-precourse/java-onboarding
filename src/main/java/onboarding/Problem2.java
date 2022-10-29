@@ -24,7 +24,12 @@ public class Problem2 {
         if (check) {
             return cryptogram;
         } else {
-
+            String duplicate = "";
+            for (int i = 0; i < cryptogram.length() - 1; i++) {
+                if (cryptogram.charAt(i) == cryptogram.charAt(i + 1)) {
+                    duplicate += String.valueOf(cryptogram.charAt(i));
+                }
+            }
         }
     }
 }
