@@ -46,6 +46,17 @@ class Problem1 {
         if(!check_except(pobi)) return -1;
         if(!check_except(crong)) return -1;
 
+
+        /*
+            Decide Result
+            if   pobi >  crong = 1
+            elif pobi <  crong = 2
+            elif pobi == crong = 0
+         */
+        int pobi_res  = calculate(pobi);
+        int crong_res = calculate(crong);
+        answer = pobi_res > crong_res ? 1 : pobi_res == crong_res ? 0 : 2;
+
         return answer;
     }
 }
