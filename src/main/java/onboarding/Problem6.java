@@ -44,11 +44,9 @@ public class Problem6 {
         String[] makeEmailList = new String[collectNickname.size()];
         Iterator<String> collectNicknameItr = collectNickname.iterator();
         for(int i=0; i<makeEmailList.length; i++){
-            for(int j=0; j<collectNickname.size(); j++){
-                String nickName = collectNicknameItr.next();
-                String email = listMap.get(nickName);
-                makeEmailList[i] = email;
-            }
+            String nickName = collectNicknameItr.next();
+            String email = listMap.get(nickName);
+            makeEmailList[i] = email;
         }
 
         Arrays.sort(makeEmailList);

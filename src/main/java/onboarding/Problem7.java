@@ -1,7 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -9,8 +8,14 @@ public class Problem7 {
 
         // 친구 관계를 그래프로 저장
 
+
+
+
         // 방문자로 점수 처리
 
         return answer;
     }
+
+
+
 }
