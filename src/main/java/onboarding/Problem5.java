@@ -91,3 +91,17 @@ class ATM {
     }
 
 }
+
+class OutView5 {
+
+    static void printStart() {
+        System.out.println("1원 이상 1,000,000원 이하로 출금할 돈을 입력해주세요");
+    }
+    static void printHead() {
+        System.out.println("money" + "\t" + "result");
+    }
+
+    static void printResult(int inputMoney, List<Integer> result) {
+        System.out.println(inputMoney + "\t" + result);
+    }
+}
