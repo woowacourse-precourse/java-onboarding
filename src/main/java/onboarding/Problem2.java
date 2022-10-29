@@ -3,9 +3,11 @@ package onboarding;
 public class Problem2 {
     public static String solution(String cryptogram) {
 
+        while (!cryptogram.equals(removeConsecutiveChar(cryptogram))){
+            cryptogram = removeConsecutiveChar(cryptogram);
+        }
 
-        String answer = "answer";
-        return answer;
+        return cryptogram;
     }
 
     public static String removeConsecutiveChar(String strInput) {
