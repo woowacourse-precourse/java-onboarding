@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Problem4 {
@@ -9,7 +10,7 @@ public class Problem4 {
         String answer = "";
 
         if (checkValidation(word)) {
-
+            answer = convertReverse(word);
         } else {
             answer = "-1";
         }
@@ -35,13 +36,17 @@ public class Problem4 {
 
         inputIntStream.forEach(x -> {
             if (isUppercase(x)) {
-
+                resultList.add(convertUppercase(x));
             } else if (isLowercase(x)) {
-
+                resultList.add(convertLowercase(x));
             } else {
-
-            }
+                resultList.add((char) x);
+            };
         });
+
+        result = resultList.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining());
 
         return result;
     }
@@ -60,5 +65,17 @@ public class Problem4 {
         }
 
         return true;
+    }
+
+    public static char convertUppercase(int intValue) {
+        char result = (char) ('Z' - intValue + 'A');
+
+        return result;
+    }
+
+    public static char convertLowercase(int intValue) {
+        char result = (char) ('z' - intValue + 'a');
+
+        return result;
     }
 }
