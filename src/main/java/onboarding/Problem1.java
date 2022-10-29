@@ -14,6 +14,9 @@ class Problem1 {
 		if (isValidPages(pobi) || isValidPages(crong))
 			return ERROR_CODE;
 
+		int pobiScore = Math.max(getBigScore(pobi.get(0)), getBigScore(pobi.get(1)));
+		int crongScore = Math.max(getBigScore(crong.get(0)), getBigScore(crong.get(1)));
+
 		return answer;
 	}
 
@@ -55,5 +58,32 @@ class Problem1 {
 		if (pages.get(0) == 399 && pages.get(1) == 400)
 			return false;
 		return true;
+	}
+
+	/**
+	 * 3. 페이지를 통해 큰수 구하기
+	 */
+	public static int getBigScore(int page) {
+		int plusScore = getPlusScore(page);
+		int multipleScore = getMultipleScore(page);
+		return Math.max(plusScore, multipleScore);
+	}
+
+	public static int getPlusScore(int page) {
+		int hundreds = page / 100;
+		int tens = (page % 100) / 10;
+		int units = page % 10;
+		return hundreds + tens + units;
+	}
+
+	public static int getMultipleScore(int page) {
+		int hundreds = page / 100;
+		int tens = (page % 100) / 10;
+		int units = page % 10;
+		if (page >= 100)
+			return hundreds * tens * units;
+		if (page >= 10)
+			return tens * units;
+		return units;
 	}
 }
