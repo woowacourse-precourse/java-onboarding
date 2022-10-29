@@ -19,6 +19,7 @@ class Problem1 {
 
             int num = i.intValue();
             if (num == 1 || num == 400)  return false; //요소값 중 하나라도 첫페이지나 마지막페이지면, false
+            if (1 > num || num >400) return false; //요소값 중 하나라도 페이지 수를 넘어가면, false
         }
 
 // 페이지 연결 체크
@@ -26,5 +27,20 @@ class Problem1 {
 
         return true;
     }
+
+    public static int cal(int num){
+        int sum =0;
+        int mul =1;
+
+        while (num !=0){
+            sum += num%10;
+            mul *= num%10;
+            num = num/10;
+        }
+
+        return Math.max(sum, mul);
+    }
+
+
 
 }
