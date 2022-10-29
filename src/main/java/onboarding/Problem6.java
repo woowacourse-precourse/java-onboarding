@@ -1,13 +1,23 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        try {
+            if(!isCorrectInput(forms)) {
+                throw new Exception("제한사항에 위배되는 forms형식입니다.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        List<String> hasDupNameEmails = findDupNameEmailList(forms);
+        List<String> removedDupEmail = removedDupEmail(hasDupNameEmails);
+        Collections.sort(removedDupEmail);  //오름차순 정렬
+        return removedDupEmail;
     }
     private static boolean isCorrectInput(List<List<String>> forms) {
         if(forms.size()<1||forms.size()>10000) return false;
