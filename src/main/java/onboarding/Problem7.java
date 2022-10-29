@@ -6,14 +6,15 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.PriorityQueue;
+import java.util.Set;
 
 public class Problem7 {
     public static HashMap<String, Integer> userScoreHashMap = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
         HashMap<String, ArrayList<String>> friendsHashMap = getFriendsHashMap(friends);
         setUserScoreHashMap(user, friendsHashMap, visitors);
+        List<String> answer = getHighScoreList();
         return answer;
     }
 
@@ -69,5 +70,14 @@ public class Problem7 {
             }
             userScoreHashMap.put(twoHopFriend, userScoreHashMap.get(twoHopFriend) + score);
         }
+    }
+
+    public static List<String> getHighScoreList() {
+        ArrayList<String> highScoreList = new ArrayList<>(userScoreHashMap.keySet());
+        Collections.sort(highScoreList, (a, b) ->
+            (userScoreHashMap.get(a) == userScoreHashMap.get(b) ? a.compareTo(b) : userScoreHashMap.get(b)-userScoreHashMap.get(a)));
+        int highScoreLen = highScoreList.size();
+        int returnSize = Math.min(5, highScoreLen);
+        return highScoreList.subList(0,returnSize);
     }
 }

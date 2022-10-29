@@ -18,6 +18,43 @@ import org.junit.jupiter.api.Test;
 class Problem7Test {
 
 	@Test
+	@DisplayName("점수와 이름으로 정렬된 상위 다섯 명의 사용자를 추천해야 한다.")
+	void integrationTest() {
+		List<List<String>> friends = List.of(
+			List.of("a", "b"),
+			List.of("a", "c"),
+			List.of("a", "d"),
+			List.of("b", "h"),
+			List.of("b", "f"),
+			List.of("c", "f"),
+			List.of("c", "g"),
+			List.of("d", "g"),
+			List.of("d", "i")
+		);
+		List<String> visitors = new ArrayList<>();
+		for (int i=0; i<10; i++) {
+			visitors.add("e");
+		}
+		for (int i=0; i<9; i++) {
+			visitors.add("j");
+		}
+		for (int i=0; i<1; i++) {
+			visitors.add("i");
+		}
+		String user = "a";
+
+		List<String> solution = Problem7.solution(user, friends, visitors);
+		List<String> result = List.of("f", "g", "i", "e", "h");
+		assertThat(Problem7.userScoreHashMap.size()).isEqualTo(6);
+		assertThat(Problem7.userScoreHashMap.get("f")).isEqualTo(20);
+		assertThat(Problem7.userScoreHashMap.get("g")).isEqualTo(20);
+		assertThat(Problem7.userScoreHashMap.get("i")).isEqualTo(11);
+		assertThat(Problem7.userScoreHashMap.get("e")).isEqualTo(10);
+		assertThat(Problem7.userScoreHashMap.get("h")).isEqualTo(10);
+		assertThat(Problem7.userScoreHashMap.get("j")).isEqualTo(9);
+	}
+
+	@Test
 	void getFriendsHashMapTest() {
 		List<List<String>> friends = List.of(
 			List.of("donut", "andole"),
