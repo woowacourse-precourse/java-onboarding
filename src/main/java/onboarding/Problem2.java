@@ -47,7 +47,7 @@ public class Problem2 {
 
 
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        StringBuilder answer = new StringBuilder("answer");
         String crypto = cryptogram;
 
         // split the sting
@@ -65,6 +65,11 @@ public class Problem2 {
             }
         }
 
-        return answer;
+        answer = new StringBuilder();
+        for (String item : cryptoList) {
+            answer.append(item);
+        }
+
+        return answer.toString();
     }
 }
