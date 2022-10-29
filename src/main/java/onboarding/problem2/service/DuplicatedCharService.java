@@ -3,7 +3,6 @@ package onboarding.problem2.service;
 import java.util.ArrayList;
 
 public class DuplicatedCharService {
-
     //문자열을 받고 중복된 문자가 나오는 위치를 담은 ArrayList 를 반환한다.
     public static ArrayList<int[]> getDuplicatedCharPositionList(String word){
         ArrayList<int[]> duplicatedCharPositionList = new ArrayList<int[]>();
