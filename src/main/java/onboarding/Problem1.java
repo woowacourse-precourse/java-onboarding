@@ -22,9 +22,11 @@ class Problem1 {
         return digits;
     }
 
-    private static int getSumByArray(int[] array) {
-        // 배열의 각 자리수를 모두 더하는 메소드
+    private static int getSumByNumber(int number) {
+        // 숫자의 각 자리수를 모두 더하는 메소드
         int sumValue = 0;
+        int[] array = getArrayByNumber(number);
+
         for (int value : array) {
             sumValue += value;
         }
@@ -49,19 +51,20 @@ class Problem1 {
 
         // 1 ~ 400 이내인지 확인
         if (leftPage < 1 || leftPage > 400 || rightPage < 1 || rightPage > 400) {
-            return false;
+            return true;
         }
 
         // 페이지의 차이가 1인지 확인
         if (rightPage - leftPage != 1) {
-            return false;
+            return true;
         }
 
         // 왼쪽 페이지가 홀수이고 오른쪽 페이지가 짝수인지 확인
         if (leftPage % 2 == 0 || rightPage % 2 == 1) {
-            return false;
+            return true;
         }
 
-        return true;
+        return false;
     }
+
 }
