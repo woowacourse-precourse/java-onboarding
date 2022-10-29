@@ -27,6 +27,12 @@ public class Problem4 {
     }
 
     // 문장 리스트로 바꾸기
+    public static String[] stringToList(String word) {
+        String[] list = word.split("");
+
+        return list;
+    }
+
 
 
 
