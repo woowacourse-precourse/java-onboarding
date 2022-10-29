@@ -179,8 +179,10 @@ class ApplicationTest {
     }
 
     @Nested
+    @DisplayName("AZ | BY | CX | DW | EV | FU | GT | HS | IR | JQ | KP | LO | MN")
     class Problem4Test {
         @Test
+        @DisplayName("I(R) love(olev) you(blf)")
         void case1() {
             String word = "I love you";
             String result = "R olev blf";
@@ -188,6 +190,7 @@ class ApplicationTest {
         }
 
         @Test
+        @DisplayName("빈 문자열 테스트")
         void case2() {
             String word = "";
             String result = "";
@@ -195,6 +198,7 @@ class ApplicationTest {
         }
 
         @Test
+        @DisplayName("Hello(Svool) Everyone!(Veviblmv!)")
         void case3() {
             String word = "Hello  Everyone!";
             String result = "Svool  Veviblmv!";
