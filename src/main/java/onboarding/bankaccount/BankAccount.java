@@ -1,8 +1,11 @@
 package onboarding.bankaccount;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BankAccount {
 
-	private final int money;
+	private int money;
 
 	public BankAccount(int money) {
 		this.money = money;
@@ -10,5 +13,18 @@ public class BankAccount {
 
 	public int getBillsOf(final BankUnit bankUnit) {
 		return money / bankUnit.getMoney();
+	}
+
+	public List<Integer> getBills() {
+		List<Integer> bills = new ArrayList<>();
+
+		for (BankUnit billUnit : BankUnit.values()) {
+			int numberOfBills = getBillsOf(billUnit);
+			bills.add(numberOfBills);
+			this.money = numberOfBills != 0
+				? money - (numberOfBills * billUnit.getMoney())
+				: money;
+		}
+		return bills;
 	}
 }
