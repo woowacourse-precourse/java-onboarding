@@ -25,25 +25,38 @@ import java.util.*;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         Set<String> answer = new TreeSet<>();
-        Map<String, Set<String>> consecutiveSubString = new HashMap<>();
-        for (List<String> form : forms) {
-            String email = form.get(0);
-            String nickname = form.get(1);
-            for (int i = 0; i < nickname.length() - 1; i++) {
-                String nicknameSubString = nickname.substring(i, i + 2);
-                if (consecutiveSubString.containsKey(nicknameSubString)) {
-                    consecutiveSubString.get(nicknameSubString).add(email);
-                    continue;
-                }
-                consecutiveSubString.put(nicknameSubString, new HashSet<String>(Collections.singleton(email)));
-            }
-        }
-        for (String nicknameSubString : consecutiveSubString.keySet()) {
-            Set<String> duplicatedUsedEmailSet = consecutiveSubString.get(nicknameSubString);
-            if (duplicatedUsedEmailSet.size() > 1) {
+        Map<String, Set<String>> consecutiveSubStringMap = new HashMap<>();
+        findEmailListWithDuplicatedNicknames(forms, consecutiveSubStringMap);
+        saveEmailListWithDuplicatedNicknames(answer, consecutiveSubStringMap);
+        return new ArrayList<>(answer);
+    }
+
+    private static void saveEmailListWithDuplicatedNicknames(Set<String> answer, Map<String, Set<String>> consecutiveSubStringMap) {
+        for (String nicknameSubString : consecutiveSubStringMap.keySet()) {
+            Set<String> duplicatedUsedEmailSet = consecutiveSubStringMap.get(nicknameSubString);
+            boolean isDuplicatedNickname = duplicatedUsedEmailSet.size() > 1;
+            if (isDuplicatedNickname) {
                 answer.addAll(duplicatedUsedEmailSet);
             }
         }
-        return new ArrayList<>(answer);
+    }
+
+    private static void findEmailListWithDuplicatedNicknames(List<List<String>> forms, Map<String, Set<String>> consecutiveSubStringMap) {
+        for (List<String> form : forms) {
+            String email = form.get(0);
+            String nickname = form.get(1);
+            saveConsecutiveSubString(consecutiveSubStringMap, email, nickname);
+        }
+    }
+
+    private static void saveConsecutiveSubString(Map<String, Set<String>> consecutiveSubStringMap, String email, String nickname) {
+        for (int i = 0; i < nickname.length() - 1; i++) {
+            String twoLettersSubString = nickname.substring(i, i + 2);
+            if (consecutiveSubStringMap.containsKey(twoLettersSubString)) {
+                consecutiveSubStringMap.get(twoLettersSubString).add(email);
+                continue;
+            }
+            consecutiveSubStringMap.put(twoLettersSubString, new HashSet<String>(Collections.singleton(email)));
+        }
     }
 }
