@@ -9,4 +9,8 @@ public class Problem3 {
         }
         return answer;
     }
+
+    public static boolean isThree(Character element) {
+        return element == '3';
+    }
 }
