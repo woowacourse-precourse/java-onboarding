@@ -13,30 +13,41 @@ import java.util.List;
  */
 
 class Problem1 {
-    static int calculator (int val) {
+    private static int calculator(int val) {
         int divTotal = 0;
         int mulTotal = 1;
 
         while (val != 0) {
-          divTotal += val % 10;
-          mulTotal *= val % 10;
-          val /= 10;
+            divTotal += val % 10;
+            mulTotal *= val % 10;
+            val /= 10;
         }
         return Math.max(divTotal, mulTotal);
+    }
+
+    private static int exception(List<Integer> pobi, List<Integer> crong) {
+        if (pobi.get(0) == 1 || pobi.get(1) == 400
+                || crong.get(0) == 1 || crong.get(1) == 400) {
+            return -1;
+        }
+        //책을 살펴보니 왼쪽 페이지는 홀수, 오른쪽 페이지는 짝수 번호.
+        else if (pobi.get(0) % 2 == 0 || pobi.get(1) % 2 != 0
+                || crong.get(0) % 2 == 0 || crong.get(1) % 2 != 0) {
+            return -1;
+        }
+        //왼쪽 / 오른쪽 책 페이지가 1만큼 차이가 나야함.
+        else if (pobi.get(1) - pobi.get(0) != 1
+                || crong.get(1) - crong.get(0) != 1) {
+            return -1;
+        }
+        return 0;
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         //시작 면이나 마지막 면이 나오도록 책을 펼치지 않는다.
-        if (pobi.get(0) == 1 || pobi.get(1) == 400 || crong.get(0) == 1 || crong.get(1) == 400)
-            return -1;
-        //책을 살펴보니 왼쪽 페이지는 홀수, 오른쪽 페이지는 짝수 번호.
-        else if (pobi.get(0) % 2 == 0 || pobi.get(1) % 2 != 0 || crong.get(0) % 2 == 0 || crong.get(1) % 2 != 0)
-            return -1;
-        //왼쪽 / 오른쪽 책 페이지가 1만큼 차이가 나야함.
-        else if (pobi.get(1) - pobi.get(0) != 1 || crong.get(1) - crong.get(0) != 1)
-            return -1;
-        else {
+        int exception = exception(pobi, crong);
+        if (exception == 0) {
             int leftResultPobi = calculator(pobi.get(0));
             int rightResultPobi = calculator(pobi.get(1));
 
@@ -52,6 +63,6 @@ class Problem1 {
                 return 2;
             else
                 return 0;
-        }
+        } return exception;
     }
 }
