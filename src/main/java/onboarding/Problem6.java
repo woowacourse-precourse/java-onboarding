@@ -7,6 +7,7 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> nameList = new ArrayList<>();
         List<String> sameList = new ArrayList<>();
+        List<String> isOverlap = new ArrayList<>();
         List<String> result = new ArrayList<>();
 
         String temp="";
@@ -34,6 +35,21 @@ public class Problem6 {
                 if(sameList.get(i).equals(nameList.get(j))){
                     sameList.remove(i);
                 }
+            }
+        }
+
+        // add the name if there is duplication about samelist value
+        for(int i = 0; i < sameList.size(); i++){
+            cnt=0;
+            for(int j = 0; j < nameList.size(); j++){
+                if(nameList.get(j).contains(sameList.get(i))){
+                    cnt++;
+                    isOverlap.add(nameList.get(j));
+                }
+            }
+            // cnt==1 means there is no duplication
+            if(cnt==1){
+                isOverlap.remove(isOverlap.size()-1);
             }
         }
 
