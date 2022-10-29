@@ -2,8 +2,10 @@ package onboarding;
 
 import net.bytebuddy.dynamic.scaffold.MethodGraph;
 
-import java.util.*;
-
+import java.util.List;
+import java.util.LinkedList;
+import java.util.HashSet;
+import java.util.Collections;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
