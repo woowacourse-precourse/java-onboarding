@@ -38,6 +38,8 @@ class Problem1 {
     }
 
     public static int getLargerValue(int page) {
+        if (validatePageRange(page) == false) return -1;
+
         String[] splitNums = String.valueOf(page).split("");
 
         int acc = 0;
@@ -58,4 +60,13 @@ class Problem1 {
 
         return true;
     }
+
+    private static Boolean validatePageRange(int page) {
+        if ((page < 1 || page > 400)) {
+            return false;
+        }
+
+        return true;
+    }
+
 }
