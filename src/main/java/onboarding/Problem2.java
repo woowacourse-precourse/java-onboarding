@@ -5,35 +5,42 @@ public class Problem2 {
 
         StringBuilder cryptogramToBuilder;
         int cryptogramLength;
-        Integer[] checkString;
         static int checkNum;
         boolean flag;
 
         RFCryptogram(String cryptogram) {
             cryptogramToBuilder = new StringBuilder(cryptogram);
-            cryptogramLength = cryptogramToBuilder.length();
             checkNum = 1;
             flag = false;
         }
 
-        private void makingCheckList () {
-            checkString = new Integer[cryptogramLength];
+        private void calculatorLength() {
+            cryptogramLength = cryptogramToBuilder.length();
+        }
+
+        private Integer[] makingCheckList () {
+            Integer[] checkString = new Integer[cryptogramLength];
             for (int i = 0; i < cryptogramLength; i++) {
                 checkString[i] = 0;
             }
+
+            return checkString;
         }
 
-        private void findDupString() {
+        private boolean findDupString(Integer[] checkString) {
             for (int i = cryptogramLength - 1; i > 0; i--) {
                 if (cryptogramToBuilder.charAt(i) == cryptogramToBuilder.charAt(i - 1)) {
                     checkString[i] = checkNum;
                     checkString[i - 1] = checkNum;
                     flag = true;
                 }
-            }
+            } if (flag) {
+                flag = false;
+                return true;
+            } return false;
         }
 
-        private void deleteString() {
+        private void deleteString(Integer[] checkString) {
             for (int i = cryptogramLength - 1; i>= 0; i--) {
                 isDuplicate(checkString[i], i);
             }
@@ -51,11 +58,13 @@ public class Problem2 {
         RFCryptogram rfCryptogram = new RFCryptogram(cryptogram);
 
         do {
-            rfCryptogram.makingCheckList();
-            rfCryptogram.findDupString();
-            rfCryptogram.deleteString();
-
-        } while (rfCryptogram.flag);
+            rfCryptogram.calculatorLength();
+            Integer[] checkList = rfCryptogram.makingCheckList();
+            if (!rfCryptogram.findDupString(checkList)) {
+                break;
+            }
+            rfCryptogram.deleteString(checkList);
+        } while(true);
 
         return rfCryptogram.cryptogramToBuilder.toString();
     }
