@@ -17,6 +17,8 @@ public class Problem2 {
             if (!isDuplicatedWord(deque, ele)) {
                 insertWord(deque, ele);
             }
+            else
+                deleteDuplicatedWord(deque);
         }
 
         return answer;
@@ -32,5 +34,9 @@ public class Problem2 {
 
     public static boolean isDuplicatedWord(Deque<Character> deque, Character word) {
         return deque.peekLast() == word;
+    }
+
+    public static void deleteDuplicatedWord(Deque<Character> deque) {
+        deque.pollLast();
     }
 }
