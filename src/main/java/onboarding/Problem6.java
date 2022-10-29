@@ -2,22 +2,19 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        Set<String> DuplicateNameList = new HashSet<>();
         List<String> answer = new ArrayList<>();
 
         List<String> userNameList = createUserNameList(forms);
         String combinedNames = combineName(userNameList);
-        for (Map.Entry<String, Integer> entry : userTwoLetterList.entrySet()) {
-            makeDuplicateNameList(DuplicateNameList, entry);
-        }
+        List<String> twoLetterNames = createTwoLetterNameList(combinedNames);
+
+
         for (List<String> form : forms) {
             makeWarningList(answer, DuplicateNameList, form);
         }
@@ -41,11 +38,16 @@ public class Problem6 {
         return joinName.toString();
     }
 
-    public static void makeDuplicateNameList(Set<String> duplicateList, Map.Entry<String, Integer> entry) {
-        if (entry.getValue() > 1) {
-            duplicateList.add(entry.getKey());
+    public static List<String> createTwoLetterNameList(String name) {
+        List<String> nameList = new ArrayList<>();
+        String[] str = name.split("");
+        for (int i = 0; i < str.length - 2; i++) {
+            nameList.add(str[i] + str[i+1]);
         }
+        return nameList.stream().filter(i -> !i.contains(",")).collect(Collectors.toList());
     }
+
+
     public static void makeWarningList(List<String> warningList, Set<String> duplicateList, List<String> form) {
         for (String s : duplicateList) {
             if (form.get(1).contains(s)) {
