@@ -5,66 +5,67 @@ import java.util.List;
 
 public class Problem5 {
 
+    private static int money;
     private static List<Integer> answer;
 
     public static List<Integer> solution(int money) {
+        Problem5.money = money;
         answer = new ArrayList<>();
 
-        money = countFiftyThousand(money);
-        money = countTenThousand(money);
-        money = countFiveThousand(money);
-        money = countThousand(money);
-        money = countFiveHundred(money);
-        money = countHundred(money);
-        money = countFifty(money);
-        money = countTen(money);
-        countOne(money);
+        countFiftyThousand();
+        countTenThousand();
+        countFiveThousand();
+        countThousand();
+        countFiveHundred();
+        countHundred();
+        countFifty();
+        countTen();
+        countOne();
 
         return answer;
     }
 
-    private static int countFiftyThousand(int money) {
+    private static void countFiftyThousand() {
         answer.add(money / 50000);
-        return money % 50_000;
+        money %= 50_000;
     }
 
-    private static int countTenThousand(int money) {
+    private static void countTenThousand() {
         answer.add(money / 10000);
-        return money % 10_000;
+        money %= 10_000;
     }
 
-    private static int countFiveThousand(int money) {
+    private static void countFiveThousand() {
         answer.add(money / 5000);
-        return money % 5_000;
+        money %= 5_000;
     }
 
-    private static int countThousand(int money) {
+    private static void countThousand() {
         answer.add(money / 1000);
-        return money % 1_000;
+        money %= 1_000;
     }
 
-    private static int countFiveHundred(int money) {
+    private static void countFiveHundred() {
         answer.add(money / 500);
-        return money % 500;
+        money %= 500;
     }
 
-    private static int countHundred(int money) {
+    private static void countHundred() {
         answer.add(money / 100);
-        return money % 100;
+        money %= 100;
     }
 
-    private static int countFifty(int money) {
+    private static void countFifty() {
         answer.add(money / 50);
-        return money % 50;
+        money %= 50;
     }
 
-    private static int countTen(int money) {
+    private static void countTen() {
         answer.add(money / 10);
-        return money % 10;
+        money %= 10;
     }
 
-    private static int countOne(int money) {
+    private static void countOne() {
         answer.add(money);
-        return 0;
     }
 }
