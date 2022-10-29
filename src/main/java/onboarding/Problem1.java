@@ -17,6 +17,14 @@ import java.util.List;
 *   3. 연속된 페이지 인지 검사
 */
 
+class Page {
+    private int num;
+
+    public Page(int num) {
+        this.num = num;
+    }
+}
+
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
