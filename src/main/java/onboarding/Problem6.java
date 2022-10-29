@@ -12,7 +12,7 @@ public class Problem6 {
     public static final String REGEX = "";
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = new ArrayList<String>(findAnswer(forms));
+        List<String> answer = new ArrayList<>(findAnswer(forms));
 
         return answer;
     }
@@ -20,7 +20,7 @@ public class Problem6 {
     public static Set<String> findAnswer(List<List<String>> forms) {
         Set<String> answer = new HashSet<>();
 
-        for (int targetIndex = START_INDEX; targetIndex < forms.size(); targetIndex++) {
+        for (int targetIndex = START_INDEX; targetIndex < forms.size() - 1; targetIndex++) {
             String[] targetNicknameArr = forms.get(targetIndex).get(NAME_INDEX).split(REGEX);
 
             for (int nicknameIndex = targetIndex + 1; nicknameIndex < forms.size(); nicknameIndex++) {
