@@ -22,4 +22,19 @@ public class Problem2 {
             index++;
         }
     }
+
+    /*
+     * 주어진 스택으로 문자열을 만들어 반대로 반환
+     *
+     * @return String
+     * */
+    private static String makeAnswer(Stack<Character> stack) {
+        StringBuilder answer = new StringBuilder();
+
+        while(!stack.isEmpty()) {
+            answer.append(stack.pop());
+        }
+
+        return answer.reverse().toString();
+    }
 }
