@@ -28,6 +28,12 @@ class Problem1 {
             return EXCEPTION;
         }
 
+        if(pobi.get(1) - pobi.get(0) != 1){
+            return EXCEPTION;
+        }
+        if(crong.get(1) - crong.get(0) != 1){
+            return EXCEPTION;
+        }
         return answer;
     }
 }
