@@ -1,7 +1,9 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 // [이메일, 닉네임]으로 이루어진 리스트를 받음
 // 이메일은 이메일 형식에 맞추어, 11자 이상 20자 미만으로 한다.
@@ -16,6 +18,7 @@ import java.util.List;
 // 1-1. 스트링을 돌면서 각 두글자가 있는지 전체 순회, 있다면 answer 리스트에 해당 form과 현재 form 추가
 // 1-2. 이미 지나간 form은 검사하지 않음
 // 2. answer 리스트에서 중복을 제거
+// 3. answer 리스트를 오름차순 정렬
 
 
 
@@ -34,6 +37,9 @@ public class Problem6 {
                 }
             }
         }
+
+        Set<String> hashSetForDeduplication = new HashSet<String>(answer);
+        answer =new ArrayList<String>(hashSetForDeduplication);
 
         System.out.println(answer);
         return answer;
