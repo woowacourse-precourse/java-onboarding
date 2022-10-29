@@ -33,9 +33,18 @@ public class Main {
 //        map.put("제이", cnt + 1);
 //        System.out.println("map.get(\"\") = " + map.get("제이"));
 
-        if(Problem7.isNotId("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")){
-            System.out.println("되야됨");
-        };
 
+//        HashMap<String, Integer> hashMap = new HashMap<>();
+//        hashMap.keySet().stream().forEach(
+//                key->{
+//                    if(hashMap.containsKey(key)){
+//                        Integer cnt = hashMap.get(key);
+//                        hashMap.put(key,cnt+10);
+//                    }else{
+//                        hashMap.put(key, 10);
+//                    }
+//                }
+//        );
+//        System.out.println("a = " + a);
     }
 }

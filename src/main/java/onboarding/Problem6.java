@@ -18,13 +18,13 @@ public class Problem6 {
 
         List<String> answer = List.of("answer");
 
-        ArrayList<String> sameNickNameEmail = new ArrayList<>();
-
-        Map<String, Integer> nickNameDivideByTwoLetter = new HashMap<>();
-
         int crewSize = getCrewSize(forms);
         checkException(forms, crewSize);
+
+        Map<String, Integer> nickNameDivideByTwoLetter = new HashMap<>();
         makeNickNameDivideByTwoLetter(forms, nickNameDivideByTwoLetter);
+
+        ArrayList<String> sameNickNameEmail = new ArrayList<>();
         makeSameNickNameEmail(forms, sameNickNameEmail, nickNameDivideByTwoLetter);
         answer=sameNickNameEmail.stream().sorted().distinct().collect(Collectors.toList());
 
@@ -56,14 +56,13 @@ public class Problem6 {
             for (int i = 0; i < nickName.length()-1; i++) {
                 String nickNameDivide = nickName.substring(i,i+2);
 
-                if(!isContainNickName(nickNameDivideByTwoLetter,nickNameDivide)){
-                    nickNameDivideByTwoLetter.put(nickNameDivide, 1);
-                }
                 if(isContainNickName(nickNameDivideByTwoLetter, nickNameDivide)){
                     int nickNameCount = nickNameDivideByTwoLetter.get(nickNameDivide);
                     nickNameDivideByTwoLetter.put(nickNameDivide, nickNameCount + 1);
                 }
-
+                if(!isContainNickName(nickNameDivideByTwoLetter,nickNameDivide)){
+                    nickNameDivideByTwoLetter.put(nickNameDivide, 1);
+                }
             }
         }
     }

@@ -16,21 +16,16 @@ public class Problem7 {
         int friendsSize = friends.size();
         int visitorsSize = visitors.size();
 
-
         checkException(friends, userLength, friendsSize, visitorsSize);
 
-        //2. 유저 친구 관계 표현하기
         Map<String, Integer> userFriendInfo = new HashMap<>();
         makeUserFriendInfo(user, friends, userFriendInfo);
 
         Map<String, Integer> recommendScore = new HashMap<>();
-        //3. 유저와 함께 아는 친구 확인하고 점수 매기기
         makeRecommendScore(user, friends, userFriendInfo, recommendScore);
 
-        //4. 유저의 타임라인에 방문한 횟수를 토대로 점수 매기기
         makeRecommendScoreByVisitor(visitors, userFriendInfo, recommendScore);
 
-        //5. 추천 점수 목록을 List 로 변환
         ArrayList<ScoreInfo> recommendScoreList = new ArrayList<>();
         makeRecommendScoreList(recommendScore, recommendScoreList);
 
@@ -40,24 +35,28 @@ public class Problem7 {
         return answer;
     }
 
+    //5. 추천 점수 목록을 List 로 변환
     private static void makeRecommendScoreList(Map<String, Integer> recommendScore, ArrayList<ScoreInfo> recommendScoreList) {
         for (Map.Entry<String, Integer> recommendScoreMap : recommendScore.entrySet()) {
             recommendScoreList.add(new ScoreInfo(recommendScoreMap.getKey(),recommendScoreMap.getValue()));
         }
     }
 
+    //4. 유저의 타임라인에 방문한 횟수를 토대로 점수 매기기
     private static void makeRecommendScoreByVisitor(List<String> visitors, Map<String, Integer> userFriendInfo, Map<String, Integer> recommendScore) {
-        for (String visitor : visitors) {
-            if(!isMapContain(userFriendInfo, visitor)) { // 유저의 친구가 아니여야 함
-                if (isMapContain(recommendScore, visitor)) { // 추천점수목록에 존재할 때와 존재하지 않을 때 구분해서 점수 등록
-                    recommendScore.put(visitor, recommendScore.get(visitor) + 1);
-                } else {
-                    recommendScore.put(visitor, 1);
-                }
-            }
-        }
+
+        visitors.stream()
+                .filter(visitor->!isMapContain(userFriendInfo,visitor))  // 유저의 친구가 아니여야 함
+                .forEach(visitor->{
+                    if(isMapContain(recommendScore,visitor)){  // 추천점수목록에 없으면 처음 값을 주입, 있으면 원래 값 + 1
+                        recommendScore.put(visitor,recommendScore.get(visitor)+1);
+                    }else{
+                        recommendScore.put(visitor, 1);
+                    }
+                });
     }
 
+    //3. 유저와 함께 아는 친구 확인하고 점수 매기기
     private static void makeRecommendScore(String user, List<List<String>> friends, Map<String, Integer> userFriendInfo, Map<String, Integer> recommendScore) {
         for (List<String> friend : friends) {
             String friendA = friend.get(0);
@@ -83,6 +82,7 @@ public class Problem7 {
         }
     }
 
+    //2. 유저 친구 관계 표현하기
     private static void makeUserFriendInfo(String user, List<List<String>> friends, Map<String, Integer> userFriendInfo) {
         for (List<String> friend : friends) {
             String friendA = friend.get(0);
