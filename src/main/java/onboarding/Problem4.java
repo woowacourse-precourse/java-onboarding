@@ -5,7 +5,7 @@ public class Problem4 {
         String answer = "";
         return answer;
     }
-    private char changeLetter(char letter) {
+    private static char changeLetter(char letter) {
         if (letter >= 'A' && letter <= 'Z') {
             return changeUpperCase(letter);
         }
@@ -14,11 +14,11 @@ public class Problem4 {
         }
         return letter;
     }
-    private char changeUpperCase(char letter) {
+    private static char changeUpperCase(char letter) {
         return (char)('A' + 'Z' - letter);
     }
 
-    private char changeLowerCase(char letter) {
+    private static char changeLowerCase(char letter) {
         return (char)('a' + 'z' - letter);
     }
 }
