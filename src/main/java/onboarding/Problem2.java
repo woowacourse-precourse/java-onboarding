@@ -11,10 +11,12 @@ public class Problem2 {
 
     private static String deleteDupChar(String string) {
         Stack<Character> stack = new Stack<Character>();
+        Character temp = ' ';
         stack.push(string.charAt(0));
-        for(int i = 1; i < string.length(); i++) {
-            if(stack.peek().equals(string.charAt(i))) {
-                stack.pop();
+        for (int i = 1; i < string.length(); i++) {
+            if (temp.equals(string.charAt(i))) continue;
+            if (stack.peek().equals(string.charAt(i))) {
+                temp = stack.pop();
                 continue;
             }
             stack.push(string.charAt(i));
@@ -24,8 +26,3 @@ public class Problem2 {
                 .collect(Collectors.joining(""));
     }
 }
-
-/*
- TODO
- 3개 이상 중복될 경우? ex) browooon 시 browon 출력 되는 오류
-*/
