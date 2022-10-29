@@ -14,7 +14,7 @@ public class Problem7 {
                 List.of("shakevan", "mrko")
         );
         List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-        solution(user, friends, visitors);
+        System.out.println(solution(user, friends, visitors));
     }
 
     private static final List<String> myFriends = new ArrayList<>();
@@ -22,12 +22,13 @@ public class Problem7 {
     private static final Map<String, Integer> result = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        init(friends);
-        System.out.println("myFriends : " + friendsListVerifier(user, friends));
-        return null;
+        init(friends, visitors);
+        friendsVerifier(user, friends);
+        visitorsVerifier(visitors);
+        return sortMapAndMapToList();
     }
 
-    private static void init(List<List<String>> friends) {
+    private static void init(List<List<String>> friends, List<String> visitors) {
         ArrayList<String> userIds = new ArrayList<>();
         for (List<String> users : friends) {
             users.forEach(user -> {
@@ -39,22 +40,35 @@ public class Problem7 {
             });
         }
 
+        for (String visitor : visitors) {
+            boolean result = userIds.stream()
+                    .anyMatch(userId -> Objects.equals(visitor, userId));
+            if (!result) {
+                userIds.add(visitor);
+            }
+        }
+
         for (String userId : userIds) {
             result.put(userId, 0);
         }
     }
 
-    private static List<String> friendsListVerifier(String myId, List<List<String>> friends) {
+    private static List<String> friendsVerifier(String myId, List<List<String>> friends) {
         saveMyFriends(myId, friends);
         for (List<String> users : friends) {
             checkFriendsOfOtherUser(users);
         }
-        sortList();
         removeMyId(myId);
         calculationAFriendsWeNow();
-        System.out.println("result = " + result);
-        System.out.println("aFriendWeKnow = " + aFriendWeKnow);
         return myFriends;
+    }
+
+    private static void visitorsVerifier(List<String> visitors) {
+        for (String user : visitors) {
+            if (!isMyFriend(user)) {
+                result.put(user, result.get(user) + 1);
+            }
+        }
     }
 
     private static void saveMyFriends(String myId, List<List<String>> friends) {
@@ -114,7 +128,17 @@ public class Problem7 {
         }
     }
 
-    private static void sortList() {
-        Collections.sort(aFriendWeKnow);
+    private static List<String> sortMapAndMapToList() {
+        List<String> userRanking = new ArrayList<>();
+
+        List<String> listKeySet = new ArrayList<>(result.keySet());
+        listKeySet.sort((value1, value2) -> (result.get(value2).compareTo(result.get(value1))));
+        for (String key : listKeySet) {
+            if (result.get(key) != 0) {
+                userRanking.add(key);
+            }
+        }
+
+        return userRanking;
     }
 }
