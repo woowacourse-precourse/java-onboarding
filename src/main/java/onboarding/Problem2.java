@@ -10,11 +10,14 @@ public class Problem2 {
 
     private static String checkContinuous(String cryptogram) {
         Stack<Character> stack = new Stack<>();
-        char last;
+        char last = ' ';
         for (int i = 0; i < cryptogram.length(); i++) {
             char c = cryptogram.charAt(i);
-            if (stack.peek() == c) {
+            if (!stack.isEmpty() && stack.peek() == c) {
                 last = stack.pop();
+                continue;
+            }
+            if (last == c) {
                 continue;
             }
             stack.push(c);
