@@ -12,6 +12,7 @@ public class Problem7 {
         scores = new HashMap<>();
 
         makeFriendMap(friends);
+        calcSameFriendScore(user);
 
         return answer;
     }
@@ -27,5 +28,19 @@ public class Problem7 {
             friendMap.putIfAbsent(n2, new HashSet<>());
             friendMap.get(n2).add(n1);
         }
+    }
+
+    private static void calcSameFriendScore(String user) {
+        for(String name : friendMap.keySet()) {
+            // skip if me or already friend
+            if(name.equals(user) || friendMap.get(user).contains(name))
+                continue;
+
+            scores.put(name, countSameFriends(user, name) * 10);
+        }
+    }
+
+    private static int countSameFriends(String user, String friend) {
+        return 0;
     }
 }
