@@ -34,6 +34,14 @@ class Problem1 {
         }
         return newList;
     }
+    public static int isValid(List<Integer> A,List<Integer> B, int a, int b) {
+        if (A.get(0)+1 == A.get(1) & B.get(0)+1 == B.get(1)) {
+            if(a < b){return 2;}
+            else if (a > b){return 1;}
+            else { return 0; }
+        }
+        else return -1;
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
@@ -43,6 +51,7 @@ class Problem1 {
         int crong_score_sum = getSum(crong);
         int crong_score_mul = getMul(crong);
         int crong_score = max(crong_score_mul, crong_score_sum);
+        answer = isValid(pobi, crong, pobi_score, crong_score);
         return answer;
     }
 }
