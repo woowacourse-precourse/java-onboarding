@@ -8,14 +8,26 @@ public class Problem2 {
         try {
             exception(cryptogram);
             answer = deleteConsecutiveChar(cryptogram);
-        }catch (Exception e)
+        }catch (IsUpperCaseException e)
         {
             //문제에 예외를 어떻게 처리하라는 말이 없음
             //log.error OR log.warn
-            System.out.println(e.toString());
+            //System.out.println(e.toString());
+        }catch (RangeException e)
+        {
+            //문제에 예외를 어떻게 처리하라는 말이 없음
+            //log.error OR log.warn
+            //System.out.println(e.toString());
         }
         return answer;
     }
+
+    /**
+     * 문자열에서 연속된 값을 찾아 제거하는 메소드
+     *
+     * @param cryptogram 문자열
+     * @return 제거된 문자열
+     */
     public static String deleteConsecutiveChar(String cryptogram)
     {
         int i=1;
@@ -31,10 +43,17 @@ public class Problem2 {
                 continue;
             }
             i++;
-
         }
         return cryptogram;
     }
+
+    /**
+     * 문제의 예외인 대문자입력, 문자열 길이 범위 1~40000초과시
+     *
+     * @param cryptogram 문자열
+     * @throws IsUpperCaseException 대문자입력시 예외발생
+     * @throws RangeException 문자열 길이 범위 1~40000이 아닌경우 예외발생
+     */
     public static void exception(String cryptogram) throws IsUpperCaseException, RangeException
     {
         char charArray[] = cryptogram.toCharArray();
@@ -42,6 +61,6 @@ public class Problem2 {
         {
            if (Character.isUpperCase(isUpperCaseTestChar)) throw new IsUpperCaseException("입력값에 대문자가 있습니다");
         }
-        if (cryptogram.length()<1||cryptogram.length()>40000) throw new RangeException("입력 범위 1~40000에 일치하지 않습니다");
+        if (cryptogram.length()<1||cryptogram.length()>40000) throw new RangeException("문자열 길이 범위 1~40000에 일치하지 않습니다");
     }
 }

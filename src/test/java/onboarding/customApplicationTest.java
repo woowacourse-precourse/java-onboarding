@@ -70,7 +70,7 @@ public class customApplicationTest
         }
 
         @Test
-        void case2() {
+        void rangeCaseException() {
             String cryptogram = "";
             String result = "answer";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);

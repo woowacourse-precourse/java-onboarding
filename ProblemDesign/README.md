@@ -25,7 +25,6 @@
 3. 위에 구한 리스튿을을 합쳐서 max를 찾는 기능(max)
 4. pobi 와 crong중 누가 큰 값을 가지고 있는지 비교하고 문제의 요구사항대로 출력해주는 기능(compare)
 5. 그외 -1인 상황을 예외해주는 예외처리 기능(exception)
----
 ##1. sum
 ###1.1 sum method
 ~~~java
@@ -55,7 +54,6 @@ void sum()
     assertThat(Problem1.sum(human)).isEqualTo(results);
 }
 ~~~
----
 ##2. mul
 ###2.1 mul method
 ~~~java
@@ -84,7 +82,6 @@ void mul()
     assertThat(Problem1.mul(human)).isEqualTo(results);
 }
 ~~~
----
 ##3. max
 ###3.1 max method
 ~~~java
@@ -112,7 +109,6 @@ void max()
     assertThat(Problem1.max(Problem1.sum(human),Problem1.mul(human))).isEqualTo(result);
 }
 ~~~
----
 ##4. compare
 ###4.1 compare method
 ~~~java
@@ -156,7 +152,6 @@ void compare3()
     assertThat(Problem1.compare(pobi,crong)).isEqualTo(result);
 }
 ~~~
----
 ##5. Exception
 ~~~java
 /**
@@ -197,8 +192,8 @@ public class InputException extends Exception {
 /**
  * 페이지가 1~400이 아닌경우
  */
-public class PageException extends Exception {
-    public PageException(String message) {
+public class RangeException extends Exception {
+    public RangeException(String message) {
         super(message);
     }
 }
@@ -212,7 +207,6 @@ public class PageSortException extends Exception{
     }
 }
 ~~~
----
 ##6. 최종 솔루션
 ~~~java
 public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -240,4 +234,88 @@ public static int solution(List<Integer> pobi, List<Integer> crong) {
 ##예상 필요 기능 정의
 1. 문자열에서 연속된 값이 있는지 확인하는 메소드
 2. 예외처리하기
+##2. deleteConsecutiveChar
+###2.1 deleteConsecutiveChar method
+~~~java
+/**
+ * 문자열에서 연속된 값을 찾아 제거하는 메소드
+ *
+ * @param cryptogram 문자열
+ * @return 제거된 문자열
+ */
+public static String deleteConsecutiveChar(String cryptogram)
+{
+    int i=1;
+    while (true)
+    {
+        if(i==cryptogram.length()||cryptogram.length()==0)
+        {
+            break;
+        }
+        if(cryptogram.charAt(i)==cryptogram.charAt(i-1)) {
+            cryptogram = cryptogram.substring(0, i - 1) + cryptogram.substring(i+1);
+            i = 1;
+            continue;
+        }
+        i++;
+    }
+    return cryptogram;
+}
+~~~
+###2.2 deleteConsecutiveChar Test -> main test로 대체
+
+##3. Exception
+###3.1 정의한 Exception
+~~~java
+public class RangeException extends Exception {
+    public RangeException(String message) {
+        super(message);
+    }
+}
+
+public class IsUpperCaseException extends Exception{
+    public IsUpperCaseException(String message) {
+        super(message);
+    }
+}
+~~~
+###3.2 Exception Test
+~~~java
+@Nested
+class Problem2Test {
+    @Test
+    void isUpperCaseException() {
+        String cryptogram = "BBB";
+        String result = "answer";
+        assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+    }
+
+    @Test
+    void rangeCaseException() {
+        String cryptogram = "";
+        String result = "answer";
+        assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+    }
+}
+~~~
+##4. 최종솔루션
+~~~java
+public static String solution(String cryptogram) {
+    String answer = "answer";
+    try {
+        exception(cryptogram);
+        answer = deleteConsecutiveChar(cryptogram);
+    }catch (IsUpperCaseException e)
+    {
+        //문제에 예외를 어떻게 처리하라는 말이 없음
+        //log.error OR log.warn
+        //System.out.println(e.toString());
+    }catch (RangeException e){
+        //문제에 예외를 어떻게 처리하라는 말이 없음
+        //log.error OR log.warn
+        //System.out.println(e.toString());
+    }
+    return answer;
+}
+~~~
 ---
