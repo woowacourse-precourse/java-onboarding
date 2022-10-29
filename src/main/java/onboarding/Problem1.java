@@ -5,7 +5,7 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if(checkValidValue(pobi) == false || checkValidValue(crong) == false) {
+        if(!isValidPage(pobi)|| !isValidPage(crong)) {
             return -1;
         }
         int LIST_SIZE = 2;
@@ -38,8 +38,8 @@ class Problem1 {
     // 각 자리수의 합을 구한다.
     public static int getAdditionTotal(List<Integer> pageDigitList) {
         int answer = 0;
-        for (int i = 0; i < pageDigitList.size(); i++) {
-            answer += pageDigitList.get(i);
+        for (Integer integer : pageDigitList) {
+            answer += integer;
         }
         return answer;
     }
@@ -47,9 +47,9 @@ class Problem1 {
     // 각 자리수의 곱을 구한다.
     public static int getMultiplicationTotal(List<Integer> pageDigitList) {
         int answer = 1;
-        for (int i = 0; i < pageDigitList.size(); i++) {
-            answer *= pageDigitList.get(i);
-            if(answer == 0) {
+        for (Integer integer : pageDigitList) {
+            answer *= integer;
+            if (answer == 0) {
                 return 0;
             }
         }
@@ -57,7 +57,7 @@ class Problem1 {
     }
 
     // 예외 처리 체크
-    public static boolean checkValidValue(List<Integer> user) {
+    public static boolean isValidPage(List<Integer> user) {
         int leftPage = user.get(0);
         int rightPage = user.get(1);
 
@@ -67,9 +67,6 @@ class Problem1 {
         if (leftPage % 2 == 0 || rightPage % 2 == 1) {
             return false;
         }
-        if (leftPage == 1 || rightPage == 400) {
-            return false;
-        }
-        return true;
+        return leftPage != 1 && rightPage != 400;
     }
 }
