@@ -1,4 +1,53 @@
 ## 기능 목록
+### 오류 발생
+기존 작성한 방식은 문자가 홀수번 반복될 때 뒤에 1개를 삭제 못하는 오류가 있다.\
+이에 따라 기능 목록을 다시 작성한다.
+### 구현에 사용한 규칙
+문자열을 검사해 중복있는 부분의 인덱스값을 [시작, 끝] 형태의 리스트로 찾고, 그 부분을 삭제한다.\
+위 검사, 삭제를 반복하며 삭제할 값이 없으면 종료 후 반환
+### 구현 방법
+1. 2개의 포인터(앞,뒤)가 각각 0,1 부터 시작하며 아래 규칙에 따라 이동 및 삭제 범위 리스트를 만드는 메서드 checkLetter 생성.
+   1. 포인터가 가르키는 문자가 다를 때
+      1. 포인터 뒤가 문자열 마지막 : 리스트 반환.
+      2. 두 포인터 차이가 1 : 둘 다 1 증가.
+      3. 두 포인터 차이가 1 이상 : 뒤를 리스트에 저장, 뒤 1증가, 앞을 (뒤-1)로 이동
+   2. 포인터가 가르키는 문자가 같을 때
+      1. 포인터 뒤가 문자열 마지막 : 뒤를 리스트에 저장, 리스트 반환
+      2. 두 포인터 차이가 1 : 앞을 리스트에 저장, 뒤 1증가
+      3. 두 포인터 차이가 1 이상 : 뒤만 1 증가
+2. checkLetter가 반환한 리스트의 범위에 해당하는 문자 삭제 후 반환하는 메서드 removeLetter 생성
+3. 무한루프를 돌며 위 두 메서드 반복, checkLetter가 반환하는 문자열이 빈문자열이면 루프 종료하도록 solution 메서드 생성
+### 구현 메서드 상세
+#### List checkLetter
+1. <매개변수>\
+   (String) 체크할 문자열 cryptogram
+2. <변수>\
+   (int) 포인터 앞 front
+   (int) 포인터 뒤 back
+   (List) 삭제할 인덱스 저장할 리스트 remove_range
+3. <구현>\
+구현방법에 적힌 방식을 따라 리스트를 만들어 반환한다.
+#### String removeLetter
+1. <매개변수>\
+   (List) 삭제할 인덱스 범위가 있는 리스트 remove_range
+   (String) 삭제할 문자열 cryptogram
+2. <변수>\
+   (StringBuilder) delete메서드 사용을 위해 cryptogram을 담을 removed_cryptogram
+3. <구현>\
+    remove_range 를 돌며 removed_cryptogram을 범위 삭제한 후 반환한다
+#### String solution
+1. <매개변수>\
+   (입력값) (String) cryptogram
+2. <변수>\
+   (List) checkLetter가 반환할 리스트를 담을 remove_range\
+   (String) removeLetter가 반환할 문자열을 담을 removed_cryptogram
+3. <구현>\
+while(true) 문을 돌면서 checkLetter, removeLetter 메서드를 반복 호출한다.\
+remove_range 리스트가 빈 리스트가 되면 반복문 종료한다.
+4. <점검 필요 사항>
+   1. 무한루프를 사용하는데, 해당 방식 말고 다른 방식을 사용할 수 있을지 고민 필요하다.
+
+# 오류 발생한 구현 방식 (사용 X)
 ### 구현 방법
 1. 경우에 따라 문자를 제거하는 메서드 letterRemove 생성.
 2. 제거 완료한 문자 및 제거 여부를 반환하는 메서드 letterCheck 생성.
