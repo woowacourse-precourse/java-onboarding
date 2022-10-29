@@ -45,7 +45,7 @@ public class Problem7 {
         List<RecommendedFriend> recommendedFriendList = createRecommendedFriends(user, userFriendList, friends);
         recommendedFriendList = visitorScore(recommendedFriendList, visitors, userFriendList);
 
-        return null;
+        return findTop5ScoreUser(recommendedFriendList);
     }
 
     private static List<String> findFriendListByUser(String user, List<List<String>> friends) {
@@ -95,13 +95,12 @@ public class Problem7 {
         return new RecommendedFriend(name);
     }
 
-    private static List<String> findTop5ScoreUser(Map<String, Integer> recommendedFriendMap) {
-        List<Map.Entry<String, Integer>> collect = recommendedFriendMap.entrySet().stream()
-                .sorted(Map.Entry.comparingByValue())
-                .collect(Collectors.toList());
+    private static List<String> findTop5ScoreUser(List<RecommendedFriend> recommendedFriendList) {
+        Collections.sort(recommendedFriendList);
+
         List<String> result = new ArrayList<>();
-        for (Map.Entry<String, Integer> entry : collect) {
-            result.add(entry.getKey());
+        for (RecommendedFriend recommendedFriend : recommendedFriendList) {
+            result.add(recommendedFriend.getName());
             if (result.size() == 5) {
                 break;
             }
