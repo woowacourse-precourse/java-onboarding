@@ -32,13 +32,12 @@ public class Problem7 {
             if (isFriends(visitor, userFriends)) {
                 continue;
             }
-            People newPeople;
-            if (contacts.get(visitor) == null){
-                newPeople = new People(visitor);
-
-            } else {
-                newPeople = contacts.get(visitor);
-            }
+            People newPeople = findFriend(contacts.get(visitor), visitor);
+//            if (contacts.get(visitor) == null){
+//                newPeople = new People(visitor);
+//            } else {
+//                newPeople = contacts.get(visitor);
+//            }
             newPeople.plusPoint(VISITOR_POINT);
             contacts.put(visitor, newPeople);
         }
@@ -52,6 +51,13 @@ public class Problem7 {
             }
         }
         return answer;
+    }
+
+    private static People findFriend(People people, String name) {
+        if (people==null) {
+            return new People(name);
+        }
+        return people;
     }
 
     private static People makeFriendList(People people, String name1, String name2) {
