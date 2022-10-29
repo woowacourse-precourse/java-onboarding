@@ -32,6 +32,19 @@ public class Problem2 {
         return "0";
     }
 
+    public static String decode(String cryptogram){
+        String result = deduplication(cryptogram);
+        String temp = result;
+
+        while (!temp.equals("0")){
+            temp = deduplication(result);
+            if(!temp.equals("0")){
+                result = deduplication(result);
+            }
+        }
+        return result;
+    }
+
     public static String solution(String cryptogram) {
         String answer = "answer";
         return answer;
