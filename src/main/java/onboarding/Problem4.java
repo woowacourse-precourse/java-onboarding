@@ -7,12 +7,18 @@ public class Problem4 {
     }
 
     /**
-     * 단어를 청개구리 사전으로 변환
-     * @param word : 변환할 단어
-     * @return 변환된 단어
+     * 문장을 청개구리 사전으로 변환
+     * @param word : 변환할 문장
+     * @return 변환된 문장
      */
     private static String getChangedWord(String word){
-
+        // 결과 변수 초기화
+        String result = "";
+        // 각 글자마다 청개구리 사전으로 변환
+        for (int index = 0; index < word.length(); index ++){
+            result += getChangedChar(word.charAt(index));
+        }
+        return result;
     }
 
     /**
