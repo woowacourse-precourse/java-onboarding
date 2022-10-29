@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class Problem1Test {
     @DisplayName("규칙에 맞지않는 페이지 목록이 있으면 -1을 반환한다.")
     @Test
-    void name() {
+    void validate() {
         List<Integer> pobi = List.of(1, 2);
         List<Integer> cron = null;
 
