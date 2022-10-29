@@ -24,6 +24,8 @@ public class Problem5 {
         answer.add(money/50);
         money%=50;
         answer.add(money/10);
+        money%=10;
+        answer.add(money);
 
         return answer;
 
