@@ -32,6 +32,10 @@ public class Problem1 {
         int leftPage = pages.get(0);
         int rightPage = pages.get(1);
 
+        if (isOutOfBound(leftPage, rightPage)) {
+            return false;
+        }
+
         if (!isLeftPage(leftPage) || !isRightPage(rightPage)) {
             return false;
         }
@@ -41,6 +45,10 @@ public class Problem1 {
         }
 
         return !isStartPage(leftPage) && !isEndPage(rightPage);
+    }
+
+    private static boolean isOutOfBound(int leftPage, int rightPage) {
+        return rightPage <= START_PAGE_NO || leftPage >= END_PAGE_NO;
     }
 
     private static boolean isLeftPage(int leftPage) {
