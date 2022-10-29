@@ -10,7 +10,8 @@ public class Problem5 {
         answer= new ArrayList<Integer>();
 
         answer.add(money/50000);
-
+        money%=50000;
+        answer.add(money/10000);
         return answer;
     }
 }
