@@ -21,7 +21,7 @@ class Problem4Test {
 
         String str1 = "I love you";
         String str2 = "I am Invidam";
-        String str3 = ""
+        String str3 = "";
 
         //when
 
