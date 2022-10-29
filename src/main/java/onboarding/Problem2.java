@@ -12,6 +12,7 @@ public class Problem2 {
         for (char ele : cryptogram.toCharArray()) {
             if (!isDequeEmpty(deque)) {
                 insertWord(deque, ele);
+                continue;
             }
 
             if (!isDuplicatedWord(deque, ele)) {
