@@ -8,25 +8,15 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Problem6 {
-    public static void main(String[] args) {
-        List<List<String>> forms = List.of(
-            List.of("jm@email.com", "제이엠"),
-            List.of("jason@email.com", "제이슨"),
-            List.of("woniee@email.com", "워니"),
-            List.of("mj@email.com", "엠제이"),
-            List.of("nowm@email.com", "이제엠")
-        );
-        solution(forms);
-    }
     public static List<String> solution(List<List<String>> forms) {
         List<String> userNameList = createUserNameList(forms);
         String combinedNames = combineName(userNameList);
         List<String> twoLetterNames = createTwoLetterNameList(combinedNames);
         Set<String> DuplicateNameList = createDuplicateList(twoLetterNames);
-
+        List<String> answer = createWarningList(DuplicateNameList, forms);
+        Collections.sort(answer);
         return answer;
     }
-
     public static List<String> createUserNameList(List<List<String>> forms) {
         List<String> nameList = new ArrayList<>();
         for (List<String> form : forms) {
@@ -66,11 +56,23 @@ public class Problem6 {
         }
     }
 
-    public static void makeWarningList(List<String> warningList, Set<String> duplicateList, List<String> form) {
-        for (String s : duplicateList) {
-            if (form.get(1).contains(s)) {
-                warningList.add(form.get(0));
-            }
+    public static List<String> createWarningList(Set<String> nameSet, List<List<String>> forms) {
+        List<String> warningNames = new ArrayList<>();
+        for (List<String> form : forms) {
+            getWarningListByNameSet(nameSet, form, warningNames);
+        }
+        return warningNames;
+    }
+
+    public static void getWarningListByNameSet(Set<String> nameSet, List<String> userInfo, List<String> nameList) {
+        for (String s : nameSet) {
+            addWarningName(s, userInfo, nameList);
+        }
+    }
+
+    public static void addWarningName(String name, List<String> userInfo, List<String> nameList) {
+        if (userInfo.get(1).contains(name)) {
+            nameList.add(userInfo.get(0));
         }
     }
 }
