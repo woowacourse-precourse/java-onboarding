@@ -7,7 +7,7 @@ import java.util.Random;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-        if(pobi.get(0)+1==pobi.get(0)&&crong.get(0)+1== pobi.get(1)){
+        if((pobi.get(0)+1==pobi.get(1))&&(crong.get(0)+1== crong.get(1))){
         int pobimax=resultMax(pobi);
         int crongmax=resultMax(crong);
         if(pobimax>crongmax){
