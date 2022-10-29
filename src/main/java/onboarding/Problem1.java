@@ -19,7 +19,7 @@ class Problem1 {
         Integer frontPage = page.get(0);
         Integer backPage = page.get(1);
 
-        if (validation(frontPage, backPage)) {
+        if (validation(frontPage, backPage) || page.size() > 2) {
             return -1;
         }
 

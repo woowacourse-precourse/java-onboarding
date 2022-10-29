@@ -35,4 +35,11 @@ class Problem1Test {
         int errorScore3 = Problem1.findMaxScore(pobi4);
         assertThat(errorScore3).isEqualTo(-1);
     }
+
+    @Test
+    void excecption() {
+        List<Integer> pobi = List.of(97, 98, 99);
+        int result = Problem1.findMaxScore(pobi);
+        assertThat(result).isEqualTo(-1);
+    }
 }
