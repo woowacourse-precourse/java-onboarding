@@ -10,7 +10,7 @@ class Problem1 {
 
     private static int sumOfDigits(int v){
         int k = v, result = 0;
-        while( k > 10) {
+        while(k > 10) {
             result += (k%10);
             k = k/10;
         }
@@ -19,13 +19,19 @@ class Problem1 {
     }
 
     private static int productOfDigits(int v){
-        return  0;
+        int k = v, result = 1;
+        while(k > 10){
+            result *= (k%10);
+            k = k/10;
+        }
+        result *= k;
+        return  result;
     }
 
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-//        System.out.printf("%d", sumOfDigits(123));
+//        System.out.printf("%d", productOfDigits(1234));
         return answer;
     }
 
