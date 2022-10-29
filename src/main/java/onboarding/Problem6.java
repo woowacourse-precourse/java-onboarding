@@ -25,7 +25,8 @@ public class Problem6 {
 
     /* 상호간 공유하는 2 이상의 문자열이 있는지 체크하는 메서드 */
     private static Set<String> checkMutualContaning(String[][] forms) {
-        for (int i = 0; i < forms.length - 1; i++) {
+        int formsLength = forms.length;
+        for (int i = 0; i < formsLength - 1; i++) {
             String nickname = forms[i][1];
 
             for (int j = 0; j < nickname.length() - 1; j++) {
