@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 class Problem1 {
@@ -19,6 +21,22 @@ class Problem1 {
         String pobi_right_str = Integer.toString(pobi_right);
         String crong_left_str = Integer.toString(crong_left);
         String crong_right_str = Integer.toString(crong_right);
+
+        List<Integer> result_pobi = new ArrayList<Integer>();       //pobi의 모든 결과를 담을 리스트
+        List<Integer> result_crong = new ArrayList<Integer>();      //crong의 모든 결과를 담을 리스트
+
+        result_pobi.add(plus(0, pobi_left_str));
+        result_pobi.add(plus(0, pobi_right_str));
+        result_pobi.add(multiply(1, pobi_left_str));
+        result_pobi.add(multiply(1, pobi_right_str));
+
+        result_crong.add(plus(0, crong_left_str));
+        result_crong.add(plus(0, crong_right_str));
+        result_crong.add(multiply(1, crong_left_str));
+        result_crong.add(multiply(1, crong_right_str));
+
+        int pobi_score = Collections.max(result_pobi);
+        int crong_score = Collections.max(result_crong);
 
         return answer;
     }
