@@ -21,4 +21,9 @@ public class Problem3 {
         }
         return count;
     }
+
+    private static boolean isIncludeNum(int num) {
+        if(num>=1&&num<=10000) return true;
+        else return false;
+    }
 }
