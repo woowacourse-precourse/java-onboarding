@@ -21,3 +21,13 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+-------------
+# 기능 요구사항
+
+## Problem6
+
+- [ ] 이름이 중복되면 체크하는 체크배열 생성
+- [ ] 중복되는 사람이 있으면 그 사람의 이메일 result에 넣고 체크하기
+- [ ] 슬라이딩 윈도우 시행할 lt, rt 생성
+- [ ] lt가 끝까지 가면 (이름 길이 -2) 다음으로 넘어가기
