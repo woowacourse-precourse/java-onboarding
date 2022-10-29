@@ -1,16 +1,22 @@
 package onboarding;
 
+import java.util.ArrayList;
+
 public class Problem2 {
 
-    static char[] separateString(String cryptogram) {
-        char[] cryptoChar = cryptogram.toCharArray();
+    static ArrayList<Character> separateString(String cryptogram) {
+        ArrayList<Character> cryptoArray = new ArrayList<>();
 
-        return cryptoChar;
+        for (int i = 0; i < cryptogram.length(); i++) {
+            cryptoArray.add(cryptogram.charAt(i));
+        }
+
+        return cryptoArray;
     }
 
-    static Boolean checkDuplication(char[] separatedCrypto) {
-        for (int i = 0; i < separatedCrypto.length; i++) {
-            if (separatedCrypto[i] == separatedCrypto[i + 1]) {
+    static Boolean checkDuplication(ArrayList<Character> separatedCrypto) {
+        for (int i = 0; i < separatedCrypto.size(); i++) {
+            if (separatedCrypto.get(i) == separatedCrypto.get(i + 1)) {
                 return true;
             }
         }
@@ -20,7 +26,7 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
 
-        char[] separatedCrypto = separateString(cryptogram);
+        ArrayList<Character> separatedCrypto = separateString(cryptogram);
 
         return answer;
     }
