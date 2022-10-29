@@ -3,8 +3,7 @@ package onboarding;
 public class Problem4 {
     public static String solution(String word) {
         int[] chars = getInts(word);
-        String answer = new String(chars, 0, chars.length);
-        return answer;
+        return new String(chars, 0, chars.length);
     }
 
     private static int[] getInts(String word) {
