@@ -26,20 +26,21 @@ public class Problem5 {
 
     public static List<Integer> solution(int money) {
         List<Integer> answer = List.of(0,0,0,0,0,0,0,0,0);
-
         ArrayList<Integer> arrayList = new ArrayList<>(answer);
+        makeWallet(money, arrayList);
+        return arrayList;
+    }
 
-//        3. 출금한 돈에서 지갑에 담은 돈 빼기 => 출금해야할 남아있는 돈 만들기
+    // 1. 은행에서 출금해서 지갑에 넣기
+    private static void makeWallet(int money, ArrayList<Integer> arrayList) {
         int arrayIdx =0;
         for (Won value : Won.values()) {
             money -= value.num * getCoin(money, value.num, arrayIdx, arrayList);
             arrayIdx++;
         }
-
-        return arrayList;
     }
 
-//    2. 지갑에 최대한 담을 수 있는 갯수 구하기 (지갑이 최대한 가볍도록 큰 값의 지폐부터 담아야 함)
+    //    2. 지갑에 최대한 담을 수 있는 갯수 구하기 (지갑이 최대한 가볍도록 큰 값의 지폐부터 담아야 함)
     private static int getCoin(int money, int won,int idx, ArrayList<Integer> arrayList) {
         int i=1000000/won;
         for(;i>=0;i--){
