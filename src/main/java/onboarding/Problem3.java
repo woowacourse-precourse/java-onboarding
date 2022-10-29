@@ -24,7 +24,7 @@ public class Problem3 {
         return count;
     }
 
-    private static boolean isSamYukGu(char charAt) {
-        return true;
+    private static boolean isSamYukGu(char digit) {
+        return digit == '3' || digit == '6' || digit == '9';
     }
 }
