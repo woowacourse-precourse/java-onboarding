@@ -1,25 +1,20 @@
 package problem6;
 
-import problem1.Page;
-
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
-public class SimilarNicknameVerifier {
+public class SimilarNicknameChecker {
 
     private final Set<String> caughtEmails = new HashSet<>();
-    private final List<List<String>> forms;
     private final Map<String, String> atomicNicknameToEmail = new HashMap<>();
-    public SimilarNicknameVerifier(List<List<String>> forms) {
+    public SimilarNicknameChecker(List<List<String>> forms) {
         Validator.validate(forms);
-        this.forms = forms;
-        verify();
+        verify(forms);
     }
 
-    private void verify() {
+    private void verify(List<List<String>> forms) {
         for (var form : forms) {
             catchSimilar(form.get(0), form.get(1));
         }
