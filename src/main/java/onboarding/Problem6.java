@@ -50,7 +50,7 @@ public class Problem6 {
         }
     }
 
-    
+
     //3. 기능3
     static void setNameCountMap(List<List<String>> forms){
         for(int i=0; i<forms.size(); i++){
@@ -59,6 +59,18 @@ public class Problem6 {
         }
     }
 
+    static List<String> getNameList(){
+
+        List<String> nameList = new ArrayList<>();
+
+        nameCountMap.forEach((name,count)->{
+            if(count>=2){
+                nameList.add(name);
+            }
+        });
+
+        return nameList;
+    }
 
 
     public static List<String> solution(List<List<String>> forms) {
