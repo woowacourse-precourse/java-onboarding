@@ -46,4 +46,21 @@ public class Problem7 {
                 userScoreMap.put(visitor, userScoreMap.getOrDefault(visitor, 0) + VISITOR_SCORE);
         }
     }
+
+    static void addWithFriendScore(String user, ArrayList<String> userFriendsList) {
+
+        for (String userFriend : userFriendsList) {
+
+            ArrayList<String> withKnowFriendsList = friendsMap.getOrDefault(userFriend, new ArrayList<>());
+
+            for (String withKnowFriend : withKnowFriendsList) {
+
+                if(withKnowFriend != user) {
+                    userScoreMap.put(withKnowFriend, userScoreMap.getOrDefault(withKnowFriend, 0) + WITH_FRIEND_SCORE);
+                }
+            }
+
+
+        }
+    }
 }
