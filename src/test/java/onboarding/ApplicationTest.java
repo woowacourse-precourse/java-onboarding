@@ -244,7 +244,7 @@ class ApplicationTest {
                     List.of("shakevan", "andole"),
                     List.of("shakevan", "jun"),
                     List.of("shakevan", "bedi"),
-                    List.of("anni", "jun")
+                    List.of("anne", "jun")
             );
 
             List<String> visitors = List.of("donut", "mrko", "peter", "sam");
