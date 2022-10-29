@@ -2,7 +2,6 @@ package onboarding;
 
 import java.util.List;
 import java.util.ArrayList;
-
 import static java.util.Collections.max;
 
 /*
@@ -19,38 +18,38 @@ class Problem1 {
         return crong.get(0) % 2 == 1;
     }
     private static int find_max(int s) {
-        int temp_max = 0;
-        int temp_multi = 1;
+        int pageSum = 0;
+        int pageMulti = 1;
         int[] digits = IntegerToList(s);
-        for (int j : digits) {
-            temp_max = temp_max + j;
-            temp_multi = temp_multi * j;
+        for (int unit : digits) {
+            pageSum = pageSum + unit;
+            pageMulti = pageMulti * unit;
         }
-        return Math.max(temp_multi, temp_max);
+        return Math.max(pageMulti, pageSum);
     }
     private static int[] IntegerToList(int n){
         String temp = Integer.toString(n);
         int l = temp.length();
-        int[] digits = new int[l];
-        for (int i = 0; i < l; i++) digits[i] = temp.charAt(i) - '0';
-        return digits;
+        int[] pageDigits = new int[l];
+        for (int i = 0; i < l; i++) pageDigits[i] = temp.charAt(i) - '0';
+        return pageDigits;
     }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if(!exception(pobi, crong)) return -1;
         // 각자 점수 산출
-        List<Integer> pobi_new = new ArrayList<>(2);
-        List<Integer> crong_new = new ArrayList<>(2);
+        List<Integer> pobiScore = new ArrayList<>(2);
+        List<Integer> crongScore = new ArrayList<>(2);
         for (int i = 0; i < 2; i++){
-            pobi_new.add(find_max(pobi.get(i)));
-            crong_new.add(find_max(crong.get(i)));
+            pobiScore.add(find_max(pobi.get(i)));
+            crongScore.add(find_max(crong.get(i)));
         }
-        int pobi_max = max(pobi_new);
-        int crong_max = max(crong_new);
+        int pobiMax = max(pobiScore);
+        int crongMax = max(crongScore);
         // 비교
-        if(pobi_max == crong_max){
+        if(pobiMax == crongMax){
             return 0;
         }
-        else if(pobi_max > crong_max){
+        else if(pobiMax > crongMax){
             return 1;
         }
         return 2;
