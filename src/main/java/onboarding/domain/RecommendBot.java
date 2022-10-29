@@ -34,8 +34,9 @@ public class RecommendBot {
     }
 
     private void updateRecommendScoreByVisitor(List<String> visitors) {
-        visitors.
-                forEach(visitor -> updateRecommendScore(visitor, RECOMMEND_SCORE_BY_VISITOR));
+        visitors.stream()
+                .filter(visitor -> !includeInUserFriends(visitor))
+                .forEach(visitor -> updateRecommendScore(visitor, RECOMMEND_SCORE_BY_VISITOR));
     }
 
     private static boolean isUserFriend(String user, List<String> friend) {
@@ -51,6 +52,6 @@ public class RecommendBot {
     }
 
     private void updateRecommendScore(String person, int score) {
-        recommendScore.replace(person, recommendScore.getOrDefault(person, 0) + score);
+        recommendScore.put(person, recommendScore.getOrDefault(person, 0) + score);
     }
 }
