@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 public class RecommendBot {
     public static final int RECOMMEND_SCORE_BY_FRIEND = 10;
+    public static final int RECOMMEND_SCORE_BY_VISITOR = 1;
 
     private final HashMap<String, Integer> recommendScore = new HashMap<>();
     private final List<String> userFriends;
@@ -13,6 +14,7 @@ public class RecommendBot {
     public RecommendBot(String user, List<List<String>> friends, List<String> visitors) {
         userFriends = findUserFriends(user, friends);
         updateRecommendScoreByNumberOfFriend(user, friends);
+        updateRecommendScoreByVisitor(visitors);
     }
 
     private List<String> findUserFriends(String user, List<List<String>> friends) {
@@ -31,6 +33,11 @@ public class RecommendBot {
                 .forEach(friend -> updateRecommendScore(friend, RECOMMEND_SCORE_BY_FRIEND));
     }
 
+    private void updateRecommendScoreByVisitor(List<String> visitors) {
+        visitors.
+                forEach(visitor -> updateRecommendScore(visitor, RECOMMEND_SCORE_BY_VISITOR));
+    }
+
     private static boolean isUserFriend(String user, List<String> friend) {
         return friend.contains(user);
     }
@@ -43,7 +50,7 @@ public class RecommendBot {
         return userFriends.contains(friend);
     }
 
-    private void updateRecommendScore(String friend, int score) {
-        recommendScore.replace(friend, recommendScore.getOrDefault(friend, 0) + score);
+    private void updateRecommendScore(String person, int score) {
+        recommendScore.replace(person, recommendScore.getOrDefault(person, 0) + score);
     }
 }
