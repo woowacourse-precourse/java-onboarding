@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Problem4 {
@@ -25,6 +26,29 @@ class Encode {
     static final int UPPERCASE = 1;
     static final int LOWERCASE = 2;
 
+    static ArrayList<Character> UPPERTABLE = new ArrayList<>();
+    static ArrayList<Character> UPPERREVERSTABLE = new ArrayList<>();
+
+    static ArrayList<Character> LOWERTABLE = new ArrayList<>();
+    static ArrayList<Character> LOWERREVERSTABLE = new ArrayList<>();
+
+
+    private static void loadTable() {
+        for (int i = 65; i < 91; i++) {
+            UPPERTABLE.add((char) i);
+        }
+        for (int i = 90; i > 64; i--) {
+            UPPERREVERSTABLE.add((char)i);
+        }
+        for (int i = 97; i < 122; i++) {
+            LOWERTABLE.add((char) i);
+        }
+        for (int i = 122; i > 96; i--) {
+            LOWERREVERSTABLE.add((char)i);
+        }
+    }
+
+
     static void validateInput(String word) {
         if (word.length() < 1 || 1000 < word.length()) {
             throw new IllegalStateException("길이가 1이상 1000이하로 입력해 주세요!");
@@ -48,6 +72,7 @@ class Encode {
         }
         return encodeResult.toString();
     }
+
     private static int encodeType(char c) {
         if (c < 65) {
             return SKIP;
@@ -75,6 +100,10 @@ class Encode {
         return (char) standard;
     }
 
+    private static char encodeUpperCase2(char c) {
+        return UPPERREVERSTABLE.get(UPPERTABLE.indexOf(c));
+    }
+
     private static char encodeLowerCase(char c) {
         int standard = ('a' + 'z') / 2;
         if (c <= standard) {
@@ -84,5 +113,8 @@ class Encode {
             standard -= (c - standard - 1);
         }
         return (char) standard;
+    }
+    private static char encodeLowerCase2(char c) {
+        return LOWERREVERSTABLE.get(LOWERTABLE.indexOf(c));
     }
 }
