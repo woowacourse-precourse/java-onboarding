@@ -4,8 +4,11 @@ import java.util.HashMap;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
         HashMap<String,String> words = changeAlpha();
+        return changeWords(word,words);
+    }
+    public static String changeWords(String word,HashMap<String,String> words){
+        String answer = "";
         for(int i=0;i<word.length();i++){
             if (String.valueOf(word.charAt(i)).isBlank()){
                 answer+=" ";
