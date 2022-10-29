@@ -6,26 +6,31 @@ import java.util.List;
 
 public class BookGameService {
 
+    private static final int DRAW = 0;
+    private static final int BEFORE_WIN = 1;
+    private static final int AFTER_WIN = 2;
+    private static final int EXCEPTION = -1;
+
     public static int result(List<Integer> beforeNumbers, List<Integer> afterNumbers) {
         try {
             Page before = new Page(beforeNumbers);
             Page after = new Page(afterNumbers);
             return result(before.maxScore(), after.maxScore());
         } catch (Exception exception) {
-            return -1;
+            return EXCEPTION;
         }
     }
 
     private static int result(int beforeScore, int afterScore) {
         if (beforeScore > afterScore) {
-            return 1;
+            return BEFORE_WIN;
         }
         if (beforeScore < afterScore) {
-            return 2;
+            return AFTER_WIN;
         }
         if (beforeScore == afterScore) {
-            return 0;
+            return DRAW;
         }
-        return -1;
+        return EXCEPTION;
     }
 }
