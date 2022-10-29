@@ -6,18 +6,18 @@ public class Problem6 {
     final static int EMAIL = 0;
     final static int NAME = 1;
     public static List<String> solution(List<List<String>> forms) {
-        HashMap<String, Integer> combinationCount = new HashMap<>();
+        HashMap<String, Integer> twoNameCount = new HashMap<>();
         HashSet<String> duplicateEmails = new HashSet<>();
 
         for (List<String> form : forms) {
             HashSet<String> combinations = getCombinations(form.get(NAME));
             for (String combination : combinations) {
-                combinationCount.put(combination, combinationCount.getOrDefault(combination, 0) + 1);
+                twoNameCount.put(combination, twoNameCount.getOrDefault(combination, 0) + 1);
             }
         }
 
-        for (String twoName : combinationCount.keySet()) {
-            if (combinationCount.get(twoName)>1) {
+        for (String twoName : twoNameCount.keySet()) {
+            if (twoNameCount.get(twoName)>1) {
                 duplicateEmails.addAll(getDuplicateList(twoName, forms));
             }
         }
