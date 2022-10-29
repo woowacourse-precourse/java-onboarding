@@ -22,7 +22,7 @@ public class Problem2 {
             }
             if (encodedCode.charAt(i) != encodedCode.charAt(i - 1) && count >= 2) {
                 flag = true;
-                encodedCode.replace(i - count, i - 1, getEmptySpace(count));
+                encodedCode.replace(i - count, i, getEmptySpace(count));
                 count = 1;
             }
         }
