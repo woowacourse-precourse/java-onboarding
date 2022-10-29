@@ -8,7 +8,7 @@ import java.util.Arrays;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
-public class PlayersTest {
+class PlayersTest {
     @Test
     @DisplayName("leftPlayer win")
     void leftWin() {
@@ -27,7 +27,7 @@ public class PlayersTest {
     @DisplayName("draw")
     void draw() {
         Players players = new Players(Arrays.asList(157, 158), Arrays.asList(57, 58));
-        assertThat(players.playResult()).isEqualTo(0);
+        assertThat(players.playResult()).isZero();
     }
     
     @Test

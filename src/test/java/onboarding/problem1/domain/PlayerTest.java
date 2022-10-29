@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
-public class PlayerTest {
+class PlayerTest {
     @Test
     @DisplayName("leftPlayer win")
     void leftWin() {
@@ -25,7 +25,7 @@ public class PlayerTest {
     @DisplayName("draw")
     void draw() {
         Player player = new Player(157, 158);
-        assertThat(player.compareTo(new Player(57, 58))).isEqualTo(0);
+        assertThat(player.compareTo(new Player(57, 58))).isZero();
     }
     
     @Test
