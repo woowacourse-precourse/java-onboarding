@@ -86,3 +86,13 @@
     - 조건을 만족하면 금액을 화폐 단위로 나눈 뒤 몫을 구한다. **이 몫이 필요한 지폐 또는 동전의 개수가 된다.**
     - 계산이 끝날 때마다 금액에서 <b>(화폐 단위 * 몫)</b>을 뺀다.
 - for문이 끝나면 업데이트된 `currentBillsSorted에`를 반환한다.
+
+---
+## 이미지 출처
+<p><a href="https://www.flaticon.com/free-icons/books" title="books icons">Books icons created by popo2021 - Flaticon</a></p>
+<p><a href="https://www.flaticon.com/free-icons/password" title="password icons">Password icons created by Freepik - Flaticon</a></p>
+<p><a href="https://www.flaticon.com/free-icons/clap" title="clap icons">Clap icons created by Smashicons - Flaticon</a></P>
+<p><a href="https://www.flaticon.com/free-icons/caesar" title="caesar icons">Caesar icons created by istar_design_bureau - Flaticon</a></P>
+<p><a href="https://www.flaticon.com/free-icons/money" title="money icons">Money icons created by vectorsmarket15 - Flaticon</a></P>
+<p><a href="https://www.flaticon.com/free-icons/name" title="name icons">Name icons created by Good Ware - Flaticon</a></P>
+<p><a href="https://www.flaticon.com/free-icons/teamwork" title="teamwork icons">Teamwork icons created by Becris - Flaticon</a></P>
