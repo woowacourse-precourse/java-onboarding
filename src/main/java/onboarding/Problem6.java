@@ -5,10 +5,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Problem6 {
-    /*
-    - result 는 이메일 주소로 order asc & "중복 제거"
-    - 이메일 값은 @email.com 제외 최소1자 ~ 최대9자
-     */
     public static List<String> solution(List<List<String>> forms) {
         int peopleNum = forms.size();
         Set<String> answer = new HashSet<>(Collections.emptySet());

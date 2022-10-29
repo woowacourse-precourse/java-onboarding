@@ -61,7 +61,6 @@ public class Problem7 {
                 friendListMap.put(relation.get(1), beforeList);
             }
         }
-        // mrko의 직접 적인 친구는 친구 추천에 포함되지 않음!!!
         for(String directFriend : friendListMap.get(user)){
             ArrayList<String> ablePush = friendListMap.get(directFriend);
             for(String f : ablePush){
