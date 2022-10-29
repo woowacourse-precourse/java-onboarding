@@ -11,14 +11,14 @@ public class Problem3 {
         return answer;
     }
 
-    private int countHowManyNums(int number) {
+    private void countHowManyNums(int number) {
         String strNumber = "";
 
-        for (int i = 4; i <= number; i++) {
+        for (int i = 3; i <= number; i++) {
             strNumber = String.valueOf(number);
             for (int j = 0; j < strNumber.length(); j++) {
                 if (strNumber.charAt(i) == '3' || strNumber.charAt(i) == '6' || strNumber.charAt(i) == '9') {
-
+                    howManyNums++;
                 }
             }
         }
