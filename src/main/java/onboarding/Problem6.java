@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -39,6 +40,13 @@ public class Problem6 {
     }
 
     private static void addEmails(List<List<String>> forms, List<String> answer, int i, int j, String firstEmail, String secEmail) {
-
+        if (!answer.contains(firstEmail) && firstEmail.contains("@email.com")
+                && firstEmail.length() >= 11 && firstEmail.length() <= 19) {
+            answer.add(forms.get(i).get(0));
+        }
+        if (!answer.contains(secEmail) && secEmail.contains("@email.com")
+                && secEmail.length() >= 11 && secEmail.length() <= 19) {
+            answer.add(forms.get(j).get(0));
+        }
     }
 }
