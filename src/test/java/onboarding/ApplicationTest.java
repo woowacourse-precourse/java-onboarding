@@ -170,9 +170,9 @@ class ApplicationTest {
     @Test
     void isAlphabetTest() {
       //given
-      char c1 = 'a';
-      char c2 = 'A';
-      char c3 = '1';
+      String c1 = "a";
+      String c2 = "A";
+      String c3 = "1";
 
       //when
       boolean b1 = Problem4.isAlphabet(c1);
