@@ -7,25 +7,26 @@ public class Problem2 {
 
     private static int increaseIdxWhenCharEqual(Character decryptionLastChar, String cryptogram, int idx) {
 
-        while (decryptionLastChar != null && decryptionLastChar == cryptogram.charAt(idx)) {
+        while (decryptionLastChar != null && idx < cryptogram.length() && decryptionLastChar == cryptogram.charAt(idx)) {
             idx++;
         }
 
         return idx;
     }
 
-    private static void deleteOrAppendDecryption(Deque<Character> decryptionCharStack, String cryptogram, int idx, int newIdx) {
+    private static int deleteOrAppendDecryption(Deque<Character> decryptionCharStack, String cryptogram, int idx, int newIdx) {
 
         if (idx != newIdx) {
             deleteLastDecryptionChar(decryptionCharStack);
-            return;
+            return newIdx;
         }
 
         appendDecryptionChar(decryptionCharStack, cryptogram, newIdx);
+        return idx + 1;
     }
 
     private static void deleteLastDecryptionChar(Deque<Character> decryptionCharStack) {
-        decryptionCharStack.getLast();
+        decryptionCharStack.removeLast();
     }
 
     private static void appendDecryptionChar(Deque<Character> decryptionCharStack, String cryptogram, int newIdx) {
@@ -56,8 +57,7 @@ public class Problem2 {
 
         while (idx < cryptogram.length()) {
             int newIdx = increaseIdxWhenCharEqual(decryptionCharStack.peekLast(), cryptogram, idx);
-            deleteOrAppendDecryption(decryptionCharStack, cryptogram, idx, newIdx);
-            idx = newIdx + 1;
+            idx = deleteOrAppendDecryption(decryptionCharStack, cryptogram, idx, newIdx);
         }
 
         return decryptionCharStackToString(decryptionCharStack);
