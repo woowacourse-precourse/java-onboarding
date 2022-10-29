@@ -10,23 +10,8 @@ public class Problem7 {
         List<String> member = makeFriendList(friends);
 
         // 그래프 구조로 친구 관계를 만들기
-        List<String>[] friendList = new ArrayList[member.size()];
-        for(int i=0; i< member.size(); i++){
-            friendList[i] = new ArrayList<>();
-        }
+        List<String>[] friendList = makeFriendGraph(member, friends);
 
-        Iterator<List<String>> friendsItr = friends.iterator();
-        for(int i=0; i<friends.size(); i++){
-            List<String> ABfriend = friendsItr.next();
-            String A = ABfriend.get(0);
-            String B = ABfriend.get(1);
-
-            int aIdx = member.indexOf(A);
-            int bIdx = member.indexOf(B);
-
-            friendList[aIdx].add(B);
-            friendList[bIdx].add(A);
-        }
 
         // 사용자와 함께 아는 친구의 점수를 매김(10점)
         int[] memberPoint = new int[member.size()]; // 추천 점수 표시할 배열
@@ -144,6 +129,36 @@ public class Problem7 {
         }
 
         return member;
+    }
+
+    /**
+     * 친구 관계를 그래프 구조로 구현하는 메소드
+     * @param member 친구 리스트
+     * @param friends 친구 관계 나타낸 리스트
+     * @return 리스트 배열로 구현된 그래프
+     */
+    static List<String>[] makeFriendGraph(List<String> member, List<List<String>> friends){
+        // 친구 수 만큼 리스트 만들고 초기화
+        List<String>[] friendList = new ArrayList[member.size()];
+        for(int i=0; i< member.size(); i++){
+            friendList[i] = new ArrayList<>();
+        }
+
+        // 그래프 구조 구현
+        Iterator<List<String>> friendsItr = friends.iterator();
+        for(int i=0; i<friends.size(); i++){
+            List<String> ABfriend = friendsItr.next();
+            String A = ABfriend.get(0);
+            String B = ABfriend.get(1);
+
+            int aIdx = member.indexOf(A);
+            int bIdx = member.indexOf(B);
+
+            friendList[aIdx].add(B);
+            friendList[bIdx].add(A);
+        }
+
+        return friendList;
     }
 
 
