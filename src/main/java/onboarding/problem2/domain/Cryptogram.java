@@ -16,6 +16,10 @@ public class Cryptogram {
                 this.cryptogram.replaceAll(DELETE_CONSECUTIVE_CHARACTER_REGEX, ""));
     }
 
+    public boolean compareLength(Cryptogram cryptogram) {
+        return this.cryptogram.length() == cryptogram.cryptogram.length();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
