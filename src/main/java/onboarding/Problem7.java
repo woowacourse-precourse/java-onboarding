@@ -1,11 +1,10 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        friends(friends);
         List<String> userFriends = extractUserFriendsList(friends, user);
         List<String> allUser = extractAllUserList(friends);
         List<String> userNotFriends = extractUserNotFriendsList(userFriends, user, allUser);
@@ -28,7 +27,7 @@ public class Problem7 {
             }
         }
 
-        System.out.println("alluserList"+allUserList);
+        System.out.println("alluserList" + allUserList);
         return allUserList;
     }
 
@@ -44,7 +43,7 @@ public class Problem7 {
         }
         removeUserFromUserFriendsList(userFriendsList, user);
 
-        System.out.println("userFriendsList"+userFriendsList);
+        System.out.println("userFriendsList" + userFriendsList);
         return userFriendsList;
     }
 
@@ -56,7 +55,7 @@ public class Problem7 {
         }
         userNotFriendsList.remove(user);
 
-        System.out.println("userNotFriendList"+allUser);
+        System.out.println("userNotFriendList" + allUser);
         return userNotFriendsList;
     }
 
@@ -67,5 +66,25 @@ public class Problem7 {
         }
 
         return userFriendList;
+    }
+
+    public static Map<String, List<String>> friends(List<List<String>> friends) {
+        Map<String, List<String>> friendsLinkedList = new TreeMap<>();
+        List<String> belongFriendsList = new ArrayList<>();
+
+        for (int i = 0; i < friends.size(); i++) {
+            if (friendsLinkedList.containsKey(friends.get(i).get(0))) {
+                belongFriendsList.add(friends.get(i).get(1));
+                friendsLinkedList.put(friends.get(i).get(0), belongFriendsList);
+            }
+            if (!friendsLinkedList.containsKey(friends.get(i).get(0))) {
+                belongFriendsList = new ArrayList<>();
+                belongFriendsList.add(friends.get(i).get(1));
+                friendsLinkedList.put(friends.get(i).get(0), belongFriendsList);
+            }
+        }
+
+        System.out.println(friendsLinkedList);
+        return friendsLinkedList;
     }
 }
