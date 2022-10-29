@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class Problem7 {
     public static void main(String[] args) {
@@ -22,10 +19,29 @@ public class Problem7 {
 
     private static final List<String> myFriends = new ArrayList<>();
     private static final List<String> aFriendWeKnow = new ArrayList<>();
+    private static final Map<String, Integer> result = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        init(friends);
         System.out.println(friendsListVerifier(user, friends));
         return null;
+    }
+
+    private static void init(List<List<String>> friends) {
+        ArrayList<String> userIds = new ArrayList<>();
+        for (List<String> users : friends) {
+            users.forEach(user -> {
+                boolean result = userIds.stream()
+                        .anyMatch(id -> Objects.equals(id, user));
+                if (!result) {
+                    userIds.add(user);
+                }
+            });
+        }
+
+        for (String userId : userIds) {
+            result.put(userId, 0);
+        }
     }
 
     private static List<String> friendsListVerifier(String myId, List<List<String>> friends) {
@@ -89,6 +105,7 @@ public class Problem7 {
             }
         }
     }
+
     private static void sortList() {
         Collections.sort(aFriendWeKnow);
     }
