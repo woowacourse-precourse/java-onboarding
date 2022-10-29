@@ -17,10 +17,10 @@ public class Problem6 {
 		answer = new ArrayList<>(emailToBeSent);
 		return answer;
 	}
-	public static void checkNickName(List<String> emailAndName) {
+	public static void checkNickName(List<String> form) {
 		HashMap<String, String> myUsedNickNamePart = new HashMap<>();
-		String myEmail = emailAndName.get(0);
-		String myNickName = emailAndName.get(1);
+		String myEmail = form.get(0);
+		String myNickName = form.get(1);
 		for (int i = 1; i < myNickName.length(); i++) {
 			String myNickNamePart = "" + myNickName.charAt(i - 1) + myNickName.charAt(i);
 			checkNickNamePart(myNickNamePart, myEmail);
@@ -28,7 +28,6 @@ public class Problem6 {
 		}
 		usedNickNamePart.putAll(myUsedNickNamePart);
 	}
-	
 	public static void checkNickNamePart(String myNickNamePart, String myEmail) {
 		if (usedNickNamePart.containsKey(myNickNamePart)) {
 			emailToBeSent.add(usedNickNamePart.get(myNickNamePart));
