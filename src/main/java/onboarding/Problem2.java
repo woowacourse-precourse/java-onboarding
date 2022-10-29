@@ -1,7 +1,5 @@
 package onboarding;
 
-import java.util.List;
-
 public class Problem2 {
     static class RFCryptogram {
 
