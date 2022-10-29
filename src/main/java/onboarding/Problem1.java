@@ -26,7 +26,26 @@ class Problem1 {
             return ERROR;
         }
 
+        int pobiScore = Math.max(calculateScore(pobiLeftPage), calculateScore(pobiRightPage));
+        int crongScore = Math.max(calculateScore(crongLeftPage), calculateScore(crongRightPage));
+
         return answer;
+    }
+
+    private static int calculateScore(int page) {
+        int sum = 0;
+        int multiply = 1;
+
+        while (page > 0) {
+            int value = page % 10;
+
+            sum += value;
+            multiply *= value;
+
+            page = page / 10;
+        }
+
+        return Math.max(sum, multiply);
     }
 
     private static boolean isNotLeftAndRightPage(int leftPage, int rightPage) {
