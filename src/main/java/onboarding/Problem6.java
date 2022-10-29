@@ -7,4 +7,9 @@ public class Problem6 {
         List<String> answer = List.of("answer");
         return answer;
     }
+
+    static boolean isEmailDotCom(String s) {
+        String pattern = "^[a-zA-Z0-9]*@email.com";
+        return s.matches(pattern);
+    }
 }
