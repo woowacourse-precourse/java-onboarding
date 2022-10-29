@@ -45,10 +45,10 @@ class Problem1 {
         if (pobi.get(0) != pobi.get(1) - 1 || crong.get(0) != crong.get(1) - 1)
             return true;
 
-        if (pobi.get(0) < 1 || pobi.get(0) > 400
-                || pobi.get(1) < 1 || pobi.get(1) > 400 ||
-                crong.get(0) < 1 || crong.get(0) > 400 ||
-                crong.get(1) < 1 || crong.get(1) > 400)
+        if (pobi.get(0) <= 1 || pobi.get(0) >= 400
+                || pobi.get(1) <= 1 || pobi.get(1) >= 400 ||
+                crong.get(0) <= 1 || crong.get(0) >= 400 ||
+                crong.get(1) <= 1 || crong.get(1) >= 400)
             return true;
         return false;
     }
@@ -65,8 +65,6 @@ class Problem1 {
 
         if (pobiNum == crongNum)
             return 0;
-        else if (pobiNum > crongNum)
-            return 1;
-        return 2;
+        return pobiNum > crongNum ? 1 : 2;
     }
 }
