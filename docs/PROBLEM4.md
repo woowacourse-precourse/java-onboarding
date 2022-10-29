@@ -19,3 +19,7 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+### 기능 구현 사항
+
+- [ ] 특정 문자열을 넣어주면 단어를 변환해주는 Dictionary를 만든다.
