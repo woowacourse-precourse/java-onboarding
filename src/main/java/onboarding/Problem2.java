@@ -11,7 +11,9 @@ public class Problem2 {
             if (!charStack.isEmpty() && charStack.peek().equals(s)) {
                 lastChar = charStack.pop();
             }
-            
+            if (lastChar == null || !lastChar.equals(s)){
+                charStack.push(s);
+            }
         }
 
         return null;
