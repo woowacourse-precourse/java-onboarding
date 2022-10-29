@@ -16,6 +16,16 @@ public class Problem3 {
 
         return false;
     }
+    private static List<Integer> getDigits(int num) {
+        List<Integer> digits = new ArrayList<>();
+
+        while (num > 0) {
+            digits.add(num % 10);
+            num /= 10;
+        }
+
+        return digits;
+    }
 
     public static int solution(int number) {
         int answer = 0;
