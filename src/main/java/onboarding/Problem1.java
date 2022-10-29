@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.Arrays;
 import java.util.List;
 
 class Problem1 {
@@ -47,12 +48,9 @@ class Problem1 {
 	}
 
 	private static int addDigit(Integer page) {
-		int addValue = 0;
-		while (page != 0) {
-			addValue += page % NUMBER_OF_DIGIT_DIVISION;
-			page /= NUMBER_OF_DIGIT_DIVISION;
-		}
-		return addValue;
+		return Arrays.stream(String.valueOf(page).split(""))
+			.mapToInt(Integer::parseInt)
+			.sum();
 	}
 
 	private static int multipleDigit(Integer page) {
