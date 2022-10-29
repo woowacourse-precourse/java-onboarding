@@ -2,13 +2,21 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = Decoder.runDecoder(cryptogram);
         return answer;
     }
 }
 
-class Encoder {
-    String deleteDuplicate(String str) {
+
+class Decoder {
+
+    static String runDecoder(String str) {
+        String n_str = deleteDuplicate(str);
+        if (str.equals(n_str)) return str;
+        return runDecoder(n_str);
+    }
+
+    private static String deleteDuplicate(String str) {
         String new_str = "";
         int l = str.length();
         int i = 0;
