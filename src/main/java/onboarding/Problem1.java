@@ -28,8 +28,8 @@ class Problem1 {
 				return 0;
 			}
 			return (pobiMaxValue > crongMaxValue) ? 1 : 2;
-		} else
-			return -1;
+		}
+		return -1;
 	}
 
 	static boolean is1t0400(List<Integer> list) {
@@ -68,5 +68,4 @@ class Problem1 {
 		}
 		return sum;
 	}
-
 }
