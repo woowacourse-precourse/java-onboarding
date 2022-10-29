@@ -71,7 +71,7 @@ public class Problem7 {
 
         for (int i = 0; i < adj.get(1).size(); i++) {
             int node = adj.get(1).get(i);
-            for (int j = 0; j < adj.get(node).size(); i++) {
+            for (int j = 0; j < adj.get(node).size(); j++) {
                 int targetNode = adj.get(node).get(j);
                 if (targetNode == 1) continue;
                 score[targetNode] += 10;
@@ -81,6 +81,11 @@ public class Problem7 {
         for (int i = 0; i < visitors.size(); i++) {
             int index = map.get(visitors.get(i));
             score[index]++;
+        }
+
+        for (int i = 0; i < adj.get(1).size(); i++) {
+            int node = adj.get(1).get(i);
+            score[node] = 0;
         }
 
         return score;
@@ -95,9 +100,12 @@ public class Problem7 {
             for (int j = 0; j < score.length; j++) {
                 maxScore = Math.max(maxScore, score[j]);
             }
-            if (maxScore == 0) break;
+            if (maxScore == 0 || maxScore == Integer.MIN_VALUE) break;
             for (int j = 0; j < score.length; j++) {
-                if (score[j] == maxScore) result.add(numberToName.get(j));
+                if (score[j] == maxScore) {
+                    result.add(numberToName.get(j));
+                    score[j] = Integer.MIN_VALUE;
+                }
             }
         }
 
