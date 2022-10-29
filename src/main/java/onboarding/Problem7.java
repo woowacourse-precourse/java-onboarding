@@ -75,7 +75,7 @@ class Relations {
     }
 }
 
-class Intimacy {
+class Intimacy implements Comparable<Intimacy> {
     static final int MUTUAL_FRIEND_WEIGHT = 10;
     static final int VISITED_WEIGHT = 10;
 
@@ -112,5 +112,13 @@ class Intimacy {
 
     public int getScore() {
         return ( this.numOfMutualFriends * MUTUAL_FRIEND_WEIGHT ) + ( this.numOfVisited * VISITED_WEIGHT );
+    }
+
+    @Override
+    public int compareTo (Intimacy o) {
+        if (this.getScore() == o.getScore()) {
+            return this.userId.compareTo(o.userId);
+        }
+        return o.getScore() - this.getScore();
     }
 }
