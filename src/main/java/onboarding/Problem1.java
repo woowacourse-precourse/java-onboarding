@@ -6,6 +6,9 @@ class Problem1 {
     private static final int fisrtPage = 1;
     private static final int lastPage = 400;
 
+    interface CalculateNum {
+        Integer calculate(List<Integer> pages);
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
@@ -14,9 +17,22 @@ class Problem1 {
         }
 
         List<CalculateNum> calculations = List.of(Problem1::firstMethod, Problem1::secondMethod);
-
+        int pobiScore = calculateScore(pobi, calculations);
+        int crongScore = calculateScore(crong, calculations);
 
         return answer;
+    }
+
+    private static int calculateScore(List<Integer> pages, List<CalculateNum> calculations) {
+        int result = 0;
+        for (CalculateNum cal : calculations) {
+            int number = cal.calculate(pages);
+            if (result < number) {
+                result = number;
+            }
+        }
+
+        return result;
     }
 
     private static boolean validateInput(List<Integer> input) {
