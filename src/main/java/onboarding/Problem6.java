@@ -1,6 +1,8 @@
 package onboarding;
 
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -8,6 +10,23 @@ public class Problem6 {
         return answer;
     }
 
+    public static Set<String> compareCrew(List<List<String>> forms){
+        int len = forms.size();
+        Set<String> overlaped= new TreeSet<>();
+
+        for(int i=0; i<len; i++) {
+            List<String> firstCrew = forms.get(i);
+            for(int j=1; j<len; j++) {
+                List<String> secondCrew = forms.get(j);
+                if( compareString(firstCrew.get(1), secondCrew.get(1)) ){
+                    overlaped.add(firstCrew.get(i));
+                    overlaped.add(secondCrew.get(j));
+                }
+            }
+        }
+
+        return overlaped;
+    }
     public static boolean compareString(String s1, String s2) {
         char[] c1Arr = s1.toCharArray();
         char[] c2Arr = s2.toCharArray();
@@ -26,4 +45,5 @@ public class Problem6 {
         }
         return  false;
     }
+
 }
