@@ -34,6 +34,16 @@ public class Problem2 {
         }
     }
 
+    private static String decryptionCharStackToString(Deque<Character> decryptionCharStack) {
+        StringBuilder sb = new StringBuilder();
+
+        for (char ch : decryptionCharStack) {
+            sb.append(ch);
+        }
+
+        return sb.toString();
+    }
+
     /**
      * 임의의 문자열 cryptogram이 매개변수로 주어질 때, 연속하는 중복 문자들을 삭제한 결과를 return 하도록 solution 메서드를 완성하라.
      *
