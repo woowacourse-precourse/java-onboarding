@@ -28,8 +28,16 @@ public class Problem2 {
                 }
             }
 
-            
+            if (indexSet.size() == 0) {
+                break;
+            }
 
+            List<Integer> indexList = new ArrayList<>(indexSet);
+            Collections.sort(indexList, Collections.reverseOrder());
+
+            for (int index : indexList) {
+                result.remove(index);
+            }
             afterLength = result.size();
 
             cryptogramList = new ArrayList<>(result);
