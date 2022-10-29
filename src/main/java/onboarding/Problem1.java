@@ -15,11 +15,11 @@ import java.util.List;
  */
 class Problem1 {
 	
-	static int answer = Integer.MAX_VALUE;
+static int answer = Integer.MAX_VALUE;
 	
     public static int solution(List<Integer> pobi, List<Integer> crong) {
     	
-        if(!checkStartOrLast(pobi, crong) && !checkWrongPage(pobi, crong)) {
+       if(!checkStartOrLast(pobi, crong) && !checkWrongPage(pobi, crong)) {
         	int pobiMaxNumber = maxPobiNumber(pobi);
             int crongMaxNumber = maxCrongNumber(crong);
             answer = whoWin(pobiMaxNumber, crongMaxNumber);
@@ -79,7 +79,8 @@ class Problem1 {
      * @return 포비가 이기면 1 크롱이 이기면 2 무승부는 0을 리턴한다.
      */
     public static int whoWin(int pobiMaxNumber, int crongMaxNumber) {
-    	
-    	return 1;
+    	if(pobiMaxNumber > crongMaxNumber) return 1;
+    	if(pobiMaxNumber < crongMaxNumber) return 2;
+    	return 0; 
     }
 }
