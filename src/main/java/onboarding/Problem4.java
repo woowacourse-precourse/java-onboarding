@@ -16,8 +16,10 @@ public class Problem4 {
                 continue;
             }
 
+            stringBuilder.append(dict.get(c));
         }
 
+        answer = stringBuilder.toString();
         return answer;
     }
 
