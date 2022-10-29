@@ -3,37 +3,61 @@ package onboarding;
 import java.util.List;
 
 public class Problem2 {
-    public static String solution(String cryptogram) {
-        StringBuilder crpytogramToBuilder = new StringBuilder(cryptogram);
-        int flag = 0;
+    static class RFCryptogram {
 
-        while (true) {
-            int crpytogramLength = crpytogramToBuilder.length();
-            Integer[] checkString = new Integer[crpytogramLength];
+        StringBuilder cryptogramToBuilder;
+        int cryptogramLength;
+        Integer[] checkString;
+        static int checkNum;
+        boolean flag;
 
-            for (int i = 0; i < crpytogramLength; i++)
+        RFCryptogram(String cryptogram) {
+            cryptogramToBuilder = new StringBuilder(cryptogram);
+            cryptogramLength = cryptogramToBuilder.length();
+            checkNum = 1;
+            flag = false;
+        }
+
+        private void makingCheckList () {
+            checkString = new Integer[cryptogramLength];
+            for (int i = 0; i < cryptogramLength; i++) {
                 checkString[i] = 0;
+            }
+        }
 
-            int checkNum = 1;
-            for (int i = crpytogramLength - 1; i > 0; i--) {
-                if (crpytogramToBuilder.charAt(i) == crpytogramToBuilder.charAt(i - 1)) {
+        private void findDupString() {
+            for (int i = cryptogramLength - 1; i > 0; i--) {
+                if (cryptogramToBuilder.charAt(i) == cryptogramToBuilder.charAt(i - 1)) {
                     checkString[i] = checkNum;
                     checkString[i - 1] = checkNum;
-                    flag = 1;
+                    flag = true;
                 }
-                else checkNum += 1;
             }
-            for (int i = crpytogramLength - 1; i>= 0; i--) {
-                if (checkString[i] > 0)
-                    crpytogramToBuilder = crpytogramToBuilder.deleteCharAt(i);
-            }
-            checkNum = 1;
-            if (flag != 1)
-                break;
-            flag = 0;
         }
-        cryptogram =  crpytogramToBuilder.toString();
 
-        return cryptogram;
+        private void deleteString() {
+            for (int i = cryptogramLength - 1; i>= 0; i--) {
+                isDuplicate(checkString[i], i);
+            }
+        }
+
+        private void isDuplicate(int checkStringIdx, int i) {
+            if (checkStringIdx > 0) {
+                cryptogramToBuilder.deleteCharAt(i);
+            }
+        }
+    }
+    public static String solution(String cryptogram) {
+
+        RFCryptogram rfCryptogram = new RFCryptogram(cryptogram);
+
+        do {
+            rfCryptogram.makingCheckList();
+            rfCryptogram.findDupString();
+            rfCryptogram.deleteString();
+
+        } while (rfCryptogram.flag);
+
+        return rfCryptogram.cryptogramToBuilder.toString();
     }
 }
