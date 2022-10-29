@@ -9,7 +9,6 @@ public class Problem3 {
         int cnt = 0;
         for ( int i=1; i<= number; i++){
             cnt+=countClap(i);
-            System.out.println(cnt +" "+ i);
         }
         return cnt;
     }
