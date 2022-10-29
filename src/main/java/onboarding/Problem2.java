@@ -5,8 +5,16 @@ import java.util.Stack;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-       return decrypt(cryptogram);
+        if(validation(cryptogram)) return decrypt(cryptogram);
+        return "";
     }
+
+    private static Boolean validation(String cryptogram) {
+        int length = cryptogram.length();
+        if(!(0 < length && length < 1001)) return false;
+        return cryptogram.matches("^[a-z]*$");
+    }
+
 
     private static String decrypt(String cryptogram) {
         Stack<Character> stack = new Stack<>();
