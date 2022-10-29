@@ -3,7 +3,7 @@ package onboarding;
 import java.util.List;
 
 public class Problem3 {
-    private static final List<Integer> clapNumbers = List.of(3, 6, 9);
+    private static final List<Integer> CLAP_NUMBERS = List.of(3, 6, 9);
 
     public static int solution(int number) {
         int answer = 0;
@@ -19,7 +19,7 @@ public class Problem3 {
         int clapCount = 0;
 
         while (number > 0) {
-            if (clapNumbers.contains(number % 10)) {
+            if (CLAP_NUMBERS.contains(number % 10)) {
                 clapCount++;
             }
             number /= 10;
