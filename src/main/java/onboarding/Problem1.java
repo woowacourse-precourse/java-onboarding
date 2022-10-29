@@ -6,7 +6,7 @@ import java.util.List;
 // 문제 1 클래스
 class Problem1 {
 
-    // 2. 왼쪽 페이지 큰 수 찾기.
+    // 2,3 왼쪽, 오른쪽 페이지 연산 중 큰 수 찾기.
     static int getPageCalc(int page)
     {
         int resultSum = 0;
@@ -39,11 +39,17 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
-        // 왼쪽 페이지 연산 결과 확인
+        // 왼쪽 페이지 연산
         int leftPageP = getPageCalc(pobi.get(0));
         int leftPageC = getPageCalc(crong.get(0));
-        System.out.println("pobi " + pobi + " : " + leftPageP);
-        System.out.println("crong " + crong + " : " + leftPageC);
+
+        // 오른쪽 페이지 연산
+        int rightPageP = getPageCalc(pobi.get(1));
+        int rightPageC = getPageCalc(crong.get(1));
+        
+        // 오른쪽 페이지 연산 결과 확인
+        System.out.println("pobi " + pobi + " : " + rightPageP);
+        System.out.println("crong " + crong + " : " + rightPageC);
 
         return answer;
     }
