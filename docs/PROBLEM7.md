@@ -24,3 +24,15 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+
+### 기능 목록
+입력받은 user는 주인이며 다른 사람은 유저라 칭하겠습니다.
+1. 함수들을 제어하여 원하는 결과를 얻는 함수
+2. 입력받은 유저의 친구를 구하는 함수
+3. 주인의 친구를 저장하는 Set에 접근하는 함수
+4. 친구 관계 속 후보를 반환하는 함수
+5. 친구여부를 확인하는 함수
+6. 후보들의 친구관계 가중치를 map에 저장하는 함수
+7. 후보들의 방문자 가중치를 map에 저장하는 함수
+8. 원하는 명수의 후보를 반환하는 함수
