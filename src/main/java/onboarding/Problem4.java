@@ -20,6 +20,11 @@ package onboarding;
  * - a와 z의 합을 통해 변환
  */
 
+/**
+ * 3. 대문자 알파벳 변환 기능
+ * - Ascii code상 A ~ Z 는 65 ~ 90
+ * - A와 Z의 합을 통해 변환
+ */
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
@@ -27,8 +32,8 @@ public class Problem4 {
     }
 
 //    public static void main(String[] args) {
-//        char test = 'd';
-//        System.out.println(changeInLower(test));
+//        char test = 'A';
+//        System.out.println(changeInUpper(test));
 //    }
 
     private static String distinguishInput(char inputChar){
@@ -43,6 +48,12 @@ public class Problem4 {
          int sumOfaz = 122 + 97;
          char ret = (char)(sumOfaz-inputChar);
          return ret;
+    }
+
+    private static char changeInUpper(char inputChar){
+        int sumOfAZ = 90 + 65;
+        char ret = (char)(sumOfAZ-inputChar);
+        return ret;
     }
 
 }
