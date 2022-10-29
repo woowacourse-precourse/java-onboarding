@@ -42,6 +42,16 @@ public class Problem3 {
         return ret;
     }
 
+    public static int getClapCountSum(int maxNum) {
+        int ret = 0;
+
+        for (int clapNum = 1; clapNum <= maxNum; ++clapNum) {
+            ret += getClapCount(clapNum);
+        }
+
+        return ret;
+    }
+
     public static int solution(int number) {
         int answer = 0;
         return answer;
