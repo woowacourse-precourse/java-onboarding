@@ -59,12 +59,12 @@ class Problem1 {
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = -1;
+        int answer = 0;
 
         try {
             inputException(pobi, crong);
         } catch (Exception e) {
-            return answer;
+            return -1;
         }
 
         int pobiMaxScore = Math.max(getMaxSum(pobi), getMaxMul(pobi));
