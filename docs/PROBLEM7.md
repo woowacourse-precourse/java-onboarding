@@ -5,10 +5,11 @@
 1. Friend 클래스를 만들어 객체 생성을 통해 점수 정보를 담는다.
 2. friends 에서 user와 친구인 사람 리스트를 리턴하는 메서드 findUserFriends 생성
 3. friends 에서 user의 친구와 친구인 사람의 리스트를 리턴하는 메서드 findFriendsOfFriend 생성
-4. 친구의 친구 리스트를 통해 Friend 객체 생성하며, 점수를 부여하는 메서드 friendPointCalculate 생성
-5. visitors 리스트를 통해 Friend 객체 생성하며, 점수를 부여하는 메서드 visitorPointCalculate 생성
-6. Friend 객체 리스트에서 점수 상위 5명만 추려 이름을 리스트로 반환하는 메서드 findTopFive 생성
-7. 각 객체를 리스트에 담아 정렬을 통해 문제에서 원하는 조건으로 리턴
+4. **(추가) 이름이 주어질 때 그 이름의 Friend 객체가 만들어졌나 확인하는 checkFriendsObject 메서드 생성**
+5. 친구의 친구 리스트를 통해 Friend 객체 생성하며, 점수를 부여하는 메서드 friendPointCalculate 생성
+6. visitors 리스트를 통해 Friend 객체 생성하며, 점수를 부여하는 메서드 visitorPointCalculate 생성
+7. Friend 객체 리스트에서 점수 상위 5명만 추려 이름을 리스트로 반환하는 메서드 findTopFive 생성
+8. 각 객체를 리스트에 담아 정렬을 통해 문제에서 원하는 조건으로 리턴
 ### 구현 메서드 상세
 #### 클래스 변수
 (ArrayList) Friend 객체를 아이템으로 갖는 friends_list 리스트
@@ -19,7 +20,8 @@
    2. <구현>\
    생성자로 매개변수를 통해 name에 매개변수로 들어온 문자열을 넣는다.\
    point를 리턴하는 getPoing 메서드 생성\
-   point를 더하는 addPoint 메서드 생성
+   point를 더하는 addPoint 메서드 생성\
+      **(추가) 이름을 반환하는 getName 메서드 생성**
 #### List findUserFriends 메서드
    1. <매개변수>\
       (String) user (입력값)\
@@ -35,8 +37,16 @@
    2. <변수>\
       (ArrayList) 리턴할 친추와 친구 리스트를 담을 user_unknown_friends 리스트
    3. <구현>\
-Stream을 이용해 fiends에서 user_friends와 친구 상태만 찾아 user_unknown_friends에 넣어 반환한다.
-#### friendPointCalculate 메서드
+      Stream을 이용해 fiends에서 user_friends와 친구 상태만 찾아 user_unknown_friends에 넣어 반환한다.
+#### **(추가) boolean checkFriendObject 메서드**
+1. **<매개변수>\
+   (String) 확인 필요한 친구 이름 name**
+2. **<변수>\
+없음**
+3. **<구현>\
+클래스 변수 friends_list 리스트 를 돌며 매개변수 name과 동일한 이름이 있으면 true 반환.**
+
+#### void friendPointCalculate 메서드
    1. <매개변수>\
       (ArrayList) findFriendsOfFriend로 찾은 친구 리스트 user_unknown_friends
    2. <변수>\
@@ -46,7 +56,7 @@ Stream을 이용해 fiends에서 user_friends와 친구 상태만 찾아 user_un
       user_unknown_friends 에서 한명씩 꺼내기\
       friends_list에 꺼낸 이름을 가진 객체가 없으면 객체 생성 후 10점 추가\
       있으면 그 객체에 10점 추가
-#### visitorPointCalculate 메서드
+#### void visitorPointCalculate 메서드
    1. <매개변수>\
       (List) visitors (입력값)
    2. <변수>\
