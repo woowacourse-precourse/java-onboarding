@@ -14,25 +14,39 @@ public class Problem7 {
     static final int knowPoint = 10;
     static final int visitPoint = 1;
     static final int recommendNum = 5;
-
-    static Map<String, Integer> friendsPointMap = new HashMap<>();
-
     static String userName;
-
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         List<String> result = new ArrayList<>();
+        Map<String, Integer> friendsPoint_map = new HashMap<>();
         Integer [] tmpArray;
 
         userName = user;
 
         //예외 확인
-        checkException(friends, visitors);
+        checkException(user, friends, visitors);
 
-        givePoint(user, visitors, friends);
-        tmpArray = sortList();
+        //사용자와 이미 친구인 목록을 구함
+        List<String> userFriends_list = findUserFriends(user, friends);
 
-        List<String> recommedList = getKey(sortList());
+        //친구의 친구인 목록을 구하고 점수를 구함
+        List<String> friendsOfFriend_list = findFriendsOfFriend(userFriends_list, friends);
+        //친구의 점수표를 Map에 저장
+        friendsPoint_map = saveUserPoint(friendsPoint_map, friendsOfFriend_list, knowPoint);
+
+        //visitor 점수를 추가하기 위해
+        //단, 이미 친구인 사람은 제거함
+        //visitor UnsupportedOperationException error 발생해서 list를 복제함
+        List<String> removeUser_list= removeDuplication(saveVisitorList(visitors), userFriends_list);
+
+        //친구의 점수표를 MAP에 저장
+        friendsPoint_map = saveUserPoint(friendsPoint_map, removeUser_list, visitPoint);
+
+
+
+        tmpArray = sortList(friendsPoint_map);
+
+        List<String> recommedList = getKey(tmpArray, friendsPoint_map);
         saveSortCheckPoint(tmpArray);
         recommedList = sortList(saveSortCheckPoint(tmpArray), recommedList);
 
@@ -43,7 +57,7 @@ public class Problem7 {
 
         answer = result;
 
-        friendsPointMap.clear();
+        friendsPoint_map.clear();
 
         return answer;
     }
@@ -70,8 +84,7 @@ public class Problem7 {
     }
 
     //visitor UnsupportedOperationException error 발생해서 list를 복제함
-    public static List<String> saveVisitorList(List<String> visitors)
-    {
+    public static List<String> saveVisitorList(List<String> visitors) {
         List<String> visitorsList = new ArrayList<>();
 
         for (int i = 0; i < visitors.size(); i++)
@@ -79,20 +92,9 @@ public class Problem7 {
 
         return visitorsList;
     }
-    public static void givePoint(String user, List<String> visitors, List<List<String>> friends_list)
-    {
-        List<String> userFriendsList;
 
-        //사용자와 친구인 목록
-        userFriendsList = findUserFriends(user, friends_list);
-
-        //친구의 친구 목록을 구하고 점수를 구함
-        saveUserPoint(findFriendsOfFriend(userFriendsList, friends_list), knowPoint);
-        saveUserPoint(removeDuplication(saveVisitorList(visitors), userFriendsList), visitPoint);
-    }
     //사용자와 친구인 친구의 목록을 구해서 점수를 주는 함수
-    public static List<String> findFriendsOfFriend(List<String> userFriendsList, List<List<String>> friends_list)
-    {
+    public static List<String> findFriendsOfFriend(List<String> userFriendsList, List<List<String>> friends_list) {
         List<String> friendOfFriendsList;
 
         //사용자와 친구인 친구의 목록
@@ -105,8 +107,7 @@ public class Problem7 {
 
         return friendOfFriendsList;
     }
-    public static List<String> removeDuplication(List<String> basicList, List<String> keywordList)
-    {
+    public static List<String> removeDuplication(List<String> basicList, List<String> keywordList) {
         for (int i = 0; i < basicList.size(); i++) {
             //사용자의 친구가 리스트에 있을 경우
             for (int j = 0; j < keywordList.size(); j++) {
@@ -119,7 +120,9 @@ public class Problem7 {
 
         return basicList;
     }
-    public static Map<String, Integer> saveUserPoint(List<String> userList, int point) {
+
+    //친구 점수표를 Map에 저장
+    public static Map<String, Integer> saveUserPoint(Map<String,Integer> friendsPoint_map, List<String> userList, int point) {
         int tmp = point;
         String key = "";
 
@@ -127,22 +130,22 @@ public class Problem7 {
             point = tmp;
             key = userList.get(i);
 
-            if (friendsPointMap.containsKey(key))
-                point = friendsPointMap.get(key) + point;
+            if (friendsPoint_map.containsKey(key))
+                point = friendsPoint_map.get(key) + point;
 
-            friendsPointMap.put(key, point);
+            friendsPoint_map.put(key, point);
         }
 
-        return friendsPointMap;
+        return friendsPoint_map;
     }
 
     //value 로 key 찾기
-    public static List<String> getKey(Integer[] valueList) {
+    public static List<String> getKey(Integer[] valueList, Map<String, Integer> friendsPoint_map) {
         List<String> recommendFriendsList = new ArrayList<>();
 
         for (int i = 0; i < valueList.length; i++) {
-            for (String key : friendsPointMap.keySet()) {
-                if (valueList[i] == friendsPointMap.get(key)) {
+            for (String key : friendsPoint_map.keySet()) {
+                if (valueList[i] == friendsPoint_map.get(key)) {
                     if (recommendFriendsList.contains(key))
                         continue;
                     recommendFriendsList.add(key);
@@ -153,8 +156,8 @@ public class Problem7 {
 
         return recommendFriendsList;
     }
-    public static Integer[] sortList() {
-        Collection <Integer> values = friendsPointMap.values();
+    public static Integer[] sortList(Map<String, Integer> friendsPoint_map) {
+        Collection <Integer> values = friendsPoint_map.values();
         Integer [] intArray = values.toArray(new Integer[0]);
 
         Arrays.sort(intArray, Collections.reverseOrder());
@@ -199,15 +202,14 @@ public class Problem7 {
     /*
     예외 처리 함수
      */
-    public static void checkException(List<List<String>> friends, List<String> visitors)
-    {
+    public static void checkException(String user ,List<List<String>> friends, List<String> visitors) {
         //null 체크
-        checkNullException(friends, visitors);
+        checkNullException(user ,friends, visitors);
         /*
         아이디 체크
          */
         //사용자 아이디
-        checkUserNameException(userName);
+        checkUserNameException(user);
         //friends 리스트 아이디
         for (int i = 0; i < friends.size(); i++)
         {
@@ -232,11 +234,11 @@ public class Problem7 {
             if (Character.isUpperCase(user.charAt(i)))
                 throw new IllegalArgumentException(errorMessage);
     }
-    public static void checkNullException(List<List<String>> friends, List<String> visitors) {
+    public static void checkNullException(String user, List<List<String>> friends, List<String> visitors) {
         String errorMessage = "NULL ERROR";
         if (friends == null || visitors == null)
             throw new IllegalArgumentException(errorMessage);
-        if (userName == null)
+        if (user == null)
             throw new IllegalArgumentException(errorMessage);
     }
     //리스트 길이 체크
