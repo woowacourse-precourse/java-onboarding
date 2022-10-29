@@ -12,6 +12,7 @@ public class SimilarNicknameVerifier {
 
     private final Set<String> caughtEmails = new HashSet<>();
     private final List<List<String>> forms;
+    private final Map<String, String> atomicNicknameToEmail = new HashMap<>();
     public SimilarNicknameVerifier(List<List<String>> forms) {
         Validator.validate(forms);
         this.forms = forms;
@@ -19,41 +20,20 @@ public class SimilarNicknameVerifier {
     }
 
     private void verify() {
-        for (int i = 0; i < forms.size(); i++) {
-            catchSimilar(forms.get(i), i);
+        for (var form : forms) {
+            catchSimilar(form.get(0), form.get(1));
         }
     }
 
-    private void catchSimilar(List<String> form, int position) {
-        for (int i = 0; i < position; i++) {
-            catchSimilar(forms.get(i), form);
+    private void catchSimilar(String email, String nickname) {
+        for (int i = 0; i < nickname.length() - 1; i++) {
+            if (atomicNicknameToEmail.containsKey(nickname.substring(i, i + 2))) {
+                caughtEmails.add(email);
+                caughtEmails.add(atomicNicknameToEmail.get(nickname.substring(i, i + 2)));
+            }
+            atomicNicknameToEmail.put(nickname.substring(i, i + 2), email);
         }
     }
-
-    private void catchSimilar(List<String> otherForm, List<String> myForm) {
-        String myNickname = myForm.get(1);
-        String otherNickname = otherForm.get(1);
-
-        if (isSimilar(myNickname, otherNickname)) {
-            caughtEmails.add(myForm.get(0));
-            caughtEmails.add(otherForm.get(0));
-        }
-    }
-
-    private boolean isSimilar(String myNickname, String otherNickname) {
-//        return Stream.iterate(0, i -> i + 1).limit(myNickname.length() - 1)
-//                .map(i -> myNickname.substring(i, i + 2))
-//                .anyMatch(substr -> otherNickname.contains(substr));
-        return IntStream.range(0, myNickname.length() - 1)
-                .mapToObj(i -> myNickname.substring(i, i + 2))
-                .anyMatch(substr -> otherNickname.contains(substr));
-//        for (int i = 0; i < myNickname.length() - 1; i++) {
-//            if (otherNickname.contains(myNickname.substring(i, i + 2)))
-//                return true;
-//        }
-//        return false;
-    }
-
 
     public List<String> getEmails() {
         List<String> result = new ArrayList<>(caughtEmails);
