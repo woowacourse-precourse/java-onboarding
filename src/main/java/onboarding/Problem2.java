@@ -10,7 +10,7 @@ public class Problem2 {
      * @return : String, 복호화된 문자열
      */
     public static String solution(String cryptogram) {
-        String answer = null;
+        String answer = decrypt(cryptogram);
         return answer;
     }
 
