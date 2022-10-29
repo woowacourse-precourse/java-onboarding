@@ -40,6 +40,23 @@ public class Problem7 {
         return answer;
     }
 
+    private static List<String> getRecommendedFriends(String user, List<List<String>> friends, List<String> visitors) {
+        HashMap<String, Integer> scoreBoard = bfs(getGraph(friends), visitors, getUserIndex(user));
+        List<Map.Entry<String, Integer>> entryList = new ArrayList<>(scoreBoard.entrySet());
+        Comparator<Map.Entry<String, Integer>> valueOrKey =
+                Map.Entry.<String, Integer>comparingByValue(Comparator.reverseOrder())
+                        .thenComparing(Map.Entry.comparingByKey());
+
+        List<String> recommendedList = new ArrayList<>();
+        int count = 0;
+        for(Map.Entry<String,Integer> entry: entryList) {
+            if(count == 5) break;
+            recommendedList.add(entry.getKey());
+            count++;
+        }
+        return recommendedList;
+    }
+
     private static HashMap<String, Integer> bfs(List<? extends List<Integer>> graph, List<String> visitors, int start) {
         Queue<int[]> queue = new LinkedList<>();
         boolean[] visited = new boolean[graph.size()];
