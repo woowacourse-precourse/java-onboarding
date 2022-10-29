@@ -16,6 +16,16 @@ public class Problem5 {
         return answer;
     }
 
+    public static void exchange(int currency, int money) {
+        int count = 0;
+
+        while (money >= currency) {
+            money -= currency;
+            count++;
+        }
+        updateCount(currency, money);
+    }
+
     public static void updateCount(int currency, int count) {
         counter.put(currency, count);
     }
