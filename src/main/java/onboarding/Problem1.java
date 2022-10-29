@@ -45,12 +45,10 @@ class Problem1 {
     }
 
     private static int productDigits(int page) {
-        int result = 1;
-        String pageStr = Integer.toString(page);
-        for (int i = 0; i < pageStr.length(); i++) {
-            result *= pageStr.charAt(i) - '0';
-        }
-        return result;
+        return String.valueOf(page)
+                .chars()
+                .map(Character::getNumericValue)
+                .reduce(1, (a, b) -> a * b);
     }
 
     private static boolean isBoundary(List<Integer> pages) {
