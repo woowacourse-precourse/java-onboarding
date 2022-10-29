@@ -1,29 +1,22 @@
 package onboarding;
 
+import java.util.StringJoiner;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
 public class Problem4 {
     public static String solution(String word) {
-        char[] wordList = word.toCharArray();
 
-
-        String answer = getWords(wordList);
-        return answer;
+        return word.chars().map(Problem4::contraryTo).mapToObj(Character::toString).collect(Collectors.joining());
     }
-
-    private static String getWords(char[] wordList) {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < wordList.length; i++) {
-            if (Character.isWhitespace(wordList[i])) {
-                sb.append(" ");
-                continue;
-            }
-            if(Character.isUpperCase(wordList[i])){
-                sb.append((char)(155-(int) wordList[i]));
-            } else {
-                sb.append((char)(219-(int) wordList[i]));
-            }
-            System.out.println(sb);
+    private static int contraryTo(int s) {
+        if (Character.isUpperCase(s)) {
+            return 155 - s;
         }
-        return sb.toString();
+        if (Character.isLowerCase(s)) {
+            return 219 - s;
+        }
+        return s;
     }
 
 }
