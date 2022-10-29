@@ -36,4 +36,14 @@ public class Problem7 {
             friendsMap.put(secondFriend, secondFriendArr);
         }
     }
+
+    static void addVisitorScore(String user, List<String> visitors) {
+
+        userScoreMap = new HashMap<>();
+
+        for (String visitor : visitors) {
+            if(!friendsMap.get(user).contains(visitor))
+                userScoreMap.put(visitor, userScoreMap.getOrDefault(visitor, 0) + VISITOR_SCORE);
+        }
+    }
 }
