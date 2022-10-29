@@ -9,16 +9,16 @@ public class Problem6 {
 	public static List<String> solution(List<List<String>> forms) {
 		//닉네임 리스트 생성
 		List<String> nicknameList = makeNicknameList(forms);
-		// 중복된 닉네임 리스트
+		// 중복 사용된 닉네임 리스트
 		List<String> duplicateNicknameList = new ArrayList<>();
 
 		for (List<String> list : forms) {
 			// 중복 여부 판단 문자열 리스트 생성
 			List<String> splitStringList = makeSplitStringList(list.get(1));
+			// 판단의 기준인 닉네임을 제외한 닉네임 리스트 생성
 			List<String> ExtraNicknameList = makeExtraNicknameList(nicknameList, list.get(1));
-			for (String extraNickname : ExtraNicknameList) {
-				checkDuplicate(duplicateNicknameList, splitStringList, extraNickname);
-			}
+			// 판단의 기준인 닉네임을 제외한 닉네임 리스트를 확인 후 중복 사용된 닉네임 리스트에 추가
+			checkExtraNicknameList(duplicateNicknameList, splitStringList, ExtraNicknameList);
 		}
 
 		// 리스트 중복 제거
@@ -34,7 +34,14 @@ public class Problem6 {
 		return answer;
 	}
 
-	private static void checkDuplicate(List<String> duplicateNicknameList, List<String> splitStringList,
+	private static void checkExtraNicknameList(List<String> duplicateNicknameList, List<String> splitStringList,
+		List<String> ExtraNicknameList) {
+		for (String extraNickname : ExtraNicknameList) {
+			checkNickname(duplicateNicknameList, splitStringList, extraNickname);
+		}
+	}
+
+	private static void checkNickname(List<String> duplicateNicknameList, List<String> splitStringList,
 		String extraNickname) {
 		for (String splitString : splitStringList) {
 			// 중복된 닉네임 리스트에 추가
