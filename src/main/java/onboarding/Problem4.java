@@ -5,6 +5,12 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Problem4 {
+    private final static int ALPHABET_NUM = 26;
+    private final static int ASCII_A = 65;
+    private final static int ASCII_Z = 90;
+    private final static int ASCII_a = 97;
+    private final static int ASCII_z = 122;
+
     public static String solution(String word) {
         String answer = "";
         if(checkLengthException(word)){
@@ -25,40 +31,44 @@ public class Problem4 {
     }
 
     protected static HashMap<Character,Character> createAlphabetMap(){
-        HashMap<Character, Character> result = new HashMap<>();
-        List<Character> alphaList = new ArrayList<>();
-        List<Character> reverseAlphaList = new ArrayList<>();
-        result.put(' ', ' ');
-        final int ASCII_A = 65;
-        final int ASCII_Z = 90;
-        final int ASCII_a = 97;
-        final int ASCII_z = 122;
-        final int ALPHABET_NUM = 26;
+        HashMap<Character, Character> alphabetMap = new HashMap<>();
+        List<Character> alphaList = makeAlphaList();
+        List<Character> reverseAlphaList = makeReverseAlphaList();
+        alphabetMap.put(' ', ' ');
 
+        for(int i=0; i<(ALPHABET_NUM*2);i++){
+            alphabetMap.put(alphaList.get(i), reverseAlphaList.get(i));
+        }
+        return alphabetMap;
+    }
+
+    private static List<Character> makeAlphaList() {
+        List<Character> alphaList = new ArrayList<>();
+        for(char c=ASCII_a; c <= ASCII_z; c++){
+            alphaList.add(c);
+        }
         for(char c=ASCII_A; c <= ASCII_Z; c++){
             alphaList.add(c);
+        }
+        return alphaList;
+    }
+
+    private static List<Character> makeReverseAlphaList() {
+        List<Character> reverseAlphaList = new ArrayList<>();
+        for(char c=ASCII_z; c >= ASCII_a; c--){
+            reverseAlphaList.add(c);
         }
         for(char c=ASCII_Z; c >= ASCII_A; c--){
             reverseAlphaList.add(c);
         }
-        for(char c=ASCII_a; c <= ASCII_z; c++){
-            alphaList.add(c);
-        }
-        for(char c=ASCII_z; c >= ASCII_a; c--){
-            reverseAlphaList.add(c);
-        }
-        for(int i=0; i<(ALPHABET_NUM*2);i++){
-            result.put(alphaList.get(i), reverseAlphaList.get(i));
-        }
-        return result;
+        return reverseAlphaList;
     }
 
     protected static String changeText(String text, HashMap<Character, Character> alphabetMap){
         List<Character> charList = seperateText(text);
-        Character c, changedChar;
+        Character changedChar;
         String result = "";
-        for(int i = 0;i < charList.size(); i++){
-            c = charList.get(i);
+        for(Character c : charList){
             changedChar = alphabetMap.get(c);
             result += String.valueOf(changedChar);
         }
