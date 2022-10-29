@@ -5,12 +5,12 @@ import java.util.Random;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        openBook(pobi);
-        openBook(crong);
-        int pobiScore, crongScore;
-        pobiScore = getScore(pobi);
-        crongScore = getScore(crong);
-        int answer = Integer.MAX_VALUE;
+//        openBook(pobi);
+//        openBook(crong);
+//        int pobiScore, crongScore;
+        int pobiScore = getScore(pobi);
+        int crongScore = getScore(crong);
+        int answer = getResult(pobiScore, crongScore);
         return answer;
     }
     public static void openBook(List<Integer> list) {
@@ -23,11 +23,11 @@ class Problem1 {
         int randomValue = random.nextInt(399) + 1;
 
         if (randomValue % 2 == 0) {
-            list.add(randomValue - 1);
-            list.add(randomValue);
+            list.add(0, randomValue - 1);
+            list.add(1, randomValue);
         } else {
-            list.add(randomValue);
-            list.add(randomValue + 1);
+            list.add(0, randomValue);
+            list.add(1, randomValue + 1);
         }
     }
     public static int getScore(List<Integer> list) {
@@ -55,5 +55,15 @@ class Problem1 {
         result = leftResult >= rightResult ? leftResult : rightResult;
         return result;
     }
-//    public static int result() {}
+    public static int getResult(int pobi, int crong) {
+        if (pobi > crong) {
+            return 1;
+        } else if (pobi == crong) {
+            return 0;
+        } else if (pobi < crong) {
+            return 2;
+        } else {
+            return -1;
+        }
+    }
 }
