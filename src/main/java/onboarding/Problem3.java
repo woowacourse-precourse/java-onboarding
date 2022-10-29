@@ -14,10 +14,10 @@ public class Problem3 {
         for(int i = 1; i<= number; i++){
             // 문자열로 변환
             String new_n = Integer.toString(i);
-            // 3,6,9의 개수 계산
-            int plus = Count(new_n, '3') + Count(new_n, '6') + Count(new_n, '9');
-            // 기존 answer에 추가
-            answer += plus;
+            // 3,6,9의 개수 더한 값 = 해당 값에서 박수 계산
+            int clap = Count(new_n, '3') + Count(new_n, '6') + Count(new_n, '9');
+            // 박수 누적 추가 = 정답
+            answer += clap;
         }
         return answer;
     }
