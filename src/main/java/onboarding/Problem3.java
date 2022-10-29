@@ -14,7 +14,7 @@ public class Problem3 {
         int answer = 0; // 3 / 6 / 9의 총 개수 저장
 
         for(int i = 1; i <= number; i++) {
-            count += get369Num(i);
+            answer += get369Num(i);
         }
 
         return answer;
