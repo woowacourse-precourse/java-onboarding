@@ -11,13 +11,24 @@ public class Problem3 {
         int count = 0;
         for(int i=1;i<=number;i++){
             int current = i;
-            while (current!= 0){
-                if((current%10)==3||(current%10)==6||(current%10)==9){
-                    count ++;
-                }
-                current /=10;
-            }
+            count = getCount(count, current);
         }
         return count;
     }
+
+    private static int getCount(int count, int current) {
+        while (current != 0){
+            count = increseCounts(count, current);
+            current /=10;
+        }
+        return count;
+    }
+
+    private static int increseCounts(int count, int current) {
+        if((current %10)==3||(current %10)==6||(current %10)==9){
+            count++;
+        }
+        return count;
+    }
+    
 }

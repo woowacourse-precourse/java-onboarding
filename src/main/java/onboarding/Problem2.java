@@ -1,9 +1,9 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 
+//삭제할 리스트 생성
+//문자열에서 삭제할 리스트를 찾아서 삭제해줌
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
