@@ -3,20 +3,6 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
-    public static void main(String[] args) {
-        String user = "mrko";
-        List<List<String>> friends = List.of(
-                List.of("donut", "andole"),
-                List.of("donut", "jun"),
-                List.of("donut", "mrko"),
-                List.of("shakevan", "andole"),
-                List.of("shakevan", "jun"),
-                List.of("shakevan", "mrko")
-        );
-        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-        System.out.println(solution(user, friends, visitors));
-    }
-
     private static final List<String> myFriends = new ArrayList<>();
     private static final List<String> aFriendWeKnow = new ArrayList<>();
     private static final Map<String, Integer> result = new HashMap<>();
@@ -29,7 +15,7 @@ public class Problem7 {
     }
 
     private static void init(List<List<String>> friends, List<String> visitors) {
-        ArrayList<String> userIds = new ArrayList<>();
+        List<String> userIds = new ArrayList<>();
         for (List<String> users : friends) {
             users.forEach(user -> {
                 boolean result = userIds.stream()
@@ -53,14 +39,13 @@ public class Problem7 {
         }
     }
 
-    private static List<String> friendsVerifier(String myId, List<List<String>> friends) {
+    private static void friendsVerifier(String myId, List<List<String>> friends) {
         saveMyFriends(myId, friends);
         for (List<String> users : friends) {
             checkFriendsOfOtherUser(users);
         }
         removeMyId(myId);
         calculationAFriendsWeNow();
-        return myFriends;
     }
 
     private static void visitorsVerifier(List<String> visitors) {
