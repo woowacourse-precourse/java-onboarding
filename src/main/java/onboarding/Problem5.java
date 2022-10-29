@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -18,7 +19,20 @@ public class Problem5 {
      * @return 단위가 큰 화폐 순서대로 개수가 담긴 리스트
      */
     private List<Integer> getWithDrawList(int money){
+        // 결과로 반환할 리스트를 초기화
+        List<Integer> result = new ArrayList<>();
+        // 화폐로 바꾸고 남은 돈을 저장할 변수를 초기화
+        int remain = money;
 
+        //큰 화폐부터 최대 개수를 리스트에 저장
+        for (int currency : currencyList){
+            int currencyCount = getCurrencyCount(remain, currency);
+            result.add(currencyCount);
+            //남은 돈 계산
+            remain -= currency * currencyCount;
+        }
+
+        return result;
     }
 
     /**
