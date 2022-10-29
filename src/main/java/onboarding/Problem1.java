@@ -5,6 +5,8 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        int pobiScore;
+        int crongScore;
 
         if (!validateBoundary(pobi) || !validateBoundary(crong)) {
             return -1;
@@ -15,6 +17,10 @@ class Problem1 {
         if (!validateContinuous(pobi) || !validateContinuous(crong)) {
             return -1;
         }
+
+        pobiScore = Math.max(compareMaxNum(pobi.get(0)), compareMaxNum(pobi.get(1)));
+        crongScore = Math.max(compareMaxNum(crong.get(0)), compareMaxNum(crong.get(1)));
+
         return answer;
     }
 
@@ -52,5 +58,9 @@ class Problem1 {
             num /= 10;
         }
         return temp;
+    }
+
+    private static int compareMaxNum(int num) {
+        return Math.max(addDigit(num), multiplyDigit(num));
     }
 }
