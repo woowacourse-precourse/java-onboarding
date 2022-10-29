@@ -35,6 +35,8 @@ public class Problem7 {
         Map<String, Integer> score = p.initScore(friends);
         Set<String> userSFriend = p.userSFriendInit(user, friends);
         p.addScoreLinkFriend(friends, score, userSFriend);
+        p.addScoreVisitors(score, visitors);
+
         System.out.println(userSFriend.toString());
         System.out.println(score.toString());
         return answer;
@@ -86,6 +88,16 @@ public class Problem7 {
     }
 
     // visitors 점수 추가
+
+    public void addScoreVisitors(Map<String, Integer> score, List<String> visitors) {
+        for (String visitor : visitors) {
+            if (score.get(visitor) != null) {
+                score.put(visitor, score.get(visitor) + 1);
+            }else {
+                score.put(visitor, score.getOrDefault(visitor, 0) + 1);
+            }
+        }
+    }
 
     // result 반환
 
