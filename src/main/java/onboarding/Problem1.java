@@ -7,4 +7,18 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+
+    public static int getLargerValue(int page) {
+        String[] splitNums = String.valueOf(page).split("");
+
+        int acc = 0;
+        int mul = 1;
+
+        for (String splitNum : splitNums) {
+            acc += Integer.parseInt(splitNum);
+            mul *= Integer.parseInt(splitNum);
+        }
+
+        return Math.max(acc, mul);
+    }
 }
