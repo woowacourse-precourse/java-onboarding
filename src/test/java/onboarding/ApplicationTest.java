@@ -236,9 +236,7 @@ class ApplicationTest {
         		lowerAlphabets[i] = (char)(97 + i);
         	}
         	System.out.println(Arrays.toString(lowerAlphabets));
-        	for(int i=0; i<lowerAlphabets.length; i++) {
-        		lowerAlphabets[i] = Problem4.convertCharReverse(lowerAlphabets[i]);
-        	}
+        	Problem4.convertCharArrReverse(lowerAlphabets);
         	System.out.println(Arrays.toString(lowerAlphabets));
         }
     }
