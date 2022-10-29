@@ -70,32 +70,37 @@ public class Problem7 {
         return userList;
     }
 
-    /** 추천할 친구 List를 반환하는 함수 */
-    private static List<String> extractSuggestionFriends(Map<String, Integer> scoreInfo) {
+    /** 추천 점수를 내림차순으로 정렬한 List를 구하는 함수 */
+    private static List<Integer> getSortedScoreList(Map<String, Integer> scoreInfo) {
         List<Integer> scoreList = new ArrayList<>();
         for(String name : scoreInfo.keySet()) {
             int score = scoreInfo.get(name);
+
+            if(scoreList.contains(score)) continue;
 
             scoreList.add(score);
         }
         scoreList.sort(Collections.reverseOrder());
 
-        int lastScore = 0;
+        return scoreList;
+    }
+
+    /** 추천할 친구 List를 반환하는 함수 */
+    private static List<String> extractSuggestionFriends(Map<String, Integer> scoreInfo) {
+        List<Integer> scoreList = getSortedScoreList(scoreInfo);
+
         List<String> answer = new ArrayList<>();
         for(int score : scoreList) {
-            if(lastScore == score) continue;
-
             List<String> userList = getScoreUserList(scoreInfo, score);
             Collections.sort(userList);
 
             answer.addAll(userList);
 
-            if(answer.size() >= SUGGESTION_COUNT) {
-                answer = answer.subList(0, SUGGESTION_COUNT);
-                break;
-            }
+            if(answer.size() >= SUGGESTION_COUNT) break;
+        }
 
-            lastScore = score;
+        if(answer.size() >= SUGGESTION_COUNT) {
+            answer = answer.subList(0, SUGGESTION_COUNT);
         }
 
         return answer;
