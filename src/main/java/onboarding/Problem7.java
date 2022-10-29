@@ -9,6 +9,7 @@ public class Problem7 {
         }
         return false;
     }
+
     public static String getFriendName(String user, List<String> friend) {
         if(user.equals(friend.get(0))) {
             return friend.get(1);
@@ -17,6 +18,7 @@ public class Problem7 {
             return friend.get(0);
         }
     }
+
     public static Set<String> getFriendSet(String user, List<List<String>> friends){
         Set<String> friendSet = new HashSet<>();
 
@@ -30,7 +32,29 @@ public class Problem7 {
         return friendSet;
     }
 
-    public static Map<String, Integer> getFriendsScore(Set<String> friendSet, List<List<String>> friends) {
+    public static boolean isSameFriend(String user, String userFriend, List<String> friend) {
+        if(isContainUser(user, friend)) {   // user가 있다면 체크 X
+            return false;
+        }
+
+        if(!isContainUser(userFriend, friend)) {    // user의 친구가 없다면 false
+            return false;
+        }
+
+        return true;
+    }
+
+    public static String getSameFriendName(String user, Set<String> friendSet, List<String> friend) {
+        for(String userFriend : friendSet) {
+            if(isSameFriend(user, userFriend, friend)) {
+                return getFriendName(userFriend, friend);
+            }
+        }
+
+        return null;
+    }
+
+    public static Map<String, Integer> getFriendsScore(String user, Set<String> friendSet, List<List<String>> friends) {
         Map<String, Integer> scoreMap = new HashMap<>();
 
         for(List<String> friend : friends) {
