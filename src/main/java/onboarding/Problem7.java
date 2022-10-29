@@ -16,6 +16,10 @@ public class Problem7 {
         return answer;
     }
 
+    static Map<String, Integer> countVisit(List<String> visitors) {
+        return null;
+    }
+
     static Map<String, Integer> countBothKnowFriends(String mainCharacter, Map<String, List<String>> userToFriends) {
         Map<String, Integer> bothKnowFriendsCount = new HashMap<>();
         List<String> mainCharacterFriends = userToFriends.get(mainCharacter);
@@ -29,7 +33,6 @@ public class Problem7 {
             .filter(friend1 -> friends2.contains(friend1))
             .count();
     }
-
 
     static List<String> findAllUserWithoutMainCharacter(String mainCharacter, Map<String, List<String>> userToFriends, List<String> visitors) {
         List<String> allUserWithoutMainCharacter = new ArrayList<>();

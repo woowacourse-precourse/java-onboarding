@@ -50,4 +50,16 @@ class Problem7Test {
         Assertions.assertThat(bothKnowFriendsCount.get("jun"))
             .isEqualTo(2);
     }
+
+    @Test
+    void countVisit() {
+        Map<String, Integer> visitCount = Problem7.countVisit(List.of("bedi", "bedi", "donut", "bedi", "shakevan"));
+
+        Assertions.assertThat(visitCount.get("bedi"))
+            .isEqualTo(3);
+        Assertions.assertThat(visitCount.get("donut"))
+            .isEqualTo(1);
+        Assertions.assertThat(visitCount.get("shakevan"))
+            .isEqualTo(1);
+    }
 }
