@@ -23,7 +23,7 @@ public class Problem7 {
 
         divideFriends(user, friends);
 
-        score = giveScore(friends, visitors, score);
+        giveScore(visitors, score);
 
         return score.entrySet().stream()
                 .filter(e -> e.getValue() != 0)
@@ -41,25 +41,32 @@ public class Problem7 {
                 .collect(Collectors.toList());
     }
 
-    public static Map<String, Integer> giveScore(List<List<String>> friends, List<String> visitors, Map<String, Integer> score) {
+    public static void giveScore(List<String> visitors, Map<String, Integer> score) {
+        getFriendsScore(score);
+
+        getVisitorsScore(visitors, score);
+    }
+
+    private static void getFriendsScore(Map<String, Integer> score) {
         for (List<String> notFriend : notFriendsList) {
-            String id = "";
+            String id = null;
             if (myFriendsList.contains(notFriend.get(0)) && !myFriendsList.contains(notFriend.get(1))) {
                 id = notFriend.get(1);
             } else if (myFriendsList.contains(notFriend.get(1)) && !myFriendsList.contains(notFriend.get(0))) {
                 id = notFriend.get(0);
             }
-            if (!id.equals("") && !myFriendsList.contains(id)) {
+            if (id != null) {
                 score.put(id, score.getOrDefault(id, 0) + 10);
             }
         }
+    }
 
+    private static void getVisitorsScore(List<String> visitors, Map<String, Integer> score) {
         for (String visitor : visitors) {
             if (!myFriendsList.contains(visitor)) {
                 score.put(visitor, score.getOrDefault(visitor, 0) + 1);
             }
         }
-        return score;
     }
 
     private static void divideFriends(String user, List<List<String>> friends) {
