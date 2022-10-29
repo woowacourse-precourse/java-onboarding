@@ -1,7 +1,5 @@
 package onboarding;
 
-import java.util.stream.Stream;
-
 public interface PageCalculator {
     default int reduce(Page page){
         String[] pageSplitStrings = getSplitStrings(page);
