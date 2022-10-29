@@ -30,4 +30,9 @@ class Problem1 {
         int sum = Arrays.stream(numbers).sum();
         return sum;
     }
+
+    private int multiplyNumbers(int[] numbers) {
+        int result = Arrays.stream(numbers).reduce(1, (a, b) -> a * b);
+        return result;
+    }
 }
