@@ -36,8 +36,20 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
         
         problem7.makeFriendGraph(friends);
-
+        problem7.calcScoreFriends(user);
+        
         return answer;
+    }
+
+    // 사용자와 함께 아는 친구의 수로 score 계
+    public void calcScoreFriends(String user){
+        List<String> userFriendList = friendGraph.get(user);
+
+        for(String userFriend : userFriendList){
+            for(String scoredFriend : friendGraph.get(userFriend)){
+                friendScore.put(scoredFriend,(friendScore.get(scoredFriend) + 10));
+            }
+        }
     }
 
     // HashMap으로 FriendGraph 구성
