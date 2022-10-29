@@ -10,7 +10,7 @@ public class Problem4 {
                 ;
             }
             else {
-                ;
+                answer += currentCh;
             }
         }
 
