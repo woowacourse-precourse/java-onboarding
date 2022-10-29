@@ -1,13 +1,31 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.logging.LogManager;
 
-public class Problem5 {
+class ExchangeMoneyPro5 {
 
-  public static void divideMoney(List<Integer> answer, Integer money) {
+  public static final int MIN_MONEY = 1;
+  public static final int MAX_MONEY = 1_000_000;
+
+  private final int money;
+
+  public ExchangeMoneyPro5(int money) {
+    validateMoney(money);
+    this.money = money;
+  }
+
+  public void validateMoney(int money) {
+    if (money < MIN_MONEY || money > MAX_MONEY) {
+      throw new IllegalArgumentException(
+          "Please enter a word between " + MIN_MONEY + " and " + MAX_MONEY + " in length."
+      );
+    }
+  }
+
+  public List<Integer> divideMoney() {
+    List<Integer> answer = new ArrayList<>();
+    int money = this.money;
     answer.add(money / 50000);
     money %= 50000;
     answer.add(money / 10000);
@@ -25,11 +43,14 @@ public class Problem5 {
     answer.add(money / 10);
     money %= 10;
     answer.add(money);
+    return answer;
   }
+}
+
+public class Problem5 {
 
   public static List<Integer> solution(int money) {
-    List<Integer> answer = new ArrayList<>();
-    divideMoney(answer, money);
-    return answer;
+    ExchangeMoneyPro5 exchanger = new ExchangeMoneyPro5(money);
+    return exchanger.divideMoney();
   }
 }
