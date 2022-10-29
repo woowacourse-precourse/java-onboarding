@@ -31,7 +31,8 @@ import java.util.List;
 class Problem1 {
 
     public static class Card {
-        Integer selectCard(List<Integer> player) {
+        List<Integer> getMax = new ArrayList<>();
+        List<Integer> selectCard(List<Integer> player) {
             // divide the number by each digit
             List<Integer> digits = new ArrayList<>();
             Integer getPage = player.get(0);
@@ -39,9 +40,10 @@ class Problem1 {
                 digits.add(getPage % 10);
                 getPage = getPage / 10;
             }
-            Integer sumResult = sumDigits(digits);
+            // sum each number and add put it in the max list
+            getMax.add(sumDigits(digits));
             Integer multiplicationResult = multiplicationDigits(digits);
-            return multiplicationResult;
+            return getMax;
         }
 
         // function to find the sum of each number
