@@ -25,4 +25,22 @@ class Problem1 {
             return leftSum;
         return rightSum;
     }
+
+    public static int mulPages(int leftPage, int rightPage) {
+
+        int leftMul = 1, rightMul = 1;
+
+        while (leftPage > 0) {
+            leftMul *= leftPage % 10;
+            leftPage /= 10;
+        }
+        while (rightPage > 0) {
+            rightMul *= rightPage % 10;
+            rightPage /= 10;
+        }
+
+        if (leftMul >= rightMul)
+            return leftMul;
+        return rightMul;
+    }
 }
