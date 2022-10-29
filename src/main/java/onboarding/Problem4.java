@@ -7,6 +7,9 @@ public class Problem4 {
     static final char DIFF_A_Z = (char) (END_CHAR - START_CHAR);
 
     public static char transformChar(char ch) {
+        if(!Character.isAlphabetic(ch)) {
+            return ch;
+        }
         if (Character.isLowerCase(ch)) {
             return Character.toLowerCase(transformChar(Character.toUpperCase(ch)));
         }
