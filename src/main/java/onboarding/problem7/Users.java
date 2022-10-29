@@ -14,10 +14,6 @@ public class Users {
         users = new ArrayList<>();
     }
 
-    public void create(String name) {
-        users.add(new User(name));
-    }
-
     public List<String> getRecommendFriendsRankingFive() {
         return users.stream()
                 .takeWhile(Objects::nonNull)
@@ -31,6 +27,10 @@ public class Users {
         return users.stream()
                 .filter(user -> user.getName().equals(name))
                 .findAny()
-                .orElse(new User(name));
+                .orElseGet(() -> {
+                    User user = new User(name);
+                    users.add(user);
+                    return user;
+                });
     }
 }
