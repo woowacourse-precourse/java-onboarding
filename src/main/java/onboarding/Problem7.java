@@ -5,30 +5,25 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem7 {
-    protected static class User implements Comparable<User> {
-        private String name ;
-        private int score;
+    private static class User implements Comparable<User> {
+        private final String name ;
+        private final int score;
 
-        protected User(String name, int score) {
+        public User(String name, int score) {
             this.name = name;
             this.score = score;
         }
 
-        protected String getName() {
+        public String getName() {
             return this.name;
         }
 
-        protected int getScore() {
+        public int getScore() {
             return this.score;
         }
 
         @Override
         public int compareTo(User user) {
-            /*
-            [ 사용자 정의 Override compareTo 메서드
-            이번 미션은 큰 수가 앞으로 와야하기때문에 Score로 비교할 땐 반대로 음수를 붙여주고
-            이름은 정상적으로 설정했음
-             */
             if(this.score == user.getScore()){
                 return Integer.compare(this.name.compareTo(user.getName()), 0);
             } else {

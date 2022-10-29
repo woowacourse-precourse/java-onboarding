@@ -5,8 +5,7 @@ import java.util.stream.IntStream;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer;
-        if (!checkIsCountinous(pobi) || !checkIsCountinous(crong)){
+        if (checkIsNotCountinous(pobi) || checkIsNotCountinous(crong) || checkIsNotOdd(pobi.get(0)) || checkIsNotOdd(crong.get(0))){
             return -1 ;
         }
         int pobiMax = 0;
@@ -21,35 +20,31 @@ class Problem1 {
                     , getMultiStream(getNumSplitStream(j)));
             crongMax = Math.max(crongMax, maxValue);
         }
-        if(pobiMax > crongMax){
-            answer = 1 ;
-        }else if (pobiMax < crongMax){
-            answer = 2 ;
-        } else {
-            answer = 0 ;
-        }
-        return answer ;
+        return (pobiMax>crongMax) ? 1 : (pobiMax==crongMax) ? 0 : 2 ;
     }
 
-    protected static IntStream getNumSplitStream(Integer num){
+    private static IntStream getNumSplitStream(Integer num){
         String[] splitList = num.toString().split("");
         return Arrays.stream(splitList).mapToInt(Integer::parseInt);
     }
-    protected static int getSumOfStream(IntStream intStream){
+    private static int getSumOfStream(IntStream intStream){
         return intStream.sum();
     }
-    protected static int getMultiStream(IntStream intStream){
+    private static int getMultiStream(IntStream intStream){
         return intStream.reduce(1,(i,j) -> i*j);
     }
 
-    protected static Boolean checkIsCountinous(List<Integer> list) {
+    private static boolean checkIsNotCountinous(List<Integer> list) {
         Integer start = list.get(0);
         for(int i = 1 ; i < list.size(); ++i ){
             if (start+1 != list.get(i)) {
-                return false ;
+                return true;
             }
             start = list.get(i);
         }
-        return true ;
+        return false;
+    }
+    private static boolean checkIsNotOdd(Integer num){
+        return num%2 == 0 ;
     }
 }
