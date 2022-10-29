@@ -1,9 +1,7 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
+
 /*
 * 기능 구현 사항
 * 1. 닉네임을 두 글자씩 나누어서 hashSet에 저장.
@@ -13,8 +11,7 @@ import java.util.List;
 * */
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        HashMap<String> splittedNickName = mappingTwoCharacterToSet(forms);
+        HashMap<String, List<String>> splittedNickName = mappingTwoCharacterToSet(forms);
         HashSet<String> duplicatedNickNameEmail = new HashSet<>();
         for (List<String> information:
              forms) {
@@ -22,14 +19,15 @@ public class Problem6 {
             if(nickName.length() >= 2){
                 for (int i = 0; i < nickName.length()-1; i++) {
                     String subNickName = nickName.substring(i, i+2);
-                    if(!splittedNickName.add(subNickName)){
+                    List<String> nickNames = splittedNickName.get(subNickName);
+                    if(nickNames.size() > 1){
                         duplicatedNickNameEmail.add(information.get(0));
                     }
                 }
             }
         }
-
-        System.out.println(duplicatedNickNameEmail);
+        List<String> answer = new ArrayList<>(duplicatedNickNameEmail);
+        Collections.sort(answer);
         return answer;
     }
 
