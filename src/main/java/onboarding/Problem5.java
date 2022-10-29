@@ -12,6 +12,7 @@ public class Problem5 {
 
         for (int change : moneyList) {
             result.add(money / change);
+            money %= change;
         }
 
         return result;
