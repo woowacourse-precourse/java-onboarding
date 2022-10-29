@@ -21,3 +21,19 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능 목록 작성해보기
+- Validation
+  - forms size
+    - 1 ~ 10000명의 범위에 해당하는 크기인지
+  - 이메일
+    - 길이가 11 ~ 20인지
+    - 이메일 형식에 부합하는지
+  - 닉네임
+    - 한글인지 
+    - 1 ~ 20 자의 길이에 해당하는지
+  
+- 필요 메소드
+  - 닉네임이 중복되는지 판별하는 메소드
+  - 이메일 중복을 제거해주는 메소드
+  - 이메일 오름차순으로 정렬해주는 메소드
