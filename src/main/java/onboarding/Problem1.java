@@ -20,6 +20,7 @@ class Problem1 {
         }
         return multiply;
     }
+
     private static int getMaxScore(List<Integer> pages) {
         int maxScore = 0;
         for(int page : pages) {
@@ -31,5 +32,13 @@ class Problem1 {
 
         return maxScore;
     }
+
+    private static int getPageNumberGameResult(int pobiScore, int crongScore) {
+        if( pobiScore == -1 || crongScore == -1 ) return -1;
+        if( pobiScore > crongScore ) return 1;
+        else if( pobiScore < crongScore ) return 2;
+        else return 0;
+    }
+
 
 }
