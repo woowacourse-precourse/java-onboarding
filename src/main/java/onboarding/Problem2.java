@@ -3,13 +3,9 @@ package onboarding;
 import java.util.*;
 
 public class Problem2 {
-    public static Stack<Character> st= new Stack<>();
-    public static StringBuilder answer;
-
     public static String solution(String cryptogram) {
-        answer = new StringBuilder();
-
-        return answer.toString();
+        String answer = "";
+        return answer;
     }
 
     public static Set<Character> createCharactersSet(String cryptogram) {
@@ -20,5 +16,13 @@ public class Problem2 {
         }
 
         return charactersSet;
+    }
+
+    public static String replaceRepeatCharacter(String cryptogram) {
+        Set<Character> charactersSet = createCharactersSet(cryptogram);
+        for (Character character : charactersSet) {
+            cryptogram = cryptogram.replaceAll(character + "{2,}", "");
+        }
+        return cryptogram;
     }
 }
