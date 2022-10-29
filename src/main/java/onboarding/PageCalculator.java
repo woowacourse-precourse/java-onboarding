@@ -1,16 +1,15 @@
 package onboarding;
 
 public interface PageCalculator {
-    default int reduce(Page page){
+    default int reduce(Integer page){
         String[] pageSplitStrings = getSplitStrings(page);
         return calc(pageSplitStrings);
     }
 
     int calc(String[] pageSplitStrings);
 
-    private String[] getSplitStrings(Page page) {
-        Integer pageNumber = page.getPage();
-        String str = pageNumber.toString();
+    private String[] getSplitStrings(Integer page) {
+        String str = page.toString();
         String[] split = str.split("");
         return split;
     }

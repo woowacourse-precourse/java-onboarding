@@ -5,43 +5,41 @@ public class Book {
     public static final int LAST_PAGE = 400;
     public static final int FIRST_PAGE = 1;
 
-    private Page leftPage;
-    private Page rightPage;
+    private Page page;
 
-    public Book(Page leftPage, Page rightPage) {
-        this.leftPage=leftPage;
-        this.rightPage=rightPage;
+    public Book(Page page) {
+        this.page=page;
     }
 
     public boolean isNotLeftPageOdd(){
-        if(this.leftPage.getPage()%2!=1) return true;
+        if(this.page.getLeftPage()%2!=1) return true;
         return false;
     }
 
     public boolean isNotRightPageEven(){
-        if(this.rightPage.getPage()%2!=0) return true;
+        if(this.page.getRightPage()%2!=0) return true;
         return false;
     }
 
     public boolean hasFirstPageOrLess() {
-        if(this.leftPage.getPage() <= FIRST_PAGE ||this.rightPage.getPage()<=FIRST_PAGE )return true;
+        if(this.page.getLeftPage() <= FIRST_PAGE ||this.page.getRightPage()<=FIRST_PAGE )return true;
         return false;
     }
 
     public boolean hasLastPageOrMore() {
-        if(LAST_PAGE<=this.leftPage.getPage() || LAST_PAGE<=this.rightPage.getPage())return true;
+        if(LAST_PAGE<=this.page.getLeftPage() || LAST_PAGE<=this.page.getRightPage())return true;
         return false;
     }
 
     public int getDifference() {
-        return rightPage.getPage()- leftPage.getPage();
+        return page.getRightPage()- page.getLeftPage();
     }
 
     public int leftPageCalc(PageCalculator pageCalculator){
-        return pageCalculator.reduce(leftPage);
+        return pageCalculator.reduce(page.getLeftPage());
     }
 
     public int rightPageCalc(PageCalculator pageCalculator){
-        return pageCalculator.reduce(rightPage);
+        return pageCalculator.reduce(page.getRightPage());
     }
 }

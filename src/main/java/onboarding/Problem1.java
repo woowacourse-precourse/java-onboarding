@@ -12,8 +12,8 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         try{
-            Book pobiBook = new Book(new Page(pobi.get(0)),new Page(pobi.get(1)));
-            Book crongBook = new Book(new Page(crong.get(0)),new Page(crong.get(1)));
+            Book pobiBook = new Book(new Page(pobi.get(0),pobi.get(1)));
+            Book crongBook = new Book(new Page(crong.get(0),crong.get(1)));
             return whoIsWin(pobiBook, crongBook);
         }catch (IllegalArgumentException e){
             return ILLEGAL_ARG;

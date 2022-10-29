@@ -93,8 +93,8 @@ public class Problem1Test {
         @Test
         public void whoIsWinTieTest(){
             //given
-            Book pobiBook = new Book(new Page(97), new Page(98));
-            Book crongBook = new Book(new Page(197), new Page(198));
+            Book pobiBook = new Book(new Page(97,98));
+            Book crongBook = new Book(new Page(197,198));
             //when
             int result=0;
             //then
@@ -104,8 +104,8 @@ public class Problem1Test {
         @Test
         public void whoIsWinPobiWinTest(){
             //given
-            Book pobiBook = new Book(new Page(131), new Page(132));
-            Book crongBook = new Book(new Page(211), new Page(212));
+            Book pobiBook = new Book(new Page(131,132));
+            Book crongBook = new Book(new Page(211,212));
             //when
             int result=1;
             //then
@@ -115,8 +115,8 @@ public class Problem1Test {
         @Test
         public void whoIsWinCrongWinTest(){
             //given
-            Book pobiBook = new Book(new Page(211), new Page(212));
-            Book crongBook = new Book(new Page(131), new Page(132));
+            Book pobiBook = new Book(new Page(211,212));
+            Book crongBook = new Book(new Page(131,132));
             //when
             int result= CRONG_WIN;
             //then
@@ -126,8 +126,8 @@ public class Problem1Test {
         @Test
         public void whoIsWinFailTestCase1(){
             //given
-            Book pobiBook = new Book(new Page(1), new Page(2));
-            Book crongBook = new Book(new Page(197), new Page(198));
+            Book pobiBook = new Book(new Page(1,2));
+            Book crongBook = new Book(new Page(197,198));
             //when
             Class<IllegalArgumentException> e = IllegalArgumentException.class;
             //then
@@ -137,8 +137,8 @@ public class Problem1Test {
         @Test
         public void whoIsWinFailTestCase2(){
             //given
-            Book pobiBook = new Book(new Page(399), new Page(400));
-            Book crongBook = new Book(new Page(197), new Page(198));
+            Book pobiBook = new Book(new Page(399,400));
+            Book crongBook = new Book(new Page(197,198));
             //when
             Class<IllegalArgumentException> e = IllegalArgumentException.class;
             //then
@@ -148,8 +148,8 @@ public class Problem1Test {
         @Test
         public void whoIsWinFailTestCase3(){
             //given
-            Book pobiBook = new Book(new Page(397), new Page(399));
-            Book crongBook = new Book(new Page(197), new Page(198));
+            Book pobiBook = new Book(new Page(397,399));
+            Book crongBook = new Book(new Page(197,198));
             //when
             Class<IllegalArgumentException> e = IllegalArgumentException.class;
             //then
@@ -159,8 +159,8 @@ public class Problem1Test {
         @Test
         public void whoIsWinFailTestCase4(){
             //given
-            Book pobiBook = new Book(new Page(399), new Page(399));
-            Book crongBook = new Book(new Page(197), new Page(198));
+            Book pobiBook = new Book(new Page(399,399));
+            Book crongBook = new Book(new Page(197,198));
             //when
             Class<IllegalArgumentException> e = IllegalArgumentException.class;
             //then
@@ -170,8 +170,8 @@ public class Problem1Test {
         @Test
         public void whoIsWinFailTestCase5(){
             //given
-            Book pobiBook = new Book(new Page(398), new Page(399));
-            Book crongBook = new Book(new Page(197), new Page(198));
+            Book pobiBook = new Book(new Page(398,399));
+            Book crongBook = new Book(new Page(197,198));
             //when
             Class<IllegalArgumentException> e = IllegalArgumentException.class;
             //then
@@ -185,7 +185,7 @@ public class Problem1Test {
         @Test
         void getIsNotLeftPageOddTest(){
             //given
-            Book book = new Book(new Page(2), new Page(3));
+            Book book = new Book(new Page(2,3));
             //when
             boolean result=true;
             //then
@@ -195,7 +195,7 @@ public class Problem1Test {
         @Test
         void getIsNotRightPageEvenTest(){
             //given
-            Book book = new Book(new Page(2), new Page(3));
+            Book book = new Book(new Page(2,3));
             //when
             boolean result=true;
             //then
@@ -205,7 +205,7 @@ public class Problem1Test {
         @Test
         void getIsNotLeftPageOddFailTest(){
             //given
-            Book book = new Book(new Page(1), new Page(2));
+            Book book = new Book(new Page(1,2));
             //when
             boolean result=false;
             //then
@@ -215,7 +215,7 @@ public class Problem1Test {
         @Test
         void getIsNotRightPageEvenFailTest(){
             //given
-            Book book = new Book(new Page(1), new Page(2));
+            Book book = new Book(new Page(1,2));
             //when
             boolean result=false;
             //then
@@ -225,7 +225,7 @@ public class Problem1Test {
         @Test
         void hasFirstPageOrLessTest() {
             //given
-            Book book = new Book(new Page(1), new Page(2));
+            Book book = new Book(new Page(1,2));
             //when
             boolean result=true;
             //then
@@ -235,7 +235,7 @@ public class Problem1Test {
         @Test
         void hasLastPageOrMoreTest() {
             //given
-            Book book = new Book(new Page(399), new Page(400));
+            Book book = new Book(new Page(399,400));
             //when
             boolean result=true;
             //then
@@ -245,7 +245,7 @@ public class Problem1Test {
         @Test
         void hasFirstPageOrLessFailTest() {
             //given
-            Book book = new Book(new Page(2), new Page(3));
+            Book book = new Book(new Page(2,3));
             //when
             boolean result=false;
             //then
@@ -255,7 +255,7 @@ public class Problem1Test {
         @Test
         void hasLastPageOrMoreFailTest() {
             //given
-            Book book = new Book(new Page(398), new Page(399));
+            Book book = new Book(new Page(398,399));
             //when
             boolean result=false;
             //then
@@ -265,7 +265,7 @@ public class Problem1Test {
         @Test
         void getDifferenceTest() {
             //given
-            Book book = new Book(new Page(2), new Page(3));
+            Book book = new Book(new Page(2,3));
             //when
             int result=1;
             //then
@@ -275,7 +275,7 @@ public class Problem1Test {
         @Test
         void leftPageCalcForSumTest() {
             //given
-            Book book = new Book(new Page(333), new Page(334));
+            Book book = new Book(new Page(333,334));
             PageCalculator pageCalculator = new SumPageCalculator();
             //when
             int result=9;
@@ -286,7 +286,7 @@ public class Problem1Test {
         @Test
         void leftPageCalcForMulTest() {
             //given
-            Book book = new Book(new Page(333), new Page(334));
+            Book book = new Book(new Page(333,334));
             PageCalculator pageCalculator = new MulPageCalculator();
             //when
             int result=27;
@@ -297,7 +297,7 @@ public class Problem1Test {
         @Test
         void rightPageCalcForSumTest() {
             //given
-            Book book = new Book(new Page(333), new Page(334));
+            Book book = new Book(new Page(333,334));
             PageCalculator pageCalculator = new SumPageCalculator();
             //when
             int result=10;
@@ -308,7 +308,7 @@ public class Problem1Test {
         @Test
         void rightPageCalcForMulTest() {
             //given
-            Book book = new Book(new Page(333), new Page(334));
+            Book book = new Book(new Page(333,334));
             PageCalculator pageCalculator = new MulPageCalculator();
             //when
             int result=36;
