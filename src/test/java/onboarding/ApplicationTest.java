@@ -251,5 +251,21 @@ class ApplicationTest {
             assertThat(friendsOfUser.contains("donut")).isEqualTo(true);
             assertThat(friendsOfUser.contains("andole")).isEqualTo(false);
         }
+
+        @Test
+        void addPointToRecommendedTest(){
+            String friend = "mrko";
+            Map<String, Integer> recommend = new HashMap<>();
+            Map<String, List<String>> relation = new HashMap<>();
+
+            relation.put(friend, new ArrayList<>());
+            relation.get(friend).add("donut");
+            relation.get(friend).add("doa");
+            Problem7.addPointToRecommended(relation, recommend, "mrko");
+
+            int result = 10;
+            assertThat(recommend.size()).isEqualTo(2);
+            assertThat(recommend.get("donut")).isEqualTo(result);
+        }
     }
 }

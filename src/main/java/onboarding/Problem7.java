@@ -21,18 +21,29 @@ import java.util.*;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
-
+        Map<String, Integer> recommend = new HashMap<>();
         //1. initialize relation
         Map<String, List<String>> relation = initializeRelation(friends);
 
         //2. calculate friend score by friend info
-
+        for(String friend : relation.get(user)){
+            addPointToRecommended(relation,recommend,friend);
+        }
         //3. add score by visitor
 
-        //4. add to array and sort
+        //4. delete all which is already his friends or himself.
+
+        //5. add to array and sort
 
 
         return answer;
+    }
+
+    public static void addPointToRecommended(Map<String, List<String>> relation,
+                                    Map<String, Integer> recommend, String friend) {
+        for(String toAdd : relation.get(friend)){
+            recommend.put(toAdd, recommend.getOrDefault(toAdd,0)+10);
+        }
     }
 
     public static Map<String, List<String>> initializeRelation(List<List<String>> friends) {
