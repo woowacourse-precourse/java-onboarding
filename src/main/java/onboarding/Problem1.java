@@ -17,7 +17,8 @@ class Problem1 {
         int pobiResult = getMaxResult(pobi);
         int crongResult = getMaxResult(crong);
 
-        return 0;
+        // 3. 승자를 가린다.
+        return getWinner(pobiResult, crongResult);
     }
 
     private static int getMaxResult(List<Integer> pages) {
@@ -37,6 +38,16 @@ class Problem1 {
             page /= 10;
         }
         return Math.max(addMaxNum, multipleMaxNum);
+    }
+
+    private static int getWinner(Integer pobiMaxNum, Integer crongMaxNum) {
+        if (pobiMaxNum.equals(crongMaxNum)) {
+            return 0;
+        }
+        if (pobiMaxNum > crongMaxNum) {
+            return 1;
+        }
+        return 2;
     }
 
     private static boolean checkInvalidPage(List<Integer> pages) {
