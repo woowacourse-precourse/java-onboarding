@@ -23,10 +23,26 @@ public class Problem2 {
         return false;
     }
 
+    static ArrayList<Character> deleteDuplication(ArrayList<Character> separatedCrypto) {
+
+        for (int i = 0; i < separatedCrypto.size(); i++) {
+            if (separatedCrypto.get(i) == separatedCrypto.get(i + 1)) {
+                separatedCrypto.remove(i);
+                separatedCrypto.remove(i);
+            }
+        }
+
+        return separatedCrypto;
+    }
+
     public static String solution(String cryptogram) {
         String answer = "answer";
 
         ArrayList<Character> separatedCrypto = separateString(cryptogram);
+
+        while(checkDuplication(separatedCrypto)) {
+            separatedCrypto = deleteDuplication(separatedCrypto);
+        }
 
         return answer;
     }
