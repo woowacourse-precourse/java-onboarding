@@ -15,27 +15,20 @@ public class Problem7 {
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 		List<String> answer = new ArrayList<>(Collections.emptyList());
 		Set<String> userFriends = findUserFriends(user, friends);
-		Map<String, Integer> friendScore = new HashMap<>();
-		for (int i = 0; i < friends.size(); i++) {
-			String idA = friends.get(i).get(0);
-			String idB = friends.get(i).get(1);
-			if (userFriends.contains(idA) && !userFriends.contains(idB)) {
-				friendScore.put(idB, friendScore.getOrDefault(idB, 0) + 10);
-			} else if (userFriends.contains(idB) && !userFriends.contains(idA)) {
-				friendScore.put(idA, friendScore.getOrDefault(idA, 0) + 10);
-			}
-		}
+		HashMap<String, Integer> friendsScore = new HashMap<>();
+		addSharedFriendsScore(friends, userFriends, friendsScore);
+
 		for (int i = 0; i < visitors.size(); i++) {
 			String visitor = visitors.get(i);
 			if (!userFriends.contains(visitor)) {
-				friendScore.put(visitor, friendScore.getOrDefault(visitor, 0) + 1);
+				friendsScore.put(visitor, friendsScore.getOrDefault(visitor, 0) + 1);
 			}
 		}
-		friendScore.put(user, 0);
-		while (friendScore.size() < PERSON_NUM_SHOW) {
-			friendScore.put("emptyUser", 0);
+		friendsScore.put(user, 0);
+		while (friendsScore.size() < PERSON_NUM_SHOW) {
+			friendsScore.put("emptyUser", 0);
 		}
-		List<Map.Entry<String, Integer>> sortedFriendScore = new ArrayList<>(friendScore.entrySet());
+		List<Map.Entry<String, Integer>> sortedFriendScore = new ArrayList<>(friendsScore.entrySet());
 		sortedFriendScore.sort(new Comparator<Map.Entry<String, Integer>>() {
 			@Override
 			public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
@@ -67,5 +60,18 @@ public class Problem7 {
 			}
 		}
 		return userFriends;
+	}
+
+	private static void addSharedFriendsScore(List<List<String>> friends,
+		Set<String> userFriends, HashMap<String, Integer> friendsScore) {
+		for (List<String> friend : friends) {
+			String idA = friend.get(0);
+			String idB = friend.get(1);
+			if (userFriends.contains(idA)) {
+				friendsScore.put(idB, friendsScore.getOrDefault(idB, 0) + 10);
+			} else if (userFriends.contains(idB)) {
+				friendsScore.put(idA, friendsScore.getOrDefault(idA, 0) + 10);
+			}
+		}
 	}
 }
