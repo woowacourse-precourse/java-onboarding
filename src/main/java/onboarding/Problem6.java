@@ -4,6 +4,9 @@ import java.util.*;
 
 
 public class Problem6 {
+    private static final String[] emailDomains = {"email.com"};
+    private static List<List<String>> badForms = new ArrayList<>();
+
     /**
      * <div> 신청받은 닉네임 중 <b>같은 글자가 연속적으로 포함 되는 닉네임</b>을 작성한 지원자의 이메일 목록을
      * 리턴합니다. </div>
@@ -22,10 +25,6 @@ public class Problem6 {
      * @return 같은 글자가 연속적으로 포함되는 닉네임을 작성한 지원자의 이메일 {@code List}
      *
      */
-
-    private static final String[] emailDomains = {"email.com"};
-    private static List<List<String>> badForms = new ArrayList<>();
-
     public static List<String> solution(List<List<String>> forms) {
         if(!validation("crew_limit", forms.size())) return new ArrayList<>();
 
