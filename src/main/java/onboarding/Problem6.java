@@ -27,6 +27,13 @@ public class Problem6 {
     }
 
     public static boolean validateDuplication(String nicknameOne, String nicknameTwo) {
+        for (int i = 0; i < nicknameOne.length() - 1; i++) {
+            String twoWords = nicknameOne.substring(i, i+2);
 
+            if (nicknameTwo.contains(twoWords))
+                return false;
+        }
+
+        return true;
     }
 }
