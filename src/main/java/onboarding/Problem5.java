@@ -1,6 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Problem5 {
@@ -19,6 +19,10 @@ public class Problem5 {
         return money % monetaryUnit;
     }
 
+    private static void AppendBills(List<Integer> answer, int bill) {
+        answer.add(bill);
+    }
+
     /**
      * 돈의 액수 money가 매개변수로 주어질 때
      * 오만 원권, 만 원권, 오천 원권, 천 원권, 오백원 동전, 백원 동전, 오십원 동전, 십원 동전, 일원 동전 각 몇 개로 변환되는지
@@ -28,7 +32,7 @@ public class Problem5 {
      * @return
      */
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
+        List<Integer> answer = new ArrayList<>();
         bankWithdrawal(answer, money);
         return answer;
     }
