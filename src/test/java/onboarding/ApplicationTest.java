@@ -230,6 +230,13 @@ class ApplicationTest {
             String result = "a";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
+    
+        @Test
+        void case15() {
+            String cryptogram = "sadddaaaas";
+            String result = "sas";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
     }
     
     @Nested
