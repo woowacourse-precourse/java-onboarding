@@ -45,4 +45,12 @@ public class Problem7 {
         }
         relationships.put(userA, new ArrayList<>(List.of(userB)));
     }
+
+    public static void addRecommendScore(String username, int score) {
+        if (recommendScore.containsKey(username)) {
+            recommendScore.put(username, recommendScore.get(username) + score);
+            return;
+        }
+        recommendScore.put(username,score);
+    }
 }
