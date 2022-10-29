@@ -70,6 +70,19 @@ public class Problem7 {
         return visitLog;
     }
 
+    public static Recommendation createRecommendation (String targetUser, Relations relations, Map<String, Integer> visitLog) {
+        Recommendation recommendation = new Recommendation(targetUser);
+        Set<String> allUsers = relations.getAllUsers();
+        for (String userId : allUsers) {
+            if (userId.equals(targetUser) || relations.isFriend(targetUser, userId)) {
+                continue;
+            }
+            Intimacy intimacy = createIntimacy(targetUser, userId, relations, visitLog);
+            recommendation.addIntimacy(intimacy);
+        }
+        return recommendation;
+    }
+
     public static Intimacy createIntimacy (String targetUser, String user,  Relations relations, Map<String, Integer> visitLog) {
         Intimacy intimacy = new Intimacy(targetUser, user);
         intimacy.setNumOfMutualFriends(relations);
