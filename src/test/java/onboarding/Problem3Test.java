@@ -50,6 +50,8 @@ class Problem3Test {
         int num2 = 93;
         int num3 = 1;
         int num4 = 611;
+        int num5 = -3;
+        int num6 = 10_005;
 
         //when
 
@@ -58,6 +60,8 @@ class Problem3Test {
         assertThat(Problem3.getClapCountSum(num2)).isEqualTo(52);
         assertThat(Problem3.getClapCountSum(num3)).isEqualTo(0);
         assertThat(Problem3.getClapCountSum(num4)).isEqualTo(475);
+        assertThrows(InputMismatchException.class,() -> Problem3.getClapCountSum(num5));
+        assertThrows(InputMismatchException.class,() -> Problem3.getClapCountSum(num6));
     }
 
 }
