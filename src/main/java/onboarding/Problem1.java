@@ -18,6 +18,43 @@ class Problem1 {
      */
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+
+        int pobiLeftPage = pobi.get(0);
+        int pobiRightPage = pobi.get(1);
+        int crongLeftPage = crong.get(0);
+        int crongRightPage = crong.get(1);
+
+        // 왼쪽이 홀수, 오른쪽이 짝수가 아닌 경우
+        if (!(pobiLeftPage % 2 == 1 && pobiRightPage % 2 == 0)) {
+            return -1;
+        }
+
+        if (!(crongLeftPage % 2 == 1 && crongRightPage % 2 == 0)) {
+            return -1;
+        }
+
+        // 오른쪽 페이지 - 왼쪽 페이지가 1이 아닌 경우
+        if (!(pobiRightPage - pobiLeftPage == 1 && crongRightPage - crongLeftPage == 1)) {
+            return -1;
+        }
+
+        // 시작 면의 경우
+        if (pobiLeftPage <= FIRST_PAGE || crongLeftPage <= FIRST_PAGE) {
+            return -1;
+        }
+
+        // 마지막 면의 경우
+        if (pobiRightPage >= LAST_PAGE || crongRightPage >= LAST_PAGE) {
+            return -1;
+        }
+
+        int pobiScore = getScore(pobiLeftPage, pobiRightPage);
+        int crongScore = getScore(crongLeftPage, crongRightPage);
+
+        if (pobiScore == crongScore) answer = 0;
+        else if (pobiScore > crongScore) answer = 1;
+        else answer = 2;
+
         return answer;
     }
 
