@@ -24,10 +24,9 @@ class Problem1 {
     static int sumPage(int rightPage) {
         int sum = 0;
 
-        String numPage = Integer.toString(rightPage);
-        char[] numPageChar = numPage.toCharArray();
+        char[] rightPageChar = splitPageNum(rightPage);
 
-        for (char x : numPageChar) {
+        for (char x : rightPageChar) {
             sum += x - '0';
         }
 
@@ -38,11 +37,8 @@ class Problem1 {
         int Leftmul = 1;
         int Rightmul = 1;
 
-        String numLeftPage = Integer.toString(leftPage);
-        char[] numLeftPageChar = numLeftPage.toCharArray();
-
-        String numRightPage = Integer.toString(rightPage);
-        char[] numRightPageChar = numRightPage.toCharArray();
+        char[] numLeftPageChar = splitPageNum(leftPage);
+        char[] numRightPageChar = splitPageNum(leftPage);
 
         for (char x : numLeftPageChar) {
             Leftmul *= x;
