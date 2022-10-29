@@ -8,6 +8,20 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+
+        int pobiScore = getUserScore(pobi);
+        int crongScore = getUserScore(crong);
+
+        if (pobiScore > crongScore) {
+            answer = 1;
+        } else if (crongScore > pobiScore) {
+            answer = 2;
+        } else if (crongScore == pobiScore) {
+            answer = 0;
+        } else {
+            answer = -1;
+        }
+
         return answer;
     }
 
