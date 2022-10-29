@@ -24,7 +24,7 @@ public class Wallet {
         return Arrays.stream(changes).boxed().collect(Collectors.toList());
     }
 
-    public void saveMoney(int money) {
+    public List<Integer> saveMoney(int money) {
         WalletValidator.validate(money);
 
         money = saveAsChange(money, FIFTY_THOUSANDS);
@@ -36,6 +36,8 @@ public class Wallet {
         money = saveAsChange(money, FIFTY);
         money = saveAsChange(money, TEN);
         saveAsChange(money, ONE);
+
+        return getChanges();
     }
 
     private int saveAsChange(int money, Change change) {

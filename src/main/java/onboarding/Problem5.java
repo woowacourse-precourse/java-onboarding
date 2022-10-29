@@ -7,8 +7,6 @@ import java.util.List;
 public class Problem5 {
     public static List<Integer> solution(int money) {
         Wallet wallet = Wallet.makeNewWallet();
-        wallet.saveMoney(money);
-
-        return wallet.getMoney();
+        return wallet.saveMoney(money);
     }
 }
