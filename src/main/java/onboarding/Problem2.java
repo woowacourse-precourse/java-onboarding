@@ -3,6 +3,15 @@ package onboarding;
 import java.util.Stack;
 import java.util.stream.Collectors;
 
+/**
+ * ex.     bannonnoa
+ *      			     | stack[]
+ * i: 0...2	stack.push() | stack[b, a, n]
+ * i: 3     stack.pop()  | stack[b, a]
+ * i: 4     stack.push()  | stack[b, a, o]
+ * i: ...
+ */
+
 public class Problem2 {
 	private static Stack<Character> decryptionStack;
 	public static String solution(String cryptogram) {
