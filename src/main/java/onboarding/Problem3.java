@@ -10,26 +10,25 @@ public class Problem3 {
     }
 
     public static int changeCountByNumberExists(int number, int count) {
-        for (int j = 0; j < intToString(number).length(); j += 1) {
-            count = addCount(number, j, count);
+        for (int index = 0; index < intToString(number).length(); index += 1) {
+            count = changeCountByDigitNumber(number, index, count);
         }
         return count;
     }
 
-    public static boolean isNumberHas369(int number, int j) {
-        return intToString(number).charAt(j) == '3' || intToString(number).charAt(j) == '6' || intToString(number).charAt(j) == '9';
-    }
-
-    public static String intToString(int number) {
-        return number + "";
-    }
-
-    public static int addCount(int checkingNumber, int checkedNumber, int count) {
-        if (isNumberHas369(checkingNumber, checkedNumber)) {
+    public static int changeCountByDigitNumber(int checkingNumber, int index, int count) {
+        if (isNumberHas369(checkingNumber, index)) {
             count += 1;
         }
         return count;
     }
 
+    public static boolean isNumberHas369(int number, int index) {
+        return intToString(number).charAt(index) == '3' || intToString(number).charAt(index) == '6' || intToString(number).charAt(index) == '9';
+    }
+
+    public static String intToString(int number) {
+        return number + "";
+    }
 
 }
