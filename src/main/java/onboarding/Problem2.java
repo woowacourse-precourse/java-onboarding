@@ -16,6 +16,10 @@ public class Problem2 {
         return str.toCharArray();
     }
 
+    private static boolean isOutputBlank(Deque<Character> deque) {
+        return deque.isEmpty();
+    }
+
     private static boolean isEmptyDeque(Deque<Character> deque, int dequeIndex) {
         return dequeIndex == 0 || deque.isEmpty();
     }
