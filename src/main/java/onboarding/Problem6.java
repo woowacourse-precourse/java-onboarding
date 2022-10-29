@@ -14,6 +14,12 @@ public class Problem6 {
         }
         return false;
     }
+    public static List<String> sortByEmail(List<String> L){
+        Set<String> newSet = new HashSet<>(L);
+        List<String> newList = Lists.newArrayList(newSet);
+        Collections.sort(newList);
+        return newList;
+    }
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         answer = new ArrayList<>();
