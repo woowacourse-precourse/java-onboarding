@@ -1,6 +1,10 @@
 package onboarding;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 public class Problem6 {
     static final int EMAIL_INDEX = 0;
@@ -20,7 +24,53 @@ public class Problem6 {
             answer = ERROR;
             return answer;
         }
+        answer = getDuplicatedNickNameCrew(forms);
         return answer;
+    }
+
+    private static List<String> getDuplicatedNickNameCrew(List<List<String>> forms) {
+        Map<String, Map<String, List<String>>> nickNameMap = new HashMap<>();
+        String crewEmail;
+        List<String> crewEmails;
+        String crewNickName;
+        String nickNameOneLetter;
+        String nickNameNextOneLetter;
+
+        for (List<String> crew : forms) {
+            crewEmail = crew.get(EMAIL_INDEX);
+            crewNickName = crew.get(NICK_NAME_INDEX);
+            for (int i = 0; i < crewNickName.length(); i++) {
+                nickNameOneLetter = crewNickName.substring(i, i + 1);
+                System.out.println("nickNameOneLetter: " + nickNameOneLetter);
+                if (!(nickNameMap.containsKey(nickNameOneLetter))) {
+                    Map<String, List<String>> crewInfo = new HashMap<>();
+                    if (i < crewNickName.length() - 1) {
+                        nickNameNextOneLetter = crewNickName.substring(i + 1, i + 2);
+                        crewEmails = new LinkedList<>();
+                        crewEmails.add(crewEmail);
+                        crewInfo.put(nickNameNextOneLetter, crewEmails);
+                    }
+                    nickNameMap.put(nickNameOneLetter, crewInfo);
+                } else if (nickNameMap.containsKey(nickNameOneLetter)) {
+                    if (i < crewNickName.length() - 1) {
+                        nickNameNextOneLetter = crewNickName.substring(i + 1, i + 2);
+                        if (!(nickNameMap.get(nickNameOneLetter).containsKey(nickNameNextOneLetter))) {
+                            crewEmails = new LinkedList<>();
+                            crewEmails.add(crewEmail);
+                            nickNameMap.get(nickNameOneLetter).put(nickNameNextOneLetter, crewEmails);
+                        } else if (nickNameMap.get(nickNameOneLetter).containsKey(nickNameNextOneLetter)) {
+                            crewEmails = nickNameMap.get(nickNameOneLetter).get(nickNameNextOneLetter);
+                            crewEmails.add(crewEmail);
+                            nickNameMap.get(nickNameOneLetter).put(nickNameNextOneLetter, crewEmails);
+                        }
+                    }
+                }
+            }
+        }
+        // for (String a : nickNameMap.keySet()) {
+        //     System.out.println("[key]: " + a + " [value]: " + nickNameMap.get(a));
+        // }
+        return null;
     }
 
     private static boolean isValidInput(List<List<String>> forms) {
@@ -73,4 +123,15 @@ public class Problem6 {
 
         return crewNumber >= MIN_CREW_NUMBER && crewNumber <= MAX_CREW_NUMBER;
     }
+
+    // public static void main(String[] args) {
+    //     List<List<String>> forms = List.of(
+    //         List.of("jm@email.com", "제이엠"),
+    //         List.of("jason@email.com", "제이슨"),
+    //         List.of("woniee@email.com", "워니"),
+    //         List.of("mj@email.com", "엠제이"),
+    //         List.of("nowm@email.com", "이제엠")
+    //     );
+    //     solution(forms);
+    // }
 }
