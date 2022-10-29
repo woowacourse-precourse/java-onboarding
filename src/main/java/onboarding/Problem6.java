@@ -16,12 +16,8 @@ public class Problem6 {
     static Set<Integer> answer = new HashSet<>();
 
     static class User {
-        private String nick;
-        private String email;
-
-        public String getNick() {
-            return nick;
-        }
+        private final String nick;
+        private final String email;
 
         public String getEmail(){
             return email;
