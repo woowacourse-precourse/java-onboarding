@@ -39,6 +39,25 @@ class Problem1 {
         return Math.max(leftSum, rightSum);
     }
 
+    // 왼쪽, 오른쪽 페이지 곱최대 구하기
+    public static int getMaxMul(List<Integer> list) {
+        int leftPage = list.get(0);
+        int leftMul = 1;
+        while(leftPage > 0) {
+            leftMul *= leftPage%10;
+            leftPage /= 10;
+        }
+
+        int rightPage = list.get(1);
+        int rightMul = 0;
+        while(rightPage > 0) {
+            rightMul *= rightPage%10;
+            rightPage /= 10;
+        }
+
+        return Math.max(leftMul, rightMul);
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = -1;
 
