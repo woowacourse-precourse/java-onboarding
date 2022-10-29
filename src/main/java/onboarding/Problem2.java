@@ -5,43 +5,47 @@ import java.util.Stack;
 /*
 기능 구현 사항
 1. stack 이용한 중복 문자 제거
-2.
+2. stack을 String 으로 반환
 */
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        System.out.println(deleteDuplicatedChar(cryptogram.toCharArray()));
-        return answer;
+        return deleteDuplicatedChar(cryptogram.toCharArray());
     }
 
     public static String deleteDuplicatedChar(char[] cryptogramCharArray) {
         Stack<Character> characterStack = new Stack<>();
         int index = 0;
-        while(index < cryptogramCharArray.length){
+        while (index < cryptogramCharArray.length) {
 
-            if(characterStack.isEmpty()){
+            if (characterStack.isEmpty()) {
                 characterStack.push(cryptogramCharArray[index]);
                 index++;
-            }
-            else{
+            } else {
                 char before = characterStack.peek();
-                if(cryptogramCharArray[index] != before){
+                if (cryptogramCharArray[index] != before) {
                     characterStack.push(cryptogramCharArray[index]);
                     index++;
-                }
-                else{
-                    while(index < cryptogramCharArray.length && cryptogramCharArray[index] == before){
+                } else {
+                    while (index < cryptogramCharArray.length && cryptogramCharArray[index] == before) {
                         index++;
                     }
                     characterStack.pop();
                 }
             }
-            System.out.println(characterStack.toString());
         }
 
 
-        return characterStack.toString();
+        return stackToString(characterStack);
 
+    }
+
+    public static String stackToString(Stack<Character> characterStack) {
+        StringBuilder sb = new StringBuilder();
+        for (char character :
+                characterStack) {
+            sb.append(character);
+        }
+        return sb.toString();
     }
 }
