@@ -68,6 +68,25 @@ public class Problem2 {
         }
     }
 
+    // 5. 리스트를 문자열로 변환하기
+    static String getTransStr(List<Character> cryptogramList)
+    {
+        String temp = "";
+
+        // 리스트 내 요소 모두 제거된 경우
+        if(cryptogramList.size() == 0)
+            return temp;
+
+        // 리스트 내 요소가 남은 경우
+        else
+        {
+            for(Character value : cryptogramList)
+                temp += value;
+
+            return temp;
+        }
+    }
+
     public static String solution(String cryptogram) {
         String answer = "answer";
 
@@ -92,9 +111,9 @@ public class Problem2 {
                 deleteAlpha(cryptogramList,listIndex);
         }
 
-        // 작업 반복 결과 확인
-        System.out.println(cryptogramList);
-        
+        // 리스트를 문자열로 변환
+        answer = getTransStr(cryptogramList);
+
         return answer;
     }
 }
