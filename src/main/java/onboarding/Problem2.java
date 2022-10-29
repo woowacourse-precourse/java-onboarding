@@ -6,23 +6,24 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         StringBuilder answer = new StringBuilder();
         Stack<Character> stack = new Stack<>();
-        char[] chars = cryptogram.toCharArray();
+        char[] charArray = cryptogram.toCharArray();
+        char history = ' ';
 
-        for (char ch : chars) {
-            isValid(stack, ch);
+        for (char target : charArray) {
+            history = isValid(stack, history, target);
         }
-
         for (Character c : stack) {
             answer.append(c);
         }
         return answer.toString();
     }
 
-    private static void isValid(Stack<Character> stack, char ch) {
-        if (!stack.isEmpty() && stack.peek() == ch) {
-            stack.pop();
-            return;
+    private static char isValid(Stack<Character> stack, char history, char target) {
+        if (!stack.isEmpty() && stack.peek() == target) {
+            history = stack.pop();
+        } else if (history != target) {
+            stack.push(target);
         }
-        stack.push(ch);
+        return history;
     }
 }
