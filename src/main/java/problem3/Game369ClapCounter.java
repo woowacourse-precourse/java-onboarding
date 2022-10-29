@@ -15,12 +15,12 @@ public class Game369ClapCounter {
         claps.add(9);
     }
 
-    public static int countFromOneTo(int last) {
-        validateBounds(last);
+    public static int countFromOneTo(int lastNumber) {
+        validateBounds(lastNumber);
 
         int result = 0;
 
-        for (int num = LOWER_BOUNDS; num <= last; num++) {
+        for (int num = LOWER_BOUNDS; num <= lastNumber; num++) {
             result += countClaps(num);
         }
         return result;
@@ -30,13 +30,18 @@ public class Game369ClapCounter {
         int result = 0;
 
         while (num > 0) {
-            if (claps.contains(num % 10)) {
-                result += 1;
-            }
+            result += clapDigit(num % 10);
             num /= 10;
         }
 
         return result;
+    }
+
+    private static int clapDigit(int digit) {
+        if (claps.contains(digit)) {
+            return 1;
+        }
+        return 0;
     }
 
     private static void validateBounds(int number) {
