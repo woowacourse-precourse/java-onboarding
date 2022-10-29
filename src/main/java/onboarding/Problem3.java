@@ -2,7 +2,8 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
+        String linkedNums = linkNums(number);
+        int answer = countNum(linkedNums, 3) + countNum(linkedNums, 6) + countNum(linkedNums, 9);
         return answer;
     }
     static String linkNums(int num) {
@@ -14,10 +15,5 @@ public class Problem3 {
     }
     static int countNum(String str, int target) {
         return str.length() - str.replace(String.valueOf(target), "").length();
-    }
-
-    public static void main(String args[]) {
-        System.out.println(linkNums(13));
-        System.out.println(countNum(linkNums(13), 3));
     }
 }
