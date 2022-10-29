@@ -1,6 +1,12 @@
 package onboarding;
 
 public class Problem2 {
+    public static boolean checkOverlap(String str) {
+        if(str.equals("")) return false;
+        String s = removeOverlap(str);
+        if(s.equals(str)) return false;
+        else return true;
+    }
     public static String removeOverlap(String str) {
         char[] chars = str.toCharArray();
         char prev = chars[0];
