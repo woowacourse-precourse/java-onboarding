@@ -8,7 +8,7 @@
 ### 🔥 구현 기능 목록
 
 - [x] FEATURE1. 기능 요구 사항에 명시된 금액 리스트
-- [ ] FEATURE2. solutiom 함수
+- [x] FEATURE2. solution 함수
 
 ### 제한사항
 
