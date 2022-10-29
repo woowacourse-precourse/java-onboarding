@@ -5,10 +5,15 @@ import java.util.*;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> allUserNameList = getAllUsersName(user, friends, visitors);
+
         Map<String, Integer> nameToNumber = mappingNameToNumber(allUserNameList);
+
         Map<Integer, String> numberToName = mappingNumberToName(allUserNameList);
-        List<List<Integer>> adj = makeUndirectedGraph(friends, allUserNameList);
+
+        List<List<Integer>> adj = makeUndirectedGraph(friends, nameToNumber, allUserNameList);
+
         int[] score = calculateScore(adj, visitors, nameToNumber, allUserNameList);
+
         return getResult(score, numberToName);
     }
 
@@ -32,41 +37,40 @@ public class Problem7 {
     }
 
     private static Map<String, Integer> mappingNameToNumber(List<String> allUserNameList) {
-        Map<String, Integer> map = new TreeMap<>();
+        Map<String, Integer> nameToNumber = new TreeMap<>();
 
         for (int i = 0; i < allUserNameList.size(); i++) {
-            map.put(allUserNameList.get(i), i + 1);
+            nameToNumber.put(allUserNameList.get(i), i + 1);
         }
 
-        return map;
+        return nameToNumber;
     }
 
     private static Map<Integer, String> mappingNumberToName(List<String> allUserNameList) {
-        Map<Integer, String> map = new TreeMap<>();
+        Map<Integer, String> numberToName = new TreeMap<>();
 
         for (int i = 0; i < allUserNameList.size(); i++) {
-            map.put(i + 1, allUserNameList.get(i));
+            numberToName.put(i + 1, allUserNameList.get(i));
         }
 
-        return map;
+        return numberToName;
     }
 
-    private static List<List<Integer>> makeUndirectedGraph(List<List<String>> friends, List<String> allUserNameList) {
-        Map<String, Integer> map = mappingNameToNumber(allUserNameList);
+    private static List<List<Integer>> makeUndirectedGraph(List<List<String>> friends, Map<String, Integer> nameToNumber, List<String> allUserNameList) {
         List<List<Integer>> adj = new ArrayList<>();
         for (int i = 0; i <= allUserNameList.size(); i++) adj.add(new ArrayList<>());
 
         for (int i = 0; i < friends.size(); i++) {
             String friend1 = friends.get(i).get(0);
             String friend2 = friends.get(i).get(1);
-            adj.get(map.get(friend1)).add(map.get(friend2));
-            adj.get(map.get(friend2)).add(map.get(friend1));
+            adj.get(nameToNumber.get(friend1)).add(nameToNumber.get(friend2));
+            adj.get(nameToNumber.get(friend2)).add(nameToNumber.get(friend1));
         }
 
         return adj;
     }
 
-    private static int[] calculateScore(List<List<Integer>> adj, List<String> visitors, Map<String, Integer> map, List<String> allUserNameList) {
+    private static int[] calculateScore(List<List<Integer>> adj, List<String> visitors, Map<String, Integer> nameToNumber, List<String> allUserNameList) {
         int[] score = new int[allUserNameList.size() + 1];
 
         for (int i = 0; i < adj.get(1).size(); i++) {
@@ -79,7 +83,7 @@ public class Problem7 {
         }
 
         for (int i = 0; i < visitors.size(); i++) {
-            int index = map.get(visitors.get(i));
+            int index = nameToNumber.get(visitors.get(i));
             score[index]++;
         }
 
