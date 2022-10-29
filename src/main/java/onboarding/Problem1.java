@@ -7,6 +7,10 @@ class Problem1 {
     private static final int CRONG_WIN = 2;
     private static final int DRAW =0;
     private static final int EXCEPT = -1;
+    private static final boolean ACCEPT_PAGE = true;
+    private static final boolean EXCEPT_PAGE = false;
+    private static final int FIRST_PAGE = 1;
+    private static final int LAST_PAGE = 400;
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         // 둘 중 한명이라도 책의 페이지가 연속적이지 않으면 예외사항 반환
@@ -25,8 +29,11 @@ class Problem1 {
      * @return
      */
     private static boolean check(List<Integer> list) {
-        if(list.get(1)-list.get(0)==1)return true;
-        else return false;
+        int left = list.get(0);
+        int right = list.get(1);
+        if(right-left != 1)return EXCEPT_PAGE;
+        if(right == FIRST_PAGE && left == LAST_PAGE)return EXCEPT_PAGE;
+        return ACCEPT_PAGE;
     }
 
     /**
