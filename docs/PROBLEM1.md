@@ -2,7 +2,7 @@
 ### 도메인
 - Page
 - [ ] 입력 값을 검증한다.
-  - [ ] 오른쪽 페이지 번호에서 왼쪽 페이지 번호를 뺀 값이 1이 아니면 IllegalArgumentException 에외를 throw 한다.
+  - [x] 오른쪽 페이지 번호에서 왼쪽 페이지 번호를 뺀 값이 1이 아니면 IllegalArgumentException 에외를 throw 한다.
   - [ ] 1 이하혹은 400이상의 숫자가 포함되면 IllegalArgumentException 예외를 throw한다.
 - [ ] 점수를 반환한다.
   - [ ] 각 자리의 숫자를 모두 더한다
