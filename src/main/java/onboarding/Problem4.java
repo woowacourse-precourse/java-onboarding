@@ -7,17 +7,17 @@ package onboarding;
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
-        String dict = "ZYXWVUTSRQPONMLKJIHGFEDCBA";
+        String upperDict = "ZYXWVUTSRQPONMLKJIHGFEDCBA";
+        String lowwerDict = "zyxwvutsrqponmlkjihgfedcba";
 
         for (int i = 0 ; i < word.length(); i++)
         {
             char c = word.charAt(i);
-            System.out.println((int)c);
             if (Character.isUpperCase(c))
-                answer += dict.charAt((int)c - 'A');
+                answer += upperDict.charAt((int)c - 'A');
             else if(Character.isLowerCase(c))
-                answer += dict.charAt((int)c - 'a');
-            else
+                answer += lowwerDict.charAt((int)c - 'a');
+            else //대소문자가 아니라면 그대로 concat 한다.
                 answer += c;
         }
         return answer;
