@@ -10,6 +10,11 @@ public class Problem4 {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < word.length(); i++) {
             if (Character.isAlphabetic(word.charAt(i))) {
+                if (Character.isUpperCase(word.charAt(i))) {
+
+                } else {
+
+                }
             } else sb.append(word.charAt(i));
         }
         String answer = "";
