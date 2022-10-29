@@ -197,6 +197,23 @@ class ApplicationTest {
             assertThat(isDuplicate[1]).isEqualTo(result);
             assertThat(isDuplicate[2]).isEqualTo(!result);
         }
+        @Test
+        void addEmailTest(){
+            List<List<String>> forms = List.of(
+                    List.of("jm@email.com", "제이엠"),
+                    List.of("jason@email.com", "제이슨"),
+                    List.of("woniee@email.com", "워니"),
+                    List.of("mj@email.com", "엠제이"),
+                    List.of("nowm@email.com", "이제엠")
+            );
+            Set<String> emails = new HashSet<>();
+            List<String> ans = new ArrayList<>();
+            Problem6.addEmail(emails,"jm@email.com",true, ans);
+            Problem6.addEmail(emails, "hello@email.com", false, ans);
+            Problem6.addEmail(emails, "jm@email.com", true, ans);
+            assertThat(ans.size()).isEqualTo(1);
+            assertThat(!emails.contains("hello@email.com")).isEqualTo(true);
+        }
     }
 
     @Nested

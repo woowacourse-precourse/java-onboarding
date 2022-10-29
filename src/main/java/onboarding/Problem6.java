@@ -30,7 +30,7 @@ import java.util.*;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         Map<String, Integer> substringsOfNickname = new HashMap<>();
-        Set<String> email = new TreeSet<>();
+        Set<String> emails = new TreeSet<>();
         List<String> answer = new ArrayList<>();
         boolean[] isDuplicate = new boolean[forms.size()];
 
@@ -59,6 +59,15 @@ public class Problem6 {
 
             isDuplicate[idx] = true;
             isDuplicate[indexOfTwoChar] = true;
+        }
+    }
+
+    public static void addEmail(Set<String> emails, String email,
+                                boolean isDuplicate, List<String> answer){
+
+        if(isDuplicate  && !emails.contains(email)){
+            answer.add(email);
+            emails.add(email);
         }
     }
 }
