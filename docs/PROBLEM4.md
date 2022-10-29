@@ -19,3 +19,8 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+### 기능목록
+- [x] 알파벳이 입력값으로 들어올 때 청개구리 사전을 적용
+- [x] 새로운 문자를 추가하는 반복작업이 많을 때에는 StringBuffer를 활용
+- [x] return 값은 toString 메소드를 활용하여 String으로 반환
