@@ -20,15 +20,15 @@ public class Problem6 {
                 .collect(Collectors.toList());
     }
 
-    private static void validateSameNameInList(List<String> list, Map<String, String> usingNameMap, List<String> renamedListSet) {
+    private static void validateSameNameInList(List<String> list, Map<String, String> usingNameMap, List<String> renamedRegisters) {
         String name = list.get(1);
         for (int i = 0; i < name.length() - 1; i++) {
             String subName = name.substring(i, i + 2);
             if (!usingNameMap.containsKey(subName)) {
                 usingNameMap.put(subName, list.get(0));
             } else {
-                renamedListSet.add(usingNameMap.get(subName));
-                renamedListSet.add(list.get(0));
+                renamedRegisters.add(usingNameMap.get(subName));
+                renamedRegisters.add(list.get(0));
             }
         }
     }
