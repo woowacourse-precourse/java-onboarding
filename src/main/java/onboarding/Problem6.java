@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Problem6 {
     static Collection<String> duplicatedNickNames = new HashSet<>();
@@ -22,14 +21,19 @@ public class Problem6 {
         List<String> emailList = new ArrayList<>();
         String[] returnedNickNames = duplicatedNickNames.toArray(new String[0]);
         System.out.println(Arrays.toString(returnedNickNames));
-
-        for (int index = 0; index < returnedNickNames.length; index++) {
-            int finalIndex = index;
-            emailList.add(formsMap.entrySet().stream()
-                .filter(entry -> Objects.equals(entry.getValue(), returnedNickNames[finalIndex]))
-                .map(Map.Entry::getKey)
-                .collect(Collectors.toList()).toString());
+        
+        for (int i = 0; i < returnedNickNames.length; i++) {
+            emailList.add(getKey(formsMap, returnedNickNames[i]));
         }
+
+
+//        for (int index = 0; index < returnedNickNames.length; index++) {
+//            int finalIndex = index;
+//            emailList.add(formsMap.entrySet().stream()
+//                .filter(entry -> Objects.equals(entry.getValue(), returnedNickNames[finalIndex]))
+//                .map(Map.Entry::getKey)
+//                .collect(Collectors.toList()).toString());
+//        }
 
         System.out.println(emailList);
 //        Iterator iterator = duplicateNickName.iterator();
@@ -51,6 +55,15 @@ public class Problem6 {
 
 
         return emailList;
+    }
+
+    private static String getKey(Map<String, String> formsMap, String returnedNickName) {
+        for (String email : formsMap.keySet()) {
+            if (returnedNickName.equals(formsMap.get(email))) {
+                return email;
+            }
+        }
+        return null;
     }
 
     private static void getDuplicationStr(String nickName, String[] nickNameArray) {
