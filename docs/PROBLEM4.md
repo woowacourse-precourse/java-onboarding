@@ -7,12 +7,12 @@
     (219 - 문자의 아스키코드 = 변환하는 문자의 아스키코드) 이다.
   * 알파벳만 변환하므로 위 숫자만 고려한다.
 ### 구현 방법
-1. word를 하나씩 꺼내 아스키코드로 변환해 알파벳 범위인 경우 변환해 넣는 wordChange 메서드 생성.
-2. solution 메서드에서 wordChange 메서드를 사용해 변환한 word를 반환한다.
+1. ~~word를 하나씩 꺼내~~char형의 단어를 아스키코드로 변환해 알파벳 범위인 경우 변환해 넣는 wordChange 메서드 생성.
+2. solution 메서드에서 word를 하나씩 꺼내 wordChange 메서드를 사용해 변환후 answer에 추가, 반환한다.
 ### 구현 메서드 상세
 #### String wordChange 메서드
    1. <매개변수>\
-      변환 필요한 단어 String word (입력값)
+      (char)변환 필요한 단어 ~~String word~~char singleWord
    
    2. <변수>\
       (int 상수) A의 아스키코드 65 저장하는 상수 BIGALPSTART\
@@ -23,18 +23,21 @@
       (String) 변환한 문자열을 담을 String 변수 new_word
    
    3. <구현>\
-      word.length() 만큼 for문을 돌며 word에서 한 글자씩 가져온다.\
-      가져온 글자를 int형으로 변환해 아스키코드로 만든다.\
-      알파벳 범위에 있으면 규칙에 따라 변환한다.\
-      변환한 아스키코드를 다시 문자로 new_word에 저장한다.\
-      for문이 종료되면 new_word를 반환한다.
+      ~~word.length() 만큼 for문을 돌며 word에서 한 글자씩 가져온다.~~\
+      oneWord를 int형으로 변환해 아스키코드로 만든다.\
+      알파벳 범위에 있으면 규칙에 따라 변환해 반환.\
+      ~~변환한 아스키코드를 다시 문자로 new_word에 저장한다.~~\
+      ~~for문이 종료되면 new_word를 반환한다.~~
 #### String solution
    1. <매개변수>\
       변환 필요한 단어 String word (입력값)
    2. <변수>\
-      없음
+      ~~없음~~
+      (String) 변환된 문자를 담을 answer
    3. <구현>\
-   wordChange메서드를 사용해 반환된 값 반환.
+   for문을 돌며 word에서 단어 하나씩 꺼내 wordChange메서드로 변환.\
+   ~~wordChange메서드를 사용해 반환된 값 반환.~~\
+   변환된 값을 answer에 저장
 ## 🚀 기능 요구 사항
 
 어느 연못에 엄마 말씀을 좀처럼 듣지 않는 청개구리가 살고 있었다. 청개구리는 엄마가 하는 말은 무엇이든 반대로 말하였다.
