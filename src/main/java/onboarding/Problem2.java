@@ -9,7 +9,12 @@ package onboarding;
  * **/
 
 /**
- * 1. 문자열 비교 함수
+ *  * 1. 문자열 비교 : 문자열 내 문자와 다음 문자가 같은지 체크 하는 함수
+ *  - boolean 함수를 이용한다
+ * **/
+
+/**
+ * 2. 해당 인덱스 출력 함수
  * - 문자열 비교 후 같으면 true 값으로 반환 , 아닐시 false 로 번환
  * - 문자열 비교 하기 위한 탐색 함수 같은 문자 발견시 그 해당 char 값 반환, 아닐시 null값 반환
  * ~ 수정 : 시작 문자 위치 출력 함수 -> 증복 되는 부분 시작점 출력 함수
@@ -17,8 +22,11 @@ package onboarding;
  *  **/
 
 /**
-
- *  **/
+ * 3. 문자열에서 중복되는 부분 시작점과 끝점을 통한 삭제 함수
+ * - 시작점 부터 끝점을 문자열에서 제거한다.
+ * - 시작점과 끝점의 문자열을 substring인 형태로 만든다
+ * - 해당 substr을 replace 함수로 제거한다.
+ * **/
 
 public class Problem2 {
     public static String solution(String cryptogram) {
@@ -29,8 +37,9 @@ public class Problem2 {
 //        char test1 = 'a';
 //        char test2 = 'b';
 //        String test3 = "zyelleyz";
-//        char test4 =searchAt(test3);
-//        System.out.println(test4);
+//        int i = searchStart(test3);
+//        int j = searchEnd(test3, i);
+//        System.out.println(deleteChar(test3, i,j));
 //    }
 
     private static boolean compareChar(char current, char next)
@@ -52,14 +61,22 @@ public class Problem2 {
         return -1;
     }
     private static int searchEnd(String inputStr,int start){
-        char ret = '\u0000';
+        char ret = inputStr.charAt(start);
+        System.out.println(start);
         for (int i = start; i< inputStr.length(); i++)
         {
-            if(!compareChar(ret,inputStr.charAt(i))){
-                return i - 1;
+            if(compareChar(ret,inputStr.charAt(i))==false){
+                return i;
             }
             ret = inputStr.charAt(i);
         }
         return -1;
+    }
+    private static String deleteChar(String inputstr, int start, int end){
+        String subStr ="";
+        String ret = inputstr;
+        subStr = inputstr.substring(start,end);
+        ret = ret.replace(subStr,"");
+        return ret;
     }
 }
