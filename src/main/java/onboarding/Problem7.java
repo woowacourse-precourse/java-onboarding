@@ -23,9 +23,9 @@ public class Problem7 {
         public void addFriendScore() {
             List<String> userFriends = relationship.get(user);
             for(String friend : userFriends){
-                for(String secondFriend : relationship.get(friend)){
-                    if(!secondFriend.equals(user)){
-                        recommendationScore.put(secondFriend, recommendationScore.getOrDefault(secondFriend,0)+10);
+                for(String fof : relationship.get(friend)){
+                    if(!fof.equals(user)){
+                        recommendationScore.put(fof, recommendationScore.getOrDefault(fof,0)+10);
                     }
                 }
                 //relationship.get(friend).stream().filter(i->!i.equals(user)).map(i->recommendationScore.put(i,recommendationScore.getOrDefault(i,0)+10));
@@ -62,7 +62,6 @@ public class Problem7 {
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        ArrayList<String> answer = new ArrayList<>();
         SNS sns = new SNS(user);
         sns.makeRelationship(friends);
         sns.addVisitorScore(visitors);
