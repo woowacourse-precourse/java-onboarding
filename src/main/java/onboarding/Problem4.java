@@ -6,8 +6,22 @@ public class Problem4 {
     static final int LOWER_TREE_FROG = 219;
 
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        StringBuilder answer = new StringBuilder();
+        int wordLength = word.length();
+
+        for (int index = 0; index < wordLength; index++) {
+            isUpperCharacter = false;
+            char currentCharacter = word.charAt(index);
+
+            if (isAlphabet(currentCharacter)) {
+                setIsUpperCharacter(currentCharacter);
+                currentCharacter = convertCharacter(currentCharacter);
+            }
+
+            answer.append(currentCharacter);
+        }
+
+        return answer.toString();
     }
 
     /*
