@@ -22,4 +22,16 @@ class Problem1 {
         return Math.max(sum, multiple);
     }
 
+    /**
+     * 왼쪽 페이지 번호의 가장 큰 수와 오른쪽 페이지 번호의 가장 큰 수 중 가장 큰 수 구하기
+     * @param list
+     * @return 가장 큰 값
+     */
+    private static int getMax(List<Integer> list) {
+        int leftMax = getMaxOfSumAndMulti(list.get(0));
+        int rightMax = getMaxOfSumAndMulti(list.get(1));
+
+        return Math.max(leftMax, rightMax);
+    }
+
 }
