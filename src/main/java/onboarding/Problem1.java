@@ -33,8 +33,9 @@ class Problem1 {
 
         int crongScore = score[3];
 
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        if (pobiScore > crongScore) return 1;
+        else if (crongScore > pobiScore) return 2;
+        else return 0;
     }
     static int convertNumberPlus(int num) {
         String page = Integer.toString(num);
