@@ -2,6 +2,14 @@ package onboarding.problem1;
 
 public class Service {
 
+    public User getHigherUser(User userA, User userB) {
+        if (userA.getScore() > userB.getScore()) {
+            return userA;
+        } else {
+            return userB;
+        }
+    }
+
     public void setScore(User user) {
         Integer leftPage = user.getLeftPage();
         Integer rightPage = user.getRightPage();
