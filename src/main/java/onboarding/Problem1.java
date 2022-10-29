@@ -23,15 +23,13 @@ class Problem1 {
             int pobiScore = getScore(pobi);
             int crongScore = getScore(crong);
 
+            // get winner
             if(pobiScore > crongScore){
                 answer = 1;
-                System.out.println("Pobi win");
             }else if(pobiScore < crongScore){
                 answer = 2;
-                System.out.println("Crong win");
             }else{
                 answer = 0;
-                System.out.println("무승부");
             }
 
         } catch(Exception e) {
@@ -60,9 +58,7 @@ class Problem1 {
     }
 
     private static void parseAndMult(ArrayList<Integer> resArr, int page) {
-        // parse ints 97 => 9 & 7
-        String pageStr = Integer.toString(page);
-        String[] parsedPage = pageStr.split("");
+        String[] parsedPage = parseInt(page);
         int multRes = 1;
         for (String StrParsed: parsedPage){ // 97 => 9 * 7 = 63
             multRes *= Integer.parseInt(StrParsed);
@@ -71,13 +67,18 @@ class Problem1 {
     }
 
     private static void pareAndAdd(ArrayList<Integer> resArr, int page) {
-        // parse ints 97 => 9 & 7
-        String pageStr = Integer.toString(page);
-        String[] parsedPage = pageStr.split("");
+        String[] parsedPage = parseInt(page);
         int addRes = 0;
         for (String StrParsed: parsedPage){ // 97 => 9 + 7 = 16
             addRes += Integer.parseInt(StrParsed);
         }
         resArr.add(addRes);
+    }
+
+    private static String[] parseInt(int page) {
+        // parse ints 97 => 9 & 7
+        String pageStr = Integer.toString(page);
+        String[] parsedPage = pageStr.split("");
+        return parsedPage;
     }
 }
