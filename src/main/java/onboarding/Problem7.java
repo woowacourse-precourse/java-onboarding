@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static boolean isUser(String user, List<String> friend) {
@@ -20,8 +17,8 @@ public class Problem7 {
             return friend.get(0);
         }
     }
-    public static HashSet<String> getFriendSet(String user, List<List<String>> friends){
-        HashSet<String> friendSet = new HashSet<>();
+    public static Set<String> getFriendSet(String user, List<List<String>> friends){
+        Set<String> friendSet = new HashSet<>();
 
         for(List<String> friend: friends) {
             if(isUser(user, friend)) {  // user가 있는 친구 목록일 경우
@@ -33,8 +30,8 @@ public class Problem7 {
         return friendSet;
     }
 
-    public static HashMap<String, Integer> getFriendScore(HashSet<String> friendSet, List<List<String>> friends) {
-        HashMap<String, Integer> scoreMap = new HashMap<>();
+    public static Map<String, Integer> getFriendsScore(Set<String> friendSet, List<List<String>> friends) {
+        Map<String, Integer> scoreMap = new HashMap<>();
 
         for(List<String> friend : friends) {
             for(String user : friendSet) {
@@ -54,11 +51,11 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
-        HashSet<String> friendSet;
-        HashMap<String, Integer> friendScore;
+        Set<String> friendSet;
+        Map<String, Integer> friendsScore;
 
         friendSet = getFriendSet(user, friends);
-        friendScore = getFriendScore(friendSet, friends);
+        friendsScore = getFriendsScore(friendSet, friends);
 
         return answer;
     }
