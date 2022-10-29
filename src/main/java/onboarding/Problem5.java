@@ -8,6 +8,9 @@ import java.util.Scanner;
 public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
+        Money.validateMoneyRange(money);
+        Money inputMoney = new Money(money);
+        answer = ATM.transfer(inputMoney.getWonCountList());
         return answer;
     }
 }
