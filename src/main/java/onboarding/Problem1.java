@@ -17,35 +17,38 @@ import java.util.List;
 
 class Problem1 {
 
-    public boolean isOdd(List<Integer> param){
+    public static boolean isOdd(List<Integer> param){
         if((param.get(0) & 1) != 0)
             return true;
         else
             return false;
     }
 
-    public boolean isEven(List<Integer> param){
+    public static boolean isEven(List<Integer> param){
         if((param.get(1) & 1) == 0)
             return true;
         else
             return false;
     }
 
-    public boolean isContinuum(List<Integer> param){
+    public static boolean isContinuum(List<Integer> param){
         if((param.get(1) - param.get(0)) == 1)
             return true;
         else
             return false;
     }
 
-    public boolean checkPage(List<Integer> page){
+    public static boolean checkPage(List<Integer> page){
+        if(!isContinuum(page))
+            return false;
+
         if(isOdd(page) && isEven(page))
             return true;
         else
             return false;
     }
 
-    public int addNumberOfDigit(int digits){
+    public static int addNumberOfDigit(int digits){
         int sum = 0;
         String s = Integer.toString(digits);
 
@@ -55,7 +58,7 @@ class Problem1 {
         return sum;
     }
 
-    public int multipleNumberOfDigit(int digits){
+    public static int multipleNumberOfDigit(int digits){
         int mul = 1, temp;
         String s = Integer.toString(digits);
 
@@ -69,7 +72,7 @@ class Problem1 {
         return mul;
     }
 
-    public int getHighScore(List<Integer> param){
+    public static int getHighScore(List<Integer> param){
         int addLeftScore, addRightScore, mulLeftScore, mulRightScore, leftPage, rightPage, leftHighScore, rightHighScore;
         leftPage = param.get(0);
         rightPage = param.get(1);
@@ -93,7 +96,7 @@ class Problem1 {
         return (leftHighScore >= rightHighScore) ? leftHighScore : rightHighScore;
     }
 
-    public String getWinner(List<Integer> pobi, List<Integer> crong){
+    public static String getWinner(List<Integer> pobi, List<Integer> crong){
         int pobiHighScore, crongHighScore;
 
         pobiHighScore = getHighScore(pobi);
@@ -109,6 +112,7 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        checkPage(pobi);
 
         return answer;
     }
