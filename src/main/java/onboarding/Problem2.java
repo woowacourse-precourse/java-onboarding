@@ -16,11 +16,11 @@ public class Problem2 {
         int count = 1;
         boolean flag = false;
         for (int i = 1; i < encodedCode.length(); i++) {
-            if (encodedCode.charAt(i) == encodedCode.charAt(i - 1)) {
+            if (checkSameChar(encodedCode, i - 1, i)) {
                 count++;
                 continue;
             }
-            if (encodedCode.charAt(i) != encodedCode.charAt(i - 1) && count >= 2) {
+            if (!checkSameChar(encodedCode, i - 1, i) && count >= 2) {
                 flag = true;
                 encodedCode.replace(i - count, i, getEmptySpace(count));
                 count = 1;
@@ -36,6 +36,10 @@ public class Problem2 {
             clearSpaces(encodedCode);
         }
         return flag;
+    }
+
+    private static boolean checkSameChar(StringBuilder encodedCode, int preIndex, int currentIndex) {
+        return encodedCode.charAt(preIndex) == encodedCode.charAt(currentIndex);
     }
 
     private static void clearSpaces(StringBuilder encodedCode) {
