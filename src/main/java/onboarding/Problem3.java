@@ -12,4 +12,10 @@ public class Problem3 {
         }
         return 0;
     }
+    public static boolean is369(int num){
+        if(num == 3 || num == 6 || num ==9){
+            return true;
+        }
+        return false;
+    }
 }
