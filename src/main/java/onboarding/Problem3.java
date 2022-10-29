@@ -17,13 +17,13 @@ public class Problem3 {
     }
 
     public static int changeCountByDigitNumber(int checkingNumber, int index, int count) {
-        if (isNumberHas369(checkingNumber, index)) {
+        if (has369(checkingNumber, index)) {
             count += 1;
         }
         return count;
     }
 
-    public static boolean isNumberHas369(int number, int index) {
+    public static boolean has369(int number, int index) {
         return intToString(number).charAt(index) == '3' || intToString(number).charAt(index) == '6' || intToString(number).charAt(index) == '9';
     }
 
