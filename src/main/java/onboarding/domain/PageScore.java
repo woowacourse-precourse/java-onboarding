@@ -6,22 +6,26 @@ import static java.lang.Math.max;
 import static onboarding.validator.PageNumberValidator.CANNOT_GET_MAX_VALUE_ERROR;
 import static onboarding.validator.PageNumberValidator.isValidPageNumbers;
 
-public class Score {
+public class PageScore {
     public static final int WIN = 1;
     public static final int LOSE = 2;
     public static final int DRAW = 0;
 
     private final int score;
 
-    public Score(List<Integer> pageNumbers) {
+    public PageScore(List<Integer> pageNumbers) {
         isValidPageNumbers(pageNumbers);
         this.score = calculateScore(pageNumbers);
     }
 
     private int calculateScore(List<Integer> pageNumbers) {
         return pageNumbers.stream()
-                .mapToInt(pageNumber -> max(sumAllPageNumbers(pageNumber), multiAllPageNumbers(pageNumber)))
+                .mapToInt(this::calculateSinglePageScore)
                 .max().orElseThrow(() -> new IllegalArgumentException(CANNOT_GET_MAX_VALUE_ERROR));
+    }
+
+    private int calculateSinglePageScore(Integer pageNumber) {
+        return max(sumAllPageNumbers(pageNumber), multiAllPageNumbers(pageNumber));
     }
 
     private int sumAllPageNumbers(Integer pageNumber) {
@@ -42,7 +46,7 @@ public class Score {
         return score;
     }
 
-    public int playGame(Score scoreForAnother) {
+    public int compareTo(PageScore scoreForAnother) {
         if (lose(scoreForAnother)) {
             return LOSE;
         }
@@ -52,11 +56,11 @@ public class Score {
         return DRAW;
     }
 
-    private boolean win(Score scoreForAnother) {
+    private boolean win(PageScore scoreForAnother) {
         return this.score > scoreForAnother.score;
     }
 
-    private boolean lose(Score scoreForAnother) {
+    private boolean lose(PageScore scoreForAnother) {
         return this.score < scoreForAnother.score;
     }
 }
