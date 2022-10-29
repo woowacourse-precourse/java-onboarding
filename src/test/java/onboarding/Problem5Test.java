@@ -40,7 +40,7 @@ class Problem5Test {
         @DisplayName("숫자A와 0을 입력하면")
         class Context_with_numberA_and_zero_numberB{
             @Test
-            @DisplayName("ArithmeticException을 반환한다")
+            @DisplayName("ArithmeticException이 발생한다")
             void it_throws_ArithmeticException() {
                 int numberA = 5;
                 int numberB = 0;
@@ -68,7 +68,7 @@ class Problem5Test {
         @DisplayName("숫자A와 0을 입력하면")
         class Context_with_numberA_and_zero_numberB {
             @Test
-            @DisplayName("ArithmeticException을 반환한다")
+            @DisplayName("ArithmeticException이 발생한다")
             void it_throws_ArithmeticException() {
                 int numberA = 5;
                 int numberB = 0;
@@ -88,6 +88,36 @@ class Problem5Test {
                 List<Integer> list = new ArrayList<>(Arrays.asList(5, 4, 2, 1, 3));
                 List<Integer> sortedList = List.of(5, 4, 3, 2, 1);
                 assertThat(problem5.sortListDescendingOrder(list)).isEqualTo(sortedList);
+            }
+        }
+    }
+
+    @Nested
+    @DisplayName("countEachDenominations 메소드는")
+    class CountEachDenominationsTest {
+        @Nested
+        @DisplayName("money와 0을 포함하지 않는 화폐 종류 리스트를 입력하면")
+        class Context_with_money_and_non_zero_denominations_list {
+            @Test
+            @DisplayName("리스트 순서에 따라 money를 구성하는 화폐 종류 개수를 반환한다")
+            void it_returns_numberOfEachDenominations() {
+                int money = 52433;
+                List<Integer> denominationList = List.of(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1);
+                List<Integer> numberOfEachDenominations = List.of(1, 0, 0, 2, 0, 4, 0, 3, 3);
+                assertThat(problem5.countEachDenominations(denominationList, money)).isEqualTo(numberOfEachDenominations);
+            }
+        }
+
+        @Nested
+        @DisplayName("money와 0을 포함하는 화폐 종류 리스트를 입력하면")
+        class Context_with_money_and_denomination_list_containing_zero {
+            @Test
+            @DisplayName("ArithmeticException이 발생한다")
+            void it_throws_ArithmeticException() {
+                int money = 52433;
+                List<Integer> denominationList = List.of(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1, 0);
+                List<Integer> numberOfEachDenominations = List.of(1, 0, 0, 2, 0, 4, 0, 3, 3);
+                assertThatThrownBy(() -> problem5.countEachDenominations(denominationList, money)).isInstanceOf(ArithmeticException.class);
             }
         }
     }
