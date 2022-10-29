@@ -35,3 +35,7 @@
 > Integer calcScore(List<Integer>)
 - 점수를 비교해 게임의 승자가 누구인지 정하는 함수
 > int findWinner(List<Integer>, List<Integer>)
+- 올바른 페이지 번호가 들어왔는지 체크하는 함수
+> boolean checkPageNum(List<Integer>)
+- 입력 형식이 올바른지 체크하는 함수
+> boolean checkInput(List<Integer> List<integer>)

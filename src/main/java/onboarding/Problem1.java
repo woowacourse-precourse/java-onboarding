@@ -60,4 +60,19 @@ class Problem1 {
         else result = 0;
         return result;
     }
+
+    // 올바른 페이지 번호가 들어왔는지 체크하는 함수
+    public static boolean checkPageNum(List<Integer> pages) {
+        // 오른쪽 페이지 - 왼쪽 페이지가 1이 아닌 경우 false
+        if (pages.get(1) - pages.get(0) != 1) return false;
+
+        // 왼쪽 페이지는 1보다 작거나 홀수 번호가 아니면 false
+        if (pages.get(0) < 1 | pages.get(0) % 2 != 1) return false;
+
+        // 오른쪽 페이지는 400보다 크거나 짝수 번호가 아니면 false
+        if (pages.get(1) > 400 | pages.get(0) % 2 != 0) return false;
+
+        // 위의 제약조건에 모두 해당되지 않으면 true
+        return true;
+    }
 }
