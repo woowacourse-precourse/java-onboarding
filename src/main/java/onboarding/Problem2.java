@@ -19,7 +19,7 @@ public class Problem2 {
         String start = tmp.repeat(3);
         String end = tmp.repeat(2);
 
-        while (result.contains(tmp)) {
+        while (result.contains(start)) {
             result = result.replace(start,end);
         }
 
@@ -44,12 +44,18 @@ public class Problem2 {
         for (int i = 0; i < cryptogram.length(); i++) {
             char tmp = cryptogram.charAt(i);
             boolean checkEmpty = stack.isEmpty();
-            Character topOfStack = stack.peek();
 
-            if (checkEmpty || topOfStack != tmp) {
+            if (checkEmpty) {
                 stack.push(tmp);
                 continue;
             }
+
+            Character topOfStack = stack.peek();
+            if (topOfStack != tmp) {
+                stack.push(tmp);
+                continue;
+            }
+
             stack.pop();
         }
 
