@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 public class Problem6 {
 
@@ -27,7 +24,10 @@ public class Problem6 {
             }
         }
 
-        return new ArrayList<>(emailSet);
+        ArrayList<String> answer = new ArrayList<>(emailSet);
+        answer.sort(Comparator.naturalOrder());
+
+        return answer;
     }
 
     private static class DupCheckMap extends HashMap<String, String> {
