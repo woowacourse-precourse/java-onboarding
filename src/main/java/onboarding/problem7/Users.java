@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import static onboarding.problem7.Constance.*;
 import static onboarding.problem7.User.*;
 
 public class Users {
@@ -21,7 +22,7 @@ public class Users {
                 .takeWhile(Objects::nonNull)
                 .filter(user -> !userFriends.contains(user.getName()))
                 .sorted(Comparator.comparing(User::getScore).reversed())
-                .limit(5)
+                .limit(RANKING_MAX_SIZE)
                 .map(User::getName)
                 .collect(Collectors.toList());
     }
