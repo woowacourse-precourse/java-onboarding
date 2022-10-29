@@ -1,14 +1,15 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+
+        List<String> friendsList = makeFriendsList(user, friends);
+        LinkedHashMap<String, Integer> scoreMap = makeScoreMap(friends, friendsList, visitors, user);
+        List<String> ans = sortRecommendations(scoreMap);
+        return ans;
     }
 
 
@@ -36,8 +37,8 @@ public class Problem7 {
         return friendsList;
     }
 
-    public static HashMap<String, Integer> makeScoreMap(List<List<String>> friends, List<String> friendsList, List<String> visitorsList, String user) {
-        HashMap<String, Integer> scoreMap = new HashMap<>();
+    public static LinkedHashMap<String, Integer> makeScoreMap(List<List<String>> friends, List<String> friendsList, List<String> visitorsList, String user) {
+        LinkedHashMap<String, Integer> scoreMap = new LinkedHashMap<>();
 
         for (int i = 0; i < friends.size(); i++) {
             List<String> friend = friends.get(i);
@@ -70,5 +71,19 @@ public class Problem7 {
         }
 
         return scoreMap;
+    }
+
+    public static List<String> sortRecommendations(LinkedHashMap<String, Integer> scoreMap) {
+        ArrayList<String> recommendations = new ArrayList<>();
+
+
+        scoreMap.entrySet().stream()
+                .sorted(Map.Entry.comparingByKey())
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .forEach(e -> {
+                    recommendations.add(e.getKey());
+                });
+
+        return recommendations;
     }
 }

@@ -4,6 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -55,8 +56,27 @@ class Problem7Test {
         List<String> friendsList = Problem7.makeFriendsList(user, friends);
 
 
-        HashMap<String, Integer> result = Problem7.makeScoreMap(friends, friendsList, visitors, user);
-
+        LinkedHashMap<String, Integer> result = Problem7.makeScoreMap(friends, friendsList, visitors, user);
         assertThat(result.keySet()).contains("andole", "jun", "bedi");
+        System.out.println("result = " + result);
+    }
+
+    @Test
+    void sortRecommendations() {
+        String user = "mrko";
+        List<List<String>> friends = List.of(
+                List.of("donut", "andole"),
+                List.of("donut", "jun"),
+                List.of("donut", "mrko"),
+                List.of("shakevan", "andole"),
+                List.of("shakevan", "jun"),
+                List.of("shakevan", "mrko")
+        );
+        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+        List<String> friendsList = Problem7.makeFriendsList(user, friends);
+        LinkedHashMap<String, Integer> scoreMap = Problem7.makeScoreMap(friends, friendsList, visitors, user);
+        List<String> result = Problem7.sortRecommendations(scoreMap);
+
+        assertThat(result).containsExactly("andole", "jun", "bedi");
     }
 }
