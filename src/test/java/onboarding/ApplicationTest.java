@@ -3,6 +3,7 @@ package onboarding;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -195,6 +196,12 @@ class ApplicationTest {
         	//then
             assertThat(Problem2.solution(cryptogram)).isEqualTo(expected);
         }
+        @Test
+        void exceptionTest() {
+        	String cryptogram = "aaabb";
+        	String expected = "";
+        	assertThat(Problem2.solution(cryptogram)).isEqualTo(expected);
+        }
     }
 
     @Nested
@@ -221,6 +228,18 @@ class ApplicationTest {
             String word = "I love you";
             String result = "R olev blf";
             assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+        @Test
+        void convertCharReverseTest() {
+        	char[] lowerAlphabets = new char[26];
+        	for(int i=0; i<lowerAlphabets.length; i++) {
+        		lowerAlphabets[i] = (char)(97 + i);
+        	}
+        	System.out.println(Arrays.toString(lowerAlphabets));
+        	for(int i=0; i<lowerAlphabets.length; i++) {
+        		lowerAlphabets[i] = Problem4.convertCharReverse(lowerAlphabets[i]);
+        	}
+        	System.out.println(Arrays.toString(lowerAlphabets));
         }
     }
 
