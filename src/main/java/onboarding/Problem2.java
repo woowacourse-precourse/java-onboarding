@@ -7,9 +7,18 @@ public class Problem2 {
         return answer;
     }
 
+
+    public static boolean hasDuplicated(String str) {
+        for (int i = 1; i < str.length(); i++) {
+            if (str.charAt(i-1) == str.charAt(i)) {
+                return true;
+            }
+        }
+        return false;
+    }
     public static String decryption(String cryptogram) {
-        boolean[] isDuplicated = new boolean[cryptogram.length()];
         String result = "";
+        boolean[] isDuplicated = new boolean[cryptogram.length()];
 
         for (int i = 1; i < cryptogram.length(); i++) {
             if (cryptogram.charAt(i-1) == cryptogram.charAt(i)) {
