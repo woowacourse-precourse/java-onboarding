@@ -2,9 +2,12 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     private static List<String> myFriendsList = new ArrayList<>();
@@ -19,8 +22,23 @@ public class Problem7 {
         }
 
         divideFriends(user, friends);
+
         score = giveScore(friends, visitors, score);
-        return answer;
+
+        return score.entrySet().stream()
+                .filter(e -> e.getValue() != 0)
+                .sorted(new Comparator<Map.Entry<String, Integer>>() {
+                    @Override
+                    public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                        if (Objects.equals(o1.getValue(), o2.getValue())) {
+                            return o1.getKey().compareTo(o2.getKey());
+                        }
+                        return o2.getValue().compareTo(o1.getValue());
+                    }
+                })
+                .map(Map.Entry :: getKey)
+                .limit(5)
+                .collect(Collectors.toList());
     }
 
     public static Map<String, Integer> giveScore(List<List<String>> friends, List<String> visitors, Map<String, Integer> score) {
