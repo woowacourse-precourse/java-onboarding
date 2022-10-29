@@ -17,14 +17,33 @@ public class Problem2 {
 
     private static void removeDuplicateString(String str) {
         for (Character c : str.toCharArray()) {
-            if (!st.isEmpty()) {
+            if(!st.isEmpty()) {
                 Character last = st.peek();
-                if (c.equals(last)) {
-                    st.pop();
-                    continue;
+                int duplicate = 0;
+                if (!c.equals(last)) {
+                    removeDuplicateByStack(last, duplicate);
                 }
             }
             st.add(c);
+        }
+
+        Character last = st.peek();
+        int duplicate = 0;
+        removeDuplicateByStack(last, duplicate);
+    }
+
+    private static void removeDuplicateByStack(Character last, int cnt) {
+        for (int i = st.size(); i > 0; i--) {
+            if (last != st.elementAt(i-1)) {
+                break;
+            }
+            cnt += 1;
+        }
+
+        if (cnt > 1) {
+            for (int i = 0; i < cnt; i++) {
+                st.pop();
+            }
         }
     }
 
