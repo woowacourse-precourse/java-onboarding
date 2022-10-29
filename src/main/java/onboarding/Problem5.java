@@ -14,6 +14,7 @@ public class Problem5 {
         for (int i=0; i<currencyList.size(); i++) {
             int currency = currencyList.get(i);
             int numOfCurrency = money / currency;
+            answer.add(numOfCurrency);
         }
         return answer;
     }
