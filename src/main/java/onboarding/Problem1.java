@@ -3,8 +3,12 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+    
+    // 왼쪽 페이지가 홀수인 조건을 검사하는 메서드
+    
+    // 오른쪽 페이지가 짝수인 조건을 검사하는 메서드
 
-    // 두수 중 더 큰 값을 반환하는 메서드
+    // 두 수 중 더 큰 값을 반환하는 메서드
     // 같은 값이면 첫 번째 파라미터를 반환한다.
     public static int whichIsMaxValue(int value1, int value2) {
         if (value1 > value2) {
@@ -111,11 +115,9 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         // 예외 조건이 아닐 때
         if (!isException(pobi) && !isException(crong)) {
-            int pobiValue = compareWithSumVersusMultiply(
-                    sumPlaceValue(pobi), multiplyPlaceValue(pobi));
+            int pobiValue = compareWithSumVersusMultiply(sumPlaceValue(pobi), multiplyPlaceValue(pobi));
 
-            int crongValue = compareWithSumVersusMultiply(
-                    sumPlaceValue(crong), multiplyPlaceValue(crong));
+            int crongValue = compareWithSumVersusMultiply(sumPlaceValue(crong), multiplyPlaceValue(crong));
 
             return pobiVersusCrong(pobiValue, crongValue);
         }
