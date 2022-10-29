@@ -130,6 +130,13 @@ class ApplicationTest {
             List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
+
+        @Test
+        public void containTest() {
+            String testString = "가나다라마";
+            String testString2 = "가나";
+            System.out.println(testString.contains(testString2));
+        }
     }
 
     @Nested
