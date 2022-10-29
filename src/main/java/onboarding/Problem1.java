@@ -50,6 +50,14 @@ class Problem1 {
         int crong_left_page = crong.get(0);
         int crong_right_page = crong.get(1);
 
+        // pobi의 합과 곱 페이지
+        int pobi_sum_page = Math.max(getSumNumber(pobi_left_page, count_sum_number), getSumNumber(pobi_right_page, count_sum_number));
+        int pobi_multi_page = Math.max(getMultiNumber(pobi_left_page, count_multi_number), getMultiNumber(pobi_right_page, count_multi_number));
+
+        // crong의 합과 곱 페이지
+        int crong_sum_page = Math.max(getSumNumber(crong_left_page, count_sum_number), getSumNumber(crong_right_page, count_sum_number));
+        int crong_multi_page = Math.max(getMultiNumber(crong_left_page, count_multi_number), getMultiNumber(crong_right_page, count_multi_number));
+
         // 3. pobi와 crong의 점수 구하기
 
         // 4. 점수를 비교해서 승자를 구하기
