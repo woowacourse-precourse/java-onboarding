@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /*
 * 중복의 최소 단위인 2글자만 탐색하면 됨
@@ -16,9 +13,8 @@ import java.util.Set;
  */
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = new ArrayList<String>();
         List<String> prohibition = makeProhibition(forms);
-
+        List<String> answer = makeAnswer(forms, prohibition);
         return answer;
     }
     public static List<String> makeProhibition(List<List<String>> forms) {
@@ -37,5 +33,18 @@ public class Problem6 {
         // prohibition 에 중복 부분 단어가 있을 수 있으므로 제거
         Set<String> set = new HashSet<String>(prohibition);
         return new ArrayList<String>(set);
+    }
+    public static List<String> makeAnswer(List<List<String>> forms, List<String> prohibition) {
+        List<String> answer = new ArrayList<String>();
+        for (List<String> user : forms) {
+            String user_name = user.get(1);
+            String user_email = user.get(0);
+            for (String p : prohibition) {
+                if (user_name.contains(p))
+                    answer.add(user_email);
+            }
+        } // 이메일 오름차순 정렬
+        Collections.sort(answer);
+        return answer;
     }
 }
