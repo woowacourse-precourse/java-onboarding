@@ -1,44 +1,54 @@
 package onboarding;
 
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
-/** 구현해야할 기능
- *  객체 사용 Crew(부모 키, 이메일, 이름)
- *  부모 키의 경우 중복된 이름을 찾는데 도움을 줄 수 있음
- *  ex) 제이슨, 제이엠의 경우 동일한 부모키를 갖는다.
- *  이름을 두글자씩 자른 후 이것을 해시셋으로 저장
- *  ㄴ 객체로 저장 TwoLetters(2글자 이름, 부모 키)
- *  해시셋에 존재한다면 Crew의 부모키를 TwoLetters 부모키로 변경
- *  이메일을 오름차순으로 정렬하는 기능
+/**
+ * 구현해야할 기능
+ * 객체 사용 Crew(부모 키, 이메일, 이름)
+ * 부모 키의 경우 중복된 이름을 찾는데 도움을 줄 수 있음
+ * ex) 제이슨, 제이엠의 경우 동일한 부모키를 갖는다.
+ * 이름을 두글자씩 자른 후 이것을 해시맵으로 저장
+ * 해시셋에 존재한다면 Crew의 부모키를 TwoLetters 부모키로 변경
+ * 이메일을 오름차순으로 정렬하는 기능
  */
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
+
+        List<Crew> crewList = new ArrayList<>();
+        Map<String, Integer> tlMap = new HashMap<>();
+
+        for (int i = 0; i < forms.size(); i++) {
+            String email = forms.get(i).get(0);
+            String name = forms.get(i).get(1);
+
+            // 이름이 한 글자인 경우
+            if (name.length() < 2) {
+                if (!tlMap.containsKey(name.substring(0, 1)))
+                    tlMap.put(name.substring(0, 1), i);
+            } else {
+                for (int j = 0; j < name.length() - 2; j++) {
+                    if (!tlMap.containsKey(name.substring(j, j + 2)))
+                        tlMap.put(name.substring(j, j + 2), i);
+                }
+            }
+            
+            Crew crew = new Crew(i, email, name);
+        }
+
         List<String> answer = List.of("answer");
         return answer;
     }
+
 
     public static class Crew {
         int parentKey;
         String email;
         String name;
-    }
 
-    public static class TwoLetters {
-        int parentKey;
-        String letters;
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            TwoLetters that = (TwoLetters) o;
-            return Objects.equals(letters, that.letters);
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(letters);
+        public Crew(int parentKey, String email, String name) {
+            this.parentKey = parentKey;
+            this.email = email;
+            this.name = name;
         }
     }
 }
