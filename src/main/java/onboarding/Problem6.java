@@ -1,7 +1,8 @@
 package onboarding;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Problem6 {
@@ -16,8 +17,8 @@ public class Problem6 {
                 .collect(Collectors.toList());
     }
 
-    private static List<String> getSplitNicknames(String nickname) {
-        List<String> splitNicknames = new ArrayList<>();
+    private static Set<String> getSplitNicknames(String nickname) {
+        Set<String> splitNicknames = new HashSet<>();
 
         int length = nickname.length();
         int sequence = 0;
