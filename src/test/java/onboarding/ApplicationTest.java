@@ -77,6 +77,22 @@ class ApplicationTest {
             String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
+
+        @Test
+        void case3() {
+            //문자열이 1개인 경우
+            String cryptogram = "z";
+            String result = "z";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void case4() {
+            //연속하는 문자열이 2개가 아닌 경우
+            String cryptogram = "zzzzzzzz";
+            String result = "";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
     }
 
     @Nested
