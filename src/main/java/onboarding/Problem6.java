@@ -59,12 +59,16 @@ public class Problem6 {
     // 이중 for문을 통하여 주어진 모든 회원들을 각각 조사하여 조건에 맞는 경우 hashset에 담는다.
     static HashSet<String> solve(List<List<String>> list){
         HashSet<String> hashSet = new HashSet<>();
+        boolean[] visited = new boolean[list.size()];
 
         for (int i = 0; i < list.size(); i++) {
             for (int j = i+1; j < list.size(); j++) {
-                if(compare(list.get(i).get(1), list.get(j).get(1))){
+                if(compare(list.get(i).get(1), list.get(j).get(1))
+                    && visited[j] == false){
                     hashSet.add(list.get(i).get(0));
                     hashSet.add(list.get(j).get(0));
+                    visited[i] = true;
+                    visited[j] = true;
                 }
             }
         }
