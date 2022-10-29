@@ -3,6 +3,9 @@ package onboarding;
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
+        for (int i = 0; i < word.length(); i++) {
+            answer += changeWord(getAscii(word.charAt(i)));
+        }
         return answer;
     }
     private static int getAscii(char c){
@@ -15,7 +18,7 @@ public class Problem4 {
         if ((int)'a' <= c && c <= (int)'z') {
             return changeSmallCh(c);
         }
-        return '\0';
+        return (char)c;
     }
     private static char changeBigCh(int c) {
         return (char) ((-1 * (c - 65)) + (int) 'Z');
