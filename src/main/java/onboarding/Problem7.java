@@ -50,7 +50,7 @@ public class Problem7 {
             if(oldFriend.contains(friends.get(i))){
                 continue;
             }
-            increaseWeight(friends.get(i),5);
+            increaseWeight(friends.get(i),10);
         }
     }
 
