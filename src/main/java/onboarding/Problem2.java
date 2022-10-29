@@ -15,7 +15,13 @@ public class Problem2 {
                 }
                 if(answer.charAt(current)==answer.charAt(current+1)){
                     stepAnswer.append(answer.substring(start,current));
-                    current+=1;
+                    while(true){
+                        if(current<answer.length()-1&&answer.charAt(current)==answer.charAt(current+1)){
+                            current+=1;
+                        }else{
+                            break;
+                        }
+                    }
                     start=current+1;
                 }
                 current+=1;
