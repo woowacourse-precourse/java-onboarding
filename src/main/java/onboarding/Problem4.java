@@ -76,7 +76,6 @@ class Encode {
     }
 
     private static char encodeLowerCase(char c) {
-        System.out.println("c = " + c);
         int standard = ('a' + 'z') / 2;
         if (c <= standard) {
             standard += (standard - c + 1);
