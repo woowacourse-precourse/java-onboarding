@@ -1,14 +1,14 @@
 package onboarding;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = compareAllCrews(forms);
-        return answer;
-    }
-
-    private static List<String> compareAllCrews(List<List<String>> forms) {
+        List<String> answer;
         Set<String> emailSet = new HashSet<>();
 
         for (int i = 0; i < forms.size(); i++) {
@@ -17,10 +17,10 @@ public class Problem6 {
             }
         }
 
-        List<String> emailList = new ArrayList<>(emailSet);
-        Collections.sort(emailList);
+        answer = new ArrayList<>(emailSet);
+        Collections.sort(answer);
 
-        return emailList;
+        return answer;
     }
 
     private static Set<String> getOverlapCrewsEmail(List<String> crew, List<String> comparisonCrew) {
@@ -36,6 +36,7 @@ public class Problem6 {
                 break;
             }
         }
+
         return emailSet;
     }
 }
