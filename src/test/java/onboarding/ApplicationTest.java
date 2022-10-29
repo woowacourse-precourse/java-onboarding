@@ -1,5 +1,9 @@
 package onboarding;
 
+/**
+ * junit으로 테스트 시작
+ */
+
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
