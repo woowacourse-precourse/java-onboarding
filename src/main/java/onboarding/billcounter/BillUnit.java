@@ -1,6 +1,6 @@
-package onboarding.bankaccount;
+package onboarding.billcounter;
 
-public enum BankUnit {
+public enum BillUnit {
 	OH_MAN_WON(50_000),
 	MAN_WON(10_000),
 	OH_CHAN_WON(5_000),
@@ -12,7 +12,7 @@ public enum BankUnit {
 
 	private final int money;
 
-	BankUnit(int money) {
+	BillUnit(int money) {
 		this.money = money;
 	}
 

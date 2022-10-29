@@ -11,14 +11,14 @@ public class BillCounter {
 		this.money = money;
 	}
 
-	public int getBillsOf(final BankUnit bankUnit) {
-		return money / bankUnit.getMoney();
+	public int getBillsOf(final BillUnit billUnit) {
+		return money / billUnit.getMoney();
 	}
 
 	public List<Integer> getBills() {
 		List<Integer> bills = new ArrayList<>();
 
-		for (BankUnit billUnit : BankUnit.values()) {
+		for (BillUnit billUnit : BillUnit.values()) {
 			int numberOfBills = getBillsOf(billUnit);
 			bills.add(numberOfBills);
 			this.money = numberOfBills != 0
