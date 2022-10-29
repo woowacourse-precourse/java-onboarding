@@ -6,20 +6,18 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
-        if(pageCheck(pobi) == -1 || pageCheck(crong) == -1) {
+        if(pageCheck(pobi) == -1 || pageCheck(crong) == -1)
             return -1;
-        }
 
-//        int pobiLeftNumber = addEachNumber(pobi.get(0));
-        int pobiLeftNumber = multiplyEachNumber(pobi.get(0));
-//        int pobiRightNumber = addEachNumber(pobi.get(1));
-        int pobiRightNumber = multiplyEachNumber(pobi.get(1));
-//        int crongLeftNumber = addEachNumber(crong.get(0));
-        int crongLeftNumber = multiplyEachNumber(crong.get(0));
-//        int crongRightNumber = addEachNumber(crong.get(1));
-        int crongRightNumber = multiplyEachNumber(crong.get(1));
+        int pobiMaxNumber = getMaxNumber(pobi);
+        int crongMaxNumber = getMaxNumber(crong);
 
-
+        if(pobiMaxNumber > crongMaxNumber)
+            answer = 1;
+        else if(pobiMaxNumber < crongMaxNumber)
+            answer = 2;
+        else if(pobiMaxNumber == crongMaxNumber)
+            answer = 0;
 
         return answer;
     }
@@ -37,6 +35,13 @@ class Problem1 {
         return 0;
     }
 
+    private static int getMaxNumber(List<Integer> list){
+        int leftPageNumber = Math.max(addEachNumber(list.get(0)), multiplyEachNumber(list.get(0)));
+        int rightPageNumber = Math.max(addEachNumber(list.get(1)), multiplyEachNumber(list.get(1)));
+
+        return Math.max(leftPageNumber, rightPageNumber);
+    }
+
     private static int addEachNumber(int num){
         int sum = 0;
 
@@ -45,7 +50,6 @@ class Problem1 {
             num /= 10;
         }
 
-        System.out.println("sum 의 값 : " + sum);
         return sum;
     }
 
@@ -57,15 +61,6 @@ class Problem1 {
             num /= 10;
         }
 
-        System.out.println("multiply 의 값 : " + multiply);
         return multiply;
     }
-
-    public static void main(String[] args) {
-        List<Integer> pobi = List.of(97, 98);
-        List<Integer> crong = List.of(197, 198);
-
-        System.out.println(solution(pobi, crong));
-    }
-
 }
