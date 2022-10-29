@@ -60,4 +60,18 @@ public class Problem2 {
         }
         return deletedCrytogram;
     }
+
+    public static String deleteContinuedSameCharUntilNotOverlap(String cryptogram) {
+        boolean checkOverlap = checkCryptogramOverlap(cryptogram);
+        String result = "";
+        while (checkOverlap) {
+            result = deleteContinuedSameChar(cryptogram);
+            cryptogram = result;
+            if (cryptogram.equals("")) {
+                break;
+            }
+            checkOverlap = checkCryptogramOverlap(cryptogram);
+        }
+        return result;
+    }
 }
