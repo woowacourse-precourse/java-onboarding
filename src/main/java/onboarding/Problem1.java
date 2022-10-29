@@ -3,6 +3,9 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+    static final int FIRST_PAGE = 1;
+    static final int LAST_PAGE = 400;
+
     /**
      * pobi와 crong 중 누가 이겼는지 알려주는 메서드이다.
      *
@@ -24,10 +27,7 @@ class Problem1 {
      * @param : List<Integer>, 두 개의 숫자로 구성된 페이지 리스트
      * @return : int, 계산된 최대 점수
      */
-    public static int getScore(List<Integer> pages) {
-        int leftPage = pages.get(0);
-        int rightPage = pages.get(1);
-
+    public static int getScore(int leftPage, int rightPage) {
         int leftPageScore = Math.max(addEachNumber(leftPage), multipleEachNumber(leftPage));
         int rightPageScore = Math.max(addEachNumber(rightPage), multipleEachNumber(rightPage));
 
