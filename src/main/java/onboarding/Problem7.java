@@ -12,6 +12,14 @@ public class Problem7 {
         public SNS(String user) {
             this.user = user;
         }
+
+        public void addVisitorScore(List<String> visitors) {
+            for(String visitor : visitors) {
+                Integer orDefault = recommendationScore.getOrDefault(visitor, 0);
+                recommendationScore.put(visitor, orDefault+1);
+            }
+        }
+
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
