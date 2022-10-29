@@ -40,4 +40,13 @@ public class Problem6 {
         return substringCrewNicknames;
     }
 
+    private static Set<String> extractDuplicateSubstringCrewNicknames(List<String> substringCrewNicknames) {
+        Set<String> DuplicateSubstringCrewNicknames = substringCrewNicknames.stream()
+                .filter(substringCrewNickname ->
+                        substringCrewNicknames.indexOf(substringCrewNickname) !=
+                                substringCrewNicknames.lastIndexOf(substringCrewNickname))
+                .collect(Collectors.toSet());
+        return DuplicateSubstringCrewNicknames;
+    }
+
 }
