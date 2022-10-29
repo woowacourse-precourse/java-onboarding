@@ -28,7 +28,7 @@ public class Problem4 {
         StringBuilderWords(String word) {
             this.stringBuilder = new StringBuilder(word);
             this.answer = "";
-            stringLength = stringBuilder.length();
+            this.stringLength = stringBuilder.length();
         }
 
         private String getConvertWord() {
