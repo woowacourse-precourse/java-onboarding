@@ -28,4 +28,16 @@ public class Problem6 {
         return duplicableCrewNicknames;
     }
 
+    private static List<String> getSubstringCrewNicknames(List<String> duplicableCrewNicknames) {
+        List<String> substringCrewNicknames = new ArrayList<>();
+        duplicableCrewNicknames.forEach(
+                duplicableCrewNickname -> {
+                    for (int subStringIndex = 0; subStringIndex < duplicableCrewNickname.length() - 1; subStringIndex++) {
+                        substringCrewNicknames.add(duplicableCrewNickname.substring(subStringIndex, subStringIndex + 2));
+                    }
+                }
+        );
+        return substringCrewNicknames;
+    }
+
 }
