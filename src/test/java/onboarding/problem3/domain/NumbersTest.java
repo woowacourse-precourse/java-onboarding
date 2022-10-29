@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class NumbersTest {
+class NumbersTest {
     @Test
     @DisplayName("입력된 숫자까지 증가하면서 3,6,9 개수 더하기")
     void sumCountOfMultipleOfThree() {

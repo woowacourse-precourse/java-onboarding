@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class NumberTest {
+class NumberTest {
     @Test
     @DisplayName("숫자의 각 자리수 중 3의 배수인 수의 개수 구하기")
     void countOfMultipleOfThree() {
