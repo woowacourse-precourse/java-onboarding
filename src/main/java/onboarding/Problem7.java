@@ -1,9 +1,9 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.List;
 
+import java.util.*;
 public class Problem7 {
+    private static final HashMap<String, Integer> userHash = new HashMap<>();
 
     /**
      * <div> 사용자 아이디 user와 친구 관계 정보 friends, 사용자 타임 라인 방문 기록 visitors가 매개변수로 주어질 때,
@@ -39,4 +39,42 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
         return answer;
     }
+
+    private static List<? extends List<Integer>> getGraph(List<List<String>> friends) {
+        List<List<Integer>> graph = new ArrayList<>();
+        HashSet<String> users = getUserSet(friends);
+        setUserIndex(users);
+        for(int i = 0; i < users.size(); i++) graph.add(new ArrayList<>());
+
+        for(List<String> edge : friends) {
+            String src = edge.get(0);
+            String dest = edge.get(1);
+
+            int srcIndex = getUserIndex(src);
+            int destIndex = getUserIndex(dest);
+
+            graph.get(srcIndex).add(destIndex);
+            graph.get(destIndex).add(srcIndex);
+        }
+
+        return graph;
+    }
+    
+    private static int getUserIndex(String target) {
+        return userHash.get(target);
+    }
+
+    private static void setUserIndex(HashSet<String> users) {
+        int index = 0;
+        for (String key : users) {
+            userHash.put(key, index++);
+        }
+    }
+
+    private static HashSet<String> getUserSet(List<List<String>> users) {
+        HashSet<String> set = new HashSet<>();
+        users.forEach(set::addAll);
+        return set;
+    }
+
 }
