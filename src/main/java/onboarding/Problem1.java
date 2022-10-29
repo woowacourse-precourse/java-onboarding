@@ -14,11 +14,22 @@ class Problem1 {
         try {
             checkPages(pobi);
             checkPages(crong);
+
+            int pobiScore = findScore(pobi);
+            int crongScore = findScore(crong);
+
         } catch (Exception e) {
             //System.out.print(e.getMessage());
             answer = ERROR_NUM;
         }
         return answer;
+    }
+
+    public static int findScore(List<Integer> player) {
+        int leftMaxNum = findMax(player.get(0));
+        int rightMaxNum = findMax(player.get(1));
+
+        return Math.max(leftMaxNum, rightMaxNum);
     }
 
     public static int findMax(int num) {
