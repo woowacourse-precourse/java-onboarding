@@ -21,3 +21,10 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능 목록
+1. 주어진 정보를 Map<닉네임, 이메일> 자료구조에 담아주는 함수 list_to_map
+2. 주어진 닉네임과 키값이 중복인지 확인하는 함수 is_duplicate
+3. 동일한 닉네임을 가진 이메일들 리스트를 반환하는 함수 get_identical_list
+4. 중복된 닉네임들의 이메일 리스트를 반환하는 함수 get_duplicated_list
+5. 문자열 리스트를 오름차순으로 정렬하고 중복을 제거하는 함수 modify_list
