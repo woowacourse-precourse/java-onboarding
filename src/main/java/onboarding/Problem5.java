@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
@@ -24,25 +23,27 @@ public class Problem5 {
         }
     }
 
+    private static final int MAX_MONEY = 1000000;
+
     public static List<Integer> solution(int money) {
         List<Integer> answer = List.of(0,0,0,0,0,0,0,0,0);
-        ArrayList<Integer> arrayList = new ArrayList<>(answer);
-        makeWallet(money, arrayList);
-        return arrayList;
+        ArrayList<Integer> wallet = new ArrayList<>(answer);
+        makeWallet(money, wallet);
+        return wallet;
     }
 
     // 1. 은행에서 출금해서 지갑에 넣기
     private static void makeWallet(int money, ArrayList<Integer> arrayList) {
-        int arrayIdx =0;
-        for (Won value : Won.values()) {
-            money -= value.num * getCoin(money, value.num, arrayIdx, arrayList);
-            arrayIdx++;
+        int walletIdx =0;
+        for (Won won : Won.values()) {
+            money -= won.num * getNumberOfMoney(money, won.num, walletIdx, arrayList);
+            walletIdx++;
         }
     }
 
-    //    2. 지갑에 최대한 담을 수 있는 갯수 구하기 (지갑이 최대한 가볍도록 큰 값의 지폐부터 담아야 함)
-    private static int getCoin(int money, int won,int idx, ArrayList<Integer> arrayList) {
-        int i=1000000/won;
+    //  2. 지갑에 최대한 담을 수 있는 갯수 구하기 (지갑이 최대한 가볍도록 큰 값의 지폐부터 담아야 함)
+    private static int getNumberOfMoney(int money, int won, int idx, ArrayList<Integer> arrayList) {
+        int i=MAX_MONEY/won;
         for(;i>=0;i--){
             if(money -won*i>=0){
                 arrayList.set(idx,i);
