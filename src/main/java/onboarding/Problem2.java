@@ -61,6 +61,7 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         
         String answer = "answer";
+
         // 중복 삭제 메소드
         List<Character> temp = dltRedund(cryptogram);
 
@@ -68,7 +69,7 @@ public class Problem2 {
         // 정답 return 및 재귀에서 빠져나온다.
         if (checkEnd(listToString(temp), cryptogram)){
             answer = listToString(temp);
-            return answer; 
+            return answer;
         }
         else { // ckeckEnd 함수가 false이면
             // 다시 수행 (재귀)
