@@ -5,19 +5,28 @@ import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-
         HashSet<String> userFriendMap = new HashSet<>(getFriendListOfUser(user, friends));
-        ;
-        System.out.println(userFriendMap);
-        System.out.println(getScoreMap(userFriendMap,
-                friends.stream().filter((users) -> !users.contains(user)).collect(Collectors.toList()),
-                visitors));
-        return answer;
+
+        List<List<String>> withoutUserFriends = friends.stream()
+                .filter((users) -> !users.contains(user))
+                .collect(Collectors.toList());
+
+        Map<String, Integer> scoreMap = getScoreMap(userFriendMap, withoutUserFriends, visitors);
+        List<Map.Entry<String, Integer>> list = new ArrayList<>(scoreMap.entrySet());
+
+        list.sort((o1, o2) -> {
+            if (o1.getValue().equals(o2.getValue())) {
+                return o1.getKey().compareTo(o2.getKey());
+            }
+            return o2.getValue() - o1.getValue();
+        });
+
+        return list.stream().map(Map.Entry::getKey).collect(Collectors.toList());
     }
 
-    private static HashMap<String, Integer> getScoreMap(HashSet<String> userFriendMap, List<List<String>> friends, List<String> visitors) {
-        HashMap<String, Integer> result = new HashMap<>();
+    private static Map<String, Integer> getScoreMap(HashSet<String> userFriendMap, List<List<String>> friends,
+                                                  List<String> visitors) {
+        Map<String, Integer> result = new HashMap<>();
 
         mutualFriendScore(result, userFriendMap, friends);
         timelineScore(result, userFriendMap, visitors);
@@ -25,7 +34,7 @@ public class Problem7 {
         return result;
     }
 
-    private static void timelineScore(HashMap<String, Integer> scoreMap, HashSet<String> userFriendMap,
+    private static void timelineScore(Map<String, Integer> scoreMap, HashSet<String> userFriendMap,
                                       List<String> visitors) {
         for (String visitor: visitors) {
             if (userFriendMap.contains(visitor)) {
@@ -36,7 +45,7 @@ public class Problem7 {
         }
     }
 
-    private static void mutualFriendScore(HashMap<String, Integer> scoreMap, HashSet<String> userFriendMap,
+    private static void mutualFriendScore(Map<String, Integer> scoreMap, HashSet<String> userFriendMap,
                                           List<List<String>> friends) {
         for (List<String> list: friends) {
             String friendA = list.get(0);
@@ -47,7 +56,7 @@ public class Problem7 {
         }
     }
 
-    private static void updateMutualFriendScore(HashSet<String> userFriendMap, HashMap<String, Integer> result,
+    private static void updateMutualFriendScore(HashSet<String> userFriendMap, Map<String, Integer> result,
                                           String scoreReceiver, String friend) {
         if (userFriendMap.contains(scoreReceiver)) {
             return;
@@ -64,7 +73,7 @@ public class Problem7 {
         return 0;
     }
 
-    private static void updateScore(HashMap<String, Integer> scoreMap, String receiver, Integer score) {
+    private static void updateScore(Map<String, Integer> scoreMap, String receiver, Integer score) {
         if (!scoreMap.containsKey(receiver)) {
             scoreMap.put(receiver, score);
         } else {
