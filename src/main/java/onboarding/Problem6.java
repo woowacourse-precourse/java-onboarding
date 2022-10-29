@@ -16,14 +16,14 @@ public class Problem6 {
     private static class UserVerifier {
         protected void isRightEmailType(String email) {
             if (!email.contains(Constants.EMAIL_TYPE)) {
-                throw new IllegalArgumentException("이메일 형식은" + Constants.EMAIL_TYPE + "도메인만 지원됩니다.");
+                throw new IllegalArgumentException("이메일 형식은 " + Constants.EMAIL_TYPE + " 도메인만 지원됩니다.");
             }
         }
 
         // 이메일이 11자 이상 20자 미만인가
         protected void isEmailLengthThan11CharactersAndLessThan20Characters(String email) {
             if (email.length() <= 10 || 21 <= email.length()) {
-                throw new IllegalArgumentException("이메일의 길이는 11자 이상 20자 이하입니다.");
+                throw new IllegalArgumentException("이메일의 길이는 11자 이상 20자 이하로 구성되야 합니다.");
             }
         }
 
@@ -45,19 +45,30 @@ public class Problem6 {
     public static List<String> result = new ArrayList<>();
 
     public static List<String> solution(List<List<String>> forms) {
+        new UserVerifier().isCrewMemberSizeThan1MemberAndLessThan100Member(forms);
         initList(forms);
         return validateUserNickname(forms);
     }
 
     private static void initList(List<List<String>> forms) {
+        String nickname = forms.get(0).get(Constants.NICKNAME);
+        String email = forms.get(0).get(Constants.EMAIL);
+        new UserVerifier().isNicknameKorean(nickname);
+        new UserVerifier().isEmailLengthThan11CharactersAndLessThan20Characters(email);
+        new UserVerifier().isRightEmailType(email);
         users.add(forms.get(0));
     }
 
     private static List<String> validateUserNickname(List<List<String>> forms) {
         for (int i = 1; i < forms.size(); i++) {
             List<String> user = forms.get(i);
+            String nickname = user.get(Constants.NICKNAME);
+            String email = user.get(Constants.EMAIL);
+            new UserVerifier().isNicknameKorean(nickname);
+            new UserVerifier().isEmailLengthThan11CharactersAndLessThan20Characters(email);
+            new UserVerifier().isRightEmailType(email);
             // 만약 중복되는 닉네임이 있고
-            if (isLetterWordsInAlreadyExistsNicknames(user.get(Constants.NICKNAME))) {
+            if (isLetterWordsInAlreadyExistsNicknames(nickname)) {
                 // result 리스트에 이메일이 존재하지 않는다면
                 if (!isAlreadyExistsEmailInResult(user.get(Constants.EMAIL))) {
                     result.add(user.get(Constants.EMAIL));
