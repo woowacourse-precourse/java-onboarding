@@ -18,9 +18,16 @@ public class Problem7 {
         return answer;
     }
 
-    static Map<String, Integer> computeRecommendScore(Map<String, Integer> bothKnowFriendsCount,
-        Map<String, Integer> visitCount) {
-            return null;
+    static Map<String, Integer> computeRecommendScore(Map<String, Integer> bothKnowFriendsScore, Map<String, Integer> visitScore) {
+        Map<String, Integer> recommendScore = new HashMap<>(bothKnowFriendsScore);
+
+        visitScore.forEach((user, score) -> {
+            if (!recommendScore.containsKey(user)) {
+                recommendScore.put(user, 0);
+            }
+            recommendScore.put(user, recommendScore.get(user) + score);
+        });
+        return recommendScore;
     }
 
     static Map<String, Integer> computeVisitScore(List<String> visitors) {
