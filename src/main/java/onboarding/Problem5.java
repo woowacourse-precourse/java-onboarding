@@ -6,12 +6,13 @@ import java.util.List;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
+        List<Integer> answer = getMoney(money);
         return answer;
     }
 
     //금액 리스트 반환 함수
-    public static List<Integer> getMoney(int money, List<Integer> answer) {
+    public static List<Integer> getMoney(int money) {
+        List<Integer> answer = new ArrayList<>();
         while (money > 0) {
             money = divideMoney(money, answer);
         }
