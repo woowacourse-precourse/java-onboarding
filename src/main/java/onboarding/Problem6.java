@@ -7,8 +7,27 @@ import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return new ArrayList<>(answer);
+    	HashSet<String> answerSet = new HashSet<>();
+        // TODO no, nickname, twoWords, email을 필드로 가지는 사용자클래스를 정의하여 사용하도록 수정해보기 (getAllTwoWordsByNickname는 객체 생성 시 실행)
+        final List<String> emails = new ArrayList<>();
+        final List<String> nicknames = new ArrayList<>();
+        for (int i = 0; i < forms.size(); i++) {
+        	emails.add(forms.get(i).get(0));
+        	nicknames.add(forms.get(i).get(1));
+        }
+        // 두 글자 문자열에 대한 지원자 정보를 이용하여 사용 불가한 닉네임을 가진 사용자의 이메일을 answer에 저장한다.
+        HashMap<String, List<Integer>> UserIdxMap = getUserIdxMapByTwoWords(nicknames);
+        for (String twoWord : UserIdxMap.keySet()) {
+        	// TODO userIdxList가 아니라 userList로 바꾼 뒤 email을 바로 얻을 수 있도록 할 것.
+        	// TODO 해당 리스트를 이용해 TreeSet에 값 저장하는 메소드 별도 정의할 것.
+        	List<Integer> userIdxList = UserIdxMap.get(twoWord);
+        	if (userIdxList.size() > 1) {
+        		for (int idx : userIdxList) {
+        			answerSet.add(emails.get(idx));
+        		}
+        	}
+        }
+        return new ArrayList<>(answerSet);
     }
     
     /**
@@ -38,7 +57,7 @@ public class Problem6 {
     		for (String twoWord : twoWords) {
     			// twoWord가 result의 key로 이미 존재하면 리스트값을 가져오고, 존재하지 않으면 새 리스트를 생성한다.
     			List<Integer> userIdx = (result.containsKey(twoWord)) ? result.get(twoWord) : new ArrayList<Integer>();
-    			// TODO 리스트에 현재 인덱스를 담는다. => user 정보를 담는 것으로 수정할 것
+    			// TODO 리스트에 현재 인덱스를 담는다. => user 정보를 담는 것으로 수정할 것.
     			userIdx.add(i);
     			result.put(twoWord, userIdx);
     		}
