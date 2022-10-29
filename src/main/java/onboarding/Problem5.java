@@ -29,6 +29,14 @@ public class Problem5 {
     }
 
     private static void moneyCount(List<Integer> answer, int money) {
+        for (int i = 0; i < MONEY_LIST.size(); i++) {
+            int quotient = quotientOfMoneyIs(MONEY_LIST.get(i), money);
+            money %= MONEY_LIST.get(i);
+            answer.add(quotient);
+        }
+    }
 
+    private static int quotientOfMoneyIs(Integer money, int typeOfCurrency) {
+        return 0;
     }
 }
