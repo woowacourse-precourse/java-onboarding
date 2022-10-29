@@ -31,6 +31,9 @@ public class Problem2 {
     private static String decode(String cryptogram) {
         while (!cryptogram.equals(removeRepetition(cryptogram))) {
             cryptogram = removeRepetition(cryptogram);
+            if (cryptogram.equals("")) {
+                break;
+            }
         }
         return cryptogram;
     }
