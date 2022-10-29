@@ -9,11 +9,19 @@ public class Problem5 {
 		int[] monetaryUnit = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
 		List<Integer> unitCount = new ArrayList<>(monetaryUnit.length);
 
-		for (int i = 0; i < monetaryUnit.length; i++) {
-			unitCount.add(withdrawalMoney / monetaryUnit[i]);
-			withdrawalMoney %= monetaryUnit[i];
+		for (int i : monetaryUnit) {
+			unitCount.add(minUnitNumber(withdrawalMoney, i));
+			withdrawalMoney = getNextMoney(withdrawalMoney, i);
 		}
 
 		return unitCount;
+	}
+
+	private static int minUnitNumber(int withdrawalMoney, int unit) {
+		return withdrawalMoney / unit;
+	}
+
+	private static int getNextMoney(int previousMoney, int unit) {
+		return previousMoney % unit;
 	}
 }
