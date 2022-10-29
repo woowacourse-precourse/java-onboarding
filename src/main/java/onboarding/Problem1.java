@@ -36,4 +36,14 @@ class Problem1 {
 
         return true;
     }
+
+    public static int getPageElementsSumScore(Integer page) {
+        char[] pageElements = Integer.toString(page).toCharArray();
+
+        int sum = 0;
+        for (char value : pageElements)
+            sum += (value -'0');
+
+        return sum;
+    }
 }
