@@ -30,7 +30,17 @@ class Problem1 {
             return -1;
         }
 
-        return answer;
+        int pobiScore = calScore(pobi);
+        int crongScore = calScore(crong);
+
+        if (pobiScore == crongScore) {
+            return 0;
+        }
+        if (pobiScore > crongScore) {
+            return 1;
+        }
+
+        return 2;
 
     }
 
@@ -61,6 +71,41 @@ class Problem1 {
             return false;
         }
         return true;
+    }
+
+    //승부에 낼 점수 계산
+    private static int calScore(List<Integer> pages){
+        int leftPage = pages.get(0);
+        int rightPage = pages.get(1);
+
+        int leftMax = Math.max(sumPages(leftPage), mulPates(rightPage));
+        int rightMax = Math.max(sumPages(rightPage), mulPates(rightPage));
+
+        // 왼쪽 오른쪽 페이지의 점수중 가장 큰 수가 자신의 점수가 됨
+        return Math.max(leftMax, rightMax);
+
+    }
+
+    // 페이지 각 자릿수 합 구하기
+    private static int sumPages(int page){
+        int sum = 0;
+
+        while(page>0){
+            sum += (page % 10);
+            page /= 10;
+        }
+        return sum;
+    }
+    // 페이지 각 자릿수 곱 구하기
+    private static int mulPates(int page){
+        int mul = 1;
+
+        while (page > 0) {
+            mul *= (page % 10);
+            page /= 10;
+        }
+
+        return mul;
     }
 
 
