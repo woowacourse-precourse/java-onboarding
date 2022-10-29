@@ -9,4 +9,8 @@ public class Problem4 {
     private char changeUpperCase(char letter) {
         return (char)('A' + 'Z' - letter);
     }
+
+    private char changeLowerCase(char letter) {
+        return (char)('a' + 'z' - letter);
+    }
 }
