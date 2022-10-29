@@ -14,6 +14,7 @@ public class Problem7 {
         Set<String> notFriends = new HashSet<>();
         Set<String> userFriends = new HashSet<>();
         HashMap<String, Integer> map = new HashMap<>();
+        List<String> answer = new ArrayList<>();
 
         for (int i = 0; i < friends.size(); i++) {
             for (int j = 0; j < 2; j++) {
@@ -70,7 +71,10 @@ public class Problem7 {
             }
         });
 
-        List<String> answer = Collections.emptyList();
+        for(Map.Entry<String, Integer> entry : entryList){
+            answer.add(entry.getKey());
+        }
+
         return answer;
     }
 }
