@@ -57,18 +57,22 @@ public class Problem6 {
         for(int i=0; i<nickname.length()-1; i++){
             String substring = nickname.substring(i,i+2);
             Integer indexOfTwoChar = substringsOfNickname.getOrDefault(substring, -1);
-
-            if(indexOfTwoChar==idx)
-                continue;
-
-            if(indexOfTwoChar==-1){
-                 substringsOfNickname.put(substring, idx);
-                 continue;
-            }
-
-            isDuplicate[idx] = true;
-            isDuplicate[indexOfTwoChar] = true;
+            checkIfSubStringISDuplicate(substringsOfNickname,isDuplicate,indexOfTwoChar,substring,idx);
         }
+    }
+
+    public static void checkIfSubStringISDuplicate(Map<String, Integer> substringsOfNickname, boolean[] isDuplicate,
+                                                    Integer indexOfTwoChar,String substring,int idx) {
+        if(indexOfTwoChar==idx)
+            return;
+
+        if(indexOfTwoChar==-1){
+            substringsOfNickname.put(substring, idx);
+            return;
+        }
+
+        isDuplicate[idx] = true;
+        isDuplicate[indexOfTwoChar] = true;
     }
 
     public static void addEmail(Set<String> emails, String email,
