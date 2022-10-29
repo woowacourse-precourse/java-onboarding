@@ -11,19 +11,32 @@ public class Problem2 {
     public static String removeDuplication(String cryptogram) {
         Stack<Character> cryptoStack = new Stack<>();
         cryptoStack.push(cryptogram.charAt(0));
-        cryptogram = cryptogram.substring(1);
-        for (char c: cryptogram.toCharArray()) {
-            if (cryptoStack.peek() != c) {
-                cryptoStack.push(c);
-            } else {
-                cryptoStack.pop();
+
+        for (int idx = 1; idx < cryptogram.length(); idx++) {
+            char topChar = cryptoStack.peek();
+            char character = cryptogram.charAt(idx);
+            // 단어가 중복되지 않을 때
+            if (topChar != character) {
+                cryptoStack.push(character);
+                continue;
             }
+
+            // 단어가 중복될 때
+            while(idx < cryptogram.length() && topChar == cryptogram.charAt(idx)) {
+                idx++;
+            }
+            cryptoStack.pop();
+            if(cryptoStack.isEmpty() && idx < cryptogram.length()) {
+                cryptoStack.push(cryptogram.charAt(idx));
+                continue;
+            }
+            idx--;
         }
 
-        String answer = "";
-        while(cryptoStack.isEmpty() == false) {
-            answer = cryptoStack.pop() + answer;
+        StringBuilder answer = new StringBuilder();
+        while(!cryptoStack.isEmpty()) {
+            answer.insert(0, cryptoStack.pop());
         }
-        return answer;
+        return answer.toString();
     }
 }
