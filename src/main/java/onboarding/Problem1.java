@@ -1,6 +1,5 @@
 package onboarding;
 
-import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
@@ -13,6 +12,13 @@ class Problem1 {
             return true;
         }
         return false;
+    }
+
+    static char[] splitPageNum(int page) {
+        String numPage = Integer.toString(page);
+        char[] numPageChar = numPage.toCharArray();
+
+        return numPageChar;
     }
 
     static int sumPage(int rightPage) {
