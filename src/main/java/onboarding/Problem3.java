@@ -7,7 +7,7 @@ public class Problem3 {
             return 0;
         }
 
-        int howManyNums = countHowManyNums(number);;
+        int howManyNums = countHowManyNums(number);
         return howManyNums;
     }
 
