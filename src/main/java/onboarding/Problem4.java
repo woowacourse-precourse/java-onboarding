@@ -30,10 +30,11 @@ public class Problem4 {
         String answer = "";
         return answer;
     }
-
+//
 //    public static void main(String[] args) {
 //        char test = 'A';
-//        System.out.println(changeInUpper(test));
+//        String test2 = "abcedefghiqq";
+//        System.out.println(appendChar(test,test2));
 //    }
 
     private static String distinguishInput(char inputChar){
@@ -54,6 +55,11 @@ public class Problem4 {
         int sumOfAZ = 90 + 65;
         char ret = (char)(sumOfAZ-inputChar);
         return ret;
+    }
+
+    private static String appendChar(char inputChar, String result){
+        result+=inputChar;
+        return result;
     }
 
 }
