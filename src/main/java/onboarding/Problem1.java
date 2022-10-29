@@ -4,9 +4,12 @@ import java.util.List;
 
 class ScoreCalculator {
 
-    private final List<Integer> playerPages;
+    private List<Integer> playerPages;
 
-    public ScoreCalculator(final List<Integer> playerPages) {
+    public ScoreCalculator() {
+    }
+
+    public void setPlayerPages(List<Integer> playerPages) {
         this.playerPages = playerPages;
     }
 
