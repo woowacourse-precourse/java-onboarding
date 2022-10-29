@@ -4,6 +4,7 @@ public class Problem4 {
     public static String solution(String word) {
         StringBuilder answer=new StringBuilder();
         if(!len_limit(word)){
+            return "word는 길이가 1 이상 1,000 이하인 문자열이 아닙니다.";
         }
         for(char ch:word.toCharArray()) {
             if(Character.isAlphabetic(ch)){
