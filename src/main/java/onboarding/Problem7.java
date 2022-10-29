@@ -18,7 +18,6 @@ public class Problem7 {
                 Friends.add(friends.get(k).get(0));
             }
         }
-        System.out.println(Friends);
         for (int i=0; i<friends.size(); i++){
             if (Friends.contains(friends.get(i).get(0)) && friends.get(i).get(1)!=user) {
                 if (map.containsKey(friends.get(i).get(1))){
@@ -50,7 +49,6 @@ public class Problem7 {
                 }
             }
         }
-        System.out.println(map);
         List<String> keySet = new ArrayList<>(map.keySet());
         keySet.sort(new Comparator<String>() {
             public int compare(String o1, String o2){
@@ -58,7 +56,20 @@ public class Problem7 {
             }
         });
 
-        answer = keySet;
+        int num=0;
+        for (int i=0; i<keySet.size(); i++){
+            if (Friends.contains(keySet.get(i)) || keySet.get(i) == user ){
+                continue;
+            }
+            else {
+                answer.add(keySet.get(i));
+                num+=1;
+            }
+            if (num==5){
+                break;
+            }
+        }
+        System.out.println(answer);
         return answer;
     }
 }
