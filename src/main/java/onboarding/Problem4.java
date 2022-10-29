@@ -26,19 +26,21 @@ public class Problem4 {
     }
 
     public static String getWordTranslation(String word, HashMap<Character, Character> frogMap) {
-        String answer = "";
+        String string = "";
         for (char c : word.toCharArray()) {
-            if (isSpacing(c)) {
-                continue;
-            }
-            answer += frogMap.get(c);
+            string += getHashMapValue(c, frogMap);
         }
-        return answer;
+        return string;
+    }
+
+    public static String getHashMapValue(Character c, HashMap<Character, Character> hashMap) {
+        if (isSpacing(c)) {
+            return " ";
+        }
+        return hashMap.get(c).toString();
     }
 
     public static boolean isSpacing(char c) {
         return c == ' ';
     }
-
-
 }
