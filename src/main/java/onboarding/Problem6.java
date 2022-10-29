@@ -16,11 +16,20 @@ public class Problem6 {
     }
 
     private static void initSystem(List<List<String>> forms) {
+        validateFormat(forms);
         rememberDto = new RememberDto();
         duplicateNicknames = new ArrayList<>();
         duplicateNicknames.add(forms.get(0).get(1));
         answer = new ArrayList<>();
         answer.add(forms.get(0).get(0));
+    }
+
+    private static void validateFormat(List<List<String>> forms) {
+        for(List<String> crew : forms) {
+            if(!crew.get(0).contains("@email.com")) {
+                throw new IllegalArgumentException("입력 형식이 잘못되었습니다.");
+            }
+        }
     }
 
     private static void checkNicknameInForms(List<List<String>> forms) {
