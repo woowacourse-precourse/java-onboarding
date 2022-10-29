@@ -42,7 +42,8 @@ class Problem1 {
             }
             // sum each number and add put it in the max list
             getMax.add(sumDigits(digits));
-            Integer multiplicationResult = multiplicationDigits(digits);
+            // multiply each number and put it in the max list
+            getMax.add(multiplicationDigits(digits));
             return getMax;
         }
 
