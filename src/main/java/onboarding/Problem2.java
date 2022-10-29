@@ -1,10 +1,5 @@
 package onboarding;
 
-import org.junit.platform.commons.util.StringUtils;
-import org.mockito.internal.util.StringUtil;
-
-import java.util.Arrays;
-
 public class Problem2 {
     public static String solution(String cryptogram) {
         int cryptoLength = cryptogram.length();
@@ -12,7 +7,7 @@ public class Problem2 {
         String removeCryptogram = cryptogram;
 
         for (int i = 0; i < cryptoLength; i++) {
-            removeCryptogram = duplicateRemove(answer, i);
+            removeCryptogram = findDuplicate(answer);
             if (!answer.equals(removeCryptogram)) {
                 answer = removeCryptogram;
                 cryptoLength = answer.length();
@@ -23,24 +18,30 @@ public class Problem2 {
         return answer;
     }
 
-    public static String duplicateRemove(String cryptogram, int index) {
-
+    public static String findDuplicate(String cryptogram) {
         String[] splitCryptogram = cryptogram.split("");
-        boolean isDuplicate = false;
 
-        for (int i = index + 1; i < splitCryptogram.length; i++) {
-            if (!splitCryptogram[i].equals(splitCryptogram[index])) {
-                break;
+        for (int i = 0; i < splitCryptogram.length - 1; i++) {
+            if (splitCryptogram[i].equals(splitCryptogram[i + 1])) {
+                splitCryptogram = removeDuplicate(splitCryptogram, i);
             }
-            splitCryptogram[i] = "";
-            isDuplicate = true;
-        }
-
-        if (isDuplicate == true) {
-            splitCryptogram[index] = "";
         }
 
         return String.join("", splitCryptogram);
+    }
+
+    public static String[] removeDuplicate(String[] splitCryptogram, int index) {
+
+        for (int i = index + 1; i < splitCryptogram.length; i++) {
+            if (splitCryptogram[i].equals(splitCryptogram[index]) == false) {
+                break;
+            }
+            splitCryptogram[i] = "";
+        }
+
+        splitCryptogram[index] = "";
+
+        return splitCryptogram;
     }
 
 }
