@@ -30,9 +30,7 @@ public class Problem3 {
         int count = 0;
 
         for (int i = 1; i <= number; i++) {
-            if (shouldClap(i)) {
-                count++;
-            }
+            count += shouldClap(i);
         }
         return count;
     }
