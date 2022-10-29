@@ -1,7 +1,6 @@
 package onboarding;
 
 public class Problem4 {
-    static boolean isUpperCharacter;
     static final int UPPER_TREE_FROG = 155;
     static final int LOWER_TREE_FROG = 219;
 
@@ -10,11 +9,9 @@ public class Problem4 {
         int wordLength = word.length();
 
         for (int index = 0; index < wordLength; index++) {
-            isUpperCharacter = false;
             char currentCharacter = word.charAt(index);
 
             if (isAlphabet(currentCharacter)) {
-                setIsUpperCharacter(currentCharacter);
                 currentCharacter = convertCharacter(currentCharacter);
             }
 
@@ -30,19 +27,8 @@ public class Problem4 {
     * @return boolean
     * */
     private static boolean isAlphabet(char character) {
-        return (character >= 'A' && character <= 'Z') || (character >= 'a' && character <= 'z');
-    }
-
-    /*
-    * 주어진 문자의 대문자 여부를 확인해 isUpperCharacter 값 설정
-    * isUpperCharacter 초기값은 false
-    *
-    * @return void
-    * */
-    private static void setIsUpperCharacter(char character) {
-        if (Character.isUpperCase(character)) {
-            isUpperCharacter = true;
-        }
+        return (character >= 'A' && character <= 'Z')
+                || (character >= 'a' && character <= 'z');
     }
 
     /*
@@ -52,7 +38,7 @@ public class Problem4 {
     * @return char
     * */
     private static char convertCharacter(char character) {
-        if (isUpperCharacter) {
+        if (Character.isUpperCase(character)) {
             return (char) (UPPER_TREE_FROG - character);
         }
         return (char) (LOWER_TREE_FROG - character);
