@@ -29,7 +29,7 @@ public class Problem2 {
         for (int i = 0; i < code.size() - 1; i++) {
             if (code.get(i).equals(code.get(i + 1))) {
                 code.remove(i);
-                code.remove(i + 1);
+                code.remove(i);
                 i--;
             }
         }
