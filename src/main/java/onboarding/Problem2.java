@@ -6,6 +6,15 @@ public class Problem2 {
 		return answer;
 	}
 
+	private static int getNextIndexRange(String newCryptogram, String remainingCryptogram) {
+		char lastCharOfNewCryptogram = newCryptogram.charAt(newCryptogram.length() - 1);
+		int sameCharCount = getSameCharCount(lastCharOfNewCryptogram, remainingCryptogram);
+		if (sameCharCount > 0) {
+			return sameCharCount;
+		}
+		return 1;
+	}
+
 	public static int getSameCharCount(char lastChar, String cryptogram) {
 		int sameCharCount = 0;
 		int i = 0;
