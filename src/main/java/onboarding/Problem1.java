@@ -5,10 +5,10 @@ import java.util.List;
 import java.util.stream.Stream;
 
 class Problem1 {
+    static final int FIRST_PAGE = 1;
+    static final int LAST_PAGE = 400;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-
         // 입력 페이지 검증 후 예외 사항일 경우 -1을 리턴한다.
         if (isNotPageValid(pobi) || isNotPageValid(crong)) {
             return -1;
@@ -53,12 +53,8 @@ class Problem1 {
             3. 왼쪽 페이지가 홀수가 아니고, 오른쪽 페이지가 짝수가 아닌 경우
             4. 왼쪽, 오른쪽 페이지의 차가 1이 아닌 경우 (연속된 페이지가 아님)
          */
-        if (isNotPageRange(leftPage, rightPage) || isPageFirstOrLast(leftPage) ||
-                isNotPageOddAndEven(leftPage, rightPage) || isNotPageContinuous(leftPage, rightPage)) {
-            return true;
-        }
-
-        return false;
+        return isNotPageRange(leftPage, rightPage) || isPageFirstOrLast(leftPage) ||
+                isNotPageOddAndEven(leftPage, rightPage) || isNotPageContinuous(leftPage, rightPage);
     }
 
     /**
@@ -69,7 +65,7 @@ class Problem1 {
      * @return 1~400 사이가 아니라면 true, 맞다면 false
      */
     private static boolean isNotPageRange(int leftPage, int rightPage) {
-        return leftPage < 1 || leftPage >= 400 || rightPage < 2 || rightPage > 400;
+        return leftPage < FIRST_PAGE || leftPage >= LAST_PAGE || rightPage <= FIRST_PAGE || rightPage > LAST_PAGE;
     }
 
     /**
@@ -79,7 +75,7 @@ class Problem1 {
      * @return 왼쪽 페이지의 값이 1이거나 399라면 true, 아니라면 false
      */
     private static boolean isPageFirstOrLast(int leftPage) {
-        return leftPage == 1 || leftPage == 399;
+        return leftPage == FIRST_PAGE || leftPage == LAST_PAGE-1;
     }
 
     /**
