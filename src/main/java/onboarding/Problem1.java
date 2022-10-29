@@ -35,6 +35,12 @@ class Problem1 {
         return largerValue;
     }
 
+    public static int maxFinder(List<Integer> values) {
+        int valueAddMax = compare(adder(values.get(0)), adder(values.get(1)));
+        int valueMultMax = compare(multiplier(values.get(0)), multiplier(values.get(1)));
+        int valueMax = compare(valueAddMax, valueMultMax);
+        return valueMax;
+    }
 
 
 
