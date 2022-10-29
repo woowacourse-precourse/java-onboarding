@@ -24,7 +24,7 @@ public class Bank {
             int result = money / banknoteList;
 
             arrayList.add(result);
-            money -= (banknoteList + result);
+            money -= (banknoteList * result);
         }
 
         return arrayList;
