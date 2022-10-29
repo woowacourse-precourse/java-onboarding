@@ -22,6 +22,18 @@ public class SimilarNicknameCrewSelector {
 		}
 	}
 
+	public List<String> makeSimilarNicknameCrewEmailList() {
+		for(int comparingCrewIndex = 0; comparingCrewIndex < numberOfCrews - 1; comparingCrewIndex++) {
+			if(hasSimilarNickname.get(comparingCrewIndex) == false) {
+				compareCrewsNickname(comparingCrewIndex);
+			}
+		}
+
+		listSimilarNicknameCrewsEmail();
+
+		return similarNicknameCrewsEmail;
+	}
+
 	private void compareCrewsNickname(int comparingCrewIndex) {
 		TreeSet<String> dividedNickname = makeDividedNickname(comparingCrewIndex);
 

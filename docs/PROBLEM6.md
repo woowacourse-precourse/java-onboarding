@@ -76,7 +76,7 @@
 ### 2. 함수 별 동작 과정
 
 - public List< String > makeSimilarNicknameCrewEmailList()
-    -  "int i = 0~크루 인원 수" for문 설정
+    -  "int i = 0~(크루 인원 수 - 1)" for문 설정
     - i번째 인덱스의 hasSimilarNickname 값이 true이면 continue, false이면 compareCrewsNickname() 호출
     - listSimilarNicknameCrewsEmail() 호출
         - hasSimilarNickname 값이 true로 설정되어 있는 크루들의 이메일 주소를 similarNicknameCrewsEmail에 저장
