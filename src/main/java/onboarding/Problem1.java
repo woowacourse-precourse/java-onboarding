@@ -15,6 +15,11 @@ class Problem1 {
         if(crong_left % 2 == 0 || crong_right != crong_left+1) return -1;
         if(crong_left == 1 || crong_right == 400) return -1;
 
+        String pobi_left_str = Integer.toString(pobi_left);
+        String pobi_right_str = Integer.toString(pobi_right);
+        String crong_left_str = Integer.toString(crong_left);
+        String crong_right_str = Integer.toString(crong_right);
+
         return answer;
     }
 }
