@@ -51,8 +51,8 @@ public class Decryptor {
         }
     }
 
-    private static boolean validateDuplicateCharacter(List<String> cryptogramList, String nowCharacter,
-        int startCursor) {
+    private static boolean validateDuplicateCharacter(List<String> cryptogramList,
+        String nowCharacter, int startCursor) {
         return !cryptogramList.isEmpty() && cryptogramList.get(startCursor).equals(nowCharacter);
     }
 
