@@ -19,7 +19,6 @@
       (Int) 점수를 담을 변수 point
    2. <구현>\
    생성자로 매개변수를 통해 name에 매개변수로 들어온 문자열을 넣는다.\
-      (추가) point 값이 주어지면 그 값을 point에 담은 생성자 추가.\
    point를 리턴하는 getPoing 메서드 생성\
    point를 더하는 addPoint 메서드 생성\
       **(추가) 이름을 반환하는 getName 메서드 생성**
@@ -39,15 +38,13 @@
       (ArrayList) 리턴할 친추와 친구 리스트를 담을 user_unknown_friends 리스트
    3. <구현>\
       Stream을 이용해 fiends에서 user_friends와 친구 상태만 찾아 user_unknown_friends에 넣어 반환한다.
-#### **(추가) boolean addPointToFriendObject 메서드**
+#### **(추가) boolean checkFriendObject 메서드**
 1. **<매개변수>\
    (String) 확인 필요한 친구 이름 name**
-   (추추가)(int) 추가 필요한 point
 2. **<변수>\
 없음**
 3. **<구현>\
-클래스 변수 friends_list 리스트 를 돌며 매개변수 name과 동일한 이름이 있으면\
-   (추추가) 그 객체에 매개변수 point 더하며, true 반환.**
+클래스 변수 friends_list 리스트 를 돌며 매개변수 name과 동일한 이름이 있으면 true 반환.**
 
 #### void friendPointCalculate 메서드
    1. <매개변수>\
@@ -58,7 +55,7 @@
    3. <구현>\
       user_unknown_friends 에서 한명씩 꺼내기\
       friends_list에 꺼낸 이름을 가진 객체가 없으면 객체 생성 후 10점 추가\
-      (삭제) ~~있으면 그 객체에 10점 추가~~
+      있으면 그 객체에 10점 추가
 #### void visitorPointCalculate 메서드
    1. <매개변수>\
       (List) visitors (입력값)
@@ -67,7 +64,7 @@
    3. <구현>\
       visitors 에서 한명씩 꺼내기\
       friends_list에 꺼낸 이름을 가진 객체가 없으면 객체 생성 후 1점 추가\
-      (삭제) ~~있으면 그 객체에 1점 추가~~
+      있으면 그 객체에 1점 추가
 #### List findTopFive 메서드
    1. <매개변수>\
       (클래스변수)(ArrayList) Friend 객체를 아이템으로 갖는 friends_list 리스트
