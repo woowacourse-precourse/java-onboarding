@@ -22,6 +22,19 @@ public class Problem6 {
                 indexByNameMap.put(subNickname, memberIndexes);
             }
         }
-        return null;
+
+        Set<String> result = new HashSet<>();
+        for (List<Integer> indexList : indexByNameMap.values()) {
+            if (indexList.size() == 1) continue;
+            indexList.forEach(i -> {
+                List<String> memberInfo = forms.get(i);
+                String email = memberInfo.get(0);
+                result.add(email);
+            });
+        }
+        List<String> resultList = new ArrayList<>(result);
+        Collections.sort(resultList);
+
+        return resultList;
     }
 }
