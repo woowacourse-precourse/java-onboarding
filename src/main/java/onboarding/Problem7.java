@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Problem7 {
     public static boolean isUser(String user, List<String> friend) {
-        if(user.equals(friend.get(0)) || user.equals(friend.get(1))) {
+        if(friend.contains(user)) {
             return true;
         }
         return false;
