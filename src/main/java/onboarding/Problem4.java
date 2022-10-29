@@ -17,6 +17,16 @@ public class Problem4 {
             frog[i + 26] = (char) (122 - i);
         }
 
+        for(int i = 0; i < word.length(); i++){
+            String word_i = word.substring(i, i + 1);
+            if(word_i.equals(" ")) {
+                answer += " ";                              //공백은 그대로 공백으로 추가
+            } else {
+                int index = alphabet.indexOf(word_i);       //word 알파벳의 인덱스
+                answer += frog[index];                      //청개구리에 해당하는 알파벳으로 변환
+            }
+        }
+
         return answer;
     }
 }
