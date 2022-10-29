@@ -1,7 +1,15 @@
 package onboarding;
 
 public class Problem3 {
-	private static int count369(int number) {
+	public static int solution(int number) {
+		int answer = 0;
+		for (int i = 1; i <= number; i++) {
+			answer += countClabs(i);
+		}
+		return answer;
+	}
+
+	private static int countClabs(int number) {
 		int count = 0;
 		while (number > 0) {
 			int units = number % 10;
@@ -11,13 +19,5 @@ public class Problem3 {
 			number /= 10;
 		}
 		return count;
-	}
-
-	public static int solution(int number) {
-		int answer = 0;
-		for (int i = 1; i <= number; i++) {
-			answer += count369(i);
-		}
-		return answer;
 	}
 }
