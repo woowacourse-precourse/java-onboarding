@@ -1,15 +1,21 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 public class Problem6 {
     private static final int EMAIL=0;
     private static final int NAME=1;
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        HashSet<String> answer=new HashSet<>();
+
+
+        return sortResult(answer);
+    }
+
+    public static List<String> sortResult(HashSet<String> answer){
+        ArrayList<String> result=new ArrayList<>(answer);
+        Collections.sort(result);
+        return result;
     }
 
     public static List<String> subStrings(String s){
