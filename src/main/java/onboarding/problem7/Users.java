@@ -21,7 +21,7 @@ public class Users {
         return users.stream()
                 .takeWhile(Objects::nonNull)
                 .filter(user -> !userFriends.contains(user.getName()))
-                .sorted(Comparator.comparing(User::getScore).reversed())
+                .sorted(Comparator.comparing(User::getScore).reversed().thenComparing(User::getName))
                 .limit(RANKING_MAX_SIZE)
                 .map(User::getName)
                 .collect(Collectors.toList());
