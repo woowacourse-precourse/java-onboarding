@@ -8,4 +8,12 @@ public class DuplicateCryptedText {
         this.cipherText = cipherText;
     }
 
+    public void setDecryptedText(String decryptedText){
+        this.decryptedText = decryptedText;
+    }
+
+    public String getDecryptedText(){
+        return this.decryptedText;
+    }
+
 }

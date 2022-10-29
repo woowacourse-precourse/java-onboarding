@@ -21,7 +21,7 @@ public class DuplicatedCharService {
         return duplicatedCharPositionList;
     }
 
-    private static boolean checkDecryption(String word){
+    public static boolean checkDecryption(String word){
         if(word.length() != 0){
             return isDuplicatedChar(word);
         }
