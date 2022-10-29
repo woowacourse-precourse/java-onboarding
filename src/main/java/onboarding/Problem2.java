@@ -4,6 +4,18 @@ import java.util.Stack;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
+
+        Stack<String> charStack = getPlainText(cryptogram);
+
+        StringBuilder plainText = new StringBuilder();
+        for (String s : charStack) {
+            plainText.append(s);
+        }
+
+        return plainText.toString();
+    }
+
+    private static Stack<String> getPlainText(String cryptogram) {
         Stack<String> charStack = new Stack<>();
         String lastChar = null;
 
@@ -16,11 +28,6 @@ public class Problem2 {
             }
         }
 
-        StringBuilder plainText = new StringBuilder();
-        for (String s : charStack) {
-            plainText.append(s);
-        }
-
-        return plainText.toString();
+        return charStack;
     }
 }
