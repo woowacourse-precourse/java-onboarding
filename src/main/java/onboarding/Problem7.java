@@ -1,10 +1,11 @@
 package onboarding;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 public class Problem7 {
@@ -27,8 +28,14 @@ public class Problem7 {
         addSecondRulePoint(visitors, userFriends, friendScore);
 
         // 5. 추천 점수 내림차순으로 정렬하고, 같다면 이름순으로 정렬
+        ArrayList<Entry<String, Integer>> list = getSort(friendScore);
 
-        List<String> answer = Collections.emptyList();
+        // 형변환 후 출력
+        List<String> answer = new ArrayList<>();
+        for (Entry<String, Integer> entry : list) {
+            answer.add(entry.getKey());
+        }
+
         return answer;
     }
 
@@ -84,5 +91,18 @@ public class Problem7 {
                 friendScore.put(visitor, friendScore.getOrDefault(visitor, 0) + 1);
             }
         }
+    }
+
+    // 5. 추천 점수 내림차순으로 정렬하고, 같다면 이름순으로 정렬
+    private static ArrayList<Entry<String, Integer>> getSort(Map<String, Integer> friendScore) {
+        ArrayList<Entry<String, Integer>> list = new ArrayList<>(friendScore.entrySet());
+        list.sort((o1, o2) -> {
+            if (o1.getValue().equals(o2.getValue())) {
+                return o1.getKey().compareTo(o2.getKey());
+            }
+            return o2.getValue() - o1.getValue();
+        });
+
+        return list;
     }
 }
