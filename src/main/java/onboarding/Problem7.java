@@ -33,9 +33,9 @@ public class Problem7 {
     public static Map<String,Integer> friendScoreCalculator(List<String> acquaintance){
         Map<String,Integer> result=new HashMap<>();
         for(String name:acquaintance){
-            result.putIfAbsent(name, 10);
             if(result.get(name)!=null)
                 result.put(name, result.get(name)+10);
+            result.putIfAbsent(name, 10);
         }
         return result;
     }
