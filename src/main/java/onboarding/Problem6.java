@@ -31,6 +31,7 @@ public class Problem6 {
 
         int[] checkName;
         int formsLength;
+
         CheckList(List<List<String>> forms) {
             this.formsLength = forms.size();
             checkName = new int[formsLength];
