@@ -9,10 +9,14 @@ public class Problem7 {
     private static Users users;
     private static List<String> userFriend;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        users = new Users();
-        userFriend = new ArrayList<>();
+        init();
         setUserFriend(friends, user);
         return users.getRecommendFriendsRankingFive();
+    }
+
+    private static void init() {
+        users = new Users();
+        userFriend = new ArrayList<>();
     }
 
     private static void setUserFriend(List<List<String>> friends, String user) {
