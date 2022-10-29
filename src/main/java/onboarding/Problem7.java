@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Problem7 {
+    static List<Friend> friends_list;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
@@ -20,7 +21,7 @@ public class Problem7 {
         return user_friends;
     }
 
-    static List<String> findFriendsOfFriend (List<String> user_friends, List<List<String>> friends){
+    static List<String> findFriendsOfFriend(List<String> user_friends, List<List<String>> friends){
         List<String> user_unknown_friends;
         user_unknown_friends = Stream.of(friends).flatMap(List::stream)
                 .flatMap(List::stream)
@@ -29,6 +30,16 @@ public class Problem7 {
         // user 는 지워지지 않아 나중에 solution 메서드에서 지워야한다.
         return user_unknown_friends;
     }
+
+    static boolean checkFriendObject(String name){
+        for(Friend i:friends_list){
+            if (i.getName().equals(name)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
 class Friend{
     String name;
@@ -40,6 +51,7 @@ class Friend{
     int getPoint() {
         return this.point;
     }
+    String getName(){return this.name;}
     void addPoint(int addpoint){
         point += addpoint;
     }
