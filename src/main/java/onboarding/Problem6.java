@@ -14,6 +14,19 @@ public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
+        for(int i = 0; i < forms.size(); i++) {
+            List<String> user = forms.get(i);
+            String email = user.get(0);
+            String nickname = user.get(1);
+
+            if(checkEmail(email) == false) {
+                continue;
+            }
+
+            getNickname(nickname, i, forms);
+        }
+
+        answer = Lists.newArrayList(alertList);
         return answer;
     }
 
