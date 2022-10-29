@@ -13,7 +13,7 @@ public class Problem6 {
         return answer;
     }
 
-    public void initCrewInfoMap(List<List<String>> crewForms) {
+    public static void initCrewInfoMap(List<List<String>> crewForms) {
         crewForms.stream()
                 .forEach(crewInfo -> {
                     String crewEmail = crewInfo.get(0);
