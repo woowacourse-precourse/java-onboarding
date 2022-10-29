@@ -2,7 +2,14 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
+        int[] chars = getInts(word);
+        String answer = new String(chars, 0, chars.length);
         return answer;
+    }
+
+    private static int[] getInts(String word) {
+        return word.chars().map(
+                ch -> Character.isUpperCase(ch) ? 25 - ch + 'A' * 2 :
+                        Character.isLowerCase(ch) ? 25 - ch + 'a' * 2 : ch).toArray();
     }
 }
