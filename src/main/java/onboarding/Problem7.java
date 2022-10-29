@@ -8,6 +8,33 @@ public class Problem7 {
         return answer;
     }
 
+
+
+    // friends of firends의 점수를 반환하는 메소드
+    private static Map<String, Integer> getFriendsScore(String user, List<List<String>> friends) {
+        List<String> friendsOfFriends = friendsOfFriends(friends);
+        List<String> uniqueFriendsOfFriends = uniqueFriendsOfFriends(user, friends);
+
+        Map<String,Integer> friendsScore = new HashMap<>();
+
+        int count;
+        int score;
+
+        for (String uniqueFriendOfFriends : uniqueFriendsOfFriends) {
+            count = 0;
+            for (String friendOfFriends : friendsOfFriends) {
+                if (uniqueFriendOfFriends.equals(friendOfFriends)) {
+                    count++;
+                }
+            }
+            score = count * 10;
+            friendsScore.put(uniqueFriendOfFriends, score);
+        }
+
+        return friendsScore;
+    }
+
+
     // 추천 친구 리스트를 반환하는 메소드
     private static List<String> recommendedFriendsOf(String user, List<List<String>> friends, List<String> visitors) {
         List<String> uniqueFriendsOfFriends= uniqueFriendsOfFriends(user, friends);
