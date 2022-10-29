@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import static onboarding.problem7.User.*;
+
 public class Users {
 
     private final List<User> users;
@@ -29,7 +31,7 @@ public class Users {
                 .filter(user -> user.getName().equals(name))
                 .findAny()
                 .orElseGet(() -> {
-                    User user = new User(name);
+                    User user = createUser(name);
                     users.add(user);
                     return user;
                 });

@@ -5,7 +5,11 @@ public class User {
     private String name;
     private int score = 0;
 
-    public User(String name) {
+    public static User createUser(String name) {
+        return new User(name);
+    }
+
+    private User(String name) {
         this.name = name;
     }
 
