@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class Problem7 {
-	private final int MAX_PERSON_SHOW = 5;
+	private static final int PERSON_NUM_SHOW = 5;
 
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 		List<String> answer = Collections.emptyList();
@@ -39,7 +39,10 @@ public class Problem7 {
 			}
 		}
 		friendScore.put(user, 0);
-		
+		while (friendScore.size() < PERSON_NUM_SHOW) {
+			friendScore.put("emptyUser", 0);
+		}
+
 		return answer;
 	}
 }
