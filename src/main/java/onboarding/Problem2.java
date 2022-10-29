@@ -35,6 +35,16 @@ public class Problem2 {
         return separatedCrypto;
     }
 
+    static String makeString(ArrayList<Character> separatedCrypto) {
+        String crypto = "";
+
+        for (char x: separatedCrypto) {
+            crypto += x;
+        }
+
+        return crypto;
+    }
+
     public static String solution(String cryptogram) {
         String answer = "answer";
 
@@ -43,6 +53,8 @@ public class Problem2 {
         while(checkDuplication(separatedCrypto)) {
             separatedCrypto = deleteDuplication(separatedCrypto);
         }
+
+        answer = makeString(separatedCrypto);
 
         return answer;
     }
