@@ -2,6 +2,8 @@ package onboarding;
 
 public class Problem4 {
     static boolean isUpperCharacter;
+    static final int UPPER_TREE_FROG = 155;
+    static final int LOWER_TREE_FROG = 219;
 
     public static String solution(String word) {
         String answer = "";
@@ -27,5 +29,18 @@ public class Problem4 {
         if (Character.isUpperCase(character)) {
             isUpperCharacter = true;
         }
+    }
+
+    /*
+    * 주어진 문자를 청개구리 사전에 따라 변환하여 반환
+    * 대문자 여부에 따라 정해진 상수값 사용
+    *
+    * @return char
+    * */
+    private static char convertCharacter(char character) {
+        if (isUpperCharacter) {
+            return (char) (UPPER_TREE_FROG - character);
+        }
+        return (char) (LOWER_TREE_FROG - character);
     }
 }
