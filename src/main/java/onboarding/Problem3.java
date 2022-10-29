@@ -17,7 +17,7 @@ public class Problem3 {
         }
 
         String[] check = {"3", "6", "9"};
-        String compare = new String(num);
+        String compare = num;
 
         for (String n : check) {
             System.out.println(n);
