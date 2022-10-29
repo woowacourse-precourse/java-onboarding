@@ -41,6 +41,34 @@ public class Problem7 {
             }
         }
 
+        /* user의 친구를 아는 아이디에 10점을 주는 기능 구현 */
+        for (String s : m.keySet()) {
+            /*  user와 user의 친구인 아이디가 아닐 경우
+             * 이유? user의 친구가 아닌 사람을 추천하는 문제이기때문이다
+             */
+            if (!ar.contains(s) && !s.equals(user)) {
+                for (int j = 0; j < friends.size(); j++) {
+                    /* 원소에 자기 아이디가 있다면 */
+                    if (friends.get(j).contains(s)) {
+                        /* 자기 아이디 인덱스 위치 추출 */
+                        int n = friends.get(j).indexOf(s);
+                        /* 자기의 친구가 user의 친구와 같다면 */
+                        if (ar.contains(friends.get(j).get(1 - n))) {
+                            m.put(s, m.get(s) + 10);
+                        }
+                    }
+                }
+            }
+        }
+
+        /* user의 타임라인에 방문한 사람에게 1점을 주는 기능 구현 */
+        for (int i = 0; i < visitors.size(); i++) {
+            /* user와 친구인 아이디가 아닐때 */
+            if (!ar.contains(visitors.get(i))) {
+                m.put(visitors.get(i), m.get(visitors.get(i)) + 1);
+            }
+        }
+
         return answer;
     }
 }
