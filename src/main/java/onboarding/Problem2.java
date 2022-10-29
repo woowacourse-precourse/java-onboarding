@@ -16,7 +16,7 @@ public class Problem2 {
      * deleteChar : 연속하는 문자를 삭제하는 재귀 메서드
      * 탈출 조건 : 연속하는 문자가 없을 경우
      */
-    static String deleteChar(String cry){
+    public static String deleteChar(String cry){
         String result = "";
         String delChar = "";
         for(int i = 0 ; i < cry.length() ; i++){
