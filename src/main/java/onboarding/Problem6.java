@@ -35,7 +35,7 @@ public class Problem6 {
         return answer;
     }
 
-    private boolean checkNicknameDuplication(String nickname, List<String> part){
+    private static boolean checkNicknameDuplication(String nickname, List<String> part){
         for(int i = 0; i < part.size(); i++){
             if(nickname.contains(part.get(i))){
                 return true;
@@ -44,7 +44,7 @@ public class Problem6 {
         return false;
     }
 
-    private HashSet<String> extractNicknameParts(String nickname){
+    private static HashSet<String> extractNicknameParts(String nickname){
         HashSet<String> part = new HashSet<>();
         for(int j = 0; j < nickname.length() - 1; j++){
             for(int k = j+1; k < nickname.length(); k++){
