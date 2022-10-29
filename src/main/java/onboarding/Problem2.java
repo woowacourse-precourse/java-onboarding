@@ -5,4 +5,19 @@ public class Problem2 {
         String answer = "answer";
         return answer;
     }
+
+    private static int duplicatedLastIndex(String str, int startIndex) {
+        char target = str.charAt(startIndex);
+        for (int index = startIndex; index < str.length(); index++) {
+            if (charEq(target, str.charAt(index))) {
+                continue;
+            }
+            return index;
+        }
+        return -1;
+    }
+
+    private static boolean charEq(char target, char ch) {
+        return target == ch;
+    }
 }
