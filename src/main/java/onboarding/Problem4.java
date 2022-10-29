@@ -2,23 +2,19 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
+        StringBuilder answer = new StringBuilder();
         for(char c: word.toCharArray()) {
-            int asciiNum = (int)c;
-            if(checkAlphabet(asciiNum)) {
-                answer += changeLetter(asciiNum);
+            if(checkAlphabet((int)c)) {
+                answer.append(changeLetter((int)c));
                 continue;
             }
-            answer += c;
+            answer.append(c);
         }
-        return answer;
+        return answer.toString();
     }
 
     public static boolean checkAlphabet(int asciiNum) {
-        if (asciiNum < 65 || (asciiNum > 90  && asciiNum < 97) || asciiNum > 122) {
-            return false;
-        }
-        return true;
+        return asciiNum >= 65 && (asciiNum <= 90 || asciiNum >= 97) && asciiNum <= 122;
     }
 
     public static char changeLetter(int asciiNum) {
