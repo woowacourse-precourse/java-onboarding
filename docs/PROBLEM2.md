@@ -21,3 +21,9 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+### 기능목록
+- [x] 두 char input이 같은지 판별하는 기능
+- [x] answer의 마지막 char와 cryptogram의 해당 인덱스 char가 같으면 answer의 마지막 요소 삭제
+- [x] answer의 마지막 char와 cryptogram의 해당 인덱스 char가 다르면 cyptogram의 해당 인덱스 요소 answer에 추가
+- [ ] "booon" 처럼 중복되는 문자가 홀수인 경우 처리방법
