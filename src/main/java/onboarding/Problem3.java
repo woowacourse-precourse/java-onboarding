@@ -12,6 +12,7 @@ public class Problem3 {
                     - numStr.replace("6", "").length();
             int nineCount = numStr.length()
                     - numStr.replace("9", "").length();
+            answer += (threeCount + sixCount + nineCount);
         }
 
         return answer;
@@ -27,9 +28,8 @@ public class Problem3 {
 
 /*
 <<기능 목록>>
-- [] 1부터 number까지 순회한다
-- [] 각 순회해서 해당 숫자를 문자열로 바꾼다.
-- [] 바뀐 문자열에서 3, 6, 9를 센다
-- [] 센 횟수를 answer에 더한다
-- [] answer를 리턴한다
+- [V] 1부터 number까지 순회한다
+- [V] 각 순회해서 해당 숫자를 문자열로 바꾼다.
+- [V] 바뀐 문자열에서 3, 6, 9를 센다
+- [V] 센 횟수를 answer에 더한다
  */
