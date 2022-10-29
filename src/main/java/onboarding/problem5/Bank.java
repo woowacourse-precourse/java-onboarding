@@ -4,9 +4,10 @@ import java.util.List;
 
 public class Bank {
 
-    public List<Integer> withdraw(int money) {
 
-        return null;
+    public List<Integer> withdraw(int money) {
+        List<Integer> moneyList = findAmount(money);
+        return moneyList;
     }
 
     public List<Integer> findAmount(int money) {
