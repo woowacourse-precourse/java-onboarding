@@ -1,12 +1,6 @@
 package onboarding;
 
 
-/*
-* 1. number를 10으로 나눈 몫 * 3 만큼 ++, number를 10으로 나눈 나머지 / 3 만큼 ++
-* 2.
-* 3. 1, 2 반복
-*
-* */
 public class Problem3_2 {
     public static int solution(int number) {
         int answer = 0;
