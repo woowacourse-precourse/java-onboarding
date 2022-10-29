@@ -3,6 +3,8 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 // 두 글자 이상의 문자가 연속적으로 순서에 맞추어 포함되어 있는 경우 중복으로 간주한다.
@@ -13,9 +15,14 @@ import java.util.stream.Collectors;
 // result는 이메일에 해당하는 부분의 문자열을 오름차순으로 정렬하고 중복은 제거한다.
 
 public class Problem6 {
+    static final int EMAIL = 0;
+    static final int NAME = 1;
+
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
         List<String> emailResultList = new ArrayList<>();
+        if (isExceptionCondition(forms)) {
+            return null;
+        }
 
         List<String> targetList = null; // 비교 대상
         List<String> otherList = null; // 다른 비교 대상
@@ -26,8 +33,6 @@ public class Problem6 {
         String nameOtherList = "";
         String emailOtherList = "";
 
-        final int EMAIL = 0;
-        final int NAME = 1;
 
         int endIndexSize = forms.size();
         // targetList을 nameTarget, emailTarget 로 분할하는 for문
@@ -59,9 +64,65 @@ public class Problem6 {
         }
         emailResultList = DeduplicationList(emailResultList);
         Collections.sort(emailResultList);
-        System.out.println(emailResultList);
-
+//        System.out.println(emailResultList);
         return emailResultList;
+    }
+
+    //    닉네임은 한글만 가능하고 전체 길이는 1자 이상 20자 미만이다.
+    private static boolean isExceptionCondition(List<List<String>> forms) {
+        boolean isExceptionCondition = true;
+        //    크루는 1명 이상 10,000명 이하이다.
+        if (forms.size() <= 10000) {
+            //    이메일은 이메일 형식에 부합하며, 전체 길이는 11자 이상 20자 미만이다.
+            if (isEmailLengthRight(forms)) {
+                //    신청할 수 있는 이메일은 email.com 도메인으로만 제한한다.
+                if (isEmailFormat(forms)) {
+                    isExceptionCondition = false;
+                }
+            }
+        }
+        return isExceptionCondition;
+    }
+
+    //    신청할 수 있는 이메일은 email.com 도메인으로만 제한한다.
+    private static boolean isEmailFormat(List<List<String>> forms) {
+        String email = "";
+        String subEmail = "";
+        boolean isEmailFormat = false;
+        Pattern p = Pattern.compile("email.com");
+
+        for (int index = 0; index < forms.size(); index++) {
+            email = forms.get(index).get(EMAIL);
+            int indexOf = email.indexOf("@");
+            subEmail = email.substring(indexOf + 1, email.length());
+            Matcher m = p.matcher(subEmail);
+            if (m.find()) {
+                isEmailFormat = true;
+            } else {
+                return false;
+            }
+        }
+        return isEmailFormat;
+    }
+
+    //    이메일은 이메일 형식에 부합하며, 전체 길이는 11자 이상 20자 미만이다.
+    private static boolean isEmailLengthRight(List<List<String>> forms) {
+        String email = "";
+        boolean isLength = false;
+        for (int index = 0; index < forms.size(); index++) {
+            List<String> listAtNow = forms.get(index);
+            email = listAtNow.get(EMAIL);
+            if (email.length() >= 11 && email.length() < 20) {
+                isLength = true;
+            } else {
+                return false;
+            }
+        }
+        if (isLength) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private static List<String> DeduplicationList(List<String> emailResultList) {
@@ -95,5 +156,13 @@ public class Problem6 {
             }
         }
         return false;
+    }
+
+    public static void main(String[] args) {
+        List<List<String>> forms = List.of(List.of("jm@email.com", "제이엠"), List.of("jason@email.com", "제이슨"),
+                List.of("woniee@email.com", "워니"), List.of("mj@email.com", "엠제이"), List.of("nowm@email.com", "이제엠"));
+
+        List result = Problem6.solution(forms);
+//        System.out.println(forms.toString());
     }
 }
