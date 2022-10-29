@@ -30,10 +30,6 @@ public class Problem7 {
             result.add(recommendFriends.get(i).getName());
         }
 
-        for (int i = 0; i <recommendFriends.size(); i++) {
-            System.out.println("user 이름: " + recommendFriends.get(i).getName() + "\nuser 추천점수: " + recommendFriends.get(i).getRecommendScore());
-        }
-
         return result;
     }
 
