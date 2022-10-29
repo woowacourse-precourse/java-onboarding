@@ -78,4 +78,9 @@ public class Problem6 {
         }
     }
 
+    private static void addUserInDuplicatedUser(String useremail){
+        duplicatedUserEmail.add(useremail);
+    }
+
+
 }
