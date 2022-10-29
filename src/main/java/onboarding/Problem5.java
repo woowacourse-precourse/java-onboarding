@@ -13,8 +13,15 @@ public class Problem5 {
 
         int[] priceList = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
 
-        List<Integer> answer = count(priceList, money);
-        return answer;
+        try {
+            validation(money);
+
+            List<Integer> answer = count(priceList, money);
+            return answer;
+        } catch (RuntimeException e) {
+            throw e;
+        }
+
     }
 
 
@@ -29,6 +36,12 @@ public class Problem5 {
         }
 
         return countList;
+    }
+
+    public static void validation(int money) {
+        if (money < 1 || money > 1000000) {
+            throw new RuntimeException("money 는 1이상 1,000,000 이하입니다.");
+        }
     }
 
 }
