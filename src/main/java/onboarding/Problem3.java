@@ -18,6 +18,9 @@ public class Problem3 {
 
             for (int j = 0; j < numberOfDigits; j++) {
                 char digit = intToStringNumber.charAt(j);
+
+                if (clapRule.contains(digit)) {
+                }
             }
         }
 
