@@ -9,6 +9,12 @@ import org.junit.jupiter.api.Test;
 class Problem6Test {
 
     @Test
+    void 정상적인_입력인_경우() {
+        Assertions.assertThatCode(() -> Problem6.solution(List.of(List.of("jb@email.com", "진범"))))
+            .doesNotThrowAnyException();
+    }
+
+    @Test
     void 크루_인원이_비정상_입력인_경우() {
         List<List<String>> forms = new ArrayList<>();
         Assertions.assertThatThrownBy(() -> Problem6.solution(forms));
