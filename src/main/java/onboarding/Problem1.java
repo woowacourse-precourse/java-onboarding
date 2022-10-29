@@ -64,6 +64,20 @@ class Problem1 {
         return sum > mul ? sum : mul;
     }
 
+    /**
+     * 왼쪽, 오른쪽 두 개의 점수중 더 큰 점수를 구하는 메서드
+     *
+     * @param leftScore 왼쪽 페이지의 가장 큰 계산점수
+     * @param rightScore 오른쪽 페이지의 가장 큰 계산점수
+     * @return 입력받은 페이지의 가장 큰 계산점수
+     */
+    static int calcLargerScore(int leftScore, int rightScore) {
+        if (leftScore > rightScore)
+            return leftScore;
+        else
+            return rightScore;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
