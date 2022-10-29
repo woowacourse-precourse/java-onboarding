@@ -10,7 +10,7 @@ public class Problem2 {
     public static String decode(String str) {
         String before = str;
         String after = removeDuplication(before);
-        while (!after.equals(before)) {
+        while (after.length() > 1 && !after.equals(before)) {
             before = after;
             after = removeDuplication(before);
         }
