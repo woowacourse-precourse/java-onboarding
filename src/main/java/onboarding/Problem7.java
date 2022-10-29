@@ -17,7 +17,17 @@ public class Problem7 {
     }
 
     static Map<String, Integer> countBothKnowFriends(String mainCharacter, Map<String, List<String>> userToFriends) {
-        return null;
+        Map<String, Integer> bothKnowFriendsCount = new HashMap<>();
+        List<String> mainCharacterFriends = userToFriends.get(mainCharacter);
+
+        userToFriends.forEach((user, friends) -> bothKnowFriendsCount.put(user, countBothKnowFriends(mainCharacterFriends, friends)));
+        return bothKnowFriendsCount;
+    }
+
+    private static int countBothKnowFriends(List<String> friends1, List<String> friends2) {
+        return (int) friends1.stream()
+            .filter(friend1 -> friends2.contains(friend1))
+            .count();
     }
 
 
