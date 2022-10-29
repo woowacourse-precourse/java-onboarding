@@ -13,6 +13,6 @@ public class Problem2 {
 
     //str에서 idx번째 char 삭제
     private static String removeChar(String str, int idx){
-
+        return str.substring(0, idx)+str.substring(idx+1);
     }
 }
