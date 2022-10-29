@@ -32,6 +32,15 @@ public class Problem7 {
             map.put(visitors.get(i),0);
         }
 
+        //10점씩 부여
+        for(int i=0;i<LENGTH;i++){
+            for(int j=0;j<list.size();j++) {
+                if (friends.get(i).contains(list.get(j))) {
+                    map.put(friends.get(i).get(0),(Integer)map.get(friends.get(i).get(1))+10);
+                    map.put(friends.get(i).get(1),(Integer)map.get(friends.get(i).get(0))+10);
+                }
+            }
+        }
         return answer;
     }
 }
