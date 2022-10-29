@@ -7,9 +7,9 @@ public class Problem7 {
         List<String> answer = new ArrayList<>();
 
         // 친구 리스트 만듦
-        List<String> member = makeFriendGraph(friends);
+        List<String> member = makeFriendList(friends);
 
-        // 친구 되어있는 관계를 리스트에 넣음
+        // 그래프 구조로 친구 관계를 만들기
         List<String>[] friendList = new ArrayList[member.size()];
         for(int i=0; i< member.size(); i++){
             friendList[i] = new ArrayList<>();
@@ -126,7 +126,7 @@ public class Problem7 {
      * @param friends 친구 관계 리스트
      * @return 친구 리스트
      */
-    static List<String> makeFriendGraph(List<List<String>> friends){
+    static List<String> makeFriendList(List<List<String>> friends){
         List<String> member = new ArrayList<>();
 
         Iterator<List<String>> friendsItr = friends.iterator();
@@ -142,7 +142,6 @@ public class Problem7 {
                 member.add(B);
             }
         }
-
 
         return member;
     }
