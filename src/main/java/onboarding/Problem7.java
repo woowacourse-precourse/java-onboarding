@@ -42,17 +42,13 @@ public class Problem7 {
         for (int i = 0; i < friends.size(); i++)
             addFriends(friends.get(i));
 
-        System.out.println(friendsMap);
-
         List<String> friendsList = friendsMap.get(user);
 
         for (int i = 0; i < friendsList.size(); i++)
             addFriendsScore(friendsList.get(i), user);
 
-        for (int i = 0; i < visitors.size(); i++) {
-            System.out.println(visitors.get(i));
+        for (int i = 0; i < visitors.size(); i++)
             addVisitScore(visitors.get(i), user);
-        }
 
         List<String> keySet = new ArrayList<>(score.keySet());
 
@@ -61,14 +57,11 @@ public class Problem7 {
 
         for (int i = 0; i < 5; i++){
             String name = keySet.get(i);
-            if (score.get(name) == 0) {
-                System.out.println("answer : " + answer);
+            if (score.get(name) == 0)
                 return answer;
-            }
             answer.add(name);
         }
 
-        System.out.println("answer : " + answer);
         return answer;
     }
 
