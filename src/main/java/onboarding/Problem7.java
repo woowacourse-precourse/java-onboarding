@@ -14,17 +14,8 @@ public class Problem7 {
 
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 		List<String> answer = new ArrayList<>(Collections.emptyList());
-		Set<String> userFriends = new HashSet<>();
+		Set<String> userFriends = findUserFriends(user, friends);
 		Map<String, Integer> friendScore = new HashMap<>();
-		for (int i = 0; i < friends.size(); i++) {
-			String idA = friends.get(i).get(0);
-			String idB = friends.get(i).get(1);
-			if (idA == user) {
-				userFriends.add(idB);
-			} else if (idB == user) {
-				userFriends.add(idA);
-			}
-		}
 		for (int i = 0; i < friends.size(); i++) {
 			String idA = friends.get(i).get(0);
 			String idB = friends.get(i).get(1);
@@ -62,5 +53,19 @@ public class Problem7 {
 			}
 		}
 		return answer;
+	}
+
+	private static HashSet<String> findUserFriends(String user, List<List<String>> friends) {
+		HashSet<String> userFriends = new HashSet<>();
+		for (List<String> friend : friends) {
+			String idA = friend.get(0);
+			String idB = friend.get(1);
+			if (idA.equals(user)) {
+				userFriends.add(idB);
+			} else if (idB.equals(user)) {
+				userFriends.add(idA);
+			}
+		}
+		return userFriends;
 	}
 }

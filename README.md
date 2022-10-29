@@ -101,7 +101,7 @@ BUILD SUCCESSFUL in 0s
 
 ### 문제 7
 
-- [x] user의 친구는 userFriends에 넣는다.
+- [x] user의 친구하는 findUserFriends 함수 구현
 - [x] userFriends에 있는 사람과 연결된 사람은 연결 당 10점을 얻는다.
 - [x] visitors에 있는 사람은 갯수당 1점을 얻는다.
 - [x] 본인(user) 점수를 0점으로 만든다.
