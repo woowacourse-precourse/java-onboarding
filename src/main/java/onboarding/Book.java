@@ -1,11 +1,13 @@
 package onboarding;
 
 public class Book {
+
     public static final int LAST_PAGE = 400;
     public static final int FIRST_PAGE = 1;
 
     private Page leftPage;
     private Page rightPage;
+
     public Book(Page leftPage, Page rightPage) {
         this.leftPage=leftPage;
         this.rightPage=rightPage;
