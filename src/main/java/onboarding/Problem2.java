@@ -48,7 +48,8 @@ public class Problem2 {
             cryptogram=removedCrpytogram;
         }
 
-
+        //3. 결과값 담기
+        answer=cryptogram;
         return answer;
     }
 
