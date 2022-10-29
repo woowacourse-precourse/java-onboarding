@@ -3,8 +3,8 @@ package onboarding;
 
 import java.util.*;
 public class Problem7 {
-    private static final HashMap<String, Integer> userHash = new HashMap<>();
-
+    private static final HashMap<String, Integer> indexHash = new HashMap<>();
+    private static final HashMap<Integer, String> nameHash = new HashMap<>();
     /**
      * <div> 사용자 아이디 user와 친구 관계 정보 friends, 사용자 타임 라인 방문 기록 visitors가 매개변수로 주어질 때,
      * <b>미스터코의 친구 추천 규칙에 따라 점수가 가장 높은 순으로 정렬하여 최대 5명</b>을 리턴합니다. </div>
@@ -40,10 +40,44 @@ public class Problem7 {
         return answer;
     }
 
+    private static HashMap<String, Integer> bfs(List<? extends List<Integer>> graph, List<String> visitors, int start) {
+        Queue<int[]> queue = new LinkedList<>();
+        boolean[] visited = new boolean[graph.size()];
+        Arrays.fill(visited, false);
+        HashMap<String, Integer> scoreBoard = new HashMap<>();
+
+        queue.add(new int[]{start, 0});
+        visited[start] = true;
+        while (!queue.isEmpty()){
+            int[] now = queue.poll();
+            int v = now[0];
+            int depth = now[1];
+            for(int i : graph.get(v)){
+                if(!visited[i]) {
+                    queue.add(new int[]{i, depth + 1});
+                    visited[i] = true;
+                }
+                if(depth == 1 && i != start) {
+                    String target = getUserName(i);
+                    int weight = scoreBoard.getOrDefault(target, 0);
+                    scoreBoard.put(target, weight + 10);
+                }
+            }
+        }
+
+        for(String visitor : visitors) {
+            int weight = scoreBoard.getOrDefault(visitor, 0);
+            scoreBoard.put(visitor, weight + 1);
+        }
+        return scoreBoard;
+    }
+
+
+
     private static List<? extends List<Integer>> getGraph(List<List<String>> friends) {
         List<List<Integer>> graph = new ArrayList<>();
         HashSet<String> users = getUserSet(friends);
-        setUserIndex(users);
+        setUsersInHash(users);
         for(int i = 0; i < users.size(); i++) graph.add(new ArrayList<>());
 
         for(List<String> edge : friends) {
@@ -59,15 +93,21 @@ public class Problem7 {
 
         return graph;
     }
-    
-    private static int getUserIndex(String target) {
-        return userHash.get(target);
+
+    private static String getUserName(int index) {
+        return nameHash.get(index);
     }
 
-    private static void setUserIndex(HashSet<String> users) {
+    private static int getUserIndex(String target) {
+        return indexHash.get(target);
+    }
+
+    private static void setUsersInHash(HashSet<String> users) {
         int index = 0;
         for (String key : users) {
-            userHash.put(key, index++);
+            indexHash.put(key, index);
+            nameHash.put(index, key);
+            index++;
         }
     }
 
