@@ -14,7 +14,7 @@ public class Problem5 {
     }
 
     private static List<Integer> createMoneyArr(){
-        return Arrays.asList(50000,10000,5000,1000,500,100,10,1);
+        return Arrays.asList(50000,10000,5000,1000,500,100,50,10,1);
     }
 
     private static List<Integer> seperateMoney(int money, List<Integer> moneyArr){
