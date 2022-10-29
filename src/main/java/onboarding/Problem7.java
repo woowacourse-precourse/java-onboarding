@@ -66,7 +66,7 @@ public class Problem7 {
         for (List<String> friend : friends) {
             String id = getOneOfTwo(friend, user);
 
-            if (friend.contains(user)) {
+            if (id != null) {
                 myFriendsList.add(id);
             } else {
                 notFriendsList.add(friend);
@@ -77,8 +77,10 @@ public class Problem7 {
     public static String getOneOfTwo(List<String> list, String id) {
         if (list.get(0).equals(id)) {
             return list.get(1);
+        } else if (list.get(1).equals(id)) {
+            return list.get(0);
         }
-        return list.get(0);
+        return null;
     }
 
     public static boolean isError(String user, List<List<String>> friends, List<String> visitors) {
