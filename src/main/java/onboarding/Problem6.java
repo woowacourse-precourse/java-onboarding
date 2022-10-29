@@ -19,6 +19,8 @@ public class Problem6 {
                 }
             }
         }
+        Collections.sort(answer);
+        
         return answer;
     }
 
