@@ -95,10 +95,14 @@ public class Problem7 {
         Set<String> friendSet;
         Map<String, Integer> friendsScore;
         Map<String, Integer> visitorsScore;
+        Map<String, Integer> totalScore;
 
         friendSet = getFriendSet(user, friends);
         friendsScore = getFriendsScore(user, friendSet, friends);
         visitorsScore = getVisitorScore(visitors, friendSet);
+
+        totalScore = friendsScore;
+        visitorsScore.forEach((k, v) -> totalScore.merge(k, v, (v1, v2) -> v1 + v2));
 
         return answer;
     }
