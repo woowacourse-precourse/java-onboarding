@@ -2,7 +2,7 @@ package onboarding.problem5;
 
 public enum UnitsOfBill {
 	FIFTY_THOUSAND(50000),
-	TEN_THOSAND(10000),
+	TEN_THOUSAND(10000),
 	FIVE_THOUSAND(5000),
 	ONE_THOUSAND(1000),
 	FIVE_HUNDRED(500),
