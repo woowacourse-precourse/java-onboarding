@@ -4,18 +4,15 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem7 {
-    private static Map<String, List<String>> friendsMap;
-    private static Map<String, Integer> pointMap;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        friendsMap = new HashMap<>();
-        pointMap = new HashMap<>();
+        FriendsMemory memory = new FriendsMemory(new HashMap<>(), new HashMap<>());
 
-        friends.forEach(Problem7::addFriendList);
-        friendsMap.get(user).forEach(f -> increaseFriendPoint(f, user));
-        increaseVisitorPoint(visitors, user);
+        friends.forEach(f -> addFriendList(f, memory));
+        increaseFriendPoint(user, memory);
+        increaseVisitorPoint(visitors, user, memory);
 
-        return pointMap.entrySet().stream()
+        return memory.getRecommendPoint().entrySet().stream()
                 .sorted(Map.Entry.comparingByKey())
                 .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
                 .map(Map.Entry::getKey)
@@ -23,33 +20,58 @@ public class Problem7 {
                 .collect(Collectors.toList());
     }
 
-    private static void increaseVisitorPoint(List<String> visitors, String user) {
-        List<String> userFriends = friendsMap.get(user);
+    private static void increaseVisitorPoint(List<String> visitors, String user, FriendsMemory memory) {
+        Map<String, List<String>> friendsList = memory.getFriendsList();
+        Map<String, Integer> recommendPoint = memory.getRecommendPoint();
+        List<String> userFriends = friendsList.get(user);
 
         visitors.stream()
                 .filter(v -> !userFriends.contains(v))
-                .forEach( v -> pointMap.put(v, pointMap.getOrDefault(v, 0) + 1 ));
+                .forEach( v -> recommendPoint.put(v, recommendPoint.getOrDefault(v, 0) + 1));
     }
 
-    private static void increaseFriendPoint(String friend, String user) {
-        List<String> friends = friendsMap.get(friend);
-        List<String> userFriends = friendsMap.get(user);
+    private static void increaseFriendPoint(String user, FriendsMemory memory) {
+        Map<String, List<String>> friendsList = memory.getFriendsList();
+        Map<String, Integer> recommendPoint = memory.getRecommendPoint();
+        List<String> userFriends = friendsList.get(user);
 
-        friends.stream()
-                .filter(f -> !f.equals(user) && !userFriends.contains(f))
-                .forEach(f -> pointMap.put(f, pointMap.getOrDefault(f, 0) + 10));
+        userFriends.stream()
+                .map(friendsList::get)
+                .forEach(friends -> friends.stream()
+                        .filter(f -> !f.equals(user) && !userFriends.contains(f))
+                        .forEach(f -> recommendPoint.put(f, recommendPoint.getOrDefault(f, 0) + 10))
+                );
     }
 
-    private static void addFriendList(List<String> friend) {
+    private static void addFriendList(List<String> friend, FriendsMemory memory) {
+        Map<String, List<String>> friendsList = memory.getFriendsList();
         int flag = -1;
 
         for (int i = 0 ; i < 2 ; i++) {
-            if (!friendsMap.containsKey(friend.get(i))) {
-                friendsMap.put(friend.get(i), new ArrayList<>());
+            if (!friendsList.containsKey(friend.get(i))) {
+                friendsList.put(friend.get(i), new ArrayList<>());
             }
 
             flag *= -1;
-            friendsMap.get(friend.get(i)).add(friend.get(i + flag));
+            friendsList.get(friend.get(i)).add(friend.get(i + flag));
         }
+    }
+}
+
+class FriendsMemory {
+    private final Map<String, List<String>> friendsList;
+    private final Map<String, Integer> recommendPoint;
+
+    public FriendsMemory(Map<String, List<String>> friendsMap, Map<String, Integer> pointMap) {
+        this.friendsList = friendsMap;
+        this.recommendPoint = pointMap;
+    }
+
+    public Map<String, List<String>> getFriendsList() {
+        return friendsList;
+    }
+
+    public Map<String, Integer> getRecommendPoint() {
+        return recommendPoint;
     }
 }
