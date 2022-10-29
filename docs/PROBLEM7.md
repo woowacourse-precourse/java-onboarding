@@ -24,3 +24,16 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### Problem 7. 요구사항 정리
+
+- 친구들의 관계 정보를 담고있는 HashMap을 생성한다.
+- 관계 정보를 사용자와 함께 아는 친구의 수에 대해 점수를 계산한다.
+- 타임라인의 방문한 친구들의 점수를 계산한다.
+- 최대 5명을 점수가 높은 순으로 정렬하여 반환한다.
+  - 추천 점수가 0점인 경우 추천하지 않는다. 
+  - 추천 점수가 같은 경우에는 이름 순으로 정렬한다. 
+
+### 고려해야 하는 부분
+
+- 하나의 메서드가 하나의 기능을 수행하는지?
