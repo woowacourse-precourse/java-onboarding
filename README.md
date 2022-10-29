@@ -52,6 +52,10 @@ BUILD SUCCESSFUL in 0s
 5. [문제 5](./docs/PROBLEM5.md)
 6. [문제 6](./docs/PROBLEM6.md)
 7. [문제 7](./docs/PROBLEM7.md)
+  * 출력값 요구사항   
+    1. 추천 점수 Descending Order로 높은 상위 5명의 이름의 리스트를 반환   
+    1. 추천 점수가 같은 경우 이름순으로 정렬    
+    1. 추천 점수가 0점이면 반환리스트에 추가하지 않음   
 
 ---
 
