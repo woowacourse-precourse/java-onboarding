@@ -4,30 +4,30 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import domain.Crew;
-import domain.CrewFormValidator;
+import domain.Form;
+import domain.FormValidator;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
     	List<String> answer = new ArrayList<>();
-        CrewFormValidator validator = new CrewFormValidator(getCrewList(forms));
-    	for (Crew crew : validator.getInvalidCrews()) {
-    		answer.add(crew.getEmail());
+        FormValidator validator = new FormValidator(getFormList(forms));
+    	for (Form form : validator.getInvalidForms()) {
+    		answer.add(form.getEmail());
     	}
         Collections.sort(answer);
         return answer;
     }
 
     /**
-     * 신청목록(forms)을 신청한 크루 정보를 표현하는 vo객체에 대한 리스트로 바꾸어 반환한다.
+     * 신청목록(forms)의 List<String> 객체를 vo객체 Form으로 바꾸어 반환한다.
      * @param forms
-     * @return Crew 타입의 ArrayList
+     * @return Form 타입의 ArrayList
      */
-    private static List<Crew> getCrewList(List<List<String>> forms) {
-    	List<Crew> crews = new ArrayList<>();
+    private static List<Form> getFormList(List<List<String>> forms) {
+    	List<Form> result = new ArrayList<>();
         for (List<String> form : forms) {
-        	crews.add(new Crew(form.get(0), form.get(1)));
+        	result.add(new Form(form.get(0), form.get(1)));
         }
-        return crews;
+        return result;
     }
 }

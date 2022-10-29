@@ -7,11 +7,11 @@ import java.util.HashSet;
  * @author yoondgu
  *
  */
-public class Crew {
+public class Form {
 	private String email;
 	private String nickname;
 	
-	public Crew(String email, String nickname) {
+	public Form(String email, String nickname) {
 		super();
 		this.email = email;
 		this.nickname = nickname;

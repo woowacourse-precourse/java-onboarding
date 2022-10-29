@@ -23,28 +23,26 @@
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
 
 ### 구현 기능 목록
-1. 신청목록(forms)을 List<Crew>로 변환하는 기능
-    - Crew는 한 크루의 닉네임, 이메일 정보를 저장하는 VO 객체이다.
-    - Crew 객체에서 2번 기능을 제공한다.
+1. 신청폼 리스트(forms)를 List<Form>로 변환하는 기능
+    - Form은 한 신청폼의 정보(닉네임, 이메일)를 저장하는 VO 객체이다.
+    - Form 객체에서 2번 기능을 제공한다.
 2. 하나의 닉네임을 이루는 모든 연속된 2글자 문자열을 구하는 기능
-	- Crew 클래스에서 구현
+	- Form 클래스에서 구현
     - HashSet getAllUsedTwoWordsByNickname()
-    - Crew객체에서 이 기능을 제공하므로 파라미터 없이 this.nickname으로 닉네임 정보를 획득한다.
+    - Form객체에서 이 기능을 제공하므로 파라미터 없이 this.nickname으로 닉네임 정보를 획득한다.
     - 동일한 문자열이 여러 번 사용될 수 있으므로 중복방지를 위해 HashSet을 사용한다.
-3. 신청받은 닉네임에 존재하는 모든 연속된 2글자 문자열에 대해, 해당되는 모든 크루를 저장하고 있는 자료구조를 생성하는 기능
-    - CrewFormValidator 클래스에 usedTwoWordsInfo 필드를 정의
-    - void initUsedTwoWordsInfo(List<Crew> crewForms)
-    - void updateUsedTwoWordsInfo(Crew crew)
-    - key: 2글자 문자열, value: 해당 문자열이 사용된 닉네임을 가진 크루들의 인덱스 리스트
-4. 특정 2글자 문자열을 여러 크루가 사용했는지 확인하는 기능
-	- CrewFormValidator 클래스에서 구현
+3. 신청폼 전체에 존재하는 모든 연속된 2글자 문자열에 대해, 각각 해당되는 모든 폼을 저장하고 있는 자료구조를 생성하는 기능
+    - FormValidator 클래스에 usedTwoWordsInfo 필드를 정의
+    - void initUsedTwoWordsInfo(List<Form> forms), void updateUsedTwoWordsInfo(Form form)
+    - key: 2글자 문자열, value: 해당 문자열이 사용된 모든 신청폼 리스트
+4. 특정 2글자 문자열이 여러 신청폼에서 사용됐는지 확인하는 기능
+	- FormValidator 클래스에서 구현
     - usedTwoWordsInfo의 value에 담긴 list의 size가 1 이상인 경우를 확인한다.
-5. 여러 크루가 사용한 2글자 문자열을 포함한 닉네임을 가진 크루를 구하는 기능
-	- CrewFormValidator 클래스에서 구현
-    - usedTwoWordsInfo의 value값을 이용해 해당하는 크루 정보를 HashSet에 저장해 반환하는 기능
-    - 동일한 크루가 여러 번 저장될 수 있으므로 중복방지를 위해 HashSet을 사용한다.
+5. 여러 신청폼에 사용된 2글자 문자열을 가진 신청폼을 구하는 기능
+	- FormValidator 클래스에서 구현
+	- void setInvalidForms(), Set<Form> getInvalidForms()
+    - usedTwoWordsInfo의 value값을 이용해 해당하는 Form객체를 HashSet에 저장해 반환하는 기능
+    - 동일한 폼이 여러 번 저장될 수 있으므로 중복방지를 위해 HashSet을 사용한다.
 6. 5번에 해당하는 크루의 이메일 목록을 오름차순으로 정렬하는 기능
 	-solution 메소드에서 구현
-	- 5번을 반환받아 crew객체에서 email 값을 꺼내 리스트에 담는다.
-    - 주어진 solution 메소드와 테스트케이스에서 반환타입을 리스트로 지정하므로,
-    4번 기능에서 TreeSet을 사용하지 않고, HashSet을 반환한 뒤 5번에서 오름차순 정렬을 지원하는 ArrayList로 변환한다.
+	- 5번을 반환받아 Form 객체에서 email 값을 꺼내 정렬가능한 리스트에 담는다.
