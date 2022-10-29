@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 //-----기능-----
 // 1. friends 배열 돌면서 친구 관계 정리 (HashMap)
@@ -40,7 +37,7 @@ public class Problem7 {
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
 
         for (int i = 0; i < friends.size(); i++)
             addFriends(friends.get(i));
@@ -57,8 +54,21 @@ public class Problem7 {
             addVisitScore(visitors.get(i), user);
         }
 
-        System.out.println("score = " + score);
+        List<String> keySet = new ArrayList<>(score.keySet());
 
+        // Value 값으로 오름차순 정렬
+        keySet.sort((o1, o2) -> score.get(o2).compareTo(score.get(o1)));
+
+        for (int i = 0; i < 5; i++){
+            String name = keySet.get(i);
+            if (score.get(name) == 0) {
+                System.out.println("answer : " + answer);
+                return answer;
+            }
+            answer.add(name);
+        }
+
+        System.out.println("answer : " + answer);
         return answer;
     }
 
