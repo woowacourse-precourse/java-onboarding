@@ -22,12 +22,21 @@ public class Problem2 {
             }
             if (encodedCode.charAt(i) != encodedCode.charAt(i - 1) && count >= 2) {
                 flag = true;
-                String emptySpace = getEmptySpace(count);
+                encodedCode.replace(i - count, i - 1, getEmptySpace(count));
                 count = 1;
             }
+        }
 
+        if (flag) {
+            clearSpaces(encodedCode);
         }
         return flag;
+    }
+
+    private static void clearSpaces(StringBuilder encodedCode) {
+        String clearSpaceCode = encodedCode.toString().replaceAll("\\s", "");
+        encodedCode.setLength(0);
+        encodedCode.append(clearSpaceCode);
     }
 
     private static String getEmptySpace(int count) {
