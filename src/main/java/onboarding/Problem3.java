@@ -7,7 +7,7 @@ public class Problem3 {
             StringBuilder sb = new StringBuilder(String.valueOf(i));
 
             for (int j=0;j<sb.length();j++) {
-                if ((sb.charAt(j) -'0') % 3 == 0) {
+                if (sb.charAt(j) -'0' != 0 && (sb.charAt(j) -'0') % 3 == 0) {
                     answer++;
                 }
             }
