@@ -47,6 +47,19 @@ public class Problem7 {
             }
         }
 
+        // add visitors, add score
+        for (int i = 0; i < visitors.size(); i++) {
+            if(listName.contains(visitors.get(i))){
+                idx=listName.indexOf(visitors.get(i));
+                temp=listScore.get(idx)+3;
+                listScore.set(idx,temp);
+            }
+            else{
+                listName.add(visitors.get(i));
+                listScore.add(3);
+            }
+        }
+
         return listName;
     }
 }
