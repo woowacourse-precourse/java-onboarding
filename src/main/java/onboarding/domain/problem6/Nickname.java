@@ -14,4 +14,12 @@ public class Nickname {
                 return true;
         return false;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj==null) return false;
+        if (getClass() != obj.getClass()) return false;
+        if (name.equals(((Nickname)obj).name)) return true;
+        return false;
+    }
 }
