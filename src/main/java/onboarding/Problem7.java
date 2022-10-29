@@ -70,4 +70,21 @@ public class Problem7 {
 
         return entries;
     }
+
+    static List<String> getResult(List<Map.Entry<String, Integer>> sortedEntries) {
+
+        List<String> result = new LinkedList<>();
+        int addCount = 0;
+
+        for (Map.Entry<String, Integer> entry : sortedEntries) {
+
+            if(addCount == 5)
+                break;
+
+            result.add(entry.getKey());
+            addCount++;
+        }
+
+        return result;
+    }
 }
