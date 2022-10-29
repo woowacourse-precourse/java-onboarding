@@ -26,8 +26,8 @@ class Problem4Test {
         //when
 
         //then
-        assertThat(Problem4.solution(str1)).isEqualTo("");
-        assertThat(Problem4.solution(str2)).isEqualTo("");
+        assertThat(Problem4.solution(str1)).isEqualTo("R olev blf");
+        assertThat(Problem4.solution(str2)).isEqualTo("R zn Rmerwzn");
         assertThat(Problem4.solution(str3)).isEqualTo("");
     }
 
