@@ -6,6 +6,12 @@ public class Problem4 {
     	String answer = "";
         return answer;
     }
+    public static void convertCharArrReverse(char[] wordArr) {
+    	for(int i=0; i<wordArr.length; i++) {
+    		if(wordArr[i] == ' ') continue;
+    		wordArr[i] = convertCharReverse(wordArr[i]);
+    	}
+    }
     public static char convertCharReverse(char target) {
     	char convertedChar;
     	if(Character.isUpperCase(target)) {
@@ -15,4 +21,5 @@ public class Problem4 {
     	}
     	return convertedChar;
     }
+    
 }
