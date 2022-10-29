@@ -81,7 +81,7 @@ public class Problem6 {
             String nickname = form.get(1);
 
             for(int i = 1; i < nickname.length(); i++) {
-                String twoLengthName = String.valueOf(nickname.charAt(i-1)) + nickname.charAt(i);
+                String twoLengthName = getString(nickname, i);
                 if (twoNameMap.get(twoLengthName).size() > 1) {
                     result.add(email);
                 }
@@ -99,7 +99,7 @@ public class Problem6 {
         for (List<String> form : forms) {
             String nickname = form.get(1);
             for(int i = 1; i <nickname.length(); i++) {
-                String name = String.valueOf(nickname.charAt(i-1)) + nickname.charAt(i);
+                String name = getString(nickname, i);
                 TreeSet<String> nameTreeSet = result.getOrDefault(name, new TreeSet<>());
                 nameTreeSet.add(nickname);
                 result.put(name, nameTreeSet);
@@ -107,5 +107,9 @@ public class Problem6 {
         }
 
         return result;
+    }
+
+    private static String getString(String nickname, int idx) {
+        return String.valueOf(nickname.charAt(idx-1)) + nickname.charAt(idx);
     }
 }
