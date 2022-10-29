@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
 
@@ -62,5 +59,15 @@ public class Problem7 {
 
 
         }
+    }
+
+    static List<Map.Entry<String, Integer>> getSortedEntries() {
+
+        List<Map.Entry<String, Integer>> entries = new LinkedList<>(userScoreMap.entrySet());
+
+        Collections.sort(entries, Comparator.comparing(Map.Entry<String, Integer>::getValue).reversed()
+                .thenComparing(Map.Entry::getKey));
+
+        return entries;
     }
 }
