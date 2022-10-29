@@ -4,34 +4,53 @@ import java.util.Stack;
 import java.util.stream.Collectors;
 
 public class Problem2 {
-    public static String solution(String cryptogram) {
-        String answer = "answer";
-        Stack<Character> stack = new Stack<>();
+	private static Stack<Character> decryptionStack;
+	public static String solution(String cryptogram) {
+		decryptionStack = new Stack<>();
+		int cursor = 0;
+		while (cursor < cryptogram.length()) {
+			int afterVisit = visitCharAt(cryptogram, cursor);
+			cursor = afterVisit;
+		}
 
-        for (int i = 0; i < cryptogram.length(); i++) {
-            char letter = cryptogram.charAt(i);
-            if (stack.empty()) {
-                stack.add(letter);
-                continue;
-            }
+		return covertCharacterStackToString(decryptionStack);
+	}
 
-            boolean isDuplicated = false;
-            Character lastLetter = stack.peek();
-            while (i < cryptogram.length()
-                && cryptogram.charAt(i) == lastLetter) {
-                isDuplicated = true;
-                i += 1;
-            }
+	private static int visitCharAt(String cryptogram, int cursor) {
+		char visitLetter = cryptogram.charAt(cursor);
+		if (addable(visitLetter)) {
+			decryptionStack.add(visitLetter);
+			return cursor + 1;
+		}
 
-            if (isDuplicated) {
-                stack.pop();
-                i -= 1;
-            } else {
-                stack.add(cryptogram.charAt(i));
-            }
-        }
+		return isDuplicateLetter(cryptogram, cursor);
+	}
 
-        answer = stack.stream().map(String::valueOf).collect(Collectors.joining());
-        return answer;
-    }
+	private static boolean addable(char letter) {
+		if (decryptionStack.empty()) {
+			return true;
+		}
+
+		if (decryptionStack.peek() != letter) {
+			return true;
+		}
+		return false;
+	}
+
+	private static int isDuplicateLetter(String cryptogram, int cursor) {
+		Character lastLetter = decryptionStack.peek();
+		while (cursor < cryptogram.length()
+			&& cryptogram.charAt(cursor) == lastLetter) {
+			cursor += 1;
+		}
+
+		decryptionStack.pop();
+		return cursor;
+	}
+
+	private static String covertCharacterStackToString(Stack<Character> stack) {
+		return stack.stream()
+			.map(String::valueOf)
+			.collect(Collectors.joining());
+	}
 }
