@@ -6,19 +6,19 @@ import java.util.List;
 
 public class Problem5 {
 
-//    public static List<Integer> solution(int money) {
-//        List<Integer> answer = Collections.emptyList();
-//        answer = new ArrayList<>();
-//
-//        for(int i=0; i<9; i++) {
-//            answer.add(i, 0);
-//        }
-//
-//        for(int i=0; i<9; i++) {
-//            answer.set(i, calculation(money)[i]);
-//        }
-//        return answer;
-//    }
+    public static List<Integer> solution(int money) {
+        List<Integer> answer = Collections.emptyList();
+        answer = new ArrayList<>();
+
+        for(int i=0; i<9; i++) {
+            answer.add(i, 0);
+        }
+
+        for(int i=0; i<9; i++) {
+            answer.set(i, calculation(money)[i]);
+        }
+        return answer;
+    }
 
 
     public static int[] calculation(int money) {
