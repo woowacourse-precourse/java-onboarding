@@ -11,7 +11,7 @@ public class Problem2 {
 
         for (char ele : cryptogram.toCharArray()) {
             if (!isDequeEmpty(deque)) {
-                
+                insertWord(deque, ele);
             }
         }
 
@@ -20,5 +20,9 @@ public class Problem2 {
 
     public static boolean isDequeEmpty(Deque<Character> deque) {
         return deque.isEmpty();
+    }
+
+    public static void insertWord(Deque<Character> deque, Character word) {
+        deque.offerLast(word);
     }
 }
