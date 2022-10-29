@@ -1,7 +1,8 @@
 package onboarding;
 
+import onboarding.problem6.repository.UserRepository;
 import onboarding.problem6.validation.UserInfoValidator;
-import onboarding.problem6.vo.UserInfo;
+import onboarding.problem6.vo.User;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,17 +14,20 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         UserInfoValidator.validate(forms);
 
-        List<UserInfo> userInfoList = getUserInfosFromInput(forms);
+        UserRepository userRepository = new UserRepository();
+
+        forms.forEach(form -> userRepository.save(User.of(form.get(0), form.get(1))));
+        List<User> users = userRepository.findAll();
 
         Set<String> result = new HashSet<>();
 
-        userInfoList.forEach(userInfo -> {
-            String name = userInfo.getName();
+        users.forEach(user -> {
+            String name = user.getName();
             for (int spellIndex = 0; spellIndex < name.length() - 1; spellIndex++) {
                 String duplicatingWord = makeDuplicatingWord(name, spellIndex);
-                userInfoList.forEach(target -> {
-                    if (!isNameExactlySame(userInfo, target) && hasDuplicatedName(duplicatingWord, target)) {
-                        result.add(userInfo.getEmail());
+                users.forEach(target -> {
+                    if (!isNameExactlySame(user, target) && hasDuplicatedName(duplicatingWord, target)) {
+                        result.add(user.getEmail());
                     }
                 });
             }
@@ -35,23 +39,15 @@ public class Problem6 {
         return resultList;
     }
 
-    private static List<UserInfo> getUserInfosFromInput(List<List<String>> forms) {
-        List<UserInfo> userInfoList = new ArrayList<>();
-        for (List<String> form : forms) {
-            userInfoList.add(UserInfo.of(form.get(0), form.get(1)));
-        }
-        return userInfoList;
-    }
-
-    private static boolean hasDuplicatedName(String duplicatingWord, UserInfo target) {
+    private static boolean hasDuplicatedName(String duplicatingWord, User target) {
         return target.getName().contains(duplicatingWord);
     }
 
-    private static boolean isNameExactlySame(UserInfo userInfo, UserInfo target) {
-        return userInfo.equals(target);
+    private static boolean isNameExactlySame(User user, User target) {
+        return user.equals(target);
     }
 
     private static String makeDuplicatingWord(String name, int spellIndex) {
-        return String.valueOf(name.charAt(spellIndex)) + name.charAt(spellIndex + 1);
+        return name.substring(spellIndex, spellIndex + 2);
     }
 }
