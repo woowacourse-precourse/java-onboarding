@@ -1,5 +1,8 @@
 package onboarding.problem5;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Calculate count number of each money unit
  */
@@ -10,5 +13,14 @@ public class MoneyCalculator {
 
     public MoneyCalculator(int money) {
         this.money = money;
+    }
+
+    public List<Integer> calculate() {
+        List<Integer> counts = new ArrayList<>();
+        for (int unit : units) {
+            counts.add(money / unit);
+            money %= unit;
+        }
+        return counts;
     }
 }
