@@ -58,9 +58,9 @@ public class Problem6 {
     private static Map<String, List<String>> fillNameFragmentOwners(List<List<String>> forms) {
         Map<String, List<String>> nameFragmentOwners = new HashMap<>();
 
-        for (int i = 0; i < forms.size(); ++i) {
-            String email = forms.get(i).get(0);
-            String nickname = forms.get(i).get(1);
+        for (List<String> form : forms) {
+            String email = form.get(0);
+            String nickname = form.get(1);
 
             addFragmentsOwner(nameFragmentOwners, email, nickname);
         }
