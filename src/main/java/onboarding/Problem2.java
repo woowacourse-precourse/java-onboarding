@@ -4,7 +4,7 @@ import java.util.Stack;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = "";
         Stack<Character> stack = new Stack<>();
 
         for (char c : cryptogram.toCharArray()) {
@@ -15,6 +15,10 @@ public class Problem2 {
                     stack.push(c);
                 }
             }
+        }
+
+        for (char c: stack){
+            answer += c;
         }
 
         return answer;
