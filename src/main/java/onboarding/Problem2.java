@@ -2,9 +2,15 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        System.out.println("pr2: " + cryptogram);
-        System.out.println("return: " + clearDupliationWord(cryptogram));
-        String answer = "answer";
+        boolean flag = true;
+        while (flag){
+            String temp = clearDupliationWord(cryptogram);
+            if (temp.equals(cryptogram)){
+                flag = false;
+            }
+            cryptogram = temp;
+        }
+        String answer = cryptogram;
         return answer;
     }
 
