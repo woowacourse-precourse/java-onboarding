@@ -71,7 +71,9 @@ public class Problem7 {
             if(entry.getValue()==0) continue;
             answer.add(entry.getKey());
         }
-
+        if(answer.size()>5){
+            answer=answer.subList(0,5);
+        }
         return answer;
     }
 }
