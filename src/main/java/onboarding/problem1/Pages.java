@@ -20,7 +20,7 @@ public class Pages {
         return page2;
     }
 
-    public void validateArgumentsRange(int page1, int page2) {
+    private void validateArgumentsRange(int page1, int page2) {
         if (!(page1 >= 1 && page1 <= 399)) {
             throw new IllegalArgumentException("페이지 값은 다음과 같은 조건을 만족해야 합니다 : 1 <= page1 <= 399");
         }
@@ -30,7 +30,7 @@ public class Pages {
         }
     }
 
-    public void assertArgPage1IsOdd(int page1) {
+    private void assertArgPage1IsOdd(int page1) {
         if (page1%2 == 0) {
             throw new IllegalArgumentException("페이지 값은 다음과 같은 조건을 만족해야 합니다 : page1 = 홀수");
         }
