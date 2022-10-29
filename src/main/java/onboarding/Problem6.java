@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Problem6 {
 
@@ -18,7 +15,11 @@ public class Problem6 {
             }
         }
 
-        return new ArrayList<>(duplicateList);
+        List<String> answer = new ArrayList<>(duplicateList);
+
+        Collections.sort(answer);
+
+        return new ArrayList<>(answer);
     }
 
     public static void checkDuplicate(List<List<String>> forms, String checkName, List<String> originForm) {
