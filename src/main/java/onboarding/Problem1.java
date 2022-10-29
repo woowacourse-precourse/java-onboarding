@@ -131,7 +131,7 @@ class Problem1 {
      */
     private static int calculateSingePageScore(int number){
         // 토큰화
-        int[] tokenizedNumber = tokenize(Integer.toString(number));
+        int[] tokenizedNumber = tokenize(number);
 
         // init
         int product = tokenizedNumber[0];
@@ -152,11 +152,13 @@ class Problem1 {
 
     /**
      *
-     * @param number String으로 변환 된 target 숫자
+     * @param number target 숫자
      * @return 들어온 숫자를 토큰화 하여 int 배열을 반환
      */
-    private static int[] tokenize(String number){
-        String[] strArray = number.split("");
+    private static int[] tokenize(int number){
+        String stringifyNumber = Integer.toString(number,10);
+
+        String[] strArray = stringifyNumber.split("");
 
         int[] intArray = Arrays.stream(strArray)
                 .mapToInt(Integer::parseInt)
