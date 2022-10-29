@@ -9,8 +9,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Problem6 {
-    private static HashMap<String, Integer> nicknameMap = new HashMap<>();
-    private static TreeSet<String> alertList = new TreeSet<>();
+    private static final HashMap<String, Integer> nicknameMap = new HashMap<>();
+    private static final TreeSet<String> alertList = new TreeSet<>();
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
@@ -19,7 +19,7 @@ public class Problem6 {
             String email = user.get(0);
             String nickname = user.get(1);
 
-            if(checkEmail(email) == false) {
+            if(!checkEmail(email)) {
                 continue;
             }
 
@@ -46,7 +46,7 @@ public class Problem6 {
             char nicknameChar2 = nickname.charAt(i + 1);
 
             String words = String.valueOf(nicknameChar1) + String.valueOf(nicknameChar2);
-            if (nicknameMap.containsKey(words) == false) {
+            if (!nicknameMap.containsKey(words)) {
                 nicknameMap.put(words, idx);
                 continue;
             }
