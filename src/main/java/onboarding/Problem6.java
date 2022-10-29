@@ -12,7 +12,7 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         initSystem(forms);
         checkNicknameInForms(forms);
-        return getDuplicatedNicknames(answer);
+        return getSortedAnswer(answer);
     }
 
     private static void initSystem(List<List<String>> forms) {
@@ -57,7 +57,7 @@ public class Problem6 {
         return false;
     }
 
-    private static List<String> getDuplicatedNicknames(List<String> answer) {
+    private static List<String> getSortedAnswer(List<String> answer) {
         if (answer.size() == 1) {
             answer.remove(0);
             return answer;
