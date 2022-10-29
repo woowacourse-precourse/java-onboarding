@@ -38,6 +38,27 @@ public class Problem2 {
         return 0;
     }
 
+    // 3. 리스트 내 연속되는 중복 문자 제거
+    static void deleteAlpha(List<Character> cryptogramList, int startIndex)
+    {
+        // 중복이 끝나는 인덱스 초기화
+        int endIndex = Integer.MAX_VALUE;
+
+        for(int idx=startIndex; idx<cryptogramList.size(); idx++)
+        {
+            // 중복이 끝나는 인덱스 저장
+            if(cryptogramList.get(startIndex) != cryptogramList.get(idx))
+            {
+                endIndex = idx-1;
+                break;
+            }
+        }
+
+        // 연속된 중복 문자 제거
+        for(int rm=endIndex; rm>=startIndex; rm--)
+            cryptogramList.remove(rm);
+    }
+
     public static String solution(String cryptogram) {
         String answer = "answer";
 
@@ -46,9 +67,12 @@ public class Problem2 {
 
         // 연속되는 문자 인덱스 값 받아오기
         int listIndex = getCheckList(cryptogramList);
+        
+        // 중복 문자 확인 후 제거
+        deleteAlpha(cryptogramList,listIndex);
 
-        // 시작 인덱스 값 결과 확인
-        System.out.println("시작 인덱스 : " + listIndex);
+        // 문자 제거 후 결과 확인
+        System.out.println("연속 문자 제거 리스트 : " + cryptogramList);
 
         return answer;
     }
@@ -56,7 +80,7 @@ public class Problem2 {
 
 // 기능 요구 사항
 // 1. 입력받은 문자열을 문자를 요소로하는 리스트로 변환
-// 2. 리스트 요소 중 연속되는 문자 확인
+// 2. 리스트 요소 중 연속되는 문자 시작 인덱스 확인
 // 3. 리스트 내 문자 제거
 // 4. "browoanoommnaon" → "browoannaon" → "browoaaon" → "browoon" → "brown"
 
