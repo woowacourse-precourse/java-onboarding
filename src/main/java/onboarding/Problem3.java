@@ -8,12 +8,26 @@ public class Problem3 {
         int answer = 0;
 
         for (int i = 1; i <= number; i++) {
-            for (int num: toDigitList(i)) {
-                System.out.println(num);
-            }
+            answer += countByEachNum(i, 3);
         }
 
         return answer;
+    }
+
+    private static int countByEachNum(Integer target, Integer n) {
+        int result = 0;
+
+        for (Integer num: toDigitList(target)) {
+            if (checkCondition(num, n)) {
+                result++;
+            }
+        }
+
+        return result;
+    }
+
+    private static boolean checkCondition(Integer number, Integer condition) {
+        return number != 0 && number % condition == 0;
     }
 
     private static List<Integer> toDigitList(Integer number) {
