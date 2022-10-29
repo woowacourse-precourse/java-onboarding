@@ -10,8 +10,15 @@ public class Problem2 {
 
     private static String checkContinuous(String cryptogram) {
         Stack<Character> stack = new Stack<>();
+        char last;
         for (int i = 0; i < cryptogram.length(); i++) {
             char c = cryptogram.charAt(i);
+            if (stack.peek() == c) {
+                last = stack.pop();
+                continue;
+            }
+            stack.push(c);
+            last = ' ';
         }
         return stack.stream().map(Object::toString).collect(Collectors.joining());
     }
