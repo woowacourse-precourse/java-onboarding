@@ -4,10 +4,14 @@ public class ReverseWordGame {
     private static final int MAX = 1_000;
 
     public static String start(String input) {
-        validateBlank(input);
-        validateMAX(input);
+        validateInput(input);
         int[] chars = getInts(input);
         return new String(chars, 0, chars.length);
+    }
+
+    private static void validateInput(String input) {
+        validateBlank(input);
+        validateMAX(input);
     }
 
     private static void validateMAX(String input) {
