@@ -5,7 +5,16 @@ import java.util.*;
 public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        Graph network = new Graph(friends);
+        Map<String, Integer> idToScore = new HashMap<>();
+
+        scoreCommonFriends(user, network, idToScore);
+        scoreVisitors(user, network, visitors, idToScore);
+
+        List<Map.Entry<String, Integer>> entries = new ArrayList<>(idToScore.entrySet());
+        entries.sort((a, b) -> b.getValue() - a.getValue());
+
+        List<String> answer = getCandidates(entries);
         return answer;
     }
 
@@ -37,6 +46,21 @@ public class Problem7 {
         for (String friend : userFriends) {
             idToScore.remove(friend);
         }
+    }
+
+    private static List<String> getCandidates(List<Map.Entry<String, Integer>> entries) {
+        List<String> candidates = new ArrayList<>();
+
+        for (Map.Entry<String, Integer> entry : entries) {
+            if (entry.getValue() == 0 || candidates.size() >= 5) {
+                break;
+            }
+
+            String candidate = entry.getKey();
+            candidates.add(candidate);
+        }
+
+        return candidates;
     }
 
 }
