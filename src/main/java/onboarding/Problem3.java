@@ -16,14 +16,14 @@ public class Problem3 {
     private static int getCount(int number){
         // 3, 6, 9의 개수를 세주는 메소드
         String string = String.valueOf(number);
-        int totalCount = 0;
+        int count = 0;
         for(String s : string.split("")){
             if (isIn369(s)){
-                totalCount += 1;
+                count += 1;
             }
         }
 
-        return totalCount;
+        return count;
     }
 
     private static int getGameResult(int number) {
