@@ -22,23 +22,23 @@ public class Problem6 {
     }
 
     private static void checkNicknameInForms(List<List<String>> forms) {
-        for(int i=1; i<forms.size(); i++) {
-            if(isNicknamesContainsNickname(forms.get(i).get(1))) {
+        for (int i = 1; i < forms.size(); i++) {
+            if (isDuplicateNicknamesContainsNickname(forms.get(i).get(1))) {
                 answer.add(forms.get(i).get(0));
             }
             duplicateNicknames.add(forms.get(i).get(1));
         }
     }
 
-    private static boolean isNicknamesContainsNickname(String nickname) {
-        for (String name : duplicateNicknames) {
-            if(name.length() == 1) {
+    private static boolean isDuplicateNicknamesContainsNickname(String nickname) {
+        for (String duplicateNickname : duplicateNicknames) {
+            if (duplicateNickname.length() == 1) {
                 continue;
             }
 
-            for (int i = 0; i < nickname.length()-1; i++) {
-                String check = nickname.substring(i, i+2);
-                if(name.contains(check)) {
+            for (int i = 0; i < nickname.length() - 1; i++) {
+                String check = nickname.substring(i, i + 2);
+                if (duplicateNickname.contains(check)) {
                     return true;
                 }
             }
@@ -47,7 +47,7 @@ public class Problem6 {
     }
 
     private static List<String> getDuplicatedNicknames(List<String> answer) {
-        if(answer.size() == 1) {
+        if (answer.size() == 1) {
             answer.remove(0);
             return answer;
         }
