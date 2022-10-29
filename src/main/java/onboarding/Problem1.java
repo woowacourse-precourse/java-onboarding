@@ -31,4 +31,13 @@ class Problem1 {
 
         return result;
     }
+
+    public static int multiply(int result, String page){
+        for(int i=0; i<page.length(); i++){
+            String number_i = page.substring(i, i+1);
+            result *= Integer.parseInt(number_i);
+        }
+
+        return result;
+    }
 }
