@@ -9,6 +9,39 @@ public class Problem7 {
     }
 
 
+    // friends 점수와 visitors 점수를 합하여 반환하는 메소드
+    private static Map<String, Integer> getRecommendedFriendsScore(String user, List<List<String>> friends, List<String> visitors) {
+        List<String> recommendedFriends = recommendedFriendsOf(user, friends, visitors);
+
+        Map<String, Integer> friendsScore = getFriendsScore(user, friends);
+        Map<String, Integer> visitorsScore = getVisitorsScore(visitors);
+        Map<String, Integer> recommendedFriendsScore = new HashMap<>(recommendedFriends.size());
+
+        int scoreSum;
+        int friendScore;
+        int visitorScore;
+
+        for (String recommendedFriend : recommendedFriends) {
+
+            if (friendsScore.get(recommendedFriend) == null) {
+                friendScore = 0;
+            } else {
+                friendScore = friendsScore.get(recommendedFriend);
+            }
+
+            if (visitorsScore.get(recommendedFriend) == null) {
+                visitorScore = 0;
+            } else {
+                visitorScore = visitorsScore.get(recommendedFriend);
+            }
+
+            scoreSum = friendScore + visitorScore;
+            recommendedFriendsScore.put(recommendedFriend, scoreSum);
+        }
+
+        return recommendedFriendsScore;
+    }
+
 
     // friends of firends의 점수를 반환하는 메소드
     private static Map<String, Integer> getFriendsScore(String user, List<List<String>> friends) {
