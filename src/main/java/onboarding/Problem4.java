@@ -36,6 +36,6 @@ public class Problem4 {
     public static String solution(String word) {
         char[] treeFrogSay = new char[word.length()];
         mamaWordTransformation(treeFrogSay, word);
-        return "";
+        return new String(treeFrogSay);
     }
 }
