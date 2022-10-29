@@ -5,6 +5,14 @@ import java.util.Deque;
 
 public class Problem2 {
 
+    private static void checkCryptogramCharsUsingIdx(Deque<Character> decryptionCharStack, String cryptogram) {
+        int idx = 0;
+
+        while (idx < cryptogram.length()) {
+            int newIdx = increaseIdxWhenCharEqual(decryptionCharStack.peekLast(), cryptogram, idx);
+            idx = deleteOrAppendDecryption(decryptionCharStack, cryptogram, idx, newIdx);
+        }
+    }
     private static int increaseIdxWhenCharEqual(Character decryptionLastChar, String cryptogram, int idx) {
 
         while (decryptionLastChar != null && idx < cryptogram.length() && decryptionLastChar == cryptogram.charAt(idx)) {
@@ -53,13 +61,7 @@ public class Problem2 {
      */
     public static String solution(String cryptogram) {
         Deque<Character> decryptionCharStack = new ArrayDeque<>();
-        int idx = 0;
-
-        while (idx < cryptogram.length()) {
-            int newIdx = increaseIdxWhenCharEqual(decryptionCharStack.peekLast(), cryptogram, idx);
-            idx = deleteOrAppendDecryption(decryptionCharStack, cryptogram, idx, newIdx);
-        }
-
+        checkCryptogramCharsUsingIdx(decryptionCharStack, cryptogram);
         return decryptionCharStackToString(decryptionCharStack);
     }
 }
