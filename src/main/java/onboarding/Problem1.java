@@ -3,9 +3,16 @@ package onboarding;
 import java.util.List;
 
 /*
- * 예외 너무 더럽다 줄일 방법 생각
+ * 흠..
  */
 class Problem1 {
+
+    public static boolean check_list(List<Integer> list){
+        return (list.get(0) % 2 != 1) ||
+                (list.get(1) - list.get(0) != 1) ||
+                (list.get(1) > 400 || list.get(0) < 1) ||
+                (list.size() != 2);
+    }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
@@ -14,12 +21,10 @@ class Problem1 {
         int draw = 0;
         int except = -1;
 
-        int answer = Integer.MIN_VALUE;
+        int answer;
 
-        if((pobi.get(0) % 2 == 0 || crong.get(0) % 2 == 0) ||
-                (pobi.get(1) - pobi.get(0) != 1 || crong.get(1) - crong.get(0) != 1) ||
-                ((pobi.get(1) > 400 || crong.get(1) > 400) || (pobi.get(0) < 1 || crong.get(0) < 1))){
-            return except;
+        if(check_list(pobi) || check_list(crong)){
+            return answer = except;
         }
 
         int pobi_cal = Math.max(sum_or_mul(pobi.get(0)), sum_or_mul(pobi.get(1)));
@@ -40,7 +45,7 @@ class Problem1 {
     계산 해주는 함수
      */
     static int sum_or_mul(int n){
-        int cal = 0;
+        int cal;
         int sum = 0;
         int mul = 1;
         while(n != 0){
@@ -50,6 +55,7 @@ class Problem1 {
         }
         System.out.print(sum);
         System.out.print(mul);
-        return cal = Math.max(sum, mul);
+        cal = Math.max(sum, mul);
+        return cal;
     }
 }
