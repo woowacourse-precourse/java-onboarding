@@ -28,8 +28,26 @@ class Problem1 {
 
         return Math.max(leftScore, rightScore);
     }
+    static int playGame(List<Integer> pobi, List<Integer> crong) {
+        if(!(isAvail(pobi) && isAvail(crong))) {
+            return -1;
+        }
+        int pobiScore = getScore(pobi);
+        int crongScore = getScore(crong);
+
+        if(pobiScore > crongScore) {
+            return 1;
+        }
+        if(pobiScore < crongScore) {
+            return 2;
+        }
+        if(pobiScore == crongScore) {
+            return 0;
+        }
+        return -1;
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int answer = playGame(pobi, crong);
         return answer;
     }
 }
