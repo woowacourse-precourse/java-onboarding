@@ -74,17 +74,6 @@ class Problem1 {
             return false;
         }
 
-        if (!isPositiveNum(leftNum, rightNum)) {
-            return false;
-        }
-
-        return true;
-    }
-
-    static boolean isPositiveNum(int lefNum, int rightNum) {
-        if (lefNum <= 0 || rightNum <= 0) {
-            return false;
-        }
         return true;
     }
 
@@ -96,10 +85,10 @@ class Problem1 {
     }
 
     static boolean isFirstOrLastPage(int leftNum, int rightNum) {
-        if (leftNum == FIRST_PAGE) {
+        if (leftNum <= FIRST_PAGE) {
             return false;
         }
-        if (rightNum == LAST_PAGE) {
+        if (rightNum >= LAST_PAGE) {
             return false;
         }
 
