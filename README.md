@@ -104,7 +104,7 @@ BUILD SUCCESSFUL in 0s
 - [x] user의 친구하는 findUserFriends 함수 구현
 - [x] userFriends에 있는 사람과 연결된 사람은 연결 당 10점을 얻는다.
 - [x] visitors에 있는 사람은 갯수당 1점을 얻는다.
-- [x] 본인(user) 점수를 0점으로 만든다.
-- [x] friendScore의 크기가 5(반환할 최대 갯수)보다 작으면 크기를 5로 만들어 준다.
-- [x] sortedFriendScore리스트를 만들어주고 friendScore를 담고 정렬한다.
+- [x] 본인(user)과 본인의 친구 점수를 0점으로 만든다.
+- [x] friendsScore의 크기가 5(반환할 최대 갯수)보다 작으면 크기를 5로 만들어 준다.
+- [x] sortedFriendScore리스트를 만들어주고 friendsScore를 담고 정렬한다.
 - [x] 정렬한 사람 중 점수가 1점이상인 사람을 최대 5명까지 answer배열에 담는다.
