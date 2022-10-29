@@ -2,8 +2,16 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        while(true){
+            String ns = nextString(cryptogram);
+
+            if(cryptogram.equals(ns))
+                break;
+
+            cryptogram = ns;
+        }
+
+        return cryptogram;
     }
 
     //모든 연속된 char 삭제 후 return
