@@ -7,8 +7,10 @@
 4. 예외처리
 
 ### PROBLEM2
-### PROBLEM3
-### PROBLEM4
+1. 연속되는 중복 문자들을 제거하는 함수 구현
+2. 연속되는 중목 문자들이 없을 때까지 반복
+
+### PROBLEM3복
 ### PROBLEM5
 ### PROBLEM6
 ### PROBLEM7
