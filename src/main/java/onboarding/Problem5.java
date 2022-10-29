@@ -17,8 +17,6 @@ public class Problem5 {
         answer.add(money/50); money=money%50;
         answer.add(money/10); money=money%10;
         answer.add(money);
-        System.out.println("answer");
-        System.out.println(answer);
         return answer;
     }
 }

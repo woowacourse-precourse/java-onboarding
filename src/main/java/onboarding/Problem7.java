@@ -69,7 +69,6 @@ public class Problem7 {
                 break;
             }
         }
-        System.out.println(answer);
         return answer;
     }
 }
