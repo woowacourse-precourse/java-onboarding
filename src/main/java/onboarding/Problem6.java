@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        HashMap<String, String> map = new HashMap<>(); //닉네임 중복 체크를 위해 닉네임의 파편들을 이메일주소와 함께 저장
+        HashMap<String, String> part = new HashMap<>(); //닉네임 중복 체크를 위해 닉네임의 파편들을 이메일주소와 함께 저장
         HashSet<String> set = new HashSet<>(); //중복되지 않도록 이메일을 저장
 
         for(int i = 0; i < forms.size(); i++){
@@ -14,7 +14,7 @@ public class Problem6 {
                 continue;
             }
             //닉네임 중복 확인
-            List<String> duplicatedNicknameOwner = checkNicknameDuplication(nickname, email, map);
+            List<String> duplicatedNicknameOwner = checkNicknameDuplication(nickname, email, part);
             //중복된 이메일 저장
             for(int j = 0; j < duplicatedNicknameOwner.size(); j++){
                 set.add(duplicatedNicknameOwner.get(j));
@@ -24,10 +24,10 @@ public class Problem6 {
             List<String> newPart = extractNicknameParts(nickname);
             //추출한 단어들을 저장
             for(int j = 0; j < newPart.size(); j++){
-                if(map.containsKey(newPart.get(j))){
+                if(part.containsKey(newPart.get(j))){
                     continue;
                 }
-                map.put(newPart.get(j), email); //추출한 단어 + 이메일
+                part.put(newPart.get(j), email); //추출한 단어 + 이메일
             }
         }
         //set을 list로 변경하여 같은 글자가 연속적으로 포함되는 닉네임을 작성한 지원자의 메일 목록을 반환하는 기능
