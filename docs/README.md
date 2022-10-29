@@ -12,3 +12,11 @@
 - <code>multipleIntegerList</code>: IntegerList를 모두 곱하는 메서드
 
 ---
+## Problem2 기능 목록
+1. 문자열을 ArrayList 타입으로 한글자씩 자르는 메서드 구현
+2. ArrayList 타입으로 한글자씩 자른 문자에서 인접한 문자중 중첩된 문자를 제거하는 메서드 구현
+3. 두 메서드를 이용해 암호를 복호화
+
+- <code>splitStringToArrayList</code>: 문자열을 한글자씩 ArrayList 타입에 담는 메서드
+- <code>decryption</code>: 인접한 문자중 중첩된 문자를 제거해 복호화하는 메서드
+---
