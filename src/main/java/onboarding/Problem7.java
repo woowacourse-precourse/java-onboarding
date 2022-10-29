@@ -59,31 +59,42 @@ public class Problem7 {
     private static void saveMyFriends(String myId, List<List<String>> friends) {
         for (List<String> users : friends) {
             for (int i = 0; i < users.size(); i++) {
-                if (users.get(i).equals(myId)) {
-                    if (i == 0) {
-                        myFriends.add(users.get(1));
-                    } else {
-                        myFriends.add(users.get(0));
-                    }
-                }
+                saveIfIsMyFriends(i, myId, users);
             }
         }
     }
 
+    // 내 친구이면 저장
+    private static void saveIfIsMyFriends(int i, String myId, List<String> users) {
+        if (users.get(i).equals(myId)) {
+            if (i == 0) {
+                myFriends.add(users.get(1));
+            } else {
+                myFriends.add(users.get(0));
+            }
+        }
+    }
+
+    // 다른 유저의 친구 확인
     private static void checkFriendsOfOtherUser(List<String> users) {
         for (int i = 0; i < users.size(); i++) {
             String userId = users.get(i);
             for (String myFriendsId : myFriends) {
-                if (Objects.equals(userId, myFriendsId)) {
-                    if (i == 0) {
-                        if (!isMyFriend(users.get(1))) {
-                            aFriendWeKnow.add(users.get(1));
-                        }
-                    } else {
-                        if (!isMyFriend(users.get(0))) {
-                            aFriendWeKnow.add(users.get(0));
-                        }
-                    }
+                saveIfIsUserKnowMyFriend(i, users, userId, myFriendsId);
+            }
+        }
+    }
+
+    // 만약 내 친구를 아는 유저면 저장
+    private static void saveIfIsUserKnowMyFriend(int i, List<String> users, String userId, String myFriendsId) {
+        if (Objects.equals(userId, myFriendsId)) {
+            if (i == 0) {
+                if (!isMyFriend(users.get(1))) {
+                    aFriendWeKnow.add(users.get(1));
+                }
+            } else {
+                if (!isMyFriend(users.get(0))) {
+                    aFriendWeKnow.add(users.get(0));
                 }
             }
         }
