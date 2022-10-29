@@ -21,3 +21,9 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+## ✔ 기능 구현 목록
+
+1. 두 닉네임이 중복인지 판단하는 기능
+2. 조건에 해당하는 이메일들을 result에 추가하는 기능
+3. result 내 중복을 제거하고 오름차순으로 정렬한 결과를 만드는 기능
