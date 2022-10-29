@@ -19,23 +19,16 @@ class Problem4Test {
     @Test
     void 결과테스트() {
 
-        //given
-        int num1 = 3;
-        int num2 = 93;
-        int num3 = 1;
-        int num4 = 611;
-        int num5 = -3;
-        int num6 = 10_005;
+        String str1 = "I love you";
+        String str2 = "I am Invidam";
+        String str3 = ""
 
         //when
 
         //then
-        assertThat(Problem3.getClapCountSum(num1)).isEqualTo(1);
-        assertThat(Problem3.getClapCountSum(num2)).isEqualTo(52);
-        assertThat(Problem3.getClapCountSum(num3)).isEqualTo(0);
-        assertThat(Problem3.getClapCountSum(num4)).isEqualTo(475);
-        assertThrows(InputMismatchException.class,() -> Problem3.getClapCountSum(num5));
-        assertThrows(InputMismatchException.class,() -> Problem3.getClapCountSum(num6));
+        assertThat(Problem4.solution(str1)).isEqualTo("");
+        assertThat(Problem4.solution(str2)).isEqualTo("");
+        assertThat(Problem4.solution(str3)).isEqualTo("");
     }
 
 }
