@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 public class Problem5 {
     static final int FIVE_MILLION_WON = 50000;
@@ -19,16 +16,19 @@ public class Problem5 {
 
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
+        List<Integer> countedBillList = new ArrayList<>();
+        addBillUnitQueue();
+        answer = putInArray(countedBillList, money);
         return answer;
     }
 
-    public static List<Integer> putInArray(List<Integer> countedList, int money) {
+    public static List<Integer> putInArray(List<Integer> countedBillList, int money) {
         int balance = money;
         while (!billUnitQueue.isEmpty()) {
-            countedList.add(countBills(balance, billUnitQueue.peek()));
+            countedBillList.add(countBills(balance, billUnitQueue.peek()));
             balance = calculateBalance(balance, billUnitQueue.poll());
         }
-        return countedList;
+        return countedBillList;
     }
 
     public static int countBills(int money, int bill) {
