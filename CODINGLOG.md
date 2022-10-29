@@ -99,12 +99,13 @@ Game 에서 예외사항이 아닌 것(정상 입력)에 대해서만 Calculator
 ![image](./img/캡처_vscode.PNG)
 
 - deleteDuplicate 부분을 Java로 옮기는 것이 관건...
-- Java는 String indexing을 어떻게 처리하는지 찾아본 후 아래처럼 작성해보았다.
+- Java String끼리 더하기 방법 + String 인덱싱을 어떻게 처리하는지 찾아본 후 아래처럼 작성해보았다.
 
 
 ### 기능 목록 v0.2
 
-- 
+- String 인덱싱 -> String.charAt()
+- String + char 덧셈 가능 -> new_str += str.charAt(i)
 
 
 ## 문제 3
