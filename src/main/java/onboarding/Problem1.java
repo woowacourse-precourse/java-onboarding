@@ -57,4 +57,13 @@ class Problem1 {
                 .mapToInt(Integer::parseInt)
                 .toArray();
     }
+
+    /*
+     * 주어진 배열의 값을 정수로 변환하여 합산
+     *
+     * @return int
+     * */
+    private static int sumAllNumbers(int[] numbers) {
+        return Arrays.stream(numbers).sum();
+    }
 }
