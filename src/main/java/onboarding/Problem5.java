@@ -17,7 +17,7 @@ public class Problem5 {
             money %= n;
             idx++;
         }
-
+        answer = Arrays.asList(result);
 
         return answer;
     }
