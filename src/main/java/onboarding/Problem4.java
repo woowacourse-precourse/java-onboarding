@@ -12,10 +12,20 @@ public class Problem4 {
         return builder.toString();
     }
 
+    /**
+     * 전달받은 문자가 소문자이면 true, 대문자이면 false를 반환한다.
+     * @param ch
+     * @return boolean
+     */
     private static boolean isLowerCase(char ch) {
         return (ch >= 97 && ch <= 122) ? true : false;
     }
 
+    /**
+     * 전달받은 문자에 대하여 청개구리 사전에 따라 대칭 관계에 있는 문자를 반환한다.
+     * @param ch
+     * @return char
+     */
     private static char getSymmetricAlphabet(char ch) {
         int startValue = 65;
         int endValue = 90;
