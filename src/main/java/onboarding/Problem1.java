@@ -21,5 +21,36 @@ class Problem1 {
         return result;
     }
 
+    public static int getScore(List<Integer> pages) {
+        int addScore = 0;
+        int mulScore = 1;
+
+        for (int page : pages) {
+            
+        }
+
+        return (addScore > mulScore) ? addScore : mulScore;
+    }
+
+    public static int getAddScore(List<Integer> splitedNum) {
+        int addScore = 0;
+
+        for(int num: splitedNum) {
+            addScore += num;
+        }
+
+        return addScore;
+    }
+
+    public static int getMulScore(List<Integer> splitedNum) {
+        int mulScore = 1;
+
+        for(int num: splitedNum) {
+            mulScore *= num;
+        }
+
+        return mulScore;
+    }
+
 
 }
