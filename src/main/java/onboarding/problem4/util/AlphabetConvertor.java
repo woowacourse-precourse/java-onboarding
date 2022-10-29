@@ -1,4 +1,4 @@
-package onboarding.problem4.domain.util;
+package onboarding.problem4.util;
 
 import onboarding.problem4.domain.strategy.AlphabetConvertStrategy;
 import onboarding.problem4.domain.strategy.LowerCaseConvertStrategy;

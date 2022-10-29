@@ -1,6 +1,6 @@
 package onboarding.problem4.domain;
 
-import onboarding.problem4.domain.util.AlphabetConvertor;
+import onboarding.problem4.util.AlphabetConvertor;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
