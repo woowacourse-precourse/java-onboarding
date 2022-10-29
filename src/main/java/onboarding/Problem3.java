@@ -26,7 +26,19 @@ public class Problem3 {
 
         return digits;
     }
+    public static int getClapCount(int num) {
+        int ret = 0;
 
+        List<Integer> digits = getDigits(num);
+
+        for(int digit: digits) {
+            if(isClapCase(digit)) {
+                ++ret;
+            }
+        }
+
+        return ret;
+    }
     public static int solution(int number) {
         int answer = 0;
         return answer;
