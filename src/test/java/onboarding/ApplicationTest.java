@@ -81,6 +81,22 @@ class ApplicationTest {
             String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
+
+        @Test
+        void case3() {
+            //중복 문자가 3개 이상인 경우
+            String cryptogram = "aaaaaaabcbc";
+            String result = "bcbc";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void case4() {
+            //중복 문자가 3개 이상인 경우가 여러개인 경우
+            String cryptogram = "aaabcbcccbcsd";
+            String result = "bsd";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
     }
 
     @Nested
