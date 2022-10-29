@@ -9,7 +9,7 @@ public class Problem2 {
     private Character duplicateCode;
 
     public void decrypt(Character code) {
-      if (isDuplicatedCode(code)) {
+      if (isDuplicateCode(code)) {
         message.pop();
         saveDuplicateCode(code);
         return;
@@ -18,14 +18,14 @@ public class Problem2 {
         return;
       }
       message.push(code);
-      initializeDuplicationCode();
+      initializeDuplicateCode();
     }
 
     private void saveDuplicateCode(Character code) {
       duplicateCode = code;
     }
 
-    private void initializeDuplicationCode() {
+    private void initializeDuplicateCode() {
       duplicateCode = null;
     }
 
@@ -34,7 +34,7 @@ public class Problem2 {
     }
 
 
-    private boolean isDuplicatedCode(Character code) {
+    private boolean isDuplicateCode(Character code) {
       return !message.empty() && message.peek() == code;
     }
 
