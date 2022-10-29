@@ -8,7 +8,7 @@ import java.util.*;
  * [O] 방문자 점수 계산
  * [O] 함께 아는 친구 계산
  * [O] 추천 친구 목록 계산(원래 친구 제외)
- * [X] 추천 친구 정렬
+ * [O] 추천 친구 정렬
  * [X] solution 작성
  * [X] 테스트 확인
  */
@@ -26,8 +26,24 @@ public class Problem7 {
         initFriendsMap(friends, friendsMap);
         calculateVisitors(visitors, recommendPoints);
         calculateFriendsKnowTogether(user, friendsMap, recommendPoints);
+        sortRecommandPoints(recommendPoints);
 
         return answer;
+    }
+
+    private static void sortRecommandPoints(Map<String, Integer> recommendPoints) {
+        ArrayList<Map.Entry<String, Integer>> recommendPointsEntries
+                = new ArrayList<Map.Entry<String, Integer>>(recommendPoints.entrySet());
+
+        Collections.sort(recommendPointsEntries, (obj1, obj2) -> {
+            if (obj1.getValue() == obj2.getValue())
+                return obj1.getKey().compareTo(obj2.getKey());
+            return obj2.getValue().compareTo(obj1.getValue());
+        });
+
+        for (Map.Entry<String, Integer> r : recommendPointsEntries) {
+            System.out.println(r.getKey() + " " + r.getValue());
+        }
     }
 
     private static void calculateFriendsKnowTogether(String user, Map<String, List<String>> friendsMap, Map<String, Integer> recommendPoints) {
