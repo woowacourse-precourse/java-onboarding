@@ -22,24 +22,34 @@ public class Problem7 {
     private HashMap<String, List<String>> friendGraph = new HashMap<>();
     private HashMap<String, Integer> friendScore = new HashMap<>();
 
-    public static void main(String[] args) {
-        solution("mrko", new ArrayList<>(Arrays.asList(Arrays.asList("donut", "andole"),
-                Arrays.asList("donut", "jun"),
-                Arrays.asList("donut", "mrko"),
-                Arrays.asList("shakevan", "andole"),
-                Arrays.asList("shakevan", "jun"),
-                Arrays.asList("shakevan", "mrko"))),new ArrayList<>(Arrays.asList("bedi", "bedi", "donut", "bedi", "shakevan")));
-    }
-
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Problem7 problem7 = new Problem7();
-        List<String> answer = Collections.emptyList();
-        
+
+        // Friend Graph 제작
         problem7.makeFriendGraph(friends);
+
+        // 친구 추천 규칙에 따라 점수 계산
         problem7.calcScoreFriends(user);
         problem7.calcScoreVisitor(visitors);
 
-        return answer;
+        // user와 user의 직접적인 친구는 추천에서 제외
+        problem7.removeUserFriend(user);
+
+        // 1순위 정렬 : 추천 점수 - 2순위 정렬 : 이름 => 구현은 역순으로 먼저 이름으로 정렬하고 이후 추천 점수로 정렬
+        return problem7.friendScore.entrySet().stream()
+                .sorted(Map.Entry.comparingByKey())
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .filter(f -> f.getValue() > 0)
+                .map(f -> f.getKey())
+                .collect(Collectors.toList());
+    }
+
+    // user와 user의 직접적인 친구는 추천에서 제외
+    public void removeUserFriend(String user){
+        friendScore.remove(user);
+        for(String userFriend : friendGraph.get(user)){
+            friendScore.remove(userFriend);
+        }
     }
 
     // 사용자와 함께 아는 친구의 수로 score 계산(10점)
@@ -54,16 +64,16 @@ public class Problem7 {
     }
 
     // 사용자의 타임 라인에 방문한 횟수로 score 계산(1점)
-    public void calcScoreVisitor(List<String> visitors){
-        for(String visitor : visitors){
+    public void calcScoreVisitor(List<String> visitors) {
+        for (String visitor : visitors) {
             // 이미 friend에서 추가된 crew일 경우
-            if(friendScore.containsKey(visitor)) {
+            if (friendScore.containsKey(visitor)) {
                 friendScore.put(visitor, (friendScore.get(visitor) + 1));
                 continue;
             }
 
             // friend에서 추가되지 않은 신규 crew일 경우
-            friendScore.put(visitor,1);
+            friendScore.put(visitor, 1);
         }
     }
 
@@ -92,7 +102,6 @@ public class Problem7 {
             friendGraph.get(crew.get(0)).add(crew.get(1));
             friendGraph.get(crew.get(1)).add(crew.get(0));
         }
-        System.out.println("friendGraph = " + friendGraph);
     }
     
 }
