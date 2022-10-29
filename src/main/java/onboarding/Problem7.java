@@ -25,13 +25,13 @@ public class Problem7 {
 
     public static Map<String, Integer> giveScore(List<List<String>> friends, List<String> visitors, Map<String, Integer> score) {
         for (String myFriend : myFriendsList) {
-            for (List<String> friend : friends) {
-                if (friend.contains(myFriend)) {
+            for (List<String> notFriend : notFriendsList) {
+                if (notFriend.contains(myFriend)) {
                     String id = "";
-                    if (friend.get(0).equals(myFriend)) {
-                        id = friend.get(1);
+                    if (notFriend.get(0).equals(myFriend)) {
+                        id = notFriend.get(1);
                     } else {
-                        id = friend.get(0);
+                        id = notFriend.get(0);
                     }
                     score.put(id, score.getOrDefault(id, 0) + 10);
                 }
