@@ -1,12 +1,18 @@
 package onboarding.clapgame;
 
+import java.util.stream.IntStream;
+
 public class ClapGame {
 
 	public static boolean isClappedWith(final int number) {
+		return convertDigitsOf(number)
+			.anyMatch(ClapGame::isMultipleOfThree);
+	}
+
+	private static IntStream convertDigitsOf(int number) {
 		return String.valueOf(number)
 			.chars()
-			.map(digit -> digit - 48)
-			.anyMatch(ClapGame::isMultipleOfThree);
+			.map(digit -> digit - 48);
 	}
 
 	private static boolean isMultipleOfThree(final int number) {
@@ -14,9 +20,7 @@ public class ClapGame {
 	}
 
 	public static long getClapCountOf(final int number) {
-		return String.valueOf(number)
-			.chars()
-			.map(digit -> digit - 48)
+		return convertDigitsOf(number)
 			.filter(ClapGame::isMultipleOfThree)
 			.count();
 	}
