@@ -11,13 +11,16 @@ import java.util.List;
 4. n %= array[i] 갱신
  */
 public class Problem5 {
-    public static List<Integer> solution(int money) {
-        ArrayList<Integer> answer = new ArrayList<>();
-        int[] arr_money = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
+    static final int[]  arr_money = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
+    private static List<Integer> calc(List<Integer> ans, int money){
         for(int unit : arr_money) {
-            answer.add(money / unit);
+            ans.add(money / unit);
             money %= unit;
         }
-        return answer;
+        return ans;
+    }
+    public static List<Integer> solution(int money) {
+        List<Integer> answer = new ArrayList<>();
+        return calc(answer,money);
     }
 }
