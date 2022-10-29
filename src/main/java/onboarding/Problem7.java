@@ -69,6 +69,13 @@ public class Problem7 {
         }
         return visitLog;
     }
+
+    public static Intimacy createIntimacy (String targetUser, String user,  Relations relations, Map<String, Integer> visitLog) {
+        Intimacy intimacy = new Intimacy(targetUser, user);
+        intimacy.setNumOfMutualFriends(relations);
+        intimacy.setNumOfVisited(visitLog);
+        return intimacy;
+    }
 }
 
 class Relations {
