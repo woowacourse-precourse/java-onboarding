@@ -2,7 +2,7 @@
 
 ## 기능 목록
 
-- [ ] [문제 1](./docs/PROBLEM1.md)
+- [x] [문제 1](./docs/PROBLEM1.md)
 - [ ] [문제 2](./docs/PROBLEM2.md)
 - [ ] [문제 3](./docs/PROBLEM3.md)
 - [ ] [문제 4](./docs/PROBLEM4.md)
