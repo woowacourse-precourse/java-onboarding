@@ -35,11 +35,13 @@ class Problem7Test {
             .contains("donut", "andole", "jun", "shakevan", "bedi");
     }
 
-    //    @Test
-    //    void exceptAlreadyFriends() {
-    //        List<String> exceptAlreadyFriends = Problem7.exceptAlreadyFriends("mrko", List.of("donut", "shakevan"));
-    //
-    //        Assertions.assertThat(exceptAlreadyFriends).contains()
-    //    }
+    @Test
+    void exceptAlreadyFriends() {
+        Map<String, List<String>> parsedFriends = Problem7.parseFriends(friends);
+        List<String> notFriends = Problem7.exceptAlreadyFriends("mrko", List.of("donut", "andole", "jun", "shakevan", "bedi"), parsedFriends);
 
+        Assertions.assertThat(notFriends)
+            .contains("andole", "jun", "bedi");
+
+    }
 }
