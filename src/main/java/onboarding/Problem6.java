@@ -8,7 +8,9 @@ public class Problem6 {
         // 분리된 닉네임들과 어떤 닉네임에서 사용되었는지를 표시하는 List를 함께 Mapping한다.
         Map<String, List<Integer>> stringToDuplicated = makeDuplicatedMap(forms);
 
-        //중복 제거하기 위해 Set 사용
+        System.out.println(stringToDuplicated);
+
+        //3글자 이상 겹치면 중복으로 이메일이 출력되는 현상을 막기위해 Set 사용
         Set<String> duplicatedEmails = new HashSet<>();
 
         for (String check : stringToDuplicated.keySet()){
@@ -43,20 +45,18 @@ public class Problem6 {
     }
 
     //중복을 제거하기 위해 Set 사용
-    //하나의 닉네임에서 2개 이상의 단어로 분리할 수 있는 모든 경우를 반환
+    //하나의 닉네임에서 2단어씩 중복없이 나누어 반환
     public static Set<String> divideNickName(String nickName) {
-        Set<String> divideList = new HashSet<>();
+        Set<String> divideSet = new HashSet<>();
 
-        for (int nickNameStartIdx = 0; nickNameStartIdx < nickName.length(); nickNameStartIdx++) {
-            for (int nickNameEndIdx = nickName.length(); nickNameEndIdx > nickNameStartIdx + 1; nickNameEndIdx--) {
-                divideList.add(nickName.substring(nickNameStartIdx, nickNameEndIdx));
-            }
+        for (int nickNameStartIdx = 0; nickNameStartIdx < nickName.length() - 1; nickNameStartIdx++) {
+            divideSet.add(nickName.substring(nickNameStartIdx, nickNameStartIdx + 2));
         }
 
-        return divideList;
+        return divideSet;
     }
 
-    // forms에 있는 모든 닉네임들에 대해 2개 이상의 단어로 분리할 수 있는 모든 경우를 반환
+    // forms에 있는 모든 닉네임들에 대해 2단어씩 중복없이 나누어 반환
     public static Set<String> makedivideNickNameSet(List<List<String>> forms) {
         Set<String> divideNickNameSet = new HashSet<String>();
 
@@ -81,6 +81,18 @@ public class Problem6 {
         }
 
         return checkList;
+    }
+
+    public static void main(String[] args) {
+        List<List<String>> forms = List.of(
+                List.of("jm@email.com", "제이슨슨"),
+                List.of("jason@email.com", "제이슨"),
+                List.of("woniee@email.com", "워니"),
+                List.of("mj@email.com", "엠제1이"),
+                List.of("nowm@email.com", "이제엠")
+        );
+
+        System.out.println(solution(forms));
     }
 
 }
