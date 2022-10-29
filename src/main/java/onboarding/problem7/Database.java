@@ -23,7 +23,7 @@ class Database {
 
     public void registerUsersFromLog(List<String> logs) {
         for (var name : logs)
-            if (!database.containsKey(name)) database.put(name, new User(name));
+            if (!database.containsKey(name)) addUser(name);
     }
 
     public void addRelation(List<String> relation) {
