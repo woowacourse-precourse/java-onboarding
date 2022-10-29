@@ -43,4 +43,13 @@ public class Problem7 {
         }
     }
 
+    private static void increaseWeightByRelationship(List<String> friends){
+        for(int i=0; i<friends.size(); i++){
+            if(oldFriend.contains(friends.get(i))){
+                continue;
+            }
+            increaseWeight(friends.get(i),5);
+        }
+    }
+
 }
