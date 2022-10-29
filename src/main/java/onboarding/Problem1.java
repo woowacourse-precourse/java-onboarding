@@ -8,7 +8,7 @@ class Problem1 {
         return answer;
     }
 
-    private int returnResult(List<Integer> pobi, List<Integer> crong) {
+    private static int returnResult(List<Integer> pobi, List<Integer> crong) {
         if (isInvalidInput(pobi) || isInvalidInput(crong)) {
             return -1;
         }
@@ -20,24 +20,24 @@ class Problem1 {
         }
         return 0;
     }
-    private boolean isInvalidInput(List<Integer> pageList) {
+    private static boolean isInvalidInput(List<Integer> pageList) {
         return isInvalidRange(pageList) || isNotAdjoin(pageList);
     }
 
-    private boolean isNotAdjoin(List<Integer> pageList) {
+    private static boolean isNotAdjoin(List<Integer> pageList) {
         return pageList.get(0) + 1 != pageList.get(1);
     }
-    private boolean isInvalidRange(List<Integer> pageList) {
+    private static boolean isInvalidRange(List<Integer> pageList) {
         return pageList.get(0) < 3 || pageList.get(1) > 398;
     }
 
-    private int selectSide(List<Integer> pageList) {
+    private static int selectSide(List<Integer> pageList) {
         int left = selectOperation(pageList.get(0));
         int right = selectOperation(pageList.get(1));
 
         return Math.max(left, right);
     }
-    private int selectOperation(int num) {
+    private static int selectOperation(int num) {
         int sum = 0;
         int multiple = 1;
 
