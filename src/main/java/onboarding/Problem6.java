@@ -9,17 +9,8 @@ import java.util.Map;
 public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = new ArrayList<>();
 
-        Map<String, List<String>> nameFragmentOwners = fillNameFragmentOwners(forms);
-
-        for (List<String> owners : nameFragmentOwners.values()) {
-            if (owners.size() == 1) {
-                continue;
-            }
-            answer.addAll(owners);
-        }
-
+        List<String> answer = fillDuplicateNameOwners(fillNameFragmentOwners(forms));
         Collections.sort(answer);
 
         List<String> ret = new ArrayList<>();
@@ -32,6 +23,25 @@ public class Problem6 {
         }
 
         return ret;
+    }
+
+    private static List<String> fillDuplicateNameOwners(Map<String, List<String>> nameFragmentOwners) {
+        List<String> ret = new ArrayList<>();
+        for (List<String> owners : nameFragmentOwners.values()) {
+            addDuplicateNameOwners(ret, owners);
+        }
+        return ret;
+    }
+
+    private static void addDuplicateNameOwners(List<String> ret, List<String> owners) {
+        if (!isDuplicateNameFor(owners)) {
+            return;
+        }
+        ret.addAll(owners);
+    }
+
+    private static boolean isDuplicateNameFor(List<String> owners) {
+        return owners.size() != 1;
     }
 
     private static Map<String, List<String>> fillNameFragmentOwners(List<List<String>> forms) {
