@@ -8,6 +8,14 @@ public class Problem2 {
         return cryptoChar;
     }
 
+    static Boolean checkDuplication(char[] separatedCrypto) {
+        for (int i = 0; i < separatedCrypto.length; i++) {
+            if (separatedCrypto[i] == separatedCrypto[i + 1]) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public static String solution(String cryptogram) {
         String answer = "answer";
