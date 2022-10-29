@@ -31,13 +31,34 @@ public class Problem7 {
         return user_unknown_friends;
     }
 
-    static boolean checkFriendObject(String name){
-        for(Friend i:friends_list){
-            if (i.getName().equals(name)) {
+    static boolean addPointToFriendObject(String name, int point){
+        for(Friend friendObject:friends_list){
+            if (friendObject.getName().equals(name)) {
+                friendObject.addPoint(point);
                 return true;
             }
         }
         return false;
+    }
+
+    static void friendPointCalculate(List<String> user_unknown_friends){
+        final int FRIENDSPOINT = 10;
+
+        for(String name:user_unknown_friends){
+            if(!addPointToFriendObject(name, FRIENDSPOINT)){
+                friends_list.add(new Friend(name, FRIENDSPOINT));
+            }
+        }
+    }
+
+    static void visitorPointCalculate(List<String> visitors){
+        final int VISITPOINT = 1;
+
+        for(String name:visitors){
+            if(!addPointToFriendObject(name, VISITPOINT)){
+                friends_list.add((new Friend(name, VISITPOINT)));
+            }
+        }
     }
 
 }
@@ -47,6 +68,10 @@ class Friend{
 
     Friend(String name){
         this.name = name;
+    }
+    Friend(String name, int point){
+        this.name = name;
+        this.point = point;
     }
     int getPoint() {
         return this.point;
