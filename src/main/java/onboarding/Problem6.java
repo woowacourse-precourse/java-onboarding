@@ -1,7 +1,12 @@
 package onboarding;
 
 
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * > 요구사항
@@ -13,7 +18,26 @@ import java.util.List;
 public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
+        Map<String, String> wordMap = new HashMap<>();
+        Set<String> answer = new HashSet<>();
 
+        for (List<String> form : forms) {
+            String email = form.get(0);
+            String nickname = form.get(1);
+            for (int j = 0; j < nickname.length() - 1; ++j) {
+                String word = nickname.substring(j, j + 2);
+                if (!wordMap.containsKey(word)) {
+                    wordMap.put(word, email);
+                } else {
+                    answer.add(email);
+                    answer.add(wordMap.get(word));
+                    wordMap.put(word, email);
+                }
+            }
+        }
+        return answer.stream()
+            .sorted()
+            .collect(Collectors.toList());
     }
 
 }
