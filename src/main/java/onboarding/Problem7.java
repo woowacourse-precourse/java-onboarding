@@ -54,10 +54,20 @@ public class Problem7 {
                 }
                 if (isAlreadyFriend) continue;
 
-                // 사용자도 아니고, 사용자의 친구도 아닌 사용자의 친구와 아는 사이이면(10점)
+                // 사용자도 아니고, 사용자의 친구도 아닌 사용자의 친구와 아는 사이라면(10점)
                 Integer friendScore = score.get(friend);
                 score.put(friend, friendScore + 10);
             }
+        }
+
+        // 방문 점수 구하기 (1점)
+        for (String visitor : visitors) {
+            if (!score.containsKey(visitor)) {
+                score.put(visitor, 1); // 점수 초기화
+                continue;
+            }
+            Integer visitorScore = score.get(visitor);
+            score.put(visitor, visitorScore + 1);
         }
         List<String> answer = Collections.emptyList();
         return answer;
