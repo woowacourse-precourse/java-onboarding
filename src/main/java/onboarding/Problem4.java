@@ -4,6 +4,13 @@ public class Problem4 {
     public static String solution(String word) {
         String answer = "";
 
+    // 문자 체크
+    private static char check(char c) {
+        if (96<c && c<123) return lowercase(c);
+        if (64<c && c<91) return uppercase(c);
+        return c;
+    }
+
     // 대문자 변환
     static char uppercase(char a){
         char answer = (char)(155 - a);
