@@ -9,8 +9,9 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
         Sns sns = new Sns(friends);
+        ;
 
-        List<String> answer = Collections.emptyList();
+        List<String> answer = sns.recommendFriend(user,visitors);
         return answer;
     }
 }
