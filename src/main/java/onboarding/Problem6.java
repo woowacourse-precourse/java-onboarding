@@ -8,6 +8,23 @@ public class Problem6 {
         return answer;
     }
 
+    static List<String> modify_list(List<String> list){
+
+        List<String> modified_list = new ArrayList<>();
+        Collections.sort(list);
+
+        for(int i=0; i<list.size(); i++) {
+            if(modified_list.isEmpty()) {
+                modified_list.add(list.get(i));
+            }
+            else if(!modified_list.get(modified_list.size()-1).equals(list.get(i))) {
+                modified_list.add(list.get(i));
+            }
+        }
+
+        return modified_list;
+    }
+
     static List<String> get_duplicated_list(Map<String, List<String>> map){
 
         List<String> duplicated_list = get_identical_list(map);
