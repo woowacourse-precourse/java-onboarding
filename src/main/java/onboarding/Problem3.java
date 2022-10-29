@@ -12,7 +12,12 @@ public class Problem3 {
         }
         return result;
     }
+    static int countNum(String str, int target) {
+        return str.length() - str.replace(String.valueOf(target), "").length();
+    }
+
     public static void main(String args[]) {
         System.out.println(linkNums(13));
+        System.out.println(countNum(linkNums(13), 3));
     }
 }
