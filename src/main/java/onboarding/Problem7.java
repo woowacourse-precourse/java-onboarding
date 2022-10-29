@@ -4,7 +4,6 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
         HashMap<String,Integer> userScores = initFriends(user,friends);
         //add visitor count
         for (String s : visitors) {
@@ -15,7 +14,37 @@ public class Problem7 {
                 userScores.put(s,userScores.get(s)+1);
             }
         }
+
+        List<String> answer = new ArrayList<>();
         //hashmap to arraylist > sort
+        List<Map.Entry<String, Integer>> list = new LinkedList<>(userScores.entrySet());
+
+        Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                if (o1.getValue() > o2.getValue()) {
+                    return -1;
+                }
+                else if (o1.getValue() < o2.getValue()) {
+                    return 1;
+                }
+
+                return o1.getKey().compareTo(o2.getKey());
+            }
+        });
+
+        // 순서유지를 위해 LinkedHashMap을 사용
+        Map<String, Integer> sortedMap = new LinkedHashMap<>();
+        for(Iterator<Map.Entry<String, Integer>> iter = list.iterator(); iter.hasNext();){
+            Map.Entry<String, Integer> entry = iter.next();
+            sortedMap.put(entry.getKey(), entry.getValue());
+        }
+
+        sortedMap.forEach((k, v) -> {
+            if (answer.size() == 5 || v == -1) return;
+            answer.add(k);
+        });
+
         return answer;
     }
 
