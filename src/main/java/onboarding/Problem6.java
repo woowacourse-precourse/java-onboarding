@@ -1,9 +1,11 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem6 {
-    static HashSet<String> duplicateNickName = new HashSet<>();
+    static Collection<String> duplicatedNickNames = new HashSet<>();
+
     public static List<String> solution(List<List<String>> forms) {
         Map<String, String> formsMap = new HashMap<>();
         for (int i = 0; i < forms.size(); i++) {
@@ -17,7 +19,25 @@ public class Problem6 {
         for (int i = 0; i < nickNameArray.length; i++) {
             getDuplicationStr(nickNameArray[i], nickNameArray);
         }
-        System.out.println(duplicateNickName);
+        List<String> emailList = new ArrayList<>();
+        String[] returnedNickNames = duplicatedNickNames.toArray(new String[0]);
+        System.out.println(Arrays.toString(returnedNickNames));
+
+        for (int index = 0; index < returnedNickNames.length; index++) {
+            int finalIndex = index;
+            emailList.add(formsMap.entrySet().stream()
+                .filter(entry -> Objects.equals(entry.getValue(), returnedNickNames[finalIndex]))
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList()).toString());
+        }
+
+        System.out.println(emailList);
+//        Iterator iterator = duplicateNickName.iterator();
+//        while (iterator.hasNext()) {
+//            System.out.println(iterator.next());
+
+//
+//        }
 
 //        Collection<String> nicknames = formsMap.values();
 //
@@ -29,8 +49,8 @@ public class Problem6 {
 //            checkNickName(nickname, nicknames);
 //        }
 
-        List<String> answer = List.of("answer");
-        return answer;
+
+        return emailList;
     }
 
     private static void getDuplicationStr(String nickName, String[] nickNameArray) {
@@ -46,8 +66,8 @@ public class Problem6 {
     private static void checkDuplication(String duplicationWord, String nickName, String[] nickNameArray) {
         for (int i = 0; i < nickNameArray.length; i++) {
             nickNameArray[i].contains(duplicationWord);
-            if(nickNameArray[i].contains(duplicationWord) && nickNameArray[i].indexOf(nickName) != 0){
-                duplicateNickName.add(nickNameArray[i]);
+            if (nickNameArray[i].contains(duplicationWord) && nickNameArray[i].indexOf(nickName) != 0) {
+                duplicatedNickNames.add(nickNameArray[i]);
             }
         }
     }
