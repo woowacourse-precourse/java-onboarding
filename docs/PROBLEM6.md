@@ -35,8 +35,8 @@
 
 - private List< List< String> > crewInformations : 크루 정보 저장. (forms 내용)
 - private int numberOfCrews : 크루 전체 인원 수
-- private List< boolean > hasSimilarNicknames : 크루 별 유사한 닉네임 갖고 있는지 여부 저장
-- List< String > similarNicknameCrewsEmail : 유사한 닉네임
+- private List< Boolean > hasSimilarNicknames : 크루 별 유사한 닉네임 갖고 있는지 여부 저장
+- private List< String > similarNicknameCrewsEmail : 유사한 닉네임
 
 ##### <멤버 메소드>
 
