@@ -83,6 +83,16 @@ public class Problem7 {
         }
 
         for(String visitor : visitors) {
+            boolean found = false;
+            int visitorIndex = getUserIndex(visitor);
+            for(int friend: graph.get(start)) {
+                if(visitorIndex == -1) break;
+                if(visitorIndex == friend){
+                    found = true;
+                    break;
+                }
+            }
+            if(found) continue;
             int weight = scoreBoard.getOrDefault(visitor, 0);
             scoreBoard.put(visitor, weight + 1);
         }
@@ -112,11 +122,11 @@ public class Problem7 {
     }
 
     private static String getUserName(int index) {
-        return nameHash.get(index);
+        return nameHash.getOrDefault(index, "not_found");
     }
 
     private static int getUserIndex(String target) {
-        return indexHash.get(target);
+        return indexHash.getOrDefault(target, -1);
     }
 
     private static void setUsersInHash(HashSet<String> users) {
