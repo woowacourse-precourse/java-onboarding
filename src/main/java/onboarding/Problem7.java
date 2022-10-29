@@ -14,7 +14,6 @@ public class Problem7 {
         Map<String, Integer> userPoints = makeUserPoints(user, friends, visitors);
         Map<String, List<String>> relationships = makeRelationShips(friends);
         List<String> userFriends = fillUserFriends(user, relationships);
-
         return answer;
     }
 
@@ -33,13 +32,13 @@ public class Problem7 {
     }
 
     private static void enrichRelation(Map<String, List<String>> relationships, String f1, String f2) {
-        if (isEmptyList(relationships.get(f1), f1)) {
+        if (isEmptyList(relationships.get(f1))) {
             relationships.put(f1, new ArrayList<>());
         }
         relationships.get(f1).add(f2);
     }
 
-    private static boolean isEmptyList(List<String> list, String key) {
+    private static boolean isEmptyList(List<String> list) {
         return list == null;
     }
 
