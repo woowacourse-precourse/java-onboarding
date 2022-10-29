@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Sentence {
-    private static final String POSSIBLE_CHARACTER_FORM = "[a-z]|[A-Z]";
+    private static final String CONVERTIBLE_CHARACTER_FORM = "[a-z]|[A-Z]";
     
     private final String sentence;
     
@@ -30,7 +30,7 @@ public class Sentence {
     }
     
     private static boolean isAlphabet(final char aChar) {
-        final Matcher matcher = Pattern.compile(POSSIBLE_CHARACTER_FORM).matcher(String.valueOf(aChar));
+        final Matcher matcher = Pattern.compile(CONVERTIBLE_CHARACTER_FORM).matcher(String.valueOf(aChar));
         return matcher.matches();
     }
 }
