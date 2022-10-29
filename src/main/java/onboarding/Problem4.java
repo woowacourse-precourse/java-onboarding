@@ -13,8 +13,13 @@ public class Problem4 {
             frogMap.put(lowerCase.charAt(i), lowerCase.charAt(lowerCase.length() - 1 - i));
         }
 
-        String answer = "";
+        String answer = getWordTranslation(word, frogMap);
 
+        return answer;
+    }
+
+    public static String getWordTranslation(String word, HashMap<Character, Character> frogMap){
+        String answer = "";
         for (char c : word.toCharArray()) {
             if (c == ' ') {
                 answer += ' ';
@@ -22,7 +27,7 @@ public class Problem4 {
             }
             answer += frogMap.get(c);
         }
-
         return answer;
     }
+
 }
