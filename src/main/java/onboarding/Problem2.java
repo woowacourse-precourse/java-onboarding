@@ -13,9 +13,10 @@ public class Problem2 {
 		int i = 1;
 		while (i < cryptogram.length()) {
 			String remainingCryptogram = cryptogram.substring(i);
-
+			char lastCharOfNewCryptogram = newCryptogram.charAt(newCryptogram.length() - 1);
+			
 			newCryptogram = makeCryptogramByChar(i, cryptogram, newCryptogram);
-			i += getNextIndexRange(newCryptogram, remainingCryptogram);
+			i += getNextIndexRange(lastCharOfNewCryptogram, remainingCryptogram);
 
 			if (i < cryptogram.length() && newCryptogram.isEmpty()) {
 				newCryptogram += cryptogram.charAt(i);
@@ -41,9 +42,8 @@ public class Problem2 {
 		return value.substring(0, value.length() - 1);
 	}
 
-	private static int getNextIndexRange(String newCryptogram, String remainingCryptogram) {
-		char lastCharOfNewCryptogram = newCryptogram.charAt(newCryptogram.length() - 1);
-		int sameCharCount = getSameCharCount(lastCharOfNewCryptogram, remainingCryptogram);
+	private static int getNextIndexRange(char checkChar, String remainingCryptogram) {
+		int sameCharCount = getSameCharCount(checkChar, remainingCryptogram);
 		if (sameCharCount > 0) {
 			return sameCharCount;
 		}
