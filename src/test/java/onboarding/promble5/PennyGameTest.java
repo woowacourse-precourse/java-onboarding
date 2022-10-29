@@ -11,6 +11,6 @@ public class PennyGameTest {
     @Test
     void separate_money_only_50000(){
         int money = 59543;
-        assertThat(PennyGame.start(money)).isEqualTo(1);
+        assertThat(PennyGame.start(money)).isEqualTo(List.of(1,0));
     }
 }
