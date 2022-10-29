@@ -25,17 +25,6 @@ public class Problem6 {
 
     private Map<String, List<Integer>> nickKeywordMap = new HashMap<>();
 
-    public static void main(String[] args) {
-        List<List<String>> forms = new ArrayList<>(Arrays.asList(new ArrayList<>(Arrays.asList("jm@email.com", "제이엠"))
-                ,new ArrayList<>(Arrays.asList("woniee@email.com", "워니"))
-                ,new ArrayList<>(Arrays.asList("jason@email.com", "제이슨"))
-                ,new ArrayList<>(Arrays.asList("mj@email.com", "엠제이"))
-                ,new ArrayList<>(Arrays.asList("mj@email.com", "제엠이"))
-                ,new ArrayList<>(Arrays.asList("nowm@email.com", "이제엠"))));
-        List<String> solution = solution(forms);
-        System.out.println("solution = " + solution);
-    }
-
     public static List<String> solution(List<List<String>> forms) {
         Problem6 problem6 = new Problem6();
 
@@ -45,7 +34,6 @@ public class Problem6 {
         }
 
         Set<Integer> overlapCrewIdxSet = problem6.sortOverlapCrew();
-        System.out.println("overlapCrewIdxSet = " + overlapCrewIdxSet);
 
         return overlapCrewIdxSet.stream()
                 .map(o -> forms.get(o).get(0))
@@ -73,7 +61,6 @@ public class Problem6 {
             addToMap(new String(Arrays.copyOfRange(nicknameCharArray,i,i+2)),index);
         }
 
-        System.out.println("nickKeywordMap = " + nickKeywordMap);
     }
 
     // keyword가 Key에 존재하는지 확인후 있다면 VALUE에 add, 없다면 새로운 KEY - VALUE를 생성
