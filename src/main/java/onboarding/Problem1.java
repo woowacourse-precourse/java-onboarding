@@ -1,6 +1,5 @@
 package onboarding;
 
-import java.io.PrintStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.stream.Stream;
@@ -18,14 +17,11 @@ class Problem1 {
         int temp_max = 0;
         int temp_multi = 1;
         int[] arrNum = Stream.of(String.valueOf(s).split("")).mapToInt(Integer::parseInt).toArray();
-        for(int i = 0; i < arrNum.length; i++){
-            temp_max = temp_max + arrNum[i];
-            temp_multi = temp_multi * arrNum[i];
+        for (int j : arrNum) {
+            temp_max = temp_max + j;
+            temp_multi = temp_multi * j;
         }
-        if (temp_multi > temp_max) {
-            return temp_multi;
-        }
-        return temp_max;
+        return Math.max(temp_multi, temp_max);
     }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         // 예외처리
