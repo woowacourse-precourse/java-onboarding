@@ -1,11 +1,26 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Problem6 {
 	public static List<String> solution(List<List<String>> forms) {
-		List<String> answer = List.of("answer");
+		List<String> answer = new ArrayList<>();
+		List<String> nicknames = collectNickname(forms);
+
+		for (List info : forms) {
+			String email = (String)info.get(0);
+			String nickname = (String)info.get(1);
+			nicknames.remove(nickname);
+			if (checkNickname(nickname, nicknames)) {
+				answer.add(email);
+			}
+			nicknames.add(nickname);
+
+		}
+		Collections.sort(answer);
+
 		return answer;
 	}
 
