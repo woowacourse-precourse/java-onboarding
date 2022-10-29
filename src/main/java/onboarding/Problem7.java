@@ -47,18 +47,32 @@ public class Problem7 {
 
         System.out.println(friendsMap);
 
-        getFriendsScore(user);
+        List<String> friendsList = friendsMap.get(user);
+
+        for (int i = 0; i < friendsList.size(); i++)
+            addFriendsScore(friendsList.get(i), user);
+
+        for (int i = 0; i < visitors.size(); i++) {
+            System.out.println(visitors.get(i));
+            addVisitScore(visitors.get(i), user);
+        }
 
         System.out.println("score = " + score);
 
         return answer;
     }
 
-    private static void getFriendsScore(String user) {
-        List<String> friendsList = friendsMap.get(user);
+    private static void addVisitScore(String s, String user) {
+        int sc;
+        List<String> userFriends = friendsMap.get(user);
 
-        for (int i = 0; i < friendsList.size(); i++)
-            addFriendsScore(friendsList.get(i), user);
+        if (s == "mrko" || userFriends.contains(s))
+            return ;
+        if (!score.containsKey(s))
+            sc = 1;
+        else
+            sc = score.get(s) + 1;
+        score.put(s, sc);
     }
 
     private static void addFriendsScore(String s, String user) {
