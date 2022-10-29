@@ -51,33 +51,33 @@ class ApplicationTest {
 //        }
 //    }
 
-    @Nested
-    class Problem3Test {
-        @Test
-        void case1() {
-            int number = 13;
-            int result = 4;
-            assertThat(Problem3.solution(number)).isEqualTo(result);
-        }
-
-        @Test
-        void case2() {
-            int number = 33;
-            int result = 14;
-            assertThat(Problem3.solution(number)).isEqualTo(result);
-        }
-    }
-//
 //    @Nested
-//    class Problem4Test {
+//    class Problem3Test {
 //        @Test
 //        void case1() {
-//            String word = "I love you";
-//            String result = "R olev blf";
-//            assertThat(Problem4.solution(word)).isEqualTo(result);
+//            int number = 13;
+//            int result = 4;
+//            assertThat(Problem3.solution(number)).isEqualTo(result);
+//        }
+//
+//        @Test
+//        void case2() {
+//            int number = 33;
+//            int result = 14;
+//            assertThat(Problem3.solution(number)).isEqualTo(result);
 //        }
 //    }
 //
+    @Nested
+    class Problem4Test {
+        @Test
+        void case1() {
+            String word = "I love you";
+            String result = "R olev blf";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+    }
+
 //    @Nested
 //    class Problem5Test {
 //        @Test
