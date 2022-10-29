@@ -2,7 +2,23 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
+        try {
+            if(!isIncludeCryptogram(cryptogram)) {
+                throw new Exception("제한사항에 위배되는 cryptogram입니다.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return decipher(cryptogram);
+    }
+
+    private static boolean isIncludeCryptogram(String cryptogram) {
+        if(cryptogram.length()<1||cryptogram.length()>1000) return false;
+        for (int i = 0; i < cryptogram.length(); i++) {
+            char alpa = cryptogram.charAt(i);
+            if((alpa<'a'||alpa>'z')) return false;
+        }
+        return true;
     }
 
     private static String decipher(String cryptogram) {
