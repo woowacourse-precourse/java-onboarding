@@ -12,18 +12,26 @@ class Decoder {
 
     static String runDecoder(String str) {
         String n_str = deleteDuplicate(str);
+//        System.out.println("_____변경전_____");
+//        System.out.println(str);
+//        System.out.println("_____변경후_____");
+//        System.out.println(n_str);
+//        System.out.println();
         if (str.equals(n_str)) return str;
         return runDecoder(n_str);
     }
 
     private static String deleteDuplicate(String str) {
         String new_str = "";
+        if (str.equals("")) {
+            return "";
+        }
         int l = str.length();
         int i = 0;
         while (i < l-1) {
             if (str.charAt(i) == str.charAt(i+1)) {
                 int dup_cnt = 1;
-                while ( i + dup_cnt < l) {
+                while ( i + dup_cnt < l - 1) {
                     if (str.charAt(i) == str.charAt(i + dup_cnt + 1)) {
                         dup_cnt += 1;
                     } else {break;}
