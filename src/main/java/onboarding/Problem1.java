@@ -3,17 +3,15 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
+
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if(!exception(pobi,crong)){
             return -1;
         }
-        int answer = Integer.MAX_VALUE;
+        int answer = findWinner(pobi, crong);
         return answer;
     }
 
@@ -23,6 +21,19 @@ class Problem1 {
     // 두개를 비교해서 큰 숫자 구하기
     // 점수 비교 승자 나타내기
     // 예외사항
+
+    public static int findWinner(List<Integer> pobi, List<Integer> crong){
+        int pobiVal = getMaxNum(pobi);
+        int crongVal = getMaxNum(crong);
+        if(pobiVal > crongVal){
+            return 1;
+        }else if(pobiVal == crongVal){
+            return 0;
+        }else{
+            return 2;
+        }
+    }
+
 
     public static int getMaxNum(List<Integer> list){
         List<Integer> collect = list.stream().map(Problem1::getMaxPageNum).collect(Collectors.toList());
