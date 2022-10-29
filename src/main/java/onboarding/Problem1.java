@@ -9,9 +9,12 @@ class Problem1 {
     }
 
     private boolean isInvalidInput(List<Integer> pageList) {
-        return isInvalidRange(pageList);
+        return isInvalidRange(pageList) || isNotAdjoin(pageList);
     }
 
+    private boolean isNotAdjoin(List<Integer> pageList) {
+        return pageList.get(0) + 1 != pageList.get(1);
+    }
     private boolean isInvalidRange(List<Integer> pageList) {
         return pageList.get(0) < 3 || pageList.get(1) > 398;
     }
