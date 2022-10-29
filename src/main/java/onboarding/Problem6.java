@@ -18,17 +18,21 @@ public class Problem6 {
     *5. list 정렬 하고 return
     * */
 
-    static void createNumberOfCases(String name){
-
-    }
     static void setFormMap(List<List<String>> forms){
         for(int i=0; i<forms.size(); i++){
             formMap.put(forms.get(i).get(1),forms.get(i).get(0));
         }
     }
+    //함수 배치하는 순서 생각해볼 것
+    static void createNumberOfCases(String name){
+        
+    }
 
     static void setNameCountMap(List<List<String>> forms){
-
+        for(int i=0; i<forms.size(); i++){
+            String name = forms.get(i).get(2);
+            createNumberOfCases(name);
+        }
     }
 
     public static List<String> solution(List<List<String>> forms) {
