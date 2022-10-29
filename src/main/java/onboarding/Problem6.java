@@ -22,20 +22,36 @@ import java.util.stream.Collectors;
  * */
 public class Problem6 {
 
-    private Map<String, ArrayList<Integer>> nickKeywordMap = new HashMap<>();
+    private Map<String, List<Integer>> nickKeywordMap = new HashMap<>();
+
+    public static void main(String[] args) {
+        List<List<String>> forms = new ArrayList<>(Arrays.asList(new ArrayList<>(Arrays.asList("jm@email.com", "제이엠"))
+                ,new ArrayList<>(Arrays.asList("woniee@email.com", "워니"))
+                ,new ArrayList<>(Arrays.asList("jason@email.com", "제이슨"))
+                ,new ArrayList<>(Arrays.asList("mj@email.com", "엠제이"))
+                ,new ArrayList<>(Arrays.asList("nowm@email.com", "이제엠"))));
+        List<String> solution = solution(forms);
+        System.out.println("solution = " + solution);
+    }
 
     public static List<String> solution(List<List<String>> forms) {
         Problem6 problem6 = new Problem6();
-        List<String> answer = new ArrayList<>();
 
+        // forms를 하나씩 순회하면서 keyword를 만들고 이를 Map에 저장
         for(int idx = 0; idx < forms.size(); idx++){
             problem6.makeKeyword(forms.get(idx).get(1),idx);
         }
-        
-        return answer;
+
+        Set<Integer> overlapCrewIdxSet = problem6.sortOverlapCrew();
+        System.out.println("overlapCrewIdxSet = " + overlapCrewIdxSet);
+
+        return overlapCrewIdxSet.stream()
+                .map(o -> forms.get(o).get(0))
+                .sorted()
+                .collect(Collectors.toList());
     }
 
-    // Map에서 VALUE의 길이가 1이 아닌 아이들만의 Set 생성
+    // Map에서 VALUE의 size가 1이 아닌 아이들만의 Set 생성
     public Set<Integer> sortOverlapCrew(){
         return nickKeywordMap.entrySet()
                 .stream()
@@ -49,22 +65,24 @@ public class Problem6 {
         char[] nicknameCharArray = nickname.toCharArray();
         for(int i = 0; i < (nicknameCharArray.length-1); i++){
             // keyword 생성후 Map에 추가
-            addToMap(String.valueOf(nicknameCharArray[i] + nicknameCharArray[i+1]),index);
+            addToMap(new String(Arrays.copyOfRange(nicknameCharArray,i,i+2)),index);
         }
+
+        System.out.println("nickKeywordMap = " + nickKeywordMap);
     }
 
     // keyword가 Key에 존재하는지 확인후 있다면 VALUE에 add, 없다면 새로운 KEY - VALUE를 생성
-    public void addToMap(String keyword, int index){
+    public int addToMap(String keyword, int index){
         // keyword가 이미 존재할 때
         if(nickKeywordMap.containsKey(keyword)){
             nickKeywordMap.get(keyword).add(index);
+            return 1;
         }
 
         // keyword가 존재하지 않을 때
-        nickKeywordMap.put(keyword,new ArrayList<>() {{
-            add(index);
-        }});
-
+        nickKeywordMap.put(keyword,new ArrayList<>());
+        nickKeywordMap.get(keyword).add(index);
+        return 0;
     }
 
 }
