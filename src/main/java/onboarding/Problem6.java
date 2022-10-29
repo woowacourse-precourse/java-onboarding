@@ -13,6 +13,9 @@ public class Problem6 {
         HashMap<String, Integer> userTwoLetterList = new HashMap<>();
         Set<String> DuplicateNameList = new HashSet<>();
         List<String> answer = new ArrayList<>();
+
+        List<String> userNameList = createUserNameList(forms);
+
         for (List<String> form : forms) {
             makeTwoLetterList(form.get(1), userTwoLetterList);
         }
@@ -24,6 +27,14 @@ public class Problem6 {
         }
         Collections.sort(answer);
         return answer;
+    }
+
+    public static List<String> createUserNameList(List<List<String>> forms) {
+        List<String> nameList = new ArrayList<>();
+        for (List<String> form : forms) {
+            nameList.add(form.get(1));
+        }
+        return nameList;
     }
 
     public static void makeTwoLetterList(String nickName, HashMap<String, Integer> twoLetterList) {
