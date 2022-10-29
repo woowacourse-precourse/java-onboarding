@@ -8,12 +8,14 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.stream.Collectors;
 import java.util.Iterator;
 import java.util.TreeMap;
 
 
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -50,37 +52,42 @@ class Mto
 	}
 }
 
-public class Problem7 {
+
+public class Problem7{
 	
-	public static ArrayList<String> getFriendList(String user, List<List<String>> friends)
+	//friends에서 user와 친구인 친구 리스트를 얻는다.
+	public static List<String> getFriendList(String user, List<List<String>> friends)
 	{
 		
 		ArrayList<String> friend_list = new ArrayList<String>();
 		
+		//get(0), get(1)로 한 이유는 [user : friend], [friend:user]일 경우를 대비
 		for(int i = 0; i < friends.size(); i++)
 		{
-			//user가 오른쪽
 			if (friends.get(i).get(0).equals(user) == true)
 				friend_list.add(friends.get(i).get(1));
-			//user가 왼쪽
 			if (friends.get(i).get(1).equals(user) == true)
 				friend_list.add(friends.get(i).get(0));
 		}
-		
 		return friend_list;
 	}
 	
-	public static ArrayList<String> getFriendOfFriendList(ArrayList<String> friend_list, List<List<String>> friends)
+	//user의 친구들의 친구리스트를 얻는다.
+	public static List<String> getFriendOfFriendList(List<String> friend_list, List<List<String>> friends)
 	{
 		ArrayList<String> friend_of_friend_list = new ArrayList<String>();
 		
+		//get(0), get(1)로 한 이유는 [user : friend], [friend : user]일 경우를 대비
 		for(int i = 0; i < friends.size(); i++)
 		{
 			for (String iter : friend_list)
 			{
-				if (friends.get(i).get(0).equals(iter) == true)
-					friend_of_friend_list.add(friends.get(i).get(1));
-				
+				List<String> tmp_friend = friends.get(i);
+				if (tmp_friend.get(0).equals(iter) == true)
+					friend_of_friend_list.add(tmp_friend.get(1));
+				else
+					if (tmp_friend.get(1).equals(iter) == true)
+						friend_of_friend_list.add(tmp_friend.get(0));
 			}
 		}
 		
@@ -88,7 +95,7 @@ public class Problem7 {
 	}
 	
 	
-	public static HashMap<String, Integer> getCalcScore(ArrayList<String> friend_of_friend_list, List<String> visitors)
+	public static HashMap<String, Integer> getCalcScore(List<String> friend_of_friend_list, List<String> visitors)
 	{
 		HashMap<String, Integer> score_table = new HashMap<>();
 		
@@ -120,7 +127,7 @@ public class Problem7 {
 		return score_table;
 	}
 	
-	public static List<String> sortTable(HashMap<String, Integer> score_table)
+	public static List<String> sortTable(Map<String, Integer> score_table)
 	{
 		List<Mto>mto_list = new ArrayList<Mto>();
 		
@@ -141,7 +148,6 @@ public class Problem7 {
 			
 			if (map.containsKey(key))
 			{
-				
 				List<Mto> list = map.get(key);
 				list.add(m);
 			}
@@ -172,57 +178,50 @@ public class Problem7 {
 		ArrayList<String> recommend_list = new ArrayList<>();
 		
 		for (Mto iter : result_list)
-			if (iter.getVal() != 0)
+			if (iter.getVal() > 0)
 				recommend_list.add(iter.getKey());
+		
 		
 		return recommend_list;
 	}
 	
-	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-    	//user의 친구 리스트를 얻어옴
-    			ArrayList<String> friend_list = getFriendList(user, friends);
+	
+	
+    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+    			/*
+    			 * user의 친구 리스트를 얻어오고
+    			 * 중복을 제거한다.
+    			 */
+    			List<String> friend_list = getFriendList(user, friends);
+    			friend_list = friend_list.stream().distinct().collect(Collectors.toList());
     			
     			//user의 친구의 친구리스트를 얻어옴
-    			ArrayList<String> friend_of_friend_list = getFriendOfFriendList(friend_list, friends);
+    			List<String> friend_of_friend_list = getFriendOfFriendList(friend_list, friends);
     			
-    			//유저를 목록에서 삭제
+    			//user를 목록에서 삭제
     			friend_of_friend_list.removeIf(item -> item.equals(user));
     			
     			//유저의 친구의 친구가 내 친구라면 삭제
-    			/*for (String iter : friend_list)
-    			{
-    				friend_of_friend_list.removeIf(item -> item.equals(iter));
-    				visitors.removeIf(item -> item.equals(iter));
-    			}*/
-    			
-    			List<String> bak_visigitors = new ArrayList<String>(visitors);//이부분이 너무더러움 에러피하려고 억지로함
-    			//https://qh5944.tistory.com/152
+    			List<String> tmp_visitors = new ArrayList<String>(visitors);
     			for (String iter : friend_list)
     			{
     				friend_of_friend_list.removeIf(item -> item.equals(iter));
-    				bak_visigitors.removeIf(item -> item.equals(iter));
+    				tmp_visitors.removeIf(item -> item.equals(iter));
     			}
 
-    			//필요한것들만 솎아냄
-    			HashMap<String, Integer> score_table = getCalcScore(friend_of_friend_list, bak_visigitors);
+    			//채점된 점수와 친구 리스트를 넣는다.
+    			Map<String, Integer> score_table = getCalcScore(friend_of_friend_list, tmp_visitors);
     			
-    			/*for(String key : score_table.keySet())
-    			{
-    				int	value = score_table.get(key);
-    				System.out.println(key + " : " + value);
-    				
-    			}*/
-    			
-    			//점수별 정렬 후 이름별 정렬 후
+    			//점수별 정렬 후 같은 점수끼리 이름별 정렬을 실행한다.
     			List<String> recommend_list = sortTable(score_table);
     			
     			//점수로 정렬 후 hasnext로 다음이 있는지 검사 후 next로 점수가 바뀌는 시점에 새로운 map에 집어넣기 종료 후 같은 점수끼리 모은 map을 key로 다시 정렬 후 출
-    			
     			if (recommend_list.size() > 5)
     				recommend_list = recommend_list.subList(0, 5);
     			
     			return recommend_list;
     }
-    
+
+    	
     
 }
