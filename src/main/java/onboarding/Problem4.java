@@ -6,15 +6,17 @@ import java.util.Map;
 public class Problem4 {
 	private static final String EXCEPTION_MESSAGE = "ERROR";
 	private static Map<Character, Character> dictionary = new HashMap<>();
-    public static String solution(String word) {
+
+	public static String solution(String word) {
 		if (!isValidLength(word.length())) {
 			return getExceptionMessage();
 		}
 
 		initDictionary();
 
-        return answer;
-    }
+		String answer = changeWord(word);
+		return answer;
+	}
 
 	private static boolean isValidLength(int length) {
 		return length >= 1 && length <= 1000;
@@ -31,4 +33,17 @@ public class Problem4 {
 		}
 	}
 
+	private static String changeWord(String word) {
+		StringBuilder answer = new StringBuilder();
+
+		for (int i = 0; i < word.length(); i++) {
+			char now = word.charAt(i);
+			if (now == ' ') {
+				answer.append(now);
+				continue;
+			}
+			answer.append(dictionary.get(now));
+		}
+		return answer.toString();
+	}
 }
