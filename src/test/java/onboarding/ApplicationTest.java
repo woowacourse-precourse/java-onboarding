@@ -184,6 +184,19 @@ class ApplicationTest {
       assertThat(b2).isEqualTo(true);
       assertThat(b3).isEqualTo(false);
     }
+
+    @Test
+    void isAllowedStringLengthTest() {
+      //given
+      int wordLength1 = 10;
+      int wordLength2 = 1001;
+
+      //then
+      assertThat(Problem4.isAllowedStringLength(wordLength1)).isEqualTo(true);
+      assertThrows(IllegalStateException.class, () -> {
+        Problem4.isAllowedStringLength(wordLength2);
+      });
+    }
   }
 
   @Nested
