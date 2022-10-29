@@ -2,13 +2,19 @@ package onboarding;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 import onboarding.problem2.validation.CryptogramValidator;
 import onboarding.problem3.validation.ThreeSixNineValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 class ApplicationTest {
     @Nested
@@ -341,6 +347,7 @@ class ApplicationTest {
     }
 
     @Nested
+    @DisplayName("문제 6 테스트")
     class Problem6Test {
         @Test
         void case1() {
@@ -360,10 +367,10 @@ class ApplicationTest {
         void case2() {
             List<List<String>> forms = List.of(
                     List.of("jm@email.com", "롬뭄무야"),
-                    List.of("jason@email.com", "이뭄무야"),
+                    List.of("jason@email.com", "이뭄무야"), // 세 글자 겹침!
                     List.of("woniee@email.com", "이박사"),
                     List.of("mj@email.com", "삼성증권이사장"),
-                    List.of("nowm@email.com", "증성증권차장님"),
+                    List.of("nowm@email.com", "증성증권차장님"), // 세 글자 겹침!
                     List.of("baak@email.com", "빡빡이아조씨")
             );
             List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com", "nowm@email.com");
@@ -384,6 +391,110 @@ class ApplicationTest {
             List<String> result = List.of("A@email.com", "B@email.com", "D@email.com", "F@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
+
+        @Test
+        @DisplayName("검증할 크루가 한 명도 없는 경우 예외 발생")
+        void case4() {
+            List<List<String>> forms = List.of();
+            assertThatThrownBy(() -> Problem6.solution(forms))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("크루가 아무도 없습니다");
+        }
+
+        @Test
+        @DisplayName("검증할 크루가 10,000명을 초과하는 경우 예외 발생")
+        void case5() {
+            List<List<String>> forms = new ArrayList<>();
+            for (int i = 0; i < 10_01; i++) {
+                forms.add(Arrays.asList("human@email.com", "휴먼"));
+            }
+
+            assertThatThrownBy(() -> Problem6.solution(forms))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("크루 수가 10,000명을 초과합니다.");
+        }
+
+        @DisplayName("이메일 형식에 부합하지 않는 경우 예외 발생")
+        @ParameterizedTest(name = "{displayName} {index} - {0}")
+        @MethodSource("onboarding.ApplicationTest#invalidEmailFormat")
+        void case6(String email, String name) {
+            List<List<String>> forms = List.of(
+                    List.of(email, name)
+            );
+
+            assertThatThrownBy(() -> Problem6.solution(forms))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("크루 수가 10,000명을 초과합니다.");
+        }
+
+        @Test
+        @DisplayName("이메일 길이가 11자 미만일 경우 예외 발생")
+        void case7() {
+            List<List<String>> forms = List.of(
+                    List.of("mo@email.com", "간장게장")
+            );
+
+            assertThatThrownBy(() -> Problem6.solution(forms))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("이메일 길이는 11자 이상 20자 미만이어야 한다");
+        }
+
+        @Test
+        @DisplayName("이메일 길이가 20자 이상일 경우 예외 발생")
+        void case8() {
+            List<List<String>> forms = List.of(
+                    List.of("somedayoverthemountain@email.com", "간장게장")
+            );
+
+            assertThatThrownBy(() -> Problem6.solution(forms))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("이메일 길이는 11자 이상 20자 미만이어야 한다");
+        }
+
+        @Test
+        @DisplayName("닉네임 길이가 1자 미만일 경우 예외 발생")
+        void case9() {
+            List<List<String>> forms = List.of(
+                    List.of("valid@email.com", "")
+            );
+
+            assertThatThrownBy(() -> Problem6.solution(forms))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("이메일 길이는 11자 이상 20자 미만이어야 한다");
+        }
+
+        @Test
+        @DisplayName("닉네임 길이가 20자 이상일 경우 예외 발생")
+        void case10() {
+            List<List<String>> forms = List.of(
+                    List.of("valid@email.com", "작명규칙을아득히넘는청개구리의나쁜닉네임")
+            );
+
+            assertThatThrownBy(() -> Problem6.solution(forms))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("이메일 길이는 11자 이상 20자 미만이어야 한다");
+        }
+
+        @Test
+        @DisplayName("닉네임에 한글이 아닌 글자가 포함되어 있으면 예외 발생")
+        void case11() {
+            List<List<String>> forms = List.of(
+                    List.of("valid@email.com", "한글NotHangeul")
+            );
+
+            assertThatThrownBy(() -> Problem6.solution(forms))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("닉네임에는 한글만 들어갈 수 있다.");
+        }
+    }
+
+    public static Stream<Arguments> invalidEmailFormat() {
+        return Stream.of(
+                Arguments.of("@hoho@email.com", "이메일기호두개"),
+                Arguments.of("배달의민족@email.com", "한글이메일"),
+                Arguments.of("validman@gmail.com", "지메일"),
+                Arguments.of("validman@email.net", "이메일닷넷")
+        );
     }
 
     @Nested
