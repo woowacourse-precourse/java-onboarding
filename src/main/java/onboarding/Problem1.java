@@ -37,4 +37,13 @@ class Problem1 {
         }
         return sum;
     }
+
+    static int multiplyPageNum(int page){
+        int result = 1;
+        while(page>0){
+            result*=page%10;
+            page=page/10;
+        }
+        return result;
+    }
 }
