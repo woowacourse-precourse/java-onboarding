@@ -50,4 +50,8 @@ class Problem1 {
     static int getLeftScore(List<Integer> pages){
         return Math.max(addPageNum(pages.get(0)),multiplyPageNum(pages.get(0)));
     }
+
+    static int getRightScore(List<Integer> pages){
+        return Math.max(addPageNum(pages.get(1)),multiplyPageNum(pages.get(1)));
+    }
 }
