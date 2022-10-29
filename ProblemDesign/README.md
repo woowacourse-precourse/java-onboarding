@@ -239,4 +239,5 @@ public static int solution(List<Integer> pobi, List<Integer> crong) {
 #문제2
 ##예상 필요 기능 정의
 1. 문자열에서 연속된 값이 있는지 확인하는 메소드
+2. 예외처리하기
 ---
