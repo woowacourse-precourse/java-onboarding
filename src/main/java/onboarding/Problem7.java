@@ -37,11 +37,12 @@ public class Problem7 {
         
         problem7.makeFriendGraph(friends);
         problem7.calcScoreFriends(user);
-        
+        problem7.calcScoreVisitor(visitors);
+
         return answer;
     }
 
-    // 사용자와 함께 아는 친구의 수로 score 계
+    // 사용자와 함께 아는 친구의 수로 score 계산(10점)
     public void calcScoreFriends(String user){
         List<String> userFriendList = friendGraph.get(user);
 
@@ -49,6 +50,20 @@ public class Problem7 {
             for(String scoredFriend : friendGraph.get(userFriend)){
                 friendScore.put(scoredFriend,(friendScore.get(scoredFriend) + 10));
             }
+        }
+    }
+
+    // 사용자의 타임 라인에 방문한 횟수로 score 계산(1점)
+    public void calcScoreVisitor(List<String> visitors){
+        for(String visitor : visitors){
+            // 이미 friend에서 추가된 crew일 경우
+            if(friendScore.containsKey(visitor)) {
+                friendScore.put(visitor, (friendScore.get(visitor) + 1));
+                continue;
+            }
+
+            // friend에서 추가되지 않은 신규 crew일 경우
+            friendScore.put(visitor,1);
         }
     }
 
