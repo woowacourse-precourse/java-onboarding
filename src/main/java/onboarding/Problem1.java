@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Stream;
@@ -23,5 +24,10 @@ class Problem1 {
     private int[] splitEachNumbers(int number) {
         int[] arrNum = Stream.of(String.valueOf(number).split("")).mapToInt(Integer::parseInt).toArray();
         return arrNum;
+    }
+
+    private int sumNumbers(int[] numbers) {
+        int sum = Arrays.stream(numbers).sum();
+        return sum;
     }
 }
