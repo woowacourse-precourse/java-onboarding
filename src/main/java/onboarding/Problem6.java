@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -20,5 +21,10 @@ public class Problem6 {
         }
 
         return result;
+    }
+
+    /* 상호간 공유하는 2 이상의 문자열이 있는지 체크하는 메서드 */
+    private static Set<String> checkMutualContaning(List<List<String>> forms) {
+
     }
 }
