@@ -66,13 +66,26 @@ public class Problem7 {
 
         int limit = 5;
         countingMap = sortByDescendingOrder(countingMap, limit);
+
         countingMap = removeIfCountEqualsZero(countingMap);
 
+        List<Map.Entry<String, Integer>> countingList = sortByAlphabeticalOrder(countingMap);
 
-        System.out.println(countingMap);
 
         List<String> answer = Collections.emptyList();
         return answer;
+    }
+
+    private static List<Map.Entry<String, Integer>> sortByAlphabeticalOrder(LinkedHashMap<String, Integer> countingMap) {
+        List<Map.Entry<String, Integer>> list = new LinkedList<>(
+                countingMap.entrySet());
+        Collections.sort(list,
+                (map1, map2) -> map1.getKey().compareTo(map2.getKey())
+        );
+        Collections.sort(list,
+                (map1, map2) -> map2.getValue().compareTo(map1.getValue())
+        );
+        return list;
     }
 
     private static LinkedHashMap<String, Integer> removeIfCountEqualsZero(LinkedHashMap<String, Integer> countingMap) {
@@ -82,6 +95,7 @@ public class Problem7 {
 
         return zeroRemoveCountingMap;
     }
+
 
     private static LinkedHashMap<String, Integer> sortByDescendingOrder(LinkedHashMap<String, Integer> countingMap, int limit) {
         LinkedHashMap<String, Integer> reverseSortedMap = new LinkedHashMap<>();
