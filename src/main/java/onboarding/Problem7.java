@@ -10,8 +10,20 @@ public class Problem7 {
     static final int WITH_FRIEND_SCORE = 10;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+
+        addFriendsMap(friends);
+        addVisitorScore(user, visitors);
+
+        ArrayList<String> userFriendsList = friendsMap.get(user);
+
+        addWithFriendScore(user, userFriendsList);
+
+        List<Map.Entry<String, Integer>> sortedEntries = getSortedEntries();
+
+        List<String> result = getResult(sortedEntries);
+
+        return result;
+
     }
 
     static void addFriendsMap(List<List<String>> friends) {
@@ -39,7 +51,7 @@ public class Problem7 {
         userScoreMap = new HashMap<>();
 
         for (String visitor : visitors) {
-            if(!friendsMap.get(user).contains(visitor))
+            if (!friendsMap.get(user).contains(visitor))
                 userScoreMap.put(visitor, userScoreMap.getOrDefault(visitor, 0) + VISITOR_SCORE);
         }
     }
@@ -52,7 +64,7 @@ public class Problem7 {
 
             for (String withKnowFriend : withKnowFriendsList) {
 
-                if(withKnowFriend != user) {
+                if (withKnowFriend != user) {
                     userScoreMap.put(withKnowFriend, userScoreMap.getOrDefault(withKnowFriend, 0) + WITH_FRIEND_SCORE);
                 }
             }
@@ -78,7 +90,7 @@ public class Problem7 {
 
         for (Map.Entry<String, Integer> entry : sortedEntries) {
 
-            if(addCount == 5)
+            if (addCount == 5)
                 break;
 
             result.add(entry.getKey());
