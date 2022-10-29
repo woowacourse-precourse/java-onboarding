@@ -7,8 +7,7 @@ import java.util.Map;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        return getReverseResult(word);
     }
 
     private static Map<String, String> initAlphaMap() {
@@ -30,6 +29,23 @@ public class Problem4 {
         }
 
         return map;
+    }
+
+    private static String getReverseResult(String word){
+        // 문장의 모든 알파벳을 반대로 변환해주는 메소드
+        Map<String, String> map = initAlphaMap();
+        List<String> newWordList = new ArrayList<>();
+
+        for(int i=0; i<word.length(); i++){
+            String now = String.valueOf(word.charAt(i));
+            if (now.equals(" ")){
+                newWordList.add(now);
+            }
+            else{
+                newWordList.add(map.get(now));
+            }
+        }
+        return String.join("", newWordList);
     }
 
 }
