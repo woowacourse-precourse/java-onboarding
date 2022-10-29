@@ -9,6 +9,13 @@ public class Problem5 {
 
     public static List<Integer> solution(int money) {
         List<Integer> answer = new ArrayList<>();
+
+        for (Integer standard : arr) {
+            int num = money / standard;
+            answer.add(num);
+            money -= (num * standard);
+        }
+
         return answer;
     }
 }
