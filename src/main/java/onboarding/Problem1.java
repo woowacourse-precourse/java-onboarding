@@ -12,10 +12,10 @@ class Problem1 {
 
         int answer = Integer.MAX_VALUE;
 
-        int pobiLeftPage=pobi.get(0);
-        int pobiRightPage=pobi.get(1);
-        int crongLeftPage = crong.get(0);
-        int crongRightPage = crong.get(1);
+        final int pobiLeftPage=pobi.get(0);
+        final int pobiRightPage=pobi.get(1);
+        final int crongLeftPage = crong.get(0);
+        final int crongRightPage = crong.get(1);
 
         int pobiLeftMax = 0;
         int pobiRigtMax=0;
@@ -25,24 +25,16 @@ class Problem1 {
         int pobiMax=0;
         int crongMax=0;
 
+        // 예외 사항
         // 1-1 왼쪽 페이지가 짝수이거나 오른쪽 페이지가 홀수인 경우
-        if(isLeftPageEvenRightPageOdd(pobiLeftPage, pobiRightPage, crongLeftPage, crongRightPage)){
-            answer = EXCEPTION;
-            return answer;
-        }
-        //1-2 왼쪽 페이지와 오른쪽 페이지가 연속적이지 않은 경우
-        if(isNotLeftPagePlusOneRightPage(pobiLeftPage, pobiRightPage, crongLeftPage, crongRightPage)){
-            answer = EXCEPTION;
-            return answer;
-        }
+        // 1-2 왼쪽 페이지와 오른쪽 페이지가 연속적이지 않은 경우
         // 1-3 펼친 페이지가 시작 페이지나 마지막 페이지일 경우
-        if(isStartPageOrEndPage(pobiLeftPage, pobiRightPage, crongLeftPage, crongRightPage)){
-            answer = EXCEPTION;
-            return answer;
-        }
-
         // 1-4 pobi 와 crong 의 길이가 2가 아닐 경우
-        if(isNotPobiSizeOrCrongSize(pobi, crong)){
+
+        if(isLeftPageEvenRightPageOdd(pobiLeftPage, pobiRightPage, crongLeftPage, crongRightPage)
+        || isNotLeftPagePlusOneRightPage(pobiLeftPage, pobiRightPage, crongLeftPage, crongRightPage)
+        || isStartPageOrEndPage(pobiLeftPage, pobiRightPage, crongLeftPage, crongRightPage)
+        || isNotPobiSizeOrCrongSize(pobi, crong)){
             answer = EXCEPTION;
             return answer;
         }

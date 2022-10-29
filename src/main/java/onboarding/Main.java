@@ -36,5 +36,6 @@ public class Main {
         if(Problem7.isNotId("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")){
             System.out.println("되야됨");
         };
+
     }
 }
