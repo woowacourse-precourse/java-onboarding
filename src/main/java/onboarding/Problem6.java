@@ -30,11 +30,14 @@ public class Problem6 {
 
     private static boolean isNicknamesContainsNickname(String nickname) {
         for (String name : nicknames) {
-            for (int i = 0; i < nickname.length(); i++) {
-                if (name.charAt(i) == nickname.charAt(i)) {
-                    if(name.charAt(i+1) == nickname.charAt(i+1)) {
-                        return true;
-                    }
+            if(name.length() == 1) {
+                continue;
+            }
+
+            for (int i = 0; i < nickname.length()-1; i++) {
+                String check = nickname.substring(i, i+2);
+                if(name.contains(check)) {
+                    return true;
                 }
             }
         }
