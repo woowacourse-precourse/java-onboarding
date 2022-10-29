@@ -23,6 +23,6 @@
 | "zyelleyz" | "" |
 
 ## 🎯기능 구현 목록
-- [x] separateString : 문자열을 분리한다.
-- [ ] checkDuplication : 중복된 문자열이 있는지 확인한다.
-- [ ] deleteDuplication : 중복된 문자열을 삭제한다.
+- [x] separateString() : 문자열을 분리한다.
+- [x] checkDuplication() : 중복된 문자열이 있는지 확인한다.
+- [ ] deleteDuplication() : 중복된 문자열을 삭제한다.
