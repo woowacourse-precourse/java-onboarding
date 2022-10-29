@@ -48,8 +48,12 @@ public class Problem6 {
         }
 
         Collections.sort(duplicateStudentList);
+        for (Student student : duplicateStudentList) {
+            int idx = student.idx;
+            String email = forms.get(idx).get(0);
 
-
+            answer.add(email);
+        }
 
         return answer;
     }
