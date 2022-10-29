@@ -3,6 +3,7 @@ package onboarding;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Problem6 {
 
@@ -16,9 +17,10 @@ public class Problem6 {
     public static void initCrewInfoMap(List<List<String>> crewForms) {
         crewForms.stream()
                 .forEach(crewInfo -> {
-                    String crewEmail = crewInfo.get(0);
                     String crewNickname = crewInfo.get(1);
-                    crewInfoMap.put(crewEmail, crewNickname);
+                    String crewEmail = crewInfo.get(0);
+                    crewInfoMap.put(crewNickname, crewEmail);
                 });
     }
+
 }
