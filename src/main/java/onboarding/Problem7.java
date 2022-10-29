@@ -2,7 +2,9 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Problem7 {
     private static List<String> myFriendsList = new ArrayList<>();
@@ -10,14 +12,39 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+        Map<String, Integer> score = new HashMap<>();
 
         if (isError(user, friends, visitors)) {
             return List.of("-1");
         }
 
         divideFriends(user, friends);
-
+        score = giveScore(friends, visitors, score);
         return answer;
+    }
+
+    public static Map<String, Integer> giveScore(List<List<String>> friends, List<String> visitors, Map<String, Integer> score) {
+        for (String myFriend : myFriendsList) {
+            for (List<String> friend : friends) {
+                if (friend.contains(myFriend)) {
+                    String id = "";
+                    if (friend.get(0).equals(myFriend)) {
+                        id = friend.get(1);
+                    } else {
+                        id = friend.get(0);
+                    }
+                    score.put(id, score.getOrDefault(id, 0) + 10);
+                }
+            }
+
+            for (String visitor : visitors) {
+                if (!visitor.equals(myFriend)) {
+                    score.put(visitor, score.getOrDefault(visitor, 0) + 1);
+                }
+            }
+        }
+
+        return score;
     }
 
     private static void divideFriends(String user, List<List<String>> friends) {
