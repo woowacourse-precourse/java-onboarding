@@ -10,32 +10,35 @@ public class Problem2 {
         } else if(isUpperCase(cryptogram)){ // 대문자가 있는 경우 false return
             return false;
         }
+        System.out.println("예외처리 통과");
         return true;
     }
 
     // 대문자 검사 함수.
     public static boolean isUpperCase(String cryptomgram){
         for(int i = 0; i < cryptomgram.length(); i++){
-            if(cryptomgram.indexOf(i) == cryptomgram.toUpperCase().indexOf(i)){ // 대문자가 있는 경우 true return
+            if(cryptomgram.charAt(i) == cryptomgram.toUpperCase().charAt(i)){ // 대문자가 있는 경우 true return
                 return true;
             }
         }
         return false;
     }
     // 2. 연속하는 중복문자를 삭제하는 함수 만들기
-    public static String deleteDuplicate(String cryptogram){
-        String answer = "";
+    public static String deleteDuplicate(String cryptogram, String deleteAnswer){
         for(int i = 0; i<cryptogram.length(); i++){
             if(cryptogram.indexOf(i) != cryptogram.indexOf(i+1)){
-                answer += cryptogram.indexOf(i);
+                deleteAnswer += cryptogram.indexOf(i);
+                return deleteDuplicate(deleteAnswer, deleteAnswer);
             }
         }
-        return answer;
+        System.out.println("answer : " + deleteAnswer);
+        return deleteAnswer;
     }
     public static String solution(String cryptogram) {
         String answer = "answer";
         if(isException(cryptogram)){
-            // 2. 연속하는 중복문자를 삭제하는 함수 만들기
+            // 중복제거 함수를 통해서 중복제거 하기.
+            answer = deleteDuplicate(cryptogram, cryptogram);
         }
 
         return answer;
