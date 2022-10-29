@@ -40,31 +40,8 @@ public class Problem7 {
             map = accumulateRecommendedScore(map, visitor, 1);
         }
 
-        //점수높은 5명 뽑는 기능
-        //일단 점수 높은 순으로 정렬
-        List<Map.Entry<String, Integer>> list = new ArrayList<>(map.entrySet());
-        Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
-            public int compare(Map.Entry<String, Integer> a, Map.Entry<String, Integer> b) {
-                int res = b.getValue().compareTo(a.getValue());
-                if(res == 0){
-                    res = a.getKey().compareTo(b.getKey());
-                }
-                return res;
-            }
-        });
-
-        //위에서부터 5명 잘라서 리스트에 넣기
-        for(int i = 0; i < list.size(); i++){
-            if(i == 5){
-                break;
-            }
-            if(list.get(i).getValue() == 0){
-                //점수가 0이면 리스트에 넣지 않음
-                break;
-            }else{
-                answer.add(list.get(i).getKey());
-            }
-        }
+        //점수높은 5명으로 추천 리스트 만들기
+        answer = makeRecommendedFriendList(map);
 
         return answer;
     }
@@ -90,4 +67,36 @@ public class Problem7 {
         }
         return map;
     }
+
+    private static List<String> makeRecommendedFriendList(HashMap<String, Integer> map){
+        List<String> result = new ArrayList<>();
+
+        //점수 내림차순 정렬
+        List<Map.Entry<String, Integer>> list = new ArrayList<>(map.entrySet());
+        Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
+            public int compare(Map.Entry<String, Integer> a, Map.Entry<String, Integer> b) {
+                int res = b.getValue().compareTo(a.getValue());
+                if(res == 0){
+                    res = a.getKey().compareTo(b.getKey());
+                }
+                return res;
+            }
+        });
+
+        //추천리스트 만들기
+        for(int i = 0; i < list.size(); i++){
+            if(i == 5){
+                break;
+            }
+            if(list.get(i).getValue() == 0){
+                //점수가 0이면 리스트에 넣지 않음
+                break;
+            }else{
+                result.add(list.get(i).getKey());
+            }
+        }
+
+        return result;
+    }
+
 }
