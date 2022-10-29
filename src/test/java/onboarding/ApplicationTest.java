@@ -329,15 +329,15 @@ class ApplicationTest {
         @Test
         void isDuplicateTest() {
             String nickname = "차영호입니다";
-            String nicknameUnit = "영호";
-            assertThat(Problem6.isDuplicate(nickname, nicknameUnit)).isEqualTo(true);
+            List<String> strings = Problem6.separateNickname("영호일까");
+            assertThat(Problem6.isDuplicate(nickname, strings)).isEqualTo(true);
         }
 
         @Test
         void isDuplicateFalseTest() {
             String nickname = "차영호입니다";
-            String nicknameUnit = "입다";
-            assertThat(Problem6.isDuplicate(nickname, nicknameUnit)).isEqualTo(false);
+            List<String> strings = Problem6.separateNickname("영일호까");
+            assertThat(Problem6.isDuplicate(nickname, strings)).isEqualTo(false);
         }
     }
 
