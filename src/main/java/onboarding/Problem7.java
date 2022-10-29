@@ -84,5 +84,11 @@ public class Problem7 {
         return false;
     }
 
+    private static void getScoreOfVisitors(List<String> visitors){
+        for(String visitor : visitors){
+            giveSpaceOrScoreOnMap(visitor);
+        }
+    }
+
 
 }
