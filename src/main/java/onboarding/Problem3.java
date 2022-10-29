@@ -1,8 +1,21 @@
 package onboarding;
 
 public class Problem3 {
-    public static int solution(int number) {
-        int answer = 0;
-        return answer;
+
+    private static int getCountBy369(int number) {
+        int cnt = 0;
+
+        for(int num = 1; num <= number; num++) {
+            int tempNum = num;
+
+            while(tempNum > 0) {
+                int subNum = tempNum % 10;
+                if(subNum == 3 || subNum == 6 || subNum == 9) cnt++;
+                tempNum /= 10;
+            }
+        }
+
+        return cnt;
     }
+
 }
