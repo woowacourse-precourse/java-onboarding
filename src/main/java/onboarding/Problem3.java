@@ -6,7 +6,10 @@ public class Problem3 {
 
         // 3, 6, 9 게임은 나머지가 3,6,9 여야 함
         // ex) 369라는 숫자를 10으로 계속 나누면 나머지가 9 6 3 이 나오므로 박수 세번임
-
+        for (int i = 1; i <= number; i++) {
+            int sumClap = checkClap(i);
+            answer += sumClap;
+        }
 
         return answer;
     }
