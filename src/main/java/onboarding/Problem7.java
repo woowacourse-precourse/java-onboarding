@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
 
@@ -26,16 +27,24 @@ public class Problem7 {
         return answer;
     }
 
-    private static void addUsersFriend(String user, List<List<String>> friends){
-        for(List<String> relation : friends){
-            addFriendIfExists(user, relation);
-        }
+    private static List<String> sortNameByScore(){
+        return scoreToUser.entrySet().stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .map(Map.Entry::getKey)
+                .limit(5)
+                .collect(Collectors.toList());
     }
 
     private static void getScore(List<List<String>> friends, List<String> visitors){
         makeScoresForFriendship(friends);
         getScoreOfVisitors(visitors);
         deleteZeroValueOnMap();
+    }
+
+    private static void addUsersFriend(String user, List<List<String>> friends){
+        for(List<String> relation : friends){
+            addFriendIfExists(user, relation);
+        }
     }
 
     private static void deleteZeroValueOnMap(){
