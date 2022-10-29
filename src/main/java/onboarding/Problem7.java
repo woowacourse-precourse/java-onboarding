@@ -37,6 +37,17 @@ public class Problem7 {
             }
             result.put(visit, point);
         }
+        int count = 0;
+
+        List<Map.Entry<String, Integer>> entries = result.entrySet().stream()
+                .sorted(Map.Entry.comparingByKey())
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).collect(Collectors.toList());
+
+        for (Map.Entry<String, Integer> entry : entries) {
+            if (count > 4) return answer;
+            answer.add(entry.getKey());
+            count++;
+        }
         return answer;
     }
 }
