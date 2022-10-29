@@ -1,5 +1,6 @@
 package onboarding;
 
+import problem1.BattleResult;
 import problem1.Page;
 import problem1.Player;
 
@@ -14,7 +15,9 @@ class Problem1 {
             Player pobi = new Player(asPages(pobiPageNumbers));
             Player crong = new Player(asPages(crongPageNumbers));
 
-            return pobi.battleWith(crong).getCode();
+
+            BattleResult battleResult = pobi.battleWith(crong);
+            return battleResult.getCode();
         } catch (RuntimeException e) {
             return -1;
         }
