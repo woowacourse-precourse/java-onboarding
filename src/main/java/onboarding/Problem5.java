@@ -2,9 +2,13 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.InputMismatchException;
 import java.util.List;
 
 public class Problem5 {
+
+    static final int START_RANGE = 1;
+    static final int END_RANGE = 1_000_000;
 
     static final int[] UNITS = {50_000, 10_000, 5_000, 1_000, 500, 100, 50, 10, 1};
 
@@ -13,6 +17,10 @@ public class Problem5 {
     }
 
     private static List<Integer> getResultUnitList(int money) {
+        if (!isValidNumber(money)) {
+            throw new InputMismatchException("입력된 금액의 크기가 [1,1_000_000] 이내가 아닙니다.");
+        }
+
         List<Integer> answer = new ArrayList<>();
         int leftMoney = money;
 
@@ -41,5 +49,9 @@ public class Problem5 {
 
     private static boolean isEnoughMoney(int leftMoney, int unit) {
         return leftMoney >= unit;
+    }
+
+    private static boolean isValidNumber(int num) {
+        return START_RANGE <= num && num <= END_RANGE;
     }
 }
