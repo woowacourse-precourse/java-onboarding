@@ -10,13 +10,13 @@ import java.util.Set;
 
 public class Problem6 {
     private static final Map<String, Set<String>> STUDENTS_INFO = new HashMap<String, Set<String>>();
-    private static final Set<String> DUPLICATED_STUDENTS = new HashSet<>();
+    private static final Set<String> DUPLICATE_STUDENTS = new HashSet<>();
 
     public static List<String> solution(List<List<String>> forms) {
         for (List<String> info : forms) {
             saveInfoForStudent(info);
         }
-        findDuplicatedStudents();
+        findDuplicateStudents();
         return getAnswer();
     }
 
@@ -35,16 +35,16 @@ public class Problem6 {
         }
     }
 
-    private static void findDuplicatedStudents() {
+    private static void findDuplicateStudents() {
         for (Set<String> studentEmails : STUDENTS_INFO.values()) {
             if (studentEmails.size() >= 2) {
-                DUPLICATED_STUDENTS.addAll(studentEmails);
+                DUPLICATE_STUDENTS.addAll(studentEmails);
             }
         }
     }
 
     private static List<String> getAnswer() {
-        ArrayList<String> answer = new ArrayList<>(DUPLICATED_STUDENTS);
+        ArrayList<String> answer = new ArrayList<>(DUPLICATE_STUDENTS);
         Collections.sort(answer);
         return answer;
     }
