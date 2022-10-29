@@ -3,7 +3,7 @@ package onboarding;
 public class Problem3 {
     public static int solution(int number) {
         String linkedNums = linkNums(number);
-        int answer = countNum(linkedNums, 3) + countNum(linkedNums, 6) + countNum(linkedNums, 9);
+        int answer = countNum(linkedNums, "369");
         return answer;
     }
     static String linkNums(int num) {
@@ -13,7 +13,7 @@ public class Problem3 {
         }
         return result;
     }
-    static int countNum(String str, int target) {
-        return str.length() - str.replace(String.valueOf(target), "").length();
+    static int countNum(String str, String target) {
+        return str.length() - str.replaceAll("["+target+"]", "").length();
     }
 }
