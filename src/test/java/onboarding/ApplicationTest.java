@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 
 import onboarding.problem2.validation.CryptogramValidator;
 import onboarding.problem3.validation.ThreeSixNineValidator;
-import onboarding.problem6.validation.UserInfoValidator;
+import onboarding.problem6.validation.UserValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -400,9 +400,9 @@ class ApplicationTest {
             assertThatThrownBy(() -> Problem6.solution(forms))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(String.format(
-                            UserInfoValidator.INVALID_COUNT_RANGE_MESSAGE_FORMAT,
-                            UserInfoValidator.MIN_RANGE,
-                            UserInfoValidator.MAX_RANGE)
+                            UserValidator.INVALID_COUNT_RANGE_MESSAGE_FORMAT,
+                            UserValidator.MIN_RANGE,
+                            UserValidator.MAX_RANGE)
                     );
         }
 
@@ -417,9 +417,9 @@ class ApplicationTest {
             assertThatThrownBy(() -> Problem6.solution(forms))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(String.format(
-                            UserInfoValidator.INVALID_COUNT_RANGE_MESSAGE_FORMAT,
-                            UserInfoValidator.MIN_RANGE,
-                            UserInfoValidator.MAX_RANGE)
+                            UserValidator.INVALID_COUNT_RANGE_MESSAGE_FORMAT,
+                            UserValidator.MIN_RANGE,
+                            UserValidator.MAX_RANGE)
                     );
         }
 
@@ -433,7 +433,7 @@ class ApplicationTest {
 
             assertThatThrownBy(() -> Problem6.solution(forms))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(UserInfoValidator.INVALID_EMAIL_FORMAT_MESSAGE);
+                    .hasMessage(UserValidator.INVALID_EMAIL_FORMAT_MESSAGE);
         }
 
         @DisplayName("유효한 이메일 도메인이 아닌 경우 예외 발생")
@@ -447,8 +447,8 @@ class ApplicationTest {
             assertThatThrownBy(() -> Problem6.solution(forms))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(String.format(
-                            UserInfoValidator.INVALID_EMAIL_DOMAIN_MESSAGE_FORMAT,
-                            UserInfoValidator.VALID_EMAIL_DOMAIN)
+                            UserValidator.INVALID_EMAIL_DOMAIN_MESSAGE_FORMAT,
+                            UserValidator.VALID_EMAIL_DOMAIN)
                     );
         }
 
@@ -463,8 +463,8 @@ class ApplicationTest {
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(String.format(
                             "이메일 길이는 %d자 이상 %d자 미만이어야 합니다.",
-                            UserInfoValidator.MIN_EMAIL_LENGTH,
-                            UserInfoValidator.MAX_EMAIL_LENGTH)
+                            UserValidator.MIN_EMAIL_LENGTH,
+                            UserValidator.MAX_EMAIL_LENGTH)
                     );
         }
 
@@ -479,8 +479,8 @@ class ApplicationTest {
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(String.format(
                             "이메일 길이는 %d자 이상 %d자 미만이어야 합니다.",
-                            UserInfoValidator.MIN_EMAIL_LENGTH,
-                            UserInfoValidator.MAX_EMAIL_LENGTH)
+                            UserValidator.MIN_EMAIL_LENGTH,
+                            UserValidator.MAX_EMAIL_LENGTH)
                     );
         }
 
@@ -494,9 +494,9 @@ class ApplicationTest {
             assertThatThrownBy(() -> Problem6.solution(forms))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(String.format(
-                            UserInfoValidator.INVALID_NAME_LENGTH_MESSAGE_FORMAT,
-                            UserInfoValidator.MIN_NAME_LENGTH,
-                            UserInfoValidator.MAX_NAME_LENGTH)
+                            UserValidator.INVALID_NAME_LENGTH_MESSAGE_FORMAT,
+                            UserValidator.MIN_NAME_LENGTH,
+                            UserValidator.MAX_NAME_LENGTH)
                     );
         }
 
@@ -510,9 +510,9 @@ class ApplicationTest {
             assertThatThrownBy(() -> Problem6.solution(forms))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(String.format(
-                            UserInfoValidator.INVALID_NAME_LENGTH_MESSAGE_FORMAT,
-                            UserInfoValidator.MIN_NAME_LENGTH,
-                            UserInfoValidator.MAX_NAME_LENGTH)
+                            UserValidator.INVALID_NAME_LENGTH_MESSAGE_FORMAT,
+                            UserValidator.MIN_NAME_LENGTH,
+                            UserValidator.MAX_NAME_LENGTH)
                     );
         }
 
@@ -525,7 +525,7 @@ class ApplicationTest {
 
             assertThatThrownBy(() -> Problem6.solution(forms))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(UserInfoValidator.EMAIL_NOT_KOREAN_MESSAGE);
+                    .hasMessage(UserValidator.EMAIL_NOT_KOREAN_MESSAGE);
         }
     }
 
