@@ -3,6 +3,13 @@ package onboarding;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
+        StringBuilder sb = new StringBuilder(cryptogram);
+
+        while (hasConsecutiveWord(sb)) {
+            sb = removeConsecutiveWord(sb);
+        }
+        answer = sb.toString();
+
         return answer;
     }
 
