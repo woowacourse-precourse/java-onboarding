@@ -1,7 +1,5 @@
 package onboarding;
 
-import net.bytebuddy.dynamic.scaffold.MethodGraph;
-
 import java.util.List;
 import java.util.LinkedList;
 import java.util.HashSet;
@@ -10,11 +8,12 @@ import java.util.Collections;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         Problem6 problem = new Problem6();
-        List<String> answer = new LinkedList<>();
+        List<String> answer;
 
         LinkedList<String> nicknamelist = new LinkedList<>();
-        LinkedList<String> splitnickname = new LinkedList<>();
-        LinkedList<String> duplicatenickname = new LinkedList<>();
+        LinkedList<String> splitnickname;
+        LinkedList<String> duplicatenickname;
+        HashSet<String> answerset = new HashSet<>();
 
         for(List e : forms) {
             nicknamelist.add((String) e.get(1));
@@ -25,16 +24,12 @@ public class Problem6 {
 
         for(String e : duplicatenickname) {
             for(List list : forms) {
-                answer.add(problem.findEmail(e, list));
+                answerset.add(problem.findEmail(e, list));
             }
         }
 
-        for(int i=0; i<answer.size(); i++) {
-            if(answer.get(i).equals("")) {
-                answer.remove(i);
-            }
-        }
-
+        answerset.remove("");
+        answer = new LinkedList<>(answerset);
         Collections.sort(answer);
 
         return answer;
