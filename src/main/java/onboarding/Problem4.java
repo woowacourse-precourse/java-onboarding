@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Problem4 {
     public static String solution(String word) {
-        Map<Character, Character> wordMap = new HashMap<Character, Character>();
+        Map<Character, Character> wordMap = new HashMap<>();
 
         char upperA = 'A';
         char lowerA = 'a';
