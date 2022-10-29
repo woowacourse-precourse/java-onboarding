@@ -21,11 +21,16 @@ package onboarding;
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
-        int endNumber = 0;
+        int count = 0;
+        int findNumber = 0;
         for(int i = 1; i < number + 1; i++){
-
+            findNumber = i;
+            while(findNumber > 0){
+                if(findNumber % 10 == 3 || findNumber % 10 == 6 || findNumber % 10 == 9)
+                    count++;
+                findNumber = findNumber / 10;
+            }
         }
-
         return answer;
     }
 }
