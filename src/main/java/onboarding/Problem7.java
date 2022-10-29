@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 
@@ -66,13 +67,21 @@ public class Problem7 {
 
         int limit = 5;
         countingMap = sortByDescendingOrder(countingMap, limit);
-
         countingMap = removeIfCountEqualsZero(countingMap);
-
         List<Map.Entry<String, Integer>> countingList = sortByAlphabeticalOrder(countingMap);
+        List<String> answer = fixStringAndReturn(countingList);
 
 
-        List<String> answer = Collections.emptyList();
+        return answer;
+    }
+
+    private static List<String> fixStringAndReturn(List<Map.Entry<String, Integer>> countingList) {
+        List<String> answer = new ArrayList<>();
+        String regex = "=[0-9]+";
+        for (int i = 0; i < countingList.size(); i++) {
+            String returnValue = String.valueOf(countingList.get(i)).replaceAll(regex, "");
+            answer.add(returnValue);
+        }
         return answer;
     }
 
