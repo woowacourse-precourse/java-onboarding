@@ -4,9 +4,14 @@ public class Problem2 {
 
     public static String solution(String cryptogram) {
 
-        String answer = "answer";
+        int preLen = 0;
 
-        return answer;
+        while (preLen != cryptogram.length()) {
+            preLen = cryptogram.length();
+            cryptogram = getRemoveDuplicateWord(cryptogram);
+        }
+
+        return cryptogram;
     }
 
     //중복 문자 제거
