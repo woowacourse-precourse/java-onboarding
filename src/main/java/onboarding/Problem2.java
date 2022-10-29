@@ -5,11 +5,11 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Problem2 {
+    public static List<String> crypto;
     public static String solution(String cryptogram) {
         String answer = "answer";
-        List<String> crypto = Arrays.asList(cryptogram);
+        crypto = Arrays.asList(cryptogram);
         iterateList(crypto);
-
         return answer;
     }
 
