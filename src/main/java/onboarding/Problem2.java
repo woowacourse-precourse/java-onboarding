@@ -21,14 +21,14 @@ public class Problem2 {
                 } else break;
             }
 
-            int start = -1;
+            int start = -1; //문자열 중복 시작 지점
             for(int i = 0; i<cryptogram.length()-1; i++) {
                 if(cryptogram.charAt(i) == cryptogram.charAt(i+1)) {
                     start = i; break;
                 }
             }
 
-            if(start != -1) {
+            if(start != -1) { //문자열 중복 끝나는 지점
                 int end = start;
                 for(int i = start+1; i<cryptogram.length(); i++) {
                     if(cryptogram.charAt(start) != cryptogram.charAt(i)) {
@@ -43,25 +43,7 @@ public class Problem2 {
             } else break;
         }
         return cryptogram;
-
-        //처음에 생각했던 풀이방법. 불필요한 중복이 많아 위의 코드로 변경
-/*        while(true) {
-            Set<Integer> chars = new HashSet<>();
-            for(int i = 0; i< cryptogram.length()-1; i++) {
-                if(cryptogram.charAt(i) == cryptogram.charAt(i+1)) {
-                    chars.add(i);
-                    chars.add(i+1);
-                }
-            }
-            if(chars.size() == 0) break;
-            StringBuilder sb = new StringBuilder();
-            sb.append(cryptogram);
-            for(Integer i : chars) {
-                sb.replace(i,i+1," ");
-            }
-            cryptogram = sb.toString();
-            cryptogram = cryptogram.replaceAll(" ", "");
-        }
-        return cryptogram;*/
     }
+
+
 }

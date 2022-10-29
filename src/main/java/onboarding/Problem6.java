@@ -1,30 +1,39 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Set;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer;
-
-        Set<String> emails = new HashSet<>();
+        List<String> emails = new ArrayList<>();
         for(int i = 0; i < forms.size() - 1; i++) {
             List<String> form = forms.get(i);
+
+            String email1 = form.get(0);
+            String name1 = form.get(1);
             for(int j = i+1; j < forms.size(); j++) {
                 List<String> compareWithForm = forms.get(j);
-                String name1 = form.get(1);
+
+                String email2 = compareWithForm.get(0);
                 String name2 = compareWithForm.get(1);
 
+                if(name1.length() < 2) continue;
+
                 if(isDuplicated(name1, name2)) {
-                    emails.add(form.get(0));
-                    emails.add(compareWithForm.get(0));
+                    if(!emails.contains(email1)) {
+                        emails.add(email1);
+                    }
+                    if(!emails.contains(email2)) {
+                        emails.add(email2);
+                    }
+
                 }
             }
         }
-        answer = new ArrayList<>(emails);
-        return answer;
+        emails.sort(Comparator.naturalOrder());
+
+        return emails;
     }
 
     public static boolean isDuplicated(String name1, String name2) {
