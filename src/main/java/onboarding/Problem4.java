@@ -3,6 +3,12 @@ package onboarding;
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
+        char[] origin = word.toCharArray();
+        for (char c : origin){
+            answer += check(c);
+        }
+        return answer;
+    }
 
     // 문자 체크
     private static char check(char c) {
