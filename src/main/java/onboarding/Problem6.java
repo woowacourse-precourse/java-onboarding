@@ -41,7 +41,14 @@ public class Problem6 {
     private static void updateCrewEmailForDuplicateNicknames(Set<String> crewEmailForDuplicateNicknames, Map<String, Set<String>> twoCharsAndEmails) {
 
         for (Set<String> emails : twoCharsAndEmails.values()) {
-            getCrewEmailifNicknameDuplicate(crewEmailForDuplicateNicknames, emails);
+            updateCrewEmailIfNicknameDuplicate(crewEmailForDuplicateNicknames, emails);
+        }
+    }
+
+    private static void updateCrewEmailIfNicknameDuplicate(Set<String> crewEmailForDuplicateNicknames, Set<String> emails) {
+
+        if (emails.size() > 1) {
+            crewEmailForDuplicateNicknames.addAll(emails);
         }
     }
 
