@@ -27,10 +27,15 @@ public class Problem6 {
     private static void putTwoCharsAndEmails(Map<String, Set<String>> twoCharsAndEmails, Set<String> twoCharsSet, String email) {
 
         for (String twoChars : twoCharsSet) {
-            Set<String> emails = twoCharsAndEmails.getOrDefault(twoChars, new HashSet<>());
-            emails.add(email);
+            Set<String> emails = getOrCreateEmailSet(twoCharsAndEmails, email, twoChars);
             twoCharsAndEmails.put(twoChars, emails);
         }
+    }
+
+    private static Set<String> getOrCreateEmailSet(Map<String, Set<String>> twoCharsAndEmails, String email, String twoChars) {
+        Set<String> emails = twoCharsAndEmails.getOrDefault(twoChars, new HashSet<>());
+        emails.add(email);
+        return emails;
     }
 
     /**
