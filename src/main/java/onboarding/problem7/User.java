@@ -49,4 +49,13 @@ public class User {
             }
         }
     }
+
+    private void getScoresByVisitedUsers() {
+        for (String visitor : visitors) {
+            if (!relationships.contains(visitor)) {
+                SCORES_BY_USERS.put(visitor,
+                        SCORES_BY_USERS.containsKey(visitor) ? SCORES_BY_USERS.get(visitor) + 1 : 1);
+            }
+        }
+    }
 }
