@@ -42,13 +42,13 @@ class Problem7Test {
     }
 
     @Test
-    void countBothKnowFriends() {
-        Map<String, Integer> bothKnowFriendsCount = Problem7.countBothKnowFriends("mrko", userToFriends);
+    void computeBothKnowFriendsScore() {
+        Map<String, Integer> bothKnowFriendsCount = Problem7.computeBothKnowFriendsScore("mrko", userToFriends);
 
         Assertions.assertThat(bothKnowFriendsCount.get("andole"))
-            .isEqualTo(2);
+            .isEqualTo(20);
         Assertions.assertThat(bothKnowFriendsCount.get("jun"))
-            .isEqualTo(2);
+            .isEqualTo(20);
     }
 
     @Test

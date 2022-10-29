@@ -9,6 +9,8 @@ import java.util.stream.Collectors;
 
 public class Problem7 {
 
+    private static final int BOTH_KNOW_ONE_FRIEND_SCORE = 10;
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, List<String>> userToFriends = parseFriends(friends);
 
@@ -30,8 +32,8 @@ public class Problem7 {
         return visitCount;
     }
 
-    static Map<String, Integer> countBothKnowFriends(String mainCharacter, Map<String, List<String>> userToFriends) {
-        Map<String, Integer> bothKnowFriendsCount = new HashMap<>();
+    static Map<String, Integer> computeBothKnowFriendsScore(String mainCharacter, Map<String, List<String>> userToFriends) {
+        Map<String, Integer> bothKnowFriendsScore = new HashMap<>();
         List<String> mainCharacterFriends = userToFriends.get(mainCharacter);
 
         userToFriends.forEach((user, friends) -> bothKnowFriendsCount.put(user, countBothKnowFriends(mainCharacterFriends, friends)));
