@@ -1,15 +1,39 @@
 package onboarding.problem3;
 
-@Deprecated
+import static onboarding.problem3.InputNumberValidator.*;
+
 public class ThreeSixNineGame {
 
-    private final Check369 check369;
+    public int do369(int number) {
+        validateNumber(number);
+        int result = 0;
 
-    public ThreeSixNineGame(Check369 check369) {
-        this.check369 = check369;
+        for (int i = 1; i <= number; i++) {
+            String strNum = String.valueOf(i);
+
+            if (contains369(strNum)) {
+                result += count369(strNum);
+            }
+        }
+
+        return result;
     }
 
-    public int do369(int number) {  // TODO: 고민이 됩니다..
-        return check369.check369(number);
+    private boolean contains369(String number) {
+        return number.contains("3") || number.contains("6") || number.contains("9");
     }
+
+    private int count369(String number) {
+        int count = 0;
+        for (int i = 0; i < number.length(); i++) {
+            int num = number.charAt(i) - '0';
+
+            if (num == 3 || num == 6 || num == 9) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
 }
