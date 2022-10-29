@@ -10,9 +10,9 @@ package onboarding;
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
-        for (char character:
-             word.toCharArray()) {
-            if(Character.isLetter(character)){
+        for (char character :
+                word.toCharArray()) {
+            if (Character.isLetter(character)) {
                 caseConverter(character);
             }
         }
@@ -26,4 +26,11 @@ public class Problem4 {
             return Character.toUpperCase(character);
     }
 
+    public static char reverseConverter(char character) {
+        if (Character.isUpperCase(character)) {
+            return (char) (155 - character);
+        } else {
+            return (char) (219 - character);
+        }
+    }
 }
