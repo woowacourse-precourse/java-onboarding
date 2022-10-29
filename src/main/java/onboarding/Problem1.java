@@ -26,4 +26,15 @@ class Problem1 {
         return maxscore;
     }
 
+    public static boolean bookValidation(List<Integer> book){
+        if(book.size()!=2||book.get(1)-book.get(0)!=1){
+            return false;
+        }
+        if(book.get(0)==1 || book.get(0)==399){
+            return false;
+        }
+        return true;
+
+    }
+
 }
