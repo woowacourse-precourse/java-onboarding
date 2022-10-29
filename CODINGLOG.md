@@ -66,3 +66,22 @@ Game 에서 예외사항이 아닌 것(정상 입력)에 대해서만 Calculator
 
 
 ![class diagram](./img/프리코스_1주차_기능1_draft2.drawio.png)
+
+
+## 문제 3
+
+### 기능 목록 v0.1
+
+이 문제는 클래스를 나눌 필요가 없다는 생각이 들었다.
+클래스를 꼭 나눠야 Java의 객체지향성을 잘 드러내는 것인지는 좀 더 고민이 필요해 보인다.
+
+1. 1부터 주어진 숫자까지 for문으로 하나씩 int 값을 받아온다
+2. 특정 int 값에 '3', '6', '9'가 들어 있는지 찾는 메소드를 정의한다
+   - cnt 변수 선언
+   - int -> String으로 변환
+   - String의 각 char를 확인
+   - 각각의 char에 3, 6, 9가 있는지 확인
+   - 있으면 cnt값 1 증가
+   - 전체 갯수를 return 해줌
+
+![class diagram](./img/프리코스_1주차-Problem3.drawio.png)
