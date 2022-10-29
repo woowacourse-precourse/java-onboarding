@@ -9,6 +9,7 @@ public class Problem6 {
     private static final Map<String, String> crewInfoMap = new HashMap<>();
 
     public static List<String> solution(List<List<String>> crewInfoForms) {
+        validateCrewInfo(crewInfoForms);
         initCrewInfoMap(crewInfoForms);
         List<String> duplicableCrewNicknames = excludeLengthOneCrewNickname();
         List<String> substringCrewNicknames = getSubstringCrewNicknames(duplicableCrewNicknames);
@@ -75,6 +76,29 @@ public class Problem6 {
                 .sorted()
                 .collect(Collectors.toList());
         return duplicateCrewEmails;
+    }
+
+    private static void validateCrewInfo(List<List<String>> crewForms) {
+        if(!validateNumberOfCrew(crewForms)) {
+            throw new IllegalArgumentException("[ERROR] : 크루는 1명 이상 10,000명 이하여야합니다.");
+        }
+        crewForms.stream()
+                .forEach(crewForm -> {
+                    String crewEmail = crewForm.get(0);
+                    String crewNickname = crewForm.get(1);
+                    if(!validateEmailType(crewEmail)) {
+                        throw new IllegalArgumentException("[ERROR] : 이메일 형식에 부합해야 하며, 도메인은 email.com이어야합니다.");
+                    }
+                    if(!validateEmailLength(crewEmail)) {
+                        throw new IllegalArgumentException("[ERROR] : 이메일 길이는 11자 이상 20자 미만이어야합니다.");
+                    }
+                    if(!validateNicknameType(crewNickname)) {
+                        throw new IllegalArgumentException("[ERROR] : 닉네임은 한글만 가능합니다.");
+                    }
+                    if(!validateNicknameLength(crewNickname)) {
+                        throw new IllegalArgumentException("[ERROR] : 닉네임의 전체 길이는 1자 이상 20자 미만이어야합니다.");
+                    }
+                });
     }
 
     private static boolean validateNumberOfCrew(List<List<String>> crewForms) {
