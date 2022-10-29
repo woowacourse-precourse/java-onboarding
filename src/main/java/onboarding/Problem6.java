@@ -8,9 +8,19 @@ public class Problem6 {
 
         Map<String, String> memberMap = memberListToMap(forms);
         List<String[]> nicknameArrays = changeNicknameStringToArray(memberMap);
-        Set<String> duplicatedNickname = findDuplicatedNickname(nicknameArrays);
-        List<String> answer = null;
-        return answer;
+        Set<String> duplicatedNicknames = findDuplicatedNickname(nicknameArrays);
+        List<String> emailList = findEmailByNickname(memberMap, duplicatedNicknames);
+        return emailList;
+    }
+
+    private static List<String> findEmailByNickname(Map<String, String> memberMap, Set<String> duplicatedNicknames) {
+
+        List<String> emailList = new ArrayList<>();
+        for (String i : duplicatedNicknames) {
+            emailList.add(memberMap.get(i));
+        }
+        Collections.sort(emailList);
+        return emailList;
     }
 
     private static Set<String> findDuplicatedNickname(List<String[]> nicknameArrays) {
