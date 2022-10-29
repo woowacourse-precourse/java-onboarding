@@ -13,6 +13,15 @@ public class Problem6 {
 
     public static List<String> ListOfDuplicate(List<List<String>> forms) {
         ArrayList<String> emailOfDuplicateNickname = new ArrayList<>();
+        for (List<String> crew : forms) { extractPartOfNick(crew.get(1)); }
+        for (String key : partOfNickList.keySet()) {
+            if (partOfNickList.get(key) >= 2) {
+                for (List<String> crew : forms) {
+                    if (crew.get(1).contains(key)) { emailOfDuplicateNickname.add(crew.get(0)); }
+                }
+            }
+        }
+        Collections.sort(emailOfDuplicateNickname);
         return emailOfDuplicateNickname;
     }
     
