@@ -41,4 +41,27 @@ class Problem1 {
 
         return mulValue;
     }
+
+    private static boolean isInputError(List<Integer> pages) {
+        // 올바른 입력이 들어왔는지 확인하는 메소드
+        int leftPage = pages.get(0);
+        int rightPage = pages.get(1);
+
+        // 1 ~ 400 이내인지 확인
+        if (leftPage < 1 || leftPage > 400 || rightPage < 1 || rightPage > 400) {
+            return false;
+        }
+
+        // 페이지의 차이가 1인지 확인
+        if (rightPage - leftPage != 1) {
+            return false;
+        }
+
+        // 왼쪽 페이지가 홀수이고 오른쪽 페이지가 짝수인지 확인
+        if (leftPage % 2 == 0 || rightPage % 2 == 1) {
+            return false;
+        }
+
+        return true;
+    }
 }
