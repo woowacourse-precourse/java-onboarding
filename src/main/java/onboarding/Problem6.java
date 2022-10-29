@@ -12,7 +12,6 @@ public class Problem6 {
 
     static List<String> nick = new ArrayList<>();
     private static List<String> stringCombination = new ArrayList<>();
-    private static List<String> answer = new ArrayList<>();
     private static HashSet<Integer> idx = new HashSet<>();
 
     private static void comb(char[] str, int r, int i){
@@ -39,9 +38,7 @@ public class Problem6 {
     private static void getDupEmail(int i) {
         getnickComb(i); //조합 얻음
         for(int k = i + 1; k < nick.size(); k++)
-        {
-            dupCheck(i);
-        } // 중복 검사
+            dupCheck(i); // 중복 검사
         stringCombination.clear();//  Comb 비우기
     }
 
@@ -62,6 +59,8 @@ public class Problem6 {
     }
 
     public static List<String> solution(List<List<String>> forms) {
+
+        List<String> answer = new ArrayList<>();
 
         for (int i = 0; i <forms.size(); i++)
             nick.add(forms.get(i).get(1));
