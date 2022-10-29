@@ -15,28 +15,28 @@ public class Problem5 {
 
     public static List<Integer> solution(int money) {
 
-        List<Integer> answer = Collections.emptyList();
+        List<Integer> result = new ArrayList<>();
 
         if (Problem5Validation.problem5InputValidation(money, MIN_INPUT,MAX_INPUT)) {
-            moneyCount(answer, money);
-        } else {
-            for (int i = 0; i < MONEY_LIST.size(); i++) {
-                answer.add(0);
-            }
+            moneyCount(result, money);
+            return result;
         }
+        List<Integer> answer = Collections.emptyList();
         return answer;
+
+
 
     }
 
-    private static void moneyCount(List<Integer> answer, int money) {
+    private static void moneyCount(List<Integer> result, int money) {
         for (int i = 0; i < MONEY_LIST.size(); i++) {
-            int quotient = quotientOfMoneyIs(MONEY_LIST.get(i), money);
+            int quotient = quotientOfMoneyIs(money,MONEY_LIST.get(i));
             money %= MONEY_LIST.get(i);
-            answer.add(quotient);
+            result.add(quotient);
         }
     }
 
     private static int quotientOfMoneyIs(Integer money, int typeOfCurrency) {
-        return 0;
+        return money / typeOfCurrency;
     }
 }
