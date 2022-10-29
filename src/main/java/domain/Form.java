@@ -27,7 +27,6 @@ public class Form {
     
 	/**
      * 닉네임을 이루는 모든 두 글자 문자열을 반환한다.
-     * @param nickname
      * @return 중복없는 모든 두 글자 문자열의 집합
      */
     public HashSet<String> getAllUsedTwoWordsByNickname() {

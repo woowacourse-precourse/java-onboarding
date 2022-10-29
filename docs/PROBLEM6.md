@@ -31,7 +31,7 @@
     - HashSet getAllUsedTwoWordsByNickname()
     - Form객체에서 이 기능을 제공하므로 파라미터 없이 this.nickname으로 닉네임 정보를 획득한다.
     - 동일한 문자열이 여러 번 사용될 수 있으므로 중복방지를 위해 HashSet을 사용한다.
-3. 신청폼 전체에 존재하는 모든 연속된 2글자 문자열에 대해, 각각 해당되는 모든 폼을 저장하고 있는 자료구조를 생성하는 기능
+3. 복수개의 신청폼에 존재하는 모든 연속된 2글자 문자열에 대해, 각각 해당되는 모든 폼을 저장하고 있는 자료구조를 생성하는 기능
     - FormValidator 클래스에 usedTwoWordsInfo 필드를 정의
     - void initUsedTwoWordsInfo(List<Form> forms), void updateUsedTwoWordsInfo(Form form)
     - key: 2글자 문자열, value: 해당 문자열이 사용된 모든 신청폼 리스트
@@ -40,7 +40,7 @@
     - usedTwoWordsInfo의 value에 담긴 list의 size가 1 이상인 경우를 확인한다.
 5. 여러 신청폼에 사용된 2글자 문자열을 가진 신청폼을 구하는 기능
 	- FormValidator 클래스에서 구현
-	- void setInvalidForms(), Set<Form> getInvalidForms()
+	- void initInvalidForms(), Set<Form> getInvalidForms()
     - usedTwoWordsInfo의 value값을 이용해 해당하는 Form객체를 HashSet에 저장해 반환하는 기능
     - 동일한 폼이 여러 번 저장될 수 있으므로 중복방지를 위해 HashSet을 사용한다.
 6. 5번에 해당하는 크루의 이메일 목록을 오름차순으로 정렬하는 기능
