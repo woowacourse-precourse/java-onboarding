@@ -155,6 +155,17 @@ public class Problem1Test {
             //then
             assertThatThrownBy(()->Problem1.whoIsWin(pobiBook, crongBook)).isInstanceOf(e);
         }
+
+        @Test
+        public void whoIsWinFailTestCase4(){
+            //given
+            Book pobiBook = new Book(new Page(399), new Page(399));
+            Book crongBook = new Book(new Page(197), new Page(198));
+            //when
+            Class<IllegalArgumentException> e = IllegalArgumentException.class;
+            //then
+            assertThatThrownBy(()->Problem1.whoIsWin(pobiBook, crongBook)).isInstanceOf(e);
+        }
     }
 
     @Nested
