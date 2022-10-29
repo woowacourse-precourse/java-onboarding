@@ -38,8 +38,8 @@ class Problem1 {
     // 각 자리수의 합을 구한다.
     public static int getAdditionTotal(List<Integer> pageDigitList) {
         int answer = 0;
-        for (Integer integer : pageDigitList) {
-            answer += integer;
+        for (Integer digit : pageDigitList) {
+            answer += digit;
         }
         return answer;
     }
@@ -47,8 +47,8 @@ class Problem1 {
     // 각 자리수의 곱을 구한다.
     public static int getMultiplicationTotal(List<Integer> pageDigitList) {
         int answer = 1;
-        for (Integer integer : pageDigitList) {
-            answer *= integer;
+        for (Integer digit : pageDigitList) {
+            answer *= digit;
             if (answer == 0) {
                 return 0;
             }
