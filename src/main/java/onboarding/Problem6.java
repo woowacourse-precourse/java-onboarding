@@ -27,10 +27,10 @@ public class Problem6 {
     private static List<String> validateUserNickname(List<List<String>> forms) {
         for (int i = 1; i < forms.size(); i++) {
             List<String> user = forms.get(i);
-            // 만약 중복되는 닉네임이 있다면
+            // 만약 중복되는 닉네임이 있고
             if (isLetterWordsInAlreadyExistsNicknames(user.get(Constants.NICKNAME))) {
                 // result 리스트에 이메일이 존재하지 않는다면
-                if (isAlreadyExistsEmailInResult(user.get(Constants.EMAIL))) {
+                if (!isAlreadyExistsEmailInResult(user.get(Constants.EMAIL))) {
                     result.add(user.get(Constants.EMAIL));
                 }
             }
@@ -57,18 +57,19 @@ public class Problem6 {
     }
 
     private static void ifAlreadyExistsEmailInResultAndSave(List<String> user) {
-        if (isAlreadyExistsEmailInResult(user.get(Constants.EMAIL))) {
+        if (!isAlreadyExistsEmailInResult(user.get(Constants.EMAIL))) {
             result.add(user.get(Constants.EMAIL));
+
         }
     }
 
     private static boolean isAlreadyExistsEmailInResult(String email) {
         for (String alreadyExistsEmail : result) {
             if (Objects.equals(alreadyExistsEmail, email)) {
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
     private static void sortList() {
