@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -8,19 +9,6 @@ import java.util.Map;
 import java.util.Set;
 
 public class Problem7 {
-    public static void main(String[] args) {
-        String user = "mrko";
-        List<List<String>> friends = List.of(
-            List.of("donut", "andole"),
-            List.of("donut", "jun"),
-            List.of("donut", "mrko"),
-            List.of("shakevan", "andole"),
-            List.of("shakevan", "jun"),
-            List.of("shakevan", "mrko")
-        );
-        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-        solution(user, friends, visitors);
-    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         Set<String> userFriends = new HashSet<>();
@@ -35,12 +23,6 @@ public class Problem7 {
         for (String v : visitors) {
             recommendVisitor(recommendFriends, v, userFriends);
         }
-
-        for (Map.Entry<String, Integer> stringIntegerEntry : recommendFriends.entrySet()) {
-            System.out.println(stringIntegerEntry.getKey());
-            System.out.println(stringIntegerEntry.getValue());
-        }
-
         return answer;
     }
 
@@ -65,5 +47,19 @@ public class Problem7 {
         if (!friendSet.contains(v)){
             friendMap.put(v, friendMap.getOrDefault(v, 0) + 1);
         }
+    }
+
+    public static List<List<String>> sortRecommendFriends(HashMap<String, Integer> friendMap) {
+        List<List<String>> sortedList = new ArrayList<>();
+        for (Map.Entry<String, Integer> entry : friendMap.entrySet()) {
+            sortedList.add(List.of(entry.getKey(), Integer.toString(entry.getValue())));
+        };
+        sortedList.sort((List<String> a, List<String> b) -> {
+            if (a.get(1).equals(b.get(1))) {
+                return String.CASE_INSENSITIVE_ORDER.compare(a.get(0), b.get(0));
+            }
+            return -Integer.compare(Integer.parseInt(a.get(1)), Integer.parseInt(b.get(1)));
+        });
+        return sortedList;
     }
 }
