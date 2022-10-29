@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Problem7 {
 
@@ -16,8 +17,14 @@ public class Problem7 {
     }
 
     static List<String> findAllUserWithoutMainCharacter(String mainCharacter, Map<String, List<String>> userToFriends, List<String> visitors) {
-        return null;
+        List<String> allUserWithoutMainCharacter = new ArrayList<>();
 
+        userToFriends.forEach((user, friends) -> allUserWithoutMainCharacter.add(user));
+        visitors.forEach(visitor -> allUserWithoutMainCharacter.add(visitor));
+        return allUserWithoutMainCharacter.stream()
+            .filter(user -> !user.equals(mainCharacter))
+            .distinct()
+            .collect(Collectors.toList());
     }
 
     //    static List<String> exceptAlreadyFriends(String user, List<String> friends) {
