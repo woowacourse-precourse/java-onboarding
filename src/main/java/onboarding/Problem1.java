@@ -7,6 +7,10 @@ class Problem1 {
     public static final int LOSE_NUMBER = 2;
     public static final int DRAW_NUMBER = 0;
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        if(!validate(pobi) || !validate(crong)){
+            return -1;
+        }
+
         int pobiNumber = calculateMaxNumber(pobi);
         int crongNumber = calculateMaxNumber(crong);
         int answer = compare(pobiNumber, crongNumber);
@@ -45,5 +49,10 @@ class Problem1 {
             pageNumber /= 10;
         }
         return mul;
+    }
+
+    public static boolean validate(List<Integer> pages){
+        if(pages.get(1) != pages.get(0)+1) return false;
+        return true;
     }
 }
