@@ -23,6 +23,14 @@ class Problem1 {
         return answer;
     }
 
+    public static boolean validation(List<Integer> pages) { // 유효성 검사
+        if ((pages.get(0) == 1) || (pages.get(1) == 400)) return false; // 시작 면이나 마지막 면이 나오도록 책을 펼치지 않는다
+        if (pages.size() != 2) return false; // 펼친 페이지가 들어있는 리스트는 원소가 2개여야 함
+        if ((pages.get(0) % 2 == 0) || (pages.get(1) % 2 == 1)) return false; // 왼쪽 페이지는 홀수, 오른쪽 페이지는 짝수
+
+        return (pages.get(0) + 1 == pages.get(1)); // 왼쪽 페이지 + 1 = 오른쪽 페이지
+    }
+
     public static int result(List<Integer> player1, List<Integer> player2) {
         if (validation(player1) && validation(player2)) {
             return winner(player1, player2);
