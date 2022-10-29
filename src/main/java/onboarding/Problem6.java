@@ -36,6 +36,10 @@ public class Problem6 {
             notified.addAll(findContinuousNameForms(forms, currentIdx, target));
         }
 
+        if (!notified.isEmpty()) {
+            notified.add(currentForm);
+        }
+
         return notified;
     }
 
