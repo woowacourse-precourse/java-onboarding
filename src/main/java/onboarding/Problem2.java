@@ -1,9 +1,5 @@
 package onboarding;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-
 public class Problem2 {
 
     private static final String SPECIFIC_VALUE = "-";
@@ -19,8 +15,15 @@ public class Problem2 {
         return answer;
     }
     private static boolean isDuplication(String[] array) {
-        Set<String> set = new HashSet<>(Arrays.asList(array));
-        return set.size() != array.length;
+        for (int i = 0; i < array.length - 1; i++) {
+            String firstString = array[i];
+            String nextString = array[i + 1];
+
+            if(firstString.equals(nextString)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private static void convertSpecificValue(String[] array) {
