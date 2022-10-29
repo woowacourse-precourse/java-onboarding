@@ -16,6 +16,13 @@ class Problem1 {
         Integer pobiNum = getLargestNum(pobi);
         Integer crongNum = getLargestNum(crong);
 
+        if (pobiNum > crongNum) {
+            return 1;
+        } else if (pobiNum == crongNum) {
+            return 0;
+        } else if (pobiNum < crongNum) {
+            return 2;
+        }
 
         return answer;
     }
