@@ -6,10 +6,10 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int pobiScore;
         int crongScore;
-        if (canGameStart(pobi, crong)) return -1;
+        if (!canGameStart(pobi, crong)) return -1;
         pobiScore = Math.max(howManyScore(pobi.get(0)), howManyScore(pobi.get(1)));
         crongScore = Math.max(howManyScore(crong.get(0)), howManyScore(crong.get(1)));
-        return result(pobiScore, crongScore);
+        return gameResult(pobiScore, crongScore);
     }
 
     public static boolean canGameStart(List<Integer> pobi, List<Integer> crong) {
@@ -28,7 +28,7 @@ class Problem1 {
         return num1 + 1 == num2;
     }
 
-    public static int result(int pobiScore, int crongScore) {
+    public static int gameResult(int pobiScore, int crongScore) {
         if (pobiScore > crongScore) return 1;
         if (pobiScore < crongScore) return 2;
         return 0;
