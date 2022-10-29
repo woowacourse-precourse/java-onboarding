@@ -6,11 +6,13 @@ public class Problem4 {
         // 2-1. word를 매개변수로 받아서 char.At()을 이용해 char 배열의 원소들과 비교하는 메서드 생성
         // 2-2. 소문자와 대문자를 구분하기
         // 3. 반환값 출력
-        char[] dictionaryOfWords = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
-                                    'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
-        
 
         String answer = "";
         return answer;
+    }
+
+    public String convertWords(String word) {
+        char[] dictionaryOfWords = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
+                'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
     }
 }
