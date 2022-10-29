@@ -1,11 +1,15 @@
 package onboarding;
 
-import java.util.Collections;
 import java.util.List;
+
+import onboarding.problem5.BillConverter;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
+        BillConverter billConverter = new BillConverter();
+
+        List<Integer> answer = billConverter.convertIntoBills(money);
+
         return answer;
     }
 }
