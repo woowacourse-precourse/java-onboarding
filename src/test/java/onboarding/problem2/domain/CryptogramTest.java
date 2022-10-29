@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
-public class CryptogramTest {
+class CryptogramTest {
     @Test
     @DisplayName("연속하는 중복 문자가 있으면 삭제 후 새로운 객체 반환")
     void isOverlapCharacterExist() {
