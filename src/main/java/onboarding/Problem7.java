@@ -87,6 +87,8 @@ class Intimacy {
     public Intimacy (String targetId, String userId) {
         this.targetId = targetId;
         this.userId = userId;
+        this.numOfMutualFriends = 0;
+        this.numOfVisited = 0;
     }
 
     public int getNumOfMutualFriends() {
