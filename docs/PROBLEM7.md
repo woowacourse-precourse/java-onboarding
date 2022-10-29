@@ -1,7 +1,7 @@
 ## 🍀 기능 구현 사항
 
 - 메서드명(getScoresByUsers)
-- [ ] 각 추천 친구의 점수 구하기
+- [x] 각 추천 친구의 점수 구하기
     - 메서드명 (getRelationshipsByUser)
     - [x] 사용자의 친구 목록 저장 (추천 친구에 포함되지 않을 친구들)
     - 메서드명 (getScoresByOverlappedUsers)

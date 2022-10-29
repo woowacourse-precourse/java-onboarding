@@ -21,6 +21,12 @@ public class User {
         this.visitors = visitors;
     }
 
+    public void getScoresByUsers() {
+        getRelationshipsByUser();
+        getScoresByOverlappedUsers();
+        getScoresByVisitedUsers();
+    }
+
     private void getRelationshipsByUser() {
         for (List<String> relation : friends) {
             String user1 = relation.get(0);
