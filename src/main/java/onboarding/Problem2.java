@@ -5,8 +5,12 @@ public class Problem2 {
     private static final String SPACE = "";
 
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        String before = "";
+        while (!cryptogram.equals(before)) {
+            before = cryptogram;
+            cryptogram = removeConsecutiveStrings(cryptogram);
+        }
+        return cryptogram;
     }
 
     private static String removeConsecutiveStrings(String cryptogram) {
