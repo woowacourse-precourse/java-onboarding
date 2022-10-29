@@ -54,8 +54,44 @@ class ScoreCalculator {
 }
 
 class Problem1 {
+
+    private static final int START_PAGE_NO = 1;
+    private static final int END_PAGE_NO = 400;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+
+    private static boolean validate(List<Integer> pages) {
+        return validPagesCount(pages) && validPagesRange(pages);
+    }
+
+    private static boolean validPagesCount(List<Integer> pages) {
+        return pages.size() == 2;
+    }
+
+    private static boolean validPagesRange(List<Integer> pages) {
+        int leftPage = pages.get(0);
+        int rightPage = pages.get(1);
+
+        if (!isContinuousPage(leftPage, rightPage)) {
+            return false;
+        }
+
+        return !isStartPage(leftPage) && !isEndPage(rightPage);
+    }
+
+    private static boolean isContinuousPage(int leftPage, int rightPage) {
+        return rightPage - leftPage == 1;
+    }
+
+    private static boolean isStartPage(int leftPage) {
+        return leftPage == START_PAGE_NO;
+    }
+
+    private static boolean isEndPage(int rightPage) {
+        return rightPage == END_PAGE_NO;
+    }
+
 }
