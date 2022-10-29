@@ -40,6 +40,30 @@ class Problem1 {
         if (pobi_num[0] > pobi_num[1]) pobi_max = pobi_num[0];
         else pobi_max = pobi_num[1];
 
+        int[] crong_num=new int[2];
+        int crong_max;
+
+        for(int i=0;i<2;i++) {
+            int num=crong.get(i);
+            int num2=crong.get(i);
+
+            while (num!= 0) {
+                sum += num % 10;
+                num /= 10;
+            }
+            while (num2 != 0) {
+                mul *= num2 % 10;
+                num2 /= 10;
+            }
+            if (sum > mul) crong_num[i] = sum;
+            else crong_num[i] = mul;
+
+            sum=0;
+            mul=1;
+        }
+        if (crong_num[0] > crong_num[1]) crong_max = crong_num[0];
+        else crong_max = crong_num[1];
+
         return answer;
     }
 }
