@@ -28,7 +28,19 @@ public class Problem6 {
                 set1.add(strArr[i].substring(j,j+2));
             }
         }
+        Set set3=new HashSet();
 
+        for(int i=0;i<LENGTH;i++){
+            for(int j=0;j<strArr[i].length()-1;j++) {
+                if (set2.contains(strArr[i].substring(j, j + 2))){
+                    set3.add(forms.get(i).get(0));
+                }
+            }
+        }
+        Object[] answerArr=set3.toArray();
+        for(int i=0;i<answerArr.length;i++){
+            answer.add((String)answerArr[i]);
+        }
         return answer;
     }
 }
