@@ -13,7 +13,7 @@
 1. 입력값이 유효하지 않은 입력인지 확인하는 기능
 2. 주어진 정수의 각 자리 숫자를 모두 더하거나 모두 곱해 가장 큰 수를 반환
 3. 주어지는 List의 left, right에 대해 2번을 실행하고, 더 큰 수를 반환하는 기능
-5. (1과 3을 실행하여) 상황에 맞는 결과값을 반환하는 기능
+4. (1과 3을 실행하여) 상황에 맞는 결과값을 반환하는 기능
    1. 포비와 크롱에 대해 1번을 확인 하고 유효한 입력이 아니면 -1을 반환
    2. 3번의 결과를 비교하여 적절한 값 반환(무승부에 해당되면 0, 포비의 승리는 1, 크롱의 승리는 2를 반환)
 
@@ -48,11 +48,8 @@
 - int calculatePlayerScore(List)
   - 동작: 해당 리스트의 left, right에 대해 calculatePageScore()를 실행하고 더 큰 값을 반환
   - 결과: int (left와 right의 calculatePageScore()결과 값 중에서 더 큰 값)
-- int comparePlayerScore(List, List)
-  - 동작: 주어진 두 리스트에 대해 calculatePlayerScore()한 결과값의 차이를 반환
-  - 결과: int (포비의 점수가 더 크면 양수, 동일하면 0, 크롱의 점수가 더 크면 음수)
 - int solution(List, List)
   - 동작
     1. 포비와 크롱 리스트에 대해 isInvalidInput( )를 호출하고 true가 반환되면 -1을 반환
-    2. 각 리스트에 대해 comparePlayerScore()를 호출해서 비교한 뒤, 그 결과에 맞는 값 반환 
+    2. 각 리스트에 대해 calculatePlayerScore()를 호출해서 비교한 뒤, 그 결과에 맞는 값 반환 
   - 결과: int (무승부 0, 포비 승리 1, 크롱 승리 2)
