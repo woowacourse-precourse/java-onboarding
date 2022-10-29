@@ -8,12 +8,12 @@ class Problem1 {
         int pobiNum1 = pobi.get(0);
         int pobiNum2 = pobi.get(1);
         int pobiDiff = pobiNum2 - pobiNum1;
-        if(pobiNum1 > pobiNum2 || pobiDiff !=1)
+        if(pobiNum1 % 2 ==0 || pobiNum1 > pobiNum2 || pobiDiff !=1 || pobiNum1 > 399 ||pobiNum2 > 400)
             return -1;
         int crongNum1 = crong.get(0);
         int crongNum2 = crong.get(1);
         int crongDiff = crongNum2 - crongNum1;
-        if(crongNum1 > crongNum2 || crongDiff !=1)
+        if(crongNum1 % 2 ==0 || crongNum1 > crongNum2 || crongDiff !=1 || crongNum1 > 399 ||crongNum2 > 400)
             return -1;
 
         /* 포비가 만들수 있는 가장 큰 수 구하기*/
