@@ -14,7 +14,7 @@ public class Problem7 {
         List<String> result=new ArrayList<>();
         for(List<String> friend:friends){
             if(friend.contains(user)) {
-                addFriend(result.indexOf(user),result,friend);
+                addFriend(friend.indexOf(user),result,friend);
             }
         }
         return result;
