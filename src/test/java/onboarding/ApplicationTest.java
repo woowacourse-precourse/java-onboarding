@@ -287,45 +287,56 @@ class ApplicationTest {
     }
 
     @Nested
+    @DisplayName("문제 5 테스트")
     class Problem5Test {
-        @Test
-        void case1() {
-            int money = 50_237;
-            List<Integer> result = List.of(1, 0, 0, 0, 0, 2, 0, 3, 7);
-            assertThat(Problem5.solution(money)).isEqualTo(result);
+        @Nested
+        @DisplayName("문제 5 성공 케이스 테스트")
+        class Problem5SuccessTest {
+            @Test
+            @DisplayName("최소한의 잔돈 수로 돈을 교환하여 반환1")
+            void case1() {
+                int money = 50_237;
+                List<Integer> result = List.of(1, 0, 0, 0, 0, 2, 0, 3, 7);
+                assertThat(Problem5.solution(money)).isEqualTo(result);
+            }
+
+            @Test
+            @DisplayName("최소한의 잔돈 수로 돈을 교환하여 반환2")
+            void case2() {
+                int money = 15_000;
+                List<Integer> result = List.of(0, 1, 1, 0, 0, 0, 0, 0, 0);
+                assertThat(Problem5.solution(money)).isEqualTo(result);
+            }
+
+            @Test
+            @DisplayName("십만 단위 이상의 돈 또한 정확히 계산한다.")
+            void case3() {
+                int money = 600_500;
+                List<Integer> result = List.of(12, 0, 0, 0, 1, 0, 0, 0, 0);
+                assertThat(Problem5.solution(money)).isEqualTo(result);
+            }
         }
 
-        @Test
-        void case2() {
-            int money = 15_000;
-            List<Integer> result = List.of(0, 1, 1, 0, 0, 0, 0, 0, 0);
-            assertThat(Problem5.solution(money)).isEqualTo(result);
-        }
+        @Nested
+        @DisplayName("문제 5 실패 케이스 테스트")
+        class Problem5FailureTest {
+            @Test
+            @DisplayName("비정상적인 입력값 - 1,000,000을 초과하는 입력값에 대해 예외 발생")
+            void case1() {
+                int money = 1_000_001;
+                assertThatThrownBy(() -> Problem5.solution(money))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage(String.format("입력값은 %d 이상 %d 이하의 자연수여야 합니다.", 1, 1000000));
+            }
 
-        @Test
-        @DisplayName("십만 단위의 돈 또한 정확히 계산한다.")
-        void case3() {
-            int money = 600_500;
-            List<Integer> result = List.of(12, 0, 0, 0, 1, 0, 0, 0, 0);
-            assertThat(Problem5.solution(money)).isEqualTo(result);
-        }
-
-        @Test
-        @DisplayName("비정상적인 입력값 - 1,000,000을 초과하는 입력값에 대해 예외 발생")
-        void case4() {
-            int money = 1_000_001;
-            assertThatThrownBy(() -> Problem5.solution(money))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(String.format("입력값은 %d 이상 %d 이하의 자연수여야 합니다.", 1, 1000000));
-        }
-
-        @Test
-        @DisplayName("비정상적인 입력값 - 1 미만인 입력값에 대해 예외 발생")
-        void case5() {
-            int money = 0;
-            assertThatThrownBy(() -> Problem5.solution(money))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(String.format("입력값은 %d 이상 %d 이하의 자연수여야 합니다.", 1, 1000000));
+            @Test
+            @DisplayName("비정상적인 입력값 - 1 미만인 입력값에 대해 예외 발생")
+            void case2() {
+                int money = 0;
+                assertThatThrownBy(() -> Problem5.solution(money))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage(String.format("입력값은 %d 이상 %d 이하의 자연수여야 합니다.", 1, 1000000));
+            }
         }
     }
 
