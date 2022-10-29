@@ -2,46 +2,81 @@ package onboarding;
 
 public class Problem4 {
 
-    private static char[] upperReverse;
-    private static char[] lowerReverse;
+	public static final int ALPHABET_SIZE = 26;
 
-    static {
-        upperReverse = new char[26];
-        char upperLetter = 'Z';
-        for (int i = 0; i < 26; i++) {
-            upperReverse[i] = upperLetter;
-            upperLetter--;
-        }
+	private static char[] reverseUpperLetter;
+	private static char[] reverseLowerLetter;
 
-        lowerReverse = new char[26];
-        char lowerLetter = 'z';
-        for (int i = 0; i < 26; i++) {
-            lowerReverse[i] = lowerLetter;
-            lowerLetter--;
-        }
-    }
-    public static String solution(String word) {
+	static {
+		initReverseUpperLetter();
+		initReverseLowerLetter();
+	}
 
+	private static void initReverseUpperLetter() {
+		reverseUpperLetter = new char[ALPHABET_SIZE];
+		char upperLetter = 'Z';
+
+		for (int i = 0; i < ALPHABET_SIZE; i++) {
+			reverseUpperLetter[i] = upperLetter;
+			upperLetter--;
+		}
+	}
+
+	private static void initReverseLowerLetter() {
+		reverseLowerLetter = new char[ALPHABET_SIZE];
+		char lowerLetter = 'z';
+
+		for (int i = 0; i < ALPHABET_SIZE; i++) {
+			reverseLowerLetter[i] = lowerLetter;
+			lowerLetter--;
+		}
+	}
+
+	public static String solution(String word) {
+		char[] wordToChars = word.toCharArray();
+
+        StringBuilder result = appendAlphabet(wordToChars);
+
+        return result.toString();
+	}
+
+    private static StringBuilder appendAlphabet(char[] wordToChars) {
         StringBuilder result = new StringBuilder();
 
-        char[] wordToChars = word.toCharArray();
-
         for (char wordToChar : wordToChars) {
-            if ('A' <= wordToChar && wordToChar <= 'Z') {
-                char reverse = upperReverse[((int) wordToChar - 'A')];
-                result.append(reverse);
+            if (isUpperCase(wordToChar)) {
+                appendReverseUpperAlphabet(result, wordToChar);
                 continue;
             }
 
-            if ('a' <= wordToChar && wordToChar <= 'z') {
-                char reverse = lowerReverse[((int) wordToChar - 'a')];
-                result.append(reverse);
+            if (isLowerCase(wordToChar)) {
+                appendReverseLowerAlphabet(result, wordToChar);
                 continue;
             }
 
             result.append(wordToChar);
         }
+        
+        return result;
+    }
 
-        return result.toString();
+    private static boolean isUpperCase(char wordToChar) {
+        return 'A' <= wordToChar && wordToChar <= 'Z';
+    }
+
+    private static boolean isLowerCase(char wordToChar) {
+        return 'a' <= wordToChar && wordToChar <= 'z';
+    }
+
+    private static void appendReverseUpperAlphabet(StringBuilder result, char wordToChar) {
+        int index = wordToChar - 'A';
+        char reverse = reverseUpperLetter[index];
+        result.append(reverse);
+    }
+
+    private static void appendReverseLowerAlphabet(StringBuilder result, char wordToChar) {
+        int index = wordToChar - 'a';
+        char reverse = reverseLowerLetter[index];
+        result.append(reverse);
     }
 }
