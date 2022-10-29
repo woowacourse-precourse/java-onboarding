@@ -14,16 +14,16 @@ answer는 빈 문자열
 */
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = cryptogram;
+        StringBuilder answer = new StringBuilder(cryptogram);
         int before_len = 0;
         int count = 0;
         char now = 'X';
         char previous = 'S';
         while (true) {
-            cryptogram = answer;
+            cryptogram = answer.toString();
             before_len = cryptogram.length();
             previous = 'S';
-            answer = "";
+            answer = new StringBuilder();
             count = 0;
             for (int i = 0; i < before_len; i++) {
                 now = cryptogram.charAt(i);
@@ -35,10 +35,14 @@ public class Problem2 {
                     count += 1;
                 }
                 else { // 이전이랑 현재 문자가 다르면
-                    if (count == 0)  // 문자가 연속되지 않음
-                        answer += previous;
-                    if (i == before_len -1) // 마지막 문자이고 연속되지 않으면 마지막 문자 추가
-                        answer += now;
+                    if (count == 0)  {
+                        // 문자가 연속되지 않음
+                        answer.append(previous);
+                    }
+                    if (i == before_len -1) {
+                        // 마지막 문자이고 연속되지 않으면 마지막 문자 추가
+                        answer.append(now);
+                    }
                     previous = now;
                     count = 0;
                 }
@@ -46,6 +50,6 @@ public class Problem2 {
             if ((answer.length() == before_len) || answer.length() == 0)
                 break;
         }
-        return answer;
+        return answer.toString();
     }
 }
