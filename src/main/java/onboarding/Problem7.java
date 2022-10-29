@@ -64,12 +64,7 @@ public class Problem7 {
 
     private static void divideFriends(String user, List<List<String>> friends) {
         for (List<String> friend : friends) {
-            String id = "";
-            if (friend.get(0).equals(user)) {
-                id = friend.get(1);
-            } else {
-                id = friend.get(0);
-            }
+            String id = getOneOfTwo(friend, user);
 
             if (friend.contains(user)) {
                 myFriendsList.add(id);
@@ -77,6 +72,13 @@ public class Problem7 {
                 notFriendsList.add(friend);
             }
         }
+    }
+
+    public static String getOneOfTwo(List<String> list, String id) {
+        if (list.get(0).equals(id)) {
+            return list.get(1);
+        }
+        return list.get(0);
     }
 
     public static boolean isError(String user, List<List<String>> friends, List<String> visitors) {
