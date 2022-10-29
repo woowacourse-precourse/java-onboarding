@@ -20,7 +20,7 @@ public class Problem6 {
             }
         }
         Collections.sort(answer);
-        
+
         return answer;
     }
 
@@ -31,7 +31,7 @@ public class Problem6 {
             for (int k = 0; k < firstNick.length() - 1; k++) {
                 String substringOfFirstNick = firstNick.substring(k, k + 2);
 
-                if (secNick.indexOf(substringOfFirstNick) != -1) {
+                if (secNick.contains(substringOfFirstNick)) {
                     String firstEmail = forms.get(i).get(0);
                     String secEmail = forms.get(j).get(0);
 
