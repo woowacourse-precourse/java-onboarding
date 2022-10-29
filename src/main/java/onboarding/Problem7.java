@@ -1,7 +1,7 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+import java.util.Map.Entry;
 
 public class Problem7 {
     static class SNS {
@@ -48,10 +48,25 @@ public class Problem7 {
             }
         }
 
+        public List<String> getSortedResult() {
+            List<Entry<String, Integer>> entries = new ArrayList<>(recommendationScore.entrySet());
+            List<String> result = new ArrayList<>();
+
+            entries.sort((o1, o2) -> recommendationScore.get(o2.getKey())-recommendationScore.get(o1.getKey()));    // 내림차순
+            for(Entry<String,Integer> entry: entries) {
+                result.add(entry.getKey());
+            }
+            return result;
+        }
+
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        ArrayList<String> answer = new ArrayList<>();
+        SNS sns = new SNS(user);
+        sns.makeRelationship(friends);
+        sns.addVisitorScore(visitors);
+        sns.addFriendScore();
+        return sns.getSortedResult();
     }
 }
