@@ -12,21 +12,11 @@ public class Problem7 {
             String nameB = friend.get(1);
 
             People peopleA = contacts.get(nameA);
-            if (contacts.get(nameA)==null) {
-                contacts.put(nameA, new People(nameA, nameB));
-            } else {
-                peopleA.addFriendList(nameB);
-                contacts.put(nameA, peopleA);
-            }
-
             People peopleB = contacts.get(nameB);
-            if (contacts.get(nameB)==null) {
-                contacts.put(nameB, new People(nameB, nameA));
-            } else {
-                peopleB.addFriendList(nameA);
-                contacts.put(nameB, peopleB);
-            }
+            contacts.put(nameA, makeFriendList(peopleA, nameA, nameB));
+            contacts.put(nameB, makeFriendList(peopleB, nameB, nameA));
         }
+
         List<String> userFriends = contacts.get(user).friendList;
         for (String name : contacts.keySet()) {
             People nowPeople = contacts.get(name);
