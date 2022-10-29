@@ -4,10 +4,22 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int answer = returnResult(pobi, crong);
         return answer;
     }
 
+    private int returnResult(List<Integer> pobi, List<Integer> crong) {
+        if (isInvalidInput(pobi) || isInvalidInput(crong)) {
+            return -1;
+        }
+        if (selectSide(pobi) > selectSide(crong)) {
+            return 1;
+        }
+        if (selectSide(pobi) < selectSide(crong)) {
+            return 2;
+        }
+        return 0;
+    }
     private boolean isInvalidInput(List<Integer> pageList) {
         return isInvalidRange(pageList) || isNotAdjoin(pageList);
     }
