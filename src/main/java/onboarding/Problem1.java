@@ -57,4 +57,16 @@ class Problem1 {
 
         return beforeScore.get(0);
     }
+
+    //최종 각자의 점수 추출
+    public static int score (int leftPage, int rightPage) {
+        if (leftPage > rightPage) {
+            return leftPage;
+
+        } else if(rightPage > leftPage) {
+            return rightPage;
+        }
+
+        return leftPage;
+    }
 }
