@@ -8,7 +8,8 @@ public class Problem4 {
   private static Map<String, String> greenFrogDictionary;
 
   public static String solution(String word) {
-    String answer = "";
+    makeGreenFrogDictionary();
+    String answer = translateWord(word);
     return answer;
   }
 
@@ -37,4 +38,15 @@ public class Problem4 {
     }
     return true;
   }
+
+  public static String translateWord(String word) {
+    String[] splitWord = word.split("");
+    for (int i = 0; i < splitWord.length; i++) {
+      if (isAlphabet(splitWord[i])) {
+        splitWord[i] = greenFrogDictionary.get(splitWord[i]);
+      }
+    }
+    return String.join("",splitWord);
+  }
+
 }
