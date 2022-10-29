@@ -1,37 +1,28 @@
 package onboarding;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-
-        List<String> answer = new ArrayList<>();
-
         // user 의 friend 를 반환하는 userFriendList
         List<String> userFriendList = userFriendList(user, friends);
 
         // user 의 friend 를 이용하여 user friend 의 friend (친구의 친구) 를 반환하는 friendsFriend
-        List<String> friendsFriendList = friendsFriend(userFriendList, friends,user);
+        List<String> friendsFriendList = friendsFriend(userFriendList, friends, user);
 
         // friendsFriendList, userFriendList, visitors 를 이용하여 recommendFriend 와 점수를 반환하는 recommendMap
-        // sortByValue 를 사용하여 map 의 value 값을 기준으로 정렬한다.
-        HashMap<String, Integer> recommendMap = sortByValue(recommendMap(friendsFriendList, userFriendList, visitors));
+        HashMap<String, Integer> recommendMap = recommendMap(friendsFriendList, userFriendList, visitors);
 
-        // 정렬한 recommentMap 의 키값을 answer List 로 return;
-        answer.addAll(recommendMap.keySet());
-
-        // 5명을 초과할 경우
-        if (answer.size() > 5) {
-            return answer.subList(0, 5);
-        }
-
-        return answer;
+        // sortRecommendMap 을 사용하여
+        // 1. 추천 점수순으로 정렬
+        // 2. 점수가 같다면 이름순으로 정렬
+        // 3. 최대 5개의 result 를 리턴
+        return sortRecommendMap(recommendMap);
     }
 
 
     // user 의 friend 를 반환.
-    static List<String> userFriendList(String user,List<List<String>> friends) {
+    static List<String> userFriendList(String user, List<List<String>> friends) {
         List<List<String>> userFriendLists = new ArrayList<>();
         List<String> userFriendList = new ArrayList<>();
 
@@ -56,7 +47,7 @@ public class Problem7 {
 
 
     // user 의 friend 의 friend (친구의 친구) 를 반환.
-    static List<String> friendsFriend(List<String> userFriendList,List<List<String>> friends,String user) {
+    static List<String> friendsFriend(List<String> userFriendList, List<List<String>> friends, String user) {
         List<String> friendsFriend = new ArrayList<>();
         List<List<String>> temp = new ArrayList<>();
 
@@ -93,7 +84,7 @@ public class Problem7 {
             if (!userFriendList.contains(friendsFriend)) {
                 // map 에 이미 포함된 key 일경우 value += 10
                 if (map.containsKey(friendsFriend)) {
-                    map.put(friendsFriend,map.get(friendsFriend)+10);
+                    map.put(friendsFriend, map.get(friendsFriend) + 10);
                 }
                 // map 에 포함된 key 가 아닐경우 value = 10;
                 if (!map.containsKey(friendsFriend)) {
@@ -107,11 +98,11 @@ public class Problem7 {
             // map 에 이미 추가된 값이고 user 의 친구가 아닐경우
             // map 의 value++;
             if (map.containsKey(visitor) && !userFriendList.contains(visitor)) {
-                map.put(visitor,map.get(visitor)+1);
+                map.put(visitor, map.get(visitor) + 1);
             }
             // map 에 없는 key 값이고 user 의 친구가 아닐경우
             // map 에 (visitor, 1) 추가.
-            if (!map.containsKey(visitor)&& !userFriendList.contains(visitor)) {
+            if (!map.containsKey(visitor) && !userFriendList.contains(visitor)) {
                 map.put(visitor, 1);
             }
         }
@@ -120,18 +111,27 @@ public class Problem7 {
     }
 
     // key 추천친구 value 추천점수 로 이루어진 map 을 점수순으로 점수가 같다면 이름순으로 정렬하는 메서드.
-    static HashMap<String, Integer> sortByValue(HashMap<String, Integer> map) {
+    static List<String> sortRecommendMap(HashMap<String, Integer> map) {
+        List<String> answer = new ArrayList<>();
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(map.entrySet());
+        entryList.sort((o1, o2) -> {
+            if (o1.getValue() != o2.getValue()) {
+                return o2.getValue() - o1.getValue();
+            } else {
+                return o1.getKey().compareTo(o2.getKey());
+            }
+        });
 
-    // value 를 기준으로 map 을 정렬.
-        HashMap<String, Integer> recomandMap
-                = map.entrySet()
-                .stream()
-                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
-                .collect(Collectors.toMap(
-                        Map.Entry::getKey,
-                        Map.Entry::getValue,
-                        (e1, e2) -> e1, LinkedHashMap::new));
+        int cnt = 0;
 
-        return recomandMap;
+        for (Map.Entry<String, Integer> e : entryList) {
+            if (cnt == 5) {
+                break;
+            }
+            answer.add(e.getKey());
+            cnt++;
+        }
+
+        return answer;
     }
 }
