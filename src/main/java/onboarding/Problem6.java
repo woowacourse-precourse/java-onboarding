@@ -19,5 +19,7 @@ public class Problem6 {
         return returnList;
     }
 
-
+    public static boolean isDuplicate(String nickname, String nicknameUnit) {
+        return nickname.matches(".*" + nicknameUnit + ".*");
+    }
 }
