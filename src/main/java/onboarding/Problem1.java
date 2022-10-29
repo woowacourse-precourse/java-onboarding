@@ -31,6 +31,29 @@ class Problem1 {
         return (pages.get(0) + 1 == pages.get(1)); // 왼쪽 페이지 + 1 = 오른쪽 페이지
     }
 
+    public static int maxNum(int page){ // 페이지의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수 구하기
+        if ((page >= 1) && (page <= 9)) { // 페이지가 한 자리 수일 때
+            return page;
+        }
+        if ((page >= 10) && (page <= 99)) { // 페이지가 두 자리 수일 때
+            int plus = (page / 10) + (page % 10);
+            int multi = (page / 10) * (page % 10);
+
+            return Math.max(plus, multi);
+        }
+        if ((page >= 100) && (page <= 400)) { // 페이지가 세 자리 수일 때
+            int plus = (page/ 100) + ((page % 100) / 10) + (page % 10);
+            int multi = (page/ 100) * ((page % 100) / 10) * (page % 10);
+
+            return Math.max(plus, multi);
+        }
+        throw new IllegalArgumentException();
+    }
+    public static int score(List<Integer> player) { // 왼쪽 페이지로 구한 수와 오른쪽 페이지로 구한 수 중 큰 수가 본인의 점수
+        int left = maxNum(player.get(0));
+        int right = maxNum(player.get(1));
+        return Math.max(left, right);
+    }
     public static int winner(List<Integer> player1, List<Integer> player2) { // player1 과 player2 중 점수가 높은 사람이 승자
         int player1Score = score(player1);
         int player2Score = score(player2);
