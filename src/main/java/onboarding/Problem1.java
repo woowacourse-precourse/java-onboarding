@@ -43,19 +43,19 @@ class Problem1 {
         return 0;
     }
 
+    private static int calculatorMaxValue(List<Integer> user) {
+        int leftResultUserValue = calculator(user.get(0));
+        int rightResultUserValue = calculator(user.get(1));
+
+        return Math.max(leftResultUserValue, rightResultUserValue);
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         //시작 면이나 마지막 면이 나오도록 책을 펼치지 않는다.
         int exception = exception(pobi, crong);
         if (exception == 0) {
-            int leftResultPobi = calculator(pobi.get(0));
-            int rightResultPobi = calculator(pobi.get(1));
 
-            int leftResultCrong = calculator(crong.get(0));
-            int rightResultCrong = calculator(crong.get(1));
-
-            int pobiMax = Math.max(leftResultPobi, rightResultPobi);
-            int crongMax = Math.max(leftResultCrong, rightResultCrong);
 
             if (pobiMax > crongMax)
                 return 1;
