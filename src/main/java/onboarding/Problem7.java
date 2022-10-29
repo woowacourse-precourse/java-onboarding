@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -14,5 +15,31 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
+    }
+
+    /**
+     * user의 친구 목록을 반환합니다.
+     *
+     * @param user    친구 목록을 반환할 대상 사용자
+     * @param friends 친구 관계 목록
+     * @return user의 친구 목록을 반환
+     */
+    List<String> getMyFriends(String user, List<List<String>> friends) {
+        List<String> myFriends = new ArrayList<>();
+        myFriends.add(user);
+
+        for (List<String> friend : friends) {
+            if (friend.contains(user)) {
+                String myFriend;
+                if (friend.get(0).equals(user)) {
+                    myFriend = friend.get(1);
+                } else {
+                    myFriend = friend.get(0);
+                }
+                myFriends.add(myFriend);
+            }
+        }
+
+        return myFriends;
     }
 }
