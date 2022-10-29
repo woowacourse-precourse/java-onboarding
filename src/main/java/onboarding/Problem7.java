@@ -7,13 +7,26 @@ public class Problem7 {
     private static Map<String, Integer> scores;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = new ArrayList<>();
+        List<String> answer;
         friendMap = new HashMap<>();
         scores = new HashMap<>();
 
         makeFriendMap(friends);
         calcSameFriendScore(user);
         calcVisitScore(user, visitors);
+
+        answer = new ArrayList<>(scores.keySet());
+
+        Collections.sort(answer, new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                if(scores.get(o1) < scores.get(o2))
+                    return 1;
+                else if(scores.get(o1) > scores.get(o2))
+                    return -1;
+                return 0;
+            }
+        });
 
         return answer;
     }
