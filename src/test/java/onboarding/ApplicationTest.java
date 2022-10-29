@@ -21,9 +21,9 @@ class ApplicationTest {
             List<Integer> test2Digits = List.of(45, 46);
             List<Integer> test3Digits = List.of(397, 398);
 
-            assertThat(Problem1.findSumMaximumValue(test1Digits)).isEqualTo(4);
-            assertThat(Problem1.findSumMaximumValue(test2Digits)).isEqualTo(10);
-            assertThat(Problem1.findSumMaximumValue(test3Digits)).isEqualTo(20);
+            assertThat(Problem1.findSumMaxValue(test1Digits)).isEqualTo(4);
+            assertThat(Problem1.findSumMaxValue(test2Digits)).isEqualTo(10);
+            assertThat(Problem1.findSumMaxValue(test3Digits)).isEqualTo(20);
         }
 
         @Test
