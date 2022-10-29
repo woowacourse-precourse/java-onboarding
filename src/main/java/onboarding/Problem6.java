@@ -6,10 +6,12 @@ import java.util.List;
 import java.util.TreeSet;
 
 public class Problem6 {
-	static HashMap<String, String> usedNickNamePart = new HashMap<>();
-	static TreeSet<String> emailToBeSent = new TreeSet<>();
+	static HashMap<String, String> usedNickNamePart;
+	static TreeSet<String> emailToBeSent;
 	
 	public static List<String> solution(List<List<String>> forms) {
+		usedNickNamePart = new HashMap<>();
+		emailToBeSent = new TreeSet<>();
 		List<String> answer = List.of("answer");
 		for (List<String> form : forms) {
 			checkNickName(form);
