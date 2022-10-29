@@ -4,7 +4,27 @@ import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> result;
+        HashMap<String, HashSet<String>> nicknameMap = new HashMap<>();
+        HashSet<String> answer = new HashSet<>();
+
+        for(List<String> form : forms) {
+            String email = form.get(0);
+            String nickname = form.get(1);
+
+            ArrayList<String> nicknames = separate(nickname);
+            for(String str : nicknames) {
+                HashSet<String> emails;
+                if (nicknameMap.containsKey(str)) {
+                    emails = nicknameMap.get(str);
+                }else {
+                    emails = new HashSet<>();
+                }
+                emails.add(email);
+                nicknameMap.put(str, emails);
+            }
+        }
+
         return answer;
     }
 
