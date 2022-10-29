@@ -27,8 +27,7 @@ public class Problem7 {
         return userFriends;
     }
 
-    public static HashMap<String, Integer> getAcquaintance (List<String> userFriends, List<List<String>> friends) {
-        HashMap<String, Integer> listOfScore = new HashMap<>();
+    public static HashMap<String, Integer> getAcquaintance (HashMap<String, Integer> listOfScore, List<String> userFriends, List<List<String>> friends) {
         for (String user: userFriends) {
             for (List<String> friend: friends) {
                 String user1 = friend.get(0);
