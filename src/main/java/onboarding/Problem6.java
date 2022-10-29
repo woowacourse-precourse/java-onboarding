@@ -93,4 +93,8 @@ public class Problem6 {
     private static boolean validateNicknameType(String crewNickname) {
         return Pattern.compile("^[가-힣]+$").matcher(crewNickname).matches();
     }
+
+    private static boolean validateNicknameLength(String crewNickname) {
+        return (crewNickname.length() >= 1 && crewNickname.length() < 20);
+    }
 }
