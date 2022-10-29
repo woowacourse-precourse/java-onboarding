@@ -85,13 +85,13 @@ class ApplicationTest {
         @Test
         void case4() {
             String cryptogram = "aabba";
-            String result = "";
+            String result = "a";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
 
         @Test
         void case5() {
-            String cryptogram = "aaaaaaaaaaaaaaaaaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaa";
+            String cryptogram = "aabaa";
             String result = "b";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
