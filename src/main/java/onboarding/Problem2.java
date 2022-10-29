@@ -2,8 +2,12 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        String compressed = cryptogram;
+        do {
+            cryptogram = compressed;
+            compressed = compress(cryptogram);
+        } while (isCompressed(cryptogram, compressed));
+        return compressed;
     }
 
     private static String compress(String input) {
@@ -42,5 +46,12 @@ public class Problem2 {
             return true;
         }
         return false;
+    }
+
+    private static boolean isCompressed(String input, String compressed) {
+        if (input.equals(compressed)) {
+            return false;
+        }
+        return true;
     }
 }
