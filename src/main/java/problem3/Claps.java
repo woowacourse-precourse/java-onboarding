@@ -4,10 +4,19 @@ import java.util.Arrays;
 
 public class Claps {
 
-    int[] clap;
+    private int[] clap;
 
     public Claps(int[] clap) {
         this.clap = clap;
+    }
+
+    public int clap() {
+        int length = clap.length;
+        for (int i = 2; i < length; i++) {
+            int[] digits = getDigits(i);
+            clap[i] = clap[i - 1] + getClapCount(digits);
+        }
+        return clap[length-1];
     }
 
     private int[] getDigits(int num) {
