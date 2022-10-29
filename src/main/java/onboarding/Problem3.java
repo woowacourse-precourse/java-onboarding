@@ -1,13 +1,17 @@
 package onboarding;
 
+import java.util.stream.Stream;
+
 public class Problem3 {
-    public static int solution(int number) {
+	public static int solution(int number) {
 		if (!isValidNumber(number)) {
 			return -1;
 		}
 
-        return answer;
-    }
+		int answer = game(number);
+		return answer;
+	}
+
 	private static boolean isValidNumber(int number) {
 		return number >= 1 && number <= 1000;
 	}
@@ -23,5 +27,13 @@ public class Problem3 {
 			}
 		}
 		return result;
+	}
+
+	private static int game(int number) {
+		int clap = 0;
+		for (int i = 1; i <= number; i++) {
+			clap += countClap(i);
+		}
+		return clap;
 	}
 }
