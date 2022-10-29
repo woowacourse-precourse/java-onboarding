@@ -1,10 +1,24 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
+    }
+
+    /* 닉네임의 길이가 1보다 큰 크루들만 담긴 리스트 */
+    private static List<List<String>> seperateLengthOneNickname(List<List<String>> forms) {
+        List<List<String>> result = new ArrayList<>();
+        for (List<String> crew : forms) {
+            String nickname = crew.get(1);
+            if (nickname.length() > 1) {
+                result.add(crew);
+            }
+        }
+
+        return result;
     }
 }
