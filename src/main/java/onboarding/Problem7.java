@@ -47,10 +47,8 @@ public class Problem7 {
         for(List<String> pair : friends)
             if(userFriends.contains(pair.get(0)) || userFriends.contains(pair.get(1))){
                 int i = userFriends.contains(pair.get(0)) ? 1 : 0;
-                if(pair.get(i) != user){
+                if(pair.get(i) != user)
                     setScore(map, pair.get(i), 10);
-                    System.out.println(pair.get(0)+", "+pair.get(1)+":"+pair.get(i));
-                }
             }
         // 방문자를 찾고 방문 횟수당 1점 씩 부여
         for(String name : visitors)
