@@ -14,6 +14,11 @@ package onboarding;
  * 1. 소문자 대문자 문자 판별 함수
  */
 
+/**
+ * 2. 소문자 알파벳 변환 기능
+ * - Ascii code상 a ~ z 는 97 ~ 122
+ * - a와 z의 합을 통해 변환
+ */
 
 public class Problem4 {
     public static String solution(String word) {
@@ -21,9 +26,10 @@ public class Problem4 {
         return answer;
     }
 
-    public static void main(String[] args) {
-
-    }
+//    public static void main(String[] args) {
+//        char test = 'd';
+//        System.out.println(changeInLower(test));
+//    }
 
     private static String distinguishInput(char inputChar){
         if(inputChar >= 97 && inputChar <= 122)
@@ -32,4 +38,11 @@ public class Problem4 {
             return "upper";
         return "nothing";
     }
+
+    private static char changeInLower(char inputChar){
+         int sumOfaz = 122 + 97;
+         char ret = (char)(sumOfaz-inputChar);
+         return ret;
+    }
+
 }
