@@ -1,13 +1,13 @@
-package onboarding.bankaccount;
+package onboarding.billcounter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BankAccount {
+public class BillCounter {
 
 	private int money;
 
-	public BankAccount(int money) {
+	public BillCounter(int money) {
 		this.money = money;
 	}
 
