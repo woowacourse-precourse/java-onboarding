@@ -64,6 +64,10 @@ class Problem1 {
         if (crong_num[0] > crong_num[1]) crong_max = crong_num[0];
         else crong_max = crong_num[1];
 
+        if(pobi_max>crong_max) answer=1;
+        else if(pobi_max==crong_max) answer=0;
+        else answer=2;
+
         return answer;
     }
 }
