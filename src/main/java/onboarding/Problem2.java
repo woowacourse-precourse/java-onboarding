@@ -56,6 +56,12 @@ class ExceptionProblem2 {
     static final String ERROR_MESSAGE = "입력이 잘못 입력되었습니다.";
 
     public static void validateCryptogram(String cryptogram) {
+        enteredName(cryptogram);
+    }
 
+    public static void enteredName(String cryptogram) {
+        if (cryptogram.equals("")) {
+            throw new IllegalArgumentException(ERROR_MESSAGE);
+        }
     }
 }
