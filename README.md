@@ -45,6 +45,8 @@ BUILD SUCCESSFUL in 0s
     1. 매개변수 두 리스트의 길이가 각각 2인지 확인   
 
 2. [문제 2](./docs/PROBLEM2.md)
+  * 출력값 요구사항
+      1. 주어진 문자열의 chipher text를 출력
 3. [문제 3](./docs/PROBLEM3.md)
 4. [문제 4](./docs/PROBLEM4.md)
 5. [문제 5](./docs/PROBLEM5.md)
