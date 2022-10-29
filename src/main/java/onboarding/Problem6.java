@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
-import onboarding.vo.Crew;
+import domain.Crew;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {

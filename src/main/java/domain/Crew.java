@@ -1,4 +1,4 @@
-package onboarding.vo;
+package domain;
 
 import java.util.HashSet;
 
