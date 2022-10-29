@@ -92,6 +92,10 @@ class Intimacy implements Comparable<Intimacy> {
         this.numOfVisited = 0;
     }
 
+    public String getUserId() {
+        return userId;
+    }
+
     public int getNumOfMutualFriends() {
         return numOfMutualFriends;
     }
