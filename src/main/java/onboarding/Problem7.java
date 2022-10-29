@@ -68,4 +68,9 @@ class Relations {
         }
     }
 
+    public int getNumOfMutualFriends (String user1, String user2) {
+        Set<String> mutualFriends = new HashSet<>(this.relations.get(user1));
+        mutualFriends.retainAll(this.relations.get(user2));
+        return mutualFriends.size();
+    }
 }
