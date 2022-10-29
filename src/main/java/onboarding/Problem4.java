@@ -5,7 +5,15 @@ public class Problem4 {
         String answer = "";
         return answer;
     }
-
+    private char changeLetter(char letter) {
+        if (letter >= 'A' && letter <= 'Z') {
+            return changeUpperCase(letter);
+        }
+        if (letter >= 'a' && letter <= 'z') {
+            return changeLowerCase(letter);
+        }
+        return letter;
+    }
     private char changeUpperCase(char letter) {
         return (char)('A' + 'Z' - letter);
     }
