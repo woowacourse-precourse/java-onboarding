@@ -12,6 +12,9 @@ public class Problem3 {
         addClapRule();
         int allClapCount = 0;
 
+        for (int i = START_NUMBER; i <= number; i++) {
+        }
+
         int answer = 0;
         return answer;
     }
