@@ -15,9 +15,10 @@ class Problem1 {
             return EXCEPTION;
         }
 
-        int pobiMax = getMax(String.valueOf(pobi.get(0)), String.valueOf(pobi.get(1)));
-        int crongMax = getMax(String.valueOf(crong.get(0)), String.valueOf(crong.get(1)));
+        int pobiMax = getMax(pobi);
+        int crongMax = getMax(crong);
 
+        // TODO if ~ else 문 제거하는 방법 고민
         if (pobiMax > crongMax) answer = POBI_WIN;
         else if (pobiMax < crongMax) answer = CRONG_WIN;
         else answer = DRAW;
@@ -26,7 +27,9 @@ class Problem1 {
     }
 
     // 왼쪽 페이지, 오른쪽 페이지 중 최댓값 반환
-    public static int getMax(String left, String right) {
+    public static int getMax(List<Integer> person) {
+        String left = String.valueOf(person.get(0));
+        String right = String.valueOf(person.get(1));
         int max = Math.max(getLargeSumMul(left), getLargeSumMul(right));
 
         return max;
@@ -47,25 +50,17 @@ class Problem1 {
 
     // 입력된 페이지들이 조건에 맞는지 확인
     public static boolean isWrongInput(List<Integer> pobi, List<Integer> crong) {
-        if (isFirstOrLast(pobi, crong) || isNotConsecutive(pobi, crong)) {
-            return true;
-        }
-        return false;
+        return (isFirstOrLast(pobi, crong) || isNotConsecutive(pobi, crong));
     }
 
     // 연속된 페이지가 아닌경우
     public static boolean isNotConsecutive(List<Integer> pobi, List<Integer> crong) {
-        if (pobi.get(0) + 1 != pobi.get(1) || crong.get(0) + 1 != crong.get(1)) {
-            return true;
-        }
-        return false;
+        // TODO ?.get(0) + 1 != ?.get(1) 로 내용이 중복됨
+        return (pobi.get(0) + 1 != pobi.get(1) || crong.get(0) + 1 != crong.get(1));
     }
 
     // 시작면 or 마지막면이 나오는 경우
     public static boolean isFirstOrLast(List<Integer> pobi, List<Integer> crong) {
-        if (pobi.get(0) == 1 || crong.get(0) == 1 || pobi.get(1) == 400 || crong.get(1) == 400) {
-            return true;
-        }
-        return false;
+        return (pobi.get(0) == 1 || crong.get(0) == 1 || pobi.get(1) == 400 || crong.get(1) == 400);
     }
 }
