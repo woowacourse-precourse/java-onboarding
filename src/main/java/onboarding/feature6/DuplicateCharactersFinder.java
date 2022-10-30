@@ -10,10 +10,6 @@ public class DuplicateCharactersFinder {
     private String nextEmail;
     
     private int increment = 2;
-    private int indexI;
-    private int indexJ;
-    private int indexM;
-    private int indexN;
     private int initialNicknamesSize;
 
     private List<String> initialEmails;
@@ -47,18 +43,18 @@ public class DuplicateCharactersFinder {
     }
 
     /*
-    * The method below could return more than two pairs of key and value
+    * The method below🔻 could return more than two pairs of key and value
     * if given nicknames share several cases of adjacent duplicate letters.
     */
-    public Map<String, Set<String>> getDuplicates() {
-        for (indexI = 0; indexI < initialNicknamesSize - 1; indexI++) {
-            currentNickname = initialNicknames.get(indexI);
-            currentEmail = initialEmails.get(indexI);
-            for (indexJ = indexI + 1; indexJ < initialNicknamesSize; indexJ++) {
-                nextNickname = initialNicknames.get(indexJ);
-                nextEmail = initialEmails.get(indexJ);
+    public Map<String, Set<String>> getDuplicateLetters() {
+        for (int i = 0; i < initialNicknamesSize - 1; i++) {
+            currentNickname = initialNicknames.get(i);
+            currentEmail = initialEmails.get(i);
+            for (int j = i + 1; j < initialNicknamesSize; j++) {
+                nextNickname = initialNicknames.get(j);
+                nextEmail = initialEmails.get(j);
                 System.out.println("닉네임 - " + currentNickname + " " + nextNickname + " 비교");
-                compareLettersOfNickname(currentNickname, nextNickname);
+                compareNicknames(currentNickname, nextNickname);
             }
         }
 
@@ -70,11 +66,11 @@ public class DuplicateCharactersFinder {
         return result;
     }
 
-    public void compareLettersOfNickname(String CurrentNickname, String nextNickname) {
-        for (indexM = 0; indexM < currentNickname.length() - 1; indexM++) {
-            String lettersOfCurrentNickname = CurrentNickname.substring(indexM, indexM + increment);
-            for (indexN = 0; indexN < nextNickname.length() - 1; indexN++) {
-                String lettersOfNextNickname = nextNickname.substring(indexN, indexN + increment);
+    public void compareNicknames(String CurrentNickname, String nextNickname) {
+        for (int m = 0; m < currentNickname.length() - 1; m++) {
+            String lettersOfCurrentNickname = CurrentNickname.substring(m, m + increment);
+            for (int n = 0; n < nextNickname.length() - 1; n++) {
+                String lettersOfNextNickname = nextNickname.substring(n, n + increment);
                 System.out.println("글자: " + lettersOfCurrentNickname + " " + lettersOfNextNickname + " 비교");
                 if (lettersOfCurrentNickname.equals(lettersOfNextNickname)) {
                     System.out.println("글자 같음: " + lettersOfCurrentNickname);
