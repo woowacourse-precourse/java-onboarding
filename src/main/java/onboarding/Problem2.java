@@ -2,8 +2,19 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.List;
+import static java.lang.Character.isUpperCase;
 
 public class Problem2 {
+    // 소문자 예외 처리
+    public static boolean isLowerCheck(String string){
+        for(int i = 0; i< string.length(); i++){
+            // 만약 대문자가 있다면 false 반환
+            if(isUpperCase(string.charAt(i))){
+                return false;
+            }
+        }// 모두 통과되면 true 반환
+        return true;
+    }
 
     // 중복 문자열 제거 기능
     public static List<Character> dltRedund(String cryptogram){
@@ -59,7 +70,20 @@ public class Problem2 {
     }
 
     public static String solution(String cryptogram) {
-        
+
+        // 예외처리
+        // 예외 1. cryptogram은 길이가 1 이상 1000 이하인 문자열이 아닐 경우 error
+        if (cryptogram.length() < 1){
+            return "The cryptogram must be more at least 1 character";
+        }
+        else if (cryptogram.length() > 1000 ){
+            return "The cryptogram must be less than 1000 characters";
+        }
+        // 예외 2. cryptogram은 알파벳 소문자로만 이루어져 있지 않을 경우 error.
+        if(!isLowerCheck(cryptogram)){
+            return "The cryptogram must be lowercase.";
+        }
+
         String answer = "answer";
 
         // 중복 삭제 메소드
@@ -75,6 +99,8 @@ public class Problem2 {
         }
         else { // ckeckEnd 함수가 false이면
             // 다시 수행 (재귀)
+            if (temp.size() <= 1) // 길이가 1이하라면 중복을 체크할 것이 없기 때문에 재귀를 중단한다.
+                return listToString(temp);
             answer = solution(listToString(temp));
         }
 
