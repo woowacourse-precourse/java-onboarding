@@ -6,10 +6,11 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         Map<String, List<String>> friendsList;
-        Map<String, Integer> score = new HashMap<>();
+        Map<String, Integer> score;
 
         friendsList = getFriendsList(friends);
         score = calMutualFriendsScore(user, friendsList);
+        score = calVisitorsScore(friendsList.get(user), visitors, score);
 
         return answer;
     }
@@ -55,6 +56,22 @@ public class Problem7 {
                 } else {
                     score.put(m_friend, score.get(m_friend) + 10);
                 }
+            }
+        }
+
+        return score;
+    }
+
+    // 방문자 점수 계산 함수
+    static Map<String, Integer> calVisitorsScore(List<String> userFriends, List<String> visitors, Map<String, Integer> score) {
+        for (String visitor: visitors) {
+            if (userFriends.contains(visitor)) {
+                continue;
+            }
+            if (!score.containsKey(visitor)) {
+                score.put(visitor, 1);
+            } else {
+                score.put(visitor, score.get(visitor) + 1);
             }
         }
 
