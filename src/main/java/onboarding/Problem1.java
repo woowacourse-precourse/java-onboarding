@@ -33,11 +33,11 @@ class Problem1 {
      * @return
      */
     private static Integer checkRestrictions(List<Integer> list) {
-        int[] pobiArr = list.stream().mapToInt(i -> i).toArray();
-        if (pobiArr.length != 2) {
+        int[] arr = list.stream().mapToInt(i -> i).toArray();
+        if (arr.length != 2) {
             return -1;
         }
-        if (pobiArr[1] - pobiArr[0] != 1) {
+        if (arr[1] - arr[0] != 1) {
             return -1;
         }
         return 0;
