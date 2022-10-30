@@ -12,7 +12,14 @@ import java.util.List;
 public class Problem6 {
 
     private static boolean compareName(String s1, String s2) {
-        return true;
+
+        for (int k=0; k< s1.length()-1; k++){
+            if (s2.contains(s1.substring(k,k+2))){
+                return true;
+            }
+        }
+
+        return false;
     }
     public static List<String> solution(List<List<String>> forms) {
 
