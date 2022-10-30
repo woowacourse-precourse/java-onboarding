@@ -3,8 +3,19 @@ package onboarding;
 import java.util.List;
 
 class NameStringClassForPro6 {
+    private static String[] nameString;
+
     public NameStringClassForPro6(List<List<String>> forms) {
         ExceptionClassForPro6 exceptionClass = new ExceptionClassForPro6(forms);
+        nameString = new String[forms.size()];
+        fillNameString(forms);
+    }
+
+    private static void fillNameString(List<List<String>> forms) {
+        for (int i = 0; i < forms.size(); i++) {
+            List<String> partOfForm = forms.get(i);
+            nameString[i] = partOfForm.get(1);
+        }
     }
 }
 
