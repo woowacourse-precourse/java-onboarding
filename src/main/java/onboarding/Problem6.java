@@ -43,8 +43,12 @@ import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        Nickname_validator nickname_validator = new Nickname_validator();
+        nickname_validator.make_candidate_arr_by_forms(forms);
+        nickname_validator.check_all_nickname();
+        nickname_validator.make_result();
+        nickname_validator.sort_result_alphabetically();
+        return nickname_validator.show_result();
     }
 }
 
@@ -53,7 +57,7 @@ class Candidate {
     private String e_mail;
     private boolean nickname_duplicate;
 
-    public Candidate(String e_mail, String nickname) {
+    Candidate(String e_mail, String nickname) {
         this.e_mail = e_mail;
         this.nickname = nickname;
         nickname_duplicate = false;
@@ -120,7 +124,7 @@ class Nickname_validator {
         }
     }
 
-    public String make_two_letter_word_start_from(String str, int index) {
+    private String make_two_letter_word_start_from(String str, int index) {
         return str.substring(index, index + 2);
     }
 
