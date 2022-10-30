@@ -20,7 +20,7 @@ public class Problem5 {
 
         for (int i = 0; i < exchange.length; i++) {
             count[i] = money / exchange[i];
-            money = money % exchange[i];
+            money %= exchange[i];
         }
 
         return count;
