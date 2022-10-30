@@ -21,3 +21,7 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+### 기능 구현 목록
+- [x] 유효성 검증
+- [x] 중복 제거
