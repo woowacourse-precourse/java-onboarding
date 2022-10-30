@@ -4,8 +4,6 @@ import java.util.Arrays;
 
 public class Problem3 {
     public static int solution(int number) {
-
-
         return countNumberContainThreeOrSixOrNine(number);
     }
 
