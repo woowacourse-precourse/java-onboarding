@@ -1,6 +1,8 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
+
 /*
 기능 목록
 1. 닉네임 길이별로 나눠서 map에 저장
@@ -15,10 +17,20 @@ public class Problem6 {
         for(List<String> form: forms){
             String email = form.get(0);
             String nickName = form.get(1);
-            for(int i = 0;i<nickName.length()-1;i++){
-                String keyName = nickName.substring(i,i+1);
-                map.put(keyName,email);
+            for(int i = 0;i<nickName.length()-1;i++) {
+                String keyName = nickName.substring(i, i + 1);
+                if(map.containsKey(keyName)) {
+                    answer.add(email);
+                    if(!answer.contains(map.get(keyName))) {
+                        answer.add(map.get(keyName));
+                    }
+                }
+                map.put(keyName, email);
+            }
         }
+        //제한사항
+        answer = answer.stream().distinct().collect(Collectors.toList());
+        Collections.sort(answer);
         return answer;
     }
 }
