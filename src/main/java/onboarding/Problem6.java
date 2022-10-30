@@ -40,9 +40,22 @@ public class Problem6 {
 
             }
         }
-
-        List<String> answer = List.of("");
+        String[] list = result.split(" ");
+        array(list);
+        List<String> answer = List.of(list);
         return answer;
+    }
+    private static void array(String[] list) {
+        for(int i=0; i<list.length-1; i++){
+            for(int j=i+1; j<list.length; j++){
+                if(list[i].compareTo(list[j])>0){
+                    String temp = list[j];
+                    list[j]= list[i];
+                    list[i] = temp;
+                }
+            }
+        }
+
     }
 
 
