@@ -4,6 +4,7 @@ import java.util.regex.Pattern;
 
 public class Problem2 {
 
+    // aa, bb, ccc 같은 연속되는 중복 문자
     private static final Pattern CONSECUTIVE_DUPLICATE_LETTERS = Pattern.compile("(.)\\1+");
     private static final String EMPTY_STRING = "";
 
