@@ -46,7 +46,7 @@ public class Problem2 {
     public static int [] decoding(String cryptogram){
         List<Integer> arr = array(cryptogram);
         arr = split(arr);
-        
+
         int [] overlapIndex = new int[2];
         int size = arr.size();
         if(size == 0){
@@ -56,6 +56,22 @@ public class Problem2 {
         overlapIndex[0] = arr.get(0);
         overlapIndex[1] = arr.get(size-1);
         return overlapIndex;
+    }
+
+    /**
+     * 4.중복문자 부분만 제거해서 리턴하는 함수
+     * 중복문자가 없을경우(overlap Index == 0) cryptogram 리턴
+     * 중복문자가 있을경우(overlap Index > 0) 중복문자를 잘라서 cryptogram 재선언
+     * 변경된 cryptogram 리턴
+     */
+    public static String overlapDelete(String cryptogram) {
+        int [] overlapIndex = decoding(cryptogram);
+        if(overlapIndex[0] == 0 && overlapIndex[1] == 0){
+            return cryptogram;
+        }
+        cryptogram = cryptogram.substring(0, overlapIndex[0]) +
+                cryptogram.substring(overlapIndex[1]+1,cryptogram.length());
+        return overlapDelete(cryptogram);
     }
 
     public static String solution(String cryptogram) {
