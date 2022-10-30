@@ -48,4 +48,14 @@ class Problem1 {
             return true;
         return false;
     }
+
+    public static Boolean isNotStartOrEnd(List<Integer> pages){
+        if(pages.get(LEFT.ordinal()) == 0)
+            return false;
+        if(pages.get(RIGHT.ordinal()) == 400)
+            return false;
+
+        return true;
+    }
+
 }
