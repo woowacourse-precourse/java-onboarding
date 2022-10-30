@@ -34,10 +34,10 @@ public class Problem7 {
                 map.put(s1, map.getOrDefault(s1, 0)+10);
             }
         }
-
+        // {andole=20, jun=20, shakevan=11, bedi=3, donut=11}
         for(int i=0; i<visitors.size(); i++){
             map.put(visitors.get(i), map.getOrDefault(visitors.get(i), 0)+1);
-        } // {andole=20, jun=20, shakevan=11, bedi=3, donut=11}
+        }
 
         for(int i=0; i< map.size(); i++){
             for(String key : alreadyfriends){
