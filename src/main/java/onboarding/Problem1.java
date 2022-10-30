@@ -17,6 +17,10 @@ class Problem1 {
         if(leftPage == 1 || rightPage == 400)
             return -1;
 
+        // 왼쪽 페이지 홀수 검사
+        if(leftPage%2 != 1)
+            return -1;
+
         // 연속된 페이지인지 검사
         if(leftPage + 1 != rightPage)
             return -1;
@@ -48,6 +52,24 @@ class Problem1 {
     private static int getRadixMultiply(Integer page){
         List<Integer> radix = convertIntToIntList(page);
 
-        return radix.stream().reduce(1,(a,b) -> a*b);
+        return radix.stream().reduce(1, (a, b) -> a * b);
+    }
+
+    private static int selectBiggerNumber(int sum, int mul){
+        return sum > mul ? sum : mul;
+    }
+
+    private static int selectBiggerPage(int left,int right){
+        return left > right ? left : right;
+    }
+
+    private static int selectWinner(int pobiNumber,int crongNumber){
+        if(pobiNumber > crongNumber)
+            return 1;
+
+        if(pobiNumber < crongNumber)
+            return 2;
+
+        return 0;
     }
 }
