@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
+import java.util.Comparator;
 
 public class Problem7 {
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -12,6 +13,7 @@ public class Problem7 {
 		HashMap<String, List<String>> friendMap = createFriendMap(friends);
 		HashMap<String, Integer> oneHopFriend = getOneHopFriend(user, friendMap);
 		HashMap<String, Integer> point = new HashMap<>();
+		ArrayList<Entry<String, Integer>> pointArr;
 
 		for(Entry<String, Integer> friend: oneHopFriend.entrySet())
 			point.put(friend.getKey(), friend.getValue() * 10);
@@ -24,6 +26,23 @@ public class Problem7 {
 			else
 				point.put(visitor, point.get(visitor) + 1);
 		}
+
+		pointArr = new ArrayList<>(point.entrySet());
+		Collections.sort(pointArr, new Comparator<Entry<String, Integer>>() {
+			public int compare(Entry<String, Integer> a, Entry<String, Integer> b) {
+				// 점수 내림차순 정렬
+				int valueComp = b.getValue().compareTo(a.getValue());
+
+				if(valueComp != 0)
+					return valueComp;
+
+				// 이름 오름차순 정렬
+				return a.getKey().compareTo(b.getKey());
+			}
+		});
+
+		for(Entry<String, Integer> ent: pointArr)
+			answer.add(ent.getKey());
 
 		return answer;
 	}
