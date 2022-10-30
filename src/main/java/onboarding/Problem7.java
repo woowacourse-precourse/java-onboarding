@@ -13,99 +13,78 @@ import java.util.stream.Collectors;
  */
 public class Problem7 {
 
-    static Set<String> friendDictionary = new HashSet<>();
+    private static class Dictionary {
+        private final Set<String> friends = new HashSet<>();
+        private final Map<String, Integer> memberAndScore = new HashMap<>();
+        private String originUser;
 
-    static Map<String, Integer> memberDictionary = new HashMap<>();
+        Dictionary() {
+        }
+
+        Dictionary(String user, List<List<String>> friendsForm) {
+            this.originUser = user;
+
+            friendsForm.forEach(pair -> {
+                if (isFriendWithOriginUser(pair.get(0))) {
+                    friends.add(pair.get(1));
+                }
+
+                if (isFriendWithOriginUser(pair.get(1))) {
+                    friends.add(pair.get(0));
+                }
+
+                memberAndScore.put(pair.get(0), 0);
+                memberAndScore.put(pair.get(1), 0);
+            });
+        }
+
+        public void updateScoreByRelationShip(List<List<String>> friendsForm) {
+            friendsForm.forEach(relationShip -> {
+                String user = relationShip.get(0);
+                String other = relationShip.get(1);
+
+                if (isFriendWithOriginsFriend(user)) {
+                    memberAndScore.put(other, memberAndScore.get(other) + 10);
+                }
+
+                if (isFriendWithOriginsFriend(other)) {
+                    memberAndScore.put(other, memberAndScore.get(other) + 10);
+                }
+
+            });
+        }
+
+        public void updateScoreByVisit(List<String> visitors) {
+            visitors.forEach(visitor -> memberAndScore.merge(visitor, 1, Integer::sum));
+        }
+
+        public List<String> getResult() {
+            return memberAndScore.keySet().stream()
+                    .filter(o -> memberAndScore.get(o) != 0 && !friends.contains(o))
+                    .sorted()
+                    .sorted((o1, o2) -> memberAndScore.get(o2).compareTo(memberAndScore.get(o1)))
+                    .limit(5)
+                    .collect(Collectors.toList());
+        }
+
+        private boolean isFriendWithOriginUser(String other) {
+            return other.equals(originUser);
+        }
+
+        private boolean isFriendWithOriginsFriend(String user) {
+            return friends.contains(user);
+        }
+
+    }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        initDictionary(user, friends);
+        Dictionary dictionary = new Dictionary(user, friends);
 
-        getMemberScore(user, friends, visitors);
+        dictionary.updateScoreByRelationShip(friends);
 
-        return getResults();
+        dictionary.updateScoreByVisit(visitors);
+
+        return dictionary.getResult();
     }
 
-    /**
-     * 결과값을 정제, 정렬, 개수제한을 필터링해서 반환한다.
-     * @return 사용자 이메일 List
-     */
-    private static List<String> getResults() {
-        return memberDictionary.keySet().stream()
-                .filter(o -> memberDictionary.get(o) != 0 && !friendDictionary.contains(o))
-                .sorted()
-                .sorted((o1, o2) -> memberDictionary.get(o2).compareTo(memberDictionary.get(o1)))
-                .limit(5)
-                .collect(Collectors.toList());
-    }
-
-    /**
-     * otherMembers에 존재하는 각각의 사용자에게 점수를 부여한다.
-     * @param user 사용자
-     * @param friends 친구관계 목록
-     * @param visitors 방문자 목록
-     */
-    private static void getMemberScore(String user, List<List<String>> friends, List<String> visitors) {
-        for (List<String> pair : friends) {
-            updateScoreByRelationShip(user, pair);
-        }
-
-        for (String visitor : visitors) {
-            updateScoreByVisit(visitor);
-        }
-    }
-
-    /**
-     * 방문 이력에 따라 해당 사용자의 점수를 올린다.
-     * @param visitor 방문자 목록
-     */
-    private static void updateScoreByVisit(String visitor) {
-        memberDictionary.merge(visitor, 1, Integer::sum);
-    }
-
-    /**
-     * 사용자의 친구와 친구 관계면 점수를 올린다.
-     * @param user 사용자
-     * @param pair 친구관계
-     */
-    private static void updateScoreByRelationShip(String user, List<String> pair) {
-        if (friendDictionary.contains(pair.get(0)) && !Objects.equals(pair.get(1), user)) {
-            memberDictionary.put(pair.get(1), memberDictionary.get(pair.get(1)) + 10);
-        }
-
-        if (friendDictionary.contains(pair.get(1)) && !Objects.equals(pair.get(0), user)) {
-            memberDictionary.put(pair.get(0), memberDictionary.get(pair.get(0)) + 10);
-        }
-    }
-
-    /**
-     * friendDictionary와 memberDictionary에 초기값을 넣는다
-     * @param user : 사용자 이름
-     * @param friends : 친구관계 목록
-     */
-    private static void initDictionary(String user, List<List<String>> friends) {
-        friends.forEach(pair -> updateDictionary(pair, user));
-    }
-
-    /**
-     * 사용자의 친구를 memberFriends List에 저장한다.
-     * 모든 사용자를 구해 otherMembers Map에 저장한다.
-     * @param pair 한 쌍의 친구관계
-     * @param user 사용자 이름
-     */
-    private static void updateDictionary(List<String> pair, String user) {
-        if (pair.get(0).equals(user)) {
-            friendDictionary.add(pair.get(1));
-            memberDictionary.put(pair.get(1), 0);
-        }
-
-        if (pair.get(1).equals(user)) {
-            friendDictionary.add(pair.get(0));
-            memberDictionary.put(pair.get(0), 0);
-        }
-
-        if (!pair.contains(user)) {
-            memberDictionary.put(pair.get(0), 0);
-            memberDictionary.put(pair.get(1), 0);
-        }
-    }
 }
