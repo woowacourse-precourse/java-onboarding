@@ -8,6 +8,10 @@ class Problem1 {
         return answer;
     }
 
+    private static boolean validateCorrectPageSize(List<Integer> pobi, List<Integer> crong) {
+        return pobi.size() == 2 && crong.size() == 2;
+    }
+
     private static int getMSum(int page) {
         int sum = 0;
         while (page > 0) {
