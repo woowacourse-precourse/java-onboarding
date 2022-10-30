@@ -1,7 +1,6 @@
 package onboarding;
 
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * 문제 분석
@@ -25,12 +24,42 @@ import java.util.List;
  *     2. 1번의 로직을 구현하기 위해 해쉬맵을 이용한다 .
  *             key == 문자
  *             value == 뒤에 오는 문자들 (HashMap<Character(문자), Integer(등장 횟수)>)
+ *     3. 이메일의 중복을 제거하라는것이 실제 이메일이 중복해서 들어오는 경우도 있을수 있으므로 set 을 통해 중복 제거
  */
 
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer ;
+        Set<String> set =new HashSet<>();
+        HashMap<Character, HashMap<Character, Integer>> hs = new HashMap<>();
+        HashMap<Character,Integer> preHs;
+        for (List<String> users : forms) {
+            preHs =null;
+            for (char ch : users.get(1).toCharArray()) {
+                if (preHs != null) {
+                    preHs.put(ch, preHs.getOrDefault(ch, 0) + 1);
+                }
+                if (!hs.containsKey(ch)) {
+                    hs.put(ch, new HashMap<>());
+                }
+                preHs = hs.get(ch);
+            }
+        }
+        for (List<String> users : forms) {
+            preHs =null;
+            for (char ch : users.get(1).toCharArray()) {
+                if (preHs != null) {
+                    if (preHs.get(ch) > 1) {
+                        set.add(users.get(0));
+                        break;
+                    }
+                }
+                preHs = hs.get(ch);
+            }
+        }
+        answer = new ArrayList<>(set);
+        Collections.sort(answer);
         return answer;
     }
 }
