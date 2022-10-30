@@ -9,12 +9,12 @@ import java.util.List;
 
 public class FriendRecommendService {
 
-    private final AccountRepository accountRepository;
+    private final AccountInfo accountInfo;
     private final String targetUser;
 
-    public FriendRecommendService(AccountRepository accountRepository, List<String> visitors,
+    public FriendRecommendService(AccountInfo accountInfo, List<String> visitors,
         String targetUser) {
-        this.accountRepository = accountRepository;
+        this.accountInfo = accountInfo;
         this.targetUser = targetUser;
         initFriendsRelationScore();
         initVisitorScore(visitors);
@@ -31,8 +31,8 @@ public class FriendRecommendService {
     }
 
     private void initFriendsRelationScore() {
-        accountRepository
-            .getAccountFriendStream(targetUser)
+        accountInfo
+            .findAllAccountFriendStream(targetUser)
             .forEach(this::calculateFriendsRelationScore);
     }
 
@@ -50,7 +50,7 @@ public class FriendRecommendService {
     }
 
     private void calculateVisitorScore(String visitorId) {
-        Account visitor = accountRepository.getAccount(visitorId);
+        Account visitor = accountInfo.findAccount(visitorId);
 
         if (!visitor.isFriend(targetUser)) {
             visitor.addScore(VISITOR_SCORE);
@@ -58,7 +58,7 @@ public class FriendRecommendService {
     }
 
     private List<Account> mapAccountInfoToList() {
-        return accountRepository.getAllAccountInfo().stream()
+        return accountInfo.findAllAccount().stream()
             .filter(account -> !account.isAccountId(targetUser))
             .filter(Account::scoreOverThanZero)
             .collect(toList());
