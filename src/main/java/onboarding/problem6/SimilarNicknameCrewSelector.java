@@ -23,7 +23,9 @@ public class SimilarNicknameCrewSelector {
 	}
 
 	public List<String> makeSimilarNicknameCrewEmailList() {
-		for(int comparingCrewIndex = 0; comparingCrewIndex < numberOfCrews - 1; comparingCrewIndex++) {
+		for(int i = 0; i < numberOfCrews - 1; i++) {
+			int comparingCrewIndex = i;
+
 			if(hasSimilarNickname.get(comparingCrewIndex) == false) {
 				compareCrewsNickname(comparingCrewIndex);
 			}
@@ -43,7 +45,9 @@ public class SimilarNicknameCrewSelector {
 	}
 
 	private void checkSimilarityWithOtherCrews(int comparingCrewIndex, TreeSet<String> dividedNickname) {
-		for(int comparedCrewIndex = comparingCrewIndex + 1; comparedCrewIndex < numberOfCrews; comparedCrewIndex++) {
+		for(int i = comparingCrewIndex + 1; i < numberOfCrews; i++) {
+			int comparedCrewIndex = i;
+
 			if ((hasSimilarNickname.get(comparedCrewIndex) == false) &&
 				isSimilar(dividedNickname, comparedCrewIndex)) {
 				hasSimilarNickname.set(comparingCrewIndex, true);
@@ -75,7 +79,9 @@ public class SimilarNicknameCrewSelector {
 	}
 
 	private void listSimilarNicknameCrewsEmail() {
-		for (int crewIndex = 0; crewIndex < numberOfCrews; crewIndex++) {
+		for (int i = 0; i < numberOfCrews; i++) {
+			int crewIndex = i;
+
 			if (hasSimilarNickname.get(crewIndex)) {
 				similarNicknameCrewsEmail.add(crewInformations.get(crewIndex).get(0));
 			}
