@@ -10,7 +10,7 @@ public class Problem2 {
                     throw new Exception("소문자 이외의 문자가 포함되었습니다");
             }
         } catch (Exception e) {
-            System.out.println("ErrorMessage : "  + e.getMessage());
+            return e.getMessage();
         }
         String answer = duplicated(cryptogram);
         return answer;

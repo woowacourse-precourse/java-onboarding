@@ -2,6 +2,13 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
+        try {
+            if (number < 1 || number > 10000)
+                throw new Exception("number의 범위가 잘못되었습니다");
+        } catch (Exception e) {
+            System.out.println("예외 발생 : " + e.getMessage());
+            return -1;
+        }
         int answer = 0;
         for(int i = 1; i <= number; i++){
             answer += check(i);
