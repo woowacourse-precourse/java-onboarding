@@ -21,3 +21,10 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+### 요구사항 분석
+
+- [ ] cryptogram의 길이는 1이상 1000이하이다.
+- [ ] cryptogram은 알파벳 소문자로만 이루어져 있다.
+- [ ] cryptogram의 연속적으로 중복된 문자를 삭제해나간다.
+    * 종료 조건 : 더 이상 cryptogram에 연속적으로 중복된 문자가 없을 때까지
