@@ -77,11 +77,35 @@ public class Problem6 {
             if (isEmailLengthRight(forms)) {
                 //    신청할 수 있는 이메일은 email.com 도메인으로만 제한한다.
                 if (isEmailFormat(forms)) {
-                    isExceptionCondition = false;
+                    // 닉네임은 한글만 가능하고 전체 길이는 1자 이상 20자 미만이다.
+                    if (isUserFormat(forms)) {
+                        isExceptionCondition = false;
+                    }
                 }
             }
         }
         return isExceptionCondition;
+    }
+
+    private static boolean isUserFormat(List<List<String>> forms) {
+        String name = "";
+        char charName = ' ';
+        int intParseCharName = 0;
+        Pattern p = Pattern.compile("[가-힣]+");
+        boolean isUserFormat = false;
+        for (int index = 0; index < forms.size(); index++) {
+            name = forms.get(index).get(NAME);
+            Matcher m = p.matcher(name);
+            if (name.length() >= 1 && name.length() < 20) {
+                if (m.find()) {
+                    isUserFormat = true;
+                } else {
+                    isUserFormat = false;
+                    break;
+                }
+            }
+        }
+        return isUserFormat;
     }
 
     //    신청할 수 있는 이메일은 email.com 도메인으로만 제한한다.
@@ -159,10 +183,14 @@ public class Problem6 {
     }
 
     public static void main(String[] args) {
-        List<List<String>> forms = List.of(List.of("jm@email.com", "제이엠"), List.of("jason@email.com", "제이슨"),
-                List.of("woniee@email.com", "워니"), List.of("mj@email.com", "엠제이"), List.of("nowm@email.com", "이제엠"));
-
-        List result = Problem6.solution(forms);
+//        List<List<String>> forms = List.of(List.of("jm@email.com", "제이엠"), List.of("jason@email.com", "제이슨"),
+//                List.of("woniee@email.com", "워니"), List.of("mj@email.com", "엠제이"), List.of("nowm@email.com", "이제엠"));
+//
+//        List result = Problem6.solution(forms);
 //        System.out.println(forms.toString());
+        int a = 'ㄱ';
+        int b = 'ㅎ';
+        System.out.println("a = " + a);
+        System.out.println("b = " + b);
     }
 }
