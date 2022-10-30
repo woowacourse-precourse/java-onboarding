@@ -30,4 +30,12 @@ public class Problem5 {
         counter.put(currency, count);
     }
 
+    public static void makeAnswer(List<Integer> answer, List<Integer> currencies) {
+        int count;
+
+        for (int currency : currencies) {
+            count = counter.get(currency);
+            answer.add(count);
+        }
+    }
 }
