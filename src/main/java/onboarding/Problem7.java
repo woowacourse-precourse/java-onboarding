@@ -18,8 +18,15 @@ public class Problem7 {
         List<String> friendsOfUser = findFriendsByUser(user, friends);
         Map<String, Integer> scoreOfAcquaintance = addAcquaintanceScore(friends, friendsOfUser);
         addVisitorScore(visitors, scoreOfAcquaintance);
+        sortRecommendations(scoreOfAcquaintance);
 
         return answer;
+    }
+
+    private static void sortRecommendations(Map<String, Integer> scoreOfAcquaintance) {
+        scoreOfAcquaintance.entrySet().stream()
+            .sorted(Map.Entry.comparingByKey())
+            .sorted(Map.Entry.comparingByValue());
     }
 
     private static void addVisitorScore(List<String> visitors, Map<String, Integer> recommendationScore) {
