@@ -71,3 +71,12 @@ class Crew {
     }
 
 }
+
+class NickNameForm {
+    private static final Map<String, String> registrationMap = new HashMap<>();
+
+    static void addCrew(List<String> crew) {
+        registrationMap.put(crew.get(0), crew.get(1));
+    }
+
+}
