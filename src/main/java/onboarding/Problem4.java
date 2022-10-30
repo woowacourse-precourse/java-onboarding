@@ -8,6 +8,7 @@ public class Problem4 {
         Map<String, String> map = new HashMap<String, String>();
         mappingReversingChar(map);
         String answer = "";
+        answer = changeString(answer, word, map);
         return answer;
     }
 
@@ -23,5 +24,19 @@ public class Problem4 {
             map.put(origin.get(i), origin.get(origin.size()-1-i));
             map.put(origin.get(i).toLowerCase(), origin.get(origin.size()-1-i).toLowerCase());
         }
+    }
+
+    /**
+     * Function for changing answer that reverse mapping Char
+     * */
+    private static String changeString(String answer, String word, Map<String, String> map) {
+        for (int i = 0; i < word.length(); i++) {
+            if (map.containsKey(String.valueOf(word.charAt(i)))) {
+                answer += map.get(String.valueOf(word.charAt(i)));
+            } else {
+                answer += String.valueOf(word.charAt(i));
+            }
+        }
+        return answer;
     }
 }
