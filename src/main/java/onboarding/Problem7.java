@@ -24,7 +24,6 @@ public class Problem7 {
         for (String username: usernameSet){
             usernameAndScoreMap.put(username, 0);
         }
-        System.out.println(usernameAndScoreMap);
 
 
         // find user's direct friend
@@ -38,7 +37,6 @@ public class Problem7 {
                 }
             }
         }
-        System.out.println("Direct friends:" + directFriends);
 
         // find user's mutual friend (direct friends' friends)
         HashSet<String> mutualFriends = new HashSet<>();
@@ -77,116 +75,32 @@ public class Problem7 {
                 }
             }
 
-        System.out.println(usernameAndScoreMap);
-
-
-       /*
-
-
-
-
-
-
-        // add score to visitors
-        for(String visitor: visitors){
-            // find in scoreList and add score
-            for(HashMap<String, Integer> usernameAndScore: usernameAndScoreList){
-                for(String key: usernameAndScore.keySet()){ //
-                    if(key==visitor){
-                        usernameAndScore.put(key, usernameAndScore.get(key)+1);
+        HashMap<String,Integer> finalScore = new HashMap<>();
+        // remove user and direct friends from scoreList
+            for(String key: usernameAndScoreMap.keySet()){ // andole
+                if(key!=user && !directFriends.contains(key) &&  usernameAndScoreMap.get(key) > 0){
+                    // add to final score map
+                    finalScore.put(key, usernameAndScoreMap.get(key));
+                    if(finalScore.size()>=5){
+                        break;
                     }
                 }
             }
-        }
-
-        System.out.println(usernameAndScoreList);
-
-        // remove direct friends and user from scoreList
-        for(HashMap<String, Integer> usernameAndScore: usernameAndScoreList){
-            for(String key: usernameAndScore.keySet()){ //
-                if(directFriends.contains(key) || key==user){
-
-                }
-
-            }
-        }
-
-*/
-
 
         List<String> answer =   new ArrayList<>();
 
-       /* // user의 direct friend 구하기
-        HashSet<String> directFriends = new HashSet<String>();
-        for(List<String> friendList : friends){
-            if(friendList.contains(user)){
-                for(String friendName: friendList){
-                    if(friendName != user){
-                        directFriends.add(friendName);
-                    }
-                }
-            }
-        }
-
-        // user의 mutual friend 구하기
-        HashSet<String> mutualFriends = new HashSet<>();
-        for(String directFriend: directFriends){
-            for(List<String> friendList: friends){
-                for(String friendName: friendList){
-                    if(friendName != directFriend && friendName != user){
-                        mutualFriends.add(friendName);
-                    }
-                }
-            }
-        }
-        mutualFriends.removeAll(directFriends);
-
-        // 추천인 리스트 만들기
-        HashSet<String> suggestedAccounts = new HashSet<>();
-        suggestedAccounts.addAll(mutualFriends);
-        suggestedAccounts.addAll(visitors);
-        suggestedAccounts.removeAll(directFriends);
-
-        System.out.println("suggested: "+suggestedAccounts);
-        System.out.println("mutual: "+mutualFriends);
-        System.out.println("visited: "+visitors);
-
-
-
-        // mutual friend => + 10점
-        for(String mutualFriend: mutualFriends){
-            if(suggestedAccounts.contains(mutualFriend)){
-                for(List<String> friendList: friends){
-                    if(friendList.contains(mutualFriend)){
-                        score.put(mutualFriend, score.get(mutualFriend)+10);
-                    }
-                }
-            }
-        }
-
-        // visitor => + 1 점
-        for(String visitor: visitors){
-            if(suggestedAccounts.contains(visitor)){
-                score.put(visitor, score.get(visitor)+1);
-            }
-        }
-
-        System.out.println(score);
-
+        // sort final score by value
         HashMap<String, Integer> sortedScore = new HashMap<>();
-        score.entrySet()
+        finalScore.entrySet()
                 .stream()
                 .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
                 .forEachOrdered(x -> sortedScore.put(x.getKey(), x.getValue()));
 
         System.out.println(sortedScore);
 
-        for(Map.Entry<String,Integer> entry: score.entrySet()){
+        for(Map.Entry<String,Integer> entry: sortedScore.entrySet()){
             answer.add(entry.getKey());
-            if(answer.size()>=5){
-                break;
             }
-        }*/
 
         return answer;
     }
