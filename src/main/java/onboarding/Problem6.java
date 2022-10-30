@@ -83,10 +83,17 @@ public class Problem6 {
     }
 
     /**
-     * 이메일 리스트를 도메인을 제외한 부분으로 정렬
+     * 이메일 리스트를 도메인을 제외한 부분으로 오름차순 정렬
      * @param emailList 정렬할 이메일 리스트
      */
     private static void sortEmailList(List<String> emailList){
-
+        // inline Comparator
+        Collections.sort(emailList, new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                //도메인 부분을 빼고 정렬
+                return o1.split("@")[0].compareTo(o2.split("@")[0]);
+            }
+        });
     }
 }
