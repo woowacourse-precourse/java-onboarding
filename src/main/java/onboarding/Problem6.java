@@ -14,9 +14,17 @@ public class Problem6 {
             String name = forms.get(i).get(1);
             slicedNameList = new ArrayList<>();
             slicedName(name, slicedNameList);
+            checkDuplication(answer, duplicatedNameMap, email, slicedNameList);
         }
 
         return new ArrayList<>(answer);
+    }
+
+    private static void checkDuplication(Set<String> answer, HashMap<String, String> duplicatedNameMap, String email, ArrayList<String> slicedNameList) {
+        for (int k = 0; k < slicedNameList.size(); k++) {
+            String duplicatedName = slicedNameList.get(k);
+            String duplicatedEmail = duplicatedNameMap.get(duplicatedName);
+        }
     }
 
     private static void slicedName(String name, ArrayList<String> slicedNameList) {
