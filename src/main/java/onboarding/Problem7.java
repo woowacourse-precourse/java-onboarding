@@ -15,6 +15,7 @@ public class Problem7 {
         List<String> friendsOfFriendsOfUser = findFriendsOfFriendsOfUser(user, friendsInformation);
         Map<String, Integer> recommendScore = new HashMap<>();
         calculateRecommendScore(recommendScore, friendsOfFriendsOfUser, CalculusType.friend);
+        visitors = findVisitorsNotUserFriend(visitors, friendsInformation.get(user));
         calculateRecommendScore(recommendScore, visitors, CalculusType.visitor);
         return answer;
     }
@@ -114,7 +115,15 @@ public class Problem7 {
         }
     }
 
-
+    public static List<String> findVisitorsNotUserFriend(List<String> visitors, List<String> userFriend) {
+        List<String> visitorsNotUserFriend = new ArrayList<>();
+        for(String visitor : visitors) {
+            if(!userFriend.contains(visitor)) {
+                visitorsNotUserFriend.add(visitor);
+            }
+        }
+        return visitorsNotUserFriend;
+    }
 }
 
 enum CalculusType {
