@@ -33,6 +33,14 @@ public class Problem4 {
         }
         return reverseCharacterList;
     }
+
+    static String joinCharactersInArrayList(ArrayList<Character> characterArrayList) {
+        String[] stringArray = characterArrayList.stream()
+            .map(character -> String.valueOf(character))
+            .toArray(String[]::new);
+        String result = String.join("", stringArray);
+        return result;
+    }
 }
 
 class Dictionary {
