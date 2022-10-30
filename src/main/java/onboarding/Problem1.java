@@ -10,6 +10,9 @@ class Problem1 {
         if(checknum(pobi, crong) == -1)
             return -1;
 
+        //승자 결정
+        answer = comparenum(pobi, crong);
+
         return answer;
     }
     //올바른 값인지 확인
@@ -70,6 +73,15 @@ class Problem1 {
             else if(bigP < bigC)
                 crongscore++;
         }
-        return ;
+        //승자 정하기
+        if(pobiscore > crongscore)
+            winner = 1;
+        else if(pobiscore < crongscore)
+            winner = 2;
+        else if(pobiscore == crongscore)
+            winner = 0;
+        else
+            winner = -1;
+        return winner;
     }
 }
