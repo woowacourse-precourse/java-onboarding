@@ -14,6 +14,8 @@ public class Problem6 {
   private static final String EMAIL_DOMAIN = "email.com";
   private static final int MIN_EMAIL_LENGTH = 11;
   private static final int MAX_EMAIL_LENGTH = 20;
+  private static final int MAX_NICKNAME_LENGTH = 20;
+  private static final String NICKNAME_REGEX = "^[가-힣]*$";
 
   public static List<String> solution(List<List<String>> forms) {
     classifyForms(forms);
@@ -121,6 +123,16 @@ public class Problem6 {
     String domain = email.split("@")[1];
     if (!domain.equals(EMAIL_DOMAIN)) {
       throw new IllegalStateException("허용된 이메일 도메인이 아닙니다");
+    }
+    return true;
+  }
+
+  public static boolean isAllowedNickName(String nickName) throws IllegalStateException {
+    if (nickName.length() < 1 || nickName.length() > MAX_NICKNAME_LENGTH) {
+      throw new IllegalStateException("닉네임의 길이기 1~20자가 아닙니다.");
+    }
+    if (!nickName.matches(NICKNAME_REGEX)) {
+      throw new IllegalStateException("한글만 입력 가능합니다.");
     }
     return true;
   }
