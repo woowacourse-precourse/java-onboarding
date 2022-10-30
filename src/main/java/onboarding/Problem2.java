@@ -10,11 +10,11 @@ import java.util.Stack;
  */
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "";
-        for(char result :DeleteDuplication(cryptogram)){
-            answer+=result;
+        StringBuilder answer = new StringBuilder();
+        for(char result : DeleteDuplication(cryptogram)){
+            answer.append(result);
         }
-        return answer;
+        return answer.toString();
     }
     public static Stack<Character> DeleteDuplication(String str) {
         Stack <Character> stack = new Stack<>();
