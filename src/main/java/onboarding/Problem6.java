@@ -100,6 +100,30 @@ public class Problem6 {
         }
     }
 
+    private static boolean checkTrieList(String nickname) {
+        int i1, i2;
+        Pair index;
+        int length = nickname.length();
+
+        if (length == 1) {
+            i1 = indexMap.get(nickname.substring(0, 1));
+            index = new Pair(i1, i1);
+            if (checkList.contains(index)) {
+                return true;
+            }
+        } else {
+            for (int i = 0; i < length - 1; i++) {
+                i1 = indexMap.get(nickname.substring(i, i + 1));
+                i2 = indexMap.get(nickname.substring(i + 1, i + 2));
+                index = new Pair(i1, i2);
+                if (checkList.contains(index)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     private static boolean checkParam(List<List<String>> forms) {
         if (forms == null)
             return true;
