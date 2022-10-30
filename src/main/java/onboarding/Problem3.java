@@ -1,6 +1,8 @@
 package onboarding;
 
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.Set;
 
 /** 기능 목록
  * solutionLogic    : 메인 솔루션
@@ -11,35 +13,30 @@ import java.util.HashSet;
  */
 
 public class Problem3 {
-    static HashSet<Integer> gameRule;
+    private static Set<Integer> gameRule = Collections.emptySet();
 
     public static int solution(int number) {
-        gameRule = new HashSet<>();
-        final int errorCase = -1;
-        int answer;
-        setGameRule();
-        if(!checkValid(number)){
-            return errorCase;
+        gameRule = setGameRule();
+        if (!checkValid(number)) {
+            throw new IllegalArgumentException("제한사항 위반");
         }
-        answer = solutionLogic(number);
-        return answer;
+        return solutionLogic(number);
     }
 
     public static int solutionLogic(int num) {
         int clapCount = 0;
-        int now = 1;
-        while (now <= num) {
+        for (int now = 1; now <= num; now++) {
             clapCount += countClap(now);
-            now += 1;
         }
         return clapCount;
     }
 
-
-    public static void setGameRule() {
-        gameRule.add(3);
-        gameRule.add(6);
-        gameRule.add(9);
+    public static HashSet<Integer> setGameRule() {
+        HashSet<Integer> setRule = new HashSet<>();
+        setRule.add(3);
+        setRule.add(6);
+        setRule.add(9);
+        return setRule;
     }
 
     public static int isSatisfied(int num) {
