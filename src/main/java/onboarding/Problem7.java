@@ -13,18 +13,11 @@ public class Problem7 {
         countFriends(user, friends);
         countVisitors(visitors);
 
-        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(userScore.entrySet());
-        entryList.removeIf(entry -> userFriends.contains(entry.getKey()));
-        entryList.sort((o1, o2) -> {
-            if (o1.getValue().equals(o2.getValue())) {
-                return o1.getKey().compareTo(o2.getKey());
-            }
-            return o2.getValue() - o1.getValue();
-        });
+        List<Map.Entry<String, Integer>> userScoreList = sortUserFriends(removeUserFriends());
 
         List<String> answer = new ArrayList<>();
-        for(Map.Entry<String, Integer> entry : entryList){
-            answer.add(entry.getKey());
+        for(Map.Entry<String, Integer> userScore : userScoreList){
+            answer.add(userScore.getKey());
         }
 
         return answer;
@@ -70,5 +63,33 @@ public class Problem7 {
         for (String visitor : visitors) {
             setUserScore(visitor, 1);
         }
+    }
+
+    /*
+    * Map에서 user의 친구를 제거
+    *
+    * @return List<Map.Entry<String, Integer>>
+    * */
+    private static List<Map.Entry<String, Integer>> removeUserFriends() {
+        List<Map.Entry<String, Integer>> userScoreList = new LinkedList<>(userScore.entrySet());
+        userScoreList.removeIf(entry -> userFriends.contains(entry.getKey()));
+        return userScoreList;
+    }
+
+    /*
+    * Map을 value을 기준으로 내림차순 정렬
+    * 이때 valule가 같다면 이름순 정렬
+    *
+    * @return List<Map.Entry<String, Integer>>
+    * */
+    private static List<Map.Entry<String, Integer>> sortUserFriends(List<Map.Entry<String, Integer>> userScoreList) {
+        userScoreList.sort((o1, o2) -> {
+            if (o1.getValue().equals(o2.getValue())) {
+                return o1.getKey().compareTo(o2.getKey());
+            }
+            return o2.getValue() - o1.getValue();
+        });
+
+        return userScoreList;
     }
 }
