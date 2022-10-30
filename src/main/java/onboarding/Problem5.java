@@ -6,8 +6,21 @@ import java.util.List;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Bank.getMoneyCountList(money);
-        return answer;
+        try {
+            validate(money);
+            List<Integer> answer = Bank.getMoneyCountList(money);
+            return answer;
+        } catch (Exception e) {
+            System.out.println(e);
+            return Collections.emptyList();
+        }
+
+    }
+
+    static void validate(int money) throws Exception {
+        if (money < 1 || money > 1_000_000) {
+            throw new Exception("1 이상 1000000 이하의 자연수만 입력 받을 수 있습니다");
+        }
     }
 }
 
