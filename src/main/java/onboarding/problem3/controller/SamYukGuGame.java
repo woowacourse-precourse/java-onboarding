@@ -18,4 +18,8 @@ public class SamYukGuGame {
         return this;
     }
 
+    public int getTotalHandClapCount(){
+        return this.totalHandClapCount;
+    }
+
 }
