@@ -5,7 +5,7 @@
 
 | 필요기능         | 변수명(함수명)                                    | 구현 여부(O, X) |
 |--------------|---------------------------------------------|-------------|
-| 2단어씩 나누기     | for (int j = 0; j < name.length() - 1; j++) | X           |
+| 2단어씩 나누기     | for (int j = 0; j < name.length() - 1; j++) | O           |
 | 키를 가지고 있으면   | if (email_nick.containsKey(key)) | X           |
 | nickname에 추가 |  nickname.add(email);| X           |
 | 정렬           |  .sorted()| X           |

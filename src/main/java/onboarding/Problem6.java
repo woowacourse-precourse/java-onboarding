@@ -14,8 +14,13 @@ public class Problem6 {
             if (name.length() < 2) {
                 break;
             }
+            // 2단어씩 나누기
+            for (int j = 0; j < name.length() - 1; j++) {
+                String key = name.substring(j, j + 2);
+                // 키를 가지고 있으면
 
-        }
+                }
+            }
         return answer;
     }
 }
