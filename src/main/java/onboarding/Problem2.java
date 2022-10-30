@@ -1,9 +1,11 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Stack;
 
 public class Problem2 {
     static ArrayList<Character> cryptogramList = new ArrayList<>();
+    static Stack<String> stateRecord = new Stack<>();
 
     public static String solution(String cryptogram) {
         String answer = "answer";
@@ -60,6 +62,19 @@ public class Problem2 {
 
     public static void addState(String state) {
         stateRecord.add(state);
+    }
+
+    public static boolean wasRemoved() {
+        if (stateRecord.empty()) {
+            return false;
+        }
+        if (stateRecord.peek().equals("remove")) {
+            return true;
+        }
+        if (stateRecord.peek().equals("save")) {
+            return false;
+        }
+        return false;
     }
 
 }
