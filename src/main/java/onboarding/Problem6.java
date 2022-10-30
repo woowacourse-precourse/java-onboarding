@@ -8,6 +8,8 @@ public class Problem6 {
     private static final int FORM_MIN_LENGTH = 1;
     private static final int FORM_MAX_LENGTH = 10000;
     private static final int FORM_ELEMENT_SIZE = 2;
+    private static final int EMAIL_MIN_LENGTH = 11;
+    private static final int EMAIL_MAX_LENGTH = 20;
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
@@ -37,6 +39,16 @@ public class Problem6 {
     public static boolean checkFormsElementLength(List<List<String>> forms) {
         for (List<String> formElement : forms) {
             if (!(formElement.size() == FORM_ELEMENT_SIZE)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    // 이메일의 길이가 11자 이상 20자 미만인지 검증하는 기능
+    public static boolean checkEmailLength(List<String> emails) {
+        for (String email : emails) {
+            if (!(EMAIL_MIN_LENGTH <= email.length() && email.length() <= EMAIL_MAX_LENGTH)) {
                 return false;
             }
         }
