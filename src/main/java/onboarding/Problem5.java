@@ -6,13 +6,13 @@
 
 package onboarding;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
-        // 현재 거스를 돈 단위 파악후 남은 돈 리턴 해주는 함수 구현
-        List<Integer> answer = Collections.emptyList();
+        List<Integer> answer = new ArrayList<>();
+
         int[] wonList = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
         int putMoney;
         LeftMoney leftmoney = new LeftMoney();
