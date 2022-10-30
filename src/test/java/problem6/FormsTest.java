@@ -13,7 +13,7 @@ class FormsTest {
     @DisplayName("연속된 문자가 겹치는 이메일 반환")
     void getProblematicEmails() {
         List<List<String>> forms = List.of(
-                List.of("jm@email.com", "제이제이제엠"),
+                List.of("jm@email.com", "제이엠"),
                 List.of("jm@email.com", "제이엠"),
                 List.of("jason@email.com", "제이슨"),
                 List.of("jason@email.com", "제이슨"),
