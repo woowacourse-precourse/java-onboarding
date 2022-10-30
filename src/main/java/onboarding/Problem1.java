@@ -9,12 +9,11 @@ class Problem1 {
         while(page_num>0){
             if(op == '*'){
                 result *= (page_num%10);
-                result /= 10;
             }
             else if(op == '+'){
                 result += (page_num%10);
-                result /= 10;
             }
+            result /= 10;
         }
         return result;
     }
@@ -48,7 +47,7 @@ class Problem1 {
             answer = 1;
         } else if(crong_max > pobi_max){
             answer = 2;
-        } else {
+        } else if(pobi_max == crong_max){
             answer = 0;
         }
 
