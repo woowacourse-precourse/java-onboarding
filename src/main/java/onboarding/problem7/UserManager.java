@@ -18,7 +18,23 @@ public class UserManager {
         initFriendsTable(friends);
         initVisitCount(visitors);
     }
-    
+
+    public List<String> recommandTo(String targetUser) {
+        calculateFriendsScore(targetUser);
+
+        return friendsScore.keySet()
+                .stream()
+                .filter(name -> friendsTable.get(targetUser) == null ||!friendsTable.get(targetUser).contains(name))
+                .filter(name-> friendsScore.get(name)>0)
+                .sorted((userName1, userName2) -> {
+                    if(friendsScore.get(userName2) == friendsScore.get(userName1))
+                        return userName1.compareTo(userName2);
+                    return friendsScore.get(userName2) - friendsScore.get(userName1);
+                })
+                .limit(5)
+                .collect(Collectors.toList());
+    }
+
     private void calculateFriendsScore(String targetUser) {
         addFriendsScoreBySharedFriendCount(targetUser);
         addFriendsScoreByVisitCount();
@@ -26,6 +42,10 @@ public class UserManager {
 
     private void addFriendsScoreByVisitCount() {
         for (String visitor : visitCount.keySet()) {
+            if (friendsScore.containsKey(visitor)) {
+                friendsScore.put(visitor,friendsScore.get(visitor)+visitCount.get(visitor));
+                continue;
+            }
             friendsScore.put(visitor,visitCount.get(visitor));
         }
     }
@@ -47,6 +67,7 @@ public class UserManager {
         int count = 0;
         Set<String> inputUserFriendSet = friendsTable.get(inputUser);
 
+        if(inputUserFriendSet==null) return count;
         for (String sharedFriend : friendsTable.get(currentUser)) {
             if (inputUserFriendSet.contains(sharedFriend)) count++;
         }
