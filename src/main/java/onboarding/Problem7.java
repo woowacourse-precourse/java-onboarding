@@ -2,13 +2,31 @@ package onboarding;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map.Entry;
 
 public class Problem7 {
-    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
-    }
+	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+		List<String> answer = new ArrayList<>();
+		HashMap<String, List<String>> friendMap = createFriendMap(friends);
+		HashMap<String, Integer> oneHopFriend = getOneHopFriend(user, friendMap);
+		HashMap<String, Integer> point = new HashMap<>();
+
+		for(Entry<String, Integer> friend: oneHopFriend.entrySet())
+			point.put(friend.getKey(), friend.getValue() * 10);
+
+		for(String visitor: visitors) {
+			if(friendMap.get(user).contains(visitor))
+				continue;
+			if(!point.containsKey(visitor))
+				point.put(visitor, 1);
+			else
+				point.put(visitor, point.get(visitor) + 1);
+		}
+
+		return answer;
+	}
 
 	private static HashMap<String, List<String>> createFriendMap(List<List<String>> friends) {
 		HashMap<String, List<String>> friendMap = new HashMap<>();
