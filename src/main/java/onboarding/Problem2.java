@@ -21,4 +21,12 @@ public class Problem2 {
         answer = new String(str);
         return answer;
     }
+    private static void setSet(StringBuffer str, Set<Integer> set) {
+        for(int i = 0; i< str.length()-1; i++){
+            if(str.charAt(i) == str.charAt(i + 1)){
+                set.add(i);
+                set.add(i + 1);
+            }
+        }
+    }
 }
