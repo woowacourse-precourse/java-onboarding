@@ -5,8 +5,6 @@ import java.util.*;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
-        List<HashMap<String, Integer>> nameAndScoreMap = new ArrayList<>();
-
         // create a set to get all users in friends and visitors
         HashSet<String> usernameSet = new HashSet<>();
 
@@ -20,10 +18,59 @@ public class Problem7 {
         for(String visitor: visitors){
             usernameSet.add(visitor);
         }
-        System.out.println(usernameSet);
+
+        // initialize all users' score to zero
+        List<HashMap<String, Integer>> usernameAndScoreList = new ArrayList<>();
+        for (String username: usernameSet){
+            HashMap<String, Integer> usernameAndScore = new HashMap<>();
+            usernameAndScore.put(username, 0);
+            usernameAndScoreList.add(usernameAndScore);
+        }
 
 
+        // find user's direct friend
+        HashSet<String> directFriends = new HashSet<String>();
+        for(List<String> friendList : friends){
+            if(friendList.contains(user)){
+                for(String friendName: friendList){
+                    if(friendName != user){
+                        directFriends.add(friendName);
+                    }
+                }
+            }
+        }
 
+        // find user's mutual friend (direct friends' friends)
+        HashSet<String> mutualFriends = new HashSet<>();
+        for(String directFriend: directFriends){
+            for(List<String> friendList: friends){
+                for(String friendName: friendList){
+                    if(friendName != directFriend && friendName != user){
+                        mutualFriends.add(friendName);
+                    }
+                }
+            }
+        }
+        mutualFriends.removeAll(directFriends);
+
+
+        // add score to mutual friends
+        for(String mutualFriend: mutualFriends){ // andole
+                for(List<String> friendList: friends){ // ["donut", "andole"]
+                    if(friendList.contains(mutualFriend)){ // true
+                        for(HashMap<String, Integer> usernameAndScore: usernameAndScoreList){
+                            for(String key: usernameAndScore.keySet()){ //
+                                if(key==mutualFriend){
+                                    usernameAndScore.put(key, usernameAndScore.get(key)+10);
+                                    System.out.println("added");
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+        System.out.println(usernameAndScoreList);
 
 
 
