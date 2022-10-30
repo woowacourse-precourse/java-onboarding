@@ -30,4 +30,15 @@ class Problem1 {
         return sum;
     }
 
+    /*
+    뽑은 페이지 곱하기 기능
+     */
+    private static int multiIndex(int num){
+        int sum=1;
+        while(num>0){
+            sum*=num%10;
+            num/=10;
+        }
+        return sum;
+    }
 }
