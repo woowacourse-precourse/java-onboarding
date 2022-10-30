@@ -45,15 +45,18 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         if (isException(pobi) || isException(crong)) {  // 예외상황시 비교연산 비실행 -1 반환
             answer = -1;
-        } else {          // 예외 체크후 비교연산 시작
+        }
+        else {          // 예외 체크후 비교연산 시작
             int pobiScore = getHighestValue(pobi);
             int crongScore = getHighestValue(crong);
 //          pobi, crong 최종스코어 비교
             if (pobiScore == crongScore) {
                 answer = 0;
-            } else if (pobiScore > crongScore) {
+            }
+            else if (pobiScore > crongScore) {
                 answer = 1;
-            } else if (pobiScore < crongScore) {
+            }
+            else if (pobiScore < crongScore) {
                 answer = 2;
             }
         }
@@ -61,7 +64,7 @@ class Problem1 {
     }
 
     private static int getAddNumber(int page) {
-        int addResult = 0; // 자릿수별 더한 값
+        int addResult = 0; // 자릿수별 초기 값
 
 //      왼쪽, 오른쪽 페이지 수 한자리 수로 구분.
         String strNum = Integer.toString(page);
@@ -74,7 +77,7 @@ class Problem1 {
     }
 
     private static int getMulNumber(int page) {
-        int mulResult = 1; // 자릿수별 더한 값
+        int mulResult = 1; // 자릿수별 초기 값
 
 //      왼쪽, 오른쪽 페이지 수 한자리 수로 구분.
         String strNum = Integer.toString(page);
