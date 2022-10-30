@@ -5,6 +5,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Problem4 {
+    public static void main(String[] args) {
+        String word = "I love you";
+        System.out.printf("%-30s|%-30s|", "word", "result");
+        System.out.println("\nㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
+        System.out.printf("%-30s|%-30s|", "\"" + word + "\"", "\"" + solution(word) + "\"");
+    }
+
     public static String solution(String word) {
         String answer = "";
         List<Character> letters = new ArrayList<>();
