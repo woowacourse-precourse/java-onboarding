@@ -82,30 +82,32 @@ public class Problem7 {
             String friendB = friend.get(1);
 
             if (!numberOfFriends.containsKey(friendA)) {
-                numberOfFriends.put(friendA, idx);
-                friends.add(idx++, new Friend(friendA, 0));
+                initFriend(numberOfFriends, friends, idx++, friendA);
             }
 
             if (!numberOfFriends.containsKey(friendB)) {
-                numberOfFriends.put(friendB, idx);
-                friends.add(idx++, new Friend(friendB, 0));
+                initFriend(numberOfFriends, friends, idx++, friendB);
             }
 
-            AddMyFriend(numberOfFriends, friends, friendA, friendB);
-            AddMyFriend(numberOfFriends, friends, friendB, friendA);
+            addMyFriend(numberOfFriends, friends, friendA, friendB);
+            addMyFriend(numberOfFriends, friends, friendB, friendA);
         }
 
         for (String visitor : visitors) {
             if (!numberOfFriends.containsKey(visitor)) {
-                numberOfFriends.put(visitor, idx);
-                friends.add(idx++, new Friend(visitor, 0));
+                initFriend(numberOfFriends, friends, idx++, visitor);
             }
 
             friends.get(numberOfFriends.get(visitor)).addScore(1);
         }
     }
 
-    private static void AddMyFriend(Map<String, Integer> numberOfFriends, List<Friend> friends, String friendA, String friendB) {
+    private static void initFriend(Map<String, Integer> numberOfFriends, List<Friend> friends, int idx, String friendA) {
+        numberOfFriends.put(friendA, idx);
+        friends.add(idx, new Friend(friendA, 0));
+    }
+
+    private static void addMyFriend(Map<String, Integer> numberOfFriends, List<Friend> friends, String friendA, String friendB) {
         friends.get(numberOfFriends.get(friendA)).addMyFriend(friendB);
     }
 }
