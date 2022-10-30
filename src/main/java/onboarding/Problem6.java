@@ -6,7 +6,9 @@ import java.util.TreeSet;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-
+        List<String> email = new ArrayList<>();
+        List<String> addedEmail = addEmail(forms,email);
+        return getEmailList(addedEmail);
     }
 
     //List에서 닉네임을 받아오는 함수
