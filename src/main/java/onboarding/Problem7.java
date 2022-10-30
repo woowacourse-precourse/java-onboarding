@@ -100,6 +100,28 @@ public class Problem7 {
         return totalScore;
     }
 
+    public Set<String> getReverseMap(Map<String,Integer> totalScore) {
+        Set<String> recommadScore = new TreeSet<>();
+        TreeMap<Integer, String> reverse = new TreeMap<>();
+
+
+        Set<String> tset = totalScore.keySet();
+        for (String s : tset) {
+            reverse.put(totalScore.get(s), s);
+        }
+        int count=1;
+        NavigableMap<Integer, String> descendingMap = reverse.descendingMap();
+        Set<Map.Entry<Integer,String>>  descendingEntrySet = descendingMap.entrySet();
+        for(Map.Entry<Integer, String> e : descendingEntrySet){
+            recommadScore.add(e.getValue());
+
+            if(count==5){break;}
+            count++;
+        }
+
+        return recommadScore;
+    }
+
 
 
 }
