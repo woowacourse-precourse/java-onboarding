@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
  * "같은 글자가 연속적으로 포함 되는 닉네임을 작성한 지원자의 이메일 목록을 리턴"
  *
  * --> 수정 --> 제한사항에서 result 의 이메일 문자열의 중복을 제거한다를 발견 후 코드 수정
+ * 1. stream 을 사용하여 result 를 오름차순 정렬 한 후 중복을 제거해줌.
  **/
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
