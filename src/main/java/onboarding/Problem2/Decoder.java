@@ -1,10 +1,8 @@
-package onboarding;
+package onboarding.Problem2;
 
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.Stack;
 
-class Decoder
+public class Decoder
 {
     private int itemIndex;
     private int emptyIndex;
@@ -80,12 +78,4 @@ class Decoder
     }
 
 
-}
-public class Problem2 {
-
-    public static String solution(String cryptogram) {
-        Decoder decodeQueue = new Decoder(cryptogram);
-        while(decodeQueue.removeDuplicatedCharacter());
-        return decodeQueue.toString();
-    }
 }
