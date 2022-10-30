@@ -11,10 +11,7 @@ public class Problem6 {
     private static final boolean NO_DUPLICATE=false;
 
     public static List<String> solution(List<List<String>> forms) {
-        Map<String,Integer> nickMap = mapSetting(forms);
-        List<Integer> duplicateUserIndex = duplicateIndex(forms, nickMap);
-        Set<String> duplicateUserMailSet = duplicateUserMail(forms, duplicateUserIndex);
-        List<String> answer = setToList(duplicateUserMailSet);
+        List<String> answer = duplicateUserMailList(forms);
         return answer;
     }
     private static Map<String, Integer> mapSetting(List<List<String>> forms) {
@@ -31,7 +28,8 @@ public class Problem6 {
             nickMap.put(tmp,nickMap.getOrDefault(tmp,0)+1);
         }
     }
-    private static List<Integer> duplicateIndex(List<List<String>> forms,Map<String, Integer> nickMap) {
+    private static List<Integer> duplicateIndex(List<List<String>> forms) {
+        Map<String, Integer> nickMap = mapSetting(forms);
         List<Integer> duplicateIndex = new ArrayList<>();
         for (int index = 0; index < forms.size(); index++) {
             String nowNick = forms.get(index).get(NICKNAME);
@@ -55,9 +53,10 @@ public class Problem6 {
         }
         return duplicateUserEmail;
     }
-    private static List<String> setToList(Set<String> mailSet) {
+    private static List<String> duplicateUserMailList(List<List<String>> forms) {
+        Set<String> duplicateUserMailSet = duplicateUserMail(forms, duplicateIndex(forms));
         List<String> setToList = new ArrayList<>();
-        Iterator<String> iterator = mailSet.iterator();
+        Iterator<String> iterator = duplicateUserMailSet.iterator();
         while(iterator.hasNext())setToList.add(iterator.next());
         return setToList;
     }
