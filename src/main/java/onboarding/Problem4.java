@@ -15,12 +15,12 @@ public class Problem4 {
     }
 
     private static Boolean isUpperAlpha(char ch){
-        return (A_VALUE <= ch && ch <= Z_VALUE);
+        return (A_ASCII_VALUE <= ch && ch <= Z_ASCII_VALUE);
 
     }
 
     private static Boolean isLowerAlpha(char ch){
-        return (a_VALUE <= ch && ch <= z_VALUE);
+        return (a_ASCII_VALUE <= ch && ch <= z_ASCII_VALUE);
     }
 
     private static boolean isWrongLength(String checkString){
@@ -29,13 +29,13 @@ public class Problem4 {
     }
 
     static class Const{
-        public static final int A_VALUE = 65;
-        public static final int Z_VALUE = 90;
+        public static final int A_ASCII_VALUE = 65;
+        public static final int Z_ASCII_VALUE = 90;
 
-        public static final int a_VALUE = 97;
-        public static final int z_VALUE = 122;
+        public static final int a_ASCII_VALUE = 97;
+        public static final int z_ASCII_VALUE = 122;
 
-        public static final int UPPER_ALPHA_SUM = 155;
-        public static final int LOWER_ALPHA_SUM = 219;
+        public static final int UPPER_ASCII_SUM = A_ASCII_VALUE + Z_ASCII_VALUE;
+        public static final int LOWER_ASCII_SUM = a_ASCII_VALUE + z_ASCII_VALUE;
     }
 }
