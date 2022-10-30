@@ -1,6 +1,5 @@
 package onboarding;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.Math.max;
@@ -20,20 +19,20 @@ class Problem1 {
         if (leftPageNumber % 2 == 0) {  // 왼쪽 페이지가 짝수일 경우
             return false;
         }
-        else if (leftPageNumber < MIN_PAGE) {   // 최소 페이지보다 작을 경우
+        if (leftPageNumber < MIN_PAGE) {   // 최소 페이지보다 작을 경우
             return false;
         }
-        else if (rightPageNumber > MAX_PAGE) {  // 최대 페이지보다 클 경우
+        if (rightPageNumber > MAX_PAGE) {  // 최대 페이지보다 클 경우
             return false;
         }
-        else if (rightPageNumber - leftPageNumber != 1) {    // 페이지가 연속되지 않는 경우
+        if (rightPageNumber - leftPageNumber != 1) {    // 페이지가 연속되지 않는 경우
             return false;
         }
 
         return true;
     }
 
-    private static int getMaxValue(List<Integer> playersPages){
+    private static int getMaxValue(List<Integer> playersPages) {
         final int maxLeftPageNumber = calculateInSingleNumber(playersPages.get(0));
         final int maxRightPageNumber = calculateInSingleNumber(playersPages.get(1));
 
@@ -52,7 +51,7 @@ class Problem1 {
             pageNumber /= 10;
         }
 
-        return max(sum,mul);
+        return max(sum, mul);
     }
 
     private static int gameStarter(List<Integer> player1, List<Integer> player2) {
@@ -65,13 +64,11 @@ class Problem1 {
         if (player1sScore > player2sScore) {    // player1이 더 클 경우
             return 1;
         }
-        else if (player1sScore < player2sScore) {   // player2가 더 클 경우
+        if (player1sScore < player2sScore) {   // player2가 더 클 경우
             return 2;
         }
-        else {  // 무승부 일 경우
-            return 0;
-        }
 
+        return 0;   // 무승부 일 경우
     }
 
 }
