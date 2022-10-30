@@ -15,8 +15,9 @@ public class Problem7 {
             e.printStackTrace();
         }
 
-
+        HashMap<String, Integer> recommendFriendToPointMap = new HashMap<>();
         HashMap friendsMap = makeFriends(friends);
+        pointsToFriendToFriend(user, friendsMap, recommendFriendToPointMap);
 
 
         List<String> answer = Collections.emptyList();
@@ -55,6 +56,19 @@ public class Problem7 {
         }
 
         return friendsMap;
+    }
+
+    private static HashMap pointsToFriendToFriend(String user, HashMap<String,List<String>> friendsMap, HashMap<String, Integer> recommendFriendToPointMap) {
+        List<String> usersFriendsList = friendsMap.get(user);
+        for (String usersFriend : usersFriendsList) {
+            List<String> friendsToFriendsList = friendsMap.get(usersFriend);
+            for (String friendsToFriend : friendsToFriendsList) {
+                if(friendsToFriend==user) continue; //친구의 친구가 user인경우는 skip
+                Integer beforeScore = recommendFriendToPointMap.getOrDefault(friendsToFriend, 0);
+                recommendFriendToPointMap.put(friendsToFriend, beforeScore + 10);
+            }
+        }
+        return recommendFriendToPointMap;
     }
 }
 
