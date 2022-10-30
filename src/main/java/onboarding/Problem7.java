@@ -6,7 +6,8 @@ public class Problem7 {
     // 모든 friends 목록 + 방문자 리스트를 탐색하면서 아이디를 담은 리스트 만들기 - (1)
     // 사용자의 친구를 담는 리스트 만들기
     // 다른 사용자들의 친구를 담는 List<List<String>> 리스트 만들기
-    // 사용자들의 점수를 매기는 리스트 만들기 (user와 다른 사람들 모두 이미 친구인 사람 인원수)
+    // 사용자들의 점수를 매기는 리스트 만들기 (user와 다른 사람들 모두 이미 친구인 사람 인원수+방문자 수)
+
     // 점수를 기반으로 (1)-리스트를 다시 배열하기
     // 마지막에는 인덱스가 5를 넘어가면 잘라내기로 함, 추천 친구가 없으면 없는 채로 반환
 
@@ -20,11 +21,12 @@ public class Problem7 {
             }
         }
         for (String s : visitor) {
-            if (!allId.contains(s)) {
+            if (!allId.contains(s) ) {
                 allId.add(s);
             }
         }
         System.out.println(allId);
+
         return allId;
     }
 
@@ -93,18 +95,47 @@ public class Problem7 {
         Map<String, Integer> idAndScore = new HashMap<>();
         List<String> recommendList = new ArrayList<>();
         for(int i = 0; i < allId.size(); i++) {
-            idAndScore.put(allId.get(i), userScore.get(i));
+            if(userScore.get(i) > 0) {
+                idAndScore.put(allId.get(i), userScore.get(i));
+            }
         }
-        userScore.sort(Collections.reverseOrder());
+
+        for(int i = 0; i < allId.size(); i++){
+            if(userScore.get(i) == 0){
+                userScore.remove(i);
+                allId.remove(i);
+            }
+        }
+
+        for(int i = 0; i < allId.size(); i++){
+            for(int j = 1; j < allId.size(); j++){
+                if(userScore.get(j-1) < userScore.get(j)){
+                    int tempScore = userScore.get(j-1);
+                    userScore.set(j-1,userScore.get(j));
+                    userScore.set(j,tempScore);
+
+                    String temp = allId.get(j);
+                    allId.set(j,allId.get(j-1));
+                    allId.set(j-1, temp);
+                }
+            }
+        }
+
+
+
+//        userScore.sort(Collections.reverseOrder());
 //        for(int i = 0; i < userScore.size(); i++) {
 //            for(int j = 0; j < allId.size(); j++) {
 //                if(userScore.get(i) == idAndScore.get(allId.get(j))) {
-//                    if(recommendList.)
-//                    recommendList.add(allId.get(j));
+//                    if(Collections.frequency(allId, idAndScore.get(allId.get(j))) >= 2) {
+//                        recommendList.add(allId.get(j));
+//                    } else {
+//                        recommendList.add(allId.get(j));
+//                    }
 //                }
 //            }
 //        }
-        return recommendList;
+        return allId;
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -112,6 +143,8 @@ public class Problem7 {
         List<String> userFriend = getUserFriend(friends, user); //사용자의 친구들 리스트
         List<List<String>> friendsList = getNewFriend(allId, friends); //사용자이외 친구들의 친구 리스트
         List<Integer> userScore = findFriendNumber(friendsList, userFriend, allId, visitors);
-        return List.of(new String[]{"friendCommon"});
+        List<String> recommendList = setRecommendList(allId, userScore);
+//        return List.of(new String[]{"friendCommon"});
+        return recommendList;
     }
 }
