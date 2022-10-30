@@ -1,26 +1,28 @@
 package onboarding.problem1.domain;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.stream.Stream;
 
 public class Player {
     private static final String NOT_FOUND_PAGE_EXCEPTION_MESSAGE = "페이지를 찾지 못했습니다.";
     private static final int RESULT_OF_EXCEPTION = -1;
     private static final int RESULT_OF_RIGHT_PLAYER_WIN = 2;
     
-    private final List<Page> pages;
+    private final Page leftPage;
+    private final Page rightPage;
     
     public Player(final int leftPage, final int rightPage) {
         this(new Page(leftPage), new Page(rightPage));
     }
     
-    public Player(final Page leftPage, final Page rightPage) {
-        this(Arrays.asList(leftPage, rightPage));
+    public Player(List<Page> pages) {
+        this(pages.get(0), pages.get(1));
     }
     
-    public Player(final List<Page> pages) {
-        this.pages = pages;
+    public Player(final Page leftPage, final Page rightPage) {
+        this.leftPage = leftPage;
+        this.rightPage = rightPage;
     }
     
     public int compareTo(final Player rightPlayer) {
@@ -49,8 +51,6 @@ public class Player {
     }
     
     private boolean isExceededRange() {
-        final Page leftPage = pages.get(0);
-        final Page rightPage = pages.get(1);
         return leftPage.isExceededRange() || rightPage.isExceededRange();
     }
     
@@ -59,8 +59,6 @@ public class Player {
     }
     
     private boolean isLeftBigger() {
-        final Page leftPage = pages.get(0);
-        final Page rightPage = pages.get(1);
         return leftPage.isBigger(rightPage);
     }
     
@@ -69,8 +67,6 @@ public class Player {
     }
     
     private boolean isDifferenceNotOne() {
-        final Page leftPage = pages.get(0);
-        final Page rightPage = pages.get(1);
         return leftPage.isDifferenceNotOne(rightPage);
     }
     
@@ -79,8 +75,6 @@ public class Player {
     }
     
     private boolean isNotCorrectEvenAndOddNumbers() {
-        final Page leftPage = pages.get(0);
-        final Page rightPage = pages.get(1);
         return leftPage.isNotOdd() || rightPage.isNotEven();
     }
     
@@ -89,14 +83,14 @@ public class Player {
     }
     
     private int getMaxSum() {
-        return pages.stream()
+        return Stream.of(leftPage, rightPage)
                 .mapToInt(Page::sumOfDigits)
                 .max()
                 .orElseThrow(() -> new NoSuchElementException(NOT_FOUND_PAGE_EXCEPTION_MESSAGE));
     }
     
     private int getMaxMultiply() {
-        return pages.stream()
+        return Stream.of(leftPage, rightPage)
                 .mapToInt(Page::multiplyOfDigits)
                 .max()
                 .orElseThrow(() -> new NoSuchElementException(NOT_FOUND_PAGE_EXCEPTION_MESSAGE));
