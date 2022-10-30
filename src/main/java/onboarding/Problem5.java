@@ -10,6 +10,10 @@ public class Problem5 {
 
         int[] exchangeCount = calc(money);
 
+        for (int i = 0; i < exchangeCount.length; i++) {
+            answer.add(exchangeCount[i]);
+        }
+
 
         return answer;
     }
