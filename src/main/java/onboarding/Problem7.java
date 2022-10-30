@@ -20,6 +20,12 @@ public class Problem7 {
     private static final int MIN_VISITORS_SIZE = 0;
     private static final int MAX_VISITORS_SIZE = 10000;
     private static final String USER_ID_REGEX = "^[a-z]+$";
+    private static final String EXCEPTION_MESSAGE_PREFIX = "[ERROR] : ";
+    private static final String USER_ID_LENGTH_EXCEPTION_MESSAGE = "유저 아이디의 길이는 1이상 30이하여야합니다.";
+    private static final String USER_ID_REGEX_EXCEPTION_MESSAGE = "유저 아이디는 알파벳 소문자로만 이루어져야합니다.";
+    private static final String FRIEND_RELATIONSHIPS_SIZE_EXCEPTION_MESSAGE = "친구 관계 정보 목록의 길이는 1이상 10000아하여야합니다.";
+    private static final String USER_IDS_SIZE_EXCEPTION_MESSAGE = "친구 관계 정보의 길이는 2여야합니다.";
+    private static final String VISITORS_SIZE_EXCEPTION_MESSAGE = "방문자 목록의 길이는 0이상 10000이하여야합니다.";
     private static final Map<String, Integer> friendRecommendScoreMap = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friendRelationships, List<String> userTimelineVisitors) {
@@ -102,6 +108,24 @@ public class Problem7 {
                 .map(friendRecommendScoreMapEntry -> friendRecommendScoreMapEntry.getKey())
                 .limit(RETURN_MAX_SIZE)
                 .collect(Collectors.toList());
+    }
+
+    private static void validateRecommendAlgorithm(String userId, List<List<String>> friendRelationships, List<String> visitors) {
+        if(!validateUserLength(userId)) {
+            throw new IllegalArgumentException(EXCEPTION_MESSAGE_PREFIX + USER_ID_LENGTH_EXCEPTION_MESSAGE);
+        }
+        if(!validateUserIdType(userId)) {
+            throw new IllegalArgumentException(EXCEPTION_MESSAGE_PREFIX + USER_ID_REGEX_EXCEPTION_MESSAGE);
+        }
+        if(!validateFriendRelationshipsSize(friendRelationships)) {
+            throw new IllegalArgumentException(EXCEPTION_MESSAGE_PREFIX + FRIEND_RELATIONSHIPS_SIZE_EXCEPTION_MESSAGE);
+        }
+        if(!validateUserIds(friendRelationships)) {
+            throw new IllegalArgumentException(EXCEPTION_MESSAGE_PREFIX + USER_IDS_SIZE_EXCEPTION_MESSAGE);
+        }
+        if(!validateVisitorsSize(visitors)) {
+            throw new IllegalArgumentException(EXCEPTION_MESSAGE_PREFIX + VISITORS_SIZE_EXCEPTION_MESSAGE);
+        }
     }
 
     private static boolean validateUserLength(String userId) {
