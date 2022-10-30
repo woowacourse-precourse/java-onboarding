@@ -4,22 +4,27 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if (pobi.get(1)-pobi.get(0) != 1) {
+        int pobiLeft = pobi.get(0);
+        int pobiRight = pobi.get(1);
+        int crongLeft = crong.get(0);
+        int crongRight = crong.get(1);
+
+        if (pobiRight - pobiLeft != 1) {
             return -1;
         }
-        if (crong.get(1)-crong.get(0) != 1) {
+        if (crongRight - crongLeft != 1) {
             return -1;
         }
 
-        int pobiLeftMax =max(pobi.get(0));
-        int pobiRightMax =max(pobi.get(1));
-        int crongLeftMax =max(pobi.get(0));
-        int crongRightMax =max(pobi.get(1));
+        int pobiLeftMax = max(pobiLeft);
+        int pobiRightMax = max(pobiRight);
+        int crongLeftMax = max(crongLeft);
+        int crongRightMax = max(crongRight);
 
-        int pobiMax =max(pobiLeftMax, pobiRightMax);
-        int crongMax =max(crongLeftMax, crongRightMax);
+        int pobiMax = max(pobiLeftMax, pobiRightMax);
+        int crongMax = max(crongLeftMax, crongRightMax);
 
-        int winner =winner(pobiMax,crongMax);
+        int winner = winner(pobiMax, crongMax);
         return winner;
     }
 
