@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -7,55 +8,61 @@ public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
 
+        // 결과를 저장할 임시 리스트
+        List<Integer> resultList = new ArrayList<>();
+
         // 오만원권 교환
         int ohMan = money/50000;
-        System.out.println(ohMan);
+        resultList.add(ohMan);
 
         money%=50000;
 
         // 만원권 교환
         int man = money/10000;
-        System.out.println(man);
+        resultList.add(man);
 
         money%=10000;
 
         // 오천원권 교환
         int ohCheon = money/5000;
-        System.out.println(ohCheon);
+        resultList.add(ohCheon);
 
         money%=5000;
 
         // 천원권 교환
         int cheon = money/1000;
-        System.out.println(cheon);
+        resultList.add(cheon);
 
         money%=1000;
 
         // 오백원권
         int ohBaek = money/500;
-        System.out.println(ohBaek);
+        resultList.add(ohBaek);
 
         money%=500;
 
         // 백원권
         int baek = money/100;
-        System.out.println(baek);
+        resultList.add(baek);
 
         money%=100;
 
         // 오십원권
         int ohSib = money/50;
-        System.out.println(ohSib);
+        resultList.add(ohSib);
 
         money%=50;
 
         // 십원권
         int sib = money/10;
-        System.out.println(sib);
+        resultList.add(sib);
 
         // 일원권
         int ill = money%=10;
-        System.out.println(ill);
+        resultList.add(ill);
+
+        // 화폐권 수 저장 결과 확인
+        System.out.println(resultList);
 
         return answer;
     }
