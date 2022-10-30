@@ -16,6 +16,8 @@ public class Problem7 {
     private static final int MIN_FRIEND_RELATIONSHIP_SIZE = 1;
     private static final int MAX_FRIEND_RELATIONSHIP_SIZE = 10000;
     private static final int USER_IDS_SIZE = 2;
+    private static final int MIN_VISITORS_SIZE = 0;
+    private static final int MAX_VISITORS_SIZE = 10000;
 
     private static final Map<String, Integer> friendRecommendScoreMap = new HashMap<>();
 
@@ -111,5 +113,9 @@ public class Problem7 {
 
     private static boolean validateUserIds(List<String> userIds) {
         return (userIds.size() == USER_IDS_SIZE);
+    }
+
+    private static boolean validateVisitorsSize(List<String> visitors) {
+        return (visitors.size() >= MIN_VISITORS_SIZE && visitors.size() <= MAX_VISITORS_SIZE);
     }
 }
