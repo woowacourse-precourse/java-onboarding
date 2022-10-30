@@ -17,6 +17,5 @@
 
 ### 기능목록
 1. money 제한사항 (1,1_000_000) (MoneyRangeValidator)
-2. 동전종류 구현 (CoinType)
-3. 필요한 동전수량 (CoinQuantity)
-4. 기능 종합
+2. 필요한 동전수량 (CoinQuantityCalculator)
+3. 기능 종합
