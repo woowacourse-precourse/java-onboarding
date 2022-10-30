@@ -7,8 +7,15 @@ import java.util.Set;
 
 public class NicknameAllCases {
 
-    public Set<String> cases(String nicknames) {
-        return null;
+    public Set<String> cases(String nickname) {
+        Set<String> resultSet = new HashSet<>();
+
+        for (int nicknameIndex = 0; nicknameIndex < nickname.length() - 1; nicknameIndex++) {
+            String substring = nickname.substring(nicknameIndex, nicknameIndex + 2);
+            resultSet.add(substring);
+        }
+
+        return resultSet;
     }
 
     public Set<String> createCase(List<CrewMember> crewMemberList) {
@@ -18,6 +25,6 @@ public class NicknameAllCases {
             set.addAll(cases(member.getNickname()));
         }
 
-        return null;
+        return set;
     }
 }
