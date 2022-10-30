@@ -18,6 +18,9 @@ public class Problem5 {
         }
         return answer;
     }
+
+    static int leftMoney(int input, int change){
+        int answer = input % change;
         return answer;
     }
 }
