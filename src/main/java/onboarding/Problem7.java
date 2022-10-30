@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,7 +40,7 @@ public class Problem7 {
                 .sorted(Map.Entry.comparingByValue((c1, c2) -> c2 - c1))
                 .collect(Collectors.toList());
 
-        entries.stream().forEach(entry -> answer.add(entry.getKey()));
+        entries.forEach(entry -> answer.add(entry.getKey()));
 
         return answer;
     }
@@ -72,8 +71,8 @@ public class Problem7 {
     }
 
     private static class User {
-        private String username;
-        private List<User> friends;
+        private final String username;
+        private final List<User> friends;
 
         public String getUsername() {
             return this.username;
@@ -103,7 +102,7 @@ public class Problem7 {
         public List<String> getFriendsName() {
             List<String> friendsName = new ArrayList<>();
 
-            friends.stream().forEach(friend -> friendsName.add(friend.getUsername()));
+            friends.forEach(friend -> friendsName.add(friend.getUsername()));
 
             return friendsName;
         }
