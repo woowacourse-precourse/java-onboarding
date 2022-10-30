@@ -47,19 +47,19 @@ public class Problem7 {
     }
 
     private static Map<String, Integer> addAcquaintanceScore(List<List<String>> friends, List<String> friendsOfUser) {
-        Map<String, Integer> numberOfAcquaintance = new HashMap<>();
+        Map<String, Integer> scoreOfAcquaintances = new HashMap<>();
         for (String friendOfUser : friendsOfUser) {
             List<String> acquaintances = findFriendsByUser(friendOfUser, friends);
             for (String acquaintance : acquaintances) {
-                if (numberOfAcquaintance.containsKey(acquaintance)) {
-                    numberOfAcquaintance.put(acquaintance, numberOfAcquaintance.get(acquaintance) + ACQUAINTANCE_SCORE);
+                if (scoreOfAcquaintances.containsKey(acquaintance)) {
+                    scoreOfAcquaintances.put(acquaintance, scoreOfAcquaintances.get(acquaintance) + ACQUAINTANCE_SCORE);
                 }
-                if (!numberOfAcquaintance.containsKey(acquaintance)) {
-                    numberOfAcquaintance.put(acquaintance, ACQUAINTANCE_SCORE);
+                if (!scoreOfAcquaintances.containsKey(acquaintance)) {
+                    scoreOfAcquaintances.put(acquaintance, ACQUAINTANCE_SCORE);
                 }
             }
         }
-        return numberOfAcquaintance;
+        return scoreOfAcquaintances;
     }
 
     private static List<String> findFriendsByUser(String user, List<List<String>> friends) {
