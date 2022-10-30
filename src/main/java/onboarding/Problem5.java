@@ -13,12 +13,12 @@ import java.util.List;
 public class Problem5 {
     static final int[]  arr_money = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
 
-    private static List<Integer> calc(List<Integer> ans, int money){
+    private static List<Integer> calc(List<Integer> numbersOfUnit, int money){
         for(int unit : arr_money) {
-            ans.add(money / unit);
+            numbersOfUnit.add(money / unit);
             money %= unit;
         }
-        return ans;
+        return numbersOfUnit;
     }
 
     public static List<Integer> solution(int money) {
