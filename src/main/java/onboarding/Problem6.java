@@ -34,7 +34,17 @@ import java.util.List;
  * - retainAll -> 원본 배열 데이터 변화 조심
  **/
 
+/**
+ * 4. 같은게 있을 시 추가 되는 기능
+ * - 이메일만 따로 반환 함수
+ * - 해당 이메일 저장 함수 -> 클래스 변수를 통해 저장
+ * **/
+
+
+
 public class Problem6 {
+
+    private static List<String> result = new ArrayList<>();
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
@@ -112,6 +122,13 @@ public class Problem6 {
         if(interSection.size() != 0)
             return true;
         return false;
+    }
+
+    private static String extractEmail(List<String> inputInfo){
+        return inputInfo.get(0);
+    }
+    private static void addResult(String inputEmail){
+        result.add(inputEmail);
     }
 
 }
