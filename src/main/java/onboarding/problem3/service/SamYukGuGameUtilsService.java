@@ -17,6 +17,16 @@ public class SamYukGuGameUtilsService {
         return slicedIntList;
     }
 
+    private static int getCountSamYukGuInList(ArrayList<Integer> list){
+        int result = 0;
+
+        for(int value : list){
+            result += checkSamYukGu(value);
+        }
+
+        return result;
+    }
+
     private static int checkSamYukGu(int value){
         switch (value){
             case SamYukGuGameConstants.SAM:
