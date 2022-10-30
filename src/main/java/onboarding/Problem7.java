@@ -15,7 +15,8 @@ public class Problem7 {
 
     private static List<String> getFiveRecommendIdList(String user, List<List<String>> friends, List<String> visitors) {
         Set<String> userSet = makeUserSet(user, friends, visitors);
-        System.out.println("userSet = " + userSet);
+        Map<String, List<String>> friendRelationMap = makeFriendsRelations(friends);
+
         return null;
     }
 
@@ -45,6 +46,31 @@ public class Problem7 {
 
     private static void addUserSetByVisitors(Set<String> allUserSet, List<String> visitors) {
         addUserSetByUserList(allUserSet, visitors);
+    }
+
+    private static Map<String, List<String>> makeFriendsRelations(List<List<String>> friends) {
+
+        Map<String, List<String>> friendRelationships = new HashMap<>();
+
+        for (List<String> friend : friends) {
+            addRelationship(friendRelationships, friend.get(0), friend.get(1));
+        }
+
+        return friendRelationships;
+    }
+
+    private static void addRelationship(Map<String, List<String>> friendRelationships, String user1, String user2) {
+        addKeyUser1ValueUser2(friendRelationships, user1, user2);
+        addKeyUser1ValueUser2(friendRelationships, user2, user1);
+    }
+
+    private static void addKeyUser1ValueUser2(Map<String, List<String>> friendRelationships, String user1, String user2) {
+        if (!friendRelationships.containsKey(user1)) {
+            List<String> friends = new LinkedList<>();
+            friendRelationships.put(user1, friends);
+        }
+
+        friendRelationships.get(user1).add(user2);
     }
 
 
