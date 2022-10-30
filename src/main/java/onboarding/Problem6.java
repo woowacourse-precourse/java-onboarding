@@ -174,3 +174,16 @@ class NickNameForm {
         return nickNameSplitMap;
     }
 }
+
+class OutView6 {
+    static void printStart() {
+        System.out.println("이메일과 닉네임을 입력해 주세요");
+    }
+    static void printHead() {
+        System.out.println("forms" + "\t" + "result");
+    }
+
+    static void printResult(List<List<String>> inputCrew, List<String> result) {
+        System.out.println(inputCrew + "\t" + result);
+    }
+}
