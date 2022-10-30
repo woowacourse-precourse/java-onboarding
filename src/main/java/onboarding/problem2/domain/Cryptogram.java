@@ -7,4 +7,12 @@ public class Cryptogram {
 	public Cryptogram(String cryptogram) {
 		this.cryptogram = cryptogram;
 	}
+
+	public char[] toCharArray() {
+		return cryptogram.toCharArray();
+	}
+
+	public int length() {
+		return cryptogram.length();
+	}
 }
