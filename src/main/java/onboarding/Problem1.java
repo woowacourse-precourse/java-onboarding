@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 class Problem1 {
@@ -28,6 +30,18 @@ class Problem1 {
         }
 
         return result;
+    }
+
+    private static Integer getMaxCombination(List<Integer> pages) {
+        List<Integer> combinations = new ArrayList<>();
+
+        combinations.add(getAddition(pages.get(0)));
+        combinations.add(getMultiplication(pages.get(0)));
+
+        combinations.add(getAddition(pages.get(1)));
+        combinations.add(getMultiplication(pages.get(1)));
+
+        return Collections.max(combinations);
     }
 
     private static boolean isException(List<Integer> pages){
