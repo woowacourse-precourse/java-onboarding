@@ -2,10 +2,15 @@ package onboarding.problem7.service;
 
 import onboarding.problem7.repository.FriendRepository;
 import onboarding.problem7.vo.Member;
+import onboarding.problem7.vo.Relation;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RecommendService {
+    public static final int RELATION_SCORE = 10;
+    public static final int VISITOR_SCORE = 1;
+
     private final FriendRepository friendRepository;
 
     public RecommendService(FriendRepository friendRepository) {
@@ -13,44 +18,48 @@ public class RecommendService {
     }
 
     public List<String> recommendFriends(List<List<String>> members, List<String> visitors) {
-        saveAllMembers(members, visitors);
-        analyzeRelations(members);
+        List<Relation> relations = members.stream()
+                .map(Relation::of)
+                .collect(Collectors.toList());
+
+        saveAllMembers(relations, visitors);
+        analyzeRelations(relations);
         analyzeVisitors(visitors);
 
         return friendRepository.findAllNameSortByScoreNot0DescNameAsc();
     }
 
-    private void saveAllMembers(List<List<String>> friends, List<String> visitors) {
-        friends.forEach(relation -> saveMembersAnalyzingRelation(relation));
+    private void saveAllMembers(List<Relation> relations, List<String> visitors) {
+        relations.forEach(relation -> saveMembersByRelation(relation));
         visitors.forEach(visitor -> friendRepository.save(Member.of(visitor)));
     }
 
-    private void saveMembersAnalyzingRelation(List<String> relation) {
-        relation.forEach(member -> {
+    private void saveMembersByRelation(Relation relation) {
+        relation.forEach(name -> {
             if (relation.contains(friendRepository.getUser())) {
-                friendRepository.save(Member.ofAlreadyFriend(member));
+                friendRepository.save(Member.ofAlreadyFriend(name));
             } else {
-                friendRepository.save(Member.of(member));
+                friendRepository.save(Member.of(name));
             }
         });
     }
 
+    private void analyzeRelations(List<Relation> relations) {
+        relations.forEach(relation -> analyzeRelation(relation));
+    }
+
+    private void analyzeRelation(Relation relation) {
+        if (friendRepository.isMemberAlreadyFriend(Member.of(relation.getMemberName()))
+                || friendRepository.isMemberAlreadyFriend(Member.of(relation.getAnotherMemberName()))
+        ) {
+            relation.forEach(name -> friendRepository.findByName(name)
+                    .ifPresent(friend -> friend.addScore(RELATION_SCORE)));
+        }
+    }
+
     private void analyzeVisitors(List<String> visitors) {
         visitors.forEach(visitor -> friendRepository.findByName(visitor)
-                .ifPresent(member -> member.addScore(1))
+                .ifPresent(member -> member.addScore(VISITOR_SCORE))
         );
-    }
-
-    private void analyzeRelations(List<List<String>> friends) {
-        friends.forEach(relation -> analyzeRelation(relation));
-    }
-
-    private void analyzeRelation(List<String> relation) {
-        if (friendRepository.isMemberAlreadyFriend(Member.of(relation.get(0)))
-                || friendRepository.isMemberAlreadyFriend(Member.of(relation.get(1)))
-        ) {
-            relation.forEach(member -> friendRepository.findByName(member)
-                    .ifPresent(friend -> friend.addScore(10)));
-        }
     }
 }
