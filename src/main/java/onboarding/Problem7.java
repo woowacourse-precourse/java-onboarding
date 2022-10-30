@@ -91,8 +91,8 @@ public class Problem7 {
                 friends.add(idx++, new Friend(friendB, 0));
             }
 
-            friends.get(numberOfFriends.get(friendA)).addMyFriend(friendB);
-            friends.get(numberOfFriends.get(friendB)).addMyFriend(friendA);
+            AddMyFriend(numberOfFriends, friends, friendA, friendB);
+            AddMyFriend(numberOfFriends, friends, friendB, friendA);
         }
 
         for (String visitor : visitors) {
@@ -103,5 +103,9 @@ public class Problem7 {
 
             friends.get(numberOfFriends.get(visitor)).addScore(1);
         }
+    }
+
+    private static void AddMyFriend(Map<String, Integer> numberOfFriends, List<Friend> friends, String friendA, String friendB) {
+        friends.get(numberOfFriends.get(friendA)).addMyFriend(friendB);
     }
 }
