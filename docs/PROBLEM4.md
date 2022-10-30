@@ -19,3 +19,13 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+### 기능 목록
+- HashMap를 청개구리 사전으로 초기화 함수
+> HashMap<String, String> initHashMap()
+
+- 주어진 문자를 청개구리 사전을 통해 변환하는 함수
+> String convertOneString(String)
+
+- 주어진 문자열을 청개구리 사전을 통해 변환하는 함수
+> String conversionString(String)
