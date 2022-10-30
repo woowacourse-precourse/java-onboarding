@@ -22,7 +22,21 @@ public class Problem2 {
             return isLowerCase;
         }
 
-        // TODO: decrypt()
+        private String decrypt() {
+            String decrypted = encrypted;
+            while (true) {
+                String[] stringArray = decrypted.split("([a-z])\\1");
+                if (stringArray.length == 1) {
+                    break;
+                }
+                StringBuilder builder = new StringBuilder();
+                for (String s : stringArray) {
+                    builder.append(s);
+                }
+                decrypted = builder.toString();
+            }
+            return decrypted;
+        }
     }
 
     public static String solution(String cryptogram) {
@@ -30,6 +44,6 @@ public class Problem2 {
         if (!myCryptogram.IS_VALID) {
             return null;
         }
-        return myCryptogram.encrypted;
+        return myCryptogram.decrypt();
     }
 }
