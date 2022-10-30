@@ -1,10 +1,7 @@
 package onboarding;
 
 import java.security.PublicKey;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -17,8 +14,7 @@ public class Problem7 {
         // 방문 횟수에 따른 점수 추가
         visitScore(visitors, friendsScoreHashMap);
 
-        List<String> answer = Collections.emptyList();
-        return answer;
+        return createResult(user, friendsRelationshipHashMap, friendsScoreHashMap);
     }
 
     public static Tuple<HashMap<String, List<String>>, HashMap<String, Integer>> createFriendsInfos(List<List<String>> friends, List<String> visitors){
@@ -61,6 +57,37 @@ public class Problem7 {
         for(String visitor: visitors){
             friendsScoreHashMap.put(visitor, friendsScoreHashMap.get(visitor) + 1);
         }
+    }
+
+    public static List<String> createResult(String user, HashMap<String, List<String>> friendsRelationshipHashMap, HashMap<String, Integer> friendsScoreHashMap){
+        List<String> userFriends = friendsRelationshipHashMap.get(user);
+
+        List<Map.Entry<String, Integer>> entryList = new ArrayList<>(friendsScoreHashMap.entrySet());
+        List<String> result = new ArrayList<>();
+
+        // 점수순으로 정렬 후, 이름순으로 정렬
+        entryList.sort(Map.Entry.<String, Integer>comparingByValue().reversed().thenComparing(Map.Entry.comparingByKey()));
+
+        for(Map.Entry<String, Integer> entry : entryList){
+            // 이미 친구인 경우는 스킵
+            if(userFriends.contains(entry.getKey())){
+                continue;
+            }
+
+            // 0점인 경우 스킵
+            if(entry.getValue() == 0){
+                continue;
+            }
+
+            result.add(entry.getKey());
+
+            // 5명이 되면 반환
+            if (result.size() >= 5){
+                return result;
+            }
+        }
+
+        return result;
     }
 
     public static class Tuple<T1, T2> {
