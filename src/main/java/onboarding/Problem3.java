@@ -11,6 +11,21 @@ public class Problem3 {
         number %= 10;
         return (number == 3 || number == 6 || number == 9);
     }
+
+    public static int countClap(int number){
+        int count = 0;
+
+        for(int i = 1;i <= number;i++){
+            int tempNum = i;
+            while(tempNum > 0){
+                if(checkThreeSixNine(tempNum))
+                    count++;
+                tempNum /= 10;
+            }
+        }
+        return count;
+    }
+
     public static int solution(int number) {
         int answer = 0;
         return answer;
