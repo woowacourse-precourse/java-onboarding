@@ -69,7 +69,7 @@ public class FriendsService {
         Map<String, Integer> result = new HashMap<>();
         for (String knownFriend : knownFriends) {
             friendsMap.entrySet().stream()
-                    .filter(entry -> entry.getValue().contains(knownFriend))  //value에 공통 분모가 있는 놈만 가져옴. (logn)
+                    .filter(entry -> entry.getValue().contains(knownFriend))  //value에 공통 분모가 있는 것만 가져옴. (logn)
                     .filter(entry -> !entry.getKey().equals(user))
                     .forEach(entry -> {
                         String name = entry.getKey();
