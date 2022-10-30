@@ -15,8 +15,17 @@ class Problem1 {
 
     private static int divideNumberPlus(int number) {
         int sum = 0;
-        while (number >= 0) {
+        while (number > 0) {
             sum += number % 10;
+            number /= 10;
+        }
+        return sum;
+    }
+
+    private static int divideNumberMultiple(int number) {
+        int sum = 0;
+        while (number > 0) {
+            sum *= number % 10;
             number /= 10;
         }
         return sum;
@@ -24,7 +33,6 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-
         if (isException(pobi, crong)) {
             answer = -1;
             return answer;
