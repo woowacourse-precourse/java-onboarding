@@ -37,7 +37,21 @@ public class Problem7 {
             getFriendsOfDiffUserAndCompare(diffUser);
         }
 
+        // 사용자의 타임라인을 방문한 사용자에 대해 1점씩 부여한다.
+        addOneScoreToVisitors(visitors);
+
         return answer;
+    }
+
+    /**
+     * 사용자의 타임라인을 방문한 사용자에게 1점씩 부여한다.
+     *
+     * @param visitors 사용자의 타임라인 방문자
+     */
+    private static void addOneScoreToVisitors(List<String> visitors) {
+        for(String visitor : visitors) {
+            scoreMap.put(visitor, scoreMap.getOrDefault(visitor,0) + 1);
+        }
     }
 
     /**
