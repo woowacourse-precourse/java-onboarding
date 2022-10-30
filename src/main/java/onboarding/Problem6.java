@@ -54,6 +54,5 @@ public class Problem6 {
                 List.of("nowm@email.com", "이제엠")
         );
         List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
-        System.out.println(solution(forms));;
     }
 }
