@@ -10,56 +10,57 @@ import java.util.stream.Collectors;
 
 public class Decryptor {
 
+    private static boolean isRemoveDuplicateCharacter = false;
+    private static List<String> cryptogramList;
+
     private Decryptor() {
     }
 
     public static String decrypt(String cryptogram) {
-        List<String> cryptogramList = Arrays.stream(cryptogram.split(CRYPTOGRAM_SPLIT_VALUE))
+        cryptogramList = Arrays.stream(cryptogram.split(CRYPTOGRAM_SPLIT_VALUE))
             .collect(Collectors.toList());
-        boolean removeDuplicateCharacter = true;
+        isRemoveDuplicateCharacter = true;
 
-        while (removeDuplicateCharacter) {
-            removeDuplicateCharacter = findAndDeleteDuplicateCharacter(cryptogramList);
+        while (isRemoveDuplicateCharacter) {
+            processDuplicateCharacter();
         }
-        return decryptCharacterToString(cryptogramList);
+        return decryptCharacterToString();
     }
 
-    private static boolean findAndDeleteDuplicateCharacter(List<String> cryptogramList) {
-        boolean isRemoveDuplicateCharacter = false;
+    private static void processDuplicateCharacter() {
         int startCursor;
-        String startCharacter;
-        String nowCharacter;
+        int nowCursor = CHARACTER_START_INDEX;
 
-        int index = CHARACTER_START_INDEX;
-
-        while (index < cryptogramList.size()) {
-            startCursor = index - CHARACTER_BEFORE_INDEX;
-            startCharacter = cryptogramList.get(startCursor);
-            nowCharacter = cryptogramList.get(index);
-
-            if (startCharacter.equals(nowCharacter)) {
-                deleteDuplicateCharacter(cryptogramList, nowCharacter, startCursor);
-                isRemoveDuplicateCharacter = true;
-                index = startCursor;
-            }
-            index++;
+        isRemoveDuplicateCharacter = false;
+        while (nowCursor < cryptogramList.size()) {
+            startCursor = nowCursor - CHARACTER_BEFORE_INDEX;
+            nowCursor = findDuplicateCharacter(nowCursor, startCursor);
         }
-        return isRemoveDuplicateCharacter;
     }
 
-    private static void deleteDuplicateCharacter(List<String> cryptogramList, String nowCharacter,
-        int startCursor) {
-        while (validateDuplicateCharacter(cryptogramList, nowCharacter, startCursor)) {
+    private static int findDuplicateCharacter(int nowCursor, int startCursor) {
+        String startCharacter = cryptogramList.get(startCursor);
+        String nowCharacter = cryptogramList.get(nowCursor);
+
+        if (startCharacter.equals(nowCharacter)) {
+            deleteDuplicateCharacter(nowCharacter, startCursor);
+            isRemoveDuplicateCharacter = true;
+            return ++startCursor;
+        }
+        return ++nowCursor;
+    }
+
+    private static void deleteDuplicateCharacter(String nowCharacter, int startCursor) {
+        while (isDuplicateCharacter(nowCharacter, startCursor)) {
             cryptogramList.remove(startCursor);
         }
     }
 
-    private static boolean validateDuplicateCharacter(List<String> cryptogramList,
-        String nowCharacter, int startCursor) {
+    private static boolean isDuplicateCharacter(String nowCharacter, int startCursor) {
         return !cryptogramList.isEmpty() && cryptogramList.get(startCursor).equals(nowCharacter);
     }
 
-    private static String decryptCharacterToString(List<String> cryptogramList) {
+    private static String decryptCharacterToString() {
         StringBuilder decryptStringBuilder = new StringBuilder();
 
         cryptogramList.forEach(decryptStringBuilder::append);
