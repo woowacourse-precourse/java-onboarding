@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -19,8 +18,12 @@ public class Problem7 {
         // 정렬
         List<String> recommendedList = sortScore(score);
 
-        List<String> answer = Collections.emptyList();
-        return answer;
+        // 최대 5명만 return
+        if (recommendedList.size() > 5) {
+            recommendedList.subList(0, 5);
+        }
+
+        return recommendedList;
     }
 
     // 사용자의 친구 리스트를 반환하는 함수
