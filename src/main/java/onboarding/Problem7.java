@@ -22,6 +22,8 @@ public class Problem7 {
             friendList.get(name1).add(name2);
             friendList.get(name2).add(name1);
         }
+
+        HashMap<String, Integer> scoreMap = new HashMap<>();
         return answer;
     }
 }
@@ -43,7 +45,7 @@ public class Problem7 {
   - [V] 각 이름이 친구 목록 HashMap에 없으면 친구목록 HashMap에 넣는다
   - [V] 둘 다 친구 목록에 서로를 추가한다
 - [] 친구 목록을 통한 점수를 계산한다
-  - [] 각 사람들의 점수를 저장할 scoreMap를 만든다
+  - [V] 각 사람들의 점수를 저장할 scoreMap를 만든다
   - [] 친구 목록에서 keySet을 뽑아와 순회한다
   - [] 현재 참조하는 사람이 user인 경우나 user의 친구인 경우는 건너뛴다
   - [] scoreMap에 현재 참조하는 사람의 점수를 0점으로 하여 넣어준다.
