@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
+
     public static List<Integer> solution(int money) {
         try {
             validate(money);
@@ -25,6 +26,7 @@ public class Problem5 {
 }
 
 class Bank {
+
     private static final int[] moneyArray = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
 
     static List<Integer> getMoneyCountList(int money) {
