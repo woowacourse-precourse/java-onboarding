@@ -29,96 +29,6 @@ public class Problem7 {
         return getFiveList(sortingByScoreMap, scoreMap);
     }
 
-    private static List<String> getFiveList(ArrayList<String> sortingByScoreMap, Map<String, Integer> scoreMap) {
-        List<String> returnList = new ArrayList<>();
-
-        for (int i = 0; i < sortingByScoreMap.size() && i < RESULT_COUNT; i++) {
-            if (scoreMap.get(sortingByScoreMap.get(i)) > 0) {
-                returnList.add(sortingByScoreMap.get(i));
-                continue;
-            }
-            break;
-        }
-        return returnList;
-    }
-
-    private static void sorting(ArrayList<String> sortingByScoreMap, Map<String, Integer> scoreMap) {
-        sortingByScoreMap.sort(new Comparator<String>() {
-            @Override
-            public int compare(String o1, String o2) {
-                int result = 0;
-                Integer user1 = scoreMap.get(o1);
-                Integer user2 = scoreMap.get(o2);
-                if (user1 < user2) {
-                    result = 1;
-                } else if (user1 > user2) {
-                    result = -1;
-                } else if (user1 == user2) {
-                    result = o1.compareTo(o2);
-                }
-                return result;
-            }
-        });
-    }
-
-    private static void calculate(String user, Map<String, List<String>> friendRelationMap, Map<String, Integer> scoreMap, List<String> visitors) {
-        for (String thisUser :
-                scoreMap.keySet()) {
-            int score = 0;
-            score += userFriendWithThisUserFriendCount(user, thisUser, friendRelationMap) * FRIEND_TOGETHER_SCORE;
-            if (visitors.size() > 0) {
-                score += userVisitorCount(visitors, thisUser) * VISITOR_SCORE;
-            }
-
-            scoreMap.put(thisUser, score);
-
-
-        }
-    }
-
-    private static int userVisitorCount(List<String> visitors, String thisUser) {
-        return (int) visitors.stream()
-                .filter(visitor -> visitor == thisUser)
-                .count();
-    }
-
-    private static int userFriendWithThisUserFriendCount(String user, String thisUser, Map<String, List<String>> friendRelationMap) {
-        int result = 0;
-        if (friendRelationMap.containsKey(thisUser)) {
-            result = (int) friendRelationMap.get(thisUser).stream()
-                    .filter(friend -> isFriendWithUser(friendRelationMap,user,friend))
-                    .count();
-        }
-        return result;
-
-    }
-
-    private static boolean isFriendWithUser(Map<String, List<String>> friendRelationMap, String user, String friend) {
-        if (friendRelationMap.containsKey(user)) {
-            return friendRelationMap.get(user).contains(friend);
-        }
-        return false;
-    }
-
-    private static Map<String, Integer> initCountScoreList(Set<String> userSet, Map<String, List<String>> friendRelationMap, String user) {
-        Map<String, Integer> scoreMap = new HashMap<>();
-        List<String> collectUserList = userSet.stream()
-                .filter(userId -> !isUserFriendOrUser(userId, friendRelationMap, user))
-                .collect(Collectors.toList());
-
-        for (String userId : collectUserList) {
-            scoreMap.put(userId, 0);
-        }
-        return scoreMap;
-    }
-
-    private static boolean isUserFriendOrUser(String userId, Map<String, List<String>> friendRelationMap, String user) {
-        if (friendRelationMap.containsKey(user)) {
-            return ((userId == user) || (friendRelationMap.get(user).contains(userId)));
-        }
-        return userId == user;
-    }
-
     private static Set<String> makeUserSet(String user, List<List<String>> friends, List<String> visitors) {
         Set<String> allUserSet = new HashSet<>();
         addUserSetByUser(allUserSet, user);
@@ -171,6 +81,97 @@ public class Problem7 {
 
         friendRelationships.get(user1).add(user2);
     }
+
+    private static Map<String, Integer> initCountScoreList(Set<String> userSet, Map<String, List<String>> friendRelationMap, String user) {
+        Map<String, Integer> scoreMap = new HashMap<>();
+        List<String> collectUserList = userSet.stream()
+                .filter(userId -> !isUserFriendOrUser(userId, friendRelationMap, user))
+                .collect(Collectors.toList());
+
+        for (String userId : collectUserList) {
+            scoreMap.put(userId, 0);
+        }
+        return scoreMap;
+    }
+
+    private static boolean isUserFriendOrUser(String userId, Map<String, List<String>> friendRelationMap, String user) {
+        if (friendRelationMap.containsKey(user)) {
+            return ((userId == user) || (friendRelationMap.get(user).contains(userId)));
+        }
+        return userId == user;
+    }
+
+    private static void calculate(String user, Map<String, List<String>> friendRelationMap, Map<String, Integer> scoreMap, List<String> visitors) {
+        for (String thisUser :
+                scoreMap.keySet()) {
+            int score = 0;
+            score += userFriendWithThisUserFriendCount(user, thisUser, friendRelationMap) * FRIEND_TOGETHER_SCORE;
+            if (visitors.size() > 0) {
+                score += userVisitorCount(visitors, thisUser) * VISITOR_SCORE;
+            }
+
+            scoreMap.put(thisUser, score);
+
+
+        }
+    }
+
+    private static int userFriendWithThisUserFriendCount(String user, String thisUser, Map<String, List<String>> friendRelationMap) {
+        int result = 0;
+        if (friendRelationMap.containsKey(thisUser)) {
+            result = (int) friendRelationMap.get(thisUser).stream()
+                    .filter(friend -> isFriendWithUser(friendRelationMap,user,friend))
+                    .count();
+        }
+        return result;
+    }
+
+    private static boolean isFriendWithUser(Map<String, List<String>> friendRelationMap, String user, String friend) {
+        if (friendRelationMap.containsKey(user)) {
+            return friendRelationMap.get(user).contains(friend);
+        }
+        return false;
+    }
+
+    private static int userVisitorCount(List<String> visitors, String thisUser) {
+        return (int) visitors.stream()
+                .filter(visitor -> visitor == thisUser)
+                .count();
+    }
+
+    private static void sorting(ArrayList<String> sortingByScoreMap, Map<String, Integer> scoreMap) {
+        sortingByScoreMap.sort(new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                int result = 0;
+                Integer user1 = scoreMap.get(o1);
+                Integer user2 = scoreMap.get(o2);
+                if (user1 < user2) {
+                    result = 1;
+                } else if (user1 > user2) {
+                    result = -1;
+                } else if (user1 == user2) {
+                    result = o1.compareTo(o2);
+                }
+                return result;
+            }
+        });
+    }
+
+    private static List<String> getFiveList(ArrayList<String> sortingByScoreMap, Map<String, Integer> scoreMap) {
+        List<String> returnList = new ArrayList<>();
+
+        for (int i = 0; i < sortingByScoreMap.size() && i < RESULT_COUNT; i++) {
+            if (scoreMap.get(sortingByScoreMap.get(i)) > 0) {
+                returnList.add(sortingByScoreMap.get(i));
+                continue;
+            }
+            break;
+        }
+        return returnList;
+    }
+
+
 
 
 }
