@@ -13,13 +13,21 @@ public class Problem2 {
             findingContinuousString(cryptogram, set);
             cryptogram = AfterRemovingContinuousString(cryptogram, set);
 
-            if (set.isEmpty()) {
-                check = true;
-            }
+            check = checkSubString(set, check);
             set = new HashSet<>();
         }
         String answer = cryptogram;
         return answer;
+    }
+
+    /**
+     * Function for checking whether there is subString
+     * */
+    private static boolean checkSubString(Set<Integer> set, boolean check) {
+        if (set.isEmpty()) {
+            check = true;
+        }
+        return check;
     }
 
     /**
