@@ -10,10 +10,10 @@ public class Problem4 {
     private static final int SMALL_Z = 122;
 
     public static String solution(String word) throws Exception {
-        String answer = new String(reverse(word.toCharArray()));
+        String answer = reverse(word.toCharArray());
         return answer;
     }
-    private static char[] reverse(char[] charArray){
+    private static String reverse(char[] charArray){
         for(int index=0;index<charArray.length;index++){
             if(isBigOrSmall(charArray[index])==BIG){
                 charArray[index]=(char)(BIG_Z-(charArray[index]-BIG_A));
@@ -23,7 +23,7 @@ public class Problem4 {
             }
             if(isBigOrSmall(charArray[index])==ELSE)continue;
         }
-        return charArray;
+        return new String(charArray);
     }
     public static int isBigOrSmall(char now){
         if(65 <= now && now <=90)return BIG;
