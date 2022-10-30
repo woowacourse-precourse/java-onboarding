@@ -4,6 +4,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem7 {
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         User userObject = new User();
         userObject.setName(user);
@@ -21,10 +22,10 @@ public class Problem7 {
                 .collect(Collectors.toList());
 
         for (String fr : collect) {
-            if (userObject.getFriendRecommendScore().containsKey(fr)) {
+            if (userObject.isContainInRecommendList(fr)) {
                 userObject.getFriendRecommendScore().put(fr, userObject.getFriendRecommendScore().get(fr) + 10);
             }
-            if (!userObject.getFriendRecommendScore().containsKey(fr)) {
+            if (!userObject.isContainInRecommendList(fr)) {
                 userObject.getFriendRecommendScore().put(fr, 10);
             }
         }
@@ -34,10 +35,10 @@ public class Problem7 {
                 .collect(Collectors.toList());
 
         for (String visitor : visitorsWithoutFriend) {
-            if (userObject.getFriendRecommendScore().containsKey(visitor)) {
+            if (userObject.isContainInRecommendList(visitor)) {
                 userObject.getFriendRecommendScore().put(visitor, userObject.getFriendRecommendScore().get(visitor) + 1);
             }
-            if (!userObject.getFriendRecommendScore().containsKey(visitor)) {
+            if (!userObject.isContainInRecommendList(visitor)) {
                 userObject.getFriendRecommendScore().put(visitor, 1);
             }
         }
@@ -82,6 +83,10 @@ public class Problem7 {
         public void setFriendRecommendScore(Map<String, Integer> friendRecommendScore) {
             this.friendRecommendScore = friendRecommendScore;
         }
+
+        public boolean isContainInRecommendList(String username) {
+        return this.getFriendRecommendScore().containsKey(username);
+    }
     }
 
 }
