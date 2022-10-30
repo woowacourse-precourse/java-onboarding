@@ -1,5 +1,7 @@
 package onboarding.problem1;
 
+import java.util.Arrays;
+
 public class Page {
 
     private final int MIN_PAGE = 2;
@@ -18,6 +20,13 @@ public class Page {
 
     private boolean isOutOfBounds(int number) {
         return number < MIN_PAGE || number > MAX_PAGE;
+    }
+
+    public int getSum() {
+        return Arrays.stream(String.valueOf(number).split(""))
+                .mapToInt(Integer::parseInt)
+                .sum();
+
     }
 
 }
