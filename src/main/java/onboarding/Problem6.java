@@ -58,11 +58,18 @@ public class Problem6 {
         List<String> answer = List.of("answer");
         List<List<String>> crewList = new ArrayList<>(forms);
         checkException(crewList);
+
+        List<String> doubleNickname = new ArrayList<>();
+
         for (int i = 0; i < crewList.size(); i++){
             for (int j = i+1; j < crewList.size(); j++){
-                checkNickname(crewList.get(i), crewList.get(j));
+                if (checkNickname(crewList.get(i), crewList.get(j))) {
+                    if (!doubleNickname.contains(crewList.get(i).get(0))){doubleNickname.add(crewList.get(i).get(0));}
+                    if (!doubleNickname.contains(crewList.get(j).get(0))){doubleNickname.add(crewList.get(j).get(0));}
+                }
             }
         }
+        System.out.println(doubleNickname);
         return answer;
     }
 }
