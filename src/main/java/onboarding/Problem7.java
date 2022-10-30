@@ -78,7 +78,7 @@ public class Problem7 {
 
     /*
     * Map을 value을 기준으로 내림차순 정렬
-    * 이때 valule가 같다면 이름순 정렬
+    * 이때 value가 같다면 이름순 정렬
     *
     * @return List<Map.Entry<String, Integer>>
     * */
