@@ -54,6 +54,10 @@ class Problem1 {
 			return false;
 		}
 
+		if (!isBookSizeValid(pages)) {
+			return false;
+		}
+
 		return true;
 	}
 
@@ -85,6 +89,19 @@ class Problem1 {
 	// 페이지가 양수인 경우를 검증하는 메소드
 	private static boolean isPositive(List<Integer> pages) {
 		return pages.get(0) > 0 && pages.get(1) > 0;
+	}
+
+	// 책 사이즈를 검증하는 메소드
+	private static boolean isBookSizeValid(List<Integer> pages) {
+		if (pages.get(0) >= 3 && pages.get(0) <= 398) {
+			return true;
+		}
+
+		if (pages.get(1) >= 3 && pages.get(1) <= 398) {
+			return true;
+		}
+
+		return false;
 	}
 
 	// 왼쪽, 오른쪽 페이지에서 각 자리 수를 더하거나 곱해 가장 큰 수를 반환하는 메소드
