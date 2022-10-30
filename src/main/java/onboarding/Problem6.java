@@ -20,6 +20,24 @@ public class Problem6 {
 		return nicknames;
 	}
 
+	public static List<String> getEmailsSameNicknames(List<List<String>> forms, Set<String> words) {
+		List<String> result = new ArrayList<>();
+		for (String word : words) {
+			for (List<String> form : forms) {
+				checkNicknameContains(result, word, form);
+			}
+		}
+		return result;
+	}
+
+	private static void checkNicknameContains(List<String> result, String word, List<String> form) {
+		String email = form.get(0);
+		String nickname = form.get(1);
+		if (nickname.contains(word)) {
+			result.add(email);
+		}
+	}
+
 	public static Set<String> getOverlapWords(List<String> nicknames) {
 		Set<String> words = new HashSet<>();
 		Set<String> overlapWords = new HashSet<>();
