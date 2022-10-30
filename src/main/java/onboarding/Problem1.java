@@ -12,6 +12,18 @@ class Problem1 {
         return answer;
     }
 
+    private static boolean checkArrayWrongSize(List<Integer> pages){
+        return pages.size() != ARRAY_SIZE;
+    }
+
+    private static boolean isOddNumber(Integer number){
+        return number % 2 == 1;
+    }
+
+
+    private static boolean isEvenNumber(Integer number){
+        return number % 2 == 0;
+    }
 
 
     static class Const{
