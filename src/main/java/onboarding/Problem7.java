@@ -33,6 +33,7 @@ public class Problem7 {
         Problem7 problem = new Problem7();
         /* friendNames: 친구 목록 생성  */
         List<String> friendNames = flatten2DimStringList(friends);   // 배열 평탄화
+        friendNames.addAll(visitors);
         friendNames = dropDuplicate(friendNames);   // 중복 제거
         friendNames.remove(user); // 친구 목록에서 user 제거
 
@@ -41,17 +42,36 @@ public class Problem7 {
             problem.updateFriend(name);
         }
 
-        // scoreCoFriend : friends 를 순회하며 userFriend 와 함께 아는 친구에 대해 score 10점 추가
+        // friends 를 순회하며 userFriend 와 함께 아는 친구에 대해 score 10점 추가
         List<String> directFriends = getDirectFriends(user, friends);
         for (String name : directFriends) {
             problem.updateScore(name, 10);
         }
 
-        // scoreVisitor : visitors 를 순회하며 방문자의 score 1점씩 추가
-        // hashFriendshipScores 를 점수 내림차순, 이름 오름차순으로 정렬
+        // visitors 를 순회하며 방문자의 score 1점씩 추가
+        for (String name : visitors) {
+            problem.updateScore(name, 1);
+        }
+
+        // hashFriendshipScores의 value 를 점수 내림차순, 이름 오름차순으로 정렬
+        List<Friend> friendList = new ArrayList(problem.hashFriendshipScores.values());
+        friendList.sort(Comparator
+                .comparing(Friend::getScore).reversed()     // 점수 내림차순
+                .thenComparing(Friend::getName));     // 이름 오름차순
+
         // 상위 5명 선택
-        // score 가 0인 사람 제외
-        List<String> answer = Collections.emptyList();
+        int top = Math.min(friendList.size(), 5);
+        List<Friend> topScoreFriend = friendList.subList(0, top);
+
+        // score 가 0인 사람 제외하고 friend name만 추출
+        List<String> answer = new ArrayList<>();
+        for (Friend f : topScoreFriend) {
+            if (f.getScore()==0) {
+                break;
+            }
+            answer.add(f.getName());
+        }
+
         return answer;
     }
 
@@ -84,15 +104,19 @@ public class Problem7 {
                 continue;
             }
             if (f.get(1).equals(user)) {
-                directFriends.add(f.get(1));
+                directFriends.add(f.get(0));
             }
         }
         return directFriends;
     }
 
     void updateScore(String name, int score) {
-        Friend friend = this.hashFriendshipScores.get(name);
-        friend.updateScore(score); // 이렇게만 끝내도 업데이트 잘 되는지 확인
+        if (!this.hashFriendshipScores.containsKey(name)) {
+            System.out.println(this.hashFriendshipScores.keySet());
+            System.out.println(name + " is not in hashFriendshipScores");
+        } else {
+            this.hashFriendshipScores.get(name).updateScore(score); // 이렇게만 끝내도 업데이트 잘 되는지 확인
+        }
     }
 }
 
