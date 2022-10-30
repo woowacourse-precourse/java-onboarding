@@ -30,7 +30,7 @@ class Problem1 {
     private static int getSum(int page) {
         int ret = 0;
 
-        while(page > 0) {
+        while (page > 0) {
             ret += page % 10;
             page /= 10;
         }
@@ -40,7 +40,7 @@ class Problem1 {
     private static int getMul(int page) {
         int ret = 1;
 
-        while(page > 0) {
+        while (page > 0) {
             ret *= page % 10;
             page /= 10;
         }
