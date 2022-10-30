@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 class Problem7Test {
 
     private final List<List<String>> friends = List.of(List.of("donut", "andole"), List.of("donut", "jun"), List.of("donut", "mrko"), List.of("shakevan", "andole"), List.of("shakevan", "jun"), List.of("shakevan", "mrko"));
-    private final List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
     Map<String, List<String>> userToFriends = Problem7.parseFriendsInput("mrko", friends);
 
     @Test
@@ -150,7 +149,7 @@ class Problem7Test {
 
     @Test
     void 테스트케이스1() {
-        List<String> solution = Problem7.solution("a", List.of(List.of("b", "c"), List.of("d", "e"), List.of("f", "g")), List.of("b", "c", "d", "e", "f", "g"));
+        List<String> solution = Problem7.solution("a", List.of(List.of("f", "g"), List.of("d", "e"), List.of("b", "c")), List.of("f", "g", "d", "e", "b", "c"));
 
         Assertions.assertThat(solution.size())
             .isEqualTo(5);
