@@ -6,12 +6,22 @@ import static java.lang.Math.max;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-
         int pobiScore = getScore(pobi);
         int crongScore = getScore(crong);
 
-        return answer;
+        return winner(pobiScore, crongScore);
+    }
+
+    private static int winner(int pobiScore, int crongScore) {
+        if (pobiScore > crongScore) {
+            return 1;
+        }
+
+        if (pobiScore < crongScore) {
+            return 2;
+        }
+
+        return 0;
     }
 
     private static int getScore(List<Integer> pages) {
