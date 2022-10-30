@@ -6,7 +6,16 @@ import java.util.stream.Stream;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-        return answer;
+        try{
+            Game game=new Game(pobi,crong);
+            answer=game.decideWinner();
+            System.out.println(answer);
+            return answer;
+        }catch (IllegalStateException e){
+            System.out.println(-1);
+            return -1;
+        }
+    }
 }
 
 abstract class Page {
@@ -108,7 +117,7 @@ class Book {
     }
 
     private void validateLeftAndRightInterval(List<Integer> pageByOpeningBook) {
-        if(pageByOpeningBook.get(RIGHT_PAGE_INDEX)-pageByOpeningBook.get(LEFT_PAGE_INDEX)!=1){
+        if (pageByOpeningBook.get(RIGHT_PAGE_INDEX) - pageByOpeningBook.get(LEFT_PAGE_INDEX) != 1) {
             throw new IllegalStateException(LEFT_RIGHT_PAGE_DIFFERENCE);
         }
     }
