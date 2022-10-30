@@ -93,4 +93,12 @@ class Problem1 {
             throw new Exception("페이지 수가 3개 이상입니다");
         }
     }
+
+    static void validateStartOrEndPage(List<Integer> pageList) throws Exception {
+        int leftPageNumber = pageList.get(0);
+        int rightPageNumber = pageList.get(1);
+        if (leftPageNumber == 1 || rightPageNumber == 400) {
+            throw new Exception("첫 장 또는 마지막 장을 열었습니다");
+        }
+    }
 }
