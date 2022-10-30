@@ -51,19 +51,15 @@ public class Problem2 {
 
     private static void deleteContinuousAndDuplicatedLetters(String cryptogram) {
         charStack = new Stack<>();
-        char[] letters = convertStringToCharArray(cryptogram);
+        char[] letters = cryptogram.toCharArray();
 
         for (char letter : letters) {
             deleteContinuousAndDuplicatedLetter(letter);
         }
     }
 
-    private static char[] convertStringToCharArray(String input) {
-        return input.toCharArray();
-    }
-
     private static void deleteContinuousAndDuplicatedLetter(char letter) {
-        if (checkStackIsEmptyAndTopEqualToLetter(letter)) {
+        if (isStackNotEmptyAndTopEqualToLetter(letter)) {
             charStack.pop();
             return;
         }
@@ -71,7 +67,7 @@ public class Problem2 {
         charStack.push(letter);
     }
 
-    private static boolean checkStackIsEmptyAndTopEqualToLetter(char letter) {
+    private static boolean isStackNotEmptyAndTopEqualToLetter(char letter) {
         return ((!charStack.isEmpty()) && charStack.peek() == letter);
     }
 
