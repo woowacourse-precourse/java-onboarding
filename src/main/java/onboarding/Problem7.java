@@ -6,12 +6,12 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer;
         Map<String, List<String>> friendsInformation = initializeFriendsInformation(friends);
-        List<String> friendsOfFriendsOfUser = findFriendsOfFriendsOfUser(user, friendsInformation);
-        Map<String, Integer> recommendScore = new HashMap<>();
-        calculateRecommendScore(recommendScore, friendsOfFriendsOfUser, CalculusType.friend);
+        List<String> friendsOfUserFriends = findFriendsOfUserFriends(user, friendsInformation);
+        Map<String, Integer> recommendedPeople = new HashMap<>();
+        calculateRecommendedPeople(recommendedPeople, friendsOfUserFriends, CalculusType.friend);
         visitors = findVisitorsNotUserFriend(visitors, friendsInformation.get(user));
-        calculateRecommendScore(recommendScore, visitors, CalculusType.visitor);
-        answer = findTop5RecommendedPeople(recommendScore);
+        calculateRecommendedPeople(recommendedPeople, visitors, CalculusType.visitor);
+        answer = findTop5RecommendedPeople(recommendedPeople);
         return answer;
     }
 
@@ -23,18 +23,18 @@ public class Problem7 {
             if(!friendsInformation.containsKey(person1)){
                 friendsInformation.put(person1, new ArrayList<>());
             }
-            friendsInformation.get(person1).add(person2);
             if(!friendsInformation.containsKey(person2)){
                 friendsInformation.put(person2, new ArrayList<>());
             }
+            friendsInformation.get(person1).add(person2);
             friendsInformation.get(person2).add(person1);
         }
         return friendsInformation;
     }
 
 
-    public static List<String> findFriendsOfFriendsOfUser(String user, Map<String, List<String>> friendsInformation){
-        List<String> friendsOfFriendsOfUser = new ArrayList<>();
+    public static List<String> findFriendsOfUserFriends(String user, Map<String, List<String>> friendsInformation){
+        List<String> friendsOfUserFriends = new ArrayList<>();
         List<String> userFriends = friendsInformation.get(user);
         if(userFriends == null){
             return new ArrayList<>();
@@ -50,17 +50,17 @@ public class Problem7 {
                 if(checkDirectFriend(friendOfFriend, userFriends)){
                     continue;
                 }
-                friendsOfFriendsOfUser.add(friendOfFriend);
+                friendsOfUserFriends.add(friendOfFriend);
             }
         }
-        return friendsOfFriendsOfUser;
+        return friendsOfUserFriends;
     }
 
     public static boolean checkDirectFriend(String person, List<String> userFriends){
         return userFriends.contains(person);
     }
 
-    public static void calculateRecommendScore(Map<String, Integer> recommendScore,
+    public static void calculateRecommendedPeople(Map<String, Integer> recommendedPeople,
                                                List<String> recommendFriends, CalculusType calculusType) {
         int value = 0;
         if(calculusType == CalculusType.friend){
@@ -69,11 +69,11 @@ public class Problem7 {
             value = 1;
         }
         for(String person : recommendFriends) {
-            if(!recommendScore.containsKey(person)) {
-                recommendScore.put(person, 0);
+            if(!recommendedPeople.containsKey(person)) {
+                recommendedPeople.put(person, 0);
             }
-            int score = recommendScore.get(person);
-            recommendScore.put(person, score + value);
+            int score = recommendedPeople.get(person);
+            recommendedPeople.put(person, score + value);
         }
     }
 
@@ -87,14 +87,14 @@ public class Problem7 {
         return visitorsNotUserFriend;
     }
 
-    public static List<String> findTop5RecommendedPeople(Map<String, Integer> recommendScore) {
-        List<String> people = new ArrayList<>(recommendScore.keySet());
+    public static List<String> findTop5RecommendedPeople(Map<String, Integer> recommendedPeople) {
+        List<String> people = new ArrayList<>(recommendedPeople.keySet());
         List<String> top5 = new ArrayList<>();
         people.sort((o1, o2) -> {
-            if (recommendScore.get(o1) == recommendScore.get(o2)) {
+            if (recommendedPeople.get(o1) == recommendedPeople.get(o2)) {
                 return o1.compareTo(o2);
             }
-            return recommendScore.get(o2).compareTo(recommendScore.get(o1));
+            return recommendedPeople.get(o2).compareTo(recommendedPeople.get(o1));
         });
         for(int i = 0; i < 5 && i < people.size(); ++i){
             top5.add(people.get(i));
