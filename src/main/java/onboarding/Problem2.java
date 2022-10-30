@@ -4,10 +4,12 @@ import java.util.Stack;
 
 public class Problem2 {
 
-    static Stack<String> stack = new Stack<>();
+    static Stack<String> stack;
     static String topValue;
 
     public static String solution(String cryptogram) {
+        stack = new Stack<>();
+
         String answer = "";
         String currentValue;
         String topValue;
