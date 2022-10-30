@@ -58,6 +58,18 @@ class PageException extends RuntimeException {
 }
 
 class Game{
+    private int winner(onboarding.Player player1, onboarding.Player player2) {// 두 플레이어중 승자 여부에 따른 값을 반환
+        if (player1.getMaxNum() > player2.getMaxNum()) {
+            return 1;
+        } else if (player1.getMaxNum() < player2.getMaxNum()) {
+            return 2;
+        } else if (player1.getMaxNum() == player2.getMaxNum()) {
+            return 0;
+        } else {
+            return -1;
+        }
+    }
+    
 }
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
