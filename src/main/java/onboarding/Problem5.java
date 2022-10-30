@@ -36,7 +36,7 @@ public class Problem5 {
      * @return
      */
     private static List<Integer> getEachUnit(int money) {
-        List<Integer> answer = List.of(0, 0, 0, 0, 0, 0, 0, 0, 0);
+        List<Integer> answer = List.of(0, 0, 0, 0, 0, 0, 0, 0);
 
         while (money > 0) {
             List<Integer> tempResult = exposeCashUnit(money);
@@ -48,7 +48,7 @@ public class Problem5 {
     }
 
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
+        List<Integer> answer = getEachUnit(money);
         return answer;
     }
 }
