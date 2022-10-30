@@ -5,10 +5,12 @@ import java.util.*;
 public class Problem7 {
     private static int SCORE_10 = 10;
     private static int SCORE_1 = 1;
+    public static HashMap<String, Set<String>> friendsMap;
+    public static HashMap<String,Integer> scoreMap;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
-        HashMap<String, Set<String>> friendsMap = createFriendsList(friends);
-        HashMap<String,Integer> scoreMap = createScoreMap(friendsMap,user);
+        friendsMap = createFriendsList(friends);
+        createScoreMap(user);
 
         return answer;
     }
@@ -26,8 +28,8 @@ public class Problem7 {
         return map;
     }
 
-    public static HashMap<String,Integer> createScoreMap(Map<String, Set<String>> friendsMap,String user){
-        HashMap<String,Integer> scoreMap = new HashMap<>();
+    public static void createScoreMap(String user){
+        scoreMap = new HashMap<>();
         for(String key : friendsMap.keySet()){
             Set<String> set = friendsMap.get(key);
             int cnt = 0;
@@ -38,7 +40,13 @@ public class Problem7 {
             }
             addscore(scoreMap,key,cnt);
         }
-        return scoreMap;
+    }
+
+    public static void addVisitors(List<String> visitors){
+        visitors.forEach((visitor)->{
+            addscore(scoreMap,visitor,SCORE_1);
+        });
+
     }
 
     public static void addscore(Map<String,Integer> fre,String key,int score){
