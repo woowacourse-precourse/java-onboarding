@@ -31,17 +31,33 @@ public class Problem7 {
                 continue;
             }
 
-            setUserScoreByFriends(friend.get(0));
-            setUserScoreByFriends(friend.get(1));
+            setUserScore(person1, 10);
+            setUserScore(person2, 10);
         }
     }
 
     /*
-    * 해당 사용자의 점수를 10점 더한다.
+    * 해당 사용자의 점수를 더한다.
     *
     * @return void
     * */
-    private static void setUserScoreByFriends(String person) {
-        userScore.put(person, userScore.getOrDefault(person, 0) + 10);
+    private static void setUserScore(String person, int score) {
+        userScore.put(person, userScore.getOrDefault(person, 0) + score);
+    }
+
+    /*
+     * 주어진 visitors를 탐색하면서 각 사용자들의 방문 점수 계산
+     * 이떄 주어진 user의 친구는 제외
+     *
+     * @return void
+     * */
+    private static void countVisitors(List<String> visitors) {
+        for (String visitor : visitors) {
+            if (userFriends.contains(visitor)) {
+                continue;
+            }
+
+            setUserScore(visitor, 1);
+        }
     }
 }
