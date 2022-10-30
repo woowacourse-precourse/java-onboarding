@@ -20,6 +20,9 @@ public class Problem7 {
             if (!Objects.equals(name, user) && !friendInfo.get(user).contains(name)) {
                 answer.add(name);
             }
+            if (answer.size() >= 5) {
+                break;
+            }
         }
         return answer;
     }
