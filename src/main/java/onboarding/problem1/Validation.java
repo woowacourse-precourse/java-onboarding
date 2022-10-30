@@ -3,8 +3,8 @@ package onboarding.problem1;
 import java.util.List;
 
 public class Validation {
-    public static final int START_RIGHT_PAGE = 2;
-    public static final int END_RIGHT_PAGE = 400;
+    private static final int START_RIGHT_PAGE = 2;
+    private static final int END_RIGHT_PAGE = 400;
 
     public static boolean isValidPage(List<Integer> list) {
         boolean result = true;
@@ -23,7 +23,7 @@ public class Validation {
         return result;
     }
 
-    public static boolean isPositiveNumber(Integer integer) {
+    private static boolean isPositiveNumber(Integer integer) {
         return integer > 0;
     }
 
@@ -31,15 +31,15 @@ public class Validation {
         return integer <= START_RIGHT_PAGE || integer >= END_RIGHT_PAGE;
     }
 
-    public static boolean isOdd(Integer integer) {
+    private static boolean isOdd(Integer integer) {
         return integer % 2 != 0;
     }
 
-    public static boolean isEven(Integer integer) {
+    private static boolean isEven(Integer integer) {
         return integer % 2 == 0;
     }
 
-    public static boolean isContinuousNumber(Integer left, Integer right) {
+    private static boolean isContinuousNumber(Integer left, Integer right) {
         return left == right - 1;
     }
 }

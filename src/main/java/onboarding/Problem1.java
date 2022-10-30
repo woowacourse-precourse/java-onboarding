@@ -34,7 +34,7 @@ class Problem1 {
         return answer;
     }
 
-    public static Integer getAnswer(int pobiResult, int crongResult) {
+    private static Integer getAnswer(int pobiResult, int crongResult) {
         if (pobiResult > crongResult) {
             return 1;
         }
