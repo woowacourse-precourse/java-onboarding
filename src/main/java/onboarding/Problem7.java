@@ -8,9 +8,29 @@ public class Problem7 {
     Map<String, List<String>> user_friends = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        // List<String> answer = Collections.emptyList();
+        Problem7 problem7 = new Problem7();
+        List<String> answer = problem7.returnResult(user, friends, visitors);
         return answer;
     }
+
+    List<String> returnResult(String user, List<List<String>> friends, List<String> visitors) {
+        List<String> result = new ArrayList<>();
+        setVisitorScore(visitors);
+        setFriendScore(user, friends);
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(user_score.entrySet());
+        entryList.sort(Map.Entry.comparingByKey());
+        entryList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
+        for(int i=0; i<5; i++) {
+            int score = entryList.get(i).getValue();
+            if (score <= 0) {
+                continue;
+            }
+            result.add(entryList.get(i).getKey());
+        }
+        return result.subList(0,3);
+    }
+
 
     void setVisitorScore(List<String> visitors) {
         for (String visitor : visitors) {
