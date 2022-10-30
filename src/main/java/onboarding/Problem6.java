@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Problem6 {
+
+    private List<Boolean> isdup_list = new ArrayList<>();
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
@@ -24,5 +27,11 @@ public class Problem6 {
             bigrams_list.add(list);
         }
         return bigrams_list;
+    }
+
+    private void setIsdupList(List<List<String>> forms) {
+        for (int i=0; i<forms.size(); i++) {
+            isdup_list.add(false);
+        }
     }
 }
