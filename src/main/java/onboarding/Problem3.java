@@ -11,7 +11,7 @@ public class Problem3 {
         }
         return answer;
     }
-    public static boolean validateCheck(int number){
+    private static boolean validateCheck(int number){
         if(number < 1 || number > 10000){
             return false;
         }
@@ -19,7 +19,7 @@ public class Problem3 {
             return true;
         }
     }
-    public static int findNumber(int num){
+    private static int findNumber(int num){
         int count = 0;
         for(int i=1; i<=num; i++){
             String tmp = String.valueOf(i);
@@ -29,7 +29,7 @@ public class Problem3 {
         }
         return count;
     }
-    public static int countClap(String num){
+    private static int countClap(String num){
         int count = 0;
         for(int i=0; i<num.length(); i++){
             if(num.charAt(i) == '3' || num.charAt(i) == '6' || num.charAt(i) == '9'){
