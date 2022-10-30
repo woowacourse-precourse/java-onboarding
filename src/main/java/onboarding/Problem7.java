@@ -12,13 +12,13 @@ public class Problem7 {
 
         List<List<Integer>> adj = makeUndirectedGraph(friends, nameToNumber, allUserNameList);
 
-        int[] score = calculateScore(adj, visitors, nameToNumber, allUserNameList);
+        int[] score = calculateScore(user, adj, visitors, nameToNumber, allUserNameList);
 
         return getResult(score, numberToName);
     }
 
     private static List<String> getAllUsersName(String user, List<List<String>> friends, List<String> visitors) {
-        Set<String> allUsersNameSet = new LinkedHashSet<>();
+        Set<String> allUsersNameSet = new TreeSet<>();
         allUsersNameSet.add(user);
 
         for (int i = 0; i < friends.size(); i++) {
@@ -70,14 +70,15 @@ public class Problem7 {
         return adj;
     }
 
-    private static int[] calculateScore(List<List<Integer>> adj, List<String> visitors, Map<String, Integer> nameToNumber, List<String> allUserNameList) {
+    private static int[] calculateScore(String user, List<List<Integer>> adj, List<String> visitors, Map<String, Integer> nameToNumber, List<String> allUserNameList) {
         int[] score = new int[allUserNameList.size() + 1];
+        int userIndex = nameToNumber.get(user);
 
-        for (int i = 0; i < adj.get(1).size(); i++) {
-            int node = adj.get(1).get(i);
+        for (int i = 0; i < adj.get(userIndex).size(); i++) {
+            int node = adj.get(userIndex).get(i);
             for (int j = 0; j < adj.get(node).size(); j++) {
                 int targetNode = adj.get(node).get(j);
-                if (targetNode == 1) continue;
+                if (targetNode == userIndex) continue;
                 score[targetNode] += 10;
             }
         }
@@ -87,8 +88,8 @@ public class Problem7 {
             score[index]++;
         }
 
-        for (int i = 0; i < adj.get(1).size(); i++) {
-            int node = adj.get(1).get(i);
+        for (int i = 0; i < adj.get(userIndex).size(); i++) {
+            int node = adj.get(userIndex).get(i);
             score[node] = 0;
         }
 
@@ -109,6 +110,7 @@ public class Problem7 {
                 if (score[j] == maxScore) {
                     result.add(numberToName.get(j));
                     score[j] = Integer.MIN_VALUE;
+                    break;
                 }
             }
         }
