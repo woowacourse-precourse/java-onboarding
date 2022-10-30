@@ -35,6 +35,7 @@ public class Problem5 {
 
         for (int monetaryUnit : LIST_OF_MONETARY_UNIT) {
             countList.add(divide(money, monetaryUnit));
+            money = calculateRemainder(money, monetaryUnit);
         }
 
         return countList;
@@ -42,5 +43,9 @@ public class Problem5 {
 
     private static int divide(int money, int monetaryUnit) {
         return money / monetaryUnit;
+    }
+
+    private static int calculateRemainder(int money, int monetaryUnit) {
+        return money % monetaryUnit;
     }
 }
