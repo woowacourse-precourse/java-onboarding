@@ -19,6 +19,17 @@ class Problem1 {
         return result;
     }
 
+    private static Integer getMultiplication(Integer page) {
+        Integer result = 1;
+
+        while(page > 0) {
+            result *= page % 10;
+            page /= 10;
+        }
+
+        return result;
+    }
+
     private static boolean isException(List<Integer> pages){
         if(pages.size() != 2) return true;
         if(pages.get(0) < 1 || pages.get(1) < 1) return true;
