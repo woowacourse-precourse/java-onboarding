@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 
 /*
@@ -38,13 +37,18 @@ public class Problem4 {
         }
 
         // // split the string to character
-        ArrayList<Character> beforeList = new ArrayList<>();
+        ArrayList<Character> resultList = new ArrayList<>();
         char[] beforeWord = word.toCharArray();
         for (char before : beforeWord) {
-            beforeList.add(before);
+            if (Character.isUpperCase(before)){
+                resultList.add(upperCase.get(before));
+            }
+            else {
+                resultList.add(lowerCase.get(before));
+            }
         }
+        System.out.println(resultList);
 
-        System.out.println(beforeList);
 
         return answer;
     }
