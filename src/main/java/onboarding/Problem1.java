@@ -104,6 +104,12 @@ class CalculateForPro1 {
 }
 
 class Problem1 {
+  private static final int POBI_WIN = 1;
+  private static final int CRONG_WIN = 2;
+  private static final int DRAW = 0;
+  private static final int EXCEPTION = -1;
+
+
 
   public static int solution(List<Integer> pobi, List<Integer> crong) {
     UserForPro1 userPobi = new UserForPro1(pobi);
@@ -113,14 +119,14 @@ class Problem1 {
 
   public static int winner(int a, int b) {
     if (a == -1 || b == -1) {
-      return -1;
+      return EXCEPTION;
     }
     if (a - b > 0) {
-      return 1;
+      return POBI_WIN;
     }
     if (a - b < 0) {
-      return 2;
+      return CRONG_WIN;
     }
-    return 0;
+    return DRAW;
   }
 }
