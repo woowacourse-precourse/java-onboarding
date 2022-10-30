@@ -92,5 +92,22 @@ class Database {
         return emailList;
     }
 
+    static boolean checkDuplicationByTwoCharacters(String twoCharacters, int indexOfName) {
+        boolean isDuplicated = false;
+        int nameCount = nameList.size();
+        for (int i = 0; i < nameCount; i++) {
+            if (i == indexOfName) {
+                continue;
+            }
+            String name = nameList.get(i);
+            boolean isContained = name.contains(twoCharacters);
+            if (isContained) {
+                isDuplicated = true;
+                break;
+            }
+        }
+        return isDuplicated;
+    }
+
 
 }
