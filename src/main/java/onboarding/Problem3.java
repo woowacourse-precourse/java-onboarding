@@ -1,31 +1,33 @@
 package onboarding;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Problem3 {
+    static final List<String> targetNumList = Arrays.asList("3", "6", "9");
+
     public static int solution(int number) {
         return gameController(number);
     }
 
     static int gameController(int number) {
-        int answer = 0;
+        int totalTargetNumCnt = 0;
 
         for (int i = 1; i <= number; i++) {
-            answer += checkNumber(i);
+            totalTargetNumCnt += getTargetNumCnt(i);
         }
 
-        return answer;
+        return totalTargetNumCnt;
     }
 
-    static int checkNumber(int number) {
-        String[] numberArr = Integer.toString(number).split("");
-        String target = "369";
-        int result = 0;
+    static int getTargetNumCnt(int number) {
+        String StringNum = Integer.toString(number);
+        String[] StringNumArr = StringNum.split("");
 
-        for(String num : numberArr) {
-            if (target.contains(num)) {
-                result += 1;
-            }
-        }
+        int targetNumCnt = (int) Arrays.stream(StringNumArr)
+                .filter(num -> targetNumList.contains(num))
+                .count();
 
-        return result;
+        return targetNumCnt;
     }
 }
