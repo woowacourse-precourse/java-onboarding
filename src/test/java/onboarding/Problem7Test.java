@@ -103,4 +103,37 @@ class Problem7Test {
 
     }
 
+
+    @Test
+    void 결과테스트() {
+        String user = "hansu";
+        List<List<String>> friends = List.of(
+                List.of("hansu", "sungjoon"),
+                List.of("hansu", "jiwon"),
+                List.of("sungjoon", "chaemin"),
+                List.of("sungjoon", "chiho"),
+                List.of("minjae", "hansu"),
+                List.of("jaewoo", "minjae"),
+                List.of("jaewoo", "wonbin"),
+                List.of("wonbin", "minjae"),
+                List.of("hansu", "jaewoo")
+        );
+        List<String> visitors = List.of("sungjoon", "sungjoon", "minjae", "jiwon", "invidam", "invidam", "sonny");
+        List<String> result = List.of("wonbin", "chaemin", "chiho", "invidam", "sonny");
+
+        assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+    }
+    @Test
+    void 작은결과테스트() {
+        String user = "hansu";
+        List<List<String>> friends = List.of(
+                List.of("hansu", "sungjoon"),
+                List.of("hansu", "jiwon")
+        );
+        List<String> visitors = List.of("sungjoon", "sungjoon","invidam", "invidam", "sonny");
+        List<String> result = List.of("invidam", "sonny");
+
+        assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+    }
+
 }
