@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -11,7 +12,23 @@ public class Problem5 {
     }
 
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
+        List<Integer> answer = new ArrayList<>(Collections.emptyList());
+        int fiveMoney = 50000;
+        int oneMoney = 10000;
+
+        if (!checkParam(money)) {
+            while (oneMoney != 0)
+            {
+                if (fiveMoney != 5) {
+                    answer.add(money / fiveMoney);
+                    money %= fiveMoney;
+                    fiveMoney /= 10;
+                }
+                answer.add(money / oneMoney);
+                money %= oneMoney;
+                oneMoney /= 10;
+            }
+        }
         return answer;
     }
 }
