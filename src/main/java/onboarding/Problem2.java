@@ -1,9 +1,23 @@
 package onboarding;
 import java.util.*;
 
-public class Problem2 {
+class LengthException extends Exception {}
+class CaseException extends Exception {}
 
-    public static String decodeString(String strIn) {
+public class Problem2 {
+    static void lengthExceptionCheck(String strIn) throws LengthException {
+        if (strIn.length() < 1 || strIn.length() >= 1000) {
+            throw new LengthException();
+        }
+    }
+
+    static void caseExceptionCheck(String strIn) throws CaseException {
+        if (!strIn.toLowerCase().equals(strIn)) {
+            throw new CaseException();
+        }
+    }
+
+    static String decodeString(String strIn) {
         String output = "";
         String[] strSplit = strIn.split("");
         Queue<String> queue = new LinkedList<>(Arrays.asList(strSplit));
@@ -29,17 +43,27 @@ public class Problem2 {
         return output;
     }
 
-    public static String solution(String cryptogram) {
-        boolean check = true;
-        String answer = cryptogram;
-        int checkNum;
-        while (check) {
-            check = false;
-            checkNum = answer.length();
-            answer = decodeString(answer);
-            if (answer.length() != checkNum) check = true;
-        }
+    static String solution(String cryptogram) {
+        try {
+            lengthExceptionCheck(cryptogram);
+            caseExceptionCheck(cryptogram);
 
-        return answer;
+            boolean check = true;
+            String answer = cryptogram;
+            int checkNum;
+            while (check) {
+                check = false;
+                checkNum = answer.length();
+                answer = decodeString(answer);
+                if (answer.length() != checkNum) check = true;
+            }
+            return answer;
+        } catch (LengthException e) {
+            System.err.println("check the length of given cryptogram: ");
+            return cryptogram;
+        } catch (CaseException e) {
+            System.err.println("check the cases of given cryptogram: ");
+            return cryptogram;
+        }
     }
 }
