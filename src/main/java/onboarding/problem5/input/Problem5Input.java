@@ -11,6 +11,10 @@ public class Problem5Input implements ProblemInput {
         this.money = new Money(money);
     }
 
+    public Money money() {
+        return money;
+    }
+
     @Override
     public boolean hasError() {
         return false;
