@@ -16,7 +16,9 @@ public class Problem2 {
 			}
 		}
 
-		return stack.stream().map(String::valueOf).collect(Collectors.joining());
+		return stack.stream()
+			.map(String::valueOf)
+			.collect(Collectors.joining());
 	}
 
 }
