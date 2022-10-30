@@ -4,14 +4,22 @@ import java.util.*;
 
 public class NicknameChecker {
 
-    private static final String ALLOWABLE_EMAIL_FORMAT = ".+@email.com$";
+    private static final String ALLOWED_EMAIL_DOMAIN = "@email.com$";
+    private static final String ALLOWED_EMAIL_FORMAT = ".+"+ALLOWED_EMAIL_DOMAIN;
 
     private List<Crew> crews;
     private TreeSet<String> similarUserEmails;
 
     public NicknameChecker(){
         crews = new LinkedList<>();
-        similarUserEmails = new TreeSet<>();
+        similarUserEmails = new TreeSet<>(new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                String email1 = o1.split(ALLOWED_EMAIL_DOMAIN)[0];
+                String email2 = o2.split(ALLOWED_EMAIL_DOMAIN)[0];
+                return email1.compareTo(email2);
+            }
+        });
     }
 
     public NicknameChecker checkSimilarNickname(){
@@ -31,7 +39,7 @@ public class NicknameChecker {
     public void addCrew(List<String> crewInfo){
         String email = crewInfo.get(0);
         String nickName = crewInfo.get(1);
-        if(email.matches(ALLOWABLE_EMAIL_FORMAT)) {
+        if(email.matches(ALLOWED_EMAIL_FORMAT)) {
             crews.add(new Crew(email, nickName));
         }
     }
