@@ -40,8 +40,12 @@ public class Problem6 {
                         continue;
                     }
 
-                    resultList.add(email);
-                    resultList.add(firstAddedSubstrOriginEmailMap.get(substr));
+                    String originEmail = firstAddedSubstrOriginEmailMap.get(substr);
+
+                    if(originEmail != email) {
+                        resultList.add(email);
+                        resultList.add(originEmail);
+                    }
                 }
             }
         }
