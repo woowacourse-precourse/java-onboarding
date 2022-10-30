@@ -56,6 +56,28 @@ public class Problem7 {
                 friendRelations.get(friend.get(1)).add(friend.get(0));
             }
         }
+
+        for (String userFriend : friendRelations.get(user)) {
+            for (String userFriendFriend : friendRelations.get(userFriend)) {
+                if (!friendRelations.get(user).contains(userFriendFriend) && userFriendFriend != user) {
+                    if (!scoreMap.containsKey(userFriendFriend)) {
+                        scoreMap.put(userFriendFriend, 10);
+                    } else if (scoreMap.containsKey(userFriendFriend)) {
+                        scoreMap.put(userFriendFriend, scoreMap.get(userFriendFriend) + 10);
+                    }
+                }
+            }
+        }
+
+        for (String visitor : visitors) {
+            if (!friendRelations.get(user).contains(visitor)) {
+                if (!scoreMap.containsKey(visitor)) {
+                    scoreMap.put(visitor, 1);
+                } else if (scoreMap.containsKey(visitor)) {
+                    scoreMap.put(visitor, scoreMap.get(visitor) + 1);
+                }
+            }
+        }
         return answer;
     }
 
