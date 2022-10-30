@@ -1,6 +1,5 @@
 package onboarding;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,13 +14,10 @@ public class Problem5 {
 	}
 
 	private static void convertToChanges(int[] typeOfChanges, List<Integer> answer, int money) {
-		int credit = money;
 		for (int i = 0; i < typeOfChanges.length; i++) {
-
-			int count = credit / typeOfChanges[i];
-
+			int count = money / typeOfChanges[i];
 			if (count != 0) {
-				credit -= count * typeOfChanges[i];
+				money -= count * typeOfChanges[i];
 				answer.add(count);
 				continue;
 			}
