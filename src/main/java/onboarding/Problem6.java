@@ -3,8 +3,24 @@ package onboarding;
 import java.util.*;
 
 public class Problem6 {
+    static Map<String, Set<String>> nicknameEmailMap;
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        nicknameEmailMap = new HashMap<>();
+
+        for (List<String> form : forms) {
+            String email = form.get(0);
+            String nickname = form.get(1);
+
+            for (int count = 0; count < nickname.length() - 1; count++) {
+                String partOfNickname = nickname.substring(count, count + 2);
+                Set<String> emailSet = nicknameEmailMap.getOrDefault(partOfNickname, new HashSet<>());
+                emailSet.add(email);
+                nicknameEmailMap.put(partOfNickname, emailSet);
+            }
+        }
+
+        List<String> answer = makeEmailList();
+        answer.sort(Comparator.naturalOrder());
         return answer;
     }
 
@@ -13,7 +29,7 @@ public class Problem6 {
     *
     * @return List<String>
     * */
-    private static List<String> makeEmailList(Map<String, Set<String>> nicknameEmailMap) {
+    private static List<String> makeEmailList() {
         List<String> emailList = new ArrayList<>();
 
         for (Set<String> emails : nicknameEmailMap.values()) {
