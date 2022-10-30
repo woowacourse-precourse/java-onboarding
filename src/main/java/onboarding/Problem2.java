@@ -12,4 +12,15 @@ public class Problem2 {
         String answer = "answer";
         return answer;
     }
+
+    public static int checkSameAlphabet(String cryptogram) {
+        for (int i = 0; i < cryptogram.length(); i++) {
+            if (i != cryptogram.length() - 1) {
+                if (cryptogram.charAt(i) == cryptogram.charAt(i + 1)) {
+                    return i;
+                }
+            }
+        }
+        return -1;
+    }
 }
