@@ -8,4 +8,8 @@ public class Problem5 {
         List<Integer> answer = Collections.emptyList();
         return answer;
     }
+
+    private static int exchange(int money, int monetaryUnit) {
+        return money / monetaryUnit;
+    }
 }
