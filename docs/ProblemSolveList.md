@@ -25,7 +25,7 @@
 - [x] solution 메서드 완성
 ---
 ### Problem 5
-
+- [ ] solution 메서드 완성
 ---
 ### Problem 6
 
