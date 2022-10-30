@@ -20,6 +20,15 @@ public class Problem7 {
                 .filter(s -> !userObject.getFriends().contains(s))
                 .collect(Collectors.toList());
 
+        for (String fr : collect) {
+            if (userObject.getFriendRecommendScore().containsKey(fr)) {
+                userObject.getFriendRecommendScore().put(fr, userObject.getFriendRecommendScore().get(fr) + 10);
+            }
+            if (!userObject.getFriendRecommendScore().containsKey(fr)) {
+                userObject.getFriendRecommendScore().put(fr, 10);
+            }
+        }
+
     }
 
     private static class User {
