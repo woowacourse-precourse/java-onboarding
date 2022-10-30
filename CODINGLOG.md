@@ -263,3 +263,51 @@ List 컬렉션 중 ArrayList를 자료구조로 활용해야겠다고 생각했�
   - 최종적으로 boolean array가 true인 index의 이메일 주소만 반환
   - 이메일 주소 sorting하기
     - Collections.sort()
+
+
+## 문제 7
+
+대망의 7번 문제. 이건 내가 만들고 있는 사이트에서도 활용하면 좋을 알고리즘 같다. 가장 기초적인 친구 추천 알고리즘으로.
+
+### 기능 목록 v0.1
+
+1. 자료 구조
+- {mrko=0, andole=2, ...} 사용자 id와 추천 점수가 연결된 HashMap<String, Integer> "user_score"
+  - friends 및 visitors에 대한 모든 사용자 id가 키값에 들어가야 함
+- {mrko=[aldole, donut], andole=[donut, shakevan], ...} 사용자 id와 친구 List가 연결된 HashMap<String, ArrayList<String>> "user_friends"
+
+2. 알고리즘
+
+setUserScore
+- friends를 looping 돌 떄
+  - user_score의 key값 모두 추가 밑 0으로 초기화
+- visitors를 looping 돌며 user_score의 key값 추가 밑 0으로 초기화
+ 
+setUserFriends
+- user_score를 이용해 key값에 대한 기본 빈 리스트를 생성
+- friends를 looping 돌 며 key-value 서로 추가
+  -  key: "donut", value += "andole" // key: "andole", value += "dunut"
+
+getFriendScore
+- key: user에 해당하는 user_friends ArrayList value 반환
+- value를 루핑돌며 해당 value를 key로 갖는 value로 가서 현재 친구가 아닌 user 조회
+  - 현재 친구가 아닌 user의 user_score +10 추가
+
+getVisitScore
+- visitors 루핑 돌며 user_score 해당 key에 value +1 추가
+
+getResult
+- result List<String> result선언
+- user_score value 순으로 정렬
+  - 다시 name 순으로 다중 정렬
+- for 문 돌며 상위 5명 result에 추가
+  - value가 0이면 for문 break;
+
+
+3. 피드백
+
+- `Done is better than perfect` 모토로 일단 구현에 집중하였다.
+- looping이 너무 많이 이뤄지는 문제점
+- 중복되는 로직이 많다... 리팩토링이 절실하다...
+- Java에 있는 built-in function들을 잘 몰라서 비효율적으로 로직을 구현하는 느낌...
+- 자료 구조를 더 적게 사용할 수는 없을지...
