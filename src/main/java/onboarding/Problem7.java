@@ -4,11 +4,36 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        Map<String,Integer> score=addScoreFriends(friends,user,visitors);
-        List<String> answer =orderFriends(score);
+        List<String> answer=Collections.EMPTY_LIST;
+        if(checkLimit(user,friends,visitors)) {
+            Map<String, Integer> score = addScoreFriends(friends, user, visitors);
+            answer = orderFriends(score);
+        }
         return answer;
     }
 
+    private static boolean checkLimit(String user,List<List<String>> friends,List<String> visitors){
+
+        //사용자 아이디 길이 1부터 30
+        if(!(user.length()>=1)&&user.length()<=30) return false;
+        //사용자 아이디 소문자
+        if(!user.matches("^[a-z]+$")) return false;
+        //리스트최대길이 10000
+        if(!(friends.size()>=1&&friends.size()<=10000)) return false;
+
+        for(List<String> string:friends){
+            String friend1=string.get(0);
+            String friend2=string.get(1);
+            //친구 아이디 길이 1부터 30 그리고 소문자
+            if(!friend1.matches("^[a-z]+$")) return false;
+            if(!friend1.matches("^[a-z]+$")) return false;
+            if(!(friend1.length()>=1&&friend1.length()<=30)) return false;
+            if(!(friend1.length()>=1&&friend1.length()<=30)) return false;
+        }
+        if(!(visitors.size()>=0&&visitors.size()<=10000)) return false;
+
+        return true;
+    }
     /*
     사용자 제외 모든 유저별로 점수 초기화 하기
      */
