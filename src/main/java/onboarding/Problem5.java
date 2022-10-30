@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
@@ -19,8 +18,8 @@ public class Problem5 {
     }
 
     private static int calculateWithdraw(int amount) {
-        int count = leftMoney/amount;
-        leftMoney = leftMoney%amount;
+        int count = leftMoney / amount;
+        leftMoney = leftMoney % amount;
         return count;
     }
 
