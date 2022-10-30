@@ -4,39 +4,40 @@ import java.util.*;
 
 public class Problem7 {
 
-    private static Set<String> friendList = new HashSet<>();
-    private static HashMap<String, Integer> score = new HashMap<>();
-
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        findFriend(user, friends);
-        getScoreInFriend(user, friends);
-        getScoreInVisitors(user, visitors);
+        List<String> answer = new ArrayList<>();
+        Set<String> friendList = new HashSet<>();
+        HashMap<String, Integer> score = new HashMap<>();
 
-        if (score.isEmpty() == false) {
-            List<String> compareList = new ArrayList<>(score.keySet());
-            Collections.sort(answer, (data1, data2) -> {
-                if(score.get(data1) == score.get(data2)) {
-                    return data1.compareTo(data2);
-                }
-                return score.get(data1) - score.get(data2);
-            });
+        findFriend(user, friends, friendList);
+        getScoreInFriend(user, friends, friendList, score);
+        getScoreInVisitors(user, visitors, friendList, score);
 
-            if(compareList.size() < 6) {
-                answer = compareList;
+        if (score.isEmpty() == true) {
+            return answer;
+        }
+
+        List<String> compareList = new ArrayList<>(score.keySet());
+
+        Collections.sort(compareList, (o1, o2) -> {
+            if(score.get(o1) != score.get(o2)) {
+                return score.get(o2).compareTo(score.get(o1));
             }
             else {
-                for (int i = 0 ; i < 5 ; i++) {
-                    answer.add(compareList.get(i));
-                }
+                return o1.compareTo(o2);
             }
+        });
 
+        for (String compareData : compareList) {
+            if (answer.size() > 5)
+                return answer;
+            answer.add(compareData);
         }
 
         return answer;
     }
 
-    public static void findFriend(String user, List<List<String>> friends) {
+    public static void findFriend(String user, List<List<String>> friends, Set<String> friendList) {
         for (List<String> friendData : friends) {
             if(user.equals(friendData.get(0)) == true) {
                 friendList.add(friendData.get(1));
@@ -47,7 +48,7 @@ public class Problem7 {
         }
     }
 
-    public static void getScoreInFriend(String user, List<List<String>> friends) {
+    public static void getScoreInFriend(String user, List<List<String>> friends, Set<String> friendList, HashMap<String, Integer> score) {
         for (List<String> friendData : friends) {
             if(user.equals(friendData.get(1)) == false && friendList.contains(friendData.get(0)) == true && friendList.contains(friendData.get(1)) == false) {
                 if(score.containsKey(friendData.get(1)) == false) {
@@ -68,7 +69,7 @@ public class Problem7 {
         }
     }
 
-    public static void getScoreInVisitors(String user, List<String> visitors) {
+    public static void getScoreInVisitors(String user, List<String> visitors, Set<String> friendList, HashMap<String, Integer> score) {
         for (String visitor : visitors) {
             if(visitor.equals(user) == false && friendList.contains(visitor) == false) {
                 if(score.containsKey(visitor) == false) {
