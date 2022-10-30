@@ -46,9 +46,7 @@ public class Problem7 {
 
     private static void increaseVisitScore(List<String> visitors) {
         for (String visitor: visitors) {
-            if (!userFriends.contains(visitor)) {
-                increaseOnePersonScore(visitor, 1);
-            }
+            increaseOnePersonScore(visitor, 1);
         }
     }
 
