@@ -101,6 +101,28 @@ public class Problem7 {
         return userScore;
     }
 
+    private static List<String> getTotalRecommendation(HashMap<String, Integer> userScore) {
+        List<List<String>> sortingList = new ArrayList<>();
+
+        Set<String> keySet = userScore.keySet();
+        for (String key : keySet) {
+            if (userScore.get(key) == 0) continue;
+            List<String> temp = new ArrayList<>();
+            temp.add(key);
+            temp.add(String.valueOf(userScore.get(key)));
+            sortingList.add(temp);
+        }
+
+        sortingList.sort(new recommendationSort());
+
+        List<String> result = new ArrayList<>();
+        for (int i = 0; i < sortingList.size(); i++) {
+            result.add(sortingList.get(i).get(0));
+            if (result.size() >= 5) break;
+        }
+        return result;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> userList = getUsersList(user, friends);
         HashMap<String, HashSet<String>> userFriendsList = getEachFriendsList(userList, friends);
