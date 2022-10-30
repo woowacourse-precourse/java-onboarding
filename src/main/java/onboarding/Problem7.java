@@ -7,13 +7,28 @@ import java.util.List;
 import java.util.Map;
 
 public class Problem7 {
+
+    public static final int USER_FRIEND_FRIEND = 10;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
         Map<String, List<String>> relationMap = new HashMap<>();
+        Map<String, Integer> scoreMap = new HashMap<>();
 
         for (List<String> friend : friends) {
             makeFriendRelation(friend, relationMap);
+        }
+
+        List<String> userFriends = relationMap.get(user);
+
+        for (String userFriend : userFriends) {
+
+            List<String> userFriendFriends = relationMap.get(userFriend);
+
+            for (String userFriendFriend : userFriendFriends) {
+                scoreMap.put(userFriendFriend,
+                             scoreMap.getOrDefault(userFriendFriend, 0) + USER_FRIEND_FRIEND);
+            }
         }
 
         return answer;
