@@ -50,6 +50,7 @@ class ExceptionProblem6 {
         for (List<String> form : forms) {
             conformEmailFormat(form.get(0));
             validateEmailLength(form.get(0));
+            validateKoreanNickname(form.get(1));
         }
     }
 
@@ -66,4 +67,10 @@ class ExceptionProblem6 {
         }
     }
 
+    private static void validateKoreanNickname(String nickname) {
+        String regExp = "^[가-힣]*$";
+        if (!nickname.matches(regExp)) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
