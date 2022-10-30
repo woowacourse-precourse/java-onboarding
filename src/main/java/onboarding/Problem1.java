@@ -19,6 +19,9 @@ class Problem1 {
         int pobiScore = getMaxScore(pobiNumbers);
         int crongScore = getMaxScore(crongNumbers);
 
+        answer = getAnswer(pobiScore, crongScore);
+
+
         return answer;
     }
 
@@ -60,4 +63,13 @@ class Problem1 {
         return maxNumber;
     }
 
+    private static int getAnswer(int pobiScore, int crongScore) {
+        if (pobiScore > crongScore) {
+            return 1;
+        }
+        if (pobiScore < crongScore) {
+            return 2;
+        }
+        return 0;
+    }
 }
