@@ -13,14 +13,6 @@ class Problem6 {
         return answer;
     }
 
-    // 이름 나열 메서드
-    public static String StringAll(List<List<String>> forms) {
-        String result = "" ;
-        for(int i=0; i<forms.size(); i++) {
-            result += forms.get(i).get(1);
-        }
-        return result;
-    }
 
     // 한글 추출 메서드
     // input : 문자열 sIndex : 추출 시작 인덱스  byteSize : 추출 바이트 길이 byteLenKor : 한글 한글자 바이트수
@@ -52,6 +44,17 @@ class Problem6 {
         }
 
         return input.substring(sIndex, sIndex + iLen) + String.format(strFmt,"");
+    }
+    // 어떤 글자가 중복되었는지 확인 후 포함된 index를 포함한 List 반환
+    public static List<Integer> isOverlapped(List<List<String>> forms, String name) {
+
+        List<Integer> indexList = new ArrayList<>();
+        for(int i=0; i<forms.size(); i++) {
+            if(forms.get(i).get(1).contains(name)) {        // 글자가 포함되어있다면
+                indexList.add(i);
+            }
+        }
+        return indexList;
     }
 }
 
