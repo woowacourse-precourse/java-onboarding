@@ -4,13 +4,27 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
         Map<String, List<String>> friendsList;
         Map<String, Integer> score;
+        List<Map.Entry<String, Integer>> sortedScore;
+        int cnt = 0;
 
         friendsList = getFriendsList(friends);
+        // 점수 계산
         score = calMutualFriendsScore(user, friendsList);
         score = calVisitorsScore(friendsList.get(user), visitors, score);
+
+        // 점수 내림차순 정렬
+        sortedScore = new ArrayList<>(score.entrySet());
+        sortedScore.sort((o1, o2) -> o2.getValue() - o1.getValue());
+        for (Map.Entry<String, Integer> entry: sortedScore) {
+            if (cnt == 5) {
+                break;
+            }
+            answer.add(entry.getKey());
+            cnt++;
+        }
 
         return answer;
     }
