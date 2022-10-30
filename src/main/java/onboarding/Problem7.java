@@ -107,7 +107,12 @@ public class Problem7 {
      * @param recommendScoreMap : 유저별 추천 점수가 등록된 맵
      */
     private static void deleteUserAndFriends(String user, Map<String, Set<String>> friendsMap, Map<String, Integer> recommendScoreMap){
-
+        // 자신은 추천대상에서 제외
+        recommendScoreMap.remove(user);
+        // 이미 등록된 친구는 추천 대상에서 제외
+        friendsMap.get(user).forEach(friend -> {
+            recommendScoreMap.remove(friend);
+        });
     }
 
     /**
