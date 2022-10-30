@@ -7,6 +7,10 @@ import java.util.List;
 
 public class Problem1Input implements ProblemInput {
 
+	private static final int LAST_PAGE = 400;
+
+	private static final int FIRST_PAGE = 1;
+
 	private final PagePair pobiPagePair;
 
 	private final PagePair crongPagePair;
@@ -18,6 +22,13 @@ public class Problem1Input implements ProblemInput {
 
 	@Override
 	public boolean hasError() {
-		return false;
+		// 범위를 벗어난 페이지가 없는지 확인
+		if (crongPagePair.isOutOfRange(FIRST_PAGE, LAST_PAGE)
+				|| pobiPagePair.isOutOfRange(FIRST_PAGE, LAST_PAGE)) {
+			return true;
+		}
+		// 연속된 두 숫자이며 [홀수 - 짝수]인지 확인
+		return crongPagePair.isNotConsecutiveOddEven() ||
+				pobiPagePair.isNotConsecutiveOddEven();
 	}
 }
