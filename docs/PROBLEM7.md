@@ -24,3 +24,14 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+
+### 구현 기능 목록
+- [ ]  user와 친구인 사람 필터링하기
+- [ ]  사용자와 함께 아는 친구 구하기 (친구의 친구)
+   - [ ]  이 경우 해당 사람에게 10점 더하기
+- [ ]  사용자의 타임 라인에 방문한 사람과 횟수 구하기
+   - [ ]  이 경우 해당 사람에게 1점 더하기
+- [ ]  점수가 높은 순으로 정렬하기
+- [ ]  상위 5명만 슬라이싱하기
+- [ ]  0점인 경우 제거
