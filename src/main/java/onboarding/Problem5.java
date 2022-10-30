@@ -10,10 +10,15 @@ public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> result = new ArrayList<>();
         for (int change : moneyList) {
-            result.add(money / change);
+            result.add(countChange(money, change));
             money %= change;
         }
         return result;
     }
+
+    public static int countChange(int money, int change) {
+        return money / change;
+    }
+
 }
 
