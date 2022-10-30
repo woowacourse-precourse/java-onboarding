@@ -14,6 +14,15 @@ public class Problem7 {
         return answer;
     }
 
+    static HashMap<String, Set<String>> makeInitMap(List<List<String>> friends) {
+        HashMap<String, Set<String>> initMap = new HashMap<>();
+        for (List<String> friend : friends) {
+            putValue(initMap, friend.get(0), friend.get(1));
+            putValue(initMap, friend.get(1), friend.get(0));
+        }
+        return initMap;
+    }
+
     static void putValue(HashMap<String, Set<String>> initMap, String friend1, String friend2) {
         if (!initMap.containsKey(friend1)) {
             initMap.put(friend1, new HashSet<>(Set.of(friend2)));
