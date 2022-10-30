@@ -25,8 +25,18 @@ public class Problem4 {
         return result;
     }
 
+    /**
+     * 문제 해결을 위한 함수
+     * word 문자들을 확인하기 위해 int 타입으로 변환한다.
+     * 기능 요구 사항 결과 리턴
+     */
     public static String solution(String word) {
         String answer = "";
+        for(int i = 0; i<word.length();i++){
+            char alphabet  = word.charAt(i);
+            int num = (int) alphabet;
+            answer += (char)change(num);
+        }
         return answer;
     }
 }
