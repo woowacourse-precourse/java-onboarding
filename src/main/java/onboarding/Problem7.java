@@ -25,7 +25,12 @@ public class Problem7 {
         Persons() {
             personMap = new HashMap<>();
         }
-
+        Person getPerson(String name) {
+            if(exists(name)) {
+                return personMap.get(name);
+            }
+            return new Person(name);
+        }
         boolean exists(String name) {
             return personMap.containsKey(name);
         }
