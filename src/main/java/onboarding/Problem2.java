@@ -1,6 +1,7 @@
 package onboarding;
 
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Queue;
 
 public class Problem2 {
     /**
@@ -21,26 +22,24 @@ public class Problem2 {
      * @return : String, 복호화된 문자열
      */
     public static String decrypt(String encrypt) {
-        Stack<Character> stack = new Stack<>();
         boolean isNotEnd = true;
 
         while (isNotEnd) {
             StringBuilder result = new StringBuilder();
+            boolean[] isDeleted = new boolean[encrypt.length()];
             isNotEnd = false;
 
-            for (int idx = 0, size = encrypt.length(); idx < size; idx++) {
-                char currentChar = encrypt.charAt(idx);
-
-                if (stack.isEmpty()) stack.push(currentChar);
-                else if (stack.peek() != currentChar) stack.push(currentChar);
-                else if (stack.peek() == currentChar) {
+            for (int idx = 1, size = encrypt.length(); idx < size; idx++) {
+                if (encrypt.charAt(idx - 1) == encrypt.charAt(idx)) {
+                    isDeleted[idx - 1] = true;
+                    isDeleted[idx] = true;
                     isNotEnd = true;
-                    while (!stack.isEmpty() && stack.peek() == currentChar) stack.pop();
                 }
             }
 
-            while (!stack.isEmpty()) result.append(stack.pop());
-            result.reverse();
+            for (int idx = 0, size = encrypt.length(); idx < size; idx++) {
+                if (isDeleted[idx] == false) result.append(encrypt.charAt(idx));
+            }
 
             encrypt = result.toString();
         }
