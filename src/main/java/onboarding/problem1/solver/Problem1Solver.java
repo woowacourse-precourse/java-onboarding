@@ -11,6 +11,7 @@ public class Problem1Solver implements Solver<Problem1Input, Problem1Result> {
     public Problem1Result solve(Problem1Input input) {
         PagePair pobi = input.pobiPagePair();
         PagePair crong = input.crongPagePair();
+
         return new Problem1Result(
                 pobi.totalScore(),
                 crong.totalScore());

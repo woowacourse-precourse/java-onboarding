@@ -4,7 +4,6 @@ import onboarding.problem7.input.Problem7Input;
 import onboarding.problem7.result.Problem7Result;
 import onboarding.problem7.solver.Problem7Solver;
 
-import java.util.Collections;
 import java.util.List;
 
 public class Problem7 {

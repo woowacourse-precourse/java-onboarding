@@ -30,6 +30,7 @@ public class Word {
         word.chars()
                 .mapToObj(this::reverseChar)
                 .forEach(sb::append);
+
         return new Word(sb.toString());
     }
 

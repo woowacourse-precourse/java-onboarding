@@ -5,5 +5,6 @@ package onboarding.problem;
  * @param <R> 결과로 반환되어야 하는 타입.
  */
 public interface ProblemResult<R> {
+
 	R toResult();
 }

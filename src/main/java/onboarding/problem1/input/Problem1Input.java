@@ -36,7 +36,7 @@ public class Problem1Input implements ProblemInput {
 			return true;
 		}
 		// 연속된 두 숫자이며 [홀수 - 짝수]인지 확인
-		return crongPagePair.isNotConsecutiveOddEven() ||
-				pobiPagePair.isNotConsecutiveOddEven();
+		return crongPagePair.isNotConsecutiveOddEven()
+				|| pobiPagePair.isNotConsecutiveOddEven();
 	}
 }

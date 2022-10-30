@@ -24,6 +24,7 @@ public class Problem7Input implements ProblemInput {
 
     private void makeFriends(List<List<String>> friendRelations) {
         for (List<String> friendRelation : friendRelations) {
+
             String fromName = friendRelation.get(0);
             if (isUserNotRegistered(fromName)) {
                 userMap.put(fromName,  new User(fromName));
