@@ -28,7 +28,7 @@ public class Problem3 {
 
         return count;
     }
-    
+
     //number가 세 자리 수일 경우
     public static int countThreeFigures(int number){
         int count = 0;
@@ -90,8 +90,26 @@ public class Problem3 {
 
     }
 
+    //clap 수 계산 method
+    public static int countClap(int number){
+        int count = 0;
+
+        if((number/1000)!=0){//천의 자리 수이면
+            count += countFourFigures(number);
+        }else if((number/100)!=0){
+            count += countThreeFigures(number);
+        }else if((number/10)!=0){
+            count += countTwoFigures(number);
+        }else{
+            count += countOneFigures(number);
+        }
+
+        return count;
+    }
+
     public static int solution(int number) {
         int answer = 0;
+        answer = countClap(number);
         return answer;
     }
 }
