@@ -2,17 +2,24 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        Database.validateData(forms);
-        Database.setData(forms);
-        List<String> answer = getEmailListByCheckNickname();
-        return answer;
+        try {
+            Database.validateData(forms);
+            Database.setData(forms);
+            List<String> answer = getEmailListByCheckNickname();
+            return answer;
+        } catch (Exception e) {
+            System.out.println(e);
+            return Collections.emptyList();
+        }
     }
 
     static List<String> getEmailListByCheckNickname() {
@@ -135,5 +142,36 @@ class Database {
         return isDuplicated;
     }
 
+    static void validateData(List<List<String>> forms) throws Exception {
+        validateLengthOfForms(forms);
+        for (int i = 0 ; i < forms.size(); i ++) {
+            String name = forms.get(i).get(1);
+            String email = forms.get(i).get(0);
+            validateName(name);
+            validateEmail(email);
+        }
+    }
 
+    static void validateLengthOfForms(List<List<String>> forms) throws Exception {
+        int lengthOfForms = forms.size();
+        if (lengthOfForms < 1 || lengthOfForms > 10000) {
+            throw new Exception("크루는 1명 이상 10000명 이하여야 합니다");
+        }
+    }
+
+    static void validateName(String name) throws Exception{
+        String pattern = "^[ㄱ-ㅎ가-힣]{1,20}$";
+        boolean isMatch = Pattern.matches(pattern, name);
+        if (!isMatch) {
+            throw new Exception("이름이 잘못되었습니다");
+        }
+    }
+
+    static void validateEmail(String email) throws Exception{
+        String pattern = "^[a-zA-Z0-9._%+-]{1,10}+@email.com$";
+        boolean isMatch = Pattern.matches(pattern, email);
+        if (!isMatch) {
+            throw new Exception("이메일이 잘못되었습니다");
+        }
+    }
 }
