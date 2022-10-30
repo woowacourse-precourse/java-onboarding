@@ -1,7 +1,5 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -12,12 +10,12 @@ public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
         for(int i=1; i<=number; i++){
-            answer+=handclap(i);
+            answer+= CountClap(i);
         }
         return answer;
     }
     static final List<Integer> threesixnine = List.of(3, 6, 9);
-    public static int handclap(int num){
+    public static int CountClap(int num){
         int cnt = 0;
         while(true){
             if(num<=0){
