@@ -24,6 +24,21 @@ public class Problem6 {
     }
 
     /**
+     * 이메일의 username 부분만 추출한다
+     * @param input
+     * @return
+     */
+    private String getEmailUsername(String input) {
+        String temp = "";
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) == '@') {
+                temp = input.substring(0, i);
+            }
+        }
+        return temp;
+    }
+
+    /**
      * 주어진 이메일 목록 중 조건을 만족하는 항목을 선별한다.
      * @param forms
      * @return
