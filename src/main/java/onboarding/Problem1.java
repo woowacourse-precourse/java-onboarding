@@ -35,7 +35,6 @@ class Problem1 {
      * 3.예외 사항 함수
      * 페이지가 번호가 순서대로 들어있지 않을 경우 true 리턴
      */
-    
     public static boolean pageCheck(List<Integer> list){
         boolean errorCheck = false;
         if(list.get(0)+1 != list.get(1)) {
@@ -44,10 +43,24 @@ class Problem1 {
         return errorCheck;
     }
 
+    /**
+     * 문제 해결을 위한 함수
+     * 기능 요구 사항 결과 리턴
+     */
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        if(pageCheck(pobi) || pageCheck(crong)){
+            answer = -1;
+            return answer;
+        }
+        if(pageResult(pobi)>pageResult(crong)){
+            answer = 1;
+        } else if (pageResult(pobi)<pageResult(crong)) {
+            answer = 2;
+        } else{
+            answer = 0;
+        }
         return answer;
     }
-
 
 }
