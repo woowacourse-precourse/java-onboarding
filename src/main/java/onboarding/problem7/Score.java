@@ -4,13 +4,21 @@ public class Score implements Comparable<Score> {
     private final String userName;
     private int score;
 
-    public Score(String userName) {
+    public Score(String userName, int score) throws Exception {
+        if (score < 0) {
+            throw new Exception("점수는 음수가 될 수 없습니다.");
+        }
         this.userName = userName;
-        this.score = 0;
+        this.score = score;
     }
 
     public Score add(int i) {
         this.score += i;
+        return this;
+    }
+
+    public Score multiple(int i) {
+        this.score *= i;
         return this;
     }
 
