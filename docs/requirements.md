@@ -154,3 +154,44 @@
 - int을 매개변수로 받는다. 이 값은 money이다.
 - 이 메소드는 getEachUnit을 호출한다.
 - 사용한 금액 단위가 담긴 List를 받아 리턴한다.
+
+## 문제 6
+### 구현 메소드 및 설명
+- inspectEmailCondition
+- inspectNicknameCondition
+
+### inspectEmailCondition
+- String을 매개변수로 받는다. 이 값은 email이다.
+- 주어진 이메일이 요구 조건에 맞는지 확인한다.
+  - 이메일 형식에 부합하여야 한다.
+  - 도메인은 `email.com`이다.
+  - 이메일의 길이는 11 이상 20 이하이다.
+- 위 조건을 모두 만족하면 true를, 그렇지 않다면 false를 리턴한다.
+
+### inspectNicknameCondition
+- String을 매개변수로 받는다. 이 값은 nickname이다.
+- 주어진 닉네임이 요구 조건에 맞는지 확인한다.
+  - 닉네임은 한글이다.
+  - 닉네임의 길이는 1 이상 20 이하이다.
+- 위 조건을 모두 만족하면 true를, 그렇지 않다면 false를 리턴한다.
+
+### collectValidInputs
+- List<List<String>>을 매개변수로 받는다. 이 값은 문제에서 주어지는 [이메일, 닉네임] 쌍의 목록이다.
+- 각 쌍에 대해 아래 과정을 거친다.
+  - inspectEmailCondition, inspectNicknameCondition을 통해 이메일과 닉네임을 각각 검사한다.
+  - 둘 다 만족하는 경우, [이메일의 앞 부분 (@ 이전), 닉네임] 쌍을 새 List<List<String>>에 기록한다.
+- 기록한 List<List<String>> 을 리턴한다.
+
+### checkAlikeNicknames
+- List<List<String>>을 매개변수로 받는다. 이 값은 주어진 조건을 만족하는 [이메일, 닉네임] 목록이다.
+- 주어진 목록을 아래와 같이 확인한다.
+  - 서로 다른 [이메일, 닉네임] 쌍 중 닉네임이 유사한 경우를 확인한다. 두 글자 이상의 문자가 연속적으로 순서에 맞추어 포함되어 있는 경우 유사하다고 판단한다.
+  - 유사한 경우, 두 대상의 이메일을 TreeSet<String>에 추가한다.
+- 완성된 TreeSet<String>을 순회하며, 뒤에 `@email.com`을 붙여 List<String>에 담는다.
+- 완성된 List를 리턴한다.
+
+### getAlikeNicknamesList
+- List<List<String>>을 매개변수로 받는다. 이 값은 문제에서 주어지는 [이메일, 닉네임] 쌍의 목록이다.
+- 주어지는 목록을 `collectValidInputs`을 통해, 조건을 만족하지 않는 입력을 걸러 낸다.
+- 걸러 낸 목록을 `checkAlikeNicknames`을 통해, 유사한 닉네임인 경우의 이메일 목록을 수집한다.
+- 결과로 받은 List<String>을 리턴한다.
