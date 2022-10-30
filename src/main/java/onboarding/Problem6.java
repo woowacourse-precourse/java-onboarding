@@ -58,6 +58,33 @@ public class Problem6 {
         }
     }
 
+    private static void makeTrieList(String nickname) {
+        int i1, i2;
+        Pair index;
+        int length = nickname.length();
+
+        if (length == 1) {
+            i1 = indexMap.get(nickname.substring(0, 1));
+            index = new Pair(i1, i1);
+            if (!trieList[i1].contains(i1)) {
+                trieList[i1].add(i1);
+            } else if (!checkList.contains(index)) {
+                checkList.add(index);
+            }
+        } else {
+            for (int i = 0; i < length - 1; i++) {
+                i1 = indexMap.get(nickname.substring(i, i + 1));
+                i2 = indexMap.get(nickname.substring(i + 1, i + 2));
+                index = new Pair(i1, i2);
+                if (!trieList[i1].contains(i2)) {
+                    trieList[i1].add(i2);
+                } else if (!checkList.contains(index)) {
+                    checkList.add(index);
+                }
+            }
+        }
+    }
+
     private static void initSolution(List<List<String>> forms) {
         int size = forms.size();
 
