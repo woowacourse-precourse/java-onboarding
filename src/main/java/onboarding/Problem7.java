@@ -27,4 +27,22 @@ public class Problem7 {
 
 		return friendMap;
 	}
+
+	private static HashMap<String, Integer> getOneHopFriend(String user,
+															HashMap<String, List<String>> friendMap) {
+		HashMap<String, Integer> result = new HashMap<>();
+
+		for(String friend: friendMap.get(user)) {
+			for(String indirectFriend: friendMap.get(friend)) {
+				if(user.equals(indirectFriend) || friendMap.get(user).contains(indirectFriend))
+					continue;
+				if(!result.containsKey(indirectFriend))
+					result.put(indirectFriend, 1);
+				else
+					result.put(indirectFriend, result.get(indirectFriend) + 1);
+			}
+		}
+
+		return result;
+	}
 }
