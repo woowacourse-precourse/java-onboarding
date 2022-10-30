@@ -3,6 +3,22 @@ package onboarding;
 import java.util.*;
 
 public class Problem6 {
+    public static List<String> removeAndSort(List<String> answer){
+        Set<String> set = new HashSet<>(answer);
+        answer.clear();
+        answer.addAll(set);
+        return answer;
+    }
+
+    public static List<String> addRepeating(List<String> answer,Map<String, List<String>> nicknames){
+        for (String keyword: nicknames.keySet()) {
+            if((nicknames.get(keyword)).size()>1){
+                answer.addAll(nicknames.get(keyword));
+            }
+        }
+        return answer;
+    }
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
         Map<String, List<String>> nicknames = new HashMap<String, List<String>>();
@@ -15,14 +31,7 @@ public class Problem6 {
                 nicknames.get(keyword).add(email);
             }
         }
-        for (String keyword: nicknames.keySet()) {
-            if((nicknames.get(keyword)).size()>1){
-                answer.addAll(nicknames.get(keyword));
-            }
-        }
-        Set<String> set = new HashSet<>(answer);
-        answer.clear();
-        answer.addAll(set);
+        answer = removeAndSort(addRepeating(answer,nicknames));
         return answer;
     }
 }
