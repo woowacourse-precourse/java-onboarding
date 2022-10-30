@@ -1,13 +1,13 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         List<String> friend = filterFriendByFriendList(friends, user);
+        Map<String, Integer> indirectFriendScore = setRecommandFriendScoreByDirectFriend(friends, friend, user);
+
 
         return answer;
     }
@@ -29,4 +29,23 @@ public class Problem7 {
 
         return friendList;
     }
+
+    private static Map<String, Integer> setRecommandFriendScoreByDirectFriend(List<List<String>> friends, List<String> directFriends, String user) {
+        Map<String, Integer> indirectFriends = new HashMap<>();
+
+        for (List<String> friend : friends) {
+            for (String directFriend : directFriends) {
+                if (friend.get(0).equals(directFriend)) {
+                    indirectFriends.put(friend.get(1), 10);
+                } else if (friend.get(1).equals(directFriend)) {
+                    indirectFriends.put(friend.get(0), 10);
+                }
+            }
+        }
+
+        indirectFriends.remove(user);
+
+        return indirectFriends;
+    }
+
 }
