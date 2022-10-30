@@ -21,12 +21,17 @@ public class Problem3 {
     public static int getCount(int number) {
         int count = 0;
         while (number > 0) {
-            int target = number % 10;
-            if (target != 0 && target % 3 == 0) {
-                count += 1;
-            }
+            count += getNumberToAdd(number);;
             number /= 10;
         }
         return count;
+    }
+
+    private static int getNumberToAdd (int number) {
+        int target = number % 10;
+        if (target != 0 && target % 3 == 0) {
+            return 1;
+        }
+        return 0;
     }
 }
