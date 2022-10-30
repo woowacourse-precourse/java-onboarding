@@ -28,11 +28,23 @@ class Problem1 {
             int pobisScore = getMyScore(pobisPageByPageResult);
             int crongsScore = getMyScore(crongsPageByPageResult);
 
+            int result = pobisScore - crongsScore;
+
+            if (result > 0) {
+                answer = 1;
+            }
+
+            if (result < 0) {
+                answer = 2;
+            }
+
+            if (result == 0) {
+                answer = 0;
+            }
+
         } catch (Exception exception) {
-            System.out.println("입력값은 1이상 400이하의 숫자만 가능합니다.(null 불가)");
+            answer = -1;
         }
-
-
         return answer;
     }
 
