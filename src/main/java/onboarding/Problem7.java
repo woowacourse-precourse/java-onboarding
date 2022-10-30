@@ -53,8 +53,13 @@ public class Problem7 {
         }
     }
     /* 방문자 List를 순회하면서 그 사람의 점수를 1점씩 올려주고 Map에 기록하는 메서드 */
-    private static void recordVisitorScore(Map<String, Integer> scores, List<String> visitors) {
+    private static void recordVisitorScore(Map<String, Integer> scores, List<String> visitors, List<String> userFriend) {
         for (String visitor : visitors) {
+
+            /* 이미 친구인 id를 무시 */
+            if (userFriend.contains(visitor)) {
+                continue;
+            }
             incrementScore(scores, visitor, 1);
         }
     }
