@@ -2,8 +2,8 @@ package onboarding.problem7;
 
 public class RecommendedFriend implements Comparable<RecommendedFriend> {
 
-    private String name;
-    private int score;
+    private final String name;
+    private final int score;
 
     public RecommendedFriend(String name, int score) {
         this.name = name;
@@ -14,19 +14,27 @@ public class RecommendedFriend implements Comparable<RecommendedFriend> {
         return name;
     }
 
-    public int getScore() {
-        return score;
-    }
-
     @Override
     public int compareTo(RecommendedFriend other) {
-        if (this.score < other.score) {
+        if (isOtherScoreBig(this.score, other.score)) {
             return -1;
-        } else if (this.score == other.score) {
-            if (this.name.compareTo(other.name) > 0) {
+        } else if (scoreEq(this.score, other.score)) {
+            if (isOtherNameFront(this.name, other.name)) {
                 return -1;
             }
         }
         return 1;
+    }
+
+    private boolean isOtherScoreBig(int score, int otherScore) {
+        return score < otherScore;
+    }
+
+    private boolean scoreEq(int score, int otherScore) {
+        return score == otherScore;
+    }
+
+    private boolean isOtherNameFront(String name, String otherName) {
+        return name.compareTo(otherName) > 0;
     }
 }
