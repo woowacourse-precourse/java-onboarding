@@ -24,3 +24,13 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+
+### 필요메서드
+
+| 함수명                    | 함수설명                                                                                                                                                                                                                                                                                      | InPut                                                              | OutPut                                           |  
+|------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------|--------------------------------------------------|
+| isCorrectInputs        | 문제의 제한사항에 위반되는지를 판단한다.<br/>-위반되지 않는경우:true<br/>- 위반되는경우:false<br/><br/>예외처리 목록<br/>- user의 길이는 1이상 30이하의 문자열<br/>- friends의 list길이는 1이상 10,000이하<br/>- freinds list에 들어있는 각 아이디의 길이는 1이상 30이하의 문자열<br/>- visitor list 길이는 0이상 10,000이하<br/>  | String user, List<List<-String->> friends, List<-String-> visitors | boolean                                          |
+| makeFreinds            | MultiValueMap을 사용하여 (key,value)값으로 친구관계를 매핑한 MultiValueMap을 return한다.| List<List<String>> friends                                         | MultiValueMap<-String,String-> freindsMap        |
+| pointsToFreindtoFreind |'사용자와 함께 아는 친구의 수=10'점에 대한 로직을 구현한다.<br/>return값은 HashMap으로 Key={유저},Value={point}| String user, MultiValueMap<-String,String-> freindsMap             | HashMap<String,Intger> recommendFreindToPointMap |
+| pointsToVisitors| '사용자 타임라인에 밤운한 횟수=1점'에 대한 로직을 구현한다. <br/>return값은 HashMap으로 Key={유저},Value={point}| List<-String-> visitors , HashMap<String,Intger> hashMap     |HashMap<String,Intger> recommendFreindToPointMap|
