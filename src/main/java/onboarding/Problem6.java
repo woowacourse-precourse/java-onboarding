@@ -5,7 +5,26 @@ import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>();
+        List<List<String>> userDoubleList = getUserListByNicknameLength(forms, 2);  //두글자 이상의 닉네임을 가진 user
+        List<String> userList = getFlatList(userDoubleList);        // 1차원 배열로
+        List<String> nicknameList = getElementsByKorean(userList);  //한글 닉네임만 추출
+        List<String> splitNicknameList = new ArrayList<>();     //닉네임 문자열의 모든 분할 케이스
+        Set<Integer> userIndexSet = new HashSet<>();            //중복된 부분문자열을 포함하고있는 유저 닉네임의 인덱스
+
+        for(int i=0; userDoubleList.size() > i; i++){
+            splitNicknameList = splitStringInAllCases(userDoubleList.get(i).get(1),2);
+            for(int j=0; splitNicknameList.size() > j; j++){
+                userIndexSet.addAll(getIndexListOfContainSubString(i, nicknameList, splitNicknameList.get(j)));
+            }
+        }
+
+        Iterator<Integer> iter = userIndexSet.iterator();
+
+        while(iter.hasNext()){
+            answer.add(userDoubleList.get(iter.next()).get(0));
+        }
+        Collections.sort(answer);   //오름차순 정렬
         return answer;
     }
     /**
