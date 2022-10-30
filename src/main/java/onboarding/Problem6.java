@@ -53,4 +53,13 @@ public class Problem6 {
             return true;
         else return false;
     }
+
+    /**
+     * 닉네임의 제한사항 만족 여부를 확인하는 함수
+     */
+    private static boolean isNameValid(String nickname){
+        if(isNameHangul(nickname)&&isNameLength(nickname))
+            return true;
+        else return false;
+    }
 }
