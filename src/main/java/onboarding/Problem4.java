@@ -41,7 +41,7 @@ public class Problem4 {
      */
     public static Map<Character, Character> makeDictionary() {
         Map<Character, Character> dictionary = new HashMap<>();
-        for (int i=0; i<32; i++){
+        for (int i=0; i<26; i++){
             dictionary.put((char)('A'+i), (char)('Z'- i));
             dictionary.put((char)('a'+i), (char)('z'- i));
         }
