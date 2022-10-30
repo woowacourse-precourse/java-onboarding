@@ -1,100 +1,100 @@
 package onboarding;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class Problem6 {
-    public static List<String> solution(List<List<String>> forms) {
-        return getDuplicatedEmailList(forms);
-    }
+	public static List<String> solution(List<List<String>> forms) {
+		return getDuplicatedEmailList(forms);
+	}
 
+	// 중복된 닉네임을 사용중인 크루의 이메일 리스트를 반환하는 메소드
+	private static List<String> getDuplicatedEmailList(List<List<String>> forms) {
+		List<String> checkList = getCheckList(forms);
+		List<String> nickNameList = getNickNameList(forms);
+		List<String> emailList = getEmailList(forms);
+		List<String> duplicatedWords = getDuplicatedWords(nickNameList, checkList);
+		Set<String> duplicatedEmailList = new TreeSet<>();
 
-    // 중복된 닉네임을 사용중인 크루의 이메일 리스트를 반환하는 메소드
-    private static List<String> getDuplicatedEmailList(List<List<String>> forms) {
-        List<String> checkList = getCheckList(forms);
-        List<String> nickNameList = getNickNameList(forms);
-        List<String> emailList = getEmailList(forms);
-        List<String> duplicatedWords = getDuplicatedWords(nickNameList, checkList);
-        Set<String> set = new TreeSet<>();
+		int index;
 
-        int index;
+		for (String nickName : nickNameList) {
+			for (String duplicatedWord : duplicatedWords) {
+				if (nickName.contains(duplicatedWord)) {
+					index = nickNameList.indexOf(nickName);
+					duplicatedEmailList.add(emailList.get(index));
+				}
+			}
+		}
 
-        for (String nickName : nickNameList) {
-            for (String duplicatedWord : duplicatedWords) {
-                if (nickName.contains(duplicatedWord)) {   // TODO: 리팩토링 필요
-                    index = nickNameList.indexOf(nickName);
-                    set.add(emailList.get(index));
-                }
-            }
-        }
+		return new ArrayList<>(duplicatedEmailList);
+	}
 
-        return new ArrayList<>(set);
-    }
+	// 닉네임 리스트와 체크리스트를 비교하여 체크리스트와 중복된 값만 반환하는 메소드
+	private static List<String> getDuplicatedWords(List<String> nickNameList, List<String> checkList) {
+		List<String> duplicatedWords = new ArrayList<>();
+		int[] indexList = new int[checkList.size()];
+		Arrays.fill(indexList, 0);
 
+		for (String nickName : nickNameList) {
 
-    // 닉네임 리스트와 체크리스트를 비교하여 체크리스트 중 중복된 값만 반환하는 메소드
-    private static List<String> getDuplicatedWords(List<String> nickNameList, List<String> checkList) {
-        List<String> duplicatedWords = new ArrayList<>();
-        int[] indexList = new int[checkList.size()];
-        Arrays.fill(indexList, 0);
+			for (String check : checkList) {
+				if (nickName.contains(check)) {
+					int index = checkList.indexOf(check);
+					indexList[index]++;
+				}
+			}
+		}
 
-        for (String nickName : nickNameList) {
+		for (int i = 0; i < indexList.length; i++) {
+			if (indexList[i] > 1) {
+				duplicatedWords.add(checkList.get(i));
+			}
+		}
 
-            for (String check : checkList) {
-                if (nickName.contains(check)) {  // TODO: 23번 라인과 동일한 메소드로 리팩토링 필견
-                    int index = checkList.indexOf(check);
-                    indexList[index]++;
-                }
-            }
-        }
+		return duplicatedWords;
+	}
 
-        for (int i = 0; i < indexList.length; i++) {
-            if (indexList[i] > 1) {
-                duplicatedWords.add(checkList.get(i));
-            }
-        }
+	// 닉네임의 연속된 두 글자를 체크리스트로 반환하는 메소드
+	private static List<String> getCheckList(List<List<String>> forms) {
+		List<String> nickNameList = getNickNameList(forms);
+		Set<String> checkList = new HashSet<>();
 
-        return duplicatedWords;
-    }
+		for (String nickName : nickNameList) {
 
+			for (int i = 0; i < nickName.length() - 1; i++) {
+				String needCheck = nickName.substring(i, i + 2);
+				checkList.add(needCheck);
+			}
+		}
 
-    // 닉네임의 연속된 두 글자를 체크리스트로 반환하는 메소드
-    private static List<String> getCheckList(List<List<String>> forms) {
-        List<String> nickNameList = getNickNameList(forms);
-        Set<String> set = new HashSet<>();
+		return new ArrayList<>(checkList);
+	}
 
-        for (String nickName : nickNameList) {
+	// 이메일 리스트를 반환하는 메소드
+	private static List<String> getEmailList(List<List<String>> forms) {
+		List<String> email = new ArrayList<>();
 
-            for (int i = 0; i < nickName.length() - 1; i++) {
-                String needCheck = nickName.substring(i, i+2);
-                set.add(needCheck);
-            }
-        }
+		for (List<String> form : forms) {
+			email.add(form.get(0));
+		}
 
-        return new ArrayList<>(set);
-    }
+		return email;
+	}
 
+	// 닉네임 리스트를 반환하는 메소드
+	private static List<String> getNickNameList(List<List<String>> forms) {
+		List<String> nickName = new ArrayList<>();
 
-    // 이메일 리스트를 반환하는 메소드
-    private static List<String> getEmailList(List<List<String>> forms) {
-        List<String> email = new ArrayList<>();
+		for (List<String> form : forms) {
+			nickName.add(form.get(1));
+		}
 
-        for (List<String> form : forms) {
-            email.add(form.get(0));
-        }
-
-        return email;
-    }
-
-
-    // 닉네임 리스트를 반환하는 메소드
-    private static List<String> getNickNameList(List<List<String>> forms) {
-        List<String> nickName = new ArrayList<>();
-
-        for (List<String> form : forms) {
-            nickName.add(form.get(1));
-        }
-
-        return nickName;
-    }
+		return nickName;
+	}
 
 }
