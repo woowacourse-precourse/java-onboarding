@@ -69,14 +69,25 @@ public class Problem7 {
             List<String> friendsOfFriend = friendMap.get(friendOfUser);
 
             for(String friend : friendsOfFriend) {
-                if (friend.equals(user)) {
-                    continue;
+                if (isFriendOfFriend(user, friend, friendMap)) {
+                    int friendScore = friendScoreMap.get(friend);
+                    friendScoreMap.put(friend, friendScore + FRIEND_OF_FRIEND_SCORE);
                 }
-
-                int friendScore = friendScoreMap.get(friend);
-                friendScoreMap.put(friend, friendScore + FRIEND_OF_FRIEND_SCORE);
             }
         }
+    }
+
+    private static boolean isFriendOfFriend(String user, String friend, Map<String, List<String>> friendMap) {
+        if (friend.equals(user)) {
+            return false;
+        }
+
+        List<String> friendsOfFriend = friendMap.get(friend);
+        if (friendsOfFriend.contains(user)) {
+            return false;
+        }
+
+        return true;
     }
 
     private static void giveScoreByVisit(List<String> visitors, List<String> friendsOfUser, Map<String, Integer> friendScoreMap) {
