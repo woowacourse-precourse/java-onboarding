@@ -23,9 +23,11 @@ public class Problem6 {
         }
 
         for(List<String> info:forms) {
+            String nickName = info.get(1);
             for(String dupString: duplicated) {
-                if (info.get(1).contains(dupString)) {
-                    answer.add(info.get(0));
+                if (nickName.contains(dupString)) {
+                    String email = info.get(0);
+                    answer.add(email);
                 }
             }
         }
