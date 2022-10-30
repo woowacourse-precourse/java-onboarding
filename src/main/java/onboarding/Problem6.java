@@ -26,9 +26,13 @@ public class Problem6 {
         for (int i = 0; i < forms.size(); i++) {
             String srcEmail = forms.get(i).get(0);
             String srcName = forms.get(i).get(1);
+            if (validateNickname(srcName) == false)
+                continue;
             for (int j = i+1; j < forms.size(); j++) {
                 String targetEmail = forms.get(j).get(0);
                 String targetName = forms.get(j).get(1);
+                if (validateNickname(targetName) == false)
+                    continue;
                 if (srcEmail.equals(targetEmail)) continue;
                 if (isSimilar(srcName, targetName)) {
                     emails.add(srcEmail);
@@ -39,7 +43,7 @@ public class Problem6 {
         return emails;
     }
 
-    private boolean validateEmail(String email) {
+    private static boolean validateEmail(String email) {
         if (email.length() < 11 || email.length() > 19)
             return false;
 
@@ -47,11 +51,20 @@ public class Problem6 {
         return Pattern.matches(emailPattern, email);
     }
 
-    private List<String> filterEmails(List<String> emails) {
+    private static List<String> filterEmails(List<String> emails) {
         List<String> filteredEmails = emails.stream()
                 .filter(email -> validateEmail(email))
                 .collect(Collectors.toList());
 
         return filteredEmails;
+    }
+
+    private static boolean validateNickname(String nickname) {
+        if (nickname.length() >= 20)
+            return false;
+
+        String nicknamePattern = "^[가-힣]+$";
+
+        return Pattern.matches(nicknamePattern, nickname);
     }
 }
