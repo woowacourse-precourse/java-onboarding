@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /*
 맨 위에 친구부터 앞 글자씩 다른 친구들의 글자와 같은지 검사
@@ -38,6 +35,7 @@ public class Problem6 {
         for(int t : set) {
             answer.add(forms.get(t).get(0));
         }
+        Collections.sort(answer);
         return answer;
     }
 }
