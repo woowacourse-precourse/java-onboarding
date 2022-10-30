@@ -14,9 +14,13 @@ public class Problem6 {
 
 class User {
     private static final int LOWER_BOUND_LIMIT = 1;
+    
     private static final int UPPER_BOUND_LIMIT = 1000000;
     private static final String OUT_OF_COUNT = "1개이상 10,000개 이하의 유저 데이터를 입력해 주세요";
     private static final String NOT_MATCH_EMAIL_PATTERN = "이메일의 형식에 맞게 입력해 주세요";
+    private static final String NOT_MATCH_EMAIL_SIZE = "이메일의 길이는 11 이상 20 미만으로 입력해야 합니다";
+    private static final int MINIMUM_LENGTH_EMAIL = 11;
+    private static final int MAXIMUM_LENGTH_EMAIL = 20;
 
 
     static List<String> getUserDuplicatedNickName(List<List<String>> forms){
@@ -55,6 +59,16 @@ class User {
     public static void validate(List<List<String>> forms) {
         validateOutOfUserCount(forms);
         validateEmailFormat(forms);
+        validateSizeOfEmail(forms);
+
+    }
+
+    private static void validateSizeOfEmail(List<List<String>> forms) {
+        for (List<String> emailObject : forms) {
+            String userEmail = emailObject.get(0);
+            if(userEmail.length() < MINIMUM_LENGTH_EMAIL || userEmail.length() >= MAXIMUM_LENGTH_EMAIL)
+                throw new IllegalArgumentException(NOT_MATCH_EMAIL_SIZE);
+        }
     }
 
     private static void validateEmailFormat(List<List<String>> forms) {
