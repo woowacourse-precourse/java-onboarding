@@ -29,4 +29,18 @@ class Problem1 {
         return plusResult;
     }
 
+    public static int mul(int page) {
+
+        int mulResult = 1;
+
+        String pageString = Integer.toString(page);
+        String[] stringArray = pageString.split("");
+
+        for(int i = 0; i < stringArray.length; i++) {
+            mulResult *= Integer.parseInt(stringArray[i]);
+        }
+
+        return mulResult;
+    }
+
 }
