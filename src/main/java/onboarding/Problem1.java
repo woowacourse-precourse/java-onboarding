@@ -18,6 +18,7 @@ class Problem1 {
         int score_crong = getMaxScore(scoreList_crong);
 
         // 가장 큰 점수끼리 비교 후 answer 값을 지정
+        answer = getAnswer(score_pobi, score_crong);
 
         return answer;
     }
@@ -53,6 +54,18 @@ class Problem1 {
             maxScore = Math.max(maxScore, score);
         }
         return maxScore;
+    }
+
+    // 포비가 이긴다면 1, 크롱이 이긴다면 2, 무승부일 경우 0을 반환하는 함수
+    private static int getAnswer(int score_pobi, int score_crong) {
+        int answer = 0; // 무승부일 경우 0
+        if (score_pobi > score_crong) { // 포비가 이길 경우 1 반환
+            answer = 1;
+        }
+        if (score_pobi < score_crong) { // 크롱이 이길 경우 2 반환
+            answer = 2;
+        }
+        return answer;
     }
 
 }
