@@ -6,6 +6,9 @@ public class Problem2 {
     public static String solution(String cryptogram) {
 
         while (isEncrypted(cryptogram)) {
+            if (cryptogram.length() == 0) {
+                break;
+            }
             cryptogram = decryption(cryptogram);
         }
 
@@ -20,45 +23,35 @@ public class Problem2 {
      */
     public static String decryption(String cryptogram) {
 
-        String[] arr = cryptogram.split("");
+        if (cryptogram.length() == 2) {
+            cryptogram = "";
+        } else {
 
-        //직전 인덱스
-        int lastIndex = 0;
+            int startConsecutive = 0;
+            int endConsecutive = cryptogram.length() - 1;
 
-        //연속상태의 시작 인덱스
-        int startConsecutive = 0;
+            for (int i = 1; i < cryptogram.length(); i++) {
 
-        //연속상태인지 아닌지 체크하는 변수
-        boolean isConsecutive = false;
 
-        for (int i = 1; i < arr.length; i++) {
-            //현재 인덱스와 전 인덱스의 글자가 같은 경우
-            if (arr[lastIndex].equals(arr[i])) {
+                if (cryptogram.charAt(i - 1) == cryptogram.charAt(i)) {
+                    startConsecutive = i - 1;
+                    char currentChar = cryptogram.charAt(i);
 
-                if (!isConsecutive) {
-                    //연속 시작 시점 기록
-                    startConsecutive = lastIndex;
-                }
-                isConsecutive = true;
-
-                //현재 인덱스와 전 인덱스의 글자가 다른 경우
-            } else {
-
-                //글자가 연속 상태였다면 해당 글자들을 제거
-                if (isConsecutive) {
-                    for (int j = startConsecutive; j < i; j++) {
-                        arr[j] = "";
-                        System.out.println(startConsecutive);
+                    for (int j = i - 1; j < cryptogram.length(); j++) {
+                        if (cryptogram.charAt(j) != currentChar) {
+                            endConsecutive = j - 1;
+                            break;
+                        }
                     }
-                    isConsecutive = false;
                 }
             }
 
-            lastIndex++;
+            cryptogram = cryptogram.substring(0, startConsecutive) + cryptogram.substring(endConsecutive + 1);
         }
 
-        return Arrays.toString(arr);
+        return cryptogram;
     }
+
 
     /**
      * 현재 cryptogram 이 복호화가 필요한지 체크하는 메서드
@@ -68,9 +61,8 @@ public class Problem2 {
      */
     public static boolean isEncrypted(String cryptogram) {
 
-        int lastIndex = 0;
         for (int i = 1; i < cryptogram.length(); i++) {
-            if (cryptogram.charAt(lastIndex) == cryptogram.charAt(i)) {
+            if (cryptogram.charAt(i) == cryptogram.charAt(i - 1)) {
                 return true;
             }
         }
