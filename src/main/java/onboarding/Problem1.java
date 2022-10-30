@@ -1,12 +1,16 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        int pobiNum, crongNum;
         if(checkInput(pobi, crong))     // 예외사항 체크
             return -1;
+        pobiNum = maxNumOfTwoPages(pobi);
+        crongNum = maxNumOfTwoPages(crong);
 
         return answer;
     }
@@ -21,7 +25,6 @@ class Problem1 {
 
         return false;
     }
-
     public static int numPlus(int num){
         int sum = 0;
 
@@ -33,7 +36,6 @@ class Problem1 {
 
         return sum;
     }
-
     public static int numMultiple(int num){
         int a,b,c, sum = 0;
 
@@ -53,8 +55,14 @@ class Problem1 {
     public static int maxNumOfTwoMethod(Integer num){
         return Math.max(numPlus(num),numMultiple(num));
     }
+    public static int maxNumOfTwoPages(List<Integer> list){
+        return Math.max(maxNumOfTwoMethod(list.get(0)),maxNumOfTwoMethod(list.get(1)));
+    }
 //    public static void main(String[] args) {
-//        System.out.println(maxNumOfTwoMethod(125));
+//        List<Integer> a = new ArrayList<>();
+//        a.add(623);
+//        a.add(19);
+//        System.out.println(maxNumOfTwoPages(a));
 //    }
 
 }
