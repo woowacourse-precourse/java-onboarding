@@ -25,6 +25,15 @@ public class Problem7 {
                 alreadyfriends.add(friends.get(i).get(0));
             }
         }
+        for(List<String> list :friends){
+            String s1 = list.get(0);
+            String s2 = list.get(1);
+            if(alreadyfriends.contains(s1) && !s2.contains(user)){
+                map.put(s2, map.getOrDefault(s2, 0)+10);
+            }else if(!s1.contains(user) && alreadyfriends.contains(s1)){
+                map.put(s1, map.getOrDefault(s1, 0)+10);
+            }
+        }
         return result;
     }
 }
