@@ -47,4 +47,34 @@ public class Problem7 {
 
         return potentialFriendList;
     }
+
+    static int howManyKnowEachOtherWithUser(String user, List<List<String>> friends, String potentialFriend) {
+
+        List<String> alreadyFriendList = getAlreadyFriendWithUserListFromFriends(user, friends);
+        List<List<String>> listList = new ArrayList<>();
+
+        for (String alreadyFriend : alreadyFriendList) {
+            List<String> temp = new ArrayList<>();
+            temp.add(potentialFriend);
+            temp.add(alreadyFriend);
+            listList.add(temp);
+        }
+
+//        System.out.println("listList = " + listList);
+
+//        System.out.println("friends = " + friends);
+
+        int count = 0;
+        for (List<String> friend : friends) {
+            for (List<String> list : listList) {
+                if (new HashSet<>(friend).containsAll(list)) {
+                    count++;
+                }
+            }
+        }
+
+//        System.out.println("count = " + count);
+
+        return count;
+    }
 }
