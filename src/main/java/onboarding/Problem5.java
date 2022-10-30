@@ -1,14 +1,16 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
     public static final int NUM_OF_CURRENCY = 9;
 
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
+        List<Integer> answer = new ArrayList<>();
+
+        getNumOfCurrencies(money, answer);
         return answer;
     }
 
@@ -27,6 +29,9 @@ public class Problem5 {
 
             answer.add(cnt);
         }
-    }
 
+        while (answer.size() < NUM_OF_CURRENCY) {
+            answer.add(0);
+        }
+    }
 }
