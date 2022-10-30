@@ -6,16 +6,16 @@ public class Problem2 {
         StringBuilder answer = new StringBuilder();
 
         while (true) {
-            for (int i = 0; i < cryptogram.length(); i++) {
-                if (i == cryptogram.length() - 1) {
-                    answer.append(cryptogram.charAt(i));
+            for (int index = 0; index < cryptogram.length(); index++) {
+                if (index == cryptogram.length() - 1) {
+                    answer.append(cryptogram.charAt(index));
                     break;
                 }
-                if (cryptogram.charAt(i) != cryptogram.charAt(i + 1)) {
-                    answer.append(cryptogram.charAt(i));
+                if (cryptogram.charAt(index) != cryptogram.charAt(index + 1)) {
+                    answer.append(cryptogram.charAt(index));
                 } else {
                     check++;
-                    i++;
+                    index++;
                 }
             }
             if(check != 0) {
