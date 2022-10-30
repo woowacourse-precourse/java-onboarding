@@ -16,7 +16,22 @@ public class Problem7 {
      * @return 적합한 순서대로 정렬 된 추천 친구 리스트 (최대 5개)
      */
     private static List<String> getRecommendList(String user,List<List<String>> friends ,List<String> visitors){
+        // 친구 관계 정보가 담긴 맵을 받아옴
+        Map<String , Set<String>> friendMap = getFriendsMap(friends);
+        // 유저별 추천 점수 정보가 담긴 맵을 초기화
+        Map<String , Integer> recommendScoreMap = new HashMap<>();
 
+        // 친구관계로 추천 점수 정보맵 갱신
+        setFriendsScore(user, friendMap, recommendScoreMap);
+        // 방문기록으로 추천 점수 정보맵 갱신
+        setVisitorScore(visitors, recommendScoreMap);
+        // 자신과 이미 친구인 유저를 추천 점수 정보에서 제외
+        deleteUserAndFriends(user ,friendMap, recommendScoreMap);
+
+        // 추천 점수 정보맵으로 추천 친구 리스트를 받아옴
+        List<String> result = getRecommendListByScoreMap(recommendScoreMap);
+
+        return result;
     }
 
     /**
