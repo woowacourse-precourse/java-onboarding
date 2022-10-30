@@ -33,4 +33,16 @@ class Problem1 {
             return b;
         }
     }
+
+    private static int winner(int a, int b) {
+        if (a > b) {
+            return 1;
+        }
+        else if (a < b){
+            return 2;
+        }
+        else {
+            return 0;
+        }
+    }
 }
