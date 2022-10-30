@@ -15,6 +15,9 @@ public class Problem6 {
             if (name.length() < 2) {
                 break;
             }
+            if (forms.size() < 1 || forms.size() > 10000 ) {
+                break;
+            }
             // 2단어씩 나누기
             for (int j = 0; j < name.length() - 1; j++) {
                 String key = name.substring(j, j + 2);
@@ -37,4 +40,5 @@ public class Problem6 {
         answer = List.of(collect.toArray(new String[0]));
         return answer;
     }
+
 }
