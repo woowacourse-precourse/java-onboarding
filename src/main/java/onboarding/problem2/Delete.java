@@ -4,7 +4,7 @@ public class Delete {
     public static String executeDelete(String cryptogram) {
         int index = 0;
 
-        while(isAbleCompare(cryptogram, index) && isExistDuplication(cryptogram)) {
+        while (isAbleCompare(cryptogram, index) && isExistDuplication(cryptogram)) {
             index %= (cryptogram.length() - 1);
 
             DeleteResult deleteResult = deleteDuplication(cryptogram, index);
@@ -13,7 +13,7 @@ public class Delete {
             index += deleteResult.index;
         }
 
-        if(cryptogram.length() == 2 && (cryptogram.charAt(0) == cryptogram.charAt(1))) {
+        if (cryptogram.length() == 2 && (cryptogram.charAt(0) == cryptogram.charAt(1))) {
             cryptogram = "";
         }
 
@@ -28,7 +28,7 @@ public class Delete {
         int index = 0;
         boolean result = false;
 
-        while(index < cryptogram.length() - 1) {
+        while (index < cryptogram.length() - 1) {
             result = (result || (cryptogram.charAt(index) == cryptogram.charAt(index + 1)));
             index++;
         }
@@ -40,12 +40,12 @@ public class Delete {
         String originalCryptogram = cryptogram;
         int duplicateIndex = index;
 
-        while((index < cryptogram.length()) &&
+        while ((index < cryptogram.length()) &&
                 (cryptogram.charAt(index) == cryptogram.charAt(duplicateIndex + 1))) {
             duplicateIndex++;
         }
 
-        if(duplicateIndex != index) {
+        if (duplicateIndex != index) {
             cryptogram = cryptogram.substring(0, index) + cryptogram.substring(duplicateIndex + 1);
             return new DeleteResult(cryptogram, 0);
         }

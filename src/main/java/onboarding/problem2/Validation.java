@@ -8,7 +8,7 @@ public class Validation {
     }
 
     public static String checkValidForm(char alphabet) {
-        if(isUpperCase(alphabet)) {
+        if (isUpperCase(alphabet)) {
             return "문자열 형식이 잘못되었습니다.";
         }
         return null;
