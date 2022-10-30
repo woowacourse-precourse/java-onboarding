@@ -9,6 +9,7 @@ public class Problem6 {
 	}
 
 	static class InputValidator {
+		private final static String EMAIL_DOMAIN = "email.com";
 
 		private static void isRightFormsRange(List<List<String>> forms) {
 			int formsSize = forms.size();
@@ -22,6 +23,27 @@ public class Problem6 {
 				throw new IllegalArgumentException();
 			}
 			return true;
+		}
+
+		public static boolean isRightEmail(String email) {
+			if (!isRightEmailRange(email) || !isRightEmailFormat(email)) {
+				throw new IllegalArgumentException();
+			}
+			return true;
+		}
+
+		private static boolean isRightEmailRange(String email) {
+			if (email.length() < 11 || email.length() > 20) {
+				throw new IllegalArgumentException();
+			}
+			return true;
+		}
+
+		private static boolean isRightEmailFormat(String email) {
+			if (email.matches("^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@" + EMAIL_DOMAIN)) {
+				return true;
+			}
+			throw new IllegalArgumentException();
 		}
 	}
 }
