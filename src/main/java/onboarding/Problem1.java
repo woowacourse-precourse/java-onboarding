@@ -11,13 +11,21 @@ import static java.util.Collections.max;
 3. 1번 단계에서 얻은 값을 비교해 result 출
  */
 class Problem1 {
+    private static final int INIT_ERROR = -1;
+    private static final int DRAW = 0;
+    private static final int POBI_WIN = 1;
+    private static final int CRONG_WIN = 2;
+    private static final int FIRST_PAGE = 1;
+    private static final int LAST_PAGE = 400;
     private static boolean exception(List<Integer> pobi, List<Integer> crong) {
         if(pobi.get(1) - pobi.get(0) != 1) return false;
         if(crong.get(1) - crong.get(0) != 1) return false;
-        if(pobi.get(0) % 2 != 1) return false;
-        return crong.get(0) % 2 == 1;
+        if(pobi.get(0) % 2 != 1 || crong.get(0) % 2 != 1) return false;
+        if(pobi.contains(FIRST_PAGE) || pobi.contains(LAST_PAGE)) return false;
+        if(crong.contains(FIRST_PAGE) || crong.contains(LAST_PAGE)) return false;
+        return true;
     }
-    private static int find_max(int s) {
+    private static int findMax(int s) {
         int pageSum = 0;
         int pageMulti = 1;
         int[] digits = IntegerToList(s);
@@ -35,23 +43,23 @@ class Problem1 {
         return pageDigits;
     }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if(!exception(pobi, crong)) return -1;
+        if(!exception(pobi, crong)) return INIT_ERROR;
         // 각자 점수 산출
         List<Integer> pobiScore = new ArrayList<>(2);
         List<Integer> crongScore = new ArrayList<>(2);
         for (int i = 0; i < 2; i++){
-            pobiScore.add(find_max(pobi.get(i)));
-            crongScore.add(find_max(crong.get(i)));
+            pobiScore.add(findMax(pobi.get(i)));
+            crongScore.add(findMax(crong.get(i)));
         }
         int pobiMax = max(pobiScore);
         int crongMax = max(crongScore);
         // 비교
         if(pobiMax == crongMax){
-            return 0;
+            return DRAW;
         }
         else if(pobiMax > crongMax){
-            return 1;
+            return POBI_WIN;
         }
-        return 2;
+        return CRONG_WIN;
     }
 }
