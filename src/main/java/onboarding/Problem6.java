@@ -160,7 +160,7 @@ class Database {
     }
 
     static void validateName(String name) throws Exception{
-        String pattern = "^[ㄱ-ㅎ가-힣]{1,20}$";
+        String pattern = "^[가-힣ㄱ-ㅎㅏ-ㅣ]{1,20}$";
         boolean isMatch = Pattern.matches(pattern, name);
         if (!isMatch) {
             throw new Exception("이름이 잘못되었습니다");
