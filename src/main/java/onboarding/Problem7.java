@@ -4,7 +4,6 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
         HashMap<String, HashSet<String>> friendList = new HashMap<>();
         /* 친구 목록 만들기 */
         for (List<String> relation: friends) {
@@ -58,6 +57,13 @@ public class Problem7 {
                 return o1.getKey().compareTo(o2.getKey());
             }
         });
+
+        List<String> answer = new ArrayList<>();
+
+        for (int i=0; i<scoreList.size(); i++) {
+            if (i == 5)
+                break;
+        }
         return answer;
     }
 }
@@ -92,6 +98,6 @@ public class Problem7 {
   - [V] scoreMap을 이용해 scoreList를 만든다
   - [V] scoreList를 점수 내림차순으로 정렬하고, 점수가 같으면 이름순으로 정렬한다
 - [] 상위 5명만, 0점이 아닌 경우만 뽑아서 answer에 담는다
-  - [] scoreList를 순회하다가 5번째 순회 이후는 break로 탈출하도록 한다
+  - [V] scoreList를 순회하다가 5번째 순회 이후는 break로 탈출하도록 한다
   - [] 각 순회에 대해 0점이 아니면 answer에 넣는다
  */
