@@ -3,6 +3,7 @@ package onboarding;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -23,6 +24,14 @@ public class Problem6 {
       }
     }
 
+    public static List<String> findAllDuplicateWords(HashMap<String, String> dic){
+        HashMap<String, Integer> countDuplicateWords = new HashMap<>();
+            for(String words: dic.values()){
+                  HashSet<String> allTwoWords = getAllTwoLengthWords(words);
+            }
+        return filterDuplicateUsed(countDuplicateWords);
+  }
+
     public static HashSet<String> getAllTwoLengthWords(String words){
         HashSet<String> twoLengthWords = new HashSet<>();
         for(int i=1; i<words.length(); i++){
@@ -31,4 +40,8 @@ public class Problem6 {
         }
       return twoLengthWords;
   }
+
+    public static List<String> filterDuplicateUsed(HashMap<String, Integer> countDuplicateWords){
+        return countDuplicateWords.keySet().stream().filter(words -> countDuplicateWords.get(words)>1).collect(Collectors.toList());
+    }
 }
