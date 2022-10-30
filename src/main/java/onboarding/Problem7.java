@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -18,6 +15,8 @@ public class Problem7 {
         HashMap<String, Integer> recommendFriendToPointMap = new HashMap<>();
         HashMap friendsMap = makeFriends(friends);
         pointsToFriendToFriend(user, friendsMap, recommendFriendToPointMap);
+        pointsToVisitors(visitors, recommendFriendToPointMap);
+
 
 
         List<String> answer = Collections.emptyList();
@@ -64,9 +63,17 @@ public class Problem7 {
             List<String> friendsToFriendsList = friendsMap.get(usersFriend);
             for (String friendsToFriend : friendsToFriendsList) {
                 if(friendsToFriend==user) continue; //친구의 친구가 user인경우는 skip
-                Integer beforeScore = recommendFriendToPointMap.getOrDefault(friendsToFriend, 0);
-                recommendFriendToPointMap.put(friendsToFriend, beforeScore + 10);
+                Integer beforePoint = recommendFriendToPointMap.getOrDefault(friendsToFriend, 0);
+                recommendFriendToPointMap.put(friendsToFriend, beforePoint + 10);
             }
+        }
+        return recommendFriendToPointMap;
+    }
+
+    private static HashMap pointsToVisitors(List<String> visitors,HashMap<String,Integer> recommendFriendToPointMap) {
+        for (String visitor : visitors) {
+            Integer beforePoint = recommendFriendToPointMap.getOrDefault(visitor, 0);
+            recommendFriendToPointMap.put(visitor, beforePoint + 1);
         }
         return recommendFriendToPointMap;
     }
