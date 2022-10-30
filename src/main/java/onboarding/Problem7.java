@@ -35,6 +35,17 @@ public class Problem7 {
                 }
             }
         }
+
+        //방문자 중 친구 추천 점수를 받을 수 있는 리스트 추출
+        List<String> visitorsnames = new ArrayList<>(visitors);
+        for (int p = 0; p < friends.size(); p++) {
+            if (user.equals(friends.get(p).get(1))) {
+                visitorsnames.removeAll(Collections.singleton(friends.get(p).get(0)));
+            }
+        }
+        Set<String> setVisitors = new HashSet<String>(visitorsnames);
+        List<String> newVisitorsNames = new ArrayList<String>(setVisitors);
+
         return newNames;
     }
 }
