@@ -21,8 +21,12 @@ public class Problem7 {
     private static final int VISITORS_POINT = 1;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        getMyFriends(friends, user);
+        getAcquaintancePoint(friends, user);
+        getVisitorsPoint(visitors);
+        getAcquaintanceList();
+
+        return getSortedAcquaintanceList();
     }
 
     private static List<String> getSortedAcquaintanceList() {
