@@ -9,4 +9,10 @@ public class Problem4 {
 
         return capitalLetters.contains(character);
     }
+
+    private static boolean isSmallLetter(String character){
+
+        return smallLetters.contains(character);
+    }
+
 }
