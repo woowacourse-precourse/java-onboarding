@@ -12,6 +12,9 @@ public class Problem7 {
         Map<String, Integer> visitorInfo = new HashMap<>();
         initVisitorInfo(visitors, visitorInfo, user, friendshipGraph);
 
+        Map<String, Integer> friendOfFriend = new HashMap<>();
+        findFriendOfFriend(user, friendshipGraph, friendOfFriend);
+
         return answer;
     }
 
@@ -49,6 +52,44 @@ public class Problem7 {
                 visitorInfo.put(visitor, visitorInfo.get(visitor)+1);
             } else {
                 visitorInfo.put(visitor, 1);
+            }
+        }
+    }
+
+    /**
+     * Function for finding friends of friends who are not user's friends
+     * */
+    private static void findFriendOfFriend(String user, Map<String, Set<String>> friendshipGraph,
+                                           Map<String, Integer> friendOfFriend) {
+        Map<String, Integer> checkSet = new HashMap<>();
+        checkSet.put(user,0);
+        Queue<String> queue = new LinkedList<>();
+        queue.add(user);
+        String person;
+        int value;
+        while (!queue.isEmpty()) {
+            person = queue.remove();
+            value = checkSet.get(person);
+            if (value == 2) {
+                break;
+            }
+            for (String next : friendshipGraph.get(person)) {
+                if (value == 0) {
+                    if (!checkSet.containsKey(next)) {
+                        checkSet.put(next, 1);
+                        queue.add(next);
+                    }
+                } else if (value == 1) {
+                    if (!checkSet.containsKey(next)) {
+                        checkSet.put(next, 2);
+                        friendOfFriend.put(next, 1);
+                        queue.add(next);
+                    } else {
+                        if (!next.equals(user)) {
+                            friendOfFriend.put(next, friendOfFriend.get(next)+1);
+                        }
+                    }
+                }
             }
         }
     }
