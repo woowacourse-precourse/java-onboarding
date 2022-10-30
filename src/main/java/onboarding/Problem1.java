@@ -34,6 +34,8 @@ $ 예외처리
  $ 구현
  1, 순서대로 구현한다....
  2. 왼쪽, 오른쪽 각 자리를 더하거나 , 곱해서 , 더큰수를 담는다.
+ 3. 덧셈과 곱셈을 비교 후 더 큰 값을 고른다.
+ 4. 포비와 크롱의 값을 비교 후 승자를 찾는다
  */
 package onboarding;
 
@@ -45,7 +47,7 @@ class Problem1 {
         return answer;
     }
     
-    public int addtion(int pageNumber){
+    public static int addition(int pageNumber){
         int additionSum = 0;
         while(0 < pageNumber){
             additionSum += pageNumber % 10;
@@ -61,6 +63,12 @@ class Problem1 {
             pageNumber /= 10;
         }
         return MultiplicaionSum;
+    }
+    public static int Compare(int pageNumber){
+        if (addition(pageNumber) >= Multiplicaion(pageNumber)){
+            return addition(pageNumber);
+        }
+        return Multiplicaion(pageNumber);
     }
     public static void main(String[] args){
         List<Integer> pobi = List.of(97, 98);
