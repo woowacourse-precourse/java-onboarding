@@ -1,24 +1,60 @@
 package problem7;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
+import static java.util.Collections.*;
 
 public class Score {
-    private static Map<String, Integer> score = new HashMap<>();
+    static class FriendScore implements Comparable<FriendScore> {
+        String name;
+        int score;
 
-    public static void scoring(String user, Map<String, List<String>> adjacentList, List<String> visitors, List<String> answer) {
-        addRelativeScore(user, adjacentList);
-        addVisitScore(visitors);
+        public FriendScore(String name, int score) {
+            this.name = name;
+            this.score = score;
+        }
+
+        @Override
+        public int compareTo(FriendScore o) {
+            return score - o.score != 0 ? score - o.score : name.compareTo(o.name);
+        }
     }
 
-    private static void addVisitScore(List<String> visitors) {
+    private List<FriendScore> scoreList = new ArrayList<>();
+    private Map<String, Integer> scoreMap = new HashMap<>();
+
+
+    public List<String> getTopFive() {
+        List<String> result = new ArrayList<>();
+
+        resultAdd(result, (scoreList.size() > 5 ? scoreList.subList(0,5) : scoreList));
+
+        return result;
+    }
+
+    private void resultAdd(List<String> result, List<FriendScore> list) {
+        for (FriendScore friendScore : list)
+            result.add(friendScore.name);
+    }
+
+    public void scoring(String user, Map<String, List<String>> adjacentList, List<String> visitors) {
+        addRelativeScore(user, adjacentList);
+        addVisitScore(visitors);
+
+        scoreMap.forEach((String name, Integer score) -> {
+            scoreList.add(new FriendScore(name, score));
+        });
+
+        sort(scoreList);
+    }
+
+    private void addVisitScore(List<String> visitors) {
         for (String visitor : visitors) {
             addScore(visitor, 1);
         }
     }
 
-    private static void addRelativeScore(String user, Map<String, List<String>> adjacentList) {
+    private void addRelativeScore(String user, Map<String, List<String>> adjacentList) {
         for (String userFriend : adjacentList.get(user)) {
             for (String userFriendFriend : adjacentList.get(userFriend)) {
                 addScore(userFriendFriend, 10);
@@ -26,8 +62,8 @@ public class Score {
         }
     }
 
-    private static void addScore(String userFriendFriend, int point) {
-        if (score.containsKey(userFriendFriend)) score.put(userFriendFriend, score.get(userFriendFriend) + 10);
-        else score.put(userFriendFriend, point);
+    private void addScore(String userFriendFriend, int point) {
+        if (scoreMap.containsKey(userFriendFriend)) scoreMap.put(userFriendFriend, scoreMap.get(userFriendFriend) + 10);
+        else scoreMap.put(userFriendFriend, point);
     }
 }
