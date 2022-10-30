@@ -10,9 +10,9 @@ public class Problem6 {
         try {
             checkCrewLimit(forms.size());
 
-            for (int i=0;i<forms.size();i++){
-                String email = forms.get(i).get(0);
-                String nickname = forms.get(i).get(1);
+            for (List<String> form:forms){
+                String email = form.get(0);
+                String nickname = form.get(1);
 
                 validationEmail(email);
                 validationNickname(nickname);
