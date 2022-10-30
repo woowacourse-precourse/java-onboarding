@@ -24,3 +24,23 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+## ✈ 기능 설계
+
+### 기능 목록
+- In-Memory DB
+  - DB에 회원 없으면 삽입 후 회원 조회
+  - Top 5 친구 추천 목록 조회
+    - 추천 점수 0점인 회원 제외
+    - 친구 추천 점수 내림차순 정렬 -> 이름 오름차순 정렬
+- 회원
+  - 친구 추가
+  - 방문
+  - 점수 추가
+  - 점수 초기화
+
+### 도메인 모델링
+![image](https://user-images.githubusercontent.com/68049320/198892632-79212a40-6943-4ee2-8318-4be382714ea3.png)
+
+
+

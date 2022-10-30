@@ -21,3 +21,12 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+## ✈ 기능 설계
+
+### 기능 목록
+- 복호화 기능
+  - 재귀 호출
+
+### 도메인 모델링
+![image](https://user-images.githubusercontent.com/68049320/198897997-2de16ebb-370a-4f77-8fcc-9f556d4112e5.png)
