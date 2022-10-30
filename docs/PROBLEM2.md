@@ -21,3 +21,13 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+### 기능 목록
+
+- RefactoringCryptogram 내부 클래스 생성.
+- 생성자에 StringBuilder 로 변환.
+- cryptogram 길이 계산 기능.
+- 중복되는 문자 검증 체크를 위한 체크리스트 생성.
+- 중복문자 여부 확인 기능.
+- 중복문자 여부 확인 후 문자 삭제 기능.
+- 체크리스트 각 인덱스마다 체크여부 확인 기능.
