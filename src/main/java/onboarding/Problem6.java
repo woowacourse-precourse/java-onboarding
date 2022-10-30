@@ -43,9 +43,15 @@ public class Problem6 {
         }
     }
 
-    static void checkNickname(List<String> experimentalList, List<String> controlList){
-
-
+    static boolean checkNickname(List<String> experimentalList, List<String> controlList){
+        String experimentalNickname = experimentalList.get(1);
+        String controlNickname = controlList.get(1);
+        for (int i = 0; i < experimentalNickname.length() - 1; i++ ){
+            if (controlNickname.contains(experimentalNickname.substring(i, i + 2))) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static List<String> solution(List<List<String>> forms) {
