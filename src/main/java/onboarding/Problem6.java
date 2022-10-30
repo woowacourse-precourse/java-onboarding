@@ -1,12 +1,21 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
     	
+    	Map<String, List<String>> twoLengthNikAndIds = new HashMap<>();
+    	
+    	
     	String[][] idAndNikNamesForm = new String[forms.size()][2];
     	makeIdAndNikNameForm(idAndNikNamesForm, forms);
+    	putTwoLengthNikAndIds(idAndNikNamesForm, twoLengthNikAndIds);
+    	//for debug
+    	System.out.println(twoLengthNikAndIds);
     	
     	List<String> answer = null;
     	
@@ -22,6 +31,29 @@ public class Problem6 {
     		newForms[idx][0] = iDAndEmailForm[0];
     		newForms[idx][1] = nikName;
     		idx += 1;
+    	}
+    }
+    public static void putTwoLengthNikAndIds(String[][] form, Map<String, List<String>> twoLengthNikAndIds) {
+    	
+    	String emailId = null;
+    	String nikName = null;
+    	String twoLengthNikName = null;
+    	StringBuilder sb = new StringBuilder();
+    	for(int i=0; i<form.length; i++) {
+    		emailId = form[i][0];
+    		nikName = form[i][1];
+    		for(int p1=0, p2=1; p2<nikName.length(); p1++, p2++) {
+    			sb.append(nikName.charAt(p1));
+    			sb.append(nikName.charAt(p2));
+    			twoLengthNikName = sb.toString();
+    			
+    			if(!twoLengthNikAndIds.containsKey(twoLengthNikName)) {
+        			twoLengthNikAndIds.put(twoLengthNikName.toString(), new ArrayList<>());    				
+    			}
+    			
+    			twoLengthNikAndIds.get(twoLengthNikName).add(emailId);
+        		sb.setLength(0);
+    		}
     	}
     }
 }
