@@ -75,6 +75,7 @@ public class Problem7 {
     public static Recommendation createRecommendation (String targetUser, Relations relations, Map<String, Integer> visitLog) {
         Recommendation recommendation = new Recommendation(targetUser);
         Set<String> allUsers = relations.getAllUsers();
+        allUsers.addAll(visitLog.keySet());
         for (String userId : allUsers) {
             if (userId.equals(targetUser) || relations.isFriend(targetUser, userId)) {
                 continue;
