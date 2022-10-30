@@ -9,29 +9,6 @@ public class Problem7 {
         return answer;
     }
 
-    private static void saveRecommendationPointBySharingFriend(
-            Map<String, Integer> pointMap,
-            Set<String> userFriends,
-            Set<String> friendsWithUserFriend
-    ) {
-        for (String friend : friendsWithUserFriend) {
-            if (isFriend(friend, userFriends)) {
-                continue;
-            }
-            giveRecommendationPointToUserBySharingFriend(pointMap, friendsWithUserFriend);
-        }
-    }
-
-    private static void removeUserInUserFriend(String user, Map<String, Set<String>> friendsMap) {
-        friendsMap.values()
-                .forEach(friends -> friends.remove(user));
-    }
-
-    private static boolean isFriend(String user, Set<String> friends) {
-        return friends.stream()
-                .anyMatch(friend -> friend.equals(user));
-    }
-
     private static void saveFriend(Map<String, Set<String>> friendsMap, List<String> friends) {
         String user1 = friends.get(0);
         String user2 = friends.get(1);
@@ -52,7 +29,27 @@ public class Problem7 {
         return userFriends;
     }
 
-    private static int getUserRecommendationPoint(String friend, Map<String, Integer> pointMap) {
+    private static void saveSharingFriendPoint(
+            Map<String, Integer> pointMap,
+            Set<String> userFriends,
+            Set<String> friendsWithUserFriend
+    ) {
+        for (String sharingFriend : friendsWithUserFriend) {
+            if (isFriend(sharingFriend, userFriends)) {
+                continue;
+            }
+            givePointToUserBySharingFriend(pointMap, friendsWithUserFriend);
+        }
+    }
+
+    private static void givePointToUser(String friend, Map<String, Integer> pointMap) {
+        int pointBySharingFriend = 10;
+        int pointByUser = getPointByUser(friend, pointMap);
+
+        pointMap.replace(friend, pointByUser + pointBySharingFriend);
+    }
+
+    private static int getPointByUser(String friend, Map<String, Integer> pointMap) {
         Set<String> users = pointMap.keySet();
         if (users.contains(friend)) {
             return pointMap.get(friend);
@@ -61,27 +58,30 @@ public class Problem7 {
         return 0;
     }
 
-    private static void givePointToUserBySharingFriend(String friend, Map<String, Integer> pointMap) {
-        int recommendationPointByFriend = 10;
-        int recommendationPoint = getUserRecommendationPoint(friend, pointMap);
-
-        pointMap.replace(friend, recommendationPoint + recommendationPointByFriend);
-    }
-
-    private static void giveRecommendationPointToUserBySharingFriend(Map<String, Integer> pointMap, Set<String> friendsWithUserFriend) {
-        for (String friendWithUserFriend : friendsWithUserFriend) {
-            givePointToUserBySharingFriend(friendWithUserFriend, pointMap);
+    private static void givePointToUserBySharingFriend(Map<String, Integer> pointMap, Set<String> friendsWithUserFriend) {
+        for (String sharingFriend : friendsWithUserFriend) {
+            givePointToUser(sharingFriend, pointMap);
         }
     }
 
-    private static void giveUserRecommendationPointByVisit(String visitor, Map<String, Integer> pointMap) {
-        int recommendationPointByVisitor = 2;
-        int recommendationPoint = getUserRecommendationPoint(visitor, pointMap);
+    private static void givePointByVisit(String visitor, Map<String, Integer> pointMap) {
+        int pointByVisitor = 2;
+        int pointByUser = getPointByUser(visitor, pointMap);
 
-        pointMap.replace(visitor, recommendationPoint + recommendationPointByVisitor);
+        pointMap.replace(visitor, pointByUser + pointByVisitor);
     }
 
-    private static List<String> sortRecommendationByPoint(Map<String, Integer> pointMap) {
+    private static boolean isFriend(String user, Set<String> friends) {
+        return friends.stream()
+                .anyMatch(friend -> friend.equals(user));
+    }
+
+    private static void removeUserInFriends(String user, Map<String, Set<String>> friendsMap) {
+        friendsMap.values()
+                .forEach(friends -> friends.remove(user));
+    }
+
+    private static List<String> sortByPoint(Map<String, Integer> pointMap) {
         List<Map.Entry<String, Integer>> entryList = new LinkedList<>(pointMap.entrySet());
         entryList.sort((o1, o2) -> o2.getValue() - o1.getValue());
 
