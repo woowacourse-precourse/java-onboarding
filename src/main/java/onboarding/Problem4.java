@@ -47,5 +47,4 @@ public class Problem4 {
     private static char getDictValue(Map<Character, Character> dictionary, char key) {
         return dictionary.get(Character.toUpperCase(key));
     }
-
 }
