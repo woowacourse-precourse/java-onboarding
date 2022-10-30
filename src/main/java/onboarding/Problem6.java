@@ -20,7 +20,7 @@ public class Problem6 {
     }
 
     private static boolean checkValidation(List<List<String>> forms){
-        if(dataAmountValidation(forms) && nicknameValidation(forms) && emailValidation(forms)){
+        if(dataAmountValidation(forms) || nicknameValidation(forms) || emailValidation(forms)){
             return true;
         }
         return false;
