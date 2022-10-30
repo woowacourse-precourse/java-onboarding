@@ -109,7 +109,7 @@ public class Problem6 {
     /**
      * 크루원들의 닉네임 일치를 확인하여 일치하는 크루원들의 이메일을 반환하는 함수
      */
-    private static List<String> checkCrew(List<List<String>> crews){
+    private static List<String> checkCrews(List<List<String>> crews){
         String pickedLetter;
         List<String> duplicateList = new ArrayList<>();;
         for (int i=0;i<crews.size()-1;i++){
