@@ -2,11 +2,11 @@ package onboarding;
 
 import java.util.*;
 
-// 닉네임을 뽑아와서 그걸로 나올 수 있는 중복 검사 형식을 리스트로 만든다.
-//
 public class Problem6 {
 
+    // 이메일 정보과 닉네임을 쌍으로 갖는 Map 생성
     static Map<String, String> emailNicknameMap = new HashMap<>();
+    // 닉네임이 중복 되었는지 에 대한 boolean 값을 갖는 Map 생성
     static Map<String, Boolean> nicknameOverlapStatusMap = new HashMap<>();
 
     // nicknameOverlapStatusMap 초기 값 셋팅
