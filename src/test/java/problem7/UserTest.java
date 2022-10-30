@@ -64,7 +64,14 @@ public class UserTest {
     @Test
     void 디폴트_친구추천리스트_만들기() {
         userService.addFriends(createFriends());
-        List<String> result = userService.operateFriendRecommendation("mrko");
-        assertThat(result).contains("donut", "andole", "jun", "shakevan");
+        List<String> result = userService.createAllUserIds("mrko");
+        assertThat(result).containsOnly("donut", "andole", "jun", "shakevan");
+    }
+
+    @Test
+    void 유저추천리스트중_주어진유저의_친구관계제외() {
+        userService.addFriends(createFriends());
+        List<String> result = userService.operateFriendCommendation("mrko");
+        assertThat(result).containsOnly("andole", "jun");
     }
 }

@@ -1,11 +1,15 @@
 package problem7;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class UserService {
 
     public static final int USER_ID_INDEX = 0;
     public static final int OTHER_USER_ID_INDEX = 1;
+    public static final int INIT_SCORE = 0;
     private final UserRepository userRepository;
 
     public UserService(UserRepository userRepository) {
@@ -44,7 +48,23 @@ public class UserService {
         friends.forEach(this::addFriend);
     }
 
-    public List<String> operateFriendRecommendation(String userId) {
-        return userRepository.createDefaultList(userId);
+    public List<String> createAllUserIds(String exclusiveUserId) {
+        return userRepository.findAllUserIdsExclusiveTo(exclusiveUserId);
+    }
+
+    public List<String> operateFriendCommendation(String userId) {
+        Map<String, Integer> commendFriend = new HashMap<>();
+
+        List<String> candidateUserIds = createCandidateUserIds(userId);
+        candidateUserIds.forEach(s -> commendFriend.put(s, INIT_SCORE));
+
+        return new ArrayList<>(commendFriend.keySet());
+    }
+
+    private List<String> createCandidateUserIds(String userId) {
+        List<String> userIds = createAllUserIds(userId);
+        User user = userRepository.findByUserid(userId).orElseThrow();
+        user.deleteFriendIds(userIds);
+        return userIds;
     }
 }

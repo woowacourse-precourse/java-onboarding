@@ -18,4 +18,8 @@ public class Friend {
     public boolean hasFriend(String userId) {
         return friends.contains(userId);
     }
+
+    public void deleteFriendToList(List<String> userIds) {
+        friends.forEach(userIds::remove);
+    }
 }

@@ -1,5 +1,6 @@
 package problem7;
 
+import java.util.List;
 import java.util.Objects;
 
 public class User {
@@ -31,5 +32,9 @@ public class User {
 
     public boolean isFriend(User otherUser) {
         return this.friend.hasFriend(otherUser.userId);
+    }
+
+    public void deleteFriendIds(List<String> userIds) {
+        friend.deleteFriendToList(userIds);
     }
 }

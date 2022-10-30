@@ -24,9 +24,9 @@ public class UserRepository {
         return Optional.ofNullable(users.get(userId));
     }
 
-    public List<String> createDefaultList(String userId) {
+    public List<String> findAllUserIdsExclusiveTo(String exclusiveUserId) {
         return users.keySet().stream()
-                .filter(s -> !s.equals(userId))
+                .filter(s -> !s.equals(exclusiveUserId))
                 .collect(Collectors.toList());
     }
 }
