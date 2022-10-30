@@ -62,19 +62,23 @@ public class Problem7 {
             @Override
             public int compare(Map.Entry<String, Integer> user1, Map.Entry<String, Integer> user2) {
                 if (Objects.equals(user2.getValue(), user1.getValue())) {
-                    String user1Key = user1.getKey();
-                    String user2Key = user2.getKey();
-                    int n = 0;
-                    while (n < Math.min(user1Key.length(), user2Key.length())&& user1Key.charAt(n) == user2Key.charAt(n)) {
-                        n++;
-                    }
-                    return user1Key.charAt(n) - user2Key.charAt(n);
+                    return sortedWithKey(user1, user2);
                 }
                 return user2.getValue() - user1.getValue();
             }
         });
 
         return entryList;
+    }
+
+    public static Integer sortedWithKey(Map.Entry<String, Integer> user1, Map.Entry<String, Integer> user2) {
+        String user1Key = user1.getKey();
+        String user2Key = user2.getKey();
+        int n = 0;
+        while (n < Math.min(user1Key.length(), user2Key.length())&& user1Key.charAt(n) == user2Key.charAt(n)) {
+            n++;
+        }
+        return user1Key.charAt(n) - user2Key.charAt(n);
     }
 
     public static List<String> getTopFive(List<Map.Entry<String, Integer>> entryList) {
