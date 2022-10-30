@@ -17,12 +17,29 @@ public class Problem6 {
         }
         return wordset;
     }
+
+    static Set<String> countSubWord(List<List<String>> forms, String subword) {
+        Set<String> e = new HashSet<>();
+        for(List<String> form : forms) {
+            if(form.get(1).contains(subword)) {
+                e.add(form.get(0));
+            }
+        }
+        return e;
+    }
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = new ArrayList<>(); // 이메일 담을 리스트
+        Set<String> answer = new TreeSet<>(); // 이메일 담을 리스트
         Set<String> allWords = new HashSet<>(); // 모든 서브 단어들
         // 각 단어의 서브 단어들을 모은다.
         for(List<String> form : forms) {
             allWords.addAll(findWords(form.get(1)));
+        }
+        // 각 서브 단어별로 닉네임이 몇 개 들어가는지 확인.
+        for(String subword : allWords) {
+            Set<String> email = countSubWord(forms, subword);
+            if(email.size() > 1) {
+                answer.addAll(email);
+            }
         }
 
         return new ArrayList<>(answer);
