@@ -13,6 +13,11 @@ public class Problem7 {
         for (List<String> relation: friends) {
             String name1 = relation.get(0);
             String name2 = relation.get(1);
+
+            if (friendList.get(name1) == null)
+                friendList.put(name1, new HashSet<>());
+            if (friendList.get(name2) == null)
+                friendList.put(name2, new HashSet<>());
         }
         return answer;
     }
@@ -32,7 +37,7 @@ public class Problem7 {
 - [] 친구 목록을 만든다
   - [V] 각 인물의 친구 목록을 담을 HashMap을 만든다
   - [V] 친구관계목록의 각 친구관계마다 두 개의 이름을 뽑아낸다
-  - [] 각 이름이 친구 목록 HashMap에 없으면 친구목록 HashMap에 넣는다
+  - [V] 각 이름이 친구 목록 HashMap에 없으면 친구목록 HashMap에 넣는다
   - [] 둘 다 친구 목록에 서로를 추가한다
 - [] 친구 목록을 통한 점수를 계산한다
   - [] 각 사람들의 점수를 저장할 scoreMap를 만든다
