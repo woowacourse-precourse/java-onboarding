@@ -8,3 +8,7 @@ public class Problem6 {
         return answer;
     }
 }
+
+class DuplicateWordList {
+
+}

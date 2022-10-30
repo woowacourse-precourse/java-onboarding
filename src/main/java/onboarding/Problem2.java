@@ -8,7 +8,6 @@ public class Problem2 {
         return answer;
     }
 }
-
 class BrownCiphertext {
     private final String ciphertext;
 
@@ -46,46 +45,51 @@ class BrownCiphertextDecoder {
     }
 
     private static void excludeDuplicate(String[] alphabets){
-        int progressIndex = 0;
+        int searchIndex = 0;
 
-        while (progressIndex + linkers[progressIndex].next < alphabets.length) {
-            progressIndex = checkDuplicate(alphabets,progressIndex);
+        while (searchIndex < alphabets.length &&
+                searchIndex + linkers[searchIndex].next < alphabets.length) {
+            searchIndex = checkDuplicate(alphabets,searchIndex);
         }
     }
 
-    private static int checkDuplicate(String[] alphabets, int progressIndex){
+    private static int checkDuplicate(String[] alphabets, int searchIndex){
 
-        int indexDelta = linkers[progressIndex].next;
+        int indexDelta = linkers[searchIndex].next;
 
-        while (progressIndex + indexDelta < alphabets.length &&
-                alphabets[progressIndex]
-                        .equals(alphabets[progressIndex + indexDelta])) {
-            indexDelta++;
+        while (searchIndex + indexDelta < alphabets.length &&
+                alphabets[searchIndex]
+                        .equals(alphabets[searchIndex + indexDelta])) {
+            indexDelta += linkers[searchIndex + indexDelta].next;
         }
 
-        if (indexDelta == linkers[progressIndex].next) {
-            return progressIndex + indexDelta;
+        //연속되는 알파벳이 없을 때
+        if (indexDelta == linkers[searchIndex].next) {
+            return searchIndex + indexDelta;
         }
 
-        if (progressIndex > 0 &&
-                progressIndex + indexDelta < linkers.length) {
-            linkers[progressIndex + linkers[progressIndex].before].next += indexDelta;
-            linkers[progressIndex + indexDelta].before -= indexDelta;
-
-            return progressIndex + linkers[progressIndex].before;
+        //인덱스 연결
+        if (searchIndex + indexDelta < linkers.length) {
+            linkers[searchIndex + indexDelta].before =
+                    (linkers[searchIndex].before - indexDelta);
+        }
+        if (searchIndex + linkers[searchIndex].before >= 0) {
+            linkers[searchIndex + linkers[searchIndex].before].next += indexDelta;
         }
 
-        if (progressIndex + linkers[progressIndex].before < 0) {
-            progressIndex = indexDelta;
-            startIndex = progressIndex;
+
+        //연속되는 알파벳이 있고 특수하지 않을 때
+        if (searchIndex + linkers[searchIndex].before >= 0 &&
+                searchIndex + indexDelta < linkers.length) {
+            return searchIndex + linkers[searchIndex].before;
         }
 
-        if (progressIndex + indexDelta >= linkers.length) {
-            linkers[progressIndex + linkers[progressIndex].before].next += indexDelta;
-            progressIndex++;
+        //연속된 알파벳이 제일 첫번째 알파벳일 때
+        if (searchIndex + linkers[searchIndex].before < 0) {
+            startIndex = searchIndex + indexDelta;
         }
 
-        return progressIndex;
+        return searchIndex + indexDelta;
     }
 
     private static String makeCode(String[] alphabets) {
