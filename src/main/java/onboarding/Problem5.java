@@ -50,7 +50,6 @@ class ExchangeMoneyPro5 {
 public class Problem5 {
 
   public static List<Integer> solution(int money) {
-    ExchangeMoneyPro5 exchanger = new ExchangeMoneyPro5(money);
-    return exchanger.divideMoney();
+    return  new ExchangeMoneyPro5(money).divideMoney();
   }
 }

@@ -89,8 +89,7 @@ class Problem1 {
         PagePro1.isValidatePage(crong.get(0), crong.get(1))) {
       return -1;
     }
-    PlayerPro1 pobiMan = new PlayerPro1(pobi.get(0), pobi.get(1));
-    PlayerPro1 crongMan = new PlayerPro1(crong.get(0), crong.get(1));
-    return ScorePro1.compareScore(pobiMan.getScore(), crongMan.getScore());
+    return ScorePro1.compareScore(new PlayerPro1(pobi.get(0), pobi.get(1)).getScore(),
+        new PlayerPro1(crong.get(0), crong.get(1)).getScore());
   }
 }

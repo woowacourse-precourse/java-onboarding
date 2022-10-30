@@ -66,7 +66,6 @@ class StrAndLstPro4 {
 public class Problem4 {
 
   public static String solution(String word) {
-    ConvertWordPro4 answer = new ConvertWordPro4(word);
-    return StrAndLstPro4.listToString(answer.doConvert());
+    return StrAndLstPro4.listToString(new ConvertWordPro4(word).doConvert());
   }
 }

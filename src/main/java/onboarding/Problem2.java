@@ -53,7 +53,6 @@ class FindDuplicatePro2 {
 public class Problem2 {
 
   public static String solution(String cryptogram) {
-    FindDuplicatePro2 finder = new FindDuplicatePro2(cryptogram);
-    return finder.stackToStringReverse();
+    return new FindDuplicatePro2(cryptogram).stackToStringReverse();
   }
 }

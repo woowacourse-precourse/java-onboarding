@@ -1,77 +1,104 @@
 package onboarding;
 
 import java.util.*;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
-public class Problem6 {
+class FindDuplicatePro6 {
 
-  public static List<String> findDuplicateWord(List<List<String>> forms) {
-    List<String> seen = new ArrayList<>();
-    List<String> email = new ArrayList<>();
-    int n = -1;
-    for (int i = 0; i < forms.size(); i++) {
-      for (int j = 0; j < forms.get(i).get(1).length() - 1; j++) {
-        String compareStr = forms.get(i).get(1).substring(j, j + 2);
-        if (!seen.contains(compareStr)) {
-          seen.add(compareStr);
-          n++;
-        } else {
-          continue;
-        }
-        boolean flag = false;
-        for (int k = i + 1; k < forms.size() - i; k++) {
-          if (forms.get(k).get(1).contains(seen.get(n))) {
-            email.add(forms.get(k).get(0));
-            if (flag == false) {
-              email.add(forms.get(i).get(0));
-              flag = true;
-            }
+  public final static int EMAIL = 0;
+  public final static int NICKNAME = 1;
+
+  private final Set<String> emails;
+
+  public FindDuplicatePro6(List<List<String>> forms) {
+    this.emails = findDuplicateWord(forms);
+  }
+
+  public static Set<String> findDuplicateWord(List<List<String>> forms) {
+    Set<String> seen = new HashSet<>();
+    Set<String> emails = new HashSet<>();
+    for (int crewIdx = 0; crewIdx < forms.size(); crewIdx++) {
+      for (int i = 0; i < forms.get(crewIdx).get(NICKNAME).length() - 1; i++) {
+        String compareStr = forms.get(crewIdx).get(NICKNAME).substring(i, i + 2);
+        seen.add(compareStr);
+      }
+      boolean flag = false;
+      for (int j = crewIdx + 1; j < forms.size(); j++) {
+        for (String str : seen) {
+          if (forms.get(j).get(NICKNAME).contains(str)) {
+            emails.add(forms.get(j).get(EMAIL));
+            flag = true;
           }
         }
       }
+      seen.clear();
+      if (flag) {
+        emails.add(forms.get(crewIdx).get(EMAIL));
+      }
     }
-    return email;
+    return emails;
   }
 
-  public static List<String> solution(List<List<String>> forms) {
-    return findDuplicateWord(forms);
+  public Set<String> getEmails() {
+    return emails;
   }
-    public static void main(String[] args) {
-        List<List<String>> forms = List.of(
-                List.of("jm@email.com", "제이엠"),
-                List.of("jason@email.com", "제이슨"),
-                List.of("woniee@email.com", "워니"),
-                List.of("mj@email.com", "엠제이"),
-                List.of("nowm@email.com", "이제엠")
-        );
-        System.out.println(solution(forms));
-    }
 }
 
-//  public static List<String> findDuplicateWord(List<List<String>> forms) {
-//    List<String> seen = new ArrayList<>();
-//    List<String> email = new ArrayList<>();
-//    int n = -1;
-//    for (int i = 0; i < forms.size(); i++) {
-//      for (int j = 0; j < forms.get(i).get(1).length() - 1; j++) {
-//        String compareStr = forms.get(i).get(1).substring(j, j + 2);
-//        if (!seen.contains(compareStr)) {
-//          seen.add(compareStr);
-//          n++;
-//        } else {
-//          continue;
-//        }
-//        boolean flag = false;
-//        for (int k = i + 1; k < forms.size() - i; k++) {
-//          if (forms.get(k).get(1).contains(seen.get(n))) {
-//            email.add(forms.get(k).get(0));
-//            if (flag == false) {
-//              email.add(forms.get(i).get(0));
-//              flag = true;
-//            }
-//          }
-//        }
-//      }
-//    }
-//    return email;
-//  }
+class ValidatorPro6 {
 
+  public final static int EMAIL = 0;
+  public final static int NICKNAME = 1;
+  public final static int MIN_CREW_NUM = 1;
+  public final static int MAX_CREW_NUM = 10_000;
+  public final static int MIN_EMAIL_LEN = 11;
+  public final static int MAX_EMAIL_LEN = 19;
+  public final static int MIN_NICKNAME_LEN = 1;
+  public final static int MAX_NICKNAME_LEN = 20;
+
+  public ValidatorPro6(List<List<String>> forms) {
+    validateCrewNum(forms);
+    validateEmail(forms);
+    validateNickName(forms);
+  }
+
+  public void validateCrewNum(List<List<String>> forms) {
+    if (forms.size() < MIN_CREW_NUM || forms.size() > MAX_CREW_NUM) {
+      throw new IllegalArgumentException("크루는 1명 이상 10,000명 이하이다");
+    }
+  }
+
+  public void validateEmail(List<List<String>> forms) {
+    for (List<String> crewInfo : forms) {
+      if (!crewInfo.get(EMAIL).contains("email.com") ||
+          crewInfo.get(EMAIL).length() < MIN_EMAIL_LEN
+          || crewInfo.get(EMAIL).length() >= MAX_EMAIL_LEN) {
+        throw new IllegalArgumentException("이메일은 이메일 형식에 부합하며, 전체 길이는 11자 이상 20자 미만이다");
+      }
+    }
+  }
+
+  public boolean isKorean(String str) {
+    return Pattern.matches("[가-힣]*$", str);
+  }
+
+  public void validateNickName(List<List<String>> forms) {
+    for (List<String> crewInfo : forms) {
+      if (!isKorean(crewInfo.get(NICKNAME)) || crewInfo.get(NICKNAME).length() < MIN_NICKNAME_LEN
+          || crewInfo.get(NICKNAME).length() > MAX_NICKNAME_LEN) {
+        throw new IllegalArgumentException("닉네임은 한글만 가능하고 전체 길이는 1자 이상 20자 미만이다.");
+      }
+    }
+  }
+}
+
+public class Problem6 {
+
+  public static List<String> solution(List<List<String>> forms) {
+    ValidatorPro6 validator = new ValidatorPro6(forms);
+    return new ArrayList<>(new FindDuplicatePro6(forms).getEmails())
+        .stream()
+        .sorted()
+        .collect(Collectors.toList());
+  }
+}
