@@ -26,6 +26,7 @@ public class Problem7 {
 
         Map<String, User> users = preProcessing(friends);
 
+        scoringByVisitors(visitors, users);
         validateRecommendFriends(recommendFriends);
     }
 
@@ -109,6 +110,12 @@ public class Problem7 {
         return users;
     }
 
+    private static void scoringByVisitors(List<String> visitors, Map<String, User> users) {
+        for (String visitor : visitors) {
+            User user = getOrCreateUser(visitor, users);
+            user.incrementVisitorScore();
+        }
+    }
 
     private static void validateRecommendFriends(List<String> recommendFriends) {
         if (recommendFriends.isEmpty()) {
