@@ -31,5 +31,9 @@ public class Problem2 {
                 .map(Object::toString)
                 .collect(Collectors.joining());
     }
+
+    private static boolean validateCryptoSize(String cryptogram) {
+        return cryptogram.length() < 1 || cryptogram.length() > 1000;
+    }
     
 }
