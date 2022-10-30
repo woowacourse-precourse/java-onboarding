@@ -1,7 +1,6 @@
 package onboarding;
 
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -62,6 +61,13 @@ class Crew {
         if(!m.matches()) {
             throw new IllegalStateException("한글만 입력해주세요");
         }
+    }
+
+    public List<String> toList() {
+        ArrayList<String> temp = new ArrayList<>();
+        temp.add(this.email);
+        temp.add(this.nickName);
+        return temp;
     }
 
 }
