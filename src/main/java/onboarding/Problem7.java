@@ -84,52 +84,6 @@ public class Problem7 {
         }
     }
 
-    public static void main(String[] args) {
-        String user="mrko";
-
-        List<List<String>> friends=new ArrayList<>();
-
-        List<String> friend1=new ArrayList<>();
-        friend1.add("donut");
-        friend1.add("andole");
-
-        List<String> friend2=new ArrayList<>();
-        friend2.add("donut");
-        friend2.add("jun");
-
-        List<String> friend3=new ArrayList<>();
-        friend3.add("donut");
-        friend3.add("mrko");
-
-        List<String> friend4=new ArrayList<>();
-        friend4.add("shakevan");
-        friend4.add("andole");
-
-        List<String> friend5=new ArrayList<>();
-        friend5.add("shakevan");
-        friend5.add("jun");
-
-        List<String> friend6=new ArrayList<>();
-        friend6.add("shakevan");
-        friend6.add("mrko");
-
-        friends.add(friend1);
-        friends.add(friend2);
-        friends.add(friend3);
-        friends.add(friend4);
-        friends.add(friend5);
-        friends.add(friend6);
-
-        List<String> visitors=new ArrayList<>();
-        visitors.add("bedi");
-        visitors.add("bedi");
-        visitors.add("donut");
-        visitors.add("bedi");
-        visitors.add("shakevan");
-
-        System.out.println(solution(user,friends,visitors));
-    }
-
     private static <T>boolean validation(String err_type,T err_param){
         if (err_type.equals("user_length")&&err_param instanceof Integer){
             int user_length = (int) err_param;
