@@ -12,6 +12,7 @@ public class Problem6 {
         List<String> answer = new ArrayList<>();
         subNicknameDic = new HashMap<>(); //닉네임카운트 초기화
         checkAllNickname(forms); //모든 닉네임 확인
+
         for(int i=0;i<forms.size();i++){
             List<String> form = forms.get(i);
 
