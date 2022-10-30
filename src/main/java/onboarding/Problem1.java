@@ -16,13 +16,7 @@ class Problem1 {
             int pobiScore = findMaxScore(pobi);
             int crongScore = findMaxScore(crong);
 
-            if (pobiScore > crongScore) {
-                answer = 1;
-            } else if (pobiScore < crongScore) {
-                answer = 2;
-            } else {
-                answer = 0;
-            }
+            answer = getWinner(pobiScore, crongScore);
         }
 
         return answer;
@@ -80,5 +74,20 @@ class Problem1 {
         int rightScore = Math.max(findPlusScore(rightPage), findMultipleScore(rightPage));
 
         return Math.max(leftScore, rightScore);
+    }
+
+    /**
+     * Function for Finding Winner
+     * */
+    private static int getWinner(int pobiScore, int crongScore) {
+        int answer = -1;
+        if (pobiScore > crongScore) {
+            answer = 1;
+        } else if (pobiScore < crongScore) {
+            answer = 2;
+        } else {
+            answer = 0;
+        }
+        return answer;
     }
 }
