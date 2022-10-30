@@ -86,4 +86,11 @@ class Problem1 {
             throw new Exception("붙어있지 않은 페이지");
         }
     }
+
+    static void validateLength(List<Integer> pageList) throws Exception {
+        int length = pageList.size();
+        if (length != 2) {
+            throw new Exception("페이지 수가 3개 이상입니다");
+        }
+    }
 }
