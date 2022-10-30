@@ -59,7 +59,7 @@ public class Problem6 {
             List<String> user = forms.get(i);
             List<String> devidedNicknamePiece = getDevidedNicknamePiece(user.get(1));
             String pieceOwnerEmail = user.get(0);
-            manageNicknamePieces(pieceOwnerEmail, devidedNicknamePiece);
+            enrollNicknamePieceAndOwner(devidedNicknamePiece, pieceOwnerEmail);
         }
         result=getSortedDuplicatedList();
         return result;
@@ -73,7 +73,7 @@ public class Problem6 {
         return nicknamePieces;
     }
 
-    private static void manageNicknamePieces(String owner, List<String> pieces){
+    private static void enrollNicknamePieceAndOwner(List<String> pieces, String owner){
         for(int i = 0; i<pieces.size(); i++){
             String nicknamePiece = pieces.get(i);
             if(nicknamePieceAndOwner.containsKey(nicknamePiece)){
