@@ -6,11 +6,17 @@ import java.util.Collections;
 
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
-        for (int i = 1; i <= number; i++) {
-            answer += count369ByNumber(i);
+        try {
+            validate(number);
+            int answer = 0;
+            for (int i = 1; i <= number; i++) {
+                answer += count369ByNumber(i);
+            }
+            return answer;
+        } catch (Exception e) {
+            System.out.println(e);
+            return -1;
         }
-        return answer;
     }
 
     static int count369ByNumber(int number) {
@@ -31,5 +37,11 @@ public class Problem3 {
         String stringOfNumber = Integer.toString(number);
         ArrayList<String> arrayListOfStringNumber= new ArrayList<>(Arrays.asList(stringOfNumber.split("")));
         return arrayListOfStringNumber;
+    }
+
+    static void validate(int number) throws Exception {
+        if (number < 1 || number > 10000) {
+            throw new Exception("1 이상 10000 이하의 자연수만 계산할 수 있습니다");
+        }
     }
 }
