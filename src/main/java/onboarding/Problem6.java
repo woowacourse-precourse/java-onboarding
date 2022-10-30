@@ -17,6 +17,17 @@ public class Problem6 {
         return false;
     }
 
+    private static boolean checkNickname(String nickname) {
+        if (nickname == null)
+            return true;
+        else if (nickname.length() < 1)
+            return true;
+        for (int i=0; i<nickname.length(); i++)
+            if (Character.getType(nickname.charAt(i)) != 5)
+                return true;
+        return false;
+    }
+
     private static boolean checkParam(List<List<String>> forms) {
         if (forms == null)
             return true;
