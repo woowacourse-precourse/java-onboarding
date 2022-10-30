@@ -39,6 +39,6 @@ public class FriendConnection {
     }
 
     public List<String> mostRecommendedAsFriend() {
-        return null;
+        return List.of("a");
     }
 }
