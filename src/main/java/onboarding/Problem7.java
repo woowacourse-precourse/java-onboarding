@@ -48,7 +48,19 @@ public class Problem7 {
     private static void getFriendsOfDiffUserAndCompare(String diffUser) {
         List<String> diffFriendList = friendMap.get(diffUser);
         for(String friendOfDiffUser : diffFriendList) {
+            addTenScore(diffUser, friendOfDiffUser);
+        }
+    }
 
+    /**
+     * 사용자의 친구 리스트와 동일한 친구를 가지고 있다면, 해당 사용자에게 10점을 부여한다.
+     *
+     * @param diffUser 다른 사용자 아이디
+     * @param friendOfDiffUser 다른 사용자의 친구
+     */
+    private static void addTenScore(String diffUser, String friendOfDiffUser) {
+        if (userFriendList.contains(friendOfDiffUser)) {
+            scoreMap.put(diffUser, scoreMap.getOrDefault(diffUser, 0) + 10);
         }
     }
 
