@@ -61,11 +61,12 @@ public class Problem6 {
     }
 
     private static void putWordsInHashMap(String words){
-        if(countOfSameWords.containsKey(words)) {
-            int oldCount = countOfSameWords.get(words);
-            countOfSameWords.replace(words, oldCount, oldCount + 1);
-            return;
-        }
+        if(countOfSameWords.containsKey(words)) increaseWordsCountInMap(words);
         countOfSameWords.put(words, NO_WORDS_IN_COMMON);
+    }
+
+    private static void increaseWordsCountInMap(String words){
+        int oldCount = countOfSameWords.get(words);
+        countOfSameWords.replace(words, oldCount, oldCount + 1);
     }
 }
