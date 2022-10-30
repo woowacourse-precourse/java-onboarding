@@ -4,13 +4,24 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        Problem7 p7 = new Problem7();
+        List<List<String>> newFriendList = p7.getFriendList(friends);
+        Map<String, Integer> friendMap = p7.myFriendScore(newFriendList,user);
+        Map<String, Integer> visitMap = p7.getVisitScore(visitors);
+        Map<String, Integer> totalMap = p7.getTotoalScore(visitMap, friendMap);
+        Set<String> set = p7.getReverseMap(totalMap);
+
+        List<String> answer = new ArrayList<>();
+        for(String s: set){
+            answer.add(s);
+        }
+
+
         return answer;
     }
 
-    public  Map<String,Integer> getVisitScore(List<String> visitors, String user) {
+    public Map<String,Integer> getVisitScore(List<String> visitors) {
         Map<String, Integer> visitScore = new TreeMap<>();
-        int score = 1;
         for (String visitor : visitors) {
             if(visitScore.containsKey(visitor)){
                 visitScore.put(visitor,visitScore.get(visitor)+1);
@@ -58,21 +69,8 @@ public class Problem7 {
         return friendScore;
     }
 
-    public int getUserList (List<List<String>> friends, String user) {
-        List<String> userList = new ArrayList<>();
-        for(List<String> friend : friends) {
-            if(!(friend.get(0).equals(user))){
-                userList.add(friend.get(0));
-            }
 
-            if(!(friend.get(1).equals(user))){
-                userList.add(friend.get(1));
-            }
-        }
-        return userList.size();
-    }
-
-    public Map<String, Integer> totoalScore(Map<String, Integer> visitScore, Map<String, Integer> friendScore){
+    public Map<String, Integer> getTotoalScore(Map<String, Integer> visitScore, Map<String, Integer> friendScore){
         Set<String> vset =visitScore.keySet();
         Set<String> fset =friendScore.keySet();
         Iterator<String> viterator = vset.iterator();
