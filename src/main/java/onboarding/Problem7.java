@@ -1,9 +1,21 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.PriorityQueue;
 
 public class Problem7 {
+
+    private static int sequence;
+    private static Map<String, Integer> indexMap = new HashMap<>();
+    private static List<Integer>[] friendship = new ArrayList[10000];
+    private static int[] scoreList = new int[10000];
+    private static String[] nameList = new String[10000];
+    private static PriorityQueue<Pair> pq = new PriorityQueue<>();
+
 
     private static boolean checkAlpha(String s) {
         char index;
@@ -70,8 +82,68 @@ public class Problem7 {
         }
     }
 
+    private static void initSolution(String user, List<List<String>> friends) {
+        String f1, f2;
+        List<String> friendList;
+        int f1Index, f2Index;
+        int size = friends.size();
+
+        indexMap.clear();
+        pq.clear();
+        for (int i = 0; i < 10000; i++) {
+            scoreList[i] = 0;
+            nameList[i] = null;
+            friendship[i] = new ArrayList<>();
+        }
+        sequence = 0;
+        nameList[sequence] = user;
+        indexMap.put(user, sequence++);
+        for (int i = 0; i < size; i++) {
+            friendList = friends.get(i);
+            f1 = friendList.get(0);
+            f2 = friendList.get(1);
+            if (!indexMap.containsKey(f1)) {
+                nameList[sequence] = f1;
+                indexMap.put(f1, sequence++);
+            }
+            if (!indexMap.containsKey(f2)) {
+                nameList[sequence] = f2;
+                indexMap.put(f2, sequence++);
+            }
+            f1Index = indexMap.get(f1);
+            f2Index = indexMap.get(f2);
+            if (!friendship[f1Index].contains(f2Index)) {
+                friendship[f1Index].add(f2Index);
+            }
+            if (!friendship[f2Index].contains(f1Index)) {
+                friendship[f2Index].add(f1Index);
+            }
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
+    }
+
+    private static class Pair implements Comparable<Pair> {
+        int score;
+        String name;
+
+        public Pair(int score, String name) {
+            this.score = score;
+            this.name = name;
+        }
+
+        @Override
+        public int compareTo(Pair o) {
+            if (this.score > o.score) {
+                return -1;
+            } else if (this.score == o.score) {
+                return this.name.compareTo(o.name);
+            } else {
+                return 1;
+            }
+        }
     }
 }
