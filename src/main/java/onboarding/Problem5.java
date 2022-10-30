@@ -1,29 +1,32 @@
 package onboarding;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class Problem5 {
-    static HashMap<Integer, Integer> counter;
+    static HashMap<Integer, Integer> counter = new HashMap<>();
 
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
-        counter = new HashMap<>();
+        List<Integer> answer = new ArrayList<>();
+        List<Integer> currencies = List.of(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1);
 
-
-
+        for (int currency : currencies) {
+            money = exchange(currency, money);
+        }
+        makeAnswer(answer, currencies);
         return answer;
     }
 
-    public static void exchange(int currency, int money) {
+    public static int exchange(int currency, int money) {
         int count = 0;
 
         while (money >= currency) {
             money -= currency;
             count++;
         }
-        updateCount(currency, money);
+        updateCount(currency, count);
+        return money;
     }
 
     public static void updateCount(int currency, int count) {
