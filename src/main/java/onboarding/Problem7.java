@@ -68,6 +68,8 @@ public class Problem7 {
             for(String name : order) {
                 if(answer.size() != 5)
                     answer.add(name);
+                else
+                    return answer;
             }
             order.clear();
         }
