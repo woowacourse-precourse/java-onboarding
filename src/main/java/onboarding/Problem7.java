@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem7 {
@@ -12,12 +9,14 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+        System.out.println("user = " + user);
 
         // user와 친구가 아닌것을 걸러야된다.
         ArrayList<String> notFriendUserList = new ArrayList<>();
         ArrayList<String> friendUserList = new ArrayList<>();
         ArrayList<String> personList = new ArrayList<>();
         ArrayList<String> allFriendsVisitors = new ArrayList<>();
+        ArrayList<String> notFriendAndVisitorUserList = new ArrayList<>();
 
 
         List<String> listAtNow = null;
@@ -65,7 +64,7 @@ public class Problem7 {
                     isFriend = true;
                 }
             }
-            if (!isFriend) {
+            if (!isFriend && !user.equals(namePersonAtNow)) {
                 notFriendUserList.add(namePersonAtNow);
             }
         }
@@ -76,7 +75,7 @@ public class Problem7 {
         // personList, friendUserList, notFriendUserList 구현 완료
         System.out.println("visitors = " + visitors);
 
-        // User의 친구와 User의 친구가 아닌것과 Visitor의 전체 배열
+        // User의 친구와 User의 친구가 아닌것과 Visitor의 전체 배열 연관된 모든사람 수정.
         int endPersonListVisitors = personList.size() + visitors.size();
         allFriendsVisitors.addAll(personList);
 
@@ -85,9 +84,24 @@ public class Problem7 {
             String nameVisitor = visitors.get(visitorIndex);
             allFriendsVisitors.add(nameVisitor);
         }
-        
+
         allFriendsVisitors = (ArrayList<String>) allFriendsVisitors.stream().distinct().collect(Collectors.toList());
         System.out.println("allFriendsVisitors.toString() = " + allFriendsVisitors.toString());
+
+        // visitor들의 방문횟수를 가져왔다.
+        Map<String, Integer> cntVisitorMap = new HashMap<>();
+        for (String nameVisitor : visitors) {
+            cntVisitorMap.put(nameVisitor, 0);
+        }
+        for (String nameVisitor : visitors) {
+            if (cntVisitorMap.containsKey(nameVisitor)) {
+                int numBeforValue = cntVisitorMap.get(nameVisitor);
+                cntVisitorMap.put(nameVisitor, numBeforValue + 1);
+            }
+        }
+        for (Map.Entry<String, Integer> entry : cntVisitorMap.entrySet()) {
+            System.out.println("[key]:" + entry.getKey() + ", [value]:" + entry.getValue());
+        }
 
         return answer;
     }
