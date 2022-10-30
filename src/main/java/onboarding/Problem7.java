@@ -29,12 +29,30 @@ public class Problem7 {
         return result;
     }
 
+    /**
+     * 각 사용자별 현재 이미 친구인 사람들을 구함
+     * @param userList
+     * @param friends
+     * @return
+     */
+    private static HashMap<String, HashSet<String>> getEachFriendsList(List<String> userList, List<List<String>> friends) {
+        HashMap<String, HashSet<String>> result = new HashMap<>();
+        for (String otherUser : userList) {
+            HashSet<String> tempSet = new HashSet<>();
+            result.put(otherUser, tempSet);
+        }
 
+        for(List<String> next : friends) {
+            result.get(next.get(0)).add(next.get(1));
+            result.get(next.get(1)).add(next.get(0));
+        }
+        return result;
+    }
 
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> userList = getUsersList(user, friends);
-        HashMap<String, HashSet<String>> userFriendsList = getEachFriendsList(friends);
+        HashMap<String, HashSet<String>> userFriendsList = getEachFriendsList(userList, friends);
 
         HashMap<String, Integer> userScore = new HashMap<>();
     }
