@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -8,7 +9,18 @@ import java.util.Set;
 public class Problem6 {
 	public static List<String> solution(List<List<String>> forms) {
 		List<String> answer = List.of("answer");
+		answer = getEmailsFromOverlapNicknames(forms);
 		return answer;
+	}
+
+	public static List<String> getEmailsFromOverlapNicknames(List<List<String>> forms) {
+		InputValidator.isRightInput(forms);
+		List<String> nicknames = getNicknames(forms);
+		Set<String> overLapWords = getOverlapWords(nicknames);
+		List<String> emails = getEmailsByCheckingNickname(forms, overLapWords);
+		Collections.sort(emails);
+
+		return emails;
 	}
 
 	public static List<String> getNicknames(List<List<String>> forms) {
@@ -20,7 +32,7 @@ public class Problem6 {
 		return nicknames;
 	}
 
-	public static List<String> getEmailsSameNicknames(List<List<String>> forms, Set<String> words) {
+	public static List<String> getEmailsByCheckingNickname(List<List<String>> forms, Set<String> words) {
 		List<String> result = new ArrayList<>();
 		for (String word : words) {
 			for (List<String> form : forms) {
@@ -151,4 +163,3 @@ public class Problem6 {
 		}
 	}
 }
-
