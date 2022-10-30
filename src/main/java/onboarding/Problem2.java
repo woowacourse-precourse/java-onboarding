@@ -28,13 +28,11 @@ class DummyWord {
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = cryptogram;
-        int i = 0;
-        while(i < 30) {
+        while(true) {
             String markedWord = isRepeat(answer);
 
             if (markedWord.contains("*")){
                 answer = removeDummyMark(markedWord);
-                i += 1;
             } else {
                 break;
             }
