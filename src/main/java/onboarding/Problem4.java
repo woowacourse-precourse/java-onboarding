@@ -28,4 +28,12 @@ public class Problem4 {
         }
         return (char) ('z' + 'a' - character);
     }
+
+    public static String reverseString(String word) {
+        String result = "";
+        for (char character : word.toCharArray()) {
+            result += reverseChar(character);
+        }
+        return result;
+    }
 }
