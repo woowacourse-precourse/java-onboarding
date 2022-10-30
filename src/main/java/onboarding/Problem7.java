@@ -24,39 +24,46 @@ public class Problem7 {
     public static Map<String, Integer> enrichPointFrom(List<String> visitors, String user, List<String> userFriends) {
         Map<String, Integer> visitorPoints = new HashMap<>();
 
-        for (String recommend: visitors) {
-            if(visitorPoints.get(recommend) == null)
-                visitorPoints.put(recommend,0);
-            visitorPoints.put(recommend,visitorPoints.get(recommend) + 1);
+        for (String recommend : visitors) {
+            if (visitorPoints.get(recommend) == null) {
+                visitorPoints.put(recommend, 0);
+            }
+            visitorPoints.put(recommend, visitorPoints.get(recommend) + 1);
         }
-        for(String friend: userFriends) {
-            if(visitorPoints.get(friend) != null)
-            visitorPoints.put(friend,0);
+        for (String friend : userFriends) {
+            if (visitorPoints.get(friend) != null) {
+                visitorPoints.put(friend, 0);
+            }
         }
-        if(visitorPoints.get(user) != null)
-            visitorPoints.put(user,0);
+        if (visitorPoints.get(user) != null) {
+            visitorPoints.put(user, 0);
+        }
         return visitorPoints;
     }
+
     public static Map<String, Integer> enrichPointFrom(Map<String, List<String>> relationships,
             String user, List<String> userFriends) {
         Map<String, Integer> friendPoints = new HashMap<>();
-        for(String friend: userFriends) {
-            for (String recommend: fillUserFriends(friend, relationships)) {
-                if(friendPoints.get(recommend) == null)
-                    friendPoints.put(recommend,0);
-                friendPoints.put(recommend,friendPoints.get(recommend) + 10);
+        for (String friend : userFriends) {
+            for (String recommend : fillUserFriends(friend, relationships)) {
+                if (friendPoints.get(recommend) == null) {
+                    friendPoints.put(recommend, 0);
+                }
+                friendPoints.put(recommend, friendPoints.get(recommend) + 10);
             }
         }
-        for(String friend: userFriends) {
-            if(friendPoints.get(friend) != null)
-                friendPoints.put(friend,0);
+        for (String friend : userFriends) {
+            if (friendPoints.get(friend) != null) {
+                friendPoints.put(friend, 0);
+            }
         }
-        if(friendPoints.get(user) != null)
-            friendPoints.put(user,0);
+        if (friendPoints.get(user) != null) {
+            friendPoints.put(user, 0);
+        }
         return friendPoints;
     }
 
-    public static List<String> fillUserFriends(String user,Map<String, List<String>> relationships) {
+    public static List<String> fillUserFriends(String user, Map<String, List<String>> relationships) {
         List<String> userFriend = relationships.get(user);
         return userFriend;
     }
@@ -90,7 +97,7 @@ public class Problem7 {
             userList.put(friendRelation.get(1), 0);
         }
 
-        for (String visitor: visitors) {
+        for (String visitor : visitors) {
             userList.put(visitor, 0);
         }
         return userList;
