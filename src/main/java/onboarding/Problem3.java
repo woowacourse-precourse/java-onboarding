@@ -5,7 +5,7 @@ public class Problem3 {
 
     public static int solution(int number) {
         try {
-            validateRange(number);
+            validateInputSize(number);
         } catch (IllegalArgumentException e) {
             return 0;
         }
@@ -13,9 +13,9 @@ public class Problem3 {
         return countClaps(number);
     }
 
-    public static void validateRange(int number) {
+    public static void validateInputSize(int number) {
         if (number < 1 || number > MAX_NUMBER) {
-            throw new IllegalArgumentException("유효하지 않은 범위 내의 숫자입니다.");
+            throw new IllegalArgumentException("유효하지 않은 크기의 숫자입니다.");
         }
     }
 

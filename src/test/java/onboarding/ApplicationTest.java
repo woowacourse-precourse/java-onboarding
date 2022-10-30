@@ -135,7 +135,7 @@ class ApplicationTest {
     }
 
     @Nested
-    class Problem3Test {
+    class Probalem3Test {
         @Test
         void case1() {
             int number = 13;
@@ -154,9 +154,9 @@ class ApplicationTest {
         @ValueSource(ints = {-1, 0, 10001})
         void testValidateRange() {
             int number = -1;
-            assertThatThrownBy(() -> Problem3.validateRange(number))
+            assertThatThrownBy(() -> Problem3.validateInputSize(number))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("유효하지 않은 범위 내의 숫자입니다.");
+                    .hasMessageContaining("유효하지 않은 크기의 숫자입니다.");
         }
     }
 
