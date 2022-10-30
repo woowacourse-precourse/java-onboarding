@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -7,21 +9,31 @@ public class Problem5 {
 
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
-
-        // 화폐 목록을 담는 List 생성 (금액이 큰 순서대로 저장)
-        // 화폐 목록 : 오만 원권, 만 원권, 오천 원권, 천 원권, 오백원 동전, 백원 동전, 오십원 동전, 십원 동전, 일원 동전
-
-        // 금액이 큰 순서대로 money가 각각의 화폐 몇개씩으로 변환되는지 저장하는 List 생성 (quotientList)
-
-        // 화폐 목록에 저장되어 있는 값에 대하여 순서대로 아래의 과정을 진행
-        // 1. money를 금액으로 나눴을 때 몫이 1 이상이라면
-        // -> 몫을 quotientList에 저장, money는 money를 금액으로 나눴을 때의 나머지로 갱신
-        // 2. money를 금액으로 나눴을 때 몫이 0이라면
-        // -> quotientList에 0을 저장
-
-        // 화폐 목록에 저장되어 있는 값을 전부 다 보았다면 answer = quotientList
-
+        answer = getAnswer(money); // 지갑이 최대한 가볍도록 화폐를 받는 경우
         return answer;
+    }
+
+    // 지갑이 최대한 가볍도록 화폐를 받는 경우를 List로 반환하는 함수
+    private static List<Integer> getAnswer(int totalMoney) {
+        // 화폐 목록 (금액이 큰 순으로 저장)
+        List<Integer> moneyList = Arrays.asList(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1);
+
+        // 금액이 큰 순서대로 화폐 각각 몇개씩으로 변환되는지를 저장하는 List
+        List<Integer> quotientList = new ArrayList<>();
+
+        // 돈의 나머지 액수
+        int curMoney = totalMoney;
+        // 현재 확인해야 하는 화폐보다 더 큰 금액의 화폐로 돈의 변환이 가능하다면,
+        // 해당 더 큰 금액의 화폐에 대한 액수를 빼고 남은 값
+
+        // 화폐 목록에 저장된 순서대로 확인
+        for (Integer money : moneyList) {
+            int quotient = curMoney / money; // curMoney를 화폐의 금액으로 나눴을 때 몫
+            curMoney %= money; // curMoney를 화폐의 금액으로 나눴을 때의 나머지로 update
+            quotientList.add(quotient);
+        }
+
+        return quotientList;
     }
 
 }
