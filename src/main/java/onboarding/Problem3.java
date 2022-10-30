@@ -36,6 +36,10 @@ public class Problem3 {
         numbercount[2]=60*divide[2]+threesixnine(divide[2])*100+divide[3]*10+divide[4]+1+numbercount[3];
     }
 
+    public static void quadruplefigure(){
+        numbercount[1]=900*divide[1]+threesixnine(divide[1])*1000+divide[2]*100+divide[3]*10+divide[4]+1+numbercount[2];
+    }
+
     public static int solution(int number) {
         int answer = 0;
 
