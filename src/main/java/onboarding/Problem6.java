@@ -30,4 +30,11 @@ public class Problem6 {
         return namePiece;
     }
 
+    public static List<String> tidyList (List<String> warningEmail) {
+
+        Set<String> deleteSame = new TreeSet<>(warningEmail);
+
+        return new ArrayList<>(deleteSame);
+    }
+
 }
