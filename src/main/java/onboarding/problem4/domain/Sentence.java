@@ -15,12 +15,12 @@ public class Sentence {
     }
     
     public String convert() {
-        final char[] chars = sentence.toCharArray();
-        for (int index = 0; index < chars.length; index++) {
-            chars[index] = convertCharacter(chars[index]);
+        final char[] sentenceCharacters = sentence.toCharArray();
+        for (int index = 0; index < sentenceCharacters.length; index++) {
+            sentenceCharacters[index] = convertCharacter(sentenceCharacters[index]);
         }
         
-        return String.valueOf(chars);
+        return String.valueOf(sentenceCharacters);
     }
     
     private char convertCharacter(final char character) {
@@ -31,9 +31,9 @@ public class Sentence {
         return character;
     }
     
-    private static boolean isAlphabet(final char aChar) {
+    private static boolean isAlphabet(final char character) {
         final Pattern pattern = Pattern.compile(CONVERTIBLE_CHARACTER_FORM);
-        final Matcher matcher = pattern.matcher(String.valueOf(aChar));
+        final Matcher matcher = pattern.matcher(String.valueOf(character));
         return matcher.matches();
     }
 }
