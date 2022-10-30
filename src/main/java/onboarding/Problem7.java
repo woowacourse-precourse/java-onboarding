@@ -57,4 +57,15 @@ public class Problem7 {
 
         return notFriendUsersScoreMap;
     }
+
+    private static Map<String, Integer> mapVisitorCountByUser(List<String> visitors) {
+        Map<String, Integer> visitorsCountMap = new HashMap<>();
+
+        for (String visitor : visitors) {
+            int visitorCount = visitorsCountMap.getOrDefault(visitor, 0);
+            visitorsCountMap.put(visitor, visitorCount + 1);
+        }
+
+        return visitorsCountMap;
+    }
 }
