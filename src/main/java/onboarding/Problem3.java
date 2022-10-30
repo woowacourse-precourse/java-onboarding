@@ -8,7 +8,6 @@ public class Problem3 {
 
         int[] input_number= Stream.of(String.valueOf(number).split("")).mapToInt(Integer::parseInt).toArray();
 
-
         return answer;
     }
 }
