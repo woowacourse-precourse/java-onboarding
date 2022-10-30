@@ -124,4 +124,17 @@ public class Problem7 {
             }
         });
     }
+
+    static void ifSameScoreThenSortByName(List<Map.Entry<String, Integer>> entries) {
+        entries.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> t1, Map.Entry<String, Integer> t2) {
+                if (t1.getValue().equals(t2.getValue())) {
+                    return t1.getKey().compareTo(t2.getKey());
+                }
+
+                return 0;
+            }
+        });
+    }
 }

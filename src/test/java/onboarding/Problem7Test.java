@@ -254,4 +254,30 @@ class Problem7Test {
         assertThat(entries.size()).isEqualTo(3);
         assertThat(entries).containsExactly(new AbstractMap.SimpleEntry<>("andole", 20), new AbstractMap.SimpleEntry<>("jun", 20), new AbstractMap.SimpleEntry<>("bedi", 3));
     }
+
+    @Test
+    public void ifSameScoreThenSortByNameTest() {
+        //given
+        String user = "mrko";
+        List<List<String>> friends = List.of(
+                List.of("donut", "zndole"),
+                List.of("donut", "jun"),
+                List.of("donut", "mrko"),
+                List.of("shakevan", "zndole"),
+                List.of("shakevan", "jun"),
+                List.of("shakevan", "mrko")
+        );
+        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+
+        Map<String, Integer> map = Problem7.getPotentialFriendNameAndScore(user, friends, visitors);
+
+        List<Map.Entry<String, Integer>> entries = new ArrayList<>(map.entrySet());
+
+        //when
+        Problem7.ifSameScoreThenSortByName(entries);
+
+        //then
+        assertThat(entries.size()).isEqualTo(3);
+        assertThat(entries).containsExactly(new AbstractMap.SimpleEntry<>("jun", 20), new AbstractMap.SimpleEntry<>("zndole", 20), new AbstractMap.SimpleEntry<>("bedi", 3));
+    }
 }
