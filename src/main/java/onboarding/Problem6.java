@@ -1,12 +1,14 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Problem6 {
+    static List<String> answer = new ArrayList<>();
+
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = new ArrayList<>();
         try {
             checkCrewLimit(forms.size());
 
@@ -16,12 +18,28 @@ public class Problem6 {
 
                 validationEmail(email);
                 validationNickname(nickname);
+                for(List<String> eqForm: forms){
+                    if (form.equals(eqForm)) continue;
+
+                    String eqNickname = eqForm.get(1);
+                    getEqNickNameBySubstring(nickname,eqNickname,email);
+                }
             }
 
-            return answer;
+            return answer.stream().distinct().collect(Collectors.toList());
         }catch (Exception e){
             return new ArrayList<>();
         }
+    }
+
+    private static void getEqNickNameBySubstring(String nickname,String eqNickname,String email) {
+        IntStream.range(0,nickname.length()-1)
+                .mapToObj(i -> nickname.substring(i,i+2))
+                .forEach(nickname_s ->{
+                    if (eqNickname.contains(nickname_s)){
+                        answer.add(email);
+                    }
+                });
     }
 
     public static void checkCrewLimit(int crew_count) throws Exception {
