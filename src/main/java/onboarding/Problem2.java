@@ -53,7 +53,15 @@ public class Problem2 {
                 a++;
             }
         }
+        checkLastOne();
         return count;
+    }
+
+    public static void checkLastOne() {
+        int listSize = cryptogramList.size();
+        if (listSize > 0 && wasRemoved()) {
+            cryptogramList.remove(listSize - 1);
+        }
     }
 
     public static boolean isSame(char firstChar, char nextChar) {
