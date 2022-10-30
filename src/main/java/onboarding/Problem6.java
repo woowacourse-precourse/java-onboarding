@@ -26,8 +26,8 @@ public class Problem6 {
 	}
 
 	private static void checkInTwoLetters(String nickname, String email) {
-		for (int j = 0; j < nickname.length() - 1; j++) {
-			String key = nickname.substring(j, j + 2);
+		for (int i = 0; i < nickname.length() - 1; i++) {
+			String key = nickname.substring(i, i + 2);
 			if (keys.containsKey(key)) {
 				String keyMail = keys.get(key);
 				checkExistKey(keyMail, email);
