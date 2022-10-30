@@ -1,7 +1,9 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -25,6 +27,9 @@ public class Problem6 {
                 }
             }
         }
+
+        Collections.sort(mail);
+        answer = mail.stream().distinct().collect(Collectors.toList());
 
         return answer;
     }
