@@ -58,17 +58,29 @@ public class Problem7 {
         for(String mutualFriend: mutualFriends){ // andole
                 for(List<String> friendList: friends){ // ["donut", "andole"]
                     if(friendList.contains(mutualFriend)){ // true
+                        // find in scoreList and add score
                         for(HashMap<String, Integer> usernameAndScore: usernameAndScoreList){
                             for(String key: usernameAndScore.keySet()){ //
                                 if(key==mutualFriend){
                                     usernameAndScore.put(key, usernameAndScore.get(key)+10);
-                                    System.out.println("added");
                                 }
                             }
                         }
                     }
                 }
             }
+
+        // add score to visitors
+        for(String visitor: visitors){
+            for(HashMap<String, Integer> usernameAndScore: usernameAndScoreList){
+                for(String key: usernameAndScore.keySet()){ //
+                    if(key==visitor){
+                        usernameAndScore.put(key, usernameAndScore.get(key)+1);
+                    }
+                }
+            }
+        }
+
 
         System.out.println(usernameAndScoreList);
 
