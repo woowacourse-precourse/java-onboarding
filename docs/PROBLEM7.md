@@ -38,6 +38,7 @@
 - String user : 유저
 - HashMap< String, HashSet< String > > friendsInformation : 사용자 별 친구 목록
 - HashMap< String, Integer > recommendScore : 사용자 별 추천 점수
+- HashSet< String > userFriends : user의 친구 목록
 
 ##### <멤버 메소드>
 
@@ -87,6 +88,7 @@
         - value : 친구 목록 HashSet
         - 초기화 이후 user와 친구 관계인 사용자 내용 삭제(remove)
             - 이미 친구 관계인 사용자는 고려 대상에서 제외
+    - userFriends 초기화
     - recommendScore 초기화
         - key : friendsInformation의 key값
         - value : 0

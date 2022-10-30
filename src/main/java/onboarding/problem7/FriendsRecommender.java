@@ -2,10 +2,77 @@ package onboarding.problem7;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class FriendsRecommender {
 	private String user;
-	private HashMap<String, HashSet<String>> friendsInformation;
-	private HashMap<String, Integer> recommendScore;
+	private Map<String, HashSet<String>> friendsInformation = new HashMap<>();
+	private Map<String, Integer> recommendScore = new HashMap<>();
+	private Set<String> userFriends = new HashSet<>();
+
+	public FriendsRecommender(String user, List<List<String>> friends, List<String> visitors) {
+		this.user = user;
+
+		setFriendsInformation(friends);
+
+		userFriends = friendsInformation.get(user);
+
+		removeUserFriendsInFriendsInformation();
+
+		initializeRecommendScore();
+
+		scoreVisitors(visitors);
+	}
+
+	private void setFriendsInformation(List<List<String>> friends) {
+		for (List<String> oneFriends : friends) {
+			String user1 = oneFriends.get(0);
+			String user2 = oneFriends.get(1);
+
+			if (friendsInformation.containsKey(user1) == true) {
+				friendsInformation.get(user1).add(user2);
+			} else {
+				friendsInformation.put(user1, new HashSet<>(Set.of(user2)));
+			}
+
+			if (friendsInformation.containsKey(user2) == true) {
+				friendsInformation.get(user2).add(user1);
+			} else {
+				friendsInformation.put(user2, new HashSet<>(Set.of(user1)));
+			}
+		}
+	}
+
+	private void removeUserFriendsInFriendsInformation() {
+		for (String oneFriend : userFriends) {
+			friendsInformation.remove(oneFriend);
+		}
+		friendsInformation.remove(user);
+	}
+
+	private void initializeRecommendScore() {
+		Set<String> friendsInformationKeys = friendsInformation.keySet();
+
+		for (String oneUser : friendsInformationKeys) {
+			recommendScore.put(oneUser, 0);
+		}
+	}
+
+	private void scoreVisitors(List<String> visitors) {
+		for (String oneVisitor : visitors) {
+			if (userFriends.contains(oneVisitor) == true) {
+				continue;
+			}
+
+			if (recommendScore.containsKey(oneVisitor) == true) {
+				int increasedScore = recommendScore.get(oneVisitor) + 1;
+				recommendScore.replace(oneVisitor, increasedScore);
+			} else {
+				recommendScore.put(oneVisitor, 1);
+			}
+		}
+	}
 
 }
