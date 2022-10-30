@@ -9,12 +9,17 @@ import java.util.stream.Stream;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        validatePageList(pobi);
-        validatePageList(crong);
-        int pobiMax = calculateMaxValue(pobi);
-        int crongMax = calculateMaxValue(crong);
-        int answer = compareTwoNumbers(pobiMax, crongMax);
-        return answer;
+        try {
+            validatePageList(pobi);
+            validatePageList(crong);
+            int pobiMax = calculateMaxValue(pobi);
+            int crongMax = calculateMaxValue(crong);
+            int answer = compareTwoNumbers(pobiMax, crongMax);
+            return answer;
+        } catch (Exception e) {
+            System.out.println(e);
+            return -1;
+        }
     }
 
     public static int calculateMaxValue(List<Integer> pageList) {
