@@ -4,10 +4,9 @@ import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        Set<String> emailSet = compareAllName(forms);
-        List<String> emailList = new ArrayList<>(emailSet);
-        Collections.sort(emailList);
-        return emailList;
+        List<String> emails = new ArrayList<>(compareAllName(forms));
+        Collections.sort(emails);
+        return emails;
     }
 
     private static boolean isSimilar(String name1, String name2) {
@@ -20,7 +19,7 @@ public class Problem6 {
     }
 
     private static Set<String> compareAllName(List<List<String>> forms) {
-        Set<String> emailSet = new HashSet<>();
+        Set<String> emails = new HashSet<>();
 
         for (int i = 0; i < forms.size(); i++) {
             String srcEmail = forms.get(i).get(0);
@@ -28,12 +27,13 @@ public class Problem6 {
             for (int j = i+1; j < forms.size(); j++) {
                 String targetEmail = forms.get(j).get(0);
                 String targetName = forms.get(j).get(1);
+                if (srcEmail.equals(targetEmail)) continue;
                 if (isSimilar(srcName, targetName)) {
-                    emailSet.add(srcEmail);
-                    emailSet.add(targetEmail);
+                    emails.add(srcEmail);
+                    emails.add(targetEmail);
                 }
             }
         }
-        return emailSet;
+        return emails;
     }
 }
