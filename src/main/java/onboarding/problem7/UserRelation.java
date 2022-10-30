@@ -14,6 +14,8 @@ public class UserRelation {
             if (relation.size() != 2) {
                 throw new Exception("관계는 두명의 사용자만 맺을 수 있습니다");
             }
+            UserStore.add(new User(relation.get(0)));
+            UserStore.add(new User(relation.get(1)));
 
             // 사용자0이 관계에 없었으면 새로운 Set을 만들어주고, 값을 넣는다
             // 있었으면 값을 넣는다
