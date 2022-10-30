@@ -11,6 +11,9 @@ public class Problem6 {
 
   private static Map<String, String> crewInfo;
   private static final int MAX_CREW_SIZE = 10000;
+  private static final String EMAIL_DOMAIN = "email.com";
+  private static final int MIN_EMAIL_LENGTH = 11;
+  private static final int MAX_EMAIL_LENGTH = 20;
 
   public static List<String> solution(List<List<String>> forms) {
     classifyForms(forms);
@@ -101,9 +104,23 @@ public class Problem6 {
     }
   }
 
-  public static boolean isAllowedCrewSize(int crewSize) throws IllegalStateException{
+  public static boolean isAllowedCrewSize(int crewSize) throws IllegalStateException {
     if (crewSize < 1 || crewSize > MAX_CREW_SIZE) {
       throw new IllegalStateException("허용된 크루 사이즈가 아닙니다.");
+    }
+    return true;
+  }
+
+  public static boolean isAllowedEmail(String email) throws IllegalStateException {
+    if (email.length() < MIN_EMAIL_LENGTH || email.length() > MAX_EMAIL_LENGTH) {
+      throw new IllegalStateException("이메일의 길이기 11~20자가 아닙니다.");
+    }
+    if (!email.contains("@")) {
+      throw new IllegalStateException("이메일 형식이 아닙니다");
+    }
+    String domain = email.split("@")[1];
+    if (!domain.equals(EMAIL_DOMAIN)) {
+      throw new IllegalStateException("허용된 이메일 도메인이 아닙니다");
     }
     return true;
   }
