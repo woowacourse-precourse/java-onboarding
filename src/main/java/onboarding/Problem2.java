@@ -4,7 +4,12 @@ import java.util.ArrayList;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
+        int len = 0;
         String answer = "answer";
+        for(int i=0; i<cryptogram.length(); i++){
+            answer = removeChar(answer);
+            if(len == answer.length()) break;
+        }
         return answer;
     }
 
