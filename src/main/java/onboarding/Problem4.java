@@ -15,8 +15,18 @@ public class Problem4 {
                 char convertChar = (char)(122 - word.charAt(i) % 97);
                 newWord = newWord.concat(Character.toString(convertChar));
             }
+
+            if(word.charAt(i) == 32) {
+                newWord = newWord.concat(" ");
+            }
         }
 
-        return "";
+        return newWord;
+    }
+
+    public static void main(String[] args) {
+        String result = solution("I love you");
+        System.out.println("result = " + result);
+
     }
 }
