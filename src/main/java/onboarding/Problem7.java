@@ -56,10 +56,18 @@ public class Problem7 {
                 String addId = getUserToAdd(friendId, friend);
 
                 if (!addId.isEmpty() && isNotFriend(addId, userFriends)) {
-                    System.out.println("friend of friend : " + addId);
+                    int score = 10;
+
+                    if (isContainFriendsScore(addId)) {
+                        score += friendsScore.get(addId);
+                    }
+                    System.out.println("score : " + score);
+
+                    friendsScore.put(addId, score);
                 }
             }
 
+            System.out.println(friendsScore);
         }
     }
 
