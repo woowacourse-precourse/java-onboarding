@@ -30,6 +30,10 @@ class Problem1 {
         return answer;
     }
 
+    private static int validate(final List<Integer> friend) {
+        return Advice.validBookNumber(friend);
+    }
+
     static class Result{
         private Result(){}
 
@@ -92,11 +96,6 @@ class Problem1 {
         public int hashCode() {
             return Objects.hash(maxNumber);
         }
-    }
-
-
-    private static int validate(final List<Integer> friend) {
-        return Advice.validBookNumber(friend);
     }
 
 
