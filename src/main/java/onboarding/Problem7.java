@@ -13,7 +13,7 @@ public class Problem7 {
     */
 
     // 주어진 사용자의 친구 리스트 반환 함수
-    private static List<String> userFriend(String user, List<List<String>> friendDb, HashSet<String> users) {
+    private static List<String> userFriend(String user, List<List<String>> friendDb) {
         List<String> friends = new ArrayList<>(List.of());
 
         for (List<String> relationship : friendDb) {
@@ -73,7 +73,11 @@ public class Problem7 {
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> userFriends = userFriend(user, friends);
+        HashMap<String, Integer> acq = acquaintance(user, friends, userFriends);
+        HashMap<String, Integer> recommend = looker(acq, visitors, userFriends);
+        HashMap<String, Integer> sorted = sortRecommend(recommend);
+        List<String> answer = new ArrayList<>(sorted.keySet());
         return answer;
     }
 }
