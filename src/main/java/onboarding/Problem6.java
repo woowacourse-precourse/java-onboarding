@@ -5,9 +5,25 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Problem6 {
-    public static List<String> solution(List<List<String>> forms) {
-       List<String> answer = new ArrayList<>();
-       return answer;
+    public static List<String> solution(List<List<String>> forms) { List<String> tmp = new ArrayList<>();
+        for (int i = 0; i < forms.size() - 1; i++) {
+            for (int j = i + 1; j < forms.size(); j++) {
+                for (int k = 0; k < forms.get(i).get(1).length() - 1; k++) {
+                    if (forms.get(j).get(1).contains(forms.get(i).get(1).substring(k, k + 2))) { //(check(forms.get(j).get(1), forms.get(i).get(1).substring(k, k + 2)))
+                        tmp.add(forms.get(j).get(0));
+                        tmp.add(forms.get(i).get(0));
+                    }
+                }
+            }
+        }
+
+        Set<String> set = new HashSet<>(tmp);
+
+        List<String> answer = new ArrayList<>(set);
+
+        Collections.sort(answer);
+
+        return answer;
     }
 
     private static boolean isOutOfRange(List<List<String>> list) {
