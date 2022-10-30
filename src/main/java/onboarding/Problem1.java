@@ -7,8 +7,19 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
 
         // 예외 상황 발생 시 -1 반환
+        if(isException(pobi) || isException(crong)){
+            answer = -1;
         // 최댓값 찾기
-        // 결과 판단
+        } else {
+            int pobiMax = -1;
+            int crongMax = -1;
+
+            pobiMax = Math.max(pobi.get(0), pobi.get(1));
+            crongMax = Math.max(crong.get(0), crong.get(1));
+
+            // 결과 판단
+            answer = findWinner(pobiMax, crongMax);
+        }
 
         return answer;
     }
@@ -55,6 +66,11 @@ class Problem1 {
         }
 
         return Math.max(add,mul);
+    }
+
+    // 결과를 판단하는 함수 findWinner()
+    private static int findWinner(int pobi, int crong) {
+        return -1;
     }
 
 }
