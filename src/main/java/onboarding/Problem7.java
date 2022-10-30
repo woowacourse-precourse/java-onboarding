@@ -18,6 +18,15 @@ public class Problem7 {
         return userList;
     }
 
+    static int getScore(String user, String anotherUser,
+                        List<List<String>> friends, List<String> visitors){
+        int friendScore = getSameFriendsCnt(user, anotherUser, friends) * 10;
+        int visitScore = getVisitCnt(visitors, anotherUser);
+        int totalScore = friendScore + visitScore;
+
+        return totalScore;
+    }
+
     static int getSameFriendsCnt(String user, String anotherUser, List<List<String>> friends){
         int sameFriendCnt = 0;
         List<String> userFriends = getFriends(user, friends);
