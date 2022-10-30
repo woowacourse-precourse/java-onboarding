@@ -9,7 +9,11 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         HashMap<String, HashSet<String>> friendList = new HashMap<>();
-
+        /* 친구 목록 만들기 */
+        for (List<String> relation: friends) {
+            String name1 = relation.get(0);
+            String name2 = relation.get(1);
+        }
         return answer;
     }
 }
@@ -27,7 +31,7 @@ public class Problem7 {
 <<기능 목록>>
 - [] 친구 목록을 만든다
   - [V] 각 인물의 친구 목록을 담을 HashMap을 만든다
-  - [] 친구관계목록의 각 친구관계마다 두 개의 이름을 뽑아낸다
+  - [V] 친구관계목록의 각 친구관계마다 두 개의 이름을 뽑아낸다
   - [] 각 이름이 친구 목록 HashMap에 없으면 친구목록 HashMap에 넣는다
   - [] 둘 다 친구 목록에 서로를 추가한다
 - [] 친구 목록을 통한 점수를 계산한다
