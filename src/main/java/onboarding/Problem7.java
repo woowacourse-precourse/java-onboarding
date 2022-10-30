@@ -7,16 +7,28 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
 
         List<String> userFriends = findUserFriends(user, friends);
-        //Map<String, Integer> score = findFriendOfFriend(user, friends);
+        Map<String, Integer> score = findFriendOfFriend(user, friends);
 
 
         return answer;
     }
 
+    private static Map<String, Integer> scoreVisitor(List<String> userFriends, List<String> visitors, Map<String, Integer> score) {
+
+        ArrayList<String> visitorsExceptFriends = excludeFriendFromVisitor(userFriends, visitors);
+        for (String i : visitorsExceptFriends) {
+            if (!score.containsKey(i)) {
+                score.put(i, 0);
+            }
+            score.put(i, score.get(i) + 1);
+        }
+        return score;
+    }
+
     private static ArrayList<String> excludeFriendFromVisitor(List<String> userFriends, List<String> visitors) {
 
         ArrayList<String> visitorsExceptFriends = new ArrayList<>(visitors);
-        for (String i : userFriends) { //방문자 중 친구 제외
+        for (String i : userFriends) {
             if (visitorsExceptFriends.contains(i)) {
                 visitorsExceptFriends.remove(i);
             }
