@@ -8,6 +8,7 @@ public class Problem7 {
         List<String> realFriends = new ArrayList<>(); //사용자와 이미 친구인 리스트
         List<String> withFriends = new ArrayList<>(); //친구의 친구 리스트(사용자와 친구X) -> +10점
         List<String> visitFriends = new ArrayList<>(); //방문자 리스트 -> +1점
+        Map<String, Integer> friendScore = new HashMap<>(); //친구들의 추천 점수를 저장하는 맵 생성
 
         for (int i = 0; i < friends.size(); i++) {
             if (user.equals(friends.get(i).get(1))) {
