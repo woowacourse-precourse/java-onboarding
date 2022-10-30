@@ -31,4 +31,11 @@ class Problem1 {
     private static int getMAxScore(List<Integer> pages) {
         return Math.max(getMSum(pages.get(0)), getMul(pages.get(1)));
     }
+
+    private static int playGame(List<Integer> pobi, List<Integer> crong) {
+        int pobiScore = getMAxScore(pobi);
+        int crongScore = getMAxScore(crong);
+
+        return pobiScore > crongScore ? 1 : pobiScore < crongScore ? 2 : 0;
+    }
 }
