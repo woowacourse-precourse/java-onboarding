@@ -7,8 +7,12 @@ public class Problem4 {
     private static final int SUM_KEY_VALUE = 155;
 
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        StringBuilder sb = new StringBuilder();
+
+        for (char key : word.toCharArray()) {
+            addValueToOutput(key, sb);
+        }
+        return sb.toString();
     }
 
     private static Map<Character, Character> createReverseDict() {
@@ -19,13 +23,21 @@ public class Problem4 {
         }
         return reverseDict;
     }
-    
+
     private static char getOriginCaseValue(Map<Character, Character> dictionary, char key) {
         char value = getDictValue(dictionary, key);
         if (Character.isLowerCase(key)) {
             return Character.toLowerCase(value);
         }
         return value;
+    }
+
+    private static void addValueToOutput(char key, StringBuilder sb) {
+        if (!Character.isAlphabetic(key)) {
+            sb.append(key);
+            return;
+        }
+        sb.append(getOriginCaseValue(createReverseDict(), key));
     }
 
     private static char getReverseValue(char base) {
