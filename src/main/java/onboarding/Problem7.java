@@ -46,6 +46,22 @@ public class Problem7 {
         Set<String> setVisitors = new HashSet<String>(visitorsnames);
         List<String> newVisitorsNames = new ArrayList<String>(setVisitors);
 
+        //방문자 중 친구 추천 점수를 받을 수 있는 인물과 그 점수
+        String[][] checkScoreVisitors = new String[newVisitorsNames.size()][2];
+        for (int r = 0; r < newVisitorsNames.size(); r++) {
+            checkScoreVisitors[r][0] = newVisitorsNames.get(r);
+            checkScoreVisitors[r][1] = "0";
+        }
+        for (int c = 0; c < visitors.size(); c++) {
+            for (int d = 0; d < checkScoreVisitors.length; d++) {
+                String pattern = checkScoreVisitors[d][0];
+                if (pattern.equals(visitors.get(c))) {
+                    checkScoreVisitors[d][1] = String.valueOf(Integer.parseInt(checkScoreVisitors[d][1]) + 1);
+                    System.out.println("방문자 중도 확인 : " + Arrays.deepToString(checkScoreVisitors));
+                }
+            }
+        }
+
         return newNames;
     }
 }
