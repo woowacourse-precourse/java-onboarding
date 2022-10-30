@@ -30,12 +30,12 @@ public class Problem7 {
     }
 
     private static Map<String, Set<String>> createGraph(List<List<String>> friends) {
-        Map<String, Set<String>> friendsGraph = initGraph(friends); // 그래프 노드 정의
+        Map<String, Set<String>> friendsGraph = initNode(friends); // 그래프 노드 정의
         linkingNode(friends, friendsGraph); // 각 노드간 연결 정의
         return friendsGraph;
     }
 
-    private static Map<String, Set<String>> initGraph(List<List<String>> nameList) {
+    private static Map<String, Set<String>> initNode(List<List<String>> nameList) {
         Map<String, Set<String>> graph = new HashMap<>();
         // name 그래프 초기화
         for (List<String> names : nameList) {
