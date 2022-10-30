@@ -38,7 +38,7 @@ public class Problem7 {
         for(int i =0; i < Math.max(sg.userLength(),5); i++ ){
             if (users.get(i).recommendationValue > 0){
                 answer.add(users.get(i).name);
-                System.out.printf("%s(%d) ", users.get(i).name, users.get(i).recommendationValue);
+//                System.out.printf("%s(%d) ", users.get(i).name, users.get(i).recommendationValue);
             }
         }
 
