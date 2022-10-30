@@ -10,7 +10,7 @@ class Problem1 {
             || pobi.size() > 2 || crong.size() > 2
             || crong.get(0) > crong.get(1) || pobi.get(0) > pobi.get(1)
             || (pobi.get(1) - pobi.get(0) != 1) || (crong.get(1) - crong.get(0) != 1))
-                throw new Exception("페이지가 안맞습니다!");
+                throw new Exception("예외가 발생 하였습니다");
         } catch (Exception e) {
             return -1;
         }

@@ -2,6 +2,16 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
+        try {
+            if (cryptogram.length() < 1 || cryptogram.length() > 1000)
+                throw new Exception("예외가 발생 하였습니다");
+            for (int i = 0; i < cryptogram.length(); i++) {
+                if(97 > (int)cryptogram.charAt(i))
+                    throw new Exception("소문자 이외의 문자가 포함되었습니다");
+            }
+        } catch (Exception e) {
+            System.out.println("ErrorMessage : "  + e.getMessage());
+        }
         String answer = duplicated(cryptogram);
         return answer;
     }
