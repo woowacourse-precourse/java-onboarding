@@ -1,17 +1,17 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     private static final HashMap<String, LinkedList<String>> relation = new HashMap<>();
     private static final HashMap<String, Integer> score = new HashMap<>();
+    private static final int MAX_SIZE = 5;
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
         makeFriendRelation(friends);
         setAcquaintanceScore(user);
+        setVisitorsScore(user, visitors);
         return answer;
     }
 
@@ -38,6 +38,18 @@ public class Problem7 {
            for(String name : relation.get(friend)){
                if(!name.equals(user)) score.replace(name, score.get(name) + 10);
            }
+        }
+    }
+
+    public static void setVisitorsScore(String user, List<String> visitors){
+        for(String visitor : visitors){
+            if(relation.get(user).contains(visitor)) continue; // 방문자가 이미 친구라면
+
+            if(score.containsKey(visitor)){
+                score.replace(visitor, score.get(visitor) + 1);
+            }else{
+                score.put(visitor, 1);
+            }
         }
     }
 }
