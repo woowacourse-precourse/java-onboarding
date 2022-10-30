@@ -202,6 +202,26 @@ class ApplicationTest {
         }
 
         @Test
+        void case3() {
+            String cryptogram = "aabba";
+            String result = "a";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void case4() {
+            String cryptogram = "browoanoonaowommnaon";
+            String result = "brnaon";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+        @Test
+        void case5() {
+            String cryptogram = "zyelleyzl";
+            String result = "l";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
         void createCharactersSetSetTest() {
             String cryptogram = "zyelleyz";
             assertThat(Problem2.createCharactersSet(cryptogram).size()).isEqualTo(4);
