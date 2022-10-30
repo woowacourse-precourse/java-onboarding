@@ -30,11 +30,11 @@ public class Problem5 {
         List<Integer> answer = convertMoney(money);
         return answer;
     }
-//
-//    public static void main(String[] args) {
-//        makeUnitsList();
-//        System.out.println(solution(15000));
-//    }
+
+    public static void main(String[] args) {
+        makeUnitsList();
+        System.out.println(unitsList);
+    }
 
     private static int distinguishOdd(int inputNum){
         if(inputNum == 7)
@@ -67,6 +67,7 @@ public class Problem5 {
             ret.add(inputMoney/unitsList.get(i));
             inputMoney = inputMoney%unitsList.get(i);
         }
+        unitsList.clear();
         return ret;
     }
 }

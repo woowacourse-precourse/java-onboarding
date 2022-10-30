@@ -236,6 +236,8 @@ public class Problem7 {
             if(i < 5)
                 ret.add(keySet.get(i));
         }
+        userToFriendList.clear();
+        friendToFriendMap.clear();
         return ret;
     }
 }

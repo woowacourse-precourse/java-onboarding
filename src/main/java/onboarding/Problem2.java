@@ -37,8 +37,8 @@ package onboarding;
 public class Problem2 {
 
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return makeResult(answer);
+        String answer = makeResult(cryptogram);
+        return answer;
     }
 
     private static boolean compareChar(char current, char next)
