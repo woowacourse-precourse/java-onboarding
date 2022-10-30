@@ -3,17 +3,15 @@ package onboarding;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Problem6 {
 
     private static final HashMap<String, String> DUPLICATION_NICKNAME = new HashMap<>();
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-
         HashSet<String> emails = nicknameDuplicateCheck(forms);
-
-        return answer;
+        return emailSort(emails);
     }
 
     private static HashSet<String> nicknameDuplicateCheck(List<List<String>> forms) {
@@ -38,4 +36,9 @@ public class Problem6 {
         return emails;
     }
 
+    private static List<String> emailSort(HashSet<String> emails) {
+        return emails.stream()
+                .sorted()
+                .collect(Collectors.toList());
+    }
 }
