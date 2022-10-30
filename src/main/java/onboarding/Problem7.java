@@ -1,21 +1,20 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
 
-        List<String> friend_list = createFrined_List(user, friends);
-        HashMap<String, Integer> strange_map = createStranger_List(friends, visitors, friend_list);
+        List<String> friend_list = createFrinedList(user, friends);
+        HashMap<String, Integer> strange_map = createStrangerMap(friends, visitors, friend_list);
         modifyScore(friends, visitors, friend_list, strange_map);
+        ArrayList<Map.Entry<String, Integer>> sort_strange_map = sortStrangeMap(strange_map);
 
         return answer;
     }
 
-    public static List<String> createFrined_List(String user, List<List<String>> friends) {
+    public static List<String> createFrinedList(String user, List<List<String>> friends) {
         List<String> friend_list = new ArrayList<>();
 
         friend_list.add(user);
@@ -27,7 +26,7 @@ public class Problem7 {
         return friend_list;
     }
 
-    public static HashMap<String, Integer> createStranger_List(List<List<String>> friends,List<String> visitors, List<String> friend_list) {
+    public static HashMap<String, Integer> createStrangerMap(List<List<String>> friends,List<String> visitors, List<String> friend_list) {
         HashMap<String, Integer> strange_map = new HashMap<>();
 
         for(List<String> f : friends) {
@@ -55,5 +54,16 @@ public class Problem7 {
                 strange_map.put(v, strange_map.get(v) + 1);
             }
         }
+    }
+
+    public static ArrayList<Map.Entry<String, Integer>> sortStrangeMap(HashMap<String, Integer> strange_map) {
+        ArrayList<Map.Entry<String, Integer>> sort_map = new ArrayList<>(strange_map.entrySet());
+
+        Collections.sort(sort_map, (obj1, obj2) -> {
+            if(obj1.getValue() == obj2.getValue()) return obj1.getKey().compareTo(obj2.getKey());
+            return obj2.getValue().compareTo(obj1.getValue());
+        });
+
+        return sort_map;
     }
 }
