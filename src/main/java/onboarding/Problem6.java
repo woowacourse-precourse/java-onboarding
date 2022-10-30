@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Problem6 {
@@ -30,6 +31,31 @@ public class Problem6 {
             }
         }
         return duplicatedIndex;
+    }
+
+    static boolean checkNameDuplication(String name, int indexOfName) {
+        List<String> nameSplitBy2 = splitNameBy2(name);
+        boolean isDuplicated = false;
+        for (int i = 0; i < nameSplitBy2.size(); i++) {
+            String twoCharacters = nameSplitBy2.get(i);
+            boolean isNameDuplicated = Database.checkDuplicationByTwoCharacters(twoCharacters, indexOfName);
+            if (isNameDuplicated) {
+                isDuplicated = true;
+                break;
+            }
+        }
+        return isDuplicated;
+    }
+
+    static List<String> splitNameBy2(String name) {
+        List<String> nameSplitBy2 = new ArrayList<>();
+        List<String> characterList = new ArrayList<>(Arrays.asList(name.split("")));
+        int lengthOfName = characterList.size();
+        for (int i = 0; i < lengthOfName - 1; i ++) {
+            String twoCharacters = characterList.get(i) + characterList.get(i+1);
+            nameSplitBy2.add(twoCharacters);
+        }
+        return nameSplitBy2;
     }
 }
 
