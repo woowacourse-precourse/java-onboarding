@@ -90,7 +90,8 @@ public class Problem7 {
         saveAcquaintanceScorePQ(pq, recommendMap);
     }
 
-    private static void saveAcquaintanceScoreRM(String user, Map<String, List<String>> relationship, Map<String, Boolean> visited, Map<String, Recommend> recommendMap) {
+    private static void saveAcquaintanceScoreRM(String user, Map<String, List<String>> relationship,
+                                                Map<String, Boolean> visited, Map<String, Recommend> recommendMap) {
         Queue<String> queue = new LinkedList<>();
         queue.add(user);
         visited.put(user, true);
@@ -108,30 +109,37 @@ public class Problem7 {
         }
     }
 
-    private static void investigateUserRelationship(Map<String, List<String>> relationship, Map<String, Boolean> visited, Map<String, Recommend> recommendMap, Queue<String> queue, int level) {
-        String nickname = queue.poll();
-        visited.put(nickname, true);
-        for (String friend : relationship.get(nickname)) {
-            if (!visited.get(friend)) {
-                queue.add(friend);
-                addScoreFriendsAcquaintance(recommendMap, level, friend);
-            }
-        }
-    }
-
-    private static void saveAcquaintanceScorePQ(PriorityQueue<Recommend> pq, Map<String, Recommend> recommendMap) {
+    private static void saveAcquaintanceScorePQ(PriorityQueue<Recommend> pq,
+                                                Map<String, Recommend> recommendMap) {
         for (String key : recommendMap.keySet()) {
             pq.add(recommendMap.get(key));
         }
     }
 
-    private static void addScoreFriendsAcquaintance(Map<String, Recommend> recommendMap, int level, String friend) {
-        if (level == 2) {
-            Recommend recommend = getRecommend(recommendMap, friend);
-            recommend.addScore(10);
-            if (recommend.getScore() == 10) {
-                recommendMap.put(friend, recommend);
+    private static void investigateUserRelationship(Map<String, List<String>> relationship,
+                                                    Map<String, Boolean> visited,
+                                                    Map<String, Recommend> recommendMap,
+                                                    Queue<String> queue, int level) {
+        String nickname = queue.poll();
+        visited.put(nickname, true);
+        for (String friend : relationship.get(nickname)) {
+            if (!visited.get(friend) && level < 2) {
+                visited.put(friend, true);
+                queue.add(friend);
+                continue;
             }
+            if (!visited.get(friend)) {
+                addScoreFriendsAcquaintance(recommendMap, level, friend);
+            }
+        }
+    }
+
+    private static void addScoreFriendsAcquaintance(Map<String, Recommend> recommendMap,
+                                                    int level, String friend) {
+        Recommend recommend = getRecommend(recommendMap, friend);
+        recommend.addScore(10);
+        if (recommend.getScore() == 10) {
+            recommendMap.put(friend, recommend);
         }
     }
 
@@ -142,7 +150,8 @@ public class Problem7 {
         return new Recommend(friend, 0);
     }
 
-    private static void setRelationship(Map<String, List<String>> relationship, List<List<String>> friends, Map<String, Boolean> visited) {
+    private static void setRelationship(Map<String, List<String>> relationship, List<List<String>> friends,
+                                        Map<String, Boolean> visited) {
         for (List<String> friend : friends) {
             for (String nickname : friend) {
                 initializeRelationship(relationship, visited, nickname);
@@ -152,7 +161,8 @@ public class Problem7 {
         }
     }
 
-    private static void initializeRelationship(Map<String, List<String>> relationship, Map<String, Boolean> visited, String nickname) {
+    private static void initializeRelationship(Map<String, List<String>> relationship,
+                                               Map<String, Boolean> visited, String nickname) {
         if (!relationship.containsKey(nickname)) {
             relationship.put(nickname, new ArrayList<>());
             visited.put(nickname, false);
