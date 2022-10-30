@@ -11,8 +11,9 @@ public class Problem7 {
 
         searchFriend(user, friends, list);
         addScore(user, list, friends, score);
+        addVisitScore(visitors, list, score);
+        answer = sortScore(score);
 
-        System.out.println(score);
         return answer;
     }
 
@@ -41,5 +42,26 @@ public class Problem7 {
                 }
             }
         }
+    }
+
+    // 사용자의 타임 라인에 방문한 사람에게 점수를 부여하는 기능
+    static void addVisitScore(List<String> visitors, List<String> list, TreeMap<String, Integer> score) {
+        List<String> temp = new ArrayList<>(visitors);
+        temp.removeAll(list);
+
+        for (int i = 0; i < temp.size(); i++) {
+            score.put(temp.get(i), score.getOrDefault(temp.get(i), 0) + 1);
+        }
+    }
+
+    // 정렬하는 기능
+    static List<String> sortScore(TreeMap<String, Integer> score) {
+        List<String> result = new ArrayList<>(score.keySet());
+        result.sort((Comparator.comparingInt(score::get).reversed()));
+
+        if (result.size() > 5) {
+            result = result.subList(0, 5);
+        }
+        return result;
     }
 }
