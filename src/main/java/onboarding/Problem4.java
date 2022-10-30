@@ -17,10 +17,10 @@ public class Problem4 {
         //a ~ z까지 담고 있는 List를 만들자 대문자 소문자 각각
         List<Character> alphabetS = new ArrayList<>();
         List<Character> alphabetL = new ArrayList<>();
-        for (int i = (int)'a'; i <= (int)'z'; i++){
+        for (int i = 'a'; i <= 'z'; i++){
             alphabetS.add((char)i);
         }
-        for (int i = (int)'A'; i <= (int)'Z'; i++) {
+        for (int i = 'A'; i <= 'Z'; i++) {
             alphabetL.add((char)i);
         }
         /**
