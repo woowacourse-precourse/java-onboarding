@@ -1,9 +1,5 @@
 package onboarding;
-
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -57,26 +53,14 @@ class Problem1 {
     }
 
     public static boolean checkOddEvenValidation(List<Integer> values) {
-        if (values.get(0) % 2 == 0 && values.get(1) % 2 == 1) {
-            return false;
-        }
-
-        return true;
+        return values.get(0) % 2 == 1 && values.get(1) % 2 == 0;
     }
 
     public static boolean checkSequenceValidation(List<Integer> values) {
-        if (values.get(0) + 1 != values.get(1)) {
-            return false;
-        }
-
-        return true;
+        return values.get(0) + 1 == values.get(1);
     }
 
     public static boolean validateStartOrLastPage(List<Integer> values) {
-        if (values.get(0) == 1 || values.get(1) == 400) {
-            return false;
-        }
-
-        return true;
+        return (values.get(0) > 1 && values.get(1) > 2) && (values.get(0) < 399 && (values.get(1) < 400));
     }
 }
