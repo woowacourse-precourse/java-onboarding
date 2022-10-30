@@ -10,7 +10,6 @@ public class Problem4 {
 
         ArrayList<String> alphaList1 = new ArrayList<>(Arrays.asList(str.split("")));
         ArrayList<String> alphaList2 = new ArrayList<>(Arrays.asList(str2.split("")));
-        //System.out.println(alphaList1);
 
         StringBuilder answer = new StringBuilder();
         for (int i=0; i<word.length();i++){
