@@ -5,8 +5,7 @@ import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        return getDuplicatedCrewEmailList(forms, getDuplicatedStringList(getDuplicatedStringCounts(forms)));
     }
 
     public static Map<String, Integer> getDuplicatedStringCounts(List<List<String>> forms) {
@@ -47,13 +46,13 @@ public class Problem6 {
 
     private static boolean isDuplicatedCrew(List<String> crew, List<String> duplicatedStringList) {
         return duplicatedStringList.stream()
-                .filter(string -> isDuplicatedCrewName(crew, string))
+                .filter(string -> isDuplicatedCrewName(crew.get(1), string))
                 .findAny()
                 .isPresent();
     }
 
-    private static boolean isDuplicatedCrewName(List<String> crew, String string) {
-        if (crew.get(1).indexOf(string) != -1) {
+    private static boolean isDuplicatedCrewName(String crewName, String string) {
+        if (crewName.indexOf(string) != -1) {
             return true;
         }
         return false;
