@@ -66,14 +66,9 @@ public class Problem2 {
     }
 
     private static void usingQueueMakingCompressionResult(StringBuilder afterCompressionExtractFromStack, Deque<Character> queue) {
-        while (true) {
-            if (!queue.isEmpty()) {
-                afterCompressionExtractFromStack.append(queue.remove());
-                continue;
-            }
-            break;
+        while (!queue.isEmpty()) {
+            afterCompressionExtractFromStack.append(queue.remove());
         }
     }
-
 
 }
