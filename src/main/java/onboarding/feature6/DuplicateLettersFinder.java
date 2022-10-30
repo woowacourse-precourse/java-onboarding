@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class DuplicateCharactersFinder {
+public class DuplicateLettersFinder {
     private String duplicateLetters = null;
     private String currentEmail;
     private String nextEmail;
@@ -19,7 +19,7 @@ public class DuplicateCharactersFinder {
     private List<String> userNicknames;
     private Map<String, Set<String>> filteredResults = new HashMap<>(); // {key: duplicate letters & value: filtered emails}
 
-    public DuplicateCharactersFinder(UserInfo userInfo) {
+    public DuplicateLettersFinder(UserInfo userInfo) {
         userEmails = userInfo.getEmails();
         userNicknames = userInfo.getNicknames();
     }
