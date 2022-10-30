@@ -3,6 +3,7 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+    private final int MIN_PAGE = 0;
     private final int MAX_PAGE = 400;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -18,7 +19,10 @@ class Problem1 {
         if (leftPageNumber % 2 != 0) {  // 왼쪽 페이지가 짝수일 경우
             return false;
         }
-        else if (rightPageNumber > MAX_PAGE) {  // 최대 페이지가 넘어갈 경우
+        else if (leftPageNumber < MIN_PAGE) {   // 최소 페이지보다 작을 경우
+            return false;
+        }
+        else if (rightPageNumber > MAX_PAGE) {  // 최대 페이지보다 클 경우
             return false;
         }
         else if (rightPageNumber - leftPageNumber != 1) {    // 페이지가 연속되지 않는 경우
@@ -27,6 +31,7 @@ class Problem1 {
 
         return true;
     }
+
 
 
 }
