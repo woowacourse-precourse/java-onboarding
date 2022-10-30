@@ -21,6 +21,7 @@ class User {
     private static final String NOT_MATCH_EMAIL_SIZE = "이메일의 길이는 11 이상 20 미만으로 입력해야 합니다";
     private static final int MINIMUM_LENGTH_EMAIL = 11;
     private static final int MAXIMUM_LENGTH_EMAIL = 20;
+    private static final String ONLY_MATCH_KOREAN = "한글만 입력해주세요";
 
 
     static List<String> getUserDuplicatedNickName(List<List<String>> forms){
@@ -60,7 +61,19 @@ class User {
         validateOutOfUserCount(forms);
         validateEmailFormat(forms);
         validateSizeOfEmail(forms);
+        validateNickNameOnlyKorean(forms);
+    }
 
+    private static void validateNickNameOnlyKorean(List<List<String>> forms) {
+        for (List<String> emailObject : forms) {
+            String nickName = emailObject.get(1);
+            if(nickName.matches("^[가-힣]*$"))
+                continue;
+            else{
+                System.out.println("nickName = " + nickName);
+                throw new IllegalArgumentException(ONLY_MATCH_KOREAN);
+            }
+        }
     }
 
     private static void validateSizeOfEmail(List<List<String>> forms) {
