@@ -49,4 +49,10 @@ class Crew {
         }
     }
 
+    static void validateNickNameLength(String nickName) {
+        if (nickName.length() < 1 || 20 <= nickName.length()) {
+            throw new IllegalStateException("1자 이상 20자 미만의 닉네임을 입력해 주세요");
+        }
+    }
+
 }
