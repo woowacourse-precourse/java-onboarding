@@ -30,4 +30,12 @@ public class Problem2 {
             stack.pop();
         }
     }
+
+    private static String stackToString(Stack<Character> stack) {
+        StringBuilder sb = new StringBuilder();
+
+        stack.forEach(sb::append);
+
+        return sb.toString();
+    }
 }
