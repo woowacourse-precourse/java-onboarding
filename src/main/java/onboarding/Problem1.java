@@ -23,4 +23,13 @@ class Problem1 {
         }
         return answer;
     }
+    private static int getNum(List<Integer> pobi, List<Integer> crong, int i, int j) {
+        int num;
+        if(i == 0){
+            num = pobi.get(j);
+        }else{
+            num = crong.get(j);
+        }
+        return num;
+    }
 }
