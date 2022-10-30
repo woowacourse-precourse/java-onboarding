@@ -67,6 +67,13 @@ public class Problem4 {
     public static String solution(String word) {
         String answer = "";
 
+        // 제한사항
+        if(word.length() < 1 || word.length() > 1000)
+        {
+            answer = "문자열 길이 제한";
+            return answer;
+        }
+
         // 문자열 리스트화
         List<Character> wordList = getTransList(word);
 
