@@ -42,6 +42,11 @@ public class Problem7 {
         boolean exists(String name) {
             return personMap.containsKey(name);
         }
+        void countVisit(List<String> visitors) {
+            for(String visitor : visitors) {
+                getPerson(visitor).count();
+            }
+        }
     }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
