@@ -4,7 +4,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem7 {
-
     static Map<String, List<String>> friendsListMap = new HashMap<String, List<String>>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -19,13 +18,11 @@ public class Problem7 {
         // 타임라인 방문 친구 점수계산
         recommendScore = timelineVisitorCount(user, visitors, recommendScore);
 
-        //본인 삭제
+        // 본인 삭제
         recommendScore.remove(user);
 
-        //정렬
-        recommendScore.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).forEach(f -> {
-            answer.add(f.getKey());
-        });
+        // 본인친구 제외 & 정렬
+        answer = recommendScore.entrySet().stream().filter(f -> !friendsListMap.get(user).contains(f.getKey())).sorted(Map.Entry.comparingByKey()).sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).map(f -> f.getKey()).limit(5).collect(Collectors.toList());
 
         return answer;
     }

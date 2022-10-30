@@ -19,32 +19,17 @@ public class Problem3 {
             rightNumber= number % digit;
             progressNumber = (number/digit) % 10;
 
-            if(progressNumber > 3){
-                answer += (leftNumber + 1) * digit;
-            }else if(progressNumber == 3){
-                answer += leftNumber * digit + rightNumber + 1;
-            }else{
-                answer += leftNumber * digit;
+            for(int i=3; i<10; i += 3){
+                if(progressNumber > i){
+                    answer += (leftNumber + 1) * digit;
+                }else if(progressNumber == i){
+                    answer += leftNumber * digit + rightNumber + 1;
+                }else{
+                    answer += leftNumber * digit;
+                }
             }
-
-            if(progressNumber > 6){
-                answer += (leftNumber + 1) * digit;
-            }else if(progressNumber == 6){
-                answer += leftNumber * digit + rightNumber + 1;
-            }else{
-                answer += leftNumber * digit;
-            }
-
-            if(progressNumber == 9){
-                answer += leftNumber * digit + rightNumber + 1;
-            }else{
-                answer += leftNumber  * digit;
-            }
-
             digit *= 10;
-
         }
-
         return answer;
     }
 }

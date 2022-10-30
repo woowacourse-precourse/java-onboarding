@@ -9,7 +9,7 @@ public class Problem6 {
         List<String> answer = new ArrayList<String>();
 
         //전체 문자열 저장
-        List<String> splitStrList = new ArrayList<String>();
+        HashSet<String> splitStrList = new HashSet<String>();
 
         List<String> overlapStrList = new ArrayList<String>();;
 
