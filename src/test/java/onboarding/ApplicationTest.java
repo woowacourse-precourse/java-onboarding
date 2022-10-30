@@ -8,66 +8,66 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ApplicationTest {
-//    @Nested
-//    class Problem1Test {
-//        @Test
-//        void case1() {
-//            List<Integer> pobi = List.of(97, 98);
-//            List<Integer> crong = List.of(197, 198);
-//            int result = 0;
-//            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
-//        }
-//
-//        @Test
-//        void case2() {
-//            List<Integer> pobi = List.of(131, 132);
-//            List<Integer> crong = List.of(211, 212);
-//            int result = 1;
-//            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
-//        }
-//
-//        @Test
-//        void case3() {
-//            List<Integer> pobi = List.of(99, 102);
-//            List<Integer> crong = List.of(211, 212);
-//            int result = -1;
-//            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
-//        }
-//    }
+    @Nested
+    class Problem1Test {
+        @Test
+        void case1() {
+            List<Integer> pobi = List.of(97, 98);
+            List<Integer> crong = List.of(197, 198);
+            int result = 0;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
 
-//    @Nested
-//    class Problem2Test {
-//        @Test
-//        void case1() {
-//            String cryptogram = "browoanoommnaon";
-//            String result = "brown";
-//            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
-//        }
-//
-//        @Test
-//        void case2() {
-//            String cryptogram = "zyelleyz";
-//            String result = "";
-//            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
-//        }
-//    }
+        @Test
+        void case2() {
+            List<Integer> pobi = List.of(131, 132);
+            List<Integer> crong = List.of(211, 212);
+            int result = 1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
 
-//    @Nested
-//    class Problem3Test {
-//        @Test
-//        void case1() {
-//            int number = 13;
-//            int result = 4;
-//            assertThat(Problem3.solution(number)).isEqualTo(result);
-//        }
-//
-//        @Test
-//        void case2() {
-//            int number = 33;
-//            int result = 14;
-//            assertThat(Problem3.solution(number)).isEqualTo(result);
-//        }
-//    }
+        @Test
+        void case3() {
+            List<Integer> pobi = List.of(99, 102);
+            List<Integer> crong = List.of(211, 212);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+    }
+
+    @Nested
+    class Problem2Test {
+        @Test
+        void case1() {
+            String cryptogram = "browoanoommnaon";
+            String result = "brown";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void case2() {
+            String cryptogram = "zyelleyz";
+            String result = "";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+    }
+
+    @Nested
+    class Problem3Test {
+        @Test
+        void case1() {
+            int number = 13;
+            int result = 4;
+            assertThat(Problem3.solution(number)).isEqualTo(result);
+        }
+
+        @Test
+        void case2() {
+            int number = 33;
+            int result = 14;
+            assertThat(Problem3.solution(number)).isEqualTo(result);
+        }
+    }
 
 //    @Nested
 //    class Problem4Test {
@@ -79,22 +79,22 @@ class ApplicationTest {
 //        }
 //    }
 
-    @Nested
-    class Problem5Test {
-        @Test
-        void case1() {
-            int money = 50_237;
-            List<Integer> result = List.of(1, 0, 0, 0, 0, 2, 0, 3, 7);
-            assertThat(Problem5.solution(money)).isEqualTo(result);
-        }
-
-        @Test
-        void case2() {
-            int money = 15_000;
-            List<Integer> result = List.of(0, 1, 1, 0, 0, 0, 0, 0, 0);
-            assertThat(Problem5.solution(money)).isEqualTo(result);
-        }
-    }
+//    @Nested
+//    class Problem5Test {
+//        @Test
+//        void case1() {
+//            int money = 50_237;
+//            List<Integer> result = List.of(1, 0, 0, 0, 0, 2, 0, 3, 7);
+//            assertThat(Problem5.solution(money)).isEqualTo(result);
+//        }
+//
+//        @Test
+//        void case2() {
+//            int money = 15_000;
+//            List<Integer> result = List.of(0, 1, 1, 0, 0, 0, 0, 0, 0);
+//            assertThat(Problem5.solution(money)).isEqualTo(result);
+//        }
+//    }
 //
 //    @Nested
 //    class Problem6Test {
