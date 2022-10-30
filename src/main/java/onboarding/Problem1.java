@@ -39,4 +39,11 @@ class Problem1 {
         }
         return addSum;
     }
+    private static int getMulSum(int mulSum, int num) {
+        while(num > 0) {
+            mulSum *= (num % 10);
+            num /= 10;
+        }
+        return mulSum;
+    }
 }
