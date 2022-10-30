@@ -61,7 +61,62 @@ public class Problem7 {
             }
         }
         //방문자의 경우는 +1점
+        Collections.sort(mapSort, new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o2.getValue().compareTo(o1.getValue());
+            }
+        });
+        //이를 통해서 점수 순서대로 정렬을 함
 
+        int stop = 0;
+        List<String> keep = new ArrayList<>();
+        int size = 0;
+
+        while (size < 5) {
+            if (stop == mapSort.size()) {
+                break;
+            }
+            returnMap = add(mapSort, sorts, stop);
+            stop = returnMap.get(sorts);
+            Iterator<List<String>> keys = returnMap.keySet().iterator();
+            keep = keys.next();
+            size += keep.size();
+
+            for (int i = 0; i < keep.size(); i++) {
+                answer.add(keep.get(i));
+                if (answer.size() == 5) {
+                    break;
+                }
+            }
+
+            keep.clear();
+        }
         return answer;
+    }
+
+    static Map<List<String>, Integer> add(List<Map.Entry<String,Integer>> sortMap, List<String> sorts, int stop) {
+        Map<List<String >, Integer> sort = new HashMap<>();
+        for (int i = 0; i < sortMap.size(); i++) {
+            if (stop == sortMap.size())
+                break;
+            if (i > 0) {
+                if (stop < sortMap.size() && sortMap.get(stop).getValue() != sortMap.get(stop - 1).getValue()) {
+                    sort.put(sorts, stop);
+                    break;
+                } else {
+                    sorts.add(sortMap.get(stop).getKey());
+                    Collections.sort(sorts);
+                    stop = stop + 1;
+                }
+
+            }
+            else {
+                sorts.add(sortMap.get(stop).getKey());
+                stop = stop + 1;
+            }
+        }
+        sort.put(sorts, stop);
+        return sort;
     }
 }
