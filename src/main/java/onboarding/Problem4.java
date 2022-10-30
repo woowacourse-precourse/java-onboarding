@@ -49,4 +49,8 @@ public class Problem4 {
         return result.toString();
     }
 
+    public static String solution(String word) {
+
+        return convertWordsIntoReverse(word);
+    }
 }
