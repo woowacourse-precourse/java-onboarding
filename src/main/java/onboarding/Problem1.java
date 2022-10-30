@@ -23,7 +23,9 @@ class Problem1 {
 
         if (checkPageRange(pobi) && checkPageRange(crong)){
             if (checkFirstPageOdd(pobi) && checkFirstPageOdd(crong)){
-                answer = findWinner();
+                if (checkPagesDefferOne(pobi) && checkPagesDefferOne(crong)){
+                    answer = findWinner();
+                }
             }
         }
 
@@ -103,6 +105,21 @@ class Problem1 {
         int pageIndexValue = pageList.get(0);
 
         if (pageIndexValue % 2 == 0){
+            returnValue = False;
+        }
+
+        return returnValue;
+    }
+
+    public static boolean checkPagesDefferOne(List<Integer> pageList){
+        boolean returnValue = True;
+        int firstPage;
+        int secondPage;
+
+        firstPage = pageList.get(0);
+        secondPage = pageList.get(1);
+
+        if (firstPage + 1 != secondPage){
             returnValue = False;
         }
 
