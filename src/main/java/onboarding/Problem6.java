@@ -17,8 +17,8 @@ public class Problem6 {
         AddAllCrews(forms);
 
         for (List<String> crew: forms) {
-            if (!validateCrew(crew)) {
-
+            if (validateCrew(crew)) {
+                addDuplicateNickname(crew);
             }
         }
 
@@ -56,35 +56,30 @@ public class Problem6 {
             return false;
         }
 
-        if (isDuplicateNickname(id)) {
-            System.out.printf("%d번째 입력된 %s님의 닉네임과 비슷한 닉네임이 있습니다.", id, nickname);
-            return false;
-        }
-
         return true;
     }
 
     /**
-     * 크루 닉네임 중복 확인
-     * @param id 크루 고유 번호
-     * @return 중복 여부
+     * 중복된 크루 닉네임 추가
+     * @param crew 크루 고유 번호
      */
-    private static boolean isDuplicateNickname(int id) {
-        List<String> crew = getCrewByCrewId(id);
+    private static void addDuplicateNickname(List<String> crew) {
+        int crewId = getCrewIdByCrew(crew);
         String nickname = crew.get(0);
         String[] twoLetterNicknames = createTwoLetterNicknames(nickname);
         ArrayList<String> internalDuplicateTwoLetterNicknames = new ArrayList<>();
 
         for (String twoLetter : twoLetterNicknames) {
             if (!internalDuplicateTwoLetterNicknames.contains(twoLetter) && isTwoLetterNickname(twoLetter)) {
-                return true;
+                int ownerTwoLetterNickname = getCrewIdByTwoLetterNickname(twoLetter);
+
+                addChangeNeedCrewEmailByCrewId(crewId);
+                addChangeNeedCrewEmailByCrewId(ownerTwoLetterNickname);
             }
 
             internalDuplicateTwoLetterNicknames.add(nickname);
-            putTwoLetterNicknameAndId(twoLetter, id);
+            putTwoLetterNicknameAndId(twoLetter, crewId);
         }
-
-        return false;
     }
 
     /**
@@ -124,7 +119,7 @@ public class Problem6 {
      * @param twoLetterNickname 분할된 크루 닉네임의 일부
      * @return 크루 고유 번호
      */
-    private static int getIdByTwoLetterNickname(String twoLetterNickname) {
+    private static int getCrewIdByTwoLetterNickname(String twoLetterNickname) {
         return twoLetterNicknamesAndIds.getOrDefault(twoLetterNickname, -1);
     }
 
