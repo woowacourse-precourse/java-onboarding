@@ -16,4 +16,13 @@ public class Problem6 {
             return false;
         else return true;
     }
+
+    /**
+     * 이메일 전체 길이가 11자 이상 20자 미만인지 확인하는 함수 구현
+     */
+    private static boolean isEmailLength(String email){
+        if (email.length()>=11 && email.length()<20)
+            return true;
+        else return false;
+    }
 }
