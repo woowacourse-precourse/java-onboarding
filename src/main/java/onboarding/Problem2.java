@@ -10,6 +10,8 @@ public class Problem2 {
 
         findingContinuousString(cryptogram, set);
 
+        cryptogram = AfterRemovingContinuousString(cryptogram, set);
+
         String answer = "answer";
         return answer;
     }
@@ -32,5 +34,19 @@ public class Problem2 {
                 set.add(r_idx);
             }
         }
+    }
+
+    /**
+     * Function for new_cryptogram Removed ContinuousString
+     * */
+    private static String AfterRemovingContinuousString(String cryptogram, Set<Integer> set) {
+        String new_cryptogram = "";
+        for (int idx = 0; idx < cryptogram.length(); idx++) {
+            if (!set.contains(idx)) {
+                new_cryptogram += cryptogram.charAt(idx);
+            }
+        }
+        cryptogram = new_cryptogram;
+        return cryptogram;
     }
 }
