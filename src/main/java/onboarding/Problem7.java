@@ -9,6 +9,7 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
 
+        //user의 친구 구하기
         List<String> userFriends = new ArrayList<>();
         for (List<String> friend:friends) {
             if(friend.get(0).equals(user)){
@@ -17,8 +18,11 @@ public class Problem7 {
                 userFriends.add(friend.get(0));
             }
         }
+
+        //점수를 저장할 해시맵
         HashMap<String,Integer> record = new HashMap<>();
 
+        //user의 친구와 친구이면 10점 추가. 단, 유저가 아니여야 함.
         for(List<String> friend : friends){
             for(String userFriend : userFriends){
                 String friendsFriend = "";
@@ -41,8 +45,9 @@ public class Problem7 {
             }
         }
 
+        //방문 횟수 만큼 점수 추가. 단, 유저가 아니여야 함
         for(String visitor : visitors){
-            if(!(userFriends.contains(visitor))){
+            if(!(visitor.equals(user))){
                 if(record.get(visitor)!=null){
                     record.put(visitor,record.get(visitor)+1);
                 }else{
@@ -53,8 +58,15 @@ public class Problem7 {
         List<String> names = new ArrayList<>(record.keySet());
         Collections.sort(names,(k,v)->record.get(v).compareTo(record.get(k)));
 
+        //이미 친구인 경우를 제외하고 answer에 추가
         for(int i=0; i<names.size();i++){
-            answer.add(names.get(i));
+            if(userFriends.contains(names.get(i))){
+                names.remove(i);
+                i--;
+            }else{
+                answer.add(names.get(i));
+            }
+
             if(i==4)break;
         }
 
