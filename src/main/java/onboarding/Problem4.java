@@ -22,7 +22,7 @@ public class Problem4 {
         for(char c : word.toCharArray()){
             if( isAlphabet(c)) {
                 answer += chungGaeGuRi(c);
-                System.out.printf("%c", chungGaeGuRi(c));
+//                System.out.printf("%c", chungGaeGuRi(c));
             }
             else{
                 answer += c;
