@@ -123,8 +123,10 @@ class RelationPro7 {
 
   public static void removeMutual(String user, RelationPro7 relation,
       ScorePro7 score) {
-    for (String name : RelationPro7.getRelation().get(user)) {
-      ScorePro7.getScoreList().remove(name);
+    if (RelationPro7.getRelation().containsKey(user)) {
+      for (String name : RelationPro7.getRelation().get(user)) {
+        ScorePro7.getScoreList().remove(name);
+      }
     }
   }
 }
@@ -148,15 +150,16 @@ class ScorePro7 {
   }
 
   public static void scoreAddTen(String user, RelationPro7 relation) {
-
-    for (String mutual : RelationPro7.getRelation().get(user)) {
-      for (String unknown : RelationPro7.getRelation().get(mutual)) {
-        if (!unknown.equals(user)) {
-          if (!scoreList.containsKey(unknown)) {
-            scoreList.put(unknown, SCORE_ZERO);
+    if (RelationPro7.getRelation().containsKey(user)) {
+      for (String mutual : RelationPro7.getRelation().get(user)) {
+        for (String unknown : RelationPro7.getRelation().get(mutual)) {
+          if (!unknown.equals(user)) {
+            if (!scoreList.containsKey(unknown)) {
+              scoreList.put(unknown, SCORE_ZERO);
+            }
+            int score = scoreList.get(unknown);
+            scoreList.put(unknown, score + SCORE_TEN);
           }
-          int score = scoreList.get(unknown);
-          scoreList.put(unknown, score + SCORE_TEN);
         }
       }
     }
