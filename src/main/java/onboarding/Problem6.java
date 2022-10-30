@@ -1,5 +1,6 @@
 package onboarding;
 
+import onboarding.exceptions.*;
 import java.util.*;
 
 public class Problem6 {
@@ -7,6 +8,28 @@ public class Problem6 {
     static String[] emailArr;
     static String[] nickArr;
     static int totalNum;
+
+    static void formsLengthExceptionCheck(List<List<String>> forms) throws LengthException {
+        if (forms.size() < 1 || forms.size() > 10000) {
+            throw new LengthException();
+        }
+    }
+    static void notEqualExceptionCheck(String strIn) throws NotEqualException {
+        String target = strIn.split("@")[1];
+        if (!target.equals("email.com")) {
+            throw new NotEqualException();
+        }
+    }
+    static void emailLengthExceptionCheck(String strIn) throws LengthException {
+        if (strIn.length() < 11 || strIn.length() > 19) {
+            throw new LengthException();
+        }
+    }
+    static void nickLengthExceptionCheck(String strIn) throws LengthException {
+        if (strIn.length() < 1 || strIn.length() > 19) {
+            throw new LengthException();
+        }
+    }
 
     static boolean compareTwoNick(String ref, String target) {
         for (int i = 0; i < ref.length()-2; i++) {
@@ -29,13 +52,23 @@ public class Problem6 {
     }
 
     static void getInfo(List<List<String>> forms) {
-        totalNum = forms.size();
-        emailArr = new String[totalNum];
-        nickArr = new String[totalNum];
-        for (int i = 0; i < totalNum; i++) {
-            String[] curInfo = forms.get(i).toArray(new String[0]);
-            emailArr[i] = curInfo[0];
-            nickArr[i] = curInfo[1];
+        try {
+            formsLengthExceptionCheck(forms);
+            totalNum = forms.size();
+            emailArr = new String[totalNum];
+            nickArr = new String[totalNum];
+            for (int i = 0; i < totalNum; i++) {
+                String[] curInfo = forms.get(i).toArray(new String[0]);
+                notEqualExceptionCheck(curInfo[0]);
+                emailLengthExceptionCheck(curInfo[0]);
+                nickLengthExceptionCheck(curInfo[1]);
+                emailArr[i] = curInfo[0];
+                nickArr[i] = curInfo[1];
+            }
+        } catch (LengthException e) {
+            System.err.println("check the length of 'forms' or 'email' or 'nickname'");
+        } catch (NotEqualException e) {
+            System.err.println("check the domain of given emails");
         }
     }
 
