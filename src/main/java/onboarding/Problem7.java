@@ -12,6 +12,7 @@ public class Problem7 {
 
     public static final int USER_FRIEND_FRIEND = 10;
     public static final int USER_TIMELINE_VISITOR = 1;
+    public static final int LIMIT_ELEMENT = 5;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, List<String>> relationMap = new HashMap<>();
@@ -42,7 +43,7 @@ public class Problem7 {
                                       .filter(friend -> isMeOrMyFriend(friend, relationMap, user))
                                       .filter(friend -> biggerThanZero(scoreMap, friend))
                                       .sorted(sortedByScoreAndName(scoreMap))
-                                      .limit(5)
+                                      .limit(LIMIT_ELEMENT)
                                       .collect(Collectors.toList());
 
         return answer;
