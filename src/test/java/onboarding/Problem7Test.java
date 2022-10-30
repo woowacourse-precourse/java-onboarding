@@ -11,11 +11,17 @@ import java.util.Map;
 import java.util.PriorityQueue;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 class Problem7Test {
+
+	@BeforeEach
+	void beforeEach() {
+		Problem7.userScoreHashMap.clear();
+	}
 
 	@Test
 	@DisplayName("점수와 이름으로 정렬된 상위 다섯 명의 사용자를 추천해야 한다.")
@@ -45,6 +51,7 @@ class Problem7Test {
 
 		List<String> solution = Problem7.solution(user, friends, visitors);
 		List<String> result = List.of("f", "g", "i", "e", "h");
+		assertThat(solution).isEqualTo(result);
 		assertThat(Problem7.userScoreHashMap.size()).isEqualTo(6);
 		assertThat(Problem7.userScoreHashMap.get("f")).isEqualTo(20);
 		assertThat(Problem7.userScoreHashMap.get("g")).isEqualTo(20);
