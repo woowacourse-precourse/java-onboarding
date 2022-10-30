@@ -4,15 +4,13 @@ import java.util.*;
 
 public class UserRepository
 {
-    private static final int DUPLICATED=1;
-    Map<String, List<User>> tokenToUserListMap;
-    Set<String> duplicatedTokens;
+    DuplicatedChecker duplicatedChecker;
     List<User> userList;
-    public UserRepository()
+
+    public UserRepository(DuplicatedChecker duplicatedChecker)
     {
         this.userList = new ArrayList<>();
-        this.tokenToUserListMap = new HashMap<>();
-        this.duplicatedTokens = new HashSet<>();
+        this.duplicatedChecker = duplicatedChecker;
     }
 
     public void addAllUser(List<User> userList)
@@ -23,15 +21,6 @@ public class UserRepository
         }
     }
 
-    private void checkDuplicated(String token)
-    {
-        List<User> userListWhoHasToken = tokenToUserListMap.get(token);
-        if(userListWhoHasToken.size() > DUPLICATED)
-        {
-            duplicatedTokens.add(token);
-        }
-
-    }
 
     public void addUser(User user)
     {
@@ -41,23 +30,13 @@ public class UserRepository
 
         for(String token : tokenList)
         {
-            List<User> userListWhoHasToken = tokenToUserListMap.getOrDefault(token,new ArrayList<>());
+            List<User> userListWhoHasToken = duplicatedChecker.getUserListWhoHasToken(token);
             userListWhoHasToken.add(user);
-            tokenToUserListMap.put(token,userListWhoHasToken);
-            checkDuplicated(token);
+
+            duplicatedChecker.check(token);
         }
     }
 
-    public Set<User> getDuplicatedUser()
-    {
-        Set<User> duplicatedUser = new TreeSet<>();
-        duplicatedTokens.forEach(token->
-        {
-            List<User> userListWhoHasToken = tokenToUserListMap.get(token);
-            duplicatedUser.addAll(userListWhoHasToken);
-        });
 
-        return duplicatedUser;
-    }
 
 }

@@ -6,7 +6,7 @@ public class Decoder
 {
     private int itemIndex;
     private int emptyIndex;
-    Stack<Character>[] stacks;
+    private Stack<Character>[] stacks;
 
     public Decoder(String cryptogram)
     {

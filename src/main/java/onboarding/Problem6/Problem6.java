@@ -25,10 +25,14 @@ public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms)
     {
-        UserRepository userRepository = new UserRepository();
+        DuplicatedChecker duplicatedChecker = new DuplicatedChecker();
+        UserRepository userRepository = new UserRepository(duplicatedChecker);
+
         List<User> userList = getUserListFromForms(forms);
         userRepository.addAllUser(userList);
-        Set<User> duplicatedUser = userRepository.getDuplicatedUser();
+
+        Set<User> duplicatedUser = duplicatedChecker.getDuplicatedUser();
+
         List<String> answer = new ArrayList<>();
         duplicatedUser.forEach(user ->
         {
