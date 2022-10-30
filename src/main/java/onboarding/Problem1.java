@@ -4,8 +4,9 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        if (!validate(pobi, crong)) return -1;
+
+        return playGame(pobi, crong);
     }
 
     private static boolean validate(List<Integer> pobi, List<Integer> crong) {
