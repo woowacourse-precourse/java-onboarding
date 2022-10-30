@@ -26,12 +26,18 @@ public class Problem4 {
         StringBuilder ans = new StringBuilder(word);
         Map<Character, Character> dictionary = makeDictionary();
 
+        for (int i=0; i<ans.length(); i++) {
+            if (isAlphabet(ans.charAt(i))){
+                ans.setCharAt(i, dictionary.get(ans.charAt(i)));
+            }
+        }
+        answer = ans.toString();
         return answer;
     }
 
     /**
-     *
-     * @return 각 알파벳에 맞는 단어 값
+     * 청개구리 사전 생성
+     * @return 청개구리 사전 반환
      */
     public static Map<Character, Character> makeDictionary() {
         Map<Character, Character> dictionary = new HashMap<>();
@@ -40,5 +46,14 @@ public class Problem4 {
             dictionary.put((char)('a'+i), (char)('z'- i));
         }
         return dictionary;
+    }
+
+    /**
+     * 알파벳인지 판단하는 함수
+     * @param origin
+     * @return 알파벳이면 True, 아니면 False
+     */
+    public static boolean isAlphabet(char origin) {
+        return ((origin >= 'A' && origin <= 'Z') || (origin >= 'a' && origin <= 'z'));
     }
 }
