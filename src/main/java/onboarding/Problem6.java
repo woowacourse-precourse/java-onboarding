@@ -59,7 +59,9 @@ class IsCorrect {
         if (emailLength < 11 || 20 <= emailLength) {
             return false;
         }
-
+        if (! email.substring(emailLength-10, emailLength-1).equals("email.com")) {
+            return false;
+        }
         return true;
     }
 }
