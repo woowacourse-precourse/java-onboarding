@@ -14,6 +14,11 @@ public class Problem7 {
         UserStore.add(target);
         UserRelation.addBulk(friends);
 
+        if(visitors.size() > 10_000) {
+            throw new Exception("visitors의 길이는 0이상 10_000 이하여야 합니다");
+        }
+//        List<User> usersRecommended = new UserScore(target.getName(), visitors);
+
         return answer;
     }
 }
