@@ -1,15 +1,13 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public class Problem3 {
 
     private final static int MIN_RANGE_NUM = 1;
     private final static int MAX_RANGE_NUM = 10000;
 
     public static int solution(int number) {
+        validateRange(number);
+
         int gameScore = game(number);
         return gameScore;
     }
@@ -24,11 +22,11 @@ public class Problem3 {
 
     private static int check369(int number) {
         String NumToString = String.valueOf(number);
-        String[] splitArray = NumToString.split("");
+        String[] splitDigits = NumToString.split("");
         int count = 0;
 
-        for(String str : splitArray) {
-            if(str.equals("3") || str.equals("6") || str.equals("9")) {
+        for(String str : splitDigits) {
+            if(Integer.parseInt(str) != 0 && Integer.parseInt(str) % 3 == 0) {
                 count++;
             }
         }
