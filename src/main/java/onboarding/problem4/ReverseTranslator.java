@@ -20,12 +20,24 @@ public class ReverseTranslator {
 	}
 
 
-	public boolean isValid(String word){
-		String wordWithoutSpace = word.replaceAll(" ", "");
-		Pattern pattern = Pattern.compile("^[a-zA-Z]*$");
-		Matcher matcher = pattern.matcher(wordWithoutSpace);
+	private boolean isInRange(int asciiCode){
+		ASCII lowerAscii = ASCII.LOWER_CASE_START_INDEX;
+		ASCII upperAscii = ASCII.UPPER_CASE_START_INDEX;
+		ASCII commonOffset = ASCII.COMMON_INDEX_OFFSET;
 
-		return matcher.find();
+		boolean isRange = false;
+
+		if(asciiCode >= lowerAscii.getValue()
+			&& asciiCode <= lowerAscii.getValue() + commonOffset.getValue()){
+			isRange = true;
+		}
+
+		if(asciiCode >= upperAscii.getValue()
+			&& asciiCode <= upperAscii.getValue() + commonOffset.getValue()){
+			isRange = true;
+		}
+
+		return isRange;
 	}
 
 
@@ -34,7 +46,7 @@ public class ReverseTranslator {
 	}
 
 	private int convertToReversedAscii(int asciiCode){
-		if(asciiCode == ASCII.WHITE_SPACE.getValue()){
+		if(!isInRange(asciiCode)){
 			return asciiCode;
 		}
 

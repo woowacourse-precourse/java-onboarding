@@ -14,10 +14,6 @@ public class Problem4 {
 
         ReverseTranslator reverseTranslator = new ReverseTranslator();
 
-        if(!reverseTranslator.isValid(word)){
-            throw new IllegalArgumentException("유효하지 않은 포맷");
-        }
-
         return reverseTranslator.generate(word);
     }
 }
