@@ -15,61 +15,44 @@ import java.util.List;
  */
 
 class Problem1 {
+    private static final int POBI = 1;
+    private static final int CROMG = 2;
+    private static final int DRAW = 0;
+    private static final int EXCEPTION = -1;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-
         if (!checkValid(pobi, crong)) {
-            answer = -1;
-            return answer;
+            return EXCEPTION;
         }
-
         int pobiValue = maxResult(pobi);
         int crongValue = maxResult(crong);
-        if (pobiValue == crongValue) {
-            answer = 0;
-        } else if (pobiValue > crongValue) {
-            answer = 1;
-        } else {
-            answer = 2;
+        if (pobiValue > crongValue) {
+            return POBI;
         }
-        return answer;
+        if (pobiValue < crongValue) {
+            return CROMG;
+        }
+        return DRAW;
     }
 
-    public static int numSum(int num) {
+    private static int numScore(int num) {
         int sum = 0;
+        int mulit = 1;
         List<Integer> digits = numToDigits(num);
         for (int digit : digits) {
             sum += digit;
+            mulit *= digit;
         }
-        return sum;
+        return Math.max(sum, mulit);
     }
 
-    public static int numMulti(int num) {
-        int multi = 1;
-        List<Integer> digits = numToDigits(num);
-        for (int digit : digits) {
-            multi *= digit;
-        }
-        return multi;
+    private static int maxResult(List<Integer> user){
+        int leftNum = user.get(0);
+        int rightNum = user.get(1);
+        return Math.max(numScore(leftNum), numScore(rightNum));
     }
 
-    public static int maxResult(List<Integer> user){
-        int leftSumOutput = numSum(user.get(0));
-        int leftMultiOutput = numMulti(user.get(0));
-        int rightSumOutput = numSum(user.get(1));
-        int rightMultiOutput = numMulti(user.get(1));
-
-        int leftMax = compareSumMulti(leftSumOutput, leftMultiOutput);
-        int rightMax = compareSumMulti(rightSumOutput, rightMultiOutput);
-
-        return Math.max(leftMax, rightMax);
-    }
-
-    public static int compareSumMulti(int sum, int multi) {
-        return Math.max(sum, multi);
-    }
-
-    public static List<Integer> numToDigits(int num){
+    private static List<Integer> numToDigits(int num){
         List<Integer> output = new ArrayList<>();
         while (num != 0) {
             output.add(num % 10);
@@ -78,30 +61,26 @@ class Problem1 {
         return output;
     }
 
-    public static boolean checkValid(List<Integer> userA, List<Integer> userB) { // 각 배열의 길이, 페이지 번호 확인
+    private static boolean checkValid(List<Integer> userA, List<Integer> userB) {
         boolean validA = checkListLengthValid(userA) && checkPageValid(userA);
         boolean validB = checkListLengthValid(userB) && checkPageValid(userB);
         return validA && validB;
     }
 
-    public static boolean checkListLengthValid(List<Integer> user) {
-        if (user.size() == 2) {
-            return true;
-        } else {
-            return false;
-        }
+    private static boolean checkListLengthValid(List<Integer> user) {
+        return user.size() == 2;
     }
 
-    public static boolean checkPageValid(List<Integer> user) {
+    private static boolean checkPageValid(List<Integer> user) {
         int leftPage = user.get(0);
         int rightPage = user.get(1);
         if (leftPage + 1 != rightPage) {
             return false;
         }
-        if (leftPage % 2 == 0 || rightPage %2 == 1) {
+        if (leftPage % 2 == 0 || rightPage % 2 == 1) {
             return false;
         }
-        return true;
+        return 1 <= leftPage && leftPage <= 400 && 1 <= rightPage && rightPage <= 400;
     }
 
 }
