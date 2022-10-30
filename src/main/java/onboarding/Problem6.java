@@ -13,6 +13,52 @@ public class Problem6 {
         answer = NickNameForm.validateOverlap();
         return answer;
     }
+
+    public static void main(String[] args) {
+        Program6.initData();
+        List<String> inputValues = Program6.start();
+        String email = inputValues.get(0);
+        String nickName = inputValues.get(1);
+        Program6.validate(email, nickName);
+        Program6.addCrew(email, nickName);
+        List<String> result = Program6.validateOverlap();
+        System.out.println("result = " + result);
+    }
+}
+
+class Program6 {
+
+    static void initData() {
+        Crew first = new Crew("first@emali.com", "현지가");
+        Crew second = new Crew("second@emali.com", "상엽이");
+        Crew third = new Crew("third@emali.com", "종준이");
+        NickNameForm.addCrew(first.toList());
+        NickNameForm.addCrew(second.toList());
+        NickNameForm.addCrew(third.toList());
+    }
+
+    static List<String> start() {
+        ArrayList<String> result = new ArrayList<>();
+        OutView6.printStart();
+        result.add(Input6.inputEmail());
+        result.add(Input6.inputNickName());
+        return result;
+    }
+
+    static void validate( String inputEmail, String inputNickName) {
+        Crew.validateEmailForm(inputEmail);
+        Crew.validateEmailLength(inputEmail);
+        Crew.validateNickNameForm(inputNickName);
+        Crew.validateNickNameLength(inputNickName);
+    }
+
+    static void addCrew(String inputEmail, String inputNickName) {
+        NickNameForm.addCrew(new Crew(inputEmail, inputNickName).toList());
+    }
+
+    static List<String> validateOverlap() {
+        return NickNameForm.validateOverlap();
+    }
 }
 
 class Input6 {
