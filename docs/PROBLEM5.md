@@ -14,3 +14,10 @@
 | --- | --- |
 | 50237	| [1, 0, 0, 0, 0, 2, 0, 3, 7] |
 | 15000	| [0, 1, 1, 0, 0, 0, 0, 0, 0] |
+
+### 기능 목록
+- 결과값을 저장할 배열을 초기화하는 함수
+> List<Integer> initList()
+
+- 주어진 금액에 대해 x원권으로 변환하고 이를 리턴하는 함수
+> List<Integer> convertMoneyByParams(List<Integer>, Integer money, Integer x)
