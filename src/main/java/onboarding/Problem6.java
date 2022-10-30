@@ -19,10 +19,10 @@ public class Problem6 {
         Map<String, Integer> duplicatedNicknameCandidate = new HashMap<>();
         Set<String> duplicatedNicknameSet = new HashSet<>();
 
-        initializationCrewInfo(forms, crewInfo);
+        initCrewInfo(forms, crewInfo);
 
         for (String nickname : crewInfo.keySet()) {
-            initializationDuplicatedNicknameCandidate(nickname, duplicatedNicknameCandidate);
+            initDuplicatedNicknameCandidate(nickname, duplicatedNicknameCandidate);
         }
 
         for (String nickname : crewInfo.keySet()) {
@@ -39,8 +39,8 @@ public class Problem6 {
         return answer;
     }
 
-    private static void initializationCrewInfo(List<List<String>> forms,
-                                               Map<String, String> crewInfo) {
+    private static void initCrewInfo(List<List<String>> forms,
+                                     Map<String, String> crewInfo) {
         for (List<String> form : forms) {
             String nickname = form.get(1);
             String email = form.get(0);
@@ -51,8 +51,8 @@ public class Problem6 {
         }
     }
 
-    private static void initializationDuplicatedNicknameCandidate(String nickname,
-                                                                  Map<String, Integer> duplicatedNicknameCandidate) {
+    private static void initDuplicatedNicknameCandidate(String nickname,
+                                                        Map<String, Integer> duplicatedNicknameCandidate) {
         for (int i = 0; i < nickname.length() - 1; i++) {
             for (int j = i + 2; j <= nickname.length(); j++) {
                 String substring = nickname.substring(i, j);
