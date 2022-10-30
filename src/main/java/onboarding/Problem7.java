@@ -37,7 +37,8 @@ public class Problem7 {
                 });
 
         List<Map.Entry<String, Integer>> entries = recommendedMap.entrySet().stream()
-                .sorted(Map.Entry.comparingByValue())
+                .sorted(Map.Entry.comparingByKey())
+                .sorted(Map.Entry.comparingByValue((c1, c2) -> c2 - c1))
                 .collect(Collectors.toList());
 
         entries.stream().forEach(entry -> answer.add(entry.getKey()));
