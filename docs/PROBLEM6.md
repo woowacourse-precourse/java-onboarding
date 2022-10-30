@@ -24,11 +24,11 @@
 
 ## PROBLEM6 기능 구현 사항
     1. 예외 처리:
-        초반 예외: 크루원 1이상10000이하 검증 / 이메일length 11이상 20미만 검증 / 이메일 @ 이후 문자 "email.com" 인지 검증 / 닉네임length 1이상 20미만 검증
-    2. 이중for문 사용하여 크루원 이메일 비교
+        닉네임 비교(2번 기능) 시에 2글자씩 분리할 닉네임이 2자 미만이면 skip
+    2. 이중for문 사용하여 크루원 닉네임 비교
         비교 방식 : 
-            닉네임 ex) jason -> [ja,as,so,on] 으로 분리하여 jason 뒤에 있는 크루원 이메일에 contains 시도
-            중복이 있으면 이메일 저장
-        저장된 이메일  answer로 리턴
+            닉네임 ex) jason -> [ja,as,so,on] 으로 분리하여 jason 뒤에 있는 크루원 닉네임에 contains 로 비교
+            중복이 있으면 비교에 쓰인 이메일 SortedSet에 저장
+    3. SortedSet을 List로 변환하여 리턴한 값 answer에 저장
     3. 결과 리턴
         
