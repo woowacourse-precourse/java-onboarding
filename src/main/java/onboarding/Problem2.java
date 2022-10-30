@@ -16,6 +16,16 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         Stack<Character> stack = new Stack<>();
 
+        while (index < cryptogram.length()) {
+            if (isOverlap(cryptogram, stack)) {
+                removeOverlap(cryptogram, stack);
+            }
+            if (index < cryptogram.length()) {
+                stack.add(cryptogram.charAt(index++));
+            }
+        }
+
+        return stackToString(stack);
     }
 
     private static boolean isOverlap(String cryptogram, Stack<Character> stack) {
