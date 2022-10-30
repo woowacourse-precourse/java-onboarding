@@ -50,13 +50,18 @@ public class Problem7 {
     }
 
     private static Map<String, Integer> visitorScore(List<String> userFriendList, Map<String, Integer> recommendedFriendList, List<String> visitors) {
-        for (String visitor : visitors) {
-            if (!userFriendList.contains(visitor)) {
-                Integer score = recommendedFriendList.getOrDefault(visitor, 0);
-                recommendedFriendList.put(visitor, score + 1);
-            }
-        }
+        visitors.stream()
+                .filter(visitor -> isNotUserFriend(userFriendList, visitor))
+                .forEach(visitor -> recommendedFriendList.put(visitor, getScore(recommendedFriendList, visitor) + 1));
         return recommendedFriendList;
+    }
+
+    private static boolean isNotUserFriend(List<String> userFriendList, String name) {
+        return !userFriendList.contains(name);
+    }
+
+    private static int getScore(Map<String, Integer> recommendedFriendList, String visitor) {
+        return recommendedFriendList.getOrDefault(visitor, 0);
     }
 
     private static List<String> findNames(Map<String, Integer> recommendedFriendList) {
