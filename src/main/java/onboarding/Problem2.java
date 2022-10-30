@@ -23,6 +23,12 @@ public class Problem2 {
             stack.push(c);
             last = ' ';
         }
-        return stack.stream().map(Object::toString).collect(Collectors.joining());
+        return changeStackToString(stack);
+    }
+
+    private static String changeStackToString(Stack<Character> stack) {
+        StringBuilder sb = new StringBuilder();
+        stack.forEach(sb::append);
+        return sb.toString();
     }
 }
