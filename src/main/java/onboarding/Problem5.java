@@ -9,7 +9,7 @@ public class Problem5 {
         ArrayList<Integer> ans = new ArrayList<>();
         int[] num = new int[coin.length];
 
-        for(int i=0;i< coin.length;i++){
+        for(int i=0;i< coin.length;i++){  //num 리스트에 사용한 동전 담기
             num[i] += money / coin[i];
             money %= coin[i];
         }
