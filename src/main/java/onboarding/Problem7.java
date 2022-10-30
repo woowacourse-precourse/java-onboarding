@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
 
         HashMap<String, User> userMap = initialize(user, friends);
         HashMap<String, Integer> recommendedMap = new HashMap<>();
@@ -17,7 +19,7 @@ public class Problem7 {
 
         for(User friend : standardUser.getFriends()) {
             friend.getFriends().stream()
-                    .filter(f -> ! standardUser.getFriends().contains(f))
+                    .filter(f -> (! standardUser.getFriends().contains(f)) && (! f.equals(standardUser)))
                     .forEach(
                             f -> {
                                 String username = f.getUsername();
@@ -28,11 +30,17 @@ public class Problem7 {
         }
 
         visitors.stream()
-                .filter(visitor -> ! standardUser.getFriends().contains(visitor))
+                .filter(visitor -> ! standardUser.getFriendsName().contains(visitor))
                 .forEach(visitor -> {
                     int point = Optional.ofNullable(recommendedMap.get(visitor)).orElse(0);
                     recommendedMap.put(visitor, point + 1);
                 });
+
+        List<Map.Entry<String, Integer>> entries = recommendedMap.entrySet().stream()
+                .sorted(Map.Entry.comparingByValue())
+                .collect(Collectors.toList());
+
+        entries.stream().forEach(entry -> answer.add(entry.getKey()));
 
         return answer;
     }
@@ -89,6 +97,14 @@ public class Problem7 {
 
         public void addFriend(User user) {
             this.friends.add(user);
+        }
+
+        public List<String> getFriendsName() {
+            List<String> friendsName = new ArrayList<>();
+
+            friends.stream().forEach(friend -> friendsName.add(friend.getUsername()));
+
+            return friendsName;
         }
     }
 }
