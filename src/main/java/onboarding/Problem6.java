@@ -12,8 +12,12 @@ public class Problem6 {
         for (int i = 0; i < forms.size(); i++) {
 
             final String name = forms.get(i).get(1);
+            final String formEmail = forms.get(i).get(0);
+            if(name.length() < 1 || name.length() > 20){
+                break;
+            }
 
-            if(name.length() < 2){
+            if( formEmail.length() < 11 || formEmail.length() > 20 || !formEmail.split("@")[1].equals("email.com")){
                 break;
             }
 
