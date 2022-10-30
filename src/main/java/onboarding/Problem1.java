@@ -3,6 +3,7 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 class Problem1 {
 
@@ -10,8 +11,6 @@ class Problem1 {
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
 
 		int answer = 2;
-		int pobiMaxValue;
-		int crongMaxValue;
 
 		int pobiFirstNumber = pobi.get(0);
 		int pobiSecondNumber = pobi.get(1);
@@ -27,14 +26,14 @@ class Problem1 {
 		crongMaxNumbersList.add(getMaxNumber(crongFirstNumber));
 		crongMaxNumbersList.add(getMaxNumber(crongSecondNumber));
 
-		pobiMaxValue = Collections.max(pobiMaxNumbersList);
-		crongMaxValue = Collections.max(crongMaxNumbersList);
+		Integer pobiMaxValue = getMaxValue(pobiMaxNumbersList);
+		Integer crongMaxValue = getMaxValue(crongMaxNumbersList);
 
 		if (pobiFirstNumber + 1 != pobiSecondNumber || crongFirstNumber + 1 != crongSecondNumber) {
 			return -1;
 		}
 
-		if (pobiMaxValue == crongMaxValue) {
+		if (Objects.equals(pobiMaxValue, crongMaxValue)) {
 			return 0;
 		}
 
@@ -43,6 +42,10 @@ class Problem1 {
 		}
 
 		return answer;
+	}
+
+	private static Integer getMaxValue(List<Integer> MaxNumbersList) {
+		return Collections.max(MaxNumbersList);
 	}
 
 	private static int getNumberLength(int number) {
