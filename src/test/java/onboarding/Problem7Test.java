@@ -5,7 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Map;
 import onboarding.Problem7.UserPoint;
@@ -135,5 +137,47 @@ class Problem7Test {
 
         assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
     }
+    @Test
+    void 사용자아이디예외테스트() {
+        String user = "hansu";
+        List<List<String>> friends = List.of(
+                List.of("hansu", "sungjoon"),
+                List.of("hansu", "jiwon")
+        );
+        List<List<String>> invalidFriends = List.of(
+                List.of("hansu", "sungjoon"),
+                List.of("hansu", "jiw0n")
+        );
+        List<String> visitors = List.of("sungjoon", "sungjoon","invidam", "invidam", "sonny");
+        List<String> invalidVisitors = List.of("sungjoon123", "sungjoon","invidam", "invidam", "sonny");
+        List<String> result = List.of("invidam", "sonny");
 
+        assertThrows(InputMismatchException.class,() -> Problem7.solution("박한수", friends, visitors));
+        assertThrows(InputMismatchException.class,() -> Problem7.solution(user, invalidFriends, visitors));
+        assertThrows(InputMismatchException.class,() -> Problem7.solution(user, friends, invalidVisitors));
+    }
+    @Test
+    void 리스트길이() {
+        String user = "hansu";
+        List<List<String>> friends = List.of(
+                List.of("hansu", "sungjoon"),
+                List.of("hansu", "jiwon")
+        );
+        List<List<String>> invalidFriends = new ArrayList<>();
+        for (int i = 0; i < 10_005; ++i) {
+            invalidFriends.add(
+                    List.of("hansu", "jiwon"));
+        }
+        List<String> visitors = List.of("sungjoon", "sungjoon","invidam", "invidam", "sonny");
+        List<String> invalidVisitors = new ArrayList<>();
+        for (int i = 0; i < 10_005; ++i) {
+            invalidVisitors.add("sungjoon");
+        }
+        List<String> result = List.of("invidam", "sonny");
+
+        assertThrows(InputMismatchException.class,() -> Problem7.solution(user, invalidFriends, visitors));
+        assertThrows(InputMismatchException.class,() -> Problem7.solution(user, Collections.emptyList(), visitors));
+        assertThrows(InputMismatchException.class,() -> Problem7.solution(user, friends, invalidVisitors));
+        assertThrows(InputMismatchException.class,() -> Problem7.solution(user, friends, Collections.emptyList()));
+    }
 }
