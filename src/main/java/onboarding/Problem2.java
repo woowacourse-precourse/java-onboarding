@@ -53,4 +53,15 @@ public class Problem2 {
         }
         return arrayList;
     }
+
+    static String joinStringWithoutNull(ArrayList<String> arrayList) {
+        String result = "";
+        for (int i = 0; i < arrayList.size(); i++) {
+            String str = arrayList.get(i);
+            if (str != null) {
+                result += str;
+            }
+        }
+        return result;
+    }
 }
