@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Problem6 {
 
-    private List<Boolean> isdup_list = new ArrayList<>();
+    private static List<Boolean> isdup_list = new ArrayList<>();
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
@@ -37,12 +37,13 @@ public class Problem6 {
         return bigrams_list;
     }
 
-    private void setIsdupList(List<List<String>> forms) {
+    private static void setIsdupList(List<List<String>> forms) {
         for (int i=0; i<forms.size(); i++) {
             isdup_list.add(false);
         }
     }
-    void checkDuplicateList(List<List<String>> forms) {
+
+    static void checkDuplicateList(List<List<String>> forms) {
         List<List<String>> bigrams_list = makeBigramsList(forms);
         setIsdupList(forms);
         for (int idx=0; idx<bigrams_list.size(); idx++) {
