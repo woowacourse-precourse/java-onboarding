@@ -17,7 +17,6 @@
 - [문제7](#문제7)
 
 ## 📌문제1
-포비와 크롱이 페이지 번호가 **1부터 시작되는 400 페이지의 책**을 주웠다. 책을 살펴보니 **왼쪽 페이지는 홀수, 오른쪽 페이지는 짝수 번호**이고 모든 페이지에는 번호가 적혀있었다. 책이 마음에 든 포비와 크롱은 페이지 번호 게임을 통해 게임에서 이긴 사람이 책을 갖기로 한다. 페이지 번호 게임의 규칙 및 요구사항은 다음의 링크를 참고한다.
 ([문제 요구사항](https://github.com/areyouhun/java-onboarding/blob/areyouhun/docs/PROBLEM1.md))
 
 ### 기능 목록
@@ -30,8 +29,7 @@
 - 위의 과정으로 구한 포비의 최댓값과 크롱이의 최댓값을 두고 대소관계를 확인한다.
 
 ## 📌문제2
-암호문을 좋아하는 괴짜 개발자 브라운이 이번에는 **중복 문자**를 이용한 새로운 암호를 만들게 되는데...
-([문제 요구사항](https://github.com/areyouhun/java-onboarding/blob/areyouhun/docs/PROBLEM2.md))
+([문제 보기](https://github.com/areyouhun/java-onboarding/blob/areyouhun/docs/PROBLEM2.md))
 
 ### 기능 목록
 - 문자열 `cryptogram`의 길이가 2 미만이면 해당 문자열을 바로 반환한다.
@@ -47,8 +45,7 @@
     - 같으면 `newCryptogram`을 반환한다.
 
 ## 📌문제3
-배달이가 좋아하는 369게임을 하고자 한다. 놀이법은 1부터 숫자를 하나씩 대면서, 3, 6, 9가 들어가는 숫자는 숫자를 말하는 대신 3, 6, 9의 개수만큼 손뼉을 쳐야 한다.
-([문제 요구사항](https://github.com/areyouhun/java-onboarding/blob/areyouhun/docs/PROBLEM3.md))
+([문제 보기](https://github.com/areyouhun/java-onboarding/blob/areyouhun/docs/PROBLEM3.md))
 
 ### 기능 목록
 - int `3, 6, 9`가 담긴 ArrayList를 생성한다.
@@ -59,11 +56,10 @@
     - 가리킨다면 `answer`를 1 증가시킨다.
 
 ## 📌문제4
-어느 연못에 엄마 말씀을 좀처럼 듣지 않는 청개구리가 살고 있었다. 청개구리는 엄마가 하는 말은 무엇이든 반대로 말하였다. 엄마 말씀이 주어질 때, **청개구리 사전**을 참고해 반대로 변환하여 값을 return 하자.
-([문제 요구사항](https://github.com/areyouhun/java-onboarding/blob/areyouhun/docs/PROBLEM4.md))
+([문제 보기](https://github.com/areyouhun/java-onboarding/blob/areyouhun/docs/PROBLEM4.md))
     
 ### 기능 목록
-- String 매개변수를 쪼갠 뒤 ArrayList `wordsIntoLetters`에 담는다.
+- string 매개변수를 쪼갠 뒤 ArrayList `wordsIntoLetters`에 담는다.
 - 변환된 값을 담을 ArrayList `lettersEncrypted`를 생성한다.
 - for문을 돌려 `wordsIntoLetters`를 검사한다.
     - 요소가 소문자 또는 대문자 알파벳인가?
@@ -72,10 +68,7 @@
 - `lettersEncrypted`를 String으로 바꾼 뒤 값을 반환한다.
 
 ## 📌문제5
-계좌에 들어있는 돈 일부를 은행에서 출금하고자 한다. 돈 담을 지갑이 최대한 가볍도록 큰 금액의 화폐 위주로 받는다.
-
-돈의 액수 money가 매개변수로 주어질 때, 오만 원권, 만 원권, 오천 원권, 천 원권, 오백원 동전, 백원 동전, 오십원 동전, 십원 동전, 일원 동전 각 몇 개로 변환되는지 금액이 큰 순서대로 리스트/배열에 담아 return 하도록 solution 메서드를 완성하라.
-([문제 요구사항](https://github.com/areyouhun/java-onboarding/blob/areyouhun/docs/PROBLEM5.md))
+([문제 보기](https://github.com/areyouhun/java-onboarding/blob/areyouhun/docs/PROBLEM5.md))
 
 ### 기능 목록
 - 매개변수 money를 받아 클래스 `MoneySorter`를 생성한다.
@@ -86,6 +79,20 @@
     - 조건을 만족하면 금액을 화폐 단위로 나눈 뒤 몫을 구한다. **이 몫이 필요한 지폐 또는 동전의 개수가 된다.**
     - 계산이 끝날 때마다 금액에서 <b>(화폐 단위 * 몫)</b>을 뺀다.
 - for문이 끝나면 업데이트된 `currentBillsSorted에`를 반환한다.
+
+## 📌문제6
+([문제 보기](https://github.com/areyouhun/java-onboarding/blob/areyouhun/docs/PROBLEM6.md))
+
+### 기능 목록
+- 클래스 `UserInfo`를 이용해 이중 list인 매개변수 `forms`를 이메일 리스트와 닉네임 리스트로 분리한다.
+    - 클래스 `InputValidator`의 조건을 지킨 이메일과 닉네임만 통과된다.
+- 클래스 `DuplicateLettersFinder`로 주어진 닉네임들 중 **겹치는 글자**와 해당 닉네임의 **이메일**들을 추출한다.
+    - 겹치는 글자를 가진 닉네임과 이메일은 map 타입 필드인 `result`에 추가된다. `result`의 key에는 string 타입으로 **겹치는 글자**가, value에는 set 타입으로 **해당 이메일**들이 들어간다.
+    - for문을 통해 현재 닉네임이 다음 닉네임을 차례대로 검사한다.
+    - `chooseNicknames` 메소드로 검사할 두 닉네임을 고른 뒤 `compareLetters` 메소드로 **두 글자씩 비교**한다.
+    - 겹치는 글자를 발견하면 `result`에 새로 등록한다. 이때 해당 글자가 이미 key값으로 존재한다면 이메일들만 해당 key의 value에 추가한다. (value는 set 타입이라 중복은 알아서 걸러짐)
+    - 열심히 for문을 돌린다.
+- 클래스 `ResultView`를 이용해 `result`에서 이메일들만 오름차순으로 뽑아낸다. `result`는 map 타입이기 때문에 **겹치는 글자와 해당 이메일에 대해 여러 케이스가 존재할 수 있지만 주어진 문제는 한 케이스 ('제이')에 대한 이메일 명단을 요구하기 때문에 한 번 더 필터링할 필요가 있다.**
 
 ---
 ## 이미지 출처
