@@ -40,4 +40,31 @@ public class NicknameCheckerTest {
 
 	}
 
+	@Nested
+	class GetEmailListOfCrewsContainingSameLetterInNicknameConsecutively {
+
+		@Test
+		void case1() throws Exception {
+			// given
+			final List<Member> members = Stream.of(
+					List.of("jm@email.com", "제이엠"),
+					List.of("jason@email.com", "제이슨"),
+					List.of("woniee@email.com", "워니"),
+					List.of("mj@email.com", "엠제이"),
+					List.of("nowm@email.com", "이제엠")
+				)
+				.map(Member::of)
+				.collect(Collectors.toList());
+			final List<String> expected = List.of("jason@email.com", "jm@email.com", "mj@email.com");
+
+			// when
+			final List<String> result = NicknameChecker.getEmailListOfCrewsContainingSameLetterInNicknameConsecutively(
+				members);
+
+			// then
+			assertThat(result).isEqualTo(expected);
+		}
+
+	}
+
 }
