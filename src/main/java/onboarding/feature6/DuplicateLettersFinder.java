@@ -2,7 +2,6 @@ package onboarding.feature6;
 
 import static onboarding.feature6.Constants.*;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -17,6 +16,7 @@ public class DuplicateLettersFinder {
     private List<String> userEmails;
     private List<String> userNicknames;
     private Map<String, Set<String>> filteredResults = new HashMap<>(); // {key: duplicate letters & value: filtered emails}
+    public Set<String> duplicateLettersList = new HashSet<>();
 
     public DuplicateLettersFinder(UserInfo userInfo) {
         userEmails = userInfo.getEmails();
@@ -49,6 +49,7 @@ public class DuplicateLettersFinder {
     public void compareLetters(String lettersOfCurrentNickname, String lettersOfNextNickname) {
         if (lettersOfCurrentNickname.equals(lettersOfNextNickname)) {
             duplicateLetters = lettersOfCurrentNickname;
+            duplicateLettersList.add(duplicateLetters);
             updateFilteredResults();
         }
     }

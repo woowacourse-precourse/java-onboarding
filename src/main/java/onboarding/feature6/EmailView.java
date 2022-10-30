@@ -2,6 +2,7 @@ package onboarding.feature6;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -10,48 +11,44 @@ public class EmailView {
     private List<String> emailsToBeSorted;
     private List<String> idsOfEmails;
     private List<String> sortedEmails;
-    private List<Map<String, Set<String>>> results = new ArrayList<>();
-    private Map<String, Set<String>> answer;
+    private Map<String, Set<String>> results;
 
     public EmailView(DuplicateLettersFinder duplicateLettersFinder) {
-        results.add(duplicateLettersFinder.findDuplicateLetters());
-        /*
-         * There could be several cases of adjacent duplicate letters such as ('제이', '이엠', '엠제') depending on given nicknames.
-         * But the given test case has only 'one' case ('제이'),
-         * so it has to return only one pair of key and value from RESULTS as below.
-         * {제이=[jason@email.com, jm@email.com, mj@email.com]}
-         *
-         * That's why I've assigned RESULTS.GET(0) to ANSWER variable.
-         */
-        answer = results.get(0);
+        results = duplicateLettersFinder.findDuplicateLetters();
     }
 
-    public List<String> getSortedEmails() {
-        sortedEmails = new ArrayList<>();
-        for (String key : answer.keySet()) {
-            Set<String> emailValues = answer.get(key);
+    public Map<String, List<String>> getSortedResults() {
+        Map<String, List<String>> sortedResults = new HashMap<>();
+        for (String key : results.keySet()) {
+            sortedEmails = new ArrayList<>();
+            Set<String> emailValues = results.get(key);
             emailsToBeSorted = new ArrayList<>(emailValues);
-            idsOfEmails = extractIdFromEmail(emailsToBeSorted);
+            idsOfEmails = separateEmails(emailsToBeSorted);
+            for (String id : idsOfEmails) {
+                sortEmailsById(id);
+            }
+            sortedResults.put(key, sortedEmails);
         }
-        for (String id : idsOfEmails) {
-            sortEmailsById(id);
-        }
-        return sortedEmails;
+        return sortedResults;
     }
 
-    public List<String> extractIdFromEmail(List<String> emails) {
+    public List<String> separateEmails(List<String> emails) {
         List<String> ids = new ArrayList<>();
         for (String email : emails) {
-            String id = email.split("@")[0];
+            String id = getIdFromEmail(email);
             ids.add(id);
         }
         Collections.sort(ids);
         return ids;
     }
 
-    public void sortEmailsById(String id) {
+    public String getIdFromEmail (String email) {
+        return email.split("@")[0];
+    }
+
+    public void sortEmailsById(String givenId) {
         for (String email : emailsToBeSorted) {
-            if (email.contains(id)) {
+            if (getIdFromEmail(email).equals(givenId)) {
                 int index = emailsToBeSorted.indexOf(email);
                 sortedEmails.add(emailsToBeSorted.get(index));
             }
