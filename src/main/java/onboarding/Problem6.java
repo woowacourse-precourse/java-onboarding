@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
@@ -45,5 +47,15 @@ public class Problem6 {
     public static void checkDuplication(HashMap<String, String> databaseOfNickname, HashMap<String, Boolean> duplicationOfNickname, List<String> user) {
         if (checkDuplicationOfNicknames(databaseOfNickname, user.get(1)))
             duplicationOfNickname.replace(user.get(0), true);
+    }
+
+    // 중복된 이메일을 리스트에 저장하여 리턴하는 함수
+    public static List<String> createDuplicationUserList(HashMap<String, Boolean> duplicationOfNickname) {
+        ArrayList<String> duplicationUserList = new ArrayList<String>();
+        for (String key : duplicationOfNickname.keySet()) {
+            if (duplicationOfNickname.get(key)) duplicationUserList.add(key);
+        }
+        duplicationUserList.sort(Comparator.naturalOrder());
+        return duplicationUserList;
     }
 }
