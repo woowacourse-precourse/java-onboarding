@@ -11,7 +11,6 @@ public class Problem6 {
     private static List<String> answer = new ArrayList<>();
     public static List<String> solution(List<List<String>> forms) {
         emptyLists();
-        initializeEmailInList(forms);
 
         for (List<String> form : forms) {
             String nickname = form.get(1);
@@ -26,14 +25,6 @@ public class Problem6 {
         wordEmailsMap.clear();
         isEmailInList.clear();
         answer.clear();
-    }
-
-    private static void initializeEmailInList(List<List<String>> forms) {
-        String email;
-        for (List<String> form : forms) {
-            email = form.get(0);
-            isEmailInList.put(email, false);
-        }
     }
 
     private static void checkDuplicateWordsInNickname(String nickname, String email) {
@@ -51,7 +42,7 @@ public class Problem6 {
     }
 
     private static void putWordAndEmailInMap(String words, String email) {
-        Boolean isDuplicate = duplicateWordExists(words);
+        boolean isDuplicate = wordEmailsMap.containsKey(words);
         if(!isDuplicate) {
             wordEmailsMap.put(words, email);
             return;
@@ -63,16 +54,8 @@ public class Problem6 {
         return;
     }
 
-    private static Boolean duplicateWordExists(String words) {
-        String duplicateEmail = wordEmailsMap.get(words); //중복된 닉네임을 가지는 사용자를 찾음
-        if(duplicateEmail == null) {
-            return false;
-        }
-        return true;
-    }
-
     private static void updateAnswerList(String email) {
-        if(isEmailInList.get(email)) {
+        if(isEmailInList.containsKey(email)) {
             return;
         }
         addDuplicateEmailToList(email);
