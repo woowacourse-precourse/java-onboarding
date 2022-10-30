@@ -46,11 +46,40 @@ class ApplicationTest {
 
         @Test
         void case2() {
-            String cryptogram = "zyelleyz";
+            String cryptogram = "zyalllelyz";
+            String result = "zyaelyz";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void case3() {
+            String cryptogram = "aabba";
+            String result = "a";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void case4() {
+            String cryptogram = "zyellleyz";
+            String result = "";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void case5() {
+            String cryptogram = "acccccccc";
+            String result = "a";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void case6() {
+            String cryptogram = "acccccccca";
             String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
     }
+
 
     @Nested
     class Problem3Test {
