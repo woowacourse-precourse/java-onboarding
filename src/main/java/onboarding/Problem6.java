@@ -11,7 +11,14 @@ public class Problem6 {
 			crewHashData.put(form.get(0), form.get(1));
 		}
 
-		Collection<String> crewNicknames  = crewHashData.values();
+		Collection<String> crewNicknames = crewHashData.values();
+
+		for (String name : crewNicknames) {
+			for (int j = 0; j <= name.length() - 2; j++) {
+				String checkingWords = name.substring(j, j + 2);
+				System.out.println(checkingWords);
+			}
+		}
 
 		List<String> answer = List.of("answer");
 		return answer;
