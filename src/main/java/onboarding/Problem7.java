@@ -81,7 +81,10 @@ public class Problem7 {
      * @param recommendScoreMap : 점수를 갱신할 추천 점수 맵
      */
     private static void setVisitorScore(List<String > visitors, Map<String, Integer> recommendScoreMap){
-
+        visitors.forEach(visitor -> {
+            // 방문자에게는 1점을 추가함
+            addScore(visitor, 1, recommendScoreMap);
+        });
     }
 
     /**
@@ -91,7 +94,10 @@ public class Problem7 {
      * @param recommendScoreMap : 점수를 갱신할 추천 점수 맵
      */
     private static void addScore(String recommendUser, int score, Map<String , Integer> recommendScoreMap){
-
+        recommendScoreMap.put(
+                recommendUser,
+                recommendScoreMap.get(recommendUser) != null ? recommendScoreMap.get(recommendUser) + score : score
+        );
     }
 
     /**
