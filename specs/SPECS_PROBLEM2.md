@@ -35,4 +35,5 @@
    
 ### 추가적인 테스트 케이스
 | input | output |
+| --- | --- |
 | "succession" | "sueion" |
