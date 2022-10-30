@@ -11,6 +11,6 @@ public class Problem6 {
 
     // 이메일과 닉네임을 저장할 HashMap을 초기화하는 함수
     public static HashMap<String, String> initDatabaseOfNickname() {
-        return new HashMap<String, String>;
+        return new HashMap<String, String>();
     }
 }
