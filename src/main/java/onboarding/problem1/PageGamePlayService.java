@@ -12,7 +12,7 @@ public class PageGamePlayService {
     }
 
     public static int play(List<Integer> pobi, List<Integer> crong) {
-        PageGameInfo pageGame = new PageGameInfo();
+        PageGameRepository pageGame = new PageGameRepository();
 
         try {
             registryTwoPlayers(pageGame, pobi, crong);
@@ -22,7 +22,7 @@ public class PageGamePlayService {
         return pageGame.play(POBI_NAME, CRONG_NAME);
     }
 
-    private static void registryTwoPlayers(PageGameInfo pageGame, List<Integer> pobiPage,
+    private static void registryTwoPlayers(PageGameRepository pageGame, List<Integer> pobiPage,
         List<Integer> crongPage) {
         pageGame.registryPlayer(POBI_NAME, pobiPage);
         pageGame.registryPlayer(CRONG_NAME, crongPage);

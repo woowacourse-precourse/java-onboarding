@@ -17,11 +17,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-public class PageGameInfo {
+public class PageGameRepository {
 
     private final Map<String, Player> players;
 
-    public PageGameInfo() {
+    public PageGameRepository() {
         this.players = new HashMap<>();
     }
 
