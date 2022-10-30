@@ -35,7 +35,11 @@ import java.util.List;
  * - Hashmap 클래스 변수 생성 -> 중복된 값 자동 업데이트
  * */
 
-
+/***
+ * 4. visitor 배열을 확인 후 3번 배열에 값 추가 -> 1점씩 점수 추가
+ * - 중복된 값  -> 1점 추가
+ * - 새로운 값 -> 1점으로 저장
+ * */
 
 public class Problem7 {
 
@@ -148,6 +152,15 @@ public class Problem7 {
                 if(checkIncludeFriend(userToFriendList.get(i),inputFriends.get(j)))
                     friendToFriendMap.put(onlyFriendsNameInFriends(userToFriendList.get(i), inputFriends.get(j)), 10);
             }
+        }
+    }
+
+    private static void addVisitorData(List<String> inputVisitor){
+        for(int i = 0; i < inputVisitor.size(); i++){
+            if(friendToFriendMap.containsKey(inputVisitor.get(i)))
+                friendToFriendMap.put(inputVisitor.get(i), friendToFriendMap.get(inputVisitor.get(i) + 1));
+            else
+                friendToFriendMap.put(inputVisitor.get(i), 1);
         }
     }
 
