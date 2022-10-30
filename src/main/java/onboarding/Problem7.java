@@ -58,8 +58,8 @@ class ValidatorPro7 {
     }
     if (id.length() < MIN_ID_LEN || id.length() > MAX_ID_LEN) {
       throw new IllegalArgumentException(
-          "ID should be a string with a length of between" + MIN_ID_LEN + " and "
-              + MAX_ID_LEN + ".");
+          "ID should be a string with a length of between" + MIN_ID_LEN
+              + " and " + MAX_ID_LEN + ".");
     }
   }
 
