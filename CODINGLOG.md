@@ -311,3 +311,17 @@ getResult
 - 중복되는 로직이 많다... 리팩토링이 절실하다...
 - Java에 있는 built-in function들을 잘 몰라서 비효율적으로 로직을 구현하는 느낌...
 - 자료 구조를 더 적게 사용할 수는 없을지...
+
+
+### 기능 목록 v0.2
+
+오류가 있어 getResult 메소드를 많이 수정했다.
+
+getResult
+- user_score name 순으로 먼저 정렬한다.
+    - 다시 value 순으로 다시 정렬한다.
+    - `stable sort` 이미로 값이 같은 경우는 name 순 정렬이 유지된다.
+- user_friends에 user를 key값으로 하여 친구 목록을 구한다.
+  - 친구 목록에 있는 사용자는 user_score에서 제거한다.
+- for 문 돌며 상위 5명 result에 추가할 때
+  - looping이 전체 user_score size보다 같거나 작을때까지만 한다.
