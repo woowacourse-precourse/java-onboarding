@@ -7,7 +7,7 @@
 3. [문제 3](./docs/TODO_PROBLEM3.md)
 4. [문제 4](./docs/TODO_PROBLEM4.md)
 5. [문제 5](./docs/TODO_PROBLEM5.md)
-6. [문제 6](./docs/PROBLEM6.md)
+6. [문제 6](./docs/TODO_PROBLEM6.md)
 7. [문제 7](./docs/PROBLEM7.md)
 
 ---
