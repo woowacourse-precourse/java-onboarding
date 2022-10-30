@@ -3,13 +3,17 @@ package onboarding;
 import onboarding.problem7.RecommendedFriend;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
+
+    private static final int LIMIT_SIZE = 5;
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, List<String>> friendList = createFriendList(friends);
         Map<String, Integer> recommendedFriendList = createRecommendedFriendList(user, friendList);
         recommendedFriendList = visitorScore(friendList.get(user), recommendedFriendList, visitors);
-        List<String> result = findTop5Name(recommendedFriendList);
+        List<String> result = findNames(recommendedFriendList);
         return result;
     }
 
@@ -55,23 +59,19 @@ public class Problem7 {
         return recommendedFriendList;
     }
 
-    private static List<String> findTop5Name(Map<String, Integer> recommendedFriendList) {
-        List<RecommendedFriend> content = new ArrayList<>();
-        for (String name : recommendedFriendList.keySet()) {
-            Integer score = recommendedFriendList.get(name);
-            RecommendedFriend recommendedFriend = new RecommendedFriend(name, score);
-            content.add(recommendedFriend);
-        }
+    private static List<String> findNames(Map<String, Integer> recommendedFriendList) {
+        List<RecommendedFriend> collect = recommendedFriendList.keySet()
+                .stream()
+                .map(name -> new RecommendedFriend(name, recommendedFriendList.get(name)))
+                .sorted(Collections.reverseOrder())
+                .collect(Collectors.toList());
 
-        content.sort(Collections.reverseOrder());
+        return filterByLimitSize(collect);
+    }
 
-        List<String> result = new ArrayList<>();
-        for (RecommendedFriend recommendedFriend : content) {
-            result.add(recommendedFriend.getName());
-            if (result.size() == 5) {
-                break;
-            }
-        }
-        return result;
+    private static List<String> filterByLimitSize(List<RecommendedFriend> content) {
+        return content.stream().map(RecommendedFriend::getName)
+                .limit(LIMIT_SIZE)
+                .collect(Collectors.toList());
     }
 }
