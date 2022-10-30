@@ -39,10 +39,11 @@
 
 ### 필요 기능 정리
 1. checkInputs: 입력이 규칙에 맞게 들어왔는지 확인하는 기능
-   - parameter: List<integer> pobi, List<integer> crong
+   - parameter: integer 리스트 형태
    - return: integer, 예외인 경우 -1, 아닌 경우의 값은 생각 필요
    - 혹시 한명의 입력중 연속된 페이지 번호가 아닌 경우도 처리해야하는지 생각 해보자
      - ex) [2, 4], [5, 6] 이런식으로 입력이 들어오는 경우
+   - 시작면과 마지막 면인지 체크
 2. addDigits: 입력의 각 자리 숫자를 더하는 기능
    - parameter: integer
    - return: integer

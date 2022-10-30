@@ -7,4 +7,9 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+    private static int checkInputs(List<Integer> someone){
+
+
+        return -1;
+    }
 }
