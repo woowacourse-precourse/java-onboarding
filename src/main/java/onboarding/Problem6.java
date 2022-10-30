@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -32,10 +33,8 @@ public class Problem6 {
 		}
 
 		Set<String> sortedEmails = getSortedSet(organizedEmails);
-		System.out.println(sortedEmails);
 
-		List<String> answer = List.of("answer");
-		return answer;
+		return toList(sortedEmails);
 	}
 
 	private static Set<String> getEmailsToBeSent(HashMap<String, String> crewHashData, String checkingWords) {
@@ -47,5 +46,9 @@ public class Problem6 {
 
 	private static TreeSet<String> getSortedSet(HashSet<String> dispersedSet) {
 		return new TreeSet<>(dispersedSet);
+	}
+
+	private static List<String> toList(Set<String> sortedEmails) {
+		return new ArrayList<>(sortedEmails);
 	}
 }
