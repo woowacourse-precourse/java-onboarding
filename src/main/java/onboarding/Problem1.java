@@ -9,7 +9,7 @@ class Problem1 {
 
 
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
-		
+
 		int pobiFirstNumber = getNumber(pobi, 0);
 		int pobiSecondNumber = getNumber(pobi, 1);
 
@@ -27,7 +27,7 @@ class Problem1 {
 		Integer pobiMaxValue = getMaxValue(pobiMaxNumbersList);
 		Integer crongMaxValue = getMaxValue(crongMaxNumbersList);
 
-		if ( !doesPageContinue(pobiFirstNumber, pobiSecondNumber) || !doesPageContinue(crongFirstNumber, crongSecondNumber)) {
+		if (!doesPageContinue(pobiFirstNumber, pobiSecondNumber) || !doesPageContinue(crongFirstNumber, crongSecondNumber)) {
 			return -1;
 		}
 
