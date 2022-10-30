@@ -56,11 +56,7 @@ public class Problem7 {
             for(List<String> friendList: friends){ // ["donut", "andole"]
                 if(friendList.contains(mutualFriend)){ // true
                     // find in scoreList and add score
-                    for(String key: usernameAndScoreMap.keySet()){ //
-                        if(key==mutualFriend){
-                            usernameAndScoreMap.put(key, usernameAndScoreMap.get(key)+10);
-                        }
-                    }
+                    searchAndAddScore(usernameAndScoreMap, mutualFriend, 10);
                 }
             }
         }
@@ -68,11 +64,7 @@ public class Problem7 {
         // add score to visitors
         for(String visitor: visitors){
             // find in scoreList and add score
-            for(String key: usernameAndScoreMap.keySet()){ //
-                if(key==visitor){
-                    usernameAndScoreMap.put(key, usernameAndScoreMap.get(key)+1);
-                }
-            }
+            searchAndAddScore(usernameAndScoreMap, visitor, 1);
         }
 
         HashMap<String,Integer> finalScore = new HashMap<>();
@@ -103,6 +95,14 @@ public class Problem7 {
         }
 
         return answer;
+    }
+
+    private static void searchAndAddScore(HashMap<String, Integer> searchedMap, String keyToSearch, int addedScore) {
+        for(String key: searchedMap.keySet()){
+            if(key== keyToSearch){
+                searchedMap.put(key, searchedMap.get(key)+ addedScore);
+            }
+        }
     }
 
 }
