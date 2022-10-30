@@ -11,4 +11,10 @@ public class Problem5 {
         checkException(money);
         return calChanges(money);
     }
+
+    private static void checkException(int money) {
+        if (money < 1 || money > 1000000) {
+            throw new RuntimeException("돈의 액수가 1보다 작거나 1,000,000을 초과한다");
+        }
+    }
 }
