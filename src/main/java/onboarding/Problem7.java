@@ -1,6 +1,9 @@
 package onboarding;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
 
 public class Problem7 {
     static class GroupFriends {
@@ -67,10 +70,9 @@ public class Problem7 {
 
         private List<String> sortRecommendFriends() {
             List<String> friends = new ArrayList<>(recommendFriends.keySet());
-            Collections.sort(friends, (value1, value2) ->
+            friends.sort((value1, value2) ->
                     (recommendFriends.get(value2)).compareTo(recommendFriends.get(value1)));
-            ArrayList<String> answer = new ArrayList<>();
-            answer.addAll(friends);
+            ArrayList<String> answer = new ArrayList<>(friends);
 
             answer = printFriends(answer);
 
@@ -78,9 +80,9 @@ public class Problem7 {
         }
 
         private ArrayList<String> printFriends(ArrayList<String> answer) {
-            if (answer.size() < 5)
+            if (answer.size() < 5) {
                 return answer;
-            else {
+            } else {
                 answer = (ArrayList<String>) answer.subList(0, 5);
                 return answer;
             }
@@ -100,22 +102,7 @@ public class Problem7 {
         groupFriends.GroupingFriendsByName();
         groupFriends.GroupingVisitorsByName();
         answer = groupFriends.selectFriendsList();
-        return answer;
-    }
 
-    public static void main(String[] args) {
-        String user = "mrko";
-        List<List<String>> friends = List.of(
-                List.of("donut", "andole"),
-                List.of("donut", "jun"),
-                List.of("donut", "mrko"),
-                List.of("shakevan", "andole"),
-                List.of("shakevan", "jun"),
-                List.of("shakevan", "mrko")
-        );
-        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-        List<String> result = List.of("andole", "jun", "bedi");
-        List<String> solution = solution(user, friends, visitors);
-        System.out.println(solution);
+        return answer;
     }
 }
