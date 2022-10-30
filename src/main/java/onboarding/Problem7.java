@@ -13,6 +13,20 @@ public class Problem7 {
         List<String> answer = others.getTopFiveNameOfOtherList();
         return answer;
     }
+
+    static void recordRelationshipLlist(List<List<String>> relationshipList, User user, Others others) {
+        List<List<String>> otherRelationships = new ArrayList<>();
+        relationshipList.stream().forEach(relationship -> {
+            String isFriendOrOther = recordRelationship(relationship, user);
+            boolean isOther = checkIsOther(isFriendOrOther);
+            if (isOther) {
+                otherRelationships.add(relationship);
+            }
+        });
+        otherRelationships.stream().forEach(relationship -> {
+            others.addRelationship(relationship);
+        });
+    }
 }
 
 class User {
