@@ -2,12 +2,6 @@ package problem7;
 
 import java.util.*;
 
-/*
-친구를 그래프로 표현하기
-친구 뽑아내기
-person1을 안가지고 있으면 put으로 List<> 넣어라.
-person1을 가지고 있든 안 가지고 있든 friendConn.get(person1).add(person2)를 해라
-* */
 public class FriendConnectionRepository {
     private static final Map<String, List<String>> friendConnection = new HashMap<>();
 
@@ -15,6 +9,7 @@ public class FriendConnectionRepository {
 
     public static void create(List<List<String>> friends) {
         Validator.validateFriends(friends);
+        friendConnection.clear();
         for (var friend : friends) {
             String friend1 = friend.get(0);
             String friend2 = friend.get(1);
@@ -33,9 +28,7 @@ public class FriendConnectionRepository {
         return friendConnection.get(user);
     }
 
-    public void calculateRecommendationScore(List<String> visitors) {
 
-    }
 
     public static List<String> mostRecommendedAsFriend() {
         return List.of("a");
