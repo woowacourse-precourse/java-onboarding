@@ -32,8 +32,11 @@ public class Problem6 {
         return false;
     }
 
+    // 유저들 각각에 대해 중복 여부를 판단하는 함수
     public static boolean checkDuplicationOfNickname(String nickname, String newNickname) {
-
-        return true;
+        for (int i = 0; i < newNickname.length() - 1; i++) {
+            if (nickname.contains(newNickname.substring(i, i+2))) return true;
+        }
+        return false;
     }
 }
