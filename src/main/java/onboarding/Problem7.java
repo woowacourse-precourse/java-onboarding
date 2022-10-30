@@ -62,13 +62,12 @@ public class Problem7 {
         });
     }
 
-    static String recordVisitor(String visitor, User user, Others others) {
+    static void recordVisitor(String visitor, User user, Others others) {
         boolean isFriendOfUser = user.checkIsFriendOfUser(visitor);
         if (isFriendOfUser) {
-            return "Friend of user";
+            return;
         }
         others.recordVisitor(visitor);
-        return "Just visitor";
     }
 
     static void validateData(String user, List<List<String>> friends, List<String> visitors)
@@ -195,15 +194,14 @@ class Others {
         this.addPointIfHaveMutual(other2, other1);
     }
 
-    String addOther(String otherName) {
+    void addOther(String otherName) {
         boolean isRegisteredOther = this.checkIsRegisteredOther(otherName);
         if (isRegisteredOther) {
-            return "Registered other";
+            return;
         }
 
         Other other = new Other(otherName, 0);
         this.othersList.add(other);
-        return "new other";
     }
 
     void recordVisitor(String visitor) {
@@ -283,17 +281,16 @@ class Others {
         }
     }
 
-    String addPoint(String otherName, int point) {
+    void addPoint(String otherName, int point) {
         User user = this.getUser();
         boolean isFriendOfUser = user.checkIsFriendOfUser(otherName);
         if (isFriendOfUser) {
-            return "Friend already";
+            return;
         }
         List<Other> otherList = this.getOthersList();
         otherList.stream().filter(other -> other.getName().equals(otherName)).forEach(other -> {
             other.addPoint(point);
         });
-        return "Add point complete";
     }
 }
 
