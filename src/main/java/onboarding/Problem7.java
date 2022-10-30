@@ -5,7 +5,6 @@ import java.util.*;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> userAndFriendList = getFriendList(friends, user);
-        userAndFriendList.add(user);
 
         HashMap<String, Integer> strangerScoreMap = getStrangerScoreMap(userAndFriendList, friends);
         calculateVisitorScore(visitors, userAndFriendList, strangerScoreMap);
@@ -99,6 +98,7 @@ public class Problem7 {
                 friendList.add(friend);
             }
         }
+        friendList.add(user);
         return friendList;
     }
 
