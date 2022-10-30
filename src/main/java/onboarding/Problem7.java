@@ -18,6 +18,17 @@ public class Problem7 {
         return userList;
     }
 
+    static int getSameFriendsCnt(String user, String anotherUser, List<List<String>> friends){
+        int sameFriendCnt = 0;
+        List<String> userFriends = getFriends(user, friends);
+        List<String> anotherUserFriends = getFriends(anotherUser, friends);
+
+        Stream<String> sameFriendStream = userFriends.stream().filter(friend -> anotherUserFriends.contains(friend));
+        sameFriendCnt = (int) sameFriendStream.count();
+
+        return sameFriendCnt;
+    }
+
     static List<String> getFriends(String user, List<List<String>> friends){
         Stream<List<String>> userContainedStream = friends.stream().filter(item -> item.contains(user));
         Stream<String> friendStream = userContainedStream.map(item -> item.get((item.indexOf(user) + 1) % 2));
