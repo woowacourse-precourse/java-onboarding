@@ -2,6 +2,10 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
+        return convertWord(word);
+    }
+
+    private static String convertWord(String word) {
         StringBuilder answer = new StringBuilder();
 
         for (int i = 0; i < word.length(); i++) {
