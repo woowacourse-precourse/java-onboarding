@@ -14,14 +14,16 @@ import java.util.HashSet;
 public class Problem6 {
     private static HashSet<String> temp;
     private static HashSet<String> overlabWords;
-
+    private static HashSet<String> emailList;
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         temp = new HashSet<String>();
         overlabWords = new HashSet<String>();
+        emailList = new HashSet<String>();
 
         setOverlabList(forms);
+        setEmailList(forms);
         return answer;
     }
 
@@ -43,5 +45,28 @@ public class Problem6 {
                 overlabWords.add(nickname.substring(i,i+2));
             }
         }
+    }
+
+    static void setEmailList(List<List<String>> forms){
+        String nickname = new String();
+        String email = new String();
+
+        for(List<String> crew:forms) {
+            nickname = crew.get(1);
+            email = crew.get(0);
+
+            if(checkNickname(nickname)){
+                emailList.add(email);
+            }
+        }
+    }
+
+    static boolean checkNickname(String nickname){
+        for (String ovelabWord : overlabWords) {
+            if (nickname.contains(ovelabWord)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
