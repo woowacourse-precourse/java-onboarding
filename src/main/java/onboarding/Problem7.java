@@ -6,8 +6,11 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         Map<String, List<String>> friendsList;
+        Map<String, Integer> score = new HashMap<>();
 
         friendsList = getFriendsList(friends);
+        score = calMutualFriendsScore(user, friendsList);
+
         return answer;
     }
 
@@ -35,4 +38,26 @@ public class Problem7 {
         return friendsList;
     }
 
+    // 함께 아는 친구 점수 계산 함수
+    static Map<String, Integer> calMutualFriendsScore(String user, Map<String, List<String>> friendsList) {
+        Map<String, Integer> score = new HashMap<>();
+        List<String> userFriends = friendsList.get(user);
+        List<String> mutualFriends;
+
+        for (String u_friend: userFriends) {
+            mutualFriends = friendsList.get(u_friend);
+            for (String m_friend: mutualFriends) {
+                if (m_friend.equals(user)) {
+                    continue;
+                }
+                if (!score.containsKey(m_friend)) {
+                    score.put(m_friend, 10);
+                } else {
+                    score.put(m_friend, score.get(m_friend) + 10);
+                }
+            }
+        }
+
+        return score;
+    }
 }
