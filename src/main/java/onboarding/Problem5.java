@@ -15,14 +15,13 @@ public class Problem5 {
         List<Integer> result = new ArrayList<>();
 
         for (Money changes : Money.highestOrder()) {
-            int count = amount / changes.value;
+            int count = amount / changes.getValue();
             result.add(count);
-            amount = amount - (count * changes.value);
+            amount -= count * changes.getValue();
         }
 
         return result;
     }
-
 
     enum Money {
         _50000_WON(50000),
@@ -35,10 +34,14 @@ public class Problem5 {
         _10_WON(10),
         _1_WON(1);
 
-        int value;
+        private final int value;
 
         Money(int value) {
             this.value = value;
+        }
+
+        public int getValue() {
+            return value;
         }
 
         public static List<Money> highestOrder() {
