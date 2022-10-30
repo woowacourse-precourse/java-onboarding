@@ -33,6 +33,17 @@ public class Problem7 {
             }
         }
 
+//visitors의 친구를 추천후보로 넣는다.
+        for(int i = 0; i < visitors.size(); i++) {
+            if(!visitors.get(i).equals(user) && !friendsOfUser.contains(visitors.get(i))) {
+                if(recommendFriendsScore.containsKey(visitors.get(i))) {
+                    recommendFriendsScore.put(visitors.get(i), recommendFriendsScore.get(visitors.get(i)) + 1);
+                } else {
+                    recommendFriendsScore.put(visitors.get(i), 1);
+                }
+            }
+        }
+
         return answer;
     }
 }
