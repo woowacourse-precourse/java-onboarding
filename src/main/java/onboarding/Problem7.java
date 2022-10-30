@@ -51,21 +51,24 @@ public class Problem7 {
         ArrayList<Integer> values = new ArrayList<>();
 
         for(Integer n : tmp) {
-            if(!values.contains(n))
+            if(!values.contains(n) && n != 0)
                 values.add(n);
         }
 
         values.sort(Collections.reverseOrder());
 
         ArrayList<String> order = new ArrayList<>();
-        List<String> answer = new ArrayList<>();
+        List<String> answer = new ArrayList<>(5);
         for(int n : values) {
             for (Map.Entry<String, Integer> entry : recommendMap.entrySet()) {
                 if (entry.getValue().equals(n))
                     order.add(entry.getKey());
             }
             Collections.sort(order);
-            answer.addAll(order);
+            for(String name : order) {
+                if(answer.size() != 5)
+                    answer.add(name);
+            }
             order.clear();
         }
 
