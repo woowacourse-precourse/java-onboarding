@@ -8,6 +8,11 @@ public class Problem6 {
         return answer;
     }
 
+    public static void addEmail(List<String> form, List<String> emailList) {
+        emailList.add(form.get(0));
+
+    }
+
     public static boolean hasDuplication(String name1, String name2) {
         int n1 = name1.length();
         int n2 = name2.length();
