@@ -27,12 +27,7 @@ public class Problem4 {
         return word;
     }
 
-    private static char greenFrogDictionary_small(char word) {
-        Map<Character, Character> dictionary = new HashMap<>();
-
-    }
-
-    private static char greenFrogDictionary_big(char word) {
+    private static char greenFrogDictionary(char word) {
         Map<Character, Character> dictionary = new HashMap<>();
 
     }
