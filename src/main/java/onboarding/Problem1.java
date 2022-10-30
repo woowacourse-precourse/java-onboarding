@@ -35,8 +35,7 @@ class Problem1 {
         if(pobiMax>crongMax) answer = 1;
         else if(pobiMax<crongMax) answer = 2;
         else answer = 0;
-        
-        System.out.println(answer);
+
         return answer;
     }
 }
