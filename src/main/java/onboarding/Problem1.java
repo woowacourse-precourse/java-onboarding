@@ -28,6 +28,12 @@ class Problem1 {
             return false;
     }
 
+    private static int getMaxScore(int leftPage, int rightPage) {
+        int leftScore = Math.max(sum(leftPage), multiple(leftPage));
+        int rightScore = Math.max(sum(rightPage), multiple(rightPage));
+        return Math.max(leftScore, rightScore);
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         try {
             if(!checkPage(pobi))
@@ -35,8 +41,15 @@ class Problem1 {
             if(!checkPage(crong))
                 return -1;
 
-            int answer = Integer.MAX_VALUE;
-            return answer;
+            int scoreOfPobi = getMaxScore(pobi.get(0), pobi.get(1));
+            int scoreOfCrong = getMaxScore(crong.get(0), crong.get(1));
+
+            if(scoreOfPobi > scoreOfCrong)  //pobi win
+                return 1;
+            else if (scoreOfPobi < scoreOfCrong)
+                return 2;
+            else
+                return 0;
         } catch (Exception e) {
             return -1;
         }
