@@ -69,4 +69,14 @@ public class Problem6 {
         return emailList;
     }
 
+    //이메일 리스트 중복 없애고 오름차순
+    public static List<String> getEmailList(List<String> emailList){
+        TreeSet<String> organizedEmailList = new TreeSet<>();
+        for(String email:emailList){
+            organizedEmailList.add(email);
+        }
+        List<String> newEmailList = new ArrayList<String>(organizedEmailList);
+        return newEmailList;
+    }
+
 }
