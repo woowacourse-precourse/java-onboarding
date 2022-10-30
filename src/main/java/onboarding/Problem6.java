@@ -18,7 +18,7 @@ public class Problem6 {
         return false;
     }
 
-    public static List<Integer> compareNicknames(List<List<String>> forms){
+    public static List<String> compareNicknames(List<List<String>> forms){
         List<Integer> result = new ArrayList<>();
 
         for(int i = 0; i<forms.size(); i++){
@@ -30,11 +30,28 @@ public class Problem6 {
             }
         }
 
+        return makeEmailList(result, forms);
+    }
+
+    public static List<String> makeEmailList(List<Integer> list ,List<List<String>> forms){
+        Set<Integer> set = Set.copyOf(list);
+
+        List<String> result = new ArrayList<>();
+
+        Iterator<Integer> iter = set.iterator();
+
+        while(iter.hasNext()){
+            result.add(forms.get(iter.next()).get(0));
+        }
+
+        Collections.sort(result);
         return result;
+
     }
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>();
+        answer = compareNicknames(forms);
         return answer;
     }
 }
