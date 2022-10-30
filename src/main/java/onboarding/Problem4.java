@@ -13,6 +13,12 @@ public class Problem4 {
         List<Character> wordCharList = new ArrayList<>();
         wordCharList=convert(word);
 
+        //알파벳 리스트 반대로 변환
+        List<Character> answerCharList = new ArrayList<>();
+        for (char character: wordCharList) {
+            answerCharList.add(reverse(character));
+        }
+
         return answer;
     }
 
@@ -24,5 +30,19 @@ public class Problem4 {
 
         return chars;
     }
+
+    //알파벳 반대로 변환 함수
+    static char reverse(char character) {
+        char reverseChar=' ';
+        if (65<= (int)character && (int)character <=90) {
+            reverseChar=(char)(155-(int)character);
+        } else if (97 <= (int)character && (int)character <=122) {
+            reverseChar=(char)(219-(int)character);
+        } else {
+            reverseChar = character;
+        }
+        return reverseChar;
+    }
+
 
 }
