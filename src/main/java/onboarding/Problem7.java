@@ -49,7 +49,7 @@ public class Problem7 {
 
     public static void getScoreInFriend(String user, List<List<String>> friends) {
         for (List<String> friendData : friends) {
-            if(user.equals(friendData.get(1)) == false && friendList.contains(friendData.get(0))) {
+            if(user.equals(friendData.get(1)) == false && friendList.contains(friendData.get(0)) == true && friendList.contains(friendData.get(1)) == false) {
                 if(score.containsKey(friendData.get(1)) == false) {
                     score.put(friendData.get(1), 10);
                 }
@@ -57,7 +57,7 @@ public class Problem7 {
                     score.put(friendData.get(1), score.get(friendData.get(1)) + 10);
                 }
             }
-            if(user.equals(friendData.get(0)) == false && friendList.contains(friendData.get(1))) {
+            if(user.equals(friendData.get(0)) == false && friendList.contains(friendData.get(1)) == true && friendList.contains(friendData.get(0)) == false) {
                 if(score.containsKey(friendData.get(0)) == false) {
                     score.put(friendData.get(0), 10);
                 }
