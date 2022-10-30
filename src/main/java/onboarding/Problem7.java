@@ -31,7 +31,18 @@ public class Problem7 {
     // List<Friend<name, score>> friendsScores 생성
     List<Friend> scores = new ArrayList<>();
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        // updateFriends : 친구 목록 생성
+        Problem7 problem = new Problem7();
+        /* friendNames: 친구 목록 생성  */
+        List<String> friendNames = flatten2DimStringList(friends);   // 배열 평탄화
+        friendNames = dropDuplicate(friendNames);   // 중복 제거
+        friendNames.remove(user); // 친구 목록에서 user 제거
+
+        /* scores에 Friends 객체 추가 */
+        for (String name : friendNames) {
+            problem.updateFriends(name);
+        }
+
+
             // 1. friends를 1중 배열로 Flatten
             // 2. 배열 중복 제거
             // 3. 배열에서 user 제거
@@ -57,6 +68,13 @@ public class Problem7 {
         LinkedHashSet<String> linkedHashSet = new LinkedHashSet<>(stringList);
         List<String> listWithoutDuplicates = new ArrayList<>(linkedHashSet);
         return listWithoutDuplicates;
+    }
+
+    void updateFriends(String friendName) {
+        Friend friend = new Friend();
+        friend.setName(friendName);
+        friend.setScore(0);
+        this.scores.add(friend);
     }
 }
 
