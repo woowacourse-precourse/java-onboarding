@@ -24,4 +24,10 @@ public class Problem7 {
         return answer;
     }
 
+    private static void getMyFriends(List<List<String>> friends, String user) {
+        for (List<String> friend : friends) {
+            if (friend.contains(user)) friendOfUserSet.addAll(friend);
+        }
+    }
+
 }
