@@ -21,3 +21,23 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+---
+
+## Decoding
+
+
+### 설명 요약
+
+    - 암호문을 처음부터 끝까지 탐색 
+      "연속하는 중복 문자들을 삭제"
+      삭제가 더이상 불가능할 때까지 반복
+<br/>
+
+### 기능 설계
+
+    - solution
+        삭제가 더이상 불가능할 때까지 "toDeduplicate" 반복
+    
+    - toDeduplicate
+        첫 글자부터 마지막 글자까지 반복되는 글자 삭제
