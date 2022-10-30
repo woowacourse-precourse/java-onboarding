@@ -12,6 +12,7 @@ public class Problem3 {
 
         getClapCount(number, memo);
 
+        answer = memo[number];
         return answer;
     }
 
