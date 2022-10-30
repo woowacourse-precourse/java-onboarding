@@ -13,7 +13,7 @@ public class Problem6 {
                 .collect(Collectors.toList());
     }
 
-    public static Set<Crew> getDuplicatedCrews(List<Crew> allCrews) {
+    public static Map<String, Set<Crew>> getCrewsByDoubleCharMap(List<Crew> allCrews) {
         Map<String, Set<Crew>> crewsByDoubleCharMap = new HashMap<>();
 
         allCrews.forEach(crew -> {
@@ -25,6 +25,12 @@ public class Problem6 {
                 crewsByDoubleCharMap.getOrDefault(doubleChar, new HashSet<>()).add(crew);
             }
         });
+
+        return crewsByDoubleCharMap;
+    }
+
+    public static Set<Crew> getDuplicatedCrews(List<Crew> allCrews) {
+        Map<String, Set<Crew>> crewsByDoubleCharMap = getCrewsByDoubleCharMap(allCrews);
 
         // 두글자:[이메일]를 순회하며 이메일의 개수가 2개 이상인 것을 찾음
         Set<Crew> duplicatedCrews = new HashSet<>();
