@@ -58,6 +58,20 @@ public class Problem7 {
         return recommend;
     }
 
+    // 해시맵 정렬
+    private static HashMap<String, Integer> sortRecommend(HashMap<String, Integer> recommend) {
+        // 사전순 정렬
+        recommend.entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByKey());
+        // 점수순 정렬
+        recommend.entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByKey());
+
+        return recommend;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
