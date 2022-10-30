@@ -2,12 +2,19 @@ package onboarding;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         User userObject = new User();
         userObject.setName(user);
 
+        userObject.setFriends(friends.stream()
+                .filter(s -> s.contains(userObject.getName()))
+                .flatMap(List::stream)
+                .filter(s -> !s.equals(userObject.getName()))
+                .collect(Collectors.toList()));
     }
 
     private static class User {
