@@ -24,4 +24,4 @@
 - [x] wordToCharArray() : 문자열을 문자 배열로 변환한다.
 - [x] isAlphabet(): 알파벳 여부와 대소문자 여부를 확인한다.
 - [x] findIdxASCII(): 아스키 코드에서 A/a와 떨어진 거리를 확인한다.
-- [ ] translateFrogDict() : 청개구리 사전을 토대로 번역한다.
+- [x] translateFrogDict() : 청개구리 사전을 토대로 번역한다.
