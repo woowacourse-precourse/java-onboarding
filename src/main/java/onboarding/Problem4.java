@@ -5,7 +5,16 @@ package onboarding;
 public class Problem4 {
 
     public static String solution(String word) {
-       return "";
+        StringBuilder result = new StringBuilder();
+        for (Character c : word.toCharArray()) {
+            result.append(mapCharByDictionary(c));
+        }
+        return result.toString();
+    }
+
+    private static Character mapCharByDictionary(Character c) {
+        Dictionary mapped = Enum.valueOf(Dictionary.class, c.toString());
+        return mapped.word();
     }
 
     public enum Dictionary {
