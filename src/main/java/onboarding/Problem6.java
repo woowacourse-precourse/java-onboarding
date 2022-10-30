@@ -78,5 +78,28 @@ class NickNameForm {
     static void addCrew(List<String> crew) {
         registrationMap.put(crew.get(0), crew.get(1));
     }
+    static List<String> validateOverlap() {
+        HashMap<String, List<String>> nickNameSplitMap = getNickNameSplitMap();
+    }
 
+    private static HashMap<String, List<String>> getNickNameSplitMap() {
+        HashMap<String, List<String>> nickNameSplitMap = new HashMap<>();
+        Collection<String> nickName = registrationMap.values();
+        Iterator<String> nickNameIterator = nickName.iterator();
+        while (nickNameIterator.hasNext()) {
+            ArrayList<String> nickNameSplit = new ArrayList<>();
+            String nickNameValue = nickNameIterator.next();
+            char[] nickNameSplitPart = nickNameValue
+                    .toCharArray();
+            for (int i = 0; i < nickNameSplitPart.length - 1; i++) {
+                String temp = new StringBuffer()
+                        .append(nickNameSplitPart[i])
+                        .append(nickNameSplitPart[i + 1])
+                        .toString();
+                nickNameSplit.add(temp);
+            }
+            nickNameSplitMap.put(nickNameValue, nickNameSplit);
+        }
+        return nickNameSplitMap;
+    }
 }
