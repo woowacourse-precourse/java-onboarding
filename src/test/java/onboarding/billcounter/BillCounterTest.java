@@ -26,10 +26,10 @@ public class BillCounterTest {
 	void 단위별_전체_돈_개수_반환() {
 		BillCounter counter = new BillCounter(50_237);
 		List<Integer> bills = counter.getBills();
-		assertThat(bills).isEqualTo(List.of(1, 0, 0, 0, 0, 2, 3, 7));
+		assertThat(bills).isEqualTo(List.of(1, 0, 0, 0, 0, 2, 0, 3, 7));
 
 		counter = new BillCounter(15_000);
 		bills = counter.getBills();
-		assertThat(bills).isEqualTo(List.of(0, 1, 1, 0, 0, 0, 0, 0));
+		assertThat(bills).isEqualTo(List.of(0, 1, 1, 0, 0, 0, 0, 0, 0));
 	}
 }
