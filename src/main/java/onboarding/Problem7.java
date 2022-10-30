@@ -58,6 +58,25 @@ public class Problem7 {
             }
         }
     }
+
+    /**
+     * 3.타임라인의 방문자들을 TreeMap 에 저장하는 함수
+     * 친구목록에서 사용자와 함께 아는 친구일 경우 x
+     * 방문 횟수당 +1점
+     */
+    public static void visitantScore(List<String> userFriend, List<String> visitors) {
+        for(int i =0; i<visitors.size();i++){
+            if(map.containsKey(visitors.get(i))){
+                int value = map.get(visitors.get(i));
+                map.replace((visitors.get(i)),value+1);
+            }else{
+                if(!userFriend.contains(visitors.get(i))){
+                    map.put(visitors.get(i),1);
+                }
+
+            }
+        }
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
