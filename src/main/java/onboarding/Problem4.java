@@ -3,6 +3,7 @@ package onboarding;
 import java.util.ArrayList;
 
 public class Problem4 {
+
     public static String solution(String sentence) {
         try {
             validate(sentence);
@@ -24,7 +25,7 @@ public class Problem4 {
     static ArrayList<Character> convertStringToArrayList(String sentence) {
         char[] characterArray = sentence.toCharArray();
         ArrayList<Character> characterList = new ArrayList<>();
-        for (char character: characterArray) {
+        for (char character : characterArray) {
             characterList.add(character);
         }
         return characterList;
@@ -48,7 +49,7 @@ public class Problem4 {
         return result;
     }
 
-    static void validate(String sentence) throws Exception{
+    static void validate(String sentence) throws Exception {
         int length = sentence.length();
         if (length < 1 || length > 1000) {
             throw new Exception("길이가 1 이상 1000 이하인 문자열만 입력할 수 있습니다");
@@ -57,6 +58,7 @@ public class Problem4 {
 }
 
 class Dictionary {
+
     static char getReverseCharacter(char character) {
         int ascii = character;
         int reverseAscii = getReverseByAscii(ascii);
