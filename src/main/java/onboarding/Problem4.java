@@ -9,6 +9,15 @@ public class Problem4 {
     private static String upperCasesTable = "ABCDEFGHIJKLNMOPQRSTUVWXYZ";
     public static String solution(String word) {
         String answer = "";
+        answer=substitution(word).stream().map(String::valueOf).collect(Collectors.joining());
+        return answer;
+    }
+
+    public static List<Character> substitution(String word){
+        List<Character> answer = new ArrayList<>();
+        for(char c : word.toCharArray()) {
+            answer.add(mixer(c,Character.isUpperCase(c)));
+        }
         return answer;
     }
 
