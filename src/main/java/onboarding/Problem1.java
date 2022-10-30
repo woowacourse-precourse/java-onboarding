@@ -14,7 +14,7 @@ class Problem1 {
             sum += page % 10;
             page /= 10;
         }
-        return sum;
+        return page;
     }
 
     public static int multiplyDigit(int page){
@@ -23,6 +23,14 @@ class Problem1 {
             multi *= page % 10;
             page /= 10;
         }
-        return multi;
+        return page;
     }
+
+    public static int getMaxScoreOfMultiAndSum(int page){
+        int multiScore = multiplyDigit(page);
+        int sumScore = sumDigit(page);
+        return Math.max(multiScore, sumScore);
+    }
+
+
 }
