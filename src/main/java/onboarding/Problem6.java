@@ -79,4 +79,14 @@ public class Problem6 {
         List<String> emailList = new ArrayList<String>(emailSet);
         return emailList;
     }
+
+    /**
+     * 이메일 제한 사항을 만족하는 리스트로 반환하는 함수
+     */
+    private static List<String> emailResult(List<String> emails){
+        List<String> emailCheck;
+        emailCheck = emailOrder(emails);
+        emailCheck = emailRemoveDuplicated(emails);
+        return emailCheck;
+    }
 }
