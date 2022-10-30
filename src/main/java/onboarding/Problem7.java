@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
 
@@ -25,5 +26,15 @@ public class Problem7 {
     private static void initFriendRecommendScoreMap(List<List<String>> friends) {
         Set<String> userIds = getUserIds(friends);
         userIds.forEach(userId -> friendRecommendScoreMap.put(userId, 0));
+    }
+
+    private static List<String> getUserFriends(String userId, List<List<String>> friends) {
+        return friends.stream()
+                .filter(nestedFriends -> nestedFriends.contains(userId))
+                .map(userFriends -> {
+                    userFriends.remove(userId);
+                    return userFriends.get(0);
+                })
+                .collect(Collectors.toList());
     }
 }
