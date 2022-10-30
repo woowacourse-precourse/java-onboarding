@@ -69,7 +69,7 @@ BUILD SUCCESSFUL in 0s
    - 숫자를 문자열로 변환하여 문자열에 포함된 3, 6, 9 개수를 세는 기능
    
 
-1. [문제 4](./docs/PROBLEM4.md)
+5. [문제 4](./docs/PROBLEM4.md)
 
    📌 필요한 기능 목록
    - 문자열을 순회하는 기능
@@ -77,9 +77,14 @@ BUILD SUCCESSFUL in 0s
    - 변환한 문자를 새 문자열에 더하는 기능
    
 
-2. [문제 5](./docs/PROBLEM5.md)
-3. [문제 6](./docs/PROBLEM6.md)
-4. [문제 7](./docs/PROBLEM7.md)
+6. [문제 5](./docs/PROBLEM5.md)
+
+   📌 필요한 기능 목록
+   - 금액을 화폐단위가 큰 순서부터 나눠서 각 단위별 개수를 구하는 기능
+
+
+7. [문제 6](./docs/PROBLEM6.md)
+8. [문제 7](./docs/PROBLEM7.md)
 
 ---
 
