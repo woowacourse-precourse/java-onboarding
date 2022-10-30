@@ -8,7 +8,7 @@ public class Problem3 {
      * @return : int, 몇 번의 박수를 쳐야 하는지
      */
     public static int solution(int number) {
-        int answer = 0;
+        int answer = playGame(number);
         return answer;
     }
 
