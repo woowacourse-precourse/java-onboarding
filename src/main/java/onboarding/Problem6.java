@@ -19,6 +19,20 @@ public class Problem6 {
         return answer;
     }
 
+    private static void getOverlapNickName(List<String> list) {
+        String nickName = list.get(NICKNAME);
+        for (int i = 0; i < nickName.length() - 1; i++) {
+            String subString = nickName.substring(i, i + 2);
+            if (nickNameMap.containsKey(subString)) {
+                overlapNickNameSet.add(nickNameMap.get(subString));
+                overlapNickNameSet.add(list.get(EMAIL));
+            }
+            if (!nickNameMap.containsKey(subString))
+                nickNameMap.put(subString, list.get(EMAIL));
+        }
+    }
+
+
     private static boolean isProperForms(List<String> forms) {
         return forms.size() == 2
                 && isProperEmail(forms.get(EMAIL))
