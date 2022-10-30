@@ -22,10 +22,8 @@ public class NickName {
         }
     }
     public boolean isDuplicate(NickName compareNick) {
-        List<String> toNick = compareNick.getSeparateNicks();
-
         return separateNicks.stream()
-                .anyMatch(toNick::contains);
+                .anyMatch(nick ->compareNick.getSeparateNicks().contains(nick));
     }
 
     private void separateTwoParts() {
