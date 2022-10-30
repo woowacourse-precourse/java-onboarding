@@ -16,6 +16,11 @@ public class Problem6 {
             searchByForm(nickname, email);
         }
 
+        for (Set<String> value : overlap.values()) {
+
+        }
+
+
         return answer;
     }
 
@@ -60,5 +65,7 @@ public class Problem6 {
  * 1. 각 form에 대한 연산을 하는 메소드 searchByForm
  *   2. 닉네임에서 n개의 연속된 문자열들을 탐색하는 메소드
  *       3. 찾은 문자열을 해쉬맵에 담는 메소드
- * 4. 모든 해쉬맵을 탐색하면서 결과를 반환하는 메소드
+ * 4. 모든 해쉬맵을 탐색하면서 하는 메서드
+ * 5. 해쉬맵에 담긴 리스트가 2 이상이면 결과에 리스트에 담아주는 메소드
+ *
  * */
