@@ -27,6 +27,7 @@ public class Problem4 {
                 s = s.toLowerCase();
                 answer = answer.concat(s);
             }else{
+                answer = answer.concat(String.valueOf(word.charAt(k)));
             }
         }
         return answer;
