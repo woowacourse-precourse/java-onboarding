@@ -26,7 +26,7 @@ class Problem5Test {
     class DivideNumberAByBTest {
         @Nested
         @DisplayName("숫자A와 0이 아닌 숫자B를 입력하면")
-        class Context_with_numberA_and_non_zero_numberB{
+        class Context_with_numberA_and_non_zero_numberB {
             @Test
             @DisplayName("숫자A를 숫자B로 나눈 몫을 반환한다")
             void it_returns_quotient() {
@@ -38,17 +38,17 @@ class Problem5Test {
 
         @Nested
         @DisplayName("숫자A와 0을 입력하면")
-        class Context_with_numberA_and_zero_numberB{
+        class Context_with_numberA_and_zero_numberB {
             @Test
             @DisplayName("ArithmeticException이 발생한다")
             void it_throws_ArithmeticException() {
                 int numberA = 5;
                 int numberB = 0;
-                assertThatThrownBy(() ->  problem5.divideNumberAByNumberB(numberA, numberB)).isInstanceOf(ArithmeticException.class);
+                assertThatThrownBy(() -> problem5.divideNumberAByNumberB(numberA, numberB)).isInstanceOf(ArithmeticException.class);
             }
         }
     }
-    
+
     @Nested
     @DisplayName("moduloNumberAByNumberB 메소드는")
     class moduloNumberAByNumberBTest {
@@ -76,6 +76,7 @@ class Problem5Test {
             }
         }
     }
+
     @Nested
     @DisplayName("sortListDescendingOrder 메소드는")
     class sortListDescendingOrderTest {
@@ -90,6 +91,12 @@ class Problem5Test {
                 assertThat(problem5.sortListDescendingOrder(list)).isEqualTo(sortedList);
             }
         }
+    }
+
+    @Test
+    void getDenominationListTest() {
+        List<Integer> list = List.of(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1, 0);
+        assertThat(problem5.getDenominationList()).isEqualTo(list);
     }
 
     @Nested
