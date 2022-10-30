@@ -10,9 +10,29 @@ public class Problem4 {
     public static String solution(String word) {
         String answer = "";
         fillLowerAndUpper();
+        answer = checkWord(word);
         return answer;
     }
 
+    private static String checkWord(String word) {
+        char[] chars = new char[word.length()];
+
+        for (int i = 0; i < word.length(); i++) {
+            for (int j = 0; j < upperChars.length; j++) {
+                if (word.charAt(i) == upperChars[j]) {
+                    chars[i] = upperChars[(upperChars.length - 1) - j];
+                } else if (word.charAt(i) == lowerChars[j]) {
+                    chars[i] = lowerChars[(upperChars.length - 1) - j];
+                } else if (word.charAt(i) == ' ') {
+                    chars[i] = ' ';
+                }
+            }
+
+        }
+
+
+        return new String(chars);
+    }
 
 
     private static void fillLowerAndUpper() {
