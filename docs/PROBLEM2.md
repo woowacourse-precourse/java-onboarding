@@ -21,3 +21,10 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+<br/>
+
+## 구현할 기능 목록
+1. cryptogram이 길이가 1이상 1000이하인 문자열이 아닐 때 예외
+2. cryptogram이 알파벳 소문자가 아닐 때 예외
+3. 연속하는 중복 문자 삭제
