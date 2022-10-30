@@ -22,4 +22,20 @@ class Calculate {
             return 0;
         }
     }
+
+    int add() {
+        int tmp1 = num1, tmp2 = num2;
+        int score1 = 0, score2 = 0;
+
+        while(tmp1 > 0) {
+            score1 = score1 + (tmp1 % 10);
+            tmp1 = tmp1 / 10;
+        }
+        while(tmp2 > 0) {
+            score2 = score2 + (tmp2 % 10);
+            tmp2 = tmp2 / 10;
+        }
+
+        return Math.max(score1, score2);
+    }
 }
