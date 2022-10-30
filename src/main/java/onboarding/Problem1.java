@@ -9,6 +9,8 @@ class Problem1 {
         int leftPage = 0;
         int rightPage = 1;
 
+        exceptionHandling(pobi);
+        exceptionHandling(crong);
 
         if (checkException(pobi.get(leftPage), pobi.get(rightPage)) &&
                 checkException(crong.get(leftPage), crong.get(rightPage))) {
@@ -36,6 +38,17 @@ class Problem1 {
 
         return result;
     }
+    //점수 비교해 결과 반환
+    public static int compareScore(int pobiScore, int crongScore) {
+        if (pobiScore == crongScore)
+            return 0;
+        if (pobiScore > crongScore)
+            return 1;
+        if (pobiScore < crongScore)
+            return 2;
+
+        return -1;
+    }
     //자리수를 알아내 리스트에 저장
     public static List<Integer> findPlaceValue(int num) {
         List<Integer> num_list = new ArrayList<>();
@@ -47,24 +60,11 @@ class Problem1 {
 
         return num_list;
     }
-
     public static int findScore(int number) {
         int sumResult = calculation(findPlaceValue(number), '+');
         int multiplicationResult = calculation(findPlaceValue(number), '*');
 
         return Math.max(sumResult,  multiplicationResult);
-    }
-
-    //점수 비교해 결과 반환
-    public static int compareScore(int pobiScore, int crongScore) {
-        if (pobiScore == crongScore)
-            return 0;
-        if (pobiScore > crongScore)
-            return 1;
-        if (pobiScore < crongScore)
-            return 2;
-
-        return -1;
     }
 
     /*
@@ -83,5 +83,11 @@ class Problem1 {
         if ((leftPage + 1) != rightPage)
             return false;
         return true;
+    }
+    public static void exceptionHandling(List<Integer> list) {
+        String errorMessage = "LIST SIZE ERROR";
+
+        if (list.size() != 2)
+            throw new IllegalArgumentException(errorMessage);
     }
 }

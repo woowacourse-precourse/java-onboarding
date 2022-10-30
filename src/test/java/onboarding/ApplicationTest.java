@@ -35,23 +35,6 @@ class ApplicationTest {
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
-
-        //범위를 벗어났을 경우
-        @Test
-        void case4() {
-            List<Integer> pobi = List.of(400, 401);
-            List<Integer> crong = List.of(211, 212);
-            int result = -1;
-            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
-        }
-        //왼쪽 페이지가 짝수인 경우
-        @Test
-        void case5() {
-            List<Integer> pobi = List.of(244, 245);
-            List<Integer> crong = List.of(122, 123);
-            int result = -1;
-            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
-        }
     }
 
     @Nested
