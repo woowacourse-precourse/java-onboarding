@@ -30,7 +30,7 @@
 > HashMap<String, Integer> initDuplicationOfNickname()
 
 - 이메일과 닉네임을 HashMap에 추가하는 함수
-> void AddUsers(HashMap<String, String> databaseOfNickname, HashMap<String, Integer> duplicationOfNickname, List<String> user)
+> void AddUsers(HashMap<String, String> databaseOfNickname, List<String> user)
 > input: 이메일과 닉네임을 저장한 HashMap, 이메일과 닉네임의 중복 여부를 판단할 HashMap, user 정보를 담은 List
 
 - 이메일과 닉네임을 추가한 뒤 중복 여부를 판단하는 함수

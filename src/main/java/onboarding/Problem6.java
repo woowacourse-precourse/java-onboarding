@@ -18,4 +18,9 @@ public class Problem6 {
     public static HashMap<String, Integer> initDuplicationOfNickname() {
         return new HashMap<String, Integer>();
     }
+
+    // 이메일과 닉네임을 HashMap에 추가하는 함수
+    public static void addUsers(HashMap<String, String> databaseOfNickname, List<String> user) {
+        databaseOfNickname.put(user.get(0), user.get(1));
+    }
 }
