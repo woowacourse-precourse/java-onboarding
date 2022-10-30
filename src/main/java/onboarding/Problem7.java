@@ -40,6 +40,7 @@ public class Problem7 {
         Map<String, List<String>> friendsMap = getFriendsMap(friends); // 친구들 맵 생성
         Set<String> userFriend = getUserFriend(friendsMap.get(user)); // 내 친구들 생성
         Map<String, Integer> possibleFriend = findPossibleFriend(friendsMap, user); // 사용자와 함께 아는 친구
+        Map<String, Integer> visitorFriend = calcVisitFriend(possibleFriend, visitors, userFriend, user); // 방문자 계산
 
         return answer;
     }
@@ -96,6 +97,27 @@ public class Problem7 {
                     possibleFriend.put(friend, possibleFriend.get(friend) + 10);
                 } else {
                     possibleFriend.put(friend, 10);
+                }
+            }
+        }
+        return possibleFriend;
+    }
+
+    /**
+     * 방문한 친구들 계산
+     * @param possibleFriend
+     * @param visitors
+     * @param userFriend
+     * @param user
+     * @return 나와 내 친구를 제외한 나한테 방문한 리스트 반환
+     */
+    public static Map<String, Integer> calcVisitFriend(Map<String, Integer> possibleFriend, List<String> visitors, Set<String> userFriend, String user) {
+        for (String visitor : visitors) {
+            if (possibleFriend.containsKey(visitor)) {
+                possibleFriend.put(visitor, possibleFriend.get(visitor)+1);
+            } else {
+                if (!userFriend.contains(visitor)) {
+                    possibleFriend.put(visitor, 1);
                 }
             }
         }
