@@ -30,7 +30,20 @@ class Problem1 {
     static int pageResult(List<Integer> list){
         return Math.max(cal(list.get(0)),cal(list.get(1)));
     }
+
+    /**
+     * 3.예외 사항 함수
+     * 페이지가 번호가 순서대로 들어있지 않을 경우 true 리턴
+     */
     
+    public static boolean pageCheck(List<Integer> list){
+        boolean errorCheck = false;
+        if(list.get(0)+1 != list.get(1)) {
+            errorCheck = true;
+        }
+        return errorCheck;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
