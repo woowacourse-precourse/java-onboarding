@@ -3,7 +3,6 @@ package onboarding.feature6;
 import static onboarding.feature6.Constants.*;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -24,30 +23,6 @@ public class DuplicateLettersFinder {
         userNicknames = userInfo.getNicknames();
     }
 
-    public List<String> getFilteredEmails(Map<String, Set<String>> filteredResults) {
-        List<String> setToList = new ArrayList<>(filteredResults.get(duplicateLetters));
-        List<String> idsSorted = new ArrayList<>();
-        List<String> emailsSorted = new ArrayList<>();
-
-        for (String email : setToList) {
-            idsSorted.add(email.split("@")[0]);
-        }
-        Collections.sort(idsSorted);
-        for (String id : idsSorted) {
-            for (String email : setToList) {
-                if (id.equals(email.split("@")[0])) {
-                    int index = setToList.indexOf(email);
-                    emailsSorted.add(setToList.get(index));
-                }
-            }
-        }
-        return emailsSorted;
-    }
-
-    /*
-     * The method below🔻 could return more than two pairs of key and value
-     * if given nicknames share several cases of adjacent duplicate letters.
-     */
     public Map<String, Set<String>> findDuplicateLetters() {
         for (int i = 0; i < userNicknames.size() - 1; i++) {
             String currentNickname = userNicknames.get(i);
