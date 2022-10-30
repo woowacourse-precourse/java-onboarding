@@ -21,9 +21,48 @@ public class Problem7 {
         ArrayList<String> userFriendsList = friendsMap.get(user);
         Map<String, Integer> recommendMap = new HashMap<>();
         for(String name : userFriendsList) {
-
+            ArrayList<String> list = friendsMap.get(name);
+            for(String s : list) {
+                if(!s.equals(user) && !userFriendsList.contains(s)) {
+                    if(!recommendMap.containsKey(s))
+                        recommendMap.put(s, 10);
+                    else {
+                        int n = recommendMap.get(s);
+                        n += 10;
+                        recommendMap.put(s, n);
+                    }
+                }
+            }
         }
-        List<String> answer = Collections.emptyList();
+
+        for(String name : visitors) {
+            if(!userFriendsList.contains(name)) {
+                if(!recommendMap.containsKey(name))
+                    recommendMap.put(name, 1);
+                else {
+                    int n = recommendMap.get(name);
+                    n++;
+                    recommendMap.put(name, n);
+                }
+            }
+        }
+
+        ArrayList<Integer> tmp = new ArrayList<>(recommendMap.values());
+        ArrayList<Integer> values = new ArrayList<>();
+
+        for(Integer n : tmp) {
+            if(!values.contains(n))
+                values.add(n);
+        }
+
+        List<String> answer = new ArrayList<>();
+        for(Map.Entry<String, Integer> entry : recommendMap.entrySet()) {
+            for(int n : values) {
+                if(entry.getValue().equals(n))
+                    answer.add(entry.getKey());
+            }
+        }
+
         return answer;
     }
 }
