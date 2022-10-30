@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -8,6 +9,15 @@ public class Problem6 {
 	public static List<String> solution(List<List<String>> forms) {
 		List<String> answer = List.of("answer");
 		return answer;
+	}
+
+	public static List<String> getNicknames(List<List<String>> forms) {
+		List<String> nicknames = new ArrayList<>();
+		for (List<String> form : forms) {
+			String nickname = form.get(1);
+			nicknames.add(nickname);
+		}
+		return nicknames;
 	}
 
 	public static Set<String> getOverlapWords(List<String> nicknames) {
