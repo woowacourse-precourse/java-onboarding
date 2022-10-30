@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class Problem7 {
+    public static final int VISITOR_SCORE = 1;
     public static final int ACQUAINTANCE_SCORE = 10;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -16,8 +17,20 @@ public class Problem7 {
 
         List<String> friendsOfUser = findFriendsByUser(user, friends);
         Map<String, Integer> scoreOfAcquaintance = addAcquaintanceScore(friends, friendsOfUser);
+        addVisitorScore(visitors, scoreOfAcquaintance);
 
         return answer;
+    }
+
+    private static void addVisitorScore(List<String> visitors, Map<String, Integer> recommendationScore) {
+        for (String visitor : visitors) {
+            if (recommendationScore.containsKey(visitor)) {
+                recommendationScore.put(visitor, recommendationScore.get(visitor) + VISITOR_SCORE);
+            }
+            if (!recommendationScore.containsKey(visitor)) {
+                recommendationScore.put(visitor, VISITOR_SCORE);
+            }
+        }
     }
 
     private static Map<String, Integer> addAcquaintanceScore(List<List<String>> friends, List<String> friendsOfUser) {
