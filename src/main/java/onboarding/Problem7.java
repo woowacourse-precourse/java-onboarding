@@ -10,6 +10,23 @@ public class Problem7 {
         List<String> visitFriends = new ArrayList<>(); //방문자 리스트 -> +1점
         Map<String, Integer> friendScore = new HashMap<>(); //친구들의 추천 점수를 저장하는 맵 생성
 
+        try {
+            if (user.length() < 1 || user.length() > 30)
+                throw new Exception("user의 글자수가 이상합니다.");
+            if (friends.size() < 1 || friends.size() > 10000)
+                throw new Exception("friends 리스트의 크기가 이상합니다.");
+            if (visitors.size() > 10000)
+                throw new Exception("visitors 리스트의 크기가 이상합니다.");
+            for (int i = 0; i < user.length(); i++) {
+                if (97 > user.charAt(i)) {
+                    throw new Exception("사용자의 아이디가 형식과 맞지 않습니다.");
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return List.of(e.getMessage());
+        }
+
         for (int i = 0; i < friends.size(); i++) {
             if (user.equals(friends.get(i).get(1))) {
                 realFriends.add(friends.get(i).get(0));
@@ -120,4 +137,5 @@ public class Problem7 {
         sort.put(sorts, stop);
         return sort;
     }
+
 }
