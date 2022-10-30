@@ -33,7 +33,8 @@ public class Problem7 {
             if(visitorPoints.get(friend) != null)
             visitorPoints.put(friend,0);
         }
-        visitorPoints.put(user,0);
+        if(visitorPoints.get(user) != null)
+            visitorPoints.put(user,0);
         return visitorPoints;
     }
     public static Map<String, Integer> enrichPointFrom(Map<String, List<String>> relationships,
