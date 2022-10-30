@@ -32,5 +32,24 @@ public class Problem7 {
         friendsMap.put(user, userFriends);
         return userFriends;
     }
-    
+
+    private static Set<String> getFriendsByUserFriend(String userFriend, Map<String, Set<String>> friendsMap) {
+        return friendsMap.get(userFriend);
+    }
+
+    private static void giveRecommendationPointToUser(String friend, Map<String, Integer> pointMap) {
+        int recommendationPointOfFriend = 10;
+        int friendPoint = getUserRecommendationPoint(friend, pointMap);
+
+        pointMap.replace(friend, friendPoint + recommendationPointOfFriend);
+    }
+
+    private static int getUserRecommendationPoint(String friend, Map<String, Integer> pointMap) {
+        Set<String> users = pointMap.keySet();
+        if (users.contains(friend)) {
+            return pointMap.get(friend);
+        }
+        pointMap.put(friend, 0);
+        return 0;
+    }
 }
