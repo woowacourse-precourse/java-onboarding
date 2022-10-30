@@ -45,14 +45,13 @@ public class Problem7 {
 
     //추천리스트에 아는 사이 넣기 : (유저) 프랜드 맵 순회하면서 VALUE꺼내서, 추천리스트에 넣고 점수주기
     public static void recommendAcquaintance(Map<String,List<String>> friendMap, HashMap<String,Integer> recommendMap){
-        HashMap<String,Integer> recommendList = new HashMap<>();
-            friendMap.forEach((f,fList)->{
-                for(String person :fList){
-                    if (recommendMap.containsKey(person)){
-                        recommendMap.replace(person, recommendMap.get(person).intValue()+10);
-                    }else recommendMap.put(person, 10);
-                }
-        });
+        for(Map.Entry<String,List<String>> e : friendMap.entrySet()){
+            for(String person : e.getValue()){
+                if (recommendMap.containsKey(person)){
+                    recommendMap.replace(person, recommendMap.get(person).intValue()+10);
+                }else recommendMap.put(person, 10);
+            }
+        }
     }
 
 }
