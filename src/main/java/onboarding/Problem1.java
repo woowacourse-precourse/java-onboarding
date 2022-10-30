@@ -103,21 +103,23 @@ class Problem1 {
 			return 2;
 		return 0;
 	}
-    /**
-     * 각 자리 숫자를 모두 더하는 기능이다.
-     * 
-     * @param number
-     * @return 합의 결과를 리턴한다
-     */
+
+	/**
+	 * 각 자리 숫자를 모두 더하는 기능이다.
+	 * 
+	 * @param number
+	 * @return 합의 결과를 리턴한다
+	 */
 	public static int sum(int number) {
 		return number / 100 + (number % 100) / 10 + (number % 100) % 10;
 	}
-    /**
-     * 각 자리 숫자를 모두 곱하는 기능이다.
-     * 
-     * @param number
-     * @return 곱의 결과를 리턴한다
-     */
+
+	/**
+	 * 각 자리 숫자를 모두 곱하는 기능이다.
+	 * 
+	 * @param number
+	 * @return 곱의 결과를 리턴한다
+	 */
 	public static int multiply(int number) {
 		int times = 1;
 		while (number > 0) {
