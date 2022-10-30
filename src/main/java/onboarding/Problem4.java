@@ -19,7 +19,17 @@ public class Problem4 {
      * @return : String, 청개구리의 말
      */
     public static String changeWord(String word) {
-        String answer = "";
-        return answer;
+        StringBuilder newWord = new StringBuilder();
+        for (int idx = 0, size = word.length(); idx < size; idx++) {
+            if ('A' <= word.charAt(idx) && word.charAt(idx) <= 'Z') {
+                newWord.append((char) ('A' + 'Z' - word.charAt(idx)));
+            } else if ('a' <= word.charAt(idx) && word.charAt(idx) <= 'z') {
+                newWord.append((char) ('a' + 'z' - word.charAt(idx)));
+            } else {
+                newWord.append(word.charAt(idx));
+            }
+        }
+
+        return newWord.toString();
     }
 }
