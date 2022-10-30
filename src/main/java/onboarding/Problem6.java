@@ -22,11 +22,7 @@ public class Problem6 {
             String email = checkNicknameEmail.get(0);
             List<String> nicknameUnits = separateNickname(checkNicknameEmail.get(1));
 
-            long count = nicknameEmailQ.stream()
-                    .map(x -> x.get(1))
-                    .filter(nickname -> isDuplicate(nickname, nicknameUnits))
-                    .count();
-            if (count > 0) {
+            if (isExistDuplicateNickname(nicknameUnits)) {
                 answer.add(email);
             }
 
@@ -59,5 +55,10 @@ public class Problem6 {
     }
     public static boolean isValidateEmail (String email){
         return email.length() >= 11 && email.length() < 20 && email.endsWith("email.com");
+    }
+
+    public static boolean isExistDuplicateNickname(List<String> nicknameUnits){
+        return nicknameEmailQ.stream()
+                .map(x -> x.get(1)).anyMatch(nickname -> isDuplicate(nickname, nicknameUnits));
     }
 }
