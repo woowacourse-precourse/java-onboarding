@@ -6,13 +6,15 @@ import java.util.stream.Stream;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-
         HashMap<String, String> infoMap = parseUserInfo(forms);
 
         Set<String> duplicatedEmailSet = findDuplicatedNames(infoMap);
 
-        return answer;
+        List<String> duplicatedEmailList = new ArrayList<>(duplicatedEmailSet);
+
+        Collections.sort(duplicatedEmailList);
+
+        return duplicatedEmailList;
     }
 
     private static Set<String> findDuplicatedNames(HashMap<String, String> infoMap) {
