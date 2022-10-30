@@ -38,7 +38,7 @@ public class Encoder
         for(int i = 0 ; i < word.length();i++)
         {
             char key = word.charAt(i);
-            char value = map.get(key);
+            char value = map.containsKey(key) ? map.get(key) : key;
             sb.append(value);
         }
         return sb.toString();
