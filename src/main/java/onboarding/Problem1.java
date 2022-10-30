@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 class Problem1 {
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         try {
             validatePageList(pobi);
@@ -48,7 +49,8 @@ class Problem1 {
     }
 
     static List<Integer> splitDigits(int num) {
-        int[] arrayOfNum = Stream.of(String.valueOf(num).split("")).mapToInt(Integer::parseInt).toArray();
+        int[] arrayOfNum = Stream.of(String.valueOf(num).split("")).mapToInt(Integer::parseInt)
+            .toArray();
         List<Integer> result = Arrays.stream(arrayOfNum).boxed().collect(Collectors.toList());
         return result;
     }
@@ -63,7 +65,7 @@ class Problem1 {
         return 0;
     }
 
-    static void validatePageList(List<Integer> pageList) throws Exception{
+    static void validatePageList(List<Integer> pageList) throws Exception {
         validateAllPageNumber(pageList);
         validateStartOrEndPage(pageList);
         validateGap(pageList);
@@ -71,7 +73,7 @@ class Problem1 {
     }
 
     static void validateAllPageNumber(List<Integer> pageList) throws Exception {
-        for (int pageNumber: pageList) {
+        for (int pageNumber : pageList) {
             validatePageNumber(pageNumber);
         }
     }

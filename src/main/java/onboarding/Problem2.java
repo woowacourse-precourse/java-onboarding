@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.regex.Pattern;
 
 public class Problem2 {
+
     public static String solution(String cryptogram) {
         try {
             validate(cryptogram);
@@ -30,7 +31,8 @@ public class Problem2 {
     static String removeDuplication(String cryptogram) {
         ArrayList<String> inputArrayList = new ArrayList<>(Arrays.asList(cryptogram.split("")));
         HashSet<Integer> duplicationIndexSet = getDuplicationIndexSet(inputArrayList);
-        ArrayList<String> outputArrayList = removeDuplicationBySet(inputArrayList, duplicationIndexSet);
+        ArrayList<String> outputArrayList = removeDuplicationBySet(inputArrayList,
+            duplicationIndexSet);
         String answer = joinStringWithoutNull(outputArrayList);
         return answer;
     }
@@ -72,7 +74,7 @@ public class Problem2 {
         return result;
     }
 
-    static void validate(String cryptogram) throws Exception{
+    static void validate(String cryptogram) throws Exception {
         String pattern = "^[a-z]{1,1000}$";
         boolean isMatch = Pattern.matches(pattern, cryptogram);
         if (!isMatch) {
