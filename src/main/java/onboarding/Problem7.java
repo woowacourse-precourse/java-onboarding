@@ -42,6 +42,12 @@ public class Problem7 {
             }
         }
 
+        return userObject.getFriendRecommendScore().entrySet().stream()
+                .sorted(Collections.reverseOrder(Map.Entry.<String, Integer>comparingByValue())
+                        .thenComparing(Map.Entry.comparingByKey()))
+                .limit(5)
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
     }
 
     private static class User {
