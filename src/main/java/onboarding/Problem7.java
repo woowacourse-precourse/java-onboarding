@@ -5,19 +5,8 @@ import java.util.*;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
-        // create a set to get all users in friends and visitors
-        HashSet<String> usernameSet = new HashSet<>();
 
-        // add users from friends
-        for(List<String> friendList: friends){ // ["donut", "andole"]
-            for(String name: friendList){ // "donut"
-                usernameSet.add(name);
-            }
-        }
-        //add users from visitors
-        for(String visitor: visitors){
-            usernameSet.add(visitor);
-        }
+        HashSet<String> usernameSet = getAllUsers(friends, visitors);
 
         // initialize all users' score to zero
         HashMap<String, Integer> usernameAndScoreMap = new HashMap<>();
@@ -35,9 +24,7 @@ public class Problem7 {
             HashSet<String> mutualFriend = searchFriends(directFriend, friends);
             mutualFriends.addAll(mutualFriend);
         }
-
         mutualFriends.remove(user);
-        System.out.println(mutualFriends);
 
         // add score to mutual friends
         for(String mutualFriend: mutualFriends){ // andole
@@ -67,22 +54,43 @@ public class Problem7 {
             }
         }
 
-        List<String> answer =   new ArrayList<>();
 
         // sort final score by value
-        HashMap<String, Integer> sortedScore = new HashMap<>();
-        finalScore.entrySet()
-                .stream()
-                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
-                .forEachOrdered(x -> sortedScore.put(x.getKey(), x.getValue()));
-
+        HashMap<String, Integer> sortedScore = getSortedScore(finalScore);
         System.out.println(sortedScore);
 
+        List<String> answer =   new ArrayList<>();
         for(Map.Entry<String,Integer> entry: sortedScore.entrySet()){
             answer.add(entry.getKey());
         }
 
         return answer;
+    }
+
+    private static HashMap<String, Integer> getSortedScore(HashMap<String, Integer> finalScore) {
+        HashMap<String, Integer> sortedScore = new HashMap<>();
+        finalScore.entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .forEachOrdered(x -> sortedScore.put(x.getKey(), x.getValue()));
+        return sortedScore;
+    }
+
+    private static HashSet<String> getAllUsers(List<List<String>> friends, List<String> visitors) {
+        // create a set to get all users in friends and visitors
+        HashSet<String> usernameSet = new HashSet<>();
+
+        // add users from friends
+        for(List<String> friendList: friends){ // ["donut", "andole"]
+            for(String name: friendList){ // "donut"
+                usernameSet.add(name);
+            }
+        }
+        //add users from visitors
+        for(String visitor: visitors){
+            usernameSet.add(visitor);
+        }
+        return usernameSet;
     }
 
     private static HashSet<String> searchFriends(String user, List<List<String>> friends) {
