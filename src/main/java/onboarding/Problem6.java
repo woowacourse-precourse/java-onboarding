@@ -1,10 +1,6 @@
 package onboarding;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -13,7 +9,11 @@ public class Problem6 {
 
         for (List<String> person : forms) {
             int emailLength = person.get(0).length();
+            String domain = person.get(0).substring(0, emailLength - 10);
             if (emailLength < 11 || emailLength >= 20) {
+                break;
+            }
+            if (domain.equals("email.com")) {
                 break;
             }
 
