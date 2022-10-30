@@ -1,8 +1,15 @@
 package onboarding;
 
-public class Problem3 {
+class NumberRangeException extends Exception {}
 
-    public static int clapCheck(int numIn) {
+public class Problem3 {
+    static void numberRangeExceptionCheck(int numIn) throws NumberRangeException {
+        if (numIn < 1 || numIn >= 10000) {
+            throw new NumberRangeException();
+        }
+    }
+
+    static int clapCheck(int numIn) {
         int output = 0;
 
         String numStr = Integer.toString(numIn);
@@ -17,10 +24,16 @@ public class Problem3 {
     }
 
     public static int solution(int number) {
-        int answer = 0;
-        for (int i = 1; i <= number; i++) {
-            answer += clapCheck(i);
+        try {
+            numberRangeExceptionCheck(number);
+            int answer = 0;
+            for (int i = 1; i <= number; i++) {
+                answer += clapCheck(i);
+            }
+            return answer;
+        } catch (NumberRangeException e) {
+            System.err.println("check the range of given number: ");
+            return number;
         }
-        return answer;
     }
 }
