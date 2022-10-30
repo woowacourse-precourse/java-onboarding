@@ -16,6 +16,9 @@ class Problem1 {
         List<Integer> pobiNumbers = getAllNumbers(pobiLeftPage, pobiRightPage);
         List<Integer> crongNumbers = getAllNumbers(crongLeftPage, crongRightPage);
 
+        int pobiScore = getMaxScore(pobiNumbers);
+        int crongScore = getMaxScore(crongNumbers);
+
         return answer;
     }
 
@@ -50,6 +53,11 @@ class Problem1 {
         numbers.add(getPageMultiply(getEachPageNumbers(rightPage)));
 
         return numbers;
+    }
+
+    private static int getMaxScore(List<Integer> numbers) {
+        Integer maxNumber = Collections.max(numbers);
+        return maxNumber;
     }
 
 }
