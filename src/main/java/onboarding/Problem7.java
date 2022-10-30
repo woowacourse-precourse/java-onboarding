@@ -41,18 +41,18 @@ public class Problem7 {
         return strange_map;
     }
 
-    public static void modifyScore(List<List<String>> friends, List<String> visitors, List<String> friend_list, HashMap stranger_map) {
+    public static void modifyScore(List<List<String>> friends, List<String> visitors, List<String> friend_list, HashMap<String, Integer> strange_map) {
         for(List<String> f : friends) {
-            if (friend_list.contains(f.get(0)) && stranger_map.containsKey(f.get(1))) {
-                stranger_map.put(f.get(1), (int) stranger_map.get(f.get(1)) + 10);
+            if(friend_list.contains(f.get(0)) && strange_map.containsKey(f.get(1))) {
+                strange_map.put(f.get(1), strange_map.get(f.get(1)) + 10);
             }
-            if (friend_list.contains(f.get(1)) && stranger_map.containsKey(f.get(0))) {
-                stranger_map.put(f.get(0), (int) stranger_map.get(f.get(0)) + 10);
+            if(friend_list.contains(f.get(1)) && strange_map.containsKey(f.get(0))) {
+                strange_map.put(f.get(0), strange_map.get(f.get(0)) + 10);
             }
         }
         for(String v : visitors) {
-            if(!friend_list.contains(v) && stranger_map.containsKey(v)) {
-                stranger_map.put(v, (int)stranger_map.get(v) + 1);
+            if(!friend_list.contains(v) && strange_map.containsKey(v)) {
+                strange_map.put(v, strange_map.get(v) + 1);
             }
         }
     }
