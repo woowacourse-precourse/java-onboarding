@@ -81,11 +81,11 @@ public class Problem7 {
             String friendA = friend.get(0);
             String friendB = friend.get(1);
 
-            if (!numberOfFriends.containsKey(friendA)) {
+            if (isNotContainMap(numberOfFriends, friendA)) {
                 initFriend(numberOfFriends, friends, idx++, friendA);
             }
 
-            if (!numberOfFriends.containsKey(friendB)) {
+            if (isNotContainMap(numberOfFriends, friendB)) {
                 initFriend(numberOfFriends, friends, idx++, friendB);
             }
 
@@ -94,12 +94,16 @@ public class Problem7 {
         }
 
         for (String visitor : visitors) {
-            if (!numberOfFriends.containsKey(visitor)) {
+            if (isNotContainMap(numberOfFriends, visitor)) {
                 initFriend(numberOfFriends, friends, idx++, visitor);
             }
 
             friends.get(numberOfFriends.get(visitor)).addScore(1);
         }
+    }
+
+    private static boolean isNotContainMap(Map<String, Integer> numberOfFriends, String friendA) {
+        return !numberOfFriends.containsKey(friendA);
     }
 
     private static void initFriend(Map<String, Integer> numberOfFriends, List<Friend> friends, int idx, String friendA) {
