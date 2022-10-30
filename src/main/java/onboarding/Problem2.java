@@ -12,6 +12,8 @@ public class Problem2 {
         for (int i=0; i<cryptogram.length(); i++){
             pushOrNot(cryptogram.charAt(i));
         }
+        if(flag) stack.pop();
+
         StringBuffer sb = new StringBuffer();
         // 2. 연속 문자가 제거된 채 쌓인 문자들을 뒤집어서 반환
         while(!stack.isEmpty()) {
