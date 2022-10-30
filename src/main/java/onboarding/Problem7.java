@@ -9,13 +9,27 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
-        HashMap<String, User> userMap = new HashMap<>();
+        HashMap<String, User> userMap = initialize(user, friends);
+        HashMap<String, Integer> recommendedMap = new HashMap<>();
 
+        User standardUser = userMap.get(user);
+
+        for(User friend : standardUser.getFriends()) {
+            friend.getFriends().stream()
+                    .filter(f -> ! standardUser.getFriends().contains(f))
+                    .forEach(
+                            f -> {
+                                String username = f.getUsername();
+                                int point = recommendedMap.get(username) == null ? 0 : recommendedMap.get(username);
+                                recommendedMap.put(username, point + 10);
+                            }
+                    );
+        }
 
         return answer;
     }
 
-    public HashMap<String, User> initialize(String user, List<List<String>> friends) {
+    private static HashMap<String, User> initialize(String user, List<List<String>> friends) {
         HashMap<String, User> userMap = new HashMap<>();
         String username1;
         String username2;
