@@ -1,56 +1,36 @@
 package onboarding;
 
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Collection;
+import java.util.Deque;
 import java.util.stream.Collectors;
 
 
 public class Problem2 {
-	private static Stack<Character> decryptionStack;
 	public static String solution(String cryptogram) {
-		decryptionStack = new Stack<>();
-		int cursor = 0;
-		while (cursor < cryptogram.length()) {
-			int afterVisit = visitCharAt(cryptogram, cursor);
-			cursor = afterVisit;
+
+		Deque<Character> decryptionQueue = getCharacterQueueByString(cryptogram);
+
+		while (true) {
+			decrypt(decryptionQueue);
 		}
 
-		return covertCharacterStackToString(decryptionStack);
+
+		return covertCharacterCollectionToString(decryptionQueue);
 	}
 
-	private static int visitCharAt(String cryptogram, int cursor) {
-		char visitLetter = cryptogram.charAt(cursor);
-		if (addable(visitLetter)) {
-			decryptionStack.add(visitLetter);
-			return cursor + 1;
+	private static Deque<Character> getCharacterQueueByString(String string) {
+		Deque<Character> queue = new ArrayDeque<>();
+		for (char character : string.toCharArray()) {
+			queue.offer(character);
 		}
 
-		return isDuplicateLetter(cryptogram, cursor);
+
+		return queue;
 	}
 
-	private static boolean addable(char letter) {
-		if (decryptionStack.empty()) {
-			return true;
-		}
-
-		if (decryptionStack.peek() != letter) {
-			return true;
-		}
-		return false;
-	}
-
-	private static int isDuplicateLetter(String cryptogram, int cursor) {
-		Character lastLetter = decryptionStack.peek();
-		while (cursor < cryptogram.length()
-			&& cryptogram.charAt(cursor) == lastLetter) {
-			cursor += 1;
-		}
-
-		decryptionStack.pop();
-		return cursor;
-	}
-
-	private static String covertCharacterStackToString(Stack<Character> stack) {
-		return stack.stream()
+	private static String covertCharacterCollectionToString(Collection<Character> collection) {
+		return collection.stream()
 			.map(String::valueOf)
 			.collect(Collectors.joining());
 	}
