@@ -22,4 +22,14 @@ public class Problem7 {
         else
             friendsList.put(to, new ArrayList<>(List.of(from)));
     }
+
+    private static Map<String, List<String>> makeFriendsList(List<List<String>> friends) {
+        Map<String, List<String>> friendsList = new HashMap<>();
+
+        for (List<String> friend : friends) {
+            addFriend(friend, friendsList);
+        }
+
+        return friendsList;
+    }
 }
