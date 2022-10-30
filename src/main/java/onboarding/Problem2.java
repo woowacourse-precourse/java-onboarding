@@ -3,9 +3,11 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.regex.Pattern;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
+        validate(cryptogram);
         String answer;
         String prev = removeDuplication(cryptogram);
         String next;
@@ -63,5 +65,13 @@ public class Problem2 {
             }
         }
         return result;
+    }
+
+    static void validate(String cryptogram) throws Exception{
+        String pattern = "^[a-z]{1,1000}$";
+        boolean isMatch = Pattern.matches(pattern, cryptogram);
+        if (!isMatch) {
+            throw new Exception("입력이 잘못되었습니다");
+        }
     }
 }
