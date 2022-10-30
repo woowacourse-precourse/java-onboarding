@@ -10,8 +10,17 @@ class Problem1 {
         if (crong.get(1)-crong.get(0) != 1) {
             return -1;
         }
-        int answer = Integer.MAX_VALUE;
-        return answer;
+
+        int pobiLeftMax =max(pobi.get(0));
+        int pobiRightMax =max(pobi.get(1));
+        int crongLeftMax =max(pobi.get(0));
+        int crongRightMax =max(pobi.get(1));
+
+        int pobiMax =max(pobiLeftMax, pobiRightMax);
+        int crongMax =max(crongLeftMax, crongRightMax);
+
+        int winner =winner(pobiMax,crongMax);
+        return winner;
     }
 
     private static int max(int n) {
