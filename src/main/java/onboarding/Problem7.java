@@ -121,6 +121,17 @@ public class Problem7 {
         }
         return idScore;
     }
+    public static HashMap<String, Integer> visitscore(String user, List<String> userFriendsList, HashMap<String, Integer> idScore, List<String> visitors) {
+        HashMap<String, Integer> visitScore = new HashMap<String, Integer>(); //방문자 점수
+        for(int i=0; i<visitors.size(); i++) {
+            if(visitors.get(i).equals(user) == false && userFriendsList.contains(visitors.get(i)) == false) {//user, user와 이미 친구인 사람의 점수는 계산x
+                visitScore.put(visitors.get(i), Collections.frequency(visitors, visitors.get(i)));
+            }
+        }
+        visitScore.forEach((key, value) -> idScore.merge(key, value, (v1, v2) -> v1 + v2));
+
+        return idScore;
+    }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String user = sc.nextLine();
