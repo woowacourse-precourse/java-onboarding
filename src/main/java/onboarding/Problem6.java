@@ -8,23 +8,24 @@ import java.util.stream.Collectors;
 public class Problem6 {
 	public static List<String> solution(List<List<String>> forms) {
 
-		List<String> selectedList = new ArrayList<String>();
+		List<String> selectedList = new ArrayList<>();
 
 		for (int i = 0; i < forms.size(); i++) {
 
-			List elementByTwoDimension = forms.get(i);
+			List<String> elementByTwoDimension = forms.get(i);
 
 			for (int j = 0; j < forms.size(); j++) {
 				if (j == i) {
+					// do nothing
 				} else {
-					List ElementByOneDimension = forms.get(j);
+					List<String> ElementByOneDimension = forms.get(j);
 
-					String setName = (String) elementByTwoDimension.get(1);
-					String setEmail = (String) elementByTwoDimension.get(0);
-					String compareName = (String) ElementByOneDimension.get(1);
+					String setName = elementByTwoDimension.get(1);
+					String setEmail = elementByTwoDimension.get(0);
+					String compareName = ElementByOneDimension.get(1);
 
 
-					if (checkConsecutiveCharacter(setName, compareName) == true) {
+					if (checkConsecutiveCharacter(setName, compareName)) {
 						selectedList.add(setEmail);
 					}
 				}
@@ -38,7 +39,7 @@ public class Problem6 {
 	}
 
 	private static List<String> removeDuplication(List<String> selectedList) {
-		List<String> answer = new ArrayList<String>();
+		List<String> answer;
 		answer = selectedList.stream().distinct().collect(Collectors.toList());
 		return answer;
 	}
@@ -49,6 +50,7 @@ public class Problem6 {
 			String sub = setName.substring(i, i + 2);
 			if (compareName.contains(sub)) {
 				isContainsConsecutive = true;
+				break;
 			}
 		}
 		return isContainsConsecutive;
