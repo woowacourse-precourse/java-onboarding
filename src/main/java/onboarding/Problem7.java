@@ -57,4 +57,22 @@ public class Problem7 {
             incrementScore(scores, user, 1);
         }
     }
+
+    /* Map의 value를 기준으로 내림차순 정렬, 동점이라면 key를 기준으로 오름차순 정렬하는 Compartor */
+    private static Comparator<Map.Entry<String, Integer>> myComperator = new Comparator<Map.Entry<String, Integer>>() {
+        @Override
+        public int compare(Map.Entry<String, Integer> leftId, Map.Entry<String, Integer> rightId) {
+            int leftScore = leftId.getValue();
+            int rightScore = rightId.getValue();
+
+            if (leftScore == rightScore) {
+
+                String leftName = leftId.getKey();
+                String rightName = rightId.getKey();
+
+                return leftName.compareTo(rightName);
+            }
+            return (rightScore - leftScore);
+        }
+    };
 }
