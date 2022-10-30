@@ -12,8 +12,20 @@ public class Problem7 {
         distance = new HashMap<>();
 
         makeConnection(friends);
+        initDistance();
+        searchFriends(user);
 
         return answer;
+    }
+
+    private static class Connect {
+        String to;
+        int depth;
+
+        public Connect(String to, int depth) {
+            this.to = to;
+            this.depth = depth;
+        }
     }
 
     /*
@@ -40,6 +52,37 @@ public class Problem7 {
     private static void initDistance(){
         for (String key : connectMap.keySet()) {
             distance.put(key, 0);
+        }
+    }
+
+
+    /*
+     * 둘 사이의 공통 친구를 찾아 점수를 부여한다.
+     * */
+    private static void searchFriends(String user) {
+        Queue<Connect> qu = new LinkedList<>();
+        qu.add(new Connect(user, 0));
+        distance.put(user, -1);
+
+        while (!qu.isEmpty()) {
+            Connect cn = qu.poll();
+            String to = cn.to;
+
+            if (cn.depth >= 2) continue;
+
+            for (int i = 0; i < connectMap.get(to).size(); i++) {
+                String nn = connectMap.get(to).get(i);
+
+                if(to.equals(user)){
+                    distance.put(nn, -1);
+                }
+
+                if(distance.get(to).equals(-1) && !distance.get(nn).equals(-1)) {
+                    distance.put(nn, distance.getOrDefault(nn, 0) + 10);
+                }
+
+                qu.add(new Connect(nn, cn.depth + 1));
+            }
         }
     }
 }
