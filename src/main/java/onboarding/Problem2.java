@@ -4,22 +4,27 @@ import java.util.List;
 
 public class Problem2 {
     public static String deleteRepeation(String crypt){
-        String deleteCrypt = crypt;
-        if (crypt.equals("") || crypt.charAt(0) == crypt.charAt(1)) return "";
+        StringBuilder deleteCrypt = new StringBuilder();;
+        if (crypt.equals("")) return "";
+        deleteCrypt.append(crypt.charAt(0));
         int i = 0;
-        StringBuilder temp = new StringBuilder();
-        while(i<deleteCrypt.length()){
+        while(i<crypt.length()-1){
 
-            if((i+2) < deleteCrypt.length() && deleteCrypt.charAt(i) == deleteCrypt.charAt(i+1))
+            if(crypt.charAt(i) == crypt.charAt(i+1))
             {
-                i += 2;
+                if (deleteCrypt.charAt(deleteCrypt.length()-1) == crypt.charAt(i))
+                {
+                    deleteCrypt.delete(deleteCrypt.length()-1,deleteCrypt.length());
+                }
+                i += 1;
                 continue;
             }
-            temp.append(deleteCrypt.charAt(i));
+
+            deleteCrypt.append(crypt.charAt(i+1));
             i += 1;
         }
-        deleteCrypt = temp.toString();
-        return deleteCrypt;
+
+        return deleteCrypt.toString();
 
     }
 
@@ -37,7 +42,5 @@ public class Problem2 {
         return answer;
     }
 
-    public static void main(String[] args) {
-        System.out.println(deleteRepeation("browoon"	));
-    }
+
 }
