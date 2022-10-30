@@ -4,9 +4,14 @@ import java.util.*;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "";
-        
+        String answer = cryptogram;
+
         HashSet<Integer> temp = findSameCharsIdx(cryptogram);
+        while (temp.size()>0){
+            answer=removeCharUsingIdx(answer, temp);
+            temp=findSameCharsIdx(answer);
+        }
+
         return answer;
 
     }
@@ -21,5 +26,14 @@ public class Problem2 {
         }
 
         return idxList;
+    }
+    private static String removeCharUsingIdx(String cryptogram, HashSet<Integer> wantToRemoveSet){
+        String removedStr ="";
+        for (int i=0; i< cryptogram.length();i++){
+            if (!(wantToRemoveSet.contains(i))){
+                removedStr+=cryptogram.charAt(i);
+            }
+        }
+        return removedStr;
     }
 }
