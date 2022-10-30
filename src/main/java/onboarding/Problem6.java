@@ -6,10 +6,11 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
 
         Hashtable<String,String> hashtable = new Hashtable<>(); // 이름과 이메일을 저장할 해쉬 테이블
-        HashSet<String> hashSet = new HashSet<>();
+        HashSet<String> hashSet;// 닉넴임을 두 글자씩 자를 경우 중복이 되면 안 되기 때문에
         TreeSet<String> treeSet = new TreeSet<>(); // 이메일을 오름차순 정렬하고 중복은 제거할 트리셋
         for (List<String> form: forms // 모든 입력을 확인
              ) {
+            hashSet = new HashSet<>();
             for (int i = 1; form.get(1).length() > i; i++){ //이름을 자르기 위한 반복문
                hashSet.add(form.get(1).substring(i-1,i+1));
             }
