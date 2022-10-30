@@ -2,7 +2,7 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
+        int answer = repeat(number);
 
         return answer;
     }
@@ -17,5 +17,13 @@ public class Problem3 {
         return 0;
     }
 
+    public static int repeat(int number){
+        int count = 0;
+        for(int i=1; i<=number; i++){
+            if(checknumSYG(number) == 1)
+                count += i;
+        }
+        return count;
+    }
 
 }
