@@ -9,6 +9,7 @@ public class Controller {
             LeximRepository lexims = new LeximRepository();
             EmailRepository emailRepository = new EmailRepository();
             Name.splitLeximsAll(lexims, forms);
+//            lexims.print();
             Name.checkNameAll(lexims, forms, emailRepository);
             emailRepository.sort();
             return emailRepository.getDistinctEmails();

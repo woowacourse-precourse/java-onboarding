@@ -23,9 +23,4 @@ public class EmailRepository {
     List<String> getDistinctEmails() {
         return Util.removeOverlap(repository);
     }
-
-    List<String> getEmails() {
-        return repository;
-    }
-
 }

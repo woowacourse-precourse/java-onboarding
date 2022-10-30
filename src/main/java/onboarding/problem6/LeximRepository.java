@@ -13,8 +13,26 @@ public class LeximRepository {
     void addLexim(String lexim) {
         repository.add(lexim);
     }
-
+    void addLexim(List<String> lexims) {
+        repository.addAll(lexims);
+    }
     int countLexim(String lexim) {
         return Collections.frequency(repository, lexim);
+    }
+
+    boolean isNameExistsInRepo(String name) {
+        for (int j = 0; j < name.length()-1; j++) {
+            if (countLexim(name.substring(j, j+2)) >= 2) {
+                return true;
+            }
+        }
+        return false;
+    }
+    List<String> splitNameIntoLexim(String name) {
+        List<String> resultRepo = new ArrayList<>();
+        for (int j = 0; j < name.length()-1; j++) {
+            resultRepo.add(name.substring(j, j+2));
+        }
+        return resultRepo;
     }
 }
