@@ -16,8 +16,10 @@ public class Problem5 {
 
         answer = setOneUnits(money);
         answer = setFiveUnits(answer);
+        answer = setEmpty(answer);
         return answer;
     }
+
     static List<Integer> setOneUnits(int money){
         List<Integer> oneUnits = new ArrayList<>();
 
@@ -35,5 +37,12 @@ public class Problem5 {
             oneUnits.set(i+1,oneUnits.get(i+1)%5);
         }
         return oneUnits;
+    }
+
+    static List<Integer> setEmpty (List<Integer> fiveUnits) {
+        while(fiveUnits.size()<9){
+            fiveUnits.add(0,0);
+        }
+        return fiveUnits;
     }
 }
