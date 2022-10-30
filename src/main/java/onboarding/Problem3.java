@@ -21,4 +21,12 @@ public class Problem3 {
         }
         return clap;
     }
+
+    private static boolean is369(int remain) {
+        if (remain != 0 && remain%3 == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
