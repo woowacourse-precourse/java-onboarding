@@ -1,19 +1,20 @@
 package onboarding;
 
+import java.util.Arrays;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
 public class Problem3 {
-    public static int get369(int num){
-        int add=0;
-        while(num > 0) {
-            if ((num %10)==3 ||(num %10)==6||(num %10)==9 ) add+= 1;
-            num /= 10;
-        }
-        return add;
+    public static int getPoint(int num){
+        Stream<String> stream = Arrays.asList(Integer.toString(num).split("")).stream();
+        return stream.mapToInt(e -> Integer.parseInt(e)).reduce(0,(x,y)-> {
+            if((y %10)==3 ||(y %10)==6||(y %10)==9)
+                return x+=1;
+            return x;
+        });
     }
     public static int solution(int number) {
-        int answer = 0;
-        for (int i = 1; i <= number; i++) {
-            answer+=get369(i);
-        }
+        int answer = IntStream.range(1, number+1).reduce(0,(x,y)->x+getPoint(y));
         return answer;
     }
 }
