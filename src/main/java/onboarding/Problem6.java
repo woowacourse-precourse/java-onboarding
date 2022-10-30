@@ -21,15 +21,19 @@ public class Problem6 {
 				String checkingWords = name.substring(j, j + 2);
 				System.out.println(checkingWords);
 
-				Set<String> emailsToBeSent = crewHashData.entrySet().stream()
-					.filter(entry -> entry.getValue().contains(checkingWords))
-					.map(Map.Entry::getKey)
-					.collect(Collectors.toSet());
+				Set<String> emailsToBeSent = getEmailsToBeSent(crewHashData, checkingWords);
 				System.out.println(emailsToBeSent);
 			}
 		}
 
 		List<String> answer = List.of("answer");
 		return answer;
+	}
+
+	private static Set<String> getEmailsToBeSent(HashMap<String, String> crewHashData, String checkingWords) {
+		return crewHashData.entrySet().stream()
+			.filter(entry -> entry.getValue().contains(checkingWords))
+			.map(Map.Entry::getKey)
+			.collect(Collectors.toSet());
 	}
 }
