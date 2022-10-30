@@ -1,6 +1,3 @@
-//1. 문자열 순서대로 문자 확인
-//2. 청개구리 사전을 참고해 변환
-//3. 변환한 값을 반환
 package onboarding;
 
 public class Problem4 {
@@ -19,6 +16,7 @@ public class Problem4 {
                 sb.setCharAt(index, (char)charToInt);
             }
         }
-
+        answer = sb.toString();
+        return answer;
     }
 }
