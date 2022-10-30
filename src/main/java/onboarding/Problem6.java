@@ -8,7 +8,7 @@ public class Problem6 {
 
         List<String> nameList = getName(forms);
         List<List<String>> dubPossibilityName = checkNameDup(nameList);
-        Integer[] findIndex = findIndex(dubPossibilityName).toArray(new Integer[0]);
+        Integer[] findIndex = findIndex(dubPossibilityName, nameList).toArray(new Integer[0]);
 
         for(Integer i : findIndex) {
             answer.add(forms.get(i).get(0));
@@ -38,31 +38,20 @@ public class Problem6 {
         return getNameChar;
     }
 
-    public static HashSet<Integer> findIndex(List<List<String>> dubPossibilityName) {
+    public static HashSet<Integer> findIndex(List<List<String>> dubPossibilityName,List<String> nameList) {
         HashSet<Integer> set = new HashSet<>();
 
-        System.out.println("dubPossibilityName: " + dubPossibilityName);
-        for (int i = 0; i < dubPossibilityName.size(); i++) {
-            for (int j = 0; j < dubPossibilityName.get(i).size(); j++) {
-                String nick = dubPossibilityName.get(i).get(j);
-                System.out.println("지금 이 nick 찾기 : " + nick);
+        for (int i = 0; i < nameList.size(); i++) {
+                String nick = nameList.get(i);
+//                System.out.println("지금 이 nick 찾기 : " + nick);
                 for (int k = 0; k < dubPossibilityName.size(); k++) {
                     for (String n : dubPossibilityName.get(k)){
-                        if (nick.equals(n) && i != k) {
-                            System.out.println("n" + n);
+                        if (nick.contains(n) && i != k) {
+//                            System.out.println("n" + n);
                             set.add(i);
                         }
                     }
-                }
             }
-//            for (int j = 0; j < dubPossibilityName.get(i).size(); j++) {
-//                System.out.println("dubPossibilityName.get(j) : "+ dubPossibilityName.get(j));
-//                System.out.println("dubPossibilityName.get(i).get(j)): "+ dubPossibilityName.get(i).get(j));
-//                if (dubPossibilityName.get(j).contains(dubPossibilityName.get(i).get(j))) {
-//                    System.out.println("드렁감 " + dubPossibilityName.get(i).get(j));
-//                    set.add(i);
-//                }
-//            }
         }
         return set;
     }
