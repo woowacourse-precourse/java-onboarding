@@ -31,7 +31,12 @@ public class Problem7 {
     }
 
     //유저의 친구가 아닌사람 리스트를 맵으로 저장
-
+    static void setRecommendList(String user){
+        notMyFriends.removeAll(myFriends);
+        notMyFriends.remove(user);
+        for (String x: notMyFriends)
+            recommendList.put(x,0);
+    }
 
     //친구 관계 그래프 만들기
 
