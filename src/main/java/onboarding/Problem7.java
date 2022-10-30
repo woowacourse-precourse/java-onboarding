@@ -4,25 +4,25 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        HashMap<String, HashSet<String>> friendsByPerson = arrangeFriends(friends);
-        HashMap<String, Integer> visitScores = isVisit(visitors);
-        HashSet<String> userFriends = new HashSet<>();
-        List<Friend> totalRecommendScores = new ArrayList<>();
+        HashMap<String, HashSet<String>> mapByFriends = getMapByFriends(friends);
+        HashMap<String, Integer> visitScores = getMapByVisitors(visitors);
+        HashSet<String> myFriends = new HashSet<>();
+        List<Friend> recommendScores = new ArrayList<>();
         List<String> answer = new ArrayList<>();
 
-        if (friendsByPerson.containsKey(user)) {
-            userFriends = friendsByPerson.get(user);
+        if (mapByFriends.containsKey(user)) {
+            myFriends = mapByFriends.get(user);
         }
-        friendsByPerson.remove(user);
+        mapByFriends.remove(user);
 
-        for (Map.Entry<String, HashSet<String>> entry : friendsByPerson.entrySet()) {
+        for (Map.Entry<String, HashSet<String>> entry : mapByFriends.entrySet()) {
             String name = entry.getKey();
             int score=0;
 
-            if (userFriends.isEmpty() || userFriends.contains(name)) continue;
+            if (myFriends.isEmpty() || myFriends.contains(name)) continue;
 
             for (String friend : entry.getValue()) {
-                if (userFriends.contains(friend)) {
+                if (myFriends.contains(friend)) {
                     score += 10;
                 }
             }
@@ -30,24 +30,24 @@ public class Problem7 {
             if(visitScores.containsKey(name)) {
                 score += visitScores.get(name);
             }
-            if(score != 0) totalRecommendScores.add(new Friend(name, score));
+            if(score != 0) recommendScores.add(new Friend(name, score));
         }
 
         for(Map.Entry<String, Integer> entry : visitScores.entrySet()) {
             String name = entry.getKey();
-            if (userFriends.contains(name)) continue;
+            if (myFriends.contains(name)) continue;
             boolean exist=false;
 
-            for(Friend friend: totalRecommendScores) {
+            for(Friend friend: recommendScores) {
                 if(friend.name.equals(name)) {
                     exist=true;
                     break;
                 }
             }
-            if(!exist && entry.getValue()!=0) totalRecommendScores.add(new Friend(name, entry.getValue()));
+            if(!exist && entry.getValue()!=0) recommendScores.add(new Friend(name, entry.getValue()));
         }
 
-        Collections.sort(totalRecommendScores, new Comparator<Friend>() {
+        Collections.sort(recommendScores, new Comparator<Friend>() {
             @Override
             public int compare(Friend o1, Friend o2) {
 
@@ -59,12 +59,12 @@ public class Problem7 {
             }
         });
 
-        if (totalRecommendScores.size() >= 5) {
+        if (recommendScores.size() >= 5) {
             for(int i=0; i<5; i++) {
-                answer.add(totalRecommendScores.get(i).name);
+                answer.add(recommendScores.get(i).name);
             }
         }else{
-            for(Friend friend : totalRecommendScores) {
+            for(Friend friend : recommendScores) {
                 answer.add(friend.name);
             }
         }
@@ -72,7 +72,7 @@ public class Problem7 {
         return answer;
     }
 
-    public static HashMap<String, HashSet<String>> arrangeFriends(List<List<String>> friends) {
+    public static HashMap<String, HashSet<String>> getMapByFriends(List<List<String>> friends) {
         HashMap<String, HashSet<String>> friendMap = new HashMap<>();
 
         for (List<String> friend : friends) {
@@ -100,7 +100,7 @@ public class Problem7 {
         return friendMap;
     }
 
-    public static HashMap<String, Integer> isVisit(List<String> visitors) {
+    public static HashMap<String, Integer> getMapByVisitors(List<String> visitors) {
         HashMap<String, Integer> visitScore = new HashMap<>();
         for (String visitor : visitors) {
             visitScore.put(visitor, visitScore.getOrDefault(visitor, 0) + 1);
