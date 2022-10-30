@@ -3,6 +3,7 @@ package onboarding;
 public class Problem2 {
     public static String solution(String cryptogram) {
         validateCryptogramLength(cryptogram);
+        validateCryptogramLowerAlpha(cryptogram);
 
         String answer = "answer";
         answer = deDuplicateCryptogram(cryptogram);
@@ -53,6 +54,14 @@ public class Problem2 {
     public static void validateCryptogramLength(String cryptogram) {
         if (cryptogram.length() == 0 || cryptogram.length() > 1000) {
             throw new IllegalArgumentException("cryptogram의 길이는 1이상, 1000이하여야 합니다.");
+        }
+    }
+
+    public static void validateCryptogramLowerAlpha(String cryptogram) {
+        for (int i = 0; i <= cryptogram.length() - 1; i++) {
+            if (Character.isLowerCase(cryptogram.charAt(i)) == false) {
+                throw new IllegalArgumentException("cryptogram은 알파벳 소문자로만 구성되어야 합니다.");
+            }
         }
     }
 }
