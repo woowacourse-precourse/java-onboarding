@@ -3,7 +3,7 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-    public static int getMax(List<Integer> listIn) {
+    static int getMax(List<Integer> listIn) {
         int[] temp = new int[2];
         String pageStr;
         int output = 0;
@@ -20,17 +20,17 @@ class Problem1 {
         return output;
     }
 
-    public static int compare(int pobiResult, int crongResult) {
+    static int compare(int pobiResult, int crongResult) {
         if (pobiResult > crongResult) return 1;
         else if (pobiResult < crongResult) return 2;
         else return 0;
     }
 
-    public static boolean lengthCheck(List<Integer> listIn) {
+    static boolean lengthCheck(List<Integer> listIn) {
         return listIn.size() != 2;
     }
 
-    public static boolean indexCheck(List<Integer> listIn) {
+    static boolean indexCheck(List<Integer> listIn) {
         int firNum = listIn.get(0);
         int secNum = listIn.get(1);
 
@@ -42,7 +42,7 @@ class Problem1 {
         return false;
     }
 
-    public static boolean exceptionCheck(List<Integer> pobi, List<Integer> crong) {
+    static boolean exceptionCheck(List<Integer> pobi, List<Integer> crong) {
         if (lengthCheck(pobi) || lengthCheck(crong) || indexCheck(pobi) || indexCheck(crong)) return true;
         return false;
     }
