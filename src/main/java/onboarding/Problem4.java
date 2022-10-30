@@ -17,6 +17,12 @@ public class Problem4 {
         StringBuilder convertResult = new StringBuilder();
 
         for (char letter : word.toCharArray()) {
+
+            if (Character.isWhitespace(letter)) {
+                convertResult.append(letter);
+                continue;
+            }
+
             boolean checkLower = Character.isLowerCase(letter);
             char afterConvert = convertTable.get(Character.toUpperCase(letter));
 
@@ -28,7 +34,7 @@ public class Problem4 {
         }
 
         answer = convertResult.toString();
-
+        
         return answer;
     }
 
