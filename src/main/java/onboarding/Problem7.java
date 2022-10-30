@@ -42,7 +42,22 @@ public class Problem7 {
         }
 
 
+        List<String> keySet = new ArrayList<>(scroeList.keySet());
 
+        // Value 값으로 오름차순 정렬
+        keySet.sort(new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return scroeList.get(o2).compareTo(scroeList.get(o1));
+
+            }
+        });
+
+        for (String key : keySet) {
+            if (friendsList.get(user).contains(key)) continue;
+            answer.add(key);
+
+        }
 
 
         return answer;
