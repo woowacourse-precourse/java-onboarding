@@ -18,7 +18,11 @@ public class Problem6 {
                 nicknames.get(keyword).add(email);
             }
         }
-        System.out.println(nicknames);
+        for (String keyword: nicknames.keySet()) {
+            if((nicknames.get(keyword)).size()>1){
+                answer.addAll(nicknames.get(keyword));
+            }
+        }
         return answer;
     }
 }
