@@ -8,6 +8,9 @@ public class Problem6 {
 
         Map<String, Set<String>> continuousThings = new HashMap<String, Set<String>>();
         findContinuousStringInNickname(continuousThings, forms);
+
+        Set<String> overlappingEmailList = checkingWordUsingMoreThan2(continuousThings);
+
         return answer;
     }
 
@@ -30,5 +33,21 @@ public class Problem6 {
                 continuousThings.get(nameForCheck).add(email);
             }
         }
+    }
+
+    /**
+     * Function for finding all email that contains overlapped 2-length string in name
+     * */
+    private static Set<String> checkingWordUsingMoreThan2(Map<String, Set<String>> continuousThings) {
+
+        Set<String> overlappingEmailList = new HashSet<>();
+        for (String name : continuousThings.keySet()) {
+            if (continuousThings.get(name).size() >= 2) {
+                for (String email : continuousThings.get(name)) {
+                    overlappingEmailList.add(email);
+                }
+            }
+        }
+        return overlappingEmailList;
     }
 }
