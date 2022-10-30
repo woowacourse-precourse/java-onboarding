@@ -28,9 +28,18 @@ public class Problem3 {
         }
         return sum;
     }
-    
+
+    /**
+     * 문제 해결을 위한 함수
+     * 기능 요구 사항 결과 리턴
+     */
     public static int solution(int number) {
         int answer = 0;
+        for(int i =1; i<=number;i++){
+            int numberCheck = i;
+            answer += numberSplit(i);
+            i = numberCheck;
+        }
         return answer;
     }
 }
