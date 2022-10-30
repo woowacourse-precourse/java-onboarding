@@ -3,8 +3,14 @@ package onboarding;
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
+        answer = Problem4.changeString(word);
+        return answer;
+
+    }
+    public static String changeString (String word) {
         //A65 Z90 a97 z122 17
         // word + (평균 - word)*2
+        String answer ="";
         for(int i=0; i<word.length(); i++) {
             if(word.charAt(i)==' ') {
                 answer += " ";
@@ -17,8 +23,6 @@ public class Problem4 {
                 answer += (char)(word.charAt(i) + 2*(109-word.charAt(i))+1)+"";
             }
         }
-        System.out.println(answer);
         return answer;
-
     }
 }
