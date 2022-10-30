@@ -146,7 +146,11 @@ BUILD SUCCESSFUL in 0s
   - 본인, 그리고 본인과 친구인 사용자들은 점수를 추가하지 않는다
   
 기능 체크리스트
+- [ ] id 길이를 검증한다
+- [ ] id가 소문자로만 이뤄졌는지 검증한다
+- [ ] friends, visitors 숫자를 검증한다
+- [ ] friends의 각 원소는 2개의 string으로 구성되어야 한다
 - [ ] UserStore를 만든다
-- [ ] firends를 받아 UserStore에 데이터를 추가, UserRelation을 초기화한다
+- [ ] friends를 받아 UserStore에 데이터를 추가, UserRelation을 초기화한다
 - [ ] visitors를 받아 UserStore에 데이터를 추가한다
 - [ ] 사용자 이름을 Input으로 추천 사용자들을 반환받는다

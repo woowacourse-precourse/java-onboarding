@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -112,7 +113,6 @@ class ApplicationTest {
         void case6() {
             String cryptogram = "";
             assertThatThrownBy(() -> Problem2.solution(cryptogram)).isInstanceOf(Exception.class);
-
         }
     }
 
@@ -371,6 +371,117 @@ class ApplicationTest {
             );
             List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
             List<String> result = List.of("andole", "jun", "bedi");
+            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+        }
+
+        @Test
+        @DisplayName("friends 개수가 10_000 초과하면 예외르 반환한다")
+        void case2() {
+            String user = "mrko";
+            List<List<String>> friends = new ArrayList<>();
+            for(int i=0;i<10_001;i++) {
+                friends.add(List.of(new Random().ints(97, 123)
+                                .limit(30).collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+                                .toString(), "friend"));
+            }
+            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+            assertThatThrownBy(() -> Problem7.solution(user, friends, visitors)).isInstanceOf(Exception.class);
+        }
+
+
+        @Test
+        @DisplayName("friend 개수가 1보다 작으면 예외를 반환한다")
+        void case3() {
+            String user = "mrko";
+            List<List<String>> friends = new ArrayList<>();
+            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+            assertThatThrownBy(() -> Problem7.solution(user, friends, visitors)).isInstanceOf(Exception.class);
+        }
+
+        @Test
+        @DisplayName("visitors가 10_000을 초과하면 예외를 반환한다")
+        void case4() {
+            String user = "mrko";
+            List<List<String>> friends = List.of(
+                    List.of("donut", "andole")
+            );
+            List<String> visitors = new ArrayList<>();
+            for(int i=0;i<10_001;i++) {
+                visitors.add("name");
+            }
+            assertThatThrownBy(() -> Problem7.solution(user, friends, visitors)).isInstanceOf(Exception.class);
+        }
+
+        @Test
+        @DisplayName("id가 30글자를 초과하면 예외를 반환한다")
+        void case5() {
+            String user = "mrkomrkomrkomrkomrkomrkomrkomrs"; //31 글자
+            List<List<String>> friends = List.of(
+                    List.of("donut", "andole"),
+                    List.of("donut", "jun"),
+                    List.of("donut", "mrko"),
+                    List.of("shakevan", "andole"),
+                    List.of("shakevan", "jun"),
+                    List.of("shakevan", "mrko")
+            );
+            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+            assertThatThrownBy(() -> Problem7.solution(user, friends, visitors)).isInstanceOf(Exception.class);
+        }
+
+        @Test
+        @DisplayName("id가 1글자보다 작으면 예외를 반환한다")
+        void case6() {
+            String user = "mrko";
+            List<List<String>> friends = List.of(
+                    List.of("donut", ""),
+                    List.of("donut", "jun"),
+                    List.of("donut", "mrko"),
+                    List.of("shakevan", "andole"),
+                    List.of("shakevan", "jun"),
+                    List.of("shakevan", "mrko")
+            );
+            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+            assertThatThrownBy(() -> Problem7.solution(user, friends, visitors)).isInstanceOf(Exception.class);
+        }
+
+        @Test
+        @DisplayName("추천점수가 모두 동일하면, 이름순으로 정렬한다")
+        void case7() {
+            String user = "mrko";
+            List<List<String>> friends = List.of(
+                    List.of("donut", "andole"),
+                    List.of("donut", "jun"),
+                    List.of("donut", "mrko"),
+                    List.of("shakevan", "andole"),
+                    List.of("shakevan", "jun"),
+                    List.of("shakevan", "mrko"),
+                    List.of("shakevan", "zzzzz"),
+                    List.of("shakevan", "aaaaa")
+            );
+            List<String> visitors = List.of();
+            List<String> result = List.of("aaaaa", "andole", "jun", "zzzzz");
+            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+        }
+
+        @Test
+        @DisplayName("친구 추천은 최대 5명까지만 반환한다")
+        void case8() {
+            String user = "mrko";
+            List<List<String>> friends = List.of(
+                    List.of("donut", "andole"),
+                    List.of("donut", "jun"),
+                    List.of("donut", "mrko"),
+                    List.of("shakevan", "andole"),
+                    List.of("shakevan", "jun"),
+                    List.of("shakevan", "mrko"),
+                    List.of("shakevan", "zzzzz"),
+                    List.of("shakevan", "aaaaa"),
+                    List.of("shakevan", "yyyyy"),
+                    List.of("shakevan", "xxxxx"),
+                    List.of("shakevan", "zzzzz")
+                    );
+            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+            List<String> result = List.of("aaaaa", "andole", "jun", "xxxxx", "yyyyy"); //zzzzz와 bedi는 나오지 않는다
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
     }
