@@ -1,7 +1,25 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+class FriendRecommendation implements Comparable<FriendRecommendation> {
+    String name;
+    int score;
+
+    public FriendRecommendation(String name, int score) {
+        this.name = name;
+        this.score = score;
+    }
+
+    @Override
+    public int compareTo(FriendRecommendation o) {
+        if (this.score == o.score) return this.name.compareTo(o.name);
+        return o.score - this.score;
+    }
+}
 
 public class Problem7 {
     static String mainUser;
@@ -45,7 +63,18 @@ public class Problem7 {
         addScoreByRelation();
         addScoreByVisit(visitors);
 
-        System.out.println(scoreOfUser);
+        List<FriendRecommendation> friendRecommendations = new ArrayList<>();
+        for (Map.Entry recommendedFriend : scoreOfUser.entrySet()) {
+            String name = (String) recommendedFriend.getKey();
+            int score = (int) recommendedFriend.getValue();
+            FriendRecommendation friendRecommendation = new FriendRecommendation(name, score);
+
+            friendRecommendations.add(friendRecommendation);
+        }
+
+        for (FriendRecommendation fr : friendRecommendations) {
+            System.out.println(fr.name + " " + fr.score);
+        }
 
         return List.of("Test");
     }
