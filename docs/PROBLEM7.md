@@ -33,4 +33,4 @@
 - [x] 유저의 타임 라인에 방문한 유저 +1 계산 (`addVisitorScore`)
 - [x] 추천 점수 정렬하는 함수 (`sortRecommendScore`)
   - 추천 점수 - 내림차순, 이름 - 오름차순  
-- [ ] 최대 5명 출력하는 함수 (`getTop5User`)
+- [x] 최대 5명 출력하는 함수 (`getTop5User`)

@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 public class Problem7 {
     private static final int FRIEND_SCORE = 10;
     private static final int VISITOR_SCORE = 1;
+    private static final int RECOMMEND_COUNT = 5;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, ArrayList<String>> friendMap = createFriendMap(friends);
@@ -16,8 +17,7 @@ public class Problem7 {
         addVisitorScore(recommendScore, visitors, friendsOfUser, user);
 
         List<String> answer = sortRecommendScore(recommendScore);
-
-        return answer;
+        return getTop5User(answer);
     }
 
     private static Map<String, ArrayList<String>> createFriendMap(List<List<String>> friends) {
@@ -75,5 +75,12 @@ public class Problem7 {
         return entries.stream()
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
+    }
+
+    private static List<String> getTop5User(List<String> recommendUser) {
+        if (recommendUser.size() > RECOMMEND_COUNT) {
+            return new ArrayList<>(recommendUser.subList(0, 5));
+        }
+        return recommendUser;
     }
 }
