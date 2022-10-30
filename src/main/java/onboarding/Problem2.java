@@ -1,6 +1,6 @@
 package onboarding;
 
-public class Problem2 {
+class Problem2 {
     public static String solution(String cryptogram) {
         Problem2 problem2 = new Problem2();
         String answer = "answer";
@@ -21,12 +21,32 @@ public class Problem2 {
     }
     // 같은 문자가 연속되는 문자열을 검출해서 반환해주는 역할
     public String sameWord(String words) {
-        String result="";
+        boolean check = true;
+
         for(int i=0; i<words.length()-1; i++) {
-            if(words.charAt(i)==words.charAt(i+1)){
-                result+= (char)words.charAt(i);
+            String temp = (char)words.charAt(i)+"";
+            int count = 0;                              // 문자가 2개 이상일 수도 있기 때문에 생성해둠
+            check = true;
+            // 현재 글자가 2개연속으로 포함되는지 검출
+            while(check) {
+                String tempBefore = temp;
+                temp += words.charAt(i) + "";
+                System.out.println(temp);
+
+                if(words.contains(temp)) {      // 연속으로 포함될때
+                    check = true;
+                    count++;
+                }
+                if(!words.contains(temp) && count >0) {         // 연속으로 포함되지만 더이상 포함되지 않을 때 (종료)
+                    return tempBefore;
+
+                }
+                if(!words.contains(temp) && count==0) {         // 애초에 포함 X
+                    check = false;
+                }
+
             }
         }
-        return result;
+        return "";
     }
 }
