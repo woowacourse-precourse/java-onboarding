@@ -15,11 +15,15 @@ public class Problem4 {
         StringBuilder answer = new StringBuilder();
 
         for (char c : word.toCharArray()) {
-            if (c < 65 || (c > 90 && c < 96) || c > 122) {
-                answer.append(c);
-            } else answer.append(reverseCharacter(c));
+            answer.append(determineReverseOrNot(c));
         }
+
         return answer.toString();
+    }
+
+    private static char determineReverseOrNot(char c) {
+        if (c < 65 || (c > 90 && c < 96) || c > 122) return c;
+        return reverseCharacter(c);
     }
 
     private static char reverseCharacter(char c) {
