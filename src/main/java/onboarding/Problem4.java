@@ -9,6 +9,9 @@ public class Problem4 {
             if('A'<= ch && ch<='Z'){
                 word[i] = (char) ('Z'-(ch-'A'));
             }
+            if('a'<= ch && ch<='z'){
+                word[i] = (char) ('z'-(ch-'a'));
+            }
         }
 
         return String.valueOf(word);
