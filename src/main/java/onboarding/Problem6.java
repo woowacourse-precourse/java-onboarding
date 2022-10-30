@@ -32,6 +32,11 @@ public class Problem6 {
                 nickNameMap.put(key, targetEmail);
             }
         }
+        List<String> result = sortEmail(emails);
+        return result;
+    }
+    
+    private static List<String> sortEmail(HashSet<String> emails){
         List<String> result = emails.stream()
                 .sorted()
                 .collect(Collectors.toList());
