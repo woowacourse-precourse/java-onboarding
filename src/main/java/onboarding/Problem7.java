@@ -3,12 +3,16 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
+    private static final int FRIEND_SCORE = 10;
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
         Map<String, ArrayList<String>> friendMap = createFriendMap(friends);
+        ArrayList<String> friendsOfUser = friendMap.get(user);
 
         Map<String, Integer> recommendScore = new TreeMap<>();
+        addFriendScore(recommendScore, friendMap, friendsOfUser, user);
 
         return answer;
     }
@@ -28,6 +32,12 @@ public class Problem7 {
         ArrayList<String> friendList = friendMap.getOrDefault(user1, new ArrayList<>());
         friendList.add(user2);
         friendMap.put(user1, friendList);
+    }
+
+    private static void addFriendScore(Map<String, Integer> recommendScore, Map<String, ArrayList<String>> friendMap, List<String> friendsOfUser, String user) {
+        for (String friend : friendsOfUser) {
+            addRecommendScore(recommendScore, friendMap.get(friend), FRIEND_SCORE, friendsOfUser, user);
+        }
     }
 
     private static void addRecommendScore(Map<String, Integer> recommendScore, List<String> friendsOfFriend, int score, List<String> friendsOfUser, String user) {
