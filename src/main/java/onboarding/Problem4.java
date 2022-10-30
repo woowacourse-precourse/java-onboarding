@@ -23,4 +23,9 @@ public class Problem4 {
     private static char getReverseValue(char base) {
         return (char) (SUM_KEY_VALUE - (int) base);
     }
+
+    private static char getDictValue(Map<Character, Character> dictionary, char key) {
+        return dictionary.get(Character.toUpperCase(key));
+    }
+
 }
