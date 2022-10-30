@@ -31,6 +31,7 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<String>();
         List<user_info> friends_score = makeFriendsScore(friends);
+        List<String> exception_list = makeFriendsException(user, friends);
         return answer;
     }
     public static List<user_info> makeFriendsScore(List<List<String>> friends) {
@@ -46,5 +47,18 @@ public class Problem7 {
             friends_score.add(new user_info(name,0));
         }
         return friends_score;
+    }
+    public static List<String> makeFriendsException(String user, List<List<String>> friends) {
+        List<String> exception_list = new ArrayList<String>();
+        for (List<String> friend_relation : friends) {
+            if (friend_relation.contains(user)) {
+                // user와 친구관계이면 제외리스트에 추가
+                for (String friend : friend_relation) {
+                    if (friend != user)
+                        exception_list.add(friend);
+                }
+            }
+        }
+        return exception_list;
     }
 }
