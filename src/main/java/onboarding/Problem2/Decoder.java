@@ -20,12 +20,18 @@ public class Decoder
         cryptogramList.add('\u0000');
     }
 
+    private boolean isSuccessive(int index)
+    {
+        return cryptogramList.get(index-1) != cryptogramList.get(index)
+                && cryptogramList.get(index) != cryptogramList.get(index+1);
+    }
+
     public Decoder removeDuplicatedCharacter()
     {
         StringBuilder sb = new StringBuilder();
         for(int i = 1; i < cryptogramList.size() -1;i++)
         {
-            if(cryptogramList.get(i-1) != cryptogramList.get(i) && cryptogramList.get(i) != cryptogramList.get(i+1))
+            if(isSuccessive(i))
             {
                 sb.append(cryptogramList.get(i));
             }
