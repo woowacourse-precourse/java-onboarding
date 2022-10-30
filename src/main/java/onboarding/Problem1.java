@@ -30,6 +30,18 @@ class Problem1 {
         return (pages.get(RIGHT_PAGE) - pages.get(LEFT_PAGE) == 1);
     }
 
+    private static int getMaxOfPages(List<Integer> pages) {
+        int maxOfSumResult, maxOfMultiplyResult;
+        String leftPageTypeOfString = String.valueOf(pages.get(LEFT_PAGE));
+        String rightPageTypeOfString = String.valueOf(pages.get(RIGHT_PAGE));
+
+        maxOfSumResult = Math.max(getSumOfPages(leftPageTypeOfString), getSumOfPages(rightPageTypeOfString));
+        maxOfMultiplyResult = Math.max(getMultiplyOfPages(leftPageTypeOfString),
+                getMultiplyOfPages(rightPageTypeOfString));
+
+        return Math.max(maxOfSumResult, maxOfMultiplyResult);
+    }
+
     private static int getSumOfPages(String pages) {
         int sumOfPages = 0;
         for (int i = 0; i < pages.length(); i++) {
