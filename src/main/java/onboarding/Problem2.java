@@ -5,8 +5,8 @@ public class Problem2 {
         return decode(cryptogram);
     }
 
-    static int hasDuplicate(String str) {
-        for (int i = 0; i < str.length() - 1; i++) {
+    static int hasDuplicate(int start, String str) {
+        for (int i = start; i < str.length() - 1; i++) {
             if (str.charAt(i) == str.charAt(i + 1))
                 return i;
         }
