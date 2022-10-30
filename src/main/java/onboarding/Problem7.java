@@ -16,7 +16,6 @@ public class Problem7 {
         List<String> userFriends = fillUserFriends(user, relationships);
 
         Map<String, Integer> friendPoints = enrichPointFrom(relationships, user, userFriends);
-        friendPoints.get(1);
 
         return answer;
     }
@@ -25,9 +24,7 @@ public class Problem7 {
         Map<String, Integer> visitorPoints = new HashMap<>();
 
         for (String recommend : visitors) {
-            if (visitorPoints.get(recommend) == null) {
-                visitorPoints.put(recommend, 0);
-            }
+            visitorPoints.putIfAbsent(recommend, 0);
             visitorPoints.put(recommend, visitorPoints.get(recommend) + 1);
         }
         removeCantRecommendCase(user, userFriends, visitorPoints);
@@ -36,17 +33,19 @@ public class Problem7 {
 
     private static void removeCantRecommendCase(String user, List<String> userFriends, Map<String, Integer> points) {
         for (String friend : userFriends) {
-            if (isEmptyValue(points, friend)) {
-                points.remove(friend);
-            }
+            removeKey(points, friend);
         }
-        if (isEmptyValue(points, user)) {
-            points.remove(user);
+        removeKey(points, user);
+    }
+
+    private static void removeKey(Map<String, Integer> points, String friend) {
+        if (!isEmptyValue(points, friend)) {
+            points.remove(friend);
         }
     }
 
     private static boolean isEmptyValue(Map<String, ?> map, String key) {
-        return map.get(key) != null;
+        return map.get(key) == null;
     }
 
     public static Map<String, Integer> enrichPointFrom(Map<String, List<String>> relationships,
@@ -54,9 +53,7 @@ public class Problem7 {
         Map<String, Integer> friendPoints = new HashMap<>();
         for (String friend : userFriends) {
             for (String recommend : fillUserFriends(friend, relationships)) {
-                if (friendPoints.get(recommend) == null) {
-                    friendPoints.put(recommend, 0);
-                }
+                friendPoints.putIfAbsent(recommend, 0);
                 friendPoints.put(recommend, friendPoints.get(recommend) + 10);
             }
         }
