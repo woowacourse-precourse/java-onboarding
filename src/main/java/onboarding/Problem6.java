@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class Problem6 {
@@ -19,6 +20,8 @@ public class Problem6 {
         for (int prev = 0; prev < forms.size(); prev++) {
             setEmails(forms, emails, prev);
         }
+
+        emails = deduplication(emails);
 
         return emails;
     }
@@ -53,5 +56,10 @@ public class Problem6 {
         }
 
         return subNicknames;
+    }
+
+    private static List<String> deduplication(List<String> emails) {
+        HashSet<String> hashSet = new HashSet<>(emails);
+        return new ArrayList<>(hashSet);
     }
 }
