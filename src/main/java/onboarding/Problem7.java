@@ -14,6 +14,8 @@ public class Problem7 {
 
         // 함께 아는 친구의 수에 따른 점수 추가
         relationScore(user, friendsRelationshipHashMap, friendsScoreHashMap);
+        // 방문 횟수에 따른 점수 추가
+        visitScore(visitors, friendsScoreHashMap);
 
         List<String> answer = Collections.emptyList();
         return answer;
@@ -53,6 +55,12 @@ public class Problem7 {
                 friendsScoreHashMap.put(name, friendsScoreHashMap.get(name) + 10);
             };
         });
+    }
+
+    public static void visitScore(List<String> visitors, HashMap<String, Integer> friendsScoreHashMap){
+        for(String visitor: visitors){
+            friendsScoreHashMap.put(visitor, friendsScoreHashMap.get(visitor) + 1);
+        }
     }
 
     public static class Tuple<T1, T2> {
