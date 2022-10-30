@@ -34,6 +34,31 @@ public class Problem7 {
         }
 
     }
+    public static String nextUser (List<String> connectionList,String user) {
+        if (connectionList.get(0)==user) {
+            return connectionList.get(1);
+        } else {
+            return connectionList.get(0);
+        }
+    }
+    public static int containsName(String user) {
+        for (int i=0; i<nameAndScore.size(); i++) {
+            if (nameAndScore.get(i).name==user) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    public static void plusScore(String user, int num, ArrayList<member> nameAndScore) {
+        int userIdx = containsName(user);
+        if (userIdx!=-1) {
+            int updatedScore= (int) nameAndScore.get(userIdx).score+num;
+            nameAndScore.remove(userIdx);
+            nameAndScore.add(new member(user,updatedScore));
+        } else {
+            nameAndScore.add(new member(user,num));
+        }
+    }
 
     public static void duplicateFriendsCount(String user, int depth, int[] visited, List<List<String>> friends, List<String> alreadyFriends) {
         if (depth==1) {
