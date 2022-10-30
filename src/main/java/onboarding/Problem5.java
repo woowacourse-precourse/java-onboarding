@@ -14,6 +14,10 @@ public class Problem5 {
             money = Math.floorMod(money, moneyType[idx]);
             if(money==0)break;
         }
-        return Arrays.asList(Arrays.stream(pocket).boxed().toArray(Integer[]::new));
+        return Arrays.asList(
+                Arrays.stream(pocket)
+                        .boxed()
+                        .toArray(Integer[]::new)
+                );
     }
 }
