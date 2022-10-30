@@ -10,7 +10,6 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
-        Map<String, Integer> userPoints = makeUserPoints(user, friends, visitors);
         Map<String, List<String>> relationships = makeRelationShips(friends);
         List<String> userFriends = fillUserFriends(user, relationships);
 
@@ -82,23 +81,6 @@ public class Problem7 {
 
     private static boolean isEmptyList(List<String> list) {
         return list == null;
-    }
-
-    public static Map<String, Integer> makeUserPoints(String user, List<List<String>> friends,
-            List<String> visitors) {
-        Map<String, Integer> userList = new HashMap<>();
-
-        userList.put(user, 0);
-
-        for (List<String> friendRelation : friends) {
-            userList.put(friendRelation.get(0), 0);
-            userList.put(friendRelation.get(1), 0);
-        }
-
-        for (String visitor : visitors) {
-            userList.put(visitor, 0);
-        }
-        return userList;
     }
 
     public static class UserPoint {
