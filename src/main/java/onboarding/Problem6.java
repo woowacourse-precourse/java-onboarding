@@ -25,8 +25,8 @@ public class Problem6 {
                     String nextNickname = getNickname(forms, nextIndex);
                     for (String pattern : patternsFromNickName) {
                         if (nextNickname.contains(pattern)) {
-                            resultSet.add(forms.get(index).get(0));
-                            resultSet.add(forms.get(nextIndex).get(0));
+                            resultSet.add(getEmail(forms, index));
+                            resultSet.add(getEmail(forms, index));
                             isSimilar[index] = true;
                             isSimilar[nextIndex] = true;
                         }
@@ -54,5 +54,9 @@ public class Problem6 {
 
     public static String getNickname(List<List<String>> forms, Integer index) {
         return forms.get(index).get(NICKNAME_IDX);
+    }
+
+    public static String getEmail(List<List<String>> forms, Integer index) {
+        return forms.get(index).get(EMAIL_IDX);
     }
 }
