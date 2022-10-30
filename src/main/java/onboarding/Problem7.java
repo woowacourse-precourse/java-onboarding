@@ -1,41 +1,8 @@
 package onboarding;
 
+import onboarding.problem7.RecommendedFriend;
+
 import java.util.*;
-
-class RecommendedFriend implements Comparable<RecommendedFriend> {
-
-    private String name;
-    private int score;
-
-    public RecommendedFriend(String name, int score) {
-        this.name = name;
-        this.score = score;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getScore() {
-        return score;
-    }
-
-    public void addScore(int score) {
-        this.score += score;
-    }
-
-    @Override
-    public int compareTo(RecommendedFriend other) {
-        if (this.score < other.score) {
-            return -1;
-        } else if (this.score == other.score) {
-            if (this.name.compareTo(other.name) > 0) {
-                return -1;
-            }
-        }
-        return 1;
-    }
-}
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
