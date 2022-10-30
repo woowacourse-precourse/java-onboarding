@@ -2,7 +2,6 @@ package onboarding;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Problem7 {
     public static List<String> checkUserFriend(String user, List<List<String>> friends) {
