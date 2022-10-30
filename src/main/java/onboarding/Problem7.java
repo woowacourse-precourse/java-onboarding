@@ -37,12 +37,7 @@ public class Problem7 {
         List<String> visitorList = visitorList(visitors);
 
         // 방문자 횟수로 점수 매김
-        int[] visitorPoint = new int[visitorList.size()];
-        for(int i=0; i<visitors.size(); i++){
-            String nowVisitor = visitors.get(i);
-            int visitorIdx = visitorList.indexOf(nowVisitor);
-            visitorPoint[visitorIdx]++;
-        }
+        int[] visitorPoint = makeVisitorPointArr(visitorList, visitors);
 
         // 최종 점수 구하기
         Map<String, Integer> recommendPoint = new HashMap<>();
@@ -172,5 +167,21 @@ public class Problem7 {
         return visitorList;
     }
 
+    /**
+     * 방문자 횟수 만큼 점수를 +1 해주는 메소드
+     * @param visitorList 방문자를 중복 없이 저장해놓은 리스트
+     * @param visitors 방문자 기록
+     * @return 방문자 점수 기록한 배열
+     */
+    static int[] makeVisitorPointArr(List<String> visitorList, List<String> visitors) {
+        int[] visitorPoint = new int[visitorList.size()];
+        // 입력 받은 방문자 기록을 보고 해당 방문자가 있는 위치의 점수를 +1
+        for (int i = 0; i < visitors.size(); i++) {
+            String nowVisitor = visitors.get(i);
+            int visitorIdx = visitorList.indexOf(nowVisitor);
+            visitorPoint[visitorIdx]++;
+        }
 
+        return visitorPoint;
+    }
 }
