@@ -37,11 +37,11 @@ public class Problem7 {
     private static void removeCantRecommendCase(String user, List<String> userFriends, Map<String, Integer> points) {
         for (String friend : userFriends) {
             if (points.get(friend) != null) {
-                points.put(friend, 0);
+                points.remove(friend);
             }
         }
         if (points.get(user) != null) {
-            points.put(user, 0);
+            points.remove(user);
         }
     }
 
