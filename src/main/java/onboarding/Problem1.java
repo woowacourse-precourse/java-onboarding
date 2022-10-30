@@ -4,10 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /** 기능 목록
- * numSum                   : 각 자리 숫자 합 반환
- * numMulti                 : 각 자리 숫자 곱 반환
+ * numScore                 : 각 자리 숫자의 합과 곱 중 큰 값 반환
  * maxResult                : 사용자의 가장 큰 값 반환
- * compareSumMulti          : 곱과 합 중 가장 큰 값 반환
  * numToDigits              : 숫자를 각 자리의 수의 배열로 반환
  * checkValid               : 예외 상황 체크
  * checkListLengthValid     : 페이지 리스트의 길이 체크
@@ -15,6 +13,7 @@ import java.util.List;
  */
 
 class Problem1 {
+
     private static final int POBI = 1;
     private static final int CROMG = 2;
     private static final int DRAW = 0;
