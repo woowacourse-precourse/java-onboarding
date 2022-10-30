@@ -135,7 +135,10 @@ public class Problem6 {
     private static void addChangeNeedCrewEmailByCrewId(int crewId) {
         List<String> crew = getCrewByCrewId(crewId);
         String email = crew.get(1);
-        changeNeedCrewEmails.add(email);
+
+        if (!changeNeedCrewEmails.contains(email)) {
+            changeNeedCrewEmails.add(email);
+        }
     }
 
     /**
