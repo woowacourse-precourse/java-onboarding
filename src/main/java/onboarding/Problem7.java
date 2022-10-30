@@ -4,13 +4,13 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
         List<String> friend = filterFriendByFriendList(friends, user);
         Map<String, Integer> indirectFriendScore = setRecommandFriendScoreByDirectFriend(friends, friend, user);
         setRecommandFriendScoreByVisitor(indirectFriendScore, visitors, friend);
 
-        return answer;
+        return friendScoreToListWithOrderByScoreAndNameASC(indirectFriendScore);
     }
+
 
     private static List<String> filterFriendByFriendList (List<List<String>> friends, String user) {
         List<String> friendList = new ArrayList<>();
@@ -30,6 +30,7 @@ public class Problem7 {
         return friendList;
     }
 
+
     private static Map<String, Integer> setRecommandFriendScoreByDirectFriend(List<List<String>> friends, List<String> directFriends, String user) {
         Map<String, Integer> indirectFriends = new HashMap<>();
 
@@ -48,6 +49,7 @@ public class Problem7 {
         return indirectFriends;
     }
 
+
     private static void setRecommandFriendScoreByVisitor(Map<String, Integer> indirectFriend, List<String> visitors, List<String> directFriends) {
         for (String visitor : visitors) {
             if (!directFriends.contains(visitor)) {
@@ -56,4 +58,23 @@ public class Problem7 {
         }
     }
 
+
+    private static List<String> friendScoreToListWithOrderByScoreAndNameASC(Map<String, Integer> friendScore) {
+        List<String> recommandFriends = new ArrayList<>();
+
+        Iterator<String> iterator = friendScore.keySet().iterator();
+        while (iterator.hasNext()) {
+            recommandFriends.add(iterator.next());
+        }
+
+        recommandFriends.sort((a, b) -> {
+            if (friendScore.get(a) == friendScore.get(b)) {
+                return a.compareTo(b);
+            }
+
+            return friendScore.get(a) < friendScore.get(b) ? 1 : -1;
+        });
+
+        return recommandFriends;
+    }
 }
