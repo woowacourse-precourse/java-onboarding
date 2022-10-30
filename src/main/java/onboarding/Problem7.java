@@ -14,14 +14,18 @@ public class Problem7 {
         return answer;
     }
 
+
     private static List<String> getRecomendedFriends(String user, List<List<String>> friends, List<String> visitors){
+        settingForStaticValue(user,friends);
+        increaseFriendWeightByRelationship(List.copyOf(oldFriend));
+        increaseFriendWeightByVisted(visitors);
+        return getMostSuitableFriend(5);
+    }
+    private static void settingForStaticValue(String user, List<List<String>> friends){
         friendData=friends;
         owner=user;
         List<String> olderFriends = getFriendOfUser(user);
-        classifyOlderFriend(user,olderFriends);
-        increaseFriendWeightByRelationship(olderFriends);
-        increaseFriendWeightByVisted(visitors);
-        return getMostSuitableFriend(5);
+        olderFriends.stream().forEach(a->oldFriend.add(a));
     }
 
     private static List<String> getFriendOfUser(String user) {
@@ -33,11 +37,6 @@ public class Problem7 {
             }
         }
         return friendList;
-    }
-
-    private static void classifyOlderFriend(String user, List<String> oldfriends){
-        oldFriend.add(user);
-        oldfriends.stream().forEach(a->oldFriend.add(a));
     }
 
     private static void increaseFriendWeightByRelationship(List<String> friend){
