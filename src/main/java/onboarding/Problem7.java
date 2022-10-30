@@ -62,8 +62,7 @@ public class Problem7 {
     }
 
     public static List<String> fillUserFriends(String user, Map<String, List<String>> relationships) {
-        List<String> userFriend = relationships.get(user);
-        return userFriend;
+        return relationships.get(user);
     }
 
     public static Map<String, List<String>> makeRelationShips(List<List<String>> friends) {
