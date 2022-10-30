@@ -23,6 +23,13 @@ class Problem1 {
 		return left + 1 == right ? true : false;
 	}
 
+	private static int max_num(int left, int right) {
+		// 오른쪽 페이지가 10의 배수라면 왼쪽 페이지가 가장 큰 수
+		if(right % 10 == 0)
+			return max_num(left);
+		return max_num(right);
+	}
+
 	private static int max_num(int num) {
 		int multiply = Problem1.multiply(num);
 		int sum = Problem1.sum(num);
