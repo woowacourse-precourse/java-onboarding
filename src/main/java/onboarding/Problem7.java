@@ -15,6 +15,9 @@ public class Problem7 {
         Map<String, Integer> friendOfFriend = new HashMap<>();
         findFriendOfFriend(user, friendshipGraph, friendOfFriend);
 
+        Map<Integer, List<String>> recommendScore = new HashMap<>();
+        calculateRecommendScore(visitorInfo, friendOfFriend, recommendScore);
+
         return answer;
     }
 
@@ -90,6 +93,37 @@ public class Problem7 {
                         }
                     }
                 }
+            }
+        }
+    }
+
+    /**
+     * Function for calculating friend recommend score
+     * */
+    private static void calculateRecommendScore(Map<String, Integer> visitorInfo, Map<String, Integer> friendOfFriend,
+                                               Map<Integer, List<String>> recommendScore) {
+        for (String each : friendOfFriend.keySet()) {
+            int withScore = friendOfFriend.get(each) * 10;
+            int visitScore = 0;
+            if (visitorInfo.containsKey(each)) {
+                visitScore = visitorInfo.get(each);
+            }
+            int score = withScore+visitScore;
+
+            if (!recommendScore.containsKey(score)) {
+                recommendScore.put(score, new ArrayList<String>());
+            }
+            recommendScore.get(score).add(each);
+        }
+
+        for (String each : visitorInfo.keySet()) {
+            int visitScore = visitorInfo.get(each);
+            if (!friendOfFriend.containsKey(each)) {
+                int score = visitScore;
+                if (!recommendScore.containsKey(score)) {
+                    recommendScore.put(score, new ArrayList<String>());
+                }
+                recommendScore.get(score).add(each);
             }
         }
     }
