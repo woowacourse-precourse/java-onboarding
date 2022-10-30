@@ -1,8 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem7 {
@@ -27,5 +25,26 @@ public class Problem7 {
         }
 
         return alreadyFriendList;
+    }
+
+    static List<String> getPotentialFriendWithUserListFromFriendsAndVisitors(String user, List<List<String>> friends, List<String> visitors) {
+
+        Set<String> set = friends.stream()
+                .flatMap(Collection::stream)
+                .filter(name -> !name.equals(user))
+                .collect(Collectors.toSet());
+
+        Set<String> temp = new HashSet<>(visitors);
+
+        set.addAll(temp);
+
+        List<String> potentialFriendList = new ArrayList<>(set);
+        List<String> alreadyFriendWithUserListFromFriends = getAlreadyFriendWithUserListFromFriends(user, friends);
+
+        potentialFriendList.removeAll(alreadyFriendWithUserListFromFriends);
+
+//        System.out.println("potentialFriendList = " + potentialFriendList);
+
+        return potentialFriendList;
     }
 }

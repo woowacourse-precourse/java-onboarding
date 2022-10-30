@@ -27,4 +27,25 @@ class Problem7Test {
         //then
         assertThat(alreadyFriendWithUserListFromFriends).containsExactly("donut", "shakevan");
     }
+
+    @Test
+    public void getPotentialFriendWithUserListFromFriendsAndVisitorsTest() {
+        //given
+        String user = "mrko";
+        List<List<String>> friends = List.of(
+                List.of("donut", "andole"),
+                List.of("donut", "jun"),
+                List.of("donut", "mrko"),
+                List.of("shakevan", "andole"),
+                List.of("shakevan", "jun"),
+                List.of("shakevan", "mrko")
+        );
+        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+
+        //when
+        List<String> potentialFriendWithUserListFromFriendsAndVisitors = Problem7.getPotentialFriendWithUserListFromFriendsAndVisitors(user, friends, visitors);
+
+        //then
+        assertThat(potentialFriendWithUserListFromFriendsAndVisitors).containsExactly("andole", "jun", "bedi");
+    }
 }
