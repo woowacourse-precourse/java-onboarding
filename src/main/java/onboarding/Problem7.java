@@ -27,6 +27,26 @@ public class Problem7 {
         return friends;
     }
 
+    // 추천 점수 해시맵 반환 함수 (친구의 친구)
+    private static HashMap<String, Integer> acquaintance(String user, List<List<String>> db, List<String> userFriends) {
+        HashMap<String, Integer> recommend = new HashMap<>();
+
+        for (List<String> relationship : db) {
+            if (relationship.contains(user)) continue;
+
+            for (String friend : userFriends) {
+                if (relationship.contains(friend)) {
+                    int friendIndex = relationship.indexOf(friend); // 사용자 친구의 인덱스
+                    int acqIndex = 1 - friendIndex;                 // 친구의 친구 인덱스
+                    String acq = relationship.get(acqIndex);
+                    if (!recommend.containsKey(acq)) recommend.put(acq, 10);
+                    else recommend.put(acq, recommend.get(acq) + 10);
+                }
+            }
+        }
+        return recommend;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
