@@ -19,6 +19,17 @@ public class RepetitionList {
 		repetitionList.addAll(repetitions);
 	}
 
+	public boolean isRepeat(String str) {
+		NicknameSplitter nicknameSplitter = new NicknameSplitter();
+		List<String> split = nicknameSplitter.split(str);
+		return split.stream()
+			.anyMatch(repetitionList::contains);
+	}
+
+	public boolean isRepeat(Member member) {
+		return member.isRepeat(repetitionList);
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)
@@ -34,10 +45,4 @@ public class RepetitionList {
 		return Objects.hash(repetitionList);
 	}
 
-	public boolean isRepeat(String str) {
-		NicknameSplitter nicknameSplitter = new NicknameSplitter();
-		List<String> split = nicknameSplitter.split(str);
-		return split.stream()
-			.anyMatch(repetitionList::contains);
-	}
 }

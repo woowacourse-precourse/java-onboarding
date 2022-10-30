@@ -2,6 +2,7 @@ package onboarding.problem6;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 public class Member {
 	private final Nickname nickname;
@@ -11,9 +12,14 @@ public class Member {
 		this(list.get(0), list.get(1));
 	}
 
-	public Member(String nickname, String email) {
+	public Member(String email, String nickname) {
 		this.nickname = new Nickname(nickname);
 		this.email = new Email(email);
+	}
+
+	public boolean isRepeat(Set<String> repetitionList) {
+		return repetitionList.stream()
+			.anyMatch(nickname::isRepeat);
 	}
 
 	@Override
@@ -30,4 +36,5 @@ public class Member {
 	public int hashCode() {
 		return Objects.hash(nickname, email);
 	}
+
 }

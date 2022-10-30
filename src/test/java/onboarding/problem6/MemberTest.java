@@ -13,4 +13,6 @@ public class MemberTest {
 		Member member = new Member(List.of("jm@email.com", "제이엠"));
 		assertThat(member).isEqualTo(new Member("jm@email.com", "제이엠"));
 	}
+
+
 }

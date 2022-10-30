@@ -7,7 +7,7 @@ public class Nickname {
 
 	public Nickname(String nickName) {
 		NicknameRangeValidator nicknameRangeValidator = new NicknameRangeValidator();
-		if ( !nicknameRangeValidator.validateRange(nickName.length())){
+		if (!nicknameRangeValidator.validateRange(nickName.length())) {
 			throw new IllegalArgumentException("닉네임은 20자를 넘을수 없습니다.");
 		}
 
@@ -31,5 +31,14 @@ public class Nickname {
 	@Override
 	public int hashCode() {
 		return Objects.hash(nickName);
+	}
+
+	@Override
+	public String toString() {
+		return nickName;
+	}
+
+	public boolean isRepeat(String repetition) {
+		return nickName.contains(repetition);
 	}
 }
