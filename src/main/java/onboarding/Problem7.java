@@ -20,6 +20,19 @@ public class Problem7 {
                 }
             }
         }
+//먼저 HashMap에서 user의 친구의 친구를 추천 후보로 넣는다.
+        for(int k = 0; k < friends.size(); k++) {
+            for(int n = 0; n < friendsOfUser.size(); n++) {
+                if(friends.get(k).contains(friendsOfUser.get(n)) && !friends.get(k).contains(user)) {
+                    for (int l = 0; l < friends.get(k).size(); l++) {
+                        if (!friendsOfUser.contains(friends.get(k).get(l))) {
+                            recommendFriendsScore.put(friends.get(k).get(l), recommendFriendsScore.containsKey(friends.get(k).get(l)) ? recommendFriendsScore.get(friends.get(k).get(l)) + 10: 10);
+                        }
+                    }
+                }
+            }
+        }
+
         return answer;
     }
 }
