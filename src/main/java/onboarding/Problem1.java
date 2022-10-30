@@ -89,11 +89,11 @@ class Problem1 {
     }
 
     public static boolean checkPageRange(List<Integer> pageList){
-        boolean returnValue = True;
+        boolean returnValue = true;
         for (int index = 0; index < 2; index++) {
             int pageIndexValue = pageList.get(index);
             if (pageIndexValue < 1 || pageIndexValue > 400){
-                returnValue = False;
+                returnValue = false;
             }
         }
 
@@ -101,18 +101,18 @@ class Problem1 {
     }
 
     public static boolean checkFirstPageOdd(List<Integer> pageList) {
-        boolean returnValue = True;
+        boolean returnValue = true;
         int pageIndexValue = pageList.get(0);
 
         if (pageIndexValue % 2 == 0){
-            returnValue = False;
+            returnValue = false;
         }
 
         return returnValue;
     }
 
     public static boolean checkPagesDefferOne(List<Integer> pageList){
-        boolean returnValue = True;
+        boolean returnValue = true;
         int firstPage;
         int secondPage;
 
@@ -120,7 +120,7 @@ class Problem1 {
         secondPage = pageList.get(1);
 
         if (firstPage + 1 != secondPage){
-            returnValue = False;
+            returnValue = false;
         }
 
         return returnValue;
