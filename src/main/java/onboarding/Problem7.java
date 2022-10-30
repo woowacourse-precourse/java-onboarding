@@ -97,4 +97,14 @@ public class Problem7 {
             }
         }
     }
+
+    /*
+     * 내림차순으로 거리를 정렬한다.
+     * */
+    private static List<Map.Entry<String, Integer>> sortDescDistance(){
+        List<Map.Entry<String, Integer>> entries = new ArrayList<>(distance.entrySet());
+        entries.sort((o1, o2) -> o2.getValue().compareTo(o1.getValue()));
+        return entries;
+    }
+
 }
