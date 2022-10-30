@@ -100,6 +100,31 @@ public class Problem1 {
 
 	public static class Game {
 
+		private static int calculateScore(Page page) {
+			return Math.max(
+				Math.max(addAllDigits(page.getLeft()), addAllDigits(page.getRight())),
+				Math.max(multiplyAllDigits(page.getLeft()), multiplyAllDigits(page.getRight()))
+			);
+		}
+
+		private static int multiplyAllDigits(int number) {
+			int score = 1;
+			while (number != 0) {
+				score *= number % 10;
+				number /= 10;
+			}
+			return score;
+		}
+
+		private static int addAllDigits(int number) {
+			int score = 0;
+			while (number != 0) {
+				score += number % 10;
+				number /= 10;
+			}
+			return score;
+		}
+
 	}
 
 }
