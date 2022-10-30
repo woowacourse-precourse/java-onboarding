@@ -12,10 +12,13 @@ public class Problem7 {
 	private static final int FRIEND_POINT = 10;
 	private static final int VISITOR_POINT = 1;
 
-	static List<String> friendName = new ArrayList<>();
-	static HashMap<String, Integer> recommendation = new HashMap<>();
+	static List<String> friendName;
+	static HashMap<String, Integer> recommendation;
 
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+
+		friendName = new ArrayList<>();
+		recommendation = new HashMap<>();
 
 		findFriend(user, friends);
 		checkRelation(user, friends);
