@@ -49,8 +49,6 @@ public class Problem6 {
     }
 
     public static List<String> solution(List<List<String>> forms) {
-        nickname.clear();
-        answer.clear();
 
         List<User> ids = forms.stream().map(s -> new User(s.get(1), s.get(0))).collect(Collectors.toList());
 
