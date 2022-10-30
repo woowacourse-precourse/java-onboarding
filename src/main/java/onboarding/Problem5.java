@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -19,13 +20,20 @@ class CurrencyForPro5 {
                 "money는 " + MONEY_FIRST + "이상 " + MONEY_LAST + "이하의 정수여야 합니다.");
         }
     }
+
+    public List<Integer> countUses(int money) {
+        List<Integer> countCur = new ArrayList<>();
+        for (int curr : CURRENCY) {
+            countCur.add(money / curr);
+            money %= curr;
+        }
+        return countCur;
+    }
 }
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
         CurrencyForPro5 currencyClass = new CurrencyForPro5(money);
-
-        List<Integer> answer = Collections.emptyList();
-        return answer;
+        return currencyClass.countUses(money);
     }
 }
