@@ -29,4 +29,10 @@ public class Page {
 
     }
 
+    public int getProduct() {
+        return Arrays.stream(String.valueOf(number).split(""))
+                .mapToInt(Integer::parseInt)
+                .reduce(1, (v1, v2) -> v1 * v2);
+    }
+
 }
