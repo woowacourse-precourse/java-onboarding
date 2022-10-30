@@ -5,9 +5,11 @@ import java.util.ArrayList;
 public class Problem3 {
     public static int solution(int number) {
         ArrayList<Integer> dp = Game.initGame();
+        for (int i = 2; i <= number; i++) {
+            dp.add(i, dp.get(i-1) + Game.countContainThree(i));
+        }
         return dp.get(number);
     }
-
 }
 
 class Game{
