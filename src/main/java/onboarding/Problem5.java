@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -23,6 +25,23 @@ public class Problem5 {
      */
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
+        answer = withDraw(money);
         return answer;
+    }
+
+    /**
+     * 은행 돈을 화폐로 인출하는 함수
+     * @param money
+     * @return 인출된 화폐 리스트
+     */
+    public static List<Integer> withDraw(int money) {
+        int[] pay = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
+        List<Integer> moneyList = new ArrayList<Integer>();
+
+        for (int i=0; i<9; i++) {
+            moneyList.add(money / pay[i]);
+            money %= pay[i];
+        }
+        return moneyList;
     }
 }
