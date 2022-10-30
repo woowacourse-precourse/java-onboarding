@@ -1,6 +1,7 @@
 package problem6;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Forms {
 
@@ -8,6 +9,24 @@ public class Forms {
 
     public Forms(List<List<String>> forms) {
         this.forms = forms;
+    }
+
+    public List<String> getProblematicEmails() {
+        List<String> emails = new ArrayList<>();
+        Map<String, Integer> count = saveConsecutiveCharacter();
+        for (int i = 0; i < forms.size(); i++) {
+            checkConsecutiveCharacter(new CheckDto(emails, count, i));
+        }
+
+        return getProcessedEmails(emails);
+    }
+
+    private List<String> getProcessedEmails(List<String> emails) {
+        return emails
+                .stream()
+                .distinct()
+                .sorted()
+                .collect(Collectors.toList());
     }
 
     private void checkConsecutiveCharacter(CheckDto checkDto) {
