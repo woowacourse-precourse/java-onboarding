@@ -4,7 +4,8 @@ import java.util.Stack;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer =removeDuplicate(cryptogram);
+        String answer="";
+        if(checkLimit(cryptogram)) answer =removeDuplicate(cryptogram);
         return answer;
     }
 
