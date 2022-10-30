@@ -5,7 +5,7 @@ import java.util.HashMap;
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
-        initFrogTable();
+
         return answer;
     }
 
@@ -19,5 +19,14 @@ public class Problem4 {
             FrogTable.put(Character.toString(i), Character.toString(j));
         }
         return FrogTable;
+    }
+
+    // 주어진 문자를 청개구리 사전을 통해 변환하는 함수
+    public static String convertOneString(String s, HashMap<String, String> frogTable) {
+        String changeString = s;
+        if (frogTable.containsKey(s)) {
+            changeString = frogTable.get(s);
+        }
+        return changeString;
     }
 }

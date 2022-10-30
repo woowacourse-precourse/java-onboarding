@@ -25,7 +25,7 @@
 > HashMap<String, String> initFrogTable()
 
 - 주어진 문자를 청개구리 사전을 통해 변환하는 함수
-> String convertOneString(String)
+> String convertOneString(String, HashMap<String, String>)
 
 - 주어진 문자열을 청개구리 사전을 통해 변환하는 함수
 > String conversionString(String)
