@@ -7,7 +7,7 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
         MemberRepository memberRepository = new MemberRepository();
-        memberRepository.addMember(new Member(user, 0));
+        memberRepository.updateMember(new Member(user, 0));
 
         for (List<String> friend : friends) {
             memberRepository.addFriend(new Member(friend.get(0), 0), friend.get(1));
@@ -71,7 +71,7 @@ public class Problem7 {
 
         private Map<String, Member> store = new HashMap();
 
-        public void addMember(Member member) {
+        public void updateMember(Member member) {
             store.put(member.getName(), member);
         }
 
