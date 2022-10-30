@@ -43,7 +43,23 @@ public class Problem7 {
         // 사용자와 이미 친구인 사용자는 추천에서 제외한다.
         removeAlreadyUserFriend();
 
+        // 점수가 0점인 사용자는 제거한다.
+        for(String recommendUser : scoreMap.keySet()) {
+            removeUserOfZeroScore(recommendUser);
+        }
+
         return answer;
+    }
+
+    /**
+     * 점수가 0점인 사용자는 점수 Map에서 제거한다.
+     *
+     * @param recommendUser 추천 후보 사용자 아이디
+     */
+    private static void removeUserOfZeroScore(String recommendUser) {
+        if (scoreMap.get(recommendUser) == 0) {
+            scoreMap.remove(recommendUser);
+        }
     }
 
     /**
