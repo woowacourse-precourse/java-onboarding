@@ -34,14 +34,14 @@ public class Problem7 {
         return visitorPoints;
     }
 
-    private static void removeCantRecommendCase(String user, List<String> userFriends, Map<String, Integer> visitorPoints) {
+    private static void removeCantRecommendCase(String user, List<String> userFriends, Map<String, Integer> points) {
         for (String friend : userFriends) {
-            if (visitorPoints.get(friend) != null) {
-                visitorPoints.put(friend, 0);
+            if (points.get(friend) != null) {
+                points.put(friend, 0);
             }
         }
-        if (visitorPoints.get(user) != null) {
-            visitorPoints.put(user, 0);
+        if (points.get(user) != null) {
+            points.put(user, 0);
         }
     }
 
