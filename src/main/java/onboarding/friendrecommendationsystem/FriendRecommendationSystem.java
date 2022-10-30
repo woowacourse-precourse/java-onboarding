@@ -16,6 +16,10 @@ public class FriendRecommendationSystem {
 
 	private Map<String, Integer> scoreMap;
 
+	private static final int RULE_ONE_POINT = 10;
+
+	private static final int RULE_TWO_POINT = 1;
+
 	public FriendRecommendationSystem(String user,
 		List<List<String>> friends,
 		List<String> visitors) {
@@ -31,8 +35,8 @@ public class FriendRecommendationSystem {
 			scoreMap.put(friend, 0);
 		}
 		for (String visitor : visitors) {
-			scoreMap.merge(visitor, 0,
-				(score, ignored) -> score + 1);
+			scoreMap.merge(visitor, RULE_TWO_POINT,
+				(score, ignored) -> score + RULE_TWO_POINT);
 		}
 	}
 
@@ -80,5 +84,10 @@ public class FriendRecommendationSystem {
 		return !user.equals(friend)
 			&& getFriendsOf(user).stream()
 			.anyMatch(userFriend -> userFriend.equals(friend));
+	}
+
+	public int getRecommendationScore(final String other) {
+		return getNumberOfFriendsKnowWith(other) * RULE_ONE_POINT
+			+ scoreMap.get(other);
 	}
 }

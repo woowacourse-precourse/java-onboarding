@@ -45,4 +45,20 @@ public class FriendRecommendationSystemTest {
 			system.getNumberOfFriendsKnowWith("mrko")
 		).isEqualTo(0);
 	}
+
+	@DisplayName("특정 유저에 대한 추천 점수 반환 테스트")
+	@Test
+	void 추천_점수_반환() {
+		assertThat(
+			system.getRecommendationScore("andole")
+		).isEqualTo(20);
+
+		assertThat(
+			system.getRecommendationScore("jun")
+		).isEqualTo(20);
+
+		assertThat(
+			system.getRecommendationScore("bedi")
+		).isEqualTo(3);
+	}
 }
