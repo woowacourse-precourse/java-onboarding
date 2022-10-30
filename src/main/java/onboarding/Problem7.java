@@ -56,36 +56,36 @@ public class Problem7 {
             for(List<String> friendList: friends){ // ["donut", "andole"]
                 if(friendList.contains(mutualFriend)){ // true
                     // find in scoreList and add score
-                        for(String key: usernameAndScoreMap.keySet()){ //
-                            if(key==mutualFriend){
-                                usernameAndScoreMap.put(key, usernameAndScoreMap.get(key)+10);
-                            }
+                    for(String key: usernameAndScoreMap.keySet()){ //
+                        if(key==mutualFriend){
+                            usernameAndScoreMap.put(key, usernameAndScoreMap.get(key)+10);
                         }
                     }
                 }
             }
+        }
 
         // add score to visitors
         for(String visitor: visitors){
             // find in scoreList and add score
-                for(String key: usernameAndScoreMap.keySet()){ //
-                    if(key==visitor){
-                        usernameAndScoreMap.put(key, usernameAndScoreMap.get(key)+1);
-                    }
+            for(String key: usernameAndScoreMap.keySet()){ //
+                if(key==visitor){
+                    usernameAndScoreMap.put(key, usernameAndScoreMap.get(key)+1);
                 }
             }
+        }
 
         HashMap<String,Integer> finalScore = new HashMap<>();
         // remove user and direct friends from scoreList
-            for(String key: usernameAndScoreMap.keySet()){ // andole
-                if(key!=user && !directFriends.contains(key) &&  usernameAndScoreMap.get(key) > 0){
-                    // add to final score map
-                    finalScore.put(key, usernameAndScoreMap.get(key));
-                    if(finalScore.size()>=5){
-                        break;
-                    }
+        for(String key: usernameAndScoreMap.keySet()){ // andole
+            if(key!=user && !directFriends.contains(key) &&  usernameAndScoreMap.get(key) > 0){
+                // add to final score map
+                finalScore.put(key, usernameAndScoreMap.get(key));
+                if(finalScore.size()>=5){
+                    break;
                 }
             }
+        }
 
         List<String> answer =   new ArrayList<>();
 
@@ -100,7 +100,7 @@ public class Problem7 {
 
         for(Map.Entry<String,Integer> entry: sortedScore.entrySet()){
             answer.add(entry.getKey());
-            }
+        }
 
         return answer;
     }
