@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 //      규칙
@@ -36,15 +37,40 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-
+        getAddNumber(pobi.get(0));
+        getAddNumber(pobi.get(1));
+        getMulNumber(pobi.get(0));
+        getMulNumber(pobi.get(1));
+        getAddNumber(crong.get(0));
+        getAddNumber(crong.get(1));
+        getMulNumber(crong.get(0));
+        getMulNumber(crong.get(1));
         return answer;
     }
 
-    private static int getAddNumber(){
+    private static int getAddNumber(int page) {
+        int addResult = 0; // 자릿수별 더한 값
 
+//      왼쪽, 오른쪽 페이지 수 한자리 수로 구분.
+        String strNum = Integer.toString(page);
+        int[] arrNum = new int[strNum.length()];
+        for (int i = 0; i < strNum.length(); i++) {
+            arrNum[i] = strNum.charAt(i) - '0';
+            addResult += arrNum[i];
+        }
+        return addResult;
     }
 
-    private static int getMulNumber(){
+    private static int getMulNumber(int page) {
+        int mulResult = 0; // 자릿수별 더한 값
 
+//      왼쪽, 오른쪽 페이지 수 한자리 수로 구분.
+        String strNum = Integer.toString(page);
+        int[] arrNum = new int[strNum.length()];
+        for (int i = 0; i < strNum.length(); i++) {
+            arrNum[i] = strNum.charAt(i) - '0';
+            mulResult *= arrNum[i];
+        }
+        return mulResult;
     }
 }
