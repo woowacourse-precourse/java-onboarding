@@ -9,9 +9,7 @@ class Problem1 {
         int pobiNum, crongNum;
         if(checkInput(pobi, crong))     // 예외사항 체크
             return -1;
-        pobiNum = maxNumOfTwoPages(pobi);
-        crongNum = maxNumOfTwoPages(crong);
-
+        answer = comparePobiCrong(pobi,crong);
         return answer;
     }
 
@@ -22,7 +20,6 @@ class Problem1 {
             return true;
         if (pobi.get(0) % 2 != 1 || crong.get(0) % 2 != 1)      // 왼쪽 페이지가 홀수, 오른쪽 페이지가 짝수가 아님
             return true;
-
         return false;
     }
     public static int numPlus(int num){
@@ -58,11 +55,14 @@ class Problem1 {
     public static int maxNumOfTwoPages(List<Integer> list){
         return Math.max(maxNumOfTwoMethod(list.get(0)),maxNumOfTwoMethod(list.get(1)));
     }
-//    public static void main(String[] args) {
-//        List<Integer> a = new ArrayList<>();
-//        a.add(623);
-//        a.add(19);
-//        System.out.println(maxNumOfTwoPages(a));
-//    }
-
+    public static int comparePobiCrong(List<Integer> pobi, List<Integer> crong){
+        int pobiNum = maxNumOfTwoPages(pobi);
+        int crongNum = maxNumOfTwoPages(crong);
+        if(pobiNum > crongNum)
+            return 1;
+        else if(pobiNum < crongNum)
+            return 2;
+        else
+            return 0;
+    }
 }
