@@ -105,7 +105,8 @@ BUILD SUCCESSFUL in 0s
 
 |기능목록 번호| 내용 | 구현상황 |
 | :---:  | :--- | :--- | 
-|  3.0.0 | 주어진 3,6,9 게임의 손벽갯수를 출력 | Problem3.solution | 
+|  3.0.0 | 주어진 3,6,9 게임의 총 손벽갯수를 출력 | Problem3.solution | 
+|  3.0.1 | 주어진 한 숫자의 손벽 갯수를 누적 출력하는 재귀함수 | Problem3.getClapCount | 
 
 7. 문제 7
 
