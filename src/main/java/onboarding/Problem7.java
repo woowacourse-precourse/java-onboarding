@@ -102,9 +102,9 @@ public class Problem7 {
 
     private static String getFriendName(List<String> userFriends, List<String> friend) {
         List<String> result = friend.stream()
-                                        .filter(old -> userFriends.stream()
-                                        .anyMatch(Predicate.isEqual(old)))
-                                        .collect(Collectors.toList());
+                                    .filter(old -> userFriends.stream()
+                                    .anyMatch(Predicate.isEqual(old)))
+                                    .collect(Collectors.toList());
         return result.get(0);
     }
 
