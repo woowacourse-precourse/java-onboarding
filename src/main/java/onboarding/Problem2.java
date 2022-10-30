@@ -26,4 +26,26 @@ public class Problem2 {
 
         return len;
     }
+
+    public static String loopErase(String str){
+        boolean flag = true;
+
+        while (flag) {
+            int i = 0, len;
+            flag = false;
+            while(i < str.length() - 1){
+                len = 0;
+                if (str.charAt(i) == str.charAt(i + 1)) {
+                    len = countDuplicate(str, i);
+                    str = erase(str,str.charAt(i),len);
+                    flag = true;
+                } else{
+                    i++;
+                    len = 0;
+                }
+            }
+        }
+
+        return str;
+    }
 }
