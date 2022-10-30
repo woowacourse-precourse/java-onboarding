@@ -15,6 +15,7 @@ public class Problem7 {
         initDistance();
         searchFriends(user);
         visitorPoint(user, visitors);
+        makeAnswer(answer);
 
         return answer;
     }
@@ -107,4 +108,17 @@ public class Problem7 {
         return entries;
     }
 
+    /*
+     * 정렬된 거리 순으로 정답에 추가한다.
+     * */
+    private static void makeAnswer(List<String> answer){
+        int cnt = 0;
+        for (Map.Entry<String, Integer> entry : sortDescDistance()) {
+            if(entry.getValue() <= 0) break;
+            if(cnt>=5) break;
+
+            answer.add(entry.getKey());
+            cnt++;
+        }
+    }
 }
