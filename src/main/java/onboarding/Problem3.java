@@ -19,14 +19,17 @@ public class Problem3 {
     private static int get369Count(int num) {
         int answer = 0;
         while (num > 0) {
-            int n = num % 10;
-            if (n == 3 || n == 6 || n == 9) {
+            if (is369(num % 10)) {
                 answer++;
             }
 
             num /= 10;
         }
         return answer;
+    }
+
+    private static boolean is369(int n) {
+        return n == 3 || n == 6 || n == 9;
     }
 
     static boolean outOfRange(int number) {
