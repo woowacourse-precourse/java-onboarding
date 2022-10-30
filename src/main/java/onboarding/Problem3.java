@@ -1,6 +1,10 @@
 package onboarding;
 
+import java.util.Set;
+
 public class Problem3 {
+    private static Set<Integer> clapSet = Set.of(3, 6, 9);
+
     public static int solution(int number) {
         int answer = 0;
 
@@ -14,8 +18,7 @@ public class Problem3 {
         int clapTime = 0;
 
         while(num > 0) {
-            int lastDec = num % 10;
-            if (lastDec != 0 && lastDec % 3 == 0)
+            if(clapSet.contains(num % 10))
                 clapTime++;
             num /= 10;
         }
