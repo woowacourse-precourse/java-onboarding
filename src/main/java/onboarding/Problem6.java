@@ -33,7 +33,8 @@ public class Problem6 {
             }
         }
         List<String> result = new ArrayList<>(resultSet); /*set을 list로 다시 변환*/
-//        Collections.sort(result);
+        Collections.sort(result);
+        System.out.println(result);
         return result;
     }
 //3.통과시키고 키 값을 set에 넣고 남은 리스트 출력하는 메서드
