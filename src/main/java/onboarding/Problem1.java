@@ -4,14 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 class User {
-    private int left;
-    private int right;
+    private final int left;
+    private final int right;
+    private final int length;
     private int score;
-    private int length;
-
-    public User(){
-
-    }
     public User(int left, int right, int length) {
         this.left = left;
         this.right = right;
@@ -19,12 +15,6 @@ class User {
     }
     public void setScore(int score) {
         this.score = score;
-    }
-    public void setLeft(int left) {
-        this.left = left;
-    }
-    public void setRight(int right) {
-        this.right = right;
     }
     public int getLeft() {
         return left;
@@ -40,7 +30,6 @@ class User {
     }
 }
 
-
 class Problem1 {
     public enum Book {
         left(0),
@@ -48,14 +37,9 @@ class Problem1 {
         first(1),
         last(400),
         length (2);
-
         private final int page;
-
         Book(int page) {
             this.page = page;
-        }
-        public int getNum() {
-            return page;
         }
     }
     public enum Game {
@@ -64,12 +48,8 @@ class Problem1 {
         crongWin(2),
         errror(-1);
         private final int result;
-
         Game(int result) {
             this.result = result;
-        }
-        public int getResult() {
-            return result;
         }
     }
 
@@ -90,25 +70,23 @@ class Problem1 {
     public static int calculation(List<Integer> num_list, char type) {
         int result = (type == '*') ? 1 : 0;
 
-        for (int i = 0; i < num_list.size(); i++) {
+        for (int num : num_list) {
             if (type == '+')
-                result += num_list.get(i);
+                result += num;
             if (type == '*')
-                result *= num_list.get(i);
+                result *= num;
         }
 
         return result;
     }
     //점수 비교해 결과 반환
     public static int compareScore(int pobiScore, int crongScore) {
-        if (pobiScore == crongScore)
-            return Game.tie.result;
         if (pobiScore > crongScore)
             return Game.pobiWin.result;
         if (pobiScore < crongScore)
             return Game.crongWin.result;
 
-        return Game.errror.result;
+        return Game.tie.result;
     }
     //자리수를 알아내 리스트에 저장
     public static List<Integer> findPlaceValue(int num) {
@@ -139,26 +117,25 @@ class Problem1 {
     * 예외 처리
     */
     public static boolean checkedException(User pobi, User crong) {
-        if (!checkedUser(pobi) || !checkedUser(crong))
-            return false;
 
-        return true;
+        return checkedUser(pobi) && checkedUser(crong);
     }
     public static boolean checkedUser(User user) {
         String errorMessage = "LIST SIZE ERROR";
+        boolean isVisited = true;
 
         if (user.getLength() != Book.length.page)
             throw new IllegalArgumentException(errorMessage);
 
         if (!(user.getLeft() >= Book.first.page && user.getLeft() <= Book.last.page))
-            return false;
+            isVisited = false;
         if (!(user.getRight() >= Book.first.page && user.getRight() <= Book.last.page))
-            return false;
+            isVisited = false;
         if ((user.getLeft() % 2) == 0)
-            return false;
+            isVisited = false;
         if ((user.getLeft() + 1) != user.getRight())
-            return false;
+            isVisited = false;
 
-        return true;
+        return isVisited;
     }
 }
