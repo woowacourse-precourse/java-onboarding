@@ -60,6 +60,28 @@ public class Problem6 {
             if(nickname.contains(s)) return true;
         }
         return false;
+    }
+
+    //여러 닉네임 순회 함수 (메인함수)
+    public static  List<String> makeLimitList (List<List<String>> validForms){
+        Set<String> set = new HashSet<String>();
+
+        for(int i=0; i<validForms.size() ;i++){
+            String nick = validForms.get(i).get(1);
+            Set<String> dupleSet= makeDupleSet(nick);
+
+            for(int j=i+1; j<validForms.size() ;j++){
+                boolean b = isDupleName(validForms.get(j).get(1), dupleSet);
+                if(b){
+                    set.add(validForms.get(i).get(0));
+                    set.add(validForms.get(j).get(0));
+                }
+            }
+        }
+
+        List<String> answer = set.stream().sorted().collect(Collectors.toList());
+
+        return answer;
 
     }
 
