@@ -51,6 +51,10 @@ public class Problem6 {
                 }
             }
         }
-        return forms.get(0);
+        // 중복 제거
+        List<String> resultList = emailList.stream().distinct().collect(Collectors.toList());
+        // 오름차순 정렬
+        resultList.sort(Comparator.naturalOrder());
+        return resultList;
     }
 }
