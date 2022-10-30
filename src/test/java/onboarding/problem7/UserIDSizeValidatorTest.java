@@ -4,11 +4,11 @@ import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-public class UserIDValidatorTest {
+public class UserIDSizeValidatorTest {
 
 	@Test
 	void userID_range() {
-		UserIDValidator userIDValidator = new UserIDValidator();
+		UserIDSizeValidator userIDValidator = new UserIDSizeValidator();
 		assertThat(userIDValidator.validate(31)).isFalse();
 		assertThat(userIDValidator.validate(0)).isFalse();
 
