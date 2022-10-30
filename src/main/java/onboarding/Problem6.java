@@ -34,6 +34,10 @@ public class Problem6 {
             if (!check_nickname){
                 return Collections.singletonList("");
             }
+            // 닉네임 전체 길이는 1이상 20미만
+            if (name.length() < 1 || name.length() > 19){
+                return Collections.singletonList("");
+            }
             // 2단어씩 나누기
             for (int j = 0; j < name.length() - 1; j++) {
                 String key = name.substring(j, j + 2);

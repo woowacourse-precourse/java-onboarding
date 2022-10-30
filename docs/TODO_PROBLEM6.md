@@ -16,7 +16,7 @@
 |-------------------------|-------------------------------------------|-------------|
 | 닉네임 길이가 2보다 짧으면         | if (name.length() < 2)                    | O           |
 | 1명 미만 10,000명 초과        | if (forms.size() < 1  forms.size() > 10000 ) | O           |
-| 이메일 전체 길이 11자 미만 20자 이상 |  if (check_email.length() < 11  check_email.length() > 20           | O           |
+| 이메일 전체 길이 11자 미만 20자 이상 |  if (check_email.length() < 11  check_email.length() > 20 | O           |
 | email.com 도메인이 아닐 경우    |     if (!check_email.contains("email.com"))          | O           |
-| 닉네임은 한글만 가능             |       boolean check_nickname= Pattern.matches("^[ㄱ-ㅎ가-힣]*$", name);   | O           |
-| 닉네임 전체 길이는 1자 이상 20자 미만                    |                                           | X           |
+| 닉네임은 한글만 가능             |       boolean check_nickname= Pattern.matches("^[ㄱ-ㅎ가-힣]*$", name); | O           |
+| 닉네임 전체 길이는 1자 이상 20자 미만   |   if (name.length() < 1  name.length() > 19)          | O           |
