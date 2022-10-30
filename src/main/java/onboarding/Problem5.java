@@ -11,4 +11,11 @@ public class Problem5 {
         setAnswer(money, moneys, answer);
         return answer;
     }
+
+    private static void setAnswer(int money, ArrayList<Integer> moneys, ArrayList<Integer> answer) {
+        for(int i = 0; i< moneys.size(); i++){
+            answer.set(i, money / moneys.get(i));
+            money %= moneys.get(i);
+        }
+    }
 }
