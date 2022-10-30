@@ -30,8 +30,40 @@
 
 ### 기능목록
 
-- 기능1. int findWinner() : 게임의 승자를 결정한다.
-- 기능2. int compareLeftAndRight(List<Integer> player) : 왼쪽 페이지와 오른쪽 페이지 중 최대값을 반환
-- 기능3. int calculateMaxValue(int page) : 페이지의 각 자리 숫자를 모두 더하거나 곱한 결과 중 최대값을 찾는다.
-- 기능4. boolean isException(List<Integer> player) : 페이지의 예외사항 판단
+> **<공통기능><br>
+두 수 중에 큰 값을 반환한다.**<br>
+*private static int getMaxValue(int number1, int number2)*
+
+> **<기능 1><br>
+플레이어 둘 다 게임을 진행할 수 있는지 확인한다.**<br>
+*private static boolean isValidGame(List<Integer> player1, List<Integer> player2)* <br>
+> - 기능 1-1<br>
+플레이어의 페이지가 게임을 할 수 있는지 판단한다.<br>
+펼쳐진 페이지에서 양쪽 수의 차이가 1보다 크거나 펼쳐진 면이<br>
+첫 번째 면 혹은 마지막 면이면 게임을 진행 할 수 없다.<br>
+   *private static boolean isValidPage(List<Integer> player)*
+
+
+> **<기능 2><br>
+플레이어가 가진 페이지의 최대값을 반환한다.**<br>
+*private static int getMaxPageValue(List<Integer> player)*
+> - 기능 2-1<br>
+한 페이지의 자릿수에 대한 덧셈과 곱셈 값의 최대값을 반환한다.<br>
+*private static int getMaxValueOfPage(int page)*<br><br>
+>   - 기능 2-1-1<br>
+>   페이지가 몇 자리 수인지 파악한다.<br>
+*private static int getMaxValueOfPage(int page)*<br><br>
+>   - 기능 2-1-2<br>
+>   페이지의 각 자릿수로 덧셈연산을 하고 결과를 반환한다.<br>
+*private static int addByDigits(int page, int numberLength)*<br><br>
+>   - 기능 2-1-3<br>
+>   페이지의 각 자릿수로 곱셈연산을 하고 결과를 반환한다.<br>
+*private static int productByDigits(int page, int numberLength)*<br><br>
+
+> **<기능 3><br>
+게임의 규칙대로, 플레이어의 값을 비교해 승자를 결정한다.**<br>
+*private static int decideWinner(int player1Value, int player2Value)*
+
+
+
 
