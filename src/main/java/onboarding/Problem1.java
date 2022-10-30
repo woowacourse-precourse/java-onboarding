@@ -7,4 +7,13 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+
+    private static int addEachDigits(int page){
+        int result=0;
+        while(page!=0){
+            result += page%10;
+            page /= 10;
+        }
+        return result;
+    }
 }
