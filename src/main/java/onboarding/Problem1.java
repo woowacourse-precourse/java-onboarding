@@ -64,6 +64,42 @@ class PageForPro1 {
     }
 }
 
+class CalculateForPro1 {
+    private final int leftPageMax;
+    private final int rightPageMax;
+
+    public CalculateForPro1(int left, int right) {
+        this.leftPageMax = compareTwo(addNum(left), mulNum(left));
+        this.rightPageMax = compareTwo(addNum(right), mulNum(right));
+    }
+
+    private int addNum(int num) {
+        int sum = 0;
+        while (num > 0) {
+            sum += num % 10;
+            num /= 10;
+        }
+        return sum;
+    }
+
+    private int mulNum(int num) {
+        int mul = 1;
+        while (num > 0) {
+            mul *= num % 10;
+            num /= 10;
+        }
+        return mul;
+    }
+
+    private int compareTwo(int a, int b) {
+        return Math.max(a, b);
+    }
+
+    public int compareTwo() {
+        return Math.max(leftPageMax, rightPageMax);
+    }
+}
+
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
