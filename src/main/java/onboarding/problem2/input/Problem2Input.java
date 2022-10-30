@@ -11,6 +11,10 @@ public class Problem2Input implements ProblemInput {
         this.cryptogram = new Cryptogram(cryptogram);
     }
 
+    public Cryptogram cryptogram() {
+        return cryptogram;
+    }
+
     @Override
     public boolean hasError() {
         return false;
