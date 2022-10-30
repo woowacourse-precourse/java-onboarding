@@ -3,17 +3,19 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
-    public static List<String> solution(String username, List<List<String>> friends, List<String> visitors) {
+    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
-        Person user = new Person(username);
-        Map<String, Person> people = new HashMap<>();
-        initializeFriendShip(people, friends);
-        List<String> friendsOfUserFriends = findFriendsOfUserFriends(user, people);
-//        Map<String, List<String>> friendsInformation = initializeFriendsInformation(friends);
-//        List<String> friendsOfFriendsOfUser = findFriendsOfFriendsOfUser(user, friendsInformation);
-//        Map<String, Integer> recommendScore = new HashMap<>();
-//        calculateRecommendScore(recommendScore, friendsOfFriendsOfUser, CalculusType.friend);
-//        calculateRecommendScore(recommendScore, visitors, CalculusType.visitor);
+//        Person user = new Person(username);
+//        Map<String, Person> people = new HashMap<>();
+//        initializeFriendShip(people, friends);
+//        List<String> friendsOfUserFriends = findFriendsOfUserFriends(user, people);
+//        Map<String, Person> recommendedPeople = new HashMap<>();
+
+        Map<String, List<String>> friendsInformation = initializeFriendsInformation(friends);
+        List<String> friendsOfFriendsOfUser = findFriendsOfFriendsOfUser(user, friendsInformation);
+        Map<String, Integer> recommendScore = new HashMap<>();
+        calculateRecommendScore(recommendScore, friendsOfFriendsOfUser, CalculusType.friend);
+        calculateRecommendScore(recommendScore, visitors, CalculusType.visitor);
         return answer;
     }
 
@@ -67,6 +69,7 @@ public class Problem7 {
         return friendsInformation;
     }
 
+
     public static List<String> findFriendsOfFriendsOfUser(String user, Map<String, List<String>> friendsInformation){
         List<String> friendsOfFriendsOfUser = new ArrayList<>();
         List<String> userFriends = friendsInformation.get(user);
@@ -110,6 +113,8 @@ public class Problem7 {
             recommendScore.put(person, score + value);
         }
     }
+
+
 }
 
 enum CalculusType {
