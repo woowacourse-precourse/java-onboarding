@@ -10,8 +10,8 @@ public class Problem7 {
         memberRepository.updateMember(new Member(user, 0));
 
         for (List<String> friend : friends) {
-            memberRepository.addFriend(new Member(friend.get(0), 0), friend.get(1));
-            memberRepository.addFriend(new Member(friend.get(1), 0), friend.get(0));
+            memberRepository.updateFriendListByMember(new Member(friend.get(0), 0), friend.get(1));
+            memberRepository.updateFriendListByMember(new Member(friend.get(1), 0), friend.get(0));
         }
 
         updateScoreByUserFriendList(memberRepository, user);
@@ -75,7 +75,7 @@ public class Problem7 {
             store.put(member.getName(), member);
         }
 
-        public void addFriend(Member user, String friend) {
+        public void updateFriendListByMember(Member user, String friend) {
             if (!store.containsKey(user.getName())) {
                 store.put(user.getName(), user);
             }
@@ -141,7 +141,7 @@ public class Problem7 {
         for (String visitor : visitors) {
 
             if (!memberRepository.containUsername(visitor)) {
-                memberRepository.addFriend(new Member(visitor, 1), null);
+                memberRepository.updateFriendListByMember(new Member(visitor, 1), null);
                 continue;
             }
 
