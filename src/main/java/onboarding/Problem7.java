@@ -1,60 +1,130 @@
 package onboarding;
 
 import java.util.*;
+import java.util.Map.Entry;
 
 public class Problem7 {
-    public static Map<String, Integer> check_friend(String user, ArrayList<List<String>> friend_list) {
-        Map<String, Integer> friend_score_map = new HashMap<String, Integer>();
+    public static Map<String, List<String>> make_friend_map(List<List<String>> friends) {
+        Map<String, List<String>> result = new HashMap<String, List<String>>();
 
-        for (int i = 0; i < friend_list.size(); i++) {
-            if (friend_list.get(i).get(0).equals(user)) {
-                friend_score_map.put(friend_list.get(i).get(1), 10);
+        for (int i = 0; i < friends.size(); i++) {
+            if (result.containsKey(friends.get(i).get(0))) {
+                List<String> temp_result = result.get(friends.get(i).get(0));
+                temp_result.add(friends.get(i).get(1));
+                result.put(friends.get(i).get(0), temp_result);
+            } else {
+                List<String> temp_result = new ArrayList<String>();
+                temp_result.add(friends.get(i).get(1));
+                result.put(friends.get(i).get(0), temp_result);
             }
 
-            else if (friend_list.get(i).get(1).equals(user)) {
-                friend_score_map.put(friend_list.get(i).get(0), 10);
-            }
-        }
-
-        return friend_score_map;
-    }
-
-    public static Map<String, Integer> check_visitor(String user, ArrayList<String> friend_list, Map<String, Integer> score_map) {
-        Map<String, Integer> visitor_score_map = score_map;
-
-        for (int i = 0; i < friend_list.size(); i++) {
-            if (visitor_score_map.containsKey(friend_list.get(i))) {
-                int change_value = visitor_score_map.get(friend_list.get(i)) + 1;
-                visitor_score_map.put(friend_list.get(i), change_value);
-            }
-            else {
-                visitor_score_map.put(friend_list.get(i), 1);
+            if (result.containsKey(friends.get(i).get(1))) {
+                List<String> temp_result = result.get(friends.get(i).get(1));
+                temp_result.add(friends.get(i).get(0));
+                result.put(friends.get(i).get(1), temp_result);
+            } else {
+                List<String> temp_result = new ArrayList<String>();
+                temp_result.add(friends.get(i).get(0));
+                result.put(friends.get(i).get(1), temp_result);
             }
         }
 
-        return visitor_score_map;
+        return result;
     }
+
+    public static Map<String, Integer> make_score_map(String user, Map<String, List<String>> friend_map) {
+        Map<String, Integer> result = new HashMap<String, Integer>();
+
+        List<String> user_friends = friend_map.get(user);
+
+        Iterator<String> keys = friend_map.keySet().iterator();
+        while (keys.hasNext()) {
+            String key = keys.next();
+
+            if (!key.equals(user)) {
+                int score = 0;
+
+                for (String friend : friend_map.get(key)) {
+                    for (String user_friend : user_friends) {
+                        if (friend.equals(user_friend)) {
+                            score += 10;
+                        }
+                    }
+                }
+
+                result.put(key, score);
+            }
+        }
+
+        return result;
+    }
+
+    public static Map<String, Integer> check_visitor(String user, Map<String, List<String>> friend_map, Map<String, Integer> score_map, List<String> visitors) {
+        Map<String, Integer> result = score_map;
+
+        List<String> user_friends = friend_map.get(user);
+
+        for (String visitor : visitors) {
+            Boolean check_friend = false;
+            for (String user_friend : user_friends) {
+                if (visitor.equals(user_friend)) {
+                    check_friend = true;
+                }
+            }
+
+            if (!check_friend) {
+                if (result.containsKey(visitor)) {
+                    result.put(visitor, result.get(visitor) + 1);
+                } else {
+                    result.put(visitor, 1);
+                }
+            }
+        }
+
+        return result;
+    }
+
+    public static List<String> make_answer(Map<String, Integer> update_map) {
+        List<String> result = new ArrayList<String>();
+
+        List<Entry<String, Integer>> update_entry = new ArrayList<Entry<String, Integer>>(update_map.entrySet());
+
+        for (int i = 0; i < update_entry.size(); i++) {
+            if (update_entry.get(i).getValue() == 0) {
+                update_entry.remove(i);
+                i = i - 1;
+            }
+        }
+
+        Collections.sort(update_entry, new Comparator<Entry<String, Integer>>() {
+            public int compare(Entry<String, Integer> value1, Entry<String, Integer> value2) {
+                if (value1.getValue().compareTo(value2.getValue()) == 0) {
+                    return value1.getKey().compareTo(value2.getKey());
+                }
+                return value2.getValue().compareTo(value1.getValue());
+            }
+        });
+
+        for (Entry<String, Integer> entry : update_entry) {
+            result.add(entry.getKey());
+        }
+
+        return result;
+    }
+
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
-        ArrayList<List<String>> friend_list = new ArrayList<List<String>> ();
-        for (int i = 0; i < friends.size(); i++) {
-            friend_list.add(friends.get(i));
-        }
+        Map<String, List<String>> friend_map = make_friend_map(friends);
 
-        Map<String, Integer> score_map = new HashMap<String, Integer>();
+        Map<String, Integer> score_map = make_score_map(user, friend_map);
 
-        score_map = check_friend(user, friend_list);
+        Map<String, Integer> update_map = check_visitor(user, friend_map, score_map, visitors);
 
-        ArrayList<String> visitor_list = new ArrayList<String>();
-        for (int i = 0; i < visitors.size(); i++) {
-            visitor_list.add(visitors.get(i));
-        }
+        List<String> temp_answer = make_answer(update_map);
 
-        score_map = check_visitor(user, visitor_list, score_map);
-
-        System.out.print(score_map);
+        answer = temp_answer;
 
         return answer;
     }
