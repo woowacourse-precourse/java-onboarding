@@ -77,6 +77,21 @@ class ApplicationTest {
 
         @Test
         void case3() {
+            String cryptogram = "";
+            String result = "";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void case4() {
+            StringBuilder cryptogram = new StringBuilder();
+            cryptogram.append("a".repeat(1001));
+            String result = "";
+            assertThat(Problem2.solution(cryptogram.toString())).isEqualTo(result);
+        }
+
+        @Test
+        void case5() {
             String cryptogram = "ABBCEEDD";
             String result = "ac";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
