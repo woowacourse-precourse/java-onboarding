@@ -37,7 +37,7 @@ public class Problem7 {
             if(exists(name)) {
                 return personMap.get(name);
             }
-            return new Person(name);
+            return personMap.put(name, new Person(name));
         }
         boolean exists(String name) {
             return personMap.containsKey(name);
