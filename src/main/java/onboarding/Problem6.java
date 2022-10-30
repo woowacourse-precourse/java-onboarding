@@ -23,10 +23,15 @@ public class Problem6 {
     }
 
     // 3. 중복 닉네임의 이메일 결과 리스트에 저장하기
+    // 4-1 결과 리스트 중복 확인
     static void addResultList(List<String> resultList, String email, String compareEmail)
     {
-        resultList.add(email);
-        resultList.add(compareEmail);
+        // 리스트 내 중복 확인
+        if(!resultList.contains(email))
+            resultList.add(email);
+
+        if(!resultList.contains(compareEmail))
+            resultList.add(compareEmail);
     }
 
     public static List<String> solution(List<List<String>> forms) {
@@ -58,8 +63,8 @@ public class Problem6 {
                 }
             }
         }
-        
-        // 결과를 리스트에 저장한 결과 확인
+
+        // 리스트 내 중복 제거 결과 확인
         System.out.println(resultList);
 
         return answer;
