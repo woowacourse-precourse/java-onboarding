@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -9,8 +10,35 @@ import java.util.List;
  * 3. 겹쳤던 닉네임을 가진 크루의 이메일 오름차순 정렬
  */
 public class Problem6 {
+
+    private static boolean compareName(String s1, String s2) {
+        return true;
+    }
     public static List<String> solution(List<List<String>> forms) {
+
+        boolean isSameList[] = new boolean[forms.size()];
+
+        for (int i = 0; i< forms.size(); i++){
+
+            if(isSameList[i] == true){
+                continue;
+            }else{
+                for (int j = i+1; j< forms.size(); j++){
+                    if (isSameList[j] == true){
+                        continue;
+                    }else{
+                        if (compareName(forms.get(i).get(1), forms.get(j).get(1))){
+                            isSameList[i] = true;
+                            isSameList[j] = true;
+                        }
+                    }
+                }
+            }
+        }
+
         List<String> answer = List.of("answer");
         return answer;
     }
+
+
 }
