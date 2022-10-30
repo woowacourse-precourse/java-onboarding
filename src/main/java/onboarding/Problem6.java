@@ -1,7 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * 큰 틀의 기능
@@ -9,16 +8,18 @@ import java.util.List;
  * 2. 닉네임을 통한 연속적인 값들이 있는 배열 생성 함수 ex) 제이엠 -> [제이 , 이엠 , 제이엠 ]
  * 3. 같은 것이 있는지 없는지 체크 기능 함수
  * 4. 같은게 있을 시 추가 되는 함수
- * 5. 결과값 반환하는 함수
+ * 5. 결과값 구하는 함수
  * **/
 
 /**
  * 1. 입력값 체크 기능 함수
  * - 크루는 1명 이상 10,000명 이하이다.
  * - 이메일은 이메일 형식에 부합하며 전체길이는 11자 이상 20자 미안 -> 이메일 체크함수
- *   - 이메일 도메인은 email.com 체크 함수 -> substring
- *     - 이메일 도메인 위치 체크를 위해 @위치 찾는 함수 구현 -> indexof
+ *  - 이메일 추출함수
+ *  - 이메일 도메인은 email.com 체크 함수 -> substring
+ *    - 이메일 도메인 위치 체크를 위해 @위치 찾는 함수 구현 -> indexof
  * - 닉네임 체크 함수
+ *  - 닉네임 추출함수
  *  - 한글만 있는지 체크 함수 -> 자바 정규식 사용
  *  - 1자 이상 20자 미안인지 체크 하는 함수
  * **/
@@ -40,11 +41,15 @@ import java.util.List;
  * - 해당 이메일 저장 함수 -> 클래스 변수를 통해 저장
  * **/
 
+/**
+ * 5. 결과값 구하는 함수
+ * - 중복 제거 기능도 하는 배열 add 함수 -> 참조형 매개변수 개념 정리
+ * - 배열 내 오름차순 정렬 함수
+ */
+
 
 
 public class Problem6 {
-
-    private static List<String> result = new ArrayList<>();
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
@@ -55,6 +60,9 @@ public class Problem6 {
         if(inputForms.size() < 1 || inputForms.size() > 10000)
             return false;
         return true;
+    }
+    private static String extractEmail(List<String> inputInfo){
+        return inputInfo.get(0);
     }
 
     private static int findDomainLocation(String inputEmail){
@@ -76,6 +84,10 @@ public class Problem6 {
         return false;
     }
 
+    private static String extractNick(List<String> inputInfo){
+        return inputInfo.get(1);
+    }
+
     private static boolean checkKorean(String inputNick){
         String regKor = "^[ㄱ-ㅎ|가-힣]*$";
         if(inputNick.matches(regKor))
@@ -95,13 +107,42 @@ public class Problem6 {
         return false;
     }
 
-//    public static void main(String[] args) {
-//        String test1 = "가나다라마바사";
-//        String test2 = "나라";
-//        List<String> testList1 = makeContinuousNickList(test1);
-//        List<String> testList2 = makeContinuousNickList(test2);
-//        System.out.println(checkInterSection(testList1 , testList2));
-//    }
+    private static boolean totalCheckInput(List<List<String>> inputForms){
+        if(checkCrew(inputForms)){
+            for(int i = 0; i < inputForms.size(); i++){
+                if(!checkNick(extractNick(inputForms.get(i))) || !checkEmail(extractEmail(inputForms.get(i))))
+                    return false;
+            }
+            return true;
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        List<List<String>> test = new ArrayList<>();
+        List<String> test_in1 = new ArrayList<>();
+        test_in1.add("jm@email.com");
+        test_in1.add("제이엠");
+        List<String> test_in2 = new ArrayList<>();
+        test_in2.add("jason@email.com");
+        test_in2.add("제이슨");
+        List<String> test_in3 = new ArrayList<>();
+        test_in3.add("woniee@email.com");
+        test_in3.add("워니");
+        List<String> test_in4 = new ArrayList<>();
+        test_in4.add("mj@email.com");
+        test_in4.add("엠제이");
+        List<String> test_in5 = new ArrayList<>();
+        test_in5.add("nowm@email.com");
+        test_in5.add("이제엠");
+        test.add(test_in1);
+        test.add(test_in2);
+        test.add(test_in3);
+        test.add(test_in4);
+        test.add(test_in5);
+        System.out.println(test);
+        System.out.println(gameStart(test));
+    }
 
     private static List<String> makeContinuousNickList(String inputNick){
         List<String> continuousNickList = new ArrayList<>();
@@ -116,7 +157,7 @@ public class Problem6 {
     }
 
     private static boolean checkInterSection(List<String> continuousNickList1, List<String> continuousNickList2){
-        List<String> interSection = new ArrayList<>();
+        List<String> interSection;
         interSection = continuousNickList1;
         interSection.retainAll(continuousNickList2);
         if(interSection.size() != 0)
@@ -124,11 +165,29 @@ public class Problem6 {
         return false;
     }
 
-    private static String extractEmail(List<String> inputInfo){
-        return inputInfo.get(0);
-    }
-    private static void addResult(String inputEmail){
+    private static void addWithoutOverlap(String inputEmail, List<String> result){
+        for(int i = 0; i < result.size(); i++)
+        {
+            if(result.get(i) == inputEmail)
+                return ;
+        }
         result.add(inputEmail);
     }
 
+
+    private static List<String> gameStart(List<List<String>> inputForms)
+    {
+        List<String> result = new ArrayList<>();
+        for(int i = 0; i < inputForms.size(); i++) {
+            for(int j = i + 1; j <inputForms.size(); j++){
+                List<String> continuousNickList1 = makeContinuousNickList(extractNick(inputForms.get(i)));
+                List<String> continuousNickList2 = makeContinuousNickList(extractNick(inputForms.get(j)));
+                if(checkInterSection(continuousNickList1,continuousNickList2)){
+                    addWithoutOverlap(extractEmail(inputForms.get(i)),result);
+                    addWithoutOverlap(extractEmail(inputForms.get(j)),result);
+                }
+            }
+        }
+        return result;
+    }
 }
