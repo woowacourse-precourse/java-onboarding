@@ -14,6 +14,10 @@ public class Problem6 {
         return answer;
     }
 
+    public static List<String> removeDuplicates(List<String> list){
+        return list.stream().distinct().collect(Collectors.toList());
+    }
+
     public static boolean isValidEmailDomain(String email){
         String[] emailArr = email.split("@");
         return Objects.equals(emailArr[emailArr.length - 1], "email.com");
