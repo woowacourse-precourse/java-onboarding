@@ -24,7 +24,22 @@ public class Problem2 {
         }
         return overlaplist;
     }
-    
+
+    /**
+     * 2.연속되지 않은 중복문자라면, 배열을 잘라 리턴하는 함수
+     */
+    public static List<Integer> split (List<Integer> n){
+        for(int j = 1; j<n.size(); j++){
+            if(n.get(j-1) == n.get(j) || n.get(j-1)+1 == (n.get(j))){
+
+            } else{
+                n = n.subList(0,j);
+                break;
+            }
+        }
+        return n;
+    }
+
     public static String solution(String cryptogram) {
         String answer = "answer";
         return answer;
