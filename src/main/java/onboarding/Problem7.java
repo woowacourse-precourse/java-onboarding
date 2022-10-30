@@ -38,6 +38,24 @@ public class Problem7 {
             }
         }
 
+        for (int i = 0; i < withFriends.size(); i++) {
+            if (!friendScore.keySet().contains(withFriends.get(i))) {
+                friendScore.put(withFriends.get(i), 10);
+            } else {
+                friendScore.put(withFriends.get(i), friendScore.get(withFriends.get(i)) + 10);
+            }
+        }
+        //친구의 친구인 경우 +10점을 주는 것이다
+
+        for (int i = 0; i < visitFriends.size(); i++) {
+            if (!friendScore.keySet().contains(visitFriends.get(i))) {
+                friendScore.put(visitFriends.get(i), 1);
+            } else {
+                friendScore.put(visitFriends.get(i), friendScore.get(visitFriends.get(i)) + 1);
+            }
+        }
+        //방문자의 경우는 +1점
+
         return answer;
     }
 }
