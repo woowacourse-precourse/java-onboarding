@@ -10,7 +10,7 @@ public class Problem2 {
         return answer;
     }
 
-    public static String deDuplicateCryptogram(String cryptogram) {
+    private static String deDuplicateCryptogram(String cryptogram) {
         int i = 0;
         int leftEnd = 0;
         int rightStart = 0;
@@ -51,13 +51,13 @@ public class Problem2 {
         return deDuplicated;
     }
 
-    public static void validateCryptogramLength(String cryptogram) {
+    private static void validateCryptogramLength(String cryptogram) {
         if (cryptogram.length() == 0 || cryptogram.length() > 1000) {
             throw new IllegalArgumentException("cryptogram의 길이는 1이상, 1000이하여야 합니다.");
         }
     }
 
-    public static void validateCryptogramLowerAlpha(String cryptogram) {
+    private static void validateCryptogramLowerAlpha(String cryptogram) {
         for (int i = 0; i <= cryptogram.length() - 1; i++) {
             if (Character.isLowerCase(cryptogram.charAt(i)) == false) {
                 throw new IllegalArgumentException("cryptogram은 알파벳 소문자로만 구성되어야 합니다.");
