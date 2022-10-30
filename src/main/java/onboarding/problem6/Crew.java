@@ -9,9 +9,9 @@ public class Crew {
     private String nickname;
     private String email;
 
-    public Crew(String nickname, String email) {
-        this.nickname = nickname;
+    public Crew(String email, String nickname) {
         this.email = email;
+        this.nickname = nickname;
     }
 
     public boolean isPossibleToMakeSnippets() {
@@ -28,5 +28,9 @@ public class Crew {
                 });
 
         return snippets;
+    }
+
+    public String getEmail() {
+        return this.email;
     }
 }

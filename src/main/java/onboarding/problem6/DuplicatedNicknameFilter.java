@@ -1,5 +1,8 @@
 package onboarding.problem6;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class DuplicatedNicknameFilter {
     private NicknameSnippets nicknameSnippets;
     private Crews crews;
@@ -9,7 +12,17 @@ public class DuplicatedNicknameFilter {
         this.crews = crews;
     }
 
-    public Crews getDuplicatedNicknameCrews() {
+    public List<String> filter() {
+        return getDuplicatedNicknameCrews()
+                .getCrews()
+                .stream()
+                .map(Crew::getEmail)
+                .distinct()
+                .sorted()
+                .collect(Collectors.toList());
+    }
+
+    private Crews getDuplicatedNicknameCrews() {
         Crews duplicatedNicknameCrews = new Crews();
 
         for (Crew crew : crews.getCrews()) {
