@@ -159,7 +159,9 @@
 ### 구현 메소드 및 설명
 - inspectEmailCondition
 - inspectNicknameCondition
+- getEmailUsername
 - collectValidInputs
+- twoStringsAreAlike
 - checkAlikeNicknames
 - getAlikeNicknamesList
 
@@ -191,6 +193,11 @@
   - inspectEmailCondition, inspectNicknameCondition을 통해 이메일과 닉네임을 각각 검사한다.
   - 둘 다 만족하는 경우, [이메일의 앞 부분 (@ 이전), 닉네임] 쌍을 새 List<List<String>>에 기록한다.
 - 기록한 List<List<String>> 을 리턴한다.
+
+### twoStringsAreAlike
+- String a, String b를 매개변수로 받는다. 이 값들은 서로 비교할 두 닉네임이다.
+- String a에 포함된 길이 2의 문자열이 String b에 포함되어 있는지 확인한다.
+- 포함되어 있다면 true, 포함되어 있지 않다면 false를 리턴한다.
 
 ### checkAlikeNicknames
 - List<List<String>>을 매개변수로 받는다. 이 값은 주어진 조건을 만족하는 [이메일, 닉네임] 목록이다.
