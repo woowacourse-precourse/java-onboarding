@@ -21,3 +21,11 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능 구현 목록
+
+- 같은 글자가 포함되는지 확인한다.
+  - 연속적으로 포함되는지 확인하기 위해 두 글자씩 비교한다.
+  - 비교하여 같은 글자가 포함된다면 이메일을 result에 추가한다.
+- result 값에서 중복을 제거한다.
+- result 값을 오름차순으로 정렬한다.
