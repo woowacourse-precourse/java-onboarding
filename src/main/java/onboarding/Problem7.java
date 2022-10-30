@@ -12,6 +12,18 @@ public class Problem7 {
         return answer;
     }
 
+    private static int returnCommonFriendNumber(String user, String people, List<List<String>> friends) {
+        List<String> userFriendList = returnFriendList(user, friends);
+        List<String> peopleFriendList = returnFriendList(people, friends);
+        int commonFriendNumber = 0;
+        for (String friend : peopleFriendList) {
+            if (userFriendList.contains(friend)) {
+                commonFriendNumber += 1;
+            }
+        }
+        return commonFriendNumber;
+    }
+
     private static List<String> returnFriendList(String people, List<List<String>> friends) {
         List<String> friendList = new ArrayList<>();
         for (List<String> friend : friends) {
