@@ -53,10 +53,10 @@ public class Problem7 {
         return flattenList;
     }
 
-    static Object[] dropDuplicate(Object[] array) {
-        LinkedHashSet<Object> linkedHashSet = new LinkedHashSet<>(Arrays.asList(array));
-        Object[] strArrayWithoutDuplicates = linkedHashSet.toArray(new Object[] {});
-        return strArrayWithoutDuplicates;
+    static List<String> dropDuplicate(List<String> stringList) {
+        LinkedHashSet<String> linkedHashSet = new LinkedHashSet<>(stringList);
+        List<String> listWithoutDuplicates = new ArrayList<>(linkedHashSet);
+        return listWithoutDuplicates;
     }
 }
 
