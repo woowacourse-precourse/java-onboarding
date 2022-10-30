@@ -11,16 +11,18 @@ import java.util.List;
 * */
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if (checkInput(pobi, crong) != 1)
-            return -1;
-        return 1;
-    }
 
-    private static int checkInput(List<Integer> pobi, List<Integer> crong) {
         int pobiLeft = pobi.get(0);
         int pobiRight = pobi.get(1);
         int crongLeft = crong.get(0);
         int crongRight = crong.get(1);
+
+        if (checkInput(pobiLeft, pobiRight, crongLeft, crongRight) != 1)
+            return -1;
+        return 1;
+    }
+
+    private static int checkInput(int pobiLeft, int pobiRight, int crongLeft, int crongRight) {
 
         if (pobiLeft<=1 || pobiRight >=400 || crongLeft<=1 || crongRight >=400)
             return -1;
