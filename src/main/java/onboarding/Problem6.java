@@ -22,7 +22,7 @@ public class Problem6 {
             }
         }
 
-        return forms.get(0);
+        return getAllChangeNeedCrewEmailByCrewId();
     }
 
     /**
@@ -31,7 +31,7 @@ public class Problem6 {
      */
     private static void validateForm(List<List<String>> forms) {
         int sizeForms = forms.size();
-        if (sizeForms > 0 && sizeForms <= 10_000) {
+        if (sizeForms == 0 || sizeForms >= 10_000) {
             throw new RuntimeException("등록할 크루가 1명 이상 10,000명 이하여야 합니다.");
         }
     }
@@ -134,6 +134,13 @@ public class Problem6 {
         if (!changeNeedCrewEmails.contains(email)) {
             changeNeedCrewEmails.add(email);
         }
+    }
+
+    /**
+     * 변경 필요 크루 모두 가져오기
+     */
+    private static ArrayList<String> getAllChangeNeedCrewEmailByCrewId() {
+        return changeNeedCrewEmails;
     }
 
     /**
