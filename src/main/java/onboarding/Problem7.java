@@ -23,21 +23,7 @@ public class Problem7 {
 
         List<String> answer = new ArrayList<>(scoreBoard.keySet());
 
-        answer.sort(new Comparator<String>() {
-            @Override
-            public int compare(String o1, String o2) {
-
-                if (scoreBoard.get(o1).equals(scoreBoard.get(o2)))
-                    return o1.compareTo(o2);
-
-                return scoreBoard.get(o2).compareTo(scoreBoard.get(o1));
-            }
-        });
-        
-        if (answer.size() > MAX_RESULT_SIZE)
-            return answer.subList(0, MAX_RESULT_SIZE);
-        else
-            return answer;
+        return makeRecommendResult(answer, scoreBoard);
     }
 
     public static void findAcquaintance(int depth, String targetUser, String findUser,
@@ -89,5 +75,23 @@ public class Problem7 {
 
     public static void insertFriendToList(List<String> friendList, String name) {
         friendList.add(name);
+    }
+
+    public static List<String> makeRecommendResult(List<String> answer, Map<String, Integer> scoreBoard) {
+        answer.sort(new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+
+                if (scoreBoard.get(o1).equals(scoreBoard.get(o2)))
+                    return o1.compareTo(o2);
+
+                return scoreBoard.get(o2).compareTo(scoreBoard.get(o1));
+            }
+        });
+
+        if (answer.size() > MAX_RESULT_SIZE)
+            return answer.subList(0, MAX_RESULT_SIZE);
+        else
+            return answer;
     }
 }
