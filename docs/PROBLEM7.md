@@ -24,3 +24,40 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+## 기능 목록
+
+-[ ] 특정 유저의 친구 목록을 반환한다.
+-[ ] 특정 유저가 사용자와 함께 아는 친구의 수를 반환한다.
+-[ ] 특정 유저에 대한 추천 점수를 반환한다.
+
+### 예시
+
+특정 유저의 친구 목록을 반환한다.
+
+```java
+FriendRecommandationSystem system
+        = new FriendRecommandationSystem(user, friends, visitors); 
+List<String> friends = system.getFriendsOf("mrko");
+// ["donut", "shakevan"]
+```
+
+특정 유저가 사용자와 함께 아는 친구의 수를 반환한다.
+
+```java
+int numberOfFriends
+        = system.getNumberOfFriendsKnowWith("andole");
+// 2
+```
+
+특정 유저에 대한 추천 점수를 반환한다.
+
+```java
+int recommandationScore
+        = system.getRecommandationScore("andole");
+// 20
+```
+
+
+
+
