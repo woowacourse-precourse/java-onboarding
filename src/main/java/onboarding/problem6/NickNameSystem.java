@@ -1,5 +1,6 @@
 package onboarding.problem6;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +11,17 @@ public class NickNameSystem {
     private static final int NICK_NAME = 1;
     private static final Map<String, String> hashMap = new HashMap<>();
     private static final TreeSet<String> emailTree = new TreeSet<>();
+
+    public List<String> getEmailsToBeSent(List<List<String>> forms) {
+        initSystem();
+        selectForm(forms);
+        return getEmails();
+    }
+
+    private void initSystem() {
+        emailTree.clear();
+        hashMap.clear();
+    }
 
     private void selectForm(List<List<String>> forms) {
         for (List<String> form : forms) {
@@ -39,5 +51,9 @@ public class NickNameSystem {
             emailTree.add(hashMapEmail);
             emailTree.add(email);
         }
+    }
+
+    private List<String> getEmails() {
+        return new ArrayList<>(emailTree);
     }
 }
