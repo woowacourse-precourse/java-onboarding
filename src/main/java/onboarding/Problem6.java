@@ -15,9 +15,7 @@ public class Problem6 {
 			List<String> elementByTwoDimension = forms.get(i);
 
 			for (int j = 0; j < forms.size(); j++) {
-				if (j == i) {
-					// do nothing
-				} else {
+				if (j != i) {
 					List<String> ElementByOneDimension = forms.get(j);
 
 					String setName = elementByTwoDimension.get(1);
@@ -49,7 +47,9 @@ public class Problem6 {
 		for (int i = 0; i < setName.length() - 1; i++) {
 			String sub = setName.substring(i, i + 2);
 
-			if (compareName.contains(sub)) { return  true; }
+			if (compareName.contains(sub)) {
+				return true;
+			}
 
 		}
 
