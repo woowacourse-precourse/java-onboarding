@@ -7,8 +7,9 @@ public class Problem4 {
     }
 
     private static char getMatchingCharacter(char input) {
-        boolean isUpperCase = true;
-        if ('a' <= input) isUpperCase = false;
+        if (!Character.isLetter(input)) return input;
+
+        boolean isUpperCase = 'a' > input;
         char standard = isUpperCase ? 'A' : 'a';
 
         int index = input - standard;
