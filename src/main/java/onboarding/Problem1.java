@@ -11,6 +11,10 @@ class Problem1 {
     private static final int SAME_VALUE = 0;
     private static final int EXCEPTION_CASE = -1;
 
+    private static final int LEFT_PAGE_INDEX = 0;
+    private static final int RIGHT_PAGE_INDEX = 1;
+
+
     private static final int FIRST_PAGE = 1;
     private static final int LAST_PAGE = 400;
 
@@ -19,8 +23,8 @@ class Problem1 {
     }
 
     private static Integer getMaxValue(List<Integer> pages) {
-        Integer leftPage = pages.get(0);
-        Integer rightPage = pages.get(1);
+        Integer leftPage = pages.get(LEFT_PAGE_INDEX);
+        Integer rightPage = pages.get(RIGHT_PAGE_INDEX);
 
         if (isExceptionCase(leftPage, rightPage)) {
             return EXCEPTION_CASE;
