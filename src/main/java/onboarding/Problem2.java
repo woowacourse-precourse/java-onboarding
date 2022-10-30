@@ -56,6 +56,7 @@ public class Problem2 {
         List<Character> resultList = new ArrayList<>();
         String resultString = null;
         Character nowChar = null;
+        Character deleteChar = '.';
         Integer nowSize = null;
 
         for(int i = 0; i < inputString.length(); i++) {
@@ -63,9 +64,13 @@ public class Problem2 {
             nowChar = inputString.charAt(i);
             try {
                 if (resultList.get(nowSize - 1).equals(nowChar)) {
+                    deleteChar = nowChar;
                     resultList.remove(nowSize - 1);
+                } else if (deleteChar.equals(nowChar)) {
+                    continue;
                 } else {
                     resultList.add(nowChar);
+                    deleteChar = '.';
                 }
             } catch (Exception e) {
                 resultList.add(nowChar);
