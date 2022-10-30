@@ -18,16 +18,16 @@ public class Problem4 {
         return answer;
     }
 
-    private static boolean isUpperCase(char a){
-        if('A'<=a && a<='Z') {
+    private static boolean isUpperCase(char currentChar){
+        if('A'<=currentChar && currentChar<='Z') {
             return true;
         }else{
             return false;
         }
     }
 
-    private static boolean isLowerCase(char a){
-        if('a'<=a && a<='z') {
+    private static boolean isLowerCase(char currentChar){
+        if('a'<=currentChar && currentChar<='z') {
             return true;
         }else{
             return false;
