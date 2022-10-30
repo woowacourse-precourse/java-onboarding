@@ -6,8 +6,8 @@ import java.util.Map;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        OppositeAlphabet oppositeAlphabet = new OppositeAlphabet();
+        return oppositeAlphabet.convert(word);
     }
 }
 
