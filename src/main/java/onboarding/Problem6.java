@@ -13,8 +13,7 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         TreeSet<String> emails = new TreeSet<>();
         setHash(forms, emails);
-        List<String> answer = List.of("answer");
-        return answer;
+        return new ArrayList<String>(emails);
     }
 
     static void setHash(List<List<String>> forms, TreeSet<String> emails) {
