@@ -18,7 +18,9 @@ public class Problem6 {
     }
 
     private static List<String> getEmails(List<List<String>> forms) {
-        return null;
+        return forms.stream()
+            .map(form -> form.get(INDEX_OF_EMAIL))
+            .collect(Collectors.toList());
     }
 
     private static List<List<String>> findCrewsWithSimilarNickname(List<List<String>> forms) {
