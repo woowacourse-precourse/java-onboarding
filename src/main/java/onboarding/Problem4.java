@@ -8,37 +8,35 @@ public class Problem4 {
 			char target = word.charAt(i);
 			
 			int charType = charCheck(target);
-			if(charType == 0){
+			if (charType == 0) {
 				answer += target;
 				continue;
 			}
 			
-			char changedTarget = changeByDictionary(target,charType);
+			char changedTarget = changeByDictionary(target, charType);
 			answer += changedTarget;
 		}
 		return answer;
 	}
 	
-	private static char changeByDictionary(char target,int charType) {
-			if(charType == 1){
-				int offset = target - 'A';
-				return (char)('Z' - offset);
-			}
-			
-			if(charType == 2){
-				int offset = target - 'a';
-				return (char) ('z' - offset);
-			}
+	private static char changeByDictionary(char target, int charType) {
+		if (charType == 1) {
+			int offset = target - 'A';
+			return (char) ('Z' - offset);
+		}
 		
-		new Exception("에러발생");
+		if (charType == 2) {
+			int offset = target - 'a';
+			return (char) ('z' - offset);
+		}
 		return 0;
 	}
 	
 	private static int charCheck(char c) {
-		if('A' <= c && c <= 'Z'){
+		if ('A' <= c && c <= 'Z') {
 			return 1;
 		}
-		if('a' <= c && c <= 'z'){
+		if ('a' <= c && c <= 'z') {
 			return 2;
 		}
 		return 0;

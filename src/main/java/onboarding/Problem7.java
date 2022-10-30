@@ -11,9 +11,10 @@ public class Problem7 {
 		
 		HashMap<String, Integer> scoreList = new HashMap<>();
 		for (List<String> relation : exceptFriendList) {
-			if(myFriendList.contains(relation.get(0))){
+			if (myFriendList.contains(relation.get(0))) {
 				scoreList = calculateScore(scoreList, relation.get(1));
-			};
+			}
+			
 			
 			if (myFriendList.contains(relation.get(1))) {
 				scoreList = calculateScore(scoreList, relation.get(0));
@@ -21,13 +22,13 @@ public class Problem7 {
 		}
 		
 		for (String visitorName : visitors) {
-			if(myFriendList.contains(visitorName)){
+			if (myFriendList.contains(visitorName)) {
 				continue;
 			}
 			
-			if(!scoreList.containsKey(visitorName)){
+			if (!scoreList.containsKey(visitorName)) {
 				scoreList.put(visitorName, 1);
-			}else{
+			} else {
 				int beforeScore = scoreList.get(visitorName);
 				scoreList.put(visitorName, beforeScore + 1);
 			}
@@ -38,12 +39,12 @@ public class Problem7 {
 		return answer;
 	}
 	
-
+	
 	private static HashMap<String, Integer> calculateScore(HashMap<String, Integer> scoreList, String s) {
 		boolean flag = scoreList.containsKey(s);
-		if(!flag){
+		if (!flag) {
 			scoreList.put(s, 10);
-		}else{
+		} else {
 			int beforeScore = scoreList.get(s);
 			scoreList.put(s, beforeScore + 10);
 		}

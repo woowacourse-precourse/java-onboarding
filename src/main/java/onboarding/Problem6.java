@@ -65,7 +65,7 @@ public class Problem6 {
 		}
 		
 		int delimiterIndex = email.indexOf('@');
-		String domain = email.substring(delimiterIndex+1);
+		String domain = email.substring(delimiterIndex + 1);
 		if (!domain.equals("email.com")) {
 			return false;
 		}

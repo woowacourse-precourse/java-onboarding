@@ -7,6 +7,8 @@ public class Problem2 {
 		
 		while (true) {
 			String decoded = decodeLogic(crypto);
+			
+			// 이전값과 비교
 			if (crypto.equals(decoded)) {
 				crypto = decoded;
 				break;
