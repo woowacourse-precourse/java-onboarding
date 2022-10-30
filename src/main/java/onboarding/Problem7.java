@@ -1,6 +1,8 @@
 package onboarding;
 
 import java.util.*;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -38,8 +40,6 @@ public class Problem7 {
             List<String> friendList =  makeFriendList(userFriends, friend, friends);
             friendMap.put(friend,friendList);  //수정필요. 친구와, 친구관계로 ->친구 리스트 만들기
         }
-
-        System.out.println(friendMap);
         return friendMap;
     }
 
@@ -64,6 +64,32 @@ public class Problem7 {
                 recommendMap.replace(visitor, recommendMap.get(visitor).intValue()+1);
             }else recommendMap.put(visitor,1);
         }
+
+    }
+
+    //추천 리스트 정렬하기
+    public static List<String> makeRecommendList(HashMap<String,Integer> recommendMap) {
+            List<String> recommendList = new ArrayList<>();
+            recommendMap.entrySet().stream()
+                .sorted(new Comparator<Map.Entry<String, Integer>>() {
+                    @Override
+                    public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                        if(o1.getValue().equals(o2.getValue())){
+                            o1.getKey().compareTo(o2.getKey());
+                        }
+                        return o2.getValue() - o1.getValue();
+                    }
+                })
+                .filter(new Predicate<Map.Entry<String, Integer>>() {
+                    @Override
+                    public boolean test(Map.Entry<String, Integer> stringIntegerEntry) {
+                        if (stringIntegerEntry.getValue() >0) return true;
+                        return false;
+                    }
+                })
+                .forEach(e->recommendList.add(e.getKey())); //collect(Collectors.toList ->
+
+            return recommendList;
 
     }
 
