@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class Friends {
 
-	private final ArrayList<Object> friendsList;
+	private final ArrayList<User> friendsList;
 
 	public Friends() {
 		this.friendsList = new ArrayList<>();
@@ -32,5 +32,10 @@ public class Friends {
 	@Override
 	public int hashCode() {
 		return Objects.hash(friendsList);
+	}
+
+	public boolean isSecondFriend(User otherUser) {
+		return friendsList.stream()
+			.anyMatch(user -> user != otherUser && user.isFriends(otherUser));
 	}
 }
