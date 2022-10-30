@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,17 +17,25 @@ public class Problem6 {
   private static final int MAX_EMAIL_LENGTH = 20;
   private static final int MAX_NICKNAME_LENGTH = 20;
   private static final String NICKNAME_REGEX = "^[가-힣]*$";
+  private static final String[] EXCEPTION_LIST = {"-99999"};
 
   public static List<String> solution(List<List<String>> forms) {
-    classifyForms(forms);
-    List<String> answer = hasDuplicatedNickNameMemberEmails();
-    return answer;
+    if (isAllowedCrewSize(forms.size())) {
+      classifyForms(forms);
+      return hasDuplicatedNickNameMemberEmails();
+    }
+    ArrayList<String> returnList = new ArrayList<>(Arrays.asList(EXCEPTION_LIST));
+    return returnList;
   }
 
   private static void classifyForms(List<List<String>> forms) {
     crewInfo = new HashMap<>();
     for (List<String> form : forms) {
-      crewInfo.put(form.get(0), form.get(1));
+      String email = form.get(0);
+      String nickName = form.get(1);
+      if (isAllowedEmail(email) && isAllowedNickName(nickName)) {
+        crewInfo.put(email, nickName);
+      }
     }
   }
 
