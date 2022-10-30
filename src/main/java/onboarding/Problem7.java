@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     private static String checkAlreadyFriends(String user, List<String> relation){
@@ -35,7 +32,7 @@ public class Problem7 {
 
     }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        //List<String> answer = Collections.emptyList();
         HashMap<String, Integer> scores = new HashMap<>();
         List<String> alreadyFriends = findAlreadyFriends(user, friends);
         int friendCount = alreadyFriends.size();
@@ -46,20 +43,33 @@ public class Problem7 {
         for (int i = 0; i < length ;i++){
             for (int j = 0; j < friendCount; j++){
                 temp = checkAlreadyFriends(alreadyFriends.get(j), friends.get(i));
-                if(!temp.equals("") && !scores.containsKey(alreadyFriends.get(j))){
-                    scores.put(alreadyFriends.get(j), 10);
-                }
-                else if(!temp.equals("")){
-                    tempScore = scores.get(alreadyFriends.get(j));
-                    tempScore += 10;
-                    scores.put(alreadyFriends.get(j), tempScore);
+                if(!temp.equals("") && !temp.equals(user)) {
+                    if (!temp.equals(user) && !scores.containsKey(temp)) {
+                        scores.put(temp, 10);
+                    }else{
+                        tempScore = scores.get(temp);
+                        tempScore += 10;
+                        scores.put(temp, tempScore);
+                    }
                 }
             }
         }//함수로 빼는 방법 생각하기
-        
-        //System.out.println(scores);
-        //HashMap scores = new HashMap<>();
-        //Set<String> members = new Set<>();
+        //visitors와 관련하여 각 user의 점수 구하기
+        int visitorsSize = visitors.size();
+        for (int i = 0; i < visitorsSize; i++){
+            if(!alreadyFriends.contains(visitors.get(i))) {//조건 수정하기
+                if (!scores.containsKey(visitors.get(i))) {
+                    scores.put(visitors.get(i), 1);
+                } else {
+                    tempScore = scores.get(visitors.get(i));
+                    tempScore += 1;
+                    scores.put(visitors.get(i), tempScore);
+                }
+            }
+        }
+        List<String> answer = new ArrayList<>(scores.keySet());
+        answer.sort(Comparator.naturalOrder());
+        answer.sort((s1, s2) -> scores.get(s2) - scores.get(s1));
         return answer;
     }
 }
