@@ -57,7 +57,8 @@ public class Decryptor {
     }
 
     private static boolean isDuplicateCharacter(String nowCharacter, int startCursor) {
-        return !cryptogramList.isEmpty() && cryptogramList.get(startCursor).equals(nowCharacter);
+        return cryptogramList.size() > startCursor && cryptogramList.get(startCursor)
+            .equals(nowCharacter);
     }
 
     private static String decryptCharacterToString() {
