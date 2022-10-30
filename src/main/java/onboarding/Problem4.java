@@ -8,6 +8,8 @@ public class Problem4 {
             //대문자
             if(Character.isUpperCase(tempChar)){
                 tempChar = (char)('Z' - (tempChar - 'A'));
+            }else if(Character.isLowerCase(tempChar)){
+                tempChar =(char)('z' - (tempChar - 'a'));
             }
             answer += tempChar;
         }
