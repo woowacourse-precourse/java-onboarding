@@ -3,6 +3,8 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.Math.max;
+
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
@@ -91,18 +93,13 @@ class Problem1 {
             lenghtCR -= 1;
         }
 
+        if (Math.max(Math.max(sumPR, productPR), Math.max(sumPL, productPL)) > Math.max(Math.max(sumCR, productCR), Math.max(sumCL, productCL))){
+            int answer = 1;
+        } else if (Math.max(Math.max(sumPR, productPR), Math.max(sumPL, productPL)) < Math.max(Math.max(sumCR, productCR), Math.max(sumCL, productCL))) {
+            int answer = 2;
+        }
 
 
-
-
-
-
-
-
-
-
-
-        int answer = Integer.MAX_VALUE;
         return answer;
     }
 
