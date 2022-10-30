@@ -13,6 +13,7 @@ public class Problem4 {
 
 class OppositeAlphabet {
     private final List<Character> UpperLowerOfA = List.of("A".charAt(0), "a".charAt(0));
+    private final Map<String, String> OppositeAlphabetMap = createOppositeAlphabetMap();
 
     private Map<String, String> createOppositeAlphabetMap() {
         Map<String, String> map = new HashMap<>();
@@ -30,5 +31,20 @@ class OppositeAlphabet {
         }
 
         return map;
+    }
+
+    protected String convert(String word) {
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < word.length(); i++) {
+            if (OppositeAlphabetMap.containsKey(String.valueOf(word.charAt(i)))) {
+                String target = OppositeAlphabetMap.get(String.valueOf(word.charAt(i)));
+                sb.append(target);
+            } else {
+                sb.append(word.charAt(i));
+            }
+        }
+
+        return sb.toString();
     }
 }
