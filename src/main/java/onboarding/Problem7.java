@@ -8,15 +8,20 @@ public class Problem7 {
         return answer;
     }
 
-    public  static Map<String,Integer> getVisitScore(List<String> visitors, String user) {
+    public  Map<String,Integer> getVisitScore(List<String> visitors, String user) {
         Map<String, Integer> visitScore = new TreeMap<>();
+        int score = 1;
         for (String visitor : visitors) {
-            visitScore.put(visitor, 1);
+            if(visitScore.containsKey(visitor)){
+                visitScore.put(visitor,visitScore.get(visitor)+1);
+            }else {
+                visitScore.put(visitor, 1);
+            }
         }
         return  visitScore;
     }
 
-    public static List<List<String>> getFriendList (List<List<String>> friends) {
+    public List<List<String>> getFriendList (List<List<String>> friends) {
         List<List<String>> friendsList = new ArrayList<>();
         for(List<String> friend : friends){
             List<String> n = new ArrayList<>();
@@ -26,6 +31,31 @@ public class Problem7 {
             friendsList.add(friend);
         }
         return friendsList;
+    }
+
+
+    public  Map<String, Integer> myFriendScore (List<List<String>> friendList, String user) {
+        List<List<String>> userFriends = new ArrayList<>();
+        Map<String, Integer> friendScore = new TreeMap<>();
+        int score = 10;
+        for (List<String> friend : friendList){
+            if(friend.get(0).equals(user)){
+                userFriends.add(friend);
+            }
+        }
+
+        for(List<String> userfriend : userFriends) {
+            for(List<String> friend : friendList) {
+                if(userfriend.get(1).equals(friend.get(1))){
+                    if(friendScore.containsKey(friend.get(0))){
+                        friendScore.put(friend.get(0),friendScore.get(friend.get(0))+score);
+                    }
+                        friendScore.put(friend.get(0),10);
+                }
+            }
+        }
+
+        return friendScore;
     }
 
 }

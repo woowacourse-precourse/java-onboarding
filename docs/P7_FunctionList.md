@@ -18,7 +18,7 @@
 * `getFriendList()으로 구현`
 
 ### sns 사용자의 이름을 저장하는 기능
-* `parameter` : list<list>
+* `parameter` : list<list> , string(user)
 * `return` : list
 * `getUserList()으로 구현`
 
