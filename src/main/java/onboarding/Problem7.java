@@ -10,12 +10,24 @@ public class Problem7 {
         scoreMap = new HashMap<>();
         HashMap<String, List<String>> friendshipMap = makeFriendshipMap(friends);
 
+        List<String> banList = friendshipMap.get(user);
+        banList.add(user);
+
         giveScoreBasedOnFriendship(user, friendshipMap);
         giveScoreBasedOnVisited(visitors);
 
-        List<String> answer = Collections.emptyList();
+        return getRecommendList(banList);
+    }
 
-        return answer;
+    private static List<String> getRecommendList(List<String> banList) {
+        List<Map.Entry<String, Integer>> scoreEntries = new ArrayList<>(scoreMap.entrySet());
+        scoreEntries.sort((obj1, obj2) -> obj2.getValue().compareTo(obj1.getValue()));
+
+        return scoreEntries.stream()
+                .filter((userInfo) -> !banList.contains(userInfo.getKey()))
+                .map(Map.Entry::getKey)
+                .limit(5)
+                .collect(Collectors.toList());
     }
 
     private static void giveScoreBasedOnVisited(List<String> visitors) {
