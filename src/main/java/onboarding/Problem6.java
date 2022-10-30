@@ -32,8 +32,17 @@ public class Problem6 {
     }
 
     private static void searchContinuousStringBySize(String nickname, int size, String email) {
+        for (int i = 0; i < nickname.length() - size; i++) {
+            String continuous = nickname.substring(i, i + size);
+
+            searchOverlap(continuous,email);
+        }
+    }
+
+    private static void searchOverlap(String continuous, String email) {
 
     }
+
 }
 
 /* 구현 로직
