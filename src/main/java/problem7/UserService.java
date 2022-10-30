@@ -39,4 +39,8 @@ public class UserService {
 
         return findUser.isFriend(findOtherUser) && findOtherUser.isFriend(findUser);
     }
+
+    public void addFriends(List<List<String>> friends) {
+        friends.forEach(this::addFriend);
+    }
 }

@@ -3,6 +3,7 @@ package problem7;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -10,10 +11,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class UserTest {
 
     private UserRepository userRepository;
+    private UserService userService;
 
     @BeforeEach
     void setUp() {
         userRepository = new UserRepository();
+        userService = new UserService(userRepository);
     }
 
     @Test
@@ -30,10 +33,31 @@ public class UserTest {
     void 하나의_친구관계가_주어질때_각유저에_친구관계적용() {
         List<String> friend = List.of("donut", "andole");
 
-        UserService userService = new UserService(userRepository);
         userService.addFriend(friend);
         boolean result = userService.isFriend("donut", "andole");
 
         assertThat(result).isTrue();
+    }
+
+    @Test
+    void 여러개의_친구관계가_주어질때_각각의유저에_친구관계적용() {
+        userService.addFriends(createFriends());
+
+        assertThat(userService.isFriend("mrko", "donut")).isTrue();
+        assertThat(userService.isFriend("mrko", "shakevan")).isTrue();
+        assertThat(userService.isFriend("donut", "mrko")).isTrue();
+        assertThat(userService.isFriend("shakevan", "mrko")).isTrue();
+    }
+
+    private List<List<String>> createFriends() {
+        List<List<String>> friends = new ArrayList<>();
+        friends.add(List.of("donut", "andole"));
+        friends.add(List.of("donut", "jun"));
+        friends.add(List.of("donut", "mrko"));
+        friends.add(List.of("shakevan", "andole"));
+        friends.add(List.of("shakevan", "jun"));
+        friends.add(List.of("shakevan", "mrko"));
+
+        return friends;
     }
 }
