@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /*
  *
@@ -25,6 +26,13 @@ import java.util.HashMap;
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
+
+        if (word.isEmpty()) {
+            return answer;
+        }
+        else if (word.length() > 1000){
+            word = word.substring(0,1000);
+        }
 
         // the list of alphabet conversion
         HashMap<Character, Character> upperCase = new HashMap<>();
