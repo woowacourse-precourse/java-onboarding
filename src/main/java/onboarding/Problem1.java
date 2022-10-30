@@ -53,10 +53,24 @@ class Problem1 {
          * */
 
     // 각 자리수의 합 반환
-
+    private static int num_sum(int i) {
+        int sum = 0;
+        while (i > 0) {
+            sum += i%10;
+            i=i/10;
+        }
+        return sum;
+    }
 
     // 각 자리수의 곱 반환
-
+    private static int num_multiple(int i) {
+        int multiple = 1;
+        while (i > 0) {
+            multiple *= i % 10;
+            i = i / 10;
+        }
+        return multiple;
+    }
 
     // 개인의 최대 페이지 값 반환
 
