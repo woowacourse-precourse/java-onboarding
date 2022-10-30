@@ -26,17 +26,14 @@ public class Problem6 {
         // 중복 확인할 기준 문자열 구하기, 중복 제거
         for(int i=0; i<nickList.length; i++){
             String name = nickList[i];
-            for(int j=2; j<=name.length(); j++){
-                int criteriaLength = j;
-                String[] criteriaList = makeCriteria(name, criteriaLength);
+            String[] criteriaList = makeCriteria(name, 2);
 
-                // 닉네임들 중에 기준 문자열과 중복인 닉네임이 있는지 찾음
-                List<String> duplicatedNickname = findDuplicatedNickname(nickList, i, criteriaList);
+            // 닉네임들 중에 기준 문자열과 중복인 닉네임이 있는지 찾음
+            List<String> duplicatedNickname = findDuplicatedNickname(nickList, i, criteriaList);
 
-                Iterator<String> dupNicknameItr = duplicatedNickname.iterator();
-                for(int s=0; s<duplicatedNickname.size(); s++){
-                    collectNickname.add(dupNicknameItr.next());
-                }
+            Iterator<String> dupNicknameItr = duplicatedNickname.iterator();
+            for(int s=0; s<duplicatedNickname.size(); s++){
+                collectNickname.add(dupNicknameItr.next());
             }
         }
 
