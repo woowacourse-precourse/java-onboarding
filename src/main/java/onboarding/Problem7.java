@@ -72,4 +72,16 @@ public class Problem7 {
             friendRecommendScoreMap.put(userTimelineVisitor, friendRecommendScoreMap.get(userTimelineVisitor) + 1);
         });
     }
+
+    private static List<String> getTopFiveScoreUser(Map<String, Integer> friendRecommendScoreMap, Set<String> userFriends) {
+        return friendRecommendScoreMap.entrySet().stream()
+                .filter(friendRecommendScoreMapEntry ->
+                    (friendRecommendScoreMapEntry.getValue() != 0) &&
+                            (!userFriends.contains(friendRecommendScoreMapEntry.getKey()))
+                )
+                .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
+                .map(friendRecommendScoreMapEntry -> friendRecommendScoreMapEntry.getKey())
+                .limit(5)
+                .collect(Collectors.toList());
+    }
 }
