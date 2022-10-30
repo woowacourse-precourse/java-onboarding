@@ -6,7 +6,11 @@ import java.util.Stack;
 public class Problem2 {
     public static String solution(String cryptogram) {
 
-
+        while(!Objects.equals(cryptogram, "")){
+            String answer = deleteDuplicates(cryptogram);
+            if(Objects.equals(answer, cryptogram))break;
+            cryptogram = answer;
+        }
         return cryptogram;
     }
 
