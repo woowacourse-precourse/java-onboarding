@@ -36,5 +36,18 @@ public class Problem5 {
     }
 
     public static List<Integer> solution(int money) {
-    return new ArrayList<>();
+        Problem5 problem5 = new Problem5();
+        List<Integer> denominationList = problem5.getDenominationList();
+        denominationList = problem5.sortListDescendingOrder(denominationList);
+
+        List<Integer> numberOfEachDenominations = null;
+
+        try {
+            numberOfEachDenominations = problem5.countEachDenominations(denominationList, money);
+        } catch (ArithmeticException e) {
+            System.out.println("수를 0으로 나눌 수 없습니다.");
+            e.printStackTrace();
+        }
+        return numberOfEachDenominations;
+    }
 }
