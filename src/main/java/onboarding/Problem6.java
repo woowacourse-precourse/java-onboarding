@@ -15,6 +15,17 @@ public class Problem6 {
             makeCountMap(countOfToken, tokens);
         }
 
+        for(int i=0;i<tokenList.size();i++){
+            for (String token : tokenList.get(i)) {
+                if (countOfToken.get(token) > 1) {
+                    answer.add(forms.get(i).get(0));
+                    break;
+                }
+            }
+        }
+        answer.sort((o1,o2)->{
+            return o1.compareTo(o2);
+        });
         return answer;
     }
 
