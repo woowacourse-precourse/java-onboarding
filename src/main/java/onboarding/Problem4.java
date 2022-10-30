@@ -8,7 +8,7 @@ public class Problem4 {
             if(tmpword[i]==' ') continue;
             else if(tmpword[i] < 96){
                 tmpword[i] = (char)('A'+'Z'-tmpword[i]);
-            } else {
+            } else if(tmpword[i] >= 97){
                 tmpword[i] = (char)('a'+'z' - tmpword[i]);
             }
         }
