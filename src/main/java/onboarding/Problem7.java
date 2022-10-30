@@ -16,7 +16,7 @@ public class Problem7 {
     static List<String> userFriendList;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer;
+        List<String> answer = new ArrayList<>();
 
         friendMap = new HashMap<>();
         scoreMap = new HashMap<>();
@@ -49,10 +49,10 @@ public class Problem7 {
         }
 
         // 점수와 이름 순서대로 정렬을 진행한다.
-        answer = new ArrayList<>(scoreMap.keySet());
-        answer.sort(Problem7::sortByScoreAndName);
-
+        List<String> recommendUserList = new ArrayList<>(scoreMap.keySet());
+        recommendUserList.sort(Problem7::sortByScoreAndName);
         
+
         return answer;
     }
 
