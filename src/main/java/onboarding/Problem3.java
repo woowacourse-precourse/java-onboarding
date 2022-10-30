@@ -32,7 +32,7 @@ public class Problem3 {
     }
 
     private static boolean confirmNumber(int dividedNumber){
-        if(dividedNumber%3==0) return true;
+        if(dividedNumber%3==0 && dividedNumber>0) return true;
         return false;
     }
 
