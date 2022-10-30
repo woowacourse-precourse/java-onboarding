@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /*
 * 1. 닉네임의 2글자로 구성된 부분이름을 key,중복없이 이메일을 저장하는 Set 을 value 로 갖는 Map 생성
@@ -16,7 +17,22 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         map = new HashMap<>();
 
-        return List.of();
+        for (List<String> form : forms) {
+            String email = form.get(0);
+            String name = form.get(1);
+
+            if (name.length() >= 2) {
+                addSubNames(name, email);
+            }
+        }
+
+        return map.keySet().stream()
+                .filter(subName -> map.get(subName).size() >= 2)
+                .map(subName -> map.get(subName))
+                .flatMap(Set::stream)
+                .distinct()
+                .sorted()
+                .collect(Collectors.toList());
     }
 
     private static List<String> getSubNames(String name) {
