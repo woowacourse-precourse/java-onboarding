@@ -43,7 +43,11 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+
+        int pobiValue = maxValue(pobi);
+        int crongValue = maxValue(crong);
+        int answer = winner(pobiValue, crongValue);
+
         return answer;
     }
     
@@ -55,23 +59,47 @@ class Problem1 {
         }
         return additionSum;
     }
-    public static int Multiplicaion(int pageNumber){
-        int MultiplicaionSum = 1;
+
+    public static int multiplicaion(int pageNumber){
+        int sum = 1;
 
         while(0 < pageNumber){
-            MultiplicaionSum *= pageNumber % 10;
+            sum *= pageNumber % 10;
             pageNumber /= 10;
         }
-        return MultiplicaionSum;
+        return sum;
     }
-    public static int Compare(int pageNumber){
-        if (addition(pageNumber) >= Multiplicaion(pageNumber)){
+
+    public static int maxValue(List<Integer> pageList){
+        int max = 0;
+
+        for(Integer pageNumber : pageList){
+            if(max < compare(pageNumber)){
+                max = compare(pageNumber);
+            }
+        }
+        return max;
+    }
+
+    public static int compare(int pageNumber){
+        if (addition(pageNumber) >= multiplicaion(pageNumber)){
             return addition(pageNumber);
         }
-        return Multiplicaion(pageNumber);
+        return multiplicaion(pageNumber);
     }
-    public static void main(String[] args){
-        List<Integer> pobi = List.of(97, 98);
-        List<Integer> crong = List.of(197, 198);
+
+    public static int winner(int pobiValue, int crongValue){
+        if (crongValue < pobiValue){
+            return 1;
+        }
+        if (crongValue > pobiValue){
+            return 2;
+        }
+        return 0;
     }
+    
+    // public static void main(String[] args){
+    //     List<Integer> pobi = List.of(97, 98);
+    //     List<Integer> crong = List.of(197, 198);
+    // }
 }
