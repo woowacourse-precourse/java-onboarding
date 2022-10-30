@@ -12,9 +12,10 @@ public class Problem4 {
         return answer;
     }
     private static char convertAlphabet(char alphabet) {
-        if (alphabet == ' ') {
+        if (!Character.isAlphabetic(alphabet)) {
             return alphabet;
         }
+
         if (alphabet-START_LOWER<0) {
             return (char)(UPPER_BASE-alphabet);
         }
