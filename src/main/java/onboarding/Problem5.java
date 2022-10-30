@@ -18,6 +18,6 @@ public class Problem5 {
         AccountRequest request = new AccountRequest(money, RequestType.WITHDRAW);
         AccountResponse response = policy.withdraw(request);
 
-        return response.getResultList();
+        return response.getNumberOfCash();
     }
 }

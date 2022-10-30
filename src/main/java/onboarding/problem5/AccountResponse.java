@@ -1,16 +1,19 @@
 package onboarding.problem5;
 
-import java.util.LinkedList;
 import java.util.List;
 
 public class AccountResponse {
-	private List<Integer> resultList = new LinkedList<>();
+	private List<Integer> numberOfCashList;
 
-	public List<Integer> getResultList() {
-		return resultList;
+	public AccountResponse(List<Integer> numberOfCashList){
+		this.numberOfCashList = numberOfCashList;
 	}
 
-	public void addResult(int result) {
-		resultList.add(result);
+	public List<Integer> getNumberOfCash() {
+		return numberOfCashList;
+	}
+
+	public void addCashCount(int result) {
+		this.numberOfCashList.add(result);
 	}
 }
