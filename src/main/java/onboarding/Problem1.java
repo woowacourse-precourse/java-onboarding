@@ -29,7 +29,7 @@ class Problem1 {
         return answer;
     }
 
-    public static int getUserScore(List<Integer> pageList) {
+    private static int getUserScore(List<Integer> pageList) {
         if (validateListSize(pageList) == false) return -1;
 
         int leftPage = pageList.get(LEFT_IDX);
@@ -43,7 +43,7 @@ class Problem1 {
         return Math.max(leftScore, rightScore);
     }
 
-    public static int getLargerValue(int page) {
+    private static int getLargerValue(int page) {
         if (validatePageRange(page) == false) return -1;
 
         String[] splitNums = String.valueOf(page).split("");
