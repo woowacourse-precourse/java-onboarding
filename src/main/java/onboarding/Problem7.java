@@ -47,13 +47,16 @@ class ScoreForPro7 {
 
   private Map<String, Integer> scoreMap;
 
-  public ScoreForPro7(Map<String, Integer> scoreMap, Set<String> friendSet) {
-    makeScoreMap(new HashMap<>(), friendSet);
+  public ScoreForPro7(Set<String> friendSet, String user) {
+    makeScoreMap(new HashMap<>(), friendSet, user);
   }
 
-  private void makeScoreMap(Map<String, Integer> scoreMap, Set<String> friendSet) {
+  private void makeScoreMap(Map<String, Integer> scoreMap, Set<String> friendSet, String user) {
     for (String s : friendSet) {
       scoreMap.put(s, 0);
+    }
+    if (!friendSet.contains(user)) {
+      scoreMap.clear();
     }
     this.scoreMap = scoreMap;
   }
@@ -74,25 +77,24 @@ class UserSelectedForPro7 {
         visitors);
     FriendForPro7 friendClass = new FriendForPro7();
     Set<String> friendSet = friendClass.makeFriendSet(friends, new HashSet<>());
-    ScoreForPro7 scoreClass = new ScoreForPro7(new HashMap<>(), friendSet);
+    ScoreForPro7 scoreClass = new ScoreForPro7(friendSet, user);
     friendMap = friendClass.makeFriendMap(friends, friendSet, new HashMap<>());
-    validateUserContain(user);
-    makeUserSelectedList(user, friendMap);
+    makeUserSelectedList(user);
     finalScoreMap(user, visitors, scoreClass);
-  }
-
-  private void validateUserContain(String user) {
-    if (!friendMap.containsKey(user)) {
-      throw new IllegalArgumentException(user + "가 friendMap에 포함되어 있지 않습니다.");
-    }
   }
 
   public Map<String, Integer> theLastScoreMap() {
     return lastScoreMap;
   }
 
-  public void makeUserSelectedList(String user, Map<String, List<String>> friendMap) {
-    this.userSelectedList = friendMap.get(user);
+  public void makeUserSelectedList(String user) {
+    if (!friendMap.containsKey(user)) {
+      this.userSelectedList = new ArrayList<>();
+    }
+
+    if (friendMap.containsKey(user)) {
+      this.userSelectedList = friendMap.get(user);
+    }
   }
 
   private void finalScoreMap(String user, List<String> visitors, ScoreForPro7 score) {
@@ -101,8 +103,10 @@ class UserSelectedForPro7 {
   }
 
   private Map<String, Integer> valuePlus10(String user, Map<String, Integer> scoreMap) {
-    for (String s : userSelectedList) {
-      add10ToFriend(friendMap.get(s), user, scoreMap);
+    if (!userSelectedList.isEmpty()) {
+      for (String s : userSelectedList) {
+        add10ToFriend(friendMap.get(s), user, scoreMap);
+      }
     }
     return scoreMap;
   }
@@ -117,7 +121,6 @@ class UserSelectedForPro7 {
   }
 
   private void valuePlus1(List<String> visitors, Map<String, Integer> scoreMap) {
-
     for (String s : visitors) {
       if (!scoreMap.containsKey(s)) {
         scoreMap.put(s, 1);

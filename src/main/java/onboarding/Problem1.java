@@ -2,18 +2,18 @@ package onboarding;
 
 import java.util.List;
 
-class UserForPro1 {
+class UserForProblem1 {
 
   private static final int LIST_LENGTH = 2;
   private final int max;
 
-  public UserForPro1(List<Integer> user) {
-    int res = -1;
+  public UserForProblem1(List<Integer> user) {
+    int result = -1;
     if (!validateUser(user)) {
       PageForPro1 maxPage = new PageForPro1(user.get(0), user.get(1));
-      res = maxPage.getMax();
+      result = maxPage.getMax();
     }
-    this.max = res;
+    this.max = result;
   }
 
   private boolean validateUser(List<Integer> user) {
@@ -33,12 +33,12 @@ class PageForPro1 {
   private final int max;
 
   public PageForPro1(int left, int right) {
-    int res = -1;
+    int result = -1;
     if (!validatePage(left, right)) {
       CalculateForPro1 calClass = new CalculateForPro1(left, right);
-      res = calClass.compareTwo();
+      result = calClass.compareTwo();
     }
-    this.max = res;
+    this.max = result;
   }
 
   private boolean validatePage(int left, int right) {
@@ -112,8 +112,8 @@ class Problem1 {
 
 
   public static int solution(List<Integer> pobi, List<Integer> crong) {
-    UserForPro1 userPobi = new UserForPro1(pobi);
-    UserForPro1 userCrong = new UserForPro1(crong);
+    UserForProblem1 userPobi = new UserForProblem1(pobi);
+    UserForProblem1 userCrong = new UserForProblem1(crong);
     return winner(userPobi.getMax(), userCrong.getMax());
   }
 
