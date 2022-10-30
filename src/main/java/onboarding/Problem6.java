@@ -20,7 +20,7 @@ public class Problem6 {
     }
 
     // 이메일과 닉네임을 HashMap에 추가하는 함수
-    public static void addUsers(HashMap<String, String> databaseOfNickname, HashMap<String, Boolean> duplicationOfNickname, List<String> user) {
+    public static void addUser(HashMap<String, String> databaseOfNickname, HashMap<String, Boolean> duplicationOfNickname, List<String> user) {
         databaseOfNickname.put(user.get(0), user.get(1));
         duplicationOfNickname.put(user.get(0), false);
     }
