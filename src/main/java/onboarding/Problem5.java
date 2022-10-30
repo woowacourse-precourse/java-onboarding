@@ -11,6 +11,13 @@ public class Problem5 {
 
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
+    private static int change(int input, int change) {
+        int answer = 0;
+        if(input >= change){
+            answer = input / change;
+        }
+        return answer;
+    }
         return answer;
     }
 }
