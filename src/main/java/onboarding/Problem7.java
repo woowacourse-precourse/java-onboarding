@@ -28,6 +28,8 @@ public class Problem7 {
             }
         });
 
+        answer.subList(0, Math.min(answer.size(), 5));
+
         return answer;
     }
 
