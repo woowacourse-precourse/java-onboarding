@@ -5,7 +5,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Problem7 {
-    private static HashMap<String, Integer> friendsScore = new HashMap<>();
+    private static TreeMap<String, Integer> friendsScore = new TreeMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer;
@@ -28,7 +28,7 @@ public class Problem7 {
     }
 
     private static void initFriendsScore() {
-        friendsScore = new HashMap<>();
+        friendsScore = new TreeMap<>();
     }
 
     private static List<String> getUserFriends(String user, List<List<String>> friends) {
