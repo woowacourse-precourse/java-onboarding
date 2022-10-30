@@ -5,6 +5,7 @@ public class Problem2 {
         int point1 = 0;
         int point2 = 1;
 
+        // point2 가 cryptogram의 길이보다 작을 때 까지
         while (point2 < cryptogram.length()) {
             char first = cryptogram.charAt(point1);
             char second = cryptogram.charAt(point2);
