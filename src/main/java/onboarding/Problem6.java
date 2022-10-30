@@ -12,13 +12,13 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<List<String>> separatedNickname = new ArrayList<>();
         addSeperatedNicknameToList(forms, separatedNickname);
-        countTwoLetters(separatedNickname);
+        countTwoLettersToMap(separatedNickname);
 
         return new ArrayList<>();
     }
 
 
-    private static void countTwoLetters(List<List<String>> separatedNickname) {
+    private static void countTwoLettersToMap(List<List<String>> separatedNickname) {
         for (List<String> crewSeparatedNickname : separatedNickname) {
             putListToMap(crewSeparatedNickname);
         }
