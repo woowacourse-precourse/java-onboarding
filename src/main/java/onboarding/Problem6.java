@@ -25,7 +25,9 @@ public class Problem6 {
             }
         }
 
+        ArrayList<String> answer = new ArrayList<>(emailSet);
+        Collections.sort(answer);
 
-        return new ArrayList<>();
+        return answer;
     }
 }
