@@ -10,38 +10,48 @@ class Problem1 {
 
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
 
+		/*
+		계산에 필요한 값들 구하기
+		*/
+
 		int pobiFirstNumber = getNumber(pobi, 0);
 		int pobiSecondNumber = getNumber(pobi, 1);
 
 		int crongFirstNumber = getNumber(crong, 0);
 		int crongSecondNumber = getNumber(crong, 1);
 
-		List<Integer> pobiMaxNumbersList = new ArrayList<>();
-		List<Integer> crongMaxNumbersList = new ArrayList<>();
+		Integer pobiMaxValue = getMaxValue(pobiFirstNumber, pobiSecondNumber);
+		Integer crongMaxValue = getMaxValue(crongFirstNumber, crongSecondNumber);
 
-		pobiMaxNumbersList.add(getMaxNumber(pobiFirstNumber));
-		pobiMaxNumbersList.add(getMaxNumber(pobiSecondNumber));
-		crongMaxNumbersList.add(getMaxNumber(crongFirstNumber));
-		crongMaxNumbersList.add(getMaxNumber(crongSecondNumber));
-
-		Integer pobiMaxValue = getMaxValue(pobiMaxNumbersList);
-		Integer crongMaxValue = getMaxValue(crongMaxNumbersList);
+		/*
+		구한 값들로 정답 구하는 로직
+		*/
 
 		if (!doesPageContinue(pobiFirstNumber, pobiSecondNumber) || !doesPageContinue(crongFirstNumber, crongSecondNumber)) {
 			return -1;
 		}
 
-		int answer = getTheAnswer(pobiMaxValue, crongMaxValue);
+		return getTheAnswer(pobiMaxValue, crongMaxValue);
+	}
 
-		return answer;
+	private static Integer getMaxValue(int firstNumber, int secondNumber) {
+		List<Integer> maxNumberList = getMaxNumberList(firstNumber, secondNumber);
+		return getMaxValue(maxNumberList);
+	}
+
+	private static List<Integer> getMaxNumberList(int firstNumber, int secondNumber) {
+		List<Integer> maxNumbersList = new ArrayList<>();
+		maxNumbersList.add(getMaxNumber(firstNumber));
+		maxNumbersList.add(getMaxNumber(secondNumber));
+		return maxNumbersList;
 	}
 
 	private static int getTheAnswer(Integer pobiMaxValue, Integer crongMaxValue) {
 
-		return compareLogic(pobiMaxValue, crongMaxValue);
+		return compareValues(pobiMaxValue, crongMaxValue);
 	}
 
-	private static int compareLogic(Integer pobiMaxValue, Integer crongMaxValue) {
+	private static int compareValues(Integer pobiMaxValue, Integer crongMaxValue) {
 
 		if (Objects.equals(pobiMaxValue, crongMaxValue)) {
 			return 0;
@@ -73,9 +83,9 @@ class Problem1 {
 	private static int getMaxNumber(int number) {
 
 		if (getNumberLength(number) == 3) {
-			int firstNumberFirstDigit = number / 100;
-			int firstNumberSecondDigit = (number % 100) / 10;
-			int firstNumberThirdDigit = (number % 100) % 10;
+			int firstNumberFirstDigit = getDigitsInThreeFigures(number, 1);
+			int firstNumberSecondDigit = getDigitsInThreeFigures(number, 2);
+			int firstNumberThirdDigit = getDigitsInThreeFigures(number, 3);
 
 			int addition = getAddition(firstNumberFirstDigit, firstNumberSecondDigit, firstNumberThirdDigit);
 			int multiplication = getMultiplication(firstNumberFirstDigit, firstNumberSecondDigit, firstNumberThirdDigit);
@@ -84,8 +94,8 @@ class Problem1 {
 		}
 
 		if (getNumberLength(number) == 2) {
-			int firstNumberFirstDigit = (number % 100) / 10;
-			int firstNumberSecondDigit = (number % 100) % 10;
+			int firstNumberFirstDigit = getDigitsInTwoFigures(number, 1);
+			int firstNumberSecondDigit = getDigitsInTwoFigures(number, 2);
 
 			int addition = getAddition(firstNumberFirstDigit, firstNumberSecondDigit);
 			int multiplication = getMultiplication(firstNumberFirstDigit, firstNumberSecondDigit);
@@ -94,6 +104,36 @@ class Problem1 {
 		}
 
 		return number;
+	}
+
+	private static int getDigitsInThreeFigures(int number, int position) {
+
+		if (position == 1) {
+			return number / 100;
+		}
+
+		if (position == 2) {
+			return (number % 100) / 10;
+		}
+
+		if (position == 3) {
+			return (number % 100) % 10;
+		}
+
+		throw new IllegalArgumentException("자리수 입력 오류");
+	}
+
+	private static int getDigitsInTwoFigures(int number, int position) {
+
+		if (position == 1) {
+			return (number % 100) / 10;
+		}
+
+		if (position == 2) {
+			return (number % 100) % 10;
+		}
+
+		throw new IllegalArgumentException("자리수 입력 오류");
 	}
 
 	public static int getAddition(int... numbers) {
