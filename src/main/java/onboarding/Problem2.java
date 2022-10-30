@@ -74,8 +74,12 @@ public class Problem2 {
         return overlapDelete(cryptogram);
     }
 
+    /**
+     * 문제 해결을 위한 함수
+     * 기능 요구 사항 결과 리턴
+     */
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+
+        return overlapDelete(cryptogram);
     }
 }
