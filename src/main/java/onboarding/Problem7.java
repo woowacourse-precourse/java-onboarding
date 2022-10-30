@@ -26,4 +26,59 @@ public class Problem7 {
             }
         }
     }
+
+    private static void registerNewUserInFriendsList (String User, List<List<String>> friends) {
+        for (List<String> friend : friends) {
+            String user_A = friend.get(0);
+            String user_B = friend.get(1);
+            if (User.equals(user_A) || User.equals(user_B)) {
+                continue;
+            }
+            boolean isUserAFriend = isUsersFriend(user_A);
+            boolean isUserBFriend = isUsersFriend(user_B);
+            if (isUserAFriend && isUserBFriend) {
+                continue;
+            }
+
+            if (isUserAFriend) {
+                if (allUsersID.containsKey(user_B)) {
+                    allUsersID.put(user_B, allUsersID.get(user_B) + 10);
+                }
+                else {
+                    allUsersID.put(user_B, 10);
+                }
+                continue;
+            }
+
+            if (isUserBFriend) {
+                if (allUsersID.containsKey(user_A)) {
+                    allUsersID.put(user_A, allUsersID.get(user_A) + 10);
+                }
+                else {
+                    allUsersID.put(user_A, 10);
+                }
+                continue;
+            }
+
+            if (!allUsersID.containsKey(user_A)) {
+                allUsersID.put(user_A, 0);
+            }
+
+            if (!allUsersID.containsKey(user_B)) {
+                allUsersID.put(user_B, 0);
+            }
+        }
+    }
+
+    private static boolean isUsersFriend (String userID) {
+        boolean isFriend = false;
+        if (userFriends.contains(userID)) {
+            isFriend = true;
+        }
+        return isFriend;
+    }
+
+    private static void registerNewUserInVisitorsList (List<String> visitors) {
+
+    }
 }
