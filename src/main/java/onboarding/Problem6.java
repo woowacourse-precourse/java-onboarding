@@ -96,4 +96,13 @@ public class Problem6 {
     private static String nicknamePickTwoLetter(String nickname,int nicknameIndex){
         return nickname.substring(nicknameIndex,nicknameIndex+2);
     }
+
+    /**
+     * 특정 닉네임에서 'nicknamePickTwoLetter'에서 뽑은 2자를 포함하고 있는지 여부 확인하고 반환 list에 담음
+     */
+    private static List<String> checkDuplicated(List<String> duplicateList,String pickedLetter, List<String> crew){
+        if (crew.get(1).contains(pickedLetter))
+            duplicateList.add(crew.get(0));
+        return duplicateList;
+    }
 }
