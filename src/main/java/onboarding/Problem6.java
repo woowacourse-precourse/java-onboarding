@@ -1,7 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * 기능 사항
@@ -26,6 +25,25 @@ public class Problem6 {
         return nameList;
     }
 
+    /**
+     * 2. 배열에서 중복된 문자만 저장해 리턴하는 함수
+     */
+    public static List<String> overlapCheck(List<String> n){
+        Set<String> overlapCheck = new HashSet<>();
+        List<String> overlapList = new ArrayList<>();
+        for (String Nick : n){
+            if(n.indexOf(Nick) != n.lastIndexOf(Nick)){
+                overlapCheck.add(Nick);
+            }
+        }
+
+        Iterator<String> hashList = overlapCheck.iterator();
+        while (hashList.hasNext()){
+            overlapList.add(hashList.next());
+        }
+
+        return overlapList;
+    }
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
