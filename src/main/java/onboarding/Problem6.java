@@ -43,6 +43,10 @@ public class Problem6 {
             i = 0;
         }
 
+        // 중복 제거
+        Set<String> emailSet = new HashSet<>(answer);
+        answer = new ArrayList<>(emailSet);
+
         return answer;
     }
 }
