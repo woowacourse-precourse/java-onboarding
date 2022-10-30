@@ -17,7 +17,12 @@ public class Problem4 {
 
         for (int i = 0; i < word.length(); i++) {
             if(word.charAt(i) == ' ') answer += " ";
-            else answer += dict.get(word.charAt(i));
+            else if(dict.containsValue(word.charAt(i))){
+                answer += dict.get(word.charAt(i));
+            }
+            else{
+                answer += word.charAt(i);
+            }
         }
 
         return answer;
