@@ -2,6 +2,11 @@ package onboarding;
 
 public class Problem4 {
 
+    private static boolean isSmallAlpha(char c)
+    {
+        return 'a' <= c && c <= 'z';
+    }
+
     private static boolean checkParam(String s)
     {
         int length = s.length();
@@ -10,7 +15,7 @@ public class Problem4 {
             return true;
         return false;
     }
-    
+
     public static String solution(String word) {
         String answer = "";
         return answer;
