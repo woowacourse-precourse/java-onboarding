@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 class Problem1 {
@@ -37,10 +36,10 @@ class Problem1 {
 
 		for (Integer page : pages) {
 			List<Integer> digits = getDigit(page);
-			scores.add(getValues(digits));
+			scores.add(getValue(digits));
 		}
 
-		return Collections.max(scores);
+		return Math.max(scores.get(0), scores.get(1));
 	}
 
 	private static List<Integer> getDigit(int number) {
@@ -54,7 +53,7 @@ class Problem1 {
 		return arrNum;
 	}
 
-	private static int getValues(List<Integer> values) {
+	private static int getValue(List<Integer> values) {
 		int valueSum = 0;
 		int valueMultiple = 1;
 
