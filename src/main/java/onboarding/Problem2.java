@@ -3,6 +3,8 @@ package onboarding;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
+
+        answer = deDuplicateCryptogram(cryptogram);
         return answer;
     }
 
@@ -43,5 +45,7 @@ public class Problem2 {
 
             else i++;
         }
+
+        return deDuplicated;
     }
 }
