@@ -34,4 +34,28 @@ public class Problem6 {
             isdup_list.add(false);
         }
     }
+
+    void checkDuplicateList(List<List<String>> forms) {
+        List<List<String>> bigrams_list = makeBigramsList(forms);
+        setIsdupList(forms);
+        for (int idx=0; idx<bigrams_list.size(); idx++) {
+            if (isdup_list.get(idx)) {
+                continue;
+            }
+            // System.out.println(idx);
+            List<String> bigrams = bigrams_list.get(idx);
+            for (int inner=0; inner<bigrams.size(); inner++) {
+                String bigram = bigrams.get(inner);
+                // System.out.println(bigram);
+                for (int next=idx+1; next<bigrams_list.size(); next++) {
+                    // System.out.println(bigrams_list.get(next));
+                    if (bigrams_list.get(next).contains(bigram)) {
+                        isdup_list.set(idx, true);
+                        isdup_list.set(next, true);
+                        // System.out.println(isdup_list);
+                    }
+                }
+            }
+        }
+    }
 }
