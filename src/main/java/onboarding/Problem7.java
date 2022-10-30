@@ -1,18 +1,17 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Problem7 {
-    private static final HashMap<String, Integer> friendsScore = new HashMap<>();
+    private static HashMap<String, Integer> friendsScore = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer;
         List<String> userFriends;
+
+        initFriendsScore();
 
         userFriends = getUserFriends(user, friends);
 
@@ -22,7 +21,14 @@ public class Problem7 {
         scoringVisitor(userFriends, visitors);
         System.out.println(friendsScore);
 
+        answer = sortByScore();
+        System.out.println(answer);
+
         return answer;
+    }
+
+    private static void initFriendsScore() {
+        friendsScore = new HashMap<>();
     }
 
     private static List<String> getUserFriends(String user, List<List<String>> friends) {
@@ -56,6 +62,7 @@ public class Problem7 {
             if (isNotFriend(user, friend)) {
                 String friendId = getFriendName(userFriends, friend);
                 String addId = getUserToAdd(friendId, friend);
+                System.out.println(addId);
 
                 if (!addId.isEmpty() && isNotFriend(addId, userFriends)) {
                     int score = 10;
@@ -67,6 +74,7 @@ public class Problem7 {
                     friendsScore.put(addId, score);
                 }
             }
+            System.out.println(friendsScore);
         }
     }
 
@@ -100,4 +108,19 @@ public class Problem7 {
         return result.get(0);
     }
 
+    private static List<String> sortByScore() {
+        List<String> keySet = new ArrayList<>(friendsScore.keySet());
+        List<String> topFiveUser = new ArrayList<>();
+
+        keySet.sort((o1, o2) -> friendsScore.get(o2).compareTo(friendsScore.get(o1)));
+
+        for (String key : keySet) {
+            System.out.print("Key : " + key);
+            System.out.println(", Val : " + friendsScore.get(key));
+            topFiveUser.add(key);
+            System.out.println("topFiveUser : " + topFiveUser);
+        }
+
+        return topFiveUser;
+    }
 }
