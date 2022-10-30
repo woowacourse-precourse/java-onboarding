@@ -5,6 +5,10 @@ import java.util.List;
 class Problem1 {
     static final int FIRST_PAGE = 1;
     static final int LAST_PAGE = 400;
+    static final int WIN_PLAYER1 = 1;
+    static final int WIN_PLAYER2 = 2;
+    static final int DRAW = 0;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (!validateNum(pobi) || !validateNum(crong)) {
             return -1;
@@ -22,12 +26,12 @@ class Problem1 {
 
     static int gameResult(int player1Score, int player2Score) {
         if (player1Score > player2Score) {
-            return 1;
+            return WIN_PLAYER1;
+        } else if (player1Score < player2Score) {
+            return WIN_PLAYER2;
         }
-        if (player1Score < player2Score) {
-            return 2;
-        }
-        return 0;
+
+        return DRAW;
     }
 
     static int getScore(List<Integer> player) {
