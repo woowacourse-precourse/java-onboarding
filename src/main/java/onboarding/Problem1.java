@@ -69,7 +69,24 @@ class Game{
             return -1;
         }
     }
-    
+
+    private void pageException(List<Integer> playerPage) {// 입력받은 왼쪽, 오른쪽페이지의 번호가 적절한지 검증
+        int left, right;
+        left = playerPage.get(0);
+        right = playerPage.get(1);
+        if ((right - left) != 1) { // 오른족 페이지가 왼쪽페이지보다 1큰 경우가 아니면 예외
+            throw new onboarding.PageException();
+        }
+        if (left % 2 == 0) {// 왼쪽페이지가 짝수인 경우
+            throw new onboarding.PageException();
+        }
+        if (right % 2 != 0) {// 오른쪽페이지가 홀수인 경우
+            throw new onboarding.PageException();
+        }
+        if (!(1 < left && left < right && right < 400)) {//페이지가 2~399사이가 아닌경우 (시작,마지막 면은 펼치지 않기 때문에 2~399)
+            throw new onboarding.PageException();
+        }
+    }
 }
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
