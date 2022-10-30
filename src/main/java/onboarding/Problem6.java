@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 public class Problem6 {
@@ -30,6 +31,9 @@ public class Problem6 {
 			}
 		}
 
+		Set<String> sortedEmails = getSortedSet(organizedEmails);
+		System.out.println(sortedEmails);
+
 		List<String> answer = List.of("answer");
 		return answer;
 	}
@@ -39,5 +43,9 @@ public class Problem6 {
 			.filter(entry -> entry.getValue().contains(checkingWords))
 			.map(Map.Entry::getKey)
 			.collect(Collectors.toSet());
+	}
+
+	private static TreeSet<String> getSortedSet(HashSet<String> dispersedSet) {
+		return new TreeSet<>(dispersedSet);
 	}
 }
