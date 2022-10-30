@@ -5,6 +5,15 @@ import java.util.Stack;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
+
+        String decipherdCryptogram = decipher(cryptogram);
+        while (!cryptogram.equals(decipherdCryptogram)) {
+            cryptogram = decipherdCryptogram;
+            decipherdCryptogram = decipher(decipherdCryptogram);
+        }
+
+        answer = decipherdCryptogram;
+
         return answer;
     }
 
@@ -14,7 +23,7 @@ public class Problem2 {
 
         String[] cryptogramArray = cryptogram.split("");
 
-        for(int i = 0; i < cryptogramArray.length; i++) {
+        for(int i = cryptogramArray.length - 1; i > -1; i--) {
             originCryptogramStack.push(cryptogramArray[i]);
         }
 
@@ -24,7 +33,7 @@ public class Problem2 {
 
         String before = originCryptogramStack.pop();
         int count = 0;
-        while (originCryptogramStack.empty()) {
+        while (!originCryptogramStack.empty()) {
             String current = originCryptogramStack.pop();
             if(before.equals(current)) {
                 count += 1;
