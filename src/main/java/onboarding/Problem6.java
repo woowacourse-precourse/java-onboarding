@@ -52,4 +52,25 @@ class EmailArrayListValuePerSplitedNickNameKeyMap {
 
         return arrayList;
     }
+
+    public ArrayList<String> getEmailArrayListBySizeOverOne() {
+        return getValueListByOverSizeOne();
+    }
+
+    private ArrayList<String> getValueListByOverSizeOne() {
+        ArrayList arrayList = new ArrayList<>();
+
+        for (ArrayList<String> valueList :
+                map.values()) {
+            if (valueList.size() > 1) {
+                for (String value :
+                        valueList) {
+                    if (!arrayList.contains(value)) {
+                        arrayList.add(value);
+                    }
+                }
+            }
+        }
+        return arrayList;
+    }
 }
