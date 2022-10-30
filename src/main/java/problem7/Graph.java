@@ -1,18 +1,16 @@
 package problem7;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Graph {
     private List<List<String>> friendsInfo;
 
-    private List<String> visitors;
+    private Map<String, List<String>> adjacentList = new HashMap<>();
 
-    private Map<String, List<String>> adjacentList;
-
-    public Graph(List<List<String>> friendsInfo, List<String> visitors) {
-        this.visitors = visitors;
+    public Graph(List<List<String>> friendsInfo성) {
         this.friendsInfo = friendsInfo;
 
         construct();
@@ -25,11 +23,6 @@ public class Graph {
 
             addFriend(friend1, friend2);
             addFriend(friend2, friend1);
-        }
-
-        for (String visitor : visitors) {
-            if(!adjacentList.containsKey(visitor))
-                adjacentList.put(visitor, null);
         }
     }
 

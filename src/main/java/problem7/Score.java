@@ -16,12 +16,13 @@ public class Score {
 
         @Override
         public int compareTo(FriendScore o) {
-            return score - o.score != 0 ? score - o.score : name.compareTo(o.name);
+            return score - o.score != 0 ? -(score - o.score) : name.compareTo(o.name);
         }
     }
 
     private List<FriendScore> scoreList = new ArrayList<>();
     private Map<String, Integer> scoreMap = new HashMap<>();
+    private Set<String> friendSet = new HashSet<>();
 
 
     public List<String> getTopFive() {
@@ -50,20 +51,23 @@ public class Score {
 
     private void addVisitScore(List<String> visitors) {
         for (String visitor : visitors) {
-            addScore(visitor, 1);
+            if(!friendSet.contains(visitor))
+                addScore(visitor, 1);
         }
     }
 
     private void addRelativeScore(String user, Map<String, List<String>> adjacentList) {
         for (String userFriend : adjacentList.get(user)) {
+            friendSet.add(userFriend);
             for (String userFriendFriend : adjacentList.get(userFriend)) {
+                if(userFriendFriend == user) continue;
                 addScore(userFriendFriend, 10);
             }
         }
     }
 
     private void addScore(String userFriendFriend, int point) {
-        if (scoreMap.containsKey(userFriendFriend)) scoreMap.put(userFriendFriend, scoreMap.get(userFriendFriend) + 10);
+        if (scoreMap.containsKey(userFriendFriend)) scoreMap.put(userFriendFriend, scoreMap.get(userFriendFriend) + point);
         else scoreMap.put(userFriendFriend, point);
     }
 }
