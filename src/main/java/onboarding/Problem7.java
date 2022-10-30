@@ -6,8 +6,7 @@ import java.util.stream.Collectors;
 public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        User userObject = new User();
-        userObject.setName(user);
+        User userObject = new User(user);
 
         userObject.setFriends(friends.stream()
                 .filter(s -> s.contains(userObject.getName()))
@@ -57,7 +56,8 @@ public class Problem7 {
         private List<String> friends;
         private Map<String, Integer> friendRecommendScore = new HashMap<>();
 
-        public User() {
+        public User(String name) {
+            this.name = name;
         }
 
         public String getName() {
