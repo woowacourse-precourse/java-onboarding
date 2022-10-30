@@ -19,11 +19,13 @@ public class Problem6 {
         }
     }
 
-    public static void addEmail(Set<Integer> set, List<Integer> wordIdx, List<String> answer, List<List<String>> forms) {
+    public static void addEmail(Set<Integer> set, List<Integer> wordIdx, Set<String> emailSet, List<List<String>> forms) {
+        String emailTmp;
         for (int idx : wordIdx) {
-            if (!set.contains(idx)) {
+            emailTmp = forms.get(idx).get(0);
+            if (!set.contains(idx) && emailTmp.contains("email.com")) {
                 set.add(idx);
-                answer.add(forms.get(idx).get(0));
+                emailSet.add(forms.get(idx).get(0));
             }
         }
     }
@@ -33,6 +35,7 @@ public class Problem6 {
         // 0 <= 닉네임에서 도출될 수 있는 단어 조합 <= 19
         List<String> answer = new ArrayList<>();
         Set<Integer> set = new HashSet<>();
+        Set<String> emailSet = new HashSet<>();
         HashMap<String, List<Integer>> word = new HashMap<>();
         StringBuilder name = new StringBuilder();
 
@@ -56,10 +59,11 @@ public class Problem6 {
             if (word.get(key).size() == 1) {
                 continue;
             }
-            addEmail(set, word.get(key), answer, forms);
+            addEmail(set, word.get(key), emailSet, forms);
         }
 
         // answer 정렬
+        answer = new ArrayList<>(emailSet);
         answer.sort(Comparator.naturalOrder());
 
         return answer;
