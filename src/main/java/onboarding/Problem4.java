@@ -56,9 +56,42 @@ class CalculateASCII{
     }
 }
 
+class ReverseWord{
+    JudgeAlphabet judgeAlphabet = new JudgeAlphabet();
+    CalculateASCII calculateASCII = new CalculateASCII();
+
+    public String getReverse(String word) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for(int i=0;i<word.length();i++){
+            if(!judgeAlphabet.isAlpha(word.charAt(i))){
+                stringBuilder.append(word.charAt(i));
+            } else{
+                int ascii = calculateASCII.getASCII(word.charAt(i));
+                if(Character.isUpperCase(word.charAt(i))){
+                    boolean isCloselyUpperA = calculateASCII.isCloselyUpperA(ascii);
+                    if(isCloselyUpperA){
+                        stringBuilder.append(calculateASCII.getReverseWordUpperCase(isCloselyUpperA, word.charAt(i)));
+                    } else{
+                        stringBuilder.append(calculateASCII.getReverseWordUpperCase(!isCloselyUpperA, word.charAt(i)));
+                    }
+                } else{
+                    boolean isCloselyLowerA = calculateASCII.isCloselyLowerA(ascii);
+                    if(isCloselyLowerA){
+                        stringBuilder.append(calculateASCII.getReverseWordLowerCase(isCloselyLowerA, word.charAt(i)));
+                    } else{
+                        stringBuilder.append(calculateASCII.getReverseWordLowerCase(!isCloselyLowerA, word.charAt(i)));
+                    }
+                }
+            }
+        }
+        return stringBuilder.toString();
+    }
+}
+
 public class Problem4 {
+
+    private final static ReverseWord reverseWord = new ReverseWord();
     public static String solution(String word) {
-        String answer = " ";
-        return answer;
+        return reverseWord.getReverse(word);
     }
 }
