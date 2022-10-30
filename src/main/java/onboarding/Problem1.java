@@ -20,6 +20,16 @@ class Problem1 {
         return answer;
     }
 
+    private static int getMaxScore(List<Integer> book) {
+        Integer leftPage = book.get(LEFT_PAGE_INDEX);
+        int leftPageMaxValue = Math.max(sumOfEachDigit(leftPage), mulOfEachDigit(leftPage));
+
+        Integer rightPage = book.get(RIGHT_PAGE_INDEX);
+        int rightPageMaxValue = Math.max(sumOfEachDigit(rightPage), mulOfEachDigit(rightPage));
+
+        return Math.max(leftPageMaxValue, rightPageMaxValue);
+    }
+
     private static int sumOfEachDigit(Integer number){
         int sum = 0;
 
