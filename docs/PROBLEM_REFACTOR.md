@@ -30,3 +30,7 @@
 
 - 3, 6, 9를 상수니까 private static final로 선언하기!
 
+### 4번 refactor 요소
+
+- 알파벳 하드코딩 삭제(상수니까)
+
