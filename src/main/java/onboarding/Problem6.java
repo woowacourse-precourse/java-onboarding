@@ -47,6 +47,9 @@ public class Problem6 {
         Set<String> emailSet = new HashSet<>(answer);
         answer = new ArrayList<>(emailSet);
 
+        // 오름차순 정렬
+        Collections.sort(answer);
+
         return answer;
     }
 }
