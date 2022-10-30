@@ -20,18 +20,25 @@ public class Problem7 {
         // TODO 내부 로직을 중복해 사용해서 오히려 헷갈림. 메소드 구조 고민한 후 refactoring.
         setVisitorScore(visitors);
         setFriendScore(user, friends);
+        // 이미 친구인 사람 목록에서 빼기 로직 추가
+        List<String> user_friends_list = user_friends.get(user);
+        for (String friend : user_friends_list) {
+            user_score.remove(friend);
+        }
         List<Map.Entry<String, Integer>> entryList = new LinkedList<>(user_score.entrySet());
         entryList.sort(Map.Entry.comparingByKey());
         entryList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
-        for(int i=0; i<5; i++) {
+        int i = 0;
+        // looping이 entryList 범위를 넘어가는 경우 제한
+        while (i < 5 & i < entryList.size()) {
             int score = entryList.get(i).getValue();
             if (score <= 0) {
-                continue;
+                break;
             }
             result.add(entryList.get(i).getKey());
+            i += 1;
         }
-        // TODO 이미 친구인 사람 목록에서 빼기 로직 추가
-        return result.subList(0,3);
+        return result;
     }
 
 
