@@ -54,4 +54,16 @@ public class Problem7 {
             recommendScore.remove(existingFriend);
         }
     }
+
+    private static List<String> sortByValue(Map<String, Integer> map) {
+        List<String> sortedEmails = map.entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
+
+        if (sortedEmails.size() > 5)
+            sortedEmails = sortedEmails.subList(0, 5);
+        return sortedEmails;
+    }
 }
