@@ -181,16 +181,4 @@ public class Problem6 {
         }
         return false;
     }
-
-    public static void main(String[] args) {
-//        List<List<String>> forms = List.of(List.of("jm@email.com", "제이엠"), List.of("jason@email.com", "제이슨"),
-//                List.of("woniee@email.com", "워니"), List.of("mj@email.com", "엠제이"), List.of("nowm@email.com", "이제엠"));
-//
-//        List result = Problem6.solution(forms);
-//        System.out.println(forms.toString());
-        int a = 'ㄱ';
-        int b = 'ㅎ';
-        System.out.println("a = " + a);
-        System.out.println("b = " + b);
-    }
 }
