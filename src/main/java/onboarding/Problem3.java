@@ -17,6 +17,18 @@ public class Problem3 {
         return count;
     }
 
+    /**
+     * 2.각 자릿수를 확인하기 위한 함수
+     */
+    public static int numberSplit(int number){
+        int sum = 0;
+        while (number>0){
+            sum += clap(number%10);
+            number = number/10;
+        }
+        return sum;
+    }
+    
     public static int solution(int number) {
         int answer = 0;
         return answer;
