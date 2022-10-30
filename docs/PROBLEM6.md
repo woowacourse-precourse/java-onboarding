@@ -21,3 +21,12 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+## ✈ 기능 설계
+
+### 기능 목록
+- 닉네임에 같은 글자가 연속적으로 포함되는 부분 문자열으로 Member를 grouping 하는 기능
+- 닉네임에 같은 글자가 연속적으로 포함되는 Member의 이메일 목록을 반환하는 기능
+
+### 도메인 모델링
+![image](https://user-images.githubusercontent.com/68049320/198903595-f49b0fb4-8cd5-46da-9442-d9303f8b8521.png)
