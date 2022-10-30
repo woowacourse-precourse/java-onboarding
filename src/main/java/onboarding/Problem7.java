@@ -4,8 +4,9 @@ import java.util.*;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
-
-        
+        List<String> friendsList = commendList(user,friends,visitors);
+        Map<String,Integer> friendsAndScoreMap = createFriendsAndScoreMap(user, friends, visitors);
+        answer = sortMapToList(friendsAndScoreMap);
         return answer;
     }
     public static List<String> commendList(String user, List<List<String>> friends, List<String> visitors){
@@ -38,7 +39,7 @@ public class Problem7 {
         return totalList;
     }
     // 추천친구 목록, 점수 Map 생성 메서드
-    public Map<String,Integer> friendsAndScore(String user, List<List<String>> friends, List<String> visitors){
+    public static Map<String,Integer> createFriendsAndScoreMap(String user, List<List<String>> friends, List<String> visitors){
         List<String> totalList = commendList(user,friends,visitors);        // 친구추천 리스트
         Map<String,Integer> scoreMap = new HashMap<>();  // 추천친구 목록, 점수 MAP
 
@@ -61,5 +62,27 @@ public class Problem7 {
         }
         return scoreMap;
 
+    }
+    public static List<String> sortMapToList(Map<String,Integer> scoreMap){
+        // Map.Entry 리스트 작성
+        List<Map.Entry<String, Integer>> list_entries = new ArrayList<Map.Entry<String, Integer>>(scoreMap.entrySet());
+
+        // 비교함수 Comparator를 사용하여 오름차순으로 정렬
+        Collections.sort(list_entries, new Comparator<Map.Entry<String, Integer>>() {
+            // compare로 값을 비교
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                // 오름 차순 정렬
+                return o2.getValue().compareTo(o1.getValue());
+            }
+        });
+        List<String> answer = new ArrayList<>();
+        // 결과 출력 최대 5개, 0이면 출력 x
+        for(int i=0; i< list_entries.size() && i< 5; i++){
+            if(list_entries.get(i).getValue()!=0){
+                answer.add(list_entries.get(i).getKey());
+            }
+        }
+        return answer;
     }
 }
