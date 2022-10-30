@@ -23,9 +23,13 @@ public class Cryptogram {
     private void decryptOneCycle(int overlapStartIndex) {
         while (isOverlapCharacterExist(overlapStartIndex)) {
             final int overlapEndIndex = IndexCalculator.overlapEndIndex(overlapStartIndex, split());
-            cryptogram = cryptogram.substring(0, overlapStartIndex) + cryptogram.substring(overlapEndIndex);
+            removeDuplicateCharacters(overlapStartIndex, overlapEndIndex);
             overlapStartIndex = IndexCalculator.overlapStartIndex(overlapStartIndex, split());
         }
+    }
+    
+    private void removeDuplicateCharacters(final int overlapStartIndex, final int overlapEndIndex) {
+        cryptogram = cryptogram.substring(0, overlapStartIndex) + cryptogram.substring(overlapEndIndex);
     }
     
     private static boolean isOverlapCharacterExist(final int overlapEndIndex) {
