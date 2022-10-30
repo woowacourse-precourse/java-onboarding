@@ -6,8 +6,33 @@ import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer =duplicateNickName(forms);
+        List<String> answer = List.of("answer");
+        if(checkLimit(forms)) answer=duplicateNickName(forms);
         return answer;
+    }
+
+    /*
+    문제 조건 사항 체크
+     */
+    private static boolean checkLimit(List<List<String>> forms){
+        boolean check=true;
+        //크루 1명부터 10000까지
+        if(!(forms.size()>=1&&forms.size()<=10000)) check=false;
+        for(List<String> s: forms){
+            String email=s.get(0);
+            //이메일 길이 11부터 20까지
+            if(!(email.length()>=11&&email.length()<=20)) check= false;
+
+            //도메인은 email.com
+            int idx=email.indexOf("@");
+            String domain=email.substring(idx+1);
+            if(!(domain.contains("email.com"))) check= false;
+
+            //닉네임은 한글 그리고 길이 1부터 20미만
+            String nickName=s.get(1);
+            if(!(nickName.matches("^[가-힣]*$")&&nickName.length()>=1&&nickName.length()<20)) check= false;
+        }
+        return check;
     }
 
     /*
