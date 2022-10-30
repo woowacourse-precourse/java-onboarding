@@ -25,8 +25,8 @@ public class Problem6 {
             for (int j = 0; j < targetName.length() - 1; j++) {
                 String key = targetName.substring(j, j+2);
                 if(nickNameMap.containsKey(key)){
-                    String email = nickNameMap.get(key);
-                    emails.add(email);
+                    String duplicateEmail = nickNameMap.get(key);
+                    emails.add(duplicateEmail);
                     emails.add(targetEmail);
                 }
                 nickNameMap.put(key, targetEmail);
@@ -35,11 +35,13 @@ public class Problem6 {
         List<String> result = sortEmail(emails);
         return result;
     }
-    
+
     private static List<String> sortEmail(HashSet<String> emails){
         List<String> result = emails.stream()
                 .sorted()
                 .collect(Collectors.toList());
         return result;
     }
+
+
 }
