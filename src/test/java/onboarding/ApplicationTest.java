@@ -456,7 +456,9 @@ class ApplicationTest {
                     List.of("shakevan", "jun"),
                     List.of("shakevan", "mrko"),
                     List.of("shakevan", "zzzzz"),
-                    List.of("shakevan", "aaaaa")
+                    List.of("shakevan", "aaaaa"),
+                    List.of("donut", "zzzzz"),
+                    List.of("donut", "aaaaa")
             );
             List<String> visitors = List.of();
             List<String> result = List.of("aaaaa", "andole", "jun", "zzzzz");
@@ -478,7 +480,10 @@ class ApplicationTest {
                     List.of("shakevan", "aaaaa"),
                     List.of("shakevan", "yyyyy"),
                     List.of("shakevan", "xxxxx"),
-                    List.of("shakevan", "zzzzz")
+                    List.of("donut", "zzzzz"),
+                    List.of("donut", "aaaaa"),
+                    List.of("donut", "yyyyy"),
+                    List.of("donut", "xxxxx")
                     );
             List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
             List<String> result = List.of("aaaaa", "andole", "jun", "xxxxx", "yyyyy"); //zzzzz와 bedi는 나오지 않는다

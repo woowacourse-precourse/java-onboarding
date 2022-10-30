@@ -1,5 +1,6 @@
 package onboarding;
 
+import onboarding.problem7.RecommendationAlgorithm;
 import onboarding.problem7.User;
 import onboarding.problem7.UserRelation;
 import onboarding.problem7.UserStore;
@@ -17,8 +18,10 @@ public class Problem7 {
         if(visitors.size() > 10_000) {
             throw new Exception("visitors의 길이는 0이상 10_000 이하여야 합니다");
         }
-//        List<User> usersRecommended = new UserScore(target.getName(), visitors);
-
-        return answer;
+        for(String visitor : visitors) {
+            UserStore.add(new User(visitor));
+        }
+        List<String> usersRecommended = RecommendationAlgorithm.recommend(target.getName(), visitors);
+        return usersRecommended;
     }
 }

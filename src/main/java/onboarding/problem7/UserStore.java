@@ -1,7 +1,9 @@
 package onboarding.problem7;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class UserStore {
     private static Map<String, User> userStore = new HashMap<>();
@@ -10,5 +12,13 @@ public class UserStore {
         if (!userStore.containsKey(user.getName())) {
             userStore.put(user.getName(), user);
         }
+    }
+
+    public static List<String> findAll() {
+        return userStore.keySet().stream().collect(Collectors.toList());
+    }
+
+    public static User get(String userName) {
+        return userStore.get(userName);
     }
 }

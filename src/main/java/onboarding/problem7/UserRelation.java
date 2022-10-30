@@ -1,6 +1,7 @@
 package onboarding.problem7;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class UserRelation {
     private static Map<String, Set<String>> userRelation = new HashMap<>();
@@ -30,5 +31,13 @@ public class UserRelation {
             userRelation.get(relation.get(1)).add(relation.get(0));
         }
 
+    }
+
+    public static List<String> getFriends(String username) {
+        return userRelation.get(username).stream().collect(Collectors.toList());
+    }
+
+    public static boolean hasRelation(String targetName, String compareName) {
+        return userRelation.get(targetName).contains(compareName);
     }
 }

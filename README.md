@@ -149,9 +149,9 @@ BUILD SUCCESSFUL in 0s
 - [x] id 길이를 검증한다
 - [x] id가 소문자로만 이뤄졌는지 검증한다
 - [x] friends 숫자를 검증한다
-- [ ] visitor 숫자를 검증한다
+- [x] visitor 숫자를 검증한다
 - [x] friends의 각 원소는 2개의 string으로 구성되어야 한다
-- [ ] UserStore를 만든다
-- [ ] friends를 받아 UserStore에 데이터를 추가, UserRelation을 초기화한다
-- [ ] visitors를 받아 UserStore에 데이터를 추가한다
-- [ ] 사용자 이름을 Input으로 추천 사용자들을 반환받는다
+- [x] UserStore를 만든다
+- [x] friends를 받아 UserStore에 데이터를 추가, UserRelation을 초기화한다
+- [x] visitors를 받아 UserStore에 데이터를 추가한다
+- [x] 사용자 이름을 Input으로 추천 사용자들을 반환받는다
