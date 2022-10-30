@@ -3,6 +3,8 @@ package onboarding;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
+
 /*
     기능 목록
     1. 모든 닉네임에 대해 연속적인 두 글자 조합을 찾는다.
@@ -21,6 +23,8 @@ public class Problem6 {
             search(forms.get(i).get(1).toCharArray());
         }
 
+        // Step 2. 중복 제거와 정렬 -> nick 에 key와 forms의 닉네임을 비교
+        answer = distinctAndSort(forms);
         return answer;
     }
 
@@ -38,5 +42,22 @@ public class Problem6 {
                 nick.put(joinName.toString(), nick.get(joinName.toString())+1);
             }
         }
+    }
+
+    // 중복 제거와 정렬을 진행하고 반환
+    public static List<String> distinctAndSort(List<List<String>> forms){
+        List<String> tmp = new LinkedList<>();
+        for(int i = 0; i < forms.size(); i++){
+            for(String key : nick.keySet()){
+                if(nick.get(key)>1) {
+                    if (forms.get(i).get(1).contains(key)) {
+                        // 이메일 저장
+                        tmp.add(forms.get(i).get(0));
+                    }
+                }
+            }
+        }
+        // 중복제거 및 정렬 -> Stream()을 List로 반환
+        return tmp.stream().distinct().sorted().collect(Collectors.toList());
     }
 }
