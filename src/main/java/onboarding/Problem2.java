@@ -10,6 +10,7 @@ public class Problem2 {
         List<String> list = Arrays.asList(answer.split(""));
 
         list = checkStr(list);
+        answer = listToString(list);
 
         return answer;
     }
@@ -28,5 +29,11 @@ public class Problem2 {
                 break;
         }
         return list;
+    }
+    //List를 String으로 변환
+    public static String listToString(List<String> list){
+        String str = list.toString().replaceAll("[^a-z]", "");
+
+        return str;
     }
 }
