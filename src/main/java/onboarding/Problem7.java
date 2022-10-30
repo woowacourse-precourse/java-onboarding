@@ -78,6 +78,18 @@ public class Problem7 {
                 }
             }
         }
+
+        for (String friend : scoreMap.keySet()) {
+            if (!reverseScoreMap.containsKey(scoreMap.get(friend))) {
+                List<String> friendList = new ArrayList<>();
+                friendList.add(friend);
+                reverseScoreMap.put(scoreMap.get(friend), friendList);
+            } else if (reverseScoreMap.containsKey(scoreMap.get(friend))) {
+                List<String> friendList = reverseScoreMap.get(scoreMap.get(friend));
+                friendList.add(friend);
+                reverseScoreMap.put(scoreMap.get(friend), friendList);
+            }
+        }
         return answer;
     }
 
