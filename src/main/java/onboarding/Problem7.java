@@ -7,9 +7,9 @@ class RecommendedFriend implements Comparable<RecommendedFriend> {
     private String name;
     private int score;
 
-    public RecommendedFriend(String name) {
+    public RecommendedFriend(String name, int score) {
         this.name = name;
-        this.score = 0;
+        this.score = score;
     }
 
     public String getName() {
@@ -41,7 +41,9 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, List<String>> friendList = createFriendList(friends);
         Map<String, Integer> recommendedFriendList = createRecommendedFriendList(user, friendList);
-        return null;
+        recommendedFriendList = visitorScore(friendList.get(user), recommendedFriendList, visitors);
+        List<String> result = findTop5Name(recommendedFriendList);
+        return result;
     }
 
     private static Map<String, List<String>> createFriendList(List<List<String>> friends) {
@@ -84,5 +86,25 @@ public class Problem7 {
             }
         }
         return recommendedFriendList;
+    }
+
+    private static List<String> findTop5Name(Map<String, Integer> recommendedFriendList) {
+        List<RecommendedFriend> content = new ArrayList<>();
+        for (String name : recommendedFriendList.keySet()) {
+            Integer score = recommendedFriendList.get(name);
+            RecommendedFriend recommendedFriend = new RecommendedFriend(name, score);
+            content.add(recommendedFriend);
+        }
+
+        content.sort(Collections.reverseOrder());
+
+        List<String> result = new ArrayList<>();
+        for (RecommendedFriend recommendedFriend : content) {
+            result.add(recommendedFriend.getName());
+            if (result.size() == 5) {
+                break;
+            }
+        }
+        return result;
     }
 }
