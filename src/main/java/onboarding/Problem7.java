@@ -44,11 +44,11 @@ public class Problem7 {
         }
 
         public void addFriendRecommendScore(List<List<String>> friends, List<String> visitors) {
-            addRelatedFriends(friends);
-            addVisitUsers(visitors);
+            addUsersRelatedMyFriends(friends);
+            addUsersVisitedMyPage(visitors);
         }
 
-        private void addRelatedFriends(List<List<String>> friends) {
+        private void addUsersRelatedMyFriends(List<List<String>> friends) {
             List<String> usersRelatedFriends = friends.stream()
                     .filter(friendPair ->
                             !friendPair.contains(this.name) &&
@@ -60,14 +60,13 @@ public class Problem7 {
             calculateScore(usersRelatedFriends, RECOMMENDED_FRIENDS_WEIGHT_RELATED_MY_FRIEND);
         }
 
-        private void addVisitUsers(List<String> visitors) {
+        private void addUsersVisitedMyPage(List<String> visitors) {
             List<String> visitorsWithoutFriend = visitors.stream()
                     .filter(friendPair -> !this.getFriends().contains(friendPair))
                     .collect(Collectors.toList());
 
             calculateScore(visitorsWithoutFriend, RECOMMENDED_FRIENDS_WEIGHT_VISIT_MY_PAGE);
         }
-
 
         private void calculateScore(List<String> recommendedFriends, int weight) {
             for (String name : recommendedFriends) {
