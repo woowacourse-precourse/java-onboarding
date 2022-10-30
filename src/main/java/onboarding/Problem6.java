@@ -25,4 +25,13 @@ public class Problem6 {
             return true;
         else return false;
     }
+
+    /**
+     * 이메일이 제한 사항을 만족하는지 확인하는 함수
+     */
+    private static boolean isEmailValid(String email){
+        if(isEmailDomain(email)&&isEmailLength(email))
+            return true;
+        else return false;
+    }
 }
