@@ -18,11 +18,11 @@ public class Problem6 {
 class Input6 {
     static Scanner scanner = new Scanner(System.in);
     static String inputEmail() {
-        return scanner.next();
+        return scanner.nextLine();
     }
 
     static String inputNickName() {
-        return scanner.next();
+        return scanner.nextLine();
     }
 
 }
@@ -59,7 +59,7 @@ class Crew {
     }
 
     static void validateNickNameForm(String nickName) {
-        String regex = "^[가-힣]*$;";
+        String regex = "[가-힣]*$";
         Pattern p = Pattern.compile(regex);
         Matcher m = p.matcher(nickName);
         if(!m.matches()) {
