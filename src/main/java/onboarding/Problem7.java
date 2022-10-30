@@ -45,13 +45,12 @@ public class Problem7 {
         return answer;
     }
 
-    static Stream<Object> flattenStream(Object[] array) {
-        return Arrays.stream(array)
-                .flatMap(o -> o instanceof Object[]? flattenStream((Object[])o): Stream.of(o));
-    }
-
-    static Object[] flattenArray(Object[] array) {
-        return flattenStream(array).toArray();
+    static List<String> flatten2DimStringList(List<List<String>> string2DimList) {
+        List<String> flattenList = string2DimList.stream().reduce(new ArrayList<>(), (x, y) -> {
+            x.addAll(y);
+            return x;
+        });
+        return flattenList;
     }
 
     static Object[] dropDuplicate(Object[] array) {
