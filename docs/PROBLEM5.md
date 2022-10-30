@@ -19,7 +19,18 @@
 
 ## 구현 기능 목록
 
-- (1) 돈 계산 기능
+- (1) 화폐 단위 생성 기능
+  
+  ```java
+  public static int[] getMonetaryUnit()
+  ```
+  
   - 50,000원, 10,000원, 5,000원, 1,000원, 500원, 100원, 50원, 10원, 1원
+  - 금액이 큰 순서대로 나열
 - (2) 돈 출금 기능
-  - (1) 기능을 이용해 금액별 화폐 돈을 출금
+
+  ```java
+  public static List<Integer> withdrawMoney(int money)
+  ```
+
+  - (1) 기능을 이용해 얻은 단위별 돈을 출금
