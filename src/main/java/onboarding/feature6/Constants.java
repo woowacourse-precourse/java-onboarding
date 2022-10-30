@@ -5,4 +5,5 @@ public class Constants {
 
     public static final int EMAIL_INDEX = 0;
     public static final int NICKNAME_INDEX = 1;
+    public static final int INCREMENT = 2;
 }

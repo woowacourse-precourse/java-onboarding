@@ -1,29 +1,31 @@
 package onboarding.feature6;
 
-import java.util.*;
+import static onboarding.feature6.Constants.*;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class DuplicateCharactersFinder {
-    private String duplicateLetters = "";
-    private String currentNickname;
+    private String duplicateLetters = null;
     private String currentEmail;
-    private String nextNickname;
     private String nextEmail;
     
-    private int increment = 2;
-    private int initialNicknamesSize;
-
-    private List<String> initialEmails;
-    private List<String> initialNicknames;
-    private Map<String, Set<String>> result = new HashMap<>();
+    private List<String> userEmails;
+    private List<String> userNicknames;
+    private Map<String, Set<String>> filteredResults = new HashMap<>(); // {key: duplicate letters & value: filtered emails}
 
     public DuplicateCharactersFinder(UserInfo userInfo) {
-        initialEmails = userInfo.getEmails();
-        initialNicknames = userInfo.getNicknames();
-        initialNicknamesSize = initialNicknames.size();
+        userEmails = userInfo.getEmails();
+        userNicknames = userInfo.getNicknames();
     }
 
-    public List<String> getFilteredEmails (Map<String, Set<String>> result) {
-        List<String> setToList = new ArrayList<>(result.get(duplicateLetters));
+    public List<String> getFilteredEmails(Map<String, Set<String>> filteredResults) {
+        List<String> setToList = new ArrayList<>(filteredResults.get(duplicateLetters));
         List<String> idsSorted = new ArrayList<>();
         List<String> emailsSorted = new ArrayList<>();
 
@@ -43,53 +45,50 @@ public class DuplicateCharactersFinder {
     }
 
     /*
-    * The method below🔻 could return more than two pairs of key and value
-    * if given nicknames share several cases of adjacent duplicate letters.
-    */
-    public Map<String, Set<String>> getDuplicateLetters() {
-        for (int i = 0; i < initialNicknamesSize - 1; i++) {
-            currentNickname = initialNicknames.get(i);
-            currentEmail = initialEmails.get(i);
-            for (int j = i + 1; j < initialNicknamesSize; j++) {
-                nextNickname = initialNicknames.get(j);
-                nextEmail = initialEmails.get(j);
-                System.out.println("닉네임 - " + currentNickname + " " + nextNickname + " 비교");
-                compareNicknames(currentNickname, nextNickname);
+     * The method below🔻 could return more than two pairs of key and value
+     * if given nicknames share several cases of adjacent duplicate letters.
+     */
+    public Map<String, Set<String>> findDuplicateLetters() {
+        for (int i = 0; i < userNicknames.size() - 1; i++) {
+            String currentNickname = userNicknames.get(i);
+            currentEmail = userEmails.get(i);
+            for (int k = i + 1; k < userNicknames.size(); k++) {
+                String nextNickname = userNicknames.get(k);
+                nextEmail = userEmails.get(k);
+                chooseNicknames(currentNickname, nextNickname);
             }
         }
-
-        /*
-         * Because the given test case has only one case of adjacent duplicate letters ('제이'),
-         * it returns only one pair of key and value.
-         * {제이=[jason@email.com, jm@email.com, mj@email.com]}
-         */
-        return result;
+        return filteredResults;
     }
 
-    public void compareNicknames(String CurrentNickname, String nextNickname) {
+    public void chooseNicknames(String currentNickname, String nextNickname) {
         for (int m = 0; m < currentNickname.length() - 1; m++) {
-            String lettersOfCurrentNickname = CurrentNickname.substring(m, m + increment);
+            String lettersOfCurrentNickname = currentNickname.substring(m, m + INCREMENT);
             for (int n = 0; n < nextNickname.length() - 1; n++) {
-                String lettersOfNextNickname = nextNickname.substring(n, n + increment);
-                System.out.println("글자: " + lettersOfCurrentNickname + " " + lettersOfNextNickname + " 비교");
-                if (lettersOfCurrentNickname.equals(lettersOfNextNickname)) {
-                    System.out.println("글자 같음: " + lettersOfCurrentNickname);
-                    duplicateLetters = lettersOfCurrentNickname;
-                    if (result.containsKey(duplicateLetters)) {
-                        System.out.println(duplicateLetters + " key는 이미 result에 존재하기 때문에 " + currentEmail + "과 " + nextEmail +"을 추가만 합니다.");
-                        Set<String> existingFilteredEmails = result.get(duplicateLetters);
-                        existingFilteredEmails.add(currentEmail);
-                        existingFilteredEmails.add(nextEmail);
-                        result.replace(duplicateLetters, existingFilteredEmails);
-                        continue;
-                    }
-                    Set<String> filteredEmails = new HashSet<>();
-                    filteredEmails.add(currentEmail);
-                    filteredEmails.add(nextEmail);
-                    System.out.println(duplicateLetters + "를 새로운 key로 result에 " + currentEmail + "과 " + nextEmail +"을 등록합니다.");
-                    result.put(duplicateLetters, filteredEmails);
-                }
+                String lettersOfNextNickname = nextNickname.substring(n, n + INCREMENT);
+                compareLetters(lettersOfCurrentNickname, lettersOfNextNickname);
             }
         }
+    }
+
+    public void compareLetters(String lettersOfCurrentNickname, String lettersOfNextNickname) {
+        if (lettersOfCurrentNickname.equals(lettersOfNextNickname)) {
+            duplicateLetters = lettersOfCurrentNickname;
+            updateFilteredResults();
+        }
+    }
+
+    public void updateFilteredResults() {
+        if (filteredResults.containsKey(duplicateLetters)) {
+            Set<String> existingFilteredEmails = filteredResults.get(duplicateLetters);
+            existingFilteredEmails.add(currentEmail);
+            existingFilteredEmails.add(nextEmail);
+            filteredResults.replace(duplicateLetters, existingFilteredEmails);
+            return;
+        }
+        Set<String> newFilteredEmails = new HashSet<>();
+        newFilteredEmails.add(currentEmail);
+        newFilteredEmails.add(nextEmail);
+        filteredResults.put(duplicateLetters, newFilteredEmails);
     }
 }
