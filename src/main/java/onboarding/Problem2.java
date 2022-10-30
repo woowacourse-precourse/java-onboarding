@@ -18,5 +18,14 @@ public class Problem2 {
             }
             return true;
         }
+        /**다음 문자열을 만들어 리턴해주는 메소드*/
+        String nxtCrypto(Stack<String> stk){
+            StringBuilder nxt= new StringBuilder();
+            if (stk.size()<1) return "";
+            for (String s : stk) {
+                nxt.append(s);
+            }
+            return nxt.toString();
+        }
     }
 }
