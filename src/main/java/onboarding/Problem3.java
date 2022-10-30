@@ -18,7 +18,56 @@ public class Problem3 {
      * @return 손뼉 횟수
      */
     public static int solution(int number) {
-        int answer = 0;
+        int answer = startFind(number);
         return answer;
+    }
+
+    /**
+     * 손뼉 찾는 함수
+     * @param number
+     * @return
+     */
+    public static int startFind(int number) {
+        if (checkUnderTen(number)) {
+            return number / 3;
+        }
+
+        int[] clapNumbers = new int[number + 1];
+        Arrays.fill(clapNumbers, 0);
+        for (int i=1; i<10; i++) {
+            if(i%3==0) {
+                clapNumbers[i] = 1;
+            }
+        }
+
+        int answer = 3;
+        for (int i = 10; i <= number; i++) {
+            String beforeString = Integer.toString(i);
+            int beforeNumber = Integer.parseInt(beforeString.substring(1));
+            clapNumbers[i] = clapNumbers[beforeNumber];
+            if (isGameNumber(beforeString.charAt(0))){
+                clapNumbers[i] += 1;
+            }
+            answer += clapNumbers[i];
+        }
+        return answer;
+    }
+
+    /**
+     * 9이하의 값 확인하는 함수
+     * @param number
+     * @return 9이하의 값인지 확인
+     */
+    public static boolean checkUnderTen(int number) {
+        return (number < 10);
+    }
+
+    /**
+     * 게임 숫자 3, 6, 9인지 확인
+     * @param origin
+     * @return 게임 숫자이면 True, 아니면 False
+     */
+    public static boolean isGameNumber(char origin) {
+        return (origin == '3' || origin == '6' || origin == '9');
     }
 }
