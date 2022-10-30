@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.*;
-import java.util.stream.Stream;
 
 class Friend {
     private String name;
@@ -28,8 +27,8 @@ class Friend {
 }
 
 public class Problem7 {
-    // List<Friend<name, score>> friendshipScores 생성
-    List<Friend> friendshipScores = new ArrayList<>();
+    // hashFriendshipScores 생성
+    Hashtable<String, Friend> hashFriendshipScores = new Hashtable<>();
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Problem7 problem = new Problem7();
         /* friendNames: 친구 목록 생성  */
@@ -37,19 +36,19 @@ public class Problem7 {
         friendNames = dropDuplicate(friendNames);   // 중복 제거
         friendNames.remove(user); // 친구 목록에서 user 제거
 
-        /* scores에 Friends 객체 추가 */
+        /* hashFriendshipScores 에 Friends 객체 추가 */
         for (String name : friendNames) {
             problem.updateFriend(name);
         }
 
-        // scoreCoFriend : friends를 순회하며 userFriend와 함께 아는 친구에 대해 score 10점 추가
+        // scoreCoFriend : friends 를 순회하며 userFriend 와 함께 아는 친구에 대해 score 10점 추가
             // getDirectFriend : direct friend 구하는 메소드
             // directFriend 순회하면서 10점씩 추가 -> updateScore
 
-        // scoreVisitor : visitors를 순회하며 방문자의 score 1점씩 추가
-        // scores를 점수 내림차순, 이름 오름차순으로 정렬
+        // scoreVisitor : visitors 를 순회하며 방문자의 score 1점씩 추가
+        // hashFriendshipScores 를 점수 내림차순, 이름 오름차순으로 정렬
         // 상위 5명 선택
-        // score가 0인 사람 제외
+        // score 가 0인 사람 제외
         List<String> answer = Collections.emptyList();
         return answer;
     }
@@ -72,7 +71,7 @@ public class Problem7 {
         Friend friend = new Friend();
         friend.setName(friendName);
         friend.setScore(0);
-        this.friendshipScores.add(friend);
+        this.hashFriendshipScores.put(friendName, friend);
     }
 
     static List<String> getDirectFriends(String user, List<List<String>> friends) {
