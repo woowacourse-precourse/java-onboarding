@@ -27,6 +27,11 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
+        // 예외처리 - 페이지 번호 자체가 오류
+        if (pobi.get(1) - pobi.get(0) != 1 || crong.get(1) - crong.get(0) != 1){
+            return -1;
+        }
+
         int crongSumMax = Math.max(getDigitSum(crong.get(0)), getDigitSum(crong.get(1)));
         int crongMulMax = Math.max(getDigitMul(crong.get(0)), getDigitMul(crong.get(1)));
 
