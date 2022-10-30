@@ -12,6 +12,19 @@ public class Problem4 {
         return answer;
     }
 
+    private static char changeAlphabet(char ch) {
+        // 65~90 (A~Z), 97~122 (a~z)
+        // 65 -> 90 , 66 -> 89
+        int changeAscii = (int)ch;
+        if (changeAscii >= 65 && changeAscii <= 90) {
+            return (char)(91 - (changeAscii - 64));
+        }
+        if (changeAscii >= 97 && changeAscii <= 122) {
+            return (char)(123 - (changeAscii - 96));
+        }
+        return ch;
+    }
+
     private static void validateRange(String input) {
         int inputLength = input.length();
         if (inputLength < MIN_RANGE_NUM || inputLength > MAX_RANGE_NUM) {
