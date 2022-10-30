@@ -17,6 +17,7 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
+        init();
 
         // 친구 테이블 구성
         for (List<String> friend : friends) {
@@ -45,6 +46,12 @@ public class Problem7 {
         }
 
         return answer;
+    }
+
+    private static void init() {
+        friendsList = new HashMap<>();
+        usersScoreDict = new HashMap<>();
+        userFreindList = new HashSet<>();
     }
 
     //  함께 아는 친구의 수 계산
