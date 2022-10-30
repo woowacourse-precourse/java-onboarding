@@ -45,14 +45,18 @@ public class Problem2 {
         int index = 0;
         boolean isDeleted = false;
 
-        while (index != list.size()) {
+        while (index != (list.size() - 1)) {
             if (list.get(index).equals(list.get(index + 1))) {
-                list.remove(index);
                 list.remove(index + 1);
+                list.remove(index);
                 isDeleted = true;
             }
             else {
                 index++;
+            }
+
+            if (list.size() == 0) {
+                return false;
             }
         }
 
