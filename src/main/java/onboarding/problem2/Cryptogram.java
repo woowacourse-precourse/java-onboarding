@@ -25,4 +25,11 @@ public class Cryptogram {
         return length > MAX_LENGTH || length < MIN_LENGTH;
     }
 
+    private boolean isLowerCase(String cryptogram) {
+        return cryptogram.chars()
+                .filter(Character::isUpperCase)
+                .findAny()
+                .isEmpty();
+    }
+
 }
