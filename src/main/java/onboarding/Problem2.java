@@ -12,17 +12,17 @@ public class Problem2 {
 		List<Character> cryptogram_list;
 
 		checkException(cryptogram);
+
 		cryptogram_list = convertToList(cryptogram);
 
-		//연속해서 중복되는 문자가 없을 때 까지
 		while (true) {
 			removeWord(findDuplicationRange(cryptogram_list), cryptogram_list);
-
+			//연속해서 중복되는 문자가 없을 때 까지
 			if (findDuplicationWord(findDuplicationRange(cryptogram_list)))
 				break;
 		}
 
-		answer = toString(cryptogram_list);
+		answer = convertToString(cryptogram_list);
 
         return answer;
     }
@@ -35,13 +35,15 @@ public class Problem2 {
 		return cryptogram_list;
 	}
 	public static String convertToString(List<Character> cryptogram_list) {
-		String str = "";
+		String cryptogram = "";
 
 		for (int i = 0; i < cryptogram_list.size(); i++)
-			str += cryptogram_list.get(i);
-		return str;
+			cryptogram += cryptogram_list.get(i);
+
+		return cryptogram;
 	}
 
+	//중복 제거 후 중복이 있는지 찾는 함수
 	public static boolean findDuplicationWord(List<Integer> range) {
 		for (int i = 0; i < range.size(); i++)
 		{
@@ -50,7 +52,6 @@ public class Problem2 {
 		}
 		return true;
 	}
-
 	//중복되는 문자의 범위를 찾는 함수
 	public static List<Integer> findDuplicationRange(List<Character> cryptogram_list) {
 		int cnt;
@@ -83,6 +84,7 @@ public class Problem2 {
 		boolean isVisited = false;
 
 		for (int i = 0; i < range.size(); i++) {
+
 			if (range.get(i) == 0)
 				continue;
 
