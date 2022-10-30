@@ -9,30 +9,35 @@ import java.util.Map;
 import java.util.Set;
 
 public class Problem6 {
-	private static Set<String> emails = new HashSet<>();
-	private static Map<String, String> keys = new HashMap<>(); // word, email
+	private static Set<String> emails;
+	private static Map<String, String> keys; // word, email
 
 	public static List<String> solution(List<List<String>> forms) {
 
+		emails = new HashSet<>();
+		keys = new HashMap<>();
+
 		for (List<String> form : forms) {
 			String nickname = form.get(1);
-			if (nickname.length() < 2) {
-				continue;
-			}
-
-			String email = form.get(0);
-			for (int j = 0; j < nickname.length() - 1; j++) {
-				String key = nickname.substring(j, j + 2);
-				if (keys.containsKey(key)) {
-					String keyMail = keys.get(key);
-					checkExistKey(keyMail, email);
-				} else {
-					keys.put(key, email);
-				}
+			if (nickname.length() > 1) {
+				String email = form.get(0);
+				checkInTwoLetters(nickname, email);
 			}
 		}
-		
+
 		return sortSet();
+	}
+
+	private static void checkInTwoLetters(String nickname, String email) {
+		for (int i = 0; i < nickname.length() - 1; i++) {
+			String key = nickname.substring(i, i + 2);
+			if (keys.containsKey(key)) {
+				String keyMail = keys.get(key);
+				checkExistKey(keyMail, email);
+			} else {
+				keys.put(key, email);
+			}
+		}
 	}
 
 	private static void checkExistKey(String keyMail, String email) {

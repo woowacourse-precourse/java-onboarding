@@ -11,16 +11,19 @@ public class Problem7 {
 
 	private static final int FRIEND_POINT = 10;
 	private static final int VISITOR_POINT = 1;
-	static List<String> friendName = new ArrayList<>();
-	static HashMap<String, Integer> recommendation = new HashMap<>();
+
+	static List<String> friendName;
+	static HashMap<String, Integer> recommendation;
 
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
+		friendName = new ArrayList<>();
+		recommendation = new HashMap<>();
+
 		findFriend(user, friends);
-		findFriendOfFriend(user, friends);
+		checkRelation(user, friends);
 		findVisitor(visitors);
 		List<Map.Entry<String, Integer>> sortedRecommendation = sortRecommadation();
-		System.out.println("sortedRecommendation = " + sortedRecommendation);
 		List<String> finalList = makeFinalList(sortedRecommendation);
 		return finalList;
 	}
@@ -46,7 +49,7 @@ public class Problem7 {
 		recommendation.put(user, score);
 	}
 
-	private static void findFriendOfFriend(String user, List<List<String>> friends) {
+	private static void checkRelation(String user, List<List<String>> friends) {
 		for (List<String> relation : friends) {
 			if (relation.contains(user)) {
 				continue;
@@ -56,13 +59,14 @@ public class Problem7 {
 			String friend2 = relation.get(1);
 
 			if (isFriend(friend1) ^ isFriend(friend2)) {
-				if (isFriend(friend1)) {
-					addPoint(friend2, FRIEND_POINT);
-				} else {
-					addPoint(friend1, FRIEND_POINT);
-				}
+				String target = whoIsNotFriend(friend1, friend2);
+				addPoint(target, FRIEND_POINT);
 			}
 		}
+	}
+
+	private static String whoIsNotFriend(String user1, String user2) {
+		return isFriend(user1) ? user2 : user1;
 	}
 
 	private static void findVisitor(List<String> visitors) {
@@ -92,11 +96,12 @@ public class Problem7 {
 	private static List<String> makeFinalList(List<Map.Entry<String, Integer>> recommendList) {
 		List<String> finalList = new LinkedList<>();
 
-		for (Map.Entry<String, Integer> entry : recommendList) {
-			finalList.add(entry.getKey());
-			if (finalList.size() == 5) {
+		for (int i = 0; i < recommendList.size(); i++) {
+			if (i == 5) {
 				break;
 			}
+			Map.Entry<String, Integer> entry = recommendList.get(i);
+			finalList.add(entry.getKey());
 		}
 
 		return finalList;
