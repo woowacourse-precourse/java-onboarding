@@ -11,7 +11,6 @@ public class Problem6 {
 
         answer = finalAnswer(finalCompare(makeNameLst(forms), mainloop(makeNameLst(forms))), forms);
 
-
         return answer;
     }
 
