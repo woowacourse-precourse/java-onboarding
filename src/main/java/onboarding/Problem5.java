@@ -46,7 +46,7 @@ public class Problem5 {
 	}
 
 	public static int exchangeBillCount(int money, int curBill) {
-		return 0;
+		return money / curBill;
 	}
 
 	public static int afterChange(int money, int currBill) {
