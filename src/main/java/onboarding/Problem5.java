@@ -16,6 +16,18 @@ public class Problem5 {
     public static List<Integer> solution(int money) {
 
         List<Integer> resultList = new ArrayList<>();
+
+        for (int i=0; i<moneyList.size(); i++){
+
+            int moneyUnit = moneyList.get(i);
+            if (money / moneyList.get(i) != 0){
+                resultList.add(money / moneyUnit);
+                money = money % moneyUnit;
+            }else{
+                resultList.add(0);
+            }
+        }
+
         return resultList;
     }
 }
