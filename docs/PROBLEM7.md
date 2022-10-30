@@ -24,3 +24,14 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+----
+> #### 기능 목록
+#### 1. friends 입력으로부터 각 사람의 친구 목록을 구하는 기능.
+- [x] key: 사람이름, value: 친구들의 Set인 해시맵 구현
+#### 2. 각 사람마다 점수를 알맞게 부여하는 기능
+- [x] 알맞게 점수를 부여해 scoreMap에 저장.
+- [x] 사용자와 함께 하는 친구의 수: 10점
+- [x] 사용자의 타임 라인에 방문한 횟수 당 1점으로 계산
+#### 3. 점수가 가장 높은 순으로 최대 5명까지 출력. 점수가 같을 경우 이름순 정렬
+- [x] scoreMap의 entryset 을 value(점수) 내림차순으로, key(이름) 오름차순으로 정렬
+- [x] 기능 요구사항에 맞게 출력한다.
