@@ -29,12 +29,12 @@ public class Problem2 {
             tmpCh = dupStr.charAt(i);
         }
 
-        String result = "";
+        StringBuilder resultStringBuilder = new StringBuilder();
         for (int i = 0; i < checkDup.length; i++) {
             if (!checkDup[i]) {
-                result += dupStr.charAt(i);
+                resultStringBuilder.append(dupStr.charAt(i));
             }
         }
-        return result;
+        return resultStringBuilder.toString();
     }
 }
