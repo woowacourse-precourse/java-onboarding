@@ -1,12 +1,13 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
         // 결과를 저장할 리스트
-        List<Integer> answer = Collections.emptyList();
+        List<Integer> answer = new ArrayList<>();
         // 화폐 금액을 담은 배열
         int[] moneyArray = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
         // 큰 금액의 화폐 순서대로 바꾼뒤 남는 금액을 저장할 변수
