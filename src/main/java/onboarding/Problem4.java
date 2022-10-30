@@ -28,7 +28,12 @@ public class Problem4 {
         }
     }
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+
+        char[] reverseCharArray = new char[word.length()];
+        for (int i = 0; i< word.length(); i++){
+            reverseCharArray[i] = reverseAlphaBet(word.charAt(i));
+        }
+
+        return new String(reverseCharArray);
     }
 }
