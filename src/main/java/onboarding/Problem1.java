@@ -1,11 +1,39 @@
 package onboarding;
 
+import java.util.Comparator;
 import java.util.List;
 
 class Problem1 {
+    private static final int LEFT_PAGE_INDEX = 0;
+    private static final int RIGHT_PAGE_INDEX = 1;
+    private static final int START_PAGE = 1;
+    private static final int END_PAGE = 400;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        try {
+            validatePageNumberGap(pobi.get(LEFT_PAGE_INDEX), pobi.get(RIGHT_PAGE_INDEX));
+            validateLeftPageNumberIsOdd(pobi.get(LEFT_PAGE_INDEX));
+            pobi.stream()
+                    .forEach(Problem1::validatePageNumberRange);
+            validatePageNumberGap(crong.get(LEFT_PAGE_INDEX), crong.get(RIGHT_PAGE_INDEX));
+            validateLeftPageNumberIsOdd(crong.get(LEFT_PAGE_INDEX));
+            crong.stream()
+                    .forEach(Problem1::validatePageNumberRange);
+        } catch (IllegalArgumentException e) {
+            return -1;
+        }
+
+        Integer pobiScore = pobi.stream()
+                .map(page -> getMaxNumber(getSumOfPageDigits(page), getProductOfPageDigits(page)))
+                .max(Comparator.comparing(Integer::intValue))
+                .get();
+
+        Integer crongScore = crong.stream()
+                .map(page -> getMaxNumber(getSumOfPageDigits(page), getProductOfPageDigits(page)))
+                .max(Comparator.comparing(Integer::intValue))
+                .get();
+
+        return getMatchResult(pobiScore, crongScore);
     }
 
     public static int getSumOfPageDigits(int pageNumber) {
@@ -40,5 +68,23 @@ class Problem1 {
         }
 
         return 0;
+    }
+
+    public static void validatePageNumberRange(int pageNumber) {
+        if (pageNumber <= START_PAGE || pageNumber >= END_PAGE) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void validatePageNumberGap(int leftPage, int rightPage) {
+        if (rightPage - leftPage != 1) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void validateLeftPageNumberIsOdd(int leftPage) {
+        if (leftPage % 2 == 0) {
+            throw new IllegalArgumentException();
+        }
     }
 }
