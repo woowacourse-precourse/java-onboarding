@@ -83,18 +83,16 @@ class Problem1 {
 	private static int getMaxNumber(int number) {
 
 		if (getNumberLength(number) == 3) {
-			int firstNumberFirstDigit = getDigitsInThreeFigures(number, 1);
-			int firstNumberSecondDigit = getDigitsInThreeFigures(number, 2);
-			int firstNumberThirdDigit = getDigitsInThreeFigures(number, 3);
-
-			return compareCalculation(firstNumberFirstDigit, firstNumberSecondDigit, firstNumberThirdDigit);
+			return compareCalculation(
+					getDigitsInThreeFigures(number, 1),
+					getDigitsInThreeFigures(number, 2),
+					getDigitsInThreeFigures(number, 3));
 		}
 
 		if (getNumberLength(number) == 2) {
-			int firstNumberFirstDigit = getDigitsInTwoFigures(number, 1);
-			int firstNumberSecondDigit = getDigitsInTwoFigures(number, 2);
-
-			return compareCalculation(firstNumberFirstDigit, firstNumberSecondDigit);
+			return compareCalculation(
+					getDigitsInTwoFigures(number, 1),
+					getDigitsInTwoFigures(number, 2));
 		}
 
 		return number;
