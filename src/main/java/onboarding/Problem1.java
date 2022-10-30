@@ -9,11 +9,23 @@ class Problem1 {
 		int pobi_right = pobi.get(1);
 		int crong_left = crong.get(0);
 		int crong_right = crong.get(1);
+		int pobi_max = Integer.MIN_VALUE;
+		int crong_max = Integer.MIN_VALUE;
 
 		// 예외사항 검증
 		if(!check_sanity(pobi_left, pobi_right) ||
 			!check_sanity(crong_left, crong_right))
 			return -1;
+
+		pobi_max = max_num(pobi_left, pobi_right);
+		crong_max = max_num(crong_left, crong_right);
+
+		if(pobi_max == crong_max)
+			answer = 0;
+		else if(pobi_max > crong_max)
+			answer = 1;
+		else
+			answer = 2;
 
 		return answer;
 	}
