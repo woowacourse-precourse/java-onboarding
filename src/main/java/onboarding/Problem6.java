@@ -60,6 +60,21 @@ public class Problem6 {
         return result;
     }
 
+    /**
+     * 문자열 a와 문자열 b가 '유사'한지 확인
+     * @param a
+     * @param b
+     * @return
+     */
+    private static boolean twoStringsAreAlike(String a, String b) {
+        for (int i = 0; i < a.length() - 1; i++) {
+            String temp = a.substring(i, i + 2);
+            if (b.contains(temp)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     /**
      * 서로 비슷한 닉네임을 찾아, 그 닉네임의 이메일을 기록한 목록을 리턴한다
