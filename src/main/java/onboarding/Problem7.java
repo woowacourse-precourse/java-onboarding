@@ -9,9 +9,9 @@ public class Problem7 {
         HashSet<String> usernameSet = getAllUsers(friends, visitors);
 
         // initialize all users' score to zero
-        HashMap<String, Integer> usernameAndScoreMap = new HashMap<>();
+        HashMap<String, Integer> score = new HashMap<>();
         for (String username: usernameSet){
-            usernameAndScoreMap.put(username, 0);
+            score.put(username, 0);
         }
 
 
@@ -31,7 +31,7 @@ public class Problem7 {
             for(List<String> friendList: friends){ // ["donut", "andole"]
                 if(friendList.contains(mutualFriend)){ // true
                     // find in scoreList and add score
-                    findUserAndUpdateScore(usernameAndScoreMap, mutualFriend, 10);
+                    findUserAndUpdateScore(score, mutualFriend, 10);
                 }
             }
         }
@@ -39,37 +39,32 @@ public class Problem7 {
         // add score to visitors
         for(String visitor: visitors){
             // find in scoreList and add score
-            findUserAndUpdateScore(usernameAndScoreMap, visitor, 1);
+            findUserAndUpdateScore(score, visitor, 1);
         }
 
-        HashMap<String,Integer> finalScore = new HashMap<>();
-        // remove user and direct friends from scoreList
-        for(String key: usernameAndScoreMap.keySet()){ // andole
-            if(key!=user && !directFriends.contains(key) &&  usernameAndScoreMap.get(key) > 0){
-                // add to final score map
-                finalScore.put(key, usernameAndScoreMap.get(key));
-                if(finalScore.size()>=5){
+        System.out.println("Before Sorting: " + score);
+        // sort score by value
+        score = getSortedScore(score);
+        System.out.println("After Sorting: " + score);
+
+        List<String> answer =   new ArrayList<>();
+        for(Map.Entry<String,Integer> entry: score.entrySet()){
+            String key = entry.getKey();
+            if(key != user && !directFriends.contains(key) &&  score.get(key) > 0) {
+                answer.add(entry.getKey());
+                if(answer.size() >= 5){
                     break;
                 }
             }
         }
-
-
-        // sort final score by value
-        HashMap<String, Integer> sortedScore = getSortedScore(finalScore);
-        System.out.println(sortedScore);
-
-        List<String> answer =   new ArrayList<>();
-        for(Map.Entry<String,Integer> entry: sortedScore.entrySet()){
-            answer.add(entry.getKey());
-        }
+        System.out.println(answer);
 
         return answer;
     }
 
-    private static HashMap<String, Integer> getSortedScore(HashMap<String, Integer> finalScore) {
+    private static HashMap<String, Integer> getSortedScore(HashMap<String, Integer> unsortedScore) {
         HashMap<String, Integer> sortedScore = new HashMap<>();
-        finalScore.entrySet()
+        unsortedScore.entrySet()
                 .stream()
                 .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
                 .forEachOrdered(x -> sortedScore.put(x.getKey(), x.getValue()));
