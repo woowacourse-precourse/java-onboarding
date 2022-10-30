@@ -30,6 +30,15 @@ class Problem1 {
         return multiply;
     }
 
+    public static int pagesComparison(int page1, int page2) {
+        int maxPage1 = calculationComparison(page1);
+        int maxPage2 = calculationComparison(page2);
+        if (maxPage1 >= maxPage2) {
+            return maxPage1;
+        }
+        return maxPage2;
+    }
+    
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         int[] pobiArray = pobi.stream().mapToInt(i->i).toArray();
