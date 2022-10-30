@@ -6,17 +6,15 @@ import java.util.*;
  *
  * countPiece : form 전체에서 연속한 글자의 등장 횟수를 셈
  * countPieceInName : 닉네임에서 연속한 글자의 등장 횟수를 셈
- * getInvalidEmail : 닉네임에서 연속한 글자가 같은 교육생의 이메일 리스트를 반환
+ * getInvalidEmail : 닉네임에서 연속한 글자가 같은 교육생의 이메일 셋을 반환
  * hasSamePiece : 닉네임의 연속한 글자가 여러 번 등장하는지 확인
  */
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         Map<String, Integer> pieceNum = countPiece(forms);
-        List<String> answer = getInvalidUserEmail(forms, pieceNum);
+        Set<String> answer = getInvalidUserEmail(forms, pieceNum);
 
-        Collections.sort(answer);
-
-        return answer;
+        return new ArrayList<String>(answer);
     }
 
     private static Map<String, Integer> countPiece(List<List<String>> forms) {
@@ -39,8 +37,8 @@ public class Problem6 {
         }
     }
 
-    private static List<String> getInvalidUserEmail(List<List<String>> forms, Map<String, Integer> pieceNum) {
-        List<String> invalidEmailList = new ArrayList<>();
+    private static Set<String> getInvalidUserEmail(List<List<String>> forms, Map<String, Integer> pieceNum) {
+        Set<String> invalidEmailList = new HashSet<>();
 
         for(List<String> form : forms) {
             String email = form.get(0);
