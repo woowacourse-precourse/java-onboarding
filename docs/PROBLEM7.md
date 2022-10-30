@@ -24,3 +24,13 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+## ✅ 구현할 기능 목록
+- [ ] 유저들의 친구 목록 생성하는 함수 (`createFriendMap`)
+- [ ] 추천 점수 TreeMap 이용해 `key: 유저정보`, `value: 점수` 로 계산 (`addRecommendScore`)
+  - [ ] 이미 친구인 경우, 본인인 경우 제외 (`isException`)
+- [ ] 유저의 친구의 친구 탐색 +10 계산 (`addFriendScore`)
+- [ ] 유저의 타임 라인에 방문한 유저 +1 계산 (`addVisitorScore`)
+- [ ] 추천 점수 정렬하는 함수 (`sortRecommendScore`)
+  - 추천 점수 - 내림차순, 이름 - 오름차순  
+- [ ] 최대 5명 출력하는 함수 (`getTop5User`)
