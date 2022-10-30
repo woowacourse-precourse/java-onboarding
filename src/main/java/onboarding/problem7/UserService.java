@@ -2,7 +2,6 @@ package onboarding.problem7;
 
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class UserService {
     private final UserRepository userRepository;
@@ -20,7 +19,7 @@ public class UserService {
 
         users.stream()
                 .flatMap(Collection::stream)
-                .forEach(i -> userRepository.save(i, new User(i)));
+                .forEach(user -> userRepository.save(user, new User(user)));
     }
 
     public Map<String, User> findAll() {
@@ -49,6 +48,22 @@ public class UserService {
         friendRepository.findByUser(secondUser).add(firstUser);
     }
 
+    public List<User> findNearByFriends(String username) {
+        List<User> nearByFriends = new ArrayList<>();
+
+        User user = userRepository.findByUsername(username);
+        Friends friends = friendRepository.findByUser(user);
+
+        List<User> myFriendList = friends.toList();
+
+        for (User friend : myFriendList) {
+            Friends nearFriend = friendRepository.findByUser(friend);
+            nearByFriends.addAll(nearFriend.toList());
+            nearByFriends.remove(user);
+        }
+
+        return nearByFriends;
+    }
 
 
 }

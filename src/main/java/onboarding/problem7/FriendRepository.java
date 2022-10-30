@@ -18,8 +18,14 @@ public class FriendRepository {
         database.put(user, friends);
     }
 
-    public Friends findByUser(User user) {
-        return database.get(user);
+    public Map<User, Friends> findAll() {
+        return database;
     }
 
+    public Friends findByUser(User user) {
+        if (isNotSavedUser(user)) {
+            return new Friends();
+        }
+        return database.get(user);
+    }
 }
