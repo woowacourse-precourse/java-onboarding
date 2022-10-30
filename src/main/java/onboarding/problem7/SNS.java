@@ -19,7 +19,9 @@ class SNS {
     public List<String> recommendFriends(String name) {
         return database.getRecommendedUsersByName(name)
                 .stream()
-                .sorted(Comparator.comparing(user -> -user.getScore()))
+                .sorted(Comparator.<User,Integer>
+                        comparing(user -> -user.getScore())
+                        .thenComparing(user->user.getName()))
                 .map(user -> user.getName())
                 .limit(5)
                 .collect(Collectors.toList());
