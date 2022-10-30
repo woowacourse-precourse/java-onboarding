@@ -11,13 +11,18 @@
 - 제공된 friends에서 user를와 함께 리스트에 포함된 친구들을 제외한 나머지 친구들을 Map에 저장합니다.
 - 친구들의 이름이 key값이며 친구들에 대한 추천 점수가 value값입니다.
 
-### 3. 제공된 firends에서 user의 친구와 친구이면 추천 점수 증가
+### 3.visitors중 user의 친구를 제외한 사람들 추천목록에 추가
+#### updateRecommendList(List<String> visitors, Map<String, value> recommendList) --> Map<String, Integer> recommendList
+- 제공된 visitor 목록에서 user의 친구들을 제외한 이름들을 makeRecommendList()에서 만든 recommendList에 추가합니다. 
 
-### 4. 제공된 visitors에 이름이 있으면 해당 친구 추천 점수 증가
+### 4. 제공된 firends에서 user의 친구와 친구이면 추천 점수 증가
 
-### 5. 추천목록을 추천점수가 높은순으로 정렬, 이름이 같으면 이름순으로 정렬
 
-### 6. 추천목록의 크기가 5를 초과하면 추천점수가 높은 5명만을 반환
+### 5. 제공된 visitors에 이름이 있으면 해당 친구 추천 점수 증가
+
+### 6. 추천목록을 추천점수가 높은순으로 정렬, 이름이 같으면 이름순으로 정렬
+
+### 7. 추천목록의 크기가 5를 초과하면 추천점수가 높은 5명만을 반환
 
 
 # 전체 동작 과정

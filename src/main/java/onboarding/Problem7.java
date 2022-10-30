@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.awt.image.ImageProducer;
 import java.util.*;
 
 public class Problem7 {
@@ -29,7 +30,7 @@ public class Problem7 {
     /**
      * friends 목록중 user와 user 친구들을 제외한 Map 반환
      * @param {List<List<String>>}friends
-     * @param {List<String></>}userFriendList
+     * @param {List<String>>}userFriendList
      * @return recommendList
      */
     public static Map<String, Integer> makeRecommendList(List<List<String>> friends, List<String> userFriendList) {
@@ -44,6 +45,20 @@ public class Problem7 {
         return recommendList;
     }
 
+    /**
+     * visitors에 포함된 사람들중 user와 user의 친구를 제외한 사람들을 recommendList에 추가
+     * @param {List<String>>} visitors
+     * @param {List<String>>} userFriendList
+     * @param {Map<String, Integer>}recommendList
+     * @return recommendList
+     */
+    public static Map<String, Integer> updateRecommendList(List<String> visitors, List<String> userFriendList ,Map<String, Integer> recommendList) {
+        for (int i = 0; i < visitors.size(); i++) {
+            String name = visitors.get(i);
+            if(!userFriendList.contains(name) && name != user) recommendList.put(name, 0);
+        }
+        return recommendList;
+    }
 
 
 

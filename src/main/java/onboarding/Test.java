@@ -1,6 +1,5 @@
 package onboarding;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -18,9 +17,13 @@ public class Test {
         List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
 
         List<String> userFriendList = Problem7.makeUserFriendList(friends);
-        System.out.println(userFriendList);
-        Map<String, Integer> map = Problem7.makeRecommendList(friends, userFriendList);
-        System.out.println(map);
+        System.out.println("userFrindList = " + userFriendList);
+
+        Map<String, Integer> recommendList = Problem7.makeRecommendList(friends, userFriendList);
+        System.out.println("recommendList = " + recommendList);
+
+        recommendList = Problem7.updateRecommendList(visitors, userFriendList, recommendList);
+        System.out.println("updateRecommnedList = " + recommendList);
 
     }
 }
