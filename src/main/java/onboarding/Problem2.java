@@ -2,11 +2,11 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        int resultLength = cryptogram.length() + 1;
-        while (cryptogram.length() != resultLength) {
+        int resultLength;
+        do {
             resultLength = cryptogram.length();
             cryptogram = reduceCryptogram(cryptogram);
-        }
+        } while (cryptogram.length() != resultLength);
 
         return cryptogram;
     }
