@@ -3,15 +3,20 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
-    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+    public static List<String> solution(String username, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
-        Map<String, List<String>> friendsInformation = initializeFriendsInformation(friends);
-        List<String> friendsOfFriendsOfUser = findFriendsOfFriendsOfUser(user, friendsInformation);
-        Map<String, Integer> recommendScore = new HashMap<>();
-        calculateRecommendScore(recommendScore, friendsOfFriendsOfUser, CalculusType.friend);
-        calculateRecommendScore(recommendScore, visitors, CalculusType.visitor);
+        Person user = new Person(username);
+        Map<String, Person> people = new HashMap<>();
+
+//        Map<String, List<String>> friendsInformation = initializeFriendsInformation(friends);
+//        List<String> friendsOfFriendsOfUser = findFriendsOfFriendsOfUser(user, friendsInformation);
+//        Map<String, Integer> recommendScore = new HashMap<>();
+//        calculateRecommendScore(recommendScore, friendsOfFriendsOfUser, CalculusType.friend);
+//        calculateRecommendScore(recommendScore, visitors, CalculusType.visitor);
         return answer;
     }
+
+    
 
     public static Map<String, List<String>> initializeFriendsInformation(List<List<String>> friends) {
         Map<String, List<String>> friendsInformation = new HashMap<>();
@@ -88,5 +93,21 @@ class Person {
         this.name = name;
         this.recommendScore = 0;
         this.friends = new ArrayList<>();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getRecommendScore() {
+        return recommendScore;
+    }
+
+    public void setRecommendScore(int recommendScore) {
+        this.recommendScore = recommendScore;
+    }
+
+    public List<Person> getFriends() {
+        return friends;
     }
 }
