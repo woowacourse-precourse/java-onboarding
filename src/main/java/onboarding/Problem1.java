@@ -62,7 +62,6 @@ class Problem1 {
         pobiWin(1),
         crongWin(2),
         errror(-1);
-
         private final int result;
 
         Game(int result) {
@@ -129,31 +128,33 @@ class Problem1 {
         return num_list;
     }
     public static int findScore(int number) {
-        int sumResult = calculation(findPlaceValue(number), '+');
-        int multiplicationResult = calculation(findPlaceValue(number), '*');
+        int sum = calculation(findPlaceValue(number), '+');
+        int multiplication = calculation(findPlaceValue(number), '*');
 
-
-
-        return Math.max(sumResult,  multiplicationResult);
+        return Math.max(sum,  multiplication);
     }
-
     public static void getScore(User user) {
-        user.setScore(Math.max(findScore(user.getLeft()), findScore(user.getRight())));
+        int leftScore = findScore(user.getLeft());
+        int rightScore = findScore(user.getRight());
+
+        int userScore = Math.max(leftScore, rightScore);
+
+        user.setScore(userScore);
     }
     /*
     * 예외 처리
     */
     public static boolean checkedException(User pobi, User crong) {
-
         if (!checkedUser(pobi) || !checkedUser(crong))
             return false;
-
-        exceptionHandling(pobi.getLength());
-        exceptionHandling(crong.getLength());
 
         return true;
     }
     public static boolean checkedUser(User user) {
+        String errorMessage = "LIST SIZE ERROR";
+
+        if (user.getLength() != Book.length.page)
+            throw new IllegalArgumentException(errorMessage);
 
         if (!(user.getLeft() >= Book.first.page && user.getLeft() <= Book.last.page))
             return false;
@@ -163,12 +164,7 @@ class Problem1 {
             return false;
         if ((user.getLeft() + 1) != user.getRight())
             return false;
-        return true;
-    }
-    public static void exceptionHandling(int length) {
-        String errorMessage = "LIST SIZE ERROR";
 
-        if (length != Book.length.page)
-            throw new IllegalArgumentException(errorMessage);
+        return true;
     }
 }
