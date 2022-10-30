@@ -27,14 +27,7 @@ public class MatchGame {
     }
 
     private int getMatchCount(List<Integer> digits) {
-        int cnt = 0;
-
-        for (int digit : digits) {
-            if (isMatchedNumbers(digit))
-                cnt++;
-        }
-
-        return cnt;
+        return (int) digits.stream().filter(this::isMatchedNumbers).count();
     }
 
     public int getMatchCount(int number) {
