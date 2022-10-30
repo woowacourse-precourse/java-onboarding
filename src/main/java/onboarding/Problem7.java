@@ -5,6 +5,13 @@ import java.util.stream.Collectors;
 
 public class Problem7 {
 
+    private static final int USER_FIRST_INDEX = 0;
+    private static final int USER_SECOND_INDEX = 1;
+    private static final int INIT_SCORE_VALUE = 0;
+    private static final int FRIEND_SCORE = 10;
+    private static final int VISITOR_SCORE = 1;
+    private static final int RETURN_MAX_SIZE = 5;
+
     private static final Map<String, Integer> friendRecommendScoreMap = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friendRelationships, List<String> userTimelineVisitors) {
@@ -19,8 +26,8 @@ public class Problem7 {
     private static Set<String> getUserIds(List<List<String>> friends) {
         Set<String> userIds = new HashSet<>();
         friends.forEach(nestedFriends -> {
-            String friendName1 = nestedFriends.get(0);
-            String friendName2 = nestedFriends.get(1);
+            String friendName1 = nestedFriends.get(USER_FIRST_INDEX);
+            String friendName2 = nestedFriends.get(USER_SECOND_INDEX);
             userIds.add(friendName1);
             userIds.add(friendName2);
         });
@@ -29,8 +36,8 @@ public class Problem7 {
 
     private static void initFriendRecommendScoreMap(List<List<String>> friends, List<String> userTimelineVisitors) {
         Set<String> userIds = getUserIds(friends);
-        userIds.forEach(userId -> friendRecommendScoreMap.put(userId, 0));
-        userTimelineVisitors.forEach(userTimelineVisitor -> friendRecommendScoreMap.put(userTimelineVisitor, 0));
+        userIds.forEach(userId -> friendRecommendScoreMap.put(userId, INIT_SCORE_VALUE));
+        userTimelineVisitors.forEach(userTimelineVisitor -> friendRecommendScoreMap.put(userTimelineVisitor, INIT_SCORE_VALUE));
     }
 
     private static Set<String> getUserFriends(String userId, List<List<String>> friendRelationships) {
@@ -38,8 +45,8 @@ public class Problem7 {
         friendRelationships.stream()
                 .filter(friendRelationship -> friendRelationship.contains(userId))
                 .forEach(friendRelationship -> {
-                    userFriends.add(friendRelationship.get(0));
-                    userFriends.add(friendRelationship.get(1));
+                    userFriends.add(friendRelationship.get(USER_FIRST_INDEX));
+                    userFriends.add(friendRelationship.get(USER_SECOND_INDEX));
                 });
         userFriends.remove(userId);
         return userFriends;
@@ -52,8 +59,8 @@ public class Problem7 {
                     .filter(friendRelationship -> friendRelationship.contains(userFriend))
                     .collect(Collectors.toList())
                     .forEach(friendRelationship -> {
-                        String userFriendId1 = friendRelationship.get(0);
-                        String userFriendId2 = friendRelationship.get(1);
+                        String userFriendId1 = friendRelationship.get(USER_FIRST_INDEX);
+                        String userFriendId2 = friendRelationship.get(USER_SECOND_INDEX);
                         if (!userFriendId1.equals(userId) && !userFriendId1.equals(userFriend)) {
                             friendsOfUserFriends.add(userFriendId1);
                         }
@@ -67,13 +74,13 @@ public class Problem7 {
 
     private static void friendsOfUserFriendsAddScore(List<String> friendsOfUserFriends) {
         friendsOfUserFriends.forEach(friendOfUserFriends -> {
-            friendRecommendScoreMap.put(friendOfUserFriends, friendRecommendScoreMap.get(friendOfUserFriends) + 10);
+            friendRecommendScoreMap.put(friendOfUserFriends, friendRecommendScoreMap.get(friendOfUserFriends) + FRIEND_SCORE);
         });
     }
 
     private static void userTimelineVisitorsAddScore(List<String> userTimelineVisitors) {
         userTimelineVisitors.forEach(userTimelineVisitor -> {
-            friendRecommendScoreMap.put(userTimelineVisitor, friendRecommendScoreMap.get(userTimelineVisitor) + 1);
+            friendRecommendScoreMap.put(userTimelineVisitor, friendRecommendScoreMap.get(userTimelineVisitor) +  VISITOR_SCORE);
         });
     }
 
@@ -85,7 +92,7 @@ public class Problem7 {
                 )
                 .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
                 .map(friendRecommendScoreMapEntry -> friendRecommendScoreMapEntry.getKey())
-                .limit(5)
+                .limit(RETURN_MAX_SIZE)
                 .collect(Collectors.toList());
     }
 }
