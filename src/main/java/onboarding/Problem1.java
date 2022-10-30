@@ -8,7 +8,7 @@ import java.util.List;
 //                1-1) 매개변수를 받는다.
 //                1-2) ApplicationTest case 1,2,3 에 상수 기입되어있음
 //          >>구현 불필요, 걍 무시하자.
-//        ------------------------------------------------------
+//      ------------------------------------------------------------
 //        	2. 왼쪽 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구한다.
 //                2-1) 12페이지면 1, 2를 더하거나 곱해서 비교하여 큰수를 반환한다?
 //        	3. 오른쪽 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구한다.
@@ -16,7 +16,9 @@ import java.util.List;
 //        >> 2,3 동일한 메서드 사용가능.
 //        >> getAddNumber : 각 자리 숫자 더한값 반환 메서드
 //        >> getMulNumber : 각 자리 숫자 곱한값 반환 메서드
-
+//        >> getHighestValue : 더한값, 곱한값 중 가장 큰수 반환 메서드
+//              >> 메서드 통합.
+//      ------------------------------------------------------------
 //        	4. 2~3 과정에서 가장 큰 수를 본인의 점수로 한다.
 //                4-1) 왼쪽, 오른쪽 페이지 2,3 연산 후 비교
 //                4-2) 비교값 둘중에 큰 수를 pobi, crong 각각 가진다.
@@ -45,6 +47,22 @@ class Problem1 {
         int crongAddRightPage = getAddNumber(crong.get(1));
         int crongMulLeftPage = getMulNumber(crong.get(0));
         int crongMulRightPage = getMulNumber(crong.get(1));
+        int pobiLeftResult = getHighestValue(pobiAddLeftPage, pobiMulLeftPage);
+        int pobiRightResult = getHighestValue(pobiAddRightPage, pobiMulRightPage);
+        int crongLeftResult = getHighestValue(crongAddLeftPage, crongMulLeftPage);
+        int crongRightResult = getHighestValue(crongAddRightPage, crongMulRightPage);
+        int pobiScore = getHighestValue(pobiLeftResult, pobiRightResult);
+        int crongScore = getHighestValue(crongLeftResult, crongRightResult);
+        if (pobiScore > crongScore) {
+            answer = 1;
+        }
+        if (pobiScore < crongScore){
+            answer = 2;
+        }
+        if (pobiScore == crongScore){
+            answer = 0;
+        }
+
         return answer;
     }
 
@@ -73,4 +91,17 @@ class Problem1 {
         }
         return mulResult;
     }
+
+    private static int getHighestValue(int comparisonValue1, int comparisonValue2) {
+        int calResult = 0;
+
+        if (comparisonValue1 >= comparisonValue2) {
+            calResult = comparisonValue1;
+        }
+        if (comparisonValue1 < comparisonValue2) {
+            calResult = comparisonValue2;
+        }
+        return calResult;
+    }
+
 }
