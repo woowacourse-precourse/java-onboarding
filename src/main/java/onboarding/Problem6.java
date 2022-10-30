@@ -51,4 +51,11 @@ public class Problem6 {
                 .findAny()
                 .isPresent();
     }
+
+    private static boolean isDuplicatedCrewName(List<String> crew, String string) {
+        if (crew.get(1).indexOf(string) != -1) {
+            return true;
+        }
+        return false;
+    }
 }
