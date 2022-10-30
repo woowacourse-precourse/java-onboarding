@@ -47,6 +47,17 @@ public class Problem7 {
         return recommend;
     }
 
+    // 추천 점수 해시맵 반환 함수 (방문자)
+    private static HashMap<String, Integer> looker(HashMap<String, Integer> recommend, List<String> visitors, List<String> userFriends) {
+        for (String visitor : visitors) {
+            if (userFriends.contains(visitor)) continue;
+
+            if (!recommend.containsKey(visitor)) recommend.put(visitor, 1);
+            else recommend.put(visitor, recommend.get(visitor) + 1);
+        }
+        return recommend;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
