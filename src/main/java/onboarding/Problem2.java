@@ -16,6 +16,12 @@ public class Problem2 {
             else stack.pop();
         }
 
+        //커밋2. 스택 요소 문자열로 변환하기.
+        StringBuffer answer = new StringBuffer(stack.size());
+        stack.forEach(s-> answer.append(s));
+
+        return answer.toString();
+
     }
 
 
