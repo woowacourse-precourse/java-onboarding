@@ -7,6 +7,10 @@ import java.util.regex.Pattern;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
+        for (int i = 0; i < forms.size(); i++) {
+            NickNameForm.addCrew(forms.get(i));
+        }
+        answer = NickNameForm.validateOverlap();
         return answer;
     }
 }
