@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,17 +41,21 @@ public class Problem7 {
                                       .stream()
                                       .filter(friend -> isMeOrMyFriend(friend, relationMap, user))
                                       .filter(friend -> biggerThanZero(scoreMap, friend))
-                                      .sorted((friend1, friend2) -> {
-                                          if (scoreMap.get(friend1).equals(scoreMap.get(friend2))) {
-                                              return friend1.compareTo(friend2);
-                                          }
-
-                                          return scoreMap.get(friend2) - scoreMap.get(friend1);
-                                      })
+                                      .sorted(sortedByScoreAndName(scoreMap))
                                       .limit(5)
                                       .collect(Collectors.toList());
 
         return answer;
+    }
+
+    private static Comparator<String> sortedByScoreAndName(Map<String, Integer> scoreMap) {
+        return (friend1, friend2) -> {
+            if (scoreMap.get(friend1).equals(scoreMap.get(friend2))) {
+                return friend1.compareTo(friend2);
+            }
+
+            return scoreMap.get(friend2) - scoreMap.get(friend1);
+        };
     }
 
     private static boolean biggerThanZero(Map<String, Integer> scoreMap, String friend) {
