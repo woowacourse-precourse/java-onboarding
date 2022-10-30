@@ -3,6 +3,8 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+    public static final int CRONG = -1;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
@@ -12,6 +14,8 @@ class Problem1 {
 
         int pobiScore = calculateScore(pobi);
         int crongScore = calculateScore(crong);
+
+        answer = getWinner(pobiScore, crongScore);
 
         return answer;
     }
@@ -55,5 +59,15 @@ class Problem1 {
         }
 
         return Math.max(score[0], score[1]);
+    }
+
+    private static int getWinner(int pobiScore, int crongScore) {
+        int winner;
+
+        if ((winner = Integer.compare(pobiScore, crongScore)) == CRONG) {
+            winner += 3;
+        }
+
+        return winner;
     }
 }
