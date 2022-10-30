@@ -14,7 +14,7 @@ public class NicknameService {
     private static final int NICKNAME_INDEX = 1;
     private static final int NICKNAME_DUPLICATE_LENGTH = 2;
 
-    public static List<String> duplicateUserEmail(List<List<String>> applyList) {
+    public static List<String> duplicateNicknameEmail(List<List<String>> applyList) {
         NicknameChecker nicknameChecker = new NicknameChecker();
 
         saveNickName(applyList, nicknameChecker);

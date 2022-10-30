@@ -26,7 +26,7 @@ public class NicknameServiceTest {
                 List.of("nowm@email.com", "이제엠")
         );
 
-        assertThat(NicknameService.duplicateUserEmail(applyList))
+        assertThat(NicknameService.duplicateNicknameEmail(applyList))
                 .isEqualTo(List.of("jason@email.com", "jm@email.com", "mj@email.com"));
     }
 
