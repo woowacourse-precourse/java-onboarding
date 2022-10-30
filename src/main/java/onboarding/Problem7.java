@@ -87,4 +87,12 @@ public class Problem7 {
         User user = users.get(id);
         return user.getFriends();
     }
+
+    private static void setVisitScore(Map<String, User> users, List<String> visitors) {
+        for (String visitorId : visitors) {
+            User user = users.getOrDefault(visitorId, new User(visitorId));
+            user.setScore(user.getScore() + VISIT_SCORE);
+            users.put(visitorId, user);
+        }
+    }
 }
