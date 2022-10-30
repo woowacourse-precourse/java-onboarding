@@ -30,4 +30,11 @@ class Problem1 {
         return (pages.get(RIGHT_PAGE) - pages.get(LEFT_PAGE) == 1);
     }
 
+    private static int getSumOfPages(String pages) {
+        int sumOfPages = 0;
+        for (int i = 0; i < pages.length(); i++) {
+            sumOfPages += (pages.charAt(i) - '0');
+        }
+        return sumOfPages;
+    }
 }
