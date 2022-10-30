@@ -32,7 +32,7 @@ public class Problem7 {
                 continue;
 
             String friendName = findFriendName(friend, foundFriendIdx);
-            if (!targetUser.equals(friendName))
+            if (!isTargetUserSameFriend(targetUser, friendName))
                 findAcquaintance(depth + 1, targetUser, friendName, friends, scoreBoard);
         }
     }
@@ -43,5 +43,9 @@ public class Problem7 {
 
     public static String findFriendName(List<String> friend, Integer idx) {
         return friend.get(idx);
+    }
+
+    public static boolean isTargetUserSameFriend(String targetUser, String friend) {
+        return targetUser.equals(friend);
     }
 }
