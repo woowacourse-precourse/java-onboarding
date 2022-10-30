@@ -115,4 +115,13 @@ public class Problem7 {
 
         return map;
     }
+
+    static void reverseSortByScore(List<Map.Entry<String, Integer>> entries) {
+        entries.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> t1, Map.Entry<String, Integer> t2) {
+                return t2.getValue().compareTo(t1.getValue());
+            }
+        });
+    }
 }
