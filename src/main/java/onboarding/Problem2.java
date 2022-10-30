@@ -1,6 +1,7 @@
 package onboarding;
 
 public class Problem2 {
+    private static final int NOT_FOUNDED = -1;
 
     /**
      * 연속되는 중복 문자의 idx 반환
@@ -14,7 +15,7 @@ public class Problem2 {
                 return i;
             }
         }
-        return -1;
+        return NOT_FOUNDED;
     }
 
     /**
@@ -25,11 +26,10 @@ public class Problem2 {
         int duplicateCount = 0;
         for (int i = idx; i < cryptogram.length(); i++) {
             char ch = cryptogram.charAt(i);
-            if (checkChar == ch) {
-                duplicateCount++;
-            } else {
-                break;
-            }
+
+            if(checkChar != ch) break;
+
+            duplicateCount++;
         }
         return duplicateCount;
     }
@@ -46,7 +46,7 @@ public class Problem2 {
         String processedCryptogram = cryptogram;
 
         int idx = getDuplicateCharIdx(processedCryptogram);
-        while (idx >= 0) {
+        while (idx != NOT_FOUNDED) {
             int duplicateCount = getDuplicateCharCount(processedCryptogram, idx);
 
             processedCryptogram = removeStringRange(processedCryptogram, idx, duplicateCount);
