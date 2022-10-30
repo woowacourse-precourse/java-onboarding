@@ -5,20 +5,49 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Problem7 {
 
     private static final int BOTH_KNOW_FRIEND_SCORE = 10;
     private static final int ANSWER_SIZE_MAX = 5;
+    private static final int ID_SIZE_MIN = 1;
+    private static final int ID_SIZE_MAX = 30;
+    private static final String LOWER_ALPHABET_REGEX = "^[a-z]*$";
 
-    public static List<String> solution(String mainCharacter, List<List<String>> friends, List<String> visitors) {
+    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        validateInput(user, friends, visitors);
         Map<String, List<String>> userAndFriends = parseFriendsInput(friends);
-        Map<String, Integer> userAndBothKnowFriendsScore = computeBothKnowFriendsScore(mainCharacter, userAndFriends);
+        Map<String, Integer> userAndBothKnowFriendsScore = computeBothKnowFriendsScore(user, userAndFriends);
         Map<String, Integer> userAndVisitScore = computeVisitScore(visitors);
         Map<String, Integer> userAndRecommendScore = computeRecommendScore(userAndBothKnowFriendsScore, userAndVisitScore);
 
-        return computeAnswer(mainCharacter, userAndFriends.get(mainCharacter), userAndRecommendScore);
+        return computeAnswer(user, userAndFriends.get(user), userAndRecommendScore);
+    }
+
+    private static void validateInput(String user, List<List<String>> friends, List<String> visitors) {
+        validateUser(user);
+    }
+
+    static void validateUser(String user) {
+        if (!isValidIdSize(user) || !isIdLowerAlphabet(user)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static boolean isValidIdSize(String id) {
+        if (id.length() >= ID_SIZE_MIN && id.length() <= ID_SIZE_MAX) {
+            return true;
+        }
+        return false;
+    }
+
+    private static boolean isIdLowerAlphabet(String id) {
+        if(Pattern.matches(LOWER_ALPHABET_REGEX, id)) {
+            return true;
+        }
+        return false;
     }
 
     static List<String> computeAnswer(String mainCharacter, List<String> mainCharacterFriends, Map<String, Integer> userAndRecommendScore) {

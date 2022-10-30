@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.IntStream;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -84,5 +85,17 @@ class Problem7Test {
             .isEqualTo("jun");
         Assertions.assertThat(answer.get(2))
             .isEqualTo("bedi");
+    }
+
+    @Test
+    void validateUser() {
+        Assertions.assertThatCode(() -> Problem7.validateUser("abc")).doesNotThrowAnyException();
+
+        StringBuilder stringBuilder = new StringBuilder();
+        IntStream.range(0, 31).forEach(i -> stringBuilder.append("a"));
+        Assertions.assertThatThrownBy(() -> Problem7.validateUser(""));
+        Assertions.assertThatThrownBy(() -> Problem7.validateUser("123"));
+        Assertions.assertThatThrownBy(() -> Problem7.validateUser("A"));
+        Assertions.assertThatThrownBy(() -> Problem7.validateUser(stringBuilder.toString()));
     }
 }
