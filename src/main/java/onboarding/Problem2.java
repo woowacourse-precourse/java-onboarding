@@ -32,4 +32,13 @@ public class Problem2 {
         }
         return false;
     }
+
+    public static void removeDuplicates(int num) {
+        cryptogramList.remove(num);
+    }
+
+    public static void addState(String state) {
+        stateRecord.add(state);
+    }
+
 }
