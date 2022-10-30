@@ -32,6 +32,15 @@ public class Problem7 {
         }
     }
 
+    private static void findVisitors(List<String> visitors) {
+        for (String visitor : visitors) {
+            if(isAlreadyMyFriend(visitor)) {
+                continue;
+            }
+            updateNewFriendScore(visitor, VISIT_SCORE);
+        }
+    }
+
     private static String checkMyFriendName(String user, List<String> friendInfo) {
         String userA = friendInfo.get(0);
         String userB = friendInfo.get(1);
@@ -55,6 +64,9 @@ public class Problem7 {
         if(newFriend == null) {
             return;
         }
+        if(isAlreadyMyFriend(newFriend)) {
+            return;
+        }
         int score = scoreType;
         if(newFriendScore.containsKey(newFriend)) {
             score += newFriendScore.get(newFriend);
@@ -74,6 +86,13 @@ public class Problem7 {
             return userA;
         }
         return null;
+    }
+
+    private static Boolean isAlreadyMyFriend(String friend) {
+        if(myFriends.contains(friend)) {
+            return true;
+        }
+        return false;
     }
 
 }
