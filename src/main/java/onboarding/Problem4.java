@@ -1,8 +1,5 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Problem4 {
 
     public static String solution(String sentence) {
@@ -17,37 +14,14 @@ public class Problem4 {
     }
 
     static String getReverseSentence(String sentence) {
-        List<Character> characterList = convertStringToArrayList(sentence);
-        List<Character> reverseCharacterList = getReverseCharacterList(characterList);
-        String reverseSentence = joinCharactersInArrayList(reverseCharacterList);
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < sentence.length(); i++) {
+            char character = sentence.charAt(i);
+            char reversedCharacter = Dictionary.getReverseCharacter(character);
+            builder.append(reversedCharacter);
+        }
+        String reverseSentence = builder.toString();
         return reverseSentence;
-    }
-
-    static List<Character> convertStringToArrayList(String sentence) {
-        char[] characterArray = sentence.toCharArray();
-        List<Character> characterList = new ArrayList<>();
-        for (char character : characterArray) {
-            characterList.add(character);
-        }
-        return characterList;
-    }
-
-    static List<Character> getReverseCharacterList(List<Character> characterList) {
-        List<Character> reverseCharacterList = new ArrayList<>();
-        for (int i = 0; i < characterList.size(); i++) {
-            char character = characterList.get(i);
-            char reverseCharacter = Dictionary.getReverseCharacter(character);
-            reverseCharacterList.add(i, reverseCharacter);
-        }
-        return reverseCharacterList;
-    }
-
-    static String joinCharactersInArrayList(List<Character> characterList) {
-        String[] stringArray = characterList.stream()
-            .map(character -> String.valueOf(character))
-            .toArray(String[]::new);
-        String result = String.join("", stringArray);
-        return result;
     }
 
     static void validate(String sentence) throws Exception {
@@ -61,20 +35,18 @@ public class Problem4 {
 class Dictionary {
 
     static char getReverseCharacter(char character) {
-        int ascii = character;
-        int reverseAscii = getReverseByAscii(ascii);
-        char reverseCharacter = (char) reverseAscii;
+        char reverseCharacter = getReverseByAscii(character);
         return reverseCharacter;
     }
 
-    static int getReverseByAscii(int ascii) {
-        int reverseAscii = ascii;
-        if (ascii >= 65 && ascii <= 90) {
-            reverseAscii = 90 - (ascii - 65);
+    static char getReverseByAscii(char character) {
+        char reverseCharacter = character;
+        if ('a' <= character && character <= 'z') {
+            reverseCharacter = (char)('a' + 'z' - character);
         }
-        if (ascii >= 97 && ascii <= 122) {
-            reverseAscii = 122 - (ascii - 97);
+        if ('A' <= character && character <= 'Z') {
+            reverseCharacter = (char)('A' + 'Z' - character);
         }
-        return reverseAscii;
+        return reverseCharacter;
     }
 }
