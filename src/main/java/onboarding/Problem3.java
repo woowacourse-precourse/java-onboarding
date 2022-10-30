@@ -5,6 +5,8 @@ import java.util.List;
 
 public class Problem3 {
     public static int solution(int number) {
+        validateNumberRange(number);
+
         int answer = 0;
 
         Integer[] memo = new Integer[number + 1];
@@ -30,6 +32,12 @@ public class Problem3 {
             }
 
             memo[i] = memo[i - 1] + clapCnt;
+        }
+    }
+
+    private static void validateNumberRange(int number) {
+        if(number < 1 || number > 10000) {
+            throw new IllegalArgumentException("number는 1이상 10000이하여야 합니다.");
         }
     }
 }
