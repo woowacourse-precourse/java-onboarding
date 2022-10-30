@@ -20,7 +20,7 @@ public class Problem6 {
     private static final String CREW_EMAIL_REGEX = "^[a-zA-Z0-9]+@email.com$";
     private static final int MIN_CREW_EMAIL_LENGTH = 11;
     private static final int MAX_CREW_EMAIL_LENGTH = 20;
-    private static final String CREW_NICKNAME_REGEX = "^[가-힣]+$";
+    private static final String CREW_NICKNAME_REGEX = "^[ㄱ-ㅎㅏ-ㅣ가-힣]+$";
     private static final int MIN_CREW_NICKNAME_LENGTH = 1;
     private static final int MAX_CREW_NICKNAME_LENGTH = 20;
 
