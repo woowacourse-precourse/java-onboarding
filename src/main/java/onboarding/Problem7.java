@@ -143,7 +143,22 @@ public class Problem7 {
             System.out.println("[key]:" + entry.getKey() + ", [value]:" + entry.getValue());
         }
 
-        
+        // 이제 전체적  priorityNotFriendMap과 cntVisitorMap의 값을 합쳐야합니다.
+        Map<String, Integer> priorityAllNotFriendMap = new HashMap<>();
+        priorityAllNotFriendMap.putAll(priorityNotFriendMap);
+        for (Map.Entry<String, Integer> entry : cntNotFrendsVisitorMap.entrySet()) {
+            String nameNotFrendsVisitor = entry.getKey();
+            int priorityNotFrendsVisitor = entry.getValue();
+            priorityAllNotFriendMap.put(nameNotFrendsVisitor, priorityNotFrendsVisitor);
+        }
+
+        System.out.println();
+        System.out.println("priorityAllNotFriendMap의 키 값");
+        for (Map.Entry<String, Integer> entry : priorityAllNotFriendMap.entrySet()) {
+            System.out.println("[key]:" + entry.getKey() + ", [value]:" + entry.getValue());
+        }
+
+
         return answer;
     }
 
