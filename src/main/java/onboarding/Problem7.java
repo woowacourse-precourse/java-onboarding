@@ -7,6 +7,7 @@ public class Problem7 {
         List<String> answer = makeFriendsList(user, friends, visitors);
         return answer;
     }
+
     // 전체 계산 메서드
     public static List<String> makeFriendsList(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, Integer> friendsAndScoreMap = createFriendsAndScoreMap(user, friends, visitors);
@@ -14,6 +15,7 @@ public class Problem7 {
         return friendsList;
 
     }
+
     // 친구추천 목록 만드는 메서드
     public static List<String> commendList(String user, List<List<String>> friends, List<String> visitors) {
         Set<String> totalFriends = new HashSet<>();     // 친구 추천 목록
@@ -71,6 +73,7 @@ public class Problem7 {
 
     }
 
+    // 점수 이름 별로 정렬 -> List
     public static List<String> sortMapToList(Map<String, Integer> scoreMap) {
         // Map.Entry 리스트 작성
         List<Map.Entry<String, Integer>> list_entries = new ArrayList<Map.Entry<String, Integer>>(scoreMap.entrySet());

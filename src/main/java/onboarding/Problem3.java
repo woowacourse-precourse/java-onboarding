@@ -6,6 +6,7 @@ public class Problem3 {
 
         return answer;
     }
+
     // 3 6 9 계산하는 메서드
     public static int clapCount(int number) {
         int count = 0;

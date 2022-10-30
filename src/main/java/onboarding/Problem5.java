@@ -12,6 +12,7 @@ public class Problem5 {
         return answer;
     }
 
+    // 돈 개수 계산 메서드
     public static List<Integer> moneyCalculator(int money) {
         List<Integer> answer = new ArrayList<>();
         // [5만,1만,5천,1천,5백,1백,50,10,1]
