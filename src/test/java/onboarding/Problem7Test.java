@@ -77,4 +77,34 @@ class Problem7Test {
 
     }
 
+    @Test
+    void 타임라인포인트테스트() {
+        String user = "hansu";
+
+        List<List<String>> friends = List.of(
+                List.of("hansu", "sungjoon"),
+                List.of("hansu", "jiwon"),
+                List.of("sungjoon", "chaemin"),
+                List.of("minjae", "hansu"),
+                List.of("jaewoo", "minjae"),
+                List.of("hansu", "jaewoo")
+        );
+        Map<String, List<String>> relationShips = Problem7.makeRelationShips(friends);
+        List<String> userFriends = Problem7.fillUserFriends(user, relationShips);
+
+        List<String> visitors = List.of("hansu", "sungjoon", "sungjoon", "minjae", "jiwon", "invidam", "invidam",
+                "sonny");
+        Map<String, Integer> result = new HashMap<String, Integer>();
+        result.put("hansu", 0);
+        result.put("invidam", 2);
+        result.put("sonny", 1);
+        result.put("jiwon", 0);
+        result.put("minjae", 0);
+        result.put("sungjoon", 0);
+
+        assertThat(Problem7.enrichPointFrom(visitors, user, userFriends)).isEqualTo(result);
+
+    }
+
+
 }
