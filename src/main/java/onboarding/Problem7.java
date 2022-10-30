@@ -18,8 +18,6 @@ public class Problem7 {
     public static final int MAXIMUM_ID_LENGTH = 30;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
         validateUserRange(user);
         validateFriends(friends);
         validateVisitors(visitors);
@@ -31,6 +29,7 @@ public class Problem7 {
 
         List<String> recommendFriends = getRecommendFriends(users, user);
         validateRecommendFriends(recommendFriends);
+        return recommendFriends;
     }
 
     private static void validateUserRange(String user) {
@@ -154,6 +153,18 @@ public class Problem7 {
 
         return getTop5Friends(queue);
     }
+
+    private static List<String> getTop5Friends(Queue<User> queue) {
+        List<String> friends = new ArrayList<>();
+
+        for (int i = 0; !queue.isEmpty() && i < MAX_RECOMMEND_NUM; i++) {
+            User friend = queue.poll();
+            friends.add(friend.name);
+        }
+
+        return friends;
+    }
+
     private static void validateRecommendFriends(List<String> recommendFriends) {
         if (recommendFriends.isEmpty()) {
             throw new IllegalArgumentException();
