@@ -85,10 +85,7 @@ class Problem1 {
     }
 
     static boolean isFirstOrLastPage(int leftNum, int rightNum) {
-        if (leftNum <= FIRST_PAGE) {
-            return false;
-        }
-        if (rightNum >= LAST_PAGE) {
+        if (leftNum <= FIRST_PAGE || rightNum >= LAST_PAGE) {
             return false;
         }
 
