@@ -8,6 +8,7 @@ public class Problem3 {
             String input = Integer.toString(i);
             answer = getAnswer(answer, input);
         }
+
         return answer;
     }
 
@@ -18,6 +19,7 @@ public class Problem3 {
                 answer++;
             }
         }
+
         return answer;
     }
 
