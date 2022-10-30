@@ -94,5 +94,15 @@ public class Problem7 {
         return recommendList;
     }
 
+    /**
+     * 입력반은 recommendList를 comparator를 사용하여 추천점수가 높은순으로 정렬한 뒤 recommendEntryList를 반환합니다.
+     * @param {Map<String, Integer>} recommendList
+     * @return entryList
+     */
+    public static LinkedList<Map.Entry<String, Integer>> sortByScore(Map<String, Integer> recommendList) {
+        LinkedList<Map.Entry<String, Integer>> recommendEntryList = new LinkedList<>(recommendList.entrySet());
+        recommendEntryList.sort((o1, o2) -> o2.getValue() - o1.getValue());
+        return recommendEntryList;
+    }
 
 }

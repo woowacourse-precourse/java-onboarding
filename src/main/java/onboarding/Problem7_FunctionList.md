@@ -25,7 +25,9 @@
 #### addScoreByVisitor(List<String> visitors, List<String> userFriendList,Map<String, Integer> recommendList) --> Map<String, Integer> recommendList
 - for문을 수행하며 제공된 visitor 요소 중 userFriendList에 없는 사람이면 recommendList에서 조회 한 뒤 추천점수를 1 증가합니다.
 
-### 6. 추천목록을 추천점수가 높은순으로 정렬, 이름이 같으면 이름순으로 정렬
+### 6. 추천목록을 추천점수가 높은순으로 정렬
+#### sortByScore(Map<String, Integer> recommendList) --> LinkedList<Map.Entry<String, Integer>> recommendEntryList
+- 입력받은 recommendList를 comparator 기능을 사용하여 recommendList의 value가 높은순으로 정렬한뒤 recommendEntryList를 반환합니다.
 
 ### 7. 추천목록의 크기가 5를 초과하면 추천점수가 높은 5명만을 반환
 

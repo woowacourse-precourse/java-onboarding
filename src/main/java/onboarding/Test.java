@@ -22,6 +22,6 @@ public class Test {
         recommendList = Problem7.updateRecommendList(visitors, userFriendList, recommendList);
         recommendList = Problem7.addScoreByFriends(friends, userFriendList, recommendList);
         recommendList = Problem7.addScoreByVisitor(visitors, userFriendList, recommendList);
-        System.out.println(recommendList);
+
     }
 }
