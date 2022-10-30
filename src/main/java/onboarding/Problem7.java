@@ -30,4 +30,17 @@ public class Problem7 {
         }
         return friendList;
     }
+
+    //친구 맵 만들기
+    public static Map<String,List<String>> makeFriendMap(Set<String> userFriends, List<List<String>> friends){
+        Map<String,List<String>> friendMap = new HashMap<>();
+        for (String friend : userFriends){
+            List<String> friendList =  makeFriendList(userFriends, friend, friends);
+            friendMap.put(friend,friendList);  //수정필요. 친구와, 친구관계로 ->친구 리스트 만들기
+        }
+
+        System.out.println(friendMap);
+        return friendMap;
+    }
+
 }
