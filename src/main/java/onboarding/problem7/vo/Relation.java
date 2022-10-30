@@ -1,6 +1,8 @@
 package onboarding.problem7.vo;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Consumer;
 
 public class Relation {
@@ -28,5 +30,19 @@ public class Relation {
 
     public String getAnotherMemberName() {
         return memberNames.get(1);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Relation)) return false;
+        Relation relation = (Relation) o;
+        return memberNames.size() == relation.memberNames.size() &&
+                new HashSet<>(memberNames).containsAll(relation.memberNames);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(memberNames);
     }
 }

@@ -10,6 +10,7 @@ import java.util.stream.Stream;
 import onboarding.problem2.validation.CryptogramValidator;
 import onboarding.problem3.validation.ThreeSixNineValidator;
 import onboarding.problem6.validation.UserValidator;
+import onboarding.problem7.validation.FriendValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -591,14 +592,14 @@ class ApplicationTest {
         void case3() {
             String user = "mrko";
             List<List<String>> friends = List.of(
-                List.of("A", "mrko"),
-                List.of("A", "C"),
-                List.of("B", "A"),
-                List.of("B", "D"),
-                List.of("A", "E")
+                List.of("a", "mrko"),
+                List.of("a", "c"),
+                List.of("b", "a"),
+                List.of("b", "d"),
+                List.of("a", "e")
             );
-            List<String> visitors = List.of("C", "B", "E");
-            List<String> result = List.of("B", "C", "E");
+            List<String> visitors = List.of("c", "b", "e");
+            List<String> result = List.of("b", "c", "e");
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
 
@@ -617,7 +618,11 @@ class ApplicationTest {
             List<String> visitors = List.of("C", "B", "E");
             assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("user 의 길이는 1 이상 30 이하여야 합니다.");
+                    .hasMessage(
+                            String.format(FriendValidator.INVALID_ID_LENGTH_MESSAGE_FORMAT,
+                                    FriendValidator.MIN_ID_LENGTH_RANGE,
+                                    FriendValidator.MAX_ID_LENGTH_RANGE)
+                    );
         }
 
         @Test
@@ -635,7 +640,11 @@ class ApplicationTest {
             List<String> visitors = List.of("C", "B", "E");
             assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("user 의 길이는 1 이상 30 이하여야 합니다.");
+                    .hasMessage(
+                            String.format(FriendValidator.INVALID_ID_LENGTH_MESSAGE_FORMAT,
+                                    FriendValidator.MIN_ID_LENGTH_RANGE,
+                                    FriendValidator.MAX_ID_LENGTH_RANGE)
+                    );
         }
 
         @Test
@@ -653,7 +662,12 @@ class ApplicationTest {
             List<String> visitors = List.of("C", "B", "E");
             assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("user 의 길이는 1 이상 30 이하여야 합니다.");
+                    .hasMessage(
+                            String.format(
+                                    FriendValidator.INVALID_ID_LENGTH_MESSAGE_FORMAT,
+                                    FriendValidator.MIN_ID_LENGTH_RANGE,
+                                    FriendValidator.MAX_ID_LENGTH_RANGE
+                            ));
         }
 
         @Test
@@ -664,7 +678,11 @@ class ApplicationTest {
             List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
             assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("friend 배열의 길이는 1 이상 10,000 이하여야 합니다.");
+                    .hasMessage(String.format(
+                            FriendValidator.INVALID_RELATIONS_SIZE_MESSAGE_FORMAT,
+                            FriendValidator.MIN_RELATION_SIZE,
+                            FriendValidator.MAX_RELATION_SIZE
+                    ));
         }
 
         @Test
@@ -675,7 +693,11 @@ class ApplicationTest {
             List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
             assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("friend 배열의 길이는 1 이상 10,000 이하여야 합니다.");
+                    .hasMessage(String.format(
+                            FriendValidator.INVALID_RELATIONS_SIZE_MESSAGE_FORMAT,
+                            FriendValidator.MIN_RELATION_SIZE,
+                            FriendValidator.MAX_RELATION_SIZE
+                    ));
         }
 
         @Test
@@ -689,7 +711,11 @@ class ApplicationTest {
             List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
             assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("friend 배열의 길이는 1 이상 10,000 이하여야 합니다.");
+                    .hasMessage(String.format(
+                            FriendValidator.INVALID_RELATIONS_SIZE_MESSAGE_FORMAT,
+                            FriendValidator.MIN_RELATION_SIZE,
+                            FriendValidator.MAX_RELATION_SIZE
+                    ));
         }
 
         @Test
@@ -706,7 +732,10 @@ class ApplicationTest {
             List<String> visitors = List.of("apple", "apple", "donut", "shakevan");
             assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("friend 배열의 길이는 1 이상 10,000 이하여야 합니다.");
+                    .hasMessage(String.format(
+                            FriendValidator.INVALID_RELATION_SIZE_MESSAGE_FORMAT,
+                            FriendValidator.VALID_RELATION_SIZE)
+                    );
         }
 
         @Test
@@ -715,7 +744,7 @@ class ApplicationTest {
             String user = "mrko";
             List<List<String>> friends = List.of(
                     List.of("donut", "mrko"),
-                    List.of("shakevan", "mrko", "apple"),
+                    List.of("shakevan", "mrko"),
                     List.of("melon", "mrko"),
                     List.of("mrko", "apple"),
                     List.of("banana", "mrko")
@@ -723,21 +752,36 @@ class ApplicationTest {
             List<String> visitors = null;
             assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("visitor 배열의 길이는 0 이상 10,000 이하여야 합니다.");
+                    .hasMessage(String.format(
+                            FriendValidator.INVALID_VISITORS_SIZE_MESSAGE_FORMAT,
+                            FriendValidator.MIN_VISITORS_SIZE,
+                            FriendValidator.MAX_VISITORS_SIZE
+                    ));
         }
 
         @Test
         @DisplayName("visitor 배열이 10,000을 넘어가면 예외 발생")
         void test127() {
             String user = "mrko";
-            List<List<String>> friends = new ArrayList<>();
+            List<List<String>> friends = List.of(
+                    List.of("donut", "andole"),
+                    List.of("donut", "jun"),
+                    List.of("donut", "mrko"),
+                    List.of("shakevan", "andole"),
+                    List.of("shakevan", "jun"),
+                    List.of("shakevan", "mrko")
+            );
+            List<String> visitors = new ArrayList<>();
             for (int i = 0; i < 10_001; i++) {
-                friends.add(List.of("a", "a"));
+                visitors.add("a");
             }
-            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
             assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("friend 배열의 길이는 1 이상 10,000 이하여야 합니다.");
+                    .hasMessage(String.format(
+                            FriendValidator.INVALID_VISITORS_SIZE_MESSAGE_FORMAT,
+                            FriendValidator.MIN_VISITORS_SIZE,
+                            FriendValidator.MAX_VISITORS_SIZE
+                    ));
         }
 
         @Test
@@ -755,13 +799,13 @@ class ApplicationTest {
             List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
             assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("사용자 아이디는 알파벳 소문자여야 합니다.");
+                    .hasMessage(FriendValidator.INVALID_ID_FORMAT_MESSAGE);
         }
 
         @Test
         @DisplayName("동일한 친구 관계가 중복해서 주어지면 예외 발생")
         void test16() {
-            String user = "Mkdr";
+            String user = "mkdr";
             List<List<String>> friends = List.of(
                     List.of("andole", "donut"),
                     List.of("donut", "andole"),
@@ -773,7 +817,7 @@ class ApplicationTest {
             List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
             assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("동일한 친구 관계를 중복해서 제공할 수 없습니다.");
+                    .hasMessage(FriendValidator.DUPLICATING_RELATION_MESSAGE);
         }
     }
 }
