@@ -41,9 +41,6 @@ public class Problem4 {
                 // 3-2. 알파벳 변환하기 ( 적용 )
                 wordList.set(idx,alpha);
             }
-
-            // 변환 적용 결과 확인
-            System.out.println(wordList);
         }
     }
 
@@ -56,6 +53,17 @@ public class Problem4 {
         return alpha;
     }
 
+    // 4. 문자 단위 리스트를 문자열로 변환하기
+    static String getTransStr(List<Character> wordList)
+    {
+        String temp = "";
+
+        for(Character value : wordList)
+            temp += value;
+
+        return temp;
+    }
+
     public static String solution(String word) {
         String answer = "";
 
@@ -64,6 +72,12 @@ public class Problem4 {
 
         // 문자 확인
         getCheckAlpha(wordList);
+
+        // 변환 결과 문자열화
+        answer = getTransStr(wordList);
+
+        // 문자열화 결과 확인
+        System.out.println(answer);
 
         return answer;
     }
