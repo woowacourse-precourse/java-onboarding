@@ -21,3 +21,7 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+
+# 기능 목록
+1. 중복제거하는 반복문 메소드 생성
