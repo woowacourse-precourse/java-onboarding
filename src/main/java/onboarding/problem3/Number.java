@@ -15,7 +15,7 @@ public class Number {
     }
 
     public static Integer calculateContainThreeOrSixOrNineCount(Integer number) {
-        String numberString = String.valueOf(number)
+        String numberString = String.valueOf(number);
         return (int) Arrays.stream(numberString.split(""))
                 .filter(containNumber::contains)
                 .count();
