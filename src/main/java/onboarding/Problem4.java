@@ -2,20 +2,19 @@ package onboarding;
 
 public class Problem4 {
 	public static String solution(String word) {
-		String answer = "";
+		StringBuilder answer = new StringBuilder();
 		for (char ch : word.toCharArray()) {
-			answer += converter(ch);
+			answer.append(converter(ch));
 		}
-		return answer;
+		return answer.toString();
 	}
 
 	private static char converter(char alphabet) {
 		if ('a' <= alphabet && 'z' >= alphabet) {
-			alphabet = (char)('z' + 'a' - alphabet);
-		} else if ('A' <= alphabet && 'Z' >= alphabet) {
-			alphabet = (char)('Z' + 'A' - alphabet);
-		} else {
-			return alphabet;
+			return (char)('z' + 'a' - alphabet);
+		}
+		if ('A' <= alphabet && 'Z' >= alphabet) {
+			return (char)('Z' + 'A' - alphabet);
 		}
 		return alphabet;
 	}
