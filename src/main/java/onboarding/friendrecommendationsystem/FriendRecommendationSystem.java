@@ -62,4 +62,23 @@ public class FriendRecommendationSystem {
 	public List<String> getFriendsOf(final String user) {
 		return friendMap.getOrDefault(user, Collections.emptyList());
 	}
+
+	public int getNumberOfFriendsKnowWith(final String other) {
+		if (user.equals(other)) {
+			return 0;
+		}
+		int numberOfFriends = 0;
+		for (String friend : getFriendsOf(other)) {
+			if (checkUserContains(friend)) {
+				numberOfFriends++;
+			}
+		}
+		return numberOfFriends;
+	}
+
+	private boolean checkUserContains(final String friend) {
+		return !user.equals(friend)
+			&& getFriendsOf(user).stream()
+			.anyMatch(userFriend -> userFriend.equals(friend));
+	}
 }

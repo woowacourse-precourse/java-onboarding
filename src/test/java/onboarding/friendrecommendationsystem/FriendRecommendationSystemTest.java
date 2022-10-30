@@ -22,12 +22,27 @@ public class FriendRecommendationSystemTest {
 
 	static List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
 
+	static FriendRecommendationSystem system
+		= new FriendRecommendationSystem(user, friends, visitors);
+
 	@DisplayName("특정 유저의 친구 목록 반환 테스트")
 	@Test
 	void 친구_목록_반환() {
-		FriendRecommendationSystem system
-			= new FriendRecommendationSystem(user, friends, visitors);
 		List<String> friends = system.getFriendsOf("mrko");
 		assertThat(friends).isEqualTo(List.of("donut", "shakevan"));
+	}
+
+	@DisplayName("사용자와 함께 아는 친구의 수 반환 테스트")
+	@Test
+	void 함계_아는_친구_수() {
+		assertThat(
+			system.getNumberOfFriendsKnowWith("andole")
+		).isEqualTo(2);
+		assertThat(
+			system.getNumberOfFriendsKnowWith("shakevan")
+		).isEqualTo(0);
+		assertThat(
+			system.getNumberOfFriendsKnowWith("mrko")
+		).isEqualTo(0);
 	}
 }
