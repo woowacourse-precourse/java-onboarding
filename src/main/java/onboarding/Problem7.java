@@ -3,6 +3,7 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Problem7 {
 
@@ -45,6 +46,29 @@ public class Problem7 {
         }
     }
 
+    // 2-2. 관계 점수 저장
+    static List<List<String>> addScoreShip(List<String> friFriendList, List<List<String>> friendRecoList)
+    {
+        for(String name : friFriendList)
+        {
+            int count = 0;
+            count = Collections.frequency(friFriendList, name) * 10;
+            
+            // 이름, 점수 정보 리스트
+            List<String> infoScore = new ArrayList<>();
+            infoScore.add(name);
+            infoScore.add(Integer.toString(count));
+
+            // 추천 점수 저장
+            friendRecoList.add(infoScore);
+        }
+
+        // 리스트 내 중복 제거
+        List<List<String>> tempResult = friendRecoList.stream().distinct().collect(Collectors.toList());
+
+        return tempResult;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
@@ -54,14 +78,20 @@ public class Problem7 {
         // 친구의 친구 리스트
         List<String> friFriendList = new ArrayList<>();
 
+        // 친구 추천 리스트
+        List<List<String>> friendRecoList = new ArrayList<>();
+
         // 나의 친구 확인
         getCheckFriend(myFriendsList,user,friends);
 
         // 친구의 친구 확인 & 저장
         getCheckFriToFri(friFriendList,user,myFriendsList,friends);
 
-        // 친구의 친구 리스트 결과 확인
-        System.out.println(friFriendList);
+        // 친구의 친구 관계 점수 저장
+        List<List<String>> infoScoreList = addScoreShip(friFriendList,friendRecoList);
+
+        // 친구 관계 점수 결과 확인
+        System.out.println(infoScoreList);
 
         return answer;
     }
@@ -71,7 +101,7 @@ public class Problem7 {
 // 1. 나와의 친구 관계 파악하기
 //  : 나의 친구 리스트 생성 후 친구 저장
 // 2. 모든 친구 관계에서 함께 아는 친구 점수 매기기
-//  : 친구의 친구 리스트를 생성 후 저장
+//  : 함께 아는 친구 찾기
 //  : [명단,점수] 리스트 형식 생성 후 관계 점수 저장
 // 3. 방문자 점수 매기기
 //  : [명단,점수] 리스트에 방문 점수 매기기
