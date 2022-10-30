@@ -5,10 +5,35 @@ import java.util.List;
 
 public class Problem6 {
     public static final int LETTERS = 2;
+    public static final int EMAIL = 0;
+    public static final int NICKNAME = 1;
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
+    }
+
+    public static List<String> getEmails(List<List<String>> forms) {
+        List<String> emails = new ArrayList<>();
+
+        for (int prev = 0; prev < forms.size(); prev++) {
+            setEmails(forms, emails, prev);
+        }
+
+        return emails;
+    }
+
+    private static void setEmails(List<List<String>> forms, List<String> emails, int prev) {
+        for (int next = prev + 1; next < forms.size(); next++) {
+            String nickname = forms.get(prev).get(NICKNAME);
+            String compareNickname = forms.get(next).get(NICKNAME);
+
+            if (isDeduplication(nickname, compareNickname)) {
+                emails.add(forms.get(prev).get(EMAIL));
+                emails.add(forms.get(next).get(EMAIL));
+                break;
+            }
+        }
     }
 
     private static boolean isDeduplication(String nickname, String compareNickname) {
