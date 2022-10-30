@@ -4,8 +4,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem7 {
-
-    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+    public static ArrayList solution(String user, List<List<String>> friends, List<String> visitors) {
         // 1. 친구 목록을 돌면서 친구 관계 그래프 딕셔너리 만들기 (양방향 그래프)
         Map<String, List<String>> friendMap = new HashMap<>();
         for (List<String> friend : friends){
@@ -20,7 +19,6 @@ public class Problem7 {
             else
                 friendMap.put(friend2, new ArrayList<>(List.of(friend1)));
         }
-        //System.out.println(friendMap);
 
         // 2. 친구 관계 그래프 돌면서 친구 포함 관계에 따라 점수 계산하기
         List<String> usersFriendList = friendMap.getOrDefault(user, Collections.emptyList());
@@ -38,7 +36,6 @@ public class Problem7 {
             }
         }
         friendScore.replaceAll((u, v) -> friendScore.get(u) * 10);
-        //System.out.println(friendScore);
 
         // 3. 방문자 목록 돌면서 방문 횟수에 따라 점수 계산하기
         Map<String, Integer> visitorScore = new HashMap<>();
@@ -47,7 +44,6 @@ public class Problem7 {
                 continue;
             visitorScore.put(visitor, visitorScore.containsKey(visitor) ? visitorScore.get(visitor) + 1 : 1);
         }
-        //System.out.println(visitorScore);
 
         // 4. 합산 후 정렬하고 return
         friendScore.forEach((k, v) -> visitorScore.merge(k, v, Integer::sum));
@@ -60,8 +56,7 @@ public class Problem7 {
                         Map.Entry::getKey,
                         Map.Entry::getValue,
                         (oldValue, newValue) -> oldValue, LinkedHashMap::new));
-        //System.out.println(sortedMap);
 
-        return new ArrayList<>(sortedMap.keySet());
+        return sortedMap.keySet().stream().limit(5).collect(Collectors.toCollection(ArrayList::new));
     }
 }
