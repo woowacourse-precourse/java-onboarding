@@ -7,13 +7,19 @@ class Problem1 {
         int answer = 0;
         int pobiNumber = -1, crongNumber = -1;
 
+        //변수를 쉽게 알아보기 위해 추가
+        int pobiLeftNumber = pobi.get(0);
+        int pobiRightNumber = pobi.get(1);
+        int crongLeftNumber = crong.get(0);
+        int crongRightNumber = crong.get(1);
+
         //페이지 오류
-        if(pobi.get(0) + 1 != pobi.get(1) || crong.get(0) + 1 != crong.get(1)){
+        if(pobiLeftNumber + 1 != pobiRightNumber || crongLeftNumber + 1 != crongRightNumber){
             return -1;
         }
 
-        pobiNumber = Math.max(getNumberMax(pobi.get(0)), getNumberMax(pobi.get(1)));
-        crongNumber = Math.max(getNumberMax(crong.get(0)), getNumberMax(crong.get(1)));
+        pobiNumber = Math.max(getNumberMax(pobiLeftNumber), getNumberMax(pobiRightNumber));
+        crongNumber = Math.max(getNumberMax(crongLeftNumber), getNumberMax(crongRightNumber));
 
         if(pobiNumber > crongNumber){
             answer = 1;
