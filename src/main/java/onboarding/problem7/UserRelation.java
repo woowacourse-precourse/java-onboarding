@@ -21,27 +21,27 @@ public class UserRelation {
         if (relation.size() != 2) {
             throw new Exception("관계는 두명의 사용자만 맺을 수 있습니다");
         }
-        if (!userRelation.containsKey(relation.get(0))) {
-            userRelation.put(relation.get(0), new HashSet<>());
-        }
-        userRelation.get(relation.get(0)).add(relation.get(1));
 
-        if (!userRelation.containsKey(relation.get(1))) {
-            userRelation.put(relation.get(1), new HashSet<>());
-        }
-        userRelation.get(relation.get(1)).add(relation.get(0));
-
+        findRelationsByName(relation.get(0)).add(relation.get(1));
+        findRelationsByName(relation.get(1)).add(relation.get(0));
     }
 
     public static List<String> getFriends(String username) {
-        return userRelation.get(username).stream().collect(Collectors.toList());
+        return findRelationsByName(username).stream().collect(Collectors.toList());
     }
 
     public static boolean hasRelation(String targetName, String compareName) {
-        return userRelation.get(targetName).contains(compareName);
+        return findRelationsByName(targetName).contains(compareName);
     }
 
     public static void clear() {
         userRelation.clear();
+    }
+
+    private static Set<String> findRelationsByName(String name) {
+        if (!userRelation.containsKey(name)) {
+            userRelation.put(name, new HashSet<>());
+        }
+        return userRelation.get(name);
     }
 }

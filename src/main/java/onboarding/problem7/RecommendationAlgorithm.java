@@ -36,7 +36,6 @@ public class RecommendationAlgorithm {
             }
             scores.put(visitorName, scores.get(visitorName).add(1));
         }
-
         return returnLimitedNumOfUsersToPriority(scores, 5);
     }
 
@@ -45,9 +44,13 @@ public class RecommendationAlgorithm {
     }
 
     private static List<String> returnLimitedNumOfUsersToPriority(Map<String, Score> scores, int limitNum) {
-        List<Score> collect = scores.values().stream().collect(Collectors.toList());
-        Collections.sort(collect, Collections.reverseOrder());
-        List<String> recommendedUsersNames = collect.stream().map(score -> score.getUserName()).collect(Collectors.toList());
+        List<Score> collect = scores.values().stream()
+                .filter(score -> score.getScore() != 0)
+                .sorted(Collections.reverseOrder())
+                .collect(Collectors.toList());
+        List<String> recommendedUsersNames = collect.stream()
+                .map(Score::getUserName)
+                .collect(Collectors.toList());
         if(recommendedUsersNames.size() > limitNum) {
             return recommendedUsersNames.subList(0, limitNum);
         }

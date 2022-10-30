@@ -541,5 +541,28 @@ class ApplicationTest {
             List<String> result = List.of("bedi","andole", "jun");
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
+
+        /**
+         * 출처 : 우테코 슬랙 테스트-케이스 채널의 전동혁(jundonghyuk)님
+         */
+        @Test
+        @DisplayName("Target이 아무와도 친구를 맺지 않았을 때, 정상 결과가 반환된다")
+        void case12() throws Exception {
+            String user = "hello";
+            List<List<String>> friends = List.of(
+                    List.of("andole", "jun"),
+                    List.of("andole", "bedi"),
+                    List.of("jun", "shakevan"),
+                    List.of("jun", "kane"),
+                    List.of("jun", "sam"),
+                    List.of("bedi", "shakevan"),
+                    List.of("bedi", "anne"),
+                    List.of("bedi", "sam"),
+                    List.of("anne", "mrko")
+            );
+            List<String> visitors = List.of("donut", "anne", "mrko", "mrko", "sam");
+            List<String> result = List.of("mrko", "anne", "donut", "sam");
+            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+        }
     }
 }
