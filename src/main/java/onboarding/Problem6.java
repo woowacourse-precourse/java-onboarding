@@ -1,7 +1,9 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Problem6 {
@@ -20,6 +22,7 @@ public class Problem6 {
                 .collect(Collectors.toList());
         return result;
     }
+
     /**
      * @param str : 문자열
      * @param length : 자연수
@@ -36,5 +39,22 @@ public class Problem6 {
         }
         return result;
     }
+
+    /**
+     * @param selfIndex : 0을 포함한 양의 정수(자신의 인덱스)
+     * @param strList : 비교 하고싶은 list
+     * @param substring : 포함 됐는지 확인하고 싶은 문자열
+     * @return  substring이 strList내에서 자신의 인덱스를 제외하고 존재할 경우 해당 인덱스를 List에 담아 반환
+     */
+    private static Set<Integer> getIndexListOfContainSubString(int selfIndex, List<String> strList, String substring){
+        Set<Integer> result = new HashSet<>();
+        for(int i=0; strList.size() > i; i++){
+            if(strList.get(i).contains(substring) && i != selfIndex){
+                result.add(i);
+            }
+        }
+        return result;
+    }
+
 
 }
