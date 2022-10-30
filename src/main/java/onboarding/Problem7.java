@@ -95,4 +95,8 @@ public class Problem7 {
                 .limit(RETURN_MAX_SIZE)
                 .collect(Collectors.toList());
     }
+
+    private static boolean validateUserLength(String userId) {
+        return (userId.length() >= 1 && userId.length() <= 30);
+    }
 }
