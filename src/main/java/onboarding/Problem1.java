@@ -14,6 +14,14 @@ class Problem1 {
          *
          * */
 
+        if (check_continuous(pobi) && check_continuous(crong)) {
+            int pobi_max = caculate_max(pobi);
+            int crong_max = caculate_max(crong);
+            if(pobi_max > crong_max) answer = 1;
+            if(pobi_max < crong_max) answer =  2;
+            if(pobi_max == crong_max) answer = 0;
+        }
+
 
         /*
          * 기능 요구 사항
