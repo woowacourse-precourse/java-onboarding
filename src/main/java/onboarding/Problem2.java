@@ -58,11 +58,11 @@ public class Problem2 {
             }
             return answer;
         } catch (LengthException e) {
-            System.err.println("check the length of given cryptogram: ");
-            return cryptogram;
+            System.err.println("check the length of given cryptogram: " + cryptogram);
+            return "";
         } catch (CaseException e) {
-            System.err.println("check the cases of given cryptogram: ");
-            return cryptogram;
+            System.err.println("check the cases of given cryptogram: " + cryptogram);
+            return "";
         }
     }
 }

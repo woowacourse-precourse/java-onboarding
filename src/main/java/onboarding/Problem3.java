@@ -4,7 +4,7 @@ import onboarding.exceptions.*;
 
 public class Problem3 {
     static void numberRangeExceptionCheck(int numIn) throws NumberRangeException {
-        if (numIn < 1 || numIn >= 10000) {
+        if (numIn < 1 || numIn > 10000) {
             throw new NumberRangeException();
         }
     }
@@ -32,7 +32,7 @@ public class Problem3 {
             }
             return answer;
         } catch (NumberRangeException e) {
-            System.err.println("check the range of given number: ");
+            System.err.println("check the range of given number: " + number);
             return number;
         }
     }

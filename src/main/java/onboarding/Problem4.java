@@ -33,8 +33,8 @@ public class Problem4 {
             lengthExceptionCheck(word);
             return translator(word);
         } catch (LengthException e) {
-            System.err.println("check the length of given word: ");
-            return word;
+            System.err.println("check the length of given word: " + word);
+            return "";
         }
     }
 }
