@@ -16,6 +16,8 @@ public class TreeFrogConverter {
     }
 
     public String convert(String message) {
+        validateMessageRange(message);
+
         StringBuilder result = new StringBuilder();
 
         for (char c : message.toCharArray()) {
@@ -27,5 +29,11 @@ public class TreeFrogConverter {
         }
 
         return result.toString();
+    }
+
+    private void validateMessageRange(String message) throws IllegalArgumentException {
+        if (!(1 <= message.length() && message.length() <= 1000)) {
+            throw new IllegalArgumentException("message의 길이는 1이상 1000이하 여야 합니다.");
+        }
     }
 }
