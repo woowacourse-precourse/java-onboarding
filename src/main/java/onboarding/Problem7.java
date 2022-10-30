@@ -8,7 +8,7 @@ public class Problem7 {
         return answer;
     }
 
-    private static boolean isFriend(String user, List<String> friends) {
+    private static boolean isFriend(String user, Set<String> friends) {
         return friends.stream()
                 .anyMatch(friend -> friend.equals(user));
     }
@@ -37,11 +37,18 @@ public class Problem7 {
         return friendsMap.get(userFriend);
     }
 
-    private static void giveRecommendationPointToUser(String friend, Map<String, Integer> pointMap) {
-        int recommendationPointOfFriend = 10;
-        int friendPoint = getUserRecommendationPoint(friend, pointMap);
 
-        pointMap.replace(friend, friendPoint + recommendationPointOfFriend);
+    private static void giveRecommendationPointToUserBySharingFriend(Map<String, Integer> pointMap, Set<String> friendsWithUserFriend) {
+        for (String friendWithUserFriend : friendsWithUserFriend) {
+            givePointToUserBySharingFriend(friendWithUserFriend, pointMap);
+        }
+    }
+
+    private static void givePointToUserBySharingFriend(String friend, Map<String, Integer> pointMap) {
+        int recommendationPointByFriend = 10;
+        int recommendationPoint = getUserRecommendationPoint(friend, pointMap);
+
+        pointMap.replace(friend, recommendationPoint + recommendationPointByFriend);
     }
 
     private static int getUserRecommendationPoint(String friend, Map<String, Integer> pointMap) {
@@ -51,5 +58,12 @@ public class Problem7 {
         }
         pointMap.put(friend, 0);
         return 0;
+    }
+
+    private static void giveUserRecommendationPointByVisit(String visitor, Map<String, Integer> pointMap) {
+        int recommendationPointByVisitor = 2;
+        int recommendationPoint = getUserRecommendationPoint(visitor, pointMap);
+
+        pointMap.replace(visitor, recommendationPoint + recommendationPointByVisitor);
     }
 }
