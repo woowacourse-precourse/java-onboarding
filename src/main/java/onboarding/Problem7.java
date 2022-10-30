@@ -20,7 +20,6 @@ public class Problem7 {
         List<String> userFriend = friendList[userIdx]; // 파라미터로 받은 유저의 직접 친구 리스트
         for(int i=0; i<userFriend.size(); i++){
             String friendOfUser = userFriend.get(i); // 파라미터로 받은 유저의 직접 친구
-
             int friendOfUserIdx = memberList.indexOf(friendOfUser); // 파라미터로 받은 유저의 직접 친구 인덱스
             List<String> indirectFriendList = friendList[friendOfUserIdx]; // 파라미터로 받은 유저의 직접 친구와 친구 관계인 유저 리스트
             
@@ -40,37 +39,18 @@ public class Problem7 {
         int[] visitorPoint = makeVisitorPointArr(visitorList, visitors);
 
         // 최종 점수 구하기
-        Map<String, Integer> recommendPoint = new HashMap<>();
-        // 10점 짜리 점수 넣기
-        for(int i=0; i<memberList.size(); i++){
-            String recommendName = memberList.get(i);
-            int recommendNamePoint = memberPoint[i];
-            recommendPoint.put(recommendName, recommendNamePoint);
-        }
-        // 방문자 횟수 점수 추가
-        for(int i=0; i< visitorList.size(); i++){
-            String visitorName = visitorList.get(i);
-            int visitorNamePoint = visitorPoint[i];
-
-            if(recommendPoint.containsKey(visitorName)){
-                int point = recommendPoint.get(visitorName);
-                recommendPoint.remove(visitorName);
-                recommendPoint.put(visitorName, point + visitorNamePoint);
-            } else {
-                recommendPoint.put(visitorName, visitorNamePoint);
-            }
-        }
+        Map<String, Integer> totalPointMap = makeTotalScoreMap(memberList, memberPoint, visitorList, visitorPoint);
 
 
         // 점수 순으로 정렬하고 이름 출력
         Map<Integer, String> scoreMap = new HashMap<>();
-        for(String key : recommendPoint.keySet()){
-            int score = recommendPoint.get(key);
+        for(String key : totalPointMap.keySet()){
+            int score = totalPointMap.get(key);
             scoreMap.put(score, key);
         }
 
-        int[] pointArr = new int[recommendPoint.size()];
-        Iterator<Integer> recommendPointItr = recommendPoint.values().iterator();
+        int[] pointArr = new int[totalPointMap.size()];
+        Iterator<Integer> recommendPointItr = totalPointMap.values().iterator();
         for(int i=0; i<pointArr.length; i++){
             pointArr[i] = recommendPointItr.next();
         }
@@ -183,5 +163,42 @@ public class Problem7 {
         }
 
         return visitorPoint;
+    }
+
+    /**
+     * 최종 점수를 key: 이름, value: 점수 인 Map 구조로 만드는 메소드
+     * @param memberList 친구 관계 리스트
+     * @param memberPoint 친구 관계로 만든 점수 배열
+     * @param visitorList 방문자 리스트
+     * @param visitorPoint 방문자로 만든 점수 배열
+     * @return 만들어진 Map
+     */
+    static Map<String, Integer> makeTotalScoreMap(List<String> memberList, int[] memberPoint, List<String> visitorList, int[] visitorPoint){
+        Map<String, Integer> recommendPoint = new HashMap<>();
+        // 10점 짜리 점수 넣기
+        for(int i=0; i<memberList.size(); i++){
+            String recommendName = memberList.get(i);
+            int recommendNamePoint = memberPoint[i];
+
+            recommendPoint.put(recommendName, recommendNamePoint);
+        }
+
+        // 방문자 횟수 점수 추가
+        for(int i=0; i< visitorList.size(); i++){
+            String visitorName = visitorList.get(i);
+            int visitorNamePoint = visitorPoint[i];
+            // 방문자가 이미 친구 관계에 있을 때
+            if(recommendPoint.containsKey(visitorName)){
+                int point = recommendPoint.get(visitorName);
+                recommendPoint.remove(visitorName);
+                recommendPoint.put(visitorName, point + visitorNamePoint);
+            }
+            // 방문자가 친구 관계에 없을 때
+            else {
+                recommendPoint.put(visitorName, visitorNamePoint);
+            }
+        }
+
+        return recommendPoint;
     }
 }
