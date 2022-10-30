@@ -11,7 +11,7 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int pobiMax = calculateMaxValue(pobi);
         int crongMax = calculateMaxValue(crong);
-        int answer = compareMaxValue(pobiMax, crongMax);
+        int answer = compareTwoNumbers(pobiMax, crongMax);
         return answer;
     }
 
@@ -44,5 +44,15 @@ class Problem1 {
         int[] arrayOfNum = Stream.of(String.valueOf(num).split("")).mapToInt(Integer::parseInt).toArray();
         List<Integer> result = Arrays.stream(arrayOfNum).boxed().collect(Collectors.toList());
         return result;
+    }
+
+    static int compareTwoNumbers(int num1, int num2) {
+        if (num1 > num2) {
+            return 1;
+        }
+        if (num1 < num2) {
+            return 2;
+        }
+        return 0;
     }
 }
