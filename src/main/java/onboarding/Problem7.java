@@ -13,18 +13,19 @@ import java.util.Set;
 public class Problem7 {
 
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-		init(user, friends, visitors);
-		return InMemoryDB.queryTop5FriendReferralList(user);
+		final InMemoryDB inMemoryDB = InMemoryDB.of();
+		init(inMemoryDB, user, friends, visitors);
+		return inMemoryDB.queryTop5FriendReferralList(user);
 	}
 
-	private static void init(String user, List<List<String>> friends, List<String> visitors) {
+	private static void init(InMemoryDB inMemoryDB, String user, List<List<String>> friends, List<String> visitors) {
 		friends.forEach(friend -> {
-			final Member member1 = InMemoryDB.insertIfAbsentAndQueryMember(friend.get(0));
-			final Member member2 = InMemoryDB.insertIfAbsentAndQueryMember(friend.get(1));
+			final Member member1 = inMemoryDB.insertIfAbsentAndQueryMember(friend.get(0));
+			final Member member2 = inMemoryDB.insertIfAbsentAndQueryMember(friend.get(1));
 			member1.friend(member2);
 		});
-		final Member member = InMemoryDB.insertIfAbsentAndQueryMember(user);
-		visitors.forEach(visitor -> InMemoryDB.insertIfAbsentAndQueryMember(visitor).visit(member));
+		final Member member = inMemoryDB.insertIfAbsentAndQueryMember(user);
+		visitors.forEach(visitor -> inMemoryDB.insertIfAbsentAndQueryMember(visitor).visit(member));
 	}
 
 	public static class Member {
@@ -100,21 +101,25 @@ public class Problem7 {
 
 	public static class InMemoryDB {
 
-		private static final Map<String, Member> members = new HashMap<>();
+		private final Map<String, Member> members = new HashMap<>();
 
-		public static Member insertIfAbsentAndQueryMember(String username) {
-			if (!members.containsKey(username)) {
-				members.put(username, Member.of(username));
-			}
-			return members.get(username);
+		public static InMemoryDB of() {
+			return new InMemoryDB();
 		}
 
-		public static List<String> queryTop5FriendReferralList(String username) {
+		public Member insertIfAbsentAndQueryMember(String username) {
+			if (!this.members.containsKey(username)) {
+				this.members.put(username, Member.of(username));
+			}
+			return this.members.get(username);
+		}
+
+		public List<String> queryTop5FriendReferralList(String username) {
 			final Member member = insertIfAbsentAndQueryMember(username);
-			members.values().forEach(Member::initScore);
+			this.members.values().forEach(Member::initScore);
 			updateScoreByVisitors(member);
 			updateScoreByFriends(member);
-			return members.values().stream()
+			return this.members.values().stream()
 				.filter(_member -> _member.getFriendReferralScore() != 0)
 				.sorted(comparing(Member::getFriendReferralScore).reversed().thenComparing(Member::getUsername))
 				.limit(5)
@@ -122,9 +127,9 @@ public class Problem7 {
 				.collect(toList());
 		}
 
-		private static void updateScoreByFriends(Member member) {
+		private void updateScoreByFriends(Member member) {
 			final Set<Member> friends = member.getFriends();
-			members.values().stream()
+			this.members.values().stream()
 				.filter(_member -> !_member.equals(member) && !friends.contains(_member))
 				.forEach(_member -> _member.getFriends().stream()
 					.filter(friends::contains)
@@ -132,7 +137,7 @@ public class Problem7 {
 				);
 		}
 
-		private static void updateScoreByVisitors(Member member) {
+		private void updateScoreByVisitors(Member member) {
 			final Set<Member> friends = member.getFriends();
 			final Map<Member, Integer> visitors = member.getVisitors();
 			visitors.keySet().stream()
