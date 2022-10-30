@@ -37,6 +37,21 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+
+        if(!isAvailable(pobi) || !isAvailable(crong)) {
+            answer = -1;
+        } else {
+            int pscore = Math.max(getScore(pobi.get(0)), getScore(pobi.get(1)));
+            int cscore = Math.max(getScore(crong.get(0)), getScore(crong.get(1)));
+
+            if (pscore > cscore) {
+                answer = 1;
+            } else if (pscore < cscore) {
+                answer = 2;
+            } else {
+                answer = 0;
+            }
+        }
         return answer;
     }
 }
