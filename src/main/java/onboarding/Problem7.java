@@ -11,6 +11,7 @@ public class Problem7 {
         List<String> userFriendsList = getUserFriendsList(user, friendsList);
 
         HashMap<String, Integer> userFriendScore = getUserFriendScore(userFriendsList, friendsList);
+        HashMap<String, Integer> visitorScore = getVisitorScore(userFriendsList, visitors);
 
         List<String> answer = Collections.emptyList();
         return answer;
@@ -50,6 +51,22 @@ public class Problem7 {
             }
         }
         return userFriendScore;
+    }
+
+    // 사용자의 타임 라인에 방문한 사람의 추천 점수를 계산하는 함수
+    public static HashMap<String, Integer> getVisitorScore(List<String> userFriendsList, List<String> visitors){
+        HashMap<String, Integer> visitorScore = new HashMap<>();
+
+        for(String visitor: visitors){
+            if(!userFriendsList.contains(visitor)){ // 사용자와 친구가 아닐 경우에만 계산
+                if(visitorScore.containsKey(visitor)){
+                    visitorScore.replace(visitor, visitorScore.get(visitor) + 1);
+                }else {
+                    visitorScore.put(visitor, 1);
+                }
+            }
+        }
+        return visitorScore;
     }
 
 }
