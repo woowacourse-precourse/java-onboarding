@@ -9,8 +9,7 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        return "";
     }
 
     private static boolean isUppercaseAlphabet(char letter) {
@@ -19,5 +18,15 @@ public class Problem4 {
 
     private static boolean isLowercaseAlphabet(char letter) {
         return letter >= 'a' && letter <= 'z';
+    }
+
+    private static char convert(char letter) {
+        if (isUppercaseAlphabet(letter)) {
+            return (char) ('A' + 'Z' - letter);
+        }
+        if (isLowercaseAlphabet(letter)) {
+            return (char) ('a' + 'z' - letter);
+        }
+        return letter;
     }
 }
