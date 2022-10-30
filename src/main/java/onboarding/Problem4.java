@@ -9,11 +9,14 @@ public class Problem4 {
         String answer = "";
         return answer;
     }
-    //
+
     private static void insertIntoMap() {
         for (int i = 0; i <= 'z' - 'a'; i++) {
             map.put((char) ('a' + i), (char) ('z' - i));
             map.put((char) ('A' + i), (char) ('Z' - i));
         }
+    }
+    private static char[] ToCharArray(String word) {
+        return word.toCharArray();
     }
 }
