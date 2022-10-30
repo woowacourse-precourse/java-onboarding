@@ -8,17 +8,26 @@ class Problem1 {
         if (validPages(pobi) || validPages(crong)) {
             return -1;
         }
-        int sumOfPobi = calculatePages(pobi);
-        int sumOfCrong = calculatePages(crong);
+        int maxOfPobi = calculatePages(pobi);
+        int maxOfCrong = calculatePages(crong);
         return answer;
     }
 
     private static int calculatePages(List<Integer> pages) {
-        int maxOfSum = Integer.MIN_VALUE;
+        int max = Integer.MIN_VALUE;
         for (Integer page : pages) {
-            maxOfSum = Math.max(maxOfSum, sumDigit(page));
+            max = Math.max(max, Math.max(sumDigit(page), multipleDigit(page)));
         }
-        return maxOfSum;
+        return max;
+    }
+
+    private static int multipleDigit(Integer page) {
+        int multiple = 1;
+        while (page != 0) {
+            multiple *= page % 10;
+            page /= 10;
+        }
+        return multiple;
     }
 
     private static int sumDigit(Integer page) {
