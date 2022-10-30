@@ -30,6 +30,23 @@ public class Problem5 {
         return answer;
     }
 
+    /**
+     * 넘겨받은 money를 각 화폐 단위로 나누어 리턴한다.
+     * @param money
+     * @return
+     */
+    private static List<Integer> getEachUnit(int money) {
+        List<Integer> answer = List.of(0, 0, 0, 0, 0, 0, 0, 0, 0);
+
+        while (money > 0) {
+            List<Integer> tempResult = exposeCashUnit(money);
+            money = tempResult.get(0);
+            answer.set(tempResult.get(1), answer.get(tempResult.get(1)) + 1);
+        }
+
+        return answer;
+    }
+
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
         return answer;
