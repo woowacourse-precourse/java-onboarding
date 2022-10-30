@@ -357,7 +357,25 @@ class ApplicationTest {
             );
             List<String> result = List.of();
             assertThat(Problem6.solution(forms)).isEqualTo(result);
-        }    }
+        }
+
+        /**
+         * 출처 : 우테코 슬랙 테스트-케이스 채널의 남세원(nswon)님
+         */
+        @Test
+        @DisplayName("자음, 모음으로 닉네임이 작성되었을 때 정상 작동한다")
+        void case15() throws Exception {
+            List<List<String>> forms = List.of(
+                    List.of("kim@email.com", "김ㅡ이"),
+                    List.of("nam@email.com", "ㅡ이야"),
+                    List.of("choi@email.com", "최강"),
+                    List.of("lee@email.com", "강합니다"),
+                    List.of("jun@email.com", "왜ㅇㅡ이야")
+            );
+            List<String> result = List.of("jun@email.com", "kim@email.com", "nam@email.com");
+            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
+    }
 
     @Nested
     class Problem7Test {

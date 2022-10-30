@@ -3,8 +3,7 @@ package onboarding.problem6;
 import java.util.regex.Pattern;
 
 public class Nickname {
-    // "/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/"
-    private String KOREAN_REGEX = "^[ㄱ-ㅎ가-힣]*$";
+    private String KOREAN_REGEX = "^[ㄱ-ㅎㅏ-ㅣ가-힣]*$"; // 한글을 처리할 때 자음과 모음을 따로 써줘야 하는구나.
     private String value;
     public Nickname(String input) throws Exception {
         if(input.length()<1 || input.length()>=20) {
