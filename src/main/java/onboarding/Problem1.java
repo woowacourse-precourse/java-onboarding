@@ -4,6 +4,16 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        try {
+            if (pobi.get(0) < 0 || pobi.get(1) > 400
+            || crong.get(0) < 0 || crong.get(1) > 400
+            || pobi.size() > 2 || crong.size() > 2
+            || crong.get(0) > crong.get(1) || pobi.get(0) > pobi.get(1)
+            || (pobi.get(1) - pobi.get(0) != 1) || (crong.get(1) - crong.get(0) != 1))
+                throw new Exception("페이지가 안맞습니다!");
+        } catch (Exception e) {
+            return -1;
+        }
         int answer = Integer.MAX_VALUE;
 
         int pobiMax;
@@ -13,9 +23,6 @@ class Problem1 {
         crongMax = (getPlus(crong) > getMul(crong) ? getPlus(crong) : getMul(crong));
 
         answer = getMax(pobiMax, crongMax);
-
-        if((pobi.get(1) - pobi.get(0) != 1) || (crong.get(1) - crong.get(0) != 1))
-            answer = -1;
 
         return answer;
     }
@@ -55,6 +62,7 @@ class Problem1 {
     static int getMax(int pobi, int crong) {
         return (pobi == crong) ? 0 : (pobi > crong) ? 1 : 2;
     }
+
 }
     /**
      * 왼쪽 페이지의 번호 각자리를 더하거나 곱해서 가장 큰 수
