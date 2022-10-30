@@ -60,4 +60,15 @@ class Problem1 {
         }
         return maxNum;
     }
+    private static int getAnswer(int answer, int maxNum, int i, int addSum, int mulSum) {
+        if(i == 1){
+            if(maxNum < Math.max(addSum, mulSum)){
+                answer = 2;
+            }
+            else if(maxNum == Math.max(addSum, mulSum)){
+                answer = 0;
+            }
+        }
+        return answer;
+    }
 }
