@@ -4,20 +4,17 @@ import java.util.*;
 
 public class Problem7 {
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-		List<String> answer = null;
-		
 		List<String> myFriendList = findFriends(user, friends);
 		List<List<String>> exceptFriendList = findnoFriends(user, friends);
 		
-		HashMap<String, Integer> scoreList = new HashMap<>();
+		HashMap<String, Integer> scoreMap = new HashMap<>();
 		for (List<String> relation : exceptFriendList) {
 			if (myFriendList.contains(relation.get(0))) {
-				scoreList = calculateScore(scoreList, relation.get(1));
+				scoreMap = calculateScore(scoreMap, relation.get(1));
 			}
 			
-			
 			if (myFriendList.contains(relation.get(1))) {
-				scoreList = calculateScore(scoreList, relation.get(0));
+				scoreMap = calculateScore(scoreMap, relation.get(0));
 			}
 		}
 		
@@ -26,17 +23,55 @@ public class Problem7 {
 				continue;
 			}
 			
-			if (!scoreList.containsKey(visitorName)) {
-				scoreList.put(visitorName, 1);
+			if (!scoreMap.containsKey(visitorName)) {
+				scoreMap.put(visitorName, 1);
 			} else {
-				int beforeScore = scoreList.get(visitorName);
-				scoreList.put(visitorName, beforeScore + 1);
+				int beforeScore = scoreMap.get(visitorName);
+				scoreMap.put(visitorName, beforeScore + 1);
 			}
 		}
 		
-		answer = new ArrayList<>(scoreList.keySet());
+		List<String> result = mapToListWithSort(scoreMap);
+		return result;
+	}
+	
+	private static List<String> mapToListWithSort(HashMap<String, Integer> scoreMap) {
+		List<Map.Entry<String, Integer>> entryList = new LinkedList<>(scoreMap.entrySet());
+		entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
+			
+			@Override
+			public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+				if (o1.getValue() > o2.getValue()) {
+					return -1;
+				} else if (o1.getValue() < o2.getValue()) {
+					return 1;
+				}else{
+					return stringDescending(o1, o2);
+				}
+			}
+			
+			private int stringDescending(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+				if (o1.getKey().compareTo(o2.getKey()) > 0) {
+					return 1;
+				} else if (o1.getKey().compareTo(o2.getKey()) < 0) {
+					return -1;
+				} else{
+					return 0;
+				}
+			}
+		});
 		
-		return answer;
+		ArrayList<String> result = new ArrayList<>();
+		int i = 0;
+		for (Map.Entry<String, Integer> entry : entryList) {
+			if (i == 5) {
+				break;
+			}
+			result.add(entry.getKey());
+			i++;
+		}
+		
+		return result;
 	}
 	
 	
