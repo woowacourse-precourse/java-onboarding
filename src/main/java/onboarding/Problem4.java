@@ -37,7 +37,13 @@ public class Problem4 {
                 // 소문자 변환
                 else if(alpha >= 'a' && alpha <= 'z')
                     alpha = getTransAlpha(alpha, 97);
+
+                // 3-2. 알파벳 변환하기 ( 적용 )
+                wordList.set(idx,alpha);
             }
+
+            // 변환 적용 결과 확인
+            System.out.println(wordList);
         }
     }
 
@@ -46,9 +52,6 @@ public class Problem4 {
     {
         // 문자 변환
         alpha = (char)(number - (int)alpha + 25 + number);
-
-        // 변환 결과 확인
-        System.out.println(alpha);
 
         return alpha;
     }
