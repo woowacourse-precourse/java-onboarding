@@ -17,6 +17,7 @@ public class Problem7 {
         List<String> totalRecommendFriendsList = getRecommendScore(user, friends, visitors);
         List<String> result = new ArrayList<>();
         for(int i=0; i <totalRecommendFriendsList.size(); i++) {
+            if(i == 5) break;
             result.add(totalRecommendFriendsList.get(i));
         }
         return result;
