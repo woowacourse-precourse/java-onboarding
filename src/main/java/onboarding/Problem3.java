@@ -13,4 +13,12 @@ public class Problem3 {
         }
         return answer;
     }
+    private static int countAnswer(int answer, String numStr) {
+        for(int j = 0; j< numStr.length(); j++){
+            if((numStr.charAt(j) == '3')||(numStr.charAt(j) == '6')||(numStr.charAt(j) == '9')){
+                answer += 1;
+            }
+        }
+        return answer;
+    }
 }
