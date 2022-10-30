@@ -2,14 +2,17 @@ package onboarding.problem7;
 
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class UserService {
     private final UserRepository userRepository;
     private final FriendRepository friendRepository;
+    private final VisitorRepository visitorRepository;
 
-    public UserService(UserRepository userRepository, FriendRepository friendRepository) {
+    public UserService(UserRepository userRepository, FriendRepository friendRepository, VisitorRepository visitorRepository) {
         this.userRepository = userRepository;
         this.friendRepository = friendRepository;
+        this.visitorRepository = visitorRepository;
     }
 
     public void saveAll(String username, List<List<String>> friends, List<String> visitors) {
@@ -48,22 +51,12 @@ public class UserService {
         friendRepository.findByUser(secondUser).add(firstUser);
     }
 
-    public List<User> findNearByFriends(String username) {
-        List<User> nearByFriends = new ArrayList<>();
 
+
+    public void saveVisitor(String username, List<String> visitors) {
         User user = userRepository.findByUsername(username);
-        Friends friends = friendRepository.findByUser(user);
-
-        List<User> myFriendList = friends.toList();
-
-        for (User friend : myFriendList) {
-            Friends nearFriend = friendRepository.findByUser(friend);
-            nearByFriends.addAll(nearFriend.toList());
-            nearByFriends.remove(user);
-        }
-
-        return nearByFriends;
+        List<User> visitor = visitors.stream().map(userRepository::findByUsername).collect(Collectors.toList());
+        visitorRepository.save(user, new Visitor(visitor));
     }
-
 
 }
