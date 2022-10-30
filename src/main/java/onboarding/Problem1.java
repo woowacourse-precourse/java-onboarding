@@ -4,40 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
-    static final int leftPage = 0;
-    static final int rightPage = 1;
-    static final int exceptionNum = -1;
-    static final int listSize = 2;
-    static int errorNum = 244;
-
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = exceptionNum;
+        int answer = -1;
+        int leftPage = 0;
+        int rightPage = 1;
 
-        //길이가 2일 경우
-        if (checkException(pobi.get(leftPage), pobi.get(rightPage)) && checkException(crong.get(leftPage), crong.get(rightPage)))
-        {
+
+        if (checkException(pobi.get(leftPage), pobi.get(rightPage)) &&
+                checkException(crong.get(leftPage), crong.get(rightPage))) {
             int pobiScore = Math.max(findScore(pobi.get(leftPage)), findScore(pobi.get(rightPage)));
             int crongScore = Math.max(findScore(crong.get(leftPage)), findScore(crong.get(rightPage)));
-            answer = compareNum(pobiScore, crongScore);
+            answer = compareScore(pobiScore, crongScore);
         }
 
         return answer;
     }
 
-    //자리수를 알아내 리스트에 저장
-    public static List<Integer> findPlaceValue(int num) {
-        List<Integer> num_list = new ArrayList<>();
-
-        if (num == 0)
-            num_list.add(num);
-        while(num > 0) {
-            num_list.add(num % 10);
-            num /= 10;
-        }
-
-        return num_list;
-    }
-    //곱셈과 덧셈 연산 수행
     public static int calculation(List<Integer> num_list, char type) {
         int result = 0;
 
@@ -54,8 +36,18 @@ class Problem1 {
 
         return result;
     }
+    //자리수를 알아내 리스트에 저장
+    public static List<Integer> findPlaceValue(int num) {
+        List<Integer> num_list = new ArrayList<>();
 
-    //max 찾기
+        while(num > 0) {
+            num_list.add(num % 10);
+            num /= 10;
+        }
+
+        return num_list;
+    }
+
     public static int findScore(int number) {
         int sumResult = calculation(findPlaceValue(number), '+');
         int multiplicationResult = calculation(findPlaceValue(number), '*');
@@ -64,25 +56,21 @@ class Problem1 {
     }
 
     //점수 비교해 결과 반환
-    public static int compareNum(int pobiNum, int crongNum) {
-        //연산한 결과가 0일 경우
-        if (pobiNum >= errorNum || crongNum >= errorNum)
-            return -1;
-        if (pobiNum == crongNum)
+    public static int compareScore(int pobiScore, int crongScore) {
+        if (pobiScore == crongScore)
             return 0;
-        if (pobiNum > crongNum)
+        if (pobiScore > crongScore)
             return 1;
-        if (pobiNum < crongNum)
+        if (pobiScore < crongScore)
             return 2;
+
         return -1;
     }
 
     /*
     * 예외 처리
     */
-    //1. 왼쪽과 오른쪽이 연속한 숫자가 아닌 경우
-    public static boolean checkException(int leftPage, int rightPage)
-    {
+    public static boolean checkException(int leftPage, int rightPage) {
         int firstPage = 1;
         int lastPage = 400;
 
