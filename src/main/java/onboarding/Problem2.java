@@ -7,7 +7,7 @@ public class Problem2 {
         return answer;
     }
 
-    public static boolean checkDup(String cryptogram){
+    private static boolean checkDup(String cryptogram){
         for(int i=0; i<cryptogram.length()-1; i++){
             if(cryptogram.charAt(i) == cryptogram.charAt(i+1))
                 return true;
@@ -15,7 +15,7 @@ public class Problem2 {
         return false;
     }
 
-    public static String translate(String cryptogram){
+    private static String translate(String cryptogram){
         String result= cryptogram;
         int count=0;
 
