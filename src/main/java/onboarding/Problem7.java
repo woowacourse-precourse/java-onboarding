@@ -8,7 +8,7 @@ public class Problem7 {
     final static int RIGHT_FRIEND = 1;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
         System.out.println("user = " + user);
 
         // user와 친구가 아닌것을 걸러야된다.
@@ -75,7 +75,21 @@ public class Problem7 {
         // personList, friendUserList, notFriendUserList 구현 완료
         System.out.println("visitors = " + visitors);
 
-        // User의 친구와 User의 친구가 아닌것과 Visitor의 전체 배열 연관된 모든사람 수정.
+        // notFriendUserList의 우선순위를 가진 map을 구현
+        Map<String, Integer> priorityNotFriendMap = new HashMap<>();
+        int endNotFriendSize = notFriendUserList.size();
+        for (int notFriendUserIndex = 0; notFriendUserIndex < endNotFriendSize; notFriendUserIndex++) {
+            String nameNotFriend = notFriendUserList.get(notFriendUserIndex);
+            priorityNotFriendMap.put(nameNotFriend, 10);
+        }
+
+        System.out.println();
+        System.out.println("priorityNotFriendMap의 키 값");
+        for (Map.Entry<String, Integer> entry : priorityNotFriendMap.entrySet()) {
+            System.out.println("[key]:" + entry.getKey() + ", [value]:" + entry.getValue());
+        }
+
+        // User의 친구와 User의 친구가 아닌것과 Visitor의 전체 배열 연관된 모든사람 List만듬
         int endPersonListVisitors = personList.size() + visitors.size();
         allFriendsVisitors.addAll(personList);
 
@@ -99,10 +113,37 @@ public class Problem7 {
                 cntVisitorMap.put(nameVisitor, numBeforValue + 1);
             }
         }
+        System.out.println();
+        System.out.println("cntVisitorMap의 키 값");
         for (Map.Entry<String, Integer> entry : cntVisitorMap.entrySet()) {
             System.out.println("[key]:" + entry.getKey() + ", [value]:" + entry.getValue());
         }
 
+        // 친구가 아닌 visitor들의 방문횟수를 가져왔다.
+        Map<String, Integer> cntNotFrendsVisitorMap = new HashMap<>();
+        int endFriendUserList = friendUserList.size();
+        for (Map.Entry<String, Integer> entry : cntVisitorMap.entrySet()) {
+            isFriend = false;
+            String nameVisitor = entry.getKey();
+            int cntPriorityVisitor = entry.getValue();
+
+            for (int FriendIndex = 0; FriendIndex < endFriendUserList; FriendIndex++) {
+                String nameFriendUserAtNow = friendUserList.get(FriendIndex);
+                if (nameVisitor.equals(nameFriendUserAtNow)) {
+                    isFriend = true;
+                }
+            }
+            if (!isFriend) {
+                cntNotFrendsVisitorMap.put(nameVisitor, cntPriorityVisitor);
+            }
+        }
+        System.out.println();
+        System.out.println("cntNotFrendsVisitorMap의 키 값");
+        for (Map.Entry<String, Integer> entry : cntNotFrendsVisitorMap.entrySet()) {
+            System.out.println("[key]:" + entry.getKey() + ", [value]:" + entry.getValue());
+        }
+
+        
         return answer;
     }
 
