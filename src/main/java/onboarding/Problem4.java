@@ -10,8 +10,21 @@ public class Problem4 {
 
         makeDictionary();
 
+        for(int i=0;i<word.length();i++){
+            answer+=convert(word.charAt(i));
+        }
+
         return answer;
     }
+
+    public static Character convert(Character word){
+        Character converted = dic.get(word);
+        if(converted == null){
+            return word;
+        }
+        return converted;
+    }
+
 
     public static void makeDictionary(){
         for(int i=0;i<26;i++){
