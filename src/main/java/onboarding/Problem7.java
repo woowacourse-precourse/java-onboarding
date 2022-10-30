@@ -36,13 +36,17 @@ public class Problem7 {
 
     private static void removeCantRecommendCase(String user, List<String> userFriends, Map<String, Integer> points) {
         for (String friend : userFriends) {
-            if (points.get(friend) != null) {
+            if (isEmptyValue(points, friend)) {
                 points.remove(friend);
             }
         }
-        if (points.get(user) != null) {
+        if (isEmptyValue(points, user)) {
             points.remove(user);
         }
+    }
+
+    private static boolean isEmptyValue(Map<String, ?> map, String key) {
+        return map.get(key) != null;
     }
 
     public static Map<String, Integer> enrichPointFrom(Map<String, List<String>> relationships,
