@@ -13,14 +13,16 @@ class Problem1 {
         int crongLeftPage = crong.get(0);
         int crongRightPage = crong.get(1);
 
+        if (!isValidatePages(pobiLeftPage, pobiRightPage)
+                || !isValidatePages(crongLeftPage, crongRightPage)) {
+            return -1;
+        }
+
         List<Integer> pobiNumbers = getAllNumbers(pobiLeftPage, pobiRightPage);
         List<Integer> crongNumbers = getAllNumbers(crongLeftPage, crongRightPage);
 
         int pobiScore = getMaxScore(pobiNumbers);
         int crongScore = getMaxScore(crongNumbers);
-
-        answer = getAnswer(pobiScore, crongScore);
-
 
         return answer;
     }
@@ -37,6 +39,7 @@ class Problem1 {
         }
         return result;
     }
+
 
     private static int getPageMultiply(char[] pageNumbers) {
         int result = 0;
@@ -63,13 +66,13 @@ class Problem1 {
         return maxNumber;
     }
 
-    private static int getAnswer(int pobiScore, int crongScore) {
-        if (pobiScore > crongScore) {
-            return 1;
+    private static boolean isValidatePages(int leftPage, int rightPage) {
+        if (rightPage - leftPage != 1) {
+            return false;
         }
-        if (pobiScore < crongScore) {
-            return 2;
+        if (leftPage < 1 || rightPage > 400) {
+            return false;
         }
-        return 0;
+        return true;
     }
 }
