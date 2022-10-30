@@ -21,17 +21,11 @@ public class NickName {
             throw new NickNameException("한글만 쓸 수 있습니다.");
         }
     }
-
     public boolean isDuplicate(NickName compareNick) {
-        return countDuplicate(compareNick) > 0;
-    }
-
-    private long countDuplicate(NickName compareNick) {
         List<String> toNick = compareNick.getSeparateNicks();
 
         return separateNicks.stream()
-                .filter(toNick::contains)
-                .count();
+                .anyMatch(toNick::contains);
     }
 
     private void separateTwoParts() {
