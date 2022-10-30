@@ -10,27 +10,33 @@ public class Problem6 {
         }
         return cut_name;
     }
+
+    static Set<String> Extract_Email(List<String> cut_name , Set<String> same , List<List<String>> list , int i){
+        for(int j = 0 ; j < list.size(); j++){
+            if( j == i) continue;
+            for(Iterator<String > name = cut_name.iterator();name.hasNext();){
+                if(list.get(j).get(1).contains(name.next())){
+                    same.add(list.get(j).get(0));
+                }
+            }
+        }
+        return same;
+    }
     static Set<String> Find_Same(List<List<String>> list){
         List<String> cut_name;
         Set<String > same = new HashSet<String>();
-
+        List<String> info;
         for (int i = 0 ; i < list.size() ; i++){
-            cut_name = Cut_The_Name(list.get(i).get(1));
-            for(int j = 0 ; j < list.size(); j++){
-                if( j == i) continue;
-                for(Iterator<String > name = cut_name.iterator();name.hasNext();){
-                    if(list.get(j).get(1).contains(name.next())){
-                        same.add(list.get(j).get(0));
-                    }
-                }
-            }
+            info = list.get(i);
+            cut_name = Cut_The_Name(info.get(1));
+            same  = Extract_Email(cut_name, same, list , i);
         }
         return same;
     }
 
     static List<String> StoL(Set<String> before){
         List<String> after = new ArrayList<>();
-        for(Iterator<String> i = before.iterator();i.hasNext();){
+        for(Iterator<String> i = before.iterator() ; i.hasNext() ;){
             after.add(i.next());
         }
         return  after;
