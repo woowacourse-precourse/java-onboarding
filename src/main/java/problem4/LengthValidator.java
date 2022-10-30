@@ -1,8 +1,9 @@
 package problem4;
 
 public class LengthValidator {
-    public static boolean lengthValidate(String word) {
+    public static int lengthValidate(String word) {
         int wordLength = word.length();
-        return wordLength >= 1 && wordLength <= 1000;
+        if (wordLength >= 1 && wordLength <= 1000) return wordLength;
+        else throw new RuntimeException("Invalid word length");
     }
 }
