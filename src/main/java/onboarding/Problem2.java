@@ -11,10 +11,10 @@ import java.util.Stack;
  */
 
 public class Problem2 {
+
     public static String solution(String cryptogram) {
-        final String errorCase ="-1";
         if (!checkValid(cryptogram)) {
-            return errorCase;
+            throw new IllegalArgumentException("입력된 형식이 잘못됨");
         }
         return stackToString(solutionLogic(cryptogram));
     }
