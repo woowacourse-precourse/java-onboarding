@@ -5,6 +5,11 @@ import java.util.*;
 public class Problem7 {
 
 
+    static HashSet<String> myFriends = new HashSet<>();
+    static HashSet<String> notMyFriends = new HashSet<>();
+    static HashMap<String,List<String>> graph = new HashMap<>();
+    static HashMap<String,Integer> recommendList = new HashMap<>();
+
     //유저의 친구셋 만들기
 
 
