@@ -18,4 +18,15 @@ public class Problem7 {
         String friend = friendPair.get(1-index);
         destination.add(friend);
     }
+
+    /* friends 목록을 순회하면서 유저의 친구를 뽑아내 List로 반환하는 메서드 */
+    private static List<String> pickUserFriends(String user, List<List<String>> friends) {
+        List<String> result = new ArrayList<>();
+
+        for (List<String> friendPair : friends) {
+            pickAnotherOne(result, friendPair, user);
+        }
+
+        return result;
+    }
 }
