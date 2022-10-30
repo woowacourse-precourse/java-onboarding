@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -29,11 +30,17 @@ import java.util.List;
  * - userName이 포함되는지 안되는지 체크하는 함수
  * */
 
+/***
+ * 3. 2번에서의 친구들의 친구들의 목록 배열 생성 -> 2차원 배열로 10점씩 점수 부여
+ * - Hashmap 클래스 변수 생성 -> 중복된 값 자동 업데이트
+ * */
+
 
 
 public class Problem7 {
 
     private static List<String> userToFriendList = new ArrayList<>();
+    private static HashMap<String, Integer> friendToFriendMap = new HashMap<>();
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
@@ -109,7 +116,7 @@ public class Problem7 {
 //        System.out.println(checkUserLower(test));
 //    }
 
-    private static boolean checkIncludeUserToFriend(String inputUser, List<String> inputElementFriend){
+    private static boolean checkIncludeFriend(String inputUser, List<String> inputElementFriend){
         for(int i = 0; i < inputElementFriend.size(); i++){
             if(inputElementFriend.get(i).equals(inputUser)){
                 return true;
@@ -129,10 +136,20 @@ public class Problem7 {
 
     private static void makeUserToFriendList(List<List<String>> inputFriends, String inputUser){
         for(int i = 0; i < inputFriends.size(); i++){
-            if(checkIncludeUserToFriend(inputUser,inputFriends.get(i))){
+            if(checkIncludeFriend(inputUser,inputFriends.get(i))){
                 userToFriendList.add(onlyFriendsNameInFriends(inputUser,inputFriends.get(i)));
             }
         }
     }
+
+    private static void makeFriendToFriendList(List<List<String>> inputFriends){
+        for(int i = 0; i < userToFriendList.size(); i++){
+            for(int j = 0; j <inputFriends.size(); j++){
+                if(checkIncludeFriend(userToFriendList.get(i),inputFriends.get(j)))
+                    friendToFriendMap.put(onlyFriendsNameInFriends(userToFriendList.get(i), inputFriends.get(j)), 10);
+            }
+        }
+    }
+
 
 }
