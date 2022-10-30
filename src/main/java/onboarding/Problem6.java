@@ -45,3 +45,31 @@ public class Problem6 {
         return answer;
     }
 }
+
+class Candidate {
+    private String nickname;
+    private String e_mail;
+    private boolean nickname_duplicate;
+
+    public Candidate(String e_mail, String nickname) {
+        this.e_mail = e_mail;
+        this.nickname = nickname;
+        nickname_duplicate = false;
+    }
+
+    public void find_duplicate_nickname() {
+        nickname_duplicate = true;
+    }
+
+    public boolean need_to_change() {
+        return nickname_duplicate;
+    }
+
+    public String show_nickname() {
+        return this.nickname;
+    }
+
+    public String show_e_mail() {
+        return this.e_mail;
+    }
+}
