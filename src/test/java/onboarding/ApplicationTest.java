@@ -152,7 +152,7 @@ class ApplicationTest {
 
         @ParameterizedTest
         @ValueSource(ints = {-1, 0, 10001})
-        void testValidateRange() {
+        void testValidateInputSize() {
             int number = -1;
             assertThatThrownBy(() -> Problem3.validateInputSize(number))
                     .isInstanceOf(IllegalArgumentException.class)
