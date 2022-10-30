@@ -57,6 +57,16 @@ public class Problem6 {
         }
         return nameSplitBy2;
     }
+
+    static List<String> getEmailListByIndexList(List<Integer> duplicatedIndexList) {
+        List<String> duplicatedEmailList = new ArrayList<>();
+        List<String> emailList = Database.getEmailList();
+        for (int index: duplicatedIndexList) {
+            String email = emailList.get(index);
+            duplicatedEmailList.add(email);
+        }
+        return duplicatedEmailList;
+    }
 }
 
 class Database {
