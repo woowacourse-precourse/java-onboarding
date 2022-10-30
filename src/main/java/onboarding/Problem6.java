@@ -95,6 +95,19 @@ public class Problem6 {
         return true;
     }
 
+    // 제한사항 한번에 실행하는 기능
+    public static boolean checkFormValidation(List<List<String>> forms) {
+        List<String> emails = extractEmailList(forms);
+        List<String> nicknames = extractNicknameList(forms);
+        if (!(checkFormsLength(forms) && checkFormsElementLength(forms)
+            && checkEmailLength(emails) && checkEmailDomain(emails)
+            && checkNicknameConsistOfHangul(nicknames) && checkNicknameLength(nicknames))) {
+            return false;
+        }
+        return true;
+    }
+
+
     // 닉네임 중 두 글자 이상 중복되는지 판별하는 기능
     public static boolean checkNicknameOverlapMoreThanTwoWord(String nickname,
         String nextNickname) {
