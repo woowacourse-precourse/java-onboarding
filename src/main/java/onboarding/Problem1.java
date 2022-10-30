@@ -6,16 +6,14 @@ import java.util.List;
 import static java.lang.Math.max;
 
 class Problem1 {
-    private final int MIN_PAGE = 0;
-    private final int MAX_PAGE = 400;
+    private static final int MIN_PAGE = 0;
+    private static final int MAX_PAGE = 400;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-
-        return answer;
+        return gameStarter(pobi, crong);
     }
 
-    public boolean isRightPageNumbers(List<Integer> playersPages) {
+    public static boolean isRightPageNumbers(List<Integer> playersPages) {
         final int leftPageNumber = playersPages.get(0);
         final int rightPageNumber = playersPages.get(1);
 
@@ -35,25 +33,45 @@ class Problem1 {
         return true;
     }
 
-    public int getMaxValue(List<Integer> playersPages){
+    public static int getMaxValue(List<Integer> playersPages){
         final int maxLeftPageNumber = calculateInSingleNumber(playersPages.get(0));
         final int maxRightPageNumber = calculateInSingleNumber(playersPages.get(1));
 
         return max(maxLeftPageNumber, maxRightPageNumber);
     }
 
-    public int calculateInSingleNumber(int pageNumber){
+    public static int calculateInSingleNumber(int pageNumber) {
         int sum = 0;
         int mul = 1;
+        int mod;
 
         while (pageNumber > 0) {
-            int mod = pageNumber % 10;
+            mod = pageNumber % 10;
             sum += mod;
             mul *= mod;
             pageNumber /= 10;
         }
 
         return max(sum,mul);
+    }
+
+    public static int gameStarter(List<Integer> player1, List<Integer> player2) {
+        if (isRightPageNumbers(player1) == false || isRightPageNumbers(player2) == false) {
+            return -1;
+        }
+        int player1sScore = getMaxValue(player1);
+        int player2sScore = getMaxValue(player2);
+
+        if (player1sScore > player2sScore) {    // player1이 더 클 경우
+            return 1;
+        }
+        else if (player1sScore < player2sScore) {   // player2가 더 클 경우
+            return 2;
+        }
+        else {  // 무승부 일 경우
+            return 0;
+        }
+
     }
 
 }
