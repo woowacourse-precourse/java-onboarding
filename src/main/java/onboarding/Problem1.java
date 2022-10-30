@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -36,14 +35,11 @@ class Problem1 {
     private static int findMaxPageNum(int page) {
         int plus = 0;
         int multiply = 1;
-
-        while (true) {
+        do {
             plus += page % 10;
             multiply *= page % 10;
             page /= 10;
-            if (page == 0)
-                break;
-        }
+        } while (page != 0);
         return Math.max(plus, multiply);
     }
 }
