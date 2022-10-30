@@ -20,7 +20,7 @@ class IsOverlap {
 
         int crew1Length = crew1.length();
         int crew2Length = crew2.length();
-        int[][] LCS = new int[crew1Length+1][crew2Length];
+        int[][] LCS = new int[crew1Length+1][crew2Length+1];
         char[] crew1Array = crew1.toCharArray();
         char[] crew2Array = crew2.toCharArray();
 
