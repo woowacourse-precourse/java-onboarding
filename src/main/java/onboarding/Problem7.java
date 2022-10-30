@@ -1,8 +1,10 @@
 package onboarding;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 class FriendForPro7 {
@@ -16,6 +18,26 @@ class FriendForPro7 {
     }
 }
 
+class ScoreForPro7 {
+
+    private Map<String, Integer> scoreMap;
+
+    public ScoreForPro7(Map<String, Integer> scoreMap, Set<String> friendSet) {
+        makeScoreMap(new HashMap<>(), friendSet);
+    }
+
+    private void makeScoreMap(Map<String, Integer> scoreMap, Set<String> friendSet) {
+        for (String s : friendSet) {
+            scoreMap.put(s, 0);
+        }
+        this.scoreMap = scoreMap;
+    }
+
+    public Map<String, Integer> getScoreMap() {
+        return scoreMap;
+    }
+}
+
 class UserSelectedForPro7 {
 
     private List<String> userSelectedList;
@@ -25,6 +47,8 @@ class UserSelectedForPro7 {
             visitors);
         FriendForPro7 friendClass = new FriendForPro7();
         Set<String> friendSet = friendClass.makeFriendSet(friends, new HashSet<>());
+        ScoreForPro7 scoreClass = new ScoreForPro7(new HashMap<>(), friendSet);
+
     }
 }
 
