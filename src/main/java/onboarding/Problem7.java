@@ -16,11 +16,9 @@ public class Problem7 {
     }
 
     static void updateFriendsScore(Map<String, Integer> scoreMap,
-        Map<String, Set<String>> friendsMap, String user) {
+        Map<String, Set<String>> friendsMap, String user, Set<String> removeFriendsSet) {
 
         Set<String> friendsSet = friendsMap.get(user);
-        Set<String> removeFriendsSet = makeRemoveFriendsSet(user, friendsSet);
-
 
         for (String userFriend : friendsSet) {
             friendsMap.get(userFriend).removeAll(removeFriendsSet);
@@ -33,7 +31,8 @@ public class Problem7 {
         System.out.println("scoreMap = " + scoreMap);
     }
 
-    private static Set<String> makeRemoveFriendsSet(String user, Set<String> friendsSet) {
+    private static Set<String> makeRemoveFriendsSet(String user, Map<String, Set<String>> friendsMap) {
+        Set<String> friendsSet = friendsMap.get(user);
         Set<String> removeFriendsSet = new HashSet<>(Set.of(user));
         removeFriendsSet.addAll(friendsSet);
         return removeFriendsSet;
