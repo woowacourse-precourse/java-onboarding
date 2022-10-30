@@ -28,6 +28,8 @@ public class Problem7 {
         for (String name: friendList.keySet()) {
             if (user.equals(name) || friendList.get(user).contains(name))
                 continue;
+
+            scoreMap.put(name, 0);
         }
         return answer;
     }
@@ -53,7 +55,7 @@ public class Problem7 {
   - [V] 각 사람들의 점수를 저장할 scoreMap를 만든다
   - [V] 친구 목록에서 keySet을 뽑아와 순회한다
   - [V] 현재 참조하는 사람이 user인 경우나 user의 친구인 경우는 건너뛴다
-  - [] scoreMap에 현재 참조하는 사람의 점수를 0점으로 하여 넣어준다.
+  - [V] scoreMap에 현재 참조하는 사람의 점수를 0점으로 하여 넣어준다.
   - [] 친구 목록을 통해 user의 친구들을 순회하며 각 친구가 현재 참조하는 사람의 친구목록에 있으면 10점을 더해 교체해준다
 - [] 방문 기록을 통해 점수를 계산한다
   - [] 현재 참조하는 방문자가 uesr의 친구인 경우는 건너뛴다
