@@ -97,6 +97,46 @@ class Others {
     User getUser() {
         return this.user;
     }
+
+    List<Other> getOthersList() {
+        return this.othersList;
+    }
+
+    void addRelationship(List<String> relationship) {
+        String other1 = relationship.get(0);
+        String other2 = relationship.get(1);
+        this.addOther(other1);
+        this.addOther(other2);
+        this.addPointIfHaveMutual(other1, other2);
+        this.addPointIfHaveMutual(other2, other1);
+    }
+
+    String addOther(String otherName) {
+        boolean isRegisteredOther = this.checkIsRegisteredOther(otherName);
+        if (isRegisteredOther) {
+            return "Registered other";
+        }
+
+        Other other = new Other(otherName, 0);
+        this.othersList.add(other);
+        return "new other";
+    }
+
+    boolean checkIsRegisteredOther(String otherName) {
+        List<String> othersNameList = this.getOthersNameList();
+        boolean isRegisteredOther = othersNameList.contains(otherName);
+        return isRegisteredOther;
+    }
+
+    List<String> getOthersNameList() {
+        List<Other> othersList = this.getOthersList();
+        List<String> othersNameList = new ArrayList<>();
+        othersList.stream().forEach(other -> {
+            String name = other.getName();
+            othersNameList.add(name);
+        });
+        return othersNameList;
+    }
 }
 
 class Other {
@@ -108,4 +148,8 @@ class Other {
 
     private String name;
     private int point;
+
+    String getName() {
+        return this.name;
+    }
 }
