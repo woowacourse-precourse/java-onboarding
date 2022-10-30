@@ -51,4 +51,17 @@ public class TestProblem1 {
         assertThat(Problem1.isEven(100)).isEqualTo(true);
         assertThat(Problem1.isEven(99)).isEqualTo(false);
     }
+
+    @Test
+    void TestisNotStartOrEnd(){
+        List<Integer> T1 = List.of(1, 98);
+        List<Integer> T2 = List.of(97, 400);
+        List<Integer> T3 = List.of(1, 400);
+        List<Integer> T4 = List.of(123,222);
+
+        assertThat(Problem1.isNotStartOrEnd(T1)).isEqualTo(true);
+        assertThat(Problem1.isNotStartOrEnd(T2)).isEqualTo(false);
+        assertThat(Problem1.isNotStartOrEnd(T3)).isEqualTo(false);
+        assertThat(Problem1.isNotStartOrEnd(T4)).isEqualTo(true);
+    }
 }
