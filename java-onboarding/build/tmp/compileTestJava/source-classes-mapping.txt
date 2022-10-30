@@ -1,8 +1,0 @@
-onboarding/ApplicationTest.java
- onboarding.ApplicationTest
- onboarding.ApplicationTest$Problem1Test
- onboarding.ApplicationTest$Problem2Test
- onboarding.ApplicationTest$Problem3Test
- onboarding.ApplicationTest$Problem4Test
- onboarding.ApplicationTest$Problem5Test
- onboarding.ApplicationTest$Problem6Test
