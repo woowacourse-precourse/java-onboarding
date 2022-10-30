@@ -12,6 +12,10 @@ class Problem1 {
         return pobi.size() == 2 && crong.size() == 2;
     }
 
+    private static boolean validateCorrectPageRange(List<Integer> pages) {
+        return pages.get(0) >= 1 && pages.get(1) <= 400;
+    }
+
     private static int getMSum(int page) {
         int sum = 0;
         while (page > 0) {
