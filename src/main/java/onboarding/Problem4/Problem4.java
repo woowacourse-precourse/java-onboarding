@@ -1,9 +1,10 @@
 package onboarding.Problem4;
 public class Problem4 {
     private static Encoder encoder = new Encoder();
+    private static int MAX_WORD_LENGTH = 10000;
     public static String solution(String word)
     {
-        if(word.length() > 10000)
+        if(word.length() > MAX_WORD_LENGTH)
         {
             throw new RuntimeException("입력된 단어의 길이가 제한 범위를 초과했습니다.");
         }

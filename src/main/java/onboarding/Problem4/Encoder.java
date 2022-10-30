@@ -27,7 +27,7 @@ public class Encoder
         }
         map.put(key,value);
     }
-    Encoder()
+    public Encoder()
     {
         map = new HashMap<>();
         initEncoder();
