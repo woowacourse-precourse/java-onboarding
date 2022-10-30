@@ -12,7 +12,7 @@ public class Problem5 {
     }
 
     private static int countUnitInMoney(int num, int idx){
-
+        return num / unit[idx];
     }
 
     private static boolean isBiggerOrEqualThanUnit(int num, int idx){
