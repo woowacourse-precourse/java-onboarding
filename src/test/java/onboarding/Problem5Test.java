@@ -20,4 +20,30 @@ class Problem5Test {
         System.out.println("moneyType = " + moneyType);
         assertThat(result).isEqualTo(moneyType);
     }
+
+    @Test
+    public void getMoneyIngredientsTest() {
+        //given
+        int money = 50237;
+        List<Integer> moneyTypes = Problem5.makeMoneyTypes();
+
+        //when
+        List<Integer> result = Problem5.getMoneyIngredients(money, moneyTypes);
+
+        //then
+        assertThat(result).containsExactly(1, 0, 0, 0, 0, 2, 0, 3, 7);
+    }
+
+    @Test
+    public void getMoneyIngredientsTest2() {
+        //given
+        int money = 15000;
+        List<Integer> moneyTypes = Problem5.makeMoneyTypes();
+
+        //when
+        List<Integer> result = Problem5.getMoneyIngredients(money, moneyTypes);
+
+        //then
+        assertThat(result).containsExactly(0, 1, 1, 0, 0, 0, 0, 0, 0);
+    }
 }
