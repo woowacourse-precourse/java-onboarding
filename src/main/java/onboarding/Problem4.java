@@ -15,7 +15,8 @@ public class Problem4 {
 		
 		for(char ch : chars) {
 			char frogChar = ch;
-			
+			if(invalid((int)ch))
+				frogChar = dictionary.get(ch);
 			str += frogChar;
 		}
 		
@@ -54,7 +55,15 @@ public class Problem4 {
 		
 		return dictionary;
 	}
-	
+	private static boolean invalid(int x) { 
+		if(x>=65&&x<=90) {
+			return true;
+		}
+		if(x>=97&&x<=122) {
+			return true;
+		}
+		return false;
+	}
     public static String solution(String word) {
         String answer = "";
         List<Character> wordList=convertStringToCharList(word);
