@@ -11,6 +11,22 @@ class Problem1 {
         int crongLeft = crong.get(0);
         int crongRight = crong.get(1);
 
+        int pobiLeftMax = Math.max(plus(pobiLeft), mul(pobiLeft));
+        int pobiRightMax = Math.max(plus(pobiRight), mul(pobiRight));
+        int pobiMax = Math.max(pobiLeftMax,pobiRightMax);
+        int crongLeftMax = Math.max(plus(crongLeft), mul(crongLeft));
+        int crongRightMax = Math.max(plus(crongRight), mul(crongRight));
+        int crongMax = Math.max(crongLeftMax,crongRightMax);
+        
+        if(pobiMax > crongMax) {
+            answer = 1;
+        }
+        else if(pobiMax < crongMax) {
+            answer = 2;
+        }
+        else {
+            answer = 0;
+        }
 
         return answer;
     }
