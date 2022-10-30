@@ -5,7 +5,6 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = 0;
-        int pobiNumber = -1, crongNumber = -1;
 
         //변수를 쉽게 알아보기 위해 추가
         int pobiLeftNumber = pobi.get(0);
@@ -18,8 +17,8 @@ class Problem1 {
             return -1;
         }
 
-        pobiNumber = Math.max(getNumberMax(pobiLeftNumber), getNumberMax(pobiRightNumber));
-        crongNumber = Math.max(getNumberMax(crongLeftNumber), getNumberMax(crongRightNumber));
+        int pobiNumber = Math.max(getNumberMax(pobiLeftNumber), getNumberMax(pobiRightNumber));
+        int crongNumber = Math.max(getNumberMax(crongLeftNumber), getNumberMax(crongRightNumber));
 
         if(pobiNumber > crongNumber){
             answer = 1;
