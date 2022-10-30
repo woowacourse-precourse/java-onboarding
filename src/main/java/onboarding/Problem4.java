@@ -17,6 +17,8 @@ public class Problem4 {
             char translatedChar = (char)(97 + gap);
             return translatedChar;
         }
+
+        return alpa;
     }
 
 
