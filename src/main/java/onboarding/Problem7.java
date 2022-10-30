@@ -28,10 +28,10 @@ public class Problem7 {
         for(int i = 0; i < friends.size(); ++i){
             String f1 = friends.get(i).get(0);
             String f2 = friends.get(i).get(1);
-            if(!friendsGraph.containsKey(friends.get(i).get(0))){
+            if(!friendsGraph.containsKey(f1)){
                 addNewNode(f1);
             }
-            if(!friendsGraph.containsKey((friends.get(i).get(1)))){
+            if(!friendsGraph.containsKey(f2)){
                 addNewNode(f2);
             }
             friendsGraph.get(f1).add(f2);
