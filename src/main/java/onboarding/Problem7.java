@@ -24,6 +24,13 @@ public class Problem7 {
         }
     }
 
+    public static void addScoreByVisit(List<String> visitors) {
+        for (String visitor : visitors) {
+            scoreOfUser.put(visitor, scoreOfUser.getOrDefault(visitor, 0) + 1);
+        }
+    }
+
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         mainUser = user;
 
@@ -36,6 +43,7 @@ public class Problem7 {
         }
 
         addScoreByRelation();
+        addScoreByVisit(visitors);
 
         System.out.println(scoreOfUser);
 
