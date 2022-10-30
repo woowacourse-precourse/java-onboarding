@@ -21,6 +21,9 @@ class Problem1 {
         }
         return mul;
     }
+    public static int compare(int num1, int num2) {
+        return Math.max(num1, num2);
+    }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
