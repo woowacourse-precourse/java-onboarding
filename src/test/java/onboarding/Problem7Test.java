@@ -9,10 +9,10 @@ class Problem7Test {
 
     private final List<List<String>> friends = List.of(List.of("donut", "andole"), List.of("donut", "jun"), List.of("donut", "mrko"), List.of("shakevan", "andole"), List.of("shakevan", "jun"), List.of("shakevan", "mrko"));
     private final List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-    Map<String, List<String>> userToFriends = Problem7.parseFriends(friends);
+    Map<String, List<String>> userToFriends = Problem7.parseFriendsInput(friends);
 
     @Test
-    void parseFriends() {
+    void parseFriendsInput() {
         Assertions.assertThat(userToFriends.get("donut"))
             .contains("andole", "jun", "mrko");
         Assertions.assertThat(userToFriends.get("andole"))
@@ -24,22 +24,6 @@ class Problem7Test {
         Assertions.assertThat(userToFriends.get("shakevan"))
             .contains("andole", "jun", "mrko");
     }
-
-//    @Test
-//    void findAllUserWithoutMainCharacter() {
-//        List<String> allUserWithoutMainCharacter = Problem7.findAllUserWithoutMainCharacter("mrko", userToFriends, visitors);
-//
-//        Assertions.assertThat(allUserWithoutMainCharacter)
-//            .contains("donut", "andole", "jun", "shakevan", "bedi");
-//    }
-//
-//    @Test
-//    void exceptAlreadyFriends() {
-//        List<String> notFriends = Problem7.exceptAlreadyFriends(List.of("donut", "andole", "jun", "shakevan", "bedi"), List.of("donut", "shakevan"));
-//
-//        Assertions.assertThat(notFriends)
-//            .contains("andole", "jun", "bedi");
-//    }
 
     @Test
     void computeBothKnowFriendsScore() {
