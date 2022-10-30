@@ -123,6 +123,13 @@ class ApplicationTest {
             int result = 14;
             assertThat(Problem3.solution(number)).isEqualTo(result);
         }
+
+        @Test
+        void customCase(){
+            int number = 1000;
+            int result = Sample3.solution(number);
+            assertThat(Problem3.solution(number)).isEqualTo(result);
+        }
     }
 
     @Nested
