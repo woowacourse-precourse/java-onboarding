@@ -22,6 +22,9 @@ class Problem1 {
     }
     public static int pageCal(List<Integer> input){
 
+        //왼쪽 페이지는 홀수이어야 한다. 짝수면 error 예외처리
+        if((input.get(0))%2 == 0) return -1;
+        //페이지 수가 1 차이나야 하는데 아니면 error임 예외처리
         if((input.get(0)+1) != input.get(1)) return -1;
 
         int plus = 0;
