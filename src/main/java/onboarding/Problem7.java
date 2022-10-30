@@ -163,12 +163,12 @@ class ScorePro7 {
   }
 
   public static void scoreAddOne(List<String> visitors) {
-    for (String visit : visitors) {
-      if (!scoreList.containsKey(visit)) {
-        scoreList.put(visit, SCORE_ZERO);
+    for (String visitor : visitors) {
+      if (!scoreList.containsKey(visitor)) {
+        scoreList.put(visitor, SCORE_ZERO);
       }
-      int score = scoreList.get(visit);
-      scoreList.put(visit, score + SCORE_ONE);
+      int score = scoreList.get(visitor);
+      scoreList.put(visitor, score + SCORE_ONE);
     }
   }
 }
