@@ -8,7 +8,7 @@ public abstract class ClapGameConst {
     /**
      * 3, 6, 9 게임이 시작 숫자 값
      */
-    public static final int CLAP_GAME_START_VALUE = 1;
+    public static final int CLAP_GAME_START_VALUE = 3;
 
     /**
      * 박수를 처야 할 숫자(3)
