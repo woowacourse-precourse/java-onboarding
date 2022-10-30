@@ -27,13 +27,13 @@ public class Problem7 {
 
         for (List<String> friend : friends) {
             int foundFriendIdx = findFriendIdx(friend, findUser);
+
             if (foundFriendIdx == 2)
                 continue;
-            else {
-                String friendName = findFriendName(friend, foundFriendIdx);
-                if (!targetUser.equals(friendName))
-                    findAcquaintance(depth + 1, targetUser, friendName, friends, scoreBoard);
-            }
+
+            String friendName = findFriendName(friend, foundFriendIdx);
+            if (!targetUser.equals(friendName))
+                findAcquaintance(depth + 1, targetUser, friendName, friends, scoreBoard);
         }
     }
 
