@@ -72,7 +72,7 @@
 
 - [x] NicknameChecker
   - [x] 크루 입력받기
-    - [ ] 입력 가능 이메일 format 확인 `email.com`
+    - [x] 입력 가능 이메일 format 확인 `email.com`
   - [x] 닉네임 유사도 검증
     - [x] 연속되는 문자 있는지 체크
     - [x] 크루들 닉네임 유사도 검사

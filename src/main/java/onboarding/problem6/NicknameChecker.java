@@ -4,6 +4,8 @@ import java.util.*;
 
 public class NicknameChecker {
 
+    private static final String ALLOWABLE_EMAIL_FORMAT = "@email.com$";
+
     private List<Crew> crews;
     private TreeSet<String> similarUserEmails;
 
@@ -27,7 +29,11 @@ public class NicknameChecker {
 
 
     public void addCrew(List<String> crewInfo){
-        crews.add(new Crew(crewInfo.get(0), crewInfo.get(1)));
+        String email = crewInfo.get(0);
+        String nickName = crewInfo.get(1);
+        if(email.matches(ALLOWABLE_EMAIL_FORMAT)) {
+            crews.add(new Crew(email, nickName));
+        }
     }
 
     public void addCrews(List<List<String>> crewsInfo){
