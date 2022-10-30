@@ -112,8 +112,8 @@ class ApplicationTest {
 
         @Test
         void case6() {
-            String cryptogram = "cccccccccc";
-            String result="";
+            String cryptogram = "ksekkset";
+            String result= "kseset";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
 
