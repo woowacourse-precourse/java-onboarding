@@ -66,7 +66,6 @@ public class Problem6 {
         Map<String, String> invalidFormMap = getInvaliFormdMap(forms);
         Map<String, Integer> nameTokenMap = getNameTokenMap(forms);
         List<String> duplicationEmails = getDuplicationEmails(forms, nameTokenMap);
-        System.out.println(duplicationEmails);
         answer = duplicationEmails.stream()
                 .sorted()
                 .collect(Collectors.toList());
