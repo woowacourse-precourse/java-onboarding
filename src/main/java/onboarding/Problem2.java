@@ -9,6 +9,16 @@ public class Problem2 {
         return answer;
     }
 
+    private static String deleteSuccessiveStr(String str, ArrayList<Integer> successiveIndexArrayList) {
+        StringBuilder sb = new StringBuilder(str);
+
+        for (int i = successiveIndexArrayList.size() - 1; i >= 0; i--) {
+            sb.deleteCharAt(successiveIndexArrayList.get(i));
+        }
+
+        return sb.toString();
+    }
+
     private static ArrayList<Integer> getSuccessiveIndexArrayList(String str) {
         ArrayList<Integer> arrayList = new ArrayList<>();
 
