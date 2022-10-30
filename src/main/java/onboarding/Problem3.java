@@ -8,9 +8,9 @@ public class Problem3 {
     3. 이를 1부터 주어진 수 number 까지 반복해 총합을 리턴한다.
     */
 
-    static String THREE = "3";
-    static String SIX = "6";
-    static String NINE = "9";
+    static final String THREE = "3";
+    static final String SIX = "6";
+    static final String NINE = "9";
 
     public static int solution(int number) {
         int answer = 0;
