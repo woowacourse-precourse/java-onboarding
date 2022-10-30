@@ -28,6 +28,28 @@ public class Problem7 {
     /**
      * user와 함께 아는 친구 점수 계산 기능
      */
+    private static void addFriendOfFriend(String user, List<List<String>> friends, TreeSet<String> friendSet, HashMap<String, Integer> recommendScore) {
+        for(String friend : friendSet){
+            for(List<String> relation : friends){
+                String friendOfFriend = "";
+                if(relation.get(0).equals(friend)){
+                    friendOfFriend = relation.get(1);
+                }else if(relation.get(1).equals(friend)){
+                    friendOfFriend = relation.get(0);
+                }
+
+                if(friendOfFriend.equals(user) || friendOfFriend.isEmpty()){
+                    continue;
+                }
+
+                if(!recommendScore.containsKey(friendOfFriend)){
+                    recommendScore.put(friendOfFriend, 10);
+                }else{
+                    recommendScore.replace(friendOfFriend, recommendScore.get(friendOfFriend) + 10);
+                }
+            }
+        }
+    }
 
     /**
      * user의 타임 라인에 방문한 사람 점수 계산 기능
