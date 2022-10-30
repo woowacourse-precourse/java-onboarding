@@ -14,4 +14,20 @@ public class Problem2 {
         findAndRemoveDuplicate(characterLinkedList);
         return convertCharacterLinkedListToString(characterLinkedList);
     }
+
+    private static String convertCharacterLinkedListToString(LinkedList<Character> characterLinkedList) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Character ch : characterLinkedList) {
+            stringBuilder.append(ch);
+        }
+        return stringBuilder.toString();
+    }
+
+    private static LinkedList<Character> convertStringToCharacterLinkedList(String cryptogram) {
+        LinkedList<Character> characterLinkedList = new LinkedList<>();
+        for (Character ch : cryptogram.toCharArray()) {
+            characterLinkedList.add(ch);
+        }
+        return characterLinkedList;
+    }
 }
