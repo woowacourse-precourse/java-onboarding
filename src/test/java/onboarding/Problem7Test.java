@@ -111,4 +111,76 @@ class Problem7Test {
         //then
         assertThat(howManyKnowEachOtherWithUser).isEqualTo(0);
     }
+
+    @Test
+    public void calculateScoreTest() {
+        //given
+        String user = "mrko";
+        List<List<String>> friends = List.of(
+                List.of("donut", "andole"),
+                List.of("donut", "jun"),
+                List.of("donut", "mrko"),
+                List.of("shakevan", "andole"),
+                List.of("shakevan", "jun"),
+                List.of("shakevan", "mrko")
+        );
+        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+
+        String potentialFriend = "andole";
+        int howManyKnowEachOtherWithUser = Problem7.howManyKnowEachOtherWithUser(user, friends, potentialFriend);
+
+        //when
+        int calculateScore = Problem7.calculateScore(howManyKnowEachOtherWithUser, potentialFriend, visitors);
+
+        //then
+        assertThat(calculateScore).isEqualTo(20);
+    }
+
+    @Test
+    public void calculateScoreTest2() {
+        //given
+        String user = "mrko";
+        List<List<String>> friends = List.of(
+                List.of("donut", "andole"),
+                List.of("donut", "jun"),
+                List.of("donut", "mrko"),
+                List.of("shakevan", "andole"),
+                List.of("shakevan", "jun"),
+                List.of("shakevan", "mrko")
+        );
+        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+
+        String potentialFriend = "jun";
+        int howManyKnowEachOtherWithUser = Problem7.howManyKnowEachOtherWithUser(user, friends, potentialFriend);
+
+        //when
+        int calculateScore = Problem7.calculateScore(howManyKnowEachOtherWithUser, potentialFriend, visitors);
+
+        //then
+        assertThat(calculateScore).isEqualTo(20);
+    }
+
+    @Test
+    public void calculateScoreTest3() {
+        //given
+        String user = "mrko";
+        List<List<String>> friends = List.of(
+                List.of("donut", "andole"),
+                List.of("donut", "jun"),
+                List.of("donut", "mrko"),
+                List.of("shakevan", "andole"),
+                List.of("shakevan", "jun"),
+                List.of("shakevan", "mrko")
+        );
+        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+
+        String potentialFriend = "bedi";
+        int howManyKnowEachOtherWithUser = Problem7.howManyKnowEachOtherWithUser(user, friends, potentialFriend);
+
+        //when
+        int calculateScore = Problem7.calculateScore(howManyKnowEachOtherWithUser, potentialFriend, visitors);
+
+        //then
+        assertThat(calculateScore).isEqualTo(3);
+    }
 }

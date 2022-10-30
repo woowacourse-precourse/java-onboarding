@@ -77,4 +77,26 @@ public class Problem7 {
 
         return count;
     }
+
+    static int calculateScore(int howManyKnowEachOtherWithUser, String potentialFriend, List<String> visitors) {
+        int score = howManyKnowEachOtherWithUser * ScoreType.TEN.getValue();
+
+        score += Collections.frequency(visitors, potentialFriend);
+
+        return score;
+    }
+
+    private enum ScoreType {
+        TEN(10), ONE(1);
+
+        private final int value;
+
+        ScoreType(int value) {
+            this.value = value;
+        }
+
+        public int getValue() {
+            return value;
+        }
+    }
 }
