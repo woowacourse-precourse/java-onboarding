@@ -10,8 +10,7 @@ import java.util.stream.Collectors;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        return decodingCryptogram(cryptogram);
     }
 
     private static String decodingCryptogram(String cryptogram) {
