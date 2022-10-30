@@ -153,31 +153,6 @@ void compare3()
 }
 ~~~
 ##5. Exception
-~~~java
-/**
- * 5. 제한사항 처리하기
- * 1) pobi와 crong의 길이는 2이다.
- * 2) pobi와 crong에는 [왼쪽 페이지 번호, 오른쪽 페이지 번호]가 순서대로 들어있다.
- * 3) 입력 범위는 1~400
- *
- * @param pobi pobi에 제한 사항을 처리해준다
- * @param crong crong에 제한 사항을 처리해준다
-
- */
-public static void exception(List<Integer> pobi, List<Integer> crong) throws Exception {
-     /*
-        ex1) 23, 24 => 23 - 24 = -1 * -1 = 정상
-        ex2) 24, 23 => 24 - 23 = 1 * -1 = 비정상
-        ex3) 23, 25 => 23 - 25 = -2 *- 1  = 비정상
-        그 외 사항도 처리.
-     */
-    if(pobi.size()>=3 || crong.size()>=3) throw new InputException("지정하지 않은 범위에 값이 입력되었습니다");
-    else if((pobi.get(0)-pobi.get(1))*-1!=1||(crong.get(0)-crong.get(1))*-1!=1) throw new PageSortException("연속되지 않은 페이지입니다");
-    else if(pobi.get(0)<=0||pobi.get(0)>=401||pobi.get(1)<=0||pobi.get(1)>=401||
-            crong.get(0)<=0||crong.get(0)>=401||crong.get(1)<=0||crong.get(1)>=401) throw new PageException("페이지의 범위가 아닙니다");
-
-}
-~~~
 ###5.1 정의한 Exception
 ~~~java
 /**
@@ -207,6 +182,32 @@ public class PageSortException extends Exception{
     }
 }
 ~~~
+###5.2 exception method
+~~~java
+/**
+ * 5. 제한사항 처리하기
+ * 1) pobi와 crong의 길이는 2이다.
+ * 2) pobi와 crong에는 [왼쪽 페이지 번호, 오른쪽 페이지 번호]가 순서대로 들어있다.
+ * 3) 입력 범위는 1~400
+ *
+ * @param pobi pobi에 제한 사항을 처리해준다
+ * @param crong crong에 제한 사항을 처리해준다
+
+ */
+public static void exception(List<Integer> pobi, List<Integer> crong) throws Exception {
+     /*
+        ex1) 23, 24 => 23 - 24 = -1 * -1 = 정상
+        ex2) 24, 23 => 24 - 23 = 1 * -1 = 비정상
+        ex3) 23, 25 => 23 - 25 = -2 *- 1  = 비정상
+        그 외 사항도 처리.
+     */
+    if(pobi.size()>=3 || crong.size()>=3) throw new InputException("지정하지 않은 범위에 값이 입력되었습니다");
+    else if((pobi.get(0)-pobi.get(1))*-1!=1||(crong.get(0)-crong.get(1))*-1!=1) throw new PageSortException("연속되지 않은 페이지입니다");
+    else if(pobi.get(0)<=0||pobi.get(0)>=401||pobi.get(1)<=0||pobi.get(1)>=401||
+            crong.get(0)<=0||crong.get(0)>=401||crong.get(1)<=0||crong.get(1)>=401) throw new PageException("페이지의 범위가 아닙니다");
+
+}
+~~~
 ##6. 최종 솔루션
 ~~~java
 public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -234,8 +235,8 @@ public static int solution(List<Integer> pobi, List<Integer> crong) {
 ##예상 필요 기능 정의
 1. 문자열에서 연속된 값이 있는지 확인하는 메소드
 2. 예외처리하기
-##2. deleteConsecutiveChar
-###2.1 deleteConsecutiveChar method
+##1. deleteConsecutiveChar
+###1.1 deleteConsecutiveChar method
 ~~~java
 /**
  * 문자열에서 연속된 값을 찾아 제거하는 메소드
@@ -262,10 +263,10 @@ public static String deleteConsecutiveChar(String cryptogram)
     return cryptogram;
 }
 ~~~
-###2.2 deleteConsecutiveChar Test -> main test로 대체
+###1.2 deleteConsecutiveChar Test -> main test로 대체
 
-##3. Exception
-###3.1 정의한 Exception
+##2. Exception
+###2.1 정의한 Exception
 ~~~java
 public class RangeException extends Exception {
     public RangeException(String message) {
@@ -279,7 +280,26 @@ public class IsUpperCaseException extends Exception{
     }
 }
 ~~~
-###3.2 Exception Test
+###2.2 exception method
+~~~java
+/**
+ * 문제의 예외인 대문자입력, 문자열 길이 범위 1~40000초과시
+ *
+ * @param cryptogram 문자열
+ * @throws IsUpperCaseException 대문자입력시 예외발생
+ * @throws RangeException 문자열 길이 범위 1~40000이 아닌경우 예외발생
+ */
+public static void exception(String cryptogram) throws IsUpperCaseException, RangeException
+{
+    char charArray[] = cryptogram.toCharArray();
+    for(char isUpperCaseTestChar : charArray)
+    {
+       if (Character.isUpperCase(isUpperCaseTestChar)) throw new IsUpperCaseException("입력값에 대문자가 있습니다");
+    }
+    if (cryptogram.length()<1||cryptogram.length()>40000) throw new RangeException("문자열 길이 범위 1~40000에 일치하지 않습니다");
+}
+~~~
+###2.3 Exception Test
 ~~~java
 @Nested
 class Problem2Test {
@@ -298,7 +318,7 @@ class Problem2Test {
     }
 }
 ~~~
-##4. 최종솔루션
+##3. 최종솔루션
 ~~~java
 public static String solution(String cryptogram) {
     String answer = "answer";
@@ -323,3 +343,72 @@ public static String solution(String cryptogram) {
 ##예상 필요 기능 정의
 1. 3,6,9를 처리하는 메소드
 2. 예외처리하는 메소드
+##1. count369
+###1.1 count369 method
+~~~java
+/**
+ * 369를 자른후 count해주는 method
+ * 
+ * @param number 정수 값
+ * @return  3,6,9 를 카운트 한 값
+ */
+public static int count369(int number)
+{
+    int count = 0;
+
+    for (int i=3;i<=number;i++)
+    {
+        String numberToString = Integer.toString(i);
+        char stringToCharArray[] = numberToString.toCharArray();
+        for (char c : stringToCharArray)
+        {
+            if(c=='3'||c=='6'||c=='9')
+            {
+                System.out.println(i);
+                count++;
+            }
+        }
+    }
+    return count;
+}
+~~~
+###1.2 count369 Test -> main test로 대체
+##2. exception
+###2.1 정의한 Exception
+~~~java
+public RangeException(String message) {
+    super(message);
+}
+~~~
+###2.2 exception method
+~~~java
+/**
+ *
+ * @param number 정수
+ * @throws RangeException  입력범위 1~ 10000 범위를 벗어난 예외
+ */
+public static void exception(int number) throws RangeException
+{
+    if(number<1||number>10000) throw new RangeException("입력범위 1~10000초과");
+
+}
+~~~
+###2.3 exception TEst
+~~~java
+@Nested
+class Problem3Test {
+    @Test
+    void case1() {
+        int number = 0;
+        int result = 0;
+        assertThat(Problem3.solution(number)).isEqualTo(result);
+    }
+
+    @Test
+    void case2() {
+        int number = 10001;
+        int result = 0;
+        assertThat(Problem3.solution(number)).isEqualTo(result);
+    }
+}
+~~~

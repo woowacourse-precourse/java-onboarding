@@ -15,6 +15,12 @@ public class Problem3 {
         }
         return answer;
     }
+
+    /**
+     *
+     * @param number 정수 값
+     * @return  3,6,9 를 카운트 한 값
+     */
     public static int count369(int number)
     {
         int count = 0;
@@ -34,6 +40,12 @@ public class Problem3 {
         }
         return count;
     }
+
+    /**
+     *
+     * @param number 정수
+     * @throws RangeException  입력범위 1~ 10000 범위를 벗어난 예외
+     */
     public static void exception(int number) throws RangeException
     {
         if(number<1||number>10000) throw new RangeException("입력범위 1~10000초과");
