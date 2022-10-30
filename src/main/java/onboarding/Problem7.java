@@ -86,8 +86,31 @@ public class Problem7 {
             }
         }
     }
+
+    public static void visitorsCount(List<String> alreadyFriends, List<String> visitors) {
+        for (int i=0; i<visitors.size(); i++) {
+            System.out.println(visitors.get(i));
+            if (!alreadyFriends.contains(visitors.get(i))) {
+                plusScore(visitors.get(i),1,nameAndScore);
+            }
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer= new ArrayList<String>();
+
+        int[] visited = new int[friends.size()];
+        List<String> alreadyFriends = new ArrayList<>(friends.size());
+        List<String> answer= new ArrayList<String>();
+
+        for (int i=0; i<friends.size(); i++) {
+            if (friends.get(i).contains(user)) {
+                alreadyFriends.add(nextUser(friends.get(i),user));
+            }
+        }
+
+        duplicateFriendsCount(user,0,visited,friends,alreadyFriends);
+        visitorsCount(alreadyFriends,visitors);
 
         return answer;
     }
