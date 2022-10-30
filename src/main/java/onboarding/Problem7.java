@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class Problem7 {
 
@@ -19,13 +20,41 @@ public class Problem7 {
 		private List<Member> friends = new ArrayList<>();
 		private Map<Member, Integer> visitors = new HashMap<>();
 		private int friendReferralScore = 0;
-
 		private Member(String username) {
 			this.username = username;
 		}
 
 		public static Member of(String username) {
 			return new Member(username);
+		}
+
+		@Override
+		public boolean equals(Object o) {
+			if (this == o) {
+				return true;
+			}
+			if (o == null || getClass() != o.getClass()) {
+				return false;
+			}
+			Member member = (Member)o;
+			return Objects.equals(getUsername(), member.getUsername());
+		}
+
+		@Override
+		public int hashCode() {
+			return Objects.hash(getUsername());
+		}
+
+		public void addFriend(Member member) {
+			this.friends.add(member);
+		}
+
+		public void visit(Member member) {
+			if (this.visitors.containsKey(member)) {
+				this.visitors.replace(member, this.visitors.get(member) + 1);
+			} else {
+				this.visitors.put(member, 1);
+			}
 		}
 
 		public String getUsername() {
