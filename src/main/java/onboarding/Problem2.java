@@ -10,7 +10,7 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
 
-        if(isOutOfRange(cryptogram)) {
+        if (isOutOfRange(cryptogram)) {
             return INPUT_FORM_ERROR;
         }
 
@@ -18,7 +18,7 @@ public class Problem2 {
             answer = checkValidForm(cryptogram.charAt(i));
         }
 
-        if(INPUT_FORM_ERROR.equals(answer)) {
+        if (INPUT_FORM_ERROR.equals(answer)) {
             return INPUT_FORM_ERROR;
         }
 
