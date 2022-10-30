@@ -28,7 +28,7 @@ public class Problem7 {
 
         Collections.sort(answer, (r, l) -> {
             int r_score = UsersRecommandFriendsPointsMap.get(r);
-            int l_score = UsersRecommandFriendsPointsMap.get(r);
+            int l_score = UsersRecommandFriendsPointsMap.get(l);
 
             /*
              * 점수가 같을경우 추천 친구의 아이디 오름차순 정렬
