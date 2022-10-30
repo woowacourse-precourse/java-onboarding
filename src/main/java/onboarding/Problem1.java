@@ -4,42 +4,44 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        // 페이지 체크
-        int check = 0;
-        check += pobi.get(1) - pobi.get(0);
-        check += crong.get(1) - crong.get(0);
 
-        if (check != 2)
+        int pageChecks = 0;
+        pageChecks += pobi.get(1) - pobi.get(0);
+        pageChecks += crong.get(1) - crong.get(0);
+
+        if (pageChecks != 2) {
             return -1;
+        }
 
-        // 가장 큰 수 구하기
-        int p = getMaximum(pobi);
-        int c = getMaximum(crong);
+        int pobiValue = getMaximum(pobi);
+        int crongValue = getMaximum(crong);
 
-        if (p > c)
+        if (pobiValue > crongValue) {
             return 1;
-        else if (p < c)
+        } else if (pobiValue < crongValue) {
             return 2;
-        else
-            return 0;
+        }
+
+        return 0;
     }
 
-    private static int getMaximum(List<Integer> list) {
+    private static int getMaximum(List<Integer> pages) {
         int res = 0;
 
-        for (Integer num : list) {
-            String[] str = String.valueOf(num).split("");
+        for (Integer page : pages) {
 
-            // 더하기
+            String pageNumber = String.valueOf(page);
+
+            String[] nums = pageNumber.split("");
+
             int plus = 0;
-            for (String s : str) {
-                plus += Integer.parseInt(s);
+            for (String n : nums) {
+                plus += Integer.parseInt(n);
             }
 
-            // 곱하기
             int times = 1;
-            for (String s : str) {
-                times *= Integer.parseInt(s);
+            for (String n : nums) {
+                times *= Integer.parseInt(n);
             }
 
             res = Math.max(plus, times);
