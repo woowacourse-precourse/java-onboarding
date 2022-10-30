@@ -56,6 +56,13 @@ public class Problem7 {
             }
         });
 
+//mapkey의 길이가 5가 넘을 때, 인덱스 0부터 4까지로 변경해줌.
+        if(mapkey.size() > 5) {
+            answer = mapkey.subList(0, 5);
+        } else {
+            answer = mapkey;
+        }
+
         return answer;
     }
 }
