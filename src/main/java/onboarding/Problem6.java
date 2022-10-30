@@ -21,4 +21,22 @@ public class Problem6 {
 
         return answer;
     }
+
+    public static boolean checkSameWord(String name1, String name2) {
+        boolean result = false;
+
+        for (int i = 0; i < name1.length() - 1; i++) {
+            String name1_i = name1.substring(i, i + 2);
+
+            for (int j = 0; j < name2.length() - 1; j++) {
+                String name2_j = name2.substring(j, j + 2);
+
+                if (name1_i.equals(name2_j)) {
+                    result = true;
+                }
+            }
+        }
+
+        return result;
+    }
 }
