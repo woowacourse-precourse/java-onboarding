@@ -19,27 +19,21 @@ public class Problem2 {
     }
 
     public static String same_remove(String s) {
-        List<Character> chars = new ArrayList<>();
-        for (char ch : s.toCharArray()) {
-            int size = chars.size() - 1;
-            if (chars.isEmpty()) {
-                chars.add(ch);
-                continue;
-            }
-            if (chars.get(size).equals(ch)) {
-                chars.remove(size);
-                continue;
-            }
-            chars.add(ch);
-
-        }
-        return convertCharListToString(chars);
-    }
-
-    public static String convertCharListToString(List<Character> characterList) {
         StringBuilder sb = new StringBuilder();
-        for (Character ch : characterList) {
-            sb.append(ch);
+        boolean check = true;
+        for (int i = 1; i < s.length(); i++) {
+            if (s.charAt(i) == s.charAt(i - 1)) {
+                check = false;
+                continue;
+            }
+            if (check) {
+                sb.append(s.charAt(i - 1));
+                continue;
+            }
+            check = true;
+        }
+        if (check && s.length() != 0) {
+            sb.append(s.charAt(s.length() - 1));
         }
         return sb.toString();
     }
