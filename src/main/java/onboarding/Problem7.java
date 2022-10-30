@@ -103,6 +103,20 @@ public class Problem7 {
                 } else if(userChar < thisChar){
                     return 1;
                 } else {
+                    int userLen = u.name.length();
+                    int thisLen = this.name.length();
+                    int min = Math.min(userLen, thisLen);
+                    for(int i=0; i<min; i++){
+                        char userC = u.name.charAt(i);
+                        char thisC = this.name.charAt(i);
+                        if(userC > thisC){
+                            return 1;
+                        } else if(userC < thisC){
+                            return -1;
+                        } else {
+                            continue;
+                        }
+                    }
                     return 0;
                 }
             }
