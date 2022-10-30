@@ -14,18 +14,19 @@ public class Problem2 {
     }
 
     static String decode(String cryptogram) {
-        int start = hasDuplicate(cryptogram);
-        if (start == -1)
-            return cryptogram;
+        int start = hasDuplicate(0, cryptogram);
+        if (start == -1) return cryptogram;
 
-        for (int end = start + 1; end < cryptogram.length(); end++) {
-
+        int end = start + 1;
+        while (end < cryptogram.length()) {
+            if (start == -1) break;
             if (cryptogram.charAt(end) != cryptogram.charAt(start) || end == cryptogram.length() - 1) {
                 cryptogram = cryptogram.replace(cryptogram.substring(start, end), "");
-                break;
+                start = hasDuplicate(start, cryptogram);
+                end = start;
             }
+            end++;
         }
         return decode(cryptogram);
     }
-
 }
