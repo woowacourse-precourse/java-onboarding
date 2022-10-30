@@ -54,4 +54,17 @@ public class Problem7 {
         }
     }
 
+
+    //추천리스트에 방문 횟수 넣기.
+    public static void recommendVisitors(List<String> visitors, Set<String> userFriends, HashMap<String,Integer> recommendMap){
+
+        for(String visitor : visitors){
+            if (userFriends.contains(visitor)) continue;
+            if (recommendMap.containsKey(visitor)){
+                recommendMap.replace(visitor, recommendMap.get(visitor).intValue()+1);
+            }else recommendMap.put(visitor,1);
+        }
+
+    }
+
 }
