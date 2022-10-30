@@ -55,7 +55,7 @@ public class Problem7 {
     public static void scoreFriends(String account, int point) {
         if(recommendationScore.containsKey(account)) {
             int score = recommendationScore.get(account);
-            recommendationScore.put(account, score + point);
+            recommendationScore.replace(account, score + point);
             return;
         }
         recommendationScore.put(account, point);
