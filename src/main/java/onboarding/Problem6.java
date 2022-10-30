@@ -1,8 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem6 {
     static final int EMAIL = 0;
@@ -14,6 +12,7 @@ public class Problem6 {
         List<List<String>> separatedEachCrewNicknameList = getSeperatedEachCrewNicknameList(forms);
         countListToMap(separatedEachCrewNicknameList);
         List<String> crewEmailListOfDuplicatedNickname = getCrewEmailListOfDuplicatedNickname(separatedEachCrewNicknameList, forms);
+        Collections.sort(crewEmailListOfDuplicatedNickname);
         return new ArrayList<>();
     }
 
