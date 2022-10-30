@@ -3,6 +3,12 @@ package onboarding;
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
+        for(char c: word.toCharArray()){
+            if(isAlphabet(c))
+                answer+=convertAlphabet(c);
+            else
+                answer+=c;
+        }
         return answer;
     }
 
