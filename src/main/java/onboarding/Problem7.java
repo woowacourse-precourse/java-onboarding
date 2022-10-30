@@ -17,4 +17,12 @@ public class Problem7 {
                                         .collect(Collectors.toList());
         return userList;
     }
+
+    static List<String> getFriends(String user, List<List<String>> friends){
+        Stream<List<String>> userContainedStream = friends.stream().filter(item -> item.contains(user));
+        Stream<String> friendStream = userContainedStream.map(item -> item.get((item.indexOf(user) + 1) % 2));
+        List<String> friendList = friendStream.collect(Collectors.toList());
+
+        return friendList;
+    }
 }
