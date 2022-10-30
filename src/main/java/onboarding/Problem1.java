@@ -4,21 +4,23 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MIN_VALUE;
-
         if (isError(pobi) || isError(crong))
             return -1;
 
         int pobiScore = getScore(pobi);
         int crongScore = getScore(crong);
 
+        return getResult(pobiScore, crongScore);
+    }
+
+    private static int getResult(int pobiScore, int crongScore) {
+        int answer = Integer.MIN_VALUE;
         if (pobiScore == crongScore)
             answer = 0;
         else if (pobiScore > crongScore)
             answer = 1;
         else if (pobiScore < crongScore)
             answer = 2;
-
         return answer;
     }
 
