@@ -1,35 +1,41 @@
 package onboarding.domain;
 
-import onboarding.domain.Problem7.Score;
+import onboarding.domain.Problem7.Relation;
+import onboarding.domain.Problem7.ScoreTable;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import javax.management.relation.Relation;
 import java.util.List;
-import java.util.Map;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class Problem7Test {
-    private Map<String,List<String>> relationTable;
+    private Relation relation;
+    private List<List<String>> friends;
+
     @BeforeEach
     public void setUp() {
-        relationTable = Map.of(
-                "donut", List.of("andole", "jun", "mrko"),
-                "andole", List.of("donut", "shakevan"),
-                "jun", List.of("donut", "shakevan"),
-                "shakevan", List.of("andole", "muko", "jun"),
-                "mrko", List.of("donut", "shakevan")
+        friends = List.of(
+                List.of("donut", "andole"),
+                List.of("donut", "jun"),
+                List.of("donut", "mrko"),
+                List.of("shakevan", "andole"),
+                List.of("shakevan", "jun"),
+                List.of("shakevan", "mrko")
         );
+
+        relation = new Relation(friends);
     }
     @Test
     public void countTestZero() {
-        Score score = new Score(relationTable);
-        assertThat(score.count("mrko","donut")).isEqualTo(0);
+        assertThat(relation.countAcquaintance("mrko","donut")).isEqualTo(0);
     }
     @Test
     public void countTestTwo() {
-        Score score = new Score(relationTable);
-        assertThat(score.count("mrko","jun")).isEqualTo(2);
+        assertThat(relation.countAcquaintance("mrko","jun")).isEqualTo(2);
+    }
+    @Test
+    public void friendTest() {
+        assertThat(relation.friendOf("mrko")).isEqualTo(List.of("donut","shakevan"));
     }
 }
