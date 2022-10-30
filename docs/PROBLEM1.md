@@ -40,6 +40,8 @@
   - 경우의 수: 포비 승리, 크롱 승리, 무승부, 예외
 
 ### 도메인 모델링
-![image](https://user-images.githubusercontent.com/68049320/198857873-3fc277e5-ad47-41c8-8309-8989fcf23b35.png)
+![image](https://user-images.githubusercontent.com/68049320/198861031-4b824cd9-ef3a-4158-90cf-9bdc47fdb7bb.png)
+
+
 
 
