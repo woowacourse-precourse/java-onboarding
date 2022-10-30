@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Stream;
 
 class Friend {
     private String name;
@@ -42,6 +43,14 @@ public class Problem7 {
         // score가 0인 사람 제외
         List<String> answer = Collections.emptyList();
         return answer;
+    }
+
+    static Stream<Object> flattenStream(Object[] array) {
+        return Arrays.stream(array)
+                .flatMap(o -> o instanceof Object[]? flattenStream((Object[])o): Stream.of(o));
+    }
+    static Object[] flattenArray(Object[] array) {
+        return flattenStream(array).toArray();
     }
 }
 
