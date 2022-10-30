@@ -9,6 +9,10 @@ public class Problem2 {
 
     public static String solution(String cryptogram) {
         String answer = "answer";
+        addCryptogramList(cryptogram);
+        decoding(cryptogram);
+        answer = decodingResult();
+        cryptogramList.clear();
         return answer;
     }
 
@@ -16,6 +20,21 @@ public class Problem2 {
         for (int i = 0; i < cryptogram.length(); i++) {
             cryptogramList.add(cryptogram.charAt(i));
         }
+    }
+
+    public static void decoding(String cryptogram) {
+        while (compareChar(cryptogram) != 0) {
+            stateRecord.clear();
+            compareChar(cryptogram);
+        }
+    }
+
+    public static String decodingResult() {
+        String result = "";
+        for (char decodedChar : cryptogramList) {
+            result += decodedChar;
+        }
+        return result;
     }
 
     public static int compareChar(String cryptogram) {
