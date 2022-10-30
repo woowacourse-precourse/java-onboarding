@@ -1,21 +1,19 @@
 package onboarding;
 /*
     기능 목록
-    1. 박수를 쳐야하는지 아닌지 체크하는 기능
-    2. 3, 6, 9에 해당하는지 체크하는 기능
+    1. 박수를 쳐야하는지 아닌지 체크하는 기능 -> getClap
+    2. 3, 6, 9에 해당하는지 체크하는 기능 -> is369
  */
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
 
-        while (number > 0) {
-            answer += checkClap(number);
-            number--;
-        }
+        for (; number > 0; number--)
+            answer += getClap(number);
         return answer;
     }
 
-    private static int checkClap(int number) {
+    private static int getClap(int number) {
         int ret = 0;
 
         while (number > 0) {
@@ -26,7 +24,5 @@ public class Problem3 {
         return ret;
     }
 
-    private static boolean is369(int number) {
-        return (number == 3 || number == 6 || number == 9);
-    }
+    private static boolean is369(int number) { return (number == 3 || number == 6 || number == 9); }
 }
