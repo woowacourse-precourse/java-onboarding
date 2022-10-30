@@ -85,4 +85,25 @@ public class Problem7 {
 
         return idScoreList;
     }
+
+    /* 0점보다 높은 점수를 가진 id 중에서 최대 다섯개를 선택해 List 타입으로 반환하는 메서드 */
+    private static List<String> pickBestFiveRecommendation(List<Map.Entry<String,Integer>> sortedIdList) {
+        List<String> result = new ArrayList<>();
+
+        for (int i = 0; i < 5; i++) {
+            try {
+                Map.Entry<String,Integer> element = sortedIdList.get(i);
+                String id = element.getKey();
+                int score = element.getValue();
+
+                if (score > 0) {
+                    result.add(id);
+                }
+            } catch(IndexOutOfBoundsException exception) {
+                break;
+            }
+        }
+
+        return result;
+    }
 }
