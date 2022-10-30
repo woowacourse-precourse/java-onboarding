@@ -40,17 +40,15 @@ public class Problem7 {
     }
 
     private static void increaseFriendWeightByRelationship(List<String> friend){
-        List<String> friendList=new ArrayList<>(friend);
-        friendList.add(owner);
+        List<String> friendCheckList=new ArrayList<>(friend);
+        friendCheckList.add(owner);
         for(int i=0; i<friendData.size(); i++){
-            List<String> friendRelationship = friendData.get(i);
-            Long oldFriendNumberInRelationship = friendRelationship.stream().filter(a->friendList.contains(a)).count();
-            if(oldFriendNumberInRelationship==1){
-                friendRelationship.stream().forEach(a->{
-                    if(!friendList.contains(a)){
-                        increaseWeight(a,10);
-                    }
-                });
+            List<String> friendRelationshipInFriendData = friendData.get(i);
+            Long numberOfFriendByFriendList = friendRelationshipInFriendData.stream().filter(a->friendCheckList.contains(a)).count();
+            if(numberOfFriendByFriendList>=1){
+                friendRelationshipInFriendData.stream()
+                        .filter(a->!friendCheckList.contains(a))
+                        .forEach(a->increaseWeight(a,10));
             }
         }
     }
