@@ -85,7 +85,21 @@ class NickNameForm {
 
         HashMap<String, String> reversedRegistrationMap = reverseKeyValue();
 
-        return null;
+        ArrayList<String> overlapNickNamesList = getOverlapNickNameList(overlapNickNameSet, reversedRegistrationMap);
+        Collections.sort(overlapNickNamesList);
+
+        return overlapNickNamesList;
+    }
+
+    private static ArrayList<String> getOverlapNickNameList(HashSet<String> overlapNickNames, HashMap<String, String> reversedRegistrationMap) {
+        Iterator<String> overlapNickNamesIterator = overlapNickNames.iterator();
+        ArrayList<String> overlapNickNamesList = new ArrayList<>();
+
+        while (overlapNickNamesIterator.hasNext()) {
+            String overlapNickName = overlapNickNamesIterator.next();
+            overlapNickNamesList.add(reversedRegistrationMap.get(overlapNickName));
+        }
+        return overlapNickNamesList;
     }
 
     private static HashMap<String, String> reverseKeyValue() {
