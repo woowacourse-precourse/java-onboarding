@@ -15,11 +15,28 @@ public class Problem2 {
 
 		return chars;
 	}
-	
+	private static List<Character> removeOverlapChar(List<Character> crptogramList) {
+		int i=0;
+		while(true) {
+			if(i==crptogramList.size()-1||crptogramList.size()==0) {
+				break;
+			}
+			char a=crptogramList.get(i);
+			char b=crptogramList.get(i+1);
+			if(a == b) {
+				crptogramList.remove(i+1);
+				crptogramList.remove(i);
+				i=0;
+				continue;
+			}
+			i++;
+		}
+		return crptogramList;
+	}
 	public static String solution(String cryptogram) {
 		String answer = "answer";
 		List<Character> crptogramList = convertStringToCharList(cryptogram);
-		
+		crptogramList = removeOverlapChar(crptogramList);
 		
 		return answer;
 	}
