@@ -15,12 +15,21 @@ public class Problem7 {
     static Map<String, User> userMap = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+
+        createUser(user);
+
+
         List<String> answer = Collections.emptyList();
         return answer;
     }
 
-    public void createUser(String userName){
-
+    public static void createUser(String userName){
+        if(userMap.containsKey(userName))
+            return;
+        
+        User user = new User();
+        user.name = userName;
+        userMap.put(userName, user);
     }
     public void addFriend(String friendName) {
 
