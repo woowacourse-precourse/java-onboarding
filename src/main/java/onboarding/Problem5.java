@@ -5,29 +5,13 @@ import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
-    private static final int[] MONEY_LIST = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
+
     public static List<Integer> solution(int money) {
         checkValidRange(money);
-        List<Integer> answer = getResult(money);
+        Money remainMoney = new Money();
+        List<Integer> answer = remainMoney.getMoney(money);;
 
         return answer;
-
-    }
-
-    private static List<Integer> getResult(int money) {
-        List<Integer> answer = new ArrayList<>();
-        for (int i = 0; i < MONEY_LIST.length; i++) {
-            money = getRemainMoney(money, answer, i);
-        }
-        return answer;
-    }
-
-    private static int getRemainMoney(int money, List<Integer> answer, int i) {
-        int count = 0;
-        if (money >= MONEY_LIST[i]) count = money / MONEY_LIST[i];
-        money = money - MONEY_LIST[i] * count;
-        answer.add(count);
-        return money;
     }
 
     private static void checkValidRange(final int money) {
@@ -35,4 +19,28 @@ public class Problem5 {
             throw new IllegalArgumentException();
         }
     }
+
+    static class Money{
+        private static final int[] MONEY_LIST = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
+        private final List<Integer> money;
+
+        public Money() {
+            this.money = new ArrayList<>();
+        }
+        public List<Integer> getMoney(int money) {
+            for (int i = 0; i < MONEY_LIST.length; i++) {
+                money = getRemainMoney(money, i);
+            }
+            return this.money;
+        }
+
+        private int getRemainMoney(int money, int index) {
+            int count = 0;
+            if (money >= MONEY_LIST[index]) count = money / MONEY_LIST[index];
+            money = money - MONEY_LIST[index] * count;
+            this.money.add(count);
+            return money;
+        }
+    }
+
 }
