@@ -2,6 +2,7 @@ package problem7;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 public class UserRepository {
 
@@ -17,7 +18,7 @@ public class UserRepository {
         }
     }
 
-    public User findByUserid(String userId) {
-        return users.get(userId);
+    public Optional<User> findByUserid(String userId) {
+        return Optional.ofNullable(users.get(userId));
     }
 }

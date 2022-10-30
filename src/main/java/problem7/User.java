@@ -5,9 +5,11 @@ import java.util.Objects;
 public class User {
 
     private final String userId;
+    private final Friend friend;
 
     public User(String userId) {
         this.userId = userId;
+        this.friend = new Friend();
     }
 
     @Override
@@ -21,5 +23,13 @@ public class User {
     @Override
     public int hashCode() {
         return Objects.hash(userId);
+    }
+
+    public void addFriend(User otherUser) {
+        this.friend.add(otherUser.userId);
+    }
+
+    public boolean isFriend(User otherUser) {
+        return this.friend.hasFriend(otherUser.userId);
     }
 }
