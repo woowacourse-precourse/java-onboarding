@@ -53,8 +53,8 @@ int numberOfFriends
 특정 유저에 대한 추천 점수를 반환한다.
 
 ```java
-int recommandationScore
-        = system.getRecommandationScore("andole");
+int recommendationScore
+        = system.getRecommendationScore("andole");
 // 20
 ```
 
