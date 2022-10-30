@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Problem6 {
 
 	private static final String VALID_DOMAIN = "@email.com";
 
 	public static List<String> solution(List<List<String>> forms) {
-		List<String> answer = List.of("answer");
 
 		try {
 			isValidForms(forms);
@@ -18,7 +18,7 @@ public class Problem6 {
 			formErrorExceptions.printStackTrace();
 		}
 
-		return answer;
+		return getResultList(forms);
 	}
 
 	public static void isValidForms(List<List<String>> forms) throws IllegalStateException {
@@ -87,5 +87,9 @@ public class Problem6 {
 		}
 
 		return combinations;
+	}
+
+	public static List<String> getResultList(List<List<String>> forms) {
+		return getSameNicknameList(forms).stream().distinct().sorted().collect(Collectors.toList());
 	}
 }
