@@ -12,10 +12,10 @@ public class StringListConvertService {
     }
 
     public static String ArrayListToString(ArrayList<Character> charList){
-        String word = "";
+        StringBuilder sb = new StringBuilder(charList.size());
         for(Character character: charList){
-            word += Character.toString(character);
+           sb.append(character);
         }
-        return word;
+        return sb.toString();
     }
 }
