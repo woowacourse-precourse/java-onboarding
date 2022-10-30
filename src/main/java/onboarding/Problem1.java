@@ -22,6 +22,17 @@ class Problem1 {
 
         return leftPage + 1 != rightPage;
     }
+    private static int calculateScore(List<Integer> pages) {
+        int leftPage = pages.get(0);
+        int rightPage = pages.get(1);
+
+        int score = 0;
+        score = Math.max(score, addDigits(leftPage));
+        score = Math.max(score, addDigits(rightPage));
+        score = Math.max(score, multiplyDigits(leftPage));
+        score = Math.max(score, multiplyDigits(rightPage));
+        return score;
+    }
     private static int addDigits(int page) {
         int score = 0;
         while (page > 0) {
