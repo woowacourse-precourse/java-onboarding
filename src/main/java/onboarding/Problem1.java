@@ -56,16 +56,17 @@ class Problem1 {
         }
         return multiple;
     }
+
     private static boolean isValidate(List<Integer> page){
-        if (page.get(1)-page.get(0)==1){
-            return true;
-        }if (page.get(0)!=1||page.get(1)!=400){
-            return true;
-        }if (page.get(0)%2==1){
-            return true;
-        }if (page.get(1)%2==0){
-            return true;
-        }
+        if (page.get(1)-page.get(0)!=1){
             return false;
+        }if (page.get(0)==1||page.get(1)==400){
+            return false;
+        }if (page.get(0)%2!=1){
+            return false;
+        }if (page.get(1)%2!=0){
+            return false;
+        }
+        return true;
     }
 }
