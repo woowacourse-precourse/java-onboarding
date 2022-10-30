@@ -6,7 +6,6 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         Map<String, Integer> map = new HashMap<String, Integer>();
 
-        Set<String> set = new HashSet<String>();
         for (List<String> item : forms) {
             for (int j = 0; j < item.get(1).length(); j++) {
                 for (int k = 0; k < item.get(1).length() - 1 - j; k++) {
@@ -16,7 +15,6 @@ public class Problem6 {
                     } else {
                         map.put(item.get(1).substring(k, k + j + 2), 1);
                     }
-                    set.add(item.get(1).substring(k, k + j + 2));
                 }
             }
         }
