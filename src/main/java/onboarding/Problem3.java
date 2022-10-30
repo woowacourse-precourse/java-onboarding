@@ -9,6 +9,16 @@ public class Problem3 {
      * 1씩 더해서 계산하는 함수.
      * 비효율적이더라도, 테스트용으로 구현
      */
+    public static int calcAll(int number) {
+        int answer = 0;
+        for (int i = 1; i <= number; i++) {
+            String[] data = String.valueOf(i).split("");
+            for (String tempData : data) {
+                if(tempData.equals("3") || tempData.equals("6") || tempData.equals("9")) answer++;
+            }
+        }
+        return answer;
+    }
 
     /**
      * @Method: calcAlgorithm
@@ -27,7 +37,7 @@ public class Problem3 {
      */
 
     public static int solution(int number) {
-        int answer = 0;
+        int answer = calcAll(number);
         return answer;
     }
 }
