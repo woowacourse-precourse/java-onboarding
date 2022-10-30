@@ -13,28 +13,28 @@ import java.util.Stack;
  */
 public class Problem2 {
     private static Stack<Character> decryption(char[] s){
-        Stack<Character> stack = new Stack<>();
-        stack.push(s[0]);
+        Stack<Character> decodedcCyptogram = new Stack<>();
+        decodedcCyptogram.push(s[0]);
         for (int i = 1; i < s.length; i++) {
-            if (stack.peek() == s[i]) {
-                stack.pop();
+            if (decodedcCyptogram.peek() == s[i]) {
+                decodedcCyptogram.pop();
                 continue;
             }
-            stack.push(s[i]);
+            decodedcCyptogram.push(s[i]);
         }
-        return stack;
+        return decodedcCyptogram;
     }
-    private static String stackToString (Stack<Character> decryptionArray){
+    private static String stackToString (Stack<Character> decryptionStack){
         StringBuilder temp = new StringBuilder();
-        for (int i = 0; i < decryptionArray.size(); i++) {
-            temp.append(decryptionArray.elementAt(i));
+        for (int i = 0; i < decryptionStack.size(); i++) {
+            temp.append(decryptionStack.elementAt(i));
         }
         return temp.toString();
     }
     public static String solution(String cryptogram) {
         char[] s = cryptogram.toCharArray();
-        Stack<Character> decryptionArray = decryption(s);
-        return stackToString(decryptionArray);
+        Stack<Character> decryptionStack = decryption(s);
+        return stackToString(decryptionStack);
 
     }
 }
