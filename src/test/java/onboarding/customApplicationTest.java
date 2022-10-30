@@ -127,8 +127,8 @@ public class customApplicationTest
         @Test
         void case1() {
             int money = 50_237;
-            List<Integer> result = List.of(1, 0, 0, 0, 0, 2, 0, 3, 7);
-            assertThat(Problem5.solution(money)).isEqualTo(result);
+            int result = 1;
+            assertThat(Problem5.moneyCount(money,50000)).isEqualTo(result);
         }
 
         @Test
