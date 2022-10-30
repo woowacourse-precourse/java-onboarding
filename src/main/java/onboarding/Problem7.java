@@ -48,6 +48,7 @@ public class Problem7 {
             if(numberOfFriendByFriendList>=1){
                 friendRelationshipInFriendData.stream()
                         .filter(a->!friendCheckList.contains(a))
+                        .filter(a->!oldFriend.contains(a))
                         .forEach(a->increaseWeight(a,10));
             }
         }
