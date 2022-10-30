@@ -29,4 +29,10 @@ public class Problem2 {
             }
         }
     }
+    private static boolean isLenZero(Integer[] arr) {
+        if(arr.length == 0){
+            return true;
+        }
+        return false;
+    }
 }
