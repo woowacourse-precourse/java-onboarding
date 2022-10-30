@@ -37,6 +37,7 @@ public class ClapGamePlayer {
     }
 
     private static boolean isClapped(int targetDigit) {
-        return targetDigit == CLAP_THREE_VALUE || targetDigit == CLAP_SIX_VALUE || targetDigit == CLAP_NINE_VALUE;
+        return targetDigit == CLAP_THREE_VALUE || targetDigit == CLAP_SIX_VALUE
+            || targetDigit == CLAP_NINE_VALUE;
     }
 }
