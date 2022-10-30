@@ -4,7 +4,8 @@ public class Problem4 {
     /*
         기능 요구 사항 목록
         1. 각 알파벳 아스키의 반대되는 아스키를 반환하는 함수
-        2. solution (반대되는 문자들을 문자열로 합침)
+        2. 단어에 반대되는 문자열 반환하는 함수
+        3. solution 함수
     */
 
     // 반대 아스키 반환 함수
@@ -21,16 +22,19 @@ public class Problem4 {
         return ascii;
     }
 
-    public static String solution(String word) {
-        String answer = "";
-
+    // 반대 단어 반환 함수
+    private static String reverseWord(String word) {
+        String reversed = "";
         for (int i = 0; i < word.length(); i++) {
             char letter = word.charAt(i);
             int reverse = reverseAscii(letter);
             char reverseChar = (char) reverse;
-            answer += reverseChar;
+            reversed += reverseChar;
         }
+        return reversed;
+    }
 
-        return answer;
+    public static String solution(String word) {
+        return reverseWord(word);
     }
 }
