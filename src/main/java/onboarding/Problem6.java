@@ -62,20 +62,20 @@ public class Problem6 {
 
         return returnName;
     }
-//
-//    public static List<Integer> finalCompare(List<String> nameLst, String returnName) {
-//        ArrayList<Integer> indexLst = new ArrayList<>();
-//
-//        for(int i=0; i<nameLst.size(); i++) {
-//            String name = nameLst.get(i);
-//
-//            if(name.contains(returnName)) {
-//                indexLst.add(i);
-//            }
-//        }
-//
-//        return indexLst;
-//    }
+
+    public static List<Integer> finalCompare(List<String> nameLst, String returnName) {
+        ArrayList<Integer> indexLst = new ArrayList<>();
+
+        for(int i=0; i<nameLst.size(); i++) {
+            String name = nameLst.get(i);
+
+            if(name.contains(returnName)) {
+                indexLst.add(i);
+            }
+        }
+
+        return indexLst;
+    }
 //
 //    public static List<String> finalAnswer(List<Integer> indexLst, List<List<String>> forms) {
 //        ArrayList<String> emailLst = new ArrayList<>();
