@@ -20,7 +20,9 @@ public class Problem7 {
 
         List<String> usersFriendsList = friendsMap.get(user);
         recommendFriendToPointMap = removedUsersFriends(usersFriendsList, recommendFriendToPointMap);
-        
+
+        List<String> sortedRecommendList = sortByRestrictions(recommendFriendToPointMap);
+
         List<String> answer = Collections.emptyList();
         return answer;
     }
@@ -85,6 +87,31 @@ public class Problem7 {
             recommendFriendToPointMap.remove(usersFriend);
         }
         return recommendFriendToPointMap;
+    }
+
+    private static List<String> sortByRestrictions(HashMap<String, Integer> recommendFriendToPointMap ) {
+        // Map.Entry 리스트 작성
+        List<Map.Entry<String, Integer>> listEntries = new ArrayList<Map.Entry<String, Integer>>(recommendFriendToPointMap.entrySet());
+
+        //점수 내림차순 정렬
+       Collections.sort(listEntries, new Comparator<Map.Entry<String, Integer>>() {
+           @Override
+            public int compare(Map.Entry<String, Integer> obj1, Map.Entry<String, Integer> obj2) {
+               // 오름 차순 정렬 + 점수가 같은경우 알파벳순 정렬
+               if (obj1.getValue() > obj2.getValue()) {
+                   return -1;
+               } else if (obj1.getValue() == obj2.getValue()) {
+                   return obj1.getKey().compareTo(obj2.getKey());
+               }else return 1;
+            }
+        });
+
+        List<String> sortedRecommendList = new ArrayList<>();
+        for (Map.Entry<String, Integer> listEntry : listEntries) {
+            sortedRecommendList.add(listEntry.getKey());
+            if(sortedRecommendList.size()==5) break;
+        }
+        return sortedRecommendList;
     }
 
 }
