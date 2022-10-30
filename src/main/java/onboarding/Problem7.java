@@ -11,8 +11,25 @@ public class Problem7 {
 
         ArrayList<String> withFriends = storeUserFriends(user, friends);
         Map<String, Integer> friendAndScore = storeFriendAndScore(user, friends, withFriends);
+        visitScore(visitors, withFriends, friendAndScore);;
 
         return answer;
+    }
+
+    private static void visitScore(List<String> visitors, ArrayList<String> withFriends, Map<String, Integer> friendScore) {
+        for (int i = 0; i < visitors.size(); i++) {
+            String visitor = visitors.get(i);
+            if (friendScore.containsKey(visitor)) {
+                Integer score = friendScore.get(visitor);
+                score++;
+                friendScore.replace(visitor, score);
+            }
+            if (!withFriends.contains(visitor)) {
+                if (!friendScore.containsKey(visitor)) {
+                    friendScore.put(visitor, VISITOR_SCORE);
+                }
+            }
+        }
     }
 
     private static Map<String, Integer> storeFriendAndScore(String user, List<List<String>> friends, ArrayList<String> withFriends) {
