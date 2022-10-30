@@ -1,11 +1,13 @@
 package onboarding;
 
 public class Problem4 {
+
     public static String solution(String word) {
         StringBuilder answer = new StringBuilder();
         for(char c: word.toCharArray()) {
-            if(checkAlphabet((int)c)) {
-                answer.append(changeLetter((int)c));
+            String charType = checkAlphabet((int)c);
+            if(!charType.equals("NOTALPHABET")) {
+                answer.append(changeLetter((int)c, charType));
                 continue;
             }
             answer.append(c);
@@ -13,18 +15,24 @@ public class Problem4 {
         return answer.toString();
     }
 
-    public static boolean checkAlphabet(int asciiNum) {
-        return asciiNum >= 65 && (asciiNum <= 90 || asciiNum >= 97) && asciiNum <= 122;
+    public static String checkAlphabet(int asciiNum) {
+        if(asciiNum >= (int)'A' && asciiNum <= (int)'Z') {
+            return "UPPERCASE";
+        }
+        if(asciiNum >= (int)'a' && asciiNum <= (int)'z') {
+            return "LOWERCASE";
+        }
+        return "NOTALPHABET";
     }
 
-    public static char changeLetter(int asciiNum) {
-        int TOTAL = 0;
-        if (asciiNum <= 90) {
-            TOTAL = (int)'A' + (int)'Z';
+    public static char changeLetter(int asciiNum, String characterType) {
+        int total = 0;
+        if (characterType.equals("UPPERCASE")) {
+            total = (int)'A' + (int)'Z';
         }
-        if(asciiNum >= 97){
-            TOTAL = (int)'a' + (int)'z';
+        if(characterType.equals("LOWERCASE")){
+            total = (int)'a' + (int)'z';
         }
-        return (char)(TOTAL - asciiNum);
+        return (char)(total - asciiNum);
     }
 }
