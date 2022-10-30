@@ -40,19 +40,26 @@ public class Problem7 {
 			List<String> maxValueKeys = findMaxValueKeys(friendshipScore);
 			// 추천 점수가 같은 경우 이름순으로 정렬
 			Collections.sort(maxValueKeys);
+
 			for (String maxValueKey : maxValueKeys) {
-				// answer 리스트와 유저의 합이 5 이상인지 확인
-				if (answer.size() + maxValueKeys.size() < 6) {
-					// answer 리스트에 add
-					answer.add(maxValueKey);
+				// answer 리스트에 add
+				answer.add(maxValueKey);
+				// answer 리스트와 유저의 합이 5 초과인 경우 while문 종료
+				if (isFive(answer)) {
+					break;
 				}
 
 			}
 			//answer 리스트에 추가된 유저 hashmap에서 삭제
 			removeHighScoreUser(friendshipScore, maxValueKeys);
+			System.out.println(friendshipScore);
 		}
 
 		return answer;
+	}
+
+	private static boolean isFive(List<String> answer) {
+		return answer.size() == 5;
 	}
 
 	private static void removeHighScoreUser(HashMap<String, Integer> friendshipScore, List<String> maxValueKeys) {
@@ -133,4 +140,19 @@ public class Problem7 {
 		return noFriendList;
 	}
 
+	public static void main(String[] args) {
+		String user = "mrko";
+		List<List<String>> friends = List.of(
+			List.of("donut", "andole"),
+			List.of("donut", "jun"),
+			List.of("donut", "mrko"),
+			List.of("shakevan", "andole"),
+			List.of("shakevan", "jun"),
+			List.of("shakevan", "mrko"),
+			List.of("andole", "D"),
+			List.of("jun", "E")
+		);
+		List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan", "a", "b", "c");
+		System.out.println(solution(user, friends, visitors));
+	}
 }
