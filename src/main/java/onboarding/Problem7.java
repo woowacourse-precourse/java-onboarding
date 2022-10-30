@@ -40,6 +40,20 @@ public class Problem7 {
         }
         return scoreMap;
     }
+    public static List<Map.Entry<String, Integer>> sorting(HashMap<String, Integer> scoreMap){
+        List<Map.Entry<String, Integer>> listEntries = new ArrayList<Map.Entry<String, Integer>>(scoreMap.entrySet());
+
+        // 비교함수 Comparator를 사용하여 점수 내림차순 정렬(점수가 동일하면 이름순정렬)
+        Collections.sort(listEntries, new Comparator<Map.Entry<String, Integer>>() {
+            public int compare(Map.Entry<String, Integer> obj1, Map.Entry<String, Integer> obj2) {
+                if(obj2.getValue()==obj1.getValue()){
+                    return obj1.getKey().compareTo(obj2.getKey());
+                }
+                return obj2.getValue().compareTo(obj1.getValue());
+            }
+        });
+        return listEntries;
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         HashMap<String, List<String>> friendMap=makeFriendMap(friends); //친구 관계 HashMap 만들기
@@ -49,9 +63,17 @@ public class Problem7 {
         }
          */
         HashMap<String, Integer> scoreMap=calcScore(user, friendMap, visitors); // 추천 점수 계산
+
+        /*
         for(Map.Entry<String, Integer> entrySet:scoreMap.entrySet()){
             System.out.println("key : "+entrySet.getKey()+" value : "+entrySet.getValue());
         }
+         */
+        List<Map.Entry<String, Integer>> sortScore=sorting(scoreMap);
+        for(Map.Entry<String, Integer> entry : sortScore) {
+            System.out.println(entry.getKey() + " : " + entry.getValue());
+        }
+
         return answer;
     }
 }
