@@ -23,7 +23,10 @@ class Problem1 {
         maxs = new ArrayList<>();
         for(List<Integer> input: inputs) {
             // 조건에 어긋나는 입력이 주어지면 isError를 true로 만들고 반복 종료
-            if(input.size() != 2 || input.get(1) - input.get(0) != 1 || input.get(0) % 2 == 0) {
+            if(input.size() != 2 ||
+                input.get(0) < 0 || input.get(1) > 400 ||
+                input.get(1) - input.get(0) != 1 ||
+                input.get(0) % 2 == 0) {
                 isError = true;
                 break;
             }
