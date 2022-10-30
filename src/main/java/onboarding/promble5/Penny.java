@@ -23,4 +23,24 @@ public enum Penny {
     public Integer getMoney() {
         return money;
     }
+
+    public static void getPennyResult(int money, List<Integer> result) {
+        int share;
+        for (Penny penny : Penny.values()) {
+            share = getShare(money, penny);
+            money = getRestMoney(share, money, penny);
+            result.add(share);
+        }
+    }
+
+    private static int getShare(int money, Penny penny) {
+        return money / penny.money;
+    }
+
+    private static int getRestMoney(int share, int money, Penny penny) {
+        if (share != 0) {
+            money = money - share * penny.money;
+        }
+        return money;
+    }
 }
