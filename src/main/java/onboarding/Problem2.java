@@ -35,6 +35,16 @@ public class Problem2 {
 
     public static String solution(String cryptogram) {
         String answer = "answer";
+        String tempString;
+        answer = cryptogram;
+
+        for(;;){
+            tempString = findSerialString(answer);
+
+            if(answer.equals(tempString)) break;
+
+            answer = removeSerialString(tempString);
+        }
         return answer;
     }
 }
