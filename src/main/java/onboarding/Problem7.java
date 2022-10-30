@@ -11,19 +11,18 @@ import java.util.List;
  */
 public class Problem7 {
 
-    static List<String> std = new ArrayList<>();
-    static HashMap<String,Integer> friendMember;
+    static List<String> standard = new ArrayList<>();
+    static HashMap<String,Integer> friendList = new HashMap<>();
 
-    private static HashMap<String,Integer> listOfPeople(List<List<String>> friends, HashMap<String,Integer> member, List<String> visitors){
+    private static void listOfPeople(List<List<String>> friends, List<String> visitors){
         for(List<String> relate : friends) {
             for(int i = 0; i < 2; i++) {
-                member.put(relate.get(i), 0);
+                friendList.put(relate.get(i), 0);
             }
         }
         for (String who : visitors) {
-            member.put(who, 0);
+            friendList.put(who, 0);
         }
-        return member;
     }
 
     private static void makeStandard(String user, List<List<String>> friends) {
@@ -31,18 +30,18 @@ public class Problem7 {
             if (relate.contains(user)){
                 List<String> list = new ArrayList<>(relate);
                 list.remove(user);
-                std.add(list.get(0));
+                standard.add(list.get(0));
             }
         }
     }
 
     private static void knowTogather(String user, List<List<String>> friends) {
         for (List<String> relate : friends) {
-            for (String j : std) {
+            for (String j : standard) {
                 if (relate.contains(j) && !relate.contains(user)) {
                     List<String> list2 = new ArrayList<>(relate);
                     list2.remove(j);
-                    friendMember.put(list2.get(0), friendMember.get(list2.get(0))+10);
+                    friendList.put(list2.get(0), friendList.get(list2.get(0))+10);
                 }
             }
         }
@@ -50,14 +49,14 @@ public class Problem7 {
     
     private static void whoVisited(List<String> visitors) {
         for(String who : visitors){
-            friendMember.put(who, friendMember.get(who)+1);
+            friendList.put(who, friendList.get(who)+1);
         }
     }
 
     private static void colanderZero(HashMap<String, Integer> new_dic) {
-        for(String key : friendMember.keySet()){
-            if(friendMember.get(key) > 0) {
-                if(!std.contains(key)) new_dic.put(key, friendMember.get(key));
+        for(String key : friendList.keySet()){
+            if(friendList.get(key) > 0) {
+                if(!standard.contains(key)) new_dic.put(key, friendList.get(key));
             }
         }
     }
@@ -69,10 +68,9 @@ public class Problem7 {
     
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
-        HashMap<String,Integer> member = new HashMap<>();
         HashMap<String,Integer> new_dic = new HashMap<>();
 
-        friendMember = listOfPeople(friends,member, visitors);
+        listOfPeople(friends, visitors);
 
         makeStandard(user, friends);
 
