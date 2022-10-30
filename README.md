@@ -116,9 +116,9 @@ BUILD SUCCESSFUL in 0s
 |기능목록 번호| 내용 | 구현상황 |
 | :---:  | :--- | :--- | 
 |  4.0 | 주어진 문자열을 모두 청개구리화한 문자열로 변환 | Problem4.solution | 
-|  4.0.1 | 출력값 요구사항 1: 알파벳 외의 문자는 그대로 출력 | Problem4.solution | 
 |  4.1 | 주어진 캐릭터를 청개구리 변환을 진행 | Problem4.chungaeguri |
 |  4.1.1 | 알파벳 대문자는 소문자로, 알파벳 소문자는 대문자로 출력 | Problem4.chungaeguri |
+|  4.2 | 출력값 요구사항 1: 알파벳 외의 문자는 그대로 출력 | Problem4.isAlphabet | 
 
 7. 문제 7
 
