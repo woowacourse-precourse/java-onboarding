@@ -3,18 +3,33 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
+    private static int idx = 0;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
         SortedMap<String, Integer> map = new TreeMap<>();
         ArrayList<ArrayList<Integer>> al = new ArrayList<>();
 
-        initializeMap(user, friends, visitors, map); 
+        initializeMap(user, friends, visitors, map);
+
+        initializeGraph(friends, map, al);
+
 
         return answer;
     }
 
+    private static void initializeGraph(List<List<String>> friends, SortedMap<String, Integer> map, ArrayList<ArrayList<Integer>> al) {
+        //그래프 초기화
+        for (int i = 0; i < idx; i++) {
+            al.add(new ArrayList<>());
+        }
+        for (List<String> friend : friends) {
+            al.get(map.get(friend.get(0))).add(map.get(friend.get(1)));
+            al.get(map.get(friend.get(1))).add(map.get(friend.get(0)));
+        }
+    }
+
     private static void initializeMap(String user, List<List<String>> friends, List<String> visitors, SortedMap<String, Integer> map) {
-        int idx = 0;
+        //맵 초기화
         map.put(user, 0);
         for (List<String> friend : friends) {
             if (!map.containsKey(friend.get(0))) {
