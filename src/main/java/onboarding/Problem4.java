@@ -2,8 +2,14 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        int n = word.length();
+        char[] chars = word.toCharArray();
+        StringBuilder sb = new StringBuilder();
+
+        for (char c : chars) {
+            sb.append(changeWord(c));
+        }
+        return sb.toString();
     }
 
     public static char changeWord(char c) {

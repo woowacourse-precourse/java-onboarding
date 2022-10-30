@@ -22,7 +22,7 @@
 ---
 ### Problem 4
 - [x] 문자 변환 기능 추가
-- [ ] solution 메서드 완성
+- [x] solution 메서드 완성
 ---
 ### Problem 5
 
