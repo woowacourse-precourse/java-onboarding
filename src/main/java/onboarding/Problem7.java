@@ -4,12 +4,32 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = recommendNewFriend(user,friends, visitors);
+        return answer;
+    }
 
-        List<String> userFriends = findUserFriends(user, friends);
+    private static List<String> recommendNewFriend(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, Integer> score = findFriendOfFriend(user, friends);
+        List<String> userFriends = findUserFriends(user, friends);
+        score = scoreVisitor(userFriends, visitors, score);
 
+        return chooseFiveUser(score);
+    }
 
+    private static List<String> chooseFiveUser(Map<String, Integer> score) {
+
+        int count = 0;
+        List<String> answer = new ArrayList<>();
+
+        score = sortHashMap(score);
+        Set<String> scoreKeySet = score.keySet();
+
+        Iterator<String> iterator = scoreKeySet.iterator();
+        while (iterator.hasNext()) {
+            if(count == 5) break;
+            answer.add(iterator.next());
+            count += 1;
+        }
         return answer;
     }
 
@@ -69,5 +89,22 @@ public class Problem7 {
             if (i.get(1).equals(user)) userFriends.add((String) i.get(0));
         }
         return userFriends;
+    }
+
+    private static Map<String, Integer> sortHashMap(Map<String, Integer> unsortedMap) {
+
+        SortedSet<Map.Entry<String, Integer>> sortedSet = new TreeSet<>((e1, e2) -> {
+            int res = e1.getValue().compareTo(e2.getValue());
+            if (res == 0)
+                return e1.getKey().compareTo(e2.getKey());
+            return res * -1;
+        });
+
+        sortedSet.addAll(unsortedMap.entrySet());
+
+        Map<String, Integer> sortedLinkedHashMap = new LinkedHashMap<>();
+        for (var entry : sortedSet) sortedLinkedHashMap.put(entry.getKey(), entry.getValue());
+
+        return sortedLinkedHashMap;
     }
 }
