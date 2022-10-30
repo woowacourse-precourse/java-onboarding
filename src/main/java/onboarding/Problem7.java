@@ -11,6 +11,7 @@ public class Problem7 {
 
 	private static final int FRIEND_POINT = 10;
 	private static final int VISITOR_POINT = 1;
+
 	static List<String> friendName = new ArrayList<>();
 	static HashMap<String, Integer> recommendation = new HashMap<>();
 
@@ -62,10 +63,7 @@ public class Problem7 {
 	}
 
 	private static String whoIsNotFriend(String user1, String user2) {
-		if (isFriend(user1)) {
-			return user2;
-		}
-		return user1;
+		return isFriend(user1) ? user2 : user1;
 	}
 
 	private static void findVisitor(List<String> visitors) {
