@@ -70,10 +70,15 @@ public class Problem4 {
             String word, int index,
             Map<String, String> upperCaseMappingMap, Map<String, String> lowerCaseMappingMap) {
 
-        // 공백에 해당하는 아스키 코드는 그대로 변환하지 않기
-        if (word.charAt(index) == 32) {
-            return " ";
+        // 2022/10/30 추가사항
+        // 공백을 포함하여 알파벳 외의 문자는 변환하지 않는 조건 추가
+        if (word.charAt(index) < 65 ||
+                (word.charAt(index) > 91 && word.charAt(index) < 97) ||
+                word.charAt(index) > 122) {
+            return String.valueOf(word.charAt(index));
         }
+
+
         // 대문자 변환 Map 에 해당하는 문자라면 매핑된 Value 반환하기
         else if (upperCaseMappingMap.containsKey(String.valueOf(word.charAt(index)))) {
             return upperCaseMappingMap.get(String.valueOf(word.charAt(index)));
