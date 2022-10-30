@@ -4,10 +4,12 @@ import java.util.*;
 
 public class Problem7 {
     private static Map<String, List<String>> connectMap;
+    private static Map<String, Integer> distance;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
         connectMap = new HashMap<>();
+        distance = new HashMap<>();
 
         makeConnection(friends);
 
@@ -29,6 +31,15 @@ public class Problem7 {
             con = connectMap.getOrDefault(f2, new ArrayList<>());
             con.add(f1);
             connectMap.put(f2, con);
+        }
+    }
+
+    /*
+     * 거리를 초기화 한다.
+     * */
+    private static void initDistance(){
+        for (String key : connectMap.keySet()) {
+            distance.put(key, 0);
         }
     }
 }
