@@ -10,6 +10,7 @@ public class Problem6 {
     private static final int FORM_ELEMENT_SIZE = 2;
     private static final int EMAIL_MIN_LENGTH = 11;
     private static final int EMAIL_MAX_LENGTH = 20;
+    private static final String DOMAIN = "email.com";
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
@@ -49,6 +50,20 @@ public class Problem6 {
     public static boolean checkEmailLength(List<String> emails) {
         for (String email : emails) {
             if (!(EMAIL_MIN_LENGTH <= email.length() && email.length() <= EMAIL_MAX_LENGTH)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    // 이메일 도메인이 email.com 인지 검증하는 기능
+    public static boolean checkEmailDomain(List<String> emails) {
+        for (String email : emails) {
+            if (!email.contains("@")) {
+                return false;
+            }
+            String domain = email.split("@")[1];
+            if (!domain.equals(DOMAIN)) {
                 return false;
             }
         }
