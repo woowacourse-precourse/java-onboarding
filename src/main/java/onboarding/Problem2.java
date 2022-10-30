@@ -9,15 +9,22 @@ public class Problem2 {
     }
 
     static String processCryptogram(String cryptogram) {
-        while (true) {
+        boolean flag = false;
+
+        while (!flag) {
             String newCryptogram = getCryptogram(cryptogram);
-
-            if (newCryptogram.equals(cryptogram)) {
-                return newCryptogram;
-            }
-
+            flag = isSame(cryptogram, newCryptogram);
             cryptogram = newCryptogram;
         }
+
+        return cryptogram;
+    }
+
+    static boolean isSame(String cryptogram, String newCryptogram) {
+        if (cryptogram.equals(newCryptogram)) {
+            return true;
+        }
+        return false;
     }
 
     static String getCryptogram(String cryptogram) {
