@@ -11,14 +11,12 @@ public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
         List<List<String>> separatedNickname = new ArrayList<>();
-        for (List<String> crew : forms) {
-            List<String> temp = new ArrayList<>(getSeparateTwoConsecutiveLetters(crew.get(NICKNAME)));
-            separatedNickname.add(temp);
-        }
+        addSeperatedNicknameToList(forms, separatedNickname);
         countTwoLetters(separatedNickname);
 
         return new ArrayList<>();
     }
+
 
     private static void countTwoLetters(List<List<String>> separatedNickname) {
         for (List<String> crewSeparatedNickname : separatedNickname) {
@@ -29,6 +27,13 @@ public class Problem6 {
     private static void putListToMap(List<String> crewSeparatedNickname) {
         for (String twoLetters : crewSeparatedNickname) {
             twoLetterCountMap.put(twoLetters, twoLetterCountMap.getOrDefault(twoLetters, 0) + 1);
+        }
+    }
+
+    private static void addSeperatedNicknameToList(List<List<String>> forms, List<List<String>> separatedNickname) {
+        for (List<String> crew : forms) {
+            List<String> temp = new ArrayList<>(getSeparateTwoConsecutiveLetters(crew.get(NICKNAME)));
+            separatedNickname.add(temp);
         }
     }
 
