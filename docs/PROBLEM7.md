@@ -28,5 +28,6 @@
 ### 기능목록
 
 - [ ] 이미 친구관계인 user 구하기
-- [ ] HashMap을 이용하여 friends와 visitors를 각 친구관계가 아닌 user의 점수에 반영
+- [ ] HashMap을 이용하여 friends를 각 친구관계가 아닌 user의 점수에 반영
+- [ ] HashMap을 이용하여 visitors를 각 친구관계가 아닌 user의 점수에 반영
 - [ ] 점수 순서대로 정렬 후, 5명까지 나열하기
