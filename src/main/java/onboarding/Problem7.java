@@ -15,13 +15,13 @@ public class Problem7 {
         Map<String, List<String>> relationships = makeRelationShips(friends);
         List<String> userFriends = fillUserFriends(user, relationships);
 
-        Map<String, Integer> friendPoints = enrichPointFrom(relationships, userFriends);
+        Map<String, Integer> friendPoints = enrichPointFrom(user, relationships, userFriends);
         friendPoints.get(1);
 
         return answer;
     }
 
-    public static Map<String, Integer> enrichPointFrom(Map<String, List<String>> relationships,
+    public static Map<String, Integer> enrichPointFrom(String user, Map<String, List<String>> relationships,
             List<String> userFriends) {
         Map<String, Integer> friendPoints = new HashMap<>();
         for(String friend: userFriends) {
@@ -34,6 +34,7 @@ public class Problem7 {
         for(String friend: userFriends) {
             friendPoints.put(friend,0);
         }
+        friendPoints.put(user,0);
         return friendPoints;
     }
 
@@ -65,7 +66,6 @@ public class Problem7 {
     public static Map<String, Integer> makeUserPoints(String user, List<List<String>> friends,
             List<String> visitors) {
         Map<String, Integer> userList = new HashMap<String, Integer>();
-        userList.put(user, 0);
 
         for (List<String> friendRelation : friends) {
             userList.put(friendRelation.get(0), 0);
