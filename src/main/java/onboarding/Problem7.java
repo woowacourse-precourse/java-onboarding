@@ -5,15 +5,18 @@ import java.util.*;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer=Collections.EMPTY_LIST;
-        if(checkLimit(user,friends,visitors)) {
-            Map<String, Integer> score = addScoreFriends(friends, user, visitors);
+        Map<String,List<String>> relation=relationFriends(friends);
+        if(checkLimit(user,friends,visitors,relation)) {
+            Map<String, Integer> score = addScoreFriends(relation, user, visitors);
             answer = orderFriends(score);
         }
         return answer;
     }
 
-    private static boolean checkLimit(String user,List<List<String>> friends,List<String> visitors){
-
+    /*
+    문제사항 체크
+     */
+    private static boolean checkLimit(String user,List<List<String>> friends,List<String> visitors,Map<String,List<String>> relation){
         //사용자 아이디 길이 1부터 30
         if(!(user.length()>=1)&&user.length()<=30) return false;
         //사용자 아이디 소문자
@@ -32,41 +35,52 @@ public class Problem7 {
         }
         if(!(visitors.size()>=0&&visitors.size()<=10000)) return false;
 
+        // 친구 관계 중복 체크
+        for(List<String> list:relation.values()){
+            Set<String> cntSet=new HashSet<>(list);
+            if(list.size()!=cntSet.size()) return false;
+        }
         return true;
     }
     /*
-    사용자 제외 모든 유저별로 점수 초기화 하기
+    모든 유저별로 점수 초기화 하기
      */
-    private static Map<String,Integer> initScore(List<List<String>> friends, String user, List<String> visitors){
-        Map<String,Integer> map=new HashMap<>();
-        for(List<String> friend:friends){
-            if(!map.containsKey(friend.get(0))&&!user.equals(friend.get(0))){
-                map.put(friend.get(0),0);
-            }
-            if(!map.containsKey(friend.get(1))&&!user.equals(friend.get(1))){
-                map.put(friend.get(1),0);
-            }
+    private static Map<String,Integer> initScore(Map<String,List<String>> relation, String user, List<String> visitors){
+        Map<String,Integer> score=new HashMap<>();
+        for(String friend:relation.keySet()){
+            score.put(friend,0);
         }
         for(String visitor:visitors){
-            if(!map.containsKey(visitor)){
-                map.put(visitor,0);
+            if(!score.containsKey(visitor)){
+                score.put(visitor,0);
             }
         }
-        return map;
+        return score;
     }
-
+    /*
+    친구 관계 매핑
+     */
+    private static Map<String,List<String>> relationFriends(List<List<String>> friends) {
+        Map<String,List<String>> relation=new HashMap<>();
+        for(List<String> friend:friends){
+            String friend1=friend.get(0);
+            String friend2=friend.get(1);
+            List<String> list1=relation.getOrDefault(friend1,new ArrayList<>());
+            list1.add(friend2);
+            relation.put(friend1,list1);
+            List<String> list2=relation.getOrDefault(friend2,new ArrayList<>());
+            list2.add(friend1);
+            relation.put(friend2,list2);
+        }
+        return relation;
+    }
     /*
     사용자의 직접적인 친구 구하기
      */
-    private static List<String> getUserFriends(List<List<String>> friends,String user){
+    private static List<String> getUserFriends(Map<String,List<String>> relation,String user){
         List<String> userFriends=new ArrayList<>();
-        for(List<String> friend:friends){
-            if(friend.get(0).equals(user)&&!userFriends.contains(friend.get(1))){
-                userFriends.add(friend.get(1));
-            }
-            if(friend.get(1).equals(user)&&!userFriends.contains(friend.get(0))){
-                userFriends.add(friend.get(0));
-            }
+        for(String friend :relation.get(user)){
+            userFriends.add(friend);
         }
         return userFriends;
     }
@@ -74,19 +88,16 @@ public class Problem7 {
     /*
     사용자 추천시스템에 따라 점수 더하기
      */
-    private static Map<String,Integer> addScoreFriends(List<List<String>> friends,String user,List<String> visitors){
-        Map<String,Integer> score=initScore(friends,user,visitors);
-        List<String> userFriends=getUserFriends(friends,user);
+    private static Map<String,Integer> addScoreFriends(Map<String,List<String>> relation,String user,List<String> visitors){
+        Map<String,Integer> score=initScore(relation,user,visitors);
+        List<String> userFriends=getUserFriends(relation,user);
         //사용자의 친구의 친구 점수 더하기
         for(String friend:userFriends){
-            for(List<String> scorefriend:friends){
-                if(friend.equals(scorefriend.get(0))&&score.containsKey(scorefriend.get(1))){
-                    score.put(scorefriend.get(1), score.get(scorefriend.get(1)) +10);
-                }
-                if(friend.equals(scorefriend.get(1))&&score.containsKey(scorefriend.get(0))){
-                    score.put(scorefriend.get(0), score.get(scorefriend.get(1)) +10);
-                }
+            List<String> list = relation.get(friend);
+            for(String scorefriend:list){
+                score.put(scorefriend, score.get(scorefriend)+10);
             }
+
         }
         //방문자 점수 더하기
         for(String visitor:visitors){
@@ -99,6 +110,8 @@ public class Problem7 {
         for(String friend:userFriends){
             score.remove(friend);
         }
+        //user 제거 하기
+        score.remove(user);
 
         return score;
     }
