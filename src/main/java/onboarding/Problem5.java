@@ -16,7 +16,7 @@ public class Problem5 {
             myMoney = myWallet.get(index);
             currentQuotient = getQuotient(myMoney);
             getRemainder(myMoney);
-            
+
             answer.add(currentQuotient);
         }
 
@@ -29,9 +29,9 @@ public class Problem5 {
         return quotient;
     }
 
-    public static int getRemainder(int divMoney){
+    public static void getRemainder(int divMoney){
         int remainder;
         remainder = currentMoney % divMoney;
-        return remainder;
+        currentMoney = remainder;
     }
 }
