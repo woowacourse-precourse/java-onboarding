@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Problem5 {
@@ -22,7 +23,13 @@ public class Problem5 {
      * @return : List<Integer>, 필요한 지폐의 장수를 담고 있는 리스트
      */
     public static List<Integer> getChange(int money) {
-        List<Integer> answer = Collections.emptyList();
+        List<Integer> answer = new LinkedList<>();
+        int[] coins = new int[] {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
+        for (int idx = 0, size = coins.length; idx < size; idx++) {
+            answer.add(money / coins[idx]);
+            money = money % coins[idx];
+        }
+
         return answer;
     }
 }
