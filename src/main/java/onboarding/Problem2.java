@@ -3,28 +3,27 @@ package onboarding;
 import java.util.Stack;
 
 public class Problem2 {
+    static int ERROR_NUM = -1;
+
     public static String solution(String cryptogram) {
-        String answer = cryptogram;
-
-        Stack<Character> decodedCryptogram = deleteChar(cryptogram);
-        answer = convertToString(decodedCryptogram);
-
-        return answer;
+        try {
+            Stack<Character> decodedCryptogram = deleteChar(cryptogram);
+            return convertToString(decodedCryptogram);
+        } catch (Exception e) {
+            return Integer.toString(ERROR_NUM);
+        }
     }
 
     public static String convertToString(Stack<Character> stack) {
         StringBuilder result = new StringBuilder();
-
-        for (Character c : stack) {
+        for (char c : stack) {
             result.append(c);
         }
-
         return result.toString();
     }
 
     public static Stack<Character> deleteChar(String cryptogram) {
         Stack<Character> stack = new Stack<>();
-
         for (char c : cryptogram.toCharArray()) {
             if (!stack.isEmpty() && stack.peek() == c) {
                 stack.pop();
@@ -32,7 +31,6 @@ public class Problem2 {
                 stack.push(c);
             }
         }
-
         return stack;
     }
 }
