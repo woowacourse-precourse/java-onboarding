@@ -11,53 +11,66 @@ import java.util.List;
 //        포비가 이긴다면 1, 크롱이 이긴다면 2, 무승부는 0, 예외사항은 -1로 return 하도록 solution 메서드를 완성하라.
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        Problem1 problem1 = new Problem1();
         int answer = Integer.MAX_VALUE;
-        if(pobi.get(0)+1 != pobi.get(1)) return -1;
-        if(crong.get(0)+1 != crong.get(1)) return -1;
-        String pobiStr1 = pobi.get(0) + "";
-        String pobiStr2 = pobi.get(1) + "";
+
+        // 페이지수 확인
+        if(!problem1.isOK(pobi)) return -1;
+        if(!problem1.isOK(crong)) return -1;
+
+
+
         String crongStr1 = crong.get(0) + "";
         String crongStr2 = crong.get(1) + "";
-        int pobiPlus1 = 0;
-        int pobiMul1 = 1;
-        int pobiPlus2 = 0;
-        int pobiMul2 = 1;
-        int pobiNum1 = 0;
-        int pobiNum2 = 0;
+
         int crongPlus1 = 0;
         int crongMul1 = 1;
         int crongPlus2 = 0;
         int crongMul2 = 1;
         int crongNum1 = 0;
         int crongNum2 = 0;
-        for (int i = 0; i < pobiStr1.length(); i++) {
-            pobiPlus1 += Integer.parseInt(pobiStr1.charAt(i) + "");
-            pobiMul1 *= Integer.parseInt(pobiStr1.charAt(i) + "");
-        }
-        pobiNum1 = pobiPlus1 >= pobiMul1 ? pobiPlus1 : pobiMul1;
-        for (int i = 0; i < pobiStr2.length(); i++) {
-            pobiPlus2 += Integer.parseInt(pobiStr2.charAt(i) + "");
-            pobiMul2 *= Integer.parseInt(pobiStr2.charAt(i) + "");
-        }
-        pobiNum2 = pobiPlus2 >= pobiMul2 ? pobiPlus2 : pobiMul2;
-        pobiNum1 = pobiNum1 >= pobiNum2 ? pobiNum1 : pobiNum2;
 
-        for (int i = 0; i < crongStr1.length(); i++) {
-            crongPlus1 += Integer.parseInt(crongStr1.charAt(i) + "");
-            crongMul1 *= Integer.parseInt(crongStr1.charAt(i) + "");
-        }
-        crongNum1 = crongPlus1 >= crongMul1 ? crongPlus1 : crongMul1;
-        for (int i = 0; i < crongStr2.length(); i++) {
-            crongPlus2 += Integer.parseInt(crongStr2.charAt(i) + "");
-            crongMul2 *= Integer.parseInt(crongStr2.charAt(i) + "");
-        }
-        crongNum2 = crongPlus2 >= crongMul2 ? crongPlus2 : crongMul2;
-        crongNum1 = crongNum1 >= crongNum2 ? crongNum1 : crongNum2;
-        if (pobiNum1 > crongNum1) answer = 1;
-        if (pobiNum1 == crongNum1) answer = 0;
-        if (pobiNum1 < crongNum1) answer = 2;
+        int pobiNum = problem1.scoreCalculator(pobi);
+        int crongNum = problem1.scoreCalculator(crong);
 
+        if (pobiNum > crongNum1) answer = 1;
+        if (pobiNum == crongNum1) answer = 0;
+        if (pobiNum < crongNum1) answer = 2;
 
         return answer;
+    }
+    // 페이지 수가 올바르지 않으면 오류
+    public boolean isOK(List<Integer> numbers) {
+        if(numbers.get(0)+1 != numbers.get(1)) {
+            return false;
+        }
+        return true;
+
+    }
+    // 점수 계산 메서드
+    public int scoreCalculator(List<Integer> numbers) {
+        String numbersStr1 = numbers.get(0) + "";
+        String numbersStr2 = numbers.get(1) + "";
+
+        int numbersPlus1 = 0;
+        int numbersMul1 = 1;
+        int numbersPlus2 = 0;
+        int numbersMul2 = 1;
+        int numbersNum1 = 0;
+        int numbersNum2 = 0;
+
+        for (int i = 0; i < numbersStr1.length(); i++) {
+            numbersPlus1 += Integer.parseInt(numbersStr1.charAt(i) + "");
+            numbersMul1 *= Integer.parseInt(numbersStr1.charAt(i) + "");
+        }
+        numbersNum1 = numbersPlus1 >= numbersMul1 ? numbersPlus1 : numbersMul1;
+        for (int i = 0; i < numbersStr2.length(); i++) {
+            numbersPlus2 += Integer.parseInt(numbersStr2.charAt(i) + "");
+            numbersMul2 *= Integer.parseInt(numbersStr2.charAt(i) + "");
+        }
+        numbersNum2 = numbersPlus2 >= numbersMul2 ? numbersPlus2 : numbersMul2;
+        numbersNum1 = numbersNum1 >= numbersNum2 ? numbersNum1 : numbersNum2;
+
+        return numbersNum1;
     }
 }
