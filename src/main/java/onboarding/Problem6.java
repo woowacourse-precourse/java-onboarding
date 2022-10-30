@@ -14,7 +14,23 @@ public class Problem6 {
      * @return 같은 글자가 연속적으로 포함된 지원자들의 정렬된 이메일 목록
      */
     private static List<String> getDuplicatedCrewEmails(List<List<String>> forms){
+        // 제출 폼 중 닉네임만 추출한 리스트를 만듦
+        List<String> nicknameList = new ArrayList<>();
+        for(List<String> form : forms){
+            nicknameList.add(form.get(1));
+        }
 
+        // 닉네임 리스트에서 같은 글자가 연속적으로 포함된 인덱스로 이메일 리스트를 만듦
+        Set<Integer> duplicatedIndexSet = getDuplicatedIndexSet(nicknameList);
+        List<String> emailList = new ArrayList<>();
+        duplicatedIndexSet.forEach((index)->{
+            emailList.add(forms.get(index).get(0));
+        });
+
+        // 이메일 리스트를 정렬
+        sortEmailList(emailList);
+
+        return emailList;
     }
 
     /**
