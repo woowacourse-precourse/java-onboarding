@@ -7,13 +7,8 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         User userObject = new User(user);
-
-        userObject.setFriends(friends.stream()
-                .filter(s -> s.contains(userObject.getName()))
-                .flatMap(List::stream)
-                .filter(s -> !s.equals(userObject.getName()))
-                .collect(Collectors.toList()));
-
+        userObject.addFriends(friends);
+        
         List<String> collect = friends.stream()
                 .filter(s -> !s.contains(userObject.getName()) && !Collections.disjoint(s,userObject.getFriends()))
                 .flatMap(List::stream)
@@ -82,6 +77,14 @@ public class Problem7 {
 
         public void setFriendRecommendScore(Map<String, Integer> friendRecommendScore) {
             this.friendRecommendScore = friendRecommendScore;
+        }
+
+        public void addFriends(List<List<String>> friends) {
+            this.friends = friends.stream()
+                    .filter(friendPair -> friendPair.contains(this.name))
+                    .flatMap(List::stream)
+                    .filter(username -> !username.equals(this.name))
+                    .collect(Collectors.toList());
         }
 
         public boolean isContainInRecommendList(String username) {
