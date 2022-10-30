@@ -1,19 +1,14 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-//        List<String> answer = List.of("answer");
-        // 사용자 이름을 기반으로 2글자씩 substring정보를 담는 이중 list 생성
         List<String> emailList = makeEmailList(forms);
         List<String> nameList = makeNameList(forms);
 
         List<List<String>> substringList = makeSubstringList(nameList);
-        List<Integer> duplicatedIndexList = getDuplicatedIndex(substringList);
+        List<Integer> duplicatedIndexList = getDuplicatedIndex(substringList, nameList);
         List<String> duplicatedEmailList = findEmailByIndex(emailList, duplicatedIndexList);
 
         HashSet<String> set = new HashSet<>(duplicatedEmailList);
@@ -33,15 +28,16 @@ public class Problem6 {
         return duplicatedEmailList;
     }
 
-    private static List<Integer> getDuplicatedIndex(List<List<String>> substringList) {
+    private static List<Integer> getDuplicatedIndex(List<List<String>> substringList, List<String> nameList) {
         List<Integer> dupliatedIndexList = new ArrayList<>();
-        for (int i=0; i<substringList.size(); i++) {
+        for (int i=0; i<nameList.size(); i++) {
+            String name = nameList.get(i);
             boolean duplicatedFlag = false;
-            for (int j=0; j<substringList.size(); j++) {
+            for (int j=i; j<substringList.size(); j++) {
                 if (i == j) {
                     continue;
                 }
-                if (ValidateDuplicatedName(substringList.get(i), substringList.get(j))) {
+                if (ValidateDuplicatedName(nameList.get(i), substringList.get(j))) {
                     duplicatedFlag = true;
                     break;
                 }
@@ -53,12 +49,10 @@ public class Problem6 {
         return dupliatedIndexList;
     }
 
-    private static boolean ValidateDuplicatedName(List<String> allSubstring1, List<String> allSubstring2) {
-        for (String temp1 : allSubstring1) {
-            for (String temp2 : allSubstring2) {
-                if(temp1.equals(temp2)) {
-                    return true;
-                }
+    private static boolean ValidateDuplicatedName(String name, List<String> substringList) {
+        for (String substring : substringList) {
+            if (name.contains(substring)) {
+                return true;
             }
         }
         return false;
