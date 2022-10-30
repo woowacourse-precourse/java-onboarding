@@ -12,7 +12,7 @@ public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
         List<List<String>> separatedEachCrewNicknameList = getSeperatedEachCrewNicknameList(forms);
-        countTwoLettersToMap(separatedEachCrewNicknameList);
+        countListToMap(separatedEachCrewNicknameList);
         List<String> emailListOfDuplicatedNickname = getEmailListOfDuplicatedNickname(separatedEachCrewNicknameList, forms);
         return new ArrayList<>();
     }
@@ -41,7 +41,7 @@ public class Problem6 {
     }
 
 
-    private static void countTwoLettersToMap(List<List<String>> separatedEachCrewNicknameList) {
+    private static void countListToMap(List<List<String>> separatedEachCrewNicknameList) {
         for (List<String> crewSeparatedNickname : separatedEachCrewNicknameList) {
             putListToMap(crewSeparatedNickname);
         }
