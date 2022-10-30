@@ -16,6 +16,14 @@ public class Problem4 {
         return convertArrayToString(encodedWords);
     }
 
+    private static String convertArrayToString(char[] array) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (char ch : array) {
+            stringBuilder.append(ch);
+        }
+        return stringBuilder.toString();
+    }
+
     private static char encodeCharacter(char ch) {
         if (Character.isAlphabetic(ch)) {
             return encodeAlphabet(ch);
