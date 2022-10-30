@@ -8,6 +8,14 @@ public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
 
+        // 제한사항
+        if(money < 1 || money > 1000000)
+        {
+            // 돈의 액수 범위를 넘을 경우
+            System.out.println("돈의 액수 범위 제한");
+            return answer;
+        }
+
         // 결과를 저장할 임시 리스트
         List<Integer> resultList = new ArrayList<>();
 
@@ -61,8 +69,7 @@ public class Problem5 {
         int ill = money%=10;
         resultList.add(ill);
 
-        // 화폐권 수 저장 결과 확인
-        System.out.println(resultList);
+        answer = resultList;
 
         return answer;
     }
