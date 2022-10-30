@@ -78,6 +78,14 @@ public class FriendsRecommender {
 		}
 	}
 
+	public List<String> makeRecommendedFriendsList() {
+		scoreFriendsUserKnow();
+
+		List<String> recommendedFriendsList = makeSortedRecommendList();
+
+		return recommendedFriendsList;
+	}
+
 	private void scoreFriendsUserKnow() {
 		Set<String> otherUsers = friendsInformation.keySet();
 		for (String otherUser : otherUsers) {
