@@ -28,4 +28,15 @@ public class Problem6 {
 
         return subNames;
     }
+
+    private static void addSubNames(String name, String email) {
+        List<String> subNames = getSubNames(name);
+
+        for (String subName : subNames) {
+            if (!map.containsKey(subName)) {
+                map.put(subName, new HashSet<>());
+            }
+            map.get(subName).add(email);
+        }
+    }
 }
