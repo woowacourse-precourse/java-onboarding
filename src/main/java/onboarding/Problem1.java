@@ -22,4 +22,25 @@ class Problem1 {
         return pages.get(0) + 1 == pages.get(1);
     }
 
+    // Multiplication method: multiply all digits and return max value
+    public static int multiplyPages(List<Integer> pages) {
+        int result = 1;
+
+        for (int page : pages) {
+
+            int currentScore = 1;
+
+            while (page > 0) {
+                int temp = page % 10;
+                currentScore *= temp;
+                page /= 10;
+            }
+
+            if (currentScore > result) {
+                result = currentScore;
+            }
+        }
+
+        return result;
+    }
 }
