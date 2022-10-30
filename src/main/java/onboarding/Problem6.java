@@ -51,7 +51,6 @@ public class Problem6 {
         }
         // hashMap에서 2개의 문자가 여러 인덱스에서 발견될 경우 결과 집합에 추가
         charSetCountMap.forEach((strKey, setValue) -> {
-            System.out.println(strKey + " : " + setValue);
             if(setValue.size() >= 2){
                 result.addAll(setValue);
             }
