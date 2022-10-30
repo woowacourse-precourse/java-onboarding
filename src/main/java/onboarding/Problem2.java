@@ -10,6 +10,18 @@ public class Problem2 {
 
     public static String solution(String cryptogram) {
         String answer = "answer";
+        int i = 0;
+        while (i < cryptogram.length() - 1) {
+            int temp = cryptogram.length();
+            cryptogram = delSame(cryptogram, i);
+
+            if(temp != cryptogram.length()){
+                i -= 1;
+            } else {
+                i += 1;
+            }
+        }
+        answer = cryptogram;
         return answer;
     }
 }
