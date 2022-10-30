@@ -7,4 +7,14 @@ public class Problem6 {
         List<String> answer = List.of("answer");
         return answer;
     }
+
+    private List<String> splitName(String name) {
+        List<String> namePiece = new ArrayList<String>();
+        for (int i = 0; i < name.length() - 1; i++) {
+            namePiece.add(name.substring(i, i + 1));
+        }
+        return namePiece;
+    }
+
+    private boolean hashForm
 }
