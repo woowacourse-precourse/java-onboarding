@@ -11,6 +11,7 @@ public class Problem7 {
     private static final int ACQUAINTANCE_SCORE = 10;
     private static final int EXCEPTION_IDX = 2;
     private static final int MAX_DEPTH = 2;
+    private static final int STANDARD_IDX = 1;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
@@ -44,7 +45,7 @@ public class Problem7 {
     }
 
     public static int findFriendIdx(List<String> friend, String user) {
-        return 1 - friend.indexOf(user);
+        return STANDARD_IDX - friend.indexOf(user);
     }
 
     public static String findFriendName(List<String> friend, Integer idx) {
