@@ -2,20 +2,26 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
     	
     	Map<String, List<String>> twoLengthNikAndIds = new HashMap<>();
-    	
+    	Set<String> idAboutDuplicateNik = new HashSet<>();
     	
     	String[][] idAndNikNamesForm = new String[forms.size()][2];
     	makeIdAndNikNameForm(idAndNikNamesForm, forms);
     	putTwoLengthNikAndIds(idAndNikNamesForm, twoLengthNikAndIds);
+    	addIdAboutDuplicateNikName(twoLengthNikAndIds, idAboutDuplicateNik);
+    	
     	//for debug
     	System.out.println(twoLengthNikAndIds);
+    	//for debug
+    	System.out.println(idAboutDuplicateNik);
     	
     	List<String> answer = null;
     	
@@ -53,6 +59,17 @@ public class Problem6 {
     			
     			twoLengthNikAndIds.get(twoLengthNikName).add(emailId);
         		sb.setLength(0);
+    		}
+    	}
+    }
+    public static void addIdAboutDuplicateNikName(Map<String, List<String>> twoLengthNikAndIds, Set<String> idAboutDuplicateNik) {
+    	
+    	for(List<String> ids: twoLengthNikAndIds.values()) {
+    		if(ids.size() < 2) {
+    			continue;
+    		}
+    		for(String id: ids) {
+    			idAboutDuplicateNik.add(id);
     		}
     	}
     }
