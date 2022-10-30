@@ -68,7 +68,7 @@ class Problem1 {
     }
 
     public static int findWinner(){
-        int answerValue;
+        int answerValue = -1;
 
         if (pobiMaxValue > crongMaxValue){
             answerValue = 1;
