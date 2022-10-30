@@ -8,7 +8,8 @@ public class Problem7 {
         Person user = new Person(username);
         Map<String, Person> people = new HashMap<>();
         initializeFriendShip(people, friends);
-        List<String> friendsOfUserFriends = findFriendsOfUserFriends(user, people);
+        Map<String, Person> friendsOfUserFriends = findFriendsOfUserFriends(user, people);
+        
 //        Map<String, List<String>> friendsInformation = initializeFriendsInformation(friends);
 //        List<String> friendsOfFriendsOfUser = findFriendsOfFriendsOfUser(user, friendsInformation);
 //        Map<String, Integer> recommendScore = new HashMap<>();
@@ -32,8 +33,8 @@ public class Problem7 {
         }
     }
 
-    public static List<String> findFriendsOfUserFriends(Person user, Map<String, Person> people) {
-        List<String> friendsOfUserFriends = new ArrayList<>();
+    public static Map<String, Person> findFriendsOfUserFriends(Person user, Map<String, Person> people) {
+        Map<String, Person> friendsOfUserFriends = new HashMap<>();
         List<String> userFriends = user.getFriends();
         for(String friend : userFriends){
             Person userFriend = people.get(friend);
@@ -44,7 +45,7 @@ public class Problem7 {
                 if(userFriends.contains(friendOfUserFriend)){
                     continue;
                 }
-                friendsOfUserFriends.add(friendOfUserFriend);
+                friendsOfUserFriends.put(friendOfUserFriend, people.get(friendOfUserFriend));
             }
         }
         return friendsOfUserFriends;
