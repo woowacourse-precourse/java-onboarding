@@ -4,10 +4,6 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
 
-        if (1 > cryptogram.length() || cryptogram.length() > 1000){
-            System.out.println("길이가 초과되었습니다.");
-        }
-
         if (cryptogram == null || cryptogram.length() == 0){
             return cryptogram;
         }
