@@ -1,5 +1,8 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Problem2 {
     static final int MIN_LENGTH = 1;
     static final int MAX_LENGTH = 1000;
@@ -11,8 +14,46 @@ public class Problem2 {
             answer = INPUT_ERROR;
             return answer;
         }
-
+        answer = decodeCryptogram(cryptogram);
         return answer;
+    }
+
+    private static String decodeCryptogram(String cryptogram) {
+        List<Integer> duplicatedIndex;
+        char temp;
+        char presentChar;
+        Boolean isDuplicated = true;
+
+        while (isDuplicated && cryptogram.length() > 0) {
+            duplicatedIndex = new ArrayList<>();
+            isDuplicated = false;
+            temp = cryptogram.charAt(0);
+            for (int i = 1; i < cryptogram.length(); i++) {
+                presentChar = cryptogram.charAt(i);
+                if (temp == presentChar) {
+                    isDuplicated = true;
+                    duplicatedIndex.add(i - 1);
+                    while (i < cryptogram.length() && temp == presentChar) {
+                        duplicatedIndex.add(i);
+                        i++;
+                        if (i < cryptogram.length()) {
+                            presentChar = cryptogram.charAt(i);
+                        }
+                    }
+                }
+                temp = presentChar;
+            }
+            if (isDuplicated) {
+                String tempCryptogram = "";
+                for (int i = 0; i < cryptogram.length(); i++) {
+                    if (!duplicatedIndex.contains(i)) {
+                        tempCryptogram = tempCryptogram + cryptogram.charAt(i);
+                    }
+                }
+                cryptogram = tempCryptogram;
+            }
+        }
+        return cryptogram;
     }
 
     private static boolean isValidInput(String cryptogram) {
