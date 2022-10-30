@@ -7,21 +7,20 @@ public class Problem4 {
         return answer;
 
     }
-
+    // 청개구리 사전대로 바꿔주는 메서드
     public static String changeString(String word) {
         //A65 Z90 a97 z122 17
         // word + (평균 - word)*2
         String answer = "";
         for (int i = 0; i < word.length(); i++) {
-            if (word.charAt(i) == ' ') {
-                answer += " ";
-                continue;
-            }
+
             if (word.charAt(i) <= 90 && word.charAt(i) >= 65) {  //대문자
                 answer += (char) (word.charAt(i) + 2 * (77 - word.charAt(i)) + 1) + "";
-            } else {
+            } else if(word.charAt(i) <= 122 && word.charAt(i) >= 97) {
 
                 answer += (char) (word.charAt(i) + 2 * (109 - word.charAt(i)) + 1) + "";
+            }else {
+                answer += (char) word.charAt(i);
             }
         }
         return answer;

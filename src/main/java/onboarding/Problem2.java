@@ -35,6 +35,7 @@ class Problem2 {
         }
         return "";
     }
+
     // 암호 해독해주는 메서드
     public static String decryptString(String cryptogram) {
         boolean isOK = true;
