@@ -4,6 +4,16 @@ import java.util.Stack;
 
 public class CryptogramSolver {
 
+    public String convertStackToString(Stack<Character> stack) {
+        StringBuilder result = new StringBuilder();
+
+        while (!stack.isEmpty()) {
+            result.insert(0, stack.pop());
+        }
+
+        return result.toString();
+    }
+
     public String solve(Cryptogram cryptogram) {
         Stack<Character> stack = new Stack<>();
 
@@ -14,12 +24,6 @@ public class CryptogramSolver {
                 stack.push(c);
         }
 
-        StringBuilder result = new StringBuilder();
-
-        while (!stack.isEmpty()) {
-            result.insert(0, stack.pop());
-        }
-
-        return result.toString();
+        return convertStackToString(stack);
     }
 }
