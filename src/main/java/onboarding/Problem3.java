@@ -1,11 +1,14 @@
 package onboarding;
 
+import java.util.stream.IntStream;
+
 public class Problem3 {
     public static void main(String[] args) {
         System.out.println(solution(13));
     }
     static String getRangedString(int n) {
-        return null;
+        String StringNumber = IntStream.rangeClosed(1, n).mapToObj(String::valueOf).reduce("", String::concat);
+        return StringNumber;
     }
 
     static int getCountOfNumbers(String s) {
