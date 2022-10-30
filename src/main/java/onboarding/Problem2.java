@@ -25,9 +25,12 @@ public class Problem2 {
                 //지금까지 내내 중복된 문자 나오다가, 이번에 처음으로 중복이 아닌 문자가 나온 것
                 words.pop();
                 //그런데, pop 하고 그 다음 peek 가 같은 문자라면? -> 또 제거!
-                if(nowChar==words.peek()) {
-                    continue;
+                if(!words.isEmpty()) {
+                    if(nowChar==words.peek()) {
+                        continue;
+                    }
                 }
+
             }
             words.push(nowChar);
             isTopDuplicate = false; //이제 중복 아닌 수 등장이므로 false 로 변경

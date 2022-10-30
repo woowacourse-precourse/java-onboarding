@@ -95,6 +95,17 @@ class ApplicationTest {
                 assertThat(words.pop()).isEqualTo(result.charAt(i));
             }
         }
+
+        @Test
+        void custom5() {
+            String cryptogram = "aabba";
+            String result = "a";
+            Stack<Character> words = Problem2.deleteDuplicateWordsInRow(cryptogram);
+            assertThat(words.size()).isEqualTo(result.length());
+            for(int i = result.length()-1; i >=0; i--) {
+                assertThat(words.pop()).isEqualTo(result.charAt(i));
+            }
+        }
     }
 
     @Nested
