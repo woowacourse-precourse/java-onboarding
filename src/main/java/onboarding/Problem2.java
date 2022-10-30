@@ -5,7 +5,7 @@ import static onboarding.problem2.Validation.isOutOfRange;
 import static onboarding.problem2.Validation.checkValidForm;
 
 public class Problem2 {
-    public static final String INPUT_FORM_ERROR = "문자열 형식이 잘못되었습니다.";
+    private static final String INPUT_FORM_ERROR = "문자열 형식이 잘못되었습니다.";
 
     public static String solution(String cryptogram) {
         String answer = "answer";
