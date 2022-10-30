@@ -11,8 +11,8 @@ public class Problem4 {
         for (int i = 0; i < word.length(); i++) {
             char digit = word.charAt(i);
 
-            if (isBlank(digit)) {
-                stringBuilder.append(" ");
+            if (isBlank(digit) || isNotLetter(digit)) {
+                stringBuilder.append(digit);
                 continue;
             }
 
@@ -36,5 +36,9 @@ public class Problem4 {
 
     private static boolean isUpperCase(char digit) {
         return digit >= A;
+    }
+
+    private static boolean isNotLetter(char digit) {
+        return !isLowerCase(digit) && !isUpperCase(digit);
     }
 }
