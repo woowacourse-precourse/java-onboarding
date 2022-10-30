@@ -1,10 +1,7 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 class Problem1 {
@@ -18,8 +15,7 @@ class Problem1 {
     private static final int LAST_PAGE = 400;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = getAnswer(getMaxValue(pobi), getMaxValue(crong));
-        return answer;
+        return getAnswer(getMaxValue(pobi), getMaxValue(crong));
     }
 
     private static Integer getMaxValue(List<Integer> pages) {
@@ -30,8 +26,8 @@ class Problem1 {
             return EXCEPTION_CASE;
         }
 
-        int leftPageMaxValue = calculate(leftPage);
-        int rightPageMaxValue = calculate(rightPage);
+        int leftPageMaxValue = calculateEachPagesMaxValue(leftPage);
+        int rightPageMaxValue = calculateEachPagesMaxValue(rightPage);
 
         return Math.max(leftPageMaxValue, rightPageMaxValue);
     }
@@ -45,13 +41,10 @@ class Problem1 {
             return true;
         }
 
-        if (leftPage == LAST_PAGE -1 && rightPage == LAST_PAGE ) {
-            return true;
-        }
-        return false;
+        return leftPage == LAST_PAGE - 1 && rightPage == LAST_PAGE;
     }
 
-    private static int calculate(Integer page) {
+    private static int calculateEachPagesMaxValue(Integer page) {
         List<Integer> eachNumbers = getEachNumbers(page);
 
         int sum = eachNumbers.stream()
