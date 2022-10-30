@@ -4,11 +4,13 @@ public class Delete {
     public static String executeDelete(String cryptogram) {
         int index = 0;
 
-        while(isAbleCompare(cryptogram) && isExistDuplication(cryptogram)) {
+        while(isAbleCompare(cryptogram, index) && isExistDuplication(cryptogram)) {
+            index %= (cryptogram.length() - 1);
+
             DeleteResult deleteResult = deleteDuplication(cryptogram, index);
 
             cryptogram = deleteResult.cryptogram;
-            index = (index + deleteResult.index) % (cryptogram.length() - 1);
+            index += deleteResult.index;
         }
 
         if(cryptogram.length() == 2 && (cryptogram.charAt(0) == cryptogram.charAt(1))) {
@@ -18,8 +20,8 @@ public class Delete {
         return cryptogram;
     }
 
-    private static boolean isAbleCompare(String cryptogram) {
-        return cryptogram.length() > 2;
+    private static boolean isAbleCompare(String cryptogram, int index) {
+        return cryptogram.length() > 2 && index >= 0;
     }
 
     private static boolean isExistDuplication(String cryptogram) {
