@@ -8,6 +8,8 @@ public class Problem5 {
     public static final int NUM_OF_CURRENCY = 9;
 
     public static List<Integer> solution(int money) {
+        validateMoneySize(money);
+
         List<Integer> answer = new ArrayList<>();
 
         getNumOfCurrencies(money, answer);
@@ -32,6 +34,12 @@ public class Problem5 {
 
         while (answer.size() < NUM_OF_CURRENCY) {
             answer.add(0);
+        }
+    }
+
+    private static void validateMoneySize(int money) {
+        if (money < 1 || money > 1000000) {
+            throw new IllegalArgumentException("money의 크기는 1이상 1000000 이하여야 합니다.");
         }
     }
 }
