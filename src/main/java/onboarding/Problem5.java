@@ -17,16 +17,16 @@ public class Problem5 {
     }
 }
 
-class ChangeMoney {
-    public int changeMoney(int money, int won) {
+class LeftMoney {
+    public int leftMoney(int money, int won) {
         int result = money;
         result %= won;
         return result;
     }
 }
 
-class LeftMoney {
-    public int leftMoney(int money, int won) {
+class ChangeMoney {
+    public int changeMoney(int money, int won) {
         int result = money;
         result /= won;
         return result;
