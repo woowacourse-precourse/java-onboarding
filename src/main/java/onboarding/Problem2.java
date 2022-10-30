@@ -22,9 +22,22 @@ public class Problem2 {
 
     static String removeDuplication(String cryptogram) {
         ArrayList<String> inputArrayList = new ArrayList<>(Arrays.asList(cryptogram.split("")));
-        HashSet<Integer> duplicationSet = getDupiicationSet(inputArrayList);
-        ArrayList<String> outputArrayList = removeDuplicationBySet(inputArrayList, duplicationSet);
+        HashSet<Integer> duplicationIndexSet = getDuplicationIndexSet(inputArrayList);
+        ArrayList<String> outputArrayList = removeDuplicationBySet(inputArrayList, duplicationIndexSet);
         String answer = joinStringWithoutNull(outputArrayList);
         return answer;
+    }
+
+    static HashSet<Integer> getDuplicationIndexSet(ArrayList<String> inputArrayList) {
+        HashSet<Integer> duplicationSet = new HashSet<>();
+        for (int i = 0; i < inputArrayList.size() - 1; i++) {
+            String pre = inputArrayList.get(i);
+            String next = inputArrayList.get(i + 1);
+            if (pre.equals(next)) {
+                duplicationSet.add(i);
+                duplicationSet.add(i + 1);
+            }
+        }
+        return duplicationSet;
     }
 }
