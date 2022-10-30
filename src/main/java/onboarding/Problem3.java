@@ -6,6 +6,10 @@ public class Problem3 {
     private static final int MIN_INPUT = 1;
     private static final int MAX_INPUT = 10000;
 
+    private static final char THREE = '3';
+    private static final char SIX = '6';
+    private static final char NINE = '9';
+
     public static int solution(int number) {
         if (Problem3Validation.problem3InputValidation(number, MIN_INPUT, MAX_INPUT)) {
             return getTotalClapHandsCount(number);
@@ -25,7 +29,7 @@ public class Problem3 {
     private static int thisTurnClapCounts(int number) {
         String numberString = Integer.toString(number);
         return (int) numberString.chars()
-                .filter(numberChar -> numberChar == '3' || numberChar == '6' || numberChar == '9')
+                .filter(numberChar -> numberChar == THREE || numberChar == SIX || numberChar == NINE)
                 .count();
 
     }
