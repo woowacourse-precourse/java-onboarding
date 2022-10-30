@@ -55,6 +55,13 @@ public class Problem7 {
             pq.add(new UserScore(name, usersScoreDict.get(name)));
         }
 
+        while (!pq.isEmpty()) {
+            if (answer.size() > 5) {
+                break;
+            }
+            answer.add(pq.remove().getName());
+        }
+
         return answer;
     }
 
