@@ -5,11 +5,15 @@ import java.util.LinkedList;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer;
-        Cryptogram.validationRange(cryptogram);
-        Cryptogram.validationLowerCase(cryptogram);
-        Cryptogram.validationContainSpacing(cryptogram);
+        validation(cryptogram);
         answer =  Cryptogram.decodeCryptogram(cryptogram);
         return answer;
+    }
+
+    private static void validation(String str) {
+        Cryptogram.validationRange(str);
+        Cryptogram.validationLowerCase(str);
+        Cryptogram.validationContainSpacing(str);
     }
 }
 
