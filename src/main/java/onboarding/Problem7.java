@@ -142,8 +142,10 @@ public class Problem7 {
         List<User> answer = new ArrayList<>();
 
         for (Entry<String, Integer> entrySet : score.entrySet()) {
-            User user = new User(entrySet.getKey(), entrySet.getValue());
-            answer.add(user);
+            if (entrySet.getValue() > 0) {
+                User user = new User(entrySet.getKey(), entrySet.getValue());
+                answer.add(user);
+            }
         }
 
         return answer;
@@ -153,6 +155,9 @@ public class Problem7 {
         List<String> answer = new ArrayList<>();
         for (User s : forSortList) {
             answer.add(s.getName());
+            if (answer.size() > 5) {
+                break;
+            }
         }
         return answer;
     }
