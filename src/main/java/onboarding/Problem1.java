@@ -36,14 +36,14 @@ class Problem1 {
     }
 
     public static int pageHighestValue(Integer num) {
-        int i = num.intValue();
+        int page = num.intValue();
         int sum = 0;
         int multiply = 1;
-        while (i != 0) {
-            sum += i % 10;
-            multiply *= i % 10;
+        while (page != 0) {
+            sum += page % 10;
+            multiply *= page % 10;
 
-            i /= 10;
+            page /= 10;
         }
         return sum > multiply ? sum : multiply;
     }
