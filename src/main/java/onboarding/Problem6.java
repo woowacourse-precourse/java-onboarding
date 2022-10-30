@@ -29,6 +29,10 @@ public class Problem6 {
     	//for debug
     	System.out.println(finalNik);
     	
+    	makeEmailForm(finalNik);
+    	//for debug
+    	System.out.println(finalNik);
+    	
     	List<String> answer = null;
     	
         return answer;
@@ -82,4 +86,14 @@ public class Problem6 {
     public static void sortAscending(List<String> finalNik) {
     	Collections.sort(finalNik);
 	}
+    public static void makeEmailForm(List<String> nikList) {
+    	StringBuilder sb = new StringBuilder();
+    	for(int i=0; i<nikList.size(); i++) {
+    		sb.append(nikList.get(i));
+    		sb.append("@email.com");
+    		nikList.set(i, sb.toString());
+    		sb.setLength(0);
+    	}
+    }
 }
+
