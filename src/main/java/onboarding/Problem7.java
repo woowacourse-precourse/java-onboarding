@@ -88,7 +88,7 @@ enum CalculusType {
 class Person {
     private String name;
     private int recommendScore;
-    private List<Person> friends;
+    private List<String> friends;
     public Person(String name) {
         this.name = name;
         this.recommendScore = 0;
@@ -107,7 +107,7 @@ class Person {
         this.recommendScore = recommendScore;
     }
 
-    public List<Person> getFriends() {
+    public List<String> getFriends() {
         return friends;
     }
 }
