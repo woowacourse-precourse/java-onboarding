@@ -34,11 +34,20 @@ public class Problem6 {
     /**
      * 분할된 크루 닉네임을 저장
      * @param twoLetterNickname 분할된 크루 닉네임의 일부
-     * @param id 크루 닉네임의 고유 번호
+     * @param id 크루의 고유 번호
      */
     private static void putTwoLetterNicknameAndId(String twoLetterNickname, int id) {
         if (!twoLetterNicknamesAndIds.containsKey(twoLetterNickname)) {
             twoLetterNicknamesAndIds.put(twoLetterNickname, id);
         }
+    }
+
+    /**
+     * 분할된 크루 닉네임을 통해 크루 고유 번호 검색
+     * @param twoLetterNickname 분할된 크루 닉네임의 일부
+     * @return 크루의 고유 번호
+     */
+    private static int getIdByTwoLetterNickname(String twoLetterNickname) {
+        return twoLetterNicknamesAndIds.getOrDefault(twoLetterNickname, -1);
     }
 }
