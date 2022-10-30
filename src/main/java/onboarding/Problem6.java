@@ -11,13 +11,10 @@ public class Problem6 {
                 if (search(forms.get(j).get(1), getPattern(forms.get(i).get(1)))){
                     email.add(forms.get(i).get(0));
                     email.add(forms.get(j).get(0));
-
                 }
             }
-
         }
-
-        List<String> answer = new ArrayList<>();
+        List<String> answer = sort(email);
         return answer;
     }
 
@@ -46,5 +43,10 @@ public class Problem6 {
             }
         }
         return isExsist;
+    }
+    public static List<String> sort(Set<String> email){
+        List<String> a = new ArrayList<>(email);
+        Collections.sort(a);
+        return a;
     }
 }
