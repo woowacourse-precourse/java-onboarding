@@ -26,39 +26,47 @@ public class Problem2 {
 
     private static String toDeduplicate(String cryptogram) {
         String result = "";
+
         int size = cryptogram.length();
         String nextCryptogram = cryptogram;
 
-        char checkCharacter = cryptogram.charAt(0);
+        char prevChar = cryptogram.charAt(0);
         String toBeRemoved = "";
 
         for (int i = 1; i < size; i++) {
 
             char currentChar = cryptogram.charAt(i);
 
-            if (checkCharacter == currentChar) {
-                if (toBeRemoved.length() == 0) {
-                    toBeRemoved = cryptogram.substring(i - 1, i + 1);
-                } else if (toBeRemoved.length() > 0) {
-                    toBeRemoved += currentChar;
-                }
+            toBeRemoved = getNextRemoved(toBeRemoved, prevChar, currentChar);
+
+            if ((prevChar == currentChar) && (i < size - 1)) {
+                continue;
             }
 
-            // 갱신
-            if ((checkCharacter != currentChar) || (i == size - 1)) {
-                checkCharacter = currentChar;
-
-                if (toBeRemoved.length() > 0) {
-                    nextCryptogram = nextCryptogram.replaceAll(toBeRemoved, "");
-                    toBeRemoved = "";
-                }
-            }
-
+            nextCryptogram = nextCryptogram.replaceAll(toBeRemoved, "");
+            prevChar = currentChar;
+            toBeRemoved = "";
         }
 
         result = nextCryptogram;
 
         return result;
+    }
+
+    private static String getNextRemoved(String toBeRemoved, char prev, char cur) {
+
+        String nextRemoved = toBeRemoved;
+
+        if (checkDuplicate(prev, cur)) {
+            nextRemoved += cur;
+            nextRemoved = (toBeRemoved.length() == 0) ? prev + nextRemoved : nextRemoved;
+        }
+
+        return nextRemoved;
+    }
+
+    private static boolean checkDuplicate(char prev, char cur) {
+        return prev == cur;
     }
 
 }
