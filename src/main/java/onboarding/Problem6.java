@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /** 구현 기능 목록
  * 1. 닉네임을 두글자씩 쪼개어 리스트로 저장
@@ -16,6 +13,7 @@ import java.util.Map;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
+        answer = findTotalEmailWithPart(forms);
         return answer;
     }
 
@@ -52,5 +50,20 @@ public class Problem6 {
                 emailWithPart.add(entry.getKey());
         }
         return emailWithPart;
+    }
+
+    private static List<String> findTotalEmailWithPart(List<List<String>> forms) {
+        HashMap<String, List<String>> emailAndNicknameParts = matchEmailAndNicknameParts(forms);
+        List<String> nicknameParts = findNicknameParts(emailAndNicknameParts);
+        List<String> totalEmailWithPart = new ArrayList<>();
+        for (String nicknamePart : nicknameParts) {
+            List<String> emailWithPart = findEmailWithPart(nicknamePart, emailAndNicknameParts);
+            if (emailWithPart.size() >= 2) {
+                totalEmailWithPart.removeAll(emailWithPart);
+                totalEmailWithPart.addAll(emailWithPart);
+            }
+        }
+        totalEmailWithPart.sort(Comparator.naturalOrder());
+        return totalEmailWithPart;
     }
 }
