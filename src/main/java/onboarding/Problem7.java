@@ -10,7 +10,8 @@ import java.util.Set;
 public class Problem7 {
 
     private static Map<String, Set<String>> friendsList = new HashMap<>();
-
+    private static Map<String, Integer> usersScore = new HashMap<>();
+    
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
@@ -20,6 +21,18 @@ public class Problem7 {
             String B = friend.get(1);
             updateFriendsList(A, B);
             updateFriendsList(B, A);
+        }
+        Set<String> userFreindList = friendsList.get(user);
+
+        //  함께 아는 친구의 수 계산
+        for (String name : friendsList.keySet()) {
+            if (userFreindList.contains(name) || name.equals(user)) // user와 이미 친구인 경우 패스
+                continue;
+
+            Set<String> eachFriendList = friendsList.get(name);
+            eachFriendList.retainAll(userFreindList); // user와 함께 아는 친구
+            int acquaintanceNum = eachFriendList.size();
+            usersScore.put(name, acquaintanceNum * 10);
         }
 
         return answer;
