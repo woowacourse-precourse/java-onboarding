@@ -25,4 +25,9 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+
+    private static boolean isCorrectPages(List<Integer> pages) {
+        return (pages.get(RIGHT_PAGE) - pages.get(LEFT_PAGE) == 1);
+    }
+
 }
