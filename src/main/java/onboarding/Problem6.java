@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -9,6 +10,22 @@ import java.util.List;
  * 3.중복문자를 가지고 있는 크루를 배열에 저장하는 함수
  */
 public class Problem6 {
+    /**
+     * 1. 닉네임을 두글자씩 배열에 저장하는 함수
+     */
+    public static List<String> split(List<List<String>> forms){
+        List<String> nameList = new ArrayList<>();
+        for (int i=0; i<forms.size();i++){
+            String NickName = forms.get(i).get(1);
+            for(int j=1; j<NickName.length(); j++){
+                String overlap = String.valueOf(NickName.charAt(j - 1)) + (NickName.charAt(j));
+                nameList.add(overlap);
+            }
+        }
+
+        return nameList;
+    }
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
