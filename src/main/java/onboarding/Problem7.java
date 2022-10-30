@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class Problem7 {
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-		// 전체 유저 리스트 생성
+		// 중복 없는 전체 유저 리스트 생성
 		List<String> userList = makeUserList(friends, visitors);
 
 		// 유저 친구 관계 리스트 생성
@@ -21,20 +21,20 @@ public class Problem7 {
 		userList.remove(user);
 		List<String> noFriendList = makeNoFriendList(userList, userFriendsList);
 
-		// 친구 점수 집계용 hashmap 생성 및 초기화
+		// 친구 추천 점수 집계용 hashmap 생성 및 초기화
 		HashMap<String, Integer> friendshipScore = new HashMap<>();
 		for (String person : noFriendList) {
 			friendshipScore.put(person, 0);
 		}
 
 		for (String person : noFriendList) {
-			// 유저및 친구 제외 리스트의 구성원 중 친구의 친구 점수 부여
+			// 유저및 친구 제외 리스트의 구성원 중 친구의 친구 추천 점수 부여
 			addFriendFriendScore(userFriendsFriendsList, friendshipScore, person);
-			// 유저 및 친구 제외 리스트의 구성원 중 방문객 점수 부여
+			// 유저 및 친구 제외 리스트의 구성원 중 방문객 추천 점수 부여
 			addVisitorScore(visitors, friendshipScore, person);
 		}
 
-		// // 친구 점수가 0일 경우 hashmap에서 제거
+		// // 친구 추천 점수가 0일 경우 hashmap에서 제거
 		friendshipScore.values().removeAll(Collections.singleton(0));
 
 		// 친구 추천 리스트(answer) 만들기
@@ -56,9 +56,7 @@ public class Problem7 {
 
 	private static void removeHighScoreUser(HashMap<String, Integer> friendshipScore, List<String> maxValueKeys) {
 		if (maxValueKeys.size() > 0) {
-			for (String key : maxValueKeys) {
-				friendshipScore.remove(key);
-			}
+			maxValueKeys.forEach(friendshipScore.keySet()::remove);
 		}
 	}
 
