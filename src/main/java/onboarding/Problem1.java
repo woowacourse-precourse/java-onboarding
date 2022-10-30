@@ -2,13 +2,6 @@ package onboarding;
 
 import java.util.List;
 
-/* TODO
-* 1. 입력이 올바른지 체크
-* 2. 각 자리 숫자 더하기
-* 3. 각 자리 숫자 곱하기
-* 4. 본인의 가장 큰 수 구하기
-* 3. 게임의 승자 가리기
-* */
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
@@ -40,5 +33,14 @@ class Problem1 {
             num /= 10;
         }
         return sum;
+    }
+
+    private static int multiplyNum(int num) {
+        int prod = 1;
+        while (num != 0) {
+            prod *= (num % 10);
+            num /= 10;
+        }
+        return prod;
     }
 }
