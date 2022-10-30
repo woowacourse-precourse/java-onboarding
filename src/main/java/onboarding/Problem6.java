@@ -11,8 +11,7 @@ public class Problem6 {
     public static final int NICKNAME = 1;
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        return getEmails(forms);
     }
 
     public static List<String> getEmails(List<List<String>> forms) {
