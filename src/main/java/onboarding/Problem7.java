@@ -7,16 +7,16 @@ public class Problem7 {
         Map<String, Integer> scores = new HashMap<>();
     }
 
-    /* 누군가가 주어졌을 때 길이 2인 List의 나머지 한명을 목적지 List에 추가 해주는 메서드 */
-    private static void pickAnotherOne(List<String> destination, List<String> friendPair, String someone) {
+    /* 누군가가 주어졌을 때 길이 2인 List에 없으면 "", 있으면 나머지 한명 반환하는 메서드 */
+    private static String pickAnotherOne(List<String> friendPair, String someone) {
         int index;
         if (!(friendPair.contains(someone))) {
-            return;
+            return "";
         }
 
         index = friendPair.indexOf(someone);
         String friend = friendPair.get(1-index);
-        destination.add(friend);
+        return friend;
     }
 
     /* friends 목록을 순회하면서 유저의 친구를 뽑아내 List로 반환하는 메서드 */
@@ -24,7 +24,10 @@ public class Problem7 {
         List<String> result = new ArrayList<>();
 
         for (List<String> friendPair : friends) {
-            pickAnotherOne(result, friendPair, user);
+            String someone = pickAnotherOne(friendPair, user);
+            if (!(someone.equals(""))) {
+                result.add(someone);
+            }
         }
 
         return result;
