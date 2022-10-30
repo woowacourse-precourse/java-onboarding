@@ -6,7 +6,21 @@ import java.util.List;
 import java.util.Map;
 
 public class Problem4 {
-	
+	/* List 타입을 해독 후 String으로 형변환 */
+	public static String 
+	convertCharListToString
+	(List<Character> chars,Map<Character, Character> dictionary){
+		
+		String str="";
+		
+		for(char ch : chars) {
+			char frogChar = ch;
+			
+			str += frogChar;
+		}
+		
+		return str;
+	}
 	/* String 타입을 List로 형변환 */
 	public static List<Character> 
 	convertStringToCharList(String str){
@@ -46,7 +60,7 @@ public class Problem4 {
         List<Character> wordList=convertStringToCharList(word);
 		Map<Character, Character> dictionary=frogDictionary();
 		
-		
+		answer = convertCharListToString(wordList, dictionary);
         return answer;
     }
 }
