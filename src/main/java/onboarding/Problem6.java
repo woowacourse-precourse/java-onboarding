@@ -1,15 +1,14 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     static List<String> nameList;
     static List<String> emailList;
 
     public static List<String> solution(List<List<String>> forms) {
-        createNameList(forms);
-        List<String> answer = DeduplicateName(forms);
+        List<String> answer = deduplicateAndSort(forms);
         return answer;
     }
 
@@ -20,7 +19,8 @@ public class Problem6 {
         }
     }
 
-    public static List DeduplicateName(List<List<String>> forms) {
+    public static List deduplicateName(List<List<String>> forms) {
+        createNameList(forms);
         String name;
         emailList = new ArrayList<>();
 
@@ -29,7 +29,7 @@ public class Problem6 {
 
             int nameSize = name.length();
             String substringName;
-            for (int j = 0; j < nameSize-1; j++) {
+            for (int j = 0; j < nameSize - 1; j++) {
                 substringName = name.substring(j, j + 2);
 
                 for (int k = i + 1; k < nameList.size(); k++) {
@@ -43,5 +43,12 @@ public class Problem6 {
             }
         }
         return emailList;
+    }
+
+    public static List deduplicateAndSort(List<List<String>> forms) {
+        deduplicateName(forms);
+        List<String> deduplicatedEmails = emailList.stream().distinct().collect(Collectors.toList());
+        Collections.sort(deduplicatedEmails);
+        return deduplicatedEmails;
     }
 }
