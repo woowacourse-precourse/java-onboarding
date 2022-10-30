@@ -24,6 +24,16 @@ class Problem1 {
         return result;
     }
 
+    private static int calcMaxScore(int number) {
+        int sum;
+        int mul;
+
+        sum = sumScore(number);
+        mul = mulScore(number);
+
+        return Math.max(mul, sum);
+    }
+
     private static boolean checkParam(List<Integer> list) {
         Integer leftPage;
         Integer rightPage;
