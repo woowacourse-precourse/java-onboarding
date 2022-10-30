@@ -15,6 +15,24 @@ public class Problem7 {
         return answer;
     }
 
+    static void updateFriendsScore(Map<String, Integer> scoreMap,
+        Map<String, Set<String>> friendsMap, String user) {
+
+        Set<String> friendsSet = friendsMap.get(user);
+        Set<String> removeFriendsSet = makeRemoveFriendsSet(user, friendsSet);
+
+
+        for (String userFriend : friendsSet) {
+            friendsMap.get(userFriend).removeAll(removeFriendsSet);
+
+            for (String friend : friendsMap.get(userFriend)) {
+                putValueScore(scoreMap, friend, 10);
+            }
+        }
+
+        System.out.println("scoreMap = " + scoreMap);
+    }
+
     private static Set<String> makeRemoveFriendsSet(String user, Set<String> friendsSet) {
         Set<String> removeFriendsSet = new HashSet<>(Set.of(user));
         removeFriendsSet.addAll(friendsSet);
