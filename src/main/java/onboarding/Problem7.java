@@ -12,7 +12,6 @@ public class Problem7 {
         // 그래프 구조로 친구 관계를 만들기
         List<String>[] friendList = makeFriendGraph(memberList, friends);
 
-
         // 사용자와 함께 아는 친구의 점수를 매김(10점)
         int userIdx = memberList.indexOf(user); // 파라미터로 받은 유저의 인덱스
         int[] memberPoint = new int[memberList.size()]; // 추천 점수 표시할 배열
@@ -26,6 +25,9 @@ public class Problem7 {
             Iterator<String> indirectFriendItr = indirectFriendList.iterator();
             for(int j=0; j< indirectFriendList.size(); j++){
                 String indirectFriend = indirectFriendItr.next();
+                // 입력받은 user는 점수 안매김
+                if(indirectFriend.equals(user)) continue;
+
                 int indirectFriendIdx = memberList.indexOf(indirectFriend);
                 memberPoint[indirectFriendIdx] += 10;
             }
@@ -41,15 +43,13 @@ public class Problem7 {
         // 최종 점수 구하기
         Map<String, Integer> totalPointMap = makeTotalScoreMap(memberList, memberPoint, visitorList, visitorPoint);
 
-
         // 점수 순으로 정렬하고 이름 출력
-        // <점수, 이름> 으로 저장한 map 만듦
-        Map<Integer, String> scoreNameMap = makeScoreNameMap(totalPointMap);
         // 점수만 배열에 넣음
-        int[] pointArr = new int[scoreNameMap.size()];
-        Iterator<Integer> scoreNameMapItr = scoreNameMap.keySet().iterator();
+        int[] pointArr = new int[totalPointMap.size()];
+        Iterator<String> scoreNameMapItr = totalPointMap.keySet().iterator();
         for(int i=0; i<pointArr.length; i++){
-            pointArr[i] = scoreNameMapItr.next();
+            String name = scoreNameMapItr.next();
+            pointArr[i] = totalPointMap.get(name);
         }
         // 점수 오름차순으로 정렬
         Arrays.sort(pointArr);
@@ -209,14 +209,5 @@ public class Problem7 {
         return recommendPoint;
     }
 
-    static Map<Integer, String> makeScoreNameMap(Map<String, Integer> totalPointMap){
-        Map<Integer, String> scoreMap = new HashMap<>();
-        for(String key : totalPointMap.keySet()){
-            int score = totalPointMap.get(key);
-            scoreMap.put(score, key);
-        }
-
-        return scoreMap;
-    }
     
 }
