@@ -8,11 +8,10 @@ public class Problem7 {
     private static final int MAX_SIZE = 5;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = new ArrayList<>();
         makeFriendRelation(friends);
         setAcquaintanceScore(user);
         setVisitorsScore(user, visitors);
-        return answer;
+        return getResultBySort();
     }
 
     public static void makeFriendRelation(List<List<String>> friends){
@@ -51,5 +50,22 @@ public class Problem7 {
                 score.put(visitor, 1);
             }
         }
+    }
+
+    public static List<String> getResultBySort(){
+        List<String> answer = new ArrayList<>();
+        List<Map.Entry<String, Integer>> list = new LinkedList<>(score.entrySet());
+        list.sort(new Comparator<Map.Entry<String, Integer>>() { // 점수로 내림차순 정렬, 점수가 갔다면 이름순으로 정렬
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                int comparison = (o1.getValue() - o2.getValue()) * -1;
+                return comparison == 0 ? o1.getKey().compareTo(o2.getKey()) : comparison;
+            }
+        });
+        for(int i = 0; i < MAX_SIZE; i++){
+            if(list.get(i).getValue() == 0) break;
+            answer.add(list.get(i).getKey());
+        }
+        return answer;
     }
 }
