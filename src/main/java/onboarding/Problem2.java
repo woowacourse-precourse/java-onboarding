@@ -2,8 +2,16 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+    /*
+     * 기능 요구 사항
+     * 3. 주어진 문자에서 연속으로 반복된 문자열이 없을 때 까지 반복
+     * */
+        while (true) {
+            int duplicate_index = duplicate_index(cryptogram);
+            if(duplicate_index == -1) break;
+            cryptogram = duplicate_delete(cryptogram, duplicate_index);
+        }
+        return cryptogram;
     }
 
     /*
@@ -27,9 +35,4 @@ public class Problem2 {
         String duplicate_delete_complete = string.substring(0, index) + string.substring(index + 2);
         return duplicate_delete_complete;
     }
-
-    /*
-     * 기능 요구 사항
-     * 3. 주어진 문자에서 연속으로 반복된 문자열이 없을 때 까지 반복
-     * */
 }
