@@ -9,12 +9,13 @@ public class Problem3 {
 
     public static int checknumSYG(int number){
         int temp = number;
+        int cnt = 0;
         while(temp > 0){
             if(temp%10 == 3||temp%10 == 6||temp%10 == 9)
-                return 1;
+                cnt++;
             temp /= 10;
         }
-        return 0;
+        return cnt;
     }
 
     public static int repeat(int number){
