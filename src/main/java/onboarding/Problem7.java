@@ -119,6 +119,10 @@ public class Problem7 {
             System.out.println(", Val : " + friendsScore.get(key));
             topFiveUser.add(key);
             System.out.println("topFiveUser : " + topFiveUser);
+
+            if (topFiveUser.size() == 5) {
+                break;
+            }
         }
 
         return topFiveUser;
