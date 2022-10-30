@@ -1,10 +1,8 @@
 package onboarding;
 
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
 
@@ -42,8 +40,23 @@ public class Problem7 {
     }
 
     public static List<String> solution(String user, List<List<String>> friendships, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        List<Friend> friends = new ArrayList<>();
+        Map<String, Integer> numberOfFriends = new HashMap<>();
+
+        init(friendships, visitors, numberOfFriends, friends);
+
+        for (int i = 0; i < friends.size(); i++) {
+            if (i != numberOfFriends.get(user)) {
+                addScore(numberOfFriends, friends, user, i);
+            }
+        }
+
+        Collections.sort(friends);
+
+        return friends.stream()
+                .limit(3)
+                .map(Friend::getName)
+                .collect(Collectors.toList());
     }
 
     private static void addScore(Map<String, Integer> numberOfFriends, List<Friend> friends, String user, int index) {
