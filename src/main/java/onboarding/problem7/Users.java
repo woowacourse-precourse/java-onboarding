@@ -19,7 +19,6 @@ public class Users {
 
     public List<String> getRecommendFriends(List<String> userFriends) {
         return users.stream()
-                .takeWhile(Objects::nonNull)
                 .filter(user -> !userFriends.contains(user.getName()))
                 .sorted(Comparator.comparing(User::getScore).reversed().thenComparing(User::getName))
                 .limit(RANKING_MAX_SIZE)
