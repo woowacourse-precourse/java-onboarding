@@ -38,7 +38,22 @@ public class Problem6 {
         return false;
     }
 
+    public static boolean checkEmailFormOverlap(List<String> answer, String Email) {
+        int atIndex = Email.indexOf("@");
+        if(!Email.substring(atIndex+1).equals("email.com")) {
+            return false;
+        }
 
+        if(Email.length() <= 10 || Email.length() >=20) {
+            return false;
+        }
+
+        if(answer.contains(Email)) {
+            return false;
+        }
+
+        return true;
+    }
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
