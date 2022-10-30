@@ -23,9 +23,10 @@ public class Problem7 {
         return userIds;
     }
 
-    private static void initFriendRecommendScoreMap(List<List<String>> friends) {
+    private static void initFriendRecommendScoreMap(List<List<String>> friends, List<String> userTimelineVisitors) {
         Set<String> userIds = getUserIds(friends);
         userIds.forEach(userId -> friendRecommendScoreMap.put(userId, 0));
+        userTimelineVisitors.forEach(userTimelineVisitor -> friendRecommendScoreMap.put(userTimelineVisitor, 0));
     }
 
     private static Set<String> getUserFriends(String userId, List<List<String>> friendRelationships) {
