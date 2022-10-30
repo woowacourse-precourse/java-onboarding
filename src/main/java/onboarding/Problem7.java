@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -22,8 +23,17 @@ import java.util.List;
  * - 사용자 아이디는 알파벳 소문자로만 이루어져 있다.
  * */
 
+/***
+ * 2. user와 연결 되 있는 friends 목록 생성 기능
+ * - userName을 제외한 친구 이름만 반환 하는 함수
+ * - userName이 포함되는지 안되는지 체크하는 함수
+ * */
+
+
 
 public class Problem7 {
+
+    private static List<String> userToFriendList = new ArrayList<>();
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
@@ -92,6 +102,37 @@ public class Problem7 {
         if(!checkFriends(inputFriends) || !checkVisitor(inputVisitors) || !checkUser(user))
             return false;
         return true;
+    }
+
+//    public static void main(String[] args) {
+//        String test = "abadasdsa";
+//        System.out.println(checkUserLower(test));
+//    }
+
+    private static boolean checkIncludeUserToFriend(String inputUser, List<String> inputElementFriend){
+        for(int i = 0; i < inputElementFriend.size(); i++){
+            if(inputElementFriend.get(i).equals(inputUser)){
+                return true;
+            }
+        }
+        return false;
+    }
+    private static String onlyFriendsNameInFriends(String inputUser, List<String> inputElementFriend){
+        for(int i = 0; i < inputElementFriend.size(); i++)
+        {
+            if(!inputElementFriend.get(i).equals(inputUser)){
+                return inputElementFriend.get(i);
+            }
+        }
+        return null;
+    }
+
+    private static void makeUserToFriendList(List<List<String>> inputFriends, String inputUser){
+        for(int i = 0; i < inputFriends.size(); i++){
+            if(checkIncludeUserToFriend(inputUser,inputFriends.get(i))){
+                userToFriendList.add(onlyFriendsNameInFriends(inputUser,inputFriends.get(i)));
+            }
+        }
     }
 
 }
