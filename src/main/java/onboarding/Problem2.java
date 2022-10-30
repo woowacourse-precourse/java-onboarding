@@ -34,7 +34,7 @@ class StackForPro2 {
   }
 
   private void validateLength(String crypto) {
-    if (crypto.length() < 1 || crypto.length() > 1000) {
+    if (crypto.length() < MINIMUM_LENGTH || crypto.length() > MAXIMUM_LENGTH) {
       throw new IllegalArgumentException(
           "입력한 cryptogram의 길이는 " + MINIMUM_LENGTH + "이상 " + MAXIMUM_LENGTH + "이하여야 합니다.");
     }
