@@ -1,25 +1,71 @@
 package onboarding;
 
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Problem6 {
+    static class MapValue {
+        int cnt;
+        Set<String> emailSet;
+
+        public MapValue(String email) {
+            this.cnt = 1;
+            emailSet = new HashSet<>();
+            emailSet.add(email);
+        }
+    }
+
     private static final int formsMinSize = 1;
     private static final int formsMaxSize = 10000;
     private static final int emailMinLen = 11;
     private static final int emailMaxLen = 19;
     private static final int nickNameMinLen = 1;
     private static final int nickNameMaxLen = 19;
+    private static final Map<String, MapValue> nickNameMap = new HashMap<>();
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
         validateForms(forms);
+
         for (List<String> form : forms) {
             String email = form.get(0);
             String nickName = form.get(1);
             validateEmail(email);
             validateNickName(nickName);
+            checkNickNameDuplicated(nickName, email);
         }
-        return answer;
+        return getResult();
+    }
+
+    private static List<String> getResult() {
+        Set<String> resultSet = new HashSet<>();
+        for (MapValue value : nickNameMap.values()) {
+            if (value.cnt > 1) {
+                resultSet.addAll(value.emailSet);
+            }
+        }
+        return resultSet.stream().sorted().collect(Collectors.toList());
+    }
+
+    private static void checkNickNameDuplicated(String nickName, String email) {
+        int len = nickName.length();
+        for (int i = 1; i < len; i++) {
+            for (int j = 0; j < len - i; j++) {
+                addToNickNameMap(nickName.substring(j, j + i + 1), email);
+            }
+        }
+    }
+
+    private static void addToNickNameMap(String substring, String email) {
+        if (nickNameMap.containsKey(substring)) {
+            nickNameMap.get(substring).cnt++;
+            nickNameMap.get(substring).emailSet.add(email);
+            return;
+        }
+        nickNameMap.put(substring, new MapValue(email));
     }
 
     private static void validateForms(List<List<String>> forms) {
