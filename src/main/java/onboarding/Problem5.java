@@ -10,8 +10,7 @@ import java.util.List;
 * */
 public class Problem5 {
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
-        return answer;
+        return getMoneyList(money);
     }
 
     static List<Integer> getMoneyList(int money) {
