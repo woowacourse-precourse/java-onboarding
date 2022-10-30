@@ -7,8 +7,8 @@ import java.util.Map;
 import java.util.TreeSet;
 
 public class NickNameSystem {
-    private static final int EMAIL = 0;
-    private static final int NICK_NAME = 1;
+    public static final int EMAIL = 0;
+    public static final int NICK_NAME = 1;
     private static final Map<String, String> hashMap = new HashMap<>();
     private static final TreeSet<String> emailTree = new TreeSet<>();
 
