@@ -8,6 +8,27 @@ package onboarding;
  */
 
 public class Problem2 {
+    public static String findSerialString(String str){
+        String[] strArray = str.split("");
+        int len = strArray.length;
+
+        for(int i = 0;i < len - 1;i++){
+            int cur = i;
+
+            for(int j = i + 1;j < len;j++){
+                int nxt = j;
+                if(strArray[cur] != strArray[nxt]){
+                    i = cur;
+                    break;
+                }
+                strArray[cur] = "=";
+                strArray[nxt] = "=";
+                cur = nxt;
+            }
+        }
+        return String.join("", strArray);
+    }
+
     public static String solution(String cryptogram) {
         String answer = "answer";
         return answer;
