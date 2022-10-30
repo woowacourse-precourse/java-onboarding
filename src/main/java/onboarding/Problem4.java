@@ -14,7 +14,10 @@ public class Problem4 {
         'R', 'Q', 'P', 'O', 'N', 'M', 'L', 'K', 'J', 'I', 'H', 'G', 'F', 'E', 'D', 'C', 'B', 'A'};
 
     public static String solution(String word) {
-        String answer = "";
+        if (!checkWordLengthValid(word)) {
+            throw new IllegalArgumentException("[error] 잘못된 word가 입력되었습니다.");
+        }
+        String answer = chageWordLetterAlphabetReverse(word);
         return answer;
     }
 
