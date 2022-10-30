@@ -54,15 +54,13 @@ public class Problem6 {
     }   
 
     private static List<String> getListOfDuplicateNickname(List<List<String>> forms){
-        List<String> result;
         for(int i=0; i<forms.size(); i++){
             List<String> user = forms.get(i);
             List<String> devidedNicknamePiece = getDevidedNicknamePiece(user.get(1));
             String pieceOwnerEmail = user.get(0);
             enrollNicknamePieceAndOwner(devidedNicknamePiece, pieceOwnerEmail);
         }
-        result=getSortedDuplicatedList();
-        return result;
+        return getSortedDuplicatedList();
     }
 
     private static List<String> getDevidedNicknamePiece(String nickname){
