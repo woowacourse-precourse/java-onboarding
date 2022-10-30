@@ -9,14 +9,12 @@ class Problem1 {
 
 
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
+		
+		int pobiFirstNumber = getNumber(pobi, 0);
+		int pobiSecondNumber = getNumber(pobi, 1);
 
-		int answer = 2;
-
-		int pobiFirstNumber = pobi.get(0);
-		int pobiSecondNumber = pobi.get(1);
-
-		int crongFirstNumber = crong.get(0);
-		int crongSecondNumber = crong.get(1);
+		int crongFirstNumber = getNumber(crong, 0);
+		int crongSecondNumber = getNumber(crong, 1);
 
 		List<Integer> pobiMaxNumbersList = new ArrayList<>();
 		List<Integer> crongMaxNumbersList = new ArrayList<>();
@@ -29,9 +27,21 @@ class Problem1 {
 		Integer pobiMaxValue = getMaxValue(pobiMaxNumbersList);
 		Integer crongMaxValue = getMaxValue(crongMaxNumbersList);
 
-		if (pobiFirstNumber + 1 != pobiSecondNumber || crongFirstNumber + 1 != crongSecondNumber) {
+		if ( !doesPageContinue(pobiFirstNumber, pobiSecondNumber) || !doesPageContinue(crongFirstNumber, crongSecondNumber)) {
 			return -1;
 		}
+
+		int answer = getTheAnswer(pobiMaxValue, crongMaxValue);
+
+		return answer;
+	}
+
+	private static int getTheAnswer(Integer pobiMaxValue, Integer crongMaxValue) {
+
+		return compareLogic(pobiMaxValue, crongMaxValue);
+	}
+
+	private static int compareLogic(Integer pobiMaxValue, Integer crongMaxValue) {
 
 		if (Objects.equals(pobiMaxValue, crongMaxValue)) {
 			return 0;
@@ -41,7 +51,15 @@ class Problem1 {
 			return 1;
 		}
 
-		return answer;
+		return 2;
+	}
+
+	private static boolean doesPageContinue(int FirstNumber, int SecondNumber) {
+		return FirstNumber + 1 == SecondNumber;
+	}
+
+	private static Integer getNumber(List<Integer> pobi, int index) {
+		return pobi.get(index);
 	}
 
 	private static Integer getMaxValue(List<Integer> MaxNumbersList) {
