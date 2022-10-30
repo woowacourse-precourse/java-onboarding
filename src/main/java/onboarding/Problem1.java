@@ -2,6 +2,16 @@ package onboarding;
 
 import java.util.List;
 
+/*
+* 1. 입력값으로 유효하지 않은 값이 들어오면, -1을 반환한다.
+* 2. 각 리스트 별로 (포비, 크롱에 대해서) 자리수를 모두 더한 값과, 모두 곱한 값을 구한다.
+* 3. 구한 값 중 가장 큰 값을 저장한다. (pobiMax, cromgMax)
+* 4. 두 값을 비교한다.
+* 4-1. pobiMax가 크면 1을 반환한다.
+* 4-2. 두 값이 같다면 0을 반환한다.
+* 4-2.  crongMax가 크면 2를 반환한다.
+ * */
+
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (!isValid(pobi, crong)) return -1;
@@ -10,8 +20,8 @@ class Problem1 {
         int crongMax = getMax(crong);
 
         if (pobiMax > crongMax) return 1;
-        else if (pobiMax == crongMax) return 0;
-        else return 2;
+        if (pobiMax == crongMax) return 0;
+        return 2;
     }
 
     private static int getMax(List<Integer> list) {
