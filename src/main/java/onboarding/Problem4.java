@@ -2,8 +2,11 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        String str = "";
+        for (char c : word.toCharArray()) {
+            str += getOppositeWord(c);
+        }
+        return str;
     }
 
     // 아스키 코드를 이용하여 반대되는 알파뱃을 반환하는 함수
