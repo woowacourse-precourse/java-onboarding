@@ -31,7 +31,6 @@
 - 입력값이 범위 내에 있는지 확인 -> isInRange (Integer num) : Boolean
 - 입력값이 홀수인지 확인 -> isOdd (Integer num) : Boolean
 - 입력값이 짝수인지 확인 -> isEven (Integer num) : Boolean
-- 입력값이 1~400 사이에 있는지 확인 -> isInRange (Integer num) : Boolean
 - Left, Right를 가지는 enum 생성
 - 시작면과 마지막면이 나오지 않도록 하는 메서드 -> isNotStartOrEnd (Integer left, Integer right) : Boolean
 - List의 원소가 Null이 아닌지 확인 -> isNotNull (List list) : Boolean
