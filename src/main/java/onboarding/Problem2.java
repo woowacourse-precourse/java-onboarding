@@ -20,7 +20,7 @@ public class Problem2 {
 
             for(int j = i + 1;j < len;j++){
                 int nxt = j;
-                if(strArray[cur].equals(strArray[nxt])){
+                if(!(strArray[cur].equals(strArray[nxt]))){
                     i = cur;
                     break;
                 }
@@ -43,7 +43,6 @@ public class Problem2 {
 
         for(;;){
             tempString = findSerialString(answer);
-
             if(answer.equals(tempString)) break;
 
             answer = removeSerialString(tempString);
