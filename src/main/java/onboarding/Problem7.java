@@ -32,4 +32,10 @@ public class Problem7 {
 
         return result;
     }
+
+    /* 주어진 아이디를 key로 하는 Map에 원하는 만큼 점수 추가 하는 메서드 */
+    private static void incrementScore(Map<String, Integer> score, String id, int scoreAmount) {
+        int point = score.getOrDefault(id, 0) + scoreAmount;
+        score.put(id, point);
+    }
 }
