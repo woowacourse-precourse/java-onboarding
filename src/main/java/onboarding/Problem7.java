@@ -116,8 +116,11 @@ public class Problem7 {
         return (friendRelationships.size() >= MIN_FRIEND_RELATIONSHIP_SIZE && friendRelationships.size() <= MAX_FRIEND_RELATIONSHIP_SIZE);
     }
 
-    private static boolean validateUserIds(List<String> userIds) {
-        return (userIds.size() == USER_IDS_SIZE);
+    private static boolean validateUserIds(List<List<String>> friendRelationships) {
+        List<List<String>> filteredFriendRelationships = friendRelationships.stream()
+                .filter(friendRelationship -> friendRelationship.size() == USER_IDS_SIZE)
+                .collect(Collectors.toList());
+        return (filteredFriendRelationships.size() == friendRelationships.size());
     }
 
     private static boolean validateVisitorsSize(List<String> visitors) {
