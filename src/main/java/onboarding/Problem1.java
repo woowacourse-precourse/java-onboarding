@@ -11,9 +11,17 @@ class Problem1 {
         if (pobiExceptionValue == -1 || crongExceptionValue == -1) {
             return -1;
         }
-
         int pobiMax=findMaxValue(pobi);
         int crongMax=findMaxValue(crong);
+        if(pobiMax>crongMax){
+            answer=1;
+        }
+        if(pobiMax<crongMax){
+            answer=2;
+        }
+        if(pobiMax==crongMax){
+            answer=0;
+        }
 
 
         return answer;
@@ -26,7 +34,9 @@ class Problem1 {
         if (pages.get(0) == 1 || pages.get(1) == 399) {
             exceptionValue = -1;
         }
-
+        if(pages.get(0)+1!=pages.get(1)){
+            exceptionValue=-1;
+        }
         return exceptionValue;
     }
 
