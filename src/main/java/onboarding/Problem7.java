@@ -3,6 +3,7 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Map;
 
@@ -58,7 +59,7 @@ public class Problem7 {
     public static Map<String, Integer> getPointFrom(List<String> visitors, String user, List<String> userFriends) {
         Map<String, Integer> visitorPoints = new HashMap<>();
 
-        addPoint(visitors, visitorPoints, VISITOR_POINT);
+        addPoints(visitors, visitorPoints, VISITOR_POINT);
         removeCantRecommendCase(user, userFriends, visitorPoints);
         return visitorPoints;
     }
@@ -85,7 +86,7 @@ public class Problem7 {
         Map<String, Integer> friendPoints = new HashMap<>();
 
         for (String friend : userFriends) {
-            addPoint(fillUserFriends(friend, relationships), friendPoints, FRIEND_POINT);
+            addPoints(fillUserFriends(friend, relationships), friendPoints, FRIEND_POINT);
         }
 
         removeCantRecommendCase(user, userFriends, friendPoints);
@@ -93,11 +94,16 @@ public class Problem7 {
         return friendPoints;
     }
 
-    private static void addPoint(List<String> list, Map<String, Integer> pointList, int point) {
+    private static void addPoints(List<String> list, Map<String, Integer> pointList, int point) {
         for (String recommend : list) {
-            pointList.putIfAbsent(recommend, 0);
-            pointList.put(recommend, pointList.get(recommend) + point);
+            addPoint(pointList, point, recommend);
         }
+    }
+
+    private static void addPoint(Map<String, Integer> pointList, int point, String recommend) {
+
+        pointList.putIfAbsent(recommend, 0);
+        pointList.put(recommend, pointList.get(recommend) + point);
     }
 
     public static List<String> fillUserFriends(String user, Map<String, List<String>> relationships) {
