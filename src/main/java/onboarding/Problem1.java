@@ -16,6 +16,10 @@ class Problem1 {
         return pages.get(1) - pages.get(0) != 1;
     }
 
+    private static boolean isBreakRule(List<Integer> pages) {
+        return pages.get(0) <= 1 || pages.get(1) >= 400;
+    }
+
     private static int winner(int pobiScore, int crongScore) {
         if (pobiScore > crongScore) {
             return 1;
