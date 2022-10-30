@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.Map.Entry;
 
 public class Problem7 {
     /**
@@ -75,6 +76,12 @@ public class Problem7 {
             answer.put(visitor, answer.get(visitor) + 1);
         }
 
+        for (String friendId : friendConnection.keySet()) {
+            if (answer.get(friendId) == 0) {
+                answer.remove(friendId);
+            }
+        }
+
         return answer;
     }
 
@@ -84,8 +91,24 @@ public class Problem7 {
      * @param : Map<String, Integer>, Map으로 정리된 아이디와 점수. Key가 아이디, Value가 점수
      * @return : List<String>, 추천할 친구들의 아이디
      */
-    public static List<String> selectTop5(Map<String, Integer> friendScore) {
+    public static List<String> selectTop5(String userId, Map<String, Integer> friendScore) {
         List<String> answer = new LinkedList<>();
+
+        List<Entry<String, Integer>> sortedFriendScore = new ArrayList<>(friendScore.entrySet());
+        Collections.sort(sortedFriendScore, (f1, f2) -> {
+            int comp = Integer.compare(f2.getValue(), f1.getValue());
+            if (comp == 0) comp = f1.getKey().compareTo(f2.getKey());
+            return comp;
+        });
+
+        int idx = 0;
+        for (Entry<String, Integer> friend : sortedFriendScore) {
+            answer.add(friend.getKey());
+
+            if (idx == 4) break;
+            else idx++;
+        }
+
         return answer;
     }
 }
