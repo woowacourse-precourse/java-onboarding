@@ -46,11 +46,11 @@ public class Problem7 {
 				} else if (o1.getValue() < o2.getValue()) {
 					return 1;
 				}else{
-					return stringDescending(o1, o2);
+					return dictionarySorting(o1, o2);
 				}
 			}
 			
-			private int stringDescending(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+			private int dictionarySorting(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
 				if (o1.getKey().compareTo(o2.getKey()) > 0) {
 					return 1;
 				} else if (o1.getKey().compareTo(o2.getKey()) < 0) {
