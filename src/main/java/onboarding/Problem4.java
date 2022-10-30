@@ -20,6 +20,19 @@ public class Problem4 {
         return -1;  // 알파벳 아님
     }
 
+    static int findIdxASCII(char alpha) {
+        int idx = Integer.MAX_VALUE;
+
+        if (isAlphabet(alpha) == 0) {
+            idx = alpha - 'A';
+        }
+        if (isAlphabet(alpha) == 1) {
+            idx = alpha - 'a';
+        }
+
+        return  idx;
+    }
+
     public static String solution(String word) {
         String answer = "";
         return answer;
