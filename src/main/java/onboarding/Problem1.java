@@ -44,6 +44,17 @@ class Problem1 {
     }
 
     // 숫자들로 만들 수 있는 최댓값을 찾는 함수 findMax()
+    private static int findMax(Integer page) {
+        int[] numbers = parseNumber(page);
 
+        int add = 0;
+        int mul = 1;
+        for (int i=0; i<numbers.length; i++){
+            add+=numbers[i];
+            mul*=numbers[i];
+        }
+
+        return Math.max(add,mul);
+    }
 
 }
