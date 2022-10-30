@@ -9,4 +9,14 @@ public class Problem4 {
         String answer = "";
         return answer;
     }
+    private static char reverseAlphabet(char letter) {
+        if (!Character.isAlphabetic(letter)) return letter;
+
+        if (Character.isUpperCase(letter)) return (char) ('Z' - letter + 'A');
+
+        if (Character.isLowerCase(letter)) return (char) ('z' - letter + 'a');
+
+        return letter;
+    }
+
 }
