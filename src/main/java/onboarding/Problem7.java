@@ -5,6 +5,8 @@ import java.util.*;
 public class Problem7 {
     private static final int USER = 0;
     private static final int FRIEND = 1;
+    private static final int FRIEND_SCORE = 10;
+    private static final int VISIT_SCORE = 1;
 
     public static class User {
         private String id;
@@ -62,5 +64,27 @@ public class Problem7 {
         User user = users.getOrDefault(userId, new User(userId));
         user.addFriend(friendId);
         users.put(userId, user);
+    }
+
+    private static void setTogetherFriendScore(Map<String, User> users, String id) {
+        List<String> friendIds = findFriendIdsById(users, id);
+
+        for (String friendId : friendIds) {
+            setFriendScore(users, friendId);
+        }
+    }
+
+    private static void setFriendScore(Map<String, User> users, String id) {
+        List<String> friendIds = findFriendIdsById(users, id);
+
+        for (String friendId : friendIds) {
+            User user = users.get(friendId);
+            user.setScore(user.getScore() + FRIEND_SCORE);
+        }
+    }
+
+    private static List<String> findFriendIdsById(Map<String, User> users, String id) {
+        User user = users.get(id);
+        return user.getFriends();
     }
 }
