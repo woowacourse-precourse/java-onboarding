@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -23,6 +20,9 @@ public class Problem6 {
                 answer.addAll(nicknames.get(keyword));
             }
         }
+        Set<String> set = new HashSet<>(answer);
+        answer.clear();
+        answer.addAll(set);
         return answer;
     }
 }
