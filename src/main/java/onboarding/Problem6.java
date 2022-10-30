@@ -4,14 +4,13 @@ import java.util.*;
 
 public class Problem6 {
 
-    private static Set<String> duplicateList = new HashSet<>();
-
     public static List<String> solution(List<List<String>> forms) {
+        Set<String> duplicateList = new HashSet<>();
 
         for (List<String> form : forms) {
             String name = form.get(1);
             for (int i = 0; i < name.length() - 1; i++) {
-                checkDuplicate(forms, name.substring(i, i + 2), form);
+                checkDuplicate(forms, name.substring(i, i + 2), form, duplicateList);
             }
         }
 
@@ -22,7 +21,7 @@ public class Problem6 {
         return new ArrayList<>(answer);
     }
 
-    public static void checkDuplicate(List<List<String>> forms, String checkName, List<String> originForm) {
+    public static void checkDuplicate(List<List<String>> forms, String checkName, List<String> originForm, Set<String> duplicateList) {
         String originEmail = originForm.get(0);
         String originName = originForm.get(1);
         boolean isDuplicate = false;
