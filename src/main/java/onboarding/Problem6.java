@@ -41,7 +41,73 @@ public class Problem6 {
     }
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        Map<String, List<Integer>> tokenUserMap;
+        Set<String> answerSet;
+        List<String> answer = new ArrayList<>();
+        List<User> userList = new ArrayList<>();
+
+        //사용자 리스트에 저장
+        for (List<String> form : forms) {
+            User user = new User(form.get(0), form.get(1));
+            userList.add(user);
+        }
+
+        // Map을 통해 토큰이 들어가는 User인덱스 저장 {key:value} -> {토큰, 닉네임에 토큰이 있는 user 인덱스 번호 list}
+        tokenUserMap = getUserTokenMap(userList);
+
+        // Set를 통해 중복토큰 회원 저장
+        answerSet = getDuplicateSet(userList,tokenUserMap);
+
+        for (String email : answerSet) {
+            answer.add(email);
+        }
         return answer;
+    }
+
+    // Map을 통해 토큰이 들어가는 User인덱스 저장 {key:value} -> {토큰, 닉네임에 토큰이 있는 user 인덱스 번호 list}
+    private static Map<String, List<Integer>> getUserTokenMap(List<User> userList) {
+        Map<String, List<Integer>> tokenUserMap = new HashMap<>();
+
+        for (int i = 0; i < userList.size(); i++) {
+            Set<String> tokenSet = getTokenSet(userList.get(i).getNickname());
+            for (String token : tokenSet) {
+                if(tokenUserMap.containsKey(token)){
+                    tokenUserMap.get(token).add(i);
+                }
+                else{
+                    tokenUserMap.put(token,new ArrayList<Integer>());
+                    tokenUserMap.get(token).add(i);
+                }
+            }
+        }
+
+        return tokenUserMap;
+    }
+
+    // Set를 통해 중복토큰 회원 저장
+    private static Set<String> getDuplicateSet(List<User> userList,Map<String, List<Integer>>tokenUserMap) {
+        Set<String> answerSet = new HashSet<>();
+
+        // 중복토큰인지 확인
+        for (List<Integer> value : tokenUserMap.values()) {
+            // Map의 list의 사이즈가 1보다 크다면 중복토큰이 존재
+            if (value.size() > 1) {
+                for (Integer userIdx : value) {
+                    answerSet.add(userList.get(userIdx).getEmail());
+                }
+            }
+        }
+
+        return answerSet;
+    }
+
+    //닉네임을 2글자씩 추출
+    private static Set<String> getTokenSet(String nickname) {
+        Set<String> tokenSet = new HashSet<>();
+        for (int i = 0; i < nickname.length() - 1; i++) {
+            String token = nickname.substring(i, i + 2);
+            tokenSet.add(token);
+        }
+        return tokenSet;
     }
 }
