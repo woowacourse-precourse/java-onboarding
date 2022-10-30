@@ -1,12 +1,15 @@
 package onboarding;
 
+import static onboarding.Problem1.Status.*;
+
 import java.util.List;
 
 public class Problem1 {
 
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
-		int answer = Integer.MAX_VALUE;
-		return answer;
+		final Member POBI = Member.of("pobi", pobi);
+		final Member CRONG = Member.of("crong", crong);
+		return Game.play(POBI, CRONG).getResult();
 	}
 
 	public enum Status {
@@ -123,6 +126,23 @@ public class Problem1 {
 				number /= 10;
 			}
 			return score;
+		}
+
+		public static Status play(Member pobi, Member crong) {
+			if (!Book.open(pobi.getPage()) || !Book.open(crong.getPage())) {
+				return ERROR;
+			}
+
+			final int pobiScore = calculateScore(pobi.getPage());
+			final int crongScore = calculateScore(crong.getPage());
+
+			if (pobiScore > crongScore) {
+				return POBI_WIN;
+			} else if (pobiScore < crongScore) {
+				return CRONG_WIN;
+			} else {
+				return DRAW;
+			}
 		}
 
 	}
