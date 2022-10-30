@@ -33,7 +33,7 @@ public class Problem2 {
         }
 
         String newCryptogram = cryptogram.substring(0,start) + cryptogram.substring(end);
-        return removeDuplicates(newCryptogram);
+        return removeDuplicates(newCryptogram); //★ for문으로 바꿔보기
     }
 
     public static String solution(String cryptogram) {
