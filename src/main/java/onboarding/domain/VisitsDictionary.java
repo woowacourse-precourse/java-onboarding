@@ -1,21 +1,21 @@
 package onboarding.domain;
 
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class VisitsDictionary {
-    private final Map<String, Integer> visitDictionary;
+    private final Map<String, Integer> visitsDictionary;
     
-    public VisitsDictionary(List<String> visitors) {
-        this.visitDictionary = new HashMap<String, Integer>();
+    public VisitsDictionary(VisitsDictionaryGenerator generator) {
+        this.visitsDictionary = generator.getDictionary();
     }
     
-//    public int getVisitCount(String user) {
-//        int count = 0;
-//        for (String visitor : visitors) {
-//            count += (user.equals(visitor)) ? 1 : 0;
-//        }
-//        return count;
-//    }
+    public Set<String> getAllVisitors() {
+        return visitsDictionary.keySet();
+    }
+    
+    public int getTotalVisitCounts(String visitor) {
+        Integer count = visitsDictionary.get(visitor);
+        return (count == null) ? 0 : count;
+    }
 }
