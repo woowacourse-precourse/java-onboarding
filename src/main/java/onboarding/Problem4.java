@@ -13,21 +13,19 @@ public class Problem4 {
     public static String solution(String word) {
         List<Character> result = new ArrayList<>();
 
+
         for (int i = 0; i < word.length(); i++) {
             int ascii = word.toCharArray()[i];
-
 
             if (Character.isAlphabetic(ascii)) {
                 ascii = changeAsciiValue(ascii);
             }
-
             result.add((char) ascii);
         }
 
         return result.stream()
                 .map(String::valueOf)
                 .collect(Collectors.joining());
-
     }
 
     private static int changeAsciiValue(int ascii) {

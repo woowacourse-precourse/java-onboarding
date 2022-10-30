@@ -5,7 +5,6 @@ import java.util.stream.Collectors;
 
 public class Problem7 {
 
-
     private static final int USER_RELATED_MY_FRIEND = 10;
     private static final int USER_VISIT_MY_PAGE = 1;
     private static final int MAX_NUMBER_TO_RECOMMENDED_FRIENDS = 5;
@@ -92,5 +91,4 @@ public class Problem7 {
                     .collect(Collectors.toList());
         }
     }
-
 }
