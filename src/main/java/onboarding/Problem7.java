@@ -46,7 +46,9 @@ public class Problem7 {
                 }
             }
         }
-
+        for(int i=0; i<map.size(); i++){
+            result.add(String.valueOf(map.get(i)));
+        }
         return result;
     }
 }
