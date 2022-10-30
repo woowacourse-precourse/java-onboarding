@@ -11,13 +11,46 @@ class Problem1 {
         return answer;
     }
 
-    public static int checkInput(List<Integer> pobi, List<Integer> crong){
-        if (pobi[0] <= 1 || crong[1] >= 400)    // 페이지 범위 초과
-            return 1;
-        if (pobi[0] + 1 != pobi[1] || crong[0] + 1 != crong[1])     // 같은 면의 페이지가 아님
-            return 1;
-        if (pobi[0] % 2 != 1 || crong[0] % 2 != 1)      // 왼쪽 페이지가 홀수, 오른쪽 페이지가 짝수가 아님
-            return 1;
-        return 0;
+    public static boolean checkInput(List<Integer> pobi, List<Integer> crong){
+        if (pobi.get(0) <= 1 || crong.get(1) >= 400)    // 페이지 범위 초과
+            return true;
+        if (pobi.get(0) + 1 != pobi.get(1) || crong.get(0) + 1 != crong.get(1))     // 같은 면의 페이지가 아님
+            return true;
+        if (pobi.get(0) % 2 != 1 || crong.get(0) % 2 != 1)      // 왼쪽 페이지가 홀수, 오른쪽 페이지가 짝수가 아님
+            return true;
+        return false;
+    }
+
+    public static int numPlus(int num){
+        int sum = 0;
+
+        sum += num/100;     // 100의 자리
+        num %= 100;
+        sum += num/10;      // 10의 자리
+        num %= 10;
+        sum += num;         // 1의 자리
+
+        return sum;
+    }
+
+    public static int numMultiple(int num){
+        int a,b,c, sum = 0;
+
+        c = num % 10;       // 1의 자리
+        if(num>=10)         // 10의 자리
+            b = (num/10) % 10;
+        else
+            b = 1;
+        if(num>=100)      // 100의 자리
+            a = num/100;
+        else
+            a = 1;
+        sum = a*b*c;    // 곱
+
+        return sum;
+    }
+
+    public static void main(String[] args) {
+
     }
 }
