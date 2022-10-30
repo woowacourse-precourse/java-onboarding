@@ -53,57 +53,57 @@ public class Decryptor {
      * @see onboarding.problem2.consts.CryptogramIndexConst
      */
     private static void processDuplicateCharacter() {
-        int startCursor;
-        int nowCursor = CHARACTER_START_INDEX;
+        int startIndex;
+        int nowIndex = CHARACTER_START_INDEX;
 
         isRemoveDuplicateCharacter = false;
-        while (nowCursor < cryptogramList.size()) {
-            startCursor = nowCursor - CHARACTER_BEFORE_INDEX;
-            nowCursor = findDuplicateCharacter(nowCursor, startCursor);
+        while (nowIndex < cryptogramList.size()) {
+            startIndex = nowIndex - CHARACTER_BEFORE_INDEX;
+            nowIndex = findDuplicateCharacter(nowIndex, startIndex);
         }
     }
 
     /**
      * 두 문자가 중복된 문자인지 확인하는 메소드
      *
-     * @param nowCursor 중복 문자인지 확인할 다음 문자 인덱스
-     * @param startCursor 중복 문자 검사를 시작한 암호문 인덱스
+     * @param nowIndex 중복 문자인지 확인할 다음 문자 인덱스
+     * @param startIndex 중복 문자 검사를 시작한 암호문 인덱스
      * @return 다음으로 검색할 기준 문자 인덱스
      */
-    private static int findDuplicateCharacter(int nowCursor, int startCursor) {
-        String startCharacter = cryptogramList.get(startCursor);
-        String nowCharacter = cryptogramList.get(nowCursor);
+    private static int findDuplicateCharacter(int nowIndex, int startIndex) {
+        String startCharacter = cryptogramList.get(startIndex);
+        String nowCharacter = cryptogramList.get(nowIndex);
 
         if (startCharacter.equals(nowCharacter)) {
-            deleteDuplicateCharacter(nowCharacter, startCursor);
+            deleteDuplicateCharacter(nowCharacter, startIndex);
             isRemoveDuplicateCharacter = true;
-            return ++startCursor;
+            return ++startIndex;
         }
-        return ++nowCursor;
+        return ++nowIndex;
     }
 
     /**
      * 중복된 문자를 모두 삭제하는 메소드
      *
-     * @param nowCharacter 중복된 문자
-     * @param startCursor 암호문에서 중복된 문자인지 확인할 문자 인덱스
+     * @param duplicateCharacter 중복된 문자
+     * @param startIndex 암호문에서 중복된 문자인지 확인할 문자 인덱스
      */
-    private static void deleteDuplicateCharacter(String nowCharacter, int startCursor) {
-        while (isDuplicateCharacter(nowCharacter, startCursor)) {
-            cryptogramList.remove(startCursor);
+    private static void deleteDuplicateCharacter(String duplicateCharacter, int startIndex) {
+        while (isDuplicateCharacter(duplicateCharacter, startIndex)) {
+            cryptogramList.remove(startIndex);
         }
     }
 
     /**
      * 인덱스 위치에 있는 문자의 삭제 여부를 판단하는 메소드
      *
-     * @param nowCharacter 중복된 문자
-     * @param startCursor 암호문에서 중복된 문자인지 확인할 문자 인덱스
+     * @param duplicateCharacter 중복된 문자
+     * @param startIndex 암호문에서 중복된 문자인지 확인할 문자 인덱스
      * @return
      */
-    private static boolean isDuplicateCharacter(String nowCharacter, int startCursor) {
-        return cryptogramList.size() > startCursor && cryptogramList.get(startCursor)
-            .equals(nowCharacter);
+    private static boolean isDuplicateCharacter(String duplicateCharacter, int startIndex) {
+        return cryptogramList.size() > startIndex && cryptogramList.get(startIndex)
+            .equals(duplicateCharacter);
     }
 
     /**
