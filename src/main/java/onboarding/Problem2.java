@@ -21,7 +21,7 @@ public class Problem2 {
                                          LinkedList<Character> chars) {
         if (!curr.equals(prev) && !curr.equals(last)) {
             chars.add(curr);
-        } else if (curr.equals(prev)) {
+        } else if (curr.equals(last)) {
             chars.removeLast();
         }
     }
