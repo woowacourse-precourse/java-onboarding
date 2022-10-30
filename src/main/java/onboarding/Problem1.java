@@ -12,16 +12,13 @@ class Problem1 {
         return answer;
     }
     private static boolean validatePageNumber(List<Integer> player) {
-        int left = 0;
-        int right = 1;
-
-        if (player.get(left) - player.get(right) != 1) {
+        if (player.get(0) - player.get(1) != 1) {
             return false;
         }
-        if (player.get(left) < 0 || player.get(1) > 400) {
+        if (player.get(0) < 0 || player.get(1) > 400) {
             return false;
         }
-        if (player.get(left) % 2 != 1 || player.get(right) != 0) {
+        if (player.get(0) % 2 != 1 || player.get(1) != 0) {
             return false;
         }
         return true;
