@@ -9,7 +9,15 @@ import java.util.*;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
-        return answer;
+        List<String> result = new ArrayList<>();
+        Map<Integer, String> tempMap = decomposition(forms);
+        Set<Integer> duplicateSet = checkDuplicate(tempMap);
+        for (Integer integer : duplicateSet) {
+            result.add(forms.get(integer).get(0));
+        }
+        Collections.sort(result);
+
+        return result;
     }
 
     public static Map<Integer, String> decomposition(List<List<String>> info) {
