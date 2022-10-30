@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -29,6 +28,7 @@ public class Problem5 {
         List<Integer> bank = List.of(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1);
         Integer count = 0;
 
+        // the loop that converts money
         for(int i = 0; i < 9; i++) {
             while (money >= bank.get(i)) {
                 count++;
@@ -37,7 +37,7 @@ public class Problem5 {
             wallet.add(count);
             count = 0;
         }
-        System.out.println(wallet);
+        answer = wallet;
         return answer;
     }
 }
