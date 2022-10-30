@@ -20,12 +20,11 @@ public class Problem7 {
         }
 
         // initialize all users' score to zero
-        List<HashMap<String, Integer>> usernameAndScoreList = new ArrayList<>();
+        HashMap<String, Integer> usernameAndScoreMap = new HashMap<>();
         for (String username: usernameSet){
-            HashMap<String, Integer> usernameAndScore = new HashMap<>();
-            usernameAndScore.put(username, 0);
-            usernameAndScoreList.add(usernameAndScore);
+            usernameAndScoreMap.put(username, 0);
         }
+        System.out.println(usernameAndScoreMap);
 
 
         // find user's direct friend
@@ -39,6 +38,7 @@ public class Problem7 {
                 }
             }
         }
+        System.out.println("Direct friends:" + directFriends);
 
         // find user's mutual friend (direct friends' friends)
         HashSet<String> mutualFriends = new HashSet<>();
@@ -53,17 +53,14 @@ public class Problem7 {
         }
         mutualFriends.removeAll(directFriends);
 
-
         // add score to mutual friends
         for(String mutualFriend: mutualFriends){ // andole
-                for(List<String> friendList: friends){ // ["donut", "andole"]
-                    if(friendList.contains(mutualFriend)){ // true
-                        // find in scoreList and add score
-                        for(HashMap<String, Integer> usernameAndScore: usernameAndScoreList){
-                            for(String key: usernameAndScore.keySet()){ //
-                                if(key==mutualFriend){
-                                    usernameAndScore.put(key, usernameAndScore.get(key)+10);
-                                }
+            for(List<String> friendList: friends){ // ["donut", "andole"]
+                if(friendList.contains(mutualFriend)){ // true
+                    // find in scoreList and add score
+                        for(String key: usernameAndScoreMap.keySet()){ //
+                            if(key==mutualFriend){
+                                usernameAndScoreMap.put(key, usernameAndScoreMap.get(key)+10);
                             }
                         }
                     }
@@ -72,6 +69,27 @@ public class Problem7 {
 
         // add score to visitors
         for(String visitor: visitors){
+            // find in scoreList and add score
+                for(String key: usernameAndScoreMap.keySet()){ //
+                    if(key==visitor){
+                        usernameAndScoreMap.put(key, usernameAndScoreMap.get(key)+1);
+                    }
+                }
+            }
+
+        System.out.println(usernameAndScoreMap);
+
+
+       /*
+
+
+
+
+
+
+        // add score to visitors
+        for(String visitor: visitors){
+            // find in scoreList and add score
             for(HashMap<String, Integer> usernameAndScore: usernameAndScoreList){
                 for(String key: usernameAndScore.keySet()){ //
                     if(key==visitor){
@@ -81,10 +99,19 @@ public class Problem7 {
             }
         }
 
-
         System.out.println(usernameAndScoreList);
 
+        // remove direct friends and user from scoreList
+        for(HashMap<String, Integer> usernameAndScore: usernameAndScoreList){
+            for(String key: usernameAndScore.keySet()){ //
+                if(directFriends.contains(key) || key==user){
 
+                }
+
+            }
+        }
+
+*/
 
 
         List<String> answer =   new ArrayList<>();
