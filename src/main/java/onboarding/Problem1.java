@@ -9,6 +9,8 @@ import java.util.stream.Stream;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        validatePageList(pobi);
+        validatePageList(crong);
         int pobiMax = calculateMaxValue(pobi);
         int crongMax = calculateMaxValue(crong);
         int answer = compareTwoNumbers(pobiMax, crongMax);
@@ -54,5 +56,12 @@ class Problem1 {
             return 2;
         }
         return 0;
+    }
+
+    static void validatePageList(List<Integer> pageList) throws Exception{
+        validateAllPageNumber(pageList);
+        validateStartOrEndPage(pageList);
+        validateGap(pageList);
+        validateLength(pageList);
     }
 }
