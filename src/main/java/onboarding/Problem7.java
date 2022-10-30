@@ -42,20 +42,36 @@ public class Problem7 {
 
         // 최종 점수 구하기
         Map<String, Integer> totalPointMap = makeTotalScoreMap(memberList, memberPoint, visitorList, visitorPoint);
-
-        // 점수 순으로 정렬하고 이름 출력
-        // 점수만 배열에 넣음
-        int[] pointArr = new int[totalPointMap.size()];
-        Iterator<String> scoreNameMapItr = totalPointMap.keySet().iterator();
-        for(int i=0; i<pointArr.length; i++){
-            String name = scoreNameMapItr.next();
-            pointArr[i] = totalPointMap.get(name);
+        for(int i=0; i<userFriend.size(); i++){
+            String friend = userFriend.get(i);
+            totalPointMap.remove(friend);
         }
-        // 점수 오름차순으로 정렬
-        Arrays.sort(pointArr);
 
+        // 우선순위 큐 사용: point 기준으로 정렬
+        PriorityQueue<User> userPQue = new PriorityQueue<>();
+        Iterator<String> totalPointMapItr = totalPointMap.keySet().iterator();
+        for(int i=0; i< totalPointMap.size(); i++){
+            String name = totalPointMapItr.next();
+            int point = totalPointMap.get(name);
 
+            User exUser = new User(name, point);
+            userPQue.add(exUser);
+        }
 
+        List<String> nameList = new ArrayList<>();
+        while (!userPQue.isEmpty()){
+            User nowUser = userPQue.poll();
+
+            String name = nowUser.name;
+            int point = nowUser.point;
+
+            if(point > 0){
+                nameList.add(name);
+            }
+            if(nameList.size() >= 5) break;
+        }
+
+        answer = nameList;
 
         return answer;
     }
@@ -63,13 +79,33 @@ public class Problem7 {
     /**
      * User 객체
      */
-    static class User{
+    static class User implements Comparable<User>{
         String name;
         int point;
 
         User(String name, int point){
             this.name = name;
             this.point = point;
+        }
+
+        @Override
+        public int compareTo(User u){
+            if(u.point > this.point){
+                return 1;
+            } else if(u.point < this.point){
+                return -1;
+            } else {
+                char userChar = u.name.charAt(0);
+                char thisChar = this.name.charAt(0);
+
+                if(userChar > thisChar){
+                    return -1;
+                } else if(userChar < thisChar){
+                    return 1;
+                } else {
+                    return 0;
+                }
+            }
         }
     }
 
