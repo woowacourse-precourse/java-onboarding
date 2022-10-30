@@ -14,13 +14,12 @@ public class Problem6 {
             String nickname = info.get(1);
             totalNicks.add(nickname);
         }
-        System.out.println(totalNicks);
 
 
         // 2. 나의 닉네임을 제외한 nickname set 생성
-        for (List<String> info: forms) {
-            String email = info.get(0);
-            String nickname = info.get(1);
+        for (List<String> info: forms) { //  ["jm@email.com", "제이엠"]
+            String email = info.get(0); // jm@email.com
+            String nickname = info.get(1); // 제이엠
 
 
             HashSet<String> compareNicks = new HashSet<>();
@@ -34,7 +33,6 @@ public class Problem6 {
                     compareNicksSplit.add(compareNick.substring(k, k + 2));
                 }
             }
-            System.out.println(compareNicksSplit);
 
             // 4. 내 닉네임을 2글자 단위로 절단
             HashSet<String> myNickSplit = new HashSet<>();
@@ -46,18 +44,22 @@ public class Problem6 {
             compareNicksSplit.retainAll(myNickSplit);
             if(compareNicksSplit.size()>0){
                 // email form validation
-                String regex = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@email.com";
-                Pattern p = Pattern.compile(regex);
-                Matcher m = p.matcher(email);
-                Boolean check1 = m.matches();
-                Boolean check2 = email.length() >= 11;
-                Boolean check3 = email.length() < 20;
-                if(check1 && check2 && check3){
-                    answer.add(email);
-                }
+                getValidEmails(answer, email);
             }
         }
         Collections.sort(answer);
         return answer;
+    }
+
+    private static void getValidEmails(List<String> emailList, String email) {
+        String regex = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@email.com";
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(email);
+        Boolean check1 = m.matches();
+        Boolean check2 = email.length() >= 11;
+        Boolean check3 = email.length() < 20;
+        if(check1 && check2 && check3){
+            emailList.add(email);
+        }
     }
 }
