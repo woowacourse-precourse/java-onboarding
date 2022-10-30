@@ -1,7 +1,5 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.List;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -15,6 +13,13 @@ public class Problem7 {
                 .flatMap(List::stream)
                 .filter(s -> !s.equals(userObject.getName()))
                 .collect(Collectors.toList()));
+
+        List<String> collect = friends.stream()
+                .filter(s -> !s.contains(userObject.getName()) && !Collections.disjoint(s,userObject.getFriends()))
+                .flatMap(List::stream)
+                .filter(s -> !userObject.getFriends().contains(s))
+                .collect(Collectors.toList());
+
     }
 
     private static class User {
