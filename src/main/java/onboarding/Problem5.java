@@ -50,6 +50,6 @@ public class Problem5 {
 	}
 
 	public static int afterChange(int money, int currBill) {
-		return 0;
+		return money % currBill;
 	}
 }
