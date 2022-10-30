@@ -19,9 +19,23 @@ public class Problem6 {
             int curIndex = 0;
             sliceStr = getSliceStr(crew, i, sliceStr);
             curIndex = getIndex(crew, i, curIndex);
+
+            for(int j = 0;j<crew.size();j++){
+                int compareIndex = 0;
+                compareIndex = getIndex(crew, j, compareIndex);
+                
+                if (isCurIndexSameAsCompareIndex(curIndex, compareIndex)) continue;
+            }
         }
 
         return answer;
+    }
+
+    private static boolean isCurIndexSameAsCompareIndex(int curIndex, int compareIndex) {
+        if(curIndex == compareIndex){
+            return true;
+        }
+        return false;
     }
 
     private static int getIndex(List<Map<String, Integer>> crew, int i, int curIndex) {
