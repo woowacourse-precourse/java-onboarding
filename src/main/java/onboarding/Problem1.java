@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.List;
+import java.util.Objects;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -8,6 +9,19 @@ class Problem1 {
 
         }
         return -1;
+    }
+
+    private static int operateMaxInt(List<Integer> pageIntegerList) {
+
+        Integer LeftPageInteger = pageIntegerList.get(0);
+        Integer RightPageInteger = pageIntegerList.get(1);
+
+        int biggerAddedDigit = getBiggerInt(addDigit(LeftPageInteger), addDigit(RightPageInteger));
+        int biggerMultipledDigit = getBiggerInt(multipleDigit(LeftPageInteger), multipleDigit(RightPageInteger));
+
+        Integer BiggerInteger = getBiggerInt(biggerAddedDigit, biggerMultipledDigit);
+
+        return Objects.requireNonNullElse(BiggerInteger, biggerAddedDigit);
     }
 
     private static Integer getBiggerInt(int value1, int value2) {
