@@ -12,6 +12,14 @@ class Problem1 {
 
         if (checkInput(pobiLeft, pobiRight, crongLeft, crongRight) != 1)
             return -1;
+
+        int pobiLeftMaxNum = maxNum(addNum(pobiLeft), multiplyNum(pobiLeft));
+        int pobiRightMaxNum = maxNum(addNum(pobiRight), multiplyNum(pobiRight));
+        int crongLeftMaxNum = maxNum(addNum(crongLeft), multiplyNum(crongLeft));
+        int crongRightMaxNum = maxNum(addNum(crongRight), multiplyNum(crongRight));
+        int pobiMaxNum = maxNum(pobiLeftMaxNum, pobiRightMaxNum);
+        int crongMaxNum = maxNum(crongLeftMaxNum, crongRightMaxNum);
+
         return 1;
     }
 
@@ -40,6 +48,13 @@ class Problem1 {
         while (num != 0) {
             prod *= (num % 10);
             num /= 10;
+        }
+        return prod;
+    }
+
+    private static int maxNum(int sum, int prod) {
+        if (sum >= prod) {
+            return sum;
         }
         return prod;
     }
