@@ -29,4 +29,11 @@ public class Problem6 {
         return firstIndex;
     }
 
+    //서로 같은 문자인지 확인하는 함수
+    public static boolean checkDuplicate(char currentChar, char nextChar) {
+        if (currentChar == nextChar) return true;
+        return false;
+    }
+
+
 }
