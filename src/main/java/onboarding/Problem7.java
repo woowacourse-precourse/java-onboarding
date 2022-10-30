@@ -25,6 +25,7 @@ public class Problem7 {
                 alreadyfriends.add(friends.get(i).get(0));
             }
         }
+
         for(List<String> list :friends){
             String s1 = list.get(0);
             String s2 = list.get(1);
@@ -34,10 +35,10 @@ public class Problem7 {
                 map.put(s1, map.getOrDefault(s1, 0)+10);
             }
         }
-        // {andole=20, jun=20, shakevan=11, bedi=3, donut=11}
+
         for(int i=0; i<visitors.size(); i++){
             map.put(visitors.get(i), map.getOrDefault(visitors.get(i), 0)+1);
-        }
+        } // {andole=20, jun=20, shakevan=11, bedi=3, donut=11}
 
         for(int i=0; i< map.size(); i++){
             for(String key : alreadyfriends){
@@ -46,8 +47,9 @@ public class Problem7 {
                 }
             }
         }
-        for(int i=0; i<map.size(); i++){
-            result.add(String.valueOf(map.get(i)));
+
+        for(String key : map.keySet()){
+            result.add(key);
         }
         return result;
     }
