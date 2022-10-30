@@ -8,6 +8,7 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = getResult(user, friends, visitors);
+
         return answer;
     }
 
@@ -26,15 +27,16 @@ public class Problem7 {
 
     static Map<String, List<String>> getFriendsMap(List<List<String>> friends) {
         Map<String, List<String>> friendsMap = new HashMap<>();
+
         friends.stream()
-            .forEach(list -> inputFriendsToMap(friendsMap, list));
+            .forEach(friend -> inputFriendsToMap(friendsMap, friend));
 
         return friendsMap;
     }
 
-    static void inputFriendsToMap(Map<String, List<String>> friendsMap, List<String> friend) {
-        String friend1 = friend.get(0);
-        String friend2 = friend.get(1);
+    static void inputFriendsToMap(Map<String, List<String>> friendsMap, List<String> friendList) {
+        String friend1 = friendList.get(0);
+        String friend2 = friendList.get(1);
 
         inputFriendToMap(friendsMap, friend1, friend2);
         inputFriendToMap(friendsMap, friend2, friend1);
@@ -84,6 +86,7 @@ public class Problem7 {
 
     static List<Map.Entry<String, Integer>> sortScoreMap(Map<String, Integer> scoreMap, List<String> userFriends) {
         List<Map.Entry<String, Integer>> scoreEntries = new LinkedList<>(scoreMap.entrySet());
+
         Collections.sort(scoreEntries, scoreComparator);
 
         return scoreEntries;
@@ -122,6 +125,4 @@ public class Problem7 {
 
         return sortedScoreList;
     }
-
-
 }
