@@ -8,4 +8,9 @@ public class Constants {
     public static final int UPPERCASESTART = 65;
 
     public static final int UPPERCASEEND = 90;
+
+    public static final int LEASTWORDLENGTH = 1;
+
+    public static final int MAXIMUMLENGTH = 1000;
+
 }

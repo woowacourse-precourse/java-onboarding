@@ -2,6 +2,8 @@ package onboarding.problem4.controller;
 
 import onboarding.problem4.service.AlphabetConvertService;
 import onboarding.problem4.service.StringListConvertService;
+import onboarding.problem4.utils.validator.StringLengthValidator;
+import onboarding.problem4.utils.validator.exception.StringLengthException;
 import java.util.ArrayList;
 
 public class AlphabetContrayConvertor {
@@ -11,7 +13,13 @@ public class AlphabetContrayConvertor {
     private ArrayList<Character> convertedCharList;
 
     public AlphabetContrayConvertor setWord(String word){
-        this.originWord = word;
+        try{
+            new StringLengthValidator(word);
+            this.originWord = word;
+        }catch (StringLengthException e){
+            e.printStackTrace();
+            originWord="";
+        }
         return this;
     }
 
