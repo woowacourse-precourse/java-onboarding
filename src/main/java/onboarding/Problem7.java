@@ -2,7 +2,13 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class Problem7 {
     static final String ERROR = "Error";
@@ -17,10 +23,38 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+
         if (!isValidInput(user, friends, visitors)) {
             answer = new ArrayList<>();
             answer.add(ERROR);
             return answer;
+        }
+        answer = recommendFriends(user, friends, visitors);
+        return answer;
+    }
+
+    private static List<String> recommendFriends(String user, List<List<String>> friends, List<String> visitors) {
+        Map<String, Set<String>> friendRelations = new HashMap<>();
+        Map<String, Integer> scoreMap = new HashMap<>();
+        Map<Integer, List<String>> reverseScoreMap = new HashMap<>();
+        Set<String> friendRelation = Collections.emptySet();
+        List<String> answer = new LinkedList<>();
+
+        for (List<String> friend : friends) {
+            if (!friendRelations.containsKey(friend.get(0))) {
+                friendRelation = new HashSet<>();
+                friendRelation.add(friend.get(1));
+                friendRelations.put(friend.get(0), friendRelation);
+            } else if (friendRelations.containsKey(friend.get(0))) {
+                friendRelations.get(friend.get(0)).add(friend.get(1));
+            }
+            if (!friendRelations.containsKey(friend.get(1))) {
+                friendRelation = new HashSet<>();
+                friendRelation.add(friend.get(0));
+                friendRelations.put(friend.get(1), friendRelation);
+            } else if (friendRelations.containsKey(friend.get(1))) {
+                friendRelations.get(friend.get(1)).add(friend.get(0));
+            }
         }
         return answer;
     }
@@ -71,4 +105,19 @@ public class Problem7 {
     private static boolean isValidUserLength(String user) {
         return user.length() >= MIN_ID_LENGTH && user.length() <= MAX_ID_LENGTH;
     }
+
+    // public static void main(String[] args) {
+    //     String user = "mrko";
+    //     List<List<String>> friends = List.of(
+    //         List.of("donut", "andole"),
+    //         List.of("donut", "jun"),
+    //         List.of("donut", "mrko"),
+    //         List.of("shakevan", "andole"),
+    //         List.of("shakevan", "jun"),
+    //         List.of("shakevan", "mrko")
+    //     );
+    //     List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+    //     List<String> result = List.of("andole", "jun", "bedi");
+    //     solution(user, friends, visitors);
+    // }
 }
