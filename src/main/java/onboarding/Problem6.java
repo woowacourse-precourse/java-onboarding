@@ -58,7 +58,7 @@ public class Problem6 {
                 String substring = nickname.substring(i, j);
 
                 duplicatedNicknameCandidate.put(substring,
-                        duplicatedNicknameCandidate.getOrDefault(substring, 0) + 1);
+                                                duplicatedNicknameCandidate.getOrDefault(substring, 0) + 1);
             }
         }
     }
