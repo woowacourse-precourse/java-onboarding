@@ -5,8 +5,15 @@ public class Problem2 {
     private static int flag=0;
 
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        cryptogram=cryptogram+'*';
+        while(true){
+            if (isDuplicateString(cryptogram)){
+                cryptogram=removeDuplicate(cryptogram);
+            }else{
+                break;
+            }
+        }
+        return cryptogram.substring(0, cryptogram.length()-1);
     }
 
     private static boolean isDuplicate(char target, char nextTarget){
