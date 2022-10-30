@@ -52,6 +52,20 @@ public class Problem7 {
             }
         }
 
+        // value 값을 기준으로 내림차순 정렬
+        List<Map.Entry<String, Integer>> userScore2 = new ArrayList<>(userScore.entrySet());
+
+        Collections.sort(userScore2, new Comparator<>() {
+            public int compare(Map.Entry<String, Integer> obj1, Map.Entry<String, Integer> obj2) {
+                return obj2.getValue().compareTo(obj1.getValue());
+            }
+        });
+
+        // 최대 5명까지 저장.
+        for(Map.Entry<String, Integer> entry : userScore2.subList(0, Math.min(5, userScore2.size()))) {
+            answer.add(entry.getKey());
+        }
+
         return answer;
     }
 }
