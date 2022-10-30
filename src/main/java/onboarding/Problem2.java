@@ -17,6 +17,7 @@ public class Problem2 {
     }
 
     private static String makeNewCryptogram(String before) {
+        if(before.equals("")) return "";
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < before.length() - 1; i++) {
             if (before.charAt(i) == before.charAt(i + 1)) {
