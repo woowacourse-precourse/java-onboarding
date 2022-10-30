@@ -21,3 +21,16 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 실행 순서
+1. 닉네임을 2글자씩 자른것을 key, count를 value두고 HashMap에 저장
+   모든 forms에 대해 수행한다. 
+2. 이후 다시 forms를 돌며 각 이름을 분리해 value가 2 이상이면 해당 이메일을
+   결과 result에 담는다.
+
+### 기능 목록
+- [ ] 닉네임을 연속적 2글자로 자를 수 있는 경우를 모두 구해야 한다.
+- [ ] 자른 2글자 닉네임은 카운팅 해야 한다.
+- [ ] 자른 2글자 닉네임 중 2개이상 겹치는 경우 해당 닉네임은 중복으로 간주한다.
+- [ ] 중복된 닉네임을 사용하는 이메일은 결과값에 포함한다.
+- [ ] result는 이메일로 구성되며 오름차순 정렬되어 있어야 한다.
