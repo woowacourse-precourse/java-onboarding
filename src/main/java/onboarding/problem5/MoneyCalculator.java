@@ -11,7 +11,6 @@ import static onboarding.problem5.consts.MoneyConst.TEN_THOUSAND_WON;
 import static onboarding.problem5.consts.MoneyConst.TEN_WON;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class MoneyCalculator {
@@ -23,12 +22,12 @@ public class MoneyCalculator {
     }
 
     public static List<Integer> calculateMoneyCount(int money) {
-        List<Integer> MoneyTypesCount = new ArrayList<>();
+        List<Integer> moneyTypesCount = new ArrayList<>();
 
         for (int moneyType : moneyTypes) {
-            MoneyTypesCount.add(money / moneyType);
+            moneyTypesCount.add(money / moneyType);
             money %= moneyType;
         }
-        return MoneyTypesCount;
+        return moneyTypesCount;
     }
 }
