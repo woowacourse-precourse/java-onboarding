@@ -34,7 +34,7 @@ public class RecommendationAlgorithm {
             scores.put(visitorName, scores.get(visitorName).add(1));
         }
         List<Score> collect = scores.values().stream().collect(Collectors.toList());
-        Collections.sort(collect);
+        Collections.sort(collect, Collections.reverseOrder());
         List<String> answer = collect.stream().map(score -> score.getUserName()).collect(Collectors.toList());
         if(answer.size() > 5) {
             return answer.subList(0, 5);
