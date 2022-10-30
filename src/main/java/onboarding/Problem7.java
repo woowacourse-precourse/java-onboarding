@@ -3,6 +3,8 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
+    private static final int MAX_RECOMMEND_COUNT = 5;
+
     public static void main(String[] args) {
         String user = "mrko";
         List<List<String>> friends = List.of(
@@ -11,9 +13,19 @@ public class Problem7 {
                 List.of("donut", "mrko"),
                 List.of("shakevan", "andole"),
                 List.of("shakevan", "jun"),
-                List.of("shakevan", "mrko")
+                List.of("shakevan", "mrko"),
+                List.of("woonie", "egenieee"),
+                List.of("gurae", "ujin"),
+                List.of("seoungjun", "egenieee"),
+                List.of("wooSeok", "egenieee"),
+                List.of("Dong", "egenieee"),
+                List.of("hwan", "jun"),
+                List.of("woonie", "jun"),
+                List.of("woonie", "sepang")
         );
-        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan",
+                "egenieee", "jun", "woonie", "ujin", "ujin",
+                "ujin", "ujin", "jun", "ujin", "egenieee");
 
         System.out.println(Problem7.solution(user, friends, visitors));
     }
@@ -21,9 +33,9 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Set<String> alreadyFriends = getAlreadyFriends(friends);
         Map<String, Integer> recommendPoint = getRecommendPoint(friends, user);
-        recommendPoint = addRecommendPointByVisit(alreadyFriends, recommendPoint, visitors);
+        addRecommendPointByVisit(alreadyFriends, recommendPoint, visitors);
 
-        return Arrays.asList("", "");
+        return sortAndGetRecommendFriends(recommendPoint);
     }
 
     private static Set<String> getAlreadyFriends(List<List<String>> friends) {
@@ -42,7 +54,6 @@ public class Problem7 {
 
         for (List<String> friend : friends) {
             String newFriend = friend.get(1);
-
             if (!user.equals(newFriend)) {
                 recommendPoint.put(newFriend, recommendPoint.getOrDefault(newFriend, 0) + 10);
             }
@@ -51,18 +62,51 @@ public class Problem7 {
         return recommendPoint;
     }
 
-    private static Map<String, Integer> addRecommendPointByVisit(Set<String> alreadyFriends, Map<String, Integer> recommendPoint, List<String> visitors) {
+    private static void addRecommendPointByVisit(Set<String> alreadyFriends, Map<String, Integer> recommendPoint, List<String> visitors) {
         for (String visitor : visitors) {
             if (isNewFriendVisiting(visitor, alreadyFriends)) {
                 recommendPoint.put(visitor, recommendPoint.getOrDefault(visitor, 0) + 1);
             }
         }
-
-        return recommendPoint;
     }
 
     private static boolean isNewFriendVisiting(String visitor, Set<String> alreadyFriends) {
         return !alreadyFriends.contains(visitor);
+    }
+
+
+    private static List<String> sortAndGetRecommendFriends(Map<String, Integer> recommendPoint) {
+        List<Map.Entry<String, Integer>> entryList = sortByRecommendPoint(recommendPoint);
+
+        return getRecommendedUsers(entryList);
+    }
+
+    private static List<Map.Entry<String, Integer>> sortByRecommendPoint(Map<String, Integer> recommendPoint) {
+        List<Map.Entry<String, Integer>> entryList = new ArrayList<>(recommendPoint.entrySet());
+
+        entryList.sort((o1, o2) -> {
+            if (o1.getValue() == o2.getValue()) {
+                return o1.getKey().compareTo(o2.getKey());
+            }
+            return o2.getValue() - o1.getValue();
+        });
+
+        return entryList;
+    }
+
+    private static List<String> getRecommendedUsers(List<Map.Entry<String, Integer>> entryList) {
+        List<String> recommendedUser = new ArrayList<>();
+        int count = 0;
+
+        for (Map.Entry<String, Integer> entry : entryList) {
+            if (count == MAX_RECOMMEND_COUNT) {
+                return recommendedUser;
+            }
+            recommendedUser.add(entry.getKey());
+            count++;
+        }
+
+        return recommendedUser;
     }
 
 }
