@@ -21,4 +21,12 @@ class Problem1 {
         return s.toCharArray();
     }
 
+    private static int getPageSum(char[] pageNumbers) {
+        int result = 0;
+        for (char c : pageNumbers) {
+            result += c - '0';
+        }
+        return result;
+    }
+
 }
