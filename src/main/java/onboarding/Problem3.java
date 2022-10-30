@@ -18,4 +18,20 @@ public class Problem3 {
         return clap;
     }
 
+    /**
+     * 숫자가 3, 6, 9 를 포함하고 있는 만큼 박수치기
+     * @param i
+     * @param clap
+     * @return int
+     */
+    private static int clapping(int i, int clap) {
+        String str = String.valueOf(i);
+        for (int j = 0; j < str.length(); j++) {
+            if (isContain(str.charAt(j))) {
+                clap++;
+            }
+        }
+        return clap;
+    }
+
 }
