@@ -9,7 +9,7 @@ public class Problem6 {
     static HashMap<String, Integer> twoLetterCountMap = new HashMap<>();
 
     public static List<String> solution(List<List<String>> forms) {
-        List<List<String>> separatedEachCrewNicknameList = getSeperatedEachCrewNicknameList(forms);
+        List<List<String>> separatedEachCrewNicknameList = getSeparatedCrewNicknameList(forms);
         countListToMap(separatedEachCrewNicknameList);
         List<String> crewEmailListOfDuplicatedNickname = getCrewEmailListOfDuplicatedNickname(separatedEachCrewNicknameList, forms);
         Collections.sort(crewEmailListOfDuplicatedNickname);
@@ -52,7 +52,7 @@ public class Problem6 {
         }
     }
 
-    private static List<List<String>> getSeperatedEachCrewNicknameList(List<List<String>> forms) {
+    private static List<List<String>> getSeparatedCrewNicknameList(List<List<String>> forms) {
         List<List<String>> separatedEachCrewNicknameList = new ArrayList<>();
         for (List<String> crew : forms) {
             List<String> temp = new ArrayList<>(getSeparatedNicknameToList(crew.get(NICKNAME)));
