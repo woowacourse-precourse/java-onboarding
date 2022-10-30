@@ -58,4 +58,18 @@ public class Problem7 {
         return friendScore;
     }
 
+    public int getUserList (List<List<String>> friends, String user) {
+        List<String> userList = new ArrayList<>();
+        for(List<String> friend : friends) {
+            if(!(friend.get(0).equals(user))){
+                userList.add(friend.get(0));
+            }
+
+            if(!(friend.get(1).equals(user))){
+                userList.add(friend.get(1));
+            }
+        }
+        return userList.size();
+    }
+
 }
