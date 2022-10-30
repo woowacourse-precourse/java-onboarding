@@ -1,9 +1,8 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -15,13 +14,16 @@ public class Problem6 {
             String nickname = info.get(1);
             totalNicks.add(nickname);
         }
+        System.out.println(totalNicks);
+
 
         // 2. 나의 닉네임을 제외한 nickname set 생성
         for (List<String> info: forms) {
             String email = info.get(0);
             String nickname = info.get(1);
 
-            HashSet<String> compareNicks = new HashSet<String>();
+
+            HashSet<String> compareNicks = new HashSet<>();
             compareNicks.addAll(totalNicks);
             compareNicks.remove(nickname);
 
@@ -43,10 +45,18 @@ public class Problem6 {
             // 5. 전체와 교집합이 있으면 메일을 list에 추가
             compareNicksSplit.retainAll(myNickSplit);
             if(compareNicksSplit.size()>0){
-                answer.add(email);
+                // email form validation
+                String regex = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@email.com";
+                Pattern p = Pattern.compile(regex);
+                Matcher m = p.matcher(email);
+                Boolean check1 = m.matches();
+                Boolean check2 = email.length() >= 11;
+                Boolean check3 = email.length() < 20;
+                if(check1 && check2 && check3){
+                    answer.add(email);
+                }
             }
         }
-
         Collections.sort(answer);
         return answer;
     }
