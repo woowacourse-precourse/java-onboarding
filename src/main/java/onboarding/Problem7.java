@@ -79,3 +79,14 @@ enum CalculusType {
     friend,
     visitor
 }
+
+class Person {
+    private String name;
+    private int recommendScore;
+    private List<Person> friends;
+    public Person(String name) {
+        this.name = name;
+        this.recommendScore = 0;
+        this.friends = new ArrayList<>();
+    }
+}
