@@ -10,6 +10,21 @@ public class Problem2 {
         String[] arr = cryptogram.split("");
 
         stk.push(arr[0]);
+        for(int i=1;i<arr.length;i++){
+            String str = arr[i];
+
+            if(!stk.peek().equals(str)){
+                stk.push(str);
+            }else if(stk.peek().equals(str)){
+                stk.pop();
+            }
+
+        }
+
+        for(String s : stk){
+            answer+=s;
+        }
+
         return answer;
     }
 
