@@ -38,21 +38,61 @@ class Problem1 {
             arrNumPobiLeft.add(numPL%10);
             numPL /= 10;
         }
+        int lenghtPL = arrNumPobiLeft.size();
+        int sumPL = 0;
+        int productPL = 1;
+
+        while ( lenghtPL > 0 ) {
+            sumPL += arrNumPobiLeft.get(lenghtPL - 1);
+            productPL *= arrNumPobiLeft.get(lenghtPL - 1);
+            lenghtPL -= 1;
+        }
+
 
         while ( numPR > 0 ) {
             arrNumPobiRight.add(numPR%10);
             numPR /= 10;
+        }
+        int lenghtPR = arrNumPobiRight.size();
+        int sumPR = 0;
+        int productPR = 1;
+
+        while ( lenghtPR > 0 ) {
+            sumPR += arrNumPobiRight.get(lenghtPR - 1);
+            productPR *= arrNumPobiRight.get(lenghtPR - 1);
+            lenghtPR -= 1;
         }
 
         while ( numCL > 0 ) {
             arrNumCrongLeft.add(numCL%10);
             numCL /= 10;
         }
+        int lenghtCL = arrNumCrongLeft.size();
+        int sumCL = 0;
+        int productCL = 1;
+
+        while ( lenghtCL > 0 ) {
+            sumCL += arrNumCrongLeft.get(lenghtCL - 1);
+            productCL *= arrNumCrongLeft.get(lenghtCL - 1);
+            lenghtCL -= 1;
+        }
 
         while ( numCR > 0 ) {
             arrNumCrongRight.add(numCR%10);
             numCR /= 10;
         }
+        int lenghtCR = arrNumCrongRight.size();
+        int sumCR = 0;
+        int productCR = 1;
+
+        while ( lenghtCR > 0 ) {
+            sumCR += arrNumCrongRight.get(lenghtCR - 1);
+            productCR *= arrNumCrongRight.get(lenghtCR - 1);
+            lenghtCR -= 1;
+        }
+
+
+
 
 
 
