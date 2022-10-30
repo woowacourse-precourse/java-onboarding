@@ -55,9 +55,11 @@ public class Problem7 {
     public static Map<String, Integer> calculateScore(String userId, Map<String, Set<String>> friendConnection, List<String> visitors) {
         Map<String, Integer> answer = new HashMap<>();
         Set<String> userFriend = friendConnection.get(userId);
+        if (userFriend == null) userFriend = new HashSet<>();
 
         for (String friendId : friendConnection.keySet()) {
             if (userId == friendId) continue;
+            if (userFriend.contains(friendId)) continue;
 
             int sameFriendCnt = 0;
             Set<String> friendFriend = friendConnection.get(friendId);
@@ -72,17 +74,14 @@ public class Problem7 {
                 }
             }
 
-            answer.put(friendId, sameFriendCnt * 10);
+            if (sameFriendCnt != 0) answer.put(friendId, sameFriendCnt * 10);
         }
 
         for (String visitor : visitors) {
-            answer.put(visitor, answer.get(visitor) + 1);
-        }
+            if (userFriend.contains(visitor)) continue;
 
-        for (String friendId : friendConnection.keySet()) {
-            if (answer.get(friendId) == 0) {
-                answer.remove(friendId);
-            }
+            if (!answer.containsKey(visitor)) answer.put(visitor, 1);
+            else answer.put(visitor, answer.get(visitor) + 1);
         }
 
         return answer;
