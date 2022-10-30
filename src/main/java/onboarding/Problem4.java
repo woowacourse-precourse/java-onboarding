@@ -12,4 +12,8 @@ public class Problem4 {
         String answer = "";
         return answer;
     }
+
+    private static boolean isUppercaseAlphabet(char letter) {
+        return letter >= 'A' && letter <= 'Z';
+    }
 }
