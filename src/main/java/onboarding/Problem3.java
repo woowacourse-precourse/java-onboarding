@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
 public class Problem3 {
@@ -24,5 +25,11 @@ public class Problem3 {
         count += Collections.frequency(arrayListOfNumber, "6");
         count += Collections.frequency(arrayListOfNumber, "9");
         return count;
+    }
+
+    static ArrayList<String> convertNumberToArrayList(int number) {
+        String stringOfNumber = Integer.toString(number);
+        ArrayList<String> arrayListOfStringNumber= new ArrayList<>(Arrays.asList(stringOfNumber.split("")));
+        return arrayListOfStringNumber;
     }
 }
