@@ -5,20 +5,16 @@ import java.util.stream.Collectors;
 
 public class Problem7 {
 
-    private static final Integer USER_RELATED_FRIEND = 10;
-    private static final Integer USER_VISIT_MY_PAGE = 1;
+
+    private static final int USER_RELATED_MY_FRIEND = 10;
+    private static final int USER_VISIT_MY_PAGE = 1;
+    private static final int MAX_NUMBER_TO_RECOMMENDED_FRIENDS = 5;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         User userObject = new User(user);
         userObject.addFriends(friends);
         userObject.addFriendRecommendScore(friends, visitors);
-
-        return userObject.getFriendRecommendScore().entrySet().stream()
-                .sorted(Collections.reverseOrder(Map.Entry.<String, Integer>comparingByValue())
-                        .thenComparing(Map.Entry.comparingByKey()))
-                .limit(5)
-                .map(Map.Entry::getKey)
-                .collect(Collectors.toList());
+        return userObject.findToRecommendedFriends(MAX_NUMBER_TO_RECOMMENDED_FRIENDS);
     }
 
     private static class User {
@@ -31,28 +27,12 @@ public class Problem7 {
             this.name = name;
         }
 
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
         public List<String> getFriends() {
             return friends;
         }
 
-        public void setFriends(List<String> friends) {
-            this.friends = friends;
-        }
-
         public Map<String, Integer> getFriendRecommendScore() {
             return friendRecommendScore;
-        }
-
-        public void setFriendRecommendScore(Map<String, Integer> friendRecommendScore) {
-            this.friendRecommendScore = friendRecommendScore;
         }
 
         public void addFriends(List<List<String>> friends) {
@@ -77,7 +57,7 @@ public class Problem7 {
                     .filter(username -> !this.friends.contains(username))
                     .collect(Collectors.toList());
 
-            calculateScore(usersRelatedFriends, USER_RELATED_FRIEND);
+            calculateScore(usersRelatedFriends, USER_RELATED_MY_FRIEND);
         }
 
         private void addVisitUsers(List<String> visitors) {
@@ -88,7 +68,7 @@ public class Problem7 {
             calculateScore(visitorsWithoutFriend, USER_VISIT_MY_PAGE);
         }
 
-        private void calculateScore(List<String> collect, Integer weight) {
+        private void calculateScore(List<String> collect, int weight) {
             for (String fr : collect) {
                 if (this.isContainInRecommendList(fr)) {
                     this.getFriendRecommendScore().put(fr, this.getFriendRecommendScore().get(fr) + weight);
@@ -100,8 +80,17 @@ public class Problem7 {
         }
 
         public boolean isContainInRecommendList(String username) {
-        return this.getFriendRecommendScore().containsKey(username);
-    }
+            return this.getFriendRecommendScore().containsKey(username);
+        }
+
+        public List<String> findToRecommendedFriends(int maxElementNum) {
+            return this.getFriendRecommendScore().entrySet().stream()
+                    .sorted(Collections.reverseOrder(Map.Entry.<String, Integer>comparingByValue())
+                            .thenComparing(Map.Entry.comparingByKey()))
+                    .limit(maxElementNum)
+                    .map(Map.Entry::getKey)
+                    .collect(Collectors.toList());
+        }
     }
 
 }
