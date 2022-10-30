@@ -14,6 +14,22 @@ public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
 
+        answer = count(number);
+
         return answer;
+    }
+
+    public static int count(int number) {
+        int count = 0; // 박수 개수를 카운트
+
+        for(int i=1; i<=number; i++) {   // 1부터 n까지 돌면서 3, 6, 9의 수를 파악하기 위해 문자열 변환
+            String n = Integer.toString(i);
+            for(int j=0; j<n.length(); j++) {
+                if(n.charAt(j) == '3' || n.charAt(j) == '6' || n.charAt(j) == '9') // 각 문자열에 3, 6, 9 가 있을 때 count
+                    count++;
+            }
+        }
+
+        return count;
     }
 }
