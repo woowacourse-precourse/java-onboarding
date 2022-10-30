@@ -11,8 +11,7 @@ public class Problem6 {
     static HashMap<String, Integer> twoLetterCountMap = new HashMap<>();
 
     public static List<String> solution(List<List<String>> forms) {
-        List<List<String>> separatedEachCrewNicknameList = new ArrayList<>();
-        addSeperatedNicknameToList(forms, separatedEachCrewNicknameList);
+        List<List<String>> separatedEachCrewNicknameList = getSeperatedEachCrewNicknameList(forms);
         countTwoLettersToMap(separatedEachCrewNicknameList);
         List<String> emailListOfDuplicatedNickname = getEmailListOfDuplicatedNickname(separatedEachCrewNicknameList, forms);
         return new ArrayList<>();
@@ -54,11 +53,13 @@ public class Problem6 {
         }
     }
 
-    private static void addSeperatedNicknameToList(List<List<String>> forms, List<List<String>> separatedEachCrewNicknameList) {
+    private static List<List<String>> getSeperatedEachCrewNicknameList(List<List<String>> forms) {
+        List<List<String>> separatedEachCrewNicknameList = new ArrayList<>();
         for (List<String> crew : forms) {
             List<String> temp = new ArrayList<>(getSeparatedTwoConsecutiveLetters(crew.get(NICKNAME)));
             separatedEachCrewNicknameList.add(temp);
         }
+        return separatedEachCrewNicknameList;
     }
 
     private static List<String> getSeparatedTwoConsecutiveLetters(String nickname) {
