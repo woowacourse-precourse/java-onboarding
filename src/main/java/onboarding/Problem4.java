@@ -67,7 +67,14 @@ public class Problem4 {
     }
 
     public static String solution(String word) {
-        String answer = "";
+        String answer = word;
+        List<Character> charcterList = transStringToList(answer);
+
+        for (int i = 0; i < charcterList.size(); i++) {
+            charcterList.set(i, changeChar(charcterList.get(i)));
+        }
+
+        answer = transListToString(charcterList);
         return answer;
     }
 }
