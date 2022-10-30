@@ -8,45 +8,25 @@ public class Problem2 {
 	static final int last = 1;
 
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer;
+		List<Character> cryptogram_list;
 
 		checkException(cryptogram);
-
-		List<Character> cryptogram_list = toList(cryptogram);
+		cryptogram_list = convertToList(cryptogram);
 
 		//연속해서 중복되는 문자가 없을 때 까지
 		while (true) {
-			boolean isVisited = false;
-			//연속해서 중복되는 범위를 구함
-			List<Integer> range = findDuplicationRange(cryptogram_list);
+			removeWord(findDuplicationRange(cryptogram_list), cryptogram_list);
 
-			removeWord(range, cryptogram_list);
-
-			for(int i = 0; i < range.size(); i++){
-				if (range.get(i) == 0)
-					isVisited = true;
-				if (range.get(i) != 0)
-				{
-					isVisited = false;
-					break;
-				}
-			}
-
-			if (isVisited == true || range.size() == 0)
+			if (findDuplicationWord(findDuplicationRange(cryptogram_list)))
 				break;
-			//문자의 중복되는 범위를 제거
-			//remove(cryptogram_list, range[first], range[last]);
-
-			//연속해서 중복되는 문자가 없을 경우 종료
-			//if (range[last] == 0)
-			//	break;
 		}
+
 		answer = toString(cryptogram_list);
 
         return answer;
     }
-	//String을 List로 변환
-	public static List<Character> toList(String cryptogram) {
+	public static List<Character> convertToList(String cryptogram) {
 		List<Character> cryptogram_list = new ArrayList<>();
 
 		for (int i = 0; i < cryptogram.length(); i++)
@@ -54,23 +34,23 @@ public class Problem2 {
 
 		return cryptogram_list;
 	}
-	//list를 String으로 변환
-	public static String toString(List<Character> cryptogram_list) {
+	public static String convertToString(List<Character> cryptogram_list) {
 		String str = "";
 
 		for (int i = 0; i < cryptogram_list.size(); i++)
 			str += cryptogram_list.get(i);
 		return str;
 	}
-	//중복 제거 함수
-	public static List<Character> remove(List<Character> cryptogram_list, int first, int last) {
-		int index = first;
 
-		for (int i = index; i < last; i++)
-			cryptogram_list.remove(first);
-
-		return cryptogram_list;
+	public static boolean findDuplicationWord(List<Integer> range) {
+		for (int i = 0; i < range.size(); i++)
+		{
+			if (range.get(i) != 0)
+				return false;
+		}
+		return true;
 	}
+
 	//중복되는 문자의 범위를 찾는 함수
 	public static List<Integer> findDuplicationRange(List<Character> cryptogram_list) {
 		int cnt;
