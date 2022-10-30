@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,7 +23,15 @@ import java.util.List;
  *  - 1자 이상 20자 미안인지 체크 하는 함수
  * **/
 
+/**
+ * 2. 닉네임을 통한 연속적인 값들이 있는 배열 생성 함수 ex) 제이엠 -> [제이 , 이엠 , 제이엠 ]
+ * - 클래스 변수 생성
+ * - substring 사용
+ * **/
+
 public class Problem6 {
+
+    private static List<String> continuousNickList = new ArrayList<>();
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
@@ -65,9 +74,26 @@ public class Problem6 {
             return true;
         return false;
     }
+
     private static boolean checkNick(String inputNick){
         if(checkKorean(inputNick) && checkNickLength(inputNick))
             return true;
         return false;
+    }
+
+    public static void main(String[] args) {
+        String test = "가나다라마바사";
+        makeContinuousMakeNickList(test);
+        System.out.println(continuousNickList);
+    }
+
+    private static void makeContinuousMakeNickList(String inputNick){
+        for(int i = 0; i < inputNick.length(); i++)
+        {
+            for(int j = i + 2; j < inputNick.length() + 1; j++)
+            {
+                continuousNickList.add(inputNick.substring(i,j));
+            }
+        }
     }
 }
