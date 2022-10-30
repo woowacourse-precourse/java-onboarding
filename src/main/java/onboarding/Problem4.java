@@ -6,8 +6,12 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < word.length(); i++) {
+            sb.append(reverseAlphabet(word.charAt(i)));
+        }
+
+        return sb.toString();
     }
     private static char reverseAlphabet(char letter) {
         if (!Character.isAlphabetic(letter)) return letter;
