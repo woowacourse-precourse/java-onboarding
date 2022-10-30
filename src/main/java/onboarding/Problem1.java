@@ -13,9 +13,13 @@ class Problem1 {
     private static final int LAST_PAGE = 400;
     private static final int ERROR = -100;
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int answer = whoWin(pobi, crong);
+        return answer;
+    }
+
+    private static int whoWin(List<Integer> pobi, List<Integer> crong) {
         // 둘 중 한명이라도 책의 페이지가 연속적이지 않으면 예외사항 반환
-        if(!check(pobi)||!check(crong))return EXCEPT;
+        if(!check(pobi)||!check(crong)) return EXCEPT;
 
         int pobiMax = calculateMax(pobi);
         int crongMax = calculateMax(crong);
