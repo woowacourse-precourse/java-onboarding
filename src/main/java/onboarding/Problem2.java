@@ -24,8 +24,15 @@ public class Problem2 {
     // 새로운 문자열을 반환한다.
     public static String removeRepeated(String str, int index)
     {
-        // implement
-        return str;
+        // 문자열의 시작부터 동등 비교가 일어난 해당 인덱스 전까지 구한다.
+        String str1 = str.substring(0, index);
+
+        // 동등 비교가 일어난 해당 인덱스와 그 다음 인덱스를 제외해야 하므로
+        // 인덱스로부터 2번 건너뛴 순서부터 문자열 끝까지 구한다.
+        String str2 = str.substring(index + 2, str.length());
+
+        // str1의 뒤에 str2를 붙인 새로운 문자열을 반환한다.
+        return str1.concat(str2);
     }
 
 }
