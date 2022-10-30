@@ -21,8 +21,9 @@
 - 입력받은 userFriend 목록에 firstFried의 이름이 있고 seconFriend의 이름이 user가 아니라면 해당 second 사람의 추천점수를 10 증가합니다.
 - for문이 끝난 후 점수가 갱신된 recommendList를 반환합니다.
 
-### 5. 제공된 visitors에 이름이 있으면 해당 친구 추천 점수 증가
-
+### 5. 제공된 visitors에 이름이 있고 user의 친구가 아니면 해당 visitor의 친구 추천 점수 증가
+#### addScoreByVisitor(List<String> visitors, List<String> userFriendList,Map<String, Integer> recommendList) --> Map<String, Integer> recommendList
+- for문을 수행하며 제공된 visitor 요소 중 userFriendList에 없는 사람이면 recommendList에서 조회 한 뒤 추천점수를 1 증가합니다.
 
 ### 6. 추천목록을 추천점수가 높은순으로 정렬, 이름이 같으면 이름순으로 정렬
 

@@ -79,5 +79,20 @@ public class Problem7 {
         return recommendList;
     }
 
+    /**
+     * visitors의 목록중 userFriendList에 포함되지 않은 요소는 recommendList에서 조회하여 추천점수 1 증가시킴
+     * @param {List<String>} visitors
+     * @param {List<String>} userFriendList
+     * @param {Map<String, Integer>} recommendList
+     * @return recommendList
+     */
+    public static Map<String, Integer> addScoreByVisitor(List<String> visitors, List<String> userFriendList,Map<String, Integer> recommendList) {
+        for (int i = 0; i < visitors.size(); i++) {
+            String name = visitors.get(i);
+            if(!userFriendList.contains(name)) recommendList.put(name, recommendList.get(name) + 1);
+        }
+        return recommendList;
+    }
+
 
 }
