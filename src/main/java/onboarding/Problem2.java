@@ -18,22 +18,35 @@ public class Problem2 {
         words.push(cryptogram.charAt(0)); //첫 문자는 바로 push
 
         for (int i = 1; i < cryptogram.length(); i++) {
-            char nowChar = cryptogram.charAt(i);
+            Character nowChar = getNewChar(i, cryptogram);
             char top = words.peek();
 
-            checkNewCharDuplicate(nowChar, top);
+            Boolean isNewCharDuplicate = checkNewCharDuplicate(nowChar, top);
+            if (isNewCharDuplicate) {
+                continue;
+            }
+
+            Character nextChar = getNewChar(i + 1, cryptogram);
+            updateStack(nowChar, nextChar);
         }
 
         checkLastStackTop();
         return;
     }
 
-    private static void checkNewCharDuplicate(char nowChar, char top) {
+    private static Boolean checkNewCharDuplicate(char nowChar, char top) {
         if (isNowCharTopSame(nowChar, top)) {
             wasTopDuplicate = true;
-            return;
+            return true;
         }
-        updateStack(nowChar);
+        return false;
+    }
+
+    private static Character getNewChar(int idx, String cryptogram) {
+        if (idx < cryptogram.length()) {
+            return cryptogram.charAt(idx);
+        }
+        return null;
     }
 
     private static Boolean isNowCharTopSame(char nowChar, char top) {
@@ -43,9 +56,9 @@ public class Problem2 {
         return false;
     }
 
-    private static void updateStack(char nowChar) {
+    private static void updateStack(char nowChar, Character nextChar) {
         if (wasTopDuplicate) {
-            changeStackTop(nowChar);
+            changeStackTop(nowChar, nextChar);
         }
         putNewCharToStack(nowChar);
     }
@@ -56,13 +69,20 @@ public class Problem2 {
         }
     }
 
-    private static void changeStackTop(char nowChar) {
+    private static void changeStackTop(char nowChar, Character nextChar) {
         words.pop();
 
         if (words.isEmpty()) {
             wasTopDuplicate = false;
             return;
         }
+
+        if(nextChar != null && nowChar == nextChar) {
+            wasTopDuplicate = false;
+            return;
+        }
+
+        //이 전에 새 char 와 다음 char 가 연속되는지 체크 -> 연속되면 newTop 이랑 비교 안하고 그냥 push 함
         char newTop = words.peek();
         if (isNowCharTopSame(nowChar, newTop)) {
             wasTopDuplicate = true;
