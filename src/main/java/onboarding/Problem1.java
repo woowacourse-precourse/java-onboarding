@@ -20,6 +20,6 @@ class Problem1 {
         Problem1Solver solver = new Problem1Solver();
 
         Problem1Result result = solver.solve(input);
-        return 0;
+        return result.toResult();
     }
 }
