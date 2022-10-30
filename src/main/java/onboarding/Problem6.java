@@ -3,9 +3,22 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
+        try {
+            if (forms.size() < 1 || forms.size() > 10000)
+                throw new Exception("크루 숫자가 이상합니다");
+            for (int i = 0; i < forms.size(); i++) {
+                if(!Valid(forms.get(i)))
+                    forms.remove(forms.get(i));
+            }
+        } catch (Exception e) {
+            System.out.println("예외 발생 : " + e.getMessage());
+            return new ArrayList<>();
+        }
+
         List<String> answer = new ArrayList<>();
         List<Integer> plus;
         for (int i = 0; i < forms.size(); i++) {
@@ -37,6 +50,16 @@ public class Problem6 {
             }
         }
         return plus;
+    }
+
+    static boolean Valid(List<String> list) {
+        boolean err = true;
+        if (!(list.get(0).split("@")[1].equals("email.com")
+                || (20 > list.get(0).length() && list.get(0).length()> 10)
+                || Pattern.matches("^[가-힣]*$", list.get(1))
+                || list.get(1).length() >= 20 || list.get(1).length() < 1))
+            err = false;
+        return err;
     }
 }
 //문자열을 받아오게 될 것이다.

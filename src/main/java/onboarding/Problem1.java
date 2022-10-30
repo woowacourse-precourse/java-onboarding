@@ -12,8 +12,10 @@ class Problem1 {
             || (pobi.get(1) - pobi.get(0) != 1) || (crong.get(1) - crong.get(0) != 1))
                 throw new Exception("예외가 발생 하였습니다");
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             return -1;
         }
+
         int answer = Integer.MAX_VALUE;
 
         int pobiMax;

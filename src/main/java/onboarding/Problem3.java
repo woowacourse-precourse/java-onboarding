@@ -9,6 +9,7 @@ public class Problem3 {
             System.out.println("예외 발생 : " + e.getMessage());
             return -1;
         }
+
         int answer = 0;
         for(int i = 1; i <= number; i++){
             answer += check(i);

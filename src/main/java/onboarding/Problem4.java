@@ -5,6 +5,13 @@ import java.util.List;
 
 public class Problem4 {
     public static String solution(String word) {
+        try {
+            if (word.length() < 1 || word.length() > 1000)
+                throw new Exception("문자의 길이가 잘못되었습니다");
+        } catch (Exception e) {
+            return e.getMessage();
+        }
+
         String answer = "";
         int idx;
         //a ~ z까지 담고 있는 List를 만들자 대문자 소문자 각각
