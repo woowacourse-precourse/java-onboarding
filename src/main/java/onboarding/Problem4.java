@@ -4,8 +4,14 @@ import java.util.ArrayList;
 
 public class Problem4 {
     public static String solution(String sentence) {
-        String answer = getReverseSentence(sentence);
-        return answer;
+        try {
+            validate(sentence);
+            String answer = getReverseSentence(sentence);
+            return answer;
+        } catch (Exception e) {
+            System.out.println(e);
+            return "Wrong input";
+        }
     }
 
     static String getReverseSentence(String sentence) {
@@ -40,6 +46,13 @@ public class Problem4 {
             .toArray(String[]::new);
         String result = String.join("", stringArray);
         return result;
+    }
+
+    static void validate(String sentence) throws Exception{
+        int length = sentence.length();
+        if (length < 1 || length > 1000) {
+            throw new Exception("길이가 1 이상 1000 이하인 문자열만 입력할 수 있습니다");
+        }
     }
 }
 
