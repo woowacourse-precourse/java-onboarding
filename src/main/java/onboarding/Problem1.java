@@ -55,7 +55,26 @@ class Problem1 {
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int answer;
+        int pobiMax = Integer.MIN_VALUE;
+        int crongMax = Integer.MIN_VALUE;
+
+        if (checkParam(pobi) || checkParam(crong)) {
+            return -1;
+        }
+
+        for (int i = 0; i < 2; i++) {
+            pobiMax = Math.max(pobiMax, calcMaxScore(pobi.get(i)));
+            crongMax = Math.max(crongMax, calcMaxScore(crong.get(i)));
+        }
+
+        if (pobiMax == crongMax) {
+            answer = 0;
+        } else if (pobiMax > crongMax) {
+            answer = 1;
+        } else {
+            answer = 2;
+        }
         return answer;
     }
 }
