@@ -3,6 +3,24 @@ package onboarding;
 import java.util.List;
 
 public class Problem6 {
+
+    // 2. 닉네임 중복 체크
+    static boolean getCheckNickName(List<String> basic, List<String> compare)
+    {
+        // 기존 문자열 저장
+        String word = basic.get(1);
+
+        // 두 글자씩 비교
+        for(int strIdx=0; strIdx<word.length()-1; strIdx++)
+        {
+            String resultSubStr = word.substring(strIdx, strIdx + 2);
+            // 두 글자가 비교 문자열에 포함된 경우
+            if(compare.get(1).contains(resultSubStr))
+                return true;
+        }
+        return false;
+    }
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
 
@@ -12,10 +30,24 @@ public class Problem6 {
         for(int idx=0; idx<totalSize; idx++)
         {
             String email = forms.get(idx).get(0);
-            String nicName = forms.get(idx).get(1);
+            String nickName = forms.get(idx).get(1);
+            List<String> basic = List.of(email, nickName);
 
-            // 각 정보 결과 확인
-            System.out.println("이메일 : " + email + ", 닉네임 : " + nicName);
+            for(int value=idx+1; value<totalSize; value++)
+            {
+                String compareEmail = forms.get(value).get(0);
+                String compareNickName = forms.get(value).get(1);
+                List<String> compare = List.of(compareEmail, compareNickName);
+
+                // 닉네임 중복 체크
+                boolean resultCompare = getCheckNickName(basic,compare);
+                // 중복 체크 결과 확인
+                System.out.println(basic + " : " + compare + " = " + resultCompare);
+                if(resultCompare == true)
+                    break;
+
+
+            }
         }
 
         return answer;
