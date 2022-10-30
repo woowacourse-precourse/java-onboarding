@@ -19,15 +19,13 @@ public class AccountInfo {
     }
 
     private void initFriendsRelation(List<List<String>> friends) {
-        for (List<String> friend : friends) {
-            Account accountA = accounts.computeIfAbsent(friend.get(FRIEND_A_INDEX),
-                Account::new);
-            Account accountB = accounts.computeIfAbsent(friend.get(FRIEND_B_INDEX),
-                Account::new);
+        friends.forEach(friend -> {
+            Account accountA = accounts.computeIfAbsent(friend.get(FRIEND_A_INDEX), Account::new);
+            Account accountB = accounts.computeIfAbsent(friend.get(FRIEND_B_INDEX), Account::new);
 
             accountA.addFriend(accountB);
             accountB.addFriend(accountA);
-        }
+        });
     }
 
     public Stream<Account> findAllAccountFriendStream(String user) {

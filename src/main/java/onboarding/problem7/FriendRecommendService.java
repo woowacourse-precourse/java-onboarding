@@ -44,9 +44,7 @@ public class FriendRecommendService {
     }
 
     private void initVisitorScore(List<String> visitors) {
-        for (String visitor : visitors) {
-            calculateVisitorScore(visitor);
-        }
+        visitors.forEach(this::calculateVisitorScore);
     }
 
     private void calculateVisitorScore(String visitorId) {
