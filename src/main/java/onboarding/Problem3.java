@@ -4,19 +4,23 @@ public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
 		
-		// 1부터 number까지
 		for(int i = 1; i <= number; i++){
-			String strNum = String.valueOf(i);
-
-			// 자릿수 확인
-			for(int j = 0 ; j < strNum.length(); j++){
-				char target = strNum.charAt(j);
-				if(target == '3' || target == '6' || target == '9'){
-					answer++;
-				}
-			}
+			answer += calculateNumber(i);
 		}
 		
         return answer;
     }
+	
+	private static int calculateNumber(int num) {
+		int count = 0;
+		String strNum = String.valueOf(num);
+		
+		for (int i = 0; i < strNum.length(); i++) {
+			char target = strNum.charAt(i);
+			if(target == '3' || target == '6' || target == '9'){
+				count++;
+			}
+		}
+		return count;
+	}
 }
