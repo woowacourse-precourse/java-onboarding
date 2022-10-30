@@ -105,6 +105,24 @@ class Problem6Test {
 		nicknames = List.of("안녕안녕", "안녕");
 		result = new HashSet<>(List.of("안녕"));
 		assertThat(Problem6.getOverlapWords(nicknames)).isEqualTo(result);
+	}
 
+	@Test
+	void 같은_단어_집합_구하기() {
+		List<String> nicknames = List.of("제이슨", "제이쿠", "소이쿠");
+		Set<String> result = new HashSet<>(List.of("제이", "이쿠"));
+		assertThat(Problem6.getOverlapWords(nicknames)).isEqualTo(result);
+
+		nicknames = List.of("바나나", "바나나", "딸기", "복숭아", "숭아");
+		result = new HashSet<>(List.of("바나", "나나", "숭아"));
+		assertThat(Problem6.getOverlapWords(nicknames)).isEqualTo(result);
+
+		nicknames = List.of("안녕안녕");
+		result = new HashSet<>(List.of());
+		assertThat(Problem6.getOverlapWords(nicknames)).isEqualTo(result);
+
+		nicknames = List.of("안녕안녕", "안녕");
+		result = new HashSet<>(List.of("안녕"));
+		assertThat(Problem6.getOverlapWords(nicknames)).isEqualTo(result);
 	}
 }
