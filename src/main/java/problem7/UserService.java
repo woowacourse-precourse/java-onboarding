@@ -43,4 +43,8 @@ public class UserService {
     public void addFriends(List<List<String>> friends) {
         friends.forEach(this::addFriend);
     }
+
+    public List<String> operateFriendRecommendation(String userId) {
+        return userRepository.createDefaultList(userId);
+    }
 }

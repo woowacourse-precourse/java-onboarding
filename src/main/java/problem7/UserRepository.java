@@ -1,8 +1,10 @@
 package problem7;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class UserRepository {
 
@@ -20,5 +22,11 @@ public class UserRepository {
 
     public Optional<User> findByUserid(String userId) {
         return Optional.ofNullable(users.get(userId));
+    }
+
+    public List<String> createDefaultList(String userId) {
+        return users.keySet().stream()
+                .filter(s -> !s.equals(userId))
+                .collect(Collectors.toList());
     }
 }

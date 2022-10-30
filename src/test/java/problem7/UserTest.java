@@ -60,4 +60,11 @@ public class UserTest {
 
         return friends;
     }
+
+    @Test
+    void 디폴트_친구추천리스트_만들기() {
+        userService.addFriends(createFriends());
+        List<String> result = userService.operateFriendRecommendation("mrko");
+        assertThat(result).contains("donut", "andole", "jun", "shakevan");
+    }
 }
