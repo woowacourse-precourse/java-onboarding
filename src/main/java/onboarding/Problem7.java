@@ -5,7 +5,12 @@ import java.util.*;
 
 /*
 * 기능 목록
-* 1. 
+* 1. 사용자의 이름과 친구관계 목록을 입력받아 직접 아는 친구 리스트를 반환하는 createDirectFriends() 메서드
+* 2. 직접 아는 친구 리스트와 친구 관계 목록을 입력받아 함께 아는 친구에 대한 점수를 scoremap에 추가하는 findMutualFriends() 메서드
+* 3. 각각의 친구 관계와 직접 아는 친구 한 명을 입력받아 검사하고 scoreMap에 점수를 추가하는 scoreMutualFriends() 메서드
+* 4. 방문자 리스트와, 점수를 저장하는 scoreMap을 입력받아 방문자에 대한 점수를 추가하는 scoreVisitedFriends() 메서드
+* 5. 사람 별 점수를 저장한 scoreMap을 입력받아 점수 순으로 내림차순 정렬된 사람 리스트를 반환하는 createSortedFriendsName() 메서드
+* 6. 위 결과와 본인 사용자인 user, 직접 아는 친구은 directFriends를 입력받아 결과 (최대 5명의 추천받을 친구)를 반환하는 chooseFiveFriends() 메서드
 * */
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
