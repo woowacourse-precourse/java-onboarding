@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.Arrays;
 import java.util.List;
 
 class Problem1 {
@@ -32,5 +33,23 @@ class Problem1 {
             return false;
         }
         return true;
+    }
+
+    /**
+     * Function for Finding User's Plus score
+     * */
+    public static int findPlusScore(List<String> scoreList) {
+        int score = 0;
+        score += scoreList.stream().mapToInt(Integer::parseInt).sum();
+        return score;
+    }
+
+    /**
+     * Function for Finding User's Multiple score
+     * */
+    public static int findMultipleScore(List<String> scoreList) {
+        int score = 1;
+        score *= scoreList.stream().mapToInt(Integer::parseInt).reduce(1, (a, b) -> a * b);
+        return score;
     }
 }
