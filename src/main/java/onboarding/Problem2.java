@@ -8,27 +8,27 @@ public class Problem2 {
         StringBuilder answer = new StringBuilder();
 
         Stack<Character> stack = new Stack<>();
-        char [] charArr = cryptogram.toCharArray();
+        char[] charArr = cryptogram.toCharArray();
 
-        if(!isAlphabet(cryptogram) || !isLowerAlphabet(cryptogram) || !isOutOfRange(cryptogram)) {
+        if (!isAlphabet(cryptogram) || !isLowerAlphabet(cryptogram) || !isOutOfRange(cryptogram)) {
             return "";
         }
 
-        for(char c : charArr){
-            if(stack.isEmpty()){
+        for (char c : charArr) {
+            if (stack.isEmpty()) {
                 stack.push(c);
-                if(tmp == c){
+                if (tmp == c) {
                     stack.pop();
                     continue;
                 }
                 tmp = 'X';
             } else {
-                if(stack.peek() == c){
+                if (stack.peek() == c) {
                     stack.pop();
                     tmp = c;
                 } else {
                     stack.push(c);
-                    if(tmp == c){
+                    if (tmp == c) {
                         stack.pop();
                         continue;
                     }
@@ -37,7 +37,7 @@ public class Problem2 {
             }
         }
 
-        for(char c : stack){
+        for (char c : stack) {
             answer.append(c);
         }
 
