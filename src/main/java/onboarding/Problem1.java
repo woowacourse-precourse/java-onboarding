@@ -7,4 +7,15 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+
+	private static int sum(int num) {
+		int ret = 0;
+
+		while(num > 0) {
+			ret += num % 10;
+			num /= 10;
+		}
+
+		return ret;
+	}
 }
