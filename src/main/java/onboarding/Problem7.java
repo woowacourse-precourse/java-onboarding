@@ -5,8 +5,9 @@ import java.util.stream.Collectors;
 
 public class Problem7 {
 
-    private static final int USER_RELATED_MY_FRIEND = 10;
-    private static final int USER_VISIT_MY_PAGE = 1;
+    
+    private static final int RECOMMENDED_FRIENDS_WEIGHT_RELATED_MY_FRIEND = 10;
+    private static final int RECOMMENDED_FRIENDS_WEIGHT_VISIT_MY_PAGE = 1;
     private static final int MAX_NUMBER_TO_RECOMMENDED_FRIENDS = 5;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -56,7 +57,7 @@ public class Problem7 {
                     .filter(username -> !this.friends.contains(username))
                     .collect(Collectors.toList());
 
-            calculateScore(usersRelatedFriends, USER_RELATED_MY_FRIEND);
+            calculateScore(usersRelatedFriends, RECOMMENDED_FRIENDS_WEIGHT_RELATED_MY_FRIEND);
         }
 
         private void addVisitUsers(List<String> visitors) {
@@ -64,16 +65,17 @@ public class Problem7 {
                     .filter(friendPair -> !this.getFriends().contains(friendPair))
                     .collect(Collectors.toList());
 
-            calculateScore(visitorsWithoutFriend, USER_VISIT_MY_PAGE);
+            calculateScore(visitorsWithoutFriend, RECOMMENDED_FRIENDS_WEIGHT_VISIT_MY_PAGE);
         }
 
-        private void calculateScore(List<String> collect, int weight) {
-            for (String fr : collect) {
-                if (this.isContainInRecommendList(fr)) {
-                    this.getFriendRecommendScore().put(fr, this.getFriendRecommendScore().get(fr) + weight);
+
+        private void calculateScore(List<String> recommendedFriends, int weight) {
+            for (String name : recommendedFriends) {
+                if (this.isContainInRecommendList(name)) {
+                    this.getFriendRecommendScore().put(name, this.getFriendRecommendScore().get(name) + weight);
                 }
-                if (!this.isContainInRecommendList(fr)) {
-                    this.getFriendRecommendScore().put(fr, weight);
+                if (!this.isContainInRecommendList(name)) {
+                    this.getFriendRecommendScore().put(name, weight);
                 }
             }
         }
