@@ -2,22 +2,39 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = cryptogram;
+        Problem2 p = new Problem2();
+        return p.returnWord(cryptogram);
+    }
 
-        // 중복이 있으면 boolean으로 true일 때, 무한 반복문, false면 반복문 멈추고 리턴하자
-        boolean check = true;
-        while (check) {
-            check = false;
-            for (int i = 0; i <answer.length()-1 ; i++) {
-                if (answer.charAt(i) == answer.charAt(i + 1)) {
-                    check=true;
-                    answer = answer.substring(0, i) + answer.substring(i+2);
-                    i = 0;
-                }
+    // 문자열이 계속해서 나오면 체크, +1;
+    public String returnWord(String cryptogram) {
+        int count = 0, check = 0;
+
+        for (int i = 0; i < cryptogram.length() - 1; i++) {
+            boolean b = cryptogram.charAt(i) == cryptogram.charAt(i + 1);
+            if (b && count > 0) {
+                count++;
+            } else if (b) {
+                count++;
+                check = i;
             }
-            answer = answer;
+
+            if (count > 0 && cryptogram.charAt(i) != cryptogram.charAt(i + 1)) {
+                cryptogram = subStringWord(cryptogram, check, count);
+                i = 0;
+                count = 0;
+            }
         }
 
-        return answer;
+        if (cryptogram.length() == 2 && cryptogram.charAt(0) == cryptogram.charAt(1)) {
+            cryptogram = "";
+        }
+
+        return cryptogram;
+    }
+    
+    // 문자 자르는 메서드
+    public String subStringWord(String cryptogram, int check, int count) {
+        return cryptogram.substring(0, check) + cryptogram.substring(check + count + 1);
     }
 }
