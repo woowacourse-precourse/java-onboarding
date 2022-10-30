@@ -258,6 +258,28 @@ class ApplicationTest {
         Problem6.isAllowedCrewSize(crewSize2);
       });
      }
+
+    @Test
+    void isAllowedEmailTest() {
+      //given
+      String email1 = "abcd@email.com";
+      String email2 = "@email.com";
+      String email3 = "abcd@gmail.com";
+      String email4 = "abcdgmail.com";
+
+      //then
+      assertThat(Problem6.isAllowedEmail(email1)).isEqualTo(true);
+      assertThrows(IllegalStateException.class, () ->{
+        Problem6.isAllowedEmail(email2);
+      });
+      assertThrows(IllegalStateException.class, () ->{
+        Problem6.isAllowedEmail(email3);
+      });
+      assertThrows(IllegalStateException.class, () ->{
+        Problem6.isAllowedEmail(email4);
+      });
+     }
+
   }
 
   @Nested
