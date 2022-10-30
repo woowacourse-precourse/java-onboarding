@@ -150,6 +150,19 @@ public class Problem7 {
             List<String> recommendFriends = recommendScore.get(score);
             Collections.sort(recommendFriends);
             answer.addAll(recommendFriends);
+            if (answer.size() > 5) {
+                break;
+            }
+        }
+        extractMaxFiveList(answer);
+    }
+
+    /**
+     * Function for checking final friends List Length
+     * */
+    private static void extractMaxFiveList(List<String> answer) {
+        while (answer.size() > 5) {
+            answer.remove(answer.size()-1);
         }
     }
 }
