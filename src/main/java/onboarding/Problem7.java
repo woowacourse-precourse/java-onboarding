@@ -36,4 +36,8 @@ public class Problem7 {
 
         return friendList;
     }
+
+    static int getVisitCnt(List<String> visitors, String visitor){
+        return Collections.frequency(visitors, visitor);
+    }
 }
