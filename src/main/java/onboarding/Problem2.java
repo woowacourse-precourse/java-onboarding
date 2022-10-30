@@ -22,33 +22,38 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         StringBuilder sb = new StringBuilder();
 
-        Deque<Character> queue = new ArrayDeque<>();
-
-        char lastWord = ' '; // 중복 된 단어를 저장하기 위한 임시 변수
         for (int i = 0; i < cryptogram.length(); i++) {
-            char word = cryptogram.charAt(i);
-            if (word == lastWord) {
-                // 만약 중복 된 단어와 현재 단어가 같은 경우 그대로 진행, 연속 된 모든 단어를 지우기 위함
-                continue;
-            }
-
-            if (queue.isEmpty()) {
-                if (queue.isEmpty()) { // queue 가 비어있을 때 단어 삽입
-                    queue.offerLast(word);
-                    lastWord = ' ';
-                } else {
-                    if (queue.peekLast() == word) { // queue 의 마지막 단어와 현재 단어가 같다면 queue 의 마지막 단어를 빼내어 변수에 저장
-                        lastWord = queue.pollLast();
-                    } else { // 현재 단어를 queue 에 삽입하고, 단어가 다르기 때문에 lastWord 를 초기화 시켜준다.
-                        queue.offerLast(word);
-                        lastWord = ' ';
-                    }
-                }
-            }
+            sb.append(cryptogram.charAt(i));
         }
 
-        while (!queue.isEmpty()) {
-            sb.append(queue.pollFirst());
+        while (true) {
+            int cnt = 0; // 중복되는 문자가 있는지 없는지 확인해주기 위한 변수
+            boolean flag = false; // 중복되는 숫자가 있었는지 없었는지 확인하는 flag
+
+            for (int i = 0; i < sb.length() - 1; i++) { // sb 길이만큼 진행
+                int idx = i; // 시작 idx 를 저장
+                if (sb.charAt(i) == sb.charAt(i + 1)) { // 만약 중복되는 문자가 나왔다면, 어디까지 이어지나 확인하기위해
+                    for (int j = i + 1; j < sb.length(); j++) { // for 문을 i+1부터 돌려서 sb 길이만큼 진행
+                        if (sb.charAt(i) == sb.charAt(j)) { // 처음 나온 문자와 j 번째가 중복된다면
+                            idx = j; // idx 를 갱신하면서 진행
+                        } else {
+                            break; // 만약 중복되지 않는다면 break;
+                        }
+                    }
+                    cnt++;
+                    flag = true; // 중복된 if 문에 들어왔으니 flag 를 true 로 바꾸어줌 -> 중복이 한번이라도 있었으니
+                }
+
+                if (cnt > 0) { // 중복 되는 문자가 있었으니까
+                    sb = sb.replace(i, idx + 1, ""); // 시작 i 부터 끝 idx (저장해두었던 변수) 까지 공백으로 치환
+                    i--; // i 를 시작위치부터 다시 확인할 수 있게 위치를 -1 해줌
+                    cnt = 0; // 중복되는 문자를 다시 확인하기 위해 값을 초기화해줌
+                }
+            }
+
+            if (!flag) { // 만약 중복되는 문자가 없어서 flag 값이 변화하지 않았다면 더이상 바꿀 필요가 없어져 while 문 나오기
+                break;
+            }
         }
 
         return sb.toString();
