@@ -14,8 +14,8 @@ public class Problem7 {
 
 
         // 사용자와 함께 아는 친구의 점수를 매김(10점)
-        int[] memberPoint = new int[member.size()]; // 추천 점수 표시할 배열
         int userIdx = member.indexOf(user); // 파라미터로 받은 유저의 인덱스
+        int[] memberPoint = new int[member.size()]; // 추천 점수 표시할 배열
 
         List<String> userFriend = friendList[userIdx]; // 파라미터로 받은 유저의 직접 친구 리스트
         for(int i=0; i<userFriend.size(); i++){
@@ -33,13 +33,8 @@ public class Problem7 {
         }
 
         // 방문자로 점수 처리
-        // 방문자를 리스트로 정리
-        List<String> visitorList = new ArrayList<>();
-        for(int i=0; i<visitors.size(); i++){
-            if(!visitorList.contains(visitors.get(i))){
-                visitorList.add(visitors.get(i));
-            }
-        }
+        // 방문자를 중복 없는 리스트로 정리
+        List<String> visitorList = visitorList(visitors);
 
         // 방문자 횟수로 점수 매김
         int[] visitorPoint = new int[visitorList.size()];
@@ -159,6 +154,22 @@ public class Problem7 {
         }
 
         return friendList;
+    }
+
+    /**
+     * 방문자를 중복 없이 리스트에 넣는 메소드
+     * @param visitors
+     * @return 중복 제외한 방문자 리스트
+     */
+    static List<String> visitorList(List<String> visitors){
+        List<String> visitorList = new ArrayList<>();
+        for(int i=0; i<visitors.size(); i++){
+            if(!visitorList.contains(visitors.get(i))){
+                visitorList.add(visitors.get(i));
+            }
+        }
+
+        return visitorList;
     }
 
 
