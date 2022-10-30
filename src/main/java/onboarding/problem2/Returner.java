@@ -5,12 +5,12 @@ import java.util.LinkedList;
 public class Returner {
 
     //반환 기능
-    public static String returnLinkedList(LinkedList<String> encodeList) {
+    public static String returnToString(LinkedList<String> encodeList) {
 
         String decode = "";
 
-        for (String encode : encodeList) {
-            decode += encode;
+        for(int i=0; i< encodeList.size(); i++){
+            decode += encodeList.get(i);
         }
 
         return decode;

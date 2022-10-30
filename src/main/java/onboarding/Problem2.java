@@ -1,32 +1,27 @@
 package onboarding;
 
+
+
 import java.util.LinkedList;
-
-
-import static onboarding.problem2.Repository.stored;
-import static onboarding.problem2.Returner.returnLinkedList;
-
+import static onboarding.problem2.Repository.save;
+import static onboarding.problem2.Returner.returnToString;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
 
         String answer = "";
-        LinkedList<String> stringLinkedList = new LinkedList<>();
 
-        LinkedList<String> stored = stored(cryptogram);
+        // 저장 기능
+        LinkedList<String> save = save(cryptogram);
 
-        for(int i=0; i<stringLinkedList.size(); i++) {
-            if (stringLinkedList.get(i).equals(stringLinkedList.get(i+1))) {
-                stringLinkedList.remove(i);
-                stringLinkedList.remove(i+1);
-            }else{
-                String result = returnLinkedList(stringLinkedList);
-                answer = result;
-            }
-        }
+        // 반환 기능
+        answer = returnToString(save);
+
 
         return answer;
     }
 }
+
+
 
 
