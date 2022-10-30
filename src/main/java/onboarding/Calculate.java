@@ -8,4 +8,18 @@ class Calculate {
         this.num1 = name.get(0);
         this.num2 = name.get(1);
     }
+
+    int exception() {
+        if((num1 < 0) || (num1 > 400) || (num2 < 0) || (num2 > 400)) { // 없는 페이지
+            return -1;
+        } else if(((num1 % 2) == 0) || ((num2 % 2) != 0)) { // 페이지 홀수, 짝수 판단
+            return -1;
+        } else if(num1 >= num2) { // 페이지 번호 확인
+            return -1;
+        } else if((num1 + 1) != num2) { // 페이지 번호 확인
+            return -1;
+        } else {
+            return 0;
+        }
+    }
 }
