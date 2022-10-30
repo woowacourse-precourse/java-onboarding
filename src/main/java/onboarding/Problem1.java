@@ -18,4 +18,16 @@ class Problem1 {
         return true;
     }
 
+    /*
+    뽑은 페이지 더하기 기능
+     */
+    private static int plusIndex(int num){
+        int sum=0;
+        while(num>0){
+            sum+=num%10;
+            num/=10;
+        }
+        return sum;
+    }
+
 }
