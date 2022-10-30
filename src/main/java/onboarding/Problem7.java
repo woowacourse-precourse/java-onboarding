@@ -66,4 +66,10 @@ public class Problem7 {
             friendRecommendScoreMap.put(friendOfUserFriends, friendRecommendScoreMap.get(friendOfUserFriends) + 10);
         });
     }
+
+    private static void userTimelineVisitorsAddScore(List<String> userTimelineVisitors) {
+        userTimelineVisitors.forEach(userTimelineVisitor -> {
+            friendRecommendScoreMap.put(userTimelineVisitor, friendRecommendScoreMap.get(userTimelineVisitor) + 1);
+        });
+    }
 }
