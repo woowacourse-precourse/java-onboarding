@@ -19,10 +19,11 @@ public class Problem6 {
         Map<String, List<String>> answers = emailView.getSortedResults();
 
         /*
-         * I think there could be several cases of adjacent duplicate letters depending on given nicknames,
-         * so if you just returned ANSWERS variable above, you would get all the cases needed.
+         * I think there could be several cases of adjacent duplicate letters depending on given nicknames.
+         * So if DuplicateLettersFinder found more than two cases, and you returned ANSWERS variable above🔺,
+         * you might get all the cases needed.
          * But the given test case has only 'one case' (제이).
-         * So it has to return only one case from ANSWERS as below.
+         * So it has to return only one list from ANSWERS as below.
          * [jason@email.com, jm@email.com, mj@email.com]
          */
         Iterator<String> iterator = duplicateLettersList.iterator();
