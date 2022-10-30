@@ -3,7 +3,6 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
-    Map<String, Integer> scoreboard = new HashMap<>();
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> myFriends = getMyFriends(user, friends);
         List<String> friendOfFriends = getMyFriends(myFriends, friends);
