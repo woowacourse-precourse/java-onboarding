@@ -4,83 +4,59 @@ import java.util.List;
 
 public class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        // 변수명 카멜케이스로 통일
+        int a = sumScore(pobi.get(0), pobi.get(1));
+        int b = sumScore(crong.get(0), crong.get(1));
+        int c = mulScore(pobi.get(0), pobi.get(1));
+        int d = mulScore(crong.get(0), crong.get(1));
+        // 변수명, 메서드명
 
-        int a = leftsumScore(pobi.get(0), pobi.get(1));
-        int b = rightsumScore(crong.get(0), crong.get(1));
-        int c = leftmulScore(pobi.get(0), pobi.get(1));
-        int d = rightmulScore(crong.get(0), crong.get(1));
         int pobiScore = Math.max(a, c);
         int crongScore = Math.max(b, d);
 
         int g = pobi.get(1) - pobi.get(0);
         int h = crong.get(1) - crong.get(0);
 
-        if ((g == 1 && h == 1) && (pobi.get(0) % 2 == 1) && (crong.get(0) % 2 == 1)) {
-            if (pobiScore > crongScore) {
-                return 1;
-            } else if (pobiScore < crongScore) {
-                return 2;
-            } else if (pobiScore == crongScore) {
-                return 0;
-            }
-        }else{
+        if ((g != 1 || h != 1) || (pobi.get(0) % 2 != 1) || (crong.get(0) % 2 != 1)) {
             return -1;
+        }
+        if (pobiScore > crongScore) {
+            return 1;
+        }
+        if (pobiScore < crongScore) {
+            return 2;
         }
         return 0;
     }
 
-    private static int leftsumScore(Integer pobi_left, Integer crong_left) {
-        int result1 = 0;
-        int result2 = 0;
+    private static int sumScore(Integer pobi_left, Integer crong_left) {
         String pobiStr = pobi_left.toString();
         String crongStr = crong_left.toString();
-        for(int i=0; i<pobiStr.length(); i++){
-            result1 += Integer.parseInt(String.valueOf(pobiStr.charAt(i)));
-        }
-        for(int i=0; i<crongStr.length(); i++){
-            result2 += Integer.parseInt(String.valueOf(crongStr.charAt(i)));
-        }
-        return Math.max(result1, result2);
+
+        return Math.max(asdg(pobiStr), asdg(crongStr));
     }
 
-    private static int rightsumScore(Integer pobi_right, Integer crong_right) {
-        int result1 = 0;
-        int result2 = 0;
+    private static int asdg(String result) {
+        int a = 0;
+        for (int i = 0; i < result.length(); i++) {
+            a += Integer.parseInt(String.valueOf(result.charAt(i)));
+        }
+        return a;
+    }
+
+    private static int mulScore(Integer pobi_right, Integer crong_right) {
         String pobiStr = pobi_right.toString();
         String crongStr = crong_right.toString();
-        for(int i=0; i<pobiStr.length(); i++){
-            result1 += Integer.parseInt(String.valueOf(pobiStr.charAt(i)));
+
+        return Math.max(asdf(pobiStr),asdf(crongStr));
+    } // 하나로 통일
+
+    private static int asdf(String result) {
+        int a = 1;
+        for (int i = 0; i < result.length(); i++) {
+            a *= Integer.parseInt(String.valueOf(result.charAt(i)));
         }
-        for(int i=0; i<crongStr.length(); i++){
-            result2 += Integer.parseInt(String.valueOf(crongStr.charAt(i)));
-        }
-        return Math.max(result1, result2);
-    }
-    private static int leftmulScore(Integer pobi_left, Integer crong_left) {
-        int result1 = 1;
-        int result2 = 1;
-        String pobiStr = pobi_left.toString();
-        String crongStr = crong_left.toString();
-        for(int i=0; i<pobiStr.length(); i++){
-            result1 *= Integer.parseInt(String.valueOf(pobiStr.charAt(i)));
-        }
-        for(int i=0; i<crongStr.length(); i++){
-            result2 *= Integer.parseInt(String.valueOf(crongStr.charAt(i)));
-        }
-        return Math.max(result1, result2);
-    }
-    private static int rightmulScore(Integer pobi_right, Integer crong_right) {
-        int result1 = 1;
-        int result2 = 1;
-        String pobiStr = pobi_right.toString();
-        String crongStr = crong_right.toString();
-        for(int i=0; i<pobiStr.length(); i++){
-            result1 *= Integer.parseInt(String.valueOf(pobiStr.charAt(i)));
-        }
-        for(int i=0; i<crongStr.length(); i++){
-            result2 *= Integer.parseInt(String.valueOf(crongStr.charAt(i)));
-        }
-        return Math.max(result1, result2);
+        return a;
     }
 }
 
