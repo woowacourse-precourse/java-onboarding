@@ -30,7 +30,7 @@ public class Problem4 {
                 sb.insert(i, arrSmallReverse[index]);
 
             } else {
-                sb.insert(i, " ");
+                sb.insert(i, b);
             }
             answer = String.valueOf(sb);
         }
