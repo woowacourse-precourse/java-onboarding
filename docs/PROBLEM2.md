@@ -33,8 +33,8 @@
 - 주어진 문자열의 압축 기능을 수행하는 메서드를 구현하는 클래스
 
     
-    boolean CheckContinuity(String string, int index)
-- 주어진 문자열의 index 위치의 문자가 이전 혹은 이후 문자와 중복되는지 판단하는 메서드
+    boolean checkContinuity(String string, int index)
+- 주어진 문자열의 index 위치의 문자가 이전 / 이후 문자와 같은지의 여부를 반환하는 메서드
 
     
     String zipStringOneTime(String string)
