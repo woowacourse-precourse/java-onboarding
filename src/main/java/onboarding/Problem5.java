@@ -15,7 +15,7 @@ public class Problem5 {
             //화폐 단위별 사용 후 남은 금액 업데이트
             money%=moneyUnit[i];
         }
-
+        //일원 사용량
         answer.add(money);
         return answer;
     }
