@@ -43,24 +43,12 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-        if (isException(pobi) || isException(crong)) {  // 예외상황시 비교 비실행 -1 반환
+        if (isException(pobi) || isException(crong)) {  // 예외상황시 비교연산 비실행 -1 반환
             answer = -1;
-        }
-        else {          // 예외 체크후 비교연산 시작
-            int pobiAddLeftPage = getAddNumber(pobi.get(0));
-            int pobiAddRightPage = getAddNumber(pobi.get(1));
-            int pobiMulLeftPage = getMulNumber(pobi.get(0));
-            int pobiMulRightPage = getMulNumber(pobi.get(1));
-            int crongAddLeftPage = getAddNumber(crong.get(0));
-            int crongAddRightPage = getAddNumber(crong.get(1));
-            int crongMulLeftPage = getMulNumber(crong.get(0));
-            int crongMulRightPage = getMulNumber(crong.get(1));
-            int pobiLeftResult = getHighestValue(pobiAddLeftPage, pobiMulLeftPage);
-            int pobiRightResult = getHighestValue(pobiAddRightPage, pobiMulRightPage);
-            int crongLeftResult = getHighestValue(crongAddLeftPage, crongMulLeftPage);
-            int crongRightResult = getHighestValue(crongAddRightPage, crongMulRightPage);
-            int pobiScore = getHighestValue(pobiLeftResult, pobiRightResult);
-            int crongScore = getHighestValue(crongLeftResult, crongRightResult);
+        } else {          // 예외 체크후 비교연산 시작
+            int pobiScore = getHighestValue(pobi);
+            int crongScore = getHighestValue(crong);
+//          pobi, crong 최종스코어 비교
             if (pobiScore == crongScore) {
                 answer = 0;
             } else if (pobiScore > crongScore) {
@@ -98,13 +86,29 @@ class Problem1 {
         return mulResult;
     }
 
-    private static int getHighestValue(int comparisonValue1, int comparisonValue2) {
+    private static int getHighestValue(List<Integer> player) {
         int calResult = 0;
+        int addLeftPage = getAddNumber(player.get(0));
+        int addRightPage = getAddNumber(player.get(1));
+        int mulLeftPage = getMulNumber(player.get(0));
+        int mulRightPage = getMulNumber(player.get(1));
+        int leftResult = getComparisonValue(addLeftPage, mulLeftPage);
+        int rightResult = getComparisonValue(addRightPage, mulRightPage);
+//      pobi, crong 최종 스코어 비교
+        if (leftResult >= rightResult) {
+            calResult = leftResult;
+        } else if (leftResult < rightResult) {
+            calResult = rightResult;
+        }
+        return calResult;
+    }
 
-        if (comparisonValue1 >= comparisonValue2) {
-            calResult = comparisonValue1;
-        } else if (comparisonValue1 < comparisonValue2) {
-            calResult = comparisonValue2;
+    private static int getComparisonValue(int addPage, int mulPage) {
+        int calResult = 0;
+        if (addPage >= mulPage) {
+            calResult = addPage;
+        } else if (addPage < mulPage) {
+            calResult = mulPage;
         }
         return calResult;
     }
@@ -117,7 +121,7 @@ class Problem1 {
 
         // left가 홀수인가, right가 짝수인가
         else if (page.get(0) % 2 != 1 || page.get(1) % 2 != 0) {
-            isException = true; //예외처리
+            isException = false; //예외처리
         }
         // left와 right가 연번인가
         else if (page.get(1) - page.get(0) != 1) {
