@@ -40,4 +40,13 @@ class Crew {
         }
     }
 
+    static void validateEmailForm(String email) {
+        String regex = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@email.com$";
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(email);
+        if(!m.matches()) {
+            throw new IllegalStateException("올바를 형식의 이메일을 입력해 주세요");
+        }
+    }
+
 }
