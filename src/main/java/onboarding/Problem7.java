@@ -39,17 +39,80 @@ package onboarding;
  *  - add_visitor(User user) = user 를 visitors 에 추가
  *  - show_visitors() = 모든 방문자를 반환
  *  - is_score_exist(User user) = user 를 대상으로한 score 가 있는지 반환
- *  - add_score(int amount) = score 를 amount 만큼 증가
- *  - show_score() = score 를 반환
+ *  - add_score(User user, int amount) = user 을 대상으로 한 score 를 amount 만큼 증가
+ *  - show_score(User user) = user 를 대상으로한 score 를 반환
  */
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
+    }
+}
+
+class User {
+    private String name;
+    private List<User> friends;
+    private List<User> visitors;
+    private Map<String, Integer> score_map;
+
+    User(String username) {
+        this.name = username;
+        friends = new ArrayList<>();
+        visitors = new ArrayList<>();
+        score_map = new HashMap<>();
+    }
+
+    public String show_name() {
+        return name;
+    }
+
+    public boolean is_friend(User user) {
+        return friends.contains(user);
+    }
+
+    public void add_friend(User user) {
+        if (is_friend(user)) {
+            return;
+        }
+        friends.add(user);
+    }
+
+    public List<User> show_friends() {
+        return new ArrayList<>(friends);
+    }
+
+    public boolean is_visitor(User user) {
+        return visitors.contains(user);
+    }
+
+    public void add_visitor(User user) {
+        if (is_visitor(user)) {
+            return;
+        }
+        visitors.add(user);
+    }
+
+    public List<User> show_visitors() {
+        return new ArrayList<>(visitors);
+    }
+
+    public boolean is_score_exist(User user) {
+        return score_map.keySet().contains(user.show_name());
+    }
+
+    public void add_score(User user, int amount) {
+        if (is_score_exist(user)) {
+            int prev_score = score_map.get(user.show_name());
+            score_map.put(user.show_name(), prev_score + amount);
+            return;
+        }
+        score_map.put(user.show_name(), amount);
+    }
+
+    public int show_score(User user) {
+        return score_map.get(user.show_name());
     }
 }
