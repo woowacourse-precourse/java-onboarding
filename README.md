@@ -52,6 +52,14 @@ BUILD SUCCESSFUL in 0s
 
 
 3. [문제 2](./docs/PROBLEM2.md)
+
+   📌 필요한 기능 목록
+   - 문자열을 순회하는 기능
+   - 연속하는 중복 문자가 있을 경우 삭제하는 기능
+     - 중복 문자가 아닌 경우 새 문자열에 추가
+     - 중복 문자인 경우 새 문자열에서 중복 문자 제거
+   
+
 4. [문제 3](./docs/PROBLEM3.md)
 5. [문제 4](./docs/PROBLEM4.md)
 6. [문제 5](./docs/PROBLEM5.md)
