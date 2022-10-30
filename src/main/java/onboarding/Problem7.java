@@ -39,7 +39,7 @@ public class Problem7 {
         List<String> answer = scoreMap.keySet()
                                       .stream()
                                       .filter(friend -> isMeOrMyFriend(friend, relationMap, user))
-                                      .filter(friend -> scoreMap.get(friend) > 0)
+                                      .filter(friend -> biggerThanZero(scoreMap, friend))
                                       .sorted((friend1, friend2) -> {
                                           if (scoreMap.get(friend1).equals(scoreMap.get(friend2))) {
                                               return friend1.compareTo(friend2);
@@ -51,6 +51,10 @@ public class Problem7 {
                                       .collect(Collectors.toList());
 
         return answer;
+    }
+
+    private static boolean biggerThanZero(Map<String, Integer> scoreMap, String friend) {
+        return scoreMap.get(friend) > 0;
     }
 
     private static void makeFriendRelation(List<String> friend, Map<String, List<String>> relationMap) {
