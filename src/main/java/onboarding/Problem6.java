@@ -22,11 +22,35 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         Map<String, List<String>> nicknameAndTwoLetters = computeAllTwoLetters(forms);
         Map<String, String> nicknameAndEmail = computeEmailMap(forms);
+        List<String> duplicatedNicknameList = findDuplicatedNickname(nicknameAndTwoLetters);
         return null;
         //        validateForms(forms);
         //        parseForms(forms);
         //        return findDuplicatedNicknameAndComputeEmail();
     }
+
+    private static List<String> findDuplicatedNickname(Map<String, List<String>> nicknameAndTwoLetters) {
+        return nicknameAndTwoLetters.entrySet()
+            .stream()
+            .filter(nicknameAndTwoLettersMap -> isDuplicatedNickname(nicknameAndTwoLetters, nicknameAndTwoLettersMap.getKey(), nicknameAndTwoLettersMap.getValue()))
+            .map(map -> map.getKey())
+            .collect(Collectors.toList());
+    }
+
+    private static boolean isDuplicatedNickname(Map<String, List<String>> nicknameAndTwoLetters, String baseNickname, List<String> baseTwoLetters) {
+        return nicknameAndTwoLetters.keySet()
+            .stream()
+            .filter(nickname -> nickname != baseNickname)
+            .filter(nickname -> isDuplicatedTwoLetters(baseTwoLetters, nicknameAndTwoLetters.get(nickname)))
+            .count() != 0;
+    }
+
+    private static boolean isDuplicatedTwoLetters(List<String> twoLetters1, List<String> twoLetters2) {
+        return twoLetters1.stream()
+            .filter(twoLetter1 -> twoLetters2.contains(twoLetter1))
+            .count() != 0;
+    }
+
 
     private static Map<String, String> computeEmailMap(List<List<String>> forms) {
         return forms.stream()
