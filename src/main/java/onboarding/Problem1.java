@@ -7,8 +7,15 @@ class Problem1 {
         if (isInputInvalid(pobi) || isInputInvalid(crong))
             return -1;
 
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        int pobiScore = calculateScore(pobi);
+        int crongScore = calculateScore(crong);
+
+        if (pobiScore == crongScore)
+            return 0;
+
+        if (pobiScore > crongScore)
+            return 1;
+        return 2;
     }
     private static boolean isInputInvalid(List<Integer> pages) {
         int leftPage = pages.get(0);
