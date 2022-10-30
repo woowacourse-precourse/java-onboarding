@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * 1. 전체 사용자 목록 Set 생성
@@ -13,8 +14,35 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        List<String> answer = new ArrayList<>();
+
+        Set<String> allUserSet = toAllUserSet(friends, visitors);
+        Map<String, List<String>> usersFriendListMap = mapFriendListByUser(friends);
+        List<String> userFriendList = usersFriendListMap.get(user);
+        Map<String, Integer> notFriendUsersScoreMap = mapScoreByNotFriendUser(userFriendList, allUserSet);
+        Map<String, Integer> visitorsCountMap = mapVisitorCountByUser(visitors);
+
+        notFriendUsersScoreMap.remove(user);
+
+        for (String notFriendUser : notFriendUsersScoreMap.keySet()) {
+            int score = notFriendUsersScoreMap.get(notFriendUser);
+            int visitorCount = visitorsCountMap.getOrDefault(notFriendUser, 0);
+            List<String> notFriendUserFriendList = usersFriendListMap.getOrDefault(notFriendUser, new ArrayList<>());
+            notFriendUsersScoreMap.put(notFriendUser, calculateRecommendScore(score, countCommonFriends(userFriendList, notFriendUserFriendList), visitorCount));
+        }
+
+        answer.addAll(notFriendUsersScoreMap.keySet());
+
+        return answer.stream()
+                .filter(notFriendUser -> notFriendUsersScoreMap.get(notFriendUser) > 0)
+                .sorted(((o1, o2) -> {
+                    if (notFriendUsersScoreMap.get(o1) == notFriendUsersScoreMap.get(o2)) {
+                        return o1.compareTo(o2);
+                    }
+                    return notFriendUsersScoreMap.get(o2) - notFriendUsersScoreMap.get(o1);
+                }))
+                .limit(5)
+                .collect(Collectors.toList());
     }
 
     private static Set<String> toAllUserSet(List<List<String>> friends, List<String> visitors) {
