@@ -28,13 +28,15 @@ public class Problem7 {
         userIds.forEach(userId -> friendRecommendScoreMap.put(userId, 0));
     }
 
-    private static List<String> getUserFriends(String userId, List<List<String>> friends) {
-        return friends.stream()
-                .filter(nestedFriends -> nestedFriends.contains(userId))
-                .map(userFriends -> {
-                    userFriends.remove(userId);
-                    return userFriends.get(0);
-                })
-                .collect(Collectors.toList());
+    private static Set<String> getUserFriends(String userId, List<List<String>> friendRelationships) {
+        Set<String> userFriends = new HashSet<>();
+        friendRelationships.stream()
+               .filter(friendRelationship -> friendRelationship.contains(userId))
+                .forEach(friendRelationship -> {
+                    userFriends.add(friendRelationship.get(0));
+                    userFriends.add(friendRelationship.get(1));
+                });
+        userFriends.remove(userId);
+        return userFriends;
     }
 }
