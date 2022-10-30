@@ -1,6 +1,7 @@
 package onboarding.problem7;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class UserManager {
     private static final int FIRST_ID = 0;
@@ -17,11 +18,22 @@ public class UserManager {
         initFriendsTable(friends);
         initVisitCount(visitors);
     }
+    
+    private void calculateFriendsScore(String targetUser) {
+        addFriendsScoreBySharedFriendCount(targetUser);
+        addFriendsScoreByVisitCount();
+    }
 
-    private void initFriendsScore(String targetUser) {
+    private void addFriendsScoreByVisitCount() {
+        for (String visitor : visitCount.keySet()) {
+            friendsScore.put(visitor,visitCount.get(visitor));
+        }
+    }
+
+    private void addFriendsScoreBySharedFriendCount(String targetUser) {
         for (String friend : friendsTable.keySet()) {
             if(targetUser.equals(friend)) continue;
-            friendsScore.put(friend, visitCount.get(friend) + countShardFriends(friend, targetUser));
+            friendsScore.put(friend,10*countShardFriends(friend, targetUser));
         }
     }
 
