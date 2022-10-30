@@ -76,7 +76,12 @@ class UserSelectedForPro7 {
         Set<String> friendSet = friendClass.makeFriendSet(friends, new HashSet<>());
         ScoreForPro7 scoreClass = new ScoreForPro7(new HashMap<>(), friendSet);
         friendMap = friendClass.makeFriendMap(friends, friendSet, new HashMap<>());
+        makeUserSelectedList(user, friendMap);
 
+    }
+
+    public void makeUserSelectedList(String user, Map<String, List<String>> friendMap) {
+        this.userSelectedList = friendMap.get(user);
     }
 }
 
