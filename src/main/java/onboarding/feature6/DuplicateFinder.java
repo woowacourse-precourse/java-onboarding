@@ -1,6 +1,5 @@
 package onboarding.feature6;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -9,75 +8,80 @@ import java.util.Map;
 import java.util.Set;
 
 public class DuplicateFinder {
-    private Set<String> duplicateLetters = new HashSet<>();
-
+    private String duplicateLetters = "";
+    private String currentNickname;
+    private String currentEmail;
+    private String nextNickname;
+    private String nextEmail;
+    
+    private int increment = 2;
     private int indexI;
     private int indexJ;
     private int indexM;
     private int indexN;
-    private int increment = 2;
+    private int initialNicknamesSize;
+    
 
     private List<String> initialEmails;
     private List<String> initialNicknames;
-
-    private Map<String, List<String>> result = new HashMap<>();
+    private Set<String> filteredEmails;
+    private Map<String, Set<String>> result = new HashMap<>();
 
     public DuplicateFinder(UserInfo userInfo) {
         initialEmails = userInfo.getEmails();
         initialNicknames = userInfo.getNicknames();
+        initialNicknamesSize = initialNicknames.size();
     }
 
     public void findDuplicates() {
-        for (indexI = 0; indexI < initialNicknames.size() - 1; indexI++) {
-            for (indexJ = indexI + 1; indexJ < initialNicknames.size(); indexJ++) {
-                System.out.println("닉네임 - " + initialNicknames.get(indexI) + " " + initialNicknames.get(indexJ) + " 비교");
-                checkNicknames(initialNicknames.get(indexI), initialNicknames.get(indexJ));
+        for (indexI = 0; indexI < initialNicknamesSize - 1; indexI++) {
+            currentNickname = initialNicknames.get(indexI);
+            currentEmail = initialEmails.get(indexI);
+            for (indexJ = indexI + 1; indexJ < initialNicknamesSize; indexJ++) {
+                nextNickname = initialNicknames.get(indexJ);
+                nextEmail = initialEmails.get(indexJ);
+                System.out.println("닉네임 - " + currentNickname + " " + nextNickname + " 비교");
+                compareLettersOfNickname(currentNickname, nextNickname);
             }
         }
-        for (String duplicateLetter : duplicateLetters) {
-            List<String> filteredEmails = new ArrayList<>();
-            for (int i = 0; i < initialNicknames.size(); i++) {
-                if (initialNicknames.get(i).contains(duplicateLetter)) {
-                    filteredEmails.add(initialEmails.get(i));
-                }
-                result.put(duplicateLetter, filteredEmails);
-            }
-        }
+        
         System.out.println(result);
     }
 
-    public void checkNicknames(String currentNickname, String nextNickname) {
+    public void compareLettersOfNickname(String CurrentNickname, String nextNickname) {
         for (indexM = 0; indexM < currentNickname.length() - 1; indexM++) {
+            String lettersOfCurrentNickname = CurrentNickname.substring(indexM, indexM + increment);
             for (indexN = 0; indexN < nextNickname.length() - 1; indexN++) {
-                compareLettersOfNickname(currentNickname, nextNickname);
-                increment = 2;
+                String lettersOfNextNickname = nextNickname.substring(indexN, indexN + increment);
+                System.out.println("글자: " + lettersOfCurrentNickname + " " + lettersOfNextNickname + " 비교");
+                if (lettersOfCurrentNickname.equals(lettersOfNextNickname)) {
+                    System.out.println("글자 같음: " + lettersOfCurrentNickname);
+                    duplicateLetters = lettersOfCurrentNickname;
+                    if (result.containsKey(duplicateLetters)) {
+                        System.out.println(duplicateLetters + " key는 이미 result에 존재하기 때문에 " + currentEmail + "과 " + nextEmail +"을 추가만 합니다.");
+                        Set<String> existingFilteredEmails = result.get(duplicateLetters);
+                        existingFilteredEmails.add(currentEmail);
+                        existingFilteredEmails.add(nextEmail);
+                        result.replace(duplicateLetters, existingFilteredEmails);
+                        continue;
+                    }
+                    filteredEmails = new HashSet<>();
+                    filteredEmails.add(currentEmail);
+                    filteredEmails.add(nextEmail);
+                    System.out.println(duplicateLetters + "를 새로운 key로 result에 " + currentEmail + "과 " + nextEmail +"을 등록합니다.");
+                    result.put(duplicateLetters, filteredEmails);
+                }
             }
         }
     }
 
-    public void compareLettersOfNickname(String currentNickname, String nextNickname) {
-        System.out.println(currentNickname.substring(indexM, indexM + increment) + " " + nextNickname.substring(indexN, indexN + increment) + " 비교");
-        if (currentNickname.substring(indexM, indexM + increment).equals(nextNickname.substring(indexN, indexN + increment))) {
-            System.out.println("글자 같음: " + currentNickname.substring(indexM, indexM + increment));
-            duplicateLetters.add(currentNickname.substring(indexM, indexM + increment));
-            increment++;
-            while (indexM + increment <= currentNickname.length() && indexN + increment <= nextNickname.length() && currentNickname.substring(indexM, indexM + increment).equals(nextNickname.substring(indexN, indexN + increment))) {
-                System.out.println(currentNickname.substring(indexM, indexM + increment) + " " + nextNickname.substring(indexN, indexN + increment) + " 추가 비교");
-                System.out.println("글자 같음: " + currentNickname.substring(indexM, indexM + increment));
-                duplicateLetters.add(currentNickname.substring(indexM, indexM + increment));
-                increment++;
-            }
-            System.out.println("글자 추가 시 안 같았음");
-        }
-    }
 
     public static void main(String[] args) {
         List<List<String>> forms = List.of(
             List.of("jm@email.com", "제이엠"),
             List.of("jason@email.com", "제이슨"),
             List.of("woniee@email.com", "워니"),
-            List.of("woniees@email.com", "워니스"),
-            List.of("mj@email.com", "엠제이슨"),
+            List.of("mj@email.com", "엠제이"),
             List.of("nowm@email.com", "이제엠")
         );
 
