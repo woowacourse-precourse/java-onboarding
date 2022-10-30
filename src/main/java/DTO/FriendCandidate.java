@@ -1,6 +1,6 @@
 package DTO;
 
-public class FriendCandidate {
+public class FriendCandidate implements Comparable<FriendCandidate>{
     private String id;
     private int score;
 
@@ -22,5 +22,11 @@ public class FriendCandidate {
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    @Override
+    public int compareTo(FriendCandidate o) {
+        if(score == o.getScore()) return id.compareTo(o.getId());
+        return o.getScore() - score;
     }
 }
