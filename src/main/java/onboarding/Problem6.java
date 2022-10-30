@@ -20,7 +20,7 @@ public class Problem6 {
         for (List<String> form : forms) {
             checkDupCount(nameTokenMap, dupNameLists, form);
         }
-
+        Collections.sort(dupNameLists);
         return dupNameLists;
     }
 
