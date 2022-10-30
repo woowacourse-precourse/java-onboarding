@@ -13,6 +13,22 @@ class Problem1 {
         return numberList;
     }
 
+    public static int sum(List<Integer> numberlist){
+        int result = 0;
+        for(int num : numberlist) {
+            result += num;
+        }
+        return result;
+    }
+
+    public static int product(List<Integer> numberlist){
+        int result = 1;
+        for(int num : numberlist) {
+            result *= num;
+        }
+        return result;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         List<Integer> numberList=numList(234);
         System.out.println(numberList);
