@@ -19,6 +19,11 @@ public class Problem7 {
             int user_length = (int) err_param;
             return 0< user_length&&user_length<31;
         }
+        else if (err_type.equals("friends_size")&&err_param instanceof Integer){
+            int friends_size = (int) err_param;
+            return 0<friends_size&&friends_size<10001;
+        }
+
         return false;
     }
 }
