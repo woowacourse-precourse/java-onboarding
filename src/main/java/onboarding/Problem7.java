@@ -7,6 +7,9 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
         Map<String, List<String>> friendsInformation = initializeFriendsInformation(friends);
         List<String> friendsOfFriendsOfUser = findFriendsOfFriendsOfUser(user, friendsInformation);
+        Map<String, Integer> recommendScore = new HashMap<>();
+        calculateRecommendScore(recommendScore, friendsOfFriendsOfUser, CalculusType.friend);
+        calculateRecommendScore(recommendScore, visitors, CalculusType.visitor);
         return answer;
     }
 
@@ -53,4 +56,26 @@ public class Problem7 {
     public static boolean checkDirectFriend(String person, List<String> userFriends){
         return userFriends.contains(person);
     }
+
+    public static void calculateRecommendScore(Map<String, Integer> recommendScore,
+                                               List<String> recommendFriends, CalculusType calculusType) {
+        int value = 0;
+        if(calculusType == CalculusType.friend){
+            value = 10;
+        } else if(calculusType == CalculusType.visitor){
+            value = 1;
+        }
+        for(String person : recommendFriends) {
+            if(!recommendScore.containsKey(person)) {
+                recommendScore.put(person, 0);
+            }
+            int score = recommendScore.get(person);
+            recommendScore.put(person, score + value);
+        }
+    }
+}
+
+enum CalculusType {
+    friend,
+    visitor
 }
