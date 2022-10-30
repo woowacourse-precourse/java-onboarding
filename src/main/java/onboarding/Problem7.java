@@ -14,6 +14,10 @@ public class Problem7 {
         return answer;
     }
 
+    static HashMap<String, Integer> makeScoreMap() {
+        return new HashMap<String, Integer>();
+    }
+
     static HashMap<String, Set<String>> makeInitMap(List<List<String>> friends) {
         HashMap<String, Set<String>> initMap = new HashMap<>();
         for (List<String> friend : friends) {
@@ -32,5 +36,4 @@ public class Problem7 {
         tmpSet.add(friend2);
         initMap.put(friend1, tmpSet);
     }
-
 }
