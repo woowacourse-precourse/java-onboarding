@@ -1,19 +1,29 @@
 package onboarding;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class Problem2 {
-    private static int indexOfDuplicatedChar(String cryptogram) {
+    private static Queue<Integer> queue = new LinkedList<>();
+
+    private static void indexOfDuplicatedChar(String cryptogram) {
         for(int i=0; i<cryptogram.length()-1; i++) {
             if(cryptogram.charAt(i) == cryptogram.charAt(i+1))
-                return i;
+                queue.offer(i);
         }
-        return -1;
     }
+
     public static String solution(String cryptogram) {
         while(true) {
-            int idx = indexOfDuplicatedChar(cryptogram);
-            if(idx == -1) // 중복 문자가 없는 경우
+            indexOfDuplicatedChar(cryptogram);
+            if(queue.isEmpty())
                 break;
-            cryptogram = cryptogram.substring(0,idx) + cryptogram.substring(idx+2);
+            int temp = 0;
+            while(!queue.isEmpty()) {
+                int idx = queue.poll();
+                cryptogram = cryptogram.substring(0,idx - temp*2) + cryptogram.substring(idx+2 - temp*2);
+                temp++;
+            }
         }
         return cryptogram;
     }
