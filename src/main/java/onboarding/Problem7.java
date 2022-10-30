@@ -4,10 +4,18 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> result = new ArrayList<>();//추천 결과
         TreeSet<String> friendSet = new TreeSet<>();//user의 친구 리스트
         HashMap<String, Integer> recommendScore = new HashMap<>();//key : 친구의 친구, value : 점수
 
+        makeUserFriendList(user, friends, friendSet);
+        addFriendOfFriend(user, friends, friendSet, recommendScore);
+        addVisitor(visitors, friendSet, recommendScore);
+
+        List<String> result = new ArrayList<>(recommendScore.keySet());//추천 결과
+        Collections.sort(result, ((o1, o2) -> recommendScore.get(o2).compareTo(recommendScore.get(o1))));
+        for(int i = result.size()-1; i >= 5; i--){
+            result.get(i);
+        }
 
         return result;
     }
