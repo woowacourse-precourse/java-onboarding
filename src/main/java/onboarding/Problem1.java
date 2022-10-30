@@ -27,4 +27,8 @@ class Problem1 {
 
         return mul;
     }
+
+    private static int getMAxScore(List<Integer> pages) {
+        return Math.max(getMSum(pages.get(0)), getMul(pages.get(1)));
+    }
 }
