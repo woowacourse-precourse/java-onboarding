@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-public class Problem7 {// 딕셔너리 이용 - 해도되는지 java.util.Map 지우고 시도해볼 수는 없다.
+public class Problem7 {
     private static String checkAlreadyFriends(String user, List<String> relation){
         String output;
         if (relation.get(0).equals(user)){
@@ -22,16 +22,25 @@ public class Problem7 {// 딕셔너리 이용 - 해도되는지 java.util.Map �
     private static List<String> findAlreadyFriends(String user, List<List<String>> friends){
         List<String> output = new ArrayList<>();
         int length = friends.size();
+        String temp;
         for(int i = 0; i < length; i++){
-            if(true){
+            temp = checkAlreadyFriends(user, friends.get(i));
+            if(!temp.equals("") && !output.contains(temp)){
+                output.add(temp);
             }
         }
         return output;
     }
+    private static void addScores(String member, HashMap Scores){
+
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         HashMap<String, Integer> scores = new HashMap<>();
-        List<String> alreadyFriends = new ArrayList<>();
+        List<String> alreadyFriends = findAlreadyFriends(user, friends);
+        System.out.println(alreadyFriends);
+
+
         //HashMap scores = new HashMap<>();
         //Set<String> members = new Set<>();
         return answer;
