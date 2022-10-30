@@ -82,6 +82,24 @@ public class Problem7 {
         return result;
     }
 
+    /**
+     * 친구가 아닌 사용자들 중에서 방문한 횟수만큼 점수를 더한다.
+     * @param user
+     * @param userFriendsList
+     * @param visitors
+     * @param userScore
+     * @return
+     */
+    private static HashMap<String, Integer> getVisitorsScore(String user, HashMap<String, HashSet<String>> userFriendsList, List<String> visitors,  HashMap<String, Integer> userScore) {
+
+        for (String visitor : visitors) {
+            if (userFriendsList.get(user).contains(visitor)) {
+                continue;
+            }
+            userScore.put(visitor, userScore.get(visitor) + 1);
+        }
+        return userScore;
+    }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> userList = getUsersList(user, friends);
