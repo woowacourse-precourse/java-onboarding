@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Problem6 {
     
@@ -66,8 +63,9 @@ public class Problem6 {
     }
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        
+        List<String> answer = new ArrayList<>();
+        answer = findEmail(forms);
+        Collections.sort(answer, String.CASE_INSENSITIVE_ORDER);
 
         return answer;
     }
