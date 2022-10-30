@@ -9,11 +9,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
-public class AccountInfo {
+public class AccountRepository {
 
     private final Map<String, Account> accounts;
 
-    public AccountInfo(List<List<String>> friends) {
+    public AccountRepository(List<List<String>> friends) {
         this.accounts = new HashMap<>();
         initFriendsRelation(friends);
     }
