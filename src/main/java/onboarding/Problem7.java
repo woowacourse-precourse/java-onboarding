@@ -47,6 +47,11 @@ public class Problem7 {
             }
         }
 
+        algorithm.remove(user);             //user 본인과 user와 친구인 사용자들은 제거
+        for(String friend : user_friend){
+            algorithm.remove(friend);
+        }
+
         return answer;
     }
 
