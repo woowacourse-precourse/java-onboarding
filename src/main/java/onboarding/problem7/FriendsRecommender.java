@@ -75,4 +75,32 @@ public class FriendsRecommender {
 		}
 	}
 
+	private void scoreFriendsUserKnow() {
+		Set<String> otherUsers = friendsInformation.keySet();
+		for (String otherUser : otherUsers) {
+			scoreOtherEachUsers(otherUser);
+		}
+	}
+
+	private void scoreOtherEachUsers(String otherUser) {
+		int score = countFriendsUserKnow(otherUser) * 10;
+
+		int increasedScore = recommendScore.get(otherUser) + score;
+
+		recommendScore.replace(otherUser, increasedScore);
+	}
+
+	private int countFriendsUserKnow(String otherUser) {
+		int numberOfFriendsUserKnow = 0;
+		Set<String> otherUserFriends = friendsInformation.get(otherUser);
+
+		for (String userFriend : userFriends) {
+			if (otherUserFriends.contains(userFriend)) {
+				numberOfFriendsUserKnow += 1;
+			}
+		}
+
+		return numberOfFriendsUserKnow;
+	}
+
 }

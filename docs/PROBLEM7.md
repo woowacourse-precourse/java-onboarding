@@ -48,9 +48,9 @@
 
 - private void scoreFriendsUserKnow() : 함께 아는 친구 점수 반영
 
-- private void scoreOtherEachUsers(HashSet< String > otherUserFriends) : 각 사용자 별 함께 아는 친구 점수 반영
+- private void scoreOtherEachUsers(String otherUser) : 각 사용자 별 함께 아는 친구 점수 반영
 
-- private int countFriendsUserKnow(HashSet< String > otherUserFriends) : 각 사용자 별 함께 아는 친구 수 반환
+- private int countFriendsUserKnow(String otherUser) : 각 사용자 별 함께 아는 친구 수 반환
 
 - private List< String > makeSortedRecommendlist() : 문제의 조건대로 정렬 후 리스트로 변환 후 반환
 
@@ -110,13 +110,13 @@
 
 
 
-- private void scoreOtherEachUsers(HashSet< String > otherUserFriends)
+- private void scoreOtherEachUsers(String otherUser)
     - countFriendsUserKnow() 호출 : 함께 아는 친구 수 반환
     - 함께 아는 친구 수 만큼 recommendScore 에 반영
 
 
 
-- private int countFriendsUserKnow(HashSet< String > otherUserFriends)
+- private int countFriendsUserKnow(String otherUser)
     - user의 friendsInformation을 순회하며 otherUserFriends에 존재하는지 여부 확인(contains)
         - true : numberOfFriendsUserKnow += 1
     - 반환 : int numberOfFriendsUserKnow
