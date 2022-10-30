@@ -8,13 +8,35 @@ import java.util.Map;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
 
         Map<String, List<String>> relationships = makeRelationShips(friends);
         List<String> userFriends = fillUserFriends(user, relationships);
 
         Map<String, Integer> friendPoints = getPointFrom(relationships, user, userFriends);
         Map<String, Integer> visitorPoints = getPointFrom(visitors, user, userFriends);
+
+        List<UserPoint> userPoints = new ArrayList<>();
+
+        for (String recommend: friendPoints.keySet()) {
+            userPoints.add(new UserPoint(recommend, friendPoints.get(recommend)));
+        }
+
+        for (String recommend: visitorPoints.keySet()) {
+            userPoints.add(new UserPoint(recommend, visitorPoints.get(recommend)));
+        }
+
+        sortUserPoints(userPoints);
+
+        int maxLength = 5;
+        if(userPoints.size() < maxLength)
+            maxLength = userPoints.size();
+
+        for(UserPoint userPoint: userPoints.subList(0,maxLength)) {
+            answer.add(userPoint.userId);
+        }
+
+
         return answer;
     }
 
