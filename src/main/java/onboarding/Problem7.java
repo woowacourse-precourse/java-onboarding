@@ -34,6 +34,9 @@ public class Problem7 {
 			addVisitorScore(visitors, friendshipScore, person);
 		}
 
+		// // 친구 점수가 0일 경우 hashmap에서 제거
+		friendshipScore.values().removeAll(Collections.singleton(0));
+
 		List<String> answer = new ArrayList<>();
 		while (!friendshipScore.isEmpty()) {
 			//가장 높은 점수인 유저들 리스트 생성
@@ -52,7 +55,6 @@ public class Problem7 {
 			}
 			//answer 리스트에 추가된 유저 hashmap에서 삭제
 			removeHighScoreUser(friendshipScore, maxValueKeys);
-			System.out.println(friendshipScore);
 		}
 
 		return answer;
@@ -148,11 +150,9 @@ public class Problem7 {
 			List.of("donut", "mrko"),
 			List.of("shakevan", "andole"),
 			List.of("shakevan", "jun"),
-			List.of("shakevan", "mrko"),
-			List.of("andole", "D"),
-			List.of("jun", "E")
+			List.of("shakevan", "mrko")
 		);
-		List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan", "a", "b", "c");
+		List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
 		System.out.println(solution(user, friends, visitors));
 	}
 }
