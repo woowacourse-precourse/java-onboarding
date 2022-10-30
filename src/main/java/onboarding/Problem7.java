@@ -1,12 +1,15 @@
 package onboarding;
 
 import java.util.*;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     private static final int USER = 0;
     private static final int FRIEND = 1;
     private static final int FRIEND_SCORE = 10;
     private static final int VISIT_SCORE = 1;
+    private static final int MIN_SCORE = 1;
 
     public static class User {
         private String id;
@@ -94,5 +97,19 @@ public class Problem7 {
             user.setScore(user.getScore() + VISIT_SCORE);
             users.put(visitorId, user);
         }
+    }
+
+    private static List<User> getRecommendCandidates(Map<String, User> users, String user) {
+        List<String> friendIds = findFriendIdsById(users, user);
+
+        List<User> recommendCandidates = users.values().stream()
+                .filter(canRecommend(user, new HashSet<>(friendIds)))
+                .collect(Collectors.toList());
+
+        return recommendCandidates;
+    }
+
+    private static Predicate<User> canRecommend(String user, Set<String> friendIds) {
+        return u -> !user.equals(u.getId()) && !friendIds.contains(u.getId()) && u.getScore() >= MIN_SCORE;
     }
 }
