@@ -16,5 +16,25 @@ public class Problem2 {
         }
         return list;
     }
+
+    private static ArrayList<Character> decryption(ArrayList<Character> list) {
+        int cnt = 0;
+        for (int i = list.size() - 1; i >= 0; i--) {
+            if (i - 1 >= 0 && list.get(i) == list.get(i-1)) {
+                list.remove(i);
+                cnt++;
+            } else {
+                if (cnt > 0) {
+                    list.remove(i);
+                    break;
+                }
+            }
+        }
+        if (cnt > 0) {
+            return decryption(list);
+        } else {
+            return list;
+        }
+    }
 }
 
