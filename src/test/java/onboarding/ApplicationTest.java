@@ -152,8 +152,7 @@ class ApplicationTest {
 
         @ParameterizedTest
         @ValueSource(ints = {-1, 0, 10001})
-        void testValidateInputSize() {
-            int number = -1;
+        void testValidateInputSize(int number) {
             assertThatThrownBy(() -> Problem3.validateInputSize(number))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("유효하지 않은 크기의 숫자입니다.");
@@ -192,6 +191,14 @@ class ApplicationTest {
             int money = 15_000;
             List<Integer> result = List.of(0, 1, 1, 0, 0, 0, 0, 0, 0);
             assertThat(Problem5.solution(money)).isEqualTo(result);
+        }
+
+        @ParameterizedTest
+        @ValueSource(ints = {-1, 0, 1000001})
+        void testValidateInputSize(int number) {
+            assertThatThrownBy(() -> Problem3.validateInputSize(number))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("유효하지 않은 크기의 숫자입니다.");
         }
     }
 
