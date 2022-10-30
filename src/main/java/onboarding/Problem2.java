@@ -2,8 +2,9 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        validateCryptogramLength(cryptogram);
 
+        String answer = "answer";
         answer = deDuplicateCryptogram(cryptogram);
         return answer;
     }
@@ -47,5 +48,11 @@ public class Problem2 {
         }
 
         return deDuplicated;
+    }
+
+    public static void validateCryptogramLength(String cryptogram) {
+        if (cryptogram.length() == 0 || cryptogram.length() > 1000) {
+            throw new IllegalArgumentException("cryptogram의 길이는 1이상, 1000이하여야 합니다.");
+        }
     }
 }
