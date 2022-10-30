@@ -90,7 +90,7 @@ public class Problem7 {
                         friendOfFriend.put(next, 1);
                         queue.add(next);
                     } else {
-                        if (!next.equals(user)) {
+                        if (!next.equals(user) && checkSet.get(next) != 1) {
                             friendOfFriend.put(next, friendOfFriend.get(next)+1);
                         }
                     }
