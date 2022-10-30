@@ -14,6 +14,10 @@ public class Problem4 {
 
     public static String solution(String word) {
         validateWord(word);
+        return convertWord(word);
+    }
+
+    private static String convertWord(String word) {
         return Arrays.stream(word.split(""))
             .map(Problem4::treeFrogDictionary)
             .collect(Collectors.joining());
