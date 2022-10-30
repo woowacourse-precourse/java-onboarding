@@ -49,7 +49,18 @@ class StackForPro2 {
 public class Problem2 {
     public static String solution(String cryptogram) {
         StackForPro2 material = new StackForPro2(cryptogram);
-        String answer = "answer";
-        return answer;
+        return stackToString(material.pushAndPop(new Stack<>(), cryptogram), new StringBuilder());
+    }
+
+    public static String stackToString(Stack<Character> stack, StringBuilder sb) {
+        if (stack.isEmpty()) {
+            return "";
+        }
+        int size = stack.size();
+        for (int i = 0; i < size; i++) {
+            sb.append(stack.pop());
+        }
+        sb.reverse();
+        return sb.toString();
     }
 }
