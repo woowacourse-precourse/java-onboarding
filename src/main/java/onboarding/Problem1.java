@@ -13,6 +13,20 @@ class Problem1 {
         return 0;
     }
 
+    public static int getLeftPageScore(List<Integer> pages) {
+        int score;
+        score = Math.max(getSumOfDigits(pages.get(0)), getMultiplyOfDigits(pages.get(0)));
+
+        return score;
+    }
+
+    public static int getRightPageScore(List<Integer> pages) {
+        int score;
+        score = Math.max(getSumOfDigits(pages.get(1)), getMultiplyOfDigits(pages.get(1)));
+
+        return score;
+    }
+
     public static int getMultiplyOfDigits(int number) {
         int multiply = 1;
         while(number != 0){
