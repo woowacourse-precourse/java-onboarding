@@ -13,6 +13,7 @@ public class Problem5 {
 }
 
 class Withdrawal {
+    // TODO List.of 메소드 사용해보기
     private List<Integer> money_array = new ArrayList<>(9);
 
     private void setMoneyArray() {
