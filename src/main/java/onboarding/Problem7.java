@@ -43,11 +43,8 @@ public class Problem7 {
 
 
         // 점수 순으로 정렬하고 이름 출력
-        Map<Integer, String> scoreMap = new HashMap<>();
-        for(String key : totalPointMap.keySet()){
-            int score = totalPointMap.get(key);
-            scoreMap.put(score, key);
-        }
+        // <점수, 이름> 으로 저장한 map 만듦
+        Map<Integer, String> scoreNameMap = makeScoreNameMap(totalPointMap);
 
         int[] pointArr = new int[totalPointMap.size()];
         Iterator<Integer> recommendPointItr = totalPointMap.values().iterator();
@@ -60,7 +57,7 @@ public class Problem7 {
         for(int i=0; i<5; i++){
             int score = pointArr[i];
             if(score>0){
-                String name = scoreMap.get(score);
+                String name = scoreNameMap.get(score);
                 recommendName[i] = name;
             }
         }
@@ -201,4 +198,15 @@ public class Problem7 {
 
         return recommendPoint;
     }
+
+    static Map<Integer, String> makeScoreNameMap(Map<String, Integer> totalPointMap){
+        Map<Integer, String> scoreMap = new HashMap<>();
+        for(String key : totalPointMap.keySet()){
+            int score = totalPointMap.get(key);
+            scoreMap.put(score, key);
+        }
+
+        return scoreMap;
+    }
+    
 }
