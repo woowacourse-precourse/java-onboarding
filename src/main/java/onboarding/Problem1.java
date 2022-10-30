@@ -22,4 +22,12 @@ class Problem1 {
 
         return leftPage + 1 != rightPage;
     }
+    private static int addDigits(int page) {
+        int score = 0;
+        while (page > 0) {
+            score += page % 10;
+            page /= 10;
+        }
+        return score;
+    }
 }
