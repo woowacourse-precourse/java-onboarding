@@ -5,37 +5,13 @@ import java.util.stream.Collectors;
 
 public class Problem7 {
 
+    private static final Integer USER_RELATED_FRIEND = 10;
+    private static final Integer USER_VISIT_MY_PAGE = 1;
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         User userObject = new User(user);
         userObject.addFriends(friends);
-        
-        List<String> collect = friends.stream()
-                .filter(s -> !s.contains(userObject.getName()) && !Collections.disjoint(s,userObject.getFriends()))
-                .flatMap(List::stream)
-                .filter(s -> !userObject.getFriends().contains(s))
-                .collect(Collectors.toList());
-
-        for (String fr : collect) {
-            if (userObject.isContainInRecommendList(fr)) {
-                userObject.getFriendRecommendScore().put(fr, userObject.getFriendRecommendScore().get(fr) + 10);
-            }
-            if (!userObject.isContainInRecommendList(fr)) {
-                userObject.getFriendRecommendScore().put(fr, 10);
-            }
-        }
-
-        List<String> visitorsWithoutFriend = visitors.stream()
-                .filter(s -> !userObject.getFriends().contains(s))
-                .collect(Collectors.toList());
-
-        for (String visitor : visitorsWithoutFriend) {
-            if (userObject.isContainInRecommendList(visitor)) {
-                userObject.getFriendRecommendScore().put(visitor, userObject.getFriendRecommendScore().get(visitor) + 1);
-            }
-            if (!userObject.isContainInRecommendList(visitor)) {
-                userObject.getFriendRecommendScore().put(visitor, 1);
-            }
-        }
+        userObject.addFriendRecommendScore(friends, visitors);
 
         return userObject.getFriendRecommendScore().entrySet().stream()
                 .sorted(Collections.reverseOrder(Map.Entry.<String, Integer>comparingByValue())
@@ -85,6 +61,42 @@ public class Problem7 {
                     .flatMap(List::stream)
                     .filter(username -> !username.equals(this.name))
                     .collect(Collectors.toList());
+        }
+
+        public void addFriendRecommendScore(List<List<String>> friends, List<String> visitors) {
+            addRelatedFriends(friends);
+            addVisitUsers(visitors);
+        }
+
+        private void addRelatedFriends(List<List<String>> friends) {
+            List<String> usersRelatedFriends = friends.stream()
+                    .filter(friendPair ->
+                            !friendPair.contains(this.name) &&
+                            !Collections.disjoint(friendPair, this.friends))
+                    .flatMap(List::stream)
+                    .filter(username -> !this.friends.contains(username))
+                    .collect(Collectors.toList());
+
+            calculateScore(usersRelatedFriends, USER_RELATED_FRIEND);
+        }
+
+        private void addVisitUsers(List<String> visitors) {
+            List<String> visitorsWithoutFriend = visitors.stream()
+                    .filter(friendPair -> !this.getFriends().contains(friendPair))
+                    .collect(Collectors.toList());
+
+            calculateScore(visitorsWithoutFriend, USER_VISIT_MY_PAGE);
+        }
+
+        private void calculateScore(List<String> collect, Integer weight) {
+            for (String fr : collect) {
+                if (this.isContainInRecommendList(fr)) {
+                    this.getFriendRecommendScore().put(fr, this.getFriendRecommendScore().get(fr) + weight);
+                }
+                if (!this.isContainInRecommendList(fr)) {
+                    this.getFriendRecommendScore().put(fr, weight);
+                }
+            }
         }
 
         public boolean isContainInRecommendList(String username) {
