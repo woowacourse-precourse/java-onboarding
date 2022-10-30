@@ -14,4 +14,16 @@ class Problem1 {
         if (pages.get(0) % 2 == 0) return false;
         return pages.get(1) - pages.get(0) == 0;
     }
+
+    int score(int page) {
+        int product = 1;
+        int sum = 0;
+        while(page > 0) {
+            int curr = page % 10;
+            product *= curr;
+            sum += curr;
+            page /= 10;
+        }
+        return Math.max(product, sum);
+    }
 }
