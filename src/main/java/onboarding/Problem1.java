@@ -18,6 +18,7 @@ class Problem1 {
             return true;
         if (pobi.get(0) % 2 != 1 || crong.get(0) % 2 != 1)      // 왼쪽 페이지가 홀수, 오른쪽 페이지가 짝수가 아님
             return true;
+
         return false;
     }
 
@@ -49,8 +50,11 @@ class Problem1 {
 
         return sum;
     }
-
-    public static void main(String[] args) {
-
+    public static int maxNumOfTwoMethod(Integer num){
+        return Math.max(numPlus(num),numMultiple(num));
     }
+//    public static void main(String[] args) {
+//        System.out.println(maxNumOfTwoMethod(125));
+//    }
+
 }
