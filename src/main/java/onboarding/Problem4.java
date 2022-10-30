@@ -12,9 +12,13 @@ public class Problem4 {
 
     private static char decode(char c) {
         if('a' <= c && c <= 'z')
-            return (char) ('z' - (c - 'a'));
+            return reverse(c, 'a', 'z');
         else if('A' <= c && c <= 'Z')
-            return (char) ('Z' - (c - 'A'));
+            return reverse(c, 'A', 'Z');
         return c;
+    }
+
+    private static char reverse(char c, char first, char last) {
+        return (char) (last - c + first);
     }
 }
