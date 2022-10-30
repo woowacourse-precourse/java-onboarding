@@ -13,6 +13,9 @@ public class Problem7 {
         HashMap<String, Integer> userFriendScore = getUserFriendScore(userFriendsList, friendsList);
         HashMap<String, Integer> visitorScore = getVisitorScore(userFriendsList, visitors);
 
+        // 추천 점수 합치기
+        HashMap<String, Integer> score = mergeScore(userFriendScore, visitorScore);
+
         List<String> answer = Collections.emptyList();
         return answer;
     }
@@ -68,5 +71,12 @@ public class Problem7 {
         }
         return visitorScore;
     }
+
+    // 두 개의 HashMap을 합쳐주는 함수
+    public static HashMap<String, Integer> mergeScore(HashMap<String, Integer> score1, HashMap<String, Integer> score2){
+        score2.forEach((key, value) -> score1.merge(key, value, (value1, value2) -> value1 + value2));
+        return score1;
+    }
+
 
 }
