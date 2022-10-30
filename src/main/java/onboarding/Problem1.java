@@ -70,7 +70,13 @@ class Problem1 {
 
     // 결과를 판단하는 함수 findWinner()
     private static int findWinner(int pobi, int crong) {
-        return -1;
+        if(pobi > crong) {
+            return 1;
+        } else if (pobi < crong) {
+            return 2;
+        } else {
+            return 0;
+        }
     }
 
 }
