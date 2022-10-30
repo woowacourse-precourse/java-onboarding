@@ -24,14 +24,19 @@
 * `getVisitScore()으로 구현`
 
 ### 방문자 점수와 함께 친구인 점수 합치는 기능
-* `parameter` : map, map
+* `parameter` : map, map, int
 * `return` : treemap
 * `getTotalScore()으로 구현`
 
 ### 이름, 점수로 되어 있던 map을 점수, 이름 내림차순으로 만드는 기능
 * `parameter` : map
-* `return` : map
+* `return` : set
 * `getReverseMap()으로 구현`
+
+### sns 사용자 명수 구하는 기능
+* `parameter` : list
+* `return` : int
+* `getUserList()으로 구현`
 
 
 
