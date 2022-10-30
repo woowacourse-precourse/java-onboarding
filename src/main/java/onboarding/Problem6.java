@@ -18,4 +18,16 @@ public class Problem6 {
         return withoutMe;
     }
 
+    public static List<String> cutCase (String nickname) {
+
+        List<String> namePiece = new ArrayList<>();
+
+        for(int i = 0;i < nickname.length() - 1;i++) {
+
+            namePiece.add(nickname.substring(i, i + 2));
+        }
+
+        return namePiece;
+    }
+
 }
