@@ -2,6 +2,13 @@ package onboarding;
 
 import java.util.*;
 
+/* 기능 목록
+ *
+ * makeFriendMap : 모든 사용자의 친구관계 맵을 생성
+ * calcSameFriendScore : 모든 사용자와 유저의 함께 아는 친구 점수를 확인
+ * countSameFriends : 해당 사용자와 유저의 함께 아는 친구 수를 확인
+ * calcVisitScore : 방문자들의 방문 점수를 확인
+ */
 public class Problem7 {
     private static Map<String, Set<String>> friendMap;
     private static Map<String, Integer> scores;
