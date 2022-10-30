@@ -9,6 +9,11 @@ public class Problem3 {
         // 1. 숫자를 number 까지 센다
         for (int i = 1; i <= number ; i++) {
             String tmp = String.valueOf(number);
+
+            if(tmp.contains("3") || tmp.contains("6") || tmp.contains("9")) {
+
+            }
+
         }
 
         return answer;
