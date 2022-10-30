@@ -16,7 +16,7 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, Set<String>> friendConnection = setConnection(friends);
         Map<String, Integer> friendScore = calculateScore(user, friendConnection, visitors);
-        List<String> answer = selectTop5(user, friendScore);
+        List<String> answer = selectTop5(friendScore);
 
         return answer;
     }
@@ -93,7 +93,7 @@ public class Problem7 {
      * @param : Map<String, Integer>, Map으로 정리된 아이디와 점수. Key가 아이디, Value가 점수
      * @return : List<String>, 추천할 친구들의 아이디
      */
-    public static List<String> selectTop5(String userId, Map<String, Integer> friendScore) {
+    public static List<String> selectTop5(Map<String, Integer> friendScore) {
         List<String> answer = new LinkedList<>();
 
         List<Entry<String, Integer>> sortedFriendScore = new ArrayList<>(friendScore.entrySet());
