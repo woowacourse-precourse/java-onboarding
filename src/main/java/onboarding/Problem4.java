@@ -22,9 +22,11 @@ public class Problem4 {
 
     private static char alphabeticalTransformation(char word, int size) {
         if (size == 1) {
-
+            char result = (char) (greenFrogDictionary(word) + 32);
+            return result;
         } else if (size == 2) {
-
+            char result = greenFrogDictionary(word);
+            return result;
         }
         return word;
     }
