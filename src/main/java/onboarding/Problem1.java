@@ -49,9 +49,8 @@ class Problem1 {
     }
 
     static List<Integer> splitDigits(int num) {
-        int[] arrayOfNum = Stream.of(String.valueOf(num).split("")).mapToInt(Integer::parseInt)
-            .toArray();
-        List<Integer> result = Arrays.stream(arrayOfNum).boxed().collect(Collectors.toList());
+        List<Integer> result = Stream.of(String.valueOf(num).split("")).mapToInt(Integer::parseInt)
+            .boxed().collect(Collectors.toList());
         return result;
     }
 
