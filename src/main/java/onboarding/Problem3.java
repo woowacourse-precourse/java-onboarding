@@ -2,6 +2,12 @@ package onboarding;
 
 public class Problem3 {
 
+  static Game game = new Game();
+
+  public static int solution(int number) {
+    return game.start(number);
+  }
+
   enum GameNumber {
     THREE(3), SIX(6), NINE(9);
 
@@ -16,34 +22,52 @@ public class Problem3 {
     }
   }
 
-  public static int solution(int number) {
-    return getGameNumberCount(number);
-  }
+  static class Game {
 
-  private static int getGameNumberCount(int number) {
-    int targetPosLeftNumber = 1;
-    int targetPosRightNumber, targetPosNumber;
-    int digit = 1;
+    private int posLeftNumber;
+    private int posRightNumber;
+    private int posNumber;
+    private int digit;
 
-    int result = 0;
-    while (targetPosLeftNumber != 0) {
-      targetPosLeftNumber = (number / digit) / 10;
-      targetPosRightNumber = number % digit;
-      targetPosNumber = (number / digit) % 10;
-
-      for (GameNumber gameNumber : GameNumber.values()) {
-        if (targetPosNumber > gameNumber.getValue()) {
-          result += (targetPosLeftNumber + 1) * digit;
-        } else if (targetPosNumber < gameNumber.getValue()) {
-          result += targetPosLeftNumber * digit;
-        } else {
-          result += targetPosLeftNumber * digit + (targetPosRightNumber + 1);
-        }
-      }
-
-      digit *= 10;
+    public Game() {
+      posLeftNumber = 1;
+      digit = 1;
     }
-    return result;
+
+    public int start(int number) {
+      posLeftNumber = 1;
+      digit = 1;
+
+      int total = 0;
+      while (posLeftNumber != 0) {
+        posLeftNumber = (number / digit) / 10;
+        posRightNumber = number % digit;
+        posNumber = (number / digit) % 10;
+
+        total += countInDigits();
+
+        digit *= 10;
+      }
+      return total;
+    }
+
+    private int countInDigits() {
+      int result = 0;
+      for (GameNumber gameNumber : GameNumber.values()) {
+        result += countForGameNumber(gameNumber);
+      }
+      return result;
+    }
+
+    private int countForGameNumber(GameNumber gameNumber) {
+      if (posNumber > gameNumber.getValue()) {
+        return (posLeftNumber + 1) * digit;
+      }
+      if (posNumber < gameNumber.getValue()) {
+        return posLeftNumber * digit;
+      }
+      return posLeftNumber * digit + (posRightNumber + 1);
+    }
   }
 
 }
