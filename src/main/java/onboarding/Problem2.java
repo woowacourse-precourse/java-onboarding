@@ -3,11 +3,11 @@ import java.util.Stack;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = removeDuplication(cryptogram);
-        return answer;
+        Stack<Character> cryptogramStack = removeDuplication(cryptogram);
+        return getStringByStack(cryptogramStack);
     }
 
-    public static String removeDuplication(String cryptogram) {
+    public static Stack<Character> removeDuplication(String cryptogram) {
         Stack<Character> cryptoStack = new Stack<>();
         cryptoStack.push(cryptogram.charAt(0));
 
@@ -31,7 +31,10 @@ public class Problem2 {
             }
             idx--;
         }
+        return cryptoStack;
+    }
 
+    public static String getStringByStack (Stack<Character> cryptoStack) {
         StringBuilder answer = new StringBuilder();
         while(!cryptoStack.isEmpty()) {
             answer.insert(0, cryptoStack.pop());
