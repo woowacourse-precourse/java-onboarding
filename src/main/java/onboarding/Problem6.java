@@ -1,11 +1,18 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 public class Problem6 {
 
+    private static int sequence;
     private final static String EMAIL_DOMAIN = "@email.com";
-
+    private static Map<String, Integer> indexMap = new HashMap<>();
+    private static List<Integer>[] trieList;
+    private static List<Pair> checkList = new ArrayList<>();
 
     private static boolean checkEmail(String email) {
         if (email == null)
@@ -28,6 +35,21 @@ public class Problem6 {
         return false;
     }
 
+    private static void initSolution(List<List<String>> forms) {
+        int size = forms.size();
+
+        indexMap.clear();
+        sequence = 0;
+        checkList.clear();
+        for (int i = 0; i < size; i++) {
+            parseForms(forms.get(i).get(1));
+        }
+        trieList = new ArrayList[sequence];
+        for (int i = 0; i < sequence; i++) {
+            trieList[i] = new ArrayList<>();
+        }
+    }
+
     private static boolean checkParam(List<List<String>> forms) {
         if (forms == null)
             return true;
@@ -47,5 +69,30 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
+    }
+
+    private static class Pair {
+        Integer i1;
+        Integer i2;
+
+        public Pair(Integer i1, Integer i2) {
+            this.i1 = i1;
+            this.i2 = i2;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o)
+                return true;
+            if (o == null || getClass() != o.getClass())
+                return false;
+            Pair pair = (Pair)o;
+            return Objects.equals(i1, pair.i1) && Objects.equals(i2, pair.i2);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(i1, i2);
+        }
     }
 }
