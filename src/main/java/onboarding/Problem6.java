@@ -102,7 +102,7 @@ public class Problem6 {
             });
 
         }
-
+        // ★nameA,B로 고칠 것
         return emailList;
     }
 
