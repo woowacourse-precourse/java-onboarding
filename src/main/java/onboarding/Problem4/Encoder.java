@@ -4,7 +4,6 @@ import java.util.HashMap;
 public class Encoder
 {
     private static final int SIZE=26;
-    private static final char SPACE_CHAR = ' ';
     private static final char LOWER_CHAR_A= 'a';
     private static final char LOWER_CHAR_Z = 'z';
     private static final char UPPER_CHAR_A = 'A';
@@ -12,7 +11,6 @@ public class Encoder
     private HashMap<Character, Character> map;
     private void initEncoder()
     {
-        addCharacter(SPACE_CHAR,SPACE_CHAR);
         for(int i = 0 ; i < SIZE; i++)
         {
             addCharacter((char)(LOWER_CHAR_A + i),(char)(LOWER_CHAR_Z-i));
