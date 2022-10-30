@@ -114,6 +114,12 @@ public class Problem7 {
         return userScore;
     }
 
+    /**
+     * 점수 및 이름 순으로 정렬 후 최종 추천 명단을 구하여 리턴함
+     * @param user
+     * @param userScore
+     * @return
+     */
     private static List<String> getTotalRecommendation(String user, HashMap<String, Integer> userScore) {
         List<List<String>> sortingList = new ArrayList<>();
 
