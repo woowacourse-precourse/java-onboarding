@@ -7,17 +7,13 @@ package onboarding;
 2. 번역된 문자를 배열로 모아두었다가 문자열로 Return
  */
 public class Problem4 {
-    static String upper_char = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    static String lower_char = "abcdefghijklmnopqrstuvwxyz";
+    static String UPPER_CHAR = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    static String LOWER_CHAR = "abcdefghijklmnopqrstuvwxyz";
 
     static char trans_char(char a) {
-        char temp = a;
-        if (Character.isLowerCase(a)) {
-            temp = lower_char.charAt(25 - a + 'a');
-        } else if (Character.isUpperCase(a)) {
-            temp = upper_char.charAt(25 - a + 'A');
-        }
-        return temp;
+        if (Character.isLowerCase(a)) a = LOWER_CHAR.charAt(25 - a + 'a');
+        if (Character.isUpperCase(a)) a = UPPER_CHAR.charAt(25 - a + 'A');
+        return a;
     }
 
     private static void joinString(String word, StringBuilder answer) {
@@ -25,6 +21,7 @@ public class Problem4 {
             answer.append(trans_char(unit));
         }
     }
+
     public static String solution(String word) {
         StringBuilder answer = new StringBuilder();
         joinString(word, answer);
