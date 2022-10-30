@@ -51,6 +51,20 @@ public class Problem6 {
         return ansNickNameIdx;
     }
 
+    /*
+    중복된 닉네임 갖는 크루 이메일 저장
+     */
+    static List<String> findEmail(List<List<String>> forms){
+        List<Integer> ansNickNameIdx = findRedundantName(forms);
+        List<String> answer = new ArrayList<>();
+        for(int idx = 0; idx < ansNickNameIdx.size(); idx++){
+            int nickNameIdx = ansNickNameIdx.get(idx);
+            String email = forms.get(nickNameIdx).get(0);
+            answer.add(email);
+        }
+        return answer;
+    }
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         
