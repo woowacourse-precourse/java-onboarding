@@ -1,8 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     // 모든 friends 목록 + 방문자 리스트를 탐색하면서 아이디를 담은 리스트 만들기 - (1)
@@ -75,6 +73,9 @@ public class Problem7 {
         System.out.println(userScore);
         for(int i = 0; i < visitors.size(); i++) {
             for (int j = 0; j < allId.size(); j++) {
+                if (userFriend.contains(visitors.get(i))) {
+                    continue;
+                }
                 if (allId.get(j).equals(visitors.get(i))) {
                     if(userScore.size() <= j) {
                         userScore.add(j, 1);
@@ -86,6 +87,24 @@ public class Problem7 {
         }
         System.out.println(userScore);
         return userScore;
+    }
+
+    public static List<String> setRecommendList(List<String> allId, List<Integer> userScore) {
+        Map<String, Integer> idAndScore = new HashMap<>();
+        List<String> recommendList = new ArrayList<>();
+        for(int i = 0; i < allId.size(); i++) {
+            idAndScore.put(allId.get(i), userScore.get(i));
+        }
+        userScore.sort(Collections.reverseOrder());
+//        for(int i = 0; i < userScore.size(); i++) {
+//            for(int j = 0; j < allId.size(); j++) {
+//                if(userScore.get(i) == idAndScore.get(allId.get(j))) {
+//                    if(recommendList.)
+//                    recommendList.add(allId.get(j));
+//                }
+//            }
+//        }
+        return recommendList;
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
