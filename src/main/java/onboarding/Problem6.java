@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -79,5 +80,10 @@ public class Problem6 {
     public static boolean checkEmailForm(String email) {
         if (email.split("@")[1] == "email.com") return true;
         return false;
+    }
+
+    // 주어진 닉네임이 형식에 맞게 입력됐는지 확인하는 함수
+    public static boolean checkNicknameForm(String nickname) {
+        return Pattern.matches("^[가-힣]*$", nickname);
     }
 }
