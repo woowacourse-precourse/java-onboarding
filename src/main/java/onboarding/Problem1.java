@@ -3,10 +3,17 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+
     public static boolean isPage(int left, int right) {
-        if (left < 1 || left > 400 || right < 1 || right > 400) return false;
-        if (left % 2 != 1) return false;
-        if (left + 1 != right) return false;
+        if (left < 1 || left > 400 || right < 1 || right > 400) {
+            return false;
+        }
+        if (left % 2 != 1) {
+            return false;
+        }
+        if (left + 1 != right) {
+            return false;
+        }
         return true;
     }
 
@@ -43,8 +50,12 @@ class Problem1 {
         }
         pobiScore = Math.max(getMax(pobiLeft), getMax(pobiRight));
         crongScore = Math.max(getMax(crongLeft), getMax(crongRight));
-        if(pobiScore == crongScore) return 0;
-        else if(pobiScore > crongScore) return 1;
-        else return 2;
+        if (pobiScore == crongScore) {
+            return 0;
+        }
+        if (pobiScore > crongScore) {
+            return 1;
+        }
+        return 2;
     }
 }
