@@ -31,13 +31,11 @@ class Cryptogram{
                 throw new IllegalArgumentException("소문자를 입력해주세요");
         }
     }
-
     static void validationContainSpacing(String cryptogram) {
         if(cryptogram.contains(" ")){
             throw new IllegalStateException("공백을 포함되어 있습니다");
         }
     }
-
     private static boolean isPresent(LinkedList<Character> list){
         if(list.isEmpty()){
             return false;
@@ -77,5 +75,4 @@ class Cryptogram{
         }
         return false;
     }
-
 }
