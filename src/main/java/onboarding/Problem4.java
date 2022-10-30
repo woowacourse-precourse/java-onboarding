@@ -17,6 +17,15 @@ public class Problem4 {
         return result;
     }
 
+//대문자 철자를 발견했을때, 그 철자를 반대로 변환
+    private static char getUpperAlphabet(String alphabets, char nextAlphabet, char c) {
+        for (int i = 0; i < alphabets.length(); i++) {
+            if(alphabets.charAt(i)==Character.toLowerCase(c)){
+                nextAlphabet =Character.toUpperCase(alphabets.charAt(alphabets.length()-1-i));
+            }
+        }
+        return nextAlphabet;
+    }
 //소문자 철자를 발견했을때, 그 철자를 반대로 변환
     private static char getNextAlphabet(String alphabets, char nextAlphabet, char c) {
         for (int i = 0; i < alphabets.length(); i++) {
