@@ -8,6 +8,7 @@ public class Page {
     private static final int RIGHT_PAGE = 1;
     private int leftPage;
     private int rightPage;
+
     Page(List<Integer> user) {
         this.leftPage = user.get(LEFT_PAGE);
         this.rightPage = user.get(RIGHT_PAGE);

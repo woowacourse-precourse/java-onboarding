@@ -25,14 +25,21 @@ public class Compress {
         String newCryptogram = SENTINEL + cryptogram + SENTINEL;
         String result = "";
         for (int i = 1; i < newCryptogram.length() - 1; i++) {
-            char leftValue = newCryptogram.charAt(i-1);
-            char middleValue = newCryptogram.charAt(i);
-            char rightValue = newCryptogram.charAt(i+1);
-
-            if (leftValue != middleValue && middleValue != rightValue) {
+            if (isLeftRightCharDiff(cryptogram, i)) {
+                char middleValue = newCryptogram.charAt(i);
                 result += middleValue;
             }
         }
         return result;
     }
+    public static boolean isLeftRightCharDiff(String cryptogram, int index) {
+        int leftVal = cryptogram.charAt(index - 1);
+        int middleVal = cryptogram.charAt(index);
+        int rightVal = cryptogram.charAt(index + 1);
+        if (leftVal != middleVal && middleVal != rightVal) {
+            return true;
+        }
+        return false;
+    }
+    
 }
