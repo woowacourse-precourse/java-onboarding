@@ -32,4 +32,9 @@ class Problem2Test {
         stringBuilder.append("a");
         Assertions.assertThatThrownBy(() -> Problem2.solution(stringBuilder.toString()));
     }
+
+    @Test
+    void 테스트케이스1() {
+        Assertions.assertThat(Problem2.solution("baaaoat")).isEqualTo("boat");
+    }
 }
