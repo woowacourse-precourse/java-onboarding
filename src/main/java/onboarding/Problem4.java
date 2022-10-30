@@ -2,8 +2,7 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+		return Frog.readWordAccordingToDictionary(word);
     }
 
 	private static class Frog {
