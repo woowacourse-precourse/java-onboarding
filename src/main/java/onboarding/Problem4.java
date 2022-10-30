@@ -21,4 +21,17 @@ public class Problem4 {
 
         return wordASCIIArray;
     }
+
+    public static int[] reverseWord(int[] wordASCIIArray) {
+        for(int i = 0; i < wordASCIIArray.length; i++) {
+            if(wordASCIIArray[i] >= 65 && wordASCIIArray[i] <= 90) {
+                wordASCIIArray[i] = 155 - wordASCIIArray[i];
+            }
+            else if(wordASCIIArray[i] >= 97 && wordASCIIArray[i] <= 122) {
+                wordASCIIArray[i] = 219 - wordASCIIArray[i];
+            }
+        }
+
+        return wordASCIIArray;
+    }
 }
