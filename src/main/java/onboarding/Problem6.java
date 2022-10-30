@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Problem6 {
@@ -20,10 +21,16 @@ public class Problem6 {
     //
     public static List<String> solution(List<List<String>> forms) {
         Map<String, List<String>> nicknameAndTwoLetters = computeAllTwoLetters(forms);
+        Map<String, String> nicknameAndEmail = computeEmailMap(forms);
         return null;
         //        validateForms(forms);
         //        parseForms(forms);
         //        return findDuplicatedNicknameAndComputeEmail();
+    }
+
+    private static Map<String, String> computeEmailMap(List<List<String>> forms) {
+        return forms.stream()
+            .collect(Collectors.toMap(form -> form.get(1), form -> form.get(0)));
     }
 
     private static Map<String, List<String>> computeAllTwoLetters(List<List<String>> forms) {
