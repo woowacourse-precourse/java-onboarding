@@ -10,16 +10,12 @@ public class Problem4 {
         StringBuilder answer = new StringBuilder(word);
 
         for (int i = 0; i < answer.length(); i++) {
-            answer.setCharAt(i, flipWord(answer.charAt(i)));
+            answer.setCharAt(i, getFlipWord(answer.charAt(i)));
         }
         return answer.toString();
     }
 
-    /**
-     * 주어진 알파벳을 사전의 역순으로 변환한 문자 반환한다.
-     * @param letter 문자
-     */
-    private static char flipWord(char letter) {
+    private static char getFlipWord(char letter) {
         char result = letter;
 
         if (Character.isUpperCase(letter)) {
