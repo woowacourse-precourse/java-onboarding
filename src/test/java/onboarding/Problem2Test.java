@@ -37,4 +37,17 @@ class Problem2Test {
     void 테스트케이스1() {
         Assertions.assertThat(Problem2.solution("baaaoat")).isEqualTo("boat");
     }
+
+    @Test
+    void duplicateRemove() {
+        Assertions.assertThat(Problem2.duplicateRemove("acbbceecccd")).isEqualTo("accd");
+        Assertions.assertThat(Problem2.duplicateRemove("acbbceecccdd")).isEqualTo("acc");
+        Assertions.assertThat(Problem2.duplicateRemove("acbbceecd")).isEqualTo("acccd");
+        Assertions.assertThat(Problem2.duplicateRemove("aabb")).isEqualTo("");
+        Assertions.assertThat(Problem2.duplicateRemove("aacbb")).isEqualTo("c");
+        Assertions.assertThat(Problem2.duplicateRemove("aaacbb")).isEqualTo("c");
+        Assertions.assertThat(Problem2.duplicateRemove("aaacbbd")).isEqualTo("cd");
+        Assertions.assertThat(Problem2.duplicateRemove("aaacbbdd")).isEqualTo("c");
+
+    }
 }

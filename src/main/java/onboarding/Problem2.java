@@ -1,9 +1,5 @@
 package onboarding;
 
-import java.util.Stack;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-
 //public class Problem2 {
 //
 //    private static final int TWO = 2;
@@ -65,5 +61,23 @@ public class Problem2 {
 
     public static String solution(String cryptogram) {
         return null;
+    }
+
+    static String duplicateRemove(String str) {
+        StringBuilder duplicateRemovedStr = new StringBuilder();
+        int i = 0;
+
+        while (++i < str.length()) {
+            if (str.charAt(i - 1) != str.charAt(i)) {
+                duplicateRemovedStr.append(str.charAt(i - 1));
+            }
+            while (i < str.length() && str.charAt(i - 1) == str.charAt(i)) {
+                i++;
+            }
+            if (i + 1 == str.length()) {
+                duplicateRemovedStr.append(str.charAt(i));
+            }
+        }
+        return duplicateRemovedStr.toString();
     }
 }
