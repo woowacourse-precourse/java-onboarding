@@ -19,7 +19,7 @@ class Problem1 {
 
             answer = makeResult(pobyScore, crongScore);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println("(Problem1) "+e.getMessage());
             answer = -1;
         }
         return answer;
