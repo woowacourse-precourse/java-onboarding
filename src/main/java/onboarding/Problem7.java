@@ -67,7 +67,12 @@ public class Problem7 {
      * @param recommendScoreMap : 점수를 갱신할 추천 점수 맵
      */
     private static void setFriendsScore(String user, Map<String, Set<String>> friendsMap , Map<String , Integer> recommendScoreMap){
-
+        friendsMap.get(user).forEach(friend -> {
+            friendsMap.get(friend).forEach(friendsfriend -> {
+                // 친구의 친구에게는 10점을 추가 함.
+                addScore(friendsfriend, 10, recommendScoreMap);
+            });
+        });
     }
 
     /**
