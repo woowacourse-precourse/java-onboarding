@@ -7,18 +7,15 @@ public class Problem6 {
         Set<String> overlap= new HashSet<>();
 
         for(int i=0 ; i<forms.size(); i++){
-            List<String> crewInfo = forms.get(i);
-            String crewEmail=crewInfo.get(0);
-            String crewName=crewInfo.get(1);
+            String selectCrewName=crewName(forms,i);
+            String selectCrewEmail=crewEmail(forms,i);
             for(int j=i+1; j<forms.size();j++){
-                List<String> checkCrewInfo=forms.get(j);
-                String checkCrewEmail=checkCrewInfo.get(0);
-                String checkCrewName=checkCrewInfo.get(1);
                 int leastLen=2;
-                for(int idx=0; idx<crewName.length()-leastLen;idx++){
-                    if(checkCrewName.contains(crewName.substring(idx,idx+leastLen))){
-                        overlap.add(crewEmail);
-                        overlap.add(checkCrewEmail);
+                for(int idx=0; idx<selectCrewName.length()-leastLen;idx++){
+                    String subCrewName=selectCrewName.substring(idx,idx+leastLen);
+                    if(crewName(forms,j).contains(subCrewName)){
+                        overlap.add(selectCrewEmail);
+                        overlap.add(crewEmail(forms,j));
                     }
                 }
             }
@@ -27,5 +24,13 @@ public class Problem6 {
         List<String> ans = new ArrayList<>(overlap);
         Collections.sort(ans);
         return ans;
+    }
+    public static String crewName(List<List<String>>forms,int idx){
+        List<String> crewInfo=forms.get(idx);
+        return crewInfo.get(1);
+    }
+    public static String crewEmail(List<List<String>>forms,int idx){
+        List<String> crewInfo=forms.get(idx);
+        return crewInfo.get(0);
     }
 }
