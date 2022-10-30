@@ -8,7 +8,19 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
 
-
+        for (List<String> originAccount : forms) {
+            for (List<String> targetAccount : forms) {
+                if(originAccount.equals(targetAccount)){
+                    continue;
+                }
+                if (isDupedNameExist(originAccount.get(1), targetAccount.get(1))) {
+                    if (!answer.contains(targetAccount.get(0))) {
+                        answer.add(targetAccount.get(0));
+                    }
+                }
+            }
+        }
+        Collections.sort(answer);
         return answer;
     }
 
