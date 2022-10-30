@@ -76,4 +76,8 @@ public class Problem2 {
         return new DummyWord(' ', index+i, word);
     }
 
+    private static String removeDummyMark(String markedWord) {
+        String newWord = markedWord.replaceAll("[^a-z]", "");
+        return newWord;
+    }
 }
