@@ -24,11 +24,33 @@ public class Problem7 {
         }
         return friendMap;
     }
+    public static HashMap<String, Integer> calcScore(String user, HashMap<String, List<String>> friendMap, List<String> visitors){
+        HashMap<String, Integer> scoreMap=new HashMap<>();
+        //사용자와 함께 아는 친구 점수 추가
+        for(String friend : friendMap.get(user)){
+            for(String recommand:friendMap.get(friend)){
+                if(friendMap.get(user).contains(recommand) || recommand.equals(user)) continue;
+                scoreMap.put(recommand, scoreMap.getOrDefault(recommand, 0)+10);
+            }
+        }
+        //사용자의 타임 라인에 방문한 횟수 점수 추가
+        for(String visitor : visitors){
+            if(friendMap.get(user).contains(visitor)) continue;
+            scoreMap.put(visitor, scoreMap.getOrDefault(visitor, 0)+1);
+        }
+        return scoreMap;
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         HashMap<String, List<String>> friendMap=makeFriendMap(friends); //친구 관계 HashMap 만들기
+        /*
         for(Map.Entry<String, List<String>> entrySet: friendMap.entrySet()){
             System.out.println("key : " + entrySet.getKey()+" value : " +Arrays.toString(entrySet.getValue().toArray()));
+        }
+         */
+        HashMap<String, Integer> scoreMap=calcScore(user, friendMap, visitors); // 추천 점수 계산
+        for(Map.Entry<String, Integer> entrySet:scoreMap.entrySet()){
+            System.out.println("key : "+entrySet.getKey()+" value : "+entrySet.getValue());
         }
         return answer;
     }
