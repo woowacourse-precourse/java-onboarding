@@ -18,9 +18,18 @@ public class Problem6 {
             String sliceStr = "";
             int curIndex = 0;
             sliceStr = getSliceStr(crew, i, sliceStr);
+            curIndex = getIndex(crew, i, curIndex);
         }
 
         return answer;
+    }
+
+    private static int getIndex(List<Map<String, Integer>> crew, int i, int curIndex) {
+        for (Integer value : crew.get(i).values()) {
+            curIndex = value;
+            break;
+        }
+        return curIndex;
     }
 
     private static String getSliceStr(List<Map<String, Integer>> crew, int i, String sliceStr) {
