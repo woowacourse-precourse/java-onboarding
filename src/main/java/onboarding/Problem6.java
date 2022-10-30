@@ -7,7 +7,10 @@ import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        HashMap<String, String> databaseOfNickname = initDatabaseOfNickname();
+        HashMap<String, Boolean> duplicationOfNickname = initDuplicationOfNickname();
+        AddUsers(databaseOfNickname, duplicationOfNickname, forms);
+        List<String> answer = createDuplicationUserList(duplicationOfNickname);
         return answer;
     }
 
@@ -17,8 +20,8 @@ public class Problem6 {
     }
 
     // 이메일과 닉네임의 중복 여부를 판단할 HashMap을 초기화하는 함수
-    public static HashMap<String, Integer> initDuplicationOfNickname() {
-        return new HashMap<String, Integer>();
+    public static HashMap<String, Boolean> initDuplicationOfNickname() {
+        return new HashMap<String, Boolean>();
     }
 
     // 이메일과 닉네임을 HashMap에 추가하는 함수
