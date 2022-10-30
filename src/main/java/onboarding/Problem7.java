@@ -5,11 +5,14 @@ import java.util.*;
 public class Problem7 {
     static Map<String, List<String>> friendsMap = new HashMap<>();
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
 
+        List<String> userFriend = makeUserFriends(user, friends);
+        Map<String, Integer> recommendList = makeRecommendList(user, friends, userFriend);
+
+        List<String> answer = Collections.emptyList();
         return answer;
     }
-    private static void inputNameToMap(String user, List<List<String>> friends) {
+    private static List<String> makeUserFriends(String user, List<List<String>> friends) {
         List<String> userFriend = new ArrayList<>();
         for(List<String> friend : friends) {
             if(friend.contains(user)) {
@@ -22,6 +25,18 @@ public class Problem7 {
                 }
             }
         }
+        return userFriend;
     }
-
+    private static Map<String, Integer> makeRecommendList(String user, List<List<String>> friends, List<String> userFriend) {
+        Map<String, Integer> recommendList = new HashMap<>();
+        //user 가 아니고, user 친구가 아닌 사람들
+        for(List<String> friend : friends) {
+            for(String name : userFriend) {
+                if(friend.get(0).equals(name)) {
+                    recommendList.put(friend.get(1), recommendList.get(friend.get(1)) + 10);
+                }
+            }
+        }
+        return recommendList;
+    }
 }
