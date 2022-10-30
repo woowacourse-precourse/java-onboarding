@@ -45,14 +45,14 @@ public class Problem6 {
 	}
 
 	private static boolean checkConsecutiveCharacter(String setName, String compareName) {
-		boolean isContainsConsecutive = false;
+
 		for (int i = 0; i < setName.length() - 1; i++) {
 			String sub = setName.substring(i, i + 2);
-			if (compareName.contains(sub)) {
-				isContainsConsecutive = true;
-				break;
-			}
+
+			if (compareName.contains(sub)) { return  true; }
+
 		}
-		return isContainsConsecutive;
+
+		return false;
 	}
 }
