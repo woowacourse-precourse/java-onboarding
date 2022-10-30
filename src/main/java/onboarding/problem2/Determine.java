@@ -6,12 +6,12 @@ public class Determine {
 
     public String compare(Stack<String> cryptogram) {
 
-        String result = "";
+        StringBuilder result = new StringBuilder();
 
         for (String str : cryptogram) {
-            result += str;
+            result.append(str);
         }
 
-        return result;
+        return result.toString();
     }
 }

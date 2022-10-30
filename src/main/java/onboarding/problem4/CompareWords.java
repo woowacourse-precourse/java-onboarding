@@ -8,19 +8,19 @@ public class CompareWords {
 
     public String compareSplit(Map<Character, Character> Dictionary, String word) {
 
-        String result = "";
+        StringBuilder result = new StringBuilder();
 
         for (Character split : word.toCharArray()) {
 
             if (SpacesCompare(split)) {
-                result += ' ';
+                result.append(' ');
                 continue;
             }
 
-            result += placeCheck.wordCompare(Dictionary, split);
+            result.append(placeCheck.wordCompare(Dictionary, split));
         }
 
-        return result;
+        return result.toString();
     }
 
     private boolean SpacesCompare(Character split) {

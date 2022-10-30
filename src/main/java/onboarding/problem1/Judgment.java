@@ -30,6 +30,7 @@ public class Judgment {
     public int verification(List<Integer> pobi, List<Integer> crong) {
 
         List<Integer> verification = new ArrayList<>();
+
         verification.addAll(pobi);
         verification.addAll(crong);
 

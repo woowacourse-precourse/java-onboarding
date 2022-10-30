@@ -16,7 +16,6 @@ public class BookCalculation {
             String number = String.valueOf(numbers);
             String[] split = number.split("");
 
-            //1,2,3
             for (String crrent : split) {
                 addition += Integer.parseInt(crrent);
                 multiplication *= Integer.parseInt(crrent);
