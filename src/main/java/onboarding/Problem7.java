@@ -1,24 +1,12 @@
 package onboarding;
 
 import java.util.*;
+import java.util.function.Predicate;
 
 public class Problem7 {
 
-    // SNS의 친구 추천 알고리즘을 구현 하고 싶다.
-
-    // 사용자가 함께 아는 친구의 수 == 10점
-    // 사용자의 타임라인에 방문한 횟수 == 1점
-    /*
-     * 사용자 아이디 user와 친구 관계 정보 friends,
-     * 사용자 타임 라인 방문 기록 visitors가 매개변수로 주어질 때,
-     *
-     * 미스터코의 친구 추천 규칙에 따라 점수가 가장 높은 순으로 정렬하여
-     * 최대 5명을 return 하도록 solution 메서드를 완성하라.
-     * 이때 추천 점수가 0점인 경우 추천하지 않으며, 추천 점수가 같은 경우는 이름순으로 정렬한다.
-     */
-
     //유저 정보를 다루는 클래스 자료형
-    static class userInfo {
+    static class userInfo implements Comparable<userInfo> {
         //유저의 이름을 저장
         private String name;
         //유저의 친구관계들을 저장
@@ -50,12 +38,16 @@ public class Problem7 {
             this.point = point;
         }
 
+        public void plusPoint() {
+            this.point++;
+        }
+
         //회원 정보를 저장.
-        public void addFriends(String friendsName){
+        public void addFriends(String friendsName) {
             friends.add(friendsName);
         }
 
-        public userInfo(String name,String friend) {
+        public userInfo(String name, String friend) {
             this.name = name;
             friends = new HashSet<>();
             friends.add(friend);
@@ -64,67 +56,98 @@ public class Problem7 {
 
         @Override
         public String toString() {
-            return   name +"::"+ friends;
-//                    ", point=" + point +
-//                    '}';
+            return name + "::" + point + "::" + friends;
+        }
+
+
+        @Override
+        public int compareTo(userInfo o) {
+            if (Integer.compare(o.point, this.point) == 0) {
+                return this.name.compareTo(o.name);
+            }
+            return Integer.compare(o.point, this.point);
         }
     }
 
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        /*
-        andole  [donut , shakevan]
-        jun     [donut,  shakevan]
-        mrko    [donut,  shakevan]
+        List<String> answer = new ArrayList<>();
+        Map<String, userInfo> users = new HashMap<>();
 
-        "bedi : ["bedi", "bedi", "bedi"] 방문을 3번 == 3점
-        */
-
-        List<String> answer = Collections.emptyList();
-        List<userInfo> users = new LinkedList<>();
-
-        //유저별 친구를 클래스 정보로 생성..
-        for(List<String> list : friends){
+        //유저별 친구를 클래스 자료형으로 생성..
+        for (List<String> list : friends) {
             String nameA = list.get(0);
             String nameB = list.get(1);
-            Map<String,userInfo> infos = getNames(users);
+            // Map<String,userInfo> infos = getNames(users);
 
             //없을 경우 객체 생성.
-            if(! infos.keySet().contains(nameA)) users.add(new userInfo(nameA,nameB));
-            else  infos.get(nameA).addFriends(nameB);
-            if(! infos.keySet().contains(nameB)) users.add(new userInfo(nameB,nameA));
-            else  infos.get(nameB).addFriends(nameA);
-
+            if (!users.containsKey(nameA)) users.put(nameA, new userInfo(nameA, nameB));
+            else users.get(nameA).addFriends(nameB);
+            if (!users.containsKey(nameB)) users.put(nameB, new userInfo(nameB, nameA));
+            else users.get(nameB).addFriends(nameA);
         }
 
-        for(userInfo s : users) System.out.println(s);
+        //다 만들어진 자료형에서 사용자의 이름과 다른 사용자들의 친구를 바교해 점수를 증가 한다.
 
-//        System.out.println("user = " + user);
-//        System.out.println("friends = " + friends);
-//        System.out.println("visitors = " + visitors);
+        // myFreinds 비교해야되는 친구 목록을 추출
+        Set<String> myFreinds = users.get(user).getFriends();
+
+        //같은 친구가 있는지 확인.
+        for (String key : users.keySet()) {
+            //나 일 경우에는 제외
+            if (key.equals(user)) continue;
+
+            //나 이외의 사용자들의 친구 목록들을 꺼낸다. 두 리스트중 동일한 값이 있는지 확인.
+            Set<String> friendsList = users.get(key).getFriends();
+            int point = matchsName(myFreinds, friendsList);
+            users.get(key).setPoint(point);
+        }
+
+        //이제 조회한 사람들을 반복해 확인
+        for (String s : visitors) {
+            if (!users.containsKey(s)) {
+                users.put(s, new userInfo(s, ""));
+                users.get(s).plusPoint();
+            }
+        }
+
+        //마지막으로 포인트가 1 이상인 사람들만 answer에 저장한다.
+        //이 때 정렬이 필요하다
+
+
+        //배열을 정렬한다.
+        // 1.포인트 순으로
+        // 1.2 이름순으로
+
+        List<String> keySet = new ArrayList<>(users.keySet());
+        keySet.sort(new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return users.get(o1).compareTo(users.get(o2));
+            }
+        });
+
+        //0포인트 이상인 유저를 저장
+        for (String key : keySet) {
+            int point = users.get(key).getPoint();
+            if (point > 0) {
+                answer.add(users.get(key).getName());
+            }
+        }
         return answer;
     }
 
-    //클래스 리스트에서 이름만 추출해 반환하는 메서드.
-    private static Map<String,userInfo> getNames(List<userInfo> users) {
-        Map<String,userInfo> names = new HashMap<>();
-        for(userInfo u : users) names.put(u.getName(),u);
-        return names;
-    }
+    //두 친구 목록들을 비교해 점수를 저장하는 기능
+    public static int matchsName(Set<String> myFreinds, Set<String> friendsList) {
 
-    public static void main(String[] args) {
-        String user = "mrko";
-        List<List<String>> friends = List.of(
-                List.of("donut", "andole"),
-                List.of("donut", "jun"),
-                List.of("donut", "mrko"),
-                List.of("shakevan", "andole"),
-                List.of("shakevan", "jun"),
-                List.of("shakevan", "mrko")
-        );
-        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+        long point = 0;
 
-        List<String> result = List.of("andole", "jun", "bedi");
+        long result = myFreinds.stream()
+                .filter(old -> friendsList.stream()
+                        .anyMatch(Predicate.isEqual(old))).count();
 
-        solution(user, friends, visitors);
+        point = result * 10;
+
+        return (int) point;
     }
 }
