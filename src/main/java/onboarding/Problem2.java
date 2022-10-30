@@ -11,14 +11,16 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "";
         Stack<Character> stack=new Stack<>();
-
+        char duplication='\u0000'; //중복된 문자
         for(int i=0; i<cryptogram.length(); i++){
             char c=cryptogram.charAt(i);
             if(stack.isEmpty()){
+                if(duplication==c) continue;
                 stack.push(c);
             }else{
-                if(stack.peek()==c){
+                if(stack.peek()==c || duplication==c){
                     stack.pop();
+                    duplication=c;
                 }else{
                     stack.push(c);
                 }
