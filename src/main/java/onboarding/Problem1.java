@@ -5,12 +5,15 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-        int pobiExceptionValue=checkInputs(pobi);
-        int crongExceptionValue=checkInputs(crong);
+        int pobiExceptionValue = checkInputs(pobi);
+        int crongExceptionValue = checkInputs(crong);
 
-        if(pobiExceptionValue==-1 || crongExceptionValue==-1){
+        if (pobiExceptionValue == -1 || crongExceptionValue == -1) {
             return -1;
         }
+
+        int pobiMax=findMaxValue(pobi);
+        int crongMax=findMaxValue(crong);
 
 
         return answer;
@@ -27,6 +30,24 @@ class Problem1 {
         return exceptionValue;
     }
 
+    private static int findMaxValue(List<Integer> pages) {
+        int leftMax = addDigits(pages.get(0));
+        int multipliedValueLeft = multiplyDigits(pages.get(0));
+        if (leftMax < multipliedValueLeft) {
+            leftMax = multipliedValueLeft;
+        }
+        int rightMax = addDigits(pages.get(1));
+        int multipliedValueRight = multiplyDigits(pages.get(1));
+        if (rightMax < multipliedValueRight) {
+            rightMax = multipliedValueRight;
+        }
+        int maxValue = leftMax;
+        if (leftMax < rightMax) {
+            maxValue = rightMax;
+        }
+        return maxValue;
+    }
+
     private static int addDigits(int pageNumber) {
         String pageNumberStr = Integer.toString(pageNumber);
         int addedValue = 0;
@@ -38,6 +59,7 @@ class Problem1 {
 
         return addedValue;
     }
+
     private static int multiplyDigits(int pageNumber) {
         String pageNumberStr = Integer.toString(pageNumber);
         int addedValue = 1;
