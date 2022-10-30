@@ -24,3 +24,17 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 접근방법
+
+- user와 친구인 사람은 따로 리스트에 넣어둔다.
+- friends를 loop돌면서 user와 친구인 사람이 있고 다른 한명이 user와 친구가 아니면 점수를 10씩 더해준다.
+- visitors를 loop돌면서 user와 직접적인 친구가 아니면 점수를 1씩 더해준다.
+
+### 기능목록
+
+- [x] user와 친구리스트를 만드는 기능.
+- [ ] user와 간접적으로 친구인 사람들 점수 10점씩 증가 기능.
+- [ ] user와 간접적으로 친구인 사람들이 user타임라인에 방문했으면 점수 1씩 증가해주는 기능.
+- [ ] user의 점수들을 저장한 Map을 value 기준으로 정렬하는 기능.
+- [ ] 최대 5명의 점수 상위권을 answer에 넣어주는 기능.
