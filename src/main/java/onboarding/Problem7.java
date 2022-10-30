@@ -60,10 +60,16 @@ public class Problem7 {
         entries.sort(new Comparator<Map.Entry<String, Integer>>() {
             @Override
             public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o1.getKey().compareTo(o2.getKey());
+            }
+        });
+        entries.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
                 return o2.getValue().compareTo(o1.getValue());
             }
         });
-        for (Map.Entry<String, Integer> entry : entries) {
+        for(Map.Entry<String, Integer> entry:entries){
             result.add(entry.getKey());
         }
         return result;
