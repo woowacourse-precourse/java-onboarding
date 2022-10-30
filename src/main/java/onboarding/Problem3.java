@@ -6,9 +6,16 @@ package onboarding;
 * 2. 메인로직에서는 수를 함수에 map 하여 누적합을 구하는 로직을 추가
 */
 
+import java.util.Arrays;
+
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
-        return answer;
+    }
+
+    private static int countThreeAndSixAndNine(int number) {
+        return (int) Arrays.stream(String.valueOf(number).split(""))
+                .mapToInt(Integer::parseInt)
+                .filter(n -> n == 3 || n == 6 || n == 9)
+                .count();
     }
 }
