@@ -137,7 +137,41 @@ public class Problem7 {
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        String visitor;
+        List<String> answer = new ArrayList<>(Collections.emptyList());
+
+        if (checkParam(user, friends, visitors))
+            return Collections.emptyList();
+
+        initSolution(user, friends);
+        initScoreList();
+        for (int i = 1; i < sequence; i++) {
+            if (scoreList[i] == -1) {
+                continue;
+            }
+            calcScore(i);
+        }
+        for (int i = 1; i < visitors.size(); i++) {
+            visitor = visitors.get(i);
+            if (!indexMap.containsKey(visitor)) {
+                scoreList[sequence] = 1;
+                nameList[sequence] = visitor;
+                indexMap.put(visitor, sequence++);
+            } else if (scoreList[indexMap.get(visitor)] != -1) {
+                scoreList[indexMap.get(visitor)]++;
+            }
+        }
+        for (int i = 1; i < sequence; i++) {
+            if (scoreList[i] != -1) {
+                pq.add(new Pair(scoreList[i], nameList[i]));
+            }
+        }
+        while (!pq.isEmpty() && answer.size() < 5) {
+            if (pq.peek().score != 0) {
+                answer.add(pq.peek().name);
+            }
+            pq.poll();
+        }
         return answer;
     }
 
