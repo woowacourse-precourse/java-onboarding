@@ -14,4 +14,16 @@ public class Problem3 {
         }
         return clapsMemoization[number];
     }
+
+    private static void fillMemoUpTo(int number) {
+        for (int i = currentNumberOfFilledClapsMemo + 1; i <= number; i++) {
+            fillMemo(i);
+            currentNumberOfFilledClapsMemo++;
+        }
+    }
+
+    private static void fillMemo(int number) {
+        int NumberOf369 = findNumberOf369(number);
+        clapsMemoization[number] = clapsMemoization[number - 1] + NumberOf369;
+    }
 }
