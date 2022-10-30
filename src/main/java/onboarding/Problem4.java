@@ -14,10 +14,15 @@ public class Problem4 {
 
     public static Map<Character, Character> makeDictionary() {
         Map<Character, Character> dictionary = new HashMap<>();
+        char alphabet = 'Z';
+        for (char i = 'A'; i <= 'Z'; i++) {
+            dictionary.put(i, alphabet--);
+        }
         return dictionary;
     }
 
     public static String translate(String word) {
+
         return "";
     }
 }
