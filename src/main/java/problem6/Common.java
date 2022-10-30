@@ -11,8 +11,10 @@ public class Common {
     }
 
     public static boolean isCommon(String name1, String name2) {
-        for (int i = 1; i < name1.length(); i++)
-            for (int j = 1; j < name2.length(); j++)
+        int length1 = name1.length();
+        int length2 = name2.length();
+        for (int i = 1; i <= length1; i++)
+            for (int j = 1; j <= length2; j++)
                 if (constructMatrix(name1, name2, i, j))
                     return true;
         return false;
@@ -21,6 +23,8 @@ public class Common {
     private static boolean constructMatrix(String name1, String name2, int i, int j) {
         if (name1.charAt(i-1) == name2.charAt(j-1))
             matrix[i][j] = matrix[i - 1][j - 1] + 1;
+        else
+            matrix[i][j] = 0;
         return matrix[i][j] >= 2;
     }
 
