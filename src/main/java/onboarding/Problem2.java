@@ -27,8 +27,6 @@ import java.util.Stack;
  */
 public class Problem2 {
     public static String solution(String cryptogram) {
-        checkValidRange(cryptogram.length());
-
         Stack<String> stack = findOverlapWord(cryptogram);
         String answer = String.join("", stack);
         return answer;
@@ -74,9 +72,31 @@ public class Problem2 {
         return erase;
     }
 
-    private static void checkValidRange(final int wordLength) {
-        if (wordLength < 1 || wordLength > 1000) {
-            throw new IllegalArgumentException();
-        }
+    private static void validate(String cryptogram) {
+        Advice.validate(cryptogram);
     }
+
+    static class Advice{
+        private Advice(){}
+
+        public static void validate(final String cryptogram){
+            checkCryptogramValidRange(cryptogram.length());
+            checkCryptogramIsToLowerCase(cryptogram);
+        }
+        private static void checkCryptogramValidRange(final int wordLength) {
+            if (wordLength < 1 || wordLength > 1000) {
+                throw new IllegalArgumentException();
+            }
+        }
+
+        private static void checkCryptogramIsToLowerCase(final String cryptogram) {
+            if (!cryptogram.equals(cryptogram.toLowerCase())) {
+                throw new IllegalArgumentException();
+            }
+        }
+
+    }
+
+
+    //소문자 체크
 }
