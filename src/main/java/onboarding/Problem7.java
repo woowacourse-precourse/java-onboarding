@@ -128,6 +128,14 @@ public class Problem7 {
         }
     }
 
+    private static void calcScore(int index) {
+        for (int i = 0; i < friendship[index].size(); i++) {
+            if (scoreList[friendship[index].get(i)] == -1) {
+                scoreList[index] += 10;
+            }
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
