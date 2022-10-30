@@ -2,11 +2,14 @@ package onboarding.problem6;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 public class Member {
 	private final Nickname nickname;
 	private final Email email;
+
+	public String getEmail() {
+		return email.toString();
+	}
 
 	public Member(List<String> list) {
 		this(list.get(0), list.get(1));
@@ -17,9 +20,13 @@ public class Member {
 		this.email = new Email(email);
 	}
 
-	public boolean isRepeat(Set<String> repetitionList) {
-		return repetitionList.stream()
-			.anyMatch(nickname::isRepeat);
+	public boolean isRepeat(List<Member> memberList) {
+		return memberList.stream()
+			.anyMatch(member -> member != this && member.isRepeat(nickname));
+	}
+
+	public boolean isRepeat(Nickname otherNickname) {
+		return nickname.isRepeat(otherNickname);
 	}
 
 	@Override

@@ -33,16 +33,4 @@ public class MemberListTest {
 		assertThat(memberList.containsMember(new Member(List.of("jason@email.com", "제이슨")))).isTrue();
 	}
 
-	@Test
-	void find_repeat_member() {
-		RepetitionList repetitionList = new RepetitionList();
-		memberList.add(memberJason);
-		memberList.add(new Member(List.of("woniee@email.com", "워니")));
-		repetitionList.add("제이");
-		assertThat(memberList.findRepeatMember(repetitionList).contains(memberJason)).isTrue();
-		assertThat(memberList.findRepeatMember(repetitionList).contains(memberJm)).isFalse();
-
-		memberList.add(memberJm);
-		assertThat(memberList.findRepeatMember(repetitionList).contains(memberJm)).isTrue();
-	}
 }

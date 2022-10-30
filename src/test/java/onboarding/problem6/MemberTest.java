@@ -14,5 +14,4 @@ public class MemberTest {
 		assertThat(member).isEqualTo(new Member("jm@email.com", "제이엠"));
 	}
 
-
 }

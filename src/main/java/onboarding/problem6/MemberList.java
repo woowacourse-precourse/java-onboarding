@@ -21,9 +21,11 @@ public class MemberList {
 		return memberList.contains(member);
 	}
 
-	List<Member> findRepeatMember(RepetitionList repetitionList) {
+	public List<String> findRepeatMember() {
 		return memberList.stream()
-			.filter(repetitionList::isRepeat)
+			.filter(member -> member.isRepeat(memberList))
+			.map(Member::getEmail)
+			.sorted(String::compareTo)
 			.collect(toList());
 	}
 }

@@ -1,5 +1,6 @@
 package onboarding.problem6;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Nickname {
@@ -16,6 +17,17 @@ public class Nickname {
 			throw new IllegalArgumentException("넥네임은 한글만 가능합니다.");
 		}
 		this.nickName = nickName;
+	}
+
+	public boolean isRepeat(Nickname otherNickname) {
+		return otherNickname.isRepeat(nickName);
+	}
+
+	public boolean isRepeat(String otherNickname) {
+		NicknameSplitter nicknameSplitter = new NicknameSplitter();
+		List<String> splitName = nicknameSplitter.split(otherNickname);
+		return splitName.stream()
+			.anyMatch(nickName::contains);
 	}
 
 	@Override
@@ -38,7 +50,4 @@ public class Nickname {
 		return nickName;
 	}
 
-	public boolean isRepeat(String repetition) {
-		return nickName.contains(repetition);
-	}
 }
