@@ -1,14 +1,22 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Problem6 {
 
     private List<Boolean> isdup_list = new ArrayList<>();
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>();
+        checkDuplicateList(forms);
+
+        for (int i = 0; i < forms.size(); i++) {
+            if (isdup_list.get(i)) {
+                answer.add(forms.get(i).get(0));
+            }
+        }
+        Collections.sort(answer);
+        // System.out.println(answer);
         return answer;
     }
 
@@ -34,7 +42,6 @@ public class Problem6 {
             isdup_list.add(false);
         }
     }
-
     void checkDuplicateList(List<List<String>> forms) {
         List<List<String>> bigrams_list = makeBigramsList(forms);
         setIsdupList(forms);
