@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -61,4 +62,14 @@ public class Problem7 {
 
         pointMap.replace(visitor, recommendationPoint + recommendationPointByVisitor);
     }
+
+    private static List<String> sortRecommendationByPoint(Map<String, Integer> pointMap) {
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(pointMap.entrySet());
+        entryList.sort((o1, o2) -> o2.getValue() - o1.getValue());
+
+        return entryList.stream()
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
+    }
+
 }
