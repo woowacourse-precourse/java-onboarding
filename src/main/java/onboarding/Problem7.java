@@ -73,7 +73,20 @@ public class Problem7 {
     }
 
     //타임라인 방문기록을 점수화 하기
-
+    static void countVisitor (List<String> visitors){
+        for (String x: visitors){
+            if (recommendList.containsKey(x)){
+                int score = recommendList.get(x);
+                recommendList.put(x,score+1);
+            }
+            else if(myFriends.contains(x)){
+                continue;
+            }
+            else{
+                recommendList.put(x,1);
+            }
+        }
+    }
 
     //점수를 기준으로 내림차순하고, 이름을 기준으로 오름차순으로 정렬하기
 
