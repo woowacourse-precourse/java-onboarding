@@ -14,7 +14,17 @@ public class Problem3 {
             throw new IllegalArgumentException("1 이상 10000이하 자연수이어야 합니다.");
         }
 
+        answer = getGameResult(number);
         return answer;
+    }
+
+    private static int getGameResult(int lastNumber){
+        int sum = 0;
+
+        for (int num=START_NUMBER; num<=lastNumber; num++){
+            sum += getCountOfDigit(num);
+        }
+        return sum;
     }
 
     private static int getCountOfDigit(int number){
