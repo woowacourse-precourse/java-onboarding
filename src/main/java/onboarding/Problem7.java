@@ -19,8 +19,7 @@ public class Problem7 {
         }
         return userFriend;
     }
-    public static Map<String,Integer> recommendScore(String user, List<List<String>> friends) {
-        List<String> userFriend = checkUserFriend(user, friends);
+    public static Map<String,Integer> recommendScore(String user, List<List<String>> friends,List<String> userFriend) {
         List<String> friendScoreCheck = new ArrayList<>();
         for (int i = 0; i < friends.size(); i++) {
             for (int j = 0; j < friends.get(i).size(); j++) {
@@ -36,8 +35,7 @@ public class Problem7 {
         }
         return score;
     }
-    public static Map<String, Integer> viewScore(String user, List<List<String>> friends, List<String> visitors){
-        List<String> userFriend = checkUserFriend(user,friends);
+    public static Map<String, Integer> viewScore(List<String> userFriend, List<String> visitors){
         List<String> tmpVisitors = new ArrayList<String>(visitors);
 
         for (String uf: userFriend) {
