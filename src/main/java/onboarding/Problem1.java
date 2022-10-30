@@ -5,11 +5,27 @@ import java.util.List;
 public class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
-        int a = leftsumScore(pobi.get(0), crong.get(0));
-        int b = rightsumScore(pobi.get(1), crong.get(1));
-        int c = leftmulScore(pobi.get(0), crong.get(0));
-        int d = rightmulScore(pobi.get(1), crong.get(1));
+        int a = leftsumScore(pobi.get(0), pobi.get(1));
+        int b = rightsumScore(crong.get(0), crong.get(1));
+        int c = leftmulScore(pobi.get(0), pobi.get(1));
+        int d = rightmulScore(crong.get(0), crong.get(1));
+        int pobiScore = Math.max(a, c);
+        int crongScore = Math.max(b, d);
 
+        int g = pobi.get(1) - pobi.get(0);
+        int h = crong.get(1) - crong.get(0);
+
+        if ((g == 1 && h == 1) && (pobi.get(0) % 2 == 1) && (crong.get(0) % 2 == 1)) {
+            if (pobiScore > crongScore) {
+                return 1;
+            } else if (pobiScore < crongScore) {
+                return 2;
+            } else if (pobiScore == crongScore) {
+                return 0;
+            }
+        }else{
+            return -1;
+        }
         return 0;
     }
 
