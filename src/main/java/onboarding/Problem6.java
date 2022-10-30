@@ -16,6 +16,8 @@ class User {
     private static final int LOWER_BOUND_LIMIT = 1;
     private static final int UPPER_BOUND_LIMIT = 1000000;
     private static final String OUT_OF_COUNT = "1개이상 10,000개 이하의 유저 데이터를 입력해 주세요";
+    private static final String NOT_MATCH_EMAIL_PATTERN = "이메일의 형식에 맞게 입력해 주세요";
+
 
     static List<String> getUserDuplicatedNickName(List<List<String>> forms){
         List<String> answer = new ArrayList<>();
@@ -52,6 +54,17 @@ class User {
 
     public static void validate(List<List<String>> forms) {
         validateOutOfUserCount(forms);
+        validateEmailFormat(forms);
+    }
+
+    private static void validateEmailFormat(List<List<String>> forms) {
+        for (List<String> emailObject : forms) {
+            String userEmail = emailObject.get(0);
+            if(userEmail.endsWith("@email.com"))
+                continue;
+            throw new IllegalArgumentException(NOT_MATCH_EMAIL_PATTERN);
+        }
+
     }
 
     private static void validateOutOfUserCount(List<List<String>> forms) {
