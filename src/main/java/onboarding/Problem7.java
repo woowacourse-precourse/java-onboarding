@@ -13,6 +13,8 @@ public class Problem7 {
     private static final int RETURN_MAX_SIZE = 5;
     private static final int MIN_USER_ID_LENGTH = 1;
     private static final int MAX_USER_ID_LENGTH = 30;
+    private static final int MIN_FRIEND_RELATIONSHIP_SIZE = 1;
+    private static final int MAX_FRIEND_RELATIONSHIP_SIZE = 10000;
 
     private static final Map<String, Integer> friendRecommendScoreMap = new HashMap<>();
 
@@ -100,5 +102,9 @@ public class Problem7 {
 
     private static boolean validateUserLength(String userId) {
         return (userId.length() >= MIN_USER_ID_LENGTH && userId.length() <= MAX_USER_ID_LENGTH);
+    }
+
+    private static boolean validateFriendRelationshipsSize(List<List<String>> friendRelationships) {
+        return (friendRelationships.size() >= MIN_FRIEND_RELATIONSHIP_SIZE && friendRelationships.size() <= MAX_FRIEND_RELATIONSHIP_SIZE);
     }
 }
