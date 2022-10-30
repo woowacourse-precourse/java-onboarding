@@ -6,6 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SamYukGuGameUtilsService {
+    public static int getHandClapCount(int value){
+        return getCountSamYukGuInList(integerSlice(value));
+    }
+
     private static ArrayList<Integer> integerSlice(int value){
         ArrayList<Integer> slicedIntList = new ArrayList<>();
 
