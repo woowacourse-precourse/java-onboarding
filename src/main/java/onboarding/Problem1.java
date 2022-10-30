@@ -35,15 +35,11 @@ class Problem1 {
     }
 
     /**
-     * check pages if left page bigger than right one,
-     * or two pages's diff is bigger than 1
+     * check two pages's diff is bigger than 1
      * @param pages
      * @return
      */
     static boolean isLegalPage(List<Integer> pages) {
-        if (pages.get(1) < pages.get(0)) {
-            return false;
-        }
         if ((pages.get(1) - pages.get(0)) != 1) {
             return false;
         }
