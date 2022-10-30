@@ -13,18 +13,21 @@ public class Problem6 {
     private static final int MIN_NICKNAME_INPUT = 1;
     private static final int MAX_NICKNAME_INPUT = 20;
 
+    private static final int EMAIL = 0;
+    private static final int NICKNAME = 1;
+
     private static Map<String, Map<String, String>> trie;
 
     private static Set<String> resultEmailSet;
-    
+
     public static List<String> solution(List<List<String>> forms) {
 
         trie = new HashMap<>();
         resultEmailSet = new HashSet<>();
 
         for (List<String> form: forms) {
-            if (Problem6Validation.problem6Validation(form.get(0), form.get(1), MIN_EMAIL_INPUT, MAX_EMAIL_INPUT, MIN_NICKNAME_INPUT, MAX_NICKNAME_INPUT)) {
-                addTrieOrAddResultEmailSet(form.get(0), form.get(1));
+            if (Problem6Validation.problem6Validation(form.get(EMAIL), form.get(NICKNAME), MIN_EMAIL_INPUT, MAX_EMAIL_INPUT, MIN_NICKNAME_INPUT, MAX_NICKNAME_INPUT)) {
+                addTrieOrAddResultEmailSet(form.get(EMAIL), form.get(NICKNAME));
             }
         }
         return resultEmailSet.stream()
@@ -40,21 +43,10 @@ public class Problem6 {
             }
         }
     }
-    private static void addTrie(Map<String, String> firstLayerTrie, String subString, String email) {
-        String leafNodeEmail = findSubString(firstLayerTrie, subString);
-        if (leafNodeEmail != null) {
-            resultEmailSet.add(leafNodeEmail);
-            resultEmailSet.add(email);
-        } else {
-            firstLayerTrie.put(subString, email);
-        }
 
+    private static boolean nicknameIsBiggerThanOne(String nickname) {
+        return nickname.length() >= 2;
     }
-
-    private static String findSubString(Map<String, String> firstLayerTrie, String subString) {
-        return firstLayerTrie.get(subString);
-    }
-
 
     private static Map<String, String> getFirstLayerTrie(String subString) {
         return findSubMap(trie, String.valueOf(subString.charAt(0)));
@@ -71,11 +63,23 @@ public class Problem6 {
         return subMap;
     }
 
+    private static void addTrie(Map<String, String> firstLayerTrie, String subString, String email) {
+        String leafNodeEmail = findSubString(firstLayerTrie, subString);
+        if (leafNodeEmail != null) {
+            resultEmailSet.add(leafNodeEmail);
+            resultEmailSet.add(email);
+        }
+        firstLayerTrie.put(subString, email);
 
 
-
-    private static boolean nicknameIsBiggerThanOne(String nickname) {
-        return nickname.length() >= 2;
     }
+
+    private static String findSubString(Map<String, String> firstLayerTrie, String subString) {
+        return firstLayerTrie.get(subString);
+    }
+
+
+
+
 
 }
