@@ -88,7 +88,7 @@ public class Problem6 {
                 throw new IllegalArgumentException("이메일 길이는 11이상 20 미만입니다.");
             }
 
-            if (isWrongDomain(email)){
+            if (isWrongDomain(getDomain(email))){
                 throw new IllegalArgumentException("올바르지 않은 이메일 도메인입니다.");
             }
 
@@ -96,6 +96,10 @@ public class Problem6 {
                 throw new IllegalArgumentException("닉네임은 1자 이상 20자 미만입니다.");
             }
         }
+    }
+
+    private static String getDomain(String email){
+        return (email.split("@"))[1];
     }
 
     private static boolean isFormWrongSize(List<String> form){
