@@ -131,3 +131,26 @@
 ### solution
 - String을 매개변수로 받는다. 이 값은 word이다.
 - reverseAlphabet을 호출하여 입력 받은 word를 reverse한 후 return한다.
+
+## 문제 5
+### 구현 메소드 및 설명
+- exposeCashUnit
+- getEachUnit
+- solution
+
+### exposeCashUnit
+- int을 매개변수로 받는다. 이 값은 remainingPrice이다.
+- 이 메소드는 현재 금액에서 꺼낼 수 있는 가장 큰 단위의 화폐와 그 종류를 List에 담아 리턴한다.
+- 아래 로직을 따른다.
+  - 받을 수 있는 돈 중에서 꺼낼 수 있는 가장 큰 단위를 greedy한 방법으로 구한다.
+  - 남은 금액과 사용된 액수를 List에 담아 리턴한다.
+
+### getEachUnit
+- int을 매개변수로 받는다. 이 값은 money이다.
+- 이 메소드는 더 이상 돈을 꺼낼 수 없을 때까지 exposeCashUnit을 호출한 후, 그 결과를 기록한다.
+- 사용한 금액 단위를 각각 List에 담는다. 완성되면 이를 리턴한다.
+
+### solution
+- int을 매개변수로 받는다. 이 값은 money이다.
+- 이 메소드는 getEachUnit을 호출한다.
+- 사용한 금액 단위가 담긴 List를 받아 리턴한다.
