@@ -20,6 +20,22 @@ public class Problem4 {
         return list;
     }
 
+    /**
+     * List를 String으로 변환하는 메서드
+     *
+     * @param inputList String으로 바꿀 List ,static 변수 list가 들어간다
+     * @return String으로 바꾼 List
+     */
+    static String transListToString(List<Character> inputList) {
+        String str = "";
+
+        for (int i = 0; i < inputList.size(); i++) {
+            str += inputList.get(i);
+        }
+
+        return str;
+    }
+
 
     /**
      * 문자를 청개구리 언어로 변경하는 메서드
