@@ -44,6 +44,18 @@ public class Problem7 {
             }
         }
 
+//hashmap을 arraylist로 변경
+        List<String> mapkey = new ArrayList<>(recommendFriendsScore.keySet());
+//mapkey를 이름에 따라서 정렬
+        Collections.sort(mapkey);
+//mapkey를 value 값에 따라서 정렬
+        mapkey.sort(new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return recommendFriendsScore.get(o2).compareTo(recommendFriendsScore.get(o1));
+            }
+        });
+
         return answer;
     }
 }
