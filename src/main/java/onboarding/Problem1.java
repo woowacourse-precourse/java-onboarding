@@ -37,4 +37,11 @@ class Problem1 {
         }
         return sumOfPages;
     }
+    private static int getMultiplyOfPages(String pages) {
+        int multiplyOfPages = 1;
+        for (int i = 0; i < pages.length(); i++) {
+            multiplyOfPages *= (pages.charAt(i) - '0');
+        }
+        return multiplyOfPages;
+    }
 }
