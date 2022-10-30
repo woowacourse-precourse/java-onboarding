@@ -37,6 +37,8 @@ package onboarding;
  *
  */
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Problem6 {
@@ -71,5 +73,81 @@ class Candidate {
 
     public String show_e_mail() {
         return this.e_mail;
+    }
+}
+
+class Nickname_validator {
+    private Candidate[] candidate_arr;
+    private List<String> result;
+
+    public void make_candidate_arr_by_forms(List<List<String>> forms) {
+        candidate_arr = new Candidate[forms.size()];
+        for (int index = 0; index < candidate_arr.length; index++) {
+            candidate_arr[index] = transfer_form_to_candidate(forms.get(index));
+        }
+    }
+
+    private Candidate transfer_form_to_candidate(List<String> form) {
+        return new Candidate(find_email_from_form(form), find_nickname_from_form(form));
+    }
+
+    private String find_nickname_from_form(List<String> form) {
+        return form.get(1);
+    }
+
+    private String find_email_from_form(List<String> form) {
+        return form.get(0);
+    }
+
+    public void check_all_nickname() {
+        for (Candidate candidate : candidate_arr) {
+            is_duplicate_exist(candidate);
+        }
+    }
+
+    private void is_duplicate_exist(Candidate target) {
+        for (Candidate candidate : candidate_arr) {
+            is_nickname_duplicate_with(target, candidate);
+        }
+    }
+
+    private void is_nickname_duplicate_with(Candidate target, Candidate compare) {
+        if (target == compare)
+            return;
+        String target_nickname = target.show_nickname();
+        for (int start = 0; start < target_nickname.length() - 1; start++) {
+            check_nickname_duplicate(compare, make_two_letter_word_start_from(target_nickname, start));
+        }
+    }
+
+    public String make_two_letter_word_start_from(String str, int index) {
+        return str.substring(index, index + 2);
+    }
+
+    private void check_nickname_duplicate(Candidate candidate, String word) {
+        if (candidate.show_nickname().contains(word)) {
+            candidate.find_duplicate_nickname();
+        }
+    }
+
+    public void make_result() {
+        result = new ArrayList<>();
+        for (Candidate candidate : candidate_arr) {
+            add_result_who_has_duplicate_nickname(candidate);
+        }
+    }
+
+    private void add_result_who_has_duplicate_nickname(Candidate candidate) {
+        if (candidate.need_to_change()) {
+            this.result.add(candidate.show_e_mail());
+        }
+    }
+
+    public void sort_result_alphabetically() {
+        Collections.sort(this.result);
+    }
+
+    public List<String> show_result() {
+        return result;
     }
 }
