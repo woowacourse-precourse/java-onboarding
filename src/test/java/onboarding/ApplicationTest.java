@@ -109,20 +109,20 @@ class ApplicationTest {
         }
         @Test
         void case6() {
-            String cryptogram = "z";
+            String cryptogram = "ajdhAH@#jsk";
             String result = "z";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
         //예외 확인
         @Test
         void case7() {
-            String cryptogram = null;
-            String result = null;
+            String cryptogram = "abbccc!aljd";
+            String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
         @Test
         void case8() {
-            String cryptogram = "";
+            String cryptogram = "ajh12jdhj";
             String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }

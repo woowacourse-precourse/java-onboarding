@@ -112,7 +112,6 @@ public class Problem2 {
 	public static boolean checkException(String cryptogram){
 		if (cryptogram.length() < 1 || cryptogram.length() > 1000)
 			throw new IllegalArgumentException("ERROR");
-		//대문자가 있는지
 		if (!checkLowerCase(cryptogram))
 			throw new IllegalArgumentException("ERROR");
 		return true;
