@@ -9,6 +9,24 @@ public class Problem7 {
         return answer;
     }
 
+    private static void saveRecommendationPointBySharingFriend(
+            Map<String, Integer> pointMap,
+            Set<String> userFriends,
+            Set<String> friendsWithUserFriend
+    ) {
+        for (String friend : friendsWithUserFriend) {
+            if (isFriend(friend, userFriends)) {
+                continue;
+            }
+            giveRecommendationPointToUserBySharingFriend(pointMap, friendsWithUserFriend);
+        }
+    }
+
+    private static void removeUserInUserFriend(String user, Map<String, Set<String>> friendsMap) {
+        friendsMap.values()
+                .forEach(friends -> friends.remove(user));
+    }
+
     private static boolean isFriend(String user, Set<String> friends) {
         return friends.stream()
                 .anyMatch(friend -> friend.equals(user));
