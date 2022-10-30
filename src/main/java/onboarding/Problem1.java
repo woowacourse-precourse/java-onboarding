@@ -10,6 +10,16 @@ class Problem1 {
         return -1;
     }
 
+    private static int addDigit(int num) {
+        int result = 0;
+
+        while (num > 0) {
+            result += num % 10;
+            num /= 10;
+        }
+        return result;
+    }
+
     private static boolean isSuccessiveInt(List<Integer> pageIntegerList) {
         return pageIntegerList.get(1) == pageIntegerList.get(0) + 1;
     }
