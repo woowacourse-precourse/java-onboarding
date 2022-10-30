@@ -5,8 +5,17 @@ import java.util.*;
 public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        Set<String> restrictedNicknames = new HashSet<>();
+
+        for (int i = 0; i < forms.size() - 1; i++) {
+            for (int j = i + 1; j < forms.size(); j++) {
+                if (validateNicknameDuplication(forms.get(i).get(1), forms.get(j).get(1))) {
+                    restrictedNicknames.add(forms.get(i).get(0));
+                    restrictedNicknames.add(forms.get(j).get(0));
+                }
+            }
+        }
+        return new ArrayList<>(restrictedNicknames);
     }
 
     static boolean validateNicknameDuplication(String input, String target) {
