@@ -27,6 +27,19 @@ public class Problem7 {
 
         initPriorityQueue();
 
+        //recommendScore에 전체를 pq에 넣기
+        for (String name : recommendScore.keySet()) {
+            int score = recommendScore.get(name);
+            if(isFriend.get(name) == null && score != 0){
+                pq.add(new User(score, name));
+            }
+        }
+        //5명이나 pq사이즈 보다 작은 만큼 answer에 추가
+        for(int i=0;i<5 && !pq.isEmpty();i++){
+            User tmp = pq.poll();
+            answer.add((tmp.name));
+        }
+
         return answer;
     }
 
