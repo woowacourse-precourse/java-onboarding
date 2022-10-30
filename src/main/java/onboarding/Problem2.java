@@ -19,7 +19,7 @@ public class Problem2 {
         return stackToString(solutionLogic(cryptogram));
     }
 
-    public static Stack<Character> solutionLogic(String s) {
+    private static Stack<Character> solutionLogic(String s) {
         char[] charArray = s.toCharArray();
         Stack<Character> stack = new Stack<>();
         for (char c : charArray) {
@@ -32,7 +32,7 @@ public class Problem2 {
         return stack;
     }
 
-    public static String stackToString(Stack<Character> stack) {
+    private static String stackToString(Stack<Character> stack) {
         StringBuilder sb = new StringBuilder();
         while (!stack.isEmpty()) {
             sb.append(stack.pop());
@@ -41,16 +41,16 @@ public class Problem2 {
         return sb.toString();
     }
 
-    public static boolean checkValid(String s) {
+    private static boolean checkValid(String s) {
         return checkLength(s) && checkLowerCase(s);
     }
 
-    public static boolean checkLength(String s) {
+    private static boolean checkLength(String s) {
         int len = s.length();
         return 1 <= len && len <= 1000;
     }
 
-    public static boolean checkLowerCase(String s) {
+    private static boolean checkLowerCase(String s) {
         return s.equals(s.toLowerCase());
     }
 

@@ -23,7 +23,7 @@ public class Problem3 {
         return solutionLogic(number);
     }
 
-    public static int solutionLogic(int num) {
+    private static int solutionLogic(int num) {
         int clapCount = 0;
         for (int now = 1; now <= num; now++) {
             clapCount += countClap(now);
@@ -31,7 +31,7 @@ public class Problem3 {
         return clapCount;
     }
 
-    public static HashSet<Integer> setGameRule() {
+    private static HashSet<Integer> setGameRule() {
         HashSet<Integer> setRule = new HashSet<>();
         setRule.add(3);
         setRule.add(6);
@@ -39,14 +39,14 @@ public class Problem3 {
         return setRule;
     }
 
-    public static int isSatisfied(int num) {
+    private static int isSatisfied(int num) {
         if (gameRule.contains(num % 10)) {
             return 1;
         }
         return 0;
     }
 
-    public static int countClap(int num) {
+    private static int countClap(int num) {
         int count = 0;
         while (num != 0) {
             count += isSatisfied(num);
@@ -55,7 +55,7 @@ public class Problem3 {
         return count;
     }
 
-    public static boolean checkValid(int num) {
+    private static boolean checkValid(int num) {
         return 1 <= num && num <= 10000;
     }
 }
