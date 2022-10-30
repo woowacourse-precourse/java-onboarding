@@ -16,14 +16,13 @@ public class Problem7 {
 
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 		Map<String, List<String>> userList = new HashMap<>();
+		userList.put(user, new ArrayList<>());
 		userList.putAll(addVisitUser(visitors));
 		userList.putAll(addUser(friends));
 
 		Map<String, Integer> userScore = new HashMap<>();
 
-		for (String systemUser : userList.keySet()) {
-			userScore.put(systemUser, FRIEND_SCORE * addFriendScore(userList.get(user), userList.get(systemUser)));
-		}
+		userScore.putAll(addFriendScore(userList, user));
 		userScore.putAll(addVisitScore(userScore, visitors));
 		List<Entry<String, Integer>> recommendFriendList = sortRecommendFriend(userScore);
 		return makeRecommendFriendList(user, userList, recommendFriendList);
@@ -56,13 +55,18 @@ public class Problem7 {
 		return userList;
 	}
 
-	private static int addFriendScore(List<String> userFriends, List<String> systemUserFriends) {
-		return (int)systemUserFriends.stream().filter(userFriends::contains).count();
+	private static Map<String, Integer> addFriendScore(Map<String, List<String>> userList, String user) {
+		Map<String, Integer> userScore = new HashMap<>();
+		for (String systemUser : userList.keySet()) {
+			userScore.put(systemUser,
+				FRIEND_SCORE * (int)userList.get(systemUser).stream().filter(userList.get(user)::contains).count());
+		}
+		return userScore;
 	}
 
 	private static Map<String, Integer> addVisitScore(Map<String, Integer> scoreList, List<String> visitors) {
 		for (String visitor : visitors) {
-			scoreList.put(visitor, VISIT_SCORE);
+			scoreList.put(visitor, scoreList.get(visitor) + VISIT_SCORE);
 		}
 		return scoreList;
 	}
