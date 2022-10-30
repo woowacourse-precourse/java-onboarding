@@ -13,10 +13,23 @@ public class Problem4 {
         String result = "";
         String alphabets = "abcdefghijklmnopqrstuvwxyz";
         char nextAlphabet = 0;
-//        result = getReverseString(chars, result, alphabets, nextAlphabet);
+        result = getReverseString(chars, result, alphabets, nextAlphabet);
         return result;
     }
-
+//문장을 반대로 변환하는 함수
+    private static String getReverseString(char[] chars, String result, String alphabets, char nextAlphabet) {
+        for(char c: chars){
+            if(Character.isLowerCase(c)){
+                nextAlphabet = getNextAlphabet(alphabets, nextAlphabet, c);
+            }else if(Character.isUpperCase(c)){
+                nextAlphabet = getUpperAlphabet(alphabets, nextAlphabet, c);
+            }else {
+                nextAlphabet = ' ';
+            }
+            result += nextAlphabet;
+        }
+        return result;
+    }
 //대문자 철자를 발견했을때, 그 철자를 반대로 변환
     private static char getUpperAlphabet(String alphabets, char nextAlphabet, char c) {
         for (int i = 0; i < alphabets.length(); i++) {
