@@ -15,6 +15,6 @@ public class Problem4 {
     }
 
     private static boolean isAlphabet(char c){
-
+        return (c>='A'&&c<='Z')||(c>='a'&&c<='z');
     }
 }
