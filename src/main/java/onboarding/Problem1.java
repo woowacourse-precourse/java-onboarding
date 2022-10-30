@@ -85,30 +85,15 @@ class Problem1 {
     {
         int firstPage = 1;
         int lastPage = 400;
-        
-        //1 ~ 400 안에 있는가?
+
         if (!(leftPage >= firstPage && leftPage <= lastPage))
             return false;
         if (!(rightPage >= firstPage && rightPage <= lastPage))
             return false;
-        //왼쪽은 홀수, 오른쪽은 짝수인가?
-        if (!(leftPage %2 == 1) || !(rightPage %2 == 0))
+        if ((leftPage % 2) == 0)
             return false;
-        //연속한 숫자인가?
         if ((leftPage + 1) != rightPage)
             return false;
         return true;
-    }
-    public static int checkException(int num) {
-        //연산한 값에 0이 있을 경우
-        if (num == 0)
-            return errorNum;
-        return num;
-    }
-    public static boolean checkException(List<Integer> num_list) {
-        //num_list가 null일경우
-        if (num_list.size() == listSize)
-            return true;
-        return false;
     }
 }
