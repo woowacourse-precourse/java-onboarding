@@ -6,6 +6,21 @@ class Player {
     private int maxNum;
     private int leftPageNum, rightPageNum;
 
+    public void calMaxNum() {// 양쪽 페이지 모두 합쳐 가장 큰 수 구해서 max_num에 저장
+        int leftPageMaxNum, rightPageMaxNum;
+        int sumNum, mulNum;
+
+        sumNum = sumEachNum(this.leftPageNum);
+        mulNum = mulEachNum(this.leftPageNum);
+        leftPageMaxNum = Math.max(sumNum, mulNum);
+
+        sumNum = sumEachNum(this.rightPageNum);
+        mulNum = mulEachNum(this.rightPageNum);
+        rightPageMaxNum = Math.max(sumNum, mulNum);
+
+        this.maxNum = Math.max(leftPageMaxNum, rightPageMaxNum);
+    }
+
     protected int sumEachNum(int num) {// 정수의 각 자리수를 더함
         int sum;// 각 자리수의 합을 저장할 변수
         sum = 0;
