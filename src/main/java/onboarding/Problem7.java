@@ -18,6 +18,8 @@ public class Problem7 {
         Map<Integer, List<String>> recommendScore = new HashMap<>();
         calculateRecommendScore(visitorInfo, friendOfFriend, recommendScore);
 
+        List<Integer> scores = getSortedScoreList(recommendScore);
+
         return answer;
     }
 
@@ -126,5 +128,17 @@ public class Problem7 {
                 recommendScore.get(score).add(each);
             }
         }
+    }
+
+    /**
+     * Function for getting Sorted Score List
+     * */
+    private static List<Integer> getSortedScoreList(Map<Integer, List<String>> recommendScore) {
+        List<Integer> scores = new ArrayList<>();
+        for (int scoreNum : recommendScore.keySet()) {
+            scores.add(scoreNum);
+        }
+        Collections.reverse(scores);
+        return scores;
     }
 }
