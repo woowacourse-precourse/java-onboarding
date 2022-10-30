@@ -11,17 +11,26 @@ public class Problem6 {
             String email = form.get(0);
             String nickname = form.get(1);
 
-            for (int count = 0; count < nickname.length() - 1; count++) {
-                String partOfNickname = nickname.substring(count, count + 2);
-                Set<String> emailSet = nicknameEmailMap.getOrDefault(partOfNickname, new HashSet<>());
-                emailSet.add(email);
-                nicknameEmailMap.put(partOfNickname, emailSet);
-            }
+            addPartOfNickname(email, nickname);
         }
 
         List<String> answer = makeEmailList();
         answer.sort(Comparator.naturalOrder());
         return answer;
+    }
+
+    /*
+    * 주어진 닉네임을 2글자씩 잘라 중복 여부 Map에 추가
+    *
+    * @return void
+    * */
+    private static void addPartOfNickname(String email, String nickname) {
+        for (int count = 0; count < nickname.length() - 1; count++) {
+            String partOfNickname = nickname.substring(count, count + 2);
+            Set<String> emailSet = nicknameEmailMap.getOrDefault(partOfNickname, new HashSet<>());
+            emailSet.add(email);
+            nicknameEmailMap.put(partOfNickname, emailSet);
+        }
     }
 
     /*
