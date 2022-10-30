@@ -52,4 +52,8 @@ public class Decoder {
             characterLinkedList.remove(idx);
         }
     }
+
+    public boolean isDuplicate() {
+        return (duplicates.size() != 0);
+    }
 }
