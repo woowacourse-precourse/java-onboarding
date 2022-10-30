@@ -186,6 +186,13 @@ class ApplicationTest {
             String result = "@!#!@# 13123!@A";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
+
+        @Test
+        void case3() {
+            String word = "Hello    Everyone!";
+            String result = "Svool    Veviblmv!";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
     }
 
     @Nested
