@@ -26,7 +26,8 @@ public class Problem6 {
     static List<String> getEmailListByCheckNickname() {
         List<Integer> duplicatedIndexList = getDuplicatedIndex();
         List<String> duplicatedEmailList = getEmailListByIndexList(duplicatedIndexList);
-        List<String> answer = checkEmailList(duplicatedEmailList);
+        List<String> emailListAfterCheckDuplication = removeDuplicationOfEmailList(duplicatedEmailList);
+        List<String> answer = sortEmailList(emailListAfterCheckDuplication);
         return answer;
     }
 
@@ -80,9 +81,8 @@ public class Problem6 {
         return duplicatedEmailList;
     }
 
-    static List<String> checkEmailList(List<String> emailList) {
-        List<String> emailListRemovedDuplication = removeDuplicationOfEmailList(emailList);
-        List<String> sortedEmailList = emailListRemovedDuplication.stream().sorted().collect(
+    static List<String> sortEmailList(List<String> emailList) {
+        List<String> sortedEmailList = emailList.stream().sorted().collect(
             Collectors.toList());
         return sortedEmailList;
     }
