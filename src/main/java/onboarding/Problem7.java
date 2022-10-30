@@ -42,8 +42,10 @@ public class Problem7 {
         }
 
         // scoreCoFriend : friends 를 순회하며 userFriend 와 함께 아는 친구에 대해 score 10점 추가
-            // getDirectFriend : direct friend 구하는 메소드
-            // directFriend 순회하면서 10점씩 추가 -> updateScore
+        List<String> directFriends = getDirectFriends(user, friends);
+        for (String name : directFriends) {
+            problem.updateScore(name, 10);
+        }
 
         // scoreVisitor : visitors 를 순회하며 방문자의 score 1점씩 추가
         // hashFriendshipScores 를 점수 내림차순, 이름 오름차순으로 정렬
@@ -86,6 +88,11 @@ public class Problem7 {
             }
         }
         return directFriends;
+    }
+
+    void updateScore(String name, int score) {
+        Friend friend = this.hashFriendshipScores.get(name);
+        friend.updateScore(score); // 이렇게만 끝내도 업데이트 잘 되는지 확인
     }
 }
 
