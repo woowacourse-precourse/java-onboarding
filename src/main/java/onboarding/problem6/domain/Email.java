@@ -16,4 +16,8 @@ public class Email {
         this.email = emailAndDomain[0];
         this.domain = emailAndDomain[1];
     }
+
+    public String getFullEmail() {
+        return email.concat(AT_SIGN).concat(domain);
+    }
 }

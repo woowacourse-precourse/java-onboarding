@@ -20,6 +20,10 @@ public class Problem6Input implements ProblemInput {
         }
     }
 
+    public List<Crew> crews() {
+        return crews;
+    }
+
     @Override
     public boolean hasError() {
         return false;

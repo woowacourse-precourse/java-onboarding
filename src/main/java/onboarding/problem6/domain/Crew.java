@@ -11,11 +11,11 @@ public class Crew {
         this.nickname = nickname;
     }
 
-    public Email getEmail() {
-        return email;
-    }
-
     public Nickname getNickname() {
         return nickname;
+    }
+
+    public String getFullEmail() {
+        return email.getFullEmail();
     }
 }
