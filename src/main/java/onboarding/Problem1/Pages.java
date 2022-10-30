@@ -39,8 +39,8 @@ class Pages implements Comparable<Pages>
         Integer rightPageNumber = getRightPage(pages);
 
         return leftPageNumber == (rightPageNumber - 1)
-                && leftPageNumber > LEFT_BOUND
-                && rightPageNumber < RIGHT_BOUND;
+                && leftPageNumber >= LEFT_BOUND
+                && rightPageNumber <= RIGHT_BOUND;
     }
 
     private int getValueByPage(Integer page)
