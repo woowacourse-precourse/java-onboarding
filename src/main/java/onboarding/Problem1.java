@@ -5,6 +5,7 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        multiplyDigits(pobi.get(0));
         return answer;
     }
 
@@ -25,6 +26,17 @@ class Problem1 {
         for (int i = 0; i < pageNumberStr.length(); i++) {
             char temp = pageNumberStr.charAt(i);
             addedValue += Character.getNumericValue(temp);
+        }
+
+
+        return addedValue;
+    }
+    private static int multiplyDigits(int pageNumber) {
+        String pageNumberStr = Integer.toString(pageNumber);
+        int addedValue = 1;
+        for (int i = 0; i < pageNumberStr.length(); i++) {
+            char temp = pageNumberStr.charAt(i);
+            addedValue *= Character.getNumericValue(temp);
         }
 
 
