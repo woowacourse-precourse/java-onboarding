@@ -20,6 +20,36 @@ public class Problem4 {
         return list;
     }
 
+
+    /**
+     * 문자를 청개구리 언어로 변경하는 메서드
+     *
+     * @param ch 변환할 문자
+     * @return 변환한 문자
+     */
+    static Character changeChar(Character ch) {
+        int chType;
+
+        if ('a' <= ch && 'z' >= ch) {
+            chType = 1;
+        }
+        else if ('A' <= ch && 'Z' >= ch) {
+            chType = 2;
+        }
+        else {
+            chType = 0;
+        }
+
+        if (chType == 1) {
+            ch = (char)((25 - (ch - 'a')) + 'a');
+        }
+        else if (chType == 2) {
+            ch = (char)((25 - (ch - 'A')) + 'A');
+        }
+
+        return ch;
+    }
+
     public static String solution(String word) {
         String answer = "";
         return answer;
