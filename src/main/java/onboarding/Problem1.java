@@ -15,12 +15,22 @@ class Problem1 {
     static int whoIsWinner(List<Integer> pobi, List<Integer> crong) {
         IsValiPage pobi_vali = new IsValiPage(pobi);
         IsValiPage crong_vali = new IsValiPage(crong);
+        PlayerScore pobi_score = new PlayerScore(pobi);
+        PlayerScore crong_score = new PlayerScore(crong);
 
         if (!pobi_vali.IsVali() || !crong_vali.IsVali())
             return EXCEPTION; // 예외사항 처리
 
         else {
-                return DRAW; // 기능 단위 커밋을 위해 임시로 return값 지정
+            int pobi_max_score = pobi_score.maxScore();
+            int crong_max_score = crong_score.maxScore();
+
+            if (pobi_max_score > crong_max_score)
+                return WIN_POBI;
+            else if (crong_max_score > pobi_max_score)
+                return WIN_CRONG;
+            else
+                return DRAW;
         }
     }
 
