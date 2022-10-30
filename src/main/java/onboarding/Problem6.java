@@ -8,6 +8,15 @@ public class Problem6 {
         return answer;
     }
 
+    private static boolean checkSimilarityInCrewList(String nickname, List<List<String>> forms) {
+        for (List<String> emailAndNickname : forms) {
+            if (!nickname.equals(emailAndNickname.get(1)) && checkSimilarity(nickname, emailAndNickname.get(1))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private static boolean checkSimilarity(String nickname, String target) {
         for (int i = 0; i < nickname.length()-1; i++) {
             if (target.contains(returnBiliteralSubstring(nickname, i))) {
