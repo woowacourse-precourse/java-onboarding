@@ -9,7 +9,7 @@ public class Problem4 {
     public static String solution(String word) {
         sb = new StringBuilder();
         char nowChar;
-        for (int i = 0 ; i < word.length() ; i++) {
+        for (int i = 0; i < word.length(); i++) {
             nowChar = word.charAt(i);
             transferAlphabet(nowChar);
         }
@@ -19,7 +19,7 @@ public class Problem4 {
     private static void transferAlphabet(char alphabet) {
         int charRange = checkCharRange(alphabet);
         char result = alphabet;
-        if(charRange != NO_ALPHABET) {
+        if (charRange != NO_ALPHABET) {
             result = reverseAlphabet(alphabet, charRange);
         }
         sb.append(result);
@@ -34,17 +34,17 @@ public class Problem4 {
     }
 
     private static double calculateMidAlphabet(int alphabetCase) {
-        if(alphabetCase==UPPER_CASE) {
+        if (alphabetCase == UPPER_CASE) {
             return ((double)'A'+'Z')/2;
         }
         return ((double)'a'+'z')/2;
     }
 
     private static int checkCharRange(char nowChar) {
-        if (nowChar>='A' && nowChar<='Z') {
+        if (nowChar >= 'A' && nowChar <= 'Z') {
             return UPPER_CASE;
         }
-        if(nowChar >= 'a' && nowChar <= 'z') {
+        if (nowChar >= 'a' && nowChar <= 'z') {
             return LOWER_CASE;
         }
         return NO_ALPHABET;
