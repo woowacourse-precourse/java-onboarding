@@ -37,4 +37,13 @@ public class Problem2 {
         }
         return result+'*';
     }
+
+    private static boolean isDuplicateString(String cryptogram){
+        for(int i=0;i<cryptogram.length()-1;i++){
+            if(isDuplicate(cryptogram.charAt(i),cryptogram.charAt(i+1))){
+                return true;
+            }
+        }
+        return false;
+    }
 }
