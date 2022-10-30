@@ -41,6 +41,23 @@ public class Problem7 {
         return false;
     }
 
+    private static boolean checkFriends(List<List<String>> friends) {
+        List<String> indexList;
+        String index;
+        int size = friends.size();
+
+        if (size == 0 || size > 10000) {
+            return true;
+        }
+        for (int i = 0; i < size; i++) {
+            indexList = friends.get(i);
+            if (checkUserList(indexList)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private static boolean checkParam(String user, List<List<String>> friends, List<String> visitors) {
         if (user == null || friends == null || visitors == null) {
             return true;
