@@ -108,6 +108,18 @@ public class customApplicationTest
             char result = 'Z';
             assertThat(Problem4.mixer(alphabet,true)).isEqualTo(result);
         }
+        @Test
+        void case3() {
+            char alphabet = 'a';
+            char result = 'z';
+            assertThat(Problem4.mixer(alphabet,false)).isEqualTo(result);
+        }
+        @Test
+        void case4() {
+            String word = "Svool, Dliow! 123";
+            String result = "Hello, World! 123";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
     }
 
     @Nested

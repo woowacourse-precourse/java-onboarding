@@ -436,3 +436,117 @@ public static int solution(int number) {
 3. 치환 메소드
 4. mixer 메소드
 5. exception 처리
+
+##1. 소문자 테이블
+~~~java
+private static String lowerCasesTable = "abcdefghijklnmopqrstuvwxyz";
+~~~
+##2. 대문자 테이블
+~~~java
+private static String upperCasesTable = "ABCDEFGHIJKLNMOPQRSTUVWXYZ";
+~~~
+##3. 치환 메소드
+###3.1 substitution method
+~~~java
+/**
+ * 치환해주는 메소드
+ *
+ * @param word 문장
+ * @return 치환된 문장
+ */
+public static List<Character> substitution(String word){
+    List<Character> answer = new ArrayList<>();
+    for(char c : word.toCharArray()) {
+            answer.add(mixer(c, Character.isUpperCase(c)));
+    }
+    return answer;
+}
+~~~
+###3.2 substitution Test
+~~~java
+@Test
+void case1() {
+    char alphabet = '0';
+    char result = '0';
+    assertThat(Problem4.mixer(alphabet,false)).isEqualTo(result);
+}
+@Test
+void case2() {
+    char alphabet = 'A';
+    char result = 'Z';
+    assertThat(Problem4.mixer(alphabet,true)).isEqualTo(result);
+}
+@Test
+void case3() {
+    char alphabet = 'a';
+    char result = 'z';
+    assertThat(Problem4.mixer(alphabet,false)).isEqualTo(result);
+~~~
+##4. mixer 메소드
+###4.1 mixer method
+~~~java
+/**
+ * 테이블을 이용하여 본격적으로 섞어주는 메소드
+ *
+ * @param alphabet 알파벳 한글자
+ * @param isUpper 대문자 구분
+ * @return 치환된 알파벳
+ */
+public static char mixer(char alphabet,boolean isUpper)
+{
+    int index;
+    char substitutionChar;
+    if(alphabet==' ') return ' ';
+    if(isUpper)
+    {   index = upperCasesTable.length()-upperCasesTable.lastIndexOf(alphabet) - 1;
+        substitutionChar= upperCasesTable.charAt(index);
+    }else{
+        index = lowerCasesTable.length()-lowerCasesTable.lastIndexOf(alphabet) - 1 ;
+        try{
+            substitutionChar= lowerCasesTable.charAt(index);
+        }catch (StringIndexOutOfBoundsException e)
+        {
+            substitutionChar = alphabet;
+        }
+    }
+    return substitutionChar;
+}
+~~~
+###4.2 mixer Test -> main test(생략) + custom Test
+~~~java
+@Test
+void case4() {
+    String word = "Svool, Dliow! 123";
+    String result = "Hello, World! 123";
+    assertThat(Problem4.solution(word)).isEqualTo(result);
+}
+~~~
+##5. Exception
+~~~java
+/**
+ * 1~1000범위에 일치하지 않는 입력값 예외처리
+ * 
+ * @param word 문장
+ * @throws RangeException 범위Exception
+ */
+public static void exception(String word) throws RangeException
+{
+    if(word.length()<0||word.length()>1000){
+        new RangeException("1~1000의 범위와 일치하지 않습니다");
+    }
+}
+~~~
+##6. 최종 솔루션
+~~~java
+public static String solution(String word) {
+    String answer = "";
+    answer=substitution(word).stream().map(String::valueOf).collect(Collectors.joining());
+    return answer;
+}
+~~~
+---
+#5. 문제5
+##예상 필요 기능 정의
+1. 머니를 입력값으로 받아 지폐종류에따라 몇장이필요한지 반환해주는 메소드
+2. 리스트에 넣어주는 메소드
+3. 예외처리
