@@ -1,46 +1,43 @@
+
 package onboarding;
+import java.util.ArrayList;
 
 /*
- * oomm이 한번에 지워지도록 로직 변경해야됨
-*/
+cryptogram.charAt(i)와 cryptogram.charAt(i+1)만 지우게 해서 aabbcdeff같은 예외를 처리하지 못해 다시 풀었습니다.
+ */
 public class Problem2 {
     public static String solution(String cryptogram) {
+        ArrayList<Character> arrayList = new ArrayList<>();
 
-        String result = "";
+        for(char c : cryptogram.toCharArray()) arrayList.add(c);
 
-        return result = decoder(cryptogram);
+        while(!remove_overlap(arrayList));
+
+        String answer = "";
+        for(char c : arrayList) answer += c;
+
+        return answer;
     }
 
-    public static String decoder(String crypto) { //암호해독기
-        while (!overLap(crypto)) {
-            System.out.println("crypto1 : " + crypto);
-            for (int check = 0; check < crypto.length() - 1; check++) { // 중복 있는지 체크
-                if (crypto.charAt(check) == crypto.charAt(check + 1)) {
-                    crypto = remove_(crypto, check); // 삭제 완료
+    //
+        public static boolean remove_overlap(ArrayList<Character> check_list){
+            boolean list = true;
+
+            for(int i=0; i<check_list.size()-1; i++){
+                System.out.println("i1 : " + i);
+                if(check_list.get(i) == check_list.get(i+1)){
+                    list = false;
+                    char c = check_list.get(i);
+                    while(i+1 < check_list.size() && c == check_list.get(i+1))
+                        check_list.remove(i+1);
+                    check_list.remove(i);
+                    System.out.println("i : " + i);
+                    i--;
                 }
             }
-            System.out.println("crypto2 : " + crypto);
-            overLap(crypto);
+
+            return list;
         }
 
-        return crypto;
-        }
 
-    public static String remove_(String s,int target){ // 암호해독기에서 걸린 문자 삭제해줌
-        s = s.substring(0, target) + s.substring(target + 2);
-
-        return s;
     }
-
-    public static boolean overLap(String array){ //중복이 있는지 확인
-        for(int i = 0; i < array.length()-1; i++){
-            if (array.charAt(i) == array.charAt(i + 1)) {
-                return false;
-            }
-        }
-        return true;
-    }
-}
-
-
-

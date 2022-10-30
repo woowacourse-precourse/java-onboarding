@@ -5,7 +5,6 @@ import java.util.List;
 
 /*
  * 좀만 더 생각해보기
- * 테스트 무시가 나온다 왜지
  *
 */
 public class Problem3 {
