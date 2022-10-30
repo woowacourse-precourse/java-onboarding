@@ -10,6 +10,7 @@ class Problem1 {
         boolean check1 = validateInput(pobi.get(0), pobi.get(1));
         boolean check2 = validateInput(crong.get(0), crong.get(1));
 
+        answer = -1;
         if (check1 && check2) {
 
             int pobiScore = findMaxScore(pobi);
@@ -17,16 +18,12 @@ class Problem1 {
 
             if (pobiScore > crongScore) {
                 answer = 1;
-                return answer;
             } else if (pobiScore < crongScore) {
                 answer = 2;
-                return answer;
             } else {
                 answer = 0;
-                return answer;
             }
         }
-        answer = -1;
 
         return answer;
     }
