@@ -13,7 +13,11 @@ word는 길이가 1 이상 1,000 이하인 문자열이다.
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
-
+        char[] dic = new char[26];
+        int i;
+        for(i = 0;i<26;i++){
+            dic[i] = (char)('Z'-i);
+        }
         return answer;
     }
 }
