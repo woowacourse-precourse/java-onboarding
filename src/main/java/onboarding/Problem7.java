@@ -39,7 +39,22 @@ public class Problem7 {
     }
 
     //친구 관계 그래프 만들기
+    static void makeGraph (List<List<String>> friends) {
+        for (List<String> friend : friends){
+            String u = friend.get(0);
+            String v = friend.get(1);
 
+
+            List<String> list = graph.getOrDefault(u,new ArrayList<>());
+            list.add(v);
+            graph.put(u,list);
+
+            list = graph.getOrDefault(v,new ArrayList<>());
+            list.add(u);
+            graph.put(v,list);
+        }
+        return;
+    }
 
     //함께 아는 친구의 수를 찾아 점수로 환산하기
 
