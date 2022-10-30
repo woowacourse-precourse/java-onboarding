@@ -25,17 +25,17 @@ public class Problem6 {
     }
 
     // 이메일과 닉네임을 HashMap에 추가하는 함수
-    public static void addUser(HashMap<String, String> databaseOfNickname, HashMap<String, Boolean> duplicationOfNickname, List<String> user) {
+    public static void addUser(HashMap<String, String> databaseOfNickname, List<String> user) {
         databaseOfNickname.put(user.get(0), user.get(1));
-        duplicationOfNickname.put(user.get(0), false);
     }
 
     // 이메일과 닉네임을 추가한 뒤 중복 여부를 판단하는 함수
-    public static boolean checkDuplicationOfNicknames(HashMap<String, String> databaseOfNickname, String newNickname) {
-        for (String nickname : databaseOfNickname.values()) {
-            if (checkDuplicationOfNickname(nickname, newNickname)) return true;
+    public static String checkDuplicationOfNicknames(HashMap<String, String> databaseOfNickname, List<String> newUser) {
+        for (String key : databaseOfNickname.keySet()) {
+            if (key == newUser.get(0)) continue;
+            if (checkDuplicationOfNickname(databaseOfNickname.get(key), newUser.get(1))) return key;
         }
-        return false;
+        return "";
     }
 
     // 유저들 각각에 대해 중복 여부를 판단하는 함수
@@ -48,8 +48,13 @@ public class Problem6 {
 
     // 이메일과 닉네임의 중복이 있으면 이메일에 대한 중복 여부를 체크하는 함수
     public static void checkDuplication(HashMap<String, String> databaseOfNickname, HashMap<String, Boolean> duplicationOfNickname, List<String> user) {
-        if (checkDuplicationOfNicknames(databaseOfNickname, user.get(1)))
-            duplicationOfNickname.replace(user.get(0), true);
+        String key = checkDuplicationOfNicknames(databaseOfNickname, user);
+        if (key != "") {
+            duplicationOfNickname.put(user.get(0), true);
+            duplicationOfNickname.put(key, true);
+        }
+        else
+            duplicationOfNickname.put(user.get(0), false);
     }
 
     // 중복된 이메일을 리스트에 저장하여 리턴하는 함수
@@ -65,7 +70,7 @@ public class Problem6 {
     // 주어진 이메일, 닉네임 리스트를 하나씩 추가하는 함수
     public static void AddUsers(HashMap<String, String> databaseOfNickname, HashMap<String, Boolean> duplicationOfNickname, List<List<String>> forms) {
         for (List<String> user: forms) {
-            addUser(databaseOfNickname, duplicationOfNickname, user);
+            addUser(databaseOfNickname, user);
             checkDuplication(databaseOfNickname, duplicationOfNickname, user);
         }
     }
