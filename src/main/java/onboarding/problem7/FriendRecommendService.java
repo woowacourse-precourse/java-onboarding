@@ -1,9 +1,9 @@
 package onboarding.problem7;
 
 import static java.util.stream.Collectors.toList;
-import static onboarding.problem7.consts.FriendListConst.RECOMMEND_FRIEND_LIST_LIMIT;
-import static onboarding.problem7.consts.FriendScoreConst.FRIEND_RELATION_SCORE;
-import static onboarding.problem7.consts.FriendScoreConst.VISITOR_SCORE;
+import static onboarding.problem7.consts.FriendConst.RECOMMEND_FRIEND_LIST_LIMIT;
+import static onboarding.problem7.consts.FriendConst.FRIEND_RELATION_SCORE;
+import static onboarding.problem7.consts.FriendConst.VISITOR_SCORE;
 
 import java.util.List;
 

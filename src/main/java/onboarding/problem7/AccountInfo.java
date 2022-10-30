@@ -1,7 +1,7 @@
 package onboarding.problem7;
 
-import static onboarding.problem7.consts.FriendListConst.FRIEND_A_INDEX;
-import static onboarding.problem7.consts.FriendListConst.FRIEND_B_INDEX;
+import static onboarding.problem7.consts.FriendConst.FRIEND_A_INDEX;
+import static onboarding.problem7.consts.FriendConst.FRIEND_B_INDEX;
 
 import java.util.Collection;
 import java.util.HashMap;
