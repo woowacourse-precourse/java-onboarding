@@ -43,7 +43,7 @@ public class Problem7 {
             for(String friendOfFriend : friendOfFriendList){
                 if(friendOfFriend.equals(user)) continue;
                 FriendCandidate friendCandidate = friendCandidateIdInfoMap.getOrDefault(friendOfFriend, new FriendCandidate(friendOfFriend));
-                friendCandidate.setScore(friendCandidate.getScore()+1);
+                friendCandidate.setScore(friendCandidate.getScore()+10);
                 friendCandidateIdInfoMap.put(friendOfFriend, friendCandidate);
             }
         }
