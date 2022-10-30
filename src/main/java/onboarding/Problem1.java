@@ -14,6 +14,16 @@ class Problem1 {
         return result;
     }
 
+    private static int mulScore(int number) {
+        int result = 1;
+
+        while (number != 0) {
+            result *= (number % 10);
+            number /= 10;
+        }
+        return result;
+    }
+
     private static boolean checkParam(List<Integer> list) {
         Integer leftPage;
         Integer rightPage;
