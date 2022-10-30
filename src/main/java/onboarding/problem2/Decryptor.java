@@ -25,23 +25,26 @@ public class Decryptor {
     }
 
     private static boolean findAndDeleteDuplicateCharacter(List<String> cryptogramList) {
-        boolean removeDuplicateCharacter = false;
+        boolean isRemoveDuplicateCharacter = false;
         int startCursor;
         String startCharacter;
         String nowCharacter;
 
-        for (int i = CHARACTER_START_INDEX; i < cryptogramList.size(); i++) {
-            startCursor = i - CHARACTER_BEFORE_INDEX;
+        int index = CHARACTER_START_INDEX;
+
+        while (index < cryptogramList.size()) {
+            startCursor = index - CHARACTER_BEFORE_INDEX;
             startCharacter = cryptogramList.get(startCursor);
-            nowCharacter = cryptogramList.get(i);
+            nowCharacter = cryptogramList.get(index);
 
             if (startCharacter.equals(nowCharacter)) {
                 deleteDuplicateCharacter(cryptogramList, nowCharacter, startCursor);
-                removeDuplicateCharacter = true;
-                i = startCursor;
+                isRemoveDuplicateCharacter = true;
+                index = startCursor;
             }
+            index++;
         }
-        return removeDuplicateCharacter;
+        return isRemoveDuplicateCharacter;
     }
 
     private static void deleteDuplicateCharacter(List<String> cryptogramList, String nowCharacter,
