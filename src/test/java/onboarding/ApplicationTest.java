@@ -2,9 +2,8 @@ package onboarding;
 
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import problem7.FriendConnection;
+import problem7.FriendConnectionRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -344,9 +343,9 @@ class ApplicationTest {
                     List.of("shakevan", "jun"),
                     List.of("shakevan", "mrko")
             );
-            FriendConnection friendConnection = new FriendConnection(friends);
-            List<String> donutFriends = friendConnection.getFriends("donut");
-            List<String> mrkoFriends = friendConnection.getFriends("mrko");
+            FriendConnectionRepository.create(friends);
+            List<String> donutFriends = FriendConnectionRepository.getFriends("donut");
+            List<String> mrkoFriends = FriendConnectionRepository.getFriends("mrko");
 
             assertThat(donutFriends).isEqualTo(List.of("andole", "jun", "mrko"));
             assertThat(mrkoFriends).isEqualTo(List.of("donut", "shakevan"));
