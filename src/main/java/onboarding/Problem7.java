@@ -40,5 +40,10 @@ public class Problem7 {
             }
         }
     }
+    private static void getVisitorsPoint(List<String> friends) {
+        for (String friend : friends) {
+            friendsAndScoreMap.put(friend, friendsAndScoreMap.getOrDefault(friend, 0) + VISITORS_POINT);
+        }
+    }
 
 }
