@@ -8,14 +8,8 @@ class Problem1 {
             return -1;
         }
 
-        int pobi_first = getMaxNumber(pobi.get(0));
-        int pobi_second = getMaxNumber(pobi.get(1));
-
-        int crong_first = getMaxNumber(crong.get(0));
-        int crong_second = getMaxNumber(crong.get(1));
-
-        int pobi_num = (pobi_first > pobi_second) ? pobi_first : pobi_second;
-        int crong_num = (crong_first > crong_second) ? crong_first : crong_second;
+        int pobi_num = compareNumber(pobi.get(0), pobi.get(1));
+        int crong_num = compareNumber(crong.get(0), crong.get(1));
 
         if (pobi_num > crong_num)
             return 1;
@@ -25,6 +19,24 @@ class Problem1 {
             return 0;
     }
 
+    /**
+     *
+     * @param num1 왼쪽 페이지 숫자
+     * @param num2 오른쪽 페이지 숫자
+     * @return 두 숫자의 각 자리의 합과 곱을 비교한 후 가장 큰 값
+     */
+    public static int compareNumber(int num1, int num2){
+        int first = getMaxNumber(num1);
+        int second = getMaxNumber(num2);
+
+        return (first > second) ? first : second;
+    }
+
+    /**
+     *
+     * @param num 페이지 숫자
+     * @return 숫자의 각 자리의 합과 곱 중 더 큰 값
+     */
     public static int getMaxNumber(int num){
         int multi_num=1, sum_num=0;
 
