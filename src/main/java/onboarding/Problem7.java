@@ -89,17 +89,17 @@ public class Problem7 {
 
     static class UserScore{
         private static final int VISITANT = 1;
-        private Map<String, Integer> userScoreMap;
+        private final Map<String, Integer> userScoreMap;
 
-        public UserScore(String user, List<String> visitors, RelationShip relationShip){
+        public UserScore(final String user, final List<String> visitors, final RelationShip relationShip){
             this.userScoreMap = makeInitUserScoreMap(relationShip, user);
             addUserScoreMapByVisitor(visitors);
         }
-        private Map<String, Integer> makeInitUserScoreMap(RelationShip relationShip, String user) {
+        private Map<String, Integer> makeInitUserScoreMap(final RelationShip relationShip, final String user) {
             return relationShip.makeInitUserScoreMapByRelationShip(user);
         }
 
-        private void addUserScoreMapByVisitor(List<String> visitors) {
+        private void addUserScoreMapByVisitor(final List<String> visitors) {
             if (visitors.size() == 0) return;
 
             for (String visitor : visitors) {
