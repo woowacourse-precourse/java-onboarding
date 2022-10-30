@@ -1,12 +1,12 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-
         HashSet<String> emailSet = new HashSet<>();
 
         for (int i=0; i<forms.size(); i++) {
@@ -32,6 +32,10 @@ public class Problem6 {
                 }
             }
         }
+
+        List<String> answer = new ArrayList<>(emailSet);
+        answer.sort(Comparator.naturalOrder());
+
         return answer;
     }
 }
@@ -51,5 +55,5 @@ public class Problem6 {
 - [V] 두 사람의 닉네임 중 더 짧은 걸 고른다
 - [V] 더 짧은 닉네임에서 2글자씩 뽑는다
 - [V] 뽑은 문자열이 긴 닉네임에 포함되면 두 사람의 이메일을 emailSet에 넣는다
-- [] emailSet을 이용해 answer를 만들고 오름차순으로 정렬한다
+- [V] emailSet을 이용해 answer를 만들고 오름차순으로 정렬한다
  */
