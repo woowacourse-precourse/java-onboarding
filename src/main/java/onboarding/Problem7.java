@@ -9,8 +9,7 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
 
         Map<String, List<String>> userFriendListMap = getUserFriendListMap(friends);
-        Map<String, FriendCandidate> friendCandidateIdInfoMap = initFriendCandidateIdInfoMap(user, userFriendListMap);
-        List<FriendCandidate> friendCandidateList = calcRecommendScore(friendCandidateIdInfoMap, userFriendListMap, visitors);
+        List<FriendCandidate> friendCandidateList = getFriendCandidateList(user, userFriendListMap, visitors);
         answer = getRecommendationList(friendCandidateList);
 
         return answer;
@@ -35,14 +34,29 @@ public class Problem7 {
         return userFriendListMap;
     }
 
-    public static Map<String, FriendCandidate> initFriendCandidateIdInfoMap(String user, Map<String, List<String>> userFriendListMap){
+    public static List<FriendCandidate> getFriendCandidateList(String user, Map<String, List<String>> userFriendListMap, List<String> visitors){
         Map<String, FriendCandidate> friendCandidateIdInfoMap = new HashMap<>();
 
-        return friendCandidateIdInfoMap;
-    }
+        List<String> friendList = userFriendListMap.get(user);
+        for(String friend : friendList){
+            List<String> friendOfFriendList = userFriendListMap.get(friend);
+            for(String friendOfFriend : friendOfFriendList){
+                if(friendOfFriend.equals(user)) continue;
+                FriendCandidate friendCandidate = friendCandidateIdInfoMap.getOrDefault(friendOfFriend, new FriendCandidate(friendOfFriend));
+                friendCandidate.setScore(friendCandidate.getScore()+1);
+                friendCandidateIdInfoMap.put(friendOfFriend, friendCandidate);
+            }
+        }
 
-    public static List<FriendCandidate> calcRecommendScore(Map<String, FriendCandidate> friendCadidateIdInfoMap, Map<String, List<String>> userFriendListMap, List<String> visitors){
-        List<FriendCandidate> friendCandidateList = new ArrayList<>();
+        for(String visitor : visitors){
+            if(friendList.contains(visitor)) continue;
+            FriendCandidate friendCandidate = friendCandidateIdInfoMap.getOrDefault(visitor, new FriendCandidate(visitor));
+            friendCandidate.setScore(friendCandidate.getScore()+1);
+            friendCandidateIdInfoMap.put(visitor, friendCandidate);
+        }
+
+        List<FriendCandidate> friendCandidateList = new ArrayList<>(friendCandidateIdInfoMap.values());
+        Collections.sort(friendCandidateList);
 
         return friendCandidateList;
     }
