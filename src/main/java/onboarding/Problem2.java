@@ -21,13 +21,11 @@ public class Problem2 {
 
             if (count > 0 && cryptogram.charAt(i) != cryptogram.charAt(i + 1)) {
                 cryptogram = subStringWord(cryptogram, check, count);
-                i = 0;
+                i = -1;
                 count = 0;
+            } else if (count > 0 && i == cryptogram.length() - 2) {
+                cryptogram = "";
             }
-        }
-
-        if (cryptogram.length() == 2 && cryptogram.charAt(0) == cryptogram.charAt(1)) {
-            cryptogram = "";
         }
 
         return cryptogram;
