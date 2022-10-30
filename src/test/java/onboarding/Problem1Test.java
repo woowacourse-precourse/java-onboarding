@@ -15,21 +15,16 @@ class Problem1Test {
 	void 캐릭터별_큰_숫자_찾기(){
 		List<Integer> pobi = List.of(97, 98);
 		List<Integer> crong = List.of(197, 198);
-		assertThat(Problem1.pickFriendMaxNumber(pobi)).isEqualTo(72);
-		assertThat(Problem1.pickFriendMaxNumber(crong)).isEqualTo(72);
+
+		assertThat(new Problem1.Friend(pobi).getMaxNumber()).isEqualTo(72);
+		assertThat(new Problem1.Friend(crong).getMaxNumber()).isEqualTo(72);
+		assertThat(Problem1.solution(pobi, crong)).isEqualTo(0);
 
 		pobi = List.of(99, 100);
-		crong = List.of(10, 11);
-		assertThat(Problem1.pickFriendMaxNumber(pobi)).isEqualTo(81);
-		assertThat(Problem1.pickFriendMaxNumber(crong)).isEqualTo(2);
-	}
-
-	@Test
-	@DisplayName("왼쪽 페이지 각 자리수 숫자 더하거나 곱한것 중 큰 숫자")
-	void 덧셈_곱셈(){
-		assertThat(Problem1.calculateMaxNumber(97)).isEqualTo(63);
-		assertThat(Problem1.calculateMaxNumber(13)).isEqualTo(4);
-		assertThat(Problem1.calculateMaxNumber(10)).isEqualTo(1);
+		crong = List.of(11, 12);
+		assertThat(new Problem1.Friend(pobi).getMaxNumber()).isEqualTo(81);
+		assertThat(new Problem1.Friend(crong).getMaxNumber()).isEqualTo(3);
+		assertThat(Problem1.solution(pobi, crong)).isEqualTo(1);
 	}
 
 	@Test

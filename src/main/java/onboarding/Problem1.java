@@ -1,6 +1,8 @@
 package onboarding;
 
 import java.util.List;
+import java.util.Objects;
+
 /**
  * TODO
  * 1. 책을 임의로 펼친다.v
@@ -19,142 +21,161 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = MAX_VALUE;
-        System.out.println(pobi + " " + crong);
-        if (validBookNumber(pobi) == -1 || validBookNumber(crong) == -1) {
+        if (validate(pobi) == -1 || validate(crong) == -1) {
             return INPUT_ERROR;
         }
 
-        int pobiMaxNumber = pickFriendMaxNumber(pobi);
-        int crongMaxNumber = pickFriendMaxNumber(crong);
-
-        answer = getWinner(pobiMaxNumber, crongMaxNumber);
+        answer = Result.getWinner(new Friend(pobi), new Friend(crong));
 
         return answer;
     }
 
-    private static int getWinner(int pobiMaxNumber, int crongMaxNumber) {
-        int answer = -1;
-        if (pobiMaxNumber > crongMaxNumber) {
-            answer = 1;
-        } else if (pobiMaxNumber < crongMaxNumber) {
-            answer = 2;
-        } else {
-            answer = 0;
+    static class Result{
+        private Result(){}
+
+        public static int getWinner(Friend pobiFriend, Friend crongFriend) {
+            if (pobiFriend.getMaxNumber() == crongFriend.getMaxNumber()) {
+                return 0;
+            }else if (pobiFriend.getMaxNumber() > crongFriend.getMaxNumber()) {
+                return 1;
+            } else {
+                return 2;
+            }
         }
-        return answer;
     }
 
-    public static int pickFriendMaxNumber(List<Integer> friend) {
-        return Math.max(calculateMaxNumber(friend.get(0)), calculateMaxNumber(friend.get(1)));
+    static class Friend{
+        private final int maxNumber;
+
+        public Friend(final List<Integer> bookNumbers) {
+            this.maxNumber = getMaxNumber(bookNumbers);
+        }
+
+        private int getMaxNumber(final List<Integer> bookNumbers) {
+            return Math.max(calculateMaxNumber(bookNumbers.get(0)), calculateMaxNumber(bookNumbers.get(1)));
+        }
+
+        private int calculateMaxNumber(final Integer number) {
+            String[] splitNumber =  String.valueOf(number).split("");
+            return Math.max(calculateMultiplication(splitNumber), calculatePlus(splitNumber));
+        }
+        private int calculatePlus(String[] splitNumber) {
+            int tmpNumber = 0;
+            for (String step : splitNumber) {
+                tmpNumber += Integer.parseInt(step);
+            }
+            return tmpNumber;
+        }
+        private int calculateMultiplication(String[] splitNumber) {
+            int tmpNumber = 1;
+            for (String step : splitNumber) {
+                tmpNumber *= Integer.parseInt(step);
+            }
+            return tmpNumber;
+        }
+
+        public int getMaxNumber() {
+            return maxNumber;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o)
+                return true;
+            if (o == null || getClass() != o.getClass())
+                return false;
+            Friend friend = (Friend)o;
+            return maxNumber == friend.maxNumber;
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(maxNumber);
+        }
     }
 
-    public static int calculateMaxNumber(Integer num) {
-        int multiValue = 1;
-        int plusValue = 0;
-        String[] splitNum = String.valueOf(num).split("");
-        for (String stepNum : splitNum) {
-            multiValue *= Integer.parseInt(stepNum);
-            plusValue += Integer.parseInt(stepNum);
-        }
-        if (multiValue > plusValue) {
-            return multiValue;
-        }
-        return plusValue;
 
+    private static int validate(final List<Integer> friend) {
+        return Advice.validBookNumber(friend);
     }
 
-    private static int validBookNumber(List<Integer> friend) {
-        if (Advice.checkInputDataCount(friend) == -1) {
-            return INPUT_ERROR;
+
+    static class Advice{
+        public static final int MAX_VALUE = Integer.MAX_VALUE;
+        private Advice(){}
+        public static int validBookNumber(final List<Integer> friend) {
+            if (checkInputDataCount(friend) == -1) {
+                return INPUT_ERROR;
+            }
+            if (checkInputDataValidRange(friend) == -1) {
+                return INPUT_ERROR;
+            }
+            if (checkFistEndPage(friend) == -1) {
+                return INPUT_ERROR;
+            }
+            if (checkEachPageIsSerialize(friend) == -1) {
+                return INPUT_ERROR;
+            }
+            if (checkPageNumberValidation(friend) == -1) {
+                return INPUT_ERROR;
+            }
+            return MAX_VALUE;
         }
-        if (Advice.checkInputDataValidRange(friend) == -1) {
-            return INPUT_ERROR;
+
+        private static int checkInputDataCount(final List<Integer> friend) {
+            if (friend.size() != 2){
+                return -1;
+            }
+            return MAX_VALUE;
         }
-        if (Advice.checkFistEndPage(friend) == -1) {
-            return INPUT_ERROR;
+
+        private static int checkInputDataValidRange(final List<Integer> friend) {
+            Integer isValid = 0;
+            for (Integer num : friend) {
+                isValid = isValidRange(num);
+            }
+            return isValid;
         }
-        if (Advice.checkEachPageIsSerialize(friend) == -1) {
-            return INPUT_ERROR;
+        private static Integer isValidRange(final Integer num) {
+            if (num <= 0 || num > 400) {
+                return -1;
+            }
+            return MAX_VALUE;
         }
-        if (Advice.checkPageNumberValidation(friend) == -1) {
-            return INPUT_ERROR;
+
+        private static int checkFistEndPage(final List<Integer> friend) {
+            if (friend.get(0).equals(1) || friend.get(1).equals(2)) {
+                return -1;
+            }
+            if (friend.get(0).equals(399) || friend.get(1).equals(400)) {
+                return -1;
+            }
+            return MAX_VALUE;
         }
-        return MAX_VALUE;
+
+        private static int checkEachPageIsSerialize(final List<Integer> friend) {
+            if ((friend.get(0) + 1) != friend.get(1)) {
+                return -1;
+            }
+            return MAX_VALUE;
+        }
+
+        private static int checkPageNumberValidation(final List<Integer> friend) {
+            if (!checkLeftNumber(friend.get(0)) || !checkRightNumber(friend.get(1))){
+                return -1;
+            }
+            return MAX_VALUE;
+        }
+
+        private static Boolean checkLeftNumber(Integer leftNumber) {
+            return leftNumber % 2 == 1;
+        }
+
+        private static Boolean checkRightNumber(Integer rightNumber) {
+            return rightNumber % 2 == 0;
+        }
     }
 }
 
-class Advice{
-    public static final int MAX_VALUE = Integer.MAX_VALUE;
-    private Advice(){}
 
-    /**
-     * 1. List의 길이가 2가 아닐 때
-     */
-    public static int checkInputDataCount(final List<Integer> friend) {
-        if (friend.size() != 2){
-            return -1;
-        }
-        return MAX_VALUE;
-    }
-
-    /**
-     * 2. 페이지 수가 요구사항에서 벗어날 때
-     */
-    public static int checkInputDataValidRange(final List<Integer> friend) {
-        Integer isValid = 0;
-        for (Integer num : friend) {
-            isValid = isValidRange(num);
-        }
-        return isValid;
-    }
-    private static Integer isValidRange(final Integer num) {
-        if (num <= 0 || num > 400) {
-            return -1;
-        }
-        return MAX_VALUE;
-    }
-
-    /**
-     * 3. 시작면과 마지막 면이 나올 때
-     */
-    public static int checkFistEndPage(final List<Integer> friend) {
-        if (friend.get(0).equals(1) || friend.get(1).equals(2)) {
-            return -1;
-        }
-        if (friend.get(0).equals(399) || friend.get(1).equals(400)) {
-            return -1;
-        }
-        return MAX_VALUE;
-    }
-
-    /**
-     * 4. 양 옆 페이지 수가 연속적이지 않을 때
-     */
-    public static int checkEachPageIsSerialize(final List<Integer> friend) {
-        if ((friend.get(0) + 1) != friend.get(1)) {
-            return -1;
-        }
-        return MAX_VALUE;
-    }
-
-    /**
-     * 5. 왼쪽이 짝수이거나 오른쪽이 홀수일 때
-     */
-    public static int checkPageNumberValidation(final List<Integer> friend) {
-        if (!checkLeftNumber(friend.get(0)) || !checkRightNumber(friend.get(1))){
-            return -1;
-        }
-        return MAX_VALUE;
-    }
-
-    private static Boolean checkLeftNumber(Integer leftNumber) {
-        return leftNumber % 2 == 1;
-    }
-
-    private static Boolean checkRightNumber(Integer rightNumber) {
-        return rightNumber % 2 == 0;
-    }
-
-
-}
 
