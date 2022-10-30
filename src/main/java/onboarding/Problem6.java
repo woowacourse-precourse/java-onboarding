@@ -51,6 +51,7 @@ class ExceptionProblem6 {
             conformEmailFormat(form.get(0));
             validateEmailLength(form.get(0));
             validateKoreanNickname(form.get(1));
+            validateNicknameLength(form.get(1));
         }
     }
 
@@ -73,4 +74,11 @@ class ExceptionProblem6 {
             throw new IllegalArgumentException();
         }
     }
+
+    private static void validateNicknameLength(String nickname) {
+        if (nickname.length() < 1 || nickname.length() >= 20) {
+            throw new IllegalArgumentException();
+        }
+    }
+
 }
