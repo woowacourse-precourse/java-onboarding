@@ -8,7 +8,7 @@ public class Transformation {
         String newWord = "";
         StringBuilder builder = new StringBuilder();
 
-        for(int i = 0; i < word.length(); i++) {
+        for (int i = 0; i < word.length(); i++) {
             char character = word.charAt(i);
             builder.append(((char) transformAlphabet(character)));
         }
@@ -17,11 +17,11 @@ public class Transformation {
     }
 
     private static int transformAlphabet(char character) {
-        if(isLowerCase(character)) {
+        if (isLowerCase(character)) {
             return (char) ('a' + (25 - (character - 'a')));
         }
 
-        if(isUpperCase(character)) {
+        if (isUpperCase(character)) {
             return (char) ('A' + (25 - (character - 'A')));
         }
 
