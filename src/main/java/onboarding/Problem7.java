@@ -8,7 +8,9 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Problem7 {
-    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+
+    public static List<String> solution(String user, List<List<String>> friends,
+        List<String> visitors) {
         try {
             validateData(user, friends, visitors);
             User userOfSns = new User(user);
@@ -23,7 +25,8 @@ public class Problem7 {
         }
     }
 
-    static void recordRelationshipLlist(List<List<String>> relationshipList, User user, Others others) {
+    static void recordRelationshipLlist(List<List<String>> relationshipList, User user,
+        Others others) {
         List<List<String>> otherRelationships = new ArrayList<>();
         relationshipList.stream().forEach(relationship -> {
             String isFriendOrOther = recordRelationship(relationship, user);
@@ -68,7 +71,8 @@ public class Problem7 {
         return "Just visitor";
     }
 
-    static void validateData(String user, List<List<String>> friends, List<String> visitors) throws Exception {
+    static void validateData(String user, List<List<String>> friends, List<String> visitors)
+        throws Exception {
         validateName(user);
         validateFriends(friends);
         validateVisitors(visitors);
@@ -84,7 +88,7 @@ public class Problem7 {
 
     static void validateFriends(List<List<String>> friends) throws Exception {
         validateFriendsLength(friends);
-        for (List<String> relationship: friends) {
+        for (List<String> relationship : friends) {
             validateStringList(relationship);
         }
     }
@@ -95,7 +99,7 @@ public class Problem7 {
     }
 
     static void validateStringList(List<String> stringList) throws Exception {
-        for (String name: stringList) {
+        for (String name : stringList) {
             validateName(name);
         }
     }
@@ -335,5 +339,7 @@ enum Point {
         this.point = point;
     }
 
-    int getPoint() { return point; }
+    int getPoint() {
+        return point;
+    }
 }

@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Problem6 {
+
     public static List<String> solution(List<List<String>> forms) {
         try {
             Database.validateData(forms);
@@ -48,7 +49,8 @@ public class Problem6 {
         boolean isDuplicated = false;
         for (int i = 0; i < nameSplitBy2.size(); i++) {
             String twoCharacters = nameSplitBy2.get(i);
-            boolean isNameDuplicated = Database.checkDuplicationByTwoCharacters(twoCharacters, indexOfName);
+            boolean isNameDuplicated = Database.checkDuplicationByTwoCharacters(twoCharacters,
+                indexOfName);
             if (isNameDuplicated) {
                 isDuplicated = true;
                 break;
@@ -61,8 +63,8 @@ public class Problem6 {
         List<String> nameSplitBy2 = new ArrayList<>();
         List<String> characterList = new ArrayList<>(Arrays.asList(name.split("")));
         int lengthOfName = characterList.size();
-        for (int i = 0; i < lengthOfName - 1; i ++) {
-            String twoCharacters = characterList.get(i) + characterList.get(i+1);
+        for (int i = 0; i < lengthOfName - 1; i++) {
+            String twoCharacters = characterList.get(i) + characterList.get(i + 1);
             nameSplitBy2.add(twoCharacters);
         }
         return nameSplitBy2;
@@ -71,7 +73,7 @@ public class Problem6 {
     static List<String> getEmailListByIndexList(List<Integer> duplicatedIndexList) {
         List<String> duplicatedEmailList = new ArrayList<>();
         List<String> emailList = Database.getEmailList();
-        for (int index: duplicatedIndexList) {
+        for (int index : duplicatedIndexList) {
             String email = emailList.get(index);
             duplicatedEmailList.add(email);
         }
@@ -144,7 +146,7 @@ class Database {
 
     static void validateData(List<List<String>> forms) throws Exception {
         validateLengthOfForms(forms);
-        for (int i = 0 ; i < forms.size(); i ++) {
+        for (int i = 0; i < forms.size(); i++) {
             String name = forms.get(i).get(1);
             String email = forms.get(i).get(0);
             validateName(name);
@@ -159,7 +161,7 @@ class Database {
         }
     }
 
-    static void validateName(String name) throws Exception{
+    static void validateName(String name) throws Exception {
         String pattern = "^[가-힣ㄱ-ㅎㅏ-ㅣ]{1,20}$";
         boolean isMatch = Pattern.matches(pattern, name);
         if (!isMatch) {
@@ -167,7 +169,7 @@ class Database {
         }
     }
 
-    static void validateEmail(String email) throws Exception{
+    static void validateEmail(String email) throws Exception {
         String pattern = "^[a-zA-Z0-9._%+-]{1,10}+@email.com$";
         boolean isMatch = Pattern.matches(pattern, email);
         if (!isMatch) {

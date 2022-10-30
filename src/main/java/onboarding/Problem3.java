@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Collections;
 
 public class Problem3 {
+
     public static int solution(int number) {
         try {
             validate(number);
@@ -35,7 +36,8 @@ public class Problem3 {
 
     static ArrayList<String> convertNumberToArrayList(int number) {
         String stringOfNumber = Integer.toString(number);
-        ArrayList<String> arrayListOfStringNumber= new ArrayList<>(Arrays.asList(stringOfNumber.split("")));
+        ArrayList<String> arrayListOfStringNumber = new ArrayList<>(
+            Arrays.asList(stringOfNumber.split("")));
         return arrayListOfStringNumber;
     }
 
