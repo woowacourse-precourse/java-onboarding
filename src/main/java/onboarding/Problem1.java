@@ -30,7 +30,7 @@ class PagePro1 {
   }
 
   public static boolean isValidatePage(int left, int right) {
-    return (right - left) != 1 || left < MIN_PAGE_NUMBER || right > MAX_PAGE_NUMBER;
+    return (right - left) != 1 || left <= MIN_PAGE_NUMBER || right >= MAX_PAGE_NUMBER;
   }
 
   public int getScore() {
@@ -85,7 +85,8 @@ class ScorePro1 {
 class Problem1 {
 
   public static int solution(List<Integer> pobi, List<Integer> crong) {
-    if (PagePro1.isValidatePage(pobi.get(0), pobi.get(1)) ||
+    if (pobi.size() != 2 || crong.size() != 2 ||
+        PagePro1.isValidatePage(pobi.get(0), pobi.get(1)) ||
         PagePro1.isValidatePage(crong.get(0), crong.get(1))) {
       return -1;
     }

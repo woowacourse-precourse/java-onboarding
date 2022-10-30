@@ -12,7 +12,7 @@ class ValidatorPro7 {
   public final static int MIN_FRIENDS_SIZE = 1;
   public final static int MAX_FRIENDS_SIZE = 10_000;
   public final static int FRIENDS_LIST_SIZE = 2;
-  public final static int MIN_VISITORS_SIZE = 1;
+  public final static int MIN_VISITORS_SIZE = 0;
   public final static int MAX_VISITORS_SIZE = 10_000;
   public final static int MIN_ID_LEN = 1;
   public final static int MAX_ID_LEN = 30;
