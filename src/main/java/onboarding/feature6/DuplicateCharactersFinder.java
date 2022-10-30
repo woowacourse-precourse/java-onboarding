@@ -2,7 +2,7 @@ package onboarding.feature6;
 
 import java.util.*;
 
-public class DuplicateFinder {
+public class DuplicateCharactersFinder {
     private String duplicateLetters = "";
     private String currentNickname;
     private String currentEmail;
@@ -20,7 +20,7 @@ public class DuplicateFinder {
     private List<String> initialNicknames;
     private Map<String, Set<String>> result = new HashMap<>();
 
-    public DuplicateFinder(UserInfo userInfo) {
+    public DuplicateCharactersFinder(UserInfo userInfo) {
         initialEmails = userInfo.getEmails();
         initialNicknames = userInfo.getNicknames();
         initialNicknamesSize = initialNicknames.size();
