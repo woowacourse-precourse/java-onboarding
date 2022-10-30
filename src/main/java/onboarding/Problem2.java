@@ -9,6 +9,16 @@ public class Problem2 {
     }
 
     /*
+    문제조건 사항 체크
+     */
+    private static boolean checkLimit(String cryptogram){
+        //문자열 길이 1부터 1000까지
+        if(cryptogram.length()>=1&&cryptogram.length()<=1000) return true;
+        //문자열이 다 소문자 인지
+        if (cryptogram.matches("^[a-z]*$")) return true;
+        return false;
+    }
+    /*
     스택을 이용한 중첩단어 뺴기
      */
     private static String removeDuplicate(String str){
