@@ -5,11 +5,24 @@ import java.util.LinkedList;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer;
+        Cryptogram.validationRange(cryptogram);
         answer =  Cryptogram.decodeCryptogram(cryptogram);
         return answer;
     }
+
 }
+
+
 class Cryptogram{
+    private static final int LOWER_BOUND_LIMIT = 1;
+    private static final int UPPER_BOUND_LIMIT = 1000;
+
+    static void validationRange(String cryptogram) {
+        if(cryptogram.length() < LOWER_BOUND_LIMIT || cryptogram.length() > UPPER_BOUND_LIMIT){
+            throw new IllegalStateException("1이상, 1000 이하인 문자열을 입력해주세요.");
+        }
+    }
+
     private static boolean isPresent(LinkedList<Character> list){
         if(list.isEmpty()){
             return false;
