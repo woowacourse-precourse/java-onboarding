@@ -5,8 +5,11 @@ import java.util.stream.Collectors;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer ="answer";
-        return answer;
+        if (validateCryptoSize(cryptogram)) {
+            return "";
+        }
+
+        return decrypt(cryptogram);
     }
 
     private static String decrypt(String cryptogram) {
@@ -35,5 +38,4 @@ public class Problem2 {
     private static boolean validateCryptoSize(String cryptogram) {
         return cryptogram.length() < 1 || cryptogram.length() > 1000;
     }
-    
 }
