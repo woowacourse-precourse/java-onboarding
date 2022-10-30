@@ -69,7 +69,7 @@ public class Problem7 {
 
 
     private static void initializeArray() {
-        int[][] arr = new int[idx][2]; //arr[i][0] - score, arr[i][1] - mapping
+        arr = new int[idx][2]; //arr[i][0] - score, arr[i][1] - mapping
         for (int i = 0; i < idx; i++) {
             arr[i][1] = i;
         }
