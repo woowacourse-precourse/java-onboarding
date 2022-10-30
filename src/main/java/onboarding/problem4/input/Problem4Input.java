@@ -7,8 +7,8 @@ public class Problem4Input implements ProblemInput {
 
     private final Word word;
 
-    public Problem4Input(String input) {
-        this.word = new Word(input);
+    public Problem4Input(String word) {
+        this.word = new Word(word);
     }
 
     public Word word() {
