@@ -24,3 +24,10 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 목록 작성해보기
+1. Set 이용해서 사용자 뽑기 (friends, visitors)
+2. set 이용해서 사용자를 받아온 후 점수 필드를 가지도록 Map 만들기
+2. User의 친구 목록 뽑기
+3. friends 탐색하면서 user의 친구면 사용자 +10점
+4. visitors 탐색하면서 사용자 +1점
