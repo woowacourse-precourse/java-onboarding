@@ -16,4 +16,17 @@ public class Problem6 {
         return nickname;
     }
 
+    //겹친부분 첫번째 인덱스 찾기
+    public static int getFirstIndexOfDuplicate(char currentNickChar, String nextNick) {
+        int firstIndex = -1;
+        for (int i = 0; i < nextNick.length() - 1; i++) {
+            if (currentNickChar == nextNick.charAt(i)){
+                firstIndex= i;
+                return firstIndex;
+            }
+        }
+
+        return firstIndex;
+    }
+
 }
