@@ -3,6 +3,19 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+    public static boolean checkPages(List<Integer> pages) {
+        if ((pages.get(0) % 2) == 0) {
+            return false;
+        }
+        if ((pages.get(1) % 2) == 1) {
+            return false;
+        }
+        if (pages.get(1) - pages.get(0) != 1) {
+            return false;
+        }
+        return true;
+    }
+
     public static int findWinner(int pobiScore, int crongScore) {
         if (pobiScore > crongScore) {
             return 1;
@@ -49,9 +62,13 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        int execption = -1;
         int pobiScore;
         int crongScore;
 
+        if ((checkPages(pobi) == false) || (checkPages(crong) == false)) {
+            return execption;
+        }
         pobiScore = Math.max(getLeftPageScore(pobi), getRightPageScore(pobi));
         crongScore = Math.max(getLeftPageScore(crong), getRightPageScore(crong));
         answer = findWinner(pobiScore, crongScore);
