@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /** 구현해야할 기능
  *  구조체 설계 User(이름, 친구 list)
@@ -60,8 +57,78 @@ public class Problem7 {
     public static List<String> calcScore(String userName, List<String> visitors) {
         //TODO : 점수를 계산하기 위해서는 유저 이름과 스코어를 저장할 수 있는 자료구조가 필요하다.
         List<UserForScore> ufsList = initUFSList();
-        return null;
+        User user = userMap.get(userName);
+        for(int i = 0;  i< ufsList.size(); i++) {
+            UserForScore ufs = ufsList.get(i);
+            if(ufs.name.equals(userName))  //자기 자신일 경우
+                ufs.score = -1;
+            else if(user.friends.contains(ufs.name)) // 자신의 친구일 경우 0점
+                ufs.score =0;
+            else {  // 친구의 친구일 경우
+                int count = confirmFriendOfFriend(userName, ufs.name);
+                for(int j = 0 ; j < count; j++)
+                    ufs.score += 10;
+            }
+        }
+
+        for(int i = 0; i< visitors.size(); i++) {
+            // 자신의 친구 일 경우 0
+            if (user.friends.contains(visitors.get(i)))
+                continue;
+                // 친구의 친구 인 경우 +1
+            else if (confirmFriendOfFriend(userName, visitors.get(i)) !=0) {
+                for (int j = 0; j < ufsList.size(); j++) {
+                    if (ufsList.get(j).name.equals(visitors.get(i))) {
+                        ufsList.get(j).score++;
+                        break;
+                    }
+                }
+            }
+            // 친구의 친구에도 관련이 없는 경우 +1
+            else {
+                if (ufsList.contains(new UserForScore(visitors.get(i)))) {
+                    for (int j = 0; j < ufsList.size(); j++) {
+                        if (ufsList.get(j).name.equals(visitors.get(i))) {
+                            ufsList.get(j).score++;
+                            break;
+                        }
+                    }
+                }
+                else {
+                    UserForScore ufs =new UserForScore(visitors.get(i));
+                    ufs.score++;
+                    ufsList.add(ufs);
+                }
+            }
+        }
+
+        Collections.sort(ufsList);  //ufs의 compareTo 메서드를 활용해서 정렬 (숫자 내림차순, 숫자 같을시에 이름 순)
+        List<String> result = new ArrayList<>();
+
+        for(int i = 0; i< 5; i++) {
+            if(ufsList.get(i).name.equals(userName))
+                continue;
+            if(ufsList.get(i).score <= 0)
+                break;
+            else
+                result.add(ufsList.get(i).name);
+        }
+
+        return result;
     }
+
+    // result가 0인 경우 찾고자 하는 유저를 알고 있는 친구는 없다. 그 이상일 경우 result의 값은 해당 유저를 알고있는 친구의 수를 말한다.
+    public static int confirmFriendOfFriend(String userName, String whoName) {
+        int result = 0;
+        User user = userMap.get(userName);
+        for(int i = 0; i< user.friends.size(); i++) {
+            User userFriend = userMap.get(user.friends.get(i));
+            if(userFriend.friends.contains(whoName))
+                result++;
+        }
+        return result;
+    }
+
     public static List<UserForScore> initUFSList () {
         List<UserForScore> ufsList = new ArrayList<>();
         for(int i = 0; i< userList.size(); i++) {
@@ -74,13 +141,40 @@ public class Problem7 {
         String name;
         ArrayList<String> friends = new ArrayList<>();
     }
-    public static class UserForScore {
+    public static class UserForScore implements Comparable<UserForScore>{
         String name;
         int score;
 
         public UserForScore(String name) {
             this.name = name;
             score = 0;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public int getScore() {
+            return score;
+        }
+        @Override
+        public int compareTo(UserForScore o) {
+            if(this.score != o.getScore())
+                return o.getScore() - this.score;
+            return this.name.compareTo(o.getName());
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            UserForScore that = (UserForScore) o;
+            return Objects.equals(name, that.name);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(name);
         }
     }
 }
