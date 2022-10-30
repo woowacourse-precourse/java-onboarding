@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<String>();
         List<String> user_friend = new ArrayList<String>();         //user와 직접적인 친구
 
         Map<String, Integer> algorithm = new HashMap<String, Integer>();    //사용자의 이름과 점수
@@ -50,6 +50,24 @@ public class Problem7 {
         algorithm.remove(user);             //user 본인과 user와 친구인 사용자들은 제거
         for(String friend : user_friend){
             algorithm.remove(friend);
+        }
+
+        //algorithm의 score 내림차순으로 정렬
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(algorithm.entrySet());
+        entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o2.getValue() - o1.getValue();
+            }
+        });
+
+        int cnt = 0;
+        for(String key : algorithm.keySet()){
+            if(cnt==5){         //최대 5번만 반복
+                break;
+            }
+            answer.add(key);    //answer에 사용자 추가
+            cnt++;
         }
 
         return answer;
