@@ -74,4 +74,15 @@ public class UserTest {
         List<String> result = userService.operateFriendCommendation("mrko");
         assertThat(result).containsOnly("andole", "jun");
     }
+
+    @Test
+    void 타임라인에_방문한횟수기준_점수부여() {
+        userService.addFriends(createFriends());
+        List<FriendCommendResponseDto> result =
+                userService.operateFriendCommendation("mrko", List.of("bedi", "bedi", "donut", "bedi", "shakevan"));
+
+        FriendCommendResponseDto bedi = result.get(2);
+        assertThat(bedi.getUserId()).isEqualTo("bedi");
+        assertThat(bedi.getScore()).isEqualTo(3);
+    }
 }

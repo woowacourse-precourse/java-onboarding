@@ -37,4 +37,8 @@ public class User {
     public void deleteFriendIds(List<String> userIds) {
         friend.deleteFriendToList(userIds);
     }
+
+    public boolean isNotFriend(String friendId) {
+        return friend.hasNotFriend(friendId);
+    }
 }

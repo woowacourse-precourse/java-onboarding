@@ -22,4 +22,8 @@ public class Friend {
     public void deleteFriendToList(List<String> userIds) {
         friends.forEach(userIds::remove);
     }
+
+    public boolean hasNotFriend(String userId) {
+        return !hasFriend(userId);
+    }
 }

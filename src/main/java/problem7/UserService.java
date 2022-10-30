@@ -1,15 +1,17 @@
 package problem7;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class UserService {
 
     public static final int USER_ID_INDEX = 0;
     public static final int OTHER_USER_ID_INDEX = 1;
     public static final int INIT_SCORE = 0;
+    public static final int VISITOR_DEFAULT_SCORE = 0;
+    public static final int VISITOR_SCORE = 1;
     private final UserRepository userRepository;
 
     public UserService(UserRepository userRepository) {
@@ -48,17 +50,8 @@ public class UserService {
         friends.forEach(this::addFriend);
     }
 
-    public List<String> createAllUserIds(String exclusiveUserId) {
-        return userRepository.findAllUserIdsExclusiveTo(exclusiveUserId);
-    }
-
     public List<String> operateFriendCommendation(String userId) {
-        Map<String, Integer> commendFriend = new HashMap<>();
-
-        List<String> candidateUserIds = createCandidateUserIds(userId);
-        candidateUserIds.forEach(s -> commendFriend.put(s, INIT_SCORE));
-
-        return new ArrayList<>(commendFriend.keySet());
+        return createCandidateUserIds(userId);
     }
 
     private List<String> createCandidateUserIds(String userId) {
@@ -66,5 +59,29 @@ public class UserService {
         User user = userRepository.findByUserid(userId).orElseThrow();
         user.deleteFriendIds(userIds);
         return userIds;
+    }
+
+    public List<String> createAllUserIds(String exclusiveUserId) {
+        return userRepository.findAllUserIdsExclusiveTo(exclusiveUserId);
+    }
+
+    public List<FriendCommendResponseDto> operateFriendCommendation(String userId, List<String> visitors) {
+        Map<String, Integer> commendFriend = new HashMap<>();
+
+        List<String> candidateUserIds = operateFriendCommendation(userId);
+        candidateUserIds.forEach(s -> commendFriend.put(s, INIT_SCORE));
+
+        User findUser = userRepository.findByUserid(userId).orElseThrow();
+        visitors.stream().filter(findUser::isNotFriend)
+                .forEach(visitorId -> commendFriend.put(visitorId,
+                        commendFriend.getOrDefault(visitorId, VISITOR_DEFAULT_SCORE) + VISITOR_SCORE));
+
+        return createResponseDtos(commendFriend);
+    }
+
+    private List<FriendCommendResponseDto> createResponseDtos(Map<String, Integer> commendFriend) {
+        return commendFriend.keySet().stream()
+                .map(id -> new FriendCommendResponseDto(id, commendFriend.get(id)))
+                .collect(Collectors.toList());
     }
 }
