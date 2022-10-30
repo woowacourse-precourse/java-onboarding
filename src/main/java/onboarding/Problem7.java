@@ -10,6 +10,7 @@ public class Problem7 {
 
         List<String> friend_list = createFrined_List(user, friends);
         HashMap<String, Integer> strange_map = createStranger_List(friends, visitors, friend_list);
+        modifyScore(friends, visitors, friend_list, strange_map);
 
         return answer;
     }
@@ -38,5 +39,21 @@ public class Problem7 {
         }
 
         return strange_map;
+    }
+
+    public static void modifyScore(List<List<String>> friends, List<String> visitors, List<String> friend_list, HashMap stranger_map) {
+        for(List<String> f : friends) {
+            if (friend_list.contains(f.get(0)) && stranger_map.containsKey(f.get(1))) {
+                stranger_map.put(f.get(1), (int) stranger_map.get(f.get(1)) + 10);
+            }
+            if (friend_list.contains(f.get(1)) && stranger_map.containsKey(f.get(0))) {
+                stranger_map.put(f.get(0), (int) stranger_map.get(f.get(0)) + 10);
+            }
+        }
+        for(String v : visitors) {
+            if(!friend_list.contains(v) && stranger_map.containsKey(v)) {
+                stranger_map.put(v, (int)stranger_map.get(v) + 1);
+            }
+        }
     }
 }
