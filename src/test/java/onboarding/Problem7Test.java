@@ -1,11 +1,14 @@
 package onboarding;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import onboarding.Problem7.UserPoint;
 import org.junit.jupiter.api.Test;
 
 class Problem7Test {
@@ -97,5 +100,32 @@ class Problem7Test {
 
     }
 
+    @Test
+    void 결과정렬테스트() {
+        List<UserPoint> list = new ArrayList<>();
+
+        list.add(new UserPoint("ahansu", 1));
+        list.add(new UserPoint("chansu", 1));
+        list.add(new UserPoint("sungjoon", 20));
+        list.add(new UserPoint("minji", -3));
+        list.add(new UserPoint("faker", 5));
+        list.add(new UserPoint("chovy", 40));
+        list.add(new UserPoint("invidam", 7));
+
+        List<UserPoint> result = new ArrayList<>();
+
+        result.add(new UserPoint("chovy", 40));
+        result.add(new UserPoint("sungjoon", 20));
+        result.add(new UserPoint("invidam", 7));
+        result.add(new UserPoint("faker", 5));
+        result.add(new UserPoint("ahansu", 1));
+        result.add(new UserPoint("chansu", 1));
+        result.add(new UserPoint("minji", -3));
+
+        Problem7.sortUserPoints(list);
+
+        assertThat(list).isEqualTo(result);
+
+    }
 
 }
