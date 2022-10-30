@@ -4,8 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Problem2 {
-	static final int first = 0;
-	static final int last = 1;
+	public enum Word{
+		min(1),
+		max(1000);
+
+		private final int length;
+		Word(int length) {
+			this.length = length;
+		}
+	}
 
     public static String solution(String cryptogram) {
         String answer;
@@ -15,12 +22,10 @@ public class Problem2 {
 
 		cryptogram_list = convertToList(cryptogram);
 
-		while (true) {
+		do {
 			removeWord(findDuplicationRange(cryptogram_list), cryptogram_list);
 			//연속해서 중복되는 문자가 없을 때 까지
-			if (findDuplicationWord(findDuplicationRange(cryptogram_list)))
-				break;
-		}
+		} while (!findDuplicationWord(findDuplicationRange(cryptogram_list)));
 
 		answer = convertToString(cryptogram_list);
 
@@ -35,32 +40,29 @@ public class Problem2 {
 		return cryptogram_list;
 	}
 	public static String convertToString(List<Character> cryptogram_list) {
-		String cryptogram = "";
+		StringBuilder cryptogram = new StringBuilder();
 
-		for (int i = 0; i < cryptogram_list.size(); i++)
-			cryptogram += cryptogram_list.get(i);
+		for (Character character : cryptogram_list)
+			cryptogram.append(character);
 
-		return cryptogram;
+		return cryptogram.toString();
 	}
 
 	//중복 제거 후 중복이 있는지 찾는 함수
 	public static boolean findDuplicationWord(List<Integer> range) {
-		for (int i = 0; i < range.size(); i++)
-		{
-			if (range.get(i) != 0)
+		for (Integer integer : range) {
+			if (integer != 0)
 				return false;
 		}
 		return true;
 	}
 	//중복되는 문자의 범위를 찾는 함수
 	public static List<Integer> findDuplicationRange(List<Character> cryptogram_list) {
-		int cnt;
-		boolean isVisited = false;
 		List<Integer> duplicationRange_list = new ArrayList<>();
 
 		for (int i = 0; i < cryptogram_list.size() - 1; i++) {
-			cnt = 0;
-			isVisited = false;
+			int cnt = 0;
+			boolean isVisited = false;
 			for (int j = i + 1; j < cryptogram_list.size(); j++) {
 				if (cryptogram_list.get(i) == cryptogram_list.get(j)) {
 					cnt++;
@@ -77,10 +79,9 @@ public class Problem2 {
 			duplicationRange_list.add(cnt);
 		}
 
-
 		return duplicationRange_list;
 	}
-	public static List<Character> removeWord(List<Integer> range, List<Character> cryptogram_list) {
+	public static void removeWord(List<Integer> range, List<Character> cryptogram_list) {
 		boolean isVisited = false;
 
 		for (int i = 0; i < range.size(); i++) {
@@ -98,7 +99,6 @@ public class Problem2 {
 				i--;
 		}
 
-		return cryptogram_list;
 	}
 	//대문자 있는지 확인
 	public static boolean checkLowerCase(String cryptogram) {
@@ -109,11 +109,10 @@ public class Problem2 {
 
 		return true;
 	}
-	public static boolean checkException(String cryptogram){
-		if (cryptogram.length() < 1 || cryptogram.length() > 1000)
+	public static void checkException(String cryptogram){
+		if (cryptogram.length() < Word.min.length || cryptogram.length() > Word.max.length)
 			throw new IllegalArgumentException("ERROR");
 		if (!checkLowerCase(cryptogram))
 			throw new IllegalArgumentException("ERROR");
-		return true;
 	}
 }
