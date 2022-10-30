@@ -22,4 +22,18 @@ public class Problem6 {
         if (m.matches()) return true;
         return false;
     }
+
+    // 닉네임 형식체크 :정규식
+    public static boolean isValidNickname(String nickname) {
+        if (nickname.isEmpty()) return false;  //null값인 경우(빈값)
+
+        String regex = "^[ㄱ-ㅎㅏ-ㅣ가-힣]{1,19}$";
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(nickname);
+        if (m.matches()) return true;
+        return false;
+    }
+
+
+
 }
