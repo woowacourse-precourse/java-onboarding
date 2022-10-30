@@ -8,8 +8,8 @@ public class Problem4 {
                 answer += (char)(219-(int)word.charAt(i));
             } else if ((int)word.charAt(i)>64) { //소문자의 경우
                 answer += (char)(155-(int)word.charAt(i));
-            } else { //공백일 경우
-                answer += " ";
+            } else { //문자가 아닐경우
+                answer += word.charAt(i);
             }
         }
 
