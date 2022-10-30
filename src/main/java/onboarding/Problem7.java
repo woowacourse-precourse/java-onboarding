@@ -22,9 +22,7 @@ public class Problem7 {
 		removeUserFriendsScore(user, userFriends, friendsScore);
 		addEmptyFriends(friendsScore);
 
-		List<Map.Entry<String, Integer>> sortedFriendScore = sortScore(friendsScore.entrySet());
-
-		answer = findRecommendFriends(sortedFriendScore);
+		answer = findRecommendFriends(sortScore(friendsScore));
 
 		return answer;
 	}
@@ -91,8 +89,8 @@ public class Problem7 {
 		return recommendList;
 	}
 
-	private static List<Map.Entry<String, Integer>> sortScore(Set<Map.Entry<String, Integer>> friendsScore) {
-		List<Map.Entry<String, Integer>> sortedList = new ArrayList<>(friendsScore);
+	private static List<Map.Entry<String, Integer>> sortScore(HashMap<String, Integer> friendsScore) {
+		List<Map.Entry<String, Integer>> sortedList = new ArrayList<>(friendsScore.entrySet());
 		sortedList.sort(new Comparator<>() {
 			@Override
 			public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
