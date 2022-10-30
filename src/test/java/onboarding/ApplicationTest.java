@@ -206,6 +206,12 @@ class ApplicationTest {
             String cryptogram = "zyelleyz";
             assertThat(Problem2.createCharactersSet(cryptogram).size()).isEqualTo(4);
         }
+
+        @Test
+        void replaceRepeatCharacterTest() {
+            String cryptogram = "browoanoommnaon";
+            assertThat(Problem2.replaceRepeatCharacter(cryptogram)).isEqualTo("browoannaon");
+        }
     }
 
     @Nested
