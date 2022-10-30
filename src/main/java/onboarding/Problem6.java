@@ -1,19 +1,38 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = new ArrayList<>();
+        Set<String> resultSet = new HashSet<>();
+
+        boolean[] isSimilar = new boolean[forms.size()];
 
         for (int index = 0; index < forms.size(); index++) {
-            String nickname = forms.get(index).get(1);
-            Set<String> patternsFromNickName = makePatternsFromNickName(nickname);
+            if (!isSimilar[index]) {
+                String nickname = forms.get(index).get(1);
+                Set<String> patternsFromNickName = makePatternsFromNickName(nickname);
+
+                for (int nextIndex = 0; nextIndex < forms.size(); nextIndex++) {
+
+                    if (index == nextIndex || isSimilar[nextIndex])
+                        continue;
+
+                    String nextNickname = forms.get(nextIndex).get(1);
+                    for (String pattern : patternsFromNickName) {
+                        if (nextNickname.contains(pattern)) {
+                            resultSet.add(forms.get(index).get(0));
+                            resultSet.add(forms.get(nextIndex).get(0));
+                            isSimilar[index] = true;
+                            isSimilar[nextIndex] = true;
+                        }
+                    }
+                }
+            }
         }
 
+        ArrayList<String> answer = new ArrayList<String>(resultSet);
+        Collections.sort(answer);
         return answer;
     }
 
