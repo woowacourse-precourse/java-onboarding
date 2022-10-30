@@ -7,7 +7,6 @@ public class Problem6 {
     static Set<Integer> indexList = new HashSet<>();
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
-        boolean[] duplicationArr = new boolean[forms.size()];
         for (int i = 0; i < forms.size(); i++) {
             inputNameToMap(forms.get(i).get(1), i);
         }
