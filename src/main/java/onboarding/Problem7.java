@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -13,14 +12,16 @@ public class Problem7 {
     public static final int ACQUAINTANCE_SCORE = 10;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-
         List<String> friendsOfUser = findFriendsByUser(user, friends);
         Map<String, Integer> scoreOfAcquaintance = addAcquaintanceScore(friends, friendsOfUser);
         addVisitorScore(visitors, scoreOfAcquaintance);
         sortRecommendations(scoreOfAcquaintance);
 
-        return answer;
+        return getRecommendationNames(scoreOfAcquaintance);
+    }
+
+    private static List<String> getRecommendationNames(Map<String, Integer> scoreOfAcquaintance) {
+        return new ArrayList<>(scoreOfAcquaintance.keySet());
     }
 
     private static void sortRecommendations(Map<String, Integer> scoreOfAcquaintance) {
