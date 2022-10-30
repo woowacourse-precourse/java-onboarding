@@ -12,8 +12,9 @@ public class Problem2 {
             Character last = characters.peekLast();
             updateLinkedList(prev, curr, last, characters);
         }
-
+        return linkedlistToString(characters);
     }
+
     private static void updateLinkedList(Character prev,
                                          Character curr,
                                          Character last,
@@ -24,4 +25,13 @@ public class Problem2 {
             chars.removeLast();
         }
     }
+
+    private static String linkedlistToString(LinkedList<Character> chars) {
+        StringBuilder sb = new StringBuilder();
+        chars.forEach(item -> {
+            sb.append(item);
+        });
+        return sb.toString();
+    }
 }
+
