@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
+        List<Integer> answer =minCount(money);
         return answer;
     }
 
