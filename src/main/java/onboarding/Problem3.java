@@ -17,6 +17,9 @@ public class Problem3 {
         for(int i = 1; i <= number; i++) {
             String str = String.valueOf(i);
 
+            for(int j = 0; j < str.length(); j++) {
+                char chk = str.charAt(j);
+            }
         }
 
         return count;
