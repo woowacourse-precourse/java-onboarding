@@ -27,113 +27,174 @@ import java.util.stream.Collectors;
  *
  */
 public class Problem7 {
-    private static final int FRIEND_OF_FRIEND = 10;
-    private static final int VISITANT = 1;
-    private static Map<String, List<String>> relationshipMap = new HashMap<>();
-    private static Map<String, Integer> userScore = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         validate(user, friends, visitors);
-        makeRelationship(friends);
-        calculateScore(visitors, user);
-        List<String> answer = calculateResult(user);
+        RelationShip relationShip = new RelationShip(friends);
+
+        UserScore userScore = new UserScore(user, visitors, relationShip);
+
+        Result result = new Result();
+        List<String> answer = result.calculateResult(userScore, relationShip, user);
         return answer;
     }
-    public static List<String> calculateResult(final String user){
-        return calculateRank(sortUserScore(), user);
-    }
-
-    private static Map<String, Integer> sortUserScore() {
-        List<Map.Entry<String, Integer>> list = new LinkedList<>(userScore.entrySet());
-        Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
-            @Override
-            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
-                int comparison = (o1.getValue() - o2.getValue()) * -1;
-                return comparison == 0 ? o1.getKey().compareTo(o2.getKey()) : comparison;
-            }
-        });
-
-        Map<String, Integer> sortedMap = new LinkedHashMap<>();
-        for(Iterator<Map.Entry<String, Integer>> iter = list.iterator(); iter.hasNext();){
-            Map.Entry<String, Integer> entry = iter.next();
-            sortedMap.put(entry.getKey(), entry.getValue());
-        }
-        return sortedMap;
-    }
-
-    private static List<String> calculateRank(final Map<String, Integer> sortedUserScore, final String user) {
-        List<String> userFriends = relationshipMap.get(user);
-        List<String> result = new ArrayList<>();
-        for (String userName : sortedUserScore.keySet()) {
-            if (user.equals(userName) || userFriends.contains(userName)) {
-                continue;
-            }
-            result.add(userName);
-        }
-        return calculateTopFive(result);
-    }
-
-    private static List<String> calculateTopFive(final List<String> result) {
-        if (result.size() <= 5) {
-            return result;
-        }
-        return result.subList(0, 5);
-    }
-
-    public static void calculateScore(final List<String> visitors, final String user) {
-        userScore = relationshipMap.keySet().stream()
-            .collect(Collectors.toMap(String::valueOf, e -> 0));
-        calculateScoreByUserFriend(user);
-        calculateScoreByVisitors(visitors);
-    }
-
-    private static void calculateScoreByUserFriend(final String user) {
-        List<String> userFriend = relationshipMap.get(user);
-        for (String friend : userFriend) {
-            putUserScoreByFriend(relationshipMap.get(friend));
-        }
-    }
-
-    private static void putUserScoreByFriend(final List<String> friendOfFriend) {
-        for (String friendName : friendOfFriend) {
-            userScore.put(friendName, userScore.get(friendName) + FRIEND_OF_FRIEND);
-        }
-    }
-
-    private static void calculateScoreByVisitors(final List<String> visitors) {
-        for (String visitor : visitors) {
-            putUserScoreByVisitor(visitor);
-        }
-    }
-
-    private static void putUserScoreByVisitor(final String visitor) {
-        if (!userScore.containsKey(visitor)){
-            userScore.put(visitor, 0);
-        }
-        userScore.put(visitor, userScore.get(visitor) + VISITANT);
-    }
-
-    public static void makeRelationship(final List<List<String>> friends) {
-        for (List<String> friend : friends) {
-            addRelationship(friend.get(0), friend.get(1));
-            addRelationship(friend.get(1), friend.get(0));
-        }
-    }
-
-    private static void addRelationship(final String user1, final String user2) {
-        if (!relationshipMap.containsKey(user1)) {
-            relationshipMap.put(user1, new ArrayList<>(List.of(user2)));
-            return;
-        }
-        List<String> relation = relationshipMap.get(user1);
-        relation.add(user2);
-        relationshipMap.put(user1, relation);
-    }
-
     private static void validate(final String user, final List<List<String>> friends, final List<String> visitors) {
         Advice.validate(user, friends, visitors);
-
     }
+
+    static class Result{
+        private List<String> result;
+
+        public Result() {
+            this.result = new ArrayList<>();
+        }
+
+        public List<String> calculateResult(final UserScore userScore, final RelationShip relationShip,
+            final String user) {
+            List<String> userOfFriendFromRelation = getUserOfFriendFromRelation(relationShip, user);
+            Map<String, Integer> stringIntegerMap = sortUserScore(userScore);
+            this.result = calculateRank(userOfFriendFromRelation, stringIntegerMap, user);
+            return result;
+        }
+
+        public Map<String, Integer> sortUserScore(final UserScore userScore) {
+            return userScore.sortUserScoreMap();
+        }
+
+        private List<String> getUserOfFriendFromRelation(final RelationShip relationShip, final String user){
+            return relationShip.getUserOfFriend(user);
+        }
+
+        private List<String> calculateRank(final List<String> userFriends, final Map<String, Integer> sortUserScoreMap,
+            final String user) {
+            List<String> result = new ArrayList<>();
+            for (String userName : sortUserScoreMap.keySet()) {
+                if (user.equals(userName) || userFriends.contains(userName)) {
+                    continue;
+                }
+                if (sortUserScoreMap.get(userName) != 0) {
+                    result.add(userName);
+                }
+            }
+            return calculateTopFive(result);
+        }
+
+        private List<String> calculateTopFive(final List<String> result) {
+            if (result.size() <= 5) {
+                return result;
+            }
+            return result.subList(0, 5);
+        }
+    }
+
+    static class UserScore{
+        private static final int VISITANT = 1;
+        private Map<String, Integer> userScoreMap;
+
+        public UserScore(String user, List<String> visitors, RelationShip relationShip){
+            this.userScoreMap = makeInitUserScoreMap(relationShip, user);
+            addUserScoreMapByVisitor(visitors);
+        }
+        private Map<String, Integer> makeInitUserScoreMap(RelationShip relationShip, String user) {
+            return relationShip.makeInitUserScoreMapByRelationShip(user);
+        }
+
+        private void addUserScoreMapByVisitor(List<String> visitors) {
+            if (visitors.size() == 0) return;
+
+            for (String visitor : visitors) {
+                if (!this.userScoreMap.containsKey(visitor)){
+                    this.userScoreMap.put(visitor, 0);
+                }
+                this.userScoreMap.put(visitor, this.userScoreMap.get(visitor) + VISITANT);
+            }
+        }
+
+        public Map<String, Integer> sortUserScoreMap(){
+            List<Map.Entry<String, Integer>> list = new LinkedList<>(userScoreMap.entrySet());
+            Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
+                @Override
+                public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                    int comparison = (o1.getValue() - o2.getValue()) * -1;
+                    return comparison == 0 ? o1.getKey().compareTo(o2.getKey()) : comparison;
+                }
+            });
+            Map<String, Integer> sortedMap = new LinkedHashMap<>();
+            for(Iterator<Map.Entry<String, Integer>> iter = list.iterator(); iter.hasNext();){
+                Map.Entry<String, Integer> entry = iter.next();
+                sortedMap.put(entry.getKey(), entry.getValue());
+            }
+            return sortedMap;
+        }
+
+        @Override
+        public String toString() {
+            return "UserScore{" +
+                "userScoreMap=" + userScoreMap +
+                '}';
+        }
+    }
+
+
+    static class RelationShip {
+        private static final int FRIEND_OF_FRIEND = 10;
+        private Map<String, List<String>> relationShipMap;
+
+        public RelationShip(final List<List<String>> friends) {
+            this.relationShipMap = new HashMap<>();
+            makeRelationship(friends);
+        }
+
+        public Map<String, Integer> makeInitUserScoreMapByRelationShip(final String user){
+            Map<String, Integer> userScoreMap = this.relationShipMap.keySet().stream()
+                .collect(Collectors.toMap(String::valueOf, e -> 0));
+            return calculateUserScoreMapByFriendOfFriend(user, userScoreMap);
+        }
+
+        private Map<String, Integer> calculateUserScoreMapByFriendOfFriend(final String user, Map<String, Integer> userScoreMap) {
+            List<String> userOfFriends = this.relationShipMap.get(user);
+            for (String userOfFriend : userOfFriends) {
+                putUserScoreByFriend(userScoreMap, userOfFriend);
+            }
+            return userScoreMap;
+        }
+
+        private void putUserScoreByFriend(Map<String, Integer> userScoreMap, final String userOfFriend) {
+            List<String> strings = this.relationShipMap.get(userOfFriend);
+            for (String string : strings) {
+                userScoreMap.put(string, userScoreMap.get(string) + FRIEND_OF_FRIEND);
+            }
+        }
+
+        private void makeRelationship(final List<List<String>> friends) {
+            for (List<String> friend : friends) {
+                addRelationship(friend.get(0), friend.get(1));
+                addRelationship(friend.get(1), friend.get(0));
+            }
+        }
+
+        private void addRelationship(final String user1, final String user2) {
+            if (!relationShipMap.containsKey(user1)) {
+                relationShipMap.put(user1, new ArrayList<>(List.of(user2)));
+                return;
+            }
+            List<String> relation = relationShipMap.get(user1);
+            relation.add(user2);
+            relationShipMap.put(user1, relation);
+        }
+
+        public List<String> getUserOfFriend(String user) {
+            return this.relationShipMap.get(user);
+        }
+
+        @Override
+        public String toString() {
+            return "RelationShip{" +
+                "relationShipMap=" + relationShipMap +
+                '}';
+        }
+    }
+
 
     static class Advice{
 
