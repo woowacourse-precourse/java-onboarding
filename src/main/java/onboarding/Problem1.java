@@ -60,7 +60,7 @@ class Problem1 {
         int sumResult = calculation(findPlaceValue(number), '+');
         int multiplicationResult = calculation(findPlaceValue(number), '*');
 
-        return Math.max(sumResult,  checkException(multiplicationResult));
+        return Math.max(sumResult,  multiplicationResult);
     }
 
     //점수 비교해 결과 반환
@@ -85,19 +85,19 @@ class Problem1 {
     {
         int firstPage = 1;
         int lastPage = 400;
-
+        
         //1 ~ 400 안에 있는가?
-        if (leftPage >= firstPage && leftPage <= lastPage)
-            return true;
-        if (rightPage >= firstPage && rightPage <= lastPage)
-            return true;
+        if (!(leftPage >= firstPage && leftPage <= lastPage))
+            return false;
+        if (!(rightPage >= firstPage && rightPage <= lastPage))
+            return false;
         //왼쪽은 홀수, 오른쪽은 짝수인가?
-        if ((leftPage %2 == 1) && (rightPage %2 == 0))
-            return true;
+        if (!(leftPage %2 == 1) || !(rightPage %2 == 0))
+            return false;
         //연속한 숫자인가?
-        if (leftPage + 1 == rightPage)
-            return true;
-        return false;
+        if ((leftPage + 1) != rightPage)
+            return false;
+        return true;
     }
     public static int checkException(int num) {
         //연산한 값에 0이 있을 경우
