@@ -1,9 +1,7 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /*
  *
@@ -44,8 +42,8 @@ public class Problem7 {
         return myFriends;
     }
 
-    static HashMap<String, Integer> getRecommendFriend(List<List<String>> friendList, List<String> myFriends){
-        HashMap<String, Integer> recommendFriend = new HashMap<>();
+    static LinkedHashMap<String, Integer> getRecommendFriend(List<List<String>> friendList, List<String> myFriends){
+        LinkedHashMap<String, Integer> recommendFriend = new LinkedHashMap<>();
 
         // find sns users who are my friend's friend
         for (List<String> friendOfFriend : friendList){
@@ -61,7 +59,7 @@ public class Problem7 {
         return recommendFriend;
     }
 
-    static HashMap<String, Integer> getRecommendVisitor(HashMap<String, Integer> recommendFriend,
+    static LinkedHashMap<String, Integer> getRecommendVisitor(LinkedHashMap<String, Integer> recommendFriend,
                                                         List<String> myFriends, List<String> visitors) {
 
         // find sns users who visit my sns
@@ -78,6 +76,30 @@ public class Problem7 {
         return recommendFriend;
     }
 
+    // sort recommendFriend by key
+    public static LinkedHashMap<String, Integer> sortMapByKey(Map<String, Integer> recommendFriend) {
+        List<Map.Entry<String, Integer>> entries = new LinkedList<>(recommendFriend.entrySet());
+        Collections.sort(entries, (o1, o2) -> o1.getKey().compareTo(o2.getKey()));
+
+        LinkedHashMap<String, Integer> result = new LinkedHashMap<>();
+        for (Map.Entry<String, Integer> entry : entries) {
+            result.put(entry.getKey(), entry.getValue());
+        }
+        return result;
+    }
+
+    // sort recommendFriend by value
+    public static LinkedHashMap<String, Integer> sortMapByValue(Map<String, Integer> sortByKey) {
+        List<Map.Entry<String, Integer>> entries = new LinkedList<>(sortByKey.entrySet());
+        Collections.sort(entries, Collections.reverseOrder((o1, o2) -> o1.getValue().compareTo(o2.getValue())));
+
+        LinkedHashMap<String, Integer> result = new LinkedHashMap<>();
+        for (Map.Entry<String, Integer> entry : entries) {
+            result.put(entry.getKey(), entry.getValue());
+        }
+        return result;
+    }
+
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
@@ -87,13 +109,32 @@ public class Problem7 {
         List<String> myFriends = getMyFriends(user, friendList);
 
         // make a dictionary to give points to my friend's friend
-        HashMap<String, Integer> recommendFriend = getRecommendFriend(friendList, myFriends);
+        LinkedHashMap<String, Integer> recommendFriend = getRecommendFriend(friendList, myFriends);
 
         // make a dictionary to give points to visitors
         getRecommendVisitor(recommendFriend, myFriends, visitors);
 
-        System.out.println(recommendFriend);
+        // sort recommendFriend by key
+        Map<String, Integer> sortByKey = sortMapByKey(recommendFriend);
 
+        // sort recommendFriend by key and value
+        Map<String, Integer> sortByValue = sortMapByValue(sortByKey);
+
+        // return recommend friends
+        List<String> recommend = new ArrayList<>();
+        if (sortByValue.size() < 5){
+            for (String key : sortByValue.keySet()){
+                recommend.add(key);
+            }
+        }
+        else {
+            List<String> list = new ArrayList<>(sortByValue.keySet());
+            for(int i = 0; i < 5; i++){
+                recommend.add(list.get(i));
+
+            }
+        }
+        answer = recommend;
         return answer;
     }
 
