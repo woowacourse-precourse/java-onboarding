@@ -8,7 +8,36 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
 
+        Map<String, Integer> nameTokenMap = getNameTokenMap(forms);
+
         return answer;
+    }
+
+    private static Map<String, Integer> getNameTokenMap(List<List<String>> forms){
+        Map<String, Integer> nameTokenMap = new HashMap<>();
+
+        for (List<String> form : forms) {
+            String name = form.get(NAME_INDEX);
+
+            setNameTokens(nameTokenMap, name);
+        }
+        return nameTokenMap;
+    }
+
+    private static void setNameTokens(Map<String, Integer> nameTokenMap, String name) {
+        for (int i = 0; i< name.length()-1; i++){
+            updateNameTokenCount(nameTokenMap, getNameToken(name, i, i + 1));
+        }
+    }
+
+    private static void updateNameTokenCount(Map<String, Integer> nameMap, String nameToken) {
+        if (!nameMap.containsKey(nameToken)){
+            nameMap.put(nameToken, 1);
+
+        } else{
+            Integer curTokenValue = nameMap.get(nameToken);
+            nameMap.replace(nameToken, ++curTokenValue);
+        }
     }
 
     private static String getNameToken(String name, int idx1, int idx2){
