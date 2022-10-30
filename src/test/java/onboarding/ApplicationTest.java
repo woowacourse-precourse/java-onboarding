@@ -601,5 +601,179 @@ class ApplicationTest {
             List<String> result = List.of("B", "C", "E");
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
+
+        @Test
+        @DisplayName("user가 null이면 예외 발생")
+        void test4() {
+            String user = null;
+            List<List<String>> friends = List.of(
+                    List.of("donut", "andole"),
+                    List.of("donut", "jun"),
+                    List.of("donut", "mrko"),
+                    List.of("shakevan", "andole"),
+                    List.of("shakevan", "jun"),
+                    List.of("shakevan", "mrko")
+            );
+            List<String> visitors = List.of("C", "B", "E");
+            assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("user 의 길이는 1 이상 30 이하여야 합니다.");
+        }
+
+        @Test
+        @DisplayName("user의 길이가 1 미만이면 예외 발생")
+        void test5() {
+            String user = "";
+            List<List<String>> friends = List.of(
+                    List.of("donut", "andole"),
+                    List.of("donut", "jun"),
+                    List.of("donut", "mrko"),
+                    List.of("shakevan", "andole"),
+                    List.of("shakevan", "jun"),
+                    List.of("shakevan", "mrko")
+            );
+            List<String> visitors = List.of("C", "B", "E");
+            assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("user 의 길이는 1 이상 30 이하여야 합니다.");
+        }
+
+        @Test
+        @DisplayName("user의 길이가 30을 초과하면 예외 발생")
+        void test6() {
+            String user = "policeshowedupatmydoorwithawarrant";
+            List<List<String>> friends = List.of(
+                    List.of("donut", "andole"),
+                    List.of("donut", "jun"),
+                    List.of("donut", "mrko"),
+                    List.of("shakevan", "andole"),
+                    List.of("shakevan", "jun"),
+                    List.of("shakevan", "mrko")
+            );
+            List<String> visitors = List.of("C", "B", "E");
+            assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("user 의 길이는 1 이상 30 이하여야 합니다.");
+        }
+
+        @Test
+        @DisplayName("friend 배열이 null이면 예외 발생")
+        void test7() {
+            String user = "mrko";
+            List<List<String>> friends = null;
+            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+            assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("friend 배열의 길이는 1 이상 10,000 이하여야 합니다.");
+        }
+
+        @Test
+        @DisplayName("friend 배열이 비어 있으면 예외 발생")
+        void test8() {
+            String user = "mrko";
+            List<List<String>> friends = List.of();
+            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+            assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("friend 배열의 길이는 1 이상 10,000 이하여야 합니다.");
+        }
+
+        @Test
+        @DisplayName("friend 배열이 10,000을 넘어가면 예외 발생")
+        void test9() {
+            String user = "mrko";
+            List<List<String>> friends = new ArrayList<>();
+            for (int i = 0; i < 10_001; i++) {
+                friends.add(List.of("a", "a"));
+            }
+            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+            assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("friend 배열의 길이는 1 이상 10,000 이하여야 합니다.");
+        }
+
+        @Test
+        @DisplayName("friend 각 원소의 길이가 2가 아닌 경우 예외 발생")
+        void test10() {
+            String user = "mrko";
+            List<List<String>> friends = List.of(
+                    List.of("donut", "mrko"),
+                    List.of("shakevan", "mrko", "apple"),
+                    List.of("melon", "mrko"),
+                    List.of("mrko", "apple"),
+                    List.of("banana", "mrko")
+            );
+            List<String> visitors = List.of("apple", "apple", "donut", "shakevan");
+            assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("friend 배열의 길이는 1 이상 10,000 이하여야 합니다.");
+        }
+
+        @Test
+        @DisplayName("visitor 배열이 null 이면 예외 발생")
+        void test11() {
+            String user = "mrko";
+            List<List<String>> friends = List.of(
+                    List.of("donut", "mrko"),
+                    List.of("shakevan", "mrko", "apple"),
+                    List.of("melon", "mrko"),
+                    List.of("mrko", "apple"),
+                    List.of("banana", "mrko")
+            );
+            List<String> visitors = null;
+            assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("visitor 배열의 길이는 0 이상 10,000 이하여야 합니다.");
+        }
+
+        @Test
+        @DisplayName("visitor 배열이 10,000을 넘어가면 예외 발생")
+        void test127() {
+            String user = "mrko";
+            List<List<String>> friends = new ArrayList<>();
+            for (int i = 0; i < 10_001; i++) {
+                friends.add(List.of("a", "a"));
+            }
+            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+            assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("friend 배열의 길이는 1 이상 10,000 이하여야 합니다.");
+        }
+
+        @Test
+        @DisplayName("사용자 아이디가 알파벳 소문자가 아니면 예외 발생")
+        void test15() {
+            String user = "Mkdr";
+            List<List<String>> friends = List.of(
+                    List.of("donut", "andole"),
+                    List.of("donut", "jun"),
+                    List.of("donut", "mrko"),
+                    List.of("shakevan", "andole"),
+                    List.of("shakevan", "jun"),
+                    List.of("shakevan", "mrko")
+            );
+            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+            assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("사용자 아이디는 알파벳 소문자여야 합니다.");
+        }
+
+        @Test
+        @DisplayName("동일한 친구 관계가 중복해서 주어지면 예외 발생")
+        void test16() {
+            String user = "Mkdr";
+            List<List<String>> friends = List.of(
+                    List.of("andole", "donut"),
+                    List.of("donut", "andole"),
+                    List.of("donut", "mrko"),
+                    List.of("shakevan", "andole"),
+                    List.of("shakevan", "jun"),
+                    List.of("shakevan", "mrko")
+            );
+            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+            assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("동일한 친구 관계를 중복해서 제공할 수 없습니다.");
+        }
     }
 }
