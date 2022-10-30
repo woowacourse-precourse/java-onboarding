@@ -5,15 +5,18 @@ import onboarding.problem7.User;
 import onboarding.problem7.UserRelation;
 import onboarding.problem7.UserStore;
 
-import java.util.Collections;
 import java.util.List;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) throws Exception {
-        List<String> answer = Collections.emptyList();
         User target = new User(user);
         UserStore.add(target);
+
         UserRelation.addBulk(friends);
+        for (List<String> relation : friends) {
+            UserStore.add(new User(relation.get(0)));
+            UserStore.add(new User(relation.get(1)));
+        }
 
         if(visitors.size() > 10_000) {
             throw new Exception("visitors의 길이는 0이상 10_000 이하여야 합니다");
@@ -21,6 +24,7 @@ public class Problem7 {
         for(String visitor : visitors) {
             UserStore.add(new User(visitor));
         }
+
         List<String> usersRecommended = RecommendationAlgorithm.recommend(target.getName(), visitors);
         return usersRecommended;
     }
