@@ -32,10 +32,9 @@
 ### 구현 기능 목록
 
 1. friends 를 읽으며 friendshipMap 을 생성하는 함수
-2. 친구 관계로 인한 점수를 주는 게 맞는지 조건을 확인하는 함수
-3. friendshipMap 을 읽으며 조건에 맞는 친구에게 점수를 주는 함수 (score map)
-4. visitors 를 읽으며 score map 에 점수를 더하는 함수
-5. 최종 score map 을 읽으며 조건에 맞는 사람을 최대 5명까지 반환하는 함수
+2. friendshipMap 을 읽으며 조건에 맞는 친구에게 점수를 주는 함수 (score map)
+3. visitors 를 읽으며 score map 에 점수를 더하는 함수
+4. 최종 score map 을 읽으며 조건에 맞는 사람을 최대 5명까지 반환하는 함수
 
 ### 구현 시 고려할 점
 
