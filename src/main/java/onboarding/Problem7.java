@@ -8,13 +8,12 @@ import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-
         List<String> users = findAllUsers(friends, visitors); //모든 user
         List<String> friendsOfUser = findFriends(friends, user); //"mrko"와 친구 관계인 사람들을 추출.
 
         users.remove(user); //user 자신은 추천친구에 뜰 필요가 없음.
         users.removeAll(friendsOfUser); //이미 user와 친구인 사람들도 추천친구에 뜰 필요가 없음.
-        
+
         List<RecommendFriend> recommendFriends = new ArrayList<>();
         for (String friend : users) {
             recommendFriends.add(new RecommendFriend(friend, 0));
@@ -22,7 +21,6 @@ public class Problem7 {
 
         addRecommendScoreByUsingFriends(user, recommendFriends, friends);
         addRecommendScoreByUsingVisitors(recommendFriends, visitors);
-
         Collections.sort(recommendFriends);
 
         List<String> result = new ArrayList<>();

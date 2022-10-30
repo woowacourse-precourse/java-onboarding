@@ -56,6 +56,7 @@ class Problem1 {
         for (int i = 0; i < str.length(); i++) {
             multiple *= str.charAt(i) - 48;
         }
+
         return multiple;
     }
 }

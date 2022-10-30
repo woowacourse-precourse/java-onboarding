@@ -7,6 +7,7 @@ public class Problem3 {
             String convertedNumber = Integer.toString(i);
             sum += countOf369(convertedNumber);
         }
+
         return sum;
     }
 
@@ -18,6 +19,7 @@ public class Problem3 {
                 count++;
             }
         }
+
         return count;
     }
 }

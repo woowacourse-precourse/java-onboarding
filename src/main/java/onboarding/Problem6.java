@@ -33,6 +33,7 @@ public class Problem6 {
                 hasDuplicationFlag = true;
             }
         }
+
         if (hasDuplicationFlag == true) {
             hasDuplicatePartInNickname[startIndex] = true;
         }
