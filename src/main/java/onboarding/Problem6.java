@@ -1,16 +1,21 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        //List<String> answer = List.of("answer");
 
         List<String> name = new ArrayList<>(forms.size());
+        List<String> email = new ArrayList<>(forms.size());
+        List<String> result = new ArrayList<>();
 
-        for (int i = 0; i < name.size(); i++) {
+        for (int i = 0; i < forms.size(); i++) {
             name.add(i, forms.get(i).get(1));
+            email.add(i, forms.get(i).get(0));
         }
 
         for (int i = 0; i < name.size(); i++) {
@@ -18,13 +23,18 @@ public class Problem6 {
                 if (i == j) {
                     continue;
                 }
-
+                if (hasOverlap(name.get(i), name.get(j))) {
+                    result.add(email.get(i));
+                    break;
+                }
             }
         }
-        return answer;
+
+        result.sort(Comparator.naturalOrder());
+        return result;
     }
 
-    static boolean isContain(String str, String other) {
+    static boolean hasOverlap(String str, String other) {
         for (int i = 0; i < str.length()-1; i++) {
             String unit = str.substring(i, i+2);
             if (other.contains(unit)) {
