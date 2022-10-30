@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Problem6 {
@@ -21,8 +22,17 @@ public class Problem6 {
         return false;
     }
 
+    // 3. 중복 닉네임의 이메일 결과 리스트에 저장하기
+    static void addResultList(List<String> resultList, String email, String compareEmail)
+    {
+        resultList.add(email);
+        resultList.add(compareEmail);
+    }
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
+
+        List<String> resultList = new ArrayList<>();
 
         // 1. 모든 정보 확인
         int totalSize = forms.size();
@@ -33,22 +43,24 @@ public class Problem6 {
             String nickName = forms.get(idx).get(1);
             List<String> basic = List.of(email, nickName);
 
-            for(int value=idx+1; value<totalSize; value++)
-            {
+            for(int value=idx+1; value<totalSize; value++) {
                 String compareEmail = forms.get(value).get(0);
                 String compareNickName = forms.get(value).get(1);
                 List<String> compare = List.of(compareEmail, compareNickName);
 
                 // 닉네임 중복 체크
-                boolean resultCompare = getCheckNickName(basic,compare);
-                // 중복 체크 결과 확인
-                System.out.println(basic + " : " + compare + " = " + resultCompare);
-                if(resultCompare == true)
+                boolean resultCompare = getCheckNickName(basic, compare);
+                if (resultCompare == true)
+                {
+                    // 결과 값 결과 리스트에 저장
+                    addResultList(resultList, email,compareEmail);
                     break;
-
-
+                }
             }
         }
+        
+        // 결과를 리스트에 저장한 결과 확인
+        System.out.println(resultList);
 
         return answer;
     }
