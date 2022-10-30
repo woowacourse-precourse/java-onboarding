@@ -1,6 +1,34 @@
 package onboarding;
 
 public class Problem3 {
+    public static int countFourFigures(int number) {
+        int count = 0;
+        int noCount = 0;
+
+        //세 자리 숫자 clap 계산
+        count += countThreeFigures(number % 1000);
+
+        if(number/1000%3 ==0)
+            noCount = number/1000;
+
+        //천의 자리가 3, 6, 9 중 하나일 경우
+        for(int i =0; i<=number/1000; i++){
+            if(i%3 == 0 & i!=noCount & i!=0) {
+                count += 1000;
+                count += countThreeFigures(999);
+            }else if(i == noCount & i!=0) {
+                count += number % 1000 + 1;
+            }else if(i == number/1000) {
+                count += countThreeFigures(number % 1000);
+            }else{
+                count += countThreeFigures(999);
+            }
+        }
+        count += countThreeFigures(999);
+
+        return count;
+    }
+    
     //number가 세 자리 수일 경우
     public static int countThreeFigures(int number){
         int count = 0;
