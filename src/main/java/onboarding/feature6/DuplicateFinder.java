@@ -1,11 +1,6 @@
 package onboarding.feature6;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class DuplicateFinder {
     private String duplicateLetters = "";
@@ -20,11 +15,9 @@ public class DuplicateFinder {
     private int indexM;
     private int indexN;
     private int initialNicknamesSize;
-    
 
     private List<String> initialEmails;
     private List<String> initialNicknames;
-    private Set<String> filteredEmails;
     private Map<String, Set<String>> result = new HashMap<>();
 
     public DuplicateFinder(UserInfo userInfo) {
@@ -33,7 +26,31 @@ public class DuplicateFinder {
         initialNicknamesSize = initialNicknames.size();
     }
 
-    public void findDuplicates() {
+    public List<String> getFilteredEmails (Map<String, Set<String>> result) {
+        List<String> setToList = new ArrayList<>(result.get(duplicateLetters));
+        List<String> idsSorted = new ArrayList<>();
+        List<String> emailsSorted = new ArrayList<>();
+
+        for (String email : setToList) {
+            idsSorted.add(email.split("@")[0]);
+        }
+        Collections.sort(idsSorted);
+        for (String id : idsSorted) {
+            for (String email : setToList) {
+                if (id.equals(email.split("@")[0])) {
+                    int index = setToList.indexOf(email);
+                    emailsSorted.add(setToList.get(index));
+                }
+            }
+        }
+        return emailsSorted;
+    }
+
+    /*
+    * The method below could return more than two pairs of key and value
+    * if given nicknames share several cases of adjacent duplicate letters.
+    */
+    public Map<String, Set<String>> getDuplicates() {
         for (indexI = 0; indexI < initialNicknamesSize - 1; indexI++) {
             currentNickname = initialNicknames.get(indexI);
             currentEmail = initialEmails.get(indexI);
@@ -44,8 +61,13 @@ public class DuplicateFinder {
                 compareLettersOfNickname(currentNickname, nextNickname);
             }
         }
-        
-        System.out.println(result);
+
+        /*
+         * Because the given test case has only one case of adjacent duplicate letters ('제이'),
+         * it returns only one pair of key and value.
+         * {제이=[jason@email.com, jm@email.com, mj@email.com]}
+         */
+        return result;
     }
 
     public void compareLettersOfNickname(String CurrentNickname, String nextNickname) {
@@ -65,7 +87,7 @@ public class DuplicateFinder {
                         result.replace(duplicateLetters, existingFilteredEmails);
                         continue;
                     }
-                    filteredEmails = new HashSet<>();
+                    Set<String> filteredEmails = new HashSet<>();
                     filteredEmails.add(currentEmail);
                     filteredEmails.add(nextEmail);
                     System.out.println(duplicateLetters + "를 새로운 key로 result에 " + currentEmail + "과 " + nextEmail +"을 등록합니다.");
@@ -73,20 +95,5 @@ public class DuplicateFinder {
                 }
             }
         }
-    }
-
-
-    public static void main(String[] args) {
-        List<List<String>> forms = List.of(
-            List.of("jm@email.com", "제이엠"),
-            List.of("jason@email.com", "제이슨"),
-            List.of("woniee@email.com", "워니"),
-            List.of("mj@email.com", "엠제이"),
-            List.of("nowm@email.com", "이제엠")
-        );
-
-        UserInfo userInfo = new UserInfo(forms);
-        DuplicateFinder duplicateFinder = new DuplicateFinder(userInfo);
-        duplicateFinder.findDuplicates();
     }
 }
