@@ -105,17 +105,17 @@ class Problem7Test {
     @Test
     void validateFriends() {
         StringBuilder size30String = new StringBuilder();
-        IntStream.range(0, 31)
+        IntStream.range(0, 30)
             .forEach(i -> size30String.append("a"));
-
-        Assertions.assertThatCode(() -> Problem7.validateFriends(List.of(List.of("abc", "def"))));
-        Assertions.assertThatCode(() -> Problem7.validateFriends(List.of(List.of("abc", size30String.toString()))));
-
         List<List<String>> size10001List = new ArrayList<>();
         IntStream.range(0, 10001)
             .forEach(i -> size10001List.add(List.of("abc", "def")));
-        String size31String = size30String.append("a")
-            .toString();
+        String size31String = size30String + "a";
+
+        Assertions.assertThatCode(() -> Problem7.validateFriends(List.of(List.of("abc", "def"))))
+            .doesNotThrowAnyException();
+        Assertions.assertThatCode(() -> Problem7.validateFriends(List.of(List.of("abc", size30String.toString()))))
+            .doesNotThrowAnyException();
 
         Assertions.assertThatThrownBy(() -> Problem7.validateFriends(List.of()));
         Assertions.assertThatThrownBy(() -> Problem7.validateFriends(size10001List));
@@ -124,5 +124,27 @@ class Problem7Test {
         Assertions.assertThatThrownBy(() -> Problem7.validateFriends(List.of(List.of("abc", size31String))));
         Assertions.assertThatThrownBy(() -> Problem7.validateFriends(List.of(List.of("abc", "d1f"))));
         Assertions.assertThatThrownBy(() -> Problem7.validateFriends(List.of(List.of("Abc", "def"))));
+    }
+
+    @Test
+    void validateVisitors() {
+        List<String> size10001List = new ArrayList<>();
+        IntStream.range(0, 10001)
+            .forEach(i -> size10001List.add("abc"));
+        StringBuilder size31String = new StringBuilder();
+        IntStream.range(0, 31)
+            .forEach(i -> size31String.append("a"));
+
+        Assertions.assertThatCode(() -> Problem7.validateVisitors(List.of("abc")));
+        Assertions.assertThatCode(() -> Problem7.validateVisitors(List.of()));
+
+        Assertions.assertThatThrownBy(() -> Problem7.validateVisitors(size10001List));
+        Assertions.assertThatThrownBy(() -> Problem7.validateVisitors(List.of("")));
+        Assertions.assertThatThrownBy(() -> Problem7.validateVisitors(List.of(size31String.toString())));
+        Assertions.assertThatThrownBy(() -> Problem7.validateVisitors(List.of("1a")));
+        Assertions.assertThatThrownBy(() -> Problem7.validateVisitors(List.of("1A")));
+        Assertions.assertThatThrownBy(() -> Problem7.validateVisitors(List.of("1")));
+        Assertions.assertThatThrownBy(() -> Problem7.validateVisitors(List.of("A")));
+
     }
 }

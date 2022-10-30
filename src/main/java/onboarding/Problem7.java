@@ -17,6 +17,7 @@ public class Problem7 {
     private static final int FRIENDS_LIST_SIZE_MIN = 1;
     private static final int FRIENDS_LIST_SIZE_MAX = 10000;
     private static final int FRIENDS_ELEMENT_SIZE = 2;
+    private static final int VISITORS_LIST_SIZE_MAX = 10000;
     private static final String LOWER_ALPHABET_REGEX = "^[a-z]*$";
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -32,6 +33,18 @@ public class Problem7 {
     private static void validateInput(String user, List<List<String>> friends, List<String> visitors) {
         validateUser(user);
         validateFriends(friends);
+        validateVisitors(visitors);
+    }
+
+    static void validateVisitors(List<String> visitors) {
+        if (!isValidVisitorsSize(visitors)) {
+            throw new IllegalArgumentException();
+        }
+        visitors.forEach(visitor -> validateUser(visitor));
+    }
+
+    private static boolean isValidVisitorsSize(List<String> visitors) {
+        return visitors.size() <= VISITORS_LIST_SIZE_MAX;
     }
 
     static void validateFriends(List<List<String>> friends) {
