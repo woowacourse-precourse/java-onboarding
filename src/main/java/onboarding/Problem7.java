@@ -3,15 +3,31 @@ package onboarding;
 import java.util.*;
 
 /** 기능 목록
- * solutionLogic            : 메인 솔루션
- *
+ * solution                 : 메인 솔루션
+ * checkValidName           : 이름 길이 & 소문자 체크
  * checkValidNameLength     : 이름 길이 체크
  * checkValidFriendLength   : friend 길이 체크
  * checkValidVisitorsLength : visitors 길이 체크
+ * checkValidInnerFriendList: friend 내부 체크
  * checkLowerCase           : 아이디 소문자 확인
  *
+ * [FriendRepository]
+ * getUserSns               : 유저 Sns 반환
+ * addVisitor               : 유저 방문자 추가
+ * addRelationship          : 2 유저 관계 추가
+ * getFriendRecommendation  : 유저의 추천 친구 반환
+ * getSortedRecommend       : 추천 친구 정렬
+ * getAllUsers              : 모든 유저 반환
+ * getNotMyFriends          : 친구 아닌 유저 반환
+ * getScore                 : 관계 점수 반환
+ * scoreOverLapped          : 겹친 친구 점수 반환
+ * scoreVisitor             : 방문 횟수 점수 반환
+ *
  * [Sns] 컬렉션
- * overlappedFriends        : 겹친 친구의 수 반환
+ * addFriend                : 내 Sns 친구 추가
+ * getMyFriends             : 내 Sns 친구 반환
+ * addVisited               : 내 Sns 방문자 추가
+ * getVisited               : 내 Sns 방문자 반환
  */
 
 public class Problem7 {
@@ -20,21 +36,18 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         if (!checkLowerCase(user)) {
-            return Collections.emptyList();
+            throw new IllegalArgumentException("제한사항 위반 [유저 이름 소문자]");
         }
         if(!checkValidFriendLength(friends) || !checkValidVisitorsLength(visitors)){
-            return Collections.emptyList();
+            throw new IllegalArgumentException("제한사항 위반");
         }
-
         FriendRepository friendRepository = new FriendRepository();
         for (List<String> relationship : friends) {
             friendRepository.addRelationship(relationship.get(0), relationship.get(1));
         }
-        MySns mySns = friendRepository.getUserSns(user);
         for (String visitor : visitors) {
             friendRepository.addVisitor(user, visitor);
         }
-
         return friendRepository.getFriendRecommendation(user);
     }
 
@@ -51,7 +64,7 @@ public class Problem7 {
         int count = 0;
         for (List<String> friend : friends) {
             if (!checkValidInnerFriendList(friend)) {
-                return false;
+                throw new IllegalArgumentException("제한사항 위반");
             }
             count += 1;
         }
@@ -78,6 +91,7 @@ public class Problem7 {
     }
 
     static class FriendRepository{
+
         private final HashMap<String, MySns> world = new HashMap<>();
 
         private MySns getUserSns(String name) {
@@ -104,13 +118,7 @@ public class Problem7 {
 
         private List<String> getFriendRecommendation(String user) {
             Map<String, Integer> result = new HashMap<>();
-            Set<String> allUsers = getAllUsers();
-//            System.out.println("allUsers = " + allUsers);
-            MySns userSns = getUserSns(user);
-            HashSet<String> myFriends = userSns.getMyFriends();
-//            System.out.println("myFriends = " + myFriends);
-            Set<String> notMyFriends = getNotMyFriends(myFriends, allUsers);
-            notMyFriends.remove(user);
+            Set<String> notMyFriends = getNotMyFriends(user);
             for (String other : notMyFriends) {
                 int score = getScore(user, other);
                 result.put(other, score);
@@ -123,11 +131,9 @@ public class Problem7 {
             List<Map.Entry<String, Integer>> entryList = new ArrayList<>(map.entrySet());
             entryList.sort((o1, o2) ->
                     Objects.equals(o1.getValue(), o2.getValue()) ? o1.getKey().compareTo(o2.getKey()) : o2.getValue() - o1.getValue());
-
             for (int i = 0; i < Math.min(5, entryList.size()); i++) {
                 result.add(entryList.get(i).getKey());
             }
-
             return result;
         }
 
@@ -135,30 +141,32 @@ public class Problem7 {
             return world.keySet();
         }
 
-        private Set<String> getNotMyFriends(Set<String> myFriends, Set<String> allUsers) {
+        private Set<String> getNotMyFriends(String user) {
+            MySns mySns = world.get(user);
+            Set<String> allUsers = getAllUsers();
+            HashSet<String> myFriends = mySns.getMyFriends();
             Set<String> result = new HashSet<>(allUsers);
             result.removeAll(myFriends);
+            result.remove(user);
             return result;
         }
 
         private int getScore(String user, String other) {
             Set<String> userFriends = getUserSns(user).getMyFriends();
             Set<String> otherFriends = getUserSns(other).getMyFriends();
-            int overlapped = countOverlap(userFriends, otherFriends);
-            int visited = countVisited(user, other);
-            return overlapped * commonFriendScore + visited * visitedTimeLineScore;
+            return scoreOverLapped(userFriends, otherFriends) + scoreVisitor(user, other);
         }
 
-        private int countOverlap(Set<String> A, Set<String> B) {
+        private int scoreOverLapped(Set<String> A, Set<String> B) {
             Set<String> compare = new HashSet<>(A);
             compare.retainAll(B);
-            return compare.size();
+            return compare.size() * commonFriendScore;
         }
 
-        private int countVisited(String user, String visited) {
+        private int scoreVisitor(String user, String visited) {
             MySns userSns = getUserSns(user);
             HashMap<String, Integer> visitedMap = userSns.getVisited();
-            return visitedMap.getOrDefault(visited, 0);
+            return visitedMap.getOrDefault(visited, 0) * visitedTimeLineScore;
         }
     }
 
