@@ -10,17 +10,24 @@ public class Problem6 {
     static HashMap<String, Integer> twoLetterCountMap = new HashMap<>();
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> separatedNickname = new ArrayList<>();
+        List<List<String>> separatedNickname = new ArrayList<>();
         for (List<String> crew : forms) {
-            separatedNickname.addAll(getSeparateTwoConsecutiveLetters(crew.get(NICKNAME)));
+            List<String> temp = new ArrayList<>(getSeparateTwoConsecutiveLetters(crew.get(NICKNAME)));
+            separatedNickname.add(temp);
         }
         countTwoLetters(separatedNickname);
 
         return new ArrayList<>();
     }
 
-    private static void countTwoLetters(List<String> separatedNickname) {
-        for (String twoLetters : separatedNickname) {
+    private static void countTwoLetters(List<List<String>> separatedNickname) {
+        for (List<String> crewSeparatedNickname : separatedNickname) {
+            putListToMap(crewSeparatedNickname);
+        }
+    }
+
+    private static void putListToMap(List<String> crewSeparatedNickname) {
+        for (String twoLetters : crewSeparatedNickname) {
             twoLetterCountMap.put(twoLetters, twoLetterCountMap.getOrDefault(twoLetters, 0) + 1);
         }
     }
