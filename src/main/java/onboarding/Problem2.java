@@ -18,5 +18,13 @@ public class Problem2 {
 
 	private static void add(List<Character> list, char c) {
 		list.add(c);
+
+		if (1 < list.size() && isEqualOfTwoChars(list)) {
+
+		}
+	}
+
+	private static boolean isEqualOfTwoChars(List<Character> list) {
+		return list.get(list.size() - 2) == list.get(list.size() - 1);
 	}
 }
