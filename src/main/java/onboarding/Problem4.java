@@ -1,11 +1,17 @@
 package onboarding;
 
+import java.util.stream.Collectors;
+
 public class Problem4 {
     public static final int UPPER_SUM = 155;
     public static final int LOWER_SUM = 219;
 
     public static String solution(String word) {
-        String answer = "";
+        String answer = word.chars()
+                .mapToObj(c -> (char)c)
+                .map(Problem4::toFrogChar)
+                .map(String::valueOf)
+                .collect(Collectors.joining());
         return answer;
     }
 
