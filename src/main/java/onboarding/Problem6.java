@@ -45,6 +45,13 @@ public class Problem6 {
         return validForms;
     }
 
-
+    //닉네임 두글자 이상 뽑기 Set
+    public static Set<String> makeDupleSet(String nickname){
+        Set<String> dupleSet = new HashSet<>();
+        for(int i=0; i< nickname.length()-1 ;i++){
+            dupleSet.add(nickname.substring(i,i+2));
+        }
+        return dupleSet;
+    }
 
 }
