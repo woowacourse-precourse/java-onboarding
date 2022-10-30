@@ -21,3 +21,13 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+---
+
+### 기능 정리
+- cryptogram을 LinkedList에 담기.
+- cryptogram을 해독
+  - 중복 찾기
+  - 중복이 있는지 확인
+  - 중복 제거
+- LinkedList를 문자열로 바꾸기.
