@@ -39,7 +39,21 @@ public class Problem7 {
                 map.put(visitors.get(i), map.getOrDefault(visitors.get(i), 0) + 1);
             }
         }
-
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(map.entrySet());
+        entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                if(o2.getValue().equals(o1.getValue())) //이름이 같을 경우
+                    return o1.getKey().charAt(0)-o2.getKey().charAt(0);
+                return o2.getValue() - o1.getValue();
+            }
+        });
+        int x=0;
+        for(Map.Entry<String, Integer> entry : entryList){
+            answer.add(entry.getKey());
+            if(++x>=5)
+                break;
+        }
 
         return answer;
     }
