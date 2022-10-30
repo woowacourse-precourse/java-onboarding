@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -14,13 +11,12 @@ public class Problem6 {
 
 class User {
     private static final int LOWER_BOUND_LIMIT = 1;
-    
     private static final int UPPER_BOUND_LIMIT = 1000000;
+    private static final int MINIMUM_LENGTH_EMAIL = 11;
+    private static final int MAXIMUM_LENGTH_EMAIL = 20;
     private static final String OUT_OF_COUNT = "1개이상 10,000개 이하의 유저 데이터를 입력해 주세요";
     private static final String NOT_MATCH_EMAIL_PATTERN = "이메일의 형식에 맞게 입력해 주세요";
     private static final String NOT_MATCH_EMAIL_SIZE = "이메일의 길이는 11 이상 20 미만으로 입력해야 합니다";
-    private static final int MINIMUM_LENGTH_EMAIL = 11;
-    private static final int MAXIMUM_LENGTH_EMAIL = 20;
     private static final String ONLY_MATCH_KOREAN = "한글만 입력해주세요";
 
 
@@ -44,7 +40,15 @@ class User {
 
     private static List<String> removeDuplicatedEmail(List<String> list) {
         Set<String> set = new HashSet<>(list);
-        return new ArrayList<>(set);
+        ArrayList<String> answer = new ArrayList<>(set);
+        sortList(answer);
+        return answer;
+        }
+
+    private static ArrayList<String> sortList(ArrayList<String> answer) {
+        Collections.sort(answer);
+        return answer;
+
     }
 
     public static boolean isContains(String name1, String name2) {
