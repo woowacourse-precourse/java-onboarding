@@ -10,8 +10,18 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
 
-
         return answer;
+    }
+
+
+    public static boolean isSameValue(String currentValue, String topValue){
+        boolean checkValue = false;
+
+        if (currentValue == topValue){
+            checkValue = true;
+        }
+
+        return checkValue;
     }
 
     public static String checkTopValue(Stack checkStack){
