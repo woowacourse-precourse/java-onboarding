@@ -1,26 +1,36 @@
 package onboarding;
 
 
+import java.util.List;
+
 public class Problem3 {
+
+    private static final List<Integer> clapList = List.of(3, 6, 9);
+
     public static int solution(int number) {
         return findTotalClapsFromNum(number);
     }
 
     private static int findTotalClapsFromNum(int num) {
-        int clap = 0;
+        int totalClap = 0;
         for (int i = 1; i <= num; i++) {
             int temp = i;
             while ( temp > 0) {
                 if (canClap(temp % 10)) {
-                    clap += 1;
+                    totalClap += 1;
                 }
                 temp /= 10;
             }
         }
-        return clap;
+        return totalClap;
     }
 
-    private static boolean canClap(int clap) {
-        return clap == 3 || clap == 6 || clap == 9;
+    private static boolean canClap(int n) {
+        for (int clap : clapList) {
+            if (n == clap) {
+                return true;
+            }
+        }
+        return false;
     }
 }
