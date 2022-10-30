@@ -6,27 +6,16 @@ class Problem1 {
 	
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
 		
-		boolean parameterConfirm = parameterCheck(pobi) && parameterCheck(crong);
-		if(!parameterConfirm){
+		// 입력 확인
+		if(!parameterCheck(pobi) && parameterCheck(crong)){
 			return -1;
 		}
 		
-		int pobiMaxValue = Integer.MIN_VALUE;
-		for (Integer number : pobi) {
-			int pobiIndexMaxValue = Math.max(sumValue(number), multipleValue(number));
-			if (pobiIndexMaxValue > pobiMaxValue) {
-				pobiMaxValue = pobiIndexMaxValue;
-			}
-		}
+		// 로직
+		int pobiMaxValue = pickMaxValue(pobi);
+		int crongMaxValue = pickMaxValue(crong);
 		
-		int crongMaxValue = Integer.MIN_VALUE;
-		for (Integer number : crong) {
-			int pobiIndexMaxValue = Math.max(sumValue(number), multipleValue(number));
-			if (pobiIndexMaxValue > crongMaxValue) {
-				crongMaxValue = pobiIndexMaxValue;
-			}
-		}
-		
+		// 반환
 		if(pobiMaxValue > crongMaxValue){
 			return 1;
 		}else if(pobiMaxValue < crongMaxValue){
@@ -34,8 +23,8 @@ class Problem1 {
 		}else{
 			return 0;
 		}
-		
 	}
+
 	
 	private static boolean parameterCheck(List<Integer> user) {
 		if(user.size() != 2){
@@ -58,6 +47,16 @@ class Problem1 {
 		}
 		
 		return true;
+	}
+	private static int pickMaxValue(List<Integer> user) {
+		int maxValue = Integer.MIN_VALUE;
+		for (Integer page : user) {
+			int indexMaxValue = Math.max(sumValue(page), multipleValue(page));
+			if (indexMaxValue > maxValue) {
+				maxValue = indexMaxValue;
+			}
+		}
+		return maxValue;
 	}
 	
 	private static int sumValue(int num) {
