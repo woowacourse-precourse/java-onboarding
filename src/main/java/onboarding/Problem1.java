@@ -31,6 +31,15 @@ class Problem1 {
         return result;
     }
 
+    static int multipleEveryDigits(int num) {
+        List<Integer> digitList = splitDigits(num);
+        int result = 1;
+        for (int i : digitList) {
+            result *= i;
+        }
+        return result;
+    }
+
     static List<Integer> splitDigits(int num) {
         int[] arrayOfNum = Stream.of(String.valueOf(num).split("")).mapToInt(Integer::parseInt).toArray();
         List<Integer> result = Arrays.stream(arrayOfNum).boxed().collect(Collectors.toList());
