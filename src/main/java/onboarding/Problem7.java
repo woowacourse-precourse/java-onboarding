@@ -4,54 +4,15 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = new ArrayList<>();
-//        Person user = new Person(username);
-//        Map<String, Person> people = new HashMap<>();
-//        initializeFriendShip(people, friends);
-//        List<String> friendsOfUserFriends = findFriendsOfUserFriends(user, people);
-//        Map<String, Person> recommendedPeople = new HashMap<>();
-
+        List<String> answer;
         Map<String, List<String>> friendsInformation = initializeFriendsInformation(friends);
         List<String> friendsOfFriendsOfUser = findFriendsOfFriendsOfUser(user, friendsInformation);
         Map<String, Integer> recommendScore = new HashMap<>();
         calculateRecommendScore(recommendScore, friendsOfFriendsOfUser, CalculusType.friend);
         visitors = findVisitorsNotUserFriend(visitors, friendsInformation.get(user));
         calculateRecommendScore(recommendScore, visitors, CalculusType.visitor);
-
+        answer = findTop5RecommendedPeople(recommendScore);
         return answer;
-    }
-
-    public static void initializeFriendShip(Map<String, Person> people, List<List<String>> friends){
-        for(List<String> friendShip : friends) {
-            String person1 = friendShip.get(0);
-            String person2 = friendShip.get(1);
-            if(people.containsKey(person1)){
-                people.put(person1, new Person(person1));
-            }
-            if(people.containsKey(person2)) {
-                people.put(person2, new Person(person2));
-            }
-            people.get(person1).getFriends().add(person2);
-            people.get(person2).getFriends().add(person2);
-        }
-    }
-
-    public static List<String> findFriendsOfUserFriends(Person user, Map<String, Person> people) {
-        List<String> friendsOfUserFriends = new ArrayList<>();
-        List<String> userFriends = user.getFriends();
-        for(String friend : userFriends){
-            Person userFriend = people.get(friend);
-            for(String friendOfUserFriend : userFriend.getFriends()) {
-                if(friendOfUserFriend.equals(user.getName())){
-                    continue;
-                }
-                if(userFriends.contains(friendOfUserFriend)){
-                    continue;
-                }
-                friendsOfUserFriends.add(friendOfUserFriend);
-            }
-        }
-        return friendsOfUserFriends;
     }
 
     public static Map<String, List<String>> initializeFriendsInformation(List<List<String>> friends) {
@@ -129,14 +90,11 @@ public class Problem7 {
     public static List<String> findTop5RecommendedPeople(Map<String, Integer> recommendScore) {
         List<String> people = new ArrayList<>(recommendScore.keySet());
         List<String> top5 = new ArrayList<>();
-        people.sort(new Comparator<String>() {
-            @Override
-            public int compare(String o1, String o2) {
-                if(recommendScore.get(o1) == recommendScore.get(o2)) {
-                    return o1.compareTo(o2);
-                }
-                return recommendScore.get(o2).compareTo(recommendScore.get(o1));
+        people.sort((o1, o2) -> {
+            if (recommendScore.get(o1) == recommendScore.get(o2)) {
+                return o1.compareTo(o2);
             }
+            return recommendScore.get(o2).compareTo(recommendScore.get(o1));
         });
         for(int i = 0; i < 5 && i < people.size(); ++i){
             top5.add(people.get(i));
@@ -148,31 +106,4 @@ public class Problem7 {
 enum CalculusType {
     friend,
     visitor
-}
-
-class Person {
-    private String name;
-    private int recommendScore;
-    private List<String> friends;
-    public Person(String name) {
-        this.name = name;
-        this.recommendScore = 0;
-        this.friends = new ArrayList<>();
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getRecommendScore() {
-        return recommendScore;
-    }
-
-    public void setRecommendScore(int recommendScore) {
-        this.recommendScore = recommendScore;
-    }
-
-    public List<String> getFriends() {
-        return friends;
-    }
 }
