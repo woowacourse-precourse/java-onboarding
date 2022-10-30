@@ -120,6 +120,14 @@ class ApplicationTest {
             String result = "R olev blf";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
+
+        @Test
+        void case2() {
+            //알파벳이 아닌, 숫자나 특수문자 그대로 출력하는지 확인
+            String word = "A2#B";
+            String result = "Z2#Y";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
     }
 
     @Nested
