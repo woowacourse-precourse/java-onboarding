@@ -14,6 +14,21 @@ public class Problem4 {
 
         setConvertTable(convertTable);
 
+        StringBuilder convertResult = new StringBuilder();
+
+        for (char letter : word.toCharArray()) {
+            boolean checkLower = Character.isLowerCase(letter);
+            char afterConvert = convertTable.get(Character.toUpperCase(letter));
+
+            if (checkLower) {
+                afterConvert = Character.toLowerCase(afterConvert);
+            }
+
+            convertResult.append(afterConvert);
+        }
+
+        answer = convertResult.toString();
+
         return answer;
     }
 
