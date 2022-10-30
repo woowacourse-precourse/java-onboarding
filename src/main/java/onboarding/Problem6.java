@@ -42,7 +42,8 @@ public class Problem6 {
     }
 
     private static void addPersonsEmailIfContains(String key, List<String> person){
-        if(person.get(NICKNAME_INDEX).contains(key) && countOfSameWords.get(key) > 1) emails.add(person.get(EMAIL_INDEX));
+        if(person.get(NICKNAME_INDEX).contains(key) && countOfSameWords.get(key) > NO_WORDS_IN_COMMON)
+            emails.add(person.get(EMAIL_INDEX));
     }
 
 
