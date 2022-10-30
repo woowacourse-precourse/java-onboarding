@@ -34,6 +34,9 @@ public class Problem7 {
         // 사용자의 타임 라인에 방문한 횟수에 따라 1점 추가하는 기능
         recommendByVisitors(visitors, friendSet, recommendMap);
 
+        // 점수가 높은 최대 5명까지 추천
+        sortRocommendation(answer, recommendMap,5);
+
         return answer;
     }
 
@@ -96,5 +99,19 @@ public class Problem7 {
 
     }
 
+    // 점수가 높은 최대 5명까지 추천하는 기능
+    private static void sortRocommendation(List<String> answer, Map<String, Integer> recommendMap, int limit) {
+        // 추천 점수가 같은 경우 이름순으로 정렬
+        List<String> keySet = new ArrayList<>(recommendMap.keySet());
+        keySet.sort((o1, o2) -> recommendMap.get(o2).compareTo(recommendMap.get(o1)));
+
+
+        for (String key : keySet) {
+            // 최대 5명까지 추천
+            if (answer.size() <= limit) {
+                answer.add(key);
+            }
+        }
+    }
 
 }
