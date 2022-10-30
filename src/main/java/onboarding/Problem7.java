@@ -7,27 +7,27 @@ public class Problem7 {
         List<String> answer = new ArrayList<>();
 
         // 친구 리스트 만듦
-        List<String> member = makeFriendList(friends);
+        List<String> memberList = makeFriendList(friends);
 
         // 그래프 구조로 친구 관계를 만들기
-        List<String>[] friendList = makeFriendGraph(member, friends);
+        List<String>[] friendList = makeFriendGraph(memberList, friends);
 
 
         // 사용자와 함께 아는 친구의 점수를 매김(10점)
-        int userIdx = member.indexOf(user); // 파라미터로 받은 유저의 인덱스
-        int[] memberPoint = new int[member.size()]; // 추천 점수 표시할 배열
+        int userIdx = memberList.indexOf(user); // 파라미터로 받은 유저의 인덱스
+        int[] memberPoint = new int[memberList.size()]; // 추천 점수 표시할 배열
 
         List<String> userFriend = friendList[userIdx]; // 파라미터로 받은 유저의 직접 친구 리스트
         for(int i=0; i<userFriend.size(); i++){
             String friendOfUser = userFriend.get(i); // 파라미터로 받은 유저의 직접 친구
 
-            int friendOfUserIdx = member.indexOf(friendOfUser); // 파라미터로 받은 유저의 직접 친구 인덱스
+            int friendOfUserIdx = memberList.indexOf(friendOfUser); // 파라미터로 받은 유저의 직접 친구 인덱스
             List<String> indirectFriendList = friendList[friendOfUserIdx]; // 파라미터로 받은 유저의 직접 친구와 친구 관계인 유저 리스트
             
             Iterator<String> indirectFriendItr = indirectFriendList.iterator();
             for(int j=0; j< indirectFriendList.size(); j++){
                 String indirectFriend = indirectFriendItr.next();
-                int indirectFriendIdx = member.indexOf(indirectFriend);
+                int indirectFriendIdx = memberList.indexOf(indirectFriend);
                 memberPoint[indirectFriendIdx] += 10;
             }
         }
@@ -42,8 +42,8 @@ public class Problem7 {
         // 최종 점수 구하기
         Map<String, Integer> recommendPoint = new HashMap<>();
         // 10점 짜리 점수 넣기
-        for(int i=0; i<member.size(); i++){
-            String recommendName = member.get(i);
+        for(int i=0; i<memberList.size(); i++){
+            String recommendName = memberList.get(i);
             int recommendNamePoint = memberPoint[i];
             recommendPoint.put(recommendName, recommendNamePoint);
         }
