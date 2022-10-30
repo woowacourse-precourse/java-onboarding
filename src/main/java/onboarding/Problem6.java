@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeSet;
 
 public class Problem6 {
 
@@ -56,6 +57,35 @@ public class Problem6 {
             result.add(temp);
         }
 
+        return result;
+    }
+
+
+    /**
+     * 서로 비슷한 닉네임을 찾아, 그 닉네임의 이메일을 기록한 목록을 리턴한다
+     * @param newForms
+     * @return
+     */
+    private List<String> checkAlikeNicknames(List<List<String>> newForms) {
+        TreeSet<String> duplicates = new TreeSet<>();
+
+        // 두 닉네임이 유사하면, 두 이메일 주소를 기록한다.
+        for (int i = 0; i < newForms.size() - 1; i++) {
+            for (int j = i + 1; j < newForms.size(); j++) {
+                if(twoStringsAreAlike(newForms.get(i).get(1), newForms.get(j).get(1))) {
+                    duplicates.add(newForms.get(i).get(0));
+                    duplicates.add(newForms.get(j).get(0));
+                }
+            }
+        }
+
+        List<String> result = new ArrayList<>();
+        for (String next : duplicates) {
+            StringBuilder sb = new StringBuilder();
+            sb.append(next);
+            sb.append("@email.com");
+            result.add(sb.toString());
+        }
         return result;
     }
 
