@@ -31,19 +31,8 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         PriorityQueue<Recommend> pq = new PriorityQueue<>();
         Map<String, List<String>> relationship = new HashMap<>();
-        Map<String, Boolean> visited = new HashMap<>();
-        for (List<String> friend : friends) {
-            for (String nickname : friend) {
-                if (!relationship.containsKey(nickname)) {
-                    relationship.put(nickname, new ArrayList<>());
-                    visited.put(nickname, false);
-                }
-            }
-            relationship.get(friend.get(0)).add(friend.get(1));
-            relationship.get(friend.get(1)).add(friend.get(0));
-        }
-        saveAcquaintanceScore(user, relationship, pq, visited);
-        saveVisitScore(user, relationship, visitors, pq);
+        initializeAcquaintanceScore(user, relationship, friends, pq);
+        initializeVisitScore(user, relationship, visitors, pq);
         return pq.stream()
                 .sorted((o1, o2) -> {
                     if (o1.getScore() == o2.getScore()) {
@@ -56,51 +45,60 @@ public class Problem7 {
                 .collect(Collectors.toList());
     }
 
-    private static void saveVisitScore(String user, Map<String, List<String>> relationship, List<String> visitors, PriorityQueue<Recommend> pq) {
+    private static void initializeVisitScore(String user, Map<String, List<String>> relationship,
+                                       List<String> visitors, PriorityQueue<Recommend> pq) {
         for (String visitor : visitors) {
-            boolean isExist = false;
-            for (Recommend recommend : pq) {
-                if (recommend.recommendedUser.equals(visitor)) {
-                    recommend.addScore(1);
-                    isExist = true;
-                    break;
-                }
+            if (visitor.equals(user)) {
+                continue;
             }
-            boolean isAlreadyFriend = false;
-            for (String nickname : relationship.get(user)) {
-                if (nickname.equals(visitor)) {
-                    isAlreadyFriend = true;
-                    break;
-                }
+            boolean isAlreadyFriend = isAlreadyFriend(user, relationship, visitor);
+            if (isAlreadyFriend) {
+                continue;
             }
-            if (!isExist && !isAlreadyFriend && !visitor.equals(user)) {
-                pq.add(new Recommend(visitor, 1));
+            Recommend recommend = getRecommend(pq, visitor);
+            recommend.addScore(1);
+            if (recommend.getScore() == 1) {
+                pq.add(recommend);
             }
         }
     }
 
-    private static void saveAcquaintanceScore(String user, Map<String, List<String>> relationship, PriorityQueue<Recommend> pq, Map<String, Boolean> visited) {
+    private static boolean isAlreadyFriend(String user, Map<String, List<String>> relationship, String visitor) {
+        for (String nickname : relationship.get(user)) {
+            if (nickname.equals(visitor)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static Recommend getRecommend(PriorityQueue<Recommend> pq, String visitor) {
+        for (Recommend recommend : pq) {
+            if (recommend.recommendedUser.equals(visitor)) {
+                return recommend;
+            }
+        }
+        return new Recommend(visitor, 0);
+    }
+
+    private static void initializeAcquaintanceScore(String user, Map<String, List<String>> relationship,
+                                              List<List<String>> friends, PriorityQueue<Recommend> pq) {
+        Map<String, Boolean> visited = new HashMap<>();
+        Map<String, Recommend> recommendMap = new HashMap<>();
+        setRelationship(relationship, friends, visited);
+        saveAcquaintanceScoreRM(user, relationship, visited, recommendMap);
+        saveAcquaintanceScorePQ(pq, recommendMap);
+    }
+
+    private static void saveAcquaintanceScoreRM(String user, Map<String, List<String>> relationship, Map<String, Boolean> visited, Map<String, Recommend> recommendMap) {
         Queue<String> queue = new LinkedList<>();
         queue.add(user);
         visited.put(user, true);
         int level = 1;
         int nowSize = 1;
         int count = 0;
-        Map<String, Recommend> recommendMap = new HashMap<>();
         while (level <= 2) {
-            String nickname = queue.poll();
-            for (String friend : relationship.get(nickname)) {
-                if (!visited.get(friend)) {
-                    queue.add(friend);
-                    if (level == 2) {
-                        if (recommendMap.containsKey(friend)) {
-                            recommendMap.get(friend).addScore(10);
-                            continue;
-                        }
-                        recommendMap.put(friend, new Recommend(friend, 10));
-                    }
-                }
-            }
+            investigateUserRelationship(relationship, visited, recommendMap, queue, level);
             count++;
             if (count == nowSize) {
                 count = 0;
@@ -108,8 +106,56 @@ public class Problem7 {
                 level++;
             }
         }
+    }
+
+    private static void investigateUserRelationship(Map<String, List<String>> relationship, Map<String, Boolean> visited, Map<String, Recommend> recommendMap, Queue<String> queue, int level) {
+        String nickname = queue.poll();
+        visited.put(nickname, true);
+        for (String friend : relationship.get(nickname)) {
+            if (!visited.get(friend)) {
+                queue.add(friend);
+                addScoreFriendsAcquaintance(recommendMap, level, friend);
+            }
+        }
+    }
+
+    private static void saveAcquaintanceScorePQ(PriorityQueue<Recommend> pq, Map<String, Recommend> recommendMap) {
         for (String key : recommendMap.keySet()) {
             pq.add(recommendMap.get(key));
+        }
+    }
+
+    private static void addScoreFriendsAcquaintance(Map<String, Recommend> recommendMap, int level, String friend) {
+        if (level == 2) {
+            Recommend recommend = getRecommend(recommendMap, friend);
+            recommend.addScore(10);
+            if (recommend.getScore() == 10) {
+                recommendMap.put(friend, recommend);
+            }
+        }
+    }
+
+    private static Recommend getRecommend(Map<String, Recommend> recommendMap, String friend) {
+        if (recommendMap.containsKey(friend)) {
+            return recommendMap.get(friend);
+        }
+        return new Recommend(friend, 0);
+    }
+
+    private static void setRelationship(Map<String, List<String>> relationship, List<List<String>> friends, Map<String, Boolean> visited) {
+        for (List<String> friend : friends) {
+            for (String nickname : friend) {
+                initializeRelationship(relationship, visited, nickname);
+            }
+            relationship.get(friend.get(0)).add(friend.get(1));
+            relationship.get(friend.get(1)).add(friend.get(0));
+        }
+    }
+
+    private static void initializeRelationship(Map<String, List<String>> relationship, Map<String, Boolean> visited, String nickname) {
+        if (!relationship.containsKey(nickname)) {
+            relationship.put(nickname, new ArrayList<>());
+            visited.put(nickname, false);
         }
     }
 
@@ -141,14 +187,5 @@ public class Problem7 {
             }
             return o.getScore() - this.getScore();
         }
-
-        @Override
-        public String toString() {
-            return "Recommend{" +
-                    "recommendedUser='" + recommendedUser + '\'' +
-                    ", score=" + score +
-                    '}';
-        }
-
     }
 }
