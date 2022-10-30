@@ -8,8 +8,12 @@ public class Problem7 {
     private static final Map<String, Integer> friendRecommendScoreMap = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friendRelationships, List<String> userTimelineVisitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        initFriendRecommendScoreMap(friendRelationships, userTimelineVisitors);
+        Set<String> userFriends = getUserFriends(user, friendRelationships);
+        List<String> friendsOfUserFriends = getFriendsOfUserFriends(user, friendRelationships, userFriends);
+        friendsOfUserFriendsAddScore(friendsOfUserFriends);
+        userTimelineVisitorsAddScore(userTimelineVisitors);
+        return getTopFiveScoreUser(friendRecommendScoreMap, userFriends);
     }
 
     private static Set<String> getUserIds(List<List<String>> friends) {
