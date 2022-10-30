@@ -27,6 +27,15 @@ public class Problem7 {
             others.addRelationship(relationship);
         });
     }
+
+    static String recordRelationship(List<String> relationship, User user) {
+        boolean isRelationshipOfUserOfUser = user.checkIsRelationshipOfUser(relationship);
+        if (isRelationshipOfUserOfUser) {
+            user.addRelationship(relationship);
+            return "friend";
+        }
+        return "other";
+    }
 }
 
 class User {
@@ -45,6 +54,25 @@ class User {
     List<String> getFriendList() {
         List<String> friendList = this.friends;
         return friendList;
+    }
+
+    boolean checkIsRelationshipOfUser(List<String> relationship) {
+        String user = this.getUser();
+        boolean isContainUser = relationship.contains(user);
+        return isContainUser;
+    }
+
+    void addRelationship(List<String> relationship) {
+        String friend = this.getFriendFromRelationship(relationship);
+        this.friends.add(friend);
+    }
+
+    String getFriendFromRelationship(List<String> relationship) {
+        String user = this.getUser();
+        int indexOfUser = relationship.indexOf(user);
+        int indexOfFriend = 1 - indexOfUser;
+        String friend = relationship.get(indexOfFriend);
+        return friend;
     }
 }
 
