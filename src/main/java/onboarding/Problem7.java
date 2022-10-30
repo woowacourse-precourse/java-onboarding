@@ -7,7 +7,7 @@ public class Problem7 {
         List<String> findFriends=findFriends(user, friends);
         List<String> findAcquaintance=findAcquaintance(user,findFriends,friends);
         Map<String, Integer> scores= friendScoreCalculator(findAcquaintance);
-        scores=visitScoreCalculator(scores,visitors);
+        visitScoreCalculator(scores, visitors);
         return result(scores,findFriends);
     }
     public static List<String> findAcquaintance(String user,List<String> findFreinds,List<List<String>> friends){
@@ -50,7 +50,6 @@ public class Problem7 {
         }
         return scores;
     }
-
     public static List<String> result(Map<String,Integer> scores,List<String> findFriends){
         List<String> result = new ArrayList<>();
         for(String name:findFriends){
@@ -74,5 +73,4 @@ public class Problem7 {
         }
         return result;
     }
-
 }
