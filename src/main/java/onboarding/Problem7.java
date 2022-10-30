@@ -45,4 +45,16 @@ public class Problem7 {
 
         return friendListMap;
     }
+
+    private static Map<String, Integer> mapScoreByNotFriendUser(List<String> userFriendList, Set<String> allUserSet) {
+        Map<String, Integer> notFriendUsersScoreMap = new HashMap<>();
+
+        for (String user : allUserSet) {
+            if (!userFriendList.contains(user)) {
+                notFriendUsersScoreMap.put(user, 0);
+            }
+        }
+
+        return notFriendUsersScoreMap;
+    }
 }
