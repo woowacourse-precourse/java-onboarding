@@ -30,4 +30,15 @@ public class Problem7 {
         }
     }
 
+    private static void getAcquaintancePoint(List<List<String>> friends, String user) {
+        for (List<String> friend : friends) {
+            String firstFriend = friend.get(0);
+            String secondFriend = friend.get(1);
+            if (friendOfUserSet.contains(firstFriend) || friendOfUserSet.contains(secondFriend)) {
+                friendsAndScoreMap.put(firstFriend, friendsAndScoreMap.getOrDefault(firstFriend, 0) + ACQUAINTANCE_POINT);
+                friendsAndScoreMap.put(secondFriend, friendsAndScoreMap.getOrDefault(secondFriend, 0) + ACQUAINTANCE_POINT);
+            }
+        }
+    }
+
 }
