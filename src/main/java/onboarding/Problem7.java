@@ -50,8 +50,11 @@ public class Problem7 {
         recommendScoreList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
 
         for (Map.Entry<String, Integer> recommendPerson : recommendScoreList) {
-            answer.add(recommendPerson.getKey());
+            if (answer.size() < 5)
+                answer.add(recommendPerson.getKey());
         }
+
+        // 6. 5명까지만 자르기.
         return answer;
     }
 
