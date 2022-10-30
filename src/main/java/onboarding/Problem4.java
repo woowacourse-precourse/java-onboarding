@@ -4,17 +4,29 @@ package onboarding;
 
 public class Problem4 {
 
+    private static final String SPECIAL_SYMBOL= "[^a-zA-Z\\d]";
+    private static final String BLANK_SPACE= " ";
+
     public static String solution(String word) {
         StringBuilder result = new StringBuilder();
         for (Character c : word.toCharArray()) {
-            result.append(mapCharByDictionary(c));
+            if (isAlpha(c)) {
+                result.append(mapCharByDictionary(c));
+            }else {
+                result.append(c);
+            }
         }
         return result.toString();
     }
 
+    private static boolean isAlpha(Character c) {
+        String toStr = String.valueOf(c);
+        return !toStr.matches(SPECIAL_SYMBOL) && !toStr.equals(BLANK_SPACE);
+    }
+
     private static Character mapCharByDictionary(Character c) {
-        Dictionary mapped = Enum.valueOf(Dictionary.class, c.toString());
-        return mapped.word();
+        Dictionary string = Enum.valueOf(Dictionary.class, c.toString());
+        return string.word();
     }
 
     public enum Dictionary {
