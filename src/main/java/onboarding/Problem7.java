@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -11,6 +12,11 @@ public class Problem7 {
         return answer;
     }
 
+    private static HashMap<String, Integer> makeHashMap(List<String> peopleList) {
+        HashMap<String, Integer> peopleAndPointMap = new HashMap<>();
+        peopleList.forEach(x -> peopleAndPointMap.put(x,0));
+        return peopleAndPointMap;
+    }
     private static List<String> makePeopleList(String user, List<List<String>> friends, List<String> visitors) {
         List<String> list = new ArrayList<>();
         list.add(user);
