@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem6 {
 
@@ -17,11 +18,22 @@ public class Problem6 {
         }
 
         for (Set<String> value : overlap.values()) {
-
+            addToAnswer(value, answer);
         }
 
+        return answer.stream()
+                .distinct()
+                .sorted()
+                .collect(Collectors.toList());
+    }
 
-        return answer;
+    private static void addToAnswer(Set<String> value, List<String> answer) {
+        if (value.size() < 2) {
+            return;
+        }
+        for (String email : value) {
+            answer.add(email);
+        }
     }
 
     private static void searchByForm(String nickname, String email) {
@@ -67,5 +79,4 @@ public class Problem6 {
  *       3. 찾은 문자열을 해쉬맵에 담는 메소드
  * 4. 모든 해쉬맵을 탐색하면서 하는 메서드
  * 5. 해쉬맵에 담긴 리스트가 2 이상이면 결과에 리스트에 담아주는 메소드
- *
  * */
