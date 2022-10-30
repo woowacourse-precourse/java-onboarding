@@ -16,4 +16,15 @@ public class Problem3 {
         }
         return result;
     }
+
+    private int countNumberOf369 (List<Integer> numbers) {
+        int numberOf369 = 0;
+        for(int number: numbers) {
+            if (number == 3 || number == 6 || number == 9) {
+                numberOf369 += 1;
+            }
+        }
+
+        return numberOf369;
+    }
 }
