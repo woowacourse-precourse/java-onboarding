@@ -17,8 +17,16 @@ public class Problem4 {
             seq = LOWER;
         return (char) (seq + Math.abs((ch - seq + 1) - 26));
     }
+
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        StringBuilder answer = new StringBuilder();
+        for (char ch: word.toCharArray()) {
+            if (!Character.isAlphabetic(ch)) {
+                answer.append(ch);
+                continue;
+            }
+            answer.append(changeCase(ch));
+        }
+        return answer.toString();
     }
 }
