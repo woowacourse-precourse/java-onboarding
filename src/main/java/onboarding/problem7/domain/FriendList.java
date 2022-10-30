@@ -26,6 +26,10 @@ public class FriendList {
         return this.friendList.getOrDefault(id, new HashSet<>());
     }
 
+    public Map<String, Set<String>> allFriendList() {
+        return this.friendList;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
