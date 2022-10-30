@@ -13,4 +13,17 @@ public class Problem2 {
 
         return cryptogram;
     }
+
+    public static int countDuplicate(String str, int target){
+        int len = 1;
+        for (int i = target; i < str.length(); i++) {
+            if (str.charAt(i) == str.charAt(i + 1)) {
+                len++;
+            } else {
+                break;
+            }
+        }
+
+        return len;
+    }
 }
