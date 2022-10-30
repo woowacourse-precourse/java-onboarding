@@ -4,8 +4,7 @@ import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = new ArrayList<String>();
-
+        Set<String> answer = new HashSet<String>();
         HashMap<String,String> map = new HashMap<>();
 
         for(List<String> i : forms){
@@ -24,8 +23,7 @@ public class Problem6 {
             }
         }
 
-        Set<String> set = new HashSet<String>(answer);
-        List<String> newList =new ArrayList<String>(set);
+        List<String> newList =new ArrayList<String>(answer);
         Collections.sort(newList);
 
         return newList;
