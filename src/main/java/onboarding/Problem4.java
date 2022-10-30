@@ -23,4 +23,14 @@ public class Problem4 {
         }
         return characterList;
     }
+
+    static ArrayList<Character> getReverseCharacterList(ArrayList<Character> characterList) {
+        ArrayList<Character> reverseCharacterList = new ArrayList<>();
+        for (int i = 0; i < characterList.size(); i++) {
+            char character = characterList.get(i);
+            char reverseCharacter = Dictionary.getReverseCharacter(character);
+            reverseCharacterList.add(i, reverseCharacter);
+        }
+        return reverseCharacterList;
+    }
 }
