@@ -29,7 +29,7 @@ public class Problem6 {
      * @param input
      * @return
      */
-    private String getEmailUsername(String input) {
+    private static String getEmailUsername(String input) {
         String temp = "";
         for (int i = 0; i < input.length(); i++) {
             if (input.charAt(i) == '@') {
@@ -44,7 +44,7 @@ public class Problem6 {
      * @param forms
      * @return
      */
-    private List<List<String>> collectValidInputs(List<List<String>> forms) {
+    private static List<List<String>> collectValidInputs(List<List<String>> forms) {
         List<List<String>> result = new ArrayList<>();
 
         for (List<String> next : forms) {
@@ -81,7 +81,7 @@ public class Problem6 {
      * @param newForms
      * @return
      */
-    private List<String> checkAlikeNicknames(List<List<String>> newForms) {
+    private static List<String> checkAlikeNicknames(List<List<String>> newForms) {
         TreeSet<String> duplicates = new TreeSet<>();
 
         // 두 닉네임이 유사하면, 두 이메일 주소를 기록한다.
