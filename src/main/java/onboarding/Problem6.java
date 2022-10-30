@@ -14,7 +14,7 @@ public class Problem6 {
             addPartOfNickname(email, nickname);
         }
 
-        List<String> answer = makeEmailList();
+        List<String> answer = new ArrayList<>(makeEmailSet());
         answer.sort(Comparator.naturalOrder());
         return answer;
     }
@@ -38,8 +38,8 @@ public class Problem6 {
     *
     * @return List<String>
     * */
-    private static List<String> makeEmailList() {
-        List<String> emailList = new ArrayList<>();
+    private static Set<String> makeEmailSet() {
+        Set<String> emailList = new HashSet<>();
 
         for (Set<String> emails : nicknameEmailMap.values()) {
             if (emails.size() >= 2) {
