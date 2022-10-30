@@ -359,7 +359,7 @@ class ApplicationTest {
     @Nested
     class Problem7Test {
         @Test
-        void case1() {
+        void case1() throws Exception {
             String user = "mrko";
             List<List<String>> friends = List.of(
                     List.of("donut", "andole"),
@@ -446,7 +446,7 @@ class ApplicationTest {
 
         @Test
         @DisplayName("추천점수가 모두 동일하면, 이름순으로 정렬한다")
-        void case7() {
+        void case7() throws Exception {
             String user = "mrko";
             List<List<String>> friends = List.of(
                     List.of("donut", "andole"),
@@ -465,7 +465,7 @@ class ApplicationTest {
 
         @Test
         @DisplayName("친구 추천은 최대 5명까지만 반환한다")
-        void case8() {
+        void case8() throws Exception {
             String user = "mrko";
             List<List<String>> friends = List.of(
                     List.of("donut", "andole"),
@@ -483,6 +483,18 @@ class ApplicationTest {
             List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
             List<String> result = List.of("aaaaa", "andole", "jun", "xxxxx", "yyyyy"); //zzzzz와 bedi는 나오지 않는다
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+        }
+
+        @Test
+        @DisplayName("friends의 원소들은 2개의 userid만 들어갈 수 있다")
+        void case9() {
+            String user = "mrko";
+            List<List<String>> friends = List.of(
+                    List.of("donut", "andole"),
+                    List.of("donut", "jun", "jdsa")
+            );
+            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+            assertThatThrownBy(() -> Problem7.solution(user, friends, visitors)).isInstanceOf(Exception.class);
         }
     }
 }

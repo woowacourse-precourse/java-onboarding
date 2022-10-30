@@ -135,7 +135,7 @@ BUILD SUCCESSFUL in 0s
 - 사용자
   - 사용자는 id를 갖는다.
     - id는 1이상 30이하 문자열이다
-- UserStore
+- UserStore(전역)
   - key로 사용자의 id, value로 사용자를 저장한다
 - UserRelation(전역)
   - key로 사용자의 id, value로 Set을 저장한다
@@ -148,8 +148,9 @@ BUILD SUCCESSFUL in 0s
 기능 체크리스트
 - [ ] id 길이를 검증한다
 - [ ] id가 소문자로만 이뤄졌는지 검증한다
-- [ ] friends, visitors 숫자를 검증한다
-- [ ] friends의 각 원소는 2개의 string으로 구성되어야 한다
+- [x] friends 숫자를 검증한다
+- [ ] visitor 숫자를 검증한다
+- [x] friends의 각 원소는 2개의 string으로 구성되어야 한다
 - [ ] UserStore를 만든다
 - [ ] friends를 받아 UserStore에 데이터를 추가, UserRelation을 초기화한다
 - [ ] visitors를 받아 UserStore에 데이터를 추가한다
