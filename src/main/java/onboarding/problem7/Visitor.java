@@ -12,10 +12,5 @@ public class Visitor {
     public List<User> toList() {
         return visitor;
     }
-    @Override
-    public String toString() {
-        return "Visitor{" +
-                "visitor=" + visitor +
-                '}';
-    }
+
 }

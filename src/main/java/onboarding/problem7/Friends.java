@@ -30,10 +30,5 @@ public class Friends {
     public boolean isNotFriend(User visitor) {
         return !friends.contains(visitor);
     }
-    @Override
-    public String toString() {
-        return "Friends{" +
-                "friends=" + friends +
-                '}';
-    }
+
 }
