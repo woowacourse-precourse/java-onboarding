@@ -55,4 +55,13 @@ class Crew {
         }
     }
 
+    static void validateNickNameForm(String nickName) {
+        String regex = "^[가-힣]*$;";
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(nickName);
+        if(!m.matches()) {
+            throw new IllegalStateException("한글만 입력해주세요");
+        }
+    }
+
 }
