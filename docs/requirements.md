@@ -212,3 +212,7 @@
 - 주어지는 목록을 `collectValidInputs`을 통해, 조건을 만족하지 않는 입력을 걸러 낸다.
 - 걸러 낸 목록을 `checkAlikeNicknames`을 통해, 유사한 닉네임인 경우의 이메일 목록을 수집한다.
 - 결과로 받은 List<String>을 리턴한다.
+
+### solution
+- List<List<String>>을 매개변수로 받는다. 이 값은 문제에서 주어지는 [이메일, 닉네임] 쌍의 목록이다.
+- getAlikeNicknamesList에 해당 List를 넘겨 주고, 결과값을 정답으로 리턴한다.
