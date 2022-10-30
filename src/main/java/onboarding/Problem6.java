@@ -31,13 +31,9 @@ class CrewService {
     private final Map<String, Integer> usingNicknameRepository = new HashMap<>();
 
     public void saveAll(List<Crew> crewList) {
-        save(crewList);
+        crewList.forEach(crew -> crewRepository.put(crew.getEmail(), crew));
         crewList.forEach(this::saveSplitNickname);
         crewList.forEach(this::countUsingNickname);
-    }
-
-    private void save(List<Crew> crewList) {
-        crewList.forEach(crew -> crewRepository.put(crew.getEmail(), crew));
     }
 
     private void saveSplitNickname(Crew crew) {
