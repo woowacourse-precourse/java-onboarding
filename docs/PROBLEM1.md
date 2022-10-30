@@ -28,9 +28,11 @@
 | [99, 102]  | [211, 212] | -1 | 
 
 # 기능 목록
-#### `int getScore(List<Integer> list)`
+### `int getScore(List<Integer> list)`
 - page가 들어있는 list를 받아서 점수를 반환한다.
-#### `boolean isError(List<Integer> list)`
+### `boolean isError(List<Integer> list)`
 - list에 잘못된 입력 값이 있는지 검사한다.
-#### `int solution(List<Integer> pobi, List<Integer> crong)`
+### `int solution(List<Integer> pobi, List<Integer> crong)`
 - 예외사항이 입력되면 -1을 return 하고 정상적인 값이 입력되었다면 getScore 메서드를 통해 값을 비교하고 answer을 반환한다.
+### `int getResult(int pobiScore, int crongScore)`
+- 두 사람의 점수를 입력받아 결과를 반환한다.
