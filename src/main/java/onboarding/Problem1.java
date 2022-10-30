@@ -94,13 +94,12 @@ class Problem1 {
         }
 
         if (Math.max(Math.max(sumPR, productPR), Math.max(sumPL, productPL)) > Math.max(Math.max(sumCR, productCR), Math.max(sumCL, productCL))){
-            int answer = 1;
+            return 1;
         } else if (Math.max(Math.max(sumPR, productPR), Math.max(sumPL, productPL)) < Math.max(Math.max(sumCR, productCR), Math.max(sumCL, productCL))) {
-            int answer = 2;
+            return 2;
         }
 
 
-        return answer;
     }
 
 }
