@@ -1,6 +1,8 @@
 package onboarding;
 
 import java.util.*;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -35,5 +37,10 @@ public class Problem6 {
             }
         }
         return emails;
+    }
+
+    private boolean validateEmail(String email) {
+        String emailPattern = "^\\w+@email.com$";
+        return Pattern.matches(emailPattern, email);
     }
 }
