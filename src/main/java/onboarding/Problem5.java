@@ -10,6 +10,7 @@ public class Problem5 {
     public static List<Integer> solution(int money) {
 
         Bank bank = new Bank();
+
         List<Integer> result = bank.withdraw(money);
 
         return result;

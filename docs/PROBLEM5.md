@@ -2,10 +2,10 @@
 
 ## 기능 목록
 
-- [ ] 잔돈 리스트를 알 수 있다. BanknoteUnit#CoinList()
-- [ ] 높은 금액 부터 반환 해줄수 있다. Bank#withdraw()
-- [ ] 특정 금액에 대해 출금 해줄 지폐 또는 동전을 구할수 있다. Bank#findAmount()
-   - [ ] 출금한 금액 만큼 input값에서 빼줄 수 있다. 
+- [x] 잔돈 리스트를 알 수 있다. BanknoteUnit#CoinList()
+- [x] 높은 금액 부터 반환 해줄수 있다. Bank#withdraw()
+- [x] 특정 금액에 대해 출금 해줄 지폐 또는 동전을 구할수 있다. Bank#findAmount()
+   - [x] 출금한 금액 만큼 input값에서 빼줄 수 있다. 
 
 ## 🚀 기능 요구 사항
 
