@@ -1,24 +1,43 @@
 package onboarding;
 
+import java.util.Stack;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class Problem2 {
 
-    private static final int NONE_DUPLICATE = -1;
+    private static final int TWO = 2;
     private static final int INPUT_LEN_MIN = 1;
     private static final int INPUT_LEN_MAX = 1000;
     private static final String LOWER_ALPHABET_REGEX = "^[a-z]*$";
 
     public static String solution(String cryptogram) {
         validateCryptogram(cryptogram);
-        while (findDuplicateStrIndex(cryptogram) != NONE_DUPLICATE) {
-            int duplicateStrIndex = findDuplicateStrIndex(cryptogram);
-            String newStringFront = cryptogram.substring(0, duplicateStrIndex);
-            String newStringBack = cryptogram.substring(duplicateStrIndex + 2);
+        return removeDuplicatedStr(cryptogram);
+    }
 
-            cryptogram = newStringFront + newStringBack;
+    private static String removeDuplicatedStr(String cryptogram) {
+        Stack<String> stack = new Stack<>();
+
+        for (char word : cryptogram.toCharArray()) {
+            stack.add(String.valueOf(word));
+            removeDuplicatedStrInStack(stack);
         }
-        return cryptogram;
+        return stack.stream()
+            .collect(Collectors.joining());
+    }
+
+    private static void removeDuplicatedStrInStack(Stack<String> stack) {
+        while (stack.size() >= TWO) {
+            String word1 = stack.pop();
+            String word2 = stack.pop();
+
+            if (!word1.equals(word2)) {
+                stack.add(word2);
+                stack.add(word1);
+                break;
+            }
+        }
     }
 
     private static void validateCryptogram(String cryptogram) {
@@ -33,14 +52,5 @@ public class Problem2 {
 
     private static boolean isValidCryptogramForm(String cryptogram) {
         return Pattern.matches(LOWER_ALPHABET_REGEX, cryptogram);
-    }
-
-    public static int findDuplicateStrIndex(String str) {
-        for (int i = 1; i < str.length(); i++) {
-            if (str.charAt(i) == str.charAt(i - 1)) {
-                return i - 1;
-            }
-        }
-        return NONE_DUPLICATE;
     }
 }
