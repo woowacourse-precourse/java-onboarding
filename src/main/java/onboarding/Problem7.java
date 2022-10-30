@@ -75,4 +75,14 @@ public class Problem7 {
             return (rightScore - leftScore);
         }
     };
+
+    /* 아이디-점수 Map을 value를 기준으로 내림차순 정렬, 동점이라면 key를 기준으로 오름차순 정렬 된 List 형태로 반환 */
+    private static List<Map.Entry<String,Integer>> sortScoreMapList(Map<String, Integer> scores) {
+        Set<Map.Entry<String, Integer>> scoresEntrySet = scores.entrySet();
+        List<Map.Entry<String,Integer>> idScoreList = new ArrayList<>(scoresEntrySet);
+
+        idScoreList.sort(downToScoreUptoId);
+
+        return idScoreList;
+    }
 }
