@@ -13,7 +13,22 @@ public class Problem6 {
             sliceName(crew, index, info);
             index++;
         }
+
+        for(int i = 0;i<crew.size();i++){
+            String sliceStr = "";
+            int curIndex = 0;
+            sliceStr = getSliceStr(crew, i, sliceStr);
+        }
+
         return answer;
+    }
+
+    private static String getSliceStr(List<Map<String, Integer>> crew, int i, String sliceStr) {
+        for (String key : crew.get(i).keySet()) {
+            sliceStr = key;
+            break;
+        }
+        return sliceStr;
     }
 
     private static void sliceName(List<Map<String, Integer>> crew, int index, List<String> info) {
