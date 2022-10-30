@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -22,6 +23,11 @@ public class Problem6 {
     	System.out.println(twoLengthNikAndIds);
     	//for debug
     	System.out.println(idAboutDuplicateNik);
+    	
+    	List<String> finalNik = new ArrayList<>(idAboutDuplicateNik);
+    	sortAscending(finalNik);
+    	//for debug
+    	System.out.println(finalNik);
     	
     	List<String> answer = null;
     	
@@ -73,4 +79,7 @@ public class Problem6 {
     		}
     	}
     }
+    public static void sortAscending(List<String> finalNik) {
+    	Collections.sort(finalNik);
+	}
 }
