@@ -8,12 +8,16 @@ public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
+
         CrewService crewService = new CrewService();
+
         List<Crew> crewList = forms.stream()
                 .map(Crew::new)
                 .collect(Collectors.toList());
 
         crewService.saveAll(crewList);
+
+        List<Crew> duplicateCrewList = crewService.findDuplicateCrewList();
 
         return answer;
     }
@@ -50,6 +54,21 @@ class CrewService {
             }
         }
     }
+
+    public List<Crew> findDuplicateCrewList() {
+        Set<Crew> duplicateCrewList = new HashSet<>();
+
+        usingNicknameRepository.keySet().stream()
+                .filter(use -> usingNicknameRepository.get(use) > 1)
+                .forEach(usingNickname -> {
+                    crewRepository.values().stream()
+                            .filter(crew -> crew.getNickname().contains(usingNickname))
+                            .forEach(duplicateCrewList::add);
+                });
+
+        return new ArrayList<>(duplicateCrewList);
+    }
+
 }
 
 
