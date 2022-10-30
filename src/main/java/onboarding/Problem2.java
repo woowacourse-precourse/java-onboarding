@@ -21,4 +21,13 @@ public class Problem2 {
     private static boolean isOverlap(String cryptogram, Stack<Character> stack) {
         return !stack.isEmpty() && index < cryptogram.length() && stack.peek().equals(cryptogram.charAt(index));
     }
+
+    private static void removeOverlap(String cryptogram, Stack<Character> stack) {
+        while (isOverlap(cryptogram, stack)) {
+            while (isOverlap(cryptogram, stack)) {
+                index++;
+            }
+            stack.pop();
+        }
+    }
 }
