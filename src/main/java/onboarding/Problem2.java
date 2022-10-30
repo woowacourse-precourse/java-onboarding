@@ -2,6 +2,11 @@ package onboarding;
 
 public class Problem2 {
 
+    private static boolean IsSmallAlpha(char c)
+    {
+        return 'a' <= c && c <= 'z';
+    }
+
     private static boolean checkParam(String s)
     {
         if (s == null)
