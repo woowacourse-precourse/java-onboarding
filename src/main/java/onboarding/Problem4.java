@@ -19,6 +19,14 @@ public class Problem4 {
             answerCharList.add(reverse(character));
         }
 
+        //list를 String 형태로 변환해 최종 return
+        StringBuilder sb = new StringBuilder();
+        for (char character: answerCharList) {
+            sb.append(character);
+        }
+
+        answer = sb.toString();
+
         return answer;
     }
 
