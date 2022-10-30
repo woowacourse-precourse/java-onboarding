@@ -29,4 +29,12 @@ class Problem1 {
         return result;
     }
 
+    private static int getPageMultiply(char[] pageNumbers) {
+        int result = 0;
+        for (char c : pageNumbers) {
+            result *= c - '0';
+        }
+        return result;
+    }
+
 }
