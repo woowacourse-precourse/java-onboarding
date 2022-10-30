@@ -1,5 +1,8 @@
 package onboarding;
 
+import onboarding.problem7.UserRelation;
+import onboarding.problem7.UserStore;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -358,6 +361,11 @@ class ApplicationTest {
 
     @Nested
     class Problem7Test {
+        @BeforeEach
+        void beforeEach() {
+            UserStore.clear();
+            UserRelation.clear();
+        }
         @Test
         void case1() throws Exception {
             String user = "mrko";

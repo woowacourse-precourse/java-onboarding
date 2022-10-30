@@ -40,4 +40,8 @@ public class UserRelation {
     public static boolean hasRelation(String targetName, String compareName) {
         return userRelation.get(targetName).contains(compareName);
     }
+
+    public static void clear() {
+        userRelation.clear();
+    }
 }

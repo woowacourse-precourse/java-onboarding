@@ -18,7 +18,7 @@ public class UserStore {
         return userStore.keySet().stream().collect(Collectors.toList());
     }
 
-    public static User get(String userName) {
-        return userStore.get(userName);
+    public static void clear() {
+        userStore.clear();
     }
 }
