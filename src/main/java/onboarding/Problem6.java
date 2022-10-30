@@ -9,6 +9,7 @@ public class Problem6 {
         List<String> answer = List.of("answer");
 
         List<String> nickNamesFromForms = getNickNamesFromForms(forms);
+        List<String> emailsFromForms = getEmailsFromForms(forms);
 
         return answer;
     }
@@ -17,6 +18,13 @@ public class Problem6 {
         return forms.stream()
                 .flatMap(Collection::stream)
                 .filter(form -> form.matches("^[가-힣]*$"))
+                .collect(Collectors.toList());
+    }
+
+    static List<String> getEmailsFromForms(List<List<String>> forms) {
+        return forms.stream()
+                .flatMap(Collection::stream)
+                .filter(form -> form.matches("^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$"))
                 .collect(Collectors.toList());
     }
 }
