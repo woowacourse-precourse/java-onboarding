@@ -22,8 +22,13 @@ public class Problem3 {
 
     }
     public static int solution(int number) {
+
         int answer = 0;
 
+        // 예외처리
+        if(number < 1 || number > 10000){
+            return answer;
+        }
         // 1부터 주어진 number까지 모든 수의 경우 확인을 위한 반복문
         for (int i = 1;  i <= number; i++){
             int current = i;
