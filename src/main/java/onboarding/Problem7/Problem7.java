@@ -6,12 +6,14 @@ public class Problem7
 {
     public static final int FRIEND_SCORE = 10;
     public static final int VISITOR_SCORE = 1;
-    public static final int MAX_SIZE = 5;
+    public static final int MAX_RETURN_SIZE = 5;
     public static final int EXCEPTION_SCORE = 0;
+
+    private static final int MAX_VERTEX_SIZE= 10001*2;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors)
     {
-        Graph graph = new Graph(10001*2);
+        Graph graph = new Graph(MAX_VERTEX_SIZE);
         graph.enrollUserAndReturnVertex(user);
         for(int i = 0 ; i < friends.size();i++)
         {
