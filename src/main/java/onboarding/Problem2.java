@@ -11,23 +11,34 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "";
         Stack<Character> stack=new Stack<>();
-
-        char duplication=cryptogram.charAt(0); //중복된 문자
-        stack.push(cryptogram.charAt(0));
-        for(int i=1; i<cryptogram.length(); i++){
-            char c=cryptogram.charAt(i);
-            if(duplication!=c){
-                stack.push(c);
-                duplication=c;
-            }else{
-                if(!stack.isEmpty()){
-                    stack.pop();
+        boolean flag=false; //중복 제거가 된 경우 true
+        while(true) {
+            flag=false;
+            char duplication=cryptogram.charAt(0); //중복된 문자
+            stack.push(cryptogram.charAt(0));
+            for (int i = 1; i < cryptogram.length(); i++) {
+                char c = cryptogram.charAt(i);
+                if (duplication != c) {
+                    stack.push(c);
+                    duplication = c;
+                } else {
+                    if (!stack.isEmpty()) {
+                        stack.pop();
+                    }
+                    flag=true;
                 }
             }
+            cryptogram = "";
+            for (char c : stack) {
+                cryptogram += c;
+            }
+            if(flag==false || cryptogram.length()==0){
+                break;
+            }
+            stack.clear();
+
         }
-        for(char c: stack){
-            answer+=c;
-        }
-        return answer;
+
+        return cryptogram;
     }
 }
