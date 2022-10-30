@@ -5,9 +5,21 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
         myfunc01 mf= new myfunc01(); // 메소드 임포트
-        return answer;
+        if(!(mf.chk_cond(pobi)&&mf.chk_cond(crong))){ // 둘 중 하나라도 참이 아닌경우
+            return -1;
+        }else{ // 무결성 체크 이후 기능 수행
+            int repPobi=-1; // 포비의 점수
+            repPobi=mf.cal_score(pobi,mf,repPobi);
+            int repCrong=-1;
+            repCrong=mf.cal_score(crong,mf,repCrong);
+            // 포비와 크롱의 점수 비교
+            if(repPobi>repCrong){// 포비점수가 높은경우
+                return 1;
+            }else if(repPobi<repCrong){
+                return 2;
+            }else return 0;
+        }
     }
     public static class myfunc01 {
         // 분리가 된 자릿수를 더하는 기능
