@@ -8,8 +8,16 @@ import java.util.Map;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+		HashMap<String, List<String>> relation = makeFriendsList(user, friends, visitors);
+
+		List<String> userFriends = relation.get(user);
+		relation.remove(user);
+
+		getKnowScore(relation, userFriends);
+		getVisitScore(relation, visitors);
+
+		List<String> result = processData(relation, userFriends);
+		return result;
     }
 
 	private static HashMap makeFriendsList(String user, List<List<String>> data, List<String> visitors) {
