@@ -1,7 +1,7 @@
 package onboarding;
 
 import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /*
 기능 목록
@@ -12,7 +12,18 @@ import java.util.List;
  */
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer;
+        Set<String> friendSet = new HashSet<>();
+        Map<String, Integer> score = new HashMap<>();
+        //1번 기능 구현
+        friendSet.add(user);
+        for( List<String> friend : friends){
+            if(friend.contains(user)){
+                friendSet.add(friend.get(0));
+                friendSet.add(friend.get(1));
+            }
+        }
+        friendSet.remove(user);
         return answer;
     }
 }
