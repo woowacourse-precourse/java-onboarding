@@ -76,14 +76,20 @@ class UserSelectedForPro7 {
     Set<String> friendSet = friendClass.makeFriendSet(friends, new HashSet<>());
     ScoreForPro7 scoreClass = new ScoreForPro7(new HashMap<>(), friendSet);
     friendMap = friendClass.makeFriendMap(friends, friendSet, new HashMap<>());
+    validateUserContain(user);
     makeUserSelectedList(user, friendMap);
     finalScoreMap(user, visitors, scoreClass);
+  }
+
+  private void validateUserContain(String user) {
+    if (!friendMap.containsKey(user)) {
+      throw new IllegalArgumentException(user + "가 friendMap에 포함되어 있지 않습니다.");
+    }
   }
 
   public Map<String, Integer> theLastScoreMap() {
     return lastScoreMap;
   }
-
 
   public void makeUserSelectedList(String user, Map<String, List<String>> friendMap) {
     this.userSelectedList = friendMap.get(user);
