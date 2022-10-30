@@ -11,6 +11,13 @@ public class Problem6 {
 	static class InputValidator {
 		private final static String EMAIL_DOMAIN = "email.com";
 
+		public static void isRightInput(List<List<String>> forms) {
+			isRightFormsRange(forms);
+			for (List<String> form : forms) {
+				isRightForm(form);
+			}
+		}
+
 		private static void isRightFormsRange(List<List<String>> forms) {
 			int formsSize = forms.size();
 			if (formsSize < 1 || formsSize > 10000) {
@@ -18,8 +25,24 @@ public class Problem6 {
 			}
 		}
 
+		private static void isRightForm(List<String> form) {
+			if (!isRightFormRange(form) || !isRightNicknameAndEmail(form)) {
+				throw new IllegalArgumentException();
+			}
+		}
+
 		private static boolean isRightFormRange(List<String> form) {
 			if (form.size() != 2) {
+				throw new IllegalArgumentException();
+			}
+			return true;
+		}
+
+		private static boolean isRightNicknameAndEmail(List<String> form) {
+			String email = form.get(0);
+			String nickname = form.get(1);
+
+			if (!isRightNickname(nickname) || !isRightEmail(email)) {
 				throw new IllegalArgumentException();
 			}
 			return true;
@@ -69,3 +92,4 @@ public class Problem6 {
 		}
 	}
 }
+
