@@ -18,24 +18,12 @@ class Problem1 {
         if(!problem1.isOK(pobi)) return -1;
         if(!problem1.isOK(crong)) return -1;
 
-
-
-        String crongStr1 = crong.get(0) + "";
-        String crongStr2 = crong.get(1) + "";
-
-        int crongPlus1 = 0;
-        int crongMul1 = 1;
-        int crongPlus2 = 0;
-        int crongMul2 = 1;
-        int crongNum1 = 0;
-        int crongNum2 = 0;
-
         int pobiNum = problem1.scoreCalculator(pobi);
         int crongNum = problem1.scoreCalculator(crong);
 
-        if (pobiNum > crongNum1) answer = 1;
-        if (pobiNum == crongNum1) answer = 0;
-        if (pobiNum < crongNum1) answer = 2;
+        if (pobiNum > crongNum) answer = 1;
+        if (pobiNum == crongNum) answer = 0;
+        if (pobiNum < crongNum) answer = 2;
 
         return answer;
     }
