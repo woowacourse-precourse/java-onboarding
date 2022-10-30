@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Problem7 {
 
@@ -12,8 +13,6 @@ public class Problem7 {
     public static final int USER_TIMELINE_VISITOR = 1;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-
         Map<String, List<String>> relationMap = new HashMap<>();
         Map<String, Integer> scoreMap = new HashMap<>();
 
@@ -37,6 +36,20 @@ public class Problem7 {
             scoreMap.put(visitor, scoreMap.getOrDefault(visitor, 0) + USER_TIMELINE_VISITOR);
         }
 
+        List<String> answer = scoreMap.keySet()
+                                      .stream()
+                                      .filter(friend -> isMeOrMyFriend(friend, relationMap, user))
+                                      .filter(friend -> scoreMap.get(friend) > 0)
+                                      .sorted((friend1, friend2) -> {
+                                          if (scoreMap.get(friend1).equals(scoreMap.get(friend2))) {
+                                              return friend1.compareTo(friend2);
+                                          }
+
+                                          return scoreMap.get(friend2) - scoreMap.get(friend1);
+                                      })
+                                      .limit(5)
+                                      .collect(Collectors.toList());
+
         return answer;
     }
 
@@ -49,5 +62,17 @@ public class Problem7 {
 
         relationMap.get(friend1).add(friend2);
         relationMap.get(friend2).add(friend1);
+    }
+
+    private static boolean isMeOrMyFriend(String name, Map<String, List<String>> relationMap, String user) {
+        if (name.equals(user)) {
+            return false;
+        }
+
+        for (String userFriend : relationMap.get(user)) {
+            if (userFriend.equals(name)) return false;
+        }
+
+        return true;
     }
 }
