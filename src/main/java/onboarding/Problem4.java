@@ -22,8 +22,11 @@ public class Problem4 {
         else if('A' <= character && character <= 'Z') {
             return toString('A', character, 'Z');
         }
+        else if('a' <= character && character <= 'z') {
+            return toString('a', character, 'z');
+        }
 
-        return toString('a', character, 'z');
+        return String.valueOf(character);
     }
 
     private static String toString(char lastChar, char nowChar, char firstChar) {
