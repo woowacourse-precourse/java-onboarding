@@ -25,7 +25,11 @@ public class Problem6 {
             createPartNicknameAndCheck(email, nameArr);
         }
 
-        return new ArrayList<>(answer);
+        // 결과를 오름차순으로 정렬한다.
+        List<String> answerList = new ArrayList<>(answer);
+        answerList.sort(String::compareTo);
+
+        return answerList;
     }
 
     /**
