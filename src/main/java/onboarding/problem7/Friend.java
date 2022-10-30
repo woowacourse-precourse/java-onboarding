@@ -6,33 +6,7 @@ public class Friend {
     private static HashMap<Integer, Integer> weight = new HashMap<>();
     private static HashMap<String, Integer> uniqueIDs = new HashMap<>();
     private static int forID = 0;
-
-    public static List<String> getDistinctFriends(Relations relations) {
-        List<String> forJoin = new ArrayList<>();
-        for (int i = 0; i < relations.size(); i++) {
-            List<String> relation = relations.getRelation(i);
-            forJoin.addAll(relation);
-        }
-        Set<String> distinctSet = new HashSet<>(forJoin);
-        List<String> distinctList = new ArrayList<>(distinctSet);
-        return distinctList;
-    }
-    public static List<String> getFriendsList(Relations relations, String user) {
-        List<String> friendsList = new ArrayList<>();
-        for (int i = 0; i < relations.size(); i++) {
-            List<String> relation = relations.getRelation(i);
-            String friend1 = relation.get(0);
-            String friend2 = relation.get(1);
-
-            if (friend1.equals(user)) {
-                friendsList.add(friend2);
-            } else if (friend2.equals(user)) {
-                friendsList.add(friend1);
-            }
-        }
-        return friendsList;
-    }
-
+    
     public static void initID(List<String> friends, List<String> visitors) {
         for (int i = 0; i < friends.size(); i++) {
             String name = friends.get(i);
