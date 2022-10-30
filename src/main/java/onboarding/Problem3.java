@@ -4,9 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Problem3 {
+
     /**
-     * 숫자의 각 자릿수를 나누는 함수
+     * 숫자의 각 자릿수를 나누는 함수 <br/>
      * ex) 123 -> [3, 2, 1]
+     *
+     * @param num 주어지는 숫자
+     * @return 각 자릿수 Integer List
      */
     private static List<Integer> splitDigit(int num) {
         List<Integer> digitList = new ArrayList<>();
@@ -23,6 +27,9 @@ public class Problem3 {
 
     /**
      * 박수를 쳐야하는 횟수를 구하는 함수
+     *
+     * @param digitList 각 자릿수 Integer List
+     * @return 박수 횟수
      */
     private static int getClapCount(List<Integer> digitList) {
         int count = 0;
