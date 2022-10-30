@@ -9,7 +9,10 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        return "";
+        return word.chars()
+                .map(letter -> convert((char) letter))
+                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+                .toString();
     }
 
     private static boolean isUppercaseAlphabet(char letter) {
