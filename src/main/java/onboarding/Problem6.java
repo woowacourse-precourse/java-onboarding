@@ -10,6 +10,13 @@ public class Problem6 {
         List<String> answer = getEmailListByCheckNickname();
         return answer;
     }
+
+    static List<String> getEmailListByCheckNickname() {
+        List<Integer> duplicatedIndexList = getDuplicatedIndex();
+        List<String> duplicatedEmailList = getEmailListByIndexList(duplicatedIndexList);
+        List<String> answer = checkEmailList(duplicatedEmailList);
+        return answer;
+    }
 }
 
 class Database {
@@ -44,4 +51,6 @@ class Database {
     static List<String> getEmailList() {
         return emailList;
     }
+
+
 }
