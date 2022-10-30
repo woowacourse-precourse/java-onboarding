@@ -3,6 +3,7 @@ package onboarding;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 
 public class Problem7 {
 
@@ -18,12 +19,21 @@ public class Problem7 {
 
     private class SocialGraph {
         private List<Entry> orderedList;
-        private List<String> users;
         private EntryComparator cmp;
         public SocialGraph(List<List<String>> friends) {
 //            Collections.sort(orderedList);
         }
 
+        public boolean areFriend(String a, String b){
+            return true;
+        }
+
+        public int userLength(){
+            return users.size();
+        }
+        public List<Entry> users(){
+            return List.copyOf(orderedList)
+        }
     }
 
     private class Entry implements Comparable<Entry>  {
