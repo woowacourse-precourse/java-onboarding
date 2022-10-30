@@ -31,6 +31,9 @@ public class Problem7 {
         Map<String, Integer> recommendMap = new HashMap<>();
         recommendByFriendSet(user, friends, recommendMap, friendSet);
 
+        // 사용자의 타임 라인에 방문한 횟수에 따라 1점 추가하는 기능
+        recommendByVisitors(visitors, friendSet, recommendMap);
+
         return answer;
     }
 
@@ -72,6 +75,25 @@ public class Problem7 {
             }
 
         }
+    }
+
+    // 사용자의 타임 라인에 방문한 횟수에 따라 1점 추가
+    private static void recommendByVisitors(List<String> visitors, Set<String> friendSet, Map<String, Integer> recommendMap) {
+
+        for (String visitor : visitors) {
+
+            //사용자와 친구면 계산하지 않는다.
+            if (friendSet.contains(visitor)) {
+                continue;
+            }
+
+            if (recommendMap.containsKey(visitor)) {
+                recommendMap.put(visitor, recommendMap.get(visitor) + 1);
+            } else {
+                recommendMap.put(visitor, 1);
+            }
+        }
+
     }
 
 
