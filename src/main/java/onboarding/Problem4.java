@@ -25,6 +25,10 @@ public class Problem4 {
 
         HashMap<Character, Character> alphabet = insertMatch(small, reverseSmall, big, reverseBig);
 
+        // 입력 파라미터 char 배열로 만들기
+        char[] wordArr = word.toCharArray();
+        answer = builder(wordArr, alphabet);
+
         return answer;
     }
     // Step 1. 알파벳 a ~ z 순으로 List에 담기
@@ -55,5 +59,17 @@ public class Problem4 {
             alphabet.put(big.get(i), reverseBig.get(i));
         }
         return alphabet;
+    }
+
+    // Step 4. builder 함수를 만들어 word에 대한 청개구리 단어 만들기
+    public static String builder(char[] wordArr, HashMap<Character, Character> alphabet){
+        StringBuilder answer = new StringBuilder();
+        for(int i = 0; i < wordArr.length; i++){
+            if(wordArr[i] == ' ')
+                answer.append(" ");
+            else
+                answer.append(alphabet.get(wordArr[i]));
+        }
+        return answer.toString();
     }
 }
