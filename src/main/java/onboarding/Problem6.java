@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  *  isProperForms 메서드 적절한 형태인지 확인
@@ -15,9 +16,13 @@ public class Problem6 {
     private static final int EMAIL = 0;
     private static final int NICKNAME=1;
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        forms.stream()
+                .filter(Problem6::isProperForms)
+                .forEach(Problem6::getOverlapNickName);
+
+        return overlapNickNameSet.stream().sorted().collect(Collectors.toList());
     }
+
 
     private static void getOverlapNickName(List<String> list) {
         String nickName = list.get(NICKNAME);
