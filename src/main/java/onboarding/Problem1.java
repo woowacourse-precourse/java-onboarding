@@ -23,6 +23,15 @@ class Problem1 {
 		return left + 1 == right ? true : false;
 	}
 
+	private static int max_num(int num) {
+		int multiply = Problem1.multiply(num);
+		int sum = Problem1.sum(num);
+
+		if(multiply > sum)
+			return multiply;
+		return sum;
+	}
+
 	private static int multiply(int num) {
 		int ret = 1;
 
