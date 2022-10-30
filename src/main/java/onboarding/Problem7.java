@@ -1,7 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * Problem 7
@@ -28,8 +27,52 @@ import java.util.List;
  * 7. 추천할 친구가 없는 경우는 주어지지 않는다.
  */
 public class Problem7 {
+    /**
+     *
+     * @param user
+     * @param friends
+     * @param visitors
+     * @return 추천친구 리스트 최대 5명까지
+     */
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+
+        Map<String, List<String>> friendsMap = getFriendsMap(friends); // 친구들 맵 생성
+        Set<String> userFriend = getUserFriend(friendsMap.get(user)); // 내 친구들 생성
+
         return answer;
+    }
+
+    /**
+     * 친구들 form을 통해 친구 관계 Map을 만드는 함수
+     * @param friends
+     * @return 친구 관계 Map
+     */
+    public static Map<String, List<String>> getFriendsMap(List<List<String>> friends) {
+        Map<String, List<String>> friendsMap = new HashMap<>();
+
+        for (List<String> friend: friends) {
+            if (friendsMap.containsKey(friend.get(0))) {
+                friendsMap.get(friend.get(0)).add(friend.get(1));
+            } else {
+                friendsMap.put(friend.get(0), new ArrayList<String>(Arrays.asList(friend.get(1))));
+            }
+
+            if (friendsMap.containsKey(friend.get(1))) {
+                friendsMap.get(friend.get(1)).add(friend.get(0));
+            } else {
+                friendsMap.put(friend.get(1), new ArrayList<String>(Arrays.asList(friend.get(0))));
+            }
+        }
+        return friendsMap;
+    }
+
+    /**
+     * user의 친구를 가져오는 함수
+     * @param friendList
+     * @return 유저의 친구 List
+     */
+    public static Set<String> getUserFriend(List<String> friendList) {
+        return new HashSet<>(friendList);
     }
 }
