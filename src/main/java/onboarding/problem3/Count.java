@@ -5,18 +5,18 @@ public class Count {
         String stringNumber = Integer.toString(number);
         int result = 0;
         for (int i = 0; i < stringNumber.length(); i++) {
-            char charNum = stringNumber.charAt(i);
-            if ((charNum - '0') % 3 == 0 && charNum != '0') {
+            char charDigit = stringNumber.charAt(i);
+            int  intDigit = Character.getNumericValue(charDigit);
+            if (isMultipleOfThree(intDigit)) {
                 result += 1;
             }
         }
         return result;
     }
-    public static int count369All(int number) {
-        int result = 0;
-        for (int i = 1; i < number + 1; i++) {
-            result += count369(i);
+    public static boolean isMultipleOfThree(int number) {
+        if (number % 3 == 0) {
+            return true;
         }
-        return result;
+        return false;
     }
 }
