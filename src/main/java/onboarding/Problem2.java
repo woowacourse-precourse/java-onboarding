@@ -33,10 +33,25 @@ public class Problem2 {
 		}
 		return crptogramList;
 	}
+	private static String convertCharListToString(List<Character> str){
+
+		StringBuilder sb = new StringBuilder();
+
+		for (Character ch : str) {
+			sb.append(ch);
+		}
+
+		String answer = sb.toString();
+		return answer;
+	}
 	public static String solution(String cryptogram) {
 		String answer = "answer";
+		
 		List<Character> crptogramList = convertStringToCharList(cryptogram);
+		
 		crptogramList = removeOverlapChar(crptogramList);
+		
+		answer = convertCharListToString(crptogramList);
 		
 		return answer;
 	}
