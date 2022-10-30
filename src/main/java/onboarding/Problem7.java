@@ -11,7 +11,7 @@ public class Problem7 {
         try {
             FriendConnection friendConnection = new FriendConnection(friends);
             User user1 = new User(friendConnection.getFriends(user));
-            friendConnection.calculateRecommendationScore(visitors);
+            user1.calculateRecommendationScoreWith(visitors);
             return friendConnection.mostRecommendedAsFriend();
         } catch (RuntimeException e) {
             return null;
