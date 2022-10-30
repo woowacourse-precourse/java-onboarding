@@ -41,7 +41,7 @@ public class Problem7 {
         return userFriends;
     }
 
-    private static List<String> getFriendsOfUserFriends(String userId, List<List<String>> friendRelationships, List<String> userFriends) {
+    private static List<String> getFriendsOfUserFriends(String userId, List<List<String>> friendRelationships, Set<String> userFriends) {
         List<String> friendsOfUserFriends = new ArrayList<>();
         for (String userFriend : userFriends) {
             friendRelationships.stream()
