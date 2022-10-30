@@ -2,7 +2,7 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = loopErase(cryptogram);
         return answer;
     }
 
@@ -16,7 +16,7 @@ public class Problem2 {
 
     public static int countDuplicate(String str, int target){
         int len = 1;
-        for (int i = target; i < str.length(); i++) {
+        for (int i = target; i < str.length() - 1; i++) {
             if (str.charAt(i) == str.charAt(i + 1)) {
                 len++;
             } else {
@@ -38,6 +38,7 @@ public class Problem2 {
                 if (str.charAt(i) == str.charAt(i + 1)) {
                     len = countDuplicate(str, i);
                     str = erase(str,str.charAt(i),len);
+                    if(str.equals("")) return str;
                     flag = true;
                 } else{
                     i++;
