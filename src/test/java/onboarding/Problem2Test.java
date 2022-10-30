@@ -16,4 +16,11 @@ public class Problem2Test {
         assertThat(problem.strLenException("")).isEqualTo(true);
     }
 
+    @Test
+    @DisplayName("String LowerCase Test")
+    void strUpperCase() {
+        assertThat(problem.isStringLowerCase("Lisa")).isEqualTo(false);
+        assertThat(problem.isStringLowerCase("lisa")).isEqualTo(true);
+    }
+
 }
