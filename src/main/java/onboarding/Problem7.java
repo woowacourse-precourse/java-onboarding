@@ -1,6 +1,6 @@
 package onboarding;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Comparator;
@@ -21,6 +21,8 @@ public class Problem7 {
         Map<String, List<String>> friendMap = new HashMap<>();
         Map<String, Integer> friendScoreMap = new HashMap<>();
 
+        friendMap.put(user, new ArrayList<>());
+
         makeFriendMap(friendMap, friendScoreMap, friends);
 
         giveScoreByFriend(user, friendMap, friendScoreMap);
@@ -38,7 +40,7 @@ public class Problem7 {
 
     private static void addFriend(Map<String, List<String>> friendMap, Map<String, Integer> friendScoreMap, String friendA, String friendB) {
         if (!friendMap.containsKey(friendA)) {
-            List<String> friends = new LinkedList<>();
+            List<String> friends = new ArrayList<>();
             friends.add(friendB);
 
             friendMap.put(friendA, friends);
@@ -92,7 +94,7 @@ public class Problem7 {
     }
 
     private static List<String> makeFriends(Map<String, Integer> friendScoreMap) {
-        List<String> friends = new LinkedList<>();
+        List<String> friends = new ArrayList<>();
 
         for(String friend : friendScoreMap.keySet()) {
             if (friendScoreMap.get(friend) > STANDARD_SCORE) {
