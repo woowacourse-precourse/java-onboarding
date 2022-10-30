@@ -30,7 +30,7 @@ class Problem1 {
 
     private static int max(int n) {
         int addSum = 0;
-        int multSum = 0;
+        int multSum = 1;
         String pageNum = Integer.toString(n);
 
         for(int i=0; i<pageNum.length(); i++){
