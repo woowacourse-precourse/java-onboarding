@@ -77,7 +77,7 @@ public class Problem6 {
     private static boolean isSatisfyEmailFormat(String email) {
         int emailLength = email.length();
 
-        if (emailLength < 11 || emailLength > 20) {
+        if (emailLength < 11 || emailLength >= 20) {
             return false;
         }
 
