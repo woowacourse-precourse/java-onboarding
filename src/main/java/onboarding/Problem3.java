@@ -41,10 +41,14 @@ public class Problem3 {
     }
 
     private static int checkNumber(int digit) {
-        if (digit == 3 || digit == 6 || digit == 9) {
+        if (isMultipleThree(digit)) {
             return 1;
         }
 
         return 0;
+    }
+
+    private static boolean isMultipleThree(int digit) {
+        return (digit % 3 == 0);
     }
 }
