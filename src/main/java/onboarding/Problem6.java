@@ -7,11 +7,16 @@ import java.util.Set;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
+        User.validate(forms);
         return User.getUserDuplicatedNickName(forms);
     }
 }
 
 class User {
+    private static final int LOWER_BOUND_LIMIT = 1;
+    private static final int UPPER_BOUND_LIMIT = 1000000;
+    private static final String OUT_OF_COUNT = "1개이상 10,000개 이하의 유저 데이터를 입력해 주세요";
+
     static List<String> getUserDuplicatedNickName(List<List<String>> forms){
         List<String> answer = new ArrayList<>();
         for (int i = 0; i < forms.size()-1; i++) {
@@ -43,5 +48,14 @@ class User {
                 return true;
         }
         return false;
+    }
+
+    public static void validate(List<List<String>> forms) {
+        validateOutOfUserCount(forms);
+    }
+
+    private static void validateOutOfUserCount(List<List<String>> forms) {
+        if(forms.size() < LOWER_BOUND_LIMIT || forms.size() > UPPER_BOUND_LIMIT)
+            throw new IllegalArgumentException(OUT_OF_COUNT);
     }
 }
