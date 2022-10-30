@@ -20,6 +20,11 @@ public class Problem2 {
                 s.push(cryptogram.charAt(i));
             }
         }
+        StringBuffer ts = new StringBuffer("");
+        while(!s.empty()){
+            ts.append(s.pop().toString());
+        }
+        answer = ts.reverse().toString();
         return answer;
     }
 }
