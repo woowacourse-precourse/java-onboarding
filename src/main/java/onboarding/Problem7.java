@@ -140,5 +140,7 @@ public class Problem7 {
 
         HashMap<String, Integer> userScore = getFriendsScore(user, userList, userFriendsList);
         HashMap<String, Integer> userVisitedScore = getVisitorsScore(user, userFriendsList, visitors, userScore);
+
+        return getTotalRecommendation(userVisitedScore);
     }
 }
