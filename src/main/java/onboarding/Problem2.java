@@ -18,22 +18,22 @@ public class Problem2 {
 
     private static String decoding(String cryptogram){
         char[] chars = cryptogram.toCharArray();
-        StringBuffer decryptionText = new StringBuffer();
-        boolean isClear = true;
-        char prevChar = ' ';
+        StringBuffer decryptionText = new StringBuffer(); // 순서에 따라 해독된 cryptogram이 담길 stringBuffer
+        boolean isClear = true; // 재귀 종료를 판별할 변수
+        char prevChar = ' '; // 반복문에서 이전 단어를 저장할 previousChar 변수
         for(char ch : chars){
-            if(ch != prevChar){
+            if(ch != prevChar){ // 연속되지 않다면 stringBuffer 에 저장
                 prevChar = ch;
                 decryptionText.append(ch);
             }
-            else{
-                int duplicateCharIndex = decryptionText.length() - 1;
+            else{ // previousChar 과 currentChar 이 같다면 연속된 것으로 판별. currentChar 저장하지 않고 previousChar 도 삭제해준다.
+                int duplicateCharIndex = decryptionText.length() - 1; // prevChar 의 위치
                 decryptionText.deleteCharAt(duplicateCharIndex);
                 isClear = false;
             }
         }
-        if(isClear){
-            return decryptionText.toString();
+        if(isClear){ // 연속된 것을 제거해야하는 상황이 판별되지 않을 시 재귀를 끝냄
+           return decryptionText.toString();
         }
         return decoding(decryptionText.toString());
     }
