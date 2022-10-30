@@ -18,7 +18,6 @@ class Problem1 {
                 if ( bookFirstPage <= pobi.get(index)  &&  pobi.get(index) <= bookLastPage ) {
                     ArrayList<Integer> pobisEachDigit = getEachDigit(pobi.get(index));
                     pobisPageByPageResult[index] = calculationMyScore(pobisEachDigit);
-
                 }
 
                 if ( bookFirstPage <= crong.get(index)  &&  crong.get(index) <= bookLastPage ) {
@@ -26,9 +25,14 @@ class Problem1 {
                     crongsPageByPageResult[index] = calculationMyScore(crongsEachDigit);
                 }
             }
+            int pobisScore = getMyScore(pobisPageByPageResult);
+            int crongsScore = getMyScore(crongsPageByPageResult);
+
         } catch (Exception exception) {
             System.out.println("입력값은 1이상 400이하의 숫자만 가능합니다.(null 불가)");
         }
+
+
         return answer;
     }
 
@@ -52,6 +56,10 @@ class Problem1 {
         int pageResult = Math.max(plusTotal, multiplicationTotal);
 
         return pageResult;
+    }
+
+    public static int getMyScore(int[] whoesPageByPageResult) {
+       return Math.max(whoesPageByPageResult[0], whoesPageByPageResult[1]);
     }
 
 }
