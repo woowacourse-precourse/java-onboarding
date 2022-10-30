@@ -51,7 +51,12 @@ public class Problem7 {
                     String recommend = friendOfFriend.get(checkIndex(friendOfFriend.indexOf(myFriend)));
 
                     // give 10pt to user
+                    if (recommendFriend.containsKey(recommend)){
+                        recommendFriend.put(recommend, recommendFriend.get(recommend) + 10);
+                    }
+                    else {
                     recommendFriend.put(recommend, 10);
+                    }
                 }
             }
         }
