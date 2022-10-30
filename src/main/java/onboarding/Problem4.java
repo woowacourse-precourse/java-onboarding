@@ -10,11 +10,8 @@ public class Problem4 {
 
         if ( alphabet >= 65 && alphabet <= 90 ){
             a = 90 - (a - 65);
-            a += 32;
-
         }else {
             a = 122 - (a- 97);
-            a -= 32;
         }
 
         return (char) a;
@@ -22,7 +19,16 @@ public class Problem4 {
     public static String solution(String word) {
         String answer = "";
 
-//        System.out.printf("%c", chungGaeGuRi('G') );
+        for(char c : word.toCharArray()){
+            if( isAlphabet(c)) {
+                answer += chungGaeGuRi(c);
+                System.out.printf("%c", chungGaeGuRi(c));
+            }
+            else{
+                answer += c;
+            }
+        }
+
         return answer;
     }
 }
