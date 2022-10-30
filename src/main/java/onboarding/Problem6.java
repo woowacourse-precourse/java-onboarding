@@ -51,7 +51,7 @@ public class Problem6 {
     // 이메일의 길이가 11자 이상 20자 미만인지 검증하는 기능
     public static boolean checkEmailLength(List<String> emails) {
         for (String email : emails) {
-            if (!(EMAIL_MIN_LENGTH <= email.length() && email.length() <= EMAIL_MAX_LENGTH)) {
+            if (!(EMAIL_MIN_LENGTH <= email.length() && email.length() < EMAIL_MAX_LENGTH)) {
                 return false;
             }
         }
