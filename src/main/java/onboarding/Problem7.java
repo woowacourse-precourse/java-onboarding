@@ -87,7 +87,9 @@ public class Problem7 {
 
     public static Map<String, Integer> makeUserPoints(String user, List<List<String>> friends,
             List<String> visitors) {
-        Map<String, Integer> userList = new HashMap<String, Integer>();
+        Map<String, Integer> userList = new HashMap<>();
+
+        userList.put(user,0);
 
         for (List<String> friendRelation : friends) {
             userList.put(friendRelation.get(0), 0);
