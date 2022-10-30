@@ -13,6 +13,17 @@ class Problem1 {
         return Integer.MAX_VALUE;
     }
 
+    // 펼친 페이지가 들어있는 리스트를 받아 최종 점수를 결정하는 함수
+    public static int getScore(List<Integer> pageList){
+        int left = pageList.get(0);
+        int right = pageList.get(1);
+
+        int maxLeftValue = getMaxValue(left);
+        int maxRightValue = getMaxValue(right);
+
+        return Math.max(maxLeftValue, maxRightValue);
+    }
+
     // 페이지의 각 자리 숫자의 합과 곱 중 더 큰 값을 반환하는 함수
     public static int getMaxValue(int pageNumber) {
         int sum = 0;
