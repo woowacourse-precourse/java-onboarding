@@ -28,8 +28,8 @@ class Friend {
 }
 
 public class Problem7 {
-    // List<Friend<name, score>> friendsScores 생성
-    List<Friend> scores = new ArrayList<>();
+    // List<Friend<name, score>> friendshipScores 생성
+    List<Friend> friendshipScores = new ArrayList<>();
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Problem7 problem = new Problem7();
         /* friendNames: 친구 목록 생성  */
@@ -42,11 +42,6 @@ public class Problem7 {
             problem.updateFriends(name);
         }
 
-
-            // 1. friends를 1중 배열로 Flatten
-            // 2. 배열 중복 제거
-            // 3. 배열에서 user 제거
-            // 4. 1중 배열 friends로 scores 리스트 업데이트
         // scoreCoFriend : friends를 순회하며 userFriend와 함께 아는 친구에 대해 score 10점 추가
         // scoreVisitor : visitors를 순회하며 방문자의 score 1점씩 추가
         // scores를 점수 내림차순, 이름 오름차순으로 정렬
@@ -74,7 +69,7 @@ public class Problem7 {
         Friend friend = new Friend();
         friend.setName(friendName);
         friend.setScore(0);
-        this.scores.add(friend);
+        this.friendshipScores.add(friend);
     }
 }
 
