@@ -5,20 +5,18 @@ import java.util.stream.Collectors;
 
 public class Problem7 {
 
-    private static List<String> userFriends = new ArrayList<>();
-    private static Map<String, Integer> friendPoints = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        userFriends.clear();
-        friendPoints.clear();
+        Map<String, Integer> friendPoints = new HashMap<>();
 
-        getUserFriends(user, friends);
-        getFriendPoint(user, friends);
-        getVisitorPoints(visitors);
-        return getRecommendation();
+        List<String> userFriends = getUserFriends(user, friends);
+        getFriendPoint(friends, friendPoints, userFriends);
+        getVisitorPoints(visitors, friendPoints);
+        return getRecommendation(friendPoints, userFriends, user);
     }
 
-    private static void getUserFriends(String user, List<List<String>> friends) {
+    private static List<String> getUserFriends(String user, List<List<String>> friends) {
+        List<String> userFriends = new ArrayList<>();
         for (List<String> friendship : friends) {
             if (friendship.get(0) == user) {
                 userFriends.add(friendship.get(1));
@@ -26,31 +24,30 @@ public class Problem7 {
                 userFriends.add(friendship.get(0));
             }
         }
+        return userFriends;
     }
 
-    private static void getFriendPoint(String user, List<List<String>> friends) {
+    private static void getFriendPoint(List<List<String>> friends, Map<String, Integer> friendPoints, List<String> userFriends) {
         for (List<String> friendship : friends) {
             String leftFriend = friendship.get(0);
             String rightFriend = friendship.get(1);
-            if (!friendship.contains(user)) {
-                if (userFriends.contains(leftFriend)) {
-                    friendPoints.put(rightFriend, friendPoints.getOrDefault(rightFriend, 10) + 10);
-                } else if (userFriends.contains(rightFriend)) {
-                    friendPoints.put(leftFriend, friendPoints.getOrDefault(leftFriend, 10) + 10);
-                }
+            if (userFriends.contains(leftFriend)) {
+                friendPoints.put(rightFriend, friendPoints.getOrDefault(rightFriend, 10) + 10);
+            } else if (userFriends.contains(rightFriend)) {
+                friendPoints.put(leftFriend, friendPoints.getOrDefault(leftFriend, 10) + 10);
             }
         }
     }
 
-    private static void getVisitorPoints(List<String> visitors) {
+    private static void getVisitorPoints(List<String> visitors, Map<String, Integer> friendPoints) {
         for (String visitor : visitors) {
             friendPoints.put(visitor, friendPoints.getOrDefault(visitor, 1) + 1);
         }
     }
 
-    private static List<String> getRecommendation() {
+    private static List<String> getRecommendation(Map<String, Integer> friendPoints, List<String> userFriends, String user) {
         return friendPoints.entrySet().stream()
-                .filter(friend -> !userFriends.contains(friend.getKey()) && friendPoints.get(friend.getKey()) > 0)
+                .filter(friend -> friend.getKey() != user && !userFriends.contains(friend.getKey()) && friendPoints.get(friend.getKey()) > 0)
                 .sorted(Map.Entry.comparingByKey())
                 .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
                 .map(Map.Entry::getKey)
