@@ -1,5 +1,14 @@
 package onboarding;
 
+// 추가 테스트 케이스
+// aaaaa -> a
+// aaaa -> ""
+// babba -> b
+// bbaababba -> b
+// bbaababbab -> ""
+// aaaab -> b
+// baabbb -> ""
+
 public class Problem2 {
     public static String solution(String cryptogram) {
 
@@ -35,6 +44,8 @@ public class Problem2 {
                 // 만약 문자열 길이가 2 이하라면 : -1로 설정하여 다음 순회에서 0번째 탐색하도록 설정
                 if(str.length() < 2)
                     i = -1;
+
+                // 0번째 / 1번째 / 2번째 이상에서 동등할 시 각각의 경우에 유의해야 함
             }
         }
         return str;
