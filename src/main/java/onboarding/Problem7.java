@@ -7,15 +7,23 @@ public class Problem7 {
     private static HashMap<String, Integer> scoreMap;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
         scoreMap = new HashMap<>();
         HashMap<String, List<String>> friendshipMap = makeFriendshipMap(friends);
 
         giveScoreBasedOnFriendship(user, friendshipMap);
+        giveScoreBasedOnVisited(visitors);
 
-        System.out.println(scoreMap);
+        List<String> answer = Collections.emptyList();
 
         return answer;
+    }
+
+    private static void giveScoreBasedOnVisited(List<String> visitors) {
+        visitors.forEach((visitor) -> {
+            int curScore = scoreMap.getOrDefault(visitor, 0);
+
+            scoreMap.put(visitor, curScore + 1);
+        });
     }
 
     private static void giveScoreBasedOnFriendship(String user, HashMap<String, List<String>> friendshipMap) {
