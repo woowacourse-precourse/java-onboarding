@@ -18,6 +18,19 @@ public class Problem7 {
 
         createUser(user);
 
+        for(int i = 0; i < friends.size(); i++) {
+            String user1 = friends.get(i).get(0);
+            String user2 = friends.get(i).get(1);
+
+            if(!userMap.containsKey(user1))
+                createUser(user1);
+            if(!userMap.containsKey(user2))
+                createUser(user2);
+
+
+
+
+        }
 
         List<String> answer = Collections.emptyList();
         return answer;
@@ -26,16 +39,19 @@ public class Problem7 {
     public static void createUser(String userName){
         if(userMap.containsKey(userName))
             return;
-        
+
         User user = new User();
         user.name = userName;
         userMap.put(userName, user);
     }
-    public void addFriend(String friendName) {
-
+    public static void addFriend(String userName, String friendName) {
+        User user = userMap.get(userName);
+        
+        if(!user.friends.contains(friendName))
+            user.friends.add(friendName);
     }
 
-    public void calcScore(String userName) {
+    public static void calcScore(String userName) {
         //TODO : 점수를 계산하기 위해서는 유저 이름과 스코어를 저장할 수 있는 자료구조가 필요하다.
     }
     public static class User {
