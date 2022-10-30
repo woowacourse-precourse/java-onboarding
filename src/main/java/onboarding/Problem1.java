@@ -30,7 +30,19 @@ class Problem1 {
         return result;
     }
 
-    public static void main(String[] args) {
+    /**
+     * 각 자리 숫자들을 곱한 결과를 반환하는 함수
+     * */
+    public static int multipleValue(int page) {
+        int result = 1;
+        int len = String.valueOf(page).length(); //숫자의 길이
 
+        for(int i = 0; i < len; i++) {
+            result *= page % 10;
+
+            page = page / 10;
+        }
+
+        return result;
     }
 }
