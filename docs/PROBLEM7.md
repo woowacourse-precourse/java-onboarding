@@ -29,14 +29,17 @@
 
 ### 기능 목록
 - In-Memory DB
-  - 회원 삽입
-  - 회원 조회
+  - DB에 회원 없으면 삽입 후 회원 조회
   - Top 5 친구 추천 목록 조회
+    - 친구 추천 점수 내림차순 정렬 -> 이름 오름차순 정렬
 - 회원
   - 친구 추가
   - 방문
+  - 점수 추가
+  - 점수 초기화
 
 ### 도메인 모델링
-![image](https://user-images.githubusercontent.com/68049320/198861882-69979845-bc79-44a9-8588-4e35d18e1ab4.png)
+![image](https://user-images.githubusercontent.com/68049320/198892632-79212a40-6943-4ee2-8318-4be382714ea3.png)
+
 
 
