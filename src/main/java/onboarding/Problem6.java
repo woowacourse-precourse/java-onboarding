@@ -17,6 +17,7 @@ public class Problem6 {
             }
         }
         answer = removeDuplicatedEmail(answer);
+        answer = sortList(answer);
         return answer;
     }
     private static List<String> findDuplicatedNickname(List<List<String>> forms, String word, int index){
@@ -33,4 +34,8 @@ public class Problem6 {
         return list.stream().distinct().collect(Collectors.toList());
     }
 
+    private static List<String> sortList(List<String> list){
+        Collections.sort(list);
+        return list;
+    }
 }
