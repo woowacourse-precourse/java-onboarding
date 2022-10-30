@@ -33,14 +33,13 @@ public class Problem6 {
                 HashSet<String> compareNickSplit = getBreakLetters(compareNick);
                 compareNicksSplit.addAll(compareNickSplit);
             }
-            System.out.println(compareNicksSplit);
 
             // 4. 내 닉네임을 2글자 단위로 절단
             HashSet<String> myNickSplit = getBreakLetters(nickname);
 
             // 5. 전체와 교집합이 있으면 메일을 list에 추가
             compareNicksSplit.retainAll(myNickSplit);
-            if(compareNicksSplit.size()>0){
+            if(compareNicksSplit.size() > 0){
                 // email form validation
                 getValidEmails(answer, email);
             }

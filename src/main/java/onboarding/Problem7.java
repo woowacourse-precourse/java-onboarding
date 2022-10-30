@@ -27,32 +27,15 @@ public class Problem7 {
 
 
         // find user's direct friend
-        HashSet<String> directFriends = new HashSet<String>();
-        // find friends
-        for(List<String> friendList : friends){
-            if(friendList.contains(user)){
-                for(String friendName: friendList){
-                    if(friendName != user){
-                        directFriends.add(friendName);
-                    }
-                }
-            }
-        }
+        HashSet<String> directFriends = searchFriends(user, friends);
 
         // find user's mutual friend (direct friends' friends)
         HashSet<String> mutualFriends = new HashSet<>();
         for(String directFriend: directFriends) {
-            // find friends
-            for (List<String> friendList : friends) {
-                if (friendList.contains(directFriend)) {
-                    for (String friendName : friendList) {
-                        if (friendName != directFriend) {
-                            mutualFriends.add(friendName);
-                        }
-                    }
-                }
-            }
+            HashSet<String> mutualFriend = searchFriends(directFriend, friends);
+            mutualFriends.addAll(mutualFriend);
         }
+
         mutualFriends.remove(user);
         System.out.println(mutualFriends);
 
@@ -100,6 +83,21 @@ public class Problem7 {
         }
 
         return answer;
+    }
+
+    private static HashSet<String> searchFriends(String user, List<List<String>> friends) {
+        HashSet<String> friendsSet = new HashSet<String>();
+        // find friends
+        for(List<String> friendList : friends){
+            if(friendList.contains(user)){
+                for(String friendName: friendList){
+                    if(friendName != user){
+                        friendsSet.add(friendName);
+                    }
+                }
+            }
+        }
+        return friendsSet;
     }
 
     private static void findUserAndUpdateScore(HashMap<String, Integer> searchedMap, String user, int points) {
