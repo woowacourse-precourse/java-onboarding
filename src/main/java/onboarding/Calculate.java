@@ -54,4 +54,8 @@ class Calculate {
 
         return Math.max(score1, score2);
     }
+
+    int compare(int num1, int num2) {
+        return Math.max(num1, num2);
+    }
 }
