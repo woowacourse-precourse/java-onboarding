@@ -26,8 +26,8 @@ public class PageGameInfo {
     }
 
     public void registryPlayer(String playerName, List<Integer> playerPage) {
-        Integer leftPageNumber = playerPage.get(LIST_LEFT_PAGE_INDEX_VALUE);
-        Integer rightPageNumber = playerPage.get(LIST_RIGHT_PAGE_INDEX_VALUE);
+        int leftPageNumber = playerPage.get(LIST_LEFT_PAGE_INDEX_VALUE);
+        int rightPageNumber = playerPage.get(LIST_RIGHT_PAGE_INDEX_VALUE);
 
         validatePageValue(playerPage);
         validatePageRange(leftPageNumber);
@@ -54,25 +54,25 @@ public class PageGameInfo {
         }
     }
 
-    private void validatePageRange(Integer pageNumber) {
+    private void validatePageRange(int pageNumber) {
         if (!(MINIMUM_PAGE_VALUE <= pageNumber && pageNumber <= MAXIMUM_PAGE_VALUE)) {
             throw new IllegalArgumentException(INVALID_PAGE_RANGE_MESSAGE);
         }
     }
 
-    private void validateBetweenLeftAndRightPage(Integer leftPageNumber, Integer rightPageNumber) {
+    private void validateBetweenLeftAndRightPage(int leftPageNumber, int rightPageNumber) {
         if (rightPageNumber - leftPageNumber != BETWEEN_LEFT_AND_RIGHT_PAGE_VALUE) {
             throw new IllegalArgumentException(INVALID_PAGE_RELATION_MESSAGE);
         }
     }
 
-    private void validateRightPage(Integer rightPageNumber) {
+    private void validateRightPage(int rightPageNumber) {
         if (rightPageNumber % ADD_ODD_DIVISION_VALUE != ADD_ODD_REMAINDER_VALUE) {
             throw new IllegalArgumentException(RIGHT_PAGE_NOT_EVEN_MESSAGE);
         }
     }
 
-    private void validateLeftPage(Integer leftPageNumber) {
+    private void validateLeftPage(int leftPageNumber) {
         if (leftPageNumber % ADD_ODD_DIVISION_VALUE == ADD_ODD_REMAINDER_VALUE) {
             throw new IllegalArgumentException(LEFT_PAGE_NOT_ODD_MESSAGE);
         }
