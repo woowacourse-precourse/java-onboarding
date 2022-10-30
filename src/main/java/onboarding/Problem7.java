@@ -46,4 +46,12 @@ public class Problem7 {
             }
         }
     }
+
+    private static void deleteInvalidFriends(String user, List<String> existingFriends) {
+        recommendScore.remove(user);
+
+        for (String existingFriend: existingFriends) {
+            recommendScore.remove(existingFriend);
+        }
+    }
 }
