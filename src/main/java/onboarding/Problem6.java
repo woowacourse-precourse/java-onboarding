@@ -53,12 +53,14 @@ public class Problem6 {
      */
     static List<String> findEmail(List<List<String>> forms){
         List<Integer> ansNickNameIdx = findRedundantName(forms);
-        List<String> answer = new ArrayList<>();
+        Set<String> answerSet = new HashSet<>();
         for(int idx = 0; idx < ansNickNameIdx.size(); idx++){
             int nickNameIdx = ansNickNameIdx.get(idx);
             String email = forms.get(nickNameIdx).get(0);
-            answer.add(email);
+            answerSet.add(email);
         }
+
+        List<String> answer = new ArrayList<>(answerSet);
         return answer;
     }
 
