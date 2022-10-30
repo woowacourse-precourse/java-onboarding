@@ -1,6 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Problem5 {
@@ -8,17 +8,24 @@ public class Problem5 {
     static final int[] currencies = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
 
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
+        List<Integer> answer = new ArrayList<>();
+
+        for (int amount : currencies) {
+            int[] result = countOfMoneyToNeed(money, amount);
+            money = result[0];
+            answer.add(result[1]);
+        }
+
         return answer;
     }
 
-    private static int countOfMoneyToNeed(int money, int amount) {
+    private static int[] countOfMoneyToNeed(int money, int amount) {
         int result = 0;
-        while (money < amount) {
+        while (money >= amount) {
             result++;
             money -= amount;
         }
-        return result;
+        return new int[]{money, result};
     }
 }
 
