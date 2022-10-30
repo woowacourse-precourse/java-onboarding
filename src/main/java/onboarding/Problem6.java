@@ -9,11 +9,12 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         HashMap<String, String> crewDictionary = new HashMap<>();
         validateDuplicateEmail(forms, crewDictionary);
-        List<String> answer = List.of("answer");
+        List<String> allDuplicateWords = findAllDuplicateWords(crewDictionary);
+        List<String> answer = findCrewApplyingDuplicateWordsInNickname(crewDictionary, allDuplicateWords);
         return answer;
     }
 
-    public static void validateDuplicateEmail(List<List<String>> forms,HashMap<String, String> crewDictionary){
+    public static void validateDuplicateEmail(List<List<String>> forms, HashMap<String, String> crewDictionary){
         for(int i=0; i< forms.size(); i++){
             String email = forms.get(i).get(0);
             String nickname = forms.get(i).get(1);
@@ -22,6 +23,23 @@ public class Problem6 {
             }
             crewDictionary.put(email, nickname);
       }
+    }
+
+    public static List<String> findCrewApplyingDuplicateWordsInNickname(HashMap<String, String> crewDictionary, List<String> allDuplicateWords){
+        return crewDictionary.keySet()
+                      .stream()
+                      .filter(email -> findDuplicateWords(crewDictionary.get(email), allDuplicateWords))
+                      .collect(Collectors.toList());
+
+    }
+
+    public static boolean findDuplicateWords(String nickname, List<String> allDuplicateWords){
+        for(String words: allDuplicateWords){
+            if(nickname.contains(words)){
+                return true;
+            }
+        }
+        return false;
     }
 
     public static List<String> findAllDuplicateWords(HashMap<String, String> crewDictionary){
