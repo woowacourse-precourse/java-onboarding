@@ -46,10 +46,25 @@ class Problem1 {
         return true;
     }
 
+    public static int winner(int pobiLeft, int pobiRight, int crongLeft, int crongRight) {
+        if (exception(pobiLeft, pobiRight) || exception(crongLeft, crongRight)) {
+            return -1;
+        }
+        int maxPobi = pagesComparison(pobiLeft, pobiRight);
+        int maxCrong = pagesComparison(crongLeft, crongRight);
+        if (maxPobi > maxCrong) {
+            return 1;
+        }
+        if (maxPobi < maxCrong) {
+            return 2;
+        }
+        return 0;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
         int[] pobiArray = pobi.stream().mapToInt(i->i).toArray();
         int[] crongArray = crong.stream().mapToInt(i->i).toArray();
+        int answer = winner(pobiArray[0], pobiArray[1], crongArray[0], crongArray[1]);
         return answer;
     }
 }
