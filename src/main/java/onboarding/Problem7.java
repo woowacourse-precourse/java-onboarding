@@ -9,6 +9,7 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         // List<String> answer = Collections.emptyList();
+        // TODO solution 내에 객체를 생성해야 하는 구조 비효율적. 다른 아키텍처 고민해 refactoring 하기.
         Problem7 problem7 = new Problem7();
         List<String> answer = problem7.returnResult(user, friends, visitors);
         return answer;
@@ -16,6 +17,7 @@ public class Problem7 {
 
     List<String> returnResult(String user, List<List<String>> friends, List<String> visitors) {
         List<String> result = new ArrayList<>();
+        // TODO 내부 로직을 중복해 사용해서 오히려 헷갈림. 메소드 구조 고민한 후 refactoring.
         setVisitorScore(visitors);
         setFriendScore(user, friends);
         List<Map.Entry<String, Integer>> entryList = new LinkedList<>(user_score.entrySet());
@@ -28,6 +30,7 @@ public class Problem7 {
             }
             result.add(entryList.get(i).getKey());
         }
+        // TODO 이미 친구인 사람 목록에서 빼기 로직 추가
         return result.subList(0,3);
     }
 
