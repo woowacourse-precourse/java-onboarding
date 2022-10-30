@@ -72,4 +72,34 @@ public class Problem7 {
         return userList.size();
     }
 
+    public Map<String, Integer> totoalScore(Map<String, Integer> visitScore, Map<String, Integer> friendScore){
+        Set<String> vset =visitScore.keySet();
+        Set<String> fset =friendScore.keySet();
+        Iterator<String> viterator = vset.iterator();
+        Iterator<String> fiterator = fset.iterator();
+        Map<String, Integer> totalScore = new TreeMap<>();
+
+        while(viterator.hasNext()){ // 양쪽 리스트에 같은 값이 있으면 그것만 계산
+            while(fiterator.hasNext()) {
+                String vkey = viterator.next();
+                String fkey = fiterator.next();
+                if(fkey.equals(vkey)){
+                    totalScore.put(fkey, friendScore.get(fkey));
+                    viterator.remove();
+                    fiterator.remove();
+                }
+            }
+        }
+
+        for(String v: vset){ //양쪽 리스트에 있는거 모두 다 저장
+            totalScore.put(v, friendScore.get(v));
+        }
+        for(String f: fset){ //양쪽 리스트에 있는거 모두 다 저장
+            totalScore.put(f, friendScore.get(f));
+        }
+        return totalScore;
+    }
+
+
+
 }
