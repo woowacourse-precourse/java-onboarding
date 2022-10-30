@@ -8,20 +8,20 @@ public class Problem6 {
         Hashtable<String, String> existDict = new Hashtable<String, String>();
         HashSet<String> existSet = new HashSet<String>();
 
-        for (int i=0 ;i<forms.size(); i++){
-            String email = forms.get(i).get(0);
-            String nickname = forms.get(i).get(1);
+        for (List<String> form: forms){
+            String email = form.get(0);
+            String nickname = form.get(1);
 
-            if (email.length() < 11 || email.length() >= 20)
+            if (email.length() < 11 || email.length() >= 20)    //email 길이 제한
                 break;
-            if (!Pattern.matches("\\S+@email.com", email))
+            if (!Pattern.matches("\\S+@email.com", email))  //email 형식 제한
                 break;
-            if (nickname.length() < 1 || nickname.length() >= 20)
+            if (nickname.length() < 1 || nickname.length() >= 20)   //nickname 길이 제한
                 break;
 
-            for (int j=0; j<nickname.length()-1; j++){
-                String key = nickname.substring(j, j+2);
-                if (existDict.containsKey(key)){
+            for (int i=0; i<nickname.length()-1; i++){
+                String key = nickname.substring(i, i+2);    //2글자 단위로 key 설정
+                if (existDict.containsKey(key)){    //이미 key가 있다면
                     existSet.add(email);
                     existSet.add(existDict.get(key));
                 }
