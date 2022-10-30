@@ -89,9 +89,10 @@ public class Problem7 {
         //3차 - 5명 컷
         List<String> result = new ArrayList<>();
         int cnt = 0;
+
         for(Map.Entry<String, Integer> entry : entry_list){
             // 5명이 채워지면 멈추기
-            if (cnt == 5) break;
+            if (entry.getValue() == 0 || cnt == 5) break;
             result.add(entry.getKey());
             cnt++;
         }
