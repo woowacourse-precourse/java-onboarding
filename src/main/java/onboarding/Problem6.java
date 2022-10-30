@@ -25,6 +25,7 @@ public class Problem6 {
             String duplicatedName = slicedNameList.get(k);
             String duplicatedEmail = duplicatedNameMap.get(duplicatedName);
             isEmailNotNull(answer, email, duplicatedEmail);
+            isEmailNull(duplicatedNameMap, email, duplicatedName, duplicatedEmail);
         }
     }
 
@@ -32,6 +33,12 @@ public class Problem6 {
         if (duplicatedEmail != null) {
             answer.add(email);
             answer.add(duplicatedEmail);
+        }
+    }
+
+    private static void isEmailNull(HashMap<String, String> duplicatedNameMap, String email, String duplicatedName, String duplicatedEmail) {
+        if (duplicatedEmail == null) {
+            duplicatedNameMap.put(duplicatedName, email);
         }
     }
 
