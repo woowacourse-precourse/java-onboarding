@@ -10,7 +10,7 @@ public class Graph {
 
     private Map<String, List<String>> adjacentList = new HashMap<>();
 
-    public Graph(List<List<String>> friendsInfo성) {
+    public Graph(List<List<String>> friendsInfo) {
         this.friendsInfo = friendsInfo;
 
         construct();
