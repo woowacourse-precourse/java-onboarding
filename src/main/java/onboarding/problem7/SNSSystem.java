@@ -16,4 +16,8 @@ public class SNSSystem {
 	public List<String> getSecondFriends(String name) {
 		return users.getSecondFriends(name);
 	}
+
+	public boolean isFriends(String user, String visitor) {
+		return users.isFriends(user, visitor);
+	}
 }

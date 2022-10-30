@@ -31,4 +31,8 @@ public class UsersList {
 			.map(User::toString)
 			.collect(Collectors.toList());
 	}
+
+	public boolean isFriends(String user, String visitor) {
+		return usersList.get(new UserID(user)).isFriends(new UserID(visitor));
+	}
 }
