@@ -119,6 +119,25 @@ class ApplicationTest {
             String result = "R olev blf";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
+        @Test
+        void case2() {
+            String word = "HaHa This is Test.";
+            String result = "SzSz Gsrh rh Gvhg.";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+
+        @Test
+        void case3() {
+            String word = "";
+            String result = "";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+        @Test
+        void case4() {
+            String word = "!@#@^%##%&23123124";
+            String result = "!@#@^%##%&23123124";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
     }
 
     @Nested

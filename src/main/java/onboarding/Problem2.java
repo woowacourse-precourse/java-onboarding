@@ -1,7 +1,5 @@
 package onboarding;
 
-import java.util.Stack;
-
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
@@ -12,7 +10,7 @@ public class Problem2 {
     public static String decode(String cryptogram) {
         int i = 0;
         int len = cryptogram.length();
-        StringBuffer decrypted = new StringBuffer(len);
+        StringBuilder decrypted = new StringBuilder(len);
 
         while (i < len) {
             deleteContinuousDuplicated(decrypted, cryptogram.charAt(i));
@@ -21,7 +19,7 @@ public class Problem2 {
         return decrypted.toString();
     }
 
-    public static void deleteContinuousDuplicated(StringBuffer decrypted, char ch) {
+    public static void deleteContinuousDuplicated(StringBuilder decrypted, char ch) {
         int len = decrypted.length();
 
         if (len != 0 && decrypted.charAt(len - 1) == ch) {
