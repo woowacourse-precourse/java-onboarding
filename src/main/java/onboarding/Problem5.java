@@ -10,6 +10,7 @@ public class Problem5 {
         List<Integer> answer = new ArrayList<>();
         for (int i = 0; i < 9; i++) {
             answer.add(getCountOfBill(MEASURE[i], money));
+            money -= MEASURE[i] * answer.get(i);
         }
         return answer;
     }
