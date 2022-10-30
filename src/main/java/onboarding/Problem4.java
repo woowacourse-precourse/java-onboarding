@@ -8,7 +8,13 @@ public class Problem4 {
     public static String solution(String word) {
         validateRange(word);
 
-        String answer = "";
+        char[] charArray = word.toCharArray();
+        StringBuilder sb = new StringBuilder();
+        for (char chWord : charArray) {
+            sb.append(changeAlphabet(chWord));
+        }
+
+        String answer = sb.toString();
         return answer;
     }
 
