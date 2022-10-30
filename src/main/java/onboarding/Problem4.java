@@ -16,7 +16,8 @@ public class Problem4 {
     }
 
     public static boolean checkAlpha(Character target) {
-        return Character.isAlphabetic(target);
+        String isAlphaRegex = "^[a-zA-Z]$";
+        return target.toString().matches(isAlphaRegex);
     }
 
     public static boolean checkUppder(Character target) {
