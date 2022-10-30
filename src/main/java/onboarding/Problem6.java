@@ -14,4 +14,9 @@ public class Problem6 {
         List<String> answer = List.of("answer");
         return answer;
     }
+    private static boolean isProperEmail(String email) {
+        return 11 <= email.length()
+                && email.length() < 20
+                && email.endsWith("email.com");
+    }
 }
