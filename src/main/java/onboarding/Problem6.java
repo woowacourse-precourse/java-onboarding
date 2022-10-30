@@ -45,4 +45,10 @@ public class Problem6 {
                 .collect(Collectors.toList());
     }
 
+    private static boolean isDuplicatedCrew(List<String> crew, List<String> duplicatedStringList) {
+        return duplicatedStringList.stream()
+                .filter(string -> isDuplicatedCrewName(crew, string))
+                .findAny()
+                .isPresent();
+    }
 }
