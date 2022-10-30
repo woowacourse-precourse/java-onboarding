@@ -9,7 +9,15 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
         // 1. 문자열을 훑으면서 문자를 stack에 push
+        for (int i=0; i<cryptogram.length(); i++){
+            pushOrNot(cryptogram.charAt(i));
+        }
+        StringBuffer sb = new StringBuffer();
         // 2. 연속 문자가 제거된 채 쌓인 문자들을 뒤집어서 반환
+        while(!stack.isEmpty()) {
+            sb.append(stack.pop());
+        }
+        answer = sb.reverse().toString();
         return answer;
     }
 
