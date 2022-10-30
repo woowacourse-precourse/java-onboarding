@@ -15,7 +15,6 @@ class Problem1 {
         for (int i =0; i < LIST_SIZE; i++) {
             List<Integer> pobiPageDigit = getEachDigit(pobi.get(i));
             List<Integer> crongPageDigit = getEachDigit(crong.get(i));
-
             pobiMax = getMaximumValue(pobiPageDigit);
             crongMax = getMaximumValue(crongPageDigit);
         }

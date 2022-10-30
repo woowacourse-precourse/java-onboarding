@@ -1,8 +1,5 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
@@ -37,5 +34,4 @@ public class Problem3 {
         }
         return answer;
     }
-
 }
