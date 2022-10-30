@@ -29,6 +29,10 @@ public class Problem6 {
 
         }
 
+        for (List<String> form : forms) {
+            if (form.get(1).contains(dupName)) answer.add(form.get(0));
+        }
+
 
 
         Collections.sort(answer);
