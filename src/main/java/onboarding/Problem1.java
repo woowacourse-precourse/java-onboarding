@@ -11,6 +11,7 @@ import static java.util.Collections.max;
 3. 1번 단계에서 얻은 값을 비교해 result 출
  */
 class Problem1 {
+    private static final boolean ERROR = false;
     private static final int INIT_ERROR = -1;
     private static final int DRAW = 0;
     private static final int POBI_WIN = 1;
@@ -18,12 +19,12 @@ class Problem1 {
     private static final int FIRST_PAGE = 1;
     private static final int LAST_PAGE = 400;
     private static boolean exception(List<Integer> pobi, List<Integer> crong) {
-        if(pobi.get(1) - pobi.get(0) != 1) return false;
-        if(crong.get(1) - crong.get(0) != 1) return false;
-        if(pobi.get(0) % 2 != 1 || crong.get(0) % 2 != 1) return false;
-        if(pobi.contains(FIRST_PAGE) || pobi.contains(LAST_PAGE)) return false;
-        if(crong.contains(FIRST_PAGE) || crong.contains(LAST_PAGE)) return false;
-        return true;
+        if(pobi.get(1) - pobi.get(0) != 1) return ERROR;
+        if(crong.get(1) - crong.get(0) != 1) return ERROR;
+        if(pobi.get(0) % 2 != 1 || crong.get(0) % 2 != 1) return ERROR;
+        if(pobi.contains(FIRST_PAGE) || pobi.contains(LAST_PAGE)) return ERROR;
+        if(crong.contains(FIRST_PAGE) || crong.contains(LAST_PAGE)) return ERROR;
+        return !ERROR;
     }
     private static int findMax(int s) {
         int pageSum = 0;
