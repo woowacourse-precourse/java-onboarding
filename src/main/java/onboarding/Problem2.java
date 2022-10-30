@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        StringBuilder answer = new StringBuilder();
 		if (cryptogram.length() == 1) {
 			return cryptogram;
 		}
@@ -13,14 +13,18 @@ public class Problem2 {
 		for (char c : cryptogram.toCharArray()) {
 			add(list, c);
 		}
-        return answer;
+		for (Character character : list) {
+			answer.append(character);
+		}
+        return answer.toString();
     }
 
 	private static void add(List<Character> list, char c) {
 		list.add(c);
 
 		if (1 < list.size() && isEqualOfTwoChars(list)) {
-
+			list.remove(list.size() - 1);
+			list.remove(list.size() - 1);
 		}
 	}
 
