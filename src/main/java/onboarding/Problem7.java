@@ -9,6 +9,7 @@ public class Problem7 {
 
     private static final int FRIEND_TOGETHER_SCORE = 10;
     private static final int VISITOR_SCORE = 1;
+    private static final int RESULT_COUNT = 5;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
@@ -23,8 +24,41 @@ public class Problem7 {
         Map<String, List<String>> friendRelationMap = makeFriendsRelations(friends);
         Map<String, Integer> scoreMap = initCountScoreList(userSet, friendRelationMap, user);
         calculate(user, friendRelationMap, scoreMap, visitors);
+        ArrayList<String> sortingByScoreMap = new ArrayList<>(scoreMap.keySet());
+        sorting(sortingByScoreMap, scoreMap);
+        return getFiveList(sortingByScoreMap, scoreMap);
+    }
 
-        return null;
+    private static List<String> getFiveList(ArrayList<String> sortingByScoreMap, Map<String, Integer> scoreMap) {
+        List<String> returnList = new ArrayList<>();
+
+        for (int i = 0; i < sortingByScoreMap.size() && i < RESULT_COUNT; i++) {
+            if (scoreMap.get(sortingByScoreMap.get(i)) > 0) {
+                returnList.add(sortingByScoreMap.get(i));
+                continue;
+            }
+            break;
+        }
+        return returnList;
+    }
+
+    private static void sorting(ArrayList<String> sortingByScoreMap, Map<String, Integer> scoreMap) {
+        sortingByScoreMap.sort(new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                int result = 0;
+                Integer user1 = scoreMap.get(o1);
+                Integer user2 = scoreMap.get(o2);
+                if (user1 < user2) {
+                    result = 1;
+                } else if (user1 > user2) {
+                    result = -1;
+                } else if (user1 == user2) {
+                    result = o1.compareTo(o2);
+                }
+                return result;
+            }
+        });
     }
 
     private static void calculate(String user, Map<String, List<String>> friendRelationMap, Map<String, Integer> scoreMap, List<String> visitors) {
@@ -35,7 +69,10 @@ public class Problem7 {
             if (visitors.size() > 0) {
                 score += userVisitorCount(visitors, thisUser) * VISITOR_SCORE;
             }
+
             scoreMap.put(thisUser, score);
+
+
         }
     }
 
@@ -57,7 +94,10 @@ public class Problem7 {
     }
 
     private static boolean isFriendWithUser(Map<String, List<String>> friendRelationMap, String user, String friend) {
-        return friendRelationMap.get(user).contains(friend);
+        if (friendRelationMap.containsKey(user)) {
+            return friendRelationMap.get(user).contains(friend);
+        }
+        return false;
     }
 
     private static Map<String, Integer> initCountScoreList(Set<String> userSet, Map<String, List<String>> friendRelationMap, String user) {
@@ -73,7 +113,10 @@ public class Problem7 {
     }
 
     private static boolean isUserFriendOrUser(String userId, Map<String, List<String>> friendRelationMap, String user) {
-        return ((userId == user) || (friendRelationMap.get(user).contains(userId)));
+        if (friendRelationMap.containsKey(user)) {
+            return ((userId == user) || (friendRelationMap.get(user).contains(userId)));
+        }
+        return userId == user;
     }
 
     private static Set<String> makeUserSet(String user, List<List<String>> friends, List<String> visitors) {
