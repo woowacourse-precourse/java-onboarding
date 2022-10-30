@@ -11,11 +11,13 @@ public class Problem3 {
     private static final char NINE = '9';
 
     public static int solution(int number) {
+        int result = 0;
+
         if (Problem3Validation.problem3InputValidation(number, MIN_INPUT, MAX_INPUT)) {
-            return getTotalClapHandsCount(number);
-        } else {
-            return 0;
+            result = getTotalClapHandsCount(number);
         }
+
+        return result;
     }
 
     private static int getTotalClapHandsCount(int number) {
