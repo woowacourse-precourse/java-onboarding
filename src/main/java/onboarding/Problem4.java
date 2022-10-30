@@ -7,12 +7,20 @@ import java.util.stream.Collectors;
 public class Problem4 {
     private static final int MIN_INPUT = 1;
     private static final int MAX_INPUT = 1000;
+
+    private static final char LOWER_A = 'a';
+    private static final char LOWER_Z = 'z';
+    private static final char UPPER_A = 'A';
+    private static final char UPPER_Z = 'Z';
+
     public static String solution(String word) {
+        String result = "";
+
         if (Problem4Validation.problem4InputValidation(word, MIN_INPUT, MAX_INPUT)) {
-            return stringToReverseString(word);
-        } else {
-            return "";
+            result = stringToReverseString(word);
         }
+
+        return result;
 
     }
 
@@ -25,13 +33,16 @@ public class Problem4 {
     }
 
     private static char charToReserveChar(char charWord) {
+
+        char reversedChar = charWord;
+
         if ('a' <= charWord && charWord <= 'z') {
-            return (char) ('z' - (charWord - 'a'));
+            reversedChar =  (char) (LOWER_Z - (charWord - LOWER_A));
         } else if ('A' <= charWord && charWord <= 'Z') {
-            return (char) ('Z' - (charWord - 'A'));
-        } else {
-            return charWord;
+            reversedChar =  (char) (UPPER_Z - (charWord - UPPER_A));
         }
+
+        return reversedChar;
     }
 
 
