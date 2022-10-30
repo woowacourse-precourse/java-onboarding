@@ -22,16 +22,8 @@ public class Problem7 {
 		removeUserFriendsScore(user, userFriends, friendsScore);
 		addEmptyFriends(friendsScore);
 
-		List<Map.Entry<String, Integer>> sortedFriendScore = new ArrayList<>(friendsScore.entrySet());
-		sortedFriendScore.sort(new Comparator<Map.Entry<String, Integer>>() {
-			@Override
-			public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
-				if (o1.getValue() == o2.getValue()) {
-					return o1.getKey().compareTo(o2.getKey());
-				}
-				return o2.getValue().compareTo(o1.getValue());
-			}
-		});
+		List<Map.Entry<String, Integer>> sortedFriendScore = sortScore(friendsScore.entrySet());
+
 		answer = findRecommendFriends(sortedFriendScore);
 
 		return answer;
@@ -97,5 +89,19 @@ public class Problem7 {
 			}
 		}
 		return recommendList;
+	}
+
+	private static List<Map.Entry<String, Integer>> sortScore(Set<Map.Entry<String, Integer>> friendsScore) {
+		List<Map.Entry<String, Integer>> sortedList = new ArrayList<>(friendsScore);
+		sortedList.sort(new Comparator<>() {
+			@Override
+			public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+				if (o1.getValue() == o2.getValue()) {
+					return o1.getKey().compareTo(o2.getKey());
+				}
+				return o2.getValue().compareTo(o1.getValue());
+			}
+		});
+		return sortedList;
 	}
 }
