@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
 //        Person user = new Person(username);
 //        Map<String, Person> people = new HashMap<>();
 //        initializeFriendShip(people, friends);
@@ -17,6 +17,7 @@ public class Problem7 {
         calculateRecommendScore(recommendScore, friendsOfFriendsOfUser, CalculusType.friend);
         visitors = findVisitorsNotUserFriend(visitors, friendsInformation.get(user));
         calculateRecommendScore(recommendScore, visitors, CalculusType.visitor);
+
         return answer;
     }
 
@@ -123,6 +124,24 @@ public class Problem7 {
             }
         }
         return visitorsNotUserFriend;
+    }
+
+    public static List<String> findTop5RecommendedPeople(Map<String, Integer> recommendScore) {
+        List<String> people = new ArrayList<>(recommendScore.keySet());
+        List<String> top5 = new ArrayList<>();
+        people.sort(new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                if(recommendScore.get(o1) == recommendScore.get(o2)) {
+                    return o1.compareTo(o2);
+                }
+                return recommendScore.get(o2).compareTo(recommendScore.get(o1));
+            }
+        });
+        for(int i = 0; i < 5 && i < people.size(); ++i){
+            top5.add(people.get(i));
+        }
+        return top5;
     }
 }
 
