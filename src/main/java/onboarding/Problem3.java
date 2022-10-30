@@ -19,6 +19,10 @@ public class Problem3 {
 
             for(int j = 0; j < str.length(); j++) {
                 char chk = str.charAt(j);
+
+                if(chk == '3' || chk == '6' || chk == '9') {
+                    count += 1;
+                }
             }
         }
 
