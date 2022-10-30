@@ -14,8 +14,13 @@ import java.util.List;
 /**
  * 1.[50000,10000,5000,1000,500,100,50,10] 클래스 변수 생성 함수
  * - 홀수 (횟수) : / 5 , 짝수 (횟수) : /2 홀수 판별 함수 필요 , 마지막 10원->1원 예외처리
+ * - class 변수를 통해 단위배열 생성 함수
  * **/
 
+/**
+ * 2. 입력값 체크하는 함수
+ * - 입력값이 잘못 들어왔을 때 -> if문을 통해 collections.emptyList 반환 해줄려고 잘 들어오면 false 잘못 들어오면 true로 설정
+ * **/
 
 
 
@@ -46,4 +51,11 @@ public class Problem5 {
             unit /= distinguishOdd(i);
         }
     }
+
+    private static boolean checkInput(int inputMoney){
+        if (inputMoney < 1 || inputMoney > 1000000)
+            return true;
+        return false;
+    }
+
 }
