@@ -4,15 +4,16 @@ import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of();
-
         EmailArrayListValuePerSplitedNickNameKeyMap emailArrayListValuePerSplitedNickNameKeyMap = new EmailArrayListValuePerSplitedNickNameKeyMap();
         for (List<String> form :
                 forms) {
             emailArrayListValuePerSplitedNickNameKeyMap.insertItem(form);
         }
 
-        return answer;
+        List<String> EmailArrayList = emailArrayListValuePerSplitedNickNameKeyMap.getEmailArrayListBySizeOverOne();
+        Collections.sort(EmailArrayList);
+
+        return EmailArrayList;
     }
 }
 
