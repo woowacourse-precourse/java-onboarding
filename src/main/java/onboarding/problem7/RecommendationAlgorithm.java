@@ -4,42 +4,66 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class RecommendationAlgorithm {
-    public static List<String> recommend(String targetName, List<String> visitorsNames) {
+    /**
+     * target에게 추천할 사용자 리스트를 반환한다
+     * 모든 등록된 사용자를 돌며, target과 중복되는 친구 한 명 당 10점의 가산점,
+     * target의 sns에 방문한 횟수 한 번 당 1점의 가산점을 더한다
+     * 가장 높은 가산점을 가진 최대 다섯명의 사용자의 이름을 리스트로 반환한다
+     * @param targetName : target의 이름
+     * @param visitorsNames : target의 sns에 방문한 사용자들의 이름
+     * @return 최대 다섯개의 추천 계정들의 이름을 List로 반환한다
+     * @throws Exception
+     */
+    public static List<String> recommend(String targetName, List<String> visitorsNames) throws Exception {
         Map<String, Score> scores = new HashMap<>();
 
-        // UserRelation과 visitors에 따라 추천을 넣는다
-        List<String> friendsNames = UserRelation.getFriends(targetName);
-        List<String> allUsersNames = UserStore.findAll();
-        for(String eachName : allUsersNames) {
-            if (eachName.equals(targetName) || friendsNames.contains(eachName)) {
+        List<String> relatedUsers = UserRelation.getFriends(targetName);
+        relatedUsers.add(targetName);
+
+        List<String> allUsers = UserStore.findAll();
+
+        for(String each : allUsers) {
+            if (alreadyRelated(each, relatedUsers)) {
                 continue;
             }
-            // 친구가 겹치는지 비교
-            for (String friendName : friendsNames) {
-                if (UserRelation.hasRelation(friendName, eachName)) {
-                    if(!scores.containsKey(eachName)) {
-                        scores.put(eachName, new Score(eachName));
-                    }
-                    scores.put(eachName, scores.get(eachName).add(10));
-                }
-            }
+            scores.put(each, new Score(each, findOverlappingFriendsCnt(each, relatedUsers)).multiple(10));
         }
+
         for(String visitorName : visitorsNames) {
-            if (visitorName.equals(targetName) || friendsNames.contains(visitorName)) {
+            if (alreadyRelated(visitorName, relatedUsers)) {
                 continue;
             }
             if(!scores.containsKey(visitorName)) {
-                scores.put(visitorName, new Score(visitorName));
+                scores.put(visitorName, new Score(visitorName,0));
             }
             scores.put(visitorName, scores.get(visitorName).add(1));
         }
+
+        return returnUsersToPriority(scores);
+    }
+
+    private static boolean alreadyRelated(String each, List<String> relatedUser) {
+        return relatedUser.contains(each);
+    }
+
+    private static List<String> returnUsersToPriority(Map<String, Score> scores) {
         List<Score> collect = scores.values().stream().collect(Collectors.toList());
         Collections.sort(collect, Collections.reverseOrder());
-        List<String> answer = collect.stream().map(score -> score.getUserName()).collect(Collectors.toList());
-        if(answer.size() > 5) {
-            return answer.subList(0, 5);
+        List<String> recommendedUsersNames = collect.stream().map(score -> score.getUserName()).collect(Collectors.toList());
+        if(recommendedUsersNames.size() > 5) {
+            return recommendedUsersNames.subList(0, 5);
         }
-        return answer;
+        return recommendedUsersNames;
+    }
+
+    private static Integer findOverlappingFriendsCnt(String target, List<String> friendsNames) {
+        List<String> overlappingFriends = new ArrayList<>();
+        for (String friendName : friendsNames) {
+            if (UserRelation.hasRelation(friendName, target)) {
+                overlappingFriends.add(friendName);
+            }
+        }
+        return overlappingFriends.size();
     }
 
 }
