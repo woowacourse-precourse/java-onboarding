@@ -43,25 +43,7 @@ public class Problem7Test {
     }
 
     @Test
-    @DisplayName("Case#3 친구의 친구 목록과 방문자 목록 둘다 참고했는데, 방문자 목록 점수로 친구의 친구 점수 보다 높은 경우")
-    void recommendByFriendOfFriendAndVisitors_When_VisitorsScoreIsHigher() {
-        String user = "andole";
-        List<List<String>> friends = List.of(
-                List.of("donut", "andole"),
-                List.of("donut", "jun"),
-                List.of("donut", "mrko"),
-                List.of("shakevan", "andole"),
-                List.of("shakevan", "jun"),
-                List.of("shakevan", "mrko")
-        );
-        List<String> visitors = List.of("bedi", "bedi", "mrko", "bedi",
-                "bedi", "bedi", "bedi", "bedi", "bedi", "bedi", "bedi", "bedi");
-        List<String> result = List.of("bedi", "mrko", "jun");
-        assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
-    }
-
-    @Test
-    @DisplayName("Case#4 친구의 친구 목록만 참고해서 점수를 매겼더니 기능이 적절히 작동한다.")
+    @DisplayName("Case#3 방문자 목록 없어서, 친구의 친구 목록만 참고해서 점수를 매겼더니 기능이 적절히 작동한다.")
     void recommendByFriendOfFriend() {
         String user = "mrko";
         List<List<String>> friends = List.of(
@@ -73,6 +55,23 @@ public class Problem7Test {
                 List.of("shakevan", "mrko")
         );
         List<String> visitors = List.of();
+        List<String> result = List.of("andole", "jun");
+        assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+    }
+
+    @Test
+    @DisplayName("Case#4 본인이 본인 타임라인을 방문했지만, 친구의 친구 목록과 방문자 목록 둘다 참고해서 점수를 매겼더니 기능이 적절히 작동한다.")
+    void invalidInput_UserVisitedHimself_ButStill_recommendByFriendOfFriendAndVisitors() {
+        String user = "mrko";
+        List<List<String>> friends = List.of(
+                List.of("donut", "andole"),
+                List.of("donut", "jun"),
+                List.of("donut", "mrko"),
+                List.of("shakevan", "andole"),
+                List.of("shakevan", "jun"),
+                List.of("shakevan", "mrko")
+        );
+        List<String> visitors = List.of("mrko", "bedi", "bedi", "donut", "bedi", "shakevan");
         List<String> result = List.of("andole", "jun", "bedi");
         assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
     }
