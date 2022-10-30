@@ -18,6 +18,16 @@ public class Problem7 {
         return false;
     }
 
+    private static boolean checkUser(String user) {
+        int length = user.length();
+
+        if (length == 0 || length > 30) {
+            return true;
+        } else {
+            return checkAlpha(user);
+        }
+    }
+
     private static boolean checkParam(String user, List<List<String>> friends, List<String> visitors) {
         if (user == null || friends == null || visitors == null) {
             return true;
