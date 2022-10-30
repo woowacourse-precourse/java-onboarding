@@ -30,4 +30,12 @@ class Problem1 {
         }
         return score;
     }
+    private static int multiplyDigits(int page) {
+        int score = 1;
+        while (page > 0) {
+            score *= page % 10;
+            page /= 10;
+        }
+        return score;
+    }
 }
