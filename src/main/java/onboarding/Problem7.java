@@ -16,8 +16,34 @@ public class Problem7 {
 
         initializeArray();
 
+        calculateScore(user, visitors, map, al);
+
         return answer;
     }
+
+    private static void calculateScore(String user, List<String> visitors, SortedMap<String, Integer> map, ArrayList<ArrayList<Integer>> al) {
+        Deque<Integer> deque = new ArrayDeque<>();
+        boolean[] visited = new boolean[idx];
+        visited[map.get(user)] = true;
+        for (Integer integer : al.get(map.get(user))) {
+            deque.addLast(integer);
+            visited[integer] = true;
+        }
+        while (!deque.isEmpty()) {
+            int now = deque.pollFirst();
+            for (Integer integer : al.get(now)) {
+                if (!visited[integer]) {
+                    arr[integer][0] += 10;
+                }
+            }
+        }
+        for (String visitor : visitors) {
+            if (!visited[map.get(visitor)]) {
+                arr[map.get(visitor)][0]++;
+            }
+        }
+    }
+
 
     private static void initializeArray() {
         int[][] arr = new int[idx][2]; //arr[i][0] - score, arr[i][1] - mapping
