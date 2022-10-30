@@ -10,7 +10,16 @@ class Problem1 {
             return -1;
         }
 
-        return Integer.MAX_VALUE;
+        int pobiNumber = getScore(pobi);
+        int crongNumber = getScore(crong);
+
+        if(pobiNumber > crongNumber) {
+            return 1;
+        }else if(pobiNumber < crongNumber) {
+            return 2;
+        }
+
+        return 0;
     }
 
     // 펼친 페이지가 들어있는 리스트를 받아 최종 점수를 결정하는 함수
