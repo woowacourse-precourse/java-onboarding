@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.regex.Matcher;
@@ -7,10 +8,12 @@ import java.util.regex.Pattern;
 
 class NameStringClassForPro6 {
     private static String[] nameString;
+    private static Set<String> nameSet;
 
     public NameStringClassForPro6(List<List<String>> forms) {
         ExceptionClassForPro6 exceptionClass = new ExceptionClassForPro6(forms);
         nameString = new String[forms.size()];
+        nameSet = new HashSet<>();
         fillNameString(forms);
     }
 
@@ -30,6 +33,26 @@ class NameStringClassForPro6 {
             }
         }
         return nameSet;
+    }
+
+    private static void prepareAnsSet(NameForPro6 nameI, NameForPro6 nameJ) {
+        checkDPAndFill(nameI, nameJ, new int[nameI.nameSize() + 1][nameJ.nameSize() + 1]);
+    }
+
+    private static void checkDPAndFill(NameForPro6 nameI, NameForPro6 nameJ, int[][] dp) {
+        int max = 0;
+        for (int i = 1; i <= nameI.nameSize(); i++) {
+            for (int j = 1; j <= nameJ.nameSize(); j++) {
+                if (nameI.nameChar(i - 1) == nameJ.nameChar(j - 1)) {
+                    dp[i][j] = dp[i - 1][j - 1] + 1;
+                    max = Math.max(max, dp[i][j]);
+                }
+                if (max > 1) {
+                    nameSet.add(nameI.toString());
+                    nameSet.add(nameJ.toString());
+                }
+            }
+        }
     }
 }
 
