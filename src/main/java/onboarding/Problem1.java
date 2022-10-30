@@ -13,5 +13,9 @@ class Problem1 {
         int sum(List<Integer> nums) {
             return (int) nums.stream().reduce((x, y) -> x + y).stream().toArray()[0];
         }
+        // 분리가 된 자릿수를 곱하는 기능
+        int multi(List<Integer> nums){
+            return (int) nums.stream().reduce((x,y)->x*y).stream().toArray()[0];
+        }
     }
 }
