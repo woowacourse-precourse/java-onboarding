@@ -9,7 +9,7 @@ class Problem1 {
         //입력받은 값이 올바른지 확인
         if(checknum(pobi, crong) == -1)
             return -1;
-        
+
         return answer;
     }
     //올바른 값인지 확인
@@ -27,5 +27,25 @@ class Problem1 {
         if(crong.get(0) == 1 || crong.get(0) == 400 || crong.get(1) == 1 || crong.get(1) == 400)
             checknum = -1;
         return checknum;
+    }
+    //곱한값
+    public static int mul(int num){
+        int temp = num;
+        int result = 1;
+        while(temp>0){
+            result *= temp%10;
+            temp /= 10;
+        }
+        return result;
+    }
+    //더한값
+    public static int sum(int num){
+        int temp = num;
+        int result = 0;
+        while(temp>0){
+            result += temp%10;
+            temp /= 10;
+        }
+        return result;
     }
 }
