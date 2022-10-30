@@ -29,9 +29,14 @@ class ValidatorPro6 {
     }
   }
 
+  public boolean isEmail(String str) {
+    return Pattern.matches("^[a-z0-9A-Z._-]*@[a-z0-9A-Z]*.[a-zA-Z.]*$", str);
+  }
+
   public void validateEmail(List<List<String>> forms) {
     for (List<String> crewInfo : forms) {
-      if (!crewInfo.get(EMAIL).contains("email.com") ||
+      if (!isEmail(crewInfo.get(EMAIL)) ||
+          !crewInfo.get(EMAIL).contains("email.com") ||
           (crewInfo.get(EMAIL).length() >= MAX_EMAIL_LEN) ||
           (crewInfo.get(EMAIL).length() < MIN_EMAIL_LEN)) {
         throw new IllegalArgumentException(
@@ -76,17 +81,17 @@ class FindDuplicatePro6 {
         String compareStr = forms.get(crewIdx).get(NICKNAME).substring(i, i + 2);
         seen.add(compareStr);
       }
-      boolean flag = false;
+      boolean noDuplicate = false;
       for (int j = crewIdx + 1; j < forms.size(); j++) {
         for (String str : seen) {
           if (forms.get(j).get(NICKNAME).contains(str)) {
             emails.add(forms.get(j).get(EMAIL));
-            flag = true;
+            noDuplicate = true;
           }
         }
       }
       seen.clear();
-      if (flag) {
+      if (noDuplicate) {
         emails.add(forms.get(crewIdx).get(EMAIL));
       }
     }

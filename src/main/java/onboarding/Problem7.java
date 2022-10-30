@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 class ValidatorPro7 {
@@ -26,17 +27,16 @@ class ValidatorPro7 {
   public static void validateUser(String user) {
     if (user.length() < MIN_USER_LEN || user.length() > MAX_USER_LEN) {
       throw new IllegalArgumentException(
-          "User should be a string with a length of between" + MIN_USER_LEN + " and " + MAX_USER_LEN
-              + ".");
+          "User should be a string with a length of between"
+              + MIN_USER_LEN + " and " + MAX_USER_LEN + ".");
     }
   }
 
   public static void validateFriends(List<List<String>> friends) {
     if (friends.size() < MIN_FRIENDS_SIZE || friends.size() > MAX_FRIENDS_SIZE) {
       throw new IllegalArgumentException(
-          "User should be a string with a length of between" + MIN_FRIENDS_SIZE + " and "
-              + MAX_FRIENDS_SIZE
-              + ".");
+          "User should be a string with a length of between"
+              + MIN_FRIENDS_SIZE + " and " + MAX_FRIENDS_SIZE + ".");
     }
     for (List<String> pair : friends) {
       if (pair.size() != FRIENDS_LIST_SIZE) {
@@ -51,23 +51,30 @@ class ValidatorPro7 {
     }
   }
 
+  public static boolean isAlpha(String str) {
+    return Pattern.matches("^[a-zA-Z]*$", str);
+  }
+
   public static void validateId(String id) {
+    if (!isAlpha(id)) {
+      throw new IllegalArgumentException("The user ID should be given by alphabet.");
+    }
     if (!id.equals(id.toLowerCase())) {
       throw new IllegalArgumentException(
           "The user ID consists of only lowercase letters of the alphabet.");
     }
     if (id.length() < MIN_ID_LEN || id.length() > MAX_ID_LEN) {
       throw new IllegalArgumentException(
-          "ID should be a string with a length of between" + MIN_ID_LEN
-              + " and " + MAX_ID_LEN + ".");
+          "ID should be a string with a length of between"
+              + MIN_ID_LEN + " and " + MAX_ID_LEN + ".");
     }
   }
 
   public static void validateVisitors(List<String> visitors) {
     if (visitors.size() < MIN_VISITORS_SIZE || visitors.size() > MAX_VISITORS_SIZE) {
       throw new IllegalArgumentException(
-          "Visitors is a list/array of length " + MIN_VISITORS_SIZE + " to "
-              + MAX_VISITORS_SIZE + ".");
+          "Visitors is a list/array of length "
+              + MIN_VISITORS_SIZE + " to " + MAX_VISITORS_SIZE + ".");
     }
   }
 }
@@ -149,8 +156,7 @@ class ScorePro7 {
             scoreList.put(unknown, SCORE_ZERO);
           }
           int score = scoreList.get(unknown);
-          score += SCORE_TEN;
-          scoreList.put(unknown, score);
+          scoreList.put(unknown, score + SCORE_TEN);
         }
       }
     }
@@ -162,8 +168,7 @@ class ScorePro7 {
         scoreList.put(visit, SCORE_ZERO);
       }
       int score = scoreList.get(visit);
-      score += SCORE_ONE;
-      scoreList.put(visit, score);
+      scoreList.put(visit, score + SCORE_ONE);
     }
   }
 }

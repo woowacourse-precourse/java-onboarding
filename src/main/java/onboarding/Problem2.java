@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.Stack;
+import java.util.regex.Pattern;
 
 class FindDuplicatePro2 {
 
@@ -15,7 +16,14 @@ class FindDuplicatePro2 {
     originalWord = eraseDuplicate();
   }
 
+  public static boolean isAlpha(String str) {
+    return Pattern.matches("^[a-zA-Z]*$", str);
+  }
+
   public void validateCryptogram(String cryptogram) {
+    if (!isAlpha(cryptogram)) {
+      throw new IllegalArgumentException("The cryptogram should be given by alphabet.");
+    }
     if (!cryptogram.equals(cryptogram.toLowerCase())) {
       throw new IllegalArgumentException("A cryptogram should be a string of lowercase.");
     }
