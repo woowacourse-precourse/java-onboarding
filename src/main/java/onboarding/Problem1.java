@@ -8,36 +8,35 @@ class Problem1 {
         return Integer.toString(num);
     }
 
-    /* 10의 자리수 이상의 숫자를 나눠 배열로 만드는 메서드 */
-    public static int[] seperateInteger(int num) {
-        int[] result = new int[3];
-        if (num < 10) {
-            result[0] = num;
-            return result;
+    /* 페이지 각 자리수 더하기 메서드 */
+    public static int add(String individualNums) {
+        int sum = 0;
+        for (int i = 0; i < individualNums.length(); i++) {
+            sum += (individualNums.charAt(i) - '0');
         }
-        String stringNum = integerToString(num);
-        for (int i = 0; i < stringNum.length(); i++) {
-            int tmp = stringNum.charAt(i) - '0';
-            result[i] = tmp;
-        }
-        return result;
+        return sum;
     }
 
-    public static int add(int score) {
-        int[] individualNums = seperateInteger(score);
-        int sum = 0;
-        for (int i = 0; i < 3; i++) {
-            sum += individualNums[i];
+    public static int multiply(String individualNums) {
+        int sum = 1;
+        for (int i = 0; i < individualNums.length(); i++) {
+            sum *= (individualNums.charAt(i) - '0');
         }
+        System.out.println(sum);
         return sum;
     }
 
     public static int getHighestScore(List<Integer> arr) {
         int max = 0;
+        int tmpAdd;
+        int tmpMult;
         int tmp;
         for(Integer score : arr) {
             System.out.println(score);
-            tmp = add(score);
+            String seperatedNum = integerToString(score);
+            tmpAdd = add(seperatedNum);
+            tmpMult = multiply(seperatedNum);
+            tmp = (tmpAdd > tmpMult) ? tmpAdd : tmpMult;
             if(tmp > max) {
                 max = tmp;
             }
