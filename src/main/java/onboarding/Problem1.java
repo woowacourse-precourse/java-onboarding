@@ -57,4 +57,18 @@ class Problem1 {
 
         return true;
     }
+
+    public static Integer FindScore(List<Integer> pages){
+        int LeftScore = Math.max(
+                sumDigit(pages.get(LEFT.ordinal())),
+                multiplyDigit(pages.get(LEFT.ordinal()))
+        );
+
+        int RightScore = Math.max(
+                sumDigit(pages.get(RIGHT.ordinal())),
+                multiplyDigit(pages.get(RIGHT.ordinal()))
+        );
+
+        return Math.max(LeftScore, RightScore);
+    }
 }
