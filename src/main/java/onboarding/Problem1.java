@@ -40,11 +40,29 @@ class Problem1 {
         return max;
     }
 
+    public static int judge(int pobi,int crong){
+        if(pobi>crong){
+            return 1;
+        }else if (pobi<crong){
+            return 2;
+        }
+        return 0;
+    }
+
+    public static int validate(List<Integer> pobi, List<Integer> crong){
+        if(pobi.get(1)-pobi.get(0)!=1 || crong.get(1)-crong.get(0)!=1)
+            return -1;
+        else if(pobi.get(1)==400||pobi.get(0)==1||crong.get(1)==400||crong.get(0)==1)
+            return -1;
+        return 0;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        List<Integer> numberList=numList(234);
+        if(validate(pobi,crong)==-1)
+            return -1;
         int pobiMax = findMax(pobi.get(0),pobi.get(1));
-        System.out.println(pobiMax);
-        int answer = Integer.MAX_VALUE;
+        int crongMax = findMax(crong.get(0),crong.get(1));
+        int answer = judge(pobiMax,crongMax);
         return answer;
     }
 }
