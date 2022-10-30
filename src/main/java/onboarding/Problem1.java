@@ -65,8 +65,8 @@ class Game{
             pageException(player1Page);
             pageException(player2Page);
 
-            onboarding.Player player1 = new onboarding.Player();
-            onboarding.Player player2 = new onboarding.Player();
+            Player player1 = new Player();
+            Player player2 = new Player();
 
             player1.setLeftPageNum(player1Page.get(0));
             player1.setRightPageNum(player1Page.get(1));
@@ -77,12 +77,12 @@ class Game{
             player2.calMaxNum();
             result = winner(player1, player2);
             return result;
-        } catch (onboarding.PageException e) {
+        } catch (PageException e) {
             return -1;
         }
     }
 
-    private int winner(onboarding.Player player1, onboarding.Player player2) {// 두 플레이어중 승자 여부에 따른 값을 반환
+    private int winner(Player player1, Player player2) {// 두 플레이어중 승자 여부에 따른 값을 반환
         if (player1.getMaxNum() > player2.getMaxNum()) {
             return 1;
         } else if (player1.getMaxNum() < player2.getMaxNum()) {
@@ -99,16 +99,16 @@ class Game{
         left = playerPage.get(0);
         right = playerPage.get(1);
         if ((right - left) != 1) { // 오른족 페이지가 왼쪽페이지보다 1큰 경우가 아니면 예외
-            throw new onboarding.PageException();
+            throw new PageException();
         }
         if (left % 2 == 0) {// 왼쪽페이지가 짝수인 경우
-            throw new onboarding.PageException();
+            throw new PageException();
         }
         if (right % 2 != 0) {// 오른쪽페이지가 홀수인 경우
-            throw new onboarding.PageException();
+            throw new PageException();
         }
         if (!(1 < left && left < right && right < 400)) {//페이지가 2~399사이가 아닌경우 (시작,마지막 면은 펼치지 않기 때문에 2~399)
-            throw new onboarding.PageException();
+            throw new PageException();
         }
     }
 }
