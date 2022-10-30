@@ -4,7 +4,7 @@ import java.util.*;
 
 public class NicknameChecker {
 
-    private static final String ALLOWABLE_EMAIL_FORMAT = "@email.com$";
+    private static final String ALLOWABLE_EMAIL_FORMAT = ".+@email.com$";
 
     private List<Crew> crews;
     private TreeSet<String> similarUserEmails;
