@@ -62,6 +62,16 @@ public class Problem7 {
             }
         }
 
+        //점수가 계산된 모든 인물과 각 인물의 점수가 포함된 리스트
+        List<List<String>> lastNames = new ArrayList<>();
+        for (int v = 0; v < checkScore.length; v++) {
+            lastNames.add(List.of(checkScore[v]));
+        }
+        for (int b = 0; b < checkScoreVisitors.length; b++) {
+            lastNames.add(List.of(checkScoreVisitors[b]));
+        }
+        System.out.println("최종 점수 받은 이들 중도 확인 : " + lastNames);
+
         return newNames;
     }
 }
