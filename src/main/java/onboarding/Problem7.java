@@ -8,10 +8,10 @@ import java.util.List;
 public class Problem7 {
     private static final HashMap<String, LinkedList<String>> relation = new HashMap<>();
     private static final HashMap<String, Integer> score = new HashMap<>();
-
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         makeFriendRelation(friends);
+        setAcquaintanceScore(user);
         return answer;
     }
 
@@ -30,6 +30,14 @@ public class Problem7 {
         } else{
             relation.put(user, new LinkedList<String>(Collections.singleton(friend)));
             score.put(user, 0);
+        }
+    }
+
+    public static void setAcquaintanceScore(String user){
+        for(String friend : relation.get(user)){
+           for(String name : relation.get(friend)){
+               if(!name.equals(user)) score.replace(name, score.get(name) + 10);
+           }
         }
     }
 }
