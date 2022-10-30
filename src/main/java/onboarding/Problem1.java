@@ -31,7 +31,19 @@ class Problem1 {
 
 
     // 각 자리수를 추출하는 함수 parseNumber()
+    private static int[] parseNumber(Integer number) {
+        String numberString = number.toString();
+        char[] numberChar = numberString.toCharArray();
+        int[] numbers = new int[numberChar.length];
+
+        for (int i=0; i<numberChar.length; i++){
+            numbers[i] = numberChar[i]-'0';
+        }
+
+        return numbers;
+    }
 
     // 숫자들로 만들 수 있는 최댓값을 찾는 함수 findMax()
+
 
 }
