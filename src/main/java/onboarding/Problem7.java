@@ -19,8 +19,8 @@ public class Problem7 {
     private static final int LEFT_INDEX = 0;
     private static final int RIGHT_INDEX = 1;
 
-    private static Set<String> usersFriend = new HashSet<>();
-    private static Map<String, Integer> scoreToUser = new HashMap<>();
+    private static final Set<String> usersFriend = new HashSet<>();
+    private static final Map<String, Integer> scoreToUser = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         addUsersFriend(user, friends);
