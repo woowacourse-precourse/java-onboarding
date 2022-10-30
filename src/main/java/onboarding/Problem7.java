@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -61,5 +62,45 @@ public class Problem7 {
 		for (String visitor : visitors) {
 			relation.get(visitor).set(0, String.valueOf(Integer.parseInt(relation.get(visitor).get(0)) + 1));
 		}
+	}
+
+	private static List<String> processData(HashMap<String, List<String>> relation, List<String> userFriends) {
+		Map<String, Integer> data = new HashMap<>();
+		for (String a : relation.keySet()) {
+			data.put(a, Integer.parseInt(relation.get(a).get(0)));
+		}
+
+		// user와 이미 친구인 관계는 목록에서 제거
+		for (String name : userFriends) {
+			if (data.containsKey(name)) {
+				data.remove(name);
+			}
+		}
+
+		//점수가 0인 값 전부 삭제
+		data.entrySet().removeIf(
+				entry -> entry.getValue().equals(0));
+
+		//점수가 큰 순으로 정렬, 점수가 같다면 사전순으로 정렬
+		List<Map.Entry<String, Integer>> list = new ArrayList<>(data.entrySet());
+		Collections.sort(list, (first, second) -> {
+			if (first.getValue() > second.getValue()) {
+				return -1;
+			} else if (first.getValue() < second.getValue()) {
+				return 1;
+			}
+			return first.getKey().compareTo(second.getKey());
+		});
+
+		//추천 리스트 추출
+		List<String> result = new ArrayList<>();
+		for (int i = 0; i < list.size(); i++) {
+			if (i == 5)
+				break;
+			else {
+				result.add(list.get(i).getKey());
+			}
+		}
+		return result;
 	}
 }
