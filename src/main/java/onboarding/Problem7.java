@@ -30,6 +30,14 @@ public class Problem7 {
                 continue;
 
             scoreMap.put(name, 0);
+
+            for (String userFriendName: friendList.get(user)) {
+                if (friendList.get(name).contains(userFriendName)) {
+                    int oldScore = scoreMap.get(name);
+                    int newScore = oldScore += 10;
+                    scoreMap.replace(name, newScore);
+                }
+            }
         }
         return answer;
     }
@@ -51,12 +59,12 @@ public class Problem7 {
   - [V] 친구관계목록의 각 친구관계마다 두 개의 이름을 뽑아낸다
   - [V] 각 이름이 친구 목록 HashMap에 없으면 친구목록 HashMap에 넣는다
   - [V] 둘 다 친구 목록에 서로를 추가한다
-- [] 친구 목록을 통한 점수를 계산한다
+- [V] 친구 목록을 통한 점수를 계산한다
   - [V] 각 사람들의 점수를 저장할 scoreMap를 만든다
   - [V] 친구 목록에서 keySet을 뽑아와 순회한다
   - [V] 현재 참조하는 사람이 user인 경우나 user의 친구인 경우는 건너뛴다
   - [V] scoreMap에 현재 참조하는 사람의 점수를 0점으로 하여 넣어준다.
-  - [] 친구 목록을 통해 user의 친구들을 순회하며 각 친구가 현재 참조하는 사람의 친구목록에 있으면 10점을 더해 교체해준다
+  - [V] 친구 목록을 통해 user의 친구들을 순회하며 각 친구가 현재 참조하는 사람의 친구목록에 있으면 10점을 더해 교체해준다
 - [] 방문 기록을 통해 점수를 계산한다
   - [] 현재 참조하는 방문자가 uesr의 친구인 경우는 건너뛴다
   - [] scoreMap에 현재 참조하는 방문자가 없으면 0점으로 하여 넣어준다
