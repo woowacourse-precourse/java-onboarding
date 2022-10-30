@@ -34,20 +34,20 @@ public class Problem7 {
             rightFriendsInList = listAtNow.get(RIGHT_FRIEND);
 
             // user의 친구면? FriendUserListdp 넣는다.
-            if (Objects.equals(user, leftFriendsInList)) {
+            if (strAddressEquals(user, leftFriendsInList)) {
                 friendUserList.add(rightFriendsInList);
             }
-            if (Objects.equals(user, rightFriendsInList)) {
+            if (strAddressEquals(user, rightFriendsInList)) {
                 friendUserList.add(leftFriendsInList);
             }
             personList.add(leftFriendsInList);
             personList.add(rightFriendsInList);
         }
 
-        personList = (ArrayList<String>) personList.stream().distinct().collect(Collectors.toList());
+        personList = (ArrayList<String>) deduplicationList(personList);
         System.out.println("personList.toString() = " + personList.toString());
 
-        friendUserList = (ArrayList<String>) friendUserList.stream().distinct().collect(Collectors.toList());
+        friendUserList = (ArrayList<String>) deduplicationList(friendUserList);
         System.out.println("friendUserList.toString() = " + friendUserList.toString());
 
         // 친구가 아닌 리스트를 만든다.
@@ -69,7 +69,7 @@ public class Problem7 {
             }
         }
 
-        notFriendUserList = (ArrayList<String>) notFriendUserList.stream().distinct().collect(Collectors.toList());
+        notFriendUserList = (ArrayList<String>) deduplicationList(notFriendUserList);
         System.out.println("notFriendUserList.toString() = " + notFriendUserList.toString());
 
         // personList, friendUserList, notFriendUserList 구현 완료
@@ -99,7 +99,7 @@ public class Problem7 {
             allFriendsVisitors.add(nameVisitor);
         }
 
-        allFriendsVisitors = (ArrayList<String>) allFriendsVisitors.stream().distinct().collect(Collectors.toList());
+        allFriendsVisitors = (ArrayList<String>) deduplicationList(allFriendsVisitors);
         System.out.println("allFriendsVisitors.toString() = " + allFriendsVisitors.toString());
 
         // visitor들의 방문횟수를 가져왔다.
@@ -178,5 +178,13 @@ public class Problem7 {
 
         answer.addAll(resultList);
         return answer;
+    }
+
+    private static List<String> deduplicationList(ArrayList<String> List) {
+        return List.stream().distinct().collect(Collectors.toList());
+    }
+
+    private static boolean strAddressEquals(String user, String leftFriendsInList) {
+        return Objects.equals(user, leftFriendsInList);
     }
 }
