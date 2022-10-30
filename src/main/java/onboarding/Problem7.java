@@ -40,6 +40,7 @@ class RecommendedFriend implements Comparable<RecommendedFriend> {
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, List<String>> friendList = createFriendList(friends);
+        Map<String, Integer> recommendedFriendList = createRecommendedFriendList(user, friendList);
         return null;
     }
 
@@ -56,6 +57,21 @@ public class Problem7 {
             List<String> userBFriends = result.getOrDefault(userB, new ArrayList<>());
             userBFriends.add(userA);
             result.put(userB, userBFriends);
+        }
+        return result;
+    }
+
+    private static Map<String, Integer> createRecommendedFriendList(String user, Map<String, List<String>> friendList) {
+        Map<String, Integer> result = new HashMap<>();
+        List<String> userFriends = friendList.getOrDefault(user, new ArrayList<>());
+        for (String userFriend : userFriends) {
+            List<String> friends = friendList.getOrDefault(userFriend, new ArrayList<>());
+            for (String friend : friends) {
+                if (!user.equals(friend)) {
+                    Integer score = result.getOrDefault(friend, 0);
+                    result.put(friend, score + 10);
+                }
+            }
         }
         return result;
     }
