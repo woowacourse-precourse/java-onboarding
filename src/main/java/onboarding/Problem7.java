@@ -49,11 +49,44 @@ public class Problem7 {
         return result;
     }
 
+    /**
+     * 친구가 아닌 사용자들 중에서 공통으로 가지는 수를 통해 점수를 구한다.
+     * @param user
+     * @param userList
+     * @param userFriendsList
+     * @return
+     */
+    private static HashMap<String, Integer> getFriendsScore(String user, List<String> userList, HashMap<String, HashSet<String>> userFriendsList) {
+        HashMap<String, Integer> result = new HashMap<>();
+        for (String next : userList) {
+            result.put(next, 0);
+        }
+
+        for (String notFriend : userList) {
+            // 이미 친구인 대상에 대해서는 고려하지 않는다.
+            if (userFriendsList.get(user).contains(notFriend)) {
+                continue;
+            }
+            int friendCount = 0;
+            for (String commonFriend : userList) {
+                if (notFriend.equals(commonFriend)) {
+                    continue;
+                }
+                // 만약 commonFriend가 user와 notFriend와 모두 친구라면
+                if (userFriendsList.get(user).contains(commonFriend) && userFriendsList.get(notFriend).contains(commonFriend)) {
+                    friendCount++;
+                }
+            }
+            result.put(notFriend, friendCount * 10);
+        }
+        return result;
+    }
+
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> userList = getUsersList(user, friends);
         HashMap<String, HashSet<String>> userFriendsList = getEachFriendsList(userList, friends);
 
-        HashMap<String, Integer> userScore = new HashMap<>();
+        HashMap<String, Integer> userScore = getFriendsScore(user, userList, userFriendsList);
     }
 }
