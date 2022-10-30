@@ -2,11 +2,16 @@ package onboarding;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
+
+        int answer = IntStream.rangeClosed(1, number)
+                .reduce(0, (x, y) -> x + clapTotal(y));
 
         return answer;
     }
