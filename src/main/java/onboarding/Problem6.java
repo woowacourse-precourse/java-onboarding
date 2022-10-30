@@ -1,11 +1,32 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+
+        List<String> result = new ArrayList<>();
+
+        List<User> userList = forms.stream()
+                .map(User::new)
+                .collect(Collectors.toList());
+
+        for (User user1 : userList) {
+            for (User user2 : userList) {
+                if (user1.isNicknameInclude(user2)) {
+                    result.add(user1.getEmail());
+                }
+            }
+        }
+
+        result = result.stream()
+                .distinct()
+                .sorted()
+                .collect(Collectors.toList());
+
+        return result;
     }
 
     private static class User {
