@@ -16,9 +16,23 @@ public class Problem2 {
         return indexes;
     }
     public static String solution(String cryptogram) {
-        List<Integer> duplicateIndexes = getDuplicateIndexes(cryptogram);
+        String decrypted = "";
 
-        String answer = "answer";
-        return answer;
+        boolean iterate = true;
+        while(iterate) {
+            List<Integer> duplicateIndexes = getDuplicateIndexes(cryptogram);
+
+            for (Integer index : duplicateIndexes) {
+                decrypted = cryptogram.replace(cryptogram.substring(index, index + 2), "");
+            }
+
+            cryptogram = decrypted;
+
+            if (duplicateIndexes.size() == 0) {
+                iterate = false;
+            }
+        }
+
+        return decrypted;
     }
 }
