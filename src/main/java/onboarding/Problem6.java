@@ -26,7 +26,7 @@ public class Problem6 {
                     for (String pattern : patternsFromNickName) {
                         if (nextNickname.contains(pattern)) {
                             resultSet.add(getEmail(forms, index));
-                            resultSet.add(getEmail(forms, index));
+                            resultSet.add(getEmail(forms, nextIndex));
                             isSimilar[index] = true;
                             isSimilar[nextIndex] = true;
                         }
