@@ -5,10 +5,10 @@ import java.util.stream.Collectors;
 
 public class DuplicatedCrewsFinder {
 
-    private Map<String, Set<Crew>> getCrewsByDoubleCharMap(List<Crew> allCrews) {
+    private Map<String, Set<Crew>> getCrewsByDoubleCharMap(Crews allCrews) {
         Map<String, Set<Crew>> crewsByDoubleCharMap = new HashMap<>();
 
-        allCrews.forEach(crew -> {
+        allCrews.getCrews().forEach(crew -> {
             String nickname = crew.getNickname();
 
             for (int nicknameIdx = 0; nicknameIdx < nickname.length() - 1; nicknameIdx++) {
@@ -22,7 +22,7 @@ public class DuplicatedCrewsFinder {
         return crewsByDoubleCharMap;
     }
 
-    public Set<Crew> getDuplicatedCrews(List<Crew> allCrews) {
+    public Set<Crew> getDuplicatedCrews(Crews allCrews) {
         Map<String, Set<Crew>> crewsByDoubleCharMap = getCrewsByDoubleCharMap(allCrews);
 
         // 두글자:[이메일]를 순회하며 크루의 개수가 2개 이상인 것을 찾음
