@@ -1,50 +1,62 @@
 package onboarding.problem2;
 
-import onboarding.problem2.utils.Parser;
-
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 public class Cryptographer {
-    private Set<Integer> set = new HashSet<>();
-
-    public boolean checkEncrypted(List<String> stringList) {
-        for (int i = 0; i < stringList.size() - 1; i++) {
-            if (stringList.get(i).equals(stringList.get(i + 1))) {
-                return true;
-            }
-        }
-        return false;
-    }
+    private String cryptogram;
 
     public String decrypt(String string) {
-        List<String> stringList = Parser.convertStringToList(string);
-        while (checkEncrypted(stringList)) {
-            set.clear();
-            stringList = removeDuplicated(stringList);
+        cryptogram = string;
+        String result = removeConsecutiveDuplicateFromStringList();
+
+        while (cryptogram.length() != result.length()
+                && cryptogram.length() > 0) {
+            cryptogram = result;
+            result = removeConsecutiveDuplicateFromStringList();
         }
 
-        return Parser.convertStackToString(stringList);
+        return cryptogram;
     }
 
-    private List<String> removeDuplicated(List<String> stringList) {
-        for (int i = 0; i < stringList.size() - 1; i++) {
-            checkDuplicated(stringList, i);
-        }
+    private String removeConsecutiveDuplicateFromStringList() {
+        StringBuilder result = new StringBuilder();
 
-        for (int index : set) {
-            stringList.set(index,"");
+        for (int i = 0; i < cryptogram.length(); i++) {
+            String unduplicatedString = getUnduplicatedString(i);
+            result.append(unduplicatedString);
         }
-
-        stringList.removeAll(List.of(""));
-        return stringList;
+        return result.toString();
     }
 
-    private void checkDuplicated(List<String> stringList, int index) {
-        if (stringList.get(index).equals(stringList.get(index + 1))) {
-            set.add(index);
-            set.add(index + 1);
+    private String getUnduplicatedString(int index) {
+        char currentString = cryptogram.charAt(index);
+
+        if (!isDuplicatedWithBefore(index) && !isDuplicatedWithNext(index)) {
+            return Character.toString(currentString);
         }
+
+        return "";
+    }
+
+    private boolean isDuplicatedWithBefore(int index) {
+        if (index == 0) {
+            return false;
+        }
+
+        char beforeString = cryptogram.charAt(index - 1);
+        char currentString = cryptogram.charAt(index);
+
+        return currentString == beforeString;
+    }
+
+    private boolean isDuplicatedWithNext(int index) {
+        if (index == cryptogram.length() - 1) {
+            return false;
+        }
+
+        char currentString = cryptogram.charAt(index);
+        char nextString = cryptogram.charAt(index + 1);
+
+        return currentString == nextString;
     }
 }
+
+
