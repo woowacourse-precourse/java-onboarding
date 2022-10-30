@@ -10,7 +10,7 @@ class Problem1 {
     static List<Integer> crongList = new ArrayList<>();
     static int pobiMaxValue;
     static int crongMaxValue;
-    static int answer;
+    static int answer = -1;
 
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -21,7 +21,10 @@ class Problem1 {
         pobiMaxValue = getMaxValue(pobiList);
         crongMaxValue = getMaxValue(crongList);
 
-        answer = findWinner();
+        if (checkPageRange(pobi) && checkPageRange(crong)){
+            answer = findWinner();
+        }
+
         return answer;
     }
 
@@ -79,5 +82,17 @@ class Problem1 {
         }
 
         return answerValue;
+    }
+
+    public static boolean checkPageRange(List<Integer> pageList){
+        boolean returnValue = True;
+        for (int index = 0; index < 2; index++) {
+            int pageIndexValue = pageList.get(index);
+            if (pageIndexValue < 1 || pageIndexValue > 400){
+                returnValue = False;
+            }
+        }
+
+        return returnValue;
     }
 }
