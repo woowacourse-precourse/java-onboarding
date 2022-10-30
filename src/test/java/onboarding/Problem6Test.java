@@ -8,6 +8,40 @@ import org.junit.jupiter.api.Test;
 class Problem6Test {
 
 	@Test
+	void 잘못된_닉네임() {
+		assertThrows(IllegalArgumentException.class, () ->
+			Problem6.InputValidator.isRightNickname("english"));
+
+		assertThrows(IllegalArgumentException.class, () ->
+			Problem6.InputValidator.isRightNickname("한글이지만범위가매우깁니다정말길게만들어야해요"));
+
+		assertThrows(IllegalArgumentException.class, () ->
+			Problem6.InputValidator.isRightNickname("dugk하하하"));
+
+		assertThrows(IllegalArgumentException.class, () ->
+			Problem6.InputValidator.isRightNickname("닉네임에 공백이 있어요"));
+
+		assertThrows(IllegalArgumentException.class, () ->
+			Problem6.InputValidator.isRightNickname("ㄱㄴㄷㄹ"));
+	}
+
+	@Test
+	void 올바른_닉네임() {
+		boolean result = true;
+		assertThat(Problem6.InputValidator.isRightNickname("제이슨")).isEqualTo(result);
+		assertThat(Problem6.InputValidator.isRightNickname("안녕안녕")).isEqualTo(result);
+		assertThat(Problem6.InputValidator.isRightNickname("딸기에요")).isEqualTo(result);
+		assertThat(Problem6.InputValidator.isRightNickname("제이슨")).isEqualTo(result);
+		assertThat(Problem6.InputValidator.isRightNickname("워니")).isEqualTo(result);
+		assertThat(Problem6.InputValidator.isRightNickname("엠제이")).isEqualTo(result);
+		assertThat(Problem6.InputValidator.isRightNickname("이제엠")).isEqualTo(result);
+		assertThat(Problem6.InputValidator.isRightNickname("테스트")).isEqualTo(result);
+		assertThat(Problem6.InputValidator.isRightNickname("테스트입니당")).isEqualTo(result);
+		assertThat(Problem6.InputValidator.isRightNickname("테스트가길어져도될까요")).isEqualTo(result);
+
+	}
+
+	@Test
 	void 잘못된_이메일() {
 
 		assertThrows(IllegalArgumentException.class, () ->
