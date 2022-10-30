@@ -37,9 +37,13 @@ public class Problem4 {
             lowerCase.put(key, value);
         }
 
-        // split the sting
-        String[] beforeWord = word.split("");
-        ArrayList<String> beforeList = new ArrayList<>(Arrays.asList(beforeWord));
+        // // split the string to character
+        ArrayList<Character> beforeList = new ArrayList<>();
+        char[] beforeWord = word.toCharArray();
+        for (char before : beforeWord) {
+            beforeList.add(before);
+        }
+
         System.out.println(beforeList);
 
         return answer;
