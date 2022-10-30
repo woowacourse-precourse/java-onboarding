@@ -22,7 +22,9 @@ class Problem1 {
         crongMaxValue = getMaxValue(crongList);
 
         if (checkPageRange(pobi) && checkPageRange(crong)){
-            answer = findWinner();
+            if (checkFirstPageOdd(pobi) && checkFirstPageOdd(crong)){
+                answer = findWinner();
+            }
         }
 
         return answer;
@@ -91,6 +93,17 @@ class Problem1 {
             if (pageIndexValue < 1 || pageIndexValue > 400){
                 returnValue = False;
             }
+        }
+
+        return returnValue;
+    }
+
+    public static boolean checkFirstPageOdd(List<Integer> pageList) {
+        boolean returnValue = True;
+        int pageIndexValue = pageList.get(0);
+
+        if (pageIndexValue % 2 == 0){
+            returnValue = False;
         }
 
         return returnValue;
