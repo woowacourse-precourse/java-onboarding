@@ -29,7 +29,9 @@
 #### sortByScore(Map<String, Integer> recommendList) --> LinkedList<Map.Entry<String, Integer>> recommendEntryList
 - 입력받은 recommendList를 comparator 기능을 사용하여 recommendList의 value가 높은순으로 정렬한뒤 recommendEntryList를 반환합니다.
 
-### 7. 추천목록의 크기가 5를 초과하면 추천점수가 높은 5명만을 반환
+### 7. 추천목록의 추천점수가 같으면 이름순으로 정렬
+#### sortByName(LinkedList<Map.Entry<String, Integer>> recommendEntryList) --> LinkedList<Map.Entry<String, Integer>> recommendEntryList
+- 입력받은 recommendEntryList를 comparator 기능을 사용하여 추천점수가 같다면 이름순으로 정렬한 뒤 recommendEntryList를 반환합니다.
 
 
 # 전체 동작 과정

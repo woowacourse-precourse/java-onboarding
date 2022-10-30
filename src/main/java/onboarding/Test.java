@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -22,6 +23,10 @@ public class Test {
         recommendList = Problem7.updateRecommendList(visitors, userFriendList, recommendList);
         recommendList = Problem7.addScoreByFriends(friends, userFriendList, recommendList);
         recommendList = Problem7.addScoreByVisitor(visitors, userFriendList, recommendList);
+        LinkedList<Map.Entry<String, Integer>> recommendEntryList = Problem7.sortByScore(recommendList);
+        System.out.println(recommendEntryList);
+        recommendEntryList = Problem7.sortByName(recommendEntryList);
+        System.out.println(recommendEntryList);
 
     }
 }

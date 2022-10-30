@@ -105,4 +105,20 @@ public class Problem7 {
         return recommendEntryList;
     }
 
+    /**
+     * 입력반은 recommendEntryList를 comparator를 사용하여 추천점수가 같으면 이름순으로 정렬한 뒤 recommendList를 반환합니다
+     * @param {Map<String, Integer>} recommendEntryList
+     * @return entryList
+     */
+    public static LinkedList<Map.Entry<String, Integer>> sortByName(LinkedList<Map.Entry<String, Integer>> recommendEntryList) {
+        recommendEntryList.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                if (o1.getValue() == o2.getValue()) return o1.getKey().compareTo(o2.getKey());
+                else return 0;
+            }
+        });
+        return recommendEntryList;
+    }
+
 }
