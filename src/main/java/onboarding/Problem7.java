@@ -5,7 +5,6 @@ import java.util.stream.Collectors;
 
 public class Problem7 {
 
-    
     private static final int RECOMMENDED_FRIENDS_WEIGHT_RELATED_MY_FRIEND = 10;
     private static final int RECOMMENDED_FRIENDS_WEIGHT_VISIT_MY_PAGE = 1;
     private static final int MAX_NUMBER_TO_RECOMMENDED_FRIENDS = 5;
@@ -20,7 +19,7 @@ public class Problem7 {
     private static class User {
 
         private String name;
-        private List<String> friends;
+        private List<String> friends = new ArrayList<>();
         private Map<String, Integer> friendRecommendScore = new HashMap<>();
 
         public User(String name) {
