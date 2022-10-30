@@ -1,10 +1,12 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
+        List<String> mail = new ArrayList<String>();
 
         for(int i = 0; i < forms.size() - 1; i++){
             for(int j = i + 1; j < forms.size(); j++){
@@ -16,6 +18,11 @@ public class Problem6 {
 
                 String crew2_mail = crew2.get(0);
                 String crew2_name = crew2.get(1);
+
+                if(checkSameWord(crew1_name, crew2_name)){
+                    mail.add(crew1_mail);
+                    mail.add(crew2_mail);
+                }
             }
         }
 
