@@ -227,16 +227,6 @@ class ApplicationTest {
 
     @Nested
     class Problem3Test {
-        // 예외 처리 테스트
-        @Test
-        void exceptionTest() {
-            int number1 = 0;
-            int number2 = 10001;
-
-            assertThat(Problem3.solution(number1)).isEqualTo(0);
-            assertThat(Problem3.solution(number2)).isEqualTo(0);
-        }
-
         // 전체 과정 테스트
         @Test
         void countClapTest() {
