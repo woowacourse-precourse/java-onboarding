@@ -5,8 +5,17 @@ import java.util.regex.Pattern;
 public class Problem2 {
     public static String solution(String cryptogram) {
         if (isException(cryptogram)) throw new RuntimeException("잘못된 인자입니다.");
-        String answer = "answer";
-        return answer;
+
+        //이전 문자열 길이
+        Integer len = 1001;
+        String decodeString = cryptogram;
+        while (len > decodeString.length()) {
+            System.out.println(decodeString);
+            len = decodeString.length();
+            decodeString = deduplicate(decodeString);
+            System.out.println(decodeString);
+        }
+        return decodeString;
     }
 
     private static Boolean isException(String str) {
