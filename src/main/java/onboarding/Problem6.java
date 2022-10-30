@@ -8,6 +8,9 @@ import java.util.regex.Pattern;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<List<String>> crew = new ArrayList<>();
+        List<String> answer = new ArrayList<>();
+        List<Integer> plus;
+
         try {
             if (forms.size() < 1 || forms.size() > 10000) {
                 throw new Exception("크루 숫자가 이상합니다");
@@ -22,8 +25,6 @@ public class Problem6 {
             return new ArrayList<>();
         }
 
-        List<String> answer = new ArrayList<>();
-        List<Integer> plus;
         for (int i = 0; i < crew.size(); i++) {
             for (int j = 0; j < crew.get(i).get(1).length() - 1; j++){
                 plus = repeat(crew, crew.get(i), j);
