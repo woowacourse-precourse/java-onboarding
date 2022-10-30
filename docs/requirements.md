@@ -159,6 +159,9 @@
 ### 구현 메소드 및 설명
 - inspectEmailCondition
 - inspectNicknameCondition
+- collectValidInputs
+- checkAlikeNicknames
+- getAlikeNicknamesList
 
 ### inspectEmailCondition
 - String을 매개변수로 받는다. 이 값은 email이다.
