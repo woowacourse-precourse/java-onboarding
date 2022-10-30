@@ -30,7 +30,7 @@
 > HashMap<String, Integer> initDuplicationOfNickname()
 
 - 이메일과 닉네임을 HashMap에 추가하는 함수
-> void AddUsers(HashMap<String, String> databaseOfNickname, List<String> user)
+> void AddUser(HashMap<String, String> databaseOfNickname, HashMap<String, Boolean> duplicationOfNickname, List<String> user)
 > input: 이메일과 닉네임을 저장한 HashMap, 이메일과 닉네임의 중복 여부를 판단할 HashMap, user 정보를 담은 List
 
 - 이메일과 닉네임을 추가한 뒤 중복 여부를 판단하는 함수
@@ -40,4 +40,10 @@
 > boolean checkDuplicationOfNickname(String, String)
 
 - 이메일과 닉네임의 중복이 있으면 이메일에 대한 중복 여부를 체크하는 함수
-> void checkDubplication(HashMap<String, String> databaseOfNickname, HashMap<String, Integer> duplicationOfNickname)
+> void checkDuplication(HashMap<String, String> databaseOfNickname, HashMap<String, Boolean> duplicationOfNickname)
+
+- 중복된 이메일을 리스트에 저장하여 리턴하는 함수
+> List<String> createDuplicationUserList(HashMap<String, Boolean> duplicationOfNickname)
+
+- 주어진 이메일, 닉네임 리스트를 하나씩 추가하는 함수
+> void AddUsers(HashMap<String, String> databaseOfNickname, HashMap<String, Boolean> duplicationOfNickname, List<List<String>> forms)
