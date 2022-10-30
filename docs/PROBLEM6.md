@@ -33,3 +33,7 @@
 ### checkForm
 - 닉네임과 이메일이 형식이 맞는지 확인하는 함수
 - 형식에 맞지 않으면 try-catch 을 통해 메세지를 출력한다.
+### nameError
+- 입력된 이름이 error인지 검사한다.
+### emailError
+- 입력된 이메일이 error인지 검사한다.
