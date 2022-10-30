@@ -6,7 +6,6 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
         int pobiLeftPage = pobi.get(0);
         int pobiRightPage = pobi.get(1);
 
@@ -24,7 +23,7 @@ class Problem1 {
         int pobiScore = getMaxScore(pobiNumbers);
         int crongScore = getMaxScore(crongNumbers);
 
-        answer = getAnswer(pobiScore, crongScore);
+        int answer = getAnswer(pobiScore, crongScore);
 
         return answer;
     }
