@@ -18,10 +18,10 @@ class Problem1 {
     }
 
     /**
-     * 예외사항 체크
+     * 페이지에 대한 예외사항을 확인한다.
      *
      * @param pages 양쪽 페이지의 번호
-     * @return 예외사항의 유무
+     * @return 예외사항이 있으면 true 를 반환한다.
      */
     private static boolean isPageException(List<Integer> pages) {
         int leftPage = pages.get(0);
@@ -33,10 +33,10 @@ class Problem1 {
     }
 
     /**
-     * 게임의 승부 구하기
+     * 게임의 승부를 구한다.
      *
      * @param scores 포비와 크롱의 점수
-     * @return 승부 결과
+     * @return 포피가 이기면 1, 크롱이 이기면 2, 비기면 0을 반환한다.
      */
     private static int getResult(List<Integer> scores) {
         int pobiScore = scores.get(0);
@@ -50,10 +50,10 @@ class Problem1 {
     }
 
     /**
-     * 본인의 점수 구하기
+     * 본인의 점수 구한다.
      *
      * @param pages 양쪽 페이지의 번호
-     * @return 본인의 점수
+     * @return 본인의 점수중 가장 높은 점수를 반환한다.
      */
     private static int getScore(List<Integer> pages) {
         int score = 0;

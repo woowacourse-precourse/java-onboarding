@@ -19,10 +19,10 @@ public class Problem4 {
     }
 
     /**
-     * 문자를 청개구리 문자로 변환
+     * 문자를 청개구리 문자로 변환한다.
      *
      * @param str 문자
-     * @return 청개구리 문자
+     * @return 청개구리 문자를 반환한다.
      */
     private static String frogConverter(String str) {
         String result = "";
@@ -32,20 +32,20 @@ public class Problem4 {
     }
 
     /**
-     * 배열을 문자열로 변환
+     * 배열을 문자로 변환한다.
      *
      * @param array 변환할 문자열 배열
-     * @return 변환된 문자열
+     * @return 변환된 문자를 반환한다.
      */
     private static String toString(String[] array) {
         return String.join("", array);
     }
 
     /**
-     * 대소문자 판별기
+     * 대소문자를 판별한다.
      *
      * @param c 문자
-     * @return 대소문자 판별 결과
+     * @return 대소문자 판별시 ture 이면 'A'를 반환하고 false 이면 'a'를 반환한다.
      */
     private static char isUpperCase(char c) {
         if (c <= 'Z') {
@@ -55,10 +55,10 @@ public class Problem4 {
     }
 
     /**
-     * 문자가 뛰어쓰기 인지 아닌지 판별
+     * 문자가 뛰어쓰기 인지 아닌지 판별한다.
      *
      * @param str 문자
-     * @return 뛰어쓰기의 유무
+     * @return 뛰어쓰기가 존재하면 ture 를 반환한다.
      */
     private static boolean hasSpace(String str) {
         return str.equals(" ");

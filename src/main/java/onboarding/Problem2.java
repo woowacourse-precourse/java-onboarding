@@ -21,11 +21,11 @@ public class Problem2 {
     }
 
     /**
-     * 연속된 중복 character 제거
+     * 연속된 중복 character 제거한다.
      *
-     * @param stack character 가 담긴 stack
+     * @param stack character 가 담긴 오브젝트
      * @param str   character
-     * @return 연속된 중복 문자가 제거된 stack
+     * @return 연속된 중복 문자가 제거된 오브젝트를 반환한다.
      */
     private static Stack<String> removeContinueDuplicateCharacters(Stack<String> stack, String str) {
         if (stack.isEmpty()) {
@@ -38,10 +38,10 @@ public class Problem2 {
     }
 
     /**
-     * stack 을 String 으로 변환
+     * String 으로 변환
      *
-     * @param stack character 가 담긴 stack
-     * @return String
+     * @param stack character 가 담긴 오브젝트
+     * @return 문자열을 반환한다.
      */
     private static String toString(Stack<String> stack) {
         if (stack.isEmpty()) {
