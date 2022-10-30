@@ -10,12 +10,14 @@ public class Problem2 {
 
 
     public static String solution(String cryptogram) {
-        List<String> splitString = Arrays.stream(cryptogram.split("")).collect(Collectors.toList());
-
+        List<String> splitString = getSplitStrings(cryptogram);
         List<Integer> indexOfDuplicateWords = getIndexOfDuplicateWords(splitString);
         removeDuplicateWords(splitString, indexOfDuplicateWords);
-
         return String.join("", splitString);
+    }
+
+    private static List<String> getSplitStrings(String cryptogram) {
+        return Arrays.stream(cryptogram.split("")).collect(Collectors.toList());
     }
 
     private static List<Integer> getIndexOfDuplicateWords(List<String> splitString) {
