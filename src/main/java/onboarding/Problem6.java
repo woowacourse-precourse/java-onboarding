@@ -62,6 +62,26 @@ public class Problem6 {
     }
 
     public static void sortAlertEmailList(List<String> alertEmailList) {
-        Collections.sort(alertEmailList);
+        alertEmailList.sort(new Comparator<String>() {
+            @Override
+            public int compare(String email1, String email2) {
+                String str1 = getEmailString(email1);
+                String str2 = getEmailString(email2);
+                int minimumLength = Math.min(str1.length(), str2.length());
+                int idx = 0;
+                while(idx < minimumLength && str1.charAt(idx) == str2.charAt(idx)) {
+                    idx++;
+                }
+                if(idx == minimumLength) {
+                    // 만약 "wone"와 "wone123"이 있을 때 "wone"을 먼저 출력한다.
+                    return str1.length() - str2.length();
+                }
+                return str1.charAt(idx) - str2.charAt(idx);
+            }
+        });
+    }
+
+    public static String getEmailString(String email) {
+        return email.substring(0, email.length() - 10);
     }
 }
