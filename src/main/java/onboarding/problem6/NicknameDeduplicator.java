@@ -6,6 +6,10 @@ public class NicknameDeduplicator {
     public final Map<String, Set<String>> DICTIONARY = new HashMap<>();
 
     public NicknameDeduplicator(List<List<String>> forms) {
+        initDictionary(forms);
+    }
+
+    private void initDictionary(List<List<String>> forms) {
         for (List<String> form : forms) {
             String email = form.get(0);
             String nickName = form.get(1);
