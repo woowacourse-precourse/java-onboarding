@@ -40,6 +40,24 @@ public class Problem2 {
         return n;
     }
 
+    /**
+     * 3.리스트 0번지와 마지막이 가지는 인덱스번호를 리턴하는 함수
+     */
+    public static int [] decoding(String cryptogram){
+        List<Integer> arr = array(cryptogram);
+        arr = split(arr);
+        
+        int [] overlapIndex = new int[2];
+        int size = arr.size();
+        if(size == 0){
+            return overlapIndex;
+        }
+
+        overlapIndex[0] = arr.get(0);
+        overlapIndex[1] = arr.get(size-1);
+        return overlapIndex;
+    }
+
     public static String solution(String cryptogram) {
         String answer = "answer";
         return answer;
