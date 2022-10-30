@@ -1,9 +1,12 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Problem6 {
@@ -12,7 +15,7 @@ public class Problem6 {
 		final List<Member> members = forms.stream()
 			.map(Member::of)
 			.collect(Collectors.toList());
-		return null;
+		return NicknameChecker.getEmailListOfCrewsContainingSameLetterInNicknameConsecutively(members);
 	}
 
 	public static class NicknameChecker {
@@ -28,6 +31,16 @@ public class Problem6 {
 				}
 			});
 			return memberMap;
+		}
+
+		public static List<String> getEmailListOfCrewsContainingSameLetterInNicknameConsecutively(
+			List<Member> members) {
+			return groupBySubstringInNickname(members).values().stream()
+				.filter(value -> value.size() > 1)
+				.flatMap(Collection::stream)
+				.map(Member::getEmail)
+				.sorted()
+				.collect(Collectors.toList());
 		}
 
 	}
