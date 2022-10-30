@@ -48,11 +48,9 @@ public class Problem6 {
         final int MIN_LENGTH = 11;
         final int MAX_LENGTH = 20;
         final String EMAIL_REGEX  = "^\\w+@email\\.com";
-        return (target)-> {
-            return Pattern.matches(EMAIL_REGEX, target)
-                    && (target.length() <= MAX_LENGTH
-                    && (MIN_LENGTH <= (target.length())));
-        };
+        return (target)-> Pattern.matches(EMAIL_REGEX, target)
+                && (target.length() <= MAX_LENGTH
+                && (MIN_LENGTH <= (target.length())));
     }   
 
     private static List<String> getListOfDuplicateNickname(List<List<String>> forms){
