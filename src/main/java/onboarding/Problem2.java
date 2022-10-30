@@ -22,6 +22,15 @@ public class Problem2 {
         for (int a = 0; a < cryptogramList.size() - 1; ) {
             char firstChar = cryptogramList.get(a);
             char nextChar = cryptogramList.get(a + 1);
+
+            if (isSame(firstChar, nextChar)) {
+                executeIfSame(a + 1);
+                count++;
+            }
+            if (!isSame(firstChar, nextChar)) {
+                executeIfDifferent(a);
+                a++;
+            }
         }
         return count;
     }
@@ -31,6 +40,18 @@ public class Problem2 {
             return true;
         }
         return false;
+    }
+
+    public static void executeIfSame(int num) {
+        removeDuplicates(num);
+        addState("remove");
+    }
+
+    public static void executeIfDifferent(int num) {
+        if (wasRemoved()) {
+            removeDuplicates(num);
+        }
+        addState("save");
     }
 
     public static void removeDuplicates(int num) {
