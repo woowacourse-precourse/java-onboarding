@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.List;
 
 public class Problem7 {
+    private static final int FRIEND_OF_FRIEND_SCORE = 10;
+    private static final int VISIT_SCORE = 1;
     private static HashMap<String, Integer> newFriendScore = new HashMap<>();
     private static HashSet<String> myFriends = new HashSet<>();
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -26,7 +28,7 @@ public class Problem7 {
     private static void findRelatedFriends(List<List<String>> friends) {
         for (List<String> friendInfo : friends) {
             String friendOfFriend = checkFriendOfFriend(friendInfo);
-            updateNewFriendScore(friendOfFriend);
+            updateNewFriendScore(friendOfFriend, FRIEND_OF_FRIEND_SCORE);
         }
     }
 
@@ -49,13 +51,13 @@ public class Problem7 {
         myFriends.add(friend);
     }
 
-    private static void updateNewFriendScore(String newFriend) {
+    private static void updateNewFriendScore(String newFriend, int scoreType) {
         if(newFriend == null) {
             return;
         }
-        int score = 0;
+        int score = scoreType;
         if(newFriendScore.containsKey(newFriend)) {
-            score = newFriendScore.get(newFriend)+1;
+            score += newFriendScore.get(newFriend);
             newFriendScore.put(newFriend, score);
             return;
         }
