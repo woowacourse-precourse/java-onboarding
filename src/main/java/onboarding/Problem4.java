@@ -7,19 +7,43 @@ public class Problem4 {
     public static String solution(String word) {
         String answer = "";
 
-        if (isWrongLength(answer)){
+        if (isWrongLength(word)){
             throw new IllegalArgumentException("1 이상 1000 이하의 길이를 가진 문자열이어야 합니다.");
+        }
+
+        for (int i=0; i<word.length(); i++){
+            char curChar = word.charAt(i);
+            answer += getFrogWord(curChar);
         }
 
         return answer;
     }
 
-    private static Boolean isUpperAlpha(char ch){
-        return (A_ASCII_VALUE <= ch && ch <= Z_ASCII_VALUE);
+    private static String getFrogWord(char curChar){
+        if (isUpperAlpha(curChar)){
+            return Character.toString(UPPER_ASCII_SUM - curChar);
+        }
 
+        if(isLowerAlpha(curChar)){
+            return Character.toString(LOWER_ASCII_SUM - curChar);
+        }
+
+        if (isNotAlphabet(curChar)){
+            return Character.toString(curChar);
+        }
+
+        return Character.toString(curChar);
     }
 
-    private static Boolean isLowerAlpha(char ch){
+    private static boolean isNotAlphabet(char ch){
+        return (!isUpperAlpha(ch) && !isLowerAlpha(ch));
+    }
+
+    private static boolean isUpperAlpha(char ch){
+        return (A_ASCII_VALUE <= ch && ch <= Z_ASCII_VALUE);
+    }
+
+    private static boolean isLowerAlpha(char ch){
         return (a_ASCII_VALUE <= ch && ch <= z_ASCII_VALUE);
     }
 
