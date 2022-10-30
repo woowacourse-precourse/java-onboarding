@@ -1,9 +1,11 @@
 package onboarding;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Problem6 {
 
@@ -35,25 +37,25 @@ public class Problem6 {
         List<String> answer = new ArrayList<>();
         AtomicInteger atomic = new AtomicInteger(1);
 
-        emailToSplitNicknames.entrySet().stream()
-                .forEach(emailToSplitNickname -> addSimilarNicknameCrewEmails(forms, answer, atomic, emailToSplitNickname));
-
+        for (Map.Entry<String, List<String>> emailToSplitNickname : emailToSplitNicknames.entrySet()) {
+            for (int i = atomic.getAndIncrement(); i < forms.size(); i++) {
+                addSimilarNicknameCrewEmails(forms, answer, emailToSplitNickname, i);
+            }
+        }
         return removeDuplicateAndSort(answer);
     }
 
 
     private static void addSimilarNicknameCrewEmails(List<List<String>> forms,
                                                      List<String> answer,
-                                                     AtomicInteger atomic,
-                                                     Map.Entry<String, List<String>> emailToSplitNickname) {
-        IntStream.range(atomic.getAndIncrement(), forms.size())
-                .filter(idx -> emailToSplitNickname.getValue().stream()
-                        .anyMatch(splitNickname -> forms.get(idx).get(NICKNAME).contains(splitNickname))
-                )
-                .forEach(idx -> {
-                    answer.add(forms.get(idx).get(EMAIL));
-                    answer.add(emailToSplitNickname.getKey());
-                });
+                                                     Map.Entry<String, List<String>> emailToSplitNickname,
+                                                     int idx) {
+        for (String nicknameSplit : emailToSplitNickname.getValue()) {
+            if (forms.get(idx).get(NICKNAME).contains(nicknameSplit)) {
+                answer.add(forms.get(idx).get(EMAIL));
+                answer.add(emailToSplitNickname.getKey());
+            }
+        }
     }
 
     private static List<String> removeDuplicateAndSort(List<String> answer) {
@@ -62,7 +64,5 @@ public class Problem6 {
                 .sorted()
                 .collect(Collectors.toList());
     }
-
-
 
 }
