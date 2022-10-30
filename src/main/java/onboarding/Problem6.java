@@ -6,10 +6,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = new ArrayList<>();
         Map<String, String> crewInfo = new HashMap<>();
         Map<String, Integer> duplicatedNicknameCandidate = new HashMap<>();
         Set<String> duplicatedNicknameSet = new HashSet<>();
@@ -25,6 +25,11 @@ public class Problem6 {
                 duplicatedNicknameSet.add(nickname);
             }
         }
+
+        List<String> answer = duplicatedNicknameSet.stream()
+                                                   .map(crewInfo::get)
+                                                   .sorted()
+                                                   .collect(Collectors.toList());
 
         return answer;
     }
