@@ -3,6 +3,7 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 public class Problem3 {
 
@@ -21,22 +22,22 @@ public class Problem3 {
     }
 
     static int count369ByNumber(int number) {
-        ArrayList<String> arrayListOfNumber = convertNumberToArrayList(number);
+        List<String> arrayListOfNumber = convertNumberToArrayList(number);
         int count = countByArrayListOfNumber(arrayListOfNumber);
         return count;
     }
 
-    static int countByArrayListOfNumber(ArrayList<String> arrayListOfNumber) {
+    static int countByArrayListOfNumber(List<String> listOfNumber) {
         int count = 0;
-        count += Collections.frequency(arrayListOfNumber, "3");
-        count += Collections.frequency(arrayListOfNumber, "6");
-        count += Collections.frequency(arrayListOfNumber, "9");
+        count += Collections.frequency(listOfNumber, "3");
+        count += Collections.frequency(listOfNumber, "6");
+        count += Collections.frequency(listOfNumber, "9");
         return count;
     }
 
-    static ArrayList<String> convertNumberToArrayList(int number) {
+    static List<String> convertNumberToArrayList(int number) {
         String stringOfNumber = Integer.toString(number);
-        ArrayList<String> arrayListOfStringNumber = new ArrayList<>(
+        List<String> arrayListOfStringNumber = new ArrayList<>(
             Arrays.asList(stringOfNumber.split("")));
         return arrayListOfStringNumber;
     }
