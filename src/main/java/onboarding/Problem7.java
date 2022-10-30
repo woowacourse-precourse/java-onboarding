@@ -7,7 +7,17 @@ public class Problem7 {
     private static final Map<String, Integer> recommendScore = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        return Collections.emptyList();
+        Map<String, List<String>> friendsList = makeFriendsList(friends);
+        List<String> userFriends = friendsList.get(user);
+
+        for (String userFriend : userFriends) {
+            List<String> friendsOfUserFriend = friendsList.get(userFriend);
+            addScore(friendsOfUserFriend, 10);
+        }
+
+        addScore(visitors, 1);
+        deleteInvalidFriends(user, userFriends);
+        return sortByValue(recommendScore);
     }
 
     private static void addFriend(List<String> friend, Map<String, List<String>> friendsList) {
