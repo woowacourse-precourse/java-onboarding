@@ -40,7 +40,24 @@ public class Problem7 {
      * @return 친구 관계 정보로 만들어진 친구 관계 맵
      */
     private static Map<String , Set<String>> getFriendsMap(List<List<String>> friends){
-
+        Map<String, Set<String>> result = new HashMap<>();
+        for(List<String> friend : friends){
+            // 0번 인덱스에 저장된 유저의 친구관계를 저장
+            if (result.containsKey(friend.get(0))){
+                result.get(friend.get(0)).add(friend.get(1));
+            } else {
+                // key에 처음 접근하는 경우 새로운 Set을 할당해줌
+                result.put(friend.get(0), new HashSet<>(List.of(friend.get(1))));
+            }
+            // 1번 인덱스에 저장된 유저의 친구관계를 저장
+            if (result.containsKey(friend.get(1))){
+                result.get(friend.get(1)).add(friend.get(0));
+            } else {
+                // key에 처음 접근하는 경우 새로운 Set을 할당해줌
+                result.put(friend.get(1), new HashSet<>(List.of(friend.get(0))));
+            }
+        }
+        return result;
     }
 
     /**
