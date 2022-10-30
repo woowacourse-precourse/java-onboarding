@@ -22,6 +22,17 @@ public class Problem7 {
             tmp.add(friend.get(0));
             friendsList.put(friend.get(1),tmp);
         }
+        Map<String,Integer> scroeList = new HashMap<>();
+        for (String name : friendsList.keySet()) {
+            if(friendsList.get(name).contains(user))
+            {
+                for (String f : friendsList.get(name)) {
+                    if(f.equals(user)) continue;
+                    int score = scroeList.getOrDefault(f, 0);
+                    scroeList.put(f,score+10);
+                }
+            }
+        }
 
 
 
