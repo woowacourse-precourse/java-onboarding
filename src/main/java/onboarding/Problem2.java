@@ -6,7 +6,7 @@ public class Problem2 {
     public static StringBuilder deleteCrypt = new StringBuilder("");
 
     public static void chkDeleteCrypt(int cryptFirst) {
-        if(deleteCrypt.charAt(deleteCrypt.length() - 1) == cryptFirst) {
+        if (deleteCrypt.charAt(deleteCrypt.length() - 1) == cryptFirst) {
             deleteCrypt.delete(deleteCrypt.length() - 1, deleteCrypt.length());
         }
     }
@@ -26,7 +26,7 @@ public class Problem2 {
         }
         deleteCrypt.delete(0,deleteCrypt.length());
         deleteCrypt.append(crypt.charAt(0));
-        for (int i = 0; i < crypt.length() - 1; i++){
+        for (int i = 0; i < crypt.length() - 1; i++) {
             deleteChar(crypt.charAt(i),crypt.charAt(i + 1));
         }
 
