@@ -1,9 +1,6 @@
 package onboarding.problem7.domain;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class ScoreBoard {
 
@@ -14,7 +11,7 @@ public class ScoreBoard {
 
     public ScoreBoard(String user, Map<String, Set<String>> friendList, List<String> visitors) {
         this.scoreBoard = new HashMap<>();
-        Set<String> userFriendList = friendList.get(user);
+        Set<String> userFriendList = friendList.getOrDefault(user, new HashSet<>());
         checkUserFriend(userFriendList, friendList);
         checkVisitor(visitors);
         removeAlreadyUserFriend(userFriendList);
@@ -29,7 +26,7 @@ public class ScoreBoard {
     }
 
     private static int countFriendTogether(Map<String, Set<String>> friendList, Set<String> userFriendList, String friendId) {
-        return Long.valueOf(friendList.get(friendId).stream()
+        return Long.valueOf(friendList.getOrDefault(friendId, new HashSet<>()).stream()
                 .filter(userFriendList::contains)
                 .count()).intValue();
     }
