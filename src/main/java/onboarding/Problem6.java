@@ -1,8 +1,10 @@
 package onboarding;
 
 import java.util.List;
+import java.util.HashSet;
 
 public class Problem6 {
+    static HashSet<String> twoWordPartOfNickname = new HashSet<>();
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
@@ -40,5 +42,15 @@ public class Problem6 {
         isRight &= isRightEmailDomain(emailDomain);
         isRight &= isRightNicknameLength(nickname);
         return isRight;
+    }
+
+    private static void createTwoWordPartOfNickname (String nickname) {
+        if (nickname.length() < 2) {
+            return;
+        }
+        for (int i = 0 ; i < nickname.length() - 1; i++) {
+            String twoWord = nickname.substring(i, i+2);
+            twoWordPartOfNickname.add(twoWord);
+        }
     }
 }
