@@ -16,8 +16,8 @@ class Problem1 {
             List<Integer> pobiPageDigit = getEachDigit(pobi.get(i));
             List<Integer> crongPageDigit = getEachDigit(crong.get(i));
 
-            pobiMax = Math.max(pobiMax, Math.max(getAdditionTotal(pobiPageDigit), getMultiplicationTotal(pobiPageDigit)));
-            crongMax = Math.max(crongMax, Math.max(getAdditionTotal(crongPageDigit), getMultiplicationTotal(crongPageDigit)));
+            pobiMax = getMaximumValue(pobiPageDigit);
+            crongMax = getMaximumValue(crongPageDigit);
         }
 
         if(pobiMax > crongMax) return 1;
@@ -54,6 +54,12 @@ class Problem1 {
             }
         }
         return answer;
+    }
+    // 합과 곱 중 최댓값을 구한다.
+    public static int getMaximumValue(List<Integer> pageDigit) {
+        int additionValue = getAdditionTotal(pageDigit);
+        int multiplicationValue = getMultiplicationTotal(pageDigit);
+        return Math.max(additionValue, multiplicationValue);
     }
 
     // 예외 처리 체크
