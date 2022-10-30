@@ -26,6 +26,7 @@ import java.util.List;
 public class Problem5 {
     static private List<Integer> unitsList = new ArrayList<>();
     public static List<Integer> solution(int money) {
+        makeUnitsList();
         List<Integer> answer = convertMoney(money);
         return answer;
     }

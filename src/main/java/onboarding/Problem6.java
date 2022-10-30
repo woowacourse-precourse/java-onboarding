@@ -44,7 +44,7 @@ import java.util.*;
 /**
  * 5. 결과값 구하는 함수
  * - 중복 제거 기능도 하는 배열 add 함수 -> 참조형 매개변수 개념 정리
- * - 배열 내 오름차순 정렬 함수
+ * - 배열 내 오름차순 정렬 함수 -> Collections.sort 사용
  */
 
 
@@ -52,7 +52,7 @@ import java.util.*;
 public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = gameStart(forms);
         return answer;
     }
 
@@ -71,7 +71,7 @@ public class Problem6 {
     private static boolean checkDomain(String inputEmail){
         if(findDomainLocation(inputEmail) == -1)
             return false;
-        if(inputEmail.substring(findDomainLocation(inputEmail + 1)).equals("email.com"))
+        if(inputEmail.substring(findDomainLocation(inputEmail)).equals("@email.com"))
             return true;
         return false;
     }
@@ -118,31 +118,33 @@ public class Problem6 {
         return false;
     }
 
-    public static void main(String[] args) {
-        List<List<String>> test = new ArrayList<>();
-        List<String> test_in1 = new ArrayList<>();
-        test_in1.add("jm@email.com");
-        test_in1.add("제이엠");
-        List<String> test_in2 = new ArrayList<>();
-        test_in2.add("jason@email.com");
-        test_in2.add("제이슨");
-        List<String> test_in3 = new ArrayList<>();
-        test_in3.add("woniee@email.com");
-        test_in3.add("워니");
-        List<String> test_in4 = new ArrayList<>();
-        test_in4.add("mj@email.com");
-        test_in4.add("엠제이");
-        List<String> test_in5 = new ArrayList<>();
-        test_in5.add("nowm@email.com");
-        test_in5.add("이제엠");
-        test.add(test_in1);
-        test.add(test_in2);
-        test.add(test_in3);
-        test.add(test_in4);
-        test.add(test_in5);
-        System.out.println(test);
-        System.out.println(gameStart(test));
-    }
+//    public static void main(String[] args) {
+//        List<List<String>> test = new ArrayList<>();
+//        List<String> test_in1 = new ArrayList<>();
+//        test_in1.add("jm@email.com");
+//        test_in1.add("제이엠");
+//        List<String> test_in2 = new ArrayList<>();
+//        test_in2.add("jason@email.com");
+//        test_in2.add("제이슨");
+//        List<String> test_in3 = new ArrayList<>();
+//        test_in3.add("woniee@email.com");
+//        test_in3.add("워니");
+//        List<String> test_in4 = new ArrayList<>();
+//        test_in4.add("mj@email.com");
+//        test_in4.add("엠제이");
+//        List<String> test_in5 = new ArrayList<>();
+//        test_in5.add("nowm@email.com");
+//        test_in5.add("이제엠");
+//        test.add(test_in1);
+//        test.add(test_in2);
+//        test.add(test_in3);
+//        test.add(test_in4);
+//        test.add(test_in5);
+//        System.out.println(test);
+//        System.out.println(gameStart(test));
+//
+//        System.out.println(checkDomain("jm@email.com"));
+//    }
 
     private static List<String> makeContinuousNickList(String inputNick){
         List<String> continuousNickList = new ArrayList<>();
@@ -174,9 +176,10 @@ public class Problem6 {
         result.add(inputEmail);
     }
 
-
     private static List<String> gameStart(List<List<String>> inputForms)
     {
+        if(!totalCheckInput(inputForms))
+            return Collections.emptyList();
         List<String> result = new ArrayList<>();
         for(int i = 0; i < inputForms.size(); i++) {
             for(int j = i + 1; j <inputForms.size(); j++){
@@ -188,6 +191,7 @@ public class Problem6 {
                 }
             }
         }
+        Collections.sort(result);
         return result;
     }
 }
