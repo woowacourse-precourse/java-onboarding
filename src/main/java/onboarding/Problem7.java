@@ -33,6 +33,41 @@ public class Problem7 {
                 f_map.put(visitor,f_map.getOrDefault(visitor,0)+1);
             }
 
+            for (String key:f_map.keySet()){
+                if(user_f_list.contains(key)) f_map.put(key,-100000);
+            }
+
+            List<Map.Entry<String, Integer>> entryList=new LinkedList<>(f_map.entrySet());
+            entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
+                @Override
+                public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                    if (o1.getValue()==o2.getValue()){
+                        for (int i=0;i<o1.getKey().length();i++){
+                            for (int j=0;j<o2.getKey().length();j++){
+                                if (o1.getKey().charAt(j)>o2.getKey().charAt(j)) return 1;
+                                else return -1;
+                            }
+                        }
+                    }
+                    return o2.getValue()-o1.getValue();
+                }
+            });
+
+            if (entryList.size()>=5){
+                for (int i=0;i<5;i++){
+                    if (entryList.get(i).getValue()>0){
+                        String r_friends = entryList.get(i).getKey();
+                        answer.add(r_friends);
+                    }
+                }
+            }else {
+                for (int i=0;i<entryList.size();i++){
+                    if (entryList.get(i).getValue()>0){
+                        String r_friends = entryList.get(i).getKey();
+                        answer.add(r_friends);
+                    }
+                }
+            }
         }
         return answer;
     }
@@ -92,7 +127,7 @@ public class Problem7 {
         visitors.add("bedi");
         visitors.add("shakevan");
 
-        solution(user,friends,visitors);
+        System.out.println(solution(user,friends,visitors));
     }
 
     private static <T>boolean validation(String err_type,T err_param){
