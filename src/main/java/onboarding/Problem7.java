@@ -15,16 +15,15 @@ public class Problem7 {
         HashMap<String, Integer> recommendFriendToPointMap = new HashMap<>();
         HashMap<String, List<String>> friendsMap = makeFriends(friends);
 
-        recommendFriendToPointMap=pointsToFriendToFriend(user, friendsMap, recommendFriendToPointMap);
+        recommendFriendToPointMap = pointsToFriendToFriend(user, friendsMap, recommendFriendToPointMap);
         recommendFriendToPointMap=pointsToVisitors(visitors, recommendFriendToPointMap);
 
         List<String> usersFriendsList = friendsMap.get(user);
-        recommendFriendToPointMap = removedUsersFriends(usersFriendsList, recommendFriendToPointMap);
+        recommendFriendToPointMap=removedUsersFriends(usersFriendsList, recommendFriendToPointMap);
 
         List<String> sortedRecommendList = sortByRestrictions(recommendFriendToPointMap);
 
-        List<String> answer = Collections.emptyList();
-        return answer;
+        return sortedRecommendList;
     }
 
     private static boolean isCorrectInputs(String user, List<List<String>> friends, List<String> visitors) {
