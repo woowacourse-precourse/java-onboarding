@@ -89,4 +89,11 @@ public class Problem6 {
         emailCheck = emailRemoveDuplicated(emails);
         return emailCheck;
     }
+
+    /**
+     * 닉네임에서 2자 뽑아내는 함수
+     */
+    private static String nicknamePickTwoLetter(String nickname,int nicknameIndex){
+        return nickname.substring(nicknameIndex,nicknameIndex+2);
+    }
 }
