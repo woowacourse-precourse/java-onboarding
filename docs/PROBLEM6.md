@@ -24,4 +24,4 @@
 
 ## 📒 개발 기능 목록
 ### 1. 닉네임별로 두 글자씩 묶어서 HashMap에 갯수 저장
-### 2. 두 글자씩 HashMap의 value가 2 이상이면 answer배열에 이메일 추가
+### 2. 두 글자씩 HashMap을 탐색해 value가 2 이상이면 answer배열에 이메일 추가
