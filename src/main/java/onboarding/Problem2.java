@@ -34,7 +34,11 @@ public class Problem2 {
      * @return 중복 문자 있으면 true / 없으면 false
      */
     private static boolean isDuplication(List<String> cryptogramList) {
-
+        for (int i = 0; i < cryptogramList.size() - 1; i++) {
+            if (cryptogramList.get(i).equals(cryptogramList.get(i + 1))) {
+                return true;
+            }
+        }
         return false;
     }
 
