@@ -410,5 +410,29 @@ class Problem3Test {
         int result = 0;
         assertThat(Problem3.solution(number)).isEqualTo(result);
     }
+} 
+~~~
+##3. 최종솔루션
+~~~java
+public static int solution(int number) {
+    int answer = 0;
+    try {
+        exception(number);
+        answer = count369(number);
+    }catch (RangeException e)
+    {
+        //문제에 예외를 어떻게 처리하라는 말이 없음
+        //log.error OR log.warn
+        //System.out.println(e.toString());
+    }
+    return answer;
 }
 ~~~
+---
+#4. 문제4
+##예상 필요 기능 정의
+1. 소문자 테이블
+2. 대문자 테이블
+3. 대문자 소문자 판단 메소드
+4. 치환 메소드
+5. exception 처리
