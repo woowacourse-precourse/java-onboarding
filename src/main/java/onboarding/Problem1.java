@@ -22,8 +22,10 @@ class Problem1 {
     private static int maxScoreOfCrong;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        if (!isCorrectPages(pobi) || !isCorrectPages(crong)) return EXCEPTION;
+        maxScoreOfPobi = getMaxOfPages(pobi);
+        maxScoreOfCrong = getMaxOfPages(crong);
+        return compareOfResult(maxScoreOfPobi, maxScoreOfCrong);
     }
 
     private static boolean isCorrectPages(List<Integer> pages) {
