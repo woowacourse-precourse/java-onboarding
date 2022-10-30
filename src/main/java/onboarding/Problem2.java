@@ -14,6 +14,10 @@ public class Problem2 {
         String deDuplicated = cryptogram;
 
         while (true) {
+            if (i == deDuplicated.length() - 1 || deDuplicated.length() == 0) {
+                break;
+            }
+
             if (deDuplicated.charAt(i) == deDuplicated.charAt(i + 1)) {
                 for (int j = i + 1; j <= deDuplicated.length() - 1; j++) {
                     if (deDuplicated.charAt(i) == deDuplicated.charAt(j)) {
@@ -34,6 +38,7 @@ public class Problem2 {
                 String right = deDuplicated.substring(rightStart, deDuplicated.length());
 
                 deDuplicated = left + right;
+                i = 0;
             }
 
             else i++;
