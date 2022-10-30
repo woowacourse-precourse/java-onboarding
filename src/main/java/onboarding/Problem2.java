@@ -3,6 +3,7 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
 
@@ -30,15 +31,15 @@ public class Problem2 {
     }
 
     static String removeDuplication(String cryptogram) {
-        ArrayList<String> inputArrayList = new ArrayList<>(Arrays.asList(cryptogram.split("")));
+        List<String> inputArrayList = new ArrayList<>(Arrays.asList(cryptogram.split("")));
         Set<Integer> duplicationIndexSet = getDuplicationIndexSet(inputArrayList);
-        ArrayList<String> outputArrayList = removeDuplicationBySet(inputArrayList,
+        List<String> outputArrayList = removeDuplicationBySet(inputArrayList,
             duplicationIndexSet);
         String answer = joinStringWithoutNull(outputArrayList);
         return answer;
     }
 
-    static Set<Integer> getDuplicationIndexSet(ArrayList<String> inputArrayList) {
+    static Set<Integer> getDuplicationIndexSet(List<String> inputArrayList) {
         Set<Integer> duplicationSet = new HashSet<>();
         for (int i = 0; i < inputArrayList.size() - 1; i++) {
             String pre = inputArrayList.get(i);
@@ -51,20 +52,20 @@ public class Problem2 {
         return duplicationSet;
     }
 
-    static ArrayList<String> removeDuplicationBySet(
-        ArrayList<String> arrayList,
+    static List<String> removeDuplicationBySet(
+        List<String> stringList,
         Set<Integer> duplicationSet
     ) {
-        for (int i = 0; i < arrayList.size(); i++) {
+        for (int i = 0; i < stringList.size(); i++) {
             if (duplicationSet.contains(i)) {
-                arrayList.remove(i);
-                arrayList.add(i, null);
+                stringList.remove(i);
+                stringList.add(i, null);
             }
         }
-        return arrayList;
+        return stringList;
     }
 
-    static String joinStringWithoutNull(ArrayList<String> arrayList) {
+    static String joinStringWithoutNull(List<String> arrayList) {
         String result = "";
         for (int i = 0; i < arrayList.size(); i++) {
             String str = arrayList.get(i);
