@@ -8,8 +8,12 @@ public class Problem5 {
         List<Integer> answer = Collections.emptyList();
         return answer;
     }
+
     private static int getNumberOfChange(int remainMoney, int moneyType) {
         return remainMoney / moneyType;
     }
 
+    private static void addNumberOfChange(List<Integer> changeResult, int remainMoney, int moneyType) {
+        changeResult.add(getNumberOfChange(remainMoney, moneyType));
+    }
 }
