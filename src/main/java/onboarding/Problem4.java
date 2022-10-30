@@ -16,7 +16,7 @@ public class Problem4 {
     public static List<Character> substitution(String word){
         List<Character> answer = new ArrayList<>();
         for(char c : word.toCharArray()) {
-            answer.add(mixer(c,Character.isUpperCase(c)));
+                answer.add(mixer(c, Character.isUpperCase(c)));
         }
         return answer;
     }
@@ -38,7 +38,12 @@ public class Problem4 {
             substitutionChar= upperCasesTable.charAt(index);
         }else{
             index = lowerCasesTable.length()-lowerCasesTable.lastIndexOf(alphabet) - 1 ;
-            substitutionChar= lowerCasesTable.charAt(index);
+            try{
+                substitutionChar= lowerCasesTable.charAt(index);
+            }catch (StringIndexOutOfBoundsException e)
+            {
+                substitutionChar = alphabet;
+            }
         }
         return substitutionChar;
     }

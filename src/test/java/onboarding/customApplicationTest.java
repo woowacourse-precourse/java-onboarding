@@ -98,8 +98,8 @@ public class customApplicationTest
     class Problem4Test {
         @Test
         void case1() {
-            char alphabet = 'a';
-            char result = 'z';
+            char alphabet = '0';
+            char result = '0';
             assertThat(Problem4.mixer(alphabet,false)).isEqualTo(result);
         }
         @Test

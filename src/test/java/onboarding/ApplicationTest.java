@@ -95,6 +95,12 @@ class ApplicationTest {
             List<Integer> result = List.of(0, 1, 1, 0, 0, 0, 0, 0, 0);
             assertThat(Problem5.solution(money)).isEqualTo(result);
         }
+        @Test
+        void case3() {
+            String word = "Svool, Dliow! 123";
+            String result = "Hello, World! 123";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
     }
 
     @Nested
