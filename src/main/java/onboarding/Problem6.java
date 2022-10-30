@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -141,7 +142,21 @@ public class Problem6 {
     }
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>();
+
+        if (checkParam(forms)) {
+            return Collections.emptyList();
+        }
+        initSolution(forms);
+        for (int i = 0; i < forms.size(); i++) {
+            makeTrieList(forms.get(i).get(1));
+        }
+        for (int i = 0; i < forms.size(); i++) {
+            if (checkTrieList(forms.get(i).get(1))) {
+                answer.add(forms.get(i).get(0));
+            }
+        }
+        Collections.sort(answer);
         return answer;
     }
 
