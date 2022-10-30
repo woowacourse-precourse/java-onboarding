@@ -9,10 +9,15 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         int bookFirstPage = 1;
         int bookLastPage = 400;
+        int checkConsecutivePages = 1;
 
         try {
             int[] pobisPageByPageResult = new int[2];
             int[] crongsPageByPageResult = new int[2];
+
+            if(pobi.get(1) - pobi.get(0) != checkConsecutivePages || crong.get(1) - crong.get(0) != checkConsecutivePages) {
+                return -1;
+            }
 
             for(int index = 0; index <2 ; index ++) {
                 if ( bookFirstPage <= pobi.get(index)  &&  pobi.get(index) <= bookLastPage ) {
@@ -60,10 +65,10 @@ class Problem1 {
 
     public static int calculationMyScore(ArrayList<Integer> whoesEachDigit) {
         int plusTotal = 0;
-        int multiplicationTotal = 0;
+        int multiplicationTotal = 1;
         for(int loopCount = 0; loopCount < whoesEachDigit.size(); loopCount++) {
             plusTotal += whoesEachDigit.get(loopCount);
-            multiplicationTotal += whoesEachDigit.get(loopCount);
+            multiplicationTotal *= whoesEachDigit.get(loopCount);
         }
         int pageResult = Math.max(plusTotal, multiplicationTotal);
 
