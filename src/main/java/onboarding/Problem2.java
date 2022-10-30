@@ -13,6 +13,17 @@ public class Problem2 {
         return answer;
     }
 
+    public static String decryption(String cryptogram) {
+        int checkSequence = checkSameAlphabet(cryptogram);
+        int tempSequence = checkSequence + 2;
+        if (checkSequence == -1) {
+            return cryptogram;
+        }
+        cryptogram = cryptogram.substring(0, checkSequence) + cryptogram.substring(tempSequence);
+
+        return decryption(cryptogram);
+    }
+
     public static int checkSameAlphabet(String cryptogram) {
         for (int i = 0; i < cryptogram.length(); i++) {
             if (i != cryptogram.length() - 1) {
