@@ -6,10 +6,11 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<String>();
 
-        Map<String, Set<String>> continuousThings = new HashMap<String, Set<String>>();
-        findContinuousStringInNickname(continuousThings, forms);
+        Map<String, List<String>> continuousThings = new HashMap<String, List<String>>();
+        Set<String> overlappingEmailList = new HashSet<>();
 
-        Set<String> overlappingEmailList = checkingWordUsingMoreThanTwoTimes(continuousThings);
+        findContinuousStringInNickname(continuousThings, forms, overlappingEmailList);
+
         sortList(answer, overlappingEmailList);
 
         return answer;
@@ -19,8 +20,8 @@ public class Problem6 {
      * Function for continuousString that contains all 2-length string in nickname of everyone
      * And Everyone is separated bt email
      * */
-    private static void findContinuousStringInNickname(Map<String, Set<String>> continuousThings,
-                                                   List<List<String>> forms) {
+    private static void findContinuousStringInNickname(Map<String, List<String>> continuousThings,
+                                                       List<List<String>> forms, Set<String> overlappingEmailList) {
         for (List<String> info : forms) {
             String nickname = info.get(1);
             String email = info.get(0);
@@ -29,9 +30,14 @@ public class Problem6 {
                 String nameForCheck = nickname.substring(j,j+2);
 
                 if (!continuousThings.containsKey(nameForCheck)) {
-                    continuousThings.put(nameForCheck, new HashSet<String>());
+                    continuousThings.put(nameForCheck, new ArrayList<>());
+                    continuousThings.get(nameForCheck).add(email);
+                } else {
+                    if (!continuousThings.get(nameForCheck).contains(email)) {
+                        overlappingEmailList.add(email);
+                        overlappingEmailList.add(continuousThings.get(nameForCheck).get(0));
+                    }
                 }
-                continuousThings.get(nameForCheck).add(email);
             }
         }
     }
