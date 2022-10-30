@@ -12,7 +12,7 @@ class Info implements Comparable<Info>{
 		this.score = score;
 	}
 	@Override
-	public int compareTo(Info o){
+	public int compareTo(Info o){ //문자열의 정렬 설정!! 
 		if(o.score == this.score) {
 			if(this.name.compareTo(o.name)>0) {
 				return 1;
