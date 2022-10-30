@@ -55,6 +55,10 @@ public class Problem7Input implements ProblemInput {
         }
     }
 
+    public User user() {
+        return user;
+    }
+
     @Override
     public boolean hasError() {
         return false;
