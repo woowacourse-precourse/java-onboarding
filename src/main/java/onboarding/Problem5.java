@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -12,9 +14,23 @@ public class Problem5 {
         }
         return false;
     }
+
+    // 2. 큰 금액부터 순서대로 값을 구하는 함수 만들기.
+    public static List<Integer> getMoeny(Integer money){
+        List<Integer> money_list = new ArrayList<>();
+        List<Integer> moneys = new ArrayList<>(Arrays.asList(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1));
+
+        for(int i = 0; i< moneys.size(); i++){
+            if(money / moneys.get(i) >= 1){
+                money_list.add(i, money / moneys.get(i));
+                money /= moneys.get(i);
+            }
+        }
+        return money_list;
+    }
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
-        // 2. 큰 금액부터 순서대로 값을 구하는 함수 만들기.
+
         return answer;
     }
 }
