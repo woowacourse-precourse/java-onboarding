@@ -15,6 +15,7 @@ public class Problem5 {
         List<Integer> answer = Collections.emptyList();
 
         answer = setOneUnits(money);
+        answer = setFiveUnits(answer);
         return answer;
     }
     static List<Integer> setOneUnits(int money){
@@ -25,6 +26,14 @@ public class Problem5 {
             money/=10;
         }
         Collections.reverse(oneUnits);
+        return oneUnits;
+    }
+
+    static List<Integer> setFiveUnits(List<Integer> oneUnits) {
+        for(int i=0; i<oneUnits.size()-1; i=i+2){
+            oneUnits.add(i,oneUnits.get(i)/5);
+            oneUnits.set(i+1,oneUnits.get(i+1)%5);
+        }
         return oneUnits;
     }
 }
