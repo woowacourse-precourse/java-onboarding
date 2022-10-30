@@ -31,6 +31,11 @@ class usersInformation extends scoreConstant{
     public static List<String> getVisitors() {
         return visitors;
     }
+    public static void setUsersInformation(String user,List<List<String>> friends,List<String> visitors){
+        setUser(user);
+        setFriends(friends);
+        setVisitors(visitors);
+    }
 }
 class handleFriendsInformation extends usersInformation{
     private static List<String> usersFriends;
