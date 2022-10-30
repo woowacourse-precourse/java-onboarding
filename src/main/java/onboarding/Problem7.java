@@ -21,6 +21,9 @@ class Friend {
     public void setScore(int score){
         this.score = score;
     }
+    public void updateScore(int addScore) {
+        this.score += addScore;
+    }
 }
 
 public class Problem7 {
