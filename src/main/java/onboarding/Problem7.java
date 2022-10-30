@@ -8,14 +8,19 @@ public class Problem7 {
         exceptUser.add(user);
 
         for(int i=0;i<friends.size();i++){
-            String friendsTarget = friends.get(i).get(1);
-            String exceptTarget = friends.get(i).get(0);
+            String friendsTargetFirst = friends.get(i).get(0);
+            String friendsTargetSecond = friends.get(i).get(1);
 
-            if(user == friendsTarget) exceptUser.add(exceptTarget);
+            String exceptTargetFirst = friends.get(i).get(0);
+            String exceptTargetSecond = friends.get(i).get(1);
+
+            if(user == friendsTargetFirst) exceptUser.add(exceptTargetSecond);
+            if(user == friendsTargetSecond) exceptUser.add(exceptTargetFirst);
+
         }
-
         return exceptUser;
     }
+
     public static List<String> changeList(List<List<String>> friends){// 일차원 리스트로 변형.
         List<String> friendsList = new ArrayList<>();
 
@@ -25,7 +30,6 @@ public class Problem7 {
             friendsList.add(leftFriend);
             friendsList.add(rightFriend);
         }
-
         return friendsList;
     }
 
@@ -55,34 +59,53 @@ public class Problem7 {
         return userPoint;
     }
 
-    public static HashMap<String,Integer> removeExceptUser(String exceptUser,HashMap<String,Integer> userPoint){
+    public static HashMap<String,Integer> removeExceptUser(String exceptUser,HashMap<String,Integer> userPoint){ //유저의 친구인 경우 점수 반영 x
 
         for(int i =0;i< userPoint.size();i++){
             if(userPoint.containsKey(exceptUser)) userPoint.remove(exceptUser);
         }
-
         return userPoint;
     }
 
-    public static HashMap<String,Integer> sortUserPoint (HashMap<String,Integer> userPoint){
+    public static List<String> sortUserPoint (HashMap<String,Integer> userPoint, List<String> answer){ // 점수가 같을경우 이름차순으로 정렬하기 위해 수정.
 
-        List<Map.Entry<String,Integer>> entryList = new ArrayList<>();
-        Collections.sort(entryList, new Comparator<Map.Entry<String, Integer>>() {
+        List<String> KeySet = new ArrayList<>(userPoint.keySet());
+        HashMap<String,Integer> organizedUserPoint = new HashMap<>();
+
+        List<Map.Entry<String,Integer>> entryList = new ArrayList<>(userPoint.entrySet());
+
+        Collections.sort(entryList, new Comparator <Map.Entry<String, Integer>>() {
             @Override
             public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
-                return o1.getValue().compareTo(o2.getValue());
+                return o1.getKey().compareTo(o2.getKey());
             }
         });
 
-        return userPoint;
-    }
-    public static List<String> getRanking(List<String> answer, HashMap<String,Integer> userPoint){
+        Collections.sort(entryList, new Comparator <Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o2.getValue().compareTo(o1.getValue());
+            }
+        });
 
-        for(String name : userPoint.keySet()) answer.add(name);
+        for(Map.Entry<String,Integer> A : entryList) answer.add(A.getKey());
 
+        //System.out.println(answer);
 
         return answer;
     }
+
+    public static List<String> limitFifthUser(List<String> answer){ // 리스트 크기 5까지 짜르기 수정.
+
+        if(answer.size() >4) {
+            for(int i =5;i<answer.size();i++){
+                answer.remove(i);
+            }
+        }
+
+        return answer;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
         List<String> exceptUser = new ArrayList<>();
@@ -94,8 +117,10 @@ public class Problem7 {
         userPoint = countUserFriends(friendsList);
         userPoint = countUserVisit(userPoint,visitors);
         for(int i =0;i<exceptUser.size();i++)   userPoint = removeExceptUser(exceptUser.get(i),userPoint);
-        userPoint = sortUserPoint(userPoint);
-        getRanking(answer, userPoint);
+        answer = sortUserPoint(userPoint, answer);
+        answer = limitFifthUser(answer);
+
+        //System.out.println(answer);
 
         return answer;
     }
