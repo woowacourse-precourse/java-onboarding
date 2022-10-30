@@ -14,10 +14,9 @@ public class Problem7 {
     }
 
     private static List<String> getRecomendedFriends(String user, List<List<String>> friends, List<String> visitors){
-        oldFriend.add(user);
         friendData=friends;
         List<String> olderFriends = getFriendOfUser(user);
-        classifyOlderFriend(olderFriends);
+        classifyOlderFriend(user,olderFriends);
         increaseFriendWeightByOldFriends(olderFriends);
         increaseFriendWeightByVisted(visitors);
         return getMostSuitableFriend(5);
@@ -34,7 +33,8 @@ public class Problem7 {
         return friendList;
     }
 
-    private static void classifyOlderFriend(List<String> oldfriends){
+    private static void classifyOlderFriend(String user, List<String> oldfriends){
+        oldFriend.add(user);
         oldfriends.stream().forEach(a->oldFriend.add(a));
     }
 
