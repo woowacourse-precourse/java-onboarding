@@ -4,8 +4,16 @@ import java.util.Arrays;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        StringBuilder result = new StringBuilder();
+
+        for(int i = 0; i < word.length(); i++) {
+            char before = word.charAt(i);
+            String after = changeWord(before);
+
+            result.append(after);
+        }
+
+        return result.toString();
     }
 
     // 청개구리 사전에 맞게 문자를 반대로 변환하는 함수
