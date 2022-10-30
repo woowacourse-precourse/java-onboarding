@@ -2,6 +2,12 @@ package onboarding;
 
 import java.util.*;
 
+/* 기능 목록
+ *
+ * countPiece : form 전체에서 연속한 글자의 등장 횟수를 셈
+ * getInvalidEmail : 닉네임에서 연속한 글자가 같은 교육생의 이메일 리스트를 반환
+ * hasSamePiece : 닉네임의 연속한 글자가 여러 번 등장하는지 확인
+ */
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         Map<String, Integer> pieceNum = countPiece(forms);
