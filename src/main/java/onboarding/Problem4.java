@@ -1,11 +1,15 @@
 package onboarding;
 
 public class Problem4 {
+    private static final char UPPER_CASE = 'A';
+    private static final char LOWER_CASE = 'a';
+    private static final int ALPHABET_RANGE = 'Z' - 'A';
+
     public static String solution(String word) {
         String answer = "";
         String[] characters = word.split("");
         for (int i = 0; i < characters.length; i++) {
-            if (isSpace(characters[i])) {
+            if (hasSpace(characters[i])) {
                 continue;
             }
             characters[i] = frogConverter(characters[i]);
@@ -22,20 +26,16 @@ public class Problem4 {
      */
     private static String frogConverter(String str) {
         String result = "";
-        int range = 'Z' - 'A';
         char character = str.charAt(0);
-        if (isUpperCase(character)) {
-            result = String.valueOf((char) (character + (range - ((character - 'A') * 2))));
-        } else {
-            result = String.valueOf((char) (character + (range - ((character - 'a') * 2))));
-        }
+        result = String.valueOf((char) (character + (ALPHABET_RANGE - ((character - isUpperCase(character)) * 2))));
         return result;
     }
 
     /**
      * 배열을 문자열로 변환
+     *
      * @param array 변환할 문자열 배열
-     * @return  변환된 문자열
+     * @return 변환된 문자열
      */
     private static String toString(String[] array) {
         return String.join("", array);
@@ -47,17 +47,20 @@ public class Problem4 {
      * @param c 문자
      * @return 대소문자 판별 결과
      */
-    private static boolean isUpperCase(char c) {
-        return c <= 'Z';
+    private static char isUpperCase(char c) {
+        if (c <= 'Z') {
+            return UPPER_CASE;
+        }
+        return LOWER_CASE;
     }
 
     /**
-     * 뛰어쓰기 인지 아닌지 판별
+     * 문자가 뛰어쓰기 인지 아닌지 판별
      *
      * @param str 문자
      * @return 뛰어쓰기의 유무
      */
-    private static boolean isSpace(String str) {
+    private static boolean hasSpace(String str) {
         return str.equals(" ");
     }
 }
