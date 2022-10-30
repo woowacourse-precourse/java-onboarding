@@ -61,12 +61,13 @@ public class Problem7 {
 		for (int j = 0; j < 2; j++) {
 			String friendName = friendsList.get(j);
 			String pairName = getPairName(friendsList, j);
-
 			addUpPointsByFriendsLogic(user, friends, countingMap, notToCountName, i, friendName, pairName);
 		}
+
 	}
 
 	private static void addUpPointsByFriendsLogic(String user, List<List<String>> friends, LinkedHashMap<String, Integer> countingMap, List<String> notToCountName, int i, String friendName, String pairName) {
+
 		for (int k = 0; k < friends.size(); k++) {
 
 			if (k != i) {
@@ -90,6 +91,7 @@ public class Problem7 {
 
 			}
 		}
+
 	}
 
 	private static void calculatePointsByVisitorsLogic(List<String> visitors, LinkedHashMap<String, Integer> countingMap, List<String> notToCountName) {
@@ -98,8 +100,8 @@ public class Problem7 {
 		for (String visitorsName : visitors) {
 
 			addUpPointsByVisitorsLogic(countingMap, notToCountName, visitorsName);
-
 		}
+
 	}
 
 	private static void addUpPointsByVisitorsLogic(LinkedHashMap<String, Integer> countingMap, List<String> notToCountName, String visitorsName) {
@@ -142,7 +144,6 @@ public class Problem7 {
 				.sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
 				.limit(limit)
 				.forEachOrdered(x -> reverseSortedMap.put(x.getKey(), x.getValue()));
-
 		return reverseSortedMap;
 	}
 
@@ -165,4 +166,5 @@ public class Problem7 {
 		answer = selectedList.stream().distinct().collect(Collectors.toList());
 		return answer;
 	}
+
 }
