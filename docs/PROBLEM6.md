@@ -21,3 +21,23 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능 목록
+- 이메일과 닉네임을 저장할 HashMap을 초기화하는 함수
+> HashMap(String, String) initDatabaseOfNickname()
+
+- 이메일과 닉네임의 중복 여부를 판단할 HashMap을 초기화하는 함수
+> HashMap(String, Integer) initDuplicationOfNickname()
+
+- 이메일과 닉네임을 HashMap에 추가하는 함수
+> void AddUsers(HashMap(String, String) databaseOfNickname, HashMap(String, Integer) duplicationOfNickname, List<String> user)
+> input: 이메일과 닉네임을 저장한 HashMap, 이메일과 닉네임의 중복 여부를 판단할 HashMap, user 정보를 담은 List
+
+- 이메일과 닉네임을 추가한 뒤 중복 여부를 판단하는 함수
+> boolean checkDuplicationOfNicknames(HashMap(String, String) databaseOfNickname, List<String> user)
+
+- 유저들 각각에 대해 중복 여부를 판단하는 함수
+> boolean checkDuplicationOfNickname(String, String)
+
+- 이메일과 닉네임의 중복이 있으면 이메일에 대한 중복 여부를 체크하는 함수
+> void checkDubplication(HashMap(String, String) databaseOfNickname, HashMap(String, Integer) duplicationOfNickname)
