@@ -2,6 +2,7 @@ package onboarding.problem7;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Stream;
 
 public class Account {
 
@@ -39,15 +40,15 @@ public class Account {
         return this.score == account.getScore();
     }
 
-    public int getNumberOfFriends() {
-        return friendsRelation.size();
-    }
-
     public String getId() {
         return this.id;
     }
 
     public int getScore() {
         return this.score;
+    }
+
+    public Stream<Account> getFriendRelationStream() {
+        return friendsRelation.stream();
     }
 }

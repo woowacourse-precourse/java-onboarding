@@ -31,15 +31,16 @@ public class FriendRecommendService {
     }
 
     private void initFriendsRelationScore() {
-        for (Account account : accountRepository.getAllAccountInfo()) {
-            calculateFriendsRelationScore(account);
-        }
+        accountRepository
+            .getAccountFriendStream(targetUser)
+            .forEach(this::calculateFriendsRelationScore);
     }
 
     private void calculateFriendsRelationScore(Account account) {
-        if (isAddFriendsRelationScoreTarget(account)) {
-            account.addScore(account.getNumberOfFriends() * FRIEND_RELATION_SCORE);
-        }
+        account
+            .getFriendRelationStream()
+            .filter(this::isAddFriendsRelationScoreTarget)
+            .forEach(abc -> abc.addScore(FRIEND_RELATION_SCORE));
     }
 
     private void initVisitorScore(List<String> visitors) {

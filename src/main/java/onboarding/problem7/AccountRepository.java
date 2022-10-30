@@ -7,6 +7,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Stream;
 
 public class AccountRepository {
 
@@ -27,6 +28,10 @@ public class AccountRepository {
             accountA.addFriend(accountB);
             accountB.addFriend(accountA);
         }
+    }
+
+    public Stream<Account> getAccountFriendStream(String user) {
+        return this.getAccount(user).getFriendRelationStream();
     }
 
     public Collection<Account> getAllAccountInfo() {
