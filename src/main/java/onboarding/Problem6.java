@@ -42,11 +42,9 @@ public class Problem6 {
 
     private static List<String> getResult() {
         Set<String> resultSet = new HashSet<>();
-        for (MapValue value : nickNameMap.values()) {
-            if (value.cnt > 1) {
-                resultSet.addAll(value.emailSet);
-            }
-        }
+        nickNameMap.values().stream()
+            .filter(value -> value.cnt > 1)
+            .forEach(value -> resultSet.addAll(value.emailSet));
         return resultSet.stream().sorted().collect(Collectors.toList());
     }
 
