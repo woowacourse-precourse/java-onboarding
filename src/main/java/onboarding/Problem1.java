@@ -29,13 +29,8 @@ class Problem1 {
     }
 
     private static boolean FindException(int page1, int page2){
-        if(page1<=1 || page1>=399){
-            return false;
-        }else if(page1!=page2-1){
-            return false;
-        }else{
-            return true;
-        }
+        boolean b = (page1<=1 || page1>=399 || page1!=page2-1) ? false : true;
+        return b;
     }
     private static int Score(int idx){
         int sum = 0;
