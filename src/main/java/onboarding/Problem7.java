@@ -43,4 +43,29 @@ public class Problem7 {
         }
     }
 
+    private static Map<String, Integer> createScoreMap(String user, List<List<String>> friends, List<String> visitors) {
+        Map<String, Integer> scoreMap = new HashMap<>();
+
+        for (List<String> friend : friends) {
+            for (String name : friend) {
+                if(!name.equals(user)){
+                    scoreMap.put(name,0);
+                }
+            }
+        }
+
+        for (String visitor : visitors) {
+            scoreMap.put(visitor,0);
+        }
+
+        return sortByKey(scoreMap);
+    }
+
+    private static LinkedHashMap<String, Integer> sortByKey(Map<String, Integer> scoreMap) {
+        return scoreMap.entrySet().stream()
+                .sorted(Map.Entry.comparingByKey())
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
+                        (e1, e2) -> e1, LinkedHashMap::new));
+    }
+
 }
