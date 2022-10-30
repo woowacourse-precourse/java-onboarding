@@ -19,13 +19,17 @@ public class Problem3 {
         int result = 0;
 
         while (number != 0) {
-            int clap = number % 10;
-            if (clap == CLAP_THREE || clap == CLAP_SIX || clap == CLAP_NINE) {
+            int digit = number % 10;
+            if (includeOneOf369(digit)) {
                 result += 1;
             }
             number /= 10;
         }
 
         return result;
+    }
+
+    private static boolean includeOneOf369(int digit) {
+        return digit == CLAP_THREE || digit == CLAP_SIX || digit == CLAP_NINE;
     }
 }
