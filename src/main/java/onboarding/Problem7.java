@@ -39,10 +39,13 @@ public class Problem7 {
 
         /* scores에 Friends 객체 추가 */
         for (String name : friendNames) {
-            problem.updateFriends(name);
+            problem.updateFriend(name);
         }
 
         // scoreCoFriend : friends를 순회하며 userFriend와 함께 아는 친구에 대해 score 10점 추가
+            // getDirectFriend : direct friend 구하는 메소드
+            // directFriend 순회하면서 10점씩 추가 -> updateScore
+
         // scoreVisitor : visitors를 순회하며 방문자의 score 1점씩 추가
         // scores를 점수 내림차순, 이름 오름차순으로 정렬
         // 상위 5명 선택
@@ -65,7 +68,7 @@ public class Problem7 {
         return listWithoutDuplicates;
     }
 
-    void updateFriends(String friendName) {
+    void updateFriend(String friendName) {
         Friend friend = new Friend();
         friend.setName(friendName);
         friend.setScore(0);
