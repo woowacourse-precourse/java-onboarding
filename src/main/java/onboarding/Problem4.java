@@ -8,13 +8,7 @@ import java.util.stream.Collectors;
 
 public class Problem4 {
 
-    public static void main(String[] args) throws Exception{
-        System.out.println(solution("I love you"));
-
-//        System.out.println(((int)"A") + 1);
-    }
-
-    public static String solution(String word) throws IOException {
+    public static String solution(String word) {
         String answer = "";
 
         Map<String, String> alphabetMap = conversionMapSet();
