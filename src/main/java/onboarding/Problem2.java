@@ -29,6 +29,10 @@ public class Problem2 {
         return String.join("", strArray);
     }
 
+    public static String removeSerialString(String str){
+        return str.replaceAll("={2,}", "");
+    }
+
     public static String solution(String cryptogram) {
         String answer = "answer";
         return answer;
