@@ -19,16 +19,22 @@ public class Problem7 {
         scoreMap = new HashMap<>();
 
         // 전체 사용자에 대한 친구 관계를 정의한다.
-        for(List<String> friendList : friends) {
-            defineFriendship(friendList);
+        for(List<String> relationship : friends) {
+            defineFriendship(relationship);
         }
-        
+
+
         return answer;
     }
 
-    private static void defineFriendship(List<String> friendList) {
-        String userA = friendList.get(0);
-        String userB = friendList.get(1);
+    /**
+     * 전체 사용자의 친구 목록을 친구 관계 Map에 저장한다.
+     *
+     * @param relationship 친구 관계 정보
+     */
+    private static void defineFriendship(List<String> relationship) {
+        String userA = relationship.get(0);
+        String userB = relationship.get(1);
 
         // 만약 처음 삽입된다면 초기화 작업을 진행해준다.
         List<String> friendListOfUserA = friendMap.getOrDefault(userA, new ArrayList<>());
