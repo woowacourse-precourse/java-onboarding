@@ -24,14 +24,17 @@ public class Problem3 {
     }
 
     public static void singlefigure(){
+
         numbercount[4]=divide[4]/3;
     }
 
     public static void doublefigure(){
-        numbercount[3]=3*divide[3]+threesixnine(divide[3])+divide[4]+1;
+        numbercount[3]=3*divide[3]+threesixnine(divide[3])*10+divide[4]+1;
     }
 
-
+    public static void triplefigure(){
+        numbercount[2]=60*divide[2]+threesixnine(divide[2])*100+divide[3]*10+divide[4]+1+numbercount[3];
+    }
 
     public static int solution(int number) {
         int answer = 0;
