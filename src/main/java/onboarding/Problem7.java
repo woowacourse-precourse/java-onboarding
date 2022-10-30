@@ -9,7 +9,6 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
-
         return answer;
     }
 
@@ -40,6 +39,19 @@ public class Problem7 {
                 }
                 else {
                     score.put(friendData.get(0), score.get(friendData.get(0)) + 10);
+                }
+            }
+        }
+    }
+
+    public static void getScoreInVisitors(String user, List<String> visitors) {
+        for (String visitor : visitors) {
+            if(visitor.equals(user) == false && friendList.contains(visitor) == false) {
+                if(score.containsKey(visitor) == false) {
+                    score.put(visitor, 1);
+                }
+                else {
+                    score.put(visitor, score.get(visitor) + 1);
                 }
             }
         }
