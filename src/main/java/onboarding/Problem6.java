@@ -14,6 +14,7 @@ public class Problem6 {
     private static Set<String> answer = new HashSet<>();
 
     public static List<String> solution(List<List<String>> forms) {
+        init();
 
         // 제한할 닉네임 목록 정리
         for (List<String> form : forms) {
@@ -56,5 +57,10 @@ public class Problem6 {
         }
 
         return retAnswer;
+    }
+
+    private static void init() {
+        limitedNicknameMap = new HashMap<>();
+        answer = new HashSet<>();
     }
 }
