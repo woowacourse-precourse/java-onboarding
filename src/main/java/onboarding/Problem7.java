@@ -38,9 +38,26 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
         HashMap<String, Integer> scores = new HashMap<>();
         List<String> alreadyFriends = findAlreadyFriends(user, friends);
-        System.out.println(alreadyFriends);
-
-
+        int friendCount = alreadyFriends.size();
+        int tempScore;
+        String temp;
+        //friends와 관련하여 각 user의 점수 구하기
+        int length = friends.size();
+        for (int i = 0; i < length ;i++){
+            for (int j = 0; j < friendCount; j++){
+                temp = checkAlreadyFriends(alreadyFriends.get(j), friends.get(i));
+                if(!temp.equals("") && !scores.containsKey(alreadyFriends.get(j))){
+                    scores.put(alreadyFriends.get(j), 10);
+                }
+                else if(!temp.equals("")){
+                    tempScore = scores.get(alreadyFriends.get(j));
+                    tempScore += 10;
+                    scores.put(alreadyFriends.get(j), tempScore);
+                }
+            }
+        }//함수로 빼는 방법 생각하기
+        
+        //System.out.println(scores);
         //HashMap scores = new HashMap<>();
         //Set<String> members = new Set<>();
         return answer;
