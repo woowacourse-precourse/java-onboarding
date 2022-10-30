@@ -11,6 +11,10 @@ public class Problem4Input implements ProblemInput {
         this.word = new Word(input);
     }
 
+    public Word word() {
+        return word;
+    }
+
     @Override
     public boolean hasError() {
         return false;
