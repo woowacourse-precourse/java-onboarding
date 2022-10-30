@@ -15,6 +15,7 @@ public class Problem4 {
     public static String solution(String word) {
         String answer = "";
         List<Character> letters = new ArrayList<>();
+        Word.validate(word);
         splitWord(word, letters);
         letters = replaceLetters(letters);
         answer = combineLetter(letters);
@@ -55,5 +56,21 @@ public class Problem4 {
             letters.add(aChar);
         }
         return letters;
+    }
+
+    private static class Word {
+        private static final int MIN_WORD_LENGTH = 1;
+        private static final int MAX_WORD_LENGTH = 1000;
+
+        public static void validate(String word) {
+            if (checkLengthOfWord(word)) {
+                throw new IllegalArgumentException(
+                    "The word's length should be greater than or equal to 1, and less than or equal to 1,000.");
+            }
+        }
+
+        private static boolean checkLengthOfWord(String word) {
+            return word.length() < MIN_WORD_LENGTH || word.length() > MAX_WORD_LENGTH;
+        }
     }
 }
