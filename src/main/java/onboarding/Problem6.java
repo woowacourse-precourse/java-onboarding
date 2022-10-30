@@ -16,4 +16,11 @@ public class Problem6 {
             .map(form -> form.get(0))
             .collect(Collectors.toList());
     }
+
+    // forms에서 nickname 리스트를 추출하는 기능
+    public static List<String> extractNicknameList(List<List<String>> forms) {
+        return forms.stream()
+            .map(form -> form.get(1))
+            .collect(Collectors.toList());
+    }
 }
