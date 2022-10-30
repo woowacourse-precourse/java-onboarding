@@ -16,6 +16,6 @@ public class Problem3Solver implements Solver<Problem3Input, Problem3Result> {
 		Number number = input.number();
 
 		int clapCount = counter.count(number);
-		return null;
+		return new Problem3Result(clapCount);
 	}
 }
