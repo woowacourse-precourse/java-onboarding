@@ -11,7 +11,7 @@ public class Problem4 {
     }
 
     private static boolean isUpper(char c){
-
+        return c>='A'&&c<='Z';
     }
 
     private static boolean isAlphabet(char c){
