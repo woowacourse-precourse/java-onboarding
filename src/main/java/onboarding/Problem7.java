@@ -29,6 +29,19 @@ public class Problem7 {
             }
         }
 
+        List<String> visitorsWithoutFriend = visitors.stream()
+                .filter(s -> !userObject.getFriends().contains(s))
+                .collect(Collectors.toList());
+
+        for (String visitor : visitorsWithoutFriend) {
+            if (userObject.getFriendRecommendScore().containsKey(visitor)) {
+                userObject.getFriendRecommendScore().put(visitor, userObject.getFriendRecommendScore().get(visitor) + 1);
+            }
+            if (!userObject.getFriendRecommendScore().containsKey(visitor)) {
+                userObject.getFriendRecommendScore().put(visitor, 1);
+            }
+        }
+
     }
 
     private static class User {
