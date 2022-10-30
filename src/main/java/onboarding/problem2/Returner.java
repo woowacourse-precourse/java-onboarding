@@ -1,12 +1,18 @@
 package onboarding.problem2;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 
 public class Returner {
 
-    public static Iterator<String> returnLinkedList(LinkedList<String> argument) {
+    //반환 기능
+    public static String returnLinkedList(LinkedList<String> encodeList) {
 
-        return (Iterator<String>) argument.iterator();
+        String decode = "";
+
+        for (String encode : encodeList) {
+            decode += encode;
+        }
+
+        return decode;
     }
 }
