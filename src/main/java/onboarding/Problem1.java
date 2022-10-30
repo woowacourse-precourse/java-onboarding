@@ -7,12 +7,12 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = -1;
 
-        if (isException(pobi.get(0), pobi.get(1)) || isException(crong.get(0), crong.get(1))) {
+        if (isException(pobi) || isException(crong)) {
             return answer;
         }
 
-        int pobiNumber = calculateMaxNumber(pobi.get(0), pobi.get(1));
-        int crongNumber = calculateMaxNumber(crong.get(0), crong.get(1));
+        int pobiNumber = calculateMaxNumber(pobi);
+        int crongNumber = calculateMaxNumber(crong);
 
         if (pobiNumber > crongNumber) {
             answer = 1;
@@ -25,19 +25,25 @@ class Problem1 {
         return answer;
     }
 
-    private static boolean isException(int leftPage, int rightPage) {
+    private static boolean isException(List<Integer> person) {
+        int leftPage = person.get(0);
+        int rightPage = person.get(1);
         int pageDifference = rightPage - leftPage;
 
         if (pageDifference == 1) {
             return false;
         } else if (rightPage > 400 || leftPage < 1) {
             return false;
+        } else if (rightPage % 2 == 1) {
+            return false;
         }
 
         return true;
     }
 
-    private static int calculateMaxNumber(int leftPage, int rightPage) {
+    private static int calculateMaxNumber(List<Integer> person) {
+        int leftPage = person.get(0);
+        int rightPage = person.get(1);
         List<Integer> leftPageNumberList = makeNumberList(leftPage);
         List<Integer> rightPageNumberList = makeNumberList(rightPage);
 
@@ -50,12 +56,11 @@ class Problem1 {
     private static List<Integer> makeNumberList(int page) {
         List<Integer> numberList = new ArrayList<>();
 
-        while (page / 10 > 0) {
+        while (page  > 0) {
             int remainder = page % 10;
             page = page / 10;
             numberList.add(0, remainder);
         }
-        numberList.add(0, page);
 
         return numberList;
     }
