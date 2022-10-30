@@ -31,6 +31,13 @@ class Problem1 {
         return sum;
     }
 
+    private static int findMax (int plusSum, int multipleSum) {
+        if (plusSum <= multipleSum) {
+            return multipleSum;
+        }
+        return plusSum;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         if (isException(pobi, crong)) {
