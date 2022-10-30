@@ -4,11 +4,7 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        Set<String> userFriend = findUserFriend(user, friends);
-        Map<String, Integer> friendRecommend = withUserFriend(friends, userFriend);
-        visitorFindRecommend(visitors, friendRecommend, userFriend);
-        List<Person> sortList = MapToListAndSort(friendRecommend, user);
-        List<String> answer = classToString(sortList);
+        List<String> answer = recommendList(user, friends, visitors);
         return answer;
     }
     private static Set<String> findUserFriend(String user, List<List<String>> friends) {
@@ -21,14 +17,16 @@ public class Problem7 {
         }
         return friend;
     }
-    private static Map<String, Integer> withUserFriend(List<List<String>> friends, Set<String> userFriend) {
+    private static Map<String, Integer> withUserFriend(String user, List<List<String>> friends, List<String> visitors) {
         Map<String,Integer> friendRecommend = new HashMap<>();
+        Set<String> userFriend = findUserFriend(user, friends);
         for(int i=0;i<friends.size();i++){
             String leftPerson = friends.get(i).get(0);
             String rightPerson = friends.get(i).get(1);
             if(isAlreadyFriend(leftPerson,userFriend))friendRecommend.put(rightPerson,friendRecommend.getOrDefault(rightPerson,0)+10);
             if(isAlreadyFriend(rightPerson,userFriend))friendRecommend.put(leftPerson,friendRecommend.getOrDefault(leftPerson,0)+10);
         }
+        visitorFindRecommend(visitors,friendRecommend,userFriend);
         return friendRecommend;
     }
     private static boolean isAlreadyFriend(String person, Set<String> userFriend) {
@@ -55,7 +53,8 @@ public class Problem7 {
             else return o.score -  this.score;
         }
     }
-    private static List<Person> MapToListAndSort(Map<String, Integer> friendRecommend, String user) {
+    private static List<Person> MapToListAndSort(String user, List<List<String>> friends, List<String> visitors) {
+        Map<String, Integer> friendRecommend = withUserFriend(user, friends, visitors);
         List<Person> classList = new ArrayList<>();
         for(String key : friendRecommend.keySet()) {
             if(!key.equals(user))classList.add(new Person(key, friendRecommend.get(key)));
@@ -64,9 +63,10 @@ public class Problem7 {
         return classList;
     }
 
-    private static List<String> classToString(List<Person> sortList) {
+    private static List<String> recommendList(String user, List<List<String>> friends, List<String> visitors) {
+        List<Person> sortList = MapToListAndSort(user, friends, visitors);
         List<String> str = new ArrayList<>();
-        for(int i=0;i<sortList.size();i++)str.add(sortList.get(i).getName());
+        for(int index=0;index<sortList.size();index++)str.add(sortList.get(index).getName());
         return str;
     }
 }
