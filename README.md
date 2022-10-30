@@ -129,8 +129,7 @@ BUILD SUCCESSFUL in 0s
 |기능목록 번호| 내용 | 구현상황 |
 | :---:  | :--- | :--- | 
 |  6.0 | 닉네임 중 같은 글자가 연속적으로 포함되는 닉네임을 작성한 지원자의 이메일 목록을 출력 | Problem6.solution | 
-|  6.1 | 닉네임 리스트들의 토큰Set을 출력 | Problem6.makeTokens | 
-|  6.2 | 닉네임과 토큰이 매칭되는지를 출력 | Problem6.isMatching | 
+|  6.1 | 닉네임 리스트들을 받아 토큰과 닉네임 리스트의 Map을 출력 | Problem6.makeTokens | 
 
 5. 문제 5
 
