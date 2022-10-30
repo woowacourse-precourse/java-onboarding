@@ -3,32 +3,32 @@ package onboarding;
 public class Problem4 {
 	public static String solution(String word) {
 
-		String answer = "";
+		StringBuilder answer = new StringBuilder();
+
 		for (int i = 0; i < word.length(); i++) {
-			answer += getReversedAlphabet(getAscii(word.charAt(i)));
+			answer.append(getReversedAlphabet(getAscii(word.charAt(i))));
 		}
-		return answer;
+
+		return answer.toString();
 	}
 
 	private static int getAscii(Character character) {
-		int ascii = (int) character;
-		return ascii;
+		return (int) character;
 	}
 
 	private static Character getReversedAlphabet(int ascii) {
 
-		int reversedAscii = 0;
+		int reversedAscii = ascii;
 
 		if (ascii >= 65 && ascii <= 90) {
 			reversedAscii = 155 - ascii;
-		} else if (ascii >= 97 && ascii <= 122) {
-			reversedAscii = 219 - ascii;
-		} else {
-			reversedAscii = ascii;
 		}
-		Character reversedAlphabet = (char) reversedAscii;
 
-		return reversedAlphabet;
+		if (ascii >= 97 && ascii <= 122) {
+			reversedAscii = 219 - ascii;
+		}
+
+		return (Character) (char) reversedAscii;
 	}
 
 }
