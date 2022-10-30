@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /** 구현 기능 목록
@@ -22,5 +23,14 @@ public class Problem6 {
             nicknameParts.add(nickname.substring(i, i+2));
         }
         return nicknameParts;
+    }
+
+    private static HashMap<String, List<String>> matchEmailAndNicknameParts(List<List<String>> forms) {
+        HashMap<String, List<String>> emailAndNicknameParts = new HashMap<>();
+        for (int i=0; i < forms.size(); i++) {
+            List<String> nicknameParts = splitNickname(forms.get(i).get(1));
+            emailAndNicknameParts.put(forms.get(i).get(0), nicknameParts);
+        }
+        return emailAndNicknameParts;
     }
 }
