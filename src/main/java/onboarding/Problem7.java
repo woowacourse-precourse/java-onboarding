@@ -38,6 +38,15 @@ public class Problem7 {
             }
         }
 
+        for(String visitor : visitors){             //visitors도 algorithm에 추가
+            if(algorithm.containsKey(visitor)){     //이미 있으면 +1점
+                int score = algorithm.get(visitor);
+                algorithm.put(visitor, score + 1);
+            } else {
+                algorithm.put(visitor, 1);          //없었으면 1점으로 등록
+            }
+        }
+
         return answer;
     }
 
