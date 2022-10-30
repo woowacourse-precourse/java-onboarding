@@ -44,7 +44,7 @@ class Problem1 {
     //페이지 숫자 쪼개는 메소드
     public static List<Integer> seperatePageNumber (int pageNumber) {
         List <Integer> pageNumberArray = new ArrayList();
-        for (int i = 0; pageNumber > 0; i ++) {
+        while(pageNumber > 0) {
             pageNumberArray.add(pageNumber % 10);
             pageNumber /= 10;
         }
