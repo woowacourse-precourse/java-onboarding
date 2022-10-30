@@ -16,7 +16,7 @@ public class Problem7 {
     }
 
     /**
-     * user를 제외한 사용자 List를 구함
+     * 사용자 List를 구함
      * @param user
      * @param friends
      * @return
@@ -25,12 +25,8 @@ public class Problem7 {
         HashSet<String> users = new HashSet<>();
 
         for (List<String> next : friends) {
-            if (!user.equals(next.get(0))) {
-                users.add(next.get(0));
-            }
-            if (!user.equals(next.get(1))) {
-                users.add(next.get(1));
-            }
+            users.add(next.get(0));
+            users.add(next.get(1));
         }
 
         List<String> result = new ArrayList<>();
