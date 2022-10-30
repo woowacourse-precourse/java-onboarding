@@ -1,7 +1,20 @@
 package onboarding;
 
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
+class FriendForPro7 {
+
+    public Set<String> makeFriendSet(List<List<String>> friends, Set<String> friendSet) {
+        for (List<String> friend : friends) {
+            friendSet.add(friend.get(0));
+            friendSet.add(friend.get(1));
+        }
+        return friendSet;
+    }
+}
 
 class UserSelectedForPro7 {
 
@@ -10,6 +23,8 @@ class UserSelectedForPro7 {
     public UserSelectedForPro7(String user, List<List<String>> friends, List<String> visitors) {
         ExceptionClassForPro7 exceptionClassForPro7 = new ExceptionClassForPro7(user, friends,
             visitors);
+        FriendForPro7 friendClass = new FriendForPro7();
+        Set<String> friendSet = friendClass.makeFriendSet(friends, new HashSet<>());
     }
 }
 
