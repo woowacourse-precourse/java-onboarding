@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -36,15 +37,17 @@ public class Problem5 {
      * @return
      */
     private static List<Integer> getEachUnit(int money) {
-        List<Integer> answer = List.of(0, 0, 0, 0, 0, 0, 0, 0);
+
+        Integer[] unitCount = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 
         while (money > 0) {
             List<Integer> tempResult = exposeCashUnit(money);
             money = tempResult.get(0);
-            answer.set(tempResult.get(1), answer.get(tempResult.get(1)) + 1);
+            unitCount[tempResult.get(1)]++;
         }
 
-        return answer;
+        List<Integer> result = Arrays.asList(unitCount);
+        return result;
     }
 
     public static List<Integer> solution(int money) {
