@@ -20,6 +20,12 @@ public class Problem7 {
             }
         }
 
+        for (String visitor : visitors) {
+            if(!myFriends.contains(visitor)){
+                scoreList.put(visitor, scoreList.get(visitor) + 1);
+            }
+        }
+
         return answer;
     }
 
