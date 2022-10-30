@@ -16,13 +16,10 @@ public class Problem7 {
         userFriends = getUserFriends(user, friends);
 
         scoringFriend(user, userFriends, friends);
-        System.out.println(friendsScore);
 
         scoringVisitor(userFriends, visitors);
-        System.out.println(friendsScore);
 
         answer = sortByScore();
-        System.out.println(answer);
 
         return answer;
     }
@@ -62,7 +59,6 @@ public class Problem7 {
             if (isNotFriend(user, friend)) {
                 String friendId = getFriendName(userFriends, friend);
                 String addId = getUserToAdd(friendId, friend);
-                System.out.println(addId);
 
                 if (!addId.isEmpty() && isNotFriend(addId, userFriends)) {
                     int score = 10;
@@ -74,7 +70,6 @@ public class Problem7 {
                     friendsScore.put(addId, score);
                 }
             }
-            System.out.println(friendsScore);
         }
     }
 
@@ -115,10 +110,7 @@ public class Problem7 {
         keySet.sort((o1, o2) -> friendsScore.get(o2).compareTo(friendsScore.get(o1)));
 
         for (String key : keySet) {
-            System.out.print("Key : " + key);
-            System.out.println(", Val : " + friendsScore.get(key));
             topFiveUser.add(key);
-            System.out.println("topFiveUser : " + topFiveUser);
 
             if (topFiveUser.size() == 5) {
                 break;
