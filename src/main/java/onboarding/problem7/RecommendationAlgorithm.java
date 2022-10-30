@@ -39,19 +39,19 @@ public class RecommendationAlgorithm {
             scores.put(visitorName, scores.get(visitorName).add(1));
         }
 
-        return returnUsersToPriority(scores);
+        return returnLimitedNumOfUsersToPriority(scores, 5);
     }
 
     private static boolean alreadyRelated(String each, List<String> relatedUser) {
         return relatedUser.contains(each);
     }
 
-    private static List<String> returnUsersToPriority(Map<String, Score> scores) {
+    private static List<String> returnLimitedNumOfUsersToPriority(Map<String, Score> scores, int limitNum) {
         List<Score> collect = scores.values().stream().collect(Collectors.toList());
         Collections.sort(collect, Collections.reverseOrder());
         List<String> recommendedUsersNames = collect.stream().map(score -> score.getUserName()).collect(Collectors.toList());
-        if(recommendedUsersNames.size() > 5) {
-            return recommendedUsersNames.subList(0, 5);
+        if(recommendedUsersNames.size() > limitNum) {
+            return recommendedUsersNames.subList(0, limitNum);
         }
         return recommendedUsersNames;
     }
