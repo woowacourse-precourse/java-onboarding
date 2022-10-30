@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -25,14 +26,17 @@ public class Problem5 {
         List<Integer> answer = Collections.emptyList();
 
         List<Integer> wallet = new ArrayList<>();
+        List<Integer> bank = List.of(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1);
         Integer count = 0;
 
-        while (money >= 50000) {
-            count++;
-            money -= 50000;
+        for(int i = 0; i < 9; i++) {
+            while (money >= bank.get(i)) {
+                count++;
+                money -= bank.get(i);
+            }
+            wallet.add(count);
+            count = 0;
         }
-        wallet.add(count);
-
         System.out.println(wallet);
         return answer;
     }
