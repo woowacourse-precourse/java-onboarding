@@ -70,7 +70,7 @@ public class Problem6 {
         ArrayList<String> internalDuplicateTwoLetterNicknames = new ArrayList<>();
 
         for (String twoLetter : twoLetterNicknames) {
-            if (!internalDuplicateTwoLetterNicknames.contains(twoLetter) && isTwoLetterNickname(twoLetter)) {
+            if (!internalDuplicateTwoLetterNicknames.contains(twoLetter) && existTwoLetterNickname(twoLetter)) {
                 int ownerTwoLetterNickname = getCrewIdByTwoLetterNickname(twoLetter);
 
                 addChangeNeedCrewEmailByCrewId(crewId);
@@ -110,7 +110,12 @@ public class Problem6 {
         }
     }
 
-    private static boolean isTwoLetterNickname(String twoLetterNickname) {
+    /**
+     * 분할된 크루 닉네임이 존재하는지 체크
+     * @param twoLetterNickname 분할된 크루 닉네임
+     * @return 분할된 크루 닉네임이 존재한지 여부
+     */
+    private static boolean existTwoLetterNickname(String twoLetterNickname) {
         return twoLetterNicknamesAndIds.containsKey(twoLetterNickname);
     }
 
