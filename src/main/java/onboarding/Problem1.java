@@ -10,6 +10,10 @@ class Problem1 {
             answer=-1;
             return answer;
         }
+        if(pobi.size()!=2 || crong.size()!=2){
+            answer=-1;
+            return answer;
+        }
 
         String pobiLeft = pobi.get(0).toString();
         String pobiRight = pobi.get(1).toString();
@@ -39,9 +43,8 @@ class Problem1 {
         Integer crongMax = Math.max(Math.max(sumCL, mulCL), Math.max(sumCR, mulCR));
 
         if(pobiMax==crongMax) answer=0;
-        else if(pobiMax>crongMax) answer=1;
-        else if(pobiMax<crongMax) answer=2;
-        else answer=-1;
+        if(pobiMax>crongMax) answer=1;
+        if(pobiMax<crongMax) answer=2;
 
         return answer;
     }
