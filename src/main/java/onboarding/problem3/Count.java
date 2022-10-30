@@ -14,7 +14,7 @@ public class Count {
         return result;
     }
     public static boolean isMultipleOfThree(int number) {
-        if (number % 3 == 0) {
+        if (number % 3 == 0 && number != 0) {
             return true;
         }
         return false;
