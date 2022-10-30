@@ -21,7 +21,8 @@ public class Problem4 {
     }
 
     public static boolean checkUppder(Character target) {
-        return Character.isUpperCase(target);
+        String isUpperRegex = "^[A-Z]$";
+        return target.toString().matches(isUpperRegex);
     }
 
     public static Character changeCharUpperCase(Character target) {
