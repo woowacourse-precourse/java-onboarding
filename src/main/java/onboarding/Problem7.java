@@ -10,6 +10,7 @@ public class Problem7 {
     private static final int FRIEND_SCORE = 10;
     private static final int VISIT_SCORE = 1;
     private static final int MIN_SCORE = 1;
+    private static final int MAX_COUNT = 5;
 
     public static class User {
         private String id;
@@ -44,8 +45,11 @@ public class Problem7 {
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        Map<String, User> users = setFriends(friends, user);
+        setTogetherFriendScore(users, user);
+        setVisitScore(users, visitors);
+
+        return getRecommendedFriends(users, user);
     }
 
     private static Map<String, User> setFriends(List<List<String>> friends, String user) {
@@ -99,6 +103,18 @@ public class Problem7 {
         }
     }
 
+    private static List<String> getRecommendedFriends(Map<String, User> users, String user) {
+        List<User> recommendCandidates = getRecommendCandidates(users, user);
+
+        List<String> recommendFriends = recommendCandidates.stream()
+                .sorted(sortRecommendFriend())
+                .map(u -> u.getId())
+                .limit(MAX_COUNT)
+                .collect(Collectors.toList());
+
+        return recommendFriends;
+    }
+
     private static List<User> getRecommendCandidates(Map<String, User> users, String user) {
         List<String> friendIds = findFriendIdsById(users, user);
 
@@ -111,5 +127,9 @@ public class Problem7 {
 
     private static Predicate<User> canRecommend(String user, Set<String> friendIds) {
         return u -> !user.equals(u.getId()) && !friendIds.contains(u.getId()) && u.getScore() >= MIN_SCORE;
+    }
+
+    private static Comparator<User> sortRecommendFriend() {
+        return Comparator.comparing(User::getScore).reversed().thenComparing(User::getId);
     }
 }
