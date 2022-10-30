@@ -40,6 +40,7 @@ class User {
     }
 }
 
+
 class Problem1 {
     public enum Book {
         left(0),
@@ -72,13 +73,11 @@ class Problem1 {
         }
     }
 
-
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Game.errror.result;
 
         User pobi_user = new User(pobi.get(Book.left.page), pobi.get(Book.right.page), pobi.size());
         User crong_user = new User(crong.get(Book.left.page), crong.get(Book.right.page), crong.size());
-
 
         if (checkedException(pobi_user, crong_user)) {
             getScore(pobi_user);
@@ -88,13 +87,8 @@ class Problem1 {
 
         return answer;
     }
-
     public static int calculation(List<Integer> num_list, char type) {
-        int result = 0;
-
-        //곱셈일 경우 초기화
-        if (type == '*')
-            result = 1;
+        int result = (type == '*') ? 1 : 0;
 
         for (int i = 0; i < num_list.size(); i++) {
             if (type == '+')
