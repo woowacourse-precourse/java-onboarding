@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 /*
  *
@@ -80,17 +79,6 @@ public class Problem7 {
     public static LinkedHashMap<String, Integer> sortMapByKey(Map<String, Integer> recommendFriend) {
         List<Map.Entry<String, Integer>> entries = new LinkedList<>(recommendFriend.entrySet());
         Collections.sort(entries, (o1, o2) -> o1.getKey().compareTo(o2.getKey()));
-
-        LinkedHashMap<String, Integer> result = new LinkedHashMap<>();
-        for (Map.Entry<String, Integer> entry : entries) {
-            result.put(entry.getKey(), entry.getValue());
-        }
-        return result;
-    }
-
-    // sort recommendFriend by value
-    public static LinkedHashMap<String, Integer> sortMapByValue(Map<String, Integer> sortByKey) {
-        List<Map.Entry<String, Integer>> entries = new LinkedList<>(sortByKey.entrySet());
         Collections.sort(entries, Collections.reverseOrder((o1, o2) -> o1.getValue().compareTo(o2.getValue())));
 
         LinkedHashMap<String, Integer> result = new LinkedHashMap<>();
@@ -99,7 +87,6 @@ public class Problem7 {
         }
         return result;
     }
-
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
@@ -114,21 +101,18 @@ public class Problem7 {
         // make a dictionary to give points to visitors
         getRecommendVisitor(recommendFriend, myFriends, visitors);
 
-        // sort recommendFriend by key
-        Map<String, Integer> sortByKey = sortMapByKey(recommendFriend);
-
         // sort recommendFriend by key and value
-        Map<String, Integer> sortByValue = sortMapByValue(sortByKey);
+        Map<String, Integer> sortRecommendFriend = sortMapByKey(recommendFriend);
 
         // return recommend friends
         List<String> recommend = new ArrayList<>();
-        if (sortByValue.size() < 5){
-            for (String key : sortByValue.keySet()){
+        if (sortRecommendFriend.size() < 5){
+            for (String key : sortRecommendFriend.keySet()){
                 recommend.add(key);
             }
         }
         else {
-            List<String> list = new ArrayList<>(sortByValue.keySet());
+            List<String> list = new ArrayList<>(sortRecommendFriend.keySet());
             for(int i = 0; i < 5; i++){
                 recommend.add(list.get(i));
 
@@ -137,6 +121,4 @@ public class Problem7 {
         answer = recommend;
         return answer;
     }
-
-
 }
