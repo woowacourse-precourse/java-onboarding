@@ -26,7 +26,7 @@ public class Problem7 {
             }
         }
 
-        return answer;
+        return new ArrayList<>(recommendFriends(scoreList).keySet());
     }
 
     private static Map<String, Set<String>> createGraph(List<List<String>> friends) {
@@ -86,5 +86,12 @@ public class Problem7 {
                         (e1, e2) -> e1, LinkedHashMap::new));
     }
 
-
+    private static HashMap<String, Integer> recommendFriends(Map<String, Integer> map) {
+        return map.entrySet().stream()
+                .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
+                .limit(5)
+                .filter(key -> key.getValue() > 0)
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
+                        (e1, e2) -> e1, LinkedHashMap::new));
+    }
 }
