@@ -2,28 +2,32 @@ package onboarding;
 
 public class Problem2 {
 	public static String solution(String cryptogram) {
-		String answer = "";
+		
+		String crypto = cryptogram;
 		
 		while (true) {
-			boolean flag = true;
-			for (int i = 0; i < cryptogram.length()-1; i++) {
-				if(cryptogram.charAt(i) == cryptogram.charAt(i+1)){
-					String beforeStr = cryptogram.substring(0, i);
-					String afterStr = cryptogram.substring(i + 2);
-					
-					cryptogram = beforeStr + afterStr;
-					i--;
-					
-					flag = false;
-				}
-			}
-			if(flag){
+			String decoded = decodeLogic(crypto);
+			if (crypto.equals(decoded)) {
+				crypto = decoded;
 				break;
+			} else {
+				crypto = decoded;
 			}
 		}
 		
-		answer = cryptogram;
-		
-		return answer;
+		return crypto;
+	}
+	
+	private static String decodeLogic(String cryptogram) {
+		for (int i = 0; i < cryptogram.length() - 1; i++) {
+			if (cryptogram.charAt(i) == cryptogram.charAt(i + 1)) {
+				String beforeStr = cryptogram.substring(0, i);
+				String afterStr = cryptogram.substring(i + 2);
+				
+				cryptogram = beforeStr + afterStr;
+				i--;
+			}
+		}
+		return cryptogram;
 	}
 }
