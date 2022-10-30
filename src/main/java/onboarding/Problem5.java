@@ -42,7 +42,7 @@ public class Problem5 {
 	}
 
 	public static boolean exchangeable(int money, int curBill) {
-		return false;
+		return money >= curBill;
 	}
 
 	public static int exchangeBillCount(int money, int curBill) {
