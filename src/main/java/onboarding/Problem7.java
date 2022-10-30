@@ -7,6 +7,7 @@ public class Problem7 {
     private static Map<String, Integer> friendCandidate = new HashMap<>();
     private static Set<String> oldFriend = new HashSet<>();
     private static List<List<String>> friendData;
+    private static String owner;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         answer = getRecomendedFriends(user,friends,visitors);
@@ -15,9 +16,10 @@ public class Problem7 {
 
     private static List<String> getRecomendedFriends(String user, List<List<String>> friends, List<String> visitors){
         friendData=friends;
+        owner=user;
         List<String> olderFriends = getFriendOfUser(user);
         classifyOlderFriend(user,olderFriends);
-        increaseFriendWeightByOldFriends(olderFriends);
+        increaseFriendWeightByRelationship(olderFriends);
         increaseFriendWeightByVisted(visitors);
         return getMostSuitableFriend(5);
     }
@@ -38,19 +40,19 @@ public class Problem7 {
         oldfriends.stream().forEach(a->oldFriend.add(a));
     }
 
-    private static void increaseFriendWeightByOldFriends(List<String> friend){
-        for(int i=0; i<friend.size(); i++){
-            List<String> friendList = getFriendOfUser(friend.get(i));
-            increaseWeightByRelationship(friendList);
-        }
-    }
-
-    private static void increaseWeightByRelationship(List<String> friends){
-        for(int i=0; i<friends.size(); i++){
-            if(oldFriend.contains(friends.get(i))){
-                continue;
+    private static void increaseFriendWeightByRelationship(List<String> friend){
+        List<String> friendList=new ArrayList<>(friend);
+        friendList.add(owner);
+        for(int i=0; i<friendData.size(); i++){
+            List<String> friendRelationship = friendData.get(i);
+            Long oldFriendNumberInRelationship = friendRelationship.stream().filter(a->friendList.contains(a)).count();
+            if(oldFriendNumberInRelationship==1){
+                friendRelationship.stream().forEach(a->{
+                    if(!friendList.contains(a)){
+                        increaseWeight(a,10);
+                    }
+                });
             }
-            increaseWeight(friends.get(i),10);
         }
     }
 
