@@ -4,18 +4,50 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
+    public enum Book {
+        left(0),
+        right(1),
+        first(1),
+        last(400);
+
+        private final int page;
+
+        Book(int page) {
+            this.page = page;
+        }
+        public int getNum() {
+            return page;
+        }
+    }
+    public enum Game {
+        tie(0),
+        pobiWin(1),
+        crongWin(2),
+        errror(-1);
+
+        private final int result;
+
+        Game(int result) {
+            this.result = result;
+        }
+        public int getResult() {
+            return result;
+        }
+    }
+
+    static final int listLength = 2;
+
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = -1;
-        int leftPage = 0;
-        int rightPage = 1;
+        int answer = Game.errror.result;
 
         exceptionHandling(pobi);
         exceptionHandling(crong);
 
-        if (checkException(pobi.get(leftPage), pobi.get(rightPage)) &&
-                checkException(crong.get(leftPage), crong.get(rightPage))) {
-            int pobiScore = Math.max(findScore(pobi.get(leftPage)), findScore(pobi.get(rightPage)));
-            int crongScore = Math.max(findScore(crong.get(leftPage)), findScore(crong.get(rightPage)));
+        if (checkedException(pobi.get(Book.left.page), pobi.get(Book.right.page)) &&
+                checkedException(crong.get(Book.left.page), crong.get(Book.right.page))) {
+            int pobiScore = Math.max(findScore(pobi.get(Book.left.page)), findScore(pobi.get(Book.right.page)));
+            int crongScore = Math.max(findScore(crong.get(Book.left.page)), findScore(crong.get(Book.right.page)));
             answer = compareScore(pobiScore, crongScore);
         }
 
@@ -41,13 +73,13 @@ class Problem1 {
     //점수 비교해 결과 반환
     public static int compareScore(int pobiScore, int crongScore) {
         if (pobiScore == crongScore)
-            return 0;
+            return Game.tie.result;
         if (pobiScore > crongScore)
-            return 1;
+            return Game.pobiWin.result;
         if (pobiScore < crongScore)
-            return 2;
+            return Game.crongWin.result;
 
-        return -1;
+        return Game.errror.result;
     }
     //자리수를 알아내 리스트에 저장
     public static List<Integer> findPlaceValue(int num) {
@@ -70,13 +102,11 @@ class Problem1 {
     /*
     * 예외 처리
     */
-    public static boolean checkException(int leftPage, int rightPage) {
-        int firstPage = 1;
-        int lastPage = 400;
+    public static boolean checkedException(int leftPage, int rightPage) {
 
-        if (!(leftPage >= firstPage && leftPage <= lastPage))
+        if (!(leftPage >= Book.first.page && leftPage <= Book.last.page))
             return false;
-        if (!(rightPage >= firstPage && rightPage <= lastPage))
+        if (!(rightPage >= Book.first.page && rightPage <= Book.last.page))
             return false;
         if ((leftPage % 2) == 0)
             return false;
