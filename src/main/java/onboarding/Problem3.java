@@ -1,11 +1,13 @@
 package onboarding;
 
+import java.util.Arrays;
+
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
 
         for (int currentNumber = 1; currentNumber <= number; currentNumber++) {
-            answer += countThreeSixNine(String.valueOf(currentNumber));
+            answer += countThreeSixNine(currentNumber);
         }
 
         return answer;
@@ -17,17 +19,10 @@ public class Problem3 {
      *
      * @return int
      * */
-    private static int countThreeSixNine(String number) {
-        int count = 0;
-        int numberLength = number.length();
-
-        for (int index = 0; index < numberLength; index++) {
-            int currentNumber = number.charAt(index) - '0';
-            if (currentNumber != 0 && currentNumber % 3 == 0) {
-                count++;
-            }
-        }
-
-        return count;
+    private static int countThreeSixNine(int currentNumber) {
+        return (int) Arrays.stream(String.valueOf(currentNumber).split(""))
+                .mapToInt(Integer::parseInt)
+                .filter(number -> number == 3 || number == 6 || number == 9)
+                .count();
     }
 }
