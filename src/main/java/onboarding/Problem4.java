@@ -1,26 +1,24 @@
 package onboarding;
 
 /** 기능 목록
- * solutionLogic    : 메인 솔루션
- * classifyChar    : 대문자, 소문자, 일반문자 판별
- * lowerChange      : 소문자 변환
- * upperChange      : 대문자 변환
- * checkValid       : 예외 처리
- * checkWordLength  : 단어 길이 체크
+ * solutionLogic        : 메인 솔루션
+ * classifyChar         : 대문자, 소문자, 일반문자 판별
+ * transformChar        : 입력된 문자 변환
+ * checkValid           : 제한사항 검증
  */
 
 public class Problem4 {
+    private static final int LOWER_STANDARD = 'z' + 'a';
+    private static final int UPPER_STANDARD = 'Z' + 'A';
     public static String solution(String word) {
-        final String errorCase = "-1";
-        String answer = "";
+
         if (!checkValid(word)) {
-            return errorCase;
+            throw new IllegalArgumentException("제한사항 위반");
         }
-        answer = solutionLogic(word);
-        return answer;
+        return solutionLogic(word);
     }
 
-    public static String solutionLogic(String s) {
+    private static String solutionLogic(String s) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < s.length(); i++) {
             sb.append(classifyChar(s.charAt(i)));
@@ -28,31 +26,21 @@ public class Problem4 {
         return sb.toString();
     }
 
-    public static char classifyChar(char c) {
+    private static char classifyChar(char c) {
         if ('a' <= c && c <= 'z') {
-            return lowerChange(c);
-        } else if ('A' <= c && c <= 'Z') {
-            return upperChange(c);
-        } else {
-            return c;
+            return transformChar(c, LOWER_STANDARD);
         }
+        if ('A' <= c && c <= 'Z') {
+            return transformChar(c, UPPER_STANDARD);
+        }
+        return c;
     }
 
-    public static char lowerChange(char c) {
-        int temp = c - 'a';
-        return (char)('z' - temp);
+    private static char transformChar(char c, int standard) {
+        return (char) (standard - c);
     }
 
-    public static char upperChange(char c) {
-        int temp = c - 'A';
-        return (char) ('Z' - temp);
-    }
-
-    public static boolean checkValid(String s) {
-        return checkWordLength(s);
-    }
-
-    public static boolean checkWordLength(String s) {
+    private static boolean checkValid(String s) {
         int n = s.length();
         return 1 <= n && n < 1000;
     }
