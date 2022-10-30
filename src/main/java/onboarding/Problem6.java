@@ -21,3 +21,15 @@ class Input6 {
     }
 
 }
+
+class Crew {
+
+    private final String email;
+    private final String nickName;
+
+    Crew(String email, String nickName) {
+        this.email = email;
+        this.nickName = nickName;
+    }
+
+}
