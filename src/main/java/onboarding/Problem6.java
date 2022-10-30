@@ -18,6 +18,13 @@ public class Problem6 {
         List<String> answer = List.of("answer");
         return answer;
     }
+
+    private static boolean isProperForms(List<String> forms) {
+        return forms.size() == 2
+                && isProperEmail(forms.get(EMAIL))
+                && isProperNickName(forms.get(NICKNAME));
+    }
+
     private static boolean isProperEmail(String email) {
         return 11 <= email.length()
                 && email.length() < 20
