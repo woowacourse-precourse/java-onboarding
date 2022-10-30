@@ -10,14 +10,12 @@ class Problem1 {
     }
 
     private static int getGameResult(List<Integer> userA, List<Integer> userB){
-        int userAPoint;
-        int userBPoint;
         if(!(userValidation(userA)&&userValidation(userB))){
             return -1;
         }
 
-        userAPoint = getMaxPoint(userA);
-        userBPoint = getMaxPoint(userB);
+        int userAPoint = getMaxPoint(userA);
+        int userBPoint = getMaxPoint(userB);
 
         if (userAPoint>userBPoint) {
             return 1;
@@ -30,11 +28,8 @@ class Problem1 {
     }
 
     private static int getMaxPoint(List<Integer> user){
-        int leftMaxPoint;
-        int rightMaxPoint;
-
-        leftMaxPoint = maxPageValue(user.get(0));
-        rightMaxPoint = maxPageValue(user.get(1));
+        int leftMaxPoint = maxPageValue(user.get(0));
+        int rightMaxPoint = maxPageValue(user.get(1));
 
         if(leftMaxPoint>rightMaxPoint){
             return leftMaxPoint;
