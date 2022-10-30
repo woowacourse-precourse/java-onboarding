@@ -44,4 +44,13 @@ public class Problem6 {
             return false;
         else return true;
     }
+
+    /**
+     * 닉네임의 길이가 1자 이상 20자 미만인지 확인하는 함수
+     */
+    private static boolean isNameLength(String nickname){
+        if(nickname.length()>=1 && nickname.length()<20)
+            return true;
+        else return false;
+    }
 }
