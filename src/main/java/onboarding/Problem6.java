@@ -69,4 +69,14 @@ public class Problem6 {
         }
         return true;
     }
+
+    // 닉네임이 한글로만 구성되어 있는지 검증하는 기능
+    public static boolean checkNicknameConsistOfHangul(List<String> nicknames) {
+        for (String nickname : nicknames) {
+            if (!nickname.matches("^[가-힣]")) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
