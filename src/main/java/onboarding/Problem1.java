@@ -11,7 +11,7 @@ import java.lang.Math;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int answer;
         int pobiVal;
         int crongVal;
 
@@ -47,9 +47,7 @@ class Problem1 {
         return ret;
     }
 
-    private static int getMax(int page) {
-        return Math.max(getSum(page), getMul(page));
-    }
+    private static int getMax(int page) { return Math.max(getSum(page), getMul(page)); }
 
     private static boolean validation(List<Integer> list) {
         if ((list.get(0) < 1 || list.get(0) > 399) || (list.get(1) < 2 || list.get(1) > 400))
