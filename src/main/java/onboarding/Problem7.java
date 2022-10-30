@@ -36,6 +36,13 @@ public class Problem7 {
         }
         return "other";
     }
+
+    static boolean checkIsOther(String isFriendOrOther) {
+        if (isFriendOrOther.equals("other")) {
+            return true;
+        }
+        return false;
+    }
 }
 
 class User {
