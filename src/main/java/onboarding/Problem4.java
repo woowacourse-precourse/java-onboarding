@@ -1,9 +1,6 @@
 package onboarding;
 
 public class Problem4 {
-    static final int UPPER_TREE_FROG = 155;
-    static final int LOWER_TREE_FROG = 219;
-
     public static String solution(String word) {
         StringBuilder answer = new StringBuilder();
         int wordLength = word.length();
@@ -39,8 +36,8 @@ public class Problem4 {
     * */
     private static char convertCharacter(char character) {
         if (Character.isUpperCase(character)) {
-            return (char) (UPPER_TREE_FROG - character);
+            return (char) ('A' + 'Z' - character);
         }
-        return (char) (LOWER_TREE_FROG - character);
+        return (char) ('a' + 'z' - character);
     }
 }
