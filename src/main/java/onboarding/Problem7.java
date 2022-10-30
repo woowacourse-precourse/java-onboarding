@@ -10,17 +10,46 @@ public class Problem7 {
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        SocialGraph sg = new SocialGraph(friends);
-//        System.out.printf("%d\n",sg.userLength());
+        List<String> answer = new ArrayList<>();
+        SocialGraph sg = new SocialGraph(friends, visitors);
+        List<Entry> users = new ArrayList<>(sg.users());
+        int indexUser = sg.findIndex(user);
+
+        for(int i =0; i <users.size(); i++){
+            if ( i == indexUser) continue;
+            Entry userEntryA = users.get(i);
+            if (!sg.areFriend(user, userEntryA.name)){
+                userEntryA.recommendationValue += 10 * sg.numberCommonFriends(user, userEntryA.name);
+            }
+        }
+
+        for(String userVisitorName : visitors){
+            int indexUserVisitor = sg.findIndex(userVisitorName);
+            Entry userEntryVisitor = users.get(indexUserVisitor);
+
+            if(!sg.areFriend(user, userVisitorName)){
+                userEntryVisitor.recommendationValue += 1;
+
+            }
+        }
+
+        Collections.sort(users);
+
+        for(int i =0; i < Math.max(sg.userLength(),5); i++ ){
+            if (users.get(i).recommendationValue > 0){
+                answer.add(users.get(i).name);
+                System.out.printf("%s(%d) ", users.get(i).name, users.get(i).recommendationValue);
+            }
+        }
+
+
         return answer;
     }
 
     private static class SocialGraph {
         private List<Entry> orderedList = new ArrayList<>();
         private boolean[][] isConnected;
-        private EntryComparator cmp;
-        public SocialGraph(List<List<String>> friends) {
+        public SocialGraph(List<List<String>> friends, List<String> visitors) {
             for(int i = 0; i < friends.size(); i++) {
                 String usernameA = friends.get(i).get(0);
                 String usernameB = friends.get(i).get(1);
@@ -30,6 +59,11 @@ public class Problem7 {
 
                 if (!orderedList.contains(userA)) orderedList.add(userA);
                 if (!orderedList.contains(userB)) orderedList.add(userB);
+            }
+
+            for( String username : visitors){
+                Entry userEntry = new Entry(username,0);
+                if(!orderedList.contains(userEntry)) orderedList.add(userEntry);
             }
             Collections.sort(orderedList);
             int n = orderedList.size();
@@ -49,6 +83,7 @@ public class Problem7 {
                  isConnected[b][a] = true;
             }
         }
+
         private int findIndex(String username){
             Entry userEntry = new Entry(username,0);
             return orderedList.indexOf(userEntry);
@@ -83,8 +118,8 @@ public class Problem7 {
     }
 
     private static class Entry implements Comparable<Entry>  {
-        protected String name = "";
-        protected int recommendationValue = 0;
+        public String name = "";
+        public int recommendationValue = 0;
 
         protected Entry(String sname, int value){
             this.name = sname;
@@ -93,11 +128,18 @@ public class Problem7 {
 
         @Override
         public int compareTo(Entry o) {
-            int tmp = this.name.compareTo( o.name);
-            if( tmp > 0){
-                return -1;
-            }else if (tmp < 0){
+            int  difference = this.recommendationValue - o.recommendationValue;
+            if( difference < 0 ){
                 return 1;
+            }else if( difference > 0){
+                return -1;
+            }
+
+            int tmp = this.name.compareTo(o.name);
+            if( tmp > 0){
+                return 1;
+            }else if (tmp < 0){
+                return -1;
             }
             return 0;
         }
@@ -110,10 +152,5 @@ public class Problem7 {
         }
 
     }
-    private static class EntryComparator implements Comparator<Entry> {
-        @Override
-        public int compare(Entry o1, Entry o2) {
-            return (o1.recommendationValue - o2.recommendationValue);
-        }
-    }
+
 }
