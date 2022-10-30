@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -22,6 +23,8 @@ public class Problem4 {
         List<Character> reverseSmall = reverseCycle('z');
         List<Character> reverseBig = reverseCycle('Z');
 
+        HashMap<Character, Character> alphabet = insertMatch(small, reverseSmall, big, reverseBig);
+
         return answer;
     }
     // Step 1. 알파벳 a ~ z 순으로 List에 담기
@@ -42,5 +45,15 @@ public class Problem4 {
             tmp.add((char) (word - i));
         }
         return tmp;
+    }
+
+    // Step 3. HashMap을 통해 key : value로 값 대응해서 넣기
+    public static HashMap<Character, Character> insertMatch(List<Character> small, List<Character> reverseSmall, List<Character> big, List<Character> reverseBig){
+        HashMap<Character, Character> alphabet = new HashMap<>();
+        for(int i = 0; i < 26; i++){
+            alphabet.put(small.get(i), reverseSmall.get(i));
+            alphabet.put(big.get(i), reverseBig.get(i));
+        }
+        return alphabet;
     }
 }
