@@ -41,5 +41,13 @@ public class Problem6 {
             return true;
         return false;
     }
+    private static boolean checkEmail(String inputEmail){
+        if(checkDomain(inputEmail)){
+            if(inputEmail.length() < 11 || inputEmail.length() >= 20)
+                return false;
+            return true;
+        }
+        return false;
+    }
 
 }
