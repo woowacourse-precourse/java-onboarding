@@ -5,34 +5,9 @@ import java.util.*;
 public class Problem7 {
     private static final int MAX_RECOMMEND_COUNT = 5;
 
-    public static void main(String[] args) {
-        String user = "mrko";
-        List<List<String>> friends = List.of(
-                List.of("donut", "andole"),
-                List.of("donut", "jun"),
-                List.of("donut", "mrko"),
-                List.of("shakevan", "andole"),
-                List.of("shakevan", "jun"),
-                List.of("shakevan", "mrko"),
-                List.of("woonie", "egenieee"),
-                List.of("gurae", "ujin"),
-                List.of("seoungjun", "egenieee"),
-                List.of("wooSeok", "egenieee"),
-                List.of("Dong", "egenieee"),
-                List.of("hwan", "jun"),
-                List.of("woonie", "jun"),
-                List.of("woonie", "sepang")
-        );
-        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan",
-                "egenieee", "jun", "woonie", "ujin", "ujin",
-                "ujin", "ujin", "jun", "ujin", "egenieee");
-
-        System.out.println(Problem7.solution(user, friends, visitors));
-    }
-
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Set<String> alreadyFriends = getAlreadyFriends(friends);
-        Map<String, Integer> recommendPoint = getRecommendPoint(friends, user);
+        Map<String, Integer> recommendPoint = getRecommendPointByFriends(friends, user);
         addRecommendPointByVisit(alreadyFriends, recommendPoint, visitors);
 
         return sortAndGetRecommendFriends(recommendPoint);
@@ -48,8 +23,7 @@ public class Problem7 {
         return alreadyFriends;
     }
 
-
-    private static Map<String, Integer> getRecommendPoint(List<List<String>> friends, String user) {
+    private static Map<String, Integer> getRecommendPointByFriends(List<List<String>> friends, String user) {
         Map<String, Integer> recommendPoint = new HashMap<>();
 
         for (List<String> friend : friends) {
