@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Problem4 {
 
@@ -16,23 +17,23 @@ public class Problem4 {
     }
 
     static String getReverseSentence(String sentence) {
-        ArrayList<Character> characterList = convertStringToArrayList(sentence);
-        ArrayList<Character> reverseCharacterList = getReverseCharacterList(characterList);
+        List<Character> characterList = convertStringToArrayList(sentence);
+        List<Character> reverseCharacterList = getReverseCharacterList(characterList);
         String reverseSentence = joinCharactersInArrayList(reverseCharacterList);
         return reverseSentence;
     }
 
-    static ArrayList<Character> convertStringToArrayList(String sentence) {
+    static List<Character> convertStringToArrayList(String sentence) {
         char[] characterArray = sentence.toCharArray();
-        ArrayList<Character> characterList = new ArrayList<>();
+        List<Character> characterList = new ArrayList<>();
         for (char character : characterArray) {
             characterList.add(character);
         }
         return characterList;
     }
 
-    static ArrayList<Character> getReverseCharacterList(ArrayList<Character> characterList) {
-        ArrayList<Character> reverseCharacterList = new ArrayList<>();
+    static List<Character> getReverseCharacterList(List<Character> characterList) {
+        List<Character> reverseCharacterList = new ArrayList<>();
         for (int i = 0; i < characterList.size(); i++) {
             char character = characterList.get(i);
             char reverseCharacter = Dictionary.getReverseCharacter(character);
@@ -41,8 +42,8 @@ public class Problem4 {
         return reverseCharacterList;
     }
 
-    static String joinCharactersInArrayList(ArrayList<Character> characterArrayList) {
-        String[] stringArray = characterArrayList.stream()
+    static String joinCharactersInArrayList(List<Character> characterList) {
+        String[] stringArray = characterList.stream()
             .map(character -> String.valueOf(character))
             .toArray(String[]::new);
         String result = String.join("", stringArray);
