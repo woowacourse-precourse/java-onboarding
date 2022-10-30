@@ -7,6 +7,8 @@ import java.util.InputMismatchException;
 import org.junit.jupiter.api.Test;
 
 class Problem3Test {
+
+    Problem3 problem3 = new Problem3();
     @Test
     void 손뼉여부테스트() {
 
@@ -19,10 +21,10 @@ class Problem3Test {
         //when
 
         //then
-        assertThat(Problem3.isClapCase(num1)).isEqualTo(true);
-        assertThat(Problem3.isClapCase(num3)).isEqualTo(false);
-        assertThat(Problem3.isClapCase(num2)).isEqualTo(false);
-        assertThat(Problem3.isClapCase(num4)).isEqualTo(true);
+        assertThat(Problem3.NumberInClapGame.isClapCase(num1)).isEqualTo(true);
+        assertThat(Problem3.NumberInClapGame.isClapCase(num3)).isEqualTo(false);
+        assertThat(Problem3.NumberInClapGame.isClapCase(num2)).isEqualTo(false);
+        assertThat(Problem3.NumberInClapGame.isClapCase(num4)).isEqualTo(true);
     }
     @Test
     void 손뼉횟수테스트() {
@@ -36,10 +38,10 @@ class Problem3Test {
         //when
 
         //then
-        assertThat(Problem3.getClapCount(num1)).isEqualTo(1);
-        assertThat(Problem3.getClapCount(num2)).isEqualTo(2);
-        assertThat(Problem3.getClapCount(num3)).isEqualTo(0);
-        assertThat(Problem3.getClapCount(num4)).isEqualTo(1);
+        assertThat(Problem3.makeNumberInClapGame(num1).clapCount()).isEqualTo(1);
+        assertThat(Problem3.makeNumberInClapGame(num2).clapCount()).isEqualTo(2);
+        assertThat(Problem3.makeNumberInClapGame(num3).clapCount()).isEqualTo(0);
+        assertThat(Problem3.makeNumberInClapGame(num4).clapCount()).isEqualTo(1);
     }
 
     @Test
