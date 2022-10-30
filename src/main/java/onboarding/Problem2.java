@@ -7,24 +7,29 @@ public class Problem2 {
         String answer = "";
         String[] str = cryptogram.split("");
         List<String> strList = new ArrayList<>();
+        List<Integer> startList = new ArrayList<>();
+        List<Integer> endList = new ArrayList<>();
 
         int cnt=1;
-        int startIdx=0;
-        int endIdx=0;
+        int temp=0;
 
         for(int i=0; i<str.length; i++){
             strList.add(str[i]);
         }
 
-        while(cnt>0) {
+        while(cnt>0){
             cnt=0;
+            // IndexList reset
+            for (int i = startList.size()-1; i >=0 ; i--) {
+                endList.remove(i);
+                startList.remove(i);
+            }
 
-            // duplication start Index
+            // duplicate value start Index list
             for (int i = 0; i < strList.size() - 1; i++) {
                 if (strList.get(i).equals(strList.get(i + 1))) {
                     cnt++;
-                    startIdx = i;
-                    break;
+                    startList.add(i);
                 }
             }
 
@@ -33,20 +38,24 @@ public class Problem2 {
                 break;
             }
 
-            // duplication end Index
-            for (int i = startIdx + 1; i < strList.size(); i++) {
-                if (strList.get(startIdx).equals(strList.get(i))) {
-                    endIdx = i;
-                } else {
-                    break;
+            // duplicate value end Index list
+            for (int i = 0; i < cnt; i++) {
+                for (int j = startList.get(i) + 1; j < strList.size(); j++) {
+                    if (strList.get(startList.get(i)).equals(strList.get(j))) {
+                        endList.add(j);
+                    } else {
+                        break;
+                    }
                 }
             }
 
-            // remove the duplication characters
-            for (int k = 0; k <= endIdx - startIdx; k++) {
-                strList.remove(startIdx);
+            // remove duplicate value
+            for (int i = startList.size()-1; i >= 0; i--) {
+                for (int k = 0; k <= endList.get(i) - startList.get(i); k++) {
+                    temp= startList.get(i);
+                    strList.remove(temp);
+                }
             }
-
             answer=strList.toString().join("",strList);
         }
         return answer;
