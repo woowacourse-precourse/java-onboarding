@@ -24,4 +24,24 @@ class Problem1 {
 
         return true;
     }
+
+    // add each number in pageNum
+    private static int add_each_num(int a) {
+        int ans = 0;
+        while(a != 0) {
+            ans += a % 10;
+            a /= 10;
+        }
+        return ans;
+    }
+
+    // multiply each number in pageNum
+    private static int mul_each_num(int a) {
+        int ans = 1;
+        while(a != 0) {
+            ans *= a % 10;
+            a /= 10;
+        }
+        return ans;
+    }
 }
