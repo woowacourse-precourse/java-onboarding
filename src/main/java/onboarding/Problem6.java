@@ -17,6 +17,9 @@ import java.util.List;
  * - 이메일은 이메일 형식에 부합하며 전체길이는 11자 이상 20자 미안 -> 이메일 체크함수
  *   - 이메일 도메인은 email.com 체크 함수 -> substring
  *     - 이메일 도메인 위치 체크를 위해 @위치 찾는 함수 구현 -> indexof
+ * - 닉네임 체크 함수
+ *  - 한글만 있는지 체크 함수 -> 자바 정규식 사용
+ *  - 1자 이상 20자 미안인지 체크 하는 함수
  * **/
 
 public class Problem6 {
@@ -50,4 +53,21 @@ public class Problem6 {
         return false;
     }
 
+    private static boolean checkKorean(String inputNick){
+        String regKor = "^[ㄱ-ㅎ|가-힣]*$";
+        if(inputNick.matches(regKor))
+            return true;
+        return false;
+    }
+
+    private static boolean checkNickLength(String inputNick){
+        if(inputNick.length() < 20 && inputNick.length() >= 1)
+            return true;
+        return false;
+    }
+    private static boolean checkNick(String inputNick){
+        if(checkKorean(inputNick) && checkNickLength(inputNick))
+            return true;
+        return false;
+    }
 }
