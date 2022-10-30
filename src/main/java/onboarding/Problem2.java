@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.HashSet;
+
 public class Problem2 {
     public static String solution(String cryptogram) {
         while (cryptogram.length()>1){
@@ -11,15 +13,20 @@ public class Problem2 {
         return cryptogram;
     }
     public static String DuplicateRemover(String cryptogram){
-        StringBuilder answer= new StringBuilder();
+        HashSet<Integer> removeIndex=new HashSet<>();
         for(int i=0;i<cryptogram.length()-1;i++){
-            if(!duplicate(cryptogram,i))
-                add(answer,cryptogram,i);
-            if(duplicate(cryptogram,i))
-                i++;
-            if(i==cryptogram.length()-2){
-                answer.append(cryptogram.charAt(i+1));
+            if(duplicate(cryptogram,i)){
+                removeIndex.add(i);
+                removeIndex.add(i+1);
             }
+        }
+        return stringBuild(cryptogram,removeIndex);
+    }
+    public static String stringBuild(String cryptogram,HashSet<Integer> removeIndex){
+        StringBuilder answer=new StringBuilder();
+        for(int i=0;i<cryptogram.length();i++){
+            if(!removeIndex.contains(i))
+                answer.append(cryptogram.charAt(i));
         }
         return answer.toString();
     }

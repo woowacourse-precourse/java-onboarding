@@ -106,7 +106,7 @@ class ApplicationTest {
         @Test
         void case5() {
             String cryptogram = "ccccccccccc";
-            String result="c";
+            String result="";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
 
@@ -119,8 +119,14 @@ class ApplicationTest {
 
         @Test
         void case7() {
-            String cryptogram = "c";
-            String result="c";
+            String cryptogram = "";
+            String result="";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+        @Test
+        void case8(){
+            String cryptogram = "zyellleyz";
+            String result="";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
     }
