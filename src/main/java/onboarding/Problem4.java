@@ -13,11 +13,11 @@ public class Problem4 {
     }
 
     public static void initDictionary() {
-        String momWord      = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-        String childWord    = "ZYXWVUTSRQPONMLKJIHGFEDCBAzyxwvutsrqponmlkjihgfedcba";
-        int len = momWord.length();
+        final String MOM_WORD      = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        final String CHILD_WORD    = "ZYXWVUTSRQPONMLKJIHGFEDCBAzyxwvutsrqponmlkjihgfedcba";
+        int len = MOM_WORD.length();
         for (int i = 0; i < len; ++i) {
-            momToChild.put(momWord.charAt(i), childWord.charAt(i));
+            momToChild.put(MOM_WORD.charAt(i), CHILD_WORD.charAt(i));
         }
     }
 
