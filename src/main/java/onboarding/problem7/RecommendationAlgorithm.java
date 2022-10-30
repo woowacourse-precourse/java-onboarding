@@ -16,11 +16,9 @@ public class RecommendationAlgorithm {
      */
     public static List<String> recommend(String targetName, List<String> visitorsNames) throws Exception {
         Map<String, Score> scores = new HashMap<>();
-
+        List<String> allUsers = UserStore.findAll();
         List<String> relatedUsers = UserRelation.getFriends(targetName);
         relatedUsers.add(targetName);
-
-        List<String> allUsers = UserStore.findAll();
 
         for(String each : allUsers) {
             if (alreadyRelated(each, relatedUsers)) {
