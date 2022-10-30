@@ -18,4 +18,9 @@ public class Problem4 {
 
         return onlyAlpabet.matches(pattern);
     }
+
+    public static String toUpppercase(String word) {
+        String result = word.toUpperCase();
+        return result;
+    }
 }
