@@ -59,7 +59,16 @@ public class Problem7 {
      */
     public static List<String> calcScore(String userName, List<String> visitors) {
         //TODO : 점수를 계산하기 위해서는 유저 이름과 스코어를 저장할 수 있는 자료구조가 필요하다.
+        List<UserForScore> ufsList = initUFSList();
         return null;
+    }
+    public static List<UserForScore> initUFSList () {
+        List<UserForScore> ufsList = new ArrayList<>();
+        for(int i = 0; i< userList.size(); i++) {
+            UserForScore ufs = new UserForScore(userList.get(i));
+            ufsList.add(ufs);
+        }
+        return ufsList;
     }
     public static class User {
         String name;
