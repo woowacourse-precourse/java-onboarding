@@ -1,12 +1,18 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = returnResult(forms);
+        List<String> answer = sortResult(returnResult(forms));
         return answer;
+    }
+
+    private static List<String> sortResult(List<String> result) {
+        result.sort(Comparator.naturalOrder());
+        return result;
     }
 
     private static List<String> returnResult(List<List<String>> forms) {
