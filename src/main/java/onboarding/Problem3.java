@@ -9,7 +9,7 @@ public class Problem3 {
         int[] input_number= Stream.of(String.valueOf(number).split("")).mapToInt(Integer::parseInt).toArray();
 
         for (int num : input_number) {
-            if (num==3 | num==6 | num==9) {
+            if (num==3 || num==6 || num==9) {
                 answer+=1;
             }
         }
