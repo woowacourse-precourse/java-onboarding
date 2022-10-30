@@ -1,6 +1,7 @@
 package onboarding.problem6;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Class searching for duplicated nickname and notify email addresses
@@ -31,5 +32,23 @@ public class DuplicationNotificator {
                 else parts.put(part, new ArrayList<>(Collections.singletonList(email)));
             }
         }
+    }
+
+    /**
+     * Get email list needs to be notified
+     * - Check if part of nickname is duplicated
+     * - Sort email list
+     * - Remove duplicated email address
+     * @return email list needs notification
+     */
+    private List<String> duplicationNotify() {
+        List<String> emails = new ArrayList<>();
+        for (String key : parts.keySet()) {
+            List<String> emailsOfParts = parts.get(key);
+            if (emailsOfParts.size() > 1)
+                emails.addAll(emailsOfParts);
+        }
+        emails.sort(String::compareTo);
+        return emails.stream().distinct().collect(Collectors.toList());
     }
 }
