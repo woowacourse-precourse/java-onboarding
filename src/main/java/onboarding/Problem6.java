@@ -29,8 +29,15 @@ public class Problem6 {
                 checkSameWords(forms, answer, crew, sliceStr, j, compareIndex);
             }
         }
+        ArrayList<String> delOverlapAnswer = getDelOverlapAnswer(answer);
 
-        return answer;
+        return delOverlapAnswer;
+    }
+
+    private static ArrayList<String> getDelOverlapAnswer(List<String> answer) {
+        HashSet<String> delOverlapHashSet = new HashSet<>(answer);
+        ArrayList<String> delOverlapAnswer = new ArrayList<>(delOverlapHashSet);
+        return delOverlapAnswer;
     }
 
     private static void checkSameWords(List<List<String>> forms, List<String> answer, List<Map<String, Integer>> crew, String sliceStr, int j, int compareIndex) {
