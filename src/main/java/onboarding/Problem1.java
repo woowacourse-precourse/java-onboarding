@@ -20,7 +20,7 @@ class Problem1 {
         int pobiMaxNum = maxNum(pobiLeftMaxNum, pobiRightMaxNum);
         int crongMaxNum = maxNum(crongLeftMaxNum, crongRightMaxNum);
 
-        return 1;
+        return getWinner(pobiMaxNum, crongMaxNum);
     }
 
     private static int checkInput(int pobiLeft, int pobiRight, int crongLeft, int crongRight) {
@@ -57,5 +57,13 @@ class Problem1 {
             return sum;
         }
         return prod;
+    }
+
+    private static int getWinner(int pobiMaxNum, int crongMaxNum) {
+        if (pobiMaxNum > crongMaxNum)
+            return 1;
+        if (pobiMaxNum < crongMaxNum)
+            return 2;
+        return 0;
     }
 }
