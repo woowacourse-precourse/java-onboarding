@@ -11,6 +11,7 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
         friendsMap = createFriendsList(friends);
         createScoreMap(user);
+        addVisitorsScore(visitors);
 
         return answer;
     }
@@ -42,11 +43,21 @@ public class Problem7 {
         }
     }
 
-    public static void addVisitors(List<String> visitors){
+    public static void addVisitorsScore(List<String> visitors){
         visitors.forEach((visitor)->{
             addscore(scoreMap,visitor,SCORE_1);
         });
 
+    }
+
+    public static Map<String,Integer>  filteringFriends(Set<String> user){
+        Map<String,Integer> res = new HashMap<>();
+        for(String friend : friendsMap.keySet()){
+            if( !isFriend(user,friend) && scoreMap.get(friend) !=0 ){
+                res.put(friend,scoreMap.get(friend));
+            }
+        }
+        return res;
     }
 
     public static void addscore(Map<String,Integer> fre,String key,int score){
