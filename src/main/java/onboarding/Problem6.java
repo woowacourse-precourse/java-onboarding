@@ -1,7 +1,7 @@
 package onboarding;
 
 import onboarding.feature6.DuplicateLettersFinder;
-import onboarding.feature6.EmailView;
+import onboarding.feature6.ResultView;
 import onboarding.feature6.UserInfo;
 
 import java.util.Iterator;
@@ -15,8 +15,8 @@ public class Problem6 {
         DuplicateLettersFinder duplicateLettersFinder = new DuplicateLettersFinder(userInfo);
         Set<String> duplicateLettersList = duplicateLettersFinder.duplicateLettersList;
 
-        EmailView emailView = new EmailView(duplicateLettersFinder);
-        Map<String, List<String>> answers = emailView.getSortedResults();
+        ResultView resultView = new ResultView(duplicateLettersFinder);
+        Map<String, List<String>> answers = resultView.getSortedResults();
 
         /*
          * I think there could be several cases of adjacent duplicate letters depending on given nicknames.

@@ -7,13 +7,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class EmailView {
+public class ResultView {
     private List<String> emailsToBeSorted;
     private List<String> sortedIdsOfEmails;
     private List<String> sortedEmails;
     private Map<String, Set<String>> results;
 
-    public EmailView(DuplicateLettersFinder duplicateLettersFinder) {
+    public ResultView(DuplicateLettersFinder duplicateLettersFinder) {
         results = duplicateLettersFinder.findDuplicateLetters();
     }
 
