@@ -5,8 +5,15 @@ import java.util.HashSet;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        ArrayList<Integer> successiveIndexArrayList = getSuccessiveIndexArrayList(cryptogram);
+
+        String deletedSuccessiveStr = cryptogram;
+        while (successiveIndexArrayList.size() != 0) {
+            deletedSuccessiveStr = deleteSuccessiveStr(deletedSuccessiveStr, successiveIndexArrayList);
+            successiveIndexArrayList = getSuccessiveIndexArrayList(deletedSuccessiveStr);
+        }
+
+        return deletedSuccessiveStr;
     }
 
     private static String deleteSuccessiveStr(String str, ArrayList<Integer> successiveIndexArrayList) {
