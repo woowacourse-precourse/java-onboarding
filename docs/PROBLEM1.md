@@ -50,3 +50,8 @@
 3. multiplyDigits: 입력의 각 자리 숫자를 곱하는 기능
    - parameter: integer
    - return: integer
+4. findMaxValue: 최고 점수를 찾는 기능
+   - paremeter: integer 리스트 형태
+   - return: 최대 값
+   - 각 페이지 별로 각 자리 숫자를 더한것과 곱한것들 중에 최대값을 찾아 리턴한다.
+   - 
