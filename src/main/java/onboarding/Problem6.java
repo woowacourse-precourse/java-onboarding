@@ -25,7 +25,10 @@ public class Problem6 {
             String email = form.get(0);
             String nickname = form.get(1);
             for(String key : map.keySet()){
-                if(nickname.contains(key)) emails.add(email);
+                if(nickname.contains(key)){
+                    emails.add(email);
+                    break;
+                }
             }
         }
         emails.sort(Comparator.naturalOrder());
