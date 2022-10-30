@@ -6,7 +6,21 @@ import java.util.Objects;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (isSuccessiveInt(pobi) && isSuccessiveInt(crong)) {
+            int pobiOperatedMaxInt = operateMaxInt(pobi);
+            int crongOperatedMaxInt = operateMaxInt(crong);
 
+            Integer biggerInt = getBiggerInt(pobiOperatedMaxInt, crongOperatedMaxInt);
+
+            if (biggerInt == null) {
+                return 0;
+            }
+
+            if (biggerInt == pobiOperatedMaxInt) {
+                return 1;
+            }
+            if (biggerInt == crongOperatedMaxInt) {
+                return 2;
+            }
         }
         return -1;
     }
