@@ -15,14 +15,14 @@ public class Problem4 {
         return answer;
     }
 
-    public static boolean checkAlpha(Character target) {
+    public static boolean checkAlpha(String target) {
         String isAlphaRegex = "^[a-zA-Z]$";
-        return target.toString().matches(isAlphaRegex);
+        return target.matches(isAlphaRegex);
     }
 
-    public static boolean checkUpper(Character target) {
+    public static boolean checkUpper(String target) {
         String isUpperRegex = "^[A-Z]$";
-        return target.toString().matches(isUpperRegex);
+        return target.matches(isUpperRegex);
     }
 
     public static Character changeCharUpperCase(Character target) {
@@ -30,9 +30,9 @@ public class Problem4 {
         return (char) (UPPER_LAST_CHARACTER - diff);
     }
 
-    public static boolean checkLower(Character target) {
+    public static boolean checkLower(String target) {
         String isLowerRegex = "^[a-z]$";
-        return target.toString().matches(isLowerRegex);
+        return target.matches(isLowerRegex);
     }
 
     public static Character changeCharLowerCase(Character target) {
@@ -43,17 +43,16 @@ public class Problem4 {
     public static String makeAnswer(String target) {
         StringBuilder makeAnswer = new StringBuilder();
 
-        char[] wordCharArray = target.toCharArray();
-        for (char wordChar : wordCharArray) {
-            System.out.println(":" + wordChar);
-            if (checkAlpha(wordChar)) {
-                if (checkLower(wordChar)) {
-                    makeAnswer.append(changeCharLowerCase(wordChar));
-                } else if (checkUpper(wordChar)) {
-                    makeAnswer.append(changeCharUpperCase(wordChar));
+        String[] letters = target.split("");
+        for (String letter : letters) {
+            if (checkAlpha(letter)) {
+                if (checkLower(letter)) {
+                    makeAnswer.append(changeCharLowerCase(letter.charAt(0)));
+                } else if (checkUpper(letter)) {
+                    makeAnswer.append(changeCharUpperCase(letter.charAt(0)));
                 }
             } else {
-                makeAnswer.append(wordChar);
+                makeAnswer.append(letter);
             }
         }
 
