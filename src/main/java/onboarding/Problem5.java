@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Problem5 {
 
-    private List<Integer> values = Arrays.asList(
+    private static List<Integer> values = Arrays.asList(
             50_000,
             10_000,
             5_000,
@@ -19,7 +19,7 @@ public class Problem5 {
             1);
 
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
+        List<Integer> answer = new ArrayList<>();
 
         getMoneysCounts(money, answer);
 
@@ -27,11 +27,13 @@ public class Problem5 {
     }
 
     private static void getMoneysCounts(int money, List<Integer> answer) {
-
+        for (Integer value : values) {
+            money = getMoneyCounts(money, answer, value);
+        }
     }
 
     private static int getMoneyCounts(int money, List<Integer> answer, int value) {
         answer.add(money / value);
-        return money & value;
+        return money % value;
     }
 }
