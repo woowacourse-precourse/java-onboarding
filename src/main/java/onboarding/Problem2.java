@@ -27,8 +27,7 @@ public class Problem2 {
                 decryptionText.append(ch);
             }
             else{ // previousChar 과 currentChar 이 같다면 연속된 것으로 판별. currentChar 저장하지 않고 previousChar 도 삭제해준다.
-                int duplicateCharIndex = decryptionText.length() - 1; // prevChar 의 위치
-                decryptionText.deleteCharAt(duplicateCharIndex);
+                decryptionText = removeContinuous(decryptionText);
                 isClear = false;
             }
         }
@@ -37,6 +36,17 @@ public class Problem2 {
         }
         return decoding(decryptionText.toString());
     }
+
+    /**
+     * 연속된 값 제거를 위한 함수
+     */
+
+    private static StringBuffer removeContinuous(StringBuffer decryptionText){
+        int duplicateCharIndex = decryptionText.length() - 1; // 연속됨이 판별되면 마지막으로 저장한 값 제거
+        return decryptionText.deleteCharAt(duplicateCharIndex);
+    }
+
+
 
 
 }
