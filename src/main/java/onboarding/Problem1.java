@@ -42,4 +42,10 @@ class Problem1 {
             return true;
         return false;
     }
+
+    public static Boolean isEven(Integer num){
+        if(num%2==0)
+            return true;
+        return false;
+    }
 }

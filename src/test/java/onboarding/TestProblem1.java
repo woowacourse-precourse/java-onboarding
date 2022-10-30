@@ -2,6 +2,7 @@ package onboarding;
 
 import org.junit.jupiter.api.Test;
 
+import javax.swing.table.TableCellRenderer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,5 +38,17 @@ public class TestProblem1 {
         assertThat(Problem1.isInRange(T2)).isEqualTo(false);
         assertThat(Problem1.isInRange(T3)).isEqualTo(false);
         assertThat(Problem1.isInRange(T4)).isEqualTo(false);
+    }
+
+    @Test
+    void TestisOdd(){
+        assertThat(Problem1.isOdd(100)).isEqualTo(false);
+        assertThat(Problem1.isOdd(99)).isEqualTo(true);
+    }
+
+    @Test
+    void TestisEven(){
+        assertThat(Problem1.isEven(100)).isEqualTo(true);
+        assertThat(Problem1.isEven(99)).isEqualTo(false);
     }
 }
