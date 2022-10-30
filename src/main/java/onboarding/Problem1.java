@@ -21,7 +21,7 @@ class Problem1 {
 
         for (List<Integer> digit: digits) {
             scores.add(digit.stream().reduce(0, Integer::sum));
-            scores.add(digit.stream().reduce(0, (a, b) -> a * b));
+            scores.add(digit.stream().reduce(1, (a, b) -> a * b));
         }
 
         int maxValue = scores.stream().reduce(0, Integer::max);
@@ -37,12 +37,15 @@ class Problem1 {
         List[] players = {pobi, crong};
         List<Integer> scores = new ArrayList<>();
 
-        for(List<Integer> player: players) {
+        int result = 500;
+
+        for (List<Integer> player : players) {
             int left = player.get(0);
             int right = player.get(1);
 
             if (right - left != 1 || right % 2 != 0 || left % 2 != 1 || right > 399 || left < 2) {
-                return WRONG_INPUT;
+                result = WRONG_INPUT;
+                return result;
             }
 
             List<List<Integer>> digits = new ArrayList<>();
@@ -52,7 +55,17 @@ class Problem1 {
             scores.add(getScore(digits));
         }
 
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        final int POBI = scores.get(0);
+        final int CRONG = scores.get(1);
+
+        if (POBI == CRONG) {
+            result = TIE;
+        } else if (POBI > CRONG) {
+            result = POBI_WINS;
+        } else if (POBI < CRONG) {
+            result = CRONG_WINS;
+        }
+
+        return result;
     }
 }
