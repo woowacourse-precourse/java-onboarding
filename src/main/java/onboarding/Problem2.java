@@ -17,7 +17,7 @@ public class Problem2 {
     //중복 문자 제거
     static String getRemoveDuplicateWord(String word) {
 
-        StringBuffer resultWord = new StringBuffer();
+        StringBuilder resultWord = new StringBuilder();
 
         for (int i = 0; i < word.length(); i++) {
 
