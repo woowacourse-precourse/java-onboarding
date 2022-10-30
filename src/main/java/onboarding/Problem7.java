@@ -55,7 +55,7 @@ public class Problem7 {
         return listEntries;
     }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
         HashMap<String, List<String>> friendMap=makeFriendMap(friends); //친구 관계 HashMap 만들기
         /*
         for(Map.Entry<String, List<String>> entrySet: friendMap.entrySet()){
@@ -69,9 +69,18 @@ public class Problem7 {
             System.out.println("key : "+entrySet.getKey()+" value : "+entrySet.getValue());
         }
          */
-        List<Map.Entry<String, Integer>> sortScore=sorting(scoreMap);
+        List<Map.Entry<String, Integer>> sortScore=sorting(scoreMap); //점수, 이름 기준 정렬
+
+        //점수가 0점 이상인 추천친구 return(최대 5명)
+        int cnt=0;
         for(Map.Entry<String, Integer> entry : sortScore) {
-            System.out.println(entry.getKey() + " : " + entry.getValue());
+            if(entry.getValue()>0) {
+                answer.add(entry.getKey());
+                cnt+=1;
+            }
+            if(cnt==5){
+                break;
+            }
         }
 
         return answer;
