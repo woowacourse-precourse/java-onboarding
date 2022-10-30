@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         HashMap<String, String> databaseOfNickname = initDatabaseOfNickname();
         HashMap<String, Boolean> duplicationOfNickname = initDuplicationOfNickname();
-        AddUsers(databaseOfNickname, duplicationOfNickname, forms);
+        addUsers(databaseOfNickname, duplicationOfNickname, forms);
         List<String> answer = createDuplicationUserList(duplicationOfNickname);
         return answer;
     }
@@ -68,10 +69,28 @@ public class Problem6 {
     }
 
     // 주어진 이메일, 닉네임 리스트를 하나씩 추가하는 함수
-    public static void AddUsers(HashMap<String, String> databaseOfNickname, HashMap<String, Boolean> duplicationOfNickname, List<List<String>> forms) {
+    public static void addUsers(HashMap<String, String> databaseOfNickname, HashMap<String, Boolean> duplicationOfNickname, List<List<String>> forms) {
         for (List<String> user: forms) {
-            addUser(databaseOfNickname, user);
-            checkDuplication(databaseOfNickname, duplicationOfNickname, user);
+            if (checkUserForm(user)) {
+                addUser(databaseOfNickname, user);
+                checkDuplication(databaseOfNickname, duplicationOfNickname, user);
+            }
         }
+    }
+
+    // 주어진 이메일이 형식에 맞게 입력됐는지 확인하는 함수
+    public static boolean checkEmailForm(String email) {
+        return email.split("@")[1].equals("email.com");
+
+    }
+
+    // 주어진 닉네임이 형식에 맞게 입력됐는지 확인하는 함수
+    public static boolean checkNicknameForm(String nickname) {
+        return Pattern.matches("^[가-힣]*$", nickname);
+    }
+
+    // 주어진 유저 정보가 형식에 맞게 입력됐는지 확인하는 함수
+    public static boolean checkUserForm(List<String> user) {
+        return checkEmailForm(user.get(0)) && checkNicknameForm(user.get(1));
     }
 }
