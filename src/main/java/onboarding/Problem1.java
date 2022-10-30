@@ -14,7 +14,6 @@ class Problem1 {
     private static final int LEFT_PAGE_INDEX = 0;
     private static final int RIGHT_PAGE_INDEX = 1;
 
-
     private static final int FIRST_PAGE = 1;
     private static final int LAST_PAGE = 400;
 

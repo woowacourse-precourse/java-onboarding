@@ -45,7 +45,6 @@ public class Problem6 {
         return removeDuplicateAndSort(answer);
     }
 
-
     private static void addSimilarNicknameCrewEmails(List<List<String>> forms,
                                                      List<String> answer,
                                                      Map.Entry<String, List<String>> emailToSplitNickname,

@@ -28,7 +28,6 @@ public class Problem2 {
                 indexOfDuplicateWords.add(i);
             }
         }
-
         return indexOfDuplicateWords;
     }
 
@@ -44,7 +43,6 @@ public class Problem2 {
 
         indexOfDuplicateWords = getIndexOfDuplicateWords(splitString);
         removeDuplicateWords(splitString, indexOfDuplicateWords);
-
     }
 
 }

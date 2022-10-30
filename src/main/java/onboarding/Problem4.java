@@ -13,7 +13,6 @@ public class Problem4 {
     public static String solution(String word) {
         List<Character> result = new ArrayList<>();
 
-
         for (int i = 0; i < word.length(); i++) {
             int ascii = word.toCharArray()[i];
 
@@ -22,7 +21,6 @@ public class Problem4 {
             }
             result.add((char) ascii);
         }
-
         return result.stream()
                 .map(String::valueOf)
                 .collect(Collectors.joining());
@@ -38,7 +36,6 @@ public class Problem4 {
         if (val > Z_UPPER_CASE && val != Z_LOWER_CASE) {
             return Z_UPPER_CASE - ((val) % Z_UPPER_CASE);
         }
-
         return val;
 
     }
