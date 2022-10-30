@@ -61,6 +61,23 @@ public class Problem7 {
         return recommendFriend;
     }
 
+    static HashMap<String, Integer> getRecommendVisitor(HashMap<String, Integer> recommendFriend,
+                                                        List<String> myFriends, List<String> visitors) {
+
+        // find sns users who visit my sns
+        for(String visitor : visitors){
+            if (recommendFriend.containsKey(visitor)){
+                recommendFriend.put(visitor, recommendFriend.get(visitor) + 1);
+            }
+            else {
+                if (!myFriends.contains(visitor)){
+                recommendFriend.put(visitor, 1);
+                }
+            }
+        }
+        return recommendFriend;
+    }
+
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
@@ -72,8 +89,13 @@ public class Problem7 {
         // make a dictionary to give points to my friend's friend
         HashMap<String, Integer> recommendFriend = getRecommendFriend(friendList, myFriends);
 
+        // make a dictionary to give points to visitors
+        getRecommendVisitor(recommendFriend, myFriends, visitors);
+
         System.out.println(recommendFriend);
 
         return answer;
     }
+
+
 }
