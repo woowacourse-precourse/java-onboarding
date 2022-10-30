@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -11,8 +10,8 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
         int answer = 0;
-        int pobiMaxValue = 0;
-        int crongMaxValue = 0;
+        int pobiMaxValue;
+        int crongMaxValue;
 
         int pobiFirstNumber = pobi.get(0);
         int pobiSecondNumber = pobi.get(1);
@@ -47,44 +46,44 @@ class Problem1 {
         return answer;
     }
 
-    private static int numberLength(int number){
+    private static int getNumberLength(int number){
         int length = (int)(Math.log10(number)+1);
         return length;
     }
 
     private static int getMaxNumber(int number){
-        int MaxValue = 0;
+        int maxValue = 0;
 
-        if (numberLength(number) == 3){
-            int FirstNumberFirstDigit = number / 100;
-            int FirstNumberSecondDigit = (number % 100) / 10;
-            int FirstNumberThirdDigit = (number % 100) % 10;
+        if (getNumberLength(number) == 3){
+            int firstNumberFirstDigit = number / 100;
+            int firstNumberSecondDigit = (number % 100) / 10;
+            int firstNumberThirdDigit = (number % 100) % 10;
 
-            int Addition = getAddition(FirstNumberFirstDigit, FirstNumberSecondDigit, FirstNumberThirdDigit);
-            int Multiplication = getMultiplication(FirstNumberFirstDigit, FirstNumberSecondDigit, FirstNumberThirdDigit);
-            if (Addition > Multiplication){
-                MaxValue = Addition;
+            int addition = getAddition(firstNumberFirstDigit, firstNumberSecondDigit, firstNumberThirdDigit);
+            int multiplication = getMultiplication(firstNumberFirstDigit, firstNumberSecondDigit, firstNumberThirdDigit);
+            if (addition > multiplication){
+                maxValue = addition;
             } else {
-                MaxValue = Multiplication;
+                maxValue = multiplication;
             }
 
 
-        } else if (numberLength(number) == 2){
-            int FirstNumberFirstDigit = (number % 100) / 10;
-            int FirstNumberSecondDigit = (number % 100) % 10;
+        } else if (getNumberLength(number) == 2){
+            int firstNumberFirstDigit = (number % 100) / 10;
+            int firstNumberSecondDigit = (number % 100) % 10;
 
-            int Addition = getAddition(FirstNumberFirstDigit, FirstNumberSecondDigit);
-            int Multiplication = getMultiplication(FirstNumberFirstDigit, FirstNumberSecondDigit);
-            if (Addition > Multiplication){
-                MaxValue = Addition;
+            int addition = getAddition(firstNumberFirstDigit, firstNumberSecondDigit);
+            int multiplication = getMultiplication(firstNumberFirstDigit, firstNumberSecondDigit);
+            if (addition > multiplication){
+                maxValue = addition;
             } else {
-                MaxValue = Multiplication;
+                maxValue = multiplication;
             }
         } else {
-            MaxValue = number;
+            maxValue = number;
         }
 
-        return MaxValue;
+        return maxValue;
     }
 
     public static int getAddition(int... numbers){
