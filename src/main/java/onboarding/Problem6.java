@@ -7,7 +7,7 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<Crew> crews = allCrews(forms);
         List<Crew> answer = duplicateCrews(crews);
-        return List.of("answer");
+        return distinct(answer);
     }
 
     private static List<Crew> allCrews(List<List<String>> forms) {
@@ -33,5 +33,13 @@ public class Problem6 {
         }
         duplicateCrews.add(crew);
         return duplicateCrews;
+    }
+
+    private static List<String> distinct(List<Crew> answer) {
+        return answer.stream()
+                .map(Crew::getEmail)
+                .distinct()
+                .sorted()
+                .collect(Collectors.toList());
     }
 }
