@@ -2,7 +2,9 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -123,6 +125,10 @@ class Others {
         return this.othersList;
     }
 
+    void setOthersList(List<Other> othersList) {
+        this.othersList = othersList;
+    }
+
     void addRelationship(List<String> relationship) {
         String other1 = relationship.get(0);
         String other2 = relationship.get(1);
@@ -149,6 +155,43 @@ class Others {
         this.addPoint(visitor, pointForVisitor);
     }
 
+    void sortOthersList() {
+        List<Other> othersList = this.getOthersList();
+        List<Other> othersListSorted = othersList.stream()
+            .sorted(Comparator.comparing(Other::getPoint).reversed())
+            .collect(Collectors.toList());
+        this.setOthersList(othersListSorted);
+    }
+
+    List<String> getTopFiveNameOfOtherList() {
+        this.sortOthersList();
+        List<Other> topFiveList = getTopFiveOfOtherList();
+        List<String> topFiveListOfName = getNameListByOtherList(topFiveList);
+        return topFiveListOfName;
+    }
+
+    List<Other> getTopFiveOfOtherList() {
+        List<Other> othersList = this.getOthersList();
+        List<Other> topFiveList = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            Other other = othersList.get(i);
+            int otherPoint = other.getPoint();
+            boolean isPointZero = this.checkIsPointZero(otherPoint);
+            if (isPointZero) {
+                break;
+            }
+            topFiveList.add(other);
+        }
+        return topFiveList;
+    }
+
+    boolean checkIsPointZero(int point) {
+        if (point == 0) {
+            return true;
+        }
+        return false;
+    }
+
     boolean checkIsRegisteredOther(String otherName) {
         List<String> othersNameList = this.getOthersNameList();
         boolean isRegisteredOther = othersNameList.contains(otherName);
@@ -163,6 +206,15 @@ class Others {
             othersNameList.add(name);
         });
         return othersNameList;
+    }
+
+    List<String> getNameListByOtherList(List<Other> otherList) {
+        List<String> nameList = new ArrayList<>();
+        otherList.stream()
+            .sorted(Comparator.comparing(Other::getName))
+            .sorted(Comparator.comparing(Other::getPoint).reversed())
+            .forEach(other -> nameList.add(other.getName()));
+        return nameList;
     }
 
     void addPointIfHaveMutual(String other, String target) {
