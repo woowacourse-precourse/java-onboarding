@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -50,6 +47,8 @@ public class Problem7 {
             int newScore = oldScore += 1;
             scoreMap.replace(name, newScore);
         }
+
+        List<Map.Entry<String, Integer>> scoreList = new ArrayList<>(scoreMap.entrySet());
         return answer;
     }
 }
@@ -81,7 +80,7 @@ public class Problem7 {
   - [V] scoreMap에 현재 참조하는 방문자가 없으면 0점으로 하여 넣어준다
   - [V] 현재 참조하는 방문자의 점수를 1점 더해서 교체해준다
 - [] 받은 점수를 토대로 정렬한다
-  - [] scoreMap을 이용해 scoreList를 만든다
+  - [V] scoreMap을 이용해 scoreList를 만든다
   - [] scoreList를 점수 내림차순으로 정렬하고, 점수가 같으면 이름순으로 정렬한다
 - [] 상위 5명만, 0점이 아닌 경우만 뽑아서 answer에 담는다
   - [] scoreList를 순회하다가 5번째 순회 이후는 break로 탈출하도록 한다
