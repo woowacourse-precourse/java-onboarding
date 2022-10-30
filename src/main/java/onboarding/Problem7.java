@@ -14,6 +14,7 @@ public class Problem7 {
         makeConnection(friends);
         initDistance();
         searchFriends(user);
+        visitorPoint(user, visitors);
 
         return answer;
     }
@@ -82,6 +83,17 @@ public class Problem7 {
                 }
 
                 qu.add(new Connect(nn, cn.depth + 1));
+            }
+        }
+    }
+
+    /*
+     * user와 친구가 아닌 방문객의 점수를 더한다.
+     * */
+    private static void visitorPoint(String user, List<String> visitors){
+        for (String visitor : visitors) {
+            if(!connectMap.get(user).contains(visitor)) {
+                distance.put(visitor, distance.getOrDefault(visitor, 0) + 1);
             }
         }
     }
