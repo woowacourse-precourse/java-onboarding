@@ -8,18 +8,45 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
 
+        checkForm(forms);
         Map<String, Integer> nameTokenMap = getNameTokenMap(forms);
-
+        answer = getDupNameList(nameTokenMap, forms);
         return answer;
+    }
+
+    private static List<String> getDupNameList(Map<String, Integer> nameTokenMap, List<List<String>> forms){
+        List<String> dupNameLists = new ArrayList<>();
+
+        for (List<String> form : forms) {
+            checkDupCount(nameTokenMap, dupNameLists, form);
+        }
+
+        return dupNameLists;
+    }
+
+    private static void checkDupCount(Map<String, Integer> nameTokenMap, List<String> dupNameLists,List<String> form) {
+        String name = form.get(NAME_INDEX);
+        String email = form.get(EMAIL_INDEX);
+
+        for (int i = 0; i< name.length()-1; i++){
+            String nameToken = getNameToken(name, i, i + 1);
+            if (nameTokenMap.get(nameToken) >= 2){
+                addDupNameList(dupNameLists, email);
+            }
+        }
+    }
+
+    private static void addDupNameList(List<String> dupNameLists, String email) {
+        if (!dupNameLists.contains(email)){
+            dupNameLists.add(email);
+        }
     }
 
     private static Map<String, Integer> getNameTokenMap(List<List<String>> forms){
         Map<String, Integer> nameTokenMap = new HashMap<>();
 
         for (List<String> form : forms) {
-            String name = form.get(NAME_INDEX);
-
-            setNameTokens(nameTokenMap, name);
+            setNameTokens(nameTokenMap, form.get(NAME_INDEX));
         }
         return nameTokenMap;
     }
@@ -93,7 +120,6 @@ public class Problem6 {
         int length = name.length();
         return (length < NAME_MIN_LENGTH || length >= NAME_MAX_LENGTH);
     }
-
 
     static class Const{
         public static final int CREW_MIN_SIZE = 1;
