@@ -331,6 +331,21 @@ class ApplicationTest {
         }
 
         @Test
+        void case3() {
+            List<List<String>> forms = List.of(
+                    List.of("jmdsbfjdsfjdsfk@email.com", "제이엠"),
+                    List.of("jm@email.com1", "제이엠"),
+                    List.of("@email.com", "제이엠"),
+                    List.of("jason@email.com", "제이슨"),
+                    List.of("woniee@email.com", "워니"),
+                    List.of("mj@email.com", "엠제이"),
+                    List.of("nowm@email.com", "이제엠")
+            );
+            List<String> result = List.of("jason@email.com",  "mj@email.com");
+            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
+
+        @Test
         void separateNicknameTest() {
             List<String> result = Problem6.separateNickname("제이엠가");
             List<String> answerList = List.of("제이", "이엠", "엠가", "제이엠", "이엠가", "제이엠가");
@@ -351,18 +366,8 @@ class ApplicationTest {
         }
 
         @Test
-        void inValidEmailTest() {
-            List<List<String>> forms = List.of(
-                    List.of("jmdsbfjdsfjdsfk@email.com", "제이엠"),
-                    List.of("jm@email.com1", "제이엠"),
-                    List.of("@email.com", "제이엠"),
-                    List.of("jason@email.com", "제이슨"),
-                    List.of("woniee@email.com", "워니"),
-                    List.of("mj@email.com", "엠제이"),
-                    List.of("nowm@email.com", "이제엠")
-            );
-            List<String> result = List.of("jason@email.com",  "mj@email.com");
-            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        void isValidEmailTest() {
+            assertThat(Problem6.isValidateEmail("jmdsbfjdsfjdsfk@email.com")).isEqualTo(false);
         }
     }
     @Nested
