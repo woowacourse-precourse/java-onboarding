@@ -5,7 +5,16 @@ import java.util.function.Predicate;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        return new ArrayList<>();
+
+        Set<String> userFriend = findUserFriends(user, friends);
+        Map<String,List<String>> friendMap = makeFriendMap(userFriend, friends);
+
+        HashMap<String,Integer> recommendMap = new HashMap<>();
+        recommendAcquaintance(friendMap, recommendMap);
+        recommendVisitors(visitors, userFriend, recommendMap);
+
+
+        return makeRecommendList(recommendMap);
     }
 
 
