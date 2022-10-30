@@ -34,6 +34,15 @@ public class Problem6 {
         return false;
     }
 
+    //통과한 것만  hashmap<닉네임, 이메일>에 저장
+    public static void makeValidForms(List<List<String>> forms) {
+        for (int i = 0; i < forms.size(); i++) {
+            if (!isValidEmail(forms.get(i).get(0)) || !isValidNickname(forms.get(i).get(1))) {
+                forms.remove(i);
+            }
+        }
+    }
+
 
 
 }
