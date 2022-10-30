@@ -6,6 +6,72 @@ import java.util.List;
 public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
+
+        // 오만원권 교환
+        int ohMan = money/50000;
+        System.out.println(ohMan);
+
+        money%=50000;
+
+        // 만원권 교환
+        int man = money/10000;
+        System.out.println(man);
+
+        money%=10000;
+
+        // 오천원권 교환
+        int ohCheon = money/5000;
+        System.out.println(ohCheon);
+
+        money%=5000;
+
+        // 천원권 교환
+        int cheon = money/1000;
+        System.out.println(cheon);
+
+        money%=1000;
+
+        // 오백원권
+        int ohBaek = money/500;
+        System.out.println(ohBaek);
+
+        money%=500;
+
+        // 백원권
+        int baek = money/100;
+        System.out.println(baek);
+
+        money%=100;
+
+        // 오십원권
+        int ohSib = money/50;
+        System.out.println(ohSib);
+
+        money%=50;
+
+        // 십원권
+        int sib = money/10;
+        System.out.println(sib);
+
+        // 일원권
+        int ill = money%=10;
+        System.out.println(ill);
+
         return answer;
     }
 }
+
+// 기능 요구 사항
+// 1. 큰 순서의 화폐권 순으로 주기
+// 2. 해당 화폐권 수 저장
+
+// 프로그래밍 요구 사항
+// ✔ 1. JDK 11 버전
+// 2. "build.gradle"을 변경 X, 외부 라이브러리 X
+// 3. 프로그램 종료 시 "System.exit()"를 호출 X
+// 4. 프로그램 구현이 완료되면 "ApplicationTest" 의 모든 테스트 성공하기
+// 5. 프로그래밍 요구 사항에서 달리 명시하지 않은 한 파일, 패키지 이름을 수정하거나 이동 X
+
+// 과제 진행 요구 사항
+// ✔ 1. 미션은 "java-onboarding" 저장소를 "Fork & Clone" 해 시작하기
+// ✔ 2. 과제 진행 및 제출하기
