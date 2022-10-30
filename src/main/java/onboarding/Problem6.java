@@ -33,11 +33,11 @@ public class Problem6 {
         for (int i=0; i<nameList.size(); i++) {
             String name = nameList.get(i);
             boolean duplicatedFlag = false;
-            for (int j=i; j<substringList.size(); j++) {
+            for (int j=0; j<substringList.size(); j++) {
                 if (i == j) {
                     continue;
                 }
-                if (ValidateDuplicatedName(nameList.get(i), substringList.get(j))) {
+                if (validateDuplicatedName(nameList.get(i), substringList.get(j))) {
                     duplicatedFlag = true;
                     break;
                 }
@@ -49,7 +49,7 @@ public class Problem6 {
         return dupliatedIndexList;
     }
 
-    private static boolean ValidateDuplicatedName(String name, List<String> substringList) {
+    private static boolean validateDuplicatedName(String name, List<String> substringList) {
         for (String substring : substringList) {
             if (name.contains(substring)) {
                 return true;
