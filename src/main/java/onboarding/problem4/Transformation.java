@@ -5,7 +5,6 @@ import static java.lang.Character.isUpperCase;
 
 public class Transformation {
     public static String getWord(String word) {
-        String newWord = "";
         StringBuilder builder = new StringBuilder();
 
         for (int i = 0; i < word.length(); i++) {
