@@ -14,8 +14,8 @@ class Problem1 {
             int pobiMax = -1;
             int crongMax = -1;
 
-            pobiMax = Math.max(pobi.get(0), pobi.get(1));
-            crongMax = Math.max(crong.get(0), crong.get(1));
+            pobiMax = Math.max(findMax(pobi.get(0)), findMax(pobi.get(1)));
+            crongMax = Math.max(findMax(crong.get(0)), findMax(crong.get(1)));
 
             // 결과 판단
             answer = findWinner(pobiMax, crongMax);
