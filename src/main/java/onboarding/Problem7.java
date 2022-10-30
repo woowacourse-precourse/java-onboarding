@@ -79,6 +79,16 @@ public class Problem7 {
     }
 
     private static void registerNewUserInVisitorsList (List<String> visitors) {
-
+        for (String visitor : visitors) {
+            if (isUsersFriend(visitor)) {
+                continue;
+            }
+            if (allUsersID.containsKey(visitor)) {
+                allUsersID.put(visitor, allUsersID.get(visitor) + 1);
+            }
+            else {
+                allUsersID.put(visitor, 1);
+            }
+        }
     }
 }
