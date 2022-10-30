@@ -7,8 +7,9 @@ import java.util.List;
 /** 구현 기능 목록
  * 1. 닉네임을 두글자씩 쪼개어 리스트로 저장
  * 2. 쪼갠 닉네임과 이메일을 해시맵으로 저장
- * 3. 쪼갠 닉네임을 통해 연속으로 두글자 이상 중복된 닉네임을 가진 사람 찾기
- * 4. 중복 닉네임을 가진 사람의 이메일을 정렬하여 반환
+ * 3. 쪼갠 닉네임들을 합쳐서 리스트로 저장
+ * 4. 쪼갠 닉네임들을 통해 연속으로 두글자 이상 중복된 닉네임을 가진 사람 찾기
+ * 5. 중복 닉네임을 가진 사람의 이메일을 정렬하여 반환
  * */
 
 public class Problem6 {
@@ -32,5 +33,14 @@ public class Problem6 {
             emailAndNicknameParts.put(forms.get(i).get(0), nicknameParts);
         }
         return emailAndNicknameParts;
+    }
+
+    private static List<String> findNicknameParts(HashMap<String, List<String>> emailAndNicknameParts) {
+        List<String> nicknameParts = new ArrayList<>();
+        for (List<String> nicknamePart : emailAndNicknameParts.values()) {
+            nicknameParts.removeAll(nicknamePart);
+            nicknameParts.addAll(nicknamePart);
+        }
+        return nicknameParts;
     }
 }
