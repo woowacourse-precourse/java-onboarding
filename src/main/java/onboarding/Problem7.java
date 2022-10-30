@@ -46,7 +46,7 @@ public class Problem7 {
     }
 
     /**
-     * visitors에 포함된 사람들중 user와 user의 친구를 제외한 사람들을 recommendList에 추가
+     * visitors에 포함된 사람들중 user와 user의 친구를 제외한 사람들 recommendList에 추가
      * @param {List<String>>} visitors
      * @param {List<String>>} userFriendList
      * @param {Map<String, Integer>}recommendList
@@ -60,6 +60,24 @@ public class Problem7 {
         return recommendList;
     }
 
+    /**
+     * userFriendList에 포함된 친구와 함께 friends에서 쌍을 이루는 사람의 추천점수를 10 증가시킴
+     * @param {List<List<String>>} friends
+     * @param {List<String>} userFriendList
+     * @param {Map<String, Integer>}recommendList
+     * @return
+     */
+    public static Map<String, Integer> addScoreByFriends(List<List<String>> friends, List<String> userFriendList ,Map<String, Integer> recommendList) {
+        for (int i = 0; i < friends.size(); i++) {
+            for (int j = 0; j < 2; j++) {
+                String firstName = friends.get(i).get(j);
+                String secondName = friends.get(i).get(1-j);
+
+                if(userFriendList.contains(firstName) && !secondName.equals(user)) recommendList.put(secondName, recommendList.get(secondName) + 10);
+            }
+        }
+        return recommendList;
+    }
 
 
 }

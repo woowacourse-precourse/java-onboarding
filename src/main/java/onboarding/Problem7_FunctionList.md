@@ -12,13 +12,17 @@
 - 친구들의 이름이 key값이며 친구들에 대한 추천 점수가 value값입니다.
 
 ### 3.visitors중 user의 친구를 제외한 사람들 추천목록에 추가
-#### updateRecommendList(List<String> visitors, Map<String, value> recommendList) --> Map<String, Integer> recommendList
+#### updateRecommendList(List<String> visitors, List<String> userFriendList ,Map<String, Integer> recommendList) --> Map<String, Integer> recommendList
 - 제공된 visitor 목록에서 user의 친구들을 제외한 이름들을 makeRecommendList()에서 만든 recommendList에 추가합니다. 
 
 ### 4. 제공된 firends에서 user의 친구와 친구이면 추천 점수 증가
-
+#### addScoreByFriends(List<List<String>> friends, List<String> userFriendList ,Map<String, Integer> recommendList) --> Map<String, Integer> recommendList
+- for문을 수행하며 제공된 friends의 각 친구관계를 firstFriend와 secondFriend에 넣습니다.
+- 입력받은 userFriend 목록에 firstFried의 이름이 있고 seconFriend의 이름이 user가 아니라면 해당 second 사람의 추천점수를 10 증가합니다.
+- for문이 끝난 후 점수가 갱신된 recommendList를 반환합니다.
 
 ### 5. 제공된 visitors에 이름이 있으면 해당 친구 추천 점수 증가
+
 
 ### 6. 추천목록을 추천점수가 높은순으로 정렬, 이름이 같으면 이름순으로 정렬
 
