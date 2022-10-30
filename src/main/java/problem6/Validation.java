@@ -7,8 +7,8 @@ import problem6.exceptions.TotalCountException;
 import java.util.List;
 import java.util.regex.Pattern;
 
-public class Validator {
-    public void validate(List<List<String>> forms) {
+public class Validation {
+    public static void validate(List<List<String>> forms) {
         if(totalCountValidate(forms.size())) throw new TotalCountException("Total crew cannot be above 10'000!");
 
         forms.forEach(form -> {
@@ -17,17 +17,17 @@ public class Validator {
         });
     }
 
-    private boolean totalCountValidate(int totalCount) {
+    private static boolean totalCountValidate(int totalCount) {
         return !(1 <= totalCount && totalCount <= 10_000);
     }
 
-    private boolean nameValidate(String name) {
+    private static boolean nameValidate(String name) {
         int nameLength = name.length();
 
         return nameLength >= 1&& nameLength<20 && Pattern.matches("^[가-힣]*$", name);
     }
 
-    private boolean emailValidate(String email) {
+    private static boolean emailValidate(String email) {
         int emailLength = email.length();
 
         return (emailLength >= 11 && emailLength < 20) &&
