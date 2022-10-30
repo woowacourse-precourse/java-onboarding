@@ -7,7 +7,7 @@ public class Problem3 {
         String tempNumber;
         for(int num = 1; num <= number; num++){
             tempNumber = Integer.toString(num);
-            getCountGameNumber(tempNumber);
+            answer += getCountGameNumber(tempNumber);
         }
 
         return answer;
