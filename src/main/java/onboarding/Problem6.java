@@ -66,9 +66,9 @@ public class Problem6 {
 
         if (length == 1) {
             i1 = indexMap.get(nickname.substring(0, 1));
-            index = new Pair(i1, i1);
-            if (!trieList[i1].contains(i1)) {
-                trieList[i1].add(i1);
+            index = new Pair(i1, -1);
+            if (!trieList[i1].contains(-1)) {
+                trieList[i1].add(-1);
             } else if (!checkList.contains(index)) {
                 checkList.add(index);
             }
@@ -108,7 +108,7 @@ public class Problem6 {
 
         if (length == 1) {
             i1 = indexMap.get(nickname.substring(0, 1));
-            index = new Pair(i1, i1);
+            index = new Pair(i1, -1);
             if (checkList.contains(index)) {
                 return true;
             }
