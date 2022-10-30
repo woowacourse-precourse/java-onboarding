@@ -23,7 +23,7 @@ public class Problem6 {
         }
 
         ArrayList<String> answer = new ArrayList<>(duplicateEmails);
-        Collections.sort(answer);
+        Collections.sort(answer, new EmailCompare());
         return answer;
     }
 
@@ -44,5 +44,14 @@ public class Problem6 {
             combinations.add(name.substring(i, i+2));
         }
         return combinations;
+    }
+}
+class EmailCompare implements Comparator<String> {
+    final int EMAIL_DOMAIN_LENGTH = 10;
+    @Override
+    public int compare(String email1, String email2) {
+        String subEmail1 = email1.substring(0, email1.length()-EMAIL_DOMAIN_LENGTH);
+        String subEmail2 = email2.substring(0, email2.length()-EMAIL_DOMAIN_LENGTH);
+        return subEmail1.compareTo(subEmail2);
     }
 }
