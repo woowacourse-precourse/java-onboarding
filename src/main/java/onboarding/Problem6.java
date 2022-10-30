@@ -25,10 +25,7 @@ public class Problem6 {
 				String checkingWords = name.substring(j, j + 2);
 
 				Set<String> emailsToBeSent = getEmailsToBeSent(crewHashData, checkingWords);
-
-				if (emailsToBeSent.size() > 1) {
-					organizedEmails.addAll(emailsToBeSent);
-				}
+				checkDuplicateEmail(organizedEmails, emailsToBeSent);
 			}
 		}
 
@@ -42,6 +39,12 @@ public class Problem6 {
 			.filter(entry -> entry.getValue().contains(checkingWords))
 			.map(Map.Entry::getKey)
 			.collect(Collectors.toSet());
+	}
+
+	private static void checkDuplicateEmail(HashSet<String> organizedEmails, Set<String> emails) {
+		if (emails.size() > 1) {
+			organizedEmails.addAll(emails);
+		}
 	}
 
 	private static TreeSet<String> getSortedSet(HashSet<String> dispersedSet) {
