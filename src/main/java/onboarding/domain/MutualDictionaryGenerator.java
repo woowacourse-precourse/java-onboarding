@@ -7,11 +7,11 @@ import java.util.Map;
 public class MutualDictionaryGenerator {
     private final FriendRelations relations;
     private final String user;
-    private final HashMap<String, Integer> dictionary;
+    private final Map<String, Integer> dictionary;
     
-    public MutualDictionaryGenerator(String user, List<List<String>> relations) {
+    public MutualDictionaryGenerator(FriendRelations relations, String user) {
         this.user = user;
-        this.relations = new FriendRelations(relations);
+        this.relations = relations;
         this.dictionary = new HashMap<String, Integer>();
         initDictionary();
     }
@@ -30,12 +30,13 @@ public class MutualDictionaryGenerator {
     private void insertMutual(List<String> mutualFriends) {
         for (String mutualFriend : mutualFriends) {
             if (relations.isStranger(user, mutualFriend)) {
-                dictionary.put(mutualFriend, getMutualCounts(mutualFriend));
+                dictionary.put(mutualFriend, countMutual(mutualFriend));
             }
         }
     }
     
-    private int getMutualCounts(String mutualFriend) {
-        return (dictionary.containsKey(mutualFriend)) ? (dictionary.get(mutualFriend) + 1) : 1;
+    private int countMutual(String mutualFriend) {
+        Integer count = dictionary.get(mutualFriend);
+        return (count == null) ? 1 : ++count;
     }
 }
