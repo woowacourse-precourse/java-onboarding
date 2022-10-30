@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -68,8 +69,15 @@ public class Problem6 {
      * 이메일 오름차순으로 정렬
      */
     private static List<String> emailOrder(List<String> emails){
-        emails.sort(Comparator.naturalOrder());
-        return emails;
+        Map<String, String> emailMap = new TreeMap<>();
+        List<String> emailList = new ArrayList<>();
+        
+        for(int i=0;i<emails.size();i++)
+            emailMap.put(emails.get(i).substring(0,emails.get(i).length()-10),emails.get(i));
+        for (Map.Entry<String, String> entry : emailMap.entrySet())
+            emailList.add(entry.getValue());
+
+        return emailList;
     }
 
     /**
@@ -85,9 +93,9 @@ public class Problem6 {
      * 이메일 제한 사항을 만족하는 리스트로 반환하는 함수
      */
     private static List<String> emailResult(List<String> emails){
-        List<String> emailCheck;
-        emailCheck = emailOrder(emails);
+        List<String> emailCheck = new ArrayList<>();
         emailCheck = emailRemoveDuplicated(emails);
+        emailCheck = emailOrder(emails);
         return emailCheck;
     }
 
