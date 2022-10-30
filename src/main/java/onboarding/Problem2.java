@@ -1,5 +1,29 @@
-
 package onboarding;
+
+class DummyWord {
+    private char tmp;
+    private int index;
+    private StringBuffer word;
+
+    public DummyWord(char tmp, int index, StringBuffer word) {
+        this.tmp = tmp;
+        this.index = index;
+        this.word = word;
+    }
+
+    public char getTmp() {
+        return tmp;
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public StringBuffer getWord() {
+        return word;
+    }
+
+}
 
 public class Problem2 {
     public static String solution(String cryptogram) {
@@ -36,6 +60,20 @@ public class Problem2 {
         }
 
         return sb.toString();
+    }
+
+    private static DummyWord changeToDummyMark(DummyWord dummyWord) {
+        int i = 0;
+        char tmp = dummyWord.getTmp();
+        int index = dummyWord.getIndex();
+        StringBuffer word = dummyWord.getWord();
+
+        while (index+i < word.length() && tmp == word.charAt(index+i)) {
+            word.setCharAt(index+i, '*');
+            i += 1;
+        }
+
+        return new DummyWord(' ', index+i, word);
     }
 
 }
