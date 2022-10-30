@@ -11,6 +11,16 @@ import java.util.List;
  */
 
 class Problem1 {
+    private static final int DRAW = 0;
+    private static final int LEFT_PAGE = 0;
+    private static final int RIGHT_PAGE = 1;
+    private static final int WIN_POBI = 1;
+    private static final int WIN_CRONG = 2;
+    private static final int EXCEPTION = -1;
+
+    private static int maxScoreOfPobi;
+    private static int maxScoreOfCrong;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
