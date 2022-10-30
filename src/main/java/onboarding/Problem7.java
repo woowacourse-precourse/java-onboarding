@@ -102,13 +102,13 @@ public class Problem7 {
         }
     }
 
-    private static boolean isNotContainMap(Map<String, Integer> numberOfFriends, String friendA) {
-        return !numberOfFriends.containsKey(friendA);
+    private static boolean isNotContainMap(Map<String, Integer> numberOfFriends, String friend) {
+        return !numberOfFriends.containsKey(friend);
     }
 
-    private static void initFriend(Map<String, Integer> numberOfFriends, List<Friend> friends, int idx, String friendA) {
-        numberOfFriends.put(friendA, idx);
-        friends.add(idx, new Friend(friendA, 0));
+    private static void initFriend(Map<String, Integer> numberOfFriends, List<Friend> friends, int idx, String friend) {
+        numberOfFriends.put(friend, idx);
+        friends.add(idx, new Friend(friend, 0));
     }
 
     private static void addMyFriend(Map<String, Integer> numberOfFriends, List<Friend> friends, String friendA, String friendB) {
