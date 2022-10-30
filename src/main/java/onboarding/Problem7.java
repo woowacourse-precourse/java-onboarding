@@ -8,6 +8,8 @@ public class Problem7 {
 
         Map<String, ArrayList<String>> friendMap = createFriendMap(friends);
 
+        Map<String, Integer> recommendScore = new TreeMap<>();
+
         return answer;
     }
 
@@ -26,5 +28,18 @@ public class Problem7 {
         ArrayList<String> friendList = friendMap.getOrDefault(user1, new ArrayList<>());
         friendList.add(user2);
         friendMap.put(user1, friendList);
+    }
+
+    private static void addRecommendScore(Map<String, Integer> recommendScore, List<String> friendsOfFriend, int score, List<String> friendsOfUser, String user) {
+        for (String friend : friendsOfFriend) {
+            if (isException(friend, friendsOfUser, user)) {
+                continue;
+            }
+            recommendScore.put(friend, recommendScore.getOrDefault(friend, 0) + score);
+        }
+    }
+
+    private static boolean isException(String friend, List<String> userFriends, String user) {
+        return userFriends.contains(friend) || friend.equals(user);
     }
 }
