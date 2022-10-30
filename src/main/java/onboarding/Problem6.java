@@ -11,6 +11,8 @@ public class Problem6 {
 
         Set<String> overlappingEmailList = checkingWordUsingMoreThan2(continuousThings);
 
+        sortList(answer, overlappingEmailList);
+
         return answer;
     }
 
@@ -49,5 +51,15 @@ public class Problem6 {
             }
         }
         return overlappingEmailList;
+    }
+
+    /**
+     * Function for sorted email
+     * */
+    private static void sortList(List<String> answer, Set<String> overlappingEmailList) {
+        for (String email : overlappingEmailList) {
+            answer.add(email);
+        }
+        Collections.sort(answer);
     }
 }
