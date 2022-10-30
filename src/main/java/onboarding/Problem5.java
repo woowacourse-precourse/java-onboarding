@@ -8,4 +8,8 @@ public class Problem5 {
         List<Integer> answer = Collections.emptyList();
         return answer;
     }
+    private static Integer getCoinCount(int money, int cost) {
+        int coinCounter = money / cost;
+        return Integer.valueOf(coinCounter);
+    }
 }
