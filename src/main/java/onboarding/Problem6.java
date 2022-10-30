@@ -13,15 +13,15 @@ public class Problem6 {
 
         for (int i = 0; i < forms.size(); i++) {
 
-            List ElementByTwoDimension = forms.get(i);
+            List elementByTwoDimension = forms.get(i);
 
             for (int j = 0; j < forms.size(); j++) {
                 if (j == i) {
                 } else {
                     List ElementByOneDimension = forms.get(j);
 
-                    String setName = (String) ElementByTwoDimension.get(1);
-                    String setEmail = (String) ElementByTwoDimension.get(0);
+                    String setName = (String) elementByTwoDimension.get(1);
+                    String setEmail = (String) elementByTwoDimension.get(0);
                     String compareName = (String) ElementByOneDimension.get(1);
 
 
