@@ -18,4 +18,16 @@ class Problem1 {
 
         return errorValue;
     }
+
+    private static int addDigits(int pageNumber) {
+        String pageNumberStr = Integer.toString(pageNumber);
+        int addedValue = 0;
+        for (int i = 0; i < pageNumberStr.length(); i++) {
+            char temp = pageNumberStr.charAt(i);
+            addedValue += Character.getNumericValue(temp);
+        }
+
+
+        return addedValue;
+    }
 }
