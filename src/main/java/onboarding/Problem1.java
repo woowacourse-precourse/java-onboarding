@@ -46,6 +46,14 @@ class Problem1 {
 			return false;
 		}
 
+		if (!isNotZero(pages)) {
+			return false;
+		}
+
+		if (!isPositive(pages)) {
+			return false;
+		}
+
 		return true;
 	}
 
@@ -67,6 +75,16 @@ class Problem1 {
 	// 왼쪽, 오른쪽 페이지가 연속되지 않는 경우를 확인하는 메소드
 	private static boolean isContinuous(List<Integer> pages) {
 		return pages.get(1) - pages.get(0) == 1;
+	}
+
+	// 페이지가 0이 아닌 경우를 검증하는 메소드
+	private static boolean isNotZero(List<Integer> pages) {
+		return pages.get(0) != 0 && pages.get(1) != 0;
+	}
+
+	// 페이지가 양수인 경우를 검증하는 메소드
+	private static boolean isPositive(List<Integer> pages) {
+		return pages.get(0) > 0 && pages.get(1) > 0;
 	}
 
 	// 왼쪽, 오른쪽 페이지에서 각 자리 수를 더하거나 곱해 가장 큰 수를 반환하는 메소드
