@@ -4,6 +4,7 @@ import java.util.*;
 
 public class Problem7 {
     private static final int FRIEND_SCORE = 10;
+    private static final int VISITOR_SCORE = 1;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
@@ -13,6 +14,7 @@ public class Problem7 {
 
         Map<String, Integer> recommendScore = new TreeMap<>();
         addFriendScore(recommendScore, friendMap, friendsOfUser, user);
+        addVisitorScore(recommendScore, visitors, friendsOfUser, user);
 
         return answer;
     }
@@ -38,6 +40,10 @@ public class Problem7 {
         for (String friend : friendsOfUser) {
             addRecommendScore(recommendScore, friendMap.get(friend), FRIEND_SCORE, friendsOfUser, user);
         }
+    }
+
+    private static void addVisitorScore(Map<String, Integer> recommendScore, List<String> visitors, List<String> friendsOfUser, String user) {
+        addRecommendScore(recommendScore, visitors, VISITOR_SCORE, friendsOfUser, user);
     }
 
     private static void addRecommendScore(Map<String, Integer> recommendScore, List<String> friendsOfFriend, int score, List<String> friendsOfUser, String user) {
