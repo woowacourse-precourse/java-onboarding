@@ -33,18 +33,47 @@ $ 예외처리
 
  $ 구현
  1, 순서대로 구현한다....
+ 2. 왼쪽, 오른쪽 각 자리를 더하거나 , 곱해서 , 더큰수를 담는다.
  */
 package onboarding;
 
-import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        // int PobiMax = maxScore(pobi);
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+    public static int maxScore(List<Integer> pageList){
+        int max = 0;
+        for(Integer pageNumber : pageList){ // 향상된 for문
+            if (max < compaerSum(pageNumber)){
+                max = compaerSum(pageNumber);
+            }
+        }
+        return max;
+    }
+    
+    public int addtion(int pageNumber){
+        int additionSum = 0;
+        while(0 < pageNumber){
+            additionSum += pageNumber % 10;
+            pageNumber /= 10;
+        }
+        return additionSum;
+    }
+    public static int Multiplicaion(int pageNumber){
+        int MultiplicaionSum = 1;
+
+        while(0 < pageNumber){
+            MultiplicaionSum *= pageNumber % 10;
+            pageNumber /= 10;
+        }
+        return MultiplicaionSum;
+    }
     public static void main(String[] args){
-        solution(null, null);
+        List<Integer> pobi = List.of(97, 98);
+        List<Integer> crong = List.of(197, 198);
     }
 }
