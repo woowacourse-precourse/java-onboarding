@@ -55,12 +55,18 @@ public class Problem7 {
                 values.add(n);
         }
 
+        values.sort(Collections.reverseOrder());
+
+        ArrayList<String> order = new ArrayList<>();
         List<String> answer = new ArrayList<>();
-        for(Map.Entry<String, Integer> entry : recommendMap.entrySet()) {
-            for(int n : values) {
-                if(entry.getValue().equals(n))
-                    answer.add(entry.getKey());
+        for(int n : values) {
+            for (Map.Entry<String, Integer> entry : recommendMap.entrySet()) {
+                if (entry.getValue().equals(n))
+                    order.add(entry.getKey());
             }
+            Collections.sort(order);
+            answer.addAll(order);
+            order.clear();
         }
 
         return answer;
