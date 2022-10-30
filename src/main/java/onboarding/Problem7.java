@@ -10,7 +10,20 @@ import java.util.List;
 3. visitors에 들어있는 횟수만큼 + 1
 4. 람다식을 이용하여 friends 리스트를 점수 내림차순, 이름 오름차순 정렬 후 answer 리스트에 추가
  */
-
+class user_info {
+    String name = "";
+    int score = 0;
+    user_info(String name, int score) {
+        this.name = name;
+        this.score = score;
+    }
+    public String getName() {
+        return this.name;
+    }
+    public int getScore() {
+        return this.score;
+    }
+}
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<String>();
