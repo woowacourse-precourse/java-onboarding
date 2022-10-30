@@ -30,15 +30,15 @@ class Problem1 {
         int rightPage = person.get(1);
         int pageDifference = rightPage - leftPage;
 
-        if (pageDifference == 1) {
-            return false;
+        if (pageDifference != 1) {
+            return true;
         } else if (rightPage > 400 || leftPage < 1) {
-            return false;
+            return true;
         } else if (rightPage % 2 == 1) {
-            return false;
+            return true;
         }
 
-        return true;
+        return false;
     }
 
     private static int calculateMaxNumber(List<Integer> person) {
