@@ -11,6 +11,7 @@ class Problem1 {
     private static final boolean EXCEPT_PAGE = false;
     private static final int FIRST_PAGE = 1;
     private static final int LAST_PAGE = 400;
+    private static final int ERROR = -100;
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         // 둘 중 한명이라도 책의 페이지가 연속적이지 않으면 예외사항 반환
@@ -21,7 +22,7 @@ class Problem1 {
         if(pobiMax > crongMax) return POBI_WIN;
         if(pobiMax < crongMax) return CRONG_WIN;
         if(pobiMax == crongMax) return DRAW;
-        return -100;
+        return ERROR;
     }
 
     /**
@@ -52,11 +53,11 @@ class Problem1 {
      * 각 자릿수의 합 반환
      * @return sum
      */
-    private static int numSum(int i){
+    private static int numSum(int num){
         int sum = 0;
-        while(i>0){
-            sum+=i%10;
-            i=i/10;
+        while(num>0){
+            sum+=num%10;
+            num=num/10;
         }
         return sum;
     }
@@ -64,11 +65,11 @@ class Problem1 {
      * 각 자릿수의 곱 반환
      * @return multi
      */
-    private static int numMulti(int i){
+    private static int numMulti(int num){
         int multi = 1;
-        while(i>0){
-            multi*=i%10;
-            i=i/10;
+        while(num>0){
+            multi*=num%10;
+            num=num/10;
         }
         return multi;
     }
