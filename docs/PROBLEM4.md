@@ -19,3 +19,10 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+### 구현 목록
+- [x] Frog class 생성
+- [x] FrogLetter(Inner class) 생성
+- [x] Letter(class) : 대문자, 소문자, 그 외 문자 범위에 따른 char 변환 메서드
+- [x] Frog(class) : 문자 변환 메서드의 결과값을 모아서 String을 생성하는 기능
+- [x] solution 함수에서 word를 result로 변환하는 함수 호출, 결과 return
