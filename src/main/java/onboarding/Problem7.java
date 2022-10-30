@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
@@ -15,9 +14,11 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, List<String>> userToFriends = parseFriends(friends);
+        Map<String, Integer> bothKnowFriendsScore = computeBothKnowFriendsScore(user, userToFriends);
+        Map<String, Integer> visitScore = computeVisitScore(visitors);
+        Map<String, Integer> recommendScore = computeRecommendScore(bothKnowFriendsScore, visitScore);
 
-        List<String> answer = Collections.emptyList();
-        return answer;
+        return computeAnswer(user, userToFriends.get(user), recommendScore);
     }
 
     static List<String> computeAnswer(String mainCharacter, List<String> mainCharacterFriends, Map<String, Integer> recommendScore) {
@@ -68,22 +69,22 @@ public class Problem7 {
             .count();
     }
 
-    static List<String> findAllUserWithoutMainCharacter(String mainCharacter, Map<String, List<String>> userToFriends, List<String> visitors) {
-        List<String> allUserWithoutMainCharacter = new ArrayList<>();
+    //    static List<String> findAllUserWithoutMainCharacter(String mainCharacter, Map<String, List<String>> userToFriends, List<String> visitors) {
+    //        List<String> allUserWithoutMainCharacter = new ArrayList<>();
+    //
+    //        userToFriends.forEach((user, friends) -> allUserWithoutMainCharacter.add(user));
+    //        visitors.forEach(visitor -> allUserWithoutMainCharacter.add(visitor));
+    //        return allUserWithoutMainCharacter.stream()
+    //            .filter(user -> !user.equals(mainCharacter))
+    //            .distinct()
+    //            .collect(Collectors.toList());
+    //    }
 
-        userToFriends.forEach((user, friends) -> allUserWithoutMainCharacter.add(user));
-        visitors.forEach(visitor -> allUserWithoutMainCharacter.add(visitor));
-        return allUserWithoutMainCharacter.stream()
-            .filter(user -> !user.equals(mainCharacter))
-            .distinct()
-            .collect(Collectors.toList());
-    }
-
-    static List<String> exceptAlreadyFriends(List<String> allFriends, List<String> alreadyFriends) {
-        return allFriends.stream()
-            .filter(friend -> !alreadyFriends.contains(friend))
-            .collect(Collectors.toList());
-    }
+    //    static List<String> exceptAlreadyFriends(List<String> allFriends, List<String> alreadyFriends) {
+    //        return allFriends.stream()
+    //            .filter(friend -> !alreadyFriends.contains(friend))
+    //            .collect(Collectors.toList());
+    //    }
 
     static Map<String, List<String>> parseFriends(List<List<String>> friends) {
         Map<String, List<String>> parsedFriends = new HashMap<>();

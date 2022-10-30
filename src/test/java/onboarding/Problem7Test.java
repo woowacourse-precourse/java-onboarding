@@ -25,21 +25,21 @@ class Problem7Test {
             .contains("andole", "jun", "mrko");
     }
 
-    @Test
-    void findAllUserWithoutMainCharacter() {
-        List<String> allUserWithoutMainCharacter = Problem7.findAllUserWithoutMainCharacter("mrko", userToFriends, visitors);
-
-        Assertions.assertThat(allUserWithoutMainCharacter)
-            .contains("donut", "andole", "jun", "shakevan", "bedi");
-    }
-
-    @Test
-    void exceptAlreadyFriends() {
-        List<String> notFriends = Problem7.exceptAlreadyFriends(List.of("donut", "andole", "jun", "shakevan", "bedi"), List.of("donut", "shakevan"));
-
-        Assertions.assertThat(notFriends)
-            .contains("andole", "jun", "bedi");
-    }
+//    @Test
+//    void findAllUserWithoutMainCharacter() {
+//        List<String> allUserWithoutMainCharacter = Problem7.findAllUserWithoutMainCharacter("mrko", userToFriends, visitors);
+//
+//        Assertions.assertThat(allUserWithoutMainCharacter)
+//            .contains("donut", "andole", "jun", "shakevan", "bedi");
+//    }
+//
+//    @Test
+//    void exceptAlreadyFriends() {
+//        List<String> notFriends = Problem7.exceptAlreadyFriends(List.of("donut", "andole", "jun", "shakevan", "bedi"), List.of("donut", "shakevan"));
+//
+//        Assertions.assertThat(notFriends)
+//            .contains("andole", "jun", "bedi");
+//    }
 
     @Test
     void computeBothKnowFriendsScore() {
