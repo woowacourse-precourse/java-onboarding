@@ -4,12 +4,10 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
         if (validPages(pobi) || validPages(crong)) {
             return -1;
         }
-        answer = resultOfMatch(calculatePages(pobi), calculatePages(crong));
-        return answer;
+        return resultOfMatch(calculatePages(pobi), calculatePages(crong));
     }
 
     private static int resultOfMatch(int player1, int player2) {
