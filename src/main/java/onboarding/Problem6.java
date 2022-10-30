@@ -1,6 +1,5 @@
 package onboarding;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -40,7 +39,9 @@ public class Problem6 {
             String nickname = form.get(1);
             String email = form.get(0);
 
-            crewInfo.put(nickname, email);
+            if (isSatisfyEmailFormat(email)) {
+                crewInfo.put(nickname, email);
+            }
         }
     }
 
@@ -69,5 +70,18 @@ public class Problem6 {
         }
 
         return false;
+    }
+
+    private static boolean isSatisfyEmailFormat(String email) {
+        int emailLength = email.length();
+
+        if (emailLength < 11 || emailLength > 20) {
+            return false;
+        }
+
+        String[] parsedEmail = email.split("@");
+        String domain = parsedEmail[1];
+
+        return domain.equals("email.com");
     }
 }
