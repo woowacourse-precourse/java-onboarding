@@ -9,7 +9,7 @@ import java.util.Set;
 
 public class EmailView {
     private List<String> emailsToBeSorted;
-    private List<String> idsOfEmails;
+    private List<String> sortedIdsOfEmails;
     private List<String> sortedEmails;
     private Map<String, Set<String>> results;
 
@@ -20,12 +20,13 @@ public class EmailView {
     public Map<String, List<String>> getSortedResults() {
         Map<String, List<String>> sortedResults = new HashMap<>();
         for (String key : results.keySet()) {
-            sortedEmails = new ArrayList<>();
             Set<String> emailValues = results.get(key);
             emailsToBeSorted = new ArrayList<>(emailValues);
-            idsOfEmails = separateEmails(emailsToBeSorted);
-            for (String id : idsOfEmails) {
-                sortEmailsById(id);
+            sortedIdsOfEmails = separateEmails(emailsToBeSorted);
+            sortedEmails = new ArrayList<>();
+
+            for (String sortedId : sortedIdsOfEmails) {
+                sortEmailsById(sortedId);
             }
             sortedResults.put(key, sortedEmails);
         }
@@ -42,13 +43,13 @@ public class EmailView {
         return ids;
     }
 
-    public String getIdFromEmail (String email) {
+    public String getIdFromEmail(String email) {
         return email.split("@")[0];
     }
 
-    public void sortEmailsById(String givenId) {
+    public void sortEmailsById(String sortedId) {
         for (String email : emailsToBeSorted) {
-            if (getIdFromEmail(email).equals(givenId)) {
+            if (getIdFromEmail(email).equals(sortedId)) {
                 int index = emailsToBeSorted.indexOf(email);
                 sortedEmails.add(emailsToBeSorted.get(index));
             }

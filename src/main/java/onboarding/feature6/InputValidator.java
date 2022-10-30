@@ -11,7 +11,7 @@ public class InputValidator {
     }
 
     public static boolean nicknameChecker(String nickname) {
-        return  isValidLength(nickname, 1, 20) && isValidNickname(nickname);
+        return isValidLength(nickname, 1, 20) && isValidNickname(nickname);
     }
 
     public static boolean isValidLength(String input, int minLength, int maxLength) {

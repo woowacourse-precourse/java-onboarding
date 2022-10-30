@@ -9,13 +9,13 @@ import java.util.Map;
 import java.util.Set;
 
 public class DuplicateLettersFinder {
-    private String duplicateLetters = null;
+    private String duplicateLetters;
     private String currentEmail;
     private String nextEmail;
-    
+
     private List<String> userEmails;
     private List<String> userNicknames;
-    private Map<String, Set<String>> filteredResults = new HashMap<>(); // {key: duplicate letters & value: filtered emails}
+    private Map<String, Set<String>> result = new HashMap<>(); // {key: duplicate letters & value: filtered emails}
     public Set<String> duplicateLettersList = new HashSet<>();
 
     public DuplicateLettersFinder(UserInfo userInfo) {
@@ -33,7 +33,7 @@ public class DuplicateLettersFinder {
                 chooseNicknames(currentNickname, nextNickname);
             }
         }
-        return filteredResults;
+        return result;
     }
 
     public void chooseNicknames(String currentNickname, String nextNickname) {
@@ -50,21 +50,21 @@ public class DuplicateLettersFinder {
         if (lettersOfCurrentNickname.equals(lettersOfNextNickname)) {
             duplicateLetters = lettersOfCurrentNickname;
             duplicateLettersList.add(duplicateLetters);
-            updateFilteredResults();
+            updateResult();
         }
     }
 
-    public void updateFilteredResults() {
-        if (filteredResults.containsKey(duplicateLetters)) {
-            Set<String> existingFilteredEmails = filteredResults.get(duplicateLetters);
+    public void updateResult() {
+        if (result.containsKey(duplicateLetters)) {
+            Set<String> existingFilteredEmails = result.get(duplicateLetters);
             existingFilteredEmails.add(currentEmail);
             existingFilteredEmails.add(nextEmail);
-            filteredResults.replace(duplicateLetters, existingFilteredEmails);
+            result.replace(duplicateLetters, existingFilteredEmails);
             return;
         }
         Set<String> newFilteredEmails = new HashSet<>();
         newFilteredEmails.add(currentEmail);
         newFilteredEmails.add(nextEmail);
-        filteredResults.put(duplicateLetters, newFilteredEmails);
+        result.put(duplicateLetters, newFilteredEmails);
     }
 }
