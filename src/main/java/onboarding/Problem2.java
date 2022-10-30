@@ -2,8 +2,7 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        return loopRemoveDuplicatedString(cryptogram);
     }
 
     public static String removeDuplicatedString(String cryptogram) {
@@ -25,5 +24,16 @@ public class Problem2 {
             prevDuplicated = curDuplicated;
         }
         return result;
+    }
+
+    public static String loopRemoveDuplicatedString(String cryptogram) {
+        while (cryptogram != "") {
+            String removedDuplicatedString = removeDuplicatedString(cryptogram);
+            if (removedDuplicatedString.equals(cryptogram)) {
+                return removedDuplicatedString;
+            }
+            cryptogram = removedDuplicatedString;
+        }
+        return cryptogram;
     }
 }
