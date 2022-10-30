@@ -12,6 +12,8 @@ public class UserService {
     public static final int INIT_SCORE = 0;
     public static final int VISITOR_DEFAULT_SCORE = 0;
     public static final int VISITOR_SCORE = 1;
+    public static final int COMMON_FRIEND_SCORE = 10;
+
     private final UserRepository userRepository;
 
     public UserService(UserRepository userRepository) {
@@ -71,12 +73,26 @@ public class UserService {
         List<String> candidateUserIds = operateFriendCommendation(userId);
         candidateUserIds.forEach(s -> commendFriend.put(s, INIT_SCORE));
 
-        User findUser = userRepository.findByUserid(userId).orElseThrow();
-        visitors.stream().filter(findUser::isNotFriend)
-                .forEach(visitorId -> commendFriend.put(visitorId,
-                        commendFriend.getOrDefault(visitorId, VISITOR_DEFAULT_SCORE) + VISITOR_SCORE));
+        User user = userRepository.findByUserid(userId).orElseThrow();
+        scoreVisitors(visitors, commendFriend, user);
+        scoreCommonFriend(commendFriend, user);
 
         return createResponseDtos(commendFriend);
+    }
+
+    private void scoreVisitors(List<String> visitors, Map<String, Integer> commendFriend, User user) {
+        visitors.stream().filter(user::isNotFriend)
+                .forEach(visitorId -> commendFriend.put(visitorId,
+                        commendFriend.getOrDefault(visitorId, VISITOR_DEFAULT_SCORE) + VISITOR_SCORE));
+    }
+
+    private void scoreCommonFriend(Map<String, Integer> commendFriend, User user) {
+        for (String commendId : commendFriend.keySet()) {
+            userRepository.findByUserid(commendId).ifPresent(commendUser -> {
+                int count = user.commonFriendCount(commendUser);
+                commendFriend.put(commendId, (commendFriend.get(commendId) + (COMMON_FRIEND_SCORE * count)));
+            });
+        }
     }
 
     private List<FriendCommendResponseDto> createResponseDtos(Map<String, Integer> commendFriend) {

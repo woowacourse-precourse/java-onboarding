@@ -85,4 +85,18 @@ public class UserTest {
         assertThat(bedi.getUserId()).isEqualTo("bedi");
         assertThat(bedi.getScore()).isEqualTo(3);
     }
+
+    @Test
+    void 함께아는_친구의수_기준으로_점수부여() {
+        userService.addFriends(createFriends());
+        List<FriendCommendResponseDto> result =
+                userService.operateFriendCommendation("mrko", List.of("bedi", "bedi", "donut", "bedi", "shakevan"));
+
+        FriendCommendResponseDto andole = result.get(0);
+        FriendCommendResponseDto jun = result.get(1);
+        FriendCommendResponseDto bedi = result.get(2);
+        assertThat(andole.getScore()).isEqualTo(20);
+        assertThat(jun.getScore()).isEqualTo(20);
+        assertThat(bedi.getScore()).isEqualTo(3);
+    }
 }

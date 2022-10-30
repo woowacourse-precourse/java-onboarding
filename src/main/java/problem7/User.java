@@ -41,4 +41,8 @@ public class User {
     public boolean isNotFriend(String friendId) {
         return friend.hasNotFriend(friendId);
     }
+
+    public int commonFriendCount(User otherUser) {
+        return friend.commonFriendCount(otherUser.friend);
+    }
 }

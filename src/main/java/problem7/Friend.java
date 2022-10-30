@@ -26,4 +26,12 @@ public class Friend {
     public boolean hasNotFriend(String userId) {
         return !hasFriend(userId);
     }
+
+    public int commonFriendCount(Friend otherFriend) {
+        return friends.stream().mapToInt(friendId -> checkFriendId(friendId, otherFriend)).sum();
+    }
+
+    private int checkFriendId(String friendId, Friend otherFriend) {
+        return (int) otherFriend.friends.stream().filter(friendId::equals).count();
+    }
 }
