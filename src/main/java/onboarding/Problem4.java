@@ -34,3 +34,12 @@ public class Problem4 {
         return reverseCharacterList;
     }
 }
+
+class Dictionary {
+    static char getReverseCharacter(char character) {
+        int ascii = character;
+        int reverseAscii = getReverseByAscii(ascii);
+        char reverseCharacter = (char) reverseAscii;
+        return reverseCharacter;
+    }
+}
