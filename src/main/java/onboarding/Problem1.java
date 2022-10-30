@@ -72,11 +72,11 @@ class Problem1 {
     }
 
     private static int selectBiggerNumber(int sum, int mul){
-        return sum > mul ? sum : mul;
+        return Math.max(sum,mul);
     }
 
     private static int selectBiggerPage(int left,int right){
-        return left > right ? left : right;
+        return Math.max(left,right);
     }
 
     private static int selectWinner(int pobiNumber,int crongNumber){
