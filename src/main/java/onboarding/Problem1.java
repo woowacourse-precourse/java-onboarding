@@ -41,6 +41,14 @@ class Problem1 {
             }
             return rep;
         }
+        // 무결성 체크하는 기능/
+        boolean chk_cond(List<Integer> lst){
+            if(lst.get(0)!=lst.get(1)-1){ // 하나 차이가 아니라면
+                return false;
+            }else if(lst.get(0)%2==0 || lst.get(1)%2==1){ // 홀짝이 맞지 않으면(0이나오거나;짝수 || 1이 나온다면;홀수)
+                return false;
+            }else return true; // 입력이 무결하면
+        }
 
     }
 }
