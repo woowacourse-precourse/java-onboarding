@@ -54,4 +54,15 @@ public class Problem7 {
     /**
      * user의 타임 라인에 방문한 사람 점수 계산 기능
      */
+    private static void addVisitor(List<String> visitors, TreeSet<String> friendSet, HashMap<String, Integer> recommendScore) {
+        for(String visitor : visitors){
+            if(!friendSet.contains(visitor)){
+                if(!recommendScore.containsKey(visitor)){
+                    recommendScore.put(visitor, 1);
+                }else{
+                    recommendScore.replace(visitor, recommendScore.get(visitor) + 1);
+                }
+            }
+        }
+    }
 }
