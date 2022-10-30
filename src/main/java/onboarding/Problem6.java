@@ -8,8 +8,13 @@ import java.util.*;
 * sn : Substring Name(이름의 부분 문자열)
 * */
 public class Problem6 {
+    private static List<List<String>> snList = new ArrayList<>();
+
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>();
+
+        makeSnList(forms);
+
         return answer;
     }
 
@@ -27,5 +32,15 @@ public class Problem6 {
             }
         }
         return sub;
+    }
+
+    /*
+     * 각 이름에서 부분 문자열을 구한다.
+     * */
+    private static void makeSnList(List<List<String>> forms){
+        for (List<String> form : forms) {
+            String name = form.get(1);
+            snList.add(subName(name));
+        }
     }
 }
