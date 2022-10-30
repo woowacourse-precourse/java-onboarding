@@ -7,46 +7,55 @@ import java.util.List;
 import java.util.Map;
 
 public class Problem7 {
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+
+        return getResult(user, friends, visitors);
+    }
+
+    private static List<String> getResult(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
-
-        Map<String, List<String>> relationships = makeRelationShips(friends);
-        List<String> userFriends = fillUserFriends(user, relationships);
-
-        Map<String, Integer> friendPoints = getPointFrom(relationships, user, userFriends);
-        Map<String, Integer> visitorPoints = getPointFrom(visitors, user, userFriends);
-
-        List<UserPoint> userPoints = new ArrayList<>();
-
-        for (String recommend: friendPoints.keySet()) {
-            userPoints.add(new UserPoint(recommend, friendPoints.get(recommend)));
-        }
-
-        for (String recommend: visitorPoints.keySet()) {
-            userPoints.add(new UserPoint(recommend, visitorPoints.get(recommend)));
-        }
+        List<UserPoint> userPoints = makeUserPoints(user, friends, visitors);
 
         sortUserPoints(userPoints);
 
-        int maxLength = 5;
-        if(userPoints.size() < maxLength)
-            maxLength = userPoints.size();
-
-        for(UserPoint userPoint: userPoints.subList(0,maxLength)) {
+        for (UserPoint userPoint : userPoints.subList(0, getMaxLength(userPoints))) {
             answer.add(userPoint.userId);
         }
 
-
         return answer;
+    }
+
+    private static int getMaxLength(List<UserPoint> userPoints) {
+        int maxLength = 5;
+        if (userPoints.size() < maxLength) {
+            maxLength = userPoints.size();
+        }
+        return maxLength;
+    }
+
+    private static List<UserPoint> makeUserPoints(String user, List<List<String>> friends, List<String> visitors) {
+        Map<String, List<String>> relationships = makeRelationShips(friends);
+        List<String> userFriends = fillUserFriends(user, relationships);
+
+        List<UserPoint> userPoints = new ArrayList<>();
+
+        enrichPointFor(getPointFrom(relationships, user, userFriends), userPoints);
+        enrichPointFor(getPointFrom(visitors, user, userFriends), userPoints);
+
+        return userPoints;
+    }
+
+    private static void enrichPointFor(Map<String, Integer> pointMap, List<UserPoint> userPoints) {
+        for (String recommend : pointMap.keySet()) {
+            userPoints.add(new UserPoint(recommend, pointMap.get(recommend)));
+        }
     }
 
     public static Map<String, Integer> getPointFrom(List<String> visitors, String user, List<String> userFriends) {
         Map<String, Integer> visitorPoints = new HashMap<>();
 
-        for (String recommend : visitors) {
-            visitorPoints.putIfAbsent(recommend, 0);
-            visitorPoints.put(recommend, visitorPoints.get(recommend) + 1);
-        }
+        addPoint(visitors, visitorPoints, 1);
         removeCantRecommendCase(user, userFriends, visitorPoints);
         return visitorPoints;
     }
@@ -71,14 +80,21 @@ public class Problem7 {
     public static Map<String, Integer> getPointFrom(Map<String, List<String>> relationships,
             String user, List<String> userFriends) {
         Map<String, Integer> friendPoints = new HashMap<>();
+
         for (String friend : userFriends) {
-            for (String recommend : fillUserFriends(friend, relationships)) {
-                friendPoints.putIfAbsent(recommend, 0);
-                friendPoints.put(recommend, friendPoints.get(recommend) + 10);
-            }
+            addPoint(fillUserFriends(friend, relationships), friendPoints, 10);
         }
+
         removeCantRecommendCase(user, userFriends, friendPoints);
+
         return friendPoints;
+    }
+
+    private static void addPoint(List<String> list, Map<String, Integer> pointList, int point) {
+        for (String recommend : list) {
+            pointList.putIfAbsent(recommend, 0);
+            pointList.put(recommend, pointList.get(recommend) + point);
+        }
     }
 
     public static List<String> fillUserFriends(String user, Map<String, List<String>> relationships) {
@@ -87,10 +103,12 @@ public class Problem7 {
 
     public static Map<String, List<String>> makeRelationShips(List<List<String>> friends) {
         Map<String, List<String>> relationships = new HashMap<>();
+
         for (List<String> friendRelation : friends) {
             enrichRelation(relationships, friendRelation.get(0), friendRelation.get(1));
             enrichRelation(relationships, friendRelation.get(1), friendRelation.get(0));
         }
+
         return relationships;
     }
 
@@ -98,6 +116,7 @@ public class Problem7 {
         if (isEmptyList(relationships.get(f1))) {
             relationships.put(f1, new ArrayList<>());
         }
+
         relationships.get(f1).add(f2);
     }
 
@@ -130,12 +149,13 @@ public class Problem7 {
                     ", point=" + point +
                     '}';
         }
+
         @Override
         public boolean equals(Object other) {
-            if(other.getClass() != UserPoint.class) {
+            if (other.getClass() != UserPoint.class) {
                 return false;
             }
-            return compareUserPoint(this,(UserPoint) other) == 0;
+            return compareUserPoint(this, (UserPoint) other) == 0;
         }
     }
 
