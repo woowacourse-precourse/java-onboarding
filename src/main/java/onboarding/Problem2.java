@@ -5,24 +5,32 @@ import java.util.regex.Pattern;
 
 public class Problem2 {
 	public static String solution(String cryptogram) {
-
 		String answer;
-		String regex = "(\\w)(\\1+)";
-		Pattern patternRegex = Pattern.compile(regex);
+		Matcher patternMatcher;
 
 		while (true) {
-			Matcher patternMatcher = patternRegex.matcher(cryptogram);
-
+			boolean doesDuplicationExists = checkDuplication(cryptogram);
+			patternMatcher = setMatcher(cryptogram);
 			cryptogram = removeDuplication(patternMatcher);
-			patternMatcher = patternRegex.matcher(cryptogram);
 
-			if (!patternMatcher.find()) {
-				answer = cryptogram;
-				break;
-			}
+			if (!doesDuplicationExists) { break; }
+
 		}
 
+		answer = cryptogram;
+
 		return answer;
+	}
+
+	private static boolean checkDuplication(String cryptogram) {
+		Matcher patternMatcher = setMatcher(cryptogram);
+		return patternMatcher.find();
+	}
+
+	private static Matcher setMatcher(String cryptogram) {
+		String regex = "(\\w)(\\1+)";
+		Pattern patternRegex = Pattern.compile(regex);
+		return patternRegex.matcher(cryptogram);
 	}
 
 	private static String removeDuplication(Matcher patternMatcher) {
