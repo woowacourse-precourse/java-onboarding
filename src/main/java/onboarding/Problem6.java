@@ -29,4 +29,16 @@ public class Problem6 {
         }
         return false;
     }
+
+    private static boolean isRightInput (List<String> crew) {
+        boolean isRight = true;
+        String[] email = crew.get(0).split("@");
+        String emailAddress = email[0];
+        String emailDomain = email[1];
+        String nickname = crew.get(1);
+        isRight &= isRightEmailAddress(emailAddress);
+        isRight &= isRightEmailDomain(emailDomain);
+        isRight &= isRightNicknameLength(nickname);
+        return isRight;
+    }
 }
