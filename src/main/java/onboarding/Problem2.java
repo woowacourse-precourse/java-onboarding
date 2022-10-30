@@ -7,7 +7,14 @@ package onboarding;
  */
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = cryptogram;
+
+        //중복문자가 존재할시 while문 반복
+        while(isDuplicate(answer)){
+            //중복문자가 존재할시 중복문자 제거
+            //answer = removeDuplicate(answer);
+        }
+
         return answer;
     }
 
