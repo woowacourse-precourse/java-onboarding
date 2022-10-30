@@ -10,23 +10,22 @@ public class Problem4 {
     public static String solution(String word) {
         StringBuilder result = new StringBuilder();
         for (Character c : word.toCharArray()) {
-            if (isAlpha(c)) {
-                result.append(mapCharByDictionary(c));
-            }else {
-                result.append(c);
-            }
+            result.append(mapCharByDictionary(c));
         }
         return result.toString();
+    }
+
+    private static Character mapCharByDictionary(Character c) {
+        if (isAlpha(c)) {
+            Dictionary mapped = Enum.valueOf(Dictionary.class, c.toString());
+            return mapped.word();
+        }
+        return c;
     }
 
     private static boolean isAlpha(Character c) {
         String toStr = String.valueOf(c);
         return !toStr.matches(SPECIAL_SYMBOL) && !toStr.equals(BLANK_SPACE);
-    }
-
-    private static Character mapCharByDictionary(Character c) {
-        Dictionary string = Enum.valueOf(Dictionary.class, c.toString());
-        return string.word();
     }
 
     public enum Dictionary {
