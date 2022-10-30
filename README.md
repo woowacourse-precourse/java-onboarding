@@ -146,8 +146,32 @@ int[] 리스트 타입으로 지폐단위 리스트를 선언하였습니다.
 ## Problem 6
 
 - 사용된 클래스 리스트
+  - solution
+  - makeNameLst
+  - mainloop
+  - finalCompare
+  - finalAnswer
+
+**핵심기능**
+> mainloop를 통해 중복 문자가 있을 경우 해당 문자 리턴
+> 중복문자 발견 후 contain 함수를 통해 true를 반환하는 문자열 출력
 
 <br>
+
+### solution
+finalAnswer 을 통해 중복 이메일을 반환합니다.
+
+### makeNameLst
+문제에서 입력된 forms의 이름만 추출하여 NameLst에 저장하여 반환합니다.
+
+### mainloop
+중복 문자열을 찾으면 반환합니다.
+
+### finalCompare
+중복문자열에 대해 NameLst(이름 요소들의 리스트)중 중복문자열을 가진 인덱스를 반환합니다.
+
+### finalAnswer
+finalCompare에서 반환된 인덱스를 기준으로 email 리스트를 만들며 Collections 함수를 통해 리스트요소를 정렬하였습니다.
 
 
 ## Problem 7
