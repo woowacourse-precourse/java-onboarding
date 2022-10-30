@@ -12,6 +12,31 @@ class Problem1 {
         return answer;
     }
 
+
+    private static Boolean checkWrongPages(List<Integer> pages){
+        Integer leftPage = pages.get(LEFT_PAGE_INDEX);
+        Integer rightPage = pages.get(RIGHT_PAGE_INDEX);
+
+        if (checkWrongRange(leftPage, rightPage)){
+            return true;
+        }
+
+        if (checkWrongRange(leftPage, rightPage)) {
+            return true;
+        }
+
+        // leftPage must be odd, rightPage must be even number
+        if (isEvenNumber(leftPage) || isOddNumber(rightPage)){
+            return true;
+        }
+
+        // difference of leftPage and rightPage must be 1
+        if ((rightPage - leftPage) != 1){
+            return true;
+        }
+        return false;
+    }
+
     private static boolean checkWrongRange(Integer leftPage, Integer rightPage){
         return (leftPage <= FIRST_PAGE || rightPage >= LAST_PAGE);
     }
