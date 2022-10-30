@@ -12,7 +12,6 @@ public class Problem4 {
                 answer += word.charAt(i);
             }
         }
-
         return answer;
     }
     public static void main(String[] args) {
