@@ -13,7 +13,7 @@ public class Problem6 {
         countListToMap(separatedEachCrewNicknameList);
         List<String> crewEmailListOfDuplicatedNickname = getCrewEmailListOfDuplicatedNickname(separatedEachCrewNicknameList, forms);
         Collections.sort(crewEmailListOfDuplicatedNickname);
-        return new ArrayList<>();
+        return crewEmailListOfDuplicatedNickname;
     }
 
     private static List<String> getCrewEmailListOfDuplicatedNickname(List<List<String>> separatedEachCrewNicknameList, List<List<String>> forms) {
