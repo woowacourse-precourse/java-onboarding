@@ -216,3 +216,48 @@
 ### solution
 - List<List<String>>을 매개변수로 받는다. 이 값은 문제에서 주어지는 [이메일, 닉네임] 쌍의 목록이다.
 - getAlikeNicknamesList에 해당 List를 넘겨 주고, 결과값을 정답으로 리턴한다.
+
+## 문제 7
+### 구현 메소드 및 설명
+- getUsersList
+- getFriendsScore
+- getVisitorsScore
+- sortRecommendScore
+
+### getUsersList
+- List<List<<String>>을 매개변수로 받는다. 이 값은 서로 친구인 사람들의 목록이다.
+- 각 사용자를 전부 Set<String>에 집어넣어, 중복 없이 모든 사용자 이름의 목록을 얻는다.
+- 얻은 목록을 리턴한다.
+
+### getEachFriendsList
+- List<List<<String>>을 매개변수로 받는다. 이 값은 서로 친구인 사람들의 목록이다.
+- HashMap<String, HashSet<String>>을 만든다. 각 사용자명을 key로 하여, 해당 사용자와 친구인 사람들이 각 HashSet에 저장된다.
+- 만들어진 HashMap을 리턴한다.
+
+### getFriendsScore
+- HashMap<String, HashSet<String>>을 매개변수로 받는다. 이 값은 각 사용자가 가지는 친구의 목록이다.
+- 모든 사용자 중 user와 친구가 아닌 사람들을 대상으로, 아래 과정을 통해 점수를 구한다.
+  - user와 해당 사용자가 공통으로 가지는 친구의 수를 구한다.
+  - 구한 수 * 10을 한 후, HashMap<String, Integer>에 이를 담는다. 값은 [친구가 아닌 사람, 점수]이다.
+- 구한 HashMap<String, Integer>을 리턴한다.
+
+### getVisitorsScore
+- List<String>, HashMap<String, HashSet<String>>을 매개변수로 받는다. 이 값은 사용자 프로필 방문자 목록, 각 사용자별 추천 점수이다.
+- List 중 사용자가 아닌 사람에 대해, 아래 과정을 거친다.
+  - 해당 사용자의 점수에 1을 더한다.
+- 구한 HashMap<String, Integer>을 리턴한다.
+
+### getTotalRecommendation
+- HashMap<String, String>을 매개변수로 받는다. 이 값은 현재 사용자에 대해 추천된 사용자와 그 점수의 목록이다.
+- 해당 값을 아래 기준으로 정렬한다.
+  - 점수, 내림차순
+  - 점수가 같은 경우, 이름, 오름차순
+- 구한 목록의 이름을 List에 담아 리턴한다.
+
+### solution
+- String, List<List<String>>, List<String>을 매개변수로 받는다. 이 값은 각각 사용자명, 친구 목록, 사용자 프로필 조회자 목록이다.
+- getUsersList를 호출하여 독립된 사용자명 목록을 구한다.
+- HashMap<String, Integer>에 본인을 제외한 각 사용자에 대해, [사용자명, 0]을 담는다.
+- getFriendsScore 및 getVisitorsScore를 호출하여, 친구가 아닌 사용자에 대해 추천 점수를 구한다.
+- getTotalRecommendation을 통해 최종적으로 추천받는 목록을 받는다.
+- 추천받은 목록을 정답으로 리턴한다.
