@@ -7,7 +7,7 @@ package onboarding;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
-        answer = recursion(cryptogram);
+        answer = decoding(cryptogram);
         return answer;
     }
 
@@ -16,26 +16,26 @@ public class Problem2 {
      * 반복문의 수를 줄여 코드의 가독성을 높인다.
      */
 
-    private static String recursion(String cryptogram){
+    private static String decoding(String cryptogram){
         char[] chars = cryptogram.toCharArray();
-        StringBuffer stringBuffer = new StringBuffer();
+        StringBuffer decryptionText = new StringBuffer();
         boolean isClear = true;
-        char prev = ' ';
-        for(char a : chars){
-            if(a != prev){
-                prev = a;
-                stringBuffer.append(a);
+        char prevChar = ' ';
+        for(char ch : chars){
+            if(ch != prevChar){
+                prevChar = ch;
+                decryptionText.append(ch);
             }
             else{
-                int lastChar = stringBuffer.length() - 1;
-                stringBuffer.deleteCharAt(lastChar);
+                int duplicateCharIndex = decryptionText.length() - 1;
+                decryptionText.deleteCharAt(duplicateCharIndex);
                 isClear = false;
             }
         }
         if(isClear){
-            return stringBuffer.toString();
+            return decryptionText.toString();
         }
-        return recursion(stringBuffer.toString());
+        return decoding(decryptionText.toString());
     }
 
 
