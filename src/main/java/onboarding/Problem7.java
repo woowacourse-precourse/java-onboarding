@@ -20,4 +20,14 @@ public class Problem7 {
         return userFriend;
     }
 
+    //친구의 친구관계 리스트 만들기
+    public static List<String> makeFriendList(Set<String> userFriend, String friend, List<List<String>> friends) {
+        ArrayList<String> friendList = new ArrayList<>();
+
+        for(List<String> list : friends){
+            if (list.get(0).equals(friend) && !userFriend.contains(list.get(1))) friendList.add(list.get(1));
+            if (list.get(1).equals(friend) && !userFriend.contains(list.get(0))) friendList.add(list.get(0));
+        }
+        return friendList;
+    }
 }
