@@ -1,5 +1,9 @@
 package onboarding.problem1.domain;
 
+import java.util.function.BinaryOperator;
+
+import static java.util.Arrays.stream;
+
 public class Page {
 
 	private final int number;
@@ -31,6 +35,17 @@ public class Page {
 	public boolean isOutOfRange(int low, int upper) {
 		return (this.number <= low)
 				|| (this.number >= upper);
+	}
+
+	/**
+	 * 입력받은 연산을 통해 점수를 계산한다.
+	 * @param operator 연산
+	 * @param init 연산의 초기값
+	 */
+	public int scoreByOperator(BinaryOperator<Integer> operator, int init) {
+		return stream(Integer.toString(number).split(""))
+				.map(Integer::parseInt)
+				.reduce(init, operator);
 	}
 }
 
