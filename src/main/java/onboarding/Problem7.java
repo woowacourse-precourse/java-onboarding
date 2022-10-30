@@ -1,18 +1,32 @@
 package onboarding;
 
-import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends,
         List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+
+        HashMap<String, Set<String>> friendsMap = makeInitMap(friends);
+        HashMap<String, Integer> scoreMap = makeScoreMap();
+        Set<String> removeFriendsSet = makeRemoveFriendsSet(user, friendsMap);
+
+        updateFriendsScore(scoreMap, friendsMap, user, removeFriendsSet);
+        updateVisitorsScore(scoreMap, visitors, removeFriendsSet);
+
+        List<String> collect = scoreMap.entrySet().stream()
+            .sorted(Comparator.comparing((Entry<String, Integer> entry) -> entry.getValue()).reversed()
+                .thenComparing((Entry<String, Integer> entry) -> entry.getKey()))
+            .map(entry -> entry.getKey())
+            .collect(Collectors.toList());
+        return collect;
     }
 
     static void updateVisitorsScore(Map<String, Integer> scoreMap,
