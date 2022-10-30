@@ -1,6 +1,6 @@
 package onboarding;
 
-import java.util.List;
+import java.util.*;
 
 /**
  *  isProperForms 메서드 적절한 형태인지 확인
@@ -10,6 +10,10 @@ import java.util.List;
  */
 
 public class Problem6 {
+    private static Map<String, String> nickNameMap = new HashMap<>();
+    private static Set<String> overlapNickNameSet = new HashSet<>();
+    private static final int EMAIL = 0;
+    private static final int NICKNAME=1;
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
