@@ -11,6 +11,10 @@ public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
         List<Integer> range = IntStream.range(1, number+1).boxed().collect(Collectors.toList());
+        List<String> strRange = new ArrayList<>();
+        for (Integer num : range) {
+            strRange.addAll(Arrays.stream(num.toString().split("")).collect(Collectors.toList()));
+        }
 
 
 
