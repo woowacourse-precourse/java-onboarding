@@ -17,6 +17,14 @@ public class Problem7 {
             this.visit = 0;
             this.friends = new HashSet<>();
         }
+
+        int getVisit() {
+            return visit;
+        }
+
+        void count() {
+            visit++;
+        }
     }
 
     static class Persons {
