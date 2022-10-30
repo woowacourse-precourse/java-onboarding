@@ -9,17 +9,9 @@ public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> answer = new ArrayList<>();
         for (int moneyType : moneyTypes) {
-            answer.add(count(money, moneyType));
-            money = remainder(money, moneyType);
+            answer.add(money / moneyType);
+            money = money % moneyType;
         }
         return answer;
-    }
-
-    private static int count(int money, int moneyType) {
-        return money / moneyType;
-    }
-
-    private static int remainder(int money, int moneyType) {
-        return money % moneyType;
     }
 }
