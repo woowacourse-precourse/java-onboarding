@@ -37,6 +37,9 @@ class Problem1 {
         if(pages.get(0)+1!=pages.get(1)){
             exceptionValue=-1;
         }
+        if(pages.get(0)<1 || pages.get(1)>400){
+            exceptionValue=-1;
+        }
         return exceptionValue;
     }
 
