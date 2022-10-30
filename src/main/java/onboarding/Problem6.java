@@ -44,12 +44,11 @@ public class Problem6 {
         return forms.stream().map(a-> a.get(0)).allMatch(checkEmailValidation());
     }
 
-    public static Predicate<Object> checkEmailValidation(){
+    public static Predicate<String> checkEmailValidation(){
         final int MIN_LENGTH = 11;
         final int MAX_LENGTH = 20;
         final String EMAIL_REGEX  = "^\\w+@email\\.com";
-        return (a)-> {
-            String target = (String)a;
+        return (target)-> {
             return Pattern.matches(EMAIL_REGEX, target)
                     && (target.length() <= MAX_LENGTH
                     && (MIN_LENGTH <= (target.length())));
