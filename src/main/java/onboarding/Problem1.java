@@ -4,6 +4,16 @@ import java.util.List;
 
 class Problem1 {
 
+    private static int sumScore(int number) {
+        int result = 0;
+
+        while (number != 0) {
+            result += (number % 10);
+            number /= 10;
+        }
+        return result;
+    }
+
     private static boolean checkParam(List<Integer> list) {
         Integer leftPage;
         Integer rightPage;
