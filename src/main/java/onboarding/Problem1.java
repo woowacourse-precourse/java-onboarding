@@ -14,6 +14,8 @@ class Problem1 {
         List<Integer> scoreList_crong = getScoreList(crong);
 
         // 가장 큰 점수 계산
+        int score_pobi = getMaxScore(scoreList_pobi);
+        int score_crong = getMaxScore(scoreList_crong);
 
         // 가장 큰 점수끼리 비교 후 answer 값을 지정
 
@@ -42,6 +44,15 @@ class Problem1 {
         }
 
         return Math.max(plusResult, multiplyResult);
+    }
+
+    // 가장 높은 점수(= 최종 점수)를 반환하는 함수
+    private static int getMaxScore(List<Integer> scoreList_pobi) {
+        int maxScore = Integer.MIN_VALUE;
+        for (int score : scoreList_pobi) {
+            maxScore = Math.max(maxScore, score);
+        }
+        return maxScore;
     }
 
 }
