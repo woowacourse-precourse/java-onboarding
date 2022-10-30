@@ -16,8 +16,6 @@ public class Problem7 {
     static List<String> userFriendList;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = new ArrayList<>();
-
         friendMap = new HashMap<>();
         scoreMap = new HashMap<>();
 
@@ -51,7 +49,26 @@ public class Problem7 {
         // 점수와 이름 순서대로 정렬을 진행한다.
         List<String> recommendUserList = new ArrayList<>(scoreMap.keySet());
         recommendUserList.sort(Problem7::sortByScoreAndName);
-        
+
+        // 최종적으로 추천할 인원을 선별한다.
+        return selectRecommendUsers(recommendUserList);
+    }
+
+    /**
+     * 최종적으로 추천할 사용자를 뽑는다.
+     *
+     * @param recommendUserList 정렬된 사용자 리스트
+     * @return 추천할 사용자 리스트를 리턴한다.
+     */
+    private static List<String> selectRecommendUsers(List<String> recommendUserList) {
+        List<String> answer = new ArrayList<>();
+
+        // 기존 추천 리스트에 담긴 인원이 5명보다 작으면 그대로, 아니라면 최대 5명까지 선별한다.
+        int numberOfUser = Math.min(recommendUserList.size(), 5);
+
+        for(int i=0; i<numberOfUser; i++) {
+            answer.add(recommendUserList.get(i));
+        }
 
         return answer;
     }
