@@ -4,9 +4,32 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem7 {
+    private static HashMap<String, Integer> scoreMap;
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+        scoreMap = new HashMap<>();
+        HashMap<String, List<String>> friendshipMap = makeFriendshipMap(friends);
+
+        giveScoreBasedOnFriendship(user, friendshipMap);
+
+        System.out.println(scoreMap);
+
         return answer;
+    }
+
+    private static void giveScoreBasedOnFriendship(String user, HashMap<String, List<String>> friendshipMap) {
+        List<String> userFriends = friendshipMap.get(user);
+
+        userFriends.forEach((friend) -> {
+            List<String> friendOfFriend = friendshipMap.get(friend);
+
+            friendOfFriend.forEach((name) -> {
+                int curScore = scoreMap.getOrDefault(name, 0);
+
+                scoreMap.put(name, curScore + 10);
+            });
+        });
     }
 
     private static HashMap<String, List<String>> makeFriendshipMap(List<List<String>> friends) {
