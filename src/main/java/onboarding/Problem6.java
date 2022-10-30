@@ -19,7 +19,19 @@ public class Problem6 {
             }
 
         }
-  
+        String dupName = "";
+        for (String sepName : sepNames) {
+            if(Collections.frequency(sepNames,sepName) != 1)
+            {
+                dupName = sepName;
+                break;
+            }
+
+        }
+
+
+
+        Collections.sort(answer);
         return answer;
     }
 
