@@ -56,27 +56,30 @@ public class Problem7 {
             }
             newFriends.add(friendsList);
         }
+        System.out.println(newFriends);
         return newFriends;
     }
     public static List<Integer> findFriendNumber(List<List<String>> newFriend, List<String> userFriend, List<String> allId, List<String> visitors) {
         List<Integer> userScore = new ArrayList<>();
+        int[] accessUserScore = new int[allId.size()];
         for(int i = 0; i < newFriend.size(); i++) {
             for(int j = 0; j < newFriend.get(i).size(); j++) {
-                if() { //여기 오류
-                    userScore.add(i, 10*Collections.frequency(userFriend, newFriend.get(i).get(j)));
+                if(accessUserScore[i] == 0) {//리스트 인덱스에 값을 넣는 경우가 처음일 때
+                    userScore.add(10*Collections.frequency(userFriend, newFriend.get(i).get(j)));
                 } else {
                     userScore.set(i, userScore.get(i)+10*Collections.frequency(userFriend, newFriend.get(i).get(j)));
                 }
+                accessUserScore[i]++;
             }
-            System.out.println(userScore);
         }
+        System.out.println(userScore);
         for(int i = 0; i < visitors.size(); i++) {
             for (int j = 0; j < allId.size(); j++) {
                 if (allId.get(j).equals(visitors.get(i))) {
-                    if(userScore.get(i) == 0) {
+                    if(userScore.size() <= j) {
                         userScore.add(j, 1);
                     } else {
-                        userScore.set(j, userScore.get(j) + 1);
+                        userScore.set(j, userScore.get(j)+1);
                     }
                 }
             }
@@ -84,11 +87,6 @@ public class Problem7 {
         System.out.println(userScore);
         return userScore;
     }
-
-//    public static List<String> recommendFriends(List<String> allId, List<Integer> userScore) {
-//        List<Integer> orderFriend = new ArrayList<>();
-//
-//    }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> allId = getFriend(friends, user, visitors); //사용자 이외의 사용자들 아이디 리스트
