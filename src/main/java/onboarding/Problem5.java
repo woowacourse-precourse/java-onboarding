@@ -27,14 +27,14 @@ import java.util.List;
 public class Problem5 {
     static private List<Integer> unitsList = new ArrayList<>();
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
+        List<Integer> answer = convertMoney(money);
         return answer;
     }
-
-    public static void main(String[] args) {
-        makeUnitsList();
-        System.out.println(unitsList);
-    }
+//
+//    public static void main(String[] args) {
+//        makeUnitsList();
+//        System.out.println(solution(15000));
+//    }
 
     private static int distinguishOdd(int inputNum){
         if(inputNum == 7)
@@ -58,4 +58,15 @@ public class Problem5 {
         return false;
     }
 
+    private static List<Integer> convertMoney(int inputMoney){
+        if(checkInput(inputMoney))
+            return Collections.emptyList();
+        List<Integer> ret = new ArrayList<>();
+        for(int i = 0; i < unitsList.size(); i++)
+        {
+            ret.add(inputMoney/unitsList.get(i));
+            inputMoney = inputMoney%unitsList.get(i);
+        }
+        return ret;
+    }
 }
