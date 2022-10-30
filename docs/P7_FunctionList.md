@@ -8,15 +8,15 @@
 
 
 
-### 함께 아는 친구를 기반으로 점수 매기는 기능
-* `parameter` : list<list>, string(user)
-* `return` : treemap
-* `myFriendScore()으로 구현`
-
 ### 서로의 친구란 점을 감안한 새로운 친구 리스트 만드는 기능
 * `parameter` : list<list> , string(user)
 * `return` : list
 * `getFriedList()으로 구현`
+
+### 함께 아는 친구를 기반으로 점수 매기는 기능
+* `parameter` : list<list>, string(user)
+* `return` : treemap
+* `myFriendScore()으로 구현`
 
 ### 방문자를 기반으로 점수 매기는 기능
 * `parameter` : list(visitors), string(user)
