@@ -1,19 +1,19 @@
 package onboarding;
 
+import java.util.Arrays;
+import java.util.stream.Stream;
+
 public class Problem4 {
     public static String solution(String word) {
-        StringBuilder result = new StringBuilder(word);
-        String answer = "";
-
-        for (int i = 0; i < result.length(); i++) {
-            int left = result.charAt(i);
-            if (left>=65&&left<=90)
-                answer+= (char)(65+90-left);
-            else if (left>=97&&left<=122)
-                answer+= (char)(97+122-left);
+        Stream<String> stream = Arrays.asList(word.split("")).stream();
+        return stream.reduce("",(x,y)-> {
+            char c =y.charAt(0);
+            if (c>='A'&&c<='Z')
+                return x + (char) ('A' + 'Z' - c);
+            else if (c>='a'&&c<='z')
+                return x + (char) ('a' + 'z' - c);
             else
-                answer+=result.charAt(i);
-        }
-        return answer;
+                return x+c;
+        });
     }
 }
