@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -18,6 +19,38 @@ class NameStringClassForPro6 {
             List<String> partOfForm = forms.get(i);
             nameString[i] = partOfForm.get(1);
         }
+    }
+
+    public Set<String> mainFunc() {
+        for (int i = 0; i < nameString.length; i++) {
+            NameForPro6 nameI = new NameForPro6(nameString[i]);
+            for (int j = i + 1; j < nameString.length; j++) {
+                NameForPro6 nameJ = new NameForPro6(nameString[j]);
+                prepareAnsSet(nameI, nameJ);
+            }
+        }
+        return nameSet;
+    }
+}
+
+class NameForPro6 {
+
+    private final String name;
+
+    public NameForPro6(String name) {
+        this.name = name;
+    }
+
+    public int nameSize() {
+        return name.length();
+    }
+
+    public char nameChar(int index) {
+        return name.charAt(index);
+    }
+
+    public String toString() {
+        return name;
     }
 }
 
