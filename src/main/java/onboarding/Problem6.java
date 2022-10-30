@@ -74,4 +74,10 @@ public class Problem6 {
             checkDuplication(databaseOfNickname, duplicationOfNickname, user);
         }
     }
+
+    // 주어진 이메일이 형식에 맞게 입력됐는지 확인하는 함수
+    public static boolean checkEmailForm(String email) {
+        if (email.split("@")[1] == "email.com") return true;
+        return false;
+    }
 }
