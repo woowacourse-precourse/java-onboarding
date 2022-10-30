@@ -32,29 +32,28 @@ public class Problem7 {
     }
 
     public static void getAcquaintance (String user, HashMap<String, Integer> listOfScore, List<String> userFriends, List<List<String>> friends) {
+        final int acquaintanceScore = 10;
         for (String friendId: userFriends) {
-            for (List<String> friend: friends) {
-                String user1 = friend.get(0);
-                String user2 = friend.get(1);
-                if(user1.equals(user) || user2.equals(user)) {
-                    continue;
-                }
-                if (user1.equals(friendId)) {
-                    listOfScore.put(user2, listOfScore.getOrDefault(user2, 0) + 10);
-                }
-                if (user2.equals(friendId)) {
-                    listOfScore.put(user1, listOfScore.getOrDefault(user1, 0) + 10);
+            List<String> acquaintanceList = getUserFriends(friendId, friends);
+            for (String acquaintance: acquaintanceList) {
+                if(!acquaintance.equals(user)) {
+                    setScore(listOfScore, acquaintance, acquaintanceScore);
                 }
             }
         }
     }
 
     public static void getVisitorScore (HashMap<String, Integer> listOfScore, List<String> visitors, List<String> userFriends) {
+        final int visitorScore = 1;
         for(String visitor: visitors) {
             if(!userFriends.contains(visitor)) {
-                listOfScore.put(visitor, listOfScore.getOrDefault(visitor, 0) + 1);
+                setScore(listOfScore, visitor, visitorScore);
             }
         }
+    }
+
+    public static void setScore (HashMap<String, Integer> listOfScore, String userId, Integer score){
+        listOfScore.put(userId, listOfScore.getOrDefault(userId, 0) + score);
     }
 
     public static List<Map.Entry<String, Integer>>  getSortedListOfScore(HashMap<String, Integer> listOfScore) {
