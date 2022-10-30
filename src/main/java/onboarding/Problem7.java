@@ -3,15 +3,44 @@ package onboarding;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.PriorityQueue;
+import java.util.Comparator;
 
 public class Problem7 {
     private static HashMap<String, Integer> recommendScore; //추천 점수 해시맵
     private static HashMap<String, Boolean> isFriend; //user와 친구인지 판단
     private static HashMap<String, List<String>> userList; //user 리스트
 
+    private static PriorityQueue<User> pq; //우선순위 큐
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
+        recommendScore = new HashMap<>();
+        isFriend = new HashMap<>();
+        userList = new HashMap<>();
+
+        checkFriends(user, friends);
+
+        checkVisitors(visitors);
+
+        countRecommendScore(user, user, 0);
+
+        initPriorityQueue();
+
         return answer;
+    }
+
+    //우선순위 큐 초기화
+    private static void initPriorityQueue(){
+        pq = new PriorityQueue<>(new Comparator<User>() {
+            @Override
+            public int compare(User user1, User user2) {
+                if(user1.score == user2.score){
+                    return user1.name.compareTo(user2.name) > 0 ? 1 : -1;
+                }
+                return user1.score < user2.score ? 1 : -1;
+            }
+        });
     }
 
     //friends 확인하여 친구 관계 확인
@@ -48,4 +77,27 @@ public class Problem7 {
     }
 
     //user로 부터 2번 건넌 친구들 확인하는 dfs
+    private static void countRecommendScore(String cur, String prev, int cnt){
+        if(cnt == 2){
+            recommendScore.put(cur, recommendScore.getOrDefault(cur,0)+10);
+            return;
+        }
+
+        for(String next : userList.get(cur)){
+            if(next.equals(prev)){
+                continue;
+            }
+            countRecommendScore(next, cur, cnt+1);
+        }
+    }
+
+    //우선순위 큐에 사용할 User 클래스
+    private static class User{
+        public int score;
+        public String name;
+        public User(int score, String name){
+            this.score = score;
+            this.name = name;
+        }
+    }
 }
