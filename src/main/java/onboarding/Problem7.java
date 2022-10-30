@@ -4,7 +4,17 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        Map<String, Integer> scores = new HashMap<>();
+        Map<String, Integer> scores = new HashMap<>(); // id를 key로, 점수를 value로 하는 Map
+
+        List<String> friendsList = pickUserFriends(user, friends); // 해당 사용자와 친구 상태 id 목록
+
+        recordFriendsScore(scores, friendsList, friends, user); // 친구의 친구에 대한 점수 계산
+        recordVisitorScore(scores, visitors, friendsList); // 타임라인에 방문한 것에 대한 점수 계산
+
+        /* id-점수 Map의 key-value값을 value에 내림차순, 같을 경우 key에 오름차순으로 정렬한 List */
+        List<Map.Entry<String,Integer>> scoreMapEntryList = sortScoreMapList(scores);
+
+        return pickBestFiveRecommendation(scoreMapEntryList); // 정렬된 List에서 점수가 0점보다 높은 사용자중 최대 5명을 뽑은 List
     }
 
     /* 누군가가 주어졌을 때 길이 2인 List에 없으면 "", 있으면 나머지 한명 반환하는 메서드 */
