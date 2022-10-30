@@ -1,7 +1,12 @@
 package onboarding;
 
+import java.util.Collections;
+import java.util.List;
+
 public class Test {
     public static void main(String[] args) {
-        System.out.println(Problem4.solution("I love you"));
+        List<Integer> answer = Collections.emptyList();
+
+        System.out.println(answer);
     }
 }
