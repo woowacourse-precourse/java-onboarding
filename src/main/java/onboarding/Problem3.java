@@ -16,6 +16,9 @@ public class Problem3 {
             strRange.addAll(Arrays.stream(num.toString().split("")).collect(Collectors.toList()));
         }
 
+        answer += Collections.frequency(strRange,"3");
+        answer += Collections.frequency(strRange,"6");
+        answer += Collections.frequency(strRange,"9");
 
 
         return answer;
