@@ -9,7 +9,6 @@ public class Problem2 {
                 break;
             }
             answer = cryptogram;
-            System.out.println("answer = " + answer);
         }
         return answer;
     }
