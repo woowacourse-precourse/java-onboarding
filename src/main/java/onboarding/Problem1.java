@@ -30,6 +30,11 @@ class Problem1 {
         return (pages.get(RIGHT_PAGE) - pages.get(LEFT_PAGE) == 1);
     }
 
+    private static int compareOfResult(int maxOfPobi, int maxOfCrong) {
+        if (maxOfPobi == maxOfCrong) return DRAW;
+        return maxOfPobi > maxOfCrong ? WIN_POBI : WIN_CRONG;
+    }
+
     private static int getMaxOfPages(List<Integer> pages) {
         int maxOfSumResult, maxOfMultiplyResult;
         String leftPageTypeOfString = String.valueOf(pages.get(LEFT_PAGE));
