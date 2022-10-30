@@ -1,19 +1,20 @@
 package onboarding;
 
 public class Problem2 {
-    // TODO: class Cryptogram
-        // TODO: Cryptogram(String encrypted) { constructor }
+    private static class Cryptogram {
+        private final String encrypted;
+
+        private Cryptogram(String encrypted) {
+            this.encrypted = encrypted;
+        }
 
         // TODO: validate()
 
         // TODO: decrypt()
+    }
 
     public static String solution(String cryptogram) {
-        // Instantiate Cryptogram
-
-        // Return decrypted Cryptogram
-
-        String answer = "answer";
-        return answer;
+        var myCryptogram = new Cryptogram(cryptogram);
+        return myCryptogram.encrypted;
     }
 }
