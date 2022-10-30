@@ -12,6 +12,15 @@ public class Problem6 {
 class EmailArrayListValuePerSplitedNickNameKeyMap {
     private final Map<String, ArrayList<String>> map = new HashMap<>();
 
+    public void insertItem(List<String> form) {
+        String email = form.get(0);
+        String nickname = form.get(1);
+
+        List<String> splitedNickNameList = splitByTwoToArrayList(nickname);
+
+        insertValue(splitedNickNameList, email);
+    }
+
     private void insertValue(List<String> KeyList, String value) {
         for (String key :
                 KeyList) {
