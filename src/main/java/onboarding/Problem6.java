@@ -1,11 +1,14 @@
 package onboarding;
 
 import java.util.List;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
+        if(forms.size() < 1 || forms.size() > 10000) {
+            System.out.println("크루는 1명 이상 10000명 이하입니다.");
+            return null;
+        }
         Pattern emailPattern = Pattern.compile("^[A-Za-z0-9]+(.[_A-Za-z0-9-]+)*@email[.]com");
         Pattern nicknamePattern = Pattern.compile("^[ㄱ-ㅎ가-힣]+(.[ㄱ-ㅎ가-힣]+)*");
         for (List<String> data : forms) {
