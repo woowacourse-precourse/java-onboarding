@@ -15,7 +15,12 @@ public class Problem6 {
         Map<String, List<String>> map = new HashMap<>();
         Set<String> ans = new HashSet<>();
 
+        parseNickName(forms, map);
+        checkDuplication(map, ans);
 
+        List<String> answer = new ArrayList<>(ans);
+        Collections.sort(answer);
+        return answer;
     }
 
     private static void checkDuplication(Map<String, List<String>> map, Set<String> ans) {
