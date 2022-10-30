@@ -1,29 +1,23 @@
 package onboarding.problem1;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class PageCalculator {
 
     public List<Integer> getResult(List<List<Integer>> pageList) {
         // page를 받아 계산 결과를 리턴한다.
-        List<Integer> result = new ArrayList<>();
-        pageList.forEach(pages -> result.add(getMaxValue(pages)));
-
-        return result;
+        return pageList.stream()
+                .map(this::getMaxValue)
+                .collect(Collectors.toList());
     }
 
     private int getMaxValue(List<Integer> pages) {
         // page를 받아 값을 계산한다.
-        int max = Integer.MIN_VALUE;
-
-        for (Integer page : pages) {
-            // page의 자리수 별로 계산을 수행하여 max값을 산출한다.
-            // 그 중에서도 골라서 max값에 저장.
-            max = Math.max(max, calculatePage(page));
-        }
-
-        return max;
+        return pages.stream()
+                .mapToInt(this::calculatePage)
+                .max()
+                .orElseThrow();
     }
 
     private int calculatePage(Integer page) {

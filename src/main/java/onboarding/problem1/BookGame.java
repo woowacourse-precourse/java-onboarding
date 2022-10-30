@@ -38,8 +38,8 @@ public class BookGame {
             return FIRST_PAGE_WIN;
         } else if (firstResults < secondResults) {
             return SECOND_PAGE_WIN;
-        } else {
-            return DRAW;
         }
+
+        return DRAW;
     }
 }
