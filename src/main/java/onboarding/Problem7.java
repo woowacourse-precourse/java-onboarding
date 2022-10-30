@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class Problem7 {
@@ -42,4 +43,14 @@ public class Problem7 {
         tmpSet.add(friend2);
         initMap.put(friend1, tmpSet);
     }
+    static void putValueScore(Map<String, Integer> scoreMap, String friend, int score) {
+        if (!scoreMap.containsKey(friend)) {
+            scoreMap.put(friend, score);
+            return;
+        }
+        int currentScore = scoreMap.get(friend);
+        currentScore += score;
+        scoreMap.put(friend, currentScore);
+    }
+
 }
