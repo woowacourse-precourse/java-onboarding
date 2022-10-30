@@ -27,6 +27,8 @@ public class Problem7 {
         Map<String, User> users = preProcessing(friends);
 
         scoringByVisitors(visitors, users);
+        scoringByFriends(user, users);
+
         validateRecommendFriends(recommendFriends);
     }
 
@@ -114,6 +116,20 @@ public class Problem7 {
         for (String visitor : visitors) {
             User user = getOrCreateUser(visitor, users);
             user.incrementVisitorScore();
+        }
+    }
+
+    public static void scoringByFriends(String user, Map<String, User> users) {
+        User accountOwner = users.get(user);
+        Set<String> ownersFriends = accountOwner.friendNames;
+
+        for (String ownersFriendName : ownersFriends) {
+            User ownersFriend = users.get(ownersFriendName);
+
+            for (String acquaintanceName : ownersFriend.friendNames) {
+                User acquaintance = users.get(acquaintanceName);
+                acquaintance.incrementAcquaintanceScore();
+            }
         }
     }
 
