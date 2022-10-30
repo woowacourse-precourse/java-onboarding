@@ -9,7 +9,18 @@ public class Problem5 {
 
     public static List<Integer> solution(int money) {
         checkException(money);
-        return calChanges(money);
+        return calMoneySet(money);
+    }
+
+    private static List<Integer> calMoneySet(int money) {
+        List<Integer> moneySet = new ArrayList<>();
+
+        for (int monetaryUnit : monetaryUnits) {
+            moneySet.add(money / monetaryUnit);
+            money %= monetaryUnit;
+        }
+
+        return moneySet;
     }
 
     private static void checkException(int money) {
