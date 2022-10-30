@@ -32,8 +32,7 @@ public class Problem2 {
         while (true) {
             int beforeRemoveSize = str.length();
             str = duplicateRemove(str);
-
-            if (beforeRemoveSize == str.length()) {
+            if (beforeRemoveSize == str.length() || str.length() == ONE) {
                 break;
             }
         }
