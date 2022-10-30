@@ -9,8 +9,7 @@ public class Problem4 {
 
     public static String solution(String word) {
         makeDictionary();
-        String answer = translate(word);
-        return answer;
+        return translate(word);
     }
 
     public static void makeDictionary() {
@@ -19,12 +18,26 @@ public class Problem4 {
         char alphabet = 'Z';
         for (char i = 'A'; i <= 'Z'; i++) {
             upperCaseDictionary.put(i, alphabet);
-            lowerCaseDictionary.put((char) (i - 32), (char) (alphabet - 32));
+            lowerCaseDictionary.put((char) (i + 32), (char) (alphabet + 32));
+            alphabet--;
         }
     }
 
     public static String translate(String word) {
-
-        return "";
+        StringBuilder newWord = new StringBuilder(word);
+        for (int i = 0; i < newWord.length(); i++) {
+            char alphabet = newWord.charAt(i);
+            if(alphabet == ' ') {
+                continue;
+            }
+            if(Character.isLowerCase(alphabet)) {
+                newWord.setCharAt(i, lowerCaseDictionary.get(alphabet));
+                continue;
+            }
+            if(Character.isUpperCase(alphabet)) {
+                newWord.setCharAt(i, upperCaseDictionary.get(alphabet));
+            }
+        }
+        return newWord.toString();
     }
 }
