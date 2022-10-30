@@ -40,7 +40,19 @@ public class Problem7 {
         // 사용자의 타임라인을 방문한 사용자에 대해 1점씩 부여한다.
         addOneScoreToVisitors(visitors);
 
+        // 사용자와 이미 친구인 사용자는 추천에서 제외한다.
+        removeAlreadyUserFriend();
+
         return answer;
+    }
+
+    /**
+     * 사용자와 이미 친구인 경우 제거한다.
+     */
+    private static void removeAlreadyUserFriend() {
+        for(String userFriend : userFriendList) {
+            scoreMap.remove(userFriend);
+        }
     }
 
     /**
