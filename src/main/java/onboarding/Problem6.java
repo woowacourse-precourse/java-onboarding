@@ -80,7 +80,47 @@ class NickNameForm {
     }
     static List<String> validateOverlap() {
         HashMap<String, List<String>> nickNameSplitMap = getNickNameSplitMap();
+
+        HashSet<String> overlapNickNameSet = getOverlapNickNameSet(nickNameSplitMap);
+
+        return null;
     }
+
+    private static HashSet<String> getOverlapNickNameSet(HashMap<String, List<String>> nickNameSplitMap) {
+        HashSet<String> overlapNickNames = new HashSet<>();
+
+        String[] nickNameArr = nickNameSplitMap.keySet()
+                .toArray(new String[0]);
+
+        ArrayList<List<String>> base = new ArrayList<>(nickNameSplitMap.values());
+        ArrayList<List<String>> comparator = new ArrayList<>(nickNameSplitMap.values());
+
+        for (int i = 0; i < base.size(); i++) {
+            compare(overlapNickNames, nickNameArr, base, comparator, i);
+        }
+
+        return overlapNickNames;
+    }
+
+    private static void compare(HashSet<String> overlapNickNames, String[] nickNameArr, ArrayList<List<String>> base, ArrayList<List<String>> comparator, int i) {
+        for (int j = 0; j < comparator.size(); j++) {
+            if (validateContains(base, comparator, i, j)) {
+                overlapNickNames.add(nickNameArr[i]);
+            }
+        }
+    }
+
+    private static boolean validateContains(ArrayList<List<String>> base, ArrayList<List<String>> comparator, int i, int j) {
+        for (int k = 0; k < comparator.get(j)
+                .size(); k++) {
+            if (i != j && base.get(i)
+                    .contains(comparator.get(j).get(k))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     private static HashMap<String, List<String>> getNickNameSplitMap() {
         HashMap<String, List<String>> nickNameSplitMap = new HashMap<>();
