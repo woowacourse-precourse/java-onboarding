@@ -29,5 +29,9 @@ public class Problem6 {
         return (forms.get(0).substring(index).equals("@email.com"));
     }
 
+    public static boolean NameNotKoreanException(List<String> forms) {
+        return (!forms.get(1).matches("^[ㄱ-ㅎ가-힣]*$"));
+    }
+
 
 }
