@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>();
         HashMap<String,Set<String>> words = new HashMap<>();
 
         for(int i=0;i<forms.size();i++){
@@ -12,8 +12,16 @@ public class Problem6 {
             String email = forms.get(i).get(0);
             List<String> wordslist = getWord(word);
             wordslist.stream()
-                    .forEach(w -> words.put(word,getEmailList(words,word,email)));
+                    .forEach(w -> words.put(w,getEmailList(words,w,email)));
         }
+        for(int i=0;i<forms.size();i++){
+            String word = forms.get(i).get(1);
+            String email = forms.get(i).get(0);
+            if (checkDuplication(words,word)){
+                answer.add(email);
+            }
+        }
+        Collections.sort(answer);
         return answer;
     }
     public static List<String> getWord(String word){
@@ -31,10 +39,11 @@ public class Problem6 {
 
     public static boolean checkDuplication(HashMap<String,Set<String>> words,String word){
         List<String> wordList = getWord(word);
+        System.out.println(wordList);
         for(String w:wordList){
             int a= words.get(w).size();
             if (a > 1){
-                return false;
+                return true;
             }
         }
         return false;
