@@ -9,7 +9,7 @@ public class Problem2 {
             return "";
         }
 
-        return decrypt(cryptogram);
+        return decrypt(cryptogram.toLowerCase());
     }
 
     private static String decrypt(String cryptogram) {
