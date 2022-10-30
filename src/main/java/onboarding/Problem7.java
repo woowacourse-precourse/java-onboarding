@@ -2,16 +2,6 @@ package onboarding;
 
 import java.util.*;
 
-class Sns {
-    public String user;
-    public int score;
-
-    public Sns(String user, int score) {
-        this.user = user;
-        this.score = score;
-    }
-}
-
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
@@ -26,40 +16,62 @@ public class Problem7 {
                 list.add(friends.get(i).get(0));
             }
         }
-        System.out.println(list);
 
         // user 친구의 친구 찾기
         for (int i = 0; i < friends.size(); i++) {
             for (int j = 0; j < list.size(); j++) {
-                if(friends.get(i).get(0).equals(list.get(j))){
-                     if(!friends.get(i).get(1).equals(user)){
-                         map.put(friends.get(i).get(1), 10);
-                     }
-                }else if(friends.get(i).get(1).equals(list.get(j))) {
+                if (friends.get(i).get(0).equals(list.get(j))) {
+                    if (!friends.get(i).get(1).equals(user)) {
+                        map.put(friends.get(i).get(1), 10);
+                    }
+                } else if (friends.get(i).get(1).equals(list.get(j))) {
                     if (!friends.get(i).get(0).equals(user)) {
                         map.put(friends.get(i).get(0), 10);
                     }
                 }
             }
         }
-
         //visitor
 
         for (int i = 0; i < visitors.size(); i++) {
-            if(!map.containsKey(visitors.get(i))){
-                map.put(visitors.get(i), 1 );
-            }else{
-
+            if (!map.containsKey(visitors.get(i))) {
+                map.put(visitors.get(i), 1);
+            } else {
+                map.put(visitors.get(i), map.get(visitors.get(i)) + 1);
             }
         }
 
+        for (int i = 0; i < list.size(); i++) {
+            map.remove(list.get(i));
+        }
 
+        // map 에 key value 다 들어가 있는 상황
+        // 점수 내림차순으로 배열
 
+        answer = new ArrayList<>(map.keySet());
+        Collections.sort(answer, (value1, value2) ->
+                (map.get(value2).compareTo(map.get(value1))));
 
-
-        System.out.println(map.entrySet());
-
-
+        if (answer.size() > 5) {
+            answer = answer.subList(0, 5);
+        }
         return answer;
+    }
+
+    public static void main(String[] args) {
+        String user = "mrko";
+        List<List<String>> friends = List.of(
+                List.of("donut", "andole"),
+                List.of("donut", "jun"),
+                List.of("donut", "mrko"),
+                List.of("shakevan", "andole"),
+                List.of("shakevan", "jun"),
+                List.of("shakevan", "mrko")
+        );
+        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan", "jun");
+
+
+        List<String> solution = Problem7.solution(user, friends, visitors);
+        System.out.println(solution);
     }
 }
