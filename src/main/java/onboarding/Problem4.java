@@ -10,7 +10,16 @@ public class Problem4 {
         List<Character> letters = new ArrayList<>();
         splitWord(word, letters);
         letters = replaceLetters(letters);
+        answer = combineLetter(letters);
         return answer;
+    }
+
+    private static String combineLetter(List<Character> letters) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Character letter : letters) {
+            stringBuilder.append(letter);
+        }
+        return stringBuilder.toString();
     }
 
     private static List<Character> replaceLetters(List<Character> letters) {
