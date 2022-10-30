@@ -13,24 +13,26 @@ public class Problem4 {
         char[] arrSmallReverse = { 'z', 'y', 'x', 'w', 'v', 'u', 't', 's', 'r', 'q', 'p', 'o', 'n', 'm', 'l', 'k', 'j',
                 'i', 'h', 'g', 'f', 'e', 'd', 'c', 'b', 'a' };
 
+        StringBuffer sb = new StringBuffer();
         char[] wordToArr = word.toCharArray();
 
         for (int i = 0; i < word.length(); i++) {
-            String a = "";
             char b = wordToArr[i];
 
             if (Character.isUpperCase(b)) {
 
                 int index = Arrays.binarySearch(arrCapital, wordToArr[i]);
-                System.out.print(arrCapitalReverse[index]);
+                sb.insert(i, arrCapitalReverse[index]);
+
             } else if (Character.isLowerCase(b)) {
 
                 int index = Arrays.binarySearch(arrSmall, wordToArr[i]);
+                sb.insert(i, arrSmallReverse[index]);
 
-                System.out.print(arrSmallReverse[index]);
             } else {
-                System.out.print(" ");
+                sb.insert(i, " ");
             }
+            answer = String.valueOf(sb);
         }
 
         return answer;
