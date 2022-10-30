@@ -6,30 +6,40 @@ public class Problem4 {
 
         char[] words = word.toCharArray();
         for (char eachWord : words) {
-            answer.append(convertedAlphabet(eachWord));
+            answer.append(convertedWord(eachWord));
         }
+
         return answer.toString();
     }
 
-    private static char convertedAlphabet(char word) {
+    private static char convertedWord(char word) {
         if (isUppercase(word)) {
-            return (char) ('Z' - (word - 'A'));
+            return convertedUppercase(word);
         }
         if (isLowercase(word)) {
-            return (char) ('z' - (word - 'a'));
+            return convertedLowercase(word);
         }
+
         return word;
     }
 
-    private static boolean isUppercase(char alphabet) {
-        if (alphabet >= 'A' && alphabet <= 'Z') {
+    private static char convertedUppercase(char word) {
+        return (char) ('Z' - (word - 'A'));
+    }
+
+    private static char convertedLowercase(char word) {
+        return (char) ('z' - (word - 'a'));
+    }
+
+    private static boolean isUppercase(char word) {
+        if (word >= 'A' && word <= 'Z') {
             return true;
         }
         return false;
     }
 
-    private static boolean isLowercase(char alphabet) {
-        if (alphabet >= 'a' && alphabet <= 'z') {
+    private static boolean isLowercase(char word) {
+        if (word >= 'a' && word <= 'z') {
             return true;
         }
         return false;
