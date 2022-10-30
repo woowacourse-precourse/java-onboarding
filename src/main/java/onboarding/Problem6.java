@@ -2,19 +2,28 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
         Map<String, String> crewInfo = new HashMap<>();
         Map<String, Integer> duplicatedNicknameCandidate = new HashMap<>();
+        Set<String> duplicatedNicknameSet = new HashSet<>();
 
         initializationCrewInfo(forms, crewInfo);
 
         for (String nickname : crewInfo.keySet()) {
             initializationDuplicatedNicknameCandidate(nickname, duplicatedNicknameCandidate);
+        }
+
+        for (String nickname : crewInfo.keySet()) {
+            if (hasMoreThanOnceDuplicatedCount(nickname, duplicatedNicknameCandidate)) {
+                duplicatedNicknameSet.add(nickname);
+            }
         }
 
         return answer;
@@ -40,5 +49,20 @@ public class Problem6 {
                         duplicatedNicknameCandidate.getOrDefault(substring, 0) + 1);
             }
         }
+    }
+
+    private static boolean hasMoreThanOnceDuplicatedCount(String nickname,
+                                                          Map<String, Integer> duplicatedNicknameCandidate) {
+        for (int i = 0; i < nickname.length() - 1; i++) {
+            for (int j = i + 2; j <= nickname.length(); j++) {
+                String substring = nickname.substring(i, j);
+
+                if (duplicatedNicknameCandidate.get(substring) > 1) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }
