@@ -25,13 +25,17 @@ import java.util.List;
 
 /**
  * 2. 닉네임을 통한 연속적인 값들이 있는 배열 생성 함수 ex) 제이엠 -> [제이 , 이엠 , 제이엠 ]
- * - 클래스 변수 생성
  * - substring 사용
  * **/
 
+/**
+ * 3. 같은 것이 있는지 없는지 체크 기능 함수
+ * - 교집합 개념 사용 -> 교집합 길이가 0 이상이다 같은 부분이 있다.
+ * - retainAll -> 원본 배열 데이터 변화 조심
+ **/
+
 public class Problem6 {
 
-    private static List<String> continuousNickList = new ArrayList<>();
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
@@ -81,13 +85,16 @@ public class Problem6 {
         return false;
     }
 
-    public static void main(String[] args) {
-        String test = "가나다라마바사";
-        makeContinuousMakeNickList(test);
-        System.out.println(continuousNickList);
-    }
+//    public static void main(String[] args) {
+//        String test1 = "가나다라마바사";
+//        String test2 = "나라";
+//        List<String> testList1 = makeContinuousNickList(test1);
+//        List<String> testList2 = makeContinuousNickList(test2);
+//        System.out.println(checkInterSection(testList1 , testList2));
+//    }
 
-    private static void makeContinuousMakeNickList(String inputNick){
+    private static List<String> makeContinuousNickList(String inputNick){
+        List<String> continuousNickList = new ArrayList<>();
         for(int i = 0; i < inputNick.length(); i++)
         {
             for(int j = i + 2; j < inputNick.length() + 1; j++)
@@ -95,5 +102,16 @@ public class Problem6 {
                 continuousNickList.add(inputNick.substring(i,j));
             }
         }
+        return continuousNickList;
     }
+
+    private static boolean checkInterSection(List<String> continuousNickList1, List<String> continuousNickList2){
+        List<String> interSection = new ArrayList<>();
+        interSection = continuousNickList1;
+        interSection.retainAll(continuousNickList2);
+        if(interSection.size() != 0)
+            return true;
+        return false;
+    }
+
 }
