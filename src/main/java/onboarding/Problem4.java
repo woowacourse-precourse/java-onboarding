@@ -23,4 +23,30 @@ public class Problem4 {
         return referenceLetters.charAt(index);
     }
 
+    private static String convertWordsIntoReverse(String word) {
+        StringBuilder result = new StringBuilder();
+
+        for(int i = 0; i < word.length(); i++) {
+            char currentCharacter = word.charAt(i);
+            String currentString = String.valueOf(currentCharacter);
+
+
+            if(isCapitalLetter(currentString)) {
+                int findIndex = findTheOppositeIndex(capitalLetters, currentCharacter);
+                result.append(getCharacterByIndex(capitalLetters, findIndex));
+
+            } else if(isSmallLetter(currentString)){
+
+                int findIndex = findTheOppositeIndex(smallLetters, currentCharacter);
+                result.append(getCharacterByIndex(smallLetters, findIndex));
+
+            } else {
+                result.append(currentString);
+            }
+
+        }
+
+        return result.toString();
+    }
+
 }
