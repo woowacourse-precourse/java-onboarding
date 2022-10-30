@@ -21,7 +21,9 @@ public class Problem5 {
 
     public static List<Integer> solution(int money) {
         List<Integer> answer = new ArrayList<>();
-
+        for(int element : splitMoney(money)) {
+            answer.add(element);
+        }
 
         return answer;
     }
