@@ -28,13 +28,18 @@ class Problem1 {
         return -1;
     }
 
+
     // 매개변수의 유효성성 검증하는 메소드
     private static boolean isAllValid(List<Integer> pages) {
         if (!isSizeValid(pages)) {
             return false;
         }
 
-        if (!isPageValid(pages)) {
+        if (!ContainStartOrEnd(pages)) {
+            return false;
+        }
+
+        if (!isPageNumberValid(pages)) {
             return false;
         }
 
@@ -50,8 +55,13 @@ class Problem1 {
         return pages.size() == 2;
     }
 
+    // 페이지에 시작 면, 마지막 면이 포함되어 있는지 검증하는 메소드
+    private static boolean ContainStartOrEnd(List<Integer> pages) {
+        return !pages.contains(1) && !pages.contains(2) && !pages.contains(399) && !pages.contains(400);
+    }
+
     // 왼쪽, 오른쪽 페이지가 각각 짝수 홀수인지 검증하는 메소드
-    private static boolean isPageValid(List<Integer> pages) {
+    private static boolean isPageNumberValid(List<Integer> pages) {
         return pages.get(0) % 2 != 0 && pages.get(1) % 2 == 0;
     }
 
@@ -76,7 +86,6 @@ class Problem1 {
         return max;
     }
 
-
     // 페이지의 각 자리 수를 더하거나 곱해 가장 큰 수를 반환하는 메소드
     private static int maxNumber(int page) {
 
@@ -100,7 +109,6 @@ class Problem1 {
         return multiplication;
     }
 
-
     // 페이지의 각 자리 숫자를 모두 더하는 메소드
     private static int add(int page) {
         int sum =0;
@@ -113,6 +121,5 @@ class Problem1 {
 
         return sum;
     }
-
 
 }
