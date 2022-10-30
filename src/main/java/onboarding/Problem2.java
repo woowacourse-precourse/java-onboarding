@@ -101,18 +101,19 @@ public class Problem2 {
 		return cryptogram_list;
 	}
 	//대문자 있는지 확인
-	public static boolean checkUpperCase(String cryptogram) {
-		for (int i = 0; i < cryptogram.length(); i++)
-			if (Character.isUpperCase(cryptogram.charAt(i)))
-				return true;
+	public static boolean checkLowerCase(String cryptogram) {
+		for (int i = 0; i < cryptogram.length(); i++) {
+			if (!Character.isLowerCase(cryptogram.charAt(i)))
+				return false;
+		}
 
-		return false;
+		return true;
 	}
 	public static boolean checkException(String cryptogram){
 		if (cryptogram.length() < 1 || cryptogram.length() > 1000)
 			throw new IllegalArgumentException("ERROR");
 		//대문자가 있는지
-		if (checkUpperCase(cryptogram))
+		if (!checkLowerCase(cryptogram))
 			throw new IllegalArgumentException("ERROR");
 		return true;
 	}
