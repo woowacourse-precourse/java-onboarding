@@ -46,4 +46,20 @@ public class Problem7 {
 		}
 		return temp;
 	}
+
+	private static void getKnowScore(HashMap<String, List<String>> relation, List<String> userFriends) {
+		for (String name : userFriends) {
+			for (String first : relation.keySet()) {
+				if (relation.get(first).contains(name)) {
+					relation.get(first).set(0, String.valueOf(Integer.parseInt(relation.get(first).get(0)) + 10));
+				}
+			}
+		}
+	}
+
+	private static void getVisitScore(HashMap<String, List<String>> relation, List<String> visitors) {
+		for (String visitor : visitors) {
+			relation.get(visitor).set(0, String.valueOf(Integer.parseInt(relation.get(visitor).get(0)) + 1));
+		}
+	}
 }
