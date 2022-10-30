@@ -1,15 +1,21 @@
 package onboarding;
 
+import javax.print.attribute.HashPrintJobAttributeSet;
 import java.util.*;
 
 public class Problem7 {
     static HashMap<String, Integer> scoreMap = new HashMap<>();
     static HashMap<String, Boolean> userFriendMap = new HashMap<>();
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
         userFriendMap.put(user, true);
         recordUserFriends(user, friends);
         setScoreOfKnown(user, friends);
+        setScoreOfVisit(visitors);
+
+        List<String> keySetList = new ArrayList<>(scoreMap.keySet());
+        Collections.sort(keySetList);
+        Collections.sort(keySetList, (o1, o2) -> (scoreMap.get(o2).compareTo(scoreMap.get(o1))));
+        List<String> answer = new ArrayList<>(keySetList.subList(0,keySetList.size() > 5 ? 5 : keySetList.size()));
         return answer;
     }
     static void recordUserFriends(String user, List<List<String>> friends) {
@@ -34,27 +40,18 @@ public class Problem7 {
             }
         }
     }
-    static void addScore(int Score, String friend) {
+    static void addScore(int score, String friend) {
         if (scoreMap.containsKey(friend)) {
-            scoreMap.put(friend, scoreMap.get(friend) + 10);
+            scoreMap.put(friend, scoreMap.get(friend) + score);
         } else {
-            scoreMap.put(friend, 10);
+            scoreMap.put(friend, score);
         }
     }
-    static void setScoreOfVisit(String user, List<String> visitors) {
-
-    }
-    public static void main(String args[]) {
-        List<List<String>> friends = new ArrayList<>(new ArrayList<>());
-        friends.add(new ArrayList<>(Arrays.asList(new String[]{"donut", "andole"})));
-        friends.add(new ArrayList<>(Arrays.asList(new String[]{"donut", "jun"})));
-        friends.add(new ArrayList<>(Arrays.asList(new String[]{"donut", "mrko"})));
-        friends.add(new ArrayList<>(Arrays.asList(new String[]{"shakevan", "andole"})));
-        friends.add(new ArrayList<>(Arrays.asList(new String[]{"shakevan", "jun"})));
-        friends.add(new ArrayList<>(Arrays.asList(new String[]{"shakevan", "mrko"})));
-        userFriendMap.put("mrko", true);
-        recordUserFriends("mrko", friends);
-        setScoreOfKnown("mrko", friends);
-        System.out.println(scoreMap);
+    static void setScoreOfVisit(List<String> visitors) {
+        for (String visitor: visitors) {
+            if (!userFriendMap.containsKey(visitor)) {
+                addScore(1, visitor);
+            }
+        }
     }
 }
