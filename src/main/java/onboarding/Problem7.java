@@ -13,75 +13,6 @@ import java.util.*;
  */
 
 public class Problem7 {
-    private static class User {
-        String name;
-        List<String> friendsList = new ArrayList<>();
-        HashMap<String, RecommendFriend> recommendFriendsList = new HashMap<>();
-
-
-        public User(String name) {
-            this.name = name;
-        }
-
-        //이미 친구인 사람을 넣음
-        private void addFriends(String name) {
-            friendsList.add(name);
-        }
-
-        //친구의 친구인 경우
-        private void addLinkedFriendsPoint(String name) {
-            //이미 친구이거나 자신인경우는 제외한다.
-            if (isNotInFriendsList(name)) {
-                if (!recommendFriendsList.containsKey(name)) {
-                    addRecommendsFriends(name);
-                }
-                recommendFriendsList.get(name).addLinkedFriendPoint();
-            }
-        }
-
-        private void addVisitededFriendsProint(String name) {
-            if(isNotInFriendsList(name)) {
-                if (!recommendFriendsList.containsKey(name)) {
-                    addRecommendsFriends(name);
-                }
-                recommendFriendsList.get(name).addVisitedFriendPoint();
-            }
-        }
-
-
-        //새로운 추천친구 생성
-        private void addRecommendsFriends(String name) {
-            recommendFriendsList.put(name, new RecommendFriend(name,0));
-        }
-
-        //이미 user의 친구이거나 객체 자신인지
-        private boolean isNotInFriendsList(String name) {
-            if(name.equals(this.name)) return false;
-            else return !friendsList.contains(name);
-        }
-
-    }
-
-    private static class RecommendFriend {
-        String name;
-        int point;
-
-        public RecommendFriend(String name, int point) {
-            this.name = name;
-            this.point = point;
-        }
-
-        //친구의 친구인 경우
-        private void addLinkedFriendPoint(){
-            this.point+=10;
-        }
-
-        //친구가 타임라인에 방문한 경우
-        private void addVisitedFriendPoint(){
-            this.point+=1;
-        }
-
-    }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
@@ -102,35 +33,24 @@ public class Problem7 {
         //user객체
         User nowUser = allUsers.get(user);
         //현재 유저의 친구 리스트 저장
-        List<String> nowUserfridendsList = nowUser.friendsList;
+        List<String> userFriendList = nowUser.friendsList;
 
         //유저의 친구의 친구들에게 점수 부여
-        for (String friendName : nowUserfridendsList) {
+        for (String friendName : userFriendList) {
             User nowFriend  = allUsers.get(friendName);
             //친구의 친구 리스트
-            List<String> nowFrienList = nowFriend .friendsList;
-            for (String friendOfFriend : nowFrienList) {
+            List<String> nowFriendList = nowFriend .friendsList;
+            for (String friendOfFriend : nowFriendList) {
                 nowUser.addLinkedFriendsPoint(friendOfFriend);
             }
         }
 
+        //타임라인 방문유저에게 점수 부여
         for (String visitorsName : visitors) {
             nowUser.addVisitededFriendsProint(visitorsName);
         }
 
-        List<RecommendFriend> allRecommendedFriends = new ArrayList<>();
-
-        for(String friendName : nowUser.recommendFriendsList.keySet()){
-            allRecommendedFriends.add(nowUser.recommendFriendsList.get(friendName));
-        }
-
-        allRecommendedFriends.sort((o1, o2) -> {
-            if (o1.point == o2.point) {
-                return o1.name.compareTo(o2.name);
-            }
-            return o2.point - o1.point;
-        });
-
+        List<RecommendFriend> allRecommendedFriends = SortRecommendsdFriends(nowUser.recommendFriendsHash);
 
         for (int i = 0; i < allRecommendedFriends.size() && i < 5; i++) {
             answer.add(allRecommendedFriends.get(i).name);
@@ -139,12 +59,33 @@ public class Problem7 {
         return answer;
     }
 
+    //해쉬맵의 values 정렬
+    private static List<RecommendFriend> SortRecommendsdFriends(HashMap<String, RecommendFriend> recommendFriendsHash) {
+        List<RecommendFriend> allRecommendedFriends = new ArrayList<>();
+
+        for(String friendName : recommendFriendsHash.keySet()){
+            allRecommendedFriends.add(recommendFriendsHash.get(friendName));
+        }
+
+        allRecommendedFriends.sort((o1, o2) -> {
+            if (o1.point == o2.point) {
+                return o1.name.compareTo(o2.name);
+            }
+            return o2.point - o1.point;
+        });
+        return allRecommendedFriends;
+    }
+
     //allUsers 테이블에 없다면 추가한다. 관계를 각각의 객체에 추가한다.
     private static void addFriends(HashMap<String, User> allUsers, String firstFriend, String secondFriend) {
         if (!allUsers.containsKey(firstFriend)) {
             allUsers.put(firstFriend, new User(secondFriend));
         }
         allUsers.get(firstFriend).addFriends(secondFriend);
+    }
+
+    public static void main(String[] args) {
+
     }
 
 }
