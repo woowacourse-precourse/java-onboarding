@@ -3,7 +3,6 @@ package onboarding;
 import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-import org.jetbrains.annotations.NotNull;
 
 class ValidatorPro6 {
 
