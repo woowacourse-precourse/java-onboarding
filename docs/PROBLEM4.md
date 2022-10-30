@@ -19,3 +19,17 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+-------------
+## 기능 목록
+* 빈칸일 경우 StringBuilder을 이용해 추가
+~~~
+private static void isBlank(StringBuilder sb, char alphabet)
+~~~
+* 소문자일 경우 StringBuilder을 이용해 요구사항에 맞는 알파벳 추가
+~~~
+private static void isLowerCase(StringBuilder sb, char alphabet)
+~~~
+* 대문자일 경우 StringBuilder을 이용해 요구사항에 맞는 알파벳 추가
+~~~
+private static void isUpperCase(StringBuilder sb, char alphabet)
+~~~
