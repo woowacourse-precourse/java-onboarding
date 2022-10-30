@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -15,6 +16,30 @@ class FriendForPro7 {
             friendSet.add(friend.get(1));
         }
         return friendSet;
+    }
+
+    public Map<String, List<String>> makeFriendMap(List<List<String>> friends, Set<String> friendSet
+        , Map<String, List<String>> friendMap) {
+        for (String s : friendSet) {
+            friendMap.put(s, matchFriends(friends, s));
+        }
+        return friendMap;
+    }
+
+    private List<String> matchFriends(List<List<String>> friends, String s) {
+        List<String> nameList = new ArrayList<>();
+        for (List<String> friend : friends) {
+            addFriend(friend, s, nameList);
+        }
+        return nameList;
+    }
+
+    private void addFriend(List<String> friend, String s, List<String> nameList) {
+        if (s.equals(friend.get(0))) {
+            nameList.add(friend.get(1));
+        } else if (s.equals(friend.get(1))) {
+            nameList.add(friend.get(0));
+        }
     }
 }
 
@@ -41,6 +66,8 @@ class ScoreForPro7 {
 class UserSelectedForPro7 {
 
     private List<String> userSelectedList;
+    private static Map<String, List<String>> friendMap;
+
 
     public UserSelectedForPro7(String user, List<List<String>> friends, List<String> visitors) {
         ExceptionClassForPro7 exceptionClassForPro7 = new ExceptionClassForPro7(user, friends,
@@ -48,6 +75,7 @@ class UserSelectedForPro7 {
         FriendForPro7 friendClass = new FriendForPro7();
         Set<String> friendSet = friendClass.makeFriendSet(friends, new HashSet<>());
         ScoreForPro7 scoreClass = new ScoreForPro7(new HashMap<>(), friendSet);
+        friendMap = friendClass.makeFriendMap(friends, friendSet, new HashMap<>());
 
     }
 }
