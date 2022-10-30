@@ -28,7 +28,7 @@ class Problem1 {
         return false;
     }
 
-    private static int pageFindMaxNum(int num) {
+    private static int getPageFindMaxNum(int num) {
         int sumDigit = 0;
         int mulDigit = 1;
         String number = Integer.toString(num);
@@ -47,14 +47,16 @@ class Problem1 {
             return answer;
         }
 
-        int pobiMaxNum = Math.max(pageFindMaxNum(pobi.get(0)), pageFindMaxNum(pobi.get(1)));
-        int crongMaxNum = Math.max(pageFindMaxNum(crong.get(0)), pageFindMaxNum(crong.get(1)));
+        int pobiMaxNum = Math.max(getPageFindMaxNum(pobi.get(0)), getPageFindMaxNum(pobi.get(1)));
+        int crongMaxNum = Math.max(getPageFindMaxNum(crong.get(0)), getPageFindMaxNum(crong.get(1)));
 
         if (pobiMaxNum > crongMaxNum) {
             answer = 1;
-        } else if (pobiMaxNum < crongMaxNum) {
+        }
+        if (pobiMaxNum < crongMaxNum) {
             answer = 2;
-        } else {
+        }
+        if (pobiMaxNum == crongMaxNum) {
             answer = 0;
         }
         return answer;
