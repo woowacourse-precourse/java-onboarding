@@ -1,8 +1,12 @@
 package onboarding;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Problem6 {
 
@@ -12,6 +16,9 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         // 이메일을 KEY, 닉네임을 VALUE로 갖는 해시맵 생성
         Map<String, String> emailToNameMap = makeEmailToNameMap(forms);
+
+        // 글자가 연속적으로 포함 되는 닉네임을 작성한 지원자의 이메일 목록
+        Set<String> emailSet = getEmailSetWithDuplicatedName(emailToNameMap);
 
         List<String> answer = List.of("answer");
         return answer;
@@ -26,4 +33,22 @@ public class Problem6 {
         return map;
     }
 
+    // 같은 글자가 연속적으로 포함 되는 닉네임을 작성한 지원자의 이메일 목록 리턴하는 메서드
+    public static Set<String> getEmailSetWithDuplicatedName(Map<String, String> emailToNameMap) {
+        // Set 자료형: 중복 제거 위함
+        Set<String> emailSet = new HashSet<>();
+        emailToNameMap.forEach(
+                (email, name) -> {
+                    for (int i = 0; i <= name.length() - 2; i++) {
+                        String word = name.substring(i, i + 2);
+                        emailSet.addAll(emailToNameMap.entrySet().stream()
+                                .filter(e -> !Objects.equals(e.getKey(), email))
+                                .filter(e -> e.getValue().contains(word))
+                                .map(Map.Entry::getKey)
+                                .collect(Collectors.toSet()));
+                    }
+                });
+
+        return emailSet;
+    }
 }
