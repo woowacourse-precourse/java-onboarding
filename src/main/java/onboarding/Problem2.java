@@ -26,8 +26,6 @@ public class Problem2 {
             return "FALSE";
         }
         //다르다면 바뀐 문자 반환
-        else{
-            return changeString;
-        }
+        return changeString;
     }
 }
