@@ -11,6 +11,10 @@ public class Problem6 {
         return answer;
     }
 
+    private static String getNameToken(String name, int idx1, int idx2){
+        return name.charAt(idx1) + String.valueOf(name.charAt(idx2));
+    }
+
     private static void checkForm(List<List<String>> forms){
         if (isCrewWrongSize(forms)){
             throw new IllegalArgumentException("크루는 1명 이상 10,000명 이하까지 가능합니다.");
