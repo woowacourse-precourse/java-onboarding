@@ -10,13 +10,14 @@ public class Problem6 {
     }
 
     static void checkForm(List<String> form) {
-        boolean isError = true;
+        boolean isError = false;
         String email = form.get(0);
         String name = form.get(1);
 
-        if (name.matches("^[가-힣]*$") && (name.length() > 0 && name.length() < 20))
-            if (email.matches("^[a-zA-Z0-9]+@email.com$") && (email.length() > 10 && email.length() < 20))
-                isError = false;
+        if (nameError(name))
+            isError = true;
+        if (emailError(email))
+            isError = true;
 
         try {
             if (isError == true) throw new Exception();
@@ -58,5 +59,13 @@ public class Problem6 {
         Collections.sort(new ArrayList<String>(emailList));
 
         return new ArrayList<>(emailList);
+    }
+
+    private static boolean emailError(String email) {
+        return !(email.matches("^[a-zA-Z0-9]+@email.com$") && (email.length() > 10 && email.length() < 20));
+    }
+
+    private static boolean nameError(String name) {
+        return !(name.matches("^[가-힣]*$") && (name.length() > 0 && name.length() < 20));
     }
 }
