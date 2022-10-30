@@ -13,7 +13,7 @@ public class Problem7 {
         HashMap<String, Integer> recommendFriends = createRecommendList(friends, userFriends);
         isNotFriend(recommendFriends ,user);
         recommendVisitor(recommendFriends, visitors, userFriends);
-        return limitFiveLength(sortRecommendFriends(recommendFriends));
+        return createFiveLengthList(sortRecommendFriends(recommendFriends));
     }
 
     public static Set<String> createUserFriendList(List<List<String>> friends, String user) {
@@ -84,11 +84,17 @@ public class Problem7 {
         }
     }
 
-    public static List<String> limitFiveLength(List<List<String>> list) {
-        List<String> limitList = new ArrayList<>();
+    public static List<String> createFiveLengthList(List<List<String>> list) {
+        List<String> list2 = new ArrayList<>();
         for (List<String> s : list) {
-            limitList.add(s.get(0));
+            limitFiveLength(list2, s.get(0));
         }
-        return limitList;
+        return list2;
+    }
+
+    public static void limitFiveLength(List<String> list, String str) {
+        if (list.size() < 5) {
+            list.add(str);
+        }
     }
 }
