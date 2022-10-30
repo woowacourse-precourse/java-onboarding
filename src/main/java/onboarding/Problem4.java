@@ -1,8 +1,14 @@
 package onboarding;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
+
+        String[] wordList = stringToList(word);
+
         return answer;
     }
 
@@ -17,6 +23,12 @@ public class Problem4 {
         for (int i = reverseArr.length - 1; i >= 0; i--) {
             reverseArr[i] = (char) ('z' - i);
         }
+
+        Map<Character, Character> alphabet = new HashMap<>(); // 키와 밸류로 넣음
+
+        for (int i = 0; i < alphArr.length; i++) {
+            alphabet.put(alphArr[i], reverseArr[i]);
+        }
     }
 
     public static boolean checkCase(char word) { // true : 대문자 false : 소문자
@@ -24,6 +36,7 @@ public class Problem4 {
             return true;
         else
             return false;
+
     }
 
     // 문장 리스트로 바꾸기
