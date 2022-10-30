@@ -66,6 +66,7 @@ class ScoreForPro7 {
 class UserSelectedForPro7 {
 
     private List<String> userSelectedList;
+    private static Map<String, Integer> lastScoreMap;
     private static Map<String, List<String>> friendMap;
 
 
@@ -77,11 +78,42 @@ class UserSelectedForPro7 {
         ScoreForPro7 scoreClass = new ScoreForPro7(new HashMap<>(), friendSet);
         friendMap = friendClass.makeFriendMap(friends, friendSet, new HashMap<>());
         makeUserSelectedList(user, friendMap);
-
+        finalScoreMap(user, visitors, scoreClass);
     }
 
     public void makeUserSelectedList(String user, Map<String, List<String>> friendMap) {
         this.userSelectedList = friendMap.get(user);
+    }
+
+    private void finalScoreMap(String user, List<String> visitors, ScoreForPro7 score) {
+        valuePlus1(visitors, valuePlus10(user, score.getScoreMap()));
+    }
+
+    private Map<String, Integer> valuePlus10(String user, Map<String, Integer> scoreMap) {
+        for (String s : userSelectedList) {
+            add10ToFriend(friendMap.get(s), user, scoreMap);
+        }
+        return scoreMap;
+    }
+
+    private void add10ToFriend(List<String> selected, String user, Map<String, Integer> scoreMap) {
+        for (String str : selected) {
+            if (str.equals(user)) {
+                continue;
+            }
+            scoreMap.put(str, scoreMap.get(str) + 10);
+        }
+    }
+
+    private void valuePlus1(List<String> visitors, Map<String, Integer> scoreMap) {
+
+        for (String s : visitors) {
+            if (!scoreMap.containsKey(s)) {
+                scoreMap.put(s, 1);
+                continue;
+            }
+            scoreMap.put(s, scoreMap.get(s) + 1);
+        }
     }
 }
 
