@@ -43,22 +43,6 @@ public class Problem6 {
     }
 
     /**
-     * Function for finding all email that contains overlapped 2-length string in name
-     * */
-    private static Set<String> checkingWordUsingMoreThanTwoTimes(Map<String, Set<String>> continuousThings) {
-
-        Set<String> overlappingEmailList = new HashSet<>();
-        for (String name : continuousThings.keySet()) {
-            if (continuousThings.get(name).size() >= 2) {
-                for (String email : continuousThings.get(name)) {
-                    overlappingEmailList.add(email);
-                }
-            }
-        }
-        return overlappingEmailList;
-    }
-
-    /**
      * Function for sorted email
      * */
     private static void sortList(List<String> answer, Set<String> overlappingEmailList) {
