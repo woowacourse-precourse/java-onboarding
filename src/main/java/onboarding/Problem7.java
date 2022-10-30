@@ -10,6 +10,7 @@ public class Problem7 {
         HashMap<String, Integer> strange_map = createStrangerMap(friends, visitors, friend_list);
         modifyScore(friends, visitors, friend_list, strange_map);
         ArrayList<Map.Entry<String, Integer>> sort_strange_map = sortStrangeMap(strange_map);
+        answer = createAnswerList(sort_strange_map);
 
         return answer;
     }
@@ -65,5 +66,16 @@ public class Problem7 {
         });
 
         return sort_map;
+    }
+
+    public static List<String> createAnswerList(ArrayList<Map.Entry<String, Integer>> sort_strange_map) {
+        List<String> answer = new ArrayList<>();
+
+        for(Map.Entry<String, Integer> temp : sort_strange_map) {
+            if(temp.getValue() == 0 || answer.size() == 5) break;
+            answer.add(temp.getKey());
+        }
+
+        return answer;
     }
 }
