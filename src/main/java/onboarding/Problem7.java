@@ -58,21 +58,21 @@ public class Problem7 {
         return set;
     }
 
-    private static HashMap<String, Integer> accumulateRecommendedScore(HashMap<String, Integer> map, String recommendedFriend, int score){
-        if(map.containsKey(recommendedFriend)){
-            int sum = map.get(recommendedFriend) + score;
-            map.put(recommendedFriend, sum);
+    private static HashMap<String, Integer> accumulateRecommendedScore(HashMap<String, Integer> scoreList, String recommendedFriend, int score){
+        if(scoreList.containsKey(recommendedFriend)){
+            int sum = scoreList.get(recommendedFriend) + score;
+            scoreList.put(recommendedFriend, sum);
         }else{
-            map.put(recommendedFriend, score);
+            scoreList.put(recommendedFriend, score);
         }
-        return map;
+        return scoreList;
     }
 
-    private static List<String> makeRecommendedFriendList(HashMap<String, Integer> map){
+    private static List<String> makeRecommendedFriendList(HashMap<String, Integer> scoreList){
         List<String> result = new ArrayList<>();
 
         //점수 내림차순 정렬
-        List<Map.Entry<String, Integer>> list = new ArrayList<>(map.entrySet());
+        List<Map.Entry<String, Integer>> list = new ArrayList<>(scoreList.entrySet());
         Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
             public int compare(Map.Entry<String, Integer> a, Map.Entry<String, Integer> b) {
                 int res = b.getValue().compareTo(a.getValue());
