@@ -15,6 +15,10 @@ public class Problem3 {
 
     public static int solution(int number) {
         validateNum(number);
+        return computeClapCountSum(number);
+    }
+
+    private static int computeClapCountSum(int number) {
         return IntStream.rangeClosed(START_NUM, number)
             .map(Problem3::computeClapCount)
             .reduce((clapCount1, clapCount2) -> clapCount1 + clapCount2)
