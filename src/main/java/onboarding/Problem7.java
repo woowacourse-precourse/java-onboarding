@@ -1,9 +1,15 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * 1. 예외처리
@@ -21,13 +27,90 @@ import java.util.Map;
  *
  */
 public class Problem7 {
-
+    private static final int FRIEND_OF_FRIEND = 10;
+    private static final int VISITANT = 1;
     private static Map<String, List<String>> relationshipMap = new HashMap<>();
+    private static Map<String, Integer> userScore = new HashMap<>();
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         validate(user, friends, visitors);
         makeRelationship(friends);
-        List<String> answer = List.of("answer");
+        calculateScore(visitors, user);
+        List<String> answer = calculateResult(user);
         return answer;
+    }
+    public static List<String> calculateResult(final String user){
+        return calculateRank(sortUserScore(), user);
+    }
+
+    private static Map<String, Integer> sortUserScore() {
+        List<Map.Entry<String, Integer>> list = new LinkedList<>(userScore.entrySet());
+        Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                int comparison = (o1.getValue() - o2.getValue()) * -1;
+                return comparison == 0 ? o1.getKey().compareTo(o2.getKey()) : comparison;
+            }
+        });
+
+        Map<String, Integer> sortedMap = new LinkedHashMap<>();
+        for(Iterator<Map.Entry<String, Integer>> iter = list.iterator(); iter.hasNext();){
+            Map.Entry<String, Integer> entry = iter.next();
+            sortedMap.put(entry.getKey(), entry.getValue());
+        }
+        return sortedMap;
+    }
+
+    private static List<String> calculateRank(final Map<String, Integer> sortedUserScore, final String user) {
+        List<String> userFriends = relationshipMap.get(user);
+        List<String> result = new ArrayList<>();
+        for (String userName : sortedUserScore.keySet()) {
+            if (user.equals(userName) || userFriends.contains(userName)) {
+                continue;
+            }
+            result.add(userName);
+        }
+        return calculateTopFive(result);
+    }
+
+    private static List<String> calculateTopFive(final List<String> result) {
+        if (result.size() <= 5) {
+            return result;
+        }
+        return result.subList(0, 5);
+    }
+
+    public static void calculateScore(final List<String> visitors, final String user) {
+        userScore = relationshipMap.keySet().stream()
+            .collect(Collectors.toMap(String::valueOf, e -> 0));
+        calculateScoreByUserFriend(user);
+        calculateScoreByVisitors(visitors);
+    }
+
+    private static void calculateScoreByUserFriend(final String user) {
+        List<String> userFriend = relationshipMap.get(user);
+        for (String friend : userFriend) {
+            putUserScoreByFriend(relationshipMap.get(friend));
+        }
+    }
+
+    private static void putUserScoreByFriend(final List<String> friendOfFriend) {
+        for (String friendName : friendOfFriend) {
+            userScore.put(friendName, userScore.get(friendName) + FRIEND_OF_FRIEND);
+        }
+    }
+
+    private static void calculateScoreByVisitors(final List<String> visitors) {
+        for (String visitor : visitors) {
+            putUserScoreByVisitor(visitor);
+        }
+    }
+
+    private static void putUserScoreByVisitor(final String visitor) {
+        if (!userScore.containsKey(visitor)){
+            userScore.put(visitor, 0);
+        }
+        userScore.put(visitor, userScore.get(visitor) + VISITANT);
     }
 
     public static void makeRelationship(final List<List<String>> friends) {
