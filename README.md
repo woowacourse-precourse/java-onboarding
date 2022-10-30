@@ -151,13 +151,16 @@
 
 ## 🌟 PROBLEM7
 ###
-### ✔️ informationConstant
-**상수를 관리하는 클래스입니다.**
+### ✔️ scoreConstant
+**점수를 저장하는 클래스입니다.**
 
-- score
-- user 아이디
-- friends목록
-- visitors목록
+###
+### ✔️ informationConstant
+**유저의 정보를 저장하는 클래스입니다.**
+
+- user ID
+- friends
+- visitors
 
 ###
 ### ✔️ validateUsers
