@@ -46,6 +46,18 @@ public class Problem7 {
         return answer;
     }
 
+    private static void addScore(Map<String, Integer> numberOfFriends, List<Friend> friends, String user, int index) {
+        List<String> userFriends = friends.get(numberOfFriends.get(user)).getMyFriends();
+        Friend friend = friends.get(index);
+        List<String> myFriends = friend.getMyFriends();
+
+        for (String userFriend : userFriends) {
+            if (myFriends.contains(userFriend)) {
+                friend.addScore(10);
+            }
+        }
+    }
+
     private static void init(List<List<String>> friendships, List<String> visitors, Map<String, Integer> numberOfFriends, List<Friend> friends) {
         int idx = 0;
         for (List<String> friend : friendships) {
