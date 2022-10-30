@@ -9,6 +9,16 @@ class Problem1 {
         return answer;
     }
 
+    private static Integer getAddition(Integer page) {
+        Integer result = 0;
+
+        while(page > 0){
+            result += page % 10;
+            page /= 10;
+        }
+        return result;
+    }
+
     private static boolean isException(List<Integer> pages){
         if(pages.size() != 2) return true;
         if(pages.get(0) < 1 || pages.get(1) < 1) return true;
