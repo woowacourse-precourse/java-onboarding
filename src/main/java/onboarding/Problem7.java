@@ -23,6 +23,11 @@ public class Problem7 {
             defineFriendship(relationship);
         }
 
+        // 사용자의 친구 목록을 조회한다.
+        List<String> userFriendList = friendMap.get(user);
+
+        // 친구 관계 Map에서 사용자의 정보를 제거한다. (기준이 사용자이기 때문)
+        friendMap.remove(user);
 
         return answer;
     }
