@@ -27,6 +27,8 @@ class ExceptionClassForPro6 {
     private static final int MAXIMUM_MEMBER = 10000;
     private static final int EMAIL_LENGTH_MIN = 11;
     private static final int EMAIL_LENGTH_MAX = 20;
+    private static final int NICK_LENGTH_MIN = 1;
+    private static final int NICK_LENGTH_MAX = 20;
 
     public ExceptionClassForPro6(List<List<String>> forms) {
         validateArguments(forms);
@@ -37,6 +39,8 @@ class ExceptionClassForPro6 {
         for (List<String> userProfile : forms) {
             validateEmail(userProfile.get(0));
             validateEmailLength(userProfile.get(0));
+            validateNickLength(userProfile.get(1));
+            validateNickKor(userProfile.get(1));
         }
     }
 
@@ -62,6 +66,19 @@ class ExceptionClassForPro6 {
         if (email.length() < EMAIL_LENGTH_MIN || EMAIL_LENGTH_MAX <= email.length()) {
             throw new IllegalArgumentException(
                 "이메일의 길이는 " + EMAIL_LENGTH_MIN + "이상 " + EMAIL_LENGTH_MAX + "미만의 정수여야 합니다.");
+        }
+    }
+
+    private static void validateNickLength(String nickname) {
+        if (nickname.length() < NICK_LENGTH_MIN || NICK_LENGTH_MAX <= nickname.length()) {
+            throw new IllegalArgumentException(
+                "닉네임의 길이는 " + NICK_LENGTH_MIN + "이상 " + NICK_LENGTH_MAX + " 미만의 정수여야 합니다.");
+        }
+    }
+
+    private static void validateNickKor(String nickname) {
+        if (!nickname.matches("^[가-힣]*$")) {
+            throw new IllegalArgumentException("닉네임은 한글만 가능합니다.");
         }
     }
 }
