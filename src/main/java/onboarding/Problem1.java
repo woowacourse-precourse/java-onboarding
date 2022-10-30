@@ -16,6 +16,10 @@ class Problem1 {
         return pages.get(0) >= 1 && pages.get(1) <= 400;
     }
 
+    private static boolean validateCorrectPageOrder(List<Integer> pages) {
+        return pages.get(0) % 2 == 1 && pages.get(1) % 2 == 0;
+    }
+
     private static int getMSum(int page) {
         int sum = 0;
         while (page > 0) {
