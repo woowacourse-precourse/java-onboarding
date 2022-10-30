@@ -6,6 +6,24 @@ import java.util.stream.Collectors;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+
+        Map<String, Integer> map = getPotentialFriendNameAndScore(user, friends, visitors);
+
+        List<Map.Entry<String, Integer>> entries = new ArrayList<>(map.entrySet());
+
+        // 점수 역순 정렬
+        reverseSortByScore(entries);
+
+        // 이름순 정렬
+        ifSameScoreThenSortByName(entries);
+
+        List<String> temp = new ArrayList<>();
+        for (Map.Entry<String, Integer> entry : entries) {
+            temp.add(entry.getKey());
+        }
+
+        answer = temp;
+
         return answer;
     }
 
