@@ -9,6 +9,8 @@ class Problem1 {
     private static final int WIN_CRONG = 2;
     private static final int LEFT_PAGE = 0;
     private static final int RIGHT_PAGE = 1;
+    private static final int END_PAGE = 400;
+    private static final int START_PAGE = 1;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
@@ -33,8 +35,8 @@ class Problem1 {
         return (right == left + 1)
                 && (left % 2 == 1)
                 && (right % 2 == 0)
-                && (right <= 400)
-                && (left >= 1);
+                && (right <= END_PAGE)
+                && (left >= START_PAGE);
     }
 
     private static int sum(int n) {
