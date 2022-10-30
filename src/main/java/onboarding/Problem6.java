@@ -1,14 +1,30 @@
 package onboarding;
 
-import java.util.List;
+import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+
+        //중복을 제거하기 위해 set 사용
+        Set<String> set = new HashSet<>();
+        int n = forms.size();
+        for (int i = 0; i < n-1; i++) {
+            for (int j = i + 1; j < n; j++) {
+                String name1 = forms.get(i).get(1);
+                String name2 = forms.get(j).get(1);
+                if (hasDuplication(name1, name2)) {
+                    addEmail(forms.get(i), set);
+                    addEmail(forms.get(j), set);
+                }
+            }
+        }
+        //List로 변환후 정렬
+        List<String> list = new ArrayList<>(set);
+        Collections.sort(list);
+        return list;
     }
 
-    public static void addEmail(List<String> form, List<String> emailList) {
+    public static void addEmail(List<String> form, Set<String> emailList) {
         emailList.add(form.get(0));
 
     }

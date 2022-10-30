@@ -30,7 +30,7 @@
 ### Problem 6
 - [x] 문자열 중복 확인 기능 추가
 - [x] 중복 닉네임 이메일 추출 기능 추가
-- [ ] solution 메서드 작성
+- [x] solution 메서드 작성
 ---
 ### Problem 7
 
