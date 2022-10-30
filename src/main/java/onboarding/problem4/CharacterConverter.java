@@ -8,7 +8,7 @@ public class CharacterConverter {
     public static final int UPPERCASE_SUM = 155;  // 대문자의 문자 간 합은 155입니다.
 
     public char reverseCharacter(char character) {
-        if (character == ' ') {
+        if (!isAlphabetic(character)) {
             return character;
         }
 
