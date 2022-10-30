@@ -23,5 +23,14 @@ public class Problem4 {
 				return letterCode;
 			}
 		}
+
+		public static String readWordAccordingToDictionary(String word) {
+			StringBuilder wordBuilder = new StringBuilder();
+			for (char currentLetter : word.toCharArray()) {
+				char changedLetter = (char)Letter.toReversedCode(currentLetter);
+				wordBuilder.append(changedLetter);
+			}
+			return wordBuilder.toString();
+		}
 	}
 }
