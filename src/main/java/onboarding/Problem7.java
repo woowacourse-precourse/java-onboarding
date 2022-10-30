@@ -80,4 +80,8 @@ public class Problem7 {
 
         return result;
     }
+
+    private static int calculateRecommendScore(int currentScore, int commonFriendsCount, int visitorCount) {
+        return currentScore + commonFriendsCount * 10 + visitorCount;
+    }
 }
