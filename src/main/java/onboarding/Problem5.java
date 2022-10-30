@@ -19,7 +19,7 @@ public class Problem5 {
        int[] moneyUnit = {1,10,50,100,500,1000,5000,10000,50000};
        
        for(int i = moneyUnit.length-1; i > -1 ; i--){
-    	   if(i== moneyUnit.length-1)  {wallet.add((money)/50000);continue;}
+    	   if(i== moneyUnit.length-1)  {wallet.add((money)/moneyUnit[i]);continue;}
     	   wallet.add(money%(moneyUnit[i+1])/moneyUnit[i]);
        }//for
        return wallet;
