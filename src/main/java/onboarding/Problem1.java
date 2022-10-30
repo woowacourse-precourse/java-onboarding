@@ -15,7 +15,18 @@ class Problem1 {
             int pobiScore = findMaxScore(pobi);
             int crongScore = findMaxScore(crong);
 
+            if (pobiScore > crongScore) {
+                answer = 1;
+                return answer;
+            } else if (pobiScore < crongScore) {
+                answer = 2;
+                return answer;
+            } else {
+                answer = 0;
+                return answer;
+            }
         }
+        answer = -1;
 
         return answer;
     }
