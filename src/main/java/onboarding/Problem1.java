@@ -19,10 +19,7 @@ class Problem1 {
         if (leftPageNumber % 2 == 0) {  // 왼쪽 페이지가 짝수일 경우
             return false;
         }
-        if (leftPageNumber < MIN_PAGE) {   // 최소 페이지보다 작을 경우
-            return false;
-        }
-        if (rightPageNumber > MAX_PAGE) {  // 최대 페이지보다 클 경우
+        if (leftPageNumber < MIN_PAGE || rightPageNumber > MAX_PAGE) {   // 페이지 범위를 벗어날 경우
             return false;
         }
         if (rightPageNumber - leftPageNumber != 1) {    // 페이지가 연속되지 않는 경우
