@@ -10,8 +10,7 @@ public class Problem6 {
         nicknameEmailQ = new LinkedList<>();
         for (List<String> form : forms) {
             String email = form.get(0);
-            if (email.length() < 11 || email.length() > 19 || !email.endsWith("email.com")) {
-                System.out.println(email);
+            if (!isValidateEmail(email)) {
                 continue;
             }
             nicknameEmailQ.offer(form);
@@ -57,7 +56,8 @@ public class Problem6 {
             }
         }
         return false;
-
-//        return ;
+    }
+    public static boolean isValidateEmail (String email){
+        return email.length() >= 11 && email.length() < 20 && email.endsWith("email.com");
     }
 }
