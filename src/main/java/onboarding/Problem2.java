@@ -5,6 +5,9 @@ public class Problem2 {
 
     /**
      * 연속되는 중복 문자의 idx 반환
+     *
+     * @param cryptogram 암호화된 문자열
+     * @return index
      */
     private static int getDuplicateCharIdx(String cryptogram) {
         for (int i = 0; i < cryptogram.length() - 1; i++) {
@@ -20,6 +23,9 @@ public class Problem2 {
 
     /**
      * 연속되는 중복 문자의 갯수 반환
+     *
+     * @param cryptogram 암호화된 문자열
+     * @return index
      */
     private static int getDuplicateCharCount(String cryptogram, int idx) {
         char checkChar = cryptogram.charAt(idx);
@@ -27,7 +33,7 @@ public class Problem2 {
         for (int i = idx; i < cryptogram.length(); i++) {
             char ch = cryptogram.charAt(i);
 
-            if(checkChar != ch) break;
+            if (checkChar != ch) break;
 
             duplicateCount++;
         }
@@ -36,6 +42,11 @@ public class Problem2 {
 
     /**
      * 주어진 범위의 문제열을 제거하는 함수
+     *
+     * @param cryptogram 암호화된 문자열
+     * @param idx 범위의 시작점
+     * @param count 범위의 문자 개수
+     * @return 주어진 범위의 문자열을 제거한 문자열
      */
     private static String removeStringRange(String cryptogram, int idx, int count) {
         return cryptogram.substring(0, idx) + cryptogram.substring(idx + count);
