@@ -48,8 +48,33 @@ public class Problem7 {
      *   - List<String>, 방문자
      * @return : Map<String, Integer>, Map으로 정리된 아이디와 점수. Key가 아이디, Value가 점수
      */
-    public static Map<String, Integer> calculateScore(Map<String, Set<String>> friendConnection, List<String> visitors) {
+    public static Map<String, Integer> calculateScore(String userId, Map<String, Set<String>> friendConnection, List<String> visitors) {
         Map<String, Integer> answer = new HashMap<>();
+        Set<String> userFriend = friendConnection.get(userId);
+
+        for (String friendId : friendConnection.keySet()) {
+            if (userId == friendId) continue;
+
+            int sameFriendCnt = 0;
+            Set<String> friendFriend = friendConnection.get(friendId);
+
+            if (userFriend.size() < friendFriend.size()) {
+                for (String friend : userFriend) {
+                    if (friendFriend.contains(friend)) sameFriendCnt++;
+                }
+            } else {
+                for (String friend : friendFriend) {
+                    if (userFriend.contains(friend)) sameFriendCnt++;
+                }
+            }
+
+            answer.put(friendId, sameFriendCnt * 10);
+        }
+
+        for (String visitor : visitors) {
+            answer.put(visitor, answer.get(visitor) + 1);
+        }
+
         return answer;
     }
 
