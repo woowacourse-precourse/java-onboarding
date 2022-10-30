@@ -1,19 +1,43 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = getRecommendScore(user, friends, visitors);
+        List<String> answer = getTopFiveFriends(user, friends, visitors);
         return answer;
+    }
+
+    private static List<String> getTopFiveFriends(String user, List<List<String>> friends, List<String> visitors) {
+        List<String> totalRecommendFriendsList = getRecommendScore(user, friends, visitors);
+        List<String> result = new ArrayList<>();
+        for(int i=0; i <totalRecommendFriendsList.size(); i++) {
+            result.add(totalRecommendFriendsList.get(i));
+        }
+        return result;
     }
 
     private static List<String> getRecommendScore(String user, List<List<String>> friends, List<String> visitors) {
         List<String> result = new ArrayList<>();
         Map<String, Integer> recommendScoreByEachFriend = getFriendScoreList(user, friends, visitors);
+
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(recommendScoreByEachFriend.entrySet());
+        entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> value1, Map.Entry<String, Integer> value2) {
+                return value2.getValue() - value1.getValue();
+            }
+        });
+
+        for (Map.Entry<String,Integer> entry : entryList) {
+            if(entry.getValue() == 0) continue;
+            result.add(entry.getKey());
+        }
 
         return result;
     }
