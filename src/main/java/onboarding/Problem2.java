@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Problem2 {
-    static List<Character> list = new ArrayList<>();
-
     /**
      * 문자열을 Character형 List로 변환하는 메서드
      *
@@ -13,6 +11,7 @@ public class Problem2 {
      * @return List로 바꾼 문자열
      */
     static List<Character> transStringToList(String cryptogram) {
+        List<Character> list = new ArrayList<>();
         for (int i = 0; i < cryptogram.length(); i++) {
             list.add(cryptogram.charAt(i));
         }
@@ -41,21 +40,21 @@ public class Problem2 {
      *
      * @return 문자가 삭제 되었으면 true, 아니라면 false
      */
-    static boolean deleteDuplicateChar() {
+    static boolean deleteDuplicateChar(List<Character> inputList) {
         int index = 0;
         boolean isDeleted = false;
 
-        while (index != (list.size() - 1)) {
-            if (list.get(index).equals(list.get(index + 1))) {
-                list.remove(index + 1);
-                list.remove(index);
+        while (index != (inputList.size() - 1)) {
+            if (inputList.get(index).equals(inputList.get(index + 1))) {
+                inputList.remove(index + 1);
+                inputList.remove(index);
                 isDeleted = true;
             }
             else {
                 index++;
             }
 
-            if (list.size() == 0) {
+            if (inputList.size() == 0) {
                 return false;
             }
         }
@@ -64,7 +63,16 @@ public class Problem2 {
     }
 
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = cryptogram;
+        List<Character> cryptogramList;
+        boolean isDeleted = true;
+
+        cryptogramList = transStringToList(answer);
+        while (isDeleted) {
+            isDeleted = deleteDuplicateChar(cryptogramList);
+        }
+
+        answer = transListToString(cryptogramList);
         return answer;
     }
 }
