@@ -124,4 +124,11 @@ public class Problem6 {
         }
         return List.copyOf(result);
     }
+
+    // 이메일 리스트 오름차순으로 정렬하는 기능
+    public static List<String> sortEmailList(List<String> email) {
+        return email.stream()
+            .sorted()
+            .collect(Collectors.toList());
+    }
 }
