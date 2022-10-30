@@ -3,6 +3,7 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 public class Problem2 {
@@ -30,15 +31,15 @@ public class Problem2 {
 
     static String removeDuplication(String cryptogram) {
         ArrayList<String> inputArrayList = new ArrayList<>(Arrays.asList(cryptogram.split("")));
-        HashSet<Integer> duplicationIndexSet = getDuplicationIndexSet(inputArrayList);
+        Set<Integer> duplicationIndexSet = getDuplicationIndexSet(inputArrayList);
         ArrayList<String> outputArrayList = removeDuplicationBySet(inputArrayList,
             duplicationIndexSet);
         String answer = joinStringWithoutNull(outputArrayList);
         return answer;
     }
 
-    static HashSet<Integer> getDuplicationIndexSet(ArrayList<String> inputArrayList) {
-        HashSet<Integer> duplicationSet = new HashSet<>();
+    static Set<Integer> getDuplicationIndexSet(ArrayList<String> inputArrayList) {
+        Set<Integer> duplicationSet = new HashSet<>();
         for (int i = 0; i < inputArrayList.size() - 1; i++) {
             String pre = inputArrayList.get(i);
             String next = inputArrayList.get(i + 1);
@@ -52,7 +53,7 @@ public class Problem2 {
 
     static ArrayList<String> removeDuplicationBySet(
         ArrayList<String> arrayList,
-        HashSet<Integer> duplicationSet
+        Set<Integer> duplicationSet
     ) {
         for (int i = 0; i < arrayList.size(); i++) {
             if (duplicationSet.contains(i)) {
