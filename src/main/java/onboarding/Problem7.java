@@ -14,6 +14,9 @@ public class Problem7 {
     private static final int ANSWER_SIZE_MAX = 5;
     private static final int ID_SIZE_MIN = 1;
     private static final int ID_SIZE_MAX = 30;
+    private static final int FRIENDS_LIST_SIZE_MIN = 1;
+    private static final int FRIENDS_LIST_SIZE_MAX = 10000;
+    private static final int FRIENDS_ELEMENT_SIZE = 2;
     private static final String LOWER_ALPHABET_REGEX = "^[a-z]*$";
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -28,6 +31,26 @@ public class Problem7 {
 
     private static void validateInput(String user, List<List<String>> friends, List<String> visitors) {
         validateUser(user);
+        validateFriends(friends);
+    }
+
+    static void validateFriends(List<List<String>> friends) {
+        if (!isValidFriendsSize(friends)) {
+            throw new IllegalArgumentException();
+        }
+        friends.forEach(friend -> friend.forEach(user -> validateUser(user)));
+    }
+
+    private static boolean isValidFriendsSize(List<List<String>> friends) {
+        if (friends.size() < FRIENDS_LIST_SIZE_MIN || friends.size() > FRIENDS_LIST_SIZE_MAX) {
+            return false;
+        }
+        for (List<String> friend : friends) {
+            if (friend.size() != FRIENDS_ELEMENT_SIZE) {
+                return false;
+            }
+        }
+        return true;
     }
 
     static void validateUser(String user) {
@@ -37,17 +60,11 @@ public class Problem7 {
     }
 
     private static boolean isValidIdSize(String id) {
-        if (id.length() >= ID_SIZE_MIN && id.length() <= ID_SIZE_MAX) {
-            return true;
-        }
-        return false;
+        return id.length() >= ID_SIZE_MIN && id.length() <= ID_SIZE_MAX;
     }
 
     private static boolean isIdLowerAlphabet(String id) {
-        if(Pattern.matches(LOWER_ALPHABET_REGEX, id)) {
-            return true;
-        }
-        return false;
+        return Pattern.matches(LOWER_ALPHABET_REGEX, id);
     }
 
     static List<String> computeAnswer(String mainCharacter, List<String> mainCharacterFriends, Map<String, Integer> userAndRecommendScore) {

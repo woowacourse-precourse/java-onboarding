@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.IntStream;
@@ -89,13 +90,39 @@ class Problem7Test {
 
     @Test
     void validateUser() {
-        Assertions.assertThatCode(() -> Problem7.validateUser("abc")).doesNotThrowAnyException();
+        Assertions.assertThatCode(() -> Problem7.validateUser("abc"))
+            .doesNotThrowAnyException();
 
         StringBuilder stringBuilder = new StringBuilder();
-        IntStream.range(0, 31).forEach(i -> stringBuilder.append("a"));
+        IntStream.range(0, 31)
+            .forEach(i -> stringBuilder.append("a"));
         Assertions.assertThatThrownBy(() -> Problem7.validateUser(""));
         Assertions.assertThatThrownBy(() -> Problem7.validateUser("123"));
         Assertions.assertThatThrownBy(() -> Problem7.validateUser("A"));
         Assertions.assertThatThrownBy(() -> Problem7.validateUser(stringBuilder.toString()));
+    }
+
+    @Test
+    void validateFriends() {
+        StringBuilder size30String = new StringBuilder();
+        IntStream.range(0, 31)
+            .forEach(i -> size30String.append("a"));
+
+        Assertions.assertThatCode(() -> Problem7.validateFriends(List.of(List.of("abc", "def"))));
+        Assertions.assertThatCode(() -> Problem7.validateFriends(List.of(List.of("abc", size30String.toString()))));
+
+        List<List<String>> size10001List = new ArrayList<>();
+        IntStream.range(0, 10001)
+            .forEach(i -> size10001List.add(List.of("abc", "def")));
+        String size31String = size30String.append("a")
+            .toString();
+
+        Assertions.assertThatThrownBy(() -> Problem7.validateFriends(List.of()));
+        Assertions.assertThatThrownBy(() -> Problem7.validateFriends(size10001List));
+        Assertions.assertThatThrownBy(() -> Problem7.validateFriends(List.of(List.of("abc"))));
+        Assertions.assertThatThrownBy(() -> Problem7.validateFriends(List.of(List.of("abc", "def", "ghi"))));
+        Assertions.assertThatThrownBy(() -> Problem7.validateFriends(List.of(List.of("abc", size31String))));
+        Assertions.assertThatThrownBy(() -> Problem7.validateFriends(List.of(List.of("abc", "d1f"))));
+        Assertions.assertThatThrownBy(() -> Problem7.validateFriends(List.of(List.of("Abc", "def"))));
     }
 }
