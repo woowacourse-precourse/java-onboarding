@@ -21,3 +21,8 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+> 수정 :
+제한사항에서 result 의 이메일 문자열의 중복을 제거한다를 발견 후 코드 수정
+
+1. Stream 을 사용하여 정답 list 를 정렬함과 동시에 distinct() 메소드를 사용하여 중복을 제거해 줌 ✅
