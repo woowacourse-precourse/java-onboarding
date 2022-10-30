@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Problem7 {
 
@@ -15,15 +12,15 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         SocialGraph sg = new SocialGraph(friends);
+//        System.out.printf("%d\n",sg.userLength());
         return answer;
     }
 
     private static class SocialGraph {
-        private List<Entry> orderedList;
+        private List<Entry> orderedList = new ArrayList<>();
         private boolean[][] isConnected;
         private EntryComparator cmp;
         public SocialGraph(List<List<String>> friends) {
-
             for(int i = 0; i < friends.size(); i++) {
                 String usernameA = friends.get(i).get(0);
                 String usernameB = friends.get(i).get(1);
@@ -34,8 +31,9 @@ public class Problem7 {
                 if (!orderedList.contains(userA)) orderedList.add(userA);
                 if (!orderedList.contains(userB)) orderedList.add(userB);
             }
-
             Collections.sort(orderedList);
+            int n = orderedList.size();
+            isConnected = new boolean[n][n];
 
             for(int i = 0; i < friends.size(); i++){
                 String usernameA = friends.get(i).get(0);
@@ -45,7 +43,7 @@ public class Problem7 {
                 Entry userB = new Entry(usernameB,0);
 
                 int a = orderedList.indexOf(userA);
-                 int b = orderedList.indexOf(userB);
+                int b = orderedList.indexOf(userB);
 
                  isConnected[a][b] = true;
                  isConnected[b][a] = true;
@@ -59,9 +57,22 @@ public class Problem7 {
             int indexA = findIndex(usernameA), indexB = findIndex(usernameB);
             return isConnected[indexA][indexB];
         }
-        public List<Entry> friendList(String a){
+        public List<Entry> friendList(String username){
             return Collections.emptyList();
         }
+
+        public int numberCommonFriends(String usernameA, String usernameB){
+            int indexA = findIndex(usernameA), indexB = findIndex(usernameB);
+            int result = 0;
+            for (int i =0; i< userLength(); i++){
+                if( i != indexA && i != indexB && isConnected[i][indexA] && isConnected[i][indexB]){
+                    result++;
+                }
+            }
+
+            return result;
+        }
+
 
         public int userLength(){
             return orderedList.size();
@@ -90,9 +101,14 @@ public class Problem7 {
             }
             return 0;
         }
-        public boolean equals(Entry o){
-            return this.name.equals(o.name);
+        @Override
+        public boolean equals(Object o){
+            if (o == null || getClass() != o.getClass())
+                return false;
+            Entry other = (Entry) o;
+            return this.name.equals(other.name);
         }
+
     }
     private static class EntryComparator implements Comparator<Entry> {
         @Override
