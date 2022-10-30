@@ -10,16 +10,18 @@ class Problem1 {
     static List<Integer> crongList = new ArrayList<>();
     static int pobiMaxValue;
     static int crongMaxValue;
+    static int answer;
+
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+
         pobiList = countList(pobi);
         crongList = countList(crong);
 
         pobiMaxValue = getMaxValue(pobiList);
         crongMaxValue = getMaxValue(crongList);
 
-
+        answer = findWinner();
         return answer;
     }
 
@@ -63,5 +65,19 @@ class Problem1 {
        int maxUserValue;
        maxUserValue = Collections.max(userList);
        return maxUserValue;
+    }
+
+    public static int findWinner(){
+        int answerValue;
+
+        if (pobiMaxValue > crongMaxValue){
+            answerValue = 1;
+        }else if(pobiMaxValue < crongMaxValue){
+            answerValue = 2;
+        }else if(pobiMaxValue == crongMaxValue) {
+            answerValue = 0;
+        }
+
+        return answerValue;
     }
 }
