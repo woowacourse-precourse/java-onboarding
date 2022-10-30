@@ -33,8 +33,29 @@ public class Problem4 {
         return  idx;
     }
 
+    static char translateFrogDict(char alpha, int idx) {
+        char frogChar = ' ';
+
+        if (isAlphabet(alpha) == 0) {
+            return (char)(90 - idx);
+        }
+        if (isAlphabet(alpha) == 1) {
+            return (char)(122 - idx);
+        }
+
+        return alpha;
+    }
+
     public static String solution(String word) {
         String answer = "";
+
+        char[] wordChar =  wordToCharArray(word);
+
+        for (char c: wordChar) {
+            int idx = findIdxASCII(c);
+            answer += translateFrogDict(c, idx);
+        }
+
         return answer;
     }
 }
