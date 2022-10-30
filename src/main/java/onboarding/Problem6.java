@@ -92,4 +92,15 @@ public class Problem6 {
         }
         return true;
     }
+
+    // 닉네임 중 두 글자 이상 중복되는지 판별하는 기능
+    public static boolean checkNicknameOverlapMoreThanTwoWord(String nickname,
+        String nextNickname) {
+        for (int i = 0; i < nickname.length() - 1; i++) {
+            if (nextNickname.contains(nickname.substring(i, i + 2))) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
