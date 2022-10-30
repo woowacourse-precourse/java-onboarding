@@ -24,13 +24,18 @@ public class Problem6 {
       }
     }
 
-    public static List<String> findAllDuplicateWords(HashMap<String, String> dic){
+    public static List<String> findAllDuplicateWords(HashMap<String, String> crewDictionary){
         HashMap<String, Integer> countDuplicateWords = new HashMap<>();
-            for(String words: dic.values()){
-                  HashSet<String> allTwoWords = getAllTwoLengthWords(words);
-            }
+        for(String words: crewDictionary.values()){
+            HashSet<String> allTwoWords = getAllTwoLengthWords(words);
+            allTwoWords.forEach(twoWords -> addWordsInDuplicateWords(twoWords, countDuplicateWords));
+        }
         return filterDuplicateUsed(countDuplicateWords);
-  }
+    }
+
+    public static void addWordsInDuplicateWords(String words, HashMap<String, Integer> countDuplicateWords){
+        countDuplicateWords.put(words, countDuplicateWords.getOrDefault(words,0) + 1);
+    }
 
     public static HashSet<String> getAllTwoLengthWords(String words){
         HashSet<String> twoLengthWords = new HashSet<>();
