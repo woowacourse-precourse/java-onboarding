@@ -18,8 +18,29 @@ public class Problem6 {
         };
         return true;
     }
+    public static List<String> findSolution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
         List<String> nameList = new ArrayList<>();
+        for(int i =0; i < forms.size(); i++) {
+            String name = forms.get(i).get(1);
+            for(int j = 0; j < name.length() - 1; j++) {
+                nameList.add(name.substring(j, j + 2));
+            }
+        };
+
+        for(int k = 0; k < forms.size(); k++) {
+            String newName = forms.get(k).get(1);
+            for(int l = 0; l < newName.length() - 1; l++) {
+                String anotherName = newName.substring(l, l + 2);
+                int frequency = Collections.frequency(nameList, anotherName);
+                if(frequency >= 2) {
+                 answer.add(forms.get(k).get(0));
+                 break;
+                }
+            }
+        };
+        return answer;
+    };
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
         return answer;
