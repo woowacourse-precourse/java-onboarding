@@ -9,6 +9,30 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+        findFriend(user, friends);
+        getScoreInFriend(user, friends);
+        getScoreInVisitors(user, visitors);
+
+        if (score.isEmpty() == false) {
+            List<String> compareList = new ArrayList<>(score.keySet());
+            Collections.sort(answer, (data1, data2) -> {
+                if(score.get(data1) == score.get(data2)) {
+                    return data1.compareTo(data2);
+                }
+                return score.get(data1) - score.get(data2);
+            });
+
+            if(compareList.size() < 6) {
+                answer = compareList;
+            }
+            else {
+                for (int i = 0 ; i < 5 ; i++) {
+                    answer.add(compareList.get(i));
+                }
+            }
+
+        }
+
         return answer;
     }
 
