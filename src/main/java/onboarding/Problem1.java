@@ -45,15 +45,6 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
-    public static int maxScore(List<Integer> pageList){
-        int max = 0;
-        for(Integer pageNumber : pageList){ // 향상된 for문
-            if (max < compaerSum(pageNumber)){
-                max = compaerSum(pageNumber);
-            }
-        }
-        return max;
-    }
     
     public int addtion(int pageNumber){
         int additionSum = 0;
