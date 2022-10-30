@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        Pattern emailPattern = Pattern.compile("^[A-Za-z0-9._%+-]*+@email[.]com");
+        Pattern emailPattern = Pattern.compile("^[A-Za-z0-9]+(.[_A-Za-z0-9-]+)*@email[.]com");
         Pattern nicknamePattern = Pattern.compile("^[ㄱ-ㅎ가-힣]*");
         for (List<String> data : forms) {
             if(!emailPattern.matcher(data.get(0)).matches()) {
