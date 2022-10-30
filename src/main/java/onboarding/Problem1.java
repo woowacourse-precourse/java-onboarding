@@ -18,7 +18,17 @@ class Problem1 {
         pobiMaxNum = getMaxNum(pobi.get(0),pobi.get(1));
         crongMaxNum = getMaxNum(crong.get(0),crong.get(1));
 
+        if (pobiMaxNum == crongMaxNum) {
+            answer = 0;
+            return answer;
+        }
 
+        answer = Math.max(pobiMaxNum,crongMaxNum);
+        if(answer==pobiMaxNum)
+            answer = 1;
+        else
+            answer = 0;
+        
         return answer;
     }
 
