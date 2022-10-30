@@ -35,4 +35,9 @@ public class Problem2 {
         }
         return false;
     }
+    private static void delOverlapChar(StringBuffer str, Integer[] arr) {
+        for(int i = arr.length-1; i>=0; i--){
+            str.deleteCharAt(arr[i]);
+        }
+    }
 }
