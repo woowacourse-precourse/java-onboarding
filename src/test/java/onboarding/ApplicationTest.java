@@ -80,8 +80,8 @@ class ApplicationTest {
 
         @Test
         void case2() {
-            String word = "AZ";
-            String result = "ZA";
+            String word = "AZ az";
+            String result = "ZA za";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
     }
