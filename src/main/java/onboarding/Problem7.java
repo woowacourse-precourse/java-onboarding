@@ -29,6 +29,7 @@ public class Problem7 {
         scoringByVisitors(visitors, users);
         scoringByFriends(user, users);
 
+        List<String> recommendFriends = getRecommendFriends(users, user);
         validateRecommendFriends(recommendFriends);
     }
 
@@ -133,6 +134,26 @@ public class Problem7 {
         }
     }
 
+    private static List<String> getRecommendFriends(Map<String, User> users, String ownerName) {
+        Queue<User> queue = new PriorityQueue<>((o1, o2) -> {
+            if (o1.score == o2.score) {
+                return o1.name.compareTo(o2.name);
+            }
+            return o2.score - o1.score;
+        });
+
+        User owner = users.get(ownerName);
+
+        for (String userName : users.keySet()) {
+            User user = users.get(userName);
+
+            if (isTargetUser(owner, user)) {
+                queue.offer(user);
+            }
+        }
+
+        return getTop5Friends(queue);
+    }
     private static void validateRecommendFriends(List<String> recommendFriends) {
         if (recommendFriends.isEmpty()) {
             throw new IllegalArgumentException();
@@ -146,6 +167,13 @@ public class Problem7 {
         User user = new User(userName);
         users.put(userName, user);
         return user;
+    }
+
+    private static boolean isTargetUser(User owner, User user) {
+        if (user.isZeroScore() || owner.isFriend(user.name) || user.isSameName(owner.name)) {
+            return false;
+        }
+        return true;
     }
 
     private static String getSecondUserName(List<String> userNames) {
