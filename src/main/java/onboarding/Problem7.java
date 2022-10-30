@@ -32,18 +32,21 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Problem7 problem = new Problem7();
         /* friendNames: 친구 목록 생성  */
-        List<String> friendNames = flatten2DimStringList(friends);   // 배열 평탄화
-        friendNames.addAll(visitors);
-        friendNames = dropDuplicate(friendNames);   // 중복 제거
-        friendNames.remove(user); // 친구 목록에서 user 제거
+        List<String> personToRecommand = flatten2DimStringList(friends);   // 배열 평탄화
+        personToRecommand.addAll(visitors);
+        personToRecommand = dropDuplicate(personToRecommand);   // 중복 제거
+        personToRecommand.remove(user); // 친구 목록에서 user 제거
+        List<String> directFriends = getDirectFriends(user, friends);
+        for (String name : directFriends) {
+            personToRecommand.remove(name);
+        }
 
         /* hashFriendshipScores 에 Friends 객체 추가 */
-        for (String name : friendNames) {
+        for (String name : personToRecommand) {
             problem.updateFriend(name);
         }
 
         // friends 를 순회하며 directFriends 와 함께 아는 친구( coFriend )에 대해 score 10점 추가
-        List<String> directFriends = getDirectFriends(user, friends);
         List<String> coFriends = getCoFriends(user, friends, directFriends);
         for (String name : coFriends) {
             problem.updateScore(name, 10);
@@ -108,7 +111,7 @@ public class Problem7 {
                 directFriends.add(f.get(0));
             }
         }
-        return directFriends;
+        return dropDuplicate(directFriends);    // 중복 제거
     }
 
     static List<String> getCoFriends(String user, List<List<String>> friends, List<String> directFriends) {
