@@ -38,8 +38,16 @@ public class Problem7 {
 		while (!friendshipScore.isEmpty()) {
 			//가장 높은 점수인 유저들 리스트 생성
 			List<String> maxValueKeys = findMaxValueKeys(friendshipScore);
-			// answer 리스트에 add
-			answer.addAll(maxValueKeys);
+			// 추천 점수가 같은 경우 이름순으로 정렬
+			Collections.sort(maxValueKeys);
+			for (String maxValueKey : maxValueKeys) {
+				// answer 리스트와 유저의 합이 5 이상인지 확인
+				if (answer.size() + maxValueKeys.size() < 6) {
+					// answer 리스트에 add
+					answer.add(maxValueKey);
+				}
+
+			}
 			//answer 리스트에 추가된 유저 hashmap에서 삭제
 			removeHighScoreUser(friendshipScore, maxValueKeys);
 		}
@@ -55,7 +63,8 @@ public class Problem7 {
 		}
 	}
 
-	private static void addVisitorScore(List<String> visitors, HashMap<String, Integer> friendshipScore, String person) {
+	private static void addVisitorScore(List<String> visitors, HashMap<String, Integer> friendshipScore,
+		String person) {
 		for (String visitor : visitors) {
 			if (visitor.equals(person)) {
 				friendshipScore.put(person, friendshipScore.get(person) + 1);
@@ -63,8 +72,8 @@ public class Problem7 {
 		}
 	}
 
-	private static void addFriendFriendScore(List<List<String>> userFriendsFriendsList, HashMap<String, Integer> friendshipScore,
-		String person) {
+	private static void addFriendFriendScore(List<List<String>> userFriendsFriendsList,
+		HashMap<String, Integer> friendshipScore, String person) {
 		for (List<String> friendList : userFriendsFriendsList) {
 			if (friendList.contains(person)) {
 				friendshipScore.put(person, friendshipScore.get(person) + 10);
@@ -81,8 +90,7 @@ public class Problem7 {
 				maxValueKeys.add(key);
 			}
 		}
-		// 추천 점수가 같은 경우는 이름순
-		Collections.sort(maxValueKeys);
+
 		return maxValueKeys;
 	}
 
