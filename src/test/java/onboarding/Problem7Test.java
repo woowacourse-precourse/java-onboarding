@@ -68,7 +68,7 @@ class Problem7Test {
         Map<String, Integer> result = new HashMap<String, Integer>();
         result.put("chaemin", 10);
 
-        assertThat(Problem7.enrichPointFrom(relationShips, user, userFriends)).isEqualTo(result);
+        assertThat(Problem7.getPointFrom(relationShips, user, userFriends)).isEqualTo(result);
 
     }
 
@@ -93,7 +93,7 @@ class Problem7Test {
         result.put("invidam", 2);
         result.put("sonny", 1);
 
-        assertThat(Problem7.enrichPointFrom(visitors, user, userFriends)).isEqualTo(result);
+        assertThat(Problem7.getPointFrom(visitors, user, userFriends)).isEqualTo(result);
 
     }
 
