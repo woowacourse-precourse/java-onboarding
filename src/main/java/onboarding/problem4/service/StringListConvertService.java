@@ -10,4 +10,12 @@ public class StringListConvertService {
         }
         return charList;
     }
+
+    public static String ArrayListToString(ArrayList<Character> charList){
+        String word = "";
+        for(Character character: charList){
+            word += Character.toString(character);
+        }
+        return word;
+    }
 }
