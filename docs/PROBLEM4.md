@@ -21,6 +21,6 @@
 | "I love you" | "R olev blf" |
 
 ## 🎯기능 구현 목록
-- [ ] wordToCharArray() : 문자열을 문자 배열로 변환한다.
+- [x] wordToCharArray() : 문자열을 문자 배열로 변환한다.
 - [x] isAlphabet(): 알파벳 여부와 대소문자 여부를 확인한다.
 - [ ] translateFrogDict() : 청개구리 사전을 토대로 번역한다.
