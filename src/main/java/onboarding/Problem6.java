@@ -49,6 +49,7 @@ class ExceptionProblem6 {
     public static void validateForms(List<List<String>> forms) {
         for (List<String> form : forms) {
             conformEmailFormat(form.get(0));
+            validateEmailLength(form.get(0));
         }
     }
 
@@ -58,4 +59,11 @@ class ExceptionProblem6 {
             throw new IllegalArgumentException();
         }
     }
+
+    private static void validateEmailLength(String email) {
+        if (email.length() < 11 || email.length() > 20) {
+            throw new IllegalArgumentException();
+        }
+    }
+
 }
