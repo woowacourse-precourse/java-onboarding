@@ -7,12 +7,18 @@ public class Problem2 {
     public static String solution(String cryptogram) {
 
         Set<Integer> set = new HashSet<>();
+        boolean check = false;
 
-        findingContinuousString(cryptogram, set);
+        while (!check) {
+            findingContinuousString(cryptogram, set);
+            cryptogram = AfterRemovingContinuousString(cryptogram, set);
 
-        cryptogram = AfterRemovingContinuousString(cryptogram, set);
-
-        String answer = "answer";
+            if (set.isEmpty()) {
+                check = true;
+            }
+            set = new HashSet<>();
+        }
+        String answer = cryptogram;
         return answer;
     }
 
