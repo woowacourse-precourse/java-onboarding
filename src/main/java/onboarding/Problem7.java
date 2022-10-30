@@ -24,6 +24,12 @@ import java.util.List;
  * */
 
 public class Problem7 {
+
+    static int checkIndex(int index){
+        if (index == 0) return 1;
+        else return 0;
+    }
+
     static List<String> getMyFriends(String user, List<List<String>> friendList){
         List<String> myFriends = new ArrayList<>();
 
@@ -31,17 +37,30 @@ public class Problem7 {
         for (int i = friendList.size()-1; i >= 0; i--){
             if (friendList.get(i).contains(user)){
                 int indexUser = friendList.get(i).indexOf(user);
-                if (indexUser == 0){
-                    myFriends.add(friendList.get(i).get(1));
-                }
-                else {
-                    myFriends.add(friendList.get(i).get(0));
-                }
+                myFriends.add(friendList.get(i).get(checkIndex(indexUser)));
                 friendList.remove(friendList.get(i));
             }
         }
         return myFriends;
     }
+
+    static HashMap<String, Integer> getRecommendFriend(List<List<String>> friendList, List<String> myFriends){
+        HashMap<String, Integer> recommendFriend = new HashMap<>();
+
+        // find sns users who are my friend's friend
+        for (List<String> friendOfFriend : friendList){
+            for(String myFriend : myFriends){
+                if (friendOfFriend.contains(myFriend)){
+                    String recommend = friendOfFriend.get(checkIndex(friendOfFriend.indexOf(myFriend)));
+
+                    // give 10pt to user
+                    recommendFriend.put(recommend, 10);
+                }
+            }
+        }
+        return recommendFriend;
+    }
+
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
@@ -50,7 +69,11 @@ public class Problem7 {
         // find user's friends
         List<String> myFriends = getMyFriends(user, friendList);
 
-        System.out.println(myFriends);
+        // make a dictionary to give points to my friend's friend
+        HashMap<String, Integer> recommendFriend = getRecommendFriend(friendList, myFriends);
+
+        System.out.println(recommendFriend);
+
         return answer;
     }
 }
