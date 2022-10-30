@@ -7,38 +7,38 @@ package onboarding;
 
 public class Problem2 {
 
-    private static int checkOverlap(String word) {
+    private static boolean isDuplication(String word) {
         for (int i = 1; i < word.length(); i ++) {
             if (word.charAt(i - 1) == word.charAt(i))
-                return 1;
+                return true;
         }
-        return 0;
+        return false;
     }
 
-    private static String removeOverlap(String word) {
-        if (checkOverlap(word) == 0)
+    private static String getRemoveDuplication(String word) {
+        if (!isDuplication(word))
             return word;
-        if (word.length() == 2 && checkOverlap(word) == 1)
-            return "";
-
-        int i, k = 0;
-        char[] tmp = word.toCharArray();
-        for (i = 1; i < word.length(); i ++) {
-            if (word.charAt(i - 1) == word.charAt(i)) {
-                while (i < word.length() && word.charAt(i - 1) == word.charAt(i))
+        int k = 0;
+        char[] element = word.toCharArray();
+        for (int i = 0; i < word.length() - 1; i ++) {
+            if (word.charAt(i) != word.charAt(i + 1)) {
+                element[k++] = word.charAt(i);
+            }
+            if (word.charAt(i) == word.charAt(i + 1)) {
+                while (i + 1 < word.length() && word.charAt(i) == word.charAt(i + 1)) {
                     i++;
-            } else
-                tmp[k++] = word.charAt(i - 1);
+                }
+            }
         }
-        tmp[k++] = tmp[i - 1];
-        word = new String(tmp).substring(0, k);
-
-        return removeOverlap(word);
+        if (word.charAt(word.length() - 2) != word.charAt(word.length() - 1)) {
+            element[k++] = word.charAt(word.length() - 1);
+        }
+        word = new String(element).substring(0, k);
+        return getRemoveDuplication(word);
     }
 
     public static String solution(String cryptogram) {
-        String answer = "";
-        answer = removeOverlap(cryptogram);
+        String answer = getRemoveDuplication(cryptogram);
         return answer;
     }
 }
