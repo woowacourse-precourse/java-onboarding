@@ -7,17 +7,11 @@ import java.util.List;
 public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> answer = new ArrayList<>();
-        int unit1 = 50000;
-        int unit2 = 10000;
+        List<Integer> moneyUnits = List.of(50000, 10000, 5000, 1000, 500, 100, 50, 10);
 
-        for (int count = 0; count < 4; count++) {
-            answer.add(getCountByUnit(money, unit1));
-            money %= unit1;
-            answer.add(getCountByUnit(money, unit2));
-            money %= unit2;
-
-            unit1 /= 10;
-            unit2 /= 10;
+        for (int moneyUnit : moneyUnits) {
+            answer.add(getCountByUnit(money, moneyUnit));
+            money %= moneyUnit;
         }
         answer.add(money);
 
@@ -33,7 +27,6 @@ public class Problem5 {
         if (money < unit) {
             return 0;
         }
-
         return money / unit;
     }
 }
