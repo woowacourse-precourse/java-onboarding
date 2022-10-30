@@ -14,7 +14,27 @@ public class Problem7 {
         Map<String, Integer> userPoints = makeUserPoints(user, friends, visitors);
         Map<String, List<String>> relationships = makeRelationShips(friends);
         List<String> userFriends = fillUserFriends(user, relationships);
+
+        Map<String, Integer> friendPoints = enrichPointFrom(relationships, userFriends);
+        friendPoints.get(1);
+
         return answer;
+    }
+
+    public static Map<String, Integer> enrichPointFrom(Map<String, List<String>> relationships,
+            List<String> userFriends) {
+        Map<String, Integer> friendPoints = new HashMap<>();
+        for(String friend: userFriends) {
+            for (String recommend: fillUserFriends(friend, relationships)) {
+                if(friendPoints.get(recommend) == null)
+                    friendPoints.put(recommend,0);
+                friendPoints.put(recommend,friendPoints.get(recommend) + 10);
+            }
+        }
+        for(String friend: userFriends) {
+            friendPoints.put(friend,0);
+        }
+        return friendPoints;
     }
 
     public static List<String> fillUserFriends(String user,Map<String, List<String>> relationships) {
