@@ -37,14 +37,14 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-        getAddNumber(pobi.get(0));
-        getAddNumber(pobi.get(1));
-        getMulNumber(pobi.get(0));
-        getMulNumber(pobi.get(1));
-        getAddNumber(crong.get(0));
-        getAddNumber(crong.get(1));
-        getMulNumber(crong.get(0));
-        getMulNumber(crong.get(1));
+        int pobiAddLeftPage = getAddNumber(pobi.get(0));
+        int pobiAddRightPage = getAddNumber(pobi.get(1));
+        int pobiMulLeftPage = getMulNumber(pobi.get(0));
+        int pobiMulRightPage = getMulNumber(pobi.get(1));
+        int crongAddLeftPage = getAddNumber(crong.get(0));
+        int crongAddRightPage = getAddNumber(crong.get(1));
+        int crongMulLeftPage = getMulNumber(crong.get(0));
+        int crongMulRightPage = getMulNumber(crong.get(1));
         return answer;
     }
 
@@ -62,7 +62,7 @@ class Problem1 {
     }
 
     private static int getMulNumber(int page) {
-        int mulResult = 0; // 자릿수별 더한 값
+        int mulResult = 1; // 자릿수별 더한 값
 
 //      왼쪽, 오른쪽 페이지 수 한자리 수로 구분.
         String strNum = Integer.toString(page);
