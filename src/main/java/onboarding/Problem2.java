@@ -36,5 +36,13 @@ public class Problem2 {
             return list;
         }
     }
+
+    private static String ArrayListToString(ArrayList<Character> characters) {
+        String str = "";
+        for (Character character : characters) {
+            str += character;
+        }
+        return str;
+    }
 }
 
