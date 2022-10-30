@@ -4,6 +4,12 @@ import java.util.HashMap;
 
 public class Problem4 {
 
+    static char[] wordToCharArray(String word) {
+        char[] wordChar = word.toCharArray();
+
+        return wordChar;
+    }
+
     static int isAlphabet(char alpha) {
         if (alpha >= 65 && alpha <= 90) {   // 영어 대문자
             return 0;
@@ -13,6 +19,7 @@ public class Problem4 {
         }
         return -1;  // 알파벳 아님
     }
+
     public static String solution(String word) {
         String answer = "";
         return answer;
