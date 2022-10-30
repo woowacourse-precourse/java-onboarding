@@ -8,7 +8,7 @@ class Problem1 {
     private final int number = 0;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if (!validatePageNumber(pobi) || !validatePageNumber(crong)){
+        if (!validatePageNumber(pobi) || !validatePageNumber(crong)) {
             return -1;
         }
         return playGame(pobi, crong);
