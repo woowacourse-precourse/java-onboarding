@@ -32,6 +32,7 @@ public class Problem7 {
         List<String> answer = new ArrayList<String>();
         List<user_info> friends_score = makeFriendsScore(friends);
         List<String> exception_list = makeFriendsException(user, friends);
+        initFriendsScore(friends_score, exception_list);
         return answer;
     }
     public static List<user_info> makeFriendsScore(List<List<String>> friends) {
@@ -60,5 +61,12 @@ public class Problem7 {
             }
         }
         return exception_list;
+    }
+    public static void initFriendsScore(List<user_info> friends_score, List<String> exception_list) {
+        for (user_info friend_info : friends_score) {
+            String name = friend_info.getName();
+            if (exception_list.contains(name))
+                friend_info.setScore(-1); // 제외 리스트에 이름이 존재하므로 친구추천에는 빠진다(점수 : -1)
+        }
     }
 }
