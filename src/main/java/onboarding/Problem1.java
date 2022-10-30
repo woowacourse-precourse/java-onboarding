@@ -102,7 +102,21 @@ class CalculateForPro1 {
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        UserForPro1 userPobi = new UserForPro1(pobi);
+        UserForPro1 userCrong = new UserForPro1(crong);
+        return winner(userPobi.getMax(), userCrong.getMax());
+    }
+
+    public static int winner(int a, int b) {
+        if (a == -1 || b == -1) {
+            return -1;
+        }
+        if (a - b > 0) {
+            return 1;
+        }
+        if (a - b < 0) {
+            return 2;
+        }
+        return 0;
     }
 }
