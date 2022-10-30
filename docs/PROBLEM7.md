@@ -27,11 +27,11 @@
 
 ### 구현 기능 목록
 1. 한 사용자의 모든 친구 목록을 구하는 기능
-    - List<String> getAllFriendsById(String userId)
-    - UserUtil 클래스에서 구현한다.
+    - List<List<String>> 타입의 일급 콜렉션 FriendRelations 에서 구현한다.
+    - List<String> getAllFriendsByUser(String user)
 2. 한 사용자가 다른 사용자 타임라인에 방문한 횟수를 구하는 기능
-    - int getVisitCountById(String userId, String visitorId)
-    - UserUtil 클래스에서 구현한다.
+    - List<String> 타입의 일급콜렉션 Visitors에서 구현한다.
+    - int getVisitCount(String user)
 3. 한 사용자의 “친구의 친구” 사전을 만드는 기능(사용자의 친구인 경우는 제외)
     - HashMap 타입의 자료구조를 일급 콜렉션 mutualFriendsDictionary 로 구현한다.
     - key=친구의 친구 아이디, value=추천 점수 를 저장한다.
