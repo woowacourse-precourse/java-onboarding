@@ -16,6 +16,9 @@ public class Problem7 {
         // 추천 점수 합치기
         HashMap<String, Integer> score = mergeScore(userFriendScore, visitorScore);
 
+        // 정렬
+        List<String> recommendedList = sortScore(score);
+
         List<String> answer = Collections.emptyList();
         return answer;
     }
@@ -77,6 +80,16 @@ public class Problem7 {
         score2.forEach((key, value) -> score1.merge(key, value, (value1, value2) -> value1 + value2));
         return score1;
     }
+
+    // HashMap을 정렬해주는 함수
+    public static List<String> sortScore(HashMap<String, Integer> score){
+        List<String> listKeySet = new ArrayList<>(score.keySet());
+        listKeySet.sort(String::compareTo); // 이름 순으로 정렬
+        listKeySet.sort((value1, value2) -> (score.get(value2).compareTo(score.get(value1)))); // 추천 점수가 높은 순으로 정렬
+
+        return listKeySet;
+    }
+
 
 
 }
