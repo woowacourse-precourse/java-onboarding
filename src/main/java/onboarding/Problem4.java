@@ -31,10 +31,6 @@ public class Problem4 {
     public static String solution(String word) {
         try {
             lengthExceptionCheck(word);
-            int lenCheck = word.length();
-            if (lenCheck < 1 || lenCheck > 1000) {
-                return "Wrong Input";
-            }
             return translator(word);
         } catch (LengthException e) {
             System.err.println("check the length of given word: ");
