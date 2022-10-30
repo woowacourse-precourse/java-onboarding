@@ -43,17 +43,11 @@ class Problem2Test {
 		Assertions.assertThat(Problem2.solution(words)).isEqualTo("");
 		words = "zzzzzzzzzzmmmmmz";
 		Assertions.assertThat(Problem2.solution(words)).isEqualTo("z");
-		words = "ABAAAAABCBDDDDDDDABC";
-		Assertions.assertThat(Problem2.solution(words)).isEqualTo("ACBABC");
 		words = "hellllleeeelo";
 		Assertions.assertThat(Problem2.solution(words)).isEqualTo("hlo");
 		words = "holellllleeeelo";
 		Assertions.assertThat(Problem2.solution(words)).isEqualTo("h");
 		words = "aabbccddeeffggghhhiiiihhh";
 		Assertions.assertThat(Problem2.solution(words)).isEqualTo("");
-		words = "DBAABDAB";
-		Assertions.assertThat(Problem2.solution(words)).isEqualTo("AB");
-		words = "ABDAADBDAABB";
-		Assertions.assertThat(Problem2.solution(words)).isEqualTo("AD");
 	}
 }

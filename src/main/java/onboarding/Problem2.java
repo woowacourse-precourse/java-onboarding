@@ -27,6 +27,7 @@ import java.util.Stack;
  */
 public class Problem2 {
     public static String solution(String cryptogram) {
+        validate(cryptogram);
         Stack<String> stack = findOverlapWord(cryptogram);
         String answer = String.join("", stack);
         return answer;
