@@ -7,7 +7,7 @@ public class Problem7 {
 
     private static final Map<String, Integer> friendRecommendScoreMap = new HashMap<>();
 
-    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+    public static List<String> solution(String user, List<List<String>> friendRelationships, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
     }
