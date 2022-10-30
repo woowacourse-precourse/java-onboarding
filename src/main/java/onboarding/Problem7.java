@@ -17,6 +17,9 @@ public class Problem7 {
         ArrayList<String> notFriendUserList = new ArrayList<>();
         ArrayList<String> friendUserList = new ArrayList<>();
         ArrayList<String> personList = new ArrayList<>();
+        ArrayList<String> allFriendsVisitors = new ArrayList<>();
+
+
         List<String> listAtNow = null;
         String leftFriendsInList = "";
         String rightFriendsInList = "";
@@ -62,7 +65,6 @@ public class Problem7 {
                     isFriend = true;
                 }
             }
-
             if (!isFriend) {
                 notFriendUserList.add(namePersonAtNow);
             }
@@ -70,6 +72,23 @@ public class Problem7 {
 
         notFriendUserList = (ArrayList<String>) notFriendUserList.stream().distinct().collect(Collectors.toList());
         System.out.println("notFriendUserList.toString() = " + notFriendUserList.toString());
+
+        // personList, friendUserList, notFriendUserList 구현 완료
+        System.out.println("visitors = " + visitors);
+
+        // User의 친구와 User의 친구가 아닌것과 Visitor의 전체 배열
+        int endPersonListVisitors = personList.size() + visitors.size();
+        allFriendsVisitors.addAll(personList);
+
+        int endVisitor = visitors.size();
+        for (int visitorIndex = 0; visitorIndex < endVisitor; visitorIndex++) {
+            String nameVisitor = visitors.get(visitorIndex);
+            allFriendsVisitors.add(nameVisitor);
+        }
+        
+        allFriendsVisitors = (ArrayList<String>) allFriendsVisitors.stream().distinct().collect(Collectors.toList());
+        System.out.println("allFriendsVisitors.toString() = " + allFriendsVisitors.toString());
+
         return answer;
     }
 
