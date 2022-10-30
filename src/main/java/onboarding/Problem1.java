@@ -63,7 +63,7 @@ class Problem1 {
     }
 
     // 각 자리 숫자를 List 배열로 바꿔주는 함수
-    public static List<Integer> eachNum(int num) {
+    private static List<Integer> eachNum(int num) {
         ArrayList<Integer> arrList = new ArrayList<>();
         while (num > 0) {
             arrList.add(num % 10);
@@ -73,7 +73,7 @@ class Problem1 {
     }
 
     // 각 자리 숫자를 모두 더한 수를 구하는 함수
-    public static int addNum(List<Integer> arrList) {
+    private static int addNum(List<Integer> arrList) {
         int result = 0;
         for (int number : arrList) {
             result += number;
@@ -82,7 +82,7 @@ class Problem1 {
     }
 
     // 각 자리 숫자를 모두 곱한 수를 구하는 함수
-    public static int mulNum(List<Integer> arrList) {
+    private static int mulNum(List<Integer> arrList) {
         int result = 1;
         for (int number : arrList) {
             result *= number;
@@ -91,7 +91,7 @@ class Problem1 {
     }
 
     // 더 큰 수를 반환하는 함수
-    public static int maxNum(int first, int sec) {
+    private static int maxNum(int first, int sec) {
         if (first > sec) {
             return first;
         } else {
