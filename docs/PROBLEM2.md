@@ -21,3 +21,8 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+### 기능목록
+1. 중복되는 chatacter를 1회 제거 한다
+2. 룹을 돌려 1번이 가능할때까지 반복한다
+3. return 한다.
