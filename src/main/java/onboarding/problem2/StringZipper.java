@@ -1,7 +1,14 @@
 package onboarding.problem2;
 
 public class StringZipper {
-    
+
+    public static String zipString(String cryptogram) {
+        while (cryptogram.length() != zipStringOneTime(cryptogram).length()) {
+            cryptogram = zipStringOneTime(cryptogram);
+        }
+        return cryptogram;
+    }
+
     public static String zipStringOneTime(String cryptogram) {
         StringBuilder zippedString = new StringBuilder();
 
