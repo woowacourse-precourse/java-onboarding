@@ -15,9 +15,11 @@ public class Problem7 {
         List<String> userFriends;
 
         userFriends = getUserFriends(user, friends);
-        System.out.println(userFriends);
 
         scoringFriend(user, userFriends, friends);
+        System.out.println(friendsScore);
+
+        scoringVisitor(userFriends, visitors);
         System.out.println(friendsScore);
 
         return answer;
@@ -61,13 +63,24 @@ public class Problem7 {
                     if (isContainFriendsScore(addId)) {
                         score += friendsScore.get(addId);
                     }
-                    System.out.println("score : " + score);
 
                     friendsScore.put(addId, score);
                 }
             }
+        }
+    }
 
-            System.out.println(friendsScore);
+    private static void scoringVisitor(List<String> userFriends, List<String> visitors) {
+        for (String visitor : visitors) {
+            if (isNotFriend(visitor, userFriends)) {
+                int score = 1;
+
+                if (isContainFriendsScore(visitor)) {
+                    score += friendsScore.get(visitor);
+                }
+
+                friendsScore.put(visitor, score);
+            }
         }
     }
 
