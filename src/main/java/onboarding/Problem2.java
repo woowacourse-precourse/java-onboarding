@@ -1,13 +1,14 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = cryptogram;
         //String을 List로 변환
-        List<String> list = Arrays.asList(answer.split(""));
+        List<String> list = new ArrayList<String>(Arrays.asList(answer.split("")));
 
         list = checkStr(list);
         answer = listToString(list);
@@ -19,13 +20,14 @@ public class Problem2 {
         int cnt = 0;
         while(true) {
             for (int i = 0; i < list.size() - 1; i++) {
-                if (list.get(i) == list.get(i + 1)) {
+                if (list.get(i).equals(list.get(i + 1))) {
                     list.remove(i + 1);
                     list.remove(i);
+                    cnt = 0;
                 }
-                else cnt = 1;
+                else cnt ++;
             }
-            if(cnt == 1)
+            if(cnt == list.size()-1 || list.size() == 0)
                 break;
         }
         return list;
