@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.Map.Entry;
 
 /*
  * 함께 아는 친구의 수 - 10점
@@ -13,33 +14,63 @@ import java.util.*;
  *
  * user의 친구는 return하지 않아도 됨.
  *
- * 방법 1
- * 1. 유저와 친구인 사람을 Set을 사용하여 추린다.
- * 2. 추린 사람들과 친구인 사람들을 해시맵으로 생성 후 10점씩 추가.
- * 3. 방문한 친구들 점수 추가.
- *
- *
  * 1. 전체 인원을 hashmap에 담음.
  * 2. 유저와 친구인 사람을 set을 사용하여 추린다.
  * 3. set을 반복하면서 친구의 친구인 사람들에게 점수 부여
  * 4. visitors 점수 부여
  * 5. 유저, 유저와 친구인 사람들을 hashmap에서 삭제
- * 6. 출력
+ * 6. List에 담아서 정렬
+ * 7. 출력
  *
  */
 public class Problem7 {
+
+    class User {
+        String name;
+        int score;
+
+        public User() {
+        }
+
+        public User(String name, int score) {
+            this.name = name;
+            this.score = score;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public int getScore() {
+            return score;
+        }
+
+        public void setScore(int score) {
+            this.score = score;
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Problem7 p = new Problem7();
-        List<String> answer = Collections.emptyList();
 
         Map<String, Integer> score = p.initScore(friends);
         Set<String> userSFriend = p.userSFriendInit(user, friends);
         p.addScoreLinkFriend(friends, score, userSFriend);
         p.addScoreVisitors(score, visitors);
         p.deleteUserAndUserSFriend(score, userSFriend);
-        answer = p.returnResult(score);
-        System.out.println(userSFriend.toString());
-        System.out.println(score.toString());
+
+        // user 객체에 담기
+        List<User> forSortList = p.forSortResult(score);
+        forSortList.sort(Comparator.comparing(User::getScore).reversed().thenComparing(User::getName));
+        List<String> answer = p.returnResult(forSortList);
+
+        for (User s : forSortList) {
+            System.out.println(s.getName() + s.getScore());
+        }
         return answer;
     }
 
@@ -89,12 +120,11 @@ public class Problem7 {
     }
 
     // visitors 점수 추가
-
     public void addScoreVisitors(Map<String, Integer> score, List<String> visitors) {
         for (String visitor : visitors) {
             if (score.get(visitor) != null) {
                 score.put(visitor, score.get(visitor) + 1);
-            }else {
+            } else {
                 score.put(visitor, score.getOrDefault(visitor, 0) + 1);
             }
         }
@@ -108,8 +138,23 @@ public class Problem7 {
     }
 
     // return
-    public List<String> returnResult(Map<String, Integer> score) {
-        return new ArrayList<>(score.keySet());
+    public List<User> forSortResult(Map<String, Integer> score) {
+        List<User> answer = new ArrayList<>();
+
+        for (Entry<String, Integer> entrySet : score.entrySet()) {
+            User user = new User(entrySet.getKey(), entrySet.getValue());
+            answer.add(user);
+        }
+
+        return answer;
+    }
+
+    public List<String> returnResult(List<User> forSortList) {
+        List<String> answer = new ArrayList<>();
+        for (User s : forSortList) {
+            answer.add(s.getName());
+        }
+        return answer;
     }
 
 
