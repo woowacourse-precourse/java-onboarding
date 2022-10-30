@@ -132,4 +132,11 @@ class Book {
         }
         return rightPage.sumPage();
     }
+
+    public int bigMultiplePageByLeftAndRight() {
+        if (leftPage.multiplePage() >= rightPage.multiplePage()) {
+            return leftPage.multiplePage();
+        }
+        return rightPage.multiplePage();
+    }
 }
