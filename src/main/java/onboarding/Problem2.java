@@ -23,7 +23,10 @@ public class Problem2 {
      * 2. 주어진 문자에서 연속으로 중복된 문자를 삭제후 반환
      * */
 
-
+    private static String duplicate_delete(String  string, int index) {
+        String duplicate_delete_complete = string.substring(0, index) + string.substring(index + 2);
+        return duplicate_delete_complete;
+    }
 
     /*
      * 기능 요구 사항
