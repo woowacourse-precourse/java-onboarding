@@ -21,6 +21,21 @@ public class Problem7 {
         return answer;
     }
 
+    public static Map<String, Integer> enrichPointFrom(List<String> visitors, String user, List<String> userFriends) {
+        Map<String, Integer> visitorPoints = new HashMap<>();
+
+        for (String recommend: visitors) {
+            if(visitorPoints.get(recommend) == null)
+                visitorPoints.put(recommend,0);
+            visitorPoints.put(recommend,visitorPoints.get(recommend) + 1);
+        }
+        for(String friend: userFriends) {
+            if(visitorPoints.get(friend) != null)
+            visitorPoints.put(friend,0);
+        }
+        visitorPoints.put(user,0);
+        return visitorPoints;
+    }
     public static Map<String, Integer> enrichPointFrom(Map<String, List<String>> relationships,
             String user, List<String> userFriends) {
         Map<String, Integer> friendPoints = new HashMap<>();
