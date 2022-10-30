@@ -1,6 +1,6 @@
 package onboarding.problem1;
 
-import static onboarding.problem1.consts.GameResultConst.EXCEPTION_RESULT;
+import static onboarding.problem1.consts.GameResultConst.EXCEPTION_RESULT_VALUE;
 import static onboarding.problem1.consts.PlayerNameConst.CRONG_NAME;
 import static onboarding.problem1.consts.PlayerNameConst.POBI_NAME;
 
@@ -17,7 +17,7 @@ public class PageGamePlayService {
         try {
             registryTwoPlayers(pageGame, pobi, crong);
         } catch (IllegalArgumentException e) {
-            return EXCEPTION_RESULT;
+            return EXCEPTION_RESULT_VALUE;
         }
         return pageGame.playGameResult(POBI_NAME, CRONG_NAME);
     }

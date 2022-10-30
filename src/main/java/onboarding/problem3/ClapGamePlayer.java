@@ -12,7 +12,7 @@ public class ClapGamePlayer {
     public static int calculateTotalClapCount(int number) {
         int totalClapCount = 0;
 
-        for (int i = CLAP_GAME_START_NUMBER; i <= number; i++) {
+        for (int i = CLAP_GAME_START_VALUE; i <= number; i++) {
             totalClapCount += calculateTargetClapCount(i);
         }
         return totalClapCount;
@@ -31,12 +31,12 @@ public class ClapGamePlayer {
 
     private static int calculateTargetDigitClapCount(int targetDigit) {
         if (isClapped(targetDigit)) {
-            return CLAP_VALUE;
+            return CLAPPED_VALUE;
         }
         return NOT_CLAPPED_VALUE;
     }
 
     private static boolean isClapped(int targetDigit) {
-        return targetDigit == CLAP_THREE || targetDigit == CLAP_SIX || targetDigit == CLAP_NINE;
+        return targetDigit == CLAP_THREE_VALUE || targetDigit == CLAP_SIX_VALUE || targetDigit == CLAP_NINE_VALUE;
     }
 }
