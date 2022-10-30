@@ -47,3 +47,12 @@
 
 - 주어진 이메일, 닉네임 리스트를 하나씩 추가하는 함수
 > void AddUsers(HashMap<String, String> databaseOfNickname, HashMap<String, Boolean> duplicationOfNickname, List<List<String>> forms)
+
+- 주어진 이메일이 형식에 맞게 입력됐는지 확인하는 함수
+> boolean checkEmailForm(String email)
+
+- 주어진 닉네임이 형식에 맞게 입력됐는지 확인하는 함수
+> boolean checkNicknameForm(String nickname)
+
+- 주어진 유저 정보가 형식에 맞게 입력됐는지 확인하는 함수
+> boolean checkUserForm(List<String> user)
