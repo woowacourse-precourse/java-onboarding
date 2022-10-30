@@ -25,4 +25,8 @@ class Problem1 {
         }
         return result;
     }
+
+    public static int getMaxNumber(int number1, int number2) {
+        return Math.max(number1, number2);
+    }
 }
