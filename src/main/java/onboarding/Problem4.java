@@ -16,8 +16,8 @@ import java.util.HashMap;
  * 1. word를 입력받는다.
  * 2. 청개구리 사전을 대,소문자로 만든다.
  * 3. word를 청개구리 사전에 대입하여 변환한다.
- * 4. word는 길이가 1 이상 1,000 이하인 문자열이다.
- * 5. 알파벳 외의 문자는 변환하지 않는다.
+ * 4. 알파벳 외의 문자는 변환하지 않고 값을 반환한다.
+ * 5. word는 길이가 1 이상 1,000 이하인 문자열이므로 아무것도 들어오지 않으면 아무것도 반환하지 않으며 1,000 초과된 문자열이면 1,000까지만 변환을 해준다.
  *
  * */
 
@@ -43,12 +43,17 @@ public class Problem4 {
             if (Character.isUpperCase(before)){
                 resultList.add(upperCase.get(before));
             }
-            else {
+            else if (Character.isLowerCase(before)){
                 resultList.add(lowerCase.get(before));
             }
+            else {
+                resultList.add(before);
+            }
         }
-        System.out.println(resultList);
 
+        for (Character item : resultList) {
+            answer += item;
+        }
 
         return answer;
     }
