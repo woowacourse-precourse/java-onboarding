@@ -19,4 +19,14 @@ public class Problem4 {
             answer.append(word.charAt(i));
         }
     }
+    private static void getAlphabetAnswer(StringBuilder answer, int asciiWord) {
+        if(asciiWord <= 90){
+            asciiWord = 155 - asciiWord;
+        }
+        else {
+            asciiWord = 219 - asciiWord;
+        }
+        char ch = (char) asciiWord;
+        answer.append(ch);
+    }
 }
