@@ -9,6 +9,13 @@ public class Score {
 
     public static void scoring(String user, Map<String, List<String>> adjacentList, List<String> visitors, List<String> answer) {
         addRelativeScore(user, adjacentList);
+        addVisitScore(visitors);
+    }
+
+    private static void addVisitScore(List<String> visitors) {
+        for (String visitor : visitors) {
+            addScore(visitor, 1);
+        }
     }
 
     private static void addRelativeScore(String user, Map<String, List<String>> adjacentList) {
