@@ -7,4 +7,14 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+
+    public static int getSumOfPageDigits(int pageNumber) {
+        int result = 0;
+        while (pageNumber > 0) {
+            result += pageNumber % 10;
+            pageNumber /= 10;
+        }
+        return result;
+    }
+
 }
