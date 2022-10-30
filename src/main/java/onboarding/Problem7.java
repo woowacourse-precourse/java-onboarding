@@ -1,20 +1,21 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     private static final int FRIEND_SCORE = 10;
     private static final int VISITOR_SCORE = 1;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-
         Map<String, ArrayList<String>> friendMap = createFriendMap(friends);
         ArrayList<String> friendsOfUser = friendMap.get(user);
 
         Map<String, Integer> recommendScore = new TreeMap<>();
         addFriendScore(recommendScore, friendMap, friendsOfUser, user);
         addVisitorScore(recommendScore, visitors, friendsOfUser, user);
+
+        List<String> answer = sortRecommendScore(recommendScore);
 
         return answer;
     }
@@ -57,5 +58,22 @@ public class Problem7 {
 
     private static boolean isException(String friend, List<String> userFriends, String user) {
         return userFriends.contains(friend) || friend.equals(user);
+    }
+
+    private static List<String> sortRecommendScore(Map<String, Integer> recommendScore) {
+        List<Map.Entry<String, Integer>> entries = new ArrayList<>(recommendScore.entrySet());
+
+        entries.sort(
+                (user1, user2) -> {
+                    if (user1.getValue().equals(user2.getValue())) {
+                        return user1.getKey().compareTo(user2.getKey());
+                    }
+                    return user2.getValue() - user1.getValue();
+                }
+        );
+
+        return entries.stream()
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
     }
 }
