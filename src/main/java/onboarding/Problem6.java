@@ -23,10 +23,16 @@ public class Problem6 {
         Map<String, List<String>> nicknameAndTwoLetters = computeAllTwoLetters(forms);
         Map<String, String> nicknameAndEmail = computeEmailMap(forms);
         List<String> duplicatedNicknameList = findDuplicatedNickname(nicknameAndTwoLetters);
-        return null;
-        //        validateForms(forms);
-        //        parseForms(forms);
-        //        return findDuplicatedNicknameAndComputeEmail();
+
+        return computeAnswer(duplicatedNicknameList, nicknameAndEmail);
+    }
+
+    private static List<String> computeAnswer(List<String> duplicatedNicknameList, Map<String, String> nicknameAndEmail) {
+        return duplicatedNicknameList.stream()
+            .map(nickname -> nicknameAndEmail.get(nickname))
+            .distinct()
+            .sorted()
+            .collect(Collectors.toList());
     }
 
     private static List<String> findDuplicatedNickname(Map<String, List<String>> nicknameAndTwoLetters) {
