@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 class Problem1 {
     public static final int EXCEPTION = -1;
@@ -13,6 +14,27 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if(isException(pobi) || isException(crong))
             return EXCEPTION;
+
+        int pobiScore = getScore(pobi);
+        int crongScore = getScore(crong);
+
+        return (pobiScore == crongScore) ? DRAW : (pobiScore > crongScore) ? POBI_WIN : CRONG_WIN;
+    }
+
+    public static int getScore(List<Integer> page) {
+        return Math.max(getPossibleMax(page.get(0)), getPossibleMax(page.get(1)));
+    }
+
+    public static int getPossibleMax(int num) {
+        int sum = Stream.of(String.valueOf(num).split(""))
+                .mapToInt(Integer::parseInt)
+                .sum();
+
+        int product = Stream.of(String.valueOf(num).split(""))
+                .mapToInt(Integer::parseInt)
+                .reduce(1, (a,b) -> a * b);
+
+        return Math.max(sum, product);
     }
 
     public static boolean isException(List<Integer> pages) {
