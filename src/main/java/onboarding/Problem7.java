@@ -99,4 +99,20 @@ public class Problem7 {
             return value;
         }
     }
+
+    static Map<String, Integer> getPotentialFriendNameAndScore(String user, List<List<String>> friends, List<String> visitors) {
+        List<String> potentialFriendList = getPotentialFriendWithUserListFromFriendsAndVisitors(user, friends, visitors);
+
+        Map<String, Integer> map = new HashMap<>();
+        for (String potentialFriend : potentialFriendList) {
+            int howManyKnowEachOtherWithUser = howManyKnowEachOtherWithUser(user, friends, potentialFriend);
+            int calculateScore = calculateScore(howManyKnowEachOtherWithUser, potentialFriend, visitors);
+
+            if (calculateScore > 0) {
+                map.put(potentialFriend, calculateScore);
+            }
+        }
+
+        return map;
+    }
 }

@@ -3,6 +3,7 @@ package onboarding;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -182,5 +183,50 @@ class Problem7Test {
 
         //then
         assertThat(calculateScore).isEqualTo(3);
+    }
+
+    @Test
+    public void getPotentialFriendNameAndScoreTest() {
+        //given
+        String user = "mrko";
+        List<List<String>> friends = List.of(
+                List.of("donut", "andole"),
+                List.of("donut", "jun"),
+                List.of("donut", "mrko"),
+                List.of("shakevan", "andole"),
+                List.of("shakevan", "jun"),
+                List.of("shakevan", "mrko")
+        );
+        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+
+        //when
+        Map<String, Integer> potentialFriendNameAndScore = Problem7.getPotentialFriendNameAndScore(user, friends, visitors);
+
+        //then
+        assertThat(potentialFriendNameAndScore.size()).isEqualTo(3);
+        assertThat(potentialFriendNameAndScore.keySet()).containsExactly("andole", "jun", "bedi");
+        assertThat(potentialFriendNameAndScore.values()).containsExactly(20, 20, 3);
+    }
+
+    @Test
+    public void getPotentialFriendNameAndScoreTest2() {
+        //given
+        String user = "mrko";
+        List<List<String>> friends = List.of(
+                List.of("donut", "jun"),
+                List.of("donut", "mrko"),
+                List.of("shakevan", "jun"),
+                List.of("shakevan", "mrko"),
+                List.of("bedi", "ace")
+        );
+        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+
+        //when
+        Map<String, Integer> potentialFriendNameAndScore = Problem7.getPotentialFriendNameAndScore(user, friends, visitors);
+
+        //then
+        assertThat(potentialFriendNameAndScore.size()).isEqualTo(2);
+        assertThat(potentialFriendNameAndScore.keySet()).containsExactly("jun", "bedi");
+        assertThat(potentialFriendNameAndScore.values()).containsExactly(20, 3);
     }
 }
