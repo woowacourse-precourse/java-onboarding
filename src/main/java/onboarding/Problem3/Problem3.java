@@ -1,4 +1,4 @@
-package onboarding;
+package onboarding.Problem3;
 public class Problem3 {
     public static int[] memo = new int[10001];
     private static int count369(int number)
