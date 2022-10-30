@@ -13,12 +13,14 @@ public class Problem7 {
         }
 
         HashMap<String, Integer> recommendFriendToPointMap = new HashMap<>();
-        HashMap friendsMap = makeFriends(friends);
-        pointsToFriendToFriend(user, friendsMap, recommendFriendToPointMap);
-        pointsToVisitors(visitors, recommendFriendToPointMap);
+        HashMap<String, List<String>> friendsMap = makeFriends(friends);
 
+        recommendFriendToPointMap=pointsToFriendToFriend(user, friendsMap, recommendFriendToPointMap);
+        recommendFriendToPointMap=pointsToVisitors(visitors, recommendFriendToPointMap);
 
-
+        List<String> usersFriendsList = friendsMap.get(user);
+        recommendFriendToPointMap = removedUsersFriends(usersFriendsList, recommendFriendToPointMap);
+        
         List<String> answer = Collections.emptyList();
         return answer;
     }
@@ -38,7 +40,7 @@ public class Problem7 {
         return true;
     }
 
-    private static HashMap makeFriends(List<List<String>> friends) {
+    private static HashMap<String, List<String>> makeFriends(List<List<String>> friends) {
         HashMap<String, List<String>> friendsMap = new HashMap<>();
 
         for (List<String> friend : friends) {
@@ -57,7 +59,7 @@ public class Problem7 {
         return friendsMap;
     }
 
-    private static HashMap pointsToFriendToFriend(String user, HashMap<String,List<String>> friendsMap, HashMap<String, Integer> recommendFriendToPointMap) {
+    private static HashMap<String, Integer> pointsToFriendToFriend(String user, HashMap<String,List<String>> friendsMap, HashMap<String, Integer> recommendFriendToPointMap) {
         List<String> usersFriendsList = friendsMap.get(user);
         for (String usersFriend : usersFriendsList) {
             List<String> friendsToFriendsList = friendsMap.get(usersFriend);
@@ -70,12 +72,20 @@ public class Problem7 {
         return recommendFriendToPointMap;
     }
 
-    private static HashMap pointsToVisitors(List<String> visitors,HashMap<String,Integer> recommendFriendToPointMap) {
+    private static HashMap<String,Integer> pointsToVisitors(List<String> visitors,HashMap<String,Integer> recommendFriendToPointMap) {
         for (String visitor : visitors) {
             Integer beforePoint = recommendFriendToPointMap.getOrDefault(visitor, 0);
             recommendFriendToPointMap.put(visitor, beforePoint + 1);
         }
         return recommendFriendToPointMap;
     }
+
+    private static HashMap<String, Integer> removedUsersFriends(List<String> usersFriends, HashMap<String, Integer> recommendFriendToPointMap) {
+        for (String usersFriend : usersFriends) {
+            recommendFriendToPointMap.remove(usersFriend);
+        }
+        return recommendFriendToPointMap;
+    }
+
 }
 
