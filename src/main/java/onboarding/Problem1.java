@@ -38,7 +38,14 @@ class Problem1 {
         }
         return maxPage2;
     }
-    
+
+    public static boolean exception(int left, int right) {
+        if (left+1 == right) {
+            return false;
+        }
+        return true;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         int[] pobiArray = pobi.stream().mapToInt(i->i).toArray();
