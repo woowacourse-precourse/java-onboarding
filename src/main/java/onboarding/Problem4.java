@@ -14,5 +14,9 @@ public class Problem4 {
 
         return smallLetters.contains(character);
     }
+    private static int findTheOppositeIndex(String referenceLetters, Character currentCharacter) {
+
+        return referenceLetters.length() - 1 - referenceLetters.indexOf(currentCharacter);
+    }
 
 }
