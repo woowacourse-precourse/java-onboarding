@@ -4,6 +4,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem7 {
+    private static final Map<String, Integer> recommendScore = new HashMap<>();
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         return Collections.emptyList();
     }
@@ -31,5 +33,17 @@ public class Problem7 {
         }
 
         return friendsList;
+    }
+
+    private static void addScore(List<String> friends, int score) {
+        for (String friend : friends) {
+            if (recommendScore.containsKey(friend)) {
+                int existingScore = recommendScore.get(friend);
+                recommendScore.put(friend, existingScore + score);
+            }
+            else {
+                recommendScore.put(friend, score);
+            }
+        }
     }
 }
