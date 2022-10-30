@@ -12,5 +12,7 @@ class Problem1 {
     public static int getSumValue(Integer number){
         return Stream.of(number.toString().split("")).mapToInt(Integer::parseInt).sum();
     }
-
+    public static int getmultiplyValue(Integer number) {
+        return Stream.of(number.toString().split("")).mapToInt(Integer::parseInt).reduce(1, (a,b) -> a * b);
+    }
 }
