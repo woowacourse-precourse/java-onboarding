@@ -39,7 +39,6 @@ public class Problem6 {
 
     public static boolean checkDuplication(HashMap<String,Set<String>> words,String word){
         List<String> wordList = getWord(word);
-        System.out.println(wordList);
         for(String w:wordList){
             int a= words.get(w).size();
             if (a > 1){

@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     private static int SCORE_10 = 10;
@@ -8,11 +9,20 @@ public class Problem7 {
     public static HashMap<String, Set<String>> friendsMap;
     public static HashMap<String,Integer> scoreMap;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
         friendsMap = createFriendsList(friends);
         createScoreMap(user);
         addVisitorsScore(visitors);
+        scoreMap.put(user,0);
+        Map<String,Integer> filterFriendsMap = filteringFriends(friendsMap.getOrDefault(user,new TreeSet<>()));
 
+        List<String> answer = new ArrayList<>(filterFriendsMap.keySet());
+        answer.sort((f1, f2) ->{
+            if(filterFriendsMap.get(f1).equals(filterFriendsMap.get(f2))) return f1.compareTo(f2);
+            return filterFriendsMap.get(f2) - filterFriendsMap.get(f1);
+        });
+        if ( answer.size() > 5){
+            answer = answer.stream().limit(5).collect(Collectors.toList());
+        }
         return answer;
     }
 
@@ -50,9 +60,9 @@ public class Problem7 {
 
     }
 
-    public static Map<String,Integer>  filteringFriends(Set<String> user){
+    public static Map<String,Integer> filteringFriends(Set<String> user){
         Map<String,Integer> res = new HashMap<>();
-        for(String friend : friendsMap.keySet()){
+        for(String friend : scoreMap.keySet()){
             if( !isFriend(user,friend) && scoreMap.get(friend) !=0 ){
                 res.put(friend,scoreMap.get(friend));
             }
