@@ -1,5 +1,7 @@
 package onboarding;
 
+import static onboarding.Problem4.Const.*;
+
 public class Problem4 {
 
     public static String solution(String word) {
@@ -9,10 +11,17 @@ public class Problem4 {
             throw new IllegalArgumentException("1 이상 1000 이하의 길이를 가진 문자열이어야 합니다.");
         }
 
-
         return answer;
     }
 
+    private static Boolean isUpperAlpha(char ch){
+        return (A_VALUE <= ch && ch <= Z_VALUE);
+
+    }
+
+    private static Boolean isLowerAlpha(char ch){
+        return (a_VALUE <= ch && ch <= z_VALUE);
+    }
 
     private static boolean isWrongLength(String checkString){
         int length = checkString.length();
