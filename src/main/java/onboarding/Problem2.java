@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.Stack;
+
 class StackForPro2 {
     private static final int MINIMUM_LENGTH = 1;
     private static final int MAXIMUM_LENGTH = 1000;
@@ -7,6 +9,24 @@ class StackForPro2 {
     public StackForPro2(String cryptogram) {
         validateCrypto(cryptogram);
     }
+
+    public Stack<Character> pushAndPop(Stack<Character> stack, String cryptogram) {
+        char[] array = cryptogram.toCharArray();
+        char tmp = array[0];
+        stack.push(array[0]);
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] == tmp) {
+                continue;
+            }
+            if (stack.peek() == array[i]) {
+                tmp = stack.pop();
+            } else if (stack.peek() != array[i]) {
+                stack.push(array[i]);
+            }
+        }
+        return stack;
+    }
+
     private void validateCrypto(String crypto) {
         validateLength(crypto);
         validateSmallAlpha(crypto);
