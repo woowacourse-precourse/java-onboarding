@@ -21,4 +21,9 @@ public class Problem7 {
                 });
         return userIds;
     }
+
+    private static void initFriendRecommendScoreMap(List<List<String>> friends) {
+        Set<String> userIds = getUserIds(friends);
+        userIds.forEach(userId -> friendRecommendScoreMap.put(userId, 0));
+    }
 }
