@@ -17,4 +17,11 @@ public class RepetitionListTest {
 		repetitionListJasonTest.add(List.of("제이", "이슨"));
 		assertThat(repetitionListJason).isEqualTo(repetitionListJasonTest);
 	}
+
+	@Test
+	void contain_Member(){
+		RepetitionList repetitionList = new RepetitionList();
+		repetitionList.add(List.of("제이", "이슨"));
+		assertThat(repetitionList.isRepeat("제이야")).isTrue();
+	}
 }

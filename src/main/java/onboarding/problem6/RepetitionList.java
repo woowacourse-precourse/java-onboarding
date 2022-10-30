@@ -10,15 +10,13 @@ public class RepetitionList {
 	private final Set<String> repetitionList = new HashSet<>();
 
 	public void add(String name) {
-		int start = 1;
-		while (start < name.length()) {
-			repetitionList.add(name.substring(start - 1, start + 1));
-			start++;
-		}
+		NicknameSplitter nicknameSplitter = new NicknameSplitter();
+		List<String> repetitions = nicknameSplitter.split(name);
+		add(repetitions);
 	}
 
-	public void add(List<String> names) {
-		repetitionList.addAll(names);
+	public void add(List<String> repetitions) {
+		repetitionList.addAll(repetitions);
 	}
 
 	@Override
@@ -34,5 +32,12 @@ public class RepetitionList {
 	@Override
 	public int hashCode() {
 		return Objects.hash(repetitionList);
+	}
+
+	public boolean isRepeat(String str) {
+		NicknameSplitter nicknameSplitter = new NicknameSplitter();
+		List<String> split = nicknameSplitter.split(str);
+		return split.stream()
+			.anyMatch(repetitionList::contains);
 	}
 }
