@@ -1,7 +1,9 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -53,6 +55,14 @@ class NameStringClassForPro6 {
                 }
             }
         }
+    }
+
+    public int stringNameLen() {
+        return nameString.length;
+    }
+
+    public String oneNameString(int index) {
+        return nameString[index];
     }
 }
 
@@ -142,7 +152,21 @@ class ExceptionClassForPro6 {
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         NameStringClassForPro6 nameClass = new NameStringClassForPro6(forms);
-        List<String> answer = List.of("answer");
-        return answer;
+        return sortAnsSet(nameClass.mainFunc(), nameClass, forms);
+    }
+
+    public static List<String> sortAnsSet(Set<String> ansSet, NameStringClassForPro6 nameClass,
+        List<List<String>> forms) {
+        List<String> ansList = new ArrayList<>();
+        ansSet.forEach((element) -> {
+            for (int i = 0; i < nameClass.stringNameLen(); i++) {
+                if (Objects.equals(element, nameClass.oneNameString(i))) {
+                    List<String> tmpList = forms.get(i);
+                    ansList.add(tmpList.get(0));
+                }
+            }
+        });
+        ansList.sort(String::compareTo);
+        return ansList;
     }
 }
