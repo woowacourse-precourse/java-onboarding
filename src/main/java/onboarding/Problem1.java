@@ -11,7 +11,7 @@ class Problem1 {
         }
         return total;
     }
-    
+
     public static int pageMultiply(int page) {
         int total = 1;
         while (page > 1) {
@@ -19,6 +19,15 @@ class Problem1 {
             page /= 10;
         }
         return total;
+    }
+
+    public static int calculationComparison(int page) {
+        int plus = pagePlus(page);
+        int multiply = pageMultiply(page);
+        if (plus > multiply) {
+            return plus;
+        }
+        return multiply;
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
