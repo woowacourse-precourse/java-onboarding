@@ -1,6 +1,8 @@
 package onboarding;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Problem6 {
@@ -102,5 +104,24 @@ public class Problem6 {
             }
         }
         return false;
+    }
+
+    // 연속된 두 글자 이상 중복된 닉네임의 이메일 리스트를 반환하는 기능
+    public static List<String> getEmailListOfOverlapedNickname(List<List<String>> forms) {
+        List<String> emails = extractEmailList(forms);
+        List<String> nicknames = extractNicknameList(forms);
+        Set<String> result = new HashSet<>();
+        for (int i = 0; i < nicknames.size() - 1; i++) {
+            if (nicknames.get(i).length() == 1) {
+                continue;
+            }
+            for (int j = i + 1; j < nicknames.size(); j++) {
+                if (checkNicknameOverlapMoreThanTwoWord(nicknames.get(i), nicknames.get(j))) {
+                    result.add(emails.get(i));
+                    result.add(emails.get(j));
+                }
+            }
+        }
+        return List.copyOf(result);
     }
 }
