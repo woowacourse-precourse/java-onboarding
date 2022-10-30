@@ -1,40 +1,43 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 class Problem1 {
-    public static void main(String[] args) {
-        List<Integer> test1 = List.of(97,98);
-        List<Integer> test2 = List.of(197,198);
-
-        solution(test1, test2);
-        System.out.println("Finish");
-    }
-
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-        int oddP = pobi.get(0);
-        int evenP = pobi.get(1);
-        int oddC = crong.get(0);
-        int evenC = crong.get(1);
+        int oddP = pobi.get(0), evenP = pobi.get(1);
+        int oddC = crong.get(0), evenC = crong.get(1);
+
+        int maxP = 0;
+        int maxC = 0;
 
         if(evenP - oddP == evenC - oddC){
             int[] pobiArr = new int[4];
             int[] crongArr = new int[4];
 
-            for(int i = 0; i < pobiArr.length; i++)
+            for(int i = 0; i < pobiArr.length; i++) {
                 pobiArr[i] = getPlace(oddP, evenP)[i];
+                if(maxP < pobiArr[i])
+                    maxP = pobiArr[i];
+            }
 
-            for(int i = 0; i < crongArr.length; i++)
+            for(int i = 0; i < crongArr.length; i++) {
                 crongArr[i] = getPlace(oddC, evenC)[i];
+                if(maxC < crongArr[i])
+                    maxC = crongArr[i];
+            }
 
-
-            answer = 1;
+            System.out.println(maxP);
+            System.out.println(maxC);
+            if(maxP == maxC)
+                answer = 0;
+            else if (maxP > maxC)
+                answer = 1;
+            else
+                answer = 2;
         }
         else {
-            answer = 0;
+            answer = -1;
         }
         return answer;
     }
@@ -43,8 +46,8 @@ class Problem1 {
         int resultArr[] = new int[4];
 
         int lengthOdd = (int) Math.log10(pageOdd);
-        int arrOdd[] = new int[lengthOdd+1];
         int lengthEven = (int) Math.log10(pageEven);
+        int arrOdd[] = new int[lengthOdd+1];
         int arrEven[] = new int[lengthEven+1];
 
         for(int i = lengthOdd; i > 0; i--){
