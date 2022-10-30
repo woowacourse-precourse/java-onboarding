@@ -56,5 +56,27 @@ class Problem6 {
         }
         return indexList;
     }
+    // 중복된 리스트 isOverlapped를 통하여 이름들과 비교해서 최종 List계산
+    public static List<Integer> overlappedList(List<List<String>> forms) {
+        int startIndex = 0;
+        int byteSize = 6;
+        List<Integer> answerList = new ArrayList<>();
+        for(int i=0; i<forms.size(); i++) {
+            String name = substrb(forms.get(i).get(1),startIndex, byteSize, 3);
+            // 1이 아니면 중복이 된걸 찾은 것 !
+            answerList = isOverlapped(forms,name);
+            System.out.println(answerList);
+            System.out.println("첫 글자 : "+name);
+            if(answerList.size() != 1) {
+                byteSize += 3;
+                name = substrb(forms.get(i).get(1),startIndex, byteSize, 3);
+                List<Integer> answerListNext = isOverlapped(forms,name);
+                System.out.println("두번째 글자 : "+name);
+                if(answerListNext.size()==1 ) break;
+
+            }
+        }
+        return answerList;
+    }
 }
 
