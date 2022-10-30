@@ -8,7 +8,11 @@ public class Problem3Input implements ProblemInput {
     private final Number number;
 
     public Problem3Input(int number) {
-        this.number = new Number(number);
+        this.number = Number.valueOf(number);
+    }
+
+    public Number number() {
+        return number;
     }
 
     @Override
