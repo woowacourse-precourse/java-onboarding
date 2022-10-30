@@ -36,6 +36,20 @@ public class Problem7 {
         }
         return score;
     }
+    public static Map<String, Integer> viewScore(String user, List<List<String>> friends, List<String> visitors){
+        List<String> userFriend = checkUserFriend(user,friends);
+        List<String> tmpVisitors = new ArrayList<String>(visitors);
+
+        for (String uf: userFriend) {
+            tmpVisitors.remove(uf);
+        }
+        Set<String> set = new HashSet<String>(tmpVisitors);
+        Map<String,Integer> score = new HashMap<>();
+        for (String str:set) {
+            score.put(str, Collections.frequency(tmpVisitors,str));
+        }
+        return score;
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
