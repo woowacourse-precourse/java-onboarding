@@ -82,6 +82,9 @@ public class Problem7 {
             if(friendsList.contains(str)) {
                 continue;
             }
+            if(str.equals(user)) {
+                continue;
+            }
 
             stepFriendsList.add(str);
         }
