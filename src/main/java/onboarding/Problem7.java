@@ -3,9 +3,13 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
+    private static int SCORE_10 = 10;
+    private static int SCORE_1 = 1;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         HashMap<String, Set<String>> friendsMap = createFriendsList(friends);
+        HashMap<String,Integer> scoreMap = createScoreMap(friendsMap,user);
+
         return answer;
     }
 
@@ -20,6 +24,21 @@ public class Problem7 {
             map.put(friend.get(1),set);
         }
         return map;
+    }
+
+    public static HashMap<String,Integer> createScoreMap(Map<String, Set<String>> friendsMap,String user){
+        HashMap<String,Integer> scoreMap = new HashMap<>();
+        for(String key : friendsMap.keySet()){
+            Set<String> set = friendsMap.get(key);
+            int cnt = 0;
+            for(String set_key : set){
+                if(friendsMap.get(user).contains(set_key)){
+                    cnt+=SCORE_10;
+                }
+            }
+            addscore(scoreMap,key,cnt);
+        }
+        return scoreMap;
     }
 
     public static void addscore(Map<String,Integer> fre,String key,int score){
