@@ -19,6 +19,19 @@ public class Problem7 {
     public static Map<String, List<String>> getUserFriendListMap(List<List<String>> friends){
         Map<String, List<String>> userFriendListMap = new HashMap<>();
 
+        for(List<String> friend : friends){
+            String user1 = friend.get(0);
+            String user2 = friend.get(1);
+            List<String> friendList1 = userFriendListMap.getOrDefault(user1, new ArrayList<>());
+            List<String> friendList2 = userFriendListMap.getOrDefault(user2, new ArrayList<>());
+
+            friendList1.add(user2);
+            friendList2.add(user1);
+
+            userFriendListMap.put(user1, friendList1);
+            userFriendListMap.put(user2, friendList2);
+        }
+
         return userFriendListMap;
     }
 
