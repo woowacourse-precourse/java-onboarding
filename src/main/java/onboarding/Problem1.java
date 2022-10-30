@@ -23,13 +23,9 @@ class Problem1 {
     }
 
     private static int getResult(int pobiValue, int crongValue) {
-        int answer;
-
-        if (pobiValue > crongValue) answer = 1;
-        else if (pobiValue == crongValue) answer = 0;
-        else answer = 2;
-
-        return answer;
+        if (pobiValue == crongValue) return 0;
+        else if (pobiValue > crongValue) return 1;
+        else return 2;
     }
 
     private static int getMaxProcessedValue(List<Integer> pages) {
