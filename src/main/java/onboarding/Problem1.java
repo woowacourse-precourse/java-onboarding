@@ -43,4 +43,26 @@ class Problem1 {
 
         return result;
     }
+
+    // Sum method: add all digits and return max value
+    public static int addPages(List<Integer> pages) {
+        int result = 0;
+
+        for (int page : pages) {
+
+            int currentScore = 0;
+
+            while (page > 0) {
+                int temp = page % 10;
+                currentScore += temp;
+                page /= 10;
+            }
+
+            if (currentScore > result) {
+                result = currentScore;
+            }
+        }
+
+        return result;
+    }
 }
