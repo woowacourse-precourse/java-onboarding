@@ -1,5 +1,8 @@
 package onboarding;
 
+import java.util.Arrays;
+import java.util.List;
+
 class NumberFroPro3 {
 
     private final static int FIRST_NUMBER = 1;
@@ -17,6 +20,28 @@ class NumberFroPro3 {
             throw new IllegalArgumentException(
                 "number는 " + FIRST_NUMBER + "이상 " + LAST_NUMBER + "이하의 정수여야 합니다.");
         }
+    }
+}
+
+class CountForPro3 {
+
+    private static final List<Character> num369 = Arrays.asList('3', '6', '9');
+    private int count;
+
+    public CountForPro3() {
+        this.count = 0;
+    }
+
+    public void check369(String numStr) {
+        for (int i = 0; i < numStr.length(); i++) {
+            if (num369.contains(numStr.charAt(i))) {
+                count++;
+            }
+        }
+    }
+
+    public int getCount() {
+        return count;
     }
 }
 
