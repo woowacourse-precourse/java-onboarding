@@ -7,6 +7,12 @@ import java.util.stream.Collectors;
 
 public class Problem7 {
 
+    // 중복 제거
+    static List<List<String>> rmOverlap(List<List<String>> values)
+    {
+        return values.stream().distinct().collect(Collectors.toList());
+    }
+
     // 1. 나와의 친구 관계 파악하기
     static void getCheckFriend(List<String> myFriendsList, String user, List<List<String>> friends)
     {
@@ -64,9 +70,29 @@ public class Problem7 {
         }
 
         // 리스트 내 중복 제거
-        List<List<String>> tempResult = friendRecoList.stream().distinct().collect(Collectors.toList());
+        List<List<String>> tempResult = rmOverlap(friendRecoList);
 
         return tempResult;
+    }
+
+    // 3-1. 방문 수만큼 점수 확인
+    static void addVisitorScore(List<List<String>> infoScoreList, List<String> visitors, List<String> myFriendsList)
+    {
+        // 방문객 중복 제거
+        List<String> filterVisitors = visitors.stream().distinct().collect(Collectors.toList());
+
+        for(String name : filterVisitors)
+        {
+            // 방문객이 나의 친구가 아닌 경우
+            if(!myFriendsList.contains(name))
+            {
+                // 방문객 점수
+                int nameCount = Collections.frequency(visitors, name);
+
+                // 해당 방문자 방문 점수 결과 확인
+                System.out.println(name + ", 방문 점수 : " + nameCount);
+            }
+        }
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -90,8 +116,8 @@ public class Problem7 {
         // 친구의 친구 관계 점수 저장
         List<List<String>> infoScoreList = addScoreShip(friFriendList,friendRecoList);
 
-        // 친구 관계 점수 결과 확인
-        System.out.println(infoScoreList);
+        // 방문자 점수 추가
+        addVisitorScore(infoScoreList, visitors, myFriendsList);
 
         return answer;
     }
@@ -104,6 +130,7 @@ public class Problem7 {
 //  : 함께 아는 친구 찾기
 //  : [명단,점수] 리스트 형식 생성 후 관계 점수 저장
 // 3. 방문자 점수 매기기
+//  : 방문 수만큼 점수 확인
 //  : [명단,점수] 리스트에 방문 점수 매기기
 // 4. 명단 정렬
 //  : [명단,점수] 리스트를 이름 -> 점수으로 정렬하여 제한사항 해결
