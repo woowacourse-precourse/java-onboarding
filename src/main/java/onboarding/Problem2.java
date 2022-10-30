@@ -30,4 +30,14 @@ public class Problem2 {
         }
         return characterLinkedList;
     }
+
+    private static void findAndRemoveDuplicate(LinkedList<Character> characterLinkedList) {
+        while (true) {
+            Decoder decoder = Decoder.findDuplicates(characterLinkedList);
+            if (!decoder.isDuplicate()) {
+                break;
+            }
+            Decoder.removeDuplicates(decoder, characterLinkedList);
+        }
+    }
 }
