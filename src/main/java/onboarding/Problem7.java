@@ -28,8 +28,12 @@ public class Problem7 {
                     }
                 }
             }
+
+            for (String visitor:visitors){
+                f_map.put(visitor,f_map.getOrDefault(visitor,0)+1);
+            }
+
         }
-        System.out.println(f_map);
         return answer;
     }
 
