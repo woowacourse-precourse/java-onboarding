@@ -122,12 +122,20 @@ public class Problem6 {
      */
     private static List<String> checkWithStandCrew(List<List<String>> crews,int standIndex,List<String> duplicateList){
         String pickedLetter;
-        List<String> beforeDuplicateList = duplicateList;
         for(int j=0;j <crews.get(standIndex).get(1).length()-1;j++) {
             pickedLetter = nicknamePickTwoLetter(crews.get(standIndex).get(1), j);
-            for(int k=standIndex+1;k<crews.size();k++){
-                duplicateList = checkDuplicated(duplicateList,pickedLetter,crews.get(k));
-            }
+            duplicateList = checkCrew(crews,standIndex,duplicateList,pickedLetter);
+        }
+        return duplicateList;
+    }
+
+    /**
+     * 기준 크루원을 통해 다른 크루원의 중복 여부를 확인하는 함수
+     */
+    private static List<String> checkCrew(List<List<String>> crews,int standIndex,List<String> duplicateList,String pickedLetter){
+        List<String> beforeDuplicateList = duplicateList;
+        for(int k=standIndex+1;k<crews.size();k++){
+            duplicateList = checkDuplicated(duplicateList,pickedLetter,crews.get(k));
         }
         if (!duplicateList.equals(beforeDuplicateList))
             duplicateList.add(crews.get(standIndex).get(0));
