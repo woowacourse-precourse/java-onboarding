@@ -23,23 +23,29 @@ public class Problem4 {
         return thresholds;
     }
 
-    private static Character translater(List<Integer> threshold, Integer letterUnicode) {
-        int unicode = threshold.get(0) + (threshold.get(1) - letterUnicode);
-        char letter = (char) unicode;
+    private static Character translater(List<Integer> threshold, int letterUnicode) {
+        char translatedLetter = (char) letterUnicode;
 
-        return letter;
+        if (threshold.size() == 2) {
+            int translatedUnicode = threshold.get(0) + (threshold.get(1) - letterUnicode);
+            translatedLetter = (char) translatedUnicode;
+        }
+
+        return translatedLetter;
     }
 
     public static String solution(String word) {
+        String answer = "";
+
         for (int i = 0; i < word.length(); i++) {
             char letter = word.charAt(i);
             int unicode = letter;
 
             List<Integer> threshold = getUnicodeThreshold(unicode);
 
-            translater(threshold, unicode);
+            answer += translater(threshold, unicode);
         }
-        String answer = "";
+
         return answer;
     }
 }
