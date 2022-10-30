@@ -79,4 +79,11 @@ class Problem1 {
             throw new Exception("페이지 수가 너무 큽니다");
         }
     }
+
+    static void validateGap(List<Integer> pageList) throws Exception {
+        int gap = pageList.get(1) - pageList.get(0);
+        if (gap != 1) {
+            throw new Exception("붙어있지 않은 페이지");
+        }
+    }
 }
