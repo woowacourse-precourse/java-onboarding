@@ -1,20 +1,21 @@
 package onboarding;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Problem4 {
 
     private static final int ALPHABET_SIZE = 26;
 
     public static String solution(String word) {
-        HashMap<Character, Character> reverseDictionary = new HashMap<>();
+        Map<Character, Character> reverseDictionary = new HashMap<>();
 
         makeDictionary(reverseDictionary);
 
         return findInDictionary(word, reverseDictionary).toString();
     }
 
-    public static StringBuilder findInDictionary(String word, HashMap<Character, Character> reverseDictionary) {
+    public static StringBuilder findInDictionary(String word, Map<Character, Character> reverseDictionary) {
         StringBuilder result = new StringBuilder();
         for (char c : word.toCharArray()) {
             result.append(reverseDictionary.get(c));
@@ -22,7 +23,7 @@ public class Problem4 {
         return result;
     }
 
-    private static void makeDictionary(HashMap<Character, Character> reverseDictionary) {
+    private static void makeDictionary(Map<Character, Character> reverseDictionary) {
         putWordSpacing(reverseDictionary);
         int temp = 1;
 
@@ -40,7 +41,7 @@ public class Problem4 {
         return 'Z' < i && i < 'a';
     }
 
-    private static void putWordSpacing(HashMap<Character, Character> reverseDictionary) {
+    private static void putWordSpacing(Map<Character, Character> reverseDictionary) {
         reverseDictionary.put(' ', ' ');
     }
 }
