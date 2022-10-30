@@ -75,4 +75,14 @@ public class Problem7 {
         }
         return result;
     }
+
+    private static Map<String, Integer> visitorScore(List<String> userFriendList, Map<String, Integer> recommendedFriendList, List<String> visitors) {
+        for (String visitor : visitors) {
+            if (!userFriendList.contains(visitor)) {
+                Integer score = recommendedFriendList.getOrDefault(visitor, 0);
+                recommendedFriendList.put(visitor, score + 1);
+            }
+        }
+        return recommendedFriendList;
+    }
 }
