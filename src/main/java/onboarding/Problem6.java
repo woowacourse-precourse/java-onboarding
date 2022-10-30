@@ -1,15 +1,13 @@
 package onboarding;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Problem6 {
 
-    private static HashMap<String, Set<String>> overlap = new HashMap<>();
+    private static final HashMap<String, Set<String>> overlap = new HashMap<>();
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>();
 
         for (List<String> form : forms) {
             String email = form.get(0);
@@ -35,12 +33,15 @@ public class Problem6 {
         for (int i = 0; i < nickname.length() - size; i++) {
             String continuous = nickname.substring(i, i + size);
 
-            searchOverlap(continuous,email);
+            searchOverlap(continuous, email);
         }
     }
 
     private static void searchOverlap(String continuous, String email) {
-
+        if (!overlap.containsKey(continuous)) {
+            overlap.put(continuous, new HashSet<>());
+        }
+        overlap.get(continuous).add(email);
     }
 
 }
