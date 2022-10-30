@@ -5,6 +5,7 @@ import java.util.Stack;
 public class Problem2 {
     private static Stack<Character> stack = new Stack<>();
     static boolean flag = false;
+
     public static String solution(String cryptogram) {
         String answer = "answer";
         // 1. 문자열을 훑으면서 문자를 stack에 push
@@ -18,14 +19,18 @@ public class Problem2 {
         if(stack.isEmpty()){
             stack.push(c);
         // 스택이 비어있지 않은 상황
-        // top의 문자와 이번에 넣으려는 문자가 같다면 flag를 true로 변경
-        } else if (stack.peek() == c) {
-            flag = true;
-        // top의 문자와 이번에 넣으려는 문자가 다르다면 flag를 확인하여 연속 문자 제거 후 push
         } else {
-            if(flag) stack.pop();
-            flag = false;
-            stack.push(c);
+            // top의 문자가 연속 문자의 일부였다면 pop
+            if(flag) {
+                stack.pop();
+                flag = false;
+            }
+            // top의 문자가 넣으려는 문자와 같다면 flag를 true로 변경하고, 같지 않다면 문자를 push
+            if(stack.peek()==c) {
+                flag = true;
+            } else {
+                stack.push(c);
+            }
         }
     }
 }
