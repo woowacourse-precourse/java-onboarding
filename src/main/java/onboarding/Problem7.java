@@ -11,8 +11,15 @@ public class Problem7 {
 
         ArrayList<String> withFriends = storeUserFriends(user, friends);
         Map<String, Integer> friendAndScore = storeFriendAndScore(user, friends, withFriends);
-        visitScore(visitors, withFriends, friendAndScore);;
+        visitScore(visitors, withFriends, friendAndScore);
+        answer = mapToList(friendAndScore);
 
+        return answer;
+    }
+
+    private static List<String> mapToList(Map<String, Integer> friendScore) {
+        List<String> answer;
+        answer = new ArrayList<>(friendScore.keySet());
         return answer;
     }
 
