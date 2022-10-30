@@ -25,20 +25,26 @@ class ValidatorPro7 {
 
   public static void validateUser(String user) {
     if (user.length() < MIN_USER_LEN || user.length() > MAX_USER_LEN) {
-      throw new IllegalArgumentException("user는 길이가 1 이상 30 이하인 문자열이다.");
+      throw new IllegalArgumentException(
+          "User should be a string with a length of between" + MIN_USER_LEN + " and " + MAX_USER_LEN
+              + ".");
     }
   }
 
   public static void validateFriends(List<List<String>> friends) {
     if (friends.size() < MIN_FRIENDS_SIZE || friends.size() > MAX_FRIENDS_SIZE) {
-      throw new IllegalArgumentException("user는 길이가 1 이상 30 이하인 문자열이다.");
+      throw new IllegalArgumentException(
+          "User should be a string with a length of between" + MIN_FRIENDS_SIZE + " and "
+              + MAX_FRIENDS_SIZE
+              + ".");
     }
     for (List<String> pair : friends) {
       if (pair.size() != FRIENDS_LIST_SIZE) {
-        throw new IllegalArgumentException("friends의 각 원소는 길이가 2인");
+        throw new IllegalArgumentException(
+            "Each element of friends is of length" + FRIENDS_LIST_SIZE + ".");
       }
       if (pair.get(ID_A).equals(pair.get(ID_B))) {
-        throw new IllegalArgumentException("동일한 친구 관계가 중복해서 주어지지 않는다");
+        throw new IllegalArgumentException("The same friendship is not given.");
       }
       validateId(pair.get(ID_A));
       validateId(pair.get(ID_B));
@@ -47,16 +53,21 @@ class ValidatorPro7 {
 
   public static void validateId(String id) {
     if (!id.equals(id.toLowerCase())) {
-      throw new IllegalArgumentException("사용자 아이디는 알파벳 소문자로만 이루어져 있다");
+      throw new IllegalArgumentException(
+          "The user ID consists of only lowercase letters of the alphabet.");
     }
     if (id.length() < MIN_ID_LEN || id.length() > MAX_ID_LEN) {
-      throw new IllegalArgumentException("아이디는 길이가 1 이상 30 이하인 문자열이다.");
+      throw new IllegalArgumentException(
+          "ID should be a string with a length of between" + MIN_ID_LEN + " and "
+              + MAX_ID_LEN + ".");
     }
   }
 
   public static void validateVisitors(List<String> visitors) {
     if (visitors.size() < MIN_VISITORS_SIZE || visitors.size() > MAX_VISITORS_SIZE) {
-      throw new IllegalArgumentException("visitors는 길이가 0 이상 10,000 이하인 리스트/배열이다.");
+      throw new IllegalArgumentException(
+          "Visitors is a list/array of length " + MIN_VISITORS_SIZE + " to " + MAX_VISITORS_SIZE
+              + ".");
     }
   }
 }

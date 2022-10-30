@@ -26,25 +26,26 @@ class FindDuplicatePro2 {
   }
 
   public Stack<Character> eraseDuplicate() {
-    Stack<Character> s = new Stack<>();
+    Stack<Character> stack = new Stack<>();
+    Character tmp = 0;
     String cryptogram = this.cryptogram;
     for (int i = 0; i < cryptogram.length(); i++) {
-      if (s.empty()) {
-        s.push(cryptogram.charAt(i));
-      } else if (s.peek() == cryptogram.charAt(i)) {
-        s.pop();
-      } else {
-        s.push(cryptogram.charAt(i));
+      if (stack.empty()) {
+        stack.push(cryptogram.charAt(i));
+      } else if (stack.peek() == cryptogram.charAt(i)) {
+        tmp = stack.pop();
+      } else if (tmp != cryptogram.charAt(i)) {
+        stack.push(cryptogram.charAt(i));
       }
     }
-    return s;
+    return stack;
   }
 
   public String stackToStringReverse() {
     StringBuilder buf = new StringBuilder();
-    Stack<Character> s = this.originalWord;
-    while (!s.empty()) {
-      buf.append(s.pop());
+    Stack<Character> stack = this.originalWord;
+    while (!stack.empty()) {
+      buf.append(stack.pop());
     }
     return buf.reverse().toString();
   }
