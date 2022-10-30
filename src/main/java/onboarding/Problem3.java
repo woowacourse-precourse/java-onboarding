@@ -16,10 +16,6 @@ public class Problem3 {
         return answer;
     }
 
-    /**
-     * 주어진 정수에 포함된 3,6,9의 개수를 반환한다.
-     * @param number 정수
-     */
     private static int getClapCount(int number) {
         String str = String.valueOf(number);
         return str.replaceAll("[^3|6|9]", "").length();
