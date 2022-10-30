@@ -6,35 +6,29 @@ class Problem1 {
 
     // 포비와 크롱의 승부 결과를 출력하는 메소드
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-
-        if (isNotContinuous(pobi) || !isNotContinuous(crong)) {
-            answer = -1;
+        if (!isAllValid(pobi) || !isAllValid(crong)) {
+            return -1;
         }
 
-        if (pobi.size() != 2 || crong.size() != 2) {
-            answer = -1;
+        int pobiMax = maxPageNumber(pobi);
+        int crongMax = maxPageNumber(crong);
+
+        if (pobiMax < crongMax) {
+            return 2;
         }
 
-        int pobi_max = maxPageNumber(pobi);
-        int crong_max = maxPageNumber(crong);
-
-        if (pobi_max < crong_max) {
-            answer = 2;
+        if (pobiMax > crongMax) {
+            return 1;
         }
 
-        if (pobi_max > crong_max) {
-            answer = 1;
+        if (pobiMax == crongMax) {
+            return 0;
         }
 
-        if (pobi_max == crong_max) {
-            answer = 0;
-        }
-
-        return answer;
+        return -1;
     }
 
-    // 매개변수의 유효성을 검증하는 메소드
+    // 매개변수의 유효성성 검증하는 메소드
     private static boolean isAllValid(List<Integer> pages) {
         if (!isSizeValid(pages)) {
             return false;
