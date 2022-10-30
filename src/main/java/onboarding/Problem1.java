@@ -2,6 +2,12 @@ package onboarding;
 
 import java.util.List;
 
+/* 기능 목록
+ *
+ * checkValid : 페이지 리스트가 유효한지 확인하고 Exception 처리를 한다.
+ * maxScore : 페이지 리스트에서 얻을 수 있는 최고 점수를 반환한다.
+ * pageScore : 페이지 숫자로 얻을 수 있는 최고 점수를 반환한다
+ */
 class Problem1 {
     private static final int PAGE_MIN = 1, PAGE_MAX = 400;
     private enum GameResult {
