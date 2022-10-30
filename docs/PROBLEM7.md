@@ -24,3 +24,11 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 목록
+1. member class : 필드 영역에 이름과 점수를 가진다. 
+2. containsName method : 유저 이름을 입력받아 nameAndScore 리스트에 해당 유저가 있는지 확인하고, 있으면 해당 인덱스를 리턴한다.
+3. nextUser method : 유저와 친구관계를 입력받고, 입력받은 유저와 친구관계에 있는 다른 유저를 리턴한다.
+4. plusScore method : 유저 이름, 적립할 점수의 양, nameAndScore 리스트를 입력받아 nameAndScore 리스트의 해당 유저 점수를 갱신한다.
+5. duplicateFriendsCount : 유저를 입력받아 해당 유저와 같은 친구를 공유하는 다른 유저를 찾고, 그에 따라 점수를 갱신한다.
+6. visitorsCount method : 유저를 입력받아 해당 유저에게 방문한 다른 유저를 찾고, 그에 따라 점수를 갱신한다.

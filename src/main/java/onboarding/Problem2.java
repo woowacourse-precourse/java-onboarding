@@ -1,6 +1,7 @@
-package onboarding;
 
+package onboarding;
 public class Problem2 {
+
     static int cryptogramPointer = 0;
     static int continuityStart=0; static int continuityEnd=0;
     static int numberOfZeros=0;
@@ -71,4 +72,3 @@ public class Problem2 {
 
         return answer;
     }
-}
