@@ -16,6 +16,16 @@ class Player {
         return sum;
     }
 
+    protected int mulEachNum(int num) {// 정수의 각 자리수를 곱함
+        int mul;
+        mul = 1;
+        while (num > 0) {// 반복
+            mul = mul * (num % 10); // 일의 자리를 기존 곱한 결과에 곱한값을 저장
+            num /= 10; //맨 뒷자리를 없애줌
+        }
+        return mul;
+    }
+
     public void setLeftPageNum(int leftPageNum) {
         this.leftPageNum = leftPageNum;
     }
