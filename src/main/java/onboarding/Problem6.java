@@ -14,8 +14,15 @@ public class Problem6 {
         for (List<String> crew : forms) {
             separatedNickname.addAll(getSeparateTwoConsecutiveLetters(crew.get(NICKNAME)));
         }
+        countTwoLetters(separatedNickname);
 
         return new ArrayList<>();
+    }
+
+    private static void countTwoLetters(List<String> separatedNickname) {
+        for (String twoLetters : separatedNickname) {
+            twoLetterCountMap.put(twoLetters, twoLetterCountMap.getOrDefault(twoLetters, 0) + 1);
+        }
     }
 
     private static List<String> getSeparateTwoConsecutiveLetters(String nickname) {
