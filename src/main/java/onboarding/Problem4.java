@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
-        char[] strarr = word.toCharArray();
-
+        answer = frogreverseString(word);
         return answer;
     }
     public static char frogreverse(char c){
@@ -20,8 +21,16 @@ public class Problem4 {
         }
         return c;
     }
-    public static void main(String[] args) {
-        solution2("abc");
-        System.out.println(123);
+    public static String frogreverseString(String str){
+        char[] strarr = str.toCharArray();
+        for(int i=0; i<strarr.length; i++){
+            strarr[i] = frogreverse(strarr[i]);
+        }
+        StringBuilder sb = new StringBuilder();
+        for(char item : strarr){
+            sb.append(item);
+        }
+        str = sb.toString();
+        return str;
     }
 }
