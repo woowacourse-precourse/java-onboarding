@@ -4,6 +4,7 @@ import java.util.regex.Pattern;
 
 public class KoreanValidator {
 	Pattern koreanPattern = Pattern.compile("^[ㄱ-ㅎ가-힣]*$");
+
 	public boolean validateAllKorean(String nickName) {
 		return koreanPattern.matcher(nickName).matches();
 	}
