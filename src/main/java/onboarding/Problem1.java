@@ -4,7 +4,7 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if (errorCheck(pobi) || errorCheck(crong)) {
+        if (checkError(pobi) || checkError(crong)) {
             return -1;
         }
 
@@ -15,7 +15,7 @@ class Problem1 {
         return answer;
     }
 
-    private static boolean errorCheck(List<Integer> pages) {
+    private static boolean checkError(List<Integer> pages) {
         if (pages.get(0) == null || pages.get(1) == null) {
             return true;
         }
