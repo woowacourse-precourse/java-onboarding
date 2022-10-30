@@ -21,17 +21,22 @@ public class Problem2 {
                 answer += cryptoNowChar;
 
             if(cryptoNowChar != answerLastChar && duplicated == true) {
-                answer = answer.substring(0, answerLen-1);
+                answer = removeLastChar(answer);
                 duplicated = false;
                 i -= 1;
             }
         }
         if(duplicated) {
-            int answerLen = answer.length();
-            answer = answer.substring(0, answerLen-1);
+            answer = removeLastChar(answer);
             duplicated = false;
         }
 
         return answer;
+    }
+
+    public static String removeLastChar(String answer) {
+
+        int answerLen = answer.length();
+        return answer.substring(0, answerLen-1);
     }
 }
