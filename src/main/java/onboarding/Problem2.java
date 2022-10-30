@@ -3,9 +3,7 @@ package onboarding;
 import onboarding.problem2.Problem2Validation;
 
 import javax.swing.text.html.Option;
-import java.util.List;
-import java.util.Optional;
-import java.util.Stack;
+import java.util.*;
 
 public class Problem2 {
 
@@ -23,8 +21,47 @@ public class Problem2 {
 
     private static String compressOverlappingWord(String cryptogram) {
         StringBuilder afterCompressionExtractFromStack = new StringBuilder();
+        Deque<Character> queue = compressStringWithDeque(cryptogram);
+        System.out.println("queue = " + queue.toString());
+        return null;
+    }
 
+    private static Deque<Character> compressStringWithDeque(String cryptogram) {
+        Deque<Character> stack = new LinkedList<>();
+        int idx = 0;
+        while (idx < cryptogram.length()) {
+            char thisTurnWordChar = cryptogram.charAt(idx);
+            if (stack.isEmpty()) {
+                addElementInStack(stack, thisTurnWordChar);
+                idx += 1;
+                continue;
+            }
+            Character stackPeekWordChar = stack.removeLast();
+            if (stackPeekWordChar == thisTurnWordChar) {
+                idx = findOverlappingWordCharIdx(stackPeekWordChar, cryptogram, idx + 1);
+            } else if (stackPeekWordChar != thisTurnWordChar) {
+                addElementInStack(stack, stackPeekWordChar);
+                addElementInStack(stack, thisTurnWordChar);
+                idx += 1;
+            }
 
+        }
+        return stack;
+    }
+
+    private static int findOverlappingWordCharIdx(Character stackPeekWordChar,String cryptogram, int idx) {
+        while (idx < cryptogram.length()) {
+            if (cryptogram.charAt(idx) == stackPeekWordChar) {
+                idx += 1;
+                continue;
+            }
+            break;
+        }
+        return idx;
+    }
+
+    private static void addElementInStack(Deque<Character> stack, char thisTurnWordChar) {
+        stack.addLast(thisTurnWordChar);
     }
 
 
