@@ -10,10 +10,9 @@ public class PageTypeValidator {
 	private final int LEFT_ODD_AND_EVEN = 1;
 	private final int RIGHT_ODD_AND_EVEN = 0;
 
-
 	public boolean validate(List<Integer> list) {
 
-		return list.get(RIGHT_NUMBER) - list.get(LEFT_NUMBER)==DIFFERENCE
+		return list.get(RIGHT_NUMBER) - list.get(LEFT_NUMBER) == DIFFERENCE
 			&& list.get(LEFT_NUMBER) % SECOND == LEFT_ODD_AND_EVEN
 			&& list.get(RIGHT_NUMBER) % SECOND == RIGHT_ODD_AND_EVEN;
 	}
