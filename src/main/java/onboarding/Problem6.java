@@ -65,7 +65,7 @@ public class Problem6 {
      */
     private static void addDuplicateNickname(List<String> crew) {
         int crewId = getCrewIdByCrew(crew);
-        String nickname = crew.get(0);
+        String nickname = crew.get(1);
         String[] twoLetterNicknames = createTwoLetterNicknames(nickname);
         ArrayList<String> internalDuplicateTwoLetterNicknames = new ArrayList<>();
 
@@ -129,7 +129,7 @@ public class Problem6 {
      */
     private static void addChangeNeedCrewEmailByCrewId(int crewId) {
         List<String> crew = getCrewByCrewId(crewId);
-        String email = crew.get(1);
+        String email = crew.get(0);
 
         if (!changeNeedCrewEmails.contains(email)) {
             changeNeedCrewEmails.add(email);
