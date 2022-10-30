@@ -19,14 +19,14 @@ public class Problem6 {
      * 이메일 예외처리 기능
      */
     public static Boolean isEmail(String email){
-        return false;
+        return email.length() >= 11 && email.length() < 20 && email.endsWith("email.com");
     }
 
     /**
      * 닉네임 예외처리 기능
      */
     public static Boolean isNickName(String nickName){
-        return false;
+        return nickName.length() >= 1 && nickName.length() < 20 && nickName.matches("^[가-힣]*$");
     }
 
 }
