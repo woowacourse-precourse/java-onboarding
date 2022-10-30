@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Problem6 {
@@ -20,6 +21,27 @@ public class Problem6 {
      */
     private static boolean inspectNicknameCondition(String input) {
         return input.matches("/^[ㄱ-ㅎ|가-힣]+$/");
+    }
+
+    /**
+     * 주어진 이메일 목록 중 조건을 만족하는 항목을 선별한다.
+     * @param forms
+     * @return
+     */
+    private List<List<String>> collectValidInputs(List<List<String>> forms) {
+        List<List<String>> result = new ArrayList<>();
+
+        for (List<String> next : forms) {
+            if (!inspectEmailCondition(next.get(0)) || !inspectNicknameCondition(next.get(1))) {
+                continue;
+            }
+            List<String> temp = new ArrayList<>();
+            temp.add(getEmailUsername(next.get(0)));
+            temp.add(next.get(1));
+            result.add(temp);
+        }
+
+        return result;
     }
 
     public static List<String> solution(List<List<String>> forms) {
