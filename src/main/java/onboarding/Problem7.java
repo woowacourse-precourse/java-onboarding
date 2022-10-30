@@ -54,7 +54,7 @@ public class Problem7 {
             key.add(entry.getKey());
             value.add(entry.getValue());
         }
-        String[][] convert = new String[key.size()][2];
+        String[][] convert = new String[key.size()][2]; //2차원 배열로 hashmap을 바꾸어 저장
 
         for(int i=0; i<key.size(); i++) {
             for(int j=0; j<2; j++) {
@@ -65,7 +65,7 @@ public class Problem7 {
                 }
             }
         }
-        Arrays.sort(convert, new Comparator<String[]>() {
+        Arrays.sort(convert, new Comparator<String[]>() { //2차원 배열 정렬
             @Override
             public int compare(String[] o1, String[] o2) {
                 if(o1[1].toString().contentEquals(o2[1].toString()))
@@ -74,15 +74,15 @@ public class Problem7 {
                     return o1[1].toString().compareTo(o2[1].toString());
             }
         });
-        List<List<String>> tmp = convertToList(convert);
+        List<List<String>> tmp = convertToList(convert); //2차원 배열을 2차원 리스트로 변환
         List<String> fin = new ArrayList<>();
         List<String> answer = new ArrayList<>();
         List<String> overlapRemove = new ArrayList<>();
 
-        for(int i=0; i<tmp.size(); i++) {
+        for(int i=0; i<tmp.size(); i++) { //key값만(리스트의 [0][]번째 값) 리스트에 저장
             overlapRemove.add(tmp.get(i).get(0));
         }
-        for(int i=0; i<userFriendsList.size(); i++) {
+        for(int i=0; i<userFriendsList.size(); i++) { //유저와 이미 친구인 사람은 제외하기
             if(overlapRemove.contains(userFriendsList.get(i)) == true) {
                 overlapRemove.set(overlapRemove.indexOf(userFriendsList.get(i)), " ");
             }
@@ -92,7 +92,7 @@ public class Problem7 {
                 fin.add(overlapRemove.get(i));
             }
         }
-        if(fin.size()>5) {
+        if(fin.size()>5) { //5명 이상일 경우 고려하기
             for(int i=0; i<5; i++) {
                 answer.add(fin.get(i));
             }
