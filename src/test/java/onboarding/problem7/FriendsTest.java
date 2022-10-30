@@ -9,8 +9,8 @@ public class FriendsTest {
 	@Test
 	void add_User() {
 		Friends friends = new Friends();
-		friends.add(new User("abb"));
-		assertThat(friends.contains(new User("abb"))).isTrue();
+		friends.add(new UserID("abb"));
+		assertThat(friends.contains(new UserID("abb"))).isTrue();
 
 	}
 

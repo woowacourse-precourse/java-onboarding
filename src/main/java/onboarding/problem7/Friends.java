@@ -5,19 +5,19 @@ import java.util.Objects;
 
 public class Friends {
 
-	private final ArrayList<User> friendsList;
+	private final ArrayList<UserID> friendsList;
 
 	public Friends() {
 		this.friendsList = new ArrayList<>();
 	}
 
 
-	public void add(User User) {
-		friendsList.add(User);
+	public void add(UserID userID) {
+		friendsList.add(userID);
 	}
 
-	public boolean contains(User user) {
-		return friendsList.contains(user);
+	public boolean contains(UserID userID) {
+		return friendsList.contains(userID);
 	}
 
 	@Override
@@ -37,6 +37,6 @@ public class Friends {
 
 	public boolean isSecondFriend(User otherUser) {
 		return friendsList.stream()
-			.anyMatch(user -> user != otherUser && user.isFriends(otherUser));
+			.anyMatch(user -> !otherUser.isSameID(user) && otherUser.isFriends(user));
 	}
 }

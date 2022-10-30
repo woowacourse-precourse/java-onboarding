@@ -4,19 +4,34 @@ import java.util.Objects;
 
 public class User {
 	private final Friends friends;
-	private final String userID;
+	private final UserID userID;
 
 	public User(String userID) {
+		this.userID = new UserID(userID);
+		this.friends = new Friends();
+	}
+
+	public User(UserID userID) {
 		this.userID = userID;
 		this.friends = new Friends();
 	}
 
-	public void addFriend(User friend) {
-		this.friends.add(friend);
+	public void addFriend(UserID userID) {
+		this.friends.add(userID);
 	}
 
-	public boolean isFriends(User otherUser) {
+	public boolean isFriends(UserID otherUser) {
 		return this.friends.contains(otherUser);
+	}
+
+
+	public boolean isSecondFriend(User otherUser) {
+		return this != otherUser && friends.isSecondFriend(otherUser);
+	}
+
+	@Override
+	public String toString() {
+		return userID.toString();
 	}
 
 	@Override
@@ -34,7 +49,7 @@ public class User {
 		return Objects.hash(friends, userID);
 	}
 
-	public boolean isSecondFriend(User otherUser) {
-		return friends.isSecondFriend(otherUser);
+	public boolean isSameID(UserID otherUserID) {
+		return userID.equals(otherUserID);
 	}
 }
