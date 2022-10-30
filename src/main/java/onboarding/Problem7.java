@@ -19,7 +19,7 @@ public class Problem7 {
         calculateRecommendScore(visitorInfo, friendOfFriend, recommendScore);
 
         List<Integer> scores = getSortedScoreList(recommendScore);
-
+        getAnswer(answer, recommendScore, scores);
         return answer;
     }
 
@@ -140,5 +140,16 @@ public class Problem7 {
         }
         Collections.reverse(scores);
         return scores;
+    }
+
+    /**
+     * Function for friends sorted by recommendation score
+     * */
+    private static void getAnswer(List<String> answer, Map<Integer, List<String>> recommendScore, List<Integer> scores) {
+        for (int score : scores) {
+            List<String> recommendFriends = recommendScore.get(score);
+            Collections.sort(recommendFriends);
+            answer.addAll(recommendFriends);
+        }
     }
 }
