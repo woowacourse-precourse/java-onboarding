@@ -24,30 +24,30 @@ public class Problem7CustomTest {
     class Problem7Test {
 
         @Test
-        void 배열의길이를만족하지않는경우() {
+        void 리스트의길이를만족하지않는경우() {
             List<String> zeroLengthList = new ArrayList<>();
             boolean impossible = Problem7Validation.problem7Validation("m", Collections.emptyList(), List.of("m"));
             assertThat(impossible).isFalse();
         }
 
         @Test
-        void 배열의길이를만족하는경우() {
-            List<String> zeroLengthList = new ArrayList<>(List.of("a","b"));
-            boolean possible = Problem7Validation.problem7Validation("m", Collections.emptyList(), List.of("m"));
+        void 리스트의길이를만족하는경우() {
+            List<List<String>> possibleList = new ArrayList<>(List.of(List.of("a","b")));
+            boolean possible = Problem7Validation.problem7Validation("m", possibleList, List.of("m"));
             assertThat(possible).isTrue();
         }
 
         @Test
         void 소문자가아닌경우() {
-            List<String> zeroLengthList = new ArrayList<>(List.of("a","b"));
-            boolean impossible = Problem7Validation.problem7Validation("M", Collections.emptyList(), List.of("m"));
+            List<List<String>> possibleList = new ArrayList<>(List.of(List.of("a","b")));
+            boolean impossible = Problem7Validation.problem7Validation("M", possibleList, List.of("m"));
             assertThat(impossible).isFalse();
         }
 
         @Test
         void 소문자만있는경우() {
-            List<String> zeroLengthList = new ArrayList<>(List.of("a","b"));
-            boolean possible = Problem7Validation.problem7Validation("m", Collections.emptyList(), List.of("m"));
+            List<List<String>> possibleList = new ArrayList<>(List.of(List.of("a","b")));
+            boolean possible = Problem7Validation.problem7Validation("m", possibleList, List.of("m"));
             assertThat(possible).isTrue();
         }
     }
