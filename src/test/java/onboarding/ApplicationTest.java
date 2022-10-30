@@ -84,10 +84,9 @@ class ApplicationTest {
 
         @Test
         void case4() {
-            StringBuilder cryptogram = new StringBuilder();
-            cryptogram.append("a".repeat(1001));
+            String cryptogram = "abc".repeat(335);
             String result = "";
-            assertThat(Problem2.solution(cryptogram.toString())).isEqualTo(result);
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
 
         @Test
