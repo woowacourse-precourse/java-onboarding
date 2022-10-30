@@ -10,6 +10,13 @@ class Problem1 {
         boolean check1 = validateInput(pobi.get(0), pobi.get(1));
         boolean check2 = validateInput(crong.get(0), crong.get(1));
 
+        if (check1 && check2) {
+
+            int pobiScore = findMaxScore(pobi);
+            int crongScore = findMaxScore(crong);
+
+        }
+
         return answer;
     }
 
@@ -51,5 +58,19 @@ class Problem1 {
         int score = 1;
         score *= scoreList.stream().mapToInt(Integer::parseInt).reduce(1, (a, b) -> a * b);
         return score;
+    }
+
+    /**
+     * Function for Finding User's Max score
+     * */
+    public static int findMaxScore(List<Integer> user) {
+
+        List<String> leftPage = Arrays.asList(user.get(0).toString().split(""));
+        int leftScore = Math.max(findPlusScore(leftPage), findMultipleScore(leftPage));
+
+        List<String> rightPage = Arrays.asList(user.get(1).toString().split(""));
+        int rightScore = Math.max(findPlusScore(rightPage), findMultipleScore(rightPage));
+
+        return Math.max(leftScore, rightScore);
     }
 }
