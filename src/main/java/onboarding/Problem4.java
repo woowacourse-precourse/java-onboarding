@@ -7,6 +7,11 @@ public class Problem4 {
         return 'a' <= c && c <= 'z';
     }
 
+    private static boolean isLargeAlpha(char c)
+    {
+        return 'A' <= c && c <= 'Z';
+    }
+    
     private static boolean checkParam(String s)
     {
         int length = s.length();
