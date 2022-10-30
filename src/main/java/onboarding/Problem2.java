@@ -16,10 +16,6 @@ public class Problem2 {
         return answer;
     }
 
-    /**
-     * 중복문자가 제거된 문자열을 반환한다.
-     * @param cryptogram 문자열
-     */
     private static String removeDuplicate(String cryptogram) {
 
         String result = cryptogram.replaceAll("(\\w)\\1+", "");
@@ -30,11 +26,7 @@ public class Problem2 {
 
         return result;
     }
-
-    /**
-     * 문자열에 연속된 중복문자가 있으면 true
-     * @param cryptogram 문자열
-     */
+    
     private static boolean checkDuplicate(String cryptogram) {
         Pattern pattern = Pattern.compile("(\\w)\\1+");
         Matcher matcher = pattern.matcher(cryptogram);
