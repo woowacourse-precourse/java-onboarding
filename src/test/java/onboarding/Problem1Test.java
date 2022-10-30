@@ -6,9 +6,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.List;
+import onboarding.Problem1.Page;
 import org.junit.jupiter.api.Test;
 
 class Problem1Test {
+
+    Problem1 problem1 = new Problem1();
 
     @Test
     void 점수측정테스트() {
@@ -20,7 +23,8 @@ class Problem1Test {
         //when
         int[] results = new int[3];
         for (int i = 0; i < 3; i++) {
-            results[i] = Problem1.getPageMaxPoint(pages[i]);
+
+            results[i] = problem1.makePage(pages[i]).getPageMaxPoint();
         }
         //then
         assertArrayEquals(realResult, results);
@@ -30,21 +34,21 @@ class Problem1Test {
     void 유저점수테스트() {
         List<Integer> firstPages = new ArrayList<>(Arrays.asList(1, 2));
 
-        assertThrows(InputMismatchException.class, () -> Problem1.getUserMaxPoint(firstPages));
+        assertThrows(InputMismatchException.class, () -> problem1.getUserMaxPoint(firstPages));
 
         List<Integer> lastPages = new ArrayList<>(Arrays.asList(399, 400));
-        assertThrows(InputMismatchException.class, () -> Problem1.getUserMaxPoint(lastPages));
+        assertThrows(InputMismatchException.class, () -> problem1.getUserMaxPoint(lastPages));
 
         List<Integer> invalidPages = new ArrayList<>(Arrays.asList(3, 77));
-        assertThrows(InputMismatchException.class, () -> Problem1.getUserMaxPoint(invalidPages));
+        assertThrows(InputMismatchException.class, () -> problem1.getUserMaxPoint(invalidPages));
 
         List<Integer> pages1 = new ArrayList<>(Arrays.asList(123, 124));
 
-        assertEquals(8, Problem1.getUserMaxPoint(pages1));
+        assertEquals(8, problem1.getUserMaxPoint(pages1));
 
         List<Integer> pages2 = new ArrayList<>(Arrays.asList(199, 200));
 
-        assertEquals(81, Problem1.getUserMaxPoint(pages2));
+        assertEquals(81, problem1.getUserMaxPoint(pages2));
 
 
     }
