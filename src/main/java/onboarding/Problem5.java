@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Problem5 {
@@ -33,7 +34,13 @@ public class Problem5 {
 	public static class Bank {
 
 		public static List<Integer> convert(int money) {
-			return null;
+			final List<Integer> counts = new ArrayList<>(Money.values().length);
+			for (Money value : Money.values()) {
+				final int count = money / value.getAmount();
+				money -= value.getAmount() * count;
+				counts.add(count);
+			}
+			return counts;
 		}
 
 	}
