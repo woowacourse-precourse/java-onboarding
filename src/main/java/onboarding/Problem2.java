@@ -21,6 +21,6 @@ public class Problem2 {
     }
 
     private static boolean canRemove(String str, char c) {
-        return !str.isEmpty() && !str.endsWith(String.valueOf(c));
+        return !str.isEmpty() && str.endsWith(String.valueOf(c));
     }
 }
