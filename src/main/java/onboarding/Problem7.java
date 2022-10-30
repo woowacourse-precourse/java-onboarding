@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * getMyFriends 메서드 선택한 유저의 친구를 set에 저장
@@ -23,6 +24,19 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
         return answer;
     }
+
+    private static List<String> getSortedAcquaintanceList() {
+        List<String> answer = friendsAndScoreMap.keySet().stream()
+                .sorted((o1, o2) -> {
+                    if (friendsAndScoreMap.get(o2).equals(friendsAndScoreMap.get(o1)))
+                        return o1.compareTo(o2);
+                    return friendsAndScoreMap.get(o2).compareTo(friendsAndScoreMap.get(o1));
+                })
+                .limit(5)
+                .collect(Collectors.toList());
+        return answer;
+    }
+
 
     private static void getAcquaintanceList() {
         for (String friend : friendOfUserSet) {
