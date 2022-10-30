@@ -9,6 +9,11 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Problem6 {
+
+    public static final String CORRECT_DOMAIN = "email.com";
+    public static final String EMAIL_DELIM = "@";
+    public static final String KOREAN_REGEX = ".*[ㄱ-ㅎㅏ-ㅣ가-힣]+.*";
+
     public static List<String> solution(List<List<String>> forms) {
         Map<String, String> crewInfo = new HashMap<>();
         Map<String, Integer> duplicatedNicknameCandidate = new HashMap<>();
@@ -41,7 +46,6 @@ public class Problem6 {
             String email = form.get(0);
 
             if (isSatisfyEmailFormat(email) && isSatisfyNicknameFormat(nickname)) {
-                System.out.println("nickname = " + nickname);
                 crewInfo.put(nickname, email);
             }
         }
@@ -81,10 +85,10 @@ public class Problem6 {
             return false;
         }
 
-        String[] parsedEmail = email.split("@");
+        String[] parsedEmail = email.split(EMAIL_DELIM);
         String domain = parsedEmail[1];
 
-        return domain.equals("email.com");
+        return domain.equals(CORRECT_DOMAIN);
     }
 
     private static boolean isSatisfyNicknameFormat(String nickname) {
@@ -94,6 +98,6 @@ public class Problem6 {
             return false;
         }
 
-        return Pattern.matches(".*[ㄱ-ㅎㅏ-ㅣ가-힣]+.*", nickname);
+        return Pattern.matches(KOREAN_REGEX, nickname);
     }
 }
