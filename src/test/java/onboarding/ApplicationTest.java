@@ -245,6 +245,19 @@ class ApplicationTest {
       List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
       assertThat(Problem6.solution(forms)).isEqualTo(result);
     }
+
+    @Test
+    void isAllowedCrewSizeTest() {
+      //given
+      int crewSize1 = 2234;
+      int crewSize2 = 10010;
+
+      //then
+      assertThat(Problem6.isAllowedCrewSize(crewSize1)).isEqualTo(true);
+      assertThrows(IllegalStateException.class, () -> {
+        Problem6.isAllowedCrewSize(crewSize2);
+      });
+     }
   }
 
   @Nested
