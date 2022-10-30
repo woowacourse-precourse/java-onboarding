@@ -31,9 +31,10 @@ class Problem1 {
          *
          * */
 
+        if (pobi.get(0) == 1 || crong.get(0) == 399)   answer = -1;
 
         // 둘중 한명이라도 페이지가 연속적이지 않으면 예외 반환 실행
-
+        if(!check_continuous(pobi) || !check_continuous(crong)) answer = -1;
 
         return answer;
     }
