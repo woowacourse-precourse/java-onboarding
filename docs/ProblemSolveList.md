@@ -18,10 +18,11 @@
 ---
 ### Problem 3
 - [x] 3,6,9 개수 구하는 기능 추가
-- [ ] solution 메서드 완성
+- [x] solution 메서드 완성
 ---
 ### Problem 4
-
+- [ ] 문자 변환 기능 추가
+- [ ] solution 메서드 완성
 ---
 ### Problem 5
 
