@@ -7,11 +7,11 @@ import java.util.List;
 
 public class Problem5 {
 
-    public int divideNumberAByNumberB(int numberA, int numberB) throws ArithmeticException{
+    public int divideNumberAByNumberB(int numberA, int numberB) throws ArithmeticException {
         return numberA / numberB;
     }
 
-    public int moduloNumberAByNumberB(int numberA, int numberB) throws ArithmeticException{
+    public int moduloNumberAByNumberB(int numberA, int numberB) throws ArithmeticException {
         return numberA % numberB;
     }
 
@@ -20,7 +20,7 @@ public class Problem5 {
         return list;
     }
 
-    public List<Integer> countEachDenominations(List<Integer> denominationList, int money) throws ArithmeticException{
+    public List<Integer> countEachDenominations(List<Integer> denominationList, int money) throws ArithmeticException {
         List<Integer> numberOfEachDenominations = new ArrayList<>();
 
         for (Integer denomination : denominationList) {
@@ -31,8 +31,10 @@ public class Problem5 {
         return numberOfEachDenominations;
     }
 
-    public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
-        return answer;
+    public List<Integer> getDenominationList() {
+        return new ArrayList<>(List.of(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1));
     }
+
+    public static List<Integer> solution(int money) {
+    return new ArrayList<>();
 }
