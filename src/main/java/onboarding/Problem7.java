@@ -23,6 +23,9 @@ public class Problem7 {
         validateUserRange(user);
         validateFriends(friends);
         validateVisitors(visitors);
+
+        Map<String, User> users = preProcessing(friends);
+
         validateRecommendFriends(recommendFriends);
     }
 
@@ -90,12 +93,38 @@ public class Problem7 {
         }
     }
 
+    private static Map<String, User> preProcessing(List<List<String>> friends) {
+        Map<String, User> users = new HashMap<>();
+
+        for (List<String> friend : friends) {
+            String firstUserName = getFirstUserName(friend);
+            String secondUserName = getSecondUserName(friend);
+
+            User firstUser = getOrCreateUser(firstUserName, users);
+            firstUser.friendNames.add(secondUserName);
+
+            User secondUser = getOrCreateUser(secondUserName, users);
+            secondUser.friendNames.add(firstUserName);
+        }
+        return users;
+    }
+
 
     private static void validateRecommendFriends(List<String> recommendFriends) {
         if (recommendFriends.isEmpty()) {
             throw new IllegalArgumentException();
         }
     }
+
+    public static User getOrCreateUser(String userName, Map<String, User> users) {
+        if (users.containsKey(userName)) {
+            return users.get(userName);
+        }
+        User user = new User(userName);
+        users.put(userName, user);
+        return user;
+    }
+
     private static String getSecondUserName(List<String> userNames) {
         return userNames.get(SECOND_USER_INDEX);
     }
