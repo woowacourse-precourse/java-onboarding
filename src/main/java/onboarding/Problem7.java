@@ -1,7 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * getMyFriends 메서드 선택한 유저의 친구를 set에 저장
@@ -12,8 +11,17 @@ import java.util.List;
  */
 
 public class Problem7 {
+    private static Set<String> friendOfUserSet = new HashSet();
+
+    private static Map<String, Integer> friendsAndScoreMap = new HashMap<>();
+
+    private static final int ACQUAINTANCE_POINT = 10;
+
+    private static final int VISITORS_POINT = 1;
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
     }
+
 }
