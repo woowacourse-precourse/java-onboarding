@@ -50,10 +50,8 @@ public class Problem6 {
 
     private static void checkNickNameDuplicated(String nickName, String email) {
         int len = nickName.length();
-        for (int i = 1; i < len; i++) {
-            for (int j = 0; j < len - i; j++) {
-                addToNickNameMap(nickName.substring(j, j + i + 1), email);
-            }
+        for (int j = 0; j < len - 1; j++) {
+            addToNickNameMap(nickName.substring(j, j + 1 + 1), email);
         }
     }
 
