@@ -17,4 +17,12 @@ class Problem1 {
         return result;
     }
 
+    public static int getProductOfPageDigits(int pageNumber) {
+        int result = 1;
+        while (pageNumber > 0) {
+            result *= pageNumber % 10;
+            pageNumber /= 10;
+        }
+        return result;
+    }
 }
