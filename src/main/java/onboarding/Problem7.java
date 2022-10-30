@@ -36,7 +36,7 @@ public class Problem7 {
         for (String friendId: userFriends) {
             List<String> acquaintanceList = getUserFriends(friendId, friends);
             for (String acquaintance: acquaintanceList) {
-                if(!acquaintance.equals(user)) {
+                if(!acquaintance.equals(user) && !userFriends.contains(acquaintance)) {
                     setScore(listOfScore, acquaintance, acquaintanceScore);
                 }
             }
