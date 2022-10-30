@@ -11,7 +11,24 @@ public class Problem7 {
     static HashMap<String,Integer> recommendList = new HashMap<>();
 
     //유저의 친구셋 만들기
+    static void setMyFriends(String user,List<List<String>> friends){
 
+        HashSet<String> tempMyFriends = new HashSet<>();
+
+        for (List<String> friend : friends){
+            String a = friend.get(0);
+            String b = friend.get(1);
+
+            notMyFriends.add(a);
+            notMyFriends.add(b);
+
+            if (Objects.equals(a,user))
+                tempMyFriends.add(b);
+            else if(Objects.equals(b,user))
+                tempMyFriends.add(a);
+        }
+        myFriends = tempMyFriends;
+    }
 
     //유저의 친구가 아닌사람 리스트를 맵으로 저장
 
