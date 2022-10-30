@@ -26,4 +26,18 @@ public class Problem3 {
         int NumberOf369 = findNumberOf369(number);
         clapsMemoization[number] = clapsMemoization[number - 1] + NumberOf369;
     }
+
+    private static int findNumberOf369(int number) {
+        int count = 0;
+
+        while (number != 0) {
+            if (is369(number % 10)) count++;
+            number /= 10;
+        }
+        return count;
+    }
+
+    private static boolean is369(int number) {
+        return (number == 3) || (number == 6) || (number == 9);
+    }
 }
