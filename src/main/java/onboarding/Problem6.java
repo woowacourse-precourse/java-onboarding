@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 public class Problem6 {
@@ -16,9 +17,18 @@ public class Problem6 {
             String email = forms.get(i).get(0);
             String nickname = forms.get(i).get(1);
             if(crewDictionary.containsKey(email)){
-              throw new IllegalArgumentException("이미 해당 이메일이 존재합니다");
+                throw new IllegalArgumentException("이미 해당 이메일이 존재합니다");
             }
             crewDictionary.put(email, nickname);
       }
     }
+
+    public static HashSet<String> getAllTwoLengthWords(String words){
+        HashSet<String> twoLengthWords = new HashSet<>();
+        for(int i=1; i<words.length(); i++){
+            String twoWords = Character.toString(words.charAt(i-1)) + words.charAt(i);
+            twoLengthWords.add(twoWords);
+        }
+      return twoLengthWords;
+  }
 }
