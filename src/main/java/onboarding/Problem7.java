@@ -7,10 +7,26 @@ public class Problem7 {
     static Set<String> userFriends;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        userScore = new HashMap<>();
+        userScore = new LinkedHashMap<>();
         userFriends = new HashSet<>();
 
-        List<String> answer = Collections.emptyList();
+        countFriends(user, friends);
+        countVisitors(visitors);
+
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(userScore.entrySet());
+        entryList.removeIf(entry -> userFriends.contains(entry.getKey()));
+        entryList.sort((o1, o2) -> {
+            if (o1.getValue().equals(o2.getValue())) {
+                return o1.getKey().compareTo(o2.getKey());
+            }
+            return o2.getValue() - o1.getValue();
+        });
+
+        List<String> answer = new ArrayList<>();
+        for(Map.Entry<String, Integer> entry : entryList){
+            answer.add(entry.getKey());
+        }
+
         return answer;
     }
 
@@ -25,7 +41,7 @@ public class Problem7 {
             String person1 = friend.get(0);
             String person2 = friend.get(1);
 
-            if (user == person1 || user == person2) {
+            if (user.equals(person1) || user.equals(person2)) {
                 userFriends.add(person1);
                 userFriends.add(person2);
                 continue;
@@ -47,16 +63,11 @@ public class Problem7 {
 
     /*
      * 주어진 visitors를 탐색하면서 각 사용자들의 방문 점수 계산
-     * 이떄 주어진 user의 친구는 제외
      *
      * @return void
      * */
     private static void countVisitors(List<String> visitors) {
         for (String visitor : visitors) {
-            if (userFriends.contains(visitor)) {
-                continue;
-            }
-
             setUserScore(visitor, 1);
         }
     }
