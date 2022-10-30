@@ -5,15 +5,49 @@ import java.util.Queue;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-
 
         while (hasDuplicated(cryptogram)) {
-            //중복 제거 로직
+            Queue<Character> characterQueue = new ArrayDeque<>();
+
+            for (int i = 0; i < cryptogram.length(); i++) {
+                characterQueue.offer(cryptogram.charAt(i));
+            }
+
+            StringBuilder stringBuilder = new StringBuilder();
+
+            while (!characterQueue.isEmpty()) {
+
+                char standardChar = characterQueue.poll();
+
+                boolean duplicated = deleteDuplicatedLetter(characterQueue, standardChar);
+
+                if (!duplicated) {
+                    stringBuilder.append(standardChar);
+                }
+            }
+
+            cryptogram = stringBuilder.toString();
+
         }
 
+        return cryptogram;
+    }
 
-        return answer;
+    private static boolean deleteDuplicatedLetter(Queue<Character> characterQueue, char standardChar) {
+        boolean duplicated = false;
+
+        while (!characterQueue.isEmpty()) {
+            char targetChar = characterQueue.peek();
+
+            if (standardChar == targetChar) {
+                characterQueue.poll();
+                duplicated = true;
+            } else {
+                break;
+            }
+        }
+
+        return duplicated;
     }
 
     private static boolean hasDuplicated(String cryptogram) {
