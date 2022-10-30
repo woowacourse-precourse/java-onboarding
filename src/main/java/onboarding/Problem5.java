@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.DoubleToIntFunction;
 
 public class Problem5 {
 
@@ -19,11 +20,10 @@ public class Problem5 {
     public static List<Integer> getMoeny(Integer money){
         List<Integer> money_list = new ArrayList<>();
         List<Integer> moneys = new ArrayList<>(Arrays.asList(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1));
-
         for(int i = 0; i< moneys.size(); i++){
-            if(money / moneys.get(i) >= 1){
-                money_list.add(i, money / moneys.get(i));
-                money /= moneys.get(i);
+            money_list.add(i, money / moneys.get(i));
+            if(money >= moneys.get(i)){
+                money = money%moneys.get(i);
             }
         }
         return money_list;
@@ -31,6 +31,9 @@ public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
 
+        if(isException(money)){
+            answer = getMoeny(money);
+        }
         return answer;
     }
 }
