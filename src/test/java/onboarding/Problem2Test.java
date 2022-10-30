@@ -36,6 +36,13 @@ class Problem2Test {
     @Test
     void 테스트케이스1() {
         Assertions.assertThat(Problem2.solution("baaaoat")).isEqualTo("boat");
+        Assertions.assertThat(Problem2.solution("acbbceecccd")).isEqualTo("ad");
+        Assertions.assertThat(Problem2.solution("acbbceecd")).isEqualTo("ad");
+        Assertions.assertThat(Problem2.solution("aabb")).isEqualTo("");
+        Assertions.assertThat(Problem2.solution("aaacbb")).isEqualTo("c");
+        Assertions.assertThat(Problem2.solution("aaacbbd")).isEqualTo("cd");
+        Assertions.assertThat(Problem2.solution("aaacbbdd")).isEqualTo("c");
+
     }
 
     @Test
