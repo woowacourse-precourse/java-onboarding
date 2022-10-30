@@ -19,4 +19,10 @@ public class Problem6 {
                 && email.length() < 20
                 && email.endsWith("email.com");
     }
+    private static boolean isProperNickName(String nickName) {
+        return 1 <= nickName.length()
+                && nickName.length() < 20
+                && nickName.matches("^[ㄱ-ㅎ가-힣]*$");
+    }
+
 }
