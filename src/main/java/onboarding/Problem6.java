@@ -48,7 +48,7 @@ public class Problem6 {
         List<List<String>> result = new ArrayList<>();
 
         for (List<String> next : forms) {
-            if (!inspectEmailCondition(next.get(0)) || !inspectNicknameCondition(next.get(1))) {
+            if (inspectEmailCondition(next.get(0)) || inspectNicknameCondition(next.get(1))) {
                 continue;
             }
             List<String> temp = new ArrayList<>();
