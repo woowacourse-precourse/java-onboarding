@@ -64,6 +64,11 @@ public class Problem7 {
     public static List<String> getRecommendationList(List<FriendCandidate> friendCandidateList){
         List<String> recommendationList = new ArrayList<>();
 
+        for(FriendCandidate friendCandidate : friendCandidateList){
+            if(friendCandidate.getScore() > 0 && recommendationList.size()<5){
+                recommendationList.add(friendCandidate.getId());
+            }
+        }
         return recommendationList;
     }
 }
