@@ -11,9 +11,9 @@ public class Problem7 {
     private static final int FRIEND_DEPTH = 1;
     private static final int MAX_DEPTH = 2;
     private static final int STANDARD_IDX = 1;
+    private static final int MAX_RESULT_SIZE = 5;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
 
         Map<String, Integer> scoreBoard = new HashMap<>();
         List<String> userFriendList = new ArrayList<>();
@@ -21,9 +21,23 @@ public class Problem7 {
         findAcquaintance(0, user, user, friends, scoreBoard, userFriendList);
         findVisitors(visitors, userFriendList, scoreBoard);
 
-        System.out.println(scoreBoard);
+        List<String> answer = new ArrayList<>(scoreBoard.keySet());
 
-        return answer;
+        answer.sort(new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+
+                if (scoreBoard.get(o1).equals(scoreBoard.get(o2)))
+                    return o1.compareTo(o2);
+
+                return scoreBoard.get(o2).compareTo(scoreBoard.get(o1));
+            }
+        });
+        
+        if (answer.size() > MAX_RESULT_SIZE)
+            return answer.subList(0, MAX_RESULT_SIZE);
+        else
+            return answer;
     }
 
     public static void findAcquaintance(int depth, String targetUser, String findUser,
