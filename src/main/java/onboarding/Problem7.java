@@ -33,10 +33,6 @@ public class Problem7 {
         return userFriends;
     }
 
-    private static Set<String> getFriendsByUserFriend(String userFriend, Map<String, Set<String>> friendsMap) {
-        return friendsMap.get(userFriend);
-    }
-
     private static int getUserRecommendationPoint(String friend, Map<String, Integer> pointMap) {
         Set<String> users = pointMap.keySet();
         if (users.contains(friend)) {
