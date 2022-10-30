@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Problem7 {
+    private static HashMap<String, Integer> recommendScore; //추천 점수 해시맵
     private static HashMap<String, Boolean> isFriend; //user와 친구인지 판단
     private static HashMap<String, List<String>> userList; //user 리스트
 
@@ -40,6 +41,11 @@ public class Problem7 {
     }
 
     //visitors 확인하여 1점 추가
+    private static void checkVisitors(List<String> visitors){
+        for(String visitor : visitors){
+            recommendScore.put(visitor, recommendScore.getOrDefault(visitor,0)+1);
+        }
+    }
 
     //user로 부터 2번 건넌 친구들 확인하는 dfs
 }
