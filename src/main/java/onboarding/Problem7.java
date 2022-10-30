@@ -12,6 +12,10 @@ public class Problem7 {
         return answer;
     }
 
+    private static void plusVisitPoint(List<String> visitors, HashMap<String, Integer> peopleAndPointMap) {
+        visitors.forEach(visitor -> peopleAndPointMap.compute(visitor, (people, point) -> point + 1));
+    }
+
     private static void plusFriendPoint(String user, List<List<String>> friends, HashMap<String, Integer> peopleAndPointMap) {
         peopleAndPointMap.forEach((people,point) ->
             peopleAndPointMap.put(people, point + returnCommonFriendNumber(user, people, friends) * 10));
