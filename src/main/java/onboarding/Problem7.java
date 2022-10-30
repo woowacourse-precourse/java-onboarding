@@ -1,6 +1,8 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 public class Problem7 {
@@ -13,6 +15,8 @@ public class Problem7 {
             e.printStackTrace();
         }
 
+
+        HashMap friendsMap = makeFriends(friends);
 
 
         List<String> answer = Collections.emptyList();
@@ -32,6 +36,25 @@ public class Problem7 {
         if(visitors.size()<0||visitors.size()>10000) return false;
 
         return true;
+    }
+
+    private static HashMap makeFriends(List<List<String>> friends) {
+        HashMap<String, List<String>> friendsMap = new HashMap<>();
+
+        for (List<String> friend : friends) {
+            String friend1 = friend.get(0);
+            String friend2 = friend.get(1);
+
+            List<String> friend1List = friendsMap.getOrDefault(friend1, new ArrayList<String>());
+            friend1List.add(friend2);
+            friendsMap.put(friend1, friend1List);
+
+            List<String> friend2List = friendsMap.getOrDefault(friend2, new ArrayList<String>());
+            friend2List.add(friend1);
+            friendsMap.put(friend2, friend2List);
+        }
+
+        return friendsMap;
     }
 }
 
