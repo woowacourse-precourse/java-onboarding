@@ -20,8 +20,7 @@ public class Problem3 {
     public static int repeat(int number){
         int count = 0;
         for(int i=1; i<=number; i++){
-            if(checknumSYG(number) == 1)
-                count += i;
+                count += checknumSYG(i);
         }
         return count;
     }
