@@ -26,7 +26,7 @@ public class Problem7 {
         }
 
         for (List<String> friend : friends) {
-            int foundFriendIdx = 1 - friend.indexOf(findUser);
+            int foundFriendIdx = findFriendIdx(friend, findUser);
             if (foundFriendIdx == 2)
                 continue;
             else {
@@ -34,5 +34,9 @@ public class Problem7 {
                     findAcquaintance(depth + 1, targetUser, friend.get(foundFriendIdx), friends, scoreBoard);
             }
         }
+    }
+
+    public static int findFriendIdx (List<String> friend, String user) {
+        return 1 - friend.indexOf(user);
     }
 }
