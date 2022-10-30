@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Problem6 {
@@ -26,6 +27,16 @@ public class Problem6 {
             return true;
         }
         return false;
+    }
+
+    private static List<String> seperateNickName(String nickname){
+        List<String> nickNamePieces = new ArrayList<>();
+        String piece;
+        for(int i = 0; i < nickname.length()-1; i++){
+            piece = nickname.substring(i,i+2);
+            nickNamePieces.add(piece);
+        }
+        return nickNamePieces;
     }
 
     private static boolean checkNickNameLengthException(String nickName) {
