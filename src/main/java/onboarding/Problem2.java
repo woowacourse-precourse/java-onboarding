@@ -72,31 +72,6 @@ public class Problem2 {
 		return cryptogram_list;
 	}
 	//중복되는 문자의 범위를 찾는 함수
-	public static int[] findDuplication(List<Character> cryptogram_list) {
-		boolean isVisited = false;
-		int[ ] range = new int[2];
-		int lastIndex = 0;
-
-		for (int i = 0; i < cryptogram_list.size(); i++) {
-			//연속해서 중복이 된 문자의 범위를 저장함
-			if (isVisited) {
-				range[first] = i - 1;
-				range[last] = lastIndex + 1;
-				return range;
-			}
-			for (int j = i + 1; j < cryptogram_list.size(); j++) {
-				//연속해서 중복되지 않았을 때
-				if (cryptogram_list.get(i) != cryptogram_list.get(j))
-					break;
-				//연속해서 중복되었을 때
-				if (cryptogram_list.get(i) == cryptogram_list.get(j)) {
-					lastIndex = j;		//인덱스를 저장
-					isVisited = true;
-				}
-			}
-		}
-		return range;
-	}
 	public static List<Integer> findDuplicationRange(List<Character> cryptogram_list) {
 		int cnt;
 		boolean isVisited = false;
@@ -124,7 +99,25 @@ public class Problem2 {
 
 		return duplicationRange_list;
 	}
+	public static List<Character> removeWord(List<Integer> range, List<Character> cryptogram_list) {
+		boolean isVisited = false;
 
+		for (int i = 0; i < range.size(); i++) {
+			if (range.get(i) == 0)
+				continue;
+
+			for (int j = 0; j < range.get(i); j++) {
+				isVisited = true;
+				cryptogram_list.remove(i);
+			}
+			range.remove(i);
+
+			if (isVisited)
+				i--;
+		}
+
+		return cryptogram_list;
+	}
 	//대문자 있는지 확인
 	public static boolean checkUpperCase(String cryptogram) {
 		for (int i = 0; i < cryptogram.length(); i++)
