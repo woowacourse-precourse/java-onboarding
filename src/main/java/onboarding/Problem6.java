@@ -12,7 +12,6 @@ public class Problem6 {
             inputNameToMap(forms.get(i).get(1), i);
         }
         for(int i : indexList) {
-            System.out.println(i);
             answer.add(forms.get(i).get(0));
         }
         Collections.sort(answer);
