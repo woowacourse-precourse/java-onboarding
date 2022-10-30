@@ -11,8 +11,7 @@ class Problem1 {
         return (list.get(0) % 2 != 1) ||
                 (list.get(1) % 2 != 0) ||
                 (list.get(1) - list.get(0) != 1) ||
-                (list.get(1) > 400 || list.get(0) < 1) ||
-                (list.size() != 2);
+                (list.get(1) > 400 || list.get(0) < 1);
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {

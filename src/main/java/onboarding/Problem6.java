@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
 
-        List<String> arr = new ArrayList<>();
+        List<String> arr = new ArrayList<>(); // 중복된 아이디들 모아 놓은 곳
 
         for(int i = 0; i < forms.size(); i++){
             for(int j = i + 1; j < forms.size() - i; j++){
