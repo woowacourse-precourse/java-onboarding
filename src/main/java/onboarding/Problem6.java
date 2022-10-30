@@ -12,7 +12,6 @@ public class Problem6 {
         }
         answer = new ArrayList<>(emails);
         Collections.sort(answer);
-        System.out.println(answer);
         return answer;
     }
 
