@@ -49,8 +49,12 @@ public class Problem7 {
         // 점수 내림차순으로 배열
 
         answer = new ArrayList<>(map.keySet());
-        Collections.sort(answer, (value1, value2) ->
-                (map.get(value2).compareTo(map.get(value1))));
+        Collections.sort(answer, (value1, value2) -> {
+            if(map.get(value1) == map.get(value2)){
+                return value1.compareTo(value2);
+            }
+            return map.get(value2).compareTo(map.get(value1));
+        });
 
         if (answer.size() > 5) {
             answer = answer.subList(0, 5);
@@ -61,14 +65,14 @@ public class Problem7 {
     public static void main(String[] args) {
         String user = "mrko";
         List<List<String>> friends = List.of(
-                List.of("donut", "andole"),
+                List.of("mrko", "jun"),
                 List.of("donut", "jun"),
                 List.of("donut", "mrko"),
                 List.of("shakevan", "andole"),
                 List.of("shakevan", "jun"),
                 List.of("shakevan", "mrko")
         );
-        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan", "jun");
+        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
 
 
         List<String> solution = Problem7.solution(user, friends, visitors);

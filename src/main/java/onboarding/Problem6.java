@@ -19,9 +19,7 @@ public class Problem6 {
                 }
                 char[] c = forms.get(i).get(1).toCharArray();
                 for (int j = 0; j < c.length - 1; j++) {
-
                  //   temp = String.valueOf(s.charAt(j) + s.charAt(j + 1));
-
                     temp = Character.toString(c[j])+ Character.toString(c[j+1]);
 
                     if(original.contains(temp)){
