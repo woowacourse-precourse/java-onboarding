@@ -19,6 +19,23 @@ public class Problem7 {
         }
         return userFriend;
     }
+    public static Map<String,Integer> recommendScore(String user, List<List<String>> friends) {
+        List<String> userFriend = checkUserFriend(user, friends);
+        List<String> friendScoreCheck = new ArrayList<>();
+        for (int i = 0; i < friends.size(); i++) {
+            for (int j = 0; j < friends.get(i).size(); j++) {
+                String name = friends.get(i).get(j);
+                if (!user.contains(name) && !userFriend.contains(name))
+                    friendScoreCheck.add(name);
+            }
+        }
+        Set<String> set = new HashSet<String>(friendScoreCheck);
+        Map<String,Integer> score = new HashMap<>();
+        for (String str:set) {
+           score.put(str,10 * Collections.frequency(friendScoreCheck,str));
+        }
+        return score;
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
