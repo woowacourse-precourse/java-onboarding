@@ -5,4 +5,15 @@ public class Problem3 {
         int answer = 0;
         return answer;
     }
+    private static int countClap(int number){
+        String numStr = Integer.toString(number);
+        int count=0;
+        for (int i=0; i<numStr.length();i++){
+            char digit = numStr.charAt(i);
+            if (digit=='3' || digit=='6' || digit=='9'){
+                count+=1;
+            }
+        }
+        return count;
+    }
 }
