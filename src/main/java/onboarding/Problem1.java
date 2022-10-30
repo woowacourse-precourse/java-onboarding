@@ -28,7 +28,7 @@ class Problem1 {
         return answer;
     }
 
-    public static boolean FindException(int page1, int page2){
+    private static boolean FindException(int page1, int page2){
         if(page1<=1 || page1>=399){
             return false;
         }else if(page1!=page2-1){
@@ -37,7 +37,7 @@ class Problem1 {
             return true;
         }
     }
-    public static int Score(int idx){
+    private static int Score(int idx){
         int sum = 0;
         int mul = 1;
 
