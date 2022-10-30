@@ -3,21 +3,16 @@ package onboarding;
 import java.util.ArrayList;
 
 public class Problem4 {
+
     public static String solution(String word) {
         String answer = "";
 
-        ArrayList<String> upperList = new ArrayList<>();
-        ArrayList<String> lowerList = new ArrayList<>();
+        ArrayList<String> upperList = getAlphabetList(true);
+        ArrayList<String> lowerList = getAlphabetList(false);
 
-        int upperLastChar = 90;
-        int lowerLastChar = 122;
+        char[] wordArr = word.toCharArray();
 
-        for (int i = 0; i < 26; i++) {
-            upperList.add(String.valueOf((char) (upperLastChar - i)));
-            lowerList.add(String.valueOf((char) (lowerLastChar - i)));
-        }
-
-        for (char c : word.toCharArray()) {
+        for (char c : wordArr) {
             int num = (int) c;
 
             // 공백
@@ -36,5 +31,22 @@ public class Problem4 {
         }
 
         return answer;
+    }
+
+    private static ArrayList<String> getAlphabetList(boolean isUpper) {
+        ArrayList<String> res = new ArrayList<>();
+
+        int lastCharASCII = 122;
+
+        if (isUpper) {
+            lastCharASCII = 90;
+        }
+
+        for (int i = 0; i < 26; i++) {
+            String alphabet = String.valueOf((char) (lastCharASCII - i));
+            res.add(alphabet);
+        }
+
+        return res;
     }
 }
