@@ -21,3 +21,9 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능목록
+1. 각 닉네임에서 차례로 2글자 를 잘라서 map의 key로 사용하고 email을 value로 저장하는 기능을 구현한다
+2. map에 이미 해당 키워드가 존제하다면 추가 하지 않고 result 에 해당 닉네임의 이메일을 저장한다
+3. result를 반환한다
+4. 
