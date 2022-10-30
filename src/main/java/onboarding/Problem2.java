@@ -4,6 +4,7 @@ import onboarding.problem2.Problem2Validation;
 
 import javax.swing.text.html.Option;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem2 {
 
@@ -22,8 +23,8 @@ public class Problem2 {
     private static String compressOverlappingWord(String cryptogram) {
         StringBuilder afterCompressionExtractFromStack = new StringBuilder();
         Deque<Character> queue = compressStringWithDeque(cryptogram);
-        System.out.println("queue = " + queue.toString());
-        return null;
+        usingQueueMakingCompressionResult(afterCompressionExtractFromStack, queue);
+        return afterCompressionExtractFromStack.toString();
     }
 
     private static Deque<Character> compressStringWithDeque(String cryptogram) {
@@ -49,6 +50,10 @@ public class Problem2 {
         return stack;
     }
 
+    private static void addElementInStack(Deque<Character> stack, char thisTurnWordChar) {
+        stack.addLast(thisTurnWordChar);
+    }
+
     private static int findOverlappingWordCharIdx(Character stackPeekWordChar,String cryptogram, int idx) {
         while (idx < cryptogram.length()) {
             if (cryptogram.charAt(idx) == stackPeekWordChar) {
@@ -60,8 +65,14 @@ public class Problem2 {
         return idx;
     }
 
-    private static void addElementInStack(Deque<Character> stack, char thisTurnWordChar) {
-        stack.addLast(thisTurnWordChar);
+    private static void usingQueueMakingCompressionResult(StringBuilder afterCompressionExtractFromStack, Deque<Character> queue) {
+        while (true) {
+            if (!queue.isEmpty()) {
+                afterCompressionExtractFromStack.append(queue.remove());
+                continue;
+            }
+            break;
+        }
     }
 
 
