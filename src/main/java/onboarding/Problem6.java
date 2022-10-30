@@ -65,11 +65,8 @@ public class Problem6 {
 
             for (int i = 0; i < (name.length() - 1); i++) {
                 String slice = name.substring(i, i + 2);
-                if (nameStorage.containsKey(slice)) {
-                    if (!member.equals(nameStorage.get(slice))) {
-                        duplicateMemberList.add(member);
-                        duplicateMemberList.add(nameStorage.get(slice));
-                    }
+                if (isDuplicateMember(member, slice)) {
+                        saveDuplicateMember(member, slice);
                 }
             }
         }
@@ -79,6 +76,15 @@ public class Problem6 {
                     .map(o -> o.email)
                     .sorted()
                     .collect(Collectors.toList());
+        }
+
+        private boolean isDuplicateMember(Member member, String slice) {
+            return nameStorage.containsKey(slice) && !member.equals(nameStorage.get(slice));
+        }
+
+        private void saveDuplicateMember(Member member, String slice) {
+            duplicateMemberList.add(member);
+            duplicateMemberList.add(nameStorage.get(slice));
         }
     }
 
