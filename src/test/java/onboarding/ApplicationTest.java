@@ -4,10 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -324,6 +321,14 @@ class ApplicationTest {
             List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
+        @Test
+        void case2() {
+            List<List<String>> forms = List.of(
+                    List.of("jm@email.com", "제이엠")
+            );
+            List<String> result = List.of();
+            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
 
         @Test
         void separateNicknameTest() {
@@ -358,6 +363,29 @@ class ApplicationTest {
             );
             List<String> result = List.of("jason@email.com",  "mj@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
+    }
+    @Nested
+    class Problem6UnitTest{
+        @BeforeEach
+        void setUp() {
+            Problem6.nicknameEmailQ = new LinkedList<>(List.of(
+                    List.of("jmdsbfjdsfjdsfk@email.com", "제이엠"),
+                    List.of("jm@email.com1", "제이엠"),
+                    List.of("@email.com", "제이엠"),
+                    List.of("jason@email.com", "제이슨"),
+                    List.of("woniee@email.com", "워니"),
+                    List.of("mj@email.com", "엠제이")
+            ));
+        }
+
+        @Test
+        void isExistDuplicateNicknameTest() {
+            List<String> nickUnits1 = Problem6.separateNickname("차제이");
+            assertThat(Problem6.isExistDuplicateNickname(nickUnits1)).isEqualTo(true);
+
+            List<String> nickUnits2 = Problem6.separateNickname("차이제");
+            assertThat(Problem6.isExistDuplicateNickname(nickUnits2)).isEqualTo(false);
         }
     }
 
