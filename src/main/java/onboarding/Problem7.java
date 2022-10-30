@@ -13,6 +13,14 @@ public class Problem7 {
         /*System.out.println(score);*/
         calVisit(visitors, score);
 
+        // 4. 상위 5명 추출
+        for (Map.Entry<String, Integer> s : score.entrySet()) {
+            String name = s.getKey();
+            Integer value = s.getValue();
+            if (!Objects.equals(name, user) && !friendInfo.get(user).contains(name)) {
+                answer.add(name);
+            }
+        }
         return answer;
     }
     // 1. HashMap에 유저마다 친구정보 저장
