@@ -15,6 +15,17 @@ public class Problem7 {
         return answer;
     }
 
+    static void updateVisitorsScore(Map<String, Integer> scoreMap,
+        List<String> visitorsList, Set<String> removeFriendsSet) {
+
+        for (String visitor : visitorsList) {
+            if (!removeFriendsSet.contains(visitor)) {
+                putValueScore(scoreMap, visitor, 1);
+            }
+        }
+        System.out.println("scoreMap = " + scoreMap);
+    }
+
     static void updateFriendsScore(Map<String, Integer> scoreMap,
         Map<String, Set<String>> friendsMap, String user, Set<String> removeFriendsSet) {
 
