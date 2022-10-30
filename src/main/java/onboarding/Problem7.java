@@ -30,6 +30,10 @@ public class Problem7 {
             this.score += score;
         }
 
+        public void addMyFriend(String friend) {
+            this.myFriends.add(friend);
+        }
+
         public String getName() {
             return name;
         }
@@ -87,8 +91,8 @@ public class Problem7 {
                 friends.add(idx++, new Friend(friendB, 0));
             }
 
-            friends.get(numberOfFriends.get(friendA)).getMyFriends().add(friendB);
-            friends.get(numberOfFriends.get(friendB)).getMyFriends().add(friendA);
+            friends.get(numberOfFriends.get(friendA)).addMyFriend(friendB);
+            friends.get(numberOfFriends.get(friendB)).addMyFriend(friendA);
         }
 
         for (String visitor : visitors) {
