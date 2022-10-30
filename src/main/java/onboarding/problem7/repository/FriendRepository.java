@@ -14,6 +14,10 @@ public class FriendRepository {
         this.members = new TreeSet<>();
     }
 
+    public static FriendRepository of(String user) {
+        return new FriendRepository(user);
+    }
+
     public void save(Member member) {
         if (member.getName().equals(user)) {
             return;
@@ -50,11 +54,11 @@ public class FriendRepository {
                 .collect(Collectors.toList());
     }
 
-    public String getUser() {
-        return user;
+    public boolean isMemberAlreadyFriend(Member member) {
+        return findByIsAlreadyFriend(true).contains(member);
     }
 
-    public static FriendRepository of(String user) {
-        return new FriendRepository(user);
+    public String getUser() {
+        return user;
     }
 }

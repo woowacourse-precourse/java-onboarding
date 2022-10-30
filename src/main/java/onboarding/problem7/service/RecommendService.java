@@ -12,22 +12,27 @@ public class RecommendService {
         this.friendRepository = friendRepository;
     }
 
-    public List<String> recommendFriends(List<List<String>> friends, List<String> visitors) {
-        friends.forEach(
-                relation -> relation.forEach(friend -> {
-                    if (relation.contains(friendRepository.getUser())) {
-                        friendRepository.save(Member.ofAlreadyFriend(friend));
-                    } else {
-                        friendRepository.save(Member.of(friend));
-                    }
-                })
-        );
-        visitors.forEach(visitor -> friendRepository.save(Member.of(visitor)));
-
-        analyzeRelations(friends);
+    public List<String> recommendFriends(List<List<String>> members, List<String> visitors) {
+        saveAllMembers(members, visitors);
+        analyzeRelations(members);
         analyzeVisitors(visitors);
 
         return friendRepository.findAllNameSortByScoreNot0DescNameAsc();
+    }
+
+    private void saveAllMembers(List<List<String>> friends, List<String> visitors) {
+        friends.forEach(relation -> saveMembersAnalyzingRelation(relation));
+        visitors.forEach(visitor -> friendRepository.save(Member.of(visitor)));
+    }
+
+    private void saveMembersAnalyzingRelation(List<String> relation) {
+        relation.forEach(member -> {
+            if (relation.contains(friendRepository.getUser())) {
+                friendRepository.save(Member.ofAlreadyFriend(member));
+            } else {
+                friendRepository.save(Member.of(member));
+            }
+        });
     }
 
     private void analyzeVisitors(List<String> visitors) {
@@ -37,13 +42,15 @@ public class RecommendService {
     }
 
     private void analyzeRelations(List<List<String>> friends) {
-        friends.forEach(relation -> {
-            List<Member> alreadyFriend = friendRepository.findByIsAlreadyFriend(true);
-            if (alreadyFriend.contains(Member.of(relation.get(0))) || alreadyFriend.contains(Member.of(relation.get(1)))) {
-                        relation.forEach(friend -> friendRepository.findByName(friend)
-                                .ifPresent(member -> member.addScore(10)));
-                    }
-                }
-        );
+        friends.forEach(relation -> analyzeRelation(relation));
+    }
+
+    private void analyzeRelation(List<String> relation) {
+        if (friendRepository.isMemberAlreadyFriend(Member.of(relation.get(0)))
+                || friendRepository.isMemberAlreadyFriend(Member.of(relation.get(1)))
+        ) {
+            relation.forEach(member -> friendRepository.findByName(member)
+                    .ifPresent(friend -> friend.addScore(10)));
+        }
     }
 }
