@@ -26,18 +26,15 @@ public class Problem7 {
 
     private static void createUserInFriends(List<List<String>> friends, String user) {
         for (List<String> friendship : friends) {
-            if(!friendship.contains(user)) {
-
+            if (!friendship.contains(user)) {
                 friendship.forEach(friend -> {
                     User findUser = users.findUserByName(friend);
                     findUser.addFriendScore();
                 });
                 continue;
             }
-
             addUserFriends(friendship, user);
         }
-
         checkUserFriends();
     }
 
@@ -58,7 +55,7 @@ public class Problem7 {
     }
 
     private static void checkUserFriends() {
-        if(!isFriendsExist) {
+        if (!isFriendsExist) {
             users = new Users();
         }
     }
