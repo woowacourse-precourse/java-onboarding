@@ -1,6 +1,9 @@
 package onboarding;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /*
 * 1. 닉네임의 2글자로 구성된 부분이름을 key,중복없이 이메일을 저장하는 Set 을 value 로 갖는 Map 생성
@@ -11,8 +14,10 @@ import java.util.List;
 */
 
 public class Problem6 {
+    private static Map<String, Set<String>> map;
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        map = new HashMap<>();
+
+        return List.of();
     }
 }
