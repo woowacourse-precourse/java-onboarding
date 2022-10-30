@@ -1,4 +1,4 @@
-package onboarding.Prombem6;
+package onboarding.problem6;
 
 public class Email {
     private String LOWER_ALPHABET_AND_NUMBER_REGEX = "^[a-z0-9]*$";

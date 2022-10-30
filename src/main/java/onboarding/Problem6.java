@@ -1,15 +1,14 @@
 package onboarding;
 
-import onboarding.Prombem6.Crew;
-import onboarding.Prombem6.Email;
-import onboarding.Prombem6.NicknameDuplicateFinder;
+import onboarding.problem6.Crew;
+import onboarding.problem6.Email;
+import onboarding.problem6.NicknameDuplicateFinder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) throws Exception {

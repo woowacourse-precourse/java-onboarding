@@ -1,4 +1,4 @@
-package onboarding.Prombem6;
+package onboarding.problem6;
 
 import java.util.regex.Pattern;
 
