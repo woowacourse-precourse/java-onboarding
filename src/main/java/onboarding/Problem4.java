@@ -8,7 +8,7 @@ public class Problem4 {
      * @return : String, 청개구리의 말
      */
     public static String solution(String word) {
-        String answer = "";
+        String answer = changeWord(word);
         return answer;
     }
 
