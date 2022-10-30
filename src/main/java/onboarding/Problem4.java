@@ -36,6 +36,10 @@ public class Problem4 {
 
     public static String solution(String word) {
         String answer = "";
+        if (checkParam(word))
+            return "";
+        for (int i=0; i<word.length(); i++)
+            answer += changeWord(word.charAt(i));
         return answer;
     }
 }
