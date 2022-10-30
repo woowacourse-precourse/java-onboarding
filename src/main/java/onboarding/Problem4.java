@@ -14,4 +14,13 @@ public class Problem4 {
         String reverseSentence = joinCharactersInArrayList(reverseCharacterList);
         return reverseSentence;
     }
+
+    static ArrayList<Character> convertStringToArrayList(String sentence) {
+        char[] characterArray = sentence.toCharArray();
+        ArrayList<Character> characterList = new ArrayList<>();
+        for (char character: characterArray) {
+            characterList.add(character);
+        }
+        return characterList;
+    }
 }
