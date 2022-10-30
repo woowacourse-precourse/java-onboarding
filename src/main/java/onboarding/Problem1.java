@@ -13,8 +13,19 @@ class Problem1 {
         int pobiMaxValue = getMaxValue(pobi);
         int crongMaxValue = getMaxValue(crong);
 
-        return 0;
+        return getResult(pobiMaxValue, crongMaxValue);
     }
+
+    private static int getResult(int pobi, int crong) {
+        if (pobi < crong){
+            return 2;
+        } else if (pobi > crong){
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
     public static  int getMaxValue(List<Integer> list){
         List<Integer> maxValue = new ArrayList<>();
         for (Integer el: list){
@@ -36,11 +47,8 @@ class Problem1 {
         int rightPage = list.get(1);
         int insub = rightPage - leftPage;
 
-        if ((insub == 1)&&(leftPage%2 == 1) && (rightPage % 2 == 0)){
-            return 1;
-        }
+        if ((insub == 1) && (leftPage%2 == 1) && (rightPage % 2 == 0)) return 1;
 
         return -1;
     }
-
 }
