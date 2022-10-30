@@ -583,6 +583,7 @@ class ApplicationTest {
     List<String> result = List.of("abcdef", "bcho", "chanwjeo", "ejachoi", "sungwoop");
     assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
   }
+
   @Test
   void casebcho() {
     String user = "mrko";

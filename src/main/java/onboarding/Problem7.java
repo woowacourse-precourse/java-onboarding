@@ -181,8 +181,12 @@ public class Problem7 {
     ValidatorPro7 validator = new ValidatorPro7(user, friends, visitors);
     RelationPro7 relation = new RelationPro7(user, friends, visitors);
     RelationPro7.removeMutual(user, relation, new ScorePro7(user, relation, visitors));
-    return new ArrayList<>(ScorePro7.getScoreList().keySet())
+
+    System.out.println("ScorePro7.getScoreList().keyset() = " + ScorePro7.getScoreList().keySet());
+
+    return ScorePro7.getScoreList().keySet()
         .stream()
+        .sorted((Comparator.naturalOrder()))
         .sorted(((o1, o2) -> ScorePro7.getScoreList().get(o2)
             .compareTo(ScorePro7.getScoreList().get(o1))))
         .limit(5).collect(Collectors.toList());
