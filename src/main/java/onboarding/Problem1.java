@@ -11,24 +11,21 @@ class Problem1 {
             return -1;
         }
 
-        //List 는 index 라는 개념이 없음 그래서 get 으로 받아와야!
-        int pobiScore=Math.max(calculate(pobi.get(0)),calculate(pobi.get(1)));
-        int crongScore=Math.max(calculate(crong.get(0)),calculate(crong.get(1)));
+        int pobiScore=Math.max(calculateAndCompare(pobi.get(0)), calculateAndCompare(pobi.get(1)));
+        int crongScore=Math.max(calculateAndCompare(crong.get(0)), calculateAndCompare(crong.get(1)));
 
         if (pobiScore==crongScore) return 0;
-        if (pobiScore>crongScore) return 1;
-        // if pobiScore<crongScore
-        return 2;
+        else if (pobiScore>crongScore) return 1;
+        else return 2;
 
     }
-    public static int calculate(int num){
-        //각 자리의 수를 배열로 만들어 줌
-        int[] digit= Stream.of(String.valueOf(num).split("")).mapToInt(Integer::parseInt).toArray();
-        // feat sum
+    public static int calculateAndCompare(int num){
+        int[] digit= Stream.of(String.valueOf(num).split(""))
+                        .mapToInt(Integer::parseInt)
+                        .toArray();
+
         int sum= Arrays.stream(digit).sum();
-        // feat multiply
-        int mul=1;
-        for (int j : digit) mul *= j;
+        int mul= Arrays.stream(digit).reduce(1,(a,b)->a*b);
 
         return Math.max(sum,mul);
     }
