@@ -11,6 +11,6 @@
 ## 📌 리팩토링 목록
 
 - checkAlpha(), checkUpper(), checkLower() 정규 표현식으로 변경하기
+- 정규표현식을 사용하면서 발생한 불필요한 형변환 최소화하기
 - makeAnswer() indent 줄이기
 - makeAnswer() else문 제거하기
-- 
