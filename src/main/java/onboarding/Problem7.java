@@ -25,6 +25,7 @@ public class Problem7 {
 
         for (List<String> friendPair : friends) {
             String someone = pickAnotherOne(friendPair, user);
+
             if (!(someone.equals(""))) {
                 result.add(someone);
             }
@@ -52,9 +53,9 @@ public class Problem7 {
         }
     }
     /* 방문자 List를 순회하면서 그 사람의 점수를 1점씩 올려주고 Map에 기록하는 메서드 */
-    private static void recordVisitorScore(Map<String, Integer> scores, List<String> visitors, String user) {
+    private static void recordVisitorScore(Map<String, Integer> scores, List<String> visitors) {
         for (String visitor : visitors) {
-            incrementScore(scores, user, 1);
+            incrementScore(scores, visitor, 1);
         }
     }
 
