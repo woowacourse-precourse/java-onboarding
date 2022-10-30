@@ -7,4 +7,8 @@ public class Problem6 {
         List<String> answer = List.of("answer");
         return answer;
     }
+
+    private static String returnBiliteralSubstring(String nickname, int index) {
+        return nickname.substring(index, index+2);
+    }
 }
