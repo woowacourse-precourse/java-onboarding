@@ -10,6 +10,45 @@ public class Forms {
         this.forms = forms;
     }
 
+    private void checkConsecutiveCharacter(CheckDto checkDto) {
+        boolean stop = false;
+        for (int j = 0; j < getNickname(checkDto.getIndex()).length(); j++) {
+            stop = canCheck(checkDto, stop, j);
+        }
+    }
+
+    private boolean canCheck(CheckDto checkDto, boolean stop, int index) {
+        if (!stop) {
+            stop = check(checkDto, stop, index);
+        }
+        return stop;
+    }
+
+    private boolean check(CheckDto checkDto, boolean stop, int start) {
+        String nickname = getNickname(checkDto.getIndex());
+        for (int k = start + 1; k < nickname.length(); k++) {
+            KeyDto keyDto = new KeyDto(nickname, start, k);
+            stop = canDuplication(checkDto, stop, keyDto);
+        }
+        return stop;
+    }
+
+    private boolean canDuplication(CheckDto checkDto, boolean stop, KeyDto keyDto) {
+        if (isDuplication(checkDto, stop, keyDto)) {
+            checkDto.getEmails().add(getEmail(checkDto.getIndex()));
+            stop = true;
+        }
+        return stop;
+    }
+
+    private boolean isDuplication(CheckDto checkDto, boolean stop, KeyDto keyDto) {
+        return !stop && checkDto.getCount().get(getKey(keyDto)) >= 2;
+    }
+
+    private String getEmail(int index) {
+        return forms.get(index).get(0);
+    }
+
     private Map<String, Integer> saveConsecutiveCharacter() {
         HashMap<String, Integer> count = new HashMap<>();
 
@@ -29,7 +68,7 @@ public class Forms {
 
     private void count(HashMap<String, Integer> count, String nickname, int start) {
         for (int k = start + 1; k < nickname.length(); k++) {
-            addCount(count, getKey(nickname, start, k));
+            addCount(count, getKey(new KeyDto(nickname, start, k)));
         }
     }
 
@@ -37,8 +76,8 @@ public class Forms {
         count.put(key, count.getOrDefault(key, 0) + 1);
     }
 
-    private String getKey(String nickname, int start, int k) {
-        return nickname.substring(start, k + 1);
+    private String getKey(KeyDto keyDto) {
+        return keyDto.getNickname().substring(keyDto.getStart(), keyDto.getEnd() + 1);
     }
 
     private String getNickname(int index) {
