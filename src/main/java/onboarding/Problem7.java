@@ -49,8 +49,15 @@ public class Problem7 {
         return Arrays.stream(array)
                 .flatMap(o -> o instanceof Object[]? flattenStream((Object[])o): Stream.of(o));
     }
+
     static Object[] flattenArray(Object[] array) {
         return flattenStream(array).toArray();
+    }
+
+    static Object[] dropDuplicate(Object[] array) {
+        LinkedHashSet<Object> linkedHashSet = new LinkedHashSet<>(Arrays.asList(array));
+        Object[] strArrayWithoutDuplicates = linkedHashSet.toArray(new Object[] {});
+        return strArrayWithoutDuplicates;
     }
 }
 
