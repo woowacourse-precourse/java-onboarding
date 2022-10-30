@@ -8,6 +8,7 @@ public class Validation {
 
     public static boolean isValidPage(List<Integer> list) {
         boolean result = true;
+
         Integer left = list.get(0);
         Integer right = list.get(1);
 
@@ -15,7 +16,7 @@ public class Validation {
             result = (isPositiveNumber(integer) && !isPageBothEnds(integer));
         }
 
-        if(!isOdd(left) || !isEven(right) || !isContinuousNumber(left, right)) {
+        if (!isOdd(left) || !isEven(right) || !isContinuousNumber(left, right)) {
             result = false;
         }
 

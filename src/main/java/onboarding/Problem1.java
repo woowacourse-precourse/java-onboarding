@@ -10,7 +10,7 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = 0;
 
-        if(!isValidPage(pobi) || !isValidPage(crong)) {
+        if (!isValidPage(pobi) || !isValidPage(crong)) {
             return -1;
         }
 
@@ -35,11 +35,11 @@ class Problem1 {
     }
 
     public static Integer getAnswer(int pobiResult, int crongResult) {
-        if(pobiResult > crongResult) {
+        if (pobiResult > crongResult) {
             return 1;
         }
 
-        if(pobiResult < crongResult) {
+        if (pobiResult < crongResult) {
             return 2;
         }
 

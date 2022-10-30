@@ -7,7 +7,7 @@ public class Calculation {
     public static List<Integer> splitDigits(Integer integer) {
         List<Integer> splitList = new ArrayList<>();
 
-        while(integer > 0) {
+        while (integer > 0) {
             splitList.add(integer % 10);
             integer /= 10;
         }
