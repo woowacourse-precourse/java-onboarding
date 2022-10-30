@@ -25,6 +25,10 @@ public class Problem7 {
         Persons() {
             personMap = new HashMap<>();
         }
+
+        boolean exists(String name) {
+            return personMap.containsKey(name);
+        }
     }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
