@@ -12,6 +12,14 @@ public class Problem4 {
 			return null;
 		}
 
+		public static char reverseLowerCase(char cur) {
+			return (char)('a' + 'z' - cur);
+		}
+
+		public static char reverseUpperCase(char cur) {
+			return (char)('A' + 'Z' - cur);
+		}
+
 		public static boolean isLowerCaseAlphabet(char cur) {
 			return 'a' <= cur && cur <= 'z';
 		}
