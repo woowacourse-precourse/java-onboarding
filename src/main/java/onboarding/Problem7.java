@@ -66,8 +66,8 @@ class ValidatorPro7 {
   public static void validateVisitors(List<String> visitors) {
     if (visitors.size() < MIN_VISITORS_SIZE || visitors.size() > MAX_VISITORS_SIZE) {
       throw new IllegalArgumentException(
-          "Visitors is a list/array of length " + MIN_VISITORS_SIZE + " to " + MAX_VISITORS_SIZE
-              + ".");
+          "Visitors is a list/array of length " + MIN_VISITORS_SIZE + " to "
+              + MAX_VISITORS_SIZE + ".");
     }
   }
 }
