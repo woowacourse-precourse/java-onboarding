@@ -43,6 +43,21 @@ public class Problem7 {
         }
         return false;
     }
+
+    static void recordVisitorList(List<String> visitors, User user, Others others) {
+        visitors.stream().forEach(visitor -> {
+            recordVisitor(visitor, user, others);
+        });
+    }
+
+    static String recordVisitor(String visitor, User user, Others others) {
+        boolean isFriendOfUser = user.checkIsFriendOfUser(visitor);
+        if (isFriendOfUser) {
+            return "Friend of user";
+        }
+        others.recordVisitor(visitor);
+        return "Just visitor";
+    }
 }
 
 class User {
@@ -126,6 +141,12 @@ class Others {
         Other other = new Other(otherName, 0);
         this.othersList.add(other);
         return "new other";
+    }
+
+    void recordVisitor(String visitor) {
+        this.addOther(visitor);
+        int pointForVisitor = Point.Visitor.getPoint();
+        this.addPoint(visitor, pointForVisitor);
     }
 
     boolean checkIsRegisteredOther(String otherName) {
