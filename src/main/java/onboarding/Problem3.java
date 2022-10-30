@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Problem3 {
@@ -18,9 +17,8 @@ public class Problem3 {
     }
 
     private static int claps(int number) {
-        return Arrays.stream(String.valueOf(number).split(SPACE))
+        return (int) Arrays.stream(String.valueOf(number).split(SPACE))
                 .filter(clapNumbers::contains)
-                .collect(Collectors.toList())
-                .size();
+                .count();
     }
 }
