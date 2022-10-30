@@ -11,6 +11,8 @@ public class Problem6 {
     private static final int EMAIL_MIN_LENGTH = 11;
     private static final int EMAIL_MAX_LENGTH = 20;
     private static final String DOMAIN = "email.com";
+    private static final int NICKNAME_MIN_LENGTH = 1;
+    private static final int NICKNAME_MAX_LENGTH = 20;
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
@@ -74,6 +76,17 @@ public class Problem6 {
     public static boolean checkNicknameConsistOfHangul(List<String> nicknames) {
         for (String nickname : nicknames) {
             if (!nickname.matches("^[가-힣]")) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    // nickname의 길이가 1이상 20미만인지 검증하는 기능
+    public static boolean checkNicknameLength(List<String> nicknames) {
+        for (String nickname : nicknames) {
+            if (!(NICKNAME_MIN_LENGTH <= nickname.length()
+                && nickname.length() < NICKNAME_MAX_LENGTH)) {
                 return false;
             }
         }
