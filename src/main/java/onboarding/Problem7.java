@@ -31,6 +31,7 @@ public class Problem7 {
 
     private static List<String> sortNameByScore(){
         return scoreToUser.entrySet().stream()
+                .sorted(Map.Entry.comparingByKey())
                 .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
                 .map(Map.Entry::getKey)
                 .limit(5)
