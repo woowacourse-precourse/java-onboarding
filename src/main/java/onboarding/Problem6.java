@@ -20,7 +20,9 @@ public class Problem6 {
         // 글자가 연속적으로 포함 되는 닉네임을 작성한 지원자의 이메일 목록
         Set<String> emailSet = getEmailSetWithDuplicatedName(emailToNameMap);
 
-        List<String> answer = List.of("answer");
+        // 오름차순 정렬한 리스트 반환
+        List<String> answer = sortListByAsc(emailSet);
+
         return answer;
     }
 
@@ -50,5 +52,10 @@ public class Problem6 {
                 });
 
         return emailSet;
+    }
+
+    // 리스트를 오름차순 정렬하는 메서드
+    public static List<String> sortListByAsc(Set<String> list) {
+        return list.stream().sorted().collect(Collectors.toList());
     }
 }
