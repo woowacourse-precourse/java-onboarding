@@ -5,4 +5,16 @@ public class Problem4 {
         String answer = "";
         return answer;
     }
+
+    private static char convertAlphabet(char c){
+
+    }
+
+    private static boolean isUpper(char c){
+
+    }
+
+    private static boolean isAlphabet(char c){
+
+    }
 }
