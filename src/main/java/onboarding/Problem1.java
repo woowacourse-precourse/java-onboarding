@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
@@ -16,6 +17,15 @@ class Problem1 {
         // 분리가 된 자릿수를 곱하는 기능
         int multi(List<Integer> nums){
             return (int) nums.stream().reduce((x,y)->x*y).stream().toArray()[0];
+        }
+        // 한 쪽 페이지의 숫자에 대하여 자릿수를 하나씩 리스트에 집어넣어 리턴하는 기능
+        List<Integer> divPage(Integer pages){
+            String s=Integer.toString(pages);
+            List<Integer> result=new ArrayList<>();
+            for (int i = 0; i < s.length(); i++) {
+                result.add(Integer.parseInt(s.substring(i,i+1))); // 자릿수를 하나씩 리스트에 추가
+            }
+            return result;
         }
     }
 }
