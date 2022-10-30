@@ -44,7 +44,7 @@ public class Problem7 {
 
         System.out.println("Before Sorting: " + score);
         // sort score by value
-        score = getSortedScore(score);
+        score = sortMapByValue(score);
         System.out.println("After Sorting: " + score);
 
         List<String> answer =   new ArrayList<>();
@@ -62,13 +62,27 @@ public class Problem7 {
         return answer;
     }
 
-    private static HashMap<String, Integer> getSortedScore(HashMap<String, Integer> unsortedScore) {
-        HashMap<String, Integer> sortedScore = new HashMap<>();
-        unsortedScore.entrySet()
-                .stream()
-                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
-                .forEachOrdered(x -> sortedScore.put(x.getKey(), x.getValue()));
-        return sortedScore;
+    private static HashMap<String, Integer> sortMapByValue(HashMap<String, Integer> map) {
+
+        // Create a list from elements of HashMap
+        List<Map.Entry<String, Integer> > list = new LinkedList<Map.Entry<String, Integer> >(map.entrySet());
+
+        // Sort the list
+        Collections.sort(list, new Comparator<Map.Entry<String, Integer> >() {
+            public int compare(Map.Entry<String, Integer> o1,
+                               Map.Entry<String, Integer> o2)
+            {
+                return (o2.getValue()).compareTo(o1.getValue());
+            }
+        });
+
+        // put data from sorted list to hashmap
+        HashMap<String, Integer> res = new LinkedHashMap<String, Integer>();
+        for (Map.Entry<String, Integer> aa : list) {
+            res.put(aa.getKey(), aa.getValue());
+        }
+
+        return res;
     }
 
     private static HashSet<String> getAllUsers(List<List<String>> friends, List<String> visitors) {
