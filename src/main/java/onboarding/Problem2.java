@@ -20,4 +20,21 @@ public class Problem2 {
             return false;
         }
     }
+
+    private static String removeDuplicate(String cryptogram){
+        String result="";
+        for(int i=0;i<cryptogram.length()-1;i++){
+            if(isDuplicate(cryptogram.charAt(i),cryptogram.charAt(i+1))){
+                flag=1;
+            }else{
+                if(isDuplicateLastChar()){
+                    flag=0;
+                }else{
+                    result+=cryptogram.charAt(i);
+                    flag=0;
+                }
+            }
+        }
+        return result+'*';
+    }
 }
