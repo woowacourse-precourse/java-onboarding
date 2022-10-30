@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem6 {
@@ -54,6 +51,14 @@ public class Problem6 {
             }
         }
         return result;
+    }
+
+    /**
+     * @param doubleList : 2차원 문자열 리스트
+     * @return 2차원 리스트를 평탄화해 1차원 리스트로 합쳐 반환
+     */
+    private static List<String> getFlatList(List<List<String>> doubleList){
+        return doubleList.stream().flatMap(Collection::stream).collect(Collectors.toList());
     }
 
 
