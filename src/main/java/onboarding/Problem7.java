@@ -60,4 +60,10 @@ public class Problem7 {
         }
         return friendsOfUserFriends;
     }
+
+    private static void friendsOfUserFriendsAddScore(List<String> friendsOfUserFriends) {
+        friendsOfUserFriends.forEach(friendOfUserFriends -> {
+            friendRecommendScoreMap.put(friendOfUserFriends, friendRecommendScoreMap.get(friendOfUserFriends) + 10);
+        });
+    }
 }
