@@ -17,7 +17,18 @@ class Problem1 {
             return EXCEPTION;
         }
 
+        answer = getWinner(getMaxScore(pobi), getMaxScore(crong));
         return answer;
+    }
+
+    private static int getWinner(int pobiScore, int crongScore){
+        if (pobiScore > crongScore){
+            return POBI_WIN;
+        } else if (pobiScore < crongScore){
+            return CRONG_WIN;
+        } else{
+            return DRAW;
+        }
     }
 
     private static int getMaxScore(List<Integer> book) {
