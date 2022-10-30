@@ -51,4 +51,22 @@ public class Problem6 {
         return false;
     }
 
+    //유사하다고 판단되는 닉네임을 가진 사람의 이메일을 리스트에 추가하는 함수
+    public static List<String> addEmail(List<List<String>> forms, List<String> emailList) {
+        int length = forms.size();
+        for (int i = 0; i < length-1; i++) {
+            String currentNick = getNickname(forms, i);
+            for (int j = i + 1; j < length; j++) {
+                if(getDuplicate(forms,j,currentNick)){
+                    String currentEmail = forms.get(i).get(0);
+                    emailList.add(currentEmail);
+                    String nextEmail = forms.get(j).get(0);
+                    emailList.add(nextEmail);
+                }
+            }
+        }
+
+        return emailList;
+    }
+
 }
