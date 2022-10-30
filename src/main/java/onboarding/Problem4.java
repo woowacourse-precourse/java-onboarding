@@ -35,20 +35,18 @@ public class Problem4 {
 class Dictionary {
 
     static char getReverseCharacter(char character) {
-        int ascii = character;
-        int reverseAscii = getReverseByAscii(ascii);
-        char reverseCharacter = (char) reverseAscii;
+        char reverseCharacter = getReverseByAscii(character);
         return reverseCharacter;
     }
 
-    static int getReverseByAscii(int ascii) {
-        int reverseAscii = ascii;
-        if (ascii >= 65 && ascii <= 90) {
-            reverseAscii = 90 - (ascii - 65);
+    static char getReverseByAscii(char character) {
+        char reverseCharacter = character;
+        if ('a' <= character && character <= 'z') {
+            reverseCharacter = (char)('a' + 'z' - character);
         }
-        if (ascii >= 97 && ascii <= 122) {
-            reverseAscii = 122 - (ascii - 97);
+        if ('A' <= character && character <= 'Z') {
+            reverseCharacter = (char)('A' + 'Z' - character);
         }
-        return reverseAscii;
+        return reverseCharacter;
     }
 }
