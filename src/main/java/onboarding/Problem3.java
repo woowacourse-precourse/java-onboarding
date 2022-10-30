@@ -1,85 +1,96 @@
 package onboarding;
 
 public class Problem3 {
-    public static String numberString="6389";
     public static int solution(int number) {
         int answer = 0;
+
+        answer += countClapOnThousandsPlace(number);
+        answer += countClapOnHundredsPlace(number);
+        answer += countClapOnTensPlace(number);
+        answer +=countClapOnOnesPlace(number);
+
         return answer;
     }
 
-    public static int checkClapCountByDigit(int digit, int digitNumber) {
-        int leftDigits = calculateLeftDigits(digit);
-        int possibleNumbers = calculatePossibleNumbers(leftDigits);
-
-        int countForDigit = count369InDigitNumber(digitNumber);
-        if(countForDigit == 0) {
-            //이번 자리수에 369가 올 수 없다면
-            return 0;
-        }
-
-        //한 자리 숫자라면
-        if(possibleNumbers == 0) {
-            return countForDigit;
-        }
-        return possibleNumbers*countForDigit;
-    }
-
-    // 자릿수, 숫자 기반으로 최대 숫자 체크
-    public static int checkMaxNumberClapCount(int digit, int digitNumber){
-        int nextDigit = digit+1;
-        int nextDigitNumber = numberString.charAt(nextDigit) - '0'; //다음 자릿수 기반 최대 숫자 연산
-        int countForNextDigit = count369InDigitNumber(nextDigitNumber);
-        int countForDigit = digitNumber%3 ==0 ? 1 : 0;
-
-        int leftDigits = calculateLeftDigits(nextDigit);
-        int possibleNumbers = 1;
-        if (leftDigits!=0) {
-            possibleNumbers = calculatePossibleNumbers(leftDigits);
-        }
-
-        if(countForDigit == 0) {
-            if(countForNextDigit == 0) {
-                return 0;
+    private static int countClapOnThousandsPlace(int number) { //천의 자리 숫자가 파라미터
+        //천의 자리 수에 대한 계산
+        int thousandsCount = 0;
+        for (int i = 3 ; i <= 9 ; i+=3) {
+            //3, 6, 9 에 대해 테스트
+            int thisNumber = i*1000+999; //3999, 6999, 9999
+            if(thisNumber <= number) {
+                thousandsCount+=1000;
+                continue;
             }
-            if(leftDigits == 0) {
-                //뒤에 더 자리 없을 때
-                return countForNextDigit;
+            //작지 않고, 천의 자리 숫자가 3, 6, 9 중 하나라면 (ex. number == 6645, thisNumber == 6999 -> 625번 천의 자리가 '6'이므로 박수치게 됨)
+            if(number/1000 == i) {
+                int possibleCount = number%1000;
+                thousandsCount+=(possibleCount+1);
             }
-            return possibleNumbers*countForNextDigit;
+            break;
         }
+        return thousandsCount;
+    }
 
-        if(countForNextDigit == 0) {
-            if(leftDigits == 0) {
-                return countForDigit;
+    private static int countClapOnHundredsPlace(int number) {
+        int hundredsCount = 0;
+        int thisNumber;
+        for (int i = 3; i <= 9 ; i+=3) {
+            int thousandsPlace;
+            for(thousandsPlace = 0; thousandsPlace <= 9; thousandsPlace++) {
+                thisNumber = thousandsPlace*1000 + i*100 + 99;
+                if(thisNumber <= number) {
+                    hundredsCount+=100;
+                    continue;
+                }
+                //thisNumber > number (ex. number == 6645, thisNumber == 6699)
+                if (thisNumber/100==number/100) {
+                    hundredsCount+=(number%100+1);
+                }
+               // (ex. number == 6645, thisNumber == 7399) -> 0699, 1699, ... 로 넘어가야함
+                break;
             }
-            return possibleNumbers*countForDigit;
         }
-
-        if(leftDigits == 0) {
-            return countForDigit*countForNextDigit;
-        }
-
-        return possibleNumbers*countForDigit*countForNextDigit;
+        return hundredsCount;
     }
 
-    private static int count369InDigitNumber(int digitNumber) {
-        if(digitNumber>=9) {
-            return 3;
+    private static int countClapOnTensPlace(int number) {
+        int tensCount = 0;
+        int thisNumber;
+        for (int i = 3; i <= 9 ; i+=3) {
+            int thousandHundredsPlace;
+            for(thousandHundredsPlace = 0; thousandHundredsPlace <= 99; thousandHundredsPlace++) {
+                thisNumber = thousandHundredsPlace*100 + i*10 + 9;
+                if(thisNumber <= number) {
+                    tensCount+=10;
+                    continue;
+                }
+                //ex. number == 6639, thisNumber == 6645
+                if (thisNumber/10 == number/10) {
+                    tensCount+=(number%10+1);
+                }
+                break;
+            }
         }
-        if(digitNumber>=6) {
-            return 2;
-        }
-        if(digitNumber>=3){
-            return 1;
-        }
-        return 0;
+        return tensCount;
     }
 
-    private static int calculateLeftDigits(int digit) {
-        return numberString.length() - (digit + 1);
+    private static int countClapOnOnesPlace(int number) {
+        int onesCount = 0;
+        int thisNumber;
+        int maxTensPlace = number/10;
+        for (int i = 3; i <= 9 ; i+=3) {
+            int thousandHundredTensPlace;
+            for(thousandHundredTensPlace = 0; thousandHundredTensPlace <= 999; thousandHundredTensPlace++) {
+                thisNumber = thousandHundredTensPlace*10 + i;
+                if(thisNumber <= number) {
+                    onesCount+=1;
+                    continue;
+                }
+                break;
+            }
+        }
+        return onesCount;
     }
 
-    private static int calculatePossibleNumbers(int leftDigits) {
-        return (int)Math.pow(10, leftDigits);
-    }
 }
