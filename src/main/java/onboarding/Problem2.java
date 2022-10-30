@@ -5,11 +5,7 @@ import java.util.Stack;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-
-        answer = decryption(cryptogram);
-
-        return answer;
+        return decryption(cryptogram);
     }
 
     private static String decryption(String cipher) {
