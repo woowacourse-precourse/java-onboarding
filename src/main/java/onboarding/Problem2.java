@@ -1,6 +1,6 @@
 package onboarding;
 class StringOperation {
-    boolean isSameString(char previous, char next) {
+    boolean isSameAlphabet(char previous, char next) {
         return previous == next;
     }
 }
