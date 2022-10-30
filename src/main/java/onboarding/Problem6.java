@@ -17,8 +17,11 @@ public class Problem6 {
     private static final int NICKNAME_MAX_LENGTH = 20;
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        if(!checkFormValidation(forms)) {
+            throw new IllegalArgumentException("[error] 잘못된 forms를 입력하셨습니다.");
+        }
+        List<String> answer = getEmailListOfOverlapedNickname(forms);
+        return sortEmailList(answer);
     }
 
     // forms에서 email 리스트를 추출하는 기능
