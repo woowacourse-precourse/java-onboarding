@@ -10,7 +10,7 @@ public class Problem5 {
 
         List<Integer> moneyTypes = makeMoneyTypes();
 
-        List<Integer> result = getMoneyIngredients(money, moneyTypes);
+        answer = getMoneyIngredients(money, moneyTypes);
 
         return answer;
     }

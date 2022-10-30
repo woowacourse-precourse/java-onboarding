@@ -46,4 +46,11 @@ class Problem5Test {
         //then
         assertThat(result).containsExactly(0, 1, 1, 0, 0, 0, 0, 0, 0);
     }
+
+    @Test
+    void case1() {
+        int money = 66_661;
+        List<Integer> result = List.of(1, 1, 1, 1, 1, 1, 1, 1, 1);
+        assertThat(Problem5.solution(money)).isEqualTo(result);
+    }
 }
