@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -13,16 +14,17 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> friendsOfUser = findFriendsByUser(user, friends);
-        excludeFriendsFromVisitors(visitors, friendsOfUser);
         Map<String, Integer> recommendationScore = addAcquaintanceScore(friends, friendsOfUser);
+        visitors = excludeFriendsFromVisitors(visitors, friendsOfUser);
         addVisitorScore(visitors, recommendationScore);
         sortRecommendationScore(recommendationScore);
         return getRecommendationNames(recommendationScore);
     }
 
     private static List<String> excludeFriendsFromVisitors(List<String> visitors, List<String> friendsOfUser) {
-        friendsOfUser.stream()
-            .forEach(friend -> visitors.remove(friend));
+        List<String> visitorsExceptFriends = new ArrayList<>(visitors);
+        friendsOfUser.stream().forEach(friend -> visitorsExceptFriends.remove(friend));
+        return visitorsExceptFriends;
     }
 
     private static List<String> getRecommendationNames(Map<String, Integer> scoreOfAcquaintance) {
