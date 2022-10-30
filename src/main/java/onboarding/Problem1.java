@@ -8,6 +8,15 @@ class Problem1 {
         return answer;
     }
 
+    private static boolean validate(List<Integer> pobi, List<Integer> crong) {
+        if (!validateCorrectPageSize(pobi, crong)) return false;
+        if (!validateCorrectPageOrder(pobi) || !validateCorrectPageOrder(crong)) return false;
+        if (!validateConnectPage(pobi) || !validateConnectPage(crong)) return false;
+        if (!validateCorrectPageRange(pobi) || !validateCorrectPageRange(crong)) return false;
+
+        return true;
+    }
+
     private static boolean validateCorrectPageSize(List<Integer> pobi, List<Integer> crong) {
         return pobi.size() == 2 && crong.size() == 2;
     }
