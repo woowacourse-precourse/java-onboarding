@@ -1,12 +1,21 @@
 package onboarding.domain;
 
-import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class MutualDictionary {
-    private final Map<String, Integer> mutualFriendDictionary;
+    private final Map<String, Integer> mutualDictionary;
 
-    public MutualDictionary(String user, List<List<String>> relations) {
-        this.mutualFriendDictionary = new MutualDictionaryGenerator(user, relations).getDictionary();
+    public MutualDictionary(MutualDictionaryGenerator generator) {
+        this.mutualDictionary = generator.getDictionary();
+    }
+    
+    public Set<String> getAllMutuals() {
+        return mutualDictionary.keySet();
+    }
+    
+    public int getTotalMutualCounts(String mutualUser) {
+        Integer count = mutualDictionary.get(mutualUser);
+        return (count == null) ? 0 : count;
     }
 }
