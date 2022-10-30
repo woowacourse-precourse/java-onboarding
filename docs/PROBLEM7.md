@@ -24,3 +24,19 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 구현 기능 목록
+1. 한 사용자의 모든 친구 목록을 구하는 기능
+    - List<String> getAllFriendsById(String userId)
+    - UserUtil 클래스에서 구현한다.
+2. 한 사용자가 다른 사용자 타임라인에 방문한 횟수를 구하는 기능
+    - int getVisitCountById(String userId, String visitorId)
+    - UserUtil 클래스에서 구현한다.
+3. 한 사용자의 “친구의 친구” 사전을 만드는 기능(사용자의 친구인 경우는 제외)
+    - HashMap 타입의 자료구조를 일급 콜렉션 mutualFriendsDictionary 로 구현한다.
+    - key=친구의 친구 아이디, value=추천 점수 를 저장한다.
+    - 친구의 친구 사전을 생성할 때
+        - 자기 자신은 제외한다.
+        - 처음 저장하는 친구일 경우 10 + (방문 횟수) 을 추천 점수에 저장한다.
+        - 이미 저장된 적 있는 친구일 경우 기존의 추천점수에 10을 더한다.
+    - 점수(내림차순), 이름(오름차순)으로 정렬했을 때 1~5위 아이디를 반환하는 기능을 제공한다.
