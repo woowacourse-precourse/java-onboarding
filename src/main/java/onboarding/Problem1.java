@@ -37,6 +37,11 @@ class Problem1 {
         int maxPointOfPobi = getMaxPoint(pobi);
         int maxPointOfCrong = getMaxPoint(crong);
 
+        return getWinner(maxPointOfPobi, maxPointOfCrong);
+
+    }
+
+    private static int getWinner(int maxPointOfPobi, int maxPointOfCrong) {
         if (maxPointOfPobi > maxPointOfCrong) {
             return Constant.WIN_POBI;
         }
@@ -44,7 +49,6 @@ class Problem1 {
             return Constant.WIN_CRONG;
         }
         return Constant.DRAW;
-
     }
 
     private static int getMaxPoint(List<Integer> crew) {
