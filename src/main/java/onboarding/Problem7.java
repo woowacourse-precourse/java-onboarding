@@ -7,9 +7,12 @@ import java.util.List;
 import java.util.Map;
 
 public class Problem7 {
-    class UserPoint {
+
+    public static class UserPoint {
+
         private String userId;
         private int point;
+
         public UserPoint(String userId, int point) {
             this.userId = userId;
             this.point = point;
@@ -22,15 +25,34 @@ public class Problem7 {
         public String getUserId() {
             return userId;
         }
+
+        @Override
+        public String toString() {
+            return "UserPoint{" +
+                    "userId='" + userId + '\'' +
+                    ", point=" + point +
+                    '}';
+        }
+        @Override
+        public boolean equals(Object other) {
+            if(other.getClass() != UserPoint.class) {
+                return false;
+            }
+            return compareUserPoint(this,(UserPoint) other) == 0;
+        }
     }
 
-    public void sortUserPoints(List<UserPoint> list) {
-        Collections.sort(list, (a,b ) -> {
-            if (b.getPoint() == a.getPoint()) {
-                return a.getUserId().compareTo(b.getUserId());
-            }
-            return b.getPoint() - a.getPoint();
-        });
+    public static void sortUserPoints(List<UserPoint> list) {
+        Collections.sort(list, (a, b) ->
+                compareUserPoint(a, b)
+        );
+    }
+
+    private static int compareUserPoint(UserPoint a, UserPoint b) {
+        if (b.getPoint() == a.getPoint()) {
+            return a.getUserId().compareTo(b.getUserId());
+        }
+        return b.getPoint() - a.getPoint();
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -114,7 +136,7 @@ public class Problem7 {
             List<String> visitors) {
         Map<String, Integer> userList = new HashMap<>();
 
-        userList.put(user,0);
+        userList.put(user, 0);
 
         for (List<String> friendRelation : friends) {
             userList.put(friendRelation.get(0), 0);
