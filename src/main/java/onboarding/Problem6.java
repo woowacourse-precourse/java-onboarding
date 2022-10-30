@@ -1,8 +1,6 @@
 package onboarding;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /*
 기능목록
@@ -16,21 +14,33 @@ public class Problem6 {
     public static HashMap<String, Integer> splitNickname(List<List<String>> forms){
         HashMap<String, Integer> words=new HashMap<>();
         for(List<String> form : forms) {
-            String nickName=form.get(1);
-            for(int i=0; i<nickName.length()-1; i++) {
-                String splitted=nickName.substring(i, i+2);
+            String nickname=form.get(1);
+            for(int i=0; i<nickname.length()-1; i++) {
+                String splitted=nickname.substring(i, i+2);
                 words.put(splitted, words.getOrDefault(splitted, 0)+1);
             }
         }
         return words;
     }
-    public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        HashMap<String, Integer> wordMap=splitNickname(forms);
-
-        for(Map.Entry<String, Integer> entrySet:wordMap.entrySet()){
-            System.out.println(entrySet.getKey() + " : " + entrySet.getValue());
+    public static boolean findWrongNickname(HashMap<String, Integer> nicknameMap, String nickname){
+        for(int i=0; i<nickname.length()-1; i++) {
+            String splitted=nickname.substring(i, i+2);
+            if (nicknameMap.get(splitted)>1) {
+                return true;
+            }
         }
+        return false;
+    }
+    public static List<String> solution(List<List<String>> forms) {
+        List<String> answer = new ArrayList<>();
+        HashMap<String, Integer> nicknameMap=splitNickname(forms);
+
+        for(List<String> form : forms){
+            if(findWrongNickname(nicknameMap, form.get(1))){
+                answer.add(form.get(0));
+            }
+        }
+        Collections.sort(answer);
         return answer;
     }
 }
