@@ -17,4 +17,14 @@ class Problem1 {
 
         return sum;
     }
+
+    private static int getMul(int page) {
+        int mul = 1;
+        while (page > 0) {
+            mul *= page % 10;
+            page /= 10;
+        }
+
+        return mul;
+    }
 }
