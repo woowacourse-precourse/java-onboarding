@@ -7,6 +7,31 @@ import java.util.List;
 import java.util.Map;
 
 public class Problem7 {
+    class UserPoint {
+        private String userId;
+        private int point;
+        public UserPoint(String userId, int point) {
+            this.userId = userId;
+            this.point = point;
+        }
+
+        public int getPoint() {
+            return this.point;
+        }
+
+        public String getUserId() {
+            return userId;
+        }
+    }
+
+    public void sortUserPoints(List<UserPoint> list) {
+        Collections.sort(list, (a,b ) -> {
+            if (b.getPoint() == a.getPoint()) {
+                return a.getUserId().compareTo(b.getUserId());
+            }
+            return b.getPoint() - a.getPoint();
+        });
+    }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
@@ -15,12 +40,12 @@ public class Problem7 {
         Map<String, List<String>> relationships = makeRelationShips(friends);
         List<String> userFriends = fillUserFriends(user, relationships);
 
-        Map<String, Integer> friendPoints = enrichPointFrom(relationships, user, userFriends);
-
+        Map<String, Integer> friendPoints = getPointFrom(relationships, user, userFriends);
+        Map<String, Integer> visitorPoints = getPointFrom(visitors, user, userFriends);
         return answer;
     }
 
-    public static Map<String, Integer> enrichPointFrom(List<String> visitors, String user, List<String> userFriends) {
+    public static Map<String, Integer> getPointFrom(List<String> visitors, String user, List<String> userFriends) {
         Map<String, Integer> visitorPoints = new HashMap<>();
 
         for (String recommend : visitors) {
@@ -48,7 +73,7 @@ public class Problem7 {
         return map.get(key) == null;
     }
 
-    public static Map<String, Integer> enrichPointFrom(Map<String, List<String>> relationships,
+    public static Map<String, Integer> getPointFrom(Map<String, List<String>> relationships,
             String user, List<String> userFriends) {
         Map<String, Integer> friendPoints = new HashMap<>();
         for (String friend : userFriends) {
