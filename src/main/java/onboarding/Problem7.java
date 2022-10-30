@@ -25,6 +25,18 @@ public class Problem7 {
      */
     public static Map<String, Set<String>> setConnection(List<List<String>> friends) {
         Map<String, Set<String>> answer = new HashMap<>();
+
+        for (List<String> connection : friends) {
+            String friendA = connection.get(0);
+            String friendB = connection.get(1);
+
+            if (!answer.containsKey(friendA)) answer.put(friendA, new HashSet<>());
+            if (!answer.containsKey(friendB)) answer.put(friendB, new HashSet<>());
+
+            answer.get(friendA).add(friendB);
+            answer.get(friendB).add(friendA);
+        }
+
         return answer;
     }
 
