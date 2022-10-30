@@ -45,14 +45,14 @@ class Problem1 {
         return arr;
     }
 
-    public static int Mul(ArrayList<Integer> arr){
+    public static int Mul(ArrayList<Integer> arr){ // 구해진 각 자리 수들을 곱하는 함수
         int ret = 1;
         for(int x : arr){
             ret *= x;
         }
         return ret;
     }
-    public static int Add(ArrayList<Integer> arr){
+    public static int Add(ArrayList<Integer> arr){ // 구해진 각 자리 수들을 더하는 함수
         int ret = 0;
         for(int x : arr){
             ret += x;
