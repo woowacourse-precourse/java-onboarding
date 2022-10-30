@@ -12,8 +12,29 @@ public class Problem4 {
      * 3. 나머지 값에 대해서는 그대로
      */
 
+
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        StringBuilder answer = new StringBuilder();
+        for (int i = 0; i < word.length(); i++) {
+            char temp = word.charAt(i);
+            char next;
+
+            // 1. 소문자의 경우 122 - (char - 97)
+            if (97 <= temp && temp <= 122){
+                next = (char) (122 - (temp - 97));
+            }
+
+            // 2. 대문자의 경우 90 - (char - 65)
+            else if(65 <= temp && temp <= 90) {
+                next = (char) (90 - (temp - 65));
+            }
+
+            // 3. 나머지 값에 대해서는 그대로
+            else {
+                next = temp;
+            }
+            answer.append(next);
+        }
+        return answer.toString();
     }
 }
