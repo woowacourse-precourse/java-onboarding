@@ -16,5 +16,15 @@ public class Problem6 {
         return namePiece;
     }
 
-    private boolean hashForm
+    private static boolean hashForm(List<String> namePiece, String email) {
+        for (int i = 0; i < namePiece.size(); i++) {
+            if (formHash.containsKey(namePiece.get(i))) {
+                answerSet.add(formHash.get(namePiece.get(i)));
+                return true; // Collision
+            }
+            formHash.put(namePiece.get(i), email);
+        }
+        return false;
+    }
+
 }
