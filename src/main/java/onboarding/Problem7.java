@@ -12,9 +12,17 @@ public class Problem7 {
         addVisitor(visitors, friendSet, recommendScore);
 
         List<String> result = new ArrayList<>(recommendScore.keySet());//추천 결과
-        Collections.sort(result, ((o1, o2) -> recommendScore.get(o2).compareTo(recommendScore.get(o1))));
+        Collections.sort(result, (o1, o2) -> {
+           if(recommendScore.get(o1) < recommendScore.get(o2)){
+               return 1;
+           }else if(Objects.equals(recommendScore.get(o1), recommendScore.get(o2))){
+               return o1.compareTo(o2);
+           }else{
+               return -1;
+           }
+        });
         for(int i = result.size()-1; i >= 5; i--){
-            result.get(i);
+            result.remove(i);
         }
 
         return result;
@@ -50,10 +58,12 @@ public class Problem7 {
                     continue;
                 }
 
-                if(!recommendScore.containsKey(friendOfFriend)){
-                    recommendScore.put(friendOfFriend, 10);
-                }else{
-                    recommendScore.replace(friendOfFriend, recommendScore.get(friendOfFriend) + 10);
+                if (!friendSet.contains(friendOfFriend)) {
+                    if(!recommendScore.containsKey(friendOfFriend)){
+                        recommendScore.put(friendOfFriend, 10);
+                    }else{
+                        recommendScore.replace(friendOfFriend, recommendScore.get(friendOfFriend) + 10);
+                    }
                 }
             }
         }
