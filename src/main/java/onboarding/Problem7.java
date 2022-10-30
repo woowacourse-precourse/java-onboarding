@@ -8,10 +8,12 @@ public class Problem7 {
 
         @Override
         public int compare(List<T> o1, List<T> o2) {
-            if (o1.get(0).equals(o2.get(0))) {
-                return Integer.compare(Integer.parseInt((String) o2.get(1)), Integer.parseInt((String) o1.get(1)));
+            // 점수가 같다면, 이름 오름차순으로
+            if (o1.get(1).equals(o2.get(1))) {
+                return o1.get(0).compareTo(o2.get(0));
             }
-            return o1.get(0).compareTo(o2.get(0));
+            // 점수순으로
+            return Integer.compare(Integer.parseInt((String) o2.get(1)), Integer.parseInt((String) o1.get(1)));
         }
     }
 
@@ -21,12 +23,16 @@ public class Problem7 {
      * @param friends
      * @return
      */
-    private static List<String> getUsersList(String user, List<List<String>> friends) {
+    private static List<String> getUsersList(String user, List<List<String>> friends, List<String> visitors) {
         HashSet<String> users = new HashSet<>();
 
         for (List<String> next : friends) {
             users.add(next.get(0));
             users.add(next.get(1));
+        }
+
+        for (String next : visitors) {
+            users.add(next);
         }
 
         List<String> result = new ArrayList<>();
@@ -100,7 +106,7 @@ public class Problem7 {
     private static HashMap<String, Integer> getVisitorsScore(String user, HashMap<String, HashSet<String>> userFriendsList, List<String> visitors,  HashMap<String, Integer> userScore) {
 
         for (String visitor : visitors) {
-            if (userFriendsList.get(user).contains(visitor)) {
+            if (userFriendsList.get(user).contains(visitor) || visitor.equals(user)) {
                 continue;
             }
             userScore.put(visitor, userScore.get(visitor) + 1);
@@ -108,12 +114,13 @@ public class Problem7 {
         return userScore;
     }
 
-    private static List<String> getTotalRecommendation(HashMap<String, Integer> userScore) {
+    private static List<String> getTotalRecommendation(String user, HashMap<String, Integer> userScore) {
         List<List<String>> sortingList = new ArrayList<>();
 
         Set<String> keySet = userScore.keySet();
         for (String key : keySet) {
             if (userScore.get(key) == 0) continue;
+            if (key.equals(user)) continue;
             List<String> temp = new ArrayList<>();
             temp.add(key);
             temp.add(String.valueOf(userScore.get(key)));
@@ -131,12 +138,12 @@ public class Problem7 {
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> userList = getUsersList(user, friends);
+        List<String> userList = getUsersList(user, friends, visitors);
         HashMap<String, HashSet<String>> userFriendsList = getEachFriendsList(userList, friends);
 
         HashMap<String, Integer> userScore = getFriendsScore(user, userList, userFriendsList);
         HashMap<String, Integer> userVisitedScore = getVisitorsScore(user, userFriendsList, visitors, userScore);
 
-        return getTotalRecommendation(userVisitedScore);
+        return getTotalRecommendation(user, userVisitedScore);
     }
 }
