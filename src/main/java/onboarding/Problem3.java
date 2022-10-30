@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Problem3 {
     public static int solution(int number) {
@@ -12,19 +13,21 @@ public class Problem3 {
         4. 출력
 
       */
-
         int answer = 0;
+        String strNum = splitNum(number);
+
         return answer;
     }
-
-    public static ArrayList inputArray(int number){
-        ArrayList<Integer> arrNum = new ArrayList<>();
-        while (number>0){
-            arrNum.add(number % 10);
-            number /= 10;
+    public static String splitNum(int number){
+        StringBuilder num = new StringBuilder();
+        for(int i = 1;i<=number; i++){
+            num.append(i);
         }
-        return arrNum;
+
+        return num.toString();
     }
+
+
 
 
 
