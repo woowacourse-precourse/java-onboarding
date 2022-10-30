@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Problem6 {
@@ -28,7 +29,9 @@ public class Problem6 {
             List<String> nicknames;
             nicknames = overlapNicknameExtraction(answer, pattern);
             if (nicknames.size() >= 2) {
-                overlapNickname = nicknames;
+                for (String str : nicknames) {
+                    overlapNickname.add(str.toString());
+                }
             }
         }
 
@@ -40,8 +43,21 @@ public class Problem6 {
                 }
             }
         }
-        return result;
+
+        //이메일의 형태가 email.com인지 확인
+        List<String> lastResult = new ArrayList<>();
+        for (int w = 0; w < result.size(); w++) {
+            if (result.get(w).matches("\\w+@email\\.com$")) {
+                lastResult.add(result.get(w));
+            }
+        }
+        //문자열 오름차순 순서로 정렬
+        Collections.sort(lastResult);
+
+
+        return lastResult;
     }
+
 
     private static List<String> overlapNicknameExtraction(List<String> nicknames, String pattern) {
         List<String> overlapNickname = new ArrayList<>(nicknames.size());
