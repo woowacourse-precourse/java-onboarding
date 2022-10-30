@@ -43,6 +43,10 @@ public class Problem6 {
     };
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
+        if(isItRightEmail(forms)) {
+            answer = findSolution(forms);
+            Collections.sort(answer);
+        }
         return answer;
     }
 }
