@@ -10,17 +10,15 @@ public class Problem2 {
         for(int i=1; i<cryptogram.length(); i++) {
 
             char cryptoNowChar = cryptogram.charAt(i);
+            boolean sameLastChar = isSameLastChar(cryptoNowChar, answer);
 
-            int answerLen = answer.length();
-            char answerLastChar = answer.charAt(answerLen-1);
-
-            if (cryptoNowChar == answerLastChar)
+            if (sameLastChar)
                 duplicated = true;
 
-            if(cryptoNowChar != answerLastChar && duplicated == false)
+            if(!sameLastChar && !duplicated)
                 answer += cryptoNowChar;
 
-            if(cryptoNowChar != answerLastChar && duplicated == true) {
+            if(!sameLastChar && duplicated) {
                 answer = removeLastChar(answer);
                 duplicated = false;
                 i -= 1;
@@ -32,6 +30,16 @@ public class Problem2 {
         }
 
         return answer;
+    }
+
+    public static boolean isSameLastChar(char cryptoChar, String answer) {
+
+        int answerLen = answer.length();
+        char answerLastChar = answer.charAt(answerLen-1);
+
+        if (cryptoChar == answerLastChar)
+            return true;
+        return false;
     }
 
     public static String removeLastChar(String answer) {
