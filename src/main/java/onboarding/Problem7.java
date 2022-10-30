@@ -77,8 +77,36 @@ public class Problem7 {
             }
         }
     }
+    
+    /**
+     * 문제 해결을 위한 함수
+     * TreeMap 이름순 정렬
+     * List 점수 내림차순 정렬
+     * 최대 5명을 리턴
+     */
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
+        List<String> userFriend = friendList(user,friends);
+
+        friendsScore(userFriend,friends,user);
+        visitantScore(userFriend,visitors);
+        List<String> keySet = new ArrayList<>(map.keySet());
+        keySet.sort(new Comparator<String>() {
+            public int compare(String o1, String o2){
+                return map.get(o2).compareTo(map.get(o1));
+            }
+        });
+
+        int count = 0 ;
+        for(int i = 0 ; i<keySet.size();i++){
+
+            answer.add(keySet.get(i));
+            count++;
+
+            if(count == 5){
+                break;
+            }
+        }
         return answer;
     }
 }
