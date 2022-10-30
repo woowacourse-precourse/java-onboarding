@@ -17,6 +17,20 @@ public class Problem6 {
         List<String> answer = checkEmailList(duplicatedEmailList);
         return answer;
     }
+
+    static List<Integer> getDuplicatedIndex() {
+        List<Integer> duplicatedIndex = new ArrayList<>();
+        List<String> nameList = Database.getNameList();
+        int nameCount = nameList.size();
+        for (int i = 0; i < nameCount; i++) {
+            String name = nameList.get(i);
+            boolean isNameDuplicated = checkNameDuplication(name, i);
+            if (isNameDuplicated) {
+                duplicatedIndex.add(i);
+            }
+        }
+        return duplicatedIndex;
+    }
 }
 
 class Database {
