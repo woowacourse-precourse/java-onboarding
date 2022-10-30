@@ -32,8 +32,9 @@ class Problem7Test {
         result.put("invidam", 0);
         result.put("sonny", 0);
 
-        assertThat(Problem7.makeUserPoints(user,friends,visitors)).isEqualTo(result);
+        assertThat(Problem7.makeUserPoints(user, friends, visitors)).isEqualTo(result);
     }
+
     @Test
     void 사용자친구목록테스트() {
         String user = "hansu";
@@ -48,7 +49,7 @@ class Problem7Test {
         Map<String, List<String>> relationShips = Problem7.makeRelationShips(friends);
         List<String> result = List.of("sungjoon", "jiwon", "minjae", "jaewoo");
 
-        assertThat(Problem7.fillUserFriends(user,relationShips)).isEqualTo(result);
+        assertThat(Problem7.fillUserFriends(user, relationShips)).isEqualTo(result);
     }
 
     @Test
@@ -72,7 +73,7 @@ class Problem7Test {
         result.put("minjae", 0);
         result.put("jaewoo", 0);
 
-        assertThat(Problem7.enrichPointFrom(user, relationShips,userFriends)).isEqualTo(result);
+        assertThat(Problem7.enrichPointFrom(relationShips, user, userFriends)).isEqualTo(result);
 
     }
 
