@@ -1,59 +1,27 @@
 package onboarding;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.regex.Pattern;
 
 public class Problem2 {
-    private static final int MIN_DECRYPT_LENGTH = 2;
+
+    private static final Pattern CONSECUTIVE_DUPLICATE_LETTERS = Pattern.compile("(.)\\1+");
+    private static final String EMPTY_STRING = "";
 
     public static String solution(String cryptogram) {
-        String result;
-
-        while (true) {
-            result = decrypt(cryptogram);
-            if (cryptogram.equals(result)) {
-                break;
-            }
-            cryptogram = result;
-        }
-        return result;
+        return decrypt(cryptogram);
     }
 
     private static String decrypt(String cryptogram) {
-        if (cryptogram.length() < MIN_DECRYPT_LENGTH) {
-            return cryptogram;
+        String result = removeConsecutiveDuplicateLetters(cryptogram);
+
+        if (result.equals(cryptogram)) {
+            return result;
         }
 
-        List<Character> result = new ArrayList<>();
-        ArrayDeque<Character> queue = new ArrayDeque<>();
-
-        for (char c : cryptogram.toCharArray()) {
-            if (queue.isEmpty() || queue.getLast() == c) {
-                queue.addLast(c);
-                continue;
-            }
-
-            if (queue.size() == 1) {
-                result.add(queue.getLast());
-            }
-
-            queue.clear();
-            queue.addLast(c);
-        }
-
-        if (queue.size() == 1) {
-            result.add(queue.getLast());
-        }
-
-        return queueToString(result);
+        return decrypt(result);
     }
 
-    private static String queueToString(List<Character> queue) {
-        StringBuilder sb = new StringBuilder();
-        for (char c : queue) {
-            sb.append(c);
-        }
-        return sb.toString();
+    private static String removeConsecutiveDuplicateLetters(String cryptogram) {
+        return CONSECUTIVE_DUPLICATE_LETTERS.matcher(cryptogram).replaceAll(EMPTY_STRING);
     }
 }
