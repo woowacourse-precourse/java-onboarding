@@ -17,4 +17,15 @@ public class Problem4 {
 
         return false;
     }
+
+    public static char reverseChar(char character) {
+        if (!isAlphabet(character)) {
+            return character;
+        }
+
+        if (Character.isUpperCase(character)) {
+            return (char) ('Z' + 'A' - character);
+        }
+        return (char) ('z' + 'a' - character);
+    }
 }
