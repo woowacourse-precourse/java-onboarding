@@ -24,6 +24,8 @@ public class Problem6 {
 
         setOverlabList(forms);
         setEmailList(forms);
+        answer = sortEmailList();
+
         return answer;
     }
 
@@ -68,5 +70,11 @@ public class Problem6 {
             }
         }
         return false;
+    }
+
+    static List<String> sortEmailList(){
+        List<String> emails = new ArrayList<>(emailList);
+        Collections.sort(emails);
+        return emails;
     }
 }
