@@ -19,31 +19,31 @@ public class Problem6 {
     }
     private static Map<String, Integer> mapSetting(List<List<String>> forms) {
         Map<String, Integer> nickMap = new HashMap<>();
-        for(int i=0;i<forms.size();i++){
-            String nowNick = forms.get(i).get(NICKNAME);
+        for(int index=0;index<forms.size();index++){
+            String nowNick = forms.get(index).get(NICKNAME);
             mapAdd(nickMap, nowNick);
         }
         return nickMap;
     }
     private static void mapAdd(Map<String,Integer> nickMap, String nowNick) {
-        for(int i=0;i<nowNick.length()-1;i++){
-            String tmp = nowNick.substring(i,i+2);
+        for(int index=0;index<nowNick.length()-1;index++){
+            String tmp = nowNick.substring(index,index+2);
             nickMap.put(tmp,nickMap.getOrDefault(tmp,0)+1);
         }
     }
     private static List<Integer> duplicateIndex(List<List<String>> forms,Map<String, Integer> nickMap) {
         List<Integer> duplicateIndex = new ArrayList<>();
-        for (int i = 0; i < forms.size(); i++) {
-            String nowNick = forms.get(i).get(NICKNAME);
+        for (int index = 0; index < forms.size(); index++) {
+            String nowNick = forms.get(index).get(NICKNAME);
             if (isDuplicate(nowNick, nickMap)) {
-                duplicateIndex.add(i);
+                duplicateIndex.add(index);
             }
         }
         return duplicateIndex;
     }
     private static boolean isDuplicate(String now, Map<String, Integer> nickMap){
-        for(int i=0;i<now.length()-1;i++){
-            String tmp = now.substring(i,i+2);
+        for(int index=0;index<now.length()-1;index++){
+            String tmp = now.substring(index,index+2);
             if(nickMap.get(tmp)>1)return YES_DUPLICATE;
         }
         return NO_DUPLICATE;
