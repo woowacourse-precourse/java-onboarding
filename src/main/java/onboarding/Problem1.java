@@ -5,8 +5,8 @@ import java.util.List;
 class Problem1 {
 
     private static final int SIZE = 2;
-    private static final int POBI_INDEX = 0;
-    private static final int CRONG_INDEX = 1;
+    private static final int POBI = 0;
+    private static final int CRONG = 1;
     private static final int EXCEPTION = -1;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -15,26 +15,23 @@ class Problem1 {
 
         User[] users = inItUsers(pobi, crong);
 
-        scores[POBI_INDEX] = getScore(users[POBI_INDEX]);
-        scores[CRONG_INDEX] = getScore(users[CRONG_INDEX]);
-
-        int result = compareToScores(scores);
+        int result = compareToScores(users);
 
         answer = (answer == result) ? EXCEPTION : result;
 
         return answer;
     }
 
-    private static int compareToScores(int[] scores) {
+    private static int compareToScores(User[] users) {
 
         int draw = 0;
         int pobiWin = 1;
         int crongWin = 2;
 
-        int pobiScore = scores[POBI_INDEX];
-        int crongScore = scores[CRONG_INDEX];
+        int pobiScore = users[POBI].getScore();
+        int crongScore = users[CRONG].getScore();
 
-        if (pobiScore == EXCEPTION || crongScore == EXCEPTION) {
+        if (users[POBI].isException() || users[CRONG].isException()) {
             return Integer.MAX_VALUE;
         }
 
@@ -42,39 +39,9 @@ class Problem1 {
             return pobiWin;
         } else if (pobiScore < crongScore) {
             return crongWin;
-        } else if (pobiScore == crongScore) {
-            return draw;
         }
 
-        return Integer.MAX_VALUE;
-    }
-
-    private static int getScore(User user) {
-        int maxPage = 400;
-        int maxNum = 0;
-
-        int left = user.getLeft();
-        int right = user.getRight();
-
-        if (right - left > 1 || left % 2 == 0 || right % 2 == 1 || right > maxPage || left > right) {
-            return EXCEPTION;
-        }
-
-        for (int op = 0; op < SIZE; op++) {
-            int leftPage = left;
-            int rightPage = right;
-
-            if (op == 0) {
-                leftPage = plus(leftPage);
-                rightPage = plus(rightPage);
-            } else if (op == 1) {
-                leftPage = multiple(leftPage);
-                rightPage = multiple(rightPage);
-            }
-            maxNum = Math.max(maxNum, Math.max(leftPage, rightPage));
-        }
-
-        return maxNum;
+        return draw;
     }
 
     private static int multiple(int value) {
@@ -106,12 +73,12 @@ class Problem1 {
         User[] users = new User[SIZE];
 
         int left = pobi.get(leftIndex);
-        int right = pobi.get(leftIndex);
-        users[POBI_INDEX] = new User(left, right);
+        int right = pobi.get(rightIndex);
+        users[POBI] = new User(left, right);
 
         left = crong.get(leftIndex);
         right = crong.get(rightIndex);
-        users[CRONG_INDEX] = new User(left, right);
+        users[CRONG] = new User(left, right);
 
         return users;
     }
@@ -127,18 +94,43 @@ class Problem1 {
     private static class User {
         int left;
         int right;
+        int score;
 
         public User(int left, int right) {
             this.left = left;
             this.right = right;
         }
 
-        public int getLeft() {
-            return left;
+        private boolean isException() {
+            int maxPage = 400;
+
+            if (right - left > 1 || left % 2 == 0 || right % 2 == 1 || right > maxPage || left > right) {
+                return true;
+            }
+
+            return false;
         }
 
-        public int getRight() {
-            return right;
+        private int getScore() {
+            int plusScore = getMaxPlus();
+            int multipleScore = getMaxMultiple();
+
+            score = plusScore > multipleScore ? plusScore : multipleScore;
+            return score;
+        }
+
+        private int getMaxPlus() {
+            int leftScore = plus(left);
+            int rightScore = plus(right);
+
+            return leftScore > rightScore ? leftScore : rightScore;
+        }
+
+        private int getMaxMultiple() {
+            int leftScore = multiple(left);
+            int rightScore = multiple(right);
+
+            return leftScore > rightScore ? leftScore : rightScore;
         }
     }
 }
