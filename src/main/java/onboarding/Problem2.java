@@ -1,8 +1,7 @@
 package onboarding;
-import java.util.*;
+import onboarding.exceptions.*;
 
-class LengthException extends Exception {}
-class CaseException extends Exception {}
+import java.util.*;
 
 public class Problem2 {
     static void lengthExceptionCheck(String strIn) throws LengthException {

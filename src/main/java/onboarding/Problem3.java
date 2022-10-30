@@ -1,6 +1,6 @@
 package onboarding;
 
-class NumberRangeException extends Exception {}
+import onboarding.exceptions.*;
 
 public class Problem3 {
     static void numberRangeExceptionCheck(int numIn) throws NumberRangeException {

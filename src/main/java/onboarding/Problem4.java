@@ -1,11 +1,17 @@
 package onboarding;
-
+import onboarding.exceptions.*;
 public class Problem4 {
-    public static final int upperSum = 155;
-    public static final int lowerSum = 219;
+    static final int upperSum = 155;
+    static final int lowerSum = 219;
 
-    public static String translator(String word) {
-        String output = "";
+    static void lengthExceptionCheck(String strIn) throws LengthException {
+        if (strIn.length() < 1 || strIn.length() >= 1000) {
+            throw new LengthException();
+        }
+    }
+
+    static String translator(String word) {
+        StringBuilder output = new StringBuilder();
         int wordLen = word.length();
         char curChar;
         char changedChar;
@@ -18,15 +24,21 @@ public class Problem4 {
             } else {
                 changedChar = curChar;
             }
-            output += changedChar;
+            output.append(changedChar);
         }
-        return output;
+        return output.toString();
     }
     public static String solution(String word) {
-        int lenCheck = word.length();
-        if (lenCheck < 1 || lenCheck > 1000) {
-            return "Wrong Input";
+        try {
+            lengthExceptionCheck(word);
+            int lenCheck = word.length();
+            if (lenCheck < 1 || lenCheck > 1000) {
+                return "Wrong Input";
+            }
+            return translator(word);
+        } catch (LengthException e) {
+            System.err.println("check the length of given word: ");
+            return word;
         }
-        return translator(word);
     }
 }
