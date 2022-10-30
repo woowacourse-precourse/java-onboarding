@@ -6,6 +6,7 @@ public class Problem2 {
         myfunc02 mf=new myfunc02();
 
         while(!mf.chk_cond(cryptogram)){ /*중복이 있다면*/
+            cryptogram=mf.remove_rpt(cryptogram,mf);
         }
         return cryptogram;
     }
