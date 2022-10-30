@@ -23,12 +23,22 @@ public class Problem6 {
             for(int j = 0;j<crew.size();j++){
                 int compareIndex = 0;
                 compareIndex = getIndex(crew, j, compareIndex);
-                
+
                 if (isCurIndexSameAsCompareIndex(curIndex, compareIndex)) continue;
+
+                checkSameWords(forms, answer, crew, sliceStr, j, compareIndex);
             }
         }
 
         return answer;
+    }
+
+    private static void checkSameWords(List<List<String>> forms, List<String> answer, List<Map<String, Integer>> crew, String sliceStr, int j, int compareIndex) {
+        for (String key : crew.get(j).keySet()) {
+            if(sliceStr.equals(key)){
+                answer.add(forms.get(compareIndex).get(0));
+            }
+        }
     }
 
     private static boolean isCurIndexSameAsCompareIndex(int curIndex, int compareIndex) {
