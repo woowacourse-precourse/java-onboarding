@@ -3,6 +3,16 @@ package onboarding;
 import java.util.Collections;
 import java.util.List;
 
+class UserSelectedForPro7 {
+
+    private List<String> userSelectedList;
+
+    public UserSelectedForPro7(String user, List<List<String>> friends, List<String> visitors) {
+        ExceptionClassForPro7 exceptionClassForPro7 = new ExceptionClassForPro7(user, friends,
+            visitors);
+    }
+}
+
 class ExceptionClassForPro7 {
     private static final int USER_LENGTH_MIN = 1;
     private static final int USER_LENGTH_MAX = 30;
@@ -84,7 +94,11 @@ class ExceptionClassForPro7 {
 }
 
 public class Problem7 {
-    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+
+    public static List<String> solution(String user, List<List<String>> friends,
+        List<String> visitors) {
+        UserSelectedForPro7 userSelected = new UserSelectedForPro7(user, friends, visitors);
+
         List<String> answer = Collections.emptyList();
         return answer;
     }
