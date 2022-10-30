@@ -1,6 +1,7 @@
 package onboarding;
 
 public class Problem2 {
+    // idea: String -> .toChararray() 통해서 char 배열로 바꿔보자.
     public static String solution(String cryptogram) {
         String answer = cryptogram;
         String ans = "";
