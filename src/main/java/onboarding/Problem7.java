@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -31,4 +28,21 @@ public class Problem7 {
         }
         return map;
     }
+
+    /*
+    사용자의 직접적인 친구 구하기
+     */
+    private static List<String> getUserFriends(List<List<String>> friends,String user){
+        List<String> userFriends=new ArrayList<>();
+        for(List<String> friend:friends){
+            if(friend.get(0).equals(user)&&!userFriends.contains(friend.get(1))){
+                userFriends.add(friend.get(1));
+            }
+            if(friend.get(1).equals(user)&&!userFriends.contains(friend.get(0))){
+                userFriends.add(friend.get(0));
+            }
+        }
+        return userFriends;
+    }
+
 }
