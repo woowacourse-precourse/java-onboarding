@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -20,11 +21,18 @@ public class Problem7 {
                     .forEach(
                             f -> {
                                 String username = f.getUsername();
-                                int point = recommendedMap.get(username) == null ? 0 : recommendedMap.get(username);
+                                int point = Optional.ofNullable(recommendedMap.get(username)).orElse(0);
                                 recommendedMap.put(username, point + 10);
                             }
                     );
         }
+
+        visitors.stream()
+                .filter(visitor -> ! standardUser.getFriends().contains(visitor))
+                .forEach(visitor -> {
+                    int point = Optional.ofNullable(recommendedMap.get(visitor)).orElse(0);
+                    recommendedMap.put(visitor, point + 1);
+                });
 
         return answer;
     }
@@ -41,15 +49,8 @@ public class Problem7 {
             username1 = relation.get(0);
             username2 = relation.get(1);
 
-            user1 = userMap.get(username1);
-            if(user1.equals(null)) {
-                user1 = new User(username1);
-            }
-
-            user2 = userMap.get(username2);
-            if(user2.equals(null)) {
-                user2 = new User(username2);
-            }
+            user1 = Optional.ofNullable(userMap.get(username1)).orElse(new User(username1));
+            user2 = Optional.ofNullable(userMap.get(username2)).orElse(new User(username2));
 
             user1.addFriend(user2);
             user2.addFriend(user1);
