@@ -3,25 +3,25 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
-    HashMap<String, Integer> map = new HashMap<>();
+    HashMap<String, Integer> scoreMap = new HashMap<>();
+    static HashMap<String, Boolean> userFriendMap = new HashMap<>();
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+        recordUserFriends(user, friends);
         return answer;
     }
-    static List getUserFriends(String user, List<List<String>> friends) {
-        List result = new ArrayList();
+    static void recordUserFriends(String user, List<List<String>> friends) {
         for (List<String> friend: friends) {
             if (friend.get(0).equals(user) || friend.get(1).equals(user)) {
                 if (friend.get(0).equals(user)) {
-                    result.add(friend.get(1));
+                    userFriendMap.put(friend.get(1), true);
                 } else {
-                    result.add(friend.get(0));
+                    userFriendMap.put(friend.get(0), true);
                 }
             }
         }
-        return result;
     }
-    static void setScoreOfKnown(String user, List<List<String>> friends) {
+    static void setScoreOfKnown(String user, List userFriends, List<List<String>> friends) {
 
     }
     static void setScoreOfVisit(String user, List<String> visitors) {
@@ -32,6 +32,7 @@ public class Problem7 {
         friends.add(new ArrayList<>(Arrays.asList(new String[]{"donut", "andole"})));
         friends.add(new ArrayList<>(Arrays.asList(new String[]{"donut", "mrko"})));
         friends.add(new ArrayList<>(Arrays.asList(new String[]{"shakevan", "mrko"})));
-        System.out.println(getUserFriends("mrko", friends));
+        recordUserFriends("mrko", friends);
+        System.out.println(userFriendMap);
     }
 }
