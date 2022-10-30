@@ -23,6 +23,14 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
+        int q = 0;
+        int w = 0;
+        while (q != 1 && q != 399){
+            q = (int)(Math.random() * 100) + 1;
+        }
+        w = q +1;
+
+
         int x = pobi.get(0);
         int y = pobi.get(1);
         int a = crong.get(0);
