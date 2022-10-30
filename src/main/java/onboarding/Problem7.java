@@ -31,6 +31,15 @@ public class Problem7 {
         }
         System.out.println(solution(user, friends, visitors));
     }
-
-
+    public static List<List<String>> convertToList(String[][] arr) {
+        List<List<String>> result = new ArrayList<>();
+        for (int i = 0; i < arr.length; i++) {
+            List<String> list = new ArrayList<>();
+            for (int j = 0; j < arr[i].length; j++) {
+                list.add(arr[i][j]);
+            }
+            result.add(list);
+        }
+        return result;
+    }
 }
