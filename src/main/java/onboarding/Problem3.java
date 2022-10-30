@@ -5,11 +5,15 @@ public class Problem3 {
         int answer = 0;
 
         for (int i = 1; i <= number; i++) {
-            String s = String.valueOf(i);
+            int num = i;
 
-            for (int j = 0; j < s.length(); j++) {
-                int n = s.charAt(j);
-                if (n == '3' || n == '6' || n == '9') answer++;
+            while (num > 0) {
+                int n = num % 10;
+                if (n == 3 || n == 6 || n == 9) {
+                    answer++;
+                }
+
+                num /= 10;
             }
         }
 
