@@ -1,11 +1,42 @@
 package onboarding;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Problem6 {
 	public static List<String> solution(List<List<String>> forms) {
 		List<String> answer = List.of("answer");
 		return answer;
+	}
+
+	public static Set<String> getOverlapWords(List<String> nicknames) {
+		Set<String> words = new HashSet<>();
+		Set<String> overlapWords = new HashSet<>();
+		for (String nickname : nicknames) {
+			Set<String> wordsInNickname = getWordCombinations(nickname);
+			findSameWordInWords(wordsInNickname, words, overlapWords);
+			words.addAll(wordsInNickname);
+		}
+		return overlapWords;
+	}
+
+	public static Set<String> getWordCombinations(String nickname) {
+		Set<String> wordsInNickname = new HashSet<>();
+		for (int i = 0; i < nickname.length() - 1; i++) {
+			String word = nickname.substring(i, i + 2);
+			wordsInNickname.add(word);
+		}
+		return wordsInNickname;
+
+	}
+
+	public static void findSameWordInWords(Set<String> wordsInNickname, Set<String> words, Set<String> overlapWords) {
+		for (String word : wordsInNickname) {
+			if (words.contains(word)) {
+				overlapWords.add(word);
+			}
+		}
 	}
 
 	static class InputValidator {
