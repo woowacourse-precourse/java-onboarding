@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Problem7 {
@@ -18,7 +19,7 @@ public class Problem7 {
     private static final int USER_IDS_SIZE = 2;
     private static final int MIN_VISITORS_SIZE = 0;
     private static final int MAX_VISITORS_SIZE = 10000;
-
+    private static final String USER_ID_REGEX = "^[a-z]+$";
     private static final Map<String, Integer> friendRecommendScoreMap = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friendRelationships, List<String> userTimelineVisitors) {
@@ -87,15 +88,15 @@ public class Problem7 {
 
     private static void userTimelineVisitorsAddScore(List<String> userTimelineVisitors) {
         userTimelineVisitors.forEach(userTimelineVisitor -> {
-            friendRecommendScoreMap.put(userTimelineVisitor, friendRecommendScoreMap.get(userTimelineVisitor) +  VISITOR_SCORE);
+            friendRecommendScoreMap.put(userTimelineVisitor, friendRecommendScoreMap.get(userTimelineVisitor) + VISITOR_SCORE);
         });
     }
 
     private static List<String> getTopFiveScoreUser(Map<String, Integer> friendRecommendScoreMap, Set<String> userFriends) {
         return friendRecommendScoreMap.entrySet().stream()
                 .filter(friendRecommendScoreMapEntry ->
-                    (friendRecommendScoreMapEntry.getValue() != 0) &&
-                            (!userFriends.contains(friendRecommendScoreMapEntry.getKey()))
+                        (friendRecommendScoreMapEntry.getValue() != 0) &&
+                                (!userFriends.contains(friendRecommendScoreMapEntry.getKey()))
                 )
                 .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
                 .map(friendRecommendScoreMapEntry -> friendRecommendScoreMapEntry.getKey())
@@ -105,6 +106,10 @@ public class Problem7 {
 
     private static boolean validateUserLength(String userId) {
         return (userId.length() >= MIN_USER_ID_LENGTH && userId.length() <= MAX_USER_ID_LENGTH);
+    }
+
+    private static boolean validateUserIdType(String userId) {
+        return Pattern.compile(USER_ID_REGEX).matcher(userId).matches();
     }
 
     private static boolean validateFriendRelationshipsSize(List<List<String>> friendRelationships) {
