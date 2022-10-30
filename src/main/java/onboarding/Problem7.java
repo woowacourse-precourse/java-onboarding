@@ -14,6 +14,15 @@ public class Problem7 {
         makeScoreMap(visitors, friendSet, friendMap, scoreMap);
         // 사용자와 함께 하는 친구의 수마다 10점씩 추가
         addScores(user, friendSet, friendMap, scoreMap);
+
+        ArrayList<Map.Entry<String, Integer>> entries = new ArrayList<>(scoreMap.entrySet());
+
+        entries.sort((o1, o2)->{
+            if(o1.getValue() == o2.getValue()) return o1.getKey().compareTo(o2.getKey());
+            return o2.getValue() - o1.getValue();
+        });
+
+        sortedByScores(user, answer, friendMap, entries);
         return answer;
     }
 
@@ -74,5 +83,18 @@ public class Problem7 {
         }
     }
 
+    private static void sortedByScores(String user, List<String> answer, Map<String, Set<String>> friendMap, ArrayList<Map.Entry<String, Integer>> entries) {
+        for(int i = 0; i< entries.size(); i++){
+            if(answer.size()==5) break;
+            int flag = 0;
+            String key = entries.get(i).getKey();
+            if(key.equals(user)) continue;
+            for (String s : friendMap.get(user)) {
+                // user의 친구목록에 있는 사람이면 flag = 1
+                if(key.equals(s)) flag = 1;
+            }
+            if(flag ==0) answer.add(key);
+        }
+    }
 
 }
