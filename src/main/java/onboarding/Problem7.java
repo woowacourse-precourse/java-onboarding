@@ -2,7 +2,7 @@ package onboarding;
 
 import java.util.*;
 
-class Friend {
+class Recommend {
     private String name;
     private int score;
 
@@ -28,52 +28,54 @@ class Friend {
 
 public class Problem7 {
     // hashFriendshipScores 생성
-    Hashtable<String, Friend> hashFriendshipScores = new Hashtable<>();
+    Hashtable<String, Recommend> hashPersonToRecommend = new Hashtable<>();
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Problem7 problem = new Problem7();
-        /* friendNames: 친구 목록 생성  */
-        List<String> personToRecommand = flatten2DimStringList(friends);   // 배열 평탄화
-        personToRecommand.addAll(visitors);
-        personToRecommand = dropDuplicate(personToRecommand);   // 중복 제거
-        personToRecommand.remove(user); // 친구 목록에서 user 제거
+        /* personToRecommend: 추천 목록 생성  */
+        List<String>personToRecommend  = flatten2DimStringList(friends);   // 배열 평탄화
+        personToRecommend.addAll(visitors);
+        personToRecommend = dropDuplicate(personToRecommend);   // 중복 제거
+        personToRecommend.remove(user); // 친구 목록에서 user 제거
         List<String> directFriends = getDirectFriends(user, friends);
         for (String name : directFriends) {
-            personToRecommand.remove(name);
+            personToRecommend.remove(name);
         }
 
         /* hashFriendshipScores 에 Friends 객체 추가 */
-        for (String name : personToRecommand) {
+        for (String name : personToRecommend) {
             problem.updateFriend(name);
         }
 
-        // friends 를 순회하며 directFriends 와 함께 아는 친구( coFriend )에 대해 score 10점 추가
+        /* directFriends 와 함께 아는 친구( coFriend )에 대해 score 10점 추가 */
         List<String> coFriends = getCoFriends(user, friends, directFriends);
         for (String name : coFriends) {
             problem.updateScore(name, 10);
         }
 
-        // visitors 를 순회하며 방문자의 score 1점씩 추가
+        /* visitors 를 순회하며 방문자의 score 1점씩 추가 */
         for (String name : visitors) {
-            problem.updateScore(name, 1);
+            if (!directFriends.contains(name)) {
+                problem.updateScore(name, 1);
+            }
         }
 
         // hashFriendshipScores의 value 를 점수 내림차순, 이름 오름차순으로 정렬
-        List<Friend> friendList = new ArrayList(problem.hashFriendshipScores.values());
+        List<Recommend> friendList = new ArrayList(problem.hashPersonToRecommend.values());
         friendList.sort(Comparator
-                .comparing(Friend::getScore).reversed()     // 점수 내림차순
-                .thenComparing(Friend::getName));     // 이름 오름차순
+                .comparing(Recommend::getScore).reversed()     // 점수 내림차순
+                .thenComparing(Recommend::getName));     // 이름 오름차순
 
         // 상위 5명 선택
         int top = Math.min(friendList.size(), 5);
-        List<Friend> topScoreFriend = friendList.subList(0, top);
+        List<Recommend> topScoreRecommend = friendList.subList(0, top);
 
         // score 가 0인 사람 제외하고 friend name만 추출
         List<String> answer = new ArrayList<>();
-        for (Friend f : topScoreFriend) {
-            if (f.getScore()==0) {
+        for (Recommend r : topScoreRecommend) {
+            if (r.getScore()==0) {
                 break;
             }
-            answer.add(f.getName());
+            answer.add(r.getName());
         }
 
         return answer;
@@ -93,11 +95,11 @@ public class Problem7 {
         return listWithoutDuplicates;
     }
 
-    void updateFriend(String friendName) {
-        Friend friend = new Friend();
-        friend.setName(friendName);
-        friend.setScore(0);
-        this.hashFriendshipScores.put(friendName, friend);
+    void updateFriend(String name) {
+        Recommend recommend = new Recommend();
+        recommend.setName(name);
+        recommend.setScore(0);
+        this.hashPersonToRecommend.put(name, recommend);
     }
 
     static List<String> getDirectFriends(String user, List<List<String>> friends) {
@@ -131,11 +133,11 @@ public class Problem7 {
     }
 
     void updateScore(String name, int score) {
-        if (!this.hashFriendshipScores.containsKey(name)) {
-            System.out.println(this.hashFriendshipScores.keySet());
+        if (!this.hashPersonToRecommend.containsKey(name)) {
+            System.out.println(this.hashPersonToRecommend.keySet());
             System.out.println(name + " is not in hashFriendshipScores");
         } else {
-            this.hashFriendshipScores.get(name).updateScore(score); // 이렇게만 끝내도 업데이트 잘 되는지 확인
+            this.hashPersonToRecommend.get(name).updateScore(score); // 이렇게만 끝내도 업데이트 잘 되는지 확인
         }
     }
 }
