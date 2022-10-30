@@ -16,4 +16,13 @@ class Problem1 {
         }
         return sum;
     }
+
+    public static int multiplyDigit(int page){
+        int multi = 1;
+        while(page > 0){
+            multi *= page % 10;
+            page /= 10;
+        }
+        return multi;
+    }
 }
