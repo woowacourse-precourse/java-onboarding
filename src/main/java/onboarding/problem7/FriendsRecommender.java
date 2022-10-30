@@ -1,10 +1,13 @@
 package onboarding.problem7;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class FriendsRecommender {
 	private String user;
@@ -101,6 +104,26 @@ public class FriendsRecommender {
 		}
 
 		return numberOfFriendsUserKnow;
+	}
+
+	private List<String> makeSortedRecommendList() {
+		List<Map.Entry<String, Integer>> sortedRecommendScore = new ArrayList<>(recommendScore.entrySet());
+
+		Collections.sort(sortedRecommendScore, (score1, score2) -> {
+			int differenceOfTwoScores = (score1.getValue() - score2.getValue()) * -1;
+
+			if (differenceOfTwoScores == 0) {
+				return score1.getKey().compareTo(score2.getKey());
+			} else {
+				return differenceOfTwoScores;
+			}
+		});
+
+		List<String> sortedRecommendList = sortedRecommendScore.stream()
+			.map(Map.Entry::getKey).collect(Collectors.toList());
+
+
+		return sortedRecommendList;
 	}
 
 }
