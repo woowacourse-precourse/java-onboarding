@@ -1,6 +1,16 @@
 package onboarding;
 
 public class Problem2 {
+    public static boolean checkExistDuplicateChars(String string) {
+        for (int index = 0; index < (string.length() - 1) ; index++) {
+            if (string.charAt(index) == string.charAt(index + 1)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public static String removeDuplicateChars(String string) {
         StringBuilder result = new StringBuilder();
 
