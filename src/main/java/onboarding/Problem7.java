@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * 1. 전체 사용자 목록 Set 생성
@@ -30,5 +27,22 @@ public class Problem7 {
         allUserSet.addAll(visitors);
 
         return allUserSet;
+    }
+
+    private static Map<String, List<String>> mapFriendListByUser(List<List<String>> friends) {
+        Map<String, List<String>> friendListMap = new HashMap<>();
+
+        for (List<String> friend : friends) {
+            String friendA = friend.get(0);
+            String friendB = friend.get(1);
+            List<String> friendListA = friendListMap.getOrDefault(friendA, new ArrayList<>());
+            List<String> friendListB = friendListMap.getOrDefault(friendB, new ArrayList<>());
+            friendListA.add(friendB);
+            friendListB.add(friendA);
+            friendListMap.put(friendA, friendListA);
+            friendListMap.put(friendB, friendListB);
+        }
+
+        return friendListMap;
     }
 }
