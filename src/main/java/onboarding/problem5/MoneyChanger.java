@@ -1,0 +1,26 @@
+package onboarding.problem5;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class MoneyChanger {
+    private static final int NUMBER_OF_CURRENCY_TYPE = 9;
+
+    public List<Integer> change(int money) {
+        int[] moneyIntValues = getMoneyIntValues();
+        Integer[] moneys = new Integer[NUMBER_OF_CURRENCY_TYPE];
+
+        for (int i = 0; i < NUMBER_OF_CURRENCY_TYPE; i++) {
+            moneys[i] = money/moneyIntValues[i];
+            money %= moneyIntValues[i];
+        }
+
+        return Arrays.asList(moneys);
+    }
+
+    private int[] getMoneyIntValues() {
+        return Arrays.stream(Money.values())
+                .mapToInt(Money::getIntValue)
+                .toArray();
+    }
+}
