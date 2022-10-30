@@ -27,5 +27,20 @@ class Problem1 {
             }
             return result;
         }
+        // 각자의 점수 계산
+        int cal_score(List<Integer> user,myfunc01 mf ,int rep){
+            for (int i = 0; i < 2; i++) { // 포비
+                List<Integer> tmp = mf.divPage(user.get(i));
+                int a=mf.sum(tmp);
+                int b=mf.multi(tmp);
+                if(a>=b){ // 합한 것이 더 클 경우
+                    if(rep<a) rep=a;
+                }else { // 곱한 것이 더 클경우
+                    if(rep<b) rep=b;
+                }
+            }
+            return rep;
+        }
+
     }
 }
