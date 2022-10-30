@@ -60,7 +60,19 @@ package onboarding;
 public class Problem2 {
 
     public static String solution(String cryptogram) {
-        return null;
+        return computeDuplicateRemovedStr(cryptogram);
+    }
+
+    private static String computeDuplicateRemovedStr(String str) {
+        while (true) {
+            int beforeRemoveSize = str.length();
+            str = duplicateRemove(str);
+
+            if (beforeRemoveSize == str.length()) {
+                break;
+            }
+        }
+        return str;
     }
 
     static String duplicateRemove(String str) {
