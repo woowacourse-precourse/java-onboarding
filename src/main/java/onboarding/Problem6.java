@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class Problem6 {
+    private static HashMap<String, Integer> twoLetterNicknamesAndIds = new HashMap<>();
+
     public static List<String> solution(List<List<String>> forms) {
         return forms.get(0);
     }
@@ -27,5 +29,16 @@ public class Problem6 {
         }
 
         return twoLetterNicknames;
+    }
+
+    /**
+     * 분할된 크루 닉네임을 저장
+     * @param twoLetterNickname 분할된 크루 닉네임의 일부
+     * @param id 크루 닉네임의 고유 번호
+     */
+    private static void putTwoLetterNicknameAndId(String twoLetterNickname, int id) {
+        if (!twoLetterNicknamesAndIds.containsKey(twoLetterNickname)) {
+            twoLetterNicknamesAndIds.put(twoLetterNickname, id);
+        }
     }
 }
