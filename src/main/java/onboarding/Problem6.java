@@ -35,5 +35,20 @@ public class Problem6 {
         return false;
     }
 
+    //두 닉네임이 유사한지 판단하는 함수
+    public static boolean getDuplicate(List<List<String>> forms, int index, String currentNick) {
+        String nextNick = getNickname(forms, index);
+        int firstIndex=-1;
+        for (int i = 0; i < currentNick.length()-1; i++) {
+            char currentChar = currentNick.charAt(i);
+            firstIndex = getFirstIndexOfDuplicate(currentChar,nextNick);
+            if(firstIndex==-1) continue;
+
+            //이후 인덱스에서도 같은지 확인
+            boolean isDuplicated = checkDuplicate(currentNick.charAt(i+1),nextNick.charAt(firstIndex+1));
+            if(isDuplicated) return true;
+        }
+        return false;
+    }
 
 }
