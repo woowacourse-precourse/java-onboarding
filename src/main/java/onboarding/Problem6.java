@@ -63,7 +63,7 @@ class ExceptionProblem6 {
     }
 
     private static void validateEmailLength(String email) {
-        if (email.length() < 11 || email.length() > 20) {
+        if (email.length() < 11 || email.length() >= 20) {
             throw new IllegalArgumentException();
         }
     }
