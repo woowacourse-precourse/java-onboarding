@@ -27,9 +27,14 @@
 
 ## Problem2
 
-- [x] 어디서부터 중복이 시작됐는지 인덱스 체크
-- [x] 중복이 끝나는 지점의 인덱스 체크
-- [x] 원래 문자열에서 중복되는 처음 - 끝 인덱스 제거
-- [x] 중복된 문자가 있는지 체크하는 boolean flag
-- [x] boolean flag가 true일 때까지 while문 돌리기 (가공 이전, 이후 길이 체크)
-- [x] 문자열의 길이가 1 이하면 while문 break
+테스트케이스
+* abbaacde -> acde 
+* abbbcdde -> ace
+* abbcbbbbbde -> acde
+  * 검사하는 문자열에서 중복이 있는 문자들은 모두 제거해야 함
+
+- [ ] 문자열 탐색하며 중복되는 문자 기록하기
+- [ ] 문자열에서 2글자 이상 중복되는 문자들 모두 제거 (replace, 정규식 활용)
+- [ ] 중복된 문자가 있는지 체크하는 boolean flag
+- [ ] boolean flag가 true일 때까지 while문 돌리기 (가공 이전, 이후 길이 체크)
+- [ ] 문자열의 길이가 1 이하면 while문 break
