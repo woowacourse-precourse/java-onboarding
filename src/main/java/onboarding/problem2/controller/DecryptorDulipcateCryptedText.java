@@ -1,6 +1,5 @@
 package onboarding.problem2.controller;
 
-import onboarding.problem2.domain.DuplicateCryptedText;
 import onboarding.problem2.service.DuplicatedCharService;
 import onboarding.problem2.service.RemoveCharService;
 import onboarding.problem2.utils.validator.InvalidStringValidator;
@@ -26,14 +25,13 @@ public class DecryptorDulipcateCryptedText {
         }
     }
 
-    private DecryptorDulipcateCryptedText fullyDecryption(){
+    private void fullyDecryption(){
         String decryptionText = duplicateCryptedText;
         while(DuplicatedCharService.checkDecryption(decryptionText)){
             decryptionText = decryption(decryptionText);
         }
 
         this.decryptedText = decryptionText;
-        return this;
     }
 
     public String getDecryptedText(){
