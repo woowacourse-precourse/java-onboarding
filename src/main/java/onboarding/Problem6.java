@@ -3,12 +3,13 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /** 구현 기능 목록
  * 1. 닉네임을 두글자씩 쪼개어 리스트로 저장
  * 2. 쪼갠 닉네임과 이메일을 해시맵으로 저장
  * 3. 쪼갠 닉네임들을 합쳐서 리스트로 저장
- * 4. 쪼갠 닉네임들을 통해 연속으로 두글자 이상 중복된 닉네임을 가진 사람 찾기
+ * 4. 쪼갠 닉네임 부분을 갖고 있는 사람 찾기
  * 5. 중복 닉네임을 가진 사람의 이메일을 정렬하여 반환
  * */
 
@@ -42,5 +43,14 @@ public class Problem6 {
             nicknameParts.addAll(nicknamePart);
         }
         return nicknameParts;
+    }
+
+    private static List<String> findEmailWithPart(String nicknamePart, HashMap<String, List<String>> emailAndNicknameParts) {
+        List<String> emailWithPart = new ArrayList<>();
+        for (Map.Entry<String, List<String>> entry : emailAndNicknameParts.entrySet()) {
+            if (entry.getValue().contains(nicknamePart))
+                emailWithPart.add(entry.getKey());
+        }
+        return emailWithPart;
     }
 }
