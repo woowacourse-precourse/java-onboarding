@@ -35,6 +35,29 @@ public class Problem6 {
         return false;
     }
 
+    private static void parseForms(String nickname) {
+        String c1, c2;
+        int length = nickname.length();
+
+        if (length == 1) {
+            c1 = nickname.substring(0, 1);
+            if (!indexMap.containsKey(c1)) {
+                indexMap.put(c1, sequence++);
+            }
+        } else {
+            for (int i = 0; i < length - 1; i++) {
+                c1 = nickname.substring(i, i + 1);
+                c2 = nickname.substring(i + 1, i + 2);
+                if (!indexMap.containsKey(c1)) {
+                    indexMap.put(c1, sequence++);
+                }
+                if (!indexMap.containsKey(c2)) {
+                    indexMap.put(c2, sequence++);
+                }
+            }
+        }
+    }
+
     private static void initSolution(List<List<String>> forms) {
         int size = forms.size();
 
