@@ -1,44 +1,58 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
+
         HashSet<String> dupList = new HashSet<>();
 
         for (int i = 0; i < forms.size(); i++) {
-            for (int j = i + 1; j < forms.size(); j++) {
-
-                String target_name = forms.get(i).get(1);
-                String compare_name = forms.get(j).get(1);
-
-                String target_email = forms.get(i).get(0);
-                String compare_email = forms.get(j).get(0);
-
-                if (isDuplicate(target_name, compare_name)) {
-                    dupList.add(target_email);
-                    dupList.add(compare_email);
-                    continue;
-                }
-            }
+            List<String> userInfo = forms.get(i);
+            dupList = getDuplicatedNameUsersEmailList(dupList, forms, userInfo, i + 1);
         }
 
-        List<String> answer = dupList.stream().collect(Collectors.toList());
+        List<String> answer = new ArrayList<>(dupList);
+
         Collections.sort(answer);
 
         return answer;
     }
 
-    private static boolean isDuplicate(String target, String compare) {
+    private static HashSet<String> getDuplicatedNameUsersEmailList(HashSet<String> dupList,
+            List<List<String>> forms,
+            List<String> userInfo,
+            int formsIndex) {
 
-        for (int s = 0; s < target.length() - 1; s++) {
-            String sliced = target.substring(s, s + 2);
+        if (formsIndex >= forms.size()) {
+            return dupList;
+        }
 
-            if (compare.indexOf(sliced) > -1) {
+        List<String> compareList = forms.get(formsIndex);
+        String compareEmail = compareList.get(0);
+        String compareName = compareList.get(1);
+
+        String userEmail = userInfo.get(0);
+        String userName = userInfo.get(1);
+
+        if (isDuplicated(userName, compareName)) {
+            dupList.add(userEmail);
+            dupList.add(compareEmail);
+        }
+
+        return getDuplicatedNameUsersEmailList(dupList, forms, userInfo, formsIndex + 1);
+    }
+
+    private static boolean isDuplicated(String name, String compareName) {
+
+        for (int s = 0; s < name.length() - 1; s++) {
+            String slicedName = name.substring(s, s + 2);
+
+            if (compareName.indexOf(slicedName) > -1) {
                 return true;
             }
         }
