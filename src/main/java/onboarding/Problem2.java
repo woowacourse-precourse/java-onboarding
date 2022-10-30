@@ -9,11 +9,11 @@ public class Problem2 {
 		Matcher patternMatcher;
 
 		while (true) {
-			boolean doesDuplicationExists = checkDuplication(cryptogram);
+			boolean duplicationExists = checkDuplication(cryptogram);
 			patternMatcher = setMatcher(cryptogram);
 			cryptogram = removeDuplication(patternMatcher);
 
-			if (!doesDuplicationExists) { break; }
+			if (!duplicationExists) { break; }
 
 		}
 
