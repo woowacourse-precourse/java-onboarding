@@ -1,12 +1,14 @@
 package onboarding;
 
 import java.util.List;
+import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Problem6 {
     static HashSet<String> twoWordPartOfNickname = new HashSet<>();
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>();
+        createTwoWordPartOfNicknameSet(forms);
         return answer;
     }
 
@@ -51,6 +53,16 @@ public class Problem6 {
         for (int i = 0 ; i < nickname.length() - 1; i++) {
             String twoWord = nickname.substring(i, i+2);
             twoWordPartOfNickname.add(twoWord);
+        }
+    }
+
+    private static void createTwoWordPartOfNicknameSet (List<List<String>> crews) {
+        for (List<String> crew : crews) {
+            if (!isRightInput(crew)) {
+                continue;
+            }
+            String nickname = crew.get(1);
+            createTwoWordPartOfNickname(nickname);
         }
     }
 }
