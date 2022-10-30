@@ -8,4 +8,14 @@ public class Problem5 {
         List<Integer> answer = Collections.emptyList();
         return answer;
     }
+
+    private static void insertQuotientListByGreedy(List<Integer> answerList, int money, List<Integer> moneyTypeList) {
+        for (int moneyType :
+                moneyTypeList) {
+            int quotient = money / moneyType;
+            answerList.add(quotient);
+
+            money %= moneyType;
+        }
+    }
 }
