@@ -1,22 +1,8 @@
 package onboarding;
 
-import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
-
-    public static void main(String[] args) {
-        List<Integer> pobi = new ArrayList<>();
-        List<Integer> crong = new ArrayList<>();
-
-        pobi.add(97);
-        pobi.add(100);
-
-        crong.add(197);
-        crong.add(198);
-
-        System.out.println(solution(pobi, crong));
-    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (pobi.size() > 2 || crong.size() > 2) {
             return -1;
