@@ -11,11 +11,7 @@ public class Problem2 {
             stack.push(c);
         }
 
-
-        for (char c: stack){
-            answer += c;
-        }
-
+        answer = stackToString(stack);
         return answer;
     }
 
@@ -31,5 +27,15 @@ public class Problem2 {
             return isDuplicated(stack, c);
         }
         return false;
+    }
+
+    private static String stackToString(Stack<Character> stack){
+        String result = "";
+        for (char c: stack){
+            //중복되어 삭제된 글자
+            if (Character.isUpperCase(c)) continue;
+            result += c;
+        }
+        return result;
     }
 }
