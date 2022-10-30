@@ -86,4 +86,9 @@ public class Problem6 {
     public static boolean checkNicknameForm(String nickname) {
         return Pattern.matches("^[가-힣]*$", nickname);
     }
+
+    // 주어진 유저 정보가 형식에 맞게 입력됐는지 확인하는 함수
+    public static boolean checkUserForm(List<String> user) {
+        return checkEmailForm(user.get(0)) && checkNicknameForm(user.get(1));
+    }
 }
