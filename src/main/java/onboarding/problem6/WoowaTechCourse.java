@@ -7,7 +7,7 @@ public class WoowaTechCourse {
   private final List<Crew> crews = new ArrayList<>();
 
   public void addCrewFromForms(List<List<String>> forms) {
-    forms.stream().forEach(form-> crews.add(Crew.fromForm(form)));
+    forms.stream().forEach(form -> crews.add(Crew.fromForm(form)));
   }
 
   public List<String> getCrewEmailByNickname(List<String> nicknames) {
@@ -18,7 +18,7 @@ public class WoowaTechCourse {
             .collect(Collectors.toList());
   }
 
-  public List<Crew> getCrews() {
-    return crews;
+  public List<String> getCrewsNickname() {
+    return crews.stream().map(crew -> crew.getNickname()).collect(Collectors.toList());
   }
 }

@@ -10,7 +10,7 @@ public class Problem6 {
     NicknameValidation nicknameValidation = new NicknameValidation();
     WoowaTechCourse woowaTechCourse = new WoowaTechCourse();
     woowaTechCourse.addCrewFromForms(forms);
-    List<String> duplicateNicknames = nicknameValidation.validate(woowaTechCourse.getCrews());
+    List<String> duplicateNicknames = nicknameValidation.validate(woowaTechCourse.getCrewsNickname());
     return woowaTechCourse.getCrewEmailByNickname(duplicateNicknames);
   }
 }

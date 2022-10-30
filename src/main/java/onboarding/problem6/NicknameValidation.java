@@ -6,10 +6,12 @@ import java.util.stream.IntStream;
 
 public class NicknameValidation {
   private final Map<String, Set<String>> keywordOfNickname = new HashMap<>();
-  public List<String> validate(List<Crew> crews) {
-    initializeStore(crews);
+
+  public List<String> validate(List<String> nicknames) {
+    initializeStore(nicknames);
     return getDuplicateNicknames();
   }
+
   private List<String> getDuplicateNicknames() {
     return keywordOfNickname.entrySet().stream()
             .filter(nicknames -> duplicateNickname(nicknames.getValue().size()))
@@ -18,13 +20,11 @@ public class NicknameValidation {
             .collect(Collectors.toList());
   }
 
-  private void initializeStore(List<Crew> crews) {
-    crews.stream().
-            forEach(crew ->
-                    IntStream.range(0, crew.getNickname().length() - 1)
-                            .forEach(idx -> this.setKeywordAndNickname(getKeyword(crew.getNickname(), idx), crew.getNickname()))
-            );
+  private void initializeStore(List<String> nicknames) {
+    nicknames.stream().forEach(nickname -> IntStream.range(0, nickname.length() - 1)
+            .forEach(idx -> this.setKeywordAndNickname(getKeyword(nickname, idx), nickname)));
   }
+
   private boolean duplicateNickname(Integer nicknames) {
     return nicknames >= 2;
   }
@@ -38,6 +38,7 @@ public class NicknameValidation {
     nicknames.add(nickname);
     keywordOfNickname.put(keyword, nicknames);
   }
+
   private String getKeyword(String nickname, int idx) {
     return String.valueOf(nickname.charAt(idx)) + nickname.charAt(idx + 1);
   }
