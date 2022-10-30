@@ -126,24 +126,24 @@ class Book {
         return rightPage;
     }
 
-    public int bigSumPageByLeftAndRight() {
+    public int getBigSumPageByLeftAndRight() {
         if (leftPage.sumPage() >= rightPage.sumPage()) {
             return leftPage.sumPage();
         }
         return rightPage.sumPage();
     }
 
-    public int bigMultiplePageByLeftAndRight() {
+    public int getBigMultiplePageByLeftAndRight() {
         if (leftPage.multiplePage() >= rightPage.multiplePage()) {
             return leftPage.multiplePage();
         }
         return rightPage.multiplePage();
     }
 
-    public int bookScore() {
-        if (bigSumPageByLeftAndRight() >= bigMultiplePageByLeftAndRight()) {
-            return bigSumPageByLeftAndRight();
+    public int getBookScore() {
+        if (getBigSumPageByLeftAndRight() >= getBigMultiplePageByLeftAndRight()) {
+            return getBigSumPageByLeftAndRight();
         }
-        return bigMultiplePageByLeftAndRight();
+        return getBigMultiplePageByLeftAndRight();
     }
 }
