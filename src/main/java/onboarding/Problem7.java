@@ -106,5 +106,6 @@ public class Problem7 {
         HashMap<String, HashSet<String>> userFriendsList = getEachFriendsList(userList, friends);
 
         HashMap<String, Integer> userScore = getFriendsScore(user, userList, userFriendsList);
+        HashMap<String, Integer> userVisitedScore = getVisitorsScore(user, userFriendsList, visitors, userScore);
     }
 }
