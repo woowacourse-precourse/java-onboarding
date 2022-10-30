@@ -34,13 +34,8 @@ class Problem1 {
             return Constant.EXCEPTION;
         }
 
-        int maxLeftPointOfPobi = getMaxLeftPoint(pobi);
-        int maxRightPointOfPobi = getMaxRightPoint(pobi);
-        int maxPointOfPobi = Math.max(maxLeftPointOfPobi, maxRightPointOfPobi);
-
-        int maxLeftPointOfCrong = getMaxLeftPoint(crong);
-        int maxRightPointOfCrong = getMaxRightPoint(crong);
-        int maxPointOfCrong = Math.max(maxLeftPointOfCrong, maxRightPointOfCrong);
+        int maxPointOfPobi = getMaxPoint(pobi);
+        int maxPointOfCrong = getMaxPoint(crong);
 
         if (maxPointOfPobi > maxPointOfCrong) {
             return Constant.WIN_POBI;
@@ -50,6 +45,12 @@ class Problem1 {
         }
         return Constant.DRAW;
 
+    }
+
+    private static int getMaxPoint(List<Integer> crew) {
+        int maxLeftPoint = getMaxLeftPoint(crew);
+        int maxRightPoint = getMaxRightPoint(crew);
+        return Math.max(maxLeftPoint, maxRightPoint);
     }
 
     private static int getMaxRightPoint(List<Integer> openPages) {
