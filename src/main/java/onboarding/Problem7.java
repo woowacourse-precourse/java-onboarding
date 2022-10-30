@@ -8,7 +8,7 @@ public class Problem7 {
         HashMap<String, Integer> map = new HashMap<>(); //사용자 친구추천 후보들
 
         //사용자와 이미 친구인 사람들 목록 만들기
-        HashSet<String> set = makeFriendList(friends, user);
+        HashSet<String> friendList = makeFriendList(friends, user);
 
         //함께아는 친구 점수 계산하는 기능
         for(int i = 0; i < friends.size(); i++){
@@ -20,10 +20,10 @@ public class Problem7 {
             }
 
             //점수계산
-            if(set.contains(pair.get(0))){
+            if(friendList.contains(pair.get(0))){
                 String friendOfFriend = pair.get(1);
                 map = accumulateRecommendedScore(map, friendOfFriend, 10);
-            }else if(set.contains(pair.get(1))){
+            }else if(friendList.contains(pair.get(1))){
                 String friendOfFriend = pair.get(0);
                 map = accumulateRecommendedScore(map, friendOfFriend, 10);
             }
@@ -32,7 +32,7 @@ public class Problem7 {
         //visitor 점수 계산하는 기능
         for(int i = 0; i < visitors.size(); i++){
             String visitor = visitors.get(i);
-            if(set.contains(visitor)){
+            if(friendList.contains(visitor)){
                 //이미 사용자와 친구인 경우
                 continue;
             }
