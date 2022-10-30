@@ -116,6 +116,16 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
 
         //함수 호출해서 완성하기
+        setMyFriends(user,friends);
+        setRecommendList(user);
+        makeGraph(friends);
+
+        countFriend();
+        countVisitor(visitors);
+
+        recommendList.values().remove(0);
+        answer = new ArrayList<>(sortList().keySet());
+
         return answer;
     }
 }
