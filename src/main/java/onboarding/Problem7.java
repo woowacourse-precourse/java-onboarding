@@ -12,7 +12,19 @@ import java.util.*;
  */
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        List<String> result = new LinkedList<String>();
+        Map<String, Integer> map = new HashMap<>();
+
+        // 이미 친구인 목록을 만든다. [shakevan, donut]
+        HashSet<String> alreadyfriends = new HashSet<>();
+        for(int i=0; i<friends.size(); i++){
+            if(friends.get(i).get(0)==user){
+                alreadyfriends.add(friends.get(i).get(1));
+
+            }else if(friends.get(i).get(1)==user){
+                alreadyfriends.add(friends.get(i).get(0));
+            }
+        }
+        return result;
     }
 }
