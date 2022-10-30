@@ -139,4 +139,11 @@ class Book {
         }
         return rightPage.multiplePage();
     }
+
+    public int bookScore() {
+        if (bigSumPageByLeftAndRight() >= bigMultiplePageByLeftAndRight()) {
+            return bigSumPageByLeftAndRight();
+        }
+        return bigMultiplePageByLeftAndRight();
+    }
 }
