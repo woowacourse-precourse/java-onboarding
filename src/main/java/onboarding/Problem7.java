@@ -12,6 +12,9 @@ public class Problem7 {
     // key 값으로 사용자의 아이디, value 값으로 점수가 들어간다.
     static Map<String, Integer> scoreMap;
 
+    // 사용자의 친구 목록 리스트를 관리한다.
+    static List<String> userFriendList;
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
 
@@ -24,12 +27,29 @@ public class Problem7 {
         }
 
         // 사용자의 친구 목록을 조회한다.
-        List<String> userFriendList = friendMap.get(user);
+        userFriendList = friendMap.get(user);
 
         // 친구 관계 Map에서 사용자의 정보를 제거한다. (기준이 사용자이기 때문)
         friendMap.remove(user);
 
+        // 다른 사용자의 친구 리스트를 조회하여 사용자의 친구 리스트와 비교한다.
+        for(String diffUser : friendMap.keySet()) {
+            getFriendsOfDiffUserAndCompare(diffUser);
+        }
+
         return answer;
+    }
+
+    /**
+     * 다른 사용자의 친구 리스트를 조회하여 사용자의 친구 리스트와 비교한다.
+     *
+     * @param diffUser 다른 사용자의 아이디
+     */
+    private static void getFriendsOfDiffUserAndCompare(String diffUser) {
+        List<String> diffFriendList = friendMap.get(diffUser);
+        for(String friendOfDiffUser : diffFriendList) {
+
+        }
     }
 
     /**
