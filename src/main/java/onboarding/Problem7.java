@@ -14,7 +14,7 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> friendsOfUser = findFriendsByUser(user, friends);
-        Map<String, Integer> recommendationScore = addAcquaintanceScore(friends, friendsOfUser);
+        Map<String, Integer> recommendationScore = addAcquaintanceScore(friends, friendsOfUser, user);
         visitors = excludeFriendsFromVisitors(visitors, friendsOfUser);
         addVisitorScore(visitors, recommendationScore);
         sortRecommendationScore(recommendationScore);
@@ -48,10 +48,11 @@ public class Problem7 {
         }
     }
 
-    private static Map<String, Integer> addAcquaintanceScore(List<List<String>> friends, List<String> friendsOfUser) {
+    private static Map<String, Integer> addAcquaintanceScore(List<List<String>> friends, List<String> friendsOfUser, String user) {
         Map<String, Integer> scoreOfAcquaintances = new HashMap<>();
         for (String friendOfUser : friendsOfUser) {
             List<String> acquaintances = findFriendsByUser(friendOfUser, friends);
+            acquaintances.remove(user);
             for (String acquaintance : acquaintances) {
                 if (scoreOfAcquaintances.containsKey(acquaintance)) {
                     scoreOfAcquaintances.put(acquaintance, scoreOfAcquaintances.get(acquaintance) + ACQUAINTANCE_SCORE);
