@@ -32,8 +32,8 @@ class ValidatorPro6 {
   public void validateEmail(List<List<String>> forms) {
     for (List<String> crewInfo : forms) {
       if (!crewInfo.get(EMAIL).contains("email.com") ||
-          crewInfo.get(EMAIL).length() < MIN_EMAIL_LEN
-          || crewInfo.get(EMAIL).length() >= MAX_EMAIL_LEN) {
+          (crewInfo.get(EMAIL).length() >= MAX_EMAIL_LEN) ||
+          (crewInfo.get(EMAIL).length() < MIN_EMAIL_LEN)) {
         throw new IllegalArgumentException(
             "The e-mail conforms to the e-mail format, and the total length is more than"
                 + MIN_EMAIL_LEN + " characters and less than" + MAX_EMAIL_LEN + " characters.");
