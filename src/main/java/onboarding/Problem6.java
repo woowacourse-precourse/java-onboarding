@@ -34,4 +34,14 @@ public class Problem6 {
             return true;
         else return false;
     }
+
+    /**
+     * 닉네임에 한글만 있는지 확인하는 함수
+     */
+    private static boolean isNameHangul(String nickname){
+        String hangul = "^[가-힣]*$";
+        if(!nickname.matches(hangul))
+            return false;
+        else return true;
+    }
 }
