@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -15,14 +16,17 @@ public class Problem6 {
 		}
 
 		Collection<String> crewNicknames = crewHashData.values();
+		HashSet<String> organizedEmails = new HashSet<>();
 
 		for (String name : crewNicknames) {
 			for (int j = 0; j <= name.length() - 2; j++) {
 				String checkingWords = name.substring(j, j + 2);
-				System.out.println(checkingWords);
 
 				Set<String> emailsToBeSent = getEmailsToBeSent(crewHashData, checkingWords);
-				System.out.println(emailsToBeSent);
+
+				if (emailsToBeSent.size() > 1) {
+					organizedEmails.addAll(emailsToBeSent);
+				}
 			}
 		}
 
