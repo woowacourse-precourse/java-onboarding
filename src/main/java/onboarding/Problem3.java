@@ -34,4 +34,15 @@ public class Problem3 {
 
 		return ret;
 	}
+
+	private static int combination(int n, int r) {
+		int ret = 1;
+
+		for(int i = 0;i < r;i++)
+			ret *= (n - i);
+		for(int i = r;i > 1;i--)
+			ret /= i;
+
+		return ret;
+	}
 }
