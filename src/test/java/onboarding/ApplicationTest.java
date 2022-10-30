@@ -526,5 +526,20 @@ class ApplicationTest {
             List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
             assertThatThrownBy(() -> Problem7.solution(user, friends, visitors)).isInstanceOf(Exception.class);
         }
+
+        @Test
+        @DisplayName("방문횟수로만 우선순위를 가장 높게 만든다")
+        void case11() throws Exception {
+            String user = "mrko";
+            List<List<String>> friends = List.of(
+                    List.of("donut", "andole"),
+                    List.of("donut", "mrko"),
+                    List.of("shakevan", "jun"),
+                    List.of("shakevan", "mrko")
+            );
+            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan", "bedi", "bedi", "bedi", "bedi", "bedi", "bedi", "bedi", "bedi");
+            List<String> result = List.of("bedi","andole", "jun");
+            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+        }
     }
 }
