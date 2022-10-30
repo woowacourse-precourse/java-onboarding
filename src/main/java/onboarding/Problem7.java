@@ -63,4 +63,10 @@ public class Problem7 {
     public static void addscore(Map<String,Integer> fre,String key,int score){
         fre.put(key,fre.getOrDefault(key,0)+score);
     }
+    public static boolean isFriend(Set<String> friend,String name){
+        if (friend.contains(name)){
+            return true;
+        }
+        return false;
+    }
 }
