@@ -11,13 +11,13 @@ import java.util.stream.Collectors;
 
 public class Problem7 {
 
-  private final static FriendShip friendShip = new FriendShip();
-  private final static Recommendation recommendation = new Recommendation();
+  static FriendShip friendShip = new FriendShip();
+  static Recommendation recommendation = new Recommendation();
 
   public static List<String> solution(String user, List<List<String>> friends,
       List<String> visitors) {
     friendShip.createFriendShip(friends);
-    return recommendation.recommendUsers(friendShip.createRecommendedScore(user, visitors), user);
+    return recommendation.recommendUsers(user, friendShip.createRecommendedScore(user, visitors));
   }
 
   enum Point {
@@ -36,8 +36,8 @@ public class Problem7 {
 
   static class FriendShip {
 
-    private final Map<String, Set<String>> friendShip;
-    private final Map<String, Integer> recommendedScore;
+    private Map<String, Set<String>> friendShip;
+    private Map<String, Integer> recommendedScore;
 
     public FriendShip() {
       friendShip = new HashMap<>();
@@ -45,6 +45,8 @@ public class Problem7 {
     }
 
     public Map<String, Set<String>> createFriendShip(List<List<String>> friends) {
+      friendShip = new HashMap<>();
+
       for (List<String> friend : friends) {
         String name1 = friend.get(0);
         String name2 = friend.get(1);
@@ -62,6 +64,8 @@ public class Problem7 {
     }
 
     public Map<String, Integer> createRecommendedScore(String user, List<String> visitors) {
+      recommendedScore = new HashMap<>();
+
       for (String other : friendShip.keySet()) {
         relatedFriends(user, other);
       }
@@ -74,7 +78,7 @@ public class Problem7 {
     }
 
     private void relatedFriends(String user, String other) {
-      Set<String> userFriends = friendShip.get(user);
+      Set<String> userFriends = friendShip.getOrDefault(user, new HashSet<>());
       for (String friend : friendShip.get(other)) {
         addRelatedScore(other, userFriends, friend);
       }
@@ -88,7 +92,7 @@ public class Problem7 {
     }
 
     private void addVisitedScore(String user, String visitor) {
-      Set<String> userFriends = friendShip.get(user);
+      Set<String> userFriends = friendShip.getOrDefault(user, new HashSet<>());
       if (!userFriends.contains(visitor)) {
         recommendedScore.put(visitor,
             recommendedScore.getOrDefault(visitor, 0) + Point.VISIT_POINT.getPoint());
@@ -99,7 +103,7 @@ public class Problem7 {
 
   static class Recommendation {
 
-    public List<String> recommendUsers(Map<String, Integer> recommendedScore, String user) {
+    public List<String> recommendUsers(String user, Map<String, Integer> recommendedScore) {
       return recommendedScore.entrySet().stream()
           .filter(entry -> !entry.getKey().equals(user) && entry.getValue() != 0)
           .sorted(Map.Entry.<String, Integer>comparingByValue(Collections.reverseOrder())
