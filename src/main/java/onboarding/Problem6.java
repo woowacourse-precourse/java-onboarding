@@ -76,16 +76,15 @@ public class Problem6 {
 
         return indexLst;
     }
-//
-//    public static List<String> finalAnswer(List<Integer> indexLst, List<List<String>> forms) {
-//        ArrayList<String> emailLst = new ArrayList<>();
-//
-//
-//        for(int i=0; i<indexLst.size(); i++) {
-//            int location = indexLst.get(i);
-//            emailLst.add(forms.get(location).get(0));
-//        }
-//        Collections.sort(emailLst);
-//        return emailLst;
-//    }
+
+    public static List<String> finalAnswer(List<Integer> indexLst, List<List<String>> forms) {
+        ArrayList<String> emailLst = new ArrayList<>();
+
+        for(int i=0; i<indexLst.size(); i++) {
+            int location = indexLst.get(i);
+            emailLst.add(forms.get(location).get(0));
+        }
+        Collections.sort(emailLst);
+        return emailLst;
+    }
 }
