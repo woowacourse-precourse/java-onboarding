@@ -7,11 +7,6 @@ public class MutualDictionary {
     private final Map<String, Integer> mutualFriendDictionary;
 
     public MutualDictionary(String user, List<List<String>> relations) {
-        this.mutualFriendDictionary = new MutualDictionaryGenerator(user, relations).dictionary;
+        this.mutualFriendDictionary = new MutualDictionaryGenerator(user, relations).getDictionary();
     }
-    
-//    @Override
-//    public String toString() {
-//        return mutualFriendDictionary.toString();
-//    }
 }
