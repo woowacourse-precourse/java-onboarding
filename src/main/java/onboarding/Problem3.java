@@ -12,4 +12,19 @@ public class Problem3 {
         }
         return result;
     }
+
+    private static int checkAllDigit(int num) {
+        int sum = 0;
+        while (num != 0) {
+            if (is369(num % 10)) {
+                sum += 1;
+            }
+            num /= 10;
+        }
+        return sum;
+    }
+
+    private static boolean is369(int n) {
+        
+    }
 }
