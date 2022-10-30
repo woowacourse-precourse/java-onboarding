@@ -9,7 +9,6 @@ public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
         Set<String> resultSet = new HashSet<>();
-
         boolean[] isSimilar = new boolean[forms.size()];
 
         for (int index = 0; index < forms.size(); index++) {
@@ -35,9 +34,7 @@ public class Problem6 {
             }
         }
 
-        ArrayList<String> answer = new ArrayList<String>(resultSet);
-        Collections.sort(answer);
-        return answer;
+        return makeResult(resultSet);
     }
 
     public static Set<String> makePatternsFromNickName(String nickname) {
@@ -58,5 +55,11 @@ public class Problem6 {
 
     public static String getEmail(List<List<String>> forms, Integer index) {
         return forms.get(index).get(EMAIL_IDX);
+    }
+
+    public static List<String> makeResult(Set<String> resultSet) {
+        ArrayList<String> answer = new ArrayList<String>(resultSet);
+        Collections.sort(answer);
+        return answer;
     }
 }
