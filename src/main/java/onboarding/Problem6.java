@@ -8,6 +8,12 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         ArrayList<String> answer = new ArrayList<>();
 
+        if (throwCrewNumberException(forms)) {
+            return answer;
+        }
+
+        answer = findDuplicateName(forms);
+
         return answer;
     }
 
@@ -34,5 +40,45 @@ public class Problem6 {
         return (forms.get(1).length() < 1 || forms.get(1).length() >= 20);
     }
 
+    public static ArrayList<String> findDuplicateName(List<List<String>> forms) {
+        ArrayList<String> duplicateEmail = new ArrayList<>();
+        HashMap<String, List<String>> twoLetter = new HashMap<>();
+        boolean exception = false;
 
+        for (List<String> formsList: forms) {
+            exception = throwEmailLengthException(formsList);
+            exception = throwEmailTypeException(formsList);
+            exception = throwNameNotKoreanException(formsList);
+            exception = throwNameLengthException(formsList);
+
+            if (exception) {
+                return duplicateEmail;
+            }
+
+            twoLetter.putAll(getTwoLetterEach(formsList));
+            
+        }
+
+        return duplicateEmail;
+    }
+
+    public static HashMap<String, ArrayList<String>> getTwoLetterEach(List<String> forms) {
+        HashMap<String, ArrayList<String>> Letter = new HashMap<>();
+        ArrayList<String> addArray = new ArrayList<>();
+        int index;
+
+        if (forms.get(1).length() == 1) {
+            addArray.add(forms.get(1));
+            Letter.put(forms.get(0), addArray);
+            return Letter;
+        }
+
+        for (index = 0; index < forms.get(1).length() - 1; index++) {
+            addArray.add(forms.get(1).substring(index, index + 2));
+        }
+
+        Letter.put(forms.get(0), addArray);
+
+        return Letter;
+    }
 }
