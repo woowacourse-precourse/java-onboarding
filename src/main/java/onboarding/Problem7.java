@@ -68,4 +68,16 @@ public class Problem7 {
 
         return visitorsCountMap;
     }
+
+    private static int countCommonFriends(List<String> friendListA, List<String> friendListB) {
+        int result = 0;
+
+        for (String friend : friendListA) {
+            if (friendListB.contains(friend)) {
+                result++;
+            }
+        }
+
+        return result;
+    }
 }
