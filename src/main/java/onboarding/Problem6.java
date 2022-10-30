@@ -13,8 +13,8 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         Map<String,Integer> nickMap = mapSetting(forms);
         List<Integer> duplicateUserIndex = duplicateIndex(forms, nickMap);
-        Set<String> duplicateUserMailSet= mailSetting(forms, duplicateUserIndex);
-        List<String> answer =setToList(duplicateUserMailSet);
+        Set<String> duplicateUserMailSet = duplicateUserMail(forms, duplicateUserIndex);
+        List<String> answer = setToList(duplicateUserMailSet);
         return answer;
     }
     private static Map<String, Integer> mapSetting(List<List<String>> forms) {
@@ -48,7 +48,7 @@ public class Problem6 {
         }
         return NO_DUPLICATE;
     }
-    private static Set<String> mailSetting(List<List<String>> forms, List<Integer> duplicateUserIndex) {
+    private static Set<String> duplicateUserMail(List<List<String>> forms, List<Integer> duplicateUserIndex) {
         Set<String> duplicateUserEmail = new TreeSet<>();
         for(int index =0;index<duplicateUserIndex.size();index++){
             duplicateUserEmail.add(forms.get(duplicateUserIndex.get(index)).get(EMAIL));
