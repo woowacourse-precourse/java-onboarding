@@ -15,8 +15,7 @@ public class Problem3 {
 
     public static int count369(int number){
         int clapCount = 0;
-        char[] parseArray = integerToCharArr(number);
-        for (char c : parseArray) {
+        for (char c : integerToCharArr(number)) {
             int parseNumber = characterToInteger(c);
             if (is369(parseNumber)) {
                 clapCount++;
