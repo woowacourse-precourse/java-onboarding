@@ -27,6 +27,12 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
+        int crongSumMax = Math.max(getDigitSum(crong.get(0)), getDigitSum(crong.get(1)));
+        int crongMulMax = Math.max(getDigitMul(crong.get(0)), getDigitMul(crong.get(1)));
+
+        int pobiSumMax = Math.max(getDigitSum(pobi.get(0)), getDigitSum(pobi.get(1)));
+        int pobiMulMax = Math.max(getDigitMul(pobi.get(0)), getDigitMul(pobi.get(1)));
+
         return answer;
     }
 }
