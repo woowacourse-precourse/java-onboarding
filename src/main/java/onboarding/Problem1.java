@@ -3,9 +3,40 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+	private static final int POBIWIN = 1;
+	private static final int CRONGWIN = 2;
+	private static final int DRAW = 0;
+	private static final int EXCEPTIONCODE = -1;
+
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
-		int answer = Integer.MAX_VALUE;
-		return answer;
+
+		Page pobiPage = new Page(pobi.get(0), pobi.get(1));
+		Page crongPage = new Page(crong.get(0), crong.get(1));
+
+		if (!pobiPage.isValid() || !crongPage.isValid()) {
+			return EXCEPTIONCODE;
+		}
+
+		int pobiScore = getScore(pobiPage);
+		int crongScore = getScore(crongPage);
+
+		return findWinner(pobiScore, crongScore);
+	}
+
+	private static int findWinner(int pobiScore, int crongScore) {
+		if (pobiScore > crongScore) {
+			return POBIWIN;
+		}
+
+		if (pobiScore < crongScore) {
+			return CRONGWIN;
+		}
+
+		if (pobiScore == crongScore) {
+			return DRAW;
+		}
+
+		return EXCEPTIONCODE;
 	}
 
 	private static int getScore(Page page) {
