@@ -18,7 +18,16 @@ public class Problem6 {
 
     }
 
-
+    private static void checkDuplication(Map<String, List<String>> map, Set<String> ans) {
+        Set<String> keys = map.keySet();
+        for (String key : keys) {
+            if(map.get(key).size() >= 2) {
+                for(String email : map.get(key)) {
+                    ans.add(email);
+                }
+            }
+        }
+    }
 
     private static void parseNickName(List<List<String>> forms, Map<String, List<String>> map) {
         for(List<String> form : forms) {
