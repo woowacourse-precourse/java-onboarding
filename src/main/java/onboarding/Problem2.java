@@ -6,12 +6,16 @@ public class Problem2 {
     }
 
     private static String decoder(String cryptogram) {
-        String a = "";
-        while (a.length() != cryptogram.length()) {
-            a = cryptogram;
+        String str = "";
+        while (lengthNotEq(str, cryptogram)) {
+            str = cryptogram;
             cryptogram = checkDuplicate(cryptogram);
         }
         return cryptogram;
+    }
+
+    private static boolean lengthNotEq(String str, String target) {
+        return str.length() != target.length();
     }
 
     private static String checkDuplicate(String str) {
