@@ -24,6 +24,14 @@ public class Problem6 {
         for (int k = 0; k < slicedNameList.size(); k++) {
             String duplicatedName = slicedNameList.get(k);
             String duplicatedEmail = duplicatedNameMap.get(duplicatedName);
+            isEmailNotNull(answer, email, duplicatedEmail);
+        }
+    }
+
+    private static void isEmailNotNull(Set<String> answer, String email, String duplicatedEmail) {
+        if (duplicatedEmail != null) {
+            answer.add(email);
+            answer.add(duplicatedEmail);
         }
     }
 
