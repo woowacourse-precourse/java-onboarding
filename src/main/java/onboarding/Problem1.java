@@ -10,9 +10,24 @@ class Problem1 {
         if (isInvalid(pobi) || isInvalid(crong))
             return answer;
 
+        int pobiScore = score(pobi);
+        int crongScore = score(crong);
+
         return answer;
     }
 
+    public static int score(List<Integer> pages){
+        int sum = 0;
+        int product = 1;
+        for (Integer page: pages){
+            while (page > 0){
+                sum += page % 10;
+                product *= page % 10;
+                page /= 10;
+            }
+        }
+        return Math.max(sum, product);
+    }
 
     public static boolean isInvalid(List<Integer> pages){
         // 페이지가 시작 면이거나 마지막 면일 경우, 예외
