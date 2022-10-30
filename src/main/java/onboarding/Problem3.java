@@ -1,5 +1,5 @@
 package onboarding;
-
+import java.util.Arrays;
 public class Problem3 {
     public static int findNumberThree(int number) {
         int count = 0;
@@ -18,6 +18,7 @@ public class Problem3 {
     };
     public static int solution(int number) {
         int answer = 0;
+        answer = findNumberThree(number);
         return answer;
     }
 }
