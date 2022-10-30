@@ -74,8 +74,50 @@ public class InMemoryDBTest {
 			final List<String> expected = Stream.of(andole, jun, bedi)
 				.map(Member::getUsername)
 				.collect(Collectors.toList());
+
 			// when
 			final List<String> top5FriendReferralList = InMemoryDB.queryTop5FriendReferralList(mrko.getUsername());
+
+			// then
+			assertThat(top5FriendReferralList).isEqualTo(expected);
+		}
+
+		@Test
+		void case2() throws Exception {
+			// given
+			final Member hello = InMemoryDB.insertIfAbsentAndQueryMember("hello");
+			final Member mrko = InMemoryDB.insertIfAbsentAndQueryMember("mrko");
+			final Member donut = InMemoryDB.insertIfAbsentAndQueryMember("donut");
+			final Member andole = InMemoryDB.insertIfAbsentAndQueryMember("andole");
+			final Member jun = InMemoryDB.insertIfAbsentAndQueryMember("jun");
+			final Member shakevan = InMemoryDB.insertIfAbsentAndQueryMember("shakevan");
+			final Member bedi = InMemoryDB.insertIfAbsentAndQueryMember("bedi");
+			final Member kane = InMemoryDB.insertIfAbsentAndQueryMember("kane");
+			final Member sam = InMemoryDB.insertIfAbsentAndQueryMember("sam");
+			final Member anne = InMemoryDB.insertIfAbsentAndQueryMember("anne");
+
+			andole.friend(jun);
+			andole.friend(bedi);
+			jun.friend(shakevan);
+			jun.friend(kane);
+			jun.friend(sam);
+			bedi.friend(shakevan);
+			bedi.friend(anne);
+			bedi.friend(sam);
+			anne.friend(mrko);
+
+			donut.visit(hello);
+			anne.visit(hello);
+			mrko.visit(hello);
+			mrko.visit(hello);
+			sam.visit(hello);
+
+			final List<String> expected = Stream.of(mrko, anne, donut, sam)
+				.map(Member::getUsername)
+				.collect(Collectors.toList());
+
+			// when
+			final List<String> top5FriendReferralList = InMemoryDB.queryTop5FriendReferralList(hello.getUsername());
 
 			// then
 			assertThat(top5FriendReferralList).isEqualTo(expected);
