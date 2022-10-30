@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.DoubleStream;
 
 public class Problem7 {
 
@@ -89,10 +90,51 @@ public class Problem7 {
                 // 방문객 점수
                 int nameCount = Collections.frequency(visitors, name);
 
-                // 해당 방문자 방문 점수 결과 확인
-                System.out.println(name + ", 방문 점수 : " + nameCount);
+                // 친구 추천 점수 갱신
+                renewAddScore(infoScoreList, name, nameCount);
             }
         }
+    }
+
+    // 3-2 친구 추천 점수 리스트에 방문 점수 매기기
+    static void renewAddScore(List<List<String>> infoScoreList, String name, int visitScore)
+    {
+        for(List<String> infoScore : infoScoreList)
+        {
+            // 방문자가 친구의 친구인 경우
+            if(infoScore.contains(name))
+            {
+                String score1 = infoScore.get(1);
+                String score2 = Integer.toString(visitScore);
+
+                // 점수 타입 변환 후 연산
+                String scoreResult = getScoreCalc(score1,score2);
+
+                // 점수 갱신
+                infoScore.set(1,scoreResult);
+                return;
+            }
+        }
+
+        // 방문자가 친구의 친구가 아닌 경우
+        List<String> infoVisitScore = new ArrayList<>();
+        infoVisitScore.add(name);
+        infoVisitScore.add(Integer.toString(visitScore));
+
+        // 점수 추가
+        infoScoreList.add(infoVisitScore);
+        return;
+    }
+
+    // 점수 타입 변환 & 연산 수행
+    static String getScoreCalc(String score1, String score2)
+    {
+        int num1 = Integer.parseInt(score1);
+        int num2 = Integer.parseInt(score2);
+
+        int sumResult = num1 + num2;
+
+        return Integer.toString(sumResult);
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -118,6 +160,9 @@ public class Problem7 {
 
         // 방문자 점수 추가
         addVisitorScore(infoScoreList, visitors, myFriendsList);
+
+        // 친구 추천 리스트에 방문 점수 매기기 결과 확인
+        System.out.println(infoScoreList);
 
         return answer;
     }
