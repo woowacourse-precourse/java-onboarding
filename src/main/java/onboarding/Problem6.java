@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 public class Problem6 {
 
   private static Map<String, String> crewInfo;
+  private static final int MAX_CREW_SIZE = 10000;
 
   public static List<String> solution(List<List<String>> forms) {
     classifyForms(forms);
@@ -98,5 +99,12 @@ public class Problem6 {
         listOfDuplicatedNickNameMemberEmail.add(crewMember.getKey());
       }
     }
+  }
+
+  public static boolean isAllowedCrewSize(int crewSize) throws IllegalStateException{
+    if (crewSize < 1 || crewSize > MAX_CREW_SIZE) {
+      throw new IllegalStateException("허용된 크루 사이즈가 아닙니다.");
+    }
+    return true;
   }
 }
