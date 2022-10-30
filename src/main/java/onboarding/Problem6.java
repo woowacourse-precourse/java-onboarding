@@ -8,29 +8,33 @@ import java.util.List;
 public class Problem6 {
 	public static List<String> solution(List<List<String>> forms) {
 		HashMap<String, String> tmpAnswer = new HashMap<>();
-		for (int i = 0; i < forms.size() - 1; i++) {
-			String email = forms.get(i).get(0);
-			String nickName = forms.get(i).get(1);
-			if (!emailCheck(email) && !nicknameCheck(nickName)) {
+		for (int myIndex = 0; myIndex < forms.size() - 1; myIndex++) {
+			String myEmail = forms.get(myIndex).get(0);
+			String myNickName = forms.get(myIndex).get(1);
+			if (!emailCheck(myEmail) && !nicknameCheck(myNickName)) {
 				continue;
 			}
 			
-			// match
-			for (int ii = 0; ii < nickName.length() - 1; ii++) {
-				String targetSequence = nickName.substring(ii, ii + 2);
+			
+			for (int targetIndex = myIndex + 1; targetIndex < forms.size(); targetIndex++) {
+				String targetEmail = forms.get(targetIndex).get(0);
+				String targetNickname = forms.get(targetIndex).get(1);
+				if (!emailCheck(targetEmail) && !nicknameCheck(targetNickname)) {
+					continue;
+				}
 				
-				for (int iii = i + 1; iii < forms.size(); iii++) {
-					String targetEmail = forms.get(iii).get(0);
-					String targetNickname = forms.get(iii).get(1);
-					if (!emailCheck(targetEmail) && !nicknameCheck(targetNickname)) {
-						continue;
-					}
-					
+				// match
+				for (int i = 0; i < myNickName.length() - 1; i++) {
+					String targetSequence = myNickName.substring(i, i + 2);
 					boolean contains = targetNickname.contains(targetSequence);
 					if (contains) {
 						tmpAnswer.put(targetEmail, targetNickname);
-						tmpAnswer.put(email, nickName);
+						tmpAnswer.put(myEmail, myNickName);
 						break;
+					}
+					// 같은 글자의 2개의 경우
+					if (targetSequence.charAt(0) == targetSequence.charAt(1)) {
+						i++;
 					}
 				}
 			}
