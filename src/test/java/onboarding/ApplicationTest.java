@@ -496,5 +496,22 @@ class ApplicationTest {
             List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
             assertThatThrownBy(() -> Problem7.solution(user, friends, visitors)).isInstanceOf(Exception.class);
         }
+
+
+        @Test
+        @DisplayName("id에 대문자가 들어가면 예외를 반환한다")
+        void case10() {
+            String user = "mrko"; //31 글자
+            List<List<String>> friends = List.of(
+                    List.of("donut", "anDole"),
+                    List.of("donut", "jun"),
+                    List.of("donut", "mrko"),
+                    List.of("shakevan", "andole"),
+                    List.of("shakevan", "jun"),
+                    List.of("shakevan", "mrko")
+            );
+            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+            assertThatThrownBy(() -> Problem7.solution(user, friends, visitors)).isInstanceOf(Exception.class);
+        }
     }
 }
