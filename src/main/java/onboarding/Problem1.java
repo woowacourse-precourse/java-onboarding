@@ -31,17 +31,19 @@ class Problem1 {
         // 98
         int sum =0;
         while (num!=0){ // 98/10 = 9...8
-            num = num/10;
             sum +=num%10;
+            num = num/10;
+
         }
         return sum;
     }
 
     public static int calMulti(int num){ // 각페이지의 곱셈을 해주는 메소드
-        int multi =0;
+        int multi =1;
         while (num!=0){ // 98/10 = 9...8
-            num = num/10;
             multi *=num%10;
+            num = num/10;
+
         }
         return multi;
     }

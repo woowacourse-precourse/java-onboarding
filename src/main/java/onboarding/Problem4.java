@@ -16,12 +16,16 @@ public class Problem4 {
         // 대문자 인가 소문자인가
         // 맞는 숫자 출력해주기
         String newWord ="";
+        char a = ' ';
         for (int i =0; i<word.length(); i++){
             int num = Integer.valueOf(word.charAt(i));
             if(word.charAt(i)==' ') newWord +=" ";
-            if(num >64 && num <91) newWord += String.valueOf(Math.abs(155-num));
-            if(num >97 && num <122) newWord += String.valueOf(Math.abs(219-num));
-
+            if(num >64 && num <91) { // 대문자 아스키 코드 A ~Z : 65~91
+                a = (char) Math.abs(155-num);
+                newWord += String.valueOf(a);}
+            if(num >97 && num <122) { // 소문자 아스키 코드 a ~z : 98 ~122
+                a = (char) Math.abs(219-num);
+                newWord += String.valueOf(a);}
         }
 
         return newWord;
