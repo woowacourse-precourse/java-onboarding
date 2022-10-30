@@ -12,7 +12,7 @@ public class Problem6 {
             String email = user.get(0);
             String nickname = user.get(1);
 
-            if(!checkEmail(email)) {
+            if(!isValidEmail(email) || !isValidNickname(nickname)) {
                 continue;
             }
 
@@ -24,11 +24,18 @@ public class Problem6 {
         return answer;
     }
 
-    public static boolean checkEmail(String email) {
+    public static boolean isValidEmail(String email) {
         String regex = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@email.com";
         Pattern p = Pattern.compile(regex);
         Matcher m = p.matcher(email);
         return m.matches() && email.length() >= 11 && email.length() <= 20;
+    }
+
+    public static boolean isValidNickname(String nickname) {
+        String regex= "[ㄱ-ㅎㅏ-ㅣ가-힣]";
+        String tmp = nickname;
+        tmp = tmp.replaceAll(regex, "");
+        return tmp.length() == 0;
     }
 
     public static void getNickname(String nickname, int idx, HashMap<String, Integer> nicknameMap, HashSet<Integer> alertIdxSet) {
