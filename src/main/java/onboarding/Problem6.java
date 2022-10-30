@@ -1,13 +1,24 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = returnResult(forms);
         return answer;
     }
 
+    private static List<String> returnResult(List<List<String>> forms) {
+        List<String> result = new ArrayList<>();
+        for (List<String> emailAndNickname : forms) {
+            if (checkSimilarityInCrewList(emailAndNickname.get(1), forms) && !result.contains(
+                emailAndNickname.get(0))) {
+                result.add(emailAndNickname.get(0));
+            }
+        }
+        return result;
+    }
     private static boolean checkSimilarityInCrewList(String nickname, List<List<String>> forms) {
         for (List<String> emailAndNickname : forms) {
             if (!nickname.equals(emailAndNickname.get(1)) && checkSimilarity(nickname, emailAndNickname.get(1))) {
