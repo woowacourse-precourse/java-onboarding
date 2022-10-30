@@ -74,6 +74,20 @@ public class Problem7 {
         friend.setScore(0);
         this.friendshipScores.add(friend);
     }
+
+    static List<String> getDirectFriends(String user, List<List<String>> friends) {
+        List<String> directFriends = new ArrayList<>();
+        for (List<String> f : friends) {
+            if (f.get(0).equals(user)) {
+                directFriends.add(f.get(1));
+                continue;
+            }
+            if (f.get(1).equals(user)) {
+                directFriends.add(f.get(1));
+            }
+        }
+        return directFriends;
+    }
 }
 
 
