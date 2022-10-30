@@ -13,6 +13,9 @@ class Problem1 {
         int crongLeftPage = crong.get(0);
         int crongRightPage = crong.get(1);
 
+        List<Integer> pobiNumbers = getAllNumbers(pobiLeftPage, pobiRightPage);
+        List<Integer> crongNumbers = getAllNumbers(crongLeftPage, crongRightPage);
+
         return answer;
     }
 
@@ -35,6 +38,18 @@ class Problem1 {
             result *= c - '0';
         }
         return result;
+    }
+
+    private static List<Integer> getAllNumbers(int leftPage, int rightPage) {
+        List<Integer> numbers = new ArrayList<>();
+
+        numbers.add(getPageSum(getEachPageNumbers(leftPage)));
+        numbers.add(getPageSum(getEachPageNumbers(rightPage)));
+
+        numbers.add(getPageMultiply(getEachPageNumbers(leftPage)));
+        numbers.add(getPageMultiply(getEachPageNumbers(rightPage)));
+
+        return numbers;
     }
 
 }
