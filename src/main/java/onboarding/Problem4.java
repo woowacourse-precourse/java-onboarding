@@ -9,10 +9,12 @@ public class Problem4 {
     private static final int Z_UPPER_CASE = 90;
     private static final int Z_LOWER_CASE = 122;
 
-
     public static String solution(String word) {
-        List<Character> result = new ArrayList<>();
+        return getWordByStrangeDictionaryLogic(word);
+    }
 
+    private static String getWordByStrangeDictionaryLogic(String word) {
+        List<Character> result = new ArrayList<>();
         for (int i = 0; i < word.length(); i++) {
             int ascii = word.toCharArray()[i];
 
@@ -21,9 +23,7 @@ public class Problem4 {
             }
             result.add((char) ascii);
         }
-        return result.stream()
-                .map(String::valueOf)
-                .collect(Collectors.joining());
+        return joiningChars(result);
     }
 
     private static int changeAsciiValue(int ascii) {
@@ -37,6 +37,11 @@ public class Problem4 {
             return Z_UPPER_CASE - ((val) % Z_UPPER_CASE);
         }
         return val;
+    }
 
+    private static String joiningChars(List<Character> result) {
+        return result.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining());
     }
 }
