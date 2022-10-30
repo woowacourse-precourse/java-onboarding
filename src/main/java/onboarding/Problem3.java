@@ -6,22 +6,21 @@ package onboarding;
 
 public class Problem3 {
 
-    private static int countClap(int number) {
-        int tmp, sum = 0;
+    private static int getSumClap(int number) {
+        int sumClap = 0;
         for (int i = 1; i <= number; i ++) {
-            tmp = i;
-            while (tmp > 0) {
-                if (tmp % 10 == 3 || tmp % 10 == 6 || tmp % 10 == 9)
-                    sum++;
-                tmp /= 10;
+            int element = i;
+            while (element > 0) {
+                if (element % 10 == 3 || element % 10 == 6 || element % 10 == 9)
+                    sumClap++;
+                element /= 10;
             }
         }
-        return sum;
+        return sumClap;
     }
 
     public static int solution(int number) {
-        int answer = 0;
-        answer = countClap(number);
+        int answer = getSumClap(number);
         return answer;
     }
 }
