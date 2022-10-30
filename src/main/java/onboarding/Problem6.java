@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Problem6 {
@@ -28,13 +29,17 @@ public class Problem6 {
             if (!check_email.contains("email.com")){
                 return Collections.singletonList("");
             }
+            // 닉네임은 한글만 가능
+            boolean check_nickname= Pattern.matches("^[ㄱ-ㅎ가-힣]*$", name);
+            if (!check_nickname){
+                return Collections.singletonList("");
+            }
             // 2단어씩 나누기
             for (int j = 0; j < name.length() - 1; j++) {
                 String key = name.substring(j, j + 2);
                 // 키를 가지고 있으면
                 if (email_nick.containsKey(key)) {
                     String email = email_nick.get(key);
-                    System.out.println(email);
                     // nickname에 추가
                     if (!email.equals(forms.get(i).get(0))) {
                         nickname.add(email);
