@@ -15,6 +15,13 @@ public class Problem6 {
             for (int j=i+1; j<forms.size(); j++) {
                 String otherNickName = forms.get(j).get(1);
                 String otherEmail = forms.get(j).get(0);
+                String shortNickName = myNickName;
+                String longNickName = otherNickName;
+
+                if (myNickName.length() > otherNickName.length()) {
+                    shortNickName = otherNickName;
+                    longNickName = myNickName;
+                }
             }
         }
         return answer;
