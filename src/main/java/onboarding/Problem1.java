@@ -54,6 +54,12 @@ class Problem1 {
         if (leftPage - rightPage != -1) {
             return false;
         }
+        if (leftPage % 2 == 0 || rightPage % 2 != 0) {
+            return false;
+        }
+        if (leftPage < 1 || rightPage > 400) {
+            return false;
+        }
         return true;
     }
 
@@ -79,7 +85,7 @@ class Problem1 {
         int crongNum = chooseLageNumber(crong);
         int answer = Math.max(pobiNum, crongNum);
 
-        if (!isFirstOrLastPage(pobi, crong)) {
+        if (isFirstOrLastPage(pobi, crong)) {
             return -1;
         }
         if (!isCorrectPage(pobi, crong)) {

@@ -22,6 +22,7 @@ public class Problem2 {
         }
         return cryptogram;
     }
+
     public static String solution(String cryptogram) {
         String cryptogramAddedSpace = cryptogram += " ";
         boolean flag = true;

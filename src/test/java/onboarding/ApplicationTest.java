@@ -33,13 +33,6 @@ class ApplicationTest {
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
-
-        @Test
-        void firstPageTest() {
-            List<Integer> pobi = List.of(1, 2);
-            List<Integer> crong = List.of(211, 212);
-            assertThat(Problem1.solution(pobi, crong)).isEqualTo(-1);
-        }
     }
 
     @Nested
@@ -89,13 +82,6 @@ class ApplicationTest {
             String word = "I love you";
             String result = "R olev blf";
             assertThat(Problem4.solution(word)).isEqualTo(result);
-        }
-
-        @Test
-        void case2() {
-            Problem4 problem4 = new Problem4();
-            System.out.println(problem4.keyList);
-            System.out.println(problem4.valueList);
         }
     }
 
@@ -156,5 +142,6 @@ class ApplicationTest {
             List<String> result = List.of("andole", "jun", "bedi");
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
+
     }
 }

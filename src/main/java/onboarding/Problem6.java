@@ -25,7 +25,6 @@ public class Problem6 {
                         checkList[j] = 1;
                         result.add(forms.get(i).get(0));
                         result.add(forms.get(j).get(0));
-
                         }
                     }
                     rt++;
