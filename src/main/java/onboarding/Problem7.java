@@ -28,6 +28,19 @@ public class Problem7 {
         }
     }
 
+    private static boolean checkUserList(List<String> userList) {
+        String user;
+        int size = userList.size();
+
+        for (int i = 0; i < size; i++) {
+            user = userList.get(i);
+            if (checkUser(user)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private static boolean checkParam(String user, List<List<String>> friends, List<String> visitors) {
         if (user == null || friends == null || visitors == null) {
             return true;
