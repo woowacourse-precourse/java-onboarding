@@ -16,7 +16,7 @@ public class Problem7 {
     static List<String> userFriendList;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = new ArrayList<>();
+        List<String> answer;
 
         friendMap = new HashMap<>();
         scoreMap = new HashMap<>();
@@ -45,10 +45,31 @@ public class Problem7 {
 
         // 점수가 0점인 사용자는 제거한다.
         for(String recommendUser : scoreMap.keySet()) {
-            removeUserOfZeroScore(recommendUser);
+            removeUserWithZeroScore(recommendUser);
         }
 
+        // 점수와 이름 순서대로 정렬을 진행한다.
+        answer = new ArrayList<>(scoreMap.keySet());
+        answer.sort(Problem7::sortByScoreAndName);
+
+        
         return answer;
+    }
+
+    /**
+     * 추천 리스트를 점수(내림차순)와 이름(사전순)에 따라 정렬한다.
+     *
+     * @param userA 비교할 사용자 A
+     * @param userB 비교할 사용자 B
+     * @return 정렬 결과에 따른 -1, 0(변경하지 않음), 1(자리 변경)이 리턴된다.
+     */
+    private static int sortByScoreAndName(String userA, String userB) {
+        // 점수가 같다면 이름순으로 정렬한다.
+        if (Objects.equals(scoreMap.get(userA), scoreMap.get(userB))) {
+            return userA.compareTo(userB);
+        }
+        // 그게 아니라면 점수를 기준으로 내림차순 정렬한다.
+        return scoreMap.get(userB) - scoreMap.get(userA);
     }
 
     /**
@@ -56,7 +77,7 @@ public class Problem7 {
      *
      * @param recommendUser 추천 후보 사용자 아이디
      */
-    private static void removeUserOfZeroScore(String recommendUser) {
+    private static void removeUserWithZeroScore(String recommendUser) {
         if (scoreMap.get(recommendUser) == 0) {
             scoreMap.remove(recommendUser);
         }
