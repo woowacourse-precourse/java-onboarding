@@ -25,6 +25,19 @@ public class Problem7 {
             user_friend.add(userfriend);        //user와 친구인 사용자들 목록
         }
 
+        for(List<String> friends_i : friends){
+            for(String friend : user_friend){
+                String ffriend = choiceUser(friends_i, friend);     //user의 친구와 친구인 사용자
+
+                if(ffriend.equals("")){
+                    continue;
+                }
+
+                int score = algorithm.get(ffriend);
+                algorithm.put(ffriend, score + 10);
+            }
+        }
+
         return answer;
     }
 
