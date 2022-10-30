@@ -1,5 +1,7 @@
 package onboarding.problem6;
 
+import java.util.List;
+
 public class Crew {
   private String email;
   private String nickname;
@@ -15,5 +17,8 @@ public class Crew {
 
   public String getNickname() {
     return nickname;
+  }
+  public static Crew fromForm(List<String> form) {
+    return new Crew(form.get(0), form.get(1));
   }
 }
