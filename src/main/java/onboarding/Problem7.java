@@ -2,7 +2,6 @@ package onboarding;
 
 import java.util.*;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -48,7 +47,7 @@ public class Problem7 {
         for(Map.Entry<String,List<String>> e : friendMap.entrySet()){
             for(String person : e.getValue()){
                 if (recommendMap.containsKey(person)){
-                    recommendMap.replace(person, recommendMap.get(person).intValue()+10);
+                    recommendMap.replace(person, recommendMap.get(person)+10);
                 }else recommendMap.put(person, 10);
             }
         }
@@ -61,7 +60,7 @@ public class Problem7 {
         for(String visitor : visitors){
             if (userFriends.contains(visitor)) continue;
             if (recommendMap.containsKey(visitor)){
-                recommendMap.replace(visitor, recommendMap.get(visitor).intValue()+1);
+                recommendMap.replace(visitor, recommendMap.get(visitor)+1);
             }else recommendMap.put(visitor,1);
         }
 
@@ -89,6 +88,7 @@ public class Problem7 {
                 })
                 .forEach(e->recommendList.add(e.getKey())); //collect(Collectors.toList ->
 
+            if(recommendList.size()>5) return recommendList.subList(0,5);
             return recommendList;
 
     }
