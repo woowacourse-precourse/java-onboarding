@@ -40,7 +40,18 @@ public class Problem6 {
     }
 
     private boolean validateEmail(String email) {
+        if (email.length() < 11 || email.length() > 19)
+            return false;
+
         String emailPattern = "^\\w+@email.com$";
         return Pattern.matches(emailPattern, email);
+    }
+
+    private List<String> filterEmails(List<String> emails) {
+        List<String> filteredEmails = emails.stream()
+                .filter(email -> validateEmail(email))
+                .collect(Collectors.toList());
+
+        return filteredEmails;
     }
 }
