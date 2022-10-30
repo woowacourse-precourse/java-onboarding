@@ -69,7 +69,6 @@ class UserSelectedForPro7 {
     private static Map<String, Integer> lastScoreMap;
     private static Map<String, List<String>> friendMap;
 
-
     public UserSelectedForPro7(String user, List<List<String>> friends, List<String> visitors) {
         ExceptionClassForPro7 exceptionClassForPro7 = new ExceptionClassForPro7(user, friends,
             visitors);
@@ -81,12 +80,18 @@ class UserSelectedForPro7 {
         finalScoreMap(user, visitors, scoreClass);
     }
 
+    public Map<String, Integer> theLastScoreMap() {
+        return lastScoreMap;
+    }
+
+
     public void makeUserSelectedList(String user, Map<String, List<String>> friendMap) {
         this.userSelectedList = friendMap.get(user);
     }
 
     private void finalScoreMap(String user, List<String> visitors, ScoreForPro7 score) {
         valuePlus1(visitors, valuePlus10(user, score.getScoreMap()));
+        lastScoreMap = removeFromScoreMap(user, score.getScoreMap());
     }
 
     private Map<String, Integer> valuePlus10(String user, Map<String, Integer> scoreMap) {
@@ -114,6 +119,14 @@ class UserSelectedForPro7 {
             }
             scoreMap.put(s, scoreMap.get(s) + 1);
         }
+    }
+
+    private Map<String, Integer> removeFromScoreMap(String user, Map<String, Integer> scoreMap) {
+        scoreMap.remove(user);
+        for (String s : userSelectedList) {
+            scoreMap.remove(s);
+        }
+        return scoreMap;
     }
 }
 
