@@ -8,7 +8,17 @@ public class Problem2 {
     static String topValue;
 
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = "";
+        char currentValue;
+        char topValue;
+
+        for (int index=0; index < cryptogram.length(); index++){
+            currentValue = cryptogram.charAt(index);
+            topValue =
+            checkAndPush(currentValue)
+        }
+
+        answer = conversionStackString();
 
         return answer;
     }
@@ -56,20 +66,20 @@ public class Problem2 {
         return checkValue;
     }
 
-    public static String checkTopValue(Stack checkStack){
+    public static String checkTopValue(){
         String tempTopValue = "";
 
-        if (isEmpty(checkStack) == false){
-            tempTopValue = (String) checkStack.peek();
+        if (!isEmpty()){
+            tempTopValue = (String) stack.peek();
         }
 
         return tempTopValue;
     }
 
-    public static boolean isEmpty(Stack checkStack){
+    public static boolean isEmpty(){
         boolean returnBoolean = false;
 
-        if (checkStack.isEmpty()){
+        if (stack.isEmpty()){
             returnBoolean = true;
         }
 
