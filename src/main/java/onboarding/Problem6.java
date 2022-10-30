@@ -1,7 +1,9 @@
 package onboarding;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Problem6 {
 
@@ -14,7 +16,7 @@ public class Problem6 {
     }
 
     private static Map<String, List<String>> extractedSplitNickname(List<List<String>> forms) {
-        Map<String, List<String>> emailToSplitNickname = new LinkedHashMap<>();
+        Map<String, List<String>> emailToSplitNicknames = new LinkedHashMap<>();
 
         for (List<String> form : forms) {
             List<String> splitNicknames = new ArrayList<>();
@@ -22,35 +24,45 @@ public class Problem6 {
             for (int i = 0; i < nickname.length() - 1; i++) {
                 splitNicknames.add(nickname.substring(i, i + 2));
             }
-            emailToSplitNickname.put(form.get(EMAIL), splitNicknames);
+            emailToSplitNicknames.put(form.get(EMAIL), splitNicknames);
         }
 
-        return emailToSplitNickname;
+        return emailToSplitNicknames;
     }
 
     private static List<String> getSimilarNicknameCrewEmails(List<List<String>> forms,
-                                                             Map<String, List<String>> emailToSplitNickname) {
+                                                             Map<String, List<String>> emailToSplitNicknames) {
         List<String> answer = new ArrayList<>();
-        int loopStartIdx = 1;
+        AtomicInteger atomic = new AtomicInteger(1);
 
-        for (String email : emailToSplitNickname.keySet()) {
-            List<String> list = emailToSplitNickname.get(email);
-            for (int i = loopStartIdx; i < forms.size(); i++) {
-                for (String splitNickname : list) {
-                    if (forms.get(i).get(NICKNAME).contains(splitNickname)) {
-                        answer.add(forms.get(i).get(EMAIL));
-                        answer.add(email);
-                    }
-                }
-            }
-            loopStartIdx++;
-        }
-        
+        emailToSplitNicknames.entrySet().stream()
+                .forEach(emailToSplitNickname -> addSimilarNicknameCrewEmails(forms, answer, atomic, emailToSplitNickname));
+
+        return removeDuplicateAndSort(answer);
+    }
+
+
+    private static void addSimilarNicknameCrewEmails(List<List<String>> forms,
+                                                     List<String> answer,
+                                                     AtomicInteger atomic,
+                                                     Map.Entry<String, List<String>> emailToSplitNickname) {
+        IntStream.range(atomic.getAndIncrement(), forms.size())
+                .filter(idx -> emailToSplitNickname.getValue().stream()
+                        .anyMatch(splitNickname -> forms.get(idx).get(NICKNAME).contains(splitNickname))
+                )
+                .forEach(idx -> {
+                    answer.add(forms.get(idx).get(EMAIL));
+                    answer.add(emailToSplitNickname.getKey());
+                });
+    }
+
+    private static List<String> removeDuplicateAndSort(List<String> answer) {
         return answer.stream()
                 .distinct()
                 .sorted()
                 .collect(Collectors.toList());
     }
+
 
 
 }
