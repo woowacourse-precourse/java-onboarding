@@ -17,21 +17,29 @@ public class Problem7 {
         initUserFriendList(user, friends, userFriendList);
         initFriendScoreMap(friends, friendScoreMap);
 
-        addScoreInScoreMap(friends, userFriendList, friendScoreMap);
+        addScoreFriendsFriend(friends, userFriendList, friendScoreMap);
+        addScoreVisitor(visitors, friendScoreMap);
+
+
 
         return answer;
     }
 
-    private static void addScoreInScoreMap(List<List<String>> friends, List<String> userFriendList,
+    private static void addScoreVisitor(List<String> visitors, Map<String, Integer> friendScoreMap) {
+        visitors.forEach(user ->
+            friendScoreMap.replace(user, friendScoreMap.get(user)+1));
+    }
+
+    private static void addScoreFriendsFriend(List<List<String>> friends, List<String> userFriendList,
         Map<String, Integer> friendScoreMap) {
         for (List<String> friendRelation : friends) {
             if(Collections.disjoint(friendRelation, userFriendList))
                 continue;
-            addScoreInScoreMap(userFriendList, friendScoreMap, friendRelation);
+            addScoreFriendsFriend(userFriendList, friendScoreMap, friendRelation);
         }
     }
 
-    private static void addScoreInScoreMap(List<String> userFriendList, Map<String, Integer> friendScoreMap,
+    private static void addScoreFriendsFriend(List<String> userFriendList, Map<String, Integer> friendScoreMap,
         List<String> friendRelation) {
         String friendFirst = friendRelation.get(0);
         String friendSecond = friendRelation.get(1);
@@ -47,6 +55,7 @@ public class Problem7 {
         userSet.forEach(user -> friendScoreMap.put(user,0));
     }
 
+    //리팩토링 할 수 있을 듯?
     private static void initUserFriendList(String user, List<List<String>> friends, List<String> userFriendList) {
         for (List<String> friendRelation : friends) {
             if(friendRelation.contains(user)){
