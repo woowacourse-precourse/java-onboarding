@@ -42,9 +42,10 @@ public class Problem7 {
             problem.updateFriend(name);
         }
 
-        // friends 를 순회하며 userFriend 와 함께 아는 친구에 대해 score 10점 추가
+        // friends 를 순회하며 directFriends 와 함께 아는 친구( coFriend )에 대해 score 10점 추가
         List<String> directFriends = getDirectFriends(user, friends);
-        for (String name : directFriends) {
+        List<String> coFriends = getCoFriends(user, friends, directFriends);
+        for (String name : coFriends) {
             problem.updateScore(name, 10);
         }
 
@@ -108,6 +109,22 @@ public class Problem7 {
             }
         }
         return directFriends;
+    }
+
+    static List<String> getCoFriends(String user, List<List<String>> friends, List<String> directFriends) {
+        List<String> coFriends = new ArrayList<>();
+        for (List<String> f : friends) {
+            for (String name : directFriends) {
+                if (f.get(0).equals(name) & !f.get(1).equals(user)) {
+                    coFriends.add(f.get(1));
+                    continue;
+                }
+                if (f.get(1).equals(name) & !f.get(0).equals(user)) {
+                    coFriends.add(f.get(0));
+                }
+            }
+        }
+        return coFriends;
     }
 
     void updateScore(String name, int score) {
