@@ -1,7 +1,9 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Problem6 {
 
@@ -14,6 +16,7 @@ public class Problem6 {
                 answer.addAll(findDuplicatedNickname(forms, word, i));
             }
         }
+        answer = removeDuplicatedEmail(answer);
         return answer;
     }
     private static List<String> findDuplicatedNickname(List<List<String>> forms, String word, int index){
@@ -26,4 +29,8 @@ public class Problem6 {
             list.add(forms.get(index).get(0));
         return list;
     }
+    private static List<String> removeDuplicatedEmail(List<String> list){
+        return list.stream().distinct().collect(Collectors.toList());
+    }
+
 }
