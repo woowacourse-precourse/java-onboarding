@@ -1,7 +1,6 @@
 package onboarding;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * Problem 6
@@ -21,7 +20,62 @@ import java.util.List;
  */
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = Collections.emptyList();
+        answer = findDup(forms);
+        Collections.sort(answer);
         return answer;
+    }
+
+    /**
+     * 입력 받은 form 리스트에서 중복된 값 찾는 함수
+     * @param forms
+     * @return 증복된 신청자의 이메일 리스트
+     */
+    public static List<String> findDup(List<List<String>> forms) {
+        Set<String> emailList = new HashSet<String>();
+
+        for (int i=0; i<forms.size(); i++) {
+            for (int j=i+1; j<forms.size(); j++) {
+                if (isDuplicate(forms.get(i).get(1), forms.get(j).get(1))) {
+                    emailList.add(forms.get(i).get(0));
+                    emailList.add(forms.get(j).get(0));
+                }
+            }
+        }
+        return new ArrayList<String>(emailList);
+    }
+
+    /**
+     * 두 닉네임에서 연속으로 중복된 값이 있는지 확인하는 함수
+     * @param origin
+     * @param comp
+     * @return 중복이면 True, 아니면 False
+     */
+    public static boolean isDuplicate(String origin, String comp) {
+        int[][] cnt = new int[origin.length()][comp.length()];
+
+        for (int i=0; i<origin.length(); i++) {
+            if (origin.charAt(i) == comp.charAt(0)) {
+                cnt[i][0] = 1;
+            }
+        }
+        for (int i=0; i<comp.length(); i++) {
+            if (comp.charAt(i) == origin.charAt(0)) {
+                cnt[0][i] = 1;
+            }
+        }
+        for (int i=1; i<origin.length(); i++) {
+            for (int j=1; j<comp.length(); j++) {
+                if (origin.charAt(i) == comp.charAt(j)) {
+                    cnt[i][j] = cnt[i-1][j-1] + 1;
+                } else {
+                    cnt[i][j] = 0;
+                }
+                if (cnt[i][j] >= 2) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
