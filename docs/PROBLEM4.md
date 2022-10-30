@@ -32,6 +32,6 @@
 
 ### 기능 목록
 1. createFrogDictionary
-   - parameter: 청개구리 사전에 할당될 문자들을 모은 문자열
+   - parameter: None
    - return: void
    - 함수를 사용하면 클래스의 변수로 사전정보 저장
