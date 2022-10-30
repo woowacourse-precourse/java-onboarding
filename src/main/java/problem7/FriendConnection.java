@@ -11,7 +11,7 @@ person1을 가지고 있든 안 가지고 있든 friendConn.get(person1).add(per
 public class FriendConnection {
     private final Map<String, List<String>> friendConnection = new HashMap<>();
 
-    public FriendConnection(String user, List<List<String>> friends) {
+    public FriendConnection(List<List<String>> friends) {
         Validator.validateFriends(friends);
         for (var friend : friends) {
             String friend1 = friend.get(0);

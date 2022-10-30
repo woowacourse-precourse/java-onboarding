@@ -2,6 +2,7 @@ package onboarding;
 
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import problem7.FriendConnection;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -330,6 +331,26 @@ class ApplicationTest {
             List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
             List<String> result = List.of("andole", "jun", "bedi");
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+        }
+
+        @Test
+        void friends_connection_getFriends() {
+            String user = "mrko";
+            List<List<String>> friends = List.of(
+                    List.of("donut", "andole"),
+                    List.of("donut", "jun"),
+                    List.of("donut", "mrko"),
+                    List.of("shakevan", "andole"),
+                    List.of("shakevan", "jun"),
+                    List.of("shakevan", "mrko")
+            );
+            FriendConnection friendConnection = new FriendConnection(friends);
+            List<String> donutFriends = friendConnection.getFriends("donut");
+            List<String> mrkoFriends = friendConnection.getFriends("mrko");
+
+            assertThat(donutFriends).isEqualTo(List.of("andole", "jun", "mrko"));
+            assertThat(mrkoFriends).isEqualTo(List.of("donut", "shakevan"));
+
         }
 
         @Test
