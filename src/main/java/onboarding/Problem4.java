@@ -18,6 +18,17 @@ public class Problem4 {
         for(i = 0;i<26;i++){
             dic[i] = (char)('Z'-i);
         }
+        int k;
+        for(k = 0;k<word.length();k++){
+            if((int)word.charAt(k)>=(int)'A' && (int)word.charAt(k)<=(int)'Z'){
+                answer = answer.concat(String.valueOf(dic[(int)(word.charAt(k)-'A')]));
+            }else if((int)word.charAt(k)>=(int)'a' && (int)word.charAt(k)<=(int)'z'){
+                String s = String.valueOf(dic[(int)(word.charAt(k)-'a')]);
+                s = s.toLowerCase();
+                answer = answer.concat(s);
+            }else{
+            }
+        }
         return answer;
     }
 }
