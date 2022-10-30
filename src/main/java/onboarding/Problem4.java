@@ -4,6 +4,8 @@ public class Problem4 {
 
     public static final int A = 65;
     public static final int a = 97;
+    public static final int ASCII_A_Z_SUM = 155;
+    public static final int ASCII_a_z_SUM = 219;
 
     public static String solution(String word) {
         StringBuilder stringBuilder = new StringBuilder();
@@ -17,9 +19,9 @@ public class Problem4 {
             }
 
             if (isLowerCase(digit)) {
-                stringBuilder.append((char) (219 - digit));
+                stringBuilder.append((char) (ASCII_a_z_SUM - digit));
             } else if (isUpperCase(digit)) {
-                stringBuilder.append((char) (155 - digit));
+                stringBuilder.append((char) (ASCII_A_Z_SUM - digit));
             }
         }
 
