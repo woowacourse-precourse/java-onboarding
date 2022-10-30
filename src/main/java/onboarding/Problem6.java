@@ -10,6 +10,7 @@ public class Problem6 {
     private static HashMap<String, Boolean> isEmailInList = new HashMap<>(); //이 이메일의 크루가 이미 반환 목록에 들어있는지 체크
     private static List<String> answer = new ArrayList<>();
     public static List<String> solution(List<List<String>> forms) {
+        emptyLists();
         initializeEmailInList(forms);
 
         for (List<String> form : forms) {
@@ -19,6 +20,12 @@ public class Problem6 {
         }
         Collections.sort(answer);
         return answer;
+    }
+
+    private static void emptyLists() {
+        wordEmailsMap.clear();
+        isEmailInList.clear();
+        answer.clear();
     }
 
     private static void initializeEmailInList(List<List<String>> forms) {
