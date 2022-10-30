@@ -17,7 +17,7 @@ public class Problem6 {
             findCrewWhoHasDuplicatedNickName(crew);
         }
 
-        List<String> answer = List.of("answer");
+        List<String> answer = getSortedEmails();
         return answer;
     }
 
@@ -52,5 +52,11 @@ public class Problem6 {
         if (duplicatedCount > 1) {
             emailsOfCrewWhoHasDuplicatedNickName.add(email);
         }
+    }
+
+    private static List<String> getSortedEmails() {
+        List<String> emails = new LinkedList<>(emailsOfCrewWhoHasDuplicatedNickName);
+        Collections.sort(emails);
+        return emails;
     }
 }
