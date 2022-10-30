@@ -20,6 +20,22 @@ public class Problem7 {
         }
     }
 
+    void setFriendScore(String user, List<List<String>> friends) {
+        setUserFriends(friends);
+        System.out.println(user_friends);
+        List<String> friends_list = user_friends.get(user);
+        for (String friend : friends_list) {
+            List<String> f2f_list = user_friends.get(friend);
+            for (String f2f : f2f_list) {
+                if (f2f.equals(user)) {
+                    continue;
+                }
+                if (user_score.containsKey(f2f)) {
+                    user_score.put(f2f, user_score.get(f2f) + 10);
+                } else {user_score.put(f2f, 10);}
+            }
+        }
+    }
 
     void setUserFriends(List<List<String>> friends) {
         for (List<String> friend_list : friends) {
