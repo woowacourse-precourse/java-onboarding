@@ -7,26 +7,33 @@ import java.util.TreeSet;
 
 public class SimilarNicknameCrewSelector {
 	private List<List<String>> crewInformations;
-	private final int numberOfCrews;
+	private int numberOfCrews;
 	private List<Boolean> hasSimilarNickname;
 	private List<String> similarNicknameCrewsEmail;
 
 	public SimilarNicknameCrewSelector(List<List<String>> forms) {
-		this.crewInformations = new ArrayList<>(forms);
-		this.numberOfCrews = forms.size();
-		this.hasSimilarNickname = new ArrayList<>();
-		this.similarNicknameCrewsEmail = new ArrayList<>();
+		try {
+			CheckExceptions.throwAllExceptions(forms);
 
-		for (int i = 0; i < this.numberOfCrews; i++) {
-			this.hasSimilarNickname.add(false);
+			this.crewInformations = new ArrayList<>(forms);
+			this.numberOfCrews = forms.size();
+			this.hasSimilarNickname = new ArrayList<>();
+			this.similarNicknameCrewsEmail = new ArrayList<>();
+
+			for (int i = 0; i < this.numberOfCrews; i++) {
+				this.hasSimilarNickname.add(false);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
 	public List<String> makeSimilarNicknameCrewEmailList() {
-		for(int i = 0; i < numberOfCrews - 1; i++) {
+		for (int i = 0; i < numberOfCrews - 1; i++) {
 			int comparingCrewIndex = i;
 
-			if(hasSimilarNickname.get(comparingCrewIndex) == false) {
+			if (hasSimilarNickname.get(comparingCrewIndex) == false) {
 				compareCrewsNickname(comparingCrewIndex);
 			}
 		}
@@ -70,11 +77,14 @@ public class SimilarNicknameCrewSelector {
 	}
 
 	private boolean isSimilar(TreeSet<String> dividedNickname, int comparedCrewIndex) {
+		String comparedCrewNickname = crewInformations.get(comparedCrewIndex).get(1);
+
 		for(String twoCharacters : dividedNickname) {
-			if (crewInformations.get(comparedCrewIndex).get(1).contains(twoCharacters)) {
+			if (comparedCrewNickname.contains(twoCharacters)) {
 				return true;
 			}
 		}
+
 		return false;
 	}
 
@@ -83,7 +93,9 @@ public class SimilarNicknameCrewSelector {
 			int crewIndex = i;
 
 			if (hasSimilarNickname.get(crewIndex)) {
-				similarNicknameCrewsEmail.add(crewInformations.get(crewIndex).get(0));
+				String crewEmail = crewInformations.get(crewIndex).get(0);
+
+				similarNicknameCrewsEmail.add(crewEmail);
 			}
 		}
 
