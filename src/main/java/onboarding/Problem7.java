@@ -77,4 +77,29 @@ public class Problem7 {
         return score;
     }
 
+    /*
+    정렬 조건에 따라 정렬하기
+     */
+    private static List<String> orderFriends(Map<String,Integer> map){
+        List<Map.Entry<String,Integer>> list = new ArrayList<>(map.entrySet());
+        list.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                if (o1.getValue() < o2.getValue()) return 1;
+                else if (o1.getValue() == o2.getValue()) return o1.getKey().compareTo(o2.getKey());
+                else return -1;
+            }
+        });
+        List<String> answer=new ArrayList<>();
+        int size=0;
+        for(Map.Entry<String,Integer> li:list){
+            answer.add(li.getKey());
+            size++;
+            if(size==5){
+                break;
+            }
+        }
+        return answer;
+    }
+
 }
