@@ -13,6 +13,17 @@ public class Problem2 {
         return answer;
     }
 
+    public static void checkAndPush(String currentValue, String topValue){
+        boolean checkSameValue;
+
+        checkSameValue = isSameValue(currentValue, topValue);
+
+        if (checkSameValue == false){
+            stack.push(currentValue);
+        }
+
+    }
+
     public static void checkAndPop(String currentValue, String topValue){
         boolean checkSameValue;
 
