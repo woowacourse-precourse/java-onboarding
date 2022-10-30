@@ -54,4 +54,13 @@ public class Problem6 {
         return dupleSet;
     }
 
+    // 연속 글자 확인 함수 - 있으면 true 반환
+    public static boolean isDupleName(String nickname, Set<String> dupleSet){
+        for(String s : dupleSet){
+            if(nickname.contains(s)) return true;
+        }
+        return false;
+
+    }
+
 }
