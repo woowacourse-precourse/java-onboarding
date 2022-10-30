@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Problem6 {
@@ -7,6 +9,30 @@ public class Problem6 {
         List<String> answer = List.of("answer");
         return answer;
     }
+
+    /*
+        중복된 이름 리스트에 담기
+     */
+    private static List<String> duplicateNickName(List<List<String>> forms){
+        List<String> result=new ArrayList<>();
+        int size= forms.size();
+        for(int i=0;i<size;i++){
+            String str1=forms.get(i).get(1);   //닉네임 가져오기
+            String email=forms.get(i).get(0); //이메일 가져오기
+            for(int k=0;k<size;k++){
+                if(i!=k){
+                    String str2=forms.get(k).get(1);
+                    if(checkDuplicate(str1,str2)&&email.contains("email.com")){
+                        result.add(email);
+                        break;
+                    }
+                }
+            }
+        }
+        result.sort(Comparator.naturalOrder());//오름차순 정렬
+        return result;
+    }
+
     /*
     중복된 이름 찾기
      */
