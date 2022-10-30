@@ -20,8 +20,9 @@ public class Problem6 {
     }
 
     // 이메일과 닉네임을 HashMap에 추가하는 함수
-    public static void addUsers(HashMap<String, String> databaseOfNickname, List<String> user) {
+    public static void addUsers(HashMap<String, String> databaseOfNickname, HashMap<String, Boolean> duplicationOfNickname, List<String> user) {
         databaseOfNickname.put(user.get(0), user.get(1));
+        duplicationOfNickname.put(user.get(0), false);
     }
 
     // 이메일과 닉네임을 추가한 뒤 중복 여부를 판단하는 함수
@@ -38,5 +39,11 @@ public class Problem6 {
             if (nickname.contains(newNickname.substring(i, i+2))) return true;
         }
         return false;
+    }
+
+    // 이메일과 닉네임의 중복이 있으면 이메일에 대한 중복 여부를 체크하는 함수
+    public static void checkDuplication(HashMap<String, String> databaseOfNickname, HashMap<String, Boolean> duplicationOfNickname, List<String> user) {
+        if (checkDuplicationOfNicknames(databaseOfNickname, user.get(1)))
+            duplicationOfNickname.replace(user.get(0), true);
     }
 }
