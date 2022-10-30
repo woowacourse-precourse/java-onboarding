@@ -1,9 +1,5 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Pattern;
-
 public class Problem4 {
     public static final String UPPER = "upper";
     public static final String LOWER = "lower";
@@ -12,31 +8,37 @@ public class Problem4 {
     public static final int LOWER_ALPHABET_START_ASCII = 97;
     public static final int LOWER_ALPHABET_END_ASCII = 122;
 
-    public static String solution(String word) {
-        List<String> changedWordList = new ArrayList<>();
-        String[] words = word.split("");
+    public static String solution(String string) {
+        StringBuilder stringBuilder = new StringBuilder();
 
-        for (String character : words) {
-            character = changeCharacter(character);
-            changedWordList.add(character);
+        for (int i = 0; i < string.length(); i++) {
+            char currentCharacter = string.charAt(i);
+            String changedCharacter = changeCharacter(currentCharacter);
+            stringBuilder.append(changedCharacter);
         }
 
-        return String.join("", changedWordList);
+        return stringBuilder.toString();
     }
 
-    private static String changeCharacter(String character) {
-        if(Pattern.matches("[a-z]", character)){
-           character = changeCharacter(character,LOWER);
+    private static String changeCharacter(char character) {
+        String changedCharacter = null;
+        if (Character.isLowerCase(character)) {
+            changedCharacter = changeCharacter(character, LOWER);
         }
 
-        if (Pattern.matches("[A-Z]", character)) {
-            character = changeCharacter(character,UPPER);
+        if (Character.isUpperCase(character)) {
+            changedCharacter = changeCharacter(character, UPPER);
         }
 
-        return character;
+        if(!Character.isLowerCase(character)
+                && !Character.isUpperCase(character)) {
+            return Character.toString(character);
+        }
+
+        return changedCharacter;
     }
 
-    private static String changeCharacter(String character, String alphabetCase) {
+    private static String changeCharacter(char character, String alphabetCase) {
         int startAsciiCode = 0;
         int endAsciiCode = 0;
 
@@ -50,7 +52,7 @@ public class Problem4 {
             endAsciiCode = UPPER_ALPHABET_END_ASCII;
         }
 
-        int number = character.charAt(0);
+        int number = Character.toString(character).charAt(0);
         int newNumber = startAsciiCode - (number - endAsciiCode);
         return String.valueOf((char) newNumber);
     }
