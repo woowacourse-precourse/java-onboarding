@@ -4,7 +4,14 @@ import java.util.*;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "";
+        String answer = cryptogram;
+        boolean isChange = false;
+        while (!isChange) {
+            String original = answer;
+            answer = replaceRepeatCharacter(original);
+            isChange = original.equals(answer) ? true : false;
+        }
+
         return answer;
     }
 
