@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.*;
 import java.util.Collections;
 import java.util.List;
 import java.util.ArrayList;
@@ -10,7 +11,12 @@ public class Problem7 {
     static HashMap<String, Integer> allUsersID = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
+        createUserFriendsList(user, friends);
+        registerNewUserInFriendsList(user, friends);
+        registerNewUserInVisitorsList(visitors);
+
+
         return answer;
     }
 
@@ -90,5 +96,29 @@ public class Problem7 {
                 allUsersID.put(visitor, 1);
             }
         }
+    }
+
+    private static LinkedHashMap<String, Integer> sortAllUsersIDByKey () {
+        List<HashMap.Entry<String, Integer>> entries = new LinkedList<>(allUsersID.entrySet());
+        Collections.sort(entries, (o1, o2) -> o1.getKey().compareTo(o2.getKey()));
+
+        LinkedHashMap<String, Integer> result = new LinkedHashMap<>();
+        for (HashMap.Entry<String, Integer> entry : entries) {
+            result.put(entry.getKey(), entry.getValue());
+        }
+
+        return result;
+    }
+
+    private static LinkedHashMap<String, Integer> sortAllUsersIDByValue () {
+        List<HashMap.Entry<String, Integer>> entries = new LinkedList<>(allUsersID.entrySet());
+        Collections.sort(entries, (o1, o2) -> o1.getValue().compareTo(o2.getValue()));
+
+        LinkedHashMap<String, Integer> result = new LinkedHashMap<>();
+        for (HashMap.Entry<String, Integer> entry : entries) {
+            result.put(entry.getKey(), entry.getValue());
+        }
+
+        return result;
     }
 }
