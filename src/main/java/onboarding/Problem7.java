@@ -20,6 +20,7 @@ public class Problem7 {
         List<String> listAtNow = null;
         String leftFriendsInList = "";
         String rightFriendsInList = "";
+        String namePersonAtNow = "";
 
         int endFistSize = friends.size();
         int endSecondSize = friends.get(0).size();
@@ -47,7 +48,26 @@ public class Problem7 {
         friendUserList = (ArrayList<String>) friendUserList.stream().distinct().collect(Collectors.toList());
         System.out.println("friendUserList.toString() = " + friendUserList.toString());
 
-    
+        // 친구가 아닌 리스트를 만든다.
+        boolean isFriend = true;
+        int endPersonList = personList.size();
+        for (int personIndex = 0; personIndex < endPersonList; personIndex++) {
+            isFriend = false;
+            namePersonAtNow = personList.get(personIndex);
+
+            // 현재 사람이 친구인지 판별
+            for (int friendUserIndex = 0; friendUserIndex < friendUserList.size(); friendUserIndex++) {
+                String nameFriendUserAtNow = friendUserList.get(friendUserIndex);
+                if (namePersonAtNow.equals(nameFriendUserAtNow)) {
+                    isFriend = true;
+                }
+            }
+
+            if (!isFriend) {
+                notFriendUserList.add(namePersonAtNow);
+            }
+        }
+
         notFriendUserList = (ArrayList<String>) notFriendUserList.stream().distinct().collect(Collectors.toList());
         System.out.println("notFriendUserList.toString() = " + notFriendUserList.toString());
         return answer;
