@@ -98,19 +98,24 @@ public class Problem6 {
         return overlapPattern;
     }
     public static void findPatternByWord(Set<String> allPattern, Set<String> overlapPattern, String word) {
+        Set<String> wordPatterns = new HashSet<>();
         for (int i = 2; i <= word.length(); i ++ ) {
             for (int j = 0; j <= word.length() - i; j ++ ) {
                 String subWord = word.substring(j, j + i);
-                addPatternToHashSet(allPattern, overlapPattern, subWord);
+                wordPatterns.add(subWord);
+                // addPatternToHashSet(allPattern, overlapPattern, subWord);
             }
         }
+        addPatternToHashSet(allPattern, overlapPattern, wordPatterns);
     }
 
-    private static void addPatternToHashSet(Set<String> allPattern, Set<String> overlapPattern, String subWord) {
-        if (allPattern.contains(subWord)) {
-            overlapPattern.add(subWord);
+    private static void addPatternToHashSet(Set<String> allPattern, Set<String> overlapPattern, Set<String> wordPatterns) {
+        for (String wordPattern : wordPatterns) {
+            if (allPattern.contains(wordPattern)) {
+                overlapPattern.add(wordPattern);
+            }
+            allPattern.add(wordPattern);
         }
-        allPattern.add(subWord);
     }
 
     private static void validate(final List<List<String>> forms) {

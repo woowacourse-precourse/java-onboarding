@@ -1,5 +1,6 @@
 package onboarding;
 
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
@@ -32,7 +33,7 @@ class Problem6Test {
 			List.of("mj@email.com", "엠제이"),
 			List.of("nowm@email.com", "이제엠")
 		);
-		Assertions.assertThat(Problem6.solution(forms).size()).isEqualTo(0);
+		assertThat(Problem6.solution(forms).size()).isEqualTo(0);
 	}
 
 	@Test
@@ -47,8 +48,8 @@ class Problem6Test {
 
 		List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com", "nowm@email.com");
 
-		Assertions.assertThat(Problem6.solution(forms).size()).isEqualTo(4);
-		Assertions.assertThat(Problem6.solution(forms)).isEqualTo(result);
+		assertThat(Problem6.solution(forms).size()).isEqualTo(4);
+		assertThat(Problem6.solution(forms)).isEqualTo(result);
 	}
 
 	@Test
@@ -64,7 +65,7 @@ class Problem6Test {
 			List.of("ncwm@email.com", "팍제웅니")
 		);
 
-		Assertions.assertThat(Problem6.solution(forms).size()).isEqualTo(forms.size());
+		assertThat(Problem6.solution(forms).size()).isEqualTo(forms.size());
 
 	}
 
@@ -107,5 +108,31 @@ class Problem6Test {
 
 		assertThrows(IllegalArgumentException.class,
 			() -> Problem6.Advice.checkNicknameIsKorean(nickname));
+	}
+
+	@Test
+	void case추가(){
+		List<List<String>> forms = List.of(
+			List.of("jm@email.com", "상원상원"),
+			List.of("jason@email.com", "제이슨"),
+			List.of("woniee@email.com", "워니"),
+			List.of("mj@email.com", "엠제이"),
+			List.of("nowm@email.com", "이제엠")
+		);
+		List<String> result = List.of("jason@email.com", "mj@email.com");
+		assertThat(Problem6.solution(forms)).isEqualTo(result);
+	}
+
+	@Test
+	void case추가2(){
+		List<List<String>> forms = List.of(
+			List.of("jm@email.com", "사랑해사랑해"),
+			List.of("jason@email.com", "제이슨"),
+			List.of("woniee@email.com", "워니"),
+			List.of("mj@email.com", "엠제이"),
+			List.of("nowm@email.com", "이제엠")
+		);
+		List<String> result = List.of("jason@email.com", "mj@email.com");
+		assertThat(Problem6.solution(forms)).isEqualTo(result);
 	}
 }
