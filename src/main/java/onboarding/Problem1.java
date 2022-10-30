@@ -1,8 +1,10 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if(!listIsValid(pobi) || !listIsValid(crong)) {
             return -1;
@@ -36,12 +38,12 @@ class Problem1 {
         return 0;
 
     }
-    
+
     /**
      * 리스트가 예외사항을 가지는지 체크 메서드(뒤에 정의한 여러 체크 메서드등을 포함하는 메서드)
      * 리스트가 올바른 값일때 true 반환, 예외사항을 가질때 false 반환
      */
-    public static boolean listIsValid(List<Integer> integerList) {
+    private static boolean listIsValid(List<Integer> integerList) {
         if(!sizeCheck(integerList)) {
             return false;
         }
@@ -58,7 +60,7 @@ class Problem1 {
      * 리스트의 사이즈가 2인지 체크하는 메서드
      * 사이즈가 2이면 true 반환, 이외에는 false 반환
      */
-    public static boolean sizeCheck(List<Integer> integerList) {
+    private static boolean sizeCheck(List<Integer> integerList) {
         return (integerList.size() == 2 ? true:false);
     }
 
@@ -75,7 +77,7 @@ class Problem1 {
      * 리스트의 왼쪽 페이지가 홀수인지 체크 메서드
      * 홀수일때 true 반환, 홀수가 아닐때 false 반환
      */
-    public static boolean leftValueCheck(List<Integer> integerList) {
+    private static boolean leftValueCheck(List<Integer> integerList) {
         Integer result = integerList.get(0);
 
         return (result % 2 == 1 ? true:false);
@@ -84,7 +86,7 @@ class Problem1 {
     /**
      * 각자리 숫자합과 곱중 큰 수 반환 메서드
      */
-    public static int getMax(Integer value) {
+    private static int getMax(Integer value) {
         int resultSum = getSum(value);
         int resultMultiple = getMultiple(value);
 
@@ -94,7 +96,7 @@ class Problem1 {
     /**
      * 각자리 숫자합 반환 메서드
      */
-    public static int getSum(Integer value) {
+    private static int getSum(Integer value) {
         int sumParameter1 = value / 100;    //첫번째 자릿수, 세자리 수가 안될때 0
         int sumParameter2 = (value - (sumParameter1 * 100)) / 10;   //두번쨰 자릿수, 두자리 수가 안될때 0
         int sumParameter3 = (value - ((sumParameter1 * 100) + (sumParameter2 * 10)));
@@ -105,7 +107,7 @@ class Problem1 {
     /**
      * 각자리 곱의 합 반환 메서드
      */
-    public static int getMultiple(Integer value) {
+    private static int getMultiple(Integer value) {
         int multipleParameter1 = value / 100;    //첫번째 자릿수, 세자리 수가 안될때 0
         int multipleParameter2 = (value - (multipleParameter1 * 100)) / 10;   //두번쨰 자릿수, 두자리 수가 안되거나 0일때 0
         int multipleParameter3 = (value - ((multipleParameter1 * 100) + (multipleParameter2 * 10)));
@@ -126,7 +128,7 @@ class Problem1 {
     /**
      * 몇 자리 수 인지 반환 메서드
      */
-    public static int getDigits(Integer value) {
+    private static int getDigits(Integer value) {
         // 세자리 수가 아닐때
         if(value / 100 == 0) {
             return getDigitsDetails(value);
@@ -137,12 +139,13 @@ class Problem1 {
     /**
      * 세 자릿수가 아닐때 자릿수 반환 메서드
      */
-    public static int getDigitsDetails(Integer value) {
+    private static int getDigitsDetails(Integer value) {
         // 한자리 수 일때
-        if(value / 10 == 0) {
+        if (value / 10 == 0) {
             return 1;
         }
         return 2;   //두자리 수 일때
     }
+
 
 }
