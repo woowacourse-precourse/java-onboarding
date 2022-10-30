@@ -33,6 +33,15 @@
 #### sortByName(LinkedList<Map.Entry<String, Integer>> recommendEntryList) --> LinkedList<Map.Entry<String, Integer>> recommendEntryList
 - 입력받은 recommendEntryList를 comparator 기능을 사용하여 추천점수가 같다면 이름순으로 정렬한 뒤 recommendEntryList를 반환합니다.
 
+### 8. 추천목록이 5명을 넘을수 추천점수가 높은순서대로 점수가 높은 5명의 이름을 반환한다. 단 점수가 같을시에는 이름순으로 리스트에 넣는다.
+#### filterRecommendList(LinkedList<Map.Entry<String, Integer>> recommendEntryList, List<String> result, int length) --> List<String> result
+- 입력받은 recommendEntryList의 길이만큼 result 리스트에 recommendList의 이름을 넣습니다. 이때 입력받은 length가 5를 초과하면 5명만 reuslt 리스트에 넣습니다. 
+
+### 9. 8번에서 recommendList의 이름을 result 리스트에 넣어줍니다. 이때 추천점수인 score가 0이면 넣지 않습니다.
+#### addList(LinkedList<Map.Entry<String, Integer>> recommendEntryList, List<String> result, int length)
+- 입력받은 recommendList의 이름을 result에 넣어줍니다.
+- 단 score가 0점 초과여야지 reuslt에 넣어줍니다.
+
 
 # 전체 동작 과정
 

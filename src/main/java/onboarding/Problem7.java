@@ -121,4 +121,33 @@ public class Problem7 {
         return recommendEntryList;
     }
 
+    /**
+     *  입력받은 recommendEntryList가 5명을 초과하면 5명까지만 잘라 result 리스트에 넣고 반환합니다.
+     * @param {LinkedList<Map.Entry<String, Integer>>} recommendEntryList
+     * @return result
+     */
+    public static List<String> filterRecommendEntryList(LinkedList<Map.Entry<String, Integer>> recommendEntryList) {
+        List<String> result = new ArrayList<>();
+        int length = recommendEntryList.size();
+
+        if(length <= 5) addList(recommendEntryList, result, length);
+        else addList(recommendEntryList, result, 5);
+        return result;
+    }
+
+    /**
+     * length가 5를 초과하면 5명까지만 name을 result에 넣습니다. 단 score가 0점이면 result에 넣지 않습니다.
+     * @param {LinkedList<Map.Entry<String, Integer>> recommendEntryList} recommendEntryList
+     * @param {List<String>} result
+     * @param {int} length
+     */
+    public static void addList(LinkedList<Map.Entry<String, Integer>> recommendEntryList, List<String> result, int length) {
+        for (int i = 0; i < length; i++) {
+            String name = recommendEntryList.get(i).getKey();
+            int score = recommendEntryList.get(i).getValue();
+
+            if(score > 0) result.add(name);
+        }
+    }
+
 }

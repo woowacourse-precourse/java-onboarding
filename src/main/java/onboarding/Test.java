@@ -13,7 +13,9 @@ public class Test {
                 List.of("donut", "mrko"),
                 List.of("shakevan", "andole"),
                 List.of("shakevan", "jun"),
-                List.of("shakevan", "mrko")
+                List.of("shakevan", "mrko"),
+                List.of("aaa", "bbb"),
+                List.of("ccc", "d")
         );
         List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
         List<String> result = List.of("andole", "jun", "bedi");
@@ -24,9 +26,11 @@ public class Test {
         recommendList = Problem7.addScoreByFriends(friends, userFriendList, recommendList);
         recommendList = Problem7.addScoreByVisitor(visitors, userFriendList, recommendList);
         LinkedList<Map.Entry<String, Integer>> recommendEntryList = Problem7.sortByScore(recommendList);
-        System.out.println(recommendEntryList);
         recommendEntryList = Problem7.sortByName(recommendEntryList);
         System.out.println(recommendEntryList);
+
+        List<String> strings = Problem7.filterRecommendEntryList(recommendEntryList);
+        System.out.println(strings);
 
     }
 }
