@@ -38,7 +38,7 @@ public class PageGameInfo {
         players.put(playerName, new Player(leftPageNumber, rightPageNumber));
     }
 
-    public int playGameResult(String playerA, String playerB) {
+    public int play(String playerA, String playerB) {
         int playerAScore = players.get(playerA).getPlayerScore();
         int playerBScore = players.get(playerB).getPlayerScore();
 

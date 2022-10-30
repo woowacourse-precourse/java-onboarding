@@ -19,7 +19,7 @@ public class PageGamePlayService {
         } catch (IllegalArgumentException e) {
             return EXCEPTION_RESULT_VALUE;
         }
-        return pageGame.playGameResult(POBI_NAME, CRONG_NAME);
+        return pageGame.play(POBI_NAME, CRONG_NAME);
     }
 
     private static void registryTwoPlayers(PageGameInfo pageGame, List<Integer> pobiPage,
