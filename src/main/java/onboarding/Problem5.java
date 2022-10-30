@@ -24,14 +24,19 @@ public class Problem5 {
     }
 
     public static int getQuotient(int divMoney){
-        int quotient;
-        quotient = currentMoney / divMoney;
+        int quotient = 0;
+        if (divMoney != 0) {
+            quotient = currentMoney / divMoney;
+        }
         return quotient;
     }
 
     public static void getRemainder(int divMoney){
-        int remainder;
-        remainder = currentMoney % divMoney;
+        int remainder = 0;
+
+        if(divMoney != 0) {
+            remainder = currentMoney % divMoney;
+        }
         currentMoney = remainder;
     }
 }
