@@ -29,7 +29,9 @@ public class TwoWordVerification {
         ArrayList<String> resultList = new ArrayList<>();
 
         for (Map.Entry<String, Integer> entry : CountCase.entrySet()) {
-            resultList.add(entry.getKey());
+            if (entry.getValue() >= 2) {
+                resultList.add(entry.getKey());
+            }
         }
 
         return resultList;
