@@ -4,20 +4,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
-    public static int solution(List<Integer> pobi, List<Integer> crong) {
+    public static int solution(List<Integer> pobi, List<Integer> crong) throws InvalidPageNumberException {
         int answer = Integer.MAX_VALUE;
 
-        int pobiMax = pageMaxValue(pobi); // pobi의 가장 큰 page
-        int crongMax = pageMaxValue(crong);// crong의 가장 큰 page
+        try {
+            int pobiMax = pageMaxValue(pobi); // pobi의 가장 큰 page
+            int crongMax = pageMaxValue(crong);// crong의 가장 큰 page
 
-        if(pobiMax > crongMax)
-            answer = 1;
-        else if(pobiMax < crongMax)
-            answer = 2;
-        else
-            answer = 0;
+            if (pobiMax > crongMax)
+                answer = 1;
+            else if (pobiMax < crongMax)
+                answer = 2;
+            else
+                answer = 0;
 
-        return answer;
+            return answer;
+        }
+        catch (InvalidPageNumberException e){
+            System.out.println(e.getMessage()+"\n");
+            e.printStackTrace();
+
+            return -1;
+        }
     }
 
     /**
@@ -31,10 +39,13 @@ class Problem1 {
      * RETURN
      *   두 page 중 더 큰 값
      */
-    public static int pageMaxValue(List<Integer> pages){
+    public static int pageMaxValue(List<Integer> pages) throws InvalidPageNumberException {
 
         int leftValue = pages.get(0); // 왼쪽 페이지 번호
         int rightValue = pages.get(1); // 오른쪽 페이지 번호
+
+        if(rightValue <= leftValue || (rightValue -1) != leftValue)
+            throw new InvalidPageNumberException("올바르지 않은 페이지 리스트입니다.");
 
         return Math.max(splitAndCalc(leftValue), splitAndCalc(rightValue));
     }
@@ -71,6 +82,14 @@ class Problem1 {
 
         // 3. (2)에서 구한 값 중 큰 값을 반환
         return Math.max(multiple, sum);
+    }
+
+    public static class InvalidPageNumberException extends Exception{
+        public InvalidPageNumberException(){}
+        public InvalidPageNumberException(String message){
+            super(message);
+        }
+
     }
 
 }
