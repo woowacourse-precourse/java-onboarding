@@ -13,6 +13,13 @@ class Problem1 {
         int pobiScore = score(pobi);
         int crongScore = score(crong);
 
+        if (pobiScore > crongScore)
+            answer = 1;
+        else if (crongScore > pobiScore)
+            answer = 2;
+        else
+            answer = 0;
+
         return answer;
     }
 
