@@ -23,4 +23,5 @@
 > ArrayList<Integer> initMoneyList()
 
 - 주어진 금액에 대해 x원권으로 변환하고 이를 리턴하는 함수
-> List<Integer> convertMoneyByParams(ArrayList<Integer>, Integer money, Integer x)
+> List<Integer> convertMoneyByParams(ArrayList<Integer>, ArrayList<Integer>, Integer money, Integer index)
+> input: answer, moneyList, money, index
