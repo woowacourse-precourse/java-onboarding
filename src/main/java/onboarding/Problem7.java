@@ -12,17 +12,17 @@ public class Problem7 {
         return answer;
     }
 
-    private static List<String> returnUserFriendList(String user, List<List<String>> friends) {
-        List<String> userFriendList = new ArrayList<>();
+    private static List<String> returnFriendList(String people, List<List<String>> friends) {
+        List<String> friendList = new ArrayList<>();
         for (List<String> friend : friends) {
-            if (user.equals(friend.get(0))) {
-                userFriendList.add(friend.get(1));
+            if (people.equals(friend.get(0))) {
+                friendList.add(friend.get(1));
             }
-            if (user.equals(friend.get(1))) {
-                userFriendList.add(friend.get(0));
+            if (people.equals(friend.get(1))) {
+                friendList.add(friend.get(0));
             }
         }
-        return userFriendList;
+        return friendList;
     }
 
     private static HashMap<String, Integer> makeHashMap(List<String> peopleList) {
