@@ -1,10 +1,22 @@
 package onboarding;
 
-import java.util.List;
+import java.util.*;
 
 public class Problem6 {
+
+    static Map<String, String> formHash = new HashMap<>();
+    static Set<String> answerSet = new HashSet<>();
+
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<String>();
+        for (int i = 0; i < forms.size(); i++) {
+            List<String> form = forms.get(i);
+            if (hashForm(splitName(form.get(1)), form.get(0))) {
+                answerSet.add(form.get(0));
+                continue;
+            }
+        }
+        answerSet.stream().sorted().forEach(email -> answer.add(email));
         return answer;
     }
 
