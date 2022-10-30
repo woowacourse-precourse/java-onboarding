@@ -1,25 +1,23 @@
 package onboarding;
 
 public class Problem2 {
-    private static boolean isDuplicate;
     private static char rememberChar = '\0';
 
     public static String solution(String cryptogram) {
-        isDuplicate = false;
 
-        while (!isDuplicate) {
+        while (true) {
             String duplicateChars = getDuplicateChars(cryptogram);
             cryptogram = cryptogram.replace(duplicateChars, "");
+            if(isNoDuplicate(cryptogram)) {
+                return cryptogram;
+            }
         }
-
-        return cryptogram;
     }
 
     private static String getDuplicateChars(String cryptogram) {
         StringBuilder sb = new StringBuilder();
         for(int i=1; i<cryptogram.length(); i++) {
             if(cryptogram.charAt(i) == cryptogram.charAt(i-1)) {
-                isDuplicate = true;
                 rememberChar = cryptogram.charAt(i-1);
                 sb.append(cryptogram.charAt(i-1));
             }
@@ -42,5 +40,14 @@ public class Problem2 {
             return cryptogram.charAt(i) == rememberChar;
         }
         return false;
+    }
+
+    private static boolean isNoDuplicate(String cryptogram) {
+        for(int i=1; i<cryptogram.length(); i++) {
+            if(cryptogram.charAt(i) == cryptogram.charAt(i-1)) {
+                return false;
+            }
+        }
+        return true;
     }
 }
