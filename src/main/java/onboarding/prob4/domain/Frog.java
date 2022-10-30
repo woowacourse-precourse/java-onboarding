@@ -22,7 +22,7 @@ public class Frog {
         return say(sentence);
     }
 
-    String say(String sentence) {
+    final String say(String sentence) {
         String ret = "";
         for (int i = 0; i < sentence.length(); i++) {
             if (sentence.charAt(i) == ' ') {
@@ -33,7 +33,7 @@ public class Frog {
         }
         return ret;
     }
-    Character reverse(char ch) {
+    final Character reverse(char ch) {
         return dict.get(ch);
     }
 }
