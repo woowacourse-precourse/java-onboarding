@@ -30,13 +30,18 @@ public class Problem7 {
             if (foundFriendIdx == 2)
                 continue;
             else {
-                if (!targetUser.equals(friend.get(foundFriendIdx)))
-                    findAcquaintance(depth + 1, targetUser, friend.get(foundFriendIdx), friends, scoreBoard);
+                String friendName = findFriendName(friend, foundFriendIdx);
+                if (!targetUser.equals(friendName))
+                    findAcquaintance(depth + 1, targetUser, friendName, friends, scoreBoard);
             }
         }
     }
 
     public static int findFriendIdx (List<String> friend, String user) {
         return 1 - friend.indexOf(user);
+    }
+
+    public static String findFriendName(List<String> friend, Integer idx) {
+        return friend.get(idx);
     }
 }
