@@ -8,7 +8,7 @@ public class Problem3 {
     private static final int OUT_OF_RANGE = -1;
 
     public static int solution(int number) {
-        if(isOutOfRange(number)) {
+        if (isOutOfRange(number)) {
             return OUT_OF_RANGE;
         }
 

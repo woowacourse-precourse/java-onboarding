@@ -7,7 +7,7 @@ public class CountNumber {
     public static int getCount(int number) {
         int count = 0;
 
-        for(int i = 1; i <= number; i++) {
+        for (int i = 1; i <= number; i++) {
             List<Integer> splitList = splitNumber(i);
             count = count + countNumber(splitList);
         }
@@ -28,7 +28,7 @@ public class CountNumber {
     private static int numberOfContain(Integer integer) {
         int count = 0;
 
-        if(integer == 3 || integer == 6 || integer == 9) {
+        if (integer == 3 || integer == 6 || integer == 9) {
             count++;
         }
 
@@ -39,7 +39,7 @@ public class CountNumber {
     public static List<Integer> splitNumber(int number) {
         List<Integer> splitList = new ArrayList<>();
 
-        while(number > 0) {
+        while (number > 0) {
             splitList.add(number % 10);
             number /= 10;
         }
