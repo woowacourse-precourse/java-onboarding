@@ -24,15 +24,24 @@ public class Problem6 {
 class CrewService {
 
     private final Map<String, Crew> crewRepository = new HashMap<>();
+    private final Set<String> splitNicknameRepository = new HashSet<>();
+
 
     public void saveAll(List<Crew> crewList) {
         save(crewList);
+        crewList.forEach(this::saveSplitNickname);
     }
 
     private void save(List<Crew> crewList) {
         crewList.forEach(crew -> crewRepository.put(crew.getEmail(), crew));
     }
 
+    private void saveSplitNickname(Crew crew) {
+        for (int i = 0; i < crew.getNickname().length() - 1; i++) {
+            String splitNickname = crew.getNickname().substring(i, i + 2);
+            splitNicknameRepository.add(splitNickname);
+        }
+    }
 }
 
 
@@ -55,5 +64,8 @@ class Crew {
         return email;
     }
 
+    public String getNickname() {
+        return nickname;
+    }
 }
 
