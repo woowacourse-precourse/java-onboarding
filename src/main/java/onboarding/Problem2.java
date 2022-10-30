@@ -38,6 +38,25 @@ public class Problem2 {
 
     public static String solution(String cryptogram) {
         String answer = "answer";
+        Stack<Character> cryptogramStack = new Stack<>();
+        char overlapChar = '0';
+
+        if (checkParam(cryptogram))
+            return "";
+        for (int i=0; i<cryptogram.length(); i++)
+        {
+            char index = cryptogram.charAt(i);
+            if (overlapChar == index)
+                continue;
+            else if (!cryptogramStack.isEmpty() && cryptogramStack.peek() == index) {
+                cryptogramStack.pop();
+                overlapChar = index;
+            } else {
+                cryptogramStack.push(index);
+                overlapChar = '0';
+            }
+        }
+        answer = makeAnswer(cryptogramStack);
         return answer;
     }
 }
