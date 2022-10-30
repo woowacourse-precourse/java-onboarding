@@ -104,6 +104,27 @@ public class Problem7 {
 
 
         // 점수가 가장 높은 순서로 정렬해서 최대 5명 return하기(같은 점수는 이름순으로 출력)
+        String[][] list = new String[2][sum.length];
+        for(i =0; i< nickname.length;i++) {
+            list[0][i] =nickname[i];
+        }
+        /*for(k =0; k<guest.length; k++) {
+            cnt = 0;
+            for (l = 0; l < nickname.length; l++) {
+                if(list[0][i] != nickname[j])
+                    cnt += 1;
+                else
+                    sum[j] = guest_score[i];
+            }
+            if(cnt == nickname.length)
+                sum[j] = guest_score[i];
+        }*/
+
+        for(i =0; i< list[0].length;i++) {
+            list[1][i] =String.valueOf(sum[i]);
+        }
+
+
         for(i =0; i< res.length;i++) {
             System.out.print(res[i] + " ");
         }
@@ -119,7 +140,13 @@ public class Problem7 {
         for(i =0; i< sum.length;i++) {
             System.out.print(sum[i] + " ");
         }
-
+        System.out.println();
+        for(i =0; i< list.length;i++) {
+            for (j = 0; j < list[0].length; j++) {
+                System.out.print(list[i][j] + " ");
+            }
+            System.out.println();
+        }
         return answer;
     }
 
