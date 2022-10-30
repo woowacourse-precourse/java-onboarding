@@ -48,4 +48,28 @@ class Problem1 {
         }
         return result;
     }
+    //두 리스트를 비교해 승자 결정
+    public static int comparenum(List<Integer> pobi, List<Integer> crong){
+        int pobiscore = 0, crongscore = 0;
+        int winner;
+        for(int i=0; i<2; i++){
+            int bigP, bigC;
+            //pobi 더한값과 곱한값 비교
+            if(mul(pobi.get(i)) >= sum(pobi.get(i)))
+                bigP = mul(pobi.get(i));
+            else
+                bigP = sum(pobi.get(i));
+            //crong 더한값과 곱한값 비교
+            if(mul(crong.get(i)) >= sum(crong.get(i)))
+                bigC = mul(crong.get(i));
+            else
+                bigC = sum(crong.get(i));
+            //pobi값과 crong값 비교
+            if(bigP > bigC)
+                pobiscore++;
+            else if(bigP < bigC)
+                crongscore++;
+        }
+        return ;
+    }
 }
