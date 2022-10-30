@@ -6,13 +6,14 @@ import java.util.regex.Pattern;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
+
         List<String> answer = new ArrayList<>();
 
         // 1. 전체 nickname을 담은 set 생성
-        HashSet<String> totalNicks = new HashSet<>();
+        HashSet<String> nickSet = new HashSet<>();
         for(List<String> info: forms){
             String nickname = info.get(1);
-            totalNicks.add(nickname);
+            nickSet.add(nickname);
         }
 
 
@@ -23,22 +24,19 @@ public class Problem6 {
 
 
             HashSet<String> compareNicks = new HashSet<>();
-            compareNicks.addAll(totalNicks);
+            compareNicks.addAll(nickSet);
             compareNicks.remove(nickname);
 
             // 3. compareNicks 내의 닉네임을 모두 2글자 단위로 절단
             HashSet<String> compareNicksSplit = new HashSet<>();
             for(String compareNick: compareNicks) {
-                for (int k = 0; k < compareNick.length()-1; k++) {
-                    compareNicksSplit.add(compareNick.substring(k, k + 2));
-                }
+                HashSet<String> compareNickSplit = getBreakLetters(compareNick);
+                compareNicksSplit.addAll(compareNickSplit);
             }
+            System.out.println(compareNicksSplit);
 
             // 4. 내 닉네임을 2글자 단위로 절단
-            HashSet<String> myNickSplit = new HashSet<>();
-            for (int k = 0; k < nickname.length()-1; k++) {
-                myNickSplit.add(nickname.substring(k, k + 2));
-            }
+            HashSet<String> myNickSplit = getBreakLetters(nickname);
 
             // 5. 전체와 교집합이 있으면 메일을 list에 추가
             compareNicksSplit.retainAll(myNickSplit);
@@ -49,6 +47,14 @@ public class Problem6 {
         }
         Collections.sort(answer);
         return answer;
+    }
+
+    private static HashSet<String> getBreakLetters(String str) {
+        HashSet<String> res = new HashSet<>();
+        for (int k = 0; k < str.length()-1; k++) {
+            res.add(str.substring(k, k + 2));
+        }
+        return res;
     }
 
     private static void getValidEmails(List<String> emailList, String email) {
