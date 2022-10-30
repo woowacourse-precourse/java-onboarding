@@ -3,6 +3,10 @@ package onboarding;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import org.junit.jupiter.api.Test;
 
 class Problem6Test {
@@ -82,5 +86,25 @@ class Problem6Test {
 		assertThat(Problem6.InputValidator.isRightEmail("asdasdw2@email.com")).isEqualTo(result);
 		assertThat(Problem6.InputValidator.isRightEmail("sadd@email.com")).isEqualTo(result);
 		assertThat(Problem6.InputValidator.isRightEmail("hsdfsdf@email.com")).isEqualTo(result);
+	}
+
+	@Test
+	void 중복_단어_집합_구하기() {
+		List<String> nicknames = List.of("제이슨", "제이쿠", "소이쿠");
+		Set<String> result = new HashSet<>(List.of("제이", "이쿠"));
+		assertThat(Problem6.getOverlapWords(nicknames)).isEqualTo(result);
+
+		nicknames = List.of("바나나", "바나나", "딸기", "복숭아", "숭아");
+		result = new HashSet<>(List.of("바나", "나나", "숭아"));
+		assertThat(Problem6.getOverlapWords(nicknames)).isEqualTo(result);
+
+		nicknames = List.of("안녕안녕");
+		result = new HashSet<>(List.of());
+		assertThat(Problem6.getOverlapWords(nicknames)).isEqualTo(result);
+
+		nicknames = List.of("안녕안녕", "안녕");
+		result = new HashSet<>(List.of("안녕"));
+		assertThat(Problem6.getOverlapWords(nicknames)).isEqualTo(result);
+
 	}
 }
