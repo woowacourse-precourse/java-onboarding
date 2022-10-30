@@ -8,7 +8,7 @@ import java.util.List;
  * 큰 틀의 기능 구현
  * 1. [50000,10000,5000,1000,500,100,50,10] 클래스 변수 생성 함수
  * 2.  입력값 체크하는 함수
- * 3.  몫을 이용한 result 값 저장
+ * 3.  몫을 이용한 result 값 반환
  * **/
 
 /**
@@ -21,7 +21,6 @@ import java.util.List;
  * 2. 입력값 체크하는 함수
  * - 입력값이 잘못 들어왔을 때 -> if문을 통해 collections.emptyList 반환 해줄려고 잘 들어오면 false 잘못 들어오면 true로 설정
  * **/
-
 
 
 public class Problem5 {
