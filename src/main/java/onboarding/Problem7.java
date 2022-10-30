@@ -39,6 +39,7 @@ public class Problem7 {
 
         Map<String, List<String>> friendsMap = getFriendsMap(friends); // 친구들 맵 생성
         Set<String> userFriend = getUserFriend(friendsMap.get(user)); // 내 친구들 생성
+        Map<String, Integer> possibleFriend = findPossibleFriend(friendsMap, user); // 사용자와 함께 아는 친구
 
         return answer;
     }
@@ -74,5 +75,30 @@ public class Problem7 {
      */
     public static Set<String> getUserFriend(List<String> friendList) {
         return new HashSet<>(friendList);
+    }
+
+    /**
+     * 공통으로 친구를 가지고 있는 유저들을 선정 후 점수 주는 함수
+     * @param friendsMap
+     * @param user
+     * @return 추천 친구가 될 수 있는 친구들의 리스트 반환
+     */
+    public static Map<String, Integer> findPossibleFriend(Map<String, List<String>> friendsMap, String user) {
+        Map<String, Integer> possibleFriend = new HashMap<>();
+
+        for (String userFriend: friendsMap.get(user)) {
+            for (String friend : friendsMap.get(userFriend)) {
+                if (user.equals(friend)) {
+                    continue;
+                }
+
+                if (possibleFriend.containsKey(friend)) {
+                    possibleFriend.put(friend, possibleFriend.get(friend) + 10);
+                } else {
+                    possibleFriend.put(friend, 10);
+                }
+            }
+        }
+        return possibleFriend;
     }
 }
