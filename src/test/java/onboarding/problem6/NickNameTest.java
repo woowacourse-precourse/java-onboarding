@@ -10,8 +10,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class NickNameTest {
     @Test
     void getNickName() {
-        String testNickName = "이제엠";
-        NickName result = new NickName("이제엠");
+        String testNickName = "엠제이";
+        NickName result = new NickName("엠제이");
         assertThat(testNickName).isEqualTo(result.getNickName());
     }
 
@@ -20,4 +20,10 @@ public class NickNameTest {
     void if_not_korean_nick(String nickName) {
         assertThrows(NickNameException.class, () -> new NickName(nickName));
     }
+    @ParameterizedTest
+    @ValueSource(strings = {"", "한글이지만길이가너무길면굉장히곤란해요제발"})
+    void if_not_MAX_and_MIN(String nickName) {
+        assertThrows(NickNameException.class, () -> new NickName(nickName));
+    }
+
 }

@@ -4,7 +4,7 @@ import java.util.Objects;
 import java.util.regex.Pattern;
 
 public class NickName {
-    private static final Pattern korean = Pattern.compile("^[ㄱ-ㅎ|가-힣]$");
+    private static final Pattern korean = Pattern.compile("^[ㄱ-ㅎ|가-힣]{1,20}$");
     private final String nickName;
 
     public NickName(String nickName) {
