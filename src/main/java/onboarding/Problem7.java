@@ -16,6 +16,17 @@ public class Problem7 {
         registerNewUserInFriendsList(user, friends);
         registerNewUserInVisitorsList(visitors);
 
+        LinkedHashMap<String, Integer> tempAllUsersID = sortAllUsersIDByKey();
+        tempAllUsersID = sortAllUsersIDByValue(tempAllUsersID);
+
+        List<String> tempAnswer = new ArrayList<>(tempAllUsersID.keySet());
+
+        for (int i = 0; i < tempAnswer.size(); i++) {
+            if (i == 5) {
+                break;
+            }
+            answer.add(tempAnswer.get(i));
+        }
 
         return answer;
     }
@@ -65,14 +76,6 @@ public class Problem7 {
                 }
                 continue;
             }
-
-            if (!allUsersID.containsKey(user_A)) {
-                allUsersID.put(user_A, 0);
-            }
-
-            if (!allUsersID.containsKey(user_B)) {
-                allUsersID.put(user_B, 0);
-            }
         }
     }
 
@@ -110,9 +113,9 @@ public class Problem7 {
         return result;
     }
 
-    private static LinkedHashMap<String, Integer> sortAllUsersIDByValue () {
+    private static LinkedHashMap<String, Integer> sortAllUsersIDByValue (HashMap<String, Integer> tempAllUsersID) {
         List<HashMap.Entry<String, Integer>> entries = new LinkedList<>(allUsersID.entrySet());
-        Collections.sort(entries, (o1, o2) -> o1.getValue().compareTo(o2.getValue()));
+        Collections.sort(entries, (o2, o1) -> o1.getValue().compareTo(o2.getValue()));
 
         LinkedHashMap<String, Integer> result = new LinkedHashMap<>();
         for (HashMap.Entry<String, Integer> entry : entries) {
