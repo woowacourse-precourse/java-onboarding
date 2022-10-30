@@ -7,4 +7,9 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+
+    private static int max(int n) {
+        int result = 0;
+        return result;
+    }
 }
