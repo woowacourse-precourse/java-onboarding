@@ -10,7 +10,7 @@ public class Problem5 {
         answer=changeMoney(money);
         return answer;
     }
-
+//돈을 받았을때, 주어진 금액에 맟춰 지폐와 동전의 개수를 세어주는 함수
     public static List<Integer> changeMoney(int money){
         List<Integer> result = new ArrayList<Integer>();
         /**
