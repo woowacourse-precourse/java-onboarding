@@ -8,6 +8,8 @@ public class Problem4 {
     };
 
     public static String solution(String word) {
+        if(isException(word)) throw new RuntimeException("잘못된 인자입니다.");
+        
         StringBuilder sb = new StringBuilder();
         for(int i = 0; i < word.length(); i++) {
             sb.append(getConversion(word.charAt(i)));
