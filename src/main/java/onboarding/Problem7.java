@@ -54,33 +54,23 @@ public class Problem7 {
         // 점수 오름차순으로 정렬
         Arrays.sort(pointArr);
 
-        List<String> recommendNameList = new ArrayList<>();
 
-        int pointIdx = pointArr.length-1;
-        while(true){
-            if(pointIdx < 0) break;
-
-            int score = pointArr[pointIdx--];
-            if(score > 0){
-                String name = scoreNameMap.get(score);
-                recommendNameList.add(name);
-            }
-        }
-
-        String[] recommendName = new String[recommendNameList.size()];
-        for(int i=0; i< recommendNameList.size(); i++){
-            recommendName[i] = recommendNameList.get(i);
-        }
-
-        Arrays.sort(recommendName);
-        for(String name : recommendName){
-            if(name.isEmpty()) continue;
-
-            answer.add(name);
-        }
 
 
         return answer;
+    }
+
+    /**
+     * User 객체
+     */
+    static class User{
+        String name;
+        int point;
+
+        User(String name, int point){
+            this.name = name;
+            this.point = point;
+        }
     }
 
     /**
