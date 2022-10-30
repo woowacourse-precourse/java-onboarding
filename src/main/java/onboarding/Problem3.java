@@ -21,6 +21,15 @@ class NumberFroPro3 {
                 "number는 " + FIRST_NUMBER + "이상 " + LAST_NUMBER + "이하의 정수여야 합니다.");
         }
     }
+
+    public int countWithNum() {
+        CountForPro3 countClass = new CountForPro3();
+        while (number > 0) {
+            countClass.check369(number + "");
+            number--;
+        }
+        return countClass.getCount();
+    }
 }
 
 class CountForPro3 {
@@ -48,7 +57,6 @@ class CountForPro3 {
 public class Problem3 {
     public static int solution(int number) {
         NumberFroPro3 numberClass = new NumberFroPro3(number);
-        int answer = 0;
-        return answer;
+        return numberClass.countWithNum();
     }
 }
