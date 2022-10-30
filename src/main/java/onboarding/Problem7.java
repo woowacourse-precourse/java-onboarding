@@ -66,6 +66,9 @@ public class Problem7 {
     public static HashMap<String,Integer> makeFriendScoreFriendMap(String user,HashMap<String,String[]> friendMap){
         HashMap<String,Integer> friendScore = new HashMap<>();
         String[] userFriends = friendMap.get(user);
+        if(userFriends == null){
+            return friendScore;
+        }
         for(String friend: friendMap.keySet()){
             friendScore.put(friend,0);
             if(!friend.equals(user)){
@@ -82,27 +85,40 @@ public class Problem7 {
     }
 
 
-    public static List<String> sortScore(HashMap<String,Integer> friendScore,String[] userFriendArr){
+    public static List<String> sortScore(HashMap<String,Integer> friendScore,String[] userFriendArr) {
         List<String> result = new ArrayList<>();
-        List<Map.Entry<String,Integer>> entries = new ArrayList<Map.Entry<String,Integer>>(friendScore.entrySet());
+        List<Map.Entry<String, Integer>> entries = new ArrayList<Map.Entry<String, Integer>>(friendScore.entrySet());
 
         Collections.sort(entries, new Comparator<Map.Entry<String, Integer>>() {
             @Override
             public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                if (o2.getValue().equals(o1.getValue())) {
+                    return o1.getKey().compareTo(o2.getKey());
+                }
                 return o2.getValue().compareTo(o1.getValue());
             }
         });
         int i = 0;
-        List<String> userFriendList = new ArrayList<>(Arrays.asList(userFriendArr));
-        for(Map.Entry<String,Integer> entry: entries){
-            if((i>5)|entry.getValue()<1){
-                return result;
+        if (userFriendArr != null) {
+            List<String> userFriendList = new ArrayList<>(Arrays.asList(userFriendArr));
+            for (Map.Entry<String, Integer> entry : entries) {
+                if ((i > 5) | entry.getValue() < 1) {
+                    return result;
+                }
+                if (!userFriendList.contains(entry.getKey())) {
+                    result.add(entry.getKey());
+                    i++;
+                }
+
             }
-            if(!userFriendList.contains(entry.getKey())){
+        } else {
+            for (Map.Entry<String, Integer> entry : entries) {
+                if ((i > 5) | entry.getValue() < 1) {
+                    return result;
+                }
                 result.add(entry.getKey());
                 i++;
             }
-
         }
         return result;
     }
