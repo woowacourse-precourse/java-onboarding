@@ -32,4 +32,11 @@ class Problem1 {
         }
         return num;
     }
+    private static int getAddSum(int addSum, int num) {
+        while(num > 0) {
+            addSum += (num % 10);
+            num /= 10;
+        }
+        return addSum;
+    }
 }
