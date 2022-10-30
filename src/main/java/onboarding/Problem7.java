@@ -8,6 +8,9 @@ import java.util.Map;
 
 public class Problem7 {
 
+    public static final int FRIEND_POINT = 10;
+    public static final int VISITOR_POINT = 1;
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
         return getResult(user, friends, visitors);
@@ -55,7 +58,7 @@ public class Problem7 {
     public static Map<String, Integer> getPointFrom(List<String> visitors, String user, List<String> userFriends) {
         Map<String, Integer> visitorPoints = new HashMap<>();
 
-        addPoint(visitors, visitorPoints, 1);
+        addPoint(visitors, visitorPoints, VISITOR_POINT);
         removeCantRecommendCase(user, userFriends, visitorPoints);
         return visitorPoints;
     }
@@ -82,7 +85,7 @@ public class Problem7 {
         Map<String, Integer> friendPoints = new HashMap<>();
 
         for (String friend : userFriends) {
-            addPoint(fillUserFriends(friend, relationships), friendPoints, 10);
+            addPoint(fillUserFriends(friend, relationships), friendPoints, FRIEND_POINT);
         }
 
         removeCantRecommendCase(user, userFriends, friendPoints);
