@@ -4,6 +4,17 @@ import java.util.*;
 
 public class Problem7 {
 
+    static class recommendationSort<T extends Comparable<T>> implements Comparator<List<T>> {
+
+        @Override
+        public int compare(List<T> o1, List<T> o2) {
+            if (o1.get(0).equals(o2.get(0))) {
+                return Integer.compare(Integer.parseInt((String) o2.get(1)), Integer.parseInt((String) o1.get(1)));
+            }
+            return o1.get(0).compareTo(o2.get(0));
+        }
+    }
+
     /**
      * user를 제외한 사용자 List를 구함
      * @param user
@@ -113,7 +124,7 @@ public class Problem7 {
             sortingList.add(temp);
         }
 
-        sortingList.sort(new recommendationSort());
+        Collections.sort(sortingList, new recommendationSort<>());
 
         List<String> result = new ArrayList<>();
         for (int i = 0; i < sortingList.size(); i++) {
