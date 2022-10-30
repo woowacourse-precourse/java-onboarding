@@ -7,4 +7,12 @@ public class Problem6 {
         List<String> answer = List.of("answer");
         return answer;
     }
+
+    private static boolean isRightEmailDomain (String Domain) {
+        String rightDomain = "email.com";
+        if (Domain.equals(rightDomain)) {
+            return true;
+        }
+        return false;
+    }
 }
