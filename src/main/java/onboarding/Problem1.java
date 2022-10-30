@@ -147,3 +147,28 @@ class Book {
         return getBigMultiplePageByLeftAndRight();
     }
 }
+
+
+class Game {
+    private final Book bookByOneUser;
+    private final Book bookByTwoUser;
+
+
+    public Game(List<Integer> user1Page, List<Integer> user2Page) {
+        bookByOneUser = new Book(user1Page);
+        bookByTwoUser = new Book(user2Page);
+    }
+
+    public int decideWinner() {
+        if (bookByOneUser.getBookScore() > bookByTwoUser.getBookScore()) {
+            return 1;
+        }
+        if (bookByOneUser.getBookScore() < bookByTwoUser.getBookScore()) {
+            return 2;
+        }
+        if (bookByOneUser.getBookScore() == bookByTwoUser.getBookScore()) {
+            return 0;
+        }
+        return -1;
+    }
+}
