@@ -89,7 +89,28 @@ public class Problem7 {
     }
 
     //점수를 기준으로 내림차순하고, 이름을 기준으로 오름차순으로 정렬하기
+    static Map<String, Integer> sortList(){
+        List<Map.Entry<String,Integer>> list = new ArrayList<>(recommendList.entrySet());
+        Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                if (o1.getValue() > o2.getValue()){
+                    return -1;
+                } else if (o1.getValue()< o2.getValue()) {
+                    return 1;
+                }
+                return o1.getKey().compareTo(o2.getKey());
+            }
+        });
 
+        Map<String,Integer> sortedMap = new LinkedHashMap<>();
+        for (Iterator<Map.Entry<String,Integer>> iter = list.iterator(); iter.hasNext();){
+            Map.Entry<String,Integer> entry = iter.next();
+            sortedMap.put(entry.getKey(), entry.getValue());
+        }
+        return sortedMap;
+
+    }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
