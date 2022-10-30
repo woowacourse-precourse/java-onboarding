@@ -11,6 +11,38 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+
+        //페이지의 사이즈가 2가 아니라면 예외사항
+        if(pobi.size() != 2 || crong.size() != 2){
+            return -1;
+        }
+
+        int pobiResult = 0;
+        int crongResult = 0;
+        int compareResult = 0;
+
+        //pobi의 결과값
+        pobiResult = comparePageNum(pobi);
+
+        //crong의 결과값
+        crongResult = comparePageNum(crong);
+
+        //pobi,crong 둘중한명의 결과값이 이상할경우 -1 반환
+        if(pobiResult == -1 || crongResult == -1){
+            return -1;
+        }
+
+        //크롱과 포비의 결과값 비교
+        compareResult = Integer.compare(pobiResult,crongResult);
+
+        if(compareResult == 1){     //포비가 이긴경우
+            answer = 1;
+        }else if(compareResult == 0){   //무승부인경우
+            answer = 0;
+        }else{                      //크롱이 이긴경우
+            answer = 2 ;
+        }
+
         return answer;
     }
 
