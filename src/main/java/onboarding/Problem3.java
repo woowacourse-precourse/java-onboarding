@@ -16,4 +16,13 @@ public class Problem3 {
 
 		return n;
 	}
+
+	private static int maxNumber(int num, int length) {
+		int div = 1;
+
+		for(int i = 0;i < length - 1;i++)
+			div *= 10;
+
+		return num / div;
+	}
 }
