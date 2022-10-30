@@ -48,9 +48,11 @@ public class Problem7 {
             }
         }
         for(String friend: userFriends) {
-            friendPoints.put(friend,0);
+            if(friendPoints.get(friend) != null)
+                friendPoints.put(friend,0);
         }
-        friendPoints.put(user,0);
+        if(friendPoints.get(user) != null)
+            friendPoints.put(user,0);
         return friendPoints;
     }
 
