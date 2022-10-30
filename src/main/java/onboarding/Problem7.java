@@ -6,6 +6,10 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem7 {
+
+    private static final int FRIEND_TOGETHER_SCORE = 10;
+    private static final int VISITOR_SCORE = 1;
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
         if (Problem7Validation.problem7Validation(user, friends, visitors)) {
@@ -18,8 +22,42 @@ public class Problem7 {
         Set<String> userSet = makeUserSet(user, friends, visitors);
         Map<String, List<String>> friendRelationMap = makeFriendsRelations(friends);
         Map<String, Integer> scoreMap = initCountScoreList(userSet, friendRelationMap, user);
+        calculate(user, friendRelationMap, scoreMap, visitors);
 
         return null;
+    }
+
+    private static void calculate(String user, Map<String, List<String>> friendRelationMap, Map<String, Integer> scoreMap, List<String> visitors) {
+        for (String thisUser :
+                scoreMap.keySet()) {
+            int score = 0;
+            score += userFriendWithThisUserFriendCount(user, thisUser, friendRelationMap) * FRIEND_TOGETHER_SCORE;
+            if (visitors.size() > 0) {
+                score += userVisitorCount(visitors, thisUser) * VISITOR_SCORE;
+            }
+            scoreMap.put(thisUser, score);
+        }
+    }
+
+    private static int userVisitorCount(List<String> visitors, String thisUser) {
+        return (int) visitors.stream()
+                .filter(visitor -> visitor == thisUser)
+                .count();
+    }
+
+    private static int userFriendWithThisUserFriendCount(String user, String thisUser, Map<String, List<String>> friendRelationMap) {
+        int result = 0;
+        if (friendRelationMap.containsKey(thisUser)) {
+            result = (int) friendRelationMap.get(thisUser).stream()
+                    .filter(friend -> isFriendWithUser(friendRelationMap,user,friend))
+                    .count();
+        }
+        return result;
+
+    }
+
+    private static boolean isFriendWithUser(Map<String, List<String>> friendRelationMap, String user, String friend) {
+        return friendRelationMap.get(user).contains(friend);
     }
 
     private static Map<String, Integer> initCountScoreList(Set<String> userSet, Map<String, List<String>> friendRelationMap, String user) {
