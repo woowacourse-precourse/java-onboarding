@@ -1,6 +1,6 @@
 package onboarding;
 
-import java.util.List;
+import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -61,5 +61,13 @@ public class Problem6 {
         if(isNameHangul(nickname)&&isNameLength(nickname))
             return true;
         else return false;
+    }
+
+    /**
+     * 이메일 오름차순으로 정렬
+     */
+    private static List<String> emailOrder(List<String> emails){
+        emails.sort(Comparator.naturalOrder());
+        return emails;
     }
 }
