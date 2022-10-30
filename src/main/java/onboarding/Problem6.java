@@ -53,8 +53,8 @@ class IsOverlap {
     }
 }
 
-class IsCorrect {
-    public boolean isCorrect (String email) {
+class IsValidEmail {
+    public boolean isValid (String email) {
         int emailLength = email.length();
         if (emailLength < 11 || 20 <= emailLength) {
             return false;
@@ -62,6 +62,7 @@ class IsCorrect {
         if (! email.substring(emailLength-10, emailLength-1).equals("email.com")) {
             return false;
         }
+
         return true;
     }
 }
