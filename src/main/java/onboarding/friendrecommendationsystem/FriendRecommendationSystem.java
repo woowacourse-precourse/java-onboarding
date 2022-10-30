@@ -32,7 +32,9 @@ public class FriendRecommendationSystem {
 	private void initRecommendationScoreWith(final List<String> visitors) {
 		this.scoreMap = new HashMap<>();
 		for (String friend : friendMap.keySet()) {
-			scoreMap.put(friend, 0);
+			if (!user.equals(friend)) {
+				scoreMap.put(friend, 0);
+			}
 		}
 		for (String visitor : visitors) {
 			scoreMap.merge(visitor, RULE_TWO_POINT,
@@ -89,5 +91,23 @@ public class FriendRecommendationSystem {
 	public int getRecommendationScore(final String other) {
 		return getNumberOfFriendsKnowWith(other) * RULE_ONE_POINT
 			+ scoreMap.get(other);
+	}
+
+	public List<String> getRecommendationUsers() {
+		return scoreMap.keySet()
+			.stream()
+			.filter(other -> !checkUserContains(other))
+			.sorted(this::compare)
+			.collect(Collectors.toList());
+	}
+
+	private int compare(String s1, String s2) {
+		int s1Score = getRecommendationScore(s1);
+		int s2Score = getRecommendationScore(s2);
+
+		if (s1Score == s2Score) {
+			return s1.compareTo(s2);
+		}
+		return s2Score - s1Score;
 	}
 }

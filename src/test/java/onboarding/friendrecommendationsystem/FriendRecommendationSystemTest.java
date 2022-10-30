@@ -61,4 +61,11 @@ public class FriendRecommendationSystemTest {
 			system.getRecommendationScore("bedi")
 		).isEqualTo(3);
 	}
+
+	@DisplayName("추천 친구 목록 반환 테스트")
+	@Test
+	void 추천_친구_목록() {
+		List<String> result = system.getRecommendationUsers();
+		assertThat(result).isEqualTo(List.of("andole", "jun", "bedi"));
+	}
 }
