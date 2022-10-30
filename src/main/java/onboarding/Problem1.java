@@ -7,7 +7,6 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
-    }
 }
 
 abstract class Page {
@@ -109,11 +108,14 @@ class Book {
     }
 
     private void validateLeftAndRightInterval(List<Integer> pageByOpeningBook) {
-        throw new IllegalStateException(LEFT_RIGHT_PAGE_DIFFERENCE);
+        if(pageByOpeningBook.get(RIGHT_PAGE_INDEX)-pageByOpeningBook.get(LEFT_PAGE_INDEX)!=1){
+            throw new IllegalStateException(LEFT_RIGHT_PAGE_DIFFERENCE);
+        }
     }
 
     private void validateArraySize(List<Integer> pageByOpeningBook) {
         if (pageByOpeningBook.size() != PAGE_SIZE_BY_OPENEING_BOOK) {
+            System.out.println(pageByOpeningBook.size());
             throw new IllegalStateException(PAGE_PER_OPENING_BOOK);
         }
     }
