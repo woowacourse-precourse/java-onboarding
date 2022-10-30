@@ -8,16 +8,10 @@ import java.util.List;
 
 class Problem1 {
 
-
-    final static int LEFT_WIN = 1;
-    final static int DRAW = 0;
-    final static int RIGHT_WIN = 2;
-    final static int EXCEPT_CASE = -1;
-
     static class Page {
 
-        final static int FIRST_PAGE = 1;
-        final static int LAST_PAGE = 400;
+        private final int FIRST_PAGE = 1;
+        private final int LAST_PAGE = 400;
 
         private int page;
 
@@ -51,6 +45,7 @@ class Problem1 {
 
         private int getMaxSum(List<Integer> digits) {
             int ret = 0;
+
             for (int digit : digits) {
                 ret += digit;
             }
@@ -69,44 +64,81 @@ class Problem1 {
         }
     }
 
+
     public static Page makePage(int page) {
         return new Page(page);
     }
 
-    public static int getResult(List<Integer> leftUser, List<Integer> rightUser) {
-        int result = 0;
-        try {
-            int leftPoint = getUserMaxPoint(leftUser);
-            int rightPoint = getUserMaxPoint(rightUser);
 
-            if (leftPoint > rightPoint) {
-                result = LEFT_WIN;
-            } else if (leftPoint == rightPoint) {
-                result = DRAW;
-            } else {
-                result = RIGHT_WIN;
+    static class User {
+
+        private Page leftPage;
+        private Page rightPage;
+
+        public User(List<Integer> pages) {
+            if (!isValidPages(pages)) {
+                throw new InputMismatchException("허용되지 않는 입력입니다.");
             }
-        } catch (InputMismatchException e) {
-            result = EXCEPT_CASE;
-        } finally {
-            return result;
+
+            this.leftPage = makePage(pages.get(0));
+            this.rightPage = makePage(pages.get(1));
+        }
+
+
+        private boolean isValidPages(List<Integer> pages) {
+            return pages.size() == 2 && pages.get(0) + 1 == pages.get(1);
+        }
+
+        public int maxPoint() {
+            return max(leftPage.getPageMaxPoint(), rightPage.getPageMaxPoint());
         }
 
     }
 
-    private static boolean isValidPages(List<Integer> pages) {
-        return pages.size() == 2 && pages.get(0) + 1 == pages.get(1);
+    static User makeUser(List<Integer> pages) {
+        return new User(pages);
     }
 
-    public static int getUserMaxPoint(List<Integer> pages) {
+    static class Result {
 
-        if (!isValidPages(pages)) {
-            throw new InputMismatchException("허용되지 않는 입력입니다.");
+
+        final private int LEFT_WIN = 1;
+        final private int DRAW = 0;
+        final private int RIGHT_WIN = 2;
+        final private int EXCEPT_CASE = -1;
+
+        private int value;
+
+        Result(List<Integer> leftUserPages, List<Integer> rightUserPages) {
+
+            try {
+                int leftPoint = makeUser(leftUserPages).maxPoint();
+                int rightPoint = makeUser(rightUserPages).maxPoint();
+
+                if (leftPoint > rightPoint) {
+                    value = LEFT_WIN;
+                } else if (leftPoint == rightPoint) {
+                    value = DRAW;
+                } else {
+                    value = RIGHT_WIN;
+                }
+            } catch (InputMismatchException e) {
+                value = EXCEPT_CASE;
+            }
         }
-        return max(makePage(pages.get(0)).getPageMaxPoint(), makePage(pages.get(1)).getPageMaxPoint());
+
+        public int getValue() {
+            return this.value;
+        }
+
+
+    }
+
+    private static Result makeResult(List<Integer> leftUserPages, List<Integer> rightUserPages) {
+        return new Result(leftUserPages, rightUserPages);
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        return getResult(pobi, crong);
+        return makeResult(pobi, crong).getValue();
     }
 }
