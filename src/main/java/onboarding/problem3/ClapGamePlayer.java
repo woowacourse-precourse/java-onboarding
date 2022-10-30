@@ -1,7 +1,7 @@
 package onboarding.problem3;
 
-import static onboarding.common.consts.DigitNumberCommonConst.CALCULATE_REMAINDER_VALUE;
-import static onboarding.common.consts.DigitNumberCommonConst.DECIMAL_UNIT_VALUE;
+import static onboarding.common.consts.CommonDigitNumberConst.CALCULATE_REMAINDER_VALUE;
+import static onboarding.common.consts.CommonDigitNumberConst.DECIMAL_UNIT_VALUE;
 import static onboarding.problem3.consts.ClapGameConst.*;
 
 public class ClapGamePlayer {
