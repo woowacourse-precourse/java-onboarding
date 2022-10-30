@@ -6,6 +6,8 @@ public class Problem6 {
     static final int EMAIL = 0;
     static final int NICKNAME = 1;
     static final int LIMIT_DUPLICATED = 2;
+    static final int SEPARATE_COUNT = 2;
+
     static HashMap<String, Integer> twoLetterCountMap = new HashMap<>();
 
     public static List<String> solution(List<List<String>> forms) {
@@ -64,7 +66,7 @@ public class Problem6 {
     private static List<String> getSeparatedNicknameToList(String nickname) {
         List<String> separatedNickname = new ArrayList<>();
         for (int i = 0; i < nickname.length() - 1; i++) {
-            String twoLetters = nickname.substring(i, i + 2);
+            String twoLetters = nickname.substring(i, i + SEPARATE_COUNT);
             separatedNickname.add(twoLetters);
         }
         return separatedNickname;
