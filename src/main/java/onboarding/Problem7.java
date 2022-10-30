@@ -41,6 +41,7 @@ public class Problem7 {
         Set<String> userFriend = getUserFriend(friendsMap.get(user)); // 내 친구들 생성
         Map<String, Integer> possibleFriend = findPossibleFriend(friendsMap, user); // 사용자와 함께 아는 친구
         Map<String, Integer> visitorFriend = calcVisitFriend(possibleFriend, visitors, userFriend, user); // 방문자 계산
+        answer = getRecoFriend(visitorFriend); // 최종 5명 이하의 추천 친구 얻음
 
         return answer;
     }
@@ -116,11 +117,39 @@ public class Problem7 {
             if (possibleFriend.containsKey(visitor)) {
                 possibleFriend.put(visitor, possibleFriend.get(visitor)+1);
             } else {
-                if (!userFriend.contains(visitor)) {
+                if (!userFriend.contains(visitor) && !visitor.equals(user)) {
                     possibleFriend.put(visitor, 1);
                 }
             }
         }
         return possibleFriend;
+    }
+
+    /**
+     * 최대 5명의 추천친구 얻는 함수
+     * @param calcFriend
+     * @return 최종 추천 친구 5명 이하
+     */
+    public static List<String> getRecoFriend(Map<String, Integer> calcFriend) {
+        int maxRecoFriend = 5;
+        List<String> recommendFriend = new ArrayList<>();
+        List<String> friendKeys = new ArrayList<>(calcFriend.keySet());
+        friendKeys.sort(new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                int comp = calcFriend.get(o2).compareTo(calcFriend.get(o1));
+                if (comp != 0) {
+                    return comp;
+                }
+                return o1.compareTo(o2);
+            }
+        });
+
+        for (String friendKey : friendKeys) {
+            if (calcFriend.get(friendKey) != 0 && recommendFriend.size() < maxRecoFriend) {
+                recommendFriend.add(friendKey);
+            }
+        }
+        return recommendFriend;
     }
 }
