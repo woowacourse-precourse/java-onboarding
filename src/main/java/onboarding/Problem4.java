@@ -2,8 +2,18 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer =reverseWord(word);
+        String answer ="";
+        if (checkLimit(word)) answer=reverseWord(word);
         return answer;
+    }
+
+    /*
+    문제 조건 사항 체크
+     */
+    private static boolean checkLimit(String word){
+        //문자열 1부터 1000까지
+        if(word.length()>=1&&word.length()<=1000) return true;
+        return false;
     }
     /*
     단어 알파벳 거꾸로 만들기
