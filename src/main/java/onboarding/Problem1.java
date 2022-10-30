@@ -23,6 +23,13 @@ class Problem1 {
         }
         return Math.max(sum,mul);
     }
+
+    /**
+     * 2.펼친 페이지 중 큰 값을 리턴하는 함수
+     */
+    static int pageResult(List<Integer> list){
+        return Math.max(cal(list.get(0)),cal(list.get(1)));
+    }
     
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
