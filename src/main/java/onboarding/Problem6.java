@@ -70,4 +70,13 @@ public class Problem6 {
         emails.sort(Comparator.naturalOrder());
         return emails;
     }
+
+    /**
+     * 이메일 중복 제거
+     */
+    private static List<String> emailRemoveDuplicated(List<String> emails){
+        Set<String> emailSet = new HashSet<String>(emails);
+        List<String> emailList = new ArrayList<String>(emailSet);
+        return emailList;
+    }
 }
