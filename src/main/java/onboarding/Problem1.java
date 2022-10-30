@@ -17,7 +17,14 @@ class Problem1 {
         int crongLeftMax = Math.max(plus(crongLeft), mul(crongLeft));
         int crongRightMax = Math.max(plus(crongRight), mul(crongRight));
         int crongMax = Math.max(crongLeftMax,crongRightMax);
-        
+
+        if(exceptionCheck(pobiLeft, pobiRight)) {
+            return -1;
+        }
+        if(exceptionCheck(crongLeft, crongRight)) {
+            return -1;
+        }
+
         if(pobiMax > crongMax) {
             answer = 1;
         }
@@ -59,4 +66,20 @@ class Problem1 {
         return mulResult;
     }
 
+    public static boolean exceptionCheck(int leftPage, int rightPage) {
+        // 예외상황 발생하면 return true
+        if(leftPage % 2 != 1) {
+            return true;
+        }
+
+        if(rightPage % 2 != 0) {
+            return true;
+        }
+
+        if(rightPage - leftPage != 1) {
+            return true;
+        }
+
+        return false;
+    }
 }
