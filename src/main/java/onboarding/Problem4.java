@@ -18,5 +18,9 @@ public class Problem4 {
 
         return referenceLetters.length() - 1 - referenceLetters.indexOf(currentCharacter);
     }
+    private static char getCharacterByIndex(String referenceLetters, int index) {
+
+        return referenceLetters.charAt(index);
+    }
 
 }
