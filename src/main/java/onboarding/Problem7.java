@@ -12,6 +12,8 @@ public class Problem7 {
 
     private static Map<String, Set<String>> friendsList = new HashMap<>();
     private static Map<String, Integer> usersScoreDict = new HashMap<>();
+    private static Set<String> userFreindList = new HashSet<>();
+
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
@@ -23,31 +25,11 @@ public class Problem7 {
             updateFriendsList(A, B);
             updateFriendsList(B, A);
         }
-        Set<String> userFreindList = friendsList.get(user);
 
-        //  함께 아는 친구의 수 계산
-        for (String name : friendsList.keySet()) {
-            if (userFreindList.contains(name) || name.equals(user)) // user와 이미 친구인 경우 패스
-                continue;
-
-            Set<String> eachFriendList = friendsList.get(name);
-            eachFriendList.retainAll(userFreindList); // user와 함께 아는 친구
-            int acquaintanceNum = eachFriendList.size();
-            usersScoreDict.put(name, acquaintanceNum * 10);
-        }
-
-        // 사용자 타임 라인 방문 점수 계산
-        for (String visitor : visitors) {
-            if (userFreindList.contains(visitor) || visitor.equals(user)) // user와 이미 친구인 경우 패스
-                continue;
-
-            if (usersScoreDict.containsKey(visitor)) {
-                int currScore = usersScoreDict.get(visitor);
-                usersScoreDict.put(visitor, currScore + 1);
-            } else {
-                usersScoreDict.put(visitor, 1);
-            }
-        }
+        // 점수 계산
+        userFreindList = friendsList.get(user);
+        calcAcquaintanceNum(user);
+        calcVisitNum(user, visitors);
 
         // 정렬
         PriorityQueue<UserScore> pq = new PriorityQueue<>();
@@ -63,6 +45,45 @@ public class Problem7 {
         }
 
         return answer;
+    }
+
+    //  함께 아는 친구의 수 계산
+    static void calcAcquaintanceNum(String user) {
+        if (userFreindList == null) {
+            return;
+        }
+
+        for (String name : friendsList.keySet()) {
+            if ( !(isValidCalculation(name, user)) )
+                continue;
+
+            Set<String> eachFriendList = friendsList.get(name);
+            eachFriendList.retainAll(userFreindList); // user와 함께 아는 친구
+            int acquaintanceNum = eachFriendList.size();
+            usersScoreDict.put(name, acquaintanceNum * 10);
+        }
+    }
+
+    // 사용자 타임 라인 방문 점수 계산
+    static void calcVisitNum(String user, List<String> visitors) {
+        for (String visitor : visitors) {
+           if ( !(isValidCalculation(visitor, user)) )
+               continue;
+
+            if (usersScoreDict.containsKey(visitor)) {
+                int currScore = usersScoreDict.get(visitor);
+                usersScoreDict.put(visitor, currScore + 1);
+            } else {
+                usersScoreDict.put(visitor, 1);
+            }
+        }
+    }
+
+    // user와 이미 친구인 경우 패스
+    static boolean isValidCalculation(String name, String user) {
+        if ((userFreindList != null && userFreindList.contains(name)) || name.equals(user))
+            return false;
+        return true;
     }
 
     static void updateFriendsList(String A, String B) {
