@@ -10,7 +10,7 @@ class Problem1 {
         // max: 현재 페이지의 자리수로 계산한 최대값
         // sum: 합 계산을 위한 변수, mul: 곱 계산을 위한 변수
         int max, sum, mul;
-        // 조건에 어긋나는 입력이 주어졌는지 확인하는 변수
+        // isError: 조건에 어긋나는 입력이 주어졌는지 확인하는 변수
         boolean isError = false;
         // nums: 페이지를 자리수로 나눠서 저장하는 리스트
         // maxs: pobi와 crong의 최대값을 저장하는 리스트
