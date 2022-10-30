@@ -3,6 +3,7 @@ package onboarding;
 import java.util.*;
 
 public class Problem6 {
+
     public static List<String> solution(List<List<String>> forms) {
 
         List<String> warningEmail = new ArrayList<>();
@@ -19,6 +20,7 @@ public class Problem6 {
                     if (person.get(1).matches(".*" + piece + ".*")) {
 
                         warningEmail.add(person.get(0));
+                        break;
                     }
                 }
             }
