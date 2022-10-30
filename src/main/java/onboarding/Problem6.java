@@ -56,12 +56,12 @@ public class Problem6 {
 
     private static void addSeperatedNicknameToList(List<List<String>> forms, List<List<String>> separatedNickname) {
         for (List<String> crew : forms) {
-            List<String> temp = new ArrayList<>(getSeparateTwoConsecutiveLetters(crew.get(NICKNAME)));
+            List<String> temp = new ArrayList<>(getSeparatedTwoConsecutiveLetters(crew.get(NICKNAME)));
             separatedNickname.add(temp);
         }
     }
 
-    private static List<String> getSeparateTwoConsecutiveLetters(String nickname) {
+    private static List<String> getSeparatedTwoConsecutiveLetters(String nickname) {
         List<String> separatedNickname = new ArrayList<>();
         for (int i = 0; i < nickname.length() - 1; i++) {
             String twoLetters = nickname.substring(i, i + 2);
