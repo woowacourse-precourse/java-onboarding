@@ -3,19 +3,18 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+
     private static final int START_PAGE = 1;
     private static final int END_PAGE = 400;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
         try {
             checkException(pobi);
             checkException(crong);
         } catch (IllegalStateException e) {
             return -1;
         }
-        answer = getWinner(pobi, crong);
-        return answer;
+        return getWinner(pobi, crong);
     }
 
     public static void checkException(List<Integer> pageList) throws IllegalStateException {
@@ -25,7 +24,7 @@ class Problem1 {
     }
 
     public static void checkPageHasAscending1Difference(List<Integer> pageList) {
-        if (pageList.get(0)+1 != pageList.get(1)) {
+        if (pageList.get(0) + 1 != pageList.get(1)) {
             throw new IllegalStateException();
         }
     }
@@ -40,7 +39,7 @@ class Problem1 {
     }
 
     public static void checkLeftPageIsOdd(List<Integer> pageList) {
-        if (pageList.get(0)%2 == 0) {
+        if (pageList.get(0) % 2 == 0) {
             throw new IllegalStateException();
         }
     }
@@ -48,7 +47,6 @@ class Problem1 {
     public static int getWinner(List<Integer> pobi, List<Integer> crong) {
         int pobiScore = getScore(pobi);
         int crongScore = getScore(crong);
-
         if (pobiScore == crongScore) {
             return 0;
         } else if (pobiScore > crongScore) {

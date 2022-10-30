@@ -4,7 +4,6 @@ import static onboarding.Problem1.*;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.*;
@@ -19,7 +18,6 @@ class Problem1Test {
 		public void pobiPageOutOfRangeTest() {
 			List<Integer> pobi = List.of(-1, 0);
 			List<Integer> crong = List.of(3, 4);
-
 			assertThat(solution(pobi, crong)).isEqualTo(-1);
 		}
 
@@ -28,9 +26,7 @@ class Problem1Test {
 		public void crongPageOutOfRangeTest() {
 			List<Integer> pobi = List.of(97, 98);
 			List<Integer> crong = List.of(399, 400);
-
 			assertThat(solution(pobi, crong)).isEqualTo(-1);
-
 		}
 
 		@Test
@@ -38,7 +34,6 @@ class Problem1Test {
 		public void crongPageNotSerialTest() {
 			List<Integer> pobi = List.of(97, 98);
 			List<Integer> crong = List.of(3, 5);
-
 			assertThat(solution(pobi, crong)).isEqualTo(-1);
 		}
 
@@ -47,7 +42,6 @@ class Problem1Test {
 		public void pobiRightPageIs1BiggerTest() {
 			List<Integer> pobi = List.of(98, 97);
 			List<Integer> crong = List.of(3, 4);
-
 			assertThat(solution(pobi, crong)).isEqualTo(-1);
 		}
 
@@ -56,7 +50,6 @@ class Problem1Test {
 		public void pobiLeftPageIsEvenTest() {
 			List<Integer> pobi = List.of(98, 99);
 			List<Integer> crong = List.of(5, 6);
-
 			assertThat(solution(pobi, crong)).isEqualTo(-1);
 		}
 
@@ -65,7 +58,6 @@ class Problem1Test {
 		public void crongLeftPageIsEvenTest() {
 			List<Integer> pobi = List.of(55, 56);
 			List<Integer> crong = List.of(10, 11);
-
 			assertThat(solution(pobi, crong)).isEqualTo(-1);
 		}
 
@@ -74,7 +66,6 @@ class Problem1Test {
 		public void crongMaxIsAddAndBiggerThanPobiMaxIsAdd() {
 			List<Integer> pobi = List.of(111, 112);
 			List<Integer> crong = List.of(115, 116);
-
 			assertThat(solution(pobi, crong)).isEqualTo(2);
 		}
 
@@ -83,7 +74,6 @@ class Problem1Test {
 		public void pobiMaxIsProductAndBiggerThanCrongMaxIsProduct() {
 			List<Integer> pobi = List.of(187, 188);
 			List<Integer> crong = List.of(77, 78);
-
 			assertThat(solution(pobi, crong)).isEqualTo(1);
 		}
 	}
@@ -94,31 +84,15 @@ class Problem1Test {
 		@Test
 		@DisplayName("정수의 각 자리 수 합을 반환해야 한다")
 		public void getMaxDigitSumTest() {
-			// given
-			List<Integer> pageList = new ArrayList<>();
-			pageList.add(123);
-			pageList.add(124);
-
-			// when
-			int maxDigitSum = getMaxDigitSum(pageList);
-
-			// then
-			assertThat(maxDigitSum).isEqualTo(1+2+4);
+			List<Integer> pageList = List.of(123, 124);
+			assertThat(getMaxDigitSum(pageList)).isEqualTo(1+2+4);
 		}
 
 		@Test
 		@DisplayName("정수의 각 자리 수 곱을 반환해야 한다")
 		public void getMaxDigitProductTest() {
-			// given
-			List<Integer> pageList = new ArrayList<>();
-			pageList.add(129);
-			pageList.add(130);
-
-			// when
-			int maxDigitProduct = getMaxDigitProduct(pageList);
-
-			// then
-			assertThat(maxDigitProduct).isEqualTo(1*2*9);
+			List<Integer> pageList = List.of(129, 130);
+			assertThat(getMaxDigitProduct(pageList)).isEqualTo(1*2*9);
 		}
 	}
 
@@ -128,22 +102,15 @@ class Problem1Test {
 		@Test
 		@DisplayName("곱한 값이 더 큰 경우 곱한 값을 반환해야 한다")
 		public void getScoreTest1() {
-			List<Integer> pageList = new ArrayList<>();
-			pageList.add(357);
-			pageList.add(358);
-
-			int score = getScore(pageList);
-			assertThat(score).isEqualTo(120);
+			List<Integer> pageList = List.of(357, 358);
+			assertThat(getScore(pageList)).isEqualTo(120);
 		}
+
 		@Test
 		@DisplayName("더한 값이 더 큰 경우 더한 값을 반환해야 한다")
 		public void getScoreTest2() {
-			List<Integer> pageList = new ArrayList<>();
-			pageList.add(19);
-			pageList.add(20);
-
-			int score = getScore(pageList);
-			assertThat(score).isEqualTo(10);
+			List<Integer> pageList = List.of(19, 20);
+			assertThat(getScore(pageList)).isEqualTo(10);
 		}
 	}
 
@@ -152,58 +119,30 @@ class Problem1Test {
 
 		@Test
 		public void drawTest1() {
-			List<Integer> pobi = new ArrayList<>();
-			pobi.add(199);
-			pobi.add(200);
-
-			List<Integer> crong = new ArrayList<>();
-			crong.add(99);
-			crong.add(100);
-
-			int winner = getWinner(pobi, crong);
-			assertThat(winner).isEqualTo(0);
+			List<Integer> pobi = List.of(199, 200);
+			List<Integer> crong = List.of(99, 100);
+			assertThat(getWinner(pobi, crong)).isEqualTo(0);
 		}
 
 		@Test
 		public void drawTest2() {
-			List<Integer> pobi = new ArrayList<>();
-			pobi.add(199);
-			pobi.add(200);
-
-			List<Integer> crong = new ArrayList<>();
-			crong.add(199);
-			crong.add(200);
-
-			int winner = getWinner(pobi, crong);
-			assertThat(winner).isEqualTo(0);
+			List<Integer> pobi = List.of(199, 200);
+			List<Integer> crong = List.of(199, 200);
+			assertThat(getWinner(pobi, crong)).isEqualTo(0);
 		}
 
 		@Test
 		public void pobiWinTest() {
-			List<Integer> pobi = new ArrayList<>();
-			pobi.add(17);
-			pobi.add(18);
-
-			List<Integer> crong = new ArrayList<>();
-			crong.add(15);
-			crong.add(16);
-
-			int winner = getWinner(pobi, crong);
-			assertThat(winner).isEqualTo(1);
+			List<Integer> pobi = List.of(17, 18);
+			List<Integer> crong = List.of(15, 16);
+			assertThat(getWinner(pobi, crong)).isEqualTo(1);
 		}
 
 		@Test
 		public void crongWinTest() {
-			List<Integer> pobi = new ArrayList<>();
-			pobi.add(395);
-			pobi.add(396);
-
-			List<Integer> crong = new ArrayList<>();
-			crong.add(397);
-			crong.add(398);
-
-			int winner = getWinner(pobi, crong);
-			assertThat(winner).isEqualTo(2);
+			List<Integer> pobi = List.of(395, 396);
+			List<Integer> crong = List.of(397, 398);
+			assertThat(getWinner(pobi, crong)).isEqualTo(2);
 		}
 	}
 
@@ -212,10 +151,7 @@ class Problem1Test {
 
 		@Test
 		public void checkPageHasAscending1DifferenceTest() {
-			List<Integer> pageList = new ArrayList<>();
-			pageList.add(234);
-			pageList.add(233);
-
+			List<Integer> pageList = List.of(234, 233);
 			assertThrows(IllegalStateException.class, () -> {
 				checkPageHasAscending1Difference(pageList);
 			});
@@ -223,10 +159,7 @@ class Problem1Test {
 
 		@Test
 		public void checkListInGivenRangeTest1() {
-			List<Integer> pageList = new ArrayList<>();
-			pageList.add(0);
-			pageList.add(1);
-
+			List<Integer> pageList = List.of(0, 1);
 			assertThrows(IllegalStateException.class, () -> {
 				checkListInGivenRange(pageList);
 			});
@@ -234,10 +167,7 @@ class Problem1Test {
 
 		@Test
 		public void checkListInGivenRangeTest2() {
-			List<Integer> pageList = new ArrayList<>();
-			pageList.add(399);
-			pageList.add(400);
-
+			List<Integer> pageList = List.of(399, 400);
 			assertThrows(IllegalStateException.class, () -> {
 				checkListInGivenRange(pageList);
 			});
@@ -245,10 +175,7 @@ class Problem1Test {
 
 		@Test
 		public void checkLeftPageIsOddTest() {
-			List<Integer> pageList = new ArrayList<>();
-			pageList.add(272);
-			pageList.add(273);
-
+			List<Integer> pageList = List.of(272, 273);
 			assertThrows(IllegalStateException.class, () -> {
 				checkLeftPageIsOdd(pageList);
 			});
