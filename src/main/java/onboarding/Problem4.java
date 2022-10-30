@@ -6,9 +6,16 @@ import java.util.Map;
 public class Problem4 {
     static Map<Character, Character> dictionary = new HashMap<>();
     public static String solution(String word) {
-
-        String answer = "";
-        return answer;
+        initialDictionary();
+        StringBuilder stringBuiler = new StringBuilder(word);
+        StringBuilder answer = new StringBuilder();
+        char alphabet;
+        for (int i = 0; i < stringBuiler.length(); i++) {
+            alphabet = stringBuiler.charAt(i);
+            char convertedAlphabet = alphabeticalTransformation(alphabet, characterClassification(alphabet));
+            answer.append(convertedAlphabet);
+        }
+        return answer.toString();
     }
 
     private static int characterClassification(char word) {
@@ -22,11 +29,9 @@ public class Problem4 {
 
     private static char alphabeticalTransformation(char word, int size) {
         if (size == 1) {
-            char result = (char) (greenFrogDictionary(word) + 32);
-            return result;
+            return (char) (greenFrogDictionary(word) + 32);
         } else if (size == 2) {
-            char result = greenFrogDictionary(word);
-            return result;
+            return greenFrogDictionary(word);
         }
         return word;
     }
