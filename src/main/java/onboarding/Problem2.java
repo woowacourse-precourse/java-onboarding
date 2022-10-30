@@ -15,7 +15,7 @@ public class Problem2 {
         List<String> letterList = new LinkedList<>();
 
         separateLetters(letterList, cryptogram);
-        decryption(letterList);
+        decryption(letterList, START_INDEX);
         String answer = listToString(letterList);
 
         return answer;
@@ -36,27 +36,43 @@ public class Problem2 {
         return false;
     }
 
-    public static void removeSameLetter(List<String> letterList, int index, int sameLetterCount) {
+    public static void removeSameLetter(List<String> letterList, int targetIndex, int sameLetterCount) {
         for (int removeIndex = START_INDEX; removeIndex < sameLetterCount; removeIndex++) {
-            letterList.remove(index);
+            letterList.remove(targetIndex);
         }
     }
 
-    public static void decryption(List<String> letterList) {
-        for (int index = START_INDEX; index < letterList.size() - 1; index++) {
-            int sameLetterCount = countSameLetter(letterList, INIT_SAME_LETTER_COUNT, index);
+    public static void decryption(List<String> letterList, int targetIndex) {
+        while (targetIndex < letterList.size()) {
+            targetIndex = checkSameLetter(letterList, targetIndex, false);
+            targetIndex++;
+        }
+    }
 
-            if (sameLetterCount != INIT_SAME_LETTER_COUNT) {
-                removeSameLetter(letterList, index, sameLetterCount);
-                index = INIT_INDEX;
+    public static int checkSameLetter(List<String> letterList, int targetIndex, boolean isSameLetterExist) {
+        for (int letterIndex = START_INDEX; letterIndex < letterList.size(); letterIndex++) {
+            int sameLetterCount = countSameLetter(letterList, INIT_SAME_LETTER_COUNT, targetIndex);
+
+            if (isSameLetterExist(sameLetterCount)) {
+                removeSameLetter(letterList, targetIndex, sameLetterCount);
+                letterIndex -= INIT_INDEX;
+                isSameLetterExist = true;
             }
         }
+        return isSameLetterExist ? INIT_INDEX : targetIndex;
     }
 
-    public static int countSameLetter(List<String> letterList, int sameLetterCount, int index) {
-        int compareIndex = index + 1;
+    public static boolean isSameLetterExist(int sameLetterCount) {
+        if (sameLetterCount != INIT_SAME_LETTER_COUNT) {
+            return true;
+        }
+        return false;
+    }
 
-        while (compareIndex < letterList.size() && isSameLetter(letterList, index, compareIndex)) {
+    public static int countSameLetter(List<String> letterList, int sameLetterCount, int targetIndex) {
+        int compareIndex = targetIndex + 1;
+
+        while (compareIndex < letterList.size() && isSameLetter(letterList, targetIndex, compareIndex)) {
             sameLetterCount++;
             compareIndex++;
         }
