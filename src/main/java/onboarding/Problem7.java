@@ -14,6 +14,12 @@ public class Problem7 {
         return answer;
     }
 
+    private static Set<String> makeRemoveFriendsSet(String user, Set<String> friendsSet) {
+        Set<String> removeFriendsSet = new HashSet<>(Set.of(user));
+        removeFriendsSet.addAll(friendsSet);
+        return removeFriendsSet;
+    }
+
     static HashMap<String, Integer> makeScoreMap() {
         return new HashMap<String, Integer>();
     }
