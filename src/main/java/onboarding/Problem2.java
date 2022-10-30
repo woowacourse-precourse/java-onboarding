@@ -2,64 +2,45 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "";
-        try {
-            strcheck(cryptogram);
-            while(check(cryptogram)){
-                answer = step1(cryptogram);
-            }
-        }catch (StringIndexOutOfBoundsException r){
-            r.printStackTrace();
-        }
 
-        return answer;
-    }
-
-    public static String step1(String str){
-        start(str);
-        end(str);
-        delete(str);
-        return str;
-    }
-
-    public static boolean check(String str){
-        return start(str) == 0;
-    }
-
-    public static int start(String str){
-        int start = 0;
-        for(int i = 0; i<str.length(); i++){
-            if(str.charAt(i) == str.charAt(i+1)){
-                start = i;
-
-            }
-        }
-        return start;
-    }
-
-    public static int end(String str){
-        int end = 0;
+        char [] chars = cryptogram.toCharArray();
+        char prev;
+        char next;
+        String a = "";
+        StringBuilder b = new StringBuilder();
         int count = 0;
 
-        for(int i = start(str); i<str.length(); i++){
-            if(str.charAt(i) == str.charAt(i+1)){
-                end += (i+1);
-                count++;
+        while (count != cryptogram.length()){
+            for(int i = 0; i<cryptogram.length()-1; i++){
+                chars = cryptogram.toCharArray();
+                prev = chars[i];
+                next = chars[i+1];
+                if(prev == next){
+                    b.append(prev);
+                    b.append(next);
+                    a = b.toString();
+                    cryptogram = cryptogram.replaceFirst(a,"");
+                    b.setLength(0);
+                    i = 0;
+                    count++;
+                    if(cryptogram.equals("")){
+                        return cryptogram;
+                    }
+                }
+
             }
         }
-        return end;
+        //하나로 치환
+
+        return cryptogram;
     }
 
-    public static String delete(String str){
-        String delete = str.substring(start(str),end(str));
-        str = str.replaceFirst(delete,"");
-        return str;
-    }
 
-    public static void strcheck(String  str){
-        if(str.length()<1 || str.length()>1000){
-            throw new RuntimeException();
-        }
-    }
+
+
+
+
+
+
 
 }
