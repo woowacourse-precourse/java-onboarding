@@ -12,39 +12,39 @@ class Problem1 {
         return answer;
     }
 
-    public static Integer sumDigit (Integer num){
+    public static Integer sumDigit (Integer page){
         int sum=0;
-        while(num > 0){
-            sum += num%10;
-            num /= 10;
+        while(page > 0){
+            sum += page%10;
+            page /= 10;
         }
         return sum;
     }
 
-    public static Integer multiplyDigit (Integer num){
+    public static Integer multiplyDigit (Integer page){
         int multiply=1;
-        while(num > 0){
-            multiply *= num%10;
-            num /= 10;
+        while(page > 0){
+            multiply *= page%10;
+            page /= 10;
         }
         return multiply;
     }
 
-    public static Boolean isInRange(List<Integer> page){
-        if(page.get(LEFT.ordinal()) > 1
-        && page.get(RIGHT.ordinal()) < 400)
+    public static Boolean isInRange(List<Integer> pages){
+        if(pages.get(LEFT.ordinal()) > 1
+        && pages.get(RIGHT.ordinal()) < 400)
             return true;
         else return false;
     }
 
-    public static Boolean isOdd(Integer num){
-        if(num%2==1)
+    public static Boolean isOdd(Integer page){
+        if(page%2==1)
             return true;
         return false;
     }
 
-    public static Boolean isEven(Integer num){
-        if(num%2==0)
+    public static Boolean isEven(Integer page){
+        if(page%2==0)
             return true;
         return false;
     }
@@ -57,5 +57,4 @@ class Problem1 {
 
         return true;
     }
-
 }
