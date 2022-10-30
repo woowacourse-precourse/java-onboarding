@@ -31,7 +31,7 @@ class EmailArrayListValuePerSplitedNickNameKeyMap {
     private void insertValue(List<String> KeyList, String value) {
         for (String key :
                 KeyList) {
-            if (map.containsKey(String.valueOf(key))) {
+            if (map.containsKey(String.valueOf(key)) && !map.get(key).contains(value)) {
                 map.get(key).add(value);
             } else {
                 map.put(key, new ArrayList<>(Collections.singleton(value)));
