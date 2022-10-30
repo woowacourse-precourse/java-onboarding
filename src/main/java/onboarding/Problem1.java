@@ -9,7 +9,19 @@ class Problem1 {
     }
 
     private static int max(int n) {
-        int result = 0;
-        return result;
+        int addSum = 0;
+        int multSum = 0;
+        String pageNum = Integer.toString(n);
+
+        for(int i=0; i<pageNum.length(); i++){
+            addSum += Integer.parseInt(pageNum.substring(i, i+1));
+            multSum *= Integer.parseInt(pageNum.substring(i, i+1));
+        }
+
+        if (multSum >= addSum){
+            return multSum;
+        } else {
+            return addSum;
+        }
     }
 }
