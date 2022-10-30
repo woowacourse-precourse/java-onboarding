@@ -12,8 +12,28 @@ import java.util.List;
 3. 예외사항 구현
  */
 class Problem1 {
+    public static int score(int p){
+        //1번 기능: 점수 계산 함수 구현
+     int score;
+     int add = p/100 + (p%100)/10 + (p%10);
+     int multi;
+     if(p/100 != 0) {
+         multi = (p/100)*((p%100)/10)*(p%10);
+     }else {
+         multi = (p/10) * (p % 10);
+     }
+     if (add>multi){
+         score = add;
+     }else{
+         score = multi;
+     }
+     return score;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        int score_pobi = score(pobi.get(1));
+        int score_crong = score(crong.get(1));
         return answer;
     }
 }
