@@ -13,11 +13,11 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<List<String>> separatedEachCrewNicknameList = getSeperatedEachCrewNicknameList(forms);
         countListToMap(separatedEachCrewNicknameList);
-        List<String> emailListOfDuplicatedNickname = getEmailListOfDuplicatedNickname(separatedEachCrewNicknameList, forms);
+        List<String> crewEmailListOfDuplicatedNickname = getCrewEmailListOfDuplicatedNickname(separatedEachCrewNicknameList, forms);
         return new ArrayList<>();
     }
 
-    private static List<String> getEmailListOfDuplicatedNickname(List<List<String>> separatedEachCrewNicknameList, List<List<String>> forms) {
+    private static List<String> getCrewEmailListOfDuplicatedNickname(List<List<String>> separatedEachCrewNicknameList, List<List<String>> forms) {
         List<String> emailList = new ArrayList<>();
         for (int i = 0; i < separatedEachCrewNicknameList.size(); i++) {
             int countOfSeparatedNickname = getMaxCountOfSeparatedNickname(separatedEachCrewNicknameList.get(i));
