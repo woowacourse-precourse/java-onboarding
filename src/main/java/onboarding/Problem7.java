@@ -81,6 +81,12 @@ class User {
         String friend = relationship.get(indexOfFriend);
         return friend;
     }
+
+    boolean checkIsFriendOfUser(String other) {
+        List<String> friendList = this.getFriendList();
+        boolean isFriendOfUser = friendList.contains(other);
+        return isFriendOfUser;
+    }
 }
 
 class Others {
@@ -137,6 +143,28 @@ class Others {
         });
         return othersNameList;
     }
+
+    void addPointIfHaveMutual(String other, String target) {
+        User user = this.getUser();
+        boolean isFriendOfUser = user.checkIsFriendOfUser(target);
+        if (isFriendOfUser) {
+            int pointOfMutualFriend = Point.MutualFriend.getPoint();
+            addPoint(other, pointOfMutualFriend);
+        }
+    }
+
+    String addPoint(String otherName, int point) {
+        User user = this.getUser();
+        boolean isFriendOfUser = user.checkIsFriendOfUser(otherName);
+        if (isFriendOfUser) {
+            return "Friend already";
+        }
+        List<Other> otherList = this.getOthersList();
+        otherList.stream().filter(other -> other.getName().equals(otherName)).forEach(other -> {
+            other.addPoint(point);
+        });
+        return "Add point complete";
+    }
 }
 
 class Other {
@@ -152,4 +180,34 @@ class Other {
     String getName() {
         return this.name;
     }
+
+    void setName(String name) {
+        this.name = name;
+    }
+
+    int getPoint() {
+        return this.point;
+    }
+
+    void setPoint(int point) {
+        this.point = point;
+    }
+
+    void addPoint(int point) {
+        this.point += point;
+    }
+}
+
+
+enum Point {
+    MutualFriend(10),
+    Visitor(1);
+
+    private final int point;
+
+    Point(int point) {
+        this.point = point;
+    }
+
+    int getPoint() { return point; }
 }
