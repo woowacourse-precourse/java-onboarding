@@ -126,6 +126,13 @@ class score extends handleFriendsInformation {
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+        usersInformation.setUsersInformation(user,friends,visitors);
+        handleFriendsInformation.findUsersFriend();
+        handleFriendsInformation.findFriendsFriend();
+        score.caseFriendsFriend();
+        score.caseVisitors();
+        answer = score.orderRecommendedList();
+        answer = score.shortenList(answer);
         return answer;
     }
 }
