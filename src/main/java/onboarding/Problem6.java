@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Problem6 {
@@ -39,7 +40,8 @@ public class Problem6 {
             String nickname = form.get(1);
             String email = form.get(0);
 
-            if (isSatisfyEmailFormat(email)) {
+            if (isSatisfyEmailFormat(email) && isSatisfyNicknameFormat(nickname)) {
+                System.out.println("nickname = " + nickname);
                 crewInfo.put(nickname, email);
             }
         }
@@ -83,5 +85,15 @@ public class Problem6 {
         String domain = parsedEmail[1];
 
         return domain.equals("email.com");
+    }
+
+    private static boolean isSatisfyNicknameFormat(String nickname) {
+        int nicknameLength = nickname.length();
+
+        if (nicknameLength < 1 || nicknameLength >= 20) {
+            return false;
+        }
+
+        return Pattern.matches(".*[ㄱ-ㅎㅏ-ㅣ가-힣]+.*", nickname);
     }
 }
