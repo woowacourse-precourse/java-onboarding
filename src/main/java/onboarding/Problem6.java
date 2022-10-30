@@ -1,10 +1,7 @@
 package onboarding;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -29,13 +26,23 @@ public class Problem6 {
     }
 
     private static void putSubString(Map<String, Integer> stringCount, String name, int start, int end) {
-        stringCount.put(name.substring(start, end + 1), stringCount.getOrDefault(name.substring(start, end + 1), 0));
+        stringCount.put(name.substring(start, end + 1), stringCount.getOrDefault(name.substring(start, end + 1), 0) + 1);
     }
 
-    public List<String> getDuplicatedStringList(Map<String, Integer> stringCount) {
+    public static List<String> getDuplicatedStringList(Map<String, Integer> stringCount) {
         return stringCount.entrySet().stream()
                 .filter(entry -> entry.getValue() > 1)
                 .map(entry -> entry.getKey())
                 .collect(Collectors.toList());
     }
+
+    public static List<String> getDuplicatedCrewEmailList(List<List<String>> forms, List<String> duplicatedStringList) {
+        return forms.stream()
+                .filter(form -> isDuplicatedCrew(form, duplicatedStringList))
+                .map(form -> form.get(0))
+                .distinct()
+                .sorted()
+                .collect(Collectors.toList());
+    }
+
 }
