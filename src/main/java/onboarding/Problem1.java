@@ -87,23 +87,24 @@ class Problem1 {
 			int firstNumberSecondDigit = getDigitsInThreeFigures(number, 2);
 			int firstNumberThirdDigit = getDigitsInThreeFigures(number, 3);
 
-			int addition = getAddition(firstNumberFirstDigit, firstNumberSecondDigit, firstNumberThirdDigit);
-			int multiplication = getMultiplication(firstNumberFirstDigit, firstNumberSecondDigit, firstNumberThirdDigit);
-
-			return Math.max(addition, multiplication);
+			return compareCalculation(firstNumberFirstDigit, firstNumberSecondDigit, firstNumberThirdDigit);
 		}
 
 		if (getNumberLength(number) == 2) {
 			int firstNumberFirstDigit = getDigitsInTwoFigures(number, 1);
 			int firstNumberSecondDigit = getDigitsInTwoFigures(number, 2);
 
-			int addition = getAddition(firstNumberFirstDigit, firstNumberSecondDigit);
-			int multiplication = getMultiplication(firstNumberFirstDigit, firstNumberSecondDigit);
-
-			return Math.max(addition, multiplication);
+			return compareCalculation(firstNumberFirstDigit, firstNumberSecondDigit);
 		}
 
 		return number;
+	}
+
+	private static int compareCalculation(int... digits) {
+		int addition = getAddition(digits);
+		int multiplication = getMultiplication(digits);
+
+		return Math.max(addition, multiplication);
 	}
 
 	private static int getDigitsInThreeFigures(int number, int position) {
