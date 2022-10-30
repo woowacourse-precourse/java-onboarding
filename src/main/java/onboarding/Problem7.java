@@ -13,18 +13,23 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> friendsOfUser = findFriendsByUser(user, friends);
-        Map<String, Integer> scoreOfAcquaintance = addAcquaintanceScore(friends, friendsOfUser);
-        addVisitorScore(visitors, scoreOfAcquaintance);
-        sortRecommendations(scoreOfAcquaintance);
+        excludeFriendsFromVisitors(visitors, friendsOfUser);
+        Map<String, Integer> recommendationScore = addAcquaintanceScore(friends, friendsOfUser);
+        addVisitorScore(visitors, recommendationScore);
+        sortRecommendationScore(recommendationScore);
+        return getRecommendationNames(recommendationScore);
+    }
 
-        return getRecommendationNames(scoreOfAcquaintance);
+    private static List<String> excludeFriendsFromVisitors(List<String> visitors, List<String> friendsOfUser) {
+        friendsOfUser.stream()
+            .forEach(friend -> visitors.remove(friend));
     }
 
     private static List<String> getRecommendationNames(Map<String, Integer> scoreOfAcquaintance) {
         return new ArrayList<>(scoreOfAcquaintance.keySet());
     }
 
-    private static void sortRecommendations(Map<String, Integer> scoreOfAcquaintance) {
+    private static void sortRecommendationScore(Map<String, Integer> scoreOfAcquaintance) {
         scoreOfAcquaintance.entrySet().stream()
             .sorted(Map.Entry.comparingByKey())
             .sorted(Map.Entry.comparingByValue());
@@ -47,10 +52,10 @@ public class Problem7 {
             List<String> acquaintances = findFriendsByUser(friendOfUser, friends);
             for (String acquaintance : acquaintances) {
                 if (numberOfAcquaintance.containsKey(acquaintance)) {
-                    numberOfAcquaintance.put(acquaintance, ACQUAINTANCE_SCORE);
+                    numberOfAcquaintance.put(acquaintance, numberOfAcquaintance.get(acquaintance) + ACQUAINTANCE_SCORE);
                 }
                 if (!numberOfAcquaintance.containsKey(acquaintance)) {
-                    numberOfAcquaintance.put(acquaintance, numberOfAcquaintance.get(acquaintance) + ACQUAINTANCE_SCORE);
+                    numberOfAcquaintance.put(acquaintance, ACQUAINTANCE_SCORE);
                 }
             }
         }
@@ -61,9 +66,7 @@ public class Problem7 {
         Set<String> friendsOfUser = new HashSet<>();
         for (List<String> friend : friends) {
             if (friend.contains(user)) {
-                for (String name : friend) {
-                    friendsOfUser.add(name);
-                }
+                friendsOfUser.addAll(friend);
             }
         }
         friendsOfUser.remove(user);
