@@ -128,3 +128,25 @@ BUILD SUCCESSFUL in 0s
   - EmailDuplicateValidator
     - Map의 key로 email, value로 객체를 갖는다
     - 만약 Map에 저장된 값이 있었으면 예외를 반환한다
+
+### 문제 7
+
+객체
+- 사용자
+  - 사용자는 id를 갖는다.
+    - id는 1이상 30이하 문자열이다
+- UserStore
+  - key로 사용자의 id, value로 사용자를 저장한다
+- UserRelation(전역)
+  - key로 사용자의 id, value로 Set을 저장한다
+  - Set 안에는 해당 사용자와 친구인 사용자들의 id를 저장한다
+- Score
+  - 인자로 사용자id, visitors를 받는다
+  - 해당 사용자와 다른 사용자 간 점수를 계산해 저장한다
+  - 본인, 그리고 본인과 친구인 사용자들은 점수를 추가하지 않는다
+  
+기능 체크리스트
+- [ ] UserStore를 만든다
+- [ ] firends를 받아 UserStore에 데이터를 추가, UserRelation을 초기화한다
+- [ ] visitors를 받아 UserStore에 데이터를 추가한다
+- [ ] 사용자 이름을 Input으로 추천 사용자들을 반환받는다
