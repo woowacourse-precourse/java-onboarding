@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,4 +20,21 @@ public class Problem6 {
                 .collect(Collectors.toList());
         return result;
     }
+    /**
+     * @param str : 문자열
+     * @param length : 자연수
+     * @return 문자열의 순서를 바꾸지 않고 length만큼 자른 모든 경우에 수를 List<String> 타입으로 반환
+     * 예) str = "이펙티브", length = 2 -> [이펙, 펙티, 티브]
+     * 예) str = "이펙티브", length = 3 -> [이펙티, 펙티브]
+     */
+    private static List<String> splitStringInAllCases(String str, int length){
+        List<String> result = new ArrayList<>();
+        int count = 0;
+        for(int i = length; str.length() >= i; i++){
+            result.add(str.substring(count, i));
+            count++;
+        }
+        return result;
+    }
+
 }
