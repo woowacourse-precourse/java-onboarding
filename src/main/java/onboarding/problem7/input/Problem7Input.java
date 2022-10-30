@@ -40,8 +40,8 @@ public class Problem7Input implements ProblemInput {
         }
     }
 
-    private boolean isUserNotRegistered(String fromName) {
-        return !userMap.containsKey(fromName);
+    private boolean isUserNotRegistered(String name) {
+        return !userMap.containsKey(name);
     }
 
     private void makeVisitor(List<String> visitors) {
