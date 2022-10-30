@@ -159,6 +159,24 @@ public class Problem7 {
         }
 
 
+        // 우선순위로 정렬
+        List<String> keySet = new ArrayList<>(priorityAllNotFriendMap.keySet());
+
+        // Value 값으로 내림차순 정렬
+        keySet.sort(new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return (priorityAllNotFriendMap.get(o2) - priorityAllNotFriendMap.get(o1));
+            }
+        });
+        System.out.println();
+        List<String> resultList = new ArrayList<>();
+        for (String key : keySet) {
+            resultList.add(key);
+        }
+        System.out.println("resultList.toString() = " + resultList.toString());
+
+        answer.addAll(resultList);
         return answer;
     }
 
