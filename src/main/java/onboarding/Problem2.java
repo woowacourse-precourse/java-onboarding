@@ -7,19 +7,24 @@ import java.util.regex.Pattern;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        validate(cryptogram);
-        String answer;
-        String prev = removeDuplication(cryptogram);
-        String next;
-        while (true) {
-            next = removeDuplication(prev);
-            if (next.equals(prev)) {
-                answer = next;
-                break;
+        try {
+            validate(cryptogram);
+            String answer;
+            String prev = removeDuplication(cryptogram);
+            String next;
+            while (true) {
+                next = removeDuplication(prev);
+                if (next.equals(prev)) {
+                    answer = next;
+                    break;
+                }
+                prev = next;
             }
-            prev = next;
+            return answer;
+        } catch (Exception e) {
+            System.out.println(e);
+            return "Wrong input";
         }
-        return answer;
     }
 
     static String removeDuplication(String cryptogram) {
