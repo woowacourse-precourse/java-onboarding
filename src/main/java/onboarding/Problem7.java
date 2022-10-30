@@ -30,6 +30,11 @@ public class Problem7 {
             }
             visitorPoints.put(recommend, visitorPoints.get(recommend) + 1);
         }
+        removeCantRecommendCase(user, userFriends, visitorPoints);
+        return visitorPoints;
+    }
+
+    private static void removeCantRecommendCase(String user, List<String> userFriends, Map<String, Integer> visitorPoints) {
         for (String friend : userFriends) {
             if (visitorPoints.get(friend) != null) {
                 visitorPoints.put(friend, 0);
@@ -38,7 +43,6 @@ public class Problem7 {
         if (visitorPoints.get(user) != null) {
             visitorPoints.put(user, 0);
         }
-        return visitorPoints;
     }
 
     public static Map<String, Integer> enrichPointFrom(Map<String, List<String>> relationships,
@@ -52,14 +56,7 @@ public class Problem7 {
                 friendPoints.put(recommend, friendPoints.get(recommend) + 10);
             }
         }
-        for (String friend : userFriends) {
-            if (friendPoints.get(friend) != null) {
-                friendPoints.put(friend, 0);
-            }
-        }
-        if (friendPoints.get(user) != null) {
-            friendPoints.put(user, 0);
-        }
+        removeCantRecommendCase(user, userFriends, friendPoints);
         return friendPoints;
     }
 
