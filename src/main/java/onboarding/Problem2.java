@@ -9,13 +9,14 @@ public class Problem2 {
 
     public static String solution(String cryptogram) {
         String answer = "";
-        char currentValue;
-        char topValue;
+        String currentValue;
+        String topValue;
 
         for (int index=0; index < cryptogram.length(); index++){
-            currentValue = cryptogram.charAt(index);
-            topValue =
-            checkAndPush(currentValue)
+            currentValue = String.valueOf(cryptogram.charAt(index));
+            topValue = checkTopValue();
+            checkAndPush(currentValue, topValue);
+            checkAndPop(currentValue, topValue);
         }
 
         answer = conversionStackString();
@@ -59,7 +60,7 @@ public class Problem2 {
     public static boolean isSameValue(String currentValue, String topValue){
         boolean checkValue = false;
 
-        if (currentValue == topValue){
+        if (currentValue.equals(topValue)){
             checkValue = true;
         }
 
@@ -70,7 +71,7 @@ public class Problem2 {
         String tempTopValue = "";
 
         if (!isEmpty()){
-            tempTopValue = (String) stack.peek();
+            tempTopValue = stack.peek();
         }
 
         return tempTopValue;
