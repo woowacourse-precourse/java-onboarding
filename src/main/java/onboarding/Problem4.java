@@ -4,7 +4,7 @@ public class Problem4 {
 
     public static String solution(String word) {
 
-        StringBuffer answer = new StringBuffer();
+        StringBuilder answer = new StringBuilder();
 
         for (int i = 0; i < word.length(); i++) {
             answer.append(getReverseAlphabet(word.charAt(i)));
