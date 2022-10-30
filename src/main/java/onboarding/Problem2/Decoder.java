@@ -1,81 +1,70 @@
 package onboarding.Problem2;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import java.util.Stack;
 
 public class Decoder
 {
-    private int itemIndex;
-    private int emptyIndex;
-    private Stack<Character>[] stacks;
+    private List<Character> cryptogramList;
 
     public Decoder(String cryptogram)
     {
-        stacks = new Stack[]{new Stack<Character>(),  new Stack<Character>()};
-
-        itemIndex = 0;
-        emptyIndex = 1;
-
+        cryptogramList= new ArrayList<>();
+        cryptogramList.add('\u0000');
         for(int i = 0 ; i < cryptogram.length();i++)
         {
-            stacks[itemIndex].add(cryptogram.charAt(i));
+            cryptogramList.add(cryptogram.charAt(i));
         }
+        cryptogramList.add('\u0000');
     }
 
-    public boolean removeDuplicatedCharacter()
+    public Decoder removeDuplicatedCharacter()
     {
-        boolean flag = false;
-
-        char c = '\u0000';
-
-        while(!stacks[itemIndex].isEmpty())
+        StringBuilder sb = new StringBuilder();
+        for(int i = 1; i < cryptogramList.size() -1;i++)
         {
-
-            if(stacks[itemIndex].peek().equals(c))
+            if(cryptogramList.get(i-1) != cryptogramList.get(i) && cryptogramList.get(i) != cryptogramList.get(i+1))
             {
-                stacks[itemIndex].pop();
-                stacks[emptyIndex].pop();
-                flag = true;
+                sb.append(cryptogramList.get(i));
             }
-            else
-            {
-                c = stacks[itemIndex].pop();
-                stacks[emptyIndex].push(c);
-            }
-
         }
-
-        swapIndex();
-
-        return flag;
-    }
-
-    private void swapIndex()
-    {
-        int tmp = itemIndex;
-        itemIndex = emptyIndex;
-        emptyIndex = tmp;
+        Decoder newDecoder = new Decoder(sb.toString());
+        return newDecoder;
     }
 
     public String toString()
     {
         StringBuilder sb = new StringBuilder();
-        if(itemIndex == 0)
+
+        for(int i = 1; i < cryptogramList.size() -1; i++)
         {
-            for(char c : stacks[itemIndex])
-            {
-                sb.append(c);
-            }
+            sb.append(cryptogramList.get(i));
         }
-        else
-        {
-            while(!stacks[itemIndex].isEmpty())
-            {
-                sb.append(stacks[itemIndex].pop());
-            }
-        }
+
 
         return sb.toString();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Decoder)) return false;
+        Decoder decoder = (Decoder) o;
+        if(decoder.cryptogramList.size() != cryptogramList.size()) return false;
+        for(int i = 1; i < cryptogramList.size() -1; i++)
+        {
+            if(cryptogramList.get(i) != decoder.cryptogramList.get(i))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(cryptogramList);
+    }
 }
