@@ -8,7 +8,7 @@ public class Problem3 {
 
         for (int num=1; num<=number; num++) {
             int[] inputNum = Stream.of(String.valueOf(num).split("")).mapToInt(Integer::parseInt).toArray();
-
+            answer+=findNumber(inputNum);
         }
 
         return answer;
