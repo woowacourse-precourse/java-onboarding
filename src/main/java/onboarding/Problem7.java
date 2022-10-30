@@ -12,6 +12,9 @@ public class Problem7 {
         HashMap<String, List<String>> friendsRelationshipHashMap = friendsInfos.first;
         HashMap<String, Integer> friendsScoreHashMap = friendsInfos.second;
 
+        // 함께 아는 친구의 수에 따른 점수 추가
+        relationScore(user, friendsRelationshipHashMap, friendsScoreHashMap);
+
         List<String> answer = Collections.emptyList();
         return answer;
     }
@@ -37,6 +40,19 @@ public class Problem7 {
         }
 
         return new Tuple<>(friendsRelationshipHashMap, friendsScoreHashMap);
+    }
+
+
+    public static void relationScore(String user, HashMap<String, List<String>> friendsRelationshipHashMap, HashMap<String, Integer> friendsScoreHashMap){
+        List<String> userFriends = friendsRelationshipHashMap.get(user);
+
+        friendsRelationshipHashMap.forEach((name, relationship) -> {
+            if(name.equals(user)) return; // 본인은 제외
+
+            if (userFriends.stream().anyMatch(relationship::contains)) {
+                friendsScoreHashMap.put(name, friendsScoreHashMap.get(name) + 10);
+            };
+        });
     }
 
     public static class Tuple<T1, T2> {
