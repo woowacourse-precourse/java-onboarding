@@ -39,7 +39,7 @@ public class Problem4 {
             return String.valueOf(alpabatCR.charAt(alpabatC.indexOf(word)));
         }
 
-        return " ";
+        return word;
     }
 
     public static String solution(String word) {
