@@ -8,6 +8,12 @@ public class Problem4 {
 
     public static String solution(String word) {
         String answer = "";
+        StringBuilder tempAnswer = new StringBuilder();
+        for (int i = 0; i < word.length(); i++) {
+            char convertedChar = conversionAlpha(word.charAt(i));
+            tempAnswer.append(convertedChar);
+        }
+        answer = tempAnswer.toString();
         return answer;
     }
 
