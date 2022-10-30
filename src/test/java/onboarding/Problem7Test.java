@@ -91,10 +91,14 @@ class Problem7Test {
         Map<String, Integer> visitCount = Problem7.computeVisitScore(List.of("bedi", "bedi", "donut", "bedi", "shakevan"));
         Map<String, Integer> recommendScore = Problem7.computeRecommendScore(bothKnowFriendsCount, visitCount);
 
-        List<String> answer = Problem7.computeAnswer(List.of("donut", "shakevan"), recommendScore);
-        Assertions.assertThat(answer.size()).isEqualTo(3);
-        Assertions.assertThat(answer.get(0)).isEqualTo("andole");
-        Assertions.assertThat(answer.get(1)).isEqualTo("jun");
-        Assertions.assertThat(answer.get(2)).isEqualTo("bedi");
+        List<String> answer = Problem7.computeAnswer("mrko", List.of("donut", "shakevan"), recommendScore);
+        Assertions.assertThat(answer.size())
+            .isEqualTo(3);
+        Assertions.assertThat(answer.get(0))
+            .isEqualTo("andole");
+        Assertions.assertThat(answer.get(1))
+            .isEqualTo("jun");
+        Assertions.assertThat(answer.get(2))
+            .isEqualTo("bedi");
     }
 }

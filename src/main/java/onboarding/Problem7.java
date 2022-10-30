@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +11,7 @@ import java.util.stream.Collectors;
 public class Problem7 {
 
     private static final int BOTH_KNOW_ONE_FRIEND_SCORE = 10;
+    private static final int ANSWER_SIZE_MAX = 5;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, List<String>> userToFriends = parseFriends(friends);
@@ -18,8 +20,17 @@ public class Problem7 {
         return answer;
     }
 
-    static List<String> computeAnswer(List<String> mainCharacterFriends, Map<String, Integer> recommendScore) {
-        return null;
+    static List<String> computeAnswer(String mainCharacter, List<String> mainCharacterFriends, Map<String, Integer> recommendScore) {
+        List<Map.Entry<String, Integer>> recommendScoreList = new ArrayList<>(recommendScore.entrySet());
+
+        recommendScoreList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
+        return recommendScoreList.stream()
+            .filter(entry -> entry.getKey() != mainCharacter)
+            .filter(entry -> !mainCharacterFriends.contains(entry.getKey()))
+            .filter(entry -> entry.getValue() > 0)
+            .map(entry -> entry.getKey())
+            .limit(ANSWER_SIZE_MAX)
+            .collect(Collectors.toList());
     }
 
     static Map<String, Integer> computeRecommendScore(Map<String, Integer> bothKnowFriendsScore, Map<String, Integer> visitScore) {
