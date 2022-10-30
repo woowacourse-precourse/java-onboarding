@@ -21,3 +21,18 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+***
+## 기능 목록
+
+### 메소드 목록
+* countEachToken
+    * 중복의 기준이 두 글자 이상의 문자가 연속적으로 순서에 맞추어 포함되는 것이기 때문에,
+    * 모든 닉네임을 2글자씩 tokenize하여 Map tokens에 token은 key로, 등장 횟수는 value로 담는다.
+    * 2글자씩 tokenize하기 때문에 닉네임이 1자인 경우는 제외할 수 있다.
+
+### 작동 과정
+* countEachToken을 통해 모든 닉네임의 2글자 토큰 등장 횟수를 Map token에 담는다.
+* Map token과 파라미터 List forms를 순회한다.
+* 해당 토큰이 닉네임에 포함되고 List emails에 해당 닉네임의 이메일이 없다면, 이메일을 List emails에 추가한다.
+* sort를 통해 정렬 후 정답으로 List emails를 return.
