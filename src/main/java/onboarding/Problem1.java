@@ -10,14 +10,11 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-
         try {
             checkPages(pobi);
             checkPages(crong);
-
             int pobiScore = findScore(pobi);
             int crongScore = findScore(crong);
-
             answer = makeResult(pobiScore, crongScore);
         } catch (Exception e) {
             //System.out.print(e.getMessage());
@@ -39,18 +36,15 @@ class Problem1 {
     public static int findScore(List<Integer> player) {
         int leftMaxNum = findMax(player.get(0));
         int rightMaxNum = findMax(player.get(1));
-
         return Math.max(leftMaxNum, rightMaxNum);
     }
 
     public static int findMax(int num) {
         List<Integer> digits = new ArrayList<>();
-
         while (num > 0) {
             digits.add(num % 10);
             num /= 10;
         }
-
         int sumDigits = digits.stream()
                 .reduce(0, Integer::sum);
         int mulDigits = digits.stream()
