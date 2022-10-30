@@ -5,7 +5,7 @@ import java.util.*;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
-        HashMap<String, Integer> map = new HashMap<>(); //사용자 친구추천 후보들
+        HashMap<String, Integer> scoreList = new HashMap<>(); //사용자 친구추천 후보들
 
         //사용자와 이미 친구인 사람들 목록 만들기
         HashSet<String> friendList = makeFriendList(friends, user);
@@ -22,10 +22,10 @@ public class Problem7 {
             //점수계산
             if(friendList.contains(pair.get(0))){
                 String friendOfFriend = pair.get(1);
-                map = accumulateRecommendedScore(map, friendOfFriend, 10);
+                scoreList = accumulateRecommendedScore(scoreList, friendOfFriend, 10);
             }else if(friendList.contains(pair.get(1))){
                 String friendOfFriend = pair.get(0);
-                map = accumulateRecommendedScore(map, friendOfFriend, 10);
+                scoreList = accumulateRecommendedScore(scoreList, friendOfFriend, 10);
             }
         }
 
@@ -37,11 +37,11 @@ public class Problem7 {
                 continue;
             }
             //사용자와 아직 친구가 아닌 경우엔 점수 추가
-            map = accumulateRecommendedScore(map, visitor, 1);
+            scoreList = accumulateRecommendedScore(scoreList, visitor, 1);
         }
 
         //점수높은 5명으로 추천 리스트 만들기
-        answer = makeRecommendedFriendList(map);
+        answer = makeRecommendedFriendList(scoreList);
 
         return answer;
     }
