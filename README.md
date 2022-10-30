@@ -101,6 +101,12 @@ BUILD SUCCESSFUL in 0s
 |  2.0 | 주어진 텍스트의 최종 cipher text를 출력 | Problem2.solution  | 
 |  2.1 | 주어진 텍스트를 1회 해독한 결과를 출력 | Problem2.decipher  | 
 
+3. 문제 3
+
+|기능목록 번호| 내용 | 구현상황 |
+| :---:  | :--- | :--- | 
+|  3.0.0 | 주어진 3,6,9 게임의 손벽갯수를 출력 | Problem3.solution | 
+
 7. 문제 7
 
 |기능목록 번호| 내용 | 구현상황 |
