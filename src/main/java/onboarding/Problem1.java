@@ -41,20 +41,9 @@ class Problem1 {
     }
 
     private static int findMaxValue(List<Integer> pages) {
-        int leftMax = addDigits(pages.get(0));
-        int multipliedValueLeft = multiplyDigits(pages.get(0));
-        if (leftMax < multipliedValueLeft) {
-            leftMax = multipliedValueLeft;
-        }
-        int rightMax = addDigits(pages.get(1));
-        int multipliedValueRight = multiplyDigits(pages.get(1));
-        if (rightMax < multipliedValueRight) {
-            rightMax = multipliedValueRight;
-        }
-        int maxValue = leftMax;
-        if (leftMax < rightMax) {
-            maxValue = rightMax;
-        }
+        int leftMax=Math.max(addDigits(pages.get(0)), multiplyDigits(pages.get(0)));
+        int rightMax=Math.max(addDigits(pages.get(1)), multiplyDigits(pages.get(1)));
+        int maxValue=Math.max(leftMax, rightMax);
         return maxValue;
     }
 
