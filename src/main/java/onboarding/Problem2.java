@@ -5,13 +5,15 @@ public class Problem2 {
 	static String answer;
 
 	public static String solution(String cryptogram) {
-		answer = cryptogram.substring(0, 1);
-		cryptogram = cryptogram.substring(1);
+		answer = "";
 		char[] chars = cryptogram.toCharArray();
 
 		for (Character c : chars) {
 			answer += String.valueOf(c);
-			checkEndChars();
+
+			if (answer.length() > 1) {
+				checkEndChars();
+			}
 		}
 
 		return answer;
