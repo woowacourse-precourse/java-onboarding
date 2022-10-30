@@ -16,7 +16,7 @@ public class Problem7 {
         List<Map.Entry<String, Integer>> userScoreList = sortUserFriends(removeUserFriends());
 
         List<String> answer = new ArrayList<>();
-        for(Map.Entry<String, Integer> userScore : userScoreList){
+        for (Map.Entry<String, Integer> userScore : userScoreList) {
             answer.add(userScore.getKey());
         }
 
