@@ -16,7 +16,7 @@ public class Problem3 {
         }
         return cnt;
     }
-    private static int[] IntegerToList(int n){
+    private static int[] integerToArray(int n){
         String temp = Integer.toString(n);
         int l = temp.length();
         int[] digits = new int[l];
@@ -26,7 +26,7 @@ public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
         for(int i = 1; i < number+1; i++) {
-            int[] digits = IntegerToList(i);
+            int[] digits = integerToArray(i);
             int[] counter = new int[10];
             for (int digit : digits) counter[digit]++;
             answer += count369(counter);
