@@ -21,4 +21,10 @@ class Problem1 {
         int result = Collections.max(resultList);
         return result;
     }
+
+    static int sumEveryDigits(int num) {
+        List<Integer> digitList = splitDigits(num);
+        int result = digitList.stream().mapToInt(Integer::intValue).sum();
+        return result;
+    }
 }
