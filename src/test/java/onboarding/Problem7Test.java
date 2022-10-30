@@ -11,7 +11,7 @@ class Problem7Test {
 
     private final List<List<String>> friends = List.of(List.of("donut", "andole"), List.of("donut", "jun"), List.of("donut", "mrko"), List.of("shakevan", "andole"), List.of("shakevan", "jun"), List.of("shakevan", "mrko"));
     private final List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-    Map<String, List<String>> userToFriends = Problem7.parseFriendsInput(friends);
+    Map<String, List<String>> userToFriends = Problem7.parseFriendsInput("mrko", friends);
 
     @Test
     void parseFriendsInput() {
@@ -146,5 +146,23 @@ class Problem7Test {
         Assertions.assertThatThrownBy(() -> Problem7.validateVisitors(List.of("1")));
         Assertions.assertThatThrownBy(() -> Problem7.validateVisitors(List.of("A")));
 
+    }
+
+    @Test
+    void 테스트케이스1() {
+        List<String> solution = Problem7.solution("a", List.of(List.of("b", "c"), List.of("d", "e"), List.of("f", "g")), List.of("b", "c", "d", "e", "f", "g"));
+
+        Assertions.assertThat(solution.size())
+            .isEqualTo(5);
+        Assertions.assertThat(solution.get(0))
+            .isEqualTo("b");
+        Assertions.assertThat(solution.get(1))
+            .isEqualTo("c");
+        Assertions.assertThat(solution.get(2))
+            .isEqualTo("d");
+        Assertions.assertThat(solution.get(3))
+            .isEqualTo("e");
+        Assertions.assertThat(solution.get(4))
+            .isEqualTo("f");
     }
 }

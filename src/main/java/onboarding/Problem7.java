@@ -22,7 +22,7 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         validateInput(user, friends, visitors);
-        Map<String, List<String>> userAndFriends = parseFriendsInput(friends);
+        Map<String, List<String>> userAndFriends = parseFriendsInput(user, friends);
         Map<String, Integer> userAndBothKnowFriendsScore = computeBothKnowFriendsScore(user, userAndFriends);
         Map<String, Integer> userAndVisitScore = computeVisitScore(visitors);
         Map<String, Integer> userAndRecommendScore = computeRecommendScore(userAndBothKnowFriendsScore, userAndVisitScore);
@@ -58,12 +58,16 @@ public class Problem7 {
         if (friends.size() < FRIENDS_LIST_SIZE_MIN || friends.size() > FRIENDS_LIST_SIZE_MAX) {
             return false;
         }
-        for (List<String> friend : friends) {
-            if (friend.size() != FRIENDS_ELEMENT_SIZE) {
-                return false;
-            }
+        if (countInvalidFriendsElement(friends) != 0) {
+            return false;
         }
         return true;
+    }
+
+    private static int countInvalidFriendsElement(List<List<String>> friends) {
+        return (int) friends.stream()
+            .filter(friend -> friend.size() != FRIENDS_ELEMENT_SIZE)
+            .count();
     }
 
     static void validateUser(String user) {
@@ -131,17 +135,16 @@ public class Problem7 {
             .count();
     }
 
-    static Map<String, List<String>> parseFriendsInput(List<List<String>> friends) {
+    static Map<String, List<String>> parseFriendsInput(String mainCharacter, List<List<String>> friends) {
         Map<String, List<String>> userAndFriends = new HashMap<>();
 
         friends.forEach(user -> {
-            String user1 = user.get(0);
-            String user2 = user.get(1);
-
-            addFriend(userAndFriends, user1, user2);
-            addFriend(userAndFriends, user2, user1);
+            addFriend(userAndFriends, user.get(0), user.get(1));
+            addFriend(userAndFriends, user.get(1), user.get(0));
         });
-
+        if (!userAndFriends.containsKey(mainCharacter)) {
+            userAndFriends.put(mainCharacter, new ArrayList<>());
+        }
         return userAndFriends;
     }
 
