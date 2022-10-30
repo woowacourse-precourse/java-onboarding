@@ -48,6 +48,8 @@ BUILD SUCCESSFUL in 0s
   * 출력값 요구사항
       1. 주어진 문자열의 chipher text를 출력
 3. [문제 3](./docs/PROBLEM3.md)
+  * 출력값 요구사항
+    1. 주어진 3,6,9 게임의 손벽갯수를 출력
 4. [문제 4](./docs/PROBLEM4.md)
 5. [문제 5](./docs/PROBLEM5.md)
 6. [문제 6](./docs/PROBLEM6.md)
