@@ -12,6 +12,11 @@ class Problem1 {
         return answer;
     }
 
+    private static boolean checkWrongRange(Integer leftPage, Integer rightPage){
+        return (leftPage <= FIRST_PAGE || rightPage >= LAST_PAGE);
+    }
+
+
     private static boolean checkArrayWrongSize(List<Integer> pages){
         return pages.size() != ARRAY_SIZE;
     }
