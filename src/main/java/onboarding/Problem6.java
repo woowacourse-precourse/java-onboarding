@@ -105,4 +105,21 @@ public class Problem6 {
             duplicateList.add(crew.get(0));
         return duplicateList;
     }
+
+    /**
+     * 크루원들의 닉네임 일치를 확인하여 일치하는 크루원들의 이메일을 반환하는 함수
+     */
+    private static List<String> checkCrew(List<List<String>> crews){
+        String pickedLetter;
+        List<String> duplicateList = new ArrayList<>();;
+        for (int i=0;i<crews.size()-1;i++){
+            for(int j=0;i<crews.get(i).get(1).length()-1;j++) {
+                pickedLetter = nicknamePickTwoLetter(crews.get(i).get(1), j);
+                for(int k=i+1;k<crews.size();k++){
+                    duplicateList = checkDuplicated(duplicateList,pickedLetter,crews.get(k));
+                }
+            }
+        }
+        return duplicateList;
+    }
 }
