@@ -2,13 +2,33 @@ package onboarding;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Collections;
 
 public class Problem6 {
-    static HashSet<String> twoWordPartOfNickname = new HashSet<>();
+    static HashMap<String, Integer> twoWordPartOfNickname = new HashMap<>();
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = new ArrayList<>();
+        HashSet<String> answerSet = new HashSet<>();
         createTwoWordPartOfNicknameSet(forms);
+
+        for (List<String> form : forms) {
+            if (!isRightInput(form)) {
+                continue;
+            }
+            String email = form.get(0);
+            String nickname = form.get(1);
+            for (String twoWord : twoWordPartOfNickname.keySet()) {
+                if (twoWordPartOfNickname.get(twoWord) == 1) {
+                    continue;
+                }
+                if (nickname.contains(twoWord)) {
+                    answerSet.add(email);
+                }
+            }
+        }
+        List<String> answer = new ArrayList<>(answerSet);
+        Collections.sort(answer);
         return answer;
     }
 
@@ -52,7 +72,12 @@ public class Problem6 {
         }
         for (int i = 0 ; i < nickname.length() - 1; i++) {
             String twoWord = nickname.substring(i, i+2);
-            twoWordPartOfNickname.add(twoWord);
+            if (twoWordPartOfNickname.containsKey(twoWord)) {
+                twoWordPartOfNickname.put(twoWord, twoWordPartOfNickname.get(twoWord)+1);
+            }
+            else {
+                twoWordPartOfNickname.put(twoWord, 1);
+            }
         }
     }
 
