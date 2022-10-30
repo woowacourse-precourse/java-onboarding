@@ -11,6 +11,8 @@ public class Problem7 {
     private static final int FRIEND_SCORE = 10;
     private static final int VISITOR_SCORE = 1;
     private static final int RETURN_MAX_SIZE = 5;
+    private static final int MIN_USER_ID_LENGTH = 1;
+    private static final int MAX_USER_ID_LENGTH = 30;
 
     private static final Map<String, Integer> friendRecommendScoreMap = new HashMap<>();
 
@@ -97,6 +99,6 @@ public class Problem7 {
     }
 
     private static boolean validateUserLength(String userId) {
-        return (userId.length() >= 1 && userId.length() <= 30);
+        return (userId.length() >= MIN_USER_ID_LENGTH && userId.length() <= MAX_USER_ID_LENGTH);
     }
 }
