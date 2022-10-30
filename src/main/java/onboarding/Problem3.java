@@ -7,10 +7,12 @@ public class Problem3 {
     static final List<String> targetNumList = Arrays.asList("3", "6", "9");
 
     public static int solution(int number) {
-        return gameController(number);
+        int answer = getTotalTargetNumCnt(number);
+
+        return answer;
     }
 
-    static int gameController(int number) {
+    static int getTotalTargetNumCnt(int number) {
         int totalTargetNumCnt = 0;
 
         for (int i = 1; i <= number; i++) {
