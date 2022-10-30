@@ -26,4 +26,11 @@ class Problem1 {
         return result;
     }
 
+    static int getMax(List<Integer> scores) {
+        int max = Integer.MIN_VALUE;
+        for (Integer score : scores)
+            if (max < score) max = score;
+        return max;
+    }
+
 }
