@@ -40,7 +40,7 @@ public class Problem7 {
         }
         
         /* 방문자 점수 */
-        Map<String, Integer> visitScore = new HashMap<String, Integer>();        
+        Map<String, Integer> visitScore = new HashMap<>();        
         for (String str : visitors) {            
             Integer count = visitScore.get(str);            
             if (count == null) {                
