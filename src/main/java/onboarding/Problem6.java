@@ -61,6 +61,10 @@ public class Problem6 {
         for (String email : answerSet) {
             answer.add(email);
         }
+
+        //이메일 오름차순으로 정렬
+        Collections.sort(answer);
+
         return answer;
     }
 
