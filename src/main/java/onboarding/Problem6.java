@@ -2,7 +2,10 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -66,6 +69,19 @@ public class Problem6 {
             duplicatedEmailList.add(email);
         }
         return duplicatedEmailList;
+    }
+
+    static List<String> checkEmailList(List<String> emailList) {
+        List<String> emailListRemovedDuplication = removeDuplicationOfEmailList(emailList);
+        List<String> sortedEmailList = emailListRemovedDuplication.stream().sorted().collect(
+            Collectors.toList());
+        return sortedEmailList;
+    }
+
+    static List<String> removeDuplicationOfEmailList(List<String> emailList) {
+        Set set = new HashSet<>(emailList);
+        List<String> emailListRemovedDuplication = new ArrayList<>(set);
+        return emailListRemovedDuplication;
     }
 }
 
