@@ -14,7 +14,10 @@ public class Problem7 {
      * @return : List<Integer>, 점수에 따라 추천하는 친구들의 아이디
      */
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        Map<String, Set<String>> friendConnection = setConnection(friends);
+        Map<String, Integer> friendScore = calculateScore(user, friendConnection, visitors);
+        List<String> answer = selectTop5(user, friendScore);
+
         return answer;
     }
 
