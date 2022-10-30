@@ -8,6 +8,7 @@ import static onboarding.handleList.copyList;
 class scoreConstant{
     static final int friendsFriendScore = 10;
     static final int visitorScore = 1;
+    static final int limit = 5;
 }
 class usersInformation extends scoreConstant{
     private static String user;
@@ -79,9 +80,9 @@ class handleFriendsInformation extends usersInformation{
 }
 class score extends handleFriendsInformation {
     static Map<String, Integer> recommendedFriends = new HashMap<String, Integer>();
-    public static List<String> shortenListIntoFive(List<String> recommendedList){
+    public static List<String> shortenList(List<String> recommendedList){
         List<String>list = recommendedList.stream()
-                .limit(5)
+                .limit(limit)
                 .collect(Collectors.toList());
         return list;
     }
