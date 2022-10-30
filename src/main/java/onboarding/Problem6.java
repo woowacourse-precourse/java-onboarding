@@ -71,8 +71,10 @@ public class Problem6 {
     // 주어진 이메일, 닉네임 리스트를 하나씩 추가하는 함수
     public static void AddUsers(HashMap<String, String> databaseOfNickname, HashMap<String, Boolean> duplicationOfNickname, List<List<String>> forms) {
         for (List<String> user: forms) {
-            addUser(databaseOfNickname, user);
-            checkDuplication(databaseOfNickname, duplicationOfNickname, user);
+            if (checkUserForm(user)) {
+                addUser(databaseOfNickname, user);
+                checkDuplication(databaseOfNickname, duplicationOfNickname, user);
+            }
         }
     }
 
