@@ -6,6 +6,7 @@ public class Problem7 {
 
     private static final int DEFAULT_SCORE = 0;
     private static final int ACQUAINTANCE_SCORE = 10;
+    private static final int VISITOR_SCORE = 1;
     private static final int EXCEPTION_IDX = 2;
     private static final int FRIEND_DEPTH = 1;
     private static final int MAX_DEPTH = 2;
@@ -18,9 +19,9 @@ public class Problem7 {
         List<String> userFriendList = new ArrayList<>();
 
         findAcquaintance(0, user, user, friends, scoreBoard, userFriendList);
+        findVisitors(visitors, userFriendList, scoreBoard);
 
         System.out.println(scoreBoard);
-        System.out.println(userFriendList);
 
         return answer;
     }
@@ -46,6 +47,13 @@ public class Problem7 {
             String friendName = findFriendName(friend, foundFriendIdx);
             if (!isTargetUserSameFriend(targetUser, friendName))
                 findAcquaintance(depth + 1, targetUser, friendName, friends, scoreBoard, friendsList);
+        }
+    }
+
+    public static void findVisitors(List<String> visitors, List<String> userFriendList, Map<String, Integer> scoreBoard) {
+        for (String visitor : visitors) {
+            if (!userFriendList.contains(visitor))
+                insertScore(scoreBoard, visitor, VISITOR_SCORE);
         }
     }
 
