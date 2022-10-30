@@ -41,7 +41,7 @@ public class DuplicationNotificator {
      * - Remove duplicated email address
      * @return email list needs notification
      */
-    private List<String> duplicationNotify() {
+    public List<String> duplicationNotify() {
         List<String> emails = new ArrayList<>();
         for (String key : parts.keySet()) {
             List<String> emailsOfParts = parts.get(key);
