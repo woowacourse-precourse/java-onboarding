@@ -8,6 +8,10 @@ public class Problem7 {
 
         Map<String, Set<String>> friendshipGraph = new HashMap<>();
         initFriendshipGraph(friends, friendshipGraph);
+
+        Map<String, Integer> visitorInfo = new HashMap<>();
+        initVisitorInfo(visitors, visitorInfo, user, friendshipGraph);
+
         return answer;
     }
 
@@ -29,6 +33,23 @@ public class Problem7 {
 
             friendshipGraph.get(person1).add(person2);
             friendshipGraph.get(person2).add(person1);
+        }
+    }
+
+    /**
+     * Function for visitorInfo that mapping visitor name and visit nums
+     * */
+    private static void initVisitorInfo(List<String> visitors, Map<String, Integer> visitorInfo,
+                                        String user, Map<String, Set<String>> friendshipGraph) {
+        for (String visitor : visitors) {
+            if (friendshipGraph.get(user).contains(visitor)) {
+                continue;
+            }
+            if (visitorInfo.containsKey(visitor)) {
+                visitorInfo.put(visitor, visitorInfo.get(visitor)+1);
+            } else {
+                visitorInfo.put(visitor, 1);
+            }
         }
     }
 }
