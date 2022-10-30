@@ -6,6 +6,12 @@ import java.util.List;
 import java.util.Map;
 
 public class Problem7 {
+
+    private static final int DEFAULT_SCORE = 0;
+    private static final int ACQUAINTANCE_SCORE = 10;
+    private static final int EXCEPTION_IDX = 2;
+    private static final int MAX_DEPTH = 2;
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
@@ -20,15 +26,15 @@ public class Problem7 {
 
     public static void findAcquaintance(int depth, String targetUser, String findUser, List<List<String>> friends, Map<String, Integer> scoreBoard) {
 
-        if (depth == 2) {
-            insertScore(scoreBoard, findUser);
+        if (depth == MAX_DEPTH) {
+            insertScore(scoreBoard, findUser, ACQUAINTANCE_SCORE);
             return;
         }
 
         for (List<String> friend : friends) {
             int foundFriendIdx = findFriendIdx(friend, findUser);
 
-            if (foundFriendIdx == 2)
+            if (foundFriendIdx == EXCEPTION_IDX)
                 continue;
 
             String friendName = findFriendName(friend, foundFriendIdx);
@@ -37,7 +43,7 @@ public class Problem7 {
         }
     }
 
-    public static int findFriendIdx (List<String> friend, String user) {
+    public static int findFriendIdx(List<String> friend, String user) {
         return 1 - friend.indexOf(user);
     }
 
@@ -49,7 +55,7 @@ public class Problem7 {
         return targetUser.equals(friend);
     }
 
-    public static void insertScore(Map<String, Integer> scoreBoard, String findUser) {
-        scoreBoard.put(findUser, scoreBoard.getOrDefault(findUser, 0) + 10);
+    public static void insertScore(Map<String, Integer> scoreBoard, String findUser, Integer score) {
+        scoreBoard.put(findUser, scoreBoard.getOrDefault(findUser, DEFAULT_SCORE) + score);
     }
 }
