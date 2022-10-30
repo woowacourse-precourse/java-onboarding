@@ -3,6 +3,16 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+    public static int findWinner(int pobiScore, int crongScore) {
+        if (pobiScore > crongScore) {
+            return 1;
+        }
+        if (crongScore < pobiScore) {
+            return -1;
+        }
+        return 0;
+    }
+
     public static int getMultiplyOfDigits(int number) {
         int multiply = 1;
         while(number != 0){
