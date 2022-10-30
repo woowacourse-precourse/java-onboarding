@@ -29,4 +29,27 @@ public class Decoder {
         }
         return decoder;
     }
+
+    public static void removeDuplicates(Decoder decoder, LinkedList<Character> characterLinkedList) {
+        int index;
+        int number;
+        int countRemoved = 0;
+
+        ArrayList<int[]> duplicateList = decoder.duplicates;
+
+        for (int[] set : duplicateList) {
+            index = set[0] - countRemoved;
+            number = set[1];
+
+            removeDuplicatesByIndexAndCount(characterLinkedList, index, number);
+
+            countRemoved += number;
+        }
+    }
+
+    private static void removeDuplicatesByIndexAndCount(LinkedList<Character> characterLinkedList, int idx, int count) {
+        for (int i = 0; i < count; i++) {
+            characterLinkedList.remove(idx);
+        }
+    }
 }
