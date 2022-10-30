@@ -22,7 +22,7 @@ public class Problem6 {
         for (int i = 0; i < name.length() - 1; i++) {
             String subString = name.substring(i, i + 2);
             if(nicknameList.containsKey(subString)) {
-                //정답 베열에 넣는 함수
+                //정답 배열에 넣는 함수
                 putNameIndex(nicknameList.get(subString));
                 putNameIndex(index);
             } else {
