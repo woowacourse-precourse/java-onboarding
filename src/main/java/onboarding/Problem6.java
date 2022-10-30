@@ -1,57 +1,52 @@
 package onboarding;
 
+import onboarding.problem6.Crew;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem6 {
 
-    public static Map<String, String> createNicknameMap(List<List<String>> forms) {
-        HashMap<String, String> nicknameMap = new HashMap<>();
-
-        for (List<String> emailNickname : forms) {
-            String email = emailNickname.get(0);
-            String nickname = emailNickname.get(1);
-
-            nicknameMap.put(email, nickname);
-        }
-
-        return nicknameMap;
+    public static List<Crew> createCrews(List<List<String>> forms) {
+        return forms.stream()
+                .map(emailNickname -> new Crew(emailNickname.get(0), emailNickname.get(1)))
+                .collect(Collectors.toList());
     }
 
-    public static Set<String> getDuplicatedEmails(Map<String, String> nicknameMap) {
-        HashMap<String, Set<String>> emailsByDoubleCharMap = new HashMap<>();
+    public static Set<Crew> getDuplicatedCrews(List<Crew> allCrews) {
+        Map<String, Set<Crew>> crewsByDoubleCharMap = new HashMap<>();
 
-        nicknameMap.forEach((email, nickname) -> {
+        allCrews.forEach(crew -> {
+            String nickname = crew.getNickname();
+
             for (int nicknameIdx = 0; nicknameIdx < nickname.length() - 1; nicknameIdx++) {
                 String doubleChar = nickname.charAt(nicknameIdx) + "" + nickname.charAt(nicknameIdx + 1);
 
-                // 셋이 없으면 새로 생성
-                if (!emailsByDoubleCharMap.containsKey(doubleChar)) {
-                    emailsByDoubleCharMap.put(doubleChar, new HashSet<>());
-                }
-
-                emailsByDoubleCharMap.get(doubleChar).add(email);
+                crewsByDoubleCharMap.getOrDefault(doubleChar, new HashSet<>()).add(crew);
             }
         });
 
         // 두글자:[이메일]를 순회하며 이메일의 개수가 2개 이상인 것을 찾음
-        HashSet<String> duplicatedEmails = new HashSet<>();
-        emailsByDoubleCharMap.values().stream()
-                .filter(emails -> emails.size() >= 2)
-                .forEach(emails -> duplicatedEmails.addAll(emails));
+        Set<Crew> duplicatedCrews = new HashSet<>();
+        crewsByDoubleCharMap.values().stream()
+                .filter(crews -> crews.size() >= 2)
+                .forEach(duplicatedCrews::addAll);
 
-        return duplicatedEmails;
+        return duplicatedCrews;
     }
 
-    public static List<String> getSortedListBySet(Set<String> set) {
+    public static <T> List<T> getSortedListBySet(Set<T> set) {
         return set.stream().sorted().collect(Collectors.toList());
     }
 
     public static List<String> solution(List<List<String>> forms) {
-        Map<String, String> nicknameMap = createNicknameMap(forms);
-        Set<String> duplicatedEmailSet = getDuplicatedEmails(nicknameMap);
-        List<String> duplicatedEmails = getSortedListBySet(duplicatedEmailSet);
+        List<Crew> crews = createCrews(forms);
 
-        return duplicatedEmails;
+        Set<Crew> duplicatedCrewsSet = getDuplicatedCrews(crews);
+        List<Crew> duplicatedCrews = getSortedListBySet(duplicatedCrewsSet);
+
+        return duplicatedCrews.stream()
+                .map(Crew::getEmail)
+                .collect(Collectors.toList());
     }
 }
