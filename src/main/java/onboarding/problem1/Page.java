@@ -22,6 +22,18 @@ public class Page {
         return number < MIN_PAGE || number > MAX_PAGE;
     }
 
+    public boolean isOdd() {
+        return number % 2 == 1;
+    }
+
+    public boolean isEven() {
+        return number % 2 == 0;
+    }
+
+    public boolean isNextPageOf(Page previousPage) {
+        return this.number - previousPage.number == 1;
+    }
+
     public int getSum() {
         return Arrays.stream(String.valueOf(number).split(""))
                 .mapToInt(Integer::parseInt)
