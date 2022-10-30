@@ -182,8 +182,6 @@ public class Problem7 {
     RelationPro7 relation = new RelationPro7(user, friends, visitors);
     RelationPro7.removeMutual(user, relation, new ScorePro7(user, relation, visitors));
 
-    System.out.println("ScorePro7.getScoreList().keyset() = " + ScorePro7.getScoreList().keySet());
-
     return ScorePro7.getScoreList().keySet()
         .stream()
         .sorted((Comparator.naturalOrder()))
