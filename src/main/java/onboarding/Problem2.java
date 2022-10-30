@@ -5,10 +5,23 @@ import java.util.Stack;
 public class Problem2 {
 
     static Stack<String> stack = new Stack<>();
+    static String topValue;
 
     public static String solution(String cryptogram) {
         String answer = "answer";
+
+
         return answer;
+    }
+
+    public static String checkTopValue(Stack checkStack){
+        String tempTopValue = "";
+
+        if (isEmpty(checkStack) == false){
+            tempTopValue = (String) checkStack.peek();
+        }
+
+        return tempTopValue;
     }
 
     public static boolean isEmpty(Stack checkStack){
