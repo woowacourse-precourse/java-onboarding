@@ -571,4 +571,31 @@ class ApplicationTest {
     assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
   }
 
+  @Test
+  void Morethan5People() {    //when u should sort visitors only
+    String user = "dayun";
+    List<List<String>> friends = List.of(
+        List.of("donut", "andole"),
+        List.of("andole", "jun"),
+        List.of("jun", "donut")
+    );
+    List<String> visitors = List.of("bcho", "ejachoi", "dayun", "yback", "chanwjeo", "sungwoop", "abcdef");
+    List<String> result = List.of("abcdef", "bcho", "chanwjeo", "ejachoi", "sungwoop");
+    assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+  }
+  @Test
+  void casebcho() {
+    String user = "mrko";
+    List<List<String>> friends = List.of(
+        List.of("donut", "andole"),
+        List.of("donut", "jun"),
+        List.of("donut", "mrko"),
+        List.of("shakevan", "andole"),
+        List.of("shakevan", "jun"),
+        List.of("shakevan", "mrko")
+    );
+    List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan", "abcd", "cccccc");
+    List<String> result = List.of("andole", "jun", "bedi", "abcd", "cccccc");
+    assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+  }
 }

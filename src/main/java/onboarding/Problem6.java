@@ -12,7 +12,7 @@ class ValidatorPro6 {
   public final static int MIN_CREW_NUM = 1;
   public final static int MAX_CREW_NUM = 10_000;
   public final static int MIN_EMAIL_LEN = 11;
-  public final static int MAX_EMAIL_LEN = 19;
+  public final static int MAX_EMAIL_LEN = 20;
   public final static int MIN_NICKNAME_LEN = 1;
   public final static int MAX_NICKNAME_LEN = 20;
 
@@ -37,8 +37,8 @@ class ValidatorPro6 {
     for (List<String> crewInfo : forms) {
       if (!isEmail(crewInfo.get(EMAIL)) ||
           !crewInfo.get(EMAIL).contains("email.com") ||
-          (crewInfo.get(EMAIL).length() >= MAX_EMAIL_LEN) ||
-          (crewInfo.get(EMAIL).length() < MIN_EMAIL_LEN)) {
+          (crewInfo.get(EMAIL).length() < MIN_EMAIL_LEN) ||
+          (crewInfo.get(EMAIL).length() >= MAX_EMAIL_LEN)) {
         throw new IllegalArgumentException(
             "The e-mail conforms to the e-mail format, and the total length is more than"
                 + MIN_EMAIL_LEN + " characters and less than" + MAX_EMAIL_LEN + " characters.");
@@ -52,8 +52,9 @@ class ValidatorPro6 {
 
   public void validateNickName(List<List<String>> forms) {
     for (List<String> crewInfo : forms) {
-      if (!isKorean(crewInfo.get(NICKNAME)) || crewInfo.get(NICKNAME).length() < MIN_NICKNAME_LEN
-          || crewInfo.get(NICKNAME).length() > MAX_NICKNAME_LEN) {
+      if (!isKorean(crewInfo.get(NICKNAME)) ||
+          crewInfo.get(NICKNAME).length() < MIN_NICKNAME_LEN ||
+          crewInfo.get(NICKNAME).length() >= MAX_NICKNAME_LEN) {
         throw new IllegalArgumentException(
             "Nicknames can only be in Korean, and the total length must be between "
                 + MIN_NICKNAME_LEN + "and" + MAX_NICKNAME_LEN + "characters.");
@@ -73,7 +74,7 @@ class FindDuplicatePro6 {
     this.emails = findDuplicateWord(forms);
   }
 
-  public static @NotNull Set<String> findDuplicateWord(List<List<String>> forms) {
+  public static Set<String> findDuplicateWord(List<List<String>> forms) {
     Set<String> seen = new HashSet<>();
     Set<String> emails = new HashSet<>();
     for (int crewIdx = 0; crewIdx < forms.size(); crewIdx++) {

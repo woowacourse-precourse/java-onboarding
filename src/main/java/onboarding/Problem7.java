@@ -35,7 +35,7 @@ class ValidatorPro7 {
   public static void validateFriends(List<List<String>> friends) {
     if (friends.size() < MIN_FRIENDS_SIZE || friends.size() > MAX_FRIENDS_SIZE) {
       throw new IllegalArgumentException(
-          "User should be a string with a length of between"
+          "Friends should be a string with a length of between"
               + MIN_FRIENDS_SIZE + " and " + MAX_FRIENDS_SIZE + ".");
     }
     for (List<String> pair : friends) {
@@ -65,7 +65,7 @@ class ValidatorPro7 {
     }
     if (id.length() < MIN_ID_LEN || id.length() > MAX_ID_LEN) {
       throw new IllegalArgumentException(
-          "ID should be a string with a length of between"
+          "The user ID should be a string with a length of between"
               + MIN_ID_LEN + " and " + MAX_ID_LEN + ".");
     }
   }
