@@ -8,4 +8,9 @@ public class Problem5 {
         List<Integer> answer = Collections.emptyList();
         return answer;
     }
+
+    // 돈을 원하는 단위로 나누는 함수
+    public static int divideMoney(int money, int divNumber) {
+        return money / divNumber;
+    }
 }
