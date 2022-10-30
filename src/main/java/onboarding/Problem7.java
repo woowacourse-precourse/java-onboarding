@@ -10,12 +10,12 @@ public class Problem7 {
 
         for (List<String> friend: friends // 모든 친구 관계를 해쉬에 저장하기 위한 반복문
              ) {
-            if (friendsHash.get(friend.get(0)) == null){ // 키 값을 추가하고 새로운 해쉬 셋을 만듬
+            if (friendsHash.containsKey(friend.get(0))){ // 키 값을 추가하고 새로운 해쉬 셋을 만듬
                 friendsHash.put(friend.get(0), new HashSet<>(List.of(friend.get(1))));
             }
             else friendsHash.get(friend.get(0)).add(friend.get(1)); // 아니라면 친구를 추가
 
-            if (friendsHash.get(friend.get(1)) == null){ // 위와 동일
+            if (friendsHash.containsKey(friend.get(1))){ // 위와 동일
                 friendsHash.put(friend.get(1), new HashSet<>(List.of(friend.get(0))));
             }
             else friendsHash.get(friend.get(1)).add(friend.get(0));
