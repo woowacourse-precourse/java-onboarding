@@ -1,16 +1,6 @@
 package onboarding.problem2;
 
 public class Compress {
-    public static String compressWord(String cryptogram) {
-        if (Validation.check(cryptogram)) {
-            while (needToCompress(cryptogram)) {
-                cryptogram = compressOnce(cryptogram);
-            }
-            return cryptogram;
-        }
-        return Constant.EXCEPTION;
-    }
-
     static final char SENTINEL = '#';
     public static boolean needToCompress(String cryptogram) {
         for (int i = 0; i < cryptogram.length() - 1; i++) {
@@ -25,7 +15,7 @@ public class Compress {
         String newCryptogram = SENTINEL + cryptogram + SENTINEL;
         String result = "";
         for (int i = 1; i < newCryptogram.length() - 1; i++) {
-            if (isLeftRightCharDiff(cryptogram, i)) {
+            if (isLeftRightCharDiff(newCryptogram, i)) {
                 char middleValue = newCryptogram.charAt(i);
                 result += middleValue;
             }
@@ -41,5 +31,5 @@ public class Compress {
         }
         return false;
     }
-    
+
 }

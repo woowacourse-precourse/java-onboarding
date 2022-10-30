@@ -1,11 +1,10 @@
 package onboarding.problem1;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class Calculate {
+public class Calculator {
     public static int getMaxValue(List<Integer> allPossibleValues) {
         int biggest = Collections.max(allPossibleValues);
         return biggest;
