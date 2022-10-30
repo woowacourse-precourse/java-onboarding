@@ -13,14 +13,17 @@ class Problem6 {
         return answer;
     }
 
-    /**
-     * substrb 원하는 바이트 추출. 마지막 글자가 한글이고 추출 시 한글이 깨지는 경우 그 글자는 제외시킴
-     * @param input 입력문자열
-     * @param sIndex 추출 시작 인덱스. 바이트단위가 아님
-     * @param byteSize 추출 바이트 길이. 추출 바이트 길이 보다 클 경우 차분은 스페이스로 패딩
-     * @param byteLenKor 한글 한글자 바이트수
-     * @return 추출 문자열
-     */
+    // 이름 나열 메서드
+    public static String StringAll(List<List<String>> forms) {
+        String result = "" ;
+        for(int i=0; i<forms.size(); i++) {
+            result += forms.get(i).get(1);
+        }
+        return result;
+    }
+
+    // 한글 추출 메서드
+    // input : 문자열 sIndex : 추출 시작 인덱스  byteSize : 추출 바이트 길이 byteLenKor : 한글 한글자 바이트수
     public static String substrb(String input, int sIndex, int byteSize, int byteLenKor) {
         if (input == null) return null;
         if (input.length() == 0 ) return input;
