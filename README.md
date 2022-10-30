@@ -111,6 +111,12 @@ BUILD SUCCESSFUL in 0s
 |  3.0 | 주어진 3,6,9 게임의 총 손벽갯수를 출력 | Problem3.solution | 
 |  3.1 | 주어진 한 숫자의 손벽 갯수를 누적 출력하는 재귀함수 | Problem3.getClapCount | 
 
+4. 문제 4
+|기능목록 번호| 내용 | 구현상황 |
+| :---:  | :--- | :--- | 
+|  4.0 | 주어진 문자열을 모두 청개구리화한 문자열로 변환 | Problem4.solution | 
+|  4.1 | 주어진 캐릭터를 청개구리 변환을 진행 | Problem4.chungaeguri |
+
 7. 문제 7
 
 |기능목록 번호| 내용 | 구현상황 |
