@@ -13,9 +13,13 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
         Map<String, Integer> snAndCountMap = new HashMap<>();
+        snList = new ArrayList<>();
 
         makeSnList(forms);
         makeCount(snAndCountMap);
+        makeAnswer(forms, snAndCountMap, answer);
+
+        Collections.sort(answer);
 
         return answer;
     }
@@ -53,6 +57,25 @@ public class Problem6 {
         for (List<String> strings : snList) {
             for (String par : strings) {
                 snAndCountMap.put(par, snAndCountMap.getOrDefault(par, 0) + 1);
+            }
+        }
+    }
+
+    /*
+     * 부분 문자열의 길이가 2 이상일 경우 정답에 추가한다.
+     * */
+    private static void makeAnswer(List<List<String>> forms,
+                                   Map<String, Integer> snAndCountMap,
+                                   List<String> answer){
+
+        Person : for (int i = 0; i < snList.size(); i++) {
+            for (int j = 0; j < snList.get(i).size(); j++) {
+                int val = snAndCountMap.get(snList.get(i).get(j));
+                if (val >= 2) {
+                    String email = forms.get(i).get(0);
+                    answer.add(email);
+                    continue Person;
+                }
             }
         }
     }
