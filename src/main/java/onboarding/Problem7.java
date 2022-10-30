@@ -12,6 +12,12 @@ public class Problem7 {
     public static final int FRIEND_POINT = 10;
     public static final int VISITOR_POINT = 1;
 
+    public static final int LIST_START_LENGTH = 1;
+    public static final int LIST_END_LENGTH = 10_000;
+
+    public static final int USERID_START_LENGTH = 1;
+    public static final int USERID_END_LENGTH = 30;
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
         return getResult(user, friends, visitors);
@@ -39,6 +45,10 @@ public class Problem7 {
     }
 
     private static List<UserPoint> makeUserPoints(String user, List<List<String>> friends, List<String> visitors) {
+        if(!isValidUserId(user)) {
+            throw new InputMismatchException("유효하지 않은 사용자 입니다.");
+        }
+
         Map<String, List<String>> relationships = makeRelationShips(friends);
         List<String> userFriends = fillUserFriends(user, relationships);
 
@@ -57,6 +67,10 @@ public class Problem7 {
     }
 
     public static Map<String, Integer> getPointFrom(List<String> visitors, String user, List<String> userFriends) {
+        if(!isValidList(visitors)) {
+            throw new InputMismatchException("Visitor, 리스트의 범위를 초과하였습니다.");
+        }
+
         Map<String, Integer> visitorPoints = new HashMap<>();
 
         addPoints(visitors, visitorPoints, VISITOR_POINT);
@@ -101,6 +115,9 @@ public class Problem7 {
     }
 
     private static void addPoint(Map<String, Integer> pointList, int point, String recommend) {
+        if(!isValidUserId(recommend)) {
+            throw new InputMismatchException("유효하지 않은 사용자 입니다.");
+        }
 
         pointList.putIfAbsent(recommend, 0);
         pointList.put(recommend, pointList.get(recommend) + point);
@@ -111,6 +128,9 @@ public class Problem7 {
     }
 
     public static Map<String, List<String>> makeRelationShips(List<List<String>> friends) {
+        if(!isValidList(friends)) {
+            throw new InputMismatchException("friends, 리스트의 범위를 초과하였습니다.");
+        }
         Map<String, List<String>> relationships = new HashMap<>();
 
         for (List<String> friendRelation : friends) {
@@ -122,6 +142,9 @@ public class Problem7 {
     }
 
     private static void enrichRelation(Map<String, List<String>> relationships, String f1, String f2) {
+        if(!isValidUserId(f1)) {
+            throw new InputMismatchException("유효하지 않은 사용자입니다.");
+        }
         if (isEmptyList(relationships.get(f1))) {
             relationships.put(f1, new ArrayList<>());
         }
@@ -179,6 +202,22 @@ public class Problem7 {
             return a.getUserId().compareTo(b.getUserId());
         }
         return b.getPoint() - a.getPoint();
+    }
+
+    private static boolean isValidLength(int num, int start,int end) {
+        return start <= num && num <= end;
+    }
+
+    private static boolean isValidList(List<?> list) {
+        return isValidLength(list.size(), LIST_START_LENGTH, LIST_END_LENGTH);
+    }
+
+    private static boolean isValidUserId(String userId) {
+        for(char ch: userId.toCharArray()) {
+            if(!Character.isLowerCase(ch)) return false;
+        }
+
+        return isValidLength(userId.length(), USERID_START_LENGTH, USERID_END_LENGTH);
     }
 
 }
