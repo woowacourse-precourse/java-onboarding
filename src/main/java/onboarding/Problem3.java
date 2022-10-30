@@ -13,4 +13,13 @@ public class Problem3 {
 
         return answer;
     }
+    static int findNumber(int[] number) {
+        int clap = 0;
+        for(int n:number) {
+            if (n==3||n==6||n==9){
+                clap+=1;
+            }
+        }
+        return clap;
+    }
 }
