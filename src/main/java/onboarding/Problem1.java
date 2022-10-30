@@ -26,18 +26,34 @@ class Problem1 {
         }
         return record2;
     }
+
+    public static boolean isValidate(int page1, int page2){
+        if(page1%2==0 || page2%2==1){
+            return false;
+        }
+        if((page2-page1)!=1){
+            return false;
+        }
+        if(page1<=0 || page2<=0){
+            return false;
+        }
+        return true;
+    }
+
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        int answer = -1;
+        if(isValidate(pobi.get(0),pobi.get(1))&&isValidate(crong.get(0), crong.get(1))) {
+            int greaterPobi = getGreater(pobi.get(0), pobi.get(1));
+            int greaterCrong = getGreater(crong.get(0), crong.get(1));
 
 
-        int greaterPobi = getGreater(pobi.get(0),pobi.get(1));
-        int greaterCrong = getGreater(crong.get(0),crong.get(1));
-
-        int answer = Integer.MAX_VALUE;
-        if(greaterPobi>greaterCrong) {
-            answer = 1;
-        } else if (greaterCrong>greaterPobi) {
-            answer = 2;
-        }else answer = 0;
+            if (greaterPobi > greaterCrong) {
+                answer = 1;
+            } else if (greaterCrong > greaterPobi) {
+                answer = 2;
+            } else answer = 0;
+        }
         return answer;
     }
 }
