@@ -40,4 +40,17 @@ public class Problem2 {
         }
         return duplicationSet;
     }
+
+    static ArrayList<String> removeDuplicationBySet(
+        ArrayList<String> arrayList,
+        HashSet<Integer> duplicationSet
+    ) {
+        for (int i = 0; i < arrayList.size(); i++) {
+            if (duplicationSet.contains(i)) {
+                arrayList.remove(i);
+                arrayList.add(i, null);
+            }
+        }
+        return arrayList;
+    }
 }
