@@ -60,8 +60,8 @@ public class Problem7 {
 
     private static List<String> makeRecommendedFriendList(HashMap<String, Integer> scoreList){
         List<String> result = new ArrayList<>();
-        List<Map.Entry<String, Integer>> list = new ArrayList<>(scoreList.entrySet());
-        Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
+        List<Map.Entry<String, Integer>> descendingScoreList = new ArrayList<>(scoreList.entrySet());
+        Collections.sort(descendingScoreList, new Comparator<Map.Entry<String, Integer>>() {
             public int compare(Map.Entry<String, Integer> a, Map.Entry<String, Integer> b) {
                 int res = b.getValue().compareTo(a.getValue());
                 if(res == 0){
@@ -70,14 +70,14 @@ public class Problem7 {
                 return res;
             }
         });
-        for(int i = 0; i < list.size(); i++){
+        for(int i = 0; i < descendingScoreList.size(); i++){
             if(i == 5){
                 break;
             }
-            if(list.get(i).getValue() == 0){
+            if(descendingScoreList.get(i).getValue() == 0){
                 break;
             }else{
-                result.add(list.get(i).getKey());
+                result.add(descendingScoreList.get(i).getKey());
             }
         }
         return result;
