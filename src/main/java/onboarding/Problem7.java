@@ -5,8 +5,27 @@ import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        Map<String, Set<String>> friendsMap = new HashMap<>();
+        Map<String, Integer> pointMap = new HashMap<>();
+        for (List<String> friend : friends) {
+            saveFriend(friendsMap, friend);
+        }
+
+        Set<String> userFriends = friendsMap.get(user);
+        removeUserInFriends(user,friendsMap);
+        for (String userFriend : userFriends) {
+            Set<String> sharingFriends = friendsMap.get(userFriend);
+            saveSharingFriendPoint(pointMap, userFriends, sharingFriends);
+        }
+
+        for (String visitor : visitors) {
+            if (isFriend(visitor, userFriends)) {
+                continue;
+            }
+            givePointByVisit(visitor, pointMap);
+        }
+
+        return sortByPoint(pointMap);
     }
 
     private static void saveFriend(Map<String, Set<String>> friendsMap, List<String> friends) {
