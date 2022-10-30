@@ -64,4 +64,19 @@ class Problem1 {
         validateGap(pageList);
         validateLength(pageList);
     }
+
+    static void validateAllPageNumber(List<Integer> pageList) throws Exception {
+        for (int pageNumber: pageList) {
+            validatePageNumber(pageNumber);
+        }
+    }
+
+    static void validatePageNumber(int pageNumber) throws Exception {
+        if (pageNumber < 1) {
+            throw new Exception("페이지 수가 너무 작습니다");
+        }
+        if (pageNumber > 400) {
+            throw new Exception("페이지 수가 너무 큽니다");
+        }
+    }
 }
