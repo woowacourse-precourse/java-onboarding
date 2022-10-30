@@ -5,17 +5,17 @@ import java.util.Collections;
 import java.util.List;
 
 public class Calculator {
-    public static int getMaxValue(List<Integer> allPossibleValues) {
+    public static int getMaxValFromList(List<Integer> allPossibleValues) {
         int biggest = Collections.max(allPossibleValues);
         return biggest;
     }
-    public static List<Integer> getPossibleValues(Page page) {
+    public static List<Integer> getPossibleValFromPage(Page page) {
         List<Integer> possibleValues = Arrays.asList(
-                getSum(page.getLeftPage()), getSum(page.getRightPage()),
-                getMult(page.getLeftPage()), getMult(page.getRightPage()));
+                getDigitSum(page.getLeftPage()), getDigitSum(page.getRightPage()),
+                getDigitMult(page.getLeftPage()), getDigitMult(page.getRightPage()));
         return possibleValues;
     }
-    public static int getSum(int number) {
+    public static int getDigitSum(int number) {
         int result = 0;
         while (number != 0) {
             result += (number % 10);
@@ -24,7 +24,7 @@ public class Calculator {
         return result;
     }
 
-    public static int getMult(int number) {
+    public static int getDigitMult(int number) {
         int result = 1;
         while (number != 0) {
             result *= (number % 10);
