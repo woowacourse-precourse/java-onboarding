@@ -25,7 +25,7 @@ public class Problem7 {
         //내 친구의 친구들 모음(유저 제외)
         Map<String, List<String>> my_friend_friend = new HashMap<>();
         for(String s : my_friend){
-            my_friend_friend.put(s,my_friend_relation(user, s, friends,my_friend));
+            my_friend_friend.put(s,my_friend_relation(user, s, friends));
         }
         System.out.println("친구의 친구들 모음 : " + my_friend_friend);
 
@@ -55,14 +55,52 @@ public class Problem7 {
         }
         System.out.println("최종 점수판 : " + score_board);
 
+        //1차 - 친구 삭제
         my_friend.forEach(score_board.keySet()::remove);
         System.out.println("친구 삭제한 1차 수정본 : " + score_board);
 
-        return visitors;
+        //2-1차 - 점수 정렬
+/*        List<Map.Entry<String, Integer> > list = new LinkedList<Map.Entry<String, Integer> >(score_board.entrySet());
+
+        list.sort((i1, i2) -> i2.getValue().compareTo(i1.getValue()));
+
+        Map<String, Integer> temp = new LinkedHashMap<String, Integer>();
+        for (Map.Entry<String, Integer> aa : list) {
+            temp.put(aa.getKey(), aa.getValue());
+        }
+        System.out.println("temp : " + temp);;
+
+        //2-2차 - 이름 정렬
+        for(int i = 0; i < temp.size()-1; i++){
+            if (temp.get(i).intValue() == temp.get(i+1).intValue())
+        }
+
+       System.out.println("2-2차 정렬 : " + Arrays.toString(answer));
+*/
+        List<Map.Entry<String, Integer>> entry_list = new LinkedList<>(score_board.entrySet());
+        entry_list.sort(((o1, o2) -> {
+            if(o1.getValue().equals(o2.getValue())) {
+                // 같은 점수일 때 정렬
+                return o1.getKey().compareTo(o2.getKey());
+            }
+            return Integer.compare(o2.getValue(), o1.getValue());
+        }));
+        System.out.println("정렬 끝 entry_list: " + entry_list);
+        //3차 - 5명 컷
+        List<String> result = new ArrayList<>();
+        int cnt = 0;
+        for(Map.Entry<String, Integer> entry : entry_list){
+            // 5명이 채워지면 멈추기
+            if (cnt == 5) break;
+            result.add(entry.getKey());
+            cnt++;
+        }
+
+        return result;
 
     }
 
-    private static List<String> my_friend_relation(String user, String friend, List<List<String>> friends, List<String> my_friend) {
+    private static List<String> my_friend_relation(String user, String friend, List<List<String>> friends) {
         List<String> friends_friend_list = new ArrayList<>();
 
         for(List<String> list: friends){
@@ -75,18 +113,6 @@ public class Problem7 {
         }
         return friends_friend_list;
     }
-
-    private static List<List<String>> combination(List<String> my_friend, List<String> dont_know_friend) {
-        List<List<String>> combi = new ArrayList<>();
-
-        for(String my : my_friend){
-            for(String dont : dont_know_friend){
-                combi.add(List.of(my, dont));
-            }
-        }
-        return combi;
-    }
-
     //내 친구만 들어있는 배열 만들어주는 메서드
     private static List<String> get_my_friend(String user, List<List<String>> friends) {
         List<String> my_friend = new ArrayList<>(30);
