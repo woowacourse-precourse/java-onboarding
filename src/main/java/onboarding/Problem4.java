@@ -9,23 +9,29 @@ public class Problem4 {
         ArrayList<String> answerArr = new ArrayList<>();
 
         char[] chArr = word.toCharArray(); // String -> char
-        for(char asciiValue: chArr){
-            int decimalValue = asciiValue; // char -> int
-            // convert Alphabets
-            if(decimalValue >= 65 && decimalValue <= 90){
-                // Alphabet Upper Case
-                decimalValue = 155 - decimalValue;
-            }else if(decimalValue >= 97 && decimalValue <= 122){
-                // Alphabet Lower Case
-                decimalValue = 219 - decimalValue;
-            }
-            char newChar = (char) decimalValue;
+
+        for(char oldChar: chArr){
+            char newChar = convertAlphabet(oldChar);
             answerArr.add(Character.toString(newChar));
         }
 
+        // join answer array and get answer
         answer = String.join("", answerArr);
 
-
         return answer;
+    }
+
+    private static char convertAlphabet(char asciiValue) {
+        int decimalValue = asciiValue; // char -> int
+        // convert Alphabets
+        if(decimalValue >= 65 && decimalValue <= 90){
+            // Alphabet Upper Case
+            decimalValue = 155 - decimalValue;
+        }else if(decimalValue >= 97 && decimalValue <= 122){
+            // Alphabet Lower Case
+            decimalValue = 219 - decimalValue;
+        }
+        char newChar = (char) decimalValue;
+        return newChar;
     }
 }
