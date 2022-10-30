@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 public class Graph {
-    private List<List<String>> friendsInfo;
+    private final List<List<String>> friendsInfo;
 
-    private Map<String, List<String>> adjacentList = new HashMap<>();
+    private final Map<String, List<String>> adjacentList = new HashMap<>();
 
     public Graph(List<List<String>> friendsInfo) {
         this.friendsInfo = friendsInfo;
