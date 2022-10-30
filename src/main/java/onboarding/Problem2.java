@@ -8,25 +8,37 @@ public class Problem2 {
         return decrypt(cryptogram, "");
     }
 
-    private static String decrypt(String cryptogram, String replaced) {
-        if (cryptogram.equals(replaced)) {
-            return replaced;
+    private static String decrypt(String cryptogram, String removedCryptogram) {
+        if (cryptogram.equals(removedCryptogram)) {
+            return removedCryptogram;
         }
 
-        String[] arr = cryptogram.split("");
+        removedCryptogram = removeDupChar(cryptogram);
 
-        for (int i = 1; i < arr.length; i++) {
-            if (arr[i].equals(arr[i - 1])) {
-                arr[i] = "*";
-                arr[i - 1] = "*";
-            }
-        }
-
-        // 문자열 변환
-        String new_replaced = String.join("", arr);
-        // 중복마크 제거
-        new_replaced = new_replaced.replace("*", "");
-
-        return decrypt(new_replaced, cryptogram);
+        return decrypt(removedCryptogram, cryptogram);
     }
+
+    private static String removeDupChar(String cryptogram) {
+
+        String[] cryptogramArr = cryptogram.split("");
+
+        for (int i = 1; i < cryptogramArr.length; i++) {
+            cryptogramArr = replaceDupChars(cryptogramArr, i);
+        }
+
+        String res = String.join("", cryptogramArr);
+        res = res.replace("*", "");
+
+        return res;
+    }
+
+    private static String[] replaceDupChars(String[] cryptogramArr, int index) {
+        if (cryptogramArr[index].equals(cryptogramArr[index - 1])) {
+            cryptogramArr[index] = "*";
+            cryptogramArr[index - 1] = "*";
+        }
+
+        return cryptogramArr;
+    }
+
 }
