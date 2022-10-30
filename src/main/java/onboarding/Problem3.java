@@ -8,7 +8,9 @@ public class Problem3 {
             String str = String.valueOf(i);
             for(int j=0; j<str.length(); j++){
                 char c = str.charAt(j);
-
+                if(clap(c)){
+                    answer++;
+                }
             }
         }
 
