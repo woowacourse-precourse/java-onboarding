@@ -10,7 +10,14 @@ public class Problem5 {
     static int[] arrMoney = new int[] {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
 
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
+        answer = new ArrayList<Integer>();
+        for (int i=0; i< arrMoney.length; i++){
+            answer.add(change(money,arrMoney[i]));
+            money = leftMoney(money,arrMoney[i]);
+        }
+        return answer;
+    }
+
     private static int change(int input, int change) {
         int answer = 0;
         if(input >= change){
