@@ -20,6 +20,14 @@ public class Problem1Input implements ProblemInput {
 		this.crongPagePair = new PagePair(crong);
 	}
 
+	public PagePair pobiPagePair() {
+		return pobiPagePair;
+	}
+
+	public PagePair crongPagePair() {
+		return crongPagePair;
+	}
+
 	@Override
 	public boolean hasError() {
 		// 범위를 벗어난 페이지가 없는지 확인
