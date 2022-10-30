@@ -38,17 +38,18 @@ class Problem1 {
     }
 
     private static int multiplyPageNumber(int page){
+        int originPage = page;
         int hundredsPlace=page/100;
         page=page%100;
         int tensPlace=page/10;
         int onesPlace=page%10;
-        if(hundredsPlace==0){
-            return tensPlace*onesPlace;
-        } else if(tensPlace==0){
-            return onesPlace;
-        } else {
+        if(originPage >= 100) {
             return hundredsPlace*tensPlace*onesPlace;
         }
+        if(originPage >= 10) {
+            return tensPlace*onesPlace;
+        }
+        return onesPlace;
     }
 
     private static int getMyScore(List<Integer> person){
