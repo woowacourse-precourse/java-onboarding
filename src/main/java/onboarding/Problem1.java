@@ -10,6 +10,16 @@ class Problem1 {
         return -1;
     }
 
+    private static Integer getBiggerInt(int value1, int value2) {
+        if ((value2 - value1) > 0) {
+            return value2;
+        } else if ((value2 - value1) < 0) {
+            return value1;
+        } else {
+            return null;
+        }
+    }
+
     private static int multipleDigit(int num) {
         int result = 1;
 
