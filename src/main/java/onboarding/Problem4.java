@@ -1,9 +1,19 @@
 package onboarding;
 
+import java.util.Stack;
+
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        return convertToString(word);
+    }
+
+    public static String convertToString(String word) {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < word.length(); i++) {
+            char ch = word.charAt(i);
+            result.append(frogDict(ch));
+        }
+        return result.toString();
     }
 
     public static char frogDict(char ch) {
