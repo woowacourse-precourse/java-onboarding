@@ -4,16 +4,23 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        User userOfSns = new User(user);
-        Others others = new Others(userOfSns);
-        recordRelationshipLlist(friends, userOfSns, others);
-        recordVisitorList(visitors, userOfSns, others);
-        List<String> answer = others.getTopFiveNameOfOtherList();
-        return answer;
+        try {
+            validateData(user, friends, visitors);
+            User userOfSns = new User(user);
+            Others others = new Others(userOfSns);
+            recordRelationshipLlist(friends, userOfSns, others);
+            recordVisitorList(visitors, userOfSns, others);
+            List<String> answer = others.getTopFiveNameOfOtherList();
+            return answer;
+        } catch (Exception e) {
+            System.out.println(e);
+            return Collections.emptyList();
+        }
     }
 
     static void recordRelationshipLlist(List<List<String>> relationshipList, User user, Others others) {
@@ -59,6 +66,52 @@ public class Problem7 {
         }
         others.recordVisitor(visitor);
         return "Just visitor";
+    }
+
+    static void validateData(String user, List<List<String>> friends, List<String> visitors) throws Exception {
+        validateName(user);
+        validateFriends(friends);
+        validateVisitors(visitors);
+    }
+
+    static void validateName(String id) throws Exception {
+        String pattern = "^[a-z]{1,30}$";
+        boolean isMatch = Pattern.matches(pattern, id);
+        if (!isMatch) {
+            throw new Exception("사용자 아이디는 길이가 1 이상 30 이하이며, 알파벳 소문자로 이루어져야 합니다");
+        }
+    }
+
+    static void validateFriends(List<List<String>> friends) throws Exception {
+        validateFriendsLength(friends);
+        for (List<String> relationship: friends) {
+            validateStringList(relationship);
+        }
+    }
+
+    static void validateVisitors(List<String> visitors) throws Exception {
+        validateVisitorsLength(visitors);
+        validateStringList(visitors);
+    }
+
+    static void validateStringList(List<String> stringList) throws Exception {
+        for (String name: stringList) {
+            validateName(name);
+        }
+    }
+
+    static void validateFriendsLength(List<List<String>> friends) throws Exception {
+        int length = friends.size();
+        if (length < 1 || length > 10000) {
+            throw new Exception("friends의 길이는 1 이상 10000 이하여야 합니다");
+        }
+    }
+
+    static void validateVisitorsLength(List<String> visitors) throws Exception {
+        int length = visitors.size();
+        if (length < 0 || length > 10000) {
+            throw new Exception("visitors의 길이는 0 이상 10000 이하여야 합니다");
+        }
     }
 }
 
