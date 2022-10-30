@@ -35,6 +35,33 @@ public class Problem3 {
      */
     private static int calcAlgorithm(int number) {
         int answer = 0;
+        String[] digits = String.valueOf(number).split("");
+        int length = digits.length - 1;
+
+        // 1의 자리인 경우, 3으로 나눈 몫을 return한다.
+        if(length == 0) {
+            int data = Integer.parseInt(digits[0])/ 3;
+            return data;
+        }
+
+        int temp = Integer.parseInt(digits[0]);     // 현재 최상위 자리수의 값
+        answer += temp * 3 * Math.pow(10, length - 1) * length ;    // 0 ~ 현재 자리수 - 1 까지의 박수소리
+        if (temp > 3) {
+            answer += (temp-1) / 3 * Math.pow(10, length);
+        }
+
+        int seconds = (int) (number - (temp * Math.pow(10, length)));   // 전체 번호에서 temp를 뺀 값, 즉 하위값
+        // 현재 자릿수의 값이 3의 배수라면, 하위값만큼 더 박수 수가 추가된다. +1은 하윗값이 0인 경우이다.
+        if(temp % 3 == 0) {
+            answer += seconds + 1;
+        }
+
+        // 하위값이 0인 경우 해당 값을 바로 return
+        if(seconds != 0) {
+            // 재귀
+            answer += calcAlgorithm(seconds);
+        }
+
         return answer;
     }
 
