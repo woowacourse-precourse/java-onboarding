@@ -98,9 +98,15 @@ public class customApplicationTest
     class Problem4Test {
         @Test
         void case1() {
-            String word = "I love you";
-            String result = "R olev blf";
-            assertThat(Problem4.solution(word)).isEqualTo(result);
+            char alphabet = 'a';
+            char result = 'z';
+            assertThat(Problem4.mixer(alphabet,false)).isEqualTo(result);
+        }
+        @Test
+        void case2() {
+            char alphabet = 'A';
+            char result = 'Z';
+            assertThat(Problem4.mixer(alphabet,true)).isEqualTo(result);
         }
     }
 

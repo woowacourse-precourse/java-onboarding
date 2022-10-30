@@ -433,6 +433,6 @@ public static int solution(int number) {
 ##예상 필요 기능 정의
 1. 소문자 테이블
 2. 대문자 테이블
-3. 대문자 소문자 판단 메소드
-4. 치환 메소드
+3. 치환 메소드
+4. mixer 메소드
 5. exception 처리
