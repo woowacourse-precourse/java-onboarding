@@ -1,13 +1,22 @@
 package onboarding;
 
+import java.util.ArrayList;
+
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
-        return answer;
+        ArrayList<Integer> dp = Game.initGame();
+        return dp.get(number);
     }
+
 }
 
 class Game{
+    static ArrayList<Integer> initGame(){
+        ArrayList<Integer> dp = new ArrayList<Integer>();
+        dp.add(0, 0);
+        dp.add(1,0);
+        return dp;
+    }
     static int countContainThree(int number){
         int cnt = 0;
         while(number != 0){
