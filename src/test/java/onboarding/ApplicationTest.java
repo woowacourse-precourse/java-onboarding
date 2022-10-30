@@ -3,7 +3,6 @@ package onboarding;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -102,6 +101,12 @@ class ApplicationTest {
         void case2() {
             int number = 33;
             int result = 14;
+            assertThat(Problem3.solution(number)).isEqualTo(result);
+        }
+        @Test
+        void case3() {
+            int number = 9999;
+            int result = 12000;
             assertThat(Problem3.solution(number)).isEqualTo(result);
         }
     }

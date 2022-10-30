@@ -12,21 +12,23 @@ public class Problem2 {
     public static String decode(String cryptogram) {
         int i = 0;
         int len = cryptogram.length();
-        StringBuffer sb = new StringBuffer(len);
-        int sb_idx = -1;
+        StringBuffer decrypted = new StringBuffer(len);
 
         while (i < len) {
-            char ch = cryptogram.charAt(i);
-            if (sb_idx != -1 && sb.charAt(sb_idx) == ch) {
-                sb.deleteCharAt(sb_idx);
-                --sb_idx;
-            }
-            else {
-                sb.append(ch);
-                ++sb_idx;
-            }
+            deleteContinuousDuplicated(decrypted, cryptogram.charAt(i));
             ++i;
         }
-        return sb.toString();
+        return decrypted.toString();
+    }
+
+    public static void deleteContinuousDuplicated(StringBuffer decrypted, char ch) {
+        int len = decrypted.length();
+
+        if (len != 0 && decrypted.charAt(len - 1) == ch) {
+            decrypted.deleteCharAt(len - 1);
+        }
+        else {
+            decrypted.append(ch);
+        }
     }
 }
