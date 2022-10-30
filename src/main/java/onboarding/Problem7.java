@@ -45,13 +45,15 @@ public class Problem7 {
         // 점수 순으로 정렬하고 이름 출력
         // <점수, 이름> 으로 저장한 map 만듦
         Map<Integer, String> scoreNameMap = makeScoreNameMap(totalPointMap);
-
-        int[] pointArr = new int[totalPointMap.size()];
-        Iterator<Integer> recommendPointItr = totalPointMap.values().iterator();
+        // 점수만 배열에 넣음
+        int[] pointArr = new int[scoreNameMap.size()];
+        Iterator<Integer> scoreNameMapItr = scoreNameMap.keySet().iterator();
         for(int i=0; i<pointArr.length; i++){
-            pointArr[i] = recommendPointItr.next();
+            pointArr[i] = scoreNameMapItr.next();
         }
+        // 점수 정렬
         Arrays.sort(pointArr);
+
 
         String[] recommendName = new String[5];
         for(int i=0; i<5; i++){
