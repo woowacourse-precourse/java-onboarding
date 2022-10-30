@@ -57,7 +57,20 @@ public class Problem7 {
     }
 
     //함께 아는 친구의 수를 찾아 점수로 환산하기
+    static void countFriend (){
+        for (String x:recommendList.keySet()){
+            int countFriend = 0;
+            List<String> list = graph.get(x);
+            for (String i :list){
+                if (myFriends.contains(i))
+                    countFriend++;
 
+            }
+            int score = recommendList.get(x);
+            score += countFriend*10;
+            recommendList.put(x,score);
+        }
+    }
 
     //타임라인 방문기록을 점수화 하기
 
