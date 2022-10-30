@@ -9,7 +9,7 @@ public class Problem6 {
         Map<String, List<String>> continuousThings = new HashMap<String, List<String>>();
         Set<String> overlappingEmailList = new HashSet<>();
 
-        findContinuousStringInNickname(continuousThings, forms, overlappingEmailList);
+        findEmailListUsingOverlappedSubString(continuousThings, forms, overlappingEmailList);
 
         sortList(answer, overlappingEmailList);
 
@@ -17,10 +17,9 @@ public class Problem6 {
     }
 
     /**
-     * Function for continuousString that contains all 2-length string in nickname of everyone
-     * And Everyone is separated bt email
+     * Function for emailList that contains overlapped all 2-length string in nickname
      * */
-    private static void findContinuousStringInNickname(Map<String, List<String>> continuousThings,
+    private static void findEmailListUsingOverlappedSubString(Map<String, List<String>> continuousThings,
                                                        List<List<String>> forms, Set<String> overlappingEmailList) {
         for (List<String> info : forms) {
             String nickname = info.get(1);
