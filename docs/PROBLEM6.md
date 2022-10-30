@@ -24,7 +24,7 @@
 
 ### 기능 구현 목록
 
-[  ] HashSet에 email, nickname을 받을 List를 선언하고, forms에 추가하는 method를 구현  
-[  ] 각 닉네임을 입력받고 두 자리 이상 연속되면 중복으로 처리하기 때문에, 두 자리씩만 비교해 처리하는 method를 구현  
-[  ] 정렬을 위해 Set을 List로 변환  
-[  ] List에 있는 email을 오름차순으로 정렬  
+[ v] HashSet에 email, nickname을 받을 List를 선언하고, forms에 추가하는 method를 구현  
+[ v ] 각 닉네임을 입력받고 두 자리 이상 연속되면 중복으로 처리하기 때문에, 두 자리씩만 비교해 처리하는 method를 구현  
+[ v ] 정렬을 위해 Set을 List로 변환  
+[ v ] List에 있는 email을 오름차순으로 정렬  
