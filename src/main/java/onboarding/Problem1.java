@@ -53,5 +53,37 @@ class Problem1 {
         }
     }
 
+    private static class PlayerScore {
+        private int leftpage;
+        private int rightpage;
 
+        public PlayerScore(List<Integer> player) {
+            this.leftpage = player.get(0);
+            this.rightpage = player.get(1);
+        }
+
+        public int maxScore() {
+            int sum_score = Math.max(sumPage(leftpage), mulPage(leftpage));
+            int mul_score = Math.max(sumPage(rightpage), mulPage(rightpage));
+            return Math.max(sum_score, mul_score); // 플레이어의 최고 점수 반환
+        }
+
+        public int sumPage(int page) {
+            int sum = 0;
+            while (page != 0) {
+                sum += (page % 10);
+                page /= 10;
+            }
+            return sum;
+        }
+
+        public int mulPage(int page) {
+            int mul = 1;
+            while (page != 0) {
+                mul *= (page % 10);
+                page /= 10;
+            }
+            return mul;
+        }
+    }
 }
