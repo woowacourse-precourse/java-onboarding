@@ -8,6 +8,10 @@ public class Problem4 {
     private static final char LOWERCASE_Z = 'z';
     private static final char UPPERCASE_A = 'A';
     private static final char UPPERCASE_Z = 'Z';
+    private static final char[] REVERSE_LOWERCASE_ALPABET = {'z', 'y', 'x', 'w', 'v', 'u', 't', 's',
+        'r', 'q', 'p', 'o', 'n', 'm', 'l', 'k', 'j', 'i', 'h', 'g', 'f', 'e', 'd', 'c', 'b', 'a'};
+    private static final char[] REVERSE_UPPERCASE_ALPABET = {'Z', 'Y', 'X', 'W', 'V', 'U', 'T', 'S',
+        'R', 'Q', 'P', 'O', 'N', 'M', 'L', 'K', 'J', 'I', 'H', 'G', 'F', 'E', 'D', 'C', 'B', 'A'};
 
     public static String solution(String word) {
         String answer = "";
@@ -24,5 +28,20 @@ public class Problem4 {
 
     public static boolean checkUppercaseAlphabet(char letter) {
         return UPPERCASE_A <= letter && letter <= UPPERCASE_Z;
+    }
+
+    public static String chageWordLetterAlphabetReverse(String word) {
+        String result = "";
+        for (char letter : word.toCharArray()) {
+            if (checkLowercaseAlphabet(letter)) {
+                result += REVERSE_LOWERCASE_ALPABET[letter - LOWERCASE_A];
+            } else if (checkUppercaseAlphabet(letter)) {
+                result += REVERSE_UPPERCASE_ALPABET[letter - UPPERCASE_A];
+            } else if (letter < UPPERCASE_A || (UPPERCASE_Z < letter && letter < LOWERCASE_A)
+                || LOWERCASE_Z < letter) {
+                result += letter;
+            }
+        }
+        return result;
     }
 }
