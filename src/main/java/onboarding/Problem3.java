@@ -12,17 +12,18 @@ public class Problem3 {
         4. 출력
 
       */
+
         int answer = 0;
         return answer;
     }
 
-    public static void inputArray(int number){
+    public static ArrayList inputArray(int number){
         ArrayList<Integer> arrNum = new ArrayList<>();
-
         while (number>0){
             arrNum.add(number % 10);
             number /= 10;
         }
+        return arrNum;
     }
 
 
