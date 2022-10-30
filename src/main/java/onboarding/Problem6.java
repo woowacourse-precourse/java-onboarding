@@ -12,8 +12,10 @@ public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
+        Map<String, Integer> snAndCountMap = new HashMap<>();
 
         makeSnList(forms);
+        makeCount(snAndCountMap);
 
         return answer;
     }
@@ -41,6 +43,17 @@ public class Problem6 {
         for (List<String> form : forms) {
             String name = form.get(1);
             snList.add(subName(name));
+        }
+    }
+
+    /*
+     * 구해진 부분 문자열로 개수를 센다.
+     * */
+    private static void makeCount(Map<String, Integer> snAndCountMap){
+        for (List<String> strings : snList) {
+            for (String par : strings) {
+                snAndCountMap.put(par, snAndCountMap.getOrDefault(par, 0) + 1);
+            }
         }
     }
 }
