@@ -15,7 +15,7 @@ public class Problem5 {
 
     }
 
-    private static boolean isBiggerThanUnit(int num, int idx){
-
+    private static boolean isBiggerOrEqualThanUnit(int num, int idx){
+        return num >= unit[idx];
     }
 }
