@@ -20,7 +20,7 @@ public class Problem4 {
         return target.toString().matches(isAlphaRegex);
     }
 
-    public static boolean checkUppder(Character target) {
+    public static boolean checkUpper(Character target) {
         String isUpperRegex = "^[A-Z]$";
         return target.toString().matches(isUpperRegex);
     }
@@ -31,7 +31,8 @@ public class Problem4 {
     }
 
     public static boolean checkLower(Character target) {
-        return Character.isLowerCase(target);
+        String isLowerRegex = "^[a-z]$";
+        return target.toString().matches(isLowerRegex);
     }
 
     public static Character changeCharLowerCase(Character target) {
@@ -48,7 +49,7 @@ public class Problem4 {
             if (checkAlpha(wordChar)) {
                 if (checkLower(wordChar)) {
                     makeAnswer.append(changeCharLowerCase(wordChar));
-                } else if (checkUppder(wordChar)) {
+                } else if (checkUpper(wordChar)) {
                     makeAnswer.append(changeCharUpperCase(wordChar));
                 }
             } else {
