@@ -1,7 +1,6 @@
 package onboarding;
 
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem6 {
@@ -10,6 +9,30 @@ public class Problem6 {
 
         List<String> nickNamesFromForms = getNickNamesFromForms(forms);
         List<String> emailsFromForms = getEmailsFromForms(forms);
+
+        Set<String> emails = new HashSet<>();
+
+        Map<String, String> temp = new HashMap<>();
+
+        for (int i = 0; i < forms.size(); i++) {
+
+            String nickName = nickNamesFromForms.get(i);
+
+            for (int j = 0; j < nickName.length() - 1; j++) {
+                String key = nickName.substring(j, j + 2);
+
+                if (temp.containsKey(key)) {
+                    String email = temp.get(key);
+                    emails.add(email);
+
+                    emails.add(emailsFromForms.get(i));
+                }
+
+                temp.put(key, emailsFromForms.get(i));
+            }
+        }
+
+        answer = emails.stream().sorted().collect(Collectors.toList());
 
         return answer;
     }
