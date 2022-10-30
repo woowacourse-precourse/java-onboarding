@@ -27,6 +27,9 @@ public class Friends {
         return new ArrayList<>(friends);
     }
 
+    public boolean isNotFriend(User visitor) {
+        return !friends.contains(visitor);
+    }
     @Override
     public String toString() {
         return "Friends{" +
