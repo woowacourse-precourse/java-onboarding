@@ -71,10 +71,8 @@ class Problem7Test {
         result.put("chaemin", 10);
         result.put("minjae", 0);
         result.put("jaewoo", 0);
-        result.put("invidam", 0);
-        result.put("sonny", 0);
 
-        assertThat(Problem7.enrichPointFrom(relationShips,userFriends)).isEqualTo(result);
+        assertThat(Problem7.enrichPointFrom(user, relationShips,userFriends)).isEqualTo(result);
 
     }
 
