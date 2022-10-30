@@ -28,6 +28,7 @@ public class Problem7 {
 
         // find user's direct friend
         HashSet<String> directFriends = new HashSet<String>();
+        // find friends
         for(List<String> friendList : friends){
             if(friendList.contains(user)){
                 for(String friendName: friendList){
@@ -40,16 +41,20 @@ public class Problem7 {
 
         // find user's mutual friend (direct friends' friends)
         HashSet<String> mutualFriends = new HashSet<>();
-        for(String directFriend: directFriends){
-            for(List<String> friendList: friends){
-                for(String friendName: friendList){
-                    if(friendName != directFriend && friendName != user){
-                        mutualFriends.add(friendName);
+        for(String directFriend: directFriends) {
+            // find friends
+            for (List<String> friendList : friends) {
+                if (friendList.contains(directFriend)) {
+                    for (String friendName : friendList) {
+                        if (friendName != directFriend) {
+                            mutualFriends.add(friendName);
+                        }
                     }
                 }
             }
         }
-        mutualFriends.removeAll(directFriends);
+        mutualFriends.remove(user);
+        System.out.println(mutualFriends);
 
         // add score to mutual friends
         for(String mutualFriend: mutualFriends){ // andole
