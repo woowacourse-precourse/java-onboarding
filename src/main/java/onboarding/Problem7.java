@@ -7,7 +7,7 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
         List<String> friend = filterFriendByFriendList(friends, user);
         Map<String, Integer> indirectFriendScore = setRecommandFriendScoreByDirectFriend(friends, friend, user);
-
+        setRecommandFriendScoreByVisitor(indirectFriendScore, visitors, friend);
 
         return answer;
     }
@@ -36,9 +36,9 @@ public class Problem7 {
         for (List<String> friend : friends) {
             for (String directFriend : directFriends) {
                 if (friend.get(0).equals(directFriend)) {
-                    indirectFriends.put(friend.get(1), 10);
+                    indirectFriends.put(friend.get(1), indirectFriends.getOrDefault(friend.get(1), 0) + 10);
                 } else if (friend.get(1).equals(directFriend)) {
-                    indirectFriends.put(friend.get(0), 10);
+                    indirectFriends.put(friend.get(0), indirectFriends.getOrDefault(friend.get(0), 0) + 10);
                 }
             }
         }
@@ -46,6 +46,14 @@ public class Problem7 {
         indirectFriends.remove(user);
 
         return indirectFriends;
+    }
+
+    private static void setRecommandFriendScoreByVisitor(Map<String, Integer> indirectFriend, List<String> visitors, List<String> directFriends) {
+        for (String visitor : visitors) {
+            if (!directFriends.contains(visitor)) {
+                indirectFriend.put(visitor, indirectFriend.getOrDefault(visitor, 0) + 1);
+            }
+        }
     }
 
 }
