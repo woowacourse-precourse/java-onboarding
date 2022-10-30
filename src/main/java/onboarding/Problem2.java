@@ -16,6 +16,13 @@ class StringOperation {
         redundantCharacterIndex = List.of(startIndex, movingIndex);
         return redundantCharacterIndex;
     }
+    String removeRedundantAlphabet(String cipher, List<String> redundantCharacter){
+        String newCipher=cipher;
+        for(String character: redundantCharacter){
+            newCipher=newCipher.replace(character, "");
+        }
+        return newCipher;
+    }
 }
 public class Problem2 {
     public static String solution(String cryptogram) {
