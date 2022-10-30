@@ -18,6 +18,21 @@ public class Problem6 {
         return false;
     }
 
+    public static List<Integer> compareNicknames(List<List<String>> forms){
+        List<Integer> result = new ArrayList<>();
+
+        for(int i = 0; i<forms.size(); i++){
+            for(int j =i+1; j<forms.size(); j++){
+                if(IsOverlap(forms.get(i).get(1), forms.get(j).get(1))){
+                    result.add(i);
+                    result.add(j);
+                }
+            }
+        }
+
+        return result;
+    }
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
