@@ -1,5 +1,5 @@
 package onboarding;
-
+import java.util.Stack;
 /*제한 사항
     cryptogram은 길이가 1 이상 1000 이하인 문자열이다.
     cryptogram은 알파벳 소문자로만 이루어져 있다.
@@ -10,6 +10,16 @@ package onboarding;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
+        Stack<Character> s = new Stack<>();
+        int i;
+        int k = 0;
+        for(i = 0;i<cryptogram.length(); i++){
+            if((!s.empty()) && (s.peek() == cryptogram.charAt(i))){
+                s.pop();
+            }else{
+                s.push(cryptogram.charAt(i));
+            }
+        }
         return answer;
     }
 }
