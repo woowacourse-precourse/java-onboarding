@@ -9,4 +9,16 @@ public class Problem3 {
         return answer;
     }
 
+
+    private static int numOfClap(int num) {
+        int clap = 0;
+        while (num != 0) {
+            int remain = num%10;
+            if (is369(remain)) {
+                clap += 1;
+            }
+            num = num/10;
+        }
+        return clap;
+    }
 }
