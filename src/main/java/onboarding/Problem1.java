@@ -42,13 +42,17 @@ class Problem1 {
         return pageMap;
     }
     private static int allPageMax(List<Integer> playerPages){
-        if (playerPages.get(0)+1 != playerPages.get(1)){
-            return -1;
+        int leftPageMax = pageMax(leftPageList(playerPages));
+        int rightPageMax = pageMax(rightPageList(playerPages));
+        if(leftPageMax>rightPageMax){
+            return leftPageMax;
         }
-        String[] leftPageList = String.valueOf(playerPages.get(0)).split("(?<=.)");
-        String[] rightPageList = String.valueOf(playerPages.get(1)).split("(?<=.)");
-        int leftPageMax = pageMax(leftPageList);
-        int rightPageMax = pageMax(rightPageList);
-        return leftPageMax>rightPageMax?leftPageMax:rightPageMax;
+        return rightPageMax;
+    }
+    private static String[] leftPageList(List<Integer> playerPages){
+        return String.valueOf(playerPages.get(0)).split("(?<=.)");
+    }
+    private static String[] rightPageList(List<Integer> playerPages){
+        return String.valueOf(playerPages.get(1)).split("(?<=.)");
     }
     }
