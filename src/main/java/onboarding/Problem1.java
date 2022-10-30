@@ -7,8 +7,15 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if(isException(pobi) || isException(crong)) return -1;
-        int answer = Integer.MAX_VALUE;
-        return answer;
+
+        Integer pobiValue = getMaxCombination(pobi);
+        Integer crongValue = getMaxCombination(crong);
+
+        if(pobiValue > crongValue) return 1;
+        if(pobiValue < crongValue) return 2;
+        if(pobiValue == crongValue) return 0;
+
+        return -1;
     }
 
     private static Integer getAddition(Integer page) {
