@@ -47,11 +47,9 @@ class Problem1 {
          * 기능 요구 사항
          * 2. 왼쪽 페이지 번호의 각 자리를 모두 더하거나, 모두 곱해 가장 큰 수를 구한다.
          * 3. 오른쪽 페이지 번호의 각 자리를 모두 더하거나, 모두 곱해 가장 큰 수를 구한다.
-         * 4. 2~3 과정에서 가장 큰 수를 본인의 점수로 한다.
          *
          * 각 자리를 모두 더한 것과, 각 자리를 모두 곱한 값을 비교하여 큰수를 구한다.
          * */
-
     // 각 자리수의 합 반환
     private static int num_sum(int i) {
         int sum = 0;
@@ -72,6 +70,19 @@ class Problem1 {
         return multiple;
     }
 
+    /*
+     * 기능 요구 사항
+     * 4. 2~3 과정에서 가장 큰 수를 본인의 점수로 한다.
+     *
+     * 각 자리를 모두 더한 것과, 각 자리를 모두 곱한 값을 비교하여 큰수를 구한다.
+     * */
     // 개인의 최대 페이지 값 반환
-
+    private static int caculate_max(List<Integer> list) {
+        int left = list.get(0);
+        int right = list.get(1);
+        int sum_max = Math.max(num_sum(left), num_sum(right));
+        int multiple_max = Math.max(num_multiple(left), num_multiple(right));
+        int max = Math.max(sum_max, multiple_max);
+        return max;
+    }
 }
