@@ -24,6 +24,15 @@ public class Problem7 {
         return answer;
     }
 
+    private static void getAcquaintanceList() {
+        for (String friend : friendOfUserSet) {
+            friendsAndScoreMap.remove(friend);
+        }
+        for (String key : friendsAndScoreMap.keySet()) {
+            if (friendsAndScoreMap.get(key) == 0) friendsAndScoreMap.remove(key);
+        }
+    }
+
     private static void getMyFriends(List<List<String>> friends, String user) {
         for (List<String> friend : friends) {
             if (friend.contains(user)) friendOfUserSet.addAll(friend);
