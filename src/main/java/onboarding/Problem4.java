@@ -7,7 +7,10 @@ public class Problem4 {
     }
 
     private static char convertAlphabet(char c){
+        if(isUpper(c))
+            return (char)('Z' - c + 'A');
 
+        return (char)('z' - c + 'a');
     }
 
     private static boolean isUpper(char c){
