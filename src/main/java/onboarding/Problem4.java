@@ -19,6 +19,14 @@ public class Problem4 {
         }
         return reverseDict;
     }
+    
+    private static char getOriginCaseValue(Map<Character, Character> dictionary, char key) {
+        char value = getDictValue(dictionary, key);
+        if (Character.isLowerCase(key)) {
+            return Character.toLowerCase(value);
+        }
+        return value;
+    }
 
     private static char getReverseValue(char base) {
         return (char) (SUM_KEY_VALUE - (int) base);
