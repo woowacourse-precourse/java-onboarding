@@ -8,9 +8,18 @@ class Problem1 {
         if (validPages(pobi) || validPages(crong)) {
             return -1;
         }
-        int maxOfPobi = calculatePages(pobi);
-        int maxOfCrong = calculatePages(crong);
+        answer = resultOfMatch(calculatePages(pobi), calculatePages(crong));
         return answer;
+    }
+
+    private static int resultOfMatch(int player1, int player2) {
+        if (player1 > player2) {
+            return 1;
+        }
+        if (player1 == player2) {
+            return 0;
+        }
+        return 2;
     }
 
     private static int calculatePages(List<Integer> pages) {
