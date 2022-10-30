@@ -28,4 +28,4 @@
 > String convertOneString(String, HashMap<String, String>)
 
 - 주어진 문자열을 청개구리 사전을 통해 변환하는 함수
-> String conversionString(String)
+> String convertString(String)
