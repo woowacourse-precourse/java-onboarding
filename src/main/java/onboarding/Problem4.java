@@ -22,6 +22,7 @@ public class Problem4 {
 
         for (int i = 0; i < word.length(); i++) {
             char alpa = word.charAt(i);
+            if (alpa==' ') continue;
             if((alpa<'a'||alpa>'z')&&(alpa<'A'||alpa>'Z')) return false;
         }
 
