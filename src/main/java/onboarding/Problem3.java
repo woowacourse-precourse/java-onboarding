@@ -5,6 +5,7 @@ import onboarding.problem3.Problem3Validation;
 public class Problem3 {
     private static final int MIN_INPUT = 1;
     private static final int MAX_INPUT = 10000;
+
     public static int solution(int number) {
         if (Problem3Validation.problem3InputValidation(number, MIN_INPUT, MAX_INPUT)) {
             return getTotalClapHandsCount(number);

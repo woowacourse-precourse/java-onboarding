@@ -25,3 +25,7 @@
 - 3. 최종적으로는 stack에서 빼며 StringBuilder에 추가하려 했으나...
 ----
 이 과정속에서 stack을 사용하면 끝값부터 뺄 수 있어서 StringBuilder에 insert 메써드를 호출해야한다. 하지만 이는 append에 비해 시간복잡도의 손해를 보게된다. 그러므로 deque를 이용하여 압축을 하는 과정 속에서는 stack처럼, 최종적으로 string으로 만드는 작업은 queue처럼 이용할 것이다.
+
+### 3번 refactor 요소
+
+- 3, 6, 9를 상수니까 private static final로 선언하기!
