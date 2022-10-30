@@ -23,4 +23,17 @@ public class Problem6 {
     public static void addUsers(HashMap<String, String> databaseOfNickname, List<String> user) {
         databaseOfNickname.put(user.get(0), user.get(1));
     }
+
+    // 이메일과 닉네임을 추가한 뒤 중복 여부를 판단하는 함수
+    public static boolean checkDuplicationOfNicknames(HashMap<String, String> databaseOfNickname, String newNickname) {
+        for (String nickname : databaseOfNickname.values()) {
+            if (checkDuplicationOfNickname(nickname, newNickname)) return true;
+        }
+        return false;
+    }
+
+    public static boolean checkDuplicationOfNickname(String nickname, String newNickname) {
+
+        return true;
+    }
 }
