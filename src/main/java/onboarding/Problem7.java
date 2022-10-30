@@ -56,7 +56,7 @@ public class Problem7 {
         for (int personIndex = 0; personIndex < endPersonList; personIndex++) {
             isFriend = false;
             namePersonAtNow = personList.get(personIndex);
-
+   
             // 현재 사람이 친구인지 판별
             for (int friendUserIndex = 0; friendUserIndex < friendUserList.size(); friendUserIndex++) {
                 String nameFriendUserAtNow = friendUserList.get(friendUserIndex);
