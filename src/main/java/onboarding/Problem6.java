@@ -66,8 +66,28 @@ public class Problem6 {
 
         return answer;
     }
+
+    /**
+     * 문제 해결을 위한 함수
+     * 결과 리턴 전 이메일 중복 제거
+     * 오름차순 정렬
+     * 기능 요구 사항 결과 리턴
+     */
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>();
+        List<String> nameList = new ArrayList<>();
+
+        nameList = split(forms);
+
+        List<String> overlapList = overlapCheck(nameList);
+
+        answer = verification(overlapList,forms);
+
+
+        Set<String> emailOverlap = new HashSet<>(answer);
+        answer = new ArrayList<>(emailOverlap);
+
+        Collections.sort(answer);
         return answer;
     }
 }
