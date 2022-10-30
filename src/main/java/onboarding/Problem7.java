@@ -133,7 +133,6 @@ public class Problem7 {
             result.add(maxScoreUser);
             // 해당 유저를 추천 유저 맵에서 제외
             recommendScoreMap.remove(maxScoreUser);
-            System.out.println(recommendScoreMap);
         }
 
         return result;
