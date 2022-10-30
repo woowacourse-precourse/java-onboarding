@@ -15,8 +15,8 @@ public class Problem6 {
     private static final int EMAIL_INDEX = 0;
     private static final int NO_WORDS_IN_COMMON = 1;
 
-    private static HashMap<String, Integer> countOfSameWords = new HashMap<>();
-    private static Set<String> emails = new HashSet<>();
+    private static final HashMap<String, Integer> countOfSameWords = new HashMap<>();
+    private static final Set<String> emails = new HashSet<>();
 
     public static List<String> solution(List<List<String>> forms) {
         setDataOnHashMap(forms);
