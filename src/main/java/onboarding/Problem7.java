@@ -29,9 +29,3 @@ public class Problem7 {
 
     }
 }
-
-
-
-
-
-
