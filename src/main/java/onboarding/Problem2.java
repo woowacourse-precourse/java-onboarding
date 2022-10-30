@@ -9,7 +9,39 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = cryptogram;
 
+        if (isWrongLength(cryptogram)){
+            throw new IllegalArgumentException("문자열 길이는 1이상 1000 이하입니다.");
+        }
+
+        if (isNotAllLowerCase(cryptogram)){
+            throw new IllegalArgumentException("모든 문자열은 소문자만 가능합니다.");
+        }
+
+        while (hasConsecutiveChar(cryptogram)) {
+
+        }
+
         return answer;
+    }
+
+    private static Boolean hasConsecutiveChar(String checkString){
+        if (isEmptyString(checkString)){
+            return false;
+        }
+
+        char cmpChar = 0;
+        for (int i=0; i<checkString.length(); i++){
+            char curChar = checkString.charAt(i);
+            if (isSameCharacter(cmpChar, curChar)){
+                return true;
+            }
+            cmpChar = curChar;
+        }
+        return false;
+    }
+
+    private static boolean isSameCharacter(char cmpChar, char curChar) {
+        return cmpChar == curChar;
     }
 
     private static boolean isWrongLength(String checkString){
