@@ -14,7 +14,7 @@ class Problem1 {
         int answer = exceptionNum;
 
         //길이가 2일 경우
-        if (checkException(pobi) && checkException(crong))
+        if (checkException(pobi.get(leftPage), pobi.get(rightPage)) && checkException(crong.get(leftPage), crong.get(rightPage)))
         {
             int pobiScore = Math.max(findScore(pobi.get(leftPage)), findScore(pobi.get(rightPage)));
             int crongScore = Math.max(findScore(crong.get(leftPage)), findScore(crong.get(rightPage)));
@@ -80,6 +80,25 @@ class Problem1 {
     /*
     * 예외 처리
     */
+    //1. 왼쪽과 오른쪽이 연속한 숫자가 아닌 경우
+    public static boolean checkException(int leftPage, int rightPage)
+    {
+        int firstPage = 1;
+        int lastPage = 400;
+
+        //1 ~ 400 안에 있는가?
+        if (leftPage >= firstPage && leftPage <= lastPage)
+            return true;
+        if (rightPage >= firstPage && rightPage <= lastPage)
+            return true;
+        //왼쪽은 홀수, 오른쪽은 짝수인가?
+        if ((leftPage %2 == 1) && (rightPage %2 == 0))
+            return true;
+        //연속한 숫자인가?
+        if (leftPage + 1 == rightPage)
+            return true;
+        return false;
+    }
     public static int checkException(int num) {
         //연산한 값에 0이 있을 경우
         if (num == 0)
