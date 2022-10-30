@@ -26,11 +26,24 @@ public class Problem5 {
         return answer;
     }
 
+    public static void main(String[] args) {
+        makeUnitsList();
+        System.out.println(unitsList);
+    }
+
     private static int distinguishOdd(int inputNum){
+        if(inputNum == 7)
+            return 10;
         if(inputNum %2 == 1)
             return 2;
-        else if(inputNum == 8)
-            return 10;
         return 5;
+    }
+
+    private static void makeUnitsList() {
+        int unit = 50000;
+        for (int i = 0; i < 9; i++) {
+            unitsList.add(unit);
+            unit /= distinguishOdd(i);
+        }
     }
 }
