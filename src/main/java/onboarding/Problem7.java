@@ -3,6 +3,7 @@ package onboarding;
 import onboarding.problem7.Problem7Validation;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -16,8 +17,25 @@ public class Problem7 {
     private static List<String> getFiveRecommendIdList(String user, List<List<String>> friends, List<String> visitors) {
         Set<String> userSet = makeUserSet(user, friends, visitors);
         Map<String, List<String>> friendRelationMap = makeFriendsRelations(friends);
+        Map<String, Integer> scoreMap = initCountScoreList(userSet, friendRelationMap, user);
 
         return null;
+    }
+
+    private static Map<String, Integer> initCountScoreList(Set<String> userSet, Map<String, List<String>> friendRelationMap, String user) {
+        Map<String, Integer> scoreMap = new HashMap<>();
+        List<String> collectUserList = userSet.stream()
+                .filter(userId -> !isUserFriendOrUser(userId, friendRelationMap, user))
+                .collect(Collectors.toList());
+
+        for (String userId : collectUserList) {
+            scoreMap.put(userId, 0);
+        }
+        return scoreMap;
+    }
+
+    private static boolean isUserFriendOrUser(String userId, Map<String, List<String>> friendRelationMap, String user) {
+        return ((userId == user) || (friendRelationMap.get(user).contains(userId)));
     }
 
     private static Set<String> makeUserSet(String user, List<List<String>> friends, List<String> visitors) {
