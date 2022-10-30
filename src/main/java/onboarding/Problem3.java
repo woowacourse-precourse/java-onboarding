@@ -25,4 +25,13 @@ public class Problem3 {
 
 		return num / div;
 	}
+
+	private static int pow(int under, int top) {
+		int ret = 1;
+
+		for(int i = 0;i < top;i++)
+			ret *= under;
+
+		return ret;
+	}
 }
