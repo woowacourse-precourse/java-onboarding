@@ -3,12 +3,50 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.List;
 
+class User {
+    private int left;
+    private int right;
+    private int score;
+    private int length;
+
+    public User(){
+
+    }
+    public User(int left, int right, int length) {
+        this.left = left;
+        this.right = right;
+        this.length = length;
+    }
+    public void setScore(int score) {
+        this.score = score;
+    }
+    public void setLeft(int left) {
+        this.left = left;
+    }
+    public void setRight(int right) {
+        this.right = right;
+    }
+    public int getLeft() {
+        return left;
+    }
+    public int getRight() {
+        return right;
+    }
+    public int getScore() {
+        return score;
+    }
+    public int getLength() {
+        return length;
+    }
+}
+
 class Problem1 {
     public enum Book {
         left(0),
         right(1),
         first(1),
-        last(400);
+        last(400),
+        length (2);
 
         private final int page;
 
@@ -35,20 +73,18 @@ class Problem1 {
         }
     }
 
-    static final int listLength = 2;
-
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Game.errror.result;
 
-        exceptionHandling(pobi);
-        exceptionHandling(crong);
+        User pobi_user = new User(pobi.get(Book.left.page), pobi.get(Book.right.page), pobi.size());
+        User crong_user = new User(crong.get(Book.left.page), crong.get(Book.right.page), crong.size());
 
-        if (checkedException(pobi.get(Book.left.page), pobi.get(Book.right.page)) &&
-                checkedException(crong.get(Book.left.page), crong.get(Book.right.page))) {
-            int pobiScore = Math.max(findScore(pobi.get(Book.left.page)), findScore(pobi.get(Book.right.page)));
-            int crongScore = Math.max(findScore(crong.get(Book.left.page)), findScore(crong.get(Book.right.page)));
-            answer = compareScore(pobiScore, crongScore);
+
+        if (checkedException(pobi_user, crong_user)) {
+            getScore(pobi_user);
+            getScore(crong_user);
+            answer = compareScore(pobi_user.getScore(), crong_user.getScore());
         }
 
         return answer;
@@ -96,28 +132,43 @@ class Problem1 {
         int sumResult = calculation(findPlaceValue(number), '+');
         int multiplicationResult = calculation(findPlaceValue(number), '*');
 
+
+
         return Math.max(sumResult,  multiplicationResult);
     }
 
+    public static void getScore(User user) {
+        user.setScore(Math.max(findScore(user.getLeft()), findScore(user.getRight())));
+    }
     /*
     * 예외 처리
     */
-    public static boolean checkedException(int leftPage, int rightPage) {
+    public static boolean checkedException(User pobi, User crong) {
 
-        if (!(leftPage >= Book.first.page && leftPage <= Book.last.page))
+        if (!checkedUser(pobi) || !checkedUser(crong))
             return false;
-        if (!(rightPage >= Book.first.page && rightPage <= Book.last.page))
+
+        exceptionHandling(pobi.getLength());
+        exceptionHandling(crong.getLength());
+
+        return true;
+    }
+    public static boolean checkedUser(User user) {
+
+        if (!(user.getLeft() >= Book.first.page && user.getLeft() <= Book.last.page))
             return false;
-        if ((leftPage % 2) == 0)
+        if (!(user.getRight() >= Book.first.page && user.getRight() <= Book.last.page))
             return false;
-        if ((leftPage + 1) != rightPage)
+        if ((user.getLeft() % 2) == 0)
+            return false;
+        if ((user.getLeft() + 1) != user.getRight())
             return false;
         return true;
     }
-    public static void exceptionHandling(List<Integer> list) {
+    public static void exceptionHandling(int length) {
         String errorMessage = "LIST SIZE ERROR";
 
-        if (list.size() != 2)
+        if (length != Book.length.page)
             throw new IllegalArgumentException(errorMessage);
     }
 }
