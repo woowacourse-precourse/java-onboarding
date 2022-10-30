@@ -13,6 +13,16 @@ public class Problem2 {
         return answer;
     }
 
+    public static String conversionStackString(){
+        String returnString = "";
+
+        for(int index=0; index < stack.size(); index++){
+            returnString += stack.get(index);
+        }
+
+        return returnString;
+    }
+
     public static void checkAndPush(String currentValue, String topValue){
         boolean checkSameValue;
 
