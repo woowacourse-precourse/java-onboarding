@@ -41,9 +41,8 @@ public class Problem7 {
         return userFriends;
     }
 
-    private static List<String> getFriendsOfUserFriends(String userId, List<List<String>> friendRelationships) {
+    private static List<String> getFriendsOfUserFriends(String userId, List<List<String>> friendRelationships, List<String> userFriends) {
         List<String> friendsOfUserFriends = new ArrayList<>();
-        Set<String> userFriends = getUserFriends(userId, friendRelationships);
         for (String userFriend : userFriends) {
             friendRelationships.stream()
                     .filter(friendRelationship -> friendRelationship.contains(userFriend))
@@ -51,10 +50,10 @@ public class Problem7 {
                     .forEach(friendRelationship -> {
                         String userFriendId1 = friendRelationship.get(0);
                         String userFriendId2 = friendRelationship.get(1);
-                        if(!userFriendId1.equals(userId) && !userFriendId1.equals(userFriend)) {
+                        if (!userFriendId1.equals(userId) && !userFriendId1.equals(userFriend)) {
                             friendsOfUserFriends.add(userFriendId1);
                         }
-                        if(!userFriendId2.equals(userId) && !userFriendId2.equals(userFriend)) {
+                        if (!userFriendId2.equals(userId) && !userFriendId2.equals(userFriend)) {
                             friendsOfUserFriends.add(userFriendId2);
                         }
                     });
