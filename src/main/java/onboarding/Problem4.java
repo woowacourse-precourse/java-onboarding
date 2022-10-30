@@ -42,4 +42,15 @@ class Dictionary {
         char reverseCharacter = (char) reverseAscii;
         return reverseCharacter;
     }
+
+    static int getReverseByAscii(int ascii) {
+        int reverseAscii = ascii;
+        if (ascii >= 65 && ascii <= 90) {
+            reverseAscii = 90 - (ascii - 65);
+        }
+        if (ascii >= 97 && ascii <= 122) {
+            reverseAscii = 122 - (ascii - 97);
+        }
+        return reverseAscii;
+    }
 }
