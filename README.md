@@ -155,7 +155,7 @@
 **점수를 저장하는 클래스입니다.**
 
 ###
-### ✔️ informationConstant
+### ✔️ usersInformation
 **유저의 정보를 저장하는 클래스입니다.**
 
 - user ID
