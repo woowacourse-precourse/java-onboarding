@@ -6,12 +6,23 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
+        List<String> userFriends = findUserFriends(user, friends);
         //Map<String, Integer> score = findFriendOfFriend(user, friends);
 
 
         return answer;
     }
 
+    private static ArrayList<String> excludeFriendFromVisitor(List<String> userFriends, List<String> visitors) {
+
+        ArrayList<String> visitorsExceptFriends = new ArrayList<>(visitors);
+        for (String i : userFriends) { //방문자 중 친구 제외
+            if (visitorsExceptFriends.contains(i)) {
+                visitorsExceptFriends.remove(i);
+            }
+        }
+        return visitorsExceptFriends;
+    }
 
     private static Map<String, Integer> findFriendOfFriend(String user, List<List<String>> friends) {
 
