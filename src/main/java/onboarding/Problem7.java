@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Problem7 {
     static HashMap<String, String> friendsOfUser = new HashMap<>();
+    static HashMap<String, Integer> scoreOfUser = new HashMap<>();
 
     public static String[] getFriends(String user) {
         String friendString = friendsOfUser.get(user);
@@ -23,10 +24,14 @@ public class Problem7 {
         }
 
         String[] friendArr = getFriends(user);
-
-        for (String x : friendArr) {
-            System.out.println(x);
+        for (String friend : friendArr) {
+            String[] friendOfFriendArr = getFriends(friend);
+            for (String friendOfFriend : friendOfFriendArr) {
+                scoreOfUser.put(friendOfFriend, scoreOfUser.getOrDefault(friendOfFriend, 0) + 10);
+            }
         }
+
+        System.out.println(scoreOfUser);
 
         return List.of("Test");
     }
