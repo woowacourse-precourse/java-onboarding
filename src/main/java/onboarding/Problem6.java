@@ -8,9 +8,6 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         ArrayList<String> answer = new ArrayList<>();
 
-        throwCrewNumberException(forms);
-
-
         return answer;
     }
 
@@ -29,8 +26,12 @@ public class Problem6 {
         return (forms.get(0).substring(index).equals("@email.com"));
     }
 
-    public static boolean NameNotKoreanException(List<String> forms) {
+    public static boolean throwNameNotKoreanException(List<String> forms) {
         return (!forms.get(1).matches("^[ㄱ-ㅎ가-힣]*$"));
+    }
+
+    public static boolean throwNameLengthException(List<String> forms) {
+        return (forms.get(1).length() < 1 || forms.get(1).length() >= 20);
     }
 
 
