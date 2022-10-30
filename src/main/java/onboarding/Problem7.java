@@ -1,12 +1,13 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
+    static String user = "";
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+        user = user;
+
         return answer;
     }
 
@@ -16,7 +17,7 @@ public class Problem7 {
      * @param {String} user
      * @return userFriendList
      */
-    public static List<String> userFriendList(List<List<String>> friends, String user) {
+    public static List<String> makeUserFriendList(List<List<String>> friends) {
         List<String> userFriendList = new ArrayList<>();
 
         for (int i = 0; i < friends.size(); i++) {
@@ -24,5 +25,19 @@ public class Problem7 {
             else if(friends.get(i).get(1) == user) userFriendList.add(friends.get(i).get(0));
         }
         return userFriendList;
+    }
+
+    public static Map<String, Integer> recommendList(List<List<String>> friends, List<String> userFriendList) {
+        Map<String, Integer> recommendList = new LinkedHashMap<>();
+
+        for (int i = 0; i < friends.size(); i++) {
+            for (int j = 0; j < 2; j++) {
+                String friend = friends.get(i).get(j);
+                if(!userFriendList.contains(friend) && !friend.equals(user)) {
+
+                }
+            }
+        }
+        return recommendList
     }
 }
