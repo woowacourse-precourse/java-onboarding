@@ -90,6 +90,20 @@ public class Problem7 {
                 reverseScoreMap.put(scoreMap.get(friend), friendList);
             }
         }
+
+        List<Integer> keySet = new ArrayList<>(reverseScoreMap.keySet());
+        Collections.reverse(keySet);
+
+        for (Integer key : keySet) {
+            List<String> valueSet = new ArrayList<>();
+            for (String friend : reverseScoreMap.get(key)) {
+                valueSet.add(friend);
+            }
+            Collections.sort(valueSet);
+            for (String value : valueSet) {
+                answer.add(value);
+            }
+        }
         return answer;
     }
 
