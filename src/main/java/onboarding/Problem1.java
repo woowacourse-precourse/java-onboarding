@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.List;
+
 //        책을 임의로 펼친다.
 //        왼쪽 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구한다.
 //        오른쪽 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구한다.
@@ -15,8 +16,8 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
 
         // 페이지수 확인
-        if(!problem1.isOK(pobi)) return -1;
-        if(!problem1.isOK(crong)) return -1;
+        if (!problem1.isOK(pobi)) return -1;
+        if (!problem1.isOK(crong)) return -1;
 
         int pobiNum = problem1.scoreCalculator(pobi);
         int crongNum = problem1.scoreCalculator(crong);
@@ -27,14 +28,16 @@ class Problem1 {
 
         return answer;
     }
+
     // 페이지 수가 올바르지 않으면 오류
     public boolean isOK(List<Integer> numbers) {
-        if(numbers.get(0)+1 != numbers.get(1)) {
+        if (numbers.get(0) + 1 != numbers.get(1)) {
             return false;
         }
         return true;
 
     }
+
     // 점수 계산 메서드
     public int scoreCalculator(List<Integer> numbers) {
         String numbersStr1 = numbers.get(0) + "";
