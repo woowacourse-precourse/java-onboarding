@@ -330,6 +330,63 @@ class ApplicationTest {
             List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
+        @Test
+        void test1() {
+            List<List<String>> forms = List.of(
+                    List.of("kim@email.com", "ㅡ이"),
+                    List.of("nam@email.com", "ㅡ어어어ㅡ이"),
+                    List.of("choi@email.com", "강력합니다"),
+                    List.of("lee@email.com", "강함니댜"),
+                    List.of("jun@email.com", "ㅇㅡ이야")
+            );
+            List<String> result = List.of("jun@email.com", "kim@email.com", "nam@email.com");
+            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
+        @Test
+        void noneDuplicateTest() {
+        	List<List<String>> forms = List.of(
+                    List.of("jm@email.com", "가나다"),
+                    List.of("jason@email.com", "라마바"),
+                    List.of("woniee@email.com", "사아자차"),
+                    List.of("mj@email.com", "카타파"),
+                    List.of("nowm@email.com", "하")
+            );
+//        	List<String> result = List.of("");
+        	assertThat(Problem6.solution(forms)).isEmpty();
+        }
+        @Test
+        void test2() {
+        	List<List<String>> forms = List.of(
+        			List.of("a@email.com", "우아한테크프리코스"),
+        			List.of("abe@email.com", "우아일주차"),
+        			List.of("abb@email.com", "리코이주차"),
+        			List.of("aba@email.com", "테프이주"),
+					List.of("ab@email.com", "가나라마바사아한"),
+					List.of("aa@email.com", "가라바아나마사리코"),
+					List.of("aaaae@email.com", "우아한형제들"),
+					List.of("aaaad@email.com", "김밥형제"),
+					List.of("aaaab@email.com", "밥형우한제"),
+					List.of("aaaaa@email.com", "배달의민족"),
+					List.of("ssse@email.com", "의민족"),
+					List.of("sss@email.com", "뷁쉙퉭톩굵"),
+					List.of("ssa@email.com", "가쉙볽톩굵벡"),
+					List.of("sssd@email.com", "이건없겠지"));
+        	
+        	List<String> result = List.of("a@email.com",
+								      "aa@email.com",
+								      "aaaaa@email.com",
+								      "aaaab@email.com",
+								      "aaaad@email.com",
+								      "aaaae@email.com",
+								      "ab@email.com",
+								      "aba@email.com",
+								      "abb@email.com",
+								      "abe@email.com",
+								      "ssa@email.com",
+								      "sss@email.com",
+								      "ssse@email.com");
+        	assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
     }
 
     @Nested
