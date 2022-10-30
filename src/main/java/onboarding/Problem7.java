@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
@@ -28,14 +27,11 @@ public class Problem7 {
 
             List<String> userFriendFriends = relationMap.get(userFriend);
 
-            for (String userFriendFriend : userFriendFriends) {
-                scoreMap.put(userFriendFriend,
-                             scoreMap.getOrDefault(userFriendFriend, 0) + USER_FRIEND_FRIEND);
-            }
+            chargeTenUserFriendFriend(scoreMap, userFriendFriends);
         }
 
         for (String visitor : visitors) {
-            scoreMap.put(visitor, scoreMap.getOrDefault(visitor, 0) + USER_TIMELINE_VISITOR);
+            chargeOneVisitor(scoreMap, visitor);
         }
 
         List<String> answer = scoreMap.keySet()
@@ -47,6 +43,17 @@ public class Problem7 {
                                       .collect(Collectors.toList());
 
         return answer;
+    }
+
+    private static void chargeOneVisitor(Map<String, Integer> scoreMap, String visitor) {
+        scoreMap.put(visitor, scoreMap.getOrDefault(visitor, 0) + USER_TIMELINE_VISITOR);
+    }
+
+    private static void chargeTenUserFriendFriend(Map<String, Integer> scoreMap, List<String> userFriendFriends) {
+        for (String userFriendFriend : userFriendFriends) {
+            scoreMap.put(userFriendFriend,
+                         scoreMap.getOrDefault(userFriendFriend, 0) + USER_FRIEND_FRIEND);
+        }
     }
 
     private static Comparator<String> sortedByScoreAndName(Map<String, Integer> scoreMap) {
