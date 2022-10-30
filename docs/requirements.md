@@ -220,9 +220,11 @@
 ## 문제 7
 ### 구현 메소드 및 설명
 - getUsersList
+- getEachFriendsList
 - getFriendsScore
 - getVisitorsScore
-- sortRecommendScore
+- getTotalRecommendation
+- solution
 
 ### getUsersList
 - List<List<<String>>을 매개변수로 받는다. 이 값은 서로 친구인 사람들의 목록이다.
