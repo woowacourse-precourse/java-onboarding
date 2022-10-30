@@ -6,7 +6,7 @@ public class Problem5UnitTest {
 
     @Test
     public void modTest() {
-        System.out.println(40 % 10);
+        System.out.println(0 / 5);
     }
 
 }
