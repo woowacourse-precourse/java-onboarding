@@ -17,4 +17,10 @@ public class Problem5 {
         quotient = currentMoney / divMoney;
         return quotient;
     }
+
+    public static int getRemainder(int divMoney){
+        int remainder;
+        remainder = currentMoney % divMoney;
+        return remainder;
+    }
 }
