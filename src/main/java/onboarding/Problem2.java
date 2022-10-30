@@ -17,7 +17,7 @@ public class Problem2 {
                 characterStack.add(character);
             }
         }
-        return stackChangeString(characterStack);
+        return toString(characterStack);
     }
 
     /**
@@ -43,7 +43,7 @@ public class Problem2 {
      * @param stack character 가 담긴 stack
      * @return String
      */
-    private static String stackChangeString(Stack<String> stack) {
+    private static String toString(Stack<String> stack) {
         if (stack.isEmpty()) {
             return "";
         }
