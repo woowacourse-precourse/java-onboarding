@@ -13,29 +13,16 @@ public class Problem6 {
     	
     	Map<String, List<String>> twoLengthNikAndIds = new HashMap<>();
     	Set<String> idAboutDuplicateNik = new HashSet<>();
-    	
     	String[][] idAndNikNamesForm = new String[forms.size()][2];
+    	
     	makeIdAndNikNameForm(idAndNikNamesForm, forms);
     	putTwoLengthNikAndIds(idAndNikNamesForm, twoLengthNikAndIds);
     	addIdAboutDuplicateNikName(twoLengthNikAndIds, idAboutDuplicateNik);
-    	
-    	//for debug
-    	System.out.println(twoLengthNikAndIds);
-    	//for debug
-    	System.out.println(idAboutDuplicateNik);
-    	
     	List<String> finalNik = new ArrayList<>(idAboutDuplicateNik);
     	sortAscending(finalNik);
-    	//for debug
-    	System.out.println(finalNik);
-    	
     	makeEmailForm(finalNik);
-    	//for debug
-    	System.out.println(finalNik);
     	
-    	List<String> answer = null;
-    	
-        return answer;
+        return finalNik;
     }
 	public static void makeIdAndNikNameForm(String[][] newForms, List<List<String>> forms) {
     	String[] iDAndEmailForm = null;
