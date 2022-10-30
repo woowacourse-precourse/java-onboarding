@@ -11,7 +11,11 @@ public class Problem3 {
             String tmp = String.valueOf(number);
 
             if(tmp.contains("3") || tmp.contains("6") || tmp.contains("9")) {
-
+                for (int j = 0; j < tmp.length(); j++) {
+                    if(tmp.charAt(i) == '3' || tmp.charAt(i) == '6' || tmp.charAt(i) == '9') {
+                        count++;
+                    }
+                }
             }
 
         }
