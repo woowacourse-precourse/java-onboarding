@@ -7,7 +7,7 @@ import java.util.List;
 public class Problem6 {
     private static final int MAX_CREW_COUNT = 10000;
 
-    private static final String EMAIL_EXTENSION = "@";
+    private static final String EMAIL_DELIMITER = "@";
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>(MAX_CREW_COUNT);
 
@@ -34,8 +34,8 @@ public class Problem6 {
         answer.sort(new Comparator<String>() {
             @Override
             public int compare(String s1, String s2) {
-                String[] s1Split = s1.split(EMAIL_EXTENSION);
-                String[] s2Split = s2.split(EMAIL_EXTENSION);
+                String[] s1Split = s1.split(EMAIL_DELIMITER);
+                String[] s2Split = s2.split(EMAIL_DELIMITER);
                 return s1Split[0].compareToIgnoreCase(s2Split[0]);
             }
         });
