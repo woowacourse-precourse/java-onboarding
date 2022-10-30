@@ -45,4 +45,36 @@ public class Problem7 {
         return userFriends;
     }
 
+    /*
+    사용자 추천시스템에 따라 점수 더하기
+     */
+    private static Map<String,Integer> addScoreFriends(List<List<String>> friends,String user,List<String> visitors){
+        Map<String,Integer> score=initScore(friends,user,visitors);
+        List<String> userFriends=getUserFriends(friends,user);
+        //사용자의 친구의 친구 점수 더하기
+        for(String friend:userFriends){
+            for(List<String> scorefriend:friends){
+                if(friend.equals(scorefriend.get(0))&&score.containsKey(scorefriend.get(1))){
+                    score.put(scorefriend.get(1), score.get(scorefriend.get(1)) +10);
+                }
+                if(friend.equals(scorefriend.get(1))&&score.containsKey(scorefriend.get(0))){
+                    score.put(scorefriend.get(0), score.get(scorefriend.get(1)) +10);
+                }
+            }
+        }
+        //방문자 점수 더하기
+        for(String visitor:visitors){
+            if(score.containsKey(visitor)) {
+                score.put(visitor, score.get(visitor) + 1);
+            }
+        }
+
+        //user 친구 제거하기
+        for(String friend:userFriends){
+            score.remove(friend);
+        }
+
+        return score;
+    }
+
 }
