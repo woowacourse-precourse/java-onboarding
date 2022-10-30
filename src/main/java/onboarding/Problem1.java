@@ -9,7 +9,36 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
+        if (checkArrayWrongSize(pobi) || checkArrayWrongSize(crong)){
+            return EXCEPTION;
+        }
+
+        if (checkWrongPages(pobi) || checkWrongPages(crong)){
+            return EXCEPTION;
+        }
+
         return answer;
+    }
+
+    private static int sumOfEachDigit(Integer number){
+        int sum = 0;
+
+        while (number != 0){
+            sum += number % 10;
+            number /= 10;
+        }
+        return sum;
+    }
+
+
+    private static int mulOfEachDigit(Integer number){
+        int mul = 1;
+
+        while (number != 0){
+            mul *= number % 10;
+            number /= 10;
+        }
+        return mul;
     }
 
 
@@ -30,7 +59,7 @@ class Problem1 {
             return true;
         }
 
-        // difference of leftPage and rightPage must be 1
+        // difference of leftPage and rightPage must be +1
         if ((rightPage - leftPage) != 1){
             return true;
         }
