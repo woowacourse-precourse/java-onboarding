@@ -121,6 +121,13 @@ public class Problem7 {
         }
     }
 
+    private static void initScoreList() {
+        scoreList[0] = -1;
+        for (int i = 0; i < friendship[0].size(); i++) {
+            scoreList[friendship[0].get(i)] = -1;
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
