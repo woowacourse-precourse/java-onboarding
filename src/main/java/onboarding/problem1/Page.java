@@ -1,10 +1,18 @@
 package onboarding.problem1;
 
+import java.security.spec.RSAOtherPrimeInfo;
 import java.util.concurrent.RejectedExecutionHandler;
 import java.util.stream.Stream;
 
 public class Page {
     private final int page;
+    public enum pageDirection{
+        LEFT_PAGE(true), RIGHT_PAGE(false);
+        private final boolean direction;
+        pageDirection(boolean direction){this.direction = direction;}
+
+        public boolean getValue(){return this.direction;}
+    }
 
     public Page(int page, boolean isLeftPage){
         validateEachPage(page, isLeftPage);
@@ -37,7 +45,7 @@ public class Page {
         int[] valueOfEachPosition = Stream.of(String.valueOf(this.page).split("")).mapToInt(Integer::parseInt).toArray();
 
         for(int value : valueOfEachPosition){
-            product += value;
+            product *= value;
         }
 
         return product;

@@ -5,19 +5,24 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 import net.bytebuddy.agent.builder.AgentBuilder.FallbackStrategy;
+import net.bytebuddy.implementation.bytecode.constant.IntegerConstant;
+import onboarding.problem1.Page.pageDirection;
 
 public class PagePair {
-    public enum CompareResult{
-        DRAW, WIN, LOSE
+    enum CompareResult{
+        DRAW(0), WIN(1), LOSE(2);
+        private final int value;
+        CompareResult(int value){
+            this.value = value;
+        }
+        public int getValue(){return value;}
     }
 
-    public static final boolean LEFT_PAGE = true;
-    public static final boolean RIGHT_PAGE = false;
     private final List<Page> pagePair;
 
     public PagePair(List<Integer> pages){
-        Page leftPage = new Page(pages.get(0), LEFT_PAGE);
-        Page rightPage = new Page(pages.get(1), RIGHT_PAGE);
+        Page leftPage = new Page(pages.get(0), pageDirection.LEFT_PAGE.getValue());
+        Page rightPage = new Page(pages.get(1), pageDirection.RIGHT_PAGE.getValue());
         validatePagePair(pages);
 
         this.pagePair = Arrays.asList(leftPage,rightPage);
@@ -34,10 +39,10 @@ public class PagePair {
 
     public int comparePagePair(PagePair otherPair){
         if(this.getMaxValueOfPair() > otherPair.getMaxValueOfPair()){
-            return CompareResult.WIN.ordinal();
+            return CompareResult.WIN.getValue();
         }
         if(this.getMaxValueOfPair() < otherPair.getMaxValueOfPair()){
-            return CompareResult.LOSE.ordinal();
+            return CompareResult.LOSE.getValue();
         }
         return CompareResult.DRAW.ordinal();
     }
