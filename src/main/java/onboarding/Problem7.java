@@ -39,4 +39,13 @@ public class Problem7 {
         }
         return recommendList;
     }
+
+    private static void addVisitorsScore(Map<String, Integer> recommendList, List<String> userFrined, List<String> visitors) {
+        for(String visitor : visitors) {
+            if(!userFrined.contains(visitor)) {
+                recommendList.put(visitor, recommendList.get(visitor) + 1);
+            }
+        }
+    }
+
 }
