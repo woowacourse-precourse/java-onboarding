@@ -1,9 +1,12 @@
 package onboarding;
 
 public class Problem2 {
+
+    public static final String REGEX = "([a-z])\\1+";
+
     public static String solution(String cryptogram) {
         while(hasConsecutiveChars(cryptogram)){
-
+            cryptogram = decode(cryptogram);
         }
         return cryptogram;
     }
@@ -14,5 +17,9 @@ public class Problem2 {
                 return true;
         }
         return false;
+    }
+
+    public static String decode(String cryptogram) {
+        return cryptogram.replaceAll(REGEX, "");
     }
 }
