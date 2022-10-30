@@ -93,21 +93,43 @@ class RightPage extends Page {
 class Book {
     private static final int LEFT_PAGE_INDEX = 0;
     private static final int RIGHT_PAGE_INDEX = 1;
-    private static final int LEFT_AND_RIGHT_INTERVAL=1;
+    private static final int LEFT_AND_RIGHT_INTERVAL = 1;
+    private static final int PAGE_SIZE_BY_OPENEING_BOOK = 2;
     private static final String LEFT_RIGHT_PAGE_DIFFERENCE = "왼쪽과 오른쪽 페이지는 1 차이 나야합니다.";
+    private static final String PAGE_PER_OPENING_BOOK = "책을 펼치면 총 2개의 페이지 번호를 얻어야합니다.";
 
     private final LeftPage leftPage;
     private final RightPage rightPage;
 
-    public Book(List<Integer> user) {
-        validateLeftAndRightInterval(user);
-        leftPage = new LeftPage(user.get(LEFT_PAGE_INDEX));
-        rightPage = new RightPage(user.get(RIGHT_PAGE_INDEX));
+    public Book(List<Integer> pageByOpeningBook) {
+        validateLeftAndRightInterval(pageByOpeningBook);
+        validateArraySize(pageByOpeningBook);
+        leftPage = new LeftPage(pageByOpeningBook.get(LEFT_PAGE_INDEX));
+        rightPage = new RightPage(pageByOpeningBook.get(RIGHT_PAGE_INDEX));
     }
 
-    private void validateLeftAndRightInterval(List<Integer> user) {
-        if (user.get(RIGHT_PAGE_INDEX) - user.get(LEFT_PAGE_INDEX) != LEFT_AND_RIGHT_INTERVAL) {
-            throw new IllegalStateException(LEFT_RIGHT_PAGE_DIFFERENCE);
+    private void validateLeftAndRightInterval(List<Integer> pageByOpeningBook) {
+        throw new IllegalStateException(LEFT_RIGHT_PAGE_DIFFERENCE);
+    }
+
+    private void validateArraySize(List<Integer> pageByOpeningBook) {
+        if (pageByOpeningBook.size() != PAGE_SIZE_BY_OPENEING_BOOK) {
+            throw new IllegalStateException(PAGE_PER_OPENING_BOOK);
         }
+    }
+
+    public LeftPage getLeftPage() {
+        return leftPage;
+    }
+
+    public RightPage getRightPage() {
+        return rightPage;
+    }
+
+    public int bigSumPageByLeftAndRight() {
+        if (leftPage.sumPage() >= rightPage.sumPage()) {
+            return leftPage.sumPage();
+        }
+        return rightPage.sumPage();
     }
 }
