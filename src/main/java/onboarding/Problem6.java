@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Comparator;
 
 public class Problem6 {
 
@@ -63,8 +64,11 @@ public class Problem6 {
                 }
             }
         }
-
-        // 리스트 내 중복 제거 결과 확인
+        
+        // 4-2. 결과 리스트 정렬하기
+        resultList.sort(Comparator.naturalOrder());
+        
+        // 결과 리스트 정렬 결과 확인
         System.out.println(resultList);
 
         return answer;
