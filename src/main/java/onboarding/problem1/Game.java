@@ -7,10 +7,14 @@ public class Game {
     private static final int USER2_WINNER = 2;
     private static final int DRAW = 0;
 
-    public static int run(List<Integer> user_1, List<Integer> user_2) {
-        if (Validation.check(user_1) && Validation.check(user_2)) {
-            int user1Max = Calculate.getMaxValue(user_1);
-            int user2Max = Calculate.getMaxValue(user_2);
+    public static int run(List<Integer> user1, List<Integer> user2) {
+        if (Validation.check(user1) && Validation.check(user2)) {
+            Page user1Page = new Page(user1);
+            Page user2Page = new Page(user2);
+            List<Integer> user1PossibleValue = Calculate.getPossibleValues(user1Page);
+            List<Integer> user2PossibleValue = Calculate.getPossibleValues(user2Page);
+            int user1Max = Calculate.getMaxValue(user1PossibleValue);
+            int user2Max = Calculate.getMaxValue(user2PossibleValue);
             int winner = getWinner(user1Max, user2Max);
             return winner;
         }
