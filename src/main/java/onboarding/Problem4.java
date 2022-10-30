@@ -2,13 +2,15 @@ package onboarding;
 
 public class Problem4 {
 
+  static Converter converter = new Converter();
+
   public static String solution(String word) {
-    return Converter.convert(word);
+    return converter.convert(word);
   }
 
   static class Converter {
 
-    public static String convert(String words) {
+    public String convert(String words) {
       StringBuilder result = new StringBuilder();
       for (char word : words.toCharArray()) {
         result.append(wordConvert(word));
@@ -16,28 +18,29 @@ public class Problem4 {
       return result.toString();
     }
 
-    private static char wordConvert(char word) {
+    private char wordConvert(char word) {
       if (isUpperCase(word)) {
         return upperCaseConvert(word);
-      } else if (isLowerCase(word)) {
+      }
+      if (isLowerCase(word)) {
         return lowerCaseConvert(word);
       }
       return word;
     }
 
-    private static boolean isUpperCase(char word) {
+    private boolean isUpperCase(char word) {
       return Character.isUpperCase(word);
     }
 
-    private static boolean isLowerCase(char word) {
+    private boolean isLowerCase(char word) {
       return Character.isLowerCase(word);
     }
 
-    private static char upperCaseConvert(char word) {
+    private char upperCaseConvert(char word) {
       return (char) ('Z' - word + 'A');
     }
 
-    private static char lowerCaseConvert(char word) {
+    private char lowerCaseConvert(char word) {
       return (char) ('z' - word + 'a');
     }
 
