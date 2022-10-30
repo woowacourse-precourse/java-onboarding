@@ -1,6 +1,7 @@
 package onboarding;
 
 public class Problem3 {
+
     public static int solution(int number) {
         int answer = 0;
         answer = getAnswer(number); // 1부터 number까지 쳐야하는 손뼉의 총 개수
