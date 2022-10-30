@@ -12,6 +12,7 @@ public class Problem3 {
         }
         return answer;
     }
+
     private static int getClap(List<Integer> digits) {
         int clap = 0;
         for (Integer digit : digits) {
