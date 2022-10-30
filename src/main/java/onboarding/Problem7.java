@@ -37,11 +37,13 @@ public class Problem7 {
         return friendsMap.get(userFriend);
     }
 
-
-    private static void giveRecommendationPointToUserBySharingFriend(Map<String, Integer> pointMap, Set<String> friendsWithUserFriend) {
-        for (String friendWithUserFriend : friendsWithUserFriend) {
-            givePointToUserBySharingFriend(friendWithUserFriend, pointMap);
+    private static int getUserRecommendationPoint(String friend, Map<String, Integer> pointMap) {
+        Set<String> users = pointMap.keySet();
+        if (users.contains(friend)) {
+            return pointMap.get(friend);
         }
+        pointMap.put(friend, 0);
+        return 0;
     }
 
     private static void givePointToUserBySharingFriend(String friend, Map<String, Integer> pointMap) {
@@ -51,13 +53,10 @@ public class Problem7 {
         pointMap.replace(friend, recommendationPoint + recommendationPointByFriend);
     }
 
-    private static int getUserRecommendationPoint(String friend, Map<String, Integer> pointMap) {
-        Set<String> users = pointMap.keySet();
-        if (users.contains(friend)) {
-            return pointMap.get(friend);
+    private static void giveRecommendationPointToUserBySharingFriend(Map<String, Integer> pointMap, Set<String> friendsWithUserFriend) {
+        for (String friendWithUserFriend : friendsWithUserFriend) {
+            givePointToUserBySharingFriend(friendWithUserFriend, pointMap);
         }
-        pointMap.put(friend, 0);
-        return 0;
     }
 
     private static void giveUserRecommendationPointByVisit(String visitor, Map<String, Integer> pointMap) {
