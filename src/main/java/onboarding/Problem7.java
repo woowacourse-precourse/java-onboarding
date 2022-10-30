@@ -11,7 +11,7 @@ public class Problem7 {
 
     private static Map<String, Set<String>> friendsList = new HashMap<>();
     private static Map<String, Integer> usersScore = new HashMap<>();
-    
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
@@ -34,6 +34,21 @@ public class Problem7 {
             int acquaintanceNum = eachFriendList.size();
             usersScore.put(name, acquaintanceNum * 10);
         }
+
+        // 사용자 타임 라인 방문 점수 계산
+        for (String visitor : visitors) {
+            if (userFreindList.contains(visitor) || visitor.equals(user)) // user와 이미 친구인 경우 패스
+                continue;
+
+            if (usersScore.containsKey(visitor)) {
+                int currScore = usersScore.get(visitor);
+                usersScore.put(visitor, currScore + 1);
+            } else {
+                usersScore.put(visitor, 1);
+            }
+        }
+
+        System.out.println(usersScore);
 
         return answer;
     }
