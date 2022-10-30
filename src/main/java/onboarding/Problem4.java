@@ -4,7 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Problem4 {
+    static Map<Character, Character> dictionary = new HashMap<>();
     public static String solution(String word) {
+
         String answer = "";
         return answer;
     }
@@ -28,8 +30,14 @@ public class Problem4 {
     }
 
     private static char greenFrogDictionary(char word) {
-        Map<Character, Character> dictionary = new HashMap<>();
+        return dictionary.get(word);
+    }
 
+    private static void initialDictionary() {
+        int reverse = 90;
+        for (int i = 65; i <= 90; i++) {
+            dictionary.put((char) i, (char) reverse--);
+        }
     }
 
 }
