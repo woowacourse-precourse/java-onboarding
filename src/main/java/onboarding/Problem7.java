@@ -9,6 +9,8 @@ import java.util.Map;
 public class Problem7 {
 
     public static final int USER_FRIEND_FRIEND = 10;
+    public static final int USER_TIMELINE_VISITOR = 1;
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
@@ -29,6 +31,10 @@ public class Problem7 {
                 scoreMap.put(userFriendFriend,
                              scoreMap.getOrDefault(userFriendFriend, 0) + USER_FRIEND_FRIEND);
             }
+        }
+
+        for (String visitor : visitors) {
+            scoreMap.put(visitor, scoreMap.getOrDefault(visitor, 0) + USER_TIMELINE_VISITOR);
         }
 
         return answer;
