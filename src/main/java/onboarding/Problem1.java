@@ -15,8 +15,8 @@ class Problem1 {
             return -1;
         }
 
-        int pobiScore = maxScore(pobiLeftPage, pobiRightPage);
-        int crongScore = maxScore(crongLeftPage, crongRightPage);
+        int pobiScore = findMaxScore(pobiLeftPage, pobiRightPage);
+        int crongScore = findMaxScore(crongLeftPage, crongRightPage);
         answer = compareScore(pobiScore, crongScore);
 
         return answer;
@@ -56,7 +56,7 @@ class Problem1 {
         return multipleDigits(rightPage);
     }
 
-    public static int maxScore(int leftPage, int rightPage) {
+    public static int findMaxScore(int leftPage, int rightPage) {
         if (compareMultipleNumber(leftPage, rightPage)
                 - compareSumNumber(leftPage, rightPage) >= 0) {
             return compareMultipleNumber(leftPage, rightPage);
