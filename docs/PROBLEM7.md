@@ -24,3 +24,19 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+## ✈ 기능 설계
+
+### 기능 목록
+- In-Memory DB
+  - 회원 삽입
+  - 회원 조회
+  - Top 5 친구 추천 목록 조회
+- 회원
+  - 친구 추가
+  - 방문
+
+### 도메인 모델링
+![image](https://user-images.githubusercontent.com/68049320/198861882-69979845-bc79-44a9-8588-4e35d18e1ab4.png)
+
+
