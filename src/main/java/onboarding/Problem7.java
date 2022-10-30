@@ -215,8 +215,18 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends,
         List<String> visitors) {
         UserSelectedForPro7 userSelected = new UserSelectedForPro7(user, friends, visitors);
+        return sortKeys(userSelected.theLastScoreMap());
+    }
 
-        List<String> answer = Collections.emptyList();
-        return answer;
+    public static List<String> sortKeys(Map<String, Integer> scoreMap) {
+        List<String> keyList = new ArrayList<>(scoreMap.keySet());
+        keyList.sort(((o1, o2) -> {
+            int res = scoreMap.get(o2) - scoreMap.get(o1);
+            if (res == 0) {
+                return o1.compareTo(o2);
+            }
+            return res;
+        }));
+        return keyList;
     }
 }
