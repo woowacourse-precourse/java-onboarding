@@ -38,4 +38,17 @@ public class Problem7 {
         int point = score.getOrDefault(id, 0) + scoreAmount;
         score.put(id, point);
     }
+
+    /* 사용자의 친구의 친구를 찾아 그 사람들에게 10점씩 추가하고 Map에 기록하는 메서드 */
+    private static void recordFriendsScore(Map<String, Integer> scores, List<String> userFriends, List<List<String>> friends, String user) {
+        for (String friend : userFriends) {
+            for (List<String> friendPair : friends) {
+                String someone = pickAnotherOne(friendPair, friend);
+
+                if (!(someone.equals("")) && !(someone.equals(user))) {
+                    incrementScore(scores, someone, 10);
+                }
+            }
+        }
+    }
 }
