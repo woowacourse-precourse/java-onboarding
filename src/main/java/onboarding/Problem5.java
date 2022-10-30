@@ -1,8 +1,13 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+
+/*
+*  모든 화폐 단위에 대해서, 내림차순 순서대로 반복
+* 1. answer에 현재 금액을 해당 화폐단위로 나눈 몫을 추가
+* 2. 현재 금액 변수에 해당 화폐단위로 나눈 나머지를 저장
+* */
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
@@ -16,9 +21,5 @@ public class Problem5 {
         }
 
         return answer;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(solution(15000));
     }
 }
