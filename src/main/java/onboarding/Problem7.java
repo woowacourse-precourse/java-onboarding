@@ -45,14 +45,11 @@ public class Problem7 {
         saveAcquaintanceScore(user, relationship, pq, visited);
         saveVisitScore(user, relationship, visitors, pq);
         return pq.stream()
-                .sorted(new Comparator<Recommend>() {
-                    @Override
-                    public int compare(Recommend o1, Recommend o2) {
-                        if (o1.getScore() == o2.getScore()) {
-                            return o1.getRecommendedUser().compareTo(o2.getRecommendedUser());
-                        }
-                        return o2.getScore() - o1.getScore();
+                .sorted((o1, o2) -> {
+                    if (o1.getScore() == o2.getScore()) {
+                        return o1.getRecommendedUser().compareTo(o2.getRecommendedUser());
                     }
+                    return o2.getScore() - o1.getScore();
                 })
                 .map(Recommend::getRecommendedUser)
                 .limit(5)
@@ -73,6 +70,7 @@ public class Problem7 {
             for (String nickname : relationship.get(user)) {
                 if (nickname.equals(visitor)) {
                     isAlreadyFriend = true;
+                    break;
                 }
             }
             if (!isExist && !isAlreadyFriend && !visitor.equals(user)) {
@@ -100,7 +98,6 @@ public class Problem7 {
                             continue;
                         }
                         recommendMap.put(friend, new Recommend(friend, 10));
-                        pq.add(new Recommend(friend, 10));
                     }
                 }
             }
@@ -110,6 +107,9 @@ public class Problem7 {
                 nowSize = queue.size();
                 level++;
             }
+        }
+        for (String key : recommendMap.keySet()) {
+            pq.add(recommendMap.get(key));
         }
     }
 
