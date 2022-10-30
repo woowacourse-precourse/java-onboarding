@@ -24,3 +24,121 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+
+---
+## 📄 기능 정리
+
+### 0. Class 설정
+
+#### (1) FriendsRecommender class
+
+##### <멤버 필드(변수, 상수)>
+
+- String user : 유저
+- HashMap< String, HashSet< String > > friendsInformation : 사용자 별 친구 목록
+- HashMap< String, Integer > recommendScore : 사용자 별 추천 점수
+
+##### <멤버 메소드>
+
+- public FriendsRecommender(String user, List<List< String >> friends, List< String > visitors) : 생성자
+
+- public List< String > makeRecommendedFriendsList() : 친구 추천 목록 생성 함수 (최상위 함수)
+
+- private void scoreFriendsUserKnow() : 함께 아는 친구 점수 반영
+
+- private void scoreOtherEachUsers(HashSet< String > otherUserFriends) : 각 사용자 별 함께 아는 친구 점수 반영
+
+- private int countFriendsUserKnow(HashSet< String > otherUserFriends) : 각 사용자 별 함께 아는 친구 수 반환
+
+- private List< String > makeSortedRecommendlist() : 문제의 조건대로 정렬 후 리스트로 변환 후 반환
+
+
+
+### 1. 전체 동작 과정
+
+(1) 생성자를 통해 다음과 같이 설정된다.
+
+- 사용자 별 친구 목록 생성 (이미 user와 친구관계인 사용자 제외)
+- 방문자 점수 반영
+
+(2) makeRecommendedFriendsList() 호출. 내부에서 scoreFriendsUserKnow(), makeSortedRecommendlist() 호출.
+
+- scoreFriendsUserKnow() 내부에서 friendsInformation 순회하며 scoreOtherEachUsers() 호출
+
+    - scoreOtherEachUsers() countFriendsUserKnow() 호출
+        - countFriendsUserKnow() 내부에서 user의 friendsInformation을 순회하며 함께 아는 친구 수 반환
+
+    - 함께 아는 친구 수 만큼 recommendScore 에 반영
+
+- makeSortedRecommendlist() : recommendScore 정렬 후 리스트로 변환하여 반환
+
+(3) 정렬된 친구 목록 리스트 반환
+
+
+
+### 2. 함수 별 동작 과정
+
+- 생성자
+    - 입력 : String user, List<List< String >> friends, List< String > visitors
+    - this.user 초기화
+    - friends를 토대로 this.friendsInformation 초기화
+        - key : 사용자 이름
+        - value : 친구 목록 HashSet
+        - 초기화 이후 user와 친구 관계인 사용자 내용 삭제(remove)
+            - 이미 친구 관계인 사용자는 고려 대상에서 제외
+    - recommendScore 초기화
+        - key : friendsInformation의 key값
+        - value : 0
+    - visitors 순회하며 recommendScore에 반영
+        - recommendScore의 Key에 없는 사용자의 경우 continue
+            - 이미 user와 친구 관계이므로
+
+
+
+- public List< String > makeRecommendedFriendsList()
+    - scoreFriendsUserKnow() 호출
+    - makeSortedRecommendlist() 호출 : 정렬된 리스트 반환
+    - 반환 : 정렬된 리스트
+
+
+
+- private void scoreFriendsUserKnow()
+    - friendsInformation 순회하며 scoreOtherEachUsers() 호출
+
+
+
+- private void scoreOtherEachUsers(HashSet< String > otherUserFriends)
+    - countFriendsUserKnow() 호출 : 함께 아는 친구 수 반환
+    - 함께 아는 친구 수 만큼 recommendScore 에 반영
+
+
+
+- private int countFriendsUserKnow(HashSet< String > otherUserFriends)
+    - user의 friendsInformation을 순회하며 otherUserFriends에 존재하는지 여부 확인(contains)
+        - true : numberOfFriendsUserKnow += 1
+    - 반환 : int numberOfFriendsUserKnow
+
+
+
+- private List< String > makeSortedRecommendlist()
+    - 문제의 조건대로 recommendScore 정렬 
+      - 점수 기준 내림차순
+      - 같은 점수일 경우 이름 기준 오름차순
+    - Collection.sort, Comparator 활용
+    - 정렬된 recommendScore의 Key 값을 모아 리스트로 생성
+    - 반환 : 정렬된 리스트
+
+
+
+
+
+------
+
+## ✋ 예외 사항
+
+- 1 <= user.length() <= 30
+- 1 <= friends.size() <= 10,000
+- 0 <= visitors.size() <= 10,000
+- id는 모두 소문자
+
