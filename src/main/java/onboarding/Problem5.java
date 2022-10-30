@@ -12,7 +12,7 @@ public class Problem5 {
      * @return : List<Integer>, 필요한 지폐의 장수를 담고 있는 리스트
      */
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
+        List<Integer> answer = getChange(money);
         return answer;
     }
 
