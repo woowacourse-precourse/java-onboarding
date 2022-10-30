@@ -15,7 +15,7 @@ class Problem1 {
         int pobiVal;
         int crongVal;
 
-        if (validation(pobi) == false || validation(crong) == false)
+        if (validation(pobi) || validation(crong))
             return -1;
         pobiVal = Math.max(getMax(pobi.get(0)), getMax(pobi.get(1)));
         crongVal = Math.max(getMax(crong.get(0)), getMax(crong.get(1)));
@@ -23,8 +23,7 @@ class Problem1 {
             answer = 1;
         else if (pobiVal < crongVal)
             answer = 2;
-        else if (pobiVal == crongVal)
-            answer = 0;
+        else answer = 0;
         return answer;
     }
 
@@ -54,12 +53,9 @@ class Problem1 {
 
     private static boolean validation(List<Integer> list) {
         if ((list.get(0) < 1 || list.get(0) > 399) || (list.get(1) < 2 || list.get(1) > 400))
-            return false;
-        else if (list.get(0) % 2 != 1 || list.get(1) % 2 != 0)
-            return false;
-        else if (list.get(1) - list.get(0) != 1)
-            return false;
-        else
             return true;
+        else if (list.get(0) % 2 != 1 || list.get(1) % 2 != 0)
+            return true;
+        else return list.get(1) - list.get(0) != 1;
     }
 }
