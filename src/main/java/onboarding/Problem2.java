@@ -18,7 +18,8 @@ public class Problem2 {
         }
 
         while (hasConsecutiveChar(cryptogram)) {
-
+            cryptogram = removeDupChar(cryptogram);
+            answer = cryptogram;
         }
 
         return answer;
@@ -38,6 +39,32 @@ public class Problem2 {
             cmpChar = curChar;
         }
         return false;
+    }
+
+    private static String removeDupChar(String inputString){
+        Stack<Character> stack = new Stack<>();
+
+        char lastPopChar = 0;
+        for (int i=0; i<inputString.length(); i++){
+            char curChar = inputString.charAt(i);
+
+            if (isSameWithStackTop(stack, curChar)){
+                lastPopChar = stack.pop();
+            } else{
+                pushChar(stack, lastPopChar, curChar);
+            }
+        }
+        return stackToString(stack);
+    }
+
+    private static boolean isSameWithStackTop(Stack<Character> stack, char curChar) {
+        return stack.size() > 0 && isSameCharacter(stack.peek(), curChar);
+    }
+
+    private static void pushChar(Stack<Character> stack, char lastPopChar, char curChar) {
+        if (curChar != lastPopChar){
+            stack.push(curChar);
+        }
     }
 
     private static boolean isSameCharacter(char cmpChar, char curChar) {
