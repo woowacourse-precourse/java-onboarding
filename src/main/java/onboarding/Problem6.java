@@ -1,31 +1,43 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = divideTwo(forms);
         return answer;
     }
 
-    //1.forms의 밸류를 받아서 두글자씩 나누고 통과되면 배열에 추가하는 메서드
-    public static void divideTwo(List<List<String>> forms) {
+    //1.forms의 밸류를 받아서 두글자씩 나누고 통과시키는 메서드
+    public static List<String> divideTwo(List<List<String>> forms) {
         List<String> pass = new ArrayList<>();
-        for (List<String> form : forms) {
-            String[] nickname = form.get(1).split("");
-            for (int i = 0; i < nickname.length - 1; i++) {
-                String twoWord = nickname[i] + nickname[i + 1];
-                if (pass.contains(twoWord)==false) {
-//                    2.나눈 글자를 form 밸류에 넣으면서 확인하는 메서드
+        Set<String> resultSet = new HashSet<>();
 
+//        for (List<String> form : forms) {
+        for(int i =0;i <forms.size();i++){
+            String[] nickname = forms.get(i).get(1).split("");
+            for (int j = 0; j < nickname.length - 1; j++) {
+                String twoWord = nickname[j] + nickname[j + 1];
+                if (!(pass.contains(twoWord))) { /*이미 비교한 두글자는 방문하지 않도록*/
+//                    2.나눈 글자를 form 밸류에 넣으면서 확인하는 메서드
+//                    for (List<String> formCheck : forms) {
+                    for (int k=i+1;k<forms.size();k++){
+                        if (forms.get(k).get(1).contains(twoWord)) {
+//                          set에 넣어서 중복점검 안하도록
+                            resultSet.add(forms.get(k).get(0));
+                            resultSet.add(forms.get(i).get(0));
+                        }
+                    }
                     pass.add(twoWord);
                 }
             }
         }
+        List<String> result = new ArrayList<>(resultSet); /*set을 list로 다시 변환*/
+//        Collections.sort(result);
+        return result;
     }
-//2.나눈 두글자를 forms 밸류에 넣으면서 있는지 확인하는 메서드
 //3.통과시키고 키 값을 set에 넣고 남은 리스트 출력하는 메서드
+
 }
 /*
 닉네임이 "제이워니"일 경우 "제이엠"과 두글자가 겹쳐서 삭제하면 "워니"를 못찾음
