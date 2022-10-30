@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
 
@@ -32,8 +29,13 @@ public class Problem7 {
         return result;
     }
 
+
+
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        List<String> userList = getUsersList(user, friends);
+        HashMap<String, HashSet<String>> userFriendsList = getEachFriendsList(friends);
+
+        HashMap<String, Integer> userScore = new HashMap<>();
     }
 }
