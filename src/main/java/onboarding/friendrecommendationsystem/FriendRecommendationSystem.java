@@ -84,8 +84,7 @@ public class FriendRecommendationSystem {
 
 	private boolean checkUserContains(final String friend) {
 		return !user.equals(friend)
-			&& getFriendsOf(user).stream()
-			.anyMatch(userFriend -> userFriend.equals(friend));
+			&& getFriendsOf(user).contains(friend);
 	}
 
 	public int getRecommendationScore(final String other) {
