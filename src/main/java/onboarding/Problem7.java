@@ -16,6 +16,16 @@ public class Problem7 {
         return  visitScore;
     }
 
-
+    public static List<List<String>> getFriendList (List<List<String>> friends) {
+        List<List<String>> friendsList = new ArrayList<>();
+        for(List<String> friend : friends){
+            List<String> n = new ArrayList<>();
+            n.add(0, friend.get(1));
+            n.add(1,friend.get(0));
+            friendsList.add(n);
+            friendsList.add(friend);
+        }
+        return friendsList;
+    }
 
 }
