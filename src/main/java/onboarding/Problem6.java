@@ -104,6 +104,16 @@ public class Problem6 {
         return result;
     }
 
+    /**
+     * 주어진 목록을 검사하여 조건에 맞는 입력들 중에서, 서로 유사한 닉네임을 가지는 사람들의 이메일을 오름차순으로 리턴
+     * @param input
+     * @return
+     */
+    private static List<String> getAlikeNicknamesList(List<List<String>> input) {
+        List<List<String>> validLists = collectValidInputs(input);
+        return checkAlikeNicknames(validLists);
+    }
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
