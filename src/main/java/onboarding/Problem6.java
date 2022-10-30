@@ -7,6 +7,25 @@ public class Problem6 {
 
         List<String> warningEmail = new ArrayList<>();
 
+        for(int i = 0;i < forms.size();i++) {
+
+            List<String> mySubStr = cutCase(forms.get(i).get(1));
+            List<List<String>> otherPeople = notMe(forms,forms.get(i));
+
+            for(List<String> person : otherPeople) {
+
+                for (String piece : mySubStr) {
+
+                    if (person.get(1).matches(".*" + piece + ".*")) {
+
+                        warningEmail.add(person.get(0));
+                    }
+                }
+            }
+        }
+
+        warningEmail = tidyList(warningEmail);
+
         return warningEmail;
     }
 
