@@ -13,7 +13,7 @@ class Problem1 {
         return gameStarter(pobi, crong);
     }
 
-    public static boolean isRightPageNumbers(List<Integer> playersPages) {
+    private static boolean isRightPageNumbers(List<Integer> playersPages) {
         final int leftPageNumber = playersPages.get(0);
         final int rightPageNumber = playersPages.get(1);
 
@@ -33,14 +33,14 @@ class Problem1 {
         return true;
     }
 
-    public static int getMaxValue(List<Integer> playersPages){
+    private static int getMaxValue(List<Integer> playersPages){
         final int maxLeftPageNumber = calculateInSingleNumber(playersPages.get(0));
         final int maxRightPageNumber = calculateInSingleNumber(playersPages.get(1));
 
         return max(maxLeftPageNumber, maxRightPageNumber);
     }
 
-    public static int calculateInSingleNumber(int pageNumber) {
+    private static int calculateInSingleNumber(int pageNumber) {
         int sum = 0;
         int mul = 1;
         int mod;
@@ -55,7 +55,7 @@ class Problem1 {
         return max(sum,mul);
     }
 
-    public static int gameStarter(List<Integer> player1, List<Integer> player2) {
+    private static int gameStarter(List<Integer> player1, List<Integer> player2) {
         if (isRightPageNumbers(player1) == false || isRightPageNumbers(player2) == false) {
             return -1;
         }
