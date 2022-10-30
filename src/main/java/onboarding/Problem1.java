@@ -46,4 +46,18 @@ class Problem1 {
         }
         return mulSum;
     }
+    private static int getMaxNum(int maxNum, int i, int addSum, int mulSum) {
+        if(i == 0){
+            if(maxNum < Math.max(addSum, mulSum)){
+                maxNum = Math.max(addSum, mulSum);
+            }
+        }else{
+            if(maxNum < Math.max(addSum, mulSum)){
+                maxNum = Math.max(addSum, mulSum);
+            }
+            else if(maxNum == Math.max(addSum, mulSum)){
+            }
+        }
+        return maxNum;
+    }
 }
