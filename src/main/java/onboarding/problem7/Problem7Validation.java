@@ -48,9 +48,8 @@ public class Problem7Validation {
         MinMaxInputValidatable listInputValidate = MinMaxListInputValidate.getMinMaxListInputValidate();
         return listInputValidate.isInputBetweenMinAndMax(friends, FRIENDS_INPUT_MIN, FRIENDS_INPUT_MAX)
                 && (friends.stream()
-                        .filter(friendList -> innerFriendsInputValidation(stringInputValidate, listInputValidate, friendList))
-                                .count() == friends.size()
-        );
+                    .filter(friendList -> innerFriendsInputValidation(stringInputValidate, listInputValidate, friendList))
+                    .count() == friends.size());
 
     }
 
@@ -67,8 +66,8 @@ public class Problem7Validation {
         MinMaxInputValidatable listInputValidate = MinMaxListInputValidate.getMinMaxListInputValidate();
         return listInputValidate.isInputBetweenMinAndMax(visitors,VISITORS_INPUT_MIN, VISITORS_INPUT_MAX)
                 && (visitors.stream()
-                .filter(userId -> isUserIdLowerCase(userId))
-                .count() == visitors.size());
+                    .filter(userId -> isUserIdLowerCase(userId))
+                    .count() == visitors.size());
 
     }
 }
