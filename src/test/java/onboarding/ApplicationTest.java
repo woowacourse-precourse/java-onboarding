@@ -60,92 +60,13 @@ class ApplicationTest {
         }
         @Test
         void case4() {
-            String cryptogram = "zyalllelyz";
-            String result = "zyaelyz";
+            String cryptogram = "zyelllelyz";
+            String result = "zylyz";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
         @Test
         void case5() {
-            String cryptogram = "abababababababababababababababababababa"
-                    + "babababababababababababababababababababababa"
-                    + "bababababababababababababababababababababababababa"
-                    + "babababababababababababababababababababababababababababab"
-                    + "abababababababababababababababababababababababababababababa"
-                    + "babababababababababababababababababababababababababababab"
-                    + "abababababababababababababababababababababababababababababab"
-                    + "ababababababababababababababababababababababababababababab"
-                    + "ababababababababababababababababababababababababababababababa"
-                    + "bababababababababababababababababababababababababababababab"
-                    + "ababababababababababababababababababababababababababababab"
-                    + "ababababababababababababababababababababababababababababab"
-                    + "abababababababababababababababababababababababababababab"
-                    + "ababababababababababababababababababababababababababababa"
-                    + "bababababababababababababababababababababababababababababa"
-                    + "babababababababababababababababababababababababababababa"
-                    + "bababababababababababababababababababababababababab"
-                    + "ababababababababababababababababababababababababababababababab";
-            String result = "ababababababababababababababababababa"
-                    + "bababababababababababababababababababababab"
-                    + "abababababababababababababababababababababa"
-                    + "babababababababababababababababababababababab"
-                    + "ababababababababababababababababababababababa"
-                    + "babababababababababababababababababababababab"
-                    + "ababababababababababababababababababababababa"
-                    + "bababababababababababababababababababababababa"
-                    + "bababababababababababababababababababababababa"
-                    + "bababababababababababababababababababababababa"
-                    + "bababababababababababababababababababababababab"
-                    + "abababababababababababababababababababababababa"
-                    + "babababababababababababababababababababababababa"
-                    + "babababababababababababababababababababababababa"
-                    + "babababababababababababababababababababababababa"
-                    + "babababababababababababababababababababababababa"
-                    + "babababababababababababababababababababababababab"
-                    + "ababababababababababababababababababababababababa"
-                    + "babababababababababababababababababababababababa"
-                    + "babababababababababababababababababababababababababababababa"
-                    + "bababababababababababababababababababababababababababababababababab";
-            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
-        }
-        @Test
-        void case6() {
-            String cryptogram = "ajdhAH@#jsk";
-            String result = "z";
-            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
-        }
-        //예외 확인
-        @Test
-        void case7() {
-            String cryptogram = "abbccc!aljd";
-            String result = "";
-            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
-        }
-        @Test
-        void case8() {
-            String cryptogram = "ajh12jdhj";
-            String result = "";
-            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
-        }
-        @Test
-        void case9() {
-            String cryptogram =  "abababababababababababababababababababa"
-                    + "babababababababababababababababababababababa"
-                    + "bababababababababababababababababababababababababa"
-                    + "babababababababababababababababababababababababababababab"
-                    + "abababababababababababababababababababababababababababababa"
-                    + "babababababababababababababababababababababababababababab"
-                    + "abababababababababababababababababababababababababababababab"
-                    + "ababababababababababababababababababababababababababababab"
-                    + "ababababababababababababababababababababababababababababababa"
-                    + "bababababababababababababababababababababababababababababab"
-                    + "ababababababababababababababababababababababababababababab"
-                    + "ababababababababababababababababababababababababababababab"
-                    + "abababababababababababababababababababababababababababab"
-                    + "ababababababababababababababababababababababababababababa"
-                    + "bababababababababababababababababababababababababababababa"
-                    + "babababababababababababababababababababababababababababa"
-                    + "bababababababababababababababababababababababababab"
-                    + "abababababababababababababababababababababababababababababababaaaa";
+            String cryptogram = "zz";
             String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
