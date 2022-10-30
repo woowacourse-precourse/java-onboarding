@@ -8,6 +8,17 @@ class Problem1 {
         return answer;
     }
 
+	private static int multiply(int num) {
+		int ret = 1;
+
+		while(num > 0) {
+			ret *= num % 10;
+			num /= 10;
+		}
+
+		return ret;
+	}
+
 	private static int sum(int num) {
 		int ret = 0;
 
