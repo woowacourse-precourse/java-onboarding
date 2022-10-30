@@ -21,3 +21,11 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능 목록
+
+- 닉네임을 2개씩 split한 문자열을 key로하고 원래의 닉네임에 대응되는 이메일을 value로 저장하는 클래스를 만든다 
+  - item을 저장한다
+    - 닉네임을 2개씩 split한다
+    - split한 문자열을 key로하고, 원래의 닉네임에 대응되는 이메일을 value로 저장한다
+  - value가 사이즈가 1보다 큰 것들을 반환한다
