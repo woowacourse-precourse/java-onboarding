@@ -15,14 +15,18 @@ public class Problem6 {
     }
 
     public static boolean throwCrewNumberException(List<List<String>> forms) {
-
         return (forms.isEmpty() || forms.size() > 10_000);
     }
 
     public static boolean throwEmailLengthException(List<String> forms) {
-
         return (forms.get(0).length() < 11 || forms.get(0).length() > 20);
 
+    }
+
+    public static boolean throwEmailTypeException(List<String> forms) {
+        int index = forms.get(0).indexOf("@");
+
+        return (forms.get(0).substring(index).equals("@email.com"));
     }
 
 
