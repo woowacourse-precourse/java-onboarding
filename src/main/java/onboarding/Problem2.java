@@ -1,5 +1,9 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer;
@@ -13,6 +17,14 @@ public class Problem2 {
             }
             prev = next;
         }
+        return answer;
+    }
+
+    static String removeDuplication(String cryptogram) {
+        ArrayList<String> inputArrayList = new ArrayList<>(Arrays.asList(cryptogram.split("")));
+        HashSet<Integer> duplicationSet = getDupiicationSet(inputArrayList);
+        ArrayList<String> outputArrayList = removeDuplicationBySet(inputArrayList, duplicationSet);
+        String answer = joinStringWithoutNull(outputArrayList);
         return answer;
     }
 }
