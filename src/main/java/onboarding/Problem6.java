@@ -9,10 +9,13 @@ import java.util.Map;
 import java.util.Set;
 
 public class Problem6 {
-	private static Set<String> emails = new HashSet<>();
-	private static Map<String, String> keys = new HashMap<>(); // word, email
+	private static Set<String> emails;
+	private static Map<String, String> keys; // word, email
 
 	public static List<String> solution(List<List<String>> forms) {
+
+		emails = new HashSet<>();
+		keys = new HashMap<>();
 
 		for (List<String> form : forms) {
 			String nickname = form.get(1);
