@@ -13,13 +13,12 @@ import java.util.List;
  */
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int pobiScore = getUserScore(pobi);
-        int crongScore = getUserScore(crong);
-
-        // 예외 발생
-        if(pobiScore == -1 || crongScore == -1) {
+        if(isException(pobi) || isException(crong)) {
             return -1;
         }
+
+        int pobiScore = getUserScore(pobi);
+        int crongScore = getUserScore(crong);
 
         if(pobiScore > crongScore) {
             return 1;
@@ -36,19 +35,22 @@ class Problem1 {
         return -1;
     }
 
+    // 책은 펼쳤을 때 연속된 수가 나와야한다.
+    // 왼쪽 페이지는 홀수, 오른쪽 페이지는 짝수번호다.
+    private static boolean isException(List<Integer> person) {
+        Integer leftPage = person.get(0);
+        Integer rightPage = person.get(1);
+
+        return (rightPage - leftPage) != 1 || (rightPage % 2) != 0 || (leftPage % 2) != 1;
+    }
+
     private static int getUserScore(List<Integer> person) {
         Integer leftPage = person.get(0);
         Integer rightPage = person.get(1);
 
-        // 책은 펼쳤을 때 연속된 수가 나와야한다.
-        // 왼쪽 페이지는 홀수, 오른쪽 페이지는 짝수번호다.
-        if((rightPage - leftPage) != 1 || (rightPage % 2) != 0 || (leftPage % 2) != 1) {
-            return -1;
-        }
-
         return Math.max(getMaxScore(leftPage), getMaxScore(rightPage));
     }
-    
+
     private static int getMaxScore(Integer page) {
         return Math.max(getPageSum(page), getPageMultiple(page));
     }
