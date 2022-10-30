@@ -14,8 +14,6 @@ public class Problem2 {
 			Matcher patternMatcher = patternRegex.matcher(cryptogram);
 
 			cryptogram = removeDuplication(patternMatcher);
-
-			System.out.println(cryptogram);
 			patternMatcher = patternRegex.matcher(cryptogram);
 
 			if (!patternMatcher.find()) {
