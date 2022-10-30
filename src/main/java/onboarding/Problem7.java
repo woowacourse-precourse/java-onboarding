@@ -8,6 +8,18 @@ import java.util.stream.Collectors;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+        Map<String, Set<String>> friendsGraph = createGraph(friends);
+        Map<String, Integer> scoreList = createScoreMap(user, friends, visitors);
+
+        Set<String> myFriends = friendsGraph.get(user);
+        for (String myFriend : myFriends) {
+            for (String friendOfFriend : friendsGraph.get(myFriend)) {
+                if(scoreList.containsKey(friendOfFriend)){
+                    scoreList.put(friendOfFriend, scoreList.get(friendOfFriend) + 10);
+                }
+            }
+        }
+
         return answer;
     }
 
@@ -67,5 +79,6 @@ public class Problem7 {
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
                         (e1, e2) -> e1, LinkedHashMap::new));
     }
+
 
 }
