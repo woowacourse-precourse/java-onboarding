@@ -34,6 +34,13 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         int score_pobi = score(pobi.get(1));
         int score_crong = score(crong.get(1));
+        if(score_pobi > score_crong){
+            answer = 1;
+        }else if(score_pobi < score_crong){
+            answer = 2;
+        }else{
+            answer = 0;
+        }
         return answer;
     }
 }
