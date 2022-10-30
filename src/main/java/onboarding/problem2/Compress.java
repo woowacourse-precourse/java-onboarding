@@ -1,5 +1,6 @@
 package onboarding.problem2;
 
+
 public class Compress {
     static final char SENTINEL = '#';
     public static boolean needToCompress(String cryptogram) {
@@ -11,16 +12,20 @@ public class Compress {
         return false;
     }
 
-    public static String compressOnce(String cryptogram) {
+    public static String compress(String cryptogram) {
         String newCryptogram = SENTINEL + cryptogram + SENTINEL;
         String result = "";
         for (int i = 1; i < newCryptogram.length() - 1; i++) {
-            if (isLeftRightCharDiff(newCryptogram, i)) {
-                char middleValue = newCryptogram.charAt(i);
-                result += middleValue;
-            }
+            result += getUniqueVal(newCryptogram, i);
         }
         return result;
+    }
+    public static String getUniqueVal(String cryptogram, int index) {
+        if (isLeftRightCharDiff(cryptogram, index)) {
+            String middleVal = cryptogram.substring(index, index+1);
+            return middleVal;
+        }
+        return "";
     }
     public static boolean isLeftRightCharDiff(String cryptogram, int index) {
         int leftVal = cryptogram.charAt(index - 1);
