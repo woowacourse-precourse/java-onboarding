@@ -2,9 +2,12 @@ package onboarding;
 
 public class Problem2 {
 
+    private static final int minLength = 1;
+    private static final int maxLength = 1000;
     private static int flag=0;
 
     public static String solution(String cryptogram) {
+        validate(cryptogram);
         cryptogram=cryptogram+'*';
         while(true){
             if (isDuplicateString(cryptogram)){
@@ -52,5 +55,27 @@ public class Problem2 {
             }
         }
         return false;
+    }
+
+    private static void validate(String cryptogram) {
+        if (!isInRange(cryptogram)) {
+            throw new IllegalArgumentException("길이가 1이상 1000이하 이어야 합니다.");
+        }
+        if (!isLowerCase(cryptogram)) {
+            throw new IllegalArgumentException("알파벳은 소문자로여야 합니다.");
+        }
+    }
+
+    private static boolean isInRange(String cryptogram) {
+        return minLength <= cryptogram.length() && cryptogram.length() <= maxLength;
+    }
+
+    private static boolean isLowerCase(String cryptogram) {
+        for (char alphabet : cryptogram.toCharArray()) {
+            if (!Character.isLowerCase(alphabet)) {
+                return false;
+            }
+        }
+        return true;
     }
 }
