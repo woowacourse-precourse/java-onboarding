@@ -257,7 +257,7 @@ class ApplicationTest {
       assertThrows(IllegalStateException.class, () -> {
         Problem6.isAllowedCrewSize(crewSize2);
       });
-     }
+    }
 
     @Test
     void isAllowedEmailTest() {
@@ -269,16 +269,33 @@ class ApplicationTest {
 
       //then
       assertThat(Problem6.isAllowedEmail(email1)).isEqualTo(true);
-      assertThrows(IllegalStateException.class, () ->{
+      assertThrows(IllegalStateException.class, () -> {
         Problem6.isAllowedEmail(email2);
       });
-      assertThrows(IllegalStateException.class, () ->{
+      assertThrows(IllegalStateException.class, () -> {
         Problem6.isAllowedEmail(email3);
       });
-      assertThrows(IllegalStateException.class, () ->{
+      assertThrows(IllegalStateException.class, () -> {
         Problem6.isAllowedEmail(email4);
       });
-     }
+    }
+
+    @Test
+    void isAllowedNickNameTest() {
+      //given
+      String nickName1 = "박수환";
+      String nickName2 = "5uhwann";
+      String nickName3 = "aspodickalsefnaskldfmn2";
+
+      //then
+      assertThat(Problem6.isAllowedNickName(nickName1)).isEqualTo(true);
+      assertThrows(IllegalStateException.class, () -> {
+        Problem6.isAllowedNickName(nickName2);
+      });
+      assertThrows(IllegalStateException.class, () -> {
+        Problem6.isAllowedNickName(nickName3);
+      });
+    }
 
   }
 
