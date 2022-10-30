@@ -35,6 +35,15 @@ public class Problem7 {
         }
 
 
+        for (String visitor : visitors) {
+            int score = scroeList.getOrDefault(visitor,0);
+            scroeList.put(visitor,score+1);
+
+        }
+
+
+
+
 
         return answer;
     }
