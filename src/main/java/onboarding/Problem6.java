@@ -11,7 +11,8 @@ public class Problem6 {
             String word = forms.get(i).get(1);
             String email = forms.get(i).get(0);
             List<String> wordslist = getWord(word);
-            wordslist.stream().forEach(w -> words.put(word,getEmailList(words,word,email)));
+            wordslist.stream()
+                    .forEach(w -> words.put(word,getEmailList(words,word,email)));
         }
         return answer;
     }
@@ -26,5 +27,16 @@ public class Problem6 {
         Set<String> str1 = words.getOrDefault(word,new TreeSet<>());
         str1.add(email);
         return str1;
+    }
+
+    public static boolean checkDuplication(HashMap<String,Set<String>> words,String word){
+        List<String> wordList = getWord(word);
+        for(String w:wordList){
+            int a= words.get(w).size();
+            if (a > 1){
+                return false;
+            }
+        }
+        return false;
     }
 }
