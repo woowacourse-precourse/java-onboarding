@@ -6,23 +6,23 @@ import java.util.regex.Pattern;
 public class Problem2 {
     public static String solution(String cryptogram) {
 
-        String answer = "";
+        String answer;
         String regex = "(\\w)(\\1+)";
         Pattern patternRegex = Pattern.compile(regex);
 
         while (true) {
             Matcher patternMatcher = patternRegex.matcher(cryptogram);
-            StringBuffer stringBuffer = new StringBuffer();
+            StringBuilder stringBuilder = new StringBuilder();
 
             while (patternMatcher.find()) {
-                patternMatcher.appendReplacement(stringBuffer, "");
+                patternMatcher.appendReplacement(stringBuilder, "");
             }
-            patternMatcher.appendTail(stringBuffer);
-            cryptogram = String.valueOf(stringBuffer);
+            patternMatcher.appendTail(stringBuilder);
+            cryptogram = String.valueOf(stringBuilder);
 
             System.out.println(cryptogram);
             patternMatcher = patternRegex.matcher(cryptogram);
-            if (patternMatcher.find() == false) {
+            if (!patternMatcher.find()) {
                 answer = cryptogram;
                 break;
             }
