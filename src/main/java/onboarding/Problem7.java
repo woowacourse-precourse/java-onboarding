@@ -23,6 +23,9 @@ class user_info {
     public int getScore() {
         return this.score;
     }
+    public void setScore(int score) {
+        this.score  = score;
+    }
 }
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
