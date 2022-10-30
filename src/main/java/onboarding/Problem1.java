@@ -3,7 +3,7 @@ package onboarding;
 import java.util.List;
 
 import onboarding.problem1.Book;
-import onboarding.problem1.BookUtil;
+import onboarding.problem1.PageUtil;
 import onboarding.problem1.GameInfo;
 import onboarding.problem1.PageInfo;
 
@@ -13,7 +13,7 @@ class Problem1 {
             return GameInfo.INVALID.getInfo();
         }
 
-        if(pobi.size() < PageInfo.MIN_PAGES.getInfo() || crong.size() < PageInfo.MIN_PAGES.getInfo()){
+        if(pobi.size() < PageInfo.MIN_PAGES_COUNT.getInfo() || crong.size() < PageInfo.MIN_PAGES_COUNT.getInfo()){
             return GameInfo.INVALID.getInfo();
         }
 
@@ -27,12 +27,12 @@ class Problem1 {
             .rightPageNumber(crong.get(PageInfo.RIGHT.getInfo()))
             .build();
 
-        if(!BookUtil.isValidPages(pobiBook) || !BookUtil.isValidPages(crongBook)){
+        if(!PageUtil.isValidPages(pobiBook) || !PageUtil.isValidPages(crongBook)){
             return GameInfo.INVALID.getInfo();
         }
 
-        long pobiResult = Math.max(BookUtil.getMaxPlusPageNumber(pobiBook), BookUtil.getMaxTimesPageNumber(pobiBook));
-        long crongResult = Math.max(BookUtil.getMaxPlusPageNumber(crongBook), BookUtil.getMaxTimesPageNumber(crongBook));
+        long pobiResult = Math.max(PageUtil.getMaxPlusPageNumber(pobiBook), PageUtil.getMaxTimesPageNumber(pobiBook));
+        long crongResult = Math.max(PageUtil.getMaxPlusPageNumber(crongBook), PageUtil.getMaxTimesPageNumber(crongBook));
 
         if(pobiResult > crongResult){
             return GameInfo.POBI_WIN.getInfo();
