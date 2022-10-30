@@ -4,6 +4,13 @@ import java.util.List;
 
 class Problem1 {
     private static final int PAGE_MIN = 1, PAGE_MAX = 400;
+    private enum GameResult {
+        ERROR(-1), DRAW(0), POBI_WIN(1), CRONG_WIN(2);
+
+        private final int value;
+        GameResult(int value) { this.value = value; }
+        public int getValue() { return this.value; }
+    };
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         try {
@@ -14,17 +21,16 @@ class Problem1 {
             int cScore = maxScore(crong);
 
             if (pScore > cScore)
-                return 1;
+                return GameResult.POBI_WIN.getValue();
             else if (pScore < cScore)
-                return 2;
-            return 0;
+                return GameResult.CRONG_WIN.getValue();
+            return GameResult.DRAW.getValue();
         } catch(Exception e) {
-            return -1;
+            return GameResult.ERROR.getValue();
         }
     }
 
     private static void checkValid(List<Integer> pages) throws Exception {
-        // check error
         // must be [odd, odd+1]
         if(pages.size() != 2)
             throw new Exception("wrong pages size");
