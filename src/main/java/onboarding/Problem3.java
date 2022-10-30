@@ -12,18 +12,18 @@ public class Problem3 {
         return answer;
     }
 
-    public static int getClapNumber(String num) {
+    private static int getClapNumber(String num) {
         if (containThreeSixNine(num)) {
             return countThreeSixNine(num);
         }
         return 0;
     }
 
-    public static boolean containThreeSixNine(String num) {
+    private static boolean containThreeSixNine(String num) {
         return num.contains("3") || num.contains("6") || num.contains("9");
     }
 
-    public static int countThreeSixNine(String num) {
+    private static int countThreeSixNine(String num) {
         String[] str = num.split("");
         return (int)Arrays.stream(str).filter(i -> i.equals("3") || i.equals("6") || i.equals("9")).count();
     }

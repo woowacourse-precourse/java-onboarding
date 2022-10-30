@@ -10,7 +10,7 @@ public class Problem4 {
         return sb.toString();
     }
 
-    public static char convertFrogAlphabet(char c) {
+    private static char convertFrogAlphabet(char c) {
         if (!Character.isLetter(c)) {
             return c;
         }

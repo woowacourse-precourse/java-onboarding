@@ -15,11 +15,11 @@ public class Problem5 {
         return answer;
     }
 
-    public static int divideMoney(int money, int unit) {
+    private static int divideMoney(int money, int unit) {
         return money % unit;
     }
 
-    public static int exchangeMoney(int money, int unit) {
+    private static int exchangeMoney(int money, int unit) {
         return money / unit;
     }
 }

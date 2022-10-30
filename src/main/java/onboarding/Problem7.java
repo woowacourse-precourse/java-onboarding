@@ -16,7 +16,7 @@ public class Problem7 {
         return createFiveLengthList(sortRecommendFriends(recommendFriends));
     }
 
-    public static Set<String> createUserFriendList(List<List<String>> friends, String user) {
+    private static Set<String> createUserFriendList(List<List<String>> friends, String user) {
         Set<String> friendSet = new HashSet<>();
         for (List<String> f : friends) {
             addUserFriend(friendSet, f, user);
@@ -24,7 +24,7 @@ public class Problem7 {
         return friendSet;
     }
 
-    public static void addUserFriend(Set<String> friendSet, List<String> friendship ,String user) {
+    private static void addUserFriend(Set<String> friendSet, List<String> friendship ,String user) {
         if (friendship.get(0).equals(user)) {
             friendSet.add(friendship.get(1));
         }
@@ -33,7 +33,7 @@ public class Problem7 {
         }
     }
 
-    public static HashMap<String, Integer> createRecommendList(List<List<String>> friends, Set<String> friendSet) {
+    private static HashMap<String, Integer> createRecommendList(List<List<String>> friends, Set<String> friendSet) {
         HashMap<String, Integer> recommendMap = new HashMap<>();
         for (List<String> friend : friends) {
             updateRecommendFriend(recommendMap, friend, friendSet);
@@ -41,7 +41,7 @@ public class Problem7 {
         return recommendMap;
     }
 
-    public static void updateRecommendFriend(HashMap<String, Integer> friendMap, List<String> friendship, Set<String> friendSet) {
+    private static void updateRecommendFriend(HashMap<String, Integer> friendMap, List<String> friendship, Set<String> friendSet) {
         if (friendSet.contains(friendship.get(0))) {
             friendMap.put(friendship.get(1), friendMap.getOrDefault(friendship.get(1), 0) + 10);
         }
@@ -50,23 +50,23 @@ public class Problem7 {
         }
     }
 
-    public static void recommendVisitor(HashMap<String, Integer> friendMap, List<String> visitors, Set<String> friendSet) {
+    private static void recommendVisitor(HashMap<String, Integer> friendMap, List<String> visitors, Set<String> friendSet) {
         for (String v : visitors) {
             addVisitorScore(friendMap, v, friendSet);
         }
     }
 
-    public static void addVisitorScore(HashMap<String, Integer> friendMap, String visitor, Set<String> friendSet) {
+    private static void addVisitorScore(HashMap<String, Integer> friendMap, String visitor, Set<String> friendSet) {
         if (!friendSet.contains(visitor)){
             friendMap.put(visitor, friendMap.getOrDefault(visitor, 0) + 1);
         }
     }
 
-    public static void isNotFriend(HashMap<String, Integer> recommendFriends, String user) {
+    private static void isNotFriend(HashMap<String, Integer> recommendFriends, String user) {
         recommendFriends.remove(user);
     }
 
-    public static List<List<String>> sortRecommendFriends(HashMap<String, Integer> friendMap) {
+    private static List<List<String>> sortRecommendFriends(HashMap<String, Integer> friendMap) {
         List<List<String>> sortedList = new ArrayList<>();
         setSortList(sortedList, friendMap);
         sortedList.sort((List<String> a, List<String> b) -> {
@@ -78,13 +78,13 @@ public class Problem7 {
         return sortedList;
     }
 
-    public static void setSortList(List<List<String>> list, HashMap<String, Integer> friendMap) {
+    private static void setSortList(List<List<String>> list, HashMap<String, Integer> friendMap) {
         for (Map.Entry<String, Integer> entry : friendMap.entrySet()) {
             list.add(List.of(entry.getKey(), Integer.toString(entry.getValue())));
         }
     }
 
-    public static List<String> createFiveLengthList(List<List<String>> list) {
+    private static List<String> createFiveLengthList(List<List<String>> list) {
         List<String> list2 = new ArrayList<>();
         for (List<String> s : list) {
             limitFiveLength(list2, s.get(0));
@@ -92,7 +92,7 @@ public class Problem7 {
         return list2;
     }
 
-    public static void limitFiveLength(List<String> list, String str) {
+    private static void limitFiveLength(List<String> list, String str) {
         if (list.size() < 5) {
             list.add(str);
         }

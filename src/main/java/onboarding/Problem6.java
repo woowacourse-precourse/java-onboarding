@@ -17,7 +17,7 @@ public class Problem6 {
         Collections.sort(answer);
         return answer;
     }
-    public static List<String> createUserNameList(List<List<String>> forms) {
+    private static List<String> createUserNameList(List<List<String>> forms) {
         List<String> nameList = new ArrayList<>();
         for (List<String> form : forms) {
             nameList.add(form.get(1));
@@ -25,7 +25,7 @@ public class Problem6 {
         return nameList;
     }
 
-    public static String combineName(List<String> nameList) {
+    private static String combineName(List<String> nameList) {
         StringBuilder joinName = new StringBuilder();
         for (String s : nameList) {
             joinName.append(s).append(",");
@@ -33,7 +33,7 @@ public class Problem6 {
         return joinName.toString();
     }
 
-    public static List<String> createTwoLetterNameList(String name) {
+    private static List<String> createTwoLetterNameList(String name) {
         List<String> nameList = new ArrayList<>();
         String[] str = name.split("");
         for (int i = 0; i < str.length - 2; i++) {
@@ -42,7 +42,7 @@ public class Problem6 {
         return nameList.stream().filter(i -> !i.contains(",")).sorted().collect(Collectors.toList());
     }
 
-    public static Set<String> createDuplicateList(List<String> nameList) {
+    private static Set<String> createDuplicateList(List<String> nameList) {
         Set<String> nameSet = new HashSet<>();
         for (int i = 0; i < nameList.size()-1; i++) {
             addDuplicateName(nameSet, nameList.get(i), nameList.get(i+1));
@@ -50,13 +50,13 @@ public class Problem6 {
         return nameSet;
     }
 
-    public static void addDuplicateName(Set<String> nameSet, String name1, String name2) {
+    private static void addDuplicateName(Set<String> nameSet, String name1, String name2) {
         if (name1.equals(name2)) {
             nameSet.add(name1);
         }
     }
 
-    public static List<String> createWarningList(Set<String> nameSet, List<List<String>> forms) {
+    private static List<String> createWarningList(Set<String> nameSet, List<List<String>> forms) {
         List<String> warningNames = new ArrayList<>();
         for (List<String> form : forms) {
             getWarningListByNameSet(nameSet, form, warningNames);
@@ -64,13 +64,13 @@ public class Problem6 {
         return warningNames;
     }
 
-    public static void getWarningListByNameSet(Set<String> nameSet, List<String> userInfo, List<String> nameList) {
+    private static void getWarningListByNameSet(Set<String> nameSet, List<String> userInfo, List<String> nameList) {
         for (String s : nameSet) {
             addWarningName(s, userInfo, nameList);
         }
     }
 
-    public static void addWarningName(String name, List<String> userInfo, List<String> nameList) {
+    private static void addWarningName(String name, List<String> userInfo, List<String> nameList) {
         if (userInfo.get(1).contains(name)) {
             nameList.add(userInfo.get(0));
         }
