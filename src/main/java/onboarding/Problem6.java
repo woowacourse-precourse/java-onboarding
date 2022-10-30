@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 /*
@@ -61,6 +62,7 @@ public class Problem6 {
 
         List<String> doubleNickname = new ArrayList<>();
 
+        // check the nicknames that contain the same characters in succession
         for (int i = 0; i < crewList.size(); i++){
             for (int j = i+1; j < crewList.size(); j++){
                 if (checkNickname(crewList.get(i), crewList.get(j))) {
@@ -69,7 +71,10 @@ public class Problem6 {
                 }
             }
         }
-        System.out.println(doubleNickname);
+
+        // sort the list in ascending order
+        doubleNickname.sort(Comparator.naturalOrder());
+        answer = doubleNickname;
         return answer;
     }
 }
