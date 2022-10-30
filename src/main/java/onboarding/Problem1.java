@@ -29,8 +29,8 @@ class Problem1 {
     }
 
     public static boolean exception(Integer pobiFirst,Integer pobiSecond,Integer crongFirst,Integer crongSecond) {
-        return (pobiFirst - pobiSecond != 1) ||
-                (crongFirst - crongSecond != 1) ||
+        return (pobiSecond - pobiFirst != 1) ||
+                (crongSecond - crongFirst != 1) ||
                 (pobiFirst == 1) || (pobiSecond == 400) ||
                 (crongFirst == 1) || (crongSecond == 400);
     }
