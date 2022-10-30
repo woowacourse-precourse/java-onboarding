@@ -33,9 +33,14 @@ public class Problem5 {
 
         return result;
     }
-    
+
+    /**
+     * 문제 해결을 위한 함수
+     * 기능 요구 사항 결과 리턴
+     */
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
+        List<Integer> answer = new ArrayList<>();
+        answer = count(money);
         return answer;
     }
 }
