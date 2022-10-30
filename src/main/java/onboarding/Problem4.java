@@ -1,67 +1,50 @@
 package onboarding;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /*
 1. 알파벳 초기화
-2. 알파벳 인덱스 찾기
-3. 반전 알파벳 인덱스 찾아 변환하기
+2. 대문자, 소문자 변환하기
  */
 
 public class Problem4 {
 
-    private static char[] initializeReverseAlphabet(char[] alphabet) {
-        char[] reverseAlphabet = new char[26];
-        for (int i = 0; i < alphabet.length; i ++) {
-            reverseAlphabet[i] = alphabet[alphabet.length - i - 1];
-        }
-        return reverseAlphabet;
-    }
-
-    private static char[] initializeAlphabet() {
-        char[] alphabet = new char[26];
-        for (int i = 0; i < alphabet.length; i ++) {
-            alphabet[i] = (char) ('A'+ i);
+    private static Map<Character, Character> getUpperCaseMap() {
+        Map<Character, Character> alphabet = new HashMap<>();
+        char A = 'A';
+        char Z = 'Z';
+        for (int i = 0; i < 26; i++) {
+            alphabet.put((char)('A' + i), (char)('Z' - i));
         }
         return alphabet;
     }
 
-    private static int findAlphabetIndex(char[] alpabet, char tmp) {
-        int result = -1;
-
-        if (Character.isLowerCase(tmp)) {
-            tmp -= 32;
+    private static Map<Character, Character> getLowerCaseMap() {
+        Map<Character, Character> alphabet = new HashMap<>();
+        char a = 'a';
+        char z = 'z';
+        for (int i = 0; i < 26; i++) {
+            alphabet.put((char)('a' + i), (char)('z' - i));
         }
-        for (int i = 0; i < alpabet.length; i ++) {
-            if (alpabet[i] == tmp) {
-                result = i;
-                break;
-            }
-        }
-        return result;
-    }
-
-    private static String convertAlphabet(String word) {
-        String tmp = "";
-        int index = -1;
-        char[] alphabet = initializeAlphabet();
-        char[] reverseAlphabet = initializeReverseAlphabet(alphabet);
-
-        for (int i = 0; i < word.length(); i ++) {
-            if (!Character.isAlphabetic(word.charAt(i))) {
-                tmp += word.charAt(i);
-                continue;
-            }
-            index = findAlphabetIndex(alphabet, word.charAt(i));
-            if (Character.isLowerCase(word.charAt(i)))
-                tmp += (char) (reverseAlphabet[index] + 32);
-            if (Character.isUpperCase(word.charAt(i)))
-                tmp += reverseAlphabet[index];
-        }
-        return tmp;
+        return alphabet;
     }
 
     public static String solution(String word) {
         String answer = "";
-        answer = convertAlphabet(word);
+        Map<Character, Character> upperCaseMap =  getUpperCaseMap();
+        Map<Character, Character> lowerCaseMap =  getLowerCaseMap();
+        for (char element : word.toCharArray()) {
+            if ('A' <= element && element <= 'Z') {
+                answer += upperCaseMap.get(element);
+            }
+            if ('a' <= element && element <= 'z') {
+                answer += lowerCaseMap.get(element);
+            }
+            if (!('A' <= element && element <= 'Z') && !('a' <= element && element <= 'z')) {
+                answer += element;
+            }
+        }
         return answer;
     }
 }
