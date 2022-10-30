@@ -5,4 +5,5 @@ public class Problem3 {
         int answer = 0;
         return answer;
     }
+//    public static int countClap() {}
 }
