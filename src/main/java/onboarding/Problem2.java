@@ -9,6 +9,9 @@ package onboarding;
 
 public class Problem2 {
     public static String findSerialString(String str){
+        if(str.equals(""))
+            return "";
+
         String[] strArray = str.split("");
         int len = strArray.length;
 
@@ -17,7 +20,7 @@ public class Problem2 {
 
             for(int j = i + 1;j < len;j++){
                 int nxt = j;
-                if(strArray[cur] != strArray[nxt]){
+                if(strArray[cur].equals(strArray[nxt])){
                     i = cur;
                     break;
                 }
