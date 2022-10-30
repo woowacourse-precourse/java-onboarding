@@ -18,7 +18,35 @@ class Problem1 {
         scores[POBI_INDEX] = getScore(users[POBI_INDEX]);
         scores[CRONG_INDEX] = getScore(users[CRONG_INDEX]);
 
+        int result = compareToScores(scores);
+
+        answer = (answer == result) ? EXCEPTION : result;
+
         return answer;
+    }
+
+    private static int compareToScores(int[] scores) {
+
+        int draw = 0;
+        int pobiWin = 1;
+        int crongWin = 2;
+
+        int pobiScore = scores[POBI_INDEX];
+        int crongScore = scores[CRONG_INDEX];
+
+        if (pobiScore == EXCEPTION || crongScore == EXCEPTION) {
+            return Integer.MAX_VALUE;
+        }
+
+        if (pobiScore > crongScore) {
+            return pobiWin;
+        } else if (pobiScore < crongScore) {
+            return crongWin;
+        } else if (pobiScore == crongScore) {
+            return draw;
+        }
+
+        return Integer.MAX_VALUE;
     }
 
     private static int getScore(User user) {
