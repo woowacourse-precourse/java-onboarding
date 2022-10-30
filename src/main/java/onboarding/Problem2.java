@@ -10,7 +10,7 @@ public class Problem2 {
     }
 
     private static Boolean isException(String str) {
-        if(str.length() < 1 || str.length() > 1000) return false;
-        return Pattern.matches("[a-z]*", str);
+        if(str.length() < 1 || str.length() > 1000) return true;
+        return !Pattern.matches("[a-z]*", str);
     }
 }
