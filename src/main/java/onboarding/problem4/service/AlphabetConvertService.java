@@ -27,7 +27,6 @@ public class AlphabetConvertService {
       return asciiToChar(convertedAsciiCode);
    }
 
-
    private static int asciiConverter(int originAsciiCode, int startAsciiCode, int endAsciiCode){
       int convertedAsciiCode = originAsciiCode + (endAsciiCode - originAsciiCode - (originAsciiCode - startAsciiCode));
       return convertedAsciiCode;
@@ -36,6 +35,4 @@ public class AlphabetConvertService {
    private static char asciiToChar(int ascii){
       return (char)(ascii);
    }
-
-
 }
