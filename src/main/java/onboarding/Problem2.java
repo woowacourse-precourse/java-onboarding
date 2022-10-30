@@ -6,10 +6,11 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         String answer;
         Cryptogram.validationRange(cryptogram);
+        Cryptogram.validationLowerCase(cryptogram);
+        Cryptogram.validationContainSpacing(cryptogram);
         answer =  Cryptogram.decodeCryptogram(cryptogram);
         return answer;
     }
-
 }
 
 
@@ -20,6 +21,20 @@ class Cryptogram{
     static void validationRange(String cryptogram) {
         if(cryptogram.length() < LOWER_BOUND_LIMIT || cryptogram.length() > UPPER_BOUND_LIMIT){
             throw new IllegalStateException("1이상, 1000 이하인 문자열을 입력해주세요.");
+        }
+    }
+    static void validationLowerCase(String cryptogram){
+        char[] charArray = cryptogram.toCharArray();
+
+        for(int index = 0; index < charArray.length; index++){
+            if( Character.isUpperCase( charArray[index] ))
+                throw new IllegalArgumentException("소문자를 입력해주세요");
+        }
+    }
+
+    static void validationContainSpacing(String cryptogram) {
+        if(cryptogram.contains(" ")){
+            throw new IllegalStateException("공백을 포함되어 있습니다");
         }
     }
 
