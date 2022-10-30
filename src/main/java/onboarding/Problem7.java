@@ -1,11 +1,11 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static final int FIRST_USER_INDEX = 0;
     public static final int SECOND_USER_INDEX = 1;
+    public static final int SCORE_INIT = 0;
     public static final int MAX_RECOMMEND_NUM = 5;
     public static final int MINIMUM_USER_RANGE = 1;
     public static final int MAXIMUM_USER_RANGE = 30;
@@ -102,5 +102,39 @@ public class Problem7 {
 
     private static String getFirstUserName(List<String> userNames) {
         return userNames.get(FIRST_USER_INDEX);
+    }
+
+    static class User {
+        public static final int VISITOR_SCORE = 1;
+        public static final int ACQUAINTANCE_SCORE = 10;
+        private String name;
+        private Set<String> friendNames;
+        private Integer score;
+
+        public User(String name) {
+            this.name = name;
+            this.friendNames = new HashSet<>();
+            this.score = SCORE_INIT;
+        }
+
+        public void incrementVisitorScore() {
+            score += VISITOR_SCORE;
+        }
+
+        public void incrementAcquaintanceScore() {
+            score += ACQUAINTANCE_SCORE;
+        }
+
+        public boolean isZeroScore() {
+            return score == 0;
+        }
+
+        public boolean isFriend(String userName) {
+            return friendNames.contains(userName);
+        }
+
+        public boolean isSameName(String userName) {
+            return name.equals(userName);
+        }
     }
 }
