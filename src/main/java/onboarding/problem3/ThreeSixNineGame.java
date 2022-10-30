@@ -1,6 +1,6 @@
 package onboarding.problem3;
 
-import static onboarding.problem3.InputNumberValidator.*;
+import static onboarding.problem3.InputNumberValidator.validateNumber;
 
 public class ThreeSixNineGame {
 
@@ -8,6 +8,7 @@ public class ThreeSixNineGame {
         validateNumber(number);
         int result = 0;
 
+        // 이걸 스트림으로 바꿀 수는 있다. 하지만 고민이다. for loop가 빠를 경우가 있기 때문이다.
         for (int i = 1; i <= number; i++) {
             String strNum = String.valueOf(i);
 
