@@ -51,6 +51,9 @@ BUILD SUCCESSFUL in 0s
   * 출력값 요구사항
     1. 주어진 3,6,9 게임의 손벽갯수를 출력
 4. [문제 4](./docs/PROBLEM4.md)
+  * 출력값 요구사항
+    1. 알파벳 외의 문자는 그대로 출력
+    1. 알파벳 대문자는 소문자로, 아파벳 소문자는 대문자로 출력
 5. [문제 5](./docs/PROBLEM5.md)
 6. [문제 6](./docs/PROBLEM6.md)
 7. [문제 7](./docs/PROBLEM7.md)
