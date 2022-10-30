@@ -5,6 +5,19 @@ import java.util.List;
 
 public class Problem7 {
 
+    private static boolean checkAlpha(String s) {
+        char index;
+        int length = s.length();
+
+        for (int i = 0; i < length; i++) {
+            index = s.charAt(i);
+            if (!('a' <= index && index <= 'z')) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private static boolean checkParam(String user, List<List<String>> friends, List<String> visitors) {
         if (user == null || friends == null || visitors == null) {
             return true;
