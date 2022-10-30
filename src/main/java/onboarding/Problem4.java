@@ -16,4 +16,8 @@ public class Problem4 {
     private static boolean isUppercaseAlphabet(char letter) {
         return letter >= 'A' && letter <= 'Z';
     }
+
+    private static boolean isLowercaseAlphabet(char letter) {
+        return letter >= 'a' && letter <= 'z';
+    }
 }
