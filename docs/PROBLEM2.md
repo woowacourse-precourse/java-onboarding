@@ -1,23 +1,9 @@
-## 🚀 기능 요구 사항
+## 🚀 기능 목록
 
-암호문을 좋아하는 괴짜 개발자 브라운이 이번에는 중복 문자를 이용한 새로운 암호를 만들었다. 예를 들어 "browoanoommnaon"이라는 암호문은 다음과 같은 순서로 해독할 수 있다.
-
-1. "browoanoommnaon"
-2. "browoannaon"
-3. "browoaaon"
-4. "browoon"
-5. "brown"
-
-임의의 문자열 cryptogram이 매개변수로 주어질 때, 연속하는 중복 문자들을 삭제한 결과를 return 하도록 solution 메서드를 완성하라.
-
-### 제한사항
-
-- cryptogram은 길이가 1 이상 1000 이하인 문자열이다.
-- cryptogram은 알파벳 소문자로만 이루어져 있다.
-
-### 실행 결과 예시
-
-| cryptogram | result |
-| --- | --- |
-| "browoanoommnaon" | "brown" |
-| "zyelleyz" | "" |
+1. 인자로 받은 문자열(`cryptogram`)에 대한 유효성 검사를 실시한다.
+    1. `cryptogram`의 길이가 1이상 1000이하여야 한다.
+    2. `cryptogram`에는 알파벳 소문자만 포함되어야 한다.
+2. 유효성 검사가 끝났다면 Stack 객체를 생성하여 push, pop, peek 메서드를 활용하여 메인 로직을 구성한다.
+    1. peek로 stack의 맨 위에 있는 값이 현재 넣을려고 하는 값과 같다면 pop, 다르다면 push
+3. `cryptogram` 문자열을 모두 stack에 넣거나 빼는 것을 마무리했다면 이 stack에 남아있는 문자들을 하나씩 뽑아내여 StringBuilder 버퍼에 append해준다.
+    1. stack은 LIFO 구성이므로 버퍼를 reverse() 메서드를 통해 뒤집어 준 후에 String 형으로 변환시킨다.
