@@ -193,6 +193,7 @@ HashMap을 클래스 맴버 필드로 지정하고서 별도의 method 없이 ma
 ![image](./img/프리코스_1주차-Problem4_v2.drawio.png)
 
 
+
 ## 문제 5
 
 - 알고리즘
@@ -221,3 +222,17 @@ List 컬렉션 중 ArrayList를 자료구조로 활용해야겠다고 생각했�
 - 이를 위해 접근 제한자를 private으로 설정해 '캡슐화'하여 외부에서는 getAnswer 메서드만 활용할 수 있게 변경했다.
 
 ![image](./img/프리코스_1주차-Problem5_v2.drawio.png)
+
+
+### 기능 목록 v0.3
+
+- List.of 메소드가 Java9부터 지원 가능하다는 것을 알게 되었다.
+    - [[10분 테코톡] 호호의 Java 11](https://youtu.be/LcIyHlE2NlA)
+    - ImmutableList인 만큼 money_array를 만들 때 활용해봐야겠다.
+    - IntelliJ에 TODO 기능을 제공해주는 것이 있다!
+      - [TODO comments](https://www.jetbrains.com/help/idea/using-todo.html#add-multiline-todo)
+      - TODO 적어놓기 우선
+
+## 문제 6
+
+### 기능 목록 v0.1
