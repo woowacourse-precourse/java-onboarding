@@ -21,7 +21,7 @@ public class Problem7 {
     public static void findAcquaintance(int depth, String targetUser, String findUser, List<List<String>> friends, Map<String, Integer> scoreBoard) {
 
         if (depth == 2) {
-            scoreBoard.put(findUser, scoreBoard.getOrDefault(findUser, 0) + 10);
+            insertScore(scoreBoard, findUser);
             return;
         }
 
@@ -47,5 +47,9 @@ public class Problem7 {
 
     public static boolean isTargetUserSameFriend(String targetUser, String friend) {
         return targetUser.equals(friend);
+    }
+
+    public static void insertScore(Map<String, Integer> scoreBoard, String findUser) {
+        scoreBoard.put(findUser, scoreBoard.getOrDefault(findUser, 0) + 10);
     }
 }
