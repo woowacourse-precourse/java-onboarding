@@ -19,7 +19,7 @@ public class Problem7 {
 
         setFriendsPoint(friendsMap, userFriends, scoreMap);
         getVisitorsPoint(scoreMap, visitors);
-        result = validateScoreMap(scoreMap, userFriends);
+        result = getValidatedScoreMap(scoreMap, userFriends);
 
         return result;
     }
@@ -43,6 +43,7 @@ public class Problem7 {
     static void inputFriendToMap(Map<String, List<String>> friendsMap, String friend1, String friend2) {
         List<String> defaultList = new ArrayList<>();
         List<String> friend1Value = friendsMap.getOrDefault(friend1, defaultList);
+
         friend1Value.add(friend2);
         friendsMap.put(friend1, friend1Value);
     }
@@ -73,7 +74,7 @@ public class Problem7 {
                 .forEach(v -> scoreMap.put(v, scoreMap.getOrDefault(v,0) + visitorScore));
     }
 
-    static List<String> validateScoreMap(Map<String, Integer> scoreMap, List<String> userFriends) {
+    static List<String> getValidatedScoreMap(Map<String, Integer> scoreMap, List<String> userFriends) {
         List<Map.Entry<String, Integer>> sortedScoreList = sortScoreMap(scoreMap, userFriends);
         List<String> exceptedScoreList = getExceptedScoreList(sortedScoreList, userFriends);
         List<String> lengthUnderFiveScoreList = limitLengthUnderFive(exceptedScoreList);
@@ -87,6 +88,20 @@ public class Problem7 {
 
         return scoreEntries;
     }
+
+    public static Comparator<Map.Entry<String, Integer>> scoreComparator = new
+            Comparator<Map.Entry<String, Integer>>() {
+                @Override
+                public int compare(Map.Entry<String, Integer> m1, Map.Entry<String, Integer> m2) {
+                    if(m1.getValue() >  m2.getValue()){
+                        return -1;
+                    } else if (m1.getValue() ==  m2.getValue()) {
+                        return m1.getKey().compareTo(m2.getKey());
+                    }
+
+                    return 1;
+                }
+            };
 
     static List<String> getExceptedScoreList(List<Map.Entry<String, Integer>> sortedScoreEntries, List<String> userFriends) {
         List<String> exceptedScoreList = new ArrayList<>();
@@ -108,17 +123,5 @@ public class Problem7 {
         return sortedScoreList;
     }
 
-    public static Comparator<Map.Entry<String, Integer>> scoreComparator = new
-        Comparator<Map.Entry<String, Integer>>() {
-            @Override
-            public int compare(Map.Entry<String, Integer> m1, Map.Entry<String, Integer> m2) {
-                if(m1.getValue() >  m2.getValue()){
-                    return -1;
-                }
-                else if (m1.getValue() ==  m2.getValue()) {
-                    return m1.getKey().compareTo(m2.getKey());
-                }
-                return 1;
-            }
-        };
+
 }
