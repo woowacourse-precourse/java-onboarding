@@ -11,15 +11,15 @@ class Problem1 {
             return -1;
         }
 
-        int pobiScore=Math.max(calculateAndCompare(pobi.get(0)), calculateAndCompare(pobi.get(1)));
-        int crongScore=Math.max(calculateAndCompare(crong.get(0)), calculateAndCompare(crong.get(1)));
+        int pobiScore=Math.max(maxSumOrMultiply(pobi.get(0)), maxSumOrMultiply(pobi.get(1)));
+        int crongScore=Math.max(maxSumOrMultiply(crong.get(0)), maxSumOrMultiply(crong.get(1)));
 
         if (pobiScore==crongScore) return 0;
         else if (pobiScore>crongScore) return 1;
         else return 2;
 
     }
-    public static int calculateAndCompare(int num){
+    public static int maxSumOrMultiply(int num){
         int[] digit= Stream.of(String.valueOf(num).split(""))
                         .mapToInt(Integer::parseInt)
                         .toArray();
