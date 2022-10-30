@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
@@ -16,5 +17,16 @@ class Problem1 {
         } else {
             return false;
         }
+    }
+
+    public int getScore(int num) {
+        List<Integer> digits = new ArrayList<Integer>();
+        while(num > 0) {
+            digits.add(num % 10);
+            num = num / 10;
+        }
+        int multipleDigits = digits.stream().reduce(1, (acc, cur) -> acc * cur);
+        int sumDigits = digits.stream().reduce(0, Integer::sum);
+        return Math.max(multipleDigits, sumDigits);
     }
 }
