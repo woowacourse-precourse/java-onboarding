@@ -12,7 +12,6 @@ public class Problem6 {
         for (int i = 0; i < forms.size(); i++) {
             String name = forms.get(i).get(1);
             String check_email = forms.get(i).get(0);
-            System.out.println(check_email);
             // 닉네임 길이가 2보다 짧으면
             if (name.length() < 2) {
                 return Collections.singletonList("");
@@ -23,6 +22,10 @@ public class Problem6 {
             }
             // 이메일 전체 길이 11자 미만 20자 이상
             if (check_email.length() < 11 || check_email.length() > 20){
+                return Collections.singletonList("");
+            }
+            // email.com이 도메인이 아닐 경우
+            if (!check_email.contains("email.com")){
                 return Collections.singletonList("");
             }
             // 2단어씩 나누기
