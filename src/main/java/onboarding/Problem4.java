@@ -30,10 +30,27 @@ public class Problem4 {
             // 문자가 알파벳인지 확인
             if(alpha >='A' && alpha <= 'Z' || alpha >= 'a' && alpha <= 'z' )
             {
-                // 결과 확인
-                System.out.println(alpha);
+                // 대문자 변환
+                if(alpha >='A' && alpha <= 'Z')
+                    alpha = getTransAlpha(alpha, 65);
+
+                // 소문자 변환
+                else if(alpha >= 'a' && alpha <= 'z')
+                    alpha = getTransAlpha(alpha, 97);
             }
         }
+    }
+
+    // 3-1. 알파벳 변환하기 ( 변환 )
+    static char getTransAlpha(char alpha, int number)
+    {
+        // 문자 변환
+        alpha = (char)(number - (int)alpha + 25 + number);
+
+        // 변환 결과 확인
+        System.out.println(alpha);
+
+        return alpha;
     }
 
     public static String solution(String word) {
