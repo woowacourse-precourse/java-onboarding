@@ -9,7 +9,7 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
-    public boolean validatePageNumber(List<Integer> player) {
+    private boolean validatePageNumber(List<Integer> player) {
         int left = 0;
         int right = 1;
 
