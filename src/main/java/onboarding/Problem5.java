@@ -1,8 +1,7 @@
 package onboarding;
 
-import onboarding.promble5.PennyGame;
+import onboarding.problem5.PennyGame;
 
-import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {

@@ -1,4 +1,4 @@
-package onboarding.promble5;
+package onboarding.problem5;
 
 public class PennyException extends IllegalArgumentException {
     public PennyException(String s) {
