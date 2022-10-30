@@ -34,10 +34,10 @@ class Problem1 {
        if(crong.get(1) - crong.get(0) != 1) {
            return true;
        }
-       if(pobi.get(0) == 1 || pobi.get(1) == 400) {
+       if(pobi.contains(1) || pobi.contains(400)) {
            return true;
        }
-        if(crong.get(0) == 1 || crong.get(1) == 400) {
+        if(crong.contains(1) || crong.contains(400)) {
             return true;
         }
        return false;
@@ -46,6 +46,7 @@ class Problem1 {
     private static int makeScore(int score) {
         return Math.max(sumOfDigits(score), multiplicationOfDigits(score));
     }
+
     //TODO(페이지 번호의 각 숫자를 모두 더하는 함수)
     private static int sumOfDigits(int pageNumber) {
         int result = 0;
