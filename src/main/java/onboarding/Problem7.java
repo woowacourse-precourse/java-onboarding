@@ -101,6 +101,26 @@ public class Problem7 {
         }
         return answer;
     }
+    public static HashMap<String, Integer> acquaintancescore(List<List<String>> friends, List<String> userFriendsList, List<String> userFriendsFriendsList, HashMap<String, Integer> idScore) {
+        //함께 아는 친구 점수 계산
+        // 전체 목록에서 친구를 찾고, 그 옆에 있는 아이디가 친구의 친구의 목록에 있을 경우 +10점
+        for(int i=0; i<userFriendsFriendsList.size(); i++) {
+            int score = 0;
+            for(int j=0; j<friends.size(); j++) {
+                for(int k=0; k<2; k++) {
+                    if(friends.get(j).get(k).equals(userFriendsFriendsList.get(i))) {
+                        if(k==0 && userFriendsList.indexOf(friends.get(j).get(1))!= -1) {
+                            score += 10;
+                        } else if(k==1 && userFriendsList.indexOf(friends.get(j).get(0))!= -1) {
+                            score += 10;
+                        }
+                    }
+                }
+            }
+            idScore.put(userFriendsFriendsList.get(i), score);
+        }
+        return idScore;
+    }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String user = sc.nextLine();
