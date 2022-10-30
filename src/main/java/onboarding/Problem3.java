@@ -17,12 +17,22 @@ public class Problem3 {
         return answer;
     }
 
+    private static int getCountOfDigit(int number){
+        int count = 0;
+        while (number != 0){
+            int digit = number % 10;
+            if (targetList.contains(digit)){
+                count++;
+            }
+            number /= 10;
+        }
 
+        return count;
+    }
 
     private static boolean isWrongRange(int num){
         return (num < 1 || num > 10000);
     }
-
 
     static class Const{
         public static final int START_NUMBER = 1;
