@@ -12,21 +12,32 @@ public class Problem2 {
 
 		while (true) {
 			Matcher patternMatcher = patternRegex.matcher(cryptogram);
-			StringBuilder stringBuilder = new StringBuilder();
 
-			while (patternMatcher.find()) {
-				patternMatcher.appendReplacement(stringBuilder, "");
-			}
-			patternMatcher.appendTail(stringBuilder);
-			cryptogram = String.valueOf(stringBuilder);
+			cryptogram = removeDuplication(patternMatcher);
 
 			System.out.println(cryptogram);
 			patternMatcher = patternRegex.matcher(cryptogram);
+
 			if (!patternMatcher.find()) {
 				answer = cryptogram;
 				break;
 			}
 		}
+
 		return answer;
+	}
+
+	private static String removeDuplication(Matcher patternMatcher) {
+		String cryptogram;
+		StringBuilder stringBuilder = new StringBuilder();
+
+		while (patternMatcher.find()) {
+			patternMatcher.appendReplacement(stringBuilder, "");
+		}
+
+		patternMatcher.appendTail(stringBuilder);
+		cryptogram = String.valueOf(stringBuilder);
+
+		return cryptogram;
 	}
 }
