@@ -7,7 +7,7 @@ public class Problem7 {
         List<String> answer = new ArrayList<>();
 
         Map<String, Set<String>> friendshipGraph = new HashMap<>();
-        initFriendshipGraph(friends, friendshipGraph);
+        initFriendshipGraph(friends, friendshipGraph, user);
 
         Map<String, Integer> visitorInfo = new HashMap<>();
         initVisitorInfo(visitors, visitorInfo, user, friendshipGraph);
@@ -26,7 +26,11 @@ public class Problem7 {
     /**
      * Function for friendshipGraph that represent all friendship as a graph
      * */
-    private static void initFriendshipGraph(List<List<String>> friends, Map<String, Set<String>> friendshipGraph) {
+    private static void initFriendshipGraph(List<List<String>> friends, Map<String, Set<String>> friendshipGraph,
+                                            String user) {
+
+        friendshipGraph.put(user, new HashSet<String>());
+
         for (List<String> each : friends) {
             String person1 = each.get(0);
             String person2 = each.get(1);
@@ -138,7 +142,7 @@ public class Problem7 {
         for (int scoreNum : recommendScore.keySet()) {
             scores.add(scoreNum);
         }
-        Collections.reverse(scores);
+        Collections.sort(scores, Collections.reverseOrder());
         return scores;
     }
 
