@@ -67,6 +67,15 @@ public class Problem2 {
         }
     }
 
+    private static String stackToString(Stack<Character> stack) {
+        String retString = "";
+        for (Character character : stack){
+            retString += String.valueOf(character);
+        }
+
+        return retString;
+    }
+
     private static boolean isSameCharacter(char cmpChar, char curChar) {
         return cmpChar == curChar;
     }
