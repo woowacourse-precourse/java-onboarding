@@ -58,6 +58,30 @@ class PageException extends RuntimeException {
 }
 
 class Game{
+    public int playGame(List<Integer> player1Page, List<Integer> player2Page) {
+        int result;
+        try {
+            // 입력받은 page 번호가 적절한지 검사
+            pageException(player1Page);
+            pageException(player2Page);
+
+            onboarding.Player player1 = new onboarding.Player();
+            onboarding.Player player2 = new onboarding.Player();
+
+            player1.setLeftPageNum(player1Page.get(0));
+            player1.setRightPageNum(player1Page.get(1));
+            player2.setLeftPageNum(player2Page.get(0));
+            player2.setRightPageNum(player2Page.get(1));
+
+            player1.calMaxNum();// max값 계산해 저장
+            player2.calMaxNum();
+            result = winner(player1, player2);
+            return result;
+        } catch (onboarding.PageException e) {
+            return -1;
+        }
+    }
+
     private int winner(onboarding.Player player1, onboarding.Player player2) {// 두 플레이어중 승자 여부에 따른 값을 반환
         if (player1.getMaxNum() > player2.getMaxNum()) {
             return 1;
@@ -90,7 +114,8 @@ class Game{
 }
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        Game game = new Game();
+        int answer = game.playGame(pobi, crong);
         return answer;
     }
     //game 에서 player 마다 값 넣어줌
