@@ -10,4 +10,13 @@ public class Problem4 {
         }
         return answer.toString();
     }
+    private static void getAnswer(String word, StringBuilder answer, int i, int asciiWord) {
+        if (((65 <= asciiWord)&&(asciiWord <= 90))||((97 <= asciiWord) && (asciiWord <= 122))){
+            getAlphabetAnswer(answer, asciiWord);
+        }
+        //알파벳 아닌 경우
+        else{
+            answer.append(word.charAt(i));
+        }
+    }
 }
