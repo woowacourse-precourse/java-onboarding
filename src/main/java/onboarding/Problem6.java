@@ -7,14 +7,20 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class Problem6 {
+    private static ArrayList<String> changeNeedCrewEmails;
     private static ArrayList<List<String>> crews;
     private static HashMap<String, Integer> twoLetterNicknamesAndIds;
 
     public static List<String> solution(List<List<String>> forms) {
         initialize();
-
         validateForm(forms);
+        AddAllCrews(forms);
 
+        for (List<String> crew: forms) {
+            if (!validateCrew(crew)) {
+
+            }
+        }
 
         return forms.get(0);
     }
@@ -64,7 +70,7 @@ public class Problem6 {
      * @return 중복 여부
      */
     private static boolean isDuplicateNickname(int id) {
-        List<String> crew = getCrewById(id);
+        List<String> crew = getCrewByCrewId(id);
         String nickname = crew.get(0);
         String[] twoLetterNicknames = createTwoLetterNicknames(nickname);
         ArrayList<String> internalDuplicateTwoLetterNicknames = new ArrayList<>();
@@ -122,6 +128,15 @@ public class Problem6 {
         return twoLetterNicknamesAndIds.getOrDefault(twoLetterNickname, -1);
     }
 
+    /**
+     * 크루 아이디로 변경 필요 크루로 등록
+     * @param crewId 크루 정보
+     */
+    private static void addChangeNeedCrewEmailByCrewId(int crewId) {
+        List<String> crew = getCrewByCrewId(crewId);
+        String email = crew.get(1);
+        changeNeedCrewEmails.add(email);
+    }
 
     /**
      * 크루 인덱싱
@@ -133,18 +148,27 @@ public class Problem6 {
 
     /**
      * 크루 데이터 검색
-     * @param id 크루 고유 번호
+     * @param crewId 크루 고유 번호
      * @return 크루 데이터
      */
-    private static List<String> getCrewById(int id) {
-        return crews.get(id);
+    private static List<String> getCrewByCrewId(int crewId) {
+        return crews.get(crewId);
     }
 
+    /**
+     * 크루 정보로 크루 고유 번호 가져오기
+     * @param crew 크루 정보
+     * @return 크루 고유 번호
+     */
     private static int getCrewIdByCrew(List<String> crew) {
         return crews.indexOf(crew);
     }
 
+    /**
+     * 초기화
+     */
     private static void initialize() {
+        changeNeedCrewEmails = new ArrayList<>();
         crews = new ArrayList<>();
         twoLetterNicknamesAndIds = new HashMap<>();
     }
