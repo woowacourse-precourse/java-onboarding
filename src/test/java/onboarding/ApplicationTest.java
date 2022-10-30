@@ -92,6 +92,13 @@ class ApplicationTest {
             String result = "vivt";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
+
+        @Test
+        void case4() {
+            String cryptogram = "abbaa";
+            String result = "a";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
     }
 
     @Nested
@@ -290,6 +297,20 @@ class ApplicationTest {
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
 
-
+        @Test
+        void case6() {
+            String user = "mrko";
+            List<List<String>> friends = List.of(
+                    List.of("dounut", "andole"),
+                    List.of("dounut", "jun"),
+                    List.of("dounut", "mrko"),
+                    List.of("shakevan", "andole"),
+                    List.of("shakevan", "jun"),
+                    List.of("shakevan", "mrko")
+            );
+            List<String> visitors = List.of();
+            List<String> result = List.of("andole", "jun");
+            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+        }
     }
 }
