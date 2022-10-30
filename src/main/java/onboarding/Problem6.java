@@ -24,15 +24,23 @@ import java.util.List;
  * */
 
 public class Problem6 {
-    public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        for (List<String> crew : forms) {
-            if(11 <= (crew.get(0).length()) && (crew.get(0).length()) < 20) {
-                if(Arrays.asList(crew.get(0).split("@")).get(1).equals("email.com")) {
-                    System.out.println(crew);
-                }
+
+    static void checkException(List<List<String>> forms){
+        for (int i = forms.size() - 1; i >= 0; i--) {
+            // verify that the email is 11 to less than 20 and the email format is equal to "email.com"
+            if (11 > (forms.get(i).get(0).length()) || (forms.get(i).get(0).length()) >= 20
+                    ||!(Arrays.asList(forms.get(i).get(0).split("@")).get(1).equals("email.com"))) {
+                System.out.println(forms.get(i) + " : 이메일은 11자 이상 20자 미만이며, \"email.com\"형식만 가능합니다.");
+                forms.remove(i);
             }
         }
+    }
+
+    public static List<String> solution(List<List<String>> forms) {
+        List<String> answer = List.of("answer");
+        List<List<String>> crewList = new ArrayList<>(forms);
+        checkException(crewList);
+        System.out.println(crewList);
         return answer;
     }
 }
