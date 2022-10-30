@@ -24,3 +24,11 @@ class ChangeMoney {
         return result;
     }
 }
+
+class LeftMoney {
+    public int leftMoney(int money, int won) {
+        int result = money;
+        result /= won;
+        return result;
+    }
+}
