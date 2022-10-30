@@ -35,9 +35,7 @@ public class Problem7 {
             }
         });
 
-        answer.subList(0, Math.min(answer.size(), 5));
-
-        return answer;
+        return answer.subList(0, Math.min(answer.size(), 5));
     }
 
     private static void makeFriendMap(List<List<String>> friends) {
