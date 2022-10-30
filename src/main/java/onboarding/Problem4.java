@@ -15,6 +15,15 @@ public class Problem4 {
             map.put((char)(upperA + i),(char)(upperZ-i));
             map.put((char)(lowerA+i),(char)(lowerZ-i));
         }
+
+        char[] wordArr = word.toCharArray();
+        for(int i=0;i<wordArr.length;i++){
+            if(!(wordArr[i] >= 'A' && wordArr[i] <= 'Z') && !(wordArr[i] >= 'a' && wordArr[i] <= 'z')){
+                answer+=wordArr[i];
+                continue;
+            }
+            answer+=map.get(wordArr[i]);
+        }
         return answer;
     }
 }
