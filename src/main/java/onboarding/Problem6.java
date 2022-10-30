@@ -61,5 +61,14 @@ public class Problem6 {
         return doubleList.stream().flatMap(Collection::stream).collect(Collectors.toList());
     }
 
+    /**
+     * @param strList : 문자열 리스트
+     * @return 한국어만 존재하는 요소를 List에서 추출해 반환
+     */
+    private static List<String> getElementsByKorean(List<String> strList){
+        List<String> result = new ArrayList<>();
+        result = strList.stream().filter(list -> list.matches(".*[ㄱ-ㅎㅏ-ㅣ가-힣]+.*")).collect(Collectors.toList());
 
+        return result;
+    }
 }
