@@ -13,24 +13,24 @@ class Problem1 {
         if(exception(pobi) || exception(crong))
             return -1;
 
-//        int max_pobi = game(pobi);
-//        int max_crong = game(crong);
-//
-//        if (max_pobi > max_crong) answer = 1;
-//        else if (max_pobi < max_crong) answer = 2;
-//        else answer = 0;
+        int max_pobi = game(pobi);
+        int max_crong = game(crong);
+
+        if (max_pobi > max_crong) answer = 1;
+        else if (max_pobi < max_crong) answer = 2;
+        else answer = 0;
 
         return answer;
     }
 
-//    // 왼쪽 페이지 연산 결과의 최댓값과 오른쪽 페이지 연산 결과의 최댓값 중 큰 값을 리턴
-//    public static int game(List<Integer> player) {
-//        int odd = player.get(0);
-//        int even = player.get(1);
-//
-//        return Math.max(calc(odd), calc(even));
-//    }
-//
+    // 왼쪽 페이지 연산 결과의 최댓값과 오른쪽 페이지 연산 결과의 최댓값 중 큰 값을 리턴
+    public static int game(List<Integer> player) {
+        int odd = player.get(0);
+        int even = player.get(1);
+
+        return Math.max(calc(odd), calc(even));
+    }
+
     // 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구함
     public static int calc(int num) {
         int add = 0, multiply = 1;
