@@ -25,7 +25,7 @@ public class Problem6 {
                 // 두 글자만 비교
                 currentName = current.substring(j,j+2);
                 for (int k = 0; k < forms.size(); k++) {
-                    // 닉네임 1자인 사람 건너뛰기
+                    // 자기 자신과 비교하거나 닉네임 1자인 사람 건너뛰기
                     if (i == k || forms.get(k).get(1).length() == 1) {
                         continue;
                     }
