@@ -6,6 +6,8 @@ class Problem1 {
 
     private static final int LEFT_PAGE = 0;
     private static final int RIGHT_PAGE = 1;
+    private static final int MIN_PAGE = 1;
+    private static final int MAX_PAGE = 400;
     private static final int POBI_WIN = 1;
     private static final int CRONG_WIN = 2;
     private static final int DRAW = 0;
@@ -29,6 +31,9 @@ class Problem1 {
     }
 
     public static boolean checkException(List<Integer> pages) {
+        if (pages.get(0) < MIN_PAGE || pages.get(0) > MAX_PAGE - 1 || pages.get(1) < MIN_PAGE + 1 || pages.get(1) > MAX_PAGE) {
+            return true;
+        }
         if (pages.get(LEFT_PAGE) + 1 != pages.get(RIGHT_PAGE) || pages.get(LEFT_PAGE) % 2 == 0)
             return true;
         return false;
