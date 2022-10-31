@@ -1,10 +1,13 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 public class Problem6 {
 
-    class Form{
+    static class Form{
         String nickname;
         String email;
 
@@ -49,7 +52,7 @@ public class Problem6 {
             if (!isValidEmailSize(email.length())) return false;
             if (!isContainsEmail(email)) return false;
 
-            return false;
+            return true;
         }
 
         private boolean isContainsEmail(String email) {
@@ -65,12 +68,49 @@ public class Problem6 {
     private static boolean isValidPersonal(int n) {
         return n >= 1 && n <= 10_000;
     }
+
+    static HashMap<String, Integer> hashMap = new HashMap();
+    static HashSet hashSet = new HashSet();
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("");
         if(!isValidPersonal(forms.size())) return answer;
+        List<List<String>> list = new ArrayList<>();
+        for (List<String> strings : forms) {
+            try {
+                Form form = new Form(strings.get(1), strings.get(0));
+                List<String> temp = List.of(form.nickname, form.email);
+                list.add(temp);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return answer;
+            }
+        }
+        for (List<String> strings : list) {
+            addStringToHashMap(strings.get(0));
+        }
+
+        
+
 
 
 
         return answer;
+    }
+
+    private static void addStringToHashMap(String s) {
+        HashSet<String> temp = new HashSet();
+        for (int i = 0; i <s.length()-1 ; i++) {
+            String tempString = s.substring(i, i + 2);
+            temp.add(putString(tempString, temp));
+        }
+    }
+
+    private static String putString(String tempString, HashSet<String> temp) {
+        if (!temp.contains(tempString)) {
+            hashMap.put(tempString, hashMap.getOrDefault(tempString, 0) + 1);
+            return tempString;
+        }
+
+        return "";
     }
 }
