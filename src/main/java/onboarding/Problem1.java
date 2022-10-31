@@ -40,4 +40,12 @@ class Problem1 {
         return Arrays.stream(digits)
                 .reduce(1, (a,b)->a*b);
     }
+
+    private static int findMaxScore(int[] leftDigits, int[] rightDigits) {
+        int leftDigitsMax=Math.max(getDigitsSum(leftDigits),getDigitsMultiplication(leftDigits));
+        int rightDigitsMax=Math.max(getDigitsSum(rightDigits),getDigitsMultiplication(rightDigits));
+
+        if(leftDigitsMax>=rightDigitsMax)return leftDigitsMax;
+        return rightDigitsMax;
+    }
 }
