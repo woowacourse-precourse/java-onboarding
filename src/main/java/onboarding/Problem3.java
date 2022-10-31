@@ -50,7 +50,6 @@ class Number{
     public int countClap(int specificNunber){
         while(specificNunber!=0){
             int remainder=specificNunber%10;
-            System.out.println(remainder);
             if(CLAP_NUMBER.contains(remainder)){
                 clapCount+=1;
             }
