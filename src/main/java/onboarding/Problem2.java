@@ -16,8 +16,8 @@ public class Problem2 {
 		String tmp = "";
 		tmp = tmp.concat(checkFirstLetter(cryptogram));
 
-		for (int i = 1; i < cryptogram.length() - 1; i++) {
-			tmp = tmp.concat(checkMiddleLetter(cryptogram, i));
+		for (int index = 1; index < cryptogram.length() - 1; index++) {
+			tmp = tmp.concat(checkMiddleLetter(cryptogram, index));
 		}
 		tmp = tmp.concat(checkLastLetter(cryptogram));
 		return tmp;
@@ -30,11 +30,12 @@ public class Problem2 {
 		return cryptogram.substring(0, 1);
 	}
 
-	private static String checkMiddleLetter(String cryptogram, int i) {
-		if (cryptogram.charAt(i) == cryptogram.charAt(i - 1) || cryptogram.charAt(i) == cryptogram.charAt(i + 1)) {
+	private static String checkMiddleLetter(String cryptogram, int index) {
+		if (cryptogram.charAt(index) == cryptogram.charAt(index - 1) || cryptogram.charAt(index) == cryptogram.charAt(
+			index + 1)) {
 			return "";
 		}
-		return cryptogram.substring(i, i + 1);
+		return cryptogram.substring(index, index + 1);
 	}
 
 	private static String checkLastLetter(String cryptogram) {
