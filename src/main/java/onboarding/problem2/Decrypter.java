@@ -51,9 +51,7 @@ public class Decrypter {
                 return repeatCharInfos;
             }
             int repeatNum = findNumberOfRepeatedChar(cryptogram, startIndex);
-            List<Integer> repeatCharInfo = new ArrayList<>();
-            repeatCharInfo.add(startIndex);
-            repeatCharInfo.add(repeatNum);
+            List<Integer> repeatCharInfo = List.of(startIndex, repeatNum);
             repeatCharInfos.add(repeatCharInfo);
             index = startIndex+repeatNum;
         }
