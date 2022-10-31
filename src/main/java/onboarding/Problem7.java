@@ -19,6 +19,13 @@ public class Problem7 {
             }
         }
 
+        for (int i = 0; i < visitors.size(); i++) {
+            String name = visitors.get(i);
+            if(!recomList.contains(name)) {
+                recomList.add(name);
+            }
+        }
+
 
 
         return answer;
