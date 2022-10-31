@@ -22,5 +22,13 @@ public class Problem7 {
             }
         }
     }
+
+    private static Map<String, List<String>> makeFriendMap(List<List<String>> friends) {
+        HashMap<String, List<String>> friendList = new HashMap<>();
+        friends.forEach(friend -> {
+            friendList.computeIfAbsent(friend.get(0), e -> new ArrayList<>()).add(friend.get(1));
+            friendList.computeIfAbsent(friend.get(1), e -> new ArrayList<>()).add(friend.get(0));
+        });
+        return friendList;
     }
 }
