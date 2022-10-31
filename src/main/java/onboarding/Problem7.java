@@ -12,8 +12,8 @@ public class Problem7 {
         List<String> answer = new ArrayList<>();
         Map<String,List<String>> friendsMap =  getFriendsMap(friends);
         Map<String,Integer> pointMap = getPointMap(friendsMap,user);
-
         calculatorFriendsPoint(friendsMap,pointMap,user);
+        calculatorVisitorPoint(friendsMap.get(user),pointMap,visitors);
 
         return answer;
     }
@@ -50,6 +50,15 @@ public class Problem7 {
                 if(userList.contains(s)){
                     pointMap.put(str,pointMap.get(str)+10);
                 }
+            }
+        }
+    }
+    public static void calculatorVisitorPoint(List<String> userList, Map<String,Integer> pointMap , List<String> visitors){
+
+
+        for(String str : visitors){
+            if(!userList.contains(str)){
+                pointMap.put(str,pointMap.getOrDefault(str,0)+1);
             }
         }
     }
