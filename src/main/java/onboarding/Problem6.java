@@ -1,13 +1,36 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        return filterByDuplicateNicknames(forms)
+                .stream()
+                .map(Problem6::getEmail)
+                .sorted()
+                .distinct()
+                .collect(Collectors.toList());
+    }
+    private static List<List<String>> filterByDuplicateNicknames(List<List<String>> forms) {
+        List<List<String>> filteredForms = new ArrayList<>();
+        Set<String> duplicateNicknameFragments = getDuplicateFragments(
+                forms
+                        .stream()
+                        .map(Problem6::getNickname)
+                        .collect(Collectors.toList()));
+        for (List<String> form : forms) {
+            for (String fragment: toFragments(getNickname(form))) {
+                if (duplicateNicknameFragments.contains(fragment)) {
+                    filteredForms.add(form);
+                    break;
+                }
+            }
+        }
+        return filteredForms;
     }
     private static Set<String> getDuplicateFragments(List<String> words) {
         Set<String> existingFragments = new HashSet<>();
