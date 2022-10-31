@@ -23,4 +23,11 @@ public class Problem6 {
             counter.put(partialNickname, count + 1);
         }
     }
+    private static void removePartialNickname(String nickname, HashMap<String, Integer> counter) {
+        for (int i = 0; i < nickname.length() - 1; i++) {
+            String partialNickname = nickname.substring(i, i + 2);
+            int count = counter.get(partialNickname);
+            counter.put(partialNickname, count - 1);
+        }
+    }
 }
