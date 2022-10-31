@@ -1,13 +1,22 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
-        List<String> charList = List.of(cryptogram.split(""));
-        List<Integer> indexesToRemove = findIndexesToRemove(charList);
+        List<String> charList = new ArrayList<>(List.of(cryptogram.split("")));
+
+        while (true) {
+            List<Integer> indexesToRemove = findIndexesToRemove(charList);
+            if (indexesToRemove.isEmpty()) {
+                break;
+            }
+            removeIndexes(charList, indexesToRemove);
+        }
         return answer;
     }
 
@@ -19,9 +28,14 @@ public class Problem2 {
                 indexesToRemove.add(i-1);
             }
         }
-        if (indexesToRemove.isEmpty()) {
-            return List.of(-1);
-        }
+        Collections.sort(indexesToRemove, Comparator.reverseOrder());
         return indexesToRemove;
+    }
+
+    private static List<String> removeIndexes(List<String> charList, List<Integer> indexesToRemove) {
+        for (int index : indexesToRemove) {
+            charList.remove(index);
+        }
+        return charList;
     }
 }
