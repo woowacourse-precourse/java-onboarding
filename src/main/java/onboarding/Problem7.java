@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 
 public class Problem7 {
@@ -10,15 +11,24 @@ public class Problem7 {
         List<String> myfriend = new ArrayList<String>();
         List<String> friendsfriend = new ArrayList<String>();
         List<String> visitors_name = new ArrayList<String>();
+
+
+        myfriend = find_friend(friends);
+        myfriend = List_set_List(myfriend);
+        friendsfriend = finds_friend(friends);
+        friendsfriend = List_set_List(friendsfriend);
+        //친구의 친구에서 user 제거
+        friendsfriend.remove(user);
+        visitors_name = List_set_List(visitors);
+
         Score score[] = new Score[friendsfriend.size() + visitors_name.size()];
         for (int i = 0; i < friendsfriend.size() + visitors_name.size(); i++) {
             score[i] = new Score();
         }
 
-        myfriend = find_friend(friends);
-        friendsfriend = finds_friend(friends);
-        //친구의 친구에서 user 제거
-        friendsfriend.remove(user);
+        for (int i = 0; i < myfriend.size(); i++) {
+            visitors_name.remove(myfriend.get(i));
+        }
 
         // 친구가 될수있는 score
         int count = 0;
@@ -54,5 +64,12 @@ public class Problem7 {
             friend.add(friends.get(i).get(1));
         }
         return friend;
+    }
+    // 중복제거
+    public static List<String> List_set_List(List<String> SList) {
+        HashSet<String> distinct = new HashSet<String>(SList);
+        List<String> return_list = new ArrayList<String>(distinct);
+
+        return return_list;
     }
 }
