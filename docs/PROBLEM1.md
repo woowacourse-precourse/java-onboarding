@@ -1,5 +1,5 @@
 ## 🔗 기능 목록
-1. solution (main) : 예외처리 -> 점수 구하기 -> 점수 비교
+1. ✅ solution (main) : 예외처리 -> 점수 구하기 -> 점수 비교
 2. validList : 예외사항 체크
 3. calScore : 본인의 점수 구하기
 4. getNumList : 각 자리 숫자 리스트 구하기
