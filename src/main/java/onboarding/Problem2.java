@@ -14,22 +14,24 @@ class Crypto {
   }
 
   private Stack<Character> stackMaker(Stack<Character> stack) {
-    char tmp = 0;
+    char prevPopValue = 0;
     for (int i = 0; i < cryptogram.length(); i++) {
       if (stack.empty()) {
-        if (tmp == cryptogram.charAt(i)) {
+        if (prevPopValue == cryptogram.charAt(i)) {
           continue;
         }
         stack.push(cryptogram.charAt(i));
+        prevPopValue = 0;
         continue;
       }
       if (stack.peek() == cryptogram.charAt(i)) {
-        tmp = stack.pop();
+        prevPopValue = stack.pop();
       } else if (stack.peek() != cryptogram.charAt(i)) {
-        if (tmp == cryptogram.charAt(i)) {
+        if (prevPopValue == cryptogram.charAt(i)) {
           continue;
         }
         stack.push(cryptogram.charAt(i));
+        prevPopValue = 0;
       }
     }
     return stack;
