@@ -7,7 +7,7 @@ class Problem1 {
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
 		
 		// 입력 확인
-		if (!parameterCheck(pobi) && parameterCheck(crong)) {
+		if (!parameterCheck(pobi) || !parameterCheck(crong)) {
 			return -1;
 		}
 		
